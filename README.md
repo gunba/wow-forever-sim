@@ -5,7 +5,7 @@ A fork of [ElliotWood/Forever](https://github.com/ElliotWood/Forever), built on
 
 **[Open the simulator and DPS matrix](https://gunba.github.io/wow-forever-sim/classic/review/).**
 
-The current DPS profiles use Forever crafted/dungeon equipment, updated talent
+The current DPS profiles use Forever crafted, dungeon and verified PvP/vendor equipment, updated talent
 trees and racials, and an explicit Tier 1 bonus setting. The Classic ruleset is
 retained for mechanic comparisons, not as a complete Classic simulator.
 
@@ -23,9 +23,12 @@ the comparisons, assumptions and Monte Carlo uncertainty.
 
 [Build reviews](docs/build_reviews.md) describe the retained choices and resource
 use. [In-game checks](docs/in_game_checks.md) track important unresolved mechanics.
-[Replay profiles](artifacts/ui_profiles/index.json) can be loaded through the
-matching simulator's **Import → JSON** dialog. The web build can include a
-clickable matrix at `/classic/review/`; see the benchmark guide for staging it.
+[Replay profiles](artifacts/ui_profiles/index.json) are built into the matching
+simulator's **Ranked builds** selector. Clicking a matrix cell opens that exact
+setup, including its paid hit adjustment; no manual import is needed.
+[Equipment-search evidence](artifacts/gear_search/summary.json) records the
+comparisons. Lower-level items remain where stronger or needed for documented
+coverage gaps.
 
 This project is licensed with MIT license, inherited from the upstream project. As upstream requests, keep a user visible link back to [wowsims/classic](https://github.com/wowsims/classic) in anything built on this.
 

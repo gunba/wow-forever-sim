@@ -120,6 +120,9 @@ Two new crafted enhancements are imported:
 
 The equipment search fills every enchantable slot and compares legal
 alternatives using native DPS runs. Raid-reward inscriptions are excluded.
+Healing-only enchants currently inherit the engine's one-third damage fallback:
++24 healing bracers contribute eight modeled spell damage. This is retained
+behavior, not a newly verified Forever rule; in-game check T22 covers it.
 
 ### Items
 

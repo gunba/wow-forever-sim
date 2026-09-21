@@ -73,10 +73,10 @@ python3 tools/forever_bench/run_matrix.py \
   --output /tmp/forever-final-matrix
 ```
 
-The final replay fills missing enchants and replaces purely non-offensive
-choices when a damage stat is available. For example, healing-only caster
-bracers become seven Intellect rather than surviving a noisy small-gain test.
-Proc and haste enchants remain subject to their simulated comparison.
+The final replay fills missing enchants without overriding legal simulated
+choices. Initial enchant scoring respects the inherited healing-to-damage
+conversion, including healing enchants; that conversion remains an in-game
+validation question. Proc and haste enchants use their simulated comparison.
 
 The search compares each slot against the current loadout, with legal weapon
 layouts compared together. It then compares legal enchants and the second

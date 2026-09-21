@@ -126,7 +126,8 @@ The simulator’s <strong>Ranked builds</strong> selector also loads complete ra
 <p class="note">Equipment is recorded in each profile; no world or campfire buffs. Hit is normalized through a paid benchmark budget,
 not an obtainable reforging system. Imported bonus stats contain that fixed adjustment:
 changing gear, talents or race requires recalculation for a fair comparison.
-Energy scaling with general haste is a model assumption. These are tested builds, not proven global optima.</p>
+Energy scaling with general haste is a model assumption. Healing-only records, including enchants, retain an unverified
+one-third damage fallback. These are tested builds, not proven global optima.</p>
 <nav class="links"><a href="results.png">Chart PNG</a><a href="results.svg">Chart SVG</a>
 <a href="results.csv" download>CSV</a><a href="results.json" download>Raw requests/results</a>
 <a href="profiles/index.json">Replay profile index</a>

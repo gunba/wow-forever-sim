@@ -124,7 +124,7 @@ func TestGearEnchantCoverageAndLegality(t *testing.T) {
 	}
 }
 
-func TestEnchantPreparationReplacesHealingOnlyCasterBracers(t *testing.T) {
+func TestEnchantPreparationPreservesModeledHealingConversion(t *testing.T) {
 	for _, b := range builds() {
 		if b.Key != "fire" {
 			continue
@@ -132,8 +132,8 @@ func TestEnchantPreparationReplacesHealingOnlyCasterBracers(t *testing.T) {
 		p := b.player(b.races()[0])
 		p.Equipment.Items[proto.ItemSlot_ItemSlotWrist].Enchant = 2566
 		prepareGearEnchants(b, p)
-		if p.Equipment.Items[proto.ItemSlot_ItemSlotWrist].Enchant != 1883 {
-			t.Fatal("expected seven Intellect instead of healing-only bracers")
+		if p.Equipment.Items[proto.ItemSlot_ItemSlotWrist].Enchant != 2566 {
+			t.Fatal("healing enchant's modeled damage contribution was ignored")
 		}
 	}
 }

@@ -94,6 +94,16 @@ func legalEnchants(p *proto.Player, slot int) []*proto.UIEnchant {
 	return out
 }
 
+func enchantSeedScore(b build, e *proto.UIEnchant, slot int) float64 {
+	s := stats.FromFloatArray(e.Stats)
+	// Match the engine's inherited Forever conversion, including enchants.
+	// A healing-only label does not imply zero modeled damage.
+	if s[stats.SpellDamage] == 0 {
+		s[stats.SpellDamage] = s[stats.HealingPower] * core.ForeverHealingToSpellDamage
+	}
+	return seedScore(b, core.Item{Stats: s}, slot)
+}
+
 // Fill every enchantable slot before the DPS search. The heuristic only
 // supplies a starting point; native simulations compare the alternatives.
 func prepareGearEnchants(b build, p *proto.Player) {
@@ -103,25 +113,13 @@ func prepareGearEnchants(b build, p *proto.Player) {
 			spec.Enchant = 0
 			continue
 		}
-		current := slices.IndexFunc(choices, func(e *proto.UIEnchant) bool { return e.EffectId == spec.Enchant })
-		if current >= 0 {
-			// Don't retain a healing-only enchant merely because a small positive
-			// offensive stat change falls below the Monte Carlo threshold.
-			e := choices[current]
-			if seedScore(b, core.Item{Stats: stats.FromFloatArray(e.Stats)}, slot) > 0 ||
-				core.HasEnchantEffect(e.EffectId) || core.HasWeaponEffect(e.EffectId) {
-				continue
-			}
-			if !slices.ContainsFunc(choices, func(e *proto.UIEnchant) bool {
-				return seedScore(b, core.Item{Stats: stats.FromFloatArray(e.Stats)}, slot) > 0
-			}) {
-				continue
-			}
+		if slices.ContainsFunc(choices, func(e *proto.UIEnchant) bool { return e.EffectId == spec.Enchant }) {
+			continue
 		}
 		best, score := int32(0), math.Inf(-1)
 		for _, e := range choices {
 			s := stats.FromFloatArray(e.Stats)
-			value := seedScore(b, core.Item{Stats: s}, slot)
+			value := enchantSeedScore(b, e, slot)
 			// Prefer real defensive benefits over an empty enhancement when
 			// none of the available choices has a modeled damage stat.
 			for _, v := range s {

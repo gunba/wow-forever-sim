@@ -6,6 +6,22 @@ rotation. The open checks below still need measurements.
 
 ## Available early
 
+### T22 — Healing-only gear and enchant damage
+
+**Priority:** high · **Access:** level 20 if a suitable item or enchant is available · **Status:** open
+
+Record spell damage and bonus healing before and after equipping a healing-only
+item. Repeat with a healing enchant, keeping the underlying item unchanged.
+Record item/enchant IDs and check all spell schools, for example with
+`GetSpellBonusDamage`. Exclude items whose client data already has explicit
+spell damage.
+
+**Resolves:** the inherited simulator rule adds one spell damage per three
+healing power when a record has no explicit damage component. It also applies
+to enchants: +24 healing bracers currently provide eight modeled spell damage.
+The presence of that rule is not confirmation that Forever applies it to
+every healing-only item or enchant.
+
 ### T20 — PvP vendor stock and level-65 class armor
 
 **Priority:** high · **Access:** vendor access on either faction; Alliance stock especially needed · **Status:** open

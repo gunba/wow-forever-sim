@@ -41,7 +41,7 @@ var (
 	optimize         = flag.Bool("optimize", false, "search legal one-point talent reallocations")
 	searchRounds     = flag.Int("rounds", 3, "talent search rounds")
 	seedGear         = flag.Bool("write-seed-gear", false, "write reviewed crafted/dungeon starting gearsets")
-	refreshEnchants  = flag.Bool("refresh-enchants", false, "fill missing enchants and replace purely non-offensive choices where a damage option exists")
+	refreshEnchants  = flag.Bool("refresh-enchants", false, "fill missing enchants while preserving legal simulated choices")
 )
 
 type resultRow struct {

@@ -931,7 +931,7 @@
     }
   ],
   "finalReplayManifest": {
-    "inputsSHA256": "8e124aea9e150b478fd2dfe116c59becb628eb8054436eb2a5dc9b99d214a2f0",
+    "inputsSHA256": "0268dfe97486c07e9dd7702fcb6ea831fa213df6c73f23468b80c361635fb1d8",
     "iterations": 5000,
     "seed": 20291951,
     "scenarios": [
@@ -942,1605 +942,1036 @@
       "original"
     ]
   },
-  "finalResultsSHA256": "7e16b90f036a89a3fef74df827e03c6422d5e9577a3c05c4c8532b8e393983b2",
+  "finalResultsSHA256": "71e887c6caea60c8b30c9676b38584de3db9889fe1b67904e8d2d2e3636f249f",
   "comparison": [
     {
       "build": "balance",
       "race": "Tauren",
       "baselineDPS": 458.37079631035067,
-      "finalDPS": 588.7526215063334,
-      "gainPercent": 28.44461868982262,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 592.1898749356773,
+      "gainPercent": 29.194503598942468
     },
     {
       "build": "balance",
       "race": "Windshaper",
       "baselineDPS": 455.9790677654029,
-      "finalDPS": 586.3420539639773,
-      "gainPercent": 28.589686547989746,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 589.700303104564,
+      "gainPercent": 29.32617850079897
     },
     {
       "build": "balance",
       "race": "Night Elf",
       "baselineDPS": 458.2606912467614,
-      "finalDPS": 588.7055699568382,
-      "gainPercent": 28.465212312926845,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 592.2969784676181,
+      "gainPercent": 29.24891656235942
     },
     {
       "build": "balance",
       "race": "High Order",
       "baselineDPS": 455.9790677654029,
-      "finalDPS": 586.3420539639773,
-      "gainPercent": 28.589686547989746,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 589.700303104564,
+      "gainPercent": 29.32617850079897
     },
     {
       "build": "feral",
       "race": "Tauren",
       "baselineDPS": 537.8043138016315,
       "finalDPS": 602.0770454852543,
-      "gainPercent": 11.950951309648627,
-      "finalEnchantAdjustments": []
+      "gainPercent": 11.950951309648627
     },
     {
       "build": "feral",
       "race": "Windshaper",
       "baselineDPS": 538.6848831861773,
       "finalDPS": 602.6752723132923,
-      "gainPercent": 11.879002200438403,
-      "finalEnchantAdjustments": []
+      "gainPercent": 11.879002200438403
     },
     {
       "build": "feral",
       "race": "Night Elf",
       "baselineDPS": 537.8411756050159,
       "finalDPS": 603.0211237143943,
-      "gainPercent": 12.11880961625107,
-      "finalEnchantAdjustments": []
+      "gainPercent": 12.11880961625107
     },
     {
       "build": "feral",
       "race": "High Order",
       "baselineDPS": 538.6848831861773,
       "finalDPS": 602.6752723132923,
-      "gainPercent": 11.879002200438403,
-      "finalEnchantAdjustments": []
+      "gainPercent": 11.879002200438403
     },
     {
       "build": "elemental",
       "race": "Orc",
       "baselineDPS": 395.3967101837215,
-      "finalDPS": 502.6300377811379,
-      "gainPercent": 27.120440012662293,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        },
-        {
-          "slot": 6,
-          "before": 2617,
-          "after": 2616
-        }
-      ]
+      "finalDPS": 507.76177956711035,
+      "gainPercent": 28.41831165746884
     },
     {
       "build": "elemental",
       "race": "Tauren",
       "baselineDPS": 395.79584336018775,
-      "finalDPS": 502.301269447033,
-      "gainPercent": 26.90918256812558,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        },
-        {
-          "slot": 6,
-          "before": 2617,
-          "after": 2616
-        }
-      ]
+      "finalDPS": 507.3632742365646,
+      "gainPercent": 28.188125961405497
     },
     {
       "build": "elemental",
       "race": "Troll",
       "baselineDPS": 393.4761763460845,
-      "finalDPS": 500.4555795047453,
-      "gainPercent": 27.18827964429702,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        },
-        {
-          "slot": 6,
-          "before": 2617,
-          "after": 2616
-        }
-      ]
+      "finalDPS": 505.6044023158382,
+      "gainPercent": 28.496827180492513
     },
     {
       "build": "elemental",
       "race": "Windshaper",
       "baselineDPS": 393.8452077755272,
-      "finalDPS": 499.8205754829407,
-      "gainPercent": 26.90787284323499,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        },
-        {
-          "slot": 6,
-          "before": 2617,
-          "after": 2616
-        }
-      ]
+      "finalDPS": 505.06284213818395,
+      "gainPercent": 28.238920308520154
     },
     {
       "build": "elemental",
       "race": "Dwarf",
       "baselineDPS": 395.2161306325972,
-      "finalDPS": 498.0020455416739,
-      "gainPercent": 26.007520174987263,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        },
-        {
-          "slot": 6,
-          "before": 2617,
-          "after": 2616
-        }
-      ]
+      "finalDPS": 503.04497850145174,
+      "gainPercent": 27.283513882963174
     },
     {
       "build": "stormcaller",
       "race": "Orc",
       "baselineDPS": 413.711504965216,
-      "finalDPS": 523.089297028941,
-      "gainPercent": 26.438179927561166,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        },
-        {
-          "slot": 6,
-          "before": 2617,
-          "after": 2616
-        }
-      ]
+      "finalDPS": 528.3923683991976,
+      "gainPercent": 27.720008280558627
     },
     {
       "build": "stormcaller",
       "race": "Tauren",
       "baselineDPS": 414.0722464132452,
-      "finalDPS": 522.4123827796004,
-      "gainPercent": 26.164549134797955,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        },
-        {
-          "slot": 6,
-          "before": 2617,
-          "after": 2616
-        }
-      ]
+      "finalDPS": 527.549343706055,
+      "gainPercent": 27.405144458669994
     },
     {
       "build": "stormcaller",
       "race": "Troll",
       "baselineDPS": 411.4156649695262,
-      "finalDPS": 518.5431540592393,
-      "gainPercent": 26.038748208007135,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        },
-        {
-          "slot": 6,
-          "before": 2617,
-          "after": 2616
-        }
-      ]
+      "finalDPS": 523.888913777314,
+      "gainPercent": 27.338105566816175
     },
     {
       "build": "stormcaller",
       "race": "Windshaper",
       "baselineDPS": 413.2327245061194,
-      "finalDPS": 520.1668522573492,
-      "gainPercent": 25.877458732009572,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        },
-        {
-          "slot": 6,
-          "before": 2617,
-          "after": 2616
-        }
-      ]
+      "finalDPS": 525.5261170141171,
+      "gainPercent": 27.174370723472265
     },
     {
       "build": "stormcaller",
       "race": "Dwarf",
       "baselineDPS": 414.15866864469143,
-      "finalDPS": 518.6854363654323,
-      "gainPercent": 25.238338741719033,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        },
-        {
-          "slot": 6,
-          "before": 2617,
-          "after": 2616
-        }
-      ]
+      "finalDPS": 523.990159555097,
+      "gainPercent": 26.519181952613067
     },
     {
       "build": "enhancement",
       "race": "Orc",
       "baselineDPS": 571.0506021273675,
       "finalDPS": 692.1816265902951,
-      "gainPercent": 21.21195985288715,
-      "finalEnchantAdjustments": []
+      "gainPercent": 21.21195985288715
     },
     {
       "build": "enhancement",
       "race": "Tauren",
       "baselineDPS": 562.9365826052336,
       "finalDPS": 693.8823317026737,
-      "gainPercent": 23.26119018441326,
-      "finalEnchantAdjustments": []
+      "gainPercent": 23.26119018441326
     },
     {
       "build": "enhancement",
       "race": "Troll",
       "baselineDPS": 563.8009962230459,
       "finalDPS": 688.2428298578843,
-      "gainPercent": 22.071942843039572,
-      "finalEnchantAdjustments": []
+      "gainPercent": 22.071942843039572
     },
     {
       "build": "enhancement",
       "race": "Windshaper",
       "baselineDPS": 564.627682867625,
       "finalDPS": 689.5142555108811,
-      "gainPercent": 22.118393488782463,
-      "finalEnchantAdjustments": []
+      "gainPercent": 22.118393488782463
     },
     {
       "build": "enhancement",
       "race": "Dwarf",
       "baselineDPS": 560.2112178243684,
       "finalDPS": 695.8782422303678,
-      "gainPercent": 24.217120273470204,
-      "finalEnchantAdjustments": []
+      "gainPercent": 24.217120273470204
     },
     {
       "build": "beast_mastery",
       "race": "Orc",
       "baselineDPS": 772.0027033487609,
       "finalDPS": 880.9364302923219,
-      "gainPercent": 14.110536980121037,
-      "finalEnchantAdjustments": []
+      "gainPercent": 14.110536980121037
     },
     {
       "build": "beast_mastery",
       "race": "Tauren",
       "baselineDPS": 770.1106396234408,
       "finalDPS": 870.9104386271963,
-      "gainPercent": 13.089002257265703,
-      "finalEnchantAdjustments": []
+      "gainPercent": 13.089002257265703
     },
     {
       "build": "beast_mastery",
       "race": "Troll",
       "baselineDPS": 771.9354640184941,
       "finalDPS": 876.7231242964111,
-      "gainPercent": 13.574665909559315,
-      "finalEnchantAdjustments": []
+      "gainPercent": 13.574665909559315
     },
     {
       "build": "beast_mastery",
       "race": "Windshaper",
       "baselineDPS": 773.1502348162261,
       "finalDPS": 877.4154931171499,
-      "gainPercent": 13.485769467004971,
-      "finalEnchantAdjustments": []
+      "gainPercent": 13.485769467004971
     },
     {
       "build": "beast_mastery",
       "race": "Human",
       "baselineDPS": 769.431690668604,
       "finalDPS": 883.4112963226512,
-      "gainPercent": 14.813479485749248,
-      "finalEnchantAdjustments": []
+      "gainPercent": 14.813479485749248
     },
     {
       "build": "beast_mastery",
       "race": "Dwarf",
       "baselineDPS": 767.2513115895557,
       "finalDPS": 868.5823988925005,
-      "gainPercent": 13.20702692485618,
-      "finalEnchantAdjustments": []
+      "gainPercent": 13.20702692485618
     },
     {
       "build": "beast_mastery",
       "race": "Night Elf",
       "baselineDPS": 777.907768848963,
       "finalDPS": 880.0585737111775,
-      "gainPercent": 13.131480228480385,
-      "finalEnchantAdjustments": []
+      "gainPercent": 13.131480228480385
     },
     {
       "build": "beast_mastery",
       "race": "High Order",
       "baselineDPS": 773.1502348162261,
       "finalDPS": 877.4154931171499,
-      "gainPercent": 13.485769467004971,
-      "finalEnchantAdjustments": []
+      "gainPercent": 13.485769467004971
     },
     {
       "build": "marksmanship",
       "race": "Orc",
       "baselineDPS": 732.6445772558068,
       "finalDPS": 851.2670088375805,
-      "gainPercent": 16.190992913110193,
-      "finalEnchantAdjustments": []
+      "gainPercent": 16.190992913110193
     },
     {
       "build": "marksmanship",
       "race": "Tauren",
       "baselineDPS": 730.3481298517677,
       "finalDPS": 840.4231190348837,
-      "gainPercent": 15.071578153483745,
-      "finalEnchantAdjustments": []
+      "gainPercent": 15.071578153483745
     },
     {
       "build": "marksmanship",
       "race": "Troll",
       "baselineDPS": 732.5008222987024,
       "finalDPS": 845.0013062799409,
-      "gainPercent": 15.358410606037864,
-      "finalEnchantAdjustments": []
+      "gainPercent": 15.358410606037864
     },
     {
       "build": "marksmanship",
       "race": "Windshaper",
       "baselineDPS": 733.673191255288,
       "finalDPS": 846.5668584381636,
-      "gainPercent": 15.387459774796831,
-      "finalEnchantAdjustments": []
+      "gainPercent": 15.387459774796831
     },
     {
       "build": "marksmanship",
       "race": "Human",
       "baselineDPS": 729.690036894227,
       "finalDPS": 853.9059347565541,
-      "gainPercent": 17.023104548751423,
-      "finalEnchantAdjustments": []
+      "gainPercent": 17.023104548751423
     },
     {
       "build": "marksmanship",
       "race": "Dwarf",
       "baselineDPS": 727.5582863238691,
       "finalDPS": 837.7669478997559,
-      "gainPercent": 15.147743300779059,
-      "finalEnchantAdjustments": []
+      "gainPercent": 15.147743300779059
     },
     {
       "build": "marksmanship",
       "race": "Night Elf",
       "baselineDPS": 738.7331832081218,
       "finalDPS": 850.0425008789774,
-      "gainPercent": 15.067594119363758,
-      "finalEnchantAdjustments": []
+      "gainPercent": 15.067594119363758
     },
     {
       "build": "marksmanship",
       "race": "High Order",
       "baselineDPS": 733.673191255288,
       "finalDPS": 846.5668584381636,
-      "gainPercent": 15.387459774796831,
-      "finalEnchantAdjustments": []
+      "gainPercent": 15.387459774796831
     },
     {
       "build": "survival",
       "race": "Orc",
       "baselineDPS": 662.2378262528927,
       "finalDPS": 791.4666808364159,
-      "gainPercent": 19.513964539708105,
-      "finalEnchantAdjustments": []
+      "gainPercent": 19.513964539708105
     },
     {
       "build": "survival",
       "race": "Tauren",
       "baselineDPS": 659.5084146676004,
       "finalDPS": 780.0515795678946,
-      "gainPercent": 18.277729627005492,
-      "finalEnchantAdjustments": []
+      "gainPercent": 18.277729627005492
     },
     {
       "build": "survival",
       "race": "Troll",
       "baselineDPS": 660.9979595199354,
       "finalDPS": 783.4870268021626,
-      "gainPercent": 18.53092971288257,
-      "finalEnchantAdjustments": []
+      "gainPercent": 18.53092971288257
     },
     {
       "build": "survival",
       "race": "Windshaper",
       "baselineDPS": 661.5157949588798,
       "finalDPS": 786.4684567381724,
-      "gainPercent": 18.888840256196705,
-      "finalEnchantAdjustments": []
+      "gainPercent": 18.888840256196705
     },
     {
       "build": "survival",
       "race": "Human",
       "baselineDPS": 671.0124162613346,
       "finalDPS": 795.7012822118229,
-      "gainPercent": 18.582199513567055,
-      "finalEnchantAdjustments": []
+      "gainPercent": 18.582199513567055
     },
     {
       "build": "survival",
       "race": "Dwarf",
       "baselineDPS": 656.1310945874784,
       "finalDPS": 776.1411576490005,
-      "gainPercent": 18.290561756865785,
-      "finalEnchantAdjustments": []
+      "gainPercent": 18.290561756865785
     },
     {
       "build": "survival",
       "race": "Night Elf",
       "baselineDPS": 666.1713281097666,
       "finalDPS": 788.8231509344005,
-      "gainPercent": 18.41145327774063,
-      "finalEnchantAdjustments": []
+      "gainPercent": 18.41145327774063
     },
     {
       "build": "survival",
       "race": "High Order",
       "baselineDPS": 661.5157949588798,
       "finalDPS": 786.4684567381724,
-      "gainPercent": 18.888840256196705,
-      "finalEnchantAdjustments": []
+      "gainPercent": 18.888840256196705
     },
     {
       "build": "arcane",
       "race": "Orc",
       "baselineDPS": 570.7554739144957,
-      "finalDPS": 700.9860513075006,
-      "gainPercent": 22.817227927719273,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 704.4693109339648,
+      "gainPercent": 23.42751723472749
     },
     {
       "build": "arcane",
       "race": "Troll",
       "baselineDPS": 569.1883117955854,
-      "finalDPS": 698.0548189247404,
-      "gainPercent": 22.64039940009086,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 701.6375718626244,
+      "gainPercent": 23.269848892224964
     },
     {
       "build": "arcane",
       "race": "Undead",
       "baselineDPS": 582.405864653109,
-      "finalDPS": 711.5174759698548,
-      "gainPercent": 22.168666071665832,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 715.1374090627637,
+      "gainPercent": 22.79021425869603
     },
     {
       "build": "arcane",
       "race": "Human",
       "baselineDPS": 576.7672390185245,
-      "finalDPS": 696.6925950613662,
-      "gainPercent": 20.792678212257123,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 700.0042562135353,
+      "gainPercent": 21.36685457459777
     },
     {
       "build": "arcane",
       "race": "Gnome",
       "baselineDPS": 573.5256426761943,
-      "finalDPS": 703.6248597512538,
-      "gainPercent": 22.684115128312055,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 706.8188584860782,
+      "gainPercent": 23.24102113166362
     },
     {
       "build": "arcane",
       "race": "High Order",
       "baselineDPS": 570.8706148108345,
-      "finalDPS": 700.3600244195865,
-      "gainPercent": 22.68279470851027,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 703.9798736011857,
+      "gainPercent": 23.316887458721048
     },
     {
       "build": "fire",
       "race": "Orc",
       "baselineDPS": 759.446261651134,
-      "finalDPS": 947.9511992921729,
-      "gainPercent": 24.821366192678962,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 952.3658670805838,
+      "gainPercent": 25.402667070875793
     },
     {
       "build": "fire",
       "race": "Troll",
       "baselineDPS": 753.9551429466838,
       "finalDPS": 940.9347170006486,
-      "gainPercent": 24.799827390684314,
-      "finalEnchantAdjustments": []
+      "gainPercent": 24.799827390684314
     },
     {
       "build": "fire",
       "race": "Undead",
       "baselineDPS": 766.9250766621226,
-      "finalDPS": 956.6812631232451,
-      "gainPercent": 24.74246731988421,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 960.0117919657644,
+      "gainPercent": 25.17673775175151
     },
     {
       "build": "fire",
       "race": "Human",
       "baselineDPS": 757.0790762431475,
-      "finalDPS": 943.7380733034593,
-      "gainPercent": 24.655152006917103,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 947.8797765930883,
+      "gainPercent": 25.202215506569136
     },
     {
       "build": "fire",
       "race": "Gnome",
       "baselineDPS": 762.4412117069783,
       "finalDPS": 949.8721826549163,
-      "gainPercent": 24.583006279042998,
-      "finalEnchantAdjustments": []
+      "gainPercent": 24.583006279042998
     },
     {
       "build": "fire",
       "race": "High Order",
       "baselineDPS": 757.8706189328424,
-      "finalDPS": 944.9022452122987,
-      "gainPercent": 24.6785693503748,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 949.419750976862,
+      "gainPercent": 25.27464810731679
     },
     {
       "build": "frost",
       "race": "Orc",
       "baselineDPS": 567.9502925616641,
-      "finalDPS": 694.1110248891345,
-      "gainPercent": 22.213340494718146,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 697.6350704320494,
+      "gainPercent": 22.833825348598612
     },
     {
       "build": "frost",
       "race": "Troll",
       "baselineDPS": 569.1219700301281,
-      "finalDPS": 694.69551689367,
-      "gainPercent": 22.064434950015066,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 698.103102747736,
+      "gainPercent": 22.663179337599626
     },
     {
       "build": "frost",
       "race": "Undead",
       "baselineDPS": 572.9667046929009,
-      "finalDPS": 697.9598103410565,
-      "gainPercent": 21.81507313154427,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 701.2818714168045,
+      "gainPercent": 22.394873152826243
     },
     {
       "build": "frost",
       "race": "Human",
       "baselineDPS": 573.6586935328085,
-      "finalDPS": 690.175007733581,
-      "gainPercent": 20.311086629441768,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 693.5466100026133,
+      "gainPercent": 20.898823258737597
     },
     {
       "build": "frost",
       "race": "Gnome",
       "baselineDPS": 570.7595047693071,
-      "finalDPS": 695.9772452463767,
-      "gainPercent": 21.93879198344333,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 699.6763932822611,
+      "gainPercent": 22.586901739824782
     },
     {
       "build": "frost",
       "race": "High Order",
       "baselineDPS": 570.2998097810598,
-      "finalDPS": 696.0845473052887,
-      "gainPercent": 22.055896804966157,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 699.4700019382055,
+      "gainPercent": 22.649523976999863
     },
     {
       "build": "retribution",
       "race": "Undead",
       "baselineDPS": 896.2944244722992,
       "finalDPS": 1090.6863287381102,
-      "gainPercent": 21.6883982492986,
-      "finalEnchantAdjustments": []
+      "gainPercent": 21.6883982492986
     },
     {
       "build": "retribution",
       "race": "Human",
       "baselineDPS": 881.7820594368579,
       "finalDPS": 1069.5052296044894,
-      "gainPercent": 21.289066630309893,
-      "finalEnchantAdjustments": []
+      "gainPercent": 21.289066630309893
     },
     {
       "build": "retribution",
       "race": "Dwarf",
       "baselineDPS": 880.6654018240729,
       "finalDPS": 1067.759928836205,
-      "gainPercent": 21.244677788478317,
-      "finalEnchantAdjustments": []
+      "gainPercent": 21.244677788478317
     },
     {
       "build": "shadow",
       "race": "Troll",
       "baselineDPS": 637.1839951393035,
-      "finalDPS": 761.0330412078993,
-      "gainPercent": 19.436936114743332,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 764.2136439760687,
+      "gainPercent": 19.936101629325066
     },
     {
       "build": "shadow",
       "race": "Undead",
       "baselineDPS": 646.2668584486414,
-      "finalDPS": 770.6419085460768,
-      "gainPercent": 19.245153680941772,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 773.7967410034164,
+      "gainPercent": 19.7333161816327
     },
     {
       "build": "shadow",
       "race": "Human",
       "baselineDPS": 637.9388157797179,
-      "finalDPS": 761.8603867476098,
-      "gainPercent": 19.42530661289663,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 765.0612605132329,
+      "gainPercent": 19.927059082953
     },
     {
       "build": "shadow",
       "race": "Dwarf",
       "baselineDPS": 643.2075859592204,
-      "finalDPS": 761.7092521391223,
-      "gainPercent": 18.42354921905647,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 764.8929322744622,
+      "gainPercent": 18.91851852676325
     },
     {
       "build": "shadow",
       "race": "Night Elf",
       "baselineDPS": 643.0961448038933,
-      "finalDPS": 767.3523721002471,
-      "gainPercent": 19.321563082024795,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 770.5710288312252,
+      "gainPercent": 19.822056943943323
     },
     {
       "build": "shadow",
       "race": "Gnome",
       "baselineDPS": 642.8647176896418,
-      "finalDPS": 767.8644530615247,
-      "gainPercent": 19.444174167951388,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 771.0685253670588,
+      "gainPercent": 19.94257954273211
     },
     {
       "build": "smite",
       "race": "Troll",
       "baselineDPS": 468.352322896972,
-      "finalDPS": 594.4079440471262,
-      "gainPercent": 26.914699679600783,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 597.6711552998814,
+      "gainPercent": 27.6114425146893
     },
     {
       "build": "smite",
       "race": "Undead",
       "baselineDPS": 474.84947033442455,
-      "finalDPS": 597.767687201087,
-      "gainPercent": 25.88572264387159,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 601.2817935642023,
+      "gainPercent": 26.62576903386553
     },
     {
       "build": "smite",
       "race": "Human",
       "baselineDPS": 467.33258660214085,
-      "finalDPS": 592.9745252304365,
-      "gainPercent": 26.88490857053367,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 596.3407936400858,
+      "gainPercent": 27.605223931832292
     },
     {
       "build": "smite",
       "race": "Dwarf",
       "baselineDPS": 468.5233090372635,
-      "finalDPS": 592.2214089679612,
-      "gainPercent": 26.401696040454524,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 595.4946300673226,
+      "gainPercent": 27.100321068542744
     },
     {
       "build": "smite",
       "race": "Night Elf",
       "baselineDPS": 469.3973763970507,
-      "finalDPS": 595.5708328841496,
-      "gainPercent": 26.87988106272927,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 598.9842678979736,
+      "gainPercent": 27.60707622517873
     },
     {
       "build": "smite",
       "race": "Gnome",
       "baselineDPS": 473.3150828532966,
-      "finalDPS": 597.406591043005,
-      "gainPercent": 26.217526693137415,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 600.88892578143,
+      "gainPercent": 26.95325958325201
     },
     {
       "build": "combat",
       "race": "Orc",
       "baselineDPS": 506.52381626272455,
       "finalDPS": 606.8828968574617,
-      "gainPercent": 19.813299468367497,
-      "finalEnchantAdjustments": []
+      "gainPercent": 19.813299468367497
     },
     {
       "build": "combat",
       "race": "Troll",
       "baselineDPS": 508.084012636833,
       "finalDPS": 606.3592517446335,
-      "gainPercent": 19.342320691764314,
-      "finalEnchantAdjustments": []
+      "gainPercent": 19.342320691764314
     },
     {
       "build": "combat",
       "race": "Undead",
       "baselineDPS": 520.0814857805582,
       "finalDPS": 625.3037036143597,
-      "gainPercent": 20.231871487576612,
-      "finalEnchantAdjustments": []
+      "gainPercent": 20.231871487576612
     },
     {
       "build": "combat",
       "race": "Windshaper",
       "baselineDPS": 509.0355196937062,
       "finalDPS": 609.8287605377066,
-      "gainPercent": 19.80082665049565,
-      "finalEnchantAdjustments": []
+      "gainPercent": 19.80082665049565
     },
     {
       "build": "combat",
       "race": "Human",
       "baselineDPS": 511.6899145417081,
       "finalDPS": 611.013045117304,
-      "gainPercent": 19.410804816146143,
-      "finalEnchantAdjustments": []
+      "gainPercent": 19.410804816146143
     },
     {
       "build": "combat",
       "race": "Dwarf",
       "baselineDPS": 506.0097508699659,
       "finalDPS": 600.779523550793,
-      "gainPercent": 18.728843173059918,
-      "finalEnchantAdjustments": []
+      "gainPercent": 18.728843173059918
     },
     {
       "build": "combat",
       "race": "Night Elf",
       "baselineDPS": 509.28641101523283,
       "finalDPS": 608.7871381668114,
-      "gainPercent": 19.537282951105972,
-      "finalEnchantAdjustments": []
+      "gainPercent": 19.537282951105972
     },
     {
       "build": "combat",
       "race": "Gnome",
       "baselineDPS": 509.9992950748181,
       "finalDPS": 609.0585916562338,
-      "gainPercent": 19.423418333722097,
-      "finalEnchantAdjustments": []
+      "gainPercent": 19.423418333722097
     },
     {
       "build": "combat",
       "race": "High Order",
       "baselineDPS": 509.0355196937062,
       "finalDPS": 609.8287605377066,
-      "gainPercent": 19.80082665049565,
-      "finalEnchantAdjustments": []
+      "gainPercent": 19.80082665049565
     },
     {
       "build": "mutilate",
       "race": "Orc",
       "baselineDPS": 517.022737644828,
       "finalDPS": 608.7734481629109,
-      "gainPercent": 17.745972050674407,
-      "finalEnchantAdjustments": []
+      "gainPercent": 17.745972050674407
     },
     {
       "build": "mutilate",
       "race": "Troll",
       "baselineDPS": 517.925144720993,
       "finalDPS": 605.4203209774239,
-      "gainPercent": 16.893401903389858,
-      "finalEnchantAdjustments": []
+      "gainPercent": 16.893401903389858
     },
     {
       "build": "mutilate",
       "race": "Undead",
       "baselineDPS": 535.8985018314297,
       "finalDPS": 629.7270122722097,
-      "gainPercent": 17.508634586609517,
-      "finalEnchantAdjustments": []
+      "gainPercent": 17.508634586609517
     },
     {
       "build": "mutilate",
       "race": "Windshaper",
       "baselineDPS": 518.9201299991913,
       "finalDPS": 610.8577984992265,
-      "gainPercent": 17.71711351806269,
-      "finalEnchantAdjustments": []
+      "gainPercent": 17.71711351806269
     },
     {
       "build": "mutilate",
       "race": "Human",
       "baselineDPS": 514.1351317415348,
       "finalDPS": 604.675910672196,
-      "gainPercent": 17.61030774613117,
-      "finalEnchantAdjustments": []
+      "gainPercent": 17.61030774613117
     },
     {
       "build": "mutilate",
       "race": "Dwarf",
       "baselineDPS": 513.0078408677406,
       "finalDPS": 603.8160661893224,
-      "gainPercent": 17.701137894497275,
-      "finalEnchantAdjustments": []
+      "gainPercent": 17.701137894497275
     },
     {
       "build": "mutilate",
       "race": "Night Elf",
       "baselineDPS": 520.9451139551688,
       "finalDPS": 613.3815257015455,
-      "gainPercent": 17.743982863102815,
-      "finalEnchantAdjustments": []
+      "gainPercent": 17.743982863102815
     },
     {
       "build": "mutilate",
       "race": "Gnome",
       "baselineDPS": 523.8186561378557,
       "finalDPS": 616.6712937646524,
-      "gainPercent": 17.726103593064902,
-      "finalEnchantAdjustments": []
+      "gainPercent": 17.726103593064902
     },
     {
       "build": "mutilate",
       "race": "High Order",
       "baselineDPS": 518.9201299991913,
       "finalDPS": 610.8577984992265,
-      "gainPercent": 17.71711351806269,
-      "finalEnchantAdjustments": []
+      "gainPercent": 17.71711351806269
     },
     {
       "build": "subtlety",
       "race": "Orc",
       "baselineDPS": 449.12109535327505,
       "finalDPS": 548.7395909122976,
-      "gainPercent": 22.180765185537176,
-      "finalEnchantAdjustments": []
+      "gainPercent": 22.180765185537176
     },
     {
       "build": "subtlety",
       "race": "Troll",
       "baselineDPS": 444.5812113371149,
       "finalDPS": 542.0709069482732,
-      "gainPercent": 21.92843357413823,
-      "finalEnchantAdjustments": []
+      "gainPercent": 21.92843357413823
     },
     {
       "build": "subtlety",
       "race": "Undead",
       "baselineDPS": 463.09349864944676,
       "finalDPS": 572.2707120481793,
-      "gainPercent": 23.575630778046765,
-      "finalEnchantAdjustments": []
+      "gainPercent": 23.575630778046765
     },
     {
       "build": "subtlety",
       "race": "Windshaper",
       "baselineDPS": 444.867394815444,
       "finalDPS": 540.2877246204054,
-      "gainPercent": 21.449162360965346,
-      "finalEnchantAdjustments": []
+      "gainPercent": 21.449162360965346
     },
     {
       "build": "subtlety",
       "race": "Human",
       "baselineDPS": 453.8203940996197,
       "finalDPS": 554.3529112325336,
-      "gainPercent": 22.152489936546505,
-      "finalEnchantAdjustments": []
+      "gainPercent": 22.152489936546505
     },
     {
       "build": "subtlety",
       "race": "Dwarf",
       "baselineDPS": 448.7785232589473,
       "finalDPS": 542.7541675492629,
-      "gainPercent": 20.940316753101662,
-      "finalEnchantAdjustments": []
+      "gainPercent": 20.940316753101662
     },
     {
       "build": "subtlety",
       "race": "Night Elf",
       "baselineDPS": 451.5163744149849,
       "finalDPS": 551.6123666264969,
-      "gainPercent": 22.168850983799437,
-      "finalEnchantAdjustments": []
+      "gainPercent": 22.168850983799437
     },
     {
       "build": "subtlety",
       "race": "Gnome",
       "baselineDPS": 450.70663954592476,
       "finalDPS": 546.9619029401856,
-      "gainPercent": 21.356522169550352,
-      "finalEnchantAdjustments": []
+      "gainPercent": 21.356522169550352
     },
     {
       "build": "subtlety",
       "race": "High Order",
       "baselineDPS": 444.867394815444,
       "finalDPS": 540.2877246204054,
-      "gainPercent": 21.449162360965346,
-      "finalEnchantAdjustments": []
+      "gainPercent": 21.449162360965346
     },
     {
       "build": "demonology",
       "race": "Orc",
       "baselineDPS": 634.9169705470237,
-      "finalDPS": 805.2821837441572,
-      "gainPercent": 26.83267594034422,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 809.373397415231,
+      "gainPercent": 27.477045812447166
     },
     {
       "build": "demonology",
       "race": "Troll",
       "baselineDPS": 631.1120163123687,
-      "finalDPS": 797.5623183368135,
-      "gainPercent": 26.374129745940422,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 801.4772398857909,
+      "gainPercent": 26.994450932637616
     },
     {
       "build": "demonology",
       "race": "Undead",
       "baselineDPS": 639.2686429309903,
-      "finalDPS": 807.6844137627987,
-      "gainPercent": 26.345069900447026,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 811.4805051939932,
+      "gainPercent": 26.938887769221196
     },
     {
       "build": "demonology",
       "race": "Human",
       "baselineDPS": 641.2226438116573,
-      "finalDPS": 797.0020314399576,
-      "gainPercent": 24.29411829599337,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 801.3623671632922,
+      "gainPercent": 24.97412168723596
     },
     {
       "build": "demonology",
       "race": "Gnome",
       "baselineDPS": 640.867600709909,
-      "finalDPS": 810.3711483245793,
-      "gainPercent": 26.449074259161478,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 813.3128760298133,
+      "gainPercent": 26.908096949959926
     },
     {
       "build": "affliction",
       "race": "Orc",
       "baselineDPS": 623.1168687921895,
-      "finalDPS": 797.3365069554516,
-      "gainPercent": 27.959384007844058,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 802.1983179675141,
+      "gainPercent": 28.739624642556173
     },
     {
       "build": "affliction",
       "race": "Troll",
       "baselineDPS": 619.4495306960118,
-      "finalDPS": 790.9124912546401,
-      "gainPercent": 27.679891914030996,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 796.2928310316787,
+      "gainPercent": 28.548459813500248
     },
     {
       "build": "affliction",
       "race": "Undead",
       "baselineDPS": 626.3385117454416,
-      "finalDPS": 798.3283791437725,
-      "gainPercent": 27.45957085075932,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 803.3110846931924,
+      "gainPercent": 28.25510001845082
     },
     {
       "build": "affliction",
       "race": "Human",
       "baselineDPS": 629.5771867433041,
-      "finalDPS": 788.6981496989426,
-      "gainPercent": 25.274258074493506,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 793.9152800688423,
+      "gainPercent": 26.102930154701333
     },
     {
       "build": "affliction",
       "race": "Gnome",
       "baselineDPS": 628.3312353340011,
-      "finalDPS": 802.0268245291178,
-      "gainPercent": 27.64395265226398,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 807.0820392054915,
+      "gainPercent": 28.448498788457034
     },
     {
       "build": "ds_ruin",
       "race": "Orc",
       "baselineDPS": 570.1347076025114,
-      "finalDPS": 757.0179254522496,
-      "gainPercent": 32.778782866176634,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 762.5819056365287,
+      "gainPercent": 33.75468910554176
     },
     {
       "build": "ds_ruin",
       "race": "Troll",
       "baselineDPS": 566.473594274594,
-      "finalDPS": 751.2080729527308,
-      "gainPercent": 32.61131331544258,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 756.0904690367464,
+      "gainPercent": 33.47320628509949
     },
     {
       "build": "ds_ruin",
       "race": "Undead",
       "baselineDPS": 575.4779967864214,
-      "finalDPS": 760.5666400562138,
-      "gainPercent": 32.162592541046344,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 764.9995040460491,
+      "gainPercent": 32.93288506562402
     },
     {
       "build": "ds_ruin",
       "race": "Human",
       "baselineDPS": 576.8171975167631,
-      "finalDPS": 748.1737312477294,
-      "gainPercent": 29.70725118263944,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 753.4144144585549,
+      "gainPercent": 30.615803013858578
     },
     {
       "build": "ds_ruin",
       "race": "Gnome",
       "baselineDPS": 575.2134422394074,
-      "finalDPS": 762.0782835165212,
-      "gainPercent": 32.48617427117419,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 767.1705430368169,
+      "gainPercent": 33.37145600250344
     },
     {
       "build": "destruction",
       "race": "Orc",
       "baselineDPS": 645.4164446501993,
-      "finalDPS": 779.9232262360193,
-      "gainPercent": 20.84030902849394,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 784.7450635496474,
+      "gainPercent": 21.5873983463438
     },
     {
       "build": "destruction",
       "race": "Troll",
       "baselineDPS": 639.1937727299254,
-      "finalDPS": 778.0234196055343,
-      "gainPercent": 21.71949302363865,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 782.7263073633669,
+      "gainPercent": 22.45524608608591
     },
     {
       "build": "destruction",
       "race": "Undead",
       "baselineDPS": 650.9094500557042,
-      "finalDPS": 789.6749891012896,
-      "gainPercent": 21.31871630281448,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 794.1918573245564,
+      "gainPercent": 22.012648188867168
     },
     {
       "build": "destruction",
       "race": "Human",
       "baselineDPS": 640.2734273909856,
-      "finalDPS": 777.5991172121177,
-      "gainPercent": 21.44797580944642,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 782.3072314149565,
+      "gainPercent": 22.183304498944544
     },
     {
       "build": "destruction",
       "race": "Gnome",
       "baselineDPS": 646.2657900021965,
-      "finalDPS": 786.6531159617658,
-      "gainPercent": 21.722846564273834,
-      "finalEnchantAdjustments": [
-        {
-          "slot": 5,
-          "before": 2566,
-          "after": 1883
-        }
-      ]
+      "finalDPS": 790.3630783908842,
+      "gainPercent": 22.296907962310364
     },
     {
       "build": "fury",
       "race": "Orc",
       "baselineDPS": 799.6557790273137,
       "finalDPS": 951.3731265156337,
-      "gainPercent": 18.972831994394657,
-      "finalEnchantAdjustments": []
+      "gainPercent": 18.972831994394657
     },
     {
       "build": "fury",
       "race": "Tauren",
       "baselineDPS": 797.4098290542481,
       "finalDPS": 933.6482735713251,
-      "gainPercent": 17.085122298863542,
-      "finalEnchantAdjustments": []
+      "gainPercent": 17.085122298863542
     },
     {
       "build": "fury",
       "race": "Troll",
       "baselineDPS": 796.6369499183434,
       "finalDPS": 935.2579736348988,
-      "gainPercent": 17.400777572615024,
-      "finalEnchantAdjustments": []
+      "gainPercent": 17.400777572615024
     },
     {
       "build": "fury",
       "race": "Undead",
       "baselineDPS": 810.4884609217149,
       "finalDPS": 953.8246184118057,
-      "gainPercent": 17.685157087503,
-      "finalEnchantAdjustments": []
+      "gainPercent": 17.685157087503
     },
     {
       "build": "fury",
       "race": "Windshaper",
       "baselineDPS": 795.4550663385634,
       "finalDPS": 932.6773113707995,
-      "gainPercent": 17.2507852220821,
-      "finalEnchantAdjustments": []
+      "gainPercent": 17.2507852220821
     },
     {
       "build": "fury",
       "race": "Human",
       "baselineDPS": 807.3100053585821,
       "finalDPS": 946.1297069151178,
-      "gainPercent": 17.195340158688644,
-      "finalEnchantAdjustments": []
+      "gainPercent": 17.195340158688644
     },
     {
       "build": "fury",
       "race": "Dwarf",
       "baselineDPS": 797.1360161810538,
       "finalDPS": 934.1463261971483,
-      "gainPercent": 17.18782080283965,
-      "finalEnchantAdjustments": []
+      "gainPercent": 17.18782080283965
     },
     {
       "build": "fury",
       "race": "Night Elf",
       "baselineDPS": 795.0649900531072,
       "finalDPS": 932.1045737709973,
-      "gainPercent": 17.236274447040657,
-      "finalEnchantAdjustments": []
+      "gainPercent": 17.236274447040657
     },
     {
       "build": "fury",
       "race": "Gnome",
       "baselineDPS": 789.5042883476777,
       "finalDPS": 923.7947168092321,
-      "gainPercent": 17.00946156259715,
-      "finalEnchantAdjustments": []
+      "gainPercent": 17.00946156259715
     },
     {
       "build": "fury",
       "race": "High Order",
       "baselineDPS": 795.4550663385634,
       "finalDPS": 932.6773113707995,
-      "gainPercent": 17.2507852220821,
-      "finalEnchantAdjustments": []
+      "gainPercent": 17.2507852220821
     },
     {
       "build": "arms",
       "race": "Orc",
       "baselineDPS": 654.0492172892202,
       "finalDPS": 777.3843881204868,
-      "gainPercent": 18.857169700843457,
-      "finalEnchantAdjustments": []
+      "gainPercent": 18.857169700843457
     },
     {
       "build": "arms",
       "race": "Tauren",
       "baselineDPS": 652.7085009268051,
       "finalDPS": 775.2399937618859,
-      "gainPercent": 18.7727741650513,
-      "finalEnchantAdjustments": []
+      "gainPercent": 18.7727741650513
     },
     {
       "build": "arms",
       "race": "Troll",
       "baselineDPS": 650.5556626608412,
       "finalDPS": 771.8726705421075,
-      "gainPercent": 18.64821334197091,
-      "finalEnchantAdjustments": []
+      "gainPercent": 18.64821334197091
     },
     {
       "build": "arms",
       "race": "Undead",
       "baselineDPS": 663.2564785102053,
       "finalDPS": 780.0163632975296,
-      "gainPercent": 17.604032311842353,
-      "finalEnchantAdjustments": []
+      "gainPercent": 17.604032311842353
     },
     {
       "build": "arms",
       "race": "Windshaper",
       "baselineDPS": 650.5855814318583,
       "finalDPS": 773.307969625126,
-      "gainPercent": 18.863373504708015,
-      "finalEnchantAdjustments": []
+      "gainPercent": 18.863373504708015
     },
     {
       "build": "arms",
       "race": "Human",
       "baselineDPS": 646.5737045790706,
       "finalDPS": 781.0588878977552,
-      "gainPercent": 20.799667905801478,
-      "finalEnchantAdjustments": []
+      "gainPercent": 20.799667905801478
     },
     {
       "build": "arms",
       "race": "Dwarf",
       "baselineDPS": 646.964720149247,
       "finalDPS": 770.6195861793425,
-      "gainPercent": 19.11307713990491,
-      "finalEnchantAdjustments": []
+      "gainPercent": 19.11307713990491
     },
     {
       "build": "arms",
       "race": "Night Elf",
       "baselineDPS": 651.4233059072296,
       "finalDPS": 775.4418058742154,
-      "gainPercent": 19.038081512031056,
-      "finalEnchantAdjustments": []
+      "gainPercent": 19.038081512031056
     },
     {
       "build": "arms",
       "race": "Gnome",
       "baselineDPS": 648.9085685462693,
       "finalDPS": 772.0942893174237,
-      "gainPercent": 18.983525066886344,
-      "finalEnchantAdjustments": []
+      "gainPercent": 18.983525066886344
     },
     {
       "build": "arms",
       "race": "High Order",
       "baselineDPS": 650.5855814318583,
       "finalDPS": 773.307969625126,
-      "gainPercent": 18.863373504708015,
-      "finalEnchantAdjustments": []
+      "gainPercent": 18.863373504708015
     }
   ]
 }
