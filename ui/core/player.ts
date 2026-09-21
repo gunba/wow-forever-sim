@@ -626,7 +626,15 @@ export class Player<SpecType extends Spec> {
 		return this.gear;
 	}
 
+	validateWeaponGear(newGear: Gear | ItemSwapGear) {
+		const offHand = newGear.getEquippedItem(ItemSlot.ItemSlotOffHand)?.item;
+		if (offHand && !canEquipItem(this, offHand, ItemSlot.ItemSlotOffHand)) {
+			throw new Error(`Cannot equip ${offHand.name} in the off hand for this class.`);
+		}
+	}
+
 	setGear(eventID: EventID, newGear: Gear) {
+		this.validateWeaponGear(newGear);
 		if (newGear.equals(this.gear)) return;
 
 		this.gear = newGear;
@@ -657,6 +665,7 @@ export class Player<SpecType extends Spec> {
 	}
 
 	setItemSwapGear(eventID: EventID, newItemSwapGear: ItemSwapGear) {
+		this.validateWeaponGear(newItemSwapGear);
 		if (newItemSwapGear.equals(this.itemSwapGear)) return;
 
 		this.itemSwapGear = newItemSwapGear;

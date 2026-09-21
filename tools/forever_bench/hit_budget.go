@@ -117,13 +117,15 @@ func hitRequirements(b build, p *proto.Player, character *core.Character, target
 	}
 	autos := map[*core.Spell]bool{}
 	if !casterBuild(b) {
-		if unit.AutoAttacks.AutoSwingMelee {
+		// The benchmark has a fixed position. A ranged hunter's unused melee
+		// weapon must not cancel the benefit of a ranged-only scope.
+		if unit.AutoAttacks.AutoSwingMelee && unit.DistanceFromTarget <= core.MaxMeleeAttackDistance {
 			autos[unit.AutoAttacks.MHAuto()] = true
 			if unit.AutoAttacks.IsDualWielding {
 				autos[unit.AutoAttacks.OHAuto()] = true
 			}
 		}
-		if unit.AutoAttacks.AutoSwingRanged {
+		if unit.AutoAttacks.AutoSwingRanged && unit.DistanceFromTarget >= core.MinRangedAttackDistance {
 			autos[unit.AutoAttacks.RangedAuto()] = true
 		}
 	}

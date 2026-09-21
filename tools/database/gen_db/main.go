@@ -184,11 +184,19 @@ func main() {
 	ApplySimmableFilters(db)
 	mergeForeverVendorItems(db, fmt.Sprintf("%s/forever_vendor_items.json", inputsDir))
 	for _, enchant := range db.Enchants {
-		if enchant.ItemId != 0 {
+		if enchant.ItemId != 0 && enchant.Icon == "" {
 			db.AddItemIcon(enchant.ItemId, itemTooltips)
 		}
-		if enchant.SpellId != 0 {
+		if enchant.SpellId != 0 && enchant.Icon == "" {
 			db.AddSpellIcon(enchant.SpellId, spellTooltips)
+		}
+		if enchant.Icon != "" {
+			if enchant.ItemId != 0 {
+				db.ItemIcons[enchant.ItemId] = &proto.IconData{Id: enchant.ItemId, Name: enchant.Name, Icon: enchant.Icon}
+			}
+			if enchant.SpellId != 0 {
+				db.SpellIcons[enchant.SpellId] = &proto.IconData{Id: enchant.SpellId, Name: enchant.Name, Icon: enchant.Icon}
+			}
 		}
 	}
 
@@ -246,6 +254,10 @@ func main() {
 	replaceForeverEquipment(db,
 		fmt.Sprintf("%s/forever_equipment.json", inputsDir),
 		fmt.Sprintf("%s/forever_vendor_items.json", inputsDir))
+	foreverIcons := database.ReadDatabaseFromJson(tools.ReadFile(fmt.Sprintf("%s/forever_spell_icons.json", inputsDir)))
+	for id, icon := range foreverIcons.SpellIcons {
+		db.SpellIcons[id] = icon
+	}
 	db.WriteBinaryAndJson(fmt.Sprintf("%s/db.bin", dbDir), fmt.Sprintf("%s/db.json", dbDir))
 }
 

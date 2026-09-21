@@ -1,20 +1,7 @@
 import { Spec } from './proto/common.js';
+import { getRankedProfiles } from './ranked_profiles';
 
-// The community talent builds that the landing page lists under each spec, in the order
-// it lists them. A name here is the name of one of that spec's talent presets: the
-// ?build= link looks the preset up by name when the sim loads, so the two have to agree
-// exactly.
-//
-// The list is written out here rather than read from each ui/<spec>/presets.ts because
-// ui/core cannot import those. Every page bundles ui/core, so importing the presets of
-// every spec would pull every sim's gear sets and rotations into every page. It could
-// not be derived from them anyway: a spec's talent presets also hold its defaults and
-// its per-phase builds, and which of them are community builds is a choice, not
-// something written down in presets.ts.
-//
-// TestSimTitleDropdownBuildsMatchLandingPage in sim/talents_test.go fails if this and
-// ui/index.html ever come to disagree, and checks that every name here is a preset the
-// spec actually has.
+// Fallback menu for pages without published ranking profiles.
 export const communityBuilds: Record<Spec, string[]> = {
 	[Spec.SpecBalanceDruid]: ['Moonkin 38/0/13'],
 	[Spec.SpecFeralDruid]: ['Feral Cat 9/35/7'],
@@ -38,5 +25,7 @@ export const communityBuilds: Record<Spec, string[]> = {
 };
 
 export function getCommunityBuilds(spec: Spec): string[] {
+	const ranked = getRankedProfiles(spec);
+	if (ranked.length) return [...new Set(ranked.map(profile => profile.build))];
 	return communityBuilds[spec] || [];
 }

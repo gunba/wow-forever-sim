@@ -19,6 +19,13 @@ var EnchantOverrides = []*proto.UIEnchant{
 	// Drops in MC
 	{EffectId: 2503, ItemId: 18251, SpellId: 22725, Name: "Core Armor Kit", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.Defense: 3}.ToFloatArray(), Type: proto.ItemType_ItemTypeChest, ExtraTypes: []proto.ItemType{proto.ItemType_ItemTypeLegs, proto.ItemType_ItemTypeHands, proto.ItemType_ItemTypeFeet}, EnchantType: proto.EnchantType_EnchantTypeKit},
 
+	// Argent Dawn: SpellItemEnchantment 2488 -> spell 18676, +5 resistances.
+	{EffectId: 2488, ItemId: 18173, SpellId: 22599, Name: "Chromatic Mantle of the Dawn", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.ArcaneResistance: 5, stats.FireResistance: 5, stats.FrostResistance: 5, stats.NatureResistance: 5, stats.ShadowResistance: 5}.ToFloatArray(), Type: proto.ItemType_ItemTypeShoulder},
+
+	// Forever client 69893: item use spells 1306907 / 1307050 apply 8719 / 8720.
+	{EffectId: 8719, ItemId: 279258, SpellId: 1306907, Name: "Wild Leather Armor Kit", Icon: "inv_10_inscription_runedwrithebark_color1", Quality: proto.ItemQuality_ItemQualityEpic, Stats: stats.Stats{stats.Defense: 4, stats.Stamina: 10}.ToFloatArray(), Type: proto.ItemType_ItemTypeChest, ExtraTypes: []proto.ItemType{proto.ItemType_ItemTypeLegs, proto.ItemType_ItemTypeHands, proto.ItemType_ItemTypeFeet}, EnchantType: proto.EnchantType_EnchantTypeKit},
+	{EffectId: 8720, ItemId: 279272, SpellId: 1307050, Name: "SAF-T Ultra Precision Scope", Icon: "inv_engineering_90_scope_blue", Quality: proto.ItemQuality_ItemQualityEpic, Type: proto.ItemType_ItemTypeRanged},
+
 	// Arcanums
 	// Lvl 50 Burning Steppes Quest
 	{EffectId: 1503, ItemId: 11642, SpellId: 15389, Name: "Lesser Arcanum of Constitution", Quality: proto.ItemQuality_ItemQualityUncommon, Stats: stats.Stats{stats.Health: 100}.ToFloatArray(), Type: proto.ItemType_ItemTypeHead, ExtraTypes: []proto.ItemType{proto.ItemType_ItemTypeLegs}, EnchantType: proto.EnchantType_EnchantTypeKit},
@@ -35,7 +42,7 @@ var EnchantOverrides = []*proto.UIEnchant{
 	// Drop in Dire Maul
 	{EffectId: 2544, ItemId: 18330, SpellId: 22844, Name: "Arcanum of Focus", Quality: proto.ItemQuality_ItemQualityUncommon, Stats: stats.Stats{stats.SpellPower: 8}.ToFloatArray(), Type: proto.ItemType_ItemTypeHead, ExtraTypes: []proto.ItemType{proto.ItemType_ItemTypeLegs}, EnchantType: proto.EnchantType_EnchantTypeKit, Phase: 2},
 	{EffectId: 2545, ItemId: 18331, SpellId: 22846, Name: "Arcanum of Protection", Quality: proto.ItemQuality_ItemQualityUncommon, Stats: stats.Stats{stats.Dodge: 1}.ToFloatArray(), Type: proto.ItemType_ItemTypeHead, ExtraTypes: []proto.ItemType{proto.ItemType_ItemTypeLegs}, EnchantType: proto.EnchantType_EnchantTypeKit, Phase: 2},
-	{EffectId: 2543, ItemId: 18329, SpellId: 22840, Name: "Arcanum of Rapidity", Quality: proto.ItemQuality_ItemQualityUncommon, Stats: stats.Stats{stats.MeleeHaste: 1}.ToFloatArray(), Type: proto.ItemType_ItemTypeHead, ExtraTypes: []proto.ItemType{proto.ItemType_ItemTypeLegs}, EnchantType: proto.EnchantType_EnchantTypeKit},
+	{EffectId: 2543, ItemId: 18329, SpellId: 22840, Name: "Arcanum of Rapidity", Quality: proto.ItemQuality_ItemQualityUncommon, Stats: stats.Stats{}.ToFloatArray(), Type: proto.ItemType_ItemTypeHead, ExtraTypes: []proto.ItemType{proto.ItemType_ItemTypeLegs}, EnchantType: proto.EnchantType_EnchantTypeKit},
 
 	// ZG Enchants
 	{EffectId: 2681, ItemId: 22635, SpellId: 28161, Name: "Savage Guard", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.NatureResistance: 10}.ToFloatArray(), Type: proto.ItemType_ItemTypeHead, ExtraTypes: []proto.ItemType{proto.ItemType_ItemTypeLegs}, EnchantType: proto.EnchantType_EnchantTypeKit, Phase: 4},
@@ -201,7 +208,7 @@ var EnchantOverrides = []*proto.UIEnchant{
 	{EffectId: 1897, SpellId: 20031, Name: "Enchant Weapon - Superior Striking", Quality: proto.ItemQuality_ItemQualityUncommon, Stats: stats.Stats{}.ToFloatArray(), Type: proto.ItemType_ItemTypeWeapon},
 
 	// 2H Weapon
-	{EffectId: 34, SpellId: 7218, Name: "Iron Counterweight", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{stats.MeleeHaste: 3}.ToFloatArray(), Type: proto.ItemType_ItemTypeWeapon, EnchantType: proto.EnchantType_EnchantTypeTwoHand},
+	{EffectId: 34, SpellId: 7218, Name: "Iron Counterweight", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{}.ToFloatArray(), Type: proto.ItemType_ItemTypeWeapon, EnchantType: proto.EnchantType_EnchantTypeTwoHand},
 	{EffectId: 723, SpellId: 7793, Name: "Enchant 2H Weapon - Lesser Intellect", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{stats.Intellect: 3}.ToFloatArray(), Type: proto.ItemType_ItemTypeWeapon, EnchantType: proto.EnchantType_EnchantTypeTwoHand},
 	{EffectId: 241, SpellId: 7745, Name: "Enchant 2H Weapon - Minor Impact", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{}.ToFloatArray(), Type: proto.ItemType_ItemTypeWeapon, EnchantType: proto.EnchantType_EnchantTypeTwoHand},
 	{EffectId: 255, SpellId: 13380, Name: "Enchant 2H Weapon - Lesser Spirit", Quality: proto.ItemQuality_ItemQualityUncommon, Stats: stats.Stats{stats.Spirit: 3}.ToFloatArray(), Type: proto.ItemType_ItemTypeWeapon, EnchantType: proto.EnchantType_EnchantTypeTwoHand},

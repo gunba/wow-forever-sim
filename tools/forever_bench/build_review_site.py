@@ -29,9 +29,24 @@ def main():
     args = parser.parse_args()
     data = json.loads(args.results.read_text())
     rows = data["Results"]
+    unenchanted = all(
+        not any(item.get("enchant") for item in row["BaselinePlayer"]["equipment"]["items"])
+        for row in rows
+    )
     columns = load_columns(args.sensitivity, args.results)
     lookup = {(r["Key"], r["Race"]): r for r in rows}
-    builds = sorted(BUILDS, key=lambda b: max(r["DPS"] for r in rows if r["Key"] == b[0]), reverse=True)
+    items = {item["id"]: item for item in json.loads(Path("assets/database/db.json").read_text())["items"]}
+    invalid = set()
+    for row in rows:
+        if row["Key"] not in {"enhancement", "elemental", "stormcaller"}:
+            continue
+        off_hand = row["BaselinePlayer"]["equipment"]["items"][15].get("id", 0)
+        if items.get(off_hand, {}).get("weaponType") in {1, 2, 3, 4, 6, 8, 9}:
+            invalid.add((row["Key"], row["Race"]))
+    builds = sorted(BUILDS, key=lambda b: max(
+        (r["DPS"] for r in rows if r["Key"] == b[0] and (r["Key"], r["Race"]) not in invalid),
+        default=-1,
+    ), reverse=True)
     args.output.mkdir(parents=True, exist_ok=True)
     shutil.copytree(args.profiles, args.output / "profiles", dirs_exist_ok=True)
     shutil.copytree("assets/img/spec_icons", args.output / "icons", dirs_exist_ok=True)
@@ -41,7 +56,7 @@ def main():
     shutil.copytree(args.sensitivity.parent / "sensitivity", args.output / "sensitivity", dirs_exist_ok=True)
     for extension in ("json", "csv", "svg", "png"):
         shutil.copyfile(args.results.with_suffix("." + extension), args.output / ("results." + extension))
-    for name in ("build_reviews.md", "in_game_checks.md", "energy_audit.md", "auto_attack_audit.md"):
+    for name in ("build_reviews.md", "in_game_checks.md", "energy_audit.md", "auto_attack_audit.md", "forever_gear_data.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
     body = []
     for key, class_name, label, icon in builds:
@@ -49,6 +64,9 @@ def main():
         cells = []
         for race in RACES:
             row = lookup.get((key, race))
+            if (key, race) in invalid:
+                cells.append('<td title="Illegal dual-wield Shaman layout">Invalid</td>')
+                continue
             if row is None:
                 cells.append('<td class="unavailable" aria-label="Unavailable">—</td>')
                 continue
@@ -57,15 +75,20 @@ def main():
             if not (args.profiles / filename).exists():
                 raise ValueError(f"Missing replay profile: {filename}")
             title = f"Mean {row['DPS']:.2f} DPS; SE {row['StandardError']:.2f}; mana-limited {row['OOMSeconds']:.2f}s"
-            cells.append(f'<td><a download href="profiles/{filename}" title="{escape(title)}">{row["DPS"]:.0f}</a></td>')
+            if row.get("UnmodeledSetBonuses"):
+                title += f'; {len(row["UnmodeledSetBonuses"])} equipped-set effects omitted'
+            cells.append(f'<td><a href="../{simulator}/?profile={key}__{race_file}" title="{escape(title)}">{row["DPS"]:.0f}</a></td>')
         for metric, *_ in SCENARIOS:
+            if any(k == key for k, _ in invalid):
+                cells.append('<td class="unavailable">—</td>')
+                continue
             value = columns[key][metric]
             title = (f'Equal-weight mean over {value["Races"]} races; conservative 95% Monte Carlo bound '
                      f'±{value["MonteCarlo95Bound"]:.2f} percentage points. Fixed talents and rotation.')
             cells.append(f'<td class="gain" title="{escape(title)}">{value["GainPercent"]:+.1f}%</td>')
         body.append(
             f'<tr><th scope="row" style="color:{CLASS_COLORS[class_name]}">'
-            f'<a href="../{simulator}/"><img src="icons/{icon}.jpg" alt="">'
+            f'<a href="../{simulator}/?build={key}"><img src="icons/{icon}.jpg" alt="">'
             f'{escape(class_name)}<br><span>{escape(label)}</span></a></th>{"".join(cells)}</tr>'
         )
     factions = {r["Race"]: r["Faction"] for r in rows}
@@ -96,21 +119,29 @@ th span{font-weight:400}.unavailable{color:#68707e}td a{color:inherit}
 </style><main>
 <h1>Forever DPS benchmark</h1>
 <p>Level 60 · five-minute single target · 5,000 iterations per race/build · full role-specific Tier 1 bonuses.</p>
-<p>Rows are ordered by each build’s highest mean DPS. Click a DPS cell to download its replay profile;
-open the simulator through the build name, then use <strong>Import → JSON</strong>.</p>
-<p class="note">Crafted/dungeon gear; no world buffs. Hit is normalized through a paid benchmark budget,
+<!-- equipment-status -->
+<!-- invalid-results -->
+<p>Rows are ordered by each build’s highest mean DPS. Click a DPS cell to open that exact setup.
+The simulator’s <strong>Ranked builds</strong> selector also loads complete race/build profiles.</p>
+<p class="note">Equipment is recorded in each profile; no world or campfire buffs. Hit is normalized through a paid benchmark budget,
 not an obtainable reforging system. Imported bonus stats contain that fixed adjustment:
 changing gear, talents or race requires recalculation for a fair comparison.
 Energy scaling with general haste is a model assumption. These are tested builds, not proven global optima.</p>
 <nav class="links"><a href="results.png">Chart PNG</a><a href="results.svg">Chart SVG</a>
 <a href="results.csv" download>CSV</a><a href="results.json" download>Raw requests/results</a>
+<a href="profiles/index.json">Replay profile index</a>
 <a href="sensitivity.json" download>Gain calculations</a>
 <a href="sensitivity/tier1_off.json" download>Tier 1 off</a>
 <a href="sensitivity/gear_110.json" download>Gear +10% run</a>
 <a href="sensitivity/gear_120.json" download>Gear +20% run</a>
 <a href="build_reviews.md">Build reviews</a><a href="in_game_checks.md">In-game checks</a>
+<a href="forever_gear_data.md">Equipment sources and gaps</a>
 <a href="energy_audit.md">Energy model</a><a href="auto_attack_audit.md">Auto-attack model</a></nav>
 <p class="note">Hover a result for its standard error and mana-limited time. A dash means that race/class combination is unavailable.</p>
+<p class="note">Equipment was selected by slot-by-slot DPS comparisons from the complete 706-item list and verified catalog supplements.
+Lower-level items remain when stronger or needed for a coverage gap; the known level-65 Undermine trinkets share a one-item limit.
+Unverified acquisition sources and unsupported item effects are excluded.
+<a href="https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/gear_search/summary.json">Search evidence</a>.</p>
 <p class="note">Gain columns average each available race’s percentage DPS change with equal weights.
 Tier 1 gain compares bonuses on versus off, using the same build.
 Gear columns increase item/suffix stats and weapon damage together; enchants, weapon speed/skill,
@@ -125,6 +156,21 @@ Cat weapon-DPS scaling remains an open mechanic. Hover gain cells for Monte Carl
 <a href="https://github.com/gunba/wow-forever-sim">Source and issues</a>.
 Game icons via Wowhead.</p></footer></main></html>
 """
+    if unenchanted:
+        document = document.replace(
+            "<!-- equipment-status -->",
+            '<p style="border-left:4px solid #e3b65f;padding:.5rem 1rem;background:#373022">'
+            '<strong>Starting equipment:</strong> these runs use unenchanted seed loadouts. '
+            'They are not an optimized-gear comparison.</p>',
+        )
+    if invalid:
+        document = document.replace(
+            "<!-- invalid-results -->",
+            '<p style="border-left:4px solid #e36565;padding:.5rem 1rem;background:#402529">'
+            '<strong>Invalid Shaman results:</strong> the historical dual-wield entries are hidden. '
+            'Shamans cannot dual wield. Downloadable raw data and chart images still contain those '
+            'superseded runs; they are not a current ranking.</p>',
+        )
     (args.output / "index.html").write_text(document)
     print(f"Review site staged at {args.output}")
 

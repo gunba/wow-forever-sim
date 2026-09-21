@@ -2,9 +2,27 @@
 
 Client data establishes many values but not every server-side interaction.
 These are the checks most likely to change simulated damage or the preferred
-rotation. No in-game results have been supplied yet.
+rotation. The open checks below still need measurements.
 
 ## Available early
+
+### T20 — PvP vendor stock and level-65 class armor
+
+**Priority:** high · **Access:** vendor access on either faction; Alliance stock especially needed · **Status:** open
+
+Inspect the weapon, armor and accessory quartermasters and export their item
+IDs, costs and tooltips. Buying level-60 equipment is not necessary.
+Compare the Premier items with the Horde exports, especially weapon damage.
+Check the level-65 class sets as well: for example Premier Champion's Magus
+Handguards (272505), Premier Champion's Felweave Gloves (272556), and Premier
+Lieutenant Commander's Silk Gloves (272749). Their current database entries
+have no acquisition source, unlike the lower-level Premier items already
+captured from vendors. Record the NPC and item ID rather than matching names.
+
+**Resolves:** the item catalog has unrestricted client race masks and tooltips
+that name both Grand Marshal and High Warlord, but the captured merchant stock
+is from Horde vendors. Equip legality does not itself establish Alliance
+acquisition or prove that faction counterparts have identical server stats.
 
 ### T15 — Energy recovery and haste
 
@@ -29,6 +47,13 @@ particular haste effects increase regeneration. The simulator now approximates
 smooth recovery with 100-ms updates and assumes general haste increases Energy
 recovery. Attack-speed-only effects are excluded from that assumption.
 The client table confirms the base rate, not either server-side interaction.
+
+An **Iron Counterweight** on a two-handed weapon is a useful equipment check
+if one can be crafted at the available profession cap. Compare melee speed,
+ranged speed (Hunter), and Energy recovery (Cat). Client spell 7217 specifies
+melee attack speed, not ranged speed or general haste. The model now reflects
+that distinction. Arcanum of Rapidity needs later access; its client effect
+adds melee and ranged speed, but not casting speed.
 
 ### T16 — Energy costs and failed-attack refunds
 
@@ -207,6 +232,7 @@ comparisons can distinguish several competing formulas.
 | T11 | Tier 1 Insect Swarm's final second: partial tick, delayed tick, or aura tail | Balance refresh timing | Actual Tier 1 bonus |
 | T14 | Summon Hawk guardian attacks, two-hawk coexistence and scaling | Beast Mastery damage and talent value; the engine approximates one guardian with periodic damage | Summon Hawk, normally level 25 or later |
 | T19 | Penance bolt timing and haste | The engine spreads three ticks over two seconds, using Forever's periodic critical-hit rules; do not rely on partial-channel optimizations until this is checked | Penance, normally level 30 or later |
+| T21 | Maelstrom Weapon proc rate and Totem of the Storm | Count procs per landed melee attack with two weapon speeds, then per Lightning Bolt cast while out of melee range with item 272432. Its tooltip specifies half the ordinary chance, but does not define a spell conversion from PPM. | Maelstrom Weapon talent; level 60 for the totem |
 
 ## Result record
 

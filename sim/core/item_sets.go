@@ -86,10 +86,17 @@ type ActiveSetBonus struct {
 // Returns a list describing all active set bonuses.
 func (character *Character) GetActiveSetBonuses() []ActiveSetBonus {
 	var activeBonuses []ActiveSetBonus
+	forever := character.Env != nil && character.Env.IsForever()
+	if forever {
+		activeBonuses = character.foreverEquippedBonuses()
+	}
 
 	setItemCount := make(map[*ItemSet]int32)
 	for _, item := range character.Equipment {
 		if item.SetName == "" {
+			continue
+		}
+		if forever && overridesForeverEquipmentSet(item.SetID) {
 			continue
 		}
 

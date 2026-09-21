@@ -42,6 +42,9 @@ func (character *Character) enableItemSwap(itemSwap *proto.ItemSwap) {
 		toItem(itemSwap.OhItem),
 		toItem(itemSwap.RangedItem),
 	}
+	if err := ValidateWeaponLayout(character.Class, swapItems[0], swapItems[1]); err != nil {
+		panic(err)
+	}
 
 	// Handle MH and OH together, because present MH + empty OH --> swap MH and unequip OH
 	if hasMhSwap || hasOhSwap {

@@ -12,6 +12,33 @@ import (
 	googleProto "google.golang.org/protobuf/proto"
 )
 
+func TestRangedScopeReducesPaidHunterHit(t *testing.T) {
+	for _, b := range builds() {
+		if b.Key != "beast_mastery" && b.Key != "marksmanship" {
+			continue
+		}
+		p := b.player(proto.Race_RaceOrc)
+		_, before, err := capHit(b, p)
+		if err != nil {
+			t.Fatal(err)
+		}
+		p.Equipment.Items[proto.ItemSlot_ItemSlotRanged].Enchant = 2523
+		_, after, err := capHit(b, p)
+		if err != nil {
+			t.Fatal(err)
+		}
+		want := 30.0
+		if b.Key == "beast_mastery" {
+			// Summon Hawk currently rolls as a melee special, unlike the
+			// unused melee auto. Its unresolved hit model remains unchanged.
+			want = 0
+		}
+		if got := before.RawHitDelta - after.RawHitDelta; math.Abs(got-want) > 1e-8 {
+			t.Errorf("%s: scope saved %v raw hit, want %v; requirements %+v", b.Key, got, want, after.Requirements)
+		}
+	}
+}
+
 func TestHitBudgetAllBuilds(t *testing.T) {
 	for _, b := range builds() {
 		t.Run(b.Key, func(t *testing.T) {

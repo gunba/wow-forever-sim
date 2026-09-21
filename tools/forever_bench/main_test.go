@@ -191,6 +191,65 @@ func TestForeverRecklessnessHasNoAttackPower(t *testing.T) {
 	}
 }
 
+func TestForeverBossArmorShred(t *testing.T) {
+	b := builds()[0]
+	for _, startingArmor := range []float64{4638, 3731, 3009} {
+		req := request(b.player(b.races()[0]), 1, 1)
+		req.Encounter.Targets[0].Stats = stats.Stats{stats.Armor: startingArmor}.ToFloatArray()
+		req.Raid.Debuffs = &proto.Debuffs{
+			SunderArmor: true, ExposeArmor: proto.TristateEffect_TristateEffectImproved,
+			CurseOfRecklessness: true, FaerieFire: true,
+		}
+		env, _, _ := core.NewEnvironment(req.Raid, req.Encounter, proto.Ruleset_RulesetForever, false)
+		target := env.Encounter.TargetUnits[0]
+		sim := &core.Simulation{Environment: env}
+		sunder := target.GetAura("Sunder Armor")
+		sunder.Activate(sim)
+		sunder.SetStacks(sim, 5)
+		target.GetAura("Curse of Recklessness").Activate(sim)
+		target.GetAura("Faerie Fire").Activate(sim)
+		want := startingArmor - 3260 // 2250 major + 505 curse + 505 Faerie Fire.
+		if got := target.GetStat(stats.Armor); got != want {
+			t.Fatalf("boss armor %v: got %v, want %v", startingArmor, got, want)
+		}
+		if got := target.Armor(); got != math.Max(want, 0) {
+			t.Fatalf("effective armor %v: got %v", startingArmor, got)
+		}
+		// Expose Armor replaces Sunder; its talent no longer multiplies shred.
+		target.GetAura("ExposeArmor").Activate(sim)
+		if got := target.GetStat(stats.Armor); got != want {
+			t.Fatalf("Expose stacked with Sunder or used Classic scaling: %v, want %v", got, want)
+		}
+	}
+}
+
+func TestHunterPetKeepsSelectedAttackSpeed(t *testing.T) {
+	for _, b := range builds() {
+		if b.Key != "beast_mastery" {
+			continue
+		}
+		for _, tc := range []struct {
+			option proto.Hunter_Options_PetAttackSpeed
+			speed  float64
+		}{
+			{proto.Hunter_Options_One, 1},
+			{proto.Hunter_Options_OneTwo, 1.2},
+			{proto.Hunter_Options_Two, 2},
+		} {
+			p := b.player(proto.Race_RaceOrc)
+			p.GetHunter().Options.PetAttackSpeed = tc.option
+			req := request(p, 1, 1)
+			env, _, _ := core.NewEnvironment(req.Raid, req.Encounter, proto.Ruleset_RulesetForever, false)
+			pet := env.Raid.Parties[0].Players[0].GetCharacter().Pets[0]
+			if got := pet.AutoAttacks.MH().SwingSpeed; got != tc.speed {
+				t.Errorf("pet swing speed = %v, want %v", got, tc.speed)
+			}
+		}
+		return
+	}
+	t.Fatal("missing Beast Mastery fixture")
+}
+
 func TestSacrificedPetDoesNotAttack(t *testing.T) {
 	for _, b := range builds() {
 		if b.Key != "ds_ruin" {

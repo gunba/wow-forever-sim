@@ -20,7 +20,7 @@ const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PAT
 try {
 	const context = await browser.newContext();
 	const page = await context.newPage();
-	await page.route(/zamimg|wowhead|googletagmanager/, route => route.abort());
+	await page.route(/^https?:\/\/([^/]+\.)?(zamimg|wowhead|googletagmanager)\.com\//, route => route.abort());
 	await page.goto(`${base}warrior/`, { waitUntil: 'networkidle' });
 	await page.getByRole('button', { name: 'Simulate', exact: true }).waitFor();
 	await page.locator('.import-dropdown .import-link').evaluate(element => element.click());
@@ -43,6 +43,19 @@ try {
 	const actual = Number(await page.locator('.results-sim-dps .topline-result-avg').first().innerText());
 	assert.ok(Math.abs(actual - row.DPS) < 0.015, `WASM ${actual} vs native ${row.DPS}`);
 	console.log(`Gnome Fury +20%: ${actual} DPS; inputs preserved; native match`);
+
+	const invalidShaman = JSON.parse(readFileSync('artifacts/ui_profiles/enhancement__orc.json', 'utf8'));
+	invalidShaman.player.equipment.items[14] = { id: 279261 };
+	invalidShaman.player.equipment.items[15] = { id: 22384 };
+	await page.goto(`${base}enhancement_shaman/`, { waitUntil: 'networkidle' });
+	await page.getByRole('button', { name: 'Simulate', exact: true }).waitFor();
+	await page.locator('.import-dropdown .import-link').evaluate(element => element.click());
+	await page.locator('.import-dropdown').getByRole('button', { name: 'JSON', exact: true }).click();
+	await dialog.getByRole('textbox').fill(JSON.stringify(invalidShaman));
+	await dialog.getByRole('button', { name: /Import/ }).click();
+	await page.getByText(/Import error: Cannot equip .* in the off hand for this class/).waitFor();
+	assert.equal(await page.getByText(/Perfect Sync|Delayed Offhand|Sync Type/).count(), 0);
+	console.log('Shaman dual-wield import rejected; obsolete synchronization controls absent');
 	await context.close();
 } finally {
 	await browser.close();

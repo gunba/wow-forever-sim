@@ -141,7 +141,8 @@ func (b *bulkSimRunner) Run(signals simsignals.Signals, progress chan *proto.Pro
 			panic("over 1 million combos, abandoning attempt")
 		}
 		substitutedRequest, changeLog := createNewRequestWithSubstitution(b.Request.BaseSettings, sub, b.Request.BulkSettings.AutoEnchant)
-		if isValidEquipment(substitutedRequest.Raid.Parties[0].Players[0].Equipment) {
+		player := substitutedRequest.Raid.Parties[0].Players[0]
+		if isValidEquipment(player.Equipment, player.Class) {
 			validCombos = append(validCombos, singleBulkSim{req: substitutedRequest, cl: changeLog, eq: sub})
 		}
 	}
@@ -437,19 +438,11 @@ func (es *equipmentSubstitution) CanonicalHash() string {
 	return strings.Join(parts, ":")
 }
 
-// isValidEquipment returns true if the specified equipment spec is valid. An equipment spec
-// is valid if it does not reference a two-hander and off-hand weapon combo.
-func isValidEquipment(equipment *proto.EquipmentSpec) bool {
-	var usesTwoHander, usesOffhand bool
-
-	// Validate weapons
-	if knownItem, ok := ItemsByID[equipment.Items[proto.ItemSlot_ItemSlotMainHand].Id]; ok {
-		usesTwoHander = knownItem.HandType == proto.HandType_HandTypeTwoHand
-	}
-	if knownItem, ok := ItemsByID[equipment.Items[proto.ItemSlot_ItemSlotOffHand].Id]; ok {
-		usesOffhand = knownItem.HandType == proto.HandType_HandTypeOffHand
-	}
-	if usesTwoHander && usesOffhand {
+// Reject illegal weapon layouts before scheduling bulk simulation candidates.
+func isValidEquipment(equipment *proto.EquipmentSpec, class proto.Class) bool {
+	if ValidateWeaponLayout(class,
+		ItemsByID[equipment.Items[proto.ItemSlot_ItemSlotMainHand].GetId()],
+		ItemsByID[equipment.Items[proto.ItemSlot_ItemSlotOffHand].GetId()]) != nil {
 		return false
 	}
 

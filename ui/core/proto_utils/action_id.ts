@@ -140,7 +140,7 @@ export class ActionId {
 		this.baseName = baseName;
 		this.name = name || baseName;
 		this.iconUrl = iconUrl;
-		this.spellIdTooltipOverride = this.spellTooltipOverride?.spellId || null;
+		this.spellIdTooltipOverride = this.spellTooltipOverride?.spellId || spellSource(spellId)?.foreverId || null;
 		if (this.name) this.name += rank ? ` (Rank ${rank})` : '';
 	}
 
@@ -260,9 +260,7 @@ export class ActionId {
 
 		const tooltipData = await ActionId.getTooltipData(this);
 
-		// Wowhead has no entry for an ability Forever invented, and its fetch resolves to a row
-		// with no name, which reaches the damage table as a blank line. The spell manifest knows
-		// what the sim calls every id it registers, so fall back to that.
+		// Internal spell aliases and unavailable tooltip responses still need a display name.
 		const baseName: string = tooltipData['name'] || (this.spellId && spellSource(this.spellId)?.ability) || '';
 		let name = baseName;
 		switch (baseName) {
@@ -542,20 +540,20 @@ export class ActionId {
 	}
 
 	private static makeIconUrl(iconLabel: string): string {
-		return `${WOWHEAD_IMAGES}icons/large/${iconLabel}.jpg`;
+		return `${WOWHEAD_IMAGES}icons/large/${(iconLabel || 'inv_misc_questionmark').toLowerCase()}.jpg`;
 	}
 
 	static async getTooltipData(actionId: ActionId): Promise<IconData> {
 		if (actionId.itemId) {
 			return await Database.getItemIconData(actionId.itemId);
 		} else {
-			return await Database.getSpellIconData(actionId.spellId);
+			return await Database.getSpellIconData(actionId.spellIdTooltipOverride || actionId.spellId);
 		}
 	}
 	get spellIconOverride(): ActionId | null {
 		const override = spellIdIconOverrides.get(JSON.stringify({ spellId: this.spellId }));
 		if (!override) return null;
-		return override.itemId ? ActionId.fromItemId(override.itemId) : ActionId.fromItemId(override.spellId!);
+		return override.itemId ? ActionId.fromItemId(override.itemId) : ActionId.fromSpellId(override.spellId!);
 	}
 
 	get spellTooltipOverride(): ActionId | null {

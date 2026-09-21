@@ -62,7 +62,7 @@ func TestIsValidEquipment(t *testing.T) {
 			want:    false,
 		},
 	} {
-		if got := isValidEquipment(tc.spec); got != tc.want {
+		if got := isValidEquipment(tc.spec, proto.Class_ClassWarrior); got != tc.want {
 			t.Fatalf("%s: isValidEquipment(%v) = %v, want %v", tc.comment, tc.spec, got, tc.want)
 		}
 	}

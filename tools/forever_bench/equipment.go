@@ -33,8 +33,7 @@ func validateEquipmentSlot(p *proto.Player, slot int, item core.Item) error {
 			return fmt.Errorf("an off-hand item cannot accompany a two-handed weapon")
 		}
 		if item.WeaponType != proto.WeaponType_WeaponTypeOffHand && item.WeaponType != proto.WeaponType_WeaponTypeShield {
-			if p.Class != proto.Class_ClassRogue && p.Class != proto.Class_ClassWarrior &&
-				p.Class != proto.Class_ClassHunter && p.GetEnhancementShaman() == nil {
+			if !core.ClassCanDualWield(p.Class) {
 				return fmt.Errorf("%s cannot dual wield in this build", p.Class)
 			}
 		}

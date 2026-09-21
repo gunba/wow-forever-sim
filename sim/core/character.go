@@ -138,6 +138,9 @@ func NewCharacter(party *Party, partyIndex int, player *proto.Player) Character 
 		majorCooldownManager: newMajorCooldownManager(player.Cooldowns),
 	}
 
+	if err := ValidateWeaponLayout(character.Class, *character.MainHand(), *character.OffHand()); err != nil {
+		panic(err)
+	}
 	character.Equipment = character.Equipment.Scaled(player.EquipmentScale)
 	if player.EquipmentScale != 0 && player.EquipmentScale != 1 && player.EnableItemSwap {
 		panic("equipment sensitivity does not support item swaps")

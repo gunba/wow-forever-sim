@@ -21,14 +21,11 @@ func TestEnhancement(t *testing.T) {
 			OtherRaces: []proto.Race{proto.Race_RaceOrc},
 
 			Talents:     DefaultTalents,
-			GearSet:     core.GetGearSet("../../../ui/enhancement_shaman/gear_sets", "launch"),
+			GearSet:     core.GetGearSet("../../../ui/enhancement_shaman/gear_sets", "forever_enhancement"),
 			Rotation:    core.GetAplRotation("../../../ui/enhancement_shaman/apls", "default"),
 			Buffs:       core.ForeverBuffs,
 			Consumes:    Phase1Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Sync Auto", SpecOptions: PlayerOptionsSyncAuto},
-			OtherSpecOptions: []core.SpecOptionsCombo{
-				{Label: "Sync Delay OH", SpecOptions: PlayerOptionsSyncDelayOH},
-			},
+			SpecOptions: core.SpecOptionsCombo{Label: "Default", SpecOptions: PlayerOptions},
 
 			ItemFilter:      ItemFilters,
 			EPReferenceStat: proto.Stat_StatAttackPower,
@@ -38,7 +35,7 @@ func TestEnhancement(t *testing.T) {
 		}}))
 }
 
-// Enhancement 16/35/0 from ui/enhancement_shaman/presets.ts, the build the rankings page runs.
+// The level-60 Enhancement preset.
 func TestForeverEnhancement(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
@@ -47,11 +44,11 @@ func TestForeverEnhancement(t *testing.T) {
 			Race:  proto.Race_RaceDwarf,
 
 			Talents:     EnhancementTalents,
-			GearSet:     core.GetGearSet("../../../ui/enhancement_shaman/gear_sets", "launch"),
+			GearSet:     core.GetGearSet("../../../ui/enhancement_shaman/gear_sets", "forever_enhancement"),
 			Rotation:    core.GetAplRotation("../../../ui/enhancement_shaman/apls", "default"),
 			Buffs:       core.ForeverBuffs,
 			Consumes:    Phase1Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Sync Auto", SpecOptions: PlayerOptionsSyncAuto},
+			SpecOptions: core.SpecOptionsCombo{Label: "Default", SpecOptions: PlayerOptions},
 
 			ItemFilter:      ItemFilters,
 			EPReferenceStat: proto.Stat_StatAttackPower,
@@ -63,26 +60,12 @@ func TestForeverEnhancement(t *testing.T) {
 
 var DefaultTalents = "5505301-053030031005112251"
 
-var EnhancementTalents = "05023015-055030030205112251"
+var EnhancementTalents = "05043305-055030031005102051"
 
-var PlayerOptionsSyncDelayOH = &proto.Player_EnhancementShaman{
+var PlayerOptions = &proto.Player_EnhancementShaman{
 	EnhancementShaman: &proto.EnhancementShaman{
-		Options: optionsSyncDelayOffhand,
+		Options: &proto.EnhancementShaman_Options{},
 	},
-}
-
-var PlayerOptionsSyncAuto = &proto.Player_EnhancementShaman{
-	EnhancementShaman: &proto.EnhancementShaman{
-		Options: optionsSyncAuto,
-	},
-}
-
-var optionsSyncDelayOffhand = &proto.EnhancementShaman_Options{
-	SyncType: proto.ShamanSyncType_DelayOffhandSwings,
-}
-
-var optionsSyncAuto = &proto.EnhancementShaman_Options{
-	SyncType: proto.ShamanSyncType_Auto,
 }
 
 var Phase1Consumes = core.ConsumesCombo{
@@ -97,7 +80,6 @@ var Phase1Consumes = core.ConsumesCombo{
 		Flask:             proto.Flask_FlaskOfSupremePower,
 		Food:              proto.Food_FoodBlessSunfruit,
 		MainHandImbue:     proto.WeaponImbue_WindfuryWeapon,
-		OffHandImbue:      proto.WeaponImbue_WindfuryWeapon,
 		SpellPowerBuff:    proto.SpellPowerBuff_GreaterArcaneElixir,
 		StrengthBuff:      proto.StrengthBuff_JujuPower,
 	},

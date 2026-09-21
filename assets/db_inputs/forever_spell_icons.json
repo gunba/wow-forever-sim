@@ -1,0 +1,775 @@
+{
+  "spellIcons": [
+    {
+      "id": 3009,
+      "name": "Claw",
+      "icon": "ability_druid_rake",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 5740,
+      "name": "Rain of Fire",
+      "icon": "spell_shadow_rainoffire",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 6150,
+      "name": "Quick Shots",
+      "icon": "ability_warrior_innerrage",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 6219,
+      "name": "Rain of Fire",
+      "icon": "spell_shadow_rainoffire",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 10333,
+      "name": "Holy Strike",
+      "icon": "classicon_paladin",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 11677,
+      "name": "Rain of Fire",
+      "icon": "spell_shadow_rainoffire",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 11678,
+      "name": "Rain of Fire",
+      "icon": "spell_shadow_rainoffire",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 11704,
+      "name": "Wrack",
+      "icon": "ability_deathknight_hemorrhagicfever",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 11780,
+      "name": "Lash of Pain",
+      "icon": "spell_shadow_curse",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 12654,
+      "name": "Ignite",
+      "icon": "spell_fire_incinerate",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 12964,
+      "name": "Unbridled Wrath",
+      "icon": "spell_nature_stoneclawtotem",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 15258,
+      "name": "Shadow Weaving",
+      "icon": "spell_shadow_blackplague",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 15851,
+      "name": "Dragonbreath Chili",
+      "icon": "spell_fire_incinerate",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 15852,
+      "name": "Dragonbreath Chili",
+      "icon": "spell_fire_incinerate",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 16246,
+      "name": "Clearcasting",
+      "icon": "spell_shadow_manaburn",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 16279,
+      "name": "Flurry",
+      "icon": "ability_ghoulfrenzy"
+    },
+    {
+      "id": 16280,
+      "name": "Flurry",
+      "icon": "ability_ghoulfrenzy"
+    },
+    {
+      "id": 16886,
+      "name": "Nature's Grace",
+      "icon": "spell_nature_naturesblessing",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 16958,
+      "name": "Primal Fury",
+      "icon": "ability_racial_cannibalize",
+      "rank": 1
+    },
+    {
+      "id": 17261,
+      "name": "Bite",
+      "icon": "ability_racial_cannibalize",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 17941,
+      "name": "Shadow Trance",
+      "icon": "spell_shadow_twilight",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 18789,
+      "name": "Burning Shadow",
+      "icon": "spell_shadow_psychicscream",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 18790,
+      "name": "Fel Stamina",
+      "icon": "spell_shadow_psychicscream",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 18791,
+      "name": "Touch of Fire",
+      "icon": "spell_shadow_psychicscream",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 18792,
+      "name": "Fel Energy",
+      "icon": "spell_shadow_psychicscream",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 18821,
+      "name": "Demonic Brand",
+      "icon": "ability_demonhunter_chaoticimprint_fire",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 20355,
+      "name": "Judgement of Wisdom",
+      "icon": "spell_holy_righteousnessaura",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 20424,
+      "name": "Seal of Command",
+      "icon": "ability_warrior_innerrage",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 20554,
+      "name": "Berserking",
+      "icon": "racial_troll_berserk",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 20572,
+      "name": "Blood Fury",
+      "icon": "racial_orc_berserkerstrength",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 20594,
+      "name": "Stoneform",
+      "icon": "spell_shadow_unholystrength",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 20966,
+      "name": "Judgement of Command",
+      "icon": "ability_warrior_innerrage",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 21919,
+      "name": "Thrash",
+      "icon": "ability_warrior_punishingblow",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 23785,
+      "name": "Master Demonologist",
+      "icon": "spell_shadow_shadowpact"
+    },
+    {
+      "id": 23825,
+      "name": "Master Demonologist",
+      "icon": "spell_shadow_shadowpact"
+    },
+    {
+      "id": 29177,
+      "name": "Elemental Devastation",
+      "icon": "classic_spell_fire_elementaldevastation"
+    },
+    {
+      "id": 29178,
+      "name": "Elemental Devastation",
+      "icon": "classic_spell_fire_elementaldevastation"
+    },
+    {
+      "id": 30288,
+      "name": "Shadow and Flame",
+      "icon": "spell_fire_playingwithfire",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 30451,
+      "name": "Arcane Blast",
+      "icon": "spell_arcane_blast",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 30455,
+      "name": "Ice Lance",
+      "icon": "spell_frost_frostblast",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 31876,
+      "name": "Sanctified Judgement",
+      "icon": "spell_holy_righteousfury"
+    },
+    {
+      "id": 35696,
+      "name": "Demonic Knowledge",
+      "icon": "spell_shadow_improvedvampiricembrace",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 37117,
+      "name": "Primal Fury",
+      "icon": "ability_racial_cannibalize",
+      "rank": 1
+    },
+    {
+      "id": 44404,
+      "name": "Missile Barrage",
+      "icon": "ability_mage_missilebarrage",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 44445,
+      "name": "Hot Streak",
+      "icon": "ability_mage_hotstreak",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 44543,
+      "name": "Fingers of Frost",
+      "icon": "ability_mage_wintersgrasp",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 48518,
+      "name": "Eclipse",
+      "icon": "ability_druid_eclipse",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 50334,
+      "name": "Berserk",
+      "icon": "ability_druid_berserk",
+      "hasBuff": true
+    },
+    {
+      "id": 53601,
+      "name": "Templar's Bulwark",
+      "icon": "ability_paladin_shieldofthetemplar",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 53671,
+      "name": "Swift Judgement",
+      "icon": "ability_paladin_judgementred",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 56638,
+      "name": "Bloodthrill",
+      "icon": "inv_sword_01"
+    },
+    {
+      "id": 57878,
+      "name": "Natural Reaction",
+      "icon": "ability_bullrush",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 77485,
+      "name": "Twist of Light",
+      "icon": "spell_holy_blessedresillience",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 80240,
+      "name": "Bane of Havoc",
+      "icon": "ability_warlock_baneofhavoc",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 400589,
+      "name": "Missile Barrage",
+      "icon": "ability_mage_missilebarrage",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 400625,
+      "name": "Hot Streak",
+      "icon": "ability_mage_hotstreak",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 400669,
+      "name": "Fingers of Frost",
+      "icon": "ability_mage_wintersgrasp",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 408248,
+      "name": "Eclipse",
+      "icon": "ability_druid_eclipse",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 408505,
+      "name": "Maelstrom Weapon",
+      "icon": "spell_shaman_maelstromweapon",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 412538,
+      "name": "Ignite",
+      "icon": "spell_fire_incinerate",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 412732,
+      "name": "Demonic Knowledge",
+      "icon": "spell_shadow_improvedvampiricembrace",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 417051,
+      "name": "Natural Reaction",
+      "icon": "ability_bullrush",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 417141,
+      "name": "Berserk",
+      "icon": "ability_druid_berserk",
+      "hasBuff": true
+    },
+    {
+      "id": 426316,
+      "name": "Shadow and Flame",
+      "icon": "spell_fire_playingwithfire",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 440873,
+      "name": "Decimation",
+      "icon": "spell_fire_fireball02",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 1225228,
+      "name": "Bane of Havoc",
+      "icon": "ability_warlock_baneofhavoc",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 1238300,
+      "name": "Lava Burst",
+      "icon": "spell_shaman_lavaburst",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1239700,
+      "name": "Arcane Blast",
+      "icon": "spell_arcane_blast",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1240047,
+      "name": "Ice Lance",
+      "icon": "spell_frost_frostblast",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1241584,
+      "name": "Mutilate",
+      "icon": "ability_rogue_deadlybrew",
+      "rank": 4,
+      "hasBuff": false
+    },
+    {
+      "id": 1259799,
+      "name": "Elune's Light",
+      "icon": "spell_nature_moonglow",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 1259812,
+      "name": "Eureka!",
+      "icon": "inv_gnometoy",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 1259813,
+      "name": "Eureka!",
+      "icon": "inv_gnometoy",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 1259817,
+      "name": "Eureka!",
+      "icon": "inv_gnometoy",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 1259821,
+      "name": "Eureka!",
+      "icon": "inv_gnometoy",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 1259823,
+      "name": "Eureka!",
+      "icon": "inv_gnometoy",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 1260189,
+      "name": "Touch of the Grave",
+      "icon": "spell_shadow_fingerofdeath",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1260198,
+      "name": "Touch of the Grave",
+      "icon": "spell_shadow_lifedrain02",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1260201,
+      "name": "Touch of the Grave",
+      "icon": "spell_shadow_fingerofdeath",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1277324,
+      "name": "Dark Sacrifice",
+      "icon": "spell_holy_powerinfusion_shadow",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 1277325,
+      "name": "Dark Sacrifice",
+      "icon": "spell_holy_powerinfusion_shadow",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 1277326,
+      "name": "Dark Sacrifice",
+      "icon": "spell_holy_powerinfusion_shadow",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 1277327,
+      "name": "Dark Sacrifice",
+      "icon": "spell_holy_powerinfusion_shadow",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 1277328,
+      "name": "Dark Sacrifice",
+      "icon": "spell_holy_powerinfusion_shadow",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 1282380,
+      "name": "Rain of Fire",
+      "icon": "spell_shadow_rainoffire",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1282383,
+      "name": "Rain of Fire",
+      "icon": "spell_shadow_rainoffire",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1282384,
+      "name": "Rain of Fire",
+      "icon": "spell_shadow_rainoffire",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1282385,
+      "name": "Rain of Fire",
+      "icon": "spell_shadow_rainoffire",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1293527,
+      "name": "Summon Hawk",
+      "icon": "ability_hunter_animalhandler",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1293695,
+      "name": "Demonic Brand",
+      "icon": "ability_demonhunter_chaoticimprint_fire",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1293813,
+      "name": "Incinerate",
+      "icon": "spell_fire_burnout",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1299447,
+      "name": "Aspect of the Beast",
+      "icon": "ability_mount_pinktiger",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 1299448,
+      "name": "Quick Strikes",
+      "icon": "ability_rogue_slicedice",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 1301073,
+      "name": "1.60.0 - Item - Tier 1 - Druid - Balance 4P Bonus - SP vs. Demons",
+      "icon": "trade_engineering",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1301075,
+      "name": "1.60.0 - Item - Tier 1 - Druid - Feral 4P Bonus - AP vs. Demons",
+      "icon": "trade_engineering",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1301078,
+      "name": "1.60.0 - Item - Tier 1 - Hunter 4P Bonus - AP vs. Beasts",
+      "icon": "trade_engineering",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1301079,
+      "name": "1.60.0 - Item - Tier 1 - Mage 4P Bonus - SP vs. Elementals",
+      "icon": "trade_engineering",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1301084,
+      "name": "1.60.0 - Item - Tier 1 - Paladin - Retribution 4P Bonus - AP vs. Undead",
+      "icon": "trade_engineering",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1301087,
+      "name": "1.60.0 - Item - Tier 1 - Priest - Shadow 4P Bonus - SP vs. Undead",
+      "icon": "trade_engineering",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1301088,
+      "name": "1.60.0 - Item - Tier 1 - Rogue 4P Bonus - AP vs. Humanoids",
+      "icon": "trade_engineering",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1301090,
+      "name": "1.60.0 - Item - Tier 1 - Shaman - Enhancement 4P Bonus - AP vs. Elementals",
+      "icon": "trade_engineering",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1301092,
+      "name": "1.60.0 - Item - Tier 1 - Shaman - Elemental 4P Bonus - SP vs. Elementals",
+      "icon": "trade_engineering",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1301094,
+      "name": "1.60.0 - Item - Tier 1 - Warlock 4P Bonus - SP vs. Demons",
+      "icon": "trade_engineering",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1301095,
+      "name": "1.60.0 - Item - Tier 1 - Warrior - Arms/Fury 4P Bonus - AP vs. Humanoids",
+      "icon": "trade_engineering",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1310222,
+      "name": "Spearing Strike",
+      "icon": "inv_spear_01",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1310735,
+      "name": "Twist of Light",
+      "icon": "spell_holy_blessedresillience",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1310786,
+      "name": "Sniper Shot",
+      "icon": "hunter_pvp_snipershot",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1310994,
+      "name": "Swift Judgement",
+      "icon": "ability_paladin_judgementred",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 1311015,
+      "name": "Templar's Bulwark",
+      "icon": "ability_paladin_shieldofthetemplar",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1311680,
+      "name": "Curse of the Elements",
+      "icon": "warlock_curse_shadow",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 1316697,
+      "name": "Wrack",
+      "icon": "ability_deathknight_hemorrhagicfever",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 1316995,
+      "name": "Penance",
+      "icon": "spell_holy_penance",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1317257,
+      "name": "Strider Kick",
+      "icon": "ability_hunter_pet_tallstrider",
+      "rank": 0,
+      "hasBuff": false
+    }
+  ]
+}

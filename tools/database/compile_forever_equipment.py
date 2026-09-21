@@ -31,6 +31,7 @@ RATINGS = {
     "HitRating": (18, "Hit - Melee"), "CritRating": (19, "Crit - Melee"),
     "DefenseRating": (28, "Defense Skill"), "BlockRating": (29, "Block"),
     "DodgeRating": (31, "Dodge"), "ParryRating": (32, "Parry"),
+    "ExpertiseRating": (22, "Expertise"),
 }
 SKILLS = {
     "AxesSkill": 1, "SwordsSkill": 2, "MacesSkill": 3, "DaggersSkill": 4,
@@ -104,6 +105,9 @@ def compile_item(item: dict, rates: dict, vendor: dict | None = None) -> dict:
             raise ValueError(f"class mask {mask} excludes every supported class")
     if item["raceMasks"] not in ([-1, -1], [0, 0]):
         raise ValueError(f"race-restricted record needs a UI mapping: {item['raceMasks']}")
+    source_factions = {source.get("faction", "") for source in item["sources"]}
+    if source_factions in ({"Alliance"}, {"Horde"}):
+        out["factionRestriction"] = 1 if "Alliance" in source_factions else 2
     if item["requiredSkill"]:
         out["requiredProfession"] = PROFESSIONS[item["requiredSkill"]]
     if item["maxCount"] == 1 or item.get("uniqueEquipped") or item.get("limitCategoryQuantity") == 1:
@@ -123,6 +127,14 @@ def compile_item(item: dict, rates: dict, vendor: dict | None = None) -> dict:
             else:
                 drop["otherName"] = source.get("name", "")
             sources.append({"drop": drop})
+        elif source["kind"] in ("pvp", "vendor"):
+            sources.append({"soldBy": {
+                "npcName": source.get("name", "PvP quartermasters"),
+                "npcId": source.get("entityId", 0),
+                "zoneId": source.get("zoneId", 0),
+            }})
+        elif source["kind"] in ("dungeon-quest", "ticket-exchange"):
+            sources.append({"quest": {"id": source["questId"], "name": source["name"]}})
         else:
             raise ValueError(f"unsupported acquisition source {source['kind']}")
     out["sources"] = sources

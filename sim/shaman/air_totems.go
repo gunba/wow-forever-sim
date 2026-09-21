@@ -8,15 +8,21 @@ import (
 )
 
 func (shaman *Shaman) setActiveAirTotem(sim *core.Simulation, spell *core.Spell, aura *core.Aura) {
-	shaman.TotemExpirations[AirTotem] = sim.CurrentTime + aura.Duration
+	duration := totemDuration
+	if aura != nil && aura.Duration != core.NeverExpires {
+		duration = aura.Duration
+	}
+	shaman.TotemExpirations[AirTotem] = sim.CurrentTime + duration
 	shaman.ActiveTotems[AirTotem] = spell
 
-	if shaman.ActiveTotemBuffs[AirTotem] != nil {
-		shaman.ActiveTotemBuffs[AirTotem].Deactivate(sim)
+	if previous := shaman.ActiveTotemBuffs[AirTotem]; previous != nil && previous.Duration != core.NeverExpires {
+		previous.Deactivate(sim)
 	}
 
 	shaman.ActiveTotemBuffs[AirTotem] = aura
-	aura.Activate(sim)
+	if aura != nil {
+		aura.Activate(sim)
+	}
 }
 
 const WindfuryTotemRanks = 3
@@ -54,7 +60,7 @@ func (shaman *Shaman) newWindfuryTotemSpellConfig(rank int) core.SpellConfig {
 	manaCost := WindfuryTotemManaCost[rank]
 	level := WindfuryTotemLevel[rank]
 
-	// Create a trackable aura for totem weaving
+	// Track the active buff; Forever removes it when its totem is replaced.
 	buffAura := shaman.RegisterAura(core.Aura{
 		ActionID: core.ActionID{SpellID: WindfuryBuffAuraId[rank]},
 		Label:    fmt.Sprintf("Windfury (Rank %d)", rank),
@@ -76,6 +82,9 @@ func (shaman *Shaman) newWindfuryTotemSpellConfig(rank int) core.SpellConfig {
 		OnExpire: func(_ *core.Aura, sim *core.Simulation) {
 			shaman.ActiveWindfuryTotemPeriodicAction.Cancel(sim)
 			shaman.ActiveWindfuryTotemPeriodicAction = nil
+			if sim.IsForever() {
+				buffAura.Deactivate(sim)
+			}
 		},
 	})
 

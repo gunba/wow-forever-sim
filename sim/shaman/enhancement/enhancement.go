@@ -1,8 +1,6 @@
 package enhancement
 
 import (
-	"time"
-
 	"github.com/wowsims/classic/sim/core"
 	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/shaman"
@@ -26,8 +24,6 @@ func RegisterEnhancementShaman() {
 }
 
 func NewEnhancementShaman(character *core.Character, options *proto.Player) *EnhancementShaman {
-	enhOptions := options.GetEnhancementShaman()
-
 	enh := &EnhancementShaman{
 		Shaman: shaman.NewShaman(character, options.TalentsString),
 	}
@@ -35,11 +31,8 @@ func NewEnhancementShaman(character *core.Character, options *proto.Player) *Enh
 	// Enable Auto Attacks for this spec
 	enh.EnableAutoAttacks(enh, core.AutoAttackOptions{
 		MainHand:       enh.WeaponFromMainHand(),
-		OffHand:        enh.WeaponFromOffHand(),
 		AutoSwingMelee: true,
 	})
-
-	enh.ApplySyncType(enhOptions.Options.SyncType)
 
 	return enh
 }
@@ -54,52 +47,8 @@ func (enh *EnhancementShaman) GetShaman() *shaman.Shaman {
 
 func (enh *EnhancementShaman) Initialize() {
 	enh.Shaman.Initialize()
-
-	if enh.ItemSwap.IsEnabled() {
-		enh.RegisterOnItemSwap(func(_ *core.Simulation) {
-			enh.ApplySyncType(proto.ShamanSyncType_Auto)
-		})
-	}
 }
 
 func (enh *EnhancementShaman) Reset(sim *core.Simulation) {
 	enh.Shaman.Reset(sim)
-}
-
-func (enh *EnhancementShaman) AutoSyncWeapons() proto.ShamanSyncType {
-	if mh, oh := enh.MainHand(), enh.OffHand(); mh.SwingSpeed != oh.SwingSpeed {
-		return proto.ShamanSyncType_NoSync
-	}
-	return proto.ShamanSyncType_SyncMainhandOffhandSwings
-}
-
-func (enh *EnhancementShaman) ApplySyncType(syncType proto.ShamanSyncType) {
-	const FlurryICD = time.Millisecond * 500
-
-	if syncType == proto.ShamanSyncType_Auto {
-		syncType = enh.AutoSyncWeapons()
-	}
-
-	switch syncType {
-	case proto.ShamanSyncType_SyncMainhandOffhandSwings:
-		enh.AutoAttacks.SetReplaceMHSwing(func(sim *core.Simulation, mhSwingSpell *core.Spell) *core.Spell {
-			if aa := &enh.AutoAttacks; aa.OffhandSwingAt()-sim.CurrentTime > FlurryICD {
-				if nextMHSwingAt := sim.CurrentTime + aa.MainhandSwingSpeed(); nextMHSwingAt > aa.OffhandSwingAt() {
-					aa.SetOffhandSwingAt(nextMHSwingAt)
-				}
-			}
-			return mhSwingSpell
-		})
-	case proto.ShamanSyncType_DelayOffhandSwings:
-		enh.AutoAttacks.SetReplaceMHSwing(func(sim *core.Simulation, mhSwingSpell *core.Spell) *core.Spell {
-			if aa := &enh.AutoAttacks; aa.OffhandSwingAt()-sim.CurrentTime > FlurryICD {
-				if nextMHSwingAt := sim.CurrentTime + aa.MainhandSwingSpeed() + 100*time.Millisecond; nextMHSwingAt > aa.OffhandSwingAt() {
-					aa.SetOffhandSwingAt(nextMHSwingAt)
-				}
-			}
-			return mhSwingSpell
-		})
-	default:
-		enh.AutoAttacks.SetReplaceMHSwing(nil)
-	}
 }

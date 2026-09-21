@@ -5,6 +5,18 @@
 		"source": "classic",
 		"note": "Identical in the Forever beta client and Classic Era - duration, cooldown, cast time, cost and every effect value, coefficient, period and per-level - so Wowhead's Classic tooltip describes it. Checked with tools/data_watch/spell_diff.py."
 	},
+	"7217": {
+		"ability": "Iron Counterweight",
+		"file": "sim/common/forever_enchants.go",
+		"source": "forever",
+		"note": "Client 1.60.1.69893: enchant 34 applies spell 7217, with 3% melee-speed aura 319. No ranged, casting or general-haste effect."
+	},
+	"22841": {
+		"ability": "Arcanum of Rapidity",
+		"file": "sim/common/forever_enchants.go",
+		"source": "forever",
+		"note": "Client 1.60.1.69893: enchant 2543 applies spell 22841, with 1% melee-speed aura 319 and ranged-speed aura 140. Not general haste; identical copies retain additive stacking pending measurement."
+	},
 	"7712": {
 		"ability": "Fire Strike",
 		"file": "sim/common/item_effects.go",

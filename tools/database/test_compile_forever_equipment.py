@@ -46,6 +46,15 @@ class EquipmentTest(unittest.TestCase):
         self.assertEqual(stats[41], 42)
         self.assertEqual(stats[42], 0)
 
+    def test_expertise_uses_client_percentage_conversion(self):
+        stats, _, _ = compile_stats({"armor": 0, "stats": {"ExpertiseRating": 20}}, self.rates)
+        self.assertEqual(stats[22], 2)
+
+    def test_vendor_source_faction_is_retained(self):
+        item = copy.deepcopy(self.items[279253])
+        item["sources"] = [{"kind": "pvp", "entityId": 15127, "faction": "Alliance"}]
+        self.assertEqual(compile_item(item, self.rates)["factionRestriction"], 1)
+
     def test_armor_and_unknown_stats(self):
         stats, _, _ = compile_stats({"armor": 44, "stats": {"BonusArmor": 170}}, self.rates)
         self.assertEqual(stats[26], 44)

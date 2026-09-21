@@ -14,6 +14,23 @@ const (
 func init() {
 	core.AddEffectsToTest = false
 
+	core.NewItemEffect(272433, func(agent core.Agent) {
+		shaman := agent.(ShamanAgent).GetShaman()
+		if shaman.Env.IsForever() {
+			shaman.OnSpellRegistered(func(spell *core.Spell) {
+				if spell.SpellCode == SpellCode_ShamanFlameShock {
+					for _, dot := range spell.Dots() {
+						if dot != nil {
+							dot.OriginalNumberOfTicks++
+							dot.NumberOfTicks++
+							dot.RecomputeAuraDuration()
+						}
+					}
+				}
+			})
+		}
+	})
+
 	core.NewItemEffect(228176, func(agent core.Agent) {
 		shaman := agent.(ShamanAgent).GetShaman()
 		if shaman.Env.IsForever() {

@@ -33,7 +33,6 @@ func NewElementalShaman(character *core.Character, options *proto.Player) *Eleme
 	// Enable Auto Attacks for this spec
 	ele.EnableAutoAttacks(ele, core.AutoAttackOptions{
 		MainHand:       ele.WeaponFromMainHand(),
-		OffHand:        ele.WeaponFromOffHand(),
 		AutoSwingMelee: true,
 	})
 

@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "20291727",
+    "fixedRngSeed": "20291951",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Horde",
@@ -58,55 +58,62 @@
     "equipment": {
       "items": [
         {
-          "id": 19999
+          "id": 252605,
+          "enchant": 1506
         },
         {
-          "id": 7731
+          "id": 19491
         },
         {
-          "id": 15051
+          "id": 20203,
+          "enchant": 2488
         },
         {
-          "id": 18509
+          "id": 18510,
+          "enchant": 849
         },
         {
-          "id": 252484
+          "id": 252484,
+          "enchant": 1891
         },
         {
-          "id": 19687
+          "id": 19687,
+          "enchant": 1885
         },
         {
-          "id": 19157
+          "id": 19157,
+          "enchant": 931
         },
         {
-          "id": 19044
+          "id": 18405
         },
         {
-          "id": 15065
+          "id": 22676,
+          "enchant": 1506
         },
         {
-          "id": 275618
+          "id": 19684,
+          "enchant": 1887
         },
         {
           "id": 17713
         },
         {
-          "id": 7686
+          "id": 19510
         },
         {
           "id": 249469
         },
         {
-          "id": 249470
+          "id": 272438
         },
         {
-          "id": 279261
+          "id": 272682,
+          "enchant": 1898
         },
+        {},
         {
-          "id": 22384
-        },
-        {
-          "id": 228176
+          "id": 272433
         }
       ]
     },
@@ -120,7 +127,6 @@
       "spellPowerBuff": "GreaterArcaneElixir",
       "firePowerBuff": "ElixirOfFirepower",
       "mainHandImbue": "WindfuryWeapon",
-      "offHandImbue": "WindfuryWeapon",
       "defaultPotion": "MajorManaPotion",
       "defaultConjured": "ConjuredDemonicRune",
       "dragonBreathChili": true,
@@ -128,8 +134,34 @@
     },
     "bonusStats": {
       "stats": [
-        -24.22910216718266,
-        -25.074303405572753,
+        -22.19724137931034,
+        -21.729931034482757,
+        0,
+        -33.41268965517241,
+        0,
+        -19.86068965517241,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        12.1,
+        -1.1682758620689653,
+        0,
+        0,
+        -14.953931034482757,
+        12.1,
+        -1.1682758620689653,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -14.953931034482757,
         0,
         0,
         0,
@@ -141,36 +173,10 @@
         0,
         0,
         0,
-        9.1,
-        -1.4086687306501546,
-        0,
-        0,
-        -43.95046439628483,
-        9.1,
-        -1.4086687306501546,
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        -43.95046439628483,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
+        -3.271172413793103,
         0
       ]
     },
@@ -430,9 +436,7 @@
     },
     "distanceFromTarget": 5,
     "enhancementShaman": {
-      "options": {
-        "syncType": "Auto"
-      }
+      "options": {}
     }
   },
   "encounter": {

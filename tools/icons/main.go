@@ -24,6 +24,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"sort"
+	"strconv"
 	"strings"
 	"sync"
 )
@@ -36,6 +37,7 @@ var (
 	inputsDir  = flag.String("inputs", "assets/db_inputs", "tooltip csv directory to take icon names from")
 	treesDir   = flag.String("trees", "ui/core/talents/trees", "talent tree directory")
 	uiDir      = flag.String("ui", "ui", "UI source directory scanned for image references")
+	benchFile  = flag.String("bench", "artifacts/forever_dps_5min.json", "optional benchmark containing displayed spell IDs")
 	numWorkers = flag.Int("workers", 8, "parallel downloads")
 )
 
@@ -55,6 +57,7 @@ var (
 	// Icon file names the UI holds without a path (the talent tree icon tables), all large.
 	bareIconRegex   = regexp.MustCompile(`'([a-z0-9_]+)\.jpg'`)
 	htmlImageRegex  = regexp.MustCompile(`assets/img/wowhead/([A-Za-z0-9_./\-]+\.(?:jpg|png|gif))`)
+	spellIDRegex    = regexp.MustCompile(`"?(?:spellId|foreverId)"?\s*:\s*(\d+)`)
 	zamimgWowPrefix = zamimg + "wow/"
 )
 
@@ -102,7 +105,15 @@ func main() {
 	}
 
 	dbSpellIds := databaseSpellIds()
-	var unresolvedSpells []int32
+	unresolvedSpells := map[int32]bool{}
+	addSpellIDs := func(source string) {
+		for _, match := range spellIDRegex.FindAllStringSubmatch(source, -1) {
+			id, _ := strconv.ParseInt(match[1], 10, 32)
+			if id > 0 && !dbSpellIds[int32(id)] {
+				unresolvedSpells[int32(id)] = true
+			}
+		}
+	}
 	trees, _ := filepath.Glob(filepath.Join(*treesDir, "*.json"))
 	for _, treeFile := range trees {
 		var classTrees []talentTree
@@ -117,16 +128,12 @@ func main() {
 				images.addIcon(talent.Icon)
 				for _, spellId := range talent.SpellIds {
 					if spellId != 0 && !dbSpellIds[spellId] {
-						unresolvedSpells = append(unresolvedSpells, spellId)
+						unresolvedSpells[spellId] = true
 					}
 				}
 			}
 		}
 	}
-	for _, icon := range tooltipIcons(unresolvedSpells) {
-		images.addIcon(icon)
-	}
-
 	filepath.WalkDir(*uiDir, func(path string, d os.DirEntry, err error) error {
 		if err != nil || d.IsDir() {
 			return err
@@ -140,6 +147,10 @@ func main() {
 			for _, match := range bareIconRegex.FindAllStringSubmatch(source, -1) {
 				images.addIcon(match[1])
 			}
+			addSpellIDs(source)
+		case ".json":
+			images.addIconFields(path)
+			addSpellIDs(readFile(path))
 		case ".html":
 			for _, match := range htmlImageRegex.FindAllStringSubmatch(readFile(path), -1) {
 				images[match[1]] = true
@@ -147,6 +158,17 @@ func main() {
 		}
 		return nil
 	})
+	if _, err := os.Stat(*benchFile); err == nil {
+		addSpellIDs(readFile(*benchFile))
+	}
+	spellIDs := make([]int32, 0, len(unresolvedSpells))
+	for id := range unresolvedSpells {
+		spellIDs = append(spellIDs, id)
+	}
+	sort.Slice(spellIDs, func(i, j int) bool { return spellIDs[i] < spellIDs[j] })
+	for _, icon := range tooltipIcons(spellIDs) {
+		images.addIcon(icon)
+	}
 
 	var missing []string
 	for localPath := range images {
@@ -188,7 +210,7 @@ func tooltipIcons(spellIds []int32) []string {
 	var mu sync.Mutex
 	parallel(len(spellIds), func(i int) {
 		spellId := spellIds[i]
-		body, err := get(fmt.Sprintf("https://nether.wowhead.com/classic/tooltip/spell/%d?lvl=60", spellId))
+		body, err := get(fmt.Sprintf("https://nether.wowhead.com/forever/tooltip/spell/%d?lvl=60", spellId))
 		var tooltip struct {
 			Icon string `json:"icon"`
 		}

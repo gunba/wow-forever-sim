@@ -22,7 +22,7 @@ import {
 	WeaponImbue,
 	ZanzaBuff,
 } from '../core/proto/common.js';
-import { EnhancementShaman_Options as EnhancementShamanOptions, ShamanSyncType } from '../core/proto/shaman.js';
+import { EnhancementShaman_Options as EnhancementShamanOptions } from '../core/proto/shaman.js';
 import { SavedTalents } from '../core/proto/ui.js';
 import DefaultAPLJSON from './apls/default.apl.json';
 import GearEnhancementJSON from './gear_sets/forever_enhancement.gear.json';
@@ -79,9 +79,7 @@ export const DefaultTalents = TalentsEnhancement;
 //                                 Options
 ///////////////////////////////////////////////////////////////////////////
 
-export const DefaultOptions = EnhancementShamanOptions.create({
-	syncType: ShamanSyncType.Auto,
-});
+export const DefaultOptions = EnhancementShamanOptions.create();
 
 export const DefaultConsumes = Consumes.create({
 	agilityElixir: AgilityElixir.ElixirOfTheMongoose,
@@ -94,7 +92,6 @@ export const DefaultConsumes = Consumes.create({
 	food: Food.FoodBlessSunfruit,
 	mainHandImbue: WeaponImbue.WindfuryWeapon,
 	manaRegenElixir: ManaRegenElixir.MagebloodPotion,
-	offHandImbue: WeaponImbue.WindfuryWeapon,
 	spellPowerBuff: SpellPowerBuff.GreaterArcaneElixir,
 	strengthBuff: StrengthBuff.JujuPower,
 	zanzaBuff: ZanzaBuff.ROIDS,

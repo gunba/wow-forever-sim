@@ -1,8 +1,8 @@
 # Build reviews
 
-These summaries cover completed build comparisons. They are simulation results, not independent confirmation of server mechanics or proof of a global optimum.
+These summaries describe the published loadouts. They are simulation results, not independent confirmation of server mechanics or proof of a global optimum.
 
-The tables below use each build's independent validation run. The [final matrix](../artifacts/forever_dps_5min.png) uses a separate common-seed run of all 147 combinations, so small Monte Carlo differences are expected. The final matrix also includes the later Eureka nested-charge correction; the optimization validation tables remain historical records.
+The tables and [matrix](../artifacts/forever_dps_5min.png) use the same 147 common-seed replays. Baseline comparisons use the starting gear and enchants under the same engine and seed. Talents and APLs are unchanged by the equipment search.
 
 The benchmark uses level 60, 300 seconds, one level-63 target, complete role-specific Tier 1 bonuses, and paid shared-hit normalization. [Scenario and exchange model](../tools/forever_bench/README.md) · [In-game checks](in_game_checks.md)
 
@@ -10,22 +10,41 @@ The benchmark uses level 60, 300 seconds, one level-63 target, complete role-spe
 
 **Talents:** 12/0/39 · `250003002--052253312012331321`
 
-[Requests, results and search evidence](../artifacts/optimization/retribution.json)
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
 
-- The retained 12/0/39 allocation moves Deflection 5→0 into Vindication 3/3 and Reverence 2/3. Seal of Command and Twist of Light remain talented.
-- Prioritize Exorcism, retain Judgement and the existing Command/Righteousness switching, and omit Consecration on the fixed single target. The existing 15% mana condition on seal switching remains.
-- An earlier talent search was invalidated because the engine incorrectly granted Seal of Command without its point. The availability check is now enforced from the current client talent records; the final build pays the point and has been rerun.
-- All three Paladin races passed 5,000-iteration comparisons under the corrected engine, with negligible mana-limited time and no APL warnings. No gear, external buffs or consumables changed.
 
 ### Results
 
 | Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
 |---|---:|---:|---:|---:|
-| Undead | 864.91 | 896.42 | +3.64% | 0.00 |
-| Human | 849.41 | 881.89 | +3.82% | 0.01 |
-| Dwarf | 847.91 | 880.68 | +3.86% | 0.01 |
+| Undead | 896.29 | 1090.69 | +21.69% | 0.00 |
+| Human | 881.78 | 1069.51 | +21.29% | 0.00 |
+| Dwarf | 880.67 | 1067.76 | +21.24% | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Undead
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Black Dragonscale Helm](https://www.wowhead.com/forever/item=252605) | 61 | Arcanum of Rapidity |
+| Neck | [Beads of Ogre Mojo](https://www.wowhead.com/forever/item=22149) | 63 | — |
+| Shoulders | [Mantle of the Timbermaw](https://www.wowhead.com/forever/item=19050) | 61 | Chromatic Mantle of the Dawn |
+| Back | [Hide of the Wild](https://www.wowhead.com/forever/item=18510) | 62 | Enchant Boots - Lesser Agility |
+| Chest | [Bloodvine Vest](https://www.wowhead.com/forever/item=19682) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Spitfire Bracers](https://www.wowhead.com/forever/item=20481) | 62 | Enchant Bracer - Superior Strength |
+| Hands | [Raider Handwraps](https://www.wowhead.com/forever/item=272097) | 65 | Enchant Gloves - Minor Haste |
+| Waist | [Belt of the Archmage](https://www.wowhead.com/forever/item=18405) | 62 | — |
+| Legs | [Ironfeather Leggings](https://www.wowhead.com/forever/item=252486) | 61 | Arcanum of Rapidity |
+| Feet | [Bloodvine Boots](https://www.wowhead.com/forever/item=19684) | 65 | Enchant Boots - Greater Agility |
+| Ring 1 | [Channeler's Ring](https://www.wowhead.com/forever/item=272406) | 65 | — |
+| Ring 2 | [Cutthroat's Signet](https://www.wowhead.com/forever/item=272408) | 65 | — |
+| Trinket 1 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
+| Trinket 2 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Main hand | [Blackfury](https://www.wowhead.com/forever/item=19167) | 66 | Enchant Weapon - Crusader |
+| Ranged/relic | [Libram of Law](https://www.wowhead.com/forever/item=272435) | 65 | — |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
 ### Before the pull
 
@@ -45,42 +64,162 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 
 | Action | DPS |
 |---|---:|
-| [Seal of Command](https://www.wowhead.com/forever/spell=20424) | 215.00 |
-| Auto-attack (tag 1) | 211.53 |
-| [Seal of Righteousness](https://www.wowhead.com/forever/spell=25713) | 170.68 |
-| Auto-attack (tag 3) | 78.69 |
-| [Holy Strike](https://www.wowhead.com/forever/spell=10333) | 76.23 |
-| [Judgement of Command](https://www.wowhead.com/forever/spell=20966) | 48.76 |
-| [Judgement of Righteousness](https://www.wowhead.com/forever/spell=20286) | 35.21 |
-| [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239) | 24.51 |
+| [Seal of Righteousness](https://www.wowhead.com/forever/spell=25713) | 269.23 |
+| [Seal of Command](https://www.wowhead.com/forever/spell=20424) | 247.66 |
+| Auto-attack (tag 1) | 191.64 |
+| [Holy Strike](https://www.wowhead.com/forever/spell=10333) | 100.17 |
+| Auto-attack (tag 3) | 71.45 |
+| [Judgement of Command](https://www.wowhead.com/forever/spell=20966) | 66.85 |
+| [Judgement of Righteousness](https://www.wowhead.com/forever/spell=20286) | 59.92 |
+| [Dragonbreath Chili (proc)](https://www.wowhead.com/forever/spell=15851) | 36.65 |
 
-## Warrior — Fury
+### Resource flow
 
-**Talents:** 17/34/0 · `20305113002-050520035151010051`
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +15250.1 |
+| Mana | [Spell 20920](https://www.wowhead.com/forever/spell=20920) | -14367.6 |
+| Mana | [Spell 20293](https://www.wowhead.com/forever/spell=20293) | -13596.1 |
+| Mana | OtherActionManaRegen (tag 1) | +4592.8 |
+| Mana | [Sanctified Judgement](https://www.wowhead.com/forever/spell=31876) | +4235.1 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3541.7 |
+| Mana | [Judgement of Light](https://www.wowhead.com/forever/spell=20271) | -3122.8 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3037.5 |
+| Mana | [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239) | -1565.7 |
+| Mana | [Holy Strike](https://www.wowhead.com/forever/spell=10333) | -524.6 |
+| Mana | OtherActionManaRegen (tag 2) | +1.2 |
+| Health | [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | +0.0 |
 
-[Requests, results and search evidence](../artifacts/optimization/fury.json)
+## Mage — Fire
 
-- The retained 17/34/0 allocation moves one point from Improved Heroic Strike into Improved Overpower. All talent prerequisites, including Enrage for Flurry, remain funded.
-- Allow ordinary, untalented Slam at 30 rage rather than excluding its 1.5-second cast. Continuous melee swings make it useful without Improved Slam. Use Recklessness on the pull with the existing cooldown package.
-- The existing Overpower stance dance, Execute priority and 30-rage Heroic Strike condition outside execute remain. Rage thresholds, queue priority, major-ability order and alternative Recklessness windows were screened.
-- All ten races passed 5,000-iteration comparisons. The off-hand retains its dual-wield white miss chance while Heroic Strike is queued; no queue/cancel hit exploit is used. Rage and combat-table uncertainties remain T01/T02/T06.
+**Talents:** 17/31/3 · `0501252000002-23450000130133051-003`
+
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
+
 
 ### Results
 
 | Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
 |---|---:|---:|---:|---:|
-| Orc | 773.35 | 799.48 | +3.38% | 0.00 |
-| Tauren | 772.22 | 797.36 | +3.26% | 0.00 |
-| Troll | 770.01 | 796.90 | +3.49% | 0.00 |
-| Undead | 784.36 | 810.58 | +3.34% | 0.00 |
-| Windshaper | 771.82 | 795.57 | +3.08% | 0.00 |
-| Human | 781.45 | 806.80 | +3.24% | 0.00 |
-| Dwarf | 772.93 | 797.07 | +3.12% | 0.00 |
-| Night Elf | 773.23 | 795.00 | +2.82% | 0.00 |
-| Gnome | 764.22 | 789.62 | +3.32% | 0.00 |
-| High Order | 771.82 | 795.57 | +3.08% | 0.00 |
+| Orc | 759.45 | 947.95 | +24.82% | 1.62 |
+| Troll | 753.96 | 940.93 | +24.80% | 1.75 |
+| Undead | 766.93 | 956.68 | +24.74% | 1.34 |
+| Human | 757.08 | 943.74 | +24.66% | 1.42 |
+| Gnome | 762.44 | 949.87 | +24.58% | 1.04 |
+| High Order | 757.87 | 944.90 | +24.68% | 1.54 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Undead
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Bloodvine Goggles](https://www.wowhead.com/forever/item=19999) | 65 | Arcanum of Focus |
+| Neck | [Chains of the Lich](https://www.wowhead.com/forever/item=23125) | 60 | — |
+| Shoulders | [Mantle of the Timbermaw](https://www.wowhead.com/forever/item=19050) | 61 | Chromatic Mantle of the Dawn |
+| Back | [Hide of the Wild](https://www.wowhead.com/forever/item=18510) | 62 | Enchant Cloak - Superior Defense |
+| Chest | [Bloodvine Vest](https://www.wowhead.com/forever/item=19682) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Netherflame Cuffs](https://www.wowhead.com/forever/item=254065) | 50 | Enchant Bracer - Greater Intellect |
+| Hands | [Gloves of Spell Mastery](https://www.wowhead.com/forever/item=14146) | 62 | Enchant Gloves - Fire Power |
+| Waist | [Belt of the Archmage](https://www.wowhead.com/forever/item=18405) | 62 | — |
+| Legs | [Bloodvine Leggings](https://www.wowhead.com/forever/item=19683) | 65 | Arcanum of Focus |
+| Feet | [Bloodvine Boots](https://www.wowhead.com/forever/item=19684) | 65 | Enchant Boots - Spirit |
+| Ring 1 | [Blessed Band of Light](https://www.wowhead.com/forever/item=272407) | 65 | — |
+| Ring 2 | [Channeler's Ring](https://www.wowhead.com/forever/item=272406) | 65 | — |
+| Trinket 1 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
+| Trinket 2 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Main hand | [Premier High Warlord's Spellblade](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Spell Power |
+| Off hand | [Premier High Warlord's Tome of Destruction](https://www.wowhead.com/forever/item=272685) | 65 | — |
+| Ranged/relic | [Brilliant Wand](https://www.wowhead.com/forever/item=249385) | 60 | — |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
+
+### Rotation priorities
+
+1. Cast [Item 8008](https://www.wowhead.com/forever/item=8008) when Mana fraction ≤ 80%.
+2. Use ready automatic cooldowns.
+3. Cast [Evocation](https://www.wowhead.com/forever/spell=12051) when (Mana fraction < 20% AND Time remaining > 25s).
+4. Cast [Pyroblast (rank 8)](https://www.wowhead.com/forever/spell=18809) when [Hot Streak](https://www.wowhead.com/forever/spell=44445) stacks = 3.
+5. Cast [Fire Blast (rank 7)](https://www.wowhead.com/forever/spell=10199) when Mana ≥ Time remaining × 10.
+6. Cast [Scorch (rank 7)](https://www.wowhead.com/forever/spell=10207) when ([Improved Scorch](https://www.wowhead.com/forever/spell=12873) stacks < 5 OR `{"auraRemainingTime":{"auraId":{"spellId":12873}}}` ≤ 5s).
+7. Cast [Fireball](https://www.wowhead.com/forever/spell=25306) when Mana ≥ Time remaining × 150.
+8. Cast [Scorch](https://www.wowhead.com/forever/spell=10207).
+
+### Damage breakdown — Undead
+
+| Action | DPS |
+|---|---:|
+| [Pyroblast](https://www.wowhead.com/forever/spell=18809) | 561.19 |
+| [Scorch](https://www.wowhead.com/forever/spell=10207) | 143.54 |
+| [Ignite](https://www.wowhead.com/forever/spell=12654) | 112.60 |
+| [Fire Blast](https://www.wowhead.com/forever/spell=10199) | 102.88 |
+| [Fireball](https://www.wowhead.com/forever/spell=25306) | 24.17 |
+| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 12.29 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | [Pyroblast](https://www.wowhead.com/forever/spell=18809) | -16012.9 |
+| Mana | OtherActionManaRegen (tag 2) | +5504.4 |
+| Mana | OtherActionManaRegen (tag 1) | +4580.1 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +4440.1 |
+| Mana | [Scorch](https://www.wowhead.com/forever/spell=10207) | -3928.8 |
+| Mana | [Fire Blast](https://www.wowhead.com/forever/spell=10199) | -3888.3 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3457.9 |
+| Mana | [Master of Elements](https://www.wowhead.com/forever/spell=29076) | +2149.2 |
+| Mana | [Item 8008](https://www.wowhead.com/forever/item=8008) | +1099.9 |
+| Mana | [Fireball](https://www.wowhead.com/forever/spell=25306) | -868.4 |
+| Mana | [Item 8007](https://www.wowhead.com/forever/item=8007) | +839.1 |
+| Mana | [Item 5513](https://www.wowhead.com/forever/item=5513) | +406.1 |
+
+## Warrior — Fury
+
+**Talents:** 17/34/0 · `20305113002-050520035151010051`
+
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
+
+
+### Results
+
+| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
+|---|---:|---:|---:|---:|
+| Orc | 799.66 | 951.37 | +18.97% | 0.00 |
+| Tauren | 797.41 | 933.65 | +17.09% | 0.00 |
+| Troll | 796.64 | 935.26 | +17.40% | 0.00 |
+| Undead | 810.49 | 953.82 | +17.69% | 0.00 |
+| Windshaper | 795.46 | 932.68 | +17.25% | 0.00 |
+| Human | 807.31 | 946.13 | +17.20% | 0.00 |
+| Dwarf | 797.14 | 934.15 | +17.19% | 0.00 |
+| Night Elf | 795.06 | 932.10 | +17.24% | 0.00 |
+| Gnome | 789.50 | 923.79 | +17.01% | 0.00 |
+| High Order | 795.46 | 932.68 | +17.25% | 0.00 |
+
+Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Undead
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Lionheart Helm](https://www.wowhead.com/forever/item=12640) | 61 | Lesser Arcanum of Voracity |
+| Neck | [Amulet of the Darkmoon](https://www.wowhead.com/forever/item=19491) | 65 | — |
+| Shoulders | [Defiler's Plate Spaulders](https://www.wowhead.com/forever/item=20212) | 65 | Chromatic Mantle of the Dawn |
+| Back | [Deathguard's Cloak](https://www.wowhead.com/forever/item=20068) | 65 | Enchant Boots - Lesser Agility |
+| Chest | [Timbermaw Tunic](https://www.wowhead.com/forever/item=252484) | 61 | Enchant Chest - Greater Stats |
+| Wrists | [Primal Batskin Bracers](https://www.wowhead.com/forever/item=19687) | 65 | Enchant Bracer - Superior Strength |
+| Hands | [Raider Gauntlets](https://www.wowhead.com/forever/item=272095) | 65 | Enchant Gloves - Minor Haste |
+| Waist | [Might of the Timbermaw](https://www.wowhead.com/forever/item=19044) | 58 | — |
+| Legs | [Titanic Leggings](https://www.wowhead.com/forever/item=22385) | 60 | Lesser Arcanum of Voracity |
+| Feet | [Scalegut Treaders](https://www.wowhead.com/forever/item=275618) | 58 | Enchant Boots - Greater Agility |
+| Ring 1 | [Blackstone Ring](https://www.wowhead.com/forever/item=17713) | 54 | — |
+| Ring 2 | [Legionnaire's Band](https://www.wowhead.com/forever/item=19510) | 63 | — |
+| Trinket 1 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Trinket 2 | [Molten Heart of the Mountain](https://www.wowhead.com/forever/item=249470) | 55 | — |
+| Main hand | [Premier High Warlord's Blade](https://www.wowhead.com/forever/item=272452) | 65 | Enchant Weapon - Crusader |
+| Off hand | [Premier High Warlord's Quickblade](https://www.wowhead.com/forever/item=272684) | 65 | Enchant Weapon - Crusader |
+| Ranged/relic | [Premier High Warlord's Recurve](https://www.wowhead.com/forever/item=272594) | 65 | SAF-T Ultra Precision Scope |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
 ### Rotation priorities
 
@@ -99,40 +238,77 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 
 | Action | DPS |
 |---|---:|
-| [Heroic Strike](https://www.wowhead.com/forever/spell=25286) | 220.23 |
-| [Execute](https://www.wowhead.com/forever/spell=20662) | 122.50 |
-| Auto-attack (tag 2) | 119.73 |
-| [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | 92.27 |
-| Auto-attack (tag 1) | 61.31 |
-| Auto-attack (tag 3) | 46.14 |
-| [Whirlwind](https://www.wowhead.com/forever/spell=1680) | 37.49 |
-| [Slam](https://www.wowhead.com/forever/spell=11605) | 26.74 |
+| [Heroic Strike](https://www.wowhead.com/forever/spell=25286) | 291.89 |
+| Auto-attack (tag 2) | 142.81 |
+| [Execute](https://www.wowhead.com/forever/spell=20662) | 141.25 |
+| [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | 114.90 |
+| Auto-attack (tag 3) | 53.87 |
+| [Whirlwind](https://www.wowhead.com/forever/spell=1680) | 46.81 |
+| Auto-attack (tag 1) | 45.93 |
+| [Slam](https://www.wowhead.com/forever/spell=11605) | 36.89 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Rage | Auto-attack (tag 2) | +2816.8 |
+| Rage | [Execute](https://www.wowhead.com/forever/spell=20662) | -1289.4 |
+| Rage | [Heroic Strike](https://www.wowhead.com/forever/spell=25286) | -1258.4 |
+| Rage | [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | -1132.8 |
+| Rage | Auto-attack (tag 1) | +1018.5 |
+| Rage | [Whirlwind](https://www.wowhead.com/forever/spell=1680) | -572.6 |
+| Rage | [Slam](https://www.wowhead.com/forever/spell=11605) | -204.1 |
+| Rage | [Unbridled Wrath](https://www.wowhead.com/forever/spell=12964) | +179.5 |
+| Rage | [Item 13442](https://www.wowhead.com/forever/item=13442) | +160.6 |
+| Rage | OtherActionRefund | +157.9 |
+| Rage | [Anger Management](https://www.wowhead.com/forever/spell=12296) | +96.6 |
+| Rage | [Bloodrage](https://www.wowhead.com/forever/spell=2687) | +89.4 |
 
 ## Hunter — Beast Mastery
 
 **Talents:** 31/20/0 · `5320001505101251-00531510005`
 
-[Requests, results and search evidence](../artifacts/optimization/beast_mastery.json)
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
 
-- The retained 31/20 build moves Efficiency 5→1 to fund Improved Stings 0→3 and Mortal Shots 4→5 relative to the frozen baseline. Pet settings and equipment are unchanged.
-- Rank-4 Aimed Shot replaces Multi-Shot as the main shared-cooldown shot and has no swing-window wait. Arcane Shot retains its 15% mana floor; Intimidation requires more than 80% mana.
-- All Aimed Shot ranks, shot windows, dot omissions, mana floors and end-of-fight spending were screened under continuous Auto Shot. All eight races passed 5,000-iteration comparisons, with under one second of mana-limited time.
-- Summon Hawk guardian coexistence and scaling remain an approximation awaiting T14. Historical search entries predate the auto-attack correction.
 
 ### Results
 
 | Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
 |---|---:|---:|---:|---:|
-| Orc | 751.55 | 772.13 | +2.74% | 0.88 |
-| Tauren | 749.50 | 770.17 | +2.76% | 0.97 |
-| Troll | 751.96 | 771.95 | +2.66% | 0.91 |
-| Windshaper | 752.21 | 773.11 | +2.78% | 0.70 |
-| Human | 748.94 | 769.52 | +2.75% | 0.56 |
-| Dwarf | 747.22 | 767.41 | +2.70% | 0.85 |
-| Night Elf | 757.24 | 778.15 | +2.76% | 0.78 |
-| High Order | 752.21 | 773.11 | +2.78% | 0.70 |
+| Orc | 772.00 | 880.94 | +14.11% | 0.00 |
+| Tauren | 770.11 | 870.91 | +13.09% | 0.00 |
+| Troll | 771.94 | 876.72 | +13.57% | 0.00 |
+| Windshaper | 773.15 | 877.42 | +13.49% | 0.00 |
+| Human | 769.43 | 883.41 | +14.81% | 0.00 |
+| Dwarf | 767.25 | 868.58 | +13.21% | 0.00 |
+| Night Elf | 777.91 | 880.06 | +13.13% | 0.00 |
+| High Order | 773.15 | 877.42 | +13.49% | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Human
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Black Dragonscale Helm](https://www.wowhead.com/forever/item=252605) | 61 | Lesser Arcanum of Voracity |
+| Neck | [Amulet of the Darkmoon](https://www.wowhead.com/forever/item=19491) | 65 | — |
+| Shoulders | [Darkspear Pauldrons](https://www.wowhead.com/forever/item=272105) | 65 | Chromatic Mantle of the Dawn |
+| Back | [Shifting Cloak](https://www.wowhead.com/forever/item=18511) | 62 | Enchant Boots - Lesser Agility |
+| Chest | [Dawn Armor](https://www.wowhead.com/forever/item=252483) | 61 | Enchant Chest - Greater Stats |
+| Wrists | [Primal Batskin Bracers](https://www.wowhead.com/forever/item=19687) | 65 | Enchant Boots - Minor Agility |
+| Hands | [Chromatic Gauntlets](https://www.wowhead.com/forever/item=19157) | 70 | Enchant Weapon - Agility |
+| Waist | [Molten Belt](https://www.wowhead.com/forever/item=19163) | 70 | — |
+| Legs | [Sentinel's Chain Leggings](https://www.wowhead.com/forever/item=22748) | 65 | Lesser Arcanum of Voracity |
+| Feet | [Scalegut Treaders](https://www.wowhead.com/forever/item=275618) | 58 | Enchant Boots - Greater Agility |
+| Ring 1 | [Cutthroat's Signet](https://www.wowhead.com/forever/item=272408) | 65 | — |
+| Ring 2 | [Channeler's Ring](https://www.wowhead.com/forever/item=272406) | 65 | — |
+| Trinket 1 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Trinket 2 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
+| Main hand | [Premier High Warlord's Spellblade](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Agility |
+| Off hand | [Premier High Warlord's Blade](https://www.wowhead.com/forever/item=272452) | 65 | Enchant Weapon - Agility |
+| Ranged/relic | [Core Marksman Rifle](https://www.wowhead.com/forever/item=18282) | 65 | SAF-T Ultra Precision Scope |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
 ### Before the pull
 
@@ -147,92 +323,81 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 5. Cast [Aimed Shot](https://www.wowhead.com/forever/spell=20902) when `{"autoTimeToNext":{"autoType":"Ranged"}}` ≥ 0s.
 6. Cast [Arcane Shot](https://www.wowhead.com/forever/spell=14287) when Mana fraction ≥ 15%.
 
-### Damage breakdown — Night Elf
+### Damage breakdown — Human
 
 | Action | DPS |
 |---|---:|
-| Shoot | 325.28 |
-| Cat: Auto-attack (tag 1) | 148.90 |
-| [Aimed Shot](https://www.wowhead.com/forever/spell=20902) | 111.20 |
-| [Serpent Sting](https://www.wowhead.com/forever/spell=25295) | 67.54 |
-| [Summon Hawk](https://www.wowhead.com/forever/spell=1293527) | 63.58 |
-| [Arcane Shot](https://www.wowhead.com/forever/spell=14287) | 38.60 |
-| Cat: [Bite](https://www.wowhead.com/forever/spell=17261) | 12.57 |
+| Shoot | 381.80 |
+| Cat: Auto-attack (tag 1) | 148.84 |
+| [Aimed Shot](https://www.wowhead.com/forever/spell=20902) | 130.12 |
+| [Serpent Sting](https://www.wowhead.com/forever/spell=25295) | 82.35 |
+| [Summon Hawk](https://www.wowhead.com/forever/spell=1293527) | 67.74 |
+| [Arcane Shot](https://www.wowhead.com/forever/spell=14287) | 49.51 |
+| Cat: [Bite](https://www.wowhead.com/forever/spell=17261) | 12.55 |
 | Cat: [Claw](https://www.wowhead.com/forever/spell=3009) | 10.48 |
 
-## Mage — Fire
+### Resource flow
 
-**Talents:** 17/31/3 · `0501252000002-23450000130133051-003`
-
-[Requests, results and search evidence](../artifacts/optimization/fire.json)
-
-- The 17/31/3 build adds Elemental Precision 3/3, funded by one point each from Arcane Subtlety, Improved Fireball and Arcane Meditation. The hit talent reduces the paid hit-budget deduction rather than granting free item stats.
-- The fallback filler is maximum-rank Scorch instead of rank 1. Fireball uses a 150-mana-per-remaining-second reserve, retaining the existing Hot Streak Pyroblast, Fire Blast, Scorch debuff, Mana Gem and Evocation priorities.
-- Fireball ranks, Frostfire ranks, mana reserves and Fire Blast/Pyroblast omission were tested before and after talent changes. No unverified Frostfire interaction was added.
-- All six races passed independent 5,000-iteration comparisons. Mana-limited time is 1.43–2.29 seconds; existing gear, potion/rune choices and external buffs remain fixed.
-- Revalidated at 5,000 iterations per race with continuous weapon-role autos and assumed general-haste Energy scaling. The prior retained talents and APL passed without changes; the comparison baseline uses this same engine.
-
-### Results
-
-| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
-|---|---:|---:|---:|---:|
-| Orc | 698.70 | 759.46 | +8.70% | 2.22 |
-| Troll | 694.03 | 754.07 | +8.65% | 2.34 |
-| Undead | 708.53 | 766.60 | +8.20% | 2.24 |
-| Human | 695.67 | 757.07 | +8.83% | 2.06 |
-| Gnome | 699.73 | 762.36 | +8.95% | 1.58 |
-| High Order | 696.84 | 757.01 | +8.64% | 2.16 |
-
-Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
-
-### Rotation priorities
-
-1. Cast [Item 8008](https://www.wowhead.com/forever/item=8008) when Mana fraction ≤ 80%.
-2. Use ready automatic cooldowns.
-3. Cast [Evocation](https://www.wowhead.com/forever/spell=12051) when (Mana fraction < 20% AND Time remaining > 25s).
-4. Cast [Pyroblast (rank 8)](https://www.wowhead.com/forever/spell=18809) when [Hot Streak](https://www.wowhead.com/forever/spell=44445) stacks = 3.
-5. Cast [Fire Blast (rank 7)](https://www.wowhead.com/forever/spell=10199) when Mana ≥ Time remaining × 10.
-6. Cast [Scorch (rank 7)](https://www.wowhead.com/forever/spell=10207) when ([Improved Scorch](https://www.wowhead.com/forever/spell=12873) stacks < 5 OR `{"auraRemainingTime":{"auraId":{"spellId":12873}}}` ≤ 5s).
-7. Cast [Fireball](https://www.wowhead.com/forever/spell=25306) when Mana ≥ Time remaining × 150.
-8. Cast [Scorch](https://www.wowhead.com/forever/spell=10207).
-
-### Damage breakdown — Undead
-
-| Action | DPS |
-|---|---:|
-| [Pyroblast](https://www.wowhead.com/forever/spell=18809) | 428.52 |
-| [Scorch](https://www.wowhead.com/forever/spell=10207) | 131.92 |
-| [Fire Blast](https://www.wowhead.com/forever/spell=10199) | 95.74 |
-| [Ignite](https://www.wowhead.com/forever/spell=12654) | 79.93 |
-| [Fireball](https://www.wowhead.com/forever/spell=25306) | 18.86 |
-| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 11.63 |
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | [Aimed Shot](https://www.wowhead.com/forever/spell=20902) | -9216.2 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +7630.6 |
+| Mana | OtherActionManaRegen (tag 1) | +6113.4 |
+| Mana | [Arcane Shot](https://www.wowhead.com/forever/spell=14287) | -5535.8 |
+| Mana | [Serpent Sting](https://www.wowhead.com/forever/spell=25295) | -4607.9 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3597.7 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3591.7 |
+| Mana | [Summon Hawk](https://www.wowhead.com/forever/spell=1293527) | -3159.9 |
+| Mana | OtherActionManaRegen (tag 2) | +864.2 |
+| Mana | [Bestial Wrath](https://www.wowhead.com/forever/spell=19574) | -619.2 |
+| Mana | [Intimidation](https://www.wowhead.com/forever/spell=19577) | -405.6 |
+| Mana | [Rapid Fire](https://www.wowhead.com/forever/spell=3045) | -200.0 |
 
 ## Hunter — Marksmanship
 
 **Talents:** 18/33/0 · `5023000503-0053451001503051`
 
-[Requests, results and search evidence](../artifacts/optimization/marksmanship.json)
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
 
-- The retained 18/33/0 allocation includes Sniper Shot and its Trueshot Aura prerequisite, with Ferocity 3/5. Existing external buffs remain fixed; no new raid buff is credited for taking the prerequisite.
-- Use Sniper Shot above 40% mana, maintain Serpent Sting, then use rank-3 Aimed Shot and Arcane Shot without swing-window waits. Multi-Shot is omitted on the single target.
-- Sniper Shot became viable after removing inherited shot pauses and added wind-up. Initial versions lost 19–31 seconds to failed mana checks; the lower Aimed Shot rank and explicit Sniper mana floor reduce that to 1.72–2.30 seconds across races.
-- All eight races passed 5,000-iteration comparisons against the same-engine frozen baseline, gaining 4.28–4.39%. All Aimed Shot ranks and several shot/mana priorities were screened; no gear or consumable changed.
-- Historical search entries used the interrupted-shot model and are not evidence against the current Sniper build.
 
 ### Results
 
 | Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
 |---|---:|---:|---:|---:|
-| Orc | 702.66 | 732.75 | +4.28% | 2.05 |
-| Tauren | 700.47 | 730.45 | +4.28% | 2.30 |
-| Troll | 702.53 | 732.61 | +4.28% | 2.21 |
-| Windshaper | 702.84 | 733.66 | +4.39% | 1.74 |
-| Human | 699.54 | 729.93 | +4.34% | 1.72 |
-| Dwarf | 697.57 | 727.60 | +4.30% | 1.90 |
-| Night Elf | 708.30 | 738.88 | +4.32% | 1.80 |
-| High Order | 702.84 | 733.66 | +4.39% | 1.74 |
+| Orc | 732.64 | 851.27 | +16.19% | 0.02 |
+| Tauren | 730.35 | 840.42 | +15.07% | 0.02 |
+| Troll | 732.50 | 845.00 | +15.36% | 0.03 |
+| Windshaper | 733.67 | 846.57 | +15.39% | 0.02 |
+| Human | 729.69 | 853.91 | +17.02% | 0.01 |
+| Dwarf | 727.56 | 837.77 | +15.15% | 0.02 |
+| Night Elf | 738.73 | 850.04 | +15.07% | 0.02 |
+| High Order | 733.67 | 846.57 | +15.39% | 0.02 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Human
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Black Dragonscale Helm](https://www.wowhead.com/forever/item=252605) | 61 | Lesser Arcanum of Voracity |
+| Neck | [Amulet of the Darkmoon](https://www.wowhead.com/forever/item=19491) | 65 | — |
+| Shoulders | [Darkspear Pauldrons](https://www.wowhead.com/forever/item=272105) | 65 | Chromatic Mantle of the Dawn |
+| Back | [Shifting Cloak](https://www.wowhead.com/forever/item=18511) | 62 | Enchant Boots - Lesser Agility |
+| Chest | [Dawn Armor](https://www.wowhead.com/forever/item=252483) | 61 | Enchant Chest - Greater Stats |
+| Wrists | [Primal Batskin Bracers](https://www.wowhead.com/forever/item=19687) | 65 | Enchant Boots - Minor Agility |
+| Hands | [Chromatic Gauntlets](https://www.wowhead.com/forever/item=19157) | 70 | Enchant Weapon - Agility |
+| Waist | [Molten Belt](https://www.wowhead.com/forever/item=19163) | 70 | — |
+| Legs | [Sentinel's Chain Leggings](https://www.wowhead.com/forever/item=22748) | 65 | Lesser Arcanum of Voracity |
+| Feet | [Scalegut Treaders](https://www.wowhead.com/forever/item=275618) | 58 | Enchant Boots - Greater Agility |
+| Ring 1 | [Cutthroat's Signet](https://www.wowhead.com/forever/item=272408) | 65 | — |
+| Ring 2 | [Channeler's Ring](https://www.wowhead.com/forever/item=272406) | 65 | — |
+| Trinket 1 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Trinket 2 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
+| Main hand | [Premier High Warlord's Spellblade](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Agility |
+| Off hand | [Premier High Warlord's Blade](https://www.wowhead.com/forever/item=272452) | 65 | Enchant Weapon - Agility |
+| Ranged/relic | [Core Marksman Rifle](https://www.wowhead.com/forever/item=18282) | 65 | SAF-T Ultra Precision Scope |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
 ### Before the pull
 
@@ -246,252 +411,76 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 4. Cast [Aimed Shot](https://www.wowhead.com/forever/spell=20901) when `{"autoTimeToNext":{"autoType":"Ranged"}}` ≥ 0s.
 5. Cast [Arcane Shot](https://www.wowhead.com/forever/spell=14287) when `{"autoTimeToNext":{"autoType":"Ranged"}}` ≥ 0s.
 
-### Damage breakdown — Night Elf
-
-| Action | DPS |
-|---|---:|
-| Shoot | 341.70 |
-| [Aimed Shot](https://www.wowhead.com/forever/spell=20901) | 113.23 |
-| Cat: Auto-attack (tag 1) | 103.14 |
-| [Serpent Sting](https://www.wowhead.com/forever/spell=25295) | 62.46 |
-| [Arcane Shot](https://www.wowhead.com/forever/spell=14287) | 56.90 |
-| [Sniper Shot](https://www.wowhead.com/forever/spell=1310786) | 45.26 |
-| Cat: [Claw](https://www.wowhead.com/forever/spell=3009) | 12.56 |
-| Cat: [Bite](https://www.wowhead.com/forever/spell=17261) | 3.64 |
-
-## Hunter — Survival
-
-**Talents:** 7/11/33 · `502-0050051-230230230250022151`
-
-[Requests, results and search evidence](../artifacts/optimization/survival.json)
-
-- The retained 7/11/33 build adds Deadly Aspects 5/5 and Focused Fire 2/2, funded by Efficiency 4→0 and Mortal Shots 3→0.
-- Surefooted 1→3 is funded by Improved Tracking 3→2 and Deterrence 1→0. Its hit benefit reduces the paid hit-budget deduction; catalog gear stats are unchanged.
-- Deadly Aspects enables the modeled 30% melee-haste proc under Aspect of the Beast. Ten independently validated one-point talent moves were retained; a subsequent search found no further validated move.
-- Raptor Strike, Strider Kick, Mongoose Bite and Immolation Trap priorities were retested after the talent changes. The original APL remained best within the tested choices.
-- All eight races passed 5,000-iteration comparisons with zero mana-limited time. The fixed melee distance, weapon and pet remain unchanged.
-- Revalidated at 5,000 iterations per race with continuous weapon-role autos and assumed general-haste Energy scaling. The prior retained talents and APL passed without changes; the comparison baseline uses this same engine.
-
-### Results
-
-| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
-|---|---:|---:|---:|---:|
-| Orc | 587.57 | 662.37 | +12.73% | 0.00 |
-| Tauren | 585.30 | 659.66 | +12.70% | 0.00 |
-| Troll | 585.93 | 660.88 | +12.79% | 0.00 |
-| Windshaper | 586.61 | 661.36 | +12.74% | 0.00 |
-| Human | 595.30 | 671.17 | +12.75% | 0.00 |
-| Dwarf | 582.39 | 656.28 | +12.69% | 0.00 |
-| Night Elf | 591.15 | 666.37 | +12.72% | 0.00 |
-| High Order | 586.61 | 661.36 | +12.74% | 0.00 |
-
-Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
-
-### Before the pull
-
-- -4s: [Aspect of the Beast](https://www.wowhead.com/forever/spell=1299447).
-- -2s: `{"move": {"rangeFromTarget": {"const": {"val": "5"}}}}`.
-
-### Rotation priorities
-
-1. Use ready automatic cooldowns.
-2. Cast [Raptor Strike](https://www.wowhead.com/forever/spell=14266).
-3. Cast [Strider Kick](https://www.wowhead.com/forever/spell=1317257).
-4. Cast [Mongoose Bite](https://www.wowhead.com/forever/spell=14271).
-5. Cast [Immolation Trap](https://www.wowhead.com/forever/spell=14305).
-
 ### Damage breakdown — Human
 
 | Action | DPS |
 |---|---:|
-| Auto-attack (tag 2) | 135.49 |
-| Auto-attack (tag 1) | 123.00 |
-| Cat: Auto-attack (tag 1) | 83.70 |
-| [Raptor Strike](https://www.wowhead.com/forever/spell=14266) | 77.93 |
-| [Mongoose Bite](https://www.wowhead.com/forever/spell=14271) | 72.96 |
-| [Strider Kick](https://www.wowhead.com/forever/spell=1317257) | 56.66 |
-| [Immolation Trap](https://www.wowhead.com/forever/spell=14305) | 52.03 |
-| Auto-attack (tag 3) | 40.18 |
+| Shoot | 401.46 |
+| [Aimed Shot](https://www.wowhead.com/forever/spell=20901) | 129.47 |
+| Cat: Auto-attack (tag 1) | 103.31 |
+| [Serpent Sting](https://www.wowhead.com/forever/spell=25295) | 72.84 |
+| [Arcane Shot](https://www.wowhead.com/forever/spell=14287) | 70.16 |
+| [Sniper Shot](https://www.wowhead.com/forever/spell=1310786) | 60.50 |
+| Cat: [Claw](https://www.wowhead.com/forever/spell=3009) | 12.55 |
+| Cat: [Bite](https://www.wowhead.com/forever/spell=17261) | 3.62 |
 
-## Warrior — Arms
+### Resource flow
 
-**Talents:** 34/17/0 · `20305213132515001-550500000002`
-
-[Requests, results and search evidence](../artifacts/optimization/arms.json)
-
-- The retained 34/17/0 allocation moves Deflection 2/2, Improved Slam 2/2 and one Improved Heroic Strike point into Unbridled Wrath 5/5 and Improved Execute 2/2. Mortal Strike’s Sweeping Strikes prerequisite and Anger Management’s Tactical Mastery prerequisite remain funded.
-- A coupled talent/APL experiment permits untalented Slam at 15 rage while reallocating its two talent points. It preserves continuous autos; merely removing Improved Slam without replacing the old cast-time condition would disable Slam.
-- Add the already-talented Spearing Strike as a low-priority action at 15 rage. Rend, Overpower, Mortal Strike, execute handling, the 70-rage Heroic Strike condition and final-window Recklessness remain.
-- The three execute/Slam allocations were compared explicitly, followed by another legal talent search and rotation screen. All ten races passed independent 5,000-iteration comparisons. No equipment or external effect changed.
-- Rage generation and combat-table uncertainties remain T01/T02/T06; these results use the same inherited rules as the frozen baseline.
-
-### Results
-
-| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
-|---|---:|---:|---:|---:|
-| Orc | 626.67 | 654.23 | +4.40% | 0.00 |
-| Tauren | 625.34 | 652.84 | +4.40% | 0.00 |
-| Troll | 623.54 | 650.57 | +4.33% | 0.00 |
-| Undead | 635.80 | 663.17 | +4.30% | 0.00 |
-| Windshaper | 623.18 | 650.72 | +4.42% | 0.00 |
-| Human | 619.36 | 646.66 | +4.41% | 0.00 |
-| Dwarf | 619.32 | 646.97 | +4.47% | 0.00 |
-| Night Elf | 624.73 | 651.19 | +4.23% | 0.00 |
-| Gnome | 622.60 | 648.87 | +4.22% | 0.00 |
-| High Order | 623.18 | 650.72 | +4.42% | 0.00 |
-
-Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
-
-### Rotation priorities
-
-1. Cast [Berserker Stance](https://www.wowhead.com/forever/spell=2458) when Time remaining ≤ 15s.
-2. Cast [Recklessness](https://www.wowhead.com/forever/spell=1719) when Time remaining ≤ 15s.
-3. Use ready automatic cooldowns.
-4. Cast [Battle Stance](https://www.wowhead.com/forever/spell=2457) when (NOT Time remaining ≤ 15s AND NOT [Recklessness](https://www.wowhead.com/forever/spell=1719) active).
-5. Cast [Overpower](https://www.wowhead.com/forever/spell=11585).
-6. Cast [Rend](https://www.wowhead.com/forever/spell=11574) when NOT [Rend](https://www.wowhead.com/forever/spell=11574) DoT active.
-7. Cast [Execute](https://www.wowhead.com/forever/spell=20662).
-8. Cast [Mortal Strike](https://www.wowhead.com/forever/spell=21553).
-9. Cast [Whirlwind](https://www.wowhead.com/forever/spell=1680).
-10. Cast [Slam](https://www.wowhead.com/forever/spell=11605) when Rage ≥ 15.
-11. Cast [Heroic Strike](https://www.wowhead.com/forever/spell=25286) when (Rage ≥ 70 AND NOT `{"isExecutePhase":{"threshold":"E20"}}`).
-12. Cast [Spearing Strike](https://www.wowhead.com/forever/spell=1310222) when Rage ≥ 15.
-
-### Damage breakdown — Undead
-
-| Action | DPS |
-|---|---:|
-| Auto-attack (tag 1) | 148.02 |
-| [Overpower](https://www.wowhead.com/forever/spell=11585) | 111.49 |
-| [Execute](https://www.wowhead.com/forever/spell=20662) | 102.55 |
-| [Mortal Strike](https://www.wowhead.com/forever/spell=21553) | 102.14 |
-| Auto-attack (tag 3) | 64.33 |
-| [Heroic Strike](https://www.wowhead.com/forever/spell=25286) | 52.19 |
-| [Slam](https://www.wowhead.com/forever/spell=11605) | 25.60 |
-| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 17.33 |
-
-## Warlock — Destruction
-
-**Talents:** 13/5/33 · `2521000003-0005-0050355103101351`
-
-[Requests, results and search evidence](../artifacts/optimization/destruction.json)
-
-- The retained 13/5/33 build replaces Improved Shadow Bolt 5/5 and Fel Vitality 3/3 with four additional Suppression points, Pandemic 3/3 and Cataclysm 3/3. Incinerate remains the filler; no Shadow Bolt debuff is credited without its talent.
-- Refresh Immolate ahead of Conflagrate and other DoTs, and use Conflagrate whenever its available Immolate allows it instead of waiting for the last two seconds. The existing curse, Corruption and Shadowburn actions remain.
-- All five races passed independent 5,000-iteration comparisons. Suppression returns paid-hit budget; the gain is not entirely from rotation changes. Pet choice, gear and consumes remain fixed.
-- Incinerate’s Immolate bonus remains base-damage-only pending T08. Life Tap mana sustain assumes healing support.
-
-### Results
-
-| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
-|---|---:|---:|---:|---:|
-| Orc | 599.12 | 645.39 | +7.72% | 0.00 |
-| Troll | 594.28 | 639.30 | +7.58% | 0.00 |
-| Undead | 605.23 | 650.98 | +7.56% | 0.00 |
-| Human | 594.60 | 640.40 | +7.70% | 0.00 |
-| Gnome | 601.96 | 646.15 | +7.34% | 0.00 |
-
-Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
-
-### Rotation priorities
-
-1. Cast OtherActionPotion when (Time remaining ≥ 15s AND Mana fraction ≤ 75%).
-2. Cast [Item 12662](https://www.wowhead.com/forever/item=12662) when (Time remaining ≥ 15s AND Mana fraction ≤ 60%).
-3. Use ready automatic cooldowns.
-4. Cast [Shadowburn (rank 6)](https://www.wowhead.com/forever/spell=18871) when Time remaining ≤ 1.5.
-5. Cast [Searing Pain (rank 6)](https://www.wowhead.com/forever/spell=17923) when Time remaining ≤ 3.5.
-6. Cast [Life Tap (rank 6)](https://www.wowhead.com/forever/spell=11689) when Mana fraction < 10%.
-7. Cast [Curse of the Elements](https://www.wowhead.com/forever/spell=1311680) when NOT [Curse of the Elements](https://www.wowhead.com/forever/spell=1311680) active.
-8. Cast [Immolate (rank 8)](https://www.wowhead.com/forever/spell=25309) when [Immolate (rank 8)](https://www.wowhead.com/forever/spell=25309) DoT time remaining ≤ `{"spellCastTime":{"spellId":{"spellId":25309,"rank":8}}}`.
-9. Cast [Conflagrate](https://www.wowhead.com/forever/spell=18932) when [Immolate](https://www.wowhead.com/forever/spell=25309) DoT time remaining ≤ 15s.
-10. Cast [Bane of Doom](https://www.wowhead.com/forever/spell=603) when (Time remaining ≥ 61s AND NOT [Bane of Doom](https://www.wowhead.com/forever/spell=603) DoT active).
-11. Cast [Bane of Agony (rank 6)](https://www.wowhead.com/forever/spell=11713) when (NOT [Bane of Doom](https://www.wowhead.com/forever/spell=603) DoT active AND [Bane of Agony (rank 6)](https://www.wowhead.com/forever/spell=11713) DoT time remaining ≤ `{"spellCastTime":{"spellId":{"spellId":11713,"rank":6}}}`).
-12. Cast [Corruption (rank 7)](https://www.wowhead.com/forever/spell=25311) when [Corruption (rank 7)](https://www.wowhead.com/forever/spell=25311) DoT time remaining ≤ `{"spellCastTime":{"spellId":{"spellId":25311,"rank":7}}}`.
-13. Cast [Shadowburn (rank 6)](https://www.wowhead.com/forever/spell=18871).
-14. Cast [Incinerate](https://www.wowhead.com/forever/spell=1293813).
-
-### Damage breakdown — Undead
-
-| Action | DPS |
-|---|---:|
-| [Incinerate](https://www.wowhead.com/forever/spell=1293813) | 195.94 |
-| [Immolate](https://www.wowhead.com/forever/spell=25309) | 92.43 |
-| Succubus: Auto-attack (tag 1) | 88.98 |
-| [Conflagrate](https://www.wowhead.com/forever/spell=18932) | 77.05 |
-| [Corruption](https://www.wowhead.com/forever/spell=25311) | 66.09 |
-| [Bane of Doom](https://www.wowhead.com/forever/spell=603) | 61.35 |
-| [Shadowburn](https://www.wowhead.com/forever/spell=18871) | 40.64 |
-| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 11.18 |
-
-## Priest — Shadow
-
-**Talents:** 20/0/31 · `005300231303--505120501201300051`
-
-[Requests, results and search evidence](../artifacts/optimization/shadow.json)
-
-- The existing 20/0/31 talents are retained. Legal one-point alternatives did not pass independent validation.
-- Inner Focus is explicitly paired with Mind Blast rather than sitting behind the ordinary Devouring Plague cast. The retained dots, spell ranks and full Mind Flay channel remain unchanged.
-- Dot omissions, end-of-fight Pain thresholds, channel interruption conditions and Inner Focus targets were screened. The retained change passed 5,000-iteration comparisons on all six Priest races.
-- Priest spellbook availability still needs in-game confirmation (T05); Mind Flay haste remains a separate unresolved interaction (T17).
-- Channel readiness conditions were retested after fixing spellCanCast inside interruptIf. Neither Mind Blast-only nor DoT-aware interruption improved the retained full-channel rotation; the earlier no-op interrupt trials are superseded by shadow-channel-fixed.
-
-### Results
-
-| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
-|---|---:|---:|---:|---:|
-| Troll | 635.98 | 637.21 | +0.19% | 0.00 |
-| Undead | 644.63 | 646.32 | +0.26% | 0.00 |
-| Human | 636.31 | 637.98 | +0.26% | 0.00 |
-| Dwarf | 641.62 | 643.28 | +0.26% | 0.00 |
-| Night Elf | 641.52 | 643.15 | +0.25% | 0.00 |
-| Gnome | 641.23 | 642.90 | +0.26% | 0.00 |
-
-Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
-
-### Before the pull
-
-- -1s: [Shadowform](https://www.wowhead.com/forever/spell=15473).
-
-### Rotation priorities
-
-1. Use ready automatic cooldowns.
-2. Cast [Devouring Plague (rank 6)](https://www.wowhead.com/forever/spell=19280) when NOT [Devouring Plague (rank 6)](https://www.wowhead.com/forever/spell=19280) DoT active.
-3. Cast [Shadow Word: Pain (rank 8)](https://www.wowhead.com/forever/spell=10894) when (NOT [Shadow Word: Pain (rank 8)](https://www.wowhead.com/forever/spell=10894) DoT active AND Time remaining ≥ 10).
-4. `{"condition":{},"strictSequence":{"actions":[{"castSpell":{"spellId":{"spellId":14751}}},{"castSpell":{"spellId":{"spellId":10947}}}]}}` when `{}`.
-5. Cast [Mind Blast (rank 9)](https://www.wowhead.com/forever/spell=10947).
-6. Cast [Mind Flay (rank 6)](https://www.wowhead.com/forever/spell=18807).
-
-### Damage breakdown — Undead
-
-| Action | DPS |
-|---|---:|
-| [Mind Flay](https://www.wowhead.com/forever/spell=18807) | 307.45 |
-| [Mind Blast](https://www.wowhead.com/forever/spell=10947) | 131.72 |
-| [Shadow Word: Pain](https://www.wowhead.com/forever/spell=10894) | 115.49 |
-| [Devouring Plague](https://www.wowhead.com/forever/spell=19280) | 80.90 |
-| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 10.76 |
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +8216.0 |
+| Mana | [Arcane Shot](https://www.wowhead.com/forever/spell=14287) | -6782.9 |
+| Mana | [Aimed Shot](https://www.wowhead.com/forever/spell=20901) | -5783.8 |
+| Mana | [Sniper Shot](https://www.wowhead.com/forever/spell=1310786) | -4929.7 |
+| Mana | [Serpent Sting](https://www.wowhead.com/forever/spell=25295) | -3731.1 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3603.6 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3580.2 |
+| Mana | OtherActionManaRegen (tag 1) | +2923.9 |
+| Mana | OtherActionManaRegen (tag 2) | +700.8 |
+| Mana | [Rapid Fire](https://www.wowhead.com/forever/spell=3045) | -200.0 |
 
 ## Warlock — Demonic Pact
 
 **Talents:** 2/31/18 · `011-0005003221220311351-0550005003`
 
-[Requests, results and search evidence](../artifacts/optimization/demonology.json)
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
 
-- The retained 2/31/18 build moves Improved Life Tap 1/2 into Suppression 1/5. The paid-hit model converts the saved hit requirement into offensive budget; this is not free hit.
-- The existing APL and Succubus/Voidwalker Pact configuration remain unchanged. DoT ordering, late-fight cutoffs, Life Tap timing, Soul Fire under Decimation and channel fillers were screened; no rotation gain survived independent confirmation.
-- Five races passed 5,000-iteration comparisons. Demonic Pact sacrifice/pet persistence remains subject to T09; pet settings were not changed. Life Tap sustain assumes healing support.
 
 ### Results
 
 | Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
 |---|---:|---:|---:|---:|
-| Orc | 631.10 | 635.03 | +0.62% | 0.00 |
-| Troll | 627.70 | 631.18 | +0.56% | 0.00 |
-| Undead | 636.53 | 639.32 | +0.44% | 0.00 |
-| Human | 637.56 | 641.24 | +0.58% | 0.00 |
-| Gnome | 638.10 | 640.85 | +0.43% | 0.00 |
+| Orc | 634.92 | 805.28 | +26.83% | 0.00 |
+| Troll | 631.11 | 797.56 | +26.37% | 0.00 |
+| Undead | 639.27 | 807.68 | +26.35% | 0.00 |
+| Human | 641.22 | 797.00 | +24.29% | 0.00 |
+| Gnome | 640.87 | 810.37 | +26.45% | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Gnome
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Bloodvine Goggles](https://www.wowhead.com/forever/item=19999) | 65 | Arcanum of Focus |
+| Neck | [Chains of the Lich](https://www.wowhead.com/forever/item=23125) | 60 | — |
+| Shoulders | [Mantle of the Timbermaw](https://www.wowhead.com/forever/item=19050) | 61 | Chromatic Mantle of the Dawn |
+| Back | [Fel Cape](https://www.wowhead.com/forever/item=279269) | 65 | Enchant Cloak - Superior Defense |
+| Chest | [Bloodvine Vest](https://www.wowhead.com/forever/item=19682) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Runecloth Cuffs](https://www.wowhead.com/forever/item=254123) | 59 | Enchant Bracer - Greater Intellect |
+| Hands | [Gloves of Spell Mastery](https://www.wowhead.com/forever/item=14146) | 62 | Enchant Gloves - Shadow Power |
+| Waist | [Belt of the Archmage](https://www.wowhead.com/forever/item=18405) | 62 | — |
+| Legs | [Bloodvine Leggings](https://www.wowhead.com/forever/item=19683) | 65 | Arcanum of Focus |
+| Feet | [Bloodvine Boots](https://www.wowhead.com/forever/item=19684) | 65 | Enchant Boots - Spirit |
+| Ring 1 | [Blessed Band of Light](https://www.wowhead.com/forever/item=272407) | 65 | — |
+| Ring 2 | [Lorekeeper's Ring](https://www.wowhead.com/forever/item=19522) | 63 | — |
+| Trinket 1 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
+| Trinket 2 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Main hand | [Premier High Warlord's Spellblade](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Spell Power |
+| Off hand | [Premier High Warlord's Tome of Destruction](https://www.wowhead.com/forever/item=272685) | 65 | — |
+| Ranged/relic | [Brilliant Wand](https://www.wowhead.com/forever/item=249385) | 60 | — |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
 ### Before the pull
 
@@ -511,42 +500,78 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 10. Cast [Immolate (rank 8)](https://www.wowhead.com/forever/spell=25309) when [Immolate (rank 8)](https://www.wowhead.com/forever/spell=25309) DoT time remaining ≤ `{"spellCastTime":{"spellId":{"spellId":25309,"rank":8}}}`.
 11. Cast [Shadow Bolt (rank 9)](https://www.wowhead.com/forever/spell=25307).
 
-### Damage breakdown — Human
+### Damage breakdown — Gnome
 
 | Action | DPS |
 |---|---:|
-| [Shadow Bolt](https://www.wowhead.com/forever/spell=25307) | 316.08 |
-| Succubus: Auto-attack (tag 1) | 91.82 |
-| [Corruption](https://www.wowhead.com/forever/spell=25311) | 75.63 |
-| [Bane of Doom](https://www.wowhead.com/forever/spell=603) | 69.08 |
-| [Immolate](https://www.wowhead.com/forever/spell=25309) | 67.69 |
-| [Bane of Agony](https://www.wowhead.com/forever/spell=11713) | 13.06 |
-| Succubus: [Lash of Pain](https://www.wowhead.com/forever/spell=11780) | 5.75 |
-| [Searing Pain](https://www.wowhead.com/forever/spell=17923) | 2.13 |
+| [Shadow Bolt](https://www.wowhead.com/forever/spell=25307) | 421.15 |
+| [Corruption](https://www.wowhead.com/forever/spell=25311) | 96.66 |
+| Succubus: Auto-attack (tag 1) | 91.69 |
+| [Bane of Doom](https://www.wowhead.com/forever/spell=603) | 89.22 |
+| [Immolate](https://www.wowhead.com/forever/spell=25309) | 85.15 |
+| [Bane of Agony](https://www.wowhead.com/forever/spell=11713) | 17.80 |
+| Succubus: [Lash of Pain](https://www.wowhead.com/forever/spell=11780) | 5.73 |
+| [Searing Pain](https://www.wowhead.com/forever/spell=17923) | 2.95 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | [Shadow Bolt](https://www.wowhead.com/forever/spell=25307) | -32266.4 |
+| Mana | [Life Tap](https://www.wowhead.com/forever/spell=11689) | +12875.2 |
+| Mana | [Fel Energy](https://www.wowhead.com/forever/spell=18792) | +11216.0 |
+| Mana | [Immolate](https://www.wowhead.com/forever/spell=25309) | -6363.6 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +5367.5 |
+| Mana | [Corruption](https://www.wowhead.com/forever/spell=25311) | -5224.7 |
+| Mana | OtherActionManaRegen (tag 1) | +3890.3 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +3621.4 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +2557.8 |
+| Mana | [Bane of Doom](https://www.wowhead.com/forever/spell=603) | -900.0 |
+| Mana | [Bane of Agony](https://www.wowhead.com/forever/spell=11713) | -488.7 |
+| Mana | [Soul Link](https://www.wowhead.com/forever/spell=19028) | -274.6 |
 
 ## Warlock — Affliction
 
 **Talents:** 31/0/20 · `2525000013520105--0550015103`
 
-[Requests, results and search evidence](../artifacts/optimization/affliction.json)
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
 
-- The retained 31/0/20 build raises Suppression 2→5, funded by Improved Corruption 3→2 and Improved Bane of Agony 2→0. The saved paid-hit cost is returned to the same offensive item budget.
-- Stop refreshing Agony, Corruption, Siphon Life and Immolate with less than twelve seconds remaining. Doom and Shadow Bolt remain in the rotation; pet and consumables are unchanged.
-- Two legal Wrack allocations were tested, including Improved Drains 3/3. Full channels and DoT-aware clipping remained substantially behind Shadow Bolt after repairing channel-condition readiness. Wrack is implemented, but not selected for this profile.
-- The current model ends Wrack’s 10% bonus when its channel ends; server-side scope and cancellation behavior remain T07. The rejected channel trials are preserved with their exact talent allocations and requests.
-- All five races passed independent 5,000-iteration comparisons. Life Tap sustain assumes healing support.
 
 ### Results
 
 | Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
 |---|---:|---:|---:|---:|
-| Orc | 606.85 | 623.13 | +2.68% | 0.03 |
-| Troll | 603.08 | 619.44 | +2.71% | 0.02 |
-| Undead | 611.04 | 626.28 | +2.49% | 0.02 |
-| Human | 613.66 | 629.53 | +2.59% | 0.03 |
-| Gnome | 611.66 | 628.31 | +2.72% | 0.01 |
+| Orc | 623.12 | 797.34 | +27.96% | 0.01 |
+| Troll | 619.45 | 790.91 | +27.68% | 0.01 |
+| Undead | 626.34 | 798.33 | +27.46% | 0.01 |
+| Human | 629.58 | 788.70 | +25.27% | 0.01 |
+| Gnome | 628.33 | 802.03 | +27.64% | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Gnome
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Bloodvine Goggles](https://www.wowhead.com/forever/item=19999) | 65 | Arcanum of Focus |
+| Neck | [Chains of the Lich](https://www.wowhead.com/forever/item=23125) | 60 | — |
+| Shoulders | [Mantle of the Timbermaw](https://www.wowhead.com/forever/item=19050) | 61 | Chromatic Mantle of the Dawn |
+| Back | [Fel Cape](https://www.wowhead.com/forever/item=279269) | 65 | Enchant Cloak - Superior Defense |
+| Chest | [Bloodvine Vest](https://www.wowhead.com/forever/item=19682) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Runecloth Cuffs](https://www.wowhead.com/forever/item=254123) | 59 | Enchant Bracer - Greater Intellect |
+| Hands | [Gloves of Spell Mastery](https://www.wowhead.com/forever/item=14146) | 62 | Enchant Gloves - Shadow Power |
+| Waist | [Belt of the Archmage](https://www.wowhead.com/forever/item=18405) | 62 | — |
+| Legs | [Bloodvine Leggings](https://www.wowhead.com/forever/item=19683) | 65 | Arcanum of Focus |
+| Feet | [Bloodvine Boots](https://www.wowhead.com/forever/item=19684) | 65 | Enchant Boots - Spirit |
+| Ring 1 | [Blessed Band of Light](https://www.wowhead.com/forever/item=272407) | 65 | — |
+| Ring 2 | [Lorekeeper's Ring](https://www.wowhead.com/forever/item=19522) | 63 | — |
+| Trinket 1 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
+| Trinket 2 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Main hand | [Premier High Warlord's Spellblade](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Spell Power |
+| Off hand | [Premier High Warlord's Tome of Destruction](https://www.wowhead.com/forever/item=272685) | 65 | — |
+| Ranged/relic | [Brilliant Wand](https://www.wowhead.com/forever/item=249385) | 60 | — |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
 ### Before the pull
 
@@ -569,41 +594,674 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 13. Cast [Immolate (rank 8)](https://www.wowhead.com/forever/spell=25309) when ([Immolate (rank 8)](https://www.wowhead.com/forever/spell=25309) DoT time remaining ≤ `{"spellCastTime":{"spellId":{"spellId":25309,"rank":8}}}` AND Time remaining ≥ 12s).
 14. Cast [Shadow Bolt (rank 9)](https://www.wowhead.com/forever/spell=25307).
 
-### Damage breakdown — Human
+### Damage breakdown — Gnome
 
 | Action | DPS |
 |---|---:|
-| [Shadow Bolt](https://www.wowhead.com/forever/spell=25307) | 271.79 |
-| Succubus: Auto-attack (tag 1) | 81.07 |
-| [Corruption](https://www.wowhead.com/forever/spell=25311) | 80.35 |
-| [Bane of Doom](https://www.wowhead.com/forever/spell=603) | 73.75 |
-| [Immolate](https://www.wowhead.com/forever/spell=25309) | 68.33 |
-| [Siphon Life](https://www.wowhead.com/forever/spell=18881) | 32.70 |
-| [Bane of Agony](https://www.wowhead.com/forever/spell=11713) | 13.96 |
-| Succubus: [Lash of Pain](https://www.wowhead.com/forever/spell=11780) | 3.84 |
+| [Shadow Bolt](https://www.wowhead.com/forever/spell=25307) | 368.02 |
+| [Corruption](https://www.wowhead.com/forever/spell=25311) | 104.97 |
+| [Bane of Doom](https://www.wowhead.com/forever/spell=603) | 97.67 |
+| [Immolate](https://www.wowhead.com/forever/spell=25309) | 83.47 |
+| Succubus: Auto-attack (tag 1) | 81.02 |
+| [Siphon Life](https://www.wowhead.com/forever/spell=18881) | 39.43 |
+| [Bane of Agony](https://www.wowhead.com/forever/spell=11713) | 18.85 |
+| Succubus: [Lash of Pain](https://www.wowhead.com/forever/spell=11780) | 3.83 |
 
-## Shaman — Enhancement
+### Resource flow
 
-**Talents:** 20/31/0 · `05043305-055030031005102051`
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | [Shadow Bolt](https://www.wowhead.com/forever/spell=25307) | -30136.2 |
+| Mana | [Life Tap](https://www.wowhead.com/forever/spell=11689) | +24740.2 |
+| Mana | [Immolate](https://www.wowhead.com/forever/spell=25309) | -6454.1 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +5294.7 |
+| Mana | [Corruption](https://www.wowhead.com/forever/spell=25311) | -5107.2 |
+| Mana | OtherActionManaRegen (tag 1) | +3871.5 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3600.6 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +3423.9 |
+| Mana | [Siphon Life](https://www.wowhead.com/forever/spell=18881) | -3370.7 |
+| Mana | [Bane of Doom](https://www.wowhead.com/forever/spell=603) | -900.1 |
+| Mana | [Bane of Agony](https://www.wowhead.com/forever/spell=11713) | -354.7 |
+| Mana | [Shadowburn](https://www.wowhead.com/forever/spell=18871) | -342.8 |
 
-[Requests, results and search evidence](../artifacts/optimization/enhancement.json)
+## Hunter — Survival
 
-- The retained 20/31 talents include Shamanistic Focus and Reverberation 4/5. The flat 45% shock/shield discount is used; no Classic crit-triggered Shamanistic Focus effect is added.
-- Stormstrike takes priority over Maelstrom casts. At three or more Maelstrom stacks, cast Chain Lightning when ready, then Lightning Bolt; ordinary casts no longer reset or suspend melee swings.
-- This rotation was re-screened after correcting the inherited swing resets. The comparison uses a same-engine baseline, so the mechanics correction itself is not reported as a talent/APL gain.
-- All five races passed 5,000-iteration comparisons. Maximum mana-limited time is below three seconds; weapon, imbues, gear, buffs and consumes are unchanged.
+**Talents:** 7/11/33 · `502-0050051-230230230250022151`
+
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
+
 
 ### Results
 
 | Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
 |---|---:|---:|---:|---:|
-| Orc | 598.33 | 625.46 | +4.53% | 2.66 |
-| Tauren | 596.64 | 623.66 | +4.53% | 2.79 |
-| Troll | 596.11 | 623.00 | +4.51% | 2.55 |
-| Windshaper | 598.71 | 625.87 | +4.54% | 2.40 |
-| Dwarf | 600.64 | 627.87 | +4.53% | 2.56 |
+| Orc | 662.24 | 791.47 | +19.51% | 0.00 |
+| Tauren | 659.51 | 780.05 | +18.28% | 0.00 |
+| Troll | 661.00 | 783.49 | +18.53% | 0.00 |
+| Windshaper | 661.52 | 786.47 | +18.89% | 0.00 |
+| Human | 671.01 | 795.70 | +18.58% | 0.00 |
+| Dwarf | 656.13 | 776.14 | +18.29% | 0.00 |
+| Night Elf | 666.17 | 788.82 | +18.41% | 0.00 |
+| High Order | 661.52 | 786.47 | +18.89% | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Human
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Black Dragonscale Helm](https://www.wowhead.com/forever/item=252605) | 61 | Lesser Arcanum of Voracity |
+| Neck | [Amulet of the Darkmoon](https://www.wowhead.com/forever/item=19491) | 65 | — |
+| Shoulders | [Darkspear Pauldrons](https://www.wowhead.com/forever/item=272105) | 65 | Chromatic Mantle of the Dawn |
+| Back | [Cloak of the Honor Guard](https://www.wowhead.com/forever/item=20073) | 65 | Enchant Boots - Lesser Agility |
+| Chest | [Dawn Armor](https://www.wowhead.com/forever/item=252483) | 61 | Enchant Chest - Greater Stats |
+| Wrists | [Primal Batskin Bracers](https://www.wowhead.com/forever/item=19687) | 65 | Enchant Bracer - Superior Strength |
+| Hands | [Chromatic Gauntlets](https://www.wowhead.com/forever/item=19157) | 70 | Enchant Weapon - Agility |
+| Waist | [Highlander's Chain Girdle](https://www.wowhead.com/forever/item=20043) | 63 | — |
+| Legs | [Sentinel's Chain Leggings](https://www.wowhead.com/forever/item=22748) | 65 | Lesser Arcanum of Voracity |
+| Feet | [Scalegut Treaders](https://www.wowhead.com/forever/item=275618) | 58 | Enchant Boots - Greater Agility |
+| Ring 1 | [Blackstone Ring](https://www.wowhead.com/forever/item=17713) | 54 | — |
+| Ring 2 | [Cutthroat's Signet](https://www.wowhead.com/forever/item=272408) | 65 | — |
+| Trinket 1 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Trinket 2 | [Molten Heart of the Mountain](https://www.wowhead.com/forever/item=249470) | 55 | — |
+| Main hand | [Premier High Warlord's Blade](https://www.wowhead.com/forever/item=272452) | 65 | Enchant Weapon - Lifestealing |
+| Off hand | [Premier High Warlord's Quickblade](https://www.wowhead.com/forever/item=272684) | 65 | Enchant Weapon - Agility |
+| Ranged/relic | [Premier High Warlord's Recurve](https://www.wowhead.com/forever/item=272594) | 65 | SAF-T Ultra Precision Scope |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
+
+### Before the pull
+
+- -4s: [Aspect of the Beast](https://www.wowhead.com/forever/spell=1299447).
+- -2s: `{"move": {"rangeFromTarget": {"const": {"val": "5"}}}}`.
+
+### Rotation priorities
+
+1. Use ready automatic cooldowns.
+2. Cast [Raptor Strike](https://www.wowhead.com/forever/spell=14266).
+3. Cast [Strider Kick](https://www.wowhead.com/forever/spell=1317257).
+4. Cast [Mongoose Bite](https://www.wowhead.com/forever/spell=14271).
+5. Cast [Immolation Trap](https://www.wowhead.com/forever/spell=14305).
+
+### Damage breakdown — Human
+
+| Action | DPS |
+|---|---:|
+| Auto-attack (tag 2) | 160.90 |
+| Auto-attack (tag 1) | 133.74 |
+| [Raptor Strike](https://www.wowhead.com/forever/spell=14266) | 103.92 |
+| [Mongoose Bite](https://www.wowhead.com/forever/spell=14271) | 99.60 |
+| Cat: Auto-attack (tag 1) | 83.61 |
+| [Strider Kick](https://www.wowhead.com/forever/spell=1317257) | 68.91 |
+| [Immolation Trap](https://www.wowhead.com/forever/spell=14305) | 52.77 |
+| Auto-attack (tag 3) | 51.87 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +11736.1 |
+| Mana | [Raptor Strike](https://www.wowhead.com/forever/spell=14266) | -4284.6 |
+| Mana | [Immolation Trap](https://www.wowhead.com/forever/spell=14305) | -4129.5 |
+| Mana | [Strider Kick](https://www.wowhead.com/forever/spell=1317257) | -3719.1 |
+| Mana | OtherActionManaRegen (tag 1) | +2464.0 |
+| Mana | [Mongoose Bite](https://www.wowhead.com/forever/spell=14271) | -2047.0 |
+| Mana | [Rapid Fire](https://www.wowhead.com/forever/spell=3045) | -200.0 |
+| Mana | OtherActionManaRegen (tag 2) | +127.8 |
+| Mana | [Aspect of the Beast](https://www.wowhead.com/forever/spell=1299447) | -110.0 |
+
+## Warlock — Destruction
+
+**Talents:** 13/5/33 · `2521000003-0005-0050355103101351`
+
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
+
+
+### Results
+
+| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
+|---|---:|---:|---:|---:|
+| Orc | 645.42 | 779.92 | +20.84% | 0.00 |
+| Troll | 639.19 | 778.02 | +21.72% | 0.00 |
+| Undead | 650.91 | 789.67 | +21.32% | 0.00 |
+| Human | 640.27 | 777.60 | +21.45% | 0.00 |
+| Gnome | 646.27 | 786.65 | +21.72% | 0.00 |
+
+Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Undead
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Bloodvine Goggles](https://www.wowhead.com/forever/item=19999) | 65 | Arcanum of Focus |
+| Neck | [Chains of the Lich](https://www.wowhead.com/forever/item=23125) | 60 | — |
+| Shoulders | [Mantle of the Timbermaw](https://www.wowhead.com/forever/item=19050) | 61 | Chromatic Mantle of the Dawn |
+| Back | [Hide of the Wild](https://www.wowhead.com/forever/item=18510) | 62 | Enchant Cloak - Superior Defense |
+| Chest | [Bloodvine Vest](https://www.wowhead.com/forever/item=19682) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Netherflame Cuffs](https://www.wowhead.com/forever/item=254065) | 50 | Enchant Bracer - Greater Intellect |
+| Hands | [Gloves of Spell Mastery](https://www.wowhead.com/forever/item=14146) | 62 | Enchant Gloves - Fire Power |
+| Waist | [Belt of the Archmage](https://www.wowhead.com/forever/item=18405) | 62 | — |
+| Legs | [Bloodvine Leggings](https://www.wowhead.com/forever/item=19683) | 65 | Arcanum of Focus |
+| Feet | [Bloodvine Boots](https://www.wowhead.com/forever/item=19684) | 65 | Enchant Boots - Spirit |
+| Ring 1 | [Blessed Band of Light](https://www.wowhead.com/forever/item=272407) | 65 | — |
+| Ring 2 | [Advisor's Ring](https://www.wowhead.com/forever/item=19518) | 63 | — |
+| Trinket 1 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
+| Trinket 2 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Main hand | [Premier High Warlord's Spellblade](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Spell Power |
+| Off hand | [Premier High Warlord's Tome of Destruction](https://www.wowhead.com/forever/item=272685) | 65 | — |
+| Ranged/relic | [Brilliant Wand](https://www.wowhead.com/forever/item=249385) | 60 | — |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
+
+### Rotation priorities
+
+1. Cast OtherActionPotion when (Time remaining ≥ 15s AND Mana fraction ≤ 75%).
+2. Cast [Item 12662](https://www.wowhead.com/forever/item=12662) when (Time remaining ≥ 15s AND Mana fraction ≤ 60%).
+3. Use ready automatic cooldowns.
+4. Cast [Shadowburn (rank 6)](https://www.wowhead.com/forever/spell=18871) when Time remaining ≤ 1.5.
+5. Cast [Searing Pain (rank 6)](https://www.wowhead.com/forever/spell=17923) when Time remaining ≤ 3.5.
+6. Cast [Life Tap (rank 6)](https://www.wowhead.com/forever/spell=11689) when Mana fraction < 10%.
+7. Cast [Curse of the Elements](https://www.wowhead.com/forever/spell=1311680) when NOT [Curse of the Elements](https://www.wowhead.com/forever/spell=1311680) active.
+8. Cast [Immolate (rank 8)](https://www.wowhead.com/forever/spell=25309) when [Immolate (rank 8)](https://www.wowhead.com/forever/spell=25309) DoT time remaining ≤ `{"spellCastTime":{"spellId":{"spellId":25309,"rank":8}}}`.
+9. Cast [Conflagrate](https://www.wowhead.com/forever/spell=18932) when [Immolate](https://www.wowhead.com/forever/spell=25309) DoT time remaining ≤ 15s.
+10. Cast [Bane of Doom](https://www.wowhead.com/forever/spell=603) when (Time remaining ≥ 61s AND NOT [Bane of Doom](https://www.wowhead.com/forever/spell=603) DoT active).
+11. Cast [Bane of Agony (rank 6)](https://www.wowhead.com/forever/spell=11713) when (NOT [Bane of Doom](https://www.wowhead.com/forever/spell=603) DoT active AND [Bane of Agony (rank 6)](https://www.wowhead.com/forever/spell=11713) DoT time remaining ≤ `{"spellCastTime":{"spellId":{"spellId":11713,"rank":6}}}`).
+12. Cast [Corruption (rank 7)](https://www.wowhead.com/forever/spell=25311) when [Corruption (rank 7)](https://www.wowhead.com/forever/spell=25311) DoT time remaining ≤ `{"spellCastTime":{"spellId":{"spellId":25311,"rank":7}}}`.
+13. Cast [Shadowburn (rank 6)](https://www.wowhead.com/forever/spell=18871).
+14. Cast [Incinerate](https://www.wowhead.com/forever/spell=1293813).
+
+### Damage breakdown — Undead
+
+| Action | DPS |
+|---|---:|
+| [Incinerate](https://www.wowhead.com/forever/spell=1293813) | 256.56 |
+| [Immolate](https://www.wowhead.com/forever/spell=25309) | 112.57 |
+| [Conflagrate](https://www.wowhead.com/forever/spell=18932) | 89.60 |
+| Succubus: Auto-attack (tag 1) | 89.11 |
+| [Corruption](https://www.wowhead.com/forever/spell=25311) | 82.22 |
+| [Bane of Doom](https://www.wowhead.com/forever/spell=603) | 76.84 |
+| [Shadowburn](https://www.wowhead.com/forever/spell=18871) | 49.02 |
+| [Bane of Agony](https://www.wowhead.com/forever/spell=11713) | 14.29 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | [Life Tap](https://www.wowhead.com/forever/spell=11689) | +24223.3 |
+| Mana | [Incinerate](https://www.wowhead.com/forever/spell=1293813) | -21144.0 |
+| Mana | [Immolate](https://www.wowhead.com/forever/spell=25309) | -6696.9 |
+| Mana | [Conflagrate](https://www.wowhead.com/forever/spell=18932) | -6271.9 |
+| Mana | [Shadowburn](https://www.wowhead.com/forever/spell=18871) | -5647.0 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +5223.3 |
+| Mana | [Corruption](https://www.wowhead.com/forever/spell=25311) | -5138.1 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +4519.4 |
+| Mana | OtherActionManaRegen (tag 1) | +3879.9 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3605.7 |
+| Mana | [Bane of Doom](https://www.wowhead.com/forever/spell=603) | -1200.0 |
+| Mana | [Bane of Agony](https://www.wowhead.com/forever/spell=11713) | -463.0 |
+
+## Warrior — Arms
+
+**Talents:** 34/17/0 · `20305213132515001-550500000002`
+
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
+
+
+### Results
+
+| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
+|---|---:|---:|---:|---:|
+| Orc | 654.05 | 777.38 | +18.86% | 0.00 |
+| Tauren | 652.71 | 775.24 | +18.77% | 0.00 |
+| Troll | 650.56 | 771.87 | +18.65% | 0.00 |
+| Undead | 663.26 | 780.02 | +17.60% | 0.00 |
+| Windshaper | 650.59 | 773.31 | +18.86% | 0.00 |
+| Human | 646.57 | 781.06 | +20.80% | 0.00 |
+| Dwarf | 646.96 | 770.62 | +19.11% | 0.00 |
+| Night Elf | 651.42 | 775.44 | +19.04% | 0.00 |
+| Gnome | 648.91 | 772.09 | +18.98% | 0.00 |
+| High Order | 650.59 | 773.31 | +18.86% | 0.00 |
+
+Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Human
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Lionheart Helm](https://www.wowhead.com/forever/item=12640) | 61 | Lesser Arcanum of Voracity |
+| Neck | [Amulet of the Darkmoon](https://www.wowhead.com/forever/item=19491) | 65 | — |
+| Shoulders | [Highlander's Plate Spaulders](https://www.wowhead.com/forever/item=20057) | 65 | Chromatic Mantle of the Dawn |
+| Back | [Cloak of the Honor Guard](https://www.wowhead.com/forever/item=20073) | 65 | Enchant Boots - Lesser Agility |
+| Chest | [Timbermaw Tunic](https://www.wowhead.com/forever/item=252484) | 61 | Enchant Chest - Greater Stats |
+| Wrists | [Primal Batskin Bracers](https://www.wowhead.com/forever/item=19687) | 65 | Enchant Bracer - Superior Strength |
+| Hands | [Chromatic Gauntlets](https://www.wowhead.com/forever/item=19157) | 70 | Enchant Gloves - Minor Haste |
+| Waist | [Might of the Timbermaw](https://www.wowhead.com/forever/item=19044) | 58 | — |
+| Legs | [Titanic Leggings](https://www.wowhead.com/forever/item=22385) | 60 | Lesser Arcanum of Voracity |
+| Feet | [Scalegut Treaders](https://www.wowhead.com/forever/item=275618) | 58 | Enchant Boots - Greater Agility |
+| Ring 1 | [Blackstone Ring](https://www.wowhead.com/forever/item=17713) | 54 | — |
+| Ring 2 | [Protector's Band](https://www.wowhead.com/forever/item=19514) | 63 | — |
+| Trinket 1 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Trinket 2 | [Molten Heart of the Mountain](https://www.wowhead.com/forever/item=249470) | 55 | — |
+| Main hand | [Premier High Warlord's Greatsword](https://www.wowhead.com/forever/item=272604) | 65 | Enchant Weapon - Crusader |
+| Ranged/relic | [Premier High Warlord's Recurve](https://www.wowhead.com/forever/item=272594) | 65 | SAF-T Ultra Precision Scope |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
+
+### Rotation priorities
+
+1. Cast [Berserker Stance](https://www.wowhead.com/forever/spell=2458) when Time remaining ≤ 15s.
+2. Cast [Recklessness](https://www.wowhead.com/forever/spell=1719) when Time remaining ≤ 15s.
+3. Use ready automatic cooldowns.
+4. Cast [Battle Stance](https://www.wowhead.com/forever/spell=2457) when (NOT Time remaining ≤ 15s AND NOT [Recklessness](https://www.wowhead.com/forever/spell=1719) active).
+5. Cast [Overpower](https://www.wowhead.com/forever/spell=11585).
+6. Cast [Rend](https://www.wowhead.com/forever/spell=11574) when NOT [Rend](https://www.wowhead.com/forever/spell=11574) DoT active.
+7. Cast [Execute](https://www.wowhead.com/forever/spell=20662).
+8. Cast [Mortal Strike](https://www.wowhead.com/forever/spell=21553).
+9. Cast [Whirlwind](https://www.wowhead.com/forever/spell=1680).
+10. Cast [Slam](https://www.wowhead.com/forever/spell=11605) when Rage ≥ 15.
+11. Cast [Heroic Strike](https://www.wowhead.com/forever/spell=25286) when (Rage ≥ 70 AND NOT `{"isExecutePhase":{"threshold":"E20"}}`).
+12. Cast [Spearing Strike](https://www.wowhead.com/forever/spell=1310222) when Rage ≥ 15.
+
+### Damage breakdown — Human
+
+| Action | DPS |
+|---|---:|
+| Auto-attack (tag 1) | 130.96 |
+| [Mortal Strike](https://www.wowhead.com/forever/spell=21553) | 124.13 |
+| [Overpower](https://www.wowhead.com/forever/spell=11585) | 116.17 |
+| Auto-attack (tag 3) | 110.34 |
+| [Execute](https://www.wowhead.com/forever/spell=20662) | 98.72 |
+| [Heroic Strike](https://www.wowhead.com/forever/spell=25286) | 92.60 |
+| [Slam](https://www.wowhead.com/forever/spell=11605) | 45.01 |
+| [Deep Wounds](https://www.wowhead.com/forever/spell=12867) | 33.68 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Rage | Auto-attack (tag 1) | +2386.8 |
+| Rage | [Mortal Strike](https://www.wowhead.com/forever/spell=21553) | -1115.8 |
+| Rage | [Execute](https://www.wowhead.com/forever/spell=20662) | -794.5 |
+| Rage | [Heroic Strike](https://www.wowhead.com/forever/spell=25286) | -330.3 |
+| Rage | [Slam](https://www.wowhead.com/forever/spell=11605) | -206.0 |
+| Rage | [Spearing Strike](https://www.wowhead.com/forever/spell=1310222) | -170.6 |
+| Rage | [Rend](https://www.wowhead.com/forever/spell=11574) | -147.3 |
+| Rage | [Overpower](https://www.wowhead.com/forever/spell=11585) | -133.5 |
+| Rage | [Item 13442](https://www.wowhead.com/forever/item=13442) | +130.7 |
+| Rage | [Unbridled Wrath](https://www.wowhead.com/forever/spell=12964) | +122.5 |
+| Rage | OtherActionRefund | +113.5 |
+| Rage | [Anger Management](https://www.wowhead.com/forever/spell=12296) | +96.7 |
+
+## Priest — Shadow
+
+**Talents:** 20/0/31 · `005300231303--505120501201300051`
+
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
+
+
+### Results
+
+| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
+|---|---:|---:|---:|---:|
+| Troll | 637.18 | 761.03 | +19.44% | 0.00 |
+| Undead | 646.27 | 770.64 | +19.25% | 0.00 |
+| Human | 637.94 | 761.86 | +19.43% | 0.00 |
+| Dwarf | 643.21 | 761.71 | +18.42% | 0.00 |
+| Night Elf | 643.10 | 767.35 | +19.32% | 0.00 |
+| Gnome | 642.86 | 767.86 | +19.44% | 0.00 |
+
+Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Undead
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Bloodvine Goggles](https://www.wowhead.com/forever/item=19999) | 65 | Arcanum of Focus |
+| Neck | [Chains of the Lich](https://www.wowhead.com/forever/item=23125) | 60 | — |
+| Shoulders | [Mantle of the Timbermaw](https://www.wowhead.com/forever/item=19050) | 61 | Chromatic Mantle of the Dawn |
+| Back | [Fel Cape](https://www.wowhead.com/forever/item=279269) | 65 | Enchant Cloak - Superior Defense |
+| Chest | [Bloodvine Vest](https://www.wowhead.com/forever/item=19682) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Netherpearl Cuffs](https://www.wowhead.com/forever/item=254067) | 50 | Enchant Bracer - Greater Intellect |
+| Hands | [Gloves of Spell Mastery](https://www.wowhead.com/forever/item=14146) | 62 | Enchant Gloves - Shadow Power |
+| Waist | [Belt of the Archmage](https://www.wowhead.com/forever/item=18405) | 62 | — |
+| Legs | [Bloodvine Leggings](https://www.wowhead.com/forever/item=19683) | 65 | Arcanum of Focus |
+| Feet | [Bloodvine Boots](https://www.wowhead.com/forever/item=19684) | 65 | Enchant Boots - Spirit |
+| Ring 1 | [Blessed Band of Light](https://www.wowhead.com/forever/item=272407) | 65 | — |
+| Ring 2 | [Advisor's Ring](https://www.wowhead.com/forever/item=19518) | 63 | — |
+| Trinket 1 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
+| Trinket 2 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Main hand | [Premier High Warlord's Spellblade](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Spell Power |
+| Off hand | [Premier High Warlord's Tome of Destruction](https://www.wowhead.com/forever/item=272685) | 65 | — |
+| Ranged/relic | [Brilliant Wand](https://www.wowhead.com/forever/item=249385) | 60 | — |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
+
+### Before the pull
+
+- -1s: [Shadowform](https://www.wowhead.com/forever/spell=15473).
+
+### Rotation priorities
+
+1. Use ready automatic cooldowns.
+2. Cast [Devouring Plague (rank 6)](https://www.wowhead.com/forever/spell=19280) when NOT [Devouring Plague (rank 6)](https://www.wowhead.com/forever/spell=19280) DoT active.
+3. Cast [Shadow Word: Pain (rank 8)](https://www.wowhead.com/forever/spell=10894) when (NOT [Shadow Word: Pain (rank 8)](https://www.wowhead.com/forever/spell=10894) DoT active AND Time remaining ≥ 10).
+4. `{"condition":{},"strictSequence":{"actions":[{"castSpell":{"spellId":{"spellId":14751}}},{"castSpell":{"spellId":{"spellId":10947}}}]}}` when `{}`.
+5. Cast [Mind Blast (rank 9)](https://www.wowhead.com/forever/spell=10947).
+6. Cast [Mind Flay (rank 6)](https://www.wowhead.com/forever/spell=18807).
+
+### Damage breakdown — Undead
+
+| Action | DPS |
+|---|---:|
+| [Mind Flay](https://www.wowhead.com/forever/spell=18807) | 369.74 |
+| [Mind Blast](https://www.wowhead.com/forever/spell=10947) | 153.25 |
+| [Shadow Word: Pain](https://www.wowhead.com/forever/spell=10894) | 141.37 |
+| [Devouring Plague](https://www.wowhead.com/forever/spell=19280) | 94.72 |
+| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 11.55 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | OtherActionManaRegen (tag 1) | +9115.3 |
+| Mana | [Mind Blast](https://www.wowhead.com/forever/spell=10947) | -5904.6 |
+| Mana | [Mind Flay](https://www.wowhead.com/forever/spell=18807) | -5774.9 |
+| Mana | [Devouring Plague](https://www.wowhead.com/forever/spell=19280) | -4786.1 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +3807.4 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +2408.0 |
+| Mana | [Shadow Word: Pain](https://www.wowhead.com/forever/spell=10894) | -2278.4 |
+| Health | OtherActionDamageTaken | -1600.0 |
+| Mana | [Dark Sacrifice](https://www.wowhead.com/forever/spell=1277328) | +1583.7 |
+| Health | [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | +1435.3 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +255.1 |
+| Mana | OtherActionManaRegen (tag 2) | +0.1 |
+
+## Warlock — DS/Ruin
+
+**Talents:** 21/11/19 · `252200001351-0025003001-0550005103`
+
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
+
+
+### Results
+
+| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
+|---|---:|---:|---:|---:|
+| Orc | 570.13 | 757.02 | +32.78% | 0.00 |
+| Troll | 566.47 | 751.21 | +32.61% | 0.00 |
+| Undead | 575.48 | 760.57 | +32.16% | 0.00 |
+| Human | 576.82 | 748.17 | +29.71% | 0.00 |
+| Gnome | 575.21 | 762.08 | +32.49% | 0.00 |
+
+Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Gnome
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Bloodvine Goggles](https://www.wowhead.com/forever/item=19999) | 65 | Arcanum of Focus |
+| Neck | [Chains of the Lich](https://www.wowhead.com/forever/item=23125) | 60 | — |
+| Shoulders | [Mantle of the Timbermaw](https://www.wowhead.com/forever/item=19050) | 61 | Chromatic Mantle of the Dawn |
+| Back | [Fel Cape](https://www.wowhead.com/forever/item=279269) | 65 | Enchant Cloak - Superior Defense |
+| Chest | [Bloodvine Vest](https://www.wowhead.com/forever/item=19682) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Runecloth Cuffs](https://www.wowhead.com/forever/item=254123) | 59 | Enchant Bracer - Greater Intellect |
+| Hands | [Gloves of Spell Mastery](https://www.wowhead.com/forever/item=14146) | 62 | Enchant Gloves - Shadow Power |
+| Waist | [Belt of the Archmage](https://www.wowhead.com/forever/item=18405) | 62 | — |
+| Legs | [Bloodvine Leggings](https://www.wowhead.com/forever/item=19683) | 65 | Arcanum of Focus |
+| Feet | [Bloodvine Boots](https://www.wowhead.com/forever/item=19684) | 65 | Enchant Boots - Spirit |
+| Ring 1 | [Blessed Band of Light](https://www.wowhead.com/forever/item=272407) | 65 | — |
+| Ring 2 | [Lorekeeper's Ring](https://www.wowhead.com/forever/item=19522) | 63 | — |
+| Trinket 1 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
+| Trinket 2 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Main hand | [Premier High Warlord's Spellblade](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Spell Power |
+| Off hand | [Premier High Warlord's Tome of Destruction](https://www.wowhead.com/forever/item=272685) | 65 | — |
+| Ranged/relic | [Brilliant Wand](https://www.wowhead.com/forever/item=249385) | 60 | — |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
+
+### Before the pull
+
+- -5s: [Demonic Sacrifice](https://www.wowhead.com/forever/spell=18788).
+- -5s: [Amplify Curse](https://www.wowhead.com/forever/spell=18288).
+
+### Rotation priorities
+
+1. Cast OtherActionPotion when (Time remaining ≥ 15s AND Mana fraction ≤ 75%).
+2. Cast [Item 12662](https://www.wowhead.com/forever/item=12662) when (Time remaining ≥ 15s AND Mana fraction ≤ 60%).
+3. Use ready automatic cooldowns.
+4. Cast [Shadowburn (rank 6)](https://www.wowhead.com/forever/spell=18871) when Time remaining ≤ 1.5.
+5. Cast [Searing Pain (rank 6)](https://www.wowhead.com/forever/spell=17923) when Time remaining ≤ 3.5.
+6. Cast [Life Tap (rank 6)](https://www.wowhead.com/forever/spell=11689) when Mana fraction < 10%.
+7. Cast [Curse of the Elements](https://www.wowhead.com/forever/spell=1311680) when NOT [Curse of the Elements](https://www.wowhead.com/forever/spell=1311680) active.
+8. Cast [Amplify Curse](https://www.wowhead.com/forever/spell=18288).
+9. Cast [Bane of Doom](https://www.wowhead.com/forever/spell=603) when (Time remaining ≥ 61s AND NOT [Bane of Doom](https://www.wowhead.com/forever/spell=603) DoT active).
+10. Cast [Bane of Agony (rank 6)](https://www.wowhead.com/forever/spell=11713) when (NOT [Bane of Doom](https://www.wowhead.com/forever/spell=603) DoT active AND [Bane of Agony (rank 6)](https://www.wowhead.com/forever/spell=11713) DoT time remaining ≤ `{"spellCastTime":{"spellId":{"spellId":11713,"rank":6}}}`).
+11. Cast [Corruption (rank 7)](https://www.wowhead.com/forever/spell=25311) when [Corruption (rank 7)](https://www.wowhead.com/forever/spell=25311) DoT time remaining ≤ `{"spellCastTime":{"spellId":{"spellId":25311,"rank":7}}}`.
+12. Cast [Immolate (rank 8)](https://www.wowhead.com/forever/spell=25309) when [Immolate (rank 8)](https://www.wowhead.com/forever/spell=25309) DoT time remaining ≤ `{"spellCastTime":{"spellId":{"spellId":25309,"rank":8}}}`.
+13. Cast [Shadow Bolt (rank 9)](https://www.wowhead.com/forever/spell=25307).
+
+### Damage breakdown — Gnome
+
+| Action | DPS |
+|---|---:|
+| [Shadow Bolt](https://www.wowhead.com/forever/spell=25307) | 433.26 |
+| [Corruption](https://www.wowhead.com/forever/spell=25311) | 115.76 |
+| [Bane of Doom](https://www.wowhead.com/forever/spell=603) | 104.16 |
+| [Immolate](https://www.wowhead.com/forever/spell=25309) | 82.03 |
+| [Bane of Agony](https://www.wowhead.com/forever/spell=11713) | 21.23 |
+| [Shadowburn](https://www.wowhead.com/forever/spell=18871) | 3.44 |
+| [Searing Pain](https://www.wowhead.com/forever/spell=17923) | 2.20 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | [Shadow Bolt](https://www.wowhead.com/forever/spell=25307) | -32373.4 |
+| Mana | [Life Tap](https://www.wowhead.com/forever/spell=11689) | +22760.1 |
+| Mana | [Immolate](https://www.wowhead.com/forever/spell=25309) | -6415.5 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +5373.7 |
+| Mana | [Corruption](https://www.wowhead.com/forever/spell=25311) | -5229.0 |
+| Mana | OtherActionManaRegen (tag 1) | +3888.4 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +3655.3 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3598.8 |
+| Mana | [Bane of Doom](https://www.wowhead.com/forever/spell=603) | -900.0 |
+| Mana | [Bane of Agony](https://www.wowhead.com/forever/spell=11713) | -522.3 |
+| Mana | [Shadowburn](https://www.wowhead.com/forever/spell=18871) | -357.4 |
+| Mana | [Searing Pain](https://www.wowhead.com/forever/spell=17923) | -204.0 |
+
+## Mage — Arcane
+
+**Talents:** 33/3/15 · `053005023100311531-03-005500032`
+
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
+
+
+### Results
+
+| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
+|---|---:|---:|---:|---:|
+| Orc | 570.76 | 700.99 | +22.82% | 0.09 |
+| Troll | 569.19 | 698.05 | +22.64% | 0.10 |
+| Undead | 582.41 | 711.52 | +22.17% | 0.09 |
+| Human | 576.77 | 696.69 | +20.79% | 0.08 |
+| Gnome | 573.53 | 703.62 | +22.68% | 0.03 |
+| High Order | 570.87 | 700.36 | +22.68% | 0.14 |
+
+Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Undead
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Bloodvine Goggles](https://www.wowhead.com/forever/item=19999) | 65 | Arcanum of Focus |
+| Neck | [Chains of the Lich](https://www.wowhead.com/forever/item=23125) | 60 | — |
+| Shoulders | [Mantle of the Timbermaw](https://www.wowhead.com/forever/item=19050) | 61 | Chromatic Mantle of the Dawn |
+| Back | [Hide of the Wild](https://www.wowhead.com/forever/item=18510) | 62 | Enchant Cloak - Superior Defense |
+| Chest | [Bloodvine Vest](https://www.wowhead.com/forever/item=19682) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Nethershine Cuffs](https://www.wowhead.com/forever/item=254069) | 50 | Enchant Bracer - Greater Intellect |
+| Hands | [Gloves of Spell Mastery](https://www.wowhead.com/forever/item=14146) | 62 | Enchant Gloves - Healing Power |
+| Waist | [Belt of the Archmage](https://www.wowhead.com/forever/item=18405) | 62 | — |
+| Legs | [Bloodvine Leggings](https://www.wowhead.com/forever/item=19683) | 65 | Arcanum of Focus |
+| Feet | [Bloodvine Boots](https://www.wowhead.com/forever/item=19684) | 65 | Enchant Boots - Spirit |
+| Ring 1 | [Blessed Band of Light](https://www.wowhead.com/forever/item=272407) | 65 | — |
+| Ring 2 | [Advisor's Ring](https://www.wowhead.com/forever/item=19518) | 63 | — |
+| Trinket 1 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
+| Trinket 2 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Main hand | [Premier High Warlord's Spellblade](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Spell Power |
+| Off hand | [Premier High Warlord's Tome of Destruction](https://www.wowhead.com/forever/item=272685) | 65 | — |
+| Ranged/relic | [Brilliant Wand](https://www.wowhead.com/forever/item=249385) | 60 | — |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
+
+### Rotation priorities
+
+1. Use ready automatic cooldowns.
+2. Cast [Evocation](https://www.wowhead.com/forever/spell=12051) when (Mana fraction < 15% AND Time remaining > 20s).
+3. Cast [Arcane Missiles (rank 8)](https://www.wowhead.com/forever/spell=25345) when [Missile Barrage](https://www.wowhead.com/forever/spell=44404) active.
+4. Cast [Frostbolt (rank 11)](https://www.wowhead.com/forever/spell=25304) when ([Arcane Blast](https://www.wowhead.com/forever/spell=30451) stacks ≥ 4 OR Mana fraction < 20%).
+5. Cast [Arcane Blast](https://www.wowhead.com/forever/spell=30451).
+
+### Damage breakdown — Undead
+
+| Action | DPS |
+|---|---:|
+| [Arcane Missiles](https://www.wowhead.com/forever/spell=25345) | 340.75 |
+| [Arcane Blast](https://www.wowhead.com/forever/spell=30451) | 321.60 |
+| [Frostbolt](https://www.wowhead.com/forever/spell=25304) | 33.57 |
+| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 15.60 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | [Arcane Blast](https://www.wowhead.com/forever/spell=30451) | -23550.2 |
+| Mana | OtherActionManaRegen (tag 1) | +6440.7 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +6373.8 |
+| Mana | OtherActionManaRegen (tag 2) | +4118.5 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3459.6 |
+| Mana | [Item 8008](https://www.wowhead.com/forever/item=8008) | +1099.1 |
+| Mana | [Item 8007](https://www.wowhead.com/forever/item=8007) | +844.7 |
+| Mana | [Frostbolt](https://www.wowhead.com/forever/spell=25304) | -770.4 |
+| Mana | [Arcane Missiles](https://www.wowhead.com/forever/spell=25345) | -469.9 |
+| Mana | [Item 5513](https://www.wowhead.com/forever/item=5513) | +433.2 |
+| Health | [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | +0.0 |
+
+## Mage — Frost
+
+**Talents:** 11/3/37 · `050005001-03-0555003321001301251`
+
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
+
+
+### Results
+
+| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
+|---|---:|---:|---:|---:|
+| Orc | 567.95 | 694.11 | +22.21% | 0.07 |
+| Troll | 569.12 | 694.70 | +22.06% | 0.06 |
+| Undead | 572.97 | 697.96 | +21.82% | 0.07 |
+| Human | 573.66 | 690.18 | +20.31% | 0.06 |
+| Gnome | 570.76 | 695.98 | +21.94% | 0.03 |
+| High Order | 570.30 | 696.08 | +22.06% | 0.05 |
+
+Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Undead
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Bloodvine Goggles](https://www.wowhead.com/forever/item=19999) | 65 | Arcanum of Focus |
+| Neck | [Chains of the Lich](https://www.wowhead.com/forever/item=23125) | 60 | — |
+| Shoulders | [Mantle of the Timbermaw](https://www.wowhead.com/forever/item=19050) | 61 | Chromatic Mantle of the Dawn |
+| Back | [Hide of the Wild](https://www.wowhead.com/forever/item=18510) | 62 | Enchant Cloak - Superior Defense |
+| Chest | [Bloodvine Vest](https://www.wowhead.com/forever/item=19682) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Netherfroth Cuffs](https://www.wowhead.com/forever/item=254063) | 50 | Enchant Bracer - Greater Intellect |
+| Hands | [Gloves of Spell Mastery](https://www.wowhead.com/forever/item=14146) | 62 | Enchant Gloves - Frost Power |
+| Waist | [Belt of the Archmage](https://www.wowhead.com/forever/item=18405) | 62 | — |
+| Legs | [Bloodvine Leggings](https://www.wowhead.com/forever/item=19683) | 65 | Arcanum of Focus |
+| Feet | [Bloodvine Boots](https://www.wowhead.com/forever/item=19684) | 65 | Enchant Boots - Spirit |
+| Ring 1 | [Blessed Band of Light](https://www.wowhead.com/forever/item=272407) | 65 | — |
+| Ring 2 | [Advisor's Ring](https://www.wowhead.com/forever/item=19518) | 63 | — |
+| Trinket 1 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
+| Trinket 2 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Main hand | [Premier High Warlord's Spellblade](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Spell Power |
+| Off hand | [Premier High Warlord's Tome of Destruction](https://www.wowhead.com/forever/item=272685) | 65 | — |
+| Ranged/relic | [Brilliant Wand](https://www.wowhead.com/forever/item=249385) | 60 | — |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
+
+### Rotation priorities
+
+1. Cast [Item 8008](https://www.wowhead.com/forever/item=8008) when Mana fraction ≤ 80%.
+2. Use ready automatic cooldowns.
+3. Cast [Evocation](https://www.wowhead.com/forever/spell=12051) when (Mana fraction < 15% AND Time remaining > 25s).
+4. Cast [Ice Lance](https://www.wowhead.com/forever/spell=30455) when [Fingers of Frost](https://www.wowhead.com/forever/spell=44543) active.
+5. Cast [Frostbolt (rank 11)](https://www.wowhead.com/forever/spell=25304).
+
+### Damage breakdown — Undead
+
+| Action | DPS |
+|---|---:|
+| [Frostbolt](https://www.wowhead.com/forever/spell=25304) | 498.77 |
+| [Ice Lance](https://www.wowhead.com/forever/spell=30455) | 190.75 |
+| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 8.44 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | [Frostbolt](https://www.wowhead.com/forever/spell=25304) | -14132.7 |
+| Mana | OtherActionManaRegen (tag 2) | +4133.7 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +3229.2 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +2637.0 |
+| Mana | OtherActionManaRegen (tag 1) | +2423.3 |
+| Mana | [Ice Lance](https://www.wowhead.com/forever/spell=30455) | -2002.7 |
+| Mana | [Item 8008](https://www.wowhead.com/forever/item=8008) | +1099.0 |
+| Mana | [Item 8007](https://www.wowhead.com/forever/item=8007) | +827.9 |
+| Mana | [Item 5513](https://www.wowhead.com/forever/item=5513) | +355.0 |
+| Health | [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | +0.0 |
+
+## Shaman — Enhancement
+
+**Talents:** 20/31/0 · `05043305-055030031005102051`
+
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
+
+
+### Results
+
+| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
+|---|---:|---:|---:|---:|
+| Orc | 571.05 | 692.18 | +21.21% | 36.65 |
+| Tauren | 562.94 | 693.88 | +23.26% | 29.74 |
+| Troll | 563.80 | 688.24 | +22.07% | 28.32 |
+| Windshaper | 564.63 | 689.51 | +22.12% | 32.24 |
+| Dwarf | 560.21 | 695.88 | +24.22% | 32.14 |
+
+Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Dwarf
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Black Dragonscale Helm](https://www.wowhead.com/forever/item=252605) | 61 | Lesser Arcanum of Voracity |
+| Neck | [Amulet of the Darkmoon](https://www.wowhead.com/forever/item=19491) | 65 | — |
+| Shoulders | [Mantle of the Timbermaw](https://www.wowhead.com/forever/item=19050) | 61 | Chromatic Mantle of the Dawn |
+| Back | [Chromatic Cloak](https://www.wowhead.com/forever/item=18509) | 62 | Enchant Boots - Lesser Agility |
+| Chest | [Timbermaw Tunic](https://www.wowhead.com/forever/item=252484) | 61 | Enchant Chest - Greater Stats |
+| Wrists | [Tranquil Wristguards](https://www.wowhead.com/forever/item=279256) | 65 | Enchant Bracer - Superior Strength |
+| Hands | [Chromatic Gauntlets](https://www.wowhead.com/forever/item=19157) | 70 | Enchant Gloves - Minor Haste |
+| Waist | [Belt of the Archmage](https://www.wowhead.com/forever/item=18405) | 62 | — |
+| Legs | [Ironfeather Leggings](https://www.wowhead.com/forever/item=252486) | 61 | Lesser Arcanum of Voracity |
+| Feet | [Bloodvine Boots](https://www.wowhead.com/forever/item=19684) | 65 | Enchant Boots - Greater Agility |
+| Ring 1 | [Blackstone Ring](https://www.wowhead.com/forever/item=17713) | 54 | — |
+| Ring 2 | [Channeler's Ring](https://www.wowhead.com/forever/item=272406) | 65 | — |
+| Trinket 1 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Trinket 2 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
+| Main hand | [Premier High Warlord's Destroyer](https://www.wowhead.com/forever/item=272682) | 65 | Enchant Weapon - Fiery Weapon |
+| Ranged/relic | [Totem of Thunder](https://www.wowhead.com/forever/item=228176) | 65 | — |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
 ### Before the pull
 
@@ -627,220 +1285,78 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 
 | Action | DPS |
 |---|---:|
-| Auto-attack (tag 1) | 161.25 |
-| [Windfury Weapon](https://www.wowhead.com/forever/spell=16362) | 85.92 |
-| Auto-attack (tag 2) | 80.09 |
-| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 60.75 |
-| [Earth Shock](https://www.wowhead.com/forever/spell=10414) | 48.29 |
-| [Stormstrike](https://www.wowhead.com/forever/spell=17364) | 45.56 |
-| [Flame Shock](https://www.wowhead.com/forever/spell=29228) | 43.50 |
-| [Windfury Weapon](https://www.wowhead.com/forever/spell=16362) | 33.94 |
+| Auto-attack (tag 1) | 218.83 |
+| [Windfury Weapon](https://www.wowhead.com/forever/spell=16362) | 141.53 |
+| [Stormstrike](https://www.wowhead.com/forever/spell=17364) | 88.79 |
+| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 65.30 |
+| [Earth Shock](https://www.wowhead.com/forever/spell=10414) | 50.46 |
+| [Flame Shock](https://www.wowhead.com/forever/spell=29228) | 50.15 |
+| [Attack](https://www.wowhead.com/forever/spell=10436) | 29.78 |
+| [Chain Lightning](https://www.wowhead.com/forever/spell=10605) | 28.91 |
 
-## Mage — Arcane
+### Resource flow
 
-**Talents:** 33/3/15 · `053005023100311531-03-005500032`
-
-[Requests, results and search evidence](../artifacts/optimization/arcane.json)
-
-- Arcane Focus 3→5 is funded by Improved Channeling 5→3. The allocation remains 33/3/15; the stationary benchmark has no spell pushback.
-- The extra talent hit reduces the paid hit-budget deduction. Gear records, enchants and external buffs remain unchanged.
-- Arcane Blast stack thresholds, mana reserves, Frostbolt/Fireball/Frostfire/Missiles resets and single-spell fillers were screened. The original APL remained best among the validated choices.
-- All six Mage races passed independent 5,000-iteration comparisons. Mana-limited time is 0.11–0.24 seconds; High Order Read Ley Line regeneration remains unmodeled pending T04.
-- Revalidated at 5,000 iterations per race with continuous weapon-role autos and assumed general-haste Energy scaling. The prior retained talents and APL passed without changes; the comparison baseline uses this same engine.
-
-### Results
-
-| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
-|---|---:|---:|---:|---:|
-| Orc | 561.59 | 570.85 | +1.65% | 0.19 |
-| Troll | 560.15 | 569.15 | +1.61% | 0.20 |
-| Undead | 573.73 | 582.76 | +1.57% | 0.21 |
-| Human | 567.97 | 576.89 | +1.57% | 0.21 |
-| Gnome | 564.92 | 573.47 | +1.51% | 0.11 |
-| High Order | 562.46 | 571.18 | +1.55% | 0.21 |
-
-Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
-
-### Rotation priorities
-
-1. Use ready automatic cooldowns.
-2. Cast [Evocation](https://www.wowhead.com/forever/spell=12051) when (Mana fraction < 15% AND Time remaining > 20s).
-3. Cast [Arcane Missiles (rank 8)](https://www.wowhead.com/forever/spell=25345) when [Missile Barrage](https://www.wowhead.com/forever/spell=44404) active.
-4. Cast [Frostbolt (rank 11)](https://www.wowhead.com/forever/spell=25304) when ([Arcane Blast](https://www.wowhead.com/forever/spell=30451) stacks ≥ 4 OR Mana fraction < 20%).
-5. Cast [Arcane Blast](https://www.wowhead.com/forever/spell=30451).
-
-### Damage breakdown — Undead
-
-| Action | DPS |
-|---|---:|
-| [Arcane Missiles](https://www.wowhead.com/forever/spell=25345) | 281.24 |
-| [Arcane Blast](https://www.wowhead.com/forever/spell=30451) | 258.42 |
-| [Frostbolt](https://www.wowhead.com/forever/spell=25304) | 28.05 |
-| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 15.04 |
-
-## Warlock — DS/Ruin
-
-**Talents:** 21/11/19 · `252200001351-0025003001-0550005103`
-
-[Requests, results and search evidence](../artifacts/optimization/ds_ruin.json)
-
-- The retained 21/11/19 build raises Suppression 1→5, funded by Malediction 5→2 and Improved Bane of Agony 1→0. This gain includes the lower paid-hit cost, with no alteration to catalog gear.
-- Retain the existing sacrifice, curse/DoT priorities and Shadow Bolt filler. Rotation variants did not clear the independent validation margin.
-- All five races passed 5,000-iteration comparisons, with negligible failed mana checks. The sacrificed Imp remains absent in combat; Life Tap sustain assumes healing support.
-
-### Results
-
-| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
-|---|---:|---:|---:|---:|
-| Orc | 553.88 | 570.05 | +2.92% | 0.00 |
-| Troll | 549.58 | 566.27 | +3.04% | 0.00 |
-| Undead | 559.52 | 575.83 | +2.91% | 0.01 |
-| Human | 560.29 | 576.93 | +2.97% | 0.00 |
-| Gnome | 558.43 | 575.01 | +2.97% | 0.00 |
-
-Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
-
-### Before the pull
-
-- -5s: [Demonic Sacrifice](https://www.wowhead.com/forever/spell=18788).
-- -5s: [Amplify Curse](https://www.wowhead.com/forever/spell=18288).
-
-### Rotation priorities
-
-1. Cast OtherActionPotion when (Time remaining ≥ 15s AND Mana fraction ≤ 75%).
-2. Cast [Item 12662](https://www.wowhead.com/forever/item=12662) when (Time remaining ≥ 15s AND Mana fraction ≤ 60%).
-3. Use ready automatic cooldowns.
-4. Cast [Shadowburn (rank 6)](https://www.wowhead.com/forever/spell=18871) when Time remaining ≤ 1.5.
-5. Cast [Searing Pain (rank 6)](https://www.wowhead.com/forever/spell=17923) when Time remaining ≤ 3.5.
-6. Cast [Life Tap (rank 6)](https://www.wowhead.com/forever/spell=11689) when Mana fraction < 10%.
-7. Cast [Curse of the Elements](https://www.wowhead.com/forever/spell=1311680) when NOT [Curse of the Elements](https://www.wowhead.com/forever/spell=1311680) active.
-8. Cast [Amplify Curse](https://www.wowhead.com/forever/spell=18288).
-9. Cast [Bane of Doom](https://www.wowhead.com/forever/spell=603) when (Time remaining ≥ 61s AND NOT [Bane of Doom](https://www.wowhead.com/forever/spell=603) DoT active).
-10. Cast [Bane of Agony (rank 6)](https://www.wowhead.com/forever/spell=11713) when (NOT [Bane of Doom](https://www.wowhead.com/forever/spell=603) DoT active AND [Bane of Agony (rank 6)](https://www.wowhead.com/forever/spell=11713) DoT time remaining ≤ `{"spellCastTime":{"spellId":{"spellId":11713,"rank":6}}}`).
-11. Cast [Corruption (rank 7)](https://www.wowhead.com/forever/spell=25311) when [Corruption (rank 7)](https://www.wowhead.com/forever/spell=25311) DoT time remaining ≤ `{"spellCastTime":{"spellId":{"spellId":25311,"rank":7}}}`.
-12. Cast [Immolate (rank 8)](https://www.wowhead.com/forever/spell=25309) when [Immolate (rank 8)](https://www.wowhead.com/forever/spell=25309) DoT time remaining ≤ `{"spellCastTime":{"spellId":{"spellId":25309,"rank":8}}}`.
-13. Cast [Shadow Bolt (rank 9)](https://www.wowhead.com/forever/spell=25307).
-
-### Damage breakdown — Human
-
-| Action | DPS |
-|---|---:|
-| [Shadow Bolt](https://www.wowhead.com/forever/spell=25307) | 323.21 |
-| [Corruption](https://www.wowhead.com/forever/spell=25311) | 88.46 |
-| [Bane of Doom](https://www.wowhead.com/forever/spell=603) | 79.52 |
-| [Immolate](https://www.wowhead.com/forever/spell=25309) | 65.69 |
-| [Bane of Agony](https://www.wowhead.com/forever/spell=11713) | 15.66 |
-| [Shadowburn](https://www.wowhead.com/forever/spell=18871) | 2.68 |
-| [Searing Pain](https://www.wowhead.com/forever/spell=17923) | 1.71 |
-
-## Mage — Frost
-
-**Talents:** 11/3/37 · `050005001-03-0555003321001301251`
-
-[Requests, results and search evidence](../artifacts/optimization/frost.json)
-
-- No tested change passed the independent improvement threshold; the 11/3/37 baseline and its APL are retained.
-- Frostbolt and Frostfire ranks, Ice Lance on any Fingers of Frost proc versus two stacks, and Ice Lance omission were screened on Orc and Gnome. Both races also completed legal one-point talent searches without a validated gain.
-- The unchanged baseline already has 5,000-iteration results for all six supported Mage races. Eureka/channel interactions and Frostfire/Tier 1 behavior remain listed for in-game review; unverified effects were not added.
-- Revalidated at 5,000 iterations per race with continuous weapon-role autos and assumed general-haste Energy scaling. The prior retained talents and APL passed without changes; the comparison baseline uses this same engine.
-
-### Results
-
-| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
-|---|---:|---:|---:|---:|
-| Orc | 568.14 | 567.86 | -0.05% | 0.12 |
-| Troll | 569.05 | 568.89 | -0.03% | 0.12 |
-| Undead | 573.49 | 572.95 | -0.09% | 0.12 |
-| Human | 573.81 | 573.43 | -0.07% | 0.10 |
-| Gnome | 570.65 | 570.72 | +0.01% | 0.05 |
-| High Order | 570.28 | 570.09 | -0.03% | 0.12 |
-
-Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
-
-### Rotation priorities
-
-1. Cast [Item 8008](https://www.wowhead.com/forever/item=8008) when Mana fraction ≤ 80%.
-2. Use ready automatic cooldowns.
-3. Cast [Evocation](https://www.wowhead.com/forever/spell=12051) when (Mana fraction < 15% AND Time remaining > 25s).
-4. Cast [Ice Lance](https://www.wowhead.com/forever/spell=30455) when [Fingers of Frost](https://www.wowhead.com/forever/spell=44543) active.
-5. Cast [Frostbolt (rank 11)](https://www.wowhead.com/forever/spell=25304).
-
-### Damage breakdown — Human
-
-| Action | DPS |
-|---|---:|
-| [Frostbolt](https://www.wowhead.com/forever/spell=25304) | 409.07 |
-| [Ice Lance](https://www.wowhead.com/forever/spell=30455) | 164.35 |
-
-## Druid — Feral
-
-**Talents:** 9/34/8 · `050022-3521002023032213041-053`
-
-[Requests, results and search evidence](../artifacts/optimization/feral.json)
-
-- Naturalist 5/5 to 3/5; Nature's Reach 0/2 to 2/2. Client spell 16819 has separate unmasked physical/spell hit effects (auras 54/55), each worth 4 percentage points at rank 2; only its range modifier has a Balance spell mask.
-- The hit talent recovers offensive stats from the paid-hit allocation. Equipment records and the exchange model remain unchanged.
-- Maintain Rip from 4 combo points and use Shred as the builder. Routine Ferocious Bite was worse; retain it only with at least 3 combo points in the final 4 seconds.
-- Claw, Rake maintenance, 5-point Rip, Bite energy thresholds and alternative finish timings were tested. The retained change passed 5,000-iteration comparisons on all four Druid races.
-- Revalidated after the smooth-Energy correction: all four races passed independent 5,000-iteration baseline comparisons. A fresh rotation screen found no further validated gain. Earlier talent and rotation trials used Classic-style ticks and are marked separately.
-- Revalidated at 5,000 iterations per race with continuous weapon-role autos and assumed general-haste Energy scaling. The prior retained talents and APL passed without changes; the comparison baseline uses this same engine.
-
-### Results
-
-| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
-|---|---:|---:|---:|---:|
-| Tauren | 521.58 | 537.35 | +3.02% | 0.00 |
-| Windshaper | 523.00 | 538.37 | +2.94% | 0.00 |
-| Night Elf | 522.00 | 537.41 | +2.95% | 0.00 |
-| High Order | 523.00 | 538.37 | +2.94% | 0.00 |
-
-Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
-
-### Rotation priorities
-
-1. Use ready automatic cooldowns.
-2. Cast [Tiger's Fury](https://www.wowhead.com/forever/spell=9846) when Energy ≤ 40.
-3. Cast [Ferocious Bite](https://www.wowhead.com/forever/spell=31018) when (Time remaining ≤ 4s AND Combo points ≥ 3).
-4. Cast [Rip](https://www.wowhead.com/forever/spell=9896) when (Combo points ≥ 4 AND NOT [Rip](https://www.wowhead.com/forever/spell=9896) DoT active AND Time remaining ≥ 8s).
-5. Cast [Shred](https://www.wowhead.com/forever/spell=9830).
-
-### Damage breakdown — Windshaper
-
-| Action | DPS |
-|---|---:|
-| Auto-attack (tag 1) | 199.18 |
-| [Shred](https://www.wowhead.com/forever/spell=9830) | 175.61 |
-| [Rip](https://www.wowhead.com/forever/spell=9896) | 156.90 |
-| [Ferocious Bite](https://www.wowhead.com/forever/spell=31018) | 4.16 |
-| [Dragonbreath Chili (proc)](https://www.wowhead.com/forever/spell=15851) | 2.51 |
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +8822.2 |
+| Mana | [Chain Lightning](https://www.wowhead.com/forever/spell=10605) | -8154.1 |
+| Mana | [Earth Shock](https://www.wowhead.com/forever/spell=10414) | -5467.0 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +5138.4 |
+| Mana | [Stormstrike](https://www.wowhead.com/forever/spell=17364) | -4696.4 |
+| Mana | [Flame Shock](https://www.wowhead.com/forever/spell=29228) | -4080.2 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3603.4 |
+| Mana | OtherActionManaRegen (tag 1) | +3073.5 |
+| Mana | [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | -1601.6 |
+| Mana | [Searing Totem](https://www.wowhead.com/forever/spell=10438) | -1005.4 |
+| Mana | [Grace of Air Totem](https://www.wowhead.com/forever/spell=10627) | -453.8 |
+| Mana | [Strength of Earth Totem](https://www.wowhead.com/forever/spell=10442) | -431.1 |
 
 ## Rogue — Mutilate
 
 **Talents:** 31/20/0 · `0053031035140105-302303202014`
 
-[Requests, results and search evidence](../artifacts/optimization/mutilate.json)
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
 
-- The 31/20 allocation trades Venom for Flawless Execution, and Lethality 5→3 plus Vigor 2→0 for Improved Poisons 4/5. Mutilate remains the builder.
-- Eviscerate is used at three or more combo points. Thistle Tea is explicitly used at Energy ≤10. Slice and Dice and the existing Cold Blood condition remain.
-- Venom, Rupture, builder pooling, Slice and Dice refreshes, finisher thresholds and Cold Blood timing were tested. A separate Gnome APL screen retained the same rotation.
-- All nine races passed independent 5,000-iteration comparisons against the corrected Energy baseline. Seal Fate retains the client-supported 500-ms internal cooldown; no equipment or regeneration multiplier changed.
-- Revalidated at 5,000 iterations per race with continuous weapon-role autos and assumed general-haste Energy scaling. The prior retained talents and APL passed without changes; the comparison baseline uses this same engine.
 
 ### Results
 
 | Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
 |---|---:|---:|---:|---:|
-| Orc | 482.28 | 517.24 | +7.25% | 0.00 |
-| Troll | 476.16 | 518.21 | +8.83% | 0.00 |
-| Undead | 500.76 | 535.99 | +7.04% | 0.00 |
-| Windshaper | 476.82 | 518.67 | +8.78% | 0.00 |
-| Human | 479.27 | 514.26 | +7.30% | 0.00 |
-| Dwarf | 478.29 | 513.23 | +7.31% | 0.00 |
-| Night Elf | 485.63 | 520.92 | +7.27% | 0.00 |
-| Gnome | 481.34 | 523.70 | +8.80% | 0.00 |
-| High Order | 476.82 | 518.67 | +8.78% | 0.00 |
+| Orc | 517.02 | 608.77 | +17.75% | 0.00 |
+| Troll | 517.93 | 605.42 | +16.89% | 0.00 |
+| Undead | 535.90 | 629.73 | +17.51% | 0.00 |
+| Windshaper | 518.92 | 610.86 | +17.72% | 0.00 |
+| Human | 514.14 | 604.68 | +17.61% | 0.00 |
+| Dwarf | 513.01 | 603.82 | +17.70% | 0.00 |
+| Night Elf | 520.95 | 613.38 | +17.74% | 0.00 |
+| Gnome | 523.82 | 616.67 | +17.73% | 0.00 |
+| High Order | 518.92 | 610.86 | +17.72% | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Undead
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Outlaw's Collar](https://www.wowhead.com/forever/item=279253) | 65 | Lesser Arcanum of Voracity |
+| Neck | [Amulet of the Darkmoon](https://www.wowhead.com/forever/item=19491) | 65 | — |
+| Shoulders | [Darkspear Pauldrons](https://www.wowhead.com/forever/item=272105) | 65 | Chromatic Mantle of the Dawn |
+| Back | [Deathguard's Cloak](https://www.wowhead.com/forever/item=20068) | 65 | Enchant Boots - Lesser Agility |
+| Chest | [Dawn Armor](https://www.wowhead.com/forever/item=252483) | 61 | Enchant Chest - Greater Stats |
+| Wrists | [Primal Batskin Bracers](https://www.wowhead.com/forever/item=19687) | 65 | Enchant Bracer - Superior Strength |
+| Hands | [Timbermaw Brawlers](https://www.wowhead.com/forever/item=19049) | 61 | Enchant Gloves - Minor Haste |
+| Waist | [Defiler's Leather Girdle](https://www.wowhead.com/forever/item=20190) | 63 | — |
+| Legs | [Outrider's Leather Pants](https://www.wowhead.com/forever/item=22740) | 65 | Lesser Arcanum of Voracity |
+| Feet | [Prowler's Leather Boots](https://www.wowhead.com/forever/item=252468) | 52 | Enchant Boots - Greater Agility |
+| Ring 1 | [Cutthroat's Signet](https://www.wowhead.com/forever/item=272408) | 65 | — |
+| Ring 2 | [Legionnaire's Band](https://www.wowhead.com/forever/item=19510) | 63 | — |
+| Trinket 1 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Trinket 2 | [Molten Heart of the Mountain](https://www.wowhead.com/forever/item=249470) | 55 | — |
+| Main hand | [Premier High Warlord's Razor](https://www.wowhead.com/forever/item=272596) | 65 | Enchant Weapon - Fiery Weapon |
+| Off hand | [Premier High Warlord's Razor](https://www.wowhead.com/forever/item=272596) | 65 | Enchant Weapon - Fiery Weapon |
+| Ranged/relic | [Premier High Warlord's Recurve](https://www.wowhead.com/forever/item=272594) | 65 | SAF-T Ultra Precision Scope |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
 ### Rotation priorities
 
@@ -855,42 +1371,78 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 
 | Action | DPS |
 |---|---:|
-| Auto-attack (tag 1) | 133.45 |
-| Auto-attack (tag 2) | 77.03 |
-| [Spell 31016](https://www.wowhead.com/forever/spell=31016) | 65.63 |
-| [Spell 31016](https://www.wowhead.com/forever/spell=31016) | 56.30 |
-| [Mutilate](https://www.wowhead.com/forever/spell=1241584) | 51.18 |
-| [Spell 25347](https://www.wowhead.com/forever/spell=25347) | 45.56 |
-| [Mutilate](https://www.wowhead.com/forever/spell=1241584) | 32.15 |
-| [Instant Poison VI](https://www.wowhead.com/forever/spell=11340) | 25.61 |
+| Auto-attack (tag 1) | 160.11 |
+| Auto-attack (tag 2) | 96.60 |
+| [Spell 31016](https://www.wowhead.com/forever/spell=31016) | 71.49 |
+| [Spell 31016](https://www.wowhead.com/forever/spell=31016) | 65.27 |
+| [Mutilate](https://www.wowhead.com/forever/spell=1241584) | 59.79 |
+| [Spell 25347](https://www.wowhead.com/forever/spell=25347) | 44.76 |
+| [Mutilate](https://www.wowhead.com/forever/spell=1241584) | 38.68 |
+| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 28.68 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Energy | OtherActionEnergyRegen | +3014.2 |
+| Energy | [Mutilate](https://www.wowhead.com/forever/spell=1241584) | -2899.4 |
+| Energy | [Spell 31016](https://www.wowhead.com/forever/spell=31016) | -767.9 |
+| Energy | [Relentless Strikes](https://www.wowhead.com/forever/spell=14179) | +740.3 |
+| Energy | [Slice and Dice](https://www.wowhead.com/forever/spell=6774) | -410.9 |
+| Energy | OtherActionRefund | +152.2 |
+| ComboPoints | [Spell 31016](https://www.wowhead.com/forever/spell=31016) | -125.4 |
+| Energy | [Item 7676](https://www.wowhead.com/forever/item=7676) | +99.7 |
+| ComboPoints | [Mutilate](https://www.wowhead.com/forever/spell=1241584) | +90.3 |
+| ComboPoints | [Ruthlessness](https://www.wowhead.com/forever/spell=14161) | +31.4 |
+| ComboPoints | [Seal Fate](https://www.wowhead.com/forever/spell=14195) | +28.0 |
+| ComboPoints | [Slice and Dice](https://www.wowhead.com/forever/spell=6774) | -22.7 |
 
 ## Rogue — Combat
 
 **Talents:** 18/33/0 · `005303103012-32003311201515231`
 
-[Requests, results and search evidence](../artifacts/optimization/combat.json)
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
 
-- Lethality 5→3 funds Improved Poisons 0→2; the allocation remains 18/33/0.
-- Thistle Tea now uses an Energy threshold of 10 instead of a Classic tick-timing gate that is unreachable under smooth regeneration. Adrenaline Rush uses Energy ≤40.
-- Eviscerate is used at three or more combo points; Cold Blood is explicitly aligned with that finisher instead of its automatic timing. The existing Sinister Strike swing-window gate and Slice and Dice priority remain.
-- Finisher thresholds, builder pooling, Slice and Dice refreshes, Rupture and Cold Blood timing were tested. All nine races passed 5,000-iteration comparisons against the corrected Energy baseline; gear and consumes are unchanged.
-- Revalidated at 5,000 iterations per race with continuous weapon-role autos and assumed general-haste Energy scaling. The prior retained talents and APL passed without changes; the comparison baseline uses this same engine.
 
 ### Results
 
 | Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
 |---|---:|---:|---:|---:|
-| Orc | 490.56 | 506.63 | +3.28% | 0.00 |
-| Troll | 491.76 | 508.32 | +3.37% | 0.00 |
-| Undead | 502.48 | 519.98 | +3.48% | 0.00 |
-| Windshaper | 491.32 | 509.21 | +3.64% | 0.00 |
-| Human | 495.62 | 511.82 | +3.27% | 0.00 |
-| Dwarf | 490.00 | 506.13 | +3.29% | 0.00 |
-| Night Elf | 493.12 | 509.40 | +3.30% | 0.00 |
-| Gnome | 493.61 | 510.21 | +3.36% | 0.00 |
-| High Order | 491.32 | 509.21 | +3.64% | 0.00 |
+| Orc | 506.52 | 606.88 | +19.81% | 0.00 |
+| Troll | 508.08 | 606.36 | +19.34% | 0.00 |
+| Undead | 520.08 | 625.30 | +20.23% | 0.00 |
+| Windshaper | 509.04 | 609.83 | +19.80% | 0.00 |
+| Human | 511.69 | 611.01 | +19.41% | 0.00 |
+| Dwarf | 506.01 | 600.78 | +18.73% | 0.00 |
+| Night Elf | 509.29 | 608.79 | +19.54% | 0.00 |
+| Gnome | 510.00 | 609.06 | +19.42% | 0.00 |
+| High Order | 509.04 | 609.83 | +19.80% | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Undead
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Outlaw's Collar](https://www.wowhead.com/forever/item=279253) | 65 | Arcanum of Rapidity |
+| Neck | [Amulet of the Darkmoon](https://www.wowhead.com/forever/item=19491) | 65 | — |
+| Shoulders | [Darkspear Pauldrons](https://www.wowhead.com/forever/item=272105) | 65 | Chromatic Mantle of the Dawn |
+| Back | [Deathguard's Cloak](https://www.wowhead.com/forever/item=20068) | 65 | Enchant Boots - Lesser Agility |
+| Chest | [Dawn Armor](https://www.wowhead.com/forever/item=252483) | 61 | Enchant Chest - Greater Stats |
+| Wrists | [Primal Batskin Bracers](https://www.wowhead.com/forever/item=19687) | 65 | Enchant Bracer - Superior Strength |
+| Hands | [Timbermaw Brawlers](https://www.wowhead.com/forever/item=19049) | 61 | Enchant Gloves - Minor Haste |
+| Waist | [Might of the Timbermaw](https://www.wowhead.com/forever/item=19044) | 58 | — |
+| Legs | [Outrider's Leather Pants](https://www.wowhead.com/forever/item=22740) | 65 | Lesser Arcanum of Voracity |
+| Feet | [Prowler's Leather Boots](https://www.wowhead.com/forever/item=252468) | 52 | Enchant Boots - Greater Agility |
+| Ring 1 | [Blackstone Ring](https://www.wowhead.com/forever/item=17713) | 54 | — |
+| Ring 2 | [Cutthroat's Signet](https://www.wowhead.com/forever/item=272408) | 65 | — |
+| Trinket 1 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Trinket 2 | [Molten Heart of the Mountain](https://www.wowhead.com/forever/item=249470) | 55 | — |
+| Main hand | [Premier High Warlord's Right Claw](https://www.wowhead.com/forever/item=272597) | 65 | Enchant Weapon - Fiery Weapon |
+| Off hand | [Premier High Warlord's Quickblade](https://www.wowhead.com/forever/item=272684) | 65 | Enchant Weapon - Agility |
+| Ranged/relic | [Premier High Warlord's Recurve](https://www.wowhead.com/forever/item=272594) | 65 | SAF-T Ultra Precision Scope |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
 ### Before the pull
 
@@ -910,39 +1462,151 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 
 | Action | DPS |
 |---|---:|
-| Auto-attack (tag 1) | 151.45 |
-| [Sinister Strike](https://www.wowhead.com/forever/spell=11294) | 110.42 |
-| Auto-attack (tag 2) | 94.47 |
-| [Spell 31016](https://www.wowhead.com/forever/spell=31016) | 81.30 |
-| [Spell 25347](https://www.wowhead.com/forever/spell=25347) | 23.50 |
-| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 18.27 |
-| [Instant Poison VI](https://www.wowhead.com/forever/spell=11340) | 18.05 |
-| Auto-attack (tag 3) | 10.36 |
+| Auto-attack (tag 1) | 178.47 |
+| [Sinister Strike](https://www.wowhead.com/forever/spell=11294) | 136.68 |
+| Auto-attack (tag 2) | 110.92 |
+| [Spell 31016](https://www.wowhead.com/forever/spell=31016) | 89.08 |
+| [Spell 25347](https://www.wowhead.com/forever/spell=25347) | 33.90 |
+| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 25.42 |
+| [Instant Poison VI](https://www.wowhead.com/forever/spell=11340) | 16.38 |
+| Auto-attack (tag 3) | 12.40 |
 
-## Priest — Smite
+### Resource flow
 
-**Talents:** 31/17/3 · `515030031305001031-00505023002-003`
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Energy | OtherActionEnergyRegen | +3176.1 |
+| Energy | [Sinister Strike](https://www.wowhead.com/forever/spell=11294) | -2911.8 |
+| Energy | [Slice and Dice](https://www.wowhead.com/forever/spell=6774) | -469.5 |
+| Energy | [Spell 31016](https://www.wowhead.com/forever/spell=31016) | -463.2 |
+| Energy | [Relentless Strikes](https://www.wowhead.com/forever/spell=14179) | +462.8 |
+| Energy | OtherActionRefund | +103.4 |
+| Energy | [Item 7676](https://www.wowhead.com/forever/item=7676) | +96.5 |
+| Energy | [Blade Flurry](https://www.wowhead.com/forever/spell=13877) | -75.0 |
+| ComboPoints | [Sinister Strike](https://www.wowhead.com/forever/spell=11294) | +69.6 |
+| ComboPoints | [Spell 31016](https://www.wowhead.com/forever/spell=31016) | -66.4 |
+| ComboPoints | [Slice and Dice](https://www.wowhead.com/forever/spell=6774) | -26.0 |
+| ComboPoints | [Ruthlessness](https://www.wowhead.com/forever/spell=14161) | +24.6 |
 
-[Requests, results and search evidence](../artifacts/optimization/smite.json)
+## Druid — Feral
 
-- The existing 31/17/3 talents are retained; screened one-point reallocations did not produce a validated improvement.
-- Penance takes first spell priority, followed by Holy Fire maintenance. Remove Shadow Word: Pain, spend on maximum-rank Smite above 20 mana per remaining second, and use rank-3 Smite otherwise. Inner Focus remains paired with maximum-rank Smite.
-- Removing Pain also removes the Shadow-school hit requirement. Holy Precision already caps the retained Holy spells, so the paid-hit model returns offensive budget. The gain is not solely a fixed-stat rotation improvement.
-- The rank-3 filler uses the current client coefficient of 0.714; a server-side downranking penalty is still an open in-game check (T12). Penance uses complete channels, not a partial-channel timing exploit (T19).
-- All six Priest races passed independent 5,000-iteration comparisons without mana-limited time or APL warnings.
+**Talents:** 9/34/8 · `050022-3521002023032213041-053`
+
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
+
 
 ### Results
 
 | Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
 |---|---:|---:|---:|---:|
-| Troll | 430.66 | 468.31 | +8.74% | 0.00 |
-| Undead | 445.62 | 474.84 | +6.56% | 0.00 |
-| Human | 431.22 | 467.33 | +8.37% | 0.00 |
-| Dwarf | 431.57 | 468.56 | +8.57% | 0.00 |
-| Night Elf | 431.99 | 469.40 | +8.66% | 0.00 |
-| Gnome | 436.56 | 473.31 | +8.42% | 0.00 |
+| Tauren | 537.80 | 602.08 | +11.95% | 0.00 |
+| Windshaper | 538.68 | 602.68 | +11.88% | 0.00 |
+| Night Elf | 537.84 | 603.02 | +12.12% | 0.00 |
+| High Order | 538.68 | 602.68 | +11.88% | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Night Elf
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Outlaw's Collar](https://www.wowhead.com/forever/item=279253) | 65 | Lesser Arcanum of Voracity |
+| Neck | [Amulet of the Darkmoon](https://www.wowhead.com/forever/item=19491) | 65 | — |
+| Shoulders | [Darkspear Pauldrons](https://www.wowhead.com/forever/item=272105) | 65 | Chromatic Mantle of the Dawn |
+| Back | [Shifting Cloak](https://www.wowhead.com/forever/item=18511) | 62 | Enchant Boots - Lesser Agility |
+| Chest | [Timbermaw Tunic](https://www.wowhead.com/forever/item=252484) | 61 | Enchant Chest - Greater Stats |
+| Wrists | [Primal Batskin Bracers](https://www.wowhead.com/forever/item=19687) | 65 | Enchant Bracer - Superior Strength |
+| Hands | [Timbermaw Brawlers](https://www.wowhead.com/forever/item=19049) | 61 | Enchant Weapon - Agility |
+| Waist | [Might of the Timbermaw](https://www.wowhead.com/forever/item=19044) | 58 | — |
+| Legs | [Warbear Woolies](https://www.wowhead.com/forever/item=15065) | 57 | Lesser Arcanum of Voracity |
+| Feet | [Mongoose Boots](https://www.wowhead.com/forever/item=18506) | 62 | Enchant Boots - Greater Agility |
+| Ring 1 | [Cutthroat's Signet](https://www.wowhead.com/forever/item=272408) | 65 | — |
+| Ring 2 | [Protector's Band](https://www.wowhead.com/forever/item=19514) | 63 | — |
+| Trinket 1 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Trinket 2 | [Molten Heart of the Mountain](https://www.wowhead.com/forever/item=249470) | 55 | — |
+| Main hand | [Premier High Warlord's Pulverizer](https://www.wowhead.com/forever/item=272601) | 65 | Enchant 2H Weapon - Agility |
+| Ranged/relic | [Idol of the Dream](https://www.wowhead.com/forever/item=220606) | 60 | — |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
+
+### Rotation priorities
+
+1. Use ready automatic cooldowns.
+2. Cast [Tiger's Fury](https://www.wowhead.com/forever/spell=9846) when Energy ≤ 40.
+3. Cast [Ferocious Bite](https://www.wowhead.com/forever/spell=31018) when (Time remaining ≤ 4s AND Combo points ≥ 3).
+4. Cast [Rip](https://www.wowhead.com/forever/spell=9896) when (Combo points ≥ 4 AND NOT [Rip](https://www.wowhead.com/forever/spell=9896) DoT active AND Time remaining ≥ 8s).
+5. Cast [Shred](https://www.wowhead.com/forever/spell=9830).
+
+### Damage breakdown — Night Elf
+
+| Action | DPS |
+|---|---:|
+| Auto-attack (tag 1) | 227.43 |
+| [Shred](https://www.wowhead.com/forever/spell=9830) | 192.46 |
+| [Rip](https://www.wowhead.com/forever/spell=9896) | 176.00 |
+| [Ferocious Bite](https://www.wowhead.com/forever/spell=31018) | 4.62 |
+| [Dragonbreath Chili (proc)](https://www.wowhead.com/forever/spell=15851) | 2.51 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Energy | [Shred](https://www.wowhead.com/forever/spell=9830) | -3313.3 |
+| Energy | OtherActionEnergyRegen | +3029.3 |
+| Energy | [Tiger's Fury](https://www.wowhead.com/forever/spell=9846) | +719.5 |
+| Energy | [Rip](https://www.wowhead.com/forever/spell=9896) | -634.1 |
+| Energy | OtherActionRefund | +172.4 |
+| ComboPoints | [Rip](https://www.wowhead.com/forever/spell=9896) | -92.8 |
+| ComboPoints | [Shred](https://www.wowhead.com/forever/spell=9830) | +63.1 |
+| Energy | [Ferocious Bite](https://www.wowhead.com/forever/spell=31018) | -56.2 |
+| ComboPoints | [Primal Fury](https://www.wowhead.com/forever/spell=37117) | +34.4 |
+| ComboPoints | [Ferocious Bite](https://www.wowhead.com/forever/spell=31018) | -3.5 |
+| Mana | OtherActionManaRegen (tag 2) | +0.0 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +0.0 |
+
+## Priest — Smite
+
+**Talents:** 31/17/3 · `515030031305001031-00505023002-003`
+
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
+
+
+### Results
+
+| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
+|---|---:|---:|---:|---:|
+| Troll | 468.35 | 594.41 | +26.91% | 0.00 |
+| Undead | 474.85 | 597.77 | +25.89% | 0.00 |
+| Human | 467.33 | 592.97 | +26.88% | 0.00 |
+| Dwarf | 468.52 | 592.22 | +26.40% | 0.00 |
+| Night Elf | 469.40 | 595.57 | +26.88% | 0.00 |
+| Gnome | 473.32 | 597.41 | +26.22% | 0.00 |
+
+Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Undead
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Ghostweave Hood](https://www.wowhead.com/forever/item=254135) | 61 | Arcanum of Focus |
+| Neck | [Chains of the Lich](https://www.wowhead.com/forever/item=23125) | 60 | — |
+| Shoulders | [Argent Shoulders](https://www.wowhead.com/forever/item=19059) | 61 | Chromatic Mantle of the Dawn |
+| Back | [Hide of the Wild](https://www.wowhead.com/forever/item=18510) | 62 | Enchant Cloak - Superior Defense |
+| Chest | [Bloodvine Vest](https://www.wowhead.com/forever/item=19682) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Netherlight Cuffs](https://www.wowhead.com/forever/item=254071) | 50 | Enchant Bracer - Greater Intellect |
+| Hands | [Gloves of Spell Mastery](https://www.wowhead.com/forever/item=14146) | 62 | Enchant Gloves - Healing Power |
+| Waist | [Belt of the Archmage](https://www.wowhead.com/forever/item=18405) | 62 | — |
+| Legs | [Bloodvine Leggings](https://www.wowhead.com/forever/item=19683) | 65 | Arcanum of Focus |
+| Feet | [Bloodvine Boots](https://www.wowhead.com/forever/item=19684) | 65 | Enchant Boots - Spirit |
+| Ring 1 | [Blessed Band of Light](https://www.wowhead.com/forever/item=272407) | 65 | — |
+| Ring 2 | [Advisor's Ring](https://www.wowhead.com/forever/item=19518) | 63 | — |
+| Trinket 1 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
+| Trinket 2 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Main hand | [Premier High Warlord's Spellblade](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Spell Power |
+| Off hand | [Premier High Warlord's Tome of Destruction](https://www.wowhead.com/forever/item=272685) | 65 | — |
+| Ranged/relic | [Brilliant Wand](https://www.wowhead.com/forever/item=249385) | 60 | — |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
 ### Before the pull
 
@@ -961,39 +1625,153 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 
 | Action | DPS |
 |---|---:|
-| [Smite](https://www.wowhead.com/forever/spell=10934) | 174.64 |
-| [Penance](https://www.wowhead.com/forever/spell=1316995) | 108.30 |
-| [Holy Fire](https://www.wowhead.com/forever/spell=15261) | 98.38 |
-| [Smite](https://www.wowhead.com/forever/spell=598) | 85.85 |
-| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 7.66 |
+| [Smite](https://www.wowhead.com/forever/spell=10934) | 232.94 |
+| [Penance](https://www.wowhead.com/forever/spell=1316995) | 131.21 |
+| [Holy Fire](https://www.wowhead.com/forever/spell=15261) | 123.11 |
+| [Smite](https://www.wowhead.com/forever/spell=598) | 102.29 |
+| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 8.22 |
 
-## Rogue — Subtlety
+### Resource flow
 
-**Talents:** 20/0/31 · `115303101104--5320003310013211501`
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | [Smite](https://www.wowhead.com/forever/spell=10934) | -14503.2 |
+| Mana | OtherActionManaRegen (tag 1) | +9243.1 |
+| Mana | [Penance](https://www.wowhead.com/forever/spell=1316995) | -7124.0 |
+| Mana | [Holy Fire](https://www.wowhead.com/forever/spell=15261) | -5566.6 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +4039.7 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3602.5 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3601.0 |
+| Mana | [Smite](https://www.wowhead.com/forever/spell=598) | -1727.8 |
+| Health | OtherActionDamageTaken | -1600.0 |
+| Mana | [Dark Sacrifice](https://www.wowhead.com/forever/spell=1277328) | +1600.0 |
+| Health | [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | +1529.6 |
+| Mana | [Power Infusion](https://www.wowhead.com/forever/spell=10060) | -495.4 |
 
-[Requests, results and search evidence](../artifacts/optimization/subtlety.json)
+## Druid — Balance
 
-- The 20/0/31 allocation adds Improved Slice and Dice 3/3, Improved Poisons 4/5 and Vile Poisons 1/5. These are funded by Remorseless Attacks 2→1, Murder 2→0 and Cutthroat 5→0.
-- Murder does not benefit the fixed neutral target and Remorseless Attacks has no kill trigger in this encounter. Cutthroat loses to sustained poison/maintenance talents in the tested five-minute rotation; this is not a general PvP or leveling recommendation.
-- The original APL is retained. Finisher thresholds, Slice and Dice refreshes, Rupture, the stealth cycle and Ghostly Strike were tested; no rotation change passed independent validation.
-- All nine races passed 5,000-iteration comparisons against the corrected Energy baseline. Hemorrhage and Thousand Cuts remain required specialization features; no gear or resource rules changed.
-- Revalidated at 5,000 iterations per race with continuous weapon-role autos and assumed general-haste Energy scaling. The prior retained talents and APL passed without changes; the comparison baseline uses this same engine.
+**Talents:** 38/0/13 · `5232220115501351--505003`
+
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
+
 
 ### Results
 
 | Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
 |---|---:|---:|---:|---:|
-| Orc | 418.64 | 449.20 | +7.30% | 0.00 |
-| Troll | 414.34 | 444.31 | +7.23% | 0.00 |
-| Undead | 431.70 | 463.08 | +7.27% | 0.00 |
-| Windshaper | 415.03 | 445.08 | +7.24% | 0.00 |
-| Human | 422.90 | 453.93 | +7.34% | 0.00 |
-| Dwarf | 418.15 | 448.87 | +7.34% | 0.00 |
-| Night Elf | 420.85 | 451.59 | +7.30% | 0.00 |
-| Gnome | 420.48 | 450.88 | +7.23% | 0.00 |
-| High Order | 415.03 | 445.08 | +7.24% | 0.00 |
+| Tauren | 458.37 | 588.75 | +28.44% | 0.01 |
+| Windshaper | 455.98 | 586.34 | +28.59% | 0.02 |
+| Night Elf | 458.26 | 588.71 | +28.47% | 0.02 |
+| High Order | 455.98 | 586.34 | +28.59% | 0.02 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Tauren
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Living Crown](https://www.wowhead.com/forever/item=252561) | 61 | Arcanum of Focus |
+| Neck | [Chains of the Lich](https://www.wowhead.com/forever/item=23125) | 60 | — |
+| Shoulders | [Mantle of the Timbermaw](https://www.wowhead.com/forever/item=19050) | 61 | Chromatic Mantle of the Dawn |
+| Back | [Hide of the Wild](https://www.wowhead.com/forever/item=18510) | 62 | Enchant Cloak - Superior Defense |
+| Chest | [Bloodvine Vest](https://www.wowhead.com/forever/item=19682) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Runecloth Cuffs](https://www.wowhead.com/forever/item=254123) | 59 | Enchant Bracer - Greater Intellect |
+| Hands | [Gloves of the Greatfather](https://www.wowhead.com/forever/item=17721) | 38 | Enchant Gloves - Healing Power |
+| Waist | [Belt of the Archmage](https://www.wowhead.com/forever/item=18405) | 62 | — |
+| Legs | [Ironfeather Leggings](https://www.wowhead.com/forever/item=252486) | 61 | Arcanum of Focus |
+| Feet | [Bloodvine Boots](https://www.wowhead.com/forever/item=19684) | 65 | Enchant Boots - Spirit |
+| Ring 1 | [Blessed Band of Light](https://www.wowhead.com/forever/item=272407) | 65 | — |
+| Ring 2 | [Advisor's Ring](https://www.wowhead.com/forever/item=19518) | 63 | — |
+| Trinket 1 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
+| Trinket 2 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Main hand | [Premier High Warlord's Spellblade](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Spell Power |
+| Off hand | [Premier High Warlord's Tome of Destruction](https://www.wowhead.com/forever/item=272685) | 65 | — |
+| Ranged/relic | [Swarming Idol](https://www.wowhead.com/forever/item=272430) | 65 | — |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
+
+### Before the pull
+
+- -2s: [Moonkin Form](https://www.wowhead.com/forever/spell=24858).
+
+### Rotation priorities
+
+1. Use ready automatic cooldowns.
+2. Cast [Insect Swarm (rank 5)](https://www.wowhead.com/forever/spell=24977) when NOT [Insect Swarm (rank 5)](https://www.wowhead.com/forever/spell=24977) DoT active.
+3. Cast [Moonfire (rank 10)](https://www.wowhead.com/forever/spell=9835) when NOT [Moonfire (rank 10)](https://www.wowhead.com/forever/spell=9835) DoT active.
+4. Cast [Starfire (rank 7)](https://www.wowhead.com/forever/spell=25298) when [Eclipse](https://www.wowhead.com/forever/spell=48518) stacks ≥ 1.
+5. Cast [Wrath (rank 8)](https://www.wowhead.com/forever/spell=9912).
+
+### Damage breakdown — Tauren
+
+| Action | DPS |
+|---|---:|
+| [Starfire](https://www.wowhead.com/forever/spell=25298) | 333.84 |
+| [Moonfire](https://www.wowhead.com/forever/spell=9835) | 89.50 |
+| [Insect Swarm](https://www.wowhead.com/forever/spell=24977) | 85.34 |
+| [Wrath](https://www.wowhead.com/forever/spell=9912) | 80.07 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | [Starfire](https://www.wowhead.com/forever/spell=25298) | -19207.4 |
+| Mana | OtherActionManaRegen (tag 1) | +10465.2 |
+| Mana | [Moonfire](https://www.wowhead.com/forever/spell=9835) | -5321.1 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +4468.2 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +4224.6 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3593.5 |
+| Mana | [Insect Swarm](https://www.wowhead.com/forever/spell=24977) | -1885.1 |
+| Mana | [Wrath](https://www.wowhead.com/forever/spell=9912) | -1314.0 |
+| Mana | [Moonkin Form](https://www.wowhead.com/forever/spell=24858) | -326.6 |
+| Mana | [Innervate](https://www.wowhead.com/forever/spell=29166) | -46.6 |
+
+## Rogue — Subtlety
+
+**Talents:** 20/0/31 · `115303101104--5320003310013211501`
+
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
+
+
+### Results
+
+| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
+|---|---:|---:|---:|---:|
+| Orc | 449.12 | 548.74 | +22.18% | 0.00 |
+| Troll | 444.58 | 542.07 | +21.93% | 0.00 |
+| Undead | 463.09 | 572.27 | +23.58% | 0.00 |
+| Windshaper | 444.87 | 540.29 | +21.45% | 0.00 |
+| Human | 453.82 | 554.35 | +22.15% | 0.00 |
+| Dwarf | 448.78 | 542.75 | +20.94% | 0.00 |
+| Night Elf | 451.52 | 551.61 | +22.17% | 0.00 |
+| Gnome | 450.71 | 546.96 | +21.36% | 0.00 |
+| High Order | 444.87 | 540.29 | +21.45% | 0.00 |
+
+Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Undead
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Outlaw's Collar](https://www.wowhead.com/forever/item=279253) | 65 | Arcanum of Rapidity |
+| Neck | [Amulet of the Darkmoon](https://www.wowhead.com/forever/item=19491) | 65 | — |
+| Shoulders | [Darkspear Pauldrons](https://www.wowhead.com/forever/item=272105) | 65 | Chromatic Mantle of the Dawn |
+| Back | [Deathguard's Cloak](https://www.wowhead.com/forever/item=20068) | 65 | Enchant Boots - Lesser Agility |
+| Chest | [Dawn Armor](https://www.wowhead.com/forever/item=252483) | 61 | Enchant Chest - Greater Stats |
+| Wrists | [Primal Batskin Bracers](https://www.wowhead.com/forever/item=19687) | 65 | Enchant Bracer - Superior Strength |
+| Hands | [Timbermaw Brawlers](https://www.wowhead.com/forever/item=19049) | 61 | Enchant Weapon - Agility |
+| Waist | [Might of the Timbermaw](https://www.wowhead.com/forever/item=19044) | 58 | — |
+| Legs | [Outrider's Leather Pants](https://www.wowhead.com/forever/item=22740) | 65 | Lesser Arcanum of Voracity |
+| Feet | [Prowler's Leather Boots](https://www.wowhead.com/forever/item=252468) | 52 | Enchant Boots - Greater Agility |
+| Ring 1 | [Blackstone Ring](https://www.wowhead.com/forever/item=17713) | 54 | — |
+| Ring 2 | [Cutthroat's Signet](https://www.wowhead.com/forever/item=272408) | 65 | — |
+| Trinket 1 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Trinket 2 | [Molten Heart of the Mountain](https://www.wowhead.com/forever/item=249470) | 55 | — |
+| Main hand | [Premier High Warlord's Razor](https://www.wowhead.com/forever/item=272596) | 65 | Enchant Weapon - Fiery Weapon |
+| Off hand | [Premier High Warlord's Quickblade](https://www.wowhead.com/forever/item=272684) | 65 | Enchant Weapon - Agility |
+| Ranged/relic | [Premier High Warlord's Recurve](https://www.wowhead.com/forever/item=272594) | 65 | SAF-T Ultra Precision Scope |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
 ### Rotation priorities
 
@@ -1010,81 +1788,74 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 
 | Action | DPS |
 |---|---:|
-| Auto-attack (tag 1) | 141.71 |
-| [Hemorrhage](https://www.wowhead.com/forever/spell=16511) | 109.91 |
-| Auto-attack (tag 2) | 70.48 |
-| [Rupture](https://www.wowhead.com/forever/spell=11275) | 47.32 |
-| [Spell 25347](https://www.wowhead.com/forever/spell=25347) | 26.12 |
-| [Instant Poison VI](https://www.wowhead.com/forever/spell=11340) | 21.81 |
-| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 18.50 |
-| [Spell 31016](https://www.wowhead.com/forever/spell=31016) | 11.12 |
+| Auto-attack (tag 1) | 166.89 |
+| [Hemorrhage](https://www.wowhead.com/forever/spell=16511) | 133.38 |
+| Auto-attack (tag 2) | 83.92 |
+| [Rupture](https://www.wowhead.com/forever/spell=11275) | 49.88 |
+| [Spell 25347](https://www.wowhead.com/forever/spell=25347) | 36.52 |
+| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 27.97 |
+| [Instant Poison VI](https://www.wowhead.com/forever/spell=11340) | 24.62 |
+| [Spell 31016](https://www.wowhead.com/forever/spell=31016) | 11.70 |
 
-## Druid — Balance
+### Resource flow
 
-**Talents:** 38/0/13 · `5232220115501351--505003`
-
-[Requests, results and search evidence](../artifacts/optimization/balance.json)
-
-- Genesis 4/5 to 2/5; Nature's Reach 0/2 to 2/2. Nature's Reach grants 4 percentage points of shared hit at rank 2.
-- The gain includes recovery of offensive stats previously spent on paid hit normalization. Catalog equipment and the normalization exchange prices are unchanged.
-- Retained the baseline Eclipse/DoT APL. Filler, DoT omission and priority-order variants failed independent validation.
-- Read Ley Line regeneration remains unmodelled for High Order; see docs/in_game_checks.md T04.
-- Revalidated at 5,000 iterations per race with continuous weapon-role autos and assumed general-haste Energy scaling. The prior retained talents and APL passed without changes; the comparison baseline uses this same engine.
-
-### Results
-
-| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
-|---|---:|---:|---:|---:|
-| Tauren | 442.36 | 458.28 | +3.60% | 0.02 |
-| Windshaper | 439.86 | 456.25 | +3.73% | 0.03 |
-| Night Elf | 442.00 | 458.37 | +3.70% | 0.03 |
-| High Order | 439.86 | 456.25 | +3.73% | 0.03 |
-
-Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
-
-### Before the pull
-
-- -2s: [Moonkin Form](https://www.wowhead.com/forever/spell=24858).
-
-### Rotation priorities
-
-1. Use ready automatic cooldowns.
-2. Cast [Insect Swarm (rank 5)](https://www.wowhead.com/forever/spell=24977) when NOT [Insect Swarm (rank 5)](https://www.wowhead.com/forever/spell=24977) DoT active.
-3. Cast [Moonfire (rank 10)](https://www.wowhead.com/forever/spell=9835) when NOT [Moonfire (rank 10)](https://www.wowhead.com/forever/spell=9835) DoT active.
-4. Cast [Starfire (rank 7)](https://www.wowhead.com/forever/spell=25298) when [Eclipse](https://www.wowhead.com/forever/spell=48518) stacks ≥ 1.
-5. Cast [Wrath (rank 8)](https://www.wowhead.com/forever/spell=9912).
-
-### Damage breakdown — Night Elf
-
-| Action | DPS |
-|---|---:|
-| [Starfire](https://www.wowhead.com/forever/spell=25298) | 259.68 |
-| [Moonfire](https://www.wowhead.com/forever/spell=9835) | 71.94 |
-| [Insect Swarm](https://www.wowhead.com/forever/spell=24977) | 63.83 |
-| [Wrath](https://www.wowhead.com/forever/spell=9912) | 62.92 |
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Energy | OtherActionEnergyRegen | +2999.2 |
+| Energy | [Hemorrhage](https://www.wowhead.com/forever/spell=16511) | -2950.5 |
+| Energy | [Relentless Strikes](https://www.wowhead.com/forever/spell=14179) | +534.8 |
+| Energy | [Slice and Dice](https://www.wowhead.com/forever/spell=6774) | -353.1 |
+| Energy | [Rupture](https://www.wowhead.com/forever/spell=11275) | -336.3 |
+| Energy | OtherActionRefund | +152.7 |
+| Energy | [Spell 31016](https://www.wowhead.com/forever/spell=31016) | -126.4 |
+| Energy | [Ambush](https://www.wowhead.com/forever/spell=11269) | -91.1 |
+| Energy | [Item 7676](https://www.wowhead.com/forever/item=7676) | +88.3 |
+| ComboPoints | [Hemorrhage](https://www.wowhead.com/forever/spell=16511) | +85.9 |
+| ComboPoints | [Rupture](https://www.wowhead.com/forever/spell=11275) | -51.1 |
+| ComboPoints | [Slice and Dice](https://www.wowhead.com/forever/spell=6774) | -39.0 |
 
 ## Shaman — Stormcaller
 
 **Talents:** 28/23/0 · `550032150010303-055030031004002`
 
-[Requests, results and search evidence](../artifacts/optimization/stormcaller.json)
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
 
-- Retained the baseline talents and APL. Rank/reserve, Chain Lightning, Flame Shock and totem/cooldown alternatives were tested on Orc and Tauren; none gave a validated DPS gain.
-- A higher mana reserve and rank-6 fallback reduced mana-limited time but did not improve DPS in independent validation.
-- Low-rank spell-power scaling remains an in-game check (T12); these results use the client-listed coefficients.
-- Revalidated at 5,000 iterations per race with continuous weapon-role autos and assumed general-haste Energy scaling. The prior retained talents and APL passed without changes; the comparison baseline uses this same engine.
 
 ### Results
 
 | Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
 |---|---:|---:|---:|---:|
-| Orc | 414.06 | 414.05 | -0.00% | 1.72 |
-| Tauren | 414.26 | 414.42 | +0.04% | 1.70 |
-| Troll | 411.57 | 411.33 | -0.06% | 1.69 |
-| Windshaper | 412.86 | 413.46 | +0.15% | 1.75 |
-| Dwarf | 414.39 | 414.48 | +0.02% | 1.70 |
+| Orc | 413.71 | 523.09 | +26.44% | 1.39 |
+| Tauren | 414.07 | 522.41 | +26.16% | 1.40 |
+| Troll | 411.42 | 518.54 | +26.04% | 1.41 |
+| Windshaper | 413.23 | 520.17 | +25.88% | 1.46 |
+| Dwarf | 414.16 | 518.69 | +25.24% | 1.44 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Orc
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Blue Dragonscale Helm](https://www.wowhead.com/forever/item=252604) | 61 | Arcanum of Focus |
+| Neck | [Chains of the Lich](https://www.wowhead.com/forever/item=23125) | 60 | — |
+| Shoulders | [Mantle of the Timbermaw](https://www.wowhead.com/forever/item=19050) | 61 | Chromatic Mantle of the Dawn |
+| Back | [Hide of the Wild](https://www.wowhead.com/forever/item=18510) | 62 | Enchant Cloak - Superior Defense |
+| Chest | [Bloodvine Vest](https://www.wowhead.com/forever/item=19682) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Runecloth Cuffs](https://www.wowhead.com/forever/item=254123) | 59 | Enchant Bracer - Greater Intellect |
+| Hands | [Gloves of the Greatfather](https://www.wowhead.com/forever/item=17721) | 38 | Enchant Gloves - Fire Power |
+| Waist | [Belt of the Archmage](https://www.wowhead.com/forever/item=18405) | 62 | — |
+| Legs | [Ironfeather Leggings](https://www.wowhead.com/forever/item=252486) | 61 | Arcanum of Focus |
+| Feet | [Bloodvine Boots](https://www.wowhead.com/forever/item=19684) | 65 | Enchant Boots - Spirit |
+| Ring 1 | [Channeler's Ring](https://www.wowhead.com/forever/item=272406) | 65 | — |
+| Ring 2 | [Blessed Band of Light](https://www.wowhead.com/forever/item=272407) | 65 | — |
+| Trinket 1 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
+| Trinket 2 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Main hand | [Premier High Warlord's Spellblade](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Spell Power |
+| Off hand | [Premier High Warlord's Tome of Destruction](https://www.wowhead.com/forever/item=272685) | 65 | — |
+| Ranged/relic | [Burning Totem](https://www.wowhead.com/forever/item=272433) | 65 | — |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
 ### Before the pull
 
@@ -1100,41 +1871,75 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 6. Cast [Lightning Bolt (rank 10)](https://www.wowhead.com/forever/spell=15208) when Mana ≥ Time remaining × 10.
 7. Cast [Lightning Bolt (rank 4)](https://www.wowhead.com/forever/spell=915).
 
-### Damage breakdown — Dwarf
+### Damage breakdown — Orc
 
 | Action | DPS |
 |---|---:|
-| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 194.21 |
-| [Lightning Bolt](https://www.wowhead.com/forever/spell=915) | 82.49 |
-| [Flame Shock](https://www.wowhead.com/forever/spell=29228) | 70.67 |
-| [Attack](https://www.wowhead.com/forever/spell=10436) | 31.12 |
-| [Chain Lightning](https://www.wowhead.com/forever/spell=10605) | 21.06 |
-| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 9.75 |
-| [Lightning Bolt](https://www.wowhead.com/forever/spell=915) | 4.13 |
-| [Chain Lightning](https://www.wowhead.com/forever/spell=10605) | 1.04 |
+| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 265.48 |
+| [Lightning Bolt](https://www.wowhead.com/forever/spell=915) | 95.77 |
+| [Flame Shock](https://www.wowhead.com/forever/spell=29228) | 82.63 |
+| [Attack](https://www.wowhead.com/forever/spell=10436) | 33.08 |
+| [Chain Lightning](https://www.wowhead.com/forever/spell=10605) | 26.73 |
+| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 13.28 |
+| [Lightning Bolt](https://www.wowhead.com/forever/spell=915) | 4.79 |
+| [Chain Lightning](https://www.wowhead.com/forever/spell=10605) | 1.33 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | -16366.3 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +5279.2 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +4905.0 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3597.4 |
+| Mana | [Flame Shock](https://www.wowhead.com/forever/spell=29228) | -3216.1 |
+| Mana | OtherActionManaRegen (tag 1) | +3074.7 |
+| Mana | [Lightning Bolt](https://www.wowhead.com/forever/spell=915) | -2029.8 |
+| Mana | [Searing Totem](https://www.wowhead.com/forever/spell=10438) | -1019.7 |
+| Mana | OtherActionManaRegen (tag 2) | +164.9 |
 
 ## Shaman — Elemental
 
 **Talents:** 31/6/14 · `5502301500123031-0500001-053050001`
 
-[Requests, results and search evidence](../artifacts/optimization/elemental.json)
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
 
-- Retained the baseline talents and APL. Spell-rank, mana-reserve, Chain Lightning, Flame Shock, totem and cooldown-order alternatives produced no independently validated gain on Orc or Tauren.
-- A 31/10/10 Intellect-focused alternative without Water Shield produced 386.85 DPS on Orc, below the roughly 395.6 DPS baseline, and was rejected.
-- Lava Burst uses the model's Forever 20% Flame Shock damage bonus, not retail's guaranteed critical strike. Low-rank spell-power scaling remains an in-game check (T12).
-- Revalidated at 5,000 iterations per race with continuous weapon-role autos and assumed general-haste Energy scaling. The prior retained talents and APL passed without changes; the comparison baseline uses this same engine.
 
 ### Results
 
 | Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |
 |---|---:|---:|---:|---:|
-| Orc | 395.60 | 395.42 | -0.05% | 0.61 |
-| Tauren | 395.94 | 395.77 | -0.04% | 0.62 |
-| Troll | 393.45 | 393.51 | +0.01% | 0.67 |
-| Windshaper | 394.11 | 393.88 | -0.06% | 0.69 |
-| Dwarf | 395.47 | 395.34 | -0.03% | 0.65 |
+| Orc | 395.40 | 502.63 | +27.12% | 0.12 |
+| Tauren | 395.80 | 502.30 | +26.91% | 0.13 |
+| Troll | 393.48 | 500.46 | +27.19% | 0.12 |
+| Windshaper | 393.85 | 499.82 | +26.91% | 0.11 |
+| Dwarf | 395.22 | 498.00 | +26.01% | 0.13 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Orc
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Blue Dragonscale Helm](https://www.wowhead.com/forever/item=252604) | 61 | Arcanum of Focus |
+| Neck | [Chains of the Lich](https://www.wowhead.com/forever/item=23125) | 60 | — |
+| Shoulders | [Mantle of the Timbermaw](https://www.wowhead.com/forever/item=19050) | 61 | Chromatic Mantle of the Dawn |
+| Back | [Hide of the Wild](https://www.wowhead.com/forever/item=18510) | 62 | Enchant Cloak - Superior Defense |
+| Chest | [Bloodvine Vest](https://www.wowhead.com/forever/item=19682) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Runecloth Cuffs](https://www.wowhead.com/forever/item=254123) | 59 | Enchant Bracer - Greater Intellect |
+| Hands | [Gloves of the Greatfather](https://www.wowhead.com/forever/item=17721) | 38 | Enchant Gloves - Fire Power |
+| Waist | [Belt of the Archmage](https://www.wowhead.com/forever/item=18405) | 62 | — |
+| Legs | [Ironfeather Leggings](https://www.wowhead.com/forever/item=252486) | 61 | Arcanum of Focus |
+| Feet | [Bloodvine Boots](https://www.wowhead.com/forever/item=19684) | 65 | Enchant Boots - Spirit |
+| Ring 1 | [Blessed Band of Light](https://www.wowhead.com/forever/item=272407) | 65 | — |
+| Ring 2 | [Advisor's Ring](https://www.wowhead.com/forever/item=19518) | 63 | — |
+| Trinket 1 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
+| Trinket 2 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Main hand | [Premier High Warlord's Spellblade](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Spell Power |
+| Off hand | [Premier High Warlord's Tome of Destruction](https://www.wowhead.com/forever/item=272685) | 65 | — |
+| Ranged/relic | [Burning Totem](https://www.wowhead.com/forever/item=272433) | 65 | — |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
 ### Before the pull
 
@@ -1151,15 +1956,30 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 7. Cast [Lightning Bolt (rank 10)](https://www.wowhead.com/forever/spell=15208) when Mana ≥ Time remaining × 35.
 8. Cast [Lightning Bolt (rank 6)](https://www.wowhead.com/forever/spell=6041).
 
-### Damage breakdown — Tauren
+### Damage breakdown — Orc
 
 | Action | DPS |
 |---|---:|
-| [Lightning Bolt](https://www.wowhead.com/forever/spell=6041) | 158.73 |
-| [Lava Burst](https://www.wowhead.com/forever/spell=1238300) | 70.11 |
-| [Flame Shock](https://www.wowhead.com/forever/spell=29228) | 66.88 |
-| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 43.45 |
-| [Attack](https://www.wowhead.com/forever/spell=10436) | 30.65 |
-| [Chain Lightning](https://www.wowhead.com/forever/spell=10605) | 14.98 |
-| [Lightning Bolt](https://www.wowhead.com/forever/spell=6041) | 8.02 |
-| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 2.19 |
+| [Lightning Bolt](https://www.wowhead.com/forever/spell=6041) | 179.49 |
+| [Lava Burst](https://www.wowhead.com/forever/spell=1238300) | 96.99 |
+| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 80.29 |
+| [Flame Shock](https://www.wowhead.com/forever/spell=29228) | 78.64 |
+| [Attack](https://www.wowhead.com/forever/spell=10436) | 32.56 |
+| [Chain Lightning](https://www.wowhead.com/forever/spell=10605) | 20.68 |
+| [Lightning Bolt](https://www.wowhead.com/forever/spell=6041) | 8.94 |
+| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 4.01 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | OtherActionManaRegen (tag 1) | +7281.5 |
+| Mana | [Lightning Bolt](https://www.wowhead.com/forever/spell=6041) | -6927.6 |
+| Mana | [Flame Shock](https://www.wowhead.com/forever/spell=29228) | -6575.7 |
+| Mana | [Lava Burst](https://www.wowhead.com/forever/spell=1238300) | -5449.7 |
+| Mana | [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | -5412.0 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +4826.7 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3592.9 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3566.0 |
+| Mana | [Searing Totem](https://www.wowhead.com/forever/spell=10438) | -765.0 |
+| Mana | OtherActionManaRegen (tag 2) | +162.2 |

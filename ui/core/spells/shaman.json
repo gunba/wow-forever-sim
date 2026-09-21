@@ -641,13 +641,15 @@
 		"ability": "Elemental Devastation",
 		"file": "sim/shaman/talents.go",
 		"note": "Rank 2. The beta client keeps 3% melee crit per point for 10 sec, as in Classic. It stores only the rank 1 buff (30165); 29177 and 29178 are gone, but the numbers they describe still apply.",
-		"source": "classic"
+		"source": "forever",
+		"tooltip": "Your offensive spell critical strikes increase your melee critical strike chance by 6% for 10 sec."
 	},
 	"29178": {
 		"ability": "Elemental Devastation",
 		"file": "sim/shaman/talents.go",
 		"note": "Rank 3. The beta client keeps 3% melee crit per point for 10 sec, as in Classic. It stores only the rank 1 buff (30165); 29177 and 29178 are gone, but the numbers they describe still apply.",
-		"source": "classic"
+		"source": "forever",
+		"tooltip": "Your offensive spell critical strikes increase your melee critical strike chance by 9% for 10 sec."
 	},
 	"29228": {
 		"ability": "Flame Shock",

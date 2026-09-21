@@ -1,4 +1,4 @@
-import { EquipmentSpec, HandType, ItemSlot, ItemSpec, ItemSwap, Profession, SimDatabase, SimEnchant, SimItem } from '../proto/common.js';
+import { EquipmentSpec, HandType, ItemSlot, ItemSpec, ItemSwap, Profession, SimDatabase, SimEnchant, SimItem, WeaponType } from '../proto/common.js';
 import { UIEnchant as Enchant, UIItem as Item } from '../proto/ui.js';
 import { isBluntWeaponType, isSharpWeaponType } from '../proto_utils/utils.js';
 import { distinct, equalsOrBothNull, getEnumValues } from '../utils.js';
@@ -133,7 +133,8 @@ export class Gear extends BaseGear {
 	}
 
 	hasOffHandWeapon(): boolean {
-		return this.getEquippedItem(ItemSlot.ItemSlotOffHand)?.item?.weaponType !== undefined;
+		const type = this.getEquippedItem(ItemSlot.ItemSlotOffHand)?.item.weaponType;
+		return type !== undefined && ![WeaponType.WeaponTypeUnknown, WeaponType.WeaponTypeShield, WeaponType.WeaponTypeOffHand].includes(type);
 	}
 
 	getTrinkets(): Array<EquippedItem | null> {

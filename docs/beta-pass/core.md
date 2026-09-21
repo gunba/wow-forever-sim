@@ -32,6 +32,20 @@ changes shout radius, not duration.
 Strength of Earth and Grace of Air last five minutes. An externally maintained
 benchmark buff remains permanent when the shaman registers its own totem.
 
+### Raid buff sources
+
+Campfire benefits are not enabled in the raid benchmark. Ordinary food buffs
+remain separate. The [Basic Campfire](https://www.wowhead.com/forever/spell=1307227/basic-campfire)
+also has explicit raid/instance placement restrictions.
+
+Forever air-totem replacement removes the old totem's lingering Windfury
+tracking buff: a single shaman cannot twist Windfury and Grace of Air.
+Replacing one's own totem does not remove a permanent buff assigned to another
+provider. If both external effects are selected, they require separate
+providers, not twisting. Dynamic party-wide totem distribution is still
+represented by the party/raid buff settings, rather than the shaman's tracking
+auras alone.
+
 ## Debuffs
 
 - [Expose Armor](https://www.wowhead.com/forever/spell=11198/expose-armor):
@@ -44,6 +58,14 @@ benchmark buff remains permanent when the shaman registers its own totem.
 - Curse of the Elements covers all six magic schools. Resistance reductions
   apply once to each resistible school. The old Curse of Shadow toggle has no
   effect under Forever. Covered by `TestForeverCurseCoversAllMagic`.
+
+The complete armor package is **2,250 major + 505 Curse of Recklessness +
+505 Faerie Fire = 3,260**. Sunder and Expose replace each other; they do not
+stack. Starting armor of 4,638 / 3,731 / 3,009 therefore becomes
+1,378 / 471 / 0, with armor clamped at zero. `TestForeverBossArmorShred`
+covers these cases and competing major debuffs.
+This confirms the armor totals, not a change to the mitigation equation.
+At attacker level 60, 471 armor gives 7.89% reduction under the current formula.
 
 ## Ability integration
 
@@ -59,6 +81,9 @@ benchmark buff remains permanent when the shaman registers its own totem.
   the existing damage modifier ending when Wrack is cancelled.
 - Pet dismissal now cancels a queued combat-start auto-attack. Sacrificed pets
   no longer resume attacking at the pull.
+- Hunter pets retain their selected base attack speed, rather than being
+  forced to two seconds. `TestHunterPetKeepsSelectedAttackSpeed` covers
+  1.0, 1.2 and 2.0 seconds. The current Cat presets select 1.2 seconds.
 
 ## Horde racials
 

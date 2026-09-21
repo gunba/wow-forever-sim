@@ -11,12 +11,12 @@ import (
 )
 
 type gearRecord struct {
-	ID, RequiredLevel, RequiredSkill, RequiredSkillRank, RequiredAbility int32
-	MaxCount, LimitCategory, LimitCategoryQuantity, SetID                int32
-	UniqueEquipped, ClientStatRecord                                     bool
-	Effects                                                              []json.RawMessage
-	SetBonuses                                                           []struct{ Pieces int32 }
-	Sources                                                              []struct{ Kind string }
+	ID, ItemLevel, RequiredLevel, RequiredSkill, RequiredSkillRank, RequiredAbility int32
+	MaxCount, LimitCategory, LimitCategoryQuantity, SetID                           int32
+	UniqueEquipped, ClientStatRecord                                                bool
+	Effects                                                                         []json.RawMessage
+	SetBonuses                                                                      []struct{ Pieces, SpellID int32 }
+	Sources                                                                         []struct{ Kind, Faction string }
 }
 
 var readGearCatalog = sync.OnceValue(func() map[int32]gearRecord {
@@ -48,7 +48,7 @@ var readGearReviews = sync.OnceValue(func() map[int32]string {
 func gearReviewError(item core.Item) error {
 	record, ok := readGearCatalog()[item.ID]
 	if !ok {
-		return fmt.Errorf("%s is outside the crafted/dungeon catalog", item.Name)
+		return fmt.Errorf("%s is outside the current equipment catalog", item.Name)
 	}
 	review := readGearReviews()[item.ID]
 	if review == "implemented" || review == "verified" {
@@ -62,7 +62,10 @@ func gearReviewError(item core.Item) error {
 }
 
 func validateGear(p *proto.Player) error {
-	return validateGearLayout(p, true)
+	if err := validateGearLayout(p, true); err != nil {
+		return err
+	}
+	return validateGearEnchants(p)
 }
 
 func validateGearLayout(p *proto.Player, complete bool) error {
@@ -91,11 +94,22 @@ func validateGearLayout(p *proto.Player, complete bool) error {
 			return err
 		}
 		record := catalog[id]
+		available := false
+		for _, source := range record.Sources {
+			available = available || source.Faction == "" || source.Faction == raceFaction(p.Race)
+		}
+		if !available {
+			return fmt.Errorf("%s is not available from this faction's sources", item.Name)
+		}
 		if record.RequiredLevel > 60 || record.RequiredSkillRank > 300 || record.RequiredAbility != 0 {
 			return fmt.Errorf("%s has an unsupported level/skill/ability requirement", item.Name)
 		}
 		if record.RequiredSkill != 0 {
-			profession := map[int32]proto.Profession{202: proto.Profession_Engineering}[record.RequiredSkill]
+			profession := map[int32]proto.Profession{
+				171: proto.Profession_Alchemy, 164: proto.Profession_Blacksmithing,
+				333: proto.Profession_Enchanting, 202: proto.Profession_Engineering,
+				165: proto.Profession_Leatherworking, 197: proto.Profession_Tailoring,
+			}[record.RequiredSkill]
 			if profession == proto.Profession_ProfessionUnknown ||
 				(profession != p.Profession1 && profession != p.Profession2) {
 				return fmt.Errorf("%s requires profession skill %d", item.Name, record.RequiredSkill)
@@ -124,16 +138,40 @@ func validateGearLayout(p *proto.Player, complete bool) error {
 			sets[record.SetID]++
 		}
 	}
-	// Single pieces are safe, but no unreviewed legacy set effect may activate.
+	// Unimplemented current bonuses are reported separately; they must never
+	// activate an obsolete Classic implementation or prevent legal equipment.
 	for _, spec := range p.Equipment.Items {
 		record := catalog[spec.GetId()]
 		for _, bonus := range record.SetBonuses {
-			if sets[record.SetID] >= bonus.Pieces {
-				return fmt.Errorf("set %d reaches an unreviewed %d-piece bonus", record.SetID, bonus.Pieces)
+			if sets[record.SetID] >= bonus.Pieces && !core.HasForeverEquipmentSetDefinition(record.SetID) {
+				return fmt.Errorf("set %d lacks a Forever equipment definition", record.SetID)
 			}
 		}
 	}
 	return nil
+}
+
+func unmodeledSetBonuses(p *proto.Player) []string {
+	catalog := readGearCatalog()
+	counts := map[int32]int32{}
+	records := map[int32]gearRecord{}
+	for _, spec := range p.Equipment.Items {
+		record := catalog[spec.GetId()]
+		if record.SetID != 0 {
+			counts[record.SetID]++
+			records[record.SetID] = record
+		}
+	}
+	var missing []string
+	for id, count := range counts {
+		for _, bonus := range records[id].SetBonuses {
+			if bonus.Pieces <= count && !core.ForeverEquipmentBonusSupported(id, bonus.Pieces) {
+				missing = append(missing, fmt.Sprintf("Set %d, %d pieces, spell %d", id, bonus.Pieces, bonus.SpellID))
+			}
+		}
+	}
+	slices.Sort(missing)
+	return missing
 }
 
 // The current UI's ordinary proficiencies. New Forever extensions are not

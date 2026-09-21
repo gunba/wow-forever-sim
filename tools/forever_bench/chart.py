@@ -146,7 +146,7 @@ def main():
     samples = "/".join(f"{n:,}" for n in sorted({r["Iterations"] for r in rows}))
     fig.text(.07, .085,
              f"{samples} iterations per result · rows ordered by peak mean DPS · outlined cell: row peak · — unavailable\n"
-             "Crafted/dungeon equipment · paid shared-hit normalization · no world buffs",
+              "Crafted/dungeon/PvP equipment · paid shared-hit normalization · no world buffs",
              fontsize=9, color="#475569")
     if columns:
         fig.text(.07, .05,
@@ -161,6 +161,8 @@ def main():
     for extension in ("svg", "png"):
         path = prefix.with_suffix("." + extension)
         fig.savefig(path, dpi=150, facecolor="white", metadata={"Date": None} if extension == "svg" else None)
+        if extension == "svg":
+            path.write_text("\n".join(line.rstrip() for line in path.read_text().splitlines()) + "\n")
         print(path)
     plt.close(fig)
 

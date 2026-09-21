@@ -33,8 +33,14 @@ for (const page of pages) {
 	const tab = await browser.newPage();
 	const errors = [];
 	tab.on('pageerror', error => errors.push(error.message));
+	tab.on('response', response => {
+		const url = new URL(response.url());
+		if (url.origin === new URL(siteUrl).origin && /\.(jpg|png|gif|svg)$/i.test(url.pathname) && response.status() >= 400) {
+			errors.push(`Image ${response.status()}: ${url.pathname}`);
+		}
+	});
 	// Third party icon and tooltip hosts are not what is under test and are slow.
-	await tab.route(/zamimg|wowhead|googletagmanager/, route => route.abort());
+	await tab.route(/^https?:\/\/([^/]+\.)?(zamimg|wowhead|googletagmanager)\.com\//, route => route.abort());
 	try {
 		await tab.goto(siteUrl + page, { waitUntil: 'domcontentloaded' });
 		await tab.waitForTimeout(3000);

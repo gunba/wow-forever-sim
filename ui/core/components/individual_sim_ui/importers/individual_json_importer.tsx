@@ -26,6 +26,10 @@ export class IndividualJsonImporter<SpecType extends Spec> extends IndividualImp
 		}
 		if (proto.player?.equipment) {
 			await Database.loadLeftoversIfNecessary(proto.player.equipment);
+			this.simUI.player.validateWeaponGear(this.simUI.sim.db.lookupEquipmentSpec(proto.player.equipment));
+		}
+		if (proto.player?.enableItemSwap && proto.player.itemSwap) {
+			this.simUI.player.validateWeaponGear(this.simUI.sim.db.lookupItemSwap(proto.player.itemSwap));
 		}
 		if (this.simUI.isWithinRaidSim) {
 			if (proto.player) {

@@ -1075,16 +1075,9 @@ export const specToEligibleRaces: Record<Spec, Array<Race>> = {
 	[Spec.SpecTankWarrior]: warriorRaces,
 };
 
-// Specs that can dual wield. This could be based on class, except that
-// Enhancement Shaman learn dual wield from a talent.
 const dualWieldClasses: Array<Class> = [Class.ClassHunter, Class.ClassRogue, Class.ClassWarrior];
 
 export function canDualWield(player: Player<Spec>): boolean {
-	// Forever gives the shaman dual wield outright, and the enhancement sim already swings
-	// both weapons; the gear picker was the only thing still refusing the off hand.
-	if (player.getClass() == Class.ClassShaman) {
-		return player.sim.getRuleset() == Ruleset.RulesetForever;
-	}
 	return dualWieldClasses.includes(player.getClass());
 }
 

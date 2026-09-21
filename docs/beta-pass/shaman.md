@@ -4,6 +4,18 @@ Beta client `1.60.1.69893` against Classic Era `1.15.9.69722`, read with `tools/
 talent curves with `tools/data_watch/trait_curve.mjs`, `SpellAuraOptions` for charges and proc recovery, and
 `../beta/shaman.json`.
 
+## Weapon layouts
+
+Shamans cannot dual wield. The engine and gear picker allow a two-handed weapon,
+or a one-handed weapon with a shield or held off-hand item. Imports and weapon
+swaps must obey the same restriction. Swing synchronization and off-hand weapon
+EP have been removed.
+
+Earlier Enhancement comparisons used dual wield and are invalid. Their search
+evidence is retained under `artifacts/optimization/archive/`; the current
+starting preset uses Forest Defender's Axe. A legal-layout rerun is separate
+from the wider equipment and enchant selection.
+
 ## How the numbers were read
 
 A rank's damage in the sim is the client's base plus `EffectRealPointsPerLevel` for every level from the rank's base

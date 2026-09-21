@@ -27,6 +27,37 @@ class GearCatalogTest(unittest.TestCase):
         self.assertIsNone(reason)
         self.assertEqual(sources[0]["kind"], "dungeon")
 
+    def test_exported_honor_purchase_is_available(self):
+        export = {"costs": [{"currencyName": "Honor Points", "amount": 8000}]}
+        sources, reason = acquisition({}, export)
+        self.assertIsNone(reason)
+        self.assertEqual(sources, [{"kind": "pvp", "exported": True}])
+        # A vendor listing alone must not admit an unavailable token reward.
+        self.assertFalse(acquisition({}, {"costs": [{"itemID": 22726, "amount": 1}]})[0])
+        self.assertEqual(
+            acquisition({"sourcemore": [{"t": 5, "c": 3456}]}, export),
+            ([], "raid-derived"),
+        )
+
+    def test_nonraid_vendor_and_faction(self):
+        item = {"source": [5], "sourcemore": [{"t": 1, "ti": 15127, "z": 45, "n": "Samuel Hawke"}]}
+        sources, reason = acquisition(item)
+        self.assertIsNone(reason)
+        self.assertEqual(sources[0]["faction"], "Alliance")
+        self.assertEqual(sources[0]["kind"], "pvp")
+        item["sourcemore"] = [{"t": 1, "ti": 227853, "z": 33, "n": "Pix Xizzix"}]
+        self.assertEqual(acquisition(item)[0][0]["kind"], "vendor")
+        item["sourcemore"] = [{"t": 1, "ti": 15192, "z": 440, "n": "Anachronos"}]
+        self.assertFalse(acquisition(item)[0])
+
+    def test_dungeon_quest_and_zone_only_source(self):
+        self.assertEqual(acquisition({"sourcemore": [
+            {"t": 5, "c": 2017, "ti": 5243, "n": "Houses of the Holy"},
+        ]})[0], [{"kind": "dungeon-quest", "zoneId": 2017, "questId": 5243, "name": "Houses of the Holy"}])
+        self.assertEqual(acquisition({"sourcemore": [{"z": 1583}]})[0][0]["kind"], "dungeon")
+        # Outdoor quest chains can require raids; do not infer availability.
+        self.assertFalse(acquisition({"sourcemore": [{"t": 5, "c": 16, "ti": 7486}]})[0])
+
     def test_published_dungeon_stats_do_not_require_static_client_record(self):
         item = {
             "id": 16707, "name": "Shadowcraft Cap", "class": 4, "subclass": 2,

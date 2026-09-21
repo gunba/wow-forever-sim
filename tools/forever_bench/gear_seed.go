@@ -17,6 +17,10 @@ import (
 // Initial ranking only. Final choices must be compared in the five-minute sim.
 func seedScore(b build, item core.Item, slot int) float64 {
 	s := item.Stats
+	// Catalog rating is stored once, in either legacy field. EquipStats unifies
+	// their sum; mirroring belongs to the engine, not to the catalog.
+	hit := s[stats.MeleeHit] + s[stats.SpellHit]
+	crit := s[stats.MeleeCrit] + s[stats.SpellCrit]
 	var score float64
 	if casterBuild(b) {
 		power := s[stats.SpellPower] + s[stats.SpellDamage]
@@ -41,13 +45,13 @@ func seedScore(b build, item core.Item, slot int) float64 {
 			power += .8*s[stats.ShadowPower] + .2*s[stats.FirePower]
 		}
 		score = power + .4*s[stats.Intellect] + .1*s[stats.Spirit] + .7*s[stats.MP5] +
-			12*(s[stats.MeleeCrit]+s[stats.SpellCrit]) + (70.0/6.0)*(s[stats.MeleeHit]+s[stats.SpellHit])
+			12*crit + 12*s[stats.SpellHaste] + (70.0/6.0)*hit
 	} else {
 		score = s[stats.AttackPower] + 2*s[stats.Strength] + 1.2*s[stats.Agility] +
-			22*(s[stats.MeleeCrit]+s[stats.SpellCrit]) + 20*(s[stats.MeleeHit]+s[stats.SpellHit])
+			22*crit + 20*s[stats.MeleeHaste] + 20*hit
 		if b.Class == proto.Class_ClassHunter {
 			score = s[stats.RangedAttackPower] + 2.2*s[stats.Agility] + .2*s[stats.Intellect] +
-				22*(s[stats.MeleeCrit]+s[stats.SpellCrit]) + 20*(s[stats.MeleeHit]+s[stats.SpellHit])
+				22*crit + 20*s[stats.MeleeHaste] + 20*hit
 			if b.Key == "survival" {
 				score += s[stats.Strength]
 			}
@@ -128,7 +132,7 @@ func seedEquipment(b build, p *proto.Player) error {
 	}
 	bestMH, bestOH, score := int32(0), int32(0), math.Inf(-1)
 	twoHand := b.Key == "arms" || b.Key == "retribution" || b.Key == "feral"
-	dual := b.Class == proto.Class_ClassRogue || b.Key == "fury" || b.Key == "enhancement"
+	dual := b.Class == proto.Class_ClassRogue || b.Key == "fury"
 	offhands := append([]core.Item{{}}, pool...)
 	for _, mh := range pool {
 		if mh.Type != proto.ItemType_ItemTypeWeapon || mh.HandType == proto.HandType_HandTypeOffHand {

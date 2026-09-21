@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate class-review summaries from retained build evidence."""
+"""Generate class-review summaries from the published benchmark requests."""
 
 import argparse
 import json
@@ -10,7 +10,8 @@ from build_display import BUILDS
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--input", type=Path, default=Path("artifacts/optimization"))
+    parser.add_argument("--results", type=Path, default=Path("artifacts/forever_dps_5min.json"))
+    parser.add_argument("--baselines", type=Path, default=Path("artifacts/forever_gear_baselines.json"))
     parser.add_argument("--output", type=Path, default=Path("docs/build_reviews.md"))
     args = parser.parse_args()
     names = {}
@@ -18,7 +19,10 @@ def main():
         for key, value in json.loads(path.read_text()).items():
             if key.isdigit() and isinstance(value, dict):
                 names[int(key)] = value.get("ability", f"Spell {key}")
-    items = {i["id"]: i["name"] for i in json.loads(Path("assets/database/db.json").read_text())["items"]}
+    database = json.loads(Path("assets/database/db.json").read_text())
+    item_records = {i["id"]: i for i in database["items"]}
+    items = {i: item["name"] for i, item in item_records.items()}
+    enchants = {e["effectId"]: e["name"] for e in database["enchants"]}
     display = {key: (cls, spec) for key, cls, spec, _ in BUILDS}
 
     def action_name(action):
@@ -70,48 +74,59 @@ def main():
             return value["totemRemainingTime"]["totemType"] + " totem time remaining"
         return "`" + json.dumps(value, separators=(",", ":")) + "`"
 
-    bundles = [json.loads(p.read_text()) for p in args.input.glob("*.json")]
-    bundles.sort(key=lambda b: max(r["DPS"] for r in b["retained"]["Results"]), reverse=True)
+    results = json.loads(args.results.read_text())
+    baselines = {(r["Key"], r["Race"]): r for r in json.loads(args.baselines.read_text())["Results"]}
+    groups = {}
+    for row in results["Results"]:
+        groups.setdefault(row["Key"], []).append(row)
+    ordered = sorted(groups, key=lambda key: max(r["DPS"] for r in groups[key]), reverse=True)
     lines = [
         "# Build reviews", "",
-        "These summaries cover completed build comparisons. They are simulation results, "
+        "These summaries describe the published loadouts. They are simulation results, "
         "not independent confirmation of server mechanics or proof of a global optimum.", "",
-        "The tables below use each build's independent validation run. "
-        "The [final matrix](../artifacts/forever_dps_5min.png) uses a separate common-seed "
-        "run of all 147 combinations, so small Monte Carlo differences are expected. "
-        "The final matrix also includes the later Eureka nested-charge correction; "
-        "the optimization validation tables remain historical records.", "",
+        "The tables and [matrix](../artifacts/forever_dps_5min.png) use the same "
+        "147 common-seed replays. Baseline comparisons use the starting gear and "
+        "enchants under the same engine and seed. Talents and APLs are unchanged "
+        "by the equipment search.", "",
         "The benchmark uses level 60, 300 seconds, one level-63 target, complete role-specific "
         "Tier 1 bonuses, and paid shared-hit normalization. "
         "[Scenario and exchange model](../tools/forever_bench/README.md) · "
         "[In-game checks](in_game_checks.md)", "",
     ]
-    for bundle in bundles:
-        key = bundle["build"]
+    slots = ["Head", "Neck", "Shoulders", "Back", "Chest", "Wrists", "Hands",
+             "Waist", "Legs", "Feet", "Ring 1", "Ring 2", "Trinket 1", "Trinket 2",
+             "Main hand", "Off hand", "Ranged/relic"]
+    for key in ordered:
         cls, spec = display[key]
-        rows = bundle["retained"]["Results"]
+        rows = groups[key]
         representative = max(rows, key=lambda r: r["DPS"])
         p = representative["BaselinePlayer"]
         points = [sum(map(int, part)) for part in p["talentsString"].split("-")]
         points += [0] * (3-len(points))
         lines += [f"## {cls} — {spec}", "",
                   f"**Talents:** {'/'.join(map(str, points))} · `{p['talentsString']}`", "",
-                  f"[Requests, results and search evidence](../artifacts/optimization/{key}.json)", ""]
-        if "Mechanics" not in bundle["retained"]:
-            lines += [
-                "> Historical comparison: this run predates continuous autos and "
-                "haste-scaled Energy. Revalidation is pending where those rules affect the build.", "",
-            ]
-        lines += ["- " + note for note in bundle["notes"]]
+                  "[Requests and results](../artifacts/forever_dps_5min.json) · "
+                  "[Equipment search](../artifacts/gear_search/summary.json)", ""]
         lines += ["", "### Results", "",
                   "| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |",
                   "|---|---:|---:|---:|---:|"]
-        by_race = {r["Race"]: r for r in rows}
-        for result in bundle["comparison"]:
-            r = by_race[result["race"]]
-            lines.append(f"| {r['Race']} | {result['baselineDPS']:.2f} | {r['DPS']:.2f} | "
-                         f"{result['gainPercent']:+.2f}% | {r['OOMSeconds']:.2f} |")
+        for r in rows:
+            baseline = baselines[(key, r["Race"])]["DPS"]
+            lines.append(f"| {r['Race']} | {baseline:.2f} | {r['DPS']:.2f} | "
+                         f"{100*(r['DPS']/baseline-1):+.2f}% | {r['OOMSeconds']:.2f} |")
         lines += ["", "Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.", ""]
+        lines += [f"### Equipment — {representative['Race']}", "",
+                  "| Slot | Item | Item level | Enchant |", "|---|---|---:|---|"]
+        for slot, entry in zip(slots, p["equipment"]["items"]):
+            item = item_records.get(entry.get("id"))
+            if item:
+                lines.append(f"| {slot} | [{item['name']}](https://www.wowhead.com/forever/item={item['id']}) | "
+                             f"{item['ilvl']} | {enchants.get(entry.get('enchant'), '—')} |")
+        lines += ["", "Other races can use different equipment. Their complete setups are "
+                  "available in the simulator's Ranked builds selector.", ""]
+        unsupported = sorted({str(effect) for row in rows for effect in row.get("UnmodeledSetBonuses") or []})
+        if unsupported:
+            lines += ["**Unmodeled equipped-set effects:** " + "; ".join(unsupported), ""]
         if p["rotation"].get("prepullActions"):
             lines += ["### Before the pull", ""]
             for entry in p["rotation"]["prepullActions"]:
@@ -139,7 +154,7 @@ def main():
             for action in metrics.get("actions", []):
                 total = sum(t.get("damage", 0) for t in action.get("targets", []))
                 if total > 0:
-                    damage.append((total / representative["Iterations"] / bundle["retained"]["Duration"],
+                    damage.append((total / representative["Iterations"] / results["Duration"],
                                    prefix + action_name(action["id"])))
             for pet in metrics.get("pets", []):
                 collect(pet, pet.get("name", "Pet") + ": ")
@@ -147,6 +162,15 @@ def main():
         collect(representative["Metrics"])
         damage.sort(reverse=True)
         lines += [f"| {name} | {dps:.2f} |" for dps, name in damage[:8]]
+        lines += ["", "### Resource flow", "",
+                  "| Resource | Action | Net amount per fight |",
+                  "|---|---|---:|"]
+        resources = sorted(representative["Metrics"].get("resources", []),
+                           key=lambda resource: abs(resource.get("actualGain", 0)), reverse=True)
+        for resource in resources[:12]:
+            lines.append(f"| {resource['type'].removeprefix('ResourceType')} | "
+                         f"{action_name(resource['id'])} | "
+                         f"{resource.get('actualGain', 0)/representative['Iterations']:+.1f} |")
         lines.append("")
     args.output.write_text("\n".join(lines).rstrip() + "\n")
     print(args.output)

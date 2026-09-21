@@ -74,7 +74,7 @@ jobs:
 
       - name: Test
         run: |
-          go test -tags with_db ./tools/forever_bench ./sim/core
+          go test -tags with_db ./tools/forever_bench ./sim/core ./tools/icons
           python3 -m unittest discover -s tools/forever_bench
 
       - name: Stage benchmark review portal
@@ -92,6 +92,7 @@ jobs:
           python3 -m http.server 8080 --directory site >/dev/null 2>&1 &
           SITE_URL="http://localhost:8080$SITE_BASE" node tools/smoke/check_pages.mjs
           SITE_URL="http://localhost:8080$SITE_BASE" node tools/smoke/check_benchmark_replay.mjs
+          SITE_URL="http://localhost:8080$SITE_BASE" node tools/smoke/check_ranked_defaults.mjs
         env:
           SITE_BASE: ${{ steps.base.outputs.value }}
 

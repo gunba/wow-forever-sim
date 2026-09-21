@@ -17,6 +17,16 @@ const (
 )
 
 func init() {
+	core.NewItemEffect(272435, func(agent core.Agent) {
+		paladin := agent.(PaladinAgent).GetPaladin()
+		if paladin.Env.IsForever() {
+			paladin.OnSpellRegistered(func(spell *core.Spell) {
+				if spell.SpellCode == SpellCode_PaladinJudgementOfCommand || spell.SpellCode == SpellCode_PaladinJudgementOfRighteousness {
+					spell.DamageMultiplier *= 1.04
+				}
+			})
+		}
+	})
 	core.NewSimpleStatOffensiveTrinketEffect(SanctifiedOrb, stats.Stats{stats.MeleeCrit: 3 * core.CritRatingPerCritChance, stats.SpellCrit: 3 * core.CritRatingPerCritChance}, time.Second*25, time.Minute*3)
 	core.NewItemEffect(LibramOfInfusion, func(agent core.Agent) {
 		paladin := agent.(PaladinAgent).GetPaladin()

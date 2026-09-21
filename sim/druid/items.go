@@ -1,6 +1,8 @@
 package druid
 
 import (
+	"time"
+
 	"github.com/wowsims/classic/sim/core"
 	"github.com/wowsims/classic/sim/core/stats"
 )
@@ -17,6 +19,34 @@ const (
 
 func init() {
 	core.AddEffectsToTest = false
+
+	core.NewItemEffect(272427, func(agent core.Agent) {
+		druid := agent.(DruidAgent).GetDruid()
+		if druid.Env.IsForever() {
+			druid.OnSpellRegistered(func(spell *core.Spell) {
+				switch spell.SpellID {
+				case 5217, 6793, 9845, 9846:
+					spell.CD.Duration -= 3 * time.Second
+				}
+			})
+		}
+	})
+	core.NewItemEffect(272430, func(agent core.Agent) {
+		druid := agent.(DruidAgent).GetDruid()
+		if druid.Env.IsForever() {
+			druid.OnSpellRegistered(func(spell *core.Spell) {
+				if spell.SpellCode == SpellCode_DruidInsectSwarm {
+					for _, dot := range spell.Dots() {
+						if dot != nil {
+							dot.OriginalNumberOfTicks++
+							dot.NumberOfTicks++
+							dot.RecomputeAuraDuration()
+						}
+					}
+				}
+			})
+		}
+	})
 
 	core.NewItemEffect(MysticMushroom, func(agent core.Agent) {
 		druid := agent.(DruidAgent).GetDruid()

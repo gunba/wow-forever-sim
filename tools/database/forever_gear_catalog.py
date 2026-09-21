@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Assemble current Forever crafting/dungeon item data, before sim-unit conversion.
+"""Assemble current Forever crafting, dungeon and exported PvP item data.
 
 ItemSparse allocations multiplied by RandPropPoints recover stats that Wowhead
 does not render. These allocation multipliers are NOT stat exchange prices.
@@ -16,7 +16,7 @@ import os
 from pathlib import Path
 import sys
 
-from import_forever_vendor import parse_planner
+from import_forever_vendor import parse_planner, read_vendor_exports
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "data_watch"))
 import spell_client
@@ -30,6 +30,12 @@ DUNGEONS = {
 }
 RAIDS = {1977, 2159, 2677, 2717, 3428, 3429, 3456}
 CRAFT_SKILLS = {164, 165, 171, 197, 202, 333}
+# Battleground quartermasters, Timbermaw, dungeon currency and open-world PvP.
+# Raid-reputation vendors such as Anachronos are deliberately not in this list.
+PVP_VENDORS = {15127, 15126, 14754, 14753, 263570}
+NONRAID_VENDORS = PVP_VENDORS | {11557, 227853}
+VENDOR_FACTIONS = {15127: "Alliance", 14753: "Alliance", 15126: "Horde", 14754: "Horde"}
+DARKMOON_TICKET_REWARDS = {7940, 7981}
 SLOT_POINTS = {
     **dict.fromkeys((1, 5, 7, 17, 20), 0),
     **dict.fromkeys((3, 6, 8, 10, 12), 1),
@@ -82,7 +88,7 @@ PLANNER_STATS = {
 }
 
 
-def acquisition(item: dict) -> tuple[list[dict], str | None]:
+def acquisition(item: dict, vendor_export: dict | None = None) -> tuple[list[dict], str | None]:
     details = item.get("sourcemore", [])
     # Quest category c can expose raid-token rewards hidden by a vendor label.
     if any(s.get("z") in RAIDS or s.get("c") in RAIDS for s in details):
@@ -91,11 +97,28 @@ def acquisition(item: dict) -> tuple[list[dict], str | None]:
     for s in details:
         if s.get("t") == 6 and s.get("s") in CRAFT_SKILLS and s.get("ti"):
             sources.append({"kind": "crafted", "skill": s["s"], "spellId": s["ti"]})
-        elif s.get("t") in (1, 2) and s.get("z") in DUNGEONS:
+        elif s.get("t") == 5 and s.get("c") in DUNGEONS:
+            sources.append({
+                "kind": "dungeon-quest", "zoneId": s["c"],
+                "questId": s["ti"], "name": s.get("n", ""),
+            })
+        elif s.get("t") == 5 and s.get("ti") in DARKMOON_TICKET_REWARDS:
+            sources.append({
+                "kind": "ticket-exchange", "questId": s["ti"], "name": s.get("n", ""),
+            })
+        elif s.get("t") in (None, 1, 2) and s.get("z") in DUNGEONS:
             sources.append({
                 "kind": "dungeon", "zoneId": s["z"], "entityId": s.get("ti", 0),
-                "entityType": s["t"], "name": s.get("n", ""),
+                "entityType": s.get("t", 0), "name": s.get("n", "Dungeon drop"),
             })
+        elif 5 in item.get("source", []) and s.get("t") == 1 and s.get("ti") in NONRAID_VENDORS:
+            sources.append({
+                "kind": "pvp" if s["ti"] in PVP_VENDORS else "vendor",
+                "entityId": s["ti"], "name": s.get("n", ""), "zoneId": s.get("z", 0),
+                "faction": VENDOR_FACTIONS.get(s["ti"], ""),
+            })
+    if vendor_export and any(c.get("currencyName") == "Honor Points" for c in vendor_export.get("costs", [])):
+        sources.append({"kind": "pvp", "exported": True})
     return sources, None if sources else "no-crafting-or-dungeon-source"
 
 
@@ -200,7 +223,8 @@ def make_record(item: dict, sparse: dict, base: dict, points: dict, sources: lis
     return result
 
 
-def build_catalog(planner: dict, tables: dict) -> dict:
+def build_catalog(planner: dict, tables: dict, vendors: dict | None = None) -> dict:
+    vendors = vendors or {}
     sparse = {r["ID"]: r for r in tables["ItemSparse"]}
     base = {r["ID"]: r for r in tables["Item"]}
     points = {r["ID"]: r for r in tables["RandPropPoints"]}
@@ -221,7 +245,8 @@ def build_catalog(planner: dict, tables: dict) -> dict:
         if (item.get("requiredLevel", 0) > 60 or item["quality"] not in QUALITY_POINTS
                 or item.get("inventoryType") not in SLOT_POINTS or item["class"] not in (2, 4)):
             continue
-        sources, reason = acquisition(item)
+        vendor = vendors.get(int(id))
+        sources, reason = acquisition(item, vendor)
         if reason:
             excluded[reason] += 1
             continue
@@ -230,7 +255,8 @@ def build_catalog(planner: dict, tables: dict) -> dict:
                 or int(row["InventoryType"]) not in SLOT_POINTS
                 or int(base[id]["ClassID"]) not in (2, 4)):
             continue
-        if row and (int(row["RequiredPVPRank"]) or int(row["RequiredPVPMedal"])):
+        if row and (int(row["RequiredPVPRank"]) or int(row["RequiredPVPMedal"])) and not any(
+                s["kind"] == "pvp" for s in sources):
             excluded["pvp-requirement"] += 1
             continue
         try:
@@ -255,6 +281,9 @@ def build_catalog(planner: dict, tables: dict) -> dict:
             for e in sorted((effects[e] for e in item_effects[id]), key=lambda e: int(e["LegacySlotIndex"]))
         ]
         record["effectReviewRequired"] = bool(record["effects"]) or bool(record["setId"]) or not row
+        if vendor:
+            record["vendorExport"] = True
+            record["vendorTooltip"] = [line["left"] for line in vendor["tooltip"]["lines"] if line.get("left")]
         set_id = str(record["setId"])
         if set_id in sets:
             record["setName"] = sets[set_id]["Name_lang"]
@@ -272,6 +301,7 @@ TABLES = ("Item", "ItemSparse", "RandPropPoints", "ItemEffect", "ItemXItemEffect
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--planner", type=Path, default=Path("assets/db_inputs/wowhead_forever_gearplanner.txt"))
+    parser.add_argument("--vendor-dir", type=Path, default=Path("assets/db_inputs/forever_vendor"))
     parser.add_argument("--build", default=spell_client.FOREVER)
     parser.add_argument("--cache", type=Path, default=Path(os.environ.get("XDG_CACHE_HOME", Path.home() / ".cache")) / "wowsims-forever")
     parser.add_argument("--out", type=Path, default=Path("assets/db_inputs/forever_gear_catalog.json"))
@@ -279,7 +309,17 @@ def main() -> None:
     args = parser.parse_args()
     spell_client.CACHE = str(args.cache)
     tables = {name: spell_client.table(args.build, name) for name in TABLES}
-    catalog = build_catalog(parse_planner(args.planner), tables)
+    vendors, _ = read_vendor_exports(args.vendor_dir)
+    planner = parse_planner(args.planner)
+    pool_path = Path("assets/db_inputs/forever_ilvl65_items.json")
+    if pool_path.exists():
+        for item in json.loads(pool_path.read_text())["items"]:
+            existing = planner.get(str(item["id"]))
+            if existing is not None:
+                for field in ("source", "sourcemore"):
+                    if field in item:
+                        existing[field] = item[field]
+    catalog = build_catalog(planner, tables, vendors)
     reviews = json.loads(args.reviews.read_text())["items"]
     for item in catalog["items"]:
         review = reviews.get(str(item["id"]), {})
@@ -287,8 +327,13 @@ def main() -> None:
             item["stats"].update(review["statOverrides"])
             item["statSupplementSource"] = review["source"]
     catalog = {
-        "schemaVersion": 1, "clientBuild": args.build,
+        "schemaVersion": 2, "clientBuild": args.build,
         "plannerSHA256": hashlib.sha256(args.planner.read_bytes()).hexdigest(),
+        "ilvl65ListSHA256": hashlib.sha256(pool_path.read_bytes()).hexdigest() if pool_path.exists() else None,
+        "vendorExports": {
+            path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+            for path in sorted(args.vendor_dir.glob("*.txt"))
+        },
         "clientTables": {
             name: {
                 "url": f"https://wago.tools/db2/{name}/csv?build={args.build}",

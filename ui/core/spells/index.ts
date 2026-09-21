@@ -1,10 +1,8 @@
 // The spell manifest, loaded for the browser.
 //
-// These files were written so Wowhead's Classic database would stop describing abilities
-// Forever changed, and sim/spell_sources_test.go keeps them honest against what the sim
-// registers. Nothing read them at runtime, so an ability Wowhead has never heard of - Lava
-// Burst's Forever ranks, Spearing Strike, the set procs in the 450000 range - arrived in the
-// damage table with no name at all, as a blank row.
+// Internal action IDs can differ from Forever's spell IDs. The manifest supplies
+// display names, current-ID mappings and audited tooltip notes without changing
+// the IDs used by rotations or simulation metrics.
 
 import commonJson from './common.json';
 import coreJson from './core.json';

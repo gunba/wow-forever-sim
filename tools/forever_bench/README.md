@@ -15,7 +15,8 @@ python3 tools/database/compile_forever_equipment.py
 go run ./tools/database/gen_db -outDir=assets -gen=db
 python3 -m unittest discover -s tools/database -p 'test_*forever*.py'
 go test -tags with_db ./tools/forever_bench
-go run -tags with_db ./tools/forever_bench -iterations 5000 -output artifacts/forever_dps_5min
+go run -tags with_db ./tools/forever_bench -baseline-results artifacts/forever_dps_5min.json \
+  -iterations 5000 -seed 20291951 -output /tmp/forever-replay
 python3 tools/forever_bench/fetch_icons.py
 python3 tools/forever_bench/chart.py artifacts/forever_dps_5min.json
 ```
@@ -27,6 +28,74 @@ highest first, with class labels and spec icons. A dash means the race/class
 combination is unavailable; a missing available result is an error.
 Use `-faction horde` or `-faction alliance` to limit the benchmark; the chart
 accepts the matching `--faction` filter.
+
+### Equipment search
+
+`assets/db_inputs/forever_ilvl65_items.json` contains all 706 distinct entries
+from the Wowhead item-level-65 list, including the rows beyond the first rendered
+page. It is a discovery pool, not an availability whitelist. Raid rewards and
+unresolved item effects remain excluded. Verified catalog equipment at item level
+60 and above supplements the list, which omits cloaks. Source-verified lower-level
+trinkets also remain eligible: the known level-65 Undermine trinkets share a
+one-item limit. Original and resumed equipment stays available across matching
+slots, so replacing one ring or trinket does not discard it from the other slot.
+
+```sh
+go build -tags with_db -o /tmp/forever-bench ./tools/forever_bench
+/tmp/forever-bench -build enhancement -race Orc -search-gear \
+  -gear-screen 100 -gear-validate 1000 -gear-passes 3 \
+  -iterations 5000 -seed 20291931 -output /tmp/gear-search/enhancement
+```
+
+Run or resume the complete roster with bounded parallelism:
+
+```sh
+python3 tools/forever_bench/search_gear.py --binary /tmp/forever-bench \
+  --output /tmp/gear-search/all
+```
+
+`--representatives` selects one race per build for an initial coverage check.
+The driver fingerprints the binary and runtime inputs before reusing completed
+jobs. Its summary lists failed or unconverged searches separately.
+It defaults to one independent native process per available CPU; `--workers`
+can override that limit.
+The native search retains its original starting profiles; replay published
+loadouts with `-baseline-results` rather than rerunning those starting profiles.
+The search driver also accepts `--baseline-results` to continue from saved
+winners, and `--builds balance,feral` to restrict a follow-up pass.
+
+Replay selected equipment and all paired sensitivities in parallel:
+
+```sh
+python3 tools/forever_bench/run_matrix.py \
+  --binary /tmp/forever-bench --profiles /tmp/gear-search/all/results.json \
+  --original-baselines /tmp/gear-search/all/baseline.json \
+  --output /tmp/forever-final-matrix
+```
+
+The final replay fills missing enchants and replaces purely non-offensive
+choices when a damage stat is available. For example, healing-only caster
+bracers become seven Intellect rather than surviving a noisy small-gain test.
+Proc and haste enchants remain subject to their simulated comparison.
+
+The search compares each slot against the current loadout, with legal weapon
+layouts compared together. It then compares legal enchants and the second
+profession; Engineering remains available for the existing consumables.
+Each candidate pays for hit again. The strongest three improving screen results
+receive independent-seed validation, with conservative two-standard-error
+acceptance bounds. Passes stop when no meaningful gain survives validation.
+This is coordinate search, not proof of a global optimum.
+
+The per-build/race `.gear-search.json` contains pool exclusions, every trial's
+equipment, second profession, seed and iteration count, accepted changes, and
+complete baseline/final requests and results. Coordinate IDs 0–16 identify item
+slots; 17–33 identify enchants on slots 0–16; 34 identifies the second profession.
+
+Tier 1 stays enabled throughout the search. Ordinary equipment sets use current
+client-derived effects and actual piece/profession requirements rather than the
+inherited Classic registrations. Unimplemented active thresholds are omitted and
+listed in `UnmodeledSetBonuses`; they do not prevent equipping otherwise legal
+items. Item proc gaps remain separate from these equipment-set gaps.
 
 ### Tier and gear sensitivity
 
@@ -48,9 +117,9 @@ Reproduce the comparisons from the exact saved, unnormalized baseline players:
 
 ```sh
 go build -tags with_db -o /tmp/forever-bench ./tools/forever_bench
-/tmp/forever-bench -baseline-results artifacts/forever_dps_5min.json -seed 20291727 -tier1=false -output artifacts/sensitivity/tier1_off
-/tmp/forever-bench -baseline-results artifacts/forever_dps_5min.json -seed 20291727 -equipment-scale 1.1 -output artifacts/sensitivity/gear_110
-/tmp/forever-bench -baseline-results artifacts/forever_dps_5min.json -seed 20291727 -equipment-scale 1.2 -output artifacts/sensitivity/gear_120
+/tmp/forever-bench -baseline-results artifacts/forever_dps_5min.json -seed 20291951 -tier1=false -output artifacts/sensitivity/tier1_off
+/tmp/forever-bench -baseline-results artifacts/forever_dps_5min.json -seed 20291951 -equipment-scale 1.1 -output artifacts/sensitivity/gear_110
+/tmp/forever-bench -baseline-results artifacts/forever_dps_5min.json -seed 20291951 -equipment-scale 1.2 -output artifacts/sensitivity/gear_120
 python3 tools/forever_bench/sensitivity.py
 python3 tools/forever_bench/chart.py artifacts/forever_dps_5min.json --sensitivity artifacts/forever_sensitivity.json
 python3 tools/forever_bench/build_review_site.py
@@ -78,8 +147,9 @@ Hunter traps retain the fork's special rule that ignores gear hit; their
 remaining miss chance cannot be removed by the normalization.
 
 Every profile has a complete legal loadout; only the off-hand slot is empty
-when a two-handed weapon occupies both hands. The profiles contain no PvP or
-old-raid-derived gear. Current client/planner records replace provisional
+when a two-handed weapon occupies both hands. Crafted, dungeon and verified
+PvP/vendor equipment are eligible; old-raid-derived gear is excluded.
+Current client/planner records replace provisional
 armor. Exported vendor values retain precedence if an overlapping item is
 used. Generic AP applies to melee and ranged attacks.
 
@@ -150,7 +220,8 @@ JSON** dialog:
 
 ```sh
 python3 tools/forever_bench/export_ui_profiles.py \
-  --results artifacts/forever_dps_5min.json --output artifacts/ui_profiles
+  --results artifacts/forever_dps_5min.json --output artifacts/ui_profiles \
+  --bundle ui/core/forever_ranked_profiles.json
 python3 tools/forever_bench/build_review_site.py
 ```
 

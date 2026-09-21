@@ -148,7 +148,8 @@
 	"11704": {
 		"ability": "Wrack",
 		"file": "sim/warlock/wrack.go",
-		"note": "Wrack (Forever spell 1316697, formerly Drain Hope) has no id in the Classic database, so the sim borrows Classic's Drain Mana (11704) for the name and the drain icon. Values from the beta client (spell 1316697): 36 per tick, 0.143 coefficient, 200 mana.",
+		"foreverId": 1316697,
+		"note": "The simulator retains action ID 11704 internally; display metadata uses Forever spell 1316697. Beta client values: 36 per tick, 0.143 coefficient, 200 mana.",
 		"source": "forever",
 		"tooltip": "200 Mana\nChannelled, 6 sec\nTears the target apart from within, dealing 36 Shadow damage every 1 sec and increasing the damage they take from your other Shadow damage over time effects by 10%. Lasts 6 sec."
 	},

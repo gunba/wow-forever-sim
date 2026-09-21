@@ -41,6 +41,7 @@ var (
 	optimize         = flag.Bool("optimize", false, "search legal one-point talent reallocations")
 	searchRounds     = flag.Int("rounds", 3, "talent search rounds")
 	seedGear         = flag.Bool("write-seed-gear", false, "write reviewed crafted/dungeon starting gearsets")
+	refreshEnchants  = flag.Bool("refresh-enchants", false, "fill missing enchants and replace purely non-offensive choices where a damage option exists")
 )
 
 type resultRow struct {
@@ -52,6 +53,7 @@ type resultRow struct {
 	Stats                                  []float64
 	Sets                                   []string
 	Warnings                               []string
+	UnmodeledSetBonuses                    []string
 	Request                                json.RawMessage
 	Metrics                                json.RawMessage
 }
@@ -121,7 +123,8 @@ func run(b build, p *proto.Player, count int, rng int64) resultRow {
 		DPS: dps.Avg, StdDev: dps.Stdev, StandardError: dps.Stdev / math.Sqrt(float64(result.IterationsDone)),
 		OOMSeconds: result.RaidMetrics.Parties[0].Players[0].SecondsOomAvg,
 		Iterations: result.IterationsDone, Hit: hit, Stats: ps.FinalStats.Stats, Sets: ps.Sets,
-		Warnings: warnings, BaselinePlayer: baseline, Request: saved, Metrics: metrics,
+		Warnings: warnings, UnmodeledSetBonuses: unmodeledSetBonuses(p),
+		BaselinePlayer: baseline, Request: saved, Metrics: metrics,
 	}
 }
 
@@ -220,6 +223,9 @@ func writeResults(rows []resultRow) {
 
 func main() {
 	flag.Parse()
+	if *searchGear && (*optimize || *equipmentScale != 1) {
+		panic("gear search cannot be combined with talent search or scaled equipment")
+	}
 	if *equipmentScale <= 0 || math.IsInf(*equipmentScale, 0) || math.IsNaN(*equipmentScale) {
 		panic("equipment-scale must be finite and positive")
 	}
@@ -275,6 +281,12 @@ func main() {
 				if *equipmentScale != 1 {
 					p.EquipmentScale = *equipmentScale
 				}
+			}
+			if *refreshEnchants {
+				prepareGearEnchants(b, p)
+			}
+			if *searchGear {
+				p = optimizeGear(b, p)
 			}
 			resultSeed := *seed
 			if *optimize {

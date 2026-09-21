@@ -46,6 +46,7 @@ import { Stats, UnitStat } from './proto_utils/stats';
 import { getTalentPoints, isHealingSpec, isTankSpec, SpecOptions, SpecRotation, specToEligibleRaces, specToLocalStorageKey } from './proto_utils/utils';
 import { SimUI, SimWarning } from './sim_ui';
 import { EventID, TypedEvent } from './typed_event';
+import { getRankedProfiles, RankedProfile } from './ranked_profiles';
 
 const SAVED_GEAR_STORAGE_KEY = '__savedGear__';
 const SAVED_ROTATION_STORAGE_KEY = '__savedRotation__';
@@ -180,6 +181,8 @@ export abstract class IndividualSimUI<SpecType extends Spec> extends SimUI {
 	readonly bt: BulkTab;
 	spec: any;
 
+	private readonly rankedProfiles: RankedProfile[];
+
 	constructor(parentElem: HTMLElement, player: Player<SpecType>, config: IndividualSimUIConfig<SpecType>) {
 		super(parentElem, player.sim, {
 			cssClass: config.cssClass,
@@ -190,7 +193,10 @@ export abstract class IndividualSimUI<SpecType extends Spec> extends SimUI {
 		});
 		this.rootElem.classList.add('individual-sim-ui');
 		this.player = player;
-		this.individualConfig = config;
+		this.rankedProfiles = getRankedProfiles(player.spec);
+		// Complete ranked setups replace obsolete partial gear/build presets.
+		this.individualConfig =
+			this.rankedProfiles.length && !this.isWithinRaidSim ? { ...config, presets: { ...config.presets, gear: [], builds: [] } } : config;
 		this.raidSimResultsManager = null;
 		this.prevEpIterations = 0;
 		this.prevEpSimResult = null;
@@ -300,7 +306,7 @@ export abstract class IndividualSimUI<SpecType extends Spec> extends SimUI {
 
 			this.applyBuildFromUrl(initEventID);
 
-			this.player.setName(initEventID, 'Player');
+			if (!this.rankedProfiles.length) this.player.setName(initEventID, 'Player');
 
 			// This needs to go last so it doesn't re-store things as they are initialized.
 			this.changeEmitter.on(_ => {
@@ -339,6 +345,56 @@ export abstract class IndividualSimUI<SpecType extends Spec> extends SimUI {
 	private addGearTab() {
 		const gearTab = new GearTab(this.simTabContentsContainer, this);
 		gearTab.rootElem.classList.add('active', 'show');
+		if (!this.isWithinRaidSim && this.rankedProfiles.length) {
+			this.addRankedProfilePicker(gearTab.rootElem);
+		}
+	}
+
+	private addRankedProfilePicker(parent: HTMLElement) {
+		const panel = document.createElement('section');
+		panel.className = 'ranked-profile-picker border rounded p-3 mb-3';
+		const label = document.createElement('label');
+		label.className = 'form-label';
+		label.textContent = 'Ranked builds';
+		const controls = document.createElement('div');
+		controls.className = 'd-flex gap-2';
+		const select = document.createElement('select');
+		select.className = 'form-select form-select-sm';
+		select.setAttribute('aria-label', 'Ranked build');
+		select.add(new Option('Select a ranked build…', ''));
+		const groups = new Map<string, HTMLOptGroupElement>();
+		for (const profile of this.rankedProfiles) {
+			let group = groups.get(profile.build);
+			if (!group) {
+				group = document.createElement('optgroup');
+				group.label = profile.build;
+				groups.set(profile.build, group);
+				select.append(group);
+			}
+			group.append(new Option(`${profile.build} · ${profile.race} · ${profile.dps.toFixed(0)} DPS`, profile.id));
+		}
+		const button = document.createElement('button');
+		button.className = 'btn btn-primary btn-sm text-nowrap';
+		button.type = 'button';
+		button.textContent = 'Load build';
+		button.disabled = true;
+		const note = document.createElement('p');
+		note.className = 'form-text mb-0';
+		note.textContent = 'Full five-minute setup, including gear, enchants, Tier 1 and paid hit. Gear or race edits do not recalculate the hit adjustment.';
+		if (this.rankedProfiles.some(profile => profile.unmodeledSetBonuses.length)) {
+			note.textContent += ' Some equipped-set effects remain unmodeled; their IDs are listed in the raw ranking results.';
+		}
+		select.addEventListener('change', () => {
+			button.disabled = !select.value;
+		});
+		button.addEventListener('click', () => {
+			const profile = this.rankedProfiles.find(row => row.id === select.value);
+			if (profile) this.fromProto(TypedEvent.nextEventID(), IndividualSimSettings.clone(profile.settings));
+		});
+		controls.append(select, button);
+		label.append(controls);
+		panel.append(label, note);
+		parent.prepend(panel);
 	}
 
 	private addBulkTab(): BulkTab {
@@ -401,26 +457,32 @@ export abstract class IndividualSimUI<SpecType extends Spec> extends SimUI {
 		});
 	}
 
-	// The landing page links straight to a build, e.g. mage/?build=Fire%200%2F35%2F16, naming
-	// one of this spec's talent presets. It is applied on top of whatever else loaded and
-	// then dropped from the address, the same way the hash is, so a refresh keeps the
-	// player's later edits rather than snapping back to the preset.
+	// Ranking links load complete setups, then leave later edits in local storage.
 	private applyBuildFromUrl(eventID: EventID) {
 		const url = new URL(window.location.href);
 		const build = url.searchParams.get('build');
-		if (build == null) {
+		const profileID = url.searchParams.get('profile');
+		if (build == null && profileID == null) {
 			return;
 		}
 
-		const wanted = build.trim().toLowerCase();
-		const preset = this.individualConfig.presets.talents.find(preset => preset.name.trim().toLowerCase() == wanted);
-		if (preset) {
-			this.player.setTalentsString(eventID, preset.data.talentsString);
+		const wanted = (build || '').trim().toLowerCase();
+		const race = url.searchParams.get('race')?.toLowerCase();
+		if (this.rankedProfiles.length) {
+			const profile = this.rankedProfiles.find(
+				row =>
+					(profileID ? row.id === profileID : row.key === wanted || row.build.toLowerCase() === wanted) && (!race || row.race.toLowerCase() === race),
+			);
+			if (profile) this.fromProto(eventID, IndividualSimSettings.clone(profile.settings));
+			else console.warn(`No ranked profile matching "${profileID || build}"`);
 		} else {
-			console.warn(`No talent preset named "${build}"`);
+			const preset = this.individualConfig.presets.talents.find(preset => preset.name.trim().toLowerCase() == wanted);
+			if (preset) this.player.setTalentsString(eventID, preset.data.talentsString);
 		}
 
 		url.searchParams.delete('build');
+		url.searchParams.delete('profile');
+		url.searchParams.delete('race');
 		window.history.replaceState(null, '', url);
 	}
 
@@ -462,6 +524,8 @@ export abstract class IndividualSimUI<SpecType extends Spec> extends SimUI {
 				} else {
 					this.sim.raid.setTanks(eventID, []);
 				}
+				const ranked = this.rankedProfiles[0];
+				if (ranked) this.fromProto(eventID, IndividualSimSettings.clone(ranked.settings));
 			}
 		});
 	}

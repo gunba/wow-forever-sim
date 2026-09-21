@@ -120,13 +120,6 @@ message ShamanTotems {
 	bool enh_tier_ten_bonus = 11;
 }
 
-enum ShamanSyncType {
-  NoSync = 0;
-  SyncMainhandOffhandSwings = 1;
-  DelayOffhandSwings = 2;
-	Auto = 3;
-}
-
 message ElementalShaman {
 	message Rotation {
 	}
@@ -143,7 +136,8 @@ message EnhancementShaman {
 
 	// NextIndex: 7
 	message Options {
-		ShamanSyncType sync_type = 3;
+		reserved 3;
+		reserved "sync_type";
 	}
 	Options options = 3;
 }
