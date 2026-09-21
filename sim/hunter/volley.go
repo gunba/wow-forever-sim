@@ -73,7 +73,9 @@ func (hunter *Hunter) getVolleyConfig(rank int) core.SpellConfig {
 		ThreatMultiplier: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			hunter.Unit.AutoAttacks.DelayRangedUntil(sim, sim.CurrentTime+(time.Second*6))
+			if !hunter.AutoAttacks.ContinueWhileCasting() {
+				hunter.Unit.AutoAttacks.DelayRangedUntil(sim, sim.CurrentTime+(time.Second*6))
+			}
 			spell.AOEDot().Apply(sim)
 		},
 	}

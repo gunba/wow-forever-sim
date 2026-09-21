@@ -23,6 +23,9 @@ import (
 //   Judgement of Command when it successfully is cast.
 
 func (paladin *Paladin) registerSealOfCommand() {
+	if !paladin.Talents.SealOfCommand {
+		return
+	}
 	type judge struct {
 		spellID   int32
 		minDamage float64
@@ -154,7 +157,7 @@ func (paladin *Paladin) registerSealOfCommand() {
 
 			ManaCost: core.ManaCostOptions{
 				FlatCost:   rank.manaCost - paladin.getLibramSealCostReduction(),
-				Multiplier: paladin.benediction(),
+				Multiplier: paladin.sealCostMultiplier(),
 			},
 			Cast: core.CastConfig{
 				DefaultCast: core.Cast{

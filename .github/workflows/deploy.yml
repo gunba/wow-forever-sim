@@ -2,7 +2,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - master
+      - forever
   workflow_dispatch:
 
 # Upstream deploys to wowsims/pages-deploy with a token forks do not have, so this
@@ -26,6 +26,7 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -36,7 +37,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v5
         with:
-          go-version: 1.23.x
+          go-version: 1.24.x
 
       - name: Install Protoc
         uses: arduino/setup-protoc@v3
@@ -45,12 +46,13 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install Protoc Go plugin
-        run: go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+        run: go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.36.6
 
       - name: Install Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
+          cache: npm
 
       - name: Resolve the site base
         id: base
@@ -71,7 +73,12 @@ jobs:
           SITE_REPO: ${{ steps.repo.outputs.value }}
 
       - name: Test
-        run: make test
+        run: |
+          go test -tags with_db ./tools/forever_bench ./sim/core
+          python3 -m unittest discover -s tools/forever_bench
+
+      - name: Stage benchmark review portal
+        run: python3 tools/forever_bench/build_review_site.py
 
       # The Go tests and tsc both pass on a build whose pages throw at load, which has
       # shipped a blank site twice. Open every page before it is deployed.

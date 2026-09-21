@@ -24,9 +24,9 @@ import {
 import { ElementalShaman_Options as ElementalShamanOptions } from '../core/proto/shaman.js';
 import { SavedTalents } from '../core/proto/ui.js';
 import DefaultAPLJson from './apls/default.apl.json';
-import LaunchGearJSON from './gear_sets/launch.gear.json';
-import Phase1GearJSON from './gear_sets/phase_1.gear.json';
-import Phase2GearJSON from './gear_sets/phase_2.gear.json';
+import StormcallerAPLJson from './apls/stormcaller.apl.json';
+import GearElementalJSON from './gear_sets/forever_elemental.gear.json';
+import GearStormcallerJSON from './gear_sets/forever_stormcaller.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -36,25 +36,21 @@ import Phase2GearJSON from './gear_sets/phase_2.gear.json';
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearLaunch = PresetUtils.makePresetGear('Launch', LaunchGearJSON);
-export const GearPhase1 = PresetUtils.makePresetGear('Phase 1', Phase1GearJSON);
-export const GearPhase2 = PresetUtils.makePresetGear('Phase 2', Phase2GearJSON);
+export const GearElemental = PresetUtils.makePresetGear('Elemental', GearElementalJSON, { tooltip: 'Level 60 Forever equipment.' });
+export const GearStormcaller = PresetUtils.makePresetGear('Stormcaller', GearStormcallerJSON, { tooltip: 'Level 60 Forever equipment.' });
 
-export const GearPresets = {
-	[ClassicPhase.Phase1]: [GearLaunch, GearPhase1],
-	[ClassicPhase.Phase2]: [GearPhase2],
-};
-
-export const DefaultGear = GearPresets[ClassicPhase.Phase1][0];
+export const GearPresets = [GearElemental, GearStormcaller];
+export const DefaultGear = GearElemental;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets
 ///////////////////////////////////////////////////////////////////////////
 
 export const APLDefault = PresetUtils.makePresetAPLRotation('Default', DefaultAPLJson);
+export const APLStormcaller = PresetUtils.makePresetAPLRotation('Stormcaller', StormcallerAPLJson);
 
 export const APLPresets = {
-	[ClassicPhase.Phase1]: [APLDefault],
+	[ClassicPhase.Phase1]: [APLDefault, APLStormcaller],
 	[ClassicPhase.Phase2]: [],
 	[ClassicPhase.Phase3]: [],
 	[ClassicPhase.Phase4]: [],
@@ -62,7 +58,7 @@ export const APLPresets = {
 	[ClassicPhase.Phase6]: [],
 };
 
-export const DefaultAPL = APLPresets[ClassicPhase.Phase1][0];
+export const DefaultAPL = APLDefault;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Talent Presets
@@ -72,11 +68,11 @@ export const TalentsLevel60 = PresetUtils.makePresetTalents('Level 60', SavedTal
 
 export const TalentsElemental = PresetUtils.makePresetTalents(
 	'Elemental 31/6/14',
-	SavedTalents.create({ talentsString: '2505301500123031-0500001-053050001' }),
+	SavedTalents.create({ talentsString: '5502301500123031-0500001-053050001' }),
 );
 export const TalentsStormcaller = PresetUtils.makePresetTalents(
 	'Stormcaller 28/23/0',
-	SavedTalents.create({ talentsString: '050433150010303-055030030004102' }),
+	SavedTalents.create({ talentsString: '550032150010303-055030031004002' }),
 );
 
 export const TalentPresets = {
@@ -88,7 +84,7 @@ export const TalentPresets = {
 	[ClassicPhase.Phase6]: [],
 };
 
-export const DefaultTalents = TalentPresets[ClassicPhase.Phase1][0];
+export const DefaultTalents = TalentsElemental;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Options
@@ -132,7 +128,18 @@ export const DefaultDebuffs = Debuffs.create({
 });
 
 export const OtherDefaults = {
-	distanceFromTarget: 15,
+	distanceFromTarget: 20,
 	profession2: Profession.Alchemy,
-	profession1: Profession.Enchanting,
+	profession1: Profession.Engineering,
 };
+
+export const BuildPresets = [
+	PresetUtils.makePresetBuild('Elemental', { gear: GearElemental, talents: TalentsElemental, rotation: APLDefault, options: DefaultOptions, distance: 20 }),
+	PresetUtils.makePresetBuild('Stormcaller', {
+		gear: GearStormcaller,
+		talents: TalentsStormcaller,
+		rotation: APLStormcaller,
+		options: DefaultOptions,
+		distance: 20,
+	}),
+];

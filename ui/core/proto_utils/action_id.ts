@@ -164,7 +164,7 @@ export class ActionId {
 
 	static makeItemUrl(id: number, randomSuffixId?: number): string {
 		const langPrefix = getWowheadLanguagePrefix();
-		const url = new URL(`https://wowhead.com/classic/${langPrefix}item=${id}`);
+		const url = new URL(`https://wowhead.com/forever/${langPrefix}item=${id}`);
 		url.searchParams.set('level', String(MAX_CHARACTER_LEVEL));
 		url.searchParams.set('rand', String(randomSuffixId || 0));
 		return url.toString();
@@ -173,7 +173,7 @@ export class ActionId {
 		const langPrefix = getWowheadLanguagePrefix();
 		const showBuff = spellIDsToShowBuffs.has(id);
 
-		let url = `https://wowhead.com/classic/${langPrefix}spell=${id}`;
+		let url = `https://wowhead.com/forever/${langPrefix}spell=${id}`;
 		if (showBuff) url = `${url}?buff=1`;
 
 		return url;
@@ -186,15 +186,15 @@ export class ActionId {
 	}
 	static makeQuestUrl(id: number): string {
 		const langPrefix = getWowheadLanguagePrefix();
-		return `https://wowhead.com/classic/${langPrefix}quest=${id}`;
+		return `https://wowhead.com/forever/${langPrefix}quest=${id}`;
 	}
 	static makeNpcUrl(id: number): string {
 		const langPrefix = getWowheadLanguagePrefix();
-		return `https://wowhead.com/classic/${langPrefix}npc=${id}`;
+		return `https://wowhead.com/forever/${langPrefix}npc=${id}`;
 	}
 	static makeZoneUrl(id: number): string {
 		const langPrefix = getWowheadLanguagePrefix();
-		return `https://wowhead.com/classic/${langPrefix}zone=${id}`;
+		return `https://wowhead.com/forever/${langPrefix}zone=${id}`;
 	}
 
 	setWowheadHref(elem: HTMLAnchorElement) {

@@ -41,7 +41,11 @@ func (druid *Druid) registerEnrageSpell() {
 
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, _ *core.Spell) {
 			if druid.Env.IsForever() {
-				druid.AddRage(sim, 10, rageMetrics)
+				rage := 10.0
+				if druid.Equipment.Head().ID == WolfsheadHelm {
+					rage += 5
+				}
+				druid.AddRage(sim, rage, rageMetrics)
 			}
 
 			core.StartPeriodicAction(sim, core.PeriodicActionOptions{

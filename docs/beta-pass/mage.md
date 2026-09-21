@@ -82,9 +82,10 @@ New in Forever:
 - **Frostfire Bolt ranks 2 and 3** (1237312 level 50, 1237313 level 60; rank 1 401502 was already in Era's data from
   Season of Discovery). Rank 3: 3 sec cast, 370 mana, 270-314 plus growth, coefficient .814, a 40% slow, and 19 a tick
   every 3 sec for 9 sec; it counts as both Frost and Fire and is named by Missile Barrage, Hot Streak and Improved
-  Fireball. **Not implemented**: it would need a dual school, a dot with no coefficient in the client, and every mage
-  talent and APL that names it, which is more than a small addition. It is the biggest open item for Frost and Fire.
-- Teleport: Dalaran, Study, Comprehend Scroll, and racials (Expansive Mind, Touch of the Grave, Eureka!): no combat use.
+  Fireball. **Implemented** in `sim/mage/frostfire_bolt.go`, including those explicit talent interactions.
+  Its damage at level 60 has no rank-3 growth yet. All three ranks are available; rotation/talent optimization remains.
+- Teleport: Dalaran, Study and Comprehend Scroll: no modelled combat use.
+- Expansive Mind, Touch of the Grave and Eureka affect combat and are handled in core; see [the race audit](../forever_races.md).
 
 Gone in Forever:
 - Detect Magic.

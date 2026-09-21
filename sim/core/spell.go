@@ -504,6 +504,9 @@ func (spell *Spell) CanCast(sim *Simulation, target *Unit) bool {
 	if spell == nil {
 		return false
 	}
+	if spell.ProcMask.Matches(ProcMaskMeleeWhiteHit) && spell.Unit.AutoAttacks.casterMeleeBlocked() {
+		return false
+	}
 
 	if spell.ExtraCastCondition != nil && !spell.ExtraCastCondition(sim, target) {
 		//if sim.Log != nil {
@@ -520,8 +523,9 @@ func (spell *Spell) CanCast(sim *Simulation, target *Unit) bool {
 		return false
 	}
 
-	// While casting no other action is possible except rare cast-while-casting spells
-	if spell.Unit.IsCasting(sim) {
+	// Ordinary auto attacks do not compete with a Forever melee/ranged cast.
+	continuousAuto := spell.ProcMask.Matches(ProcMaskWhiteHit) && spell.Unit.AutoAttacks.ContinueWhileCasting()
+	if spell.Unit.IsCasting(sim) && !continuousAuto {
 		//if sim.Log != nil {
 		//	sim.Log("Cant cast because already casting")
 		//}
@@ -529,7 +533,7 @@ func (spell *Spell) CanCast(sim *Simulation, target *Unit) bool {
 	}
 
 	// While channeling no other action is possible except rare cast-while-channeling spells
-	if spell.Unit.IsChanneling(sim) {
+	if spell.Unit.IsChanneling(sim) && !continuousAuto && (spell.Unit.Rotation == nil || !spell.Unit.Rotation.checkingChannelInterrupt) {
 		//if sim.Log != nil {
 		//	sim.Log("Cant cast because already channeling")
 		//}

@@ -221,6 +221,17 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 	character := agent.GetCharacter()
 	isAlliance := playerFaction == proto.Faction_Alliance
 	isHorde := playerFaction == proto.Faction_Horde
+	partyTristate := func(raidValue proto.TristateEffect, partyValue proto.TristateEffect) proto.TristateEffect {
+		if partyValue > raidValue {
+			return partyValue
+		}
+		return raidValue
+	}
+	// Forever adds Undead Paladins, so Horde raids can provide the same Paladin
+	// blessings and auras as Alliance raids.
+	canReceivePaladinBuffs := isAlliance || (character.Env.IsForever() && isHorde)
+	// Dwarf Shaman likewise make Shaman buffs available to Alliance raids.
+	canReceiveShamanBuffs := isHorde || (character.Env.IsForever() && isAlliance)
 	bonusResist := float64(0)
 
 	if raidBuffs.ArcaneBrilliance {
@@ -231,7 +242,7 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 
 	if raidBuffs.GiftOfTheWild > 0 {
 		updateStats := BuffSpellValues[MarkOfTheWild]
-		if raidBuffs.GiftOfTheWild == proto.TristateEffect_TristateEffectImproved {
+		if raidBuffs.GiftOfTheWild == proto.TristateEffect_TristateEffectImproved && !character.Env.IsForever() {
 			updateStats = updateStats.Multiply(1.35).Floor()
 		}
 		character.AddStats(updateStats)
@@ -268,27 +279,31 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 		character.AddStats(updateStats)
 	}
 
-	if raidBuffs.Thorns != proto.TristateEffect_TristateEffectMissing {
-		ThornsAura(character, GetTristateValueInt32(raidBuffs.Thorns, 0, 3))
+	thorns := raidBuffs.Thorns
+	if partyBuffs != nil {
+		thorns = partyTristate(thorns, partyBuffs.Thorns)
+	}
+	if thorns != proto.TristateEffect_TristateEffectMissing {
+		ThornsAura(character, GetTristateValueInt32(thorns, 0, 3))
 	}
 
-	if raidBuffs.MoonkinAura {
+	if raidBuffs.MoonkinAura || (partyBuffs != nil && partyBuffs.MoonkinAura) {
 		character.AddStat(stats.SpellCrit, 3*SpellCritRatingPerCritChance)
 	}
 
-	if raidBuffs.LeaderOfThePack {
+	if raidBuffs.LeaderOfThePack || (partyBuffs != nil && partyBuffs.LeaderOfThePack) {
 		character.AddStats(stats.Stats{
 			stats.MeleeCrit: 3 * CritRatingPerCritChance,
 		})
 	}
 
-	if raidBuffs.TrueshotAura {
+	if raidBuffs.TrueshotAura || (partyBuffs != nil && partyBuffs.TrueshotAura) {
 		TrueshotAura(&character.Unit)
 	}
 
 	if raidBuffs.PowerWordFortitude > 0 {
 		updateStats := BuffSpellValues[PowerWordFortitude]
-		if raidBuffs.PowerWordFortitude == proto.TristateEffect_TristateEffectImproved {
+		if raidBuffs.PowerWordFortitude == proto.TristateEffect_TristateEffectImproved && !character.Env.IsForever() {
 			updateStats = updateStats.Multiply(1.3).Floor()
 		}
 		character.AddStats(updateStats)
@@ -296,9 +311,13 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 		character.AddStats(BuffSpellValues[ScrollOfStamina])
 	}
 
-	if raidBuffs.BloodPact > 0 {
+	bloodPact := raidBuffs.BloodPact
+	if partyBuffs != nil {
+		bloodPact = partyTristate(bloodPact, partyBuffs.BloodPact)
+	}
+	if bloodPact > 0 {
 		updateStats := BuffSpellValues[BloodPact]
-		if raidBuffs.BloodPact == proto.TristateEffect_TristateEffectImproved {
+		if bloodPact == proto.TristateEffect_TristateEffectImproved {
 			updateStats = updateStats.Multiply(1.3).Floor()
 		}
 		character.AddStats(updateStats)
@@ -320,11 +339,11 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 		character.AddStats(BuffSpellValues[ScrollOfSpirit])
 	}
 
-	if individualBuffs.BlessingOfKings && isAlliance {
+	if individualBuffs.BlessingOfKings && canReceivePaladinBuffs {
 		MakePermanent(BlessingOfKingsAura(character))
 	}
 
-	if raidBuffs.SanctityAura && isAlliance {
+	if (raidBuffs.SanctityAura || (partyBuffs != nil && partyBuffs.SanctityAura)) && canReceivePaladinBuffs {
 		MakePermanent(SanctityAuraAura(character))
 	}
 
@@ -335,45 +354,80 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 		}
 	*/
 
-	if raidBuffs.DevotionAura != proto.TristateEffect_TristateEffectMissing && isAlliance {
-		MakePermanent(DevotionAuraAura(&character.Unit, GetTristateValueInt32(raidBuffs.DevotionAura, 0, 2)))
+	devotionAura := raidBuffs.DevotionAura
+	if partyBuffs != nil {
+		devotionAura = partyTristate(devotionAura, partyBuffs.DevotionAura)
+	}
+	if devotionAura != proto.TristateEffect_TristateEffectMissing && canReceivePaladinBuffs {
+		MakePermanent(DevotionAuraAura(&character.Unit, GetTristateValueInt32(devotionAura, 0, 2)))
 	}
 
-	if raidBuffs.StoneskinTotem != proto.TristateEffect_TristateEffectMissing && isHorde {
-		MakePermanent(StoneskinTotemAura(&character.Unit, GetTristateValueInt32(raidBuffs.StoneskinTotem, 0, 2)))
+	stoneskinTotem := raidBuffs.StoneskinTotem
+	if partyBuffs != nil {
+		stoneskinTotem = partyTristate(stoneskinTotem, partyBuffs.StoneskinTotem)
+	}
+	if stoneskinTotem != proto.TristateEffect_TristateEffectMissing && canReceiveShamanBuffs {
+		MakePermanent(StoneskinTotemAura(&character.Unit, GetTristateValueInt32(stoneskinTotem, 0, 2)))
 	}
 
-	if raidBuffs.RetributionAura != proto.TristateEffect_TristateEffectMissing && isAlliance {
-		RetributionAura(character, GetTristateValueInt32(raidBuffs.RetributionAura, 0, 2))
+	retributionAura := raidBuffs.RetributionAura
+	if partyBuffs != nil {
+		retributionAura = partyTristate(retributionAura, partyBuffs.RetributionAura)
+	}
+	if retributionAura != proto.TristateEffect_TristateEffectMissing && canReceivePaladinBuffs {
+		RetributionAura(character, GetTristateValueInt32(retributionAura, 0, 2))
 	}
 
-	if raidBuffs.BattleShout != proto.TristateEffect_TristateEffectMissing {
-		MakePermanent(BattleShoutAura(&character.Unit, GetTristateValueInt32(raidBuffs.BattleShout, 0, 5), 0, false)) // Do we implement 3pc wrath for the other sims?
+	battleShout := raidBuffs.BattleShout
+	if partyBuffs != nil {
+		battleShout = partyTristate(battleShout, partyBuffs.BattleShout)
+	}
+	if battleShout != proto.TristateEffect_TristateEffectMissing {
+		MakePermanent(BattleShoutAura(&character.Unit, GetTristateValueInt32(battleShout, 0, 5), 0, false)) // Do we implement 3pc wrath for the other sims?
 	}
 
-	if individualBuffs.BlessingOfMight != proto.TristateEffect_TristateEffectMissing && isAlliance {
+	if individualBuffs.BlessingOfMight != proto.TristateEffect_TristateEffectMissing && canReceivePaladinBuffs {
 		MakePermanent(BlessingOfMightAura(&character.Unit, GetTristateValueInt32(individualBuffs.BlessingOfMight, 0, 5)))
 	}
 
-	if raidBuffs.StrengthOfEarthTotem != proto.TristateEffect_TristateEffectMissing && isHorde {
-		multiplier := GetTristateValueFloat(raidBuffs.StrengthOfEarthTotem, 1, 1.15)
+	strengthOfEarth := raidBuffs.StrengthOfEarthTotem
+	if partyBuffs != nil {
+		strengthOfEarth = partyTristate(strengthOfEarth, partyBuffs.StrengthOfEarthTotem)
+	}
+	if strengthOfEarth != proto.TristateEffect_TristateEffectMissing && canReceiveShamanBuffs {
+		multiplier := GetTristateValueFloat(strengthOfEarth, 1, 1.15)
 		MakePermanent(StrengthOfEarthTotemAura(&character.Unit, multiplier))
 	}
 
-	if raidBuffs.GraceOfAirTotem > 0 && isHorde {
-		multiplier := GetTristateValueFloat(raidBuffs.GraceOfAirTotem, 1, 1.15)
+	graceOfAir := raidBuffs.GraceOfAirTotem
+	if partyBuffs != nil {
+		graceOfAir = partyTristate(graceOfAir, partyBuffs.GraceOfAirTotem)
+	}
+	if graceOfAir > 0 && canReceiveShamanBuffs {
+		multiplier := GetTristateValueFloat(graceOfAir, 1, 1.15)
 		MakePermanent(GraceOfAirTotemAura(&character.Unit, multiplier))
 	}
 
-	if individualBuffs.BlessingOfWisdom > 0 && isAlliance {
+	// Windfury Totem is a party weapon buff in Forever. The Shaman spell
+	// tracks the totem on the caster, while this party setting applies the
+	// corresponding proc aura to each member of the configured subgroup.
+	if partyBuffs != nil && partyBuffs.WindfuryTotem && !character.PseudoStats.FeralCombatEnabled {
+		ApplyWindfury(character)
+	}
+
+	manaSpring := raidBuffs.ManaSpringTotem
+	if partyBuffs != nil {
+		manaSpring = partyTristate(manaSpring, partyBuffs.ManaSpringTotem)
+	}
+	if individualBuffs.BlessingOfWisdom > 0 && canReceivePaladinBuffs {
 		updateStats := BuffSpellValues[BlessingOfWisdom]
-		if individualBuffs.BlessingOfWisdom == proto.TristateEffect_TristateEffectImproved {
+		if individualBuffs.BlessingOfWisdom == proto.TristateEffect_TristateEffectImproved && !character.Env.IsForever() {
 			updateStats = updateStats.Multiply(1.2)
 		}
 		character.AddStats(updateStats)
-	} else if raidBuffs.ManaSpringTotem > 0 && isHorde {
+	} else if manaSpring > 0 && canReceiveShamanBuffs {
 		updateStats := BuffSpellValues[ManaSpring]
-		if raidBuffs.ManaSpringTotem == proto.TristateEffect_TristateEffectImproved {
+		if manaSpring == proto.TristateEffect_TristateEffectImproved {
 			updateStats = updateStats.Multiply(1.25)
 		}
 		character.AddStats(updateStats)
@@ -1349,6 +1403,10 @@ func StrengthOfEarthTotemAura(unit *Unit, multiplier float64) *Aura {
 	rank := TernaryInt32(IncludeAQ, 5, 4)
 	spellID := []int32{0, 8075, 8160, 8161, 10442, 25361}[rank]
 	duration := time.Minute * 2
+	if unit.Env != nil && unit.Env.IsForever() {
+		multiplier = 1
+		duration = time.Minute * 5
+	}
 	updateStats := BuffSpellValues[StrengthOfEarth].Multiply(multiplier).Floor()
 
 	aura := unit.GetOrRegisterAura(Aura{
@@ -1378,6 +1436,10 @@ func GraceOfAirTotemAura(unit *Unit, multiplier float64) *Aura {
 	rank := TernaryInt32(IncludeAQ, 3, 2)
 	spellID := []int32{0, 8835, 10627, 25359}[rank]
 	duration := time.Minute * 2
+	if unit.Env != nil && unit.Env.IsForever() {
+		multiplier = 1
+		duration = time.Minute * 5
+	}
 	updateStats := BuffSpellValues[GraceOfAir].Multiply(multiplier).Floor()
 
 	aura := unit.GetOrRegisterAura(Aura{
@@ -1409,20 +1471,22 @@ var BattleShoutSpellId = [BattleShoutRanks + 1]int32{0, 6673, 5242, 6192, 11549,
 var BattleShoutBaseAP = [BattleShoutRanks + 1]float64{0, 9, 21, 33, 51, 78, 111, 139}
 var BattleShoutLevel = [BattleShoutRanks + 1]int{0, 1, 12, 22, 32, 42, 52, 60}
 
-// TODO: Beta will confirm whether Battle Shout and Blessing of Might stay melee only. In Classic
-// neither raises ranged attack power (Trueshot Aura does), and the hunter audit measured the
-// gap at 10% to 12% of every ranked hunter's damage if Forever has changed that.
+// Forever's tooltip explicitly grants melee AP. Improved Battle Shout was removed;
+// Booming Voice increases radius, not duration.
 func BattleShoutAura(unit *Unit, impBattleShout int32, boomingVoicePts int32, has3pcWrath bool) *Aura {
 	rank := TernaryInt32(IncludeAQ, 7, 6)
 	spellId := BattleShoutSpellId[rank]
 	baseAP := BattleShoutBaseAP[rank]
+	if unit.Env != nil && unit.Env.IsForever() {
+		impBattleShout = 0
+		boomingVoicePts = 0
+	}
 
 	return unit.GetOrRegisterAura(Aura{
 		Label:    "Battle Shout",
 		ActionID: ActionID{SpellID: spellId},
-		// Beta client 1.60.1: every rank of Battle Shout lasts 3 min, not Classic's 2. The value
-		// was taken from the client already - 139 attack power at rank 7 - but the duration was
-		// left behind, so the warrior re-shouted half again as often as it should.
+		// At level 60 the client gives 139 AP; the static Wowhead preview
+		// scales to this rank's MaxLevel 61 and rounds to 140.
 		Duration:   time.Duration(float64(time.Minute*3) * (1 + 0.1*float64(boomingVoicePts))),
 		BuildPhase: CharacterBuildPhaseBuffs,
 		OnGain: func(aura *Aura, sim *Simulation) {
@@ -1458,11 +1522,12 @@ func TrueshotAura(unit *Unit) *Aura {
 	return aura
 }
 
-// TODO: Beta will confirm whether Battle Shout and Blessing of Might stay melee only. In Classic
-// neither raises ranged attack power (Trueshot Aura does), and the hunter audit measured the
-// gap at 10% to 12% of every ranked hunter's damage if Forever has changed that.
+// Forever's tooltip specifies melee AP; the old improvement talent is absent.
 func BlessingOfMightAura(unit *Unit, impBomPts int32) *Aura {
 	spellID := TernaryInt32(IncludeAQ, 25291, 19838)
+	if unit.Env != nil && unit.Env.IsForever() {
+		impBomPts = 0
+	}
 
 	bonusAP := math.Floor(BuffSpellValues[BlessingOfMight][stats.AttackPower] * (1 + 0.04*float64(impBomPts)))
 

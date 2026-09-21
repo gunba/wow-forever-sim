@@ -34,8 +34,9 @@ var bluePvPBonuses = map[int32]core.ApplyEffect{
 }
 
 var ItemSetChampionsThreads = core.NewItemSet(core.ItemSet{
-	Name:    "Champion's Dreadgear",
-	Bonuses: bluePvPBonuses,
+	Name:            "Champion's Dreadgear",
+	AlternativeName: "Champion's Threads",
+	Bonuses:         bluePvPBonuses,
 })
 
 var ItemSetLieutenantCommandersThreads = core.NewItemSet(core.ItemSet{

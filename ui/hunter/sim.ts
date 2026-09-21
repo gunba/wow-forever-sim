@@ -70,7 +70,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 	displayPseudoStats: [PseudoStat.PseudoStatMeleeSpeedMultiplier, PseudoStat.PseudoStatRangedSpeedMultiplier],
 
 	defaults: {
-		race: Presets.OtherDefaults.race,
+		race: Race.RaceOrc,
 		// Default equipped gear.
 		gear: Presets.DefaultGear.gear,
 		// Default EP weights for sorting gear in the gear picker.
@@ -138,47 +138,15 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 	},
 
 	presets: {
-		// Preset talents that the user can quickly select.
-		talents: [...Presets.TalentPresets[ClassicPhase.Phase1]],
-		// Preset rotations that the user can quickly select.
-		rotations: [...Presets.APLPresets[ClassicPhase.Phase1]],
-		// Preset gear configurations that the user can quickly select.
-		gear: [...Presets.GearPresets[ClassicPhase.Phase1]],
+		talents: Presets.BuildPresets.map(build => build.talents!),
+		rotations: Presets.BuildPresets.map(build => build.rotation!),
+		gear: Presets.GearPresets,
+		builds: Presets.BuildPresets,
 	},
 
 	autoRotation: player => {
-		const isMelee = false;
-		//player.hasRune(ItemSlot.ItemSlotWaist, HunterRune.RuneBeltMeleeSpecialist) ||
-		//player.hasRune(ItemSlot.ItemSlotFeet, HunterRune.RuneBootsDualWieldSpecialization) ||
-		//player.hasRune(ItemSlot.ItemSlotFeet, HunterRune.RuneBootsWyvernStrike);
-
-		return Presets.DefaultAPL.rotation.rotation!;
-
-		// COMMENTING OUT TO SAVE FOR FUTURE IMPLEMENTATION.
-		// if (isMelee) {
-		// 	switch (level) {
-		// 		case 25:
-		// 			return Presets.APLMeleeWeavePhase1.rotation.rotation!;
-		// 		case 40:
-		// 			return Presets.APLMeleePhase2.rotation.rotation!;
-		// 		case 50:
-		// 			return Presets.APLMeleeBmPhase3.rotation.rotation!;
-		// 		case 60:
-		// 			return Presets.APLWeavePhase4.rotation.rotation!;
-		// 	}
-		// } else {
-		// 	switch (level) {
-		// 		case 25:
-		// 			return Presets.APLMeleeWeavePhase1.rotation.rotation!;
-		// 		case 40:
-		// 			return player.getTalentTree() === 1 ? Presets.APLRangedMmPhase2.rotation.rotation! : Presets.APLRangedBmPhase2.rotation.rotation!;
-		// 		case 50:
-		// 			return Presets.APLRangedMmPhase3.rotation.rotation!;
-		// 		case 60:
-		// 			return Presets.APLRangedPhase4.rotation.rotation!;
-		// 	}
-		// }
-		//throw new Error('Auto rotation not supported for your current configuration.');
+		const rotation = player.getTalentTree() === 0 ? Presets.APLBeastMastery : player.getTalentTree() === 2 ? Presets.APLSurvival : Presets.APLP1;
+		return rotation.rotation.rotation!;
 	},
 
 	raidSimPresets: [
@@ -200,10 +168,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearMarksmanship.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearMarksmanship.gear,
 				},
 			},
 		},
@@ -225,10 +193,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearMarksmanship.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearMarksmanship.gear,
 				},
 			},
 		},
@@ -250,10 +218,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearMarksmanship.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearMarksmanship.gear,
 				},
 			},
 		},

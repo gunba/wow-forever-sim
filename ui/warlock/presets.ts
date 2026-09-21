@@ -33,23 +33,22 @@ import DSRuinApl from './apls/forever_ds_ruin.apl.json';
 import DemonicPactApl from './apls/forever_pact.apl.json';
 import ShadowAndFlameApl from './apls/forever_shadow_and_flame.apl.json';
 // gear
-import LaunchGearJSON from './gear_sets/launch.gear.json';
-import BlankGear from './gear_sets/blank.gear.json';
-import MCGear from './gear_sets/mc.gear.json';
-import PreBisGear from './gear_sets/prebis.gear.json';
+import GearDemonologyJSON from './gear_sets/forever_demonology.gear.json';
+import GearAfflictionJSON from './gear_sets/forever_affliction.gear.json';
+import GearDsRuinJSON from './gear_sets/forever_ds_ruin.gear.json';
+import GearDestructionJSON from './gear_sets/forever_destruction.gear.json';
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearLaunch = PresetUtils.makePresetGear('Launch', LaunchGearJSON);
-export const GearBlank = PresetUtils.makePresetGear('Blank', BlankGear);
-export const GearPreBis = PresetUtils.makePresetGear('Pre-BIS', PreBisGear);
-export const GearMC = PresetUtils.makePresetGear('MC', MCGear);
+export const GearDemonology = PresetUtils.makePresetGear('Demonic Pact', GearDemonologyJSON, { tooltip: 'Level 60 Forever equipment.' });
+export const GearAffliction = PresetUtils.makePresetGear('Affliction', GearAfflictionJSON, { tooltip: 'Level 60 Forever equipment.' });
+export const GearDsRuin = PresetUtils.makePresetGear('DS/Ruin', GearDsRuinJSON, { tooltip: 'Level 60 Forever equipment.' });
+export const GearDestruction = PresetUtils.makePresetGear('Destruction', GearDestructionJSON, { tooltip: 'Level 60 Forever equipment.' });
 
-export const GearPresets = [GearBlank, GearLaunch, GearPreBis, GearMC];
-
-export const DefaultGear = GearPreBis;
+export const GearPresets = [GearDemonology, GearAffliction, GearDsRuin, GearDestruction];
+export const DefaultGear = GearDsRuin;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets
@@ -72,49 +71,31 @@ export const DefaultAPL = RotationDSRuin;
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsDemonicPact = {
-	name: 'Demonic Pact',
-	data: SavedTalents.create({ talentsString: '203-0055003221201001351-0550005' }),
-};
-
-export const TalentsAffliction = {
-	name: 'Affliction',
-	data: SavedTalents.create({ talentsString: '2435002013520135--0500055' }),
-};
-
-export const TalentsDSRuin = {
-	name: 'DS/Ruin',
-	data: SavedTalents.create({ talentsString: '233500201332-0340003001-0550105' }),
-};
-
 export const TalentsPactOptimised = PresetUtils.makePresetTalents(
 	'Demonic Pact 2/31/18',
-	SavedTalents.create({ talentsString: '113-0005003221220311351-0550005' }),
+	SavedTalents.create({ talentsString: '011-0005003221220311351-0550005003' }),
 );
 export const TalentsDeepAffliction = PresetUtils.makePresetTalents(
-	'Deep Affliction 35/0/16',
-	SavedTalents.create({ talentsString: '2535002013521105--05000551' }),
+	'Deep Affliction 31/0/20',
+	SavedTalents.create({ talentsString: '2525000013520105--0550015103' }),
 );
 export const TalentsDSRuinPandemic = PresetUtils.makePresetTalents(
-	'DS/Ruin Pandemic 24/11/16',
-	SavedTalents.create({ talentsString: '25220010135201-0025003001-05500051' }),
+	'DS/Ruin Pandemic 21/11/19',
+	SavedTalents.create({ talentsString: '252200001351-0025003001-0550005103' }),
 );
 export const TalentsShadowAndFlame = PresetUtils.makePresetTalents(
-	'Shadow and Flame 13/11/27',
-	SavedTalents.create({ talentsString: '25501-0025003001-055035510010002' }),
+	'Shadow and Flame 13/5/33',
+	SavedTalents.create({ talentsString: '2521000003-0005-0050355103101351' }),
 );
 
 export const TalentPresets = [
-	TalentsDemonicPact,
-	TalentsAffliction,
-	TalentsDSRuin,
 	TalentsPactOptimised,
 	TalentsDeepAffliction,
 	TalentsDSRuinPandemic,
 	TalentsShadowAndFlame,
 ];
 
-export const DefaultTalents = TalentsDSRuin;
+export const DefaultTalents = TalentsDSRuinPandemic;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Options
@@ -188,30 +169,41 @@ export const DefaultDebuffs = Debuffs.create({
 ///////////////////////////////////////////////////////////////////////////
 
 // The community builds with the pet setup and rotation each one is measured with.
-export const BuildDemonicPact = PresetUtils.makePresetBuild('Demonic Pact 2/31/18', {
-	talents: TalentsPactOptimised,
-	rotation: RotationDemonicPact,
-	options: DemonicPactOptions,
-});
-export const BuildDeepAffliction = PresetUtils.makePresetBuild('Deep Affliction 35/0/16', {
-	talents: TalentsDeepAffliction,
-	rotation: RotationAffliction,
-	options: AfflictionOptions,
-});
-export const BuildDSRuinPandemic = PresetUtils.makePresetBuild('DS/Ruin Pandemic 24/11/16', {
-	talents: TalentsDSRuinPandemic,
-	rotation: RotationDSRuin,
-	options: DefaultOptions,
-});
-export const BuildShadowAndFlame = PresetUtils.makePresetBuild('Shadow and Flame 13/11/27', {
-	talents: TalentsShadowAndFlame,
-	rotation: RotationShadowAndFlame,
-	options: DefaultOptions,
-});
 
 export const OtherDefaults = {
-	distanceFromTarget: 25,
-	profession1: Profession.Enchanting,
+	distanceFromTarget: 20,
+	profession1: Profession.Engineering,
 	profession2: Profession.Tailoring,
 	channelClipDelay: 150,
 };
+
+export const BuildPresets = [
+	PresetUtils.makePresetBuild('Demonic Pact', {
+		gear: GearDemonology,
+		talents: TalentsPactOptimised,
+		rotation: RotationDemonicPact,
+		options: DemonicPactOptions,
+		distance: 20,
+	}),
+	PresetUtils.makePresetBuild('Affliction', {
+		gear: GearAffliction,
+		talents: TalentsDeepAffliction,
+		rotation: RotationAffliction,
+		options: AfflictionOptions,
+		distance: 20,
+	}),
+	PresetUtils.makePresetBuild('DS/Ruin', {
+		gear: GearDsRuin,
+		talents: TalentsDSRuinPandemic,
+		rotation: RotationDSRuin,
+		options: DefaultOptions,
+		distance: 20,
+	}),
+	PresetUtils.makePresetBuild('Destruction', {
+		gear: GearDestruction,
+		talents: TalentsShadowAndFlame,
+		rotation: RotationShadowAndFlame,
+		options: AfflictionOptions,
+		distance: 20,
+	}),
+];

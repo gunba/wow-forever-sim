@@ -23,8 +23,7 @@ import {
 import { PaladinAura, PaladinOptions as RetributionPaladinOptions, PaladinSeal } from '../core/proto/paladin.js';
 import { SavedTalents } from '../core/proto/ui.js';
 import APLBasicRetJson from './apls/basic_ret.apl.json';
-import BlankGear from './gear_sets/blank.gear.json';
-import LaunchGearJSON from './gear_sets/launch.gear.json';
+import GearRetributionJSON from './gear_sets/forever_retribution.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -34,14 +33,10 @@ import LaunchGearJSON from './gear_sets/launch.gear.json';
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearLaunch = PresetUtils.makePresetGear('Launch', LaunchGearJSON);
-export const GearBlank = PresetUtils.makePresetGear('Blank', BlankGear);
+export const GearRetribution = PresetUtils.makePresetGear('Retribution', GearRetributionJSON, { tooltip: 'Level 60 Forever equipment.' });
 
-export const GearPresets = {
-	[ClassicPhase.Phase1]: [GearLaunch],
-};
-
-export const DefaultGear = GearPresets[ClassicPhase.Phase1][0];
+export const GearPresets = [GearRetribution];
+export const DefaultGear = GearRetribution;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets
@@ -57,7 +52,7 @@ export const APLPresets = {
 	[ClassicPhase.Phase5]: [],
 };
 
-export const DefaultAPL = APLPresets[ClassicPhase.Phase4][0];
+export const DefaultAPL = APLBasicRet;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Talent presets
@@ -68,7 +63,7 @@ export const DefaultAPL = APLPresets[ClassicPhase.Phase4][0];
 
 export const P4RetTalents = PresetUtils.makePresetTalents('P4/P5 Ret', SavedTalents.create({ talentsString: '0550030022001--052251310002330321' }));
 
-export const TalentsRetribution = PresetUtils.makePresetTalents('Retribution 10/0/41', SavedTalents.create({ talentsString: '250003--552250312012331321' }));
+export const TalentsRetribution = PresetUtils.makePresetTalents('Retribution 12/0/39', SavedTalents.create({ talentsString: '250003002--052253312012331321' }));
 
 export const TalentPresets = {
 	[ClassicPhase.Phase1]: [],
@@ -77,7 +72,7 @@ export const TalentPresets = {
 	[ClassicPhase.Phase4]: [P4RetTalents, TalentsRetribution],
 };
 
-export const DefaultTalents = TalentPresets[ClassicPhase.Phase4][0];
+export const DefaultTalents = TalentsRetribution;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Options
@@ -134,6 +129,16 @@ export const DefaultDebuffs = Debuffs.create({
 });
 
 export const OtherDefaults = {
-	profession1: Profession.Blacksmithing,
+	profession1: Profession.Engineering,
 	profession2: Profession.Enchanting,
 };
+
+export const BuildPresets = [
+	PresetUtils.makePresetBuild('Retribution', {
+		gear: GearRetribution,
+		talents: TalentsRetribution,
+		rotation: APLBasicRet,
+		options: DefaultOptions,
+		distance: 5,
+	}),
+];

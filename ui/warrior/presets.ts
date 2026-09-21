@@ -22,13 +22,10 @@ import {
 } from '../core/proto/common.js';
 import { SavedTalents } from '../core/proto/ui.js';
 import { Warrior_Options as WarriorOptions, WarriorShout, WarriorStance } from '../core/proto/warrior.js';
-import APLNoReckJSON from './apls/dps_no_reck.apl.json';
-import APLReckJSON from './apls/dps_reck.apl.json';
-import ArmsLaunchGearJSON from './gear_sets/arms_launch.gear.json';
-import LaunchGearJSON from './gear_sets/launch.gear.json';
-import P0BISGear from './gear_sets/p0.bis.gear.json';
-import Phase1Gear from './gear_sets/phase_1.gear.json';
-import Phase2Gear from './gear_sets/phase_2.gear.json';
+import APLFuryJSON from './apls/forever_fury.apl.json';
+import APLArmsJSON from './apls/forever_arms.apl.json';
+import GearFuryJSON from './gear_sets/forever_fury.gear.json';
+import GearArmsJSON from './gear_sets/forever_arms.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -38,31 +35,21 @@ import Phase2Gear from './gear_sets/phase_2.gear.json';
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearLaunch = PresetUtils.makePresetGear('Launch', LaunchGearJSON);
-// The Launch set above dual wields, which is Fury's. Arms wants a two hander: Two-Handed
-// Weapon Specialization does nothing with a weapon in each hand, and without Dual Wield
-// Specialization the off hand carries its miss penalty for none of its damage.
-export const GearArmsLaunch = PresetUtils.makePresetGear('Launch (Arms)', ArmsLaunchGearJSON);
-export const GearP0BIS = PresetUtils.makePresetGear('Pre-BiS', P0BISGear);
-export const GearPhase1 = PresetUtils.makePresetGear('P1 BiS', Phase1Gear);
-export const GearPhase2 = PresetUtils.makePresetGear('P2 BiS', Phase2Gear);
+export const GearFury = PresetUtils.makePresetGear('Fury', GearFuryJSON, { tooltip: 'Level 60 Forever equipment.' });
+export const GearArms = PresetUtils.makePresetGear('Arms', GearArmsJSON, { tooltip: 'Level 60 Forever equipment.' });
 
-export const GearPresets = {
-	[ClassicPhase.Phase1]: [GearLaunch, GearArmsLaunch, GearPhase1, GearP0BIS],
-	[ClassicPhase.Phase2]: [GearPhase2],
-};
-
-export const DefaultGear = GearP0BIS;
+export const GearPresets = [GearFury, GearArms];
+export const DefaultGear = GearFury;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const AplReck = PresetUtils.makePresetAPLRotation('DPS (With Reck)', APLReckJSON);
-export const APLNoReck = PresetUtils.makePresetAPLRotation('DPS (No Reck)', APLNoReckJSON);
+export const APLFury = PresetUtils.makePresetAPLRotation('Fury', APLFuryJSON);
+export const APLArms = PresetUtils.makePresetAPLRotation('Arms', APLArmsJSON);
 
 export const APLPresets = {
-	[ClassicPhase.Phase1]: [APLNoReck, AplReck],
+	[ClassicPhase.Phase1]: [APLFury, APLArms],
 };
 
 export const DefaultAPLs = [APLPresets[ClassicPhase.Phase1][0]];
@@ -74,16 +61,15 @@ export const DefaultAPLs = [APLPresets[ClassicPhase.Phase1][0]];
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsP1DPS = PresetUtils.makePresetTalents('DPS', SavedTalents.create({ talentsString: '30305013-050520035150310051' }));
+export const TalentsP1DPS = PresetUtils.makePresetTalents('Fury 17/34/0', SavedTalents.create({ talentsString: '20305113002-050520035151010051' }));
 
-export const TalentsFury = PresetUtils.makePresetTalents('Fury 17/34/0', SavedTalents.create({ talentsString: '30305213-550501015050010051' }));
-export const TalentsArms = PresetUtils.makePresetTalents('Arms 39/12/0', SavedTalents.create({ talentsString: '32305213132515201-5502' }));
+export const TalentsArms = PresetUtils.makePresetTalents('Arms 34/17/0', SavedTalents.create({ talentsString: '20305213132515001-550500000002' }));
 
 export const TalentPresets = {
-	[ClassicPhase.Phase1]: [TalentsP1DPS, TalentsFury, TalentsArms],
+	[ClassicPhase.Phase1]: [TalentsP1DPS, TalentsArms],
 };
 
-export const DefaultTalents = TalentPresets[ClassicPhase.Phase1][0];
+export const DefaultTalents = TalentsP1DPS;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Options Presets
@@ -91,7 +77,7 @@ export const DefaultTalents = TalentPresets[ClassicPhase.Phase1][0];
 
 export const DefaultOptions = WarriorOptions.create({
 	queueDelay: 250,
-	startingRage: 0,
+	startingRage: 50,
 	shout: WarriorShout.WarriorShoutBattle,
 	stance: WarriorStance.WarriorStanceBerserker,
 });
@@ -134,7 +120,12 @@ export const DefaultDebuffs = Debuffs.create({
 });
 
 export const OtherDefaults = {
-	profession1: Profession.Alchemy,
+	profession1: Profession.Engineering,
 	profession2: Profession.Engineering,
 	race: Race.RaceHuman,
 };
+
+export const BuildPresets = [
+	PresetUtils.makePresetBuild('Fury', { gear: GearFury, talents: TalentsP1DPS, rotation: APLFury, options: DefaultOptions, distance: 5 }),
+	PresetUtils.makePresetBuild('Arms', { gear: GearArms, talents: TalentsArms, rotation: APLArms, options: DefaultOptions, distance: 5 }),
+];

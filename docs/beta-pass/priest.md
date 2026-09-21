@@ -101,7 +101,8 @@ New in Forever:
     root, "Only works against Humanoids". A damage spell, but it only works on humanoids, and the sim has no
     humanoid check on a target, so it is not implemented; Dwarf builds would need it if a boss is humanoid.
   - **Dark Sacrifice** (Undead, 1277324-1277328): rank 5 turns 1600 health into 1600 mana over 15 sec, 10 min cooldown.
-    A mana cooldown the Undead shadow test would use; not implemented (health cost modelling, APL change).
+    Implemented for all five ranks with automatic mana-cooldown use. Self-damage currently uses unmodified client
+    amounts; its interaction with damage buffs and resistances remains unverified.
   - **Divine Grace** (Human, 1277370-1277378): instant heal on a target below 50%. Healing.
   - **Contingency Plan** (Gnome, 1277462-1277640) and **Confounding Flash** (Gnome, 1277455): ward and crowd control.
   - **Expansive Mind** (20591) and the Gnome's Eureka! (1259823), Undead Touch of the Grave (1260201) show up as racials.

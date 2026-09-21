@@ -37,7 +37,7 @@ Beta build `1.60.1.69893` against Classic Era `1.15.9.69722`, read with `tools/d
 | Bane of Doom | 3200, no coefficient | 1742 with a 4.0 coefficient (now on the dot, where it applies) |
 | Bane of Havoc | 300 mana | 5% of base mana |
 | Fel Domination | 15 min cooldown | 5 min |
-| Curse of the Elements | 1490/11721/11722 (Fire, Frost) plus Curse of Shadow 17862/17937 | Curse of Shadow removed; Curse of the Elements 1311677 (40) / 1311680 (50, 60) covers every magic school at 60/75 resistance and 8/10%. The sim applies core's Curse of the Elements and Curse of Shadow debuffs together; the APLs cast 1311680 |
+| Curse of the Elements | 1490/11721/11722 (Fire, Frost) plus Curse of Shadow 17862/17937 | Curse of Shadow removed; Curse of the Elements 1311677 (40) / 1311680 (50, 60) covers every magic school at 60/75 resistance and 8/10%. The shared aura now covers all six magic schools; the APLs cast 1311680 |
 | Firebolt r1-r7 (Imp) | 7-10 ... 85-96 | 4-5, 7-9, 12-14, 18-19, 26-28, 36-39, 43-48 |
 | Lash of Pain r1-r6 (Succubus) | 33 ... 99 | 16, 22, 30, 36, 43, 50 |
 
@@ -89,9 +89,8 @@ coefficients, every cast time except Incinerate's, and every mana cost except De
 
 - **Demonic Sacrifice pairings are the reverse of Classic's**, and the sim had Classic's. The client's text and buffs
   agree: Imp -> +15% Shadow (18789, renamed Burning Shadow), Succubus -> +15% Fire (18791, Touch of Fire), Voidwalker ->
-  2% mana every 4 sec (18792), Felhunter -> 3% health every 4 sec (18790). The DS/Ruin and Shadow and Flame APLs now
-  summon and sacrifice the Imp (688) instead of the Succubus, and the Demonic Pact test and preset sacrifice the
-  Voidwalker for mana instead of the Felhunter. The sacrifice input's icons follow.
+  2% mana every 4 sec (18792), Felhunter -> 3% health every 4 sec (18790). DS/Ruin sacrifices the Imp;
+  the current Destruction benchmark keeps a live Succubus. Demonic Pact uses the Voidwalker sacrifice for mana.
 - Cataclysm 3/6/9% -> 3/6/10%; Agonizing Flames 3/6/9% -> 3/7/10% (both ints the scaling test does not read).
 - Master Demonologist's Voidwalker branch reduces Physical damage taken, not all damage.
 - Nightfall also procs from Wrack.
@@ -112,15 +111,13 @@ Demonologist buff ids 23822-23844 (the sim still uses 23825 as a label); Drain M
 Renamed: Curse of Agony -> Bane of Agony, Curse of Doom -> Bane of Doom; stones and Detect Invisibility gained rank
 labels.
 
-## Needs a change outside sim/warlock
+## Shared integration follow-up
 
-- `sim/core/debuffs.go` `CurseOfElementsAura`: Forever's curse covers every magic school (mask 126) and Curse of Shadow
-  no longer exists. The raid debuff should become one aura over Fire, Frost, Arcane, Shadow, Nature and Holy, and the
-  Curse of Shadow toggle (`ui/core/components/inputs/buffs_debuffs.ts`, `proto` `curse_of_shadow`) folded into it.
-- `sim/core/debuffs.go` `CurseOfRecklessnessAura`: Forever's rank 4 is -505 armor with no attack power bonus (aura 4
-  dummy in place of Classic's +90 AP); ranks 1-3 are -175/-285/-395. `ui/core/spells/core.json` still calls it
-  unchanged.
-- `ui/core/spells/core.json` notes for 11722 and 17937 describe the Classic split.
+- Completed: `CurseOfElementsAura` now applies one aura over Fire, Frost, Arcane, Shadow, Nature and Holy.
+  Each resistance changes once, and Curse of Shadow is ignored under Forever and removed from the picker.
+- Completed: `CurseOfRecklessnessAura` applies -505 armor with no attack power bonus under Forever.
+  The rank-4 tooltip metadata and the obsolete Curse of Shadow/Elements notes are corrected.
+- See [shared effects](core.md) for runtime regression tests and remaining integration gaps.
 
 ## Oddities in the data
 
@@ -129,5 +126,4 @@ labels.
   milliseconds) that its tooltip does not mention; not modelled.
 - The Forever talent tooltips for Shadowburn, Conflagrate and Incinerate print 66, 95 and 97, matching none of the
   rank tables.
-- A pre-existing sim bug surfaced while checking the sacrifice APLs: after a prepull Summon Succubus and Demonic
-  Sacrifice, the Succubus keeps dealing about 60 DPS.
+- The sacrificed Succubus attack bug is fixed: dismissal cancels its deferred pull-time auto-attack callback.

@@ -1,0 +1,495 @@
+{
+  "settings": {
+    "iterations": 5000,
+    "fixedRngSeed": "20291727",
+    "ruleset": "RulesetForever",
+    "phase": 1,
+    "faction": "Horde",
+    "showDamageMetrics": true
+  },
+  "raidBuffs": {
+    "giftOfTheWild": "TristateEffectRegular",
+    "powerWordFortitude": "TristateEffectRegular",
+    "bloodPact": "TristateEffectImproved",
+    "strengthOfEarthTotem": "TristateEffectRegular",
+    "graceOfAirTotem": "TristateEffectRegular",
+    "arcaneBrilliance": true,
+    "divineSpirit": true,
+    "battleShout": "TristateEffectRegular",
+    "trueshotAura": true,
+    "leaderOfThePack": true,
+    "moonkinAura": true,
+    "manaSpringTotem": "TristateEffectImproved",
+    "shadowProtection": true,
+    "natureResistanceTotem": true,
+    "frostResistanceAura": true,
+    "frostResistanceTotem": true,
+    "fireResistanceTotem": true,
+    "fireResistanceAura": true,
+    "thorns": "TristateEffectImproved",
+    "devotionAura": "TristateEffectImproved",
+    "retributionAura": "TristateEffectImproved",
+    "sanctityAura": true
+  },
+  "partyBuffs": {},
+  "debuffs": {
+    "judgementOfWisdom": true,
+    "judgementOfLight": true,
+    "judgementOfTheCrusader": "TristateEffectImproved",
+    "faerieFire": true,
+    "curseOfElements": true,
+    "stormstrike": true,
+    "exposeArmor": "TristateEffectRegular",
+    "sunderArmor": true,
+    "curseOfWeakness": "TristateEffectImproved",
+    "curseOfRecklessness": true,
+    "demoralizingRoar": "TristateEffectImproved",
+    "demoralizingShout": "TristateEffectImproved",
+    "thunderClap": "TristateEffectImproved",
+    "insectSwarm": true,
+    "scorpidSting": true,
+    "huntersMark": "TristateEffectRegular"
+  },
+  "tanks": [],
+  "player": {
+    "name": "Enhancement",
+    "race": "RaceTauren",
+    "class": "ClassShaman",
+    "equipment": {
+      "items": [
+        {
+          "id": 19999
+        },
+        {
+          "id": 7731
+        },
+        {
+          "id": 15051
+        },
+        {
+          "id": 18509
+        },
+        {
+          "id": 252484
+        },
+        {
+          "id": 19687
+        },
+        {
+          "id": 19157
+        },
+        {
+          "id": 19044
+        },
+        {
+          "id": 15065
+        },
+        {
+          "id": 275618
+        },
+        {
+          "id": 17713
+        },
+        {
+          "id": 7686
+        },
+        {
+          "id": 249469
+        },
+        {
+          "id": 249470
+        },
+        {
+          "id": 279261
+        },
+        {
+          "id": 22384
+        },
+        {
+          "id": 228176
+        }
+      ]
+    },
+    "consumes": {
+      "flask": "FlaskOfSupremePower",
+      "food": "FoodBlessSunfruit",
+      "agilityElixir": "ElixirOfTheMongoose",
+      "manaRegenElixir": "MagebloodPotion",
+      "strengthBuff": "JujuPower",
+      "attackPowerBuff": "JujuMight",
+      "spellPowerBuff": "GreaterArcaneElixir",
+      "firePowerBuff": "ElixirOfFirepower",
+      "mainHandImbue": "WindfuryWeapon",
+      "offHandImbue": "WindfuryWeapon",
+      "defaultPotion": "MajorManaPotion",
+      "defaultConjured": "ConjuredDemonicRune",
+      "dragonBreathChili": true,
+      "zanzaBuff": "ROIDS"
+    },
+    "bonusStats": {
+      "stats": [
+        -21.566563467492262,
+        -22.318885448916408,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8.1,
+        -1.2538699690402477,
+        0,
+        0,
+        -39.12074303405573,
+        8.1,
+        -1.2538699690402477,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -39.12074303405573,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "foreverTier1Bonuses": true,
+    "buffs": {
+      "blessingOfKings": true,
+      "blessingOfWisdom": "TristateEffectRegular",
+      "blessingOfMight": "TristateEffectRegular"
+    },
+    "talentsString": "05043305-055030031005102051",
+    "profession1": "Engineering",
+    "rotation": {
+      "type": "TypeAPL",
+      "prepullActions": [
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 10442,
+                "rank": 4
+              }
+            }
+          },
+          "doAtValue": {
+            "const": {
+              "val": "-4.5s"
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 10627,
+                "rank": 2
+              }
+            }
+          },
+          "doAtValue": {
+            "const": {
+              "val": "-3s"
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 10438,
+                "rank": 6
+              }
+            }
+          },
+          "doAtValue": {
+            "const": {
+              "val": "-1.5s"
+            }
+          }
+        }
+      ],
+      "priorityList": [
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpLe",
+                "lhs": {
+                  "totemRemainingTime": {
+                    "totemType": "Earth"
+                  }
+                },
+                "rhs": {
+                  "const": {
+                    "val": "0s"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 10442,
+                "rank": 4
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpLe",
+                "lhs": {
+                  "totemRemainingTime": {
+                    "totemType": "Air"
+                  }
+                },
+                "rhs": {
+                  "const": {
+                    "val": "0s"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 10627,
+                "rank": 2
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "autocastOtherCooldowns": {}
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 17364,
+                "rank": 1
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpGe",
+                "lhs": {
+                  "auraNumStacks": {
+                    "auraId": {
+                      "spellId": 408505
+                    }
+                  }
+                },
+                "rhs": {
+                  "const": {
+                    "val": "3"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 10605
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpGe",
+                "lhs": {
+                  "auraNumStacks": {
+                    "auraId": {
+                      "spellId": 408505
+                    }
+                  }
+                },
+                "rhs": {
+                  "const": {
+                    "val": "3"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 15208,
+                "rank": 10
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpLe",
+                      "lhs": {
+                        "totemRemainingTime": {
+                          "totemType": "Fire"
+                        }
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "0s"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "remainingTime": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "5s"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 10438,
+                "rank": 6
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "not": {
+                "val": {
+                  "dotIsActive": {
+                    "spellId": {
+                      "spellId": 29228,
+                      "rank": 6
+                    }
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 29228,
+                "rank": 6
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 10414,
+                "rank": 7
+              }
+            }
+          }
+        }
+      ]
+    },
+    "distanceFromTarget": 5,
+    "enhancementShaman": {
+      "options": {
+        "syncType": "Auto"
+      }
+    }
+  },
+  "encounter": {
+    "duration": 300,
+    "executeProportion20": 0.2,
+    "executeProportion25": 0.25,
+    "executeProportion35": 0.35,
+    "targets": [
+      {
+        "level": 63,
+        "stats": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3731,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  }
+}

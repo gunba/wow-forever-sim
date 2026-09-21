@@ -43,8 +43,6 @@ func NewFeralDruid(character *core.Character, options *proto.Player) *FeralDruid
 		cat.SelfBuffs.InnervateTarget = feralOptions.Options.InnervateTarget
 	}
 
-	cat.maxRipTicks = druid.RipTicks
-
 	cat.EnableEnergyBar(100.0)
 	cat.EnableRageBar(core.RageBarOptions{DamageDealtMultiplier: 1, DamageTakenMultiplier: 1})
 
@@ -95,6 +93,7 @@ func (cat *FeralDruid) Initialize() {
 	cat.Druid.Initialize()
 	cat.RegisterBalanceSpells()
 	cat.RegisterFeralCatSpells()
+	cat.maxRipTicks = cat.RipTickCount()
 }
 
 func (cat *FeralDruid) Reset(sim *core.Simulation) {

@@ -14,9 +14,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecSmitePriest, {
 	cssClass: 'smite-priest-sim-ui',
 	cssScheme: 'priest',
 	// List any known bugs / issues here and they'll be shown on the site.
-	knownIssues: [
-		'Power in Light, Holy Precision and Mental Agility were all shown at rank 1 only, so their per-rank scaling is extrapolated.',
-	],
+	knownIssues: ['Power in Light, Holy Precision and Mental Agility were all shown at rank 1 only, so their per-rank scaling is extrapolated.'],
 
 	// All stats for which EP should be calculated.
 	epStats: [
@@ -60,6 +58,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecSmitePriest, {
 	},
 
 	defaults: {
+		race: Race.RaceTroll,
 		// Default equipped gear.
 		gear: Presets.DefaultGear.gear,
 		// Default EP weights for sorting gear in the gear picker.
@@ -98,11 +97,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecSmitePriest, {
 	// IconInputs to include in the 'Player' section on the settings tab.
 	playerIconInputs: [SmitePriestInputs.ArmorInput],
 	// Buff and Debuff inputs to include/exclude, overriding the EP-based defaults.
-	includeBuffDebuffInputs: [
-		BuffDebuffInputs.BlessingOfWisdom,
-		BuffDebuffInputs.ManaSpringTotem,
-		BuffDebuffInputs.StaminaBuff,
-	],
+	includeBuffDebuffInputs: [BuffDebuffInputs.BlessingOfWisdom, BuffDebuffInputs.ManaSpringTotem, BuffDebuffInputs.StaminaBuff],
 	excludeBuffDebuffInputs: [],
 	// Inputs to include in the 'Other' section on the settings tab.
 	otherInputs: {
@@ -114,9 +109,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecSmitePriest, {
 	},
 
 	presets: {
-		talents: [...Presets.TalentPresets[ClassicPhase.Phase1]],
-		rotations: [...Presets.APLPresets[ClassicPhase.Phase1]],
-		gear: [...Presets.GearPresets[ClassicPhase.Phase1]],
+		talents: Presets.BuildPresets.map(build => build.talents!),
+		rotations: Presets.BuildPresets.map(build => build.rotation!),
+		gear: Presets.GearPresets,
+		builds: Presets.BuildPresets,
 	},
 
 	autoRotation: _ => {

@@ -54,6 +54,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWarlock, {
 	displayPseudoStats: [],
 
 	defaults: {
+		race: Race.RaceOrc,
 		// Default equipped gear.
 		gear: Presets.DefaultGear.gear,
 
@@ -131,13 +132,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWarlock, {
 	},
 
 	presets: {
-		// Preset talents that the user can quickly select.
-		talents: Presets.TalentPresets,
-		// Preset rotations that the user can quickly select.
-		rotations: Presets.APLPresets,
-		// Preset gear configurations that the user can quickly select.
+		talents: Presets.BuildPresets.map(build => build.talents!),
+		rotations: Presets.BuildPresets.map(build => build.rotation!),
 		gear: Presets.GearPresets,
-		builds: [Presets.BuildDemonicPact, Presets.BuildDeepAffliction, Presets.BuildDSRuinPandemic, Presets.BuildShadowAndFlame],
+		builds: Presets.BuildPresets,
 	},
 
 	// Demonic Pact keeps a demon out beside the sacrifice, so it has its own rotation. DS/Ruin
@@ -148,6 +146,9 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWarlock, {
 		const talents = player.getTalents();
 		if (talents.demonicPact) {
 			return Presets.RotationDemonicPact.rotation.rotation!;
+		}
+		if (talents.incinerate) {
+			return Presets.RotationShadowAndFlame.rotation.rotation!;
 		}
 		if (talents.demonicSacrifice && talents.ruin) {
 			return (talents.shadowAndFlame ? Presets.RotationShadowAndFlame : Presets.RotationDSRuin).rotation.rotation!;
@@ -175,10 +176,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWarlock, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearDsRuin.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearDsRuin.gear,
 				},
 			},
 			otherDefaults: Presets.OtherDefaults,
@@ -200,10 +201,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWarlock, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearDsRuin.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearDsRuin.gear,
 				},
 			},
 			otherDefaults: Presets.OtherDefaults,
@@ -225,10 +226,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWarlock, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearDsRuin.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearDsRuin.gear,
 				},
 			},
 			otherDefaults: Presets.OtherDefaults,

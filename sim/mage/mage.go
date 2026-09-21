@@ -27,6 +27,7 @@ const (
 	SpellCode_MageIgnite
 	SpellCode_MagePyroblast
 	SpellCode_MageScorch
+	SpellCode_MageFrostfireBolt
 )
 
 var TalentTreeSizes = [3]int{18, 17, 19}
@@ -68,6 +69,7 @@ type Mage struct {
 	FireBlast               []*core.Spell
 	Flamestrike             []*core.Spell
 	Frostbolt               []*core.Spell
+	FrostfireBolt           []*core.Spell
 	IceBarrier              []*core.Spell
 	IceLance                *core.Spell
 	Ignite                  *core.Spell
@@ -118,6 +120,7 @@ func (mage *Mage) Initialize() {
 	mage.registerFireballSpell()
 	mage.registerFireBlastSpell()
 	mage.registerFrostboltSpell()
+	mage.registerFrostfireBoltSpell()
 	mage.registerIceLanceSpell()
 	mage.registerPyroblastSpell()
 	mage.registerScorchSpell()

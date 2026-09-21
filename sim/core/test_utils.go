@@ -136,6 +136,11 @@ var ForeverDebuffs = func() *proto.Debuffs {
 	debuffs.ShadowWeaving = false
 	debuffs.ImprovedScorch = false
 	debuffs.WintersChill = false
+	// Hunter's Mark is baseline and also enables Survival's Expose Prey.
+	// The removed Improved Hunter's Mark talent is not an assumed free upgrade.
+	debuffs.HuntersMark = proto.TristateEffect_TristateEffectRegular
+	debuffs.CurseOfShadow = false
+	debuffs.ExposeArmor = proto.TristateEffect_TristateEffectRegular
 	return debuffs
 }()
 
@@ -155,18 +160,27 @@ var FullBuffs = BuffsCombo{
 // World buffs do not work inside Forever raids, so the Forever player buffs are the
 // blessings alone. The engine ignores world buffs under the ruleset in any case.
 var ForeverIndividualBuffs = &proto.IndividualBuffs{
-	BlessingOfKings:     true,
-	BlessingOfMight:     proto.TristateEffect_TristateEffectImproved,
-	BlessingOfSanctuary: true,
-	BlessingOfWisdom:    proto.TristateEffect_TristateEffectImproved,
+	BlessingOfKings:  true,
+	BlessingOfMight:  proto.TristateEffect_TristateEffectRegular,
+	BlessingOfWisdom: proto.TristateEffect_TristateEffectRegular,
 }
+
+var ForeverRaidBuffs = func() *proto.RaidBuffs {
+	buffs := googleProto.Clone(FullRaidBuffs).(*proto.RaidBuffs)
+	buffs.GiftOfTheWild = proto.TristateEffect_TristateEffectRegular
+	buffs.PowerWordFortitude = proto.TristateEffect_TristateEffectRegular
+	buffs.StrengthOfEarthTotem = proto.TristateEffect_TristateEffectRegular
+	buffs.GraceOfAirTotem = proto.TristateEffect_TristateEffectRegular
+	buffs.BattleShout = proto.TristateEffect_TristateEffectRegular
+	return buffs
+}()
 
 var ForeverBuffs = BuffsCombo{
 	Label:   "FullBuffs",
 	Debuffs: ForeverDebuffs,
 	Party:   FullPartyBuffs,
 	Player:  ForeverIndividualBuffs,
-	Raid:    FullRaidBuffs,
+	Raid:    ForeverRaidBuffs,
 }
 
 func NewDefaultTarget() *proto.Target {

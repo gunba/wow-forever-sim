@@ -28,15 +28,9 @@ import SinisterStrikeSweatyAPL from './apls/combat_sinister_strike_sweaty.apl.js
 import SinisterStrikeIEAAPL from './apls/combat_sinister_strike_iea.apl.json';
 import HemorrhageAPL from './apls/forever_hemorrhage.apl.json';
 import MutilateAPL from './apls/forever_mutilate.apl.json';
-import BlankGear from './gear_sets/blank.gear.json';
-import BackstabGearLaunch from './gear_sets/backstab_launch.gear.json';
-import SinisterStrikeGearLaunch from './gear_sets/sinister_strike_launch.gear.json';
-import BackstabGearPreBiS from './gear_sets/combat_backstab_prebis.gear.json';
-import SinisterStrikeGearPreBiS from './gear_sets/combat_sinister_strike_prebis.gear.json';
-import BackstabGearP1BiS from './gear_sets/combat_backstab_p1_bis.gear.json';
-import BackstabGearP2BiS from './gear_sets/combat_backstab_p2_bis.gear.json';
-import SinisterStrikeGearP1BiS from './gear_sets/combat_sinister_strike_p1_bis.gear.json';
-import SinisterStrikeGearP2BiS from './gear_sets/combat_sinister_strike_p2_bis.gear.json';
+import GearCombatJSON from './gear_sets/forever_combat.gear.json';
+import GearMutilateJSON from './gear_sets/forever_mutilate.gear.json';
+import GearSubtletyJSON from './gear_sets/forever_subtlety.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -46,36 +40,12 @@ import SinisterStrikeGearP2BiS from './gear_sets/combat_sinister_strike_p2_bis.g
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearBlank = PresetUtils.makePresetGear('Blank', BlankGear);
-export const GearBackstabLaunch = PresetUtils.makePresetGear('Backstab Launch', BackstabGearLaunch);
-export const GearSinisterStrikeLaunch = PresetUtils.makePresetGear('Sinister Strike Launch', SinisterStrikeGearLaunch);
-export const GearBackstabPreBiS = PresetUtils.makePresetGear('Backstab Pre-BiS', BackstabGearPreBiS);
-export const GearSinisterStrikePreBiS = PresetUtils.makePresetGear('Sinister Strike Pre-BiS', SinisterStrikeGearPreBiS);
-export const GearBackstabP1BiS = PresetUtils.makePresetGear('Backstab P1 BiS', BackstabGearP1BiS);
-export const GearBackstabP2BiS = PresetUtils.makePresetGear('Backstab P2 BiS', BackstabGearP2BiS);
-export const GearSinisterStrikeP1BiS = PresetUtils.makePresetGear('Sinister Strike P1 BiS', SinisterStrikeGearP1BiS);
-export const GearSinisterStrikeP2BiS = PresetUtils.makePresetGear('Sinister Strike P2 BiS', SinisterStrikeGearP2BiS);
+export const GearCombat = PresetUtils.makePresetGear('Combat', GearCombatJSON, { tooltip: 'Level 60 Forever equipment.' });
+export const GearMutilate = PresetUtils.makePresetGear('Mutilate', GearMutilateJSON, { tooltip: 'Level 60 Forever equipment.' });
+export const GearSubtlety = PresetUtils.makePresetGear('Subtlety', GearSubtletyJSON, { tooltip: 'Level 60 Forever equipment.' });
 
-export const GearPresets = {
-	[ClassicPhase.Phase1]: [
-		GearBackstabLaunch,
-		GearSinisterStrikeLaunch,
-		GearBackstabPreBiS,
-		GearSinisterStrikePreBiS,
-		GearBackstabP1BiS,
-		GearSinisterStrikeP1BiS,
-	],
-	[ClassicPhase.Phase2]: [
-		GearBackstabLaunch,
-		GearSinisterStrikeLaunch,
-		GearBackstabPreBiS,
-		GearSinisterStrikePreBiS,
-		GearBackstabP2BiS,
-		GearSinisterStrikeP2BiS,
-	],
-};
-
-export const DefaultGear = GearSinisterStrikePreBiS;
+export const GearPresets = [GearCombat, GearMutilate, GearSubtlety];
+export const DefaultGear = GearCombat;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets[]
@@ -133,13 +103,13 @@ export const DefaultAPLMutilate = APLPresets[ClassicPhase.Phase2][5];
 export const CombatBackstabTalents = PresetUtils.makePresetTalents('Backstab', SavedTalents.create({ talentsString: '005302005-30230320201515231-102' }));
 export const CombatSinisterStrikeTalents = PresetUtils.makePresetTalents(
 	'Sinister Strike',
-	SavedTalents.create({ talentsString: '00530310501-32003311201515231' }),
+	SavedTalents.create({ talentsString: '005303103012-32003311201515231' }),
 );
 export const CombatSinisterStrikeIEATalents = PresetUtils.makePresetTalents(
 	'Improved Expose Armor (SS)',
 	SavedTalents.create({ talentsString: '005303125-32003311201515131' }),
 );
-export const AssassinationMutilateTalents = PresetUtils.makePresetTalents('Mutilate', SavedTalents.create({ talentsString: '00530310551021051-302303202004' }));
+export const AssassinationMutilateTalents = PresetUtils.makePresetTalents('Mutilate', SavedTalents.create({ talentsString: '0053031035140105-302303202014' }));
 
 export const TalentsCombatDualWield = PresetUtils.makePresetTalents(
 	'Combat Dual-Wield 15/33/3',
@@ -150,8 +120,8 @@ export const TalentsAssassinationMutilate = PresetUtils.makePresetTalents(
 	SavedTalents.create({ talentsString: '02532010531201051-225303000005' }),
 );
 export const TalentsSubtletyHemo = PresetUtils.makePresetTalents(
-	'Subtlety Hemo 15/0/36',
-	SavedTalents.create({ talentsString: '125320101--5320003310013211551' }),
+	'Subtlety Hemo 20/0/31',
+	SavedTalents.create({ talentsString: '115303101104--5320003310013211501' }),
 );
 
 export const TalentPresets = {
@@ -177,38 +147,18 @@ export const TalentPresets = {
 
 export const DefaultTalentsAssassin = AssassinationMutilateTalents;
 export const DefaultTalentsCombat = CombatSinisterStrikeTalents;
-export const DefaultTalentsSubtlety = TalentPresets[ClassicPhase.Phase2][0];
+export const DefaultTalentsSubtlety = TalentsSubtletyHemo;
 
 export const DefaultTalentsBackstab = TalentPresets[ClassicPhase.Phase2][0];
 export const DefaultTalentsSinisterStrike = TalentPresets[ClassicPhase.Phase2][1];
 export const DefaultTalentsIEA = TalentPresets[ClassicPhase.Phase2][2];
 export const DefaultTalentsMutilate = TalentPresets[ClassicPhase.Phase2][3];
 
-export const DefaultTalents = DefaultTalentsSinisterStrike;
+export const DefaultTalents = CombatSinisterStrikeTalents;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                Build Presets
 ///////////////////////////////////////////////////////////////////////////
-export const PresetBuildBackstab = PresetUtils.makePresetBuild('Backstab', {
-	gear: GearBackstabP2BiS,
-	talents: DefaultTalentsBackstab,
-	rotation: DefaultAPLBackstab,
-});
-export const PresetBuildSinisterStrike = PresetUtils.makePresetBuild('Sinister Strike', {
-	gear: GearSinisterStrikeP2BiS,
-	talents: DefaultTalentsSinisterStrike,
-	rotation: DefaultAPLSinisterStrike,
-});
-export const PresetBuildIEA = PresetUtils.makePresetBuild('IEA', {
-	gear: GearSinisterStrikeP2BiS,
-	talents: DefaultTalentsIEA,
-	rotation: DefaultAPLIEA,
-});
-export const PresetBuildMutilate = PresetUtils.makePresetBuild('Mutilate', {
-	gear: GearBackstabP2BiS,
-	talents: DefaultTalentsMutilate,
-	rotation: DefaultAPLMutilate,
-});
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Options
@@ -283,3 +233,27 @@ export const P1OtherDefaults = {
 export const OtherDefaults = {
 	[ClassicPhase.Phase1]: P1OtherDefaults,
 };
+
+export const BuildPresets = [
+	PresetUtils.makePresetBuild('Combat', {
+		gear: GearCombat,
+		talents: CombatSinisterStrikeTalents,
+		rotation: ROTATION_PRESET_SINISTER_STRIKE_SWEATY,
+		options: DefaultOptions,
+		distance: 5,
+	}),
+	PresetUtils.makePresetBuild('Mutilate', {
+		gear: GearMutilate,
+		talents: AssassinationMutilateTalents,
+		rotation: ROTATION_PRESET_MUTILATE,
+		options: DefaultOptions,
+		distance: 5,
+	}),
+	PresetUtils.makePresetBuild('Subtlety', {
+		gear: GearSubtlety,
+		talents: TalentsSubtletyHemo,
+		rotation: ROTATION_PRESET_HEMORRHAGE,
+		options: DefaultOptions,
+		distance: 5,
+	}),
+];

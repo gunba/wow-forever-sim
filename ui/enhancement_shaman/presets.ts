@@ -25,9 +25,7 @@ import {
 import { EnhancementShaman_Options as EnhancementShamanOptions, ShamanSyncType } from '../core/proto/shaman.js';
 import { SavedTalents } from '../core/proto/ui.js';
 import DefaultAPLJSON from './apls/default.apl.json';
-import LaunchGearJSON from './gear_sets/launch.gear.json';
-import Phase1GearJSON from './gear_sets/phase_1.gear.json';
-import Phase2GearJSON from './gear_sets/phase_2.gear.json';
+import GearEnhancementJSON from './gear_sets/forever_enhancement.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -36,18 +34,10 @@ import Phase2GearJSON from './gear_sets/phase_2.gear.json';
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearLaunch = PresetUtils.makePresetGear('Launch', LaunchGearJSON);
-export const GearPhase1 = PresetUtils.makePresetGear('Phase 1', Phase1GearJSON);
-export const GearPhase2 = PresetUtils.makePresetGear('Phase 2', Phase2GearJSON);
+export const GearEnhancement = PresetUtils.makePresetGear('Enhancement', GearEnhancementJSON, { tooltip: 'Level 60 Forever equipment.' });
 
-export const GearPresets = {
-	[ClassicPhase.Phase1]: [GearLaunch, GearPhase1],
-	[ClassicPhase.Phase2]: [GearPhase2],
-	[ClassicPhase.Phase4]: [],
-	[ClassicPhase.Phase6]: [],
-};
-
-export const DefaultGear = GearPresets[ClassicPhase.Phase1][0];
+export const GearPresets = [GearEnhancement];
+export const DefaultGear = GearEnhancement;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets
@@ -64,7 +54,7 @@ export const APLPresets = {
 	[ClassicPhase.Phase6]: [],
 };
 
-export const DefaultAPL = APLPresets[ClassicPhase.Phase1][0];
+export const DefaultAPL = APLDefault;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Talent Presets
@@ -72,7 +62,7 @@ export const DefaultAPL = APLPresets[ClassicPhase.Phase1][0];
 
 export const TalentsLevel60 = PresetUtils.makePresetTalents('Level 60', SavedTalents.create({ talentsString: '5505301-053030031005112251' }));
 
-export const TalentsEnhancement = PresetUtils.makePresetTalents('Enhancement 16/35/0', SavedTalents.create({ talentsString: '05023015-055030030205112251' }));
+export const TalentsEnhancement = PresetUtils.makePresetTalents('Enhancement 20/31/0', SavedTalents.create({ talentsString: '05043305-055030031005102051' }));
 
 export const TalentPresets = {
 	[ClassicPhase.Phase1]: [TalentsLevel60, TalentsEnhancement],
@@ -83,7 +73,7 @@ export const TalentPresets = {
 	[ClassicPhase.Phase6]: [],
 };
 
-export const DefaultTalents = TalentPresets[ClassicPhase.Phase1][0];
+export const DefaultTalents = TalentsEnhancement;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Options
@@ -135,7 +125,17 @@ export const DefaultDebuffs = Debuffs.create({
 });
 
 export const OtherDefaults = {
-	profession1: Profession.Alchemy,
+	profession1: Profession.Engineering,
 	profession2: Profession.Enchanting,
 	race: Race.RaceOrc,
 };
+
+export const BuildPresets = [
+	PresetUtils.makePresetBuild('Enhancement', {
+		gear: GearEnhancement,
+		talents: TalentsEnhancement,
+		rotation: APLDefault,
+		options: DefaultOptions,
+		distance: 5,
+	}),
+];

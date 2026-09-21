@@ -184,7 +184,7 @@ const fullTypeToSpec: Record<string, Spec> = {
 
 // Spells which imply a specific Race.
 const racialSpells: Array<{ id: number; name: string; race: Race }> = [
-	{ id: 26297, name: 'Berserking', race: Race.RaceTroll },
+	{ id: 20554, name: 'Berserking', race: Race.RaceTroll },
 	{ id: 20572, name: 'Blood Fury (AP)', race: Race.RaceOrc },
 	{ id: 20589, name: 'Escape Artist', race: Race.RaceGnome },
 	{ id: 20594, name: 'Stoneform', race: Race.RaceDwarf },

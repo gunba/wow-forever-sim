@@ -36,10 +36,11 @@ const CharacterBuildPhaseAll = CharacterBuildPhaseBase | CharacterBuildPhaseGear
 type Character struct {
 	Unit
 
-	Name  string // Different from Label, needed for returned results.
-	Race  proto.Race
-	Class proto.Class
-	Spec  proto.Spec
+	Name                string // Different from Label, needed for returned results.
+	Race                proto.Race
+	Class               proto.Class
+	Spec                proto.Spec
+	ForeverTier1Bonuses bool
 
 	// Current gear.
 	Equipment
@@ -118,10 +119,11 @@ func NewCharacter(party *Party, partyIndex int, player *proto.Player) Character 
 			StartDistanceFromTarget: player.DistanceFromTarget,
 		},
 
-		Name:  player.Name,
-		Race:  player.Race,
-		Class: player.Class,
-		Spec:  PlayerProtoToSpec(player),
+		Name:                player.Name,
+		Race:                player.Race,
+		Class:               player.Class,
+		Spec:                PlayerProtoToSpec(player),
+		ForeverTier1Bonuses: player.ForeverTier1Bonuses,
 
 		Equipment: ProtoToEquipment(player.Equipment),
 
@@ -136,6 +138,10 @@ func NewCharacter(party *Party, partyIndex int, player *proto.Player) Character 
 		majorCooldownManager: newMajorCooldownManager(player.Cooldowns),
 	}
 
+	character.Equipment = character.Equipment.Scaled(player.EquipmentScale)
+	if player.EquipmentScale != 0 && player.EquipmentScale != 1 && player.EnableItemSwap {
+		panic("equipment sensitivity does not support item swaps")
+	}
 	character.GCD = character.NewTimer()
 
 	character.Label = fmt.Sprintf("%s (#%d)", character.Name, character.Index+1)
@@ -236,27 +242,28 @@ func (character *Character) RemoveDynamicEquipScaling(sim *Simulation, stat stat
 }
 
 func (character *Character) EquipStats() stats.Stats {
-	var baseEquipStats = character.Equipment.Stats()
-	var bonusEquipStats = baseEquipStats.Add(character.bonusStats)
-	return bonusEquipStats.DotProduct(character.itemStatMultipliers)
+	return character.equipmentStats(true)
 }
 
 func (character *Character) BaseEquipStats() stats.Stats {
-	var baseEquipStats = character.Equipment.BaseStats()
-	var bonusEquipStats = baseEquipStats.Add(character.bonusStats)
-	return bonusEquipStats.DotProduct(character.itemStatMultipliers)
+	return character.equipmentStats(false)
+}
+
+func (character *Character) equipmentStats(includeEnchants bool) stats.Stats {
+	var equipment stats.Stats
+	for _, item := range character.Equipment {
+		equipment = equipment.Add(character.itemStats(item, includeEnchants))
+	}
+	// BonusStats are explicit stat adjustments, not item tooltip stats. Sharing
+	// them across attack types double-counts hit-cap adjustments and EP probes.
+	return equipment.Add(character.bonusStats).DotProduct(character.itemStatMultipliers)
 }
 
 func (character *Character) applyEquipment() {
 	if character.equipStatsApplied {
 		panic("Equipment stats already applied to character!")
 	}
-	equipStats := character.EquipStats()
-	if character.Env.IsForever() {
-		equipStats = character.unifyEquipHitAndCrit(equipStats)
-		equipStats = character.addHealingSpellDamage(equipStats)
-	}
-	character.AddStats(equipStats)
+	character.AddStats(character.EquipStats())
 	character.equipStatsApplied = true
 
 	for _, item := range character.Equipment {

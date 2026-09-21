@@ -78,13 +78,14 @@ export type WowheadTooltipSpellParams = {
 	difficultyId?: 14 | 15 | 16;
 };
 
-export const WOWHEAD_EXPANSION_ENV = 4;
+// WH.dataEnv.CLASSICPLUS in Wowhead's power.js maps to /forever.
+export const WOWHEAD_EXPANSION_ENV = 16;
 
 export const buildWowheadTooltipDataset = async (options: WowheadTooltipItemParams | WowheadTooltipSpellParams) => {
 	const lang = getLanguageCode();
 	const params = new URLSearchParams();
 	const langPrefix = lang ? lang + '.' : '';
-	params.set('domain', `${langPrefix}classic`);
+	params.set('domain', `${langPrefix}forever`);
 	params.set('dataEnv', String(WOWHEAD_EXPANSION_ENV));
 
 	if (options.level) {

@@ -57,6 +57,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRogue, {
 	displayPseudoStats: [PseudoStat.PseudoStatMeleeSpeedMultiplier],
 
 	defaults: {
+		race: Race.RaceOrc,
 		// Default equipped gear.
 		gear: Presets.DefaultGear.gear,
 		// Default EP weights for sorting gear in the gear picker.
@@ -115,30 +116,24 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRogue, {
 	},
 
 	presets: {
-		// Preset talents that the user can quickly select.
-		talents: [...Presets.TalentPresets[ClassicPhase.Phase2]],
-		// Preset rotations that the user can quickly select.
-		rotations: [...Presets.APLPresets[ClassicPhase.Phase2]],
-		// Preset gear configurations that the user can quickly select.
-		gear: [...Presets.GearPresets[ClassicPhase.Phase2]],
-		builds: [Presets.PresetBuildBackstab, Presets.PresetBuildSinisterStrike, Presets.PresetBuildIEA, Presets.PresetBuildMutilate],
+		talents: Presets.BuildPresets.map(build => build.talents!),
+		rotations: Presets.BuildPresets.map(build => build.rotation!),
+		gear: Presets.GearPresets,
+		builds: Presets.BuildPresets,
 	},
 
-	// Daggers run Backstab, or Mutilate when the build has it; Hemorrhage takes over from
-	// Backstab when it is talented, since it costs less and carries the Rupture debuff.
-	// Anything else runs Sinister Strike.
 	autoRotation: player => {
 		const talents = player.getTalents();
+		if (talents.hemorrhage) {
+			return Presets.ROTATION_PRESET_HEMORRHAGE.rotation.rotation!;
+		}
 		if (player.getEquippedItem(ItemSlot.ItemSlotMainHand)?._item.weaponType == WeaponType.WeaponTypeDagger) {
 			if (talents.mutilate) {
 				return Presets.ROTATION_PRESET_MUTILATE.rotation.rotation!;
 			}
-			if (talents.hemorrhage) {
-				return Presets.ROTATION_PRESET_HEMORRHAGE.rotation.rotation!;
-			}
 			return Presets.ROTATION_PRESET_BACKSTAB.rotation.rotation!;
 		}
-		return Presets.ROTATION_PRESET_SINISTER_STRIKE.rotation.rotation!;
+		return Presets.ROTATION_PRESET_SINISTER_STRIKE_SWEATY.rotation.rotation!;
 	},
 
 	raidSimPresets: [
@@ -159,10 +154,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRogue, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearBackstabLaunch.gear,
+					1: Presets.GearMutilate.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearBackstabLaunch.gear,
+					1: Presets.GearMutilate.gear,
 				},
 			},
 		},
@@ -183,10 +178,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRogue, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearSinisterStrikeLaunch.gear,
+					1: Presets.GearCombat.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearSinisterStrikeLaunch.gear,
+					1: Presets.GearCombat.gear,
 				},
 			},
 		},

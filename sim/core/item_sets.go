@@ -36,35 +36,9 @@ func (set ItemSet) Items() []Item {
 
 var sets []*ItemSet
 
-// Registers a new ItemSet with item IDs populated.
+// A set definition can precede its item records. Forever publishes bonuses for
+// tiers whose gear is not yet present in the obtainable-item catalog.
 func NewItemSet(set ItemSet) *ItemSet {
-	foundID := set.ID == 0
-	foundName := false
-	foundAlternativeName := set.AlternativeName == ""
-	for _, item := range ItemsByID {
-		if item.SetName == "" {
-			continue
-		}
-		foundID = foundID || (item.SetID > 0 && item.SetID == set.ID)
-		foundName = foundName || item.SetName == set.Name
-		foundAlternativeName = foundAlternativeName || item.SetName == set.AlternativeName
-		if foundID && foundName && foundAlternativeName {
-			break
-		}
-	}
-
-	if WITH_DB {
-		if !foundID {
-			panic(fmt.Sprintf("No items found for set id %d", set.ID))
-		}
-		if !foundName {
-			panic("No items found for set " + set.Name)
-		}
-		if len(set.AlternativeName) > 0 && !foundAlternativeName {
-			panic("No items found for set alternative " + set.AlternativeName)
-		}
-	}
-
 	sets = append(sets, &set)
 	return &set
 }
@@ -76,6 +50,10 @@ func (character *Character) HasSetBonus(set *ItemSet, numItems int32) bool {
 
 	if _, ok := set.Bonuses[numItems]; !ok {
 		panic(fmt.Sprintf("Item set %s does not have a bonus with %d pieces.", set.Name, numItems))
+	}
+
+	if set.ID != 0 && set.ID == character.forcedForeverTier1SetID() && numItems <= 5 {
+		return true
 	}
 
 	var count int32
@@ -138,13 +116,25 @@ func (character *Character) GetActiveSetBonuses() []ActiveSetBonus {
 
 		if foundSet != nil {
 			setItemCount[foundSet]++
-			if bonusEffect, ok := foundSet.Bonuses[setItemCount[foundSet]]; ok {
-				activeBonuses = append(activeBonuses, ActiveSetBonus{
-					Name:        foundSet.Name,
-					NumPieces:   setItemCount[foundSet],
-					BonusEffect: bonusEffect,
-				})
+		}
+	}
+
+	for _, set := range sets {
+		count := setItemCount[set]
+		if set.ID != 0 && set.ID == character.forcedForeverTier1SetID() {
+			count = max(count, 5)
+		}
+		var thresholds []int32
+		for threshold := range set.Bonuses {
+			if threshold <= count {
+				thresholds = append(thresholds, threshold)
 			}
+		}
+		slices.Sort(thresholds)
+		for _, threshold := range thresholds {
+			activeBonuses = append(activeBonuses, ActiveSetBonus{
+				Name: set.Name, NumPieces: threshold, BonusEffect: set.Bonuses[threshold],
+			})
 		}
 	}
 

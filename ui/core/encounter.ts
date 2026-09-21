@@ -3,8 +3,8 @@ import { Encounter as EncounterProto, PresetEncounter, PresetTarget, Target as T
 import { Sim } from './sim.js';
 import { EventID, TypedEvent } from './typed_event.js';
 
-const DEFAULT_DURATION = 120;
-const DEFAULT_VARIATION = 15;
+const DEFAULT_DURATION = 300;
+const DEFAULT_VARIATION = 0;
 const DEFAULT_EXECUTE_20 = 0.2;
 const DEFAULT_EXECUTE_25 = 0.25;
 const DEFAULT_EXECUTE_35 = 0.35;

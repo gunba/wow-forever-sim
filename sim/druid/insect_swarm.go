@@ -36,6 +36,13 @@ func (druid *Druid) registerInsectSwarmSpell() {
 			baseDamage := InsectSwarmBaseDamage[rank] / float64(numTicks)
 			manaCost := InsectSwarmManaCost[rank]
 			spellCoef := .158
+			durationRemainder := time.Duration(0)
+			if druid.HasSetBonus(ItemSetGrovekeeperEclipse, 5) {
+				// 1301242 adds three seconds, not three ticks. Retain the
+				// engine's full-tick rule and the full fifteen-second aura.
+				numTicks++
+				durationRemainder = time.Second
+			}
 
 			druid.InsectSwarm[rank] = druid.RegisterSpell(Humanoid|Moonkin, core.SpellConfig{
 				SpellCode:   SpellCode_DruidInsectSwarm,
@@ -71,9 +78,10 @@ func (druid *Druid) registerInsectSwarmSpell() {
 						},
 					},
 
-					NumberOfTicks:    numTicks,
-					TickLength:       tickLength,
-					BonusCoefficient: spellCoef,
+					NumberOfTicks:     numTicks,
+					TickLength:        tickLength,
+					DurationRemainder: durationRemainder,
+					BonusCoefficient:  spellCoef,
 
 					OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
 						dot.Snapshot(target, baseDamage, isRollover)

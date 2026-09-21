@@ -54,6 +54,7 @@ wowsimsod*.h
 # Python bytecode from the talent import tooling.
 __pycache__/
 *.pyc
+.playwright-mcp/
 tools/data_watch/.cache/
 
 # Wrangler local state for the uploads worker: miniflare caches and sqlite, not source.

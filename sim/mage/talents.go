@@ -256,6 +256,7 @@ func (mage *Mage) applyMissileBarrage() {
 	if !mage.Talents.MissileBarrage {
 		return
 	}
+	tierFrostfireChance := core.TernaryFloat64(mage.HasSetBonus(ItemSetManaflareRegalia, 5), .10, 0)
 
 	var arcaneMissiles []*core.Spell
 	mage.OnSpellRegistered(func(spell *core.Spell) {
@@ -296,10 +297,13 @@ func (mage *Mage) applyMissileBarrage() {
 			switch spell.SpellCode {
 			case SpellCode_MageArcaneBlast:
 				procChance = .40
-			case SpellCode_MageFireball, SpellCode_MageFrostbolt:
+			case SpellCode_MageFireball, SpellCode_MageFrostbolt, SpellCode_MageFrostfireBolt:
 				procChance = .20
 			default:
 				return
+			}
+			if spell.SpellCode == SpellCode_MageFrostfireBolt {
+				procChance += tierFrostfireChance
 			}
 
 			if sim.Proc(procChance, "Missile Barrage") {
@@ -477,14 +481,14 @@ func (mage *Mage) applyMasterOfElements() {
 	})
 }
 
-// Hot Streak shaves cast time off Pyroblast rather than making it instant, so the stacks are
-// worth holding. Frostfire Bolt is named in the tooltip but has no Classic spell to attach to.
+// Hot Streak shaves cast time off Pyroblast rather than making it instant,
+// so the stacks are worth holding.
 func (mage *Mage) applyHotStreak() {
 	if !mage.Talents.HotStreak {
 		return
 	}
 
-	triggerSpellCodes := []int32{SpellCode_MageFireball, SpellCode_MageFireBlast, SpellCode_MageScorch}
+	triggerSpellCodes := []int32{SpellCode_MageFireball, SpellCode_MageFireBlast, SpellCode_MageScorch, SpellCode_MageFrostfireBolt}
 
 	var pyroblasts []*core.Spell
 	mage.OnSpellRegistered(func(spell *core.Spell) {
@@ -546,6 +550,7 @@ func (mage *Mage) registerCombustionCD() {
 
 	numCrits := 0
 	critPerStack := 10.0 * core.SpellCritRatingPerCritChance
+	tierFrostfireCrit := core.TernaryFloat64(mage.HasSetBonus(ItemSetManaflareRegalia, 5), 10*core.SpellCritRatingPerCritChance, 0)
 
 	mage.CombustionAura = mage.RegisterAura(core.Aura{
 		Label:     "Combustion",
@@ -554,8 +559,18 @@ func (mage *Mage) registerCombustionCD() {
 		MaxStacks: 20,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
 			numCrits = 0
+			for _, spell := range fireSpells {
+				if spell.SpellCode == SpellCode_MageFrostfireBolt {
+					spell.BonusCritRating += tierFrostfireCrit
+				}
+			}
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
+			for _, spell := range fireSpells {
+				if spell.SpellCode == SpellCode_MageFrostfireBolt {
+					spell.BonusCritRating -= tierFrostfireCrit
+				}
+			}
 			cd.Use(sim)
 			mage.UpdateMajorCooldowns()
 		},
@@ -656,6 +671,7 @@ func (mage *Mage) applyFingersOfFrost() {
 	// scale. Both ranks give Chill effects a 15% chance; the second point buys a second
 	// charge, "treats your next 2 spells cast as if the target were Frozen".
 	procChance := core.TernaryFloat64(mage.Talents.FingersOfFrost > 0, .15, 0)
+	tierFrostfireChance := core.TernaryFloat64(mage.HasSetBonus(ItemSetManaflareRegalia, 5), .10, 0)
 	// Beta client 1.60.1: three ranks, 17/33/50%.
 	shatterCrit := []float64{0, 17, 33, 50}[mage.Talents.Shatter] * core.SpellCritRatingPerCritChance
 
@@ -734,7 +750,11 @@ func (mage *Mage) applyFingersOfFrost() {
 				return
 			}
 
-			if sim.Proc(procChance, "Fingers of Frost") {
+			chance := procChance
+			if spell.SpellCode == SpellCode_MageFrostfireBolt {
+				chance += tierFrostfireChance
+			}
+			if sim.Proc(chance, "Fingers of Frost") {
 				mage.FingersOfFrostAura.Activate(sim)
 				mage.FingersOfFrostAura.SetStacks(sim, mage.FingersOfFrostAura.MaxStacks)
 			}
@@ -767,7 +787,7 @@ func (mage *Mage) applyWintersChill() {
 	})
 
 	mage.WintersChillAura = mage.RegisterAura(core.Aura{
-		Label:    "Winter's Chill",
+		Label:     "Winter's Chill",
 		ActionID:  core.ActionID{SpellID: 28593},
 		Duration:  time.Second * 15,
 		MaxStacks: int32(mage.Talents.WintersChill),

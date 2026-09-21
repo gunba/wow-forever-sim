@@ -401,6 +401,8 @@ type PseudoStats struct {
 	CastSpeedMultiplier   float64
 	MeleeSpeedMultiplier  float64
 	RangedSpeedMultiplier float64
+	// General haste affecting Energy; excludes attack-speed-only effects.
+	EnergyHasteMultiplier float64
 
 	MeleeCritMultiplier float64
 
@@ -512,6 +514,7 @@ func NewPseudoStats() PseudoStats {
 		CastSpeedMultiplier:   1,
 		MeleeSpeedMultiplier:  1,
 		RangedSpeedMultiplier: 1,
+		EnergyHasteMultiplier: 1,
 		SpiritRegenMultiplier: 1,
 
 		MeleeCritMultiplier: 1,

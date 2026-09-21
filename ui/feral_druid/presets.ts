@@ -24,10 +24,7 @@ import { FeralDruid_Options as FeralDruidOptions, FeralDruid_Rotation as FeralDr
 import { SavedTalents } from '../core/proto/ui.js';
 import FeralAPL from './apls/feral.apl.json';
 import SimpleVaelAPL from './apls/simple_vael.apl.json';
-import LaunchGearJSON from './gear_sets/launch.gear.json';
-import P0BISGear from './gear_sets/p0.bis.gear.json';
-import P2BISGear from './gear_sets/p2.bis.gear.json';
-import P2PreBISGear from './gear_sets/p2.pre-bis.gear.json';
+import GearFeralJSON from './gear_sets/forever_feral.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -37,16 +34,10 @@ import P2PreBISGear from './gear_sets/p2.pre-bis.gear.json';
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearLaunch = PresetUtils.makePresetGear('Launch', LaunchGearJSON);
-export const GearP0BIS = PresetUtils.makePresetGear('Pre-BiS', P0BISGear);
-export const GearP2PreBIS = PresetUtils.makePresetGear('P2 Pre-BiS', P2PreBISGear);
-export const GearP2BIS = PresetUtils.makePresetGear('P2 BiS', P2BISGear);
+export const GearFeral = PresetUtils.makePresetGear('Feral', GearFeralJSON, { tooltip: 'Level 60 Forever equipment.' });
 
-export const GearPresets = {
-	[ClassicPhase.Phase2]: [GearLaunch, GearP0BIS, GearP2PreBIS, GearP2BIS],
-};
-
-export const DefaultGear = GearP0BIS;
+export const GearPresets = [GearFeral];
+export const DefaultGear = GearFeral;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets
@@ -77,13 +68,13 @@ export const SIMPLE_ROTATION_DEFAULT = PresetUtils.makePresetSimpleRotation('Sim
 
 export const TalentsFeral = PresetUtils.makePresetTalents('Feral', SavedTalents.create({ talentsString: '-5521002023132213051-05503' }));
 
-export const TalentsFeralCat = PresetUtils.makePresetTalents('Feral Cat 9/35/7', SavedTalents.create({ talentsString: '050022-5500002123032213051-052' }));
+export const TalentsFeralCat = PresetUtils.makePresetTalents('Feral Cat 9/34/8', SavedTalents.create({ talentsString: '050022-3521002023032213041-053' }));
 
 export const TalentPresets = {
 	[ClassicPhase.Phase4]: [TalentsFeral, TalentsFeralCat],
 };
 
-export const DefaultTalents = TalentsFeral;
+export const DefaultTalents = TalentsFeralCat;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Options
@@ -134,3 +125,7 @@ export const OtherDefaults = {
 	profession1: Profession.Engineering,
 	profession2: Profession.Leatherworking,
 };
+
+export const BuildPresets = [
+	PresetUtils.makePresetBuild('Feral', { gear: GearFeral, talents: TalentsFeralCat, rotation: APLFeral, options: DefaultOptions, distance: 5 }),
+];

@@ -34,8 +34,28 @@ func (dot *Dot) critCheck(sim *Simulation, target *Unit, attackTable *AttackTabl
 const ForeverHealingToSpellDamage = 1.0 / 3.0
 
 func (character *Character) addHealingSpellDamage(equipStats stats.Stats) stats.Stats {
-	equipStats[stats.SpellDamage] += equipStats[stats.HealingPower] * ForeverHealingToSpellDamage
+	// Beta vendor items already spell out both values. Only fill the missing
+	// damage component of a legacy healing-only record.
+	if equipStats[stats.SpellDamage] == 0 {
+		equipStats[stats.SpellDamage] = equipStats[stats.HealingPower] * ForeverHealingToSpellDamage
+	}
 	return equipStats
+}
+
+func (character *Character) itemStats(item Item, includeEnchant bool) stats.Stats {
+	parts := []stats.Stats{item.Stats, item.RandomSuffix.Stats}
+	if includeEnchant {
+		parts = append(parts, item.Enchant.Stats)
+	}
+	var total stats.Stats
+	for _, part := range parts {
+		if character.Env.IsForever() {
+			part = character.addHealingSpellDamage(part)
+			part = character.unifyEquipHitAndCrit(part)
+		}
+		total = total.Add(part)
+	}
+	return total
 }
 
 // Forever pays out hit and critical strike from gear against every kind of attack

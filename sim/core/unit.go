@@ -284,6 +284,7 @@ func (unit *Unit) processDynamicBonus(sim *Simulation, bonus stats.Stats) {
 		unit.UpdateManaRegenRates()
 	}
 	if bonus[stats.MeleeHaste] != 0 {
+		unit.updateEnergyRegenHaste(sim)
 		unit.AutoAttacks.UpdateSwingTimers(sim)
 	}
 	if bonus[stats.SpellHaste] != 0 {

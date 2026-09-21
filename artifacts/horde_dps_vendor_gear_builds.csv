@@ -1,0 +1,24 @@
+build,class,talents,apl,gear,optimization
+Balance Moonkin 38/5/8,Druid,5532220115301341-05-005003,launch,launch,Heart of the Wild 5; Improved Starfire 3/Moonfury 4; Destroyer two-hand mace vendor weapon; weapon-table physical hit cap; no expertise normalization
+Feral Cat 6/35/10,Druid,020022-5500002123032213051-055,feral,launch,Moonglow 2/Naturalist 5; Pulverizer two-hand mace vendor weapon; Cat talents/APL; weapon-table physical hit cap; no expertise normalization
+Elemental 31/6/14,Shaman,2505301500123031-0500001-053050001,default,launch,Spellblade plus Tome vendor weapons; Elemental talents; rejected Fire Nova alternatives; weapon-table physical hit cap; no expertise normalization
+Stormcaller 28/23/0,Shaman,050433150010303-055030030004102,default,launch,Spellblade plus Tome vendor weapons; caster APL; rejected Fire Nova alternatives; weapon-table physical hit cap; no expertise normalization
+Enhancement 16/35/0,Shaman,05023015-055030030205112251,default,launch,Enhancement talents and Flame Shock timing; weapon-table physical hit cap; no expertise normalization
+Beast Mastery 35/16/0,Hunter,5520001505121251-0050551,p1,launch,Crossbow vendor weapon; Aimed Shot 1.75s and Multi-Shot 0.25s clipping thresholds; weapon-table physical hit cap; no expertise normalization
+Marksmanship P1,Hunter,5023000501-0050550501503051,p1,launch,Crossbow vendor weapon; Aimed Shot 1.75s and Multi-Shot 0.25s clipping thresholds; weapon-table physical hit cap; no expertise normalization
+Survival 0/31/20,Hunter,-005355000050305-500200031000020151,survival,launch,Ranged Weapon Specialization 5/Mortal Shots 5/Barrage 3/Improved Stings 3; Crossbow vendor weapon; Survival APL uses Aimed Shot 1.75s and Multi-Shot 1s; weapon-table physical hit cap; no expertise normalization
+Arcane 35/0/16,Mage,055005023100311531--005500033,forever_arcane,launch,Arcane Missile threshold tuning; Spellblade plus Tome vendor weapons; weapon-table physical hit cap; no expertise normalization
+Fire P1,Mage,0502252000003-23550000130133051-,forever_fire,launch,P1 Fire talents and Fire Blast mana threshold; Spellblade plus Tome vendor weapons; weapon-table physical hit cap; no expertise normalization
+Frost 14/0/37,Mage,050005013--0555003321001301251,forever_frost,launch,Added two points to Frost Channeling; Spellblade plus Tome vendor weapons; weapon-table physical hit cap; no expertise normalization
+Retribution 10/0/41,Paladin,250003--552250312012331321,basic_ret,launch,Consecration mana threshold; weapon-table physical hit cap; no expertise normalization
+Shadow 15/0/36,Priest,005300231303--505120501201300051,p1,launch,Added Forever baseline Devouring Plague rank 6 to the rotation; school-aware hit-cap normalization
+Smite 31/17/3,Priest,515030031305001031-00505023002-003,launch,launch,Rank-8 Smite and Holy Fire mana thresholds; Devouring Plague alternatives rejected; generic hit-cap normalization for Shadow Word: Pain
+Combat Dual-Wield 15/33/3,Rogue,00530310501-32003311201515231,combat_sinister_strike_sweaty,sinister_strike_launch,Combat talents and Sinister Strike rotation; weapon-table physical hit cap; no expertise normalization
+Assassination Mutilate 31/20/0,Rogue,00530310551021051-302303202004,forever_mutilate,backstab_launch,Razor/Razor vendor dagger pair; Mutilate talents/APL; weapon-table physical hit cap; no expertise normalization
+Subtlety Hemo 15/0/36,Rogue,125320101--5320003310013211551,forever_hemorrhage,backstab_launch,Razor/Razor vendor dagger pair preserves Hemo dagger multiplier; weapon-table physical hit cap; no expertise normalization
+Demonic Pact 2/31/18,Warlock,113-0005003221220311351-0550005,forever_pact,launch,Optimized Pact talents; weapon-table physical hit cap; no expertise normalization
+Deep Affliction 35/0/16,Warlock,2535002013521105--0540005002,forever_affliction,launch,"Bane 4/Agonizing Flames 2; Wrack (formerly Drain Hope) is implemented and functional, but this build does not take the talent; weapon-table physical hit cap; no expertise normalization"
+DS/Ruin Pandemic 24/11/16,Warlock,25220010135201-0025003001-0540005002,forever_ds_ruin,launch,Bane 4/Agonizing Flames 2; final Shadowburn replaced by the supported destruction talent allocation; weapon-table physical hit cap; no expertise normalization
+Shadow and Flame 13/11/27,Warlock,25501-0025003001-055025510310000,forever_shadow_and_flame,launch,Agonizing Flames 3/Cataclysm 2 in place of Shadow and Flame; baseline APL retained after rotation tests; weapon-table physical hit cap; no expertise normalization
+Fury P1,Warrior,30305013-050520035150310051,dps_no_reck,launch,P1 Fury talents and dual-wield vendor weapons; weapon-table physical hit cap; no expertise normalization
+Arms 39/12/0,Warrior,32305213132515201-5502,dps_no_reck,arms_launch,Arms baseline talents/APL; weapon-table physical hit cap; no expertise normalization

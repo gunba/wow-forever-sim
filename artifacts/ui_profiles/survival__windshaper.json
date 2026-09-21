@@ -1,0 +1,333 @@
+{
+  "settings": {
+    "iterations": 5000,
+    "fixedRngSeed": "20291727",
+    "ruleset": "RulesetForever",
+    "phase": 1,
+    "faction": "Horde",
+    "showDamageMetrics": true
+  },
+  "raidBuffs": {
+    "giftOfTheWild": "TristateEffectRegular",
+    "powerWordFortitude": "TristateEffectRegular",
+    "bloodPact": "TristateEffectImproved",
+    "strengthOfEarthTotem": "TristateEffectRegular",
+    "graceOfAirTotem": "TristateEffectRegular",
+    "arcaneBrilliance": true,
+    "divineSpirit": true,
+    "battleShout": "TristateEffectRegular",
+    "trueshotAura": true,
+    "leaderOfThePack": true,
+    "moonkinAura": true,
+    "manaSpringTotem": "TristateEffectImproved",
+    "shadowProtection": true,
+    "natureResistanceTotem": true,
+    "frostResistanceAura": true,
+    "frostResistanceTotem": true,
+    "fireResistanceTotem": true,
+    "fireResistanceAura": true,
+    "thorns": "TristateEffectImproved",
+    "devotionAura": "TristateEffectImproved",
+    "retributionAura": "TristateEffectImproved",
+    "sanctityAura": true
+  },
+  "partyBuffs": {},
+  "debuffs": {
+    "judgementOfWisdom": true,
+    "judgementOfLight": true,
+    "judgementOfTheCrusader": "TristateEffectImproved",
+    "faerieFire": true,
+    "curseOfElements": true,
+    "stormstrike": true,
+    "exposeArmor": "TristateEffectRegular",
+    "sunderArmor": true,
+    "curseOfWeakness": "TristateEffectImproved",
+    "curseOfRecklessness": true,
+    "demoralizingRoar": "TristateEffectImproved",
+    "demoralizingShout": "TristateEffectImproved",
+    "thunderClap": "TristateEffectImproved",
+    "insectSwarm": true,
+    "scorpidSting": true,
+    "huntersMark": "TristateEffectRegular"
+  },
+  "tanks": [],
+  "player": {
+    "name": "Survival",
+    "race": "RaceSkyborneWindshaper",
+    "class": "ClassHunter",
+    "equipment": {
+      "items": [
+        {
+          "id": 279253
+        },
+        {
+          "id": 7731
+        },
+        {
+          "id": 19691
+        },
+        {
+          "id": 18511
+        },
+        {
+          "id": 252483
+        },
+        {
+          "id": 19687
+        },
+        {
+          "id": 19157
+        },
+        {
+          "id": 19163
+        },
+        {
+          "id": 15062
+        },
+        {
+          "id": 275618
+        },
+        {
+          "id": 17713
+        },
+        {
+          "id": 7686
+        },
+        {
+          "id": 249469
+        },
+        {
+          "id": 249470
+        },
+        {
+          "id": 279259
+        },
+        {
+          "id": 279259
+        },
+        {
+          "id": 18282
+        }
+      ]
+    },
+    "consumes": {
+      "flask": "FlaskOfSupremePower",
+      "food": "FoodSmokedDesertDumpling",
+      "agilityElixir": "ElixirOfTheMongoose",
+      "manaRegenElixir": "MagebloodPotion",
+      "strengthBuff": "JujuPower",
+      "attackPowerBuff": "JujuMight",
+      "spellPowerBuff": "GreaterArcaneElixir",
+      "mainHandImbue": "Windfury",
+      "offHandImbue": "ElementalSharpeningStone",
+      "defaultPotion": "MajorManaPotion",
+      "defaultConjured": "ConjuredDemonicRune",
+      "petAgilityConsumable": 1,
+      "petStrengthConsumable": 1,
+      "zanzaBuff": "GroundScorpokAssay",
+      "petAttackPowerConsumable": 1
+    },
+    "bonusStats": {
+      "stats": [
+        0.5405405405405408,
+        4.270270270270272,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -0.9000000000000004,
+        0.12162162162162168,
+        0,
+        0,
+        4.378378378378381,
+        -0.9000000000000004,
+        0.12162162162162168,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4.9729729729729755,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "foreverTier1Bonuses": true,
+    "buffs": {
+      "blessingOfKings": true,
+      "blessingOfWisdom": "TristateEffectRegular",
+      "blessingOfMight": "TristateEffectRegular"
+    },
+    "talentsString": "502-0050051-230230230250022151",
+    "profession1": "Engineering",
+    "rotation": {
+      "type": "TypeAPL",
+      "prepullActions": [
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 1299447
+              }
+            }
+          },
+          "doAtValue": {
+            "const": {
+              "val": "-4s"
+            }
+          }
+        },
+        {
+          "action": {
+            "move": {
+              "rangeFromTarget": {
+                "const": {
+                  "val": "5"
+                }
+              }
+            }
+          },
+          "doAtValue": {
+            "const": {
+              "val": "-2s"
+            }
+          }
+        }
+      ],
+      "priorityList": [
+        {
+          "action": {
+            "autocastOtherCooldowns": {}
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 14266,
+                "tag": 3
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 1317257
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 14271
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 14305
+              }
+            }
+          }
+        }
+      ]
+    },
+    "distanceFromTarget": 5,
+    "hunter": {
+      "options": {
+        "ammo": "ThoriumHeadedArrow",
+        "quiverBonus": "Speed15",
+        "petType": "Cat",
+        "petUptime": 1,
+        "petAttackSpeed": "OneTwo"
+      }
+    }
+  },
+  "encounter": {
+    "duration": 300,
+    "executeProportion20": 0.2,
+    "executeProportion25": 0.25,
+    "executeProportion35": 0.35,
+    "targets": [
+      {
+        "level": 63,
+        "stats": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3731,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  }
+}

@@ -30,9 +30,8 @@ func (hunter *Hunter) getAimedShotConfig(rank int, timer *core.Timer) core.Spell
 		},
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
-				GCD: core.GCDDefault,
-				// The client casts 2 sec, down from Classic's 3; the sim keeps its 0.5 sec shot wind-up on top.
-				CastTime: time.Millisecond * 2500,
+				GCD:      core.GCDDefault,
+				CastTime: time.Second * 2,
 			},
 			CD: core.Cooldown{
 				Timer:    timer,
@@ -40,7 +39,6 @@ func (hunter *Hunter) getAimedShotConfig(rank int, timer *core.Timer) core.Spell
 			},
 			ModifyCast: func(sim *core.Simulation, spell *core.Spell, cast *core.Cast) {
 				cast.CastTime = spell.CastTime()
-				hunter.Unit.AutoAttacks.CancelAutoSwing(sim)
 			},
 			IgnoreHaste: true, // Hunter GCD is locked at 1.5s
 			CastTime: func(spell *core.Spell) time.Duration {
@@ -63,7 +61,6 @@ func (hunter *Hunter) getAimedShotConfig(rank int, timer *core.Timer) core.Spell
 				baseDamage
 
 			result := spell.CalcDamage(sim, target, baseDamage, spell.OutcomeRangedHitAndCrit)
-			hunter.Unit.AutoAttacks.EnableAutoSwing(sim)
 			spell.WaitTravelTime(sim, func(s *core.Simulation) {
 				spell.DealDamage(sim, result)
 			})

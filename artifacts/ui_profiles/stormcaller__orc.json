@@ -1,0 +1,452 @@
+{
+  "settings": {
+    "iterations": 5000,
+    "fixedRngSeed": "20291727",
+    "ruleset": "RulesetForever",
+    "phase": 1,
+    "faction": "Horde",
+    "showDamageMetrics": true
+  },
+  "raidBuffs": {
+    "giftOfTheWild": "TristateEffectRegular",
+    "powerWordFortitude": "TristateEffectRegular",
+    "bloodPact": "TristateEffectImproved",
+    "strengthOfEarthTotem": "TristateEffectRegular",
+    "graceOfAirTotem": "TristateEffectRegular",
+    "arcaneBrilliance": true,
+    "divineSpirit": true,
+    "battleShout": "TristateEffectRegular",
+    "trueshotAura": true,
+    "leaderOfThePack": true,
+    "moonkinAura": true,
+    "manaSpringTotem": "TristateEffectImproved",
+    "shadowProtection": true,
+    "natureResistanceTotem": true,
+    "frostResistanceAura": true,
+    "frostResistanceTotem": true,
+    "fireResistanceTotem": true,
+    "fireResistanceAura": true,
+    "thorns": "TristateEffectImproved",
+    "devotionAura": "TristateEffectImproved",
+    "retributionAura": "TristateEffectImproved",
+    "sanctityAura": true
+  },
+  "partyBuffs": {},
+  "debuffs": {
+    "judgementOfWisdom": true,
+    "judgementOfLight": true,
+    "judgementOfTheCrusader": "TristateEffectImproved",
+    "faerieFire": true,
+    "curseOfElements": true,
+    "stormstrike": true,
+    "exposeArmor": "TristateEffectRegular",
+    "sunderArmor": true,
+    "curseOfWeakness": "TristateEffectImproved",
+    "curseOfRecklessness": true,
+    "demoralizingRoar": "TristateEffectImproved",
+    "demoralizingShout": "TristateEffectImproved",
+    "thunderClap": "TristateEffectImproved",
+    "insectSwarm": true,
+    "scorpidSting": true,
+    "huntersMark": "TristateEffectRegular"
+  },
+  "tanks": [],
+  "player": {
+    "name": "Stormcaller",
+    "race": "RaceOrc",
+    "class": "ClassShaman",
+    "equipment": {
+      "items": [
+        {
+          "id": 252604
+        },
+        {
+          "id": 23125
+        },
+        {
+          "id": 19050
+        },
+        {
+          "id": 18510
+        },
+        {
+          "id": 19682
+        },
+        {
+          "id": 254123
+        },
+        {
+          "id": 17721
+        },
+        {
+          "id": 18405
+        },
+        {
+          "id": 252486
+        },
+        {
+          "id": 19684
+        },
+        {
+          "id": 17713
+        },
+        {
+          "id": 9447
+        },
+        {
+          "id": 249469
+        },
+        {
+          "id": 249470
+        },
+        {
+          "id": 22384
+        },
+        {
+          "id": 279262
+        },
+        {
+          "id": 228176
+        }
+      ]
+    },
+    "consumes": {
+      "flask": "FlaskOfSupremePower",
+      "food": "FoodRunnTumTuberSurprise",
+      "manaRegenElixir": "MagebloodPotion",
+      "strengthBuff": "JujuPower",
+      "spellPowerBuff": "GreaterArcaneElixir",
+      "firePowerBuff": "ElixirOfFirepower",
+      "frostPowerBuff": "ElixirOfFrostPower",
+      "mainHandImbue": "BrilliantWizardOil",
+      "defaultPotion": "MajorManaPotion",
+      "defaultConjured": "ConjuredDemonicRune",
+      "zanzaBuff": "CerebralCortexCompound"
+    },
+    "bonusStats": {
+      "stats": [
+        0,
+        0,
+        0,
+        -24.33659638554217,
+        0,
+        -38.212725903614455,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8.1,
+        -1.067394578313253,
+        0,
+        0,
+        0,
+        8.1,
+        -1.067394578313253,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -10.46046686746988,
+        0
+      ]
+    },
+    "foreverTier1Bonuses": true,
+    "buffs": {
+      "blessingOfKings": true,
+      "blessingOfWisdom": "TristateEffectRegular",
+      "blessingOfMight": "TristateEffectRegular"
+    },
+    "talentsString": "550032150010303-055030031004002",
+    "profession1": "Engineering",
+    "rotation": {
+      "type": "TypeAPL",
+      "prepullActions": [
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 15208,
+                "rank": 10
+              }
+            }
+          },
+          "doAtValue": {
+            "const": {
+              "val": "-2s"
+            }
+          }
+        }
+      ],
+      "priorityList": [
+        {
+          "action": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpEq",
+                      "lhs": {
+                        "numberTargets": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "1"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "not": {
+                      "val": {
+                        "dotIsActive": {
+                          "spellId": {
+                            "spellId": 10438,
+                            "rank": 6
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 10438,
+                "rank": 6
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "numberTargets": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "2"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "not": {
+                      "val": {
+                        "dotIsActive": {
+                          "spellId": {
+                            "spellId": 10587,
+                            "rank": 4
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 10587,
+                "rank": 4
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "autocastOtherCooldowns": {}
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "not": {
+                "val": {
+                  "dotIsActive": {
+                    "spellId": {
+                      "spellId": 29228,
+                      "rank": 6
+                    }
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 29228,
+                "rank": 6
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "or": {
+                "vals": [
+                  {
+                    "auraIsActive": {
+                      "auraId": {
+                        "spellId": 16246
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "numberTargets": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "2"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 10605,
+                "rank": 4
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpGe",
+                "lhs": {
+                  "currentMana": {}
+                },
+                "rhs": {
+                  "math": {
+                    "op": "OpMul",
+                    "lhs": {
+                      "remainingTime": {}
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "10"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 15208,
+                "rank": 10
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 915,
+                "rank": 4
+              }
+            }
+          }
+        }
+      ]
+    },
+    "distanceFromTarget": 20,
+    "elementalShaman": {
+      "options": {}
+    }
+  },
+  "encounter": {
+    "duration": 300,
+    "executeProportion20": 0.2,
+    "executeProportion25": 0.25,
+    "executeProportion35": 0.35,
+    "targets": [
+      {
+        "level": 63,
+        "stats": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3731,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  }
+}

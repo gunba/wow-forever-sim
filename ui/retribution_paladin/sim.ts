@@ -78,6 +78,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRetributionPaladin, {
 	displayPseudoStats: [PseudoStat.PseudoStatMeleeSpeedMultiplier],
 
 	defaults: {
+		race: Race.RaceUndead,
 		// Default equipped gear.
 		gear: Presets.DefaultGear.gear,
 		// Default EP weights for sorting gear in the gear picker.
@@ -112,7 +113,6 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRetributionPaladin, {
 		partyBuffs: PartyBuffs.create({}),
 		individualBuffs: Presets.DefaultIndividualBuffs,
 		debuffs: Presets.DefaultDebuffs,
-		race: Race.RaceHuman,
 	},
 
 	// IconInputs to include in the 'Player' section on the settings tab.
@@ -122,11 +122,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRetributionPaladin, {
 	excludeBuffDebuffInputs: [],
 	// Inputs to include in the 'Other' section on the settings tab.
 	otherInputs: {
-		inputs: [
-			OtherInputs.TankAssignment,
-			OtherInputs.InFrontOfTarget,
-			RetributionPaladinInputs.JudgementStopAttack,
-		],
+		inputs: [OtherInputs.TankAssignment, OtherInputs.InFrontOfTarget, RetributionPaladinInputs.JudgementStopAttack],
 	},
 	encounterPicker: {
 		// Whether to include 'Execute Duration (%)' in the 'Encounter' section of the settings tab.
@@ -134,21 +130,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRetributionPaladin, {
 	},
 
 	presets: {
-		rotations: [
-			...Presets.APLPresets[ClassicPhase.Phase4],
-			...Presets.APLPresets[ClassicPhase.Phase3],
-			...Presets.APLPresets[ClassicPhase.Phase2],
-			...Presets.APLPresets[ClassicPhase.Phase1],
-		],
-		// Preset talents that the user can quickly select.
-		talents: [
-			...Presets.TalentPresets[ClassicPhase.Phase4],
-			...Presets.TalentPresets[ClassicPhase.Phase3],
-			...Presets.TalentPresets[ClassicPhase.Phase2],
-			...Presets.TalentPresets[ClassicPhase.Phase1],
-		],
-		// Preset gear configurations that the user can quickly select.
-		gear: [Presets.DefaultGear],
+		talents: Presets.BuildPresets.map(build => build.talents!),
+		rotations: Presets.BuildPresets.map(build => build.rotation!),
+		gear: Presets.GearPresets,
+		builds: Presets.BuildPresets,
 	},
 
 	autoRotation: player => {

@@ -62,7 +62,7 @@ func applyDebuffEffects(target *Unit, targetIdx int, debuffs *proto.Debuffs, rai
 		MakePermanent(CurseOfElementsAura(target))
 	}
 
-	if debuffs.CurseOfShadow {
+	if debuffs.CurseOfShadow && !target.Env.IsForever() {
 		MakePermanent(CurseOfShadowAura(target))
 	}
 
@@ -506,17 +506,25 @@ func JudgementOfTheCrusaderAura(caster *Unit, target *Unit, mult float64, extraB
 func CurseOfElementsAura(target *Unit) *Aura {
 	resistance := 75.0
 	dmgMod := 1.1
+	forever := target.Env != nil && target.Env.IsForever()
+	spellID := int32(11722)
+	schools := []stats.SchoolIndex{stats.SchoolIndexFire, stats.SchoolIndexFrost}
+	if forever {
+		spellID = 1311680
+		schools = []stats.SchoolIndex{stats.SchoolIndexArcane, stats.SchoolIndexFire, stats.SchoolIndexFrost, stats.SchoolIndexHoly, stats.SchoolIndexNature, stats.SchoolIndexShadow}
+	}
 
 	aura := target.GetOrRegisterAura(Aura{
 		Label:    "Curse of Elements",
-		ActionID: ActionID{SpellID: 11722},
+		ActionID: ActionID{SpellID: spellID},
 		Duration: time.Minute * 5,
 	})
-	spellSchoolDamageEffect(aura, stats.SchoolIndexFire, dmgMod, 0.0, false)
-	spellSchoolDamageEffect(aura, stats.SchoolIndexFrost, dmgMod, 0.0, false)
-
-	spellSchoolResistanceEffect(aura, stats.SchoolIndexFire, resistance, 0.0, false)
-	spellSchoolResistanceEffect(aura, stats.SchoolIndexFrost, resistance, 0.0, false)
+	for _, school := range schools {
+		spellSchoolDamageEffect(aura, school, dmgMod, 0.0, false)
+		if school != stats.SchoolIndexHoly {
+			spellSchoolResistanceEffect(aura, school, resistance, 0.0, false)
+		}
+	}
 
 	return aura
 }
@@ -552,13 +560,20 @@ func spellSchoolDamageEffect(aura *Aura, school stats.SchoolIndex, multiplier fl
 }
 
 func spellSchoolResistanceEffect(aura *Aura, school stats.SchoolIndex, amount float64, extraPriority float64, exclusive bool) *ExclusiveEffect {
+	resistanceStat := map[stats.SchoolIndex]stats.Stat{
+		stats.SchoolIndexArcane: stats.ArcaneResistance,
+		stats.SchoolIndexFire:   stats.FireResistance,
+		stats.SchoolIndexFrost:  stats.FrostResistance,
+		stats.SchoolIndexNature: stats.NatureResistance,
+		stats.SchoolIndexShadow: stats.ShadowResistance,
+	}[school]
 	return aura.NewExclusiveEffect("resistance"+strconv.Itoa(int(school)), exclusive, ExclusiveEffect{
 		Priority: amount + extraPriority,
 		OnGain: func(ee *ExclusiveEffect, sim *Simulation) {
-			aura.Unit.AddResistancesDynamic(sim, -amount)
+			aura.Unit.AddStatDynamic(sim, resistanceStat, -amount)
 		},
 		OnExpire: func(ee *ExclusiveEffect, sim *Simulation) {
-			aura.Unit.AddResistancesDynamic(sim, amount)
+			aura.Unit.AddStatDynamic(sim, resistanceStat, amount)
 		},
 	})
 }
@@ -680,6 +695,11 @@ func ExposeArmorAura(target *Unit, improvedEA int32) *Aura {
 	arpen := 1700.0
 
 	arpen *= []float64{1, 1.25, 1.5}[improvedEA]
+	if target.Env != nil && target.Env.IsForever() {
+		// Five combo points at 450 armor each. Forever's talent changes cost
+		// and combo-point refunds, not the armor reduction.
+		arpen = 2250
+	}
 
 	aura := target.GetOrRegisterAura(Aura{
 		Label:    "ExposeArmor",
@@ -703,6 +723,9 @@ func ExposeArmorAura(target *Unit, improvedEA int32) *Aura {
 func CurseOfRecklessnessAura(target *Unit) *Aura {
 	arpen := float64(505)
 	ap := float64(90)
+	if target.Env != nil && target.Env.IsForever() {
+		ap = 0
+	}
 
 	aura := target.GetOrRegisterAura(Aura{
 		Label:    "Curse of Recklessness",

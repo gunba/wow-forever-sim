@@ -1,0 +1,377 @@
+{
+  "settings": {
+    "iterations": 5000,
+    "fixedRngSeed": "20291727",
+    "ruleset": "RulesetForever",
+    "phase": 1,
+    "faction": "Alliance",
+    "showDamageMetrics": true
+  },
+  "raidBuffs": {
+    "giftOfTheWild": "TristateEffectRegular",
+    "powerWordFortitude": "TristateEffectRegular",
+    "bloodPact": "TristateEffectImproved",
+    "strengthOfEarthTotem": "TristateEffectRegular",
+    "graceOfAirTotem": "TristateEffectRegular",
+    "arcaneBrilliance": true,
+    "divineSpirit": true,
+    "battleShout": "TristateEffectRegular",
+    "trueshotAura": true,
+    "leaderOfThePack": true,
+    "moonkinAura": true,
+    "manaSpringTotem": "TristateEffectImproved",
+    "shadowProtection": true,
+    "natureResistanceTotem": true,
+    "frostResistanceAura": true,
+    "frostResistanceTotem": true,
+    "fireResistanceTotem": true,
+    "fireResistanceAura": true,
+    "thorns": "TristateEffectImproved",
+    "devotionAura": "TristateEffectImproved",
+    "retributionAura": "TristateEffectImproved",
+    "sanctityAura": true
+  },
+  "partyBuffs": {},
+  "debuffs": {
+    "judgementOfWisdom": true,
+    "judgementOfLight": true,
+    "judgementOfTheCrusader": "TristateEffectImproved",
+    "faerieFire": true,
+    "curseOfElements": true,
+    "stormstrike": true,
+    "exposeArmor": "TristateEffectRegular",
+    "sunderArmor": true,
+    "curseOfWeakness": "TristateEffectImproved",
+    "curseOfRecklessness": true,
+    "demoralizingRoar": "TristateEffectImproved",
+    "demoralizingShout": "TristateEffectImproved",
+    "thunderClap": "TristateEffectImproved",
+    "insectSwarm": true,
+    "scorpidSting": true,
+    "huntersMark": "TristateEffectRegular"
+  },
+  "tanks": [],
+  "player": {
+    "name": "Feral",
+    "race": "RaceSkyborneHighOrder",
+    "class": "ClassDruid",
+    "equipment": {
+      "items": [
+        {
+          "id": 279253
+        },
+        {
+          "id": 7731
+        },
+        {
+          "id": 19058
+        },
+        {
+          "id": 18511
+        },
+        {
+          "id": 252483
+        },
+        {
+          "id": 19687
+        },
+        {
+          "id": 19049
+        },
+        {
+          "id": 19044
+        },
+        {
+          "id": 15065
+        },
+        {
+          "id": 18506
+        },
+        {
+          "id": 17713
+        },
+        {
+          "id": 7686
+        },
+        {
+          "id": 249469
+        },
+        {
+          "id": 249470
+        },
+        {
+          "id": 250608
+        },
+        {},
+        {
+          "id": 220606
+        }
+      ]
+    },
+    "consumes": {
+      "flask": "FlaskOfDistilledWisdom",
+      "food": "FoodGrilledSquid",
+      "agilityElixir": "ElixirOfTheMongoose",
+      "strengthBuff": "JujuPower",
+      "attackPowerBuff": "JujuMight",
+      "defaultPotion": "MajorManaPotion",
+      "defaultConjured": "ConjuredDemonicRune",
+      "dragonBreathChili": true,
+      "zanzaBuff": "GroundScorpokAssay",
+      "sapperExplosive": "SapperGoblinSapper"
+    },
+    "bonusStats": {
+      "stats": [
+        -3.105882352941175,
+        -6.21176470588235,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1.0999999999999996,
+        -0.08088235294117643,
+        0,
+        0,
+        -1.0999999999999996,
+        1.0999999999999996,
+        -0.08088235294117643,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1.0999999999999996,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "foreverTier1Bonuses": true,
+    "buffs": {
+      "blessingOfKings": true,
+      "blessingOfWisdom": "TristateEffectRegular",
+      "blessingOfMight": "TristateEffectRegular"
+    },
+    "talentsString": "050022-3521002023032213041-053",
+    "profession1": "Engineering",
+    "rotation": {
+      "type": "TypeAPL",
+      "priorityList": [
+        {
+          "action": {
+            "autocastOtherCooldowns": {}
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpLe",
+                "lhs": {
+                  "currentEnergy": {}
+                },
+                "rhs": {
+                  "const": {
+                    "val": "40"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 9846
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpLe",
+                      "lhs": {
+                        "remainingTime": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "4s"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "currentComboPoints": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "3"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 31018
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "currentComboPoints": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "4"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "not": {
+                      "val": {
+                        "dotIsActive": {
+                          "spellId": {
+                            "spellId": 9896
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "remainingTime": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "8s"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 9896
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 9830
+              }
+            }
+          }
+        }
+      ]
+    },
+    "distanceFromTarget": 5,
+    "feralDruid": {
+      "options": {
+        "latencyMs": 100
+      }
+    }
+  },
+  "encounter": {
+    "duration": 300,
+    "executeProportion20": 0.2,
+    "executeProportion25": 0.25,
+    "executeProportion35": 0.35,
+    "targets": [
+      {
+        "level": 63,
+        "stats": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3731,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  }
+}

@@ -125,13 +125,17 @@ func (druid *Druid) AddRaidBuffs(raidBuffs *proto.RaidBuffs) {
 		raidBuffs.GiftOfTheWild = proto.TristateEffect_TristateEffectImproved
 	}
 
-	// TODO: These should really be aura attached to the actual forms
+}
+
+func (druid *Druid) AddPartyBuffs(partyBuffs *proto.PartyBuffs) {
+	// These auras affect the druid's five-player subgroup in Forever. Keep
+	// them on PartyBuffs rather than promoting them to raid-wide effects.
 	if druid.InForm(Moonkin) {
-		raidBuffs.MoonkinAura = true
+		partyBuffs.MoonkinAura = true
 	}
 
 	if druid.InForm(Cat|Bear) && druid.Talents.LeaderOfThePack {
-		raidBuffs.LeaderOfThePack = true
+		partyBuffs.LeaderOfThePack = true
 	}
 }
 

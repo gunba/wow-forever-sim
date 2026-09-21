@@ -1,0 +1,1510 @@
+{
+  "schemaVersion": 1,
+  "powerTypes": [
+    {
+      "build": "1.60.1.69893",
+      "source": "https://wago.tools/db2/PowerType/csv?build=1.60.1.69893",
+      "record": {
+        "NameGlobalStringTag": "ENERGY",
+        "CostGlobalStringTag": "ENERGY_COST",
+        "ID": "4",
+        "PowerTypeEnum": "3",
+        "MinPower": "0",
+        "MaxBasePower": "100",
+        "CenterPower": "0",
+        "DefaultPower": "100",
+        "DisplayModifier": "1",
+        "RegenInterruptTimeMS": "0",
+        "RegenPeace": "10",
+        "RegenCombat": "10",
+        "Flags": "29696"
+      }
+    },
+    {
+      "build": "1.60.1.69913",
+      "source": "https://wago.tools/db2/PowerType/csv?build=1.60.1.69913",
+      "record": {
+        "NameGlobalStringTag": "ENERGY",
+        "CostGlobalStringTag": "ENERGY_COST",
+        "ID": "4",
+        "PowerTypeEnum": "3",
+        "MinPower": "0",
+        "MaxBasePower": "100",
+        "CenterPower": "0",
+        "DefaultPower": "100",
+        "DisplayModifier": "1",
+        "RegenInterruptTimeMS": "0",
+        "RegenPeace": "10",
+        "RegenCombat": "10",
+        "Flags": "29696"
+      }
+    },
+    {
+      "build": "1.15.9.69722",
+      "source": "https://wago.tools/db2/PowerType/csv?build=1.15.9.69722",
+      "record": {
+        "NameGlobalStringTag": "ENERGY",
+        "CostGlobalStringTag": "ENERGY_COST",
+        "ID": "4",
+        "PowerTypeEnum": "3",
+        "MinPower": "0",
+        "MaxBasePower": "100",
+        "CenterPower": "0",
+        "DefaultPower": "100",
+        "DisplayModifier": "1",
+        "RegenInterruptTimeMS": "0",
+        "RegenPeace": "10",
+        "RegenCombat": "10",
+        "Flags": "29696"
+      }
+    }
+  ],
+  "spellBuild": "1.60.1.69893",
+  "spells": [
+    {
+      "id": 9830,
+      "name": "Shred",
+      "rank": "Rank 5",
+      "level": 54,
+      "castTimeMs": 0,
+      "durationMs": 0,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 1000,
+      "cost": [
+        {
+          "power": "energy",
+          "flat": 60,
+          "pctOfBase": 0
+        }
+      ],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 58,
+          "aura": 0,
+          "low": 80,
+          "high": 80,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 1,
+          "effect": 31,
+          "aura": 0,
+          "low": 155,
+          "high": 155,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 2,
+          "effect": 30,
+          "aura": 0,
+          "low": 1,
+          "high": 1,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 4
+        }
+      ],
+      "description": "Shred the target, causing $s2% damage plus 180 to the target.  Must be behind the target.  Awards $s3 combo $lpoint:points;."
+    },
+    {
+      "id": 9850,
+      "name": "Claw",
+      "rank": "Rank 5",
+      "level": 58,
+      "castTimeMs": 0,
+      "durationMs": 0,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 1000,
+      "cost": [
+        {
+          "power": "energy",
+          "flat": 45,
+          "pctOfBase": 0
+        }
+      ],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 58,
+          "aura": 0,
+          "low": 115,
+          "high": 115,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 1,
+          "effect": 31,
+          "aura": 0,
+          "low": 110,
+          "high": 110,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 2,
+          "effect": 30,
+          "aura": 0,
+          "low": 1,
+          "high": 1,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 4
+        }
+      ],
+      "description": "Claw the enemy for $s2% normal damage plus $s1. Awards $s3 combo $lpoint:points;."
+    },
+    {
+      "id": 9904,
+      "name": "Rake",
+      "rank": "Rank 4",
+      "level": 54,
+      "castTimeMs": 0,
+      "durationMs": 9000,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 1000,
+      "cost": [
+        {
+          "power": "energy",
+          "flat": 40,
+          "pctOfBase": 0
+        }
+      ],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 2,
+          "aura": 0,
+          "low": 61,
+          "high": 61,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 1,
+          "effect": 6,
+          "aura": 3,
+          "low": 34,
+          "high": 34,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 3000,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0,
+          "ticks": 3
+        },
+        {
+          "index": 2,
+          "effect": 30,
+          "aura": 0,
+          "low": 1,
+          "high": 1,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 4
+        }
+      ],
+      "description": "Rake the target for $s1 damage and an additional $o2 damage over $d.  Awards $s3 combo $lpoint:points;."
+    },
+    {
+      "id": 9896,
+      "name": "Rip",
+      "rank": "Rank 6",
+      "level": 60,
+      "castTimeMs": 0,
+      "durationMs": 12000,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 1000,
+      "cost": [
+        {
+          "power": "energy",
+          "flat": 30,
+          "pctOfBase": 0
+        },
+        {
+          "power": "4",
+          "flat": 1,
+          "pctOfBase": 0
+        }
+      ],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 6,
+          "aura": 3,
+          "low": 15,
+          "high": 15,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 25.5,
+          "periodMs": 2000,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0,
+          "ticks": 6
+        },
+        {
+          "index": 1,
+          "effect": 6,
+          "aura": 4,
+          "low": 0,
+          "high": 0,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        }
+      ],
+      "description": "Finishing move that causes damage over time.  Damage increases per combo point and by your Attack Power:\n   1 point  : ${6*($m1+$b1)} damage over $d.\n   2 points: ${6*($m1+2*$b1)} damage over $d.\n   3 points: ${6*($m1+3*$b1)} damage over $d.\n   4 points: ${6*($m1+4*$b1)} damage over $d.\n   5 points: ${6*($m1+5*$b1)} damage over $d.\n"
+    },
+    {
+      "id": 31018,
+      "name": "Ferocious Bite",
+      "rank": "Rank 5",
+      "level": 60,
+      "castTimeMs": 0,
+      "durationMs": 0,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 1000,
+      "cost": [
+        {
+          "power": "energy",
+          "flat": 35,
+          "pctOfBase": 0
+        },
+        {
+          "power": "4",
+          "flat": 1,
+          "pctOfBase": 0
+        }
+      ],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 2,
+          "aura": 0,
+          "low": 52,
+          "high": 112,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 147,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 1,
+          "effect": 3,
+          "aura": 0,
+          "low": 270,
+          "high": 270,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        }
+      ],
+      "description": "Finishing move that causes damage per combo point and converts each extra point of energy into ${$m2/100}.1 additional damage.  Damage is increased by your Attack Power.\n   1 point  : 199-259 damage\n   2 points: 346-406 damage\n   3 points: 493-553 damage\n   4 points: 640-700 damage\n   5 points: 787-847 damage"
+    },
+    {
+      "id": 5217,
+      "name": "Tiger's Fury",
+      "rank": "",
+      "level": 24,
+      "castTimeMs": 0,
+      "durationMs": 6000,
+      "cooldownMs": 30000,
+      "categoryCooldownMs": 0,
+      "gcdMs": 0,
+      "cost": [],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 6,
+          "aura": 4,
+          "low": 15,
+          "high": 15,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        }
+      ],
+      "description": "$?a768[|CFFFFFFFFRequires Cat Form|R][|CFFFF2020Requires Cat Form|R]\nIncreases Physical damage done by $s1% for $d$?s417046[, and instantly grants $417046s1 Energy][]."
+    },
+    {
+      "id": 1312152,
+      "name": "Tiger's Fury",
+      "rank": "",
+      "level": 1,
+      "castTimeMs": 0,
+      "durationMs": -1,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 0,
+      "cost": [],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 6,
+          "aura": 79,
+          "low": 15,
+          "high": 15,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 1
+        }
+      ],
+      "description": ""
+    },
+    {
+      "id": 417046,
+      "name": "King of the Jungle",
+      "rank": "",
+      "level": 1,
+      "castTimeMs": 0,
+      "durationMs": 0,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 0,
+      "cost": [],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 6,
+          "aura": 4,
+          "low": 60,
+          "high": 60,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 1,
+          "effect": 6,
+          "aura": 4,
+          "low": 15,
+          "high": 15,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        }
+      ],
+      "description": "Tiger's Fury now instantly grants you $s1 Energy."
+    },
+    {
+      "id": 417045,
+      "name": "Tiger's Fury",
+      "rank": "",
+      "level": 1,
+      "castTimeMs": 0,
+      "durationMs": 0,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 0,
+      "cost": [],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 30,
+          "aura": 0,
+          "low": 60,
+          "high": 60,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 3
+        }
+      ],
+      "description": "Instantly grants you Energy."
+    },
+    {
+      "id": 11294,
+      "name": "Sinister Strike",
+      "rank": "Rank 8",
+      "level": 54,
+      "castTimeMs": 0,
+      "durationMs": 0,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 1000,
+      "cost": [
+        {
+          "power": "energy",
+          "flat": 45,
+          "pctOfBase": 0
+        }
+      ],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 121,
+          "aura": 0,
+          "low": 68,
+          "high": 68,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 1,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 1,
+          "effect": 30,
+          "aura": 0,
+          "low": 1,
+          "high": 1,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 4
+        }
+      ],
+      "description": "An instant strike that causes $s1 damage in addition to your normal weapon damage.  Awards $s2 combo $lpoint:points;."
+    },
+    {
+      "id": 11281,
+      "name": "Backstab",
+      "rank": "Rank 8",
+      "level": 60,
+      "castTimeMs": 0,
+      "durationMs": 0,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 1000,
+      "cost": [
+        {
+          "power": "energy",
+          "flat": 60,
+          "pctOfBase": 0
+        }
+      ],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 121,
+          "aura": 0,
+          "low": 140,
+          "high": 140,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 1,
+          "effect": 31,
+          "aura": 0,
+          "low": 150,
+          "high": 150,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 2,
+          "effect": 30,
+          "aura": 0,
+          "low": 1,
+          "high": 1,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 4
+        }
+      ],
+      "description": "Backstab the target, causing $s2% weapon damage plus $s1 to the target.  Must be behind the target.  Requires a dagger in the main hand.  Awards $s3 combo $lpoint:points;."
+    },
+    {
+      "id": 25300,
+      "name": "Backstab",
+      "rank": "Rank 9",
+      "level": 60,
+      "castTimeMs": 0,
+      "durationMs": 0,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 1000,
+      "cost": [
+        {
+          "power": "energy",
+          "flat": 60,
+          "pctOfBase": 0
+        }
+      ],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 121,
+          "aura": 0,
+          "low": 150,
+          "high": 150,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 1,
+          "effect": 31,
+          "aura": 0,
+          "low": 150,
+          "high": 150,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 2,
+          "effect": 30,
+          "aura": 0,
+          "low": 1,
+          "high": 1,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 4
+        }
+      ],
+      "description": "Backstab the target, causing $s2% weapon damage plus $s1 to the target.  Must be behind the target.  Requires a dagger in the main hand.  Awards $s3 combo $lpoint:points;."
+    },
+    {
+      "id": 1241584,
+      "name": "Mutilate",
+      "rank": "Rank 4",
+      "level": 60,
+      "castTimeMs": 0,
+      "durationMs": 0,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 1000,
+      "cost": [
+        {
+          "power": "energy",
+          "flat": 60,
+          "pctOfBase": 0
+        }
+      ],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 30,
+          "aura": 0,
+          "low": 2,
+          "high": 2,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 4
+        },
+        {
+          "index": 1,
+          "effect": 64,
+          "aura": 0,
+          "low": 0,
+          "high": 0,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 1241586,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 2,
+          "effect": 64,
+          "aura": 0,
+          "low": 0,
+          "high": 0,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 1241590,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 3,
+          "effect": 3,
+          "aura": 0,
+          "low": 20,
+          "high": 20,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        }
+      ],
+      "description": "Instantly attacks with both weapons for $1241586s2% weapon damage plus an additional ${$1241586m1*$1241586m2/100} with each weapon. Damage increased by $m4% against Poisoned targets. Awards $m1 Combo $LPoint:Points;."
+    },
+    {
+      "id": 16511,
+      "name": "Hemorrhage",
+      "rank": "",
+      "level": 30,
+      "castTimeMs": 0,
+      "durationMs": 15000,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 1000,
+      "cost": [
+        {
+          "power": "energy",
+          "flat": 35,
+          "pctOfBase": 0
+        }
+      ],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 121,
+          "aura": 0,
+          "low": 0,
+          "high": 0,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 1,
+          "effect": 30,
+          "aura": 0,
+          "low": 1,
+          "high": 1,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 4
+        },
+        {
+          "index": 2,
+          "effect": 6,
+          "aura": 271,
+          "low": 15,
+          "high": 15,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 3,
+          "effect": 31,
+          "aura": 0,
+          "low": 100,
+          "high": 100,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 4,
+          "effect": 3,
+          "aura": 0,
+          "low": 145,
+          "high": 145,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        }
+      ],
+      "description": "An instant strike that deals $m4% weapon damage ($m5% if a Dagger is equipped) and causes the target to take $m3% increased Rupture damage from the Rogue. Lasts $d. Awards $s2 Combo $lPoint:Points;."
+    },
+    {
+      "id": 11300,
+      "name": "Eviscerate",
+      "rank": "Rank 8",
+      "level": 56,
+      "castTimeMs": 0,
+      "durationMs": 0,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 1000,
+      "cost": [
+        {
+          "power": "energy",
+          "flat": 35,
+          "pctOfBase": 0
+        },
+        {
+          "power": "4",
+          "flat": 1,
+          "pctOfBase": 0
+        }
+      ],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 2,
+          "aura": 0,
+          "low": 48,
+          "high": 144,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 151,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 1,
+          "effect": 3,
+          "aura": 0,
+          "low": 0,
+          "high": 0,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        }
+      ],
+      "description": "Finishing move that causes damage per combo point, increased by Attack Power:\n   1 point  : ${$m1+(1*$b1*$<mult>)}-${$M1+(1*$b1*$<mult>)} damage\n   2 points: ${$m1+(2*$b1*$<mult>)}-${$M1+(2*$b1*$<mult>)} damage\n   3 points: ${$m1+(3*$b1*$<mult>)}-${$M1+(3*$b1*$<mult>)} damage\n   4 points: ${$m1+(4*$b1*$<mult>)}-${$M1+(4*$b1*$<mult>)} damage\n   5 points: ${$m1+(5*$b1*$<mult>)}-${$M1+(5*$b1*$<mult>)} damage"
+    },
+    {
+      "id": 31016,
+      "name": "Eviscerate",
+      "rank": "Rank 9",
+      "level": 60,
+      "castTimeMs": 0,
+      "durationMs": 0,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 1000,
+      "cost": [
+        {
+          "power": "energy",
+          "flat": 35,
+          "pctOfBase": 0
+        },
+        {
+          "power": "4",
+          "flat": 1,
+          "pctOfBase": 0
+        }
+      ],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 2,
+          "aura": 0,
+          "low": 54,
+          "high": 162,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 170,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 1,
+          "effect": 3,
+          "aura": 0,
+          "low": 0,
+          "high": 0,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        }
+      ],
+      "description": "Finishing move that causes damage per combo point, increased by Attack Power:\n   1 point  : ${$m1+(1*$b1*$<mult>)}-${$M1+(1*$b1*$<mult>)} damage\n   2 points: ${$m1+(2*$b1*$<mult>)}-${$M1+(2*$b1*$<mult>)} damage\n   3 points: ${$m1+(3*$b1*$<mult>)}-${$M1+(3*$b1*$<mult>)} damage\n   4 points: ${$m1+(4*$b1*$<mult>)}-${$M1+(4*$b1*$<mult>)} damage\n   5 points: ${$m1+(5*$b1*$<mult>)}-${$M1+(5*$b1*$<mult>)} damage"
+    },
+    {
+      "id": 6774,
+      "name": "Slice and Dice",
+      "rank": "Rank 2",
+      "level": 42,
+      "castTimeMs": 0,
+      "durationMs": 6000,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 1000,
+      "cost": [
+        {
+          "power": "energy",
+          "flat": 25,
+          "pctOfBase": 0
+        },
+        {
+          "power": "4",
+          "flat": 1,
+          "pctOfBase": 0
+        }
+      ],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 3,
+          "aura": 0,
+          "low": 0,
+          "high": 0,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 1,
+          "effect": 6,
+          "aura": 319,
+          "low": 30,
+          "high": 30,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        }
+      ],
+      "description": "Finishing move that increases melee attack speed by $s2%.  Lasts longer per combo point:\n   1 point  : ${9*$<mult>} seconds\n   2 points: ${12*$<mult>} seconds\n   3 points: ${15*$<mult>} seconds\n   4 points: ${18*$<mult>} seconds\n   5 points: ${21*$<mult>} seconds"
+    },
+    {
+      "id": 1310703,
+      "name": "Venom",
+      "rank": "",
+      "level": 40,
+      "castTimeMs": 0,
+      "durationMs": 6000,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 1000,
+      "cost": [
+        {
+          "power": "energy",
+          "flat": 25,
+          "pctOfBase": 0
+        },
+        {
+          "power": "4",
+          "flat": 1,
+          "pctOfBase": 0
+        }
+      ],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 3,
+          "aura": 0,
+          "low": 0,
+          "high": 0,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 1,
+          "effect": 6,
+          "aura": 108,
+          "low": 30,
+          "high": 30,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 2,
+          "effect": 6,
+          "aura": 108,
+          "low": 30,
+          "high": 30,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 22
+        },
+        {
+          "index": 3,
+          "effect": 6,
+          "aura": 107,
+          "low": 10,
+          "high": 10,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 18
+        }
+      ],
+      "description": "Finishing move that increases the damage of your Poisons by $m2% and your chance to apply Poisons by $m4%.  Lasts longer per combo point:\n   1 point  : 9 seconds\n   2 points: 12 seconds\n   3 points: 15 seconds\n   4 points: 18 seconds\n   5 points: 21 seconds"
+    },
+    {
+      "id": 11275,
+      "name": "Rupture",
+      "rank": "Rank 6",
+      "level": 60,
+      "castTimeMs": 0,
+      "durationMs": 6000,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 1000,
+      "cost": [
+        {
+          "power": "energy",
+          "flat": 25,
+          "pctOfBase": 0
+        },
+        {
+          "power": "4",
+          "flat": 1,
+          "pctOfBase": 0
+        }
+      ],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 6,
+          "aura": 3,
+          "low": 35,
+          "high": 35,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 4.73,
+          "periodMs": 2000,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0,
+          "ticks": 3
+        },
+        {
+          "index": 1,
+          "effect": 3,
+          "aura": 0,
+          "low": 0,
+          "high": 0,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        },
+        {
+          "index": 2,
+          "effect": 6,
+          "aura": 4,
+          "low": 0,
+          "high": 0,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        }
+      ],
+      "description": "Finishing move that causes damage over time, increased by your Attack Power.  Lasts longer per combo point:\n   1 point  : ${($m1+$b1)*4} damage over 8 secs\n   2 points: ${($m1+$b1*2)*5} damage over 10 secs\n   3 points: ${($m1+$b1*3)*6} damage over 12 secs\n   4 points: ${($m1+$b1*4)*7} damage over 14 secs\n   5 points: ${($m1+$b1*5)*8} damage over 16 secs"
+    },
+    {
+      "id": 13750,
+      "name": "Adrenaline Rush",
+      "rank": "",
+      "level": 0,
+      "castTimeMs": 0,
+      "durationMs": 15000,
+      "cooldownMs": 300000,
+      "categoryCooldownMs": 0,
+      "gcdMs": 1000,
+      "cost": [
+        {
+          "power": "energy",
+          "flat": 0,
+          "pctOfBase": 0
+        }
+      ],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 6,
+          "aura": 110,
+          "low": 100,
+          "high": 100,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 3
+        }
+      ],
+      "description": "Increases your Energy regeneration rate by $s1% for $d."
+    },
+    {
+      "id": 14179,
+      "name": "Relentless Strikes",
+      "rank": "",
+      "level": 0,
+      "castTimeMs": 0,
+      "durationMs": 0,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 0,
+      "cost": [],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 6,
+          "aura": 109,
+          "low": 0,
+          "high": 0,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 20,
+          "periodMs": 0,
+          "triggerSpell": 14181,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        }
+      ],
+      "description": "Your finishing moves have a $m1% chance per Combo Point to restore $14181s1 Energy."
+    },
+    {
+      "id": 14181,
+      "name": "Relentless Strikes Effect",
+      "rank": "",
+      "level": 0,
+      "castTimeMs": 0,
+      "durationMs": 0,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 0,
+      "cost": [],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 3,
+          "aura": 0,
+          "low": 25,
+          "high": 25,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        }
+      ],
+      "description": "$s1 Energy restored."
+    },
+    {
+      "id": 14983,
+      "name": "Vigor",
+      "rank": "",
+      "level": 0,
+      "castTimeMs": 0,
+      "durationMs": 0,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 0,
+      "cost": [],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 6,
+          "aura": 35,
+          "low": 10,
+          "high": 10,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 3
+        }
+      ],
+      "description": "Increases your maximum Energy by $s1."
+    },
+    {
+      "id": 1310711,
+      "name": "Flawless Execution",
+      "rank": "",
+      "level": 0,
+      "castTimeMs": 0,
+      "durationMs": 0,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 0,
+      "cost": [
+        {
+          "power": "energy",
+          "flat": 0,
+          "pctOfBase": 0
+        }
+      ],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 6,
+          "aura": 107,
+          "low": -10,
+          "high": -10,
+          "spCoefficient": 1,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 14
+        }
+      ],
+      "description": "Reduces the Energy cost of your Eviscerate ability by $m1."
+    },
+    {
+      "id": 14186,
+      "name": "Seal Fate",
+      "rank": "",
+      "level": 1,
+      "castTimeMs": 0,
+      "durationMs": 0,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 0,
+      "cost": [],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 6,
+          "aura": 4,
+          "low": 0,
+          "high": 0,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        }
+      ],
+      "description": "Your critical strikes from abilities that add Combo Points have a $m1% chance to add an additional Combo Point."
+    },
+    {
+      "id": 14189,
+      "name": "Seal Fate",
+      "rank": "",
+      "level": 1,
+      "castTimeMs": 0,
+      "durationMs": 0,
+      "cooldownMs": 0,
+      "categoryCooldownMs": 0,
+      "gcdMs": 0,
+      "cost": [],
+      "effects": [
+        {
+          "index": 0,
+          "effect": 30,
+          "aura": 0,
+          "low": 1,
+          "high": 1,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 4
+        },
+        {
+          "index": 1,
+          "effect": 3,
+          "aura": 0,
+          "low": 0,
+          "high": 0,
+          "spCoefficient": 0,
+          "apCoefficient": 0,
+          "perLevel": 0,
+          "perComboPoint": 0,
+          "periodMs": 0,
+          "triggerSpell": 0,
+          "chainTargets": 0,
+          "radius": 0,
+          "miscValue": 0
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "procOptions": [
+    {
+      "ID": "126847",
+      "DifficultyID": "0",
+      "CumulativeAura": "0",
+      "ProcCategoryRecovery": "500",
+      "ProcChance": "100",
+      "ProcCharges": "0",
+      "SpellProcsPerMinuteID": "0",
+      "ProcTypeMask_0": "87376",
+      "ProcTypeMask_1": "0",
+      "SpellID": "14186"
+    }
+  ],
+  "limitations": [
+    "PowerType specifies base regeneration, not server update cadence or haste behavior.",
+    "Identical flags across Classic and Forever do not establish identical server mechanics.",
+    "SpellPower costs are before talents, sets, temporary discounts and miss refunds."
+  ]
+}

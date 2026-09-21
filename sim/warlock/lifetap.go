@@ -19,6 +19,7 @@ func (warlock *Warlock) getLifeTapBaseConfig(rank int) core.SpellConfig {
 
 	actionID := core.ActionID{SpellID: spellId}
 	petManaShare := 0.5 * float64(warlock.Talents.DemonicEnergies)
+	tierManaMultiplier := core.TernaryFloat64(warlock.HasSetBonus(ItemSetDemonheartRaiment, 5), 1.2, 1)
 
 	manaMetrics := warlock.NewManaMetrics(actionID)
 	for _, pet := range warlock.BasePets {
@@ -48,7 +49,8 @@ func (warlock *Warlock) getLifeTapBaseConfig(rank int) core.SpellConfig {
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			result := spell.CalcDamage(sim, spell.Unit, baseDamage, spell.OutcomeAlwaysHit)
-			restore := result.Damage
+			// Tier 1 increases mana returned, not the damage/health cost.
+			restore := result.Damage * tierManaMultiplier
 
 			if warlock.IsTanking() {
 				spell.DealDamage(sim, result)

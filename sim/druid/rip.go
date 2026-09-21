@@ -56,6 +56,13 @@ var ripRanks = []RipRankInfo{
 
 const RipTicks int32 = 6
 
+func (druid *Druid) RipTickCount() int32 {
+	if druid.Env.IsForever() && druid.Ranged().ID == IdolOfTheDream {
+		return RipTicks + 1 // Spell 446212: two additional seconds, unchanged tick damage.
+	}
+	return RipTicks
+}
+
 func (druid *Druid) registerRipSpell() {
 	// Add highest available Rip rank for level.
 	for rank := len(ripRanks) - 1; rank >= 0; rank-- {
@@ -99,7 +106,7 @@ func (druid *Druid) newRipSpellConfig(ripRank RipRankInfo) core.SpellConfig {
 			Aura: core.Aura{
 				Label: "Rip",
 			},
-			NumberOfTicks: RipTicks,
+			NumberOfTicks: druid.RipTickCount(),
 			TickLength:    time.Second * 2,
 
 			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {

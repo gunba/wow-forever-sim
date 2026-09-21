@@ -90,6 +90,7 @@ export interface PresetBuild {
 	encounter?: PresetEncounter;
 	race?: Race;
 	options?: Partial<SpecOptions<any>>;
+	distance?: number;
 }
 
 export interface PresetBuildOptions extends Omit<PresetBuild, 'name'> {}
@@ -227,8 +228,8 @@ export const makePresetEncounter = (name: string, encounter?: PresetEncounter['e
 	};
 };
 
-export const makePresetBuild = (name: string, { gear, talents, rotation, epWeights, encounter, race, options }: PresetBuildOptions): PresetBuild => {
-	return { name, gear, talents, rotation, epWeights, encounter, race, options };
+export const makePresetBuild = (name: string, options: PresetBuildOptions): PresetBuild => {
+	return { name, ...options };
 };
 
 export type SpecCheckWarning = {

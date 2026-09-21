@@ -182,6 +182,7 @@ func main() {
 	leftovers.WriteBinaryAndJson(fmt.Sprintf("%s/leftover_db.bin", dbDir), fmt.Sprintf("%s/leftover_db.json", dbDir))
 
 	ApplySimmableFilters(db)
+	mergeForeverVendorItems(db, fmt.Sprintf("%s/forever_vendor_items.json", inputsDir))
 	for _, enchant := range db.Enchants {
 		if enchant.ItemId != 0 {
 			db.AddItemIcon(enchant.ItemId, itemTooltips)
@@ -239,7 +240,51 @@ func main() {
 	db.MergeNpcs(atlasDBProto.Npcs)
 	db.MergeFactions(atlasDBProto.Factions)
 
+	// Replace the legacy availability pool with current, source-filtered data.
+	// Do this after Classic set/class inference: dungeon sets without an actual
+	// class restriction must not acquire an invented restriction by set name.
+	replaceForeverEquipment(db,
+		fmt.Sprintf("%s/forever_equipment.json", inputsDir),
+		fmt.Sprintf("%s/forever_vendor_items.json", inputsDir))
 	db.WriteBinaryAndJson(fmt.Sprintf("%s/db.bin", dbDir), fmt.Sprintf("%s/db.json", dbDir))
+}
+
+func replaceForeverEquipment(db *database.WowDatabase, catalogPath, vendorPath string) {
+	catalog := database.ReadDatabaseFromJson(tools.ReadFile(catalogPath))
+	vendor := database.ReadDatabaseFromJson(tools.ReadFile(vendorPath))
+	db.Items = make(map[int32]*proto.UIItem)
+	// Catalog records already apply authoritative exports to overlapping items.
+	// Vendor-only records remain available for comparing previous benchmarks.
+	for id, item := range vendor.Items {
+		db.Items[id] = item
+	}
+	for id, item := range catalog.Items {
+		db.Items[id] = item
+		db.ItemIcons[id] = &proto.IconData{Id: id, Name: item.Name, Icon: item.Icon}
+	}
+	fmt.Printf("Forever equipment: %d crafted/dungeon records, %d total including vendor comparisons\n",
+		len(catalog.Items), len(db.Items))
+}
+
+func mergeForeverVendorItems(db *database.WowDatabase, path string) {
+	if _, err := os.Stat(path); err != nil {
+		return
+	}
+
+	vendorDB := database.ReadDatabaseFromJson(tools.ReadFile(path))
+	for _, item := range vendorDB.Items {
+		// These are complete records, not partial overrides. A merge can retain
+		// stale weapon skills and concatenate class restrictions.
+		db.Items[item.Id] = item
+		if item.Icon != "" {
+			db.ItemIcons[item.Id] = &proto.IconData{
+				Id:   item.Id,
+				Name: item.Name,
+				Icon: item.Icon,
+			}
+		}
+	}
+	fmt.Printf("Merged %d Forever PvP vendor items\n", len(vendorDB.Items))
 }
 
 // Filters out entities which shouldn't be included anywhere.
@@ -464,7 +509,7 @@ func GetAllRotationSpellIds() map[string][]int32 {
 			// Every talent at max, so each talent-gated spell registers and its icon makes
 			// it into the database. Not a legal build, and it has to be regenerated from
 			// ui/core/talents/trees/mage.json whenever the tree changes shape.
-			TalentsString: "255225223122311531-23552333132133151-2555323331321531251",
+			TalentsString: "255225223122311531-23552333132133151-2555323331321331251",
 		}, &proto.Player_Mage{Mage: &proto.Mage{Options: &proto.Mage_Options{}}}), nil, nil, nil)},
 		{Name: "shadow", Raid: core.SinglePlayerRaidProto(core.WithSpec(&proto.Player{
 			Class:     proto.Class_ClassPriest,

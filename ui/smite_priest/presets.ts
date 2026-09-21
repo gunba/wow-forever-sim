@@ -19,7 +19,7 @@ import {
 import { SmitePriest_Options as Options } from '../core/proto/priest.js';
 import { SavedTalents } from '../core/proto/ui.js';
 import LaunchAPL from './apls/launch.apl.json';
-import LaunchGearJSON from './gear_sets/launch.gear.json';
+import GearSmiteJSON from './gear_sets/forever_smite.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -29,13 +29,10 @@ import LaunchGearJSON from './gear_sets/launch.gear.json';
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearLaunch = PresetUtils.makePresetGear('Launch', LaunchGearJSON);
+export const GearSmite = PresetUtils.makePresetGear('Smite', GearSmiteJSON, { tooltip: 'Level 60 Forever equipment.' });
 
-export const GearPresets = {
-	[ClassicPhase.Phase1]: [GearLaunch],
-};
-
-export const DefaultGear = GearPresets[ClassicPhase.Phase1][0];
+export const GearPresets = [GearSmite];
+export const DefaultGear = GearSmite;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets
@@ -47,7 +44,7 @@ export const APLPresets = {
 	[ClassicPhase.Phase1]: [APLLaunch],
 };
 
-export const DefaultAPL = APLPresets[ClassicPhase.Phase1][0];
+export const DefaultAPL = APLLaunch;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Talent Presets
@@ -65,7 +62,7 @@ export const TalentPresets = {
 	[ClassicPhase.Phase1]: [TalentsLaunch, TalentsSmite],
 };
 
-export const DefaultTalents = TalentPresets[ClassicPhase.Phase1][0];
+export const DefaultTalents = TalentsSmite;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Options
@@ -105,7 +102,11 @@ export const DefaultDebuffs = Debuffs.create({
 
 export const OtherDefaults = {
 	channelClipDelay: 100,
-	distanceFromTarget: 30,
-	profession1: Profession.Alchemy,
+	distanceFromTarget: 20,
+	profession1: Profession.Engineering,
 	profession2: Profession.Enchanting,
 };
+
+export const BuildPresets = [
+	PresetUtils.makePresetBuild('Smite', { gear: GearSmite, talents: TalentsSmite, rotation: APLLaunch, options: DefaultOptions, distance: 20 }),
+];

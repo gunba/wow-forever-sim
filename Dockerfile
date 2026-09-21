@@ -28,6 +28,9 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | b
 #RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
 #RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
 
-ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
+# Keep the Go toolchain and installed protoc plugin available after the Node
+# path is prepended. Without these entries, login shells used by `make` cannot
+# find `go` or `protoc-gen-go`.
+ENV PATH="/usr/local/go/bin:/go/bin:/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
 
 EXPOSE 8080/tcp

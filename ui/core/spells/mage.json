@@ -1,4 +1,23 @@
 {
+	"401502": {
+		"ability": "Frostfire Bolt",
+		"file": "sim/mage/frostfire_bolt.go",
+		"source": "forever",
+		"note": "Rank 1 at level 40: 92–108 direct damage, growing 1.3 per level through 48; 9 per periodic tick. 205 mana, 3-second cast, 0.814 direct SP coefficient, no periodic SP coefficient. Three ticks, 3 seconds apart. Fire/Frost multischool."
+	},
+	"1237312": {
+		"ability": "Frostfire Bolt",
+		"file": "sim/mage/frostfire_bolt.go",
+		"source": "forever",
+		"note": "Rank 2 at level 50: 168–196 direct damage, growing 1.7 per level through 58; 13 per periodic tick. 285 mana. Uses the same cast, coefficients and periodic timing as rank 1."
+	},
+	"1237313": {
+		"ability": "Frostfire Bolt",
+		"file": "sim/mage/frostfire_bolt.go",
+		"source": "forever",
+		"note": "Beta 1.60.1.69893: rank 3 at level 60, 270–314 direct damage, 0.814 SP coefficient, 19 damage every 3 seconds for 9 seconds with no periodic SP coefficient. 370 mana, 3-second cast, missile speed 24. Improved Fireball, not Improved Frostbolt, reduces its cast time. Direct crits trigger Hot Streak; casts can trigger Missile Barrage. Counts as a Chill effect. Winter's Chill does not grant it crit.",
+		"tooltip": "370 Mana\n3 sec cast\nDeals 270 to 314 Frostfire damage and another 57 over 9 sec. Slows movement by 40%. Counts as Fire and Frost damage and uses the target's lower resistance."
+	},
 	"10": {
 		"ability": "Blizzard",
 		"file": "sim/mage/blizzard.go",
@@ -547,7 +566,7 @@
 		"ability": "Missile Barrage",
 		"file": "sim/mage/talents.go",
 		"foreverId": 400589,
-		"note": "Missile Barrage is a later expansion spell, so the Classic database has no entry for 44404. Beta client 1.60.1.69893 (400588, 400589) confirms 40/20%, -50% channel, -100% cost and the 15 sec duration. Frostfire Bolt, also named, is not in the sim.",
+		"note": "Beta client 1.60.1.69893 (400588, 400589) confirms 40/20%, -50% channel, -100% cost and the 15 sec duration. Frostfire Bolt is included among the 20% triggers. The aura still uses legacy identifier 44404 in the sim.",
 		"source": "forever",
 		"tooltip": "Your Arcane Blast has a 40% chance, and your Fireball and Frostbolt a 20% chance, to grant Missile Barrage.\nYour next Arcane Missiles costs no mana and fires a missile every 0.5 sec instead of every second, halving the channel. Lasts 15 sec."
 	},
@@ -555,7 +574,7 @@
 		"ability": "Hot Streak",
 		"file": "sim/mage/talents.go",
 		"foreverId": 400625,
-		"note": "Hot Streak is a later expansion spell, so the Classic database has no entry for 44445 and the site renders nothing; the 15 sec, 25% and 3 stacks are all Forever's published numbers, and Frostfire Bolt, which the Forever tooltip also names, has no Classic spell so it cannot grant a stack here.",
+		"note": "Beta client spells 400624/400625 confirm 15 sec, 25% and 3 stacks. Direct Frostfire Bolt crits grant stacks, alongside Fireball, Fire Blast and Scorch. The aura still uses legacy identifier 44445 in the sim.",
 		"source": "forever",
 		"tooltip": "Your non-periodic critical strikes with Fireball, Fire Blast and Scorch grant Hot Streak for 15 sec.\nEach stack reduces the cast time of Pyroblast by 25%, stacking up to 3 times."
 	},

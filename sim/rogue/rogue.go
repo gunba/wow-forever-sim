@@ -139,7 +139,12 @@ func (rogue *Rogue) Initialize() {
 	rogue.registerVanishSpell()
 }
 
-func (rogue *Rogue) ApplyEnergyTickMultiplier(multiplier float64) {
+func (rogue *Rogue) ApplyEnergyTickMultiplier(sim *core.Simulation, multiplier float64) {
+	if rogue.Env.IsForever() {
+		// Settle the elapsed fraction at the old rate before Adrenaline Rush
+		// starts or ends, rather than applying the new rate retroactively.
+		rogue.ResetEnergyTick(sim)
+	}
 	rogue.EnergyTickMultiplier += multiplier
 }
 

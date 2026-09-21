@@ -421,10 +421,10 @@ func (rogue *Rogue) registerAdrenalineRushCD() {
 		ActionID: AdrenalineRushActionID,
 		Duration: time.Second * 15,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
-			rogue.ApplyEnergyTickMultiplier(1.0)
+			rogue.ApplyEnergyTickMultiplier(sim, 1.0)
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-			rogue.ApplyEnergyTickMultiplier(-1.0)
+			rogue.ApplyEnergyTickMultiplier(sim, -1.0)
 		},
 	})
 

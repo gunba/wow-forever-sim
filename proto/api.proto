@@ -15,7 +15,7 @@ import "shaman.proto";
 import "warlock.proto";
 import "warrior.proto";
 
-// NextIndex: 49
+// NextIndex: 52
 message Player {
 	// Label used for logging.
 	string name = 1;
@@ -26,6 +26,11 @@ message Player {
 	EquipmentSpec equipment = 5;
 	Consumes consumes = 6;
 	UnitStats bonus_stats = 7;
+	// Applies the role's complete Forever Tier 1 bonuses without requiring its items.
+	bool forever_tier1_bonuses = 50;
+	// Hypothetical equipment sensitivity: item/suffix stats and weapon damage only.
+	// Zero means unchanged. Enchants, speeds, weapon skills and proc effects stay fixed.
+	double equipment_scale = 51;
 
 	bool enable_item_swap = 40;
 	ItemSwap item_swap = 45;

@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core/proto"
+	"github.com/wowsims/classic/sim/core/stats"
 )
 
 type OnComboPointsSpent func(sim *Simulation, spell *Spell, comboPoints int32)
@@ -15,6 +16,11 @@ type OnComboPointsGained func(sim *Simulation)
 // Time between energy ticks.
 const EnergyTickDuration = time.Millisecond * 2020
 const EnergyPerTick = 20.2
+
+// Forever retains 10 energy/sec (PowerType.db2), but beta gameplay uses smooth
+// regeneration. 100 ms is our integration step, not a measured server tick.
+const ForeverEnergyTickDuration = time.Millisecond * 100
+const EnergyPerSecond = 10.0
 
 type energyBar struct {
 	unit *Unit
@@ -42,6 +48,7 @@ type energyBar struct {
 
 	// Multiplies energy regen from ticks.
 	EnergyTickMultiplier float64
+	regenHasteMultiplier float64
 
 	regenMetrics        *ResourceMetrics
 	EnergyRefundMetrics *ResourceMetrics
@@ -54,6 +61,7 @@ func (unit *Unit) EnableEnergyBar(maxEnergy float64) {
 		unit:                 unit,
 		maxEnergy:            max(100, maxEnergy),
 		EnergyTickMultiplier: 1,
+		regenHasteMultiplier: 1,
 		regenMetrics:         unit.NewEnergyMetrics(ActionID{OtherID: proto.OtherAction_OtherActionEnergyRegen}),
 		EnergyRefundMetrics:  unit.NewEnergyMetrics(ActionID{OtherID: proto.OtherAction_OtherActionRefund}),
 	}
@@ -142,6 +150,52 @@ func (eb *energyBar) NextEnergyTickAt() time.Duration {
 	return eb.nextEnergyTick
 }
 
+func (eb *energyBar) smoothEnergyRegen() bool {
+	return eb.unit.Env != nil && eb.unit.Env.IsForever()
+}
+
+func (eb *energyBar) energyTickDuration() time.Duration {
+	if eb.smoothEnergyRegen() {
+		return ForeverEnergyTickDuration
+	}
+	return EnergyTickDuration
+}
+
+func (eb *energyBar) energyPerTick() float64 {
+	return EnergyPerSecond * eb.energyTickDuration().Seconds() * eb.regenHasteMultiplier
+}
+
+func (eb *energyBar) energyHasteMultiplier() float64 {
+	if !eb.smoothEnergyRegen() {
+		return 1
+	}
+	return eb.unit.PseudoStats.EnergyHasteMultiplier *
+		(1 + eb.unit.GetStat(stats.MeleeHaste)/(HasteRatingPerHastePercent*100))
+}
+
+func (unit *Unit) updateEnergyRegenHaste(sim *Simulation) {
+	if !unit.HasEnergyBar() || !unit.smoothEnergyRegen() {
+		return
+	}
+	multiplier := unit.energyHasteMultiplier()
+	if multiplier == unit.regenHasteMultiplier {
+		return
+	}
+	// Settle the partial interval at its old rate before applying the new rate.
+	if unit.nextEnergyTick != 0 && unit.nextEnergyTick != NeverExpires &&
+		sim.CurrentTime >= unit.nextEnergyTick-unit.energyTickDuration() {
+		unit.ResetEnergyTick(sim)
+	}
+	unit.regenHasteMultiplier = multiplier
+}
+
+// Forever assumption: general haste scales Energy. Attack-speed-only effects
+// deliberately do not call this, and Classic regeneration remains unchanged.
+func (unit *Unit) MultiplyEnergyHaste(sim *Simulation, multiplier float64) {
+	unit.PseudoStats.EnergyHasteMultiplier *= multiplier
+	unit.updateEnergyRegenHaste(sim)
+}
+
 func (eb *energyBar) onEnergyGain(sim *Simulation, crossedThreshold bool) {
 	if sim.CurrentTime < 0 {
 		return
@@ -195,14 +249,14 @@ func (eb *energyBar) ComboPoints() int32 {
 
 // Gives an immediate partial energy tick and restarts the tick timer.
 func (eb *energyBar) ResetEnergyTick(sim *Simulation) {
-	timeSinceLastTick := sim.CurrentTime - (eb.NextEnergyTickAt() - EnergyTickDuration)
-	partialTickAmount := (EnergyPerTick * eb.EnergyTickMultiplier) * (float64(timeSinceLastTick) / float64(EnergyTickDuration))
+	tickDuration := eb.energyTickDuration()
+	timeSinceLastTick := sim.CurrentTime - (eb.NextEnergyTickAt() - tickDuration)
+	partialTickAmount := EnergyPerSecond * eb.EnergyTickMultiplier * eb.regenHasteMultiplier * timeSinceLastTick.Seconds()
 
 	crossedThreshold := eb.addEnergyInternal(sim, partialTickAmount, eb.regenMetrics)
-	eb.onEnergyGain(sim, crossedThreshold)
-
-	eb.nextEnergyTick = sim.CurrentTime + EnergyTickDuration
+	eb.nextEnergyTick = sim.CurrentTime + tickDuration
 	sim.RescheduleTask(eb.nextEnergyTick)
+	eb.onEnergyGain(sim, crossedThreshold)
 }
 
 func (eb *energyBar) AddComboPointsIgnoreTarget(sim *Simulation, pointsToAdd int32, metrics *ResourceMetrics) {
@@ -287,10 +341,9 @@ func (eb *energyBar) RunTask(sim *Simulation) time.Duration {
 		return eb.nextEnergyTick
 	}
 
-	crossedThreshold := eb.addEnergyInternal(sim, EnergyPerTick*eb.EnergyTickMultiplier, eb.regenMetrics)
+	crossedThreshold := eb.addEnergyInternal(sim, eb.energyPerTick()*eb.EnergyTickMultiplier, eb.regenMetrics)
+	eb.nextEnergyTick = sim.CurrentTime + eb.energyTickDuration()
 	eb.onEnergyGain(sim, crossedThreshold)
-
-	eb.nextEnergyTick = sim.CurrentTime + EnergyTickDuration
 	return eb.nextEnergyTick
 }
 
@@ -300,6 +353,7 @@ func (eb *energyBar) reset(sim *Simulation) {
 	}
 
 	eb.currentEnergy = eb.maxEnergy
+	eb.regenHasteMultiplier = eb.energyHasteMultiplier()
 	eb.comboPoints = 0
 	eb.comboPointTarget = sim.GetTargetUnit(0)
 
@@ -310,7 +364,11 @@ func (eb *energyBar) reset(sim *Simulation) {
 
 func (eb *energyBar) enable(sim *Simulation, startAt time.Duration) {
 	sim.AddTask(eb)
-	eb.nextEnergyTick = startAt + time.Duration(sim.RandomFloat("Energy Tick")*float64(EnergyTickDuration))
+	if eb.smoothEnergyRegen() {
+		eb.nextEnergyTick = startAt + eb.energyTickDuration()
+	} else {
+		eb.nextEnergyTick = startAt + time.Duration(sim.RandomFloat("Energy Tick")*float64(EnergyTickDuration))
+	}
 	sim.RescheduleTask(eb.nextEnergyTick)
 
 	if eb.cumulativeEnergyDecisionThresholds != nil && sim.Log != nil {

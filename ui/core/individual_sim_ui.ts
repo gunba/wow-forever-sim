@@ -431,6 +431,7 @@ export abstract class IndividualSimUI<SpecType extends Spec> extends SimUI {
 
 			//Special case for Totem of Wrath keeps buff and debuff sync'd
 			this.player.applySharedDefaults(eventID);
+			this.player.setForeverTier1Bonuses(eventID, !tankSpec && !healingSpec);
 			this.player.setRace(eventID, this.individualConfig.defaults.race ?? specToEligibleRaces[this.player.spec][0]);
 			this.player.setGear(eventID, this.sim.db.lookupEquipmentSpec(this.individualConfig.defaults.gear));
 			this.player.setItemSwapGear(eventID, new ItemSwapGear({}));

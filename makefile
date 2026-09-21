@@ -16,7 +16,7 @@ export SITE_BASE
 # The Github repository the UI links to for source, issues, crash reports and releases.
 # Where the site's GitHub links point. The deploy workflow passes the repository it runs in;
 # override it for another fork, e.g. SITE_REPO=someone/else make dist/classic/.dirstamp
-SITE_REPO ?= ElliotWood/Forever
+SITE_REPO ?= gunba/wow-forever-sim
 export SITE_REPO
 
 $(OUT_DIR)/.dirstamp: \

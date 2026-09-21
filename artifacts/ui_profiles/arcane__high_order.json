@@ -1,0 +1,368 @@
+{
+  "settings": {
+    "iterations": 5000,
+    "fixedRngSeed": "20291727",
+    "ruleset": "RulesetForever",
+    "phase": 1,
+    "faction": "Alliance",
+    "showDamageMetrics": true
+  },
+  "raidBuffs": {
+    "giftOfTheWild": "TristateEffectRegular",
+    "powerWordFortitude": "TristateEffectRegular",
+    "bloodPact": "TristateEffectImproved",
+    "strengthOfEarthTotem": "TristateEffectRegular",
+    "graceOfAirTotem": "TristateEffectRegular",
+    "arcaneBrilliance": true,
+    "divineSpirit": true,
+    "battleShout": "TristateEffectRegular",
+    "trueshotAura": true,
+    "leaderOfThePack": true,
+    "moonkinAura": true,
+    "manaSpringTotem": "TristateEffectImproved",
+    "shadowProtection": true,
+    "natureResistanceTotem": true,
+    "frostResistanceAura": true,
+    "frostResistanceTotem": true,
+    "fireResistanceTotem": true,
+    "fireResistanceAura": true,
+    "thorns": "TristateEffectImproved",
+    "devotionAura": "TristateEffectImproved",
+    "retributionAura": "TristateEffectImproved",
+    "sanctityAura": true
+  },
+  "partyBuffs": {},
+  "debuffs": {
+    "judgementOfWisdom": true,
+    "judgementOfLight": true,
+    "judgementOfTheCrusader": "TristateEffectImproved",
+    "faerieFire": true,
+    "curseOfElements": true,
+    "stormstrike": true,
+    "exposeArmor": "TristateEffectRegular",
+    "sunderArmor": true,
+    "curseOfWeakness": "TristateEffectImproved",
+    "curseOfRecklessness": true,
+    "demoralizingRoar": "TristateEffectImproved",
+    "demoralizingShout": "TristateEffectImproved",
+    "thunderClap": "TristateEffectImproved",
+    "insectSwarm": true,
+    "scorpidSting": true,
+    "huntersMark": "TristateEffectRegular"
+  },
+  "tanks": [],
+  "player": {
+    "name": "Arcane",
+    "race": "RaceSkyborneHighOrder",
+    "class": "ClassMage",
+    "equipment": {
+      "items": [
+        {
+          "id": 19999
+        },
+        {
+          "id": 23125
+        },
+        {
+          "id": 19050
+        },
+        {
+          "id": 18510
+        },
+        {
+          "id": 19682
+        },
+        {
+          "id": 254069
+        },
+        {
+          "id": 14146
+        },
+        {
+          "id": 18405
+        },
+        {
+          "id": 19683
+        },
+        {
+          "id": 254013
+        },
+        {
+          "id": 17713
+        },
+        {
+          "id": 9447
+        },
+        {
+          "id": 249469
+        },
+        {
+          "id": 249470
+        },
+        {
+          "id": 22383
+        },
+        {
+          "id": 249455
+        },
+        {
+          "id": 249385
+        }
+      ]
+    },
+    "consumes": {
+      "flask": "FlaskOfSupremePower",
+      "food": "FoodRunnTumTuberSurprise",
+      "manaRegenElixir": "MagebloodPotion",
+      "spellPowerBuff": "GreaterArcaneElixir",
+      "firePowerBuff": "ElixirOfFirepower",
+      "frostPowerBuff": "ElixirOfFrostPower",
+      "mainHandImbue": "BrilliantWizardOil",
+      "defaultPotion": "MajorManaPotion",
+      "defaultConjured": "ConjuredDemonicRune",
+      "zanzaBuff": "CerebralCortexCompound"
+    },
+    "bonusStats": {
+      "stats": [
+        0,
+        0,
+        0,
+        -6.0985306828003445,
+        0,
+        -10.735955056179774,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2.0999999999999996,
+        -0.3176318063958513,
+        0,
+        0,
+        0,
+        2.0999999999999996,
+        -0.3176318063958513,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1.461106309420916,
+        0
+      ]
+    },
+    "foreverTier1Bonuses": true,
+    "buffs": {
+      "blessingOfKings": true,
+      "blessingOfWisdom": "TristateEffectRegular",
+      "blessingOfMight": "TristateEffectRegular"
+    },
+    "talentsString": "053005023100311531-03-005500032",
+    "profession1": "Engineering",
+    "rotation": {
+      "type": "TypeAPL",
+      "priorityList": [
+        {
+          "action": {
+            "autocastOtherCooldowns": {}
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpLt",
+                      "lhs": {
+                        "currentManaPercent": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "15%"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGt",
+                      "lhs": {
+                        "remainingTime": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "20s"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 12051
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "auraIsActive": {
+                "auraId": {
+                  "spellId": 44404
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 25345,
+                "rank": 8
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "or": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "auraNumStacks": {
+                          "auraId": {
+                            "spellId": 30451
+                          }
+                        }
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "4"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpLt",
+                      "lhs": {
+                        "currentManaPercent": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "20%"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 25304,
+                "rank": 11
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 30451
+              }
+            }
+          }
+        }
+      ]
+    },
+    "distanceFromTarget": 20,
+    "mage": {
+      "options": {
+        "armor": "MoltenArmor"
+      }
+    }
+  },
+  "encounter": {
+    "duration": 300,
+    "executeProportion20": 0.2,
+    "executeProportion25": 0.25,
+    "executeProportion35": 0.35,
+    "targets": [
+      {
+        "level": 63,
+        "stats": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3731,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  }
+}

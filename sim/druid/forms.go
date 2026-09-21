@@ -171,7 +171,7 @@ func (druid *Druid) registerCatFormSpell() {
 	energyMetrics := druid.NewEnergyMetrics(actionID)
 
 	hasWolfheadBonus := false
-	if head := druid.Equipment.Head(); head != nil && (head.ID == WolfsheadHelm) {
+	if head := druid.Equipment.Head(); !druid.Env.IsForever() && head != nil && head.ID == WolfsheadHelm {
 		hasWolfheadBonus = true
 	}
 

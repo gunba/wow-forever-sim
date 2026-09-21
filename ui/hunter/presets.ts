@@ -32,9 +32,11 @@ import {
 } from '../core/proto/hunter.js';
 import { SavedTalents } from '../core/proto/ui.js';
 import P1APL from './apls/p1.apl.json';
-import LaunchGearJSON from './gear_sets/launch.gear.json';
-import P0BISGear from './gear_sets/p0.bis.gear.json';
-import P1BISGear from './gear_sets/p1.bis.gear.json';
+import BeastMasteryAPL from './apls/beast_mastery.apl.json';
+import SurvivalAPL from './apls/survival.apl.json';
+import GearBeastMasteryJSON from './gear_sets/forever_beast_mastery.gear.json';
+import GearMarksmanshipJSON from './gear_sets/forever_marksmanship.gear.json';
+import GearSurvivalJSON from './gear_sets/forever_survival.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -43,27 +45,26 @@ import P1BISGear from './gear_sets/p1.bis.gear.json';
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearLaunch = PresetUtils.makePresetGear('Launch', LaunchGearJSON);
-export const GearP0BIS = PresetUtils.makePresetGear('Pre-BiS', P0BISGear);
-export const GearP1BIS = PresetUtils.makePresetGear('P1 BiS', P1BISGear);
+export const GearBeastMastery = PresetUtils.makePresetGear('Beast Mastery', GearBeastMasteryJSON, { tooltip: 'Level 60 Forever equipment.' });
+export const GearMarksmanship = PresetUtils.makePresetGear('Marksmanship', GearMarksmanshipJSON, { tooltip: 'Level 60 Forever equipment.' });
+export const GearSurvival = PresetUtils.makePresetGear('Survival', GearSurvivalJSON, { tooltip: 'Level 60 Forever equipment.' });
 
-export const GearPresets = {
-	[ClassicPhase.Phase1]: [GearLaunch, GearP0BIS, GearP1BIS],
-};
-
-export const DefaultGear = GearP0BIS;
+export const GearPresets = [GearBeastMastery, GearMarksmanship, GearSurvival];
+export const DefaultGear = GearMarksmanship;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets
 ///////////////////////////////////////////////////////////////////////////
 
 export const APLP1 = PresetUtils.makePresetAPLRotation('Marksmanship', P1APL);
+export const APLBeastMastery = PresetUtils.makePresetAPLRotation('Beast Mastery', BeastMasteryAPL);
+export const APLSurvival = PresetUtils.makePresetAPLRotation('Survival', SurvivalAPL);
 
 export const APLPresets = {
-	[ClassicPhase.Phase1]: [APLP1],
+	[ClassicPhase.Phase1]: [APLP1, APLBeastMastery, APLSurvival],
 };
 
-export const DefaultAPL = APLPresets[ClassicPhase.Phase1][0];
+export const DefaultAPL = APLP1;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Talent Presets
@@ -72,17 +73,19 @@ export const DefaultAPL = APLPresets[ClassicPhase.Phase1][0];
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsP1 = PresetUtils.makePresetTalents('Marksmanship', SavedTalents.create({ talentsString: '5023000501-0050550501503051' }));
+export const TalentsP1 = PresetUtils.makePresetTalents('Marksmanship 18/33/0', SavedTalents.create({ talentsString: '5023000503-0053451001503051' }));
 
-export const TalentsBeastMastery = PresetUtils.makePresetTalents('Beast Mastery 35/16/0', SavedTalents.create({ talentsString: '5520001505121251-0050551' }));
-export const TalentsMarksmanship = PresetUtils.makePresetTalents('Marksmanship 0/39/12', SavedTalents.create({ talentsString: '-3050552301503151-50024001' }));
-export const TalentsSurvival = PresetUtils.makePresetTalents('Survival 0/15/36', SavedTalents.create({ talentsString: '-005055-550230031051220151' }));
+export const TalentsBeastMastery = PresetUtils.makePresetTalents(
+	'Beast Mastery 31/20/0',
+	SavedTalents.create({ talentsString: '5320001505101251-00531510005' }),
+);
+export const TalentsSurvival = PresetUtils.makePresetTalents('Survival 7/11/33', SavedTalents.create({ talentsString: '502-0050051-230230230250022151' }));
 
 export const TalentPresets = {
-	[ClassicPhase.Phase1]: [TalentsP1, TalentsBeastMastery, TalentsMarksmanship, TalentsSurvival],
+	[ClassicPhase.Phase1]: [TalentsP1, TalentsBeastMastery, TalentsSurvival],
 };
 
-export const DefaultTalents = TalentPresets[ClassicPhase.Phase1][0];
+export const DefaultTalents = TalentsP1;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Options
@@ -146,9 +149,7 @@ export const DefaultDebuffs = Debuffs.create({
 	curseOfRecklessness: true,
 	exposeArmor: TristateEffect.TristateEffectImproved,
 	faerieFire: true,
-	// Improved Hunter's Mark is gone from the Forever trees, assumed baseline rather than removed.
-	// TODO: assumed baseline, beta will confirm
-	huntersMark: TristateEffect.TristateEffectImproved,
+	huntersMark: TristateEffect.TristateEffectRegular,
 	judgementOfWisdom: true,
 	stormstrike: false,
 	sunderArmor: true,
@@ -156,7 +157,19 @@ export const DefaultDebuffs = Debuffs.create({
 
 export const OtherDefaults = {
 	distanceFromTarget: 12,
-	profession1: Profession.Enchanting,
+	profession1: Profession.Engineering,
 	profession2: Profession.Engineering,
 	race: Race.RaceTroll,
 };
+
+export const BuildPresets = [
+	PresetUtils.makePresetBuild('Beast Mastery', {
+		gear: GearBeastMastery,
+		talents: TalentsBeastMastery,
+		rotation: APLBeastMastery,
+		options: DefaultOptions,
+		distance: 12,
+	}),
+	PresetUtils.makePresetBuild('Marksmanship', { gear: GearMarksmanship, talents: TalentsP1, rotation: APLP1, options: DefaultOptions, distance: 12 }),
+	PresetUtils.makePresetBuild('Survival', { gear: GearSurvival, talents: TalentsSurvival, rotation: APLSurvival, options: DefaultOptions, distance: 5 }),
+];

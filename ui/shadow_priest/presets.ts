@@ -20,9 +20,7 @@ import {
 import { ShadowPriest_Options as Options } from '../core/proto/priest.js';
 import { SavedTalents } from '../core/proto/ui.js';
 import P1APL from './apls/p1.apl.json';
-import LaunchGearJSON from './gear_sets/launch.gear.json';
-import P0BISGear from './gear_sets/p0.bis.gear.json';
-import P1BISGear from './gear_sets/p1.bis.gear.json';
+import GearShadowJSON from './gear_sets/forever_shadow.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -32,15 +30,10 @@ import P1BISGear from './gear_sets/p1.bis.gear.json';
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearLaunch = PresetUtils.makePresetGear('Launch', LaunchGearJSON);
-export const GearP0BIS = PresetUtils.makePresetGear('Pre-BiS', P0BISGear);
-export const GearP1BIS = PresetUtils.makePresetGear('P1 BiS', P1BISGear);
+export const GearShadow = PresetUtils.makePresetGear('Shadow', GearShadowJSON, { tooltip: 'Level 60 Forever equipment.' });
 
-export const GearPresets = {
-	[ClassicPhase.Phase1]: [GearLaunch, GearP0BIS, GearP1BIS],
-};
-
-export const DefaultGear = GearP0BIS;
+export const GearPresets = [GearShadow];
+export const DefaultGear = GearShadow;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets
@@ -52,7 +45,7 @@ export const APLPresets = {
 	[ClassicPhase.Phase1]: [APLP1Shadow],
 };
 
-export const DefaultAPL = APLPresets[ClassicPhase.Phase1][0];
+export const DefaultAPL = APLP1Shadow;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Talent Presets
@@ -69,7 +62,7 @@ export const TalentPresets = {
 	[ClassicPhase.Phase1]: [TalentsP1Shadow, TalentsShadow],
 };
 
-export const DefaultTalents = TalentPresets[ClassicPhase.Phase1][0];
+export const DefaultTalents = TalentsP1Shadow;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Options
@@ -110,7 +103,11 @@ export const DefaultDebuffs = Debuffs.create({
 
 export const OtherDefaults = {
 	channelClipDelay: 100,
-	distanceFromTarget: 30,
-	profession1: Profession.Alchemy,
+	distanceFromTarget: 20,
+	profession1: Profession.Engineering,
 	profession2: Profession.Enchanting,
 };
+
+export const BuildPresets = [
+	PresetUtils.makePresetBuild('Shadow', { gear: GearShadow, talents: TalentsP1Shadow, rotation: APLP1Shadow, options: DefaultOptions, distance: 20 }),
+];

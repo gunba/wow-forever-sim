@@ -76,8 +76,13 @@ func (druid *Druid) registerTigersFurySpell() {
 		},
 
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, _ *core.Spell) {
-			if druid.Talents.KingOfTheJungle > 0 {
-				druid.AddEnergy(sim, 20*float64(druid.Talents.KingOfTheJungle), energyMetrics)
+			energy := 20 * float64(druid.Talents.KingOfTheJungle)
+			// Forever's Wolfshead Helm moved its bonus from shifting to Tiger's Fury.
+			if druid.Env.IsForever() && druid.Equipment.Head().ID == WolfsheadHelm {
+				energy += 20
+			}
+			if energy > 0 {
+				druid.AddEnergy(sim, energy, energyMetrics)
 			}
 
 			druid.TigersFuryAura.Activate(sim)

@@ -6,6 +6,13 @@ from the rule rather than from this fork's diff. Numbers marked *demo* were read
 2026 tooltips, mostly rank 1; the per-rank assumptions behind them are listed in
 `forever_beta_checklist.md`.
 
+This file includes the initial demo-era interpretation. The class pages in
+`beta-pass/` and [shared integration audit](beta-pass/core.md) record later
+client checks and corrections; they supersede conflicting entries here.
+The [auto-attack audit](auto_attack_audit.md) and
+[Energy audit](energy_audit.md) describe the current casting-continuity rules and
+the explicit general-haste regeneration assumption.
+
 The ruleset is a `SimOptions.ruleset` enum (`RulesetClassic`, `RulesetForever`); every rule
 below is gated on `IsForever()` unless it says the class code is Forever-only.
 
@@ -21,6 +28,7 @@ below is gated on `IsForever()` unless it says the class code is Forever-only.
 | Stormstrike's Nature vulnerability lasts its full duration instead of being consumed by Nature hits. | Tooltip | `sim/core/debuffs.go` |
 | Skinning: +5% damage to Beasts and Dragonkin. Mining: +5% health. | Panel (only professions with figures) | `sim/core/professions.go` |
 | World buffs (Rallying Cry, Songflower, Darkmoon Faire, Warchief's Blessing, Dire Maul tribute, Spirit of Zandalar) do not work inside raids; the engine ignores them and the picker hides them. | Demo report, 13 September | `sim/core/buffs.go`, `settings_tab.ts` |
+| Paladin blessings and auras are available to Horde raids because Undead Paladins are playable. | Forever race/class matrix | `sim/core/buffs.go` |
 
 ## Racials
 
@@ -29,11 +37,12 @@ below is gated on `IsForever()` unless it says the class code is Forever-only.
 | Every +10 resistance racial is removed. | Racials guide | `sim/core/racials.go` |
 | Weapon skill racials become +1% crit (both pools) while the matching weapon is held; Mace Specialization moves to Dwarves. | Racials guide, *demo* | `sim/core/specializations.go` |
 | Dwarf gains Beast Slaying-style +5% vs Beasts ("Big Game Hunter"). Troll keeps Beast Slaying; both ranged specializations removed. | Racials guide | `sim/core/racials.go` |
-| Orc: Command removed (Shatter Curse replaces it). Blood Fury: 10% attack power and spell power. | Racials guide, *demo* | `sim/core/racials.go` |
-| Gnome Expansive Mind raises the resource pool (mana modelled) rather than Intellect. Eureka! cooldown/cost figures unpublished. | Racials guide | `sim/core/racials.go` |
-| Night Elf Elune's Light: +10% crit for 15 s, 3 min cooldown. | Racials guide, cooldown confirmed by search | `sim/core/racials.go` |
-| Skyborne (both factions) racials incl. Elemental Insight +5% vs Elementals; Windshaper and High Order variants by faction. | Skyborne first look | `sim/core/racials.go` |
-| Racial cooldowns with no published cooldown assume 3 minutes. | Assumption | `forever_beta_checklist.md` |
+| Orc: Command removed. Blood Fury dynamically increases melee AP, ranged AP and spell power by 10%, for 15 seconds; free and off the GCD, two-minute cooldown. | Beta client 20572 | `sim/core/racials.go` |
+| Gnome Expansive Mind raises Mana/Rage/Energy pools by 5%, not Intellect. Eureka has three charges for 15 s, a 2 min cooldown and class-specific cost reductions. | Client spell effects and class masks; [race audit](forever_races.md) | `sim/core/racials.go`, `sim/core/forever_gnome.go` |
+| Night Elf Elune's Light (1259799): +10% crit for 15 s, 3 min cooldown. | Client spell effects, duration and cooldown | `sim/core/racials.go` |
+| Skyborne: 1% haste and 5% damage versus Elementals. Windshaper's Skysight grants movement speed, not attack or spell power. | Beta client 1259710, 1259707, 1259686 | `sim/core/racials.go` |
+| Troll Berserking: exactly 10% attack and casting speed for ten seconds, free and off the GCD, three-minute cooldown. | Beta client 20554 | `sim/core/racials.go` |
+| Undead Touch of the Grave: 5% proc chance for Warrior/Paladin/Rogue, 10% for Priest/Mage/Warlock; one-second ICD; Shadow drain equal to 5% of max health before mitigation, cannot crit. | Beta client 1260189, 1260201, 1260198 and SpellAuraOptions | `sim/core/racials.go` |
 
 ## Warrior
 
@@ -42,7 +51,7 @@ below is gated on `IsForever()` unless it says the class code is Forever-only.
 | Slam no longer resets the swing timer. | Panel | `sim/warrior/slam.go` |
 | Thunder Clap usable in Defensive Stance. | Panel | `sim/warrior/thunder_clap.go` |
 | Improved Shield Wall shortens the cooldown instead of extending the duration. | Tooltip | `sim/warrior/shield_wall.go` |
-| Tactical Mastery is baseline; Improved Tactical Mastery adds on top. | Tooltip | Not modelled. `sim/warrior/stances.go` keeps only the talent's own 3 Rage per point, because the baseline retention was never shown a number. |
+| Tactical Mastery retains 10 Rage baseline; Improved Tactical Mastery adds 3 per point. | Demo spellbook, beta ability description | `sim/warrior/stances.go` |
 | Enrage: any damage taken has a chance to grant a flat +2% Physical damage (was crit-only, scaled per point). | *demo* | `sim/warrior/talents.go` |
 | Improved Cleave discounts Rage instead of adding damage. | *demo* | `sim/warrior/heroic_strike_cleave.go` |
 | Improved Battle Shout and Improved Demoralizing Shout are gone from the tree; assumed baseline. Booming Voice only widens the radius. | Tree | `sim/warrior/shouts.go`, `demoralizing_shout.go` |
@@ -52,6 +61,7 @@ below is gated on `IsForever()` unless it says the class code is Forever-only.
 
 | Rule | Source | Here |
 |---|---|---|
+| Energy regenerates smoothly at a base 10/sec; 100-ms integration approximates beta-observed behavior. Haste scaling remains unverified. | Client PowerType plus player beta reports; [energy audit](energy_audit.md) | `sim/core/energy.go` |
 | Furor: shifting into Cat carries over a share of the energy left, plus a little per second out of form (was a chance at a flat 40). Per-rank scaling assumed linear. | *demo* | `sim/druid/forms.go` |
 | Tiger's Fury: no Energy cost and a 30 sec cooldown (Wrath's shape), so that King of the Jungle's 60 Energy is a cooldown and not an engine. Assumed from the talent's wording. | Tree | `sim/druid/tigers_fury.go` |
 | Nature's Grace: a short haste buff (also shortens the GCD) instead of a cast time cut on the next cast. | *demo* | `sim/druid/talents.go` |
@@ -132,15 +142,15 @@ below is gated on `IsForever()` unless it says the class code is Forever-only.
 |---|---|---|
 | Tier 1 opens 9 December 2026: Barrow Deeps (10), Hyjal Summit (20), Onyxia's Lair (40). Only Onyxia has a known encounter. Molten Core kept as a target. | BlizzCon, Wowhead overview | `sim/encounters/register_all.go` |
 
-## Published abilities the sim does not implement (checked 17 September)
+## Spellbook coverage
 
-The 40 racial abilities and 37 class abilities talentsforever publishes were compared
-against `sim/`. Every one that changes a damage number is implemented. What is left out,
-and why:
+The initial demo inventory was incomplete. Later client checks found omitted
+damage abilities, including Frostfire Bolt, and resource abilities such as Dark
+Sacrifice. Both are now implemented; see [shared integration](beta-pass/core.md)
+for current limitations and remaining work.
 
-- **Aspect of the Beast** now adds 50 melee attack power as well as making you untrackable.
-  A hunter holds one aspect, and Aspect of the Hawk pays 120 ranged attack power at rank 7,
-  so nothing a ranged hunter does would pick Beast.
+- **Aspect of the Beast** is now implemented at level 60: 110 melee AP, mutually
+  exclusive with Hawk, with Deadly Aspects' melee haste proc.
 - **Shadow Word: Death** is not modelled, and neither is the Early Demise talent that buffs
   it, which is marked `notSimulated` in the tree so the picker says so.
 - **Seal of Fury**, **Victory Rush**, **Fear Ward**, **Totemic Projection**, **Call of the

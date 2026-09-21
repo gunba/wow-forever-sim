@@ -2,6 +2,7 @@ package druid
 
 import (
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/core/stats"
 )
 
 // Item IDs
@@ -10,10 +11,19 @@ const (
 	IdolOfFerocity  = 22397
 	IdolOfTheMoon   = 23197
 	IdolOfBrutality = 23198
+	IdolOfTheDream  = 220606
+	MysticMushroom  = 249396
 )
 
 func init() {
 	core.AddEffectsToTest = false
+
+	core.NewItemEffect(MysticMushroom, func(agent core.Agent) {
+		druid := agent.(DruidAgent).GetDruid()
+		if druid.Env.IsForever() {
+			druid.MultiplyStat(stats.Spirit, 1.05)
+		}
+	})
 
 	// https://www.wowhead.com/classic/item=22397/idol-of-ferocity
 	// Equip: Reduces the energy cost of Claw and Rake by 3.

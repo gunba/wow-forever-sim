@@ -329,21 +329,29 @@ func applyFoodConsumes(character *Character, consumes *proto.Consumes) {
 				stats.Spirit:  12,
 			})
 		case proto.Food_FoodGrilledSquid:
-			character.AddStats(stats.Stats{
-				stats.Agility: 10,
-			})
+			if character.Env.IsForever() {
+				// Nutritious Food 1249522 -> Well Fed 1249523, aura 290.
+				character.AddStats(stats.Stats{
+					stats.MeleeCrit: CritRatingPerCritChance,
+					stats.SpellCrit: SpellCritRatingPerCritChance,
+				})
+			} else {
+				character.AddStat(stats.Agility, 10)
+			}
 		case proto.Food_FoodSmokedDesertDumpling:
 			character.AddStats(stats.Stats{
 				stats.Strength: 20,
 			})
 		case proto.Food_FoodNightfinSoup:
-			character.AddStats(stats.Stats{
-				stats.MP5: 8,
-			})
+			if character.Env.IsForever() {
+				// Nutritious Food 1249513 supplies 22 to Well Fed 1249520.
+				character.AddStat(stats.SpellDamage, 22)
+			} else {
+				character.AddStat(stats.MP5, 8)
+			}
 		case proto.Food_FoodRunnTumTuberSurprise:
-			character.AddStats(stats.Stats{
-				stats.Intellect: 10,
-			})
+			// Nutritious Food 1248396 supplies 15 to Well Fed 1248421.
+			character.AddStat(stats.Intellect, TernaryFloat64(character.Env.IsForever(), 15, 10))
 		case proto.Food_FoodDirgesKickChimaerokChops:
 			character.AddStats(stats.Stats{
 				stats.Stamina: 25,

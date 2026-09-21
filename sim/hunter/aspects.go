@@ -8,14 +8,8 @@ import (
 	"github.com/wowsims/classic/sim/core/stats"
 )
 
-// Only Aspect of the Hawk is modelled. Forever changed Aspect of the Beast - rank 1 now
-// adds 50 melee attack power on top of making you untrackable, where Classic gave only the
-// untrackability - but a hunter holds one aspect at a time, and Hawk pays 120 ranged attack
-// power at rank 7 to Beast's 50 melee. Nothing a ranged hunter does would pick Beast, so
-// registering it would add a spell no rotation casts.
-
 // Utility function to create the Deadly Aspects haste aura
-func (hunter *Hunter) createDeadlyAspectsAura(auraLabel string, actionID core.ActionID) *core.Aura {
+func (hunter *Hunter) createDeadlyAspectsAura(auraLabel string, actionID core.ActionID, melee bool) *core.Aura {
 	// Every rank of Deadly Aspects triggers the same Quick Shots (6150): 30% for 12 sec. The
 	// points buy only the proc chance.
 	bonusMultiplier := 1.3
@@ -24,10 +18,18 @@ func (hunter *Hunter) createDeadlyAspectsAura(auraLabel string, actionID core.Ac
 		ActionID: actionID,
 		Duration: time.Second * 12,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
-			aura.Unit.MultiplyRangedSpeed(sim, bonusMultiplier)
+			if melee {
+				aura.Unit.MultiplyMeleeSpeed(sim, bonusMultiplier)
+			} else {
+				aura.Unit.MultiplyRangedSpeed(sim, bonusMultiplier)
+			}
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-			aura.Unit.MultiplyRangedSpeed(sim, 1/bonusMultiplier)
+			if melee {
+				aura.Unit.MultiplyMeleeSpeed(sim, 1/bonusMultiplier)
+			} else {
+				aura.Unit.MultiplyRangedSpeed(sim, 1/bonusMultiplier)
+			}
 		},
 	})
 }
@@ -71,6 +73,7 @@ func (hunter *Hunter) getAspectOfTheHawkSpellConfig(rank int) core.SpellConfig {
 		deadlyAspectsAura = hunter.createDeadlyAspectsAura(
 			"Quick Shots",
 			core.ActionID{SpellID: 6150},
+			false,
 		)
 	}
 	// Use utility function to get the attack power based on rank
@@ -126,4 +129,51 @@ func (hunter *Hunter) registerAspectOfTheHawkSpell() {
 	maxRank := hunter.getMaxHawkRank()
 	config := hunter.getAspectOfTheHawkSpellConfig(maxRank)
 	hunter.GetOrRegisterSpell(config)
+}
+
+func (hunter *Hunter) registerAspectOfTheBeastSpell() {
+	if !hunter.Env.IsForever() || hunter.Level < 60 {
+		return
+	}
+
+	// Level-60 rank: beta client 1.60.1.69893 and Forever spell 1299447.
+	// Quick Strikes (1299448) grants 30% melee haste for 12 seconds.
+	actionID := core.ActionID{SpellID: 1299447}
+	var quickStrikes *core.Aura
+	if hunter.Talents.DeadlyAspects > 0 {
+		quickStrikes = hunter.createDeadlyAspectsAura("Quick Strikes", core.ActionID{SpellID: 1299448}, true)
+	}
+	procChance := 0.02 * float64(hunter.Talents.DeadlyAspects)
+	aspect := hunter.RegisterAura(core.Aura{
+		Label:    "Aspect of the Beast4",
+		ActionID: actionID,
+		Duration: core.NeverExpires,
+		OnGain: func(aura *core.Aura, sim *core.Simulation) {
+			hunter.AddStatDynamic(sim, stats.AttackPower, 110)
+		},
+		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
+			hunter.AddStatDynamic(sim, stats.AttackPower, -110)
+		},
+		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+			if quickStrikes != nil && spell.ProcMask.Matches(core.ProcMaskMeleeWhiteHit) && sim.Proc(procChance, "Deadly Aspects") {
+				quickStrikes.Activate(sim)
+			}
+		},
+	})
+	aspect.NewExclusiveEffect("Aspect", true, core.ExclusiveEffect{})
+	hunter.RegisterSpell(core.SpellConfig{
+		ActionID:      actionID,
+		SpellSchool:   core.SpellSchoolNature,
+		Flags:         core.SpellFlagAPL,
+		Rank:          4,
+		RequiredLevel: 60,
+		ManaCost:      core.ManaCostOptions{FlatCost: 110},
+		Cast:          core.CastConfig{DefaultCast: core.Cast{GCD: core.GCDDefault}, IgnoreHaste: true},
+		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
+			return !aspect.IsActive()
+		},
+		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+			aspect.Activate(sim)
+		},
+	})
 }

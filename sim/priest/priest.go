@@ -103,6 +103,7 @@ func (priest *Priest) Initialize() {
 	priest.registerHolyFire()
 	priest.registerHolyNovaSpell()
 	priest.registerPenanceSpell()
+	priest.registerDarkSacrifice()
 
 	priest.registerPowerInfusionCD()
 }

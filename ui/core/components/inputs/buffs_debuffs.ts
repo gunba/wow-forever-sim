@@ -522,16 +522,11 @@ export const SpellShadowWeavingDebuff = withLabel(
 );
 
 export const CurseOfElements = makeBooleanDebuffInput({
-	actionId: () => ActionId.fromSpellId(11722),
+	actionId: () => ActionId.fromSpellId(1311680),
 	fieldName: 'curseOfElements',
 });
 
-export const CurseOfShadow = makeBooleanDebuffInput({
-	actionId: () => ActionId.fromSpellId(17937),
-	fieldName: 'curseOfShadow',
-});
-
-export const WarlockCursesConfig = InputHelpers.makeMultiIconInput({ values: [CurseOfElements, CurseOfShadow], label: 'Warlock Curses' });
+export const WarlockCursesConfig = InputHelpers.makeMultiIconInput({ values: [CurseOfElements], label: 'Curse of the Elements' });
 
 export const HuntersMark = withLabel(
 	makeTristateDebuffInput({

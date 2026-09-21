@@ -152,7 +152,7 @@ func (paladin *Paladin) registerSealOfRighteousness() {
 
 			ManaCost: core.ManaCostOptions{
 				FlatCost:   rank.manaCost - paladin.getLibramSealCostReduction(),
-				Multiplier: paladin.benediction(),
+				Multiplier: paladin.sealCostMultiplier(),
 			},
 			Cast: core.CastConfig{
 				DefaultCast: core.Cast{

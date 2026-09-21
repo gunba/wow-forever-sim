@@ -118,13 +118,14 @@
 	"11717": {
 		"ability": "Curse of Recklessness",
 		"file": "sim/core/debuffs.go",
-		"note": "-640 armor and +90 attack power on the target for 2 min, unchanged from upstream Classic.",
-		"source": "classic"
+		"note": "Forever rank 4 reduces armor by 505 for 2 min and gives no attack power. Verified against the Forever tooltip and beta client.",
+		"source": "forever",
+		"tooltip": "115 Mana\nInstant\nReduces the target's armor by 505 for 2 min. Cursed enemies will not flee and will ignore Fear and Horror effects."
 	},
 	"11722": {
 		"ability": "Curse of the Elements",
 		"file": "sim/core/debuffs.go",
-		"note": "+10% Fire and Frost damage taken and -75 Fire and Frost resistance for 5 min; the warlock curses are not in any published Forever change.",
+		"note": "Classic-only Fire and Frost curse. Forever uses spell 1311680, covering every magic school.",
 		"source": "classic"
 	},
 	"1191": {
@@ -229,7 +230,7 @@
 	"17937": {
 		"ability": "Curse of Shadow",
 		"file": "sim/core/debuffs.go",
-		"note": "+10% Arcane and Shadow damage taken and -75 Arcane and Shadow resistance for 5 min; unchanged from upstream Classic.",
+		"note": "Removed in Forever; its schools are included in Curse of the Elements. This aura is used only by the Classic ruleset.",
 		"source": "classic"
 	},
 	"19838": {
@@ -261,10 +262,17 @@
 		"note": "50% chance on a landed direct attack to return 59 mana, 10 sec; unchanged from upstream Classic.",
 		"source": "classic"
 	},
+	"20554": {
+		"ability": "Berserking",
+		"file": "sim/core/racials.go",
+		"note": "Beta client 20554: free, off the GCD, exactly 10% melee, ranged and casting speed for all resource types. Three-minute cooldown.",
+		"source": "forever",
+		"tooltip": "Instant\n3 min cooldown\nIncreases your spellcasting and attack speed by 10% for 10 sec."
+	},
 	"20572": {
 		"ability": "Blood Fury",
 		"file": "sim/core/racials.go",
-		"note": "Forever's Blood Fury reads 10% off the orc's whole attack power and pays the same 10% in spell power, with no healing penalty (docs/forever_rules.md racials table, racials guide and demo); the 15 sec duration and the 2 min cooldown are Classic's and were not reported as changed.",
+		"note": "Beta client 20572: dynamic 10% melee AP, ranged AP and spell power; free and off the GCD, 15 seconds, two-minute cooldown. No healing penalty.",
 		"source": "forever",
 		"tooltip": "Instant\n2 min cooldown\nIncreases your attack power and spell power by 10% for 15 sec."
 	},
@@ -365,9 +373,8 @@
 	"26297": {
 		"ability": "Berserking",
 		"file": "sim/core/racials.go",
-		"note": "Forever's Berserking is a flat 10% instead of scaling from 10% to 30% as health drops (racials guide, commit 'rework the racials the way Forever reworked them'); the 10 sec duration, the 3 min cooldown and the resource costs are Classic's. Mana users are implemented as a 10% cast-time and swing-time cut, i.e. 11.1% haste, while rage and energy users get a flat 10% attack speed.",
-		"source": "forever",
-		"tooltip": "7% of base mana, 5 Rage or 10 Energy\nInstant\n3 min cooldown\nIncreases your attack and casting speed by 10% for 10 sec."
+		"note": "Classic-only implementation. Forever uses 20554 without resource costs or health-based scaling.",
+		"source": "classic"
 	},
 	"28142": {
 		"ability": "Atiesh, Greatstaff of the Guardian (mage)",
@@ -424,49 +431,70 @@
 		"note": "A Season of Discovery id that the Classic database does not carry. The aura is a 30% bleed damage taken increase for 1 min, but its only caller is sim/core/exclusive_effect_test.go - the druid's Mangle registers 33876 and 33878 and never applies it - so no bleed amplification reaches the sim and the UI never resolves this id.",
 		"source": "classic"
 	},
-	"460520": {
+	"1259799": {
 		"ability": "Elune's Light",
 		"file": "sim/core/racials.go",
-		"foreverId": 460520,
-		"note": "A Forever-only night elf racial; 460520 is Forever's own id and the Classic database cannot name or draw it, so the UI has to render this entry itself. Magnitude and duration come from the racials guide, and docs/forever_rules.md records the 3 min cooldown as confirmed by search.",
+		"foreverId": 1259799,
+		"note": "Client 1.60.1.69893: aura 290, 10 percentage points, 15 seconds, 180-second cooldown. Replaces the former placeholder action ID.",
 		"source": "forever",
 		"tooltip": "Instant\n3 min cooldown\nIncreases your critical strike chance with spells and attacks by 10% for 15 sec."
 	},
-	"460530": {
-		"ability": "Windshaper",
-		"assumptions": [
-			"The 10% attack power and spell power is taken from the Skyborne first look and matched to Blood Fury; check the figure in the beta spellbook.",
-			"The 15 second duration is assumed from Blood Fury; no Windshaper duration was published.",
-			"The 3 minute cooldown is the default this fork gives racials with no published cooldown (beta checklist, 'How to run the pass' item 4)."
-		],
-		"file": "sim/core/racials.go",
-		"foreverId": 460530,
-		"note": "A Forever-only racial for the Horde half of the Skyborne; 460530 is Forever's own id and the Classic database cannot name or draw it. The Skyborne first look described the racial but published no figures, so every number here is read across from Blood Fury.",
-		"source": "assumed",
-		"tooltip": "Instant\n3 min cooldown\nIncreases your attack power and spell power by 10% for 15 sec."
-	},
-	"460540": {
+	"1260198": {
 		"ability": "Touch of the Grave",
-		"assumptions": [
-			"\"Up to 5% of your maximum Health\" is read as a roll between half and full, the way every other ranged damage value in the sim is; the tooltip gives only the ceiling.",
-			"The drain is taken to be Shadow damage that can be partially resisted, and cannot crit."
-		],
 		"file": "sim/core/racials.go",
-		"foreverId": 460540,
-		"note": "A Forever-only undead racial that replaces Classic's Shadow Resistance; 460540 is Forever's own id and the Classic database cannot name or draw it. The tooltip is quoted from the racials guide; how the drain rolls is not published, so the roll and the resist behaviour are assumptions the beta pass has to settle.",
-		"source": "assumed",
-		"tooltip": "Passive\nYour spells and attacks have a 5% chance to drain Health from the target, up to 5% of your maximum Health."
+		"foreverId": 1260198,
+		"note": "Triggered Shadow drain: 5% of maximum health before mitigation, no random base-damage range, cannot crit. SpellAuraOptions gives a one-second ICD.",
+		"source": "forever",
+		"tooltip": "Steals life from target enemy equal to 5% of the caster's maximum Health."
 	},
-	"460550": {
-		"ability": "Eureka!",
-		"assumptions": [
-			"A warlock tooltip listed only the damage half, so whether the mana saving reaches every ability or only caster ones is unsettled; it is applied to whatever spends a charge."
-		],
+	"1260189": {
+		"ability": "Touch of the Grave",
 		"file": "sim/core/racials.go",
-		"foreverId": 460550,
-		"note": "A Forever-only gnome racial; 460550 is Forever’s own id and the Classic database cannot name or draw it. Both figures come from the racials guide, read from the demo.",
-		"source": "assumed",
-		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging or healing abilities cost 50% less Mana and do 10% more damage or healing."
+		"source": "forever",
+		"note": "Warrior, Paladin and Rogue variant; class mask 11 in SkillLineAbility.",
+		"tooltip": "Passive\nYour spells and attacks have a 5% chance to drain Health from the target, up to 5% of your maximum Health. One-second cooldown."
+	},
+	"1260201": {
+		"ability": "Touch of the Grave",
+		"file": "sim/core/racials.go",
+		"source": "forever",
+		"note": "Priest, Mage and Warlock variant; class mask 400 in SkillLineAbility.",
+		"tooltip": "Passive\nYour spells and attacks have a 10% chance to drain Health from the target, up to 5% of your maximum Health. One-second cooldown."
+	},
+	"1259812": {
+		"ability": "Eureka!",
+		"file": "sim/core/forever_gnome.go",
+		"source": "forever",
+		"note": "Rogue variant. Client cost modifier -20%, damage +10%, three charges, 15-second duration. Cast/periodic interactions are tracked in docs/in_game_checks.md, T03.",
+		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging abilities cost 20% less Energy and deal 10% more damage. Lasts 15 sec."
+	},
+	"1259813": {
+		"ability": "Eureka!",
+		"file": "sim/core/forever_gnome.go",
+		"source": "forever",
+		"note": "Warrior variant; SkillLineAbility class mask 1. Three charges and a 15-second duration.",
+		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging abilities cost 40% less Rage and deal 10% more damage. Lasts 15 sec."
+	},
+	"1259817": {
+		"ability": "Eureka!",
+		"file": "sim/core/forever_gnome.go",
+		"source": "forever",
+		"note": "Mage variant; SkillLineAbility class mask 128. Three charges and a 15-second duration.",
+		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging abilities cost 50% less Mana and deal 10% more damage. Lasts 15 sec."
+	},
+	"1259821": {
+		"ability": "Eureka!",
+		"file": "sim/core/forever_gnome.go",
+		"source": "forever",
+		"note": "Warlock variant; SkillLineAbility class mask 256. Three charges and a 15-second duration.",
+		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging abilities cost 50% less Mana and deal 10% more damage. Lasts 15 sec."
+	},
+	"1259823": {
+		"ability": "Eureka!",
+		"file": "sim/core/forever_gnome.go",
+		"source": "forever",
+		"note": "Priest variant; SkillLineAbility class mask 16. Cost reduction is 15%, not the Mage/Warlock value.",
+		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging or healing abilities cost 15% less Mana and deal 10% more damage or healing. Lasts 15 sec."
 	},
 	"5242": {
 		"ability": "Battle Shout Rank 2",

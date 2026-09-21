@@ -61,6 +61,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFeralDruid, {
 	displayPseudoStats: [PseudoStat.BonusPhysicalDamage, PseudoStat.PseudoStatMeleeSpeedMultiplier],
 
 	defaults: {
+		race: Race.RaceTauren,
 		// Default equipped gear.
 		gear: Presets.DefaultGear.gear,
 		// Default EP weights for sorting gear in the gear picker.
@@ -131,11 +132,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFeralDruid, {
 	},
 
 	presets: {
-		// Preset talents that the user can quickly select.
-		talents: [...Presets.TalentPresets[ClassicPhase.Phase4]],
-		rotations: [...Presets.APLPresets[ClassicPhase.Phase4]],
-		// Preset gear configurations that the user can quickly select.
-		gear: [...Presets.GearPresets[ClassicPhase.Phase2]],
+		talents: Presets.BuildPresets.map(build => build.talents!),
+		rotations: Presets.BuildPresets.map(build => build.rotation!),
+		gear: Presets.GearPresets,
+		builds: Presets.BuildPresets,
 	},
 
 	autoRotation: player => {
@@ -186,10 +186,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFeralDruid, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearFeral.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearFeral.gear,
 				},
 			},
 		},

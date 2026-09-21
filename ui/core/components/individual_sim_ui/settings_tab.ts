@@ -6,7 +6,7 @@ import { Ruleset } from '../../proto/api';
 import { Consumes, Debuffs, HealingModel, IndividualBuffs, ItemSwap, PartyBuffs, Profession, RaidBuffs, Spec } from '../../proto/common';
 import { SavedEncounter, SavedSettings } from '../../proto/ui';
 import { professionNames, raceNames } from '../../proto_utils/names';
-import { specToEligibleRaces } from '../../proto_utils/utils';
+import { isHealingSpec, isTankSpec, specToEligibleRaces } from '../../proto_utils/utils';
 import { EventID, TypedEvent } from '../../typed_event';
 import { getEnumValues } from '../../utils';
 import { BooleanPicker } from '../boolean_picker';
@@ -182,11 +182,12 @@ export class SettingsTab extends SimTab {
 		// const column = this.simUI.isWithinRaidSim ? this.column4 : this.column2;
 		const settings = this.simUI.individualConfig.otherInputs?.inputs.filter(
 			inputs => !inputs.extraCssClasses || !inputs.extraCssClasses?.includes('within-raid-sim-hide'),
-		);
+		) ?? [];
 
 		const itemSwapConfig = this.simUI.individualConfig.itemSwapConfig;
+		const tierSupported = !isTankSpec(this.simUI.player.spec) && !isHealingSpec(this.simUI.player.spec);
 
-		if (settings.length || itemSwapConfig?.itemSlots.length) {
+		if (settings.length || itemSwapConfig?.itemSlots.length || tierSupported) {
 			const contentBlock = new ContentBlock(this.column2, 'other-settings', {
 				header: { title: 'Other' },
 			});
@@ -200,6 +201,36 @@ export class SettingsTab extends SimTab {
 
 			if (itemSwapConfig?.itemSlots.length) {
 				new ItemSwapPicker(contentBlock.bodyElement, this.simUI, this.simUI.player, itemSwapConfig);
+			}
+			if (tierSupported) {
+				new BooleanPicker(contentBlock.bodyElement, this.simUI.player, {
+					id: 'forever-tier1-bonuses',
+					label: 'Tier 1 bonuses',
+					labelTooltip: 'Apply all four bonuses from this role’s Forever Tier 1 set independently of gear. Adds no raid-item stats. Creature-type restrictions still apply.',
+					changedEvent: player => TypedEvent.onAny([player.miscOptionsChangeEmitter, player.sim.rulesetChangeEmitter]),
+					getValue: player => player.getForeverTier1Bonuses(),
+					setValue: (eventID, player, value) => player.setForeverTier1Bonuses(eventID, value),
+					showWhen: player => player.sim.getRuleset() == Ruleset.RulesetForever,
+				});
+			}
+			const scalingNote = document.createElement('p');
+			scalingNote.classList.add('small', 'text-warning', 'mt-2');
+			const updateScalingNote = () => {
+				const scale = this.simUI.player.getEquipmentScale();
+				scalingNote.hidden = scale === 1;
+				scalingNote.textContent = `Hypothetical equipment multiplier: ×${scale.toFixed(2)}. Item stats and weapon damage are scaled; tooltips show original items. Paid hit must be recalculated outside the UI.`;
+			};
+			this.simUI.player.miscOptionsChangeEmitter.on(updateScalingNote);
+			updateScalingNote();
+			contentBlock.bodyElement.appendChild(scalingNote);
+			if ([Spec.SpecFeralDruid, Spec.SpecRogue].includes(this.simUI.player.spec)) {
+				const note = document.createElement('p');
+				note.classList.add('small', 'text-muted', 'mt-2');
+				note.textContent = 'Energy regeneration scales with general haste as a model assumption. Attack-speed-only effects do not increase it.';
+				const update = () => { note.hidden = this.simUI.sim.getRuleset() != Ruleset.RulesetForever; };
+				this.simUI.sim.rulesetChangeEmitter.on(update);
+				update();
+				contentBlock.bodyElement.appendChild(note);
 			}
 		}
 	}
@@ -360,6 +391,7 @@ export class SettingsTab extends SimTab {
 					reactionTimeMs: player.getReactionTime(),
 					channelClipDelayMs: player.getChannelClipDelay(),
 					inFrontOfTarget: player.getInFrontOfTarget(),
+					foreverTier1Bonuses: player.getForeverTier1Bonuses(),
 					distanceFromTarget: player.getDistanceFromTarget(),
 					healingModel: player.getHealingModel(),
 				});
@@ -381,6 +413,7 @@ export class SettingsTab extends SimTab {
 					simUI.player.setReactionTime(eventID, newSettings.reactionTimeMs);
 					simUI.player.setChannelClipDelay(eventID, newSettings.channelClipDelayMs);
 					simUI.player.setInFrontOfTarget(eventID, newSettings.inFrontOfTarget);
+					simUI.player.setForeverTier1Bonuses(eventID, newSettings.foreverTier1Bonuses);
 					simUI.player.setDistanceFromTarget(eventID, newSettings.distanceFromTarget);
 					simUI.player.setHealingModel(eventID, newSettings.healingModel || HealingModel.create());
 				});

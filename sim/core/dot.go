@@ -17,8 +17,9 @@ type DotConfig struct {
 
 	Aura Aura
 
-	NumberOfTicks int32         // number of ticks over the whole duration
-	TickLength    time.Duration // time between each tick
+	NumberOfTicks     int32         // number of ticks over the whole duration
+	TickLength        time.Duration // time between each tick
+	DurationRemainder time.Duration // aura time after the final full tick; does not create a partial tick
 
 	AffectedByCastSpeed bool // If true, tick length will be shortened based on casting speed.
 
@@ -38,6 +39,7 @@ type Dot struct {
 	OriginalNumberOfTicks int32         // base number of ticks of the original dot
 	NumberOfTicks         int32         // number of ticks over the whole duration
 	TickLength            time.Duration // time between each tick
+	DurationRemainder     time.Duration
 
 	// If true, tick length will be shortened based on casting speed.
 	AffectedByCastSpeed bool
@@ -185,10 +187,11 @@ func (dot *Dot) Cancel(sim *Simulation) {
 func (dot *Dot) RecomputeAuraDuration() {
 	if dot.AffectedByCastSpeed {
 		dot.tickPeriod = dot.Spell.Unit.ApplyCastSpeedForSpell(dot.TickLength, dot.Spell)
-		dot.Aura.Duration = dot.tickPeriod * time.Duration(dot.NumberOfTicks)
+		dot.Aura.Duration = dot.tickPeriod*time.Duration(dot.NumberOfTicks) +
+			dot.Spell.Unit.ApplyCastSpeedForSpell(dot.DurationRemainder, dot.Spell)
 	} else {
 		dot.tickPeriod = dot.TickLength
-		dot.Aura.Duration = dot.tickPeriod * time.Duration(dot.NumberOfTicks)
+		dot.Aura.Duration = dot.tickPeriod*time.Duration(dot.NumberOfTicks) + dot.DurationRemainder
 	}
 }
 
@@ -265,7 +268,7 @@ func newDot(config Dot) *Dot {
 	*dot = config
 
 	dot.tickPeriod = dot.TickLength
-	dot.Aura.Duration = dot.TickLength * time.Duration(dot.NumberOfTicks)
+	dot.Aura.Duration = dot.TickLength*time.Duration(dot.NumberOfTicks) + dot.DurationRemainder
 
 	dot.Aura.ApplyOnGain(func(aura *Aura, sim *Simulation) {
 		dot.lastTickTime = sim.CurrentTime
@@ -319,6 +322,7 @@ func (spell *Spell) createDots(config DotConfig, isHot bool) {
 		OriginalNumberOfTicks: config.NumberOfTicks,
 		NumberOfTicks:         config.NumberOfTicks,
 		TickLength:            config.TickLength,
+		DurationRemainder:     config.DurationRemainder,
 		AffectedByCastSpeed:   config.AffectedByCastSpeed,
 
 		OnSnapshot: config.OnSnapshot,

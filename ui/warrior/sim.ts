@@ -44,7 +44,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWarrior, {
 	displayPseudoStats: [PseudoStat.PseudoStatMeleeSpeedMultiplier],
 
 	defaults: {
-		race: Presets.OtherDefaults.race,
+		race: Race.RaceOrc,
 		// Default equipped gear.
 		gear: Presets.DefaultGear.gear,
 		// Default EP weights for sorting gear in the gear picker.
@@ -109,24 +109,14 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWarrior, {
 	},
 
 	presets: {
-		// Preset talents that the user can quickly select.
-		talents: [...Presets.TalentPresets[ClassicPhase.Phase1]],
-		// Preset rotations that the user can quickly select.
-		rotations: [...Presets.APLPresets[ClassicPhase.Phase1]],
-		// Preset gear configurations that the user can quickly select.
-		gear: [...Presets.GearPresets[ClassicPhase.Phase2], ...Presets.GearPresets[ClassicPhase.Phase1]],
-		// Preset builds that the user can quickly select.
-		builds: [],
+		talents: Presets.BuildPresets.map(build => build.talents!),
+		rotations: Presets.BuildPresets.map(build => build.rotation!),
+		gear: Presets.GearPresets,
+		builds: Presets.BuildPresets,
 	},
 
 	autoRotation: player => {
-		const talentTree = player.getTalentTree();
-
-		if (player.getEquippedItem(ItemSlot.ItemSlotMainHand)?._item.handType === HandType.HandTypeTwoHand) {
-			return Presets.DefaultAPLs[0].rotation.rotation!;
-		}
-
-		return Presets.DefaultAPLs[0].rotation.rotation!;
+		return (player.getTalentTree() === 0 ? Presets.APLArms : Presets.APLFury).rotation.rotation!;
 	},
 
 	raidSimPresets: [
@@ -147,14 +137,14 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWarrior, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearLaunch.gear,
-					2: Presets.GearLaunch.gear,
-					3: Presets.GearLaunch.gear,
+					1: Presets.GearFury.gear,
+					2: Presets.GearFury.gear,
+					3: Presets.GearFury.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearLaunch.gear,
-					2: Presets.GearLaunch.gear,
-					3: Presets.GearLaunch.gear,
+					1: Presets.GearFury.gear,
+					2: Presets.GearFury.gear,
+					3: Presets.GearFury.gear,
 				},
 			},
 		},
@@ -179,14 +169,14 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWarrior, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearArmsLaunch.gear,
-					2: Presets.GearArmsLaunch.gear,
-					3: Presets.GearArmsLaunch.gear,
+					1: Presets.GearArms.gear,
+					2: Presets.GearArms.gear,
+					3: Presets.GearArms.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearArmsLaunch.gear,
-					2: Presets.GearArmsLaunch.gear,
-					3: Presets.GearArmsLaunch.gear,
+					1: Presets.GearArms.gear,
+					2: Presets.GearArms.gear,
+					3: Presets.GearArms.gear,
 				},
 			},
 		},

@@ -1,0 +1,210 @@
+[
+  {
+    "candidate": "Fire/Resto-WF 1Fire all",
+    "duration": 300,
+    "iterations": 10000,
+    "raid_dps": 16530.375167041027,
+    "healer_dps": 0,
+    "tank_dps": 723.7423198956803,
+    "support_dps": 17254.11748693671,
+    "party_dps": [
+      3909.3103425767504,
+      3902.25679171013,
+      4721.5852223958545,
+      4720.96513025397
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 390.59967319394167,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1158.256030983124,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Retribution 10/0/41 Undead",
+        "role": "DPS",
+        "dps": 1180.229414078966,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Retribution 10/0/41 #2 Undead",
+        "role": "DPS",
+        "dps": 1180.2252243207197,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Feral Tank Tauren",
+        "role": "Tank",
+        "dps": 333.1426467017386,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman #2 Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Retribution 10/0/41 #3 Undead",
+        "role": "DPS",
+        "dps": 1189.7039615387039,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Retribution 10/0/41 #4 Undead",
+        "role": "DPS",
+        "dps": 1189.824156853197,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Retribution 10/0/41 #5 Undead",
+        "role": "DPS",
+        "dps": 1189.5860266164898,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Restoration Shaman #3 Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Retribution 10/0/41 #6 Undead",
+        "role": "DPS",
+        "dps": 1180.7465547562967,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Retribution 10/0/41 #7 Undead",
+        "role": "DPS",
+        "dps": 1180.4706184841075,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Retribution 10/0/41 #8 Undead",
+        "role": "DPS",
+        "dps": 1180.0316673931886,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Retribution 10/0/41 #9 Undead",
+        "role": "DPS",
+        "dps": 1180.3363817622621,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Restoration Shaman #4 Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Retribution 10/0/41 #10 Undead",
+        "role": "DPS",
+        "dps": 1179.2716068005648,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Retribution 10/0/41 #11 Undead",
+        "role": "DPS",
+        "dps": 1180.6750691842763,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Retribution 10/0/41 #12 Undead",
+        "role": "DPS",
+        "dps": 1180.552780790069,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Retribution 10/0/41 #13 Undead",
+        "role": "DPS",
+        "dps": 1180.465673479061,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "devotion_aura": 2,
+        "sanctity_aura": true,
+        "windfury_totem": true
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "leader_of_the_pack": true,
+        "sanctity_aura": true,
+        "windfury_totem": true
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "sanctity_aura": true,
+        "windfury_totem": true
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "sanctity_aura": true,
+        "windfury_totem": true
+      }
+    ]
+  }
+]

@@ -264,7 +264,7 @@
 	"1311680": {
 		"ability": "Curse of the Elements",
 		"file": "sim/warlock/curses.go",
-		"note": "Rank 4. Forever removes Curse of Shadow and folds it into Curse of the Elements, which now covers every magic school. The sim applies the raid debuffs Curse of the Elements (Fire, Frost) and Curse of Shadow (Arcane, Shadow) together, so Nature and Holy are not covered. Values from the beta client 1.60.1.69893 (spell_client.py).",
+		"note": "Rank 4. The shared Forever curse covers every magic school, including Nature and Holy. Curse of Shadow no longer exists. Values from the beta client 1.60.1.69893 (spell_client.py).",
 		"source": "forever",
 		"tooltip": "200 Mana\nInstant\nCurses the target for 5 min, reducing Magic resistances by 75 and increasing Magic damage taken by 10%. Only one Curse per Warlock can be active on any one target."
 	},

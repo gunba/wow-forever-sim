@@ -1,20 +1,45 @@
 # WoW: Forever sim
 
-A fork of [wowsims/classic](https://github.com/wowsims/classic) being converted from WoW Classic Era to **World of Warcraft: Forever**, the Classic+ game announced at BlizzCon 2026.
+A fork of [ElliotWood/Forever](https://github.com/ElliotWood/Forever), built on
+[wowsims/classic](https://github.com/wowsims/classic), for **World of Warcraft: Forever**.
 
-Everything the original project does still works. What this fork adds is a second set of engine rules behind a switch, a replacement talent tree for all nine classes, and the race changes. The switch is what makes the conversion reviewable: every rule can be turned off to show exactly what it was worth.
+**[Open the simulator and DPS matrix](https://gunba.github.io/wow-forever-sim/classic/review/).**
+
+The current DPS profiles use Forever crafted/dungeon equipment, updated talent
+trees and racials, and an explicit Tier 1 bonus setting. The Classic ruleset is
+retained for mechanic comparisons, not as a complete Classic simulator.
+
+The [five-minute benchmark](tools/forever_bench/README.md) covers 23 builds and
+147 Horde/Alliance race/build combinations. Its [matrix](artifacts/forever_dps_5min.png),
+[CSV](artifacts/forever_dps_5min.csv) and
+[raw requests/results](artifacts/forever_dps_5min.json) use paid hit normalization
+and 5,000 iterations per result. Legal talent and rotation changes were screened,
+independently validated and checked across every available race; these are not
+claims of a global optimum or best-in-slot equipment.
+
+The matrix also shows race-averaged Tier 1 gains and hypothetical +10%/+20%
+equipment scaling. [Sensitivity data](artifacts/forever_sensitivity.json) records
+the comparisons, assumptions and Monte Carlo uncertainty.
+
+[Build reviews](docs/build_reviews.md) describe the retained choices and resource
+use. [In-game checks](docs/in_game_checks.md) track important unresolved mechanics.
+[Replay profiles](artifacts/ui_profiles/index.json) can be loaded through the
+matching simulator's **Import → JSON** dialog. The web build can include a
+clickable matrix at `/classic/review/`; see the benchmark guide for staging it.
 
 This project is licensed with MIT license, inherited from the upstream project. As upstream requests, keep a user visible link back to [wowsims/classic](https://github.com/wowsims/classic) in anything built on this.
 
 ## What is different from Classic
 
-`SimOptions.ruleset` picks the rules. `RulesetClassic` is the wire default, so an unset field behaves exactly as upstream does and every golden result still matches; the UI defaults to `RulesetForever`. Each rule below is gated on that switch, and each landed with a before-and-after check proving the Classic numbers did not move.
+`SimOptions.ruleset` picks the rules. `RulesetClassic` is the wire default;
+the UI and benchmark use `RulesetForever`. Talent and item changes are not
+reverted by the engine switch.
 
 | Rule | What changed |
 | --- | --- |
 | Periodic critical strikes | Spell dots and bleeds roll for crits, against the caster's crit chance at the time of the tick |
-| Unified hit and critical strike | One hit stat and one crit stat from gear, covering melee, ranged, spells, poisons and traps |
-| Bonus healing on gear | Also grants spell damage, at a third of the healing value |
+| Unified hit and critical strike | Generic item ratings cover physical and spell attacks; traps still use an inherited special hit rule |
+| Bonus healing on gear | Explicit healing and damage values stay separate; healing-only records retain an inherited one-third damage fallback |
 | Racials | Resistance racials removed, weapon skill racials pay crit instead, several races reshaped |
 | Races | The Skyborne, plus six new race and class pairings |
 
@@ -73,28 +98,55 @@ talent string to proto field number n. Changing the order invalidates saved tale
 
 Worth knowing before reading any number out of this sim:
 
-- **Tiers are Forever's; the gear in them is not.** `Phase.Launch` through `Phase.Tier3` follow the real roadmap, and every preset sits at `Launch` because that is the only tier Forever has until 9 December 2026. Forever is set *before* Molten Core, which is why no preset wears raid loot — at this point in its timeline there is none. The items themselves are still Classic's, since Forever's re-itemisation onto hit, crit, expertise and caster-weapon spell damage has no published numbers, so each preset wears the closest Classic equivalent. The separate `ClassicPhase` enum carries what the database knows: when an item became available in Classic.
-- **The launch gear sets are generated, not curated.** `tools/launch_gear` picks the highest-EP item per slot from everything obtainable without a raid, against weights stated in `specs.go`. Those weights are rough and are the first thing to argue with; the sets they produce are a plausible launch kit, not BiS.
-- **Tank Warrior runs the Fury rotation.** It has a weapon and a shield now, so a protection priority is finally possible for it; it just does not have one yet. Feral Druid is still the one spec on a partial set, at 8 of 17 slots.
-- **Raid size is mixed, and that matters for the buffs.** Forever's first tier is Barrow Deeps at 10, Hyjal Summit at 20 and Onyxia's Lair returning at 40, so the full raid buff set the tests assume is right for one of the three and generous for the other two.
-- **Weapon skill is still priced at full Classic value.** Forever caps it lower per item, which would offset the racial change that costs Combat sword rogues ~9%.
+- **Beta mechanics are not all verified.** Warrior rage, parts of the combat
+  table, some pet behavior and server-scripted proc interactions remain inherited
+  or approximate. See the benchmark's evidence notes.
+- **Gear coverage is incomplete.** The current DPS loadouts are complete and use
+  actual Forever stats, but the published ring, neck and trinket pools are sparse.
+  Missing records are not filled with Classic equivalents. See
+  [gear data](docs/forever_gear_data.md).
+- **Tier 1 is a separate scenario setting.** It grants the role's full set
+  bonuses without raid-item stats. Creature restrictions still apply. Utility
+  effects and dummy-effect assumptions are listed in the
+  [Tier 1 notes](docs/forever_tier1.md).
+- **The benchmark is not a raid composition.** It uses a fixed external buff
+  package without world buffs. It does not prove that a particular twenty-player
+  roster supplies every buff.
+- **Tank/healer profiles and other item effects have not received the same
+  review as the current DPS baselines.**
 
 ## Running it
 
 There are no published builds for this fork and the deploy workflow does not run here — build and host it locally with the instructions below. Upstream's releases and [live sims](https://wowsims.github.io/classic) are Classic Era and do not include any of this.
 
+With the development dependencies installed:
+
+```sh
+npm ci
+make proto
+GOFLAGS=-buildvcs=false make dist/classic/.dirstamp
+go build -buildvcs=false -o /tmp/forever-web ./sim/web/main.go
+/tmp/forever-web --usefs=true --launch=false --host=127.0.0.1:3333
+```
+
+Open <http://127.0.0.1:3333/classic/>. The gear, talent and rotation tabs offer
+matching build presets. **Settings → Other → Tier 1 bonuses** controls the
+gear-independent set effects. Paid hit normalization belongs to the benchmark;
+ordinary UI simulations use the displayed character stats.
+
 # Local Dev Installation
 
-This project has dependencies on Go >=1.21, protobuf-compiler and the corresponding Go plugins, and node >= 14.0.
+This project requires Go >=1.23.4, protobuf-compiler and the Go protobuf plugin,
+and Node >=20.
 
 ## Ubuntu
 Do not use apt to install any dependencies, the versions they install are all too old.
 Script below will curl latest versions and install them.
 ```sh
 # Standard Go installation script
-curl -O https://dl.google.com/go/go1.21.1.linux-amd64.tar.gz
+curl -O https://dl.google.com/go/go1.24.13.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.24.13.linux-amd64.tar.gz
 echo 'export PATH=$PATH:/usr/local/go/bin' >> $HOME/.bashrc
 echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc
 echo 'export PATH=$PATH:$GOPATH/bin' >> $HOME/.bashrc

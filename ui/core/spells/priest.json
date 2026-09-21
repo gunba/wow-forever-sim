@@ -69,6 +69,42 @@
 		"source": "forever",
 		"tooltip": "350 Mana\n1.5 sec cast\n8 sec cooldown\nBlasts the target for 477 to 504 Shadow damage."
 	},
+	"1277324": {
+		"ability": "Dark Sacrifice",
+		"file": "sim/priest/dark_sacrifice.go",
+		"source": "forever",
+		"note": "Undead Priest only. Rank 1 at level 20: 80 Health to Mana every 3 seconds for five ticks, growing by 1 per level through level 28. Shared 10-minute rank cooldown; 1.5-second GCD; no mana cost.",
+		"assumptions": ["Self-damage is modeled as the unmodified client health amount; damage-buff and resistance interactions need beta testing."]
+	},
+	"1277325": {
+		"ability": "Dark Sacrifice",
+		"file": "sim/priest/dark_sacrifice.go",
+		"source": "forever",
+		"note": "Rank 2 at level 30: 136 Health to Mana per tick, growing by 1 per level through level 38. Five ticks every 3 seconds.",
+		"assumptions": ["Self-damage is modeled as the unmodified client health amount; damage-buff and resistance interactions need beta testing."]
+	},
+	"1277326": {
+		"ability": "Dark Sacrifice",
+		"file": "sim/priest/dark_sacrifice.go",
+		"source": "forever",
+		"note": "Rank 3 at level 40: 196 Health to Mana per tick, growing by 1 per level through level 48. Five ticks every 3 seconds.",
+		"assumptions": ["Self-damage is modeled as the unmodified client health amount; damage-buff and resistance interactions need beta testing."]
+	},
+	"1277327": {
+		"ability": "Dark Sacrifice",
+		"file": "sim/priest/dark_sacrifice.go",
+		"source": "forever",
+		"note": "Rank 4 at level 50: 258 Health to Mana per tick, growing by 1 per level through level 58. Five ticks every 3 seconds.",
+		"assumptions": ["Self-damage is modeled as the unmodified client health amount; damage-buff and resistance interactions need beta testing."]
+	},
+	"1277328": {
+		"ability": "Dark Sacrifice",
+		"file": "sim/priest/dark_sacrifice.go",
+		"source": "forever",
+		"note": "Beta 1.60.1.69893: at level 60, five transfers of 320 Health to Mana, totaling 1600. Wowhead's static 1640 preview uses the rank's maximum scaling level, 68, not its required level. Automatic use requires enough health, missing mana and encounter time.",
+		"tooltip": "Instant\n10 min cooldown\nCannibalize 1600 of your own Health over 15 sec to gain 1600 Mana.",
+		"assumptions": ["Self-damage is modeled as the unmodified client health amount; damage-buff and resistance interactions need beta testing."]
+	},
 	"1316995": {
 		"ability": "Penance",
 		"assumptions": [

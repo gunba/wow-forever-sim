@@ -208,10 +208,7 @@ func (swap *ItemSwap) swapItem(slot proto.ItemSlot, has2H bool) (bool, stats.Sta
 }
 
 func (swap *ItemSwap) getItemStats(item Item) stats.Stats {
-	itemStats := item.Stats
-	itemStats = itemStats.Add(item.Enchant.Stats)
-
-	return itemStats
+	return swap.character.itemStats(item, true).DotProduct(swap.character.itemStatMultipliers)
 }
 
 func (swap *ItemSwap) swapWeapon(slot proto.ItemSlot) {

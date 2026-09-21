@@ -1,0 +1,20 @@
+{
+  "clientBuild": "1.60.1.69893",
+  "items": {
+    "1156": {"status": "verified", "source": "https://www.wowhead.com/forever/item=1156", "note": "Tooltip confirms stats only and unique-equipped."},
+    "17713": {"status": "verified", "source": "https://www.wowhead.com/forever/item=17713", "note": "Tooltip confirms 20 AP, 10 hit rating, 6 Stamina and unique-equipped."},
+    "7686": {"status": "verified", "source": "https://www.wowhead.com/forever/item=7686", "note": "Tooltip confirms stats only and unique-equipped."},
+    "7731": {"status": "verified", "source": "https://www.wowhead.com/forever/item=7731", "note": "Tooltip confirms 14 AP and 9 Stamina; no effect."},
+    "9447": {"status": "verified", "source": "https://www.wowhead.com/forever/item=9447", "statOverrides": {"HealingPower": 9}, "note": "Published tooltip includes 9 healing omitted by the planner, alongside its explicit 3 damage."},
+    "6463": {"status": "verified", "source": "https://www.wowhead.com/forever/item=6463", "note": "Tooltip confirms stats only and unique-equipped."},
+    "249469": {"status": "implemented", "spells": [1249110], "note": "29 Frost and Shadow power for 15 seconds; five-minute cooldown, 15-second shared trinket cooldown. No snowy-area bonus in a neutral encounter."},
+    "249470": {"status": "implemented", "spells": [1249113], "note": "55 AP and RAP for 15 seconds; five-minute cooldown, 15-second shared trinket cooldown. Its hidden flat physical damage is imported from client item stats. No volcanic-area bonus."},
+    "220606": {"status": "implemented", "spells": [446212], "note": "Two extra seconds of Rip: one additional tick with unchanged damage per tick."},
+    "249396": {"status": "implemented", "spells": [1248751], "note": "Five percent increased Spirit."},
+    "228176": {"status": "implemented", "spells": [461295], "note": "One percentage point of Lightning Bolt critical chance."},
+    "249398": {"status": "implemented", "spells": [1248756], "note": "Eight percentage points of Spirit regeneration while casting."},
+    "249442": {"status": "implemented", "spells": [1249005], "note": "Five percentage points of Seal mana-cost reduction."},
+    "279248": {"status": "implemented", "spells": [1306429], "note": "Six percentage points of Holy Shock critical chance."},
+    "8345": {"status": "implemented", "spells": [17768], "note": "Twenty extra Energy on Tiger's Fury and five extra initial Rage on Enrage. No Forever energy bonus from shifting."}
+  }
+}

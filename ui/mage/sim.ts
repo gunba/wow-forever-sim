@@ -53,6 +53,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecMage, {
 	displayPseudoStats: [],
 
 	defaults: {
+		race: Race.RaceOrc,
 		// Default equipped gear.
 		gear: Presets.DefaultGear.gear,
 		// Default EP weights for sorting gear in the gear picker.
@@ -112,9 +113,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecMage, {
 	},
 
 	presets: {
-		rotations: [...Presets.APLPresets[ClassicPhase.Phase1]],
-		talents: [...Presets.TalentPresets[ClassicPhase.Phase1]],
-		gear: [...Presets.GearPresets[ClassicPhase.Phase1]],
+		talents: Presets.BuildPresets.map(build => build.talents!),
+		rotations: Presets.BuildPresets.map(build => build.rotation!),
+		gear: Presets.GearPresets,
+		builds: Presets.BuildPresets,
 	},
 
 	// One rotation per tree, so a build gets the spells it took talents for.
@@ -141,10 +143,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecMage, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearFrost.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearFrost.gear,
 				},
 			},
 		},
@@ -154,7 +156,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecMage, {
 			defaultName: 'Fire',
 			iconUrl: getSpecIcon(Class.ClassMage, 1),
 
-			talents: Presets.TalentsFire.data,
+			talents: Presets.TalentsP1Fire.data,
 			specOptions: Presets.DefaultOptions,
 			consumes: Presets.DefaultConsumes,
 			otherDefaults: Presets.OtherDefaults,
@@ -166,10 +168,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecMage, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearFrost.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearFrost.gear,
 				},
 			},
 		},
@@ -191,10 +193,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecMage, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearFrost.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearFrost.gear,
 				},
 			},
 		},

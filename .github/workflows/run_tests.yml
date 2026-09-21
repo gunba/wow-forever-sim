@@ -2,7 +2,7 @@ name: Run Tests
 on:
   pull_request:
     branches:
-      - master
+      - forever
 
 # The deploy workflow runs the same build, tests and page smoke test on master; this runs
 # them on every pull request so a red build is caught before it is merged. The Go tests are

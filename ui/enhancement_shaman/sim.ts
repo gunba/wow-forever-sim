@@ -64,7 +64,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecEnhancementShaman, {
 	displayPseudoStats: [PseudoStat.PseudoStatMeleeSpeedMultiplier],
 
 	defaults: {
-		race: Presets.OtherDefaults.race,
+		race: Race.RaceOrc,
 		// Default equipped gear.
 		gear: Presets.DefaultGear.gear,
 		// Default EP weights for sorting gear in the gear picker.
@@ -124,23 +124,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecEnhancementShaman, {
 	},
 
 	presets: {
-		talents: [
-			...Presets.TalentPresets[ClassicPhase.Phase6],
-			...Presets.TalentPresets[ClassicPhase.Phase5],
-			...Presets.TalentPresets[ClassicPhase.Phase4],
-			...Presets.TalentPresets[ClassicPhase.Phase3],
-			...Presets.TalentPresets[ClassicPhase.Phase2],
-			...Presets.TalentPresets[ClassicPhase.Phase1],
-		],
-		rotations: [
-			...Presets.APLPresets[ClassicPhase.Phase6],
-			...Presets.APLPresets[ClassicPhase.Phase5],
-			...Presets.APLPresets[ClassicPhase.Phase4],
-			...Presets.APLPresets[ClassicPhase.Phase3],
-			...Presets.APLPresets[ClassicPhase.Phase2],
-			...Presets.APLPresets[ClassicPhase.Phase1],
-		],
-		gear: [...Presets.GearPresets[ClassicPhase.Phase2], ...Presets.GearPresets[ClassicPhase.Phase1]],
+		talents: Presets.BuildPresets.map(build => build.talents!),
+		rotations: Presets.BuildPresets.map(build => build.rotation!),
+		gear: Presets.GearPresets,
+		builds: Presets.BuildPresets,
 	},
 
 	autoRotation: (): APLRotation => {

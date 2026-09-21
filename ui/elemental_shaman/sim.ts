@@ -55,7 +55,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecElementalShaman, {
 	displayPseudoStats: [],
 
 	defaults: {
-		race: Race.RaceTroll,
+		race: Race.RaceOrc,
 		// Default equipped gear.
 		gear: Presets.DefaultGear.gear,
 		// Default EP weights for sorting gear in the gear picker.
@@ -107,30 +107,14 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecElementalShaman, {
 	},
 
 	presets: {
-		// Preset talents that the user can quickly select.
-		talents: [
-			...Presets.TalentPresets[ClassicPhase.Phase6],
-			...Presets.TalentPresets[ClassicPhase.Phase5],
-			...Presets.TalentPresets[ClassicPhase.Phase4],
-			...Presets.TalentPresets[ClassicPhase.Phase3],
-			...Presets.TalentPresets[ClassicPhase.Phase2],
-			...Presets.TalentPresets[ClassicPhase.Phase1],
-		],
-		// Preset rotations that the user can quickly select.
-		rotations: [
-			...Presets.APLPresets[ClassicPhase.Phase6],
-			...Presets.APLPresets[ClassicPhase.Phase5],
-			...Presets.APLPresets[ClassicPhase.Phase4],
-			...Presets.APLPresets[ClassicPhase.Phase3],
-			...Presets.APLPresets[ClassicPhase.Phase2],
-			...Presets.APLPresets[ClassicPhase.Phase1],
-		],
-		// Preset gear configurations that the user can quickly select.
-		gear: [...Presets.GearPresets[ClassicPhase.Phase2], ...Presets.GearPresets[ClassicPhase.Phase1]],
+		talents: Presets.BuildPresets.map(build => build.talents!),
+		rotations: Presets.BuildPresets.map(build => build.rotation!),
+		gear: Presets.GearPresets,
+		builds: Presets.BuildPresets,
 	},
 
-	autoRotation: () => {
-		return Presets.DefaultAPL.rotation.rotation!;
+	autoRotation: player => {
+		return (player.getTalents().lavaBurst ? Presets.APLDefault : Presets.APLStormcaller).rotation.rotation!;
 	},
 
 	raidSimPresets: [

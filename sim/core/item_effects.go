@@ -50,12 +50,8 @@ func HasEnchantEffect(id int32) bool {
 // Registers an ApplyEffect function which will be called before the Sim
 // starts, for any Agent that is wearing the item.
 func NewItemEffect(id int32, itemEffect ApplyEffect) {
-	if WITH_DB {
-		if _, hasItem := ItemsByID[id]; !hasItem {
-			panic(fmt.Sprintf("No item with ID: %d", id))
-		}
-	}
-
+	// An effect definition does not make an item obtainable. The live catalog can
+	// exclude legacy loot while retaining its registered simulator definition.
 	if HasItemEffect(id) {
 		panic(fmt.Sprintf("Cannot add multiple effects for one item: %d, %#v", id, itemEffect))
 	}

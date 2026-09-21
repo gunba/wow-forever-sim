@@ -142,6 +142,12 @@ func (hunter *Hunter) Initialize() {
 			hunter.Shots = append(hunter.Shots, spell)
 		}
 	})
+	if hunter.Env.IsForever() {
+		// Auto Shot is an independent weapon event, not a competing hardcast.
+		hunter.AutoAttacks.RangedConfig().Cast = core.CastConfig{}
+		hunter.AutoAttacks.RangedConfig().ExtraCastCondition = nil
+		hunter.AutoAttacks.RangedConfig().Flags &^= core.SpellFlagCastTimeNoGCD
+	}
 	hunter.OnSpellRegistered(func(spell *core.Spell) {
 		if spell.Flags.Matches(SpellFlagStrike) {
 			hunter.Strikes = append(hunter.Strikes, spell)
@@ -154,6 +160,7 @@ func (hunter *Hunter) Initialize() {
 	})
 
 	hunter.registerAspectOfTheHawkSpell()
+	hunter.registerAspectOfTheBeastSpell()
 
 	multiShotTimer := hunter.NewTimer()
 	arcaneShotTimer := hunter.NewTimer()

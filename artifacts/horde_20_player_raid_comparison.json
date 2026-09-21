@@ -1,0 +1,1201 @@
+[
+  {
+    "candidate": "Feral tank / Leader of the Pack (melee grouping)",
+    "duration": 300,
+    "iterations": 3000,
+    "raid_dps": 11231.931557369882,
+    "healer_dps": 0,
+    "tank_dps": 680.4128629830445,
+    "support_dps": 11912.344420352927,
+    "party_dps": [
+      2930.3373222908867,
+      3598.7293933016986,
+      2638.96029460471,
+      2744.3174101556306
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 320.0911487247781,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Healing Priest 1 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1157.1167143301948,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Arcane 35/0/16 Undead",
+        "role": "DPS",
+        "dps": 754.3529634910069,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Frost 14/0/37 Troll",
+        "role": "DPS",
+        "dps": 698.776495744906,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Feral Tank Tauren",
+        "role": "Tank",
+        "dps": 360.32171425826635,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Enhancement 16/35/0 Windshaper",
+        "role": "DPS",
+        "dps": 1000.2554183637889,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Fury P1 Undead",
+        "role": "DPS",
+        "dps": 1168.2988236077565,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Retribution 10/0/41 Undead",
+        "role": "DPS",
+        "dps": 1069.8534370718867,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Healing Priest 3 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Combat Dual-Wield 15/33/3 Undead",
+        "role": "DPS",
+        "dps": 728.1783621821229,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Assassination Mutilate 31/20/0 Undead",
+        "role": "DPS",
+        "dps": 724.1523108603113,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Subtlety Hemo 15/0/36 Undead",
+        "role": "DPS",
+        "dps": 641.8297518883347,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Feral Cat 6/35/10 Windshaper",
+        "role": "DPS",
+        "dps": 544.7998696739409,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Healing Priest 4 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Shadow 15/0/36 Undead",
+        "role": "DPS",
+        "dps": 690.4238896826478,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Demonic Pact 2/31/18 Undead",
+        "role": "DPS",
+        "dps": 649.9064466003101,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Deep Affliction 35/0/16 Undead",
+        "role": "DPS",
+        "dps": 623.5472212112221,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Arms 39/12/0 Undead",
+        "role": "DPS",
+        "dps": 780.4398526614506,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "devotion_aura": 2
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "grace_of_air_totem": 2,
+        "battle_shout": 2,
+        "leader_of_the_pack": true,
+        "mana_spring_totem": 2,
+        "sanctity_aura": true
+      },
+      {
+        "leader_of_the_pack": true
+      },
+      {
+        "battle_shout": 2
+      }
+    ]
+  },
+  {
+    "candidate": "Feral tank / split Druid auras",
+    "duration": 300,
+    "iterations": 3000,
+    "raid_dps": 11165.881303027672,
+    "healer_dps": 0,
+    "tank_dps": 679.7106718659165,
+    "support_dps": 11845.591974893588,
+    "party_dps": [
+      2929.0106757824624,
+      3598.3033097648463,
+      2888.2795918081065,
+      2429.9983975381697
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 319.8136139330879,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Healing Priest 1 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1157.5733370783723,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Arcane 35/0/16 Undead",
+        "role": "DPS",
+        "dps": 753.282936292892,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Frost 14/0/37 Troll",
+        "role": "DPS",
+        "dps": 698.3407884781107,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Feral Tank Tauren",
+        "role": "Tank",
+        "dps": 359.8970579328287,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Enhancement 16/35/0 Windshaper",
+        "role": "DPS",
+        "dps": 1000.5946004515686,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Fury P1 Undead",
+        "role": "DPS",
+        "dps": 1168.2249432392737,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Retribution 10/0/41 Undead",
+        "role": "DPS",
+        "dps": 1069.5867081411761,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Healing Priest 3 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Combat Dual-Wield 15/33/3 Undead",
+        "role": "DPS",
+        "dps": 733.2678823396996,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Assassination Mutilate 31/20/0 Undead",
+        "role": "DPS",
+        "dps": 728.1011612710671,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Subtlety Hemo 15/0/36 Undead",
+        "role": "DPS",
+        "dps": 645.8801560618225,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Arms 39/12/0 Undead",
+        "role": "DPS",
+        "dps": 781.0303921355182,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Healing Priest 4 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Shadow 15/0/36 Undead",
+        "role": "DPS",
+        "dps": 705.9612070714323,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Demonic Pact 2/31/18 Undead",
+        "role": "DPS",
+        "dps": 663.104403098717,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Deep Affliction 35/0/16 Undead",
+        "role": "DPS",
+        "dps": 636.7329444452447,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Balance Moonkin 38/5/8 Windshaper",
+        "role": "DPS",
+        "dps": 424.19984292277604,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "devotion_aura": 2
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "grace_of_air_totem": 2,
+        "battle_shout": 2,
+        "leader_of_the_pack": true,
+        "mana_spring_totem": 2,
+        "sanctity_aura": true
+      },
+      {
+        "battle_shout": 2
+      },
+      {
+        "moonkin_aura": true
+      }
+    ]
+  },
+  {
+    "candidate": "Feral tank / Leader of the Pack",
+    "duration": 300,
+    "iterations": 3000,
+    "raid_dps": 11252.233349601694,
+    "healer_dps": 0,
+    "tank_dps": 680.6973324835028,
+    "support_dps": 11932.930682085198,
+    "party_dps": [
+      2931.3297195845375,
+      3599.9656687688316,
+      2887.6163477985606,
+      2514.018945933266
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 320.06170715004055,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Healing Priest 1 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1158.6457536104485,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Arcane 35/0/16 Undead",
+        "role": "DPS",
+        "dps": 755.1370484970358,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Frost 14/0/37 Troll",
+        "role": "DPS",
+        "dps": 697.4852103270134,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Feral Tank Tauren",
+        "role": "Tank",
+        "dps": 360.6356253334622,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Enhancement 16/35/0 Windshaper",
+        "role": "DPS",
+        "dps": 1000.8942401832196,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Fury P1 Undead",
+        "role": "DPS",
+        "dps": 1169.1909633093146,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Retribution 10/0/41 Undead",
+        "role": "DPS",
+        "dps": 1069.2448399428351,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Healing Priest 3 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Combat Dual-Wield 15/33/3 Undead",
+        "role": "DPS",
+        "dps": 732.7199075862558,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Assassination Mutilate 31/20/0 Undead",
+        "role": "DPS",
+        "dps": 727.8810970263282,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Subtlety Hemo 15/0/36 Undead",
+        "role": "DPS",
+        "dps": 646.2679388267211,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Arms 39/12/0 Undead",
+        "role": "DPS",
+        "dps": 780.7474043592553,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Healing Priest 4 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Shadow 15/0/36 Undead",
+        "role": "DPS",
+        "dps": 690.306867383777,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Demonic Pact 2/31/18 Undead",
+        "role": "DPS",
+        "dps": 653.0599621372892,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Deep Affliction 35/0/16 Undead",
+        "role": "DPS",
+        "dps": 625.6714202081973,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Feral Cat 6/35/10 Windshaper",
+        "role": "DPS",
+        "dps": 544.9806962040032,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "devotion_aura": 2
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "grace_of_air_totem": 2,
+        "battle_shout": 2,
+        "leader_of_the_pack": true,
+        "mana_spring_totem": 2,
+        "sanctity_aura": true
+      },
+      {
+        "battle_shout": 2
+      },
+      {
+        "leader_of_the_pack": true
+      }
+    ]
+  },
+  {
+    "candidate": "Feral tank / Beast Mastery",
+    "duration": 300,
+    "iterations": 3000,
+    "raid_dps": 11211.428989592172,
+    "healer_dps": 0,
+    "tank_dps": 680.299189488949,
+    "support_dps": 11891.728179081121,
+    "party_dps": [
+      2930.1319814333633,
+      3601.4939771838353,
+      2888.186959114922,
+      2471.9152613489982
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 319.8856783140439,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Healing Priest 1 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1157.8765627006392,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Arcane 35/0/16 Undead",
+        "role": "DPS",
+        "dps": 753.4331364340062,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Frost 14/0/37 Troll",
+        "role": "DPS",
+        "dps": 698.9366039846741,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Feral Tank Tauren",
+        "role": "Tank",
+        "dps": 360.4135111749051,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Enhancement 16/35/0 Windshaper",
+        "role": "DPS",
+        "dps": 1001.1624690755201,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Fury P1 Undead",
+        "role": "DPS",
+        "dps": 1168.8839467175312,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Retribution 10/0/41 Undead",
+        "role": "DPS",
+        "dps": 1071.0340502158797,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Healing Priest 3 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Combat Dual-Wield 15/33/3 Undead",
+        "role": "DPS",
+        "dps": 733.170407047756,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Assassination Mutilate 31/20/0 Undead",
+        "role": "DPS",
+        "dps": 727.7520754505068,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Subtlety Hemo 15/0/36 Undead",
+        "role": "DPS",
+        "dps": 646.3357328874506,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Arms 39/12/0 Undead",
+        "role": "DPS",
+        "dps": 780.9287437292088,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Healing Priest 4 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Shadow 15/0/36 Undead",
+        "role": "DPS",
+        "dps": 690.7424544256677,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Demonic Pact 2/31/18 Undead",
+        "role": "DPS",
+        "dps": 649.5328225909889,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Deep Affliction 35/0/16 Undead",
+        "role": "DPS",
+        "dps": 622.9319023450666,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Beast Mastery 35/16/0 Windshaper",
+        "role": "DPS",
+        "dps": 508.7080819872754,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "devotion_aura": 2
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "grace_of_air_totem": 2,
+        "battle_shout": 2,
+        "leader_of_the_pack": true,
+        "mana_spring_totem": 2,
+        "sanctity_aura": true
+      },
+      {
+        "battle_shout": 2
+      },
+      {
+        "trueshot_aura": true
+      }
+    ]
+  },
+  {
+    "candidate": "Feral tank / Marksmanship",
+    "duration": 300,
+    "iterations": 3000,
+    "raid_dps": 11210.335517254898,
+    "healer_dps": 0,
+    "tank_dps": 680.3674817088478,
+    "support_dps": 11890.702998963747,
+    "party_dps": [
+      2929.2292164724827,
+      3599.3790355144706,
+      2888.300860314789,
+      2473.7938866620034
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 320.30643517580484,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Healing Priest 1 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1157.5732928470206,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Arcane 35/0/16 Undead",
+        "role": "DPS",
+        "dps": 754.0662886521651,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Frost 14/0/37 Troll",
+        "role": "DPS",
+        "dps": 697.2831997974919,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Feral Tank Tauren",
+        "role": "Tank",
+        "dps": 360.06104653304294,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Enhancement 16/35/0 Windshaper",
+        "role": "DPS",
+        "dps": 1000.2234404086639,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Fury P1 Undead",
+        "role": "DPS",
+        "dps": 1168.2567279444127,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Retribution 10/0/41 Undead",
+        "role": "DPS",
+        "dps": 1070.837820628351,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Healing Priest 3 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Combat Dual-Wield 15/33/3 Undead",
+        "role": "DPS",
+        "dps": 733.7092313841032,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Assassination Mutilate 31/20/0 Undead",
+        "role": "DPS",
+        "dps": 727.7516519759209,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Subtlety Hemo 15/0/36 Undead",
+        "role": "DPS",
+        "dps": 646.8801509186081,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Arms 39/12/0 Undead",
+        "role": "DPS",
+        "dps": 779.959826036157,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Healing Priest 4 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Shadow 15/0/36 Undead",
+        "role": "DPS",
+        "dps": 690.9163587409737,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Demonic Pact 2/31/18 Undead",
+        "role": "DPS",
+        "dps": 649.307508192152,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Deep Affliction 35/0/16 Undead",
+        "role": "DPS",
+        "dps": 622.9439799538357,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Marksmanship P1 Windshaper",
+        "role": "DPS",
+        "dps": 510.62603977504256,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "devotion_aura": 2
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "grace_of_air_totem": 2,
+        "battle_shout": 2,
+        "leader_of_the_pack": true,
+        "mana_spring_totem": 2,
+        "sanctity_aura": true
+      },
+      {
+        "battle_shout": 2
+      },
+      {
+        "trueshot_aura": true
+      }
+    ]
+  },
+  {
+    "candidate": "Warrior tank / Moonkin Aura",
+    "duration": 300,
+    "iterations": 3000,
+    "raid_dps": 11152.581636124272,
+    "healer_dps": 0,
+    "tank_dps": 634.9402275563727,
+    "support_dps": 11787.521863680646,
+    "party_dps": [
+      2921.9145267178683,
+      3547.4488927566017,
+      2887.0853395416443,
+      2431.07310466453
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 316.10560265196057,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Healing Priest 1 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1156.2884629034709,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Arcane 35/0/16 Undead",
+        "role": "DPS",
+        "dps": 750.9690585691814,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Frost 14/0/37 Troll",
+        "role": "DPS",
+        "dps": 698.5514025932555,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Protection Warrior Orc",
+        "role": "Tank",
+        "dps": 318.8346249044122,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Enhancement 16/35/0 Windshaper",
+        "role": "DPS",
+        "dps": 999.7978651708856,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Fury P1 Undead",
+        "role": "DPS",
+        "dps": 1168.1292598198277,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Retribution 10/0/41 Undead",
+        "role": "DPS",
+        "dps": 1060.6871428614768,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Healing Priest 3 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Combat Dual-Wield 15/33/3 Undead",
+        "role": "DPS",
+        "dps": 733.128791072411,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Assassination Mutilate 31/20/0 Undead",
+        "role": "DPS",
+        "dps": 727.9625539548331,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Subtlety Hemo 15/0/36 Undead",
+        "role": "DPS",
+        "dps": 645.9599250752958,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Arms 39/12/0 Undead",
+        "role": "DPS",
+        "dps": 780.0340694391042,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Healing Priest 4 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Shadow 15/0/36 Undead",
+        "role": "DPS",
+        "dps": 705.5703218434525,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Demonic Pact 2/31/18 Undead",
+        "role": "DPS",
+        "dps": 663.4053010298372,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Deep Affliction 35/0/16 Undead",
+        "role": "DPS",
+        "dps": 637.4842280794962,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Balance Moonkin 38/5/8 Windshaper",
+        "role": "DPS",
+        "dps": 424.61325371174485,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "devotion_aura": 2
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "grace_of_air_totem": 2,
+        "battle_shout": 2,
+        "mana_spring_totem": 2,
+        "sanctity_aura": true
+      },
+      {
+        "battle_shout": 2
+      },
+      {
+        "moonkin_aura": true
+      }
+    ]
+  }
+]

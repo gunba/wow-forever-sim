@@ -45,7 +45,8 @@ func (rogue *Rogue) registerEviscerate() {
 		MetricSplits: 6,
 
 		EnergyCost: core.EnergyCostOptions{
-			Cost:   35 - core.TernaryFloat64(rogue.Talents.FlawlessExecution, 10, 0),
+			Cost: 35 - core.TernaryFloat64(rogue.Talents.FlawlessExecution, 10, 0) -
+				core.TernaryFloat64(rogue.HasSetBonus(ItemSetGrimstitchArmor, 5), 5, 0),
 			Refund: 0,
 		},
 		Cast: core.CastConfig{

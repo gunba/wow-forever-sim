@@ -1,0 +1,2765 @@
+[
+  {
+    "candidate": "Fire/Fury stack 1F/13W",
+    "duration": 300,
+    "iterations": 1500,
+    "raid_dps": 14113.906584628367,
+    "healer_dps": 0,
+    "tank_dps": 682.3590615006342,
+    "support_dps": 14796.265646129,
+    "party_dps": [
+      3441.703027200767,
+      3499.293709864636,
+      3927.0849146782894,
+      3928.183994385313
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 321.84352675857014,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Discipline Healer 1 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1157.9668060748495,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Fury P1 #4 Undead",
+        "role": "DPS",
+        "dps": 980.5910531463821,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Fury P1 #5 Undead",
+        "role": "DPS",
+        "dps": 981.3016412209654,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Feral Tank Tauren",
+        "role": "Tank",
+        "dps": 360.51553474206406,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Fury P1 Undead",
+        "role": "DPS",
+        "dps": 1046.2324698061975,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Fury P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1046.0745467911077,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Fury P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1046.4711585252662,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Discipline Healer 3 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Fury P1 #6 Undead",
+        "role": "DPS",
+        "dps": 982.3969586797152,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Fury P1 #7 Undead",
+        "role": "DPS",
+        "dps": 981.4973568248032,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Fury P1 #8 Undead",
+        "role": "DPS",
+        "dps": 981.7990368895066,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Fury P1 #9 Undead",
+        "role": "DPS",
+        "dps": 981.3915622842644,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Discipline Healer 4 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Fury P1 #10 Undead",
+        "role": "DPS",
+        "dps": 981.897565923279,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Fury P1 #11 Undead",
+        "role": "DPS",
+        "dps": 982.1610368718837,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Fury P1 #12 Undead",
+        "role": "DPS",
+        "dps": 981.3326123148477,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Fury P1 #13 Undead",
+        "role": "DPS",
+        "dps": 982.7927792753021,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "battle_shout": 2,
+        "devotion_aura": 2
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "grace_of_air_totem": 2,
+        "battle_shout": 2,
+        "leader_of_the_pack": true,
+        "mana_spring_totem": 2
+      },
+      {
+        "battle_shout": 2
+      },
+      {
+        "battle_shout": 2
+      }
+    ]
+  },
+  {
+    "candidate": "Fire/Fury stack 2F/12W",
+    "duration": 300,
+    "iterations": 1500,
+    "raid_dps": 14286.769045274867,
+    "healer_dps": 0,
+    "tank_dps": 681.255972302054,
+    "support_dps": 14968.025017576922,
+    "party_dps": [
+      3616.3055337610876,
+      3498.5174043653483,
+      3926.685897709903,
+      3926.5161817405815
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 321.02195050552274,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Discipline Healer 1 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1158.0254870307026,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Fire P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1158.0182223101187,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Fury P1 #4 Undead",
+        "role": "DPS",
+        "dps": 979.2398739147436,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Feral Tank Tauren",
+        "role": "Tank",
+        "dps": 360.23402179653135,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Fury P1 Undead",
+        "role": "DPS",
+        "dps": 1046.4880240264317,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Fury P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1045.8749192566947,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Fury P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1045.9204392856911,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Discipline Healer 3 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Fury P1 #5 Undead",
+        "role": "DPS",
+        "dps": 982.8025719347202,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Fury P1 #6 Undead",
+        "role": "DPS",
+        "dps": 981.3062133924575,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Fury P1 #7 Undead",
+        "role": "DPS",
+        "dps": 981.1686931857342,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Fury P1 #8 Undead",
+        "role": "DPS",
+        "dps": 981.4084191969911,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Discipline Healer 4 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Fury P1 #9 Undead",
+        "role": "DPS",
+        "dps": 981.2534584456299,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Fury P1 #10 Undead",
+        "role": "DPS",
+        "dps": 981.7624712351444,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Fury P1 #11 Undead",
+        "role": "DPS",
+        "dps": 981.9274395293003,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Fury P1 #12 Undead",
+        "role": "DPS",
+        "dps": 981.5728125305067,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "battle_shout": 2,
+        "devotion_aura": 2
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "grace_of_air_totem": 2,
+        "battle_shout": 2,
+        "leader_of_the_pack": true,
+        "mana_spring_totem": 2
+      },
+      {
+        "battle_shout": 2
+      },
+      {
+        "battle_shout": 2
+      }
+    ]
+  },
+  {
+    "candidate": "Fire/Fury stack 3F/11W",
+    "duration": 300,
+    "iterations": 1500,
+    "raid_dps": 14458.786224999218,
+    "healer_dps": 0,
+    "tank_dps": 680.0363678421613,
+    "support_dps": 15138.82259284138,
+    "party_dps": [
+      3792.8457532625735,
+      3494.824495131663,
+      3925.8268056522397,
+      3925.325538794904
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 320.3289760418762,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Discipline Healer 1 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1156.6207973676865,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Fire P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1157.732786198031,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Fire P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1158.1631936549802,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Feral Tank Tauren",
+        "role": "Tank",
+        "dps": 359.70739180028505,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Fury P1 Undead",
+        "role": "DPS",
+        "dps": 1044.1383029326385,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Fury P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1046.3653870867383,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Fury P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1044.6134133120015,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Discipline Healer 3 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Fury P1 #4 Undead",
+        "role": "DPS",
+        "dps": 981.3101554377372,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Fury P1 #5 Undead",
+        "role": "DPS",
+        "dps": 980.9463738157675,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Fury P1 #6 Undead",
+        "role": "DPS",
+        "dps": 982.0101365663513,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Fury P1 #7 Undead",
+        "role": "DPS",
+        "dps": 981.560139832384,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Discipline Healer 4 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Fury P1 #8 Undead",
+        "role": "DPS",
+        "dps": 982.0829106526976,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Fury P1 #9 Undead",
+        "role": "DPS",
+        "dps": 981.3298732618249,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Fury P1 #10 Undead",
+        "role": "DPS",
+        "dps": 981.58569718373,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Fury P1 #11 Undead",
+        "role": "DPS",
+        "dps": 980.32705769665,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "devotion_aura": 2
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "grace_of_air_totem": 2,
+        "battle_shout": 2,
+        "leader_of_the_pack": true,
+        "mana_spring_totem": 2
+      },
+      {
+        "battle_shout": 2
+      },
+      {
+        "battle_shout": 2
+      }
+    ]
+  },
+  {
+    "candidate": "Fire/Fury stack 4F/10W",
+    "duration": 300,
+    "iterations": 1500,
+    "raid_dps": 14619.280029383772,
+    "healer_dps": 0,
+    "tank_dps": 680.5050814199326,
+    "support_dps": 15299.785110803705,
+    "party_dps": [
+      3793.3950833766053,
+      3498.9911371411254,
+      4081.9402556246814,
+      3925.4586346612937
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 320.355007620456,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Discipline Healer 1 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1157.1516143602994,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Fire P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1158.2039074547233,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Fire P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1157.684553941127,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Feral Tank Tauren",
+        "role": "Tank",
+        "dps": 360.1500737994766,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Fury P1 Undead",
+        "role": "DPS",
+        "dps": 1045.313173644373,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Fury P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1046.4568960327435,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Fury P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1047.0709936645328,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Discipline Healer 3 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Fire P1 #4 Undead",
+        "role": "DPS",
+        "dps": 1137.0918080648205,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Fury P1 #4 Undead",
+        "role": "DPS",
+        "dps": 982.188389234918,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Fury P1 #5 Undead",
+        "role": "DPS",
+        "dps": 982.1423125913227,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Fury P1 #6 Undead",
+        "role": "DPS",
+        "dps": 980.5177457336201,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Discipline Healer 4 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Fury P1 #7 Undead",
+        "role": "DPS",
+        "dps": 981.1911800160876,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Fury P1 #8 Undead",
+        "role": "DPS",
+        "dps": 981.080340536025,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Fury P1 #9 Undead",
+        "role": "DPS",
+        "dps": 981.865547275928,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Fury P1 #10 Undead",
+        "role": "DPS",
+        "dps": 981.3215668332525,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "devotion_aura": 2
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "grace_of_air_totem": 2,
+        "battle_shout": 2,
+        "leader_of_the_pack": true,
+        "mana_spring_totem": 2
+      },
+      {
+        "battle_shout": 2
+      },
+      {
+        "battle_shout": 2
+      }
+    ]
+  },
+  {
+    "candidate": "Fire/Fury stack 5F/9W",
+    "duration": 300,
+    "iterations": 1500,
+    "raid_dps": 14775.41364757703,
+    "healer_dps": 0,
+    "tank_dps": 681.1333580218006,
+    "support_dps": 15456.54700559883,
+    "party_dps": [
+      3792.9559796329213,
+      3498.4476069777093,
+      4238.684106769717,
+      3926.459312218481
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 320.63719428194935,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Discipline Healer 1 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1158.0107704560996,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Fire P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1156.736512679683,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Fire P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1157.5715022151883,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Feral Tank Tauren",
+        "role": "Tank",
+        "dps": 360.49616373985134,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Fury P1 Undead",
+        "role": "DPS",
+        "dps": 1044.3442400630868,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Fury P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1046.8318680775594,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Fury P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1046.7753350972116,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Discipline Healer 3 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Fire P1 #4 Undead",
+        "role": "DPS",
+        "dps": 1137.688384716255,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Fire P1 #5 Undead",
+        "role": "DPS",
+        "dps": 1137.6742571803316,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Fury P1 #4 Undead",
+        "role": "DPS",
+        "dps": 981.2210111179861,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Fury P1 #5 Undead",
+        "role": "DPS",
+        "dps": 982.1004537551447,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Discipline Healer 4 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Fury P1 #6 Undead",
+        "role": "DPS",
+        "dps": 980.6425536791712,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Fury P1 #7 Undead",
+        "role": "DPS",
+        "dps": 982.1440438209278,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Fury P1 #8 Undead",
+        "role": "DPS",
+        "dps": 982.4941434448094,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Fury P1 #9 Undead",
+        "role": "DPS",
+        "dps": 981.1785712735723,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "devotion_aura": 2
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "grace_of_air_totem": 2,
+        "battle_shout": 2,
+        "leader_of_the_pack": true,
+        "mana_spring_totem": 2
+      },
+      {
+        "battle_shout": 2
+      },
+      {
+        "battle_shout": 2
+      }
+    ]
+  },
+  {
+    "candidate": "Fire/Fury stack 6F/8W",
+    "duration": 300,
+    "iterations": 1500,
+    "raid_dps": 14932.476727564963,
+    "healer_dps": 0,
+    "tank_dps": 680.3618455737329,
+    "support_dps": 15612.838573138695,
+    "party_dps": [
+      3793.4274112310504,
+      3498.2697164275255,
+      4396.194933251647,
+      3924.9465122284714
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 319.9216141548148,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Discipline Healer 1 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1158.9621046335315,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Fire P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1157.926421857809,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Fire P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1156.6172705848962,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Feral Tank Tauren",
+        "role": "Tank",
+        "dps": 360.44023141891813,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Fury P1 Undead",
+        "role": "DPS",
+        "dps": 1044.9519457123397,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Fury P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1046.3577864805388,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Fury P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1046.5197528157291,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Discipline Healer 3 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Fire P1 #4 Undead",
+        "role": "DPS",
+        "dps": 1138.2234340965372,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Fire P1 #5 Undead",
+        "role": "DPS",
+        "dps": 1138.6914785536117,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Fire P1 #6 Undead",
+        "role": "DPS",
+        "dps": 1138.3600010157018,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Fury P1 #4 Undead",
+        "role": "DPS",
+        "dps": 980.9200195857967,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Discipline Healer 4 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Fury P1 #5 Undead",
+        "role": "DPS",
+        "dps": 981.2945025937865,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Fury P1 #6 Undead",
+        "role": "DPS",
+        "dps": 981.1844234302246,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Fury P1 #7 Undead",
+        "role": "DPS",
+        "dps": 981.1751946793274,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Fury P1 #8 Undead",
+        "role": "DPS",
+        "dps": 981.2923915251323,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "devotion_aura": 2
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "grace_of_air_totem": 2,
+        "battle_shout": 2,
+        "leader_of_the_pack": true,
+        "mana_spring_totem": 2
+      },
+      {
+        "battle_shout": 2
+      },
+      {
+        "battle_shout": 2
+      }
+    ]
+  },
+  {
+    "candidate": "Fire/Fury stack 7F/7W",
+    "duration": 300,
+    "iterations": 1500,
+    "raid_dps": 15086.641210064738,
+    "healer_dps": 0,
+    "tank_dps": 680.0719427601722,
+    "support_dps": 15766.71315282491,
+    "party_dps": [
+      3794.4561608149384,
+      3497.126840867752,
+      4547.653272129995,
+      3927.476879012225
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 319.80639274378444,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Discipline Healer 1 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1157.9833795847806,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Fire P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1156.852335689808,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Fire P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1159.814052796566,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Feral Tank Tauren",
+        "role": "Tank",
+        "dps": 360.26555001638775,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Fury P1 Undead",
+        "role": "DPS",
+        "dps": 1044.9468671967115,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Fury P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1045.5650748235707,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Fury P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1046.3493488310814,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Discipline Healer 3 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Fire P1 #4 Undead",
+        "role": "DPS",
+        "dps": 1136.9783767298775,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Fire P1 #5 Undead",
+        "role": "DPS",
+        "dps": 1138.1404178468663,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Fire P1 #6 Undead",
+        "role": "DPS",
+        "dps": 1137.4366456956222,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Fire P1 #7 Undead",
+        "role": "DPS",
+        "dps": 1135.0978318576288,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Discipline Healer 4 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Fury P1 #4 Undead",
+        "role": "DPS",
+        "dps": 981.4903930673274,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Fury P1 #5 Undead",
+        "role": "DPS",
+        "dps": 982.2950461272993,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Fury P1 #6 Undead",
+        "role": "DPS",
+        "dps": 982.2126760896571,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Fury P1 #7 Undead",
+        "role": "DPS",
+        "dps": 981.4787637279405,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "devotion_aura": 2
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "grace_of_air_totem": 2,
+        "battle_shout": 2,
+        "leader_of_the_pack": true,
+        "mana_spring_totem": 2
+      },
+      {},
+      {
+        "battle_shout": 2
+      }
+    ]
+  },
+  {
+    "candidate": "Fire/Fury stack 8F/6W",
+    "duration": 300,
+    "iterations": 1500,
+    "raid_dps": 15239.40641163805,
+    "healer_dps": 0,
+    "tank_dps": 680.7593526448779,
+    "support_dps": 15920.165764282929,
+    "party_dps": [
+      3792.7190874809535,
+      3495.021148540224,
+      4550.122657881842,
+      4082.302870379909
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 320.4974355999969,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Discipline Healer 1 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1155.4745017299676,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Fire P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1158.3662166206018,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Fire P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1158.380933530387,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Feral Tank Tauren",
+        "role": "Tank",
+        "dps": 360.26191704488105,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Fury P1 Undead",
+        "role": "DPS",
+        "dps": 1043.6344887720616,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Fury P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1045.2109246029968,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Fury P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1045.913818120285,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Discipline Healer 3 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Fire P1 #4 Undead",
+        "role": "DPS",
+        "dps": 1138.6306444615188,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Fire P1 #5 Undead",
+        "role": "DPS",
+        "dps": 1137.8573598562004,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Fire P1 #6 Undead",
+        "role": "DPS",
+        "dps": 1138.6634913229386,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Fire P1 #7 Undead",
+        "role": "DPS",
+        "dps": 1134.971162241183,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Discipline Healer 4 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Fire P1 #8 Undead",
+        "role": "DPS",
+        "dps": 1137.5618321314553,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Fury P1 #4 Undead",
+        "role": "DPS",
+        "dps": 981.9613097203921,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Fury P1 #5 Undead",
+        "role": "DPS",
+        "dps": 981.3768546246956,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Fury P1 #6 Undead",
+        "role": "DPS",
+        "dps": 981.4028739033663,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "devotion_aura": 2
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "grace_of_air_totem": 2,
+        "battle_shout": 2,
+        "leader_of_the_pack": true,
+        "mana_spring_totem": 2
+      },
+      {},
+      {
+        "battle_shout": 2
+      }
+    ]
+  },
+  {
+    "candidate": "Fire/Fury stack 9F/5W",
+    "duration": 300,
+    "iterations": 1500,
+    "raid_dps": 15406.12287482715,
+    "healer_dps": 0,
+    "tank_dps": 679.5483695124299,
+    "support_dps": 16085.671244339579,
+    "party_dps": [
+      3797.3021659552223,
+      3497.2002041902197,
+      4553.5206924693675,
+      4237.6481817247695
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 320.23241427270744,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Discipline Healer 1 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1158.8591521622757,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Fire P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1158.567640203546,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Fire P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1159.6429593166927,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Feral Tank Tauren",
+        "role": "Tank",
+        "dps": 359.3159552397225,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Fury P1 Undead",
+        "role": "DPS",
+        "dps": 1044.39986553609,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Fury P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1046.1312253503609,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Fury P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1047.353158064047,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Discipline Healer 3 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Fire P1 #4 Undead",
+        "role": "DPS",
+        "dps": 1137.691558727738,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Fire P1 #5 Undead",
+        "role": "DPS",
+        "dps": 1138.750695381372,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Fire P1 #6 Undead",
+        "role": "DPS",
+        "dps": 1138.2896453784615,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Fire P1 #7 Undead",
+        "role": "DPS",
+        "dps": 1138.788792981795,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Discipline Healer 4 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Fire P1 #8 Undead",
+        "role": "DPS",
+        "dps": 1137.835928281842,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Fire P1 #9 Undead",
+        "role": "DPS",
+        "dps": 1137.9459525798638,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Fury P1 #4 Undead",
+        "role": "DPS",
+        "dps": 981.5726568826241,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Fury P1 #5 Undead",
+        "role": "DPS",
+        "dps": 980.2936439804389,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "devotion_aura": 2
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "grace_of_air_totem": 2,
+        "battle_shout": 2,
+        "leader_of_the_pack": true,
+        "mana_spring_totem": 2
+      },
+      {},
+      {
+        "battle_shout": 2
+      }
+    ]
+  },
+  {
+    "candidate": "Fire/Fury stack 10F/4W",
+    "duration": 300,
+    "iterations": 1500,
+    "raid_dps": 15553.655509323855,
+    "healer_dps": 0,
+    "tank_dps": 680.7632699094701,
+    "support_dps": 16234.418779233325,
+    "party_dps": [
+      3795.798358825417,
+      3496.3535497421344,
+      4547.938846697647,
+      4394.328023968124
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 320.0633914312224,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Discipline Healer 1 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1158.590649555841,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Fire P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1159.46902256816,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Fire P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1157.6752952701931,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Feral Tank Tauren",
+        "role": "Tank",
+        "dps": 360.6998784782477,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Fury P1 Undead",
+        "role": "DPS",
+        "dps": 1044.6573252716976,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Fury P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1045.1350046924354,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Fury P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1045.861341299755,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Discipline Healer 3 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Fire P1 #4 Undead",
+        "role": "DPS",
+        "dps": 1138.2813476678014,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Fire P1 #5 Undead",
+        "role": "DPS",
+        "dps": 1137.0525456845894,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Fire P1 #6 Undead",
+        "role": "DPS",
+        "dps": 1134.799968475919,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Fire P1 #7 Undead",
+        "role": "DPS",
+        "dps": 1137.8049848693372,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Discipline Healer 4 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Fire P1 #8 Undead",
+        "role": "DPS",
+        "dps": 1137.6929679153602,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Fire P1 #9 Undead",
+        "role": "DPS",
+        "dps": 1137.7525847947559,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Fire P1 #10 Undead",
+        "role": "DPS",
+        "dps": 1137.4831371915257,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Fury P1 #4 Undead",
+        "role": "DPS",
+        "dps": 981.3993340664833,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "devotion_aura": 2
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "grace_of_air_totem": 2,
+        "battle_shout": 2,
+        "leader_of_the_pack": true,
+        "mana_spring_totem": 2
+      },
+      {},
+      {
+        "battle_shout": 2
+      }
+    ]
+  },
+  {
+    "candidate": "Fire/Fury stack 11F/3W",
+    "duration": 300,
+    "iterations": 1500,
+    "raid_dps": 15704.90654446521,
+    "healer_dps": 0,
+    "tank_dps": 680.5272471562955,
+    "support_dps": 16385.433791621504,
+    "party_dps": [
+      3791.2455645902996,
+      3497.1821863835776,
+      4550.5300750627275,
+      4546.475965584899
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 320.0092465006427,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Discipline Healer 1 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1157.1484374504266,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Fire P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1157.162090715129,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Fire P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1156.9257899241018,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Feral Tank Tauren",
+        "role": "Tank",
+        "dps": 360.5180006556528,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Fury P1 Undead",
+        "role": "DPS",
+        "dps": 1044.7923828610146,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Fury P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1045.9017391705968,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Fury P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1045.9700636963141,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Discipline Healer 3 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Fire P1 #4 Undead",
+        "role": "DPS",
+        "dps": 1138.2082118091,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Fire P1 #5 Undead",
+        "role": "DPS",
+        "dps": 1136.2830972304473,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Fire P1 #6 Undead",
+        "role": "DPS",
+        "dps": 1137.5365816908363,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Fire P1 #7 Undead",
+        "role": "DPS",
+        "dps": 1138.5021843323439,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Discipline Healer 4 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Fire P1 #8 Undead",
+        "role": "DPS",
+        "dps": 1136.4490397426796,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Fire P1 #9 Undead",
+        "role": "DPS",
+        "dps": 1137.032373257678,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Fire P1 #10 Undead",
+        "role": "DPS",
+        "dps": 1135.8878418249112,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Fire P1 #11 Undead",
+        "role": "DPS",
+        "dps": 1137.1067107596307,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "devotion_aura": 2
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "grace_of_air_totem": 2,
+        "battle_shout": 2,
+        "leader_of_the_pack": true,
+        "mana_spring_totem": 2
+      },
+      {},
+      {}
+    ]
+  },
+  {
+    "candidate": "Fire/Fury stack 12F/2W",
+    "duration": 300,
+    "iterations": 1500,
+    "raid_dps": 15803.114273689176,
+    "healer_dps": 0,
+    "tank_dps": 679.8186457686395,
+    "support_dps": 16482.932919457817,
+    "party_dps": [
+      3792.229609637408,
+      3590.491733833492,
+      4550.934065903802,
+      4549.277510083109
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 320.1132488943023,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Discipline Healer 1 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1157.216535885925,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Fire P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1157.2010779106974,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Fire P1 #4 Undead",
+        "role": "DPS",
+        "dps": 1157.6987469464834,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Feral Tank Tauren",
+        "role": "Tank",
+        "dps": 359.70539687433717,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Fury P1 Undead",
+        "role": "DPS",
+        "dps": 1044.2446924366234,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Fury P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1045.9071227813436,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1140.6345217411874,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Discipline Healer 3 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Fire P1 #5 Undead",
+        "role": "DPS",
+        "dps": 1138.1652779709234,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Fire P1 #6 Undead",
+        "role": "DPS",
+        "dps": 1136.7074115624357,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Fire P1 #7 Undead",
+        "role": "DPS",
+        "dps": 1138.3013835719169,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Fire P1 #8 Undead",
+        "role": "DPS",
+        "dps": 1137.7599927985266,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Discipline Healer 4 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Fire P1 #9 Undead",
+        "role": "DPS",
+        "dps": 1136.4146356810863,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Fire P1 #10 Undead",
+        "role": "DPS",
+        "dps": 1136.8256727696241,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Fire P1 #11 Undead",
+        "role": "DPS",
+        "dps": 1137.7526675613615,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Fire P1 #12 Undead",
+        "role": "DPS",
+        "dps": 1138.2845340710385,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "devotion_aura": 2
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "grace_of_air_totem": 2,
+        "battle_shout": 2,
+        "leader_of_the_pack": true,
+        "mana_spring_totem": 2
+      },
+      {},
+      {}
+    ]
+  },
+  {
+    "candidate": "Fire/Fury stack 13F/1W",
+    "duration": 300,
+    "iterations": 1500,
+    "raid_dps": 15900.078803299477,
+    "healer_dps": 0,
+    "tank_dps": 679.3202063957935,
+    "support_dps": 16579.39900969527,
+    "party_dps": [
+      3795.724742870457,
+      3686.6572684798643,
+      4548.091362405401,
+      4548.9256359395495
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 319.69327197127956,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Discipline Healer 1 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1159.0402118202892,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Fire P1 #4 Undead",
+        "role": "DPS",
+        "dps": 1158.4692700147107,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Fire P1 #5 Undead",
+        "role": "DPS",
+        "dps": 1158.5219890641756,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Feral Tank Tauren",
+        "role": "Tank",
+        "dps": 359.62693442451393,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Fury P1 Undead",
+        "role": "DPS",
+        "dps": 1043.8164293675766,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1141.8096685995706,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Fire P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1141.4042360882036,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Discipline Healer 3 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Fire P1 #6 Undead",
+        "role": "DPS",
+        "dps": 1135.723787725,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Fire P1 #7 Undead",
+        "role": "DPS",
+        "dps": 1137.067307747223,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Fire P1 #8 Undead",
+        "role": "DPS",
+        "dps": 1136.8909059643836,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Fire P1 #9 Undead",
+        "role": "DPS",
+        "dps": 1138.409360968794,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Discipline Healer 4 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Fire P1 #10 Undead",
+        "role": "DPS",
+        "dps": 1135.3865806435751,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Fire P1 #11 Undead",
+        "role": "DPS",
+        "dps": 1138.4514031540502,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Fire P1 #12 Undead",
+        "role": "DPS",
+        "dps": 1137.7230136830924,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Fire P1 #13 Undead",
+        "role": "DPS",
+        "dps": 1137.3646384588321,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "devotion_aura": 2
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "grace_of_air_totem": 2,
+        "battle_shout": 2,
+        "leader_of_the_pack": true,
+        "mana_spring_totem": 2
+      },
+      {},
+      {}
+    ]
+  },
+  {
+    "candidate": "Fire/Fury stack 14F/0W",
+    "duration": 300,
+    "iterations": 1500,
+    "raid_dps": 15992.912011307746,
+    "healer_dps": 0,
+    "tank_dps": 677.8181083348652,
+    "support_dps": 16670.730119642612,
+    "party_dps": [
+      3794.9706208467833,
+      3778.101046414674,
+      4546.998766613042,
+      4550.659685768115
+    ],
+    "members": [
+      {
+        "party": 0,
+        "slot": 0,
+        "name": "Protection Paladin Undead",
+        "role": "Tank",
+        "dps": 320.04798393773933,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 1,
+        "name": "Discipline Healer 1 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 2,
+        "name": "Fire P1 #4 Undead",
+        "role": "DPS",
+        "dps": 1158.99195938365,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 3,
+        "name": "Fire P1 #5 Undead",
+        "role": "DPS",
+        "dps": 1158.431846089184,
+        "chance_of_death": 0
+      },
+      {
+        "party": 0,
+        "slot": 4,
+        "name": "Fire P1 #6 Undead",
+        "role": "DPS",
+        "dps": 1157.4988314362088,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 0,
+        "name": "Feral Tank Tauren",
+        "role": "Tank",
+        "dps": 357.7701243971258,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 1,
+        "name": "Restoration Shaman Tauren",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 2,
+        "name": "Fire P1 Undead",
+        "role": "DPS",
+        "dps": 1140.7072164704039,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 3,
+        "name": "Fire P1 #2 Undead",
+        "role": "DPS",
+        "dps": 1139.4473753316834,
+        "chance_of_death": 0
+      },
+      {
+        "party": 1,
+        "slot": 4,
+        "name": "Fire P1 #3 Undead",
+        "role": "DPS",
+        "dps": 1140.1763302154611,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 0,
+        "name": "Discipline Healer 3 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 1,
+        "name": "Fire P1 #7 Undead",
+        "role": "DPS",
+        "dps": 1135.865734748712,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 2,
+        "name": "Fire P1 #8 Undead",
+        "role": "DPS",
+        "dps": 1137.0768195372823,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 3,
+        "name": "Fire P1 #9 Undead",
+        "role": "DPS",
+        "dps": 1137.8758889109758,
+        "chance_of_death": 0
+      },
+      {
+        "party": 2,
+        "slot": 4,
+        "name": "Fire P1 #10 Undead",
+        "role": "DPS",
+        "dps": 1136.1803234160714,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 0,
+        "name": "Discipline Healer 4 Undead",
+        "role": "Healer",
+        "dps": 0,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 1,
+        "name": "Fire P1 #11 Undead",
+        "role": "DPS",
+        "dps": 1138.439101365565,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 2,
+        "name": "Fire P1 #12 Undead",
+        "role": "DPS",
+        "dps": 1137.8397448006442,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 3,
+        "name": "Fire P1 #13 Undead",
+        "role": "DPS",
+        "dps": 1137.1195838321266,
+        "chance_of_death": 0
+      },
+      {
+        "party": 3,
+        "slot": 4,
+        "name": "Fire P1 #14 Undead",
+        "role": "DPS",
+        "dps": 1137.2612557697798,
+        "chance_of_death": 0
+      }
+    ],
+    "buffs": {
+      "gift_of_the_wild": 1
+    },
+    "party_buffs": [
+      {
+        "devotion_aura": 2
+      },
+      {
+        "mana_tide_totems": 1,
+        "strength_of_earth_totem": 2,
+        "grace_of_air_totem": 2,
+        "leader_of_the_pack": true,
+        "mana_spring_totem": 2
+      },
+      {},
+      {}
+    ]
+  }
+]

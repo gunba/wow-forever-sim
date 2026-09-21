@@ -132,7 +132,9 @@ func (unit *Unit) applySpellPushback() {
 				aura.Unit.SetGCDTimer(sim, aura.Unit.Hardcast.Expires)
 
 				// Update Swing timer
-				aura.Unit.AutoAttacks.StopMeleeUntil(sim, aura.Unit.Hardcast.Expires, false)
+				if !aura.Unit.AutoAttacks.ContinueWhileCasting() {
+					aura.Unit.AutoAttacks.StopMeleeUntil(sim, aura.Unit.Hardcast.Expires, false)
+				}
 			}
 		},
 	})
@@ -193,11 +195,12 @@ func (spell *Spell) makeCastFunc(config CastConfig) CastSuccessFunc {
 			return spell.castFailureHelper(sim, "GCD on cooldown for %s, curTime = %s", spell.Unit.GCD.TimeToReady(sim), sim.CurrentTime)
 		}
 
-		if hc := spell.Unit.Hardcast; spell.Unit.IsCasting(sim) {
+		continuousAuto := spell.ProcMask.Matches(ProcMaskWhiteHit) && spell.Unit.AutoAttacks.ContinueWhileCasting()
+		if hc := spell.Unit.Hardcast; spell.Unit.IsCasting(sim) && !continuousAuto {
 			return spell.castFailureHelper(sim, "casting/channeling %v for %s, curTime = %s", hc.ActionID, hc.Expires-sim.CurrentTime, sim.CurrentTime)
 		}
 
-		if dot := spell.Unit.ChanneledDot; spell.Unit.IsChanneling(sim) {
+		if dot := spell.Unit.ChanneledDot; spell.Unit.IsChanneling(sim) && !continuousAuto {
 			return spell.castFailureHelper(sim, "channeling %v for %s, curTime = %s", dot.ActionID, dot.expires-sim.CurrentTime, sim.CurrentTime)
 		}
 
@@ -218,7 +221,7 @@ func (spell *Spell) makeCastFunc(config CastConfig) CastSuccessFunc {
 		}
 
 		// Non melee casts
-		if spell.Flags.Matches(SpellFlagResetAttackSwing) && spell.Unit.AutoAttacks.enabled {
+		if spell.Flags.Matches(SpellFlagResetAttackSwing) && spell.Unit.AutoAttacks.enabled && !spell.Unit.AutoAttacks.ContinueWhileCasting() {
 			restartMeleeAt := sim.CurrentTime + spell.CurCast.CastTime
 			spell.Unit.AutoAttacks.StopMeleeUntil(sim, restartMeleeAt, false)
 		}

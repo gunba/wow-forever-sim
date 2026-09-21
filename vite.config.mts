@@ -25,7 +25,7 @@ export const SITE_BASE = process.env.SITE_BASE || '/classic/';
 // with SITE_REPO=<owner>/<repo>; the deploy workflow passes the repository it is running
 // in. Read it through SITE_REPO in core/constants/other.ts for TypeScript, and through the
 // @@REPO@@ placeholder for the hand-written homepage.
-export const SITE_REPO = process.env.SITE_REPO || 'ElliotWood/Forever';
+export const SITE_REPO = process.env.SITE_REPO || 'gunba/wow-forever-sim';
 
 // The version the UI shows, so a user can say which build they are looking at. Taken from
 // git rather than hand-maintained: the newest tag plus the commits since it, or the bare

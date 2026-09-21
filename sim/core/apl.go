@@ -22,6 +22,7 @@ type APLRotation struct {
 
 	// If true, can recast channel when interrupted.
 	allowChannelRecastOnInterrupt bool
+	checkingChannelInterrupt      bool
 
 	// Used inside of actions/value to determine whether they will occur during the prepull or regular rotation.
 	parsingPrepull bool
@@ -167,6 +168,7 @@ func (rot *APLRotation) reset(sim *Simulation) {
 	rot.inLoop = false
 	rot.interruptChannelIf = nil
 	rot.allowChannelRecastOnInterrupt = false
+	rot.checkingChannelInterrupt = false
 	for _, action := range rot.allAPLActions() {
 		action.impl.Reset(sim)
 	}
@@ -251,12 +253,17 @@ func (apl *APLRotation) shouldInterruptChannel(sim *Simulation) bool {
 		return false
 	}
 
-	if apl.interruptChannelIf == nil || !apl.interruptChannelIf.GetBool(sim) {
-		// Continue the channel.
+	if apl.interruptChannelIf == nil {
 		return false
 	}
 
-	// Allow next action to interrupt the channel, but if the action is the same action then it still needs to continue.
+	// Both interruptIf and the next action can query spellCanCast. Evaluate
+	// them after a hypothetical cancellation, retaining the visible tick count.
+	apl.checkingChannelInterrupt = true
+	defer func() { apl.checkingChannelInterrupt = false }()
+	if !apl.interruptChannelIf.GetBool(sim) {
+		return false
+	}
 	nextAction := apl.getNextAction(sim)
 	if nextAction == nil {
 		return false

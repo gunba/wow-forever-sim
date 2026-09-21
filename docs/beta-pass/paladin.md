@@ -1,5 +1,20 @@
 # Paladin beta pass (17 September 2026)
 
+## Talent availability correction
+
+Seal of Command requires its talent point. In client `1.60.1.69893`,
+[`TraitDefinition`](https://wago.tools/db2/TraitDefinition/csv?build=1.60.1.69893)
+135226 references spell 20375. Its
+[`TraitNodeEntry`](https://wago.tools/db2/TraitNodeEntry/csv?build=1.60.1.69893)
+130425 has one rank and is attached by link 127892 to live
+[`TraitNode`](https://wago.tools/db2/TraitNode/csv?build=1.60.1.69893)
+105696, in tree 1100 at `(10280, 3330)` — Retribution row 3.
+This check uses the current Trait graph, not the leftover Classic Talent table.
+The engine previously registered every rank unconditionally. That missing
+availability check is corrected and covered by
+`TestSealOfCommandRequiresTalent`. Search candidates that omitted the point
+while casting Command are invalid, not DPS improvements.
+
 Beta client `1.60.1.69893` against Classic Era `1.15.9.69722`, read with `tools/data_watch/spell_client.py`, the
 talent curves with `tools/data_watch/trait_curve.mjs`, and `../beta/paladin.json`.
 

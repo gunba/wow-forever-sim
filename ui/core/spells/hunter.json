@@ -1,4 +1,18 @@
 {
+	"1299447": {
+		"ability": "Aspect of the Beast",
+		"file": "sim/hunter/aspects.go",
+		"source": "forever",
+		"note": "Level-60 rank grants 110 melee attack power and is mutually exclusive with Aspect of the Hawk. Deadly Aspects enables Quick Strikes on melee auto attacks.",
+		"tooltip": "110 Mana\nInstant\nIncreases Melee Attack Power by 110. Only one Aspect can be active at a time."
+	},
+	"1299448": {
+		"ability": "Quick Strikes",
+		"file": "sim/hunter/aspects.go",
+		"source": "forever",
+		"note": "Deadly Aspects proc while Aspect of the Beast is active. Proc chance is 2% per talent point.",
+		"tooltip": "Melee attack speed increased by 30% for 12 seconds."
+	},
 	"1242512": {
 		"ability": "Rapid Recuperation",
 		"file": "sim/hunter/talents.go",

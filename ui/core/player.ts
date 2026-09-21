@@ -252,6 +252,8 @@ export class Player<SpecType extends Spec> {
 
 	private stormstrikeFrequency = 20.0;
 	private stormstrikeNatureAttackerFrequency = 4.0;
+	private foreverTier1Bonuses = false;
+	private equipmentScale = 1;
 
 	private readonly autoRotationGenerator: AutoRotationGenerator<SpecType> | null = null;
 	private readonly simpleRotationGenerator: SimpleRotationGenerator<SpecType> | null = null;
@@ -1055,6 +1057,28 @@ export class Player<SpecType extends Spec> {
 		return this.stormstrikeFrequency;
 	}
 
+	getForeverTier1Bonuses(): boolean {
+		return this.foreverTier1Bonuses;
+	}
+
+	getEquipmentScale(): number {
+		return this.equipmentScale;
+	}
+
+	setEquipmentScale(eventID: EventID, value: number) {
+		value ||= 1;
+		if (!Number.isFinite(value) || value <= 0) throw new Error('Equipment scale must be finite and positive');
+		if (value === this.equipmentScale) return;
+		this.equipmentScale = value;
+		this.miscOptionsChangeEmitter.emit(eventID);
+	}
+
+	setForeverTier1Bonuses(eventID: EventID, value: boolean) {
+		if (value === this.foreverTier1Bonuses) return;
+		this.foreverTier1Bonuses = value;
+		this.miscOptionsChangeEmitter.emit(eventID);
+	}
+
 	setStormstrikeFrequency(eventID: EventID, newStormstrikeFrequency: number) {
 		if (newStormstrikeFrequency === this.stormstrikeFrequency) return;
 
@@ -1407,6 +1431,8 @@ export class Player<SpecType extends Spec> {
 				isbSpriests: this.getIsbSpriests(),
 				stormstrikeFrequency: this.getStormstrikeFrequency(),
 				stormstrikeNatureAttackerFrequency: this.getStormstrikeNatureAttackerFrequency(),
+				foreverTier1Bonuses: this.getForeverTier1Bonuses(),
+				equipmentScale: this.getEquipmentScale() === 1 ? 0 : this.getEquipmentScale(),
 			});
 			player = withSpecProto(this.spec, player, this.getSpecOptions());
 		}
@@ -1466,6 +1492,8 @@ export class Player<SpecType extends Spec> {
 				this.setIsbSpriests(eventID, proto.isbSpriests);
 				this.setStormstrikeFrequency(eventID, proto.stormstrikeFrequency);
 				this.setStormstrikeNatureAttackerFrequency(eventID, proto.stormstrikeNatureAttackerFrequency);
+				this.setForeverTier1Bonuses(eventID, proto.foreverTier1Bonuses);
+				this.setEquipmentScale(eventID, proto.equipmentScale);
 			}
 			if (loadCategory(SimSettingCategories.External)) {
 				this.setBuffs(eventID, proto.buffs || IndividualBuffs.create());

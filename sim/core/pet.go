@@ -48,7 +48,8 @@ type Pet struct {
 
 	// Some pets expire after a certain duration. This is the pending action that disables
 	// the pet on expiration.
-	timeoutAction *PendingAction
+	timeoutAction    *PendingAction
+	prepullAutoSwing *PendingAction
 }
 
 func NewPet(name string, owner *Character, baseStats stats.Stats, statInheritance PetStatInheritance, enabledOnStart bool, isGuardian bool) Pet {
@@ -160,10 +161,14 @@ func (pet *Pet) Enable(sim *Simulation, petAgent PetAgent) {
 	if sim.CurrentTime >= 0 {
 		pet.AutoAttacks.EnableAutoSwing(sim)
 	} else {
-		sim.AddPendingAction(&PendingAction{
+		pet.prepullAutoSwing = &PendingAction{
 			NextActionAt: 0,
-			OnAction:     pet.AutoAttacks.EnableAutoSwing,
-		})
+			OnAction: func(sim *Simulation) {
+				pet.prepullAutoSwing = nil
+				pet.AutoAttacks.EnableAutoSwing(sim)
+			},
+		}
+		sim.AddPendingAction(pet.prepullAutoSwing)
 	}
 
 	if sim.Log != nil {
@@ -182,7 +187,7 @@ func (pet *Pet) Enable(sim *Simulation, petAgent PetAgent) {
 func (pet *Pet) ApplyOnPetEnable(newOnPetEnable OnPetEnable) {
 	oldOnPetEnable := pet.OnPetEnable
 	if oldOnPetEnable == nil {
-		pet.OnPetEnable = oldOnPetEnable
+		pet.OnPetEnable = newOnPetEnable
 	} else {
 		pet.OnPetEnable = func(sim *Simulation) {
 			oldOnPetEnable(sim)
@@ -226,6 +231,11 @@ func (pet *Pet) Disable(sim *Simulation) {
 			pet.Log(sim, "No pet summoned")
 		}
 		return
+	}
+
+	if pet.prepullAutoSwing != nil {
+		pet.prepullAutoSwing.Cancel(sim)
+		pet.prepullAutoSwing = nil
 	}
 
 	pet.AddStatsDynamic(sim, pet.inheritedStats.Invert())

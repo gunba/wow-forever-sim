@@ -40,7 +40,7 @@ func (warrior *Warrior) registerSlamSpell() {
 				Duration: time.Second * 15,
 			},
 			ModifyCast: func(sim *core.Simulation, spell *core.Spell, cast *core.Cast) {
-				if warrior.Talents.ImprovedSlam == 0 && spell.CastTime() > 0 {
+				if !warrior.AutoAttacks.ContinueWhileCasting() && warrior.Talents.ImprovedSlam == 0 && spell.CastTime() > 0 {
 					warrior.AutoAttacks.StopMeleeUntil(sim, sim.CurrentTime+cast.CastTime, true)
 				}
 			},

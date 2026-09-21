@@ -10,7 +10,8 @@ import (
 ///////////////////////////////////////////////////////////////////////////
 
 var ItemSetChampionsGuard = core.NewItemSet(core.ItemSet{
-	Name: "Champion's Guard",
+	Name:            "Champion's Guard",
+	AlternativeName: "Champion's Vestments",
 	Bonuses: map[int32]core.ApplyEffect{
 		// +40 Attack Power.
 		2: func(agent core.Agent) {

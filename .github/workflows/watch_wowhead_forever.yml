@@ -10,8 +10,6 @@ name: Watch Forever game data
 #            `wow_classic_beta` product as version 1.60.x (first build 2026-09-16), NOT under a product with
 #            "forever" in the name. Every build stays downloadable, so the diff fetches both and stores nothing.
 on:
-  schedule:
-    - cron: '17 */6 * * *'
   workflow_dispatch:
 
 permissions:

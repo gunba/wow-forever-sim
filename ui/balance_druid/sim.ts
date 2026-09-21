@@ -52,6 +52,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecBalanceDruid, {
 	displayPseudoStats: [],
 
 	defaults: {
+		race: Race.RaceTauren,
 		// Default equipped gear.
 		gear: Presets.DefaultGear.gear,
 		// Default EP weights for sorting gear in the gear picker.
@@ -109,9 +110,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecBalanceDruid, {
 	},
 
 	presets: {
-		talents: [...Presets.TalentPresets[ClassicPhase.Phase1]],
-		rotations: [...Presets.APLPresets[ClassicPhase.Phase1]],
-		gear: [...Presets.GearPresets[ClassicPhase.Phase2]],
+		talents: Presets.BuildPresets.map(build => build.talents!),
+		rotations: Presets.BuildPresets.map(build => build.rotation!),
+		gear: Presets.GearPresets,
+		builds: Presets.BuildPresets,
 	},
 
 	autoRotation: player => {
@@ -137,10 +139,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecBalanceDruid, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearBalance.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearLaunch.gear,
+					1: Presets.GearBalance.gear,
 				},
 			},
 		},

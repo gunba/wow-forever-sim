@@ -6,7 +6,9 @@ import (
 )
 
 var ItemSetLieutenantCommandersRedoubt = core.NewItemSet(core.ItemSet{
-	Name: "Lieutenant Commander's Redoubt",
+	ID:              2086,
+	Name:            "Lieutenant Commander's Vindication",
+	AlternativeName: "Lieutenant Commander's Redoubt",
 	Bonuses: map[int32]core.ApplyEffect{
 		// Increases damage and healing done by magical spells and effects by up to 23.
 		2: func(agent core.Agent) {

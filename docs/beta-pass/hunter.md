@@ -1,5 +1,8 @@
 # Hunter beta pass (17 September 2026)
 
+The shot wind-up convention below is historical and has been removed.
+See the current [auto-attack model](../auto_attack_audit.md).
+
 Beta client `1.60.1.69893` against Classic Era `1.15.9.69722`, read with `tools/data_watch/spell_client.py`, the
 talent curves with `tools/data_watch/trait_curve.mjs`, and `../beta/hunter.json`.
 
@@ -80,8 +83,8 @@ No hunter lines existed. The spellbook diff below covers it.
 
 New in Forever:
 - **Aspect of the Beast ranks 2-4** (1299445-1299447, levels 40/50/60): 70/90/110 melee attack power, plus Quick
-  Strikes (1299448, 30% melee speed) under Deadly Aspects. Not implemented: a hunter holds one aspect, and Hawk's 120
-  ranged AP wins for a ranged hunter. A melee hunter build would want it.
+  Strikes (1299448, 30% melee speed) under Deadly Aspects. The level-60 rank is now implemented, mutually exclusive
+  with Hawk, and used by the melee Survival APL. See [shared integration](core.md).
 - **Summon Hawk ranks 1-4** (see above, implemented).
 - **Counterattack rank 2** (1242634, level 30): 50% weapon damage plus 40, talent, still not simulated (needs a parry).
 - **Strider Kick** (talent, implemented).

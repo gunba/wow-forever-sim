@@ -199,7 +199,10 @@ func (warlock *Warlock) registerCurseOfElementsSpell() {
 	elementsAuras := warlock.NewEnemyAuraArray(core.CurseOfElementsAura)
 	shadowAuras := warlock.NewEnemyAuraArray(core.CurseOfShadowAura)
 	warlock.CurseOfElementsAuras = warlock.NewEnemyAuraArray(func(unit *core.Unit) *core.Aura {
-		debuffs := []*core.Aura{elementsAuras.Get(unit), shadowAuras.Get(unit)}
+		debuffs := []*core.Aura{elementsAuras.Get(unit)}
+		if !warlock.Env.IsForever() {
+			debuffs = append(debuffs, shadowAuras.Get(unit))
+		}
 		return unit.RegisterAura(core.Aura{
 			Label:    "Curse of the Elements-" + warlock.Label,
 			ActionID: core.ActionID{SpellID: spellID},

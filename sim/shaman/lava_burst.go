@@ -72,7 +72,9 @@ func (shaman *Shaman) newLavaBurstSpellConfig(rank int, cdTimer *core.Timer) cor
 			},
 			ModifyCast: func(sim *core.Simulation, spell *core.Spell, cast *core.Cast) {
 				castTime := shaman.ApplyCastSpeedForSpell(cast.CastTime, spell)
-				shaman.AutoAttacks.StopMeleeUntil(sim, sim.CurrentTime+castTime, false)
+				if !shaman.AutoAttacks.ContinueWhileCasting() {
+					shaman.AutoAttacks.StopMeleeUntil(sim, sim.CurrentTime+castTime, false)
+				}
 			},
 		},
 

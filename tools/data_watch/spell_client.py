@@ -10,8 +10,9 @@
 #   tools/data_watch/spell_client.py Fireball --json
 #   tools/data_watch/spell_client.py --learned mage          # every spell id the class trains, one line each
 #
-# Players learn the same spell ids in Forever as in Era (SkillLineAbility), with new numbers behind them. The
-# 1.3M-range ids that share a player spell's name (Fireball 1305748) are NPC spells; ignore them.
+# Forever reuses some Era spell ids and introduces new ones. SkillLineAbility also retains legacy rune
+# entries, so the learned() list alone is not proof of current availability. Id ranges do not distinguish
+# NPC spells from player spells: both occur in the 1.3M range.
 #
 # From Python: `from spell_client import Client; Client().spell(25306)`.
 #
