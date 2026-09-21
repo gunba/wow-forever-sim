@@ -91,6 +91,7 @@ jobs:
           ln -s "$PWD/dist/classic" "site${SITE_BASE%/}"
           python3 -m http.server 8080 --directory site >/dev/null 2>&1 &
           SITE_URL="http://localhost:8080$SITE_BASE" node tools/smoke/check_pages.mjs
+          SITE_URL="http://localhost:8080$SITE_BASE" node tools/smoke/check_benchmark_replay.mjs
         env:
           SITE_BASE: ${{ steps.base.outputs.value }}
 
