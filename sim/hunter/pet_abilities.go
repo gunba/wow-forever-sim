@@ -107,7 +107,7 @@ func (hp *HunterPet) newBite() *core.Spell {
 		25: 37,
 		40: 59,
 		50: 80,
-		60: 91,
+		60: 99, // SpellEffect 17261: base 90, variance .2 => 81–99.
 	}[hp.Owner.Level]
 
 	spellID := map[int32]int32{

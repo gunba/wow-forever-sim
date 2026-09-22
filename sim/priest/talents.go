@@ -222,10 +222,12 @@ func (priest *Priest) applySpiritTap() {
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
 			priest.EnableDynamicStatDep(sim, statDep)
 			priest.PseudoStats.SpiritRegenRateCasting += 0.50
+			priest.UpdateManaRegenRates()
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
 			priest.DisableDynamicStatDep(sim, statDep)
 			priest.PseudoStats.SpiritRegenRateCasting -= 0.50
+			priest.UpdateManaRegenRates()
 		},
 	})
 }
@@ -390,21 +392,16 @@ func (priest *Priest) registerShadowform() {
 				}
 			}
 		},
-		OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
-			// The form only blocks healing; Smite and Holy Fire stay castable inside it.
-			if spell.SpellSchool.Matches(core.SpellSchoolHoly) && spell.Flags.Matches(core.SpellFlagHelpful) {
-				aura.Deactivate(sim)
-			}
-		},
 	})
 
 	priest.Shadowform = priest.RegisterSpell(core.SpellConfig{
 		ActionID: actionID,
 		Flags:    core.SpellFlagNoOnCastComplete | core.SpellFlagAPL,
 
+		ManaCost: core.ManaCostOptions{BaseCost: 0.40},
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
-				GCD: 0,
+				GCD: core.GCDDefault,
 			},
 		},
 

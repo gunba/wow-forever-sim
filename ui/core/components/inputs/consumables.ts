@@ -142,7 +142,9 @@ export const ConjuredDemonicRune: ConsumableInputConfig<Conjured> = {
 export const ConjuredRogueThistleTea: ConsumableInputConfig<Conjured> = {
 	actionId: () => ActionId.fromItemId(7676),
 	value: Conjured.ConjuredRogueThistleTea,
-	showWhen: player => player.getClass() == Class.ClassRogue,
+	showWhen: player =>
+		player.getClass() == Class.ClassRogue ||
+		(player.sim.getRuleset() === Ruleset.RulesetForever && player.isSpec(Spec.SpecFeralDruid)),
 };
 
 export const CONJURED_CONFIG: ConsumableStatOption<Conjured>[] = [

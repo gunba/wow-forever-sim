@@ -370,7 +370,7 @@ func (warrior *Warrior) applyShieldSpecialization() {
 // Rank 2 doubles the chance and leaves the Rage alone: "Grants you a 100% chance to
 // generate 5 Rage when you Dodge or Parry while a shield is equipped."
 func (warrior *Warrior) applyMasterOfDefense() {
-	if warrior.Talents.MasterOfDefense == 0 || !warrior.PseudoStats.CanBlock {
+	if warrior.Talents.MasterOfDefense == 0 {
 		return
 	}
 
@@ -385,7 +385,7 @@ func (warrior *Warrior) applyMasterOfDefense() {
 			aura.Activate(sim)
 		},
 		OnSpellHitTaken: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if result.DidDodge() || result.DidParry() {
+			if warrior.PseudoStats.CanBlock && (result.DidDodge() || result.DidParry()) {
 				if sim.Proc(procChance, "Master of Defense") {
 					warrior.AddRage(sim, rageGain, rageMetrics)
 				}
@@ -396,11 +396,34 @@ func (warrior *Warrior) applyMasterOfDefense() {
 
 // 2% per point, confirmed by the beta client's rank curve.
 func (warrior *Warrior) applyBastion() {
-	if warrior.Talents.Bastion == 0 || !warrior.PseudoStats.CanBlock {
+	if warrior.Talents.Bastion == 0 {
 		return
 	}
 
-	warrior.PseudoStats.DamageDealtMultiplier *= 1 + 0.02*float64(warrior.Talents.Bastion)
+	multiplier := 1 + 0.02*float64(warrior.Talents.Bastion)
+	aura := warrior.RegisterAura(core.Aura{
+		Label:    "Bastion",
+		ActionID: core.ActionID{SpellID: 16538},
+		Duration: core.NeverExpires,
+		OnReset: func(aura *core.Aura, sim *core.Simulation) {
+			if warrior.PseudoStats.CanBlock {
+				aura.Activate(sim)
+			}
+		},
+		OnGain: func(aura *core.Aura, sim *core.Simulation) {
+			warrior.PseudoStats.DamageDealtMultiplier *= multiplier
+		},
+		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
+			warrior.PseudoStats.DamageDealtMultiplier /= multiplier
+		},
+	})
+	warrior.RegisterOnItemSwap(func(sim *core.Simulation) {
+		if warrior.PseudoStats.CanBlock {
+			aura.Activate(sim)
+		} else {
+			aura.Deactivate(sim)
+		}
+	})
 }
 
 // 1 Rage per point, confirmed by the beta client's rank curve.

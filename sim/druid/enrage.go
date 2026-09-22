@@ -7,13 +7,17 @@ import (
 	"github.com/wowsims/classic/sim/core/stats"
 )
 
-// Generates 20 Rage over 10 sec, but reduces base armor by 27% while it lasts. Forever adds 10 Rage up front
+// Generates 20 Rage over 10 sec, reducing base armor by 27% in Bear or 16% in Dire Bear.
+// Forever adds 10 Rage up front
 // (beta client 1.60.1.69893, effect 1 of 5229).
 func (druid *Druid) registerEnrageSpell() {
 	actionID := core.ActionID{SpellID: 5229}
 	rageMetrics := druid.NewRageMetrics(actionID)
 
 	armorMultiplier := 1 - 0.27
+	if druid.BearForm != nil && druid.BearForm.ActionID.SpellID == 9634 {
+		armorMultiplier = 1 - 0.16
+	}
 
 	druid.EnrageAura = druid.RegisterAura(core.Aura{
 		Label:    "Enrage",

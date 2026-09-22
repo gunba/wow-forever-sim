@@ -410,8 +410,8 @@ type PseudoStats struct {
 	SpiritRegenRateCasting    float64       // percentage of spirit regen allowed during casting. Spell effect MOD_MANA_REGEN_INTERRUPT (134)
 
 	// Both of these are currently only used for innervate.
-	ForceFullSpiritRegen  bool    // If set, automatically uses full spirit regen regardless of FSR refresh time.
-	SpiritRegenMultiplier float64 // Multiplier on spirit portion of mana regen. For spell effect MOD_POWER_REGEN_PERCENT (110)
+	FullSpiritRegenSources int32   // Active effects allowing full Spirit regeneration inside the five-second rule.
+	SpiritRegenMultiplier  float64 // Multiplier on spirit portion of mana regen. For spell effect MOD_POWER_REGEN_PERCENT (110)
 
 	// If true, allows block/parry.
 	InFrontOfTarget bool

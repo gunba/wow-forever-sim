@@ -315,7 +315,7 @@ func (hunter *Hunter) applyResourcefulness() {
 		Label:    "Resourcefulness",
 		ActionID: core.ActionID{SpellID: 1242688},
 		Duration: time.Second * 30,
-	}).AttachAdditivePseudoStatBuff(&hunter.PseudoStats.SpiritRegenRateCasting, 0.5)
+	}).AttachSpiritRegenRateCastingBuff(0.5)
 
 	core.MakePermanent(hunter.RegisterAura(core.Aura{
 		Label: "Resourcefulness Trigger",
@@ -356,7 +356,7 @@ func (hunter *Hunter) applyRapidRecuperation() {
 		Label:    "Rapid Recuperation",
 		ActionID: core.ActionID{SpellID: 1242512},
 		Duration: time.Second * 15,
-	}).AttachAdditivePseudoStatBuff(&hunter.PseudoStats.SpiritRegenRateCasting, 0.25*float64(hunter.Talents.RapidRecuperation))
+	}).AttachSpiritRegenRateCastingBuff(0.25 * float64(hunter.Talents.RapidRecuperation))
 
 	core.MakePermanent(hunter.RegisterAura(core.Aura{
 		Label: "Rapid Recuperation Trigger",
@@ -379,7 +379,10 @@ func (hunter *Hunter) applyExposePrey() {
 	core.MakePermanent(hunter.RegisterAura(core.Aura{
 		Label: "Expose Prey",
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if !result.Landed() || !result.Target.HasActiveAuraWithTag(core.HuntersMarkAuraTag) {
+			// Client 1310532 uses proc mask 0x154: melee/ranged autos and
+			// attacks, not generic spell hits such as trap damage.
+			if !result.Landed() || !spell.ProcMask.Matches(core.ProcMaskMelee|core.ProcMaskRanged) ||
+				!result.Target.HasActiveAuraWithTag(core.HuntersMarkAuraTag) {
 				return
 			}
 			if sim.Proc(procChance, "Expose Prey") {

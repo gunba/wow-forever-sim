@@ -9,6 +9,8 @@ const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PAT
 try {
 	for (const [route, id] of [
 		['mage', 'arcane__gnome'],
+		['mage', 'fire__orc'],
+		['shadow_priest', 'shadow__undead'],
 		['balance_druid', 'balance__tauren'],
 		['enhancement_shaman', 'enhancement__dwarf'],
 		['hunter', 'marksmanship__orc'],

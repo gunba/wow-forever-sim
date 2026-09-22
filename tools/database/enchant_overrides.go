@@ -70,7 +70,7 @@ var EnchantOverrides = []*proto.UIEnchant{
 	// Shoulder
 	// Drop in ZG
 	{EffectId: 2604, ItemId: 20078, SpellId: 24420, Name: "Zandalar Signet of Serenity", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.HealingPower: 33}.ToFloatArray(), Type: proto.ItemType_ItemTypeShoulder, Phase: 4},
-	{EffectId: 2605, ItemId: 20076, SpellId: 24421, Name: "Zandalar Signet of Mojo", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.SpellPower: 18, stats.HealingPower: 18}.ToFloatArray(), Type: proto.ItemType_ItemTypeShoulder, Phase: 4},
+	{EffectId: 2605, ItemId: 20076, SpellId: 24421, Name: "Zandalar Signet of Mojo", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.SpellDamage: 18, stats.HealingPower: 18}.ToFloatArray(), Type: proto.ItemType_ItemTypeShoulder, Phase: 4},
 	{EffectId: 2606, ItemId: 20077, SpellId: 24422, Name: "Zandalar Signet of Might", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.AttackPower: 30, stats.RangedAttackPower: 30}.ToFloatArray(), Type: proto.ItemType_ItemTypeShoulder, Phase: 4},
 	// Drop in naxxramas
 	{EffectId: 2715, ItemId: 23547, SpellId: 29475, Name: "Resilience of the Scourge", Quality: proto.ItemQuality_ItemQualityEpic, Stats: stats.Stats{stats.HealingPower: 31, stats.MP5: 5}.ToFloatArray(), Type: proto.ItemType_ItemTypeShoulder, Phase: 6},
@@ -145,7 +145,8 @@ var EnchantOverrides = []*proto.UIEnchant{
 	{EffectId: 1884, SpellId: 20009, Name: "Enchant Bracer - Superior Spirit", Quality: proto.ItemQuality_ItemQualityUncommon, Stats: stats.Stats{stats.Spirit: 9}.ToFloatArray(), Type: proto.ItemType_ItemTypeWrist},
 	{EffectId: 2565, SpellId: 23801, Name: "Enchant Bracer - Mana Regeneration", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{stats.MP5: 4}.ToFloatArray(), Type: proto.ItemType_ItemTypeWrist},
 	{EffectId: 1885, SpellId: 20010, Name: "Enchant Bracer - Superior Strength", Quality: proto.ItemQuality_ItemQualityUncommon, Stats: stats.Stats{stats.Strength: 9}.ToFloatArray(), Type: proto.ItemType_ItemTypeWrist},
-	{EffectId: 2566, SpellId: 23802, Name: "Enchant Bracer - Healing Power", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{stats.HealingPower: 24}.ToFloatArray(), Type: proto.ItemType_ItemTypeWrist},
+	// Forever spell 23796 has separate +24 healing and +8 damage effects.
+	{EffectId: 2566, SpellId: 23802, Name: "Enchant Bracer - Healing Power", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{stats.HealingPower: 24, stats.SpellDamage: 8}.ToFloatArray(), Type: proto.ItemType_ItemTypeWrist},
 	{EffectId: 1886, SpellId: 20011, Name: "Enchant Bracer - Superior Stamina", Quality: proto.ItemQuality_ItemQualityUncommon, Stats: stats.Stats{stats.Stamina: 9}.ToFloatArray(), Type: proto.ItemType_ItemTypeWrist},
 
 	// Hands
@@ -164,7 +165,8 @@ var EnchantOverrides = []*proto.UIEnchant{
 	// All drops in AQ
 	{EffectId: 2616, SpellId: 25078, Name: "Enchant Gloves - Fire Power", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.FirePower: 20}.ToFloatArray(), Type: proto.ItemType_ItemTypeHands, Phase: 5},
 	{EffectId: 2615, SpellId: 25074, Name: "Enchant Gloves - Frost Power", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.FrostPower: 20}.ToFloatArray(), Type: proto.ItemType_ItemTypeHands, Phase: 5},
-	{EffectId: 2617, SpellId: 25079, Name: "Enchant Gloves - Healing Power", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.HealingPower: 30}.ToFloatArray(), Type: proto.ItemType_ItemTypeHands, Phase: 5},
+	// Forever spell 25067: +35 healing and +12 damage, not Classic's +30 healing.
+	{EffectId: 2617, SpellId: 25079, Name: "Enchant Gloves - Healing Power", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.HealingPower: 35, stats.SpellDamage: 12}.ToFloatArray(), Type: proto.ItemType_ItemTypeHands, Phase: 5},
 	{EffectId: 2614, SpellId: 25073, Name: "Enchant Gloves - Shadow Power", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.ShadowPower: 20}.ToFloatArray(), Type: proto.ItemType_ItemTypeHands, Phase: 5},
 	{EffectId: 2564, SpellId: 25080, Name: "Enchant Gloves - Superior Agility", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.Agility: 15}.ToFloatArray(), Type: proto.ItemType_ItemTypeHands, Phase: 5},
 	{EffectId: 2613, SpellId: 25072, Name: "Enchant Gloves - Threat", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{}.ToFloatArray(), Type: proto.ItemType_ItemTypeHands, Phase: 5},
@@ -200,7 +202,8 @@ var EnchantOverrides = []*proto.UIEnchant{
 	{EffectId: 2563, SpellId: 23799, Name: "Enchant Weapon - Strength", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{stats.Strength: 15}.ToFloatArray(), Type: proto.ItemType_ItemTypeWeapon},
 	{EffectId: 1899, SpellId: 20033, Name: "Enchant Weapon - Unholy Weapon", Quality: proto.ItemQuality_ItemQualityUncommon, Stats: stats.Stats{}.ToFloatArray(), Type: proto.ItemType_ItemTypeWeapon},
 	{EffectId: 1900, SpellId: 20034, Name: "Enchant Weapon - Crusader", Quality: proto.ItemQuality_ItemQualityUncommon, Stats: stats.Stats{}.ToFloatArray(), Type: proto.ItemType_ItemTypeWeapon},
-	{EffectId: 2505, SpellId: 22750, Name: "Enchant Weapon - Healing Power", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.HealingPower: 55}.ToFloatArray(), Type: proto.ItemType_ItemTypeWeapon},
+	// Forever spell 22748: +55 healing and +19 damage.
+	{EffectId: 2505, SpellId: 22750, Name: "Enchant Weapon - Healing Power", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.HealingPower: 55, stats.SpellDamage: 19}.ToFloatArray(), Type: proto.ItemType_ItemTypeWeapon},
 	{EffectId: 1898, SpellId: 20032, Name: "Enchant Weapon - Lifestealing", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{}.ToFloatArray(), Type: proto.ItemType_ItemTypeWeapon},
 	{EffectId: 2568, SpellId: 23804, Name: "Enchant Weapon - Mighty Intellect", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{stats.Intellect: 22}.ToFloatArray(), Type: proto.ItemType_ItemTypeWeapon},
 	{EffectId: 2567, SpellId: 23803, Name: "Enchant Weapon - Mighty Spirit", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{stats.Spirit: 20}.ToFloatArray(), Type: proto.ItemType_ItemTypeWeapon},

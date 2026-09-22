@@ -20,10 +20,6 @@ export const ArmorInput = <SpecType extends WarlockSpecs>() =>
 				actionId: () => ActionId.fromSpellId(11735),
 				value: Armor.DemonArmor,
 			},
-			{
-				actionId: () => ActionId.fromSpellId(403619),
-				value: Armor.DemonArmor,
-			},
 		],
 	});
 
@@ -33,15 +29,15 @@ export const WeaponImbueInput = <SpecType extends WarlockSpecs>() =>
 		values: [
 			{ value: WeaponImbue.NoWeaponImbue, tooltip: 'No Weapon Stone' },
 			{
-				actionId: () => ActionId.fromSpellId(13701),
+				actionId: () => ActionId.fromSpellId(17949),
 				value: WeaponImbue.Firestone,
 			},
 			{
-				actionId: () => ActionId.fromSpellId(13603),
+				actionId: () => ActionId.fromSpellId(1237159),
 				value: WeaponImbue.Spellstone,
 			},
 		],
-		showWhen: player => player.getEquippedItem(ItemSlot.ItemSlotOffHand) == null,
+		showWhen: player => player.getEquippedItem(ItemSlot.ItemSlotMainHand) != null,
 		changeEmitter: (player: Player<SpecType>) => player.changeEmitter,
 	});
 

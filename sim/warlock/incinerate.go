@@ -34,7 +34,7 @@ func (warlock *Warlock) registerIncinerateSpell() {
 		Flags:         core.SpellFlagAPL | core.SpellFlagResetAttackSwing | WarlockFlagDestruction,
 		RequiredLevel: int(warlock.Level),
 		Rank:          rank,
-		MissileSpeed:  24,
+		MissileSpeed:  20,
 
 		ManaCost: core.ManaCostOptions{
 			FlatCost: manaCost,

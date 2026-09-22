@@ -102,7 +102,7 @@ export const DefaultTalents = TalentPresets[ClassicPhase.Phase5][0];
 ///////////////////////////////////////////////////////////////////////////
 
 export const DefaultOptions = ProtectionPaladinOptions.create({
-	aura: PaladinAura.SanctityAura,
+	aura: PaladinAura.NoPaladinAura,
 	primarySeal: PaladinSeal.Righteousness,
 	personalBlessing: Blessings.BlessingOfSanctuary,
 	righteousFury: true,
@@ -139,7 +139,6 @@ export const DefaultRaidBuffs = RaidBuffs.create({
 	battleShout: TristateEffect.TristateEffectImproved,
 	divineSpirit: true,
 	giftOfTheWild: TristateEffect.TristateEffectImproved,
-	sanctityAura: true,
 });
 
 export const DefaultDebuffs = Debuffs.create({

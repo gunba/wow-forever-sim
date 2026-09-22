@@ -26,6 +26,7 @@ func (paladin *Paladin) registerExorcism() {
 		{level: 60, manaCost: 345, scaleLevel: 60, minDamage: 474, maxDamage: 530, scale: 3.2},
 	}
 
+	timer := paladin.NewTimer() // All ranks share client cooldown category 19.
 	for i, rank := range ranks {
 		rank := rank
 		spellID := []int32{879, 5614, 5615, 10312, 10313, 10314}[i]
@@ -57,7 +58,7 @@ func (paladin *Paladin) registerExorcism() {
 					GCD: core.GCDDefault,
 				},
 				CD: core.Cooldown{
-					Timer:    paladin.NewTimer(),
+					Timer:    timer,
 					Duration: paladin.purifyingPower(time.Second * 15),
 				},
 			},

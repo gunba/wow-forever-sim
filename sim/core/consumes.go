@@ -1022,6 +1022,12 @@ func makeManaConsumableMCD(itemId int32, character *Character, cdTimer *Timer) M
 	}[itemId]
 
 	cdDuration := time.Minute * 2
+	if itemId == 4381 {
+		cdDuration = 5 * time.Minute
+	}
+	// The current effects for all six supported items have neither a
+	// NOT_SHAPESHIFT attribute nor a form mask/exclusion. See the client audit.
+	usableInForm := character.Env.IsForever()
 
 	actionID := ActionID{ItemID: itemId}
 	manaMetrics := character.NewManaMetrics(actionID)
@@ -1031,7 +1037,8 @@ func makeManaConsumableMCD(itemId int32, character *Character, cdTimer *Timer) M
 		ShouldActivate: func(sim *Simulation, character *Character) bool {
 			// Only pop if we have less than the max mana provided by the potion minus 1mp5 tick.
 			totalRegen := character.ManaRegenPerSecondWhileCasting() * 2
-			return (character.MaxMana()-(character.CurrentMana()+totalRegen) >= maxRoll) && !character.IsShapeshifted()
+			return (character.MaxMana()-(character.CurrentMana()+totalRegen) >= maxRoll) &&
+				(usableInForm || !character.IsShapeshifted())
 		},
 		Spell: character.GetOrRegisterSpell(SpellConfig{
 			ActionID: actionID,
@@ -1042,7 +1049,9 @@ func makeManaConsumableMCD(itemId int32, character *Character, cdTimer *Timer) M
 					Duration: cdDuration,
 				},
 				ModifyCast: func(sim *Simulation, _ *Spell, _ *Cast) {
-					character.CancelShapeshift(sim)
+					if !usableInForm {
+						character.CancelShapeshift(sim)
+					}
 				},
 			},
 			ApplyEffects: func(sim *Simulation, _ *Unit, _ *Spell) {
@@ -1250,11 +1259,41 @@ func registerConjuredCD(agent Agent, consumes *proto.Consumes) {
 		mcd = makeManaConsumableMCD(12662, character, timer)
 	case proto.Conjured_ConjuredMinorRecombobulator:
 		mcd = makeManaConsumableMCD(4381, character, timer)
-	// Handled in the rogue package
-	// case proto.Conjured_ConjuredRogueThistleTea:
+	case proto.Conjured_ConjuredRogueThistleTea:
+		if !character.HasEnergyBar() || (character.Class != proto.Class_ClassRogue &&
+			!(character.Env.IsForever() && character.Class == proto.Class_ClassDruid)) {
+			return
+		}
+		mcd = makeThistleTeaMCD(character)
 	default:
 		return
 	}
 
 	character.AddMajorCooldown(mcd)
+}
+
+func makeThistleTeaMCD(character *Character) MajorCooldown {
+	// Forever item 7676 explicitly permits Rogues and Druids, restoring 100
+	// Energy on a five-minute item cooldown. The old class-local registration
+	// prevented Cat Druids from using it even when selected.
+	// https://www.wowhead.com/forever/item=7676/thistle-tea
+	actionID := ActionID{ItemID: 7676}
+	metrics := character.NewEnergyMetrics(actionID)
+	spell := character.RegisterSpell(SpellConfig{
+		ActionID: actionID,
+		Cast: CastConfig{
+			CD:       Cooldown{Timer: character.NewTimer(), Duration: time.Minute * 5},
+			SharedCD: Cooldown{Timer: character.GetConjuredCD(), Duration: time.Minute * 2},
+		},
+		ApplyEffects: func(sim *Simulation, _ *Unit, _ *Spell) {
+			character.AddEnergy(sim, 100, metrics)
+		},
+	})
+	return MajorCooldown{
+		Spell: spell,
+		Type:  CooldownTypeDPS,
+		ShouldActivate: func(sim *Simulation, character *Character) bool {
+			return character.GetCurrentPowerBar() == EnergyBar && character.CurrentEnergy() <= 10
+		},
+	}
 }

@@ -9,12 +9,15 @@
 		"ability": "Iron Counterweight",
 		"file": "sim/common/forever_enchants.go",
 		"source": "forever",
+		"tooltip": "Increases melee attack speed by 3%. Does not increase ranged speed, casting speed or Energy regeneration.",
 		"note": "Client 1.60.1.69893: enchant 34 applies spell 7217, with 3% melee-speed aura 319. No ranged, casting or general-haste effect."
 	},
 	"22841": {
 		"ability": "Arcanum of Rapidity",
 		"file": "sim/common/forever_enchants.go",
-		"source": "forever",
+		"source": "assumed",
+		"assumptions": ["Identical copies stack additively; this stacking rule remains unmeasured."],
+		"tooltip": "Increases melee and ranged attack speed by 1%. Does not increase casting speed or Energy regeneration.",
 		"note": "Client 1.60.1.69893: enchant 2543 applies spell 22841, with 1% melee-speed aura 319 and ranged-speed aura 140. Not general haste; identical copies retain additive stacking pending measurement."
 	},
 	"7712": {

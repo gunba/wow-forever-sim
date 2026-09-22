@@ -426,17 +426,38 @@
 		"source": "forever",
 		"tooltip": "2 hrs\nRestores 2% of total Mana every 4 sec."
 	},
-	"18821": {
+	"1293696": {
 		"ability": "Demonic Brand",
 		"assumptions": [
-			"The branded pet attack deals 39 to 42 damage at level 60 - the beta client writes it as a formula ($<minDam> to $<maxDam>) its exported tables do not carry, so the BlizzCon tooltip's numbers are kept",
-			"The extra hit carries three times normal threat and cannot miss or crit"
+			"Damage uses owner spell power at the pet hit; snapshot timing and owner-versus-pet attribution need measurement.",
+			"The proc remains noncritical with a provisional 3x threat multiplier. Voidwalker/Felhunter school assignment is unverified."
 		],
 		"file": "sim/warlock/talents.go",
-		"foreverId": 1293695,
-		"note": "Demonic Brand is a new Forever Demonology talent (1293695 in the beta client) standing in the tree slot Classic used for Improved Enslave Demon, so the sim keeps that talent's id 18821. The beta client confirms 17/33/50% less Searing Pain threat, 2/4/6 branded attacks and a 10 sec brand.",
+		"note": "Client description variables 1016–1020 contain the scaling formulas. Charges belong to the branded target; direct pet spells and melee can consume them.",
 		"source": "assumed",
-		"tooltip": "Passive\nYour Searing Pain generates 17/33/50% less threat and brands the target for 10 sec. Your pet's next 2/4/6 attacks against the target generate high threat and deal 39 to 42 Fire or Shadow damage based on the pet."
+		"tooltip": "10 sec\nThe caster's pet deals additional Fire or Shadow damage on its next 2/4/6 attacks against this target."
+	},
+	"1293697": {
+		"ability": "Demonic Brand",
+		"assumptions": [
+			"Uses owner Shadow spell power at hit time; power attribution and snapshot timing need measurement.",
+			"Noncritical damage and 3x threat remain provisional."
+		],
+		"file": "sim/warlock/talents.go",
+		"note": "Client description variable 1017 gives level and Shadow-power scaling. Attributes_3 marks the child spell Always Hit. Pet damage modifiers apply once.",
+		"source": "assumed",
+		"tooltip": "Consuming a brand deals 65 to 68 Shadow damage at level 60, plus 7.8% of Shadow spell power, before pet damage modifiers."
+	},
+	"1293698": {
+		"ability": "Demonic Brand",
+		"assumptions": [
+			"Uses owner Fire spell power at hit time; power attribution and snapshot timing need measurement.",
+			"Noncritical damage and 3x threat remain provisional."
+		],
+		"file": "sim/warlock/talents.go",
+		"note": "Client description variable 1018 gives level and Fire-power scaling. Attributes_3 marks the child spell Always Hit. Pet damage modifiers apply once.",
+		"source": "assumed",
+		"tooltip": "Consuming a brand deals 65 to 68 Fire damage at level 60, plus 7.8% of Fire spell power, before pet damage modifiers."
 	},
 	"18867": {
 		"ability": "Shadowburn",
@@ -715,7 +736,7 @@
 	"704": {
 		"ability": "Curse of Recklessness",
 		"file": "sim/warlock/curses.go",
-		"note": "The beta client lowers the armor reduction to 175/285/395/505 by rank and drops the attack power bonus, but the curse applies core.CurseOfRecklessnessAura, which still carries Classic's rank 4 values (-640 armor, +90 attack power).",
+		"note": "Forever gives no target attack power. The shared aura currently uses the level-60 rank's 505 armor reduction; the lower ranks' 175/285/395 reductions are not separately modeled.",
 		"source": "unreviewed"
 	},
 	"705": {
@@ -751,11 +772,6 @@
 		"note": "Same unchanged registration as Summon Imp.",
 		"source": "classic"
 	},
-	"758": {
-		"ability": "Firestone Passive",
-		"file": "sim/warlock/talents.go",
-		"source": "unreviewed"
-	},
 	"7641": {
 		"ability": "Shadow Bolt",
 		"file": "sim/warlock/shadowbolt.go",
@@ -780,13 +796,13 @@
 	"7658": {
 		"ability": "Curse of Recklessness",
 		"file": "sim/warlock/curses.go",
-		"note": "The beta client lowers the armor reduction to 175/285/395/505 by rank and drops the attack power bonus, but the curse applies core.CurseOfRecklessnessAura, which still carries Classic's rank 4 values (-640 armor, +90 attack power).",
+		"note": "Forever gives no target attack power. The shared aura currently uses the level-60 rank's 505 armor reduction; the lower ranks' 175/285/395 reductions are not separately modeled.",
 		"source": "unreviewed"
 	},
 	"7659": {
 		"ability": "Curse of Recklessness",
 		"file": "sim/warlock/curses.go",
-		"note": "The beta client lowers the armor reduction to 175/285/395/505 by rank and drops the attack power bonus, but the curse applies core.CurseOfRecklessnessAura, which still carries Classic's rank 4 values (-640 armor, +90 attack power).",
+		"note": "Forever gives no target attack power. The shared aura currently uses the level-60 rank's 505 armor reduction; the lower ranks' 175/285/395 reductions are not separately modeled.",
 		"source": "unreviewed"
 	},
 	"7799": {

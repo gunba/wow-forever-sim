@@ -30,6 +30,33 @@ func TestBuildsAreLegal(t *testing.T) {
 	}
 }
 
+func TestFireAndElementalTalentCorrections(t *testing.T) {
+	want := map[string]map[string]int{
+		"fire":      {"improvedFireball": 4, "wakeOfFire": 2, "hotStreak": 1},
+		"elemental": {"ancestralKnowledge": 2, "improvedLightningShield": 0, "waterShield": 0},
+	}
+	for _, b := range builds() {
+		fields, ok := want[b.Key]
+		if !ok {
+			continue
+		}
+		config := loadTalents(b)
+		points, err := config.decode(b.presetTalents())
+		if err != nil {
+			t.Fatal(err)
+		}
+		index := 0
+		for _, tree := range config.Trees {
+			for _, talent := range tree.Talents {
+				if expected, checked := fields[talent.Field]; checked && points[index] != expected {
+					t.Errorf("%s/%s = %d, want %d", b.Key, talent.Field, points[index], expected)
+				}
+				index++
+			}
+		}
+	}
+}
+
 func TestRejectIllegalTalentRows(t *testing.T) {
 	invalid := map[string]string{
 		"balance":    "5532220115301341-05-005003",

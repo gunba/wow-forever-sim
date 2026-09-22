@@ -15,6 +15,7 @@ var safeDepsOrder = []Stat{
 	Stamina,
 	Intellect,
 	Spirit,
+	Defense, // Thick Hide converts bonus Defense into form armor.
 	BonusArmor,
 	Armor,
 	FeralAttackPower,
@@ -34,7 +35,6 @@ var safeDepsOrder = []Stat{
 	MP5,
 	SpellCrit,
 	MeleeCrit,
-	Defense,
 	Block,
 	BlockValue,
 	Dodge,

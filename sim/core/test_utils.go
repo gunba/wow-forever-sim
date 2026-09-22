@@ -172,6 +172,7 @@ var ForeverRaidBuffs = func() *proto.RaidBuffs {
 	buffs.StrengthOfEarthTotem = proto.TristateEffect_TristateEffectRegular
 	buffs.GraceOfAirTotem = proto.TristateEffect_TristateEffectRegular
 	buffs.BattleShout = proto.TristateEffect_TristateEffectRegular
+	buffs.SanctityAura = false
 	return buffs
 }()
 

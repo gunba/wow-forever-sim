@@ -28,8 +28,7 @@
     "fireResistanceAura": true,
     "thorns": "TristateEffectImproved",
     "devotionAura": "TristateEffectImproved",
-    "retributionAura": "TristateEffectImproved",
-    "sanctityAura": true
+    "retributionAura": "TristateEffectImproved"
   },
   "partyBuffs": {},
   "debuffs": {
@@ -200,7 +199,7 @@
           },
           "doAtValue": {
             "const": {
-              "val": "-1s"
+              "val": "-1.5s"
             }
           }
         }

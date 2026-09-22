@@ -30,11 +30,11 @@ import (
 
 // Raised by hand when an id is deliberately left undeclared, never by a tool. Every entry
 // needs a reason, because an undeclared id is an ability the site describes wrongly.
-const unreviewedSpellBudget = 45
+const unreviewedSpellBudget = 44
 
 // Registration sites whose id the walk cannot read from the source. Each one is an ability
 // the manifest cannot cover, so this only ever falls.
-const unresolvedSpellSiteBudget = 14
+const unresolvedSpellSiteBudget = 13
 
 type spellSource struct {
 	Ability     string   `json:"ability"`
@@ -134,6 +134,7 @@ func registeredSpellIDs(t *testing.T) (map[int][]string, []string) {
 		// type name -> field name -> that field's own type, so `rank.judge.spellID` can be
 		// followed one hop at a time instead of guessing which struct owns `spellID`.
 		structFields := map[string]map[string]string{}
+		fieldOrder := map[string][]string{}
 		for _, file := range files {
 			for _, decl := range file.Decls {
 				gen, ok := decl.(*ast.GenDecl)
@@ -155,6 +156,7 @@ func registeredSpellIDs(t *testing.T) (map[int][]string, []string) {
 								structFields[typeSpec.Name.Name] = map[string]string{}
 							}
 							structFields[typeSpec.Name.Name][name.Name] = typeName(field.Type)
+							fieldOrder[typeSpec.Name.Name] = append(fieldOrder[typeSpec.Name.Name], name.Name)
 						}
 					}
 				}
@@ -202,6 +204,16 @@ func registeredSpellIDs(t *testing.T) (map[int][]string, []string) {
 				if name == "" {
 					return true
 				}
+				order := fieldOrder[name]
+				if array, ok := lit.Type.(*ast.ArrayType); ok {
+					if element, ok := array.Elt.(*ast.StructType); ok {
+						for _, field := range element.Fields.List {
+							for _, member := range field.Names {
+								order = append(order, member.Name)
+							}
+						}
+					}
+				}
 				// A table of rank structs elides the element type, so the fields sit one
 				// level below the only literal that still names the type.
 				elements := []*ast.CompositeLit{lit}
@@ -216,20 +228,21 @@ func registeredSpellIDs(t *testing.T) (map[int][]string, []string) {
 					}
 				}
 				for _, element := range elements {
-					for _, elt := range element.Elts {
-						kv, ok := elt.(*ast.KeyValueExpr)
-						if !ok {
-							continue
+					for i, elt := range element.Elts {
+						var key string
+						value := elt
+						if kv, ok := elt.(*ast.KeyValueExpr); ok {
+							if member, ok := kv.Key.(*ast.Ident); ok {
+								key, value = member.Name, kv.Value
+							}
+						} else if i < len(order) {
+							key = order[i]
 						}
-						key, ok := kv.Key.(*ast.Ident)
-						if !ok {
-							continue
-						}
-						if id, ok := intLiteral(kv.Value); ok {
+						if id, ok := intLiteral(value); ok && key != "" {
 							if fields[name] == nil {
 								fields[name] = map[string][]int{}
 							}
-							fields[name][key.Name] = append(fields[name][key.Name], id)
+							fields[name][key] = append(fields[name][key], id)
 						}
 					}
 				}
@@ -237,6 +250,29 @@ func registeredSpellIDs(t *testing.T) (map[int][]string, []string) {
 			})
 		}
 
+		// Literal arguments to package-local helpers also name real actions.
+		callArguments := map[string]map[int][]ast.Expr{}
+		for _, file := range files {
+			ast.Inspect(file, func(node ast.Node) bool {
+				call, ok := node.(*ast.CallExpr)
+				if !ok {
+					return true
+				}
+				fn, ok := call.Fun.(*ast.Ident)
+				if !ok {
+					return true
+				}
+				for i, arg := range call.Args {
+					if _, ok := intLiteral(arg); ok {
+						if callArguments[fn.Name] == nil {
+							callArguments[fn.Name] = map[int][]ast.Expr{}
+						}
+						callArguments[fn.Name][i] = append(callArguments[fn.Name][i], arg)
+					}
+				}
+				return true
+			})
+		}
 		for path, file := range files {
 			rel := strings.TrimPrefix(filepath.ToSlash(path), "../")
 
@@ -248,10 +284,20 @@ func registeredSpellIDs(t *testing.T) (map[int][]string, []string) {
 			}{}
 			for _, decl := range file.Decls {
 				if fn, ok := decl.(*ast.FuncDecl); ok && fn.Body != nil {
+					locals := localBindings(fn)
+					position := 0
+					for _, param := range fn.Type.Params.List {
+						for _, name := range param.Names {
+							if args := callArguments[fn.Name.Name][position]; len(args) > 0 {
+								locals[name.Name] = &ast.CallExpr{Fun: ast.NewIdent("__alternatives"), Args: args}
+							}
+							position++
+						}
+					}
 					scopes = append(scopes, struct {
 						body   ast.Node
 						locals map[string]ast.Expr
-					}{fn.Body, localBindings(fn)})
+					}{fn.Body, locals})
 					continue
 				}
 				scopes = append(scopes, struct {
@@ -338,6 +384,13 @@ func resolveSpellID(expr ast.Expr, locals, globals map[string]ast.Expr, fields m
 	if id, ok := intLiteral(expr); ok {
 		return []int{id}
 	}
+	if call, ok := expr.(*ast.CallExpr); ok && typeName(call.Fun) == "__alternatives" {
+		var found []int
+		for _, arg := range call.Args {
+			found = append(found, resolveSpellID(arg, locals, globals, fields, structFields, depth+1)...)
+		}
+		return found
+	}
 
 	// A table written in place, either indexed here or handed straight over.
 	if found := intsInComposites(expr); len(found) > 0 {
@@ -399,6 +452,8 @@ func resolveSpellID(expr ast.Expr, locals, globals map[string]ast.Expr, fields m
 				}
 			}
 		}
+		// A failed field lookup must not read every numeric field in its table.
+		return nil
 	}
 
 	// A name bound to such a table, in the function or at package level.
@@ -420,11 +475,7 @@ func resolveSpellID(expr ast.Expr, locals, globals map[string]ast.Expr, fields m
 // ones so that a damage or mana table sitting beside the id table is not read as ids.
 func intsInComposites(expr ast.Expr) []int {
 	var found []int
-	ast.Inspect(expr, func(node ast.Node) bool {
-		lit, ok := node.(*ast.CompositeLit)
-		if !ok || !isIntTyped(lit.Type) {
-			return true
-		}
+	if lit := boundComposite(expr); lit != nil && isIntTyped(lit.Type) {
 		for _, elt := range lit.Elts {
 			value := elt
 			if kv, ok := elt.(*ast.KeyValueExpr); ok {
@@ -434,8 +485,7 @@ func intsInComposites(expr ast.Expr) []int {
 				found = append(found, id)
 			}
 		}
-		return true
-	})
+	}
 	return found
 }
 
@@ -491,12 +541,23 @@ func localBindings(scope *ast.FuncDecl) map[string]ast.Expr {
 	ast.Inspect(scope.Body, func(node ast.Node) bool {
 		switch stmt := node.(type) {
 		case *ast.AssignStmt:
+			if stmt.Tok != token.DEFINE && stmt.Tok != token.ASSIGN {
+				return true
+			}
 			for i, target := range stmt.Lhs {
 				name, ok := target.(*ast.Ident)
 				if !ok || i >= len(stmt.Rhs) {
 					continue
 				}
-				locals[name.Name] = stmt.Rhs[i]
+				value := stmt.Rhs[i]
+				if previous, ok := locals[name.Name]; ok {
+					if alternatives, ok := previous.(*ast.CallExpr); ok && typeName(alternatives.Fun) == "__alternatives" {
+						value = &ast.CallExpr{Fun: ast.NewIdent("__alternatives"), Args: append(alternatives.Args, value)}
+					} else {
+						value = &ast.CallExpr{Fun: ast.NewIdent("__alternatives"), Args: []ast.Expr{previous, value}}
+					}
+				}
+				locals[name.Name] = value
 			}
 		case *ast.RangeStmt:
 			// The loop variable stands for an element, and an element of a table of ids is
@@ -540,6 +601,8 @@ func typeName(expr ast.Expr) string {
 		return typeName(node.X)
 	case *ast.ArrayType:
 		return typeName(node.Elt)
+	case *ast.MapType:
+		return typeName(node.Value)
 	case *ast.SelectorExpr:
 		return node.Sel.Name
 	}
@@ -552,9 +615,6 @@ func isIntTyped(expr ast.Expr) bool {
 		return isIntName(typeName(node.Elt))
 	case *ast.MapType:
 		return isIntName(typeName(node.Value))
-	case nil:
-		// An element of an enclosing typed composite, which was already checked.
-		return true
 	}
 	return false
 }
@@ -611,6 +671,25 @@ func loadSpellSources(t *testing.T) map[int]spellSource {
 		}
 	}
 	return sources
+}
+
+func TestSpellSourceScannerKeepsBranchesAndRejectsRankScalars(t *testing.T) {
+	ids, _ := registeredSpellIDs(t)
+	for _, id := range []int{401502, 1237312, 1237313, 1277324, 1277328, 1259812, 1259813, 1259817, 1259821, 1259823, 1293697, 1293698, 7217, 22841} {
+		if len(ids[id]) == 0 {
+			t.Errorf("missed rank, conditional or helper ID %d", id)
+		}
+	}
+	for id, files := range ids {
+		for _, path := range files {
+			if path == "sim/mage/frostfire_bolt.go" && id != 401502 && id != 1237312 && id != 1237313 {
+				t.Errorf("Frostfire scalar %d was mistaken for a spell", id)
+			}
+			if path == "sim/priest/dark_sacrifice.go" && (id < 1277324 || id > 1277328) {
+				t.Errorf("Dark Sacrifice scalar %d was mistaken for a spell", id)
+			}
+		}
+	}
 }
 
 func TestEveryRegisteredSpellSaysWhereItsNumbersCameFrom(t *testing.T) {

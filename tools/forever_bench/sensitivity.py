@@ -11,8 +11,10 @@ import statistics
 SCENARIOS = [
     ("tier1", "Tier 1 gain", "tier1_off", 1, False),
     ("gear10", "Gear +10%", "gear_110", 1.1, True),
-    ("gear20", "Gear +20%", "gear_120", 1.2, True),
+    ("gear50", "Gear +50%", "gear_150", 1.5, True),
 ]
+DISPLAY_METRICS = ("tier1", "gear10", "amplification")
+MIN_GAIN_PERCENT = .1
 
 
 def gain(new, reference):
@@ -77,14 +79,45 @@ def summarize(pairs, faction="all"):
     }
 
 
+def scaling_amplification(near, far):
+    """Ratio of equal-race-weight gains, not the mean of per-race ratios."""
+    a, b = far["GainPercent"], near["GainPercent"]
+    a_bound, b_bound = far["MonteCarlo95Bound"], near["MonteCarlo95Bound"]
+    result = {
+        "Races": near["Races"],
+        "Gear10GainPercent": b, "Gear50GainPercent": a,
+        "Amplification": None, "MonteCarlo95Bound": None,
+    }
+    if b <= max(MIN_GAIN_PERCENT, b_bound):
+        result["UnavailableReason"] = "The +10% gain is nonpositive, negligible or indistinguishable from Monte Carlo noise."
+        return result
+    result["Amplification"] = a / (5 * b)
+    # Marginal bounds can be correlated through both races and the baseline.
+    # Triangle inequality rather than quadrature preserves that uncertainty.
+    result["MonteCarlo95Bound"] = (a_bound / b + abs(a) * b_bound / b**2) / 5
+    return result
+
+
+def summarize_comparisons(pairs, faction="all"):
+    summaries = {key: summarize(pairs[key], faction) for key, *_ in SCENARIOS}
+    summaries["amplification"] = scaling_amplification(summaries["gear10"], summaries["gear50"])
+    return summaries
+
+
+def format_metric(metric, summary):
+    if metric == "amplification":
+        value = summary["Amplification"]
+        return "—" if value is None else f"{value:.2f}×"
+    return f'{summary["GainPercent"]:+.1f}%'
+
+
 def load_columns(path, results_path, faction="all"):
     if path is None:
         return {}
     data = json.loads(path.read_text())
     if data["BaselineSHA256"] != hashlib.sha256(results_path.read_bytes()).hexdigest():
         raise ValueError("Sensitivity columns belong to another baseline")
-    return {b["Key"]: {key: summarize(b["Comparisons"][key], faction)
-                       for key, *_ in SCENARIOS} for b in data["Builds"]}
+    return {b["Key"]: summarize_comparisons(b["Comparisons"], faction) for b in data["Builds"]}
 
 
 def main():
@@ -103,7 +136,7 @@ def main():
     builds = []
     for key in dict.fromkeys(r["Key"] for r in base["Results"]):
         pairs = {name: [p for p in rows if p["Key"] == key] for name, rows in comparisons.items()}
-        builds.append({"Key": key, "Averages": {name: summarize(rows) for name, rows in pairs.items()},
+        builds.append({"Key": key, "Averages": summarize_comparisons(pairs),
                        "Comparisons": pairs})
     payload = {
         "Baseline": str(args.baseline),
@@ -114,8 +147,10 @@ def main():
             "gear": "100*(scaled DPS / baseline DPS - 1); Tier 1 remains on",
             "scaling": "Item and suffix stats, weapon min/max and item flat bonus damage scale; enchants, weapon speed/skill, procs, sets and external effects stay fixed. Paid hit is recalculated.",
             "averaging": "Arithmetic mean of per-race percentage gains, equal weight per available race",
+            "amplification": "Mean +50% gain / (5 * mean +10% gain). 1 = linear, >1 = accelerating, <1 = flattening; negative values mean the +50% scenario loses DPS. Ratio of means, not mean of race ratios.",
+            "amplificationAvailability": f"Unavailable if the mean +10% gain is no greater than {MIN_GAIN_PERCENT} percentage points or its conservative 95% Monte Carlo bound.",
             "uncertainty": "Conservative delta-method 95% Monte Carlo bound from marginal SEs; allows within- and between-race correlation. Not a mechanics confidence interval.",
-            "interpretation": "Hypothetical proportional upgrades, not stat weights or actual future items. Fixed rotations can encounter resource/rotation thresholds. Cat weapon-DPS scaling remains unresolved.",
+            "interpretation": "Hypothetical proportional upgrades, not stat weights or actual future items. Amplification measures finite-range curvature, not proof of exponential growth or isolated stat synergy. Caps and resource/rotation thresholds can change it. Cat weapon-DPS scaling remains unresolved.",
         },
         "Builds": builds,
     }

@@ -26,6 +26,7 @@ func (paladin *Paladin) registerHolyShock() {
 		{level: 56, manaCost: 325, minDamage: 334, maxDamage: 362},
 	}
 
+	timer := paladin.NewTimer() // All ranks share client cooldown category 892.
 	for i, rank := range ranks {
 		rank := rank
 		spellID := []int32{1311606, 20473, 20929, 20930}[i]
@@ -55,7 +56,7 @@ func (paladin *Paladin) registerHolyShock() {
 					GCD: core.GCDDefault,
 				},
 				CD: core.Cooldown{
-					Timer:    paladin.NewTimer(),
+					Timer:    timer,
 					Duration: time.Second * 10,
 				},
 			},

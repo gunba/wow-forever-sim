@@ -20,12 +20,12 @@ func (mage *Mage) registerEvocationCD() {
 		Duration: core.NeverExpires,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
 			mage.PseudoStats.SpiritRegenMultiplier += 15
-			mage.PseudoStats.ForceFullSpiritRegen = true
+			mage.PseudoStats.FullSpiritRegenSources++
 			mage.UpdateManaRegenRates()
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
 			mage.PseudoStats.SpiritRegenMultiplier -= 15
-			mage.PseudoStats.ForceFullSpiritRegen = false
+			mage.PseudoStats.FullSpiritRegenSources--
 			mage.UpdateManaRegenRates()
 		},
 	})

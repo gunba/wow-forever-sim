@@ -27,6 +27,7 @@ func (warlock *Warlock) getShadowBoltBaseConfig(rank int) core.SpellConfig {
 		Flags:         core.SpellFlagAPL | core.SpellFlagResetAttackSwing | WarlockFlagDestruction,
 		RequiredLevel: level,
 		Rank:          rank,
+		MissileSpeed:  20,
 
 		ManaCost: core.ManaCostOptions{
 			FlatCost: manaCost,

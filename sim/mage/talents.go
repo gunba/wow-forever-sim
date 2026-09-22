@@ -200,10 +200,11 @@ func (mage *Mage) applyArcaneConcentration() {
 	}
 
 	procChance := 0.02 * float64(mage.Talents.ArcaneConcentration)
+	icd := core.Cooldown{Timer: mage.NewTimer(), Duration: time.Second}
 
 	mage.ClearcastingAura = mage.RegisterAura(core.Aura{
 		Label:    "Clearcasting",
-		ActionID: core.ActionID{SpellID: 12577},
+		ActionID: core.ActionID{SpellID: 12536},
 		Duration: time.Second * 15,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
 			aura.Unit.PseudoStats.SchoolCostMultiplier.AddToMagicSchools(-100)
@@ -219,7 +220,9 @@ func (mage *Mage) applyArcaneConcentration() {
 			if !spell.Flags.Matches(SpellFlagMage) {
 				return
 			}
-			if spell.Cost != nil && spell.Cost.GetCurrentCost() == 0 {
+			// Clearcasting itself makes the current cost zero. Eligibility is
+			// based on the underlying paid damage spell, not its discounted cost.
+			if spell.Cost == nil || spell.Cost.BaseCost == 0 || !spell.ProcMask.Matches(core.ProcMaskSpellDamage) {
 				return
 			}
 			aura.Deactivate(sim)
@@ -229,11 +232,12 @@ func (mage *Mage) applyArcaneConcentration() {
 	mage.RegisterAura(core.Aura{
 		Label:    "Arcane Concentration",
 		Duration: core.NeverExpires,
+		Icd:      &icd,
 		OnReset: func(aura *core.Aura, sim *core.Simulation) {
 			aura.Activate(sim)
 		},
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if !result.Landed() || !spell.Flags.Matches(SpellFlagMage) || spell.SpellCode == SpellCode_MageArcaneMissiles {
+			if !result.Landed() || !spell.Flags.Matches(SpellFlagMage) || spell.SpellCode == SpellCode_MageArcaneMissiles || !icd.IsReady(sim) {
 				return
 			}
 
@@ -244,6 +248,7 @@ func (mage *Mage) applyArcaneConcentration() {
 			// }
 
 			if sim.Proc(procChance, "Arcane Concentration") {
+				icd.Use(sim)
 				mage.ClearcastingAura.Activate(sim)
 			}
 		},
@@ -481,8 +486,10 @@ func (mage *Mage) applyMasterOfElements() {
 	})
 }
 
-// Hot Streak shaves cast time off Pyroblast rather than making it instant,
-// so the stacks are worth holding.
+// Forever aura 400625 has three cumulative stacks but one proc charge:
+// the next Pyroblast consumes the whole buff, not one stack per cast.
+// See assets/db_inputs/forever_effect_audit.json. Consumption is modeled on
+// cast completion; interrupted-cast timing still needs a server-side check.
 func (mage *Mage) applyHotStreak() {
 	if !mage.Talents.HotStreak {
 		return
@@ -506,6 +513,11 @@ func (mage *Mage) applyHotStreak() {
 			castTimeMultiplier := .25 * float64(newStacks-oldStacks)
 			for _, spell := range pyroblasts {
 				spell.CastTimeMultiplier -= castTimeMultiplier
+			}
+		},
+		OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
+			if spell.SpellCode == SpellCode_MagePyroblast {
+				aura.Deactivate(sim)
 			}
 		},
 	})

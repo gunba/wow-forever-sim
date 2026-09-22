@@ -73,10 +73,8 @@ func (shaman *Shaman) RegisterWindfuryImbue(procMask core.ProcMask) {
 		shaman.OffHand().TempEnchant = enchantId
 	}
 
-	// Each imbued weapon rolls for itself; the internal cooldown is what keeps the
-	// two hands from procing on top of each other.
-	// TODO: Classic lets both weapons carry the imbue and gives the extra attacks to the
-	// hand that procced, beta will confirm that Forever kept both halves of that.
+	// Forever Shamans cannot dual wield. The 20% chance is sourced; the inherited
+	// 1.5-second ICD and special-attack resolution still need Forever validation.
 	const proc = 0.2
 
 	icd := core.Cooldown{

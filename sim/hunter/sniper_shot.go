@@ -32,7 +32,7 @@ func (hunter *Hunter) registerSniperShotSpell() {
 		ProcMask:     core.ProcMaskRangedSpecial,
 		Flags:        core.SpellFlagMeleeMetrics | core.SpellFlagAPL | SpellFlagShot,
 		CastType:     proto.CastType_CastTypeRanged,
-		MissileSpeed: 24,
+		MissileSpeed: 60,
 
 		ManaCost: core.ManaCostOptions{
 			FlatCost: 365,

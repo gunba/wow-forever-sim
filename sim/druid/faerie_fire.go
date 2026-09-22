@@ -7,56 +7,30 @@ import (
 )
 
 func (druid *Druid) registerFaerieFireSpell() {
-	spellCode := SpellCode_DruidFaerieFire
 	actionID := core.ActionID{SpellID: 9907}
 	manaCostOptions := core.ManaCostOptions{
 		FlatCost: 115,
 	}
-	gcd := core.GCDDefault
-	ignoreHaste := false
-	cd := core.Cooldown{}
 	flatThreatBonus := 2. * 54
-	flags := core.SpellFlagNone
-	formMask := Humanoid | Moonkin
 
 	druid.FaerieFireAuras = druid.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
 		return core.FaerieFireAura(target)
 	})
 
-	// TODO: the beta client 1.60.1.69893 has no Faerie Fire (Feral): 16857 and 17390-17392 are gone from the
-	// spellbook and 17392 from the spell tables. The cat and the bear keep it because their rotations are built
-	// around it.
-	if druid.InForm(Cat | Bear) {
-		spellCode = SpellCode_DruidFaerieFireFeral
-		actionID = core.ActionID{SpellID: 17392}
-		manaCostOptions = core.ManaCostOptions{}
-		gcd = time.Second
-		ignoreHaste = true
-		formMask = Cat | Bear
-		cd = core.Cooldown{
-			Timer:    druid.NewTimer(),
-			Duration: time.Second * 6,
-		}
-		druid.FaerieFireAuras = druid.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
-			return core.FaerieFireFeralAura(target)
-		})
-	}
-	flags |= core.SpellFlagAPL | core.SpellFlagResetAttackSwing
-
-	druid.FaerieFire = druid.RegisterSpell(formMask, core.SpellConfig{
-		SpellCode:   spellCode,
+	// Client 9907 allows Cat, Bear, Dire Bear and Moonkin (mask 1073741969).
+	// It retains its mana cost and 1.5-second base GCD, with no six-second CD.
+	druid.FaerieFire = druid.RegisterSpell(Humanoid|Moonkin|Cat|Bear, core.SpellConfig{
+		SpellCode:   SpellCode_DruidFaerieFire,
 		ActionID:    actionID,
 		SpellSchool: core.SpellSchoolNature,
 		ProcMask:    core.ProcMaskSpellDamage,
-		Flags:       flags,
+		Flags:       core.SpellFlagAPL,
 
 		ManaCost: manaCostOptions,
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
-				GCD: gcd,
+				GCD: core.GCDDefault,
 			},
-			IgnoreHaste: ignoreHaste,
-			CD:          cd,
 		},
 
 		ThreatMultiplier: 1,

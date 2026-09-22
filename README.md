@@ -17,12 +17,18 @@ and 5,000 iterations per result. Legal talent and rotation changes were screened
 independently validated and checked across every available race; these are not
 claims of a global optimum or best-in-slot equipment.
 
-The matrix also shows race-averaged Tier 1 gains and hypothetical +10%/+20%
-equipment scaling. [Sensitivity data](artifacts/forever_sensitivity.json) records
-the comparisons, assumptions and Monte Carlo uncertainty.
+The matrix shows race-averaged Tier 1 gains, hypothetical +10% equipment gains
+and scaling amplification: the mean +50% gain divided by five times the mean
++10% gain. A value of 1× is linear; larger values indicate accelerating gains.
+This measures finite-range curvature, not proof of exponential growth.
+[Sensitivity data](artifacts/forever_sensitivity.json) records both scaling runs,
+the assumptions and Monte Carlo uncertainty.
 
 [Build reviews](docs/build_reviews.md) describe the retained choices and resource
 use. [In-game checks](docs/in_game_checks.md) track important unresolved mechanics.
+[Mechanics review](docs/mechanics_review.md) records corrections and provisional models.
+[Change-history review](docs/history_review.md) records the fork points,
+reviewed changes, regression checks and remaining source gaps.
 [Replay profiles](artifacts/ui_profiles/index.json) are built into the matching
 simulator's **Ranked builds** selector. Clicking a matrix cell opens that exact
 setup, including its paid hit adjustment; no manual import is needed.
@@ -42,7 +48,7 @@ reverted by the engine switch.
 | --- | --- |
 | Periodic critical strikes | Spell dots and bleeds roll for crits, against the caster's crit chance at the time of the tick |
 | Unified hit and critical strike | Generic item ratings cover physical and spell attacks; traps still use an inherited special hit rule |
-| Bonus healing on gear | Explicit healing and damage values stay separate; healing-only records retain an inherited one-third damage fallback |
+| Bonus healing on gear | Healing and damage use separate sourced effects; healing-only records do not grant spell damage |
 | Racials | Resistance racials removed, weapon skill racials pay crit instead, several races reshaped |
 | Races | The Skyborne, plus six new race and class pairings |
 
@@ -103,7 +109,9 @@ Worth knowing before reading any number out of this sim:
 
 - **Beta mechanics are not all verified.** Warrior rage, parts of the combat
   table, some pet behavior and server-scripted proc interactions remain inherited
-  or approximate. See the benchmark's evidence notes.
+  or approximate. Druid Omen provisionally uses the client's 100% proc entry
+  and ten-second internal cooldown; its effective server rate needs testing.
+  See the benchmark's evidence notes.
 - **Gear coverage is incomplete.** The current DPS loadouts are complete and use
   actual Forever stats, but the published ring, neck and trinket pools are sparse.
   Missing records are not filled with Classic equivalents. See

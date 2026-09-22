@@ -251,9 +251,7 @@ func main() {
 	// Replace the legacy availability pool with current, source-filtered data.
 	// Do this after Classic set/class inference: dungeon sets without an actual
 	// class restriction must not acquire an invented restriction by set name.
-	replaceForeverEquipment(db,
-		fmt.Sprintf("%s/forever_equipment.json", inputsDir),
-		fmt.Sprintf("%s/forever_vendor_items.json", inputsDir))
+	replaceForeverEquipment(db, fmt.Sprintf("%s/forever_equipment.json", inputsDir))
 	foreverIcons := database.ReadDatabaseFromJson(tools.ReadFile(fmt.Sprintf("%s/forever_spell_icons.json", inputsDir)))
 	for id, icon := range foreverIcons.SpellIcons {
 		db.SpellIcons[id] = icon
@@ -261,21 +259,15 @@ func main() {
 	db.WriteBinaryAndJson(fmt.Sprintf("%s/db.bin", dbDir), fmt.Sprintf("%s/db.json", dbDir))
 }
 
-func replaceForeverEquipment(db *database.WowDatabase, catalogPath, vendorPath string) {
+func replaceForeverEquipment(db *database.WowDatabase, catalogPath string) {
 	catalog := database.ReadDatabaseFromJson(tools.ReadFile(catalogPath))
-	vendor := database.ReadDatabaseFromJson(tools.ReadFile(vendorPath))
 	db.Items = make(map[int32]*proto.UIItem)
 	// Catalog records already apply authoritative exports to overlapping items.
-	// Vendor-only records remain available for comparing previous benchmarks.
-	for id, item := range vendor.Items {
-		db.Items[id] = item
-	}
 	for id, item := range catalog.Items {
 		db.Items[id] = item
 		db.ItemIcons[id] = &proto.IconData{Id: id, Name: item.Name, Icon: item.Icon}
 	}
-	fmt.Printf("Forever equipment: %d crafted/dungeon records, %d total including vendor comparisons\n",
-		len(catalog.Items), len(db.Items))
+	fmt.Printf("Forever equipment: %d source-filtered records\n", len(catalog.Items))
 }
 
 func mergeForeverVendorItems(db *database.WowDatabase, path string) {

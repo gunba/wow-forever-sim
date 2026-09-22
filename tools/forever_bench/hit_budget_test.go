@@ -142,7 +142,7 @@ func TestHitBudgetEquipmentScaling(t *testing.T) {
 			if err != nil {
 				t.Fatal(err)
 			}
-			for _, scale := range []float64{1.1, 1.2} {
+			for _, scale := range []float64{1.1, 1.5} {
 				p.EquipmentScale = scale
 				normalized, report, err := capHit(b, p)
 				if err != nil {

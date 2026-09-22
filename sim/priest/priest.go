@@ -75,6 +75,20 @@ func (priest *Priest) GetCharacter() *core.Character {
 	return &priest.Character
 }
 
+func (priest *Priest) RegisterSpell(config core.SpellConfig) *core.Spell {
+	// Shadowform allows Holy damage and non-healing utility, but not active
+	// healing casts. Holy Nova also heals even though its parent is damage.
+	activeHeal := config.ProcMask.Matches(core.ProcMaskSpellHealing) && !config.Flags.Matches(core.SpellFlagPassiveSpell)
+	if activeHeal || config.SpellCode == SpellCode_PriestHolyNova {
+		condition := config.ExtraCastCondition
+		config.ExtraCastCondition = func(sim *core.Simulation, target *core.Unit) bool {
+			return (priest.ShadowformAura == nil || !priest.ShadowformAura.IsActive()) &&
+				(condition == nil || condition(sim, target))
+		}
+	}
+	return priest.Character.RegisterSpell(config)
+}
+
 func (priest *Priest) AddRaidBuffs(raidBuffs *proto.RaidBuffs) {
 	// Divine Spirit and Improved Power Word: Fortitude are gone from the Forever trees. Both are
 	// raid buffs the rest of the raid is built around, so they are assumed to have become baseline.

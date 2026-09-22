@@ -6,6 +6,118 @@ rotation. The open checks below still need measurements.
 
 ## Available early
 
+### T29 — Hunter pet inheritance and trained abilities
+
+**Priority:** high · **Access:** level 20 initially; repeat at later levels
+
+With a permanently tamed pet, record its family, level, trained abilities,
+happiness, base swing interval and AP. Change owner melee AP and ranged AP
+separately, crossing which value is higher. Repeat with a temporary buff,
+resummoning and instance transfer. Check player haste separately from direct
+pet haste. Preserve normal/critical white and spell damage events.
+
+**Resolves:** the observed low-level ten-percent higher-AP inheritance and its
+dynamic behavior. The engine currently inherits no owner stats. Later-level
+measurements or a source establishing level scaling are needed for level 60.
+Do not use quest-controlled NPC abilities as pet-training evidence.
+
+### T30 — Paladin seals, Holy Strike and Consecration
+
+**Priority:** high · **Access:** level 20 for early ranks; later for extra-attack sources
+
+- Record seal duration through repeated Judgements; distinguish expiry from
+  consumption.
+- Compare Holy Strike ranks with asymmetric weapon damage and controlled AP/SP.
+  Preserve weapon speed, talent points and normal/critical damage.
+- On flat ground, compare Consecration with and without added SP on one
+  through six targets. Repeat center/edge positioning; separate crits and
+  the first four targets from later targets.
+- At later access, separate Wisdom events from white swings, seal damage,
+  Windfury/Reckoning and Twist of Light echoes. Test recursion and cooldowns
+  rather than inferring unlimited mana from a historical proc chain.
+
+### T32 — Inner Focus and periodic critical strikes
+
+**Priority:** medium · **Access:** level 20 with Inner Focus
+
+Compare SW:P casts with and without Inner Focus, recording mana, aura
+consumption and every tick. An individual crit does not establish that the
+whole DoT snapshots the bonus. Record enough casts to distinguish the crit
+rates. Separately record Starshards cost, ticks and crits on a Night Elf.
+
+### T27 — Fire Nova and its Fire totem
+
+**Priority:** medium · **Access:** Shaman level 20
+
+Try Fire Nova with no Fire totem, an active Searing Totem, and after that
+totem expires or is destroyed. Record the cast result, mana/GCD and damage
+source. The client says the Nova originates from an active Fire totem;
+the simulator now enforces that prerequisite. A threat capture can separately
+check attribution to the Shaman rather than the totem.
+
+### T26 — Druid talent ranks and Faerie Fire in forms
+
+**Priority:** high · **Access:** level 20 for the early talents and form tests; later access for Moonfury
+
+- Compare zero, one and two Nature's Majesty points with the same equipment:
+  record spell/melee crit and check yellow attacks. The captured tooltip says
+  2/4%, but the raw client scalar needs rank/curve interpretation.
+- Measure Nature's Reach hit and Moonglow mana costs at each rank. Include
+  Faerie Fire and a heal as negative controls for Moonglow.
+- Cast regular Faerie Fire in humanoid, Cat and Bear forms. Record spell ID,
+  mana/Energy changes, GCD, cooldown, whether the form remains, and auto timing.
+  The simulator now uses regular Faerie Fire in forms, following its client
+  shapeshift mask, mana cost and GCD.
+- At later access, compare Moonfury's zero/five-point damage on the same
+  Arcane/Nature spell. The reviewed sources disagree between 5% and 10%.
+- With Improved Moonfire available now, compare normal direct hits and ticks
+  at two known SP values, with and without the talent. This separates a
+  base-damage-only bonus from one that also multiplies SP contribution.
+  Repeat for Moonfury when accessible.
+- Compare Thick Hide at each rank and form with known bonus Defense. Its form
+  condition is explicit, but the Defense coefficient's raw scalar and earlier
+  rank text disagree; the inherited coefficient is not yet validated.
+
+**Resolves:** actual rank scaling, shared-hit scope and confirmation of the
+source-derived Faerie Fire behavior. Current positive/negative talent-family tests prevent
+Moonglow from discounting unrelated mana spells.
+
+### T25 — Omen of Clarity proc frequency and consumption
+
+**Priority:** high · **Access:** Druid level 20 with Omen trained · **Status:** provisional proc model
+
+Capture several minutes of Cat autos, consuming each Clearcasting proc with a
+Claw. Separately log repeated Wrath casts and direct healing, then test periodic
+damage/healing alone. Record proc/refresh timestamps and eligible events after
+each ten-second interval; distinguish an internal cooldown from an additional
+random roll. A humanoid weapon-speed comparison would help identify PPM behavior.
+
+Check that Wrath, Faerie Fire, Tiger's Fury and other free actions preserve the charge,
+while a paid offensive/healing action becomes free and consumes it. Also check
+a proc arriving during a cast, a canceled cast and a missed free attack.
+
+**Resolves:** the missing passive is restored, but its effective proc rate
+could substantially change Feral Energy and Balance mana availability.
+Current client 16864 lists 100% proc chance, ten-second recovery and no PPM
+entry; 16870 lists one charge and a 15-second duration. The simulator currently
+interprets those entries literally. They do not rule out server-side overrides.
+Source: [Forever Omen of Clarity](https://www.wowhead.com/forever/spell=16864/omen-of-clarity).
+
+### T24 — Thistle Tea and shared cooldowns
+
+**Priority:** medium · **Access:** Rogue or level-20 Cat with tea · **Status:** class/effect sourced; interaction test open
+
+Use tea below ten Energy and record the resource gain, remaining form and
+cooldown. Check potion and other consumable cooldowns before and after use.
+Repeat while out of Cat form if possible, separating usability from whether
+the restored resource survives a subsequent form change.
+
+**Resolves:** server-side form behavior and shared cooldown categories.
+The current Forever item permits Rogue and Druid and restores 100 Energy on
+a five-minute item cooldown. Both energy-using builds are now supported.
+The existing two-minute shared-conjured timer is inherited, not established
+by the item's five-minute tooltip.
+
 ### T22 — Healing-only gear and enchant damage
 
 **Priority:** high · **Access:** level 20 if a suitable item or enchant is available · **Status:** open
@@ -16,11 +128,12 @@ Record item/enchant IDs and check all spell schools, for example with
 `GetSpellBonusDamage`. Exclude items whose client data already has explicit
 spell damage.
 
-**Resolves:** the inherited simulator rule adds one spell damage per three
-healing power when a record has no explicit damage component. It also applies
-to enchants: +24 healing bracers currently provide eight modeled spell damage.
-The presence of that rule is not confirmation that Forever applies it to
-every healing-only item or enchant.
+**Resolves:** whether any genuinely healing-only record has an unlisted server
+effect. The unsupported blanket conversion has been removed. Bracer Healing
+Power is not a suitable healing-only test: its client effects explicitly give
+24 healing and eight damage. Gloves give 35/12 and the weapon enchant gives
+55/19. These hybrids retain their actual damage; they do not establish a
+universal conversion rule.
 
 ### T20 — PvP vendor stock and level-65 class armor
 
@@ -71,6 +184,12 @@ melee attack speed, not ranged speed or general haste. The model now reflects
 that distinction. Arcanum of Rapidity needs later access; its client effect
 adds melee and ranged speed, but not casting speed.
 
+For Furor, leave Cat at a recorded Energy value, wait known intervals and
+return at one through five talent points. Test the combined carry/regeneration
+cap at low ranks. The engine now counts exits at the pull and before it, and
+clears this state between iterations; the low-rank cap interpretation still
+needs gameplay confirmation.
+
 ### T16 — Energy costs and failed-attack refunds
 
 **Priority:** medium · **Access:** Rogue or level-20 Cat · **Status:** open
@@ -100,7 +219,7 @@ Tooltip evidence alone will not establish the observed outcome distribution.
 
 ### T02 — Rage gained from outgoing white hits
 
-**Priority:** high · **Access:** Warrior · **Status:** open
+**Priority:** high · **Access:** Warrior · **Status:** low-level evidence available; level scaling and off-hand unresolved
 
 Use a target being held by someone else, or a training target, so incoming damage
 does not also generate rage. Record level, weapon damage/speed, attack power,
@@ -109,13 +228,42 @@ hits with the damage and rage change visible. Repeat with a substantially faster
 or slower weapon. At level 20, an off-hand comparison is also useful if dual wield
 is available.
 
-A short recording is useful: a combat log may not expose white-hit rage changes
-with enough precision on its own.
+Enable advanced combat logging and preserve the matching equipment/level
+SavedVariables from [Forever State](https://github.com/tzcnt/forever-data).
+The advanced log exposes resource snapshots in tenths of a rage point.
+Separate incoming hits, spending, resource procs, caps, gear changes and
+out-of-combat decay from each measured swing.
 
-**Resolves:** whether outgoing rage follows damage alone, or contains a
-weapon-speed/normalisation term. The level-60 conversion constant must **not** be
-applied directly to a level-20 result. Critical hits, dodges and off-hand hits
-are useful additional samples, identified separately.
+Reported level-8–10 measurements suggest weapon-speed-only generation:
+4.5 rage per weapon-second for two-handed weapons and about 3.46 for
+one-handed main-hand attacks, with ordinary rage on crits/glances and none
+on misses/dodges. The separately supplied level-18, 2.7-second one-hand capture
+has now been checked. A conservative selection excludes nearby spells/incoming
+attacks within 250 ms and retains 29 landed swings; allowing close timestamps
+while retaining the other exclusions gives 54. Every retained swing gains
+9.3 or 9.4 rage, across normal hits, glances and crits. The 54-swing sample spans
+15–78 damage and averages about 3.4602 rage per reported weapon-second.
+This supports normalized rather than damage-proportional generation.
+
+The earlier screenshot's 78-swing selection is not used as an independently
+reproduced count; its exclusions were not supplied. Weapon speed and level
+remain the recorder's stated context, not parsed equipment metadata.
+Avoided swings have no immediate resource snapshot, so this analysis does
+not independently establish their zero-rage behavior.
+
+The seven public logs at commit `c7d17462c50d1eb0103aa5e2aff52f77f33e3418`
+parse successfully, but lack the matching level/equipment/speed metadata.
+There are 478 otherwise eligible snapshot candidates, not 478 verified
+weapon-rate measurements. These support investigating damage-independent
+rage, but do not reproduce the exact one-hand/two-hand coefficients.
+
+**Resolves:** base versus hasted weapon speed, level dependence, off-hand
+generation, avoided attacks, and whether extra attacks or on-next-swing
+specials follow the same rule. The engine still has inherited
+damage-proportional rage and dodge/parry generation; those remain a material
+Warrior uncertainty, not validated Forever behavior. Do not extend the
+low-level coefficients to level 60 or invent an off-hand factor without
+additional evidence or an explicit provisional model.
 
 ### T03 — Eureka charges, scope and channels
 
@@ -237,6 +385,69 @@ glancing damage values rather than only the average.
 Level-20 targets cannot directly validate a level-63 raid boss, but relative-level
 comparisons can distinguish several competing formulas.
 
+### T34 — Mage Clearcasting consumption
+
+**Priority:** high · **Access:** Arcane Concentration talent, available by level 20
+
+Record a proc, cast a paid damage spell, then immediately cast another.
+Capture the buff disappearing and the mana charged for both casts. Repeat
+with Arcane Missiles and, separately, a utility spell. Distinguish the proc
+from a new proc caused by the consuming cast.
+
+**Current model:** one eligible damage cast, not fifteen seconds of free
+casts. The one-second proc cooldown follows client metadata; missile-trigger
+and utility-spell edge cases still need a server observation.
+
+### T35 — Finisher Energy refunds
+
+**Priority:** high · **Access:** Rogue Eviscerate/Expose Armor/Rupture and
+Druid Rip by level 20; Ferocious Bite needs later access
+
+Record Energy immediately before and after a successful finisher and an
+avoided one, retaining hit outcome, talent points, combo points and natural
+regeneration events. Use a higher-level target if necessary to obtain
+dodges. A miss and a dodge may not have the same behavior.
+
+**Resolves:** whether these finishers refund 80% of paid Energy. A later
+upstream commit changes this, but the commit alone is not server evidence.
+The current engine retains the older no-refund behavior for these finishers.
+
+### T36 — Sanctity Aura availability
+
+**Priority:** high · **Access:** trainer/talent inspection now; cast test if obtainable
+
+Check whether a Forever Paladin can actually learn Sanctity Aura, and record
+the teaching source, spell ID and required level. If available, compare a
+party member's Holy damage with and without it.
+
+**Current model:** spell 20218 still has legacy spell/talent records but no
+current trait or `SkillLineAbility` learn path. The benchmark now excludes
+its 10% Holy-damage buff. An actual acquisition source would warrant revisiting
+that exclusion; a database tooltip alone does not establish availability.
+
+### T40 — Haste and the global cooldown
+
+**Priority:** high · **Access:** level 20 with a suitable haste effect
+
+On a Troll caster, record an instant spell's GCD duration and a hardcast's
+duration before and during Berserking. Record the actual buff and health
+state rather than assuming a fixed haste amount. Use client cooldown timings,
+not only the delay between manually pressed buttons.
+
+**Current model:** general spell haste shortens casts but does not shorten the
+default GCD. Explicit GCD modifiers, such as Nature's Grace, are separate.
+This is an important input to the scaling chart and needs a Forever measurement.
+
+### T43 — Fel Armor availability
+
+**Priority:** medium · **Access:** trainer/spellbook inspection now; later if level-gated
+
+Record whether Fel Armor is learnable, its spell ID, teaching source and
+required level. A spell or skill row alone is insufficient: the retained
+403619 record uses a different acquisition method from trained Demon Armor.
+If obtainable, record SP and healing before/after at two Spirit values.
+The engine currently grants no Fel Armor bonus.
+
 ## Deferred beyond the current level limit
 
 | ID | Question | Why it matters | Access needed |
@@ -248,7 +459,16 @@ comparisons can distinguish several competing formulas.
 | T11 | Tier 1 Insect Swarm's final second: partial tick, delayed tick, or aura tail | Balance refresh timing | Actual Tier 1 bonus |
 | T14 | Summon Hawk guardian attacks, two-hawk coexistence and scaling | Beast Mastery damage and talent value; the engine approximates one guardian with periodic damage | Summon Hawk, normally level 25 or later |
 | T19 | Penance bolt timing and haste | The engine spreads three ticks over two seconds, using Forever's periodic critical-hit rules; do not rely on partial-channel optimizations until this is checked | Penance, normally level 30 or later |
-| T21 | Maelstrom Weapon proc rate and Totem of the Storm | Count procs per landed melee attack with two weapon speeds, then per Lightning Bolt cast while out of melee range with item 272432. Its tooltip specifies half the ordinary chance, but does not define a spell conversion from PPM. | Maelstrom Weapon talent; level 60 for the totem |
+| T21 | Maelstrom Weapon proc rate, free-cast interactions and Totem of the Storm | Count procs per landed melee attack with two weapon speeds, separating Windfury extra attacks. Record whether a five-stack free Lightning Bolt consumes or can generate Clearcasting. Then test Lightning Bolt out of melee range with item 272432: its tooltip specifies half the ordinary chance, not a spell conversion from PPM. The current 2 PPM per talent point remains unverified. | Maelstrom Weapon talent; level 60 for the totem |
+| T23 | Hot Streak charge consumption and interrupted casts | At one, two and three stacks, record Pyroblast's cast time and remaining buff; repeat with a cancelled cast and a filler projectile landing during the Pyroblast cast. The client confirms one charge and three stacks; the engine consumes the buff on completed Pyroblast. | Hot Streak talent, beyond level 20 |
+| T28 | Windfury Weapon and Totem trigger rules | Separate weapon and totem procs, log proc spacing and extra-attack outcomes, and compare attacks with/without the weapon imbue while receiving the totem. The client states 20% weapon chance and excludes the matching totem benefit; the inherited 1.5-second ICD and extra-attack resolution still need measurement. | Windfury Weapon/Totem, beyond level 20 |
+| T31 | Hunter melee proc and crit scope | Compare Predator's Edge normal/critical autos and specials separately. For Expose Prey, distinguish melee/ranged attacks, traps, misses, refreshes and Mongoose cooldown state on a marked target. | Relevant deeper Hunter talents |
+| T33 | Shadowform and Priest buff access | Confirm Shadowform's mana/GCD and Holy damage, shield, heal and Holy Nova permissions. Record Divine Spirit's trainer acquisition after talent removal rather than inferring availability from a database skill entry. | Shadowform at level 40; relevant Divine Spirit ranks |
+| T37 | Shadow Word: Death damage and backlash | Record hits/crits above and below 20% target health, surviving versus killing blows, and the caster's health loss. Client ranks exist, but the script effect with value 150 and backlash interaction need interpretation before a complete implementation. | Shadow Word: Death, level 32 or later |
+| T38 | Mutilate's two-hand resolution | With distinguishable dagger damage, capture each hand's normal and critical hits across controlled AP values. Repeat with Cold Blood and with avoided main-hand strikes. Check whether Cold Blood guarantees both crits and whether the off-hand penalty also reduces the flat bonus. | Mutilate and Cold Blood, beyond level 20 |
+| T39 | Demonic Brand damage and proc rules | Change Fire and Shadow SP separately; compare Imp Firebolt, Succubus melee/Lash, Voidwalker and Felhunter attacks. Record brand spell IDs, target, charges, crits/misses and threat if measurable. Change SP after applying the brand to distinguish snapshotting from power at hit time and owner from pet scaling. Current child formulas are 65–68 at level 60 plus 7.8% matching-school power; power attribution, other-pet schools, crit behavior and 3× threat remain provisional. | Demonic Brand, normally level 25 or later |
+| T41 | Nature's Grace timing | Separate Wrath cast completion from projectile impact, recording when the haste aura appears. Check Moonfire/Swarm/Faerie Fire GCDs and whether a second crit refreshes the three-second duration. The model applies separate 10% cast-haste and GCD effects but retains Wrath's cast-completion proc timing. | Nature's Grace, normally level 30 |
+| T42 | Weapon-stone effects | Compare Firestone's spell crit and Fire power with Spellstone's casting speed and Shadow power, then test whether Spellstone also increases Fire damage as its effect mask says. Verify that stones work with an off-hand equipped and replace other weapon imbues. | Firestone from level 28; Spellstone from 36 |
 
 ## Result record
 

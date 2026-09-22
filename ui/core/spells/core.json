@@ -1,4 +1,34 @@
 {
+	"23736": {
+		"ability": "Sayge's Dark Fortune of Agility",
+		"file": "sim/core/buffs.go",
+		"source": "classic",
+		"note": "Retained legacy world-buff option; not enabled in the benchmark. This record does not establish Forever availability."
+	},
+	"23768": {
+		"ability": "Sayge's Dark Fortune of Damage",
+		"file": "sim/core/buffs.go",
+		"source": "classic",
+		"note": "Retained legacy world-buff option; not enabled in the benchmark. This record does not establish Forever availability."
+	},
+	"8205": {
+		"ability": "Thunder Clap",
+		"file": "sim/core/debuffs.go",
+		"source": "classic",
+		"note": "Legacy external attack-speed debuff: 10% regular or 15% improved. This entry represents the aura, not a damaging player cast."
+	},
+	"23738": {
+		"ability": "Sayge's Dark Fortune of Spirit",
+		"file": "sim/core/buffs.go",
+		"source": "classic",
+		"note": "Retained legacy world-buff option; not enabled in the benchmark. This record does not establish Forever availability."
+	},
+	"23766": {
+		"ability": "Sayge's Dark Fortune of Intelligence",
+		"file": "sim/core/buffs.go",
+		"source": "classic",
+		"note": "Retained legacy world-buff option; not enabled in the benchmark. This record does not establish Forever availability."
+	},
 	"10060": {
 		"ability": "Power Infusion",
 		"file": "sim/core/buffs.go",

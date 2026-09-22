@@ -2483,7 +2483,7 @@ func init() {
 			Label:    "Aura of the Blue Dragon",
 			ActionID: actionID,
 			Duration: time.Second * 15,
-		}).AttachAdditivePseudoStatBuff(&character.PseudoStats.SpiritRegenRateCasting, 1)
+		}).AttachSpiritRegenRateCastingBuff(1)
 
 		core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
 			Name:       "Aura of the Blue Dragon Trigger",

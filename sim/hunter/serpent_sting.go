@@ -26,7 +26,7 @@ func (hunter *Hunter) getSerpentStingConfig(rank int) core.SpellConfig {
 		CastType:      proto.CastType_CastTypeRanged,
 		Rank:          rank,
 		RequiredLevel: level,
-		MissileSpeed:  24,
+		MissileSpeed:  40,
 
 		ManaCost: core.ManaCostOptions{
 			FlatCost: manaCost,

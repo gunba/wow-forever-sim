@@ -269,6 +269,12 @@ func (shaman *Shaman) newFireNovaSpellConfig(rank int, cdTimer *core.Timer) core
 			FlatCost: manaCost,
 		},
 
+		// Fire Nova originates from this Shaman's active Fire totem, not the
+		// character. The totem pointer remains after expiration, so check time.
+		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
+			return shaman.ActiveTotems[FireTotem] != nil && shaman.TotemExpirations[FireTotem] > sim.CurrentTime
+		},
+
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
 				GCD: core.GCDDefault,

@@ -330,6 +330,19 @@ func (parentAura *Aura) AttachAdditivePseudoStatBuff(fieldPointer *float64, bonu
 	return parentAura
 }
 
+// Spirit regeneration uses cached tick amounts as well as the live multiplier.
+func (parentAura *Aura) AttachSpiritRegenRateCastingBuff(bonus float64) *Aura {
+	parentAura.AttachAdditivePseudoStatBuff(&parentAura.Unit.PseudoStats.SpiritRegenRateCasting, bonus)
+	refresh := func(aura *Aura, _ *Simulation) {
+		aura.Unit.UpdateManaRegenRates()
+	}
+	parentAura.ApplyOnGain(refresh).ApplyOnExpire(refresh)
+	if parentAura.IsActive() {
+		parentAura.Unit.UpdateManaRegenRates()
+	}
+	return parentAura
+}
+
 // Adds Stats to a parent Aura during build phase
 // Note: Only use when parent aura is used through RegisterAura() not GetOrRegisterAura. Otherwise this might apply multiple times.
 func (parentAura *Aura) AttachBuildPhaseStatsBuff(stats stats.Stats) *Aura {

@@ -79,7 +79,7 @@ export const DefaultTalents = TalentsRetribution;
 ///////////////////////////////////////////////////////////////////////////
 
 export const DefaultOptions = RetributionPaladinOptions.create({
-	aura: PaladinAura.SanctityAura,
+	aura: PaladinAura.NoPaladinAura,
 	primarySeal: PaladinSeal.Command,
 });
 
@@ -114,7 +114,6 @@ export const DefaultRaidBuffs = RaidBuffs.create({
 	fireResistanceAura: true,
 	fireResistanceTotem: true,
 	giftOfTheWild: TristateEffect.TristateEffectImproved,
-	sanctityAura: true,
 	leaderOfThePack: true,
 	moonkinAura: true,
 });

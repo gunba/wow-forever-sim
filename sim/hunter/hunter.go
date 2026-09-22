@@ -145,6 +145,7 @@ func (hunter *Hunter) Initialize() {
 	if hunter.Env.IsForever() {
 		// Auto Shot is an independent weapon event, not a competing hardcast.
 		hunter.AutoAttacks.RangedConfig().Cast = core.CastConfig{}
+		hunter.AutoAttacks.RangedConfig().MissileSpeed = 40 // SpellMisc 75.
 		hunter.AutoAttacks.RangedConfig().ExtraCastCondition = nil
 		hunter.AutoAttacks.RangedConfig().Flags &^= core.SpellFlagCastTimeNoGCD
 	}

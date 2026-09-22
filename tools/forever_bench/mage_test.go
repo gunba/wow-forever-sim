@@ -11,7 +11,45 @@ import (
 	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/core/simsignals"
 	"github.com/wowsims/classic/sim/core/stats"
+	"github.com/wowsims/classic/sim/mage"
 )
+
+func TestForeverHotStreakConsumedByNextPyroblast(t *testing.T) {
+	req := mageSpellFixture(map[string]int{"hotStreak": 1, "pyroblast": 1})
+	sim := core.NewSim(req, simsignals.Signals{})
+	unit := sim.Raid.AllPlayerUnits[0]
+	aura := unit.GetAura("Hot Streak")
+	fireball := unit.GetSpell(core.ActionID{SpellID: 133})
+	for _, id := range mage.PyroblastSpellId[1:] {
+		pyro := unit.GetSpell(core.ActionID{SpellID: id})
+		for stacks := int32(1); stacks <= 3; stacks++ {
+			aura.Activate(sim)
+			aura.SetStacks(sim, stacks)
+			if got, want := pyro.CastTimeMultiplier, 1-.25*float64(stacks); got != want {
+				t.Fatalf("Pyro %d with %d stacks: multiplier %v, want %v", id, stacks, got, want)
+			}
+			aura.OnCastComplete(aura, sim, fireball)
+			if aura.GetStacks() != stacks {
+				t.Fatal("Fireball consumed Hot Streak")
+			}
+			aura.OnCastComplete(aura, sim, pyro)
+			if aura.IsActive() || aura.GetStacks() != 0 {
+				t.Fatalf("Pyro %d left Hot Streak stacks active", id)
+			}
+			for _, rankID := range mage.PyroblastSpellId[1:] {
+				if got := unit.GetSpell(core.ActionID{SpellID: rankID}).CastTimeMultiplier; got != 1 {
+					t.Fatalf("Pyro %d retained cast reduction: %v", rankID, got)
+				}
+			}
+		}
+	}
+	aura.Activate(sim)
+	aura.SetStacks(sim, 3)
+	aura.Deactivate(sim)
+	if got := unit.GetSpell(core.ActionID{SpellID: 18809}).CastTimeMultiplier; got != 1 {
+		t.Fatalf("expired Hot Streak retained multiplier %v", got)
+	}
+}
 
 func mageSpellFixture(pointsByName map[string]int) *proto.RaidSimRequest {
 	req := racialFixture("arcane", proto.Race_RaceOrc)

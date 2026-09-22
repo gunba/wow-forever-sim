@@ -14,8 +14,6 @@ const LacerateMaxStacks int32 = 5
 func (druid *Druid) registerLacerateSpell() {
 	druid.registerLacerateBleedSpell()
 
-	results := make([]*core.SpellResult, min(MangleBerserkTargets, druid.Env.GetNumTargets()))
-
 	druid.Lacerate = druid.RegisterSpell(Bear, core.SpellConfig{
 		SpellCode:   SpellCode_DruidLacerate,
 		ActionID:    core.ActionID{SpellID: 414644},
@@ -39,23 +37,15 @@ func (druid *Druid) registerLacerateSpell() {
 		ThreatMultiplier: 3.33,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			numHits := 1
-			if druid.BerserkAura.IsActive() {
-				numHits = len(results)
+			// Berserk's extra-target modifier names only Mangle (family mask 0x40),
+			// not Lacerate (0x100).
+			stacks := min(druid.LacerateBleed.Dot(target).GetStacks()+1, LacerateMaxStacks)
+			baseDamage := spell.Unit.MHWeaponDamage(sim, spell.MeleeAttackPower(target)) * 0.1 * float64(stacks)
+			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialHitAndCrit)
+			if result.Landed() {
+				druid.LacerateBleed.Cast(sim, target)
 			}
-
-			for idx := 0; idx < numHits; idx++ {
-				stacks := min(druid.LacerateBleed.Dot(target).GetStacks()+1, LacerateMaxStacks)
-				baseDamage := spell.Unit.MHWeaponDamage(sim, spell.MeleeAttackPower(target)) * 0.1 * float64(stacks)
-				results[idx] = spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialHitAndCrit)
-
-				if results[idx].Landed() {
-					druid.LacerateBleed.Cast(sim, target)
-				}
-				target = sim.Environment.NextTargetUnit(target)
-			}
-
-			if !results[0].Landed() {
+			if !result.Landed() {
 				spell.IssueRefund(sim)
 			}
 		},

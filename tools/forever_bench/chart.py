@@ -13,7 +13,7 @@ from matplotlib.patches import Rectangle
 import numpy as np
 
 from build_display import BUILDS, CLASS_COLORS, RACES
-from sensitivity import SCENARIOS, load_columns
+from sensitivity import DISPLAY_METRICS, format_metric, load_columns
 
 
 def main():
@@ -56,7 +56,7 @@ def main():
             elif cls in eligible[race]:
                 raise ValueError(f"Missing available combination: {key}/{race}")
 
-    extra = len(SCENARIOS) if columns else 0
+    extra = len(DISPLAY_METRICS) if columns else 0
     width = len(races) + extra
     fig, ax = plt.subplots(figsize=(19 if columns else 15, max(6, len(builds) * .45 + 2.9)))
     fig.subplots_adjust(left=.27 if columns else .315, right=.925, top=.83, bottom=.135)
@@ -66,7 +66,7 @@ def main():
     image = ax.imshow(values, cmap=cmap, vmin=0, vmax=ceiling, aspect="auto")
     labels = [r.replace(" ", "\n") for r in races]
     if columns:
-        labels += ["Tier 1\ngain", "Gear\n+10%", "Gear\n+20%"]
+        labels += ["Tier 1\ngain", "Gear\n+10%", "Scaling\namp."]
     ax.set_xlim(-.5, width-.5)
     ax.set_xticks(range(width), labels, fontsize=10)
     ax.xaxis.tick_top()
@@ -104,12 +104,18 @@ def main():
                     ax.add_patch(Rectangle((x-.46, y-.43), .92, .86, fill=False,
                                            edgecolor="#f4a938", linewidth=1.4))
         if columns:
-            for index, (metric, *_rest) in enumerate(SCENARIOS):
+            for index, metric in enumerate(DISPLAY_METRICS):
                 x = len(races) + index
-                value = columns[key][metric]["GainPercent"]
+                summary = columns[key][metric]
+                if metric == "amplification":
+                    value = summary["Amplification"]
+                    color = "#475569" if value is None or abs(value - 1) <= summary["MonteCarlo95Bound"] else (
+                        "#236343" if value > 1 else "#8b5939")
+                else:
+                    color = "#236343" if summary["GainPercent"] >= 0 else "#a44240"
                 ax.add_patch(Rectangle((x-.5, y-.5), 1, 1, facecolor="#edf3ee", edgecolor="white"))
-                ax.text(x, y, f"{value:+.1f}%", ha="center", va="center", fontsize=10,
-                        color="#236343" if value >= 0 else "#a44240", fontweight="bold")
+                ax.text(x, y, format_metric(metric, summary), ha="center", va="center", fontsize=10,
+                        color=color, fontweight="bold")
     for cls, positions in groups:
         lo, hi = min(positions), max(positions)
         ax.text(-2.38, (lo+hi)/2, cls, ha="right", va="center", fontsize=10.5,
@@ -135,7 +141,7 @@ def main():
     if columns:
         ax.add_patch(Rectangle((len(races)-.5, 1.068), extra, .043, transform=ax.get_xaxis_transform(),
                                facecolor="#3e6152", linewidth=0, clip_on=False))
-        ax.text(len(races)+(extra-1)/2, 1.0895, "Mean DPS gain", transform=ax.get_xaxis_transform(),
+        ax.text(len(races)+(extra-1)/2, 1.0895, "Gains & scaling", transform=ax.get_xaxis_transform(),
                 ha="center", va="center", fontsize=11, fontweight="bold", color="white")
         ax.axvline(len(races)-.5, color="#8d9f98", linewidth=2)
     cax = fig.add_axes([.94, .23, .01, .5])
@@ -150,9 +156,10 @@ def main():
              fontsize=9, color="#475569")
     if columns:
         fig.text(.07, .05,
-                 "Gain columns: equal-weight average of per-race DPS changes. Tier 1: on vs off, same build; paid hit recalculated.\n"
-                 "Gear: hypothetical item stats + weapon damage; fixed enchants, procs and rotation; Tier 1 stays on. Not future-item predictions.",
-                 fontsize=9, color="#475569")
+                 "Equal race weights. Tier 1: on vs off. Gear: item stats + weapon damage; fixed enchants, procs and rotation; paid hit recalculated.\n"
+                 "Scaling amp. = +50% gain / (5 × +10% gain). 1× linear; >1× accelerating; <1× flattening; — too small/noisy. Not proof of exponential growth.\n"
+                 "Caps and resource thresholds affect curvature. Hypothetical upgrades, not future-item predictions.",
+                 fontsize=8.5, color="#475569")
     fig.text(.07, .02,
              "Beta model; uncertainty and assumptions are recorded with the raw results. Game icons via Wowhead.",
              fontsize=8.5, color="#64748b")

@@ -9,7 +9,7 @@ import re
 import shutil
 
 from build_display import BUILDS, CLASS_COLORS, RACES
-from sensitivity import SCENARIOS, load_columns
+from sensitivity import DISPLAY_METRICS, format_metric, load_columns
 
 
 SIM_PATHS = {
@@ -56,7 +56,7 @@ def main():
     shutil.copytree(args.sensitivity.parent / "sensitivity", args.output / "sensitivity", dirs_exist_ok=True)
     for extension in ("json", "csv", "svg", "png"):
         shutil.copyfile(args.results.with_suffix("." + extension), args.output / ("results." + extension))
-    for name in ("build_reviews.md", "in_game_checks.md", "energy_audit.md", "auto_attack_audit.md", "forever_gear_data.md"):
+    for name in ("build_reviews.md", "in_game_checks.md", "energy_audit.md", "auto_attack_audit.md", "forever_gear_data.md", "mechanics_review.md", "history_review.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
     body = []
     for key, class_name, label, icon in builds:
@@ -78,14 +78,23 @@ def main():
             if row.get("UnmodeledSetBonuses"):
                 title += f'; {len(row["UnmodeledSetBonuses"])} equipped-set effects omitted'
             cells.append(f'<td><a href="../{simulator}/?profile={key}__{race_file}" title="{escape(title)}">{row["DPS"]:.0f}</a></td>')
-        for metric, *_ in SCENARIOS:
+        for metric in DISPLAY_METRICS:
             if any(k == key for k, _ in invalid):
                 cells.append('<td class="unavailable">—</td>')
                 continue
             value = columns[key][metric]
-            title = (f'Equal-weight mean over {value["Races"]} races; conservative 95% Monte Carlo bound '
-                     f'±{value["MonteCarlo95Bound"]:.2f} percentage points. Fixed talents and rotation.')
-            cells.append(f'<td class="gain" title="{escape(title)}">{value["GainPercent"]:+.1f}%</td>')
+            if metric == "amplification":
+                title = (f'Ratio of equal-race-weight gains over {value["Races"]} races: '
+                         f'+50% gear gain {value["Gear50GainPercent"]:+.2f}% / '
+                         f'(5 × +10% gear gain {value["Gear10GainPercent"]:+.2f}%). '
+                         '1× linear; >1× accelerating; <1× flattening. ')
+                title += (value["UnavailableReason"] if value["Amplification"] is None else
+                          f'Conservative 95% Monte Carlo bound ±{value["MonteCarlo95Bound"]:.2f}×. '
+                          'Caps and resource thresholds can affect this measure.')
+            else:
+                title = (f'Equal-weight mean over {value["Races"]} races; conservative 95% Monte Carlo bound '
+                         f'±{value["MonteCarlo95Bound"]:.2f} percentage points. Fixed talents and rotation.')
+            cells.append(f'<td class="gain" title="{escape(title)}">{format_metric(metric, value)}</td>')
         body.append(
             f'<tr><th scope="row" style="color:{CLASS_COLORS[class_name]}">'
             f'<a href="../{simulator}/?build={key}"><img src="icons/{icon}.jpg" alt="">'
@@ -93,13 +102,13 @@ def main():
         )
     factions = {r["Race"]: r["Faction"] for r in rows}
     heading = "".join(f'<th scope="col" class="{factions[r].lower()}">{escape(r)}</th>' for r in RACES)
-    heading += '<th scope="col" class="gain">Tier 1 gain</th><th scope="col" class="gain">Gear +10%</th><th scope="col" class="gain">Gear +20%</th>'
+    heading += '<th scope="col" class="gain">Tier 1 gain</th><th scope="col" class="gain">Gear +10%</th><th scope="col" class="gain">Scaling amp.</th>'
     groups = '<tr><th rowspan="2" scope="col">Class / build</th>'
     for faction in ("Alliance", "Horde"):
         count = sum(factions[r] == faction for r in RACES)
         groups += (f'<th colspan="{count}" scope="colgroup" class="faction {faction.lower()}">'
                    f'<img src="icons/{faction.lower()}.png" alt="">{faction}</th>')
-    groups += '<th colspan="3" scope="colgroup" class="faction gain">Mean DPS gain</th></tr>'
+    groups += '<th colspan="3" scope="colgroup" class="faction gain">Gains &amp; scaling</th></tr>'
     document = """<!doctype html>
 <html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Forever DPS benchmark</title>
@@ -126,27 +135,38 @@ The simulator’s <strong>Ranked builds</strong> selector also loads complete ra
 <p class="note">Equipment is recorded in each profile; no world or campfire buffs. Hit is normalized through a paid benchmark budget,
 not an obtainable reforging system. Imported bonus stats contain that fixed adjustment:
 changing gear, talents or race requires recalculation for a fair comparison.
-Energy scaling with general haste is a model assumption. Healing-only records, including enchants, retain an unverified
-one-third damage fallback. These are tested builds, not proven global optima.</p>
+Energy scaling with general haste is a model assumption. Druid Omen provisionally uses the client’s
+100% proc entry and ten-second cooldown; its server proc rate needs testing.
+General haste does not shorten the default spell GCD in this model; that still needs a Forever measurement.
+Warrior rage still uses an inherited damage-based model, not a verified Forever level-60 rule.
+Hunter pets still inherit no owner stats; the observed low-level AP inheritance has no verified level-60 rule here.
+Healing-only effects give no inferred spell damage. These are tested builds, not proven global optima.</p>
 <nav class="links"><a href="results.png">Chart PNG</a><a href="results.svg">Chart SVG</a>
 <a href="results.csv" download>CSV</a><a href="results.json" download>Raw requests/results</a>
 <a href="profiles/index.json">Replay profile index</a>
 <a href="sensitivity.json" download>Gain calculations</a>
 <a href="sensitivity/tier1_off.json" download>Tier 1 off</a>
 <a href="sensitivity/gear_110.json" download>Gear +10% run</a>
-<a href="sensitivity/gear_120.json" download>Gear +20% run</a>
+<a href="sensitivity/gear_150.json" download>Gear +50% run</a>
 <a href="build_reviews.md">Build reviews</a><a href="in_game_checks.md">In-game checks</a>
 <a href="forever_gear_data.md">Equipment sources and gaps</a>
-<a href="energy_audit.md">Energy model</a><a href="auto_attack_audit.md">Auto-attack model</a></nav>
+<a href="energy_audit.md">Energy model</a><a href="auto_attack_audit.md">Auto-attack model</a>
+<a href="mechanics_review.md">Mechanics review</a><a href="history_review.md">Change-history review</a></nav>
 <p class="note">Hover a result for its standard error and mana-limited time. A dash means that race/class combination is unavailable.</p>
 <p class="note">Equipment was selected by slot-by-slot DPS comparisons from the complete 706-item list and verified catalog supplements.
 Lower-level items remain when stronger or needed for a coverage gap; the known level-65 Undermine trinkets share a one-item limit.
-Unverified acquisition sources and unsupported item effects are excluded.
+Unverified acquisition sources and unsupported item procs are excluded; some ordinary equipped-set effects remain unmodeled.
+Selections came from an earlier mechanics revision; current DPS uses the corrected engine.
 <a href="https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/gear_search/summary.json">Search evidence</a>.</p>
 <p class="note">Gain columns average each available race’s percentage DPS change with equal weights.
 Tier 1 gain compares bonuses on versus off, using the same build.
-Gear columns increase item/suffix stats and weapon damage together; enchants, weapon speed/skill,
+Gear scenarios increase item/suffix stats and weapon damage together; enchants, weapon speed/skill,
 procs, consumables and buffs stay fixed. Tier 1 stays on and paid hit is recalculated.
+Scaling amplification is the mean +50% gain divided by five times the mean +10% gain:
+1× is linear, above 1× accelerates, below 1× flattens. A negative value means the +50% scenario loses DPS.
+An amplification dash means the +10% gain is too small or noisy for a useful ratio.
+This is finite-range curvature, not proof of exponential growth or isolated stat synergy;
+caps and resource thresholds can affect it.
 These are hypothetical sensitivities with fixed talents/rotations, not stat weights or predictions of future items.
 Cat weapon-DPS scaling remains an open mechanic. Hover gain cells for Monte Carlo uncertainty.</p>
 <div class="matrix"><table><thead>""" + groups + "<tr>" + heading + \

@@ -190,10 +190,19 @@ func writeResults(rows []resultRow) {
 		Mechanics                                map[string]string
 		Results                                  []resultRow
 	}{*duration, *targetArmor, *spellPower, false, *tier1, *equipmentScale, map[string]string{
-		"autoAttacks": "continuous-weapon-roles-no-caster-weaving",
-		"hunterCasts": "client-duration-no-added-windup",
-		"energy":      "10-per-second-100ms-integration-general-haste-assumed",
-		"eureka":      "charge-reserved-before-nested-effects",
+		"autoAttacks":  "continuous-weapon-roles-no-caster-weaving",
+		"hunterCasts":  "client-duration-no-added-windup",
+		"energy":       "10-per-second-100ms-integration-general-haste-assumed",
+		"eureka":       "charge-reserved-before-nested-effects",
+		"omen":         "provisional-client-100pct-direct-procs-10s-icd-no-wrath-consumption",
+		"healing":      "explicit-damage-only-no-inferred-conversion",
+		"hotStreak":    "one-charge-next-pyro-completion-consumes-all-stacks",
+		"clearcasting": "paid-base-cost-consumption-12536-one-second-icd",
+		"sanctityAura": "excluded-no-current-trait-or-class-skill",
+		"demonicBrand": "client-school-formulas-owner-power-at-hit-pet-multipliers-once-target-scoped",
+		"weaponStones": "client-effects-exclusive-main-hand-imbue-spellstone-school-mask36",
+		"naturesGrace": "10pct-cast-haste-separate-10pct-gcd-reduction-including-instants",
+		"rage":         "inherited-damage-based-level60-and-offhand-normalization-unresolved",
 	}, rows}
 	data, err := json.MarshalIndent(payload, "", "  ")
 	if err != nil {

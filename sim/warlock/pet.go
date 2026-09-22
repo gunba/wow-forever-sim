@@ -20,8 +20,7 @@ type WarlockPet struct {
 	primaryAbility   *core.Spell
 	secondaryAbility *core.Spell
 
-	SoulLinkAura     *core.Aura
-	DemonicBrandAura *core.Aura
+	SoulLinkAura *core.Aura
 
 	LifeTapManaMetrics *core.ResourceMetrics
 

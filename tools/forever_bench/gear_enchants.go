@@ -96,11 +96,6 @@ func legalEnchants(p *proto.Player, slot int) []*proto.UIEnchant {
 
 func enchantSeedScore(b build, e *proto.UIEnchant, slot int) float64 {
 	s := stats.FromFloatArray(e.Stats)
-	// Match the engine's inherited Forever conversion, including enchants.
-	// A healing-only label does not imply zero modeled damage.
-	if s[stats.SpellDamage] == 0 {
-		s[stats.SpellDamage] = s[stats.HealingPower] * core.ForeverHealingToSpellDamage
-	}
 	return seedScore(b, core.Item{Stats: s}, slot)
 }
 

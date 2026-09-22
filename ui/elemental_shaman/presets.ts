@@ -67,8 +67,8 @@ export const DefaultAPL = APLDefault;
 export const TalentsLevel60 = PresetUtils.makePresetTalents('Level 60', SavedTalents.create({ talentsString: '5505301500103031--503352001' }));
 
 export const TalentsElemental = PresetUtils.makePresetTalents(
-	'Elemental 31/6/14',
-	SavedTalents.create({ talentsString: '5502301500123031-0500001-053050001' }),
+	'Elemental 31/7/13',
+	SavedTalents.create({ talentsString: '5502301500123031-052-05305' }),
 );
 export const TalentsStormcaller = PresetUtils.makePresetTalents(
 	'Stormcaller 28/23/0',

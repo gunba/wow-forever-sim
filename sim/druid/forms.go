@@ -168,6 +168,7 @@ func (druid *Druid) registerCatFormSpell() {
 		},
 	})
 
+	druid.attachThickHide(druid.CatFormAura, 1)
 	energyMetrics := druid.NewEnergyMetrics(actionID)
 
 	hasWolfheadBonus := false
@@ -230,7 +231,7 @@ func (druid *Druid) furorShiftEnergy(sim *core.Simulation) float64 {
 	points := float64(druid.Talents.Furor)
 	carryOver := druid.lastCatFormEnergy * 0.2 * points
 	outOfForm := 0.0
-	if druid.lastCatFormExitAt > 0 {
+	if druid.lastCatFormExitAt != core.NeverExpires {
 		outOfForm = min(20*points, 2*points*(sim.CurrentTime-druid.lastCatFormExitAt).Seconds())
 	}
 
@@ -334,6 +335,7 @@ func (druid *Druid) registerBearFormSpell() {
 		},
 	})
 
+	druid.attachThickHide(druid.BearFormAura, BearFormArmorMultiplier)
 	rageMetrics := druid.NewRageMetrics(actionID)
 
 	// The Bear half of Furor is the Classic one, a chance at 10 Rage on the shift.
@@ -424,14 +426,17 @@ func (druid *Druid) registerMoonkinFormSpell() {
 				druid.CancelShapeshift(sim)
 			}
 			druid.form = Moonkin
+			druid.SetShapeshift(aura)
 			druid.ApplyDynamicEquipScaling(sim, stats.Armor, MoonkinFormArmorMultiplier)
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
 			druid.form = Humanoid
+			druid.SetShapeshift(nil)
 			druid.RemoveDynamicEquipScaling(sim, stats.Armor, MoonkinFormArmorMultiplier)
 		},
 	})
 
+	druid.attachThickHide(druid.MoonkinFormAura, MoonkinFormArmorMultiplier)
 	druid.MoonkinForm = druid.RegisterSpell(Any, core.SpellConfig{
 		ActionID: actionID,
 		Flags:    core.SpellFlagNoOnCastComplete | core.SpellFlagAPL,

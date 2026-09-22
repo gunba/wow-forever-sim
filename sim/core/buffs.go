@@ -343,7 +343,9 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 		MakePermanent(BlessingOfKingsAura(character))
 	}
 
-	if (raidBuffs.SanctityAura || (partyBuffs != nil && partyBuffs.SanctityAura)) && canReceivePaladinBuffs {
+	// Forever removed Sanctity Aura from both the talent tree and the class
+	// skill list. Its leftover spell record does not grant access to the buff.
+	if !character.Env.IsForever() && (raidBuffs.SanctityAura || (partyBuffs != nil && partyBuffs.SanctityAura)) && canReceivePaladinBuffs {
 		MakePermanent(SanctityAuraAura(character))
 	}
 
@@ -1263,21 +1265,26 @@ func registerInnervateCD(agent Agent, numInnervates int32) {
 
 func InnervateAura(character *Character, actionTag int32) *Aura {
 	actionID := ActionID{SpellID: 29166, Tag: actionTag}
-	// TODO: Add metrics for increased regen from spirit (either add here and align ticks to mana tick or create mana tick hook?)
-	// manaMetrics := character.NewManaMetrics(actionID)
-	return character.GetOrRegisterAura(Aura{
-		Label:    "Innervate-" + actionID.String(),
+	label := "Innervate-" + actionID.String()
+	if aura := character.GetAura(label); aura != nil {
+		return aura
+	}
+	manaMetrics := character.NewManaMetrics(actionID)
+	return character.RegisterAura(Aura{
+		Label:    label,
 		Tag:      InnervateAuraTag,
 		ActionID: actionID,
 		Duration: InnervateDuration,
 		OnGain: func(aura *Aura, sim *Simulation) {
 			character.PseudoStats.SpiritRegenMultiplier += 4
-			character.PseudoStats.ForceFullSpiritRegen = true
+			character.PseudoStats.FullSpiritRegenSources++
+			character.innervateRegenMetrics = manaMetrics
 			character.UpdateManaRegenRates()
 		},
 		OnExpire: func(aura *Aura, sim *Simulation) {
 			character.PseudoStats.SpiritRegenMultiplier -= 4
-			character.PseudoStats.ForceFullSpiritRegen = false
+			character.PseudoStats.FullSpiritRegenSources--
+			character.innervateRegenMetrics = nil
 			character.UpdateManaRegenRates()
 		},
 	})
@@ -1606,8 +1613,15 @@ func BattleSquawkAura(character *Unit, stackcount int32) *Aura {
 // 	})
 // }
 
-func CreateExtraAttackAuraCommon(character *Character, buffActionID ActionID, auraLabel string, rank int32, getBonusAP func(aura *Aura, rank int32) float64) *Aura {
+func createWindfuryTotemAura(character *Character, buffActionID ActionID, auraLabel string, rank int32, getBonusAP func(aura *Aura, rank int32) float64) *Aura {
 	var bonusAP float64
+	hasWindfuryWeapon := func() bool {
+		switch character.MainHand().TempEnchant {
+		case 283, 284, 525, 1669:
+			return true
+		}
+		return false
+	}
 
 	apBuffAura := character.GetOrRegisterAura(Aura{
 		Label:     auraLabel + " Buff",
@@ -1639,10 +1653,21 @@ func CreateExtraAttackAuraCommon(character *Character, buffActionID ActionID, au
 	}
 
 	apBuffAura.Icd = &icd
+	// Windfury Weapon explicitly disables its owner's Windfury Totem benefit.
+	// Check the current weapon so swaps cannot retain the totem AP/proc.
+	character.RegisterOnItemSwap(func(sim *Simulation) {
+		if hasWindfuryWeapon() {
+			apBuffAura.Deactivate(sim)
+		}
+	})
 
 	MakePermanent(character.GetOrRegisterAura(Aura{
 		Label: auraLabel,
 		OnSpellHitDealt: func(aura *Aura, sim *Simulation, spell *Spell, result *SpellResult) {
+			if hasWindfuryWeapon() {
+				apBuffAura.Deactivate(sim)
+				return
+			}
 			// charges are removed by every auto or next melee, whether it lands or not
 			//  this directly contradicts https://github.com/magey/classic-warrior/wiki/Windfury-Totem#triggered-by-melee-spell-while-an-on-next-swing-attack-is-queued
 			//  but can be seen in both "vanilla" and "sod" era logs
@@ -1692,7 +1717,7 @@ func ApplyWindfury(character *Character) *Aura {
 	spellId := WindfuryBuffSpellId[rank]
 	buffActionID := ActionID{SpellID: spellId}
 
-	return CreateExtraAttackAuraCommon(character, buffActionID, "Windfury", rank, GetWindfuryAP)
+	return createWindfuryTotemAura(character, buffActionID, "Windfury", rank, GetWindfuryAP)
 
 }
 

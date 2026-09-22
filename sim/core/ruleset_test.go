@@ -34,8 +34,17 @@ func TestForeverExplicitHealingDamage(t *testing.T) {
 		t.Fatalf("Battle Mace spell damage = %v, want 58", got)
 	}
 	mace.Enchant.Stats = stats.Stats{stats.HealingPower: 30}
-	if got := c.itemStats(mace, true)[stats.SpellDamage]; got != 68 {
-		t.Fatalf("enchanted mace spell damage = %v, want 68", got)
+	mace.RandomSuffix.Stats = stats.Stats{stats.HealingPower: 24}
+	if got := c.itemStats(mace, true)[stats.SpellDamage]; got != 58 {
+		t.Fatalf("healing-only components added damage: %v, want 58", got)
+	}
+	mace.Enchant.Stats = stats.Stats{stats.HealingPower: 35, stats.SpellDamage: 12}
+	if got := c.itemStats(mace, true)[stats.SpellDamage]; got != 70 {
+		t.Fatalf("explicit enchant damage = %v, want 70", got)
+	}
+	healingOnly := Item{Stats: stats.Stats{stats.HealingPower: 42}}
+	if got := c.itemStats(healingOnly, true)[stats.SpellDamage]; got != 0 {
+		t.Fatalf("healing-only item added %v spell damage", got)
 	}
 }
 

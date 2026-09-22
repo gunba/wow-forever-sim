@@ -21,6 +21,7 @@ type manaBar struct {
 	currentMana           float64
 	manaCastingMetrics    *ResourceMetrics
 	manaNotCastingMetrics *ResourceMetrics
+	innervateRegenMetrics *ResourceMetrics
 	JowManaMetrics        *ResourceMetrics
 	VtManaMetrics         *ResourceMetrics
 	JowiseManaMetrics     *ResourceMetrics
@@ -126,6 +127,10 @@ func (mb *manaBar) doneIteration(sim *Simulation) {
 		if resourceMetrics.ActionID.SameActionIgnoreTag(ActionID{OtherID: proto.OtherAction_OtherActionManaRegen}) {
 			continue
 		}
+		if resourceMetrics.ActionID.SameActionIgnoreTag(ActionID{SpellID: 29166}) {
+			// Innervate's attributed gain is still passive regeneration.
+			continue
+		}
 		if resourceMetrics.ActionID.SameActionIgnoreTag(ActionID{SpellID: 34917}) {
 			// Vampiric Touch mana threat goes to the priest, so it's handled in the priest code.
 			continue
@@ -154,35 +159,26 @@ func (unit *Unit) SpiritManaRegenPerSecondDefault() float64 {
 // Returns the rate of mana regen per second, assuming this unit is
 // considered to be casting.
 func (unit *Unit) ManaRegenPerSecondWhileCasting() float64 {
-	regenRate := unit.MP5ManaRegenPerSecond()
-
-	spiritRegen := unit.SpiritManaRegenPerSecondDefault()
-	if unit.SpiritManaRegenPerSecond != nil {
-		spiritRegen = unit.SpiritManaRegenPerSecond()
-	}
-	spiritRegenRate := 0.0
-	if unit.PseudoStats.SpiritRegenRateCasting != 0 || unit.PseudoStats.ForceFullSpiritRegen {
-		spiritRegenRate = spiritRegen * unit.PseudoStats.SpiritRegenMultiplier
-		if !unit.PseudoStats.ForceFullSpiritRegen {
-			spiritRegenRate *= unit.PseudoStats.SpiritRegenRateCasting
-		}
-	}
-	regenRate += spiritRegenRate
-
-	return regenRate
+	return unit.manaRegenPerSecond(true, unit.PseudoStats.SpiritRegenMultiplier, unit.PseudoStats.FullSpiritRegenSources)
 }
 
 // Returns the rate of mana regen per second, assuming this unit is
 // considered to be not casting.
 func (unit *Unit) ManaRegenPerSecondWhileNotCasting() float64 {
-	regenRate := unit.MP5ManaRegenPerSecond()
+	return unit.manaRegenPerSecond(false, unit.PseudoStats.SpiritRegenMultiplier, unit.PseudoStats.FullSpiritRegenSources)
+}
 
+func (unit *Unit) manaRegenPerSecond(casting bool, spiritMultiplier float64, fullSpiritSources int32) float64 {
+	regenRate := unit.MP5ManaRegenPerSecond()
 	spiritRegen := unit.SpiritManaRegenPerSecondDefault()
 	if unit.SpiritManaRegenPerSecond != nil {
 		spiritRegen = unit.SpiritManaRegenPerSecond()
 	}
-	regenRate += spiritRegen * unit.PseudoStats.SpiritRegenMultiplier
-
+	spiritRegen *= spiritMultiplier
+	if casting && fullSpiritSources == 0 {
+		spiritRegen *= unit.PseudoStats.SpiritRegenRateCasting
+	}
+	regenRate += spiritRegen
 	return regenRate
 }
 
@@ -197,13 +193,23 @@ func (unit *Unit) GetManaNotCastingMetrics() *ResourceMetrics {
 
 // Applies 1 'tick' of mana regen, which worth 2s of regeneration based on mp5/int/spirit/etc.
 func (unit *Unit) ManaTick(sim *Simulation) {
-	if sim.CurrentTime < unit.PseudoStats.FiveSecondRuleRefreshTime {
-		regen := unit.manaTickWhileCasting
-		unit.AddMana(sim, max(0, regen), unit.manaCastingMetrics)
-	} else {
-		regen := unit.manaTickWhileNotCasting
-		unit.AddMana(sim, max(0, regen), unit.manaNotCastingMetrics)
+	casting := sim.CurrentTime < unit.PseudoStats.FiveSecondRuleRefreshTime
+	regen, metrics := unit.manaTickWhileNotCasting, unit.manaNotCastingMetrics
+	if casting {
+		regen, metrics = unit.manaTickWhileCasting, unit.manaCastingMetrics
 	}
+	regen = max(0, regen)
+	if unit.innervateRegenMetrics != nil {
+		// Credit only Innervate's increment over the same tick without it.
+		// Ordinary regeneration fills the missing mana first; any capped
+		// Innervate contribution is reported as wasted, not added twice.
+		baseline := 2 * unit.manaRegenPerSecond(casting, unit.PseudoStats.SpiritRegenMultiplier-4, unit.PseudoStats.FullSpiritRegenSources-1)
+		baseline = min(regen, max(0, baseline))
+		unit.AddMana(sim, baseline, metrics)
+		unit.AddMana(sim, regen-baseline, unit.innervateRegenMetrics)
+		return
+	}
+	unit.AddMana(sim, regen, metrics)
 }
 
 // Returns the amount of time this Unit would need to wait in order to reach
@@ -275,6 +281,7 @@ func (sim *Simulation) initManaTickAction() {
 }
 
 func (mb *manaBar) reset() {
+	mb.innervateRegenMetrics = nil
 	if mb.unit == nil {
 		return
 	}

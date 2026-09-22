@@ -72,35 +72,39 @@
 	"1277324": {
 		"ability": "Dark Sacrifice",
 		"file": "sim/priest/dark_sacrifice.go",
-		"source": "forever",
+		"source": "assumed",
+		"tooltip": "Instant\n10 min cooldown\nAt level 20, converts 80 Health to Mana every 3 sec for 15 sec. Each transfer grows by 1 per level, up to 88.",
 		"note": "Undead Priest only. Rank 1 at level 20: 80 Health to Mana every 3 seconds for five ticks, growing by 1 per level through level 28. Shared 10-minute rank cooldown; 1.5-second GCD; no mana cost.",
 		"assumptions": ["Self-damage is modeled as the unmodified client health amount; damage-buff and resistance interactions need beta testing."]
 	},
 	"1277325": {
 		"ability": "Dark Sacrifice",
 		"file": "sim/priest/dark_sacrifice.go",
-		"source": "forever",
+		"source": "assumed",
+		"tooltip": "Instant\n10 min cooldown\nAt level 30, converts 136 Health to Mana every 3 sec for 15 sec. Each transfer grows by 1 per level, up to 144.",
 		"note": "Rank 2 at level 30: 136 Health to Mana per tick, growing by 1 per level through level 38. Five ticks every 3 seconds.",
 		"assumptions": ["Self-damage is modeled as the unmodified client health amount; damage-buff and resistance interactions need beta testing."]
 	},
 	"1277326": {
 		"ability": "Dark Sacrifice",
 		"file": "sim/priest/dark_sacrifice.go",
-		"source": "forever",
+		"source": "assumed",
+		"tooltip": "Instant\n10 min cooldown\nAt level 40, converts 196 Health to Mana every 3 sec for 15 sec. Each transfer grows by 1 per level, up to 204.",
 		"note": "Rank 3 at level 40: 196 Health to Mana per tick, growing by 1 per level through level 48. Five ticks every 3 seconds.",
 		"assumptions": ["Self-damage is modeled as the unmodified client health amount; damage-buff and resistance interactions need beta testing."]
 	},
 	"1277327": {
 		"ability": "Dark Sacrifice",
 		"file": "sim/priest/dark_sacrifice.go",
-		"source": "forever",
+		"source": "assumed",
+		"tooltip": "Instant\n10 min cooldown\nAt level 50, converts 258 Health to Mana every 3 sec for 15 sec. Each transfer grows by 1 per level, up to 266.",
 		"note": "Rank 4 at level 50: 258 Health to Mana per tick, growing by 1 per level through level 58. Five ticks every 3 seconds.",
 		"assumptions": ["Self-damage is modeled as the unmodified client health amount; damage-buff and resistance interactions need beta testing."]
 	},
 	"1277328": {
 		"ability": "Dark Sacrifice",
 		"file": "sim/priest/dark_sacrifice.go",
-		"source": "forever",
+		"source": "assumed",
 		"note": "Beta 1.60.1.69893: at level 60, five transfers of 320 Health to Mana, totaling 1600. Wowhead's static 1640 preview uses the rank's maximum scaling level, 68, not its required level. Automatic use requires enough health, missing mana and encounter time.",
 		"tooltip": "Instant\n10 min cooldown\nCannibalize 1600 of your own Health over 15 sec to gain 1600 Mana.",
 		"assumptions": ["Self-damage is modeled as the unmodified client health amount; damage-buff and resistance interactions need beta testing."]

@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import { chromium } from 'playwright';
 
 const base = process.env.SITE_URL || 'http://localhost:8080/classic/';
-const data = JSON.parse(readFileSync('artifacts/sensitivity/gear_120.json', 'utf8'));
+const data = JSON.parse(readFileSync('artifacts/sensitivity/gear_150.json', 'utf8'));
 const row = data.Results.find(r => r.Key === 'fury' && r.Race === 'Gnome');
 const req = row.Request, raid = req.raid, party = raid.parties[0], player = party.players[0];
 const settings = {
@@ -36,13 +36,13 @@ try {
 	assert.deepEqual(stored.player.bonusStats.stats, player.bonusStats.stats);
 	const pseudoStats = stored.player.bonusStats.pseudoStats || [];
 	assert.deepEqual(pseudoStats, player.bonusStats.pseudoStats || Array(pseudoStats.length).fill(0));
-	assert.equal(stored.player.equipmentScale, 1.2);
+	assert.equal(stored.player.equipmentScale, 1.5);
 	assert.equal(stored.player.talentsString, player.talentsString);
 	await page.getByRole('button', { name: 'Simulate', exact: true }).click();
 	await page.getByText('Save as Reference', { exact: true }).first().waitFor({ timeout: 180000 });
 	const actual = Number(await page.locator('.results-sim-dps .topline-result-avg').first().innerText());
 	assert.ok(Math.abs(actual - row.DPS) < 0.015, `WASM ${actual} vs native ${row.DPS}`);
-	console.log(`Gnome Fury +20%: ${actual} DPS; inputs preserved; native match`);
+	console.log(`Gnome Fury +50%: ${actual} DPS; inputs preserved; native match`);
 
 	const invalidShaman = JSON.parse(readFileSync('artifacts/ui_profiles/enhancement__orc.json', 'utf8'));
 	invalidShaman.player.equipment.items[14] = { id: 279261 };

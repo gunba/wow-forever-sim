@@ -743,22 +743,13 @@ func CurseOfRecklessnessAura(target *Unit) *Aura {
 	return aura
 }
 
-// Decreases the armor of the target by X for 40 sec.
-// Improved: Your Faerie Fire and Faerie Fire (Feral) also increase the chance for all attacks to hit that target by 1% for 40 sec.
+// Decreases the target's armor by 505 for 40 seconds.
 func FaerieFireAura(target *Unit) *Aura {
-	return faerieFireAuraInternal(target, "Faerie Fire", 9907)
-}
-
-func FaerieFireFeralAura(target *Unit) *Aura {
-	return faerieFireAuraInternal(target, "Faerie Fire (Feral)", 17392)
-}
-
-func faerieFireAuraInternal(target *Unit, label string, spellID int32) *Aura {
 	arPen := float64(505)
 
 	aura := target.GetOrRegisterAura(Aura{
-		Label:    label,
-		ActionID: ActionID{SpellID: spellID},
+		Label:    "Faerie Fire",
+		ActionID: ActionID{SpellID: 9907},
 		Duration: time.Second * 40,
 	})
 

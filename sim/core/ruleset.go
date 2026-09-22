@@ -27,21 +27,6 @@ func (dot *Dot) critCheck(sim *Simulation, target *Unit, attackTable *AttackTabl
 	return dot.Spell.MagicCritCheck(sim, target)
 }
 
-// Bonus healing on Forever gear carries a damage component with it, so that healing
-// gear is not dead weight outside a raid. Hide of the Wild reads 42 healing and 14
-// damage, which is the only published pair, so a third is the rate used here. It feeds
-// SpellDamage rather than SpellPower because the damage half does not heal.
-const ForeverHealingToSpellDamage = 1.0 / 3.0
-
-func (character *Character) addHealingSpellDamage(equipStats stats.Stats) stats.Stats {
-	// Beta vendor items already spell out both values. Only fill the missing
-	// damage component of a legacy healing-only record.
-	if equipStats[stats.SpellDamage] == 0 {
-		equipStats[stats.SpellDamage] = equipStats[stats.HealingPower] * ForeverHealingToSpellDamage
-	}
-	return equipStats
-}
-
 func (character *Character) itemStats(item Item, includeEnchant bool) stats.Stats {
 	parts := []stats.Stats{item.Stats, item.RandomSuffix.Stats}
 	if includeEnchant {
@@ -50,7 +35,6 @@ func (character *Character) itemStats(item Item, includeEnchant bool) stats.Stat
 	var total stats.Stats
 	for _, part := range parts {
 		if character.Env.IsForever() {
-			part = character.addHealingSpellDamage(part)
 			part = character.unifyEquipHitAndCrit(part)
 		}
 		total = total.Add(part)

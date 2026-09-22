@@ -25,7 +25,7 @@ func (hunter *Hunter) getArcaneShotConfig(rank int, timer *core.Timer) core.Spel
 		CastType:      proto.CastType_CastTypeRanged,
 		Rank:          rank,
 		RequiredLevel: level,
-		MissileSpeed:  24,
+		MissileSpeed:  40,
 
 		ManaCost: core.ManaCostOptions{
 			FlatCost: manaCost,

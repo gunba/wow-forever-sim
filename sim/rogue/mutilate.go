@@ -36,6 +36,8 @@ func (rogue *Rogue) registerMutilateSpell() {
 		ProcMask:    core.ProcMaskMeleeOHSpecial,
 		Flags:       SpellFlagBuilder | core.SpellFlagMeleeMetrics | core.SpellFlagNoOnCastComplete,
 
+		// Puncturing Wounds' family mask includes both child strikes.
+		BonusCritRating: 5 * core.CritRatingPerCritChance * float64(rogue.Talents.PuncturingWounds),
 		CritDamageBonus: rogue.lethality(),
 
 		DamageMultiplier: rogue.AutoAttacks.OHConfig().DamageMultiplier * []float64{1, 1.05, 1.1}[rogue.Talents.Opportunity],

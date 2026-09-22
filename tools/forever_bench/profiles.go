@@ -91,7 +91,7 @@ func (b build) player(race proto.Race) *proto.Player {
 	case "retribution":
 		p.DistanceFromTarget = 5
 		core.WithSpec(p, &proto.Player_RetributionPaladin{RetributionPaladin: &proto.RetributionPaladin{Options: &proto.PaladinOptions{
-			Aura: proto.PaladinAura_SanctityAura, PrimarySeal: proto.PaladinSeal_Command,
+			Aura: proto.PaladinAura_NoPaladinAura, PrimarySeal: proto.PaladinSeal_Command,
 		}}})
 	case "shadow":
 		core.WithSpec(p, &proto.Player_ShadowPriest{ShadowPriest: &proto.ShadowPriest{Options: &proto.ShadowPriest_Options{}}})

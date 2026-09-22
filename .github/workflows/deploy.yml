@@ -74,8 +74,10 @@ jobs:
 
       - name: Test
         run: |
-          go test -tags with_db ./tools/forever_bench ./sim/core ./tools/icons
+          go test -tags with_db ./tools/forever_bench ./sim/core ./sim/druid ./tools/database ./tools/database/gen_db ./tools/icons
+          go test -tags with_db ./sim -run 'Test(EveryRegisteredSpellSaysWhereItsNumbersCameFrom|EverySpellRegistrationResolvesToAnID|SpellSourcesAreWellFormed|UnreviewedSpellsOnlyShrink|SpellSourceScannerKeepsBranchesAndRejectsRankScalars)$'
           python3 -m unittest discover -s tools/forever_bench
+          python3 -m unittest discover -s tools/database
 
       - name: Stage benchmark review portal
         run: python3 tools/forever_bench/build_review_site.py

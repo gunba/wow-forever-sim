@@ -18,7 +18,8 @@ go test -tags with_db ./tools/forever_bench
 go run -tags with_db ./tools/forever_bench -baseline-results artifacts/forever_dps_5min.json \
   -iterations 5000 -seed 20291951 -output /tmp/forever-replay
 python3 tools/forever_bench/fetch_icons.py
-python3 tools/forever_bench/chart.py artifacts/forever_dps_5min.json
+python3 tools/forever_bench/chart.py artifacts/forever_dps_5min.json \
+  --sensitivity artifacts/forever_sensitivity.json
 ```
 
 Chart rendering requires Python's `matplotlib`. Go builds can use
@@ -74,9 +75,9 @@ python3 tools/forever_bench/run_matrix.py \
 ```
 
 The final replay fills missing enchants without overriding legal simulated
-choices. Initial enchant scoring respects the inherited healing-to-damage
-conversion, including healing enchants; that conversion remains an in-game
-validation question. Proc and haste enchants use their simulated comparison.
+choices. Healing contributes no damage unless the sourced item or enchant
+explicitly supplies a damage effect. Verified hybrid enchants retain that
+separate effect. Proc and haste enchants use their simulated comparison.
 
 The search compares each slot against the current loadout, with legal weapon
 layouts compared together. It then compares legal enchants and the second
@@ -99,9 +100,22 @@ items. Item proc gaps remain separate from these equipment-set gaps.
 
 ### Tier and gear sensitivity
 
-The matrix's three gain columns use equal-weight arithmetic means of each
-available race's percentage gain. Tier 1 gain is `100 × (on / off − 1)`.
+The matrix shows Tier 1 gain, the DPS gain at +10% equipment, and scaling
+amplification. Gains use equal-weight arithmetic means of each available race's
+percentage change. Tier 1 gain is `100 × (on / off − 1)`.
 Gear gains are `100 × (scaled / baseline − 1)`, with Tier 1 still enabled.
+The additional +50% equipment run measures curvature:
+
+`amplification = mean gain at +50% / (5 × mean gain at +10%)`
+
+This is a ratio of equal-race-weight means, not a mean of per-race ratios.
+One means linear scaling across this range; greater than one means accelerating
+gains, less than one means flattening, and a negative value means the +50% run
+loses DPS. It does not establish exponential growth or isolate stat synergy.
+Caps and resource thresholds can also bend the curve.
+The ratio is unavailable when the +10% gain is at most 0.1 percentage points or
+does not exceed its conservative 95% Monte Carlo bound.
+
 All comparisons retain the same talents, APL, encounter, seed and 5,000 iterations.
 They measure the current build's response, not a reoptimized build at each gear level.
 
@@ -119,7 +133,7 @@ Reproduce the comparisons from the exact saved, unnormalized baseline players:
 go build -tags with_db -o /tmp/forever-bench ./tools/forever_bench
 /tmp/forever-bench -baseline-results artifacts/forever_dps_5min.json -seed 20291951 -tier1=false -output artifacts/sensitivity/tier1_off
 /tmp/forever-bench -baseline-results artifacts/forever_dps_5min.json -seed 20291951 -equipment-scale 1.1 -output artifacts/sensitivity/gear_110
-/tmp/forever-bench -baseline-results artifacts/forever_dps_5min.json -seed 20291951 -equipment-scale 1.2 -output artifacts/sensitivity/gear_120
+/tmp/forever-bench -baseline-results artifacts/forever_dps_5min.json -seed 20291951 -equipment-scale 1.5 -output artifacts/sensitivity/gear_150
 python3 tools/forever_bench/sensitivity.py
 python3 tools/forever_bench/chart.py artifacts/forever_dps_5min.json --sensitivity artifacts/forever_sensitivity.json
 python3 tools/forever_bench/build_review_site.py
@@ -128,7 +142,10 @@ python3 tools/forever_bench/build_review_site.py
 The summary includes source hashes, individual race comparisons and conservative
 95% Monte Carlo bounds. Since common seeds correlate the runs and races, these
 bounds sum marginal standard-error contributions instead of assuming independent
-errors. They do not account for uncertain game mechanics.
+errors. Amplification propagates those marginal bounds conservatively rather
+than assuming its two gains are independent. These bounds do not account for
+uncertain game mechanics. The +50% runs remain downloadable even though the
+matrix displays their derived amplification rather than another gain column.
 
 The Tier-off run exposed a Eureka charge underflow in nested Warrior attacks.
 The engine now reserves a charge before resolving an attack's callbacks, so a
@@ -403,6 +420,6 @@ an assertion about unreleased gear or trinket effects.
   Classic Era. Local mechanic notes still identify unresolved values.
 - [Consumable checks](../../docs/beta-pass/consumables.md) record the corrected
   Grilled Squid, Runn Tum and Nightfin effects. Nightfin no longer grants MP5.
-- The engine retains an inherited one-third spell-damage fallback for
-  healing-only records. It does not apply to the selected healing items:
-  each already has an explicit damage component.
+- The blanket healing-to-damage fallback has been removed. Selected hybrid
+  items and enchants use their explicit sourced damage components; pure healing
+  records do not grant damage.

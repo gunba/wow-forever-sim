@@ -8,7 +8,7 @@ import (
 
 const ConflagrateRanks = 6
 
-func (warlock *Warlock) getConflagrateConfig(rank int) core.SpellConfig {
+func (warlock *Warlock) getConflagrateConfig(rank int, timer *core.Timer) core.SpellConfig {
 	// Beta client 1.60.1: Forever adds two ranks below Classic's four (1293817 at 25, 1293818 at 32),
 	// which makes Classic's 17962 rank 3, and every rank does about half Classic's damage.
 	spellId := [ConflagrateRanks + 1]int32{0, 1293817, 1293818, 17962, 18930, 18931, 18932}[rank]
@@ -42,7 +42,7 @@ func (warlock *Warlock) getConflagrateConfig(rank int) core.SpellConfig {
 				GCD: core.GCDDefault,
 			},
 			CD: core.Cooldown{
-				Timer:    warlock.NewTimer(),
+				Timer:    timer,
 				Duration: time.Second * 10,
 			},
 		},
@@ -73,8 +73,9 @@ func (warlock *Warlock) registerConflagrateSpell() {
 	}
 
 	warlock.Conflagrate = make([]*core.Spell, 0)
+	timer := warlock.NewTimer()
 	for rank := 1; rank <= ConflagrateRanks; rank++ {
-		config := warlock.getConflagrateConfig(rank)
+		config := warlock.getConflagrateConfig(rank, timer)
 
 		if config.RequiredLevel <= int(warlock.Level) {
 			warlock.Conflagrate = append(warlock.Conflagrate, warlock.GetOrRegisterSpell(config))

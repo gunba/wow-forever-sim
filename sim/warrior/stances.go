@@ -103,9 +103,11 @@ func (warrior *Warrior) registerBattleStanceAura() {
 }
 
 func (warrior *Warrior) registerDefensiveStanceAura() {
-	// Defiance only pays out with a shield equipped now.
-	defiance := core.TernaryFloat64(warrior.PseudoStats.CanBlock, 0.05*float64(warrior.Talents.Defiance), 0)
-	warrior.defensiveStanceThreatMultiplier = 1.3 * (1 + defiance)
+	threatMultiplier := func() float64 {
+		defiance := core.TernaryFloat64(warrior.PseudoStats.CanBlock, 0.05*float64(warrior.Talents.Defiance), 0)
+		return 1.3 * (1 + defiance)
+	}
+	warrior.defensiveStanceThreatMultiplier = threatMultiplier()
 
 	warrior.DefensiveStanceAura = warrior.RegisterAura(core.Aura{
 		Label:    "Defensive Stance",
@@ -114,6 +116,7 @@ func (warrior *Warrior) registerDefensiveStanceAura() {
 	})
 	warrior.DefensiveStanceAura.NewExclusiveEffect(stanceEffectCategory, true, core.ExclusiveEffect{
 		OnGain: func(ee *core.ExclusiveEffect, sim *core.Simulation) {
+			warrior.defensiveStanceThreatMultiplier = threatMultiplier()
 			ee.Aura.Unit.PseudoStats.ThreatMultiplier *= warrior.defensiveStanceThreatMultiplier
 			ee.Aura.Unit.PseudoStats.DamageDealtMultiplier *= 0.9
 			ee.Aura.Unit.PseudoStats.DamageTakenMultiplier *= 0.9
@@ -123,6 +126,13 @@ func (warrior *Warrior) registerDefensiveStanceAura() {
 			ee.Aura.Unit.PseudoStats.DamageDealtMultiplier /= 0.9
 			ee.Aura.Unit.PseudoStats.DamageTakenMultiplier /= 0.9
 		},
+	})
+	warrior.RegisterOnItemSwap(func(sim *core.Simulation) {
+		next := threatMultiplier()
+		if warrior.DefensiveStanceAura.IsActive() {
+			warrior.PseudoStats.ThreatMultiplier *= next / warrior.defensiveStanceThreatMultiplier
+		}
+		warrior.defensiveStanceThreatMultiplier = next
 	})
 }
 

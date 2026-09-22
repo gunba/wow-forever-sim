@@ -18,7 +18,6 @@ const (
 
 	SpellCode_DruidClaw
 	SpellCode_DruidFaerieFire
-	SpellCode_DruidFaerieFireFeral
 	SpellCode_DruidFerociousBite
 	SpellCode_DruidHurricane
 	SpellCode_DruidInsectSwarm
@@ -66,7 +65,6 @@ type Druid struct {
 	LacerateBleed        *DruidSpell
 	Languish             *DruidSpell
 	MangleBear           *DruidSpell
-	MangleCat            *DruidSpell
 	Maul                 *DruidSpell
 	MaulQueueSpell       *DruidSpell
 	Moonfire             []*DruidSpell
@@ -88,6 +86,7 @@ type Druid struct {
 	BearFormAura             *core.Aura
 	BerserkAura              *core.Aura
 	CatFormAura              *core.Aura
+	ClearcastingAura         *core.Aura
 	DemoralizingRoarAuras    core.AuraArray
 	EclipseAura              *core.Aura
 	EnrageAura               *core.Aura
@@ -177,6 +176,7 @@ func (druid *Druid) RegisterSpell(formMask DruidForm, config core.SpellConfig) *
 func (druid *Druid) Initialize() {
 	druid.BleedCategories = druid.GetEnemyExclusiveCategories(core.BleedEffectCategory)
 
+	druid.registerOmenOfClarity()
 	druid.registerFaerieFireSpell()
 	druid.registerInnervateCD()
 }
@@ -195,7 +195,6 @@ func (druid *Druid) RegisterFeralCatSpells() {
 	// druid.registerBearFormSpell()
 	// druid.registerEnrageSpell()
 	druid.registerFerociousBiteSpell()
-	druid.registerMangleCatSpell()
 	// druid.registerMangleBearSpell()
 	// druid.registerMaulSpell()
 	druid.registerRakeSpell()
@@ -222,17 +221,20 @@ func (druid *Druid) RegisterFeralTankSpells() {
 
 func (druid *Druid) Reset(_ *core.Simulation) {
 	druid.BleedsActive = 0
+	druid.lastCatFormEnergy = 0
+	druid.lastCatFormExitAt = core.NeverExpires
 	druid.form = druid.StartingForm
 	druid.disabledMCDs = []*core.MajorCooldown{}
 }
 
 func New(character *core.Character, form DruidForm, selfBuffs SelfBuffs, talents string) *Druid {
 	druid := &Druid{
-		Character:    *character,
-		SelfBuffs:    selfBuffs,
-		Talents:      &proto.DruidTalents{},
-		StartingForm: form,
-		form:         form,
+		Character:         *character,
+		SelfBuffs:         selfBuffs,
+		Talents:           &proto.DruidTalents{},
+		StartingForm:      form,
+		form:              form,
+		lastCatFormExitAt: core.NeverExpires,
 	}
 	core.FillTalentsProto(druid.Talents.ProtoReflect(), talents, TalentTreeSizes)
 	druid.EnableManaBar()

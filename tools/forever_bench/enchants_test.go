@@ -124,7 +124,7 @@ func TestGearEnchantCoverageAndLegality(t *testing.T) {
 	}
 }
 
-func TestEnchantPreparationPreservesModeledHealingConversion(t *testing.T) {
+func TestEnchantPreparationPreservesExplicitHybridEnchant(t *testing.T) {
 	for _, b := range builds() {
 		if b.Key != "fire" {
 			continue
@@ -133,7 +133,7 @@ func TestEnchantPreparationPreservesModeledHealingConversion(t *testing.T) {
 		p.Equipment.Items[proto.ItemSlot_ItemSlotWrist].Enchant = 2566
 		prepareGearEnchants(b, p)
 		if p.Equipment.Items[proto.ItemSlot_ItemSlotWrist].Enchant != 2566 {
-			t.Fatal("healing enchant's modeled damage contribution was ignored")
+			t.Fatal("hybrid enchant's explicit damage contribution was ignored")
 		}
 	}
 }

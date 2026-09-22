@@ -8,14 +8,13 @@ import (
 
 const DeathCoilRanks = 3
 
-func (warlock *Warlock) getDeathCoilBaseConfig(rank int) core.SpellConfig {
+func (warlock *Warlock) getDeathCoilBaseConfig(rank int, timer *core.Timer) core.SpellConfig {
 	spellId := [DeathCoilRanks + 1]int32{0, 6789, 17925, 17926}[rank]
 	// Beta client 1.60.1 values: slightly less damage, slightly more mana
 	baseDamage := [DeathCoilRanks + 1]float64{0, 285, 375, 460}[rank]
 	manaCost := [DeathCoilRanks + 1]float64{0, 435, 525, 600}[rank]
 	level := [DeathCoilRanks + 1]int{0, 42, 50, 58}[rank]
 	spellCoeff := 0.214
-
 
 	healingSpell := warlock.GetOrRegisterSpell(core.SpellConfig{
 		ActionID:    core.ActionID{SpellID: spellId}.WithTag(1),
@@ -46,7 +45,7 @@ func (warlock *Warlock) getDeathCoilBaseConfig(rank int) core.SpellConfig {
 				GCD: core.GCDDefault,
 			},
 			CD: core.Cooldown{
-				Timer:    warlock.NewTimer(),
+				Timer:    timer,
 				Duration: time.Minute * 2,
 			},
 		},
@@ -71,8 +70,9 @@ func (warlock *Warlock) getDeathCoilBaseConfig(rank int) core.SpellConfig {
 
 func (warlock *Warlock) registerDeathCoilSpell() {
 	warlock.DeathCoil = make([]*core.Spell, 0)
+	timer := warlock.NewTimer()
 	for rank := 1; rank <= DeathCoilRanks; rank++ {
-		config := warlock.getDeathCoilBaseConfig(rank)
+		config := warlock.getDeathCoilBaseConfig(rank, timer)
 
 		if config.RequiredLevel <= int(warlock.Level) {
 			warlock.DeathCoil = append(warlock.DeathCoil, warlock.GetOrRegisterSpell(config))

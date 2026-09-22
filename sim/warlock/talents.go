@@ -45,95 +45,46 @@ func (warlock *Warlock) ApplyTalents() {
 }
 
 func (warlock *Warlock) applyWeaponImbue() {
-	if warlock.GetCharacter().Equipment.OffHand().Type != proto.ItemType_ItemTypeUnknown {
+	if warlock.Options.WeaponImbue == proto.WarlockOptions_NoWeaponImbue {
+		return
+	}
+	if warlock.Consumes.MainHandImbue != proto.WeaponImbue_WeaponImbueUnknown {
+		panic("Warlock weapon stones cannot be combined with another main-hand imbue")
+	}
+	if warlock.Equipment.MainHand().ID == 0 {
 		return
 	}
 
-	level := warlock.Level
-	if warlock.Options.WeaponImbue == proto.WarlockOptions_Firestone {
-		warlock.applyFirestone()
-	}
-	if warlock.Options.WeaponImbue == proto.WarlockOptions_Spellstone {
-		if level >= 55 {
-			warlock.AddStat(stats.SpellCrit, 1*core.SpellCritRatingPerCritChance)
+	// Forever stones enchant the weapon; neither requires an empty off-hand.
+	// Firestone effects 23480–23483 grant fire power and spell crit, not a melee proc.
+	var power, percent float64
+	switch warlock.Options.WeaponImbue {
+	case proto.WarlockOptions_Firestone:
+		switch {
+		case warlock.Level >= 56:
+			power, percent = 21, 2
+		case warlock.Level >= 46:
+			power, percent = 17, 2
+		case warlock.Level >= 36:
+			power, percent = 14, 1
+		case warlock.Level >= 28:
+			power, percent = 10, 1
 		}
-	}
-}
-
-func (warlock *Warlock) applyFirestone() {
-	level := warlock.Level
-
-	damageMin := 0.0
-	damageMax := 0.0
-
-	// TODO: Test for spell scaling
-	spellCoeff := 0.0
-	spellId := int32(0)
-
-	// TODO: Test PPM
-	ppm := warlock.AutoAttacks.NewPPMManager(8, core.ProcMaskMelee)
-
-	firestoneMulti := 1.0
-
-	if level >= 56 {
-		warlock.AddStat(stats.FirePower, 21*firestoneMulti)
-		damageMin = 80.0
-		damageMax = 120.0
-		spellId = 17949
-	} else if level >= 46 {
-		warlock.AddStat(stats.FirePower, 17*firestoneMulti)
-		damageMin = 60.0
-		damageMax = 90.0
-		spellId = 17947
-	} else if level >= 36 {
-		warlock.AddStat(stats.FirePower, 14*firestoneMulti)
-		damageMin = 40.0
-		damageMax = 60.0
-		spellId = 17945
-	} else if level >= 28 {
-		warlock.AddStat(stats.FirePower, 10*firestoneMulti)
-		damageMin = 25.0
-		damageMax = 35.0
-		spellId = 758
-	}
-
-	if level >= 28 && warlock.Consumes.MainHandImbue == proto.WeaponImbue_WeaponImbueUnknown {
-		fireProcSpell := warlock.GetOrRegisterSpell(core.SpellConfig{
-			ActionID:    core.ActionID{SpellID: spellId},
-			SpellSchool: core.SpellSchoolFire,
-			DefenseType: core.DefenseTypeMagic,
-			ProcMask:    core.ProcMaskEmpty,
-
-			DamageMultiplier:         firestoneMulti,
-			ThreatMultiplier:         1,
-			DamageMultiplierAdditive: 1,
-			BonusCoefficient:         spellCoeff,
-
-			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				baseDamage := sim.Roll(damageMin, damageMax)
-
-				spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMagicCrit)
-			},
-		})
-
-		core.MakePermanent(warlock.GetOrRegisterAura(core.Aura{
-			Label: "Firestone Proc",
-			OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-				if !result.Landed() {
-					return
-				}
-
-				if !spell.ProcMask.Matches(core.ProcMaskMelee) {
-					return
-				}
-
-				if !ppm.Proc(sim, core.ProcMaskMelee, "Firestone Proc") {
-					return
-				}
-
-				fireProcSpell.Cast(sim, result.Target)
-			},
-		}))
+		warlock.AddStat(stats.FirePower, power)
+		warlock.AddStat(stats.SpellCrit, percent*core.SpellCritRatingPerCritChance)
+	case proto.WarlockOptions_Spellstone:
+		switch {
+		case warlock.Level >= 60:
+			power, percent = 21, 2
+		case warlock.Level >= 48:
+			power, percent = 17, 2
+		case warlock.Level >= 36:
+			power, percent = 14, 1
+		}
+		// Effects 1237162/1237164/1237165 specify mask 36 (Fire + Shadow),
+		// despite the tooltip mentioning only Shadow. Casting haste is not attack haste.
+		warlock.AddStats(stats.Stats{stats.FirePower: power, stats.ShadowPower: power})
+		warlock.PseudoStats.CastSpeedMultiplier *= 1 + percent/100
 	}
 }
 
@@ -362,28 +313,37 @@ func (warlock *Warlock) applyDecimation() {
 	damageBonus := 0.03 * points
 	castTimeReduction := 0.2 * points
 
-	// The damage half of the tooltip is about the two spells that trigger it, not about
-	// everything the warlock casts; only the Soul Fire half carries the ten second window.
+	// Damage applies below 35%, including the first qualifying hit. It does not
+	// depend on the ten-second proc, which accelerates only Soul Fire.
 	decimationSpells := func() []*core.Spell {
 		return append(append([]*core.Spell{}, warlock.ShadowBolt...), warlock.SearingPain...)
 	}
 
-	warlock.DecimationAura = warlock.RegisterAura(core.Aura{
-		Label:    "Decimation",
-		ActionID: core.ActionID{SpellID: 440873},
-		Duration: time.Second * 10,
+	executeDamage := warlock.RegisterAura(core.Aura{
+		Label:    "Decimation execute damage",
+		Duration: core.NeverExpires,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
 			for _, spell := range decimationSpells() {
 				spell.DamageMultiplierAdditive += damageBonus
-			}
-			for _, spell := range warlock.SoulFire {
-				spell.CastTimeMultiplier -= castTimeReduction
 			}
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
 			for _, spell := range decimationSpells() {
 				spell.DamageMultiplierAdditive -= damageBonus
 			}
+		},
+	})
+
+	warlock.DecimationAura = warlock.RegisterAura(core.Aura{
+		Label:    "Decimation",
+		ActionID: core.ActionID{SpellID: 440873},
+		Duration: time.Second * 10,
+		OnGain: func(aura *core.Aura, sim *core.Simulation) {
+			for _, spell := range warlock.SoulFire {
+				spell.CastTimeMultiplier -= castTimeReduction
+			}
+		},
+		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
 			for _, spell := range warlock.SoulFire {
 				spell.CastTimeMultiplier += castTimeReduction
 			}
@@ -393,6 +353,13 @@ func (warlock *Warlock) applyDecimation() {
 	affectedSpellCodes := []int32{SpellCode_WarlockShadowBolt, SpellCode_WarlockSearingPain}
 	core.MakePermanent(warlock.RegisterAura(core.Aura{
 		Label: "Decimation Trigger",
+		OnReset: func(aura *core.Aura, sim *core.Simulation) {
+			sim.RegisterExecutePhaseCallback(func(sim *core.Simulation, phase int32) {
+				if phase == 35 {
+					executeDamage.Activate(sim)
+				}
+			})
+		},
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 			if result.Landed() && sim.IsExecutePhase35() && slices.Contains(affectedSpellCodes, spell.SpellCode) {
 				warlock.DecimationAura.Activate(sim)
@@ -408,10 +375,7 @@ func (warlock *Warlock) applyDemonicBrand() {
 
 	// Beta client 1.60.1 (talent 1293695): Searing Pain threat falls 17/33/50% and the brand arms 2/4/6 of
 	// the pet's attacks; the brand itself (1293696) lasts 10 sec at every rank.
-	// TODO: the client writes the pet hit as a $<minDam> to $<maxDam> formula that the exported tables
-	// do not carry, so the 39 to 42 from the BlizzCon tooltip is kept.
 	threatReduction := []float64{0, 0.17, 0.33, 0.50}[warlock.Talents.DemonicBrand]
-	actionID := core.ActionID{SpellID: 18821}
 
 	warlock.OnSpellRegistered(func(spell *core.Spell) {
 		if spell.SpellCode == SpellCode_WarlockSearingPain {
@@ -419,10 +383,15 @@ func (warlock *Warlock) applyDemonicBrand() {
 		}
 	})
 
+	brandSpells := make(map[*core.Unit]*core.Spell)
 	for _, pet := range warlock.BasePets {
-		brandSpell := pet.RegisterSpell(core.SpellConfig{
-			ActionID:    actionID,
-			SpellSchool: core.SpellSchoolShadow,
+		spellID, school, powerStat := int32(1293697), core.SpellSchoolShadow, stats.ShadowPower
+		if pet == warlock.Imp {
+			spellID, school, powerStat = 1293698, core.SpellSchoolFire, stats.FirePower
+		}
+		brandSpells[&pet.Unit] = pet.RegisterSpell(core.SpellConfig{
+			ActionID:    core.ActionID{SpellID: spellID},
+			SpellSchool: school,
 			DefenseType: core.DefenseTypeMagic,
 			ProcMask:    core.ProcMaskEmpty,
 			Flags:       core.SpellFlagPassiveSpell | core.SpellFlagNoOnCastComplete,
@@ -431,29 +400,39 @@ func (warlock *Warlock) applyDemonicBrand() {
 			ThreatMultiplier: 3,
 
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				spell.CalcAndDealDamage(sim, target, sim.Roll(39, 42), spell.OutcomeMagicHit)
-			},
-		})
-
-		pet.DemonicBrandAura = pet.RegisterAura(core.Aura{
-			Label:     "Demonic Brand",
-			ActionID:  actionID,
-			Duration:  time.Second * 10,
-			MaxStacks: 2 * warlock.Talents.DemonicBrand,
-			OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-				if result.Landed() && spell.ProcMask.Matches(core.ProcMaskMelee) {
-					brandSpell.Cast(sim, result.Target)
-					aura.RemoveStack(sim)
-				}
+				// Description variables 1017/1018 give the matching school's coefficient.
+				// Pet damage modifiers apply through the spell once, not again in this formula.
+				power := warlock.GetStat(stats.SpellPower) + warlock.GetStat(stats.SpellDamage) + warlock.GetStat(powerStat)
+				base := (float64(warlock.Level)-26)*1.5 + sim.Roll(14, 17) + .078*power
+				// Both child spells carry Attributes_3 ALWAYS_HIT (0x40000).
+				spell.CalcAndDealDamage(sim, target, base, spell.OutcomeAlwaysHit)
 			},
 		})
 	}
+
+	brandAuras := warlock.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
+		return target.GetOrRegisterAura(core.Aura{
+			Label:     "Demonic Brand-" + warlock.Label,
+			ActionID:  core.ActionID{SpellID: 1293696},
+			Duration:  time.Second * 10,
+			MaxStacks: 2 * warlock.Talents.DemonicBrand,
+			OnSpellHitTaken: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+				// Client taken-hit mask 0x222a8 includes direct pet spells as well as melee.
+				// A target aura prevents an attack on another enemy consuming this brand.
+				if brandSpell := brandSpells[spell.Unit]; brandSpell != nil && result.Landed() &&
+					spell.ProcMask.Matches(core.ProcMaskMeleeOrRanged|core.ProcMaskSpellDamage) {
+					aura.RemoveStack(sim)
+					brandSpell.Cast(sim, result.Target)
+				}
+			},
+		})
+	})
 
 	core.MakePermanent(warlock.RegisterAura(core.Aura{
 		Label: "Demonic Brand Trigger",
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 			if result.Landed() && spell.SpellCode == SpellCode_WarlockSearingPain && warlock.ActivePet != nil {
-				brandAura := warlock.ActivePet.DemonicBrandAura
+				brandAura := brandAuras.Get(result.Target)
 				brandAura.Activate(sim)
 				brandAura.SetStacks(sim, brandAura.MaxStacks)
 			}

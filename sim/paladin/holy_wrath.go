@@ -24,6 +24,7 @@ func (paladin *Paladin) registerHolyWrath() {
 
 	var results []*core.SpellResult
 
+	timer := paladin.NewTimer() // All ranks share client cooldown category 35.
 	for i, rank := range ranks {
 		rank := rank
 		if paladin.Level < rank.level {
@@ -55,7 +56,7 @@ func (paladin *Paladin) registerHolyWrath() {
 				},
 
 				CD: core.Cooldown{
-					Timer:    paladin.NewTimer(),
+					Timer:    timer,
 					Duration: paladin.purifyingPower(time.Second * 60),
 				},
 			},

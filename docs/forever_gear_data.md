@@ -120,9 +120,24 @@ Two new crafted enhancements are imported:
 
 The equipment search fills every enchantable slot and compares legal
 alternatives using native DPS runs. Raid-reward inscriptions are excluded.
-Healing-only enchants currently inherit the engine's one-third damage fallback:
-+24 healing bracers contribute eight modeled spell damage. This is retained
-behavior, not a newly verified Forever rule; in-game check T22 covers it.
+Healing and damage are imported independently. The former blanket one-third
+conversion has been removed. Current Forever client effects and tooltips give:
+
+| Enchant | Healing | Spell damage |
+|---|---:|---:|
+| [Bracer Healing Power](https://www.wowhead.com/forever/spell=23802) | 24 | 8 |
+| [Gloves Healing Power](https://www.wowhead.com/forever/spell=25079) | 35 | 12 |
+| [Weapon Healing Power](https://www.wowhead.com/forever/spell=22750) | 55 | 19 |
+
+The glove record previously used Classic's +30 healing; the fallback therefore
+undercounted its damage by two. Truly healing-only records no longer receive
+invented damage. Zandalar Signet of Mojo's +18 damage/+18 healing is counted once,
+not as generic spell power plus an additional healing bonus; it remains excluded
+from the non-raid benchmark. These effect records do not establish recipe access.
+
+`assets/db_inputs/forever_effect_audit.json` preserves ten enchant effect chains
+from build 1.60.1.69893 with source-table hashes. Reproduce it with
+`python3 tools/database/import_forever_effect_audit.py --cache <client-data-directory>`.
 
 ### Items
 

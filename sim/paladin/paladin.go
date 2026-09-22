@@ -196,7 +196,7 @@ func (paladin *Paladin) registerStopAttackMacros() {
 
 func (paladin *Paladin) ResetCurrentPaladinAura() {
 	paladin.currentPaladinAura = nil
-	if paladin.primaryPaladinAura == proto.PaladinAura_SanctityAura {
+	if paladin.primaryPaladinAura == proto.PaladinAura_SanctityAura && !paladin.Env.IsForever() {
 		paladin.currentPaladinAura = core.SanctityAuraAura(paladin.GetCharacter())
 	}
 }

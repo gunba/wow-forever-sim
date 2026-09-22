@@ -8,7 +8,7 @@ import (
 
 const ShadowburnRanks = 6
 
-func (warlock *Warlock) registerShadowBurnBaseConfig(rank int) core.SpellConfig {
+func (warlock *Warlock) registerShadowBurnBaseConfig(rank int, timer *core.Timer) core.SpellConfig {
 	// Beta client 1.60.1 values for every rank. The BlizzCon tooltip's 102 to 111 for rank 1 is not
 	// what the client carries.
 	spellId := [ShadowburnRanks + 1]int32{0, 17877, 18867, 18868, 18869, 18870, 18871}[rank]
@@ -36,7 +36,7 @@ func (warlock *Warlock) registerShadowBurnBaseConfig(rank int) core.SpellConfig 
 				GCD: core.GCDDefault,
 			},
 			CD: core.Cooldown{
-				Timer:    warlock.NewTimer(),
+				Timer:    timer,
 				Duration: time.Second * time.Duration(15),
 			},
 		},
@@ -58,8 +58,9 @@ func (warlock *Warlock) registerShadowBurnSpell() {
 	}
 
 	warlock.Shadowburn = make([]*core.Spell, 0)
+	timer := warlock.NewTimer()
 	for rank := 1; rank <= ShadowburnRanks; rank++ {
-		config := warlock.registerShadowBurnBaseConfig(rank)
+		config := warlock.registerShadowBurnBaseConfig(rank, timer)
 
 		if config.RequiredLevel <= int(warlock.Level) {
 			warlock.Shadowburn = append(warlock.Shadowburn, warlock.GetOrRegisterSpell(config))

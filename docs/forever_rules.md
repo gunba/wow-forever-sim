@@ -22,7 +22,7 @@ below is gated on `IsForever()` unless it says the class code is Forever-only.
 |---|---|---|
 | Periodic damage can crit: dots and bleeds roll for critical strikes using the snapshot crit chance. Spells that must not (Ignite) carry `SpellFlagNoPeriodicCrit`. | Tooltip wording ("non-periodic" qualifiers on Nature's Grace, Primal Fury; Pandemic exists) | `sim/core/ruleset.go`, `sim/core/dot.go` |
 | Hit and crit from gear apply to every kind of attack: an item's melee/spell hit and crit are summed and paid into both pools. Attribute conversions unchanged. | Panel | `sim/core/ruleset.go` `unifyEquipHitAndCrit` |
-| Bonus healing on gear carries a damage component: `SpellDamage += HealingPower / 3`. | Panel | `sim/core/ruleset.go` `addHealingSpellDamage` |
+| Healing and spell damage are separate sourced effects. There is no blanket healing-to-damage conversion. | Client effect records and Forever tooltips; see `forever_gear_data.md` | `sim/core/ruleset.go`, `tools/database/enchant_overrides.go` |
 | Improved Shadow Bolt and Stormstrike are personal: they raise only their caster's damage and are no longer raid debuffs. | Panel, confirmed by search | `sim/core/debuffs.go`, `sim/shaman/stormstrike.go` |
 | Improved Shadow Bolt lasts a flat 12 s (not consumed per charge). | Published talent text | `sim/warlock/talents.go` |
 | Stormstrike's Nature vulnerability lasts its full duration instead of being consumed by Nature hits. | Tooltip | `sim/core/debuffs.go` |
@@ -62,20 +62,21 @@ below is gated on `IsForever()` unless it says the class code is Forever-only.
 | Rule | Source | Here |
 |---|---|---|
 | Energy regenerates smoothly at a base 10/sec; 100-ms integration approximates beta-observed behavior. Haste scaling remains unverified. | Client PowerType plus player beta reports; [energy audit](energy_audit.md) | `sim/core/energy.go` |
+| Omen of Clarity is trained at 20. Clearcasting waives the next eligible action's cost, excluding Wrath and resource-free actions. Its 100% direct-event proc chance after a ten-second ICD is a provisional client-data interpretation, not a measured server rate. | [Forever spell 16864](https://www.wowhead.com/forever/spell=16864/omen-of-clarity), client 16864/16870; [T25](in_game_checks.md#t25--omen-of-clarity-proc-frequency-and-consumption) | `sim/druid/omen_of_clarity.go` |
 | Furor: shifting into Cat carries over a share of the energy left, plus a little per second out of form (was a chance at a flat 40). Per-rank scaling assumed linear. | *demo* | `sim/druid/forms.go` |
 | Tiger's Fury: no Energy cost and a 30 sec cooldown (Wrath's shape), so that King of the Jungle's 60 Energy is a cooldown and not an engine. Assumed from the talent's wording. | Tree | `sim/druid/tigers_fury.go` |
 | Nature's Grace: a short haste buff (also shortens the GCD) instead of a cast time cut on the next cast. | *demo* | `sim/druid/talents.go` |
 | Thick Hide: flat base Armor from level and defense skill instead of an armor multiplier. | *demo* | `sim/druid/talents.go` |
 | Primal Fury absorbs the old Blood Frenzy combo point proc. | Tree | `sim/druid/talents.go` |
 | Savage Fury includes Shred. | Tooltip | `sim/druid/shred.go` |
-| Improved Mark of the Wild and the feral Faerie Fire talent are gone; assumed baseline. | Tree | `sim/druid/druid.go`, `faerie_fire.go` |
+| Improved Mark of the Wild is baseline. Regular Faerie Fire is usable in Cat/Bear/Moonkin; its rank-four client record keeps 115 mana, a 1.5-second base GCD and no cooldown. The obsolete separate Feral action is removed. | Client spell, power, cooldown and shapeshift records | `sim/druid/druid.go`, `faerie_fire.go` |
 | Feral Aggression is gone; Demoralizing Roar's attack power reduction is assumed baseline at full strength. | Tree | `sim/druid/demoralizing_roar.go` |
 | Ferocity also cuts the Rage cost of Mangle. | Tooltip | `sim/druid/mangle.go` |
 | Moonkin Form grants 360% more armor from items and the party crit aura, and nothing else: no spell damage and no Moonfire bonus. | Tooltip | `sim/druid/forms.go` |
 | Feral Instinct is Swipe damage, not Bear Form threat; Bear Form's threat is the flat 1.3x. | Tooltip | `sim/druid/swipe.go`, `forms.go` |
 | Natural Reaction also gives a 20% chance at 5 Rage on every dodge. | *demo* | `sim/druid/talents.go` |
 | Mangle (Bear): 100% weapon damage plus 26; Berserk lifts its cooldown and widens it to 3 targets. | *demo* | `sim/druid/mangle.go`, `berserk.go` |
-| Lacerate exists (Shredding Attacks cuts its Rage cost); modelled on the Season of Discovery Lacerate until a tooltip is seen. | Tree | `sim/druid/lacerate.go` |
+| Lacerate's Bear prototype still uses an unvalidated Season of Discovery formula. Current tooltip evidence needs direct/periodic weapon-term resolution; it is not used in the DPS benchmark. | Unresolved client-effect interpretation | `sim/druid/lacerate.go` |
 
 ## Paladin
 
@@ -103,7 +104,8 @@ below is gated on `IsForever()` unless it says the class code is Forever-only.
 | Improved Scorch's fire vulnerability is personal to the mage who stacked it. Winter's Chill is a single personal stack for Frostbolt and Ice Lance. | Panel | `sim/mage/talents.go` |
 | Ignite is excluded from periodic crits (it is already a share of a crit). | Design | `sim/mage/ignite.go` |
 | Ignite pays out exactly 40% of the crit that lit it: the ticks skip the mage's and the target's damage multipliers, which the crit already carried, and a second crit rolls the damage still owed into the new dot instead of restarting it. | Design | `sim/mage/ignite.go` |
-| Pyroblast dot damage from the rank 1 tooltip (76 vs 56), other ranks by ratio. Improved Fireball added to the tree. | *demo* | `sim/mage/pyroblast.go`, tree |
+| Pyroblast uses client values for every rank; rank 1's DoT is 44 total, while 76 belongs to rank 3. | Client 1.60.1.69893 | `sim/mage/pyroblast.go` |
+| Hot Streak reduces the next Pyroblast's cast time by 25% per stack, up to three stacks. All stacks are consumed on cast completion. Interrupted-cast timing remains untested. | Aura 400625 has three cumulative stacks and one proc charge; tooltip says “next Pyroblast” | `sim/mage/talents.go`, `assets/db_inputs/forever_effect_audit.json` |
 | Arcane rotation rebuilt around the Forever arcane talents (Arcane Impact, Arcane Shielding, ...). | Tree | `sim/mage/talents.go` |
 
 ## Rogue
@@ -117,7 +119,7 @@ below is gated on `IsForever()` unless it says the class code is Forever-only.
 
 | Rule | Source | Here |
 |---|---|---|
-| Dual wield is available. | Panel | `ui/core/proto_utils/utils.ts` `canDualWield` |
+| Shamans cannot dual wield. | Current availability; see `forever_beta_checklist.md` | Engine equipment validation, UI and benchmark profiles |
 | Enhancing Totems is gone; Strength of Earth and Grace of Air always at the improved value (assumed baseline). | Tree | `sim/shaman/totems.go` |
 | Call of Flame includes Lava Burst and Flame Shock. | Tooltip | `sim/shaman/lava_burst.go`, `flame_shock.go` |
 | New talents/spells: Lava Burst, Lightning Overload, Maelstrom Weapon. | Tree, *demo* | `sim/shaman/` |

@@ -9,7 +9,7 @@ import (
 const SoulFireRanks = 2
 const SoulFireCastTime = time.Millisecond * 6000
 
-func (warlock *Warlock) getSoulFireBaseConfig(rank int) core.SpellConfig {
+func (warlock *Warlock) getSoulFireBaseConfig(rank int, timer *core.Timer) core.SpellConfig {
 	spellId := [SoulFireRanks + 1]int32{0, 6353, 17924}[rank]
 	// Beta client 1.60.1 values
 	baseDamage := [SoulFireRanks + 1][]float64{{0, 0}, {344, 430}, {390, 487}}[rank]
@@ -55,7 +55,7 @@ func (warlock *Warlock) getSoulFireBaseConfig(rank int) core.SpellConfig {
 	cooldownReduction := 0.45 * float64(warlock.Talents.Decimation)
 
 	config.Cast.CD = core.Cooldown{
-		Timer:    warlock.NewTimer(),
+		Timer:    timer,
 		Duration: time.Duration(float64(time.Minute) * (1 - cooldownReduction)),
 	}
 
@@ -64,8 +64,9 @@ func (warlock *Warlock) getSoulFireBaseConfig(rank int) core.SpellConfig {
 
 func (warlock *Warlock) registerSoulFireSpell() {
 	warlock.SoulFire = make([]*core.Spell, 0)
+	timer := warlock.NewTimer()
 	for rank := 1; rank <= SoulFireRanks; rank++ {
-		config := warlock.getSoulFireBaseConfig(rank)
+		config := warlock.getSoulFireBaseConfig(rank, timer)
 
 		if config.RequiredLevel <= int(warlock.Level) {
 			warlock.SoulFire = append(warlock.SoulFire, warlock.GetOrRegisterSpell(config))

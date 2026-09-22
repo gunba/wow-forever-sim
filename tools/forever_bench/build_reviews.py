@@ -11,7 +11,6 @@ from build_display import BUILDS
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--results", type=Path, default=Path("artifacts/forever_dps_5min.json"))
-    parser.add_argument("--baselines", type=Path, default=Path("artifacts/forever_gear_baselines.json"))
     parser.add_argument("--output", type=Path, default=Path("docs/build_reviews.md"))
     args = parser.parse_args()
     names = {}
@@ -75,7 +74,6 @@ def main():
         return "`" + json.dumps(value, separators=(",", ":")) + "`"
 
     results = json.loads(args.results.read_text())
-    baselines = {(r["Key"], r["Race"]): r for r in json.loads(args.baselines.read_text())["Results"]}
     groups = {}
     for row in results["Results"]:
         groups.setdefault(row["Key"], []).append(row)
@@ -85,9 +83,9 @@ def main():
         "These summaries describe the published loadouts. They are simulation results, "
         "not independent confirmation of server mechanics or proof of a global optimum.", "",
         "The tables and [matrix](../artifacts/forever_dps_5min.png) use the same "
-        "147 common-seed replays. Baseline comparisons use the starting gear and "
-        "enchants under the same engine and seed. Talents and APLs are unchanged "
-        "by the equipment search.", "",
+        "147 common-seed replays. Equipment selections came from an earlier mechanics "
+        "revision; these results use the corrected engine. Historical search gains "
+        "are not directly comparable to this release.", "",
         "The benchmark uses level 60, 300 seconds, one level-63 target, complete role-specific "
         "Tier 1 bonuses, and paid shared-hit normalization. "
         "[Scenario and exchange model](../tools/forever_bench/README.md) · "
@@ -108,12 +106,11 @@ def main():
                   "[Requests and results](../artifacts/forever_dps_5min.json) · "
                   "[Equipment search](../artifacts/gear_search/summary.json)", ""]
         lines += ["", "### Results", "",
-                  "| Race | Baseline DPS | Retained DPS | Change | Mana-limited seconds |",
-                  "|---|---:|---:|---:|---:|"]
+                  "| Race | DPS | Standard error | Mana-limited seconds |",
+                  "|---|---:|---:|---:|"]
         for r in rows:
-            baseline = baselines[(key, r["Race"])]["DPS"]
-            lines.append(f"| {r['Race']} | {baseline:.2f} | {r['DPS']:.2f} | "
-                         f"{100*(r['DPS']/baseline-1):+.2f}% | {r['OOMSeconds']:.2f} |")
+            lines.append(f"| {r['Race']} | {r['DPS']:.2f} | "
+                         f"{r['StandardError']:.2f} | {r['OOMSeconds']:.2f} |")
         lines += ["", "Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.", ""]
         lines += [f"### Equipment — {representative['Race']}", "",
                   "| Slot | Item | Item level | Enchant |", "|---|---|---:|---|"]

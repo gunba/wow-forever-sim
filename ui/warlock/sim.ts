@@ -14,6 +14,15 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWarlock, {
 	cssScheme: 'warlock',
 	// List any known bugs / issues here and they'll be shown on the site.
 	knownIssues: [],
+	warnings: [
+		simUI => ({
+			updateOn: simUI.player.changeEmitter,
+			getContent: () =>
+				simUI.player.getSpecOptions().weaponImbue && simUI.player.getConsumes().mainHandImbue
+					? 'A weapon stone cannot stack with another main-hand imbue. Select a stone or an oil, not both.'
+					: '',
+		}),
+	],
 
 	// All stats for which EP should be calculated.
 	epStats: [

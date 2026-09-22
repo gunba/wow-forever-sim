@@ -28,8 +28,7 @@
     "fireResistanceAura": true,
     "thorns": "TristateEffectImproved",
     "devotionAura": "TristateEffectImproved",
-    "retributionAura": "TristateEffectImproved",
-    "sanctityAura": true
+    "retributionAura": "TristateEffectImproved"
   },
   "partyBuffs": {},
   "debuffs": {
@@ -373,8 +372,7 @@
     "distanceFromTarget": 5,
     "retributionPaladin": {
       "options": {
-        "primarySeal": "Command",
-        "aura": "SanctityAura"
+        "primarySeal": "Command"
       }
     }
   },

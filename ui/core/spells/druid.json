@@ -14,7 +14,7 @@
 	"16886": {
 		"ability": "Nature's Grace",
 		"file": "sim/druid/talents.go",
-		"note": "Forever's talent text reads 10% spellcasting speed and global cooldown for 3 sec on any non-periodic spell crit, where Classic's 16886 is a flat cast time cut on the next cast; the id lends the right name and icon but the wrong words, and the global cooldown is shortened by hand because Classic never hastes it.",
+		"note": "Client 16886 grants 10% casting haste and separately reduces matching GCDs by 10%, including instant Balance spells and Faerie Fire. The buff lasts three seconds. Wrath's inherited cast-completion proc timing still needs gameplay confirmation.",
 		"source": "forever",
 		"tooltip": "3 sec\nAfter any of your spells lands a critical strike, your casting speed increases by 10% and your global cooldown shortens by the same 10%, for 3 sec."
 	},
@@ -67,15 +67,22 @@
 		"source": "forever",
 		"tooltip": "10 Rage\nInstant\nThe druid roars, decreasing nearby enemies' melee attack power by 88. Lasts 30 sec."
 	},
-	"17392": {
-		"ability": "Faerie Fire (Feral)",
-		"assumptions": [
-			"The beta client 1.60.1.69893 has no Faerie Fire (Feral): 16857 and 17390-17392 are gone from the spellbook and 17392 from the spell tables. The sim keeps it with Classic's numbers because the cat and bear rotations are built around it."
-		],
-		"file": "sim/druid/faerie_fire.go",
-		"note": "Also registered as a debuff in sim/core/debuffs.go, which is where the 505 armor lives.",
+	"16864": {
+		"ability": "Omen of Clarity",
+		"file": "sim/druid/omen_of_clarity.go",
 		"source": "assumed",
-		"tooltip": "Melee Range\nInstant\n6 sec cooldown\nDecreases the armor of the target by 505 for 40 sec and stops it stealthing or turning invisible. Usable in Cat Form and Bear Form, and costs no mana."
+		"tooltip": "Passive\nYour attacks and spells can grant Clearcasting, making your next eligible ability free. Wrath and Faerie Fire do not trigger or consume it.",
+		"assumptions": [
+			"The current client lists 100% proc chance, a ten-second internal cooldown and no PPM entry. The simulation provisionally uses those entries literally; the server's effective proc frequency is unmeasured."
+		],
+		"note": "Trained at level 20. Direct attacks, spells and heals can grant one Clearcasting charge; periodic callbacks do not trigger it in this model. See in-game check T25."
+	},
+	"16870": {
+		"ability": "Clearcasting",
+		"file": "sim/druid/omen_of_clarity.go",
+		"source": "forever",
+		"tooltip": "15 sec\nYour next eligible ability costs no Mana, Rage or Energy. One charge. Wrath and Faerie Fire do not consume it.",
+		"note": "Client aura: one charge, 15 seconds and a 100% resource-cost reduction for eligible spell families. Wrath, Faerie Fire and zero-cost actions do not consume it. Proc/consumption edge timing remains an in-game check."
 	},
 	"17401": {
 		"ability": "Hurricane",
@@ -218,16 +225,6 @@
 		"note": "Beta client 1.60.1.69893: damage, the energy conversion and the 35 Energy are Classic's.",
 		"source": "classic"
 	},
-	"33876": {
-		"ability": "Mangle (Cat)",
-		"assumptions": [
-			"The beta client 1.60.1.69893 has no cat Mangle: the Mangle talent teaches only the Bear ability (407995 and its ranks). The cat keeps this one, at the Classic Mangle (Cat) cost, because the feral rotation is built around it."
-		],
-		"file": "sim/druid/mangle.go",
-		"note": "Carries the Burning Crusade Mangle (Cat) id, which the Classic database does not hold. Berserk widens the strike to 3 targets.",
-		"source": "assumed",
-		"tooltip": "45 Energy\nMelee Range\nInstant\nMangle the target for 100% weapon damage plus 26, and award 1 combo point. Requires Cat Form."
-	},
 	"33878": {
 		"ability": "Mangle (Bear)",
 		"assumptions": [
@@ -331,7 +328,7 @@
 	"5229": {
 		"ability": "Enrage",
 		"file": "sim/druid/enrage.go",
-		"note": "Beta client 1.60.1.69893: Forever adds the 10 Rage up front. The sim takes 27% armor off Dire Bear Form, where the text says 16%, as it did before.",
+		"note": "Beta client 1.60.1.69893: ten Rage immediately plus twenty over ten seconds. The armor penalty is 27% for ordinary Bear and 16% for Dire Bear; it follows the registered form.",
 		"source": "forever",
 		"tooltip": "Instant\n1 min cooldown\nInstantly generates 10 Rage and another 20 Rage over 10 sec, but reduces base armor by 27% in Bear Form and 16% in Dire Bear Form. The druid is considered in combat for the duration."
 	},
@@ -666,8 +663,9 @@
 	"9907": {
 		"ability": "Faerie Fire",
 		"file": "sim/druid/faerie_fire.go",
-		"note": "115 mana, 505 armor for 40 sec, all Classic's; the feral version on 17392 is the half Forever touched, by dropping its talent.",
-		"source": "classic"
+		"note": "Client 1.60.1.69893 allows the regular spell in Cat, Bear, Dire Bear and Moonkin. Rank 4 costs 115 mana, has a 1.5-second base GCD and no separate cooldown, and removes 505 armor for 40 seconds.",
+		"source": "forever",
+		"tooltip": "115 Mana\nInstant\nReduces the target's Armor by 505 for 40 sec. Can be used in Cat, Bear, Dire Bear and Moonkin forms."
 	},
 	"9908": {
 		"ability": "Swipe",

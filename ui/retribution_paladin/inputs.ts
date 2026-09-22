@@ -1,5 +1,6 @@
 import * as InputHelpers from '../core/components/input_helpers.js';
 import { Player } from '../core/player.js';
+import { Ruleset } from '../core/proto/api.js';
 import { Spec } from '../core/proto/common.js';
 import { PaladinAura,PaladinSeal } from '../core/proto/paladin.js';
 import { ActionId } from '../core/proto_utils/action_id.js';
@@ -10,6 +11,7 @@ import { TypedEvent } from '../core/typed_event.js';
 
 export const AuraSelection = InputHelpers.makeSpecOptionsEnumIconInput<Spec.SpecRetributionPaladin, PaladinAura>({
  	fieldName: 'aura',
+	showWhen: player => player.sim.getRuleset() !== Ruleset.RulesetForever,
  	values: [
  		{ value: PaladinAura.NoPaladinAura, tooltip: 'No Aura' },
  		{ actionId: () => ActionId.fromSpellId(20218), value: PaladinAura.SanctityAura },

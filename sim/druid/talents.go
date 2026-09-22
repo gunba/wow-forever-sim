@@ -1,6 +1,7 @@
 package druid
 
 import (
+	"slices"
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
@@ -33,7 +34,6 @@ func (druid *Druid) ApplyTalents() {
 	// Feral Combat
 	druid.applyHeartOfTheWild()
 	druid.applyFeralSwiftness()
-	druid.applyThickHide()
 	druid.applyPrimalFury()
 	druid.applyPredatoryInstincts()
 	druid.applyNaturalReaction()
@@ -86,8 +86,14 @@ func (druid *Druid) applyMoonglow() {
 	multiplier := []int32{0, 8, 17, 25}[druid.Talents.Moonglow]
 
 	druid.OnSpellRegistered(func(spell *core.Spell) {
-		if spell.Cost != nil && spell.Cost.CostType() == core.CostTypeMana {
-			spell.Cost.Multiplier -= multiplier
+		// The implemented members of client 16845's family mask 0x700307.
+		// Do not discount healing, shifting or Faerie Fire.
+		switch spell.SpellCode {
+		case SpellCode_DruidWrath, SpellCode_DruidStarfire, SpellCode_DruidMoonfire,
+			SpellCode_DruidInsectSwarm, SpellCode_DruidHurricane:
+			if spell.Cost != nil && spell.Cost.CostType() == core.CostTypeMana {
+				spell.Cost.Multiplier -= multiplier
+			}
 		}
 	})
 }
@@ -188,32 +194,35 @@ func (druid *Druid) applyNaturesGrace() {
 		return
 	}
 
-	// The GCD isn't affected by haste in Classic, so it's shortened by hand to match
+	// Client 16886 has separate effects: +10% casting speed and -10% GCD.
+	// Its GCD family mask includes the instant Balance spells and Faerie Fire too.
 	hasteMultiplier := 1.1
-	hastedSpells := []*DruidSpell{}
-	gcdReduction := core.GCDDefault - max(core.GCDMin, time.Duration(float64(core.GCDDefault)/hasteMultiplier))
+	gcdReductions := make(map[*DruidSpell]time.Duration)
 
 	druid.NaturesGraceHasteAura = druid.RegisterAura(core.Aura{
 		Label:    "Natures Grace",
 		ActionID: core.ActionID{SpellID: 16886},
 		Duration: time.Second * 3,
 		OnInit: func(aura *core.Aura, sim *core.Simulation) {
-			hastedSpells = core.FilterSlice(druid.DruidSpells, func(ds *DruidSpell) bool {
-				return ds.DefaultCast.CastTime > 0 && ds.DefaultCast.GCD == core.GCDDefault
-			})
+			for _, spell := range druid.DruidSpells {
+				if spell.DefaultCast.GCD > 0 &&
+					(slices.Contains(balanceSpellCodes, spell.SpellCode) || spell.SpellCode == SpellCode_DruidFaerieFire) {
+					gcdReductions[spell] = spell.DefaultCast.GCD / 10
+				}
+			}
 		},
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
 			druid.MultiplyCastSpeed(hasteMultiplier)
 
-			for _, spell := range hastedSpells {
-				spell.DefaultCast.GCD -= gcdReduction
+			for spell, reduction := range gcdReductions {
+				spell.DefaultCast.GCD -= reduction
 			}
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
 			druid.MultiplyCastSpeed(1 / hasteMultiplier)
 
-			for _, spell := range hastedSpells {
-				spell.DefaultCast.GCD += gcdReduction
+			for spell, reduction := range gcdReductions {
+				spell.DefaultCast.GCD += reduction
 			}
 		},
 	})
@@ -321,21 +330,15 @@ func (druid *Druid) applyFeralSwiftness() {
 	druid.AddStat(stats.Dodge, 2*float64(druid.Talents.FeralSwiftness)*core.DodgeRatingPerDodgeChance)
 }
 
-// Forever swaps the armor multiplier for flat base Armor from level and defense skill,
-// and the form's own armor multiplier applies on top of it. The sim's druids never
-// leave their starting form, so the form requirement is read from that form and the
-// defense skill is the gear's when the talents are applied.
-func (druid *Druid) applyThickHide() {
+// Attach the form-dependent armor rather than freezing the starting form and
+// equipment. The inherited Defense coefficient still needs rank verification.
+func (druid *Druid) attachThickHide(aura *core.Aura, formMultiplier float64) {
 	if druid.Talents.ThickHide == 0 {
 		return
 	}
-
 	points := float64(druid.Talents.ThickHide)
-	armor := points*float64(druid.Level) + 0.67*points*druid.EquipStats()[stats.Defense]
-	if druid.StartingForm.Matches(Bear) {
-		armor *= BearFormArmorMultiplier
-	}
-	druid.AddStat(stats.Armor, armor)
+	aura.AttachStatBuff(stats.Armor, points*float64(druid.Level)*formMultiplier)
+	aura.AttachStatDependency(druid.NewDynamicStatDependency(stats.Defense, stats.Armor, 0.67*points*formMultiplier))
 }
 
 // Forever folds the old Blood Frenzy combo point proc into Primal Fury.

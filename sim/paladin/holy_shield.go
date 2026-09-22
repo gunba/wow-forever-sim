@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/core/stats"
 )
 
@@ -30,6 +31,7 @@ func (paladin *Paladin) registerHolyShield() {
 	numCharges := int32(4)
 	blockBonus := 20.0 * core.BlockRatingPerBlockChance
 
+	timer := paladin.NewTimer() // All ranks share client cooldown category 931.
 	for i, values := range HolyShieldValues {
 		rank := i + 1
 		level := values.level
@@ -97,9 +99,12 @@ func (paladin *Paladin) registerHolyShield() {
 					GCD: core.GCDDefault,
 				},
 				CD: core.Cooldown{
-					Timer:    paladin.NewTimer(),
+					Timer:    timer,
 					Duration: time.Second * 10,
 				},
+			},
+			ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
+				return paladin.OffHand().WeaponType == proto.WeaponType_WeaponTypeShield
 			},
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 				paladin.holyShieldAura[i].Activate(sim)

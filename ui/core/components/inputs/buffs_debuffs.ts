@@ -282,7 +282,7 @@ export const RetributionAura = makeTristateRaidBuffInput({
 export const SanctityAura = makeBooleanRaidBuffInput({
 	actionId: () => ActionId.fromSpellId(20218),
 	fieldName: 'sanctityAura',
-	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever || player.getFaction() === Faction.Alliance,
+	showWhen: player => player.sim.getRuleset() !== Ruleset.RulesetForever && player.getFaction() === Faction.Alliance,
 });
 
 export const Thorns = makeTristateRaidBuffInput({

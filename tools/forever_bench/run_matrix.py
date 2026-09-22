@@ -34,7 +34,7 @@ def main():
         "main": (args.profiles, ["-refresh-enchants"]),
         "tier1_off": (args.profiles, ["-refresh-enchants", "-tier1=false"]),
         "gear_110": (args.profiles, ["-refresh-enchants", "-equipment-scale", "1.1"]),
-        "gear_120": (args.profiles, ["-refresh-enchants", "-equipment-scale", "1.2"]),
+        "gear_150": (args.profiles, ["-refresh-enchants", "-equipment-scale", "1.5"]),
     }
     if args.original_baselines:
         args.original_baselines = args.original_baselines.resolve()
@@ -92,7 +92,7 @@ def main():
         if options["iterations"] != args.iterations or int(options["randomSeed"]) != args.seed:
             raise ValueError(f"Iteration/seed mismatch: {job}")
         if data["Tier1Bonuses"] != (scenario != "tier1_off") or data["EquipmentScale"] != {
-            "gear_110": 1.1, "gear_120": 1.2,
+            "gear_110": 1.1, "gear_150": 1.5,
         }.get(scenario, 1):
             raise ValueError(f"Scenario mismatch: {job}")
         return job, prefix, data

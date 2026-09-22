@@ -48,7 +48,7 @@ export class TypedResourceMetricsTable extends MetricsTable<ResourceMetrics> {
 				};
 			}),
 			{
-				name: 'Casts',
+				name: 'Events',
 				getValue: (metric: ResourceMetrics) => metric.events,
 				getDisplayString: (metric: ResourceMetrics) => metric.events.toFixed(1),
 			},

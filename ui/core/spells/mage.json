@@ -3,12 +3,14 @@
 		"ability": "Frostfire Bolt",
 		"file": "sim/mage/frostfire_bolt.go",
 		"source": "forever",
+		"tooltip": "205 Mana\n3 sec cast\nAt level 40, deals 92 to 108 Frostfire damage and another 27 over 9 sec. Direct damage grows by 1.3 per level through level 48. Slows movement by 40%.",
 		"note": "Rank 1 at level 40: 92–108 direct damage, growing 1.3 per level through 48; 9 per periodic tick. 205 mana, 3-second cast, 0.814 direct SP coefficient, no periodic SP coefficient. Three ticks, 3 seconds apart. Fire/Frost multischool."
 	},
 	"1237312": {
 		"ability": "Frostfire Bolt",
 		"file": "sim/mage/frostfire_bolt.go",
 		"source": "forever",
+		"tooltip": "285 Mana\n3 sec cast\nAt level 50, deals 168 to 196 Frostfire damage and another 39 over 9 sec. Direct damage grows by 1.7 per level through level 58. Slows movement by 40%.",
 		"note": "Rank 2 at level 50: 168–196 direct damage, growing 1.7 per level through 58; 13 per periodic tick. 285 mana. Uses the same cast, coefficients and periodic timing as rank 1."
 	},
 	"1237313": {
@@ -306,11 +308,12 @@
 		"source": "forever",
 		"tooltip": "385 Mana\n6 sec cast\nHurls an immense fiery boulder that causes 448 to 555 Fire damage and an additional 184 Fire damage over 12 sec."
 	},
-	"12577": {
-		"ability": "Arcane Concentration",
+	"12536": {
+		"ability": "Clearcasting",
 		"file": "sim/mage/talents.go",
-		"note": "2% Clearcasting chance per point, unchanged from Classic and matching the Forever talent data's 2/4/6/8/10.",
-		"source": "classic"
+		"note": "Forever client: one charge, 15 seconds. Arcane Concentration grants 2% proc chance per point and has a one-second proc cooldown. The next eligible paid damage spell is free and consumes the aura; its discounted zero cost does not make it exempt.",
+		"source": "forever",
+		"tooltip": "15 sec\nYour next eligible damage spell costs no Mana. One charge."
 	},
 	"12654": {
 		"ability": "Ignite",
@@ -574,7 +577,7 @@
 		"ability": "Hot Streak",
 		"file": "sim/mage/talents.go",
 		"foreverId": 400625,
-		"note": "Beta client spells 400624/400625 confirm 15 sec, 25% and 3 stacks. Direct Frostfire Bolt crits grant stacks, alongside Fireball, Fire Blast and Scorch. The aura still uses legacy identifier 44445 in the sim.",
+		"note": "Beta client spells 400624/400625 confirm 15 sec, 25% per stack, three stacks and one charge. The next completed Pyroblast consumes all stacks; interrupted-cast timing remains unverified. Direct Frostfire Bolt crits grant stacks, alongside Fireball, Fire Blast and Scorch. The aura uses internal identifier 44445.",
 		"source": "forever",
 		"tooltip": "Your non-periodic critical strikes with Fireball, Fire Blast and Scorch grant Hot Streak for 15 sec.\nEach stack reduces the cast time of Pyroblast by 25%, stacking up to 3 times."
 	},
