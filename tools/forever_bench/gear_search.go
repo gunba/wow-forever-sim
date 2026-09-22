@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"math"
 	"os"
 	"path/filepath"
 	"sort"
@@ -253,7 +252,7 @@ func optimizeGear(b build, initial *proto.Player) *proto.Player {
 				row := evaluate(candidate.player, pass, slot, *gearValidate, validationSeed, "validation")
 				// Conservative bound: paired covariance is not assumed.
 				if row.DPS > bestRow.DPS && len(row.Warnings) == 0 &&
-					row.DPS-current.DPS > 2*math.Hypot(row.StandardError, current.StandardError) {
+					row.DPS-current.DPS > 2*(row.StandardError+current.StandardError) {
 					best, bestRow = candidate.player, row
 				}
 			}

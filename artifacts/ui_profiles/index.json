@@ -1656,7 +1656,7 @@
     "build": "Enhancement",
     "race": "Orc",
     "file": "enhancement__orc.json",
-    "dps": 736.2425494733593,
+    "dps": 738.448950343542,
     "hitAdjustment": {
       "MeleeAdded": 12.1,
       "SpellAdded": 12.1,
@@ -1665,8 +1665,8 @@
       "Model": "linear-v1",
       "RatingPerPercent": 10,
       "RawHitDelta": 121,
-      "OffensiveBudgetBefore": 521.5714285714286,
-      "Balance": 1.0658141036401503e-14,
+      "OffensiveBudgetBefore": 499,
+      "Balance": 1.4210854715202004e-14,
       "Entries": [
         {
           "Stat": "HitRating",
@@ -1678,44 +1678,44 @@
         {
           "Stat": "AttackPower",
           "GearAmount": 64,
-          "Delta": -14.847439057792386,
+          "Delta": -15.519038076152304,
           "CostPerUnit": 0.5,
-          "BudgetDelta": -7.423719528896193
+          "BudgetDelta": -7.759519038076152
         },
         {
           "Stat": "Agility",
           "GearAmount": 49,
-          "Delta": -11.367570528622295,
+          "Delta": -11.881763527054108,
           "CostPerUnit": 1,
-          "BudgetDelta": -11.367570528622295
+          "BudgetDelta": -11.881763527054108
         },
         {
           "Stat": "Strength",
-          "GearAmount": 75,
-          "Delta": -17.399342645850453,
+          "GearAmount": 83,
+          "Delta": -20.12625250501002,
           "CostPerUnit": 1,
-          "BudgetDelta": -17.399342645850453
+          "BudgetDelta": -20.12625250501002
         },
         {
           "Stat": "SpellPower",
-          "GearAmount": 136,
-          "Delta": -31.550807997808818,
+          "GearAmount": 112,
+          "Delta": -27.158316633266534,
           "CostPerUnit": 0.8571428571428571,
-          "BudgetDelta": -27.043549712407557
+          "BudgetDelta": -23.278557114228455
         },
         {
           "Stat": "Intellect",
-          "GearAmount": 165,
-          "Delta": -38.278553820871,
+          "GearAmount": 141,
+          "Delta": -34.190380761523045,
           "CostPerUnit": 1,
-          "BudgetDelta": -38.278553820871
+          "BudgetDelta": -34.190380761523045
         },
         {
           "Stat": "CritRating",
-          "GearAmount": 84,
-          "Delta": -19.487263763352505,
+          "GearAmount": 98,
+          "Delta": -23.763527054108216,
           "CostPerUnit": 1,
-          "BudgetDelta": -19.487263763352505
+          "BudgetDelta": -23.763527054108216
         }
       ],
       "Requirements": [
@@ -3064,93 +3064,93 @@
     "build": "Marksmanship",
     "race": "Tauren",
     "file": "marksmanship__tauren.json",
-    "dps": 908.939456964665,
+    "dps": 912.1196457418539,
     "hitAdjustment": {
-      "MeleeAdded": 0.09999999999999964,
-      "SpellAdded": 0.09999999999999964,
+      "MeleeAdded": -0.9000000000000004,
+      "SpellAdded": -0.9000000000000004,
       "MeleeFinal": 9,
       "SpellFinal": 9,
       "Model": "linear-v1",
       "RatingPerPercent": 10,
-      "RawHitDelta": 0.9999999999999964,
-      "OffensiveBudgetBefore": 540.4285714285714,
-      "Balance": 0,
+      "RawHitDelta": -9.000000000000004,
+      "OffensiveBudgetBefore": 545.7142857142858,
+      "Balance": -2.220446049250313e-15,
       "Entries": [
         {
           "Stat": "HitRating",
-          "GearAmount": 69,
-          "Delta": 0.9999999999999964,
+          "GearAmount": 79,
+          "Delta": -9.000000000000004,
           "CostPerUnit": 1,
-          "BudgetDelta": 0.9999999999999964
+          "BudgetDelta": -9.000000000000004
         },
         {
           "Stat": "AttackPower",
-          "GearAmount": 106,
-          "Delta": -0.19614062913031916,
+          "GearAmount": 68,
+          "Delta": 1.1214659685863877,
           "CostPerUnit": 0.5,
-          "BudgetDelta": -0.09807031456515958
+          "BudgetDelta": 0.5607329842931938
         },
         {
           "Stat": "RangedAttackPower",
           "GearAmount": 22,
-          "Delta": -0.040708432461009636,
+          "Delta": 0.3628272251308901,
           "CostPerUnit": 0.5,
-          "BudgetDelta": -0.020354216230504818
+          "BudgetDelta": 0.18141361256544505
         },
         {
           "Stat": "Agility",
-          "GearAmount": 220,
-          "Delta": -0.40708432461009636,
+          "GearAmount": 212,
+          "Delta": 3.496335078534032,
           "CostPerUnit": 1,
-          "BudgetDelta": -0.40708432461009636
+          "BudgetDelta": 3.496335078534032
         },
         {
           "Stat": "SpellPower",
-          "GearAmount": 116,
-          "Delta": -0.21464446206714172,
+          "GearAmount": 135,
+          "Delta": 2.226439790575917,
           "CostPerUnit": 0.8571428571428571,
-          "BudgetDelta": -0.18398096748612147
+          "BudgetDelta": 1.9083769633507857
         },
         {
           "Stat": "Intellect",
-          "GearAmount": 59,
-          "Delta": -0.10917261432725311,
+          "GearAmount": 75,
+          "Delta": 1.2369109947643981,
           "CostPerUnit": 1,
-          "BudgetDelta": -0.10917261432725311
+          "BudgetDelta": 1.2369109947643981
         },
         {
           "Stat": "CritRating",
           "GearAmount": 98,
-          "Delta": -0.1813375627808611,
+          "Delta": 1.616230366492147,
           "CostPerUnit": 1,
-          "BudgetDelta": -0.1813375627808611
+          "BudgetDelta": 1.616230366492147
         }
       ],
       "Requirements": [
         {
           "Action": "{SpellID: 25295}",
           "Kind": "physical-special",
-          "AdditionalPercent": 0.09999999999999964
+          "AdditionalPercent": -0.9000000000000004
         },
         {
           "Action": "{SpellID: 14287}",
           "Kind": "physical-special",
-          "AdditionalPercent": 0.09999999999999964
+          "AdditionalPercent": -0.9000000000000004
         },
         {
           "Action": "{SpellID: 20904}",
           "Kind": "physical-special",
-          "AdditionalPercent": 0.09999999999999964
+          "AdditionalPercent": -0.9000000000000004
         },
         {
           "Action": "{SpellID: 1310786}",
           "Kind": "physical-special",
-          "AdditionalPercent": 0.09999999999999964
+          "AdditionalPercent": -0.9000000000000004
         },
         {
           "Action": "{OtherID: 8}",
           "Kind": "physical-special",
-          "AdditionalPercent": 0.09999999999999964
+          "AdditionalPercent": -0.9000000000000004
         }
       ],
       "Exclusions": null
@@ -3736,7 +3736,7 @@
     "build": "Survival",
     "race": "Orc",
     "file": "survival__orc.json",
-    "dps": 849.6070907288473,
+    "dps": 853.3345304752609,
     "hitAdjustment": {
       "MeleeAdded": 0.09999999999999964,
       "SpellAdded": 0.09999999999999964,
@@ -3842,7 +3842,7 @@
     "build": "Survival",
     "race": "Tauren",
     "file": "survival__tauren.json",
-    "dps": 837.733904424188,
+    "dps": 841.1743636688918,
     "hitAdjustment": {
       "MeleeAdded": -0.9000000000000004,
       "SpellAdded": -0.9000000000000004,
@@ -4160,7 +4160,7 @@
     "build": "Survival",
     "race": "Human",
     "file": "survival__human.json",
-    "dps": 854.4280866740369,
+    "dps": 858.1435991961306,
     "hitAdjustment": {
       "MeleeAdded": 0.09999999999999964,
       "SpellAdded": 0.09999999999999964,
@@ -4266,7 +4266,7 @@
     "build": "Survival",
     "race": "Dwarf",
     "file": "survival__dwarf.json",
-    "dps": 833.6200184420675,
+    "dps": 836.965895052775,
     "hitAdjustment": {
       "MeleeAdded": 0.09999999999999964,
       "SpellAdded": 0.09999999999999964,
@@ -4372,7 +4372,7 @@
     "build": "Survival",
     "race": "Night Elf",
     "file": "survival__night_elf.json",
-    "dps": 846.9053951496367,
+    "dps": 850.4799114375718,
     "hitAdjustment": {
       "MeleeAdded": 0.09999999999999964,
       "SpellAdded": 0.09999999999999964,
@@ -5046,7 +5046,7 @@
     "build": "Fire",
     "race": "Orc",
     "file": "fire__orc.json",
-    "dps": 683.0042055282499,
+    "dps": 687.132261116198,
     "hitAdjustment": {
       "MeleeAdded": 4.1,
       "SpellAdded": 4.1,
@@ -5123,7 +5123,7 @@
     "build": "Fire",
     "race": "Troll",
     "file": "fire__troll.json",
-    "dps": 674.1750007286666,
+    "dps": 678.589581832677,
     "hitAdjustment": {
       "MeleeAdded": 4.1,
       "SpellAdded": 4.1,
@@ -5431,7 +5431,7 @@
     "build": "Fire",
     "race": "High Order",
     "file": "fire__high_order.json",
-    "dps": 672.7175339754937,
+    "dps": 677.4880197363881,
     "hitAdjustment": {
       "MeleeAdded": 4.1,
       "SpellAdded": 4.1,
@@ -5910,7 +5910,7 @@
     "build": "Retribution",
     "race": "Undead",
     "file": "retribution__undead.json",
-    "dps": 1050.838610696946,
+    "dps": 1066.399451912085,
     "hitAdjustment": {
       "MeleeAdded": 8.1,
       "SpellAdded": 8.1,
@@ -5919,8 +5919,8 @@
       "Model": "linear-v1",
       "RatingPerPercent": 10,
       "RawHitDelta": 81,
-      "OffensiveBudgetBefore": 494.42857142857144,
-      "Balance": 5.329070518200751e-15,
+      "OffensiveBudgetBefore": 505,
+      "Balance": 1.4210854715202004e-14,
       "Entries": [
         {
           "Stat": "HitRating",
@@ -5932,44 +5932,44 @@
         {
           "Stat": "Agility",
           "GearAmount": 44,
-          "Delta": -7.208321294423577,
+          "Delta": -7.0574257425742575,
           "CostPerUnit": 1,
-          "BudgetDelta": -7.208321294423577
+          "BudgetDelta": -7.0574257425742575
         },
         {
           "Stat": "Strength",
-          "GearAmount": 35,
-          "Delta": -5.733891938746027,
+          "GearAmount": 15,
+          "Delta": -2.405940594059406,
           "CostPerUnit": 1,
-          "BudgetDelta": -5.733891938746027
+          "BudgetDelta": -2.405940594059406
         },
         {
           "Stat": "SpellPower",
-          "GearAmount": 164,
-          "Delta": -26.867379370124244,
+          "GearAmount": 188,
+          "Delta": -30.154455445544556,
           "CostPerUnit": 0.8571428571428571,
-          "BudgetDelta": -23.02918231724935
+          "BudgetDelta": -25.846676096181046
         },
         {
           "Stat": "SpellDamage",
           "GearAmount": 22,
-          "Delta": -3.6041606472117884,
+          "Delta": -3.5287128712871287,
           "CostPerUnit": 0.8571428571428571,
-          "BudgetDelta": -3.0892805547529614
+          "BudgetDelta": -3.0246110325318245
         },
         {
           "Stat": "Intellect",
-          "GearAmount": 186,
-          "Delta": -30.471540017336032,
+          "GearAmount": 210,
+          "Delta": -33.68316831683168,
           "CostPerUnit": 1,
-          "BudgetDelta": -30.471540017336032
+          "BudgetDelta": -33.68316831683168
         },
         {
           "Stat": "CritRating",
-          "GearAmount": 70,
-          "Delta": -11.467783877492055,
+          "GearAmount": 56,
+          "Delta": -8.982178217821783,
           "CostPerUnit": 1,
-          "BudgetDelta": -11.467783877492055
+          "BudgetDelta": -8.982178217821783
         }
       ],
       "Requirements": [
@@ -6001,7 +6001,7 @@
     "build": "Retribution",
     "race": "Human",
     "file": "retribution__human.json",
-    "dps": 1035.9199676176638,
+    "dps": 1059.5434303116187,
     "hitAdjustment": {
       "MeleeAdded": 8.1,
       "SpellAdded": 8.1,
@@ -6010,8 +6010,8 @@
       "Model": "linear-v1",
       "RatingPerPercent": 10,
       "RawHitDelta": 81,
-      "OffensiveBudgetBefore": 494.42857142857144,
-      "Balance": 5.329070518200751e-15,
+      "OffensiveBudgetBefore": 482.42857142857144,
+      "Balance": 7.105427357601002e-15,
       "Entries": [
         {
           "Stat": "HitRating",
@@ -6023,44 +6023,44 @@
         {
           "Stat": "Agility",
           "GearAmount": 44,
-          "Delta": -7.208321294423577,
+          "Delta": -7.387622149837133,
           "CostPerUnit": 1,
-          "BudgetDelta": -7.208321294423577
+          "BudgetDelta": -7.387622149837133
         },
         {
           "Stat": "Strength",
-          "GearAmount": 35,
-          "Delta": -5.733891938746027,
+          "GearAmount": 23,
+          "Delta": -3.861711578323956,
           "CostPerUnit": 1,
-          "BudgetDelta": -5.733891938746027
+          "BudgetDelta": -3.861711578323956
         },
         {
           "Stat": "SpellPower",
           "GearAmount": 164,
-          "Delta": -26.867379370124244,
+          "Delta": -27.53568255848386,
           "CostPerUnit": 0.8571428571428571,
-          "BudgetDelta": -23.02918231724935
+          "BudgetDelta": -23.602013621557592
         },
         {
           "Stat": "SpellDamage",
           "GearAmount": 22,
-          "Delta": -3.6041606472117884,
+          "Delta": -3.6938110749185666,
           "CostPerUnit": 0.8571428571428571,
-          "BudgetDelta": -3.0892805547529614
+          "BudgetDelta": -3.1661237785016283
         },
         {
           "Stat": "Intellect",
           "GearAmount": 186,
-          "Delta": -30.471540017336032,
+          "Delta": -31.229493633402427,
           "CostPerUnit": 1,
-          "BudgetDelta": -30.471540017336032
+          "BudgetDelta": -31.229493633402427
         },
         {
           "Stat": "CritRating",
           "GearAmount": 70,
-          "Delta": -11.467783877492055,
+          "Delta": -11.753035238377258,
           "CostPerUnit": 1,
-          "BudgetDelta": -11.467783877492055
+          "BudgetDelta": -11.753035238377258
         }
       ],
       "Requirements": [
@@ -6092,7 +6092,7 @@
     "build": "Retribution",
     "race": "Dwarf",
     "file": "retribution__dwarf.json",
-    "dps": 1034.3788260703675,
+    "dps": 1066.2560535715668,
     "hitAdjustment": {
       "MeleeAdded": 8.1,
       "SpellAdded": 8.1,
@@ -6101,8 +6101,8 @@
       "Model": "linear-v1",
       "RatingPerPercent": 10,
       "RawHitDelta": 81,
-      "OffensiveBudgetBefore": 494.42857142857144,
-      "Balance": 5.329070518200751e-15,
+      "OffensiveBudgetBefore": 505,
+      "Balance": 1.4210854715202004e-14,
       "Entries": [
         {
           "Stat": "HitRating",
@@ -6114,44 +6114,44 @@
         {
           "Stat": "Agility",
           "GearAmount": 44,
-          "Delta": -7.208321294423577,
+          "Delta": -7.0574257425742575,
           "CostPerUnit": 1,
-          "BudgetDelta": -7.208321294423577
+          "BudgetDelta": -7.0574257425742575
         },
         {
           "Stat": "Strength",
-          "GearAmount": 35,
-          "Delta": -5.733891938746027,
+          "GearAmount": 15,
+          "Delta": -2.405940594059406,
           "CostPerUnit": 1,
-          "BudgetDelta": -5.733891938746027
+          "BudgetDelta": -2.405940594059406
         },
         {
           "Stat": "SpellPower",
-          "GearAmount": 164,
-          "Delta": -26.867379370124244,
+          "GearAmount": 188,
+          "Delta": -30.154455445544556,
           "CostPerUnit": 0.8571428571428571,
-          "BudgetDelta": -23.02918231724935
+          "BudgetDelta": -25.846676096181046
         },
         {
           "Stat": "SpellDamage",
           "GearAmount": 22,
-          "Delta": -3.6041606472117884,
+          "Delta": -3.5287128712871287,
           "CostPerUnit": 0.8571428571428571,
-          "BudgetDelta": -3.0892805547529614
+          "BudgetDelta": -3.0246110325318245
         },
         {
           "Stat": "Intellect",
-          "GearAmount": 186,
-          "Delta": -30.471540017336032,
+          "GearAmount": 210,
+          "Delta": -33.68316831683168,
           "CostPerUnit": 1,
-          "BudgetDelta": -30.471540017336032
+          "BudgetDelta": -33.68316831683168
         },
         {
           "Stat": "CritRating",
-          "GearAmount": 70,
-          "Delta": -11.467783877492055,
+          "GearAmount": 56,
+          "Delta": -8.982178217821783,
           "CostPerUnit": 1,
-          "BudgetDelta": -11.467783877492055
+          "BudgetDelta": -8.982178217821783
         }
       ],
       "Requirements": [
@@ -11476,99 +11476,99 @@
     "build": "Destruction",
     "race": "Orc",
     "file": "destruction__orc.json",
-    "dps": 784.9816410352962,
+    "dps": 789.8228057020395,
     "hitAdjustment": {
-      "MeleeAdded": 3,
-      "SpellAdded": 3,
+      "MeleeAdded": 2.0999999999999996,
+      "SpellAdded": 2.0999999999999996,
       "MeleeFinal": 16,
       "SpellFinal": 16,
       "Model": "linear-v1",
       "RatingPerPercent": 10,
-      "RawHitDelta": 30,
+      "RawHitDelta": 20.999999999999996,
       "OffensiveBudgetBefore": 487.57142857142856,
-      "Balance": 8.881784197001252e-16,
+      "Balance": 1.7763568394002505e-15,
       "Entries": [
         {
           "Stat": "HitRating",
-          "GearAmount": 70,
-          "Delta": 30,
+          "GearAmount": 79,
+          "Delta": 20.999999999999996,
           "CostPerUnit": 1,
-          "BudgetDelta": 30
+          "BudgetDelta": 20.999999999999996
         },
         {
           "Stat": "SpellPower",
           "GearAmount": 308,
-          "Delta": -18.951069440375036,
+          "Delta": -13.265748608262523,
           "CostPerUnit": 0.8571428571428571,
-          "BudgetDelta": -16.243773806035744
+          "BudgetDelta": -11.370641664225019
         },
         {
           "Stat": "SpellDamage",
           "GearAmount": 24,
-          "Delta": -1.4767067096396134,
+          "Delta": -1.033694696747729,
           "CostPerUnit": 0.8571428571428571,
-          "BudgetDelta": -1.2657486082625258
+          "BudgetDelta": -0.8860240257837676
         },
         {
           "Stat": "Intellect",
           "GearAmount": 119,
-          "Delta": -7.322004101963083,
+          "Delta": -5.125402871374157,
           "CostPerUnit": 1,
-          "BudgetDelta": -7.322004101963083
+          "BudgetDelta": -5.125402871374157
         },
         {
           "Stat": "CritRating",
           "GearAmount": 84,
-          "Delta": -5.168473483738647,
+          "Delta": -3.6179314386170516,
           "CostPerUnit": 1,
-          "BudgetDelta": -5.168473483738647
+          "BudgetDelta": -3.6179314386170516
         }
       ],
       "Requirements": [
         {
           "Action": "{SpellID: 25311}",
           "Kind": "spell",
-          "AdditionalPercent": 3
+          "AdditionalPercent": 2.0999999999999996
         },
         {
           "Action": "{SpellID: 25309}",
           "Kind": "spell",
-          "AdditionalPercent": 3
+          "AdditionalPercent": 2.0999999999999996
         },
         {
           "Action": "{SpellID: 11689}",
           "Kind": "spell",
-          "AdditionalPercent": 3
+          "AdditionalPercent": 2.0999999999999996
         },
         {
           "Action": "{SpellID: 18871}",
           "Kind": "spell",
-          "AdditionalPercent": 3
+          "AdditionalPercent": 2.0999999999999996
         },
         {
           "Action": "{SpellID: 18932}",
           "Kind": "spell",
-          "AdditionalPercent": 3
+          "AdditionalPercent": 2.0999999999999996
         },
         {
           "Action": "{SpellID: 17923}",
           "Kind": "spell",
-          "AdditionalPercent": 3
+          "AdditionalPercent": 2.0999999999999996
         },
         {
           "Action": "{SpellID: 1293813}",
           "Kind": "spell",
-          "AdditionalPercent": 3
+          "AdditionalPercent": 2.0999999999999996
         },
         {
           "Action": "{SpellID: 11713}",
           "Kind": "spell",
-          "AdditionalPercent": 3
+          "AdditionalPercent": 2.0999999999999996
         },
         {
           "Action": "{SpellID: 603}",
           "Kind": "spell",
-          "AdditionalPercent": 3
+          "AdditionalPercent": 2.0999999999999996
         }
       ],
       "Exclusions": null
@@ -14232,7 +14232,7 @@
     "build": "Pet/Melee",
     "race": "Windshaper",
     "file": "pet_melee__windshaper.json",
-    "dps": 863.0129955609283,
+    "dps": 865.3323796050154,
     "hitAdjustment": {
       "MeleeAdded": 0.09999999999999964,
       "SpellAdded": 0.09999999999999964,
@@ -14338,7 +14338,7 @@
     "build": "Pet/Melee",
     "race": "Orc",
     "file": "pet_melee__orc.json",
-    "dps": 874.2295971971337,
+    "dps": 875.95178353727,
     "hitAdjustment": {
       "MeleeAdded": 0.09999999999999964,
       "SpellAdded": 0.09999999999999964,
@@ -14444,7 +14444,7 @@
     "build": "Pet/Melee",
     "race": "Human",
     "file": "pet_melee__human.json",
-    "dps": 880.2379411539363,
+    "dps": 881.8583591741173,
     "hitAdjustment": {
       "MeleeAdded": 0.09999999999999964,
       "SpellAdded": 0.09999999999999964,
@@ -14550,7 +14550,7 @@
     "build": "Pet/Melee",
     "race": "Night Elf",
     "file": "pet_melee__night_elf.json",
-    "dps": 872.9678900965702,
+    "dps": 874.370203559389,
     "hitAdjustment": {
       "MeleeAdded": 0.09999999999999964,
       "SpellAdded": 0.09999999999999964,
@@ -14868,7 +14868,7 @@
     "build": "Pet/Melee",
     "race": "High Order",
     "file": "pet_melee__high_order.json",
-    "dps": 863.0129955609283,
+    "dps": 865.3323796050154,
     "hitAdjustment": {
       "MeleeAdded": 0.09999999999999964,
       "SpellAdded": 0.09999999999999964,
@@ -15436,7 +15436,7 @@
     "build": "2H Bloodthirst",
     "race": "Orc",
     "file": "fury_2h__orc.json",
-    "dps": 802.6933689886887,
+    "dps": 811.0680577588925,
     "hitAdjustment": {
       "MeleeAdded": -0.9000000000000004,
       "SpellAdded": -0.9000000000000004,
@@ -15533,7 +15533,7 @@
     "build": "2H Bloodthirst",
     "race": "Tauren",
     "file": "fury_2h__tauren.json",
-    "dps": 797.0192278261244,
+    "dps": 800.7098065332686,
     "hitAdjustment": {
       "MeleeAdded": -1.9000000000000004,
       "SpellAdded": -1.9000000000000004,
@@ -15824,7 +15824,7 @@
     "build": "2H Bloodthirst",
     "race": "Windshaper",
     "file": "fury_2h__windshaper.json",
-    "dps": 792.5406599787802,
+    "dps": 797.48783468839,
     "hitAdjustment": {
       "MeleeAdded": -0.9000000000000004,
       "SpellAdded": -0.9000000000000004,
@@ -16018,7 +16018,7 @@
     "build": "2H Bloodthirst",
     "race": "Dwarf",
     "file": "fury_2h__dwarf.json",
-    "dps": 792.0593556168211,
+    "dps": 799.3606672262719,
     "hitAdjustment": {
       "MeleeAdded": -0.9000000000000004,
       "SpellAdded": -0.9000000000000004,
@@ -16309,7 +16309,7 @@
     "build": "2H Bloodthirst",
     "race": "High Order",
     "file": "fury_2h__high_order.json",
-    "dps": 792.5406599787802,
+    "dps": 797.48783468839,
     "hitAdjustment": {
       "MeleeAdded": -0.9000000000000004,
       "SpellAdded": -0.9000000000000004,

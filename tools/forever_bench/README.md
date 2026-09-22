@@ -12,7 +12,16 @@ The separate Pet/Melee, Arcane–Frost and 2H Bloodthirst rows retain their
 Survival, Frost and Arms equipment respectively.
 [Build comparisons and limitations](../../docs/build_updates.md).
 
-The selected recipes and matched validation requests/results are archived in
+Replay the current exact native profiles, including race-specific equipment:
+
+```sh
+python3 tools/forever_bench/run_matrix.py --binary /path/to/forever-bench \
+  --profiles artifacts/forever_dps_5min.json --output /tmp/forever-matrix --workers 24
+```
+
+The [gear comparison pass](../../docs/gear_updates.md) and its evidence are
+separate from the preceding fixed-gear talent/rotation comparisons.
+Those selected recipes and matched validation requests/results are archived in
 `artifacts/research_builds/validation.json.gz`. Prepare their benchmark inputs with:
 
 ```sh
@@ -84,11 +93,24 @@ loadouts with `-baseline-results` rather than rerunning those starting profiles.
 The search driver also accepts `--baseline-results` to continue from saved
 winners, and `--builds balance,feral` to restrict a follow-up pass.
 
-Replay selected equipment and all paired sensitivities in parallel:
+Confirm changed loadouts before replacing defaults:
+
+```sh
+python3 tools/forever_bench/validate_gear.py --binary /tmp/forever-bench \
+  --search /tmp/gear-search/all --output /tmp/gear-confirmation
+```
+
+The search's full-length baseline/final pair uses a seed separate from its
+screening and slot-validation seeds. Confirmation adds another independent
+5,000-iteration pair for changed profiles, checks that non-gear inputs stayed
+fixed, and retains only gains exceeding the pooled conservative 95% noise bound.
+Unchanged profiles do not need another pair.
+
+Replay confirmed equipment and all paired sensitivities in parallel:
 
 ```sh
 python3 tools/forever_bench/run_matrix.py \
-  --binary /tmp/forever-bench --profiles /tmp/gear-search/all/results.json \
+  --binary /tmp/forever-bench --profiles /tmp/gear-confirmation/selected.json \
   --original-baselines /tmp/gear-search/all/baseline.json \
   --output /tmp/forever-final-matrix
 ```

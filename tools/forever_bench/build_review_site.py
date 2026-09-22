@@ -56,12 +56,13 @@ def main():
     shutil.copytree(args.sensitivity.parent / "sensitivity", args.output / "sensitivity", dirs_exist_ok=True)
     shutil.copytree("artifacts/mana_regen", args.output / "mana_regen", dirs_exist_ok=True)
     shutil.copytree("artifacts/research_builds", args.output / "research_builds", dirs_exist_ok=True)
+    shutil.copytree("artifacts/gear_search/current", args.output / "gear_search", dirs_exist_ok=True)
     for directory in ("profile_corrections", "windfury"):
         shutil.copytree(Path("artifacts") / directory, args.output / directory, dirs_exist_ok=True)
     shutil.copyfile("artifacts/spell_coverage.json", args.output / "spell_coverage.json")
     for extension in ("json", "csv", "svg", "png"):
         shutil.copyfile(args.results.with_suffix("." + extension), args.output / ("results." + extension))
-    for name in ("build_reviews.md", "build_updates.md", "in_game_checks.md", "spell_coverage.md", "windfury.md", "energy_audit.md", "auto_attack_audit.md", "crit_model.md", "forever_gear_data.md", "mechanics_review.md", "history_review.md", "mana_regeneration.md", "mythicsim_review.md"):
+    for name in ("build_reviews.md", "build_updates.md", "gear_updates.md", "in_game_checks.md", "spell_coverage.md", "windfury.md", "energy_audit.md", "auto_attack_audit.md", "crit_model.md", "forever_gear_data.md", "mechanics_review.md", "history_review.md", "mana_regeneration.md", "mythicsim_review.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
     body = []
     for key, class_name, label, icon in builds:
@@ -161,6 +162,7 @@ Healing-only effects give no inferred spell damage. These are tested builds, not
 <a href="sensitivity/gear_150.json" download>Gear +50% run</a>
 <a href="build_reviews.md">Build reviews</a><a href="in_game_checks.md">In-game checks</a>
 <a href="spell_coverage.md">Spell coverage</a><a href="windfury.md">Windfury analysis</a>
+<a href="gear_updates.md">Gear comparisons</a>
 <a href="research_builds/validation.json.gz" download>Build validation requests/results</a>
 <a href="forever_gear_data.md">Equipment sources and gaps</a>
 <a href="energy_audit.md">Energy model</a><a href="auto_attack_audit.md">Auto-attack model</a>

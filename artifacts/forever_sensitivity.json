@@ -1,18 +1,18 @@
 {
   "Baseline": "artifacts/forever_dps_5min.json",
-  "BaselineSHA256": "d5d38408a06cda51f897b72867c87bb5addd0cc8658ee58837d727f424387fb5",
+  "BaselineSHA256": "e1c3c9e3f259d90d2d21b506848b0baab2fe9c88dbba427245c2db959090812b",
   "Sources": {
     "tier1": {
       "Path": "artifacts/sensitivity/tier1_off.json",
-      "SHA256": "617831a54bbde29c2bd6d6fd05c3630a8d0cb100bbb716b5d4eac51385ddf09c"
+      "SHA256": "a289ecee82ab19a4e17274ea1ce36aa7101bdb6af73e8b5e18c250e37e9329a9"
     },
     "gear10": {
       "Path": "artifacts/sensitivity/gear_110.json",
-      "SHA256": "eaf3ed22bd05163645916811ec3a1b7886e9c7f8035fc98dc6a37b90db732fe4"
+      "SHA256": "feac9e2ff8b64c834ecf19c241335c92ac653f3bd90026edaf21a1279d49cd7b"
     },
     "gear50": {
       "Path": "artifacts/sensitivity/gear_150.json",
-      "SHA256": "9695a973442796c0213eff4c8391f217a500166b3045482189cce6f675a425d0"
+      "SHA256": "880d010ff1a110a245d26a78f4b47bdc7e23d91d89b26c310dca15df3ae9fe4d"
     }
   },
   "Model": {
@@ -765,25 +765,25 @@
       "Averages": {
         "tier1": {
           "Races": 5,
-          "GainPercent": 2.084430240715638,
-          "MonteCarlo95Bound": 0.3014955858331348
+          "GainPercent": 2.0975706449138265,
+          "MonteCarlo95Bound": 0.3016129636950198
         },
         "gear10": {
           "Races": 5,
-          "GainPercent": 5.15698469598195,
-          "MonteCarlo95Bound": 0.3116204239462527
+          "GainPercent": 5.1597107072964965,
+          "MonteCarlo95Bound": 0.3113803715403744
         },
         "gear50": {
           "Races": 5,
-          "GainPercent": 26.809353850092126,
-          "MonteCarlo95Bound": 0.37368611738164864
+          "GainPercent": 26.76921333835036,
+          "MonteCarlo95Bound": 0.3737229751182404
         },
         "amplification": {
           "Races": 5,
-          "Gear10GainPercent": 5.15698469598195,
-          "Gear50GainPercent": 26.809353850092126,
-          "Amplification": 1.039729820062509,
-          "MonteCarlo95Bound": 0.07732004151659508
+          "Gear10GainPercent": 5.1597107072964965,
+          "Gear50GainPercent": 26.76921333835036,
+          "Amplification": 1.0376245823431627,
+          "MonteCarlo95Bound": 0.07710519941175967
         }
       },
       "Comparisons": {
@@ -792,11 +792,11 @@
             "Key": "enhancement",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 2.193318613101858,
-            "MonteCarlo95Bound": 0.3052667115052684,
-            "BaselineDPS": 736.2425494733593,
-            "ScenarioDPS": 720.4409832904362,
-            "OOMSeconds": 0.05601999999999998,
+            "GainPercent": 2.259020634092801,
+            "MonteCarlo95Bound": 0.30585360081469326,
+            "BaselineDPS": 738.448950343542,
+            "ScenarioDPS": 722.1357546400614,
+            "OOMSeconds": 0.12156999999999987,
             "Warnings": null
           },
           {
@@ -849,11 +849,11 @@
             "Key": "enhancement",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 5.13441038124498,
-            "MonteCarlo95Bound": 0.31569252508643975,
-            "BaselineDPS": 736.2425494733593,
-            "ScenarioDPS": 774.0442633646621,
-            "OOMSeconds": 0.007919999999999998,
+            "GainPercent": 5.148040437817714,
+            "MonteCarlo95Bound": 0.3144922630570483,
+            "BaselineDPS": 738.448950343542,
+            "ScenarioDPS": 776.4646009198681,
+            "OOMSeconds": 0.02108,
             "Warnings": null
           },
           {
@@ -906,11 +906,11 @@
             "Key": "enhancement",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 27.047379378794624,
-            "MonteCarlo95Bound": 0.3777931684748298,
-            "BaselineDPS": 736.2425494733593,
-            "ScenarioDPS": 935.3768649775285,
-            "OOMSeconds": 0.00016999999999999999,
+            "GainPercent": 26.84667682008579,
+            "MonteCarlo95Bound": 0.37797745715778835,
+            "BaselineDPS": 738.448950343542,
+            "ScenarioDPS": 936.6979535235886,
+            "OOMSeconds": 0.0002,
             "Warnings": null
           },
           {
@@ -1264,25 +1264,25 @@
       "Averages": {
         "tier1": {
           "Races": 8,
-          "GainPercent": 4.161450268232597,
-          "MonteCarlo95Bound": 0.1794920670468248
+          "GainPercent": 4.22752413103468,
+          "MonteCarlo95Bound": 0.17931487980951175
         },
         "gear10": {
           "Races": 8,
-          "GainPercent": 5.683726021007604,
-          "MonteCarlo95Bound": 0.18747726759367087
+          "GainPercent": 5.683353416334999,
+          "MonteCarlo95Bound": 0.18700975663220454
         },
         "gear50": {
           "Races": 8,
-          "GainPercent": 29.60689132927918,
-          "MonteCarlo95Bound": 0.23039403045422016
+          "GainPercent": 29.595625192031434,
+          "MonteCarlo95Bound": 0.22998592733241402
         },
         "amplification": {
           "Races": 8,
-          "Gear10GainPercent": 5.683726021007604,
-          "Gear50GainPercent": 29.60689132927918,
-          "Amplification": 1.0418127552189964,
-          "MonteCarlo95Bound": 0.04247126161453173
+          "Gear10GainPercent": 5.683353416334999,
+          "Gear50GainPercent": 29.595625192031434,
+          "Amplification": 1.041484596293737,
+          "MonteCarlo95Bound": 0.04236318749130781
         }
       },
       "Comparisons": {
@@ -1302,10 +1302,10 @@
             "Key": "marksmanship",
             "Race": "Tauren",
             "Faction": "Horde",
-            "GainPercent": 4.1078918351908245,
-            "MonteCarlo95Bound": 0.18062870720063637,
-            "BaselineDPS": 908.939456964665,
-            "ScenarioDPS": 873.074500829939,
+            "GainPercent": 4.6364827376074835,
+            "MonteCarlo95Bound": 0.17921120930213205,
+            "BaselineDPS": 912.1196457418539,
+            "ScenarioDPS": 871.7032739232434,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -1392,11 +1392,11 @@
             "Key": "marksmanship",
             "Race": "Tauren",
             "Faction": "Horde",
-            "GainPercent": 5.667901870949099,
-            "MonteCarlo95Bound": 0.18961777157783546,
-            "BaselineDPS": 908.939456964665,
-            "ScenarioDPS": 960.4572534517599,
-            "OOMSeconds": 0.4777200000000008,
+            "GainPercent": 5.66492103356826,
+            "MonteCarlo95Bound": 0.18587768388610473,
+            "BaselineDPS": 912.1196457418539,
+            "ScenarioDPS": 963.7905034047924,
+            "OOMSeconds": 0.17808999999999992,
             "Warnings": null
           },
           {
@@ -1482,11 +1482,11 @@
             "Key": "marksmanship",
             "Race": "Tauren",
             "Faction": "Horde",
-            "GainPercent": 29.546082764336212,
-            "MonteCarlo95Bound": 0.23129464066233607,
-            "BaselineDPS": 908.939456964665,
-            "ScenarioDPS": 1177.4954611971532,
-            "OOMSeconds": 0.10237000000000006,
+            "GainPercent": 29.45595366635425,
+            "MonteCarlo95Bound": 0.22802981568788702,
+            "BaselineDPS": 912.1196457418539,
+            "ScenarioDPS": 1180.793185973289,
+            "OOMSeconds": 0.0241,
             "Warnings": null
           },
           {
@@ -1563,25 +1563,25 @@
       "Averages": {
         "tier1": {
           "Races": 8,
-          "GainPercent": 0.4557985391125563,
-          "MonteCarlo95Bound": 0.20619282526589353
+          "GainPercent": 0.4723194509597073,
+          "MonteCarlo95Bound": 0.20815012258770638
         },
         "gear10": {
           "Races": 8,
-          "GainPercent": 5.191150765111252,
-          "MonteCarlo95Bound": 0.2148341519924256
+          "GainPercent": 5.19212908085546,
+          "MonteCarlo95Bound": 0.21904357301725058
         },
         "gear50": {
           "Races": 8,
-          "GainPercent": 27.010403158765893,
-          "MonteCarlo95Bound": 0.26363065303548583
+          "GainPercent": 27.031603126880846,
+          "MonteCarlo95Bound": 0.2677378841793007
         },
         "amplification": {
           "Races": 8,
-          "Gear10GainPercent": 5.191150765111252,
-          "Gear50GainPercent": 27.010403158765893,
-          "Amplification": 1.0406325834455716,
-          "MonteCarlo95Bound": 0.053223179543195644
+          "Gear10GainPercent": 5.19212908085546,
+          "Gear50GainPercent": 27.031603126880846,
+          "Amplification": 1.041253123946876,
+          "MonteCarlo95Bound": 0.054241213408769265
         }
       },
       "Comparisons": {
@@ -1590,10 +1590,10 @@
             "Key": "survival",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 0.4194841460274379,
-            "MonteCarlo95Bound": 0.20719363558284923,
-            "BaselineDPS": 849.6070907288473,
-            "ScenarioDPS": 846.0580115043914,
+            "GainPercent": 0.4427115524669789,
+            "MonteCarlo95Bound": 0.21047525674458337,
+            "BaselineDPS": 853.3345304752609,
+            "ScenarioDPS": 849.5733710150938,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -1601,10 +1601,10 @@
             "Key": "survival",
             "Race": "Tauren",
             "Faction": "Horde",
-            "GainPercent": 0.42538586082165875,
-            "MonteCarlo95Bound": 0.20674059000723677,
-            "BaselineDPS": 837.733904424188,
-            "ScenarioDPS": 834.1853976893785,
+            "GainPercent": 0.45465884161324244,
+            "MonteCarlo95Bound": 0.21009627519535407,
+            "BaselineDPS": 841.1743636688918,
+            "ScenarioDPS": 837.3671996588736,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -1634,10 +1634,10 @@
             "Key": "survival",
             "Race": "Human",
             "Faction": "Alliance",
-            "GainPercent": 0.41500634779052525,
-            "MonteCarlo95Bound": 0.20772796237711014,
-            "BaselineDPS": 854.4280866740369,
-            "ScenarioDPS": 850.8968108956726,
+            "GainPercent": 0.44642710604321234,
+            "MonteCarlo95Bound": 0.21030656614949844,
+            "BaselineDPS": 858.1435991961306,
+            "ScenarioDPS": 854.3296401077282,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -1645,10 +1645,10 @@
             "Key": "survival",
             "Race": "Dwarf",
             "Faction": "Alliance",
-            "GainPercent": 0.42278537643438696,
-            "MonteCarlo95Bound": 0.20651056659673533,
-            "BaselineDPS": 833.6200184420675,
-            "ScenarioDPS": 830.110432923411,
+            "GainPercent": 0.443379810099942,
+            "MonteCarlo95Bound": 0.20965240733721813,
+            "BaselineDPS": 836.965895052775,
+            "ScenarioDPS": 833.2713381759531,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -1656,10 +1656,10 @@
             "Key": "survival",
             "Race": "Night Elf",
             "Faction": "Alliance",
-            "GainPercent": 0.4228173259257062,
-            "MonteCarlo95Bound": 0.20664713666340548,
-            "BaselineDPS": 846.9053951496367,
-            "ScenarioDPS": 843.3396091656899,
+            "GainPercent": 0.4504690415535473,
+            "MonteCarlo95Bound": 0.20994776437518564,
+            "BaselineDPS": 850.4799114375718,
+            "ScenarioDPS": 846.6659434768313,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -1680,10 +1680,10 @@
             "Key": "survival",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 5.20243602967474,
-            "MonteCarlo95Bound": 0.21436271899647377,
-            "BaselineDPS": 849.6070907288473,
-            "ScenarioDPS": 893.8073561275962,
+            "GainPercent": 5.209835433788879,
+            "MonteCarlo95Bound": 0.22128627243271518,
+            "BaselineDPS": 853.3345304752609,
+            "ScenarioDPS": 897.791855212717,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -1691,10 +1691,10 @@
             "Key": "survival",
             "Race": "Tauren",
             "Faction": "Horde",
-            "GainPercent": 5.193875366315637,
-            "MonteCarlo95Bound": 0.2138071439844918,
-            "BaselineDPS": 837.733904424188,
-            "ScenarioDPS": 881.2447593213501,
+            "GainPercent": 5.199846861027835,
+            "MonteCarlo95Bound": 0.2205171705911629,
+            "BaselineDPS": 841.1743636688918,
+            "ScenarioDPS": 884.9141424138995,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -1724,10 +1724,10 @@
             "Key": "survival",
             "Race": "Human",
             "Faction": "Alliance",
-            "GainPercent": 5.203200767714189,
-            "MonteCarlo95Bound": 0.2149053623180105,
-            "BaselineDPS": 854.4280866740369,
-            "ScenarioDPS": 898.8856954394261,
+            "GainPercent": 5.190295269044487,
+            "MonteCarlo95Bound": 0.22075380339681458,
+            "BaselineDPS": 858.1435991961306,
+            "ScenarioDPS": 902.6837858268154,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -1735,10 +1735,10 @@
             "Key": "survival",
             "Race": "Dwarf",
             "Faction": "Alliance",
-            "GainPercent": 5.208823454064593,
-            "MonteCarlo95Bound": 0.21352047856541637,
-            "BaselineDPS": 833.6200184420675,
-            "ScenarioDPS": 877.0418134804554,
+            "GainPercent": 5.217538730633398,
+            "MonteCarlo95Bound": 0.220361542331719,
+            "BaselineDPS": 836.965895052775,
+            "ScenarioDPS": 880.634914789346,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -1746,10 +1746,10 @@
             "Key": "survival",
             "Race": "Night Elf",
             "Faction": "Alliance",
-            "GainPercent": 5.119088750497647,
-            "MonteCarlo95Bound": 0.21335458585991873,
-            "BaselineDPS": 846.9053951496367,
-            "ScenarioDPS": 890.2592339600993,
+            "GainPercent": 5.117734599725865,
+            "MonteCarlo95Bound": 0.22070686917049936,
+            "BaselineDPS": 850.4799114375718,
+            "ScenarioDPS": 894.0052161289302,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -1770,10 +1770,10 @@
             "Key": "survival",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 26.715993188365662,
-            "MonteCarlo95Bound": 0.2624222822526844,
-            "BaselineDPS": 849.6070907288473,
-            "ScenarioDPS": 1076.5880632158378,
+            "GainPercent": 26.76001840075781,
+            "MonteCarlo95Bound": 0.26899284988053584,
+            "BaselineDPS": 853.3345304752609,
+            "ScenarioDPS": 1081.687007850461,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -1781,10 +1781,10 @@
             "Key": "survival",
             "Race": "Tauren",
             "Faction": "Horde",
-            "GainPercent": 27.24943208751991,
-            "MonteCarlo95Bound": 0.2631231254778295,
-            "BaselineDPS": 837.733904424188,
-            "ScenarioDPS": 1066.011635784386,
+            "GainPercent": 27.290934228185073,
+            "MonteCarlo95Bound": 0.26988922147746436,
+            "BaselineDPS": 841.1743636688918,
+            "ScenarioDPS": 1070.7387060021233,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -1814,10 +1814,10 @@
             "Key": "survival",
             "Race": "Human",
             "Faction": "Alliance",
-            "GainPercent": 26.29515998937808,
-            "MonteCarlo95Bound": 0.26180079154058467,
-            "BaselineDPS": 854.4280866740369,
-            "ScenarioDPS": 1079.1013190591568,
+            "GainPercent": 26.310471725483776,
+            "MonteCarlo95Bound": 0.2674740534974905,
+            "BaselineDPS": 858.1435991961306,
+            "ScenarioDPS": 1083.9252282266773,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -1825,10 +1825,10 @@
             "Key": "survival",
             "Race": "Dwarf",
             "Faction": "Alliance",
-            "GainPercent": 27.304031468183364,
-            "MonteCarlo95Bound": 0.2631676022236804,
-            "BaselineDPS": 833.6200184420675,
-            "ScenarioDPS": 1061.2318906025655,
+            "GainPercent": 27.36056075003548,
+            "MonteCarlo95Bound": 0.2699718126987738,
+            "BaselineDPS": 836.965895052775,
+            "ScenarioDPS": 1065.9644572257675,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -1836,10 +1836,10 @@
             "Key": "survival",
             "Race": "Night Elf",
             "Faction": "Alliance",
-            "GainPercent": 26.75577016237034,
-            "MonteCarlo95Bound": 0.26209770577396985,
-            "BaselineDPS": 846.9053951496367,
-            "ScenarioDPS": 1073.5014561685878,
+            "GainPercent": 26.76800153627483,
+            "MonteCarlo95Bound": 0.26914141886500337,
+            "BaselineDPS": 850.4799114375718,
+            "ScenarioDPS": 1078.13638719689,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -2095,25 +2095,25 @@
       "Averages": {
         "tier1": {
           "Races": 6,
-          "GainPercent": 0.7977494217834188,
-          "MonteCarlo95Bound": 0.2609392720279225
+          "GainPercent": 0.8592836334193313,
+          "MonteCarlo95Bound": 0.2581515865195504
         },
         "gear10": {
           "Races": 6,
-          "GainPercent": 5.024691425240424,
-          "MonteCarlo95Bound": 0.2682706212307578
+          "GainPercent": 4.98371670763859,
+          "MonteCarlo95Bound": 0.2657699726416715
         },
         "gear50": {
           "Races": 6,
-          "GainPercent": 25.24235898644543,
-          "MonteCarlo95Bound": 0.30905827135230457
+          "GainPercent": 24.927223341656426,
+          "MonteCarlo95Bound": 0.3043964241994859
         },
         "amplification": {
           "Races": 6,
-          "Gear10GainPercent": 5.024691425240424,
-          "Gear50GainPercent": 25.24235898644543,
-          "Amplification": 1.004732702973402,
-          "MonteCarlo95Bound": 0.0659447302581649
+          "Gear10GainPercent": 4.98371670763859,
+          "Gear50GainPercent": 24.927223341656426,
+          "Amplification": 1.0003467212913701,
+          "MonteCarlo95Bound": 0.0655617934881593
         }
       },
       "Comparisons": {
@@ -2122,22 +2122,22 @@
             "Key": "fire",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 0.7772950772730214,
-            "MonteCarlo95Bound": 0.26875228710554777,
-            "BaselineDPS": 683.0042055282499,
-            "ScenarioDPS": 677.736195444165,
-            "OOMSeconds": 4.454849999999999,
+            "GainPercent": 0.9121182033123842,
+            "MonteCarlo95Bound": 0.264278326618162,
+            "BaselineDPS": 687.132261116198,
+            "ScenarioDPS": 680.9214525968034,
+            "OOMSeconds": 3.2294000000000036,
             "Warnings": null
           },
           {
             "Key": "fire",
             "Race": "Troll",
             "Faction": "Horde",
-            "GainPercent": 0.8077969428318621,
-            "MonteCarlo95Bound": 0.2651973815522606,
-            "BaselineDPS": 674.1750007286666,
-            "ScenarioDPS": 668.772675501471,
-            "OOMSeconds": 4.552699999999999,
+            "GainPercent": 0.9428376259147608,
+            "MonteCarlo95Bound": 0.263045694245017,
+            "BaselineDPS": 678.589581832677,
+            "ScenarioDPS": 672.251343228006,
+            "OOMSeconds": 3.3336800000000033,
             "Warnings": null
           },
           {
@@ -2177,11 +2177,11 @@
             "Key": "fire",
             "Race": "High Order",
             "Faction": "Alliance",
-            "GainPercent": 0.8421962243057024,
-            "MonteCarlo95Bound": 0.27347651980113047,
-            "BaselineDPS": 672.7175339754937,
-            "ScenarioDPS": 667.0992492856383,
-            "OOMSeconds": 6.6618399999999935,
+            "GainPercent": 0.9415376849989165,
+            "MonteCarlo95Bound": 0.2633760545455274,
+            "BaselineDPS": 677.4880197363881,
+            "ScenarioDPS": 671.1687133700864,
+            "OOMSeconds": 5.061879999999998,
             "Warnings": null
           }
         ],
@@ -2190,22 +2190,22 @@
             "Key": "fire",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 5.210707756185906,
-            "MonteCarlo95Bound": 0.2742849020551454,
-            "BaselineDPS": 683.0042055282499,
-            "ScenarioDPS": 718.5935586407863,
-            "OOMSeconds": 3.304150000000002,
+            "GainPercent": 5.119913963294742,
+            "MonteCarlo95Bound": 0.2704429217677946,
+            "BaselineDPS": 687.132261116198,
+            "ScenarioDPS": 722.3128416993891,
+            "OOMSeconds": 2.1978300000000015,
             "Warnings": null
           },
           {
             "Key": "fire",
             "Race": "Troll",
             "Faction": "Horde",
-            "GainPercent": 5.202406762557188,
-            "MonteCarlo95Bound": 0.2743960143299429,
-            "BaselineDPS": 674.1750007286666,
-            "ScenarioDPS": 709.2483265580447,
-            "OOMSeconds": 3.362960000000002,
+            "GainPercent": 5.058845815400037,
+            "MonteCarlo95Bound": 0.26873769761264105,
+            "BaselineDPS": 678.589581832677,
+            "ScenarioDPS": 712.91838249696,
+            "OOMSeconds": 2.2782900000000024,
             "Warnings": null
           },
           {
@@ -2245,11 +2245,11 @@
             "Key": "fire",
             "Race": "High Order",
             "Faction": "Alliance",
-            "GainPercent": 5.214922266321009,
-            "MonteCarlo95Bound": 0.2781188794048982,
-            "BaselineDPS": 672.7175339754937,
-            "ScenarioDPS": 707.7992304442273,
-            "OOMSeconds": 5.103969999999994,
+            "GainPercent": 5.203428700758317,
+            "MonteCarlo95Bound": 0.2726152848750333,
+            "BaselineDPS": 677.4880197363881,
+            "ScenarioDPS": 712.7406257995505,
+            "OOMSeconds": 3.7683,
             "Warnings": null
           }
         ],
@@ -2258,22 +2258,22 @@
             "Key": "fire",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 25.903889842476957,
-            "MonteCarlo95Bound": 0.31787269810729685,
-            "BaselineDPS": 683.0042055282499,
-            "ScenarioDPS": 859.9288625477727,
-            "OOMSeconds": 0.6973599999999996,
+            "GainPercent": 25.239371437871405,
+            "MonteCarlo95Bound": 0.3084721164677271,
+            "BaselineDPS": 687.132261116198,
+            "ScenarioDPS": 860.5601247687597,
+            "OOMSeconds": 0.30695,
             "Warnings": null
           },
           {
             "Key": "fire",
             "Race": "Troll",
             "Faction": "Horde",
-            "GainPercent": 25.887173829722986,
-            "MonteCarlo95Bound": 0.3137714535216875,
-            "BaselineDPS": 674.1750007286666,
-            "ScenarioDPS": 848.6998550838329,
-            "OOMSeconds": 0.7514499999999997,
+            "GainPercent": 25.12318103492759,
+            "MonteCarlo95Bound": 0.307253824904475,
+            "BaselineDPS": 678.589581832677,
+            "ScenarioDPS": 849.0728709606586,
+            "OOMSeconds": 0.34147999999999995,
             "Warnings": null
           },
           {
@@ -2313,11 +2313,11 @@
             "Key": "fire",
             "Race": "High Order",
             "Faction": "Alliance",
-            "GainPercent": 26.451023012275463,
-            "MonteCarlo95Bound": 0.3228759232484711,
-            "BaselineDPS": 672.7175339754937,
-            "ScenarioDPS": 850.6582036949635,
-            "OOMSeconds": 1.3502200000000009,
+            "GainPercent": 25.988720342942393,
+            "MonteCarlo95Bound": 0.31082305058834153,
+            "BaselineDPS": 677.4880197363881,
+            "ScenarioDPS": 853.5584865426164,
+            "OOMSeconds": 0.6189499999999998,
             "Warnings": null
           }
         ]
@@ -2561,25 +2561,25 @@
       "Averages": {
         "tier1": {
           "Races": 3,
-          "GainPercent": 1.1291746543533303,
-          "MonteCarlo95Bound": 0.16406344410191376
+          "GainPercent": 1.7130785346055315,
+          "MonteCarlo95Bound": 0.20789577982142438
         },
         "gear10": {
           "Races": 3,
-          "GainPercent": 5.207625534954552,
-          "MonteCarlo95Bound": 0.16940599381781374
+          "GainPercent": 5.014124054823303,
+          "MonteCarlo95Bound": 0.2141310618727377
         },
         "gear50": {
           "Races": 3,
-          "GainPercent": 26.528101810107,
-          "MonteCarlo95Bound": 0.20312166880659732
+          "GainPercent": 25.59107189104027,
+          "MonteCarlo95Bound": 0.2553087291892385
         },
         "amplification": {
           "Races": 3,
-          "Gear10GainPercent": 5.207625534954552,
-          "Gear50GainPercent": 26.528101810107,
-          "Amplification": 1.01881756405277,
-          "MonteCarlo95Bound": 0.04094344616131925
+          "Gear10GainPercent": 5.014124054823303,
+          "Gear50GainPercent": 25.59107189104027,
+          "Amplification": 1.0207594232305883,
+          "MonteCarlo95Bound": 0.05377570281521861
         }
       },
       "Comparisons": {
@@ -2588,33 +2588,33 @@
             "Key": "retribution",
             "Race": "Undead",
             "Faction": "Horde",
-            "GainPercent": 0.9770298918312603,
-            "MonteCarlo95Bound": 0.164491161924611,
-            "BaselineDPS": 1050.838610696946,
-            "ScenarioDPS": 1040.6709444936405,
-            "OOMSeconds": 0.00011999999999999999,
+            "GainPercent": 1.3658467862099233,
+            "MonteCarlo95Bound": 0.20107366372809296,
+            "BaselineDPS": 1066.399451912085,
+            "ScenarioDPS": 1052.0303294671048,
+            "OOMSeconds": 0.0007,
             "Warnings": null
           },
           {
             "Key": "retribution",
             "Race": "Human",
             "Faction": "Alliance",
-            "GainPercent": 1.2033030608805229,
-            "MonteCarlo95Bound": 0.163939436254527,
-            "BaselineDPS": 1035.9199676176638,
-            "ScenarioDPS": 1023.6029223220995,
-            "OOMSeconds": 0.00126,
+            "GainPercent": 1.880801956506395,
+            "MonteCarlo95Bound": 0.21280592521296876,
+            "BaselineDPS": 1059.5434303116187,
+            "ScenarioDPS": 1039.9834021368865,
+            "OOMSeconds": 0,
             "Warnings": null
           },
           {
             "Key": "retribution",
             "Race": "Dwarf",
             "Faction": "Alliance",
-            "GainPercent": 1.2071910103482075,
-            "MonteCarlo95Bound": 0.1637597341266033,
-            "BaselineDPS": 1034.3788260703675,
-            "ScenarioDPS": 1022.0408409167335,
-            "OOMSeconds": 0.0009700000000000002,
+            "GainPercent": 1.892586861100276,
+            "MonteCarlo95Bound": 0.20980775052321143,
+            "BaselineDPS": 1066.2560535715668,
+            "ScenarioDPS": 1046.4510583336985,
+            "OOMSeconds": 0,
             "Warnings": null
           }
         ],
@@ -2623,21 +2623,21 @@
             "Key": "retribution",
             "Race": "Undead",
             "Faction": "Horde",
-            "GainPercent": 5.1967234268002205,
-            "MonteCarlo95Bound": 0.16876656112615873,
-            "BaselineDPS": 1050.838610696946,
-            "ScenarioDPS": 1105.4477869568962,
-            "OOMSeconds": 0.00027,
+            "GainPercent": 5.026454514370826,
+            "MonteCarlo95Bound": 0.20778065162172765,
+            "BaselineDPS": 1066.399451912085,
+            "ScenarioDPS": 1120.0015353039457,
+            "OOMSeconds": 0,
             "Warnings": null
           },
           {
             "Key": "retribution",
             "Race": "Human",
             "Faction": "Alliance",
-            "GainPercent": 5.214394374967712,
-            "MonteCarlo95Bound": 0.16973580183721715,
-            "BaselineDPS": 1035.9199676176638,
-            "ScenarioDPS": 1089.9369201382867,
+            "GainPercent": 4.976222172406897,
+            "MonteCarlo95Bound": 0.21850058359019817,
+            "BaselineDPS": 1059.5434303116187,
+            "ScenarioDPS": 1112.2686654170661,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -2645,10 +2645,10 @@
             "Key": "retribution",
             "Race": "Dwarf",
             "Faction": "Alliance",
-            "GainPercent": 5.211758803095723,
-            "MonteCarlo95Bound": 0.1697156184900653,
-            "BaselineDPS": 1034.3788260703675,
-            "ScenarioDPS": 1088.288155595448,
+            "GainPercent": 5.039695477692185,
+            "MonteCarlo95Bound": 0.21611195040628728,
+            "BaselineDPS": 1066.2560535715668,
+            "ScenarioDPS": 1119.9921116840321,
             "OOMSeconds": 0,
             "Warnings": null
           }
@@ -2658,10 +2658,10 @@
             "Key": "retribution",
             "Race": "Undead",
             "Faction": "Horde",
-            "GainPercent": 26.43714173994638,
-            "MonteCarlo95Bound": 0.20238280264531747,
-            "BaselineDPS": 1050.838610696946,
-            "ScenarioDPS": 1328.650303664981,
+            "GainPercent": 25.693700875864312,
+            "MonteCarlo95Bound": 0.2476663870391154,
+            "BaselineDPS": 1066.399451912085,
+            "ScenarioDPS": 1340.3969372282324,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -2669,10 +2669,10 @@
             "Key": "retribution",
             "Race": "Human",
             "Faction": "Alliance",
-            "GainPercent": 26.57134671595984,
-            "MonteCarlo95Bound": 0.2035774737610433,
-            "BaselineDPS": 1035.9199676176638,
-            "ScenarioDPS": 1311.1778539132122,
+            "GainPercent": 25.374663013471288,
+            "MonteCarlo95Bound": 0.26075100211419533,
+            "BaselineDPS": 1059.5434303116187,
+            "ScenarioDPS": 1328.399005234566,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -2680,10 +2680,10 @@
             "Key": "retribution",
             "Race": "Dwarf",
             "Faction": "Alliance",
-            "GainPercent": 26.575816974414778,
-            "MonteCarlo95Bound": 0.2034047300134312,
-            "BaselineDPS": 1034.3788260703675,
-            "ScenarioDPS": 1309.2734497089286,
+            "GainPercent": 25.70485178378521,
+            "MonteCarlo95Bound": 0.25750879841440494,
+            "BaselineDPS": 1066.2560535715668,
+            "ScenarioDPS": 1340.3355917777756,
             "OOMSeconds": 0,
             "Warnings": null
           }
@@ -4757,25 +4757,25 @@
       "Averages": {
         "tier1": {
           "Races": 5,
-          "GainPercent": 1.6151436267419417,
-          "MonteCarlo95Bound": 0.15618932938157185
+          "GainPercent": 1.6119618827667104,
+          "MonteCarlo95Bound": 0.15645123815705403
         },
         "gear10": {
           "Races": 5,
-          "GainPercent": 4.043451198234469,
-          "MonteCarlo95Bound": 0.15991463211503334
+          "GainPercent": 4.060069776195774,
+          "MonteCarlo95Bound": 0.1600482051552792
         },
         "gear50": {
           "Races": 5,
-          "GainPercent": 21.051000923552508,
-          "MonteCarlo95Bound": 0.1886499034557152
+          "GainPercent": 21.09980862368913,
+          "MonteCarlo95Bound": 0.18868849749468858
         },
         "amplification": {
           "Races": 5,
-          "Gear10GainPercent": 4.043451198234469,
-          "Gear50GainPercent": 21.051000923552508,
-          "Amplification": 1.0412392726660933,
-          "MonteCarlo95Bound": 0.05051115146695606
+          "Gear10GainPercent": 4.060069776195774,
+          "Gear50GainPercent": 21.09980862368913,
+          "Amplification": 1.0393815765136598,
+          "MonteCarlo95Bound": 0.05026732705136949
         }
       },
       "Comparisons": {
@@ -4784,11 +4784,11 @@
             "Key": "destruction",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 1.6117383246870398,
-            "MonteCarlo95Bound": 0.1570150702230201,
-            "BaselineDPS": 784.9816410352962,
-            "ScenarioDPS": 772.5304713585255,
-            "OOMSeconds": 0.0014,
+            "GainPercent": 1.5958296048108833,
+            "MonteCarlo95Bound": 0.15832461410043108,
+            "BaselineDPS": 789.8228057020395,
+            "ScenarioDPS": 777.416562052109,
+            "OOMSeconds": 0.0012,
             "Warnings": null
           },
           {
@@ -4841,11 +4841,11 @@
             "Key": "destruction",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 3.993293079030824,
-            "MonteCarlo95Bound": 0.16179427432110322,
-            "BaselineDPS": 784.9816410352962,
-            "ScenarioDPS": 816.3282585784212,
-            "OOMSeconds": 0.0005,
+            "GainPercent": 4.076385968837348,
+            "MonteCarlo95Bound": 0.1624621395223325,
+            "BaselineDPS": 789.8228057020395,
+            "ScenarioDPS": 822.019031732355,
+            "OOMSeconds": 0.0019,
             "Warnings": null
           },
           {
@@ -4898,10 +4898,10 @@
             "Key": "destruction",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 20.861882137423326,
-            "MonteCarlo95Bound": 0.189581699882251,
-            "BaselineDPS": 784.9816410352962,
-            "ScenarioDPS": 948.7435857884911,
+            "GainPercent": 21.105920638106433,
+            "MonteCarlo95Bound": 0.1897746700771179,
+            "BaselineDPS": 789.8228057020395,
+            "ScenarioDPS": 956.5221802551777,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -5687,25 +5687,25 @@
       "Averages": {
         "tier1": {
           "Races": 8,
-          "GainPercent": 0.477587461892956,
-          "MonteCarlo95Bound": 0.19544351610529215
+          "GainPercent": 0.4407964168785916,
+          "MonteCarlo95Bound": 0.1967501234092705
         },
         "gear10": {
           "Races": 8,
-          "GainPercent": 4.862237233349195,
-          "MonteCarlo95Bound": 0.20413531506005944
+          "GainPercent": 4.864096572644932,
+          "MonteCarlo95Bound": 0.2043634609769801
         },
         "gear50": {
           "Races": 8,
-          "GainPercent": 25.39766217510573,
-          "MonteCarlo95Bound": 0.2488678816705025
+          "GainPercent": 25.40220549909934,
+          "MonteCarlo95Bound": 0.248861322309322
         },
         "amplification": {
           "Races": 8,
-          "Gear10GainPercent": 4.862237233349195,
-          "Gear50GainPercent": 25.39766217510573,
-          "Amplification": 1.0446903742543787,
-          "MonteCarlo95Bound": 0.05409686167072283
+          "Gear10GainPercent": 4.864096572644932,
+          "Gear50GainPercent": 25.40220549909934,
+          "Amplification": 1.0444778437154454,
+          "MonteCarlo95Bound": 0.05411598383915167
         }
       },
       "Comparisons": {
@@ -5725,10 +5725,10 @@
             "Key": "pet_melee",
             "Race": "Windshaper",
             "Faction": "Horde",
-            "GainPercent": 0.369720195175538,
-            "MonteCarlo95Bound": 0.19368442081701137,
-            "BaselineDPS": 863.0129955609283,
-            "ScenarioDPS": 859.8340155604126,
+            "GainPercent": 0.3757174497203142,
+            "MonteCarlo95Bound": 0.19267015495479498,
+            "BaselineDPS": 865.3323796050154,
+            "ScenarioDPS": 862.0933444769381,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -5736,10 +5736,10 @@
             "Key": "pet_melee",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 0.5284180489406376,
-            "MonteCarlo95Bound": 0.1969473353707209,
-            "BaselineDPS": 874.2295971971337,
-            "ScenarioDPS": 869.6342926350727,
+            "GainPercent": 0.42337208499845236,
+            "MonteCarlo95Bound": 0.20111284099260454,
+            "BaselineDPS": 875.95178353727,
+            "ScenarioDPS": 872.2588829180755,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -5747,10 +5747,10 @@
             "Key": "pet_melee",
             "Race": "Human",
             "Faction": "Alliance",
-            "GainPercent": 0.5249076707871225,
-            "MonteCarlo95Bound": 0.19658014728771553,
-            "BaselineDPS": 880.2379411539363,
-            "ScenarioDPS": 875.6416310638765,
+            "GainPercent": 0.43711927044749466,
+            "MonteCarlo95Bound": 0.20076559054471202,
+            "BaselineDPS": 881.8583591741173,
+            "ScenarioDPS": 878.0203629691262,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -5758,10 +5758,10 @@
             "Key": "pet_melee",
             "Race": "Night Elf",
             "Faction": "Alliance",
-            "GainPercent": 0.5257785861621178,
-            "MonteCarlo95Bound": 0.1966662862886075,
-            "BaselineDPS": 872.9678900965702,
-            "ScenarioDPS": 868.4020182428496,
+            "GainPercent": 0.41229008123946365,
+            "MonteCarlo95Bound": 0.20079672756598713,
+            "BaselineDPS": 874.370203559389,
+            "ScenarioDPS": 870.780063727231,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -5791,10 +5791,10 @@
             "Key": "pet_melee",
             "Race": "High Order",
             "Faction": "Alliance",
-            "GainPercent": 0.369720195175538,
-            "MonteCarlo95Bound": 0.19368442081701137,
-            "BaselineDPS": 863.0129955609283,
-            "ScenarioDPS": 859.8340155604126,
+            "GainPercent": 0.3757174497203142,
+            "MonteCarlo95Bound": 0.19267015495479498,
+            "BaselineDPS": 865.3323796050154,
+            "ScenarioDPS": 862.0933444769381,
             "OOMSeconds": 0,
             "Warnings": null
           }
@@ -5815,10 +5815,10 @@
             "Key": "pet_melee",
             "Race": "Windshaper",
             "Faction": "Horde",
-            "GainPercent": 4.86278877203814,
-            "MonteCarlo95Bound": 0.20475320469434563,
-            "BaselineDPS": 863.0129955609283,
-            "ScenarioDPS": 904.9794946102951,
+            "GainPercent": 4.855515633777596,
+            "MonteCarlo95Bound": 0.1987916138686361,
+            "BaselineDPS": 865.3323796050154,
+            "ScenarioDPS": 907.3487285808766,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -5826,10 +5826,10 @@
             "Key": "pet_melee",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 4.87065302978984,
-            "MonteCarlo95Bound": 0.20481246883564946,
-            "BaselineDPS": 874.2295971971337,
-            "ScenarioDPS": 916.8102875603354,
+            "GainPercent": 4.885800234351079,
+            "MonteCarlo95Bound": 0.2093934768773018,
+            "BaselineDPS": 875.95178353727,
+            "ScenarioDPS": 918.7490378301363,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -5837,10 +5837,10 @@
             "Key": "pet_melee",
             "Race": "Human",
             "Faction": "Alliance",
-            "GainPercent": 4.872645496666128,
-            "MonteCarlo95Bound": 0.20450597954275074,
-            "BaselineDPS": 880.2379411539363,
-            "ScenarioDPS": 923.1288155535202,
+            "GainPercent": 4.882393768959936,
+            "MonteCarlo95Bound": 0.20887790511038687,
+            "BaselineDPS": 881.8583591741173,
+            "ScenarioDPS": 924.9141567534867,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -5848,10 +5848,10 @@
             "Key": "pet_melee",
             "Race": "Night Elf",
             "Faction": "Alliance",
-            "GainPercent": 4.803344590199199,
-            "MonteCarlo95Bound": 0.20449875931046074,
-            "BaselineDPS": 872.9678900965702,
-            "ScenarioDPS": 914.8995460196998,
+            "GainPercent": 4.807870104231138,
+            "MonteCarlo95Bound": 0.20929417468795655,
+            "BaselineDPS": 874.370203559389,
+            "ScenarioDPS": 916.4087871766258,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -5881,10 +5881,10 @@
             "Key": "pet_melee",
             "Race": "High Order",
             "Faction": "Alliance",
-            "GainPercent": 4.86278877203814,
-            "MonteCarlo95Bound": 0.20475320469434563,
-            "BaselineDPS": 863.0129955609283,
-            "ScenarioDPS": 904.9794946102951,
+            "GainPercent": 4.855515633777596,
+            "MonteCarlo95Bound": 0.1987916138686361,
+            "BaselineDPS": 865.3323796050154,
+            "ScenarioDPS": 907.3487285808766,
             "OOMSeconds": 0,
             "Warnings": null
           }
@@ -5905,10 +5905,10 @@
             "Key": "pet_melee",
             "Race": "Windshaper",
             "Faction": "Horde",
-            "GainPercent": 25.429181991531593,
-            "MonteCarlo95Bound": 0.24941917770508423,
-            "BaselineDPS": 863.0129955609283,
-            "ScenarioDPS": 1082.4701408126853,
+            "GainPercent": 25.43482388478242,
+            "MonteCarlo95Bound": 0.2426687014271,
+            "BaselineDPS": 865.3323796050154,
+            "ScenarioDPS": 1085.4281463755478,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -5916,10 +5916,10 @@
             "Key": "pet_melee",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 25.450898039706015,
-            "MonteCarlo95Bound": 0.25002222797640505,
-            "BaselineDPS": 874.2295971971337,
-            "ScenarioDPS": 1096.7288806127087,
+            "GainPercent": 25.464166253116428,
+            "MonteCarlo95Bound": 0.2543304777339224,
+            "BaselineDPS": 875.95178353727,
+            "ScenarioDPS": 1099.005601994339,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -5927,10 +5927,10 @@
             "Key": "pet_melee",
             "Race": "Human",
             "Faction": "Alliance",
-            "GainPercent": 25.40783318413382,
-            "MonteCarlo95Bound": 0.24921463504454885,
-            "BaselineDPS": 880.2379411539363,
-            "ScenarioDPS": 1103.8873288657824,
+            "GainPercent": 25.409562876901283,
+            "MonteCarlo95Bound": 0.25384173730987897,
+            "BaselineDPS": 881.8583591741173,
+            "ScenarioDPS": 1105.9347134336745,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -5938,10 +5938,10 @@
             "Key": "pet_melee",
             "Race": "Night Elf",
             "Faction": "Alliance",
-            "GainPercent": 25.02055854084184,
-            "MonteCarlo95Bound": 0.2486210355913413,
-            "BaselineDPS": 872.9678900965702,
-            "ScenarioDPS": 1091.3893320809343,
+            "GainPercent": 25.030623440111178,
+            "MonteCarlo95Bound": 0.25313416123501836,
+            "BaselineDPS": 874.370203559389,
+            "ScenarioDPS": 1093.2305166848732,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -5971,10 +5971,10 @@
             "Key": "pet_melee",
             "Race": "High Order",
             "Faction": "Alliance",
-            "GainPercent": 25.429181991531593,
-            "MonteCarlo95Bound": 0.24941917770508423,
-            "BaselineDPS": 863.0129955609283,
-            "ScenarioDPS": 1082.4701408126853,
+            "GainPercent": 25.43482388478242,
+            "MonteCarlo95Bound": 0.2426687014271,
+            "BaselineDPS": 865.3323796050154,
+            "ScenarioDPS": 1085.4281463755478,
             "OOMSeconds": 0,
             "Warnings": null
           }
@@ -6219,25 +6219,25 @@
       "Averages": {
         "tier1": {
           "Races": 10,
-          "GainPercent": 0.3702347845634457,
-          "MonteCarlo95Bound": 0.25977451828659404
+          "GainPercent": 0.4102979169725729,
+          "MonteCarlo95Bound": 0.25948060604365464
         },
         "gear10": {
           "Races": 10,
-          "GainPercent": 6.266483299264047,
-          "MonteCarlo95Bound": 0.27205159046440314
+          "GainPercent": 6.227038045640141,
+          "MonteCarlo95Bound": 0.27228371236029136
         },
         "gear50": {
           "Races": 10,
-          "GainPercent": 31.85329704775821,
-          "MonteCarlo95Bound": 0.3268766579610274
+          "GainPercent": 31.775466826129627,
+          "MonteCarlo95Bound": 0.32708813440115947
         },
         "amplification": {
           "Races": 10,
-          "Gear10GainPercent": 6.266483299264047,
-          "Gear50GainPercent": 31.85329704775821,
-          "Amplification": 1.0166243338268899,
-          "MonteCarlo95Bound": 0.05456802199644969
+          "Gear10GainPercent": 6.227038045640141,
+          "Gear50GainPercent": 31.775466826129627,
+          "Amplification": 1.0205644029548595,
+          "MonteCarlo95Bound": 0.055130655811539045
         }
       },
       "Comparisons": {
@@ -6246,10 +6246,10 @@
             "Key": "fury_2h",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 0.4055395527756911,
-            "MonteCarlo95Bound": 0.2609789235221079,
-            "BaselineDPS": 802.6933689886887,
-            "ScenarioDPS": 799.4512778518289,
+            "GainPercent": 0.529907854470113,
+            "MonteCarlo95Bound": 0.2599587828963059,
+            "BaselineDPS": 811.0680577588925,
+            "ScenarioDPS": 806.7927993458595,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -6257,10 +6257,10 @@
             "Key": "fury_2h",
             "Race": "Tauren",
             "Faction": "Horde",
-            "GainPercent": 0.4078597566445463,
-            "MonteCarlo95Bound": 0.2600561207634954,
-            "BaselineDPS": 797.0192278261244,
-            "ScenarioDPS": 793.7817116686238,
+            "GainPercent": 0.2929560128764219,
+            "MonteCarlo95Bound": 0.25794150505388025,
+            "BaselineDPS": 800.7098065332686,
+            "ScenarioDPS": 798.3709308861802,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -6290,10 +6290,10 @@
             "Key": "fury_2h",
             "Race": "Windshaper",
             "Faction": "Horde",
-            "GainPercent": 0.23706303421282549,
-            "MonteCarlo95Bound": 0.258780607221872,
-            "BaselineDPS": 792.5406599787802,
-            "ScenarioDPS": 790.6662824989903,
+            "GainPercent": 0.47317054765296795,
+            "MonteCarlo95Bound": 0.2600531444058365,
+            "BaselineDPS": 797.48783468839,
+            "ScenarioDPS": 793.7321280312868,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -6312,10 +6312,10 @@
             "Key": "fury_2h",
             "Race": "Dwarf",
             "Faction": "Alliance",
-            "GainPercent": 0.5225987980263413,
-            "MonteCarlo95Bound": 0.26212143333475596,
-            "BaselineDPS": 792.0593556168211,
-            "ScenarioDPS": 787.9415823781632,
+            "GainPercent": 0.44155053731103067,
+            "MonteCarlo95Bound": 0.2597719928728498,
+            "BaselineDPS": 799.3606672262719,
+            "ScenarioDPS": 795.8466022777429,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -6345,10 +6345,10 @@
             "Key": "fury_2h",
             "Race": "High Order",
             "Faction": "Alliance",
-            "GainPercent": 0.23706303421282549,
-            "MonteCarlo95Bound": 0.258780607221872,
-            "BaselineDPS": 792.5406599787802,
-            "ScenarioDPS": 790.6662824989903,
+            "GainPercent": 0.47317054765296795,
+            "MonteCarlo95Bound": 0.2600531444058365,
+            "BaselineDPS": 797.48783468839,
+            "ScenarioDPS": 793.7321280312868,
             "OOMSeconds": 0,
             "Warnings": null
           }
@@ -6358,10 +6358,10 @@
             "Key": "fury_2h",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 6.2157878426465585,
-            "MonteCarlo95Bound": 0.2733032891279774,
-            "BaselineDPS": 802.6933689886887,
-            "ScenarioDPS": 852.5870858320177,
+            "GainPercent": 6.133898753666012,
+            "MonteCarlo95Bound": 0.2719022635576745,
+            "BaselineDPS": 811.0680577588925,
+            "ScenarioDPS": 860.8181512451483,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -6369,10 +6369,10 @@
             "Key": "fury_2h",
             "Race": "Tauren",
             "Faction": "Horde",
-            "GainPercent": 6.2431462288535355,
-            "MonteCarlo95Bound": 0.27412916530537235,
-            "BaselineDPS": 797.0192278261244,
-            "ScenarioDPS": 846.7783036913887,
+            "GainPercent": 6.1539967398025475,
+            "MonteCarlo95Bound": 0.26761938368462246,
+            "BaselineDPS": 800.7098065332686,
+            "ScenarioDPS": 849.9854619226053,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -6402,10 +6402,10 @@
             "Key": "fury_2h",
             "Race": "Windshaper",
             "Faction": "Horde",
-            "GainPercent": 6.334325993630929,
-            "MonteCarlo95Bound": 0.26833753076562894,
-            "BaselineDPS": 792.5406599787802,
-            "ScenarioDPS": 842.7427690139102,
+            "GainPercent": 6.196739751462732,
+            "MonteCarlo95Bound": 0.2742956792788262,
+            "BaselineDPS": 797.48783468839,
+            "ScenarioDPS": 846.9060803536048,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -6424,10 +6424,10 @@
             "Key": "fury_2h",
             "Race": "Dwarf",
             "Faction": "Alliance",
-            "GainPercent": 6.205585650181167,
-            "MonteCarlo95Bound": 0.2721483995847622,
-            "BaselineDPS": 792.0593556168211,
-            "ScenarioDPS": 841.211277329896,
+            "GainPercent": 6.257344176310031,
+            "MonteCarlo95Bound": 0.27046412870830294,
+            "BaselineDPS": 799.3606672262719,
+            "ScenarioDPS": 849.3794153846679,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -6457,10 +6457,10 @@
             "Key": "fury_2h",
             "Race": "High Order",
             "Faction": "Alliance",
-            "GainPercent": 6.334325993630929,
-            "MonteCarlo95Bound": 0.26833753076562894,
-            "BaselineDPS": 792.5406599787802,
-            "ScenarioDPS": 842.7427690139102,
+            "GainPercent": 6.196739751462732,
+            "MonteCarlo95Bound": 0.2742956792788262,
+            "BaselineDPS": 797.48783468839,
+            "ScenarioDPS": 846.9060803536048,
             "OOMSeconds": 0,
             "Warnings": null
           }
@@ -6470,10 +6470,10 @@
             "Key": "fury_2h",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 31.80986944401145,
-            "MonteCarlo95Bound": 0.3303359081734885,
-            "BaselineDPS": 802.6933689886887,
-            "ScenarioDPS": 1058.0290816997276,
+            "GainPercent": 31.545269642246645,
+            "MonteCarlo95Bound": 0.32692823271602367,
+            "BaselineDPS": 811.0680577588925,
+            "ScenarioDPS": 1066.9216635610678,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -6481,10 +6481,10 @@
             "Key": "fury_2h",
             "Race": "Tauren",
             "Faction": "Horde",
-            "GainPercent": 31.742622212020756,
-            "MonteCarlo95Bound": 0.32899094170544124,
-            "BaselineDPS": 797.0192278261244,
-            "ScenarioDPS": 1050.014030272136,
+            "GainPercent": 31.76006887453291,
+            "MonteCarlo95Bound": 0.3207975172694408,
+            "BaselineDPS": 800.7098065332686,
+            "ScenarioDPS": 1055.015792573374,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -6514,10 +6514,10 @@
             "Key": "fury_2h",
             "Race": "Windshaper",
             "Faction": "Horde",
-            "GainPercent": 32.01689469661646,
-            "MonteCarlo95Bound": 0.3221394728603256,
-            "BaselineDPS": 792.5406599787802,
-            "ScenarioDPS": 1046.2875685120555,
+            "GainPercent": 31.823686900104022,
+            "MonteCarlo95Bound": 0.3304632034188761,
+            "BaselineDPS": 797.48783468839,
+            "ScenarioDPS": 1051.2778662660423,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -6536,10 +6536,10 @@
             "Key": "fury_2h",
             "Race": "Dwarf",
             "Faction": "Alliance",
-            "GainPercent": 31.922072489568244,
-            "MonteCarlo95Bound": 0.32858759459427056,
-            "BaselineDPS": 792.0593556168211,
-            "ScenarioDPS": 1044.9011172772298,
+            "GainPercent": 31.777339005559945,
+            "MonteCarlo95Bound": 0.3256559977719555,
+            "BaselineDPS": 799.3606672262719,
+            "ScenarioDPS": 1053.3762163278702,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -6569,10 +6569,10 @@
             "Key": "fury_2h",
             "Race": "High Order",
             "Faction": "Alliance",
-            "GainPercent": 32.01689469661646,
-            "MonteCarlo95Bound": 0.3221394728603256,
-            "BaselineDPS": 792.5406599787802,
-            "ScenarioDPS": 1046.2875685120555,
+            "GainPercent": 31.823686900104022,
+            "MonteCarlo95Bound": 0.3304632034188761,
+            "BaselineDPS": 797.48783468839,
+            "ScenarioDPS": 1051.2778662660423,
             "OOMSeconds": 0,
             "Warnings": null
           }

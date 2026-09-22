@@ -1,5 +1,8 @@
 # Build updates
 
+These talent/rotation comparisons precede the [gear comparison pass](gear_updates.md).
+The current ranking defaults include its confirmed equipment changes.
+
 Nine established builds have updated talents or rotations. Three hybrids have
 separate rows. The original Arcane, Fire, Frost, Arms and Survival identities
 remain available.

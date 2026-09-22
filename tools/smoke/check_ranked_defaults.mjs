@@ -14,8 +14,11 @@ try {
 		['shadow_priest', 'shadow__undead'],
 		['balance_druid', 'balance__tauren'],
 		['enhancement_shaman', 'enhancement__dwarf'],
+		['enhancement_shaman', 'enhancement__orc'],
 		['hunter', 'marksmanship__orc'],
+		['hunter', 'marksmanship__tauren'],
 		['hunter', 'pet_melee__orc'],
+		['retribution_paladin', 'retribution__dwarf'],
 		['mage', 'arcane_frost__gnome'],
 		['warrior', 'fury_2h__human'],
 	]) {
