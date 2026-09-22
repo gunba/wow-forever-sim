@@ -46,6 +46,23 @@ try {
 		assert.ok(Math.abs(actual - profile.dps) < .015, `${id}: WASM ${actual} vs native ${profile.dps}`);
 		console.log(`${id}: fully loaded from the picker, ${actual} DPS, native match`);
 
+		if (route === 'enhancement_shaman') {
+			await page.getByRole('tab', { name: 'Settings', exact: true }).click();
+			const critLabel = page.getByText('Crit Aura (3%)', { exact: true });
+			assert.ok(await critLabel.isVisible());
+			assert.equal(await page.getByText('Moonkin Aura', { exact: true }).isVisible(), false);
+			assert.equal(await page.getByText('Leader of the Pack', { exact: true }).isVisible(), false);
+			const button = critLabel.locator('..').locator(':scope > a.icon-picker-button');
+			await button.click();
+			const off = await page.evaluate(key => JSON.parse(localStorage.getItem(key)).raidBuffs, storageKey);
+			assert.equal(Boolean(off.moonkinAura || off.leaderOfThePack), false);
+			await button.click();
+			const on = await page.evaluate(key => JSON.parse(localStorage.getItem(key)).raidBuffs, storageKey);
+			assert.equal(on.moonkinAura, true);
+			assert.equal(Boolean(on.leaderOfThePack), false);
+			console.log('One crit-aura control; off clears both source flags, on selects one');
+		}
+
 		const other = bundle.profiles.find(candidate => candidate.key === profile.key && candidate.id !== id);
 		await page.evaluate(({ key, settings }) => localStorage.setItem(key, JSON.stringify(settings)),
 			{ key: storageKey, settings: other.settings });

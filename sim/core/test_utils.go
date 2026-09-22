@@ -173,6 +173,8 @@ var ForeverRaidBuffs = func() *proto.RaidBuffs {
 	buffs.GraceOfAirTotem = proto.TristateEffect_TristateEffectRegular
 	buffs.BattleShout = proto.TristateEffect_TristateEffectRegular
 	buffs.SanctityAura = false
+	// Moonkin already supplies the single shared critical-strike aura.
+	buffs.LeaderOfThePack = false
 	return buffs
 }()
 

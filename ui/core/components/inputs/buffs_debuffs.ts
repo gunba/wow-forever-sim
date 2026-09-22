@@ -244,11 +244,40 @@ export const ManaSpringTotem = withLabel(
 );
 
 export const MeleeCritBuff = withLabel(
-	makeBooleanRaidBuffInput({ actionId: () => ActionId.fromSpellId(24932), fieldName: 'leaderOfThePack' }),
+	makeBooleanRaidBuffInput({
+		actionId: () => ActionId.fromSpellId(24932),
+		fieldName: 'leaderOfThePack',
+		showWhen: player => player.sim.getRuleset() !== Ruleset.RulesetForever,
+	}),
 	'Leader of the Pack',
 );
 
-export const SpellCritBuff = withLabel(makeBooleanRaidBuffInput({ actionId: () => ActionId.fromSpellId(24907), fieldName: 'moonkinAura' }), 'Moonkin Aura');
+export const SpellCritBuff = withLabel(
+	makeBooleanRaidBuffInput({
+		actionId: () => ActionId.fromSpellId(24907),
+		fieldName: 'moonkinAura',
+		showWhen: player => player.sim.getRuleset() !== Ruleset.RulesetForever,
+	}),
+	'Moonkin Aura',
+);
+
+const critAuraConfig = makeBooleanRaidBuffInput({
+	actionId: () => ActionId.fromSpellId(24907),
+	fieldName: 'moonkinAura',
+	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever,
+});
+critAuraConfig.getValue = player => {
+	const buffs = player.getRaid()!.getBuffs();
+	return buffs.moonkinAura || buffs.leaderOfThePack;
+};
+critAuraConfig.setValue = (eventID, player, enabled) => {
+	const buffs = player.getRaid()!.getBuffs();
+	buffs.moonkinAura = enabled;
+	buffs.leaderOfThePack = false;
+	player.getRaid()!.setBuffs(eventID, buffs);
+};
+critAuraConfig.labelTooltip = 'Moonkin Aura or Leader of the Pack: 3% melee, ranged and spell crit. The two providers do not stack.';
+export const CritAuraBuff = withLabel(critAuraConfig, 'Crit Aura (3%)');
 
 // Misc Buffs
 export const AtieshMageBuff = makeMultistatePartyBuffInput({
@@ -658,6 +687,11 @@ export const RAID_BUFFS_CONFIG = [
 		config: MeleeCritBuff,
 		picker: IconPicker,
 		stats: [Stat.StatMeleeCrit],
+	},
+	{
+		config: CritAuraBuff,
+		picker: IconPicker,
+		stats: [Stat.StatMeleeCrit, Stat.StatSpellCrit],
 	},
 	// Threat Buffs
 

@@ -287,11 +287,18 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 		ThornsAura(character, GetTristateValueInt32(thorns, 0, 3))
 	}
 
-	if raidBuffs.MoonkinAura || (partyBuffs != nil && partyBuffs.MoonkinAura) {
+	moonkinAura := raidBuffs.MoonkinAura || (partyBuffs != nil && partyBuffs.MoonkinAura)
+	leaderOfThePack := raidBuffs.LeaderOfThePack || (partyBuffs != nil && partyBuffs.LeaderOfThePack)
+	if character.Env.IsForever() {
+		// Either provider grants the same 3% global crit aura, once.
+		critAura := moonkinAura || leaderOfThePack
+		moonkinAura, leaderOfThePack = critAura, critAura
+	}
+	if moonkinAura {
 		character.AddStat(stats.SpellCrit, 3*SpellCritRatingPerCritChance)
 	}
 
-	if raidBuffs.LeaderOfThePack || (partyBuffs != nil && partyBuffs.LeaderOfThePack) {
+	if leaderOfThePack {
 		character.AddStats(stats.Stats{
 			stats.MeleeCrit: 3 * CritRatingPerCritChance,
 		})
