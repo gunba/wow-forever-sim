@@ -104,8 +104,11 @@ func (b build) player(race proto.Race) *proto.Player {
 			Ammo: proto.Hunter_Options_ThoriumHeadedArrow, QuiverBonus: proto.Hunter_Options_Speed15,
 			PetType: proto.Hunter_Options_Cat, PetUptime: 1, PetAttackSpeed: proto.Hunter_Options_OneTwo,
 		}}})
+		if b.modelKey() == "marksmanship" {
+			p.GetHunter().Options.PetType = proto.Hunter_Options_PetNone
+		}
 	case "arcane", "fire", "frost":
-		core.WithSpec(p, &proto.Player_Mage{Mage: &proto.Mage{Options: &proto.Mage_Options{Armor: proto.Mage_Options_MoltenArmor}}})
+		core.WithSpec(p, &proto.Player_Mage{Mage: &proto.Mage{Options: &proto.Mage_Options{Armor: proto.Mage_Options_MageArmor}}})
 	case "retribution":
 		p.DistanceFromTarget = 5
 		core.WithSpec(p, &proto.Player_RetributionPaladin{RetributionPaladin: &proto.RetributionPaladin{Options: &proto.PaladinOptions{

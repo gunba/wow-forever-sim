@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bundle Forever display metadata for benchmark spells and internal aliases."""
+"""Bundle Forever display metadata for abilities and UI consumable choices."""
 
 import concurrent.futures
 import html
@@ -21,8 +21,8 @@ def spell_ids(value):
             yield from spell_ids(child)
 
 
-def tooltip(spell_id):
-    url = f"https://nether.wowhead.com/forever/tooltip/spell/{spell_id}?lvl=60"
+def tooltip(spell_id, kind="spell"):
+    url = f"https://nether.wowhead.com/forever/tooltip/{kind}/{spell_id}?lvl=60"
     try:
         with urllib.request.urlopen(url, timeout=30) as response:
             data = json.load(response)
@@ -34,13 +34,14 @@ def tooltip(spell_id):
             "rank": int(rank[1]) if rank else 0, "hasBuff": bool(data.get("buff")),
         }
     except Exception as error:
-        print(f"Unresolved spell icon {spell_id}: {error}")
+        print(f"Unresolved {kind} icon {spell_id}: {error}")
         return spell_id, None
 
 
 def main():
     output = Path("assets/db_inputs/forever_spell_icons.json")
     cached = {r["id"]: r for r in json.loads(output.read_text())["spellIcons"]} if output.exists() else {}
+    item_cache = {r["id"]: r for r in json.loads(output.read_text()).get("itemIcons", [])} if output.exists() else {}
     database = json.loads(Path("assets/database/db.json").read_text())
     known = {r["id"]: r for r in database["spellIcons"] if r.get("icon")}
     aliases = {}
@@ -57,6 +58,13 @@ def main():
                 if talent.get("name") and talent.get("icon"):
                     talent_icons.setdefault(talent["name"], set()).add(talent["icon"])
     needed = set(spell_ids(json.loads(Path("artifacts/forever_dps_5min.json").read_text())))
+    needed.update(names)
+    needed_items = set()
+    for path in Path("ui").rglob("*"):
+        if path.suffix in (".ts", ".tsx"):
+            source = path.read_text()
+            needed.update(map(int, re.findall(r"\bfromSpellId\(\s*(\d+)", source)))
+            needed_items.update(map(int, re.findall(r"\bfromItemId\(\s*(\d+)", source)))
     needed = {aliases.get(id, id) for id in needed} | set(aliases.values())
     missing = sorted(needed - known.keys() - cached.keys())
     with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
@@ -75,7 +83,15 @@ def main():
         if row:
             cached[actual] = row
             cached[alias] = {**row, "id": alias}
-    output.write_text(json.dumps({"spellIcons": [cached[id] for id in sorted(cached)]}, indent=2) + "\n")
+    known_items = {r["id"]: r for r in database["items"] + database["itemIcons"] if r.get("icon")}
+    with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
+        for id, row in pool.map(lambda id: tooltip(id, "item"), sorted(needed_items - known_items.keys() - item_cache.keys())):
+            if row:
+                item_cache[id] = row
+    output.write_text(json.dumps({
+        "spellIcons": [cached[id] for id in sorted(cached)],
+        "itemIcons": [item_cache[id] for id in sorted(item_cache)],
+    }, indent=2) + "\n")
     print(f"Bundled {len(cached)} spell metadata records")
 
 

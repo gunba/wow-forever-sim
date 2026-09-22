@@ -139,25 +139,11 @@
     "bonusStats": {
       "stats": [
         0,
-        -8.548770816812052,
+        -4.477927570711074,
         0,
-        -2.2926249008723234,
+        -1.2008987575997883,
         0,
-        -4.507533703409991,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        2.0999999999999996,
-        -0.2720063441712926,
-        0,
-        0,
-        -4.1189532117367165,
-        2.0999999999999996,
-        -0.2720063441712926,
+        -2.3610890827385664,
         0,
         0,
         0,
@@ -165,7 +151,21 @@
         0,
         0,
         0,
-        -4.9738302934179215,
+        1.0999999999999996,
+        -0.1424795136135342,
+        0,
+        0,
+        -2.157546920433518,
+        1.0999999999999996,
+        -0.1424795136135342,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -2.605339677504625,
         0,
         0,
         0,
@@ -190,7 +190,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "53200005011-0053552001520051",
+    "talentsString": "5-0050552011523051-50005001",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
@@ -214,67 +214,6 @@
         {
           "action": {
             "autocastOtherCooldowns": {}
-          }
-        },
-        {
-          "action": {
-            "condition": {
-              "and": {
-                "vals": [
-                  {
-                    "not": {
-                      "val": {
-                        "dotIsActive": {
-                          "spellId": {
-                            "spellId": 1293527
-                          }
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "cmp": {
-                      "op": "OpGe",
-                      "lhs": {
-                        "remainingTime": {}
-                      },
-                      "rhs": {
-                        "const": {
-                          "val": "6s"
-                        }
-                      }
-                    }
-                  }
-                ]
-              }
-            },
-            "castSpell": {
-              "spellId": {
-                "spellId": 1293527
-              }
-            }
-          }
-        },
-        {
-          "action": {
-            "condition": {
-              "cmp": {
-                "op": "OpGe",
-                "lhs": {
-                  "currentManaPercent": {}
-                },
-                "rhs": {
-                  "const": {
-                    "val": "30%"
-                  }
-                }
-              }
-            },
-            "castSpell": {
-              "spellId": {
-                "spellId": 1310786
-              }
-            }
           }
         },
         {
@@ -320,7 +259,29 @@
           "action": {
             "castSpell": {
               "spellId": {
-                "spellId": 20903
+                "spellId": 20904
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpGe",
+                "lhs": {
+                  "currentManaPercent": {}
+                },
+                "rhs": {
+                  "const": {
+                    "val": "30%"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 1310786
               }
             }
           }
@@ -354,7 +315,6 @@
       "options": {
         "ammo": "ThoriumHeadedArrow",
         "quiverBonus": "Speed15",
-        "petType": "Cat",
         "petUptime": 1,
         "petAttackSpeed": "OneTwo"
       }
@@ -368,6 +328,7 @@
     "targets": [
       {
         "level": 63,
+        "mobType": "MobTypeDragonkin",
         "stats": [
           0,
           0,

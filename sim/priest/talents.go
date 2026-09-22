@@ -53,6 +53,43 @@ func (priest *Priest) ApplyTalents() {
 	priest.applyShadowFocus()
 	priest.applyShadowWeaving()
 	priest.applyDarkness()
+	priest.applyEarlyDemise()
+}
+
+func (priest *Priest) applyEarlyDemise() {
+	if priest.Talents.EarlyDemise == 0 {
+		return
+	}
+	// Client 1310076: 15/30 percentage points of Death crit at <=20% health.
+	bonus := 15 * float64(priest.Talents.EarlyDemise) * core.CritRatingPerCritChance
+	execute := priest.RegisterAura(core.Aura{
+		Label: "Early Demise", ActionID: core.ActionID{SpellID: 1310076},
+		Duration: core.NeverExpires,
+		OnGain: func(_ *core.Aura, _ *core.Simulation) {
+			for _, spell := range priest.ShadowWordDeath {
+				if spell != nil {
+					spell.BonusCritRating += bonus
+				}
+			}
+		},
+		OnExpire: func(_ *core.Aura, _ *core.Simulation) {
+			for _, spell := range priest.ShadowWordDeath {
+				if spell != nil {
+					spell.BonusCritRating -= bonus
+				}
+			}
+		},
+	})
+	core.MakePermanent(priest.RegisterAura(core.Aura{
+		Label: "Early Demise Trigger",
+		OnReset: func(_ *core.Aura, sim *core.Simulation) {
+			sim.RegisterExecutePhaseCallback(func(sim *core.Simulation, phase int32) {
+				if phase == 20 {
+					execute.Activate(sim)
+				}
+			})
+		},
+	}))
 }
 
 // Smite and Penance hit harder while the target is burning from this priest's Holy Fire, 2% per point.

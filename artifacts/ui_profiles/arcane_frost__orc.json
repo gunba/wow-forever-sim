@@ -303,7 +303,7 @@
     "distanceFromTarget": 20,
     "mage": {
       "options": {
-        "armor": "MoltenArmor"
+        "armor": "MageArmor"
       }
     }
   },
@@ -315,6 +315,7 @@
     "targets": [
       {
         "level": 63,
+        "mobType": "MobTypeDragonkin",
         "stats": [
           0,
           0,

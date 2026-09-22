@@ -1058,5 +1058,8 @@ export const makeMainHandImbuesInput = makeConsumeInputFactory({
 });
 export const makeOffHandImbuesInput = makeConsumeInputFactory({
 	consumesFieldName: 'offHandImbue',
-	showWhen: player => !!player.getGear().getEquippedItem(ItemSlot.ItemSlotOffHand),
+	showWhen: player => {
+		const weapon = player.getGear().getEquippedItem(ItemSlot.ItemSlotOffHand);
+		return !!weapon && isWeapon(weapon.item.weaponType);
+	},
 });

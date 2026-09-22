@@ -1,0 +1,78 @@
+{
+  "druid": {
+    "Entangling Roots": ["not-used", "Root/control damage is not implemented; the reference raid target is not modeled as rootable."],
+    "Nature's Grasp": ["not-used", "Reactive root/control spell; the DPS profile receives no triggering melee attacks."],
+    "Pounce": ["not-implemented", "Stealth opener. Prowl/opening-stealth state and stun-immune damage behavior need a dedicated implementation and check; it is not included in the Feral result."],
+    "Ravage": ["not-implemented", "Stealth opener. The Feral model has no Prowl/opening-stealth implementation; its contribution is not included."],
+    "Lacerate": ["conditional", "Implemented for Bear in sim/druid/lacerate.go; absent from the Cat/Balance sample."],
+    "Maul": ["conditional", "Implemented in sim/druid/maul.go; the sampled Feral DPS agent registers Cat abilities."],
+    "Swipe": ["conditional", "Implemented in sim/druid/swipe.go; the sampled Feral DPS agent registers Cat abilities."]
+  },
+  "hunter": {
+    "Auto Shot": ["alias", "Uses the core ranged-auto action, not spell 75 as a registered damage action."],
+    "Black Arrow": ["awaiting-availability", "Retained 3674/14296 class rows do not establish current trainer availability. Obtain a current trainer/spellbook capture and ranks before adding it."],
+    "Lacerate": ["awaiting-availability", "Retained active-spell ranks include 1299332. Confirm a teaching source; these are not the implemented Mongoose Bite Lacerating Strikes talent."],
+    "Counterattack": ["not-used", "Requires a parry. Rear-position DPS profiles receive no incoming attacks; the reactive strike is not implemented."],
+    "Scatter Shot": ["not-used", "Control shot that turns off auto-attack. Not implemented or assumed to disorient a raid boss."],
+    "Explosive Trap Effect": ["alias", "Trap child damage is recorded under placement spells 13813/14316/14317 in sim/hunter/explosive_trap.go."],
+    "Immolation Trap Effect": ["alias", "Trap child damage is recorded under the placement spells in sim/hunter/immolation_trap.go."],
+    "Demoralizing Screech": ["conditional", "Implemented in sim/hunter/pet_abilities.go; no Screech pet in the sampled profiles."],
+    "Lightning Breath": ["conditional", "Implemented in sim/hunter/pet_abilities.go; no Wind Serpent in the sampled profiles."],
+    "Scorpid Poison": ["conditional", "Implemented in sim/hunter/pet_abilities.go; no Scorpid in the sampled profiles."],
+    "Dismember": ["awaiting-pet-data", "T29: teaching records exist; verify trained family availability, damage and pet scaling. Not modeled."],
+    "Mine!": ["awaiting-pet-data", "T29: teaching records exist; verify trained family availability, damage and pet scaling. Not modeled."],
+    "Pinch": ["awaiting-pet-data", "T29: teaching records exist; verify trained family availability, damage and pet scaling. Not modeled."],
+    "Savage Rend": ["awaiting-pet-data", "T29: teaching records exist; verify trained family availability, damage and pet scaling. Not modeled."],
+    "Swipe": ["awaiting-pet-data", "T29: teaching records exist; verify trained family availability, damage and pet scaling. Not modeled."],
+    "Tendon Rip": ["awaiting-pet-data", "T29: teaching records exist; verify trained family availability, damage and pet scaling. Not modeled."],
+    "Web": ["awaiting-pet-data", "T29: teaching records exist; verify trained family availability and control/damage behavior. Not modeled."],
+    "Thunderstomp": ["awaiting-pet-data", "T29: verify currently trainable ranks and family behavior before replacing the existing pet model."],
+    "Lava Breath": ["awaiting-availability", "Retained 444680/444682 records need current trainability evidence, not inference from another game version."],
+    "Throw": ["not-used", "No thrown weapon is used by these profiles; the model's ranged auto is the equipped bow/gun/crossbow."]
+  },
+  "mage": {
+    "Blast Wave": ["conditional", "Implemented in sim/mage/blast_wave.go; the sampled builds do not select the talent."],
+    "Cone of Cold": ["not-implemented", "Short-range cone damage is not implemented. Existing Mage profiles stand at 20 yards. An in-range AoE/proximity scenario needs this ability and its talent interactions."],
+    "Frost Nova": ["not-implemented", "Short-range control/AoE damage is not implemented. A future in-range scenario must distinguish damage from boss freeze immunity."],
+    "Felfire": ["awaiting-availability", "ClassMask=0 retained 24530 record is not proof of a player ability. No current teacher or trait path is established."],
+    "Shoot": ["alias", "Wand attacks use the core Shoot action, not spell 5019 as their damage ID."]
+  },
+  "paladin": {
+    "Hammer of the Righteous": ["awaiting-availability", "T46: verify 407632's teacher and shared cooldown with Holy Strike; retained class/rune records are insufficient."],
+    "Seal of Fury": ["not-used", "Tank/threat seal, not implemented in the Ret model. Confirm current rank/teaching paths before using its retained records."]
+  },
+  "priest": {
+    "Chastise": ["not-implemented", "Dwarf-only, Humanoid-only damage/control spell. It cannot damage the Dragonkin reference target; a Humanoid scenario needs its five ranks."],
+    "Feedback": ["not-used", "Reactive racial mana-burn damage requires incoming spells, absent from the DPS encounter. Current racial availability also needs T05 verification."],
+    "Holy Nova": ["conditional", "Implemented in sim/priest/holy_nova.go at the highest learned rank when talented. Neither sampled Priest build selects it."],
+    "Mana Burn": ["not-used", "The target has no modeled mana resource. Mana burn/damage is not implemented."],
+    "Shadowguard": ["not-used", "Reactive racial damage requires incoming attacks and current racial availability evidence (T05). No trigger in the DPS encounter."],
+    "Touch of Weakness": ["not-used", "Reactive racial damage is not implemented and has no incoming-attack trigger here; confirm racial availability under T05."],
+    "Shoot": ["alias", "Wand attacks use the core Shoot action."]
+  },
+  "rogue": {
+    "Gouge": ["not-used", "Control damage is not implemented; the benchmark does not assume the boss can be incapacitated."],
+    "Kick": ["not-used", "Interrupt damage is not implemented; the encounter has no interruptible target casts."],
+    "Shoot Bow": ["alias", "Equipped ranged attacks use core Shoot action IDs, not these spellbook wrappers."],
+    "Shoot Crossbow": ["alias", "Equipped ranged attacks use core Shoot action IDs, not these spellbook wrappers."],
+    "Shoot Gun": ["alias", "Equipped ranged attacks use core Shoot action IDs, not these spellbook wrappers."],
+    "Throw": ["not-used", "No thrown-weapon attack is included in the melee DPS profiles."]
+  },
+  "warlock": {
+    "Health Funnel": ["not-used", "Pet healing and owner health transfer, not enemy damage. The recursive damage candidate detector also finds self-damage."],
+    "Hellfire": ["not-implemented", "Short-range channeled AoE/self-damage is not implemented. Existing Warlock profiles stand at 20 yards; an in-range AoE scenario needs it."],
+    "Wrack": ["conditional", "Implemented in sim/warlock/wrack.go under legacy action 11704; selected profiles do not take its talent. Current client ID is 1316697."],
+    "Shoot": ["alias", "Wand attacks use the core Shoot action."]
+  },
+  "warrior": {
+    "Intercept": ["not-used", "Movement/stun damage is not implemented. No charge-range or movement phase occurs in the fixed melee encounter."],
+    "Mocking Blow": ["not-used", "Taunt/threat attack is not implemented in the DPS agent."],
+    "Shield Bash": ["not-used", "Requires a shield and an interrupt scenario; the Warrior DPS profiles have neither."],
+    "Shield Slam": ["conditional", "Implemented in sim/warrior/shield_slam.go when talented; no sampled Warrior takes it."],
+    "Victory Rush": ["awaiting-availability", "402927 is retained in both Era and Forever skill lines. Confirm a current teaching source; the benchmark also has no preceding qualifying kill."],
+    "Shoot Bow": ["alias", "Equipped ranged attacks use core Shoot action IDs, not these spellbook wrappers."],
+    "Shoot Crossbow": ["alias", "Equipped ranged attacks use core Shoot action IDs, not these spellbook wrappers."],
+    "Shoot Gun": ["alias", "Equipped ranged attacks use core Shoot action IDs, not these spellbook wrappers."],
+    "Throw": ["not-used", "No thrown-weapon attack is included in the melee DPS profiles."]
+  }
+}

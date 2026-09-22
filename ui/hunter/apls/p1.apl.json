@@ -32,67 +32,6 @@
                   "val": {
                     "dotIsActive": {
                       "spellId": {
-                        "spellId": 1293527
-                      }
-                    }
-                  }
-                }
-              },
-              {
-                "cmp": {
-                  "op": "OpGe",
-                  "lhs": {
-                    "remainingTime": {}
-                  },
-                  "rhs": {
-                    "const": {
-                      "val": "6s"
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        "castSpell": {
-          "spellId": {
-            "spellId": 1293527
-          }
-        }
-      }
-    },
-    {
-      "action": {
-        "condition": {
-          "cmp": {
-            "op": "OpGe",
-            "lhs": {
-              "currentManaPercent": {}
-            },
-            "rhs": {
-              "const": {
-                "val": "30%"
-              }
-            }
-          }
-        },
-        "castSpell": {
-          "spellId": {
-            "spellId": 1310786
-          }
-        }
-      }
-    },
-    {
-      "action": {
-        "condition": {
-          "and": {
-            "vals": [
-              {
-                "not": {
-                  "val": {
-                    "dotIsActive": {
-                      "spellId": {
                         "spellId": 25295
                       }
                     }
@@ -126,7 +65,29 @@
       "action": {
         "castSpell": {
           "spellId": {
-            "spellId": 20903
+            "spellId": 20904
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "condition": {
+          "cmp": {
+            "op": "OpGe",
+            "lhs": {
+              "currentManaPercent": {}
+            },
+            "rhs": {
+              "const": {
+                "val": "30%"
+              }
+            }
+          }
+        },
+        "castSpell": {
+          "spellId": {
+            "spellId": 1310786
           }
         }
       }

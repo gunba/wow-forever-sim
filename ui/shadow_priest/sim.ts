@@ -115,7 +115,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecShadowPriest, {
 
 	presets: {
 		talents: Presets.BuildPresets.map(build => build.talents!),
-		rotations: Presets.BuildPresets.map(build => build.rotation!),
+		rotations: [Presets.APLP1Shadow, Presets.APLClipShadow],
 		gear: Presets.GearPresets,
 		builds: Presets.BuildPresets,
 	},

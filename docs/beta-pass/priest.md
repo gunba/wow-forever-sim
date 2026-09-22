@@ -1,5 +1,10 @@
 # Priest beta pass (17 September 2026)
 
+Subsequent integration: the four new Shadow Word: Death ranks, absent from the
+old class-mask-only export, are now implemented along with Early Demise.
+The retained rune ID 401955 is not used as their learning source.
+See [spell coverage](../spell_coverage.md) and T37 for remaining uncertainties.
+
 Beta client `1.60.1.69893` against Classic Era `1.15.9.69722`, read with `tools/data_watch/spell_client.py`, the
 talent curves with `tools/data_watch/trait_curve.mjs`, and `../beta/priest.json`.
 

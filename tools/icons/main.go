@@ -14,9 +14,14 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"flag"
 	"fmt"
+	"image"
+	_ "image/gif"
+	_ "image/jpeg"
+	_ "image/png"
 	"io"
 	"log"
 	"net/http"
@@ -52,7 +57,7 @@ func remoteUrl(localPath string) string {
 }
 
 var (
-	iconFieldRegex = regexp.MustCompile(`\\?"icon\\?":\\?"([A-Za-z0-9_\-]+)\\?"`)
+	iconFieldRegex = regexp.MustCompile(`\\?"icon\\?"\s*:\s*\\?"([A-Za-z0-9_\-]+)\\?"`)
 	uiImageRegex   = regexp.MustCompile(`WOWHEAD_IMAGES\}([A-Za-z0-9_./\-]+\.(?:jpg|png|gif))`)
 	// Icon file names the UI holds without a path (the talent tree icon tables), all large.
 	bareIconRegex   = regexp.MustCompile(`'([a-z0-9_]+)\.jpg'`)
@@ -100,6 +105,8 @@ func main() {
 
 	images.addIconFields(*dbFile)
 	inputs, _ := filepath.Glob(filepath.Join(*inputsDir, "*.csv"))
+	jsonInputs, _ := filepath.Glob(filepath.Join(*inputsDir, "*.json"))
+	inputs = append(inputs, jsonInputs...)
 	for _, input := range inputs {
 		images.addIconFields(input)
 	}
@@ -247,6 +254,9 @@ func fetch(url string, filePath string) error {
 	body, err := get(url)
 	if err != nil {
 		return err
+	}
+	if _, _, err := image.DecodeConfig(bytes.NewReader(body)); err != nil {
+		return fmt.Errorf("%s did not return a decodable image: %w", url, err)
 	}
 	if err := os.MkdirAll(filepath.Dir(filePath), 0755); err != nil {
 		return err

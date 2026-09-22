@@ -1720,6 +1720,9 @@ func GetWindfuryAP(aura *Aura, rank int32) float64 {
 }
 
 func ApplyWindfury(character *Character) *Aura {
+	if aura := character.GetAura("Windfury Buff"); aura != nil {
+		return aura
+	}
 	rank := int32(3)
 	spellId := WindfuryBuffSpellId[rank]
 	buffActionID := ActionID{SpellID: spellId}

@@ -41,6 +41,11 @@ def main():
             for item in (left, right):
                 item.pop("rotation")
                 item.pop("talentsString")
+            if choice.get("Petless"):
+                if key != "marksmanship" or player["hunter"]["options"].get("petType") not in (None, "PetNone"):
+                    raise ValueError(f"{key}: invalid petless recipe")
+                for item in (left, right):
+                    item["hunter"]["options"].pop("petType", None)
             if left != right:
                 raise ValueError(f"{key}/{row['Race']}: changed non-talent/APL input")
             if row.get("Warnings") or abs(row["Hit"]["Balance"]) > 1e-6:

@@ -81,7 +81,7 @@ export const DefaultTalents = TalentsFrost;
 ///////////////////////////////////////////////////////////////////////////
 
 export const DefaultOptions = MageOptions.create({
-	armor: ArmorType.MoltenArmor,
+	armor: ArmorType.MageArmor,
 });
 
 export const DefaultConsumes = Consumes.create({

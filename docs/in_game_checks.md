@@ -6,6 +6,33 @@ rotation. The open checks below still need measurements.
 
 ## Available early
 
+### T50 — Trainer and spellbook availability
+
+**Priority:** medium · **Access:** level 20 trainer lists; repeat at the listed learning level
+
+Capture the trainer's future-spell list and current spellbook, with spell IDs
+where possible, for Hunter Black Arrow/active Lacerate, Mage Felfire, Warrior
+Victory Rush and Paladin Hammer of the Righteous. Pet Lava Breath and other
+family teaching records belong with T29. Retained class-skill rows do not
+establish availability. Note any quest, tome, racial or talent teaching path.
+
+**Resolves:** the availability gaps in the [spell coverage inventory](spell_coverage.md).
+This is separate from acknowledged implementation gaps such as Cone of Cold
+and Hellfire; a trainer screenshot alone does not implement an ability.
+
+### T51 — Cat stealth openers
+
+**Priority:** medium · **Access:** level 20 Prowl; Pounce/Ravage at their learning levels
+
+Record whether Prowl can be applied before entering combat in Cat Form, then
+the timing of its removal, the opening ability and the first white swing.
+At later access, compare Pounce on stun-susceptible and stun-immune targets:
+does an immune stun still apply its damage? Preserve energy cost, positional
+requirements, spell rank and combo-point results.
+
+**Current model:** Prowl, Pounce and Ravage are not implemented. The Feral
+profile does not claim an opening-stealth damage contribution.
+
 ### T29 — Hunter pet inheritance and trained abilities
 
 **Priority:** high · **Access:** level 20 initially; repeat at later levels
@@ -35,6 +62,11 @@ Do not use quest-controlled NPC abilities as pet-training evidence.
 - At later access, separate Wisdom events from white swings, seal damage,
   Windfury/Reckoning and Twist of Light echoes. Test recursion and cooldowns
   rather than inferring unlimited mana from a historical proc chain.
+
+The [matched Windfury comparison](windfury.md) separates white damage and Seal
+gains. Specifically test whether Command damage can trigger the totem, whether
+Righteousness damage cannot, and which attacks consume its AP charges. A large
+combined white/Seal gain alone does not establish a duplicate buff.
 
 ### T32 — Inner Focus and periodic critical strikes
 
@@ -557,7 +589,7 @@ permission for melee during spellcasting has been removed.
 | T28 | Windfury Weapon and Totem trigger rules | Separate weapon and totem procs, log proc spacing and extra-attack outcomes, and compare attacks with/without the weapon imbue while receiving the totem. The client states 20% weapon chance and excludes the matching totem benefit; the inherited 1.5-second ICD and extra-attack resolution still need measurement. | Windfury Weapon/Totem, beyond level 20 |
 | T31 | Hunter melee proc and crit scope | Compare Predator's Edge normal/critical autos and specials separately. For Expose Prey, distinguish melee/ranged attacks, traps, misses, refreshes and Mongoose cooldown state on a marked target. | Relevant deeper Hunter talents |
 | T33 | Shadowform and Priest buff access | Confirm Shadowform's mana/GCD and Holy damage, shield, heal and Holy Nova permissions. Record Divine Spirit's trainer acquisition after talent removal rather than inferring availability from a database skill entry. | Shadowform at level 40; relevant Divine Spirit ranks |
-| T37 | Shadow Word: Death damage and backlash | Record hits/crits above and below 20% target health, surviving versus killing blows, and the caster's health loss. Client ranks exist, but the script effect with value 150 and backlash interaction need interpretation before a complete implementation. | Shadow Word: Death, level 32 or later |
+| T37 | Shadow Word: Death damage and backlash | Record hits/crits above and below 20% target health, surviving versus killing blows, and misses/absorbs. Repeat with damage-increase/reduction buffs to check backlash modifiers. The implemented client values are four ranks, .429 SP, a shared 15-second cooldown and 10% maximum-health backlash; script value 150 is unresolved and no extra execute multiplier is assumed. Verify damage-range rounding/level growth too. DPS-only fights record self-damage but do not model healer survival constraints. | Shadow Word: Death, level 32 or later |
 | T38 | Mutilate's two-hand resolution | With distinguishable dagger damage, capture each hand's normal and critical hits across controlled AP values. Repeat with Cold Blood and with avoided main-hand strikes. Check whether Cold Blood guarantees both crits and whether the off-hand penalty also reduces the flat bonus. | Mutilate and Cold Blood, beyond level 20 |
 | T39 | Demonic Brand damage and proc rules | Change Fire and Shadow SP separately; compare Imp Firebolt, Succubus melee/Lash, Voidwalker and Felhunter attacks. Record brand spell IDs, target, charges, crits/misses and threat if measurable. Change SP after applying the brand to distinguish snapshotting from power at hit time and owner from pet scaling. Current child formulas are 65–68 at level 60 plus 7.8% matching-school power; power attribution, other-pet schools, crit behavior and 3× threat remain provisional. | Demonic Brand, normally level 25 or later |
 | T41 | Nature's Grace timing | Separate Wrath cast completion from projectile impact, recording when the haste aura appears. Check Moonfire/Swarm/Faerie Fire GCDs and whether a second crit refreshes the three-second duration. The model applies separate 10% cast-haste and GCD effects but retains Wrath's cast-completion proc timing. | Nature's Grace, normally level 30 |

@@ -75,7 +75,7 @@ export const DefaultAPL = APLP1;
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsP1 = PresetUtils.makePresetTalents('Marksmanship 17/34/0', SavedTalents.create({ talentsString: '53200005011-0053552001520051' }));
+export const TalentsP1 = PresetUtils.makePresetTalents('Marksmanship 5/35/11', SavedTalents.create({ talentsString: '5-0050552011523051-50005001' }));
 
 export const TalentsBeastMastery = PresetUtils.makePresetTalents(
 	'Beast Mastery 31/20/0',
@@ -94,13 +94,15 @@ export const DefaultTalents = TalentsP1;
 //                                 Options
 ///////////////////////////////////////////////////////////////////////////
 
-export const DefaultOptions = HunterOptions.create({
+export const PetOptions = HunterOptions.create({
 	ammo: Ammo.ThoriumHeadedArrow,
 	quiverBonus: Hunter_Options_QuiverBonus.Speed15,
 	petAttackSpeed: PetAttackSpeed.OneTwo,
 	petType: PetType.Cat,
 	petUptime: 1,
 });
+
+export const DefaultOptions = HunterOptions.create({ ...PetOptions, petType: PetType.PetNone });
 
 export const DefaultConsumes = Consumes.create({
 	agilityElixir: AgilityElixir.ElixirOfTheMongoose,
@@ -170,9 +172,10 @@ export const BuildPresets = [
 		gear: GearBeastMastery,
 		talents: TalentsBeastMastery,
 		rotation: APLBeastMastery,
-		options: DefaultOptions,
+		options: PetOptions,
 		distance: 12,
 	}),
 	PresetUtils.makePresetBuild('Marksmanship', { gear: GearMarksmanship, talents: TalentsP1, rotation: APLP1, options: DefaultOptions, distance: 12 }),
-	PresetUtils.makePresetBuild('Survival', { gear: GearSurvival, talents: TalentsSurvival, rotation: APLSurvival, options: DefaultOptions, distance: 5 }),
+	PresetUtils.makePresetBuild('Survival', { gear: GearSurvival, talents: TalentsSurvival, rotation: APLSurvival, options: PetOptions, distance: 5 }),
+	PresetUtils.makePresetBuild('Pet/Melee', { gear: GearSurvival, talents: TalentsPetMelee, rotation: APLPetMelee, options: PetOptions, distance: 5 }),
 ];

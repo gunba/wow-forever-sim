@@ -256,6 +256,9 @@ func main() {
 	for id, icon := range foreverIcons.SpellIcons {
 		db.SpellIcons[id] = icon
 	}
+	for id, icon := range foreverIcons.ItemIcons {
+		db.ItemIcons[id] = icon
+	}
 	db.WriteBinaryAndJson(fmt.Sprintf("%s/db.bin", dbDir), fmt.Sprintf("%s/db.json", dbDir))
 }
 

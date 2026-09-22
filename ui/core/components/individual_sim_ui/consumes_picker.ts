@@ -64,7 +64,9 @@ export class ConsumesPicker extends Component {
 		const row = this.rootElem.appendChild(fragment.children[0] as HTMLElement);
 		const flasksElem = this.rootElem.querySelector('.consumes-flasks') as HTMLElement;
 
-		const flasksOptions = ConsumablesInputs.makeFlasksInput(relevantStatOptions(ConsumablesInputs.FLASKS_CONFIG, this.simUI));
+		// Spell power can affect poisons, item procs and hybrid attacks even when
+		// the class's default stat display omits it. Keep legal flask choices visible.
+		const flasksOptions = ConsumablesInputs.makeFlasksInput(ConsumablesInputs.FLASKS_CONFIG);
 
 		const pickers = [buildIconInput(flasksElem, this.simUI.player, flasksOptions)];
 
@@ -199,19 +201,19 @@ export class ConsumesPicker extends Component {
 		const spellsCnsumesElem = this.rootElem.querySelector('.consumes-spells') as HTMLElement;
 
 		const spBuffOptions = ConsumablesInputs.makeSpellPowerConsumeInput(
-			relevantStatOptions(ConsumablesInputs.SPELL_POWER_CONFIG, this.simUI),
+			ConsumablesInputs.SPELL_POWER_CONFIG,
 			'Spell Damage',
 		);
 		const fireBuffOptions = ConsumablesInputs.makeFirePowerConsumeInput(
-			relevantStatOptions(ConsumablesInputs.FIRE_POWER_CONFIG, this.simUI),
+			ConsumablesInputs.FIRE_POWER_CONFIG,
 			'Fire Damage',
 		);
 		const frostBuffOptions = ConsumablesInputs.makeFrostPowerConsumeInput(
-			relevantStatOptions(ConsumablesInputs.FROST_POWER_CONFIG, this.simUI),
+			ConsumablesInputs.FROST_POWER_CONFIG,
 			'Frost Damage',
 		);
 		const shadowBuffOptions = ConsumablesInputs.makeShadowPowerConsumeInput(
-			relevantStatOptions(ConsumablesInputs.SHADOW_POWER_CONFIG, this.simUI),
+			ConsumablesInputs.SHADOW_POWER_CONFIG,
 			'Shadow Damage',
 		);
 		const mp5BuffOptions = ConsumablesInputs.makeMp5ConsumeInput(relevantStatOptions(ConsumablesInputs.MP5_CONFIG, this.simUI), 'Mana Regen');

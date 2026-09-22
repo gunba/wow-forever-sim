@@ -28,6 +28,7 @@ const (
 	SpellCode_PriestSmite
 	SpellCode_PriestStarshards
 	SpellCode_PriestVampiricTouch
+	SpellCode_PriestShadowWordDeath
 )
 
 type Priest struct {
@@ -53,6 +54,7 @@ type Priest struct {
 	Renew           []*core.Spell
 	Shadowform      *core.Spell
 	ShadowWordPain  []*core.Spell
+	ShadowWordDeath []*core.Spell
 	Smite           []*core.Spell
 	Starshards      [][]*core.Spell
 	VampiricEmbrace *core.Spell
@@ -105,6 +107,9 @@ func (priest *Priest) Initialize() {
 	priest.registerMindBlast()
 	priest.registerMindFlay()
 	priest.registerShadowWordPainSpell()
+	if priest.Env.IsForever() {
+		priest.registerShadowWordDeath()
+	}
 	// Devouring Plague is an Undead racial in Classic. The Forever beta client teaches it to
 	// priests of every race (SkillLineAbility race mask -1), so it is baseline here.
 	if priest.Env.IsForever() || priest.GetCharacter().Race == proto.Race_RaceUndead {

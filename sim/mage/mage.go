@@ -154,10 +154,13 @@ func NewMage(character *core.Character, options *proto.Player) *Mage {
 	mage.AddStatDependency(stats.Intellect, stats.SpellCrit, core.CritPerIntAtLevel[mage.Class]*core.SpellCritRatingPerCritChance)
 
 	switch mage.Options.Armor {
+	case proto.Mage_Options_NoArmor:
 	case proto.Mage_Options_IceArmor:
 		mage.applyFrostIceArmor()
 	case proto.Mage_Options_MageArmor:
 		mage.applyMageArmor()
+	default:
+		panic("unsupported Mage armor selection; choose No Armor, Ice Armor, or Mage Armor")
 	}
 
 	// Set mana regen to 12.5 + Spirit/4 each 2s tick

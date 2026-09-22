@@ -148,6 +148,7 @@ func TestForeverProjectileSpeeds(t *testing.T) {
 
 func TestHunterPetBiteDamageRange(t *testing.T) {
 	req := racialFixture("marksmanship", proto.Race_RaceOrc)
+	req.Raid.Parties[0].Players[0].GetHunter().Options.PetType = proto.Hunter_Options_Cat
 	req.Raid.Parties[0].Players[0].Rotation = &proto.APLRotation{}
 	sim := core.NewSim(req, simsignals.Signals{})
 	sim.Options.Interactive = true

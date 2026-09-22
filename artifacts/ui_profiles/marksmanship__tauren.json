@@ -139,25 +139,11 @@
     "bonusStats": {
       "stats": [
         0,
-        -4.477927570711074,
+        -0.40708432461009636,
         0,
-        -1.2008987575997883,
+        -0.10917261432725311,
         0,
-        -2.3610890827385664,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1.0999999999999996,
-        -0.1424795136135342,
-        0,
-        0,
-        -2.157546920433518,
-        1.0999999999999996,
-        -0.1424795136135342,
+        -0.21464446206714172,
         0,
         0,
         0,
@@ -165,7 +151,21 @@
         0,
         0,
         0,
-        -2.605339677504625,
+        0.09999999999999964,
+        -0.012952683055775793,
+        0,
+        0,
+        -0.19614062913031916,
+        0.09999999999999964,
+        -0.012952683055775793,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -0.2368490615913288,
         0,
         0,
         0,
@@ -190,7 +190,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "53200005011-0053552001520051",
+    "talentsString": "5-0050552011523051-50005001",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
@@ -214,67 +214,6 @@
         {
           "action": {
             "autocastOtherCooldowns": {}
-          }
-        },
-        {
-          "action": {
-            "condition": {
-              "and": {
-                "vals": [
-                  {
-                    "not": {
-                      "val": {
-                        "dotIsActive": {
-                          "spellId": {
-                            "spellId": 1293527
-                          }
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "cmp": {
-                      "op": "OpGe",
-                      "lhs": {
-                        "remainingTime": {}
-                      },
-                      "rhs": {
-                        "const": {
-                          "val": "6s"
-                        }
-                      }
-                    }
-                  }
-                ]
-              }
-            },
-            "castSpell": {
-              "spellId": {
-                "spellId": 1293527
-              }
-            }
-          }
-        },
-        {
-          "action": {
-            "condition": {
-              "cmp": {
-                "op": "OpGe",
-                "lhs": {
-                  "currentManaPercent": {}
-                },
-                "rhs": {
-                  "const": {
-                    "val": "30%"
-                  }
-                }
-              }
-            },
-            "castSpell": {
-              "spellId": {
-                "spellId": 1310786
-              }
-            }
           }
         },
         {
@@ -320,7 +259,29 @@
           "action": {
             "castSpell": {
               "spellId": {
-                "spellId": 20903
+                "spellId": 20904
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpGe",
+                "lhs": {
+                  "currentManaPercent": {}
+                },
+                "rhs": {
+                  "const": {
+                    "val": "30%"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 1310786
               }
             }
           }
@@ -354,7 +315,6 @@
       "options": {
         "ammo": "ThoriumHeadedArrow",
         "quiverBonus": "Speed15",
-        "petType": "Cat",
         "petUptime": 1,
         "petAttackSpeed": "OneTwo"
       }
@@ -368,6 +328,7 @@
     "targets": [
       {
         "level": 63,
+        "mobType": "MobTypeDragonkin",
         "stats": [
           0,
           0,

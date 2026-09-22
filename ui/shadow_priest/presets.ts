@@ -20,6 +20,7 @@ import {
 import { ShadowPriest_Options as Options } from '../core/proto/priest.js';
 import { SavedTalents } from '../core/proto/ui.js';
 import P1APL from './apls/p1.apl.json';
+import ClipAPL from './apls/clip.apl.json';
 import GearShadowJSON from './gear_sets/forever_shadow.gear.json';
 
 // Preset options for this spec.
@@ -40,9 +41,10 @@ export const DefaultGear = GearShadow;
 ///////////////////////////////////////////////////////////////////////////
 
 export const APLP1Shadow = PresetUtils.makePresetAPLRotation('Shadow', P1APL);
+export const APLClipShadow = PresetUtils.makePresetAPLRotation('Shadow — two-tick clipping', ClipAPL);
 
 export const APLPresets = {
-	[ClassicPhase.Phase1]: [APLP1Shadow],
+	[ClassicPhase.Phase1]: [APLP1Shadow, APLClipShadow],
 };
 
 export const DefaultAPL = APLP1Shadow;

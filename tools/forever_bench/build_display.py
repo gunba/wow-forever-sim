@@ -33,8 +33,9 @@ BUILDS = [
 ]
 
 BUILD_CAVEATS = {
-    "pet_melee": ["Hawk damage uses an approximate guardian/pet model. Its advantage over the revised Survival rotation is small."],
-    "marksmanship": ["The Hawk/Sniper build depends on the approximate Hawk guardian and pet-inheritance model."],
+    "pet_melee": ["Hawk damage uses an approximate guardian/pet model. Tracking talents affect its comparison with Survival on different creature types."],
+    "marksmanship": ["Lone Wolf requires no active pet. Improved Tracking assumes tracking matches the Dragonkin reference target."],
+    "shadow": ["Death's script value 150 and backlash interactions remain unverified; no extra execute multiplier is inferred. Self-damage is recorded without healer survival constraints."],
     "arcane_frost": ["Uses an assumed Ice Lance coefficient and unresolved Fingers of Frost, Missile Barrage and Clearcasting timing."],
     "fury_2h": ["Level-60 rage generation remains unverified; this row uses the current Warrior rage model."],
     "retribution": ["Includes lower-rank seals and Consecration; their server scaling and proc interactions still need confirmation."],

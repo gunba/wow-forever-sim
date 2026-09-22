@@ -31,6 +31,8 @@ func (hunter *Hunter) ApplyTalents() {
 	}
 
 	if hunter.Talents.ImprovedTracking > 0 {
+		// Client 24293 modifies tracking's second effect (damage aura 168).
+		// It does not retain the old slaying talents' separate crit-damage aura.
 		// Everything a raid encounter can be is trackable apart from Mechanical.
 		multiplier := 1 + 0.01*float64(hunter.Talents.ImprovedTracking)
 		hunter.Env.RegisterPostFinalizeEffect(func() {
@@ -41,7 +43,6 @@ func (hunter *Hunter) ApplyTalents() {
 					proto.MobType_MobTypeUndead:
 					for _, at := range hunter.AttackTables[t.UnitIndex] {
 						at.DamageDealtMultiplier *= multiplier
-						at.CritMultiplier *= multiplier
 					}
 				}
 			}

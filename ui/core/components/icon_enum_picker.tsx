@@ -228,11 +228,19 @@ export class IconEnumPicker<ModObject, T> extends Input<ModObject, T> {
 			if (valueConfig.text != undefined) {
 				this.buttonText.style.display = 'block';
 				this.buttonText.textContent = valueConfig.text;
+			} else if (this.config.equals(newValue, this.config.zeroValue) && !valueConfig.actionId && !valueConfig.iconUrl && !valueConfig.color) {
+				this.buttonText.style.display = 'block';
+				this.buttonText.textContent = 'None';
 			}
 		} else if (this.config.backupIconUrl) {
 			const backupId = this.config.backupIconUrl(this.currentValue);
 			this.setActionImage(this.buttonElem, backupId);
 			this.setActive(false);
+		} else {
+			this.buttonElem.style.backgroundImage = '';
+			this.buttonElem.removeAttribute('href');
+			this.buttonText.style.display = 'block';
+			this.buttonText.textContent = 'Invalid';
 		}
 	}
 

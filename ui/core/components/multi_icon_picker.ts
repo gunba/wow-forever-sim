@@ -137,6 +137,7 @@ export class MultiIconPicker<ModObject> extends Component {
 
 	private updateButtonImage() {
 		this.currentValue = this.getMaxValue();
+		this.buttonElem.textContent = '';
 
 		if (this.currentValue) {
 			this.buttonElem.classList.add('active');
@@ -151,6 +152,7 @@ export class MultiIconPicker<ModObject> extends Component {
 				this.config.categoryId.fillAndSet(this.buttonElem, false, true);
 			} else {
 				this.buttonElem.style.backgroundImage = '';
+				this.buttonElem.textContent = 'None';
 			}
 			this.buttonElem.removeAttribute('href');
 		}

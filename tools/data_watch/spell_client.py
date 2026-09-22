@@ -37,6 +37,9 @@ CACHE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.cache')
 TABLES = ['SpellName', 'Spell', 'SpellEffect', 'SpellMisc', 'SpellCastTimes', 'SpellPower', 'SpellCooldowns',
           'SpellDuration', 'SpellLevels', 'SpellRadius']
 CLASS_MASK = dict(warrior=1, paladin=2, hunter=4, rogue=8, priest=16, shaman=64, mage=128, warlock=256, druid=1024)
+CLASS_SKILLS = dict(warrior={26, 256, 257}, paladin={594, 267, 184}, hunter={50, 163, 51},
+                   rogue={38, 39, 253}, priest={56, 78, 613}, shaman={375, 373, 374},
+                   mage={6, 8, 237}, warlock={593, 355, 354}, druid={573, 574, 134})
 POWER = {0: 'mana', 1: 'rage', 2: 'focus', 3: 'energy'}
 
 
@@ -83,8 +86,12 @@ class Client:
 		self.levels = {int(r['SpellID']): r for r in t['SpellLevels']}
 
 	def learned(self, class_name):
-		mask = CLASS_MASK[class_name.lower()]
-		return sorted({int(r['Spell']) for r in table(self.build, 'SkillLineAbility') if int(r['ClassMask'] or 0) & mask})
+		name = class_name.lower()
+		mask, skills = CLASS_MASK[name], CLASS_SKILLS[name]
+		# New Death ranks have ClassMask=0 but are in Priest's Shadow skill line.
+		# Both paths are discovery evidence; neither proves trainer availability.
+		return sorted({int(r['Spell']) for r in table(self.build, 'SkillLineAbility')
+		               if int(r['ClassMask'] or 0) & mask or int(r['SkillLine']) in skills})
 
 	def ids(self, name):
 		return sorted(i for i, n in self.names.items() if n.lower() == name.lower())
@@ -145,7 +152,7 @@ def show(s):
 def main():
 	parser = argparse.ArgumentParser(description='Spell numbers from a client build.')
 	parser.add_argument('spell', nargs='?', help='spell id or exact spell name')
-	parser.add_argument('--learned', metavar='CLASS', help='list every spell the class trains')
+	parser.add_argument('--learned', metavar='CLASS', help='list class-associated candidate spells, including retained records')
 	parser.add_argument('--era', action='store_true', help=f'read Classic Era {ERA} instead of Forever {FOREVER}')
 	parser.add_argument('--build')
 	parser.add_argument('--json', action='store_true')

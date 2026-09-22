@@ -122,7 +122,6 @@
       "strengthBuff": "JujuPower",
       "attackPowerBuff": "JujuMight",
       "mainHandImbue": "Windfury",
-      "offHandImbue": "ElementalSharpeningStone",
       "defaultPotion": "MightyRagePotion",
       "defaultConjured": "ConjuredDemonicRune",
       "dragonBreathChili": true,
@@ -376,6 +375,7 @@
     "targets": [
       {
         "level": 63,
+        "mobType": "MobTypeDragonkin",
         "stats": [
           0,
           0,

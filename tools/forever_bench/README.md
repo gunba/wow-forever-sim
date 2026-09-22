@@ -6,6 +6,7 @@ record availability and remaining interaction questions.
 Profiles use the [crafted/dungeon catalog](../../docs/forever_gear_data.md),
 paid shared-hit normalization, and the role's complete
 [Forever Tier 1 bonuses](../../docs/forever_tier1.md).
+The reference target is a level-63 Dragonkin with 3,731 starting armor.
 They are tested builds, not a claim of globally optimal talents, rotations or gear.
 The separate Pet/Melee, Arcane–Frost and 2H Bloodthirst rows retain their
 Survival, Frost and Arms equipment respectively.
@@ -16,6 +17,7 @@ The selected recipes and matched validation requests/results are archived in
 
 ```sh
 python3 tools/forever_bench/apply_research_profiles.py --output /tmp/forever-profiles.json
+python3 tools/forever_bench/research_summary.py
 python3 tools/forever_bench/run_matrix.py --binary /path/to/forever-bench \
   --profiles /tmp/forever-profiles.json --output /tmp/forever-matrix --workers 24
 ```

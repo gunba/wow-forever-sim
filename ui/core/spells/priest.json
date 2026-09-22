@@ -1,4 +1,46 @@
 {
+	"1310076": {
+		"ability": "Early Demise",
+		"file": "sim/priest/talents.go",
+		"source": "forever",
+		"note": "Client trait 142600 / spell 1310076: Death gains 15/30 percentage points of crit at or below 20% target health. Applies to all learned Death ranks, not backlash, and resets each iteration.",
+		"tooltip": "Early Demise\nIncreases Shadow Word: Death's critical strike chance on targets at or below 20% health by 15/30%."
+	},
+	"1309598": {
+		"ability": "Shadow Word: Death Backlash",
+		"file": "sim/priest/shadow_word_death.go",
+		"source": "forever",
+		"note": "The current parent spells specify 10% maximum-health backlash. This child record's legacy reflection tooltip is not used as the damage formula. Modifier, avoidance and script interactions remain T37 checks; self-target damage is excluded from DPS.",
+		"tooltip": "Shadow Word: Death Backlash\n10% maximum health after a surviving hit."
+	},
+	"1309595": {
+		"ability": "Shadow Word: Death",
+		"file": "sim/priest/shadow_word_death.go",
+		"source": "forever",
+		"note": "Client 1.60.1.69893 rank 1, learned at 32: 175 mana, instant, shared 15-second cooldown, .429 SP coefficient and 10% maximum-health backlash on a surviving hit. Script effect value 150 remains unresolved; no extra execute multiplier is inferred.",
+		"tooltip": "Shadow Word: Death — Rank 1\n175 Mana\nInstant\n15 sec cooldown"
+	},
+	"1309633": {
+		"ability": "Shadow Word: Death",
+		"file": "sim/priest/shadow_word_death.go",
+		"source": "forever",
+		"note": "Client rank 2, learned at 40: 205 mana, .429 SP coefficient, shared 15-second cooldown and 10% maximum-health backlash. Unresolved script and backlash interactions are listed under T37.",
+		"tooltip": "Shadow Word: Death — Rank 2\n205 Mana\nInstant\n15 sec cooldown"
+	},
+	"1309635": {
+		"ability": "Shadow Word: Death",
+		"file": "sim/priest/shadow_word_death.go",
+		"source": "forever",
+		"note": "Client rank 3, learned at 48: 250 mana, .429 SP coefficient, shared 15-second cooldown and 10% maximum-health backlash. Unresolved script and backlash interactions are listed under T37.",
+		"tooltip": "Shadow Word: Death — Rank 3\n250 Mana\nInstant\n15 sec cooldown"
+	},
+	"1309636": {
+		"ability": "Shadow Word: Death",
+		"file": "sim/priest/shadow_word_death.go",
+		"source": "forever",
+		"note": "Client rank 4, learned at 56: base 448 plus 2.5 per level through 61, variance .0605, .429 SP coefficient, 340 mana and shared 15-second cooldown. Backlash is 10% maximum health, not reflected damage. No execute multiplier is inferred from unresolved script value 150. DPS-only encounters record self-damage but do not model healer survival constraints.",
+		"tooltip": "Shadow Word: Death — Rank 4\n340 Mana\nInstant\n15 sec cooldown\nBacklash: 10% maximum health if the target survives."
+	},
 	"1004": {
 		"ability": "Smite",
 		"file": "sim/priest/smite.go",

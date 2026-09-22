@@ -60,7 +60,7 @@ type resultRow struct {
 }
 
 func encounter() *proto.Encounter {
-	mob := proto.MobType_MobTypeUnknown
+	mob := proto.MobType_MobTypeDragonkin
 	if *demon {
 		mob = proto.MobType_MobTypeDemon
 	}
@@ -249,6 +249,7 @@ func main() {
 		return
 	}
 	var rows []resultRow
+	var spellRows []registeredSpellInventory
 	var savedPlayers map[string]json.RawMessage
 	if *baselineResults != "" {
 		if *playerOverride != "" || *talentsOverride != "" || *aplOverride != "" || *gearOverride != "" || *optimize {
@@ -301,6 +302,10 @@ func main() {
 			if *refreshEnchants {
 				prepareGearEnchants(b, p)
 			}
+			if *spellInventory {
+				spellRows = append(spellRows, inventorySpells(b, p))
+				continue
+			}
 			if *searchGear {
 				p = optimizeGear(b, p)
 			}
@@ -314,6 +319,10 @@ func main() {
 			fmt.Printf("%-15s %-10s %8.2f DPS SE %.2f OOM %.2fs hit %.2f/%.2f talents %s warnings %d\n",
 				b.Name, r.Race, r.DPS, r.StandardError, r.OOMSeconds, r.Hit.MeleeFinal, r.Hit.SpellFinal, r.Talents, len(r.Warnings))
 		}
+	}
+	if *spellInventory {
+		writeSpellInventory(spellRows)
+		return
 	}
 	if len(rows) == 0 {
 		panic("no matching races")

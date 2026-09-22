@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
+	"image"
 	"os"
 	"path/filepath"
 	"strings"
@@ -26,8 +28,11 @@ func TestDatabaseIconsAreBundled(t *testing.T) {
 	for kind, rows := range map[string][]row{"items": db.Items, "itemIcons": db.ItemIcons, "spellIcons": db.SpellIcons} {
 		for _, item := range rows {
 			path := filepath.Join("../../assets/img/wowhead/icons/large", strings.ToLower(item.Icon)+".jpg")
-			if _, err := os.Stat(path); err != nil || item.Icon == "" {
+			data, err := os.ReadFile(path)
+			if err != nil || item.Icon == "" {
 				t.Errorf("%s %d: missing bundled icon %q; refresh with go run ./tools/icons", kind, item.ID, item.Icon)
+			} else if _, _, err := image.DecodeConfig(bytes.NewReader(data)); err != nil {
+				t.Errorf("%s %d: invalid icon %q: %v", kind, item.ID, item.Icon, err)
 			}
 		}
 	}
