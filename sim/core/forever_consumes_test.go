@@ -31,3 +31,37 @@ func TestForeverFoodStats(t *testing.T) {
 		}
 	}
 }
+
+func TestOffHandImbuesRequireWeapon(t *testing.T) {
+	for _, slot := range []struct {
+		name  string
+		item  Item
+		valid bool
+	}{
+		{"empty", Item{}, false},
+		{"shield", Item{ID: 2, WeaponType: proto.WeaponType_WeaponTypeShield}, false},
+		{"frill", Item{ID: 3, WeaponType: proto.WeaponType_WeaponTypeOffHand}, false},
+		{"weapon", Item{ID: 4, WeaponType: proto.WeaponType_WeaponTypeDagger}, true},
+	} {
+		for _, imbue := range []struct {
+			value proto.WeaponImbue
+			bonus stats.Stats
+		}{
+			{proto.WeaponImbue_ElementalSharpeningStone, stats.Stats{stats.MeleeCrit: 2 * CritRatingPerCritChance}},
+			{proto.WeaponImbue_BrilliantWizardOil, stats.Stats{stats.SpellPower: 36, stats.SpellCrit: SpellCritRatingPerCritChance}},
+		} {
+			t.Run(slot.name+"/"+imbue.value.String(), func(t *testing.T) {
+				c := &Character{Unit: Unit{PseudoStats: stats.NewPseudoStats()}}
+				c.Equipment[proto.ItemSlot_ItemSlotOffHand] = slot.item
+				applyWeaponImbueConsumes(c, &proto.Consumes{OffHandImbue: imbue.value})
+				want := stats.Stats{}
+				if slot.valid {
+					want = imbue.bonus
+				}
+				if got := c.GetStats(); got != want {
+					t.Fatalf("off-hand imbue stats = %v, want %v", got, want)
+				}
+			})
+		}
+	}
+}

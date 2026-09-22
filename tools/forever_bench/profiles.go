@@ -197,6 +197,9 @@ func (b build) consumes() *proto.Consumes {
 		c.DefaultPotion = proto.Potions_MightyRagePotion
 		c.MainHandImbue, c.OffHandImbue = proto.WeaponImbue_Windfury, proto.WeaponImbue_ElementalSharpeningStone
 		c.DragonBreathChili, c.SapperExplosive = true, proto.SapperExplosive_SapperGoblinSapper
+		if b.Key == "arms" {
+			c.OffHandImbue = proto.WeaponImbue_WeaponImbueUnknown
+		}
 	}
 	return c
 }
