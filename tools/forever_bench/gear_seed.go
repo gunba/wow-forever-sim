@@ -16,6 +16,7 @@ import (
 
 // Initial ranking only. Final choices must be compared in the five-minute sim.
 func seedScore(b build, item core.Item, slot int) float64 {
+	b.Key = b.modelKey()
 	s := item.Stats
 	// Catalog rating is stored once, in either legacy field. EquipStats unifies
 	// their sum; mirroring belongs to the engine, not to the catalog.
@@ -95,6 +96,7 @@ func seedScore(b build, item core.Item, slot int) float64 {
 }
 
 func seedEquipment(b build, p *proto.Player) error {
+	b.Key = b.modelKey()
 	original := googleProto.Clone(p.Equipment).(*proto.EquipmentSpec)
 	p.Equipment = &proto.EquipmentSpec{Items: make([]*proto.ItemSpec, 17)}
 	for slot := range p.Equipment.Items {
@@ -188,7 +190,7 @@ func writeSeedGear() {
 		if err != nil {
 			panic(err)
 		}
-		path := filepath.Join("ui", b.Dir, "gear_sets", "forever_"+b.Key+".gear.json")
+		path := filepath.Join("ui", b.Dir, "gear_sets", b.Gear+".gear.json")
 		if err := os.WriteFile(path, append(data, '\n'), 0644); err != nil {
 			panic(err)
 		}

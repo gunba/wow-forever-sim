@@ -5,6 +5,8 @@ import sys
 import tempfile
 import unittest
 
+from build_display import expected_roster
+
 
 class BuildReviewTests(unittest.TestCase):
     def test_current_results_do_not_claim_historical_paired_gains(self):
@@ -23,4 +25,4 @@ class BuildReviewTests(unittest.TestCase):
         self.assertIn("earlier mechanics revision", text)
         races = {row["Race"] for row in json.loads(results.read_text())["Results"]}
         rows = [line for line in text.splitlines() if any(line.startswith(f"| {race} |") for race in races)]
-        self.assertEqual(len(rows), 147)
+        self.assertEqual(len(rows), len(expected_roster()))

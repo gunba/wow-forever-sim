@@ -4,7 +4,8 @@ import { chromium } from 'playwright';
 
 const base = process.env.SITE_URL || 'http://localhost:8080/classic/';
 const bundle = JSON.parse(readFileSync('ui/core/forever_ranked_profiles.json', 'utf8'));
-assert.equal(bundle.profiles.length, 147, 'web defaults must cover the complete roster');
+const results = JSON.parse(readFileSync('artifacts/forever_dps_5min.json', 'utf8')).Results;
+assert.equal(bundle.profiles.length, results.length, 'web defaults must cover the complete roster');
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined });
 try {
 	for (const [route, id] of [
@@ -14,6 +15,9 @@ try {
 		['balance_druid', 'balance__tauren'],
 		['enhancement_shaman', 'enhancement__dwarf'],
 		['hunter', 'marksmanship__orc'],
+		['hunter', 'pet_melee__orc'],
+		['mage', 'arcane_frost__gnome'],
+		['warrior', 'fury_2h__human'],
 	]) {
 		const profile = bundle.profiles.find(profile => profile.id === id);
 		assert.ok(profile, `missing ${id}`);
@@ -31,11 +35,23 @@ try {
 
 		await page.getByLabel('Ranked build', { exact: true }).selectOption(id);
 		await page.getByRole('button', { name: 'Load build', exact: true }).click();
+		for (const caveat of profile.caveats) {
+			assert.ok(await page.getByText(caveat, { exact: false }).isVisible(), `${id}: missing model caveat`);
+		}
 		const stored = await page.evaluate(key => JSON.parse(localStorage.getItem(key)), storageKey);
 		const expected = profile.settings;
-		for (const field of ['equipment', 'race', 'talentsString', 'rotation', 'consumes', 'buffs']) {
+		for (const field of ['equipment', 'race', 'talentsString', 'rotation', 'buffs']) {
 			assert.deepEqual(stored.player[field], expected.player[field], `${id}: ${field}`);
 		}
+		const actualConsumes = { ...stored.player.consumes };
+		const expectedConsumes = { ...expected.player.consumes };
+		if (!expected.player.equipment.items[15].id) {
+			// The picker may clear a saved imbue for an empty off-hand.
+			// The native engine also ignores it when no off-hand is equipped.
+			delete actualConsumes.offHandImbue;
+			delete expectedConsumes.offHandImbue;
+		}
+		assert.deepEqual(actualConsumes, expectedConsumes, `${id}: active consumes`);
 		assert.deepEqual(stored.player.bonusStats.stats, expected.player.bonusStats.stats, `${id}: paid hit`);
 		assert.deepEqual(stored.raidBuffs, expected.raidBuffs);
 		assert.deepEqual(stored.partyBuffs, expected.partyBuffs);

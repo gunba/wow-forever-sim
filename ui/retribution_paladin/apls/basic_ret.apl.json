@@ -5,8 +5,7 @@
       "action": {
         "castSpell": {
           "spellId": {
-            "spellId": 20920,
-            "rank": 5
+            "spellId": 20919
           }
         }
       },
@@ -27,21 +26,13 @@
       "action": {
         "castSpell": {
           "spellId": {
-            "spellId": 10333,
-            "rank": 8
+            "spellId": 10333
           }
         }
       }
     },
     {
       "action": {
-        "condition": {
-          "spellCanCast": {
-            "spellId": {
-              "spellId": 20271
-            }
-          }
-        },
         "castSpell": {
           "spellId": {
             "spellId": 20271
@@ -59,15 +50,14 @@
             },
             "rhs": {
               "const": {
-                "val": "1"
+                "val": "1s"
               }
             }
           }
         },
         "castSpell": {
           "spellId": {
-            "spellId": 20920,
-            "rank": 5
+            "spellId": 20919
           }
         }
       }
@@ -104,8 +94,7 @@
               {
                 "auraIsActive": {
                   "auraId": {
-                    "spellId": 20920,
-                    "rank": 5
+                    "spellId": 20919
                   }
                 }
               }
@@ -114,8 +103,7 @@
         },
         "castSpell": {
           "spellId": {
-            "spellId": 20293,
-            "rank": 8
+            "spellId": 20293
           }
         }
       }
@@ -152,8 +140,7 @@
               {
                 "auraIsActive": {
                   "auraId": {
-                    "spellId": 20293,
-                    "rank": 8
+                    "spellId": 20293
                   }
                 }
               }
@@ -162,8 +149,7 @@
         },
         "castSpell": {
           "spellId": {
-            "spellId": 20920,
-            "rank": 5
+            "spellId": 20919
           }
         }
       }
@@ -172,8 +158,29 @@
       "action": {
         "castSpell": {
           "spellId": {
-            "spellId": 24239,
-            "rank": 3
+            "spellId": 24239
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "condition": {
+          "cmp": {
+            "op": "OpGe",
+            "lhs": {
+              "currentManaPercent": {}
+            },
+            "rhs": {
+              "const": {
+                "val": "20%"
+              }
+            }
+          }
+        },
+        "castSpell": {
+          "spellId": {
+            "spellId": 26573
           }
         }
       }

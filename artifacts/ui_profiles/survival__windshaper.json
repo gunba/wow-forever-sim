@@ -229,17 +229,17 @@
       "priorityList": [
         {
           "action": {
-            "autocastOtherCooldowns": {}
-          }
-        },
-        {
-          "action": {
             "castSpell": {
               "spellId": {
                 "spellId": 14266,
                 "tag": 3
               }
             }
+          }
+        },
+        {
+          "action": {
+            "autocastOtherCooldowns": {}
           }
         },
         {
@@ -262,9 +262,44 @@
         },
         {
           "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpGe",
+                "lhs": {
+                  "remainingTime": {}
+                },
+                "rhs": {
+                  "const": {
+                    "val": "12s"
+                  }
+                }
+              }
+            },
             "castSpell": {
               "spellId": {
                 "spellId": 14305
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpGe",
+                "lhs": {
+                  "currentManaPercent": {}
+                },
+                "rhs": {
+                  "const": {
+                    "val": "40%"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 14268
               }
             }
           }

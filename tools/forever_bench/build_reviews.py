@@ -5,7 +5,7 @@ import argparse
 import json
 from pathlib import Path
 
-from build_display import BUILDS
+from build_display import BUILDS, BUILD_CAVEATS
 
 
 def main():
@@ -83,7 +83,7 @@ def main():
         "These summaries describe the published loadouts. They are simulation results, "
         "not independent confirmation of server mechanics or proof of a global optimum.", "",
         "The tables and [matrix](../artifacts/forever_dps_5min.png) use the same "
-        "147 common-seed replays. Equipment selections came from an earlier mechanics "
+        f"{len(results['Results'])} common-seed replays. Equipment selections came from an earlier mechanics "
         "revision; these results use the corrected engine. Historical search gains "
         "are not directly comparable to this release.", "",
         "The benchmark uses level 60, 300 seconds, one level-63 target, complete role-specific "
@@ -105,6 +105,8 @@ def main():
                   f"**Talents:** {'/'.join(map(str, points))} · `{p['talentsString']}`", "",
                   "[Requests and results](../artifacts/forever_dps_5min.json) · "
                   "[Equipment search](../artifacts/gear_search/summary.json)", ""]
+        if key in BUILD_CAVEATS:
+            lines += ["**Model limitations:** " + " ".join(BUILD_CAVEATS[key]), ""]
         lines += ["", "### Results", "",
                   "| Race | DPS | Standard error | Mana-limited seconds |",
                   "|---|---:|---:|---:|"]

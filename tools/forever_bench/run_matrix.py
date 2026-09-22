@@ -11,6 +11,8 @@ from pathlib import Path
 import re
 import subprocess
 
+from build_display import expected_roster
+
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
@@ -27,8 +29,8 @@ def main():
     args.profiles = args.profiles.resolve()
     args.output.mkdir(parents=True, exist_ok=True)
     roster = [(row["Key"], row["Race"]) for row in json.loads(args.profiles.read_text())["Results"]]
-    if len(roster) != 147 or len(set(roster)) != 147:
-        raise SystemExit("Expected 147 distinct race/build profiles.")
+    if set(roster) != expected_roster() or len(roster) != len(set(roster)):
+        raise SystemExit("Expected the complete current race/build roster.")
 
     scenarios = {
         "main": (args.profiles, ["-refresh-enchants"]),

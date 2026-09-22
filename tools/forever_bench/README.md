@@ -1,12 +1,29 @@
 # Forever DPS benchmarks
 
-The benchmark contains 23 level-60 builds and 147 race/build combinations:
-71 Alliance and 76 Horde. The [client roster and racial audit](../../docs/forever_races.md)
+The benchmark contains 26 level-60 builds and 171 race/build combinations:
+83 Alliance and 88 Horde. The [client roster and racial audit](../../docs/forever_races.md)
 record availability and remaining interaction questions.
 Profiles use the [crafted/dungeon catalog](../../docs/forever_gear_data.md),
 paid shared-hit normalization, and the role's complete
 [Forever Tier 1 bonuses](../../docs/forever_tier1.md).
-They are starting builds, not a claim of optimal talents, rotations or gear.
+They are tested builds, not a claim of globally optimal talents, rotations or gear.
+The separate Pet/Melee, Arcane–Frost and 2H Bloodthirst rows retain their
+Survival, Frost and Arms equipment respectively.
+[Build comparisons and limitations](../../docs/build_updates.md).
+
+The selected recipes and matched validation requests/results are archived in
+`artifacts/research_builds/validation.json.gz`. Prepare their benchmark inputs with:
+
+```sh
+python3 tools/forever_bench/apply_research_profiles.py --output /tmp/forever-profiles.json
+python3 tools/forever_bench/run_matrix.py --binary /path/to/forever-bench \
+  --profiles /tmp/forever-profiles.json --output /tmp/forever-matrix --workers 24
+```
+
+`--write-apls` also regenerates the selected APL preset files. Talents must already
+match their named UI presets; equipment, enchants and other player inputs are
+preserved. The validation archive uses two independent seeds and 5,000 iterations
+per arm per seed. Current charts use another seed, 20291951.
 
 Run from the repository root:
 

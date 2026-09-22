@@ -134,7 +134,7 @@ func gearCandidates(b build, p *proto.Player, slot int, pool []core.Item) []*pro
 		}
 		return candidates
 	}
-	twoHand := b.Key == "arms" || b.Key == "retribution" || b.Key == "feral"
+	twoHand := b.modelKey() == "arms" || b.Key == "retribution" || b.Key == "feral"
 	dual := b.Class == proto.Class_ClassRogue || b.Key == "fury"
 	weapons := append([]core.Item{}, pool...)
 	for _, index := range []int{14, 15} {

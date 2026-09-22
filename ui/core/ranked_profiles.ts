@@ -12,6 +12,7 @@ export interface RankedProfile {
 	dps: number;
 	settings: IndividualSimSettings;
 	unmodeledSetBonuses: string[];
+	caveats: string[];
 }
 
 let profiles: RankedProfile[] | undefined;

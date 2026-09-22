@@ -18,6 +18,12 @@ func TestRangedScopeReducesPaidHunterHit(t *testing.T) {
 			continue
 		}
 		p := b.player(proto.Race_RaceOrc)
+		// Isolate ranged requirements. Both current Hunter presets can summon
+		// Hawk, whose unresolved melee hit model otherwise sets the overall cap.
+		p.Rotation = core.APLRotationFromJsonString(`{
+			"type":"TypeAPL","priorityList":[
+				{"action":{"castSpell":{"spellId":{"spellId":25295}}}}
+			]}`)
 		_, before, err := capHit(b, p)
 		if err != nil {
 			t.Fatal(err)
@@ -28,11 +34,6 @@ func TestRangedScopeReducesPaidHunterHit(t *testing.T) {
 			t.Fatal(err)
 		}
 		want := 30.0
-		if b.Key == "beast_mastery" {
-			// Summon Hawk currently rolls as a melee special, unlike the
-			// unused melee auto. Its unresolved hit model remains unchanged.
-			want = 0
-		}
 		if got := before.RawHitDelta - after.RawHitDelta; math.Abs(got-want) > 1e-8 {
 			t.Errorf("%s: scope saved %v raw hit, want %v; requirements %+v", b.Key, got, want, after.Requirements)
 		}

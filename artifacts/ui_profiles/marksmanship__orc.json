@@ -190,7 +190,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "5023000503-0053451001503051",
+    "talentsString": "53200005011-0053552001520051",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
@@ -219,6 +219,45 @@
         {
           "action": {
             "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "not": {
+                      "val": {
+                        "dotIsActive": {
+                          "spellId": {
+                            "spellId": 1293527
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "remainingTime": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "6s"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 1293527
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
               "cmp": {
                 "op": "OpGe",
                 "lhs": {
@@ -226,7 +265,7 @@
                 },
                 "rhs": {
                   "const": {
-                    "val": "40%"
+                    "val": "30%"
                   }
                 }
               }
@@ -241,14 +280,33 @@
         {
           "action": {
             "condition": {
-              "not": {
-                "val": {
-                  "dotIsActive": {
-                    "spellId": {
-                      "spellId": 25295
+              "and": {
+                "vals": [
+                  {
+                    "not": {
+                      "val": {
+                        "dotIsActive": {
+                          "spellId": {
+                            "spellId": 25295
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "remainingTime": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "12s"
+                        }
+                      }
                     }
                   }
-                }
+                ]
               }
             },
             "castSpell": {
@@ -260,24 +318,9 @@
         },
         {
           "action": {
-            "condition": {
-              "cmp": {
-                "op": "OpGe",
-                "lhs": {
-                  "autoTimeToNext": {
-                    "autoType": "Ranged"
-                  }
-                },
-                "rhs": {
-                  "const": {
-                    "val": "0s"
-                  }
-                }
-              }
-            },
             "castSpell": {
               "spellId": {
-                "spellId": 20901
+                "spellId": 20903
               }
             }
           }
@@ -288,13 +331,11 @@
               "cmp": {
                 "op": "OpGe",
                 "lhs": {
-                  "autoTimeToNext": {
-                    "autoType": "Ranged"
-                  }
+                  "currentManaPercent": {}
                 },
                 "rhs": {
                   "const": {
-                    "val": "0s"
+                    "val": "15%"
                   }
                 }
               }

@@ -211,7 +211,7 @@ func offensiveGearBudget(b build, gear stats.Stats, critCoefficient float64) []b
 			})
 		}
 		single(stats.Agility, 1)
-		if b.Class != proto.Class_ClassHunter || b.Key == "survival" {
+		if b.Class != proto.Class_ClassHunter || b.modelKey() == "survival" {
 			single(stats.Strength, 1)
 		}
 	}

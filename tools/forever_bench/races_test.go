@@ -33,7 +33,7 @@ func TestBothFactionRoster(t *testing.T) {
 			}
 		}
 	}
-	if counts["Horde"] != 76 || counts["Alliance"] != 71 {
+	if counts["Horde"] != 88 || counts["Alliance"] != 83 {
 		t.Fatalf("unexpected build/race coverage: %v", counts)
 	}
 	for _, b := range builds() {

@@ -1,0 +1,1009 @@
+{
+  "MechanicsRevision": "a21ec111784b515c4f35a9244ae83356285c32d2",
+  "Seeds": [
+    20295211,
+    20295271
+  ],
+  "IterationsPerArmPerSeed": 5000,
+  "Choices": [
+    {
+      "Key": "enhancement",
+      "Candidate": "ca124caaa8099921",
+      "Parent": "enhancement",
+      "Selected": true,
+      "Title": "Nova Enhancement",
+      "Caveats": [],
+      "MeanGainPercent": 22.50293181882329,
+      "Races": [
+        {
+          "Race": "Dwarf",
+          "BaselineDPS": 604.2570087127693,
+          "CandidateDPS": 740.3731906479039,
+          "GainDPS": 136.1161819351346,
+          "GainPercent": 22.526206559870747,
+          "Conservative95BoundDPS": 1.4503334492178646,
+          "BaselineOOM": 42.46343797680278,
+          "CandidateOOM": 0.022475000000000002
+        },
+        {
+          "Race": "Orc",
+          "BaselineDPS": 602.243276205084,
+          "CandidateDPS": 736.4265600845602,
+          "GainDPS": 134.1832838794761,
+          "GainPercent": 22.28057816186929,
+          "Conservative95BoundDPS": 1.4720794006466404,
+          "BaselineOOM": 45.791922548902576,
+          "CandidateOOM": 0.018405000000000005
+        },
+        {
+          "Race": "Tauren",
+          "BaselineDPS": 601.948752965802,
+          "CandidateDPS": 739.2018911879857,
+          "GainDPS": 137.25313822218368,
+          "GainPercent": 22.80146566396846,
+          "Conservative95BoundDPS": 1.4631858647211267,
+          "BaselineOOM": 40.058388155827444,
+          "CandidateOOM": 0.01064
+        },
+        {
+          "Race": "Troll",
+          "BaselineDPS": 596.2519444087596,
+          "CandidateDPS": 732.4708212184448,
+          "GainDPS": 136.21887680968518,
+          "GainPercent": 22.845858715774778,
+          "Conservative95BoundDPS": 1.4354759781620818,
+          "BaselineOOM": 39.00834944273539,
+          "CandidateOOM": 0.018919999999999992
+        },
+        {
+          "Race": "Windshaper",
+          "BaselineDPS": 599.6024578861447,
+          "CandidateDPS": 731.8780578651749,
+          "GainDPS": 132.27559997903018,
+          "GainPercent": 22.060549992633163,
+          "Conservative95BoundDPS": 1.447319168044276,
+          "BaselineOOM": 42.354076424174835,
+          "CandidateOOM": 0.02634000000000001
+        }
+      ]
+    },
+    {
+      "Key": "survival",
+      "Candidate": "592693d7677fa731",
+      "Parent": "survival",
+      "Selected": true,
+      "Title": "Survival: Wing Clip filler",
+      "Caveats": [],
+      "MeanGainPercent": 7.18214734437473,
+      "Races": [
+        {
+          "Race": "Dwarf",
+          "BaselineDPS": 764.2768583110601,
+          "CandidateDPS": 819.2327722902447,
+          "GainDPS": 54.95591397918463,
+          "GainPercent": 7.190576736894683,
+          "Conservative95BoundDPS": 1.204398056180237,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "High Order",
+          "BaselineDPS": 769.4821962538995,
+          "CandidateDPS": 824.4188864129958,
+          "GainDPS": 54.936690159096315,
+          "GainPercent": 7.139436159348036,
+          "Conservative95BoundDPS": 1.2011205835427667,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Human",
+          "BaselineDPS": 783.5595660348686,
+          "CandidateDPS": 839.8311076863204,
+          "GainDPS": 56.2715416514518,
+          "GainPercent": 7.181526981568075,
+          "Conservative95BoundDPS": 1.2368189908467524,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Night Elf",
+          "BaselineDPS": 776.8564265813981,
+          "CandidateDPS": 832.2487705176835,
+          "GainDPS": 55.39234393628544,
+          "GainPercent": 7.130319328121243,
+          "Conservative95BoundDPS": 1.2267894013692382,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Orc",
+          "BaselineDPS": 779.4683059723275,
+          "CandidateDPS": 835.0266041812024,
+          "GainDPS": 55.55829820887493,
+          "GainPercent": 7.12771741752478,
+          "Conservative95BoundDPS": 1.2297276258533563,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Tauren",
+          "BaselineDPS": 768.1340177268024,
+          "CandidateDPS": 823.2682919836745,
+          "GainDPS": 55.13427425687212,
+          "GainPercent": 7.177689437584757,
+          "Conservative95BoundDPS": 1.2104078844868025,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Troll",
+          "BaselineDPS": 770.7724586705895,
+          "CandidateDPS": 827.5820618721282,
+          "GainDPS": 56.80960320153872,
+          "GainPercent": 7.370476534608231,
+          "Conservative95BoundDPS": 1.2202703732575308,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Windshaper",
+          "BaselineDPS": 769.4821962538995,
+          "CandidateDPS": 824.4188864129958,
+          "GainDPS": 54.936690159096315,
+          "GainPercent": 7.139436159348036,
+          "Conservative95BoundDPS": 1.2011205835427667,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        }
+      ]
+    },
+    {
+      "Key": "demonology",
+      "Candidate": "f47f9db51b3cd481",
+      "Parent": "demonology",
+      "Selected": true,
+      "Title": "Demonology: Brand-first refresh rotation",
+      "Caveats": [],
+      "MeanGainPercent": 4.1202975459600015,
+      "Races": [
+        {
+          "Race": "Gnome",
+          "BaselineDPS": 816.7242772885047,
+          "CandidateDPS": 847.6352357445533,
+          "GainDPS": 30.910958456048547,
+          "GainPercent": 3.7847483313061074,
+          "Conservative95BoundDPS": 1.107736794775069,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Human",
+          "BaselineDPS": 803.4389153671066,
+          "CandidateDPS": 836.4413606778256,
+          "GainDPS": 33.002445310719054,
+          "GainPercent": 4.107648345069221,
+          "Conservative95BoundDPS": 1.1063389820390686,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Orc",
+          "BaselineDPS": 812.0309075935313,
+          "CandidateDPS": 844.7899966071668,
+          "GainDPS": 32.7590890136355,
+          "GainPercent": 4.034217011605835,
+          "Conservative95BoundDPS": 1.112137529266975,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Troll",
+          "BaselineDPS": 803.4518271788882,
+          "CandidateDPS": 839.1481605960782,
+          "GainDPS": 35.69633341719009,
+          "GainPercent": 4.4428716457747655,
+          "Conservative95BoundDPS": 1.0921451964055495,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Undead",
+          "BaselineDPS": 814.8189670267732,
+          "CandidateDPS": 849.3021252347678,
+          "GainDPS": 34.48315820799462,
+          "GainPercent": 4.2320023960440745,
+          "Conservative95BoundDPS": 1.1072903894574422,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        }
+      ]
+    },
+    {
+      "Key": "subtlety",
+      "Candidate": "85f842802f55aca2",
+      "Parent": "subtlety",
+      "Selected": true,
+      "Title": "Subtlety: three-point Rupture rotation",
+      "Caveats": [],
+      "MeanGainPercent": 2.132927342833808,
+      "Races": [
+        {
+          "Race": "Dwarf",
+          "BaselineDPS": 542.7159567372391,
+          "CandidateDPS": 550.8279483433066,
+          "GainDPS": 8.111991606067477,
+          "GainPercent": 1.4947029851187832,
+          "Conservative95BoundDPS": 0.5840424059974767,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Gnome",
+          "BaselineDPS": 546.7631251778373,
+          "CandidateDPS": 559.6485092656459,
+          "GainDPS": 12.885384087808575,
+          "GainPercent": 2.3566666248053108,
+          "Conservative95BoundDPS": 0.6084140196455149,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "High Order",
+          "BaselineDPS": 539.5479666326569,
+          "CandidateDPS": 556.8347642175524,
+          "GainDPS": 17.286797584895567,
+          "GainPercent": 3.2039408271303937,
+          "Conservative95BoundDPS": 0.6088144910183134,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Human",
+          "BaselineDPS": 554.3225057358189,
+          "CandidateDPS": 562.5809445624363,
+          "GainDPS": 8.258438826617407,
+          "GainPercent": 1.4898256414206001,
+          "Conservative95BoundDPS": 0.5963261261121048,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Night Elf",
+          "BaselineDPS": 551.6492075953267,
+          "CandidateDPS": 559.9065737244337,
+          "GainDPS": 8.257366129106913,
+          "GainPercent": 1.4968509000676873,
+          "Conservative95BoundDPS": 0.5910417244787812,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Orc",
+          "BaselineDPS": 548.4481593665637,
+          "CandidateDPS": 556.7279948804353,
+          "GainDPS": 8.279835513871603,
+          "GainPercent": 1.5096842559257546,
+          "Conservative95BoundDPS": 0.5922687496549212,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Troll",
+          "BaselineDPS": 541.7770565730162,
+          "CandidateDPS": 558.4867107708601,
+          "GainDPS": 16.70965419784386,
+          "GainPercent": 3.084230680335551,
+          "Conservative95BoundDPS": 0.603466074991903,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Undead",
+          "BaselineDPS": 572.2299261203002,
+          "CandidateDPS": 579.992244201029,
+          "GainDPS": 7.762318080728846,
+          "GainPercent": 1.3565033435697962,
+          "Conservative95BoundDPS": 0.6374663626420232,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Windshaper",
+          "BaselineDPS": 539.5479666326569,
+          "CandidateDPS": 556.8347642175524,
+          "GainDPS": 17.286797584895567,
+          "GainPercent": 3.2039408271303937,
+          "Conservative95BoundDPS": 0.6088144910183134,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        }
+      ]
+    },
+    {
+      "Key": "stormcaller",
+      "Candidate": "35ae1ac593f4c5f8",
+      "Parent": "stormcaller",
+      "Selected": true,
+      "Title": "Lower-rank Lightning filler",
+      "Caveats": [
+        "The rank-2 Lightning Bolt filler depends on the modeled low-rank spell-power coefficient."
+      ],
+      "MeanGainPercent": 1.9022650383940802,
+      "Races": [
+        {
+          "Race": "Dwarf",
+          "BaselineDPS": 524.966296360994,
+          "CandidateDPS": 535.0788503173268,
+          "GainDPS": 10.112553956332818,
+          "GainPercent": 1.9263244186211341,
+          "Conservative95BoundDPS": 0.6132299640127545,
+          "BaselineOOM": 1.4564,
+          "CandidateOOM": 0.3069
+        },
+        {
+          "Race": "Orc",
+          "BaselineDPS": 529.2831661531993,
+          "CandidateDPS": 539.6930952430971,
+          "GainDPS": 10.409929089897787,
+          "GainPercent": 1.966797690838455,
+          "Conservative95BoundDPS": 0.6135061386198505,
+          "BaselineOOM": 1.4438499999999999,
+          "CandidateOOM": 0.29415
+        },
+        {
+          "Race": "Tauren",
+          "BaselineDPS": 528.5250917232219,
+          "CandidateDPS": 538.7769639984537,
+          "GainDPS": 10.25187227523179,
+          "GainPercent": 1.9397134470581565,
+          "Conservative95BoundDPS": 0.616976044047657,
+          "BaselineOOM": 1.4487,
+          "CandidateOOM": 0.28345
+        },
+        {
+          "Race": "Troll",
+          "BaselineDPS": 525.2430449851443,
+          "CandidateDPS": 535.4908023531895,
+          "GainDPS": 10.2477573680452,
+          "GainPercent": 1.9510505595243137,
+          "Conservative95BoundDPS": 0.6084888357357967,
+          "BaselineOOM": 1.4222045454679937,
+          "CandidateOOM": 0.2600954545472004
+        },
+        {
+          "Race": "Windshaper",
+          "BaselineDPS": 526.4177470073506,
+          "CandidateDPS": 535.5112928717772,
+          "GainDPS": 9.093545864426574,
+          "GainPercent": 1.7274390759283418,
+          "Conservative95BoundDPS": 0.6146303813642819,
+          "BaselineOOM": 1.4506141097730976,
+          "CandidateOOM": 0.27826391109799975
+        }
+      ]
+    },
+    {
+      "Key": "stormcaller",
+      "Candidate": "33d8749186fb5f9a",
+      "Parent": "stormcaller",
+      "Selected": false,
+      "Title": "Mental Quickness Lightning",
+      "Caveats": [
+        "The rank-2 Lightning Bolt filler depends on the modeled low-rank spell-power coefficient."
+      ],
+      "MeanGainPercent": 1.6796296418332453,
+      "Races": [
+        {
+          "Race": "Dwarf",
+          "BaselineDPS": 524.966296360994,
+          "CandidateDPS": 533.6922321108848,
+          "GainDPS": 8.725935749890823,
+          "GainPercent": 1.662189708249464,
+          "Conservative95BoundDPS": 0.609642586155398,
+          "BaselineOOM": 1.4564,
+          "CandidateOOM": 0.3433
+        },
+        {
+          "Race": "Orc",
+          "BaselineDPS": 529.2831661531993,
+          "CandidateDPS": 538.1072083549477,
+          "GainDPS": 8.824042201748398,
+          "GainPercent": 1.6671684961909987,
+          "Conservative95BoundDPS": 0.6138186447635631,
+          "BaselineOOM": 1.4438499999999999,
+          "CandidateOOM": 0.34725
+        },
+        {
+          "Race": "Tauren",
+          "BaselineDPS": 528.5250917232219,
+          "CandidateDPS": 537.2924260351298,
+          "GainDPS": 8.767334311907916,
+          "GainPercent": 1.6588302900289162,
+          "Conservative95BoundDPS": 0.6139830996179712,
+          "BaselineOOM": 1.4487,
+          "CandidateOOM": 0.3487
+        },
+        {
+          "Race": "Troll",
+          "BaselineDPS": 525.2430449851443,
+          "CandidateDPS": 534.6072446862247,
+          "GainDPS": 9.364199701080452,
+          "GainPercent": 1.782831736752517,
+          "Conservative95BoundDPS": 0.611948756257388,
+          "BaselineOOM": 1.4222045454679937,
+          "CandidateOOM": 0.3995327275291993
+        },
+        {
+          "Race": "Windshaper",
+          "BaselineDPS": 526.4177470073506,
+          "CandidateDPS": 534.9832374497714,
+          "GainDPS": 8.56549044242081,
+          "GainPercent": 1.6271279779443313,
+          "Conservative95BoundDPS": 0.6205507325870967,
+          "BaselineOOM": 1.4506141097730976,
+          "CandidateOOM": 0.36723753846770213
+        }
+      ]
+    },
+    {
+      "Key": "retribution",
+      "Candidate": "a09dd82d60700c30",
+      "Parent": "retribution",
+      "Selected": true,
+      "Title": "13/7/31 Retribution",
+      "Caveats": [
+        "Includes lower-rank seals and Consecration; their server scaling and proc interactions still need confirmation."
+      ],
+      "MeanGainPercent": 2.8468283595658064,
+      "Races": [
+        {
+          "Race": "Dwarf",
+          "BaselineDPS": 1003.3027030943299,
+          "CandidateDPS": 1033.41034290372,
+          "GainDPS": 30.107639809390093,
+          "GainPercent": 3.000853054271039,
+          "Conservative95BoundDPS": 1.228646585381427,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.00037999999999999997
+        },
+        {
+          "Race": "Human",
+          "BaselineDPS": 1004.8678476381031,
+          "CandidateDPS": 1034.984751033194,
+          "GainDPS": 30.116903395090958,
+          "GainPercent": 2.997100908928412,
+          "Conservative95BoundDPS": 1.2275003914808098,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.00011999999999999999
+        },
+        {
+          "Race": "Undead",
+          "BaselineDPS": 1025.0742340662864,
+          "CandidateDPS": 1051.1370654243742,
+          "GainDPS": 26.062831358087806,
+          "GainPercent": 2.5425311154979684,
+          "Conservative95BoundDPS": 1.2308728977906076,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0004
+        }
+      ]
+    },
+    {
+      "Key": "shadow",
+      "Candidate": "8a8c1576fbd300cd",
+      "Parent": "shadow",
+      "Selected": true,
+      "Title": "Shadow resource allocation",
+      "Caveats": [],
+      "MeanGainPercent": 0.3138304804037832,
+      "Races": [
+        {
+          "Race": "Dwarf",
+          "BaselineDPS": 764.4533865930707,
+          "CandidateDPS": 766.7340178217075,
+          "GainDPS": 2.280631228636821,
+          "GainPercent": 0.29833489767124716,
+          "Conservative95BoundDPS": 0.5740898164545405,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Gnome",
+          "BaselineDPS": 770.8553156460692,
+          "CandidateDPS": 772.8740962031088,
+          "GainDPS": 2.0187805570395767,
+          "GainPercent": 0.26188838762143013,
+          "Conservative95BoundDPS": 0.5786663642827778,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Human",
+          "BaselineDPS": 764.744786235023,
+          "CandidateDPS": 766.9869899908151,
+          "GainDPS": 2.2422037557921612,
+          "GainPercent": 0.29319634421189533,
+          "Conservative95BoundDPS": 0.5761420670776327,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Night Elf",
+          "BaselineDPS": 770.1774888129605,
+          "CandidateDPS": 772.4421831126831,
+          "GainDPS": 2.264694299722578,
+          "GainPercent": 0.29404836321729527,
+          "Conservative95BoundDPS": 0.5822360541893974,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Troll",
+          "BaselineDPS": 763.7231476385612,
+          "CandidateDPS": 765.8282373056097,
+          "GainDPS": 2.10508966704856,
+          "GainPercent": 0.27563517926064124,
+          "Conservative95BoundDPS": 0.5760752610171256,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Undead",
+          "BaselineDPS": 774.2250636356227,
+          "CandidateDPS": 777.7855676164256,
+          "GainDPS": 3.5605039808028778,
+          "GainPercent": 0.4598797104401899,
+          "Conservative95BoundDPS": 0.5845879277785624,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        }
+      ]
+    },
+    {
+      "Key": "smite",
+      "Candidate": "f173b6b80c8cc592",
+      "Parent": "smite",
+      "Selected": true,
+      "Title": "Rank-2 Smite fallback",
+      "Caveats": [
+        "The rank-2 Smite fallback depends on the modeled low-rank spell-power coefficient."
+      ],
+      "MeanGainPercent": 1.284924869051917,
+      "Races": [
+        {
+          "Race": "Dwarf",
+          "BaselineDPS": 549.4661767412925,
+          "CandidateDPS": 556.6421559395534,
+          "GainDPS": 7.175979198260848,
+          "GainPercent": 1.305991069517559,
+          "Conservative95BoundDPS": 0.40913732895604316,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Gnome",
+          "BaselineDPS": 554.4469154031748,
+          "CandidateDPS": 560.6120507506719,
+          "GainDPS": 6.165135347497085,
+          "GainPercent": 1.1119433035377264,
+          "Conservative95BoundDPS": 0.4135489446712114,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 1e-05
+        },
+        {
+          "Race": "Human",
+          "BaselineDPS": 550.2059877161958,
+          "CandidateDPS": 557.1889460035145,
+          "GainDPS": 6.982958287318752,
+          "GainPercent": 1.2691534522013714,
+          "Conservative95BoundDPS": 0.4157691420427238,
+          "BaselineOOM": 1e-05,
+          "CandidateOOM": 3.0000000000000004e-05
+        },
+        {
+          "Race": "Night Elf",
+          "BaselineDPS": 552.6419857633314,
+          "CandidateDPS": 559.6251845444624,
+          "GainDPS": 6.983198781131023,
+          "GainPercent": 1.2636026507261382,
+          "Conservative95BoundDPS": 0.4156230591128573,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 1e-05
+        },
+        {
+          "Race": "Troll",
+          "BaselineDPS": 551.5341856349813,
+          "CandidateDPS": 559.0874596501469,
+          "GainDPS": 7.553274015165584,
+          "GainPercent": 1.369502419232545,
+          "Conservative95BoundDPS": 0.4168797339578217,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 7e-05
+        },
+        {
+          "Race": "Undead",
+          "BaselineDPS": 555.3593385586782,
+          "CandidateDPS": 563.0752586226339,
+          "GainDPS": 7.71592006395565,
+          "GainPercent": 1.389356319096163,
+          "Conservative95BoundDPS": 0.4180193909180036,
+          "BaselineOOM": 3.0000000000000004e-05,
+          "CandidateOOM": 0.0
+        }
+      ]
+    },
+    {
+      "Key": "marksmanship",
+      "Candidate": "b28afbb9732dc625",
+      "Parent": "marksmanship",
+      "Selected": true,
+      "Title": "Hawk/Sniper integration",
+      "Caveats": [
+        "The Hawk/Sniper build depends on the approximate Hawk guardian and pet-inheritance model."
+      ],
+      "MeanGainPercent": 3.1944382902751194,
+      "Races": [
+        {
+          "Race": "Dwarf",
+          "BaselineDPS": 838.7804180783459,
+          "CandidateDPS": 865.2622918639045,
+          "GainDPS": 26.481873785558605,
+          "GainPercent": 3.157187890273933,
+          "Conservative95BoundDPS": 0.8728830364728037,
+          "BaselineOOM": 0.028995,
+          "CandidateOOM": 0.36724500000000004
+        },
+        {
+          "Race": "High Order",
+          "BaselineDPS": 846.8663191735789,
+          "CandidateDPS": 874.3312914483499,
+          "GainDPS": 27.46497227477107,
+          "GainPercent": 3.243129600616657,
+          "Conservative95BoundDPS": 0.8788491291591559,
+          "BaselineOOM": 0.026039999999999997,
+          "CandidateOOM": 0.37858999999999987
+        },
+        {
+          "Race": "Human",
+          "BaselineDPS": 854.785971524449,
+          "CandidateDPS": 882.26343705512,
+          "GainDPS": 27.477465530670997,
+          "GainPercent": 3.2145433413778335,
+          "Conservative95BoundDPS": 0.8937312974347262,
+          "BaselineOOM": 0.03147708457980001,
+          "CandidateOOM": 0.2638699999999997
+        },
+        {
+          "Race": "Night Elf",
+          "BaselineDPS": 850.8228091967832,
+          "CandidateDPS": 878.8216779362197,
+          "GainDPS": 27.99886873943649,
+          "GainPercent": 3.290799028515554,
+          "Conservative95BoundDPS": 0.8885292181282443,
+          "BaselineOOM": 0.025970000000000007,
+          "CandidateOOM": 0.33183000000000007
+        },
+        {
+          "Race": "Orc",
+          "BaselineDPS": 852.2553072110968,
+          "CandidateDPS": 878.4943461594654,
+          "GainDPS": 26.239038948368602,
+          "GainPercent": 3.078776832054318,
+          "Conservative95BoundDPS": 0.894598977706654,
+          "BaselineOOM": 0.03513000000000001,
+          "CandidateOOM": 0.3691300000000003
+        },
+        {
+          "Race": "Tauren",
+          "BaselineDPS": 841.4958413764714,
+          "CandidateDPS": 867.7805462047961,
+          "GainDPS": 26.28470482832472,
+          "GainPercent": 3.1235691890443196,
+          "Conservative95BoundDPS": 0.8793030870755449,
+          "BaselineOOM": 0.03877499999999999,
+          "CandidateOOM": 0.3891297366548003
+        },
+        {
+          "Race": "Troll",
+          "BaselineDPS": 846.8466822129869,
+          "CandidateDPS": 873.9827903548011,
+          "GainDPS": 27.136108141814134,
+          "GainPercent": 3.2043708397016832,
+          "Conservative95BoundDPS": 0.882430749413505,
+          "BaselineOOM": 0.026549202631400003,
+          "CandidateOOM": 0.4337350000000002
+        },
+        {
+          "Race": "Windshaper",
+          "BaselineDPS": 846.8663191735789,
+          "CandidateDPS": 874.3312914483499,
+          "GainDPS": 27.46497227477107,
+          "GainPercent": 3.243129600616657,
+          "Conservative95BoundDPS": 0.8788491291591559,
+          "BaselineOOM": 0.026039999999999997,
+          "CandidateOOM": 0.37858999999999987
+        }
+      ]
+    },
+    {
+      "Key": "pet_melee",
+      "Candidate": "ea54f0ca7b44715f",
+      "Parent": "survival",
+      "Selected": true,
+      "Title": "Hawk melee hybrid: Wing Clip",
+      "Caveats": [
+        "Hawk damage uses an approximate guardian/pet model. Its advantage over the revised Survival rotation is small."
+      ],
+      "MeanGainPercent": 7.511880747003419,
+      "Races": [
+        {
+          "Race": "Dwarf",
+          "BaselineDPS": 764.2768583110601,
+          "CandidateDPS": 822.4894431221952,
+          "GainDPS": 58.212584811135116,
+          "GainPercent": 7.6166881383503355,
+          "Conservative95BoundDPS": 1.1744639025153338,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "High Order",
+          "BaselineDPS": 769.4821962538995,
+          "CandidateDPS": 826.6087399285587,
+          "GainDPS": 57.126543674659274,
+          "GainPercent": 7.4240240973437315,
+          "Conservative95BoundDPS": 1.174120093776227,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Human",
+          "BaselineDPS": 783.5595660348686,
+          "CandidateDPS": 842.8003419188319,
+          "GainDPS": 59.24077588396335,
+          "GainPercent": 7.56046871889343,
+          "Conservative95BoundDPS": 1.2070453507566834,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Night Elf",
+          "BaselineDPS": 776.8564265813981,
+          "CandidateDPS": 835.8789954275896,
+          "GainDPS": 59.022568846191575,
+          "GainPercent": 7.597616087946111,
+          "Conservative95BoundDPS": 1.1951764391689805,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Orc",
+          "BaselineDPS": 779.4683059723275,
+          "CandidateDPS": 837.0520323905348,
+          "GainDPS": 57.583726418207334,
+          "GainPercent": 7.387564828101127,
+          "Conservative95BoundDPS": 1.2007393924957999,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Tauren",
+          "BaselineDPS": 768.1340177268024,
+          "CandidateDPS": 826.2690077488609,
+          "GainDPS": 58.134990022058446,
+          "GainPercent": 7.568339466868263,
+          "Conservative95BoundDPS": 1.18227527640341,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Troll",
+          "BaselineDPS": 770.7724586705895,
+          "CandidateDPS": 828.7061873074099,
+          "GainDPS": 57.93372863682043,
+          "GainPercent": 7.5163205411806215,
+          "Conservative95BoundDPS": 1.1959937878287583,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Windshaper",
+          "BaselineDPS": 769.4821962538995,
+          "CandidateDPS": 826.6087399285587,
+          "GainDPS": 57.126543674659274,
+          "GainPercent": 7.4240240973437315,
+          "Conservative95BoundDPS": 1.174120093776227,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        }
+      ]
+    },
+    {
+      "Key": "arcane_frost",
+      "Candidate": "3ac079401f03e366",
+      "Parent": "frost",
+      "Selected": true,
+      "Title": "Arcane\u2013Frost with Ice Lance",
+      "Caveats": [
+        "Uses an assumed Ice Lance coefficient and unresolved Fingers of Frost, Missile Barrage and Clearcasting timing."
+      ],
+      "MeanGainPercent": 12.312571635756406,
+      "Races": [
+        {
+          "Race": "Gnome",
+          "BaselineDPS": 654.0656323163183,
+          "CandidateDPS": 711.4279453366056,
+          "GainDPS": 57.362313020287274,
+          "GainPercent": 8.770115747733676,
+          "Conservative95BoundDPS": 1.2347745691790446,
+          "BaselineOOM": 13.004574999999999,
+          "CandidateOOM": 0.00225
+        },
+        {
+          "Race": "High Order",
+          "BaselineDPS": 627.7444480942988,
+          "CandidateDPS": 710.3768200358123,
+          "GainDPS": 82.6323719415135,
+          "GainPercent": 13.163377580218851,
+          "Conservative95BoundDPS": 1.2291054420911407,
+          "BaselineOOM": 24.797274907693726,
+          "CandidateOOM": 0.027626535059199996
+        },
+        {
+          "Race": "Human",
+          "BaselineDPS": 627.6676268182815,
+          "CandidateDPS": 705.4605735590335,
+          "GainDPS": 77.79294674075197,
+          "GainPercent": 12.393971493335295,
+          "Conservative95BoundDPS": 1.237358567059426,
+          "BaselineOOM": 22.53295,
+          "CandidateOOM": 0.01165
+        },
+        {
+          "Race": "Orc",
+          "BaselineDPS": 627.0634138643226,
+          "CandidateDPS": 709.3751004977612,
+          "GainDPS": 82.31168663343863,
+          "GainPercent": 13.126533108699013,
+          "Conservative95BoundDPS": 1.2517557561800925,
+          "BaselineOOM": 24.219050000000003,
+          "CandidateOOM": 0.015075
+        },
+        {
+          "Race": "Troll",
+          "BaselineDPS": 626.8591682729952,
+          "CandidateDPS": 708.5685308841438,
+          "GainDPS": 81.70936261114855,
+          "GainPercent": 13.03472402521588,
+          "Conservative95BoundDPS": 1.2259211615499466,
+          "BaselineOOM": 24.662219546087456,
+          "CandidateOOM": 0.02764636365599999
+        },
+        {
+          "Race": "Undead",
+          "BaselineDPS": 632.9853579383389,
+          "CandidateDPS": 717.7212585979148,
+          "GainDPS": 84.73590065957592,
+          "GainPercent": 13.386707859335717,
+          "Conservative95BoundDPS": 1.2591614097716621,
+          "BaselineOOM": 23.50055,
+          "CandidateOOM": 0.01655
+        }
+      ]
+    },
+    {
+      "Key": "fury_2h",
+      "Candidate": "b4cdeebcccb31fc9",
+      "Parent": "arms",
+      "Selected": true,
+      "Title": "Two-handed Bloodthirst/Impale",
+      "Caveats": [
+        "Level-60 rage generation remains unverified; this row uses the current Warrior rage model."
+      ],
+      "MeanGainPercent": 4.7399977153932245,
+      "Races": [
+        {
+          "Race": "Dwarf",
+          "BaselineDPS": 770.1407925732267,
+          "CandidateDPS": 807.0725878853057,
+          "GainDPS": 36.931795312078975,
+          "GainPercent": 4.7954602156160195,
+          "Conservative95BoundDPS": 1.4516966703980332,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Gnome",
+          "BaselineDPS": 772.2315804550049,
+          "CandidateDPS": 808.1500783263373,
+          "GainDPS": 35.91849787133242,
+          "GainPercent": 4.651259904466606,
+          "Conservative95BoundDPS": 1.4683105996013457,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "High Order",
+          "BaselineDPS": 772.4893937849979,
+          "CandidateDPS": 806.9154236899112,
+          "GainDPS": 34.42602990491332,
+          "GainPercent": 4.456505187240785,
+          "Conservative95BoundDPS": 1.455748583357408,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Human",
+          "BaselineDPS": 781.2349359501522,
+          "CandidateDPS": 819.669651136955,
+          "GainDPS": 38.434715186802805,
+          "GainPercent": 4.919738406227033,
+          "Conservative95BoundDPS": 1.472818539135773,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Night Elf",
+          "BaselineDPS": 775.5410394327782,
+          "CandidateDPS": 810.4315894283584,
+          "GainDPS": 34.89054999558016,
+          "GainPercent": 4.498865723611313,
+          "Conservative95BoundDPS": 1.467138804459978,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Orc",
+          "BaselineDPS": 778.2577935128825,
+          "CandidateDPS": 817.630945821816,
+          "GainDPS": 39.37315230893353,
+          "GainPercent": 5.059140125177787,
+          "Conservative95BoundDPS": 1.4827638296845147,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Tauren",
+          "BaselineDPS": 775.0703051105522,
+          "CandidateDPS": 812.758206975707,
+          "GainDPS": 37.6879018651548,
+          "GainPercent": 4.8625139702364395,
+          "Conservative95BoundDPS": 1.4604192124371915,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Troll",
+          "BaselineDPS": 771.3235255104373,
+          "CandidateDPS": 810.3760485673367,
+          "GainDPS": 39.05252305689942,
+          "GainPercent": 5.06305353918198,
+          "Conservative95BoundDPS": 1.4687354642765844,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Undead",
+          "BaselineDPS": 780.2581391021124,
+          "CandidateDPS": 816.438201024697,
+          "GainDPS": 36.18006192258463,
+          "GainPercent": 4.636934894933501,
+          "Conservative95BoundDPS": 1.4590608801851288,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        },
+        {
+          "Race": "Windshaper",
+          "BaselineDPS": 772.4893937849979,
+          "CandidateDPS": 806.9154236899112,
+          "GainDPS": 34.42602990491332,
+          "GainPercent": 4.456505187240785,
+          "Conservative95BoundDPS": 1.455748583357408,
+          "BaselineOOM": 0.0,
+          "CandidateOOM": 0.0
+        }
+      ]
+    }
+  ]
+}

@@ -63,7 +63,7 @@ export const DefaultAPL = APLBasicRet;
 
 export const P4RetTalents = PresetUtils.makePresetTalents('P4/P5 Ret', SavedTalents.create({ talentsString: '0550030022001--052251310002330321' }));
 
-export const TalentsRetribution = PresetUtils.makePresetTalents('Retribution 12/0/39', SavedTalents.create({ talentsString: '250003002--052253312012331321' }));
+export const TalentsRetribution = PresetUtils.makePresetTalents('Retribution 13/7/31', SavedTalents.create({ talentsString: '253003-232-052052310012330301' }));
 
 export const TalentPresets = {
 	[ClassicPhase.Phase1]: [],

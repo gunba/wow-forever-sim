@@ -22,6 +22,7 @@ import { Mage_Options as MageOptions, Mage_Options_ArmorType as ArmorType } from
 import { SavedTalents } from '../core/proto/ui';
 import ArcaneAPL from './apls/forever_arcane.apl.json';
 import FireAPL from './apls/forever_fire.apl.json';
+import ArcaneFrostAPL from './apls/forever_arcane_frost.apl.json';
 import FrostAPL from './apls/forever_frost.apl.json';
 import GearArcaneJSON from './gear_sets/forever_arcane.gear.json';
 import GearFireJSON from './gear_sets/forever_fire.gear.json';
@@ -45,9 +46,10 @@ export const DefaultGear = GearFrost;
 export const APLFrost = PresetUtils.makePresetAPLRotation('Frost', FrostAPL);
 export const APLArcane = PresetUtils.makePresetAPLRotation('Arcane', ArcaneAPL);
 export const APLFire = PresetUtils.makePresetAPLRotation('Fire', FireAPL);
+export const APLArcaneFrost = PresetUtils.makePresetAPLRotation('Arcane–Frost', ArcaneFrostAPL);
 
 export const APLPresets = {
-	[ClassicPhase.Phase1]: [APLFrost, APLArcane, APLFire],
+	[ClassicPhase.Phase1]: [APLFrost, APLArcane, APLFire, APLArcaneFrost],
 };
 
 export const DefaultAPL = APLFrost;
@@ -66,9 +68,10 @@ export const TalentsP1Fire = PresetUtils.makePresetTalents('Fire 17/31/3', Saved
 export const TalentsFire = PresetUtils.makePresetTalents('Fire 0/35/16', SavedTalents.create({ talentsString: '-03552020130133151-005500033' }));
 export const TalentsFrost = PresetUtils.makePresetTalents('Frost 11/3/37', SavedTalents.create({ talentsString: '050005001-03-0555003321001301251' }));
 export const TalentsArcane = PresetUtils.makePresetTalents('Arcane 33/3/15', SavedTalents.create({ talentsString: '053005023100311531-03-005500032' }));
+export const TalentsArcaneFrost = PresetUtils.makePresetTalents('Arcane–Frost 28/0/23', SavedTalents.create({ talentsString: '05020500310031053--05550002010003002' }));
 
 export const TalentPresets = {
-	[ClassicPhase.Phase1]: [TalentsP1Frost, TalentsP1Arcane, TalentsP1Fire, TalentsFire, TalentsFrost, TalentsArcane],
+	[ClassicPhase.Phase1]: [TalentsP1Frost, TalentsP1Arcane, TalentsP1Fire, TalentsFire, TalentsFrost, TalentsArcane, TalentsArcaneFrost],
 };
 
 export const DefaultTalents = TalentsFrost;

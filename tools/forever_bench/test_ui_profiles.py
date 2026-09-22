@@ -4,6 +4,7 @@ from pathlib import Path
 import unittest
 
 from export_ui_profiles import ui_settings
+from build_display import BUILD_CAVEATS, expected_roster
 
 
 class UIProfilesTest(unittest.TestCase):
@@ -13,13 +14,14 @@ class UIProfilesTest(unittest.TestCase):
         results = json.loads(source)["Results"]
         bundle = json.loads((root / "ui/core/forever_ranked_profiles.json").read_text())
         self.assertEqual(bundle["sourceSHA256"], hashlib.sha256(source).hexdigest())
-        self.assertEqual(len(bundle["profiles"]), 147)
+        self.assertEqual(len(bundle["profiles"]), len(expected_roster()))
         profiles = {(p["key"], p["race"]): p for p in bundle["profiles"]}
-        self.assertEqual(len(profiles), 147)
+        self.assertEqual(set(profiles), expected_roster())
         for row in results:
             profile = profiles[row["Key"], row["Race"]]
             self.assertEqual(profile["settings"], ui_settings(row))
             self.assertEqual(profile["dps"], row["DPS"])
+            self.assertEqual(profile["caveats"], BUILD_CAVEATS.get(row["Key"], []))
 
     def test_replay_preserves_normalized_player_and_scenario(self):
         data = json.loads((Path(__file__).resolve().parents[2] /

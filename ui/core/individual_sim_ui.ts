@@ -384,6 +384,13 @@ export abstract class IndividualSimUI<SpecType extends Spec> extends SimUI {
 		if (this.rankedProfiles.some(profile => profile.unmodeledSetBonuses.length)) {
 			note.textContent += ' Some equipped-set effects remain unmodeled; their IDs are listed in the raw ranking results.';
 		}
+		const assumptions = document.createElement('p');
+		assumptions.className = 'form-text mb-0';
+		const caveats = new Map(this.rankedProfiles.filter(profile => profile.caveats.length).map(profile => [
+			profile.build, `${profile.build}: ${profile.caveats.join(' ')}`,
+		]));
+		assumptions.textContent = [...caveats.values()].join(' ');
+		assumptions.hidden = !caveats.size;
 		select.addEventListener('change', () => {
 			button.disabled = !select.value;
 		});
@@ -393,7 +400,7 @@ export abstract class IndividualSimUI<SpecType extends Spec> extends SimUI {
 		});
 		controls.append(select, button);
 		label.append(controls);
-		panel.append(label, note);
+		panel.append(label, note, assumptions);
 		parent.prepend(panel);
 	}
 

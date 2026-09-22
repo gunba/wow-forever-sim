@@ -316,13 +316,14 @@ This check does not require levelling a separate character solely for it.
 
 **Priority:** high · **Access:** level-20 Shaman with some spell-power gear · **Status:** open
 
-Compare Lightning Bolt ranks 3 and 4 with two known spell-power totals, keeping
+Compare Lightning Bolt ranks 2, 3 and 4 with two known spell-power totals, keeping
 talents and the target unchanged. Record spell tooltips and roughly 30 ordinary,
 unresisted, non-critical hits for each rank at each spell-power total.
 Changing only spell-power equipment makes the comparison easier to interpret.
 
 For each rank, divide the change in average damage by the change in spell power.
-The current client records a 0.714 coefficient for both ranks. A remaining
+The model uses the client coefficients: 0.571 for rank 2 and 0.714 for ranks
+3 and 4. A remaining
 server-side low-level/downranking penalty would make the measured coefficients
 differ. Damage talents can multiply both measurements and should be recorded.
 
@@ -330,9 +331,29 @@ differ. Damage talents can multiply both measurements and should be recorded.
 client-listed scaling. This affects Elemental and Stormcaller rotation choices
 and potentially other caster classes. The model currently uses the client values.
 
-A Priest can also test Smite rank 3 at level 20 using two spell-power totals.
-Its client coefficient is 0.714, before damage talents. This directly checks the
-low-rank filler considered by the Smite build.
+A Priest can also test Smite ranks 2 and 3 at level 20 using two spell-power totals.
+Their modeled coefficients are 0.571 and 0.714 respectively, before damage
+talents. Rank 2 is the fallback in the current Smite rotation.
+
+### T49 — Ice Lance coefficient and frozen-target multiplier
+
+**Priority:** high · **Access:** level 20 with Ice Lance; repeat at higher ranks
+
+Use two known spell-power totals and record ordinary, non-critical Ice Lance
+hits against the same unfrozen target. Record rank, level, talents and buffs.
+Divide the change in average damage by the change in spell power, accounting
+for damage talents. The engine currently assumes a 0.143 coefficient because
+the captured damage effect does not supply one.
+
+Repeat against a target frozen by Frost Nova, separating normal hits from
+crits. The engine's Fingers of Frost case multiplies the entire hit, including
+spell power, by four.
+A rank-1 measurement does not establish the level-60 rank's coefficient.
+
+At later access, separate Fingers of Frost activation, Ice Lance launch,
+impact and charge consumption, including a Frostbolt already in flight.
+This affects both the ordinary Frost and Arcane–Frost rows. T10 covers the
+related deeper Mage proc interactions.
 
 ### T17 — Mind Flay and channel haste
 

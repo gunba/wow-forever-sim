@@ -8,6 +8,8 @@ import json
 from pathlib import Path
 import re
 
+from build_display import BUILD_CAVEATS, expected_roster
+
 
 def ui_settings(row):
     request = row["Request"]
@@ -51,11 +53,13 @@ def main():
             "id": f"{row['Key']}__{race}", "key": row["Key"], "build": row["Build"],
             "race": row["Race"], "dps": row["DPS"], "settings": ui_settings(row),
             "hitAdjustment": row["Hit"], "unmodeledSetBonuses": row.get("UnmodeledSetBonuses") or [],
+            "caveats": BUILD_CAVEATS.get(row["Key"], []),
         })
     (args.output / "index.json").write_text(json.dumps(index, indent=2) + "\n")
     if args.bundle:
-        if len(profiles) != 147 or len({p["id"] for p in profiles}) != 147:
-            raise ValueError("The web bundle requires the complete 147-profile roster")
+        roster = {(p["key"], p["race"]) for p in profiles}
+        if roster != expected_roster() or len(profiles) != len(roster):
+            raise ValueError("The web bundle requires the complete current race/build roster")
         for profile in profiles:
             player = profile["settings"]["player"]
             if not player.get("foreverTier1Bonuses") or player.get("equipmentScale", 1) != 1:

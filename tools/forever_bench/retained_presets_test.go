@@ -21,8 +21,15 @@ func TestRetainedPresetsMatchBenchmark(t *testing.T) {
 		expected[row.Key+"/"+row.Race] = row
 	}
 	definitions := map[string]build{}
+	expectedCount := 0
 	for _, b := range builds() {
 		definitions[b.Key] = b
+		for _, race := range b.races() {
+			expectedCount++
+			if _, ok := expected[b.Key+"/"+raceName(race)]; !ok {
+				t.Errorf("missing current profile %s/%s", b.Key, raceName(race))
+			}
+		}
 	}
 	var bundle struct {
 		Profiles []struct {
@@ -33,7 +40,7 @@ func TestRetainedPresetsMatchBenchmark(t *testing.T) {
 	if err := json.Unmarshal(mustRead("ui/core/forever_ranked_profiles.json"), &bundle); err != nil {
 		t.Fatal(err)
 	}
-	if len(expected) != 147 || len(bundle.Profiles) != 147 {
+	if len(expected) != expectedCount || len(bundle.Profiles) != expectedCount {
 		t.Fatal("incomplete current ranking/default coverage")
 	}
 	for _, profile := range bundle.Profiles {

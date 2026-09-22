@@ -10,6 +10,8 @@ from pathlib import Path
 import re
 import subprocess
 
+from build_display import BUILDS, expected_roster
+
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
@@ -37,7 +39,7 @@ def main():
         if key not in seen:
             jobs.append((row["Key"], row["Race"]))
             seen.add(key)
-    expected = 23 if args.representatives else 147
+    expected = len(BUILDS) if args.representatives else len(expected_roster())
     if len(jobs) != expected:
         raise SystemExit(f"Roster has {len(jobs)} jobs; expected {expected}.")
     if args.builds:

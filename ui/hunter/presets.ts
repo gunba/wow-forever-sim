@@ -34,6 +34,7 @@ import { SavedTalents } from '../core/proto/ui.js';
 import P1APL from './apls/p1.apl.json';
 import BeastMasteryAPL from './apls/beast_mastery.apl.json';
 import SurvivalAPL from './apls/survival.apl.json';
+import PetMeleeAPL from './apls/pet_melee.apl.json';
 import GearBeastMasteryJSON from './gear_sets/forever_beast_mastery.gear.json';
 import GearMarksmanshipJSON from './gear_sets/forever_marksmanship.gear.json';
 import GearSurvivalJSON from './gear_sets/forever_survival.gear.json';
@@ -59,9 +60,10 @@ export const DefaultGear = GearMarksmanship;
 export const APLP1 = PresetUtils.makePresetAPLRotation('Marksmanship', P1APL);
 export const APLBeastMastery = PresetUtils.makePresetAPLRotation('Beast Mastery', BeastMasteryAPL);
 export const APLSurvival = PresetUtils.makePresetAPLRotation('Survival', SurvivalAPL);
+export const APLPetMelee = PresetUtils.makePresetAPLRotation('Pet/Melee', PetMeleeAPL);
 
 export const APLPresets = {
-	[ClassicPhase.Phase1]: [APLP1, APLBeastMastery, APLSurvival],
+	[ClassicPhase.Phase1]: [APLP1, APLBeastMastery, APLSurvival, APLPetMelee],
 };
 
 export const DefaultAPL = APLP1;
@@ -73,16 +75,17 @@ export const DefaultAPL = APLP1;
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsP1 = PresetUtils.makePresetTalents('Marksmanship 18/33/0', SavedTalents.create({ talentsString: '5023000503-0053451001503051' }));
+export const TalentsP1 = PresetUtils.makePresetTalents('Marksmanship 17/34/0', SavedTalents.create({ talentsString: '53200005011-0053552001520051' }));
 
 export const TalentsBeastMastery = PresetUtils.makePresetTalents(
 	'Beast Mastery 31/20/0',
 	SavedTalents.create({ talentsString: '5320001505101251-00531510005' }),
 );
 export const TalentsSurvival = PresetUtils.makePresetTalents('Survival 7/11/33', SavedTalents.create({ talentsString: '502-0050051-230230230250022151' }));
+export const TalentsPetMelee = PresetUtils.makePresetTalents('Pet/Melee 16/10/25', SavedTalents.create({ talentsString: '53200005001-005005-5302002300502201' }));
 
 export const TalentPresets = {
-	[ClassicPhase.Phase1]: [TalentsP1, TalentsBeastMastery, TalentsSurvival],
+	[ClassicPhase.Phase1]: [TalentsP1, TalentsBeastMastery, TalentsSurvival, TalentsPetMelee],
 };
 
 export const DefaultTalents = TalentsP1;

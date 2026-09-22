@@ -8,7 +8,7 @@ from pathlib import Path
 import re
 import shutil
 
-from build_display import BUILDS, CLASS_COLORS, RACES
+from build_display import BUILDS, BUILD_CAVEATS, CLASS_COLORS, HYBRID_PARENTS, RACES
 from sensitivity import DISPLAY_METRICS, format_metric, load_columns
 
 
@@ -55,9 +55,10 @@ def main():
     shutil.copyfile(args.sensitivity, args.output / "sensitivity.json")
     shutil.copytree(args.sensitivity.parent / "sensitivity", args.output / "sensitivity", dirs_exist_ok=True)
     shutil.copytree("artifacts/mana_regen", args.output / "mana_regen", dirs_exist_ok=True)
+    shutil.copytree("artifacts/research_builds", args.output / "research_builds", dirs_exist_ok=True)
     for extension in ("json", "csv", "svg", "png"):
         shutil.copyfile(args.results.with_suffix("." + extension), args.output / ("results." + extension))
-    for name in ("build_reviews.md", "in_game_checks.md", "energy_audit.md", "auto_attack_audit.md", "crit_model.md", "forever_gear_data.md", "mechanics_review.md", "history_review.md", "mana_regeneration.md", "mythicsim_review.md"):
+    for name in ("build_reviews.md", "build_updates.md", "in_game_checks.md", "energy_audit.md", "auto_attack_audit.md", "crit_model.md", "forever_gear_data.md", "mechanics_review.md", "history_review.md", "mana_regeneration.md", "mythicsim_review.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
     body = []
     for key, class_name, label, icon in builds:
@@ -76,6 +77,7 @@ def main():
             if not (args.profiles / filename).exists():
                 raise ValueError(f"Missing replay profile: {filename}")
             title = f"Mean {row['DPS']:.2f} DPS; SE {row['StandardError']:.2f}; mana-limited {row['OOMSeconds']:.2f}s"
+            title += " " + " ".join(BUILD_CAVEATS.get(key, []))
             if row.get("UnmodeledSetBonuses"):
                 title += f'; {len(row["UnmodeledSetBonuses"])} equipped-set effects omitted'
             cells.append(f'<td><a href="../{simulator}/?profile={key}__{race_file}" title="{escape(title)}">{row["DPS"]:.0f}</a></td>')
@@ -99,7 +101,7 @@ def main():
         body.append(
             f'<tr><th scope="row" style="color:{CLASS_COLORS[class_name]}">'
             f'<a href="../{simulator}/?build={key}"><img src="icons/{icon}.jpg" alt="">'
-            f'{escape(class_name)}<br><span>{escape(label)}</span></a></th>{"".join(cells)}</tr>'
+            f'{escape(class_name)}<br><span>{escape(label)}{"*" if key in HYBRID_PARENTS else ""}</span></a></th>{"".join(cells)}</tr>'
         )
     factions = {r["Race"]: r["Faction"] for r in rows}
     heading = "".join(f'<th scope="col" class="{factions[r].lower()}">{escape(r)}</th>' for r in RACES)
@@ -133,6 +135,10 @@ th span{font-weight:400}.unavailable{color:#68707e}td a{color:inherit}
 <!-- invalid-results -->
 <p>Rows are ordered by each build’s highest mean DPS. Click a DPS cell to open that exact setup.
 The simulator’s <strong>Ranked builds</strong> selector also loads complete race/build profiles.</p>
+<p class="note">* Separate hybrid rows: Pet/Melee uses an approximate Hawk guardian; Arcane–Frost uses an assumed
+Ice Lance coefficient and unresolved proc timing; 2H Bloodthirst uses unverified level-60 rage generation.
+Their equipment comes from the Survival, Frost and Arms profiles respectively.
+<a href="build_updates.md">Build comparisons and limitations</a>.</p>
 <p class="note">Equipment is recorded in each profile; no world or campfire buffs. Hit is normalized through a paid benchmark budget,
 not an obtainable reforging system. Imported bonus stats contain that fixed adjustment:
 changing gear, talents or race requires recalculation for a fair comparison.
@@ -151,6 +157,7 @@ Healing-only effects give no inferred spell damage. These are tested builds, not
 <a href="sensitivity/gear_110.json" download>Gear +10% run</a>
 <a href="sensitivity/gear_150.json" download>Gear +50% run</a>
 <a href="build_reviews.md">Build reviews</a><a href="in_game_checks.md">In-game checks</a>
+<a href="research_builds/validation.json.gz" download>Build validation requests/results</a>
 <a href="forever_gear_data.md">Equipment sources and gaps</a>
 <a href="energy_audit.md">Energy model</a><a href="auto_attack_audit.md">Auto-attack model</a>
 <a href="crit_model.md">Critical strike model</a>

@@ -12,7 +12,7 @@ from matplotlib.offsetbox import AnnotationBbox, OffsetImage
 from matplotlib.patches import Rectangle
 import numpy as np
 
-from build_display import BUILDS, CLASS_COLORS, RACES
+from build_display import BUILDS, CLASS_COLORS, HYBRID_PARENTS, RACES
 from sensitivity import DISPLAY_METRICS, format_metric, load_columns
 
 
@@ -91,7 +91,8 @@ def main():
         box = AnnotationBbox(OffsetImage(plt.imread(path), zoom=.31), (-2.05, y),
                              frameon=False, annotation_clip=False)
         ax.add_artist(box)
-        ax.text(-1.78, y, label, ha="left", va="center", fontsize=10, color="#253248", clip_on=False)
+        ax.text(-1.78, y, label + ("*" if key in HYBRID_PARENTS else ""),
+                ha="left", va="center", fontsize=10, color="#253248", clip_on=False)
         best = float(np.nanmax(values[y]))
         for x, value in enumerate(values[y]):
             if np.isnan(value):
@@ -161,7 +162,7 @@ def main():
                  "Caps and resource thresholds affect curvature. Hypothetical upgrades, not future-item predictions.",
                  fontsize=8.5, color="#475569")
     fig.text(.07, .02,
-             "Beta model; uncertainty and assumptions are recorded with the raw results. Game icons via Wowhead.",
+             "* Hybrid rows depend on guardian, proc or rage assumptions; see build notes. All rows use a beta model. Game icons via Wowhead.",
              fontsize=8.5, color="#64748b")
     prefix = args.output or args.results.with_suffix("")
     prefix.parent.mkdir(parents=True, exist_ok=True)

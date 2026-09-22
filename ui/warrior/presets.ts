@@ -24,6 +24,7 @@ import { SavedTalents } from '../core/proto/ui.js';
 import { Warrior_Options as WarriorOptions, WarriorShout, WarriorStance } from '../core/proto/warrior.js';
 import APLFuryJSON from './apls/forever_fury.apl.json';
 import APLArmsJSON from './apls/forever_arms.apl.json';
+import APLFuryTwoHandJSON from './apls/forever_fury_2h.apl.json';
 import GearFuryJSON from './gear_sets/forever_fury.gear.json';
 import GearArmsJSON from './gear_sets/forever_arms.gear.json';
 
@@ -47,9 +48,10 @@ export const DefaultGear = GearFury;
 
 export const APLFury = PresetUtils.makePresetAPLRotation('Fury', APLFuryJSON);
 export const APLArms = PresetUtils.makePresetAPLRotation('Arms', APLArmsJSON);
+export const APLFuryTwoHand = PresetUtils.makePresetAPLRotation('2H Bloodthirst', APLFuryTwoHandJSON);
 
 export const APLPresets = {
-	[ClassicPhase.Phase1]: [APLFury, APLArms],
+	[ClassicPhase.Phase1]: [APLFury, APLArms, APLFuryTwoHand],
 };
 
 export const DefaultAPLs = [APLPresets[ClassicPhase.Phase1][0]];
@@ -64,9 +66,10 @@ export const DefaultAPLs = [APLPresets[ClassicPhase.Phase1][0]];
 export const TalentsP1DPS = PresetUtils.makePresetTalents('Fury 17/34/0', SavedTalents.create({ talentsString: '20305113002-050520035151010051' }));
 
 export const TalentsArms = PresetUtils.makePresetTalents('Arms 34/17/0', SavedTalents.create({ talentsString: '20305213132515001-550500000002' }));
+export const TalentsFuryTwoHand = PresetUtils.makePresetTalents('2H Bloodthirst 20/31/0', SavedTalents.create({ talentsString: '30304203032-050500320051310051' }));
 
 export const TalentPresets = {
-	[ClassicPhase.Phase1]: [TalentsP1DPS, TalentsArms],
+	[ClassicPhase.Phase1]: [TalentsP1DPS, TalentsArms, TalentsFuryTwoHand],
 };
 
 export const DefaultTalents = TalentsP1DPS;

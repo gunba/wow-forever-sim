@@ -28,9 +28,11 @@ func builds() []build {
 		{"beast_mastery", "Beast Mastery", "hunter", "TalentsBeastMastery", "beast_mastery", "forever_beast_mastery", proto.Class_ClassHunter, [3]int{31, 0, 0}, "bestialWrath"},
 		{"marksmanship", "Marksmanship", "hunter", "TalentsP1", "p1", "forever_marksmanship", proto.Class_ClassHunter, [3]int{0, 31, 0}, ""},
 		{"survival", "Survival", "hunter", "TalentsSurvival", "survival", "forever_survival", proto.Class_ClassHunter, [3]int{0, 0, 31}, "laceratingStrikes"},
+		{"pet_melee", "Pet/Melee", "hunter", "TalentsPetMelee", "pet_melee", "forever_survival", proto.Class_ClassHunter, [3]int{15, 0, 20}, "summonHawk"},
 		{"arcane", "Arcane", "mage", "TalentsArcane", "forever_arcane", "forever_arcane", proto.Class_ClassMage, [3]int{31, 0, 0}, "arcanePower"},
 		{"fire", "Fire", "mage", "TalentsP1Fire", "forever_fire", "forever_fire", proto.Class_ClassMage, [3]int{0, 31, 0}, "combustion"},
 		{"frost", "Frost", "mage", "TalentsFrost", "forever_frost", "forever_frost", proto.Class_ClassMage, [3]int{0, 0, 30}, "wintersChill"},
+		{"arcane_frost", "Arcane–Frost", "mage", "TalentsArcaneFrost", "forever_arcane_frost", "forever_frost", proto.Class_ClassMage, [3]int{21, 0, 20}, "missileBarrage"},
 		{"retribution", "Retribution", "retribution_paladin", "TalentsRetribution", "basic_ret", "forever_retribution", proto.Class_ClassPaladin, [3]int{0, 0, 31}, "twistOfLight"},
 		{"shadow", "Shadow", "shadow_priest", "TalentsP1Shadow", "p1", "forever_shadow", proto.Class_ClassPriest, [3]int{0, 0, 31}, "shadowform"},
 		{"smite", "Smite", "smite_priest", "TalentsSmite", "launch", "forever_smite", proto.Class_ClassPriest, [3]int{0, 15, 0}, "searingLight"},
@@ -43,6 +45,22 @@ func builds() []build {
 		{"destruction", "Destruction", "warlock", "TalentsShadowAndFlame", "forever_shadow_and_flame", "forever_destruction", proto.Class_ClassWarlock, [3]int{0, 0, 31}, "incinerate"},
 		{"fury", "Fury", "warrior", "TalentsP1DPS", "forever_fury", "forever_fury", proto.Class_ClassWarrior, [3]int{0, 31, 0}, "bloodthirst"},
 		{"arms", "Arms", "warrior", "TalentsArms", "forever_arms", "forever_arms", proto.Class_ClassWarrior, [3]int{31, 0, 0}, "mortalStrike"},
+		{"fury_2h", "2H Bloodthirst", "warrior", "TalentsFuryTwoHand", "forever_fury_2h", "forever_arms", proto.Class_ClassWarrior, [3]int{11, 31, 0}, "bloodthirst"},
+	}
+}
+
+// Hybrid rows inherit their comparison profile's equipment and scenario model.
+// Talent identity and rotation remain specific to the hybrid.
+func (b build) modelKey() string {
+	switch b.Key {
+	case "pet_melee":
+		return "survival"
+	case "arcane_frost":
+		return "frost"
+	case "fury_2h":
+		return "arms"
+	default:
+		return b.Key
 	}
 }
 
@@ -66,7 +84,7 @@ func (b build) player(race proto.Race) *proto.Player {
 		Profession1:         proto.Profession_Engineering,
 		ForeverTier1Bonuses: true,
 	}
-	switch b.Key {
+	switch b.modelKey() {
 	case "balance":
 		core.WithSpec(p, &proto.Player_BalanceDruid{BalanceDruid: &proto.BalanceDruid{Options: &proto.BalanceDruid_Options{}}})
 	case "feral":
@@ -79,7 +97,7 @@ func (b build) player(race proto.Race) *proto.Player {
 		core.WithSpec(p, &proto.Player_EnhancementShaman{EnhancementShaman: &proto.EnhancementShaman{Options: &proto.EnhancementShaman_Options{}}})
 	case "beast_mastery", "marksmanship", "survival":
 		p.DistanceFromTarget = 12
-		if b.Key == "survival" {
+		if b.modelKey() == "survival" {
 			p.DistanceFromTarget = 5
 		}
 		core.WithSpec(p, &proto.Player_Hunter{Hunter: &proto.Hunter{Options: &proto.Hunter_Options{
@@ -129,6 +147,7 @@ func casterConsumes() *proto.Consumes {
 }
 
 func (b build) consumes() *proto.Consumes {
+	b.Key = b.modelKey()
 	c := casterConsumes()
 	switch b.Class {
 	case proto.Class_ClassMage, proto.Class_ClassShaman:

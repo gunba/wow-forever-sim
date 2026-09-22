@@ -3,6 +3,7 @@
 package main
 
 import (
+	"encoding/json"
 	"testing"
 
 	"github.com/wowsims/classic/sim/core/proto"
@@ -10,12 +11,27 @@ import (
 )
 
 func TestHunterBaselineManaSustain(t *testing.T) {
+	var saved struct{ Results []resultRow }
+	if err := json.Unmarshal(mustRead("artifacts/forever_dps_5min.json"), &saved); err != nil {
+		t.Fatal(err)
+	}
+	players := map[string]json.RawMessage{}
+	for _, row := range saved.Results {
+		if row.Race == "Orc" {
+			players[row.Key] = row.BaselinePlayer
+		}
+	}
 	for _, b := range builds() {
 		if b.Key != "beast_mastery" && b.Key != "marksmanship" {
 			continue
 		}
 		t.Run(b.Key, func(t *testing.T) {
-			r := run(b, b.player(proto.Race_RaceOrc), 200, 20260920)
+			// Exercise the actual ranking loadout, not the old seed gear.
+			p := &proto.Player{}
+			if err := protojson.Unmarshal(players[b.Key], p); err != nil {
+				t.Fatal(err)
+			}
+			r := run(b, p, 200, 20260920)
 			if r.OOMSeconds > 5 {
 				t.Fatalf("mana-limited time = %.2fs in 300s", r.OOMSeconds)
 			}
