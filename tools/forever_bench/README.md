@@ -257,6 +257,33 @@ replay downloads, raw results and audit notes at `/classic/review/` in the built
 site. The same access protection must cover this directory and all simulator
 assets when deployed.
 
+### MP5 interpretation
+
+**Settings → Other → MP5 acts per second** enables a provisional interpretation:
+one point of the MP5 stat restores one mana per second, rather than one per five
+seconds. It applies to flat MP5 from equipment, buffs and consumables, including
+temporary stat changes. Spirit regeneration, direct mana returns and
+percentage-based mana effects are unchanged. The existing two-second mana-tick
+cadence is unchanged. This is a rate assumption, not a verified Forever rule.
+
+The option is off by default and in the published rankings. It is stored as
+`Player.forever_mp5_per_second` and survives profile export/import. Loading a
+published ranked profile restores its recorded off setting.
+
+For a paired experiment without changing the saved profile:
+
+```sh
+/tmp/forever-bench -baseline-results artifacts/forever_dps_5min.json \
+  -build fire -race Orc -iterations 5000 -seed 20293001 \
+  -mp5-per-second=false -output /tmp/fire-mp5-off
+/tmp/forever-bench -baseline-results artifacts/forever_dps_5min.json \
+  -build fire -race Orc -iterations 5000 -seed 20293001 \
+  -mp5-per-second=true -output /tmp/fire-mp5-on
+```
+
+Omitting the flag preserves the player file's setting. Improved sustain in this
+experiment does not establish that the assumption matches the game.
+
 ### Hunter mana handling
 
 These changes describe the historical Horde snapshot. The

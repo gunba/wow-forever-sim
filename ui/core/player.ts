@@ -253,6 +253,7 @@ export class Player<SpecType extends Spec> {
 	private stormstrikeFrequency = 20.0;
 	private stormstrikeNatureAttackerFrequency = 4.0;
 	private foreverTier1Bonuses = false;
+	private foreverMp5PerSecond = false;
 	private equipmentScale = 1;
 
 	private readonly autoRotationGenerator: AutoRotationGenerator<SpecType> | null = null;
@@ -1070,6 +1071,16 @@ export class Player<SpecType extends Spec> {
 		return this.foreverTier1Bonuses;
 	}
 
+	getForeverMp5PerSecond(): boolean {
+		return this.foreverMp5PerSecond;
+	}
+
+	setForeverMp5PerSecond(eventID: EventID, value: boolean) {
+		if (value === this.foreverMp5PerSecond) return;
+		this.foreverMp5PerSecond = value;
+		this.miscOptionsChangeEmitter.emit(eventID);
+	}
+
 	getEquipmentScale(): number {
 		return this.equipmentScale;
 	}
@@ -1441,6 +1452,7 @@ export class Player<SpecType extends Spec> {
 				stormstrikeFrequency: this.getStormstrikeFrequency(),
 				stormstrikeNatureAttackerFrequency: this.getStormstrikeNatureAttackerFrequency(),
 				foreverTier1Bonuses: this.getForeverTier1Bonuses(),
+				foreverMp5PerSecond: this.getForeverMp5PerSecond(),
 				equipmentScale: this.getEquipmentScale() === 1 ? 0 : this.getEquipmentScale(),
 			});
 			player = withSpecProto(this.spec, player, this.getSpecOptions());
@@ -1502,6 +1514,7 @@ export class Player<SpecType extends Spec> {
 				this.setStormstrikeFrequency(eventID, proto.stormstrikeFrequency);
 				this.setStormstrikeNatureAttackerFrequency(eventID, proto.stormstrikeNatureAttackerFrequency);
 				this.setForeverTier1Bonuses(eventID, proto.foreverTier1Bonuses);
+				this.setForeverMp5PerSecond(eventID, proto.foreverMp5PerSecond);
 				this.setEquipmentScale(eventID, proto.equipmentScale);
 			}
 			if (loadCategory(SimSettingCategories.External)) {

@@ -186,8 +186,9 @@ export class SettingsTab extends SimTab {
 
 		const itemSwapConfig = this.simUI.individualConfig.itemSwapConfig;
 		const tierSupported = !isTankSpec(this.simUI.player.spec) && !isHealingSpec(this.simUI.player.spec);
+		const mp5Supported = ![Spec.SpecWarrior, Spec.SpecTankWarrior, Spec.SpecRogue].includes(this.simUI.player.spec);
 
-		if (settings.length || itemSwapConfig?.itemSlots.length || tierSupported) {
+		if (settings.length || itemSwapConfig?.itemSlots.length || tierSupported || mp5Supported) {
 			const contentBlock = new ContentBlock(this.column2, 'other-settings', {
 				header: { title: 'Other' },
 			});
@@ -201,6 +202,17 @@ export class SettingsTab extends SimTab {
 
 			if (itemSwapConfig?.itemSlots.length) {
 				new ItemSwapPicker(contentBlock.bodyElement, this.simUI, this.simUI.player, itemSwapConfig);
+			}
+			if (mp5Supported) {
+				new BooleanPicker(contentBlock.bodyElement, this.simUI.player, {
+					id: 'forever-mp5-per-second',
+					label: 'MP5 acts per second',
+					labelTooltip: 'Provisional model: each point of the MP5 stat restores one mana per second instead of one per five seconds. Applies to static and temporary MP5 from gear, buffs and consumes. Spirit regeneration and direct mana returns are unchanged. Not verified in the beta; off in the published rankings.',
+					changedEvent: player => TypedEvent.onAny([player.miscOptionsChangeEmitter, player.sim.rulesetChangeEmitter]),
+					getValue: player => player.getForeverMp5PerSecond(),
+					setValue: (eventID, player, value) => player.setForeverMp5PerSecond(eventID, value),
+					showWhen: player => player.sim.getRuleset() == Ruleset.RulesetForever,
+				});
 			}
 			if (tierSupported) {
 				new BooleanPicker(contentBlock.bodyElement, this.simUI.player, {
@@ -392,6 +404,7 @@ export class SettingsTab extends SimTab {
 					channelClipDelayMs: player.getChannelClipDelay(),
 					inFrontOfTarget: player.getInFrontOfTarget(),
 					foreverTier1Bonuses: player.getForeverTier1Bonuses(),
+					foreverMp5PerSecond: player.getForeverMp5PerSecond(),
 					distanceFromTarget: player.getDistanceFromTarget(),
 					healingModel: player.getHealingModel(),
 				});
@@ -414,6 +427,7 @@ export class SettingsTab extends SimTab {
 					simUI.player.setChannelClipDelay(eventID, newSettings.channelClipDelayMs);
 					simUI.player.setInFrontOfTarget(eventID, newSettings.inFrontOfTarget);
 					simUI.player.setForeverTier1Bonuses(eventID, newSettings.foreverTier1Bonuses);
+					simUI.player.setForeverMp5PerSecond(eventID, newSettings.foreverMp5PerSecond);
 					simUI.player.setDistanceFromTarget(eventID, newSettings.distanceFromTarget);
 					simUI.player.setHealingModel(eventID, newSettings.healingModel || HealingModel.create());
 				});

@@ -137,6 +137,7 @@ func NewCharacter(party *Party, partyIndex int, player *proto.Player) Character 
 
 		majorCooldownManager: newMajorCooldownManager(player.Cooldowns),
 	}
+	character.foreverMP5PerSecond = player.ForeverMp5PerSecond
 
 	if err := ValidateWeaponLayout(character.Class, *character.MainHand(), *character.OffHand()); err != nil {
 		panic(err)

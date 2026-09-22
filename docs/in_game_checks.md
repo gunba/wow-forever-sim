@@ -448,6 +448,43 @@ required level. A spell or skill row alone is insufficient: the retained
 If obtainable, record SP and healing before/after at two Spirit values.
 The engine currently grants no Fel Armor bonus.
 
+### T44 — Flat mana regeneration rate
+
+**Priority:** high · **Access:** level 20 with a known flat mana-regeneration effect
+
+Record the tooltip, spell/item ID, client build and mana changes for at least
+60 seconds with and without one flat mana-regeneration effect. Keep Spirit,
+Intellect and other regeneration sources unchanged. Start below full mana and
+separate continuous casting from five-second-rule recovery. Exclude potions,
+mana refunds and direct restoration procs from the comparison.
+
+If the effect advertises `X` mana per five seconds, the additional recovery
+should distinguish `12 × X` from `60 × X` over 60 seconds. Record tick spacing
+as well as the total; a displayed per-second rate does not by itself establish
+one-second ticks.
+
+**Current model:** the default uses MP5 / 5 per second. An opt-in provisional
+setting uses MP5 per second, without multiplying Spirit or direct mana returns.
+Both retain the existing two-second tick cadence.
+
+### T45 — Seal of Fury and shield-break mana
+
+**Priority:** medium · **Access:** level 20, if the early trained ranks are available
+
+Record the teaching source and spell IDs. With a shield equipped, compare
+isolated white attacks, specials and Judgement; then repeat without the shield.
+Track which attacks produce Holy damage and an absorb. Proc twice before the
+first shield is consumed to distinguish replacement, stacking and refresh.
+
+With Improved Seal of Fury, compare partial absorption, complete depletion,
+expiry and replacement. Record mana against same-level and higher-level
+attackers. Keep incoming damage and other mana sources identifiable.
+
+**Current model:** Fury and its shield-break restoration are not implemented.
+Another engine implements them but assumes replacement and white-hit-only
+triggers. The client effects establish a useful starting point, not every
+server interaction.
+
 ## Deferred beyond the current level limit
 
 | ID | Question | Why it matters | Access needed |
@@ -469,6 +506,7 @@ The engine currently grants no Fel Armor bonus.
 | T39 | Demonic Brand damage and proc rules | Change Fire and Shadow SP separately; compare Imp Firebolt, Succubus melee/Lash, Voidwalker and Felhunter attacks. Record brand spell IDs, target, charges, crits/misses and threat if measurable. Change SP after applying the brand to distinguish snapshotting from power at hit time and owner from pet scaling. Current child formulas are 65–68 at level 60 plus 7.8% matching-school power; power attribution, other-pet schools, crit behavior and 3× threat remain provisional. | Demonic Brand, normally level 25 or later |
 | T41 | Nature's Grace timing | Separate Wrath cast completion from projectile impact, recording when the haste aura appears. Check Moonfire/Swarm/Faerie Fire GCDs and whether a second crit refreshes the three-second duration. The model applies separate 10% cast-haste and GCD effects but retains Wrath's cast-completion proc timing. | Nature's Grace, normally level 30 |
 | T42 | Weapon-stone effects | Compare Firestone's spell crit and Fire power with Spellstone's casting speed and Shadow power, then test whether Spellstone also increases Fire damage as its effect mask says. Verify that stones work with an off-hand equipped and replace other weapon imbues. | Firestone from level 28; Spellstone from 36 |
+| T46 | Hammer of the Righteous availability | Confirm that spell 407632 is actually learnable, its teaching source, and whether it shares a cooldown with Holy Strike. Do not infer availability from a retained class-skill row or tooltip. If available, compare weapon-DPS scaling and target count. | Reported required level 40; trainer inspection may be possible earlier |
 
 ## Result record
 

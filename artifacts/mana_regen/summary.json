@@ -1,0 +1,192 @@
+{
+  "seed": 20293001,
+  "iterationsPerArm": 5000,
+  "duration": 300,
+  "assumption": "MP5 stat contributes one mana per second instead of one per five seconds; no other regeneration formula changed.",
+  "sourceSha256": {
+    "mp5_off": "0fdc1a0c965606c2c3c778787a8a968331bc59d79c78e341a02b996ef741e51e",
+    "mp5_per_second": "2330ffa191082a0a79e3cd2d655a42961a84781355223036ee85c5dd9837338a"
+  },
+  "comparisons": [
+    {
+      "build": "arcane",
+      "race": "Orc",
+      "baselineDps": 681.9656665832033,
+      "alternateDps": 712.7944314796763,
+      "gainPercent": 4.520574334912175,
+      "delta95Bound": 1.9269936578099698,
+      "baselineOomSeconds": 1.27315,
+      "alternateOomSeconds": 0
+    },
+    {
+      "build": "arcane",
+      "race": "Troll",
+      "baselineDps": 678.9266043573436,
+      "alternateDps": 709.8083559949856,
+      "gainPercent": 4.548614156440944,
+      "delta95Bound": 1.9227034717902167,
+      "baselineOomSeconds": 1.5144318182481886,
+      "alternateOomSeconds": 0
+    },
+    {
+      "build": "arcane",
+      "race": "Undead",
+      "baselineDps": 692.4060685707258,
+      "alternateDps": 723.8454773943126,
+      "gainPercent": 4.540602725866405,
+      "delta95Bound": 1.9656600284334675,
+      "baselineOomSeconds": 1.297,
+      "alternateOomSeconds": 0
+    },
+    {
+      "build": "arcane",
+      "race": "Human",
+      "baselineDps": 678.4902053827075,
+      "alternateDps": 708.065566414259,
+      "gainPercent": 4.358996017469319,
+      "delta95Bound": 1.9077289257799654,
+      "baselineOomSeconds": 1.1027,
+      "alternateOomSeconds": 0
+    },
+    {
+      "build": "arcane",
+      "race": "Gnome",
+      "baselineDps": 687.0925632421661,
+      "alternateDps": 714.1576289422501,
+      "gainPercent": 3.9390712617194845,
+      "delta95Bound": 1.8573034418681724,
+      "baselineOomSeconds": 0.6132,
+      "alternateOomSeconds": 0
+    },
+    {
+      "build": "arcane",
+      "race": "High Order",
+      "baselineDps": 680.8921118126331,
+      "alternateDps": 712.475070623198,
+      "gainPercent": 4.638467425696358,
+      "delta95Bound": 1.9223369076543098,
+      "baselineOomSeconds": 1.4748184167459988,
+      "alternateOomSeconds": 0
+    },
+    {
+      "build": "fire",
+      "race": "Orc",
+      "baselineDps": 605.6230749842946,
+      "alternateDps": 717.4156895966191,
+      "gainPercent": 18.459107525786344,
+      "delta95Bound": 1.8408104285447304,
+      "baselineOomSeconds": 31.880320000000037,
+      "alternateOomSeconds": 0
+    },
+    {
+      "build": "fire",
+      "race": "Troll",
+      "baselineDps": 598.5038014653459,
+      "alternateDps": 707.973709546901,
+      "gainPercent": 18.2905952833607,
+      "delta95Bound": 1.807828204846246,
+      "baselineOomSeconds": 32.03770000000004,
+      "alternateOomSeconds": 0
+    },
+    {
+      "build": "fire",
+      "race": "Undead",
+      "baselineDps": 619.7760115811654,
+      "alternateDps": 723.6520175714452,
+      "gainPercent": 16.760249517446233,
+      "delta95Bound": 1.8420895226901026,
+      "baselineOomSeconds": 29.674540000000036,
+      "alternateOomSeconds": 0
+    },
+    {
+      "build": "fire",
+      "race": "Human",
+      "baselineDps": 611.9873520269523,
+      "alternateDps": 712.0520787279376,
+      "gainPercent": 16.350783454847996,
+      "delta95Bound": 1.8289674962498503,
+      "baselineOomSeconds": 28.368950000000023,
+      "alternateOomSeconds": 0
+    },
+    {
+      "build": "fire",
+      "race": "Gnome",
+      "baselineDps": 622.1399848243227,
+      "alternateDps": 711.0031884198637,
+      "gainPercent": 14.283474099584481,
+      "delta95Bound": 1.8504932712663742,
+      "baselineOomSeconds": 24.685490000000016,
+      "alternateOomSeconds": 0
+    },
+    {
+      "build": "fire",
+      "race": "High Order",
+      "baselineDps": 594.6457930846701,
+      "alternateDps": 713.5643652138633,
+      "gainPercent": 19.99821969853921,
+      "delta95Bound": 1.7969697935467015,
+      "baselineOomSeconds": 34.60852841584203,
+      "alternateOomSeconds": 0
+    },
+    {
+      "build": "frost",
+      "race": "Orc",
+      "baselineDps": 627.7476550889112,
+      "alternateDps": 700.1116935400112,
+      "gainPercent": 11.527568102321407,
+      "delta95Bound": 1.8452557760933692,
+      "baselineOomSeconds": 24.0715,
+      "alternateOomSeconds": 0
+    },
+    {
+      "build": "frost",
+      "race": "Troll",
+      "baselineDps": 627.3178702465037,
+      "alternateDps": 700.936960815005,
+      "gainPercent": 11.735532185552566,
+      "delta95Bound": 1.8072856859217417,
+      "baselineOomSeconds": 24.646017273365914,
+      "alternateOomSeconds": 0
+    },
+    {
+      "build": "frost",
+      "race": "Undead",
+      "baselineDps": 633.5374451554209,
+      "alternateDps": 703.6206207498785,
+      "gainPercent": 11.06219942173501,
+      "delta95Bound": 1.8313438991703395,
+      "baselineOomSeconds": 23.3523,
+      "alternateOomSeconds": 0
+    },
+    {
+      "build": "frost",
+      "race": "Human",
+      "baselineDps": 628.0307980753381,
+      "alternateDps": 696.0653947007518,
+      "gainPercent": 10.833003227534753,
+      "delta95Bound": 1.828336050650404,
+      "baselineOomSeconds": 22.42715,
+      "alternateOomSeconds": 0
+    },
+    {
+      "build": "frost",
+      "race": "Gnome",
+      "baselineDps": 654.4245042386581,
+      "alternateDps": 700.5139569392234,
+      "gainPercent": 7.042745557668972,
+      "delta95Bound": 1.8278452612342586,
+      "baselineOomSeconds": 13.0155,
+      "alternateOomSeconds": 0
+    },
+    {
+      "build": "frost",
+      "race": "High Order",
+      "baselineDps": 628.4178736933461,
+      "alternateDps": 702.3238561592226,
+      "gainPercent": 11.760642966998258,
+      "delta95Bound": 1.7978030904105087,
+      "baselineOomSeconds": 24.609491095778655,
+      "alternateOomSeconds": 0
+    }
+  ]
+}

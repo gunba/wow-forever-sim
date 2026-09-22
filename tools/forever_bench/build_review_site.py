@@ -54,9 +54,10 @@ def main():
         shutil.copyfile(Path("assets/img/wowhead/icons") / f"{faction}.png", args.output / "icons" / f"{faction}.png")
     shutil.copyfile(args.sensitivity, args.output / "sensitivity.json")
     shutil.copytree(args.sensitivity.parent / "sensitivity", args.output / "sensitivity", dirs_exist_ok=True)
+    shutil.copytree("artifacts/mana_regen", args.output / "mana_regen", dirs_exist_ok=True)
     for extension in ("json", "csv", "svg", "png"):
         shutil.copyfile(args.results.with_suffix("." + extension), args.output / ("results." + extension))
-    for name in ("build_reviews.md", "in_game_checks.md", "energy_audit.md", "auto_attack_audit.md", "forever_gear_data.md", "mechanics_review.md", "history_review.md"):
+    for name in ("build_reviews.md", "in_game_checks.md", "energy_audit.md", "auto_attack_audit.md", "forever_gear_data.md", "mechanics_review.md", "history_review.md", "mana_regeneration.md", "mythicsim_review.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
     body = []
     for key, class_name, label, icon in builds:
@@ -137,6 +138,7 @@ not an obtainable reforging system. Imported bonus stats contain that fixed adju
 changing gear, talents or race requires recalculation for a fair comparison.
 Energy scaling with general haste is a model assumption. Druid Omen provisionally uses the client’s
 100% proc entry and ten-second cooldown; its server proc rate needs testing.
+The optional “MP5 acts per second” setting is off in these rankings; it is a separate, unverified mana-regeneration experiment.
 General haste does not shorten the default spell GCD in this model; that still needs a Forever measurement.
 Warrior rage still uses an inherited damage-based model, not a verified Forever level-60 rule.
 Hunter pets still inherit no owner stats; the observed low-level AP inheritance has no verified level-60 rule here.
@@ -151,7 +153,9 @@ Healing-only effects give no inferred spell damage. These are tested builds, not
 <a href="build_reviews.md">Build reviews</a><a href="in_game_checks.md">In-game checks</a>
 <a href="forever_gear_data.md">Equipment sources and gaps</a>
 <a href="energy_audit.md">Energy model</a><a href="auto_attack_audit.md">Auto-attack model</a>
-<a href="mechanics_review.md">Mechanics review</a><a href="history_review.md">Change-history review</a></nav>
+<a href="mechanics_review.md">Mechanics review</a><a href="history_review.md">Change-history review</a>
+<a href="mana_regeneration.md">Mana regeneration</a><a href="mana_regen/summary.json">Mana comparison data</a>
+<a href="mythicsim_review.md">Independent engine comparison</a></nav>
 <p class="note">Hover a result for its standard error and mana-limited time. A dash means that race/class combination is unavailable.</p>
 <p class="note">Equipment was selected by slot-by-slot DPS comparisons from the complete 706-item list and verified catalog supplements.
 Lower-level items remain when stronger or needed for a coverage gap; the known level-65 Undermine trinkets share a one-item limit.

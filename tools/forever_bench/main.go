@@ -36,6 +36,7 @@ var (
 	targetArmor      = flag.Float64("armor", 3731, "starting target armor before debuffs")
 	demon            = flag.Bool("demon", false, "use a demon target for a separate encounter sensitivity check")
 	tier1            = flag.Bool("tier1", true, "apply the role's full Forever Tier 1 bonuses independently of gear")
+	mp5PerSecond     = flag.Bool("mp5-per-second", false, "provisional MP5-as-mana-per-second interpretation; omitted preserves the saved player setting")
 	equipmentScale   = flag.Float64("equipment-scale", 1, "hypothetical item-stat and weapon-damage multiplier; enchants and effects stay fixed")
 	baselineResults  = flag.String("baseline-results", "", "read exact unnormalized BaselinePlayer profiles from a previous results file")
 	optimize         = flag.Bool("optimize", false, "search legal one-point talent reallocations")
@@ -203,6 +204,7 @@ func writeResults(rows []resultRow) {
 		"weaponStones": "client-effects-exclusive-main-hand-imbue-spellstone-school-mask36",
 		"naturesGrace": "10pct-cast-haste-separate-10pct-gcd-reduction-including-instants",
 		"rage":         "inherited-damage-based-level60-and-offhand-normalization-unresolved",
+		"mp5":          "per-player-foreverMp5PerSecond-opt-in-unverified-fivefold-MP5-only",
 	}, rows}
 	data, err := json.MarshalIndent(payload, "", "  ")
 	if err != nil {
@@ -291,6 +293,11 @@ func main() {
 					p.EquipmentScale = *equipmentScale
 				}
 			}
+			flag.Visit(func(f *flag.Flag) {
+				if f.Name == "mp5-per-second" {
+					p.ForeverMp5PerSecond = *mp5PerSecond
+				}
+			})
 			if *refreshEnchants {
 				prepareGearEnchants(b, p)
 			}

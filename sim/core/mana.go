@@ -16,7 +16,8 @@ type manaBar struct {
 	unit                     *Unit
 	SpiritManaRegenPerSecond SpiritManaRegenPerSecond
 
-	BaseMana float64
+	BaseMana            float64
+	foreverMP5PerSecond bool
 
 	currentMana           float64
 	manaCastingMetrics    *ResourceMetrics
@@ -146,6 +147,9 @@ func (mb *manaBar) doneIteration(sim *Simulation) {
 
 // Returns the rate of mana regen per second from mp5.
 func (unit *Unit) MP5ManaRegenPerSecond() float64 {
+	if unit.foreverMP5PerSecond && unit.Env != nil && unit.Env.IsForever() {
+		return unit.stats[stats.MP5]
+	}
 	return unit.stats[stats.MP5] / 5.0
 }
 

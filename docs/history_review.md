@@ -36,8 +36,9 @@ commit. No model attribution is inferred from the author field.
 
 ## Findings
 
-“Fixed” below means corrected in the working tree with a targeted test; it
-does not mean that the correction is already deployed.
+“Fixed” below means included in the published correctness release
+`c65503774`, with targeted regression coverage. It does not mean that every
+associated game mechanic has been measured in the beta.
 
 | ID | Finding and provenance | Disposition |
 |---|---|---|
