@@ -44,7 +44,6 @@ export class IconPicker<ModObject, ValueType> extends Input<ModObject, ValueType
 	private readonly counterElem: HTMLElement;
 
 	private currentValue: number;
-	private storedValue: ValueType | undefined;
 	private step: number;
 
 	constructor(parent: HTMLElement, modObj: ModObject, config: IconPickerConfig<ModObject, ValueType>) {
@@ -107,13 +106,10 @@ export class IconPicker<ModObject, ValueType> extends Input<ModObject, ValueType
 		const updateState = () => {
 			this.config.actionId(this.modObject)?.fillAndSet(this.rootAnchor, true, true);
 
-			if (this.showWhen()) {
-				this.rootElem.classList.remove('hide');
-				this.restoreValue();
-			} else {
-				this.storeValue();
-				this.rootElem.classList.add('hide');
-			}
+			// Visibility is presentation, not a buff edit. Classic/Forever
+			// controls can share fields; clearing a hidden control here erases
+			// imported values while the initial ruleset events are settling.
+			this.rootElem.classList.toggle('hide', !this.showWhen());
 		};
 		updateState();
 		this.config.changedEvent(this.modObject).on(updateState);
@@ -224,30 +220,6 @@ export class IconPicker<ModObject, ValueType> extends Input<ModObject, ValueType
 		if (!this.config.improvedId && (this.config.states > 3 || this.config.states == 0)) {
 			this.counterElem.textContent = String(this.currentValue);
 		}
-	}
-
-	/**
-	 * Stores value of current input and hides the element for later
-	 * restoration. Useful for events which trigger the element
-	 * on and off.
-	 */
-	storeValue() {
-		if (typeof this.storedValue !== 'undefined') return;
-
-		this.storedValue = this.getInputValue();
-		this.setInputValue(0 as ValueType);
-		this.inputChanged(TypedEvent.nextEventID());
-	}
-
-	/**
-	 * Restores value of current input and shows the element.
-	 */
-	restoreValue() {
-		if (typeof this.storedValue === 'undefined') return;
-
-		this.setInputValue(this.storedValue);
-		this.inputChanged(TypedEvent.nextEventID());
-		this.storedValue = undefined;
 	}
 
 	showWhen() {

@@ -32,6 +32,7 @@ try {
 		assert.ok(fresh.player.foreverTier1Bonuses, 'fresh default lacks Tier 1');
 		assert.ok(fresh.player.equipment.items.filter(item => item.enchant).length >= 9, 'fresh default lacks enchants');
 		assert.equal(fresh.encounter.duration, 300);
+		assert.equal(fresh.raidBuffs.moonkinAura, true, `${id}: startup hid the shared crit buff`);
 
 		await page.getByLabel('Ranked build', { exact: true }).selectOption(id);
 		await page.getByRole('button', { name: 'Load build', exact: true }).click();
@@ -80,14 +81,20 @@ try {
 		}
 
 		const other = bundle.profiles.find(candidate => candidate.key === profile.key && candidate.id !== id);
+		const previous = structuredClone(other.settings);
+		previous.raidBuffs.moonkinAura = false;
+		previous.raidBuffs.leaderOfThePack = true;
+		previous.debuffs.stormstrike = false;
 		await page.evaluate(({ key, settings }) => localStorage.setItem(key, JSON.stringify(settings)),
-			{ key: storageKey, settings: other.settings });
+			{ key: storageKey, settings: previous });
 		await page.goto(`${base}${route}/?profile=${id}`, { waitUntil: 'networkidle' });
 		await page.getByRole('button', { name: 'Simulate', exact: true }).waitFor();
 		const linked = await page.evaluate(key => JSON.parse(localStorage.getItem(key)), storageKey);
 		assert.deepEqual(linked.player.equipment, expected.player.equipment, `${id}: direct ranking link`);
 		assert.equal(linked.player.race, expected.player.race, `${id}: direct-link race`);
 		assert.deepEqual(linked.player.bonusStats.stats, expected.player.bonusStats.stats, `${id}: direct-link paid hit`);
+		assert.deepEqual(linked.raidBuffs, expected.raidBuffs, `${id}: direct-link raid buffs`);
+		assert.deepEqual(linked.debuffs, expected.debuffs, `${id}: direct-link debuffs`);
 		await context.close();
 	}
 } finally {
