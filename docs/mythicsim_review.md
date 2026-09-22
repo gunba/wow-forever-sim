@@ -36,7 +36,7 @@ tables were not treated as a new verification of every spell or its availability
 | M06 | MythicSim uses speed-based Warrior rage at every level, including unverified off-hand handling, with 3.5 rage/weapon-second for one-hand and 4.5 for two-hand. | Intentional modeling difference. Low-level evidence supports normalization, but neither this implementation nor its tests establish level-60 coefficients. Our measured one-hand result is about 3.46, not a verified universal 3.5. T02 remains open. |
 | M07 | The pinned engine retains persistent Hot Streak acceleration and the blanket one-third healing-to-damage conversion. | Do not import. Our release separately corrected both. Its Mage implementation also still omits Frostfire from Hot Streak's trigger list. |
 | M08 | Upstream `e8d4270a60` and `692958311b` update legacy weapon-proc amounts and periods that remain old in our handlers. | Source-supported follow-up outside the selected equipment. Independent client checks are listed below. Not imported as a blanket patch; proc chances, equipment availability and other behavior are separate questions. |
-| M09 | Both engines reset Earth Shock when a freshly cast Lightning Shield gains its initial three charges. | Fixed here: remove the unconditional cooldown reset. It originated in pre-Forever SoD `cd3e60f49`; `37d72dd6f` moved Rolling Thunder's handling but left this callback. Current shield effects do not grant that reset. Real-cast regressions fail before the fix and pass afterwards for ranks 1 and 7. |
+| M09 | Both engines reset Earth Shock's individual timer when a freshly cast Lightning Shield gains its initial three charges. The separate shared shock cooldown remains intact. | Fixed here: remove the unsupported individual-timer reset. It originated in pre-Forever SoD `cd3e60f49`; `37d72dd6f` moved Rolling Thunder's handling but left this callback. Current shield effects do not grant that reset. Real-cast regressions detect the timer mutation for ranks 1 and 7; full-rotation checks do **not** demonstrate extra casts or a DPS exploit. |
 | M10 | Upstream changes the Emerald Dragon Whelp's Acid Spit to a flat 374 while retaining assumed guardian stats. | Not verified as a complete formula. Our captured effect row has base 438.523071, variance 0.293333 and coefficient 1, not a literal flat 374. Guardian level scaling, distribution and the inherited 220 spell-damage stat need independent evidence. Dragon's Call is absent from our current catalog and selected gear. |
 | M11 | Talent and aura modifiers across nine classes migrate callbacks and spell-code lists to static/dynamic SpellMods. | Primarily structural, not nine new sets of verified mechanics. The reviewed filters and additive/multiplicative operations mostly preserve earlier behavior, including unresolved assumptions. Do not replace our independently corrected handlers merely to match the new API. |
 | M12 | Upstream adds APL action groups/variables, generated spell-table plumbing and a presimulation early exit. | Feature/performance work, not evidence that existing profiles deal incorrect damage. Current published APLs do not require these new constructs. |
@@ -128,8 +128,11 @@ Shield-break mana is especially relevant to tanking and incoming damage.
 It must not be granted to a two-handed Ret profile that is not taking hits.
 
 Lightning Shield is also absent from the published Shaman APLs; their initial
-shield setup precedes combat. The reset fix closes a custom-rotation exploit
-rather than justifying a change to those rankings.
+shield setup precedes combat. Even an explicit Earth Shock → rank-1 Lightning
+Shield loop produces the same three Earth Shocks over the inclusive 12-second
+test window before and after the fix: the shared cooldown already prevents
+early recasts. The fix removes unsupported timer mutation, not demonstrated
+extra damage.
 Matched 5,000-iteration replays at seed 20291951 reproduce the Orc Elemental,
 Stormcaller and Enhancement DPS exactly (510.58, 529.44 and 692.18), including
 their action/resource metrics after ignoring collection order.

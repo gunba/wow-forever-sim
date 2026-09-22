@@ -77,12 +77,14 @@ func TestLightningShieldDoesNotResetShocks(t *testing.T) {
 				t.Fatal("Earth Shock failed to cast")
 			}
 			readyAt := shock.CD.ReadyAt()
+			sharedReadyAt := shock.SharedCD.ReadyAt()
 			sim.CurrentTime = 2 * time.Second
 			if shock.IsReady(sim) || !shield.Cast(sim, unit) {
 				t.Fatal("expected a cooling-down shock and a castable Lightning Shield")
 			}
-			if shock.CD.ReadyAt() != readyAt || shock.IsReady(sim) {
-				t.Fatal("applying Lightning Shield reset Earth Shock's cooldown")
+			// The shared timer masked the old personal-timer reset in actual rotations.
+			if shock.CD.ReadyAt() != readyAt || shock.SharedCD.ReadyAt() != sharedReadyAt || shock.IsReady(sim) {
+				t.Fatal("applying Lightning Shield changed a shock cooldown")
 			}
 		})
 	}
