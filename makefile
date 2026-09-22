@@ -1,7 +1,7 @@
 BASE_DIR := classic
 OUT_DIR := dist/$(BASE_DIR)
 TS_CORE_SRC := $(shell find ui/core -name '*.ts' -type f)
-ASSETS_INPUT := $(shell find assets/ -type f)
+ASSETS_INPUT := $(filter-out assets/db_inputs/%,$(shell find assets/ -type f))
 ASSETS := $(patsubst assets/%,$(OUT_DIR)/assets/%,$(ASSETS_INPUT))
 # Recursive wildcard function. Needs to be '=' instead of ':=' because of recursion.
 rwildcard = $(foreach d,$(wildcard $(1:=/*)),$(call rwildcard,$d,$2) $(filter $(subst *,%,$2),$d))
@@ -24,6 +24,7 @@ $(OUT_DIR)/.dirstamp: \
   ui/core/proto/api.ts \
   $(ASSETS) \
   $(OUT_DIR)/bundle/.dirstamp
+	rm -rf $(OUT_DIR)/assets/db_inputs
 	touch $@
 
 $(OUT_DIR)/bundle/.dirstamp: \
@@ -98,7 +99,6 @@ $(OUT_DIR)/lib.wasm: sim/wasm/* sim/core/proto/api.pb.go $(filter-out sim/core/i
 $(OUT_DIR)/assets/%: assets/%
 	mkdir -p $(@D)
 	cp $< $@
-	rm -rf $(OUT_DIR)/assets/db_inputs
 
 binary_dist/dist.go: sim/web/dist.go.tmpl
 	mkdir -p binary_dist/$(BASE_DIR)

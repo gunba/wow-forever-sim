@@ -19,9 +19,10 @@ with this project's published `3bf610850` release.
   MythicSim revision.
 
 The independent Seal of Fury implementation, its follow-up combat handling,
-tests, metadata and integration have been reviewed. The inherited upstream
-changes are being compared separately; this is not a completed line-by-line
-audit of every generated spell table or talent migration.
+tests, metadata and integration have been reviewed. The comparison also covers
+the nine classes' talent-modifier migrations, core runtime changes, item-proc
+changes and selected spell-data migrations inherited from upstream. Generated
+tables were not treated as a new verification of every spell or its availability.
 
 ## Findings
 
@@ -34,6 +35,56 @@ audit of every generated spell table or talent migration.
 | M05 | The same commit replaces repeated textual action/resource searches in concurrent-result merging with typed-key indexes. | Performance lead, not a game-mechanic fix. Existing numerical comparisons do not justify attributing any DPS difference to it. |
 | M06 | MythicSim uses speed-based Warrior rage at every level, including unverified off-hand handling, with 3.5 rage/weapon-second for one-hand and 4.5 for two-hand. | Intentional modeling difference. Low-level evidence supports normalization, but neither this implementation nor its tests establish level-60 coefficients. Our measured one-hand result is about 3.46, not a verified universal 3.5. T02 remains open. |
 | M07 | The pinned engine retains persistent Hot Streak acceleration and the blanket one-third healing-to-damage conversion. | Do not import. Our release separately corrected both. Its Mage implementation also still omits Frostfire from Hot Streak's trigger list. |
+| M08 | Upstream `e8d4270a60` and `692958311b` update legacy weapon-proc amounts and periods that remain old in our handlers. | Source-supported follow-up outside the selected equipment. Independent client checks are listed below. Not imported as a blanket patch; proc chances, equipment availability and other behavior are separate questions. |
+| M09 | Both engines reset Earth Shock when a freshly cast Lightning Shield gains its initial three charges. | Fixed here: remove the unconditional cooldown reset. It originated in pre-Forever SoD `cd3e60f49`; `37d72dd6f` moved Rolling Thunder's handling but left this callback. Current shield effects do not grant that reset. Real-cast regressions fail before the fix and pass afterwards for ranks 1 and 7. |
+| M10 | Upstream changes the Emerald Dragon Whelp's Acid Spit to a flat 374 while retaining assumed guardian stats. | Not verified as a complete formula. Our captured effect row has base 438.523071, variance 0.293333 and coefficient 1, not a literal flat 374. Guardian level scaling, distribution and the inherited 220 spell-damage stat need independent evidence. Dragon's Call is absent from our current catalog and selected gear. |
+| M11 | Talent and aura modifiers across nine classes migrate callbacks and spell-code lists to static/dynamic SpellMods. | Primarily structural, not nine new sets of verified mechanics. The reviewed filters and additive/multiplicative operations mostly preserve earlier behavior, including unresolved assumptions. Do not replace our independently corrected handlers merely to match the new API. |
+| M12 | Upstream adds APL action groups/variables, generated spell-table plumbing and a presimulation early exit. | Feature/performance work, not evidence that existing profiles deal incorrect damage. Current published APLs do not require these new constructs. |
+| M13 | A suspected Demonic Sacrifice reset guard appears absent when reading only the owner's reset function. | Already correct: `Character.reset` resets the owner before its pets; `OnPetEnable` cancels sacrifice without Demonic Pact. A no-Pact full-run check retains the Succubus but records zero sacrifice uptime and zero sacrifice mana. The transient reset proc is not a combat benefit. |
+
+### Inherited changes reviewed
+
+- Talent modifiers: `afe03c6c5f` (Mage), `4065bef8a6` (Priest),
+  `e50470f4c1` (Warlock), `625ef4d018` (Rogue), `c52f60acd0` (Shaman),
+  `c9534eafab` (Druid), `804f484304` (Paladin), `5ab5fa6269` (Warrior),
+  and `c18304461c` (Hunter).
+- Runtime: `35792e1fe5`, `0f75974f28`, the SpellMod infrastructure and
+  `c6156ba564`'s APL integration. No performance refactor was imported.
+- Selected data migrations through `2ac3dd8e7c`: rank/cost/cooldown lookups,
+  Mage damage variance, Rogue cooldowns and Paladin triggered-aura durations.
+  Replacing literals with generated rows does not resolve coefficients,
+  server scripts or learnability. This was not an exhaustive re-extraction
+  of every generated spell row.
+- Clearcasting (`d66773b84b`), Sanctity Aura (`7fe7a34532`), Expose Armor,
+  Curse of Recklessness and Firestone overlap corrections already covered
+  by this project's earlier review. Shadow Word: Death and its backlash
+  remain H11/T37 rather than importing only its damage component.
+
+### Legacy item effects
+
+The captured 1.60.1.69893 `SpellEffect` rows independently support these
+amounts and periods. Numbers are base effects, not final damage after
+modifiers or proof of proc frequency.
+
+| Item / effect spell | Current handler | Captured client effect |
+|---|---|---|
+| Barovian Family Sword / 18652 | 30 every 3 seconds | 49 every second |
+| Blade of Eternal Darkness / 27860 | 100 damage, 100 mana | 112 damage, 104 mana |
+| Ebon Hilt of Marduk / 18656 | 70 every second | 28 every 3 seconds |
+| Frightskull Shaft / 18633 | 8 every 2 seconds, −50 Strength | 15 every 2 seconds, −92 attack power |
+| Gravestone War Axe / 18289 | 55 every 3 seconds | 42 every 3 seconds |
+| Hookfang Shanker / 13526 | 7 every 3 seconds | 13 every 2 seconds; −50 armor |
+| Keris of Zul'Serak / 16528 | 8 every 2 seconds | 10 every second |
+| Runeblade of Baron Rivendare / 17625 | 20 health every 5 seconds | 60 health every 5 seconds |
+| The Hand of Antu'sul / 13532 | 7 direct damage | 42 direct damage |
+| Venomspitter / 18203 | 7 every 2 seconds | 7 every second |
+| Firebreather / 16413 | 70 direct plus 3 every 2 seconds | 77 direct plus 2 every second |
+
+Only The Hand of Antu'sul (9639, item level 50) is present in our current
+catalog; none of these weapons is equipped in the 147 published profiles.
+These are recorded omissions, not corrected item effects. Their inherited
+proc rates and full duration/debuff handling must not acquire “verified”
+status from the amount checks.
 
 ### Seal of Fury evidence
 
@@ -76,9 +127,16 @@ their recorded DPS or establish that either ability improves those builds.
 Shield-break mana is especially relevant to tanking and incoming damage.
 It must not be granted to a two-handed Ret profile that is not taking hits.
 
-### Review queue
+Lightning Shield is also absent from the published Shaman APLs; their initial
+shield setup precedes combat. The reset fix closes a custom-rotation exploit
+rather than justifying a change to those rankings.
+Matched 5,000-iteration replays at seed 20291951 reproduce the Orc Elemental,
+Stormcaller and Enhancement DPS exactly (510.58, 529.44 and 692.18), including
+their action/resource metrics after ignoring collection order.
 
-Finish the imported upstream spell-data and modifier migrations against our
-current implementations. Separate behavior changes from structural refactors,
-and retain source gaps rather than treating generated tables as an availability
-list. No MythicSim implementation has been copied into the released engine.
+### Remaining work
+
+The comparison identifies bounded follow-ups, not complete feature parity.
+Fury's absorb behavior, Hammer availability, guardian formulas and the legacy
+weapon effects above remain open. No MythicSim implementation has been copied
+wholesale into this engine. See T45–T47 and H11/H20 for actionable checks.

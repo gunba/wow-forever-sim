@@ -82,15 +82,6 @@ func (shaman *Shaman) registerNewLightningShieldSpell(rank int) {
 				shaman.ActiveShield = nil
 			}
 		},
-		OnStacksChange: func(aura *core.Aura, sim *core.Simulation, oldStacks, newStacks int32) {
-			if newStacks == aura.MaxStacks {
-				for _, spell := range shaman.EarthShock {
-					if spell != nil {
-						spell.CD.Reset()
-					}
-				}
-			}
-		},
 		OnSpellHitTaken: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 			if spell.ProcMask.Matches(core.ProcMaskMelee) && result.Landed() && icd.IsReady(sim) {
 				icd.Use(sim)

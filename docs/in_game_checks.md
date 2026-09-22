@@ -485,6 +485,20 @@ Another engine implements them but assumes replacement and white-hit-only
 triggers. The client effects establish a useful starting point, not every
 server interaction.
 
+### T47 — Lightning Shield and shock cooldowns
+
+**Priority:** medium · **Access:** level 20
+
+With no special gear effects, cast Earth Shock, then rank-1 Lightning Shield
+while the shock is still cooling down. Once the global cooldown ends, check
+whether Earth Shock remains unavailable until its original cooldown finishes.
+Repeat with rank 2 and a fresh versus replaced shield. Record spell IDs and
+cooldown timestamps.
+
+**Current model:** applying Lightning Shield does not reset shocks. The old
+callback came from SoD's charge mechanics and granted a reset even on the
+initial three charges; Forever's captured shield effects do not specify it.
+
 ## Deferred beyond the current level limit
 
 | ID | Question | Why it matters | Access needed |

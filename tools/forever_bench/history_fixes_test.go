@@ -63,6 +63,31 @@ func TestClearcastingConsumptionAndCooldown(t *testing.T) {
 	}
 }
 
+func TestLightningShieldDoesNotResetShocks(t *testing.T) {
+	for _, id := range []int32{324, 10432} {
+		t.Run(core.ActionID{SpellID: id}.String(), func(t *testing.T) {
+			req := historyTalentFixture("elemental", nil)
+			sim := core.NewSim(req, simsignals.Signals{})
+			sim.Options.Interactive = true
+			sim.Reset()
+			unit := sim.Raid.AllPlayerUnits[0]
+			shock := unit.GetSpell(core.ActionID{SpellID: 10414})
+			shield := unit.GetSpell(core.ActionID{SpellID: id})
+			if !shock.Cast(sim, unit.CurrentTarget) {
+				t.Fatal("Earth Shock failed to cast")
+			}
+			readyAt := shock.CD.ReadyAt()
+			sim.CurrentTime = 2 * time.Second
+			if shock.IsReady(sim) || !shield.Cast(sim, unit) {
+				t.Fatal("expected a cooling-down shock and a castable Lightning Shield")
+			}
+			if shock.CD.ReadyAt() != readyAt || shock.IsReady(sim) {
+				t.Fatal("applying Lightning Shield reset Earth Shock's cooldown")
+			}
+		})
+	}
+}
+
 func TestStarshardsSharedCooldown(t *testing.T) {
 	req := racialFixture("smite", proto.Race_RaceNightElf)
 	req.Raid.Parties[0].Players[0].Rotation = &proto.APLRotation{}
