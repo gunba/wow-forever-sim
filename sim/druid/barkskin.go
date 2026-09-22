@@ -32,9 +32,7 @@ func (druid *Druid) registerBarkskinCD() {
 		},
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, _ *core.Spell) {
 			druid.BarkskinAura.Activate(sim)
-			if !druid.AutoAttacks.ContinueWhileCasting() {
-				druid.AutoAttacks.StopMeleeUntil(sim, sim.CurrentTime, false)
-			}
+			druid.AutoAttacks.StopMeleeUntil(sim, sim.CurrentTime, false)
 		},
 	})
 

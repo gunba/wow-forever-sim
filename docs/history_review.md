@@ -173,3 +173,17 @@ Matched 5,000-iteration Tauren checks, seed 20292584:
 Balance reflects the Nature's Grace GCD correction. The Feral profile uses
 neither Mangle nor Furor; those corrections are covered by targeted mechanic
 tests rather than an expected change in this benchmark.
+
+### Auto-attack follow-up
+
+The role-wide casting exception introduced in `79fcaeccb` also bypassed
+ordinary spell swing resets. This was broader than the intended weapon-cast
+exceptions. The [auto-attack audit](auto_attack_audit.md) records the restoration
+of the original Classic reset helper, explicit Slam/Hunter shot exceptions,
+regression checks and the matched 588-run replay. Both hardcast and instant
+Lightning Bolt follow the original Shaman reset hook; the latter remains an
+explicit in-game check in T48.
+
+The local rebuild also exposed a build dependency omission: imported UI JSON
+files did not trigger rebundling. They now do, so regenerated ranking data
+cannot leave stale DPS labels in the selectable defaults.

@@ -500,6 +500,26 @@ SoD callback reset Earth Shock's individual timer on the initial three charges,
 but the separate shared shock cooldown still prevented early recasts. The
 callback has been removed; Forever's captured shield effects do not specify it.
 
+### T48 — Spellcasting and melee swing timers
+
+**Priority:** high · **Access:** level 20 for ordinary Lightning Bolt; later for Maelstrom
+
+With a known weapon speed and no haste procs, record white swings, Lightning
+Bolt start/completion, and the first swing after casting. Start casts at several
+points in the swing cycle, then chain casts without a gap. Compare genuinely
+short casts with casts that occupy the whole global cooldown. Record interrupted
+casts separately.
+
+At later access, repeat at one, three and five Maelstrom stacks. In particular,
+measure whether the instant five-stack Lightning Bolt resets the timer. Compare
+Chain Lightning as an ordinary cast, not as a Maelstrom spender.
+
+**Current model:** the original Classic Shaman helper schedules the next swing
+at cast completion plus one full swing duration, including zero-time casts.
+It does not release a delayed swing immediately at cast completion. Slam and
+Hunter weapon shots have explicit separate exceptions; the earlier blanket
+permission for melee during spellcasting has been removed.
+
 ## Deferred beyond the current level limit
 
 | ID | Question | Why it matters | Access needed |

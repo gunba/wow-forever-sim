@@ -404,20 +404,22 @@ type AutoAttacks struct {
 	oh     WeaponAttack
 	ranged WeaponAttack
 
-	enabled                bool
-	continuousWhileCasting bool
+	enabled    bool
+	weaponRole bool
 }
 
-// Casting does not suspend ordinary autos for Forever's auto-attack roles.
-// Caster roles and NPCs retain their casting restrictions.
-func (aa *AutoAttacks) ContinueWhileCasting() bool {
-	return aa.continuousWhileCasting && aa.mh.unit.Env != nil && aa.mh.unit.Env.IsForever()
+// Ordinary spells retain Classic casting restrictions. Only explicitly marked
+// weapon casts, such as Slam and Aimed Shot, permit concurrent autos.
+func (aa *AutoAttacks) CanAutoAttackDuringCast(sim *Simulation) bool {
+	unit := aa.mh.unit
+	return unit != nil && aa.weaponRole && unit.Env != nil && unit.Env.IsForever() &&
+		unit.IsCasting(sim) && unit.Hardcast.allowAutoAttacks
 }
 
 func (aa *AutoAttacks) casterMeleeBlocked() bool {
 	unit := aa.mh.unit
 	return unit != nil && unit.Type == PlayerUnit && unit.Env != nil &&
-		unit.Env.IsForever() && !aa.continuousWhileCasting
+		unit.Env.IsForever() && !aa.weaponRole
 }
 
 // Options for initializing auto attacks.
@@ -467,7 +469,7 @@ func (unit *Unit) EnableAutoAttacks(agent Agent, options AutoAttackOptions) {
 			proto.Spec_SpecTankWarrior, proto.Spec_SpecFeralDruid, proto.Spec_SpecFeralTankDruid,
 			proto.Spec_SpecEnhancementShaman, proto.Spec_SpecRetributionPaladin,
 			proto.Spec_SpecProtectionPaladin:
-			unit.AutoAttacks.continuousWhileCasting = true
+			unit.AutoAttacks.weaponRole = true
 		}
 	}
 

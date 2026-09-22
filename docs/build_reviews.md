@@ -986,96 +986,6 @@ Other races can use different equipment. Their complete setups are available in 
 | Mana | [Shadowburn](https://www.wowhead.com/forever/spell=18871) | -352.3 |
 | Mana | [Searing Pain](https://www.wowhead.com/forever/spell=17923) | -204.2 |
 
-## Shaman — Enhancement
-
-**Talents:** 20/31/0 · `05043305-055030031005102051`
-
-[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
-
-
-### Results
-
-| Race | DPS | Standard error | Mana-limited seconds |
-|---|---:|---:|---:|
-| Orc | 692.18 | 0.56 | 36.65 |
-| Tauren | 693.88 | 0.56 | 29.74 |
-| Troll | 688.24 | 0.56 | 28.32 |
-| Windshaper | 689.51 | 0.57 | 32.24 |
-| Dwarf | 695.88 | 0.56 | 32.14 |
-
-Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
-
-### Equipment — Dwarf
-
-| Slot | Item | Item level | Enchant |
-|---|---|---:|---|
-| Head | [Black Dragonscale Helm](https://www.wowhead.com/forever/item=252605) | 61 | Lesser Arcanum of Voracity |
-| Neck | [Amulet of the Darkmoon](https://www.wowhead.com/forever/item=19491) | 65 | — |
-| Shoulders | [Mantle of the Timbermaw](https://www.wowhead.com/forever/item=19050) | 61 | Chromatic Mantle of the Dawn |
-| Back | [Chromatic Cloak](https://www.wowhead.com/forever/item=18509) | 62 | Enchant Boots - Lesser Agility |
-| Chest | [Timbermaw Tunic](https://www.wowhead.com/forever/item=252484) | 61 | Enchant Chest - Greater Stats |
-| Wrists | [Tranquil Wristguards](https://www.wowhead.com/forever/item=279256) | 65 | Enchant Bracer - Superior Strength |
-| Hands | [Chromatic Gauntlets](https://www.wowhead.com/forever/item=19157) | 70 | Enchant Gloves - Minor Haste |
-| Waist | [Belt of the Archmage](https://www.wowhead.com/forever/item=18405) | 62 | — |
-| Legs | [Ironfeather Leggings](https://www.wowhead.com/forever/item=252486) | 61 | Lesser Arcanum of Voracity |
-| Feet | [Bloodvine Boots](https://www.wowhead.com/forever/item=19684) | 65 | Enchant Boots - Greater Agility |
-| Ring 1 | [Blackstone Ring](https://www.wowhead.com/forever/item=17713) | 54 | — |
-| Ring 2 | [Channeler's Ring](https://www.wowhead.com/forever/item=272406) | 65 | — |
-| Trinket 1 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
-| Trinket 2 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
-| Main hand | [Premier High Warlord's Destroyer](https://www.wowhead.com/forever/item=272682) | 65 | Enchant Weapon - Fiery Weapon |
-| Ranged/relic | [Totem of Thunder](https://www.wowhead.com/forever/item=228176) | 65 | — |
-
-Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
-
-### Before the pull
-
-- -4.5s: [Strength of Earth Totem (rank 4)](https://www.wowhead.com/forever/spell=10442).
-- -3s: [Grace of Air Totem (rank 2)](https://www.wowhead.com/forever/spell=10627).
-- -1.5s: [Searing Totem (rank 6)](https://www.wowhead.com/forever/spell=10438).
-
-### Rotation priorities
-
-1. Cast [Strength of Earth Totem (rank 4)](https://www.wowhead.com/forever/spell=10442) when Earth totem time remaining ≤ 0s.
-2. Cast [Grace of Air Totem (rank 2)](https://www.wowhead.com/forever/spell=10627) when Air totem time remaining ≤ 0s.
-3. Use ready automatic cooldowns.
-4. Cast [Stormstrike (rank 1)](https://www.wowhead.com/forever/spell=17364).
-5. Cast [Chain Lightning](https://www.wowhead.com/forever/spell=10605) when [Maelstrom Weapon](https://www.wowhead.com/forever/spell=408505) stacks ≥ 3.
-6. Cast [Lightning Bolt (rank 10)](https://www.wowhead.com/forever/spell=15208) when [Maelstrom Weapon](https://www.wowhead.com/forever/spell=408505) stacks ≥ 3.
-7. Cast [Searing Totem (rank 6)](https://www.wowhead.com/forever/spell=10438) when (Fire totem time remaining ≤ 0s AND Time remaining ≥ 5s).
-8. Cast [Flame Shock (rank 6)](https://www.wowhead.com/forever/spell=29228) when NOT [Flame Shock (rank 6)](https://www.wowhead.com/forever/spell=29228) DoT active.
-9. Cast [Earth Shock (rank 7)](https://www.wowhead.com/forever/spell=10414).
-
-### Damage breakdown — Dwarf
-
-| Action | DPS |
-|---|---:|
-| Auto-attack (tag 1) | 218.83 |
-| [Windfury Weapon](https://www.wowhead.com/forever/spell=16362) | 141.53 |
-| [Stormstrike](https://www.wowhead.com/forever/spell=17364) | 88.79 |
-| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 65.30 |
-| [Earth Shock](https://www.wowhead.com/forever/spell=10414) | 50.46 |
-| [Flame Shock](https://www.wowhead.com/forever/spell=29228) | 50.15 |
-| [Attack](https://www.wowhead.com/forever/spell=10436) | 29.78 |
-| [Chain Lightning](https://www.wowhead.com/forever/spell=10605) | 28.91 |
-
-### Resource flow
-
-| Resource | Action | Net amount per fight |
-|---|---|---:|
-| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +8822.2 |
-| Mana | [Chain Lightning](https://www.wowhead.com/forever/spell=10605) | -8154.1 |
-| Mana | [Earth Shock](https://www.wowhead.com/forever/spell=10414) | -5467.0 |
-| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +5138.4 |
-| Mana | [Stormstrike](https://www.wowhead.com/forever/spell=17364) | -4696.4 |
-| Mana | [Flame Shock](https://www.wowhead.com/forever/spell=29228) | -4080.2 |
-| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3603.4 |
-| Mana | OtherActionManaRegen (tag 1) | +3073.5 |
-| Mana | [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | -1601.6 |
-| Mana | [Searing Totem](https://www.wowhead.com/forever/spell=10438) | -1005.4 |
-| Mana | [Grace of Air Totem](https://www.wowhead.com/forever/spell=10627) | -453.8 |
-| Mana | [Strength of Earth Totem](https://www.wowhead.com/forever/spell=10442) | -431.1 |
-
 ## Mage — Arcane
 
 **Talents:** 33/3/15 · `053005023100311531-03-005500032`
@@ -1560,6 +1470,96 @@ Other races can use different equipment. Their complete setups are available in 
 | Mana | [Item 8007](https://www.wowhead.com/forever/item=8007) | +850.2 |
 | Mana | [Item 5513](https://www.wowhead.com/forever/item=5513) | +600.2 |
 | Mana | [Fireball](https://www.wowhead.com/forever/spell=25306) | -400.7 |
+
+## Shaman — Enhancement
+
+**Talents:** 20/31/0 · `05043305-055030031005102051`
+
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
+
+
+### Results
+
+| Race | DPS | Standard error | Mana-limited seconds |
+|---|---:|---:|---:|
+| Orc | 601.88 | 0.50 | 45.86 |
+| Tauren | 602.01 | 0.49 | 40.22 |
+| Troll | 596.65 | 0.48 | 39.18 |
+| Windshaper | 599.77 | 0.48 | 42.36 |
+| Dwarf | 605.13 | 0.49 | 42.35 |
+
+Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Dwarf
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Black Dragonscale Helm](https://www.wowhead.com/forever/item=252605) | 61 | Lesser Arcanum of Voracity |
+| Neck | [Amulet of the Darkmoon](https://www.wowhead.com/forever/item=19491) | 65 | — |
+| Shoulders | [Mantle of the Timbermaw](https://www.wowhead.com/forever/item=19050) | 61 | Chromatic Mantle of the Dawn |
+| Back | [Chromatic Cloak](https://www.wowhead.com/forever/item=18509) | 62 | Enchant Boots - Lesser Agility |
+| Chest | [Timbermaw Tunic](https://www.wowhead.com/forever/item=252484) | 61 | Enchant Chest - Greater Stats |
+| Wrists | [Tranquil Wristguards](https://www.wowhead.com/forever/item=279256) | 65 | Enchant Bracer - Superior Strength |
+| Hands | [Chromatic Gauntlets](https://www.wowhead.com/forever/item=19157) | 70 | Enchant Gloves - Minor Haste |
+| Waist | [Belt of the Archmage](https://www.wowhead.com/forever/item=18405) | 62 | — |
+| Legs | [Ironfeather Leggings](https://www.wowhead.com/forever/item=252486) | 61 | Lesser Arcanum of Voracity |
+| Feet | [Bloodvine Boots](https://www.wowhead.com/forever/item=19684) | 65 | Enchant Boots - Greater Agility |
+| Ring 1 | [Blackstone Ring](https://www.wowhead.com/forever/item=17713) | 54 | — |
+| Ring 2 | [Channeler's Ring](https://www.wowhead.com/forever/item=272406) | 65 | — |
+| Trinket 1 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Trinket 2 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
+| Main hand | [Premier High Warlord's Destroyer](https://www.wowhead.com/forever/item=272682) | 65 | Enchant Weapon - Fiery Weapon |
+| Ranged/relic | [Totem of Thunder](https://www.wowhead.com/forever/item=228176) | 65 | — |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
+
+### Before the pull
+
+- -4.5s: [Strength of Earth Totem (rank 4)](https://www.wowhead.com/forever/spell=10442).
+- -3s: [Grace of Air Totem (rank 2)](https://www.wowhead.com/forever/spell=10627).
+- -1.5s: [Searing Totem (rank 6)](https://www.wowhead.com/forever/spell=10438).
+
+### Rotation priorities
+
+1. Cast [Strength of Earth Totem (rank 4)](https://www.wowhead.com/forever/spell=10442) when Earth totem time remaining ≤ 0s.
+2. Cast [Grace of Air Totem (rank 2)](https://www.wowhead.com/forever/spell=10627) when Air totem time remaining ≤ 0s.
+3. Use ready automatic cooldowns.
+4. Cast [Stormstrike (rank 1)](https://www.wowhead.com/forever/spell=17364).
+5. Cast [Chain Lightning](https://www.wowhead.com/forever/spell=10605) when [Maelstrom Weapon](https://www.wowhead.com/forever/spell=408505) stacks ≥ 3.
+6. Cast [Lightning Bolt (rank 10)](https://www.wowhead.com/forever/spell=15208) when [Maelstrom Weapon](https://www.wowhead.com/forever/spell=408505) stacks ≥ 3.
+7. Cast [Searing Totem (rank 6)](https://www.wowhead.com/forever/spell=10438) when (Fire totem time remaining ≤ 0s AND Time remaining ≥ 5s).
+8. Cast [Flame Shock (rank 6)](https://www.wowhead.com/forever/spell=29228) when NOT [Flame Shock (rank 6)](https://www.wowhead.com/forever/spell=29228) DoT active.
+9. Cast [Earth Shock (rank 7)](https://www.wowhead.com/forever/spell=10414).
+
+### Damage breakdown — Dwarf
+
+| Action | DPS |
+|---|---:|
+| Auto-attack (tag 1) | 167.68 |
+| [Windfury Weapon](https://www.wowhead.com/forever/spell=16362) | 117.79 |
+| [Stormstrike](https://www.wowhead.com/forever/spell=17364) | 87.74 |
+| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 59.59 |
+| [Flame Shock](https://www.wowhead.com/forever/spell=29228) | 48.94 |
+| [Earth Shock](https://www.wowhead.com/forever/spell=10414) | 48.12 |
+| [Attack](https://www.wowhead.com/forever/spell=10436) | 29.55 |
+| [Chain Lightning](https://www.wowhead.com/forever/spell=10605) | 26.91 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +7666.0 |
+| Mana | [Chain Lightning](https://www.wowhead.com/forever/spell=10605) | -7536.8 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +5340.7 |
+| Mana | [Earth Shock](https://www.wowhead.com/forever/spell=10414) | -5179.6 |
+| Mana | [Stormstrike](https://www.wowhead.com/forever/spell=17364) | -4661.6 |
+| Mana | [Flame Shock](https://www.wowhead.com/forever/spell=29228) | -3992.1 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3602.1 |
+| Mana | OtherActionManaRegen (tag 1) | +3060.7 |
+| Mana | [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | -1792.4 |
+| Mana | [Searing Totem](https://www.wowhead.com/forever/spell=10438) | -999.1 |
+| Mana | [Grace of Air Totem](https://www.wowhead.com/forever/spell=10627) | -478.1 |
+| Mana | [Strength of Earth Totem](https://www.wowhead.com/forever/spell=10442) | -443.4 |
 
 ## Druid — Balance
 

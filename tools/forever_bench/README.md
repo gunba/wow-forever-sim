@@ -183,17 +183,16 @@ totals. Build definitions read talent presets and APLs from the UI rather than
 duplicating talent strings.
 
 Current JSON outputs also include a `Mechanics` record. The
-[auto-attack model](../../docs/auto_attack_audit.md) keeps weapon-role autos
-running during ordinary casts and uses client shot cast times without added
-wind-up. Energy regeneration uses smooth integration and assumes general haste
+[auto-attack model](../../docs/auto_attack_audit.md) uses Classic ordinary-spell
+swing resets, with explicit Slam and weapon-shot exceptions. It uses client
+shot cast times without added wind-up. Energy regeneration uses smooth integration and assumes general haste
 scaling; attack-speed-only effects are excluded. That assumption remains an
 open in-game check.
 
-`artifacts/forever_mechanics_baseline_5min.json` is the current frozen-input
-reference: 147 combinations at 5,000 iterations, with no APL warnings and paid
-hit-budget balances within floating-point rounding. Its CSV and matrix chart
-are adjacent. These are baseline rotations, including historical shot-window
-conditions; they are not the final optimized results.
+`artifacts/forever_mechanics_baseline_5min.json` is a historical frozen-input
+reference: 147 combinations at 5,000 iterations. Its gear, rotations and engine
+predate the current correctness release; its CSV and matrix are not current
+rankings. Use `artifacts/forever_dps_5min.json` for the current benchmark.
 
 ## Saved Horde baseline
 

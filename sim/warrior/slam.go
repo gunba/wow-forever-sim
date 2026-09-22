@@ -21,7 +21,7 @@ func (warrior *Warrior) registerSlamSpell() {
 		SpellSchool: core.SpellSchoolPhysical,
 		DefenseType: core.DefenseTypeMelee,
 		ProcMask:    core.ProcMaskMeleeMHSpecial,
-		Flags:       core.SpellFlagMeleeMetrics | core.SpellFlagAPL | SpellFlagOffensive,
+		Flags:       core.SpellFlagMeleeMetrics | core.SpellFlagAPL | core.SpellFlagAllowAutoAttacks | SpellFlagOffensive,
 
 		RequiredLevel: requiredLevel,
 
@@ -40,7 +40,7 @@ func (warrior *Warrior) registerSlamSpell() {
 				Duration: time.Second * 15,
 			},
 			ModifyCast: func(sim *core.Simulation, spell *core.Spell, cast *core.Cast) {
-				if !warrior.AutoAttacks.ContinueWhileCasting() && warrior.Talents.ImprovedSlam == 0 && spell.CastTime() > 0 {
+				if !warrior.Env.IsForever() && warrior.Talents.ImprovedSlam == 0 && spell.CastTime() > 0 {
 					warrior.AutoAttacks.StopMeleeUntil(sim, sim.CurrentTime+cast.CastTime, true)
 				}
 			},

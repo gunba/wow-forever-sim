@@ -13,11 +13,12 @@ import (
 type OnCastComplete func(aura *Aura, sim *Simulation, spell *Spell)
 
 type Hardcast struct {
-	Expires    time.Duration
-	ActionID   ActionID
-	OnComplete func(*Simulation, *Unit)
-	Target     *Unit
-	Pushback   float64
+	Expires          time.Duration
+	ActionID         ActionID
+	OnComplete       func(*Simulation, *Unit)
+	Target           *Unit
+	Pushback         float64
+	allowAutoAttacks bool
 }
 
 // Input for constructing the CastSpell function for a spell.
@@ -132,7 +133,7 @@ func (unit *Unit) applySpellPushback() {
 				aura.Unit.SetGCDTimer(sim, aura.Unit.Hardcast.Expires)
 
 				// Update Swing timer
-				if !aura.Unit.AutoAttacks.ContinueWhileCasting() {
+				if !aura.Unit.AutoAttacks.CanAutoAttackDuringCast(sim) {
 					aura.Unit.AutoAttacks.StopMeleeUntil(sim, aura.Unit.Hardcast.Expires, false)
 				}
 			}
@@ -195,7 +196,7 @@ func (spell *Spell) makeCastFunc(config CastConfig) CastSuccessFunc {
 			return spell.castFailureHelper(sim, "GCD on cooldown for %s, curTime = %s", spell.Unit.GCD.TimeToReady(sim), sim.CurrentTime)
 		}
 
-		continuousAuto := spell.ProcMask.Matches(ProcMaskWhiteHit) && spell.Unit.AutoAttacks.ContinueWhileCasting()
+		continuousAuto := spell.ProcMask.Matches(ProcMaskWhiteHit) && spell.Unit.AutoAttacks.CanAutoAttackDuringCast(sim)
 		if hc := spell.Unit.Hardcast; spell.Unit.IsCasting(sim) && !continuousAuto {
 			return spell.castFailureHelper(sim, "casting/channeling %v for %s, curTime = %s", hc.ActionID, hc.Expires-sim.CurrentTime, sim.CurrentTime)
 		}
@@ -221,7 +222,7 @@ func (spell *Spell) makeCastFunc(config CastConfig) CastSuccessFunc {
 		}
 
 		// Non melee casts
-		if spell.Flags.Matches(SpellFlagResetAttackSwing) && spell.Unit.AutoAttacks.enabled && !spell.Unit.AutoAttacks.ContinueWhileCasting() {
+		if spell.Flags.Matches(SpellFlagResetAttackSwing) && spell.Unit.AutoAttacks.enabled {
 			restartMeleeAt := sim.CurrentTime + spell.CurCast.CastTime
 			spell.Unit.AutoAttacks.StopMeleeUntil(sim, restartMeleeAt, false)
 		}
@@ -234,9 +235,10 @@ func (spell *Spell) makeCastFunc(config CastConfig) CastSuccessFunc {
 			}
 
 			spell.Unit.Hardcast = Hardcast{
-				Expires:  sim.CurrentTime + spell.CurCast.CastTime,
-				ActionID: spell.ActionID,
-				Pushback: 1.0,
+				Expires:          sim.CurrentTime + spell.CurCast.CastTime,
+				ActionID:         spell.ActionID,
+				Pushback:         1.0,
+				allowAutoAttacks: spell.Flags.Matches(SpellFlagAllowAutoAttacks),
 				OnComplete: func(sim *Simulation, target *Unit) {
 					spell.LastCastAt = sim.CurrentTime
 

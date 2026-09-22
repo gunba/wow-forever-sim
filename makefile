@@ -6,7 +6,7 @@ ASSETS := $(patsubst assets/%,$(OUT_DIR)/assets/%,$(ASSETS_INPUT))
 # Recursive wildcard function. Needs to be '=' instead of ':=' because of recursion.
 rwildcard = $(foreach d,$(wildcard $(1:=/*)),$(call rwildcard,$d,$2) $(filter $(subst *,%,$2),$d))
 GOROOT := $(shell go env GOROOT)
-UI_SRC := $(shell find ui -name '*.ts' -o -name '*.tsx' -o -name '*.scss' -o -name '*.html')
+UI_SRC := $(shell find ui -name '*.ts' -o -name '*.tsx' -o -name '*.scss' -o -name '*.html' -o -name '*.json')
 # Where the site gets served from, with a trailing slash. Matches vite.config.mts and is
 # overridden the same way, so a project page can be built with
 # SITE_BASE=/<repo>/classic/ make dist/classic/.dirstamp

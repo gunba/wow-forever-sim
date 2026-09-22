@@ -23,7 +23,7 @@ func (hunter *Hunter) getMultiShotConfig(timer *core.Timer) core.SpellConfig {
 		SpellSchool:   core.SpellSchoolPhysical,
 		DefenseType:   core.DefenseTypeRanged,
 		ProcMask:      core.ProcMaskRangedSpecial,
-		Flags:         core.SpellFlagMeleeMetrics | core.SpellFlagAPL | SpellFlagShot,
+		Flags:         core.SpellFlagMeleeMetrics | core.SpellFlagAPL | core.SpellFlagAllowAutoAttacks | SpellFlagShot,
 		CastType:      proto.CastType_CastTypeRanged,
 		RequiredLevel: level,
 		MissileSpeed:  30,

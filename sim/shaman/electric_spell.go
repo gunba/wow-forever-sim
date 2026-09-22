@@ -39,9 +39,7 @@ func (shaman *Shaman) newElectricSpellConfig(actionID core.ActionID, baseCost fl
 			},
 			ModifyCast: func(sim *core.Simulation, spell *core.Spell, cast *core.Cast) {
 				castTime := shaman.ApplyCastSpeedForSpell(cast.CastTime, spell)
-				if !shaman.AutoAttacks.ContinueWhileCasting() {
-					shaman.AutoAttacks.StopMeleeUntil(sim, sim.CurrentTime+castTime, false)
-				}
+				shaman.AutoAttacks.StopMeleeUntil(sim, sim.CurrentTime+castTime, false)
 			},
 		},
 

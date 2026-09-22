@@ -523,8 +523,8 @@ func (spell *Spell) CanCast(sim *Simulation, target *Unit) bool {
 		return false
 	}
 
-	// Ordinary auto attacks do not compete with a Forever melee/ranged cast.
-	continuousAuto := spell.ProcMask.Matches(ProcMaskWhiteHit) && spell.Unit.AutoAttacks.ContinueWhileCasting()
+	// Only explicitly permitted weapon casts allow simultaneous autos.
+	continuousAuto := spell.ProcMask.Matches(ProcMaskWhiteHit) && spell.Unit.AutoAttacks.CanAutoAttackDuringCast(sim)
 	if spell.Unit.IsCasting(sim) && !continuousAuto {
 		//if sim.Log != nil {
 		//	sim.Log("Cant cast because already casting")
