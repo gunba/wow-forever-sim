@@ -154,7 +154,9 @@ benefits more from matching tracking than the revised Survival allocation.
 The Mage uses full-rank spells, including Ice Lance; its result depends on the
 assumed 0.143 Ice Lance coefficient and unresolved proc timing. It is not a
 Fire build. The Warrior is a two-handed Fury-style build without Mortal Strike;
-its inherited damage-based rage model remains unverified at level 60.
+the historical gains above used the superseded damage-based rage model.
+The current row uses provisional speed-normalized rage, and its level-60
+performance still needs testing.
 
 These are distinct architectures, not evidence that every hybrid beats every
 other build. Their model caveats also appear in the web profile picker.

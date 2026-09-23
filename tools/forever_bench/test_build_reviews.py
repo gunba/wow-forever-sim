@@ -9,6 +9,18 @@ from build_display import expected_roster
 
 
 class BuildReviewTests(unittest.TestCase):
+    def test_review_portal_discloses_current_warrior_rage_model(self):
+        root = Path(__file__).resolve().parents[2]
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "review"
+            subprocess.run([
+                sys.executable, str(root / "tools/forever_bench/build_review_site.py"),
+                "--output", str(output),
+            ], cwd=root, check=True, capture_output=True)
+            html = (output / "index.html").read_text()
+        self.assertIn("Warrior outgoing rage uses a provisional speed-normalized model", html)
+        self.assertNotIn("Warrior rage still uses an inherited damage-based model", html)
+
     def test_current_results_do_not_claim_historical_paired_gains(self):
         root = Path(__file__).resolve().parents[2]
         results = root / "artifacts/forever_dps_5min.json"

@@ -150,7 +150,7 @@ Energy scaling with general haste is a model assumption. Druid Omen provisionall
 100% proc entry and ten-second cooldown; its server proc rate needs testing.
 The optional “MP5 acts per second” setting is off in these rankings; it is a separate, unverified mana-regeneration experiment.
 General haste does not shorten the default spell GCD in this model; that still needs a Forever measurement.
-Warrior rage still uses an inherited damage-based model, not a verified Forever level-60 rule.
+Warrior outgoing rage uses a provisional speed-normalized model; its level-60 and off-hand rules still need testing.
 Hunter pets still inherit no owner stats; the observed low-level AP inheritance has no verified level-60 rule here.
 Healing-only effects give no inferred spell damage. These are tested builds, not proven global optima.</p>
 <nav class="links"><a href="results.png">Chart PNG</a><a href="results.svg">Chart SVG</a>

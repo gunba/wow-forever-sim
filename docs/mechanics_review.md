@@ -138,9 +138,10 @@ These findings do not require new buffs or additional damage effects.
 
 The supplied low-level Warrior capture supports speed-normalized landed-swing
 rage and equal gains on normal hits, crits and glances. It does not establish
-the level-60 or off-hand coefficient. The engine's inherited damage-based rage
-is therefore not a validated Forever rule. See
-[the rage check](in_game_checks.md#t02--rage-gained-from-outgoing-white-hits).
+the level-60 or off-hand coefficient. The engine now models outgoing Warrior
+rage as speed-normalized, with a provisional Cataclysm-like off-hand rate.
+This extrapolation is not a validated level-60 Forever rule. See
+[the rage check](check_dispositions.md#rage-evidence).
 
 Hunter pets still use the inherited **zero owner-stat inheritance** model.
 A level-17 tooltip shows ten percent of the higher owner melee/ranged AP,
