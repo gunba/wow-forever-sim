@@ -1,8 +1,10 @@
 # Build updates
 
-The comparison table below documents the research pass preceding the
-[gear comparison pass](gear_updates.md). The current ranking defaults also
-include the focused corrections documented next.
+The comparison table below documents the fixed-gear research pass preceding
+the [current gear comparison](gear_updates.md). Its paired DPS figures used
+the earlier 26-build rules and gear; they are **historical evidence**, not
+the current 27-build chart's DPS. The retained recipes and focused
+corrections remain in the current ranking defaults.
 
 ## 23 September focused changes
 

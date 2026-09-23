@@ -7105,7 +7105,7 @@
             },
             {},
             {
-              "id": 228176
+              "id": 272433
             }
           ]
         },
@@ -7522,7 +7522,7 @@
             },
             {},
             {
-              "id": 228176
+              "id": 272433
             }
           ]
         },
@@ -8200,7 +8200,7 @@
             },
             {
               "id": 19157,
-              "enchant": 2564
+              "enchant": 931
             },
             {
               "id": 19163
@@ -9368,7 +9368,7 @@
             },
             {
               "id": 19157,
-              "enchant": 2564
+              "enchant": 931
             },
             {
               "id": 19163
@@ -9660,7 +9660,7 @@
             },
             {
               "id": 19157,
-              "enchant": 2564
+              "enchant": 931
             },
             {
               "id": 19163
@@ -19967,7 +19967,7 @@
             },
             {},
             {
-              "id": 272435
+              "id": 249442
             }
           ]
         },
@@ -20304,7 +20304,7 @@
             },
             {},
             {
-              "id": 272435
+              "id": 249442
             }
           ]
         },
@@ -20641,7 +20641,7 @@
             },
             {},
             {
-              "id": 272435
+              "id": 249442
             }
           ]
         },
@@ -48157,11 +48157,11 @@
               "id": 249470
             },
             {
-              "id": 272452,
+              "id": 272592,
               "enchant": 1900
             },
             {
-              "id": 272592,
+              "id": 272684,
               "enchant": 1900
             },
             {
@@ -51033,7 +51033,7 @@
               "enchant": 1900
             },
             {
-              "id": 279259,
+              "id": 272684,
               "enchant": 1900
             },
             {
@@ -59651,7 +59651,7 @@
             },
             {
               "id": 272095,
-              "enchant": 931
+              "enchant": 2564
             },
             {
               "id": 19044
@@ -60295,7 +60295,7 @@
             },
             {
               "id": 19157,
-              "enchant": 931
+              "enchant": 2564
             },
             {
               "id": 19044
@@ -60617,7 +60617,7 @@
             },
             {
               "id": 19157,
-              "enchant": 931
+              "enchant": 2564
             },
             {
               "id": 19044
@@ -61261,7 +61261,7 @@
             },
             {
               "id": 19157,
-              "enchant": 931
+              "enchant": 927
             },
             {
               "id": 19044
@@ -61583,7 +61583,7 @@
             },
             {
               "id": 272095,
-              "enchant": 931
+              "enchant": 2564
             },
             {
               "id": 19044
@@ -61905,7 +61905,7 @@
             },
             {
               "id": 19157,
-              "enchant": 931
+              "enchant": 2564
             },
             {
               "id": 19044
@@ -62227,7 +62227,7 @@
             },
             {
               "id": 19157,
-              "enchant": 931
+              "enchant": 2564
             },
             {
               "id": 19044
@@ -62833,6 +62833,1008 @@
             "queueDelay": 250,
             "shout": "WarriorShoutBattle",
             "stance": "WarriorStanceBerserker"
+          }
+        }
+      }
+    },
+    {
+      "Key": "retribution_physical",
+      "Race": "Undead",
+      "BaselinePlayer": {
+        "name": "Physical Ret",
+        "race": "RaceUndead",
+        "class": "ClassPaladin",
+        "equipment": {
+          "items": [
+            {
+              "id": 12640,
+              "enchant": 1506
+            },
+            {
+              "id": 19491
+            },
+            {
+              "id": 20212,
+              "enchant": 2488
+            },
+            {
+              "id": 20068,
+              "enchant": 849
+            },
+            {
+              "id": 252484,
+              "enchant": 1891
+            },
+            {
+              "id": 19687,
+              "enchant": 1885
+            },
+            {
+              "id": 19157,
+              "enchant": 931
+            },
+            {
+              "id": 19044
+            },
+            {
+              "id": 22385,
+              "enchant": 1506
+            },
+            {
+              "id": 275618,
+              "enchant": 1887
+            },
+            {
+              "id": 17713
+            },
+            {
+              "id": 272408
+            },
+            {
+              "id": 249469
+            },
+            {
+              "id": 249470
+            },
+            {
+              "id": 272604,
+              "enchant": 1900
+            },
+            {},
+            {
+              "id": 272435
+            }
+          ]
+        },
+        "consumes": {
+          "food": "FoodBlessSunfruit",
+          "agilityElixir": "ElixirOfTheMongoose",
+          "manaRegenElixir": "MagebloodPotion",
+          "strengthBuff": "JujuPower",
+          "attackPowerBuff": "JujuMight",
+          "mainHandImbue": "Windfury",
+          "defaultPotion": "MajorManaPotion",
+          "defaultConjured": "ConjuredDemonicRune",
+          "dragonBreathChili": true,
+          "zanzaBuff": "ROIDS"
+        },
+        "bonusStats": {
+          "stats": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "foreverTier1Bonuses": true,
+        "buffs": {
+          "blessingOfKings": true,
+          "blessingOfWisdom": "TristateEffectRegular",
+          "blessingOfMight": "TristateEffectRegular"
+        },
+        "talentsString": "250003003-232-052253310012330001",
+        "profession1": "Engineering",
+        "rotation": {
+          "type": "TypeAPL",
+          "prepullActions": [
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20919
+                  }
+                }
+              },
+              "doAtValue": {
+                "const": {
+                  "val": "-1.5s"
+                }
+              }
+            }
+          ],
+          "priorityList": [
+            {
+              "action": {
+                "autocastOtherCooldowns": {}
+              }
+            },
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 10333
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20271
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpLe",
+                    "lhs": {
+                      "currentSealRemainingTime": {}
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "1s"
+                      }
+                    }
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20919
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "condition": {
+                  "and": {
+                    "vals": [
+                      {
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "currentManaPercent": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "15%"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "not": {
+                          "val": {
+                            "auraIsActive": {
+                              "auraId": {
+                                "spellId": 1311703
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "auraIsActive": {
+                          "auraId": {
+                            "spellId": 20919
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20293
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "condition": {
+                  "and": {
+                    "vals": [
+                      {
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "currentManaPercent": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "15%"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "not": {
+                          "val": {
+                            "auraIsActive": {
+                              "auraId": {
+                                "spellId": 1311704
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "auraIsActive": {
+                          "auraId": {
+                            "spellId": 20293
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20919
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 24239
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpGe",
+                    "lhs": {
+                      "currentManaPercent": {}
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "20%"
+                      }
+                    }
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 26573
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "distanceFromTarget": 5,
+        "retributionPaladin": {
+          "options": {
+            "primarySeal": "Command"
+          }
+        }
+      }
+    },
+    {
+      "Key": "retribution_physical",
+      "Race": "Human",
+      "BaselinePlayer": {
+        "name": "Physical Ret",
+        "race": "RaceHuman",
+        "class": "ClassPaladin",
+        "equipment": {
+          "items": [
+            {
+              "id": 12640,
+              "enchant": 1506
+            },
+            {
+              "id": 19491
+            },
+            {
+              "id": 20057,
+              "enchant": 2488
+            },
+            {
+              "id": 20073,
+              "enchant": 849
+            },
+            {
+              "id": 252484,
+              "enchant": 1891
+            },
+            {
+              "id": 19687,
+              "enchant": 1885
+            },
+            {
+              "id": 19157,
+              "enchant": 931
+            },
+            {
+              "id": 19044
+            },
+            {
+              "id": 22385,
+              "enchant": 1506
+            },
+            {
+              "id": 275618,
+              "enchant": 1887
+            },
+            {
+              "id": 17713
+            },
+            {
+              "id": 19514
+            },
+            {
+              "id": 249469
+            },
+            {
+              "id": 249470
+            },
+            {
+              "id": 272604,
+              "enchant": 1900
+            },
+            {},
+            {
+              "id": 249442
+            }
+          ]
+        },
+        "consumes": {
+          "food": "FoodBlessSunfruit",
+          "agilityElixir": "ElixirOfTheMongoose",
+          "manaRegenElixir": "MagebloodPotion",
+          "strengthBuff": "JujuPower",
+          "attackPowerBuff": "JujuMight",
+          "mainHandImbue": "Windfury",
+          "defaultPotion": "MajorManaPotion",
+          "defaultConjured": "ConjuredDemonicRune",
+          "dragonBreathChili": true,
+          "zanzaBuff": "ROIDS"
+        },
+        "bonusStats": {
+          "stats": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "foreverTier1Bonuses": true,
+        "buffs": {
+          "blessingOfKings": true,
+          "blessingOfWisdom": "TristateEffectRegular",
+          "blessingOfMight": "TristateEffectRegular"
+        },
+        "talentsString": "250003003-232-052253310012330001",
+        "profession1": "Engineering",
+        "rotation": {
+          "type": "TypeAPL",
+          "prepullActions": [
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20919
+                  }
+                }
+              },
+              "doAtValue": {
+                "const": {
+                  "val": "-1.5s"
+                }
+              }
+            }
+          ],
+          "priorityList": [
+            {
+              "action": {
+                "autocastOtherCooldowns": {}
+              }
+            },
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 10333
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20271
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpLe",
+                    "lhs": {
+                      "currentSealRemainingTime": {}
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "1s"
+                      }
+                    }
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20919
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "condition": {
+                  "and": {
+                    "vals": [
+                      {
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "currentManaPercent": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "15%"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "not": {
+                          "val": {
+                            "auraIsActive": {
+                              "auraId": {
+                                "spellId": 1311703
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "auraIsActive": {
+                          "auraId": {
+                            "spellId": 20919
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20293
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "condition": {
+                  "and": {
+                    "vals": [
+                      {
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "currentManaPercent": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "15%"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "not": {
+                          "val": {
+                            "auraIsActive": {
+                              "auraId": {
+                                "spellId": 1311704
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "auraIsActive": {
+                          "auraId": {
+                            "spellId": 20293
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20919
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 24239
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpGe",
+                    "lhs": {
+                      "currentManaPercent": {}
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "20%"
+                      }
+                    }
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 26573
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "distanceFromTarget": 5,
+        "retributionPaladin": {
+          "options": {
+            "primarySeal": "Command"
+          }
+        }
+      }
+    },
+    {
+      "Key": "retribution_physical",
+      "Race": "Dwarf",
+      "BaselinePlayer": {
+        "name": "Physical Ret",
+        "race": "RaceDwarf",
+        "class": "ClassPaladin",
+        "equipment": {
+          "items": [
+            {
+              "id": 12640,
+              "enchant": 1506
+            },
+            {
+              "id": 19491
+            },
+            {
+              "id": 20057,
+              "enchant": 2488
+            },
+            {
+              "id": 20073,
+              "enchant": 849
+            },
+            {
+              "id": 252484,
+              "enchant": 1891
+            },
+            {
+              "id": 19687,
+              "enchant": 1885
+            },
+            {
+              "id": 272095,
+              "enchant": 2564
+            },
+            {
+              "id": 19044
+            },
+            {
+              "id": 22385,
+              "enchant": 1506
+            },
+            {
+              "id": 275618,
+              "enchant": 1887
+            },
+            {
+              "id": 17713
+            },
+            {
+              "id": 19514
+            },
+            {
+              "id": 249469
+            },
+            {
+              "id": 249470
+            },
+            {
+              "id": 272601,
+              "enchant": 1900
+            },
+            {},
+            {
+              "id": 249442
+            }
+          ]
+        },
+        "consumes": {
+          "food": "FoodBlessSunfruit",
+          "agilityElixir": "ElixirOfTheMongoose",
+          "manaRegenElixir": "MagebloodPotion",
+          "strengthBuff": "JujuPower",
+          "attackPowerBuff": "JujuMight",
+          "mainHandImbue": "Windfury",
+          "defaultPotion": "MajorManaPotion",
+          "defaultConjured": "ConjuredDemonicRune",
+          "dragonBreathChili": true,
+          "zanzaBuff": "ROIDS"
+        },
+        "bonusStats": {
+          "stats": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "foreverTier1Bonuses": true,
+        "buffs": {
+          "blessingOfKings": true,
+          "blessingOfWisdom": "TristateEffectRegular",
+          "blessingOfMight": "TristateEffectRegular"
+        },
+        "talentsString": "250003003-232-052253310012330001",
+        "profession1": "Engineering",
+        "rotation": {
+          "type": "TypeAPL",
+          "prepullActions": [
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20919
+                  }
+                }
+              },
+              "doAtValue": {
+                "const": {
+                  "val": "-1.5s"
+                }
+              }
+            }
+          ],
+          "priorityList": [
+            {
+              "action": {
+                "autocastOtherCooldowns": {}
+              }
+            },
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 10333
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20271
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpLe",
+                    "lhs": {
+                      "currentSealRemainingTime": {}
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "1s"
+                      }
+                    }
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20919
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "condition": {
+                  "and": {
+                    "vals": [
+                      {
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "currentManaPercent": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "15%"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "not": {
+                          "val": {
+                            "auraIsActive": {
+                              "auraId": {
+                                "spellId": 1311703
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "auraIsActive": {
+                          "auraId": {
+                            "spellId": 20919
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20293
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "condition": {
+                  "and": {
+                    "vals": [
+                      {
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "currentManaPercent": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "15%"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "not": {
+                          "val": {
+                            "auraIsActive": {
+                              "auraId": {
+                                "spellId": 1311704
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "auraIsActive": {
+                          "auraId": {
+                            "spellId": 20293
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20919
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 24239
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpGe",
+                    "lhs": {
+                      "currentManaPercent": {}
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "20%"
+                      }
+                    }
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 26573
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "distanceFromTarget": 5,
+        "retributionPaladin": {
+          "options": {
+            "primarySeal": "Command"
           }
         }
       }

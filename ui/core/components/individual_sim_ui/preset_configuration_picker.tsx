@@ -5,13 +5,13 @@ import { SpecOptions } from '../../../core/proto_utils/utils';
 import { IndividualSimUI } from '../../individual_sim_ui';
 import { PresetBuild } from '../../preset_utils';
 import { APLRotation, APLRotation_Type } from '../../proto/apl';
-import { Encounter, EquipmentSpec, HealingModel, Spec } from '../../proto/common';
+import { Consumes, Encounter, EquipmentSpec, HealingModel, Spec } from '../../proto/common';
 import { SavedTalents } from '../../proto/ui';
 import { TypedEvent } from '../../typed_event';
 import { Component } from '../component';
 import { ContentBlock } from '../content_block';
 
-type PresetConfigurationCategory = 'gear' | 'talents' | 'rotation' | 'encounter' | 'race' | 'options' | 'distance';
+type PresetConfigurationCategory = 'gear' | 'consumes' | 'talents' | 'rotation' | 'encounter' | 'race' | 'options' | 'distance';
 
 export class PresetConfigurationPicker extends Component {
 	readonly simUI: IndividualSimUI<Spec>;
@@ -84,10 +84,11 @@ export class PresetConfigurationPicker extends Component {
 		});
 	}
 
-	private applyBuild({ gear, rotation, rotationType, talents, epWeights, encounter, race, options, distance }: PresetBuild) {
+	private applyBuild({ gear, consumes, rotation, rotationType, talents, epWeights, encounter, race, options, distance }: PresetBuild) {
 		const eventID = TypedEvent.nextEventID();
 		TypedEvent.freezeAllAndDo(() => {
 			if (gear) this.simUI.player.setGear(eventID, this.simUI.sim.db.lookupEquipmentSpec(gear.gear));
+			if (consumes) this.simUI.player.setConsumes(eventID, consumes);
 			if (race) this.simUI.player.setRace(eventID, race);
 			if (distance !== undefined) this.simUI.player.setDistanceFromTarget(eventID, distance);
 			if (talents) this.simUI.player.setTalentsString(eventID, talents.data.talentsString);
@@ -116,8 +117,9 @@ export class PresetConfigurationPicker extends Component {
 		});
 	}
 
-	private isBuildActive({ gear, rotation, rotationType, talents, epWeights, encounter, race, options, distance }: PresetBuild): boolean {
+	private isBuildActive({ gear, consumes, rotation, rotationType, talents, epWeights, encounter, race, options, distance }: PresetBuild): boolean {
 		const hasGear = gear ? EquipmentSpec.equals(gear.gear, this.simUI.player.getGear().asSpec()) : true;
+		const hasConsumes = consumes ? Consumes.equals(consumes, this.simUI.player.getConsumes()) : true;
 		const hasRace = typeof race === 'number' ? race === this.simUI.player.getRace() : true;
 		const hasTalents = talents
 			? SavedTalents.equals(
@@ -149,7 +151,7 @@ export class PresetConfigurationPicker extends Component {
 		const hasOptions = options ? this.containsAllFields(this.simUI.player.getSpecOptions(), options) : true;
 
 		const hasDistance = distance === undefined || distance === this.simUI.player.getDistanceFromTarget();
-		return hasGear && hasRace && hasTalents && hasRotation && hasEpWeights && hasEncounter && hasHealingModel && hasOptions && hasDistance;
+		return hasGear && hasConsumes && hasRace && hasTalents && hasRotation && hasEpWeights && hasEncounter && hasHealingModel && hasOptions && hasDistance;
 	}
 
 	private containsAllFields<T extends Spec>(full: SpecOptions<T>, partial: Partial<SpecOptions<T>>): boolean {

@@ -15,6 +15,7 @@ BUILDS = [
     ("frost", "Mage", "Frost", "spell_frost_frostbolt02"),
     ("arcane_frost", "Mage", "Arcane–Frost", "spell_frost_frostbolt02"),
     ("retribution", "Paladin", "Retribution", "spell_holy_auraoflight"),
+    ("retribution_physical", "Paladin", "Physical Ret", "spell_holy_blessingofstrength"),
     ("smite", "Priest", "Smite", "spell_holy_holysmite"),
     ("shadow", "Priest", "Shadow", "spell_shadow_shadowwordpain"),
     ("combat", "Rogue", "Combat", "ability_backstab"),
@@ -40,6 +41,7 @@ BUILD_CAVEATS = {
     "fury": ["Level-60 rage, queued off-hand hit and Flurry charge timing still need in-game confirmation."],
     "fury_2h": ["Level-60 rage and Flurry charge timing remain unverified; this row uses the provisional Warrior model."],
     "retribution": ["Separate seal Echoes can coexist and fire on a landed white swing; verify their simultaneous behavior in game (T53). Lower-rank seals and Consecration also need confirmation."],
+    "retribution_physical": ["Separate seal Echoes still require the T53 in-game check. This is a Strength/AP-oriented Ret comparison, not a proven best build."],
     "smite": ["The rank-2 Smite fallback depends on the modeled low-rank spell-power coefficient."],
     "stormcaller": ["The rank-2 Lightning Bolt filler depends on the modeled low-rank spell-power coefficient."],
 }

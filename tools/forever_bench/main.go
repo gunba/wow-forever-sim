@@ -147,6 +147,9 @@ func selectBuilds() []build {
 
 func prepare(b build, race proto.Race) *proto.Player {
 	p := b.player(race)
+	if ranked := b.rankedPlayer(race); ranked != nil {
+		p = ranked
+	}
 	if *playerOverride != "" {
 		p = readPlayer(*playerOverride)
 		p.Race = race

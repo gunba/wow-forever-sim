@@ -1,15 +1,18 @@
 # Forever DPS benchmarks
 
-The benchmark contains 26 level-60 builds and 171 race/build combinations:
-83 Alliance and 88 Horde. The [client roster and racial audit](../../docs/forever_races.md)
+The benchmark contains 27 level-60 builds and 174 race/build combinations:
+85 Alliance and 89 Horde. The [client roster and racial audit](../../docs/forever_races.md)
 record availability and remaining interaction questions.
 Profiles use the [crafted/dungeon catalog](../../docs/forever_gear_data.md),
 paid shared-hit normalization, and the role's complete
 [Forever Tier 1 bonuses](../../docs/forever_tier1.md).
 The reference target is a level-63 Dragonkin with 3,731 starting armor.
 They are tested builds, not a claim of globally optimal talents, rotations or gear.
-The separate Pet/Melee, Arcane–Frost and 2H Bloodthirst rows retain their
-Survival, Frost and Arms equipment respectively.
+The separate Pet/Melee, Arcane–Frost and 2H Bloodthirst rows began with their
+Survival, Frost and Arms equipment respectively. Physical Ret began from legal
+physical Warrior equipment and a Paladin relic; all 27 builds then underwent
+the same new coordinate search. Its gear excludes caster-only items and
+spell-power-focused enchants.
 [Build comparisons and limitations](../../docs/build_updates.md).
 
 Replay the current exact native profiles, including race-specific equipment:
@@ -19,25 +22,17 @@ python3 tools/forever_bench/run_matrix.py --binary /path/to/forever-bench \
   --profiles artifacts/forever_input_profiles.json --output /tmp/forever-matrix --workers 24
 ```
 
-`forever_input_profiles.json` freezes the 171 unnormalized starting players independently
-of the results. Each output also retains its complete request and baseline player.
+`forever_input_profiles.json` freezes the 174 unnormalized starting players
+independently of the results. It also provides the native benchmark defaults.
+Each output retains its complete request and baseline player.
 
 The [gear comparison pass](../../docs/gear_updates.md) and its evidence are
 separate from the preceding fixed-gear talent/rotation comparisons.
-Those selected recipes and matched validation requests/results are archived in
-`artifacts/research_builds/validation.json.gz`. Prepare their benchmark inputs with:
-
-```sh
-python3 tools/forever_bench/apply_research_profiles.py --output /tmp/forever-profiles.json
-python3 tools/forever_bench/research_summary.py
-python3 tools/forever_bench/run_matrix.py --binary /path/to/forever-bench \
-  --profiles /tmp/forever-profiles.json --output /tmp/forever-matrix --workers 24
-```
-
-`--write-apls` also regenerates the selected APL preset files. Talents must already
-match their named UI presets; equipment, enchants and other player inputs are
-preserved. The validation archive uses two independent seeds and 5,000 iterations
-per arm per seed. Current charts use another seed, 20291951.
+Those earlier 26-build recipes and matched validation requests/results are
+archived in `artifacts/research_builds/validation.json.gz` at their pinned
+revision. They predate the additional build and haste timing change; use that
+revision to replay their original comparisons, not this roster. The current
+chart uses seed **20296421** and 5,000 iterations per race/scenario.
 
 Run from the repository root:
 
@@ -47,7 +42,7 @@ go run ./tools/database/gen_db -outDir=assets -gen=db
 python3 -m unittest discover -s tools/database -p 'test_*forever*.py'
 go test -tags with_db ./tools/forever_bench
 go run -tags with_db ./tools/forever_bench -baseline-results artifacts/forever_dps_5min.json \
-  -iterations 5000 -seed 20291951 -output /tmp/forever-replay
+  -iterations 5000 -seed 20296421 -output /tmp/forever-replay
 python3 tools/forever_bench/fetch_icons.py
 python3 tools/forever_bench/chart.py artifacts/forever_dps_5min.json \
   --sensitivity artifacts/forever_sensitivity.json
@@ -175,9 +170,9 @@ Reproduce the comparisons from the exact saved, unnormalized baseline players:
 
 ```sh
 go build -tags with_db -o /tmp/forever-bench ./tools/forever_bench
-/tmp/forever-bench -baseline-results artifacts/forever_dps_5min.json -seed 20291951 -tier1=false -output artifacts/sensitivity/tier1_off
-/tmp/forever-bench -baseline-results artifacts/forever_dps_5min.json -seed 20291951 -equipment-scale 1.1 -output artifacts/sensitivity/gear_110
-/tmp/forever-bench -baseline-results artifacts/forever_dps_5min.json -seed 20291951 -equipment-scale 1.5 -output artifacts/sensitivity/gear_150
+/tmp/forever-bench -baseline-results artifacts/forever_dps_5min.json -seed 20296421 -tier1=false -output artifacts/sensitivity/tier1_off
+/tmp/forever-bench -baseline-results artifacts/forever_dps_5min.json -seed 20296421 -equipment-scale 1.1 -output artifacts/sensitivity/gear_110
+/tmp/forever-bench -baseline-results artifacts/forever_dps_5min.json -seed 20296421 -equipment-scale 1.5 -output artifacts/sensitivity/gear_150
 python3 tools/forever_bench/sensitivity.py
 python3 tools/forever_bench/chart.py artifacts/forever_dps_5min.json --sensitivity artifacts/forever_sensitivity.json
 python3 tools/forever_bench/build_review_site.py
@@ -197,8 +192,8 @@ nested attack cannot spend the same final charge. The baseline and all three
 scenarios were rerun after this correction. Earlier outputs are retained under
 `artifacts/sensitivity/before_charge_fix.*`; in-game Eureka scope remains an open check.
 
-The benchmark uses level-60 characters, a level-63 target with no creature-type
-bonuses, 3,731 starting armor, five minutes without duration variation, a fixed
+The benchmark uses level-60 characters, a level-63 Dragonkin target with matching
+tracking for Hunters, 3,731 starting armor, five minutes without duration variation, a fixed
 external buff/debuff package, and no world buffs. Armor is a benchmark assumption, not
 a measured beta boss value. Hit adjustments cover physical specials/ranged shots
 and rotational magic with one shared allocation; they do not cap dual-wield white

@@ -164,7 +164,7 @@ var ForeverFrostTalents = "050005013--0555003301001301251"
 var PlayerOptions = &proto.Player_Mage{
 	Mage: &proto.Mage{
 		Options: &proto.Mage_Options{
-			Armor: proto.Mage_Options_MoltenArmor,
+			Armor: proto.Mage_Options_MageArmor,
 		},
 	},
 }

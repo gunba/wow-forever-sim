@@ -52,8 +52,9 @@ func (hunter *Hunter) getVolleyConfig(rank int) core.SpellConfig {
 			Aura: core.Aura{
 				Label: fmt.Sprintf("Volley (Rank %d)", rank),
 			},
-			NumberOfTicks: 6,
-			TickLength:    time.Second * 1,
+			NumberOfTicks:       6,
+			TickLength:          time.Second * 1,
+			AffectedByCastSpeed: true,
 			// The tick spell has no coefficient and the channel's dummy effect carries .03, the
 			// same placeholder Blizzard and Rain of Fire carry, so Classic's .056 a tick stands.
 			BonusCoefficient: .056,

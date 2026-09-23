@@ -9,8 +9,9 @@ The current DPS profiles use Forever crafted, dungeon and verified PvP/vendor eq
 trees and racials, and an explicit Tier 1 bonus setting. The Classic ruleset is
 retained for mechanic comparisons, not as a complete Classic simulator.
 
-The [five-minute benchmark](tools/forever_bench/README.md) covers 26 builds and
-171 Horde/Alliance race/build combinations. Its [matrix](artifacts/forever_dps_5min.png),
+The [five-minute benchmark](tools/forever_bench/README.md) covers 27 builds and
+174 Horde/Alliance race/build combinations, including a separate Physical Ret
+setup. Its [matrix](artifacts/forever_dps_5min.png),
 [CSV](artifacts/forever_dps_5min.csv) and
 [raw requests/results](artifacts/forever_dps_5min.json) use paid hit normalization
 and 5,000 iterations per result. Legal talent and rotation changes were screened,
@@ -31,12 +32,14 @@ use. [In-game checks](docs/in_game_checks.md) track important unresolved mechani
 reviewed changes, regression checks and remaining source gaps.
 [Forever upstream review](docs/upstream-forever-review-2026-09-23.md) compares
 recent WoWSims changes and Warrior combat logs with this simulator.
+[Later upstream changes](docs/upstream-forever-followup-2026-09-23.md) are
+reviewed separately from the confirmed mechanics corrections.
 [Replay profiles](artifacts/ui_profiles/index.json) are built into the matching
 simulator's **Ranked builds** selector. Clicking a matrix cell opens that exact
 setup, including its paid hit adjustment; no manual import is needed.
-[Frozen benchmark inputs](artifacts/forever_input_profiles.json) separate the
-profile roster from the results for replay.
-[Equipment-search evidence](artifacts/gear_search/summary.json) records the
+[Frozen benchmark inputs](artifacts/forever_input_profiles.json) are also the
+native benchmark defaults, separate from the results for replay.
+[Equipment-search evidence](artifacts/gear_search/current/summary.json) records the
 comparisons. Lower-level items remain where stronger or needed for documented
 coverage gaps.
 
@@ -53,6 +56,7 @@ reverted by the engine switch.
 | Periodic critical strikes | Spell dots and bleeds roll for crits, against the caster's crit chance at the time of the tick |
 | Unified hit and critical strike | Generic item ratings cover physical and spell attacks; traps still use an inherited special hit rule |
 | Bonus healing on gear | Healing and damage use separate sourced effects; healing-only records do not grant spell damage |
+| Casting haste | Forever channels retain their tick count but shorten each tick interval; spell GCDs scale with casting haste to a one-second floor. The Mage community report still needs direct timing logs. Classic timing and fixed physical GCDs are unchanged. |
 | Racials | Resistance racials removed, weapon skill racials pay crit instead, several races reshaped |
 | Races | The Skyborne, plus six new race and class pairings |
 

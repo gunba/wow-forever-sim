@@ -1,14 +1,17 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
 	"regexp"
+	"sync"
 
 	"github.com/wowsims/classic/sim/core"
 	"github.com/wowsims/classic/sim/core/proto"
 	"google.golang.org/protobuf/encoding/protojson"
+	googleProto "google.golang.org/protobuf/proto"
 )
 
 type build struct {
@@ -34,6 +37,7 @@ func builds() []build {
 		{"frost", "Frost", "mage", "TalentsFrost", "forever_frost", "forever_frost", proto.Class_ClassMage, [3]int{0, 0, 30}, "wintersChill"},
 		{"arcane_frost", "Arcane–Frost", "mage", "TalentsArcaneFrost", "forever_arcane_frost", "forever_frost", proto.Class_ClassMage, [3]int{21, 0, 20}, "missileBarrage"},
 		{"retribution", "Retribution", "retribution_paladin", "TalentsRetribution", "basic_ret", "forever_retribution", proto.Class_ClassPaladin, [3]int{0, 0, 31}, "twistOfLight"},
+		{"retribution_physical", "Physical Ret", "retribution_paladin", "TalentsPhysicalRetribution", "basic_ret", "forever_retribution", proto.Class_ClassPaladin, [3]int{0, 0, 31}, "twistOfLight"},
 		{"shadow", "Shadow", "shadow_priest", "TalentsP1Shadow", "p1", "forever_shadow", proto.Class_ClassPriest, [3]int{0, 0, 31}, "shadowform"},
 		{"smite", "Smite", "smite_priest", "TalentsSmite", "launch", "forever_smite", proto.Class_ClassPriest, [3]int{0, 15, 0}, "searingLight"},
 		{"combat", "Combat", "rogue", "CombatSinisterStrikeTalents", "combat_sinister_strike_sweaty", "forever_combat", proto.Class_ClassRogue, [3]int{0, 31, 0}, "adrenalineRush"},
@@ -59,6 +63,8 @@ func (b build) modelKey() string {
 		return "frost"
 	case "fury_2h":
 		return "arms"
+	case "retribution_physical":
+		return "retribution"
 	default:
 		return b.Key
 	}
@@ -150,6 +156,7 @@ func casterConsumes() *proto.Consumes {
 }
 
 func (b build) consumes() *proto.Consumes {
+	physicalRet := b.Key == "retribution_physical"
 	b.Key = b.modelKey()
 	c := casterConsumes()
 	switch b.Class {
@@ -180,6 +187,11 @@ func (b build) consumes() *proto.Consumes {
 			c.MainHandImbue, c.OffHandImbue = proto.WeaponImbue_WindfuryWeapon, proto.WeaponImbue_WeaponImbueUnknown
 		} else {
 			c.MainHandImbue = proto.WeaponImbue_Windfury
+		}
+		if physicalRet {
+			c.Flask = proto.Flask_FlaskUnknown
+			c.SpellPowerBuff = proto.SpellPowerBuff_SpellPowerBuffUnknown
+			c.FirePowerBuff = proto.FirePowerBuff_FirePowerBuffUnknown
 		}
 	case "beast_mastery", "marksmanship", "survival":
 		c.Food = proto.Food_FoodSmokedDesertDumpling
@@ -222,4 +234,39 @@ func readPlayer(path string) *proto.Player {
 		panic(err)
 	}
 	return p
+}
+
+// The checked-in exact profiles are the native defaults as well as the source
+// of the web's ranking picker. The preset gear files remain useful as a seed
+// when introducing a new build before its first full benchmark.
+var rankedDefaultPlayers = sync.OnceValue(func() map[string]*proto.Player {
+	var source struct {
+		Results []struct {
+			Key, Race      string
+			BaselinePlayer json.RawMessage
+		}
+	}
+	if err := json.Unmarshal(mustRead("artifacts/forever_input_profiles.json"), &source); err != nil {
+		panic(err)
+	}
+	players := make(map[string]*proto.Player, len(source.Results))
+	for _, row := range source.Results {
+		player := &proto.Player{}
+		if err := protojson.Unmarshal(row.BaselinePlayer, player); err != nil {
+			panic(err)
+		}
+		key := row.Key + "/" + row.Race
+		if _, exists := players[key]; exists {
+			panic("duplicate ranked player: " + key)
+		}
+		players[key] = player
+	}
+	return players
+})
+
+func (b build) rankedPlayer(race proto.Race) *proto.Player {
+	if p := rankedDefaultPlayers()[b.Key+"/"+raceName(race)]; p != nil {
+		return googleProto.Clone(p).(*proto.Player)
+	}
+	return nil
 }

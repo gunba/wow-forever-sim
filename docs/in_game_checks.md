@@ -1,7 +1,7 @@
 # DPS verification
 
-Reviewed against the **26-build / 171-profile release `8ce872cfd`** and
-updated on 23 September 2026. This is a list of remaining DPS uncertainties,
+Reviewed against the current **27-build / 174-profile benchmark** and updated
+on 23 September 2026. This is a list of remaining DPS uncertainties,
 not a request to retest every datamined number. Client build **1.60.1.69977**
 has identical Spell, SpellEffect, SpellAuraOptions, TraitDefinition,
 TraitDefinitionEffectPoints, CurvePoint and PowerType exports to 69913; the
@@ -39,8 +39,9 @@ It also records sources and the damage contributions used to set priorities.
 ### Code follow-ups, not questions for a player to rediscover
 
 **Penance timing:** the earlier engine emitted at 0.667, 1.333 and 2 seconds.
-It now emits the client-stated immediate/one-second/two-second bolts, covered
-by a focused regression. Haste scaling remains T40.
+It now emits the client-stated immediate/one-second/two-second bolts without
+haste, covered by a focused regression. Its channel period scales with
+casting haste in the Forever model; the level-20 check remains T40.
 
 **Pet inheritance:** Blizzard's
 [beta known-issues post](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-known-issues-september-18/2352687)
@@ -63,7 +64,7 @@ recording. A level-20 result establishes that case, not automatically level 60.
 | **T12** | Any server-side downranking penalty beyond the client coefficients. Rank-2 Smite contributes 16–19% of Smite DPS; rank-2 Lightning Bolt contributes about 17% of Stormcaller DPS. | At level 20, compare the same low rank at two known SP totals, using noncritical/unresisted hits. Client coefficients are .571 for rank 2 and .714 for ranks 3/4 of Lightning Bolt; Smite ranks 2/3 are .571/.714. Record damage talents. |
 | **T49** | Ice Lance's missing SP coefficient and Fingers of Frost impact/charge timing. Lance contributes about 27–28% of Frost and 18% of Arcane–Frost DPS. | At level 20, compare unfrozen hits at two SP totals, then frozen hits. The modeled .143 coefficient is an assumption. Later test FoF with an already airborne Frostbolt; repeat higher ranks. |
 | **T15 / T16 / T35** | Haste-to-Energy scaling and avoided-attack refunds. PowerType in build 69977 still says 10/sec. The supplied low-level Rogue log contains too few unsaturated snapshots to distinguish 10 from 10.1/sec at 1% haste: one 4.728-second segment, corrected for a 45-Energy cast, gives 48 points gained (~10.15/sec), with at least one-point quantization uncertainty. Other subsegments disagree, so this is not a new measured rate. General-haste scaling, 80% builder refunds and zero finisher refunds remain assumptions. | At level 20, log at least a minute of unsaturated Energy with and without a named **general haste** change; avoid unlogged resource procs and compare actual power snapshots. Do not count attack-speed-only Slice and Dice. Separately test miss/dodge costs, subtracting natural regeneration. Gnomes should include a discounted cast. |
-| **T40 / T17** | Whether general haste shortens the spell GCD and each channel's tick schedule. Current ordinary GCDs and Mind Flay are unhasted. | On a Troll caster, record client GCD/cast/channel timings with and without Berserking. Test Mind Flay at 20; Penance and deeper channels later. Do not infer channel rules from hardcast speed. |
+| **T40 / T17** | A Mage community report says casting haste shortens channels and the spell GCD. The Forever model now scales channel tick intervals and spell GCDs (one-second floor), keeping the number of channel ticks; physical and Rogue GCDs remain fixed. This still needs a direct game-timing check, particularly for Evocation's total mana return and channels with an immediate first bolt. | On a Troll caster, record client GCD/cast/channel timings with and without Berserking. Test Arcane Missiles and Mind Flay at 20, including tick count and any procs; Penance and Evocation later. Do not infer channel rules from hardcast speed. |
 | **T18** | Whether Cat damage inherits weapon DPS. The current model uses the Classic form weapon. | At level 20, compare two plain weapons with substantially different DPS, holding attributes and target fixed. Record Cat AP and normal white-hit damage. |
 | **T25** | Omen's effective proc chance after its ten-second cooldown. Charges, duration and Wrath/free-action exclusions are already sourced. | At level 20, log several minutes of eligible attacks, promptly spending each proc. Does the first eligible event after each cooldown always proc, as the current literal 100% client model predicts? Do not spend time retesting the known free-action exclusions. |
 | **T03** | Eureka's channel/DoT damage after its last charge expires. The class-specific costs and three-charge limit are sourced. | On a Gnome, use a channel as the third charged spell; compare ticks with an unbuffed channel. Then compare a charged DoT before/after aura expiry. Utility, healing and wand tests are not required for the current profiles. |
@@ -131,7 +132,7 @@ casting from five-second-rule recovery; exclude potions and direct procs.
 Consecration geometry/multi-target ordering, Thick Hide defense, threat
 attribution, healing/absorb survival and tank shield-break mana are archived in
 the register. The old uncertain PvP armor IDs are not equipped in the current
-171 profiles. Acquisition questions remain catalog work, not damage tests.
+174 profiles. Acquisition questions remain catalog work, not damage tests.
 
 Prowl/Pounce/Ravage are acknowledged implementation gaps, not a request to
 prove that ordinary stealth exists. Sanctity Aura, Fel Armor and Hammer of the

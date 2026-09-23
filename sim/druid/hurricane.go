@@ -59,8 +59,9 @@ func (druid *Druid) registerHurricaneSpell() {
 				Aura: core.Aura{
 					Label: "Hurricane" + druid.Label + strconv.Itoa(i+1),
 				},
-				NumberOfTicks: 10,
-				TickLength:    time.Second * 1,
+				NumberOfTicks:       10,
+				TickLength:          time.Second * 1,
+				AffectedByCastSpeed: true,
 
 				BonusCoefficient: 0.03,
 

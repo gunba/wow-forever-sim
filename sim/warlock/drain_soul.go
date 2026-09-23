@@ -48,9 +48,10 @@ func (warlock *Warlock) getDrainSoulBaseConfig(rank int) core.SpellConfig {
 			Aura: core.Aura{
 				Label: "DrainSoul-" + warlock.Label + strconv.Itoa(rank),
 			},
-			NumberOfTicks:    numTicks,
-			TickLength:       tickLength,
-			BonusCoefficient: spellCoeff,
+			NumberOfTicks:       numTicks,
+			TickLength:          tickLength,
+			AffectedByCastSpeed: true,
+			BonusCoefficient:    spellCoeff,
 
 			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
 				dot.Snapshot(target, baseDamage, isRollover)

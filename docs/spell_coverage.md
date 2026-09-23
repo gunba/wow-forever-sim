@@ -10,6 +10,8 @@ test for that failure.
 The audit joins client build **1.60.1.69893** spell names, effects, levels and
 class-associated skill rows to the actual owner/pet spellbooks of all 171
 profiles. It follows taught/triggered actions and known client/native aliases.
+The subsequent Physical Ret row shares the already audited Paladin spellbook;
+the original audit's profile count is historical.
 Every unmatched damage family has an explicit disposition in
 [`assets/spell_coverage_dispositions.json`](../assets/spell_coverage_dispositions.json).
 The generated [full inventory](../artifacts/spell_coverage.json) includes individual

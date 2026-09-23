@@ -99,6 +99,15 @@ func enchantSeedScore(b build, e *proto.UIEnchant, slot int) float64 {
 	return seedScore(b, core.Item{Stats: s}, slot)
 }
 
+func physicalRetEnchantEligible(e *proto.UIEnchant) bool {
+	s := stats.FromFloatArray(e.Stats)
+	if s[stats.SpellPower]+s[stats.SpellDamage]+s[stats.ArcanePower]+s[stats.FirePower]+
+		s[stats.FrostPower]+s[stats.HolyPower]+s[stats.NaturePower]+s[stats.ShadowPower] > 0 {
+		return false
+	}
+	return s[stats.Intellect] <= s[stats.Strength]+s[stats.Agility]+s[stats.AttackPower]
+}
+
 // Fill every enchantable slot before the DPS search. The heuristic only
 // supplies a starting point; native simulations compare the alternatives.
 func prepareGearEnchants(b build, p *proto.Player) {
@@ -113,6 +122,9 @@ func prepareGearEnchants(b build, p *proto.Player) {
 		}
 		best, score := int32(0), math.Inf(-1)
 		for _, e := range choices {
+			if b.Key == "retribution_physical" && !physicalRetEnchantEligible(e) {
+				continue
+			}
 			s := stats.FromFloatArray(e.Stats)
 			value := enchantSeedScore(b, e, slot)
 			// Prefer real defensive benefits over an empty enhancement when
@@ -141,10 +153,11 @@ func validateGearEnchants(p *proto.Player) error {
 	return nil
 }
 
-func enchantCandidates(p *proto.Player, slot int) []*proto.Player {
+func enchantCandidates(b build, p *proto.Player, slot int) []*proto.Player {
 	var out []*proto.Player
 	for _, e := range legalEnchants(p, slot) {
-		if e.EffectId == p.Equipment.Items[slot].GetEnchant() {
+		if e.EffectId == p.Equipment.Items[slot].GetEnchant() ||
+			b.Key == "retribution_physical" && !physicalRetEnchantEligible(e) {
 			continue
 		}
 		candidate := googleProto.Clone(p).(*proto.Player)

@@ -1,18 +1,18 @@
 {
-  "ReferenceRevision": "2c31b67506b62cd52f31cd2854e54bf00189b9e1",
-  "BeforeSHA256": "d5d38408a06cda51f897b72867c87bb5addd0cc8658ee58837d727f424387fb5",
-  "BinarySHA256": "7adb30472d95e1bbcb26e88d6df00c53e0e96cd3875350f69a928d2a822e4d09",
-  "Builds": 26,
-  "Profiles": 171,
-  "TrialCount": 89979,
+  "ReferenceRevision": "7fe1b5366",
+  "BeforeSHA256": "0a6a94abe8646e881e3c0f0fbacb3cf2189472af4c6a1b0fff1c5366d80de769",
+  "BinarySHA256": "2592c17c46905c4dbffa8cab936d99cf49012a5ae3464a8e9ac49ae93f215a25",
+  "Builds": 27,
+  "Profiles": 174,
+  "TrialCount": 87044,
   "Search": {
-    "inputsSHA256": "766a125ab270872f457150208205c2f3815325e33084adce1e6306ecf6ccd90f",
+    "inputsSHA256": "ef467190bc9d49a47e105fe4d2cb0921e81a02c10308485e50f5030a80f09364",
     "settings": {
       "screen": 100,
       "validate": 1000,
       "passes": 4,
       "iterations": 5000,
-      "seed": 20295941
+      "seed": 20296317
     },
     "jobs": [
       [
@@ -698,26 +698,62 @@
       [
         "fury_2h",
         "High Order"
+      ],
+      [
+        "retribution_physical",
+        "Undead"
+      ],
+      [
+        "retribution_physical",
+        "Human"
+      ],
+      [
+        "retribution_physical",
+        "Dwarf"
       ]
     ]
   },
   "Validation": {
-    "Seeds": [
-      20295941,
-      20296071
-    ],
-    "IterationsPerArmPerSeed": 5000,
-    "Bound": "1.96*(pooled baseline SE + pooled candidate SE); independent seeds pooled; no arm covariance assumption",
-    "FirstPair": "Search baseline/final seed, separate from screening and slot-validation seeds"
+    "inputsSHA256": "bccfc51efee9f84659090c1352d54a2cb74d35d8986d41d96acc94a3fa127af9",
+    "seed": 20296383,
+    "iterations": 5000
   },
   "Counts": {
-    "unchanged": 147,
-    "retain": 24
+    "retain": 19,
+    "revert": 0,
+    "unchanged": 155
   },
   "Coverage": [
     {
       "Key": "affliction",
       "Race": "Gnome",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 304,
+      "PoolCount": 116,
+      "Accepted": 0
+    },
+    {
+      "Key": "affliction",
+      "Race": "Human",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 330,
+      "PoolCount": 116,
+      "Accepted": 0
+    },
+    {
+      "Key": "affliction",
+      "Race": "Orc",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 309,
+      "PoolCount": 116,
+      "Accepted": 0
+    },
+    {
+      "Key": "affliction",
+      "Race": "Troll",
       "Passes": 1,
       "Converged": true,
       "Trials": 300,
@@ -726,37 +762,10 @@
     },
     {
       "Key": "affliction",
-      "Race": "Human",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 318,
-      "PoolCount": 116,
-      "Accepted": 0
-    },
-    {
-      "Key": "affliction",
-      "Race": "Orc",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 306,
-      "PoolCount": 116,
-      "Accepted": 0
-    },
-    {
-      "Key": "affliction",
-      "Race": "Troll",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 302,
-      "PoolCount": 116,
-      "Accepted": 0
-    },
-    {
-      "Key": "affliction",
       "Race": "Undead",
       "Passes": 1,
       "Converged": true,
-      "Trials": 308,
+      "Trials": 336,
       "PoolCount": 116,
       "Accepted": 0
     },
@@ -765,7 +774,7 @@
       "Race": "Gnome",
       "Passes": 1,
       "Converged": true,
-      "Trials": 291,
+      "Trials": 301,
       "PoolCount": 116,
       "Accepted": 0
     },
@@ -774,7 +783,7 @@
       "Race": "High Order",
       "Passes": 1,
       "Converged": true,
-      "Trials": 297,
+      "Trials": 293,
       "PoolCount": 116,
       "Accepted": 0
     },
@@ -783,7 +792,7 @@
       "Race": "Human",
       "Passes": 1,
       "Converged": true,
-      "Trials": 289,
+      "Trials": 311,
       "PoolCount": 116,
       "Accepted": 0
     },
@@ -792,7 +801,7 @@
       "Race": "Orc",
       "Passes": 1,
       "Converged": true,
-      "Trials": 296,
+      "Trials": 301,
       "PoolCount": 116,
       "Accepted": 0
     },
@@ -801,7 +810,7 @@
       "Race": "Troll",
       "Passes": 1,
       "Converged": true,
-      "Trials": 296,
+      "Trials": 293,
       "PoolCount": 116,
       "Accepted": 0
     },
@@ -810,7 +819,7 @@
       "Race": "Undead",
       "Passes": 1,
       "Converged": true,
-      "Trials": 291,
+      "Trials": 289,
       "PoolCount": 116,
       "Accepted": 0
     },
@@ -828,13 +837,31 @@
       "Race": "High Order",
       "Passes": 1,
       "Converged": true,
-      "Trials": 299,
+      "Trials": 289,
       "PoolCount": 116,
       "Accepted": 0
     },
     {
       "Key": "arcane_frost",
       "Race": "Human",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 289,
+      "PoolCount": 116,
+      "Accepted": 0
+    },
+    {
+      "Key": "arcane_frost",
+      "Race": "Orc",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 293,
+      "PoolCount": 116,
+      "Accepted": 0
+    },
+    {
+      "Key": "arcane_frost",
+      "Race": "Troll",
       "Passes": 1,
       "Converged": true,
       "Trials": 303,
@@ -843,28 +870,10 @@
     },
     {
       "Key": "arcane_frost",
-      "Race": "Orc",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 295,
-      "PoolCount": 116,
-      "Accepted": 0
-    },
-    {
-      "Key": "arcane_frost",
-      "Race": "Troll",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 295,
-      "PoolCount": 116,
-      "Accepted": 0
-    },
-    {
-      "Key": "arcane_frost",
       "Race": "Undead",
       "Passes": 1,
       "Converged": true,
-      "Trials": 305,
+      "Trials": 299,
       "PoolCount": 116,
       "Accepted": 0
     },
@@ -873,7 +882,7 @@
       "Race": "Dwarf",
       "Passes": 1,
       "Converged": true,
-      "Trials": 475,
+      "Trials": 421,
       "PoolCount": 298,
       "Accepted": 0
     },
@@ -882,7 +891,7 @@
       "Race": "Gnome",
       "Passes": 1,
       "Converged": true,
-      "Trials": 457,
+      "Trials": 423,
       "PoolCount": 298,
       "Accepted": 0
     },
@@ -891,7 +900,7 @@
       "Race": "High Order",
       "Passes": 1,
       "Converged": true,
-      "Trials": 417,
+      "Trials": 430,
       "PoolCount": 298,
       "Accepted": 0
     },
@@ -900,22 +909,13 @@
       "Race": "Human",
       "Passes": 1,
       "Converged": true,
-      "Trials": 433,
+      "Trials": 427,
       "PoolCount": 298,
       "Accepted": 0
     },
     {
       "Key": "arms",
       "Race": "Night Elf",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 423,
-      "PoolCount": 298,
-      "Accepted": 0
-    },
-    {
-      "Key": "arms",
-      "Race": "Orc",
       "Passes": 1,
       "Converged": true,
       "Trials": 419,
@@ -924,16 +924,7 @@
     },
     {
       "Key": "arms",
-      "Race": "Tauren",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 476,
-      "PoolCount": 298,
-      "Accepted": 0
-    },
-    {
-      "Key": "arms",
-      "Race": "Troll",
+      "Race": "Orc",
       "Passes": 1,
       "Converged": true,
       "Trials": 423,
@@ -942,10 +933,28 @@
     },
     {
       "Key": "arms",
+      "Race": "Tauren",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 419,
+      "PoolCount": 298,
+      "Accepted": 0
+    },
+    {
+      "Key": "arms",
+      "Race": "Troll",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 429,
+      "PoolCount": 298,
+      "Accepted": 0
+    },
+    {
+      "Key": "arms",
       "Race": "Undead",
       "Passes": 1,
       "Converged": true,
-      "Trials": 443,
+      "Trials": 425,
       "PoolCount": 298,
       "Accepted": 0
     },
@@ -954,7 +963,7 @@
       "Race": "Windshaper",
       "Passes": 1,
       "Converged": true,
-      "Trials": 417,
+      "Trials": 428,
       "PoolCount": 298,
       "Accepted": 0
     },
@@ -972,7 +981,7 @@
       "Race": "Night Elf",
       "Passes": 1,
       "Converged": true,
-      "Trials": 343,
+      "Trials": 339,
       "PoolCount": 176,
       "Accepted": 0
     },
@@ -981,7 +990,7 @@
       "Race": "Tauren",
       "Passes": 1,
       "Converged": true,
-      "Trials": 335,
+      "Trials": 343,
       "PoolCount": 176,
       "Accepted": 0
     },
@@ -997,6 +1006,15 @@
     {
       "Key": "beast_mastery",
       "Race": "Dwarf",
+      "Passes": 2,
+      "Converged": true,
+      "Trials": 1262,
+      "PoolCount": 235,
+      "Accepted": 1
+    },
+    {
+      "Key": "beast_mastery",
+      "Race": "High Order",
       "Passes": 1,
       "Converged": true,
       "Trials": 620,
@@ -1005,55 +1023,46 @@
     },
     {
       "Key": "beast_mastery",
-      "Race": "High Order",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 627,
-      "PoolCount": 235,
-      "Accepted": 0
-    },
-    {
-      "Key": "beast_mastery",
       "Race": "Human",
       "Passes": 1,
       "Converged": true,
-      "Trials": 624,
+      "Trials": 644,
       "PoolCount": 235,
       "Accepted": 0
     },
     {
       "Key": "beast_mastery",
       "Race": "Night Elf",
-      "Passes": 1,
+      "Passes": 2,
       "Converged": true,
-      "Trials": 624,
+      "Trials": 1262,
       "PoolCount": 235,
-      "Accepted": 0
+      "Accepted": 1
     },
     {
       "Key": "beast_mastery",
       "Race": "Orc",
       "Passes": 1,
       "Converged": true,
-      "Trials": 623,
+      "Trials": 641,
       "PoolCount": 235,
       "Accepted": 0
     },
     {
       "Key": "beast_mastery",
       "Race": "Tauren",
-      "Passes": 1,
+      "Passes": 2,
       "Converged": true,
-      "Trials": 625,
+      "Trials": 1267,
       "PoolCount": 235,
-      "Accepted": 0
+      "Accepted": 1
     },
     {
       "Key": "beast_mastery",
       "Race": "Troll",
       "Passes": 1,
       "Converged": true,
-      "Trials": 626,
+      "Trials": 631,
       "PoolCount": 235,
       "Accepted": 0
     },
@@ -1062,7 +1071,7 @@
       "Race": "Windshaper",
       "Passes": 1,
       "Converged": true,
-      "Trials": 630,
+      "Trials": 623,
       "PoolCount": 235,
       "Accepted": 0
     },
@@ -1071,7 +1080,7 @@
       "Race": "Dwarf",
       "Passes": 1,
       "Converged": true,
-      "Trials": 599,
+      "Trials": 593,
       "PoolCount": 182,
       "Accepted": 0
     },
@@ -1080,7 +1089,7 @@
       "Race": "Gnome",
       "Passes": 1,
       "Converged": true,
-      "Trials": 595,
+      "Trials": 603,
       "PoolCount": 182,
       "Accepted": 0
     },
@@ -1089,7 +1098,7 @@
       "Race": "High Order",
       "Passes": 1,
       "Converged": true,
-      "Trials": 599,
+      "Trials": 606,
       "PoolCount": 182,
       "Accepted": 0
     },
@@ -1098,7 +1107,7 @@
       "Race": "Human",
       "Passes": 1,
       "Converged": true,
-      "Trials": 597,
+      "Trials": 605,
       "PoolCount": 182,
       "Accepted": 0
     },
@@ -1107,7 +1116,7 @@
       "Race": "Night Elf",
       "Passes": 1,
       "Converged": true,
-      "Trials": 599,
+      "Trials": 591,
       "PoolCount": 182,
       "Accepted": 0
     },
@@ -1116,7 +1125,7 @@
       "Race": "Orc",
       "Passes": 1,
       "Converged": true,
-      "Trials": 599,
+      "Trials": 593,
       "PoolCount": 182,
       "Accepted": 0
     },
@@ -1125,7 +1134,7 @@
       "Race": "Troll",
       "Passes": 1,
       "Converged": true,
-      "Trials": 596,
+      "Trials": 601,
       "PoolCount": 182,
       "Accepted": 0
     },
@@ -1134,7 +1143,7 @@
       "Race": "Undead",
       "Passes": 1,
       "Converged": true,
-      "Trials": 604,
+      "Trials": 593,
       "PoolCount": 182,
       "Accepted": 0
     },
@@ -1143,7 +1152,7 @@
       "Race": "Windshaper",
       "Passes": 1,
       "Converged": true,
-      "Trials": 599,
+      "Trials": 606,
       "PoolCount": 182,
       "Accepted": 0
     },
@@ -1152,7 +1161,7 @@
       "Race": "Gnome",
       "Passes": 1,
       "Converged": true,
-      "Trials": 313,
+      "Trials": 306,
       "PoolCount": 116,
       "Accepted": 0
     },
@@ -1161,7 +1170,7 @@
       "Race": "Human",
       "Passes": 1,
       "Converged": true,
-      "Trials": 304,
+      "Trials": 306,
       "PoolCount": 116,
       "Accepted": 0
     },
@@ -1170,7 +1179,7 @@
       "Race": "Orc",
       "Passes": 1,
       "Converged": true,
-      "Trials": 298,
+      "Trials": 312,
       "PoolCount": 116,
       "Accepted": 0
     },
@@ -1179,7 +1188,7 @@
       "Race": "Troll",
       "Passes": 1,
       "Converged": true,
-      "Trials": 300,
+      "Trials": 314,
       "PoolCount": 116,
       "Accepted": 0
     },
@@ -1188,13 +1197,40 @@
       "Race": "Undead",
       "Passes": 1,
       "Converged": true,
-      "Trials": 302,
+      "Trials": 306,
       "PoolCount": 116,
       "Accepted": 0
     },
     {
       "Key": "destruction",
       "Race": "Gnome",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 313,
+      "PoolCount": 117,
+      "Accepted": 0
+    },
+    {
+      "Key": "destruction",
+      "Race": "Human",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 310,
+      "PoolCount": 117,
+      "Accepted": 0
+    },
+    {
+      "Key": "destruction",
+      "Race": "Orc",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 307,
+      "PoolCount": 117,
+      "Accepted": 0
+    },
+    {
+      "Key": "destruction",
+      "Race": "Troll",
       "Passes": 1,
       "Converged": true,
       "Trials": 305,
@@ -1203,37 +1239,10 @@
     },
     {
       "Key": "destruction",
-      "Race": "Human",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 313,
-      "PoolCount": 117,
-      "Accepted": 0
-    },
-    {
-      "Key": "destruction",
-      "Race": "Orc",
-      "Passes": 2,
-      "Converged": true,
-      "Trials": 614,
-      "PoolCount": 117,
-      "Accepted": 1
-    },
-    {
-      "Key": "destruction",
-      "Race": "Troll",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 301,
-      "PoolCount": 117,
-      "Accepted": 0
-    },
-    {
-      "Key": "destruction",
       "Race": "Undead",
       "Passes": 1,
       "Converged": true,
-      "Trials": 309,
+      "Trials": 313,
       "PoolCount": 117,
       "Accepted": 0
     },
@@ -1242,7 +1251,7 @@
       "Race": "Gnome",
       "Passes": 1,
       "Converged": true,
-      "Trials": 298,
+      "Trials": 301,
       "PoolCount": 116,
       "Accepted": 0
     },
@@ -1251,7 +1260,7 @@
       "Race": "Human",
       "Passes": 1,
       "Converged": true,
-      "Trials": 308,
+      "Trials": 304,
       "PoolCount": 116,
       "Accepted": 0
     },
@@ -1260,7 +1269,7 @@
       "Race": "Orc",
       "Passes": 1,
       "Converged": true,
-      "Trials": 311,
+      "Trials": 313,
       "PoolCount": 116,
       "Accepted": 0
     },
@@ -1269,7 +1278,7 @@
       "Race": "Troll",
       "Passes": 1,
       "Converged": true,
-      "Trials": 300,
+      "Trials": 320,
       "PoolCount": 116,
       "Accepted": 0
     },
@@ -1278,7 +1287,7 @@
       "Race": "Undead",
       "Passes": 1,
       "Converged": true,
-      "Trials": 317,
+      "Trials": 306,
       "PoolCount": 116,
       "Accepted": 0
     },
@@ -1296,7 +1305,7 @@
       "Race": "Orc",
       "Passes": 1,
       "Converged": true,
-      "Trials": 405,
+      "Trials": 401,
       "PoolCount": 225,
       "Accepted": 0
     },
@@ -1305,7 +1314,7 @@
       "Race": "Tauren",
       "Passes": 1,
       "Converged": true,
-      "Trials": 395,
+      "Trials": 399,
       "PoolCount": 225,
       "Accepted": 0
     },
@@ -1314,7 +1323,7 @@
       "Race": "Troll",
       "Passes": 1,
       "Converged": true,
-      "Trials": 407,
+      "Trials": 405,
       "PoolCount": 225,
       "Accepted": 0
     },
@@ -1330,27 +1339,27 @@
     {
       "Key": "enhancement",
       "Race": "Dwarf",
-      "Passes": 1,
+      "Passes": 2,
       "Converged": true,
-      "Trials": 455,
+      "Trials": 849,
       "PoolCount": 227,
-      "Accepted": 0
+      "Accepted": 1
     },
     {
       "Key": "enhancement",
       "Race": "Orc",
-      "Passes": 2,
+      "Passes": 1,
       "Converged": true,
-      "Trials": 877,
+      "Trials": 440,
       "PoolCount": 227,
-      "Accepted": 1
+      "Accepted": 0
     },
     {
       "Key": "enhancement",
       "Race": "Tauren",
       "Passes": 1,
       "Converged": true,
-      "Trials": 413,
+      "Trials": 445,
       "PoolCount": 227,
       "Accepted": 0
     },
@@ -1359,18 +1368,18 @@
       "Race": "Troll",
       "Passes": 1,
       "Converged": true,
-      "Trials": 433,
+      "Trials": 457,
       "PoolCount": 227,
       "Accepted": 0
     },
     {
       "Key": "enhancement",
       "Race": "Windshaper",
-      "Passes": 1,
+      "Passes": 2,
       "Converged": true,
-      "Trials": 444,
+      "Trials": 862,
       "PoolCount": 227,
-      "Accepted": 0
+      "Accepted": 1
     },
     {
       "Key": "feral",
@@ -1395,7 +1404,7 @@
       "Race": "Tauren",
       "Passes": 1,
       "Converged": true,
-      "Trials": 321,
+      "Trials": 323,
       "PoolCount": 176,
       "Accepted": 0
     },
@@ -1413,52 +1422,52 @@
       "Race": "Gnome",
       "Passes": 1,
       "Converged": true,
-      "Trials": 298,
+      "Trials": 299,
       "PoolCount": 117,
       "Accepted": 0
     },
     {
       "Key": "fire",
       "Race": "High Order",
-      "Passes": 2,
+      "Passes": 1,
       "Converged": true,
-      "Trials": 644,
+      "Trials": 304,
       "PoolCount": 117,
-      "Accepted": 1
+      "Accepted": 0
     },
     {
       "Key": "fire",
       "Race": "Human",
       "Passes": 1,
       "Converged": true,
-      "Trials": 319,
+      "Trials": 306,
       "PoolCount": 117,
       "Accepted": 0
     },
     {
       "Key": "fire",
       "Race": "Orc",
-      "Passes": 2,
+      "Passes": 1,
       "Converged": true,
-      "Trials": 603,
+      "Trials": 312,
       "PoolCount": 117,
-      "Accepted": 1
+      "Accepted": 0
     },
     {
       "Key": "fire",
       "Race": "Troll",
-      "Passes": 2,
+      "Passes": 1,
       "Converged": true,
-      "Trials": 596,
+      "Trials": 297,
       "PoolCount": 117,
-      "Accepted": 1
+      "Accepted": 0
     },
     {
       "Key": "fire",
       "Race": "Undead",
       "Passes": 1,
       "Converged": true,
-      "Trials": 319,
+      "Trials": 298,
       "PoolCount": 117,
       "Accepted": 0
     },
@@ -1467,7 +1476,7 @@
       "Race": "Gnome",
       "Passes": 1,
       "Converged": true,
-      "Trials": 298,
+      "Trials": 297,
       "PoolCount": 116,
       "Accepted": 0
     },
@@ -1476,13 +1485,22 @@
       "Race": "High Order",
       "Passes": 1,
       "Converged": true,
-      "Trials": 299,
+      "Trials": 291,
       "PoolCount": 116,
       "Accepted": 0
     },
     {
       "Key": "frost",
       "Race": "Human",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 301,
+      "PoolCount": 116,
+      "Accepted": 0
+    },
+    {
+      "Key": "frost",
+      "Race": "Orc",
       "Passes": 1,
       "Converged": true,
       "Trials": 289,
@@ -1491,25 +1509,7 @@
     },
     {
       "Key": "frost",
-      "Race": "Orc",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 293,
-      "PoolCount": 116,
-      "Accepted": 0
-    },
-    {
-      "Key": "frost",
       "Race": "Troll",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 308,
-      "PoolCount": 116,
-      "Accepted": 0
-    },
-    {
-      "Key": "frost",
-      "Race": "Undead",
       "Passes": 1,
       "Converged": true,
       "Trials": 295,
@@ -1517,89 +1517,44 @@
       "Accepted": 0
     },
     {
+      "Key": "frost",
+      "Race": "Undead",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 296,
+      "PoolCount": 116,
+      "Accepted": 0
+    },
+    {
       "Key": "fury_2h",
       "Race": "Dwarf",
       "Passes": 2,
       "Converged": true,
-      "Trials": 909,
+      "Trials": 852,
       "PoolCount": 298,
       "Accepted": 1
     },
     {
       "Key": "fury_2h",
       "Race": "Gnome",
-      "Passes": 1,
+      "Passes": 2,
       "Converged": true,
-      "Trials": 431,
+      "Trials": 852,
       "PoolCount": 298,
-      "Accepted": 0
+      "Accepted": 1
     },
     {
       "Key": "fury_2h",
       "Race": "High Order",
-      "Passes": 2,
+      "Passes": 1,
       "Converged": true,
-      "Trials": 872,
+      "Trials": 423,
       "PoolCount": 298,
-      "Accepted": 1
+      "Accepted": 0
     },
     {
       "Key": "fury_2h",
       "Race": "Human",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 428,
-      "PoolCount": 298,
-      "Accepted": 0
-    },
-    {
-      "Key": "fury_2h",
-      "Race": "Night Elf",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 435,
-      "PoolCount": 298,
-      "Accepted": 0
-    },
-    {
-      "Key": "fury_2h",
-      "Race": "Orc",
-      "Passes": 2,
-      "Converged": true,
-      "Trials": 865,
-      "PoolCount": 298,
-      "Accepted": 1
-    },
-    {
-      "Key": "fury_2h",
-      "Race": "Tauren",
-      "Passes": 2,
-      "Converged": true,
-      "Trials": 874,
-      "PoolCount": 298,
-      "Accepted": 1
-    },
-    {
-      "Key": "fury_2h",
-      "Race": "Troll",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 441,
-      "PoolCount": 298,
-      "Accepted": 0
-    },
-    {
-      "Key": "fury_2h",
-      "Race": "Undead",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 440,
-      "PoolCount": 298,
-      "Accepted": 0
-    },
-    {
-      "Key": "fury_2h",
-      "Race": "Windshaper",
       "Passes": 2,
       "Converged": true,
       "Trials": 870,
@@ -1607,35 +1562,62 @@
       "Accepted": 1
     },
     {
+      "Key": "fury_2h",
+      "Race": "Night Elf",
+      "Passes": 2,
+      "Converged": true,
+      "Trials": 859,
+      "PoolCount": 298,
+      "Accepted": 1
+    },
+    {
+      "Key": "fury_2h",
+      "Race": "Orc",
+      "Passes": 2,
+      "Converged": true,
+      "Trials": 844,
+      "PoolCount": 298,
+      "Accepted": 1
+    },
+    {
+      "Key": "fury_2h",
+      "Race": "Tauren",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 427,
+      "PoolCount": 298,
+      "Accepted": 0
+    },
+    {
+      "Key": "fury_2h",
+      "Race": "Troll",
+      "Passes": 2,
+      "Converged": true,
+      "Trials": 850,
+      "PoolCount": 298,
+      "Accepted": 1
+    },
+    {
+      "Key": "fury_2h",
+      "Race": "Undead",
+      "Passes": 2,
+      "Converged": true,
+      "Trials": 861,
+      "PoolCount": 298,
+      "Accepted": 1
+    },
+    {
+      "Key": "fury_2h",
+      "Race": "Windshaper",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 421,
+      "PoolCount": 298,
+      "Accepted": 0
+    },
+    {
       "Key": "fury",
       "Race": "Dwarf",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 768,
-      "PoolCount": 298,
-      "Accepted": 0
-    },
-    {
-      "Key": "fury",
-      "Race": "Gnome",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 750,
-      "PoolCount": 298,
-      "Accepted": 0
-    },
-    {
-      "Key": "fury",
-      "Race": "High Order",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 735,
-      "PoolCount": 298,
-      "Accepted": 0
-    },
-    {
-      "Key": "fury",
-      "Race": "Human",
       "Passes": 1,
       "Converged": true,
       "Trials": 743,
@@ -1644,28 +1626,55 @@
     },
     {
       "Key": "fury",
+      "Race": "Gnome",
+      "Passes": 2,
+      "Converged": true,
+      "Trials": 1484,
+      "PoolCount": 298,
+      "Accepted": 1
+    },
+    {
+      "Key": "fury",
+      "Race": "High Order",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 746,
+      "PoolCount": 298,
+      "Accepted": 0
+    },
+    {
+      "Key": "fury",
+      "Race": "Human",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 745,
+      "PoolCount": 298,
+      "Accepted": 0
+    },
+    {
+      "Key": "fury",
       "Race": "Night Elf",
       "Passes": 1,
       "Converged": true,
-      "Trials": 739,
+      "Trials": 749,
       "PoolCount": 298,
       "Accepted": 0
     },
     {
       "Key": "fury",
       "Race": "Orc",
-      "Passes": 1,
+      "Passes": 2,
       "Converged": true,
-      "Trials": 757,
+      "Trials": 1493,
       "PoolCount": 298,
-      "Accepted": 0
+      "Accepted": 1
     },
     {
       "Key": "fury",
       "Race": "Tauren",
       "Passes": 1,
       "Converged": true,
-      "Trials": 757,
+      "Trials": 759,
       "PoolCount": 298,
       "Accepted": 0
     },
@@ -1674,7 +1683,7 @@
       "Race": "Troll",
       "Passes": 1,
       "Converged": true,
-      "Trials": 754,
+      "Trials": 769,
       "PoolCount": 298,
       "Accepted": 0
     },
@@ -1683,7 +1692,7 @@
       "Race": "Undead",
       "Passes": 1,
       "Converged": true,
-      "Trials": 748,
+      "Trials": 753,
       "PoolCount": 298,
       "Accepted": 0
     },
@@ -1692,7 +1701,7 @@
       "Race": "Windshaper",
       "Passes": 1,
       "Converged": true,
-      "Trials": 735,
+      "Trials": 746,
       "PoolCount": 298,
       "Accepted": 0
     },
@@ -1701,7 +1710,7 @@
       "Race": "Dwarf",
       "Passes": 1,
       "Converged": true,
-      "Trials": 624,
+      "Trials": 633,
       "PoolCount": 235,
       "Accepted": 0
     },
@@ -1710,7 +1719,7 @@
       "Race": "High Order",
       "Passes": 1,
       "Converged": true,
-      "Trials": 637,
+      "Trials": 629,
       "PoolCount": 235,
       "Accepted": 0
     },
@@ -1719,7 +1728,7 @@
       "Race": "Human",
       "Passes": 1,
       "Converged": true,
-      "Trials": 628,
+      "Trials": 626,
       "PoolCount": 235,
       "Accepted": 0
     },
@@ -1728,7 +1737,7 @@
       "Race": "Night Elf",
       "Passes": 1,
       "Converged": true,
-      "Trials": 630,
+      "Trials": 638,
       "PoolCount": 235,
       "Accepted": 0
     },
@@ -1744,18 +1753,18 @@
     {
       "Key": "marksmanship",
       "Race": "Tauren",
-      "Passes": 2,
+      "Passes": 1,
       "Converged": true,
-      "Trials": 1254,
+      "Trials": 628,
       "PoolCount": 235,
-      "Accepted": 1
+      "Accepted": 0
     },
     {
       "Key": "marksmanship",
       "Race": "Troll",
       "Passes": 1,
       "Converged": true,
-      "Trials": 637,
+      "Trials": 626,
       "PoolCount": 235,
       "Accepted": 0
     },
@@ -1764,7 +1773,7 @@
       "Race": "Windshaper",
       "Passes": 1,
       "Converged": true,
-      "Trials": 640,
+      "Trials": 632,
       "PoolCount": 235,
       "Accepted": 0
     },
@@ -1773,7 +1782,7 @@
       "Race": "Dwarf",
       "Passes": 1,
       "Converged": true,
-      "Trials": 370,
+      "Trials": 378,
       "PoolCount": 183,
       "Accepted": 0
     },
@@ -1782,49 +1791,13 @@
       "Race": "Gnome",
       "Passes": 1,
       "Converged": true,
-      "Trials": 377,
+      "Trials": 366,
       "PoolCount": 183,
       "Accepted": 0
     },
     {
       "Key": "mutilate",
       "Race": "High Order",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 367,
-      "PoolCount": 183,
-      "Accepted": 0
-    },
-    {
-      "Key": "mutilate",
-      "Race": "Human",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 386,
-      "PoolCount": 183,
-      "Accepted": 0
-    },
-    {
-      "Key": "mutilate",
-      "Race": "Night Elf",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 370,
-      "PoolCount": 183,
-      "Accepted": 0
-    },
-    {
-      "Key": "mutilate",
-      "Race": "Orc",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 371,
-      "PoolCount": 183,
-      "Accepted": 0
-    },
-    {
-      "Key": "mutilate",
-      "Race": "Troll",
       "Passes": 1,
       "Converged": true,
       "Trials": 374,
@@ -1833,7 +1806,34 @@
     },
     {
       "Key": "mutilate",
-      "Race": "Undead",
+      "Race": "Human",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 368,
+      "PoolCount": 183,
+      "Accepted": 0
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Night Elf",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 370,
+      "PoolCount": 183,
+      "Accepted": 0
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Orc",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 380,
+      "PoolCount": 183,
+      "Accepted": 0
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Troll",
       "Passes": 1,
       "Converged": true,
       "Trials": 373,
@@ -1842,10 +1842,19 @@
     },
     {
       "Key": "mutilate",
+      "Race": "Undead",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 380,
+      "PoolCount": 183,
+      "Accepted": 0
+    },
+    {
+      "Key": "mutilate",
       "Race": "Windshaper",
       "Passes": 1,
       "Converged": true,
-      "Trials": 367,
+      "Trials": 374,
       "PoolCount": 183,
       "Accepted": 0
     },
@@ -1854,52 +1863,52 @@
       "Race": "Dwarf",
       "Passes": 1,
       "Converged": true,
-      "Trials": 624,
+      "Trials": 623,
       "PoolCount": 235,
       "Accepted": 0
     },
     {
       "Key": "pet_melee",
       "Race": "High Order",
-      "Passes": 2,
+      "Passes": 1,
       "Converged": true,
-      "Trials": 1250,
+      "Trials": 618,
       "PoolCount": 235,
-      "Accepted": 1
+      "Accepted": 0
     },
     {
       "Key": "pet_melee",
       "Race": "Human",
-      "Passes": 2,
+      "Passes": 1,
       "Converged": true,
-      "Trials": 1250,
+      "Trials": 620,
       "PoolCount": 235,
-      "Accepted": 1
+      "Accepted": 0
     },
     {
       "Key": "pet_melee",
       "Race": "Night Elf",
-      "Passes": 2,
+      "Passes": 1,
       "Converged": true,
-      "Trials": 1250,
+      "Trials": 622,
       "PoolCount": 235,
-      "Accepted": 1
+      "Accepted": 0
     },
     {
       "Key": "pet_melee",
       "Race": "Orc",
-      "Passes": 2,
+      "Passes": 1,
       "Converged": true,
-      "Trials": 1264,
+      "Trials": 629,
       "PoolCount": 235,
-      "Accepted": 1
+      "Accepted": 0
     },
     {
       "Key": "pet_melee",
       "Race": "Tauren",
       "Passes": 1,
       "Converged": true,
-      "Trials": 627,
+      "Trials": 629,
       "PoolCount": 235,
       "Accepted": 0
     },
@@ -1908,52 +1917,79 @@
       "Race": "Troll",
       "Passes": 1,
       "Converged": true,
-      "Trials": 627,
+      "Trials": 630,
       "PoolCount": 235,
       "Accepted": 0
     },
     {
       "Key": "pet_melee",
       "Race": "Windshaper",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 621,
+      "PoolCount": 235,
+      "Accepted": 0
+    },
+    {
+      "Key": "retribution",
+      "Race": "Dwarf",
       "Passes": 2,
       "Converged": true,
-      "Trials": 1256,
-      "PoolCount": 235,
+      "Trials": 814,
+      "PoolCount": 278,
       "Accepted": 1
     },
     {
       "Key": "retribution",
-      "Race": "Dwarf",
-      "Passes": 3,
-      "Converged": true,
-      "Trials": 1229,
-      "PoolCount": 278,
-      "Accepted": 2
-    },
-    {
-      "Key": "retribution",
       "Race": "Human",
-      "Passes": 3,
+      "Passes": 2,
       "Converged": true,
-      "Trials": 1224,
+      "Trials": 812,
       "PoolCount": 278,
-      "Accepted": 2
+      "Accepted": 1
     },
     {
       "Key": "retribution",
       "Race": "Undead",
       "Passes": 2,
       "Converged": true,
-      "Trials": 805,
+      "Trials": 832,
       "PoolCount": 278,
-      "Accepted": 2
+      "Accepted": 1
+    },
+    {
+      "Key": "retribution_physical",
+      "Race": "Dwarf",
+      "Passes": 2,
+      "Converged": true,
+      "Trials": 592,
+      "PoolCount": 167,
+      "Accepted": 3
+    },
+    {
+      "Key": "retribution_physical",
+      "Race": "Human",
+      "Passes": 2,
+      "Converged": true,
+      "Trials": 606,
+      "PoolCount": 167,
+      "Accepted": 1
+    },
+    {
+      "Key": "retribution_physical",
+      "Race": "Undead",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 322,
+      "PoolCount": 167,
+      "Accepted": 0
     },
     {
       "Key": "shadow",
       "Race": "Dwarf",
       "Passes": 1,
       "Converged": true,
-      "Trials": 282,
+      "Trials": 286,
       "PoolCount": 112,
       "Accepted": 0
     },
@@ -1971,7 +2007,7 @@
       "Race": "Human",
       "Passes": 1,
       "Converged": true,
-      "Trials": 280,
+      "Trials": 282,
       "PoolCount": 112,
       "Accepted": 0
     },
@@ -1980,7 +2016,7 @@
       "Race": "Night Elf",
       "Passes": 1,
       "Converged": true,
-      "Trials": 288,
+      "Trials": 282,
       "PoolCount": 112,
       "Accepted": 0
     },
@@ -1989,7 +2025,7 @@
       "Race": "Troll",
       "Passes": 1,
       "Converged": true,
-      "Trials": 288,
+      "Trials": 284,
       "PoolCount": 112,
       "Accepted": 0
     },
@@ -1998,7 +2034,7 @@
       "Race": "Undead",
       "Passes": 1,
       "Converged": true,
-      "Trials": 288,
+      "Trials": 284,
       "PoolCount": 112,
       "Accepted": 0
     },
@@ -2007,52 +2043,52 @@
       "Race": "Dwarf",
       "Passes": 1,
       "Converged": true,
-      "Trials": 290,
+      "Trials": 282,
       "PoolCount": 112,
       "Accepted": 0
     },
     {
       "Key": "smite",
       "Race": "Gnome",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 286,
+      "PoolCount": 112,
+      "Accepted": 0
+    },
+    {
+      "Key": "smite",
+      "Race": "Human",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 282,
+      "PoolCount": 112,
+      "Accepted": 0
+    },
+    {
+      "Key": "smite",
+      "Race": "Night Elf",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 296,
+      "PoolCount": 112,
+      "Accepted": 0
+    },
+    {
+      "Key": "smite",
+      "Race": "Troll",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 286,
+      "PoolCount": 112,
+      "Accepted": 0
+    },
+    {
+      "Key": "smite",
+      "Race": "Undead",
       "Passes": 1,
       "Converged": true,
       "Trials": 294,
-      "PoolCount": 112,
-      "Accepted": 0
-    },
-    {
-      "Key": "smite",
-      "Race": "Human",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 290,
-      "PoolCount": 112,
-      "Accepted": 0
-    },
-    {
-      "Key": "smite",
-      "Race": "Night Elf",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 283,
-      "PoolCount": 112,
-      "Accepted": 0
-    },
-    {
-      "Key": "smite",
-      "Race": "Troll",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 291,
-      "PoolCount": 112,
-      "Accepted": 0
-    },
-    {
-      "Key": "smite",
-      "Race": "Undead",
-      "Passes": 1,
-      "Converged": true,
-      "Trials": 290,
       "PoolCount": 112,
       "Accepted": 0
     },
@@ -2061,7 +2097,7 @@
       "Race": "Dwarf",
       "Passes": 1,
       "Converged": true,
-      "Trials": 398,
+      "Trials": 400,
       "PoolCount": 225,
       "Accepted": 0
     },
@@ -2070,7 +2106,7 @@
       "Race": "Orc",
       "Passes": 1,
       "Converged": true,
-      "Trials": 397,
+      "Trials": 401,
       "PoolCount": 225,
       "Accepted": 0
     },
@@ -2088,7 +2124,7 @@
       "Race": "Troll",
       "Passes": 1,
       "Converged": true,
-      "Trials": 401,
+      "Trials": 409,
       "PoolCount": 225,
       "Accepted": 0
     },
@@ -2097,7 +2133,7 @@
       "Race": "Windshaper",
       "Passes": 1,
       "Converged": true,
-      "Trials": 397,
+      "Trials": 401,
       "PoolCount": 225,
       "Accepted": 0
     },
@@ -2106,7 +2142,7 @@
       "Race": "Dwarf",
       "Passes": 1,
       "Converged": true,
-      "Trials": 601,
+      "Trials": 604,
       "PoolCount": 182,
       "Accepted": 0
     },
@@ -2115,7 +2151,7 @@
       "Race": "Gnome",
       "Passes": 1,
       "Converged": true,
-      "Trials": 601,
+      "Trials": 602,
       "PoolCount": 182,
       "Accepted": 0
     },
@@ -2124,7 +2160,7 @@
       "Race": "High Order",
       "Passes": 1,
       "Converged": true,
-      "Trials": 601,
+      "Trials": 598,
       "PoolCount": 182,
       "Accepted": 0
     },
@@ -2133,7 +2169,7 @@
       "Race": "Human",
       "Passes": 1,
       "Converged": true,
-      "Trials": 599,
+      "Trials": 602,
       "PoolCount": 182,
       "Accepted": 0
     },
@@ -2142,7 +2178,7 @@
       "Race": "Night Elf",
       "Passes": 1,
       "Converged": true,
-      "Trials": 598,
+      "Trials": 600,
       "PoolCount": 182,
       "Accepted": 0
     },
@@ -2151,7 +2187,7 @@
       "Race": "Orc",
       "Passes": 1,
       "Converged": true,
-      "Trials": 606,
+      "Trials": 597,
       "PoolCount": 182,
       "Accepted": 0
     },
@@ -2160,7 +2196,7 @@
       "Race": "Troll",
       "Passes": 1,
       "Converged": true,
-      "Trials": 594,
+      "Trials": 601,
       "PoolCount": 182,
       "Accepted": 0
     },
@@ -2178,22 +2214,49 @@
       "Race": "Windshaper",
       "Passes": 1,
       "Converged": true,
-      "Trials": 601,
+      "Trials": 598,
       "PoolCount": 182,
       "Accepted": 0
     },
     {
       "Key": "survival",
       "Race": "Dwarf",
-      "Passes": 2,
+      "Passes": 1,
       "Converged": true,
-      "Trials": 1248,
+      "Trials": 617,
       "PoolCount": 235,
-      "Accepted": 1
+      "Accepted": 0
     },
     {
       "Key": "survival",
       "Race": "High Order",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 632,
+      "PoolCount": 235,
+      "Accepted": 0
+    },
+    {
+      "Key": "survival",
+      "Race": "Human",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 614,
+      "PoolCount": 235,
+      "Accepted": 0
+    },
+    {
+      "Key": "survival",
+      "Race": "Night Elf",
+      "Passes": 1,
+      "Converged": true,
+      "Trials": 614,
+      "PoolCount": 235,
+      "Accepted": 0
+    },
+    {
+      "Key": "survival",
+      "Race": "Orc",
       "Passes": 1,
       "Converged": true,
       "Trials": 620,
@@ -2202,39 +2265,12 @@
     },
     {
       "Key": "survival",
-      "Race": "Human",
-      "Passes": 2,
-      "Converged": true,
-      "Trials": 1242,
-      "PoolCount": 235,
-      "Accepted": 1
-    },
-    {
-      "Key": "survival",
-      "Race": "Night Elf",
-      "Passes": 2,
-      "Converged": true,
-      "Trials": 1240,
-      "PoolCount": 235,
-      "Accepted": 1
-    },
-    {
-      "Key": "survival",
-      "Race": "Orc",
-      "Passes": 2,
-      "Converged": true,
-      "Trials": 1255,
-      "PoolCount": 235,
-      "Accepted": 1
-    },
-    {
-      "Key": "survival",
       "Race": "Tauren",
-      "Passes": 2,
+      "Passes": 1,
       "Converged": true,
-      "Trials": 1253,
+      "Trials": 619,
       "PoolCount": 235,
-      "Accepted": 1
+      "Accepted": 0
     },
     {
       "Key": "survival",
@@ -2250,7 +2286,7 @@
       "Race": "Windshaper",
       "Passes": 1,
       "Converged": true,
-      "Trials": 623,
+      "Trials": 635,
       "PoolCount": 235,
       "Accepted": 0
     }
@@ -2349,12 +2385,7 @@
     {
       "Key": "enhancement",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 736.525527560838,
-      "CandidateDPS": 738.4585387358719,
-      "GainDPS": 1.9330111750339256,
-      "GainPercent": 0.26244999021765153,
-      "Conservative95BoundDPS": 1.5939218499745578
+      "Decision": "unchanged"
     },
     {
       "Key": "enhancement",
@@ -2369,12 +2400,22 @@
     {
       "Key": "enhancement",
       "Race": "Windshaper",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 731.6520386324772,
+      "CandidateDPS": 737.1609457995598,
+      "GainDPS": 5.5089071670826115,
+      "GainPercent": 0.7529408620769033,
+      "Conservative95BoundDPS": 1.5479466264859132
     },
     {
       "Key": "enhancement",
       "Race": "Dwarf",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 738.6803259451831,
+      "CandidateDPS": 743.2758247772499,
+      "GainDPS": 4.5954988320668235,
+      "GainPercent": 0.6221228142480475,
+      "Conservative95BoundDPS": 1.5629311902639833
     },
     {
       "Key": "beast_mastery",
@@ -2384,7 +2425,12 @@
     {
       "Key": "beast_mastery",
       "Race": "Tauren",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 872.8852683112535,
+      "CandidateDPS": 874.652843298986,
+      "GainDPS": 1.7675749877324733,
+      "GainPercent": 0.20249797446486303,
+      "Conservative95BoundDPS": 0.8055014574705519
     },
     {
       "Key": "beast_mastery",
@@ -2404,12 +2450,22 @@
     {
       "Key": "beast_mastery",
       "Race": "Dwarf",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 870.4122700807709,
+      "CandidateDPS": 872.0291996090111,
+      "GainDPS": 1.6169295282402345,
+      "GainPercent": 0.1857659391784757,
+      "Conservative95BoundDPS": 0.8023628539293065
     },
     {
       "Key": "beast_mastery",
       "Race": "Night Elf",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 881.6748114665056,
+      "CandidateDPS": 883.3010584427116,
+      "GainDPS": 1.6262469762059482,
+      "GainPercent": 0.18444974893872518,
+      "Conservative95BoundDPS": 0.8156712830915372
     },
     {
       "Key": "beast_mastery",
@@ -2424,12 +2480,7 @@
     {
       "Key": "marksmanship",
       "Race": "Tauren",
-      "Decision": "retain",
-      "BaselineDPS": 909.2144168722255,
-      "CandidateDPS": 911.6527064752158,
-      "GainDPS": 2.4382896029903804,
-      "GainPercent": 0.2681754224023749,
-      "Conservative95BoundDPS": 1.1101764816420647
+      "Decision": "unchanged"
     },
     {
       "Key": "marksmanship",
@@ -2464,22 +2515,12 @@
     {
       "Key": "survival",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 849.8736307924755,
-      "CandidateDPS": 853.3428062807651,
-      "GainDPS": 3.4691754882895793,
-      "GainPercent": 0.40819897954178225,
-      "Conservative95BoundDPS": 1.2387642846675437
+      "Decision": "unchanged"
     },
     {
       "Key": "survival",
       "Race": "Tauren",
-      "Decision": "retain",
-      "BaselineDPS": 837.8664892859953,
-      "CandidateDPS": 841.1431314464774,
-      "GainDPS": 3.2766421604820835,
-      "GainPercent": 0.39106972320546435,
-      "Conservative95BoundDPS": 1.2204368608963452
+      "Decision": "unchanged"
     },
     {
       "Key": "survival",
@@ -2494,32 +2535,17 @@
     {
       "Key": "survival",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 854.7138044385042,
-      "CandidateDPS": 858.0331356856174,
-      "GainDPS": 3.319331247113155,
-      "GainPercent": 0.3883558718574525,
-      "Conservative95BoundDPS": 1.2455396375641075
+      "Decision": "unchanged"
     },
     {
       "Key": "survival",
       "Race": "Dwarf",
-      "Decision": "retain",
-      "BaselineDPS": 833.7535656588493,
-      "CandidateDPS": 836.9515409967471,
-      "GainDPS": 3.1979753378977875,
-      "GainPercent": 0.3835636175505506,
-      "Conservative95BoundDPS": 1.2145131816447563
+      "Decision": "unchanged"
     },
     {
       "Key": "survival",
       "Race": "Night Elf",
-      "Decision": "retain",
-      "BaselineDPS": 847.0263968475758,
-      "CandidateDPS": 850.3739577543944,
-      "GainDPS": 3.3475609068185577,
-      "GainPercent": 0.39521329196791943,
-      "Conservative95BoundDPS": 1.2376642844901045
+      "Decision": "unchanged"
     },
     {
       "Key": "survival",
@@ -2559,22 +2585,12 @@
     {
       "Key": "fire",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 683.0791144908947,
-      "CandidateDPS": 686.5723910620541,
-      "GainDPS": 3.493276571159413,
-      "GainPercent": 0.5114014609805462,
-      "Conservative95BoundDPS": 1.266442621228211
+      "Decision": "unchanged"
     },
     {
       "Key": "fire",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 673.6215400944266,
-      "CandidateDPS": 677.611209799552,
-      "GainDPS": 3.9896697051253796,
-      "GainPercent": 0.5922716937712706,
-      "Conservative95BoundDPS": 1.23381109079895
+      "Decision": "unchanged"
     },
     {
       "Key": "fire",
@@ -2594,12 +2610,7 @@
     {
       "Key": "fire",
       "Race": "High Order",
-      "Decision": "retain",
-      "BaselineDPS": 672.3984727366094,
-      "CandidateDPS": 677.4098148843282,
-      "GainDPS": 5.0113421477187785,
-      "GainPercent": 0.7452935054006007,
-      "Conservative95BoundDPS": 1.270080317450578
+      "Decision": "unchanged"
     },
     {
       "Key": "frost",
@@ -2635,31 +2646,31 @@
       "Key": "retribution",
       "Race": "Undead",
       "Decision": "retain",
-      "BaselineDPS": 1050.900773390707,
-      "CandidateDPS": 1065.7189563249149,
-      "GainDPS": 14.818182934207925,
-      "GainPercent": 1.41004586821241,
-      "Conservative95BoundDPS": 1.3446641031708273
+      "BaselineDPS": 1125.8214880390942,
+      "CandidateDPS": 1138.3875246081818,
+      "GainDPS": 12.5660365690876,
+      "GainPercent": 1.1161659910199941,
+      "Conservative95BoundDPS": 1.6696271552240307
     },
     {
       "Key": "retribution",
       "Race": "Human",
       "Decision": "retain",
-      "BaselineDPS": 1035.1916301341485,
-      "CandidateDPS": 1058.9788018272016,
-      "GainDPS": 23.787171693053097,
-      "GainPercent": 2.297852011223329,
-      "Conservative95BoundDPS": 1.3777229110708036
+      "BaselineDPS": 1120.5501048041501,
+      "CandidateDPS": 1134.0730956465104,
+      "GainDPS": 13.522990842360286,
+      "GainPercent": 1.2068171502892178,
+      "Conservative95BoundDPS": 1.6933701183687706
     },
     {
       "Key": "retribution",
       "Race": "Dwarf",
       "Decision": "retain",
-      "BaselineDPS": 1033.5822136268653,
-      "CandidateDPS": 1065.822202842725,
-      "GainDPS": 32.23998921585962,
-      "GainPercent": 3.1192476796527595,
-      "Conservative95BoundDPS": 1.3724041066612453
+      "BaselineDPS": 1131.790000686609,
+      "CandidateDPS": 1144.099524006895,
+      "GainDPS": 12.30952332028619,
+      "GainPercent": 1.087615486337441,
+      "Conservative95BoundDPS": 1.6717623036992035
     },
     {
       "Key": "shadow",
@@ -2934,12 +2945,7 @@
     {
       "Key": "destruction",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 784.7608590483228,
-      "CandidateDPS": 790.2456615840504,
-      "GainDPS": 5.484802535727567,
-      "GainPercent": 0.6989138757989245,
-      "Conservative95BoundDPS": 0.8587296463281379
+      "Decision": "unchanged"
     },
     {
       "Key": "destruction",
@@ -2964,7 +2970,12 @@
     {
       "Key": "fury",
       "Race": "Orc",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 786.5860648703533,
+      "CandidateDPS": 791.8563686165073,
+      "GainDPS": 5.270303746154013,
+      "GainPercent": 0.6700225164836445,
+      "Conservative95BoundDPS": 1.3160682580555652
     },
     {
       "Key": "fury",
@@ -3004,7 +3015,12 @@
     {
       "Key": "fury",
       "Race": "Gnome",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 771.2213300287149,
+      "CandidateDPS": 778.4275000231681,
+      "GainDPS": 7.206169994453262,
+      "GainPercent": 0.9343841662399243,
+      "Conservative95BoundDPS": 1.2707497518774615
     },
     {
       "Key": "fury",
@@ -3069,42 +3085,22 @@
     {
       "Key": "pet_melee",
       "Race": "Windshaper",
-      "Decision": "retain",
-      "BaselineDPS": 862.3337838446545,
-      "CandidateDPS": 865.9336145985895,
-      "GainDPS": 3.5998307539350662,
-      "GainPercent": 0.4174521306454531,
-      "Conservative95BoundDPS": 1.1779218057250498
+      "Decision": "unchanged"
     },
     {
       "Key": "pet_melee",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 873.1428918407217,
-      "CandidateDPS": 876.1435158310123,
-      "GainDPS": 3.000623990290592,
-      "GainPercent": 0.3436578386344997,
-      "Conservative95BoundDPS": 1.1926805631564328
+      "Decision": "unchanged"
     },
     {
       "Key": "pet_melee",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 879.1485798940375,
-      "CandidateDPS": 881.9839006258446,
-      "GainDPS": 2.835320731807087,
-      "GainPercent": 0.32250757114898876,
-      "Conservative95BoundDPS": 1.2000440752961639
+      "Decision": "unchanged"
     },
     {
       "Key": "pet_melee",
       "Race": "Night Elf",
-      "Decision": "retain",
-      "BaselineDPS": 871.966013778145,
-      "CandidateDPS": 874.63175778583,
-      "GainDPS": 2.6657440076850207,
-      "GainPercent": 0.3057165033456531,
-      "Conservative95BoundDPS": 1.1899192438686956
+      "Decision": "unchanged"
     },
     {
       "Key": "pet_melee",
@@ -3119,12 +3115,7 @@
     {
       "Key": "pet_melee",
       "Race": "High Order",
-      "Decision": "retain",
-      "BaselineDPS": 862.3337838446545,
-      "CandidateDPS": 865.9336145985895,
-      "GainDPS": 3.5998307539350662,
-      "GainPercent": 0.4174521306454531,
-      "Conservative95BoundDPS": 1.1779218057250498
+      "Decision": "unchanged"
     },
     {
       "Key": "arcane_frost",
@@ -3160,76 +3151,111 @@
       "Key": "fury_2h",
       "Race": "Orc",
       "Decision": "retain",
-      "BaselineDPS": 802.482350224597,
-      "CandidateDPS": 809.916366563918,
-      "GainDPS": 7.434016339321033,
-      "GainPercent": 0.9263775505144028,
-      "Conservative95BoundDPS": 1.48049149422512
+      "BaselineDPS": 740.429964031412,
+      "CandidateDPS": 746.7978282754209,
+      "GainDPS": 6.367864244008842,
+      "GainPercent": 0.8600224941381075,
+      "Conservative95BoundDPS": 1.3554322135982715
     },
     {
       "Key": "fury_2h",
       "Race": "Tauren",
-      "Decision": "retain",
-      "BaselineDPS": 797.5137523648954,
-      "CandidateDPS": 800.3818109660386,
-      "GainDPS": 2.868058601143275,
-      "GainPercent": 0.3596249710601881,
-      "Conservative95BoundDPS": 1.4648829672975954
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_2h",
       "Race": "Undead",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 734.8901419304422,
+      "CandidateDPS": 740.4025918042541,
+      "GainDPS": 5.512449873811988,
+      "GainPercent": 0.7501052959196921,
+      "Conservative95BoundDPS": 1.3280640422468524
     },
     {
       "Key": "fury_2h",
       "Race": "Troll",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 729.1626277514363,
+      "CandidateDPS": 736.1965630577472,
+      "GainDPS": 7.033935306310923,
+      "GainPercent": 0.9646593281943018,
+      "Conservative95BoundDPS": 1.2977725879025181
     },
     {
       "Key": "fury_2h",
       "Race": "Windshaper",
-      "Decision": "retain",
-      "BaselineDPS": 792.9625327645683,
-      "CandidateDPS": 795.9338020612713,
-      "GainDPS": 2.9712692967029852,
-      "GainPercent": 0.3747048787215725,
-      "Conservative95BoundDPS": 1.4484185700471337
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_2h",
       "Race": "Human",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 736.024315216867,
+      "CandidateDPS": 741.7462881583147,
+      "GainDPS": 5.721972941447689,
+      "GainPercent": 0.7774162922541125,
+      "Conservative95BoundDPS": 1.3353202593057896
     },
     {
       "Key": "fury_2h",
       "Race": "Dwarf",
       "Decision": "retain",
-      "BaselineDPS": 792.3000795243745,
-      "CandidateDPS": 799.4654428275915,
-      "GainDPS": 7.165363303216964,
-      "GainPercent": 0.9043749317201131,
-      "Conservative95BoundDPS": 1.4391407237557106
+      "BaselineDPS": 730.8359516890293,
+      "CandidateDPS": 737.4809126331414,
+      "GainDPS": 6.644960944112086,
+      "GainPercent": 0.9092274304178616,
+      "Conservative95BoundDPS": 1.3435714439452615
     },
     {
       "Key": "fury_2h",
       "Race": "Gnome",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 729.5368853233372,
+      "CandidateDPS": 736.2254055150759,
+      "GainDPS": 6.688520191738689,
+      "GainPercent": 0.9168172749448136,
+      "Conservative95BoundDPS": 1.3259721934683157
     },
     {
       "Key": "fury_2h",
       "Race": "Night Elf",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 728.2350274114565,
+      "CandidateDPS": 733.9319838317142,
+      "GainDPS": 5.69695642025772,
+      "GainPercent": 0.7822964023727069,
+      "Conservative95BoundDPS": 1.3277166750105505
     },
     {
       "Key": "fury_2h",
       "Race": "High Order",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "retribution_physical",
+      "Race": "Undead",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "retribution_physical",
+      "Race": "Human",
       "Decision": "retain",
-      "BaselineDPS": 792.9625327645683,
-      "CandidateDPS": 795.9338020612713,
-      "GainDPS": 2.9712692967029852,
-      "GainPercent": 0.3747048787215725,
-      "Conservative95BoundDPS": 1.4484185700471337
+      "BaselineDPS": 870.7775010844678,
+      "CandidateDPS": 878.3915733376853,
+      "GainDPS": 7.6140722532175005,
+      "GainPercent": 0.8743992861247474,
+      "Conservative95BoundDPS": 1.5679220021039229
+    },
+    {
+      "Key": "retribution_physical",
+      "Race": "Dwarf",
+      "Decision": "retain",
+      "BaselineDPS": 857.8602207150996,
+      "CandidateDPS": 874.7321965847939,
+      "GainDPS": 16.871975869694325,
+      "GainPercent": 1.9667511632174872,
+      "Conservative95BoundDPS": 1.5401742470386226
     }
   ]
 }

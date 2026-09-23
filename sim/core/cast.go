@@ -168,8 +168,16 @@ func (spell *Spell) makeCastFunc(config CastConfig) CastSuccessFunc {
 		}
 
 		if !config.IgnoreHaste {
-			// Vanilla has no natural GCD reduction besides abilities with 1s GCDs
-			// spell.CurCast.GCD = spell.Unit.ApplyFlatCastSpeed(spell.CurCast.GCD)
+			// Forever spell haste shortens the spell GCD, but not the melee/ranged
+			// GCD. The one-second minimum also leaves Rogue abilities unchanged.
+			if spell.Unit.Env != nil && spell.Unit.Env.IsForever() &&
+				spell.CurCast.GCD > GCDMin &&
+				spell.DefenseType != DefenseTypeMelee && spell.DefenseType != DefenseTypeRanged &&
+				(spell.DefenseType == DefenseTypeMagic ||
+					spell.Flags.Matches(SpellFlagChanneled) ||
+					(spell.SpellSchool != SpellSchoolNone && !spell.SpellSchool.Matches(SpellSchoolPhysical))) {
+				spell.CurCast.GCD = max(GCDMin, spell.Unit.ApplyCastSpeed(spell.CurCast.GCD))
+			}
 			spell.CurCast.CastTime = config.CastTime(spell)
 		}
 

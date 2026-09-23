@@ -88,7 +88,7 @@ func (priest *Priest) newMindFlaySpellConfig(rank int, tickIdx int32) core.Spell
 			},
 			NumberOfTicks:       ticks,
 			TickLength:          tickLength,
-			AffectedByCastSpeed: false,
+			AffectedByCastSpeed: true,
 			BonusCoefficient:    spellCoeff,
 			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
 				dot.Snapshot(target, baseDamage, isRollover)

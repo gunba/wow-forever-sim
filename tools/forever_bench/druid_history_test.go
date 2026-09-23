@@ -39,8 +39,12 @@ func TestNaturesGraceGCDIncludesInstantSpells(t *testing.T) {
 		t.Fatal("form GCD changed or cast haste is incorrect")
 	}
 	moonfire := unit.GetSpell(core.ActionID{SpellID: 8921})
-	if !moonfire.Cast(sim, unit.CurrentTarget) || moonfire.CurCast.GCD != 1350*time.Millisecond {
-		t.Fatal("instant Moonfire did not use its reduced GCD")
+	// The client has two separate effects: -10% GCD and +10% casting
+	// speed. Forever spell GCDs now also scale with casting haste.
+	baseGCD := 1350 * time.Millisecond
+	wantGCD := time.Duration(float64(baseGCD) / 1.1)
+	if !moonfire.Cast(sim, unit.CurrentTarget) || moonfire.CurCast.GCD != wantGCD {
+		t.Fatalf("instant Moonfire GCD %s, want %s from both effects", moonfire.CurCast.GCD, wantGCD)
 	}
 	aura.Deactivate(sim)
 	for _, id := range ids {

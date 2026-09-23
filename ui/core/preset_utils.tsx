@@ -83,6 +83,7 @@ export interface PresetEncounterOptions extends PresetOptionsBase {}
 export interface PresetBuild {
 	name: string;
 	gear?: PresetGear;
+	consumes?: Consumes;
 	talents?: PresetTalents;
 	rotation?: PresetRotation;
 	rotationType?: APLRotationType;

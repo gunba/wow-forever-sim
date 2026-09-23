@@ -46,9 +46,10 @@ func (warlock *Warlock) getRainOfFireBaseConfig(rank int) core.SpellConfig {
 			Aura: core.Aura{
 				Label: "RainOfFire-" + warlock.Label + strconv.Itoa(rank),
 			},
-			NumberOfTicks:    4,
-			TickLength:       time.Second * 2,
-			BonusCoefficient: spellCoeff,
+			NumberOfTicks:       4,
+			TickLength:          time.Second * 2,
+			AffectedByCastSpeed: true,
+			BonusCoefficient:    spellCoeff,
 
 			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
 				dot.Snapshot(target, baseDamage, isRollover)

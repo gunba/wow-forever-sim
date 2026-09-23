@@ -11,6 +11,7 @@ import {
 	Flask,
 	Food,
 	IndividualBuffs,
+	ManaRegenElixir,
 	Potions,
 	Profession,
 	RaidBuffs,
@@ -64,12 +65,13 @@ export const DefaultAPL = APLBasicRet;
 export const P4RetTalents = PresetUtils.makePresetTalents('P4/P5 Ret', SavedTalents.create({ talentsString: '0550030022001--052251310002330321' }));
 
 export const TalentsRetribution = PresetUtils.makePresetTalents('Retribution 13/7/31', SavedTalents.create({ talentsString: '253003-232-052052310012330301' }));
+export const TalentsPhysicalRetribution = PresetUtils.makePresetTalents('Physical Ret 13/7/31', SavedTalents.create({ talentsString: '250003003-232-052253310012330001' }));
 
 export const TalentPresets = {
 	[ClassicPhase.Phase1]: [],
 	[ClassicPhase.Phase2]: [],
 	[ClassicPhase.Phase3]: [],
-	[ClassicPhase.Phase4]: [P4RetTalents, TalentsRetribution],
+	[ClassicPhase.Phase4]: [P4RetTalents, TalentsRetribution, TalentsPhysicalRetribution],
 };
 
 export const DefaultTalents = TalentsRetribution;
@@ -97,6 +99,19 @@ export const DefaultConsumes = Consumes.create({
 	//mainHandImbue: WeaponImbue.WildStrikes,
 	//offHandImbue: WeaponImbue.MagnificentTrollshine,
 	spellPowerBuff: SpellPowerBuff.GreaterArcaneElixir,
+	strengthBuff: StrengthBuff.JujuPower,
+	zanzaBuff: ZanzaBuff.ROIDS,
+});
+
+export const PhysicalRetConsumes = Consumes.create({
+	agilityElixir: AgilityElixir.ElixirOfTheMongoose,
+	attackPowerBuff: AttackPowerBuff.JujuMight,
+	defaultConjured: Conjured.ConjuredDemonicRune,
+	defaultPotion: Potions.MajorManaPotion,
+	dragonBreathChili: true,
+	food: Food.FoodBlessSunfruit,
+	mainHandImbue: WeaponImbue.Windfury,
+	manaRegenElixir: ManaRegenElixir.MagebloodPotion,
 	strengthBuff: StrengthBuff.JujuPower,
 	zanzaBuff: ZanzaBuff.ROIDS,
 });
@@ -136,6 +151,14 @@ export const BuildPresets = [
 	PresetUtils.makePresetBuild('Retribution', {
 		gear: GearRetribution,
 		talents: TalentsRetribution,
+		rotation: APLBasicRet,
+		options: DefaultOptions,
+		distance: 5,
+	}),
+	PresetUtils.makePresetBuild('Physical Ret', {
+		gear: GearRetribution,
+		consumes: PhysicalRetConsumes,
+		talents: TalentsPhysicalRetribution,
 		rotation: APLBasicRet,
 		options: DefaultOptions,
 		distance: 5,

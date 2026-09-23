@@ -19,6 +19,7 @@ try {
 		['hunter', 'marksmanship__tauren'],
 		['hunter', 'pet_melee__orc'],
 		['retribution_paladin', 'retribution__dwarf'],
+		['retribution_paladin', 'retribution_physical__human'],
 		['mage', 'arcane_frost__gnome'],
 		['warrior', 'fury_2h__human'],
 	]) {

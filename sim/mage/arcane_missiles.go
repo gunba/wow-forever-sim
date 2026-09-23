@@ -10,6 +10,7 @@ import (
 const ArcaneMissilesRanks = 8
 
 var ArcaneMissilesSpellId = [ArcaneMissilesRanks + 1]int32{0, 5143, 5144, 5145, 8416, 8417, 10211, 10212, 25345}
+
 // Beta client 1.60.1.69893, read off the missile each rank triggers (7268 ... 25346): less damage per
 // missile, but every rank scales at .286 per missile against Classic's .24.
 var ArcaneMissilesBaseTickDamage = [ArcaneMissilesRanks + 1]float64{0, 26, 33, 46, 69, 98, 134, 175, 209}
@@ -86,8 +87,9 @@ func (mage *Mage) getArcaneMissilesSpellConfig(rank int) core.SpellConfig {
 					mage.spendArcaneBlastStacks(sim)
 				},
 			},
-			NumberOfTicks: numTicks,
-			TickLength:    tickLength,
+			NumberOfTicks:       numTicks,
+			TickLength:          tickLength,
+			AffectedByCastSpeed: true,
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
 				tickSpell.Cast(sim, target)
 			},

@@ -16,6 +16,7 @@ SIM_PATHS = {
     "balance": "balance_druid", "feral": "feral_druid",
     "elemental": "elemental_shaman", "stormcaller": "elemental_shaman",
     "enhancement": "enhancement_shaman", "retribution": "retribution_paladin",
+    "retribution_physical": "retribution_paladin",
     "shadow": "shadow_priest", "smite": "smite_priest",
 }
 
@@ -62,7 +63,7 @@ def main():
     shutil.copyfile("artifacts/spell_coverage.json", args.output / "spell_coverage.json")
     for extension in ("json", "csv", "svg", "png"):
         shutil.copyfile(args.results.with_suffix("." + extension), args.output / ("results." + extension))
-    for name in ("build_reviews.md", "build_updates.md", "gear_updates.md", "in_game_checks.md", "check_dispositions.md", "spell_coverage.md", "windfury.md", "energy_audit.md", "auto_attack_audit.md", "crit_model.md", "forever_gear_data.md", "mechanics_review.md", "history_review.md", "upstream-forever-review-2026-09-23.md", "mana_regeneration.md", "mythicsim_review.md"):
+    for name in ("build_reviews.md", "build_updates.md", "gear_updates.md", "in_game_checks.md", "check_dispositions.md", "spell_coverage.md", "windfury.md", "energy_audit.md", "auto_attack_audit.md", "crit_model.md", "forever_gear_data.md", "mechanics_review.md", "history_review.md", "upstream-forever-review-2026-09-23.md", "upstream-forever-followup-2026-09-23.md", "mana_regeneration.md", "mythicsim_review.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
     body = []
     for key, class_name, label, icon in builds:

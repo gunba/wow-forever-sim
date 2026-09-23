@@ -55,9 +55,10 @@ func (mage *Mage) registerEvocationCD() {
 					manaRegenAura.Deactivate(sim)
 				},
 			},
-			NumberOfTicks: maxTicks,
-			TickLength:    tickLength,
-			OnTick:        func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {},
+			NumberOfTicks:       maxTicks,
+			TickLength:          tickLength,
+			AffectedByCastSpeed: true,
+			OnTick:              func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {},
 		},
 
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {

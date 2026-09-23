@@ -54,9 +54,10 @@ func (priest *Priest) registerPenanceSpell() {
 
 			// The first bolt lands on application; the two remaining bolts
 			// land one and two seconds later (402261's one-second period).
-			NumberOfTicks:    PenanceTicks - 1,
-			TickLength:       time.Second,
-			BonusCoefficient: spellCoeff,
+			NumberOfTicks:       PenanceTicks - 1,
+			TickLength:          time.Second,
+			AffectedByCastSpeed: true,
+			BonusCoefficient:    spellCoeff,
 
 			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
 				dot.Snapshot(target, baseDamage, isRollover)

@@ -161,8 +161,9 @@ def main():
                  "Scaling amp. = +50% gain / (5 × +10% gain). 1× linear; >1× accelerating; <1× flattening; — too small/noisy. Not proof of exponential growth.\n"
                  "Caps and resource thresholds affect curvature. Hypothetical upgrades, not future-item predictions.",
                  fontsize=8.5, color="#475569")
-    fig.text(.07, .02,
-              "* Warrior rage and Ret Echo timing/coexistence need level-60 confirmation; some hybrids depend on guardian/proc assumptions. Beta model; icons via Wowhead.",
+    fig.text(.07, .03,
+              "* Warrior rage and Ret Echo timing/coexistence need level-60 confirmation; some hybrids depend on guardian/proc assumptions.\n"
+              "* Channel/GCD haste follows a Mage community report pending direct timing logs. Beta model; icons via Wowhead.",
              fontsize=8.5, color="#64748b")
     prefix = args.output or args.results.with_suffix("")
     prefix.parent.mkdir(parents=True, exist_ok=True)

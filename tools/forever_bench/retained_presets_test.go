@@ -70,6 +70,9 @@ func TestRetainedPresetsMatchBenchmark(t *testing.T) {
 		if current.TalentsString != baseline.TalentsString || !googleProto.Equal(current.Rotation, baseline.Rotation) {
 			t.Errorf("%s: talent/APL preset differs from the current benchmark", key)
 		}
+		if !googleProto.Equal(current, baseline) {
+			t.Errorf("%s: native default differs from the complete recorded player", key)
+		}
 		if err := validateGear(baseline); err != nil {
 			t.Fatalf("%s: %v", key, err)
 		}

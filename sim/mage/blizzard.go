@@ -10,6 +10,7 @@ import (
 const BlizzardRanks = 6
 
 var BlizzardSpellId = [BlizzardRanks + 1]int32{0, 10, 6141, 8427, 10185, 10186, 10187}
+
 // Beta client 1.60.1.69893. Forever's Blizzard is an area trigger that casts a damage spell every
 // second (1279976 ... 1279949), 8 times; these are 8 times that spell's base. The coefficient below
 // is the damage spell's, per tick; the parent spell's dummy effect carries 0.03, which is not used.
@@ -84,9 +85,10 @@ func (mage *Mage) newBlizzardSpellConfig(rank int) core.SpellConfig {
 			Aura: core.Aura{
 				Label: fmt.Sprintf("Blizzard (Rank %d)", rank),
 			},
-			NumberOfTicks:    numTicks,
-			TickLength:       tickLength,
-			BonusCoefficient: spellCoeff,
+			NumberOfTicks:       numTicks,
+			TickLength:          tickLength,
+			AffectedByCastSpeed: true,
+			BonusCoefficient:    spellCoeff,
 			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
 				dot.Snapshot(target, baseDamage, isRollover)
 			},

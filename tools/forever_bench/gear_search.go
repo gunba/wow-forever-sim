@@ -11,6 +11,7 @@ import (
 
 	"github.com/wowsims/classic/sim/core"
 	"github.com/wowsims/classic/sim/core/proto"
+	"github.com/wowsims/classic/sim/core/stats"
 	googleProto "google.golang.org/protobuf/proto"
 )
 
@@ -90,12 +91,28 @@ func comparisonGearPool(b build, p *proto.Player) ([]core.Item, map[int32]string
 			excluded[id] = "class cannot equip"
 		} else if err := gearReviewError(item); err != nil {
 			excluded[id] = err.Error()
+		} else if b.Key == "retribution_physical" && !physicalRetItemEligible(item) {
+			excluded[id] = "physical Ret excludes spell-power and pure Intellect gear"
 		} else {
 			pool = append(pool, item)
 		}
 	}
 	sort.Slice(pool, func(i, j int) bool { return pool[i].ID < pool[j].ID })
 	return pool, excluded
+}
+
+// This row tests a physical equipment budget, not another Holy/Intellect
+// item search. Mixed Strength/Intellect pieces remain available when their
+// physical offensive stats justify them; pure caster gear does not.
+func physicalRetItemEligible(item core.Item) bool {
+	s := item.Stats
+	if s[stats.SpellPower]+s[stats.SpellDamage]+s[stats.ArcanePower]+s[stats.FirePower]+
+		s[stats.FrostPower]+s[stats.HolyPower]+s[stats.NaturePower]+s[stats.ShadowPower] > 0 {
+		return false
+	}
+	physical := s[stats.Strength] + s[stats.Agility] + s[stats.AttackPower] + s[stats.MeleeHit] +
+		s[stats.MeleeCrit] + s[stats.MeleeHaste]
+	return s[stats.Intellect] == 0 || physical > 0
 }
 
 // Ordinary slots vary independently. Weapon layouts also cover transitions
@@ -133,7 +150,7 @@ func gearCandidates(b build, p *proto.Player, slot int, pool []core.Item) []*pro
 		}
 		return candidates
 	}
-	twoHand := b.modelKey() == "arms" || b.Key == "retribution" || b.Key == "feral"
+	twoHand := b.modelKey() == "arms" || b.modelKey() == "retribution" || b.modelKey() == "feral"
 	dual := b.Class == proto.Class_ClassRogue || b.Key == "fury"
 	weapons := append([]core.Item{}, pool...)
 	for _, index := range []int{14, 15} {
@@ -227,7 +244,7 @@ func optimizeGear(b build, initial *proto.Player) *proto.Player {
 					}
 				}
 			} else if slot >= 17 {
-				candidates = enchantCandidates(p, slot-17)
+				candidates = enchantCandidates(b, p, slot-17)
 			} else {
 				candidates = gearCandidates(b, p, slot, pool)
 			}

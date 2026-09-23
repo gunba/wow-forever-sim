@@ -90,7 +90,7 @@ func (priest *Priest) newStarshardsSpellConfig(rank int, tickIdx int32, timer *c
 			},
 			NumberOfTicks:       ticks,
 			TickLength:          tickLength,
-			AffectedByCastSpeed: false,
+			AffectedByCastSpeed: true,
 			BonusCoefficient:    spellCoeff,
 			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
 				dot.Snapshot(target, baseDamage, isRollover)

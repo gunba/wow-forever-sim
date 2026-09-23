@@ -16,6 +16,7 @@ import (
 
 // Initial ranking only. Final choices must be compared in the five-minute sim.
 func seedScore(b build, item core.Item, slot int) float64 {
+	physicalRet := b.Key == "retribution_physical"
 	b.Key = b.modelKey()
 	s := item.Stats
 	// Catalog rating is stored once, in either legacy field. EquipStats unifies
@@ -60,7 +61,7 @@ func seedScore(b build, item core.Item, slot int) float64 {
 		if b.Key == "feral" {
 			score += 1.3 * s[stats.Agility]
 		}
-		if b.Key == "enhancement" || b.Key == "retribution" {
+		if b.Key == "enhancement" || b.Key == "retribution" && !physicalRet {
 			score += .4*(s[stats.SpellPower]+s[stats.SpellDamage]) + .2*s[stats.Intellect] + .5*s[stats.MP5]
 		}
 	}
