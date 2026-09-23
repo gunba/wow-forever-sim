@@ -68,6 +68,53 @@ func TestForeverMindFlayChannelAndSpellGCDScaleWithHaste(t *testing.T) {
 	}
 }
 
+func TestForeverAPLChannelClipTracksHastedTickCadence(t *testing.T) {
+	var affliction build
+	for _, candidate := range builds() {
+		if candidate.Key == "affliction" {
+			affliction = candidate
+			break
+		}
+	}
+	if affliction.Key == "" {
+		t.Fatal("no Affliction build")
+	}
+	var baselineSeconds, hastedSeconds float64
+	for _, haste := range []float64{0, 100} {
+		player := affliction.player(proto.Race_RaceOrc)
+		player.TalentsString = "25350020135201051--05000551"
+		player.BonusStats = &proto.UnitStats{Stats: stats.Stats{
+			stats.SpellHaste: haste * core.HasteRatingPerHastePercent,
+		}.ToFloatArray()}
+		player.Rotation = core.APLRotationFromJsonString(`{"type":"TypeAPL","priorityList":[
+			{"action":{"channelSpell":{"spellId":{"spellId":11704},"allowRecast":true,
+				"interruptIf":{"cmp":{"lhs":{"spellChanneledTicks":{"spellId":{"spellId":11704}}},
+				"op":"OpGe","rhs":{"const":{"val":"2"}}}}}}}
+		]}`)
+		req := request(player, 10, 1)
+		req.Encounter.Duration = 40
+		result := core.RunRaidSim(req)
+		if result.Error != nil {
+			t.Fatal(result.Error.Message)
+		}
+		for _, action := range result.RaidMetrics.Parties[0].Players[0].Actions {
+			if action.Id.GetSpellId() != 11704 || action.Targets[0].Casts == 0 {
+				continue
+			}
+			seconds := action.Targets[0].CastTimeMs / float64(action.Targets[0].Casts) / 1000
+			if haste == 0 {
+				baselineSeconds = seconds
+			} else {
+				hastedSeconds = seconds
+			}
+		}
+	}
+	if baselineSeconds < 1.5 || baselineSeconds > 2.1 ||
+		hastedSeconds < .75 || hastedSeconds > 1.3 {
+		t.Fatalf("two-tick APL clip should follow haste: baseline %.3fs, +100%% haste %.3fs", baselineSeconds, hastedSeconds)
+	}
+}
+
 func TestForeverMissileBarrageTickCountWithHaste(t *testing.T) {
 	sim := channelHasteFixture("arcane", proto.Ruleset_RulesetForever, 100)
 	m := sim.Raid.Parties[0].Players[0].(mage.MageAgent).GetMage()
