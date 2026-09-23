@@ -14,18 +14,25 @@ func (warrior *Warrior) RegisterRecklessnessCD() {
 
 	actionID := core.ActionID{SpellID: 1719}
 
+	critStats := []stats.Stat{stats.MeleeCrit}
+	if warrior.Env.IsForever() {
+		critStats = append(critStats, stats.SpellCrit)
+	}
 	reckAura := warrior.RegisterAura(core.Aura{
 		Label:    "Recklessness",
 		ActionID: actionID,
 		Duration: time.Second * 15,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
 			warrior.PseudoStats.DamageTakenMultiplier *= 1.2
-			warrior.AddStatDynamic(sim, stats.MeleeCrit, 100*core.CritRatingPerCritChance)
+			for _, stat := range critStats {
+				warrior.AddStatDynamic(sim, stat, 100*core.CritRatingPerCritChance)
+			}
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
 			warrior.PseudoStats.DamageTakenMultiplier /= 1.2
-			warrior.AddStatDynamic(sim, stats.MeleeCrit, -100*core.CritRatingPerCritChance)
-
+			for _, stat := range critStats {
+				warrior.AddStatDynamic(sim, stat, -100*core.CritRatingPerCritChance)
+			}
 		},
 	})
 

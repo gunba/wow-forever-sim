@@ -12,16 +12,16 @@ The benchmark uses level 60, 300 seconds, one level-63 target, complete role-spe
 
 [Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
 
-**Model limitations:** Includes lower-rank seals and Consecration; their server scaling and proc interactions still need confirmation.
+**Model limitations:** Separate seal Echoes can coexist and fire on a landed white swing; verify their simultaneous behavior in game (T53). Lower-rank seals and Consecration also need confirmation.
 
 
 ### Results
 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
-| Undead | 1066.40 | 0.54 | 0.00 |
-| Human | 1059.54 | 0.56 | 0.00 |
-| Dwarf | 1066.26 | 0.56 | 0.00 |
+| Undead | 1141.49 | 0.62 | 0.21 |
+| Human | 1118.99 | 0.61 | 0.74 |
+| Dwarf | 1130.07 | 0.61 | 0.32 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
@@ -58,8 +58,8 @@ Other races can use different equipment. Their complete setups are available in 
 2. Cast [Holy Strike](https://www.wowhead.com/forever/spell=10333).
 3. Cast [Judgement of Light](https://www.wowhead.com/forever/spell=20271).
 4. Cast [Spell 20919](https://www.wowhead.com/forever/spell=20919) when `{"currentSealRemainingTime":{}}` ≤ 1s.
-5. Cast [Spell 20293](https://www.wowhead.com/forever/spell=20293) when (Mana fraction ≥ 15% AND NOT [Twist of Light](https://www.wowhead.com/forever/spell=77485) active AND [Spell 20919](https://www.wowhead.com/forever/spell=20919) active).
-6. Cast [Spell 20919](https://www.wowhead.com/forever/spell=20919) when (Mana fraction ≥ 15% AND NOT [Twist of Light](https://www.wowhead.com/forever/spell=77485) active AND [Spell 20293](https://www.wowhead.com/forever/spell=20293) active).
+5. Cast [Spell 20293](https://www.wowhead.com/forever/spell=20293) when (Mana fraction ≥ 15% AND NOT [Echo of Command](https://www.wowhead.com/forever/spell=1311703) active AND [Spell 20919](https://www.wowhead.com/forever/spell=20919) active).
+6. Cast [Spell 20919](https://www.wowhead.com/forever/spell=20919) when (Mana fraction ≥ 15% AND NOT [Echo of Righteousness](https://www.wowhead.com/forever/spell=1311704) active AND [Spell 20293](https://www.wowhead.com/forever/spell=20293) active).
 7. Cast [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239).
 8. Cast [Consecration](https://www.wowhead.com/forever/spell=26573) when Mana fraction ≥ 20%.
 
@@ -67,31 +67,31 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Action | DPS |
 |---|---:|
-| [Seal of Command](https://www.wowhead.com/forever/spell=20424) | 238.99 |
-| [Seal of Righteousness](https://www.wowhead.com/forever/spell=25713) | 185.25 |
-| Auto-attack (tag 1) | 176.80 |
-| [Holy Strike](https://www.wowhead.com/forever/spell=10333) | 99.40 |
-| [Consecration](https://www.wowhead.com/forever/spell=26573) | 86.82 |
-| Auto-attack (tag 3) | 82.89 |
-| [Judgement of Righteousness](https://www.wowhead.com/forever/spell=20286) | 70.43 |
-| [Judgement of Command](https://www.wowhead.com/forever/spell=20965) | 53.42 |
+| [Seal of Command](https://www.wowhead.com/forever/spell=20424) | 309.41 |
+| [Seal of Righteousness](https://www.wowhead.com/forever/spell=25713) | 197.95 |
+| Auto-attack (tag 1) | 180.15 |
+| [Holy Strike](https://www.wowhead.com/forever/spell=10333) | 98.78 |
+| Auto-attack (tag 3) | 89.09 |
+| [Judgement of Righteousness](https://www.wowhead.com/forever/spell=20286) | 69.90 |
+| [Judgement of Command](https://www.wowhead.com/forever/spell=20965) | 69.52 |
+| [Consecration](https://www.wowhead.com/forever/spell=26573) | 53.37 |
 
 ### Resource flow
 
 | Resource | Action | Net amount per fight |
 |---|---|---:|
-| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +10348.5 |
-| Mana | [Spell 20293](https://www.wowhead.com/forever/spell=20293) | -9313.0 |
-| Mana | [Spell 20919](https://www.wowhead.com/forever/spell=20919) | -8467.5 |
-| Mana | [Sanctified Judgement](https://www.wowhead.com/forever/spell=31876) | +3912.1 |
-| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3561.7 |
-| Mana | [Consecration](https://www.wowhead.com/forever/spell=26573) | -3538.7 |
-| Mana | OtherActionManaRegen (tag 1) | +3110.7 |
-| Mana | [Judgement of Light](https://www.wowhead.com/forever/spell=20271) | -3091.5 |
-| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +2951.1 |
-| Mana | [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239) | -2635.8 |
-| Mana | [Holy Strike](https://www.wowhead.com/forever/spell=10333) | -526.7 |
-| Mana | OtherActionManaRegen (tag 2) | +6.4 |
+| Mana | [Spell 20293](https://www.wowhead.com/forever/spell=20293) | -12137.7 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +11269.7 |
+| Mana | [Spell 20919](https://www.wowhead.com/forever/spell=20919) | -11011.0 |
+| Mana | [Sanctified Judgement](https://www.wowhead.com/forever/spell=31876) | +4035.0 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3606.0 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3604.1 |
+| Mana | [Judgement of Light](https://www.wowhead.com/forever/spell=20271) | -3221.6 |
+| Mana | OtherActionManaRegen (tag 1) | +3108.3 |
+| Mana | [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239) | -2329.2 |
+| Mana | [Consecration](https://www.wowhead.com/forever/spell=26573) | -2136.6 |
+| Mana | [Holy Strike](https://www.wowhead.com/forever/spell=10333) | -522.0 |
+| Mana | OtherActionManaRegen (tag 2) | +16.5 |
 
 ## Hunter — Marksmanship
 
@@ -729,21 +729,23 @@ Other races can use different equipment. Their complete setups are available in 
 
 [Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
 
+**Model limitations:** Level-60 rage, queued off-hand hit and Flurry charge timing still need in-game confirmation.
+
 
 ### Results
 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
-| Orc | 793.59 | 0.47 | 0.00 |
-| Tauren | 784.07 | 0.46 | 0.00 |
-| Troll | 782.99 | 0.45 | 0.00 |
-| Undead | 805.14 | 0.47 | 0.00 |
-| Windshaper | 787.18 | 0.45 | 0.00 |
-| Human | 788.01 | 0.47 | 0.00 |
-| Dwarf | 785.46 | 0.46 | 0.00 |
-| Night Elf | 777.93 | 0.47 | 0.00 |
-| Gnome | 774.90 | 0.46 | 0.00 |
-| High Order | 787.18 | 0.45 | 0.00 |
+| Orc | 786.32 | 0.47 | 0.00 |
+| Tauren | 778.19 | 0.46 | 0.00 |
+| Troll | 776.23 | 0.47 | 0.00 |
+| Undead | 799.43 | 0.47 | 0.00 |
+| Windshaper | 781.61 | 0.45 | 0.00 |
+| Human | 781.33 | 0.48 | 0.00 |
+| Dwarf | 779.66 | 0.46 | 0.00 |
+| Night Elf | 771.25 | 0.47 | 0.00 |
+| Gnome | 771.01 | 0.46 | 0.00 |
+| High Order | 781.61 | 0.45 | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
@@ -775,9 +777,9 @@ Other races can use different equipment. Their complete setups are available in 
 
 1. Cast [Recklessness](https://www.wowhead.com/forever/spell=1719) when Time remaining ≤ 300s.
 2. Use ready automatic cooldowns.
-3. Cast [Battle Stance](https://www.wowhead.com/forever/spell=2457) when ([Overpower](https://www.wowhead.com/forever/spell=11585) active AND Rage ≤ 25 AND NOT `{"isExecutePhase":{"threshold":"E20"}}` AND NOT [Recklessness](https://www.wowhead.com/forever/spell=1719) active).
+3. Cast [Battle Stance](https://www.wowhead.com/forever/spell=2457) when ([Overpower opportunity](https://www.wowhead.com/forever/spell=1282733) active AND Rage ≤ 25 AND NOT `{"isExecutePhase":{"threshold":"E20"}}` AND NOT [Recklessness](https://www.wowhead.com/forever/spell=1719) active).
 4. Cast [Overpower](https://www.wowhead.com/forever/spell=11585).
-5. Cast [Berserker Stance](https://www.wowhead.com/forever/spell=2458) when NOT [Overpower](https://www.wowhead.com/forever/spell=11585) active.
+5. Cast [Berserker Stance](https://www.wowhead.com/forever/spell=2458) when NOT [Overpower opportunity](https://www.wowhead.com/forever/spell=1282733) active.
 6. Cast [Execute](https://www.wowhead.com/forever/spell=20662).
 7. Cast [Bloodthirst](https://www.wowhead.com/forever/spell=23894).
 8. Cast [Whirlwind](https://www.wowhead.com/forever/spell=1680).
@@ -788,31 +790,31 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Action | DPS |
 |---|---:|
-| Auto-attack (tag 2) | 141.32 |
-| Auto-attack (tag 1) | 136.71 |
-| [Heroic Strike](https://www.wowhead.com/forever/spell=25286) | 110.20 |
-| [Execute](https://www.wowhead.com/forever/spell=20662) | 90.64 |
-| [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | 89.80 |
-| Auto-attack (tag 3) | 58.75 |
-| [Overpower](https://www.wowhead.com/forever/spell=11585) | 48.67 |
-| [Whirlwind](https://www.wowhead.com/forever/spell=1680) | 40.66 |
+| Auto-attack (tag 2) | 141.94 |
+| Auto-attack (tag 1) | 133.07 |
+| [Heroic Strike](https://www.wowhead.com/forever/spell=25286) | 110.09 |
+| [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | 89.37 |
+| [Execute](https://www.wowhead.com/forever/spell=20662) | 89.25 |
+| Auto-attack (tag 3) | 58.03 |
+| [Overpower](https://www.wowhead.com/forever/spell=11585) | 48.14 |
+| [Whirlwind](https://www.wowhead.com/forever/spell=1680) | 40.56 |
 
 ### Resource flow
 
 | Resource | Action | Net amount per fight |
 |---|---|---:|
-| Rage | Auto-attack (tag 2) | +1092.8 |
-| Rage | Auto-attack (tag 1) | +926.6 |
-| Rage | [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | -881.2 |
-| Rage | [Execute](https://www.wowhead.com/forever/spell=20662) | -624.4 |
-| Rage | [Whirlwind](https://www.wowhead.com/forever/spell=1680) | -494.9 |
-| Rage | [Heroic Strike](https://www.wowhead.com/forever/spell=25286) | -440.2 |
-| Rage | [Item 13442](https://www.wowhead.com/forever/item=13442) | +179.7 |
-| Rage | [Unbridled Wrath](https://www.wowhead.com/forever/spell=12964) | +179.4 |
-| Rage | [Slam](https://www.wowhead.com/forever/spell=11605) | -150.4 |
+| Rage | Auto-attack (tag 2) | +1097.3 |
+| Rage | Auto-attack (tag 1) | +905.7 |
+| Rage | [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | -876.4 |
+| Rage | [Execute](https://www.wowhead.com/forever/spell=20662) | -612.9 |
+| Rage | [Whirlwind](https://www.wowhead.com/forever/spell=1680) | -495.0 |
+| Rage | [Heroic Strike](https://www.wowhead.com/forever/spell=25286) | -439.1 |
+| Rage | [Item 13442](https://www.wowhead.com/forever/item=13442) | +179.6 |
+| Rage | [Unbridled Wrath](https://www.wowhead.com/forever/spell=12964) | +178.6 |
+| Rage | [Slam](https://www.wowhead.com/forever/spell=11605) | -147.5 |
 | Rage | [Anger Management](https://www.wowhead.com/forever/spell=12296) | +100.0 |
-| Rage | [Bloodrage](https://www.wowhead.com/forever/spell=2687) | +98.9 |
-| Rage | OtherActionRefund | +95.4 |
+| Rage | [Bloodrage](https://www.wowhead.com/forever/spell=2687) | +98.8 |
+| Rage | OtherActionRefund | +94.7 |
 
 ## Warlock — Destruction
 
@@ -1003,23 +1005,23 @@ Other races can use different equipment. Their complete setups are available in 
 
 [Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
 
-**Model limitations:** Level-60 rage generation remains unverified; this row uses the current Warrior rage model.
+**Model limitations:** Level-60 rage and Flurry charge timing remain unverified; this row uses the provisional Warrior model.
 
 
 ### Results
 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
-| Orc | 745.00 | 0.49 | 0.00 |
-| Tauren | 740.73 | 0.47 | 0.00 |
-| Undead | 740.01 | 0.48 | 0.00 |
-| Troll | 734.24 | 0.48 | 0.00 |
-| Windshaper | 733.00 | 0.48 | 0.00 |
-| Human | 740.76 | 0.48 | 0.00 |
-| Dwarf | 735.60 | 0.48 | 0.00 |
-| Gnome | 734.11 | 0.47 | 0.00 |
-| Night Elf | 732.56 | 0.47 | 0.00 |
-| High Order | 733.00 | 0.48 | 0.00 |
+| Orc | 740.72 | 0.48 | 0.00 |
+| Tauren | 735.79 | 0.48 | 0.00 |
+| Undead | 734.41 | 0.47 | 0.00 |
+| Troll | 728.16 | 0.46 | 0.00 |
+| Windshaper | 728.70 | 0.48 | 0.00 |
+| Human | 736.62 | 0.47 | 0.00 |
+| Dwarf | 730.95 | 0.48 | 0.00 |
+| Gnome | 729.66 | 0.47 | 0.00 |
+| Night Elf | 728.15 | 0.47 | 0.00 |
+| High Order | 728.70 | 0.48 | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
@@ -1050,9 +1052,9 @@ Other races can use different equipment. Their complete setups are available in 
 
 1. Use ready automatic cooldowns.
 2. Cast [Recklessness](https://www.wowhead.com/forever/spell=1719).
-3. Cast [Battle Stance](https://www.wowhead.com/forever/spell=2457) when ([Overpower](https://www.wowhead.com/forever/spell=11585) active AND Rage ≤ 25).
+3. Cast [Battle Stance](https://www.wowhead.com/forever/spell=2457) when ([Overpower opportunity](https://www.wowhead.com/forever/spell=1282733) active AND Rage ≤ 25).
 4. Cast [Overpower](https://www.wowhead.com/forever/spell=11585).
-5. Cast [Berserker Stance](https://www.wowhead.com/forever/spell=2458) when NOT [Overpower](https://www.wowhead.com/forever/spell=11585) active.
+5. Cast [Berserker Stance](https://www.wowhead.com/forever/spell=2458) when NOT [Overpower opportunity](https://www.wowhead.com/forever/spell=1282733) active.
 6. Cast [Execute](https://www.wowhead.com/forever/spell=20662).
 7. Cast [Bloodthirst](https://www.wowhead.com/forever/spell=23894).
 8. Cast [Whirlwind](https://www.wowhead.com/forever/spell=1680).
@@ -1063,31 +1065,31 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Action | DPS |
 |---|---:|
-| Auto-attack (tag 1) | 229.53 |
-| [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | 101.11 |
-| Auto-attack (tag 3) | 95.41 |
-| [Execute](https://www.wowhead.com/forever/spell=20662) | 74.48 |
-| [Whirlwind](https://www.wowhead.com/forever/spell=1680) | 64.73 |
-| [Heroic Strike](https://www.wowhead.com/forever/spell=25286) | 57.09 |
-| [Overpower](https://www.wowhead.com/forever/spell=11585) | 49.83 |
-| [Slam](https://www.wowhead.com/forever/spell=11605) | 39.37 |
+| Auto-attack (tag 1) | 228.14 |
+| [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | 101.02 |
+| Auto-attack (tag 3) | 95.05 |
+| [Execute](https://www.wowhead.com/forever/spell=20662) | 73.92 |
+| [Whirlwind](https://www.wowhead.com/forever/spell=1680) | 64.48 |
+| [Heroic Strike](https://www.wowhead.com/forever/spell=25286) | 55.69 |
+| [Overpower](https://www.wowhead.com/forever/spell=11585) | 49.73 |
+| [Slam](https://www.wowhead.com/forever/spell=11605) | 38.82 |
 
 ### Resource flow
 
 | Resource | Action | Net amount per fight |
 |---|---|---:|
-| Rage | Auto-attack (tag 1) | +1865.0 |
-| Rage | [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | -945.0 |
-| Rage | [Execute](https://www.wowhead.com/forever/spell=20662) | -546.6 |
-| Rage | [Whirlwind](https://www.wowhead.com/forever/spell=1680) | -515.0 |
-| Rage | [Item 13442](https://www.wowhead.com/forever/item=13442) | +174.7 |
-| Rage | [Slam](https://www.wowhead.com/forever/spell=11605) | -152.1 |
-| Rage | [Unbridled Wrath](https://www.wowhead.com/forever/spell=12964) | +144.0 |
-| Rage | [Heroic Strike](https://www.wowhead.com/forever/spell=25286) | -139.6 |
-| Rage | [Bloodrage](https://www.wowhead.com/forever/spell=2687) | +92.6 |
-| Rage | OtherActionRefund | +78.6 |
+| Rage | Auto-attack (tag 1) | +1852.9 |
+| Rage | [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | -942.4 |
+| Rage | [Execute](https://www.wowhead.com/forever/spell=20662) | -543.1 |
+| Rage | [Whirlwind](https://www.wowhead.com/forever/spell=1680) | -513.1 |
+| Rage | [Item 13442](https://www.wowhead.com/forever/item=13442) | +174.6 |
+| Rage | [Slam](https://www.wowhead.com/forever/spell=11605) | -150.6 |
+| Rage | [Unbridled Wrath](https://www.wowhead.com/forever/spell=12964) | +142.8 |
+| Rage | [Heroic Strike](https://www.wowhead.com/forever/spell=25286) | -135.4 |
+| Rage | [Bloodrage](https://www.wowhead.com/forever/spell=2687) | +92.7 |
+| Rage | OtherActionRefund | +77.9 |
 | Rage | [Overpower](https://www.wowhead.com/forever/spell=11585) | -54.8 |
-| Rage | [Berserker Stance](https://www.wowhead.com/forever/spell=2458) | -27.5 |
+| Rage | [Berserker Stance](https://www.wowhead.com/forever/spell=2458) | -26.9 |
 
 ## Shaman — Enhancement
 
@@ -1191,16 +1193,16 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
-| Orc | 735.41 | 0.49 | 0.00 |
-| Tauren | 732.64 | 0.49 | 0.00 |
-| Troll | 729.72 | 0.49 | 0.00 |
-| Undead | 739.24 | 0.50 | 0.00 |
-| Windshaper | 731.50 | 0.49 | 0.00 |
-| Human | 738.13 | 0.49 | 0.00 |
-| Dwarf | 728.11 | 0.48 | 0.00 |
-| Night Elf | 733.72 | 0.49 | 0.00 |
-| Gnome | 730.73 | 0.48 | 0.00 |
-| High Order | 731.50 | 0.49 | 0.00 |
+| Orc | 735.56 | 0.49 | 0.00 |
+| Tauren | 732.80 | 0.49 | 0.00 |
+| Troll | 729.89 | 0.49 | 0.00 |
+| Undead | 739.37 | 0.50 | 0.00 |
+| Windshaper | 731.67 | 0.49 | 0.00 |
+| Human | 738.28 | 0.49 | 0.00 |
+| Dwarf | 728.26 | 0.48 | 0.00 |
+| Night Elf | 733.88 | 0.49 | 0.00 |
+| Gnome | 730.90 | 0.48 | 0.00 |
+| High Order | 731.67 | 0.49 | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
@@ -1250,7 +1252,7 @@ Other races can use different equipment. Their complete setups are available in 
 | Auto-attack (tag 3) | 114.25 |
 | [Mortal Strike](https://www.wowhead.com/forever/spell=21553) | 111.00 |
 | [Overpower](https://www.wowhead.com/forever/spell=11585) | 110.71 |
-| [Execute](https://www.wowhead.com/forever/spell=20662) | 73.10 |
+| [Execute](https://www.wowhead.com/forever/spell=20662) | 72.95 |
 | [Slam](https://www.wowhead.com/forever/spell=11605) | 43.40 |
 | [Spearing Strike](https://www.wowhead.com/forever/spell=1310222) | 34.80 |
 | [Deep Wounds](https://www.wowhead.com/forever/spell=12867) | 33.65 |
@@ -1261,7 +1263,7 @@ Other races can use different equipment. Their complete setups are available in 
 |---|---|---:|
 | Rage | Auto-attack (tag 1) | +1740.0 |
 | Rage | [Mortal Strike](https://www.wowhead.com/forever/spell=21553) | -1034.2 |
-| Rage | [Execute](https://www.wowhead.com/forever/spell=20662) | -501.9 |
+| Rage | [Execute](https://www.wowhead.com/forever/spell=20662) | -501.2 |
 | Rage | [Slam](https://www.wowhead.com/forever/spell=11605) | -205.8 |
 | Rage | [Spearing Strike](https://www.wowhead.com/forever/spell=1310222) | -168.5 |
 | Rage | [Item 13442](https://www.wowhead.com/forever/item=13442) | +156.5 |

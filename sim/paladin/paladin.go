@@ -61,10 +61,9 @@ type Paladin struct {
 	spellsJoC        []*core.Spell
 	spellsJotC       []*core.Spell
 
-	// The on-hit proc each seal aura owns, for Twist of Light to bank.
-	sealProcs    map[*core.Aura]*core.Spell
-	sealEcho     *core.Spell
-	sealEchoAura *core.Aura
+	// Twist of Light banks a separate Echo for each replaced seal.
+	sealProcs  map[*core.Aura]sealEchoSource
+	sealEchoes map[int32]*sealEcho
 
 	// Active abilities and shared cooldowns that are externally manipulated.
 	exorcism       []*core.Spell
@@ -140,7 +139,9 @@ func (paladin *Paladin) Initialize() {
 func (paladin *Paladin) Reset(_ *core.Simulation) {
 	paladin.ResetCurrentPaladinAura()
 	paladin.ResetPrimarySeal(paladin.Options.PrimarySeal)
-	paladin.sealEcho = nil
+	for _, echo := range paladin.sealEchoes {
+		echo.spell = nil
+	}
 }
 
 // maybe need to add stat dependencies

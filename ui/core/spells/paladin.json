@@ -528,13 +528,19 @@
 		"source": "forever",
 		"tooltip": "14 Mana\nMelee Range\nInstant\n12 sec cooldown\nAn instant strike that causes 30% weapon damage plus an additional 22 to 29 as Holy damage."
 	},
-	"77485": {
-		"ability": "Twist of Light",
+	"1311703": {
+		"ability": "Echo of Command",
 		"file": "sim/paladin/twist_of_light.go",
-		"foreverId": 1310735,
-		"note": "Twist of Light is new in Forever and borrows Echo of Light's id 77485, which Classic's database does not carry; only Seal of Righteousness and Seal of Command bank an Echo here, because the other two seals are not in the sim and Seal of the Crusader has no on-hit proc to echo.",
+		"note": "Client 1.60.1.69977: Echo of Command has its own aura ID, one charge, unlimited duration and a white-melee trigger. Replaces the unsupported borrowed aura ID 77485.",
 		"source": "forever",
-		"tooltip": "When you replace your Seal of Command, Seal of Righteousness, Seal of Fury, or Seal of Justice with a different Seal, gain an Echo.\nYour next melee attack applies the replaced Seal's effects, consuming the Echo."
+		"tooltip": "Your next landed white melee attack applies the replaced Seal of Command's effect, consuming this Echo."
+	},
+	"1311704": {
+		"ability": "Echo of Righteousness",
+		"file": "sim/paladin/twist_of_light.go",
+		"note": "Client 1.60.1.69977: Echo of Righteousness is a distinct one-charge aura with unlimited duration and a white-melee trigger.",
+		"source": "forever",
+		"tooltip": "Your next landed white melee attack applies the replaced Seal of Righteousness's effect, consuming this Echo."
 	},
 	"879": {
 		"ability": "Exorcism",

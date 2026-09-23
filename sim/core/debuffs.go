@@ -473,24 +473,34 @@ func JudgementOfLightAura(target *Unit) *Aura {
 	})
 }
 
+const JudgementOfTheCrusaderCategory = "Judgement of the Crusader"
+
 func JudgementOfTheCrusaderAura(caster *Unit, target *Unit, mult float64, extraBonus float64) *Aura {
 	var spellId int32 = 20303
 	var bonus float64 = 140
 
 	bonus *= mult
 	bonus += extraBonus
-
-	return target.GetOrRegisterAura(Aura{
+	forever := target.Env != nil && target.Env.IsForever()
+	duration := 10 * time.Second
+	if forever {
+		duration = 40 * time.Second
+	}
+	aura := target.GetOrRegisterAura(Aura{
 		Label:    "Judgement of the Crusader",
 		ActionID: ActionID{SpellID: spellId},
 		Tag:      JudgementAuraTag,
-		Duration: 10 * time.Second,
+		Duration: duration,
 
 		OnGain: func(aura *Aura, sim *Simulation) {
-			aura.Unit.PseudoStats.SchoolBonusDamageTaken[stats.SchoolIndexHoly] += bonus
+			if !forever {
+				aura.Unit.PseudoStats.SchoolBonusDamageTaken[stats.SchoolIndexHoly] += bonus
+			}
 		},
 		OnExpire: func(aura *Aura, sim *Simulation) {
-			aura.Unit.PseudoStats.SchoolBonusDamageTaken[stats.SchoolIndexHoly] -= bonus
+			if !forever {
+				aura.Unit.PseudoStats.SchoolBonusDamageTaken[stats.SchoolIndexHoly] -= bonus
+			}
 		},
 		OnSpellHitTaken: func(aura *Aura, sim *Simulation, spell *Spell, result *SpellResult) {
 			if spell.Unit != caster { // caster is nil for permanent auras
@@ -501,6 +511,18 @@ func JudgementOfTheCrusaderAura(caster *Unit, target *Unit, mult float64, extraB
 			}
 		},
 	})
+	if forever {
+		aura.NewExclusiveEffect(JudgementOfTheCrusaderCategory, true, ExclusiveEffect{
+			Priority: bonus,
+			OnGain: func(_ *ExclusiveEffect, _ *Simulation) {
+				target.PseudoStats.SchoolBonusDamageTaken[stats.SchoolIndexHoly] += bonus
+			},
+			OnExpire: func(_ *ExclusiveEffect, _ *Simulation) {
+				target.PseudoStats.SchoolBonusDamageTaken[stats.SchoolIndexHoly] -= bonus
+			},
+		})
+	}
+	return aura
 }
 
 func CurseOfElementsAura(target *Unit) *Aura {

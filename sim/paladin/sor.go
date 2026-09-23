@@ -73,12 +73,16 @@ func (paladin *Paladin) registerSealOfRighteousness() {
 		minDamage := rank.judge.minDamage + rank.judge.scale*float64(min(paladin.Level, rank.scaleLevel)-rank.level)
 		maxDamage := rank.judge.maxDamage + rank.judge.scale*float64(min(paladin.Level, rank.scaleLevel)-rank.level)
 
+		judgeDefense, judgeProcMask := core.DefenseTypeMagic, core.ProcMaskSpellDamage
+		if paladin.Env.IsForever() {
+			judgeDefense, judgeProcMask = core.DefenseTypeMelee, core.ProcMaskMeleeMHSpecial
+		}
 		judgeSpell := paladin.RegisterSpell(core.SpellConfig{
 			SpellCode:   SpellCode_PaladinJudgementOfRighteousness,
 			ActionID:    core.ActionID{SpellID: rank.judge.spellID},
 			SpellSchool: core.SpellSchoolHoly,
-			DefenseType: core.DefenseTypeMagic,
-			ProcMask:    core.ProcMaskSpellDamage,
+			DefenseType: judgeDefense,
+			ProcMask:    judgeProcMask,
 			Flags:       core.SpellFlagMeleeMetrics | core.SpellFlagSuppressWeaponProcs | core.SpellFlagSuppressEquipProcs | core.SpellFlagBinary,
 
 			// Improved Seals is a percent modifier (aura 108), so it scales the whole spell, spell
@@ -90,7 +94,11 @@ func (paladin *Paladin) registerSealOfRighteousness() {
 
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 				baseDamage := sim.Roll(minDamage, maxDamage)
-				spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMagicHitAndCrit)
+				if paladin.Env.IsForever() {
+					spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialNoBlockDodgeParry)
+				} else {
+					spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMagicHitAndCrit)
+				}
 			},
 		})
 
@@ -140,7 +148,7 @@ func (paladin *Paladin) registerSealOfRighteousness() {
 		})
 
 		paladin.aurasSoR = append(paladin.aurasSoR, aura)
-		paladin.registerSealProc(aura, procSpell)
+		paladin.registerSealProc(aura, procSpell, echoOfRighteousness)
 
 		paladin.sealOfRighteousness = paladin.RegisterSpell(core.SpellConfig{
 			ActionID:    aura.ActionID,

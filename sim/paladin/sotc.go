@@ -1,6 +1,7 @@
 package paladin
 
 import (
+	"fmt"
 	"strconv"
 	"time"
 
@@ -33,8 +34,7 @@ func (paladin *Paladin) registerSealOfTheCrusader() {
 
 	// Beta client 1.60.1.69893: Improved Seal of the Crusader's 15% is baked into the judgement
 	// (rank 6 140 -> 161, which core.JudgementOfTheCrusaderAura builds as 140 x 1.15) but not into
-	// the seal, whose attack power is Classic's at every rank. The debuff also lasts 40 sec
-	// instead of 10, which core sets.
+	// the seal, whose attack power is Classic's at every rank. The debuff lasts 40 sec.
 	const improvedSotC = 1.15
 
 	var libramAp, libramBonus float64
@@ -50,6 +50,30 @@ func (paladin *Paladin) registerSealOfTheCrusader() {
 		}
 
 		debuffs := paladin.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
+			if paladin.Env.IsForever() {
+				bonus := rank.judge.bonus + libramBonus
+				aura := target.GetOrRegisterAura(core.Aura{
+					Label:    fmt.Sprintf("Judgement of the Crusader %d %s", rank.judge.spellID, paladin.Label),
+					ActionID: core.ActionID{SpellID: rank.judge.spellID},
+					Tag:      core.JudgementAuraTag,
+					Duration: 40 * time.Second,
+					OnSpellHitTaken: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+						if spell.Unit == &paladin.Unit && result.Landed() && spell.ProcMask.Matches(core.ProcMaskMelee) {
+							aura.Refresh(sim)
+						}
+					},
+				})
+				aura.NewExclusiveEffect(core.JudgementOfTheCrusaderCategory, true, core.ExclusiveEffect{
+					Priority: bonus,
+					OnGain: func(_ *core.ExclusiveEffect, _ *core.Simulation) {
+						target.PseudoStats.SchoolBonusDamageTaken[stats.SchoolIndexHoly] += bonus
+					},
+					OnExpire: func(_ *core.ExclusiveEffect, _ *core.Simulation) {
+						target.PseudoStats.SchoolBonusDamageTaken[stats.SchoolIndexHoly] -= bonus
+					},
+				})
+				return aura
+			}
 			return core.JudgementOfTheCrusaderAura(&paladin.Unit, target, improvedSotC, libramBonus)
 		})
 

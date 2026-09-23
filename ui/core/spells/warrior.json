@@ -43,6 +43,13 @@
 		"note": "Beta client 1.60.1.69893: 35 bonus damage, 5 Rage and a 5 sec cooldown as in Classic Era. The client adds a second cost of 1 of power type 4, which nothing in the sim models.",
 		"source": "classic"
 	},
+	"1282733": {
+		"ability": "Overpower opportunity",
+		"file": "sim/warrior/overpower.go",
+		"note": "Client 1.60.1.69977: the triggered five-second Overpower availability aura has a distinct ID from the cast spell 11585.",
+		"source": "forever",
+		"tooltip": "Overpower is available for 5 seconds after the target dodges your attack."
+	},
 	"11601": {
 		"ability": "Revenge",
 		"file": "sim/warrior/revenge.go",

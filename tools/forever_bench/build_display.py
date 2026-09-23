@@ -37,8 +37,9 @@ BUILD_CAVEATS = {
     "marksmanship": ["Lone Wolf requires no active pet. Improved Tracking assumes tracking matches the Dragonkin reference target."],
     "shadow": ["Death's script value 150 and backlash interactions remain unverified; no extra execute multiplier is inferred. Self-damage is recorded without healer survival constraints."],
     "arcane_frost": ["Uses an assumed Ice Lance coefficient and unresolved Fingers of Frost, Missile Barrage and Clearcasting timing."],
-    "fury_2h": ["Level-60 rage generation remains unverified; this row uses the current Warrior rage model."],
-    "retribution": ["Includes lower-rank seals and Consecration; their server scaling and proc interactions still need confirmation."],
+    "fury": ["Level-60 rage, queued off-hand hit and Flurry charge timing still need in-game confirmation."],
+    "fury_2h": ["Level-60 rage and Flurry charge timing remain unverified; this row uses the provisional Warrior model."],
+    "retribution": ["Separate seal Echoes can coexist and fire on a landed white swing; verify their simultaneous behavior in game (T53). Lower-rank seals and Consecration also need confirmation."],
     "smite": ["The rank-2 Smite fallback depends on the modeled low-rank spell-power coefficient."],
     "stormcaller": ["The rank-2 Lightning Bolt filler depends on the modeled low-rank spell-power coefficient."],
 }

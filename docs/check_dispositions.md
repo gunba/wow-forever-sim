@@ -162,8 +162,11 @@ A later research screenshot reports 5.17 rage at 1.5 seconds, 5.54 at 1.6,
 7.27 at 2.1 for one-handed weapons, and 13.50 at 3.0 and 14.40 at 3.2 for
 two-handers. These approximate `speed × 3.46` for the first three and
 `speed × 4.5` for the last two, consistent with the independently reviewed
-2.7-second level-18 sample above. The screenshot does not supply matching
-equipment, target levels or raw events for each additional row. A comparison
+2.7-second level-18 sample above. Unlike the screenshot alone, the
+[researcher's later issue](https://github.com/magey/forever-warrior/issues/3)
+links twelve raw level-8/9 logs with weapon speeds, armor and health context.
+Those logs support the two-hand rate and a geared incoming-hit rule; they
+still do not establish a level-60 or off-hand formula. A comparison
 to Cataclysm at its maximum level is a proposed analogy, **not evidence
 that Forever retains this rule at level 60**. The inherited Classic formula
 would instead change rage by a factor of
@@ -181,17 +184,17 @@ dodges and parries award none. The off-hand provisionally gets **half**
 the one-hand rate before the sourced Dual Wield Specialization rage
 multiplier. The half-rate rule is from [Blizzard's Cataclysm design
 statement](https://www.bluetracker.gg/wow/topic/us-en/24038830344-what-about-rage-when-off-tanking/),
-not a verified Forever off-hand measurement. Rage from damage taken retains
-the separate inherited formula; non-Forever rules remain unchanged. These
-outgoing rates are an explicit benchmark assumption extrapolated to level
+not a verified Forever off-hand measurement. Rage from damage taken uses
+`unmitigated damage × 10 / maximum health` for
+geared Warriors, as fitted to the linked level-8/9 logs. Non-Forever rules
+remain unchanged. These outgoing rates are an explicit benchmark assumption extrapolated to level
 60, not proof of a level-60 or extra-swing server formula.
 
-The screenshot's incoming-damage/armor table has no paired pre-armor damage,
-health and actual damage for each row and labels its Cataclysm comparison
-tentatively. The reference boss does not attack its DPS players; self-damage
-can still generate a small amount of rage, so the damage-taken formula is
-not literally absent from every Warrior result. It needs a controlled
-tank/solo test, not an inferred armor formula.
+The low-level logs also show roughly **double** the geared incoming Rage
+rate below 130–170 armor. This may be a beta defect; we do not extrapolate
+that threshold to level 60. The reference boss does not attack DPS players,
+though self-damage can still generate some rage. A tank/solo comparison at
+higher levels, with Berserker Rage both on and off, is still needed.
 
 ## Relevance to the published profiles
 

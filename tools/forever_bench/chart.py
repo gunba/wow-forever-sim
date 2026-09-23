@@ -162,7 +162,7 @@ def main():
                  "Caps and resource thresholds affect curvature. Hypothetical upgrades, not future-item predictions.",
                  fontsize=8.5, color="#475569")
     fig.text(.07, .02,
-             "* Warrior rows use provisional speed-normalized rage; some hybrids also depend on guardian/proc assumptions. Beta model; icons via Wowhead.",
+              "* Warrior rage and Ret Echo timing/coexistence need level-60 confirmation; some hybrids depend on guardian/proc assumptions. Beta model; icons via Wowhead.",
              fontsize=8.5, color="#64748b")
     prefix = args.output or args.results.with_suffix("")
     prefix.parent.mkdir(parents=True, exist_ok=True)

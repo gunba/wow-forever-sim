@@ -9,6 +9,10 @@ import (
 func (warrior *Warrior) registerOverpowerSpell(cdTimer *core.Timer) {
 	bonusDamage := 35.0
 	spellID := int32(11585)
+	windowID := spellID
+	if warrior.Env.IsForever() {
+		windowID = 1282733 // The five-second aura fired by Offensive State.
+	}
 
 	warrior.RegisterAura(core.Aura{
 		Label:    "Overpower Trigger",
@@ -25,7 +29,7 @@ func (warrior *Warrior) registerOverpowerSpell(cdTimer *core.Timer) {
 
 	warrior.OverpowerAura = warrior.RegisterAura(core.Aura{
 		Label:    "Overpower Aura",
-		ActionID: core.ActionID{SpellID: spellID},
+		ActionID: core.ActionID{SpellID: windowID},
 		Duration: time.Second * 5,
 	})
 

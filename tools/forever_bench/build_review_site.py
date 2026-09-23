@@ -62,7 +62,7 @@ def main():
     shutil.copyfile("artifacts/spell_coverage.json", args.output / "spell_coverage.json")
     for extension in ("json", "csv", "svg", "png"):
         shutil.copyfile(args.results.with_suffix("." + extension), args.output / ("results." + extension))
-    for name in ("build_reviews.md", "build_updates.md", "gear_updates.md", "in_game_checks.md", "check_dispositions.md", "spell_coverage.md", "windfury.md", "energy_audit.md", "auto_attack_audit.md", "crit_model.md", "forever_gear_data.md", "mechanics_review.md", "history_review.md", "mana_regeneration.md", "mythicsim_review.md"):
+    for name in ("build_reviews.md", "build_updates.md", "gear_updates.md", "in_game_checks.md", "check_dispositions.md", "spell_coverage.md", "windfury.md", "energy_audit.md", "auto_attack_audit.md", "crit_model.md", "forever_gear_data.md", "mechanics_review.md", "history_review.md", "upstream-forever-review-2026-09-23.md", "mana_regeneration.md", "mythicsim_review.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
     body = []
     for key, class_name, label, icon in builds:
@@ -169,6 +169,7 @@ Healing-only effects give no inferred spell damage. These are tested builds, not
 <a href="energy_audit.md">Energy model</a><a href="auto_attack_audit.md">Auto-attack model</a>
 <a href="crit_model.md">Critical strike model</a>
 <a href="mechanics_review.md">Mechanics review</a><a href="history_review.md">Change-history review</a>
+<a href="upstream-forever-review-2026-09-23.md">Upstream review</a>
 <a href="mana_regeneration.md">Mana regeneration</a><a href="mana_regen/summary.json">Mana comparison data</a>
 <a href="mythicsim_review.md">Independent engine comparison</a></nav>
 <p class="note">Hover a result for its standard error and mana-limited time. A dash means that race/class combination is unavailable.</p>

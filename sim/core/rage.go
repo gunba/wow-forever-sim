@@ -55,6 +55,18 @@ func foreverWarriorRagePerSwing(speed float64, twoHand, offHand bool) float64 {
 	return speed * rate
 }
 
+// Geared low-level Forever logs fit ten times unmitigated damage divided by
+// maximum health. The observed low-armor doubling remains unresolved.
+func foreverWarriorDamageTakenRage(damage, mitigation, maxHealth float64) float64 {
+	if damage <= 0 || maxHealth <= 0 {
+		return 0
+	}
+	if mitigation > 0 {
+		damage /= mitigation
+	}
+	return damage * 10 / maxHealth
+}
+
 func GetRageConversion(attacker_level int32) float64 {
 	if attacker_level == 25 {
 		return 82.25 // Tested
@@ -150,8 +162,13 @@ func (unit *Unit) EnableRageBar(options RageBarOptions) {
 			if unit.GetCurrentPowerBar() != RageBar {
 				return
 			}
-			rageConversionDamageTaken := GetRageConversion(spell.Unit.Level)
-			generatedRage := result.Damage * 2.5 / rageConversionDamageTaken
+			generatedRage := 0.0
+			if unit.rageBar.foreverWarriorRage && unit.Env != nil && unit.Env.IsForever() {
+				generatedRage = foreverWarriorDamageTakenRage(result.Damage, result.ResistanceMultiplier, unit.MaxHealth())
+			} else {
+				rageConversionDamageTaken := GetRageConversion(spell.Unit.Level)
+				generatedRage = result.Damage * 2.5 / rageConversionDamageTaken
+			}
 			generatedRage *= unit.rageBar.damageTakenMultiplier
 			generatedRage += unit.rageBar.flatDamageTakenBonusRage
 			unit.AddRage(sim, generatedRage, rageFromDamageTakenMetrics)

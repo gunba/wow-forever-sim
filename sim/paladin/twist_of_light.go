@@ -4,53 +4,88 @@ import (
 	"github.com/wowsims/classic/sim/core"
 )
 
-// Twist of Light is new in Forever and borrows Echo of Light's spell id, after the Echo the
-// tooltip names. Swapping seals normally throws the old one away; with the talent the seal the
-// paladin cancels fires once more off the next melee attack.
-// Seal of the Crusader is not on the tooltip's list and has no on-hit proc to echo either, so
-// only Seal of Righteousness and Seal of Command bank one.
+const (
+	echoOfCommand       int32 = 1311703
+	echoOfRighteousness int32 = 1311704
+)
+
+type sealEchoSource struct {
+	id    int32
+	spell *core.Spell
+}
+
+type sealEcho struct {
+	aura  *core.Aura
+	spell *core.Spell
+}
+
+func (echo *sealEcho) consume(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+	if !result.Landed() || !spell.ProcMask.Matches(core.ProcMaskMeleeWhiteHit) {
+		return
+	}
+	proc := echo.spell
+	echo.spell = nil
+	aura.Deactivate(sim)
+	if proc != nil {
+		proc.Cast(sim, result.Target)
+	}
+}
+
+// Twist of Light leaves one separately charged Echo per replaced seal.
+// Client aura options for both Echoes specify one charge, no duration, and
+// a white-melee proc mask; Judgements do not consume them.
 func (paladin *Paladin) registerTwistOfLight() {
 	if !paladin.Talents.TwistOfLight {
 		return
 	}
 
-	paladin.sealEchoAura = paladin.RegisterAura(core.Aura{
-		Label:    "Twist of Light",
-		ActionID: core.ActionID{SpellID: 77485},
-		Duration: core.NeverExpires,
-		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if !result.Landed() || !spell.ProcMask.Matches(core.ProcMaskMelee) {
-				return
-			}
-
-			echo := paladin.sealEcho
-			paladin.sealEcho = nil
-			aura.Deactivate(sim)
-			echo.Cast(sim, result.Target)
+	command := &sealEcho{}
+	command.aura = paladin.RegisterAura(core.Aura{
+		Label:     "Echo of Command",
+		ActionID:  core.ActionID{SpellID: 1311703},
+		Duration:  core.NeverExpires,
+		MaxStacks: 1,
+		OnGain: func(aura *core.Aura, sim *core.Simulation) {
+			aura.SetStacks(sim, 1)
 		},
+		OnSpellHitDealt: command.consume,
 	})
-}
-
-// Called by each seal that carries an on-hit proc as it registers.
-func (paladin *Paladin) registerSealProc(seal *core.Aura, proc *core.Spell) {
-	if paladin.sealProcs == nil {
-		paladin.sealProcs = make(map[*core.Aura]*core.Spell)
+	righteousness := &sealEcho{}
+	righteousness.aura = paladin.RegisterAura(core.Aura{
+		Label:     "Echo of Righteousness",
+		ActionID:  core.ActionID{SpellID: 1311704},
+		Duration:  core.NeverExpires,
+		MaxStacks: 1,
+		OnGain: func(aura *core.Aura, sim *core.Simulation) {
+			aura.SetStacks(sim, 1)
+		},
+		OnSpellHitDealt: righteousness.consume,
+	})
+	paladin.sealEchoes = map[int32]*sealEcho{
+		echoOfCommand:       command,
+		echoOfRighteousness: righteousness,
 	}
-	paladin.sealProcs[seal] = proc
 }
 
-// Banks the seal being replaced, if the paladin has Twist of Light and the seal is one that
-// leaves something behind to echo.
+func (paladin *Paladin) registerSealProc(seal *core.Aura, proc *core.Spell, echoID int32) {
+	if paladin.sealProcs == nil {
+		paladin.sealProcs = make(map[*core.Aura]sealEchoSource)
+	}
+	paladin.sealProcs[seal] = sealEchoSource{id: echoID, spell: proc}
+}
+
 func (paladin *Paladin) bankSealEcho(sim *core.Simulation, newSeal *core.Aura) {
-	if paladin.sealEchoAura == nil || newSeal == paladin.currentSeal || !paladin.currentSeal.IsActive() {
+	if paladin.sealEchoes == nil || newSeal == paladin.currentSeal || !paladin.currentSeal.IsActive() {
 		return
 	}
-
-	proc, ok := paladin.sealProcs[paladin.currentSeal]
+	source, ok := paladin.sealProcs[paladin.currentSeal]
 	if !ok {
 		return
 	}
-
-	paladin.sealEcho = proc
-	paladin.sealEchoAura.Activate(sim)
+	echo := paladin.sealEchoes[source.id]
+	if echo == nil {
+		return
+	}
+	echo.spell = source.spell
+	echo.aura.Activate(sim)
 }

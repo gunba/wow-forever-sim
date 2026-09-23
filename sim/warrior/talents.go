@@ -325,6 +325,7 @@ func (warrior *Warrior) makeFlurryAura(points int32) *core.Aura {
 // With the Protection T2 4pc it's possible to have 2 different Flurry auras if using less than 5/5 points in Flurry.
 // The two different buffs don't stack whatsoever. Instead the stronger aura takes precedence and each one is only refreshed by the corresponding triggers.
 func (warrior *Warrior) makeFlurryConsumptionTrigger(flurryAura *core.Aura) *core.Aura {
+	forever := warrior.Env.IsForever()
 	icd := core.Cooldown{
 		Timer:    warrior.NewTimer(),
 		Duration: time.Millisecond * 500,
@@ -333,8 +334,10 @@ func (warrior *Warrior) makeFlurryConsumptionTrigger(flurryAura *core.Aura) *cor
 		Label: fmt.Sprintf("Flurry Consume Trigger - %d", flurryAura.ActionID.SpellID),
 		OnSpellHitDealt: func(_ *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 			// Remove a stack.
-			if flurryAura.IsActive() && spell.ProcMask.Matches(core.ProcMaskMeleeWhiteHit) && icd.IsReady(sim) {
-				icd.Use(sim)
+			if flurryAura.IsActive() && spell.ProcMask.Matches(core.ProcMaskMeleeWhiteHit) && (forever || icd.IsReady(sim)) {
+				if !forever {
+					icd.Use(sim)
+				}
 				flurryAura.RemoveStack(sim)
 			}
 		},

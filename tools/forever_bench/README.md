@@ -16,8 +16,11 @@ Replay the current exact native profiles, including race-specific equipment:
 
 ```sh
 python3 tools/forever_bench/run_matrix.py --binary /path/to/forever-bench \
-  --profiles artifacts/forever_dps_5min.json --output /tmp/forever-matrix --workers 24
+  --profiles artifacts/forever_input_profiles.json --output /tmp/forever-matrix --workers 24
 ```
+
+`forever_input_profiles.json` freezes the 171 unnormalized starting players independently
+of the results. Each output also retains its complete request and baseline player.
 
 The [gear comparison pass](../../docs/gear_updates.md) and its evidence are
 separate from the preceding fixed-gear talent/rotation comparisons.

@@ -96,6 +96,7 @@ func (warrior *Warrior) registerCleaveSpell(realismICD *core.Cooldown) {
 
 func (warrior *Warrior) makeQueueSpellsAndAura(srcSpell *WarriorSpell, realismICD *core.Cooldown) *WarriorSpell {
 	isQueueQueued := false
+	forever := warrior.Env.IsForever()
 
 	queueAura := warrior.RegisterAura(core.Aura{
 		Label:    "HS/Cleave Queue Aura-" + srcSpell.ActionID.String(),
@@ -103,6 +104,9 @@ func (warrior *Warrior) makeQueueSpellsAndAura(srcSpell *WarriorSpell, realismIC
 		Duration: core.NeverExpires,
 		OnReset: func(aura *core.Aura, sim *core.Simulation) {
 			isQueueQueued = false
+			if forever {
+				warrior.PseudoStats.DisableDWMissPenalty = false
+			}
 		},
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
 			if warrior.curQueueAura != nil {
@@ -110,8 +114,16 @@ func (warrior *Warrior) makeQueueSpellsAndAura(srcSpell *WarriorSpell, realismIC
 			}
 			warrior.curQueueAura = aura
 			warrior.curQueuedAutoSpell = srcSpell
+			// A level-20 Forever test found off-hand white swings use the
+			// single-wield miss table while either next-swing attack is queued.
+			if forever {
+				warrior.PseudoStats.DisableDWMissPenalty = true
+			}
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
+			if forever {
+				warrior.PseudoStats.DisableDWMissPenalty = false
+			}
 			warrior.curQueueAura = nil
 			warrior.curQueuedAutoSpell = nil
 		},
@@ -147,13 +159,13 @@ func (warrior *Warrior) makeQueueSpellsAndAura(srcSpell *WarriorSpell, realismIC
 	return queueSpell
 }
 
-// Heroic Strike and Cleave replace the main hand swing but roll on the special attack table,
-// so they skip the dual wield miss penalty. The penalty flag is character wide, so it is only
-// lifted for the swing itself: an off-hand auto that lands while the queue is up still pays it.
+// Heroic Strike and Cleave replace the main-hand swing and roll as specials.
+// Preserve the queue's off-hand hit-table state until the queue expires.
 func (warrior *Warrior) calcQueuedSwing(sim *core.Simulation, spell *core.Spell, target *core.Unit, baseDamage float64) *core.SpellResult {
+	wasDisabled := warrior.PseudoStats.DisableDWMissPenalty
 	warrior.PseudoStats.DisableDWMissPenalty = true
 	result := spell.CalcDamage(sim, target, baseDamage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
-	warrior.PseudoStats.DisableDWMissPenalty = false
+	warrior.PseudoStats.DisableDWMissPenalty = wasDisabled
 	return result
 }
 

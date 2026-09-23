@@ -21,6 +21,8 @@ import (
 //   it targets the melee defense type and so crits for double damage.
 //   The Seal of Command aura watches for the base Judgement spell, and casts the actual
 //   Judgement of Command when it successfully is cast.
+// Forever's dispatcher has no defense roll. Its triggered Judgement instead
+// rolls melee hit and crit, without dodge, parry or block.
 
 func (paladin *Paladin) registerSealOfCommand() {
 	if !paladin.Talents.SealOfCommand {
@@ -87,7 +89,15 @@ func (paladin *Paladin) registerSealOfCommand() {
 			BonusCoefficient: 0.429,
 
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				baseDamage := sim.Roll(minDamage, maxDamage) * 0.5 // unless stunned
+				baseDamage := sim.Roll(minDamage, maxDamage)
+				if !target.PseudoStats.Stunned {
+					baseDamage *= 0.5
+				}
+
+				if paladin.Env.IsForever() {
+					spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialNoBlockDodgeParry)
+					return
+				}
 
 				// Seal of Command requires this spell to act as its intermediary dummy,
 				// rolling on the spell hit table. If it succeeds, the actual Judgement of Command rolls on the
@@ -145,7 +155,7 @@ func (paladin *Paladin) registerSealOfCommand() {
 		})
 
 		paladin.aurasSoC = append(paladin.aurasSoC, aura)
-		paladin.registerSealProc(aura, procSpell)
+		paladin.registerSealProc(aura, procSpell, echoOfCommand)
 
 		paladin.sealOfCommand = paladin.RegisterSpell(core.SpellConfig{
 			ActionID:    aura.ActionID,

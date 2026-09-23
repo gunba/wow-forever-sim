@@ -28,3 +28,12 @@ func TestForeverWarriorRagePerSwing(t *testing.T) {
 		}
 	}
 }
+
+func TestForeverWarriorDamageTakenUsesPreArmorHealthRatio(t *testing.T) {
+	if got := foreverWarriorDamageTakenRage(6, .5, 200); got != .6 {
+		t.Fatalf("mitigated 12 damage against 200 health gave %g rage, want 0.6", got)
+	}
+	if got := foreverWarriorDamageTakenRage(0, .5, 200); got != 0 {
+		t.Fatalf("missed hit generated %g rage", got)
+	}
+}
