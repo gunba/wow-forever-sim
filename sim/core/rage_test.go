@@ -9,3 +9,22 @@ func TestRageConversionAtLevel60(t *testing.T) {
 		t.Fatalf("rage conversion at 60 = %v, want 230.6", got)
 	}
 }
+
+func TestForeverWarriorRagePerSwing(t *testing.T) {
+	for _, tc := range []struct {
+		speed            float64
+		twoHand, offHand bool
+		want             float64
+	}{
+		{1.5, false, false, 1.5 * 4.5 / 1.3},
+		{2.7, false, false, 2.7 * 4.5 / 1.3},
+		{3.2, true, false, 14.4},
+		{1.6, false, true, 1.6 * 4.5 / 1.3 / 2},
+		{0, false, false, 0},
+	} {
+		got := foreverWarriorRagePerSwing(tc.speed, tc.twoHand, tc.offHand)
+		if delta := got - tc.want; delta < -0.000001 || delta > 0.000001 {
+			t.Errorf("speed %.1f two-hand %t off-hand %t: got %.4f, want %.4f", tc.speed, tc.twoHand, tc.offHand, got, tc.want)
+		}
+	}
+}

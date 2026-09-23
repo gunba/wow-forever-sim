@@ -45,6 +45,7 @@ func NewDpsWarrior(character *core.Character, options *proto.Player) *DpsWarrior
 		StartingRage:          warOptions.Options.StartingRage,
 		DamageDealtMultiplier: 1,
 		DamageTakenMultiplier: 1,
+		ForeverWarriorRage:    true,
 	})
 
 	war.EnableAutoAttacks(war, core.AutoAttackOptions{

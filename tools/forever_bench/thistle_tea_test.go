@@ -51,3 +51,34 @@ func TestForeverThistleTeaRogueAndCat(t *testing.T) {
 		}
 	}
 }
+
+func TestFeralDefaultActuallyUsesThistleTea(t *testing.T) {
+	var player *proto.Player
+	for _, b := range builds() {
+		if b.Key == "feral" {
+			player = b.player(proto.Race_RaceTauren)
+			break
+		}
+	}
+	if player == nil {
+		t.Fatal("Feral build is missing")
+	}
+	if player.Consumes.GetDefaultConjured() != proto.Conjured_ConjuredRogueThistleTea {
+		t.Fatal("Feral default does not equip Thistle Tea")
+	}
+	req := request(player, 1, 1)
+	req.SimOptions.Iterations = 1
+	result := core.RunRaidSim(req)
+	if result.Error != nil {
+		t.Fatal(result.Error)
+	}
+	for _, action := range result.RaidMetrics.Parties[0].Players[0].Actions {
+		if action.Id.GetItemId() == 7676 {
+			if action.Targets[0].Casts == 1 {
+				return
+			}
+			t.Fatalf("Feral used Thistle Tea %d times, want once", action.Targets[0].Casts)
+		}
+	}
+	t.Fatal("Feral default equipped Thistle Tea but never used it")
+}

@@ -52,9 +52,10 @@ func (priest *Priest) registerPenanceSpell() {
 				Label: "Penance",
 			},
 
-			// The bolts land at 0/1/2 sec in game, the sim spreads them evenly over the channel.
-			NumberOfTicks:    PenanceTicks,
-			TickLength:       time.Second * 2 / PenanceTicks,
+			// The first bolt lands on application; the two remaining bolts
+			// land one and two seconds later (402261's one-second period).
+			NumberOfTicks:    PenanceTicks - 1,
+			TickLength:       time.Second,
 			BonusCoefficient: spellCoeff,
 
 			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
@@ -68,7 +69,9 @@ func (priest *Priest) registerPenanceSpell() {
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			result := spell.CalcOutcome(sim, target, spell.OutcomeMagicHit)
 			if result.Landed() {
-				spell.Dot(target).Apply(sim)
+				dot := spell.Dot(target)
+				dot.Apply(sim)
+				dot.OnTick(sim, target, dot)
 			}
 			spell.DealOutcome(sim, result)
 		},

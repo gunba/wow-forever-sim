@@ -1,14 +1,84 @@
 # Build updates
 
-These talent/rotation comparisons precede the [gear comparison pass](gear_updates.md).
-The current ranking defaults include its confirmed equipment changes.
+The comparison table below documents the research pass preceding the
+[gear comparison pass](gear_updates.md). The current ranking defaults also
+include the focused corrections documented next.
+
+## 23 September focused changes
+
+Matched comparisons used the exact previously published race-specific gear,
+enchants, external buffs, 300-second target and role Tier 1. Two independent
+seeds with 5,000 iterations per arm and all available races appear with
+complete native requests in
+[`targeted_2026_09_23.json`](../artifacts/research_builds/targeted_2026_09_23.json).
+The fixed paid-hit adjustment was recalculated for each candidate.
+
+| Build | Change | Paired DPS difference across races |
+|---|---|---:|
+| Feral | Replace Demonic Rune with usable Thistle Tea; cast at ≤10 Energy | +6.39 to +7.19 |
+| Shadow | 2/2 Early Demise, 3/5 rather than 5/5 Mental Strength | +1.58 to +1.79 |
+| Mutilate | Venom with one Vile Poisons point moved and a ≥5-CP priority | −2.77 to −3.08; rejected |
+
+The [Forever Thistle Tea item](https://www.wowhead.com/forever/item=7676/thistle-tea)
+explicitly permits Rogues and Druids, restores 100 Energy and has a five-minute
+cooldown. Feral used it once per five-minute fight; merely equipping it without an
+explicit item action produced **no cast and no gain**. Shadow's Early Demise
+increases Death crit chance only during execute; dropping two Intellect
+talent points pays for it without removing Darkness. The Venom screen also
+tried Poison, Vile Poisons and Seal Fate reallocations and 1–5-combo-point
+thresholds; frequent one-point Venom upkeep lost substantially more damage.
+These are comparisons on the present gear, not proof that no Venom build can
+ever work.
+
+Smite's existing Penance now hits at 0/1/2 seconds rather than 0.667/1.333/2,
+following its client period and stated immediate bolt. Mage external
+Innervate now waits for enough missing mana to receive a full 20-second
+regeneration window instead of using a fixed fraction of maximum mana;
+none of the ranked Mage profiles has an external Innervate. Corrected Imp
+Firebolt ranges do not alter the DS/Ruin row because its Imp is sacrificed
+before combat.
+
+### Warrior rage model
+
+The current Warrior comparison uses speed-normalized, damage-independent
+rage on successful white swings: 4.5 rage per base weapon-second for
+two-handers and `4.5 / 1.3` for one-handers. This matches low-level Forever
+observations, including the reviewed level-18 combat log. It is an
+**unverified level-60 extrapolation**, not a datamined max-level formula.
+The off-hand gets half the one-hand rate before the sourced Dual Wield
+Specialization multiplier; that half-rate is from
+[Blizzard's Cataclysm explanation](https://www.bluetracker.gg/wow/topic/us-en/24038830344-what-about-rage-when-off-tanking/),
+not from a Forever off-hand test. Avoided swings grant no autoattack rage
+in the provisional model. Rage from damage taken retains the separate
+inherited rule; the boss does not attack DPS, though self-damage can still
+award a little rage. Classic
+rules outside Forever are unchanged.
+
+All three Warrior rows have been rerun. Comparisons that relied on the
+old damage-proportional Warrior model are historical, not independent
+validation of the revised numbers. See [T02](in_game_checks.md) for the
+missing off-hand, extra-swing, avoidance and high-level measurements.
+
+| Warrior build | Previous equal-race mean | Current equal-race mean | Change |
+|---|---:|---:|---:|
+| Fury | 937.56 | 786.64 | −16.10% |
+| Arms | 785.91 | 733.07 | −6.72% |
+| 2H Bloodthirst | 799.88 | 736.90 | −7.87% |
+
+These are model-change effects, **not measured in-game DPS losses**.
+Talents and APLs were held fixed, so they have not been reoptimized for
+the new rage supply.
+The separate 2H Bloodthirst row remains available for review, but its
+earlier talent comparison used the superseded rage model; under the
+current model it does not beat Arms for every race.
 
 Nine established builds have updated talents or rotations. Three hybrids have
 separate rows. The original Arcane, Fire, Frost, Arms and Survival identities
 remain available.
 
-Equipment, enchants, consumables and external buffs are unchanged from each
-comparison profile, except that Marksmanship now selects no pet. These results
+Equipment, enchants, consumables and external buffs in the earlier
+comparisons were unchanged from each reference profile, except that
+Marksmanship selected no pet. Those results
 use a Dragonkin reference boss, ordinary MP5, corrected casting/swing rules,
 full role-specific Tier 1 and recalculated paid hit. Mage comparisons use
 supported Mage Armor; the former Molten Armor setting applied no armor effect.
@@ -62,8 +132,9 @@ The published matrix uses a third seed, 20291951, so its numbers differ slightly
   Ghostly Strike and improved Tea handling.
 - **Stormcaller / Smite:** rank-2 Lightning Bolt / Smite fallbacks. These depend
   on the modeled low-rank coefficients; see T12 in the in-game checks.
-- **Shadow:** 20/0/31 with Death before Mind Blast. Four learned Death ranks and
-  Early Demise are implemented. The extra script value 150 remains unresolved;
+- **Shadow (earlier comparison):** 20/0/31 with Death before Mind Blast. The
+  current default is **18/0/33** with 2/2 Early Demise as shown above. Four
+  learned Death ranks are implemented. The extra script value 150 remains unresolved;
   no additional execute multiplier is inferred. Conditional two-tick Mind Flay
   clipping is available as an alternate APL, but did not reliably beat the new
   default. It only interrupts for a ready higher-priority cast, never simply

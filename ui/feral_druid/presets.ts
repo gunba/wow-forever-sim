@@ -87,7 +87,7 @@ export const DefaultOptions = FeralDruidOptions.create({
 export const DefaultConsumes = Consumes.create({
 	agilityElixir: AgilityElixir.ElixirOfTheMongoose,
 	attackPowerBuff: AttackPowerBuff.JujuMight,
-	defaultConjured: Conjured.ConjuredDemonicRune,
+	defaultConjured: Conjured.ConjuredRogueThistleTea,
 	defaultPotion: Potions.MajorManaPotion,
 	dragonBreathChili: true,
 	flask: Flask.FlaskOfDistilledWisdom,

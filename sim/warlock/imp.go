@@ -82,8 +82,7 @@ func (wp *WarlockPet) registerImpFireboltSpell() {
 	}
 
 	spellCoeff := [8]float64{0, .164, .314, .529, .571, .571, .571, .571}[rank]
-	// Beta client 1.60.1 values, about half of Classic's
-	baseDamage := [8][]float64{{0, 0}, {4, 5}, {7, 9}, {12, 14}, {18, 19}, {26, 28}, {36, 39}, {43, 48}}[rank]
+	baseDamage := impFireboltBaseDamage(rank)
 	spellId := [8]int32{0, 3110, 7799, 7800, 7801, 7802, 11762, 11763}[rank]
 	manaCost := [8]float64{0, 10, 20, 35, 50, 70, 95, 115}[rank]
 	level := [8]int{0, 1, 8, 18, 28, 38, 48, 58}[rank]
@@ -127,4 +126,13 @@ func (wp *WarlockPet) registerImpFireboltSpell() {
 			spell.DealDamage(sim, result)
 		},
 	})
+}
+
+func impFireboltBaseDamage(rank int) [2]float64 {
+	// Forever client 1.60.1.69977 SpellEffect stores the mean and variance
+	// separately. The inherited Firebolt ranges overstated several ranks.
+	mean := [8]float64{0, 4, 7, 12, 17, 25, 35, 44}[rank]
+	variance := [8]float64{0, .28571429849, .15384615958, .16666667163,
+		.11428570747, .11764705926, .11267604679, .11363636702}[rank]
+	return [2]float64{mean * (1 - variance/2), mean * (1 + variance/2)}
 }

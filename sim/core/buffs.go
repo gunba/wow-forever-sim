@@ -1230,8 +1230,17 @@ const InnervateCD = time.Minute * 6
 
 func InnervateManaThreshold(character *Character) float64 {
 	if character.Class == proto.Class_ClassMage {
-		// Mages burn mana really fast so they need a higher threshold.
-		return character.MaxMana() * 0.7
+		// The 20-second effect adds four times ordinary Spirit regeneration.
+		// Wait until there is room for the resulting mana
+		// rather than firing at a fixed fraction of the Mage's pool. Spending
+		// while the aura runs may create additional room, but is not guaranteed.
+		spiritPerSecond := character.SpiritManaRegenPerSecondDefault()
+		if character.SpiritManaRegenPerSecond != nil {
+			spiritPerSecond = character.SpiritManaRegenPerSecond()
+		}
+		expectedRegen := (spiritPerSecond*(character.PseudoStats.SpiritRegenMultiplier+4) +
+			character.MP5ManaRegenPerSecond()) * InnervateDuration.Seconds()
+		return max(0, character.MaxMana()-expectedRegen)
 	} else {
 		return 1000
 	}
@@ -1243,12 +1252,7 @@ func registerInnervateCD(agent Agent, numInnervates int32) {
 	}
 
 	character := agent.GetCharacter()
-	innervateThreshold := 0.0
 	innervateAura := InnervateAura(character, -1)
-
-	character.Env.RegisterPostFinalizeEffect(func() {
-		innervateThreshold = InnervateManaThreshold(character)
-	})
 
 	registerExternalConsecutiveCDApproximation(
 		agent,
@@ -1260,8 +1264,8 @@ func registerInnervateCD(agent Agent, numInnervates int32) {
 			AuraCD:           InnervateCD,
 			Type:             CooldownTypeMana,
 			ShouldActivate: func(sim *Simulation, character *Character) bool {
-				// Only cast innervate when very low on mana, to make sure all other mana CDs are prioritized.
-				return character.CurrentMana() <= innervateThreshold
+				// Temporary Spirit/MP5 effects can change the amount restored.
+				return character.CurrentMana() <= InnervateManaThreshold(character)
 			},
 			AddAura: func(sim *Simulation, character *Character) {
 				innervateAura.Activate(sim)

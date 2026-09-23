@@ -10,6 +10,7 @@ import (
 	"github.com/wowsims/classic/sim/core"
 	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/core/simsignals"
+	"github.com/wowsims/classic/sim/core/stats"
 )
 
 func TestInnervateReportsNetMana(t *testing.T) {
@@ -80,5 +81,25 @@ func TestInnervateEvocationOverlap(t *testing.T) {
 				t.Fatal("overlapping effects did not restore baseline regeneration")
 			}
 		})
+	}
+}
+
+func TestMageInnervateWaitsForRegenerationCapacity(t *testing.T) {
+	req := racialFixture("arcane", proto.Race_RaceOrc)
+	req.Raid.Parties[0].Players[0].Rotation = &proto.APLRotation{}
+	sim := core.NewSim(req, simsignals.Signals{})
+	sim.Options.Interactive = true
+	sim.Reset()
+	c := sim.Raid.Parties[0].Players[0].GetCharacter()
+	spirit := c.SpiritManaRegenPerSecond()
+	want := math.Max(0, c.MaxMana()-
+		(spirit*(c.PseudoStats.SpiritRegenMultiplier+4)+c.MP5ManaRegenPerSecond())*core.InnervateDuration.Seconds())
+	got := core.InnervateManaThreshold(c)
+	if math.Abs(got-want) > 1e-8 || got >= c.MaxMana()*0.7 {
+		t.Fatalf("Mage Innervate threshold %.1f, want %.1f below 70%% max mana", got, want)
+	}
+	c.AddStatDynamic(sim, stats.MP5, 50)
+	if shifted := core.InnervateManaThreshold(c); math.Abs(shifted-(got-200)) > 1e-8 {
+		t.Fatalf("temporary +50 MP5 changed Innervate threshold by %.1f rather than -200", shifted-got)
 	}
 }

@@ -1,6 +1,7 @@
 {
   "type": "TypeAPL",
   "priorityList": [
+    {"action":{"condition":{"cmp":{"op":"OpLe","lhs":{"currentEnergy":{}},"rhs":{"const":{"val":"10"}}}},"castSpell":{"spellId":{"itemId":7676}}}},
     {"action":{"autocastOtherCooldowns":{}}},
     {"action":{"condition":{"cmp":{"lhs":{"currentEnergy":{}},"op":"OpLe","rhs":{"const":{"val":"40"}}}},"castSpell":{"spellId":{"spellId":9846}}}},
     {"action":{"condition":{"and":{"vals":[{"cmp":{"lhs":{"remainingTime":{}},"op":"OpLe","rhs":{"const":{"val":"4s"}}}},{"cmp":{"lhs":{"currentComboPoints":{}},"op":"OpGe","rhs":{"const":{"val":"3"}}}}]}},"castSpell":{"spellId":{"spellId":31018}}}},

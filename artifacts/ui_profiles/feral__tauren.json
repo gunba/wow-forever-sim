@@ -122,7 +122,7 @@
       "strengthBuff": "JujuPower",
       "attackPowerBuff": "JujuMight",
       "defaultPotion": "MajorManaPotion",
-      "defaultConjured": "ConjuredDemonicRune",
+      "defaultConjured": "ConjuredRogueThistleTea",
       "dragonBreathChili": true,
       "zanzaBuff": "GroundScorpokAssay",
       "sapperExplosive": "SapperGoblinSapper"
@@ -186,6 +186,28 @@
     "rotation": {
       "type": "TypeAPL",
       "priorityList": [
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpLe",
+                "lhs": {
+                  "currentEnergy": {}
+                },
+                "rhs": {
+                  "const": {
+                    "val": "10"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "itemId": 7676
+              }
+            }
+          }
+        },
         {
           "action": {
             "autocastOtherCooldowns": {}

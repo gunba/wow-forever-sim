@@ -12,7 +12,8 @@ measured. “Open” identifies a particular missing interaction or formula.
 “Conditional” preserves a credible alternative-build question without making
 it a prerequisite for all current rankings.
 
-No engine, gear, APL or result data changed in this review. Private chat,
+The original 22 September review changed no engine or result data; subsequent
+corrections are noted below. Private chat,
 identifying metadata and original combat logs remain outside the repository.
 The [previous full checklist](https://github.com/gunba/wow-forever-sim/blob/8ce872cfddae0560675b918a0850cc5b5434c497/docs/in_game_checks.md)
 preserves the original test descriptions.
@@ -64,20 +65,61 @@ The wrapper supplies eight one-second ticks. Thus the single target receives
 Ground placement and the identity of the fifth entrant cannot change this
 stationary single-target calculation. T30 no longer requests those tests.
 
-### Penance: an implementation discrepancy
+### Penance: corrected timing
 
 [Penance 1316995](https://www.wowhead.com/forever/spell=1316995/penance)
 explicitly describes an immediate bolt and subsequent bolts every second for
 two seconds. The captured description references **402261**, whose periodic
 effect is 1000 ms and duration is 2000 ms.
 
-`sim/priest/penance.go` instead uses three ordinary ticks separated by
-`2 seconds / 3`, with no initial tick. This is enough to identify a schedule
-discrepancy without asking for a gameplay recording. It is **not fixed by this
-documentation update**. Full channels still contain three bolts; the DPS effect
-is not equal to Penance's whole damage contribution. Timing-sensitive buffs,
-fight-end truncation and partial-channel choices require a corrected comparison.
-Whether haste changes the channel remains T40/T19.
+The earlier engine delayed all three ticks at 2/3-second intervals. It now
+fires immediately and at one and two seconds; the focused regression asserts
+all three instants. The full channel still has three bolts. Whether haste
+changes this timing remains T40; the tooltip alone does not establish it.
+
+### Pet abilities and resource evidence, 23 September
+
+The [69977 SpellEffect](https://wago.tools/db2/SpellEffect/csv?build=1.60.1.69977),
+[SpellPower](https://wago.tools/db2/SpellPower/csv?build=1.60.1.69977)
+and [SpellCooldowns](https://wago.tools/db2/SpellCooldowns/csv?build=1.60.1.69977)
+exports match 69913 byte-for-byte. At level 60, the selected Hunter Cat's
+Claw **3009** remains 43–59 for 25 Focus; Bite **17261** is 81–99 for 35
+Focus and has a ten-second cooldown. Both already match the engine.
+The selected Warlock Succubus's Lash **11780** remains 50 base damage for
+160 mana and a twelve-second cooldown, also already modeled. Imp Firebolt
+**11763** has mean base damage **44**, variance **.113636**, 115 mana and
+a .571 coefficient. The inherited rank-7 engine range of 43–48 was high;
+all Firebolt rank ranges now use the captured mean and variance. The exact
+server-side rounding of fractional damage bounds remains unknown. The ranked
+DS/Ruin APL **sacrifices its Imp at −5 seconds**, so this ability correction
+does not change that row; a focused test confirms that an unsacrificed Imp
+does cast and deal damage. The Hunter
+pet's 1.6-second AI action interval and the Imp's extra 200 ms cast delay are
+timing approximations, not new claims about Forever spell cooldowns. Owner
+hit/AP inheritance is still unresolved (T29).
+
+In [69977 SpellEffect](https://wago.tools/db2/SpellEffect/csv?build=1.60.1.69977),
+Maelstrom **408498** has base effect 20, dummy effects 50 and 5; the rank
+curve changes effect 20 to 16/12/8/4 at ranks 1–4. Child **408505**
+discounts cast time and mana by 20% per stack and masks Lightning Bolt,
+not Chain Lightning. [AuraOptions](https://wago.tools/db2/SpellAuraOptions/csv?build=1.60.1.69977)
+records an eligible proc trigger and a 100% trigger field, but no PPM link.
+Nothing in this snapshot establishes how the server scripts the actual
+proc frequency or what dummy 50 controls. The 2 PPM per talent point in
+`sim/shaman/talents.go` remains an explicit model assumption, not a verified
+rate. A level-30 controlled proc count is still useful.
+
+The supplied local Rogue combat capture is client **1.60.1.69893**. It
+contains resource snapshots on melee and casts, not a passive Energy
+`SPELL_ENERGIZE` stream. In the short session labeled 1% haste, two
+snapshots 4.728 seconds apart differ by three Energy after one known
+45-Energy Sinister Strike; inferred gain is **48 Energy**, or roughly
+**10.15/sec**. One-point snapshot quantization alone spans approximately
+**9.94–10.36/sec**, covering both 10 and 10.1. Several shorter subintervals
+have inconsistent observed increments, so this is not a reliable haste
+coefficient. The [69977 PowerType table](https://wago.tools/db2/PowerType/csv?build=1.60.1.69977)
+still lists base 10/sec, with no general-haste rule. No character identifiers
+or raw log lines are published here.
 
 ### Blizzard's beta notice
 
@@ -112,19 +154,55 @@ The seven public files at
 [`tzcnt/forever-data` commit c7d1746](https://github.com/tzcnt/forever-data/tree/c7d17462c50d1eb0103aa5e2aff52f77f33e3418/raw-logs)
 lack matching equipment/level metadata. Their 478 eligible snapshot candidates
 are not 478 verified weapon-rate observations. This does not establish the
-level-60, off-hand, avoidance or extra-attack formula. The inherited
-damage-proportional simulator rule remains provisional; repeating an already
+level-60, off-hand, avoidance or extra-attack formula. Repeating an already
 known low-level damage-versus-rage comparison is less useful than filling those
 specific gaps.
 
+A later research screenshot reports 5.17 rage at 1.5 seconds, 5.54 at 1.6,
+7.27 at 2.1 for one-handed weapons, and 13.50 at 3.0 and 14.40 at 3.2 for
+two-handers. These approximate `speed × 3.46` for the first three and
+`speed × 4.5` for the last two, consistent with the independently reviewed
+2.7-second level-18 sample above. The screenshot does not supply matching
+equipment, target levels or raw events for each additional row. A comparison
+to Cataclysm at its maximum level is a proposed analogy, **not evidence
+that Forever retains this rule at level 60**. The inherited Classic formula
+would instead change rage by a factor of
+roughly five between 15- and 78-damage swings; the captured constant
+9.3/9.4 already falsifies that low-level prediction. The level-60 rule
+remains unresolved. Avoided outgoing swings are also disputed: the screenshot
+reports no rage for miss/dodge/parry, whereas the inherited Classic rule
+generates rage for dodge/parry. Record outcomes separately to validate the
+new provisional Forever branch.
+
+The Forever Warrior branch now uses `base weapon speed × 4.5` for a landed
+two-handed autoattack, or `base weapon speed × (4.5 / 1.3)` for a landed
+one-handed autoattack, regardless of damage, glancing or crit. Misses,
+dodges and parries award none. The off-hand provisionally gets **half**
+the one-hand rate before the sourced Dual Wield Specialization rage
+multiplier. The half-rate rule is from [Blizzard's Cataclysm design
+statement](https://www.bluetracker.gg/wow/topic/us-en/24038830344-what-about-rage-when-off-tanking/),
+not a verified Forever off-hand measurement. Rage from damage taken retains
+the separate inherited formula; non-Forever rules remain unchanged. These
+outgoing rates are an explicit benchmark assumption extrapolated to level
+60, not proof of a level-60 or extra-swing server formula.
+
+The screenshot's incoming-damage/armor table has no paired pre-armor damage,
+health and actual damage for each row and labels its Cataclysm comparison
+tentatively. The reference boss does not attack its DPS players; self-damage
+can still generate a small amount of rage, so the damage-taken formula is
+not literally absent from every Warrior result. It needs a controlled
+tank/solo test, not an inferred armor formula.
+
 ## Relevance to the published profiles
 
-Measured from `artifacts/forever_dps_5min.json`, SHA-256
+Measured from the prior published
+`artifacts/history/a8c419e91/forever_dps_5min.json`, SHA-256
 `e1c3c9e3f259d90d2d21b506848b0baab2fe9c88dbba427245c2db959090812b`.
 For each action, sum enemy-target damage (`unitIndex = 0`), divide by
 `Iterations × 300`, then divide by that profile's DPS for its share. Ranges
 span the supported races. Do not include Death's self-target backlash.
-These are contributions, **not predictions of the size of a correction**.
+These historical contributions are **not predictions of the size of a
+correction**; use the current results for revised per-build totals.
 
 | Component | DPS range | Share of its build |
 |---|---:|---:|
@@ -149,7 +227,7 @@ in the present rows. None equips the three formerly queried armor IDs
 | ID | Disposition | Evidence and remaining scope |
 |---|---|---|
 | T01 | Open; merged with T06 | Official glancing/display defects invalidate the old screenshot-only plan. `sim/core/attack.go` and outcome tables still use inherited rules. Need corrected-build outcome evidence, not a guessed 25% boss penalty. |
-| T02 | Open; narrowed | Low-level normalized rage is supported by the existing logs. Level-60/off-hand/avoidance rules remain missing; see the evidence section above and `sim/core/rage.go`. |
+| T02 | Provisional model; later test needed | Low-level normalized rage is supported by logs. The new speed-based Warrior branch extrapolates to level 60, assumes Cataclysm's half-rate off-hand and treats avoided swings as zero. Verify those rules and extra attacks; see the evidence section above and `sim/core/rage.go`. |
 | T03 | Partly resolved; open interaction | Class-specific costs and three charges are implemented in `sim/core/racials.go` from `assets/db_inputs/forever_races.json`. Keep last-charge channel/DoT lifetime scope; remove redundant tooltip, healing and utility checks. |
 | T04 | Conditional resource feature | [1259705](https://www.wowhead.com/forever/spell=1259705/read-ley-line) resolves cast/CD and 15-second versus 15-minute duration. Buffs 1270842/1259691 have +100% mana-regeneration aura 110, not a grant of full casting Spirit regeneration. Effect on Spirit/flat regeneration under the five-second rule remains unimplemented and unmeasured. High Order only; no favorable location assumed. |
 | T05 | Source watch; merged into T50 | Existing supported racial/class spell implementations remain. Retained class-skill rows alone do not prove new teaching paths. Dark Sacrifice/utility acquisition is not an automatic DPS test; use `docs/spell_coverage.md` for particular omissions. |
@@ -166,7 +244,7 @@ in the present rows. None equips the three formerly queried armor IDs
 | T16 | Open; merged with T35 | Costs and paid-cost refund accounting are implemented. Server refund fractions on avoided builders/finishers are not provided by those cost records. One combined check replaces two requests. |
 | T17 | Open; merged into haste check | `sim/priest/mind_flay.go` uses three unhasted one-second ticks. Client base period does not establish haste scaling; T40 collects the relevant timings. |
 | T18 | Open | `sim/druid/forms.go` retains the Classic form weapon. No reviewed primary source supplies a Forever weapon-DPS-to-Cat conversion. This is separate from Energy or gear stats. |
-| T19 | Timing resolved; implementation follow-up | Current Penance text and referenced period establish 0/1/2-second bolts; `sim/priest/penance.go` instead delays the first bolt. Fix/replay is code work. Channel haste remains under T40. |
+| T19 | Timing resolved; engine corrected | Current Penance text and referenced period establish 0/1/2-second bolts. `sim/priest/penance.go` now implements them, with a focused regression. Channel haste remains under T40. |
 | T20 | Removed from damage testing | The queried armor IDs are absent from current equipment. Vendor stock and faction acquisition remain catalog provenance work, not tests of damage. Existing verified eligibility and vendor-stat precedence remain unchanged. |
 | T21 | Open | Maelstrom's proc frequency and Totem of the Storm/free-cast interactions remain material to Enhancement. LB-only eligibility is already sourced; do not retest CL as a proc spender. |
 | T22 | Resolved data correction | `assets/db_inputs/forever_effect_audit.json` and `tools/database/enchant_overrides.go` retain explicit hybrid enchant effects. The generic healing-to-damage fallback is gone. There is no affirmative evidence for an extra hidden conversion requiring a standing gameplay task. |
@@ -207,7 +285,7 @@ with conditional follow-ups separated. Several topics combine duplicate old
 IDs; this count is not a claim that only 18 server details could ever differ.
 
 The strongest newly resolved questions are the active Druid rank values,
-Consecration's single-target formula, Pact coexistence and Penance's stated
-schedule. The most important newly strengthened implementation gap is pet hit
+Consecration's single-target formula, Pact coexistence and Penance's corrected
+schedule. The most important outstanding implementation gap is pet hit
 inheritance. Remaining resource, coefficient and proc-script questions are not
 declared solved merely because another simulator makes the same assumption.

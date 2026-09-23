@@ -22,6 +22,7 @@ type rageBar struct {
 
 	flatDamageDealtBonusRage float64
 	flatDamageTakenBonusRage float64
+	foreverWarriorRage       bool
 
 	startingRage float64
 	currentRage  float64
@@ -34,6 +35,24 @@ type RageBarOptions struct {
 	StartingRage          float64
 	DamageDealtMultiplier float64
 	DamageTakenMultiplier float64
+	ForeverWarriorRage    bool
+}
+
+// Measured in the Forever beta at low levels, not established at level 60.
+// The half-rate off-hand follows Cataclysm's published rule provisionally;
+// no Forever off-hand measurement is available yet.
+func foreverWarriorRagePerSwing(speed float64, twoHand, offHand bool) float64 {
+	if speed <= 0 {
+		return 0
+	}
+	rate := 4.5 / 1.3
+	if twoHand {
+		rate = 4.5
+	}
+	if offHand {
+		rate *= 0.5
+	}
+	return speed * rate
 }
 
 func GetRageConversion(attacker_level int32) float64 {
@@ -85,13 +104,30 @@ func (unit *Unit) EnableRageBar(options RageBarOptions) {
 				return
 			}
 
-			damage := result.Damage
-			if result.Outcome.Matches(OutcomeDodge | OutcomeParry) {
-				// Rage is still generated for dodges/parries, based on the damage it WOULD have done.
-				damage = result.PreOutcomeDamage
+			generatedRage := 0.0
+			if unit.rageBar.foreverWarriorRage && unit.Env != nil && unit.Env.IsForever() {
+				if result.Outcome.Matches(OutcomeDodge | OutcomeParry) {
+					return
+				}
+				offHand := spell.ProcMask == ProcMaskMeleeOHAuto
+				weapon := unit.AutoAttacks.MH()
+				twoHand := false
+				if offHand {
+					weapon = unit.AutoAttacks.OH()
+				} else if player := unit.Env.Raid.GetPlayerFromUnit(unit); player != nil {
+					if item := player.GetCharacter().GetMHWeapon(); item != nil {
+						twoHand = item.HandType == proto.HandType_HandTypeTwoHand
+					}
+				}
+				generatedRage = foreverWarriorRagePerSwing(weapon.SwingSpeed, twoHand, offHand)
+			} else {
+				damage := result.Damage
+				if result.Outcome.Matches(OutcomeDodge | OutcomeParry) {
+					// Classic: avoided attacks award rage for the damage they would have done.
+					damage = result.PreOutcomeDamage
+				}
+				generatedRage = damage * 7.5 / rageConversion
 			}
-
-			generatedRage := damage * 7.5 / rageConversion
 			generatedRage *= unit.rageBar.damageDealtMultiplier
 			if spell.ProcMask == ProcMaskMeleeOHAuto {
 				generatedRage *= unit.rageBar.offHandDealtMultiplier
@@ -132,6 +168,7 @@ func (unit *Unit) EnableRageBar(options RageBarOptions) {
 		damageDealtMultiplier:  options.DamageDealtMultiplier,
 		damageTakenMultiplier:  options.DamageTakenMultiplier,
 		offHandDealtMultiplier: 1,
+		foreverWarriorRage:     options.ForeverWarriorRage,
 		startingRage:           max(0, min(options.StartingRage, MaxRage)),
 		maxRage:                MaxRage,
 		RageRefundMetrics:      unit.NewRageMetrics(ActionID{OtherID: proto.OtherAction_OtherActionRefund}),

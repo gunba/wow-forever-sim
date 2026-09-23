@@ -188,6 +188,7 @@ func (b build) consumes() *proto.Consumes {
 	case "feral":
 		c.Flask = proto.Flask_FlaskOfDistilledWisdom
 		c.SpellPowerBuff, c.ManaRegenElixir = 0, 0
+		c.DefaultConjured = proto.Conjured_ConjuredRogueThistleTea
 		c.DragonBreathChili, c.SapperExplosive = true, proto.SapperExplosive_SapperGoblinSapper
 	case "combat", "mutilate", "subtlety":
 		c.DefaultPotion, c.DefaultConjured, c.ManaRegenElixir = 0, proto.Conjured_ConjuredRogueThistleTea, 0

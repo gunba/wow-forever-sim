@@ -36,6 +36,42 @@ func deathFixture(talents ...string) (*core.Simulation, *priest.Priest) {
 	return sim, sim.Raid.Parties[0].Players[0].(priest.PriestAgent).GetPriest()
 }
 
+func TestPenanceImmediateThenOneSecondBolts(t *testing.T) {
+	req := racialFixture("smite", proto.Race_RaceTroll)
+	player := req.Raid.Parties[0].Players[0]
+	player.Rotation = &proto.APLRotation{}
+	player.BonusStats = &proto.UnitStats{Stats: stats.Stats{stats.SpellHit: 100}.ToFloatArray()}
+	req.Encounter.Targets[0].Level = 60
+	sim := core.NewSim(req, simsignals.Signals{})
+	sim.Options.Interactive = true
+	sim.Reset()
+	p := sim.Raid.Parties[0].Players[0].(priest.PriestAgent).GetPriest()
+	spell := p.Penance
+	if spell == nil {
+		t.Fatal("Penance was not registered")
+	}
+	sim.CurrentTime = 0
+	if !spell.Cast(sim, p.CurrentTarget) {
+		t.Fatal("Penance was not castable")
+	}
+	damage := spell.SpellMetrics[p.CurrentTarget.UnitIndex].TotalDamage
+	if damage <= 0 {
+		t.Fatal("first Penance bolt did not land immediately")
+	}
+	for _, at := range []time.Duration{time.Second, 2 * time.Second} {
+		for sim.CurrentTime < at {
+			if sim.Step() {
+				t.Fatalf("fight ended before Penance tick at %s", at)
+			}
+		}
+		next := spell.SpellMetrics[p.CurrentTarget.UnitIndex].TotalDamage
+		if next <= damage || sim.CurrentTime != at {
+			t.Fatalf("Penance had no bolt at %s (time %s, damage %.1f → %.1f)", at, sim.CurrentTime, damage, next)
+		}
+		damage = next
+	}
+}
+
 func TestEarlyDemiseExecuteScopeAndReset(t *testing.T) {
 	sim, p := deathFixture("--" + strings.Repeat("0", 15) + "2")
 	death := p.ShadowWordDeath[4]
