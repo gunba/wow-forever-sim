@@ -18,7 +18,22 @@ The setting is stored in the player profile and survives export/import and
 saved settings. Loading a ranked profile restores that profile's recorded
 setting. Item records, their tooltips and the paid-hit adjustment do not change.
 
-## Matched Mage comparison
+## Current profiles
+
+The published `8ce872cfd` profiles all use Mage Armor, including Arcane–Frost.
+With ordinary MP5, their equal-race-weight average recorded mana-limited times
+over 300 seconds are 0.06 seconds for Arcane, 2.97 for Fire, 0.13 for Frost and
+zero for Arcane–Frost. These are failed mana-cost-check durations, not first-OOM
+timestamps or necessarily time doing no damage.
+
+The optional mode remains an assumption. Neither these low waits nor the older,
+larger waits establish how the server interprets MP5.
+
+## Historical matched Mage comparison
+
+The following comparison predates the current Mage Armor/build/gear corrections.
+It remains reproducible evidence for those saved inputs, not the resource state
+or projected gain of the current ranking profiles.
 
 Five-minute single target, 5,000 iterations per arm, seed 20293001, six races
 per build. The only request difference is the explicit setting. Equipment,
