@@ -81,7 +81,12 @@ jobs:
           python3 -m unittest discover -s tools/data_watch
 
       - name: Stage benchmark review portal
-        run: python3 tools/forever_bench/build_review_site.py
+        run: |
+          python3 tools/forever_bench/build_review_site.py \
+            --results artifacts/modelled_gear/forever_dps_5min.json \
+            --profiles artifacts/modelled_gear/ui_profiles \
+            --sensitivity artifacts/modelled_gear/forever_sensitivity.json \
+            --gear-search artifacts/modelled_gear_search/current
 
       # The Go tests and tsc both pass on a build whose pages throw at load, which has
       # shipped a blank site twice. Open every page before it is deployed.

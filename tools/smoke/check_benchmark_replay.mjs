@@ -5,7 +5,9 @@ import { readFileSync } from 'node:fs';
 import { chromium } from 'playwright';
 
 const base = process.env.SITE_URL || 'http://localhost:8080/classic/';
-const data = JSON.parse(readFileSync('artifacts/sensitivity/gear_150.json', 'utf8'));
+const scenario = JSON.parse(readFileSync('ui/core/forever_ranked_profiles.json', 'utf8')).gearScenario;
+const prefix = scenario === 'modeled-65-v1' ? 'artifacts/modelled_gear/' : 'artifacts/';
+const data = JSON.parse(readFileSync(`${prefix}sensitivity/gear_150.json`, 'utf8'));
 const row = data.Results.find(r => r.Key === 'fury' && r.Race === 'Gnome');
 const req = row.Request, raid = req.raid, party = raid.parties[0], player = party.players[0];
 const settings = {
@@ -44,7 +46,7 @@ try {
 	assert.ok(Math.abs(actual - row.DPS) < 0.015, `WASM ${actual} vs native ${row.DPS}`);
 	console.log(`Gnome Fury +50%: ${actual} DPS; inputs preserved; native match`);
 
-	const invalidShaman = JSON.parse(readFileSync('artifacts/ui_profiles/enhancement__orc.json', 'utf8'));
+	const invalidShaman = JSON.parse(readFileSync(`${prefix}ui_profiles/enhancement__orc.json`, 'utf8'));
 	invalidShaman.player.equipment.items[14] = { id: 279261 };
 	invalidShaman.player.equipment.items[15] = { id: 22384 };
 	await page.goto(`${base}enhancement_shaman/`, { waitUntil: 'networkidle' });

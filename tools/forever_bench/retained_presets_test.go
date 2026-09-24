@@ -13,7 +13,7 @@ import (
 
 func TestRetainedPresetsMatchBenchmark(t *testing.T) {
 	var results struct{ Results []resultRow }
-	if err := json.Unmarshal(mustRead("artifacts/forever_dps_5min.json"), &results); err != nil {
+	if err := json.Unmarshal(mustRead("artifacts/modelled_gear/forever_dps_5min.json"), &results); err != nil {
 		t.Fatal(err)
 	}
 	expected := map[string]resultRow{}

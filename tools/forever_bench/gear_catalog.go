@@ -17,6 +17,7 @@ type gearRecord struct {
 	Effects                                                                         []json.RawMessage
 	SetBonuses                                                                      []struct{ Pieces, SpellID int32 }
 	Sources                                                                         []struct{ Kind, Faction string }
+	Synthetic, BenchmarkEligible                                                    bool
 }
 
 var readGearCatalog = sync.OnceValue(func() map[int32]gearRecord {
@@ -26,6 +27,15 @@ var readGearCatalog = sync.OnceValue(func() map[int32]gearRecord {
 	}
 	out := map[int32]gearRecord{}
 	for _, item := range data.Items {
+		out[item.ID] = item
+	}
+	if err := json.Unmarshal(mustRead("assets/db_inputs/forever_synthetic_gear.json"), &data); err != nil {
+		panic(err)
+	}
+	for _, item := range data.Items {
+		if _, exists := out[item.ID]; exists {
+			panic(fmt.Sprintf("synthetic item %d collides with the real catalog", item.ID))
+		}
 		out[item.ID] = item
 	}
 	return out
@@ -49,6 +59,15 @@ func gearReviewError(item core.Item) error {
 	record, ok := readGearCatalog()[item.ID]
 	if !ok {
 		return fmt.Errorf("%s is outside the current equipment catalog", item.Name)
+	}
+	if record.Synthetic {
+		if !record.BenchmarkEligible {
+			return fmt.Errorf("%s is a trinket sensitivity case, not benchmark gear", item.Name)
+		}
+		if len(record.Effects) != 0 || record.SetID != 0 {
+			return fmt.Errorf("%s incorrectly includes a modeled effect or set", item.Name)
+		}
+		return nil
 	}
 	review := readGearReviews()[item.ID]
 	if review == "implemented" || review == "verified" {
@@ -177,12 +196,7 @@ func unmodeledSetBonuses(p *proto.Player) []string {
 // The current UI's ordinary proficiencies. New Forever extensions are not
 // inferred from an item's otherwise unrestricted class mask.
 func classCanEquip(class proto.Class, item core.Item) bool {
-	maxArmor := map[proto.Class]proto.ArmorType{
-		proto.Class_ClassDruid: 2, proto.Class_ClassHunter: 3, proto.Class_ClassMage: 1,
-		proto.Class_ClassPaladin: 4, proto.Class_ClassPriest: 1, proto.Class_ClassRogue: 2,
-		proto.Class_ClassShaman: 3, proto.Class_ClassWarlock: 1, proto.Class_ClassWarrior: 4,
-	}
-	if item.ArmorType > maxArmor[class] {
+	if item.ArmorType > classPreferredArmor(class) {
 		return false
 	}
 	if item.Type == proto.ItemType_ItemTypeRanged {

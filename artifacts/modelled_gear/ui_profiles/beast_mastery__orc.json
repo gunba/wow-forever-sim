@@ -1,0 +1,395 @@
+{
+  "settings": {
+    "iterations": 5000,
+    "fixedRngSeed": "20299781",
+    "ruleset": "RulesetForever",
+    "phase": 1,
+    "faction": "Horde",
+    "showDamageMetrics": true
+  },
+  "raidBuffs": {
+    "giftOfTheWild": "TristateEffectRegular",
+    "powerWordFortitude": "TristateEffectRegular",
+    "bloodPact": "TristateEffectImproved",
+    "strengthOfEarthTotem": "TristateEffectRegular",
+    "graceOfAirTotem": "TristateEffectRegular",
+    "arcaneBrilliance": true,
+    "divineSpirit": true,
+    "battleShout": "TristateEffectRegular",
+    "trueshotAura": true,
+    "moonkinAura": true,
+    "manaSpringTotem": "TristateEffectImproved",
+    "shadowProtection": true,
+    "natureResistanceTotem": true,
+    "frostResistanceAura": true,
+    "frostResistanceTotem": true,
+    "fireResistanceTotem": true,
+    "fireResistanceAura": true,
+    "thorns": "TristateEffectImproved",
+    "devotionAura": "TristateEffectImproved",
+    "retributionAura": "TristateEffectImproved"
+  },
+  "partyBuffs": {},
+  "debuffs": {
+    "judgementOfWisdom": true,
+    "judgementOfLight": true,
+    "judgementOfTheCrusader": "TristateEffectImproved",
+    "faerieFire": true,
+    "curseOfElements": true,
+    "stormstrike": true,
+    "exposeArmor": "TristateEffectRegular",
+    "sunderArmor": true,
+    "curseOfWeakness": "TristateEffectImproved",
+    "curseOfRecklessness": true,
+    "demoralizingRoar": "TristateEffectImproved",
+    "demoralizingShout": "TristateEffectImproved",
+    "thunderClap": "TristateEffectImproved",
+    "insectSwarm": true,
+    "scorpidSting": true,
+    "huntersMark": "TristateEffectRegular"
+  },
+  "tanks": [],
+  "player": {
+    "name": "Beast Mastery",
+    "race": "RaceOrc",
+    "class": "ClassHunter",
+    "equipment": {
+      "items": [
+        {
+          "id": 910000020,
+          "enchant": 1508
+        },
+        {
+          "id": 910000299
+        },
+        {
+          "id": 272105,
+          "enchant": 2488
+        },
+        {
+          "id": 910000290,
+          "enchant": 849
+        },
+        {
+          "id": 252483,
+          "enchant": 1891
+        },
+        {
+          "id": 910000128,
+          "enchant": 247
+        },
+        {
+          "id": 910000164,
+          "enchant": 2564
+        },
+        {
+          "id": 910000200
+        },
+        {
+          "id": 22673,
+          "enchant": 1508
+        },
+        {
+          "id": 910000272,
+          "enchant": 1887
+        },
+        {
+          "id": 910000308
+        },
+        {
+          "id": 910000308
+        },
+        {
+          "id": 910000317
+        },
+        {
+          "id": 910000317
+        },
+        {
+          "id": 272683,
+          "enchant": 2564
+        },
+        {
+          "id": 272592,
+          "enchant": 2564
+        },
+        {
+          "id": 18282,
+          "enchant": 8720
+        }
+      ]
+    },
+    "consumes": {
+      "flask": "FlaskOfSupremePower",
+      "food": "FoodSmokedDesertDumpling",
+      "agilityElixir": "ElixirOfTheMongoose",
+      "manaRegenElixir": "MagebloodPotion",
+      "strengthBuff": "JujuPower",
+      "attackPowerBuff": "JujuMight",
+      "spellPowerBuff": "GreaterArcaneElixir",
+      "mainHandImbue": "Windfury",
+      "offHandImbue": "ElementalSharpeningStone",
+      "defaultPotion": "MajorManaPotion",
+      "defaultConjured": "ConjuredDemonicRune",
+      "zanzaBuff": "GroundScorpokAssay"
+    },
+    "bonusStats": {
+      "stats": [
+        0,
+        47.39035619093773,
+        0,
+        1.3060334383329295,
+        0,
+        17.53816331475648,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -11,
+        2.998546159437848,
+        0,
+        0,
+        4.477828931427187,
+        -11,
+        2.998546159437848,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8.582505451902108,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "foreverTier1Bonuses": true,
+    "buffs": {
+      "blessingOfKings": true,
+      "blessingOfWisdom": "TristateEffectRegular",
+      "blessingOfMight": "TristateEffectRegular"
+    },
+    "talentsString": "5320001505101251-00531510005",
+    "profession1": "Engineering",
+    "rotation": {
+      "type": "TypeAPL",
+      "prepullActions": [
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 25296
+              }
+            }
+          },
+          "doAtValue": {
+            "const": {
+              "val": "-10s"
+            }
+          }
+        }
+      ],
+      "priorityList": [
+        {
+          "action": {
+            "autocastOtherCooldowns": {}
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpGt",
+                "lhs": {
+                  "currentManaPercent": {}
+                },
+                "rhs": {
+                  "const": {
+                    "val": "80%"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 19577
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "not": {
+                "val": {
+                  "dotIsActive": {
+                    "spellId": {
+                      "spellId": 1293527
+                    }
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 1293527
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "not": {
+                "val": {
+                  "dotIsActive": {
+                    "spellId": {
+                      "spellId": 25295
+                    }
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 25295
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpGe",
+                "lhs": {
+                  "autoTimeToNext": {
+                    "autoType": "Ranged"
+                  }
+                },
+                "rhs": {
+                  "const": {
+                    "val": "0s"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 20902
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpGe",
+                "lhs": {
+                  "currentManaPercent": {}
+                },
+                "rhs": {
+                  "const": {
+                    "val": "15%"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 14287
+              }
+            }
+          }
+        }
+      ]
+    },
+    "distanceFromTarget": 12,
+    "hunter": {
+      "options": {
+        "ammo": "ThoriumHeadedArrow",
+        "quiverBonus": "Speed15",
+        "petType": "Cat",
+        "petUptime": 1,
+        "petAttackSpeed": "OneTwo"
+      }
+    }
+  },
+  "encounter": {
+    "duration": 300,
+    "executeProportion20": 0.2,
+    "executeProportion25": 0.25,
+    "executeProportion35": 0.35,
+    "targets": [
+      {
+        "level": 63,
+        "mobType": "MobTypeDragonkin",
+        "stats": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3731,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  }
+}

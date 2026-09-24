@@ -1,5 +1,70 @@
 # Forever DPS benchmarks
 
+## Current modeled-equipment comparison
+
+The current web rankings compare fixed level-60 builds with **hypothetical**
+level-65 equipment. The distinct older real-item benchmark remains at
+[`artifacts/forever_dps_5min.json`](../../artifacts/forever_dps_5min.json).
+No “Modeled:” item represents confirmed obtainable loot. See the
+[assumptions and coverage gaps](../../docs/modelled_gear.md), the
+[385-item proposal workbook](../../artifacts/modelled_gear/proposed_gear.xlsx)
+and the independently stored
+[model catalog](../../assets/db_inputs/forever_synthetic_gear.json).
+Only 377 items enter the main comparison; eight aggressive passive-trinket
+variants are reserved for sensitivity review.
+The [search archive](../../artifacts/modelled_gear_search/current/summary.json)
+contains all 184 original candidate reports, two no-change convergence
+follow-ups and 184 paired confirmation decisions. Its compressed files retain
+the candidate trials and complete requests/results, not just the winners.
+
+The model imports separately from the verified catalog. Slot-coordinate
+comparisons screen every class-legal item and jointly compare weapon layouts.
+They recalculate the existing paid hit budget after a swap, keep talents and
+rotations fixed, and repeat until no useful swap remains. All 184
+race/build combinations are searched independently; winning changes are
+confirmed with independent 5,000-iteration paired comparisons. This does
+not establish the existence of the items or a global best-in-slot solution.
+
+```sh
+python3 tools/database/generate_forever_synthetic_gear.py
+python3 tools/database/compile_forever_equipment.py
+go run ./tools/database/gen_db -outDir=assets -gen=db
+go build -tags with_db -o /tmp/forever-bench ./tools/forever_bench
+python3 tools/forever_bench/search_gear.py --binary /tmp/forever-bench \
+  --baseline-results artifacts/forever_dps_5min.json \
+  --screen 40 --validate 500 --passes 4 --iterations 5000 --seed 20299721 \
+  --workers 24 --output /tmp/model-search
+# In this release two Fury (Sunder) races needed one additional pass. Both
+# converged without another gear change; see convergence_followups.json.gz.
+mkdir -p /tmp/model-followup
+for race in Windshaper "High Order"; do
+  slug=$(printf '%s' "$race" | tr '[:upper:] ' '[:lower:]_')
+  /tmp/forever-bench -build fury_sunder -race "$race" \
+    -baseline-results /tmp/model-search/results.json -search-gear \
+    -gear-screen 40 -gear-validate 500 -gear-passes 4 \
+    -iterations 5000 -seed 20299735 \
+    -output "/tmp/model-followup/fury_sunder__${slug}"
+done
+python3 tools/forever_bench/merge_model_search.py \
+  --initial /tmp/model-search --followup /tmp/model-followup \
+  --binary /tmp/forever-bench --output /tmp/model-converged
+python3 tools/forever_bench/validate_gear.py --binary /tmp/forever-bench \
+  --search /tmp/model-converged --iterations 5000 --seed 20299751 \
+  --workers 24 --output /tmp/model-confirmed
+python3 tools/forever_bench/run_matrix.py --binary /tmp/forever-bench \
+  --profiles /tmp/model-confirmed/selected.json \
+  --original-baselines /tmp/model-converged/baseline.json \
+  --iterations 5000 --seed 20299781 --workers 24 --output /tmp/model-matrix
+```
+
+The archived [complete search and confirmation evidence](../../artifacts/modelled_gear_search/current/summary.json),
+[new requests/results](../../artifacts/modelled_gear/forever_dps_5min.json),
+[Tier and proportional sensitivities](../../artifacts/modelled_gear/forever_sensitivity.json)
+and [selected-build reviews](../../docs/modelled_build_reviews.md) keep
+these hypothetical results apart from the verified-item archive.
+
+## Earlier real-item reference
+
 The benchmark contains 28 level-60 builds and 184 race/build combinations:
 90 Alliance and 94 Horde. The [client roster and racial audit](../../docs/forever_races.md)
 record availability and remaining interaction questions.

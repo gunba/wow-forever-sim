@@ -10,9 +10,10 @@ from build_display import BUILD_CAVEATS, expected_roster
 class UIProfilesTest(unittest.TestCase):
     def test_bundled_defaults_match_published_requests(self):
         root = Path(__file__).resolve().parents[2]
-        source = (root / "artifacts/forever_dps_5min.json").read_bytes()
+        source = (root / "artifacts/modelled_gear/forever_dps_5min.json").read_bytes()
         results = json.loads(source)["Results"]
         bundle = json.loads((root / "ui/core/forever_ranked_profiles.json").read_text())
+        self.assertEqual(bundle["gearScenario"], "modeled-65-v1")
         self.assertEqual(bundle["sourceSHA256"], hashlib.sha256(source).hexdigest())
         self.assertEqual(len(bundle["profiles"]), len(expected_roster()))
         profiles = {(p["key"], p["race"]): p for p in bundle["profiles"]}

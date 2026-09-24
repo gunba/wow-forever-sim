@@ -135,6 +135,9 @@ def compile_item(item: dict, rates: dict, vendor: dict | None = None) -> dict:
             }})
         elif source["kind"] in ("dungeon-quest", "ticket-exchange"):
             sources.append({"quest": {"id": source["questId"], "name": source["name"]}})
+        elif source["kind"] == "synthetic":
+            # No fabricated vendor, crafting recipe or drop for modeled gear.
+            continue
         else:
             raise ValueError(f"unsupported acquisition source {source['kind']}")
     out["sources"] = sources
@@ -154,6 +157,8 @@ def compile_item(item: dict, rates: dict, vendor: dict | None = None) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--catalog", type=Path, default=Path("assets/db_inputs/forever_gear_catalog.json"))
+    parser.add_argument("--synthetic-catalog", type=Path,
+                        default=Path("assets/db_inputs/forever_synthetic_gear.json"))
     parser.add_argument("--vendor-dir", type=Path, default=Path("assets/db_inputs/forever_vendor"))
     parser.add_argument("--out", type=Path, default=Path("assets/db_inputs/forever_equipment.json"))
     args = parser.parse_args()
@@ -166,6 +171,13 @@ def main() -> None:
             compiled.append(compile_item(item, rates, vendors.get(item["id"])))
         except (ValueError, KeyError) as error:
             print(f"Excluded {item['id']} {item['name']}: {error}")
+    if args.synthetic_catalog.exists():
+        synthetic = json.loads(args.synthetic_catalog.read_text())
+        for item in synthetic["items"]:
+            try:
+                compiled.append(compile_item(item, rates))
+            except (ValueError, KeyError) as error:
+                raise ValueError(f"Modeled item {item['id']} cannot compile: {error}") from error
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps({"items": compiled}, indent=2, ensure_ascii=False) + "\n")
     print(f"Compiled {len(compiled)} of {len(catalog['items'])} items into {args.out}")

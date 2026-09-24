@@ -70,7 +70,7 @@ func comparisonGearPool(b build, p *proto.Player) ([]core.Item, map[int32]string
 	// The supplied filter omits cloaks. The verified level-65 trinkets also
 	// share an equipment limit, so compare lower-level trinkets for slot two.
 	for id, record := range catalog {
-		if record.ItemLevel >= 60 || core.ItemsByID[id].Type == proto.ItemType_ItemTypeTrinket {
+		if record.Synthetic || record.ItemLevel >= 60 || core.ItemsByID[id].Type == proto.ItemType_ItemTypeTrinket {
 			ids[id] = true
 		}
 	}
@@ -87,8 +87,16 @@ func comparisonGearPool(b build, p *proto.Player) ([]core.Item, map[int32]string
 		item, exists := core.ItemsByID[id]
 		if _, admitted := catalog[id]; !exists || !admitted {
 			excluded[id] = "not in source-verified compiled equipment catalog"
+		} else if catalog[id].Synthetic && !catalog[id].BenchmarkEligible {
+			excluded[id] = "full-capacity passive trinket is a sensitivity case, not ranking gear"
 		} else if !classCanEquip(p.Class, item) {
 			excluded[id] = "class cannot equip"
+		} else if catalog[id].Synthetic && item.ArmorType != 0 &&
+			item.Type != proto.ItemType_ItemTypeBack &&
+			item.ArmorType != classPreferredArmor(p.Class) {
+			// The same projection exists in the class's ordinary armor type.
+			// Avoid selecting a visually inappropriate lower-armor duplicate.
+			excluded[id] = "modeled body armor has a class-appropriate equivalent"
 		} else if err := gearReviewError(item); err != nil {
 			excluded[id] = err.Error()
 		} else if b.Key == "retribution_physical" && !physicalRetItemEligible(item) {

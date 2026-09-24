@@ -13,6 +13,7 @@ export interface RankedProfile {
 	settings: IndividualSimSettings;
 	unmodeledSetBonuses: string[];
 	caveats: string[];
+	modeledGear: boolean;
 }
 
 let profiles: RankedProfile[] | undefined;

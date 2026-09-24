@@ -24,6 +24,19 @@ try {
 		await page.locator(`option[value="${profile.id}"]`).waitFor({ state: 'attached' });
 		await page.getByRole('combobox', { name: 'Ranked build', exact: true }).selectOption(profile.id);
 		await page.getByRole('button', { name: 'Load build', exact: true }).click();
+		if (profile.modeledGear) {
+			await page.getByRole('tab', { name: 'Gear', exact: true }).click();
+			const modeled = page.locator('a.item-picker-name').filter({ hasText: 'Modeled:' }).first();
+			assert.ok(await modeled.count(), `${profile.key}: missing labeled projected item`);
+			assert.equal(await modeled.getAttribute('data-wowhead'), null,
+				`${profile.key}: projected item must not request a real item's tooltip`);
+			assert.ok((await modeled.getAttribute('href')).includes('item='));
+			assert.equal((await modeled.getAttribute('href')).includes('910000'), false,
+				`${profile.key}: synthetic ID has no Wowhead page`);
+			await modeled.hover();
+			assert.ok(await page.getByText('Hypothetical level-65 item; not obtainable loot', { exact: false }).first().isVisible(),
+				`${profile.key}: missing local projection tooltip`);
+		}
 		for (const tab of ['Gear', 'Settings', 'Talents', 'Rotation']) {
 			await page.getByRole('tab', { name: tab, exact: true }).click();
 			const problems = await page.evaluate(async () => {

@@ -7,6 +7,14 @@ import (
 	"github.com/wowsims/classic/sim/core/proto"
 )
 
+func classPreferredArmor(class proto.Class) proto.ArmorType {
+	return map[proto.Class]proto.ArmorType{
+		proto.Class_ClassDruid: 2, proto.Class_ClassHunter: 3, proto.Class_ClassMage: 1,
+		proto.Class_ClassPaladin: 4, proto.Class_ClassPriest: 1, proto.Class_ClassRogue: 2,
+		proto.Class_ClassShaman: 3, proto.Class_ClassWarlock: 1, proto.Class_ClassWarrior: 4,
+	}[class]
+}
+
 func validateEquipmentSlot(p *proto.Player, slot int, item core.Item) error {
 	slotTypes := []proto.ItemType{
 		proto.ItemType_ItemTypeHead, proto.ItemType_ItemTypeNeck, proto.ItemType_ItemTypeShoulder,

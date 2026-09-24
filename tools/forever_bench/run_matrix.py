@@ -28,7 +28,8 @@ def main():
     args.binary = args.binary.resolve()
     args.profiles = args.profiles.resolve()
     args.output.mkdir(parents=True, exist_ok=True)
-    roster = [(row["Key"], row["Race"]) for row in json.loads(args.profiles.read_text())["Results"]]
+    profile_data = json.loads(args.profiles.read_text())
+    roster = [(row["Key"], row["Race"]) for row in profile_data["Results"]]
     if set(roster) != expected_roster() or len(roster) != len(set(roster)):
         raise SystemExit("Expected the complete current race/build roster.")
 
@@ -47,7 +48,7 @@ def main():
     paths.update(Path("assets/db_inputs").glob("forever_*.json"))
     paths.update(p for p in Path("ui").rglob("*")
                  if (p.suffix == ".json" or p.name == "presets.ts")
-                 and p.name != "forever_ranked_profiles.json")
+                 and p.name not in {"forever_ranked_profiles.json", "forever_synthetic_item_metadata.json"})
     digest = hashlib.sha256()
     for path in sorted(paths):
         digest.update(str(path).encode())
@@ -123,6 +124,8 @@ def main():
     for scenario in scenarios:
         members = [results[(scenario, *key)] for key in roster]
         combined = {**members[0][1], "ReplayManifest": manifest,
+                    "GearScenario": ("real-reference" if scenario == "original" else
+                                     profile_data.get("GearScenario", "real-reference")),
                     "Results": [data["Results"][0] for _, data in members]}
         (args.output / (scenario + ".json")).write_text(json.dumps(combined, indent=2) + "\n")
         with (args.output / (scenario + ".csv")).open("w") as stream:

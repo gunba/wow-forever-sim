@@ -28,8 +28,11 @@ def main():
     parser.add_argument("--profiles", type=Path, default=Path("artifacts/ui_profiles"))
     parser.add_argument("--output", type=Path, default=Path("dist/classic/review"))
     parser.add_argument("--sensitivity", type=Path, default=Path("artifacts/forever_sensitivity.json"))
+    parser.add_argument("--gear-search", type=Path, default=Path("artifacts/gear_search/current"))
+    parser.add_argument("--previous-results", type=Path, default=Path("artifacts/forever_dps_5min.json"))
     args = parser.parse_args()
     data = json.loads(args.results.read_text())
+    modeled = data.get("GearScenario") == "modeled-65-v1"
     rows = data["Results"]
     unenchanted = all(
         not any(item.get("enchant") for item in row["BaselinePlayer"]["equipment"]["items"])
@@ -58,7 +61,31 @@ def main():
     shutil.copytree(args.sensitivity.parent / "sensitivity", args.output / "sensitivity", dirs_exist_ok=True)
     shutil.copytree("artifacts/mana_regen", args.output / "mana_regen", dirs_exist_ok=True)
     shutil.copytree("artifacts/research_builds", args.output / "research_builds", dirs_exist_ok=True)
-    shutil.copytree("artifacts/gear_search/current", args.output / "gear_search", dirs_exist_ok=True)
+    shutil.copytree(args.gear_search, args.output / "gear_search", dirs_exist_ok=True)
+    if modeled:
+        shutil.copyfile("assets/db_inputs/forever_synthetic_gear.json", args.output / "synthetic_gear.json")
+        shutil.copyfile("docs/modelled_gear.md", args.output / "modelled_gear.md")
+        shutil.copyfile("docs/modelled_build_reviews.md", args.output / "modelled_build_reviews.md")
+        shutil.copyfile("artifacts/modelled_gear/proposed_gear.xlsx", args.output / "proposed_gear.xlsx")
+        if args.previous_results.exists() and args.previous_results.resolve() != args.results.resolve():
+            previous = args.output / "real-item-archive"
+            previous.mkdir(exist_ok=True)
+            for extension in ("json", "csv", "svg", "png"):
+                shutil.copyfile(args.previous_results.with_suffix("." + extension),
+                                previous / ("results." + extension))
+            shutil.copyfile("artifacts/forever_sensitivity.json", previous / "sensitivity.json")
+            (previous / "index.html").write_text(
+                "<!doctype html><meta charset='utf-8'><title>Previous real-item benchmark</title>"
+                "<style>body{background:#15171d;color:#eee;font:18px system-ui;"
+                "max-width:1100px;margin:3rem auto}a{color:#a9d8ff}img{max-width:100%}</style>"
+                "<h1>Previous real-item benchmark</h1>"
+                "<p>This historical ranking predates the modeled equipment scenario. "
+                "Its exact requests and results remain available for comparison.</p>"
+                "<p><a href='../'>Current modeled benchmark</a> · "
+                "<a href='results.json'>Raw requests/results</a> · "
+                "<a href='results.csv'>CSV</a> · "
+                "<a href='sensitivity.json'>Gain accounting</a></p>"
+                "<img src='results.svg' alt='Historical race-by-build DPS matrix'>")
     for directory in ("profile_corrections", "windfury"):
         shutil.copytree(Path("artifacts") / directory, args.output / directory, dirs_exist_ok=True)
     shutil.copyfile("artifacts/spell_coverage.json", args.output / "spell_coverage.json")
@@ -213,6 +240,40 @@ Game icons via Wowhead.</p></footer></main></html>
             '<strong>Invalid Shaman results:</strong> the historical dual-wield entries are hidden. '
             'Shamans cannot dual wield. Downloadable raw data and chart images still contain those '
             'superseded runs; they are not a current ranking.</p>',
+        )
+    if modeled:
+        document = document.replace(
+            "<h1>Forever DPS benchmark</h1>",
+            "<h1>Forever DPS · modeled gear</h1>"
+            "<p style='border-left:4px solid #e3b65f;padding:.6rem 1rem;background:#373022'>"
+            "<strong>Hypothetical equipment.</strong> Items named “Modeled:” are not confirmed "
+            "obtainable loot. The model uses at most 20% estimated Stamina cost on projected armor and the "
+            "conservative 80%-allocation passive trinket scenario. Special-stat prices and future "
+            "drops remain unknown. <a href='modelled_gear.md'>Method and limits</a> · "
+            "<a href='proposed_gear.xlsx' download>Proposed gear spreadsheet</a> · "
+            "<a href='real-item-archive/'>Prior real-item results</a>.</p>",
+        )
+        start = document.index('<p class="note">Equipment was selected by slot-by-slot')
+        end = document.index('</p>', start) + 4
+        document = (document[:start] +
+                    '<p class="note">Gear was selected by legal slot-coordinate comparisons of the '
+                    'modeled candidate pool and eligible real items. The source records, stat '
+                    'allocations, confidence labels and actual reference item IDs are in '
+                    '<a href="synthetic_gear.json">the model catalog</a>. '
+                    'The <a href="gear_search/summary.json">search evidence</a> records every '
+                    'candidate and selected loadout. These are not obtainable items or a proven '
+                    'global optimum.</p>' + document[end:])
+        document = document.replace(
+            '<a href="gear_updates.md">Gear comparisons</a>',
+            '<a href="modelled_gear.md">Modeled gear method</a>'
+            '<a href="synthetic_gear.json">Modeled item catalog</a>'
+            '<a href="real-item-archive/">Previous real-item benchmark</a>'
+            '<a href="gear_updates.md">Prior gear comparisons</a>',
+        )
+        document = document.replace(
+            '<a href="build_reviews.md">Build reviews</a>',
+            '<a href="modelled_build_reviews.md">Modeled build reviews</a>'
+            '<a href="build_reviews.md">Previous build reviews</a>',
         )
     (args.output / "index.html").write_text(document)
     print(f"Review site staged at {args.output}")

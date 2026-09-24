@@ -25,6 +25,7 @@ def main():
     parser.add_argument("--sensitivity", type=Path)
     args = parser.parse_args()
     data = json.loads(args.results.read_text())
+    modeled = data.get("GearScenario") == "modeled-65-v1"
     columns = load_columns(args.sensitivity, args.results, args.faction)
     rows = [r for r in data["Results"] if args.faction == "all" or r["Faction"].lower() == args.faction]
     if not rows:
@@ -147,13 +148,16 @@ def main():
         ax.axvline(len(races)-.5, color="#8d9f98", linewidth=2)
     cax = fig.add_axes([.94, .23, .01, .5])
     fig.colorbar(image, cax=cax, label="Damage per second")
-    fig.suptitle("WoW Forever · DPS", y=.977, fontsize=23, fontweight="bold")
+    fig.suptitle("WoW Forever · modeled gear DPS" if modeled else "WoW Forever · DPS",
+                 y=.977, fontsize=23, fontweight="bold")
     tier = "Tier 1 bonuses enabled" if data["Tier1Bonuses"] else "Tier 1 override disabled"
     fig.text(.5, .942, f"Level 60 · {data['Duration']:g}s single target · {tier}", ha="center", fontsize=11)
     samples = "/".join(f"{n:,}" for n in sorted({r["Iterations"] for r in rows}))
     fig.text(.07, .085,
-             f"{samples} iterations per result · rows ordered by peak mean DPS · outlined cell: row peak · — unavailable\n"
-              "Crafted/dungeon/PvP equipment · paid shared-hit normalization · no world buffs",
+             f"{samples} iterations per result · rows ordered by peak mean DPS · outlined cell: row peak · — unavailable\n" +
+             ("Hypothetical level-65 equipment · 20% Stamina cost · 80%-allocation passive trinkets"
+               if modeled else "Crafted/dungeon/PvP equipment")
+              + " · paid shared-hit normalization · no world buffs",
              fontsize=9, color="#475569")
     if columns:
         fig.text(.07, .05,
@@ -163,7 +167,9 @@ def main():
                  fontsize=8.5, color="#475569")
     fig.text(.07, .03,
               "* Warrior rage and Ret Echo timing/coexistence need level-60 confirmation; some hybrids depend on guardian/proc assumptions.\n"
-              "* Channel/GCD haste follows a Mage community report pending direct timing logs. Beta model; icons via Wowhead.",
+              "* Channel/GCD haste follows a Mage community report pending direct timing logs. "
+              + ("These modeled items are not obtainable loot. " if modeled else "")
+              + "Beta model; icons via Wowhead.",
              fontsize=8.5, color="#64748b")
     prefix = args.output or args.results.with_suffix("")
     prefix.parent.mkdir(parents=True, exist_ok=True)

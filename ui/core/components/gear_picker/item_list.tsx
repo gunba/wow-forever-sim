@@ -556,6 +556,9 @@ export default class ItemList<T extends ItemListType> {
 
 		itemData.actionId.fill().then(filledId => {
 			filledId.setWowheadHref(anchorElem.value!);
+			if (ActionId.isModeledItem(itemData.id)) {
+				void filledId.setWowheadDataset(anchorElem.value!);
+			}
 			iconElem.value!.src = filledId.iconUrl;
 		});
 

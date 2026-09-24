@@ -96,6 +96,9 @@ export class ItemRenderer extends Component {
 	}
 
 	clear() {
+		for (const elem of [this.iconElem, this.nameElem]) {
+			(elem as HTMLElement & { _tippy?: { destroy: () => void } })._tippy?.destroy();
+		}
 		this.iconElem.removeAttribute('data-wowhead');
 		this.iconElem.removeAttribute('href');
 		this.nameElem.removeAttribute('data-wowhead');
@@ -121,8 +124,15 @@ export class ItemRenderer extends Component {
 
 		setItemQualityCssClass(this.nameElem, newItem.item.quality);
 
-		this.player.setWowheadData(newItem, this.iconElem);
-		this.player.setWowheadData(newItem, this.nameElem);
+		if (ActionId.isModeledItem(newItem.item.id)) {
+			for (const elem of [this.iconElem, this.nameElem]) {
+				elem.removeAttribute('data-wowhead');
+				void newItem.asActionId().setWowheadDataset(elem);
+			}
+		} else {
+			this.player.setWowheadData(newItem, this.iconElem);
+			this.player.setWowheadData(newItem, this.nameElem);
+		}
 		newItem
 			.asActionId()
 			.fill()
@@ -200,7 +210,7 @@ export class ItemPicker extends Component {
 		});
 
 		player.professionChangeEmitter.on(() => {
-			if (!!this._equippedItem) {
+			if (this._equippedItem && !ActionId.isModeledItem(this._equippedItem.item.id)) {
 				this.player.setWowheadData(this._equippedItem, this.itemElem.iconElem);
 			}
 		});

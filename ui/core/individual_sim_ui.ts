@@ -355,7 +355,7 @@ export abstract class IndividualSimUI<SpecType extends Spec> extends SimUI {
 		panel.className = 'ranked-profile-picker border rounded p-3 mb-3';
 		const label = document.createElement('label');
 		label.className = 'form-label';
-		label.textContent = 'Ranked builds';
+		label.textContent = this.rankedProfiles.some(profile => profile.modeledGear) ? 'Ranked builds · modeled gear' : 'Ranked builds';
 		const controls = document.createElement('div');
 		controls.className = 'd-flex gap-2';
 		const select = document.createElement('select');
@@ -381,14 +381,17 @@ export abstract class IndividualSimUI<SpecType extends Spec> extends SimUI {
 		const note = document.createElement('p');
 		note.className = 'form-text mb-0';
 		note.textContent = 'Full five-minute setup, including gear, enchants, Tier 1 and paid hit. Gear or race edits do not recalculate the hit adjustment.';
+		if (this.rankedProfiles.some(profile => profile.modeledGear)) {
+			note.textContent += ' “Modeled:” items are hypothetical projections, not obtainable equipment.';
+		}
 		if (this.rankedProfiles.some(profile => profile.unmodeledSetBonuses.length)) {
 			note.textContent += ' Some equipped-set effects remain unmodeled; their IDs are listed in the raw ranking results.';
 		}
 		const assumptions = document.createElement('p');
 		assumptions.className = 'form-text mb-0';
-		const caveats = new Map(this.rankedProfiles.filter(profile => profile.caveats.length).map(profile => [
-			profile.build, `${profile.build}: ${profile.caveats.join(' ')}`,
-		]));
+		const caveats = new Map(
+			this.rankedProfiles.filter(profile => profile.caveats.length).map(profile => [profile.build, `${profile.build}: ${profile.caveats.join(' ')}`]),
+		);
 		assumptions.textContent = [...caveats.values()].join(' ');
 		assumptions.hidden = !caveats.size;
 		select.addEventListener('change', () => {

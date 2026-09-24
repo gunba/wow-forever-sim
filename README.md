@@ -5,15 +5,21 @@ A fork of [ElliotWood/Forever](https://github.com/ElliotWood/Forever), built on
 
 **[Open the simulator and DPS matrix](https://gunba.github.io/wow-forever-sim/classic/review/).**
 
-The current DPS profiles use Forever crafted, dungeon and verified PvP/vendor equipment, updated talent
-trees and racials, and an explicit Tier 1 bonus setting. The Classic ruleset is
-retained for mechanic comparisons, not as a complete Classic simulator.
+The current web rankings use **hypothetical level-65 equipment** generated from
+Forever crafted and PvP item patterns, alongside verified items. Modeled items
+are labeled in the simulator and are not confirmed loot. The [proposed gear
+spreadsheet](artifacts/modelled_gear/proposed_gear.xlsx) and
+[model assumptions](docs/modelled_gear.md) show the inputs and limits. The
+[previous verified-item rankings](artifacts/forever_dps_5min.json) remain
+separate. Updated talents, racials and the explicit Tier 1 bonus setting remain
+in both scenarios. The Classic ruleset is retained for mechanic comparisons,
+not as a complete Classic simulator.
 
 The [five-minute benchmark](tools/forever_bench/README.md) covers 28 builds and
 184 Horde/Alliance race/build combinations, including separate Physical Ret
-and Fury (Sunder) setups. Its [matrix](artifacts/forever_dps_5min.png),
-[CSV](artifacts/forever_dps_5min.csv) and
-[raw requests/results](artifacts/forever_dps_5min.json) use paid hit normalization
+and Fury (Sunder) setups. The modeled-gear [matrix](artifacts/modelled_gear/forever_dps_5min.png),
+[CSV](artifacts/modelled_gear/forever_dps_5min.csv) and
+[raw requests/results](artifacts/modelled_gear/forever_dps_5min.json) use paid hit normalization
 and 5,000 iterations per result. Legal talent and rotation changes were screened,
 independently validated and checked across every available race; these are not
 claims of a global optimum or best-in-slot equipment.
@@ -22,10 +28,10 @@ The matrix shows race-averaged Tier 1 gains, hypothetical +10% equipment gains
 and scaling amplification: the mean +50% gain divided by five times the mean
 +10% gain. A value of 1× is linear; larger values indicate accelerating gains.
 This measures finite-range curvature, not proof of exponential growth.
-[Sensitivity data](artifacts/forever_sensitivity.json) records both scaling runs,
+[Sensitivity data](artifacts/modelled_gear/forever_sensitivity.json) records both scaling runs,
 the assumptions and Monte Carlo uncertainty.
 
-[Build reviews](docs/build_reviews.md) describe the retained choices and resource
+[Build reviews](docs/modelled_build_reviews.md) describe the retained choices and resource
 use. [In-game checks](docs/in_game_checks.md) track important unresolved mechanics.
 [Auto-attack timing](docs/auto_attack_audit.md) now uses Classic's half-second
 Hunter Auto Shot wind-up; older instant-shot rankings are archived separately.
@@ -36,14 +42,14 @@ reviewed changes, regression checks and remaining source gaps.
 recent WoWSims changes and Warrior combat logs with this simulator.
 [Later upstream changes](docs/upstream-forever-followup-2026-09-23.md) are
 reviewed separately from the confirmed mechanics corrections.
-[Replay profiles](artifacts/ui_profiles/index.json) are built into the matching
+[Replay profiles](artifacts/modelled_gear/ui_profiles/index.json) are built into the matching
 simulator's **Ranked builds** selector. Clicking a matrix cell opens that exact
 setup, including its paid hit adjustment; no manual import is needed.
-[Frozen benchmark inputs](artifacts/forever_input_profiles.json) are also the
+[Frozen benchmark inputs](artifacts/modelled_gear/forever_input_profiles.json) are also the
 native benchmark defaults, separate from the results for replay.
-[Equipment-search evidence](artifacts/gear_search/current/summary.json) records the
-comparisons. Lower-level items remain where stronger or needed for documented
-coverage gaps.
+[Equipment-search evidence](artifacts/modelled_gear_search/current/summary.json) records
+the comparisons. Real lower-level items may remain when simulated as stronger
+than the modeled alternatives; that does not make the modeled items real.
 
 This project is licensed with MIT license, inherited from the upstream project. As upstream requests, keep a user visible link back to [wowsims/classic](https://github.com/wowsims/classic) in anything built on this.
 

@@ -20,6 +20,8 @@ def main():
                 names[int(key)] = value.get("ability", f"Spell {key}")
     database = json.loads(Path("assets/database/db.json").read_text())
     item_records = {i["id"]: i for i in database["items"]}
+    synthetic = {item["id"]: item for item in json.loads(
+        Path("assets/db_inputs/forever_synthetic_gear.json").read_text())["items"]}
     items = {i: item["name"] for i, item in item_records.items()}
     enchants = {e["effectId"]: e["name"] for e in database["enchants"]}
     display = {key: (cls, spec) for key, cls, spec, _ in BUILDS}
@@ -33,6 +35,9 @@ def main():
             return f"[{label}](https://www.wowhead.com/forever/spell={spell})"
         if action.get("itemId"):
             item = action["itemId"]
+            if item in synthetic:
+                reference = synthetic[item]["modelReferenceItemID"]
+                return f"[{items.get(item, f'Modeled item {item}')} (reference only)](https://www.wowhead.com/forever/item={reference})"
             return f"[{items.get(item, f'Item {item}')}](https://www.wowhead.com/forever/item={item})"
         label = {"OtherActionAttack": "Auto-attack", "OtherActionShoot": "Shoot"}.get(action.get("otherId"), action.get("otherId", "Unknown action"))
         if action.get("tag"):
@@ -74,18 +79,30 @@ def main():
         return "`" + json.dumps(value, separators=(",", ":")) + "`"
 
     results = json.loads(args.results.read_text())
+    modeled = results.get("GearScenario") == "modeled-65-v1"
     groups = {}
     for row in results["Results"]:
         groups.setdefault(row["Key"], []).append(row)
     ordered = sorted(groups, key=lambda key: max(r["DPS"] for r in groups[key]), reverse=True)
+    matrix_path = ("../artifacts/modelled_gear/forever_dps_5min.png"
+                   if modeled else "../artifacts/forever_dps_5min.png")
+    raw_path = ("../artifacts/modelled_gear/forever_dps_5min.json"
+                if modeled else "../artifacts/forever_dps_5min.json")
+    search_path = ("../artifacts/modelled_gear_search/current/summary.json"
+                   if modeled else "../artifacts/gear_search/summary.json")
     lines = [
         "# Build reviews", "",
-        "These summaries describe the published loadouts. They are simulation results, "
-        "not independent confirmation of server mechanics or proof of a global optimum.", "",
-        "The tables and [matrix](../artifacts/forever_dps_5min.png) use the same "
-        f"{len(results['Results'])} common-seed replays. Equipment selections came from an earlier mechanics "
-        "revision; these results use the corrected engine. Historical search gains "
-        "are not directly comparable to this release.", "",
+        ("These are hypothetical modeled-gear results, not obtainable item rankings. "
+         "Sources linked for modeled items are allocation references only and have different "
+         "stats. Gear is compared under the [model assumptions](modelled_gear.md)."
+         if modeled else "These summaries describe the published loadouts. They are simulation "
+         "results, not independent confirmation of server mechanics or proof of a global optimum."), "",
+        f"The tables and [matrix]({matrix_path}) use the same "
+        f"{len(results['Results'])} common-seed replays. "
+        + ("The modeled search and original real-item benchmark are separate; neither proves "
+           "available launch gear." if modeled else "Equipment selections came from an earlier "
+           "mechanics revision; these results use the corrected engine. Historical search gains "
+           "are not directly comparable to this release."), "",
         "The benchmark uses level 60, 300 seconds, one level-63 target, complete role-specific "
         "Tier 1 bonuses, and paid shared-hit normalization. "
         "[Scenario and exchange model](../tools/forever_bench/README.md) · "
@@ -103,8 +120,8 @@ def main():
         points += [0] * (3-len(points))
         lines += [f"## {cls} — {spec}", "",
                   f"**Talents:** {'/'.join(map(str, points))} · `{p['talentsString']}`", "",
-                  "[Requests and results](../artifacts/forever_dps_5min.json) · "
-                  "[Equipment search](../artifacts/gear_search/summary.json)", ""]
+                  f"[Requests and results]({raw_path}) · "
+                  f"[Equipment search]({search_path})", ""]
         if key in BUILD_CAVEATS:
             lines += ["**Model limitations:** " + " ".join(BUILD_CAVEATS[key]), ""]
         if len({json.dumps(row["BaselinePlayer"]["rotation"], sort_keys=True) for row in rows}) > 1:
@@ -125,7 +142,10 @@ def main():
         for slot, entry in zip(slots, p["equipment"]["items"]):
             item = item_records.get(entry.get("id"))
             if item:
-                lines.append(f"| {slot} | [{item['name']}](https://www.wowhead.com/forever/item={item['id']}) | "
+                modeled_item = synthetic.get(item['id'])
+                reference = modeled_item["modelReferenceItemID"] if modeled_item else item['id']
+                suffix = ' (modeled; reference only)' if modeled_item else ''
+                lines.append(f"| {slot} | [{item['name']}{suffix}](https://www.wowhead.com/forever/item={reference}) | "
                              f"{item['ilvl']} | {enchants.get(entry.get('enchant'), '—')} |")
         lines += ["", "Other races can use different equipment. Their complete setups are "
                   "available in the simulator's Ranked builds selector.", ""]

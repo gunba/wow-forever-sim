@@ -4,7 +4,10 @@ import { chromium } from 'playwright';
 
 const base = process.env.SITE_URL || 'http://localhost:8080/classic/';
 const bundle = JSON.parse(readFileSync('ui/core/forever_ranked_profiles.json', 'utf8'));
-const results = JSON.parse(readFileSync('artifacts/forever_dps_5min.json', 'utf8')).Results;
+const resultsFile = bundle.gearScenario === 'modeled-65-v1'
+	? 'artifacts/modelled_gear/forever_dps_5min.json'
+	: 'artifacts/forever_dps_5min.json';
+const results = JSON.parse(readFileSync(resultsFile, 'utf8')).Results;
 assert.equal(bundle.profiles.length, results.length, 'web defaults must cover the complete roster');
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined });
 try {
@@ -43,6 +46,11 @@ try {
 
 		await page.getByLabel('Ranked build', { exact: true }).selectOption(id);
 		await page.getByRole('button', { name: 'Load build', exact: true }).click();
+		if (bundle.gearScenario === 'modeled-65-v1') {
+			assert.ok((await page.locator('.ranked-profile-picker label').first().textContent())
+				.startsWith('Ranked builds · modeled gear'));
+			assert.equal(profile.modeledGear, true);
+		}
 		for (const caveat of profile.caveats) {
 			assert.ok(await page.getByText(caveat, { exact: false }).isVisible(), `${id}: missing model caveat`);
 		}

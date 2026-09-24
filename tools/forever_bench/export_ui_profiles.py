@@ -40,6 +40,7 @@ def main():
     parser.add_argument("--bundle", type=Path, help="also write the web default-profile bundle")
     args = parser.parse_args()
     data = json.loads(args.results.read_text())
+    modeled = data.get("GearScenario") == "modeled-65-v1"
     args.output.mkdir(parents=True, exist_ok=True)
     index = []
     profiles = []
@@ -53,6 +54,7 @@ def main():
             "id": f"{row['Key']}__{race}", "key": row["Key"], "build": row["Build"],
             "race": row["Race"], "dps": row["DPS"], "settings": ui_settings(row),
             "hitAdjustment": row["Hit"], "unmodeledSetBonuses": row.get("UnmodeledSetBonuses") or [],
+            "modeledGear": modeled,
             "caveats": BUILD_CAVEATS.get(row["Key"], []),
         })
     (args.output / "index.json").write_text(json.dumps(index, indent=2) + "\n")
@@ -69,6 +71,7 @@ def main():
         args.bundle.parent.mkdir(parents=True, exist_ok=True)
         args.bundle.write_text(json.dumps({
             "sourceSHA256": hashlib.sha256(args.results.read_bytes()).hexdigest(),
+            "gearScenario": data.get("GearScenario", "real-reference"),
             "profiles": profiles,
         }, separators=(",", ":")) + "\n")
     print(f"{len(index)} profiles exported to {args.output}")

@@ -248,7 +248,7 @@ var rankedDefaultPlayers = sync.OnceValue(func() map[string]*proto.Player {
 			BaselinePlayer json.RawMessage
 		}
 	}
-	if err := json.Unmarshal(mustRead("artifacts/forever_input_profiles.json"), &source); err != nil {
+	if err := json.Unmarshal(mustRead("artifacts/modelled_gear/forever_input_profiles.json"), &source); err != nil {
 		panic(err)
 	}
 	players := make(map[string]*proto.Player, len(source.Results))

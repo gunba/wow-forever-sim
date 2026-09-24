@@ -57,7 +57,7 @@ def main():
     paths.update(Path("assets/db_inputs").glob("forever_*.json"))
     paths.update(p for p in Path("ui").rglob("*")
                  if (p.suffix == ".json" or p.name == "presets.ts")
-                 and p.name != "forever_ranked_profiles.json")
+                 and p.name not in {"forever_ranked_profiles.json", "forever_synthetic_item_metadata.json"})
     for path in sorted(paths):
         digest.update(str(path).encode())
         digest.update(path.read_bytes())
@@ -107,6 +107,7 @@ def main():
         payload = {
             "Duration": 300, "StartingArmor": 3731, "Tier1Bonuses": True,
             "EquipmentScale": 1, "SearchManifest": manifest,
+            "GearScenario": "real-reference" if name == "baseline" else "modeled-65-v1",
             "Results": [result[index] for result in completed],
         }
         (args.output / f"{name}.json").write_text(json.dumps(payload, indent=2) + "\n")

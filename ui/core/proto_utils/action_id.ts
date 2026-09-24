@@ -9,6 +9,20 @@ import tippy from 'tippy.js';
 import { Database } from './database';
 import { WOWHEAD_IMAGES } from '../constants/other';
 import { spellSource } from '../spells/index';
+import syntheticItemMetadata from '../forever_synthetic_item_metadata.json';
+
+type SyntheticItemMetadata = {
+	name: string;
+	sourceItemId: number;
+	sourceItemName: string;
+	stats: Record<string, number>;
+	armor: number;
+	weapon?: { min: number; max: number; speed: number } | null;
+	confidence: string;
+	notes: string;
+	rankingEligible: boolean;
+};
+const syntheticItems = syntheticItemMetadata as Record<string, SyntheticItemMetadata>;
 
 // Used to filter action IDs by level
 export interface ActionIdConfig {
@@ -164,10 +178,17 @@ export class ActionId {
 
 	static makeItemUrl(id: number, randomSuffixId?: number): string {
 		const langPrefix = getWowheadLanguagePrefix();
-		const url = new URL(`https://wowhead.com/forever/${langPrefix}item=${id}`);
+		// A projected item has no Wowhead record. Its link is explicitly only
+		// the real item used as a stat-allocation reference.
+		const realId = syntheticItems[id]?.sourceItemId || id;
+		const url = new URL(`https://wowhead.com/forever/${langPrefix}item=${realId}`);
 		url.searchParams.set('level', String(MAX_CHARACTER_LEVEL));
 		url.searchParams.set('rand', String(randomSuffixId || 0));
 		return url.toString();
+	}
+
+	static isModeledItem(id: number): boolean {
+		return Boolean(syntheticItems[id]);
 	}
 	static makeSpellUrl(id: number): string {
 		const langPrefix = getWowheadLanguagePrefix();
@@ -200,12 +221,34 @@ export class ActionId {
 	setWowheadHref(elem: HTMLAnchorElement) {
 		if (this.itemId) {
 			elem.href = ActionId.makeItemUrl(this.itemId, this.randomSuffixId);
+			if (syntheticItems[this.itemId]) {
+				elem.title = 'Opens a real reference item; the modeled item has different stats.';
+			}
 		} else if (this.spellId) {
 			elem.href = ActionId.makeSpellUrl(this.spellIdTooltipOverride || this.spellId);
 		}
 	}
 
 	async setWowheadDataset(elem: HTMLElement, params?: Omit<WowheadTooltipItemParams, 'itemId'> | Omit<WowheadTooltipSpellParams, 'spellId'>) {
+		const modeled = this.itemId && syntheticItems[this.itemId];
+		if (elem && modeled) {
+			const stats = Object.entries(modeled.stats)
+				.map(([stat, amount]) => `+${amount} ${stat}`)
+				.join(' · ');
+			const weapon = modeled.weapon ? ` · ${modeled.weapon.min}–${modeled.weapon.max} damage (${modeled.weapon.speed}s)` : '';
+			tippy(elem, {
+				content:
+					`${modeled.name}. Hypothetical level-65 item; not obtainable loot. ` +
+					`${stats}${modeled.armor ? ` · ${modeled.armor} armor` : ''}${weapon}. ` +
+					`Reference: ${modeled.sourceItemName} (item ${modeled.sourceItemId}); ` +
+					`its actual stats are not this item's stats. ${modeled.notes} ` +
+					(modeled.rankingEligible ? '' : 'Sensitivity only; excluded from rankings.'),
+				ignoreAttributes: true,
+				allowHTML: false,
+				theme: 'forever',
+			});
+			return;
+		}
 		// An ability Forever changed is not the ability Wowhead's Classic database describes, and
 		// letting Wowhead's tooltip stand over it is what ui/core/spells was written to stop: the
 		// hover would quote Classic's damage for a spell the sim runs on Forever's. Where the
