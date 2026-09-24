@@ -143,11 +143,11 @@ rage as speed-normalized, with a provisional Cataclysm-like off-hand rate.
 This extrapolation is not a validated level-60 Forever rule. See
 [the rage check](check_dispositions.md#rage-evidence).
 
-Hunter pets still use the inherited **zero owner-stat inheritance** model.
-A level-17 tooltip shows ten percent of the higher owner melee/ranged AP,
-but does not establish the level-60 rule. Pet family abilities and several
-legacy pet templates also remain unverified. Hunter comparisons and their
-gear sensitivities therefore have a material modeling gap.
+At the time of this review Hunter pets still used **zero owner-stat
+inheritance**. The local post-review pet correction now applies the
+Forever-specific wiki rates to Hunter and Warlock pets provisionally, along
+with client Focus regeneration; it has not yet been rerun or published in
+the rankings. See [the pet formula audit](check_dispositions.md#pet-formula-source-audit).
 
 Divine Spirit's baseline availability after talent removal is assumed rather
 than confirmed from a trainer. Seal of Fury and the Priest healing spellbook

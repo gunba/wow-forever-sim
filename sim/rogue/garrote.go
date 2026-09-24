@@ -62,7 +62,11 @@ func (rogue *Rogue) registerGarrote() {
 				dot.Snapshot(target, damage, isRollover)
 			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
-				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
+				if sim.IsForever() {
+					dot.Spell.CalcAndDealPeriodicDamage(sim, target, baseDamage+dot.Spell.MeleeAttackPower(target)*0.03, dot.OutcomeTick)
+				} else {
+					dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
+				}
 			},
 		},
 

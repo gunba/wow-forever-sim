@@ -253,12 +253,10 @@ func (character *Character) registerForeverBerserking(timer *Timer) {
 		OnGain: func(aura *Aura, sim *Simulation) {
 			character.MultiplyCastSpeed(1.1)
 			character.MultiplyAttackSpeed(sim, 1.1)
-			character.MultiplyEnergyHaste(sim, 1.1)
 		},
 		OnExpire: func(aura *Aura, sim *Simulation) {
 			character.MultiplyCastSpeed(1 / 1.1)
 			character.MultiplyAttackSpeed(sim, 1/1.1)
-			character.MultiplyEnergyHaste(sim, 1/1.1)
 		},
 	})
 	spell := character.RegisterSpell(SpellConfig{

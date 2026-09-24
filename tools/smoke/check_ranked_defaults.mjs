@@ -22,7 +22,8 @@ try {
 		['retribution_paladin', 'retribution_physical__human'],
 		['mage', 'arcane_frost__gnome'],
 		['warrior', 'fury_2h__human'],
-	]) {
+		['warrior', 'fury_sunder__orc'],
+	].filter(([, id]) => !process.env.ONLY_PROFILE || id === process.env.ONLY_PROFILE)) {
 		const profile = bundle.profiles.find(profile => profile.id === id);
 		assert.ok(profile, `missing ${id}`);
 		const context = await browser.newContext();

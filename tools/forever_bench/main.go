@@ -79,6 +79,18 @@ func request(player *proto.Player, count int, rng int64) *proto.RaidSimRequest {
 	}).(*proto.RaidSimRequest)
 }
 
+func requestForBuild(b build, player *proto.Player, count int, rng int64) *proto.RaidSimRequest {
+	req := request(player, count, rng)
+	if b.Key == "fury_sunder" {
+		// This row measures the cost of providing the raid's major armor
+		// reduction personally. An external Expose would both mask the armor
+		// ramp and prevent Sunder from building its own stacks.
+		req.Raid.Debuffs.SunderArmor = false
+		req.Raid.Debuffs.ExposeArmor = proto.TristateEffect_TristateEffectMissing
+	}
+	return req
+}
+
 func run(b build, p *proto.Player, count int, rng int64) resultRow {
 	if !b.allowsRace(p.Race) {
 		panic(fmt.Errorf("%s: race %v is not available", b.Key, p.Race))
@@ -97,7 +109,7 @@ func run(b build, p *proto.Player, count int, rng int64) resultRow {
 	if err != nil {
 		panic(err)
 	}
-	req := request(p, count, rng)
+	req := requestForBuild(b, p, count, rng)
 	_, rs, _ := core.NewEnvironment(req.Raid, req.Encounter, proto.Ruleset_RulesetForever, false)
 	ps := rs.Parties[0].Players[0]
 	var warnings []string
@@ -105,7 +117,7 @@ func run(b build, p *proto.Player, count int, rng int64) resultRow {
 		warnings = append(warnings, a.Warnings...)
 	}
 	// Fresh request keeps the saved replay independent of the stats probe.
-	req = request(p, count, rng)
+	req = requestForBuild(b, p, count, rng)
 	saved, err := protojson.Marshal(req)
 	if err != nil {
 		panic(err)
@@ -206,7 +218,12 @@ func writeResults(rows []resultRow) {
 		"demonicBrand": "client-school-formulas-owner-power-at-hit-pet-multipliers-once-target-scoped",
 		"weaponStones": "client-effects-exclusive-main-hand-imbue-spellstone-school-mask36",
 		"naturesGrace": "10pct-cast-haste-separate-10pct-gcd-reduction-including-instants",
-		"rage":         "inherited-damage-based-level60-and-offhand-normalization-unresolved",
+		"rage":         "forever-provisional-speed-normalized-low-level-rates-half-rate-offhand-assumed",
+		"periodic":     "forever-current-offensive-stats-each-tick-classic-snapshots",
+		"petStats":     "forever-provisional-shared-hunter-warlock-owner-scaling-no-direct-pet-buffs-or-consumes",
+		"petFocus":     "forever-continuous-10-per-second-150-cap-hunter-scaling-aura",
+		"jow":          "client-rank3-59-mana-classic-50pct-eligible-event-chance-assumed",
+		"speed":        "general-haste-separated-from-casting-and-attack-only-effects",
 		"mp5":          "per-player-foreverMp5PerSecond-opt-in-unverified-fivefold-MP5-only",
 	}, rows}
 	data, err := json.MarshalIndent(payload, "", "  ")

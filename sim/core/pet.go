@@ -92,10 +92,13 @@ func NewPet(name string, owner *Character, baseStats stats.Stats, statInheritanc
 // Updates the stats for this pet in response to a stat change on the owner.
 // addedStats is the amount of stats added to the owner (will be negative if the
 // owner lost stats).
-func (pet *Pet) addOwnerStats(sim *Simulation, addedStats stats.Stats) {
-	inheritedChange := pet.dynamicStatInheritance(addedStats)
-
-	pet.inheritedStats.AddInplace(&inheritedChange)
+func (pet *Pet) addOwnerStats(sim *Simulation, _ stats.Stats) {
+	// Inheritance can select the higher of two owner power sources. Recompute
+	// the full inherited state instead of applying that nonlinear choice to
+	// the stat delta, which would retain the wrong power after a swap.
+	nextInheritedStats := pet.dynamicStatInheritance(pet.Owner.GetStats())
+	inheritedChange := nextInheritedStats.Subtract(pet.inheritedStats)
+	pet.inheritedStats = nextInheritedStats
 	pet.AddStatsDynamic(sim, inheritedChange)
 }
 

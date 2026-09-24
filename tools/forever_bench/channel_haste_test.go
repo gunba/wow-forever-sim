@@ -3,6 +3,7 @@
 package main
 
 import (
+	"math"
 	"testing"
 	"time"
 
@@ -10,9 +11,11 @@ import (
 	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/core/simsignals"
 	"github.com/wowsims/classic/sim/core/stats"
+	"github.com/wowsims/classic/sim/hunter"
 	"github.com/wowsims/classic/sim/mage"
 	"github.com/wowsims/classic/sim/priest"
 	"github.com/wowsims/classic/sim/rogue"
+	"github.com/wowsims/classic/sim/shaman"
 )
 
 func channelHasteFixture(buildKey string, ruleset proto.Ruleset, haste float64) *core.Simulation {
@@ -135,6 +138,133 @@ func TestForeverMissileBarrageTickCountWithHaste(t *testing.T) {
 	}
 	if dot.TickCount != dot.NumberOfTicks {
 		t.Fatalf("Barrage delivered %d ticks, want %d", dot.TickCount, dot.NumberOfTicks)
+	}
+}
+
+func TestBerserkingDoesNotShortenArcaneMissiles(t *testing.T) {
+	req := racialFixture("arcane", proto.Race_RaceTroll)
+	player := req.Raid.Parties[0].Players[0]
+	player.Equipment = &proto.EquipmentSpec{}
+	player.ForeverTier1Bonuses = false
+	player.Rotation = &proto.APLRotation{}
+	sim := core.NewSim(req, simsignals.Signals{})
+	sim.Options.Interactive = true
+	sim.Reset()
+	m := sim.Raid.Parties[0].Players[0].(mage.MageAgent).GetMage()
+	m.GetAura("Berserking").Activate(sim)
+	if got := m.ApplyCastSpeed(time.Second); got != time.Second*10/11 {
+		t.Fatalf("Berserking should shorten hardcasts; second became %s", got)
+	}
+	spell := m.ArcaneMissiles[len(m.ArcaneMissiles)-1]
+	if !spell.Cast(sim, m.CurrentTarget) {
+		t.Fatal("Arcane Missiles was not castable")
+	}
+	if got := spell.Dot(m.CurrentTarget).Duration; got != 5*time.Second {
+		t.Fatalf("Berserking shortened Arcane Missiles to %s; want 5s", got)
+	}
+}
+
+func TestForeverBerserkingSpeedIsNotEnergyHaste(t *testing.T) {
+	req := racialFixture("combat", proto.Race_RaceTroll)
+	player := req.Raid.Parties[0].Players[0]
+	player.ForeverTier1Bonuses = false
+	player.Rotation = &proto.APLRotation{}
+	sim := core.NewSim(req, simsignals.Signals{})
+	sim.Options.Interactive = true
+	sim.Reset()
+	r := sim.Raid.Parties[0].Players[0].(rogue.RogueAgent).GetRogue()
+	energySpeed := r.PseudoStats.EnergyHasteMultiplier
+	meleeSpeed := r.SwingSpeed()
+	r.GetAura("Berserking").Activate(sim)
+	if r.PseudoStats.EnergyHasteMultiplier != energySpeed {
+		t.Fatal("Berserking's attack/casting-speed auras changed Energy regeneration")
+	}
+	if got := r.SwingSpeed() / meleeSpeed; math.Abs(got-1.1) > 1e-9 {
+		t.Fatalf("Berserking multiplied melee speed %.6fx, want 1.1x", got)
+	}
+}
+
+func TestForeverShocksShareHastedSpellGCD(t *testing.T) {
+	for _, id := range []int32{10414, 29228} {
+		req := racialFixture("enhancement", proto.Race_RaceSkyborneWindshaper)
+		player := req.Raid.Parties[0].Players[0]
+		player.Equipment = &proto.EquipmentSpec{}
+		player.ForeverTier1Bonuses = false
+		player.Rotation = &proto.APLRotation{}
+		sim := core.NewSim(req, simsignals.Signals{})
+		sim.Options.Interactive = true
+		sim.Reset()
+		s := sim.Raid.Parties[0].Players[0].(shaman.ShamanAgent).GetShaman()
+		spell := s.GetSpell(core.ActionID{SpellID: id})
+		if spell == nil || !spell.Cast(sim, s.CurrentTarget) {
+			t.Fatalf("shock %d was not castable", id)
+		}
+		baseGCD := core.GCDDefault
+		want := time.Duration(float64(baseGCD) / 1.01)
+		if got := s.GCD.ReadyAt(); got != want {
+			t.Fatalf("shock %d GCD %s, want %s", id, got, want)
+		}
+	}
+}
+
+func TestForeverSpellGCDHasteFollowsSchoolNotDefenseType(t *testing.T) {
+	for _, tc := range []struct {
+		build string
+		race  proto.Race
+		id    int32
+		want  time.Duration
+	}{
+		{"retribution", proto.Race_RaceUndead, 10333, time.Second},          // Holy Strike: Holy school, melee hit table.
+		{"marksmanship", proto.Race_RaceOrc, 14287, time.Second},            // Arcane Shot: Arcane school, ranged hit table.
+		{"enhancement", proto.Race_RaceOrc, 17364, 1500 * time.Millisecond}, // Stormstrike: Physical school.
+	} {
+		t.Run(tc.build, func(t *testing.T) {
+			req := racialFixture(tc.build, tc.race)
+			player := req.Raid.Parties[0].Players[0]
+			player.ForeverTier1Bonuses = false
+			player.Rotation = &proto.APLRotation{}
+			player.BonusStats = &proto.UnitStats{Stats: stats.Stats{stats.SpellHaste: 100 * core.HasteRatingPerHastePercent}.ToFloatArray()}
+			sim := core.NewSim(req, simsignals.Signals{})
+			sim.Options.Interactive = true
+			sim.Reset()
+			unit := sim.Raid.Parties[0].Players[0].GetCharacter()
+			spell := unit.GetSpell(core.ActionID{SpellID: tc.id})
+			if spell == nil || !spell.Cast(sim, unit.CurrentTarget) {
+				t.Fatalf("spell %d was not castable", tc.id)
+			}
+			if got := unit.GCD.ReadyAt(); got != tc.want {
+				t.Fatalf("spell %d GCD %s; want %s", tc.id, got, tc.want)
+			}
+		})
+	}
+}
+
+func TestMinorHasteEnchantCountsOnceForAttackSpeeds(t *testing.T) {
+	attackSpeeds := func(withEnchant bool) (float64, float64, time.Duration) {
+		req := racialFixture("marksmanship", proto.Race_RaceTroll)
+		player := req.Raid.Parties[0].Players[0]
+		player.ForeverTier1Bonuses = false
+		player.Rotation = &proto.APLRotation{}
+		gloves := player.Equipment.Items[proto.ItemSlot_ItemSlotHands]
+		gloves.Enchant = 0
+		if withEnchant {
+			gloves.Enchant = 931
+		}
+		sim := core.NewSim(req, simsignals.Signals{})
+		sim.Options.Interactive = true
+		sim.Reset()
+		h := sim.Raid.Parties[0].Players[0].(hunter.HunterAgent).GetHunter()
+		return h.SwingSpeed(), h.RangedSwingSpeed(), h.ApplyCastSpeed(time.Second)
+	}
+	meleeWithout, rangedWithout, castWithout := attackSpeeds(false)
+	meleeWith, rangedWith, castWith := attackSpeeds(true)
+	for name, got := range map[string]float64{"melee": meleeWith / meleeWithout, "ranged": rangedWith / rangedWithout} {
+		if math.Abs(got-1.01) > 1e-9 {
+			t.Fatalf("Minor Haste multiplied %s speed %.6fx, want 1.01x", name, got)
+		}
+	}
+	if got := float64(castWithout) / float64(castWith); math.Abs(got-1.01) > 1e-8 {
+		t.Fatalf("Minor Haste multiplied hardcast speed %.6fx, want 1.01x", got)
 	}
 }
 

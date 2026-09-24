@@ -117,8 +117,6 @@ func (warlock *Warlock) makePet(cfg PetConfig, enabledOnStart bool) *WarlockPet 
 		wp.EnableAutoAttacks(wp, cfg.AutoAttacks)
 	}
 
-	core.ApplyPetConsumeEffects(&wp.Character, warlock.Consumes)
-
 	warlock.AddPet(wp)
 
 	return wp
@@ -134,6 +132,7 @@ func (wp *WarlockPet) GetPet() *core.Pet {
 }
 
 func (wp *WarlockPet) Initialize() {
+	core.ApplyPetConsumeEffects(&wp.Pet, wp.owner.Consumes)
 }
 
 func (wp *WarlockPet) Reset(_ *core.Simulation) {
@@ -199,6 +198,9 @@ func (wp *WarlockPet) ExecuteCustomRotation(sim *core.Simulation) {
 
 func (warlock *Warlock) makeStatInheritance() core.PetStatInheritance {
 	return func(ownerStats stats.Stats) stats.Stats {
-		return stats.Stats{}
+		if !warlock.Env.IsForever() {
+			return stats.Stats{}
+		}
+		return core.ForeverPetInheritance(ownerStats, true)
 	}
 }

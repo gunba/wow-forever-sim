@@ -167,17 +167,18 @@ func (spell *Spell) makeCastFunc(config CastConfig) CastSuccessFunc {
 			}
 		}
 
+		// Forever's modeled GCD haste follows spell school, not its hit table:
+		// Holy Strike rolls as melee, and Arcane Shot as ranged, but both are
+		// nonphysical schools. The client has their normal 1.5-second GCD;
+		// WoWSims Forever applies this same school distinction. The server
+		// interaction still needs the level-20 timing check in T40.
+		if spell.Unit.Env != nil && spell.Unit.Env.IsForever() &&
+			spell.CurCast.GCD > GCDMin &&
+			spell.SpellSchool != SpellSchoolNone &&
+			!spell.SpellSchool.Matches(SpellSchoolPhysical) {
+			spell.CurCast.GCD = max(GCDMin, spell.Unit.ApplyCastSpeed(spell.CurCast.GCD))
+		}
 		if !config.IgnoreHaste {
-			// Forever spell haste shortens the spell GCD, but not the melee/ranged
-			// GCD. The one-second minimum also leaves Rogue abilities unchanged.
-			if spell.Unit.Env != nil && spell.Unit.Env.IsForever() &&
-				spell.CurCast.GCD > GCDMin &&
-				spell.DefenseType != DefenseTypeMelee && spell.DefenseType != DefenseTypeRanged &&
-				(spell.DefenseType == DefenseTypeMagic ||
-					spell.Flags.Matches(SpellFlagChanneled) ||
-					(spell.SpellSchool != SpellSchoolNone && !spell.SpellSchool.Matches(SpellSchoolPhysical))) {
-				spell.CurCast.GCD = max(GCDMin, spell.Unit.ApplyCastSpeed(spell.CurCast.GCD))
-			}
 			spell.CurCast.CastTime = config.CastTime(spell)
 		}
 

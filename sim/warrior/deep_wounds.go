@@ -38,6 +38,16 @@ func (warrior *Warrior) applyDeepWounds() {
 			TickLength:    time.Second * 3,
 
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
+				if sim.IsForever() {
+					// Forever's bleed is a fraction of current average main-hand
+					// weapon damage. Re-read AP and damage modifiers on each tick;
+					// the old crit-time pool remains the Classic-only rule.
+					baseDamage := warrior.AutoAttacks.MH().CalculateAverageWeaponDamage(dot.Spell.MeleeAttackPower(target))
+					dot.Spell.CalcAndDealPeriodicDamage(sim, target,
+						baseDamage*0.2*float64(warrior.Talents.DeepWounds)/float64(dot.NumberOfTicks),
+						dot.OutcomeTick)
+					return
+				}
 				attackTable := warrior.AttackTables[target.UnitIndex][proto.CastType_CastTypeMainHand]
 				dot.SnapshotAttackerMultiplier = dot.Spell.AttackerDamageMultiplier(attackTable, true) // Double dips on attackers mods
 				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
@@ -71,6 +81,11 @@ func (warrior *Warrior) applyDeepWounds() {
 
 func (warrior *Warrior) procDeepWounds(sim *core.Simulation, target *core.Unit, isOh bool) {
 	dot := warrior.DeepWounds.Dot(target)
+
+	if sim.IsForever() {
+		warrior.DeepWounds.Cast(sim, target)
+		return
+	}
 
 	var awd float64
 	if isOh {

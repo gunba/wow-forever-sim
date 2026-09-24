@@ -9,9 +9,9 @@ The current DPS profiles use Forever crafted, dungeon and verified PvP/vendor eq
 trees and racials, and an explicit Tier 1 bonus setting. The Classic ruleset is
 retained for mechanic comparisons, not as a complete Classic simulator.
 
-The [five-minute benchmark](tools/forever_bench/README.md) covers 27 builds and
-174 Horde/Alliance race/build combinations, including a separate Physical Ret
-setup. Its [matrix](artifacts/forever_dps_5min.png),
+The [five-minute benchmark](tools/forever_bench/README.md) covers 28 builds and
+184 Horde/Alliance race/build combinations, including separate Physical Ret
+and Fury (Sunder) setups. Its [matrix](artifacts/forever_dps_5min.png),
 [CSV](artifacts/forever_dps_5min.csv) and
 [raw requests/results](artifacts/forever_dps_5min.json) use paid hit normalization
 and 5,000 iterations per result. Legal talent and rotation changes were screened,

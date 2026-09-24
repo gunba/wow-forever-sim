@@ -1,7 +1,7 @@
 # Forever DPS benchmarks
 
-The benchmark contains 27 level-60 builds and 174 race/build combinations:
-85 Alliance and 89 Horde. The [client roster and racial audit](../../docs/forever_races.md)
+The benchmark contains 28 level-60 builds and 184 race/build combinations:
+90 Alliance and 94 Horde. The [client roster and racial audit](../../docs/forever_races.md)
 record availability and remaining interaction questions.
 Profiles use the [crafted/dungeon catalog](../../docs/forever_gear_data.md),
 paid shared-hit normalization, and the role's complete
@@ -9,10 +9,15 @@ paid shared-hit normalization, and the role's complete
 The reference target is a level-63 Dragonkin with 3,731 starting armor.
 They are tested builds, not a claim of globally optimal talents, rotations or gear.
 The separate Pet/Melee, Arcane–Frost and 2H Bloodthirst rows began with their
-Survival, Frost and Arms equipment respectively. Physical Ret began from legal
-physical Warrior equipment and a Paladin relic; all 27 builds then underwent
-the same new coordinate search. Its gear excludes caster-only items and
-spell-power-focused enchants.
+Survival, Frost and Arms equipment respectively. Fury (Sunder) inherits the
+exact same race-specific gear and talents as Fury, but builds five Sunder
+stacks itself and reserves rage to refresh before expiry. External Sunder
+and Expose Armor are disabled **only** in this row; the initial armor ramp
+and spent globals are included. Physical Ret retains its previously selected
+Strength/AP equipment and Paladin relic, with Champion of the Light converting
+its existing Intellect into spell power. Its gear excludes caster-only items
+and spell-power-focused enchants. No new gear search was performed for either
+newly changed row.
 [Build comparisons and limitations](../../docs/build_updates.md).
 
 Replay the current exact native profiles, including race-specific equipment:
@@ -22,7 +27,7 @@ python3 tools/forever_bench/run_matrix.py --binary /path/to/forever-bench \
   --profiles artifacts/forever_input_profiles.json --output /tmp/forever-matrix --workers 24
 ```
 
-`forever_input_profiles.json` freezes the 174 unnormalized starting players
+`forever_input_profiles.json` freezes the 184 unnormalized starting players
 independently of the results. It also provides the native benchmark defaults.
 Each output retains its complete request and baseline player.
 
@@ -227,6 +232,13 @@ swing resets, with explicit Slam and weapon-shot exceptions. It uses client
 shot cast times without added wind-up. Energy regeneration uses smooth integration and assumes general haste
 scaling; attack-speed-only effects are excluded. That assumption remains an
 open in-game check.
+
+The Forever periodic-damage model evaluates offensive power and damage
+modifiers at each tick rather than preserving an application-time snapshot.
+Applied combo points stay fixed on Rip/Rupture; Ignite remains a damage pool
+from the hit that created it. Classic keeps its original snapshot behavior.
+The [evidence and remaining exceptions](../../docs/check_dispositions.md#poison-periodic-damage-and-mana-review-23-september)
+separate client values, direct observations and provisional server behavior.
 
 `artifacts/forever_mechanics_baseline_5min.json` is a historical frozen-input
 reference: 147 combinations at 5,000 iterations. Its gear, rotations and engine

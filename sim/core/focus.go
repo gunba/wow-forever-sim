@@ -9,8 +9,10 @@ import (
 
 // Time between focus ticks.
 const MaxFocus = 100.0
-const tickDuration = time.Millisecond * 5250 
+const tickDuration = time.Millisecond * 5250
 const BaseFocusPerTick = 26.25
+const foreverFocusPerSecond = 10.0
+const foreverFocusCheckPeriod = time.Millisecond * 500
 
 // OnFocusGain is called any time focus is increased.
 type OnFocusGain func(sim *Simulation)
@@ -18,10 +20,13 @@ type OnFocusGain func(sim *Simulation)
 type focusBar struct {
 	unit *Unit
 
-	focusPerTick float64
+	focusPerTick         float64
 	focusRegenMultiplier float64
 
 	currentFocus float64
+	maxFocus     float64
+	lastUpdate   time.Duration
+	sim          *Simulation
 
 	onFocusGain OnFocusGain
 
@@ -33,12 +38,13 @@ type focusBar struct {
 
 func (unit *Unit) EnableFocusBar(regenMultiplier float64, onFocusGain OnFocusGain) {
 	unit.focusBar = focusBar{
-		unit:          unit,
-		focusPerTick:  BaseFocusPerTick,
+		unit:                 unit,
+		focusPerTick:         BaseFocusPerTick,
 		focusRegenMultiplier: regenMultiplier,
-		onFocusGain:   onFocusGain,
-		regenMetrics:  unit.NewEnergyMetrics(ActionID{OtherID: proto.OtherAction_OtherActionFocusRegen}),
-		refundMetrics: unit.NewEnergyMetrics(ActionID{OtherID: proto.OtherAction_OtherActionRefund}),
+		maxFocus:             MaxFocus,
+		onFocusGain:          onFocusGain,
+		regenMetrics:         unit.NewEnergyMetrics(ActionID{OtherID: proto.OtherAction_OtherActionFocusRegen}),
+		refundMetrics:        unit.NewEnergyMetrics(ActionID{OtherID: proto.OtherAction_OtherActionRefund}),
 	}
 }
 
@@ -47,19 +53,55 @@ func (unit *Unit) HasFocusBar() bool {
 }
 
 func (fb *focusBar) CurrentFocus() float64 {
+	if fb.sim != nil {
+		fb.syncContinuousFocus(fb.sim)
+	}
 	return fb.currentFocus
 }
 
 func (fb *focusBar) CurrentFocusPerTick() float64 {
+	if fb.isForever() {
+		return foreverFocusPerSecond * foreverFocusCheckPeriod.Seconds() * fb.focusRegenMultiplier
+	}
 	return fb.focusPerTick * fb.focusRegenMultiplier
 }
 
 func (fb *focusBar) CurrentFocusPerSecond() float64 {
+	if fb.isForever() {
+		return foreverFocusPerSecond * fb.focusRegenMultiplier
+	}
 	return fb.CurrentFocusPerTick() / tickDuration.Seconds()
 }
 
-func (fb *focusBar) AddFocusRegenMultiplier (multiplier float64) {
+func (fb *focusBar) AddFocusRegenMultiplier(multiplier float64) {
+	if fb.sim != nil {
+		fb.syncContinuousFocus(fb.sim)
+	}
 	fb.focusRegenMultiplier += multiplier
+}
+
+func (fb *focusBar) isForever() bool {
+	return fb.unit != nil && fb.unit.Env != nil && fb.unit.Env.IsForever()
+}
+
+func (fb *focusBar) SetMaxFocus(amount float64) {
+	fb.maxFocus = amount
+}
+
+// Forever's Focus is a continuous resource, not a second periodic tick
+// system. Settle elapsed regeneration whenever a cast reads or spends it.
+// The half-second task only wakes a pet waiting for enough Focus to act;
+// it does not quantize the resource gain.
+func (fb *focusBar) syncContinuousFocus(sim *Simulation) bool {
+	if !fb.isForever() || sim.CurrentTime <= fb.lastUpdate {
+		return false
+	}
+	gain := (sim.CurrentTime - fb.lastUpdate).Seconds() * fb.CurrentFocusPerSecond()
+	actual := min(fb.maxFocus-fb.currentFocus, gain)
+	fb.currentFocus += actual
+	fb.regenMetrics.AddEvent(gain, actual)
+	fb.lastUpdate = sim.CurrentTime
+	return actual > 0
 }
 
 func (fb *focusBar) AddFocus(sim *Simulation, amount float64, metrics *ResourceMetrics) {
@@ -67,7 +109,8 @@ func (fb *focusBar) AddFocus(sim *Simulation, amount float64, metrics *ResourceM
 		panic("Trying to add negative focus!")
 	}
 
-	newFocus := min(fb.currentFocus+amount, MaxFocus)
+	fb.syncContinuousFocus(sim)
+	newFocus := min(fb.currentFocus+amount, fb.maxFocus)
 	metrics.AddEvent(amount, newFocus-fb.currentFocus)
 
 	if sim.Log != nil {
@@ -86,6 +129,7 @@ func (fb *focusBar) SpendFocus(sim *Simulation, amount float64, metrics *Resourc
 		panic("Trying to spend negative focus!")
 	}
 
+	fb.syncContinuousFocus(sim)
 	newFocus := fb.currentFocus - amount
 	metrics.AddEvent(-amount, -amount)
 
@@ -101,7 +145,9 @@ func (fb *focusBar) reset(sim *Simulation) {
 		return
 	}
 
-	fb.currentFocus = MaxFocus
+	fb.currentFocus = fb.maxFocus
+	fb.lastUpdate = sim.CurrentTime
+	fb.sim = sim
 
 	if fb.unit.Type != PetUnit {
 		fb.enable(sim)
@@ -109,18 +155,34 @@ func (fb *focusBar) reset(sim *Simulation) {
 }
 
 func (fb *focusBar) enable(sim *Simulation) {
+	fb.sim = sim
+	fb.lastUpdate = sim.CurrentTime
 	sim.AddTask(fb)
-	fb.nextFocusTick = sim.CurrentTime + tickDuration
+	if fb.isForever() {
+		fb.nextFocusTick = sim.CurrentTime + foreverFocusCheckPeriod
+	} else {
+		fb.nextFocusTick = sim.CurrentTime + tickDuration
+	}
 	sim.RescheduleTask(fb.nextFocusTick)
 }
 
 func (fb *focusBar) disable(sim *Simulation) {
+	fb.syncContinuousFocus(sim)
+	fb.sim = nil
 	fb.nextFocusTick = NeverExpires
 	sim.RemoveTask(fb)
 }
 
 func (fb *focusBar) RunTask(sim *Simulation) time.Duration {
 	if sim.CurrentTime < fb.nextFocusTick {
+		return fb.nextFocusTick
+	}
+	if fb.isForever() {
+		gained := fb.syncContinuousFocus(sim)
+		if gained && fb.onFocusGain != nil {
+			fb.onFocusGain(sim)
+		}
+		fb.nextFocusTick = sim.CurrentTime + foreverFocusCheckPeriod
 		return fb.nextFocusTick
 	}
 	focus := fb.focusPerTick * fb.focusRegenMultiplier

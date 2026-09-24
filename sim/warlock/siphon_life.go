@@ -20,7 +20,6 @@ func (warlock *Warlock) getSiphonLifeBaseConfig(rank int) core.SpellConfig {
 	actionID := core.ActionID{SpellID: spellId}
 	healthMetrics := warlock.NewHealthMetrics(actionID)
 
-
 	return core.SpellConfig{
 		SpellCode:     SpellCode_WarlockSiphonLife,
 		ActionID:      actionID,
@@ -58,7 +57,7 @@ func (warlock *Warlock) getSiphonLifeBaseConfig(rank int) core.SpellConfig {
 			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
 				dot.Snapshot(target, baseDamage, isRollover)
 
-				if !isRollover {
+				if !isRollover && !sim.IsForever() {
 					// Siphon Life heals so it snapshots target modifiers
 					dot.SnapshotAttackerMultiplier *= dot.Spell.TargetDamageMultiplier(dot.Spell.Unit.AttackTables[target.UnitIndex][dot.Spell.CastType], true)
 				}
@@ -66,12 +65,16 @@ func (warlock *Warlock) getSiphonLifeBaseConfig(rank int) core.SpellConfig {
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
 				// TODO: interaction with bonus damage taken?
 				// Remove target modifiers for the tick only
-				dot.Spell.Flags |= core.SpellFlagIgnoreTargetModifiers
+				if !sim.IsForever() {
+					dot.Spell.Flags |= core.SpellFlagIgnoreTargetModifiers
+				}
 
 				result := dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
 
 				// revert flag changes
-				dot.Spell.Flags ^= core.SpellFlagIgnoreTargetModifiers
+				if !sim.IsForever() {
+					dot.Spell.Flags ^= core.SpellFlagIgnoreTargetModifiers
+				}
 
 				health := result.Damage
 				warlock.GainHealth(sim, health, healthMetrics)

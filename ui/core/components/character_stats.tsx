@@ -322,7 +322,9 @@ export class CharacterStats extends Component {
 					</div>,
 				);
 			} else if (stat.isPseudoStat() && stat.getPseudoStat() === PseudoStat.PseudoStatMeleeSpeedMultiplier && (mainHandWeapon || offHandItem)) {
-				const speedStat = finalStats.getPseudoStat(PseudoStat.PseudoStatMeleeSpeedMultiplier);
+				const speedStat =
+					finalStats.getPseudoStat(PseudoStat.PseudoStatMeleeSpeedMultiplier) *
+					(1 + finalStats.getStat(Stat.StatMeleeHaste) / Mechanics.HASTE_RATING_PER_HASTE_PERCENT / 100);
 				const offHandWeapon =
 					offHandItem &&
 					offHandItem.item.weaponType !== WeaponType.WeaponTypeShield &&
@@ -472,8 +474,7 @@ export class CharacterStats extends Component {
 			} else if (stat === Stat.StatMeleeCrit || stat === Stat.StatSpellCrit) {
 				displayStr = `${(rawValue / Mechanics.SPELL_CRIT_RATING_PER_CRIT_CHANCE).toFixed(2)}%`;
 			} else if (stat === Stat.StatMeleeHaste) {
-				// Melee Haste doesn't actually exist in vanilla so use the melee speed pseudostat
-				displayStr = `${(deltaStats.getPseudoStat(PseudoStat.PseudoStatMeleeSpeedMultiplier) * 100).toFixed(2)}%`;
+				displayStr = `${(rawValue / Mechanics.HASTE_RATING_PER_HASTE_PERCENT).toFixed(2)}%`;
 			} else if (stat === Stat.StatSpellHaste) {
 				displayStr = `${(rawValue / Mechanics.HASTE_RATING_PER_HASTE_PERCENT).toFixed(2)}%`;
 			} else if (stat === Stat.StatArmorPenetration) {
@@ -496,15 +497,50 @@ export class CharacterStats extends Component {
 			const pseudoStat = unitStat.getPseudoStat();
 
 			switch (pseudoStat) {
-				case PseudoStat.PseudoStatMeleeSpeedMultiplier:
-					displayStr = `${(100 * deltaStats.getPseudoStat(PseudoStat.PseudoStatMeleeSpeedMultiplier)).toFixed(2)}%`;
+				case PseudoStat.PseudoStatMeleeSpeedMultiplier: {
+					const melee = PseudoStat.PseudoStatMeleeSpeedMultiplier;
+					const meleeSpeed = stats.getPseudoStat(melee);
+					const meleeHaste = stats.getStat(Stat.StatMeleeHaste) / Mechanics.HASTE_RATING_PER_HASTE_PERCENT / 100;
+					const effectiveMelee = meleeSpeed * (1 + meleeHaste);
+					if (stats === deltaStats) {
+						displayStr = `${(100 * effectiveMelee).toFixed(2)}%`;
+					} else {
+						const previousSpeed = meleeSpeed - deltaStats.getPseudoStat(melee);
+						const previousHaste = meleeHaste - deltaStats.getStat(Stat.StatMeleeHaste) / Mechanics.HASTE_RATING_PER_HASTE_PERCENT / 100;
+						displayStr = `${(100 * (effectiveMelee - previousSpeed * (1 + previousHaste))).toFixed(2)}%`;
+					}
 					break;
-				case PseudoStat.PseudoStatRangedSpeedMultiplier:
-					displayStr = `${(100 * deltaStats.getPseudoStat(PseudoStat.PseudoStatRangedSpeedMultiplier)).toFixed(2)}%`;
+				}
+				case PseudoStat.PseudoStatRangedSpeedMultiplier: {
+					// Equipment haste is a stat in the engine's ranged swing
+					// calculation, not an extra pseudo speed multiplier.
+					const ranged = PseudoStat.PseudoStatRangedSpeedMultiplier;
+					const speed = stats.getPseudoStat(ranged);
+					const haste = stats.getStat(Stat.StatMeleeHaste) / Mechanics.HASTE_RATING_PER_HASTE_PERCENT / 100;
+					const effective = speed * (1 + haste);
+					if (stats === deltaStats) {
+						displayStr = `${(100 * effective).toFixed(2)}%`;
+					} else {
+						const previousSpeed = speed - deltaStats.getPseudoStat(ranged);
+						const previousHaste = haste - deltaStats.getStat(Stat.StatMeleeHaste) / Mechanics.HASTE_RATING_PER_HASTE_PERCENT / 100;
+						displayStr = `${(100 * (effective - previousSpeed * (1 + previousHaste))).toFixed(2)}%`;
+					}
 					break;
-				case PseudoStat.PseudoStatCastSpeedMultiplier:
-					displayStr = `${(100 * deltaStats.getPseudoStat(PseudoStat.PseudoStatCastSpeedMultiplier)).toFixed(2)}%`;
+				}
+				case PseudoStat.PseudoStatCastSpeedMultiplier: {
+					const casting = PseudoStat.PseudoStatCastSpeedMultiplier;
+					const speed = stats.getPseudoStat(casting);
+					const haste = stats.getStat(Stat.StatSpellHaste) / Mechanics.HASTE_RATING_PER_HASTE_PERCENT / 100;
+					const effective = speed * (1 + haste);
+					if (stats === deltaStats) {
+						displayStr = `${(100 * effective).toFixed(2)}%`;
+					} else {
+						const previousSpeed = speed - deltaStats.getPseudoStat(casting);
+						const previousHaste = haste - deltaStats.getStat(Stat.StatSpellHaste) / Mechanics.HASTE_RATING_PER_HASTE_PERCENT / 100;
+						displayStr = `${(100 * (effective - previousSpeed * (1 + previousHaste))).toFixed(2)}%`;
+					}
 					break;
+				}
 			}
 		}
 

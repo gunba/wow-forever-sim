@@ -48,6 +48,7 @@ func builds() []build {
 		{"ds_ruin", "DS/Ruin", "warlock", "TalentsDSRuinPandemic", "forever_ds_ruin", "forever_ds_ruin", proto.Class_ClassWarlock, [3]int{0, 11, 15}, "demonicSacrifice"},
 		{"destruction", "Destruction", "warlock", "TalentsShadowAndFlame", "forever_shadow_and_flame", "forever_destruction", proto.Class_ClassWarlock, [3]int{0, 0, 31}, "incinerate"},
 		{"fury", "Fury", "warrior", "TalentsP1DPS", "forever_fury", "forever_fury", proto.Class_ClassWarrior, [3]int{0, 31, 0}, "bloodthirst"},
+		{"fury_sunder", "Fury (Sunder)", "warrior", "TalentsP1DPS", "forever_fury_sunder", "forever_fury", proto.Class_ClassWarrior, [3]int{0, 31, 0}, "bloodthirst"},
 		{"arms", "Arms", "warrior", "TalentsArms", "forever_arms", "forever_arms", proto.Class_ClassWarrior, [3]int{31, 0, 0}, "mortalStrike"},
 		{"fury_2h", "2H Bloodthirst", "warrior", "TalentsFuryTwoHand", "forever_fury_2h", "forever_arms", proto.Class_ClassWarrior, [3]int{11, 31, 0}, "bloodthirst"},
 	}
@@ -63,6 +64,8 @@ func (b build) modelKey() string {
 		return "frost"
 	case "fury_2h":
 		return "arms"
+	case "fury_sunder":
+		return "fury"
 	case "retribution_physical":
 		return "retribution"
 	default:
@@ -196,7 +199,6 @@ func (b build) consumes() *proto.Consumes {
 	case "beast_mastery", "marksmanship", "survival":
 		c.Food = proto.Food_FoodSmokedDesertDumpling
 		c.MainHandImbue, c.OffHandImbue = proto.WeaponImbue_Windfury, proto.WeaponImbue_ElementalSharpeningStone
-		c.PetAttackPowerConsumable, c.PetAgilityConsumable, c.PetStrengthConsumable = 1, 1, 1
 	case "feral":
 		c.Flask = proto.Flask_FlaskOfDistilledWisdom
 		c.SpellPowerBuff, c.ManaRegenElixir = 0, 0

@@ -1,6 +1,11 @@
 # Gear comparisons
 
-The 27 current builds were screened across all 174 available race/build combinations. The slot-coordinate search ran **87,044 trials**, including screening and slot validation. Every profile converged. Of the 174 loadouts, **19 changed** and survived an independent 5,000-iteration comparison; 155 kept their previous equipment and enchants.
+In the preceding gear-selection pass, 27 builds were screened across all 174
+then-available race/build combinations. The slot-coordinate search ran **87,044 trials**,
+including screening and slot validation. Every profile converged. Of the 174
+loadouts, **19 changed** and survived an independent 5,000-iteration comparison;
+155 kept their previous equipment and enchants. The later Fury (Sunder) row
+inherits each Fury race's selected gear and was not part of that search.
 
 Talents, rotations, pet choices and each existing build's consumables and external buffs were fixed throughout. The separate Physical Ret row begins with the corresponding race's proven physical Warrior gear, a legal Paladin relic and its own non-caster consumables. The encounter remains a 300-second level-63 Dragonkin with 3,731 starting armor, ordinary MP5, paid shared-hit accounting and complete role-specific Tier 1.
 

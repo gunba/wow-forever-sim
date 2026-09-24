@@ -17,6 +17,7 @@ SIM_PATHS = {
     "elemental": "elemental_shaman", "stormcaller": "elemental_shaman",
     "enhancement": "enhancement_shaman", "retribution": "retribution_paladin",
     "retribution_physical": "retribution_paladin",
+    "fury_sunder": "warrior",
     "shadow": "shadow_priest", "smite": "smite_priest",
 }
 

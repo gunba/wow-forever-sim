@@ -61,12 +61,14 @@ func init() {
 	// 7217 has only melee speed. Neither is general haste or Energy haste.
 	registerAttackSpeedEnchant(2543, 22841, "Arcanum of Rapidity", 1, true)
 	registerAttackSpeedEnchant(34, 7217, "Iron Counterweight", 3, false)
-	// Minor Haste (13928) also has casting-speed aura 65. Its melee haste
-	// remains in the enchant's stats and participates in the Energy model.
+	// Minor Haste (13928) also has casting-speed aura 65. A casting-speed
+	// aura is not the SpellHaste stat: Berserking has the same aura type but
+	// does not shorten Arcane Missiles. Its melee haste remains in the
+	// enchant's stats and participates in the provisional Energy model.
 	core.NewEnchantEffect(931, func(agent core.Agent) {
 		character := agent.GetCharacter()
 		if character.Env.IsForever() {
-			character.AddStat(stats.SpellHaste, 1)
+			character.PseudoStats.CastSpeedMultiplier *= 1.01
 		}
 	})
 }

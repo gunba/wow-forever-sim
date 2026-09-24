@@ -73,6 +73,7 @@ func (warlock *Warlock) getBaneOfAgonyBaseConfig(rank int) core.SpellConfig {
 				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
 				if dot.TickCount%4 == 0 { // BoA ramp up
 					dot.SnapshotBaseDamage += snapshotBaseDmgNoBonus
+					dot.SnapshotRawBaseDamage += snapshotBaseDmgNoBonus
 				}
 			},
 		},

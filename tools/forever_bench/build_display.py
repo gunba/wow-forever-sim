@@ -30,6 +30,7 @@ BUILDS = [
     ("destruction", "Warlock", "Destruction", "spell_shadow_rainoffire"),
     ("arms", "Warrior", "Arms", "ability_warrior_savageblow"),
     ("fury", "Warrior", "Fury", "ability_warrior_innerrage"),
+    ("fury_sunder", "Warrior", "Fury (Sunder)", "ability_warrior_sunder"),
     ("fury_2h", "Warrior", "2H Bloodthirst", "ability_warrior_innerrage"),
 ]
 
@@ -39,14 +40,15 @@ BUILD_CAVEATS = {
     "shadow": ["Death's script value 150 and backlash interactions remain unverified; no extra execute multiplier is inferred. Self-damage is recorded without healer survival constraints."],
     "arcane_frost": ["Uses an assumed Ice Lance coefficient and unresolved Fingers of Frost, Missile Barrage and Clearcasting timing."],
     "fury": ["Level-60 rage, queued off-hand hit and Flurry charge timing still need in-game confirmation."],
+    "fury_sunder": ["This Warrior personally builds and refreshes five Sunder stacks. External Sunder and Expose Armor are disabled only for this row; its initial armor ramp and lost globals are included. The provisional Warrior rage model still applies."],
     "fury_2h": ["Level-60 rage and Flurry charge timing remain unverified; this row uses the provisional Warrior model."],
     "retribution": ["Separate seal Echoes can coexist and fire on a landed white swing; verify their simultaneous behavior in game (T53). Lower-rank seals and Consecration also need confirmation."],
-    "retribution_physical": ["Separate seal Echoes still require the T53 in-game check. This is a Strength/AP-oriented Ret comparison, not a proven best build."],
+    "retribution_physical": ["Strength/AP equipment is unchanged. Champion of the Light converts existing Intellect into spell power without equipping caster gear; the separate seal Echoes still require the T53 in-game check."],
     "smite": ["The rank-2 Smite fallback depends on the modeled low-rank spell-power coefficient."],
     "stormcaller": ["The rank-2 Lightning Bolt filler depends on the modeled low-rank spell-power coefficient."],
 }
 
-HYBRID_PARENTS = {"pet_melee": "survival", "arcane_frost": "frost", "fury_2h": "arms"}
+HYBRID_PARENTS = {"pet_melee": "survival", "arcane_frost": "frost", "fury_2h": "arms", "fury_sunder": "fury"}
 
 
 def expected_roster():

@@ -517,9 +517,16 @@ func applyWorldBuffs(character *Character, individualBuffs *proto.IndividualBuff
 }
 
 func applyPetBuffEffects(petAgent PetAgent, playerFaction proto.Faction, raidBuffs *proto.RaidBuffs, partyBuffs *proto.PartyBuffs, individualBuffs *proto.IndividualBuffs) {
+	pet := petAgent.GetPet()
+	if pet.Owner.Env != nil && pet.Owner.Env.IsForever() &&
+		(pet.Owner.Class == proto.Class_ClassHunter || pet.Owner.Class == proto.Class_ClassWarlock) {
+		// Forever companions inherit the owner's eligible stats, rather than
+		// receiving an additional copy of externally cast raid/party buffs.
+		return
+	}
 	// Summoned pets, like Mage Water Elemental, aren't around to receive raid buffs.
 	// Also assume that applicable world buffs are applied to the starting pet only
-	if petAgent.GetPet().IsGuardian() || !petAgent.GetPet().enabledOnStart {
+	if pet.IsGuardian() || !pet.enabledOnStart {
 		return
 	}
 

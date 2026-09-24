@@ -386,8 +386,17 @@ func (unit *Unit) ApplyCastSpeedForSpell(dur time.Duration, spell *Spell) time.D
 	return time.Duration(float64(dur) * unit.CastSpeed * math.Max(spell.CastTimeMultiplier, 0))
 }
 
+// Channel haste is not identical to casting speed. In particular, the
+// casting-speed aura on Forever Berserking shortens hardcasts but does not
+// shorten Arcane Missiles. Keep the separately recorded SpellHaste stat as
+// the channel input; channel-specific effects still set their own tick length.
+func (unit *Unit) ApplyChannelHasteForSpell(dur time.Duration, spell *Spell) time.Duration {
+	haste := 1 + unit.stats[stats.SpellHaste]/(HasteRatingPerHastePercent*100)
+	return time.Duration(float64(dur) * math.Max(spell.CastTimeMultiplier, 0) / haste)
+}
+
 func (unit *Unit) SwingSpeed() float64 {
-	return unit.PseudoStats.MeleeSpeedMultiplier
+	return unit.PseudoStats.MeleeSpeedMultiplier * (1 + unit.stats[stats.MeleeHaste]/(HasteRatingPerHastePercent*100))
 }
 
 func (unit *Unit) Armor() float64 {

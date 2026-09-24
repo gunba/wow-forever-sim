@@ -16,10 +16,14 @@ type ReplaceMHSwing func(sim *Simulation, mhSwingSpell *Spell) *Spell
 // Represents a generic weapon. Pets / unarmed / various other cases don't use
 // actual weapon items so this is an abstraction of a Weapon.
 type Weapon struct {
-	BaseDamageMin        float64
-	BaseDamageMax        float64
-	AttackPowerPerDPS    float64
-	SwingSpeed           float64
+	BaseDamageMin     float64
+	BaseDamageMax     float64
+	AttackPowerPerDPS float64
+	SwingSpeed        float64
+	// Overrides the AP contribution per auto hit without changing the actual
+	// swing interval. Used for Forever pets whose hits remain the same size
+	// at different pet attack speeds.
+	APScalingSpeed       float64
 	NormalizedSwingSpeed float64
 	SpellSchool          SpellSchool
 }
@@ -115,11 +119,19 @@ func (weapon *Weapon) AverageDamage() float64 {
 }
 
 func (weapon *Weapon) CalculateWeaponDamage(sim *Simulation, attackPower float64) float64 {
-	return weapon.BaseDamage(sim) + (weapon.SwingSpeed*attackPower)/weapon.AttackPowerPerDPS
+	speed := weapon.SwingSpeed
+	if weapon.APScalingSpeed > 0 {
+		speed = weapon.APScalingSpeed
+	}
+	return weapon.BaseDamage(sim) + (speed*attackPower)/weapon.AttackPowerPerDPS
 }
 
 func (weapon *Weapon) CalculateAverageWeaponDamage(attackPower float64) float64 {
-	return weapon.AverageDamage() + (weapon.SwingSpeed*attackPower)/weapon.AttackPowerPerDPS
+	speed := weapon.SwingSpeed
+	if weapon.APScalingSpeed > 0 {
+		speed = weapon.APScalingSpeed
+	}
+	return weapon.AverageDamage() + (speed*attackPower)/weapon.AttackPowerPerDPS
 }
 
 func (weapon *Weapon) CalculateNormalizedWeaponDamage(sim *Simulation, attackPower float64) float64 {

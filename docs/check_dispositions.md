@@ -1,5 +1,58 @@
 # DPS check review
 
+## Poison, periodic damage and mana review, 23 September
+
+The pinned Forever client **1.60.1.69913** exposes the level-60
+[Instant Poison VI](https://www.wowhead.com/forever/spell=11340/instant-poison-vi)
+trigger **11337** with mean 88 and variance giving 76–100 damage; the
+[Deadly Poison V](https://www.wowhead.com/forever/spell=25347/deadly-poison-v)
+trigger **25349** has 23 damage per three-second tick per stack, or 92 over
+12 seconds. Both triggered effects have zero recorded bonus-SP and AP
+coefficients in `SpellEffect`. These values already matched `sim/rogue/poisons.go`;
+no additional poison scaling was inferred from a different expansion.
+The fifth Deadly Poison recipe is present in the client, but its **learning
+source in Forever** remains unresolved: the Classic handbook came from the
+unavailable Ruins of Ahn'Qiraj. Client presence is not proof a player can
+learn it. Poison charges are not consumed in this five-minute benchmark;
+that shortcut still needs checking for unusually high proc-rate builds.
+
+Forever's ordinary periodic damage now reads current offensive power and
+modifiers each tick; Classic still snapshots. Applied combo-point count stays
+fixed while Rip and Rupture re-read current AP. Deep Wounds reads current
+main-hand weapon/AP each tick in Forever, matching the
+[independent WoWSims implementation](https://github.com/wowsims/forever/commit/36cfc58328e3)
+under the reported no-snapshot rule. Its main-hand choice and exact
+server-side behavior remain testable assumptions. Ignite retains the pool
+created by its triggering hit; this is not a fresh direct-damage calculation
+on every tick. Periodic crit was already dynamic.
+
+The local 23 September Mage capture contains two Berserking windows:
+the first three Arcane Missile events in each still occur approximately one
+second apart. The unbuffed channel likewise has approximately one-second
+spacing. This supports the existing distinction between **casting speed**
+and channel haste; event gaps across separate channels or target changes
+cannot establish a channel coefficient. In one gap between channels, mana
+rose by about **70 over 12.79 seconds** after accounting for the next
+85-mana channel cost. The log does not identify a flat-MP5 effect or a
+Spirit-only control, so it cannot establish MP5-per-second, passive tick
+timing or a level-60 mana rate. Private combat-log identifiers remain local.
+
+[Judgement of Wisdom rank 3](https://www.wowhead.com/forever/spell=20355/judgement-of-wisdom)
+still specifies **59 mana** per proc in the client. Its **50%** eligible-event
+chance is inherited from Classic and also used by the independent WoWSims
+Forever implementation; the client aura's proc trigger does **not** specify
+the server script's effective chance. At that assumption, the expected
+return is **29.5 mana per eligible attack or spell event**, not per second.
+The previously published Arcane Orc result averages roughly **22.9 mana/sec**
+from Wisdom, and physical Ret about **37 mana/sec**, with the debuff forced
+on the single boss throughout the encounter. No duplicated mana source was
+found in `sim/core/debuffs.go`: periodic effects and proc-generated damage
+are excluded, and a missed spell is excluded. The return can still be large
+because frequent separate landed actions can each roll. Actual Forever proc
+chance/eligibility still needs a direct combat-log check; the amount itself
+is sourced. These figures describe the prior release and must not be reused
+as the new benchmark results.
+
 Reviewed 22 September 2026 against release
 [`8ce872cfddae0560675b918a0850cc5b5434c497`](https://github.com/gunba/wow-forever-sim/commit/8ce872cfddae0560675b918a0850cc5b5434c497).
 The [active checklist](in_game_checks.md) separates immediate priorities from
@@ -128,9 +181,8 @@ changes the evidence status of several checks:
 
 - **T01/T06:** higher-level melee glancing damage and displayed tables are
   flagged as incorrect; the post supplies no replacement formula.
-- **T29:** pet hit inherits from the owner. The coefficient is not stated.
-  The empty inheritance functions in `sim/hunter/pet.go` and
-  `sim/warlock/pet.go` therefore represent an actual coverage gap.
+- **T29:** pet hit inherits from the owner. The coefficient is not stated;
+  the shared owner-stat implementation below provisionally assumes 100%.
 - **T30:** periodic crits activating Vengeance are a bug. The current engine
   already listens to direct-hit crits, not periodic damage, in
   `Paladin.applyVengeance`.
@@ -140,6 +192,69 @@ changes the evidence status of several checks:
 These are official statements of intent/known defects, not measurements of a
 corrected level-60 build. Do not calibrate the simulator to a known broken beta
 display.
+
+### Pet formula source audit
+
+The [Pet Attack Formulas](https://github.com/classic-hunter/forever-hunter/wiki/Pet-Attack-Formulas)
+and [Pet Stat Mechanics](https://github.com/classic-hunter/forever-hunter/wiki/Pet-Stat-Mechanics)
+pages explicitly describe **original Classic**, not Forever. Both were
+created September 16, before beta. Their "no owner inheritance" statement
+contradicts both Blizzard's T29 notice and that wiki's later
+[Forever Beta Changes](https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes)
+page. The Classic page's 5.2-second Focus ticks also contradict its later
+Forever report of continuous regeneration. Do not import the Classic
+formula's Orc Command or AQ-set multiplier: the former was replaced in
+Forever and the latter is unavailable in our benchmark.
+
+The current beta-client export has hidden **Hunter Pet Scaling 415429** and
+**Warlock Pet Scaling 416189**, with separate owner-linked health, power,
+physical/spell hit and crit, speed and resistance aura slots. Their zero
+effect base points and Wowhead's displayed "1" placeholders do **not**
+provide the owner-to-pet coefficients. The Warlock aura also carries
+Intellect, Mana regeneration and damage/healing-related slots; it is not safe to reuse
+a Hunter coefficient **as an established client fact**. In the absence of
+contrary measured values, the current model deliberately uses the Hunter
+coefficients as shared beta assumptions for both classes. The Warlock's
+owner spell power is provisionally mapped into pet spell power and pet
+attack power at the same 10% offensive-power rate; its additional
+Intellect and Mana-regeneration aura coefficients remain unresolved.
+The client `PowerType` row for Focus in build 69977 supplies a concrete
+**10 Focus/second in combat**, and Hunter scaling 415429 adds 50 maximum
+Focus to the base 100. `sim/core/focus.go` now accrues this rate continuously
+for Forever and preserves Classic's old 26.25/5.25-second ticks.
+Bestial Discipline scales the corrected rate.
+
+The later wiki reports Hunter inheritance of 10% of the higher attack
+power source, owner Crit, 30% Armor and two pet Health per owner Stamina.
+These are beta-community observations, not coefficients in the exported
+scaling aura; an independent [beta guide](https://www.warcrafttavern.com/forever/guides/hunter/)
+repeats the AP/Crit and continuous-Focus claims. The wiki's owner-Hit
+statement is **still Classic-specific**; official beta notes establish
+owner-linked hit for both classes but no coefficient. The new shared
+`core.ForeverPetInheritance` uses the beta wiki's reported rates for
+both classes, including a provisionally full owner-hit transfer. The wiki
+also reports that pet damage is not normalized by swing speed. A separate
+beta Discord report says pets do the same damage per hit at different
+attack speeds. The Forever Hunter pet weapon now preserves both the base
+roll and the AP-added part of a hit at the selected pet's attack speed;
+its actual swing interval still varies. The fixed two-second reference AP
+conversion for unequal owner AP totals remains a modeling assumption,
+not an isolated beta AP measurement.
+
+The later wiki and a [direct beta report](https://eu.forums.blizzard.com/en/wow/t/pets-cant-be-buffed/629896)
+say that external blessings, scrolls and similar buffs cannot be placed on
+Hunter pets. Forever Hunter and Warlock pets now share the no-direct-buff
+rule in `sim/core/buffs.go:applyPetBuffEffects`, and the pet AP/Agility/
+Strength consumables no longer apply or appear in the Forever Hunter
+defaults. An owner buff can still reach the pet once via stat inheritance.
+The source-supported Classic mechanics that remain useful are the
+14 AP-per-DPS white-attack term, pet-family physical multiplier, happiness
+multiplier, pet Agility conversion and family-specific attack speeds. Our
+Hunter code already models those. The beta client gives Lightning Breath
+rank 6 (25012) **zero** bonus-power coefficient, now honored by the
+Forever ability.
+The companion correction has not yet been included in a published
+benchmark; historical rankings still use the prior pet model.
 
 ### Rage evidence
 

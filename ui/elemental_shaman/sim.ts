@@ -4,7 +4,7 @@ import * as OtherInputs from '../core/components/other_inputs';
 import { ClassicPhase } from '../core/constants/other';
 import { IndividualSimUI, registerSpecConfig } from '../core/individual_sim_ui';
 import { Player } from '../core/player';
-import { Class, Faction, ItemSlot, PartyBuffs, Race, Spec, Stat } from '../core/proto/common';
+import { Class, Faction, ItemSlot, PartyBuffs, PseudoStat, Race, Spec, Stat } from '../core/proto/common';
 import { Stats } from '../core/proto_utils/stats';
 import { getSpecIcon, specNames } from '../core/proto_utils/utils';
 import * as Presets from './presets';
@@ -52,7 +52,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecElementalShaman, {
 		Stat.StatSpellHaste,
 		Stat.StatMP5,
 	],
-	displayPseudoStats: [],
+	displayPseudoStats: [PseudoStat.PseudoStatCastSpeedMultiplier],
 
 	defaults: {
 		race: Race.RaceOrc,

@@ -192,7 +192,9 @@ func (hp *HunterPet) newLightningBreath() *core.Spell {
 
 		DamageMultiplier: 1,
 		ThreatMultiplier: 1,
-		BonusCoefficient: 1,
+		// Forever rank 6 (25012) has no bonus-power coefficient in the
+		// client. Keep the older coefficient outside the Forever ruleset.
+		BonusCoefficient: core.TernaryFloat64(hp.Env.IsForever(), 0, 1),
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			baseDamage := sim.Roll(baseDamageMin, baseDamageMax)
@@ -368,7 +370,11 @@ func (hp *HunterPet) newScorpidPoison() *core.Spell {
 				dot.SnapshotBaseDamage += baseDamageTick
 			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
-				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
+				if sim.IsForever() {
+					dot.Spell.CalcAndDealPeriodicDamage(sim, target, dot.SnapshotBaseDamage, dot.OutcomeTick)
+				} else {
+					dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
+				}
 			},
 		},
 

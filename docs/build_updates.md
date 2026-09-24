@@ -3,8 +3,32 @@
 The comparison table below documents the fixed-gear research pass preceding
 the [current gear comparison](gear_updates.md). Its paired DPS figures used
 the earlier 26-build rules and gear; they are **historical evidence**, not
-the current 27-build chart's DPS. The retained recipes and focused
+the current 28-build chart's DPS. The retained recipes and focused
 corrections remain in the current ranking defaults.
+
+## Physical Ret and Sunder provider
+
+Physical Ret keeps its selected Strength/AP gear, enchants and rotation.
+Three Vindication points moved to **Champion of the Light 3/3**, converting
+the character's existing Intellect into spell power without caster equipment.
+In two matched 5,000-iteration seeds per race, the unchanged-geared old →
+new DPS was Undead **870.15 → 933.06**, Human **878.44 → 943.89** and Dwarf
+**875.04 → 940.28**. No arm went out of mana. The old talents were
+`250003003-232-052253310012330001` and the retained talents are
+`250003003-232-052250310012330301`; both use the same input profile gear.
+One alternative that dropped Holy Conduit instead screened lower, while
+removing Sanctified Judgement violated Vengeance's prerequisite.
+
+**Fury (Sunder)** is a separate raid-utility row, not a replacement for
+unburdened Fury. It copies each Fury race's exact gear, talents and external
+buffs, but disables the external Sunder/Expose Armor effects and spends its
+own rage and globals to establish five Sunder stacks and refresh before
+expiry. The APL reserves rage when fewer than eight seconds remain on the
+debuff. Its initial armor ramp is included; it cannot be compared to Fury
+as if the debuff were supplied by somebody else. One hundred sampled
+300-second fights across ten races retained five stacks after establishing
+them, without premature debuff expiry. This is sampled validation, not a
+guarantee against every unlucky string of missed swings.
 
 ## 23 September focused changes
 

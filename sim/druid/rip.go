@@ -110,6 +110,9 @@ func (druid *Druid) newRipSpellConfig(ripRank RipRankInfo) core.SpellConfig {
 			TickLength:    time.Second * 2,
 
 			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
+				if !isRollover {
+					dot.AppliedComboPoints = druid.ComboPoints()
+				}
 				cp := float64(druid.ComboPoints())
 				cpScaling := core.TernaryFloat64(cp == 5, 4, cp)
 				baseDamage := ripRank.dmgTickBase + ripRank.dmgTickPerCombo*cp
@@ -118,7 +121,15 @@ func (druid *Druid) newRipSpellConfig(ripRank RipRankInfo) core.SpellConfig {
 				dot.Snapshot(target, tickDamage, isRollover)
 			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
-				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
+				if sim.IsForever() {
+					cp := float64(dot.AppliedComboPoints)
+					cpScaling := core.TernaryFloat64(cp == 5, 4, cp)
+					baseDamage := ripRank.dmgTickBase + ripRank.dmgTickPerCombo*cp +
+						0.01*cpScaling*dot.Spell.MeleeAttackPower(target)
+					dot.Spell.CalcAndDealPeriodicDamage(sim, target, baseDamage, dot.OutcomeTick)
+				} else {
+					dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
+				}
 			},
 		},
 

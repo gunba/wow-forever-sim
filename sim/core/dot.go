@@ -50,6 +50,13 @@ type Dot struct {
 	SnapshotBaseDamage         float64
 	SnapshotCritChance         float64
 	SnapshotAttackerMultiplier float64
+	// Forever recalculates ordinary periodic damage from the application-time
+	// base and the caster's current offensive stats at each tick. Effects whose
+	// ticks are a pool of damage already dealt (for example Ignite) do not use
+	// Snapshot(), and retain their explicitly computed pool.
+	SnapshotRawBaseDamage  float64
+	SnapshotUsesBaseDamage bool
+	AppliedComboPoints     int32
 
 	tickAction *PendingAction
 	tickPeriod time.Duration
@@ -186,9 +193,9 @@ func (dot *Dot) Cancel(sim *Simulation) {
 // Call this after manually changing NumberOfTicks or TickLength.
 func (dot *Dot) RecomputeAuraDuration() {
 	if dot.AffectedByCastSpeed && dot.Spell.Unit.Env != nil && dot.Spell.Unit.Env.IsForever() {
-		dot.tickPeriod = dot.Spell.Unit.ApplyCastSpeedForSpell(dot.TickLength, dot.Spell)
+		dot.tickPeriod = dot.Spell.Unit.ApplyChannelHasteForSpell(dot.TickLength, dot.Spell)
 		dot.Aura.Duration = dot.tickPeriod*time.Duration(dot.NumberOfTicks) +
-			dot.Spell.Unit.ApplyCastSpeedForSpell(dot.DurationRemainder, dot.Spell)
+			dot.Spell.Unit.ApplyChannelHasteForSpell(dot.DurationRemainder, dot.Spell)
 	} else {
 		dot.tickPeriod = dot.TickLength
 		dot.Aura.Duration = dot.tickPeriod*time.Duration(dot.NumberOfTicks) + dot.DurationRemainder

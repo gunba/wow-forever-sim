@@ -176,3 +176,22 @@ func TestDotSnapshotSpellMultiplier(t *testing.T) {
 	fa.Dot.Rollover(sim)
 	expectDotTickDamage(t, sim, fa.Dot, 300) // (100) * 1.5 * 2
 }
+
+func TestForeverDotUsesCurrentSpellPowerAndMultiplier(t *testing.T) {
+	sim := SetupFakeSim()
+	sim.Environment.Ruleset = proto.Ruleset_RulesetForever
+	fa := sim.Raid.Parties[0].Players[0].(*FakeAgent)
+	fa.Spell.Flags |= SpellFlagNoPeriodicCrit
+
+	fa.Dot.Apply(sim)
+	expectDotTickDamage(t, sim, fa.Dot, 150)
+
+	fa.GetCharacter().AddStatDynamic(sim, stats.SpellPower, 100)
+	expectDotTickDamage(t, sim, fa.Dot, 300)
+
+	fa.Spell.DamageMultiplier *= 2
+	expectDotTickDamage(t, sim, fa.Dot, 600)
+
+	fa.GetCharacter().AddStatDynamic(sim, stats.SpellPower, -100)
+	expectDotTickDamage(t, sim, fa.Dot, 300)
+}

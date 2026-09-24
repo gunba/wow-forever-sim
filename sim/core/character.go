@@ -271,24 +271,6 @@ func (character *Character) applyEquipment() {
 	character.equipStatsApplied = true
 
 	for _, item := range character.Equipment {
-		if item.Stats[stats.MeleeHaste] != 0 {
-			character.PseudoStats.MeleeSpeedMultiplier *= 1 + item.Stats[stats.MeleeHaste]/100
-			character.PseudoStats.RangedSpeedMultiplier *= 1 + item.Stats[stats.MeleeHaste]/100
-		}
-
-		if item.Enchant.Stats[stats.MeleeHaste] != 0 {
-			character.PseudoStats.MeleeSpeedMultiplier *= 1 + item.Enchant.Stats[stats.MeleeHaste]/100
-			character.PseudoStats.RangedSpeedMultiplier *= 1 + item.Enchant.Stats[stats.MeleeHaste]/100
-		}
-
-		if item.Stats[stats.SpellHaste] != 0 {
-			character.PseudoStats.CastSpeedMultiplier *= 1 + item.Stats[stats.SpellHaste]/100
-		}
-
-		if item.Enchant.Stats[stats.SpellHaste] != 0 {
-			character.PseudoStats.CastSpeedMultiplier *= 1 + item.Enchant.Stats[stats.SpellHaste]/100
-		}
-
 		character.PseudoStats.BonusPhysicalDamage += item.BonusPhysicalDamage
 	}
 

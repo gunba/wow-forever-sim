@@ -32,7 +32,13 @@ func applyConsumeEffects(agent Agent) {
 	registerExplosivesCD(agent, consumes)
 }
 
-func ApplyPetConsumeEffects(pet *Character, ownerConsumes *proto.Consumes) {
+func ApplyPetConsumeEffects(pet *Pet, ownerConsumes *proto.Consumes) {
+	if pet.Owner != nil && pet.Owner.Env != nil && pet.Owner.Env.IsForever() &&
+		(pet.Owner.Class == proto.Class_ClassHunter || pet.Owner.Class == proto.Class_ClassWarlock) {
+		// Juju/scrolls cannot be applied directly to these pets in Forever.
+		// The owner's own consumes still feed the inherited owner stats.
+		return
+	}
 	pet.AddStat(stats.AttackPower, []float64{0, 40}[ownerConsumes.PetAttackPowerConsumable])
 	pet.AddStat(stats.Agility, []float64{0, 17, 13, 9, 5}[ownerConsumes.PetAgilityConsumable])
 	pet.AddStat(stats.Strength, []float64{0, 30, 17, 13, 9, 5}[ownerConsumes.PetStrengthConsumable])

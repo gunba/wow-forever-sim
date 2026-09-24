@@ -117,7 +117,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 	playerIconInputs: [HunterInputs.PetTypeInput, HunterInputs.WeaponAmmo, HunterInputs.QuiverInput],
 	// Inputs to include in the 'Rotation' section on the settings tab.
 	rotationInputs: HunterInputs.HunterRotationConfig,
-	petConsumeInputs: [ConsumablesInputs.PetAttackPowerConsumable, ConsumablesInputs.PetAgilityConsumable, ConsumablesInputs.PetStrengthConsumable],
+	petConsumeInputs: [],
 	// Buff and Debuff inputs to include/exclude, overriding the EP-based defaults.
 	includeBuffDebuffInputs: [ConsumablesInputs.DragonBreathChili, BuffDebuffInputs.SpellScorchDebuff, BuffDebuffInputs.StaminaBuff],
 	excludeBuffDebuffInputs: [],

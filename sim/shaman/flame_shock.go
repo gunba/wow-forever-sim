@@ -54,8 +54,6 @@ func (shaman *Shaman) newFlameShockSpell(rank int, shockTimer *core.Timer) core.
 	// Call of Flame names Flame Shock alongside the fire totems under Forever.
 	spell.DamageMultiplier *= shaman.callOfFlameMultiplier()
 
-	spell.Cast.IgnoreHaste = true
-
 	spell.BonusCoefficient = baseSpellCoeff
 
 	spell.Dot = core.DotConfig{

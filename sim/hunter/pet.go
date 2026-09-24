@@ -107,8 +107,6 @@ func (hunter *Hunter) NewHunterPet() *HunterPet {
 	hp.AddStatDependency(stats.Agility, stats.MeleeCrit, core.CritPerAgiAtLevel[proto.Class_ClassWarrior]*core.CritRatingPerCritChance)
 	hp.AddStatDependency(stats.Intellect, stats.SpellCrit, core.CritPerIntAtLevel[proto.Class_ClassWarrior]*core.SpellCritRatingPerCritChance)
 
-	core.ApplyPetConsumeEffects(&hp.Character, hunter.Consumes)
-
 	hunter.AddPet(hp)
 
 	return hp
@@ -119,6 +117,16 @@ func (hp *HunterPet) GetPet() *core.Pet {
 }
 
 func (hp *HunterPet) Initialize() {
+	if hp.Env.IsForever() {
+		// Forever keeps the selected pet's swing speed, but does not reduce
+		// its base hit damage for a faster pet.
+		weapon := *hp.AutoAttacks.MH()
+		weapon.BaseDamageMin = 18.17 * 2
+		weapon.BaseDamageMax = 27.66 * 2
+		weapon.APScalingSpeed = 2
+		hp.AutoAttacks.SetMH(weapon)
+	}
+	core.ApplyPetConsumeEffects(&hp.Pet, hp.hunterOwner.Consumes)
 	hp.specialAbility = hp.NewPetAbility(hp.config.SpecialAbility, true)
 	hp.focusDump = hp.NewPetAbility(hp.config.FocusDump, false)
 
@@ -127,6 +135,11 @@ func (hp *HunterPet) Initialize() {
 			hp.OnGCDReady(sim)
 		}
 	})
+	if hp.Env.IsForever() {
+		// Hunter Pet Scaling 415429 adds 50 maximum Focus to the client
+		// PowerType base of 100.
+		hp.SetMaxFocus(150)
+	}
 }
 
 func (hp *HunterPet) Reset(_ *core.Simulation) {
@@ -189,8 +202,10 @@ func (hp *HunterPet) ExecuteCustomRotation(sim *core.Simulation) {
 
 func (hunter *Hunter) makeStatInheritance() core.PetStatInheritance {
 	return func(ownerStats stats.Stats) stats.Stats {
-		// No stat inheritance in classic
-		return stats.Stats{}
+		if !hunter.Env.IsForever() {
+			return stats.Stats{}
+		}
+		return core.ForeverPetInheritance(ownerStats, false)
 	}
 }
 

@@ -46,7 +46,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecSmitePriest, {
 		Stat.StatSpellCrit,
 		Stat.StatMP5,
 	],
-	displayPseudoStats: [],
+	displayPseudoStats: [PseudoStat.PseudoStatCastSpeedMultiplier],
 
 	modifyDisplayStats: (player: Player<Spec.SpecSmitePriest>) => {
 		let stats = new Stats();

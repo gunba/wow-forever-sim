@@ -23,7 +23,7 @@ func TestBothFactionRoster(t *testing.T) {
 			if err := validateGear(p); err != nil {
 				t.Errorf("%s/%s: %v", b.Key, raceName(race), err)
 			}
-			req := request(p, 1, 1)
+			req := requestForBuild(b, p, 1, 1)
 			_, result, _ := core.NewEnvironment(req.Raid, req.Encounter, proto.Ruleset_RulesetForever, false)
 			rotation := result.Parties[0].Players[0].RotationStats
 			for _, action := range append(rotation.GetPrepullActions(), rotation.GetPriorityList()...) {
@@ -33,7 +33,7 @@ func TestBothFactionRoster(t *testing.T) {
 			}
 		}
 	}
-	if counts["Horde"] != 89 || counts["Alliance"] != 85 {
+	if counts["Horde"] != 94 || counts["Alliance"] != 90 {
 		t.Fatalf("unexpected build/race coverage: %v", counts)
 	}
 	for _, b := range builds() {

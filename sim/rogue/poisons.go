@@ -58,10 +58,9 @@ func (rogue *Rogue) getPoisonDamageMultiplier() float64 {
 	return []float64{1, 1.04, 1.08, 1.12, 1.16, 1.2}[rogue.Talents.VilePoisons]
 }
 
-// Venom lands after the poisons are registered, so the spells are scaled directly. A
-// Deadly Poison that is already on the target snapshotted its multiplier when its first
-// stack went up and holds it for as long as the stacks keep being refreshed, so the
-// running dots are rescaled too, or Venom would miss the poison it is named for.
+// Venom lands after the poisons are registered, so the spells are scaled directly.
+// Forever Deadly Poison evaluates this multiplier on each tick. Classic retains
+// its application-time snapshot and needs the existing dot adjusted as well.
 //
 // TODO: The tooltip doesn't say whether Venom reaches a Deadly Poison that is already on
 // the target or only the stacks applied while it is up. Beta will confirm.
@@ -72,9 +71,11 @@ func (rogue *Rogue) multiplyPoisonDamage(multiplier float64) {
 		}
 	}
 
-	for _, target := range rogue.Env.Encounter.TargetUnits {
-		if dot := rogue.deadlyPoisonTick.Dot(target); dot.IsActive() {
-			dot.SnapshotAttackerMultiplier *= multiplier
+	if !rogue.Env.IsForever() {
+		for _, target := range rogue.Env.Encounter.TargetUnits {
+			if dot := rogue.deadlyPoisonTick.Dot(target); dot.IsActive() {
+				dot.SnapshotAttackerMultiplier *= multiplier
+			}
 		}
 	}
 }
@@ -221,7 +222,11 @@ func (rogue *Rogue) registerDeadlyPoisonSpell() {
 			},
 
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
-				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
+				if sim.IsForever() {
+					dot.Spell.CalcAndDealPeriodicDamage(sim, target, dot.SnapshotBaseDamage, dot.OutcomeTick)
+				} else {
+					dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
+				}
 			},
 		},
 	})
