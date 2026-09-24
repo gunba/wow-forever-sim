@@ -13,7 +13,7 @@ import (
 	"github.com/wowsims/classic/sim/shaman"
 )
 
-func TestForeverHunterContinuousAutoShot(t *testing.T) {
+func TestForeverHunterAutoShotUsesClassicWindup(t *testing.T) {
 	var hunter build
 	for _, b := range builds() {
 		if b.Key == "marksmanship" {
@@ -35,7 +35,7 @@ func TestForeverHunterContinuousAutoShot(t *testing.T) {
 		if result.Error != nil {
 			t.Fatal(result.Error)
 		}
-		var count, special int32
+		var count, special, specialHits int32
 		for _, action := range result.RaidMetrics.Parties[0].Players[0].Actions {
 			for _, target := range action.Targets {
 				if action.Id.GetOtherId() == proto.OtherAction_OtherActionShoot {
@@ -43,27 +43,51 @@ func TestForeverHunterContinuousAutoShot(t *testing.T) {
 				}
 				if action.Id.GetSpellId() == spellID && spellID != 0 {
 					special += target.Casts
+					specialHits += target.Hits + target.Crits
 				}
 			}
 		}
-		if spellID != 0 && special == 0 {
-			t.Fatalf("test never cast %d", spellID)
+		if spellID != 0 && (special == 0 || specialHits == 0) {
+			t.Fatalf("special shot %d started %d times but landed %d hits; its completion may have been overwritten", spellID, special, specialHits)
 		}
 		return count
 	}
 	idle := casts(0)
 	for _, id := range []int32{20904, 2643, 1310786} {
-		if got := casts(id); got != idle || got == 0 {
-			t.Errorf("%d: Auto Shots %d, idle %d", id, got, idle)
+		if got := casts(id); got > idle || got == 0 {
+			t.Errorf("%d: Auto Shots %d, idle %d; hardcasts cannot add free shots", id, got, idle)
 		}
 	}
-	player := hunter.player(proto.Race_RaceOrc)
-	req := request(player, 1, 321)
-	env, _, _ := core.NewEnvironment(req.Raid, req.Encounter, proto.Ruleset_RulesetForever, false)
-	character := env.Raid.Parties[0].Players[0].GetCharacter()
-	aimed := character.GetSpell(core.ActionID{SpellID: 20904})
-	if aimed.DefaultCast.CastTime != 2*time.Second || character.AutoAttacks.RangedAuto().DefaultCast.CastTime != 0 {
-		t.Fatal("shot wind-up remains in the Forever configuration")
+
+	for _, ruleset := range []proto.Ruleset{proto.Ruleset_RulesetClassic, proto.Ruleset_RulesetForever} {
+		req := request(hunter.player(proto.Race_RaceOrc), 1, 321)
+		req.SimOptions.Ruleset = ruleset
+		sim := core.NewSim(req, simsignals.Signals{})
+		sim.Options.Interactive = true
+		sim.Reset()
+		character := sim.Raid.Parties[0].Players[0].GetCharacter()
+		auto := character.AutoAttacks.RangedAuto()
+		aimed := character.GetSpell(core.ActionID{SpellID: 20904})
+		if aimed.DefaultCast.CastTime != 2*time.Second ||
+			auto.DefaultCast.CastTime != 500*time.Millisecond ||
+			!auto.Flags.Matches(core.SpellFlagCastTimeNoGCD) ||
+			auto.ExtraCastCondition == nil {
+			t.Fatalf("%v: lost Classic Auto Shot wind-up or special-shot timing", ruleset)
+		}
+		want := time.Duration(float64(500*time.Millisecond) / character.RangedSwingSpeed())
+		if auto.CastTime() != want {
+			t.Fatalf("%v: wind-up %s, want speed-scaled %s", ruleset, auto.CastTime(), want)
+		}
+		if !aimed.Cast(sim, character.CurrentTarget) {
+			t.Fatalf("%v: Aimed Shot could not start", ruleset)
+		}
+		if auto.CanCast(sim, character.CurrentTarget) {
+			t.Fatalf("%v: Auto Shot started during Aimed Shot", ruleset)
+		}
+		sim.CurrentTime = character.Hardcast.Expires
+		if auto.CanCast(sim, character.CurrentTarget) {
+			t.Fatalf("%v: Auto Shot replaced the special shot at its completion timestamp", ruleset)
+		}
 	}
 }
 

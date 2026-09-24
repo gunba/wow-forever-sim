@@ -29,6 +29,12 @@ Each item slot is screened against the current loadout, with legal weapon layout
 
 The search identifies a local choice under the modeled rules, not a global optimum. Haste-channel and spell-GCD behavior follows a Mage community report pending direct timing logs. Warrior rage, pet inheritance, proc behavior and other limitations remain listed in the [gameplay checks](in_game_checks.md).
 
+The subsequent restoration of Classic's half-second Hunter Auto Shot wind-up
+changed Hunter rotations without another gear-coordinate search. Their gear
+remains legal and is replayed with the corrected timing, but the earlier search
+does **not** establish the best Hunter gear under this rule. Other classes'
+gear selections are unaffected.
+
 ## Evidence
 
 - [Per-race decisions and trial counts](../artifacts/gear_search/current/summary.json)

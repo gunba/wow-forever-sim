@@ -143,11 +143,9 @@ func (hunter *Hunter) Initialize() {
 		}
 	})
 	if hunter.Env.IsForever() {
-		// Auto Shot is an independent weapon event, not a competing hardcast.
-		hunter.AutoAttacks.RangedConfig().Cast = core.CastConfig{}
+		// Keep Classic's half-second Auto Shot wind-up and casting restrictions.
+		// Only the projectile speed changes in the Forever client (SpellMisc 75).
 		hunter.AutoAttacks.RangedConfig().MissileSpeed = 40 // SpellMisc 75.
-		hunter.AutoAttacks.RangedConfig().ExtraCastCondition = nil
-		hunter.AutoAttacks.RangedConfig().Flags &^= core.SpellFlagCastTimeNoGCD
 	}
 	hunter.OnSpellRegistered(func(spell *core.Spell) {
 		if spell.Flags.Matches(SpellFlagStrike) {
@@ -287,7 +285,10 @@ func NewHunter(character *core.Character, options *proto.Player) *Hunter {
 		},
 	}
 	hunter.AutoAttacks.RangedConfig().ExtraCastCondition = func(sim *core.Simulation, target *core.Unit) bool {
-		return !hunter.IsCasting(sim)
+		// The ranged swing can be scheduled at the exact instant a special shot
+		// finishes. Let that hardcast complete first; otherwise Auto Shot
+		// replaces its completion callback before the GCD action runs.
+		return hunter.Hardcast.Expires < sim.CurrentTime
 	}
 	hunter.AutoAttacks.RangedConfig().CritDamageBonus = hunter.mortalShots()
 	hunter.AutoAttacks.RangedConfig().BonusCoefficient = 1

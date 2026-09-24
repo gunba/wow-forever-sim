@@ -27,6 +27,8 @@ the assumptions and Monte Carlo uncertainty.
 
 [Build reviews](docs/build_reviews.md) describe the retained choices and resource
 use. [In-game checks](docs/in_game_checks.md) track important unresolved mechanics.
+[Auto-attack timing](docs/auto_attack_audit.md) now uses Classic's half-second
+Hunter Auto Shot wind-up; older instant-shot rankings are archived separately.
 [Mechanics review](docs/mechanics_review.md) records corrections and provisional models.
 [Change-history review](docs/history_review.md) records the fork points,
 reviewed changes, regression checks and remaining source gaps.

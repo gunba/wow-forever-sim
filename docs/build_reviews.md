@@ -93,180 +93,6 @@ Other races can use different equipment. Their complete setups are available in 
 | Mana | [Holy Strike](https://www.wowhead.com/forever/spell=10333) | -521.7 |
 | Mana | OtherActionManaRegen (tag 2) | +12.7 |
 
-## Hunter — Marksmanship
-
-**Talents:** 5/35/11 · `5-0050552011523051-50005001`
-
-[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
-
-**Model limitations:** Lone Wolf requires no active pet. Improved Tracking assumes tracking matches the Dragonkin reference target.
-
-
-### Results
-
-| Race | DPS | Standard error | Mana-limited seconds |
-|---|---:|---:|---:|
-| Orc | 922.31 | 0.41 | 0.62 |
-| Tauren | 911.67 | 0.40 | 0.32 |
-| Troll | 915.91 | 0.40 | 0.71 |
-| Windshaper | 916.75 | 0.41 | 0.63 |
-| Human | 927.99 | 0.41 | 0.44 |
-| Dwarf | 905.70 | 0.40 | 0.63 |
-| Night Elf | 922.29 | 0.41 | 0.62 |
-| High Order | 916.75 | 0.41 | 0.63 |
-
-Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
-
-### Equipment — Human
-
-| Slot | Item | Item level | Enchant |
-|---|---|---:|---|
-| Head | [Black Dragonscale Helm](https://www.wowhead.com/forever/item=252605) | 61 | Lesser Arcanum of Voracity |
-| Neck | [Amulet of the Darkmoon](https://www.wowhead.com/forever/item=19491) | 65 | — |
-| Shoulders | [Darkspear Pauldrons](https://www.wowhead.com/forever/item=272105) | 65 | Chromatic Mantle of the Dawn |
-| Back | [Shifting Cloak](https://www.wowhead.com/forever/item=18511) | 62 | Enchant Boots - Lesser Agility |
-| Chest | [Dawn Armor](https://www.wowhead.com/forever/item=252483) | 61 | Enchant Chest - Greater Stats |
-| Wrists | [Primal Batskin Bracers](https://www.wowhead.com/forever/item=19687) | 65 | Enchant Boots - Minor Agility |
-| Hands | [Chromatic Gauntlets](https://www.wowhead.com/forever/item=19157) | 70 | Enchant Weapon - Agility |
-| Waist | [Molten Belt](https://www.wowhead.com/forever/item=19163) | 70 | — |
-| Legs | [Sentinel's Chain Leggings](https://www.wowhead.com/forever/item=22748) | 65 | Lesser Arcanum of Voracity |
-| Feet | [Scalegut Treaders](https://www.wowhead.com/forever/item=275618) | 58 | Enchant Boots - Greater Agility |
-| Ring 1 | [Cutthroat's Signet](https://www.wowhead.com/forever/item=272408) | 65 | — |
-| Ring 2 | [Channeler's Ring](https://www.wowhead.com/forever/item=272406) | 65 | — |
-| Trinket 1 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
-| Trinket 2 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
-| Main hand | [Premier High Warlord's Spellblade](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Agility |
-| Off hand | [Premier High Warlord's Blade](https://www.wowhead.com/forever/item=272452) | 65 | Enchant Weapon - Agility |
-| Ranged/relic | [Core Marksman Rifle](https://www.wowhead.com/forever/item=18282) | 65 | SAF-T Ultra Precision Scope |
-
-Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
-
-### Before the pull
-
-- -10s: [Aspect of the Hawk](https://www.wowhead.com/forever/spell=25296).
-
-### Rotation priorities
-
-1. Use ready automatic cooldowns.
-2. Cast [Serpent Sting](https://www.wowhead.com/forever/spell=25295) when (NOT [Serpent Sting](https://www.wowhead.com/forever/spell=25295) DoT active AND Time remaining ≥ 12s).
-3. Cast [Aimed Shot](https://www.wowhead.com/forever/spell=20904).
-4. Cast [Sniper Shot](https://www.wowhead.com/forever/spell=1310786) when Mana fraction ≥ 30%.
-5. Cast [Arcane Shot](https://www.wowhead.com/forever/spell=14287) when Mana fraction ≥ 15%.
-
-### Damage breakdown — Human
-
-| Action | DPS |
-|---|---:|
-| Shoot | 498.97 |
-| [Aimed Shot](https://www.wowhead.com/forever/spell=20904) | 199.50 |
-| [Serpent Sting](https://www.wowhead.com/forever/spell=25295) | 85.81 |
-| [Arcane Shot](https://www.wowhead.com/forever/spell=14287) | 83.49 |
-| [Sniper Shot](https://www.wowhead.com/forever/spell=1310786) | 60.24 |
-
-### Resource flow
-
-| Resource | Action | Net amount per fight |
-|---|---|---:|
-| Mana | [Aimed Shot](https://www.wowhead.com/forever/spell=20904) | -11440.6 |
-| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +8197.2 |
-| Mana | [Arcane Shot](https://www.wowhead.com/forever/spell=14287) | -6263.1 |
-| Mana | OtherActionManaRegen (tag 1) | +6069.6 |
-| Mana | [Serpent Sting](https://www.wowhead.com/forever/spell=25295) | -3993.0 |
-| Mana | [Sniper Shot](https://www.wowhead.com/forever/spell=1310786) | -3818.1 |
-| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3605.5 |
-| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3597.8 |
-| Mana | OtherActionManaRegen (tag 2) | +641.0 |
-| Mana | [Rapid Fire](https://www.wowhead.com/forever/spell=3045) | -200.0 |
-
-## Hunter — Beast Mastery
-
-**Talents:** 31/20/0 · `5320001505101251-00531510005`
-
-[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
-
-
-### Results
-
-| Race | DPS | Standard error | Mana-limited seconds |
-|---|---:|---:|---:|
-| Orc | 882.88 | 0.29 | 0.00 |
-| Tauren | 874.59 | 0.30 | 0.00 |
-| Troll | 878.28 | 0.29 | 0.00 |
-| Windshaper | 878.71 | 0.30 | 0.00 |
-| Human | 885.26 | 0.30 | 0.00 |
-| Dwarf | 871.99 | 0.29 | 0.00 |
-| Night Elf | 883.28 | 0.30 | 0.00 |
-| High Order | 878.71 | 0.30 | 0.00 |
-
-Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
-
-### Equipment — Human
-
-| Slot | Item | Item level | Enchant |
-|---|---|---:|---|
-| Head | [Black Dragonscale Helm](https://www.wowhead.com/forever/item=252605) | 61 | Lesser Arcanum of Voracity |
-| Neck | [Amulet of the Darkmoon](https://www.wowhead.com/forever/item=19491) | 65 | — |
-| Shoulders | [Darkspear Pauldrons](https://www.wowhead.com/forever/item=272105) | 65 | Chromatic Mantle of the Dawn |
-| Back | [Shifting Cloak](https://www.wowhead.com/forever/item=18511) | 62 | Enchant Boots - Lesser Agility |
-| Chest | [Dawn Armor](https://www.wowhead.com/forever/item=252483) | 61 | Enchant Chest - Greater Stats |
-| Wrists | [Primal Batskin Bracers](https://www.wowhead.com/forever/item=19687) | 65 | Enchant Boots - Minor Agility |
-| Hands | [Chromatic Gauntlets](https://www.wowhead.com/forever/item=19157) | 70 | Enchant Weapon - Agility |
-| Waist | [Molten Belt](https://www.wowhead.com/forever/item=19163) | 70 | — |
-| Legs | [Sentinel's Chain Leggings](https://www.wowhead.com/forever/item=22748) | 65 | Lesser Arcanum of Voracity |
-| Feet | [Scalegut Treaders](https://www.wowhead.com/forever/item=275618) | 58 | Enchant Boots - Greater Agility |
-| Ring 1 | [Cutthroat's Signet](https://www.wowhead.com/forever/item=272408) | 65 | — |
-| Ring 2 | [Channeler's Ring](https://www.wowhead.com/forever/item=272406) | 65 | — |
-| Trinket 1 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
-| Trinket 2 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
-| Main hand | [Premier High Warlord's Spellblade](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Agility |
-| Off hand | [Premier High Warlord's Blade](https://www.wowhead.com/forever/item=272452) | 65 | Enchant Weapon - Agility |
-| Ranged/relic | [Core Marksman Rifle](https://www.wowhead.com/forever/item=18282) | 65 | SAF-T Ultra Precision Scope |
-
-Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
-
-### Before the pull
-
-- -10s: [Aspect of the Hawk](https://www.wowhead.com/forever/spell=25296).
-
-### Rotation priorities
-
-1. Use ready automatic cooldowns.
-2. Cast [Intimidation](https://www.wowhead.com/forever/spell=19577) when Mana fraction > 80%.
-3. Cast [Summon Hawk](https://www.wowhead.com/forever/spell=1293527) when NOT [Summon Hawk](https://www.wowhead.com/forever/spell=1293527) DoT active.
-4. Cast [Serpent Sting](https://www.wowhead.com/forever/spell=25295) when NOT [Serpent Sting](https://www.wowhead.com/forever/spell=25295) DoT active.
-5. Cast [Aimed Shot](https://www.wowhead.com/forever/spell=20902) when `{"autoTimeToNext":{"autoType":"Ranged"}}` ≥ 0s.
-6. Cast [Arcane Shot](https://www.wowhead.com/forever/spell=14287) when Mana fraction ≥ 15%.
-
-### Damage breakdown — Human
-
-| Action | DPS |
-|---|---:|
-| Shoot | 382.31 |
-| Cat: Auto-attack (tag 1) | 148.93 |
-| [Aimed Shot](https://www.wowhead.com/forever/spell=20902) | 129.64 |
-| [Serpent Sting](https://www.wowhead.com/forever/spell=25295) | 83.62 |
-| [Summon Hawk](https://www.wowhead.com/forever/spell=1293527) | 67.64 |
-| [Arcane Shot](https://www.wowhead.com/forever/spell=14287) | 49.49 |
-| Cat: [Bite](https://www.wowhead.com/forever/spell=17261) | 13.16 |
-| Cat: [Claw](https://www.wowhead.com/forever/spell=3009) | 10.46 |
-
-### Resource flow
-
-| Resource | Action | Net amount per fight |
-|---|---|---:|
-| Mana | [Aimed Shot](https://www.wowhead.com/forever/spell=20902) | -9189.6 |
-| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +7637.6 |
-| Mana | OtherActionManaRegen (tag 1) | +6124.3 |
-| Mana | [Arcane Shot](https://www.wowhead.com/forever/spell=14287) | -5528.7 |
-| Mana | [Serpent Sting](https://www.wowhead.com/forever/spell=25295) | -4663.6 |
-| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3607.8 |
-| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3583.1 |
-| Mana | [Summon Hawk](https://www.wowhead.com/forever/spell=1293527) | -3157.8 |
-| Mana | OtherActionManaRegen (tag 2) | +846.5 |
-| Mana | [Bestial Wrath](https://www.wowhead.com/forever/spell=19574) | -619.2 |
-| Mana | [Intimidation](https://www.wowhead.com/forever/spell=19577) | -405.5 |
-| Mana | [Rapid Fire](https://www.wowhead.com/forever/spell=3045) | -200.0 |
-
 ## Hunter — Pet/Melee
 
 **Talents:** 16/10/25 · `53200005001-005005-5302002300502201`
@@ -534,6 +360,95 @@ Other races can use different equipment. Their complete setups are available in 
 | Mana | [Rapid Fire](https://www.wowhead.com/forever/spell=3045) | -200.0 |
 | Mana | [Aspect of the Beast](https://www.wowhead.com/forever/spell=1299447) | -110.0 |
 
+## Hunter — Beast Mastery
+
+**Talents:** 31/20/0 · `5320001505101251-00531510005`
+
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
+
+
+### Results
+
+| Race | DPS | Standard error | Mana-limited seconds |
+|---|---:|---:|---:|
+| Orc | 835.07 | 0.27 | 0.01 |
+| Tauren | 845.98 | 0.29 | 0.00 |
+| Troll | 848.10 | 0.30 | 0.00 |
+| Windshaper | 846.56 | 0.29 | 0.00 |
+| Human | 837.57 | 0.27 | 0.01 |
+| Dwarf | 843.57 | 0.29 | 0.00 |
+| Night Elf | 854.30 | 0.29 | 0.00 |
+| High Order | 846.56 | 0.29 | 0.00 |
+
+Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Night Elf
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Black Dragonscale Helm](https://www.wowhead.com/forever/item=252605) | 61 | Lesser Arcanum of Voracity |
+| Neck | [Amulet of the Darkmoon](https://www.wowhead.com/forever/item=19491) | 65 | — |
+| Shoulders | [Darkspear Pauldrons](https://www.wowhead.com/forever/item=272105) | 65 | Chromatic Mantle of the Dawn |
+| Back | [Shifting Cloak](https://www.wowhead.com/forever/item=18511) | 62 | Enchant Boots - Lesser Agility |
+| Chest | [Dawn Armor](https://www.wowhead.com/forever/item=252483) | 61 | Enchant Chest - Greater Stats |
+| Wrists | [Primal Batskin Bracers](https://www.wowhead.com/forever/item=19687) | 65 | Enchant Boots - Minor Agility |
+| Hands | [Chromatic Gauntlets](https://www.wowhead.com/forever/item=19157) | 70 | Enchant Gloves - Minor Haste |
+| Waist | [Molten Belt](https://www.wowhead.com/forever/item=19163) | 70 | — |
+| Legs | [Sentinel's Chain Leggings](https://www.wowhead.com/forever/item=22748) | 65 | Lesser Arcanum of Voracity |
+| Feet | [Scalegut Treaders](https://www.wowhead.com/forever/item=275618) | 58 | Enchant Boots - Greater Agility |
+| Ring 1 | [Cutthroat's Signet](https://www.wowhead.com/forever/item=272408) | 65 | — |
+| Ring 2 | [Channeler's Ring](https://www.wowhead.com/forever/item=272406) | 65 | — |
+| Trinket 1 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Trinket 2 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
+| Main hand | [Premier High Warlord's Spellblade](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Agility |
+| Off hand | [Premier High Warlord's Blade](https://www.wowhead.com/forever/item=272452) | 65 | Enchant Weapon - Agility |
+| Ranged/relic | [Core Marksman Rifle](https://www.wowhead.com/forever/item=18282) | 65 | SAF-T Ultra Precision Scope |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
+
+### Before the pull
+
+- -10s: [Aspect of the Hawk](https://www.wowhead.com/forever/spell=25296).
+
+### Rotation priorities
+
+1. Use ready automatic cooldowns.
+2. Cast [Intimidation](https://www.wowhead.com/forever/spell=19577) when Mana fraction > 80%.
+3. Cast [Summon Hawk](https://www.wowhead.com/forever/spell=1293527) when NOT [Summon Hawk](https://www.wowhead.com/forever/spell=1293527) DoT active.
+4. Cast [Serpent Sting](https://www.wowhead.com/forever/spell=25295) when NOT [Serpent Sting](https://www.wowhead.com/forever/spell=25295) DoT active.
+5. Cast [Aimed Shot](https://www.wowhead.com/forever/spell=20902) when `{"autoTimeToNext":{"autoType":"Ranged"}}` ≥ 0s.
+6. Cast [Arcane Shot](https://www.wowhead.com/forever/spell=14287) when Mana fraction ≥ 15%.
+
+### Damage breakdown — Night Elf
+
+| Action | DPS |
+|---|---:|
+| Shoot | 358.14 |
+| Cat: Auto-attack (tag 1) | 149.42 |
+| [Aimed Shot](https://www.wowhead.com/forever/spell=20902) | 125.94 |
+| [Serpent Sting](https://www.wowhead.com/forever/spell=25295) | 82.24 |
+| [Summon Hawk](https://www.wowhead.com/forever/spell=1293527) | 66.34 |
+| [Arcane Shot](https://www.wowhead.com/forever/spell=14287) | 48.66 |
+| Cat: [Bite](https://www.wowhead.com/forever/spell=17261) | 13.07 |
+| Cat: [Claw](https://www.wowhead.com/forever/spell=3009) | 10.48 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | [Aimed Shot](https://www.wowhead.com/forever/spell=20902) | -9083.7 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +7391.7 |
+| Mana | OtherActionManaRegen (tag 1) | +6020.1 |
+| Mana | [Arcane Shot](https://www.wowhead.com/forever/spell=14287) | -5474.3 |
+| Mana | [Serpent Sting](https://www.wowhead.com/forever/spell=25295) | -4614.4 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3602.4 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3596.4 |
+| Mana | [Summon Hawk](https://www.wowhead.com/forever/spell=1293527) | -3116.8 |
+| Mana | OtherActionManaRegen (tag 2) | +762.1 |
+| Mana | [Bestial Wrath](https://www.wowhead.com/forever/spell=19574) | -619.2 |
+| Mana | [Intimidation](https://www.wowhead.com/forever/spell=19577) | -378.3 |
+| Mana | [Rapid Fire](https://www.wowhead.com/forever/spell=3045) | -200.0 |
+
 ## Warlock — Demonic Pact
 
 **Talents:** 2/31/18 · `011-0005003221220311351-0550005003`
@@ -626,6 +541,91 @@ Other races can use different equipment. Their complete setups are available in 
 | Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3516.3 |
 | Mana | [Soul Fire](https://www.wowhead.com/forever/spell=17924) | -3105.2 |
 | Mana | [Bane of Doom](https://www.wowhead.com/forever/spell=603) | -1200.0 |
+
+## Hunter — Marksmanship
+
+**Talents:** 5/35/11 · `5-0050552011523051-50005001`
+
+[Requests and results](../artifacts/forever_dps_5min.json) · [Equipment search](../artifacts/gear_search/summary.json)
+
+**Model limitations:** Lone Wolf requires no active pet. Improved Tracking assumes tracking matches the Dragonkin reference target.
+
+
+### Results
+
+| Race | DPS | Standard error | Mana-limited seconds |
+|---|---:|---:|---:|
+| Orc | 805.54 | 0.38 | 2.01 |
+| Tauren | 796.33 | 0.37 | 1.23 |
+| Troll | 815.21 | 0.40 | 1.45 |
+| Windshaper | 814.46 | 0.40 | 1.40 |
+| Human | 810.07 | 0.38 | 1.58 |
+| Dwarf | 791.01 | 0.37 | 2.13 |
+| Night Elf | 805.97 | 0.37 | 1.99 |
+| High Order | 814.46 | 0.40 | 1.40 |
+
+Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Troll
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Black Dragonscale Helm](https://www.wowhead.com/forever/item=252605) | 61 | Lesser Arcanum of Voracity |
+| Neck | [Amulet of the Darkmoon](https://www.wowhead.com/forever/item=19491) | 65 | — |
+| Shoulders | [Darkspear Pauldrons](https://www.wowhead.com/forever/item=272105) | 65 | Chromatic Mantle of the Dawn |
+| Back | [Shifting Cloak](https://www.wowhead.com/forever/item=18511) | 62 | Enchant Boots - Lesser Agility |
+| Chest | [Dawn Armor](https://www.wowhead.com/forever/item=252483) | 61 | Enchant Chest - Greater Stats |
+| Wrists | [Primal Batskin Bracers](https://www.wowhead.com/forever/item=19687) | 65 | Enchant Boots - Minor Agility |
+| Hands | [Chromatic Gauntlets](https://www.wowhead.com/forever/item=19157) | 70 | Enchant Gloves - Minor Haste |
+| Waist | [Molten Belt](https://www.wowhead.com/forever/item=19163) | 70 | — |
+| Legs | [Outrider's Chain Leggings](https://www.wowhead.com/forever/item=22673) | 65 | Lesser Arcanum of Voracity |
+| Feet | [Scalegut Treaders](https://www.wowhead.com/forever/item=275618) | 58 | Enchant Boots - Greater Agility |
+| Ring 1 | [Cutthroat's Signet](https://www.wowhead.com/forever/item=272408) | 65 | — |
+| Ring 2 | [Channeler's Ring](https://www.wowhead.com/forever/item=272406) | 65 | — |
+| Trinket 1 | [Frozen Heart of the Mountain](https://www.wowhead.com/forever/item=249469) | 55 | — |
+| Trinket 2 | [Weakness Analyzer](https://www.wowhead.com/forever/item=272438) | 65 | — |
+| Main hand | [Premier High Warlord's Spellblade](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Agility |
+| Off hand | [Premier High Warlord's Blade](https://www.wowhead.com/forever/item=272452) | 65 | Enchant Weapon - Agility |
+| Ranged/relic | [Core Marksman Rifle](https://www.wowhead.com/forever/item=18282) | 65 | SAF-T Ultra Precision Scope |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
+
+### Before the pull
+
+- -10s: [Aspect of the Hawk](https://www.wowhead.com/forever/spell=25296).
+
+### Rotation priorities
+
+1. Use ready automatic cooldowns.
+2. Cast [Serpent Sting](https://www.wowhead.com/forever/spell=25295) when (NOT [Serpent Sting](https://www.wowhead.com/forever/spell=25295) DoT active AND Time remaining ≥ 12s).
+3. Cast [Aimed Shot](https://www.wowhead.com/forever/spell=20904).
+4. Cast [Sniper Shot](https://www.wowhead.com/forever/spell=1310786) when Mana fraction ≥ 30%.
+5. Cast [Arcane Shot](https://www.wowhead.com/forever/spell=14287) when Mana fraction ≥ 15%.
+
+### Damage breakdown — Troll
+
+| Action | DPS |
+|---|---:|
+| Shoot | 410.81 |
+| [Aimed Shot](https://www.wowhead.com/forever/spell=20904) | 192.15 |
+| [Serpent Sting](https://www.wowhead.com/forever/spell=25295) | 83.46 |
+| [Arcane Shot](https://www.wowhead.com/forever/spell=14287) | 75.67 |
+| [Sniper Shot](https://www.wowhead.com/forever/spell=1310786) | 53.13 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | [Aimed Shot](https://www.wowhead.com/forever/spell=20904) | -11338.9 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +7338.4 |
+| Mana | OtherActionManaRegen (tag 1) | +5873.0 |
+| Mana | [Arcane Shot](https://www.wowhead.com/forever/spell=14287) | -5803.9 |
+| Mana | [Serpent Sting](https://www.wowhead.com/forever/spell=25295) | -3951.7 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3615.0 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3603.2 |
+| Mana | [Sniper Shot](https://www.wowhead.com/forever/spell=1310786) | -3467.4 |
+| Mana | OtherActionManaRegen (tag 2) | +684.6 |
+| Mana | [Rapid Fire](https://www.wowhead.com/forever/spell=3045) | -200.0 |
 
 ## Priest — Shadow
 

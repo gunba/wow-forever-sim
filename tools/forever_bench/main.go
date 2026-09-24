@@ -194,8 +194,8 @@ func writeResults(rows []resultRow) {
 		Mechanics                                map[string]string
 		Results                                  []resultRow
 	}{*duration, *targetArmor, *spellPower, false, *tier1, *equipmentScale, map[string]string{
-		"autoAttacks":  "classic-spell-swing-resets-explicit-slam-shot-exceptions-no-caster-weaving",
-		"hunterCasts":  "client-duration-no-added-windup",
+		"autoAttacks":  "classic-spell-swing-resets-slam-exception-no-caster-weaving",
+		"hunterCasts":  "client-special-durations-classic-autoshot-half-second-windup",
 		"energy":       "10-per-second-100ms-integration-general-haste-assumed",
 		"eureka":       "charge-reserved-before-nested-effects",
 		"omen":         "provisional-client-100pct-direct-procs-10s-icd-no-wrath-consumption",
