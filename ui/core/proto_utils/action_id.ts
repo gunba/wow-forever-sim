@@ -334,6 +334,11 @@ export class ActionId {
 					name += ' (Proc)';
 				}
 				break;
+			case 'Demonic Rune':
+				if (this.tag === 1) {
+					name += ' (Self damage)';
+				}
+				break;
 			// For targetted buffs, tag is the source player's raid index or -1 if none.
 			case 'Innervate':
 			case 'Mana Tide Totem':
