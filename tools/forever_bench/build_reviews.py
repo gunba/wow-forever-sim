@@ -107,6 +107,12 @@ def main():
                   "[Equipment search](../artifacts/gear_search/summary.json)", ""]
         if key in BUILD_CAVEATS:
             lines += ["**Model limitations:** " + " ".join(BUILD_CAVEATS[key]), ""]
+        if len({json.dumps(row["BaselinePlayer"]["rotation"], sort_keys=True) for row in rows}) > 1:
+            lines += [
+                f"**Rotation variants:** The priorities below are for {representative['Race']}. "
+                "Other races may use a different saved APL; their exact rotations are in "
+                "the Ranked builds selector and raw requests.", "",
+            ]
         lines += ["", "### Results", "",
                   "| Race | DPS | Standard error | Mana-limited seconds |",
                   "|---|---:|---:|---:|"]
@@ -151,7 +157,11 @@ def main():
 
         def collect(metrics, prefix=""):
             for action in metrics.get("actions", []):
-                total = sum(t.get("damage", 0) for t in action.get("targets", []))
+                # This benchmark has one enemy, in target slot zero. Later
+                # slots are players/pets: SW:D backlash, Sappers and Demonic
+                # Rune must not appear as damage dealt to the boss.
+                targets = action.get("targets", [])
+                total = targets[0].get("damage", 0) if targets else 0
                 if total > 0:
                     damage.append((total / representative["Iterations"] / results["Duration"],
                                    prefix + action_name(action["id"])))

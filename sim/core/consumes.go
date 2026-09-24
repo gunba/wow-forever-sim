@@ -1037,6 +1037,20 @@ func makeManaConsumableMCD(itemId int32, character *Character, cdTimer *Timer) M
 
 	actionID := ActionID{ItemID: itemId}
 	manaMetrics := character.NewManaMetrics(actionID)
+	var demonicRuneDamage *Spell
+	if itemId == 12662 && character.Env.IsForever() {
+		// Client spell 16666 has a second, self-targeted Shadow damage effect:
+		// base 800 with Variance 0.5 (600–1000). This is separate from its
+		// 900–1500 Mana energize and must not damage the encounter target.
+		demonicRuneDamage = character.GetOrRegisterSpell(SpellConfig{
+			ActionID:         ActionID{SpellID: 16666, Tag: 1},
+			SpellSchool:      SpellSchoolShadow,
+			DefenseType:      DefenseTypeMagic,
+			ProcMask:         ProcMaskSpellDamageProc,
+			Flags:            SpellFlagPassiveSpell | SpellFlagNoOnCastComplete | SpellFlagIgnoreAttackerModifiers,
+			DamageMultiplier: 1,
+		})
+	}
 
 	return MajorCooldown{
 		Type: CooldownTypeMana,
@@ -1063,6 +1077,10 @@ func makeManaConsumableMCD(itemId int32, character *Character, cdTimer *Timer) M
 			ApplyEffects: func(sim *Simulation, _ *Unit, _ *Spell) {
 				manaGain := sim.RollWithLabel(minRoll, maxRoll, "Mana Consumable")
 				character.AddMana(sim, manaGain, manaMetrics)
+				if demonicRuneDamage != nil {
+					damage := sim.RollWithLabel(600, 1000, "Demonic Rune Self Damage")
+					demonicRuneDamage.CalcAndDealDamage(sim, &character.Unit, damage, demonicRuneDamage.OutcomeAlwaysHit)
+				}
 			},
 		}),
 	}

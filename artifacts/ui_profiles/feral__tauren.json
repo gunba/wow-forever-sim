@@ -289,6 +289,51 @@
                       },
                       "rhs": {
                         "const": {
+                          "val": "5"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "dotRemainingTime": {
+                          "spellId": {
+                            "spellId": 9896
+                          }
+                        }
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "5s"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 31018
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "currentComboPoints": {}
+                      },
+                      "rhs": {
+                        "const": {
                           "val": "4"
                         }
                       }

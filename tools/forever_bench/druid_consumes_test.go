@@ -3,6 +3,7 @@
 package main
 
 import (
+	"encoding/json"
 	"testing"
 
 	"github.com/wowsims/classic/sim/core"
@@ -10,6 +11,47 @@ import (
 	"github.com/wowsims/classic/sim/core/simsignals"
 	"github.com/wowsims/classic/sim/druid"
 )
+
+func TestDemonicRuneDamagesOnlyItsUser(t *testing.T) {
+	var shadow build
+	for _, candidate := range builds() {
+		if candidate.Key == "shadow" {
+			shadow = candidate
+			break
+		}
+	}
+	row := run(shadow, prepare(shadow, proto.Race_RaceUndead), 100, 20296421)
+	var metrics struct {
+		Actions []struct {
+			ID struct {
+				SpellID int32
+			}
+			Targets []struct {
+				Hits           int32
+				Damage         float64
+				ResistedDamage float64
+			}
+		}
+	}
+	if err := json.Unmarshal(row.Metrics, &metrics); err != nil {
+		t.Fatal(err)
+	}
+	for _, action := range metrics.Actions {
+		if action.ID.SpellID != 16666 {
+			continue
+		}
+		if len(action.Targets) < 2 || action.Targets[0].Damage != 0 || action.Targets[1].Hits == 0 {
+			t.Fatalf("rune must hit the player, not the boss: %+v", action.Targets)
+		}
+		// Client spell 16666 rolls 800 ±25% before Shadow resistance.
+		rolled := (action.Targets[1].Damage + action.Targets[1].ResistedDamage) / float64(action.Targets[1].Hits)
+		if rolled < 600 || rolled > 1000 {
+			t.Fatalf("rune self-hit mean outside the client range: %.2f", rolled)
+		}
+		return
+	}
+	t.Fatal("Demonic Rune did not record its self-damage effect")
+}
 
 func TestForeverManaConsumablesPreserveForms(t *testing.T) {
 	for _, key := range []string{"balance", "feral", "bear"} {

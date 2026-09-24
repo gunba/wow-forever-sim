@@ -1,11 +1,201 @@
 {
   "type": "TypeAPL",
   "priorityList": [
-    {"action":{"condition":{"cmp":{"op":"OpLe","lhs":{"currentEnergy":{}},"rhs":{"const":{"val":"10"}}}},"castSpell":{"spellId":{"itemId":7676}}}},
-    {"action":{"autocastOtherCooldowns":{}}},
-    {"action":{"condition":{"cmp":{"lhs":{"currentEnergy":{}},"op":"OpLe","rhs":{"const":{"val":"40"}}}},"castSpell":{"spellId":{"spellId":9846}}}},
-    {"action":{"condition":{"and":{"vals":[{"cmp":{"lhs":{"remainingTime":{}},"op":"OpLe","rhs":{"const":{"val":"4s"}}}},{"cmp":{"lhs":{"currentComboPoints":{}},"op":"OpGe","rhs":{"const":{"val":"3"}}}}]}},"castSpell":{"spellId":{"spellId":31018}}}},
-    {"action":{"condition":{"and":{"vals":[{"cmp":{"lhs":{"currentComboPoints":{}},"op":"OpGe","rhs":{"const":{"val":"4"}}}},{"not":{"val":{"dotIsActive":{"spellId":{"spellId":9896}}}}},{"cmp":{"lhs":{"remainingTime":{}},"op":"OpGe","rhs":{"const":{"val":"8s"}}}}]}},"castSpell":{"spellId":{"spellId":9896}}}},
-    {"action":{"castSpell":{"spellId":{"spellId":9830}}}}
+    {
+      "action": {
+        "condition": {
+          "cmp": {
+            "op": "OpLe",
+            "lhs": {
+              "currentEnergy": {}
+            },
+            "rhs": {
+              "const": {
+                "val": "10"
+              }
+            }
+          }
+        },
+        "castSpell": {
+          "spellId": {
+            "itemId": 7676
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "autocastOtherCooldowns": {}
+      }
+    },
+    {
+      "action": {
+        "condition": {
+          "cmp": {
+            "op": "OpLe",
+            "lhs": {
+              "currentEnergy": {}
+            },
+            "rhs": {
+              "const": {
+                "val": "40"
+              }
+            }
+          }
+        },
+        "castSpell": {
+          "spellId": {
+            "spellId": 9846
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "condition": {
+          "and": {
+            "vals": [
+              {
+                "cmp": {
+                  "op": "OpLe",
+                  "lhs": {
+                    "remainingTime": {}
+                  },
+                  "rhs": {
+                    "const": {
+                      "val": "4s"
+                    }
+                  }
+                }
+              },
+              {
+                "cmp": {
+                  "op": "OpGe",
+                  "lhs": {
+                    "currentComboPoints": {}
+                  },
+                  "rhs": {
+                    "const": {
+                      "val": "3"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "castSpell": {
+          "spellId": {
+            "spellId": 31018
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 31018
+          }
+        },
+        "condition": {
+          "and": {
+            "vals": [
+              {
+                "cmp": {
+                  "op": "OpGe",
+                  "lhs": {
+                    "currentComboPoints": {}
+                  },
+                  "rhs": {
+                    "const": {
+                      "val": "5"
+                    }
+                  }
+                }
+              },
+              {
+                "cmp": {
+                  "op": "OpGe",
+                  "lhs": {
+                    "dotRemainingTime": {
+                      "spellId": {
+                        "spellId": 9896
+                      }
+                    }
+                  },
+                  "rhs": {
+                    "const": {
+                      "val": "5s"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "condition": {
+          "and": {
+            "vals": [
+              {
+                "cmp": {
+                  "op": "OpGe",
+                  "lhs": {
+                    "currentComboPoints": {}
+                  },
+                  "rhs": {
+                    "const": {
+                      "val": "4"
+                    }
+                  }
+                }
+              },
+              {
+                "not": {
+                  "val": {
+                    "dotIsActive": {
+                      "spellId": {
+                        "spellId": 9896
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "cmp": {
+                  "op": "OpGe",
+                  "lhs": {
+                    "remainingTime": {}
+                  },
+                  "rhs": {
+                    "const": {
+                      "val": "8s"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "castSpell": {
+          "spellId": {
+            "spellId": 9896
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 9830
+          }
+        }
+      }
+    }
   ]
 }
