@@ -243,6 +243,13 @@
 		"note": "+15% melee speed, 300 health and 10 MP5, unchanged; Forever raids ignore world buffs, so under that ruleset it is never applied.",
 		"source": "classic"
 	},
+	"16666": {
+		"ability": "Demonic Rune",
+		"file": "sim/core/consumes.go",
+		"source": "forever",
+		"tooltip": "Restores 900 to 1500 mana and deals 600 to 1000 Shadow damage to you.",
+		"note": "Client 1.60.1.69977 effects 694074 and 694075: each has Variance 0.5 and an implicit self target. The separately registered damage effect does not strike the boss; the rolled damage can be mitigated by Shadow resistance."
+	},
 	"17364": {
 		"ability": "Stormstrike",
 		"file": "sim/core/debuffs.go",
