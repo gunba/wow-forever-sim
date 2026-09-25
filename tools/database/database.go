@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"slices"
+	"strings"
 
 	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/tools"
@@ -227,7 +228,16 @@ func (db *WowDatabase) ToUIProto() *proto.UIDatabase {
 		if v1.EffectId != v2.EffectId {
 			return int(v1.EffectId - v2.EffectId)
 		}
-		return int(v1.Type - v2.Type)
+		if v1.Type != v2.Type {
+			return int(v1.Type - v2.Type)
+		}
+		if v1.SpellId != v2.SpellId {
+			return int(v1.SpellId - v2.SpellId)
+		}
+		if v1.ItemId != v2.ItemId {
+			return int(v1.ItemId - v2.ItemId)
+		}
+		return strings.Compare(v1.Name, v2.Name)
 	})
 
 	return &proto.UIDatabase{

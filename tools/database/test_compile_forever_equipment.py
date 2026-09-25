@@ -79,6 +79,12 @@ class EquipmentTest(unittest.TestCase):
         compile_item(item, self.rates)
         self.assertEqual(item, original)
 
+    def test_black_dragonscale_boots_no_longer_count_for_set(self):
+        self.assertEqual(self.items[16984]["setId"], 0)
+        self.assertNotIn("setId", compile_item(self.items[16984], self.rates))
+        for item_id in (15050, 15051, 15052):
+            self.assertEqual(compile_item(self.items[item_id], self.rates)["setId"], 489)
+
 
 if __name__ == "__main__":
     unittest.main()
