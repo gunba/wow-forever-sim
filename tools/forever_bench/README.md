@@ -15,6 +15,12 @@ and weapon coverage. None is confirmed obtainable loot. The previous
 and the separate [real-item benchmark](../../artifacts/forever_dps_5min.json)
 remain distinct historical references.
 
+This benchmark still uses **pre-1.60.1.70009 class/racial mechanics**. The
+September 24 beta changes have not been incorporated into its DPS ranking.
+Modeled Leather armor has no Strength; Feral cannot equip Mail or Plate.
+The modeled Strength/Hit Mail option is a disclosed MP5-to-Hit budget
+projection from a real Mail reference, not a datamined drop.
+
 Hit comes **only from selected gear, enchants, talents and racials**. The v2
 benchmark performs no paid-hit conversion. The selector starts from a complete
 modeled loadout with hit-bearing options and never accepts a swap that worsens

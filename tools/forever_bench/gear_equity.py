@@ -76,7 +76,7 @@ def main():
     for filename, records in [('selected_gear_equity.csv', rows),
                               ('spec_gear_equity.csv', summary)]:
         with (args.output / filename).open('w') as handle:
-            writer = csv.DictWriter(handle, fieldnames=list(records[0]))
+            writer = csv.DictWriter(handle, fieldnames=list(records[0]), lineterminator="\n")
             writer.writeheader()
             writer.writerows(records)
     (args.output / 'gear_equity.json').write_text(json.dumps({

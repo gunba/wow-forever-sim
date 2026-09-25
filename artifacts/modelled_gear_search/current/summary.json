@@ -1,13 +1,13 @@
 {
   "scenario": "modeled-65-v2",
   "searchManifest": {
-    "inputsSHA256": "a16565efb56ebad5718581170a7dcbabeef9d853cc508235941e34719db42a69",
+    "inputsSHA256": "970fe467a86f1d24cc315d6836828c32a68efecb24a97945b1cd36b39dbdc682",
     "settings": {
       "screen": 100,
       "validate": 2000,
       "passes": 5,
       "iterations": 5000,
-      "seed": 20300371,
+      "seed": 20300707,
       "modeled_only": true
     },
     "jobs": [
@@ -750,8 +750,8 @@
     ]
   },
   "confirmationManifest": {
-    "inputsSHA256": "2bf35aeb1d33280c5740eb49946822133939befe7887d4bcfc4a17a4aa9ad4af",
-    "seed": 20300391,
+    "inputsSHA256": "799ff47e9ae64452bc6706ae4686114aafdf7d268fc4fc82f61a55b4cddaebd2",
+    "seed": 20300731,
     "iterations": 5000,
     "naturalHit": true
   },
@@ -952,1842 +952,962 @@
     {
       "Key": "balance",
       "Race": "Tauren",
-      "Decision": "retain",
-      "BaselineDPS": 603.9658318562712,
-      "CandidateDPS": 654.9462223271091,
-      "GainDPS": 50.98039047083796,
-      "GainPercent": 8.440939500526252,
-      "Conservative95BoundDPS": 0.8172876620622048
+      "Decision": "unchanged"
     },
     {
       "Key": "balance",
       "Race": "Windshaper",
-      "Decision": "retain",
-      "BaselineDPS": 608.9641828036938,
-      "CandidateDPS": 657.8017396270448,
-      "GainDPS": 48.83755682335095,
-      "GainPercent": 8.019774923132756,
-      "Conservative95BoundDPS": 0.8190062066543027
+      "Decision": "unchanged"
     },
     {
       "Key": "balance",
       "Race": "Night Elf",
-      "Decision": "retain",
-      "BaselineDPS": 609.055687058752,
-      "CandidateDPS": 658.1423772315953,
-      "GainDPS": 49.086690172843305,
-      "GainPercent": 8.059474891350648,
-      "Conservative95BoundDPS": 0.8211192855973818
+      "Decision": "unchanged"
     },
     {
       "Key": "balance",
       "Race": "High Order",
-      "Decision": "retain",
-      "BaselineDPS": 608.9641828036938,
-      "CandidateDPS": 657.8017396270448,
-      "GainDPS": 48.83755682335095,
-      "GainPercent": 8.019774923132756,
-      "Conservative95BoundDPS": 0.8190062066543027
+      "Decision": "unchanged"
     },
     {
       "Key": "feral",
       "Race": "Tauren",
-      "Decision": "retain",
-      "BaselineDPS": 674.282666910109,
-      "CandidateDPS": 773.22140831103,
-      "GainDPS": 98.938741400921,
-      "GainPercent": 14.673184742284185,
-      "Conservative95BoundDPS": 0.6827098971719647
+      "Decision": "unchanged"
     },
     {
       "Key": "feral",
       "Race": "Windshaper",
-      "Decision": "retain",
-      "BaselineDPS": 681.1451808493525,
-      "CandidateDPS": 780.9664531977992,
-      "GainDPS": 99.82127234844666,
-      "GainPercent": 14.654918680328139,
-      "Conservative95BoundDPS": 0.6928257222994582
+      "Decision": "unchanged"
     },
     {
       "Key": "feral",
       "Race": "Night Elf",
-      "Decision": "retain",
-      "BaselineDPS": 678.9670485851035,
-      "CandidateDPS": 777.5398640900178,
-      "GainDPS": 98.57281550491427,
-      "GainPercent": 14.518055877723334,
-      "Conservative95BoundDPS": 0.6843940998136913
+      "Decision": "unchanged"
     },
     {
       "Key": "feral",
       "Race": "High Order",
-      "Decision": "retain",
-      "BaselineDPS": 681.1451808493525,
-      "CandidateDPS": 780.9664531977992,
-      "GainDPS": 99.82127234844666,
-      "GainPercent": 14.654918680328139,
-      "Conservative95BoundDPS": 0.6928257222994582
+      "Decision": "unchanged"
     },
     {
       "Key": "elemental",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 486.1369038428467,
-      "CandidateDPS": 546.0389865665195,
-      "GainDPS": 59.90208272367278,
-      "GainPercent": 12.322060359983963,
-      "Conservative95BoundDPS": 0.6457323981550673
+      "Decision": "unchanged"
     },
     {
       "Key": "elemental",
       "Race": "Tauren",
-      "Decision": "retain",
-      "BaselineDPS": 481.42090184851384,
-      "CandidateDPS": 540.7863323922991,
-      "GainDPS": 59.36543054378524,
-      "GainPercent": 12.331294780895377,
-      "Conservative95BoundDPS": 0.640694298966392
+      "Decision": "unchanged"
     },
     {
       "Key": "elemental",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 483.5877496990079,
-      "CandidateDPS": 543.6041472429863,
-      "GainDPS": 60.01639754397843,
-      "GainPercent": 12.410652995518086,
-      "Conservative95BoundDPS": 0.6371174408409555
+      "Decision": "unchanged"
     },
     {
       "Key": "elemental",
       "Race": "Windshaper",
-      "Decision": "retain",
-      "BaselineDPS": 484.20649739301354,
-      "CandidateDPS": 544.1172661317578,
-      "GainDPS": 59.91076873874425,
-      "GainPercent": 12.372979103193812,
-      "Conservative95BoundDPS": 0.631777026573151
+      "Decision": "unchanged"
     },
     {
       "Key": "elemental",
       "Race": "Dwarf",
-      "Decision": "retain",
-      "BaselineDPS": 485.4847285220252,
-      "CandidateDPS": 542.0579845744944,
-      "GainDPS": 56.57325605246922,
-      "GainPercent": 11.652942457056636,
-      "Conservative95BoundDPS": 0.6417959195528057
+      "Decision": "unchanged"
     },
     {
       "Key": "stormcaller",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 524.4119243675934,
-      "CandidateDPS": 564.9634800628196,
-      "GainDPS": 40.55155569522617,
-      "GainPercent": 7.732767660485353,
-      "Conservative95BoundDPS": 0.6173548365665643
+      "Decision": "unchanged"
     },
     {
       "Key": "stormcaller",
       "Race": "Tauren",
-      "Decision": "retain",
-      "BaselineDPS": 518.7498957364224,
-      "CandidateDPS": 564.5661135588045,
-      "GainDPS": 45.8162178223821,
-      "GainPercent": 8.832043765009523,
-      "Conservative95BoundDPS": 0.6153039520912883
+      "Decision": "unchanged"
     },
     {
       "Key": "stormcaller",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 521.82936454939,
-      "CandidateDPS": 561.9128419698853,
-      "GainDPS": 40.08347742049534,
-      "GainPercent": 7.681338028017687,
-      "Conservative95BoundDPS": 0.6135449638093389
+      "Decision": "unchanged"
     },
     {
       "Key": "stormcaller",
       "Race": "Windshaper",
-      "Decision": "retain",
-      "BaselineDPS": 522.7992737724818,
-      "CandidateDPS": 563.5959561621394,
-      "GainDPS": 40.796682389657576,
-      "GainPercent": 7.803507854031943,
-      "Conservative95BoundDPS": 0.616924164298752
+      "Decision": "unchanged"
     },
     {
       "Key": "stormcaller",
       "Race": "Dwarf",
-      "Decision": "retain",
-      "BaselineDPS": 524.0486297479257,
-      "CandidateDPS": 560.8789147045231,
-      "GainDPS": 36.83028495659744,
-      "GainPercent": 7.028028100047374,
-      "Conservative95BoundDPS": 0.6163869255796229
+      "Decision": "unchanged"
     },
     {
       "Key": "enhancement",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 800.5302611188771,
-      "CandidateDPS": 816.4256844989709,
-      "GainDPS": 15.895423380093803,
-      "GainPercent": 1.9856118065889536,
-      "Conservative95BoundDPS": 1.7444907717828695
+      "Decision": "unchanged"
     },
     {
       "Key": "enhancement",
       "Race": "Tauren",
-      "Decision": "retain",
-      "BaselineDPS": 789.3079918594032,
-      "CandidateDPS": 814.4232834048132,
-      "GainDPS": 25.11529154541006,
-      "GainPercent": 3.1819380779668784,
-      "Conservative95BoundDPS": 1.698468800496486
+      "Decision": "unchanged"
     },
     {
       "Key": "enhancement",
       "Race": "Troll",
       "Decision": "retain",
-      "BaselineDPS": 790.9605480224343,
-      "CandidateDPS": 814.112969134563,
-      "GainDPS": 23.15242111212865,
-      "GainPercent": 2.9271271708828603,
-      "Conservative95BoundDPS": 1.7212133409048667
+      "BaselineDPS": 822.1432802549535,
+      "CandidateDPS": 827.4809765154348,
+      "GainDPS": 5.337696260481266,
+      "GainPercent": 0.6492416089353673,
+      "Conservative95BoundDPS": 1.7235774351579083
     },
     {
       "Key": "enhancement",
       "Race": "Windshaper",
-      "Decision": "retain",
-      "BaselineDPS": 792.0246180855918,
-      "CandidateDPS": 816.592485051752,
-      "GainDPS": 24.56786696616018,
-      "GainPercent": 3.1019069868741385,
-      "Conservative95BoundDPS": 1.691479157245463
+      "Decision": "unchanged"
     },
     {
       "Key": "enhancement",
       "Race": "Dwarf",
       "Decision": "retain",
-      "BaselineDPS": 789.3777196612938,
-      "CandidateDPS": 817.8321782849513,
-      "GainDPS": 28.4544586236575,
-      "GainPercent": 3.60466959162044,
-      "Conservative95BoundDPS": 1.708885470782257
+      "BaselineDPS": 826.466259306095,
+      "CandidateDPS": 833.1476413334649,
+      "GainDPS": 6.681382027369864,
+      "GainPercent": 0.8084276825746745,
+      "Conservative95BoundDPS": 1.7257991083942124
     },
     {
       "Key": "beast_mastery",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 861.640171943406,
-      "CandidateDPS": 988.0304655286529,
-      "GainDPS": 126.39029358524692,
-      "GainPercent": 14.668570210715345,
-      "Conservative95BoundDPS": 0.7303816303886506
+      "Decision": "unchanged"
     },
     {
       "Key": "beast_mastery",
       "Race": "Tauren",
-      "Decision": "retain",
-      "BaselineDPS": 866.5533481847795,
-      "CandidateDPS": 986.7277350960679,
-      "GainDPS": 120.17438691128848,
-      "GainPercent": 13.868088694484289,
-      "Conservative95BoundDPS": 0.7937242703215677
+      "Decision": "unchanged"
     },
     {
       "Key": "beast_mastery",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 872.6852040941162,
-      "CandidateDPS": 994.2134743870611,
-      "GainDPS": 121.52827029294485,
-      "GainPercent": 13.925785577984708,
-      "Conservative95BoundDPS": 0.8035246078671675
+      "Decision": "unchanged"
     },
     {
       "Key": "beast_mastery",
       "Race": "Windshaper",
-      "Decision": "retain",
-      "BaselineDPS": 874.7019942541292,
-      "CandidateDPS": 996.2214121964281,
-      "GainDPS": 121.5194179422989,
-      "GainPercent": 13.892665015119833,
-      "Conservative95BoundDPS": 0.7984880335536929
+      "Decision": "unchanged"
     },
     {
       "Key": "beast_mastery",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 873.8192992175514,
-      "CandidateDPS": 992.5638231475675,
-      "GainDPS": 118.74452393001616,
-      "GainPercent": 13.589139543649836,
-      "Conservative95BoundDPS": 0.738338476738332
+      "Decision": "unchanged"
     },
     {
       "Key": "beast_mastery",
       "Race": "Dwarf",
-      "Decision": "retain",
-      "BaselineDPS": 867.9404869992272,
-      "CandidateDPS": 988.2679637839736,
-      "GainDPS": 120.32747678474641,
-      "GainPercent": 13.86356306533878,
-      "Conservative95BoundDPS": 0.8003517336600029
+      "Decision": "unchanged"
     },
     {
       "Key": "beast_mastery",
       "Race": "Night Elf",
-      "Decision": "retain",
-      "BaselineDPS": 879.9052119378414,
-      "CandidateDPS": 1000.9718112912628,
-      "GainDPS": 121.06659935342145,
-      "GainPercent": 13.759050146639417,
-      "Conservative95BoundDPS": 0.8037557155111317
+      "Decision": "unchanged"
     },
     {
       "Key": "beast_mastery",
       "Race": "High Order",
-      "Decision": "retain",
-      "BaselineDPS": 874.7019942541292,
-      "CandidateDPS": 996.2214121964281,
-      "GainDPS": 121.5194179422989,
-      "GainPercent": 13.892665015119833,
-      "Conservative95BoundDPS": 0.7984880335536929
+      "Decision": "unchanged"
     },
     {
       "Key": "marksmanship",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 692.1763835783604,
-      "CandidateDPS": 822.5604895247096,
-      "GainDPS": 130.38410594634922,
-      "GainPercent": 18.83683249525207,
-      "Conservative95BoundDPS": 0.9930757002388747
+      "Decision": "unchanged"
     },
     {
       "Key": "marksmanship",
       "Race": "Tauren",
-      "Decision": "retain",
-      "BaselineDPS": 685.1998961095279,
-      "CandidateDPS": 807.0126908395823,
-      "GainDPS": 121.8127947300544,
-      "GainPercent": 17.7777018679791,
-      "Conservative95BoundDPS": 0.9847005869467907
+      "Decision": "unchanged"
     },
     {
       "Key": "marksmanship",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 702.0429106908178,
-      "CandidateDPS": 830.0558072821356,
-      "GainDPS": 128.0128965913177,
-      "GainPercent": 18.234340756372234,
-      "Conservative95BoundDPS": 1.0497334109197187
+      "Decision": "unchanged"
     },
     {
       "Key": "marksmanship",
       "Race": "Windshaper",
-      "Decision": "retain",
-      "BaselineDPS": 704.6698131665134,
-      "CandidateDPS": 832.5543735755864,
-      "GainDPS": 127.88456040907295,
-      "GainPercent": 18.14815364864421,
-      "Conservative95BoundDPS": 1.0480653326760683
+      "Decision": "unchanged"
     },
     {
       "Key": "marksmanship",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 703.0658306630955,
-      "CandidateDPS": 825.9081130005222,
-      "GainDPS": 122.8422823374267,
-      "GainPercent": 17.472372711040183,
-      "Conservative95BoundDPS": 0.9953995493012335
+      "Decision": "unchanged"
     },
     {
       "Key": "marksmanship",
       "Race": "Dwarf",
-      "Decision": "retain",
-      "BaselineDPS": 687.2897536115828,
-      "CandidateDPS": 808.2336240475099,
-      "GainDPS": 120.94387043592712,
-      "GainPercent": 17.59721715628511,
-      "Conservative95BoundDPS": 0.9771590490596679
+      "Decision": "unchanged"
     },
     {
       "Key": "marksmanship",
       "Race": "Night Elf",
-      "Decision": "retain",
-      "BaselineDPS": 699.8893520858776,
-      "CandidateDPS": 823.3559799304,
-      "GainDPS": 123.46662784452246,
-      "GainPercent": 17.640878158319644,
-      "Conservative95BoundDPS": 0.9934834379928987
+      "Decision": "unchanged"
     },
     {
       "Key": "marksmanship",
       "Race": "High Order",
-      "Decision": "retain",
-      "BaselineDPS": 704.6698131665134,
-      "CandidateDPS": 832.5543735755864,
-      "GainDPS": 127.88456040907295,
-      "GainPercent": 18.14815364864421,
-      "Conservative95BoundDPS": 1.0480653326760683
+      "Decision": "unchanged"
     },
     {
       "Key": "survival",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 970.6020276293286,
-      "CandidateDPS": 1033.4167340046215,
-      "GainDPS": 62.81470637529287,
-      "GainPercent": 6.471726267532763,
-      "Conservative95BoundDPS": 1.202459180887249
+      "Decision": "unchanged"
     },
     {
       "Key": "survival",
       "Race": "Tauren",
-      "Decision": "retain",
-      "BaselineDPS": 964.6217877585308,
-      "CandidateDPS": 1017.6389620938905,
-      "GainDPS": 53.017174335359755,
-      "GainPercent": 5.496161812657636,
-      "Conservative95BoundDPS": 1.1989472077986332
+      "Decision": "unchanged"
     },
     {
       "Key": "survival",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 964.5066291078577,
-      "CandidateDPS": 1017.773074110409,
-      "GainDPS": 53.26644500255122,
-      "GainPercent": 5.522662405319208,
-      "Conservative95BoundDPS": 1.1871247183542732
+      "Decision": "unchanged"
     },
     {
       "Key": "survival",
       "Race": "Windshaper",
-      "Decision": "retain",
-      "BaselineDPS": 967.1189325589141,
-      "CandidateDPS": 1019.8212761812131,
-      "GainDPS": 52.70234362229894,
-      "GainPercent": 5.4494170104656146,
-      "Conservative95BoundDPS": 1.1806598880027865
+      "Decision": "unchanged"
     },
     {
       "Key": "survival",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 982.1049601200117,
-      "CandidateDPS": 1035.254008147814,
-      "GainDPS": 53.14904802780222,
-      "GainPercent": 5.41174825359883,
-      "Conservative95BoundDPS": 1.2063899000544747
+      "Decision": "unchanged"
     },
     {
       "Key": "survival",
       "Race": "Dwarf",
-      "Decision": "retain",
-      "BaselineDPS": 961.4230743997796,
-      "CandidateDPS": 1014.1872282453372,
-      "GainDPS": 52.764153845557644,
-      "GainPercent": 5.488130590010909,
-      "Conservative95BoundDPS": 1.1832602389708535
+      "Decision": "unchanged"
     },
     {
       "Key": "survival",
       "Race": "Night Elf",
-      "Decision": "retain",
-      "BaselineDPS": 975.3986468793025,
-      "CandidateDPS": 1028.638476971796,
-      "GainDPS": 53.23983009249355,
-      "GainPercent": 5.458263681503911,
-      "Conservative95BoundDPS": 1.2035099741170763
+      "Decision": "unchanged"
     },
     {
       "Key": "survival",
       "Race": "High Order",
-      "Decision": "retain",
-      "BaselineDPS": 967.1189325589141,
-      "CandidateDPS": 1019.8212761812131,
-      "GainDPS": 52.70234362229894,
-      "GainPercent": 5.4494170104656146,
-      "Conservative95BoundDPS": 1.1806598880027865
+      "Decision": "unchanged"
     },
     {
       "Key": "arcane",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 680.1022758054795,
-      "CandidateDPS": 716.2579211787106,
-      "GainDPS": 36.155645373231096,
-      "GainPercent": 5.31620708523731,
-      "Conservative95BoundDPS": 1.4733353313489936
+      "Decision": "unchanged"
     },
     {
       "Key": "arcane",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 678.5746912933384,
-      "CandidateDPS": 720.122450373585,
-      "GainDPS": 41.54775908024658,
-      "GainPercent": 6.122798214159458,
-      "Conservative95BoundDPS": 1.4671230463723275
+      "Decision": "unchanged"
     },
     {
       "Key": "arcane",
       "Race": "Undead",
-      "Decision": "retain",
-      "BaselineDPS": 698.243634544478,
-      "CandidateDPS": 733.5486912088244,
-      "GainDPS": 35.30505666434635,
-      "GainPercent": 5.056266168094573,
-      "Conservative95BoundDPS": 1.5183387766421697
+      "Decision": "unchanged"
     },
     {
       "Key": "arcane",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 677.6372076635316,
-      "CandidateDPS": 724.608298480491,
-      "GainDPS": 46.97109081695942,
-      "GainPercent": 6.931598543550173,
-      "Conservative95BoundDPS": 1.4787626860355376
+      "Decision": "unchanged"
     },
     {
       "Key": "arcane",
       "Race": "Gnome",
-      "Decision": "retain",
-      "BaselineDPS": 685.2353945960917,
-      "CandidateDPS": 727.2423623245356,
-      "GainDPS": 42.0069677284439,
-      "GainPercent": 6.130297421837743,
-      "Conservative95BoundDPS": 1.4476241291743603
+      "Decision": "unchanged"
     },
     {
       "Key": "arcane",
       "Race": "High Order",
-      "Decision": "retain",
-      "BaselineDPS": 680.238023993825,
-      "CandidateDPS": 722.0405573896112,
-      "GainDPS": 41.80253339578621,
-      "GainPercent": 6.14528031678595,
-      "Conservative95BoundDPS": 1.482582148046627
+      "Decision": "unchanged"
     },
     {
       "Key": "fire",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 662.0920029189741,
-      "CandidateDPS": 718.5907795254799,
-      "GainDPS": 56.49877660650577,
-      "GainPercent": 8.533372455401793,
-      "Conservative95BoundDPS": 1.3914960317265195
+      "Decision": "unchanged"
     },
     {
       "Key": "fire",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 659.7703745087267,
-      "CandidateDPS": 718.4141283620156,
-      "GainDPS": 58.6437538532889,
-      "GainPercent": 8.888509717787159,
-      "Conservative95BoundDPS": 1.3497398637710898
+      "Decision": "unchanged"
     },
     {
       "Key": "fire",
       "Race": "Undead",
-      "Decision": "retain",
-      "BaselineDPS": 675.6018501084884,
-      "CandidateDPS": 732.1234454855344,
-      "GainDPS": 56.52159537704597,
-      "GainPercent": 8.366110212393544,
-      "Conservative95BoundDPS": 1.4034983067485438
+      "Decision": "unchanged"
     },
     {
       "Key": "fire",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 662.9618826889321,
-      "CandidateDPS": 730.0392134177589,
-      "GainDPS": 67.07733072882684,
-      "GainPercent": 10.117826149637045,
-      "Conservative95BoundDPS": 1.37986810625921
+      "Decision": "unchanged"
     },
     {
       "Key": "fire",
       "Race": "Gnome",
-      "Decision": "retain",
-      "BaselineDPS": 676.9462965211235,
-      "CandidateDPS": 730.7170188606826,
-      "GainDPS": 53.77072233955914,
-      "GainPercent": 7.943129701113784,
-      "Conservative95BoundDPS": 1.3380736332655272
+      "Decision": "unchanged"
     },
     {
       "Key": "fire",
       "Race": "High Order",
-      "Decision": "retain",
-      "BaselineDPS": 662.1246355021863,
-      "CandidateDPS": 718.8751223839827,
-      "GainDPS": 56.750486881796405,
-      "GainPercent": 8.570967434062348,
-      "Conservative95BoundDPS": 1.2952712848854837
+      "Decision": "unchanged"
     },
     {
       "Key": "frost",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 653.5847880234084,
-      "CandidateDPS": 703.3029055390023,
-      "GainDPS": 49.71811751559392,
-      "GainPercent": 7.606988171489273,
-      "Conservative95BoundDPS": 1.3024979274069606
+      "Decision": "unchanged"
     },
     {
       "Key": "frost",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 651.7421764343578,
-      "CandidateDPS": 700.3679210699797,
-      "GainDPS": 48.62574463562191,
-      "GainPercent": 7.460886588873293,
-      "Conservative95BoundDPS": 1.2909054635180095
+      "Decision": "unchanged"
     },
     {
       "Key": "frost",
       "Race": "Undead",
-      "Decision": "retain",
-      "BaselineDPS": 663.3488558608514,
-      "CandidateDPS": 705.3356378461276,
-      "GainDPS": 41.98678198527625,
-      "GainPercent": 6.329517510177735,
-      "Conservative95BoundDPS": 1.3089273001449238
+      "Decision": "unchanged"
     },
     {
       "Key": "frost",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 654.4635223831185,
-      "CandidateDPS": 707.8289785261877,
-      "GainDPS": 53.365456143069196,
-      "GainPercent": 8.15407647912108,
-      "Conservative95BoundDPS": 1.2739426517995573
+      "Decision": "unchanged"
     },
     {
       "Key": "frost",
       "Race": "Gnome",
-      "Decision": "retain",
-      "BaselineDPS": 673.3505822787993,
-      "CandidateDPS": 716.0049354017884,
-      "GainDPS": 42.654353122989164,
-      "GainPercent": 6.334642643158541,
-      "Conservative95BoundDPS": 1.223412598792631
+      "Decision": "unchanged"
     },
     {
       "Key": "frost",
       "Race": "High Order",
-      "Decision": "retain",
-      "BaselineDPS": 653.9246615199924,
-      "CandidateDPS": 702.4694865882094,
-      "GainDPS": 48.54482506821705,
-      "GainPercent": 7.423611300326054,
-      "Conservative95BoundDPS": 1.2924378553271354
+      "Decision": "unchanged"
     },
     {
       "Key": "retribution",
       "Race": "Undead",
-      "Decision": "retain",
-      "BaselineDPS": 1096.4383792211202,
-      "CandidateDPS": 1230.9543069603787,
-      "GainDPS": 134.5159277392586,
-      "GainPercent": 12.268443926125153,
-      "Conservative95BoundDPS": 1.8473501712599094
+      "Decision": "unchanged"
     },
     {
       "Key": "retribution",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 1082.2743644260186,
-      "CandidateDPS": 1217.8038521311992,
-      "GainDPS": 135.5294877051806,
-      "GainPercent": 12.522655267461529,
-      "Conservative95BoundDPS": 1.7795022835199907
+      "Decision": "unchanged"
     },
     {
       "Key": "retribution",
       "Race": "Dwarf",
-      "Decision": "retain",
-      "BaselineDPS": 1080.5827883965662,
-      "CandidateDPS": 1225.7635719625282,
-      "GainDPS": 145.18078356596197,
-      "GainPercent": 13.435415141248914,
-      "Conservative95BoundDPS": 1.7855860041464626
+      "Decision": "unchanged"
     },
     {
       "Key": "shadow",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 794.281642479792,
-      "CandidateDPS": 826.2150851330782,
-      "GainDPS": 31.933442653286193,
-      "GainPercent": 4.020418066517084,
-      "Conservative95BoundDPS": 0.6749668924794309
+      "Decision": "unchanged"
     },
     {
       "Key": "shadow",
       "Race": "Undead",
-      "Decision": "retain",
-      "BaselineDPS": 810.6993670759655,
-      "CandidateDPS": 841.7169144294794,
-      "GainDPS": 31.01754735351392,
-      "GainPercent": 3.8260233834137756,
-      "Conservative95BoundDPS": 0.6954491472064424
+      "Decision": "unchanged"
     },
     {
       "Key": "shadow",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 793.77996818137,
-      "CandidateDPS": 825.726896201413,
-      "GainDPS": 31.946928020042947,
-      "GainPercent": 4.024657877577408,
-      "Conservative95BoundDPS": 0.6655442436466855
+      "Decision": "unchanged"
     },
     {
       "Key": "shadow",
       "Race": "Dwarf",
-      "Decision": "retain",
-      "BaselineDPS": 800.0506284706225,
-      "CandidateDPS": 831.9760454827426,
-      "GainDPS": 31.92541701212008,
-      "GainPercent": 3.9904245901473425,
-      "Conservative95BoundDPS": 0.6717767895998882
+      "Decision": "unchanged"
     },
     {
       "Key": "shadow",
       "Race": "Night Elf",
-      "Decision": "retain",
-      "BaselineDPS": 799.902562696082,
-      "CandidateDPS": 832.0048127838747,
-      "GainDPS": 32.102250087792754,
-      "GainPercent": 4.013270063742727,
-      "Conservative95BoundDPS": 0.6728509237270889
+      "Decision": "unchanged"
     },
     {
       "Key": "shadow",
       "Race": "Gnome",
-      "Decision": "retain",
-      "BaselineDPS": 795.3928735788145,
-      "CandidateDPS": 827.2984319111893,
-      "GainDPS": 31.905558332374767,
-      "GainPercent": 4.011295473244303,
-      "Conservative95BoundDPS": 0.6689186235328894
+      "Decision": "unchanged"
     },
     {
       "Key": "smite",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 487.84369688804213,
-      "CandidateDPS": 546.5463057905706,
-      "GainDPS": 58.70260890252848,
-      "GainPercent": 12.033077249330631,
-      "Conservative95BoundDPS": 0.38034232861620637
+      "Decision": "unchanged"
     },
     {
       "Key": "smite",
       "Race": "Undead",
-      "Decision": "retain",
-      "BaselineDPS": 502.43375515208703,
-      "CandidateDPS": 555.1517514745713,
-      "GainDPS": 52.717996322484225,
-      "GainPercent": 10.492526782267337,
-      "Conservative95BoundDPS": 0.40740670782219596
+      "Decision": "unchanged"
     },
     {
       "Key": "smite",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 486.3034069913348,
-      "CandidateDPS": 543.6603721779118,
-      "GainDPS": 57.356965186576986,
-      "GainPercent": 11.794481461981409,
-      "Conservative95BoundDPS": 0.3800023145894812
+      "Decision": "unchanged"
     },
     {
       "Key": "smite",
       "Race": "Dwarf",
-      "Decision": "retain",
-      "BaselineDPS": 488.0790865247787,
-      "CandidateDPS": 543.3009285132123,
-      "GainDPS": 55.221841988433596,
-      "GainPercent": 11.31411763237475,
-      "Conservative95BoundDPS": 0.3786545773024137
+      "Decision": "unchanged"
     },
     {
       "Key": "smite",
       "Race": "Night Elf",
-      "Decision": "retain",
-      "BaselineDPS": 488.08780906996776,
-      "CandidateDPS": 546.6213083407604,
-      "GainDPS": 58.53349927079262,
-      "GainPercent": 11.992411648700244,
-      "Conservative95BoundDPS": 0.3816719607722082
+      "Decision": "unchanged"
     },
     {
       "Key": "smite",
       "Race": "Gnome",
-      "Decision": "retain",
-      "BaselineDPS": 489.1607446594135,
-      "CandidateDPS": 547.6909941489147,
-      "GainDPS": 58.53024948950116,
-      "GainPercent": 11.96544287916109,
-      "Conservative95BoundDPS": 0.3809529822722981
+      "Decision": "unchanged"
     },
     {
       "Key": "combat",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 618.7091260673385,
-      "CandidateDPS": 698.5795552380118,
-      "GainDPS": 79.87042917067333,
-      "GainPercent": 12.909204956834671,
-      "Conservative95BoundDPS": 0.7197091974709626
+      "Decision": "unchanged"
     },
     {
       "Key": "combat",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 615.3825225111843,
-      "CandidateDPS": 695.1762379471808,
-      "GainDPS": 79.79371543599643,
-      "GainPercent": 12.966522856447588,
-      "Conservative95BoundDPS": 0.7069099611233649
+      "Decision": "unchanged"
     },
     {
       "Key": "combat",
       "Race": "Undead",
-      "Decision": "retain",
-      "BaselineDPS": 641.0980982906027,
-      "CandidateDPS": 718.2619410081016,
-      "GainDPS": 77.16384271749894,
-      "GainPercent": 12.036198972239255,
-      "Conservative95BoundDPS": 0.734199489430218
+      "Decision": "unchanged"
     },
     {
       "Key": "combat",
       "Race": "Windshaper",
-      "Decision": "retain",
-      "BaselineDPS": 621.0069804675647,
-      "CandidateDPS": 699.720707245191,
-      "GainDPS": 78.71372677762622,
-      "GainPercent": 12.675175843975467,
-      "Conservative95BoundDPS": 0.7022564703464396
+      "Decision": "unchanged"
     },
     {
       "Key": "combat",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 611.8027612840981,
-      "CandidateDPS": 699.8921841281865,
-      "GainDPS": 88.0894228440884,
-      "GainPercent": 14.398336918126953,
-      "Conservative95BoundDPS": 0.6932636712218407
+      "Decision": "unchanged"
     },
     {
       "Key": "combat",
       "Race": "Dwarf",
-      "Decision": "retain",
-      "BaselineDPS": 617.2710713273317,
-      "CandidateDPS": 691.4385647082639,
-      "GainDPS": 74.16749338093223,
-      "GainPercent": 12.015384622099367,
-      "Conservative95BoundDPS": 0.715414582772478
+      "Decision": "unchanged"
     },
     {
       "Key": "combat",
       "Race": "Night Elf",
-      "Decision": "retain",
-      "BaselineDPS": 620.520952348114,
-      "CandidateDPS": 698.9823780929725,
-      "GainDPS": 78.4614257448585,
-      "GainPercent": 12.644444228345963,
-      "Conservative95BoundDPS": 0.7205877039496191
+      "Decision": "unchanged"
     },
     {
       "Key": "combat",
       "Race": "Gnome",
-      "Decision": "retain",
-      "BaselineDPS": 619.5883397195164,
-      "CandidateDPS": 699.124688195823,
-      "GainDPS": 79.53634847630656,
-      "GainPercent": 12.83696664019083,
-      "Conservative95BoundDPS": 0.7195090058511753
+      "Decision": "unchanged"
     },
     {
       "Key": "combat",
       "Race": "High Order",
-      "Decision": "retain",
-      "BaselineDPS": 621.0069804675647,
-      "CandidateDPS": 699.720707245191,
-      "GainDPS": 78.71372677762622,
-      "GainPercent": 12.675175843975467,
-      "Conservative95BoundDPS": 0.7022564703464396
+      "Decision": "unchanged"
     },
     {
       "Key": "mutilate",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 665.6461979182393,
-      "CandidateDPS": 705.5609031758474,
-      "GainDPS": 39.91470525760815,
-      "GainPercent": 5.99638447307872,
-      "Conservative95BoundDPS": 0.7685044425218319
+      "Decision": "unchanged"
     },
     {
       "Key": "mutilate",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 662.1506254305928,
-      "CandidateDPS": 702.2814104454021,
-      "GainDPS": 40.13078501480936,
-      "GainPercent": 6.060673126860303,
-      "Conservative95BoundDPS": 0.7569536964059661
+      "Decision": "unchanged"
     },
     {
       "Key": "mutilate",
       "Race": "Undead",
-      "Decision": "retain",
-      "BaselineDPS": 696.28622967495,
-      "CandidateDPS": 739.4414067997432,
-      "GainDPS": 43.15517712479311,
-      "GainPercent": 6.1979075968426685,
-      "Conservative95BoundDPS": 0.8020575731032182
+      "Decision": "unchanged"
     },
     {
       "Key": "mutilate",
       "Race": "Windshaper",
-      "Decision": "retain",
-      "BaselineDPS": 666.713838537717,
-      "CandidateDPS": 707.4705928566821,
-      "GainDPS": 40.75675431896502,
-      "GainPercent": 6.113080599670101,
-      "Conservative95BoundDPS": 0.7709567530756839
+      "Decision": "unchanged"
     },
     {
       "Key": "mutilate",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 661.348358795115,
-      "CandidateDPS": 701.1318223436056,
-      "GainDPS": 39.783463548490545,
-      "GainPercent": 6.015508017736749,
-      "Conservative95BoundDPS": 0.7731613024746857
+      "Decision": "unchanged"
     },
     {
       "Key": "mutilate",
       "Race": "Dwarf",
-      "Decision": "retain",
-      "BaselineDPS": 659.0000129049411,
-      "CandidateDPS": 700.7068506066807,
-      "GainDPS": 41.70683770173969,
-      "GainPercent": 6.328806811079044,
-      "Conservative95BoundDPS": 0.7671553320921645
+      "Decision": "unchanged"
     },
     {
       "Key": "mutilate",
       "Race": "Night Elf",
-      "Decision": "retain",
-      "BaselineDPS": 669.1074102636592,
-      "CandidateDPS": 709.2507441950584,
-      "GainDPS": 40.143333931399184,
-      "GainPercent": 5.99953509939172,
-      "Conservative95BoundDPS": 0.7669548021676936
+      "Decision": "unchanged"
     },
     {
       "Key": "mutilate",
       "Race": "Gnome",
-      "Decision": "retain",
-      "BaselineDPS": 673.4792414549478,
-      "CandidateDPS": 713.5073112290088,
-      "GainDPS": 40.02806977406101,
-      "GainPercent": 5.943474915067397,
-      "Conservative95BoundDPS": 0.7561300458135872
+      "Decision": "unchanged"
     },
     {
       "Key": "mutilate",
       "Race": "High Order",
-      "Decision": "retain",
-      "BaselineDPS": 666.713838537717,
-      "CandidateDPS": 707.4705928566821,
-      "GainDPS": 40.75675431896502,
-      "GainPercent": 6.113080599670101,
-      "Conservative95BoundDPS": 0.7709567530756839
+      "Decision": "unchanged"
     },
     {
       "Key": "subtlety",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 574.736720363235,
-      "CandidateDPS": 650.3236302619341,
-      "GainDPS": 75.5869098986991,
-      "GainPercent": 13.151571357912887,
-      "Conservative95BoundDPS": 0.6234725705184767
+      "Decision": "unchanged"
     },
     {
       "Key": "subtlety",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 575.1077443831439,
-      "CandidateDPS": 651.2240821444832,
-      "GainDPS": 76.11633776133931,
-      "GainPercent": 13.235143936895009,
-      "Conservative95BoundDPS": 0.6398178206431164
+      "Decision": "unchanged"
     },
     {
       "Key": "subtlety",
       "Race": "Undead",
-      "Decision": "retain",
-      "BaselineDPS": 600.0520293000998,
-      "CandidateDPS": 676.4277044908738,
-      "GainDPS": 76.37567519077402,
-      "GainPercent": 12.728175468360392,
-      "Conservative95BoundDPS": 0.6625908319740732
+      "Decision": "unchanged"
     },
     {
       "Key": "subtlety",
       "Race": "Windshaper",
       "Decision": "retain",
-      "BaselineDPS": 575.441325113996,
-      "CandidateDPS": 652.4795789237298,
-      "GainDPS": 77.03825380973387,
-      "GainPercent": 13.38768184479494,
-      "Conservative95BoundDPS": 0.6371527986222092
+      "BaselineDPS": 652.3058200091862,
+      "CandidateDPS": 653.1643219103512,
+      "GainDPS": 0.8585019011650274,
+      "GainPercent": 0.13161033902057434,
+      "Conservative95BoundDPS": 0.6833071493893805
     },
     {
       "Key": "subtlety",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 571.4528595944703,
-      "CandidateDPS": 654.4130595803429,
-      "GainDPS": 82.96019998587258,
-      "GainPercent": 14.517417944980625,
-      "Conservative95BoundDPS": 0.6269260964850468
+      "Decision": "unchanged"
     },
     {
       "Key": "subtlety",
       "Race": "Dwarf",
-      "Decision": "retain",
-      "BaselineDPS": 573.7285606631276,
-      "CandidateDPS": 645.6315334694008,
-      "GainDPS": 71.90297280627317,
-      "GainPercent": 12.532576855362786,
-      "Conservative95BoundDPS": 0.6175911538945714
+      "Decision": "unchanged"
     },
     {
       "Key": "subtlety",
       "Race": "Night Elf",
-      "Decision": "retain",
-      "BaselineDPS": 577.8114851524647,
-      "CandidateDPS": 654.0826509525996,
-      "GainDPS": 76.2711658001349,
-      "GainPercent": 13.200008611806936,
-      "Conservative95BoundDPS": 0.6383982823663371
+      "Decision": "unchanged"
     },
     {
       "Key": "subtlety",
       "Race": "Gnome",
-      "Decision": "retain",
-      "BaselineDPS": 575.1847193321948,
-      "CandidateDPS": 655.6625754236165,
-      "GainDPS": 80.4778560914217,
-      "GainPercent": 13.99165405243357,
-      "Conservative95BoundDPS": 0.6354909455266256
+      "Decision": "unchanged"
     },
     {
       "Key": "subtlety",
       "Race": "High Order",
       "Decision": "retain",
-      "BaselineDPS": 575.441325113996,
-      "CandidateDPS": 652.4795789237298,
-      "GainDPS": 77.03825380973387,
-      "GainPercent": 13.38768184479494,
-      "Conservative95BoundDPS": 0.6371527986222092
+      "BaselineDPS": 652.3058200091862,
+      "CandidateDPS": 653.1643219103512,
+      "GainDPS": 0.8585019011650274,
+      "GainPercent": 0.13161033902057434,
+      "Conservative95BoundDPS": 0.6833071493893805
     },
     {
       "Key": "demonology",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 859.6264945456471,
-      "CandidateDPS": 898.1143689688173,
-      "GainDPS": 38.48787442317018,
-      "GainPercent": 4.477278756224566,
-      "Conservative95BoundDPS": 1.1072490535947388
+      "Decision": "unchanged"
     },
     {
       "Key": "demonology",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 854.1662346070834,
-      "CandidateDPS": 892.6336226675037,
-      "GainDPS": 38.46738806042026,
-      "GainPercent": 4.503501367987845,
-      "Conservative95BoundDPS": 1.0849691142280495
+      "Decision": "unchanged"
     },
     {
       "Key": "demonology",
       "Race": "Undead",
-      "Decision": "retain",
-      "BaselineDPS": 867.5069766456361,
-      "CandidateDPS": 910.9612622042889,
-      "GainDPS": 43.45428555865283,
-      "GainPercent": 5.009099261273523,
-      "Conservative95BoundDPS": 1.1254819002236367
+      "Decision": "unchanged"
     },
     {
       "Key": "demonology",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 852.1752574390174,
-      "CandidateDPS": 898.709865834049,
-      "GainDPS": 46.53460839503157,
-      "GainPercent": 5.460685227458818,
-      "Conservative95BoundDPS": 1.11610686771924
+      "Decision": "unchanged"
     },
     {
       "Key": "demonology",
       "Race": "Gnome",
-      "Decision": "retain",
-      "BaselineDPS": 859.7104540799262,
-      "CandidateDPS": 895.9873880698678,
-      "GainDPS": 36.276933989941654,
-      "GainPercent": 4.219668821960031,
-      "Conservative95BoundDPS": 1.1012400943021494
+      "Decision": "unchanged"
     },
     {
       "Key": "affliction",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 793.3497167171893,
-      "CandidateDPS": 838.7287668068283,
-      "GainDPS": 45.37905008963901,
-      "GainPercent": 5.719930206493737,
-      "Conservative95BoundDPS": 1.273342839946914
+      "Decision": "unchanged"
     },
     {
       "Key": "affliction",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 789.1975256977141,
-      "CandidateDPS": 826.8021700699908,
-      "GainDPS": 37.60464437227665,
-      "GainPercent": 4.76492172717231,
-      "Conservative95BoundDPS": 1.267971403479469
+      "Decision": "unchanged"
     },
     {
       "Key": "affliction",
       "Race": "Undead",
-      "Decision": "retain",
-      "BaselineDPS": 799.6067651409596,
-      "CandidateDPS": 839.2216673458777,
-      "GainDPS": 39.61490220491805,
-      "GainPercent": 4.954298028973591,
-      "Conservative95BoundDPS": 1.2741685501562598
+      "Decision": "unchanged"
     },
     {
       "Key": "affliction",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 787.1001105561324,
-      "CandidateDPS": 846.9005147459636,
-      "GainDPS": 59.80040418983117,
-      "GainPercent": 7.5975601308934735,
-      "Conservative95BoundDPS": 1.273112431862925
+      "Decision": "unchanged"
     },
     {
       "Key": "affliction",
       "Race": "Gnome",
-      "Decision": "retain",
-      "BaselineDPS": 792.3074523495752,
-      "CandidateDPS": 825.6517472469945,
-      "GainDPS": 33.34429489741933,
-      "GainPercent": 4.2085045140667745,
-      "Conservative95BoundDPS": 1.2634273266022318
+      "Decision": "unchanged"
     },
     {
       "Key": "ds_ruin",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 749.5375493003121,
-      "CandidateDPS": 796.486297766317,
-      "GainDPS": 46.94874846600487,
-      "GainPercent": 6.2636953291841335,
-      "Conservative95BoundDPS": 1.3699572851167117
+      "Decision": "unchanged"
     },
     {
       "Key": "ds_ruin",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 745.6270659786139,
-      "CandidateDPS": 784.9705319496155,
-      "GainDPS": 39.34346597100159,
-      "GainPercent": 5.276560866170333,
-      "Conservative95BoundDPS": 1.3470190347110365
+      "Decision": "unchanged"
     },
     {
       "Key": "ds_ruin",
       "Race": "Undead",
-      "Decision": "retain",
-      "BaselineDPS": 759.0442670039581,
-      "CandidateDPS": 808.9358990978305,
-      "GainDPS": 49.89163209387243,
-      "GainPercent": 6.572954208692056,
-      "Conservative95BoundDPS": 1.3836544106129773
+      "Decision": "unchanged"
     },
     {
       "Key": "ds_ruin",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 743.8041403411175,
-      "CandidateDPS": 811.1822604098493,
-      "GainDPS": 67.37812006873173,
-      "GainPercent": 9.058583626306694,
-      "Conservative95BoundDPS": 1.3709799042179889
+      "Decision": "unchanged"
     },
     {
       "Key": "ds_ruin",
       "Race": "Gnome",
-      "Decision": "retain",
-      "BaselineDPS": 748.4050551288555,
-      "CandidateDPS": 798.4376062064522,
-      "GainDPS": 50.032551077596736,
-      "GainPercent": 6.685223561054443,
-      "Conservative95BoundDPS": 1.3652794536244541
+      "Decision": "unchanged"
     },
     {
       "Key": "destruction",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 782.2324754190113,
-      "CandidateDPS": 826.2775179553398,
-      "GainDPS": 44.04504253632854,
-      "GainPercent": 5.630684473018758,
-      "Conservative95BoundDPS": 0.8895397042621878
+      "Decision": "unchanged"
     },
     {
       "Key": "destruction",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 777.7635208459117,
-      "CandidateDPS": 829.6841747893893,
-      "GainDPS": 51.920653943477646,
-      "GainPercent": 6.675635016541746,
-      "Conservative95BoundDPS": 0.8887597016490955
+      "Decision": "unchanged"
     },
     {
       "Key": "destruction",
       "Race": "Undead",
-      "Decision": "retain",
-      "BaselineDPS": 792.1396899406099,
-      "CandidateDPS": 834.2008704982795,
-      "GainDPS": 42.06118055766967,
-      "GainPercent": 5.309818595356985,
-      "Conservative95BoundDPS": 0.9112992154824366
+      "Decision": "unchanged"
     },
     {
       "Key": "destruction",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 775.5948739294117,
-      "CandidateDPS": 833.2603152494414,
-      "GainDPS": 57.665441320029686,
-      "GainPercent": 7.434995157701096,
-      "Conservative95BoundDPS": 0.8979563894683968
+      "Decision": "unchanged"
     },
     {
       "Key": "destruction",
       "Race": "Gnome",
-      "Decision": "retain",
-      "BaselineDPS": 782.2309032447098,
-      "CandidateDPS": 821.4580790637333,
-      "GainDPS": 39.2271758190235,
-      "GainPercent": 5.014782164231606,
-      "Conservative95BoundDPS": 0.8818824147424367
+      "Decision": "unchanged"
     },
     {
       "Key": "fury",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 878.4387846042332,
-      "CandidateDPS": 931.5685753391828,
-      "GainDPS": 53.12979073494955,
-      "GainPercent": 6.048206393674471,
-      "Conservative95BoundDPS": 1.2181103136565223
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_sunder",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 847.3350273765993,
-      "CandidateDPS": 897.0825771899662,
-      "GainDPS": 49.747549813366845,
-      "GainPercent": 5.871060230731671,
-      "Conservative95BoundDPS": 1.2190694826187458
+      "Decision": "unchanged"
     },
     {
       "Key": "fury",
       "Race": "Tauren",
-      "Decision": "retain",
-      "BaselineDPS": 872.2473800141508,
-      "CandidateDPS": 921.7647099842955,
-      "GainDPS": 49.5173299701446,
-      "GainPercent": 5.676982368160425,
-      "Conservative95BoundDPS": 1.2059210624598777
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_sunder",
       "Race": "Tauren",
-      "Decision": "retain",
-      "BaselineDPS": 842.5920787974328,
-      "CandidateDPS": 880.5211426081169,
-      "GainDPS": 37.929063810684056,
-      "GainPercent": 4.501474054303633,
-      "Conservative95BoundDPS": 1.1906667709106231
+      "Decision": "unchanged"
     },
     {
       "Key": "fury",
       "Race": "Troll",
       "Decision": "retain",
-      "BaselineDPS": 874.2239554623106,
-      "CandidateDPS": 909.13975657375,
-      "GainDPS": 34.91580111143935,
-      "GainPercent": 3.993919509214894,
-      "Conservative95BoundDPS": 1.1765764677547779
+      "BaselineDPS": 915.7926580729063,
+      "CandidateDPS": 917.727399716328,
+      "GainDPS": 1.9347416434217166,
+      "GainPercent": 0.2112641574887677,
+      "Conservative95BoundDPS": 1.2496259773452423
     },
     {
       "Key": "fury_sunder",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 844.4950048229862,
-      "CandidateDPS": 887.981178499438,
-      "GainDPS": 43.48617367645181,
-      "GainPercent": 5.1493701476146585,
-      "Conservative95BoundDPS": 1.2233375962982036
+      "Decision": "unchanged"
     },
     {
       "Key": "fury",
       "Race": "Undead",
-      "Decision": "retain",
-      "BaselineDPS": 902.641962609264,
-      "CandidateDPS": 940.7242595852108,
-      "GainDPS": 38.08229697594675,
-      "GainPercent": 4.218981451500701,
-      "Conservative95BoundDPS": 1.2353585265536942
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_sunder",
       "Race": "Undead",
-      "Decision": "retain",
-      "BaselineDPS": 872.7463789402468,
-      "CandidateDPS": 907.1097161602634,
-      "GainDPS": 34.36333722001655,
-      "GainPercent": 3.9373795239051064,
-      "Conservative95BoundDPS": 1.2285429061475484
+      "Decision": "unchanged"
     },
     {
       "Key": "fury",
       "Race": "Windshaper",
-      "Decision": "retain",
-      "BaselineDPS": 876.4113348829537,
-      "CandidateDPS": 924.8117608039681,
-      "GainDPS": 48.4004259210144,
-      "GainPercent": 5.52256959655575,
-      "Conservative95BoundDPS": 1.1974077098008054
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_sunder",
       "Race": "Windshaper",
-      "Decision": "retain",
-      "BaselineDPS": 846.7770879276618,
-      "CandidateDPS": 879.7699324022833,
-      "GainDPS": 32.992844474621506,
-      "GainPercent": 3.8962845056856343,
-      "Conservative95BoundDPS": 1.1948717340954842
+      "Decision": "unchanged"
     },
     {
       "Key": "fury",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 867.78639824218,
-      "CandidateDPS": 929.4502604056809,
-      "GainDPS": 61.66386216350088,
-      "GainPercent": 7.105880236013086,
-      "Conservative95BoundDPS": 1.2082043275844683
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_sunder",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 837.0632877372201,
-      "CandidateDPS": 888.1157740783618,
-      "GainDPS": 51.05248634114173,
-      "GainPercent": 6.098999572559044,
-      "Conservative95BoundDPS": 1.2012363163298494
+      "Decision": "unchanged"
     },
     {
       "Key": "fury",
       "Race": "Dwarf",
       "Decision": "retain",
-      "BaselineDPS": 876.6647150938632,
-      "CandidateDPS": 916.0132796995283,
-      "GainDPS": 39.34856460566516,
-      "GainPercent": 4.488439414543127,
-      "Conservative95BoundDPS": 1.1995348450748458
+      "BaselineDPS": 916.0587237216043,
+      "CandidateDPS": 919.0378413618823,
+      "GainDPS": 2.979117640277991,
+      "GainPercent": 0.32521033457057746,
+      "Conservative95BoundDPS": 1.2688950279398528
     },
     {
       "Key": "fury_sunder",
       "Race": "Dwarf",
-      "Decision": "retain",
-      "BaselineDPS": 843.9504772811322,
-      "CandidateDPS": 875.7225768857196,
-      "GainDPS": 31.772099604587424,
-      "GainPercent": 3.764687675388763,
-      "Conservative95BoundDPS": 1.1984525616781252
+      "Decision": "unchanged"
     },
     {
       "Key": "fury",
       "Race": "Night Elf",
-      "Decision": "retain",
-      "BaselineDPS": 872.2820608625567,
-      "CandidateDPS": 919.7861451435107,
-      "GainDPS": 47.504084280953975,
-      "GainPercent": 5.445954515444182,
-      "Conservative95BoundDPS": 1.1998429591524389
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_sunder",
       "Race": "Night Elf",
-      "Decision": "retain",
-      "BaselineDPS": 842.2041301043328,
-      "CandidateDPS": 887.0811614608604,
-      "GainDPS": 44.877031356527596,
-      "GainPercent": 5.328521881146344,
-      "Conservative95BoundDPS": 1.2181223830622159
+      "Decision": "unchanged"
     },
     {
       "Key": "fury",
       "Race": "Gnome",
       "Decision": "retain",
-      "BaselineDPS": 870.3714695216909,
-      "CandidateDPS": 914.4839772341943,
-      "GainDPS": 44.11250771250343,
-      "GainPercent": 5.068239166518783,
-      "Conservative95BoundDPS": 1.1802051446292718
+      "BaselineDPS": 920.210695920777,
+      "CandidateDPS": 922.435062564175,
+      "GainDPS": 2.2243666433980707,
+      "GainPercent": 0.24172362408506187,
+      "Conservative95BoundDPS": 1.264617244756771
     },
     {
       "Key": "fury_sunder",
       "Race": "Gnome",
-      "Decision": "retain",
-      "BaselineDPS": 841.6133042428107,
-      "CandidateDPS": 879.0721253658473,
-      "GainDPS": 37.458821123036614,
-      "GainPercent": 4.450835191672482,
-      "Conservative95BoundDPS": 1.1890384414583377
+      "Decision": "unchanged"
     },
     {
       "Key": "fury",
       "Race": "High Order",
-      "Decision": "retain",
-      "BaselineDPS": 876.4113348829537,
-      "CandidateDPS": 924.8117608039681,
-      "GainDPS": 48.4004259210144,
-      "GainPercent": 5.52256959655575,
-      "Conservative95BoundDPS": 1.1974077098008054
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_sunder",
       "Race": "High Order",
-      "Decision": "retain",
-      "BaselineDPS": 846.7770879276618,
-      "CandidateDPS": 879.7699324022833,
-      "GainDPS": 32.992844474621506,
-      "GainPercent": 3.8962845056856343,
-      "Conservative95BoundDPS": 1.1948717340954842
+      "Decision": "unchanged"
     },
     {
       "Key": "arms",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 759.027209707131,
-      "CandidateDPS": 833.5979553169179,
-      "GainDPS": 74.57074560978697,
-      "GainPercent": 9.824515466126693,
-      "Conservative95BoundDPS": 1.4124471179282558
+      "Decision": "unchanged"
     },
     {
       "Key": "arms",
       "Race": "Tauren",
-      "Decision": "retain",
-      "BaselineDPS": 747.2977054661308,
-      "CandidateDPS": 823.0940994659634,
-      "GainDPS": 75.79639399983262,
-      "GainPercent": 10.14273072771637,
-      "Conservative95BoundDPS": 1.389798129883577
+      "Decision": "unchanged"
     },
     {
       "Key": "arms",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 749.3624834022436,
-      "CandidateDPS": 828.5750159792676,
-      "GainDPS": 79.21253257702404,
-      "GainPercent": 10.57065630205886,
-      "Conservative95BoundDPS": 1.4093508756455186
+      "Decision": "unchanged"
     },
     {
       "Key": "arms",
       "Race": "Undead",
       "Decision": "retain",
-      "BaselineDPS": 763.7227582260557,
-      "CandidateDPS": 831.6035480991274,
-      "GainDPS": 67.88078987307165,
-      "GainPercent": 8.888145487603694,
-      "Conservative95BoundDPS": 1.4237122283782815
+      "BaselineDPS": 831.8222057349288,
+      "CandidateDPS": 842.8050076699765,
+      "GainDPS": 10.982801935047632,
+      "GainPercent": 1.3203304575578314,
+      "Conservative95BoundDPS": 1.5287676408041533
     },
     {
       "Key": "arms",
       "Race": "Windshaper",
-      "Decision": "retain",
-      "BaselineDPS": 750.8116073478482,
-      "CandidateDPS": 830.9608508892627,
-      "GainDPS": 80.14924354141453,
-      "GainPercent": 10.675013912548863,
-      "Conservative95BoundDPS": 1.397739895351416
+      "Decision": "unchanged"
     },
     {
       "Key": "arms",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 746.4103286464647,
-      "CandidateDPS": 833.002213475612,
-      "GainDPS": 86.59188482914738,
-      "GainPercent": 11.601110207862813,
-      "Conservative95BoundDPS": 1.3987308243720402
+      "Decision": "unchanged"
     },
     {
       "Key": "arms",
       "Race": "Dwarf",
-      "Decision": "retain",
-      "BaselineDPS": 746.291518119052,
-      "CandidateDPS": 825.1642265995334,
-      "GainDPS": 78.87270848048149,
-      "GainPercent": 10.56861917435049,
-      "Conservative95BoundDPS": 1.3889409744456167
+      "Decision": "unchanged"
     },
     {
       "Key": "arms",
       "Race": "Night Elf",
-      "Decision": "retain",
-      "BaselineDPS": 751.654496626123,
-      "CandidateDPS": 831.9662534068993,
-      "GainDPS": 80.31175678077636,
-      "GainPercent": 10.684663916901153,
-      "Conservative95BoundDPS": 1.4103088157970138
+      "Decision": "unchanged"
     },
     {
       "Key": "arms",
       "Race": "Gnome",
-      "Decision": "retain",
-      "BaselineDPS": 750.7376027763194,
-      "CandidateDPS": 823.6330152076287,
-      "GainDPS": 72.8954124313093,
-      "GainPercent": 9.709838985250393,
-      "Conservative95BoundDPS": 1.388480251060164
+      "Decision": "unchanged"
     },
     {
       "Key": "arms",
       "Race": "High Order",
-      "Decision": "retain",
-      "BaselineDPS": 750.8116073478482,
-      "CandidateDPS": 830.9608508892627,
-      "GainDPS": 80.14924354141453,
-      "GainPercent": 10.675013912548863,
-      "Conservative95BoundDPS": 1.397739895351416
+      "Decision": "unchanged"
     },
     {
       "Key": "pet_melee",
       "Race": "Tauren",
-      "Decision": "retain",
-      "BaselineDPS": 998.7536585338262,
-      "CandidateDPS": 1029.5054115469097,
-      "GainDPS": 30.751753013083544,
-      "GainPercent": 3.0790128026391637,
-      "Conservative95BoundDPS": 1.1678485625490485
+      "Decision": "unchanged"
     },
     {
       "Key": "pet_melee",
       "Race": "Windshaper",
-      "Decision": "retain",
-      "BaselineDPS": 1004.7304542252919,
-      "CandidateDPS": 1032.1611275758378,
-      "GainDPS": 27.43067335054593,
-      "GainPercent": 2.730152473749454,
-      "Conservative95BoundDPS": 1.1629779092268275
+      "Decision": "unchanged"
     },
     {
       "Key": "pet_melee",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 1008.8610983927025,
-      "CandidateDPS": 1044.7490070806239,
-      "GainDPS": 35.88790868792137,
-      "GainPercent": 3.5572695532712353,
-      "Conservative95BoundDPS": 1.1901670284560373
+      "Decision": "unchanged"
     },
     {
       "Key": "pet_melee",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 1021.572297892006,
-      "CandidateDPS": 1047.650981213288,
-      "GainDPS": 26.078683321282142,
-      "GainPercent": 2.552798600265002,
-      "Conservative95BoundDPS": 1.194309035236419
+      "Decision": "unchanged"
     },
     {
       "Key": "pet_melee",
       "Race": "Night Elf",
-      "Decision": "retain",
-      "BaselineDPS": 1014.6142297393403,
-      "CandidateDPS": 1041.486918745963,
-      "GainDPS": 26.87268900662275,
-      "GainPercent": 2.648562204132154,
-      "Conservative95BoundDPS": 1.1916546290162562
+      "Decision": "unchanged"
     },
     {
       "Key": "pet_melee",
       "Race": "Dwarf",
-      "Decision": "retain",
-      "BaselineDPS": 994.7535781043448,
-      "CandidateDPS": 1026.626608611482,
-      "GainDPS": 31.873030507137173,
-      "GainPercent": 3.2041131802587843,
-      "Conservative95BoundDPS": 1.162794102021518
+      "Decision": "unchanged"
     },
     {
       "Key": "pet_melee",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 1003.8918631351253,
-      "CandidateDPS": 1029.551292315995,
-      "GainDPS": 25.659429180869665,
-      "GainPercent": 2.555995334072737,
-      "Conservative95BoundDPS": 1.1681072665421717
+      "Decision": "unchanged"
     },
     {
       "Key": "pet_melee",
       "Race": "High Order",
-      "Decision": "retain",
-      "BaselineDPS": 1004.7304542252919,
-      "CandidateDPS": 1032.1611275758378,
-      "GainDPS": 27.43067335054593,
-      "GainPercent": 2.730152473749454,
-      "Conservative95BoundDPS": 1.1629779092268275
+      "Decision": "unchanged"
     },
     {
       "Key": "arcane_frost",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 709.2391733267641,
-      "CandidateDPS": 742.8702383985565,
-      "GainDPS": 33.631065071792364,
-      "GainPercent": 4.741851033698853,
-      "Conservative95BoundDPS": 1.0544248153896114
+      "Decision": "unchanged"
     },
     {
       "Key": "arcane_frost",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 709.3069078902199,
-      "CandidateDPS": 740.8405254075753,
-      "GainDPS": 31.533617517355424,
-      "GainPercent": 4.445694404859217,
-      "Conservative95BoundDPS": 1.042127425121262
+      "Decision": "unchanged"
     },
     {
       "Key": "arcane_frost",
       "Race": "Undead",
-      "Decision": "retain",
-      "BaselineDPS": 723.124860153033,
-      "CandidateDPS": 750.6261037054683,
-      "GainDPS": 27.501243552435312,
-      "GainPercent": 3.803111339114423,
-      "Conservative95BoundDPS": 1.075675568719437
+      "Decision": "unchanged"
     },
     {
       "Key": "arcane_frost",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 705.2529225151287,
-      "CandidateDPS": 753.0666212260217,
-      "GainDPS": 47.813698710892936,
-      "GainPercent": 6.779652686922011,
-      "Conservative95BoundDPS": 1.0511089688068072
+      "Decision": "unchanged"
     },
     {
       "Key": "arcane_frost",
       "Race": "Gnome",
-      "Decision": "retain",
-      "BaselineDPS": 710.5631958491649,
-      "CandidateDPS": 743.772221654647,
-      "GainDPS": 33.20902580548204,
-      "GainPercent": 4.673620305621839,
-      "Conservative95BoundDPS": 1.051449053573944
+      "Decision": "unchanged"
     },
     {
       "Key": "arcane_frost",
       "Race": "High Order",
-      "Decision": "retain",
-      "BaselineDPS": 710.8416619272716,
-      "CandidateDPS": 749.8027876224016,
-      "GainDPS": 38.96112569513002,
-      "GainPercent": 5.480985116924147,
-      "Conservative95BoundDPS": 1.0654650156522176
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_2h",
       "Race": "Orc",
-      "Decision": "retain",
-      "BaselineDPS": 768.2013046978467,
-      "CandidateDPS": 840.7794334894337,
-      "GainDPS": 72.578128791587,
-      "GainPercent": 9.447800771457144,
-      "Conservative95BoundDPS": 1.3770550154579553
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_2h",
       "Race": "Tauren",
-      "Decision": "retain",
-      "BaselineDPS": 753.6282146049473,
-      "CandidateDPS": 824.7428086020068,
-      "GainDPS": 71.1145939970595,
-      "GainPercent": 9.436296653826561,
-      "Conservative95BoundDPS": 1.349010394177328
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_2h",
       "Race": "Undead",
-      "Decision": "retain",
-      "BaselineDPS": 769.1788858353937,
-      "CandidateDPS": 840.2410345636536,
-      "GainDPS": 71.0621487282599,
-      "GainPercent": 9.238702470502732,
-      "Conservative95BoundDPS": 1.3922718738916708
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_2h",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 758.5111397123036,
-      "CandidateDPS": 830.2699017665436,
-      "GainDPS": 71.75876205424004,
-      "GainPercent": 9.46047569999532,
-      "Conservative95BoundDPS": 1.3662943851576574
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_2h",
       "Race": "Windshaper",
-      "Decision": "retain",
-      "BaselineDPS": 751.4421236228463,
-      "CandidateDPS": 821.3112129761537,
-      "GainDPS": 69.86908935330734,
-      "GainPercent": 9.298000093001852,
-      "Conservative95BoundDPS": 1.3633770774675302
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_2h",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 750.8981854461296,
-      "CandidateDPS": 835.4549677272826,
-      "GainDPS": 84.556782281153,
-      "GainPercent": 11.260751979433198,
-      "Conservative95BoundDPS": 1.35424535915296
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_2h",
       "Race": "Dwarf",
-      "Decision": "retain",
-      "BaselineDPS": 752.3581267921411,
-      "CandidateDPS": 830.2459181826898,
-      "GainDPS": 77.88779139054873,
-      "GainPercent": 10.352488876891908,
-      "Conservative95BoundDPS": 1.3537919762652628
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_2h",
       "Race": "Gnome",
-      "Decision": "retain",
-      "BaselineDPS": 758.1277922354731,
-      "CandidateDPS": 829.4596309478336,
-      "GainDPS": 71.33183871236054,
-      "GainPercent": 9.408946544754158,
-      "Conservative95BoundDPS": 1.365484469872295
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_2h",
       "Race": "Night Elf",
-      "Decision": "retain",
-      "BaselineDPS": 756.279854113302,
-      "CandidateDPS": 827.4387327843926,
-      "GainDPS": 71.15887867109063,
-      "GainPercent": 9.409067064799794,
-      "Conservative95BoundDPS": 1.3522074302148044
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_2h",
       "Race": "High Order",
-      "Decision": "retain",
-      "BaselineDPS": 751.4421236228463,
-      "CandidateDPS": 821.3112129761537,
-      "GainDPS": 69.86908935330734,
-      "GainPercent": 9.298000093001852,
-      "Conservative95BoundDPS": 1.3633770774675302
+      "Decision": "unchanged"
     },
     {
       "Key": "retribution_physical",
       "Race": "Undead",
-      "Decision": "retain",
-      "BaselineDPS": 1027.8323864616127,
-      "CandidateDPS": 1085.8825437456808,
-      "GainDPS": 58.050157284068064,
-      "GainPercent": 5.6478233269054625,
-      "Conservative95BoundDPS": 1.8067806543907923
+      "Decision": "unchanged"
     },
     {
       "Key": "retribution_physical",
       "Race": "Human",
-      "Decision": "retain",
-      "BaselineDPS": 1006.2730717696163,
-      "CandidateDPS": 1084.3150106850157,
-      "GainDPS": 78.04193891539944,
-      "GainPercent": 7.755542814850058,
-      "Conservative95BoundDPS": 1.7792765486043034
+      "Decision": "unchanged"
     },
     {
       "Key": "retribution_physical",
       "Race": "Dwarf",
-      "Decision": "retain",
-      "BaselineDPS": 1008.35214577907,
-      "CandidateDPS": 1074.1033492923823,
-      "GainDPS": 65.75120351331225,
-      "GainPercent": 6.520658857973843,
-      "Conservative95BoundDPS": 1.7794186611457128
+      "Decision": "unchanged"
     }
   ]
 }

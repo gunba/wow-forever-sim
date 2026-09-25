@@ -313,9 +313,47 @@ def full_budget(alloc, slot):
 def proposals_v2():
     """Equal-capacity synthetic-only pool; retain v1 separately for replay."""
     result = proposals()
-    for row in result:
+    for index, row in enumerate(result):
         if row['SlotID'] == 12:
             continue  # Passive-trinket fractions remain distinct sensitivity assumptions.
+        if row['SlotID'] in BODY_SLOTS and 'Strength' in row['Allocation']:
+            material = next(k for k, v in ARMOR_TYPES.items() if v == row['Material'])
+            if material != 4:
+                # A plate allocation is not evidence for Strength on every
+                # leather/mail/cloth slot. Retain the model ID, but substitute
+                # leather/mail armor. Cloth has no usable client-verified
+                # offensive template here, so use a caster off-hand allocation.
+                reference = {1: 272685, 2: 279253, 3: 22676}[material]
+                src = BY_ID[reference]
+                if material == 1:
+                    alloc = conservatively_project(normalized_alloc(src), src['inventoryType'], row['SlotID'])
+                    alloc = reduce_stamina(alloc, 'HitRating', slot=row['SlotID'])
+                    archetype = 'Intellect / spell power / hit (cloth)'
+                elif material == 2:
+                    alloc = conservatively_project(normalized_alloc(src), src['inventoryType'], row['SlotID'])
+                    alloc = reduce_stamina(alloc, 'HitRating', slot=row['SlotID'])
+                    archetype = 'Agility / crit / hit (leather)'
+                else:
+                    alloc = conservatively_project(normalized_alloc(src), src['inventoryType'], row['SlotID'])
+                    if row['Archetype'] == 'Strength / crit / hit':
+                        # One existing mail variant spends the source's MP5
+                        # allocation on Hit instead. This is an explicitly
+                        # hypothetical swap at the estimated 3:1 MP5 price,
+                        # not a claim that the source item carries Hit.
+                        alloc['HitRating'] = alloc.pop('MP5') * 3
+                        archetype = 'Strength / intellect / crit / hit (mail)'
+                    else:
+                        archetype = 'Strength / intellect / crit / MP5 (mail)'
+                result[index] = synthetic(
+                    row['ID'], row['SlotID'], material, archetype, reference, alloc,
+                    '20% Stamina cost (maximum); non-plate projection',
+                    'unverified', 'Leather and mail use current same-material '
+                    'items. The mail Hit variant replaces the source MP5 at an '
+                    'assumed cost; the source does not have Hit. Cloth uses a '
+                    'caster off-hand allocation, not verified cloth armor. '
+                    'All slots and budgets remain hypothetical.',
+                )
+                row = result[index]
         row['Allocation'] = full_budget(row['Allocation'], row['SlotID'])
         row['Stats'] = item_stats(row['Allocation'], row['SlotID'])
         row['ProposedBudget'] = norm(row['Allocation'], row['SlotID'])
@@ -365,17 +403,37 @@ def proposals_v2():
             ]:
                 alloc = physical.copy()
                 alloc['SpellPower'] = alloc.pop(replaced) / .9
+                label = archetype
+                reference = 279253
+                if slot in BODY_SLOTS and material in (1, 2, 3) and 'Strength' in alloc:
+                    # Do not present an Agility->Strength swap on a leather
+                    # source as plausible non-plate armor. Mail does have
+                    # Strength examples; use its actual hybrid source pattern.
+                    if material == 3:
+                        reference = 20203
+                        alloc = full_budget(normalized_alloc(BY_ID[reference]), slot)
+                        label = 'Strength / agility / intellect / MP5 (mail)'
+                    elif material == 2:
+                        alloc = physical.copy()
+                        alloc['SpellPower'] = alloc.pop('Strength') / .9
+                        label = 'Spell power / crit / hit (leather)'
+                    else:
+                        alloc = full_budget(normalized_alloc(BY_ID[272685]), slot)
+                        alloc = reduce_stamina(alloc, 'HitRating', slot=slot)
+                        reference = 272685
+                        label = 'Intellect / spell power / hit (cloth)'
                 alloc = full_budget(alloc, slot)
                 if slot == 12:
                     alloc = {k: value * .8 for k, value in alloc.items()}
                 result.append(synthetic(
-                    f'SYN2-{seq:04}', slot, material, archetype, 279253, alloc,
+                    f'SYN2-{seq:04}', slot, material, label, reference, alloc,
                     '80% passive trinket capacity' if slot == 12 else
                     '20% Stamina; mirrored high-hit modeled cost',
                     'unverified',
-                    'Hit replaces projected excess Stamina; the reference item '
-                    'does not have Hit. This high-hit caster/hybrid allocation '
-                    'also assumes an unverified spell-power cost.',
+                    'Cloth uses a caster off-hand pattern, not verified cloth '
+                    'armor; leather/mail use same-material items. Hit on '
+                    'leather replaces projected Stamina; source 279253 has '
+                    'no Hit. Spell-power prices are unverified.',
                 ))
                 seq += 1
 

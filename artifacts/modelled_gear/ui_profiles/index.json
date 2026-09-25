@@ -3,7 +3,7 @@
     "build": "Balance",
     "race": "Tauren",
     "file": "balance__tauren.json",
-    "dps": 654.9217110648157,
+    "dps": 654.7935612154773,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -44,7 +44,7 @@
     "build": "Balance",
     "race": "Windshaper",
     "file": "balance__windshaper.json",
-    "dps": 657.8125870866004,
+    "dps": 657.7660338384198,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -85,7 +85,7 @@
     "build": "Balance",
     "race": "Night Elf",
     "file": "balance__night_elf.json",
-    "dps": 658.1024440678946,
+    "dps": 658.0542310832758,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -126,7 +126,7 @@
     "build": "Balance",
     "race": "High Order",
     "file": "balance__high_order.json",
-    "dps": 657.8125870866004,
+    "dps": 657.7660338384198,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -167,12 +167,12 @@
     "build": "Feral",
     "race": "Tauren",
     "file": "feral__tauren.json",
-    "dps": 773.2379675333077,
+    "dps": 711.5705985870195,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 15.399999999999999,
-      "SpellFinal": 15.399999999999999,
+      "MeleeFinal": 24.000000000000007,
+      "SpellFinal": 24.000000000000007,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -183,27 +183,27 @@
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -99.4
+          "AdditionalPercent": -108
         },
         {
           "Action": "{SpellID: 31018}",
           "Kind": "physical-special",
-          "AdditionalPercent": -6.399999999999999
+          "AdditionalPercent": -15.000000000000007
         },
         {
           "Action": "{SpellID: 9896}",
           "Kind": "physical-special",
-          "AdditionalPercent": -6.399999999999999
+          "AdditionalPercent": -15.000000000000007
         },
         {
           "Action": "{SpellID: 9830}",
           "Kind": "physical-special",
-          "AdditionalPercent": -6.399999999999999
+          "AdditionalPercent": -15.000000000000007
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -6.399999999999999
+          "AdditionalPercent": -15.000000000000007
         }
       ],
       "Exclusions": null
@@ -213,12 +213,12 @@
     "build": "Feral",
     "race": "Windshaper",
     "file": "feral__windshaper.json",
-    "dps": 780.9385421058945,
+    "dps": 718.7926677089891,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 14.399999999999999,
-      "SpellFinal": 14.399999999999999,
+      "MeleeFinal": 23.000000000000007,
+      "SpellFinal": 23.000000000000007,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -229,27 +229,27 @@
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -98.4
+          "AdditionalPercent": -107
         },
         {
           "Action": "{SpellID: 31018}",
           "Kind": "physical-special",
-          "AdditionalPercent": -5.399999999999999
+          "AdditionalPercent": -14.000000000000007
         },
         {
           "Action": "{SpellID: 9896}",
           "Kind": "physical-special",
-          "AdditionalPercent": -5.399999999999999
+          "AdditionalPercent": -14.000000000000007
         },
         {
           "Action": "{SpellID: 9830}",
           "Kind": "physical-special",
-          "AdditionalPercent": -5.399999999999999
+          "AdditionalPercent": -14.000000000000007
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -5.399999999999999
+          "AdditionalPercent": -14.000000000000007
         }
       ],
       "Exclusions": null
@@ -259,12 +259,12 @@
     "build": "Feral",
     "race": "Night Elf",
     "file": "feral__night_elf.json",
-    "dps": 777.5601270886832,
+    "dps": 715.4113038974513,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 14.399999999999999,
-      "SpellFinal": 14.399999999999999,
+      "MeleeFinal": 23.000000000000007,
+      "SpellFinal": 23.000000000000007,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -275,27 +275,27 @@
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -98.4
+          "AdditionalPercent": -107
         },
         {
           "Action": "{SpellID: 31018}",
           "Kind": "physical-special",
-          "AdditionalPercent": -5.399999999999999
+          "AdditionalPercent": -14.000000000000007
         },
         {
           "Action": "{SpellID: 9896}",
           "Kind": "physical-special",
-          "AdditionalPercent": -5.399999999999999
+          "AdditionalPercent": -14.000000000000007
         },
         {
           "Action": "{SpellID: 9830}",
           "Kind": "physical-special",
-          "AdditionalPercent": -5.399999999999999
+          "AdditionalPercent": -14.000000000000007
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -5.399999999999999
+          "AdditionalPercent": -14.000000000000007
         }
       ],
       "Exclusions": null
@@ -305,12 +305,12 @@
     "build": "Feral",
     "race": "High Order",
     "file": "feral__high_order.json",
-    "dps": 780.9385421058945,
+    "dps": 718.7926677089891,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 14.399999999999999,
-      "SpellFinal": 14.399999999999999,
+      "MeleeFinal": 23.000000000000007,
+      "SpellFinal": 23.000000000000007,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -321,27 +321,27 @@
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -98.4
+          "AdditionalPercent": -107
         },
         {
           "Action": "{SpellID: 31018}",
           "Kind": "physical-special",
-          "AdditionalPercent": -5.399999999999999
+          "AdditionalPercent": -14.000000000000007
         },
         {
           "Action": "{SpellID: 9896}",
           "Kind": "physical-special",
-          "AdditionalPercent": -5.399999999999999
+          "AdditionalPercent": -14.000000000000007
         },
         {
           "Action": "{SpellID: 9830}",
           "Kind": "physical-special",
-          "AdditionalPercent": -5.399999999999999
+          "AdditionalPercent": -14.000000000000007
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -5.399999999999999
+          "AdditionalPercent": -14.000000000000007
         }
       ],
       "Exclusions": null
@@ -351,7 +351,7 @@
     "build": "Elemental",
     "race": "Orc",
     "file": "elemental__orc.json",
-    "dps": 546.0236618635628,
+    "dps": 546.0897205838014,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -422,7 +422,7 @@
     "build": "Elemental",
     "race": "Tauren",
     "file": "elemental__tauren.json",
-    "dps": 540.767565200235,
+    "dps": 540.8296514346845,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -493,7 +493,7 @@
     "build": "Elemental",
     "race": "Troll",
     "file": "elemental__troll.json",
-    "dps": 543.6328378662189,
+    "dps": 543.6078245705373,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -564,7 +564,7 @@
     "build": "Elemental",
     "race": "Windshaper",
     "file": "elemental__windshaper.json",
-    "dps": 544.1388500166123,
+    "dps": 544.1874326538119,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -635,7 +635,7 @@
     "build": "Elemental",
     "race": "Dwarf",
     "file": "elemental__dwarf.json",
-    "dps": 542.0462744949914,
+    "dps": 542.0479925868154,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -706,7 +706,7 @@
     "build": "Stormcaller",
     "race": "Orc",
     "file": "stormcaller__orc.json",
-    "dps": 564.9325442133895,
+    "dps": 564.9460531193592,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -772,7 +772,7 @@
     "build": "Stormcaller",
     "race": "Tauren",
     "file": "stormcaller__tauren.json",
-    "dps": 564.5242054390475,
+    "dps": 564.4952656324242,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -838,7 +838,7 @@
     "build": "Stormcaller",
     "race": "Troll",
     "file": "stormcaller__troll.json",
-    "dps": 561.9150010841266,
+    "dps": 562.0502476788071,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -904,7 +904,7 @@
     "build": "Stormcaller",
     "race": "Windshaper",
     "file": "stormcaller__windshaper.json",
-    "dps": 563.5750949713695,
+    "dps": 563.485777178372,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -970,7 +970,7 @@
     "build": "Stormcaller",
     "race": "Dwarf",
     "file": "stormcaller__dwarf.json",
-    "dps": 560.8512800240412,
+    "dps": 560.872931559523,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -1036,12 +1036,12 @@
     "build": "Enhancement",
     "race": "Orc",
     "file": "enhancement__orc.json",
-    "dps": 816.3804411613428,
+    "dps": 828.1398612499952,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 16.500000000000004,
-      "SpellFinal": 16.500000000000004,
+      "MeleeFinal": 15.600000000000003,
+      "SpellFinal": 15.600000000000003,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -1052,37 +1052,37 @@
         {
           "Action": "{SpellID: 15208}",
           "Kind": "spell",
-          "AdditionalPercent": -0.5000000000000036
+          "AdditionalPercent": 0.3999999999999968
         },
         {
           "Action": "{SpellID: 10414}",
           "Kind": "spell",
-          "AdditionalPercent": -0.5000000000000036
+          "AdditionalPercent": 0.3999999999999968
         },
         {
           "Action": "{SpellID: 29228}",
           "Kind": "spell",
-          "AdditionalPercent": -0.5000000000000036
+          "AdditionalPercent": 0.3999999999999968
         },
         {
           "Action": "{SpellID: 408345}",
           "Kind": "spell",
-          "AdditionalPercent": -0.5000000000000036
+          "AdditionalPercent": 0.3999999999999968
         },
         {
           "Action": "{SpellID: 17364}",
           "Kind": "physical-special",
-          "AdditionalPercent": -7.5000000000000036
+          "AdditionalPercent": -6.600000000000003
         },
         {
           "Action": "{SpellID: 10438}",
           "Kind": "spell",
-          "AdditionalPercent": -0.5000000000000036
+          "AdditionalPercent": 0.3999999999999968
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -7.5000000000000036
+          "AdditionalPercent": -6.600000000000003
         }
       ],
       "Exclusions": null
@@ -1092,7 +1092,175 @@
     "build": "Enhancement",
     "race": "Tauren",
     "file": "enhancement__tauren.json",
-    "dps": 814.3542075538921,
+    "dps": 823.1309360269809,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 15.000000000000002,
+      "SpellFinal": 15.000000000000002,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 15208}",
+          "Kind": "spell",
+          "AdditionalPercent": 0.9999999999999982
+        },
+        {
+          "Action": "{SpellID: 10414}",
+          "Kind": "spell",
+          "AdditionalPercent": 0.9999999999999982
+        },
+        {
+          "Action": "{SpellID: 29228}",
+          "Kind": "spell",
+          "AdditionalPercent": 0.9999999999999982
+        },
+        {
+          "Action": "{SpellID: 408345}",
+          "Kind": "spell",
+          "AdditionalPercent": 0.9999999999999982
+        },
+        {
+          "Action": "{SpellID: 17364}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -6.000000000000002
+        },
+        {
+          "Action": "{SpellID: 10438}",
+          "Kind": "spell",
+          "AdditionalPercent": 0.9999999999999982
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -6.000000000000002
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Enhancement",
+    "race": "Troll",
+    "file": "enhancement__troll.json",
+    "dps": 827.5152285948298,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 16.400000000000002,
+      "SpellFinal": 16.400000000000002,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 15208}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.40000000000000213
+        },
+        {
+          "Action": "{SpellID: 10414}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.40000000000000213
+        },
+        {
+          "Action": "{SpellID: 29228}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.40000000000000213
+        },
+        {
+          "Action": "{SpellID: 408345}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.40000000000000213
+        },
+        {
+          "Action": "{SpellID: 17364}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.400000000000002
+        },
+        {
+          "Action": "{SpellID: 10438}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.40000000000000213
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.400000000000002
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Enhancement",
+    "race": "Windshaper",
+    "file": "enhancement__windshaper.json",
+    "dps": 824.0460337598765,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 14.600000000000001,
+      "SpellFinal": 14.600000000000001,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 15208}",
+          "Kind": "spell",
+          "AdditionalPercent": 1.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 10414}",
+          "Kind": "spell",
+          "AdditionalPercent": 1.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 29228}",
+          "Kind": "spell",
+          "AdditionalPercent": 1.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 408345}",
+          "Kind": "spell",
+          "AdditionalPercent": 1.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 17364}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -5.600000000000001
+        },
+        {
+          "Action": "{SpellID: 10438}",
+          "Kind": "spell",
+          "AdditionalPercent": 1.3999999999999986
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -5.600000000000001
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Enhancement",
+    "race": "Dwarf",
+    "file": "enhancement__dwarf.json",
+    "dps": 833.1685034164916,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -1145,178 +1313,10 @@
     }
   },
   {
-    "build": "Enhancement",
-    "race": "Troll",
-    "file": "enhancement__troll.json",
-    "dps": 814.0482764386966,
-    "hitAdjustment": {
-      "MeleeAdded": 0,
-      "SpellAdded": 0,
-      "MeleeFinal": 17.5,
-      "SpellFinal": 17.5,
-      "Model": "equipped-only-v2",
-      "RatingPerPercent": 10,
-      "RawHitDelta": 0,
-      "OffensiveBudgetBefore": 0,
-      "Balance": 0,
-      "Entries": null,
-      "Requirements": [
-        {
-          "Action": "{SpellID: 15208}",
-          "Kind": "spell",
-          "AdditionalPercent": -1.5
-        },
-        {
-          "Action": "{SpellID: 10414}",
-          "Kind": "spell",
-          "AdditionalPercent": -1.5
-        },
-        {
-          "Action": "{SpellID: 29228}",
-          "Kind": "spell",
-          "AdditionalPercent": -1.5
-        },
-        {
-          "Action": "{SpellID: 408345}",
-          "Kind": "spell",
-          "AdditionalPercent": -1.5
-        },
-        {
-          "Action": "{SpellID: 17364}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -8.5
-        },
-        {
-          "Action": "{SpellID: 10438}",
-          "Kind": "spell",
-          "AdditionalPercent": -1.5
-        },
-        {
-          "Action": "{OtherID: 7, Tag: 1}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -8.5
-        }
-      ],
-      "Exclusions": null
-    }
-  },
-  {
-    "build": "Enhancement",
-    "race": "Windshaper",
-    "file": "enhancement__windshaper.json",
-    "dps": 816.6134014750183,
-    "hitAdjustment": {
-      "MeleeAdded": 0,
-      "SpellAdded": 0,
-      "MeleeFinal": 16.200000000000003,
-      "SpellFinal": 16.200000000000003,
-      "Model": "equipped-only-v2",
-      "RatingPerPercent": 10,
-      "RawHitDelta": 0,
-      "OffensiveBudgetBefore": 0,
-      "Balance": 0,
-      "Entries": null,
-      "Requirements": [
-        {
-          "Action": "{SpellID: 15208}",
-          "Kind": "spell",
-          "AdditionalPercent": -0.20000000000000284
-        },
-        {
-          "Action": "{SpellID: 10414}",
-          "Kind": "spell",
-          "AdditionalPercent": -0.20000000000000284
-        },
-        {
-          "Action": "{SpellID: 29228}",
-          "Kind": "spell",
-          "AdditionalPercent": -0.20000000000000284
-        },
-        {
-          "Action": "{SpellID: 408345}",
-          "Kind": "spell",
-          "AdditionalPercent": -0.20000000000000284
-        },
-        {
-          "Action": "{SpellID: 17364}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -7.200000000000003
-        },
-        {
-          "Action": "{SpellID: 10438}",
-          "Kind": "spell",
-          "AdditionalPercent": -0.20000000000000284
-        },
-        {
-          "Action": "{OtherID: 7, Tag: 1}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -7.200000000000003
-        }
-      ],
-      "Exclusions": null
-    }
-  },
-  {
-    "build": "Enhancement",
-    "race": "Dwarf",
-    "file": "enhancement__dwarf.json",
-    "dps": 817.8021317377583,
-    "hitAdjustment": {
-      "MeleeAdded": 0,
-      "SpellAdded": 0,
-      "MeleeFinal": 17.5,
-      "SpellFinal": 17.5,
-      "Model": "equipped-only-v2",
-      "RatingPerPercent": 10,
-      "RawHitDelta": 0,
-      "OffensiveBudgetBefore": 0,
-      "Balance": 0,
-      "Entries": null,
-      "Requirements": [
-        {
-          "Action": "{SpellID: 15208}",
-          "Kind": "spell",
-          "AdditionalPercent": -1.5
-        },
-        {
-          "Action": "{SpellID: 10414}",
-          "Kind": "spell",
-          "AdditionalPercent": -1.5
-        },
-        {
-          "Action": "{SpellID: 29228}",
-          "Kind": "spell",
-          "AdditionalPercent": -1.5
-        },
-        {
-          "Action": "{SpellID: 408345}",
-          "Kind": "spell",
-          "AdditionalPercent": -1.5
-        },
-        {
-          "Action": "{SpellID: 17364}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -8.5
-        },
-        {
-          "Action": "{SpellID: 10438}",
-          "Kind": "spell",
-          "AdditionalPercent": -1.5
-        },
-        {
-          "Action": "{OtherID: 7, Tag: 1}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -8.5
-        }
-      ],
-      "Exclusions": null
-    }
-  },
-  {
     "build": "Beast Mastery",
     "race": "Orc",
     "file": "beast_mastery__orc.json",
-    "dps": 988.0449236625035,
+    "dps": 987.9308851851401,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -1362,7 +1362,7 @@
     "build": "Beast Mastery",
     "race": "Tauren",
     "file": "beast_mastery__tauren.json",
-    "dps": 986.6968414048694,
+    "dps": 986.7177562063055,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -1408,7 +1408,7 @@
     "build": "Beast Mastery",
     "race": "Troll",
     "file": "beast_mastery__troll.json",
-    "dps": 994.2284973217215,
+    "dps": 994.2282546291464,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -1454,7 +1454,7 @@
     "build": "Beast Mastery",
     "race": "Windshaper",
     "file": "beast_mastery__windshaper.json",
-    "dps": 996.2135516213523,
+    "dps": 996.2009837826956,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -1500,7 +1500,7 @@
     "build": "Beast Mastery",
     "race": "Human",
     "file": "beast_mastery__human.json",
-    "dps": 992.6052297282448,
+    "dps": 992.5811874105199,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -1546,7 +1546,7 @@
     "build": "Beast Mastery",
     "race": "Dwarf",
     "file": "beast_mastery__dwarf.json",
-    "dps": 988.2551799161575,
+    "dps": 988.2779783571488,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -1592,7 +1592,7 @@
     "build": "Beast Mastery",
     "race": "Night Elf",
     "file": "beast_mastery__night_elf.json",
-    "dps": 1000.9571987907832,
+    "dps": 1001.0012898595498,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -1638,7 +1638,7 @@
     "build": "Beast Mastery",
     "race": "High Order",
     "file": "beast_mastery__high_order.json",
-    "dps": 996.2135516213523,
+    "dps": 996.2009837826956,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -1684,7 +1684,7 @@
     "build": "Marksmanship",
     "race": "Orc",
     "file": "marksmanship__orc.json",
-    "dps": 822.5449593529895,
+    "dps": 822.5957641684998,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -1730,7 +1730,7 @@
     "build": "Marksmanship",
     "race": "Tauren",
     "file": "marksmanship__tauren.json",
-    "dps": 807.0048289142696,
+    "dps": 807.1949225992967,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -1776,7 +1776,7 @@
     "build": "Marksmanship",
     "race": "Troll",
     "file": "marksmanship__troll.json",
-    "dps": 830.0322811141422,
+    "dps": 830.4118871345263,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -1822,7 +1822,7 @@
     "build": "Marksmanship",
     "race": "Windshaper",
     "file": "marksmanship__windshaper.json",
-    "dps": 832.5575394122261,
+    "dps": 832.6712034137862,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -1868,7 +1868,7 @@
     "build": "Marksmanship",
     "race": "Human",
     "file": "marksmanship__human.json",
-    "dps": 825.8228638458792,
+    "dps": 825.8100034240307,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -1914,7 +1914,7 @@
     "build": "Marksmanship",
     "race": "Dwarf",
     "file": "marksmanship__dwarf.json",
-    "dps": 808.2217307280025,
+    "dps": 808.3985562968118,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -1960,7 +1960,7 @@
     "build": "Marksmanship",
     "race": "Night Elf",
     "file": "marksmanship__night_elf.json",
-    "dps": 823.3600371248034,
+    "dps": 823.4435775797365,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -2006,7 +2006,7 @@
     "build": "Marksmanship",
     "race": "High Order",
     "file": "marksmanship__high_order.json",
-    "dps": 832.5575394122261,
+    "dps": 832.6712034137862,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -2052,7 +2052,7 @@
     "build": "Survival",
     "race": "Orc",
     "file": "survival__orc.json",
-    "dps": 1033.404649684198,
+    "dps": 1033.2634855776644,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -2115,7 +2115,7 @@
     "build": "Survival",
     "race": "Tauren",
     "file": "survival__tauren.json",
-    "dps": 1017.5526158652849,
+    "dps": 1017.6437364750028,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -2178,7 +2178,7 @@
     "build": "Survival",
     "race": "Troll",
     "file": "survival__troll.json",
-    "dps": 1017.7626895737521,
+    "dps": 1017.6305635439373,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -2241,7 +2241,7 @@
     "build": "Survival",
     "race": "Windshaper",
     "file": "survival__windshaper.json",
-    "dps": 1019.7721719486572,
+    "dps": 1019.627171895382,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -2304,7 +2304,7 @@
     "build": "Survival",
     "race": "Human",
     "file": "survival__human.json",
-    "dps": 1035.2422755880764,
+    "dps": 1035.1800139443747,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -2367,7 +2367,7 @@
     "build": "Survival",
     "race": "Dwarf",
     "file": "survival__dwarf.json",
-    "dps": 1014.1797309986958,
+    "dps": 1014.103696232982,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -2430,7 +2430,7 @@
     "build": "Survival",
     "race": "Night Elf",
     "file": "survival__night_elf.json",
-    "dps": 1028.6241367137022,
+    "dps": 1028.5471762069176,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -2493,7 +2493,7 @@
     "build": "Survival",
     "race": "High Order",
     "file": "survival__high_order.json",
-    "dps": 1019.7721719486572,
+    "dps": 1019.627171895382,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -2556,7 +2556,7 @@
     "build": "Arcane",
     "race": "Orc",
     "file": "arcane__orc.json",
-    "dps": 716.2267362218099,
+    "dps": 715.935308715219,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -2597,7 +2597,7 @@
     "build": "Arcane",
     "race": "Troll",
     "file": "arcane__troll.json",
-    "dps": 720.1432074540774,
+    "dps": 719.8054484408902,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -2638,7 +2638,7 @@
     "build": "Arcane",
     "race": "Undead",
     "file": "arcane__undead.json",
-    "dps": 733.5185217756837,
+    "dps": 733.411379285929,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -2679,7 +2679,7 @@
     "build": "Arcane",
     "race": "Human",
     "file": "arcane__human.json",
-    "dps": 724.6465441679543,
+    "dps": 724.5695894548653,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -2720,7 +2720,7 @@
     "build": "Arcane",
     "race": "Gnome",
     "file": "arcane__gnome.json",
-    "dps": 727.2032134970353,
+    "dps": 727.3674331465211,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -2761,12 +2761,12 @@
     "build": "Arcane",
     "race": "High Order",
     "file": "arcane__high_order.json",
-    "dps": 722.0380354891889,
+    "dps": 725.1656385064621,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 12.9,
-      "SpellFinal": 12.9,
+      "MeleeFinal": 12.1,
+      "SpellFinal": 12.1,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -2777,22 +2777,22 @@
         {
           "Action": "{SpellID: 30451}",
           "Kind": "spell",
-          "AdditionalPercent": -1.9000000000000004
+          "AdditionalPercent": -1.0999999999999996
         },
         {
           "Action": "{SpellID: 25345, Tag: 1}",
           "Kind": "spell",
-          "AdditionalPercent": -1.9000000000000004
+          "AdditionalPercent": -1.0999999999999996
         },
         {
           "Action": "{SpellID: 25345}",
           "Kind": "spell",
-          "AdditionalPercent": -1.9000000000000004
+          "AdditionalPercent": -1.0999999999999996
         },
         {
           "Action": "{SpellID: 25304}",
           "Kind": "spell",
-          "AdditionalPercent": -1.9000000000000004
+          "AdditionalPercent": -1.0999999999999996
         }
       ],
       "Exclusions": null
@@ -2802,7 +2802,7 @@
     "build": "Fire",
     "race": "Orc",
     "file": "fire__orc.json",
-    "dps": 718.5232385868704,
+    "dps": 718.6164535703588,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -2843,7 +2843,7 @@
     "build": "Fire",
     "race": "Troll",
     "file": "fire__troll.json",
-    "dps": 718.3742121710842,
+    "dps": 718.3531289755689,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -2884,7 +2884,7 @@
     "build": "Fire",
     "race": "Undead",
     "file": "fire__undead.json",
-    "dps": 732.0188085970523,
+    "dps": 731.752405594645,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -2925,7 +2925,7 @@
     "build": "Fire",
     "race": "Human",
     "file": "fire__human.json",
-    "dps": 729.9562071031481,
+    "dps": 730.1271296754265,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -2966,7 +2966,7 @@
     "build": "Fire",
     "race": "Gnome",
     "file": "fire__gnome.json",
-    "dps": 730.7053269587191,
+    "dps": 730.8498089591245,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3007,7 +3007,7 @@
     "build": "Fire",
     "race": "High Order",
     "file": "fire__high_order.json",
-    "dps": 718.8573345790851,
+    "dps": 719.045066202743,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3048,7 +3048,7 @@
     "build": "Frost",
     "race": "Orc",
     "file": "frost__orc.json",
-    "dps": 703.2617430180353,
+    "dps": 703.3534552935901,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3079,7 +3079,7 @@
     "build": "Frost",
     "race": "Troll",
     "file": "frost__troll.json",
-    "dps": 700.2989007215617,
+    "dps": 700.2823197750614,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3110,7 +3110,7 @@
     "build": "Frost",
     "race": "Undead",
     "file": "frost__undead.json",
-    "dps": 705.3142497378508,
+    "dps": 705.1834437572019,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3141,7 +3141,7 @@
     "build": "Frost",
     "race": "Human",
     "file": "frost__human.json",
-    "dps": 707.7813114680819,
+    "dps": 707.9067065141046,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3172,7 +3172,7 @@
     "build": "Frost",
     "race": "Gnome",
     "file": "frost__gnome.json",
-    "dps": 715.9902520226683,
+    "dps": 715.8697110223354,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3203,7 +3203,7 @@
     "build": "Frost",
     "race": "High Order",
     "file": "frost__high_order.json",
-    "dps": 702.4109009812274,
+    "dps": 702.5450016514085,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3234,7 +3234,7 @@
     "build": "Retribution",
     "race": "Undead",
     "file": "retribution__undead.json",
-    "dps": 1230.9417221542733,
+    "dps": 1231.027656007694,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3275,7 +3275,7 @@
     "build": "Retribution",
     "race": "Human",
     "file": "retribution__human.json",
-    "dps": 1217.8665445298348,
+    "dps": 1217.9601146298294,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3316,7 +3316,7 @@
     "build": "Retribution",
     "race": "Dwarf",
     "file": "retribution__dwarf.json",
-    "dps": 1225.812900840285,
+    "dps": 1225.9159030718006,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3357,7 +3357,7 @@
     "build": "Shadow",
     "race": "Troll",
     "file": "shadow__troll.json",
-    "dps": 826.1970977688219,
+    "dps": 825.9745186487869,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3413,7 +3413,7 @@
     "build": "Shadow",
     "race": "Undead",
     "file": "shadow__undead.json",
-    "dps": 841.7215880310692,
+    "dps": 841.84764937362,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3469,7 +3469,7 @@
     "build": "Shadow",
     "race": "Human",
     "file": "shadow__human.json",
-    "dps": 825.7403730772004,
+    "dps": 825.876302145164,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3525,7 +3525,7 @@
     "build": "Shadow",
     "race": "Dwarf",
     "file": "shadow__dwarf.json",
-    "dps": 831.9874172947693,
+    "dps": 832.0488469242148,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3581,7 +3581,7 @@
     "build": "Shadow",
     "race": "Night Elf",
     "file": "shadow__night_elf.json",
-    "dps": 832.0217006535268,
+    "dps": 832.0936408887387,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3637,7 +3637,7 @@
     "build": "Shadow",
     "race": "Gnome",
     "file": "shadow__gnome.json",
-    "dps": 827.3170133889228,
+    "dps": 827.3450351341584,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3693,7 +3693,7 @@
     "build": "Smite",
     "race": "Troll",
     "file": "smite__troll.json",
-    "dps": 546.5337313384616,
+    "dps": 546.4854130356086,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3734,7 +3734,7 @@
     "build": "Smite",
     "race": "Undead",
     "file": "smite__undead.json",
-    "dps": 555.1625075977151,
+    "dps": 555.1468298800376,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3775,7 +3775,7 @@
     "build": "Smite",
     "race": "Human",
     "file": "smite__human.json",
-    "dps": 543.6470324972058,
+    "dps": 543.6096876581962,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3816,7 +3816,7 @@
     "build": "Smite",
     "race": "Dwarf",
     "file": "smite__dwarf.json",
-    "dps": 543.2886736101713,
+    "dps": 543.2637624660781,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3857,7 +3857,7 @@
     "build": "Smite",
     "race": "Night Elf",
     "file": "smite__night_elf.json",
-    "dps": 546.6116031591699,
+    "dps": 546.5938105545729,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3898,7 +3898,7 @@
     "build": "Smite",
     "race": "Gnome",
     "file": "smite__gnome.json",
-    "dps": 547.6815274630827,
+    "dps": 547.5931944745174,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -3939,12 +3939,12 @@
     "build": "Combat",
     "race": "Orc",
     "file": "combat__orc.json",
-    "dps": 698.5368604145963,
+    "dps": 699.6585129241204,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 25.099999999999998,
-      "SpellFinal": 25.099999999999998,
+      "MeleeFinal": 27.400000000000002,
+      "SpellFinal": 27.400000000000002,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -3955,42 +3955,42 @@
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -109.1
+          "AdditionalPercent": -111.4
         },
         {
           "Action": "{SpellID: 31016}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{SpellID: 11294}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{SpellID: 11340}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{SpellID: 25347, Tag: 100}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{SpellID: 13219}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         }
       ],
       "Exclusions": null
@@ -4000,12 +4000,12 @@
     "build": "Combat",
     "race": "Troll",
     "file": "combat__troll.json",
-    "dps": 695.1630943656554,
+    "dps": 697.6212158335769,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 25.099999999999998,
-      "SpellFinal": 25.099999999999998,
+      "MeleeFinal": 27.400000000000002,
+      "SpellFinal": 27.400000000000002,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -4016,42 +4016,42 @@
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -109.1
+          "AdditionalPercent": -111.4
         },
         {
           "Action": "{SpellID: 31016}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{SpellID: 11294}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{SpellID: 11340}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{SpellID: 25347, Tag: 100}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{SpellID: 13219}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         }
       ],
       "Exclusions": null
@@ -4061,12 +4061,12 @@
     "build": "Combat",
     "race": "Undead",
     "file": "combat__undead.json",
-    "dps": 718.2415368575257,
+    "dps": 721.7092314640764,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 25.099999999999998,
-      "SpellFinal": 25.099999999999998,
+      "MeleeFinal": 27.400000000000002,
+      "SpellFinal": 27.400000000000002,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -4077,42 +4077,42 @@
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -109.1
+          "AdditionalPercent": -111.4
         },
         {
           "Action": "{SpellID: 31016}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{SpellID: 11294}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{SpellID: 11340}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{SpellID: 25347, Tag: 100}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{SpellID: 13219}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         }
       ],
       "Exclusions": null
@@ -4122,12 +4122,12 @@
     "build": "Combat",
     "race": "Windshaper",
     "file": "combat__windshaper.json",
-    "dps": 699.7369765054073,
+    "dps": 700.2297923806872,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 25.099999999999998,
-      "SpellFinal": 25.099999999999998,
+      "MeleeFinal": 27.400000000000002,
+      "SpellFinal": 27.400000000000002,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -4138,42 +4138,42 @@
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -109.1
+          "AdditionalPercent": -111.4
         },
         {
           "Action": "{SpellID: 31016}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{SpellID: 11294}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{SpellID: 11340}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{SpellID: 25347, Tag: 100}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{SpellID: 13219}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         }
       ],
       "Exclusions": null
@@ -4183,12 +4183,12 @@
     "build": "Combat",
     "race": "Human",
     "file": "combat__human.json",
-    "dps": 699.8947623541417,
+    "dps": 701.6477459072395,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 25.099999999999998,
-      "SpellFinal": 25.099999999999998,
+      "MeleeFinal": 27.400000000000002,
+      "SpellFinal": 27.400000000000002,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -4199,42 +4199,42 @@
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -109.1
+          "AdditionalPercent": -111.4
         },
         {
           "Action": "{SpellID: 31016}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{SpellID: 11294}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{SpellID: 11340}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{SpellID: 25347, Tag: 100}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{SpellID: 13219}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         }
       ],
       "Exclusions": null
@@ -4244,12 +4244,12 @@
     "build": "Combat",
     "race": "Dwarf",
     "file": "combat__dwarf.json",
-    "dps": 691.3938979103145,
+    "dps": 692.598676938319,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 25.099999999999998,
-      "SpellFinal": 25.099999999999998,
+      "MeleeFinal": 27.400000000000002,
+      "SpellFinal": 27.400000000000002,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -4260,42 +4260,42 @@
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -109.1
+          "AdditionalPercent": -111.4
         },
         {
           "Action": "{SpellID: 31016}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{SpellID: 11294}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{SpellID: 11340}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{SpellID: 25347, Tag: 100}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{SpellID: 13219}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         }
       ],
       "Exclusions": null
@@ -4305,12 +4305,12 @@
     "build": "Combat",
     "race": "Night Elf",
     "file": "combat__night_elf.json",
-    "dps": 698.937807556964,
+    "dps": 700.2685469089063,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 25.099999999999998,
-      "SpellFinal": 25.099999999999998,
+      "MeleeFinal": 27.400000000000002,
+      "SpellFinal": 27.400000000000002,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -4321,42 +4321,42 @@
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -109.1
+          "AdditionalPercent": -111.4
         },
         {
           "Action": "{SpellID: 31016}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{SpellID: 11294}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{SpellID: 11340}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{SpellID: 25347, Tag: 100}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{SpellID: 13219}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         }
       ],
       "Exclusions": null
@@ -4366,12 +4366,12 @@
     "build": "Combat",
     "race": "Gnome",
     "file": "combat__gnome.json",
-    "dps": 699.1400912624418,
+    "dps": 700.3342774051154,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 24.4,
-      "SpellFinal": 24.4,
+      "MeleeFinal": 26.700000000000003,
+      "SpellFinal": 26.700000000000003,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -4382,42 +4382,42 @@
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -108.4
+          "AdditionalPercent": -110.7
         },
         {
           "Action": "{SpellID: 31016}",
           "Kind": "physical-special",
-          "AdditionalPercent": -15.399999999999999
+          "AdditionalPercent": -17.700000000000003
         },
         {
           "Action": "{SpellID: 11294}",
           "Kind": "physical-special",
-          "AdditionalPercent": -15.399999999999999
+          "AdditionalPercent": -17.700000000000003
         },
         {
           "Action": "{SpellID: 11340}",
           "Kind": "spell",
-          "AdditionalPercent": -8.399999999999999
+          "AdditionalPercent": -10.700000000000003
         },
         {
           "Action": "{SpellID: 25347, Tag: 100}",
           "Kind": "spell",
-          "AdditionalPercent": -8.399999999999999
+          "AdditionalPercent": -10.700000000000003
         },
         {
           "Action": "{SpellID: 13219}",
           "Kind": "spell",
-          "AdditionalPercent": -8.399999999999999
+          "AdditionalPercent": -10.700000000000003
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -15.399999999999999
+          "AdditionalPercent": -17.700000000000003
         },
         {
           "Action": "{OtherID: 7, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -15.399999999999999
+          "AdditionalPercent": -17.700000000000003
         }
       ],
       "Exclusions": null
@@ -4427,12 +4427,12 @@
     "build": "Combat",
     "race": "High Order",
     "file": "combat__high_order.json",
-    "dps": 699.7369765054073,
+    "dps": 700.2297923806872,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 25.099999999999998,
-      "SpellFinal": 25.099999999999998,
+      "MeleeFinal": 27.400000000000002,
+      "SpellFinal": 27.400000000000002,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -4443,42 +4443,42 @@
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -109.1
+          "AdditionalPercent": -111.4
         },
         {
           "Action": "{SpellID: 31016}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{SpellID: 11294}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{SpellID: 11340}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{SpellID: 25347, Tag: 100}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{SpellID: 13219}",
           "Kind": "spell",
-          "AdditionalPercent": -9.099999999999998
+          "AdditionalPercent": -11.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -16.099999999999998
+          "AdditionalPercent": -18.400000000000002
         }
       ],
       "Exclusions": null
@@ -4488,7 +4488,7 @@
     "build": "Mutilate",
     "race": "Orc",
     "file": "mutilate__orc.json",
-    "dps": 705.5523261746143,
+    "dps": 705.5485585067833,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -4554,7 +4554,7 @@
     "build": "Mutilate",
     "race": "Troll",
     "file": "mutilate__troll.json",
-    "dps": 702.2256772703856,
+    "dps": 702.2109576693789,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -4620,7 +4620,7 @@
     "build": "Mutilate",
     "race": "Undead",
     "file": "mutilate__undead.json",
-    "dps": 739.4472825987966,
+    "dps": 739.3360504533528,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -4686,7 +4686,7 @@
     "build": "Mutilate",
     "race": "Windshaper",
     "file": "mutilate__windshaper.json",
-    "dps": 707.4590232583796,
+    "dps": 707.568538059831,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -4752,7 +4752,7 @@
     "build": "Mutilate",
     "race": "Human",
     "file": "mutilate__human.json",
-    "dps": 701.11890622138,
+    "dps": 700.9888706785432,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -4818,7 +4818,7 @@
     "build": "Mutilate",
     "race": "Dwarf",
     "file": "mutilate__dwarf.json",
-    "dps": 700.7186653316503,
+    "dps": 700.6595143352984,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -4884,7 +4884,7 @@
     "build": "Mutilate",
     "race": "Night Elf",
     "file": "mutilate__night_elf.json",
-    "dps": 709.2007873625307,
+    "dps": 709.142497432621,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -4950,7 +4950,7 @@
     "build": "Mutilate",
     "race": "Gnome",
     "file": "mutilate__gnome.json",
-    "dps": 713.4684751063216,
+    "dps": 713.5896256760136,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -5016,7 +5016,7 @@
     "build": "Mutilate",
     "race": "High Order",
     "file": "mutilate__high_order.json",
-    "dps": 707.4590232583796,
+    "dps": 707.568538059831,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -5082,7 +5082,7 @@
     "build": "Subtlety",
     "race": "Orc",
     "file": "subtlety__orc.json",
-    "dps": 650.2846340452551,
+    "dps": 650.4533501461137,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -5158,7 +5158,7 @@
     "build": "Subtlety",
     "race": "Troll",
     "file": "subtlety__troll.json",
-    "dps": 651.2433438763888,
+    "dps": 651.2670803687195,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -5234,12 +5234,12 @@
     "build": "Subtlety",
     "race": "Undead",
     "file": "subtlety__undead.json",
-    "dps": 676.4366813512478,
+    "dps": 676.3362663007574,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 23.4,
-      "SpellFinal": 23.4,
+      "MeleeFinal": 24.400000000000002,
+      "SpellFinal": 24.400000000000002,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -5250,57 +5250,57 @@
         {
           "Action": "{SpellID: 14278}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -107.4
+          "AdditionalPercent": -108.4
         },
         {
           "Action": "{SpellID: 31016}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{SpellID: 16511}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{SpellID: 11275}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{SpellID: 11269}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{SpellID: 11340}",
           "Kind": "spell",
-          "AdditionalPercent": -7.399999999999999
+          "AdditionalPercent": -8.400000000000002
         },
         {
           "Action": "{SpellID: 25347, Tag: 100}",
           "Kind": "spell",
-          "AdditionalPercent": -7.399999999999999
+          "AdditionalPercent": -8.400000000000002
         },
         {
           "Action": "{SpellID: 13219}",
           "Kind": "spell",
-          "AdditionalPercent": -7.399999999999999
+          "AdditionalPercent": -8.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         }
       ],
       "Exclusions": null
@@ -5310,12 +5310,12 @@
     "build": "Subtlety",
     "race": "Windshaper",
     "file": "subtlety__windshaper.json",
-    "dps": 652.4401940592415,
+    "dps": 653.1452611205675,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 23.4,
-      "SpellFinal": 23.4,
+      "MeleeFinal": 24.400000000000002,
+      "SpellFinal": 24.400000000000002,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -5326,57 +5326,57 @@
         {
           "Action": "{SpellID: 14278}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -107.4
+          "AdditionalPercent": -108.4
         },
         {
           "Action": "{SpellID: 31016}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{SpellID: 16511}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{SpellID: 11275}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{SpellID: 11269}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{SpellID: 11340}",
           "Kind": "spell",
-          "AdditionalPercent": -7.399999999999999
+          "AdditionalPercent": -8.400000000000002
         },
         {
           "Action": "{SpellID: 25347, Tag: 100}",
           "Kind": "spell",
-          "AdditionalPercent": -7.399999999999999
+          "AdditionalPercent": -8.400000000000002
         },
         {
           "Action": "{SpellID: 13219}",
           "Kind": "spell",
-          "AdditionalPercent": -7.399999999999999
+          "AdditionalPercent": -8.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         }
       ],
       "Exclusions": null
@@ -5386,7 +5386,7 @@
     "build": "Subtlety",
     "race": "Human",
     "file": "subtlety__human.json",
-    "dps": 654.4203233543655,
+    "dps": 654.4371483024291,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -5462,12 +5462,12 @@
     "build": "Subtlety",
     "race": "Dwarf",
     "file": "subtlety__dwarf.json",
-    "dps": 645.631140785845,
+    "dps": 644.809451820203,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 23.4,
-      "SpellFinal": 23.4,
+      "MeleeFinal": 24.400000000000002,
+      "SpellFinal": 24.400000000000002,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -5478,57 +5478,57 @@
         {
           "Action": "{SpellID: 14278}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -107.4
+          "AdditionalPercent": -108.4
         },
         {
           "Action": "{SpellID: 31016}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{SpellID: 16511}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{SpellID: 11275}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{SpellID: 11269}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{SpellID: 11340}",
           "Kind": "spell",
-          "AdditionalPercent": -7.399999999999999
+          "AdditionalPercent": -8.400000000000002
         },
         {
           "Action": "{SpellID: 25347, Tag: 100}",
           "Kind": "spell",
-          "AdditionalPercent": -7.399999999999999
+          "AdditionalPercent": -8.400000000000002
         },
         {
           "Action": "{SpellID: 13219}",
           "Kind": "spell",
-          "AdditionalPercent": -7.399999999999999
+          "AdditionalPercent": -8.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         }
       ],
       "Exclusions": null
@@ -5538,12 +5538,12 @@
     "build": "Subtlety",
     "race": "Night Elf",
     "file": "subtlety__night_elf.json",
-    "dps": 654.1044335955394,
+    "dps": 653.894583065569,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 23.4,
-      "SpellFinal": 23.4,
+      "MeleeFinal": 24.400000000000002,
+      "SpellFinal": 24.400000000000002,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -5554,57 +5554,57 @@
         {
           "Action": "{SpellID: 14278}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -107.4
+          "AdditionalPercent": -108.4
         },
         {
           "Action": "{SpellID: 31016}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{SpellID: 16511}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{SpellID: 11275}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{SpellID: 11269}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{SpellID: 11340}",
           "Kind": "spell",
-          "AdditionalPercent": -7.399999999999999
+          "AdditionalPercent": -8.400000000000002
         },
         {
           "Action": "{SpellID: 25347, Tag: 100}",
           "Kind": "spell",
-          "AdditionalPercent": -7.399999999999999
+          "AdditionalPercent": -8.400000000000002
         },
         {
           "Action": "{SpellID: 13219}",
           "Kind": "spell",
-          "AdditionalPercent": -7.399999999999999
+          "AdditionalPercent": -8.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         }
       ],
       "Exclusions": null
@@ -5614,7 +5614,7 @@
     "build": "Subtlety",
     "race": "Gnome",
     "file": "subtlety__gnome.json",
-    "dps": 655.6820470712809,
+    "dps": 655.595398803324,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -5690,12 +5690,12 @@
     "build": "Subtlety",
     "race": "High Order",
     "file": "subtlety__high_order.json",
-    "dps": 652.4401940592415,
+    "dps": 653.1452611205675,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 23.4,
-      "SpellFinal": 23.4,
+      "MeleeFinal": 24.400000000000002,
+      "SpellFinal": 24.400000000000002,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -5706,57 +5706,57 @@
         {
           "Action": "{SpellID: 14278}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -107.4
+          "AdditionalPercent": -108.4
         },
         {
           "Action": "{SpellID: 31016}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{SpellID: 16511}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{SpellID: 11275}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{SpellID: 11269}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{SpellID: 11340}",
           "Kind": "spell",
-          "AdditionalPercent": -7.399999999999999
+          "AdditionalPercent": -8.400000000000002
         },
         {
           "Action": "{SpellID: 25347, Tag: 100}",
           "Kind": "spell",
-          "AdditionalPercent": -7.399999999999999
+          "AdditionalPercent": -8.400000000000002
         },
         {
           "Action": "{SpellID: 13219}",
           "Kind": "spell",
-          "AdditionalPercent": -7.399999999999999
+          "AdditionalPercent": -8.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         },
         {
           "Action": "{OtherID: 7, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.399999999999999
+          "AdditionalPercent": -15.400000000000002
         }
       ],
       "Exclusions": null
@@ -5766,7 +5766,7 @@
     "build": "Demonic Pact",
     "race": "Orc",
     "file": "demonology__orc.json",
-    "dps": 898.1185524036912,
+    "dps": 898.2907563130323,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -5827,7 +5827,7 @@
     "build": "Demonic Pact",
     "race": "Troll",
     "file": "demonology__troll.json",
-    "dps": 892.6518987278821,
+    "dps": 892.7503247113973,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -5888,7 +5888,7 @@
     "build": "Demonic Pact",
     "race": "Undead",
     "file": "demonology__undead.json",
-    "dps": 910.9762626806494,
+    "dps": 911.1456486577824,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -5949,12 +5949,12 @@
     "build": "Demonic Pact",
     "race": "Human",
     "file": "demonology__human.json",
-    "dps": 898.7150286525825,
+    "dps": 904.384289283844,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 16.300000000000004,
-      "SpellFinal": 16.300000000000004,
+      "MeleeFinal": 16.1,
+      "SpellFinal": 16.1,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -5965,42 +5965,42 @@
         {
           "Action": "{SpellID: 25311}",
           "Kind": "spell",
-          "AdditionalPercent": -0.30000000000000426
+          "AdditionalPercent": -0.10000000000000142
         },
         {
           "Action": "{SpellID: 25309}",
           "Kind": "spell",
-          "AdditionalPercent": -0.30000000000000426
+          "AdditionalPercent": -0.10000000000000142
         },
         {
           "Action": "{SpellID: 25307}",
           "Kind": "spell",
-          "AdditionalPercent": -0.30000000000000426
+          "AdditionalPercent": -0.10000000000000142
         },
         {
           "Action": "{SpellID: 11689}",
           "Kind": "spell",
-          "AdditionalPercent": -0.30000000000000426
+          "AdditionalPercent": -0.10000000000000142
         },
         {
           "Action": "{SpellID: 17924}",
           "Kind": "spell",
-          "AdditionalPercent": -0.30000000000000426
+          "AdditionalPercent": -0.10000000000000142
         },
         {
           "Action": "{SpellID: 17923}",
           "Kind": "spell",
-          "AdditionalPercent": -0.30000000000000426
+          "AdditionalPercent": -0.10000000000000142
         },
         {
           "Action": "{SpellID: 11713}",
           "Kind": "spell",
-          "AdditionalPercent": -0.30000000000000426
+          "AdditionalPercent": -0.10000000000000142
         },
         {
           "Action": "{SpellID: 603}",
           "Kind": "spell",
-          "AdditionalPercent": -0.30000000000000426
+          "AdditionalPercent": -0.10000000000000142
         }
       ],
       "Exclusions": null
@@ -6010,7 +6010,7 @@
     "build": "Demonic Pact",
     "race": "Gnome",
     "file": "demonology__gnome.json",
-    "dps": 895.9518408698035,
+    "dps": 896.1428433553725,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -6071,7 +6071,7 @@
     "build": "Affliction",
     "race": "Orc",
     "file": "affliction__orc.json",
-    "dps": 838.6720891126051,
+    "dps": 838.390958725073,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -6137,7 +6137,7 @@
     "build": "Affliction",
     "race": "Troll",
     "file": "affliction__troll.json",
-    "dps": 826.8230264297812,
+    "dps": 826.9981049808274,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -6203,7 +6203,7 @@
     "build": "Affliction",
     "race": "Undead",
     "file": "affliction__undead.json",
-    "dps": 839.2528716795366,
+    "dps": 839.5543175028643,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -6269,7 +6269,7 @@
     "build": "Affliction",
     "race": "Human",
     "file": "affliction__human.json",
-    "dps": 846.9578247916218,
+    "dps": 846.82372574259,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -6335,12 +6335,12 @@
     "build": "Affliction",
     "race": "Gnome",
     "file": "affliction__gnome.json",
-    "dps": 825.7463307845711,
+    "dps": 828.3405573418321,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 16.799999999999997,
-      "SpellFinal": 16.799999999999997,
+      "MeleeFinal": 16.1,
+      "SpellFinal": 16.1,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -6351,47 +6351,47 @@
         {
           "Action": "{SpellID: 25311}",
           "Kind": "spell",
-          "AdditionalPercent": -0.7999999999999972
+          "AdditionalPercent": -0.10000000000000142
         },
         {
           "Action": "{SpellID: 25309}",
           "Kind": "spell",
-          "AdditionalPercent": -0.7999999999999972
+          "AdditionalPercent": -0.10000000000000142
         },
         {
           "Action": "{SpellID: 25307}",
           "Kind": "spell",
-          "AdditionalPercent": -0.7999999999999972
+          "AdditionalPercent": -0.10000000000000142
         },
         {
           "Action": "{SpellID: 11689}",
           "Kind": "spell",
-          "AdditionalPercent": -0.7999999999999972
+          "AdditionalPercent": -0.10000000000000142
         },
         {
           "Action": "{SpellID: 18871}",
           "Kind": "spell",
-          "AdditionalPercent": -0.7999999999999972
+          "AdditionalPercent": -0.10000000000000142
         },
         {
           "Action": "{SpellID: 18881}",
           "Kind": "spell",
-          "AdditionalPercent": -0.7999999999999972
+          "AdditionalPercent": -0.10000000000000142
         },
         {
           "Action": "{SpellID: 17923}",
           "Kind": "spell",
-          "AdditionalPercent": -0.7999999999999972
+          "AdditionalPercent": -0.10000000000000142
         },
         {
           "Action": "{SpellID: 11713}",
           "Kind": "spell",
-          "AdditionalPercent": -0.7999999999999972
+          "AdditionalPercent": -0.10000000000000142
         },
         {
           "Action": "{SpellID: 603}",
           "Kind": "spell",
-          "AdditionalPercent": -0.7999999999999972
+          "AdditionalPercent": -0.10000000000000142
         }
       ],
       "Exclusions": null
@@ -6401,7 +6401,7 @@
     "build": "DS/Ruin",
     "race": "Orc",
     "file": "ds_ruin__orc.json",
-    "dps": 796.4618283089865,
+    "dps": 796.7174204664144,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -6462,7 +6462,7 @@
     "build": "DS/Ruin",
     "race": "Troll",
     "file": "ds_ruin__troll.json",
-    "dps": 784.9246129662714,
+    "dps": 784.5155692466391,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -6523,7 +6523,7 @@
     "build": "DS/Ruin",
     "race": "Undead",
     "file": "ds_ruin__undead.json",
-    "dps": 808.9402200722162,
+    "dps": 808.730635397926,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -6584,7 +6584,7 @@
     "build": "DS/Ruin",
     "race": "Human",
     "file": "ds_ruin__human.json",
-    "dps": 811.1257604978799,
+    "dps": 811.2668659053169,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -6645,7 +6645,7 @@
     "build": "DS/Ruin",
     "race": "Gnome",
     "file": "ds_ruin__gnome.json",
-    "dps": 798.4098124862477,
+    "dps": 798.525924595031,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -6706,7 +6706,7 @@
     "build": "Destruction",
     "race": "Orc",
     "file": "destruction__orc.json",
-    "dps": 826.2517242512696,
+    "dps": 826.4805534551916,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -6772,7 +6772,7 @@
     "build": "Destruction",
     "race": "Troll",
     "file": "destruction__troll.json",
-    "dps": 829.7277530437076,
+    "dps": 829.8953491611609,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -6838,7 +6838,7 @@
     "build": "Destruction",
     "race": "Undead",
     "file": "destruction__undead.json",
-    "dps": 834.1884315684722,
+    "dps": 834.4674959444619,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -6904,7 +6904,7 @@
     "build": "Destruction",
     "race": "Human",
     "file": "destruction__human.json",
-    "dps": 833.1969939897372,
+    "dps": 833.458219503254,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -6970,7 +6970,7 @@
     "build": "Destruction",
     "race": "Gnome",
     "file": "destruction__gnome.json",
-    "dps": 821.408066328727,
+    "dps": 821.7758341224545,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -7036,7 +7036,7 @@
     "build": "Fury",
     "race": "Orc",
     "file": "fury__orc.json",
-    "dps": 931.5940421088254,
+    "dps": 931.427205786122,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -7107,7 +7107,7 @@
     "build": "Fury (Sunder)",
     "race": "Orc",
     "file": "fury_sunder__orc.json",
-    "dps": 897.0533244330319,
+    "dps": 897.0020555551853,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -7178,7 +7178,7 @@
     "build": "Fury",
     "race": "Tauren",
     "file": "fury__tauren.json",
-    "dps": 921.812691794468,
+    "dps": 921.9895544027274,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -7249,12 +7249,12 @@
     "build": "Fury (Sunder)",
     "race": "Tauren",
     "file": "fury_sunder__tauren.json",
-    "dps": 880.5553878138924,
+    "dps": 883.7150563649868,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 23.1,
-      "SpellFinal": 23.1,
+      "MeleeFinal": 21.8,
+      "SpellFinal": 21.8,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -7265,52 +7265,52 @@
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -107.1
+          "AdditionalPercent": -105.8
         },
         {
           "Action": "{SpellID: 23894}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.100000000000001
+          "AdditionalPercent": -12.8
         },
         {
           "Action": "{SpellID: 20662}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.100000000000001
+          "AdditionalPercent": -12.8
         },
         {
           "Action": "{SpellID: 11585}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.100000000000001
+          "AdditionalPercent": -12.8
         },
         {
           "Action": "{SpellID: 11605}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.100000000000001
+          "AdditionalPercent": -12.8
         },
         {
           "Action": "{SpellID: 1680, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -24.1
+          "AdditionalPercent": -22.8
         },
         {
           "Action": "{SpellID: 1680}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.100000000000001
+          "AdditionalPercent": -12.8
         },
         {
           "Action": "{SpellID: 25286}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.100000000000001
+          "AdditionalPercent": -12.8
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.100000000000001
+          "AdditionalPercent": -12.8
         },
         {
           "Action": "{OtherID: 7, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -24.1
+          "AdditionalPercent": -22.8
         }
       ],
       "Exclusions": null
@@ -7320,12 +7320,12 @@
     "build": "Fury",
     "race": "Troll",
     "file": "fury__troll.json",
-    "dps": 909.1151986220912,
+    "dps": 917.7734465699945,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 23.400000000000002,
-      "SpellFinal": 23.400000000000002,
+      "MeleeFinal": 19.8,
+      "SpellFinal": 19.8,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -7336,52 +7336,52 @@
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -107.4
+          "AdditionalPercent": -103.8
         },
         {
           "Action": "{SpellID: 23894}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.400000000000002
+          "AdditionalPercent": -10.8
         },
         {
           "Action": "{SpellID: 20662}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.400000000000002
+          "AdditionalPercent": -10.8
         },
         {
           "Action": "{SpellID: 11585}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.400000000000002
+          "AdditionalPercent": -10.8
         },
         {
           "Action": "{SpellID: 11605}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.400000000000002
+          "AdditionalPercent": -10.8
         },
         {
           "Action": "{SpellID: 1680, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -24.400000000000002
+          "AdditionalPercent": -20.8
         },
         {
           "Action": "{SpellID: 1680}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.400000000000002
+          "AdditionalPercent": -10.8
         },
         {
           "Action": "{SpellID: 25286}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.400000000000002
+          "AdditionalPercent": -10.8
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -14.400000000000002
+          "AdditionalPercent": -10.8
         },
         {
           "Action": "{OtherID: 7, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -24.400000000000002
+          "AdditionalPercent": -20.8
         }
       ],
       "Exclusions": null
@@ -7391,7 +7391,7 @@
     "build": "Fury (Sunder)",
     "race": "Troll",
     "file": "fury_sunder__troll.json",
-    "dps": 887.9877133790845,
+    "dps": 888.0817469352804,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -7462,12 +7462,12 @@
     "build": "Fury",
     "race": "Undead",
     "file": "fury__undead.json",
-    "dps": 940.715951953561,
+    "dps": 950.0210809833432,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 22.1,
-      "SpellFinal": 22.1,
+      "MeleeFinal": 18.5,
+      "SpellFinal": 18.5,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -7478,52 +7478,52 @@
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -106.1
+          "AdditionalPercent": -102.5
         },
         {
           "Action": "{SpellID: 23894}",
           "Kind": "physical-special",
-          "AdditionalPercent": -13.100000000000001
+          "AdditionalPercent": -9.5
         },
         {
           "Action": "{SpellID: 20662}",
           "Kind": "physical-special",
-          "AdditionalPercent": -13.100000000000001
+          "AdditionalPercent": -9.5
         },
         {
           "Action": "{SpellID: 11585}",
           "Kind": "physical-special",
-          "AdditionalPercent": -13.100000000000001
+          "AdditionalPercent": -9.5
         },
         {
           "Action": "{SpellID: 11605}",
           "Kind": "physical-special",
-          "AdditionalPercent": -13.100000000000001
+          "AdditionalPercent": -9.5
         },
         {
           "Action": "{SpellID: 1680, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -23.1
+          "AdditionalPercent": -19.5
         },
         {
           "Action": "{SpellID: 1680}",
           "Kind": "physical-special",
-          "AdditionalPercent": -13.100000000000001
+          "AdditionalPercent": -9.5
         },
         {
           "Action": "{SpellID: 25286}",
           "Kind": "physical-special",
-          "AdditionalPercent": -13.100000000000001
+          "AdditionalPercent": -9.5
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -13.100000000000001
+          "AdditionalPercent": -9.5
         },
         {
           "Action": "{OtherID: 7, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -23.1
+          "AdditionalPercent": -19.5
         }
       ],
       "Exclusions": null
@@ -7533,7 +7533,7 @@
     "build": "Fury (Sunder)",
     "race": "Undead",
     "file": "fury_sunder__undead.json",
-    "dps": 907.0433325406656,
+    "dps": 906.9567297164073,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -7604,7 +7604,7 @@
     "build": "Fury",
     "race": "Windshaper",
     "file": "fury__windshaper.json",
-    "dps": 924.7809707958918,
+    "dps": 924.665866041895,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -7675,7 +7675,7 @@
     "build": "Fury (Sunder)",
     "race": "Windshaper",
     "file": "fury_sunder__windshaper.json",
-    "dps": 879.7519906141516,
+    "dps": 879.5420714109199,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -7746,7 +7746,7 @@
     "build": "Fury",
     "race": "Human",
     "file": "fury__human.json",
-    "dps": 929.4917240825425,
+    "dps": 929.3791213142482,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -7817,7 +7817,7 @@
     "build": "Fury (Sunder)",
     "race": "Human",
     "file": "fury_sunder__human.json",
-    "dps": 888.0417822293799,
+    "dps": 888.0951397604105,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -7888,7 +7888,7 @@
     "build": "Fury",
     "race": "Dwarf",
     "file": "fury__dwarf.json",
-    "dps": 916.0059726567997,
+    "dps": 919.1014221106116,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -7959,7 +7959,7 @@
     "build": "Fury (Sunder)",
     "race": "Dwarf",
     "file": "fury_sunder__dwarf.json",
-    "dps": 875.7174890121804,
+    "dps": 875.7587474463705,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -8030,7 +8030,7 @@
     "build": "Fury",
     "race": "Night Elf",
     "file": "fury__night_elf.json",
-    "dps": 919.7448872932827,
+    "dps": 919.8870781190395,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -8101,7 +8101,7 @@
     "build": "Fury (Sunder)",
     "race": "Night Elf",
     "file": "fury_sunder__night_elf.json",
-    "dps": 887.0534256725317,
+    "dps": 887.1970847460435,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -8172,7 +8172,78 @@
     "build": "Fury",
     "race": "Gnome",
     "file": "fury__gnome.json",
-    "dps": 914.5121229049247,
+    "dps": 922.4191821478167,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 18.5,
+      "SpellFinal": 18.5,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{ItemID: 10646}",
+          "Kind": "spell",
+          "AdditionalPercent": -102.5
+        },
+        {
+          "Action": "{SpellID: 23894}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.5
+        },
+        {
+          "Action": "{SpellID: 20662}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.5
+        },
+        {
+          "Action": "{SpellID: 11585}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.5
+        },
+        {
+          "Action": "{SpellID: 11605}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.5
+        },
+        {
+          "Action": "{SpellID: 1680, Tag: 2}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -19.5
+        },
+        {
+          "Action": "{SpellID: 1680}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.5
+        },
+        {
+          "Action": "{SpellID: 25286}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.5
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.5
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 2}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -19.5
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Fury (Sunder)",
+    "race": "Gnome",
+    "file": "fury_sunder__gnome.json",
+    "dps": 882.0991757876845,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -8240,81 +8311,10 @@
     }
   },
   {
-    "build": "Fury (Sunder)",
-    "race": "Gnome",
-    "file": "fury_sunder__gnome.json",
-    "dps": 879.1034649192314,
-    "hitAdjustment": {
-      "MeleeAdded": 0,
-      "SpellAdded": 0,
-      "MeleeFinal": 22.1,
-      "SpellFinal": 22.1,
-      "Model": "equipped-only-v2",
-      "RatingPerPercent": 10,
-      "RawHitDelta": 0,
-      "OffensiveBudgetBefore": 0,
-      "Balance": 0,
-      "Entries": null,
-      "Requirements": [
-        {
-          "Action": "{ItemID: 10646}",
-          "Kind": "spell",
-          "AdditionalPercent": -106.1
-        },
-        {
-          "Action": "{SpellID: 23894}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -13.100000000000001
-        },
-        {
-          "Action": "{SpellID: 20662}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -13.100000000000001
-        },
-        {
-          "Action": "{SpellID: 11585}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -13.100000000000001
-        },
-        {
-          "Action": "{SpellID: 11605}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -13.100000000000001
-        },
-        {
-          "Action": "{SpellID: 1680, Tag: 2}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -23.1
-        },
-        {
-          "Action": "{SpellID: 1680}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -13.100000000000001
-        },
-        {
-          "Action": "{SpellID: 25286}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -13.100000000000001
-        },
-        {
-          "Action": "{OtherID: 7, Tag: 1}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -13.100000000000001
-        },
-        {
-          "Action": "{OtherID: 7, Tag: 2}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -23.1
-        }
-      ],
-      "Exclusions": null
-    }
-  },
-  {
     "build": "Fury",
     "race": "High Order",
     "file": "fury__high_order.json",
-    "dps": 924.7809707958918,
+    "dps": 924.665866041895,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -8385,7 +8385,7 @@
     "build": "Fury (Sunder)",
     "race": "High Order",
     "file": "fury_sunder__high_order.json",
-    "dps": 879.7519906141516,
+    "dps": 879.5420714109199,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -8456,7 +8456,7 @@
     "build": "Arms",
     "race": "Orc",
     "file": "arms__orc.json",
-    "dps": 833.5307471758995,
+    "dps": 833.7208928410308,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -8527,12 +8527,12 @@
     "build": "Arms",
     "race": "Tauren",
     "file": "arms__tauren.json",
-    "dps": 823.0662206472699,
+    "dps": 826.7275748453468,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 12.099999999999998,
-      "SpellFinal": 12.099999999999998,
+      "MeleeFinal": 11.399999999999999,
+      "SpellFinal": 11.399999999999999,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -8543,52 +8543,52 @@
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -96.1
+          "AdditionalPercent": -95.4
         },
         {
           "Action": "{SpellID: 20662}",
           "Kind": "physical-special",
-          "AdditionalPercent": -3.099999999999998
+          "AdditionalPercent": -2.3999999999999986
         },
         {
           "Action": "{SpellID: 21553}",
           "Kind": "physical-special",
-          "AdditionalPercent": -3.099999999999998
+          "AdditionalPercent": -2.3999999999999986
         },
         {
           "Action": "{SpellID: 11585}",
           "Kind": "physical-special",
-          "AdditionalPercent": -3.099999999999998
+          "AdditionalPercent": -2.3999999999999986
         },
         {
           "Action": "{SpellID: 11605}",
           "Kind": "physical-special",
-          "AdditionalPercent": -3.099999999999998
+          "AdditionalPercent": -2.3999999999999986
         },
         {
           "Action": "{SpellID: 1680}",
           "Kind": "physical-special",
-          "AdditionalPercent": -3.099999999999998
+          "AdditionalPercent": -2.3999999999999986
         },
         {
           "Action": "{SpellID: 11574}",
           "Kind": "physical-special",
-          "AdditionalPercent": -3.099999999999998
+          "AdditionalPercent": -2.3999999999999986
         },
         {
           "Action": "{SpellID: 1310222}",
           "Kind": "physical-special",
-          "AdditionalPercent": -3.099999999999998
+          "AdditionalPercent": -2.3999999999999986
         },
         {
           "Action": "{SpellID: 25286}",
           "Kind": "physical-special",
-          "AdditionalPercent": -3.099999999999998
+          "AdditionalPercent": -2.3999999999999986
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -3.099999999999998
+          "AdditionalPercent": -2.3999999999999986
         }
       ],
       "Exclusions": null
@@ -8598,7 +8598,7 @@
     "build": "Arms",
     "race": "Troll",
     "file": "arms__troll.json",
-    "dps": 828.5854799337714,
+    "dps": 828.6161321317696,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -8669,12 +8669,12 @@
     "build": "Arms",
     "race": "Undead",
     "file": "arms__undead.json",
-    "dps": 831.6273485859583,
+    "dps": 842.8026675936754,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 12.5,
-      "SpellFinal": 12.5,
+      "MeleeFinal": 10.399999999999999,
+      "SpellFinal": 10.399999999999999,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -8685,52 +8685,52 @@
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -96.5
+          "AdditionalPercent": -94.4
         },
         {
           "Action": "{SpellID: 20662}",
           "Kind": "physical-special",
-          "AdditionalPercent": -3.5
+          "AdditionalPercent": -1.3999999999999986
         },
         {
           "Action": "{SpellID: 21553}",
           "Kind": "physical-special",
-          "AdditionalPercent": -3.5
+          "AdditionalPercent": -1.3999999999999986
         },
         {
           "Action": "{SpellID: 11585}",
           "Kind": "physical-special",
-          "AdditionalPercent": -3.5
+          "AdditionalPercent": -1.3999999999999986
         },
         {
           "Action": "{SpellID: 11605}",
           "Kind": "physical-special",
-          "AdditionalPercent": -3.5
+          "AdditionalPercent": -1.3999999999999986
         },
         {
           "Action": "{SpellID: 1680}",
           "Kind": "physical-special",
-          "AdditionalPercent": -3.5
+          "AdditionalPercent": -1.3999999999999986
         },
         {
           "Action": "{SpellID: 11574}",
           "Kind": "physical-special",
-          "AdditionalPercent": -3.5
+          "AdditionalPercent": -1.3999999999999986
         },
         {
           "Action": "{SpellID: 1310222}",
           "Kind": "physical-special",
-          "AdditionalPercent": -3.5
+          "AdditionalPercent": -1.3999999999999986
         },
         {
           "Action": "{SpellID: 25286}",
           "Kind": "physical-special",
-          "AdditionalPercent": -3.5
+          "AdditionalPercent": -1.3999999999999986
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -3.5
+          "AdditionalPercent": -1.3999999999999986
         }
       ],
       "Exclusions": null
@@ -8740,7 +8740,7 @@
     "build": "Arms",
     "race": "Windshaper",
     "file": "arms__windshaper.json",
-    "dps": 830.9437009980267,
+    "dps": 830.7846786017415,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -8811,12 +8811,12 @@
     "build": "Arms",
     "race": "Human",
     "file": "arms__human.json",
-    "dps": 832.8464264352161,
+    "dps": 836.9090502882802,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 11.099999999999998,
-      "SpellFinal": 11.099999999999998,
+      "MeleeFinal": 10.399999999999999,
+      "SpellFinal": 10.399999999999999,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -8827,52 +8827,52 @@
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -95.1
+          "AdditionalPercent": -94.4
         },
         {
           "Action": "{SpellID: 20662}",
           "Kind": "physical-special",
-          "AdditionalPercent": -2.099999999999998
+          "AdditionalPercent": -1.3999999999999986
         },
         {
           "Action": "{SpellID: 21553}",
           "Kind": "physical-special",
-          "AdditionalPercent": -2.099999999999998
+          "AdditionalPercent": -1.3999999999999986
         },
         {
           "Action": "{SpellID: 11585}",
           "Kind": "physical-special",
-          "AdditionalPercent": -2.099999999999998
+          "AdditionalPercent": -1.3999999999999986
         },
         {
           "Action": "{SpellID: 11605}",
           "Kind": "physical-special",
-          "AdditionalPercent": -2.099999999999998
+          "AdditionalPercent": -1.3999999999999986
         },
         {
           "Action": "{SpellID: 1680}",
           "Kind": "physical-special",
-          "AdditionalPercent": -2.099999999999998
+          "AdditionalPercent": -1.3999999999999986
         },
         {
           "Action": "{SpellID: 11574}",
           "Kind": "physical-special",
-          "AdditionalPercent": -2.099999999999998
+          "AdditionalPercent": -1.3999999999999986
         },
         {
           "Action": "{SpellID: 1310222}",
           "Kind": "physical-special",
-          "AdditionalPercent": -2.099999999999998
+          "AdditionalPercent": -1.3999999999999986
         },
         {
           "Action": "{SpellID: 25286}",
           "Kind": "physical-special",
-          "AdditionalPercent": -2.099999999999998
+          "AdditionalPercent": -1.3999999999999986
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -2.099999999999998
+          "AdditionalPercent": -1.3999999999999986
         }
       ],
       "Exclusions": null
@@ -8882,7 +8882,7 @@
     "build": "Arms",
     "race": "Dwarf",
     "file": "arms__dwarf.json",
-    "dps": 825.0975205252234,
+    "dps": 825.3020002321883,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -8953,7 +8953,7 @@
     "build": "Arms",
     "race": "Night Elf",
     "file": "arms__night_elf.json",
-    "dps": 831.8752589208473,
+    "dps": 832.058942587572,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9024,7 +9024,7 @@
     "build": "Arms",
     "race": "Gnome",
     "file": "arms__gnome.json",
-    "dps": 823.6597366689142,
+    "dps": 823.4468979916124,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9095,7 +9095,7 @@
     "build": "Arms",
     "race": "High Order",
     "file": "arms__high_order.json",
-    "dps": 830.9437009980267,
+    "dps": 830.7846786017415,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9166,7 +9166,7 @@
     "build": "Pet/Melee",
     "race": "Tauren",
     "file": "pet_melee__tauren.json",
-    "dps": 1029.5139406765836,
+    "dps": 1031.848633513508,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9229,7 +9229,7 @@
     "build": "Pet/Melee",
     "race": "Windshaper",
     "file": "pet_melee__windshaper.json",
-    "dps": 1032.1161593005754,
+    "dps": 1039.7080024808583,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9292,12 +9292,12 @@
     "build": "Pet/Melee",
     "race": "Orc",
     "file": "pet_melee__orc.json",
-    "dps": 1044.7511940572676,
+    "dps": 1047.6677072793761,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 26.400000000000002,
-      "SpellFinal": 26.400000000000002,
+      "MeleeFinal": 25.600000000000005,
+      "SpellFinal": 25.600000000000005,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -9308,42 +9308,42 @@
         {
           "Action": "{SpellID: 1293527}",
           "Kind": "physical-special",
-          "AdditionalPercent": -17.400000000000002
+          "AdditionalPercent": -16.600000000000005
         },
         {
           "Action": "{SpellID: 14266, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -17.400000000000002
+          "AdditionalPercent": -16.600000000000005
         },
         {
           "Action": "{SpellID: 14266}",
           "Kind": "physical-special",
-          "AdditionalPercent": -17.400000000000002
+          "AdditionalPercent": -16.600000000000005
         },
         {
           "Action": "{SpellID: 14271}",
           "Kind": "physical-special",
-          "AdditionalPercent": -17.400000000000002
+          "AdditionalPercent": -16.600000000000005
         },
         {
           "Action": "{SpellID: 14268}",
           "Kind": "physical-special",
-          "AdditionalPercent": -17.400000000000002
+          "AdditionalPercent": -16.600000000000005
         },
         {
           "Action": "{SpellID: 1317257}",
           "Kind": "physical-special",
-          "AdditionalPercent": -17.400000000000002
+          "AdditionalPercent": -16.600000000000005
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -17.400000000000002
+          "AdditionalPercent": -16.600000000000005
         },
         {
           "Action": "{OtherID: 7, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -17.400000000000002
+          "AdditionalPercent": -16.600000000000005
         }
       ],
       "Exclusions": [
@@ -9355,12 +9355,12 @@
     "build": "Pet/Melee",
     "race": "Human",
     "file": "pet_melee__human.json",
-    "dps": 1047.6560869649225,
+    "dps": 1050.449780334228,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 26.400000000000002,
-      "SpellFinal": 26.400000000000002,
+      "MeleeFinal": 25.600000000000005,
+      "SpellFinal": 25.600000000000005,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -9371,42 +9371,42 @@
         {
           "Action": "{SpellID: 1293527}",
           "Kind": "physical-special",
-          "AdditionalPercent": -17.400000000000002
+          "AdditionalPercent": -16.600000000000005
         },
         {
           "Action": "{SpellID: 14266, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -17.400000000000002
+          "AdditionalPercent": -16.600000000000005
         },
         {
           "Action": "{SpellID: 14266}",
           "Kind": "physical-special",
-          "AdditionalPercent": -17.400000000000002
+          "AdditionalPercent": -16.600000000000005
         },
         {
           "Action": "{SpellID: 14271}",
           "Kind": "physical-special",
-          "AdditionalPercent": -17.400000000000002
+          "AdditionalPercent": -16.600000000000005
         },
         {
           "Action": "{SpellID: 14268}",
           "Kind": "physical-special",
-          "AdditionalPercent": -17.400000000000002
+          "AdditionalPercent": -16.600000000000005
         },
         {
           "Action": "{SpellID: 1317257}",
           "Kind": "physical-special",
-          "AdditionalPercent": -17.400000000000002
+          "AdditionalPercent": -16.600000000000005
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -17.400000000000002
+          "AdditionalPercent": -16.600000000000005
         },
         {
           "Action": "{OtherID: 7, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -17.400000000000002
+          "AdditionalPercent": -16.600000000000005
         }
       ],
       "Exclusions": [
@@ -9418,7 +9418,7 @@
     "build": "Pet/Melee",
     "race": "Night Elf",
     "file": "pet_melee__night_elf.json",
-    "dps": 1041.494382690271,
+    "dps": 1043.85287530115,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9481,7 +9481,7 @@
     "build": "Pet/Melee",
     "race": "Dwarf",
     "file": "pet_melee__dwarf.json",
-    "dps": 1026.6258007596018,
+    "dps": 1028.7580841894687,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9544,7 +9544,7 @@
     "build": "Pet/Melee",
     "race": "Troll",
     "file": "pet_melee__troll.json",
-    "dps": 1029.4875991771523,
+    "dps": 1037.5687154745924,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9607,7 +9607,7 @@
     "build": "Pet/Melee",
     "race": "High Order",
     "file": "pet_melee__high_order.json",
-    "dps": 1032.1161593005754,
+    "dps": 1039.7080024808583,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9670,7 +9670,7 @@
     "build": "Arcane\u2013Frost",
     "race": "Orc",
     "file": "arcane_frost__orc.json",
-    "dps": 742.8485322743729,
+    "dps": 742.826316626386,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9711,7 +9711,7 @@
     "build": "Arcane\u2013Frost",
     "race": "Troll",
     "file": "arcane_frost__troll.json",
-    "dps": 740.8514351631642,
+    "dps": 740.9125295769919,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9752,12 +9752,12 @@
     "build": "Arcane\u2013Frost",
     "race": "Undead",
     "file": "arcane_frost__undead.json",
-    "dps": 750.574132711147,
+    "dps": 752.9253496211162,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 14.500000000000002,
-      "SpellFinal": 14.500000000000002,
+      "MeleeFinal": 13.8,
+      "SpellFinal": 13.8,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -9768,22 +9768,22 @@
         {
           "Action": "{SpellID: 25345, Tag: 1}",
           "Kind": "spell",
-          "AdditionalPercent": -3.5000000000000018
+          "AdditionalPercent": -2.8000000000000007
         },
         {
           "Action": "{SpellID: 25345}",
           "Kind": "spell",
-          "AdditionalPercent": -3.5000000000000018
+          "AdditionalPercent": -2.8000000000000007
         },
         {
           "Action": "{SpellID: 25304}",
           "Kind": "spell",
-          "AdditionalPercent": -3.5000000000000018
+          "AdditionalPercent": -2.8000000000000007
         },
         {
           "Action": "{SpellID: 30455}",
           "Kind": "spell",
-          "AdditionalPercent": -3.5000000000000018
+          "AdditionalPercent": -2.8000000000000007
         }
       ],
       "Exclusions": null
@@ -9793,7 +9793,7 @@
     "build": "Arcane\u2013Frost",
     "race": "Human",
     "file": "arcane_frost__human.json",
-    "dps": 753.079495030033,
+    "dps": 752.7876821483131,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9834,12 +9834,12 @@
     "build": "Arcane\u2013Frost",
     "race": "Gnome",
     "file": "arcane_frost__gnome.json",
-    "dps": 743.7810781923255,
+    "dps": 748.6225263632696,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 12.9,
-      "SpellFinal": 12.9,
+      "MeleeFinal": 11.5,
+      "SpellFinal": 11.5,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -9850,22 +9850,22 @@
         {
           "Action": "{SpellID: 25345, Tag: 1}",
           "Kind": "spell",
-          "AdditionalPercent": -1.9000000000000004
+          "AdditionalPercent": -0.5
         },
         {
           "Action": "{SpellID: 25345}",
           "Kind": "spell",
-          "AdditionalPercent": -1.9000000000000004
+          "AdditionalPercent": -0.5
         },
         {
           "Action": "{SpellID: 25304}",
           "Kind": "spell",
-          "AdditionalPercent": -1.9000000000000004
+          "AdditionalPercent": -0.5
         },
         {
           "Action": "{SpellID: 30455}",
           "Kind": "spell",
-          "AdditionalPercent": -1.9000000000000004
+          "AdditionalPercent": -0.5
         }
       ],
       "Exclusions": null
@@ -9875,7 +9875,7 @@
     "build": "Arcane\u2013Frost",
     "race": "High Order",
     "file": "arcane_frost__high_order.json",
-    "dps": 749.7853858352148,
+    "dps": 749.787253481345,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9916,7 +9916,7 @@
     "build": "2H Bloodthirst",
     "race": "Orc",
     "file": "fury_2h__orc.json",
-    "dps": 840.7922187004244,
+    "dps": 840.8181989109881,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9977,7 +9977,7 @@
     "build": "2H Bloodthirst",
     "race": "Tauren",
     "file": "fury_2h__tauren.json",
-    "dps": 824.7246210368455,
+    "dps": 824.6411907854714,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -10038,7 +10038,7 @@
     "build": "2H Bloodthirst",
     "race": "Undead",
     "file": "fury_2h__undead.json",
-    "dps": 840.1804188732015,
+    "dps": 840.3508262645951,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -10099,7 +10099,7 @@
     "build": "2H Bloodthirst",
     "race": "Troll",
     "file": "fury_2h__troll.json",
-    "dps": 830.2408791097482,
+    "dps": 830.2829452087004,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -10160,7 +10160,7 @@
     "build": "2H Bloodthirst",
     "race": "Windshaper",
     "file": "fury_2h__windshaper.json",
-    "dps": 821.2962319225611,
+    "dps": 821.3752759337149,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -10221,7 +10221,7 @@
     "build": "2H Bloodthirst",
     "race": "Human",
     "file": "fury_2h__human.json",
-    "dps": 835.429860196204,
+    "dps": 835.5739132047173,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -10282,7 +10282,7 @@
     "build": "2H Bloodthirst",
     "race": "Dwarf",
     "file": "fury_2h__dwarf.json",
-    "dps": 830.2414650549923,
+    "dps": 830.2836046758512,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -10343,7 +10343,7 @@
     "build": "2H Bloodthirst",
     "race": "Gnome",
     "file": "fury_2h__gnome.json",
-    "dps": 829.4501468812663,
+    "dps": 829.5255438892664,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -10404,7 +10404,7 @@
     "build": "2H Bloodthirst",
     "race": "Night Elf",
     "file": "fury_2h__night_elf.json",
-    "dps": 827.4402738608001,
+    "dps": 827.6265234536631,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -10465,7 +10465,7 @@
     "build": "2H Bloodthirst",
     "race": "High Order",
     "file": "fury_2h__high_order.json",
-    "dps": 821.2962319225611,
+    "dps": 821.3752759337149,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -10526,7 +10526,7 @@
     "build": "Physical Ret",
     "race": "Undead",
     "file": "retribution_physical__undead.json",
-    "dps": 1085.7337659501322,
+    "dps": 1085.6574155185835,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -10567,7 +10567,7 @@
     "build": "Physical Ret",
     "race": "Human",
     "file": "retribution_physical__human.json",
-    "dps": 1084.3525479650395,
+    "dps": 1084.3146229715874,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -10608,7 +10608,7 @@
     "build": "Physical Ret",
     "race": "Dwarf",
     "file": "retribution_physical__dwarf.json",
-    "dps": 1074.1827845816842,
+    "dps": 1074.3686909936016,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,

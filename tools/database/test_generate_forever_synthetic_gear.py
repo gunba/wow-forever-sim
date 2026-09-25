@@ -74,14 +74,34 @@ class SyntheticGearTest(unittest.TestCase):
 
     def test_high_hit_caster_mirrors_retain_source_hit(self):
         proposals = generator.proposals_v2()
-        for label in ("Spell power / crit / hit (matched cost)",
-                      "Strength / spell power / hit (matched cost)"):
+        for label, material in (("Spell power / crit / hit (matched cost)", "Cloth"),
+                                ("Strength / spell power / hit (matched cost)", "Plate")):
             head = next(row for row in proposals if row["Archetype"] == label
-                        and row["SlotID"] == 1 and row["Material"] == "Cloth")
+                        and row["SlotID"] == 1 and row["Material"] == material)
             self.assertEqual(head["SourceID"], 279253)
             self.assertGreaterEqual(head["Stats"]["HitRating"], 20)
             self.assertGreater(head["Stats"]["SpellPower"], 0)
             self.assertNotIn("HitRating", generator.BY_ID[head["SourceID"]]["stats"])
+
+    def test_projected_armor_respects_material_stat_patterns(self):
+        proposals = generator.proposals_v2()
+        body = [row for row in proposals if row["SlotID"] in generator.BODY_SLOTS]
+        self.assertFalse(any(row["Material"] == "Leather" and row["Stats"].get("Strength")
+                             for row in body))
+        self.assertFalse(any(row["Material"] == "Cloth" and row["Stats"].get("Strength")
+                             for row in body))
+        mail_strength = [row for row in body if row["Material"] == "Mail"
+                         and row["Stats"].get("Strength")]
+        self.assertTrue(mail_strength)
+        self.assertEqual({row["SourceID"] for row in mail_strength}, {20203, 22676})
+        projected_hit = [row for row in mail_strength
+                         if row["Archetype"] == "Strength / intellect / crit / hit (mail)"]
+        self.assertEqual(len(projected_hit), len(generator.BODY_SLOTS))
+        self.assertTrue(all(row["Stats"].get("HitRating", 0) > 0 and
+                            row["SourceID"] == 22676 and
+                            abs(row["ProposedBudget"] - 1) < 1e-8
+                            for row in projected_hit))
+        self.assertNotIn("HitRating", generator.BY_ID[22676]["stats"])
 
 
 if __name__ == "__main__":
