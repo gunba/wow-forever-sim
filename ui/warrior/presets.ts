@@ -51,7 +51,7 @@ export const DefaultGear = GearFury;
 
 export const APLFury = PresetUtils.makePresetAPLRotation('Fury', APLFuryJSON);
 export const APLFuryAoE = PresetUtils.makePresetAPLRotation('Fury (Adaptive AoE)', APLFuryAoEJSON);
-APLFuryAoE.tooltip = 'Maintains Battle Shout if needed; uses Cleave and target-count/remaining-time priorities for short or long multi-target fights.';
+APLFuryAoE.tooltip = 'Maintains Battle Shout; prioritizes Whirlwind/Cleave on multiple targets, spends surplus Rage on Bloodthirst, and uses short-fight Execute. Single-target Rend requires enough time for its ticks and a low-cost Battle Stance window.';
 export const APLFurySpearing = PresetUtils.makePresetAPLRotation('Fury (Giants/Dragonkin)', APLFurySpearingJSON);
 APLFurySpearing.tooltip = 'Spearing Strike build for Giant or Dragonkin targets. Not a general-purpose Fury rotation.';
 export const APLFurySunder = PresetUtils.makePresetAPLRotation('Fury (Sunder)', APLFurySunderJSON);
