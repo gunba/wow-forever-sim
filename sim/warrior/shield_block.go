@@ -10,12 +10,19 @@ import (
 func (warrior *Warrior) RegisterShieldBlockCD() {
 	actionID := core.ActionID{SpellID: 2565}
 	cooldownDur := time.Second * 5
+	duration := time.Second * 5
+	maxBlocks := int32(1)
+	if warrior.Env.IsForever() {
+		// Forever's level-16 rank lasts seven seconds or two successful blocks.
+		duration = time.Second * 7
+		maxBlocks = 2
+	}
 
 	warrior.ShieldBlockAura = warrior.RegisterAura(core.Aura{
 		Label:     "Shield Block",
 		ActionID:  actionID,
-		Duration:  time.Second * 7, // 5 sec in Classic
-		MaxStacks: 1,
+		Duration:  duration,
+		MaxStacks: maxBlocks,
 
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
 			aura.SetStacks(sim, aura.MaxStacks)

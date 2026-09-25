@@ -20,7 +20,7 @@ import {
 } from '../core/proto/common.js';
 import { FeralTankDruid_Options as DruidOptions } from '../core/proto/druid.js';
 import { SavedTalents } from '../core/proto/ui.js';
-import BearApl from './apls/bear.apl.json';
+import ForeverBearApl from './apls/forever_bear.apl.json';
 import LaunchGearJSON from './gear_sets/launch.gear.json';
 
 // Preset options for this spec.
@@ -31,7 +31,7 @@ import LaunchGearJSON from './gear_sets/launch.gear.json';
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearLaunch = PresetUtils.makePresetGear('Launch', LaunchGearJSON);
+export const GearLaunch = PresetUtils.makePresetGear('Modeled level 65', LaunchGearJSON);
 
 export const GearPresets = {
 	[ClassicPhase.Phase1]: [GearLaunch],
@@ -43,10 +43,10 @@ export const DefaultGear = GearPresets[ClassicPhase.Phase1][0];
 //                                 APL Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const APLBear = PresetUtils.makePresetAPLRotation('Bear', BearApl);
+export const APLForeverBear = PresetUtils.makePresetAPLRotation('Forever Bear', ForeverBearApl);
 
 export const APLPresets = {
-	[ClassicPhase.Phase1]: [APLBear],
+	[ClassicPhase.Phase1]: [APLForeverBear],
 };
 
 export const DefaultAPL = APLPresets[ClassicPhase.Phase1][0];
@@ -96,7 +96,6 @@ export const DefaultRaidBuffs = RaidBuffs.create({
 	fireResistanceAura: true,
 	fireResistanceTotem: true,
 	giftOfTheWild: TristateEffect.TristateEffectImproved,
-	graceOfAirTotem: TristateEffect.TristateEffectImproved,
 	powerWordFortitude: TristateEffect.TristateEffectImproved,
 	strengthOfEarthTotem: TristateEffect.TristateEffectImproved,
 	stoneskinTotem: TristateEffect.TristateEffectRegular,

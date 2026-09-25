@@ -30,7 +30,9 @@ import {
 	Encounter as EncounterProto,
 	EquipmentSpec,
 	Faction,
+	HealingModel,
 	IndividualBuffs,
+	MobType,
 	PartyBuffs,
 	Profession,
 	PseudoStat,
@@ -109,6 +111,7 @@ export interface IndividualSimUIConfig<SpecType extends Spec> extends PlayerConf
 
 		rotationType?: APLRotationType;
 		simpleRotation?: SpecRotation<SpecType>;
+		aplRotation?: APLRotation;
 
 		talents: SavedTalents;
 		specOptions: SpecOptions<SpecType>;
@@ -505,12 +508,15 @@ export abstract class IndividualSimUI<SpecType extends Spec> extends SimUI {
 
 			//Special case for Totem of Wrath keeps buff and debuff sync'd
 			this.player.applySharedDefaults(eventID);
-			this.player.setForeverTier1Bonuses(eventID, !tankSpec && !healingSpec);
+			this.player.setForeverTier1Bonuses(eventID, !healingSpec);
 			this.player.setRace(eventID, this.individualConfig.defaults.race ?? specToEligibleRaces[this.player.spec][0]);
 			this.player.setGear(eventID, this.sim.db.lookupEquipmentSpec(this.individualConfig.defaults.gear));
 			this.player.setItemSwapGear(eventID, new ItemSwapGear({}));
 			this.player.setConsumes(eventID, this.individualConfig.defaults.consumes);
 			this.player.setTalentsString(eventID, this.individualConfig.defaults.talents.talentsString);
+			if (this.individualConfig.defaults.aplRotation) {
+				this.player.setAplRotation(eventID, this.individualConfig.defaults.aplRotation);
+			}
 			this.player.setSpecOptions(eventID, this.individualConfig.defaults.specOptions);
 			this.player.setBuffs(eventID, this.individualConfig.defaults.individualBuffs);
 			this.player.getParty()!.setBuffs(eventID, this.individualConfig.defaults.partyBuffs);
@@ -533,6 +539,18 @@ export abstract class IndividualSimUI<SpecType extends Spec> extends SimUI {
 
 				if (tankSpec) {
 					this.sim.raid.setTanks(eventID, [this.player.makeUnitReference()]);
+					// A tank must actually receive boss swings and external healing.
+					// Keep the level/armor of the reference target but expose a
+					// reproducible incoming-damage scenario rather than a dummy.
+					const tankEncounter = this.sim.encounter.toProto();
+					tankEncounter.duration = 300;
+					tankEncounter.targets[0].mobType = MobType.MobTypeDragonkin;
+					tankEncounter.targets[0].minBaseDamage = 3000;
+					tankEncounter.targets[0].damageSpread = 0.3333;
+					tankEncounter.targets[0].swingSpeed = 2;
+					tankEncounter.targets[0].tankIndex = 0;
+					this.sim.encounter.fromProto(eventID, tankEncounter);
+					this.player.setHealingModel(eventID, HealingModel.create({ hps: 1500, cadenceSeconds: 3, burstWindow: 6 }));
 				} else {
 					this.sim.raid.setTanks(eventID, []);
 				}

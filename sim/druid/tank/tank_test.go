@@ -22,7 +22,7 @@ func TestP1FeralTank(t *testing.T) {
 
 			Talents:     P1Talents,
 			GearSet:     core.GetGearSet("../../../ui/feral_tank_druid/gear_sets", "launch"),
-			Rotation:    core.GetAplRotation("../../../ui/feral_tank_druid/apls", "bear"),
+			Rotation:    core.GetAplRotation("../../../ui/feral_tank_druid/apls", "forever_bear"),
 			Buffs:       core.ForeverBuffs,
 			Consumes:    P1Consumes,
 			SpecOptions: core.SpecOptionsCombo{Label: "Default", SpecOptions: PlayerOptionsDefault},

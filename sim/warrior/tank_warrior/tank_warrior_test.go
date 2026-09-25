@@ -22,7 +22,7 @@ func TestP1TankWarrior(t *testing.T) {
 
 			Talents:     P1Talents,
 			GearSet:     core.GetGearSet("../../../ui/tank_warrior/gear_sets", "launch"),
-			Rotation:    core.GetAplRotation("../../../ui/tank_warrior/apls", "protection"),
+			Rotation:    core.GetAplRotation("../../../ui/tank_warrior/apls", "forever_protection"),
 			Buffs:       core.ForeverBuffs,
 			Consumes:    P1Consumes,
 			SpecOptions: core.SpecOptionsCombo{Label: "Protection", SpecOptions: PlayerOptionsBasic},
@@ -39,7 +39,7 @@ func TestP1TankWarrior(t *testing.T) {
 	}))
 }
 
-var P1Talents = "31--552531233330012531"
+var P1Talents = "1--552531233331212351"
 
 var PlayerOptionsBasic = &proto.Player_TankWarrior{
 	TankWarrior: &proto.TankWarrior{
@@ -48,7 +48,7 @@ var PlayerOptionsBasic = &proto.Player_TankWarrior{
 }
 
 var warriorOptions = &proto.TankWarrior_Options{
-	Shout:        proto.WarriorShout_WarriorShoutCommanding,
+	Shout:        proto.WarriorShout_WarriorShoutBattle,
 	StartingRage: 0,
 }
 
@@ -57,11 +57,10 @@ var P1Consumes = core.ConsumesCombo{
 	Consumes: &proto.Consumes{
 		AgilityElixir:     proto.AgilityElixir_ElixirOfTheMongoose,
 		AttackPowerBuff:   proto.AttackPowerBuff_JujuMight,
-		DefaultPotion:     proto.Potions_MightyRagePotion,
+		DefaultPotion:     proto.Potions_GreaterStoneshieldPotion,
 		DragonBreathChili: true,
 		Flask:             proto.Flask_FlaskOfTheTitans,
 		Food:              proto.Food_FoodSmokedDesertDumpling,
-		MainHandImbue:     proto.WeaponImbue_Windfury,
 		StrengthBuff:      proto.StrengthBuff_JujuPower,
 	},
 }

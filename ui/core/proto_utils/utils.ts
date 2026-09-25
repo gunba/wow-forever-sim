@@ -176,7 +176,7 @@ export const specNames: Record<Spec, string> = {
 	[Spec.SpecSmitePriest]: 'Smite Priest',
 	[Spec.SpecWarlock]: 'DPS Warlock',
 	[Spec.SpecWarrior]: 'DPS Warrior',
-	[Spec.SpecTankWarrior]: 'Tank Warrior',
+	[Spec.SpecTankWarrior]: 'Protection Warrior',
 };
 
 export const classNames: Record<Class, string> = {

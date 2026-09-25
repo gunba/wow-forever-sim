@@ -14,7 +14,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecTankWarrior, {
 	cssClass: 'tank-warrior-sim-ui',
 	cssScheme: 'warrior',
 	// List any known bugs / issues here and they'll be shown on the site.
-	knownIssues: [],
+	knownIssues: [
+		'Sunder Armor’s Forever attack-power threat coefficient is not exposed by the client; only its confirmed flat threat is modeled.',
+		'Tank gear is a projected level-65 scenario, not confirmed obtainable loot.',
+	],
 
 	// All stats for which EP should be calculated.
 	epStats: [
@@ -65,6 +68,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecTankWarrior, {
 	displayPseudoStats: [PseudoStat.PseudoStatMeleeSpeedMultiplier],
 
 	defaults: {
+		race: Presets.OtherDefaults.race,
 		// Default equipped gear.
 		gear: Presets.DefaultGear.gear,
 		// Default EP weights for sorting gear in the gear picker.
@@ -92,6 +96,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecTankWarrior, {
 		),
 		// Default consumes settings.
 		consumes: Presets.DefaultConsumes,
+		aplRotation: Presets.DefaultAPL.rotation.rotation!,
 		// Default talents.
 		talents: Presets.DefaultTalents.data,
 		// Default spec-specific settings.
@@ -99,7 +104,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecTankWarrior, {
 		other: Presets.OtherDefaults,
 		// Default raid/party buffs settings.
 		raidBuffs: Presets.DefaultRaidBuffs,
-		partyBuffs: PartyBuffs.create({}),
+		partyBuffs: PartyBuffs.create({ windfuryTotem: true }),
 		individualBuffs: Presets.DefaultIndividualBuffs,
 		debuffs: Presets.DefaultDebuffs,
 	},
@@ -148,7 +153,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecTankWarrior, {
 	raidSimPresets: [
 		{
 			spec: Spec.SpecTankWarrior,
-			tooltip: 'Tank Warrior',
+			tooltip: 'Protection Warrior',
 			defaultName: 'Tank',
 			iconUrl: getSpecIcon(Class.ClassWarrior, 2),
 

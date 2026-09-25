@@ -47,3 +47,28 @@ func TestForeverTierSetNotAppliedByOrdinarySetAdapter(t *testing.T) {
 		t.Fatal("ordinary equipment adapter must not duplicate the role-specific Tier 1 implementation")
 	}
 }
+
+func TestForeverTankTierSetMappings(t *testing.T) {
+	for _, tc := range []struct {
+		spec proto.Spec
+		id   int32
+	}{
+		{proto.Spec_SpecTankWarrior, 2103},
+		{proto.Spec_SpecProtectionPaladin, 2108},
+		{proto.Spec_SpecFeralTankDruid, 2113},
+	} {
+		if got := ForeverTier1SetID(tc.spec); got != tc.id {
+			t.Fatalf("%v mapped to Tier 1 set %d, want %d", tc.spec, got, tc.id)
+		}
+		c := &Character{Unit: Unit{Env: &Environment{Ruleset: proto.Ruleset_RulesetForever}}, Spec: tc.spec, ForeverTier1Bonuses: true}
+		if got := c.forcedForeverTier1SetID(); got != tc.id {
+			t.Fatalf("%v forced set %d, want %d", tc.spec, got, tc.id)
+		}
+		for slot := 0; slot < 5; slot++ {
+			c.Equipment[slot] = Item{SetID: tc.id}
+		}
+		if overridesForeverEquipmentSet(tc.id) || len(c.foreverEquippedBonuses()) != 0 {
+			t.Fatalf("tank Tier 1 %d must not be applied by the ordinary equipment adapter", tc.id)
+		}
+	}
+}

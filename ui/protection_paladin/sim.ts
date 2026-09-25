@@ -14,10 +14,8 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionPaladin, {
 	cssScheme: 'paladin',
 	// List any known bugs / issues here and they'll be shown on the site.
 	knownIssues: [
-		`Judgement of the Crusader is currently not implemented; users can manually award themselves the relevant spellpower amount
-		for a dps gain that will be slightly inflated given JotC does not benefit from source damage modifiers.`,
-		`Be aware that not all item and weapon enchants are currently implemented in the sim, which make some notable Retribution
-		weapons like Pendulum of Doom and The Jackhammer undervalued.`,
+		'Forever Seal of Fury, its shield absorb and Improved Seal of Fury mana return are not modeled. This provisional preset uses Seal of Righteousness instead.',
+		'Tank gear is a projected level-65 scenario, not confirmed obtainable loot.',
 	],
 	warnings: [
 		(simUI: IndividualSimUI<Spec.SpecProtectionPaladin>) => {
@@ -142,6 +140,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionPaladin, {
 		),
 		// Default consumes settings.
 		consumes: Presets.DefaultConsumes,
+		aplRotation: Presets.DefaultAPL.rotation.rotation!,
 		// Default talents.
 		talents: Presets.DefaultTalents.data,
 		// Default spec-specific settings.
@@ -149,7 +148,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionPaladin, {
 		other: Presets.OtherDefaults,
 		// Default raid/party buffs settings.
 		raidBuffs: Presets.DefaultRaidBuffs,
-		partyBuffs: PartyBuffs.create({}),
+		partyBuffs: PartyBuffs.create({ windfuryTotem: true }),
 		individualBuffs: Presets.DefaultIndividualBuffs,
 		debuffs: Presets.DefaultDebuffs,
 		race: Race.RaceHuman,
@@ -159,7 +158,6 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionPaladin, {
 	playerIconInputs: [
 		ProtectionPaladinInputs.PrimarySealSelection,
 		ProtectionPaladinInputs.RighteousFuryToggle,
-		ProtectionPaladinInputs.BlessingSelection,
 		ProtectionPaladinInputs.AuraSelection,
 	],
 	// Buff and Debuff inputs to include/exclude, overriding the EP-based defaults.
@@ -185,9 +183,9 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionPaladin, {
 	},
 
 	presets: {
-		rotations: [...Presets.APLPresets[ClassicPhase.Phase4]],
+		rotations: [...Presets.APLPresets[ClassicPhase.Phase1]],
 		// Preset talents that the user can quickly select.
-		talents: [...Presets.TalentPresets[ClassicPhase.Phase5], ...Presets.TalentPresets[ClassicPhase.Phase4]],
+		talents: [...Presets.TalentPresets[ClassicPhase.Phase1]],
 		// Preset gear configurations that the user can quickly select.
 		gear: [Presets.DefaultGear],
 	},
@@ -209,14 +207,16 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionPaladin, {
 			defaultFactionRaces: {
 				[Faction.Unknown]: Race.RaceUnknown,
 				[Faction.Alliance]: Race.RaceHuman,
-				[Faction.Horde]: Race.RaceUnknown,
+				[Faction.Horde]: Race.RaceUndead,
 			},
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
 					1: Presets.DefaultGear.gear,
 				},
-				[Faction.Horde]: {},
+				[Faction.Horde]: {
+					1: Presets.DefaultGear.gear,
+				},
 			},
 		},
 	],

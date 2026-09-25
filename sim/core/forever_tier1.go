@@ -8,7 +8,7 @@ import (
 	"github.com/wowsims/classic/sim/core/stats"
 )
 
-// ForeverTier1SetID maps the simulator's DPS roles to the beta ItemSet records.
+// ForeverTier1SetID maps the simulator's roles to the beta ItemSet records.
 // Smite uses the Holy/Discipline set, not the Shadow set.
 func ForeverTier1SetID(spec proto.Spec) int32 {
 	switch spec {
@@ -22,12 +22,16 @@ func ForeverTier1SetID(spec proto.Spec) int32 {
 		return 2101
 	case proto.Spec_SpecWarrior:
 		return 2102
+	case proto.Spec_SpecTankWarrior:
+		return 2103
 	case proto.Spec_SpecSmitePriest:
 		return 2104
 	case proto.Spec_SpecShadowPriest:
 		return 2105
 	case proto.Spec_SpecRetributionPaladin:
 		return 2106
+	case proto.Spec_SpecProtectionPaladin:
+		return 2108
 	case proto.Spec_SpecEnhancementShaman:
 		return 2110
 	case proto.Spec_SpecElementalShaman:
@@ -36,6 +40,8 @@ func ForeverTier1SetID(spec proto.Spec) int32 {
 		return 2114
 	case proto.Spec_SpecFeralDruid:
 		return 2115
+	case proto.Spec_SpecFeralTankDruid:
+		return 2113
 	default:
 		return 0
 	}
@@ -46,6 +52,16 @@ func (character *Character) forcedForeverTier1SetID() int32 {
 		return 0
 	}
 	return ForeverTier1SetID(character.Spec)
+}
+
+func ForeverTier1DefenseBonus(agent Agent) {
+	agent.GetCharacter().AddStat(stats.Defense, 7*DefenseRatingPerDefense)
+}
+
+// The client effect is -1.2 percentage points to both dodge and parry.
+// Expertise in the attack table is stored in percentage points.
+func ForeverTier1ExpertiseBonus(agent Agent) {
+	agent.GetCharacter().AddStat(stats.Expertise, 1.2*ExpertiseRatingPerExpertiseChance)
 }
 
 func ForeverTier1HitBonus(agent Agent) {

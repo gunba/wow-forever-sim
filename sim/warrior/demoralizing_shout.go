@@ -14,6 +14,13 @@ func (warrior *Warrior) registerDemoralizingShoutSpell() {
 		// Forever's Booming Voice only widens the radius.
 		return core.DemoralizingShoutAura(target)
 	})
+	threatMultiplier := 0.4
+	flatThreatBonus := 0.4 * 2 * float64(core.DemoralizingShoutLevel[rank])
+	if warrior.Env.IsForever() {
+		// Forever's tank guide says Demoralizing Shout no longer generates threat.
+		threatMultiplier = 0
+		flatThreatBonus = 0
+	}
 
 	warrior.DemoralizingShout = warrior.RegisterSpell(AnyStance, core.SpellConfig{
 		ActionID:    core.ActionID{SpellID: actionId},
@@ -31,8 +38,8 @@ func (warrior *Warrior) registerDemoralizingShoutSpell() {
 			IgnoreHaste: true,
 		},
 
-		ThreatMultiplier: 0.4,
-		FlatThreatBonus:  0.4 * 2 * float64(core.DemoralizingShoutLevel[rank]),
+		ThreatMultiplier: threatMultiplier,
+		FlatThreatBonus:  flatThreatBonus,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			for _, aoeTarget := range sim.Encounter.TargetUnits {

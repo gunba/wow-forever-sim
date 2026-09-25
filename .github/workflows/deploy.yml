@@ -102,6 +102,8 @@ jobs:
           SITE_URL="http://localhost:8080$SITE_BASE" node tools/smoke/check_icons.mjs
           SITE_URL="http://localhost:8080$SITE_BASE" node tools/smoke/check_benchmark_replay.mjs
           SITE_URL="http://localhost:8080$SITE_BASE" node tools/smoke/check_ranked_defaults.mjs
+          go build -tags with_db -o /tmp/forever-tank-bench ./tools/forever_tanks
+          SITE_URL="http://localhost:8080$SITE_BASE" TANK_BENCH=/tmp/forever-tank-bench node tools/smoke/check_tank_defaults.mjs
         env:
           SITE_BASE: ${{ steps.base.outputs.value }}
 

@@ -1,6 +1,6 @@
 # Forever Tier 1
 
-The **Tier 1 bonuses** setting applies the selected DPS role's 2-, 3-, 4- and
+The **Tier 1 bonuses** setting applies the selected DPS or tank role's 2-, 3-, 4- and
 5-piece bonuses independently of equipment. It adds no raid-item stats. The
 setting is saved in player exports and saved settings, and is ignored under the
 Classic ruleset.
@@ -16,9 +16,11 @@ Other equipped sets still use their actual piece counts.
 |---|---|
 | Balance | Grovekeeper Eclipse |
 | Feral | Grovekeeper Ferocity |
+| Bear tank | Grovekeeper Rage |
 | Beast Mastery, Marksmanship, Survival | Wildstalker Armor |
 | Arcane, Fire, Frost | Manaflare Regalia |
 | Retribution | Justice Battlegear |
+| Protection Paladin | Justice Battleplate |
 | Shadow | Raiments of Conviction |
 | Smite | Vestments of Conviction |
 | Combat, Mutilate, Subtlety | Grimstitch Armor |
@@ -26,6 +28,7 @@ Other equipped sets still use their actual piece counts.
 | Enhancement | The Spiritcaller's Rage |
 | All Warlock builds | Demonheart Raiment |
 | Arms, Fury | Battlegear of Glory |
+| Protection Warrior | Battleplate of Glory |
 
 Creature-specific four-piece bonuses remain conditional. The neutral benchmark
 target does not receive bonuses against demons, undead, beasts, humanoids or
@@ -40,7 +43,12 @@ that purchase.
 
 `assets/db_inputs/forever_tier1_bonuses.json` preserves all eighteen datamined
 role-set definitions, spell descriptions and raw effect records from client
-**1.60.1.69893**. The twelve assignments above cover the current DPS profiles.
+**1.60.1.69893**. The fifteen assignments above cover the current DPS and tank
+profiles. Tank two-piece bonuses add seven defense skill. Their four-piece
+bonuses reduce target dodge and parry chance by 1.2 percentage points. The
+Warrior and Bear five-piece bonuses shorten Shield Wall and Berserk by 30 and
+15 seconds; Paladin shortens Forbearance by 10 seconds. Three-piece utility
+effects without an applicable combat spell have no invented damage or threat.
 
 Rebuild the source capture with:
 

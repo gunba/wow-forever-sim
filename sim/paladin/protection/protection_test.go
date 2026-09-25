@@ -19,12 +19,12 @@ func TestProtection(t *testing.T) {
 			Race:       proto.Race_RaceHuman,
 			OtherRaces: []proto.Race{proto.Race_RaceDwarf},
 
-			Talents:     Phase4ProtTalents,
+			Talents:     ProtectionTalents,
 			GearSet:     core.GetGearSet("../../../ui/protection_paladin/gear_sets", "launch"),
-			Rotation:    core.GetAplRotation("../../../ui/protection_paladin/apls", "basic_prot"),
+			Rotation:    core.GetAplRotation("../../../ui/protection_paladin/apls", "forever_protection"),
 			Buffs:       core.ForeverBuffs,
-			Consumes:    Phase4Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Basic Prot Rotation", SpecOptions: PlayerOptionsSealofRighteousness},
+			Consumes:    ProtectionConsumes,
+			SpecOptions: core.SpecOptionsCombo{Label: "Forever Protection", SpecOptions: PlayerOptionsSealofRighteousness},
 
 			ItemFilter: ItemFilters,
 			// Without this the boss never attacks, so nothing the spec does in response to
@@ -38,21 +38,19 @@ func TestProtection(t *testing.T) {
 	}))
 }
 
-var Phase4ProtTalents = "052003003-5530513321301501"
+var ProtectionTalents = "-5532513321301551-15"
 
-var Phase4Consumes = core.ConsumesCombo{
-	Label: "P4-Consumes",
+var ProtectionConsumes = core.ConsumesCombo{
+	Label: "Forever Protection",
 	Consumes: &proto.Consumes{
 		DefaultPotion:     proto.Potions_MajorManaPotion,
 		AgilityElixir:     proto.AgilityElixir_ElixirOfTheMongoose,
 		AttackPowerBuff:   proto.AttackPowerBuff_JujuMight,
-		Flask:             proto.Flask_FlaskOfSupremePower,
+		Flask:             proto.Flask_FlaskOfTheTitans,
 		SpellPowerBuff:    proto.SpellPowerBuff_GreaterArcaneElixir,
 		DragonBreathChili: true,
 		Food:              proto.Food_FoodSmokedDesertDumpling,
-		//MainHandImbue:     proto.WeaponImbue_WildStrikes,
-		//OffHandImbue:      proto.WeaponImbue_ConductiveShieldCoating,
-		StrengthBuff: proto.StrengthBuff_JujuPower,
+		StrengthBuff:      proto.StrengthBuff_JujuPower,
 	},
 }
 

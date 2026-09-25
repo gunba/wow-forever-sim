@@ -6,8 +6,7 @@ import (
 	"github.com/wowsims/classic/sim/core"
 )
 
-// Templar's Bulwark is new in Forever and borrows Sacred Shield's spell id, the paladin absorb
-// the tooltip describes; the beta client's own is 1311015, which confirms 110 mana, the 5 min
+// Templar's Bulwark is new in Forever. Client spell 1311015 confirms 110 mana, the 5 min
 // cooldown, 8 sec and an absorb of 100% of maximum health.
 // The 5 minute cooldown the sim assumed is confirmed: the BlizzCon "Paladin Class Change"
 // talent slide reads "110 Mana, Instant, 5 min cooldown", and the same tooltip appears in
@@ -18,22 +17,30 @@ func (paladin *Paladin) registerTemplarsBulwark() {
 		return
 	}
 
-	actionID := core.ActionID{SpellID: 53601}
+	actionID := core.ActionID{SpellID: 1311015}
 
-	// The sim has no absorb model. A shield worth the paladin's whole health pool is far more
-	// than a tank takes in 8 seconds, so it is modelled as damage taken dropping to nothing.
-	const damageTaken = 0.01
-
+	var remainingAbsorb float64
 	bulwarkAura := paladin.RegisterAura(core.Aura{
 		Label:    "Templar's Bulwark",
 		ActionID: actionID,
 		Duration: time.Second * 8,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
-			paladin.PseudoStats.DamageTakenMultiplier *= damageTaken
+			remainingAbsorb = paladin.MaxHealth()
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-			paladin.PseudoStats.DamageTakenMultiplier /= damageTaken
+			remainingAbsorb = 0
 		},
+	})
+	paladin.AddDynamicDamageTakenModifier(func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+		if !bulwarkAura.IsActive() || result.Damage <= 0 {
+			return
+		}
+		absorbed := min(remainingAbsorb, result.Damage)
+		result.Damage -= absorbed
+		remainingAbsorb -= absorbed
+		if remainingAbsorb <= 0 {
+			bulwarkAura.Deactivate(sim)
+		}
 	})
 
 	// Sacred Duty: 30 sec a rank, confirmed by the beta client's talent data.

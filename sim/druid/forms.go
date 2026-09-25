@@ -309,6 +309,7 @@ func (druid *Druid) registerBearFormSpell() {
 			druid.AutoAttacks.SetMH(druid.WeaponFromMainHand())
 
 			druid.PseudoStats.ThreatMultiplier /= BearFormThreatMultiplier
+			healthFrac := druid.CurrentHealth() / druid.MaxHealth()
 			druid.SetShapeshift(nil)
 
 			druid.AddStatsDynamic(sim, predBonus.Invert())
@@ -316,12 +317,16 @@ func (druid *Druid) registerBearFormSpell() {
 			druid.RemoveDynamicEquipScaling(sim, stats.Armor, BearFormArmorMultiplier)
 			druid.DisableDynamicStatDep(sim, feralApDep)
 
-			healthFrac := druid.CurrentHealth() / druid.MaxHealth()
 			if hotwDep != nil {
 				druid.DisableDynamicStatDep(sim, hotwDep)
 			}
 			if sim.CurrentTime > 0 {
-				druid.RemoveHealth(sim, druid.CurrentHealth()-healthFrac*druid.MaxHealth())
+				delta := healthFrac*druid.MaxHealth() - druid.CurrentHealth()
+				if delta > 0 {
+					druid.GainHealth(sim, delta, healthMetrics)
+				} else if delta < 0 {
+					druid.RemoveHealth(sim, -delta)
+				}
 			}
 
 			if !druid.Env.MeasuringStats {

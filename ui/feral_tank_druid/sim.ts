@@ -13,7 +13,11 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFeralTankDruid, {
 	cssClass: 'feral-tank-druid-sim-ui',
 	cssScheme: 'druid',
 	// List any known bugs / issues here and they'll be shown on the site.
-	knownIssues: [],
+	knownIssues: [
+		'Primal Bite’s bonus threat is inherited from an earlier implementation; the Forever client does not publish its threat coefficient.',
+		'Swipe’s additional threat multiplier is inherited from an older ruleset; verify per-target threat in Forever.',
+		'Tank gear is a projected level-65 scenario, not confirmed obtainable loot.',
+	],
 
 	// All stats for which EP should be calculated.
 	epStats: [
@@ -78,13 +82,14 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFeralTankDruid, {
 		),
 		// Default consumes settings.
 		consumes: Presets.DefaultConsumes,
+		aplRotation: Presets.DefaultAPL.rotation.rotation!,
 		// Default talents.
 		talents: Presets.DefaultTalents.data,
 		// Default spec-specific settings.
 		specOptions: Presets.DefaultOptions,
 		// Default raid/party buffs settings.
 		raidBuffs: Presets.DefaultRaidBuffs,
-		partyBuffs: PartyBuffs.create({}),
+		partyBuffs: PartyBuffs.create({ windfuryTotem: true }),
 		individualBuffs: Presets.DefaultIndividualBuffs,
 		debuffs: Presets.DefaultDebuffs,
 	},

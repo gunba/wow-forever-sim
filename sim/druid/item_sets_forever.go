@@ -30,3 +30,14 @@ var ItemSetGrovekeeperFerocity = core.NewItemSet(core.ItemSet{
 		}),
 	},
 })
+
+var ItemSetGrovekeeperRage = core.NewItemSet(core.ItemSet{
+	ID: 2113, Name: "Grovekeeper Rage",
+	Bonuses: map[int32]core.ApplyEffect{
+		2: core.ForeverTier1DefenseBonus,
+		// Rebirth in Bear Form is not relevant in single-target tank combat.
+		3: func(core.Agent) {},
+		4: core.ForeverTier1ExpertiseBonus,
+		5: core.ForeverTier1CooldownBonus(15*time.Second, func(s *core.Spell) bool { return s.SpellID == 50334 }),
+	},
+})

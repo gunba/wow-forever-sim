@@ -16,3 +16,14 @@ var ItemSetBattlegearOfGlory = core.NewItemSet(core.ItemSet{
 		5: core.ForeverTier1CooldownBonus(30*time.Second, func(s *core.Spell) bool { return s.SpellID == 1719 }),
 	},
 })
+
+var ItemSetBattleplateOfGlory = core.NewItemSet(core.ItemSet{
+	ID: 2103, Name: "Battleplate of Glory",
+	Bonuses: map[int32]core.ApplyEffect{
+		2: core.ForeverTier1DefenseBonus,
+		// Intervene is not registered in the current single-player engine.
+		3: func(core.Agent) {},
+		4: core.ForeverTier1ExpertiseBonus,
+		5: core.ForeverTier1CooldownBonus(30*time.Second, func(s *core.Spell) bool { return s.SpellID == 871 }),
+	},
+})

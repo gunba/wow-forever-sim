@@ -8,11 +8,15 @@ import (
 func (paladin *Paladin) registerForbearance() {
 
 	actionID := core.ActionID{SpellID: 25771}
+	duration := time.Minute
+	if paladin.Env.IsForever() && paladin.HasSetBonus(ItemSetJusticeBattleplate, 5) {
+		duration -= 10 * time.Second
+	}
 
 	forbearanceAura := paladin.RegisterAura(core.Aura{
 		Label:    "Forbearance",
 		ActionID: actionID,
-		Duration: time.Minute * 1,
+		Duration: duration,
 	})
 
 	paladin.OnSpellRegistered(func(spell *core.Spell) {

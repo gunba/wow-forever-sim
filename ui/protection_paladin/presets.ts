@@ -25,8 +25,7 @@ import {
 } from '../core/proto/common.js';
 import { Blessings, PaladinAura, PaladinOptions as ProtectionPaladinOptions, PaladinSeal } from '../core/proto/paladin.js';
 import { SavedTalents } from '../core/proto/ui.js';
-import APLBasicProtectionJson from './apls/basic_prot.apl.json';
-import APLP5ProtJson from './apls/p5prot.apl.json';
+import APLForeverProtJson from './apls/forever_protection.apl.json';
 import BlankGear from './gear_sets/blank.gear.json';
 import LaunchGearJSON from './gear_sets/launch.gear.json';
 
@@ -38,7 +37,7 @@ import LaunchGearJSON from './gear_sets/launch.gear.json';
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearLaunch = PresetUtils.makePresetGear('Launch', LaunchGearJSON);
+export const GearLaunch = PresetUtils.makePresetGear('Modeled level 65', LaunchGearJSON);
 export const GearBlank = PresetUtils.makePresetGear('Blank', BlankGear);
 
 export const GearPresets = {
@@ -51,18 +50,13 @@ export const DefaultGear = GearPresets[ClassicPhase.Phase1][0];
 //                                 APL Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const APLP5Prot = PresetUtils.makePresetAPLRotation('P5 Prot', APLP5ProtJson);
-export const APLBasicProt = PresetUtils.makePresetAPLRotation('Basic Prot', APLBasicProtectionJson);
+export const APLForeverProt = PresetUtils.makePresetAPLRotation('Forever Protection', APLForeverProtJson);
 
 export const APLPresets = {
-	[ClassicPhase.Phase1]: [],
-	[ClassicPhase.Phase2]: [],
-	[ClassicPhase.Phase3]: [],
-	[ClassicPhase.Phase4]: [APLBasicProt, APLP5Prot],
-	[ClassicPhase.Phase5]: [APLP5Prot, APLP5Prot],
+	[ClassicPhase.Phase1]: [APLForeverProt],
 };
 
-export const DefaultAPL = APLPresets[ClassicPhase.Phase5][0];
+export const DefaultAPL = APLPresets[ClassicPhase.Phase1][0];
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Talent presets
@@ -71,40 +65,22 @@ export const DefaultAPL = APLPresets[ClassicPhase.Phase5][0];
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const P4ProtTalents = {
-	name: 'P4 Prot',
-	data: SavedTalents.create({
-		talentsString: '052003003-5530513321301501',
-	}),
-};
-
-export const P5ProtTalents = {
-	name: 'P5 Prot',
-	data: SavedTalents.create({
-		talentsString: '055003-5530513321301501',
-	}),
-};
-
 export const TalentsProtection = PresetUtils.makePresetTalents('Protection 0/45/6', SavedTalents.create({ talentsString: '-5532513321301551-15' }));
 
 export const TalentPresets = {
-	[ClassicPhase.Phase1]: [],
-	[ClassicPhase.Phase2]: [],
-	[ClassicPhase.Phase3]: [],
-	[ClassicPhase.Phase4]: [P4ProtTalents],
-	[ClassicPhase.Phase5]: [P5ProtTalents, TalentsProtection],
+	[ClassicPhase.Phase1]: [TalentsProtection],
 };
 
-export const DefaultTalents = TalentPresets[ClassicPhase.Phase5][0];
+export const DefaultTalents = TalentPresets[ClassicPhase.Phase1][0];
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Options
 ///////////////////////////////////////////////////////////////////////////
 
 export const DefaultOptions = ProtectionPaladinOptions.create({
-	aura: PaladinAura.NoPaladinAura,
+	aura: PaladinAura.DevotionAura,
 	primarySeal: PaladinSeal.Righteousness,
-	personalBlessing: Blessings.BlessingOfSanctuary,
+	personalBlessing: Blessings.BlessingUnknown,
 	righteousFury: true,
 });
 
@@ -112,7 +88,7 @@ export const DefaultConsumes = Consumes.create({
 	agilityElixir: AgilityElixir.ElixirOfTheMongoose,
 	healthElixir: HealthElixir.ElixirOfFortitude,
 	armorElixir: ArmorElixir.ElixirOfSuperiorDefense,
-	defaultPotion: Potions.GreaterStoneshieldPotion,
+	defaultPotion: Potions.MajorManaPotion,
 	dragonBreathChili: true,
 	food: Food.FoodTenderWolfSteak,
 	flask: Flask.FlaskOfTheTitans,
@@ -125,7 +101,6 @@ export const DefaultConsumes = Consumes.create({
 	strengthBuff: StrengthBuff.JujuPower,
 	zanzaBuff: ZanzaBuff.ROIDS,
 	attackPowerBuff: AttackPowerBuff.JujuMight,
-	defaultConjured: Conjured.ConjuredDemonicRune,
 	alcohol: Alcohol.AlcoholRumseyRumBlackLabel,
 });
 
