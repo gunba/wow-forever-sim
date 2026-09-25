@@ -460,15 +460,11 @@
 		"source": "forever",
 		"tooltip": "Gives your Judgement ability a 33% chance per talent point to return 20% per talent point of the Mana cost of the judged seal."
 	},
-	"53601": {
+	"1311015": {
 		"ability": "Templar's Bulwark",
-		"assumptions": [
-			"The sim has no absorb model, so the shield is modelled as damage taken dropping to 1% for the whole 8 seconds rather than as a pool that can be spent early."
-		],
 		"file": "sim/paladin/templars_bulwark.go",
-		"foreverId": 1311015,
-		"note": "Templar's Bulwark is new in Forever and borrows Sacred Shield's id 53601, which Classic's database does not carry. Beta client 1.60.1.69893 (1311015) confirms 110 mana, the 5 min cooldown, 8 sec and 100% of maximum health, and Sacred Duty's 30 sec a rank.",
-		"source": "assumed",
+		"note": "Forever client 1.60.1.69893 confirms the 110 mana cost, five-minute cooldown, eight-second maximum-health absorb, and Sacred Duty's 30-second reduction per rank. The absorb pool can be depleted early.",
+		"source": "forever",
 		"tooltip": "110 Mana\nInstant\n5 min cooldown\nGrants you an absorb shield equal to 100% of your maximum health for 8 sec.\nApplies Forbearance for 1 min. Cannot be cast while Forbearance is active."
 	},
 	"53671": {
