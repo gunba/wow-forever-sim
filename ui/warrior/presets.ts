@@ -23,6 +23,7 @@ import {
 import { SavedTalents } from '../core/proto/ui.js';
 import { Warrior_Options as WarriorOptions, WarriorShout, WarriorStance } from '../core/proto/warrior.js';
 import APLFuryJSON from './apls/forever_fury.apl.json';
+import APLFurySpearingJSON from './apls/forever_fury_spearing.apl.json';
 import APLFurySunderJSON from './apls/forever_fury_sunder.apl.json';
 import APLArmsJSON from './apls/forever_arms.apl.json';
 import APLFuryTwoHandJSON from './apls/forever_fury_2h.apl.json';
@@ -48,13 +49,15 @@ export const DefaultGear = GearFury;
 ///////////////////////////////////////////////////////////////////////////
 
 export const APLFury = PresetUtils.makePresetAPLRotation('Fury', APLFuryJSON);
+export const APLFurySpearing = PresetUtils.makePresetAPLRotation('Fury (Giants/Dragonkin)', APLFurySpearingJSON);
+APLFurySpearing.tooltip = 'Spearing Strike build for Giant or Dragonkin targets. Not a general-purpose Fury rotation.';
 export const APLFurySunder = PresetUtils.makePresetAPLRotation('Fury (Sunder)', APLFurySunderJSON);
 APLFurySunder.tooltip = 'Disable external Sunder Armor and Expose Armor, or load the exact ranked Fury (Sunder) profile.';
 export const APLArms = PresetUtils.makePresetAPLRotation('Arms', APLArmsJSON);
 export const APLFuryTwoHand = PresetUtils.makePresetAPLRotation('2H Bloodthirst', APLFuryTwoHandJSON);
 
 export const APLPresets = {
-	[ClassicPhase.Phase1]: [APLFury, APLFurySunder, APLArms, APLFuryTwoHand],
+	[ClassicPhase.Phase1]: [APLFury, APLFurySpearing, APLFurySunder, APLArms, APLFuryTwoHand],
 };
 
 export const DefaultAPLs = [APLPresets[ClassicPhase.Phase1][0]];
@@ -67,6 +70,10 @@ export const DefaultAPLs = [APLPresets[ClassicPhase.Phase1][0]];
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
 export const TalentsP1DPS = PresetUtils.makePresetTalents('Fury 17/34/0', SavedTalents.create({ talentsString: '20305113002-050520035151010051' }));
+export const TalentsFurySpearing = PresetUtils.makePresetTalents(
+	'Fury Spearing Strike 18/33/0',
+	SavedTalents.create({ talentsString: '20305113102-050520035150010051' }),
+);
 
 export const TalentsArms = PresetUtils.makePresetTalents('Arms 34/17/0', SavedTalents.create({ talentsString: '20305213132515001-550500000002' }));
 export const TalentsFuryTwoHand = PresetUtils.makePresetTalents(
@@ -75,7 +82,7 @@ export const TalentsFuryTwoHand = PresetUtils.makePresetTalents(
 );
 
 export const TalentPresets = {
-	[ClassicPhase.Phase1]: [TalentsP1DPS, TalentsArms, TalentsFuryTwoHand],
+	[ClassicPhase.Phase1]: [TalentsP1DPS, TalentsFurySpearing, TalentsArms, TalentsFuryTwoHand],
 };
 
 export const DefaultTalents = TalentsP1DPS;
@@ -136,5 +143,8 @@ export const OtherDefaults = {
 
 export const BuildPresets = [
 	PresetUtils.makePresetBuild('Fury', { gear: GearFury, talents: TalentsP1DPS, rotation: APLFury, options: DefaultOptions, distance: 5 }),
+	PresetUtils.makePresetBuild('Fury (Giants/Dragonkin)', {
+		gear: GearFury, talents: TalentsFurySpearing, rotation: APLFurySpearing, options: DefaultOptions, distance: 5,
+	}),
 	PresetUtils.makePresetBuild('Arms', { gear: GearArms, talents: TalentsArms, rotation: APLArms, options: DefaultOptions, distance: 5 }),
 ];
