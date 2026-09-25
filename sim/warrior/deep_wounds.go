@@ -24,7 +24,9 @@ func (warrior *Warrior) applyDeepWounds() {
 		SpellSchool: core.SpellSchoolPhysical,
 		DefenseType: core.DefenseTypeMelee,
 		ProcMask:    core.ProcMaskEmpty,
-		Flags:       core.SpellFlagNoOnCastComplete | core.SpellFlagPassiveSpell,
+		// The triggered Forever bleed child 412613 is explicitly unable to
+		// crit. The blanket Forever periodic rule must not grant it crits.
+		Flags: core.SpellFlagNoOnCastComplete | core.SpellFlagPassiveSpell | core.SpellFlagNoPeriodicCrit,
 
 		DamageMultiplier: 1,
 		ThreatMultiplier: 1,

@@ -97,7 +97,7 @@ export const DefaultConsumes = Consumes.create({
 	food: Food.FoodSmokedDesertDumpling,
 	flask: Flask.FlaskOfTheTitans,
 	healthElixir: HealthElixir.ElixirOfFortitude,
-	mainHandImbue: WeaponImbue.Windfury,
+	mainHandImbue: WeaponImbue.ElementalSharpeningStone,
 	offHandImbue: WeaponImbue.ElementalSharpeningStone,
 	strengthBuff: StrengthBuff.JujuPower,
 	zanzaBuff: ZanzaBuff.ROIDS,

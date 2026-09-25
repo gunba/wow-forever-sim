@@ -8,9 +8,12 @@ import (
 
 func TestForeverTalentTreePositionsAfterPatch(t *testing.T) {
 	paladin := &proto.PaladinTalents{}
-	FillTalentsProto(paladin.ProtoReflect(), "5-0-000000000000000001", [3]int{17, 16, 18})
+	FillTalentsProto(paladin.ProtoReflect(), "5-0-00000000000000001", [3]int{17, 16, 17})
 	if paladin.DivineStrength != 5 || !paladin.TwistOfLight {
-		t.Fatalf("removed Holy Strike talent shifted Paladin fields: %+v", paladin)
+		t.Fatalf("removed Paladin talents shifted the remaining fields: %+v", paladin)
+	}
+	if paladin.ProtoReflect().Descriptor().Fields().ByNumber(46) != nil {
+		t.Fatal("removed Crusade talent still accepts proto field 46")
 	}
 
 	shaman := &proto.ShamanTalents{}

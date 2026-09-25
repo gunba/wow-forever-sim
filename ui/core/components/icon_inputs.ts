@@ -49,14 +49,23 @@ export function makeBooleanRaidBuffInput<SpecType extends Spec>(
 		config.value,
 	);
 }
-// export function makeBooleanPartyBuffInput<SpecType extends Spec>(config: BooleanInputConfig<PartyBuffs>): InputHelpers.TypedIconPickerConfig<Player<SpecType>, boolean> {
-// 	return InputHelpers.makeBooleanIconInput<any, PartyBuffs, Party>({
-// 		getModObject: (player: Player<SpecType>) => player.getParty()!,
-// 		getValue: (party: Party) => party.getBuffs(),
-// 		setValue: (eventID: EventID, party: Party, newVal: PartyBuffs) => party.setBuffs(eventID, newVal),
-// 		changeEmitter: (party: Party) => party.buffsChangeEmitter,
-// 	}, config.actionId, config.fieldName, config.value);
-// }
+export function makeBooleanPartyBuffInput<SpecType extends Spec>(
+	config: BooleanInputConfig<PartyBuffs>,
+): InputHelpers.TypedIconPickerConfig<Player<SpecType>, boolean> {
+	return InputHelpers.makeBooleanIconInput<any, PartyBuffs, Player<SpecType>>(
+		{
+			getModObject: (player: Player<SpecType>) => player,
+			showWhen: (player: Player<SpecType>) => !config.showWhen || config.showWhen(player),
+			getValue: (player: Player<SpecType>) => player.getParty()!.getBuffs(),
+			setValue: (eventID: EventID, player: Player<SpecType>, newVal: PartyBuffs) => player.getParty()!.setBuffs(eventID, newVal),
+			changeEmitter: (player: Player<SpecType>) =>
+				TypedEvent.onAny([player.getParty()!.buffsChangeEmitter, player.raceChangeEmitter, player.sim.rulesetChangeEmitter]),
+		},
+		config.actionId,
+		config.fieldName,
+		config.value,
+	);
+}
 
 export function makeBooleanIndividualBuffInput<SpecType extends Spec>(
 	config: BooleanInputConfig<IndividualBuffs>,

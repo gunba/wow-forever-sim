@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "20260956",
+    "fixedRngSeed": "20291951",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Horde",
@@ -12,7 +12,6 @@
     "powerWordFortitude": "TristateEffectRegular",
     "bloodPact": "TristateEffectImproved",
     "strengthOfEarthTotem": "TristateEffectRegular",
-    "graceOfAirTotem": "TristateEffectRegular",
     "arcaneBrilliance": true,
     "divineSpirit": true,
     "battleShout": "TristateEffectRegular",
@@ -29,7 +28,9 @@
     "devotionAura": "TristateEffectImproved",
     "retributionAura": "TristateEffectImproved"
   },
-  "partyBuffs": {},
+  "partyBuffs": {
+    "windfuryTotem": true
+  },
   "debuffs": {
     "judgementOfWisdom": true,
     "judgementOfLight": true,
@@ -128,7 +129,7 @@
       "attackPowerBuff": "JujuMight",
       "spellPowerBuff": "GreaterArcaneElixir",
       "fillerExplosive": "ExplosiveThoriumGrenade",
-      "mainHandImbue": "Windfury",
+      "mainHandImbue": "ElementalSharpeningStone",
       "offHandImbue": "ElementalSharpeningStone",
       "defaultPotion": "MajorManaPotion",
       "defaultConjured": "ConjuredDemonicRune",

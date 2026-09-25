@@ -59,11 +59,13 @@ func TestFireAndElementalTalentCorrections(t *testing.T) {
 
 func TestRejectIllegalTalentRows(t *testing.T) {
 	invalid := map[string]string{
-		"balance":    "5532220115301341-05-005003",
-		"feral":      "020022-5500002123032213051-055",
-		"survival":   "-005355000050305-500200031000020151",
-		"affliction": "2535002013521105--0540005002",
-		"ds_ruin":    "25220010135201-0025003001-0540005002",
+		"balance":              "5532220115301341-05-005003",
+		"feral":                "020022-5500002123032213051-055",
+		"survival":             "-005355000050305-500200031000020151",
+		"affliction":           "2535002013521105--0540005002",
+		"ds_ruin":              "25220010135201-0025003001-0540005002",
+		"retribution":          "55003-232-052052310012330301",
+		"retribution_physical": "52003003-232-052250310012330301",
 	}
 	for _, b := range builds() {
 		if s, ok := invalid[b.Key]; ok && loadTalents(b).validate(s) == nil {

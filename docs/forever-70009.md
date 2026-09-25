@@ -1,11 +1,11 @@
 # Forever client 1.60.1.70009
 
-The [September 24 beta notes](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-september-24/2360696) and the corresponding [client tables](https://wago.tools/db2/SpellEffect?build=1.60.1.70009) are the sources for this mechanics update. The previous modeled-equipment ranking is preserved at [755c08a29](https://github.com/gunba/wow-forever-sim/tree/755c08a29). Neither the client tables nor the rankings reveal undiscovered level-65 item drops.
+The [September 24 beta notes](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-september-24/2360696) and the corresponding [client tables](https://wago.tools/db2/SpellEffect?build=1.60.1.70009) are the sources for this mechanics update. The immediately preceding modeled-equipment ranking is preserved under [artifacts/history/62976de00](../artifacts/history/62976de00/). Neither the client tables nor the rankings reveal undiscovered level-65 item drops.
 
 | Area | Current treatment |
 | --- | --- |
-| Paladin | Holy Strike uses the eight new weapon fractions and a baseline 10-second cooldown. Removed Improved Holy Strike points move to Divine Intellect in the two Ret presets; Holy Power adds Holy Strike crit. Sacred Arbiter, two-handed specialization, Vengeance's three direct-crit stacks, Twist of Light's Seal discount and Righteous Fury's threat are updated. |
-| Shaman | Elemental Fury and Alacrity exchange tree positions and prerequisite edges. The current legal Elemental, Stormcaller and Enhancement presets have been reallocated; the 20/31 Enhancement build cannot reach the relocated Elemental Fury. Lightning Bolt ranks 3–4, Lava Burst ranks 1–2 and Rage of the Farseer's melee-only speed are updated. Party Windfury suppresses Grace of Air, and Flametongue Weapon excludes the Windfury Totem proc. Flametongue Totem and Tranquil Air are not separately modeled. |
+| Paladin | Holy Strike uses the eight new weapon fractions and a baseline 10-second cooldown. Removed Improved Holy Strike points move to Divine Intellect in the two Ret presets; Holy Power adds Holy Strike crit. Sacred Arbiter, two-handed specialization, Vengeance's three direct-crit stacks, Twist of Light's Seal discount and Righteous Fury's threat are updated. The client also removed Crusade from the tree without listing it in the notes; both Ret presets had erroneously retained its two points and damage bonus. They now use legal filler points and no Crusade multiplier. |
+| Shaman | Elemental Fury and Alacrity exchange tree positions and prerequisite edges. The current legal Elemental, Stormcaller and Enhancement presets have been reallocated; the 20/31 Enhancement build cannot reach the relocated Elemental Fury. Lightning Bolt ranks 3–4, Lava Burst ranks 1–2 and Rage of the Farseer's melee-only speed are updated. Party Windfury suppresses Grace of Air. Flametongue **Weapon** can coexist with Windfury **Totem**; its own tooltip only excludes the benefit of Flametongue **Totem**. Flametongue Totem and threat-only Tranquil Air are not separately modeled. |
 | Warrior | Slam's 18-second cooldown is reduced by Improved Slam, and Bloodthrill uses the new main-hand-only rank chances. Protection's Focused Rage/Bastion tree positions and the two tank presets are updated. Rank-5 Sunder's client flat threat is 206 rather than 1013; its server-side additional Attack Power threat coefficient has not been established. |
 | Druid | Wrath ranks use the changed base and per-level damage. Bear Mangle is presented as Primal Bite with its current spell IDs; no retired bleed-amplification debuff is applied. Primal Fury's displayed name and icon are Blood Frenzy. |
 | Mage | Hot Streak lasts 20 seconds. Wake of Fire's 30-second post-kill bonus is reflected in the talent tooltip; a single 300-second boss fight provides no intermediate qualifying kill. Ignite already avoids a second percentage-damage multiplier. |
@@ -16,10 +16,36 @@ Every ranked character has Engineering, but that does not make explosives free d
 
 The [initial 184-profile gear search](https://github.com/gunba/wow-forever-sim/tree/forever/artifacts/modelled_gear_search/patch_70009_initial) confirmed 20 improvements over its post-patch starting loadouts. Following the engineering review, two further complete searches confirmed [five](https://github.com/gunba/wow-forever-sim/tree/forever/artifacts/modelled_gear_search/patch_70009_engineering) and [two](https://github.com/gunba/wow-forever-sim/tree/forever/artifacts/modelled_gear_search/current) additional swaps respectively; two marginal candidates were rejected by independent validation. The final five-minute benchmark includes 184 baseline and 552 paired Tier-off, +10% and +50% gear-scaling runs, with no simulation warnings. Equipment and other inputs are fixed within each paired scenario except the named toggle or gear multiplier. Equipment was reselected after the mechanics update, so a comparison with the previous release does **not** isolate the effect of the balance patch. These results do not establish optimal talent allocations.
 
-Search manifests identify the working-tree snapshot used for each phase. Three lower-rank Primal Bite descriptions were added to `ui/core/spells/druid.json` after the final gear search to satisfy the source-provenance audit; this display-only metadata changes the manifest's source hash but not gear, spells or simulated results. The complete recorded requests and results remain available for exact numerical replay.
+The previous gear-selection release and its requests/results are archived in
+[`artifacts/history/62976de00`](../artifacts/history/62976de00/). The current
+ranking keeps exactly those 184 players' equipment, enchants, consumes,
+external non-air buffs, talents and APLs except the two removed Crusade talent
+allocations, the Enhancement air-totem casts and the replaced legacy Windfury
+weapon imbues. It uses Windfury as a party effect in melee groups, Grace in
+ranged Hunter groups, and no irrelevant air buff for caster-only groups.
+Triggered Deep Wounds ticks no longer crit. We replayed all 184 baselines and
+552 paired sensitivities with 5,000 iterations and zero APL warnings; the
+results and replay manifest are in
+[`artifacts/modelled_gear`](../artifacts/modelled_gear/).
+These differences are neither an isolated gear effect nor an isolated balance
+patch effect. The existing equipment was **not** reoptimized for the corrected
+buffs and talents.
+
+Search manifests identify the working-tree snapshot used for each prior
+gear-search phase. Three lower-rank Primal Bite descriptions were added to
+`ui/core/spells/druid.json` after that gear search to satisfy the
+source-provenance audit; the display-only metadata did not change the
+previous search results. Both the previous and current complete requests and
+results remain available for replay with their respective simulator revisions.
 
 ## Remaining source gaps
 
+- The client [TraitNode-to-entry table](https://wago.tools/db2/TraitNodeXTraitNodeEntry/csv?build=1.60.1.70009) no longer links Retribution node 110883 to Crusade entry 137881, unlike build 1.60.1.69893. Spell 1311083 remains in the database, but is not a selectable talent. The replaced points are legal utility/filler choices, not a fresh talent optimization.
+- The [triggered Deep Wounds damage spell](https://www.wowhead.com/forever/spell=412613/deep-wounds) cannot critically strike. The old blanket Forever periodic-crit setting had incorrectly given this bleed critical ticks; the simulation now excludes them. Its current damage starts with unmodified average weapon damage, then applies attacker and target modifiers once. Rank-5 Sunder's revised **threat** does not change the armor reduction used by the benchmark.
+- Windfury Totem is a separate party buff, not the old non-Shaman Windfury weapon imbue. Every melee benchmark group chooses Windfury instead of Grace of Air; ranged Hunters keep Grace. A Shaman's own Windfury Weapon cannot personally receive the Totem proc, but Flametongue Weapon can. The current party setting represents an externally supplied Totem, not an automatically propagated dynamic cast by a second simulated Shaman. Cat eligibility for the new party effect is modeled provisionally and needs an in-game check.
+- The additional client changes to Mend Pet, Healing Stream, Greater Heal, Consume Shadows, Health Funnel and Lightwell affect healing rather than the selected single-target DPS actions. Starfall spell 20687 is level 62 and unavailable in this level-60 benchmark. The updated Lacerate ranks are not established as learnable Hunter actions; the selected Lacerating Strikes already uses the Forever periodic-crit rule. Improved Expose Armor's new proc-trigger effect is not used by the fixed Rogue rotations, which receive the raid's existing armor debuff. The new old-raid/item proc periodic-crit flags do not appear on the synthetic benchmark equipment.
+- Bloodthrill's two removed definitions were not the active talent: client node 110524 still links entry 137214, definition 141974, spell 1289682, with **five** allowed ranks. This preserves the five-point Arms allocation; the changed proc-mask behavior is already restricted to landed main-hand hits/specials against a Rended target. Shield Block's new attribute concerns shield use, not these DPS profiles.
+- The item-set, stack-size, rename, defense-enchant and low-level armor-kit changes do not alter these level-65 synthetic DPS loadouts. Enchant minimum item levels are below the equipped items. This does not imply the simulator fully models every changed item or healing spell.
 - Sunder Armor's additional server-side Attack Power threat coefficient is absent from the exposed client effect. This does not affect damage in the stationary benchmark.
 - Echo of Justice proc probability is not represented by a demonstrated source-supported simulator implementation; the patch says its excessive proc rate was fixed, not what the new rate is.
 - Wolf Furious Howl is not active in the selected Hunter pet model. Its new Attack Power adjustment cannot be applied to a wolf that is not simulated. Bat Sonic Blast is likewise outside the selected-pet scenario.

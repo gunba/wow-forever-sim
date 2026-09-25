@@ -82,6 +82,18 @@ func request(player *proto.Player, count int, rng int64) *proto.RaidSimRequest {
 
 func requestForBuild(b build, player *proto.Player, count int, rng int64) *proto.RaidSimRequest {
 	req := request(player, count, rng)
+	// The reference groups reserve Grace of Air for the ranged Hunters.
+	// Casters do not get a second, irrelevant air-totem provider.
+	if b.Key != "beast_mastery" && b.Key != "marksmanship" {
+		req.Raid.Buffs.GraceOfAirTotem = proto.TristateEffect_TristateEffectMissing
+	}
+	switch b.Key {
+	case "feral", "enhancement", "survival", "pet_melee", "retribution", "retribution_physical",
+		"combat", "mutilate", "subtlety", "fury", "fury_sunder", "fury_2h", "arms":
+		// Forever Windfury Totem is a party buff, not a temporary weapon enchant.
+		// Its air-totem slot excludes Grace of Air even when supplied by another Shaman.
+		req.Raid.Parties[0].Buffs.WindfuryTotem = true
+	}
 	if b.Key == "fury_sunder" {
 		// This row measures the cost of providing the raid's major armor
 		// reduction personally. An external Expose would both mask the armor
@@ -226,6 +238,8 @@ func writeResults(rows []resultRow) {
 		"naturesGrace": "10pct-cast-haste-separate-10pct-gcd-reduction-including-instants",
 		"rage":         "forever-provisional-speed-normalized-low-level-rates-half-rate-offhand-assumed",
 		"periodic":     "forever-current-offensive-stats-each-tick-classic-snapshots",
+		"deepWounds":   "client-triggered-bleed-no-crit-current-weapon-damage-no-positive-target-double-dip",
+		"airTotems":    "melee-windfury-party-buff-ranged-hunter-grace-exclusive-no-legacy-weapon-imbue",
 		"petStats":     "forever-provisional-shared-hunter-warlock-owner-scaling-no-direct-pet-buffs-or-consumes",
 		"petFocus":     "forever-continuous-10-per-second-150-cap-hunter-scaling-aura",
 		"jow":          "client-rank3-59-mana-classic-50pct-eligible-event-chance-assumed",

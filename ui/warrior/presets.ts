@@ -100,7 +100,7 @@ export const DefaultConsumes = Consumes.create({
 	dragonBreathChili: true,
 	food: Food.FoodSmokedDesertDumpling,
 	healthElixir: HealthElixir.ElixirOfFortitude,
-	mainHandImbue: WeaponImbue.Windfury,
+	mainHandImbue: WeaponImbue.ElementalSharpeningStone,
 	offHandImbue: WeaponImbue.ElementalSharpeningStone,
 	sapperExplosive: SapperExplosive.SapperGoblinSapper,
 	strengthBuff: StrengthBuff.JujuPower,

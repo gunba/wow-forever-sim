@@ -8,6 +8,7 @@ import (
 	"github.com/wowsims/classic/sim/core"
 	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/core/simsignals"
+	"github.com/wowsims/classic/sim/core/stats"
 )
 
 func TestForeverAirTotemsDoNotTwist(t *testing.T) {
@@ -43,7 +44,7 @@ func TestForeverAirTotemsDoNotTwist(t *testing.T) {
 	}
 }
 
-func TestOwnTotemDoesNotRemoveExternalGrace(t *testing.T) {
+func TestOwnWindfurySuppressesExternalGrace(t *testing.T) {
 	for _, b := range builds() {
 		if b.Key != "enhancement" {
 			continue
@@ -56,10 +57,20 @@ func TestOwnTotemDoesNotRemoveExternalGrace(t *testing.T) {
 		target := sim.Encounter.TargetUnits[0]
 		grace := character.GetSpell(core.ActionID{SpellID: 25359})
 		windfury := character.GetSpell(core.ActionID{SpellID: 10614})
+		windwall := character.GetSpell(core.ActionID{SpellID: 15112})
 		grace.ApplyEffects(sim, target, grace)
+		withGrace := character.GetStat(stats.Agility)
 		windfury.ApplyEffects(sim, target, windfury)
 		if !character.GetAura("Grace of Air Totem").IsActive() {
-			t.Fatal("replacing our totem removed another provider's permanent buff")
+			t.Fatal("external provider should remain configured while suppressed")
+		}
+		character.GetAura("Windfury (Rank 3)").Activate(sim)
+		if got := character.GetStat(stats.Agility); got >= withGrace {
+			t.Fatalf("Windfury and external Grace stacked: agility %.1f, prior %.1f", got, withGrace)
+		}
+		windwall.ApplyEffects(sim, target, windwall)
+		if got := character.GetStat(stats.Agility); got != withGrace {
+			t.Fatalf("external Grace did not return after Windfury expired: %.1f, want %.1f", got, withGrace)
 		}
 	}
 }

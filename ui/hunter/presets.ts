@@ -114,7 +114,7 @@ export const DefaultConsumes = Consumes.create({
 	flask: Flask.FlaskOfSupremePower,
 	food: Food.FoodSmokedDesertDumpling,
 	healthElixir: HealthElixir.ElixirOfFortitude,
-	mainHandImbue: WeaponImbue.Windfury,
+	mainHandImbue: WeaponImbue.ElementalSharpeningStone,
 	manaRegenElixir: ManaRegenElixir.MagebloodPotion,
 	offHandImbue: WeaponImbue.ElementalSharpeningStone,
 	sapperExplosive: SapperExplosive.SapperUnknown,

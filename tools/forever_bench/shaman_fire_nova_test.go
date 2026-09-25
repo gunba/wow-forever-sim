@@ -80,3 +80,27 @@ func TestWindfuryWeaponExcludesTotemBenefit(t *testing.T) {
 		t.Fatal("conflicting imbue retained the totem's AP buff")
 	}
 }
+
+func TestFlametongueWeaponDoesNotSuppressWindfuryTotem(t *testing.T) {
+	req := racialFixture("enhancement", proto.Race_RaceOrc)
+	p := req.Raid.Parties[0].Players[0]
+	p.Rotation = &proto.APLRotation{}
+	p.Consumes.MainHandImbue = proto.WeaponImbue_FlametongueWeapon
+	req.Raid.Parties[0].Buffs = &proto.PartyBuffs{WindfuryTotem: true}
+	sim := core.NewSim(req, simsignals.Signals{})
+	sim.Options.Interactive = true
+	sim.Reset()
+	c := sim.Raid.Parties[0].Players[0].GetCharacter()
+	trigger, buff := c.GetAura("Windfury"), c.GetAura("Windfury Buff")
+	if trigger == nil || buff == nil || c.MainHand().TempEnchant == 0 {
+		t.Fatal("missing Flametongue Weapon or Windfury Totem")
+	}
+	hit := &core.SpellResult{Target: sim.Encounter.TargetUnits[0], Outcome: core.OutcomeHit}
+	for i := 0; i < 100 && !buff.IsActive(); i++ {
+		sim.CurrentTime += 2 * time.Second
+		trigger.OnSpellHitDealt(trigger, sim, c.AutoAttacks.MHAuto(), hit)
+	}
+	if !buff.IsActive() {
+		t.Fatal("Flametongue Weapon incorrectly prevented the separate Windfury Totem buff")
+	}
+}

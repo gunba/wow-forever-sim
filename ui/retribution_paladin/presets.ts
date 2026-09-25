@@ -62,19 +62,17 @@ export const DefaultAPL = APLBasicRet;
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const P4RetTalents = PresetUtils.makePresetTalents('P4/P5 Ret', SavedTalents.create({ talentsString: '0550030022001--052251310002330321' }));
-
-export const TalentsRetribution = PresetUtils.makePresetTalents('Retribution 13/7/31', SavedTalents.create({ talentsString: '55003-232-052052310012330301' }));
+export const TalentsRetribution = PresetUtils.makePresetTalents('Retribution 13/7/31', SavedTalents.create({ talentsString: '55003-232-05225231001330301' }));
 export const TalentsPhysicalRetribution = PresetUtils.makePresetTalents(
 	'Physical Ret 13/7/31',
-	SavedTalents.create({ talentsString: '52003003-232-052250310012330301' }),
+	SavedTalents.create({ talentsString: '52003003-232-05225031101330311' }),
 );
 
 export const TalentPresets = {
 	[ClassicPhase.Phase1]: [],
 	[ClassicPhase.Phase2]: [],
 	[ClassicPhase.Phase3]: [],
-	[ClassicPhase.Phase4]: [P4RetTalents, TalentsRetribution, TalentsPhysicalRetribution],
+	[ClassicPhase.Phase4]: [TalentsRetribution, TalentsPhysicalRetribution],
 };
 
 export const DefaultTalents = TalentsRetribution;
@@ -113,7 +111,7 @@ export const PhysicalRetConsumes = Consumes.create({
 	defaultPotion: Potions.MajorManaPotion,
 	dragonBreathChili: true,
 	food: Food.FoodBlessSunfruit,
-	mainHandImbue: WeaponImbue.Windfury,
+	mainHandImbue: WeaponImbue.ElementalSharpeningStone,
 	manaRegenElixir: ManaRegenElixir.MagebloodPotion,
 	strengthBuff: StrengthBuff.JujuPower,
 	zanzaBuff: ZanzaBuff.ROIDS,

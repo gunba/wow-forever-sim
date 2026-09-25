@@ -58,7 +58,7 @@ export const ManaSpringTotem = {
 ///////////////////////////////////////////////////////////////////////////
 
 export const WindfuryTotem = {
-	actionId: () => ActionId.fromSpellId(25359),
+	actionId: () => ActionId.fromSpellId(10614),
 	value: AirTotem.WindfuryTotem,
 };
 

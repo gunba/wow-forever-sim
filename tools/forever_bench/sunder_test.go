@@ -38,7 +38,7 @@ func TestFurySunderProvidesOwnArmorReduction(t *testing.T) {
 	if !unburdened.Raid.Debuffs.SunderArmor {
 		t.Fatal("ordinary Fury must keep its established external raid debuffs")
 	}
-	input, err := os.ReadFile("artifacts/forever_input_profiles.json")
+	input, err := os.ReadFile("artifacts/modelled_gear/forever_input_profiles.json")
 	if err != nil {
 		t.Fatal(err)
 	}

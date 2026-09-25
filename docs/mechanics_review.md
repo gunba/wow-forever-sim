@@ -52,8 +52,11 @@
   no longer disable each other's full casting regeneration when one expires.
 - **Fire Nova:** requires the caster's active Fire totem; an expired totem does
   not qualify. Damage and threat remain attributed to the Shaman.
-- **Windfury:** Windfury Weapon now excludes the owner's Windfury Totem benefit,
-  as its tooltip requires, including changes of the equipped weapon.
+- **Windfury:** Windfury Totem is a separate, exclusive party air buff, not
+  an imbue available to other classes. Melee reference groups use it instead
+  of Grace of Air; ranged Hunters use Grace. Windfury Weapon still excludes
+  the Shaman owner's Totem proc, including after weapon swaps. Flametongue
+  Weapon does not exclude Windfury Totem.
 - **Shadowform:** casting now costs 40% base mana and triggers a 1.5-second
   GCD. Its prepull starts 1.5 seconds before combat. Holy damage and non-healing
   utility remain allowed; active heals and Holy Nova are blocked in form.

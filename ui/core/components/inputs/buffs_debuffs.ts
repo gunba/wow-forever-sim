@@ -4,6 +4,7 @@ import { ActionId } from '../../proto_utils/action_id';
 import {
 	makeBooleanDebuffInput,
 	makeBooleanIndividualBuffInput,
+	makeBooleanPartyBuffInput,
 	makeBooleanRaidBuffInput,
 	makeEnumIndividualBuffInput,
 	makeMultistateIndividualBuffInput,
@@ -169,15 +170,44 @@ export const StrengthBuffHorde = withLabel(
 	'Strength',
 );
 
-export const GraceOfAir = withLabel(
-	makeTristateRaidBuffInput({
-		actionId: () => ActionId.fromSpellId(25359),
-		impId: ActionId.fromSpellId(16295),
-		fieldName: 'graceOfAirTotem',
-		showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever || player.getFaction() === Faction.Horde,
-	}),
-	'Agility',
-);
+const graceOfAirInput = makeTristateRaidBuffInput({
+	actionId: () => ActionId.fromSpellId(25359),
+	impId: ActionId.fromSpellId(16295),
+	fieldName: 'graceOfAirTotem',
+	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever || player.getFaction() === Faction.Horde,
+});
+const setGraceOfAir = graceOfAirInput.setValue;
+graceOfAirInput.setValue = (eventID, player, value) => {
+	if (value && player.sim.getRuleset() === Ruleset.RulesetForever) {
+		const party = player.getParty()!;
+		const buffs = party.getBuffs();
+		if (buffs.windfuryTotem) {
+			buffs.windfuryTotem = false;
+			party.setBuffs(eventID, buffs);
+		}
+	}
+	setGraceOfAir(eventID, player, value);
+};
+export const GraceOfAir = withLabel(graceOfAirInput, 'Agility');
+
+const windfuryTotemInput = makeBooleanPartyBuffInput({
+	actionId: () => ActionId.fromSpellId(10614),
+	fieldName: 'windfuryTotem',
+	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever,
+});
+const setWindfuryTotem = windfuryTotemInput.setValue;
+windfuryTotemInput.setValue = (eventID, player, value) => {
+	if (value) {
+		const raid = player.getRaid()!;
+		const buffs = raid.getBuffs();
+		if (buffs.graceOfAirTotem) {
+			buffs.graceOfAirTotem = 0;
+			raid.setBuffs(eventID, buffs);
+		}
+	}
+	setWindfuryTotem(eventID, player, value);
+};
+export const WindfuryTotemBuff = withLabel(windfuryTotemInput, 'Windfury Totem');
 
 export const IntellectBuff = InputHelpers.makeMultiIconInput({
 	values: [
@@ -677,6 +707,11 @@ export const RAID_BUFFS_CONFIG = [
 		config: GraceOfAir,
 		picker: IconPicker,
 		stats: [Stat.StatAgility],
+	},
+	{
+		config: WindfuryTotemBuff,
+		picker: IconPicker,
+		stats: [],
 	},
 	{
 		config: TrueshotAuraBuff,

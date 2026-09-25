@@ -199,6 +199,9 @@ func addImbueStats(character *Character, imbue proto.WeaponImbue, isMh bool, sha
 			}
 		// Windfury
 		case proto.WeaponImbue_Windfury:
+			if character.Env.IsForever() {
+				panic("Windfury Totem is a party buff in Forever, not a weapon imbue; select the party Windfury Totem buff")
+			}
 			if !character.PseudoStats.FeralCombatEnabled {
 				ApplyWindfury(character)
 			}

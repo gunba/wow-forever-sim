@@ -12,7 +12,7 @@ import (
 
 func TestHunterBaselineManaSustain(t *testing.T) {
 	var saved struct{ Results []resultRow }
-	if err := json.Unmarshal(mustRead("artifacts/forever_dps_5min.json"), &saved); err != nil {
+	if err := json.Unmarshal(mustRead("artifacts/modelled_gear/forever_input_profiles.json"), &saved); err != nil {
 		t.Fatal(err)
 	}
 	players := map[string]json.RawMessage{}

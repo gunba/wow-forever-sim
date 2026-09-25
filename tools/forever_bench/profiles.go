@@ -206,7 +206,7 @@ func (b build) consumes(race proto.Race) *proto.Consumes {
 		if b.Key == "enhancement" {
 			c.MainHandImbue, c.OffHandImbue = proto.WeaponImbue_WindfuryWeapon, proto.WeaponImbue_WeaponImbueUnknown
 		} else {
-			c.MainHandImbue = proto.WeaponImbue_Windfury
+			c.MainHandImbue = proto.WeaponImbue_ElementalSharpeningStone
 		}
 		if physicalRet {
 			c.Flask = proto.Flask_FlaskUnknown
@@ -215,7 +215,7 @@ func (b build) consumes(race proto.Race) *proto.Consumes {
 		}
 	case "beast_mastery", "marksmanship", "survival":
 		c.Food = proto.Food_FoodSmokedDesertDumpling
-		c.MainHandImbue, c.OffHandImbue = proto.WeaponImbue_Windfury, proto.WeaponImbue_ElementalSharpeningStone
+		c.MainHandImbue, c.OffHandImbue = proto.WeaponImbue_ElementalSharpeningStone, proto.WeaponImbue_ElementalSharpeningStone
 	case "feral":
 		c.Flask = proto.Flask_FlaskOfDistilledWisdom
 		c.SpellPowerBuff, c.ManaRegenElixir = 0, 0
@@ -230,7 +230,7 @@ func (b build) consumes(race proto.Race) *proto.Consumes {
 		c.Food, c.ZanzaBuff = proto.Food_FoodSmokedDesertDumpling, proto.ZanzaBuff_ROIDS
 		c.ArmorElixir, c.HealthElixir, c.Alcohol = proto.ArmorElixir_ElixirOfSuperiorDefense, proto.HealthElixir_ElixirOfFortitude, proto.Alcohol_AlcoholRumseyRumBlackLabel
 		c.DefaultPotion = proto.Potions_MightyRagePotion
-		c.MainHandImbue, c.OffHandImbue = proto.WeaponImbue_Windfury, proto.WeaponImbue_ElementalSharpeningStone
+		c.MainHandImbue, c.OffHandImbue = proto.WeaponImbue_ElementalSharpeningStone, proto.WeaponImbue_ElementalSharpeningStone
 		c.DragonBreathChili, c.SapperExplosive = true, proto.SapperExplosive_SapperGoblinSapper
 		if b.Key == "arms" {
 			c.OffHandImbue = proto.WeaponImbue_WeaponImbueUnknown

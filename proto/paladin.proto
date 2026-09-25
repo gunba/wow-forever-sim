@@ -4,6 +4,7 @@ package proto;
 option go_package = "./proto";
 
 message PaladinTalents {
+	reserved 46; // Crusade was removed from the Forever talent tree in 1.60.1.70009.
 	// Holy
 	reserved 1;
 	int32 divine_strength = 2;
@@ -54,7 +55,6 @@ message PaladinTalents {
 	int32 pursuit_of_justice = 43;
 	int32 eye_for_an_eye = 44;
 	bool sacred_arbiter = 45;
-	int32 crusade = 46;
 	int32 two_handed_weapon_specialization = 47;
 	int32 vengeance = 48;
 	bool repentance = 49;

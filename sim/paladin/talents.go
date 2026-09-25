@@ -48,7 +48,6 @@ func (paladin *Paladin) ApplyTalents() {
 	}
 
 	paladin.applyWeaponSpecialization()
-	paladin.applyCrusade()
 	paladin.applyVengeance()
 	paladin.applyVindication()
 	paladin.applyRedoubt()
@@ -198,28 +197,6 @@ func (paladin *Paladin) getWeaponSpecializationModifier() float64 {
 // Affects all physical damage or spells that can be rolled as physical.
 func (paladin *Paladin) applyWeaponSpecialization() {
 	paladin.PseudoStats.SchoolDamageDealtMultiplier[stats.SchoolIndexPhysical] *= paladin.getWeaponSpecializationModifier()
-}
-
-func (paladin *Paladin) applyCrusade() {
-	if paladin.Talents.Crusade == 0 {
-		return
-	}
-
-	multiplier := 1 + 0.01*float64(paladin.Talents.Crusade)
-	paladin.PseudoStats.DamageDealtMultiplier *= multiplier
-
-	// The same bonus again, but only against Demon and Undead targets. It is damage dealt and
-	// nothing else, so the crit multiplier is left alone.
-	paladin.Env.RegisterPostFinalizeEffect(func() {
-		for _, target := range paladin.Env.Encounter.Targets {
-			if target.MobType != proto.MobType_MobTypeDemon && target.MobType != proto.MobType_MobTypeUndead {
-				continue
-			}
-			for _, at := range paladin.AttackTables[target.UnitIndex] {
-				at.DamageDealtMultiplier *= multiplier
-			}
-		}
-	})
 }
 
 func (paladin *Paladin) applyVengeance() {

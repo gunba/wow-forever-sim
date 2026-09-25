@@ -1350,30 +1350,6 @@
           }
         },
         {
-          "id": "crusade",
-          "name": "Crusade",
-          "row": 3,
-          "col": 3,
-          "maxRank": 2,
-          "icon": "spell_holy_crusade",
-          "iconSource": "classic",
-          "description": "Increases all damage dealt by {0}%. Increased by an additional {1}% against Demon and Undead targets.",
-          "ranks": [[1, 1], [2, 2]],
-          "ranksObserved": [1],
-          "ranksSource": "extrapolated",
-          "ranksNote": "No Classic counterpart; proportional x2..x2 of rank 1 assumed.",
-          "source": {
-            "kind": "video",
-            "video": "DxtVEhjyROU",
-            "t": 14329.45,
-            "frame": 859767,
-            "crop": "data/review/paladin/retribution/crusade.png",
-            "confidence": 1.0,
-            "reader": "Qwen3VL-4B-Instruct-Q4_K_M+tooltip-v3",
-            "reviewed": false
-          }
-        },
-        {
           "id": "two-handed-weapon-specialization",
           "name": "Two-Handed Weapon Specialization",
           "row": 4,
@@ -1534,6 +1510,7 @@
     }
   ],
   "notes": [
-    "Extracted from BlizzCon 2026 stream footage (rank-0 tooltips only); ranks 2+ are anticipated, point rules assumed from Classic."
+    "Extracted from BlizzCon 2026 stream footage (rank-0 tooltips only); ranks 2+ are anticipated, point rules assumed from Classic.",
+    "Client 1.60.1.70009 removes Crusade TraitNode 110883/entry 137881 from the Retribution tree; retained spell 1311083 is not selectable."
   ]
 }

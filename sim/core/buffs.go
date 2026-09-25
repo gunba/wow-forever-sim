@@ -426,7 +426,7 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 	// Windfury Totem is a party weapon buff in Forever. The Shaman spell
 	// tracks the totem on the caster, while this party setting applies the
 	// corresponding proc aura to each member of the configured subgroup.
-	if partyBuffs != nil && partyBuffs.WindfuryTotem && !character.PseudoStats.FeralCombatEnabled {
+	if partyBuffs != nil && partyBuffs.WindfuryTotem && (character.Env.IsForever() || !character.PseudoStats.FeralCombatEnabled) {
 		ApplyWindfury(character)
 	}
 
@@ -1472,6 +1472,14 @@ func GraceOfAirTotemAura(unit *Unit, multiplier float64) *Aura {
 		duration = time.Minute * 5
 	}
 	updateStats := BuffSpellValues[GraceOfAir].Multiply(multiplier).Floor()
+	changeStats := func(sim *Simulation, sign float64) {
+		delta := updateStats.Multiply(sign)
+		if unit.Env.MeasuringStats && unit.Env.State != Finalized {
+			unit.AddStats(delta)
+		} else {
+			unit.AddStatsDynamic(sim, delta)
+		}
+	}
 
 	aura := unit.GetOrRegisterAura(Aura{
 		Label:      "Grace of Air Totem",
@@ -1479,20 +1487,25 @@ func GraceOfAirTotemAura(unit *Unit, multiplier float64) *Aura {
 		Duration:   duration,
 		BuildPhase: CharacterBuildPhaseBuffs,
 		OnGain: func(aura *Aura, sim *Simulation) {
-			if aura.Unit.Env.MeasuringStats && aura.Unit.Env.State != Finalized {
-				unit.AddStats(updateStats)
-			} else {
-				unit.AddStatsDynamic(sim, updateStats)
+			if !unit.Env.IsForever() {
+				changeStats(sim, 1)
 			}
 		},
 		OnExpire: func(aura *Aura, sim *Simulation) {
-			if aura.Unit.Env.MeasuringStats && aura.Unit.Env.State != Finalized {
-				unit.AddStats(updateStats.Multiply(-1))
-			} else {
-				unit.AddStatsDynamic(sim, updateStats.Multiply(-1))
+			if !unit.Env.IsForever() {
+				changeStats(sim, -1)
 			}
 		},
 	})
+	if unit.Env.IsForever() {
+		aura.NewExclusiveEffect("ForeverAirTotem", false, ExclusiveEffect{
+			Priority: 1,
+			OnGain:   func(_ *ExclusiveEffect, sim *Simulation) { changeStats(sim, 1) },
+			OnExpire: func(_ *ExclusiveEffect, sim *Simulation) {
+				changeStats(sim, -1)
+			},
+		})
+	}
 	return aura
 }
 
@@ -1643,8 +1656,6 @@ func createWindfuryTotemAura(character *Character, buffActionID ActionID, auraLa
 		switch character.MainHand().TempEnchant {
 		case 283, 284, 525, 1669: // Windfury Weapon
 			return true
-		case 5, 4, 3, 523, 1665, 1666: // Flametongue Weapon; also excludes Windfury Totem in Forever
-			return character.Env.IsForever()
 		}
 		return false
 	}
@@ -1746,7 +1757,13 @@ func ApplyWindfury(character *Character) *Aura {
 	spellId := WindfuryBuffSpellId[rank]
 	buffActionID := ActionID{SpellID: spellId}
 
-	return createWindfuryTotemAura(character, buffActionID, "Windfury", rank, GetWindfuryAP)
+	apAura := createWindfuryTotemAura(character, buffActionID, "Windfury", rank, GetWindfuryAP)
+	if character.Env.IsForever() {
+		// External party Windfury occupies the air-totem slot even if Grace
+		// is cast later by another Shaman.
+		character.GetAura("Windfury").NewExclusiveEffect("ForeverAirTotem", false, ExclusiveEffect{Priority: 3})
+	}
+	return apAura
 
 }
 
