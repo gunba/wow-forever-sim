@@ -23,6 +23,7 @@ import {
 import { SavedTalents } from '../core/proto/ui.js';
 import { Warrior_Options as WarriorOptions, WarriorShout, WarriorStance } from '../core/proto/warrior.js';
 import APLFuryJSON from './apls/forever_fury.apl.json';
+import APLFuryAoEJSON from './apls/forever_fury_aoe.apl.json';
 import APLFurySpearingJSON from './apls/forever_fury_spearing.apl.json';
 import APLFurySunderJSON from './apls/forever_fury_sunder.apl.json';
 import APLArmsJSON from './apls/forever_arms.apl.json';
@@ -49,6 +50,8 @@ export const DefaultGear = GearFury;
 ///////////////////////////////////////////////////////////////////////////
 
 export const APLFury = PresetUtils.makePresetAPLRotation('Fury', APLFuryJSON);
+export const APLFuryAoE = PresetUtils.makePresetAPLRotation('Fury (Adaptive AoE)', APLFuryAoEJSON);
+APLFuryAoE.tooltip = 'Maintains Battle Shout if needed; uses Cleave and target-count/remaining-time priorities for short or long multi-target fights.';
 export const APLFurySpearing = PresetUtils.makePresetAPLRotation('Fury (Giants/Dragonkin)', APLFurySpearingJSON);
 APLFurySpearing.tooltip = 'Spearing Strike build for Giant or Dragonkin targets. Not a general-purpose Fury rotation.';
 export const APLFurySunder = PresetUtils.makePresetAPLRotation('Fury (Sunder)', APLFurySunderJSON);
@@ -57,7 +60,7 @@ export const APLArms = PresetUtils.makePresetAPLRotation('Arms', APLArmsJSON);
 export const APLFuryTwoHand = PresetUtils.makePresetAPLRotation('2H Bloodthirst', APLFuryTwoHandJSON);
 
 export const APLPresets = {
-	[ClassicPhase.Phase1]: [APLFury, APLFurySpearing, APLFurySunder, APLArms, APLFuryTwoHand],
+	[ClassicPhase.Phase1]: [APLFury, APLFuryAoE, APLFurySpearing, APLFurySunder, APLArms, APLFuryTwoHand],
 };
 
 export const DefaultAPLs = [APLPresets[ClassicPhase.Phase1][0]];
@@ -143,6 +146,9 @@ export const OtherDefaults = {
 
 export const BuildPresets = [
 	PresetUtils.makePresetBuild('Fury', { gear: GearFury, talents: TalentsP1DPS, rotation: APLFury, options: DefaultOptions, distance: 5 }),
+	PresetUtils.makePresetBuild('Fury (Adaptive AoE)', {
+		gear: GearFury, talents: TalentsP1DPS, rotation: APLFuryAoE, options: DefaultOptions, distance: 5,
+	}),
 	PresetUtils.makePresetBuild('Fury (Giants/Dragonkin)', {
 		gear: GearFury, talents: TalentsFurySpearing, rotation: APLFurySpearing, options: DefaultOptions, distance: 5,
 	}),

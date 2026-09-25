@@ -33,7 +33,9 @@ var (
 	distanceOverride = flag.Float64("distance", -1, "distance from target override in yards")
 	spellPower       = flag.Float64("spell-power", 0, "additional spell power for sensitivity analysis")
 	duration         = flag.Float64("duration", 300, "fight duration in seconds")
+	targetCount      = flag.Int("targets", 1, "number of identical targets (1-10) for multi-target comparisons")
 	targetArmor      = flag.Float64("armor", 3731, "starting target armor before debuffs")
+	noBattleShout    = flag.Bool("no-battle-shout", false, "omit external Battle Shout to test self-maintenance")
 	demon            = flag.Bool("demon", false, "use a demon target for a separate encounter sensitivity check")
 	tier1            = flag.Bool("tier1", true, "apply the role's full Forever Tier 1 bonuses independently of gear")
 	mp5PerSecond     = flag.Bool("mp5-per-second", false, "provisional MP5-as-mana-per-second interpretation; omitted preserves the saved player setting")
@@ -61,13 +63,20 @@ type resultRow struct {
 }
 
 func encounter() *proto.Encounter {
+	if *targetCount < 1 || *targetCount > 10 {
+		panic("targets must be between 1 and 10")
+	}
 	mob := proto.MobType_MobTypeDragonkin
 	if *demon {
 		mob = proto.MobType_MobTypeDemon
 	}
+	targets := make([]*proto.Target, *targetCount)
+	for i := range targets {
+		targets[i] = &proto.Target{Level: 63, MobType: mob, Stats: stats.Stats{stats.Armor: *targetArmor}.ToFloatArray()}
+	}
 	return &proto.Encounter{
 		Duration: *duration, ExecuteProportion_20: .2, ExecuteProportion_25: .25, ExecuteProportion_35: .35,
-		Targets: []*proto.Target{{Level: 63, MobType: mob, Stats: stats.Stats{stats.Armor: *targetArmor}.ToFloatArray()}},
+		Targets: targets,
 	}
 }
 
@@ -82,6 +91,10 @@ func request(player *proto.Player, count int, rng int64) *proto.RaidSimRequest {
 
 func requestForBuild(b build, player *proto.Player, count int, rng int64) *proto.RaidSimRequest {
 	req := request(player, count, rng)
+	if *noBattleShout {
+		req.Raid.Buffs.BattleShout = proto.TristateEffect_TristateEffectMissing
+		req.Raid.Parties[0].Buffs.BattleShout = proto.TristateEffect_TristateEffectMissing
+	}
 	// The reference groups reserve Grace of Air for the ranged Hunters.
 	// Casters do not get a second, irrelevant air-totem provider.
 	if b.Key != "beast_mastery" && b.Key != "marksmanship" {
