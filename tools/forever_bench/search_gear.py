@@ -21,6 +21,8 @@ def main():
     parser.add_argument("--builds", help="comma-separated build keys")
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--representatives", action="store_true")
+    parser.add_argument("--modeled-only", action="store_true",
+                        help="seed and compare only current v2 projected equipment, with no paid-hit conversion")
     available_cpus = len(os.sched_getaffinity(0)) if hasattr(os, "sched_getaffinity") else (os.cpu_count() or 1)
     parser.add_argument("--workers", type=int, default=available_cpus)
     parser.add_argument("--screen", type=int, default=100)
@@ -61,7 +63,8 @@ def main():
     for path in sorted(paths):
         digest.update(str(path).encode())
         digest.update(path.read_bytes())
-    settings = {key: getattr(args, key) for key in ("screen", "validate", "passes", "iterations", "seed")}
+    settings = {key: getattr(args, key) for key in
+                ("screen", "validate", "passes", "iterations", "seed", "modeled_only")}
     manifest = {"inputsSHA256": digest.hexdigest(), "settings": settings}
     if args.baseline_results or args.builds:
         manifest["jobs"] = [list(job) for job in jobs]
@@ -85,6 +88,8 @@ def main():
             ]
             if args.baseline_results:
                 command.extend(["-baseline-results", str(args.baseline_results)])
+            if args.modeled_only:
+                command.append("-modeled-only")
             with prefix.with_suffix(".log").open("w") as log:
                 subprocess.run(command, stdout=log, stderr=subprocess.STDOUT,
                                env={**os.environ, "GOMAXPROCS": "1"}, check=True)
@@ -107,7 +112,9 @@ def main():
         payload = {
             "Duration": 300, "StartingArmor": 3731, "Tier1Bonuses": True,
             "EquipmentScale": 1, "SearchManifest": manifest,
-            "GearScenario": "real-reference" if name == "baseline" else "modeled-65-v1",
+            "GearScenario": ("modeled-seed-v2" if name == "baseline" else "modeled-65-v2")
+                            if args.modeled_only else
+                            ("real-reference" if name == "baseline" else "modeled-65-v1"),
             "Results": [result[index] for result in completed],
         }
         (args.output / f"{name}.json").write_text(json.dumps(payload, indent=2) + "\n")

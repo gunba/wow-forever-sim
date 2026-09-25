@@ -258,9 +258,10 @@ func capHit(b build, input *proto.Player) (*proto.Player, hitAdjustment, error) 
 		gear = gear.Add(item.Stats).Add(item.RandomSuffix.Stats)
 	}
 	gearHit := (gear[stats.MeleeHit] + gear[stats.SpellHit]) * report.RatingPerPercent
-	// Excess item hit can be exchanged back, but a talent/racial by itself
-	// cannot be cashed out into free offensive stats.
-	report.RawHitDelta = max(additional*report.RatingPerPercent, -gearHit)
+	// Gear hit beyond the cap is wasted. Cashing it out would reward choosing
+	// excess hit equipment under a linear conversion rule that the model
+	// cannot justify. Talents/racials reduce the paid shortfall, not grant AP/SP.
+	report.RawHitDelta = max(0, additional*report.RatingPerPercent)
 	donors := offensiveGearBudget(b, gear, rates["Crit - Melee"])
 	for _, donor := range donors {
 		report.OffensiveBudgetBefore += donor.amount * donor.cost
@@ -300,4 +301,28 @@ func capHit(b build, input *proto.Player) (*proto.Player, hitAdjustment, error) 
 	report.SpellFinal = unit.GetStat(stats.SpellHit) + report.SpellAdded
 	p.BonusStats.Stats = bonus.ToFloatArray()
 	return p, report, nil
+}
+
+// Current hypothetical equipment uses its actual selected hit, with no
+// benchmark purchase or conversion. Retain capHit only for historical
+// benchmark replay and tools that explicitly choose the older convention.
+func equippedHitOnly(b build, input *proto.Player) (*proto.Player, hitAdjustment, error) {
+	p := googleProto.Clone(input).(*proto.Player)
+	bonus := stats.FromFloatArray(p.GetBonusStats().GetStats())
+	if bonus[stats.MeleeHit] != 0 || bonus[stats.SpellHit] != 0 {
+		return nil, hitAdjustment{}, fmt.Errorf("equipment-only hit forbids manual hit overrides")
+	}
+	req := request(p, 1, 1)
+	env, _, _ := core.NewEnvironment(req.Raid, req.Encounter, proto.Ruleset_RulesetForever, false)
+	unit, target := env.Raid.AllPlayerUnits[0], env.Encounter.TargetUnits[0]
+	character := env.Raid.Parties[0].Players[0].GetCharacter()
+	requirements, exclusions := hitRequirements(b, p, character, target)
+	if len(requirements) == 0 {
+		return nil, hitAdjustment{}, fmt.Errorf("%s: no rotational hit requirements found", b.Key)
+	}
+	return p, hitAdjustment{
+		Model: "equipped-only-v2", RatingPerPercent: readHitBudgetRates()["Hit - Melee"],
+		MeleeFinal: unit.GetStat(stats.MeleeHit), SpellFinal: unit.GetStat(stats.SpellHit),
+		Requirements: requirements, Exclusions: exclusions,
+	}, nil
 }

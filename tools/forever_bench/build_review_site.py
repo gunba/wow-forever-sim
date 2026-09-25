@@ -32,7 +32,8 @@ def main():
     parser.add_argument("--previous-results", type=Path, default=Path("artifacts/forever_dps_5min.json"))
     args = parser.parse_args()
     data = json.loads(args.results.read_text())
-    modeled = data.get("GearScenario") == "modeled-65-v1"
+    model_v2 = data.get("GearScenario") == "modeled-65-v2"
+    modeled = data.get("GearScenario") in {"modeled-65-v1", "modeled-65-v2"}
     rows = data["Results"]
     unenchanted = all(
         not any(item.get("enchant") for item in row["BaselinePlayer"]["equipment"]["items"])
@@ -63,10 +64,17 @@ def main():
     shutil.copytree("artifacts/research_builds", args.output / "research_builds", dirs_exist_ok=True)
     shutil.copytree(args.gear_search, args.output / "gear_search", dirs_exist_ok=True)
     if modeled:
-        shutil.copyfile("assets/db_inputs/forever_synthetic_gear.json", args.output / "synthetic_gear.json")
+        shutil.copyfile("assets/db_inputs/forever_synthetic_gear_v2.json"
+                        if model_v2 else "assets/db_inputs/forever_synthetic_gear.json",
+                        args.output / "synthetic_gear.json")
         shutil.copyfile("docs/modelled_gear.md", args.output / "modelled_gear.md")
         shutil.copyfile("docs/modelled_build_reviews.md", args.output / "modelled_build_reviews.md")
         shutil.copyfile("artifacts/modelled_gear/proposed_gear.xlsx", args.output / "proposed_gear.xlsx")
+        if model_v2:
+            for filename in ("gear_equity.json", "selected_gear_equity.csv",
+                             "spec_gear_equity.csv"):
+                shutil.copyfile(Path("artifacts/modelled_gear") / filename,
+                                args.output / filename)
         if args.previous_results.exists() and args.previous_results.resolve() != args.results.resolve():
             previous = args.output / "real-item-archive"
             previous.mkdir(exist_ok=True)
@@ -242,6 +250,16 @@ Game icons via Wowhead.</p></footer></main></html>
             'superseded runs; they are not a current ranking.</p>',
         )
     if modeled:
+        if model_v2:
+            document = document.replace(
+                "Hit is normalized through a paid benchmark budget,\nnot an obtainable reforging system. Imported bonus stats contain that fixed adjustment:\nchanging gear, talents or race requires recalculation for a fair comparison.",
+                "Hit comes only from equipped items, enchants, talents and racials. "
+                "No paid conversion or fabricated hit stat is applied; each profile shows "
+                "its actual hit and any remaining cap shortfall.",
+            ).replace(
+                "Tier 1 stays on and paid hit is recalculated.",
+                "Tier 1 stays on and gear-derived hit scales with the item's stats.",
+            )
         document = document.replace(
             "<h1>Forever DPS benchmark</h1>",
             "<h1>Forever DPS · modeled gear</h1>"
@@ -251,13 +269,21 @@ Game icons via Wowhead.</p></footer></main></html>
             "conservative 80%-allocation passive trinket scenario. Special-stat prices and future "
             "drops remain unknown. <a href='modelled_gear.md'>Method and limits</a> · "
             "<a href='proposed_gear.xlsx' download>Proposed gear spreadsheet</a> · "
-            "<a href='real-item-archive/'>Prior real-item results</a>.</p>",
+            "<a href='real-item-archive/'>Prior real-item results</a>"
+            + (" · <a href='https://github.com/gunba/wow-forever-sim/blob/"
+               "ff7b01f28/artifacts/modelled_gear/forever_dps_5min.json'>"
+               "Prior mixed modeled/real results</a>" if model_v2 else "") + ".</p>",
         )
         start = document.index('<p class="note">Equipment was selected by slot-by-slot')
         end = document.index('</p>', start) + 4
         document = (document[:start] +
-                    '<p class="note">Gear was selected by legal slot-coordinate comparisons of the '
-                    'modeled candidate pool and eligible real items. The source records, stat '
+                    '<p class="note">Gear was selected by legal slot-coordinate comparisons of the ' +
+                    ('modeled-only v2 candidate pool. No real item is equipped. '
+                     'Excess hit is wasted, never converted into free offensive stats. '
+                     'Mirrored caster allocations use the same assumed modeled item budget; '
+                     'Intellect does not grant baseline spell power. ' if model_v2 else
+                     'modeled candidate pool and eligible real items. ')
+                    + 'The source records, stat '
                     'allocations, confidence labels and actual reference item IDs are in '
                     '<a href="synthetic_gear.json">the model catalog</a>. '
                     'The <a href="gear_search/summary.json">search evidence</a> records every '
@@ -266,7 +292,11 @@ Game icons via Wowhead.</p></footer></main></html>
         document = document.replace(
             '<a href="gear_updates.md">Gear comparisons</a>',
             '<a href="modelled_gear.md">Modeled gear method</a>'
-            '<a href="synthetic_gear.json">Modeled item catalog</a>'
+             '<a href="synthetic_gear.json">Modeled item catalog</a>'
+             + ('<a href="spec_gear_equity.csv">Spec stat and budget audit</a>'
+                '<a href="selected_gear_equity.csv">Per-race stat and hit audit</a>'
+                '<a href="gear_equity.json">Stat audit data</a>'
+                if model_v2 else '') +
             '<a href="real-item-archive/">Previous real-item benchmark</a>'
             '<a href="gear_updates.md">Prior gear comparisons</a>',
         )

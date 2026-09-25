@@ -18,6 +18,10 @@ export interface RankedProfile {
 
 let profiles: RankedProfile[] | undefined;
 
+export function rankedProfilesUseNaturalHit(): boolean {
+	return String(data.gearScenario) === 'modeled-65-v2';
+}
+
 export function getRankedProfiles(spec: Spec): RankedProfile[] {
 	if (!profiles) {
 		profiles = (data.profiles as unknown as Array<Omit<RankedProfile, 'settings'> & { settings: JsonValue }>).map(profile => ({

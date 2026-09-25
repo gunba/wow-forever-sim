@@ -1,4 +1,4 @@
-// Browser imports must preserve the paid, scaled Alliance benchmark, including
+// Browser imports must preserve the scaled Alliance benchmark, including
 // Shaman buffs, Windfury and the selected rank of Blessing of Might.
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -6,7 +6,8 @@ import { chromium } from 'playwright';
 
 const base = process.env.SITE_URL || 'http://localhost:8080/classic/';
 const scenario = JSON.parse(readFileSync('ui/core/forever_ranked_profiles.json', 'utf8')).gearScenario;
-const prefix = scenario === 'modeled-65-v1' ? 'artifacts/modelled_gear/' : 'artifacts/';
+const prefix = ['modeled-65-v1', 'modeled-65-v2'].includes(scenario)
+	? 'artifacts/modelled_gear/' : 'artifacts/';
 const data = JSON.parse(readFileSync(`${prefix}sensitivity/gear_150.json`, 'utf8'));
 const row = data.Results.find(r => r.Key === 'fury' && r.Race === 'Gnome');
 const req = row.Request, raid = req.raid, party = raid.parties[0], player = party.players[0];

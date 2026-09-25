@@ -4,7 +4,9 @@ import { chromium } from 'playwright';
 
 const base = process.env.SITE_URL || 'http://localhost:8080/classic/';
 const bundle = JSON.parse(readFileSync('ui/core/forever_ranked_profiles.json', 'utf8'));
-const resultsFile = bundle.gearScenario === 'modeled-65-v1'
+const modeled = ['modeled-65-v1', 'modeled-65-v2'].includes(bundle.gearScenario);
+const naturalHit = bundle.gearScenario === 'modeled-65-v2';
+const resultsFile = modeled
 	? 'artifacts/modelled_gear/forever_dps_5min.json'
 	: 'artifacts/forever_dps_5min.json';
 const results = JSON.parse(readFileSync(resultsFile, 'utf8')).Results;
@@ -46,7 +48,7 @@ try {
 
 		await page.getByLabel('Ranked build', { exact: true }).selectOption(id);
 		await page.getByRole('button', { name: 'Load build', exact: true }).click();
-		if (bundle.gearScenario === 'modeled-65-v1') {
+		if (modeled) {
 			assert.ok((await page.locator('.ranked-profile-picker label').first().textContent())
 				.startsWith('Ranked builds · modeled gear'));
 			assert.equal(profile.modeledGear, true);
@@ -68,7 +70,13 @@ try {
 			delete expectedConsumes.offHandImbue;
 		}
 		assert.deepEqual(actualConsumes, expectedConsumes, `${id}: active consumes`);
-		assert.deepEqual(stored.player.bonusStats.stats, expected.player.bonusStats.stats, `${id}: paid hit`);
+		assert.deepEqual(stored.player.bonusStats.stats, expected.player.bonusStats.stats, `${id}: bonus stats`);
+		if (naturalHit) {
+			assert.ok(stored.player.equipment.items.every(item => !item.id || item.id >= 920000001),
+				`${id}: a real or superseded item remains`);
+			assert.equal(stored.player.bonusStats.stats[13] || 0, 0, `${id}: synthetic spell hit bonus`);
+			assert.equal(stored.player.bonusStats.stats[18] || 0, 0, `${id}: synthetic melee hit bonus`);
+		}
 		assert.deepEqual(stored.raidBuffs, expected.raidBuffs);
 		assert.deepEqual(stored.partyBuffs, expected.partyBuffs);
 		assert.deepEqual(stored.debuffs, expected.debuffs);
@@ -107,7 +115,7 @@ try {
 		const linked = await page.evaluate(key => JSON.parse(localStorage.getItem(key)), storageKey);
 		assert.deepEqual(linked.player.equipment, expected.player.equipment, `${id}: direct ranking link`);
 		assert.equal(linked.player.race, expected.player.race, `${id}: direct-link race`);
-		assert.deepEqual(linked.player.bonusStats.stats, expected.player.bonusStats.stats, `${id}: direct-link paid hit`);
+		assert.deepEqual(linked.player.bonusStats.stats, expected.player.bonusStats.stats, `${id}: direct-link bonus stats`);
 		assert.deepEqual(linked.raidBuffs, expected.raidBuffs, `${id}: direct-link raid buffs`);
 		assert.deepEqual(linked.debuffs, expected.debuffs, `${id}: direct-link debuffs`);
 		await context.close();

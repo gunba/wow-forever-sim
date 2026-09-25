@@ -18,6 +18,7 @@ type gearRecord struct {
 	SetBonuses                                                                      []struct{ Pieces, SpellID int32 }
 	Sources                                                                         []struct{ Kind, Faction string }
 	Synthetic, BenchmarkEligible                                                    bool
+	ModelVersion                                                                    int32
 }
 
 var readGearCatalog = sync.OnceValue(func() map[int32]gearRecord {
@@ -29,17 +30,37 @@ var readGearCatalog = sync.OnceValue(func() map[int32]gearRecord {
 	for _, item := range data.Items {
 		out[item.ID] = item
 	}
-	if err := json.Unmarshal(mustRead("assets/db_inputs/forever_synthetic_gear.json"), &data); err != nil {
-		panic(err)
-	}
-	for _, item := range data.Items {
-		if _, exists := out[item.ID]; exists {
-			panic(fmt.Sprintf("synthetic item %d collides with the real catalog", item.ID))
+	for _, path := range []string{
+		"assets/db_inputs/forever_synthetic_gear.json",
+		"assets/db_inputs/forever_synthetic_gear_v2.json",
+	} {
+		if err := json.Unmarshal(mustRead(path), &data); err != nil {
+			panic(err)
 		}
-		out[item.ID] = item
+		for _, item := range data.Items {
+			if _, exists := out[item.ID]; exists {
+				panic(fmt.Sprintf("synthetic item %d collides with the real catalog", item.ID))
+			}
+			out[item.ID] = item
+		}
 	}
 	return out
 })
+
+func fullyModeledV2(p *proto.Player) bool {
+	catalog := readGearCatalog()
+	count := 0
+	for _, equipped := range p.GetEquipment().GetItems() {
+		if equipped.GetId() == 0 {
+			continue
+		}
+		count++
+		if catalog[equipped.Id].ModelVersion != 2 {
+			return false
+		}
+	}
+	return count >= 16
+}
 
 var readGearReviews = sync.OnceValue(func() map[int32]string {
 	var data struct {

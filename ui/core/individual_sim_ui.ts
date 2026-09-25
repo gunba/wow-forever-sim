@@ -46,7 +46,7 @@ import { Stats, UnitStat } from './proto_utils/stats';
 import { getTalentPoints, isHealingSpec, isTankSpec, SpecOptions, SpecRotation, specToEligibleRaces, specToLocalStorageKey } from './proto_utils/utils';
 import { SimUI, SimWarning } from './sim_ui';
 import { EventID, TypedEvent } from './typed_event';
-import { getRankedProfiles, RankedProfile } from './ranked_profiles';
+import { getRankedProfiles, rankedProfilesUseNaturalHit, RankedProfile } from './ranked_profiles';
 
 const SAVED_GEAR_STORAGE_KEY = '__savedGear__';
 const SAVED_ROTATION_STORAGE_KEY = '__savedRotation__';
@@ -380,7 +380,9 @@ export abstract class IndividualSimUI<SpecType extends Spec> extends SimUI {
 		button.disabled = true;
 		const note = document.createElement('p');
 		note.className = 'form-text mb-0';
-		note.textContent = 'Full five-minute setup, including gear, enchants, Tier 1 and paid hit. Gear or race edits do not recalculate the hit adjustment.';
+		note.textContent = rankedProfilesUseNaturalHit()
+			? 'Full five-minute setup, including gear, enchants and Tier 1. Hit comes only from items, enchants, talents and racials; changing gear or race changes actual hit.'
+			: 'Full five-minute setup, including gear, enchants, Tier 1 and paid hit. Gear or race edits do not recalculate the hit adjustment.';
 		if (this.rankedProfiles.some(profile => profile.modeledGear)) {
 			note.textContent += ' “Modeled:” items are hypothetical projections, not obtainable equipment.';
 		}

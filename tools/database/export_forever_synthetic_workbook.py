@@ -15,7 +15,7 @@ def main():
     armor,weapons,budget,prices=evidence()
     assert all(z[-1]==0 for z in armor),[(z[0],z[-1]) for z in armor if z[-1]][:10]
     assert all(z[11]==z[14]==0 for z in weapons),[(z[0],z[11],z[14]) for z in weapons if z[11] or z[14]][:10]
-    out=proposals()
+    out=proposals_v2()
     assert len({r['ID'] for r in out})==len(out)
     assert all(r['Scale'] in (47,36,27,20,15) for r in out)
     path=ROOT/'artifacts/modelled_gear/proposed_gear.xlsx'
@@ -45,23 +45,23 @@ def main():
         for j,width in enumerate(widths or []):sh.set_column(j,j,width)
         return sh
     readme=[
-      ('Status','Hypothetical model for review. None of the SYN-* IDs exist in-game. No sim/profile/ranking has changed.'),
-      ('Data','Forever beta build '+BUILD+'; frozen public catalog and client tables in reference/.'),
+      ('Status','Current hypothetical gear-only benchmark. No SYN2-* item is confirmed obtainable. Earlier real and synthetic-model releases remain archived separately.'),
+      ('Data','Forever beta build '+BUILD+'; pinned public catalog and client tables in assets/db_inputs/.'),
       ('Stat formula','round_half_up(RandPropPoints[level, quality, inventory slot] × StatPercentEditor / 10000). Proven for catalog client item records.'),
       ('Weapon formula','DPS = ItemDamageOneHand or TwoHand[level, quality] by verified weapon slot/type; min=floor(DPS × speed × (1 - DmgVariance/2)); max=round_half_up(DPS × speed × (1 + DmgVariance/2)).'),
       ('Armor formula','round_half_up(ItemArmorTotal[level, armor class] × ItemArmorQuality[level, quality] × ArmorLocation[slot, armor class]); robe uses chest location. Shield from ItemArmorShield.'),
       ('Budget evidence','Generic primary stats, Stamina, unified Hit and Crit approximately obey a 1.7095-power norm. This matches many existing item allocations; it is a supported working model, not proof of the server formula.'),
-      ('Special costs','AP, spell power, school power and MP5 cannot be assigned a single verified exchange price across slots. Their source allocations are NEVER converted to different special stats. Cross-slot templates are scaled DOWN where their modeled special-stat price rises.'),
+      ('Special costs','AP, spell power, school power and MP5 cannot be assigned a verified universal exchange price. Caster four-stat and caster/hybrid high-hit items mirror a projected physical allocation where Stamina was deliberately exchanged for Hit (the source item has no Hit) at the explicitly assumed armor spell-power price. Equal modeled cost does not imply equal DPS or Intellect-to-SP conversion.'),
       ('Price clues','The Price clues tab solves one special-stat multiplier per eligible no-effect/no-set item assuming its full budget is spent. If an item is underbudget, that result is an upper bound, not the actual game price.'),
       ('Stamina policy','For armor/neck/rings: reduce large source Stamina allocation to at most 20% of the modeled p-budget and transfer only that cost to a new primary/rating stat. No free offensive stats in the working model. Compare to actual source stats before adopting.'),
       ('Weapon policy','Stats remain exactly the real source allocation. Only speed changes; theoretical table DPS stays fixed within a weapon type. Cannot assert novel speeds will drop.'),
-      ('Trinkets','No confirmed ilvl65 crafted/PvP passive stat trinket. 80% and 100% source allocations are separate sensitivity cases, not two extra items to equip together.'),
+      ('Trinkets','No confirmed ilvl65 passive stat trinket. Only 80%-capacity projections enter rankings; the eight 100% variants are excluded sensitivity cases.'),
       ('Editing cells','Stat amounts recalculate when allocation basis points change. Source/proposed budget figures are generation-time snapshots: rerun generate.py to recompute them.'),
       ('Sources','All 65 crafted/PvP records are listed on Verified Sources; coverage gaps on Coverage. Source URLs are item-specific Wowhead Forever pages. Tables from wago.tools build '+BUILD+'.'),
       ('Constraints','Do not apply raid-tier set bonuses from synthetic pieces; retain role Tier1 override once. Respect class armor/weapon training, hand use, Shaman no dual wield, profession restrictions on REAL crafted items, unique rings/trinkets and racial hit.'),
-      ('Hit comparison','A later simulation must recompute the existing paid shared-hit adjustment for every gear option. The spreadsheet does not grant hit for free or embed enchants/consumables.'),
+      ('Hit comparison','The current model gets hit only from equipped items, enchants, talents and racials. It does not exchange offensive stats for hit. Excess hit is wasted; Tauren can meet the cap with fewer hit-bearing pieces.'),
       ('No claiming availability','Crafted/PvP references are real data, but projected slot/stat combinations, respeeded weapons and passive trinkets are what-if scenarios, not datamined item records. Full-catalog armor/weapon proof includes ineligible items only to test the client formula.'),
-      ('Next decision','Review whether modeled 20%-Stamina armor and the 80% or 100% passive-trinket budget are suitable benchmark conventions before importing synthetic items into the simulator.'),
+      ('Comparability','All ranked equipment is modeled and level 65, with slot budgets evaluated under the same explicit Lp hypothesis. Intellect does not grant baseline spell power. Cross-archetype DPS equivalence cannot be established by item budgets alone.'),
     ]
     sh=w.add_worksheet('Start here');sh.set_column(0,0,23);sh.set_column(1,1,121);sh.freeze_panes(1,0)
     sh.write_row(0,0,['Topic','Explanation'],header)
@@ -83,21 +83,21 @@ def main():
             arows[(row['ID'],stat)]=arow+1;arow+=1
     alloc_sh.autofilter(0,0,arow-1,len(acol)-1)
     cols=['Synthetic ID','Slot','Inventory type','Armor / weapon type','Class archetype',
-          'Stat pattern','Status / policy','Reference ID','Source item name','Source category',
+          'Modeled item name (with amounts)','Status / policy','Reference ID','Source item name','Source category',
           'Reference URL','Source slot','Stat capacity (q4/65)']+STAT_COLS+[
           'Base armor','Speed (s)','Minimum damage','Maximum damage','Base weapon DPS',
           'Source modeled capacity used','Proposed modeled capacity used','Confidence','Limitations']
     sh=w.add_worksheet('Proposed gear');sh.freeze_panes(1,7);sh.set_row(0,47)
     for j,title in enumerate(cols):sh.write(0,j,title,header)
     sh.set_column(0,0,16);sh.set_column(1,1,16);sh.set_column(2,3,13);sh.set_column(4,4,22)
-    sh.set_column(5,6,34);sh.set_column(7,7,13);sh.set_column(8,8,41)
+    sh.set_column(5,5,99);sh.set_column(6,6,34);sh.set_column(7,7,13);sh.set_column(8,8,41)
     sh.set_column(9,9,18);sh.set_column(10,10,37);sh.set_column(11,12,14)
     sh.set_column(13,13+len(STAT_COLS)-1,14)
     sh.set_column(13+len(STAT_COLS),len(cols)-2,16)
     sh.set_column(len(cols)-1,len(cols)-1,95)
     for i,r in enumerate(out,1):
         url=f'https://www.wowhead.com/forever/item={r["SourceID"]}'
-        row=[r['ID'],r['Slot'],r['SlotID'],r['Material'],r['ClassUse'],r['Archetype'],
+        row=[r['ID'],r['Slot'],r['SlotID'],r['Material'],r['ClassUse'],modeled_name(r),
              r['Policy'],r['SourceID'],r['SourceName'],r['SourceKind'],url,r['SourceSlot'],r['Scale']]
         for j,v in enumerate(row):
             if j==10:sh.write_url(i,j,v,link,v)
@@ -188,6 +188,23 @@ def main():
                 ('Client table reference',f'https://wago.tools/db2/RandPropPoints/csv?build={BUILD}','Other table names in reference/'),
     ]
     sheet('Model', ['Parameter','Value','Provenance / limit'],model_rows,[45,72,115])
+    selected_results = ROOT/'artifacts/modelled_gear/forever_dps_5min.json'
+    if selected_results.exists():
+        selected = json.loads(selected_results.read_text())
+        if selected.get('GearScenario') == 'modeled-65-v2':
+            import sys
+            sys.path.insert(0, str(ROOT/'tools/forever_bench'))
+            from gear_equity import inspect
+            profiles, _ = inspect(selected, json.loads(
+                (ROOT/'assets/db_inputs/forever_synthetic_gear_v2.json').read_text()))
+            columns = ['Build', 'Race', 'DPS', 'ItemCount', 'MeanItemLevel',
+                       'EstimatedBudgetUnits', 'AssumedCapacityPoints',
+                       'MeleeHitPercent', 'SpellHitPercent',
+                       'WorstHitShortfallPercent', 'Strength', 'Agility', 'Intellect',
+                       'AttackPower', 'SpellPower', 'CritRating', 'HitRating', 'MP5']
+            sheet('Selected profiles', columns,
+                  [[profile[column] for column in columns] for profile in profiles],
+                  [23, 18, 13, 15, 18, 20, 22, 16, 16, 25] + [15]*8)
     w.close()
     print(f'{path}\n{len(out)} proposed variants; {len(verified)} ilvl65 crafted/PvP source records; '
           f'{len(armor)} exact armor rows, {len(weapons)} exact weapon rows')

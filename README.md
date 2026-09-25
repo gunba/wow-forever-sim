@@ -5,9 +5,9 @@ A fork of [ElliotWood/Forever](https://github.com/ElliotWood/Forever), built on
 
 **[Open the simulator and DPS matrix](https://gunba.github.io/wow-forever-sim/classic/review/).**
 
-The current web rankings use **hypothetical level-65 equipment** generated from
-Forever crafted and PvP item patterns, alongside verified items. Modeled items
-are labeled in the simulator and are not confirmed loot. The [proposed gear
+The current web rankings use **only hypothetical level-65 equipment** projected
+from Forever crafted and PvP item patterns. Modeled items list their numerical
+stats in the simulator and are not confirmed loot. The [proposed gear
 spreadsheet](artifacts/modelled_gear/proposed_gear.xlsx) and
 [model assumptions](docs/modelled_gear.md) show the inputs and limits. The
 [previous verified-item rankings](artifacts/forever_dps_5min.json) remain
@@ -19,7 +19,7 @@ The [five-minute benchmark](tools/forever_bench/README.md) covers 28 builds and
 184 Horde/Alliance race/build combinations, including separate Physical Ret
 and Fury (Sunder) setups. The modeled-gear [matrix](artifacts/modelled_gear/forever_dps_5min.png),
 [CSV](artifacts/modelled_gear/forever_dps_5min.csv) and
-[raw requests/results](artifacts/modelled_gear/forever_dps_5min.json) use paid hit normalization
+[raw requests/results](artifacts/modelled_gear/forever_dps_5min.json) use hit from selected items, talents and racials, without a paid stat exchange,
 and 5,000 iterations per result. Legal talent and rotation changes were screened,
 independently validated and checked across every available race; these are not
 claims of a global optimum or best-in-slot equipment.
@@ -44,12 +44,14 @@ recent WoWSims changes and Warrior combat logs with this simulator.
 reviewed separately from the confirmed mechanics corrections.
 [Replay profiles](artifacts/modelled_gear/ui_profiles/index.json) are built into the matching
 simulator's **Ranked builds** selector. Clicking a matrix cell opens that exact
-setup, including its paid hit adjustment; no manual import is needed.
+setup and its actual gear-derived hit; no manual import is needed.
 [Frozen benchmark inputs](artifacts/modelled_gear/forever_input_profiles.json) are also the
 native benchmark defaults, separate from the results for replay.
 [Equipment-search evidence](artifacts/modelled_gear_search/current/summary.json) records
-the comparisons. Real lower-level items may remain when simulated as stronger
-than the modeled alternatives; that does not make the modeled items real.
+the comparisons. Every equipped item is a projected level-65 item with its
+numeric stats in its name. None is confirmed obtainable. The
+[previous mixed modeled/real release](https://github.com/gunba/wow-forever-sim/blob/ff7b01f28/artifacts/modelled_gear/forever_dps_5min.json)
+and the distinct verified-item rankings remain available for comparison.
 
 This project is licensed with MIT license, inherited from the upstream project. As upstream requests, keep a user visible link back to [wowsims/classic](https://github.com/wowsims/classic) in anything built on this.
 
@@ -144,7 +146,7 @@ Worth knowing before reading any number out of this sim:
 
 ## Running it
 
-There are no published builds for this fork and the deploy workflow does not run here — build and host it locally with the instructions below. Upstream's releases and [live sims](https://wowsims.github.io/classic) are Classic Era and do not include any of this.
+The [public build](https://gunba.github.io/wow-forever-sim/classic/review/) is deployed from this repository. For local development:
 
 With the development dependencies installed:
 
@@ -158,8 +160,8 @@ go build -buildvcs=false -o /tmp/forever-web ./sim/web/main.go
 
 Open <http://127.0.0.1:3333/classic/>. The gear, talent and rotation tabs offer
 matching build presets. **Settings → Other → Tier 1 bonuses** controls the
-gear-independent set effects. Paid hit normalization belongs to the benchmark;
-ordinary UI simulations use the displayed character stats.
+gear-independent set effects. Current modeled rankings and ordinary UI simulations
+use only hit from the displayed equipment, talents and racials.
 
 # Local Dev Installation
 

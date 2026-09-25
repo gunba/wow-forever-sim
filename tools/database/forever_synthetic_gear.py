@@ -35,7 +35,8 @@ STAT_COLS = [
 ]
 GENERIC = {'Stamina','Strength','Agility','Intellect','Spirit','HitRating','CritRating'}
 # Upper-frontier item-implied exchange prices, not server/Blizzard item prices.
-# We never exchange these special stats; these prices only estimate the desired stamina share.
+# The explicitly hypothetical v2 caster/hybrid mirrors use these assumed
+# prices; equality under this model is not evidence of equal game DPS budgets.
 BUDGET_PRICE = {'AttackPower':.66,'RangedAttackPower':.48,'SpellPower':.9,
                 'SpellDamage':1.,'MP5':3.,'BonusArmor':.07,'HealingPower':.52,
                 **{s:.885 for s in ('HolyPower','FirePower','FrostPower','ArcanePower','ShadowPower','NaturePower')}}
@@ -299,3 +300,149 @@ def proposals():
                                 'Source template copied. HealingPower remains healing only; shield/relic effects omitted.'))
         seq+=1
     return result
+
+
+def full_budget(alloc, slot):
+    """Scale a projected allocation to one hypothesized slot budget."""
+    capacity = norm(alloc, slot)
+    if capacity <= 0:
+        raise ValueError(f'empty modeled allocation for slot {slot}')
+    return {stat: amount / capacity for stat, amount in alloc.items()}
+
+
+def proposals_v2():
+    """Equal-capacity synthetic-only pool; retain v1 separately for replay."""
+    result = proposals()
+    for row in result:
+        if row['SlotID'] == 12:
+            continue  # Passive-trinket fractions remain distinct sensitivity assumptions.
+        row['Allocation'] = full_budget(row['Allocation'], row['SlotID'])
+        row['Stats'] = item_stats(row['Allocation'], row['SlotID'])
+        row['ProposedBudget'] = norm(row['Allocation'], row['SlotID'])
+    seq = len(result) + 1
+
+    # The genuine four-generic-stat leg allocation is mirrored across offensive
+    # archetypes. One Strength unit becomes one assumed-cost unit of SpellPower,
+    # and Agility becomes Intellect. This is equal *item cost*, not equal DPS:
+    # Intellect does not grant baseline spell power in Forever.
+    for slot in BODY_SLOTS + [16, 2, 11, 12]:
+        for material in ([1, 2, 3, 4] if slot in BODY_SLOTS else [1] if slot == 16 else [0]):
+            physical = full_budget(normalized_alloc(BY_ID[22651]), slot)
+            physical = reduce_stamina(physical, 'Agility', slot=slot)
+            mirrored = physical.copy()
+            mirrored['SpellPower'] = mirrored.pop('Strength') / (
+                .712 if slot == 23 else .78 if slot == 17 else .9)
+            mirrored['Intellect'] = mirrored.pop('Agility')
+            mirrored = full_budget(mirrored, slot)
+            if slot == 12:
+                mirrored = {k: value * .8 for k, value in mirrored.items()}
+            item = synthetic(f'SYN2-{seq:04}', slot, material,
+                             'Intellect / spell power / crit / hit (matched cost)',
+                             22651, mirrored,
+                             '80% passive trinket capacity' if slot == 12 else
+                             '20% Stamina; mirrored physical/caster modeled cost',
+                             'unverified',
+                             'Four-stat caster mirror of a real physical allocation. '
+                             'Spell-power price 0.9 is a benchmark hypothesis; '
+                             'Intellect is not converted to spell power.')
+            result.append(item)
+            seq += 1
+
+    # The observed three-offensive-stat physical allocation carries much
+    # more hit than the four-stat variant. Mirror that allocation as a caster
+    # and as a hybrid so the gear-only benchmark can reach spell hit without
+    # fabricated bonuses or a forced full set of one template.
+    for slot in BODY_SLOTS + [16, 2, 11, 12]:
+        for material in ([1, 2, 3, 4] if slot in BODY_SLOTS else [1] if slot == 16 else [0]):
+            physical = normalized_alloc(BY_ID[279253])
+            physical['Strength'] = physical.pop('Agility')
+            physical = conservatively_project(physical, 2, slot)
+            physical = reduce_stamina(physical, 'HitRating', slot=slot)
+            physical = full_budget(physical, slot)
+            for archetype, replaced in [
+                ('Spell power / crit / hit (matched cost)', 'Strength'),
+                ('Strength / spell power / hit (matched cost)', 'CritRating'),
+            ]:
+                alloc = physical.copy()
+                alloc['SpellPower'] = alloc.pop(replaced) / .9
+                alloc = full_budget(alloc, slot)
+                if slot == 12:
+                    alloc = {k: value * .8 for k, value in alloc.items()}
+                result.append(synthetic(
+                    f'SYN2-{seq:04}', slot, material, archetype, 279253, alloc,
+                    '80% passive trinket capacity' if slot == 12 else
+                    '20% Stamina; mirrored high-hit modeled cost',
+                    'unverified',
+                    'Hit replaces projected excess Stamina; the reference item '
+                    'does not have Hit. This high-hit caster/hybrid allocation '
+                    'also assumes an unverified spell-power cost.',
+                ))
+                seq += 1
+
+    # The available q4/65 wand is healing-focused. A lower-level damage wand
+    # supplies the stat pattern; its cost is rescaled to the q4/65 ranged cap.
+    allocation = full_budget(normalized_alloc(BY_ID[249385]), 26)
+    for speed in (1.5, 1.7, 2.0):
+        item = synthetic(f'SYN2-{seq:04}', 26, 19, 'Spell-power wand (projected)',
+                         279246, allocation, 'Full projected ranged capacity',
+                         'unverified', 'Damage-stat pattern from item 249385, '
+                         'not the real healing wand; no level-65 damage wand is verified.',
+                         speed=speed)
+        item['ExtraSourceID'] = 249385
+        result.append(item)
+        seq += 1
+
+    for speed in (1.6, 2.2):
+        item = synthetic(f'SYN2-{seq:04}', 25, 16, 'Thrown weapon (projected)',
+                         272599, normalized_alloc(BY_ID[272599]),
+                         'Full ranged stat capacity', 'unverified',
+                         'Stats and damage modeled from a level-65 gun; '
+                         'a matching thrown weapon has not been observed.',
+                         speed=speed)
+        item['SubclassOverride'] = 16
+        result.append(item)
+        seq += 1
+
+    # Relic source records have effects rather than stats. Replace those with
+    # explicitly hypothetical fixed-stat items at the same group-4 slot cap.
+    for reference, archetypes in [
+        (279250, ('Physical idol', 'Spell-power idol')),
+        (279247, ('Physical libram', 'Spell-power libram')),
+        (279249, ('Physical totem', 'Spell-power totem')),
+    ]:
+        for archetype in archetypes:
+            if archetype.startswith('Physical'):
+                alloc = full_budget(normalized_alloc(BY_ID[20068]), 28)
+            else:
+                alloc = full_budget(normalized_alloc(BY_ID[272685]), 28)
+            item = synthetic(f'SYN2-{seq:04}', 28, BY_ID[reference]['subclass'],
+                             archetype, reference, alloc,
+                             'Full projected ranged/relic capacity', 'unverified',
+                             'The source relic has a real effect, not these fixed stats. '
+                             'No level-65 fixed-stat relic source verifies this allocation.')
+            item['ExtraSourceID'] = 20068 if archetype.startswith('Physical') else 272685
+            result.append(item)
+            seq += 1
+    return result
+
+
+ABBREVIATIONS = {
+    'Stamina': 'Sta', 'Strength': 'Str', 'Agility': 'Agi', 'Intellect': 'Int',
+    'Spirit': 'Spi', 'CritRating': 'Crit', 'HitRating': 'Hit',
+    'AttackPower': 'AP', 'RangedAttackPower': 'RAP',
+    'SpellPower': 'SP', 'SpellDamage': 'Dmg', 'HealingPower': 'Heal',
+    'FirePower': 'Fire', 'ShadowPower': 'Shadow', 'MP5': 'MP5',
+}
+
+
+def modeled_name(proposal):
+    label = f"Modeled: {proposal['Archetype']} — {proposal['Slot']}"
+    if proposal['Material'] in ARMOR_TYPES.values():
+        label += f" ({proposal['Material']})"
+    numbers = [f"+{amount} {ABBREVIATIONS.get(stat, stat)}"
+               for stat, amount in proposal['Stats'].items() if amount]
+    if proposal['Armor']:
+        numbers.append(f"{proposal['Armor']} armor")
+    if proposal['Speed'] is not None:
+        numbers.append(f"{proposal['Min']}–{proposal['Max']} dmg @ {proposal['Speed']:g}s")
+    return label + ' [' + ', '.join(numbers) + ']'

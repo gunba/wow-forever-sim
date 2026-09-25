@@ -40,7 +40,11 @@ def main():
     parser.add_argument("--bundle", type=Path, help="also write the web default-profile bundle")
     args = parser.parse_args()
     data = json.loads(args.results.read_text())
-    modeled = data.get("GearScenario") == "modeled-65-v1"
+    modeled = data.get("GearScenario") in {"modeled-65-v1", "modeled-65-v2"}
+    v2_ids = set()
+    if data.get("GearScenario") == "modeled-65-v2":
+        v2_ids = {item["id"] for item in json.loads(Path(
+            "assets/db_inputs/forever_synthetic_gear_v2.json").read_text())["items"]}
     args.output.mkdir(parents=True, exist_ok=True)
     index = []
     profiles = []
@@ -68,6 +72,9 @@ def main():
                 raise ValueError("Web defaults must use the Tier-on, unscaled benchmark")
             if sum(bool(item.get("enchant")) for item in player["equipment"]["items"]) < 9:
                 raise ValueError(f"{profile['id']} does not contain a fully enchanted ranking loadout")
+            if v2_ids and any(item.get("id", 0) not in v2_ids | {0}
+                              for item in player["equipment"]["items"]):
+                raise ValueError(f"{profile['id']} still equips real or superseded modeled gear")
         args.bundle.parent.mkdir(parents=True, exist_ok=True)
         args.bundle.write_text(json.dumps({
             "sourceSHA256": hashlib.sha256(args.results.read_bytes()).hexdigest(),

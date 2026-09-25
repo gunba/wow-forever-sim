@@ -19,6 +19,8 @@ def main():
     parser.add_argument("--binary", required=True, type=Path)
     parser.add_argument("--profiles", required=True, type=Path)
     parser.add_argument("--original-baselines", type=Path)
+    parser.add_argument("--natural-hit", action="store_true",
+                        help="replay the modeled equipment-only hit scenario without the paid exchange")
     parser.add_argument("--output", required=True, type=Path)
     cpus = len(os.sched_getaffinity(0)) if hasattr(os, "sched_getaffinity") else (os.cpu_count() or 1)
     parser.add_argument("--workers", type=int, default=cpus)
@@ -29,6 +31,8 @@ def main():
     args.profiles = args.profiles.resolve()
     args.output.mkdir(parents=True, exist_ok=True)
     profile_data = json.loads(args.profiles.read_text())
+    if profile_data.get("GearScenario") == "modeled-65-v2" and not args.natural_hit:
+        raise SystemExit("The v2 modeled benchmark requires --natural-hit")
     roster = [(row["Key"], row["Race"]) for row in profile_data["Results"]]
     if set(roster) != expected_roster() or len(roster) != len(set(roster)):
         raise SystemExit("Expected the complete current race/build roster.")
@@ -56,6 +60,7 @@ def main():
     manifest = {
         "inputsSHA256": digest.hexdigest(), "iterations": args.iterations,
         "seed": args.seed, "scenarios": list(scenarios),
+        "naturalHit": args.natural_hit,
     }
     manifest_path = args.output / "manifest.json"
     if manifest_path.exists() and json.loads(manifest_path.read_text()) != manifest:
@@ -84,6 +89,8 @@ def main():
                 "-baseline-results", str(profiles), "-iterations", str(args.iterations),
                 "-seed", str(args.seed), "-output", str(prefix), *flags,
             ]
+            if args.natural_hit and scenario != "original":
+                command.append("-natural-hit")
             with prefix.with_suffix(".log").open("w") as log:
                 subprocess.run(command, stdout=log, stderr=subprocess.STDOUT,
                                env={**os.environ, "GOMAXPROCS": "1"}, check=True)
@@ -92,6 +99,9 @@ def main():
         options = row["Request"]["simOptions"]
         if (row["Key"], row["Race"]) != (build, race) or row.get("Warnings"):
             raise ValueError(f"Invalid replay or APL warnings: {job}")
+        if args.natural_hit and scenario != "original" and (
+                row["Hit"]["Model"] != "equipped-only-v2" or row["Hit"]["RawHitDelta"] != 0):
+            raise ValueError(f"Paid hit adjustment in an equipment-only replay: {job}")
         if options["iterations"] != args.iterations or int(options["randomSeed"]) != args.seed:
             raise ValueError(f"Iteration/seed mismatch: {job}")
         if data["Tier1Bonuses"] != (scenario != "tier1_off") or data["EquipmentScale"] != {

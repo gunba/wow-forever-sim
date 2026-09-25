@@ -33,7 +33,9 @@ func TestRangedScopeReducesPaidHunterHit(t *testing.T) {
 		if err != nil {
 			t.Fatal(err)
 		}
-		want := 30.0
+		// The scope cannot refund more hit budget than remained payable; the
+		// rest of its rating becomes overcap and does not create offensive stats.
+		want := math.Min(30, before.RawHitDelta)
 		if got := before.RawHitDelta - after.RawHitDelta; math.Abs(got-want) > 1e-8 {
 			t.Errorf("%s: scope saved %v raw hit, want %v; requirements %+v", b.Key, got, want, after.Requirements)
 		}
@@ -186,7 +188,7 @@ func TestUnusedSpellSchoolsDoNotEraseHitTalents(t *testing.T) {
 	}
 }
 
-func TestHitBudgetRefundsSurplusWithoutWastingTauren(t *testing.T) {
+func TestHitBudgetNeverCreditsExcessGearHit(t *testing.T) {
 	for _, b := range builds() {
 		if b.Key != "fury" {
 			continue
@@ -209,22 +211,88 @@ func TestHitBudgetRefundsSurplusWithoutWastingTauren(t *testing.T) {
 		if err != nil {
 			t.Fatal(err)
 		}
-		if orc.RawHitDelta >= 0 || tauren.RawHitDelta >= 0 ||
-			math.Abs(orc.RawHitDelta-tauren.RawHitDelta-10) > 1e-8 {
-			t.Fatalf("incorrect racial/surplus accounting: Orc %+v, Tauren %+v", orc, tauren)
+		if orc.RawHitDelta != 0 || tauren.RawHitDelta != 0 {
+			t.Fatalf("overcapped hit was converted into offensive stats: Orc %+v, Tauren %+v", orc, tauren)
 		}
 		for _, report := range []hitAdjustment{orc, tauren} {
-			if math.Abs(report.MeleeFinal-9) > 1e-8 || math.Abs(report.Balance) > 1e-8 {
-				t.Fatalf("avoidable overcap or free budget: %+v", report)
+			if report.MeleeFinal < 9 || math.Abs(report.Balance) > 1e-8 {
+				t.Fatalf("incorrect hit cap or free budget: %+v", report)
 			}
 			for _, entry := range report.Entries {
-				if entry.Stat == "HitRating" && entry.GearAmount+entry.Delta < 0 {
-					t.Fatal("refunded more than the gear's hit allocation")
-				}
-				if entry.Stat != "HitRating" && entry.Delta <= 0 {
-					t.Fatal("surplus hit was not returned to offensive stats")
+				if entry.Delta != 0 {
+					t.Fatalf("excess hit produced a budget exchange: %+v", entry)
 				}
 			}
 		}
+	}
+}
+
+func TestTaurenRacialReducesPaidHitWithoutCreatingBudget(t *testing.T) {
+	var fury build
+	for _, b := range builds() {
+		if b.Key == "fury" {
+			fury = b
+			break
+		}
+	}
+	p := fury.player(proto.Race_RaceOrc)
+	for slot, equipped := range p.Equipment.Items {
+		item := core.ItemsByID[equipped.GetId()]
+		if item.Stats[stats.MeleeHit]+item.Stats[stats.SpellHit] == 0 {
+			continue
+		}
+		fixtureID := int32(999900 + slot)
+		item.ID = fixtureID
+		item.Stats[stats.MeleeHit], item.Stats[stats.SpellHit] = 0, 0
+		core.ItemsByID[fixtureID] = item
+		defer delete(core.ItemsByID, fixtureID)
+		equipped.Id = fixtureID
+	}
+	_, orc, err := capHit(fury, p)
+	if err != nil {
+		t.Fatal(err)
+	}
+	p.Race = proto.Race_RaceTauren
+	_, tauren, err := capHit(fury, p)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if orc.RawHitDelta <= 0 || tauren.RawHitDelta < 0 ||
+		math.Abs(orc.RawHitDelta-tauren.RawHitDelta-10) > 1e-8 {
+		t.Fatalf("racial hit did not save its paid budget: Orc %+v, Tauren %+v", orc, tauren)
+	}
+}
+
+func TestEquippedHitOnlyPreservesStatsAndAppliesTaurenRacial(t *testing.T) {
+	var fury build
+	for _, b := range builds() {
+		if b.Key == "fury" {
+			fury = b
+			break
+		}
+	}
+	*modeledOnly = true
+	defer func() { *modeledOnly = false }()
+	p := fury.player(proto.Race_RaceOrc)
+	pool, _ := comparisonGearPool(fury, p)
+	p = seedModeledGear(fury, p, pool)
+	before := googleProto.Clone(p)
+	unchanged, orc, err := equippedHitOnly(fury, p)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !googleProto.Equal(p, before) || !googleProto.Equal(p, unchanged) ||
+		orc.Model != "equipped-only-v2" || orc.RawHitDelta != 0 ||
+		orc.MeleeAdded != 0 || orc.SpellAdded != 0 || len(orc.Entries) != 0 {
+		t.Fatalf("modeled hit generated or exchanged stats: %+v", orc)
+	}
+	p.Race = proto.Race_RaceTauren
+	_, tauren, err := equippedHitOnly(fury, p)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if math.Abs(tauren.MeleeFinal-orc.MeleeFinal-1) > 1e-8 ||
+		tauren.RawHitDelta != 0 {
+		t.Fatalf("Tauren racial did not grant one natural hit without conversion: %+v %+v", orc, tauren)
 	}
 }

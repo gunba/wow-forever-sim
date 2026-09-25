@@ -96,19 +96,22 @@ func TestHitCapAndTaurenRacial(t *testing.T) {
 			if err != nil || !reflect.DeepEqual(hit, again) {
 				t.Errorf("hit normalization accumulated: %v -> %v", hit, again)
 			}
-			if b.Key == "fury" && math.Abs(hit.MeleeFinal-9) > 1e-8 {
-				t.Errorf("Fury should pay for the physical special cap, not unused magic: %+v", hit)
+			if b.Key == "fury" && hit.MeleeFinal < 9-1e-8 {
+				t.Errorf("Fury must reach the physical special cap; gear overcap may remain: %+v", hit)
 			}
 			if b.Key == "enhancement" && math.Abs(hit.SpellFinal-16) > 1e-8 {
 				t.Errorf("Enhancement should cap its damaging magic: %+v", hit)
 			}
 			additions = append(additions, hit)
 		}
-		if additions[0].MeleeAdded-additions[1].MeleeAdded != 1 || additions[0].SpellAdded-additions[1].SpellAdded != 1 {
-			t.Errorf("%s: Tauren racial not subtracted: %v", b.Key, additions)
+		savings := math.Min(1, additions[0].RawHitDelta/10)
+		if math.Abs(additions[0].MeleeAdded-additions[1].MeleeAdded-savings) > 1e-8 ||
+			math.Abs(additions[0].SpellAdded-additions[1].SpellAdded-savings) > 1e-8 {
+			t.Errorf("%s: Tauren savings do not match the paid shortfall: %v", b.Key, additions)
 		}
-		if math.Abs(additions[0].RawHitDelta-additions[1].RawHitDelta-10) > 1e-8 {
-			t.Errorf("%s: Tauren should retain ten offensive budget points", b.Key)
+		if math.Abs(additions[0].RawHitDelta-additions[1].RawHitDelta-
+			math.Min(10, additions[0].RawHitDelta)) > 1e-8 {
+			t.Errorf("%s: Tauren cannot cash out hit beyond the remaining shortfall", b.Key)
 		}
 	}
 }

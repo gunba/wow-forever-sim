@@ -20,6 +20,7 @@ var (
 	gearScreen   = flag.Int("gear-screen", 100, "iterations per gear candidate")
 	gearValidate = flag.Int("gear-validate", 1000, "independent iterations for each slot's shortlisted candidates")
 	gearPasses   = flag.Int("gear-passes", 3, "maximum coordinate-search passes")
+	modeledOnly  = flag.Bool("modeled-only", false, "compare only current-version synthetic equipment and seed a complete synthetic layout")
 )
 
 type gearTrial struct {
@@ -61,25 +62,31 @@ func comparisonGearPool(b build, p *proto.Player) ([]core.Item, map[int32]string
 	excluded := map[int32]string{}
 	catalog := readGearCatalog()
 	ids := map[int32]bool{}
-	for _, row := range source.Items {
-		if row.Level != 65 {
-			panic("comparison pool contains a different item level")
+	if !*modeledOnly {
+		for _, row := range source.Items {
+			if row.Level != 65 {
+				panic("comparison pool contains a different item level")
+			}
+			ids[row.ID] = true
 		}
-		ids[row.ID] = true
 	}
 	// The supplied filter omits cloaks. The verified level-65 trinkets also
 	// share an equipment limit, so compare lower-level trinkets for slot two.
 	for id, record := range catalog {
-		if record.Synthetic || record.ItemLevel >= 60 || core.ItemsByID[id].Type == proto.ItemType_ItemTypeTrinket {
+		if *modeledOnly && record.ModelVersion == 2 ||
+			!*modeledOnly && (record.Synthetic || record.ItemLevel >= 60 ||
+				core.ItemsByID[id].Type == proto.ItemType_ItemTypeTrinket) {
 			ids[id] = true
 		}
 	}
 	// Keep original and resumed gear in the pool across interchangeable slots:
 	// replacing trinket one must not remove it from consideration for slot two.
-	for _, player := range []*proto.Player{b.player(p.Race), p} {
-		for _, item := range player.Equipment.Items {
-			if item.GetId() != 0 {
-				ids[item.Id] = true
+	if !*modeledOnly {
+		for _, player := range []*proto.Player{b.player(p.Race), p} {
+			for _, item := range player.Equipment.Items {
+				if item.GetId() != 0 {
+					ids[item.Id] = true
+				}
 			}
 		}
 	}
@@ -163,7 +170,7 @@ func gearCandidates(b build, p *proto.Player, slot int, pool []core.Item) []*pro
 	weapons := append([]core.Item{}, pool...)
 	for _, index := range []int{14, 15} {
 		id := p.Equipment.Items[index].GetId()
-		if id != 0 {
+		if id != 0 && !*modeledOnly {
 			found := false
 			for _, item := range weapons {
 				found = found || item.ID == id
@@ -200,6 +207,102 @@ func gearCandidates(b build, p *proto.Player, slot int, pool []core.Item) []*pro
 	return candidates
 }
 
+// Produce a legal synthetic-only starting point before any DPS comparisons.
+// This is only a deterministic seed; the repeated coordinate search performs
+// the actual simulated choice against every candidate.
+func seedModeledGear(b build, input *proto.Player, pool []core.Item) *proto.Player {
+	p := googleProto.Clone(input).(*proto.Player)
+	p.Profession2 = proto.Profession_ProfessionUnknown
+	parts := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 14}
+	catalog := readGearCatalog()
+	for _, slot := range parts {
+		if catalog[p.Equipment.Items[slot].GetId()].ModelVersion == 2 {
+			continue
+		}
+		var best *proto.Player
+		bestScore := -1e30
+		for _, candidate := range gearCandidates(b, p, slot, pool) {
+			chosen := []int{slot}
+			if slot == 14 {
+				chosen = []int{14, 15}
+			}
+			score := 0.0
+			legal := true
+			for _, index := range chosen {
+				id := candidate.Equipment.Items[index].GetId()
+				if id == 0 && index == 15 {
+					continue
+				}
+				if catalog[id].ModelVersion != 2 {
+					legal = false
+					break
+				}
+				score += modeledSeedScore(b, core.ItemsByID[id], index)
+			}
+			if legal && score > bestScore {
+				best, bestScore = candidate, score
+			}
+		}
+		if best == nil {
+			panic(fmt.Sprintf("%s/%s: no legal modeled item for equipment slot %d",
+				b.Key, raceName(p.Race), slot))
+		}
+		p = best
+	}
+	for slot, equipped := range p.Equipment.Items {
+		if equipped.GetId() != 0 && catalog[equipped.Id].ModelVersion != 2 {
+			panic(fmt.Sprintf("%s/%s: real item remains in slot %d after modeled seeding",
+				b.Key, raceName(p.Race), slot))
+		}
+	}
+	if err := validateGear(p); err != nil {
+		panic(err)
+	}
+	return p
+}
+
+func modeledSeedScore(b build, item core.Item, slot int) float64 {
+	s := item.Stats
+	score := s[stats.MeleeCrit]*11 + s[stats.SpellCrit]*11 +
+		(s[stats.MeleeHit]+s[stats.SpellHit])*22
+	if casterBuild(b) {
+		score += .85*s[stats.SpellPower] + .8*(s[stats.SpellDamage]+
+			s[stats.ArcanePower]+s[stats.FirePower]+s[stats.FrostPower]+
+			s[stats.HolyPower]+s[stats.NaturePower]+s[stats.ShadowPower]) +
+			.15*s[stats.Intellect] + .2*s[stats.MP5]
+	} else {
+		score += .4*s[stats.AttackPower] + .35*s[stats.RangedAttackPower] +
+			1.1*s[stats.Agility] + 1.3*s[stats.Strength]
+		if b.Class == proto.Class_ClassPaladin || b.Class == proto.Class_ClassShaman {
+			score += .5*s[stats.SpellPower] + .2*s[stats.Intellect]
+		}
+	}
+	if item.SwingSpeed > 0 {
+		dps := (item.WeaponDamageMin + item.WeaponDamageMax) / (2 * item.SwingSpeed)
+		if slot == 14 || slot == 15 {
+			score += dps * 1.3
+		} else if slot == 16 && b.Class == proto.Class_ClassHunter {
+			score += dps * 4
+		}
+	}
+	return score
+}
+
+func doesNotWorsenHit(candidate, baseline hitAdjustment) bool {
+	limits := make(map[string]float64, len(baseline.Requirements))
+	for _, requirement := range baseline.Requirements {
+		limits[requirement.Action+"/"+requirement.Kind] =
+			max(0, requirement.AdditionalPercent)
+	}
+	for _, requirement := range candidate.Requirements {
+		if requirement.AdditionalPercent >
+			limits[requirement.Action+"/"+requirement.Kind]+1e-7 {
+			return false
+		}
+	}
+	return true
+}
+
 func optimizeGear(b build, initial *proto.Player) *proto.Player {
 	if *output == "" || *gearScreen < 1 || *gearValidate < 1 || *gearPasses < 1 {
 		panic("gear search requires -output and positive iteration/pass limits")
@@ -210,11 +313,18 @@ func optimizeGear(b build, initial *proto.Player) *proto.Player {
 	p := googleProto.Clone(initial).(*proto.Player)
 	prepareGearEnchants(b, p)
 	pool, excluded := comparisonGearPool(b, p)
+	if *modeledOnly {
+		p = seedModeledGear(b, p, pool)
+	}
 	report := gearSearchReport{Build: b.Key, Race: raceName(p.Race), Excluded: excluded}
 	for _, item := range pool {
 		report.PoolIDs = append(report.PoolIDs, item.ID)
 	}
-	report.Baseline = run(b, initial, *iterations, *seed)
+	if *modeledOnly {
+		report.Baseline = run(b, p, *iterations, *seed)
+	} else {
+		report.Baseline = run(b, initial, *iterations, *seed)
+	}
 	evaluate := func(candidate *proto.Player, pass, slot, count int, rng int64, stage string) resultRow {
 		row := run(b, candidate, count, rng)
 		report.Trials = append(report.Trials, gearTrial{
@@ -262,7 +372,8 @@ func optimizeGear(b build, initial *proto.Player) *proto.Player {
 			current := evaluate(p, pass, slot, *gearScreen, screenSeed, "screen-baseline")
 			for _, candidate := range candidates {
 				row := evaluate(candidate, pass, slot, *gearScreen, screenSeed, "screen")
-				if row.DPS > current.DPS && len(row.Warnings) == 0 {
+				if row.DPS > current.DPS && len(row.Warnings) == 0 &&
+					(!*modeledOnly || doesNotWorsenHit(row.Hit, current.Hit)) {
 					shortlist = append(shortlist, screened{candidate, row})
 				}
 			}
@@ -277,6 +388,7 @@ func optimizeGear(b build, initial *proto.Player) *proto.Player {
 				row := evaluate(candidate.player, pass, slot, *gearValidate, validationSeed, "validation")
 				// Conservative bound: paired covariance is not assumed.
 				if row.DPS > bestRow.DPS && len(row.Warnings) == 0 &&
+					(!*modeledOnly || doesNotWorsenHit(row.Hit, current.Hit)) &&
 					row.DPS-current.DPS > 2*(row.StandardError+current.StandardError) {
 					best, bestRow = candidate.player, row
 				}

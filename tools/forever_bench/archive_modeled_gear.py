@@ -45,7 +45,8 @@ def main():
     summary['followupReports']=[Path(path).name for path in summary.get('followupReports',[])]
     summary_path=args.output/'summary.json'
     summary_path.write_text(json.dumps({
-        'scenario':'modeled-65-v1',
+        'scenario':'modeled-65-v2' if json.loads((args.search/'manifest.json').read_text())['settings'].get('modeled_only')
+                   else 'modeled-65-v1',
         'searchManifest':json.loads((args.search/'manifest.json').read_text()),
         'confirmationManifest':json.loads((args.confirmation/'manifest.json').read_text()),
         'searchSummary':summary,

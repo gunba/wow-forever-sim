@@ -10,6 +10,7 @@ import { Database } from './database';
 import { WOWHEAD_IMAGES } from '../constants/other';
 import { spellSource } from '../spells/index';
 import syntheticItemMetadata from '../forever_synthetic_item_metadata.json';
+import syntheticItemMetadataV2 from '../forever_synthetic_item_metadata_v2.json';
 
 type SyntheticItemMetadata = {
 	name: string;
@@ -22,7 +23,10 @@ type SyntheticItemMetadata = {
 	notes: string;
 	rankingEligible: boolean;
 };
-const syntheticItems = syntheticItemMetadata as Record<string, SyntheticItemMetadata>;
+const syntheticItems = {
+	...syntheticItemMetadata,
+	...syntheticItemMetadataV2,
+} as Record<string, SyntheticItemMetadata>;
 
 // Used to filter action IDs by level
 export interface ActionIdConfig {

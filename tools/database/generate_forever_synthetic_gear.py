@@ -10,13 +10,13 @@ import argparse
 import json
 from pathlib import Path
 
-from forever_synthetic_gear import BUILD, BODY_SLOTS, BY_ID, ITEMS, ROOT, proposals
+from forever_synthetic_gear import BUILD, BODY_SLOTS, BY_ID, ITEMS, ROOT, modeled_name, proposals_v2
 
-ID_START = 910_000_000
+ID_START = 920_000_000
 
 
 def icon_reference(source: dict, slot: int, material: str) -> dict:
-    target_class = 4 if slot in (1,2,3,5,6,7,8,9,10,11,12,14,16,23) else 2
+    target_class = 4 if slot in (1,2,3,5,6,7,8,9,10,11,12,14,16,23,28) else 2
     armor_material = {'Cloth': 1, 'Leather': 2, 'Mail': 3, 'Plate': 4}.get(material)
     if source['class'] == target_class and (
         armor_material is None or source['subclass'] == armor_material
@@ -43,14 +43,9 @@ def record(proposal: dict, index: int) -> dict:
     source = BY_ID[proposal['SourceID']]
     slot = proposal['SlotID']
     item_id = ID_START + index
-    archetype = proposal['Archetype']
     material = proposal['Material']
     speed = proposal['Speed']
-    label = f"Modeled: {archetype} — {proposal['Slot']}"
-    if material in ('Cloth', 'Leather', 'Mail', 'Plate'):
-        label += f' ({material})'
-    if speed is not None:
-        label += f' ({speed:g}s)'
+    label = modeled_name(proposal)
     benchmark_eligible = not (proposal['SlotID'] == 12 and
                               proposal['Policy'].startswith('100%'))
     if not benchmark_eligible:
@@ -59,21 +54,22 @@ def record(proposal: dict, index: int) -> dict:
     # reference and its allocations from the separate documented offhand.
     material = {'Cloth': 1, 'Leather': 2, 'Mail': 3, 'Plate': 4}.get(proposal['Material'])
     body = slot in BODY_SLOTS or slot == 16
-    armor = slot in (1,2,3,5,6,7,8,9,10,11,12,14,16,23)
+    armor = slot in (1,2,3,5,6,7,8,9,10,11,12,14,16,23,28)
     icon_source = icon_reference(source, slot, proposal['Material'])
     result = {
         'id': item_id, 'name': label, 'icon': icon_source['icon'],
         'itemLevel': 65, 'requiredLevel': 60, 'quality': 4,
         'class': 4 if armor else 2,
         'subclass': (material if body and material else
-                     6 if slot == 14 else 0 if armor else source['subclass']),
+                     6 if slot == 14 else source['subclass'] if slot == 28 else
+                     0 if armor else proposal.get('SubclassOverride', source['subclass'])),
         'inventoryType': slot, 'classMask': 0,
         'raceMasks': [0, 0], 'requiredSkill': 0, 'requiredSkillRank': 0,
         'requiredAbility': 0, 'maxCount': 0, 'limitCategory': 0,
         'setId': 0, 'sources': [{'kind': 'synthetic'}], 'effects': [],
         'stats': proposal['Stats'], 'armor': proposal['Armor'] or 0,
         'clientStatRecord': False, 'statSource': 'modeled-client-table-projection',
-        'synthetic': True, 'benchmarkEligible': benchmark_eligible,
+        'synthetic': True, 'modelVersion': 2, 'benchmarkEligible': benchmark_eligible,
         'modelID': proposal['ID'], 'modelReferenceItemID': proposal['SourceID'],
         'modelSecondaryReferenceID': proposal.get('ExtraSourceID', 0),
         'modelIconReferenceItemID': icon_source['id'],
@@ -91,11 +87,11 @@ def record(proposal: dict, index: int) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path,
-                        default=ROOT/'assets/db_inputs/forever_synthetic_gear.json')
+                        default=ROOT/'assets/db_inputs/forever_synthetic_gear_v2.json')
     parser.add_argument('--ui-metadata', type=Path,
-                        default=ROOT/'ui/core/forever_synthetic_item_metadata.json')
+                        default=ROOT/'ui/core/forever_synthetic_item_metadata_v2.json')
     args = parser.parse_args()
-    plans = proposals()
+    plans = proposals_v2()
     items = [record(plan, i+1) for i, plan in enumerate(plans)]
     real_ids = set(BY_ID)
     assert not real_ids.intersection({item['id'] for item in items})
@@ -103,9 +99,10 @@ def main() -> None:
     assert all(not item['effects'] and not item['setId'] and
                not item['requiredSkill'] for item in items)
     payload = {
-        'schemaVersion': 1, 'clientBuild': BUILD,
+        'schemaVersion': 2, 'clientBuild': BUILD,
         'method': 'pinned client-table projection; special-stat cost hypotheses are not verified',
-        'benchmarkPolicy': 'maximum modeled Stamina share 20%; passive trinket 80%-allocation case',
+        'benchmarkPolicy': 'synthetic-only level-65 equipment; equal hypothesized slot-cost capacity; '
+                           'no cash-out of excess gear hit; 20% Stamina; 80% passive trinkets',
         'sourceCatalog': 'assets/db_inputs/forever_gear_catalog.json',
         'items': items,
     }

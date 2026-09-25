@@ -38,6 +38,7 @@ var (
 	tier1            = flag.Bool("tier1", true, "apply the role's full Forever Tier 1 bonuses independently of gear")
 	mp5PerSecond     = flag.Bool("mp5-per-second", false, "provisional MP5-as-mana-per-second interpretation; omitted preserves the saved player setting")
 	equipmentScale   = flag.Float64("equipment-scale", 1, "hypothetical item-stat and weapon-damage multiplier; enchants and effects stay fixed")
+	naturalHit       = flag.Bool("natural-hit", false, "use equipped gear, racial and talent hit only; no benchmark hit exchange")
 	baselineResults  = flag.String("baseline-results", "", "read exact unnormalized BaselinePlayer profiles from a previous results file")
 	optimize         = flag.Bool("optimize", false, "search legal one-point talent reallocations")
 	searchRounds     = flag.Int("rounds", 3, "talent search rounds")
@@ -105,7 +106,12 @@ func run(b build, p *proto.Player, count int, rng int64) resultRow {
 	if err != nil {
 		panic(err)
 	}
-	p, hit, err := capHit(b, p)
+	var hit hitAdjustment
+	if *naturalHit || *modeledOnly || fullyModeledV2(p) {
+		p, hit, err = equippedHitOnly(b, p)
+	} else {
+		p, hit, err = capHit(b, p)
+	}
 	if err != nil {
 		panic(err)
 	}

@@ -20,8 +20,11 @@ def main():
                 names[int(key)] = value.get("ability", f"Spell {key}")
     database = json.loads(Path("assets/database/db.json").read_text())
     item_records = {i["id"]: i for i in database["items"]}
-    synthetic = {item["id"]: item for item in json.loads(
-        Path("assets/db_inputs/forever_synthetic_gear.json").read_text())["items"]}
+    synthetic = {
+        item["id"]: item
+        for path in ("forever_synthetic_gear.json", "forever_synthetic_gear_v2.json")
+        for item in json.loads((Path("assets/db_inputs") / path).read_text())["items"]
+    }
     items = {i: item["name"] for i, item in item_records.items()}
     enchants = {e["effectId"]: e["name"] for e in database["enchants"]}
     display = {key: (cls, spec) for key, cls, spec, _ in BUILDS}
@@ -79,7 +82,7 @@ def main():
         return "`" + json.dumps(value, separators=(",", ":")) + "`"
 
     results = json.loads(args.results.read_text())
-    modeled = results.get("GearScenario") == "modeled-65-v1"
+    modeled = results.get("GearScenario") in {"modeled-65-v1", "modeled-65-v2"}
     groups = {}
     for row in results["Results"]:
         groups.setdefault(row["Key"], []).append(row)
@@ -92,7 +95,7 @@ def main():
                    if modeled else "../artifacts/gear_search/summary.json")
     lines = [
         "# Build reviews", "",
-        ("These are hypothetical modeled-gear results, not obtainable item rankings. "
+        ("These are hypothetical modeled-only gear results, not obtainable item rankings. "
          "Sources linked for modeled items are allocation references only and have different "
          "stats. Gear is compared under the [model assumptions](modelled_gear.md)."
          if modeled else "These summaries describe the published loadouts. They are simulation "
@@ -104,7 +107,10 @@ def main():
            "mechanics revision; these results use the corrected engine. Historical search gains "
            "are not directly comparable to this release."), "",
         "The benchmark uses level 60, 300 seconds, one level-63 target, complete role-specific "
-        "Tier 1 bonuses, and paid shared-hit normalization. "
+        "Tier 1 bonuses, and " +
+        ("hit from selected gear, enchants, talents and racials only. " if
+         results.get("GearScenario") == "modeled-65-v2" else
+         "paid shared-hit normalization. ") +
         "[Scenario and exchange model](../tools/forever_bench/README.md) · "
         "[In-game checks](in_game_checks.md)", "",
     ]

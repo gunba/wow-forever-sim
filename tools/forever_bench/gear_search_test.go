@@ -69,13 +69,15 @@ func TestGearSearchCanMoveReplacedTrinketToSecondSlot(t *testing.T) {
 }
 
 func TestModeledGearPoolKeepsTrinketSensitivitySeparate(t *testing.T) {
+	*modeledOnly = true
+	defer func() { *modeledOnly = false }()
 	b := builds()[0]
 	p := b.player(b.races()[0])
 	pool, excluded := comparisonGearPool(b, p)
 	modeled, passive := 0, 0
 	for _, item := range pool {
-		if !readGearCatalog()[item.ID].Synthetic {
-			continue
+		if readGearCatalog()[item.ID].ModelVersion != 2 {
+			t.Fatalf("noncurrent or real item entered the modeled-only pool: %d", item.ID)
 		}
 		if item.ArmorType != 0 && item.Type != proto.ItemType_ItemTypeBack &&
 			item.ArmorType != classPreferredArmor(p.Class) {
@@ -86,12 +88,12 @@ func TestModeledGearPoolKeepsTrinketSensitivitySeparate(t *testing.T) {
 			passive++
 		}
 	}
-	if modeled == 0 || passive != 8 {
-		t.Fatalf("expected the modeled pool and eight conservative trinkets; got %d/%d", modeled, passive)
+	if modeled == 0 || passive != 11 {
+		t.Fatalf("expected the modeled pool and eleven conservative trinkets; got %d/%d", modeled, passive)
 	}
 	rejected := 0
 	for id, reason := range excluded {
-		if readGearCatalog()[id].Synthetic && !readGearCatalog()[id].BenchmarkEligible {
+		if readGearCatalog()[id].ModelVersion == 2 && !readGearCatalog()[id].BenchmarkEligible {
 			if reason != "full-capacity passive trinket is a sensitivity case, not ranking gear" {
 				t.Fatalf("unclear rejection reason for modeled item %d: %s", id, reason)
 			}
@@ -100,5 +102,41 @@ func TestModeledGearPoolKeepsTrinketSensitivitySeparate(t *testing.T) {
 	}
 	if rejected != 8 {
 		t.Fatalf("expected eight full-capacity trinkets outside rankings, got %d", rejected)
+	}
+}
+
+func TestModeledSeedReplacesEveryEquippedRealItem(t *testing.T) {
+	*modeledOnly = true
+	defer func() { *modeledOnly = false }()
+	representatives := map[string]bool{
+		"arcane": true, "feral": true, "enhancement": true,
+		"retribution": true, "beast_mastery": true, "mutilate": true,
+		"fury": true,
+	}
+	for _, b := range builds() {
+		if !representatives[b.Key] {
+			continue
+		}
+		p := b.player(b.races()[0])
+		pool, _ := comparisonGearPool(b, p)
+		selected := seedModeledGear(b, p, pool)
+		for slot, item := range selected.Equipment.Items {
+			if item.GetId() == 0 {
+				if slot == 15 && selected.Equipment.Items[14].GetId() != 0 {
+					continue
+				}
+				t.Fatalf("%s: slot %d empty", b.Key, slot)
+			}
+			if readGearCatalog()[item.Id].ModelVersion != 2 {
+				t.Fatalf("%s: real gear in slot %d: %d", b.Key, slot, item.Id)
+			}
+		}
+		if !fullyModeledV2(selected) {
+			t.Fatalf("%s: modeled seed was not recognized as an equipment-only profile", b.Key)
+		}
+		if _, report, err := equippedHitOnly(b, selected); err != nil ||
+			report.RawHitDelta != 0 || report.Model != "equipped-only-v2" {
+			t.Fatalf("%s: modeled seed has a failed or paid hit adjustment: %v %+v", b.Key, err, report)
+		}
 	}
 }

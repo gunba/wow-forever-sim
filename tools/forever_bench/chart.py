@@ -25,7 +25,8 @@ def main():
     parser.add_argument("--sensitivity", type=Path)
     args = parser.parse_args()
     data = json.loads(args.results.read_text())
-    modeled = data.get("GearScenario") == "modeled-65-v1"
+    model_v2 = data.get("GearScenario") == "modeled-65-v2"
+    modeled = data.get("GearScenario") in {"modeled-65-v1", "modeled-65-v2"}
     columns = load_columns(args.sensitivity, args.results, args.faction)
     rows = [r for r in data["Results"] if args.faction == "all" or r["Faction"].lower() == args.faction]
     if not rows:
@@ -155,13 +156,17 @@ def main():
     samples = "/".join(f"{n:,}" for n in sorted({r["Iterations"] for r in rows}))
     fig.text(.07, .085,
              f"{samples} iterations per result · rows ordered by peak mean DPS · outlined cell: row peak · — unavailable\n" +
-             ("Hypothetical level-65 equipment · 20% Stamina cost · 80%-allocation passive trinkets"
-               if modeled else "Crafted/dungeon/PvP equipment")
-              + " · paid shared-hit normalization · no world buffs",
+              ("Only hypothetical level-65 equipment · assumed equal slot budgets"
+                if model_v2 else
+               "Hypothetical level-65 equipment · 20% Stamina cost · 80%-allocation passive trinkets"
+                if modeled else "Crafted/dungeon/PvP equipment")
+               + (" · hit from gear/talents/racials only" if model_v2 else
+                  " · paid shared-hit normalization") + " · no world buffs",
              fontsize=9, color="#475569")
     if columns:
         fig.text(.07, .05,
-                 "Equal race weights. Tier 1: on vs off. Gear: item stats + weapon damage; fixed enchants, procs and rotation; paid hit recalculated.\n"
+                 "Equal race weights. Tier 1: on vs off. Gear: item stats + weapon damage; fixed enchants, procs and rotation; "
+                 + ("gear-derived hit scales." if model_v2 else "paid hit recalculated.") + "\n"
                  "Scaling amp. = +50% gain / (5 × +10% gain). 1× linear; >1× accelerating; <1× flattening; — too small/noisy. Not proof of exponential growth.\n"
                  "Caps and resource thresholds affect curvature. Hypothetical upgrades, not future-item predictions.",
                  fontsize=8.5, color="#475569")

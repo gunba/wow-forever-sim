@@ -31,7 +31,7 @@ def compare_inputs(base, candidate):
         raise ValueError("Encounter, buffs or simulation options changed between arms")
     for row in (base, candidate):
         if row["Warnings"] or abs(row["Hit"]["Balance"]) > 1e-6:
-            raise ValueError("APL warnings or an unbalanced paid-hit budget")
+            raise ValueError("APL warnings or an unbalanced hit-budget report")
 
 
 def main():
@@ -50,6 +50,9 @@ def main():
     inputs = {arm: args.search / name for arm, name in
               (("baseline", "baseline.json"), ("candidate", "results.json"))}
     payloads = {arm: json.loads(path.read_text()) for arm, path in inputs.items()}
+    natural_hit = payloads["candidate"].get("GearScenario") == "modeled-65-v2"
+    if natural_hit != (payloads["baseline"].get("GearScenario") == "modeled-seed-v2"):
+        raise ValueError("Confirmation arms use different hit conventions")
     rows = {arm: {(row["Key"], row["Race"]): row for row in data["Results"]}
             for arm, data in payloads.items()}
     if any(set(lookup) != expected_roster() or len(data["Results"]) != len(lookup)
@@ -59,6 +62,10 @@ def main():
     for pair, base in rows["baseline"].items():
         candidate = rows["candidate"][pair]
         compare_inputs(base, candidate)
+        if natural_hit:
+            for row in (base, candidate):
+                if row["Hit"]["Model"] != "equipped-only-v2" or row["Hit"]["RawHitDelta"] != 0:
+                    raise ValueError(f"{pair}: a modeled result used paid or fabricated hit")
         for row in (base, candidate):
             options = row["Request"]["simOptions"]
             if options["iterations"] != args.iterations or int(options["randomSeed"]) == args.seed:
@@ -69,7 +76,8 @@ def main():
     digest = hashlib.sha256()
     for path in [args.binary, *inputs.values()]:
         digest.update(path.read_bytes())
-    manifest = {"inputsSHA256": digest.hexdigest(), "seed": args.seed, "iterations": args.iterations}
+    manifest = {"inputsSHA256": digest.hexdigest(), "seed": args.seed,
+                "iterations": args.iterations, "naturalHit": natural_hit}
     manifest_path = args.output / "manifest.json"
     if manifest_path.exists() and json.loads(manifest_path.read_text()) != manifest:
         raise ValueError("Validation inputs changed; use a new output directory")
@@ -85,6 +93,8 @@ def main():
             command = [str(args.binary), "-build", key, "-race", race,
                        "-baseline-results", str(inputs[arm]), "-iterations", str(args.iterations),
                        "-seed", str(args.seed), "-output", str(prefix)]
+            if natural_hit:
+                command.append("-natural-hit")
             with prefix.with_suffix(".log").open("w") as log:
                 subprocess.run(command, stdout=log, stderr=subprocess.STDOUT, check=True,
                                env={**os.environ, "GOMAXPROCS": "1"})
