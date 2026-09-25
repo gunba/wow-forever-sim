@@ -5,7 +5,7 @@ option go_package = "./proto";
 
 message PaladinTalents {
 	// Holy
-	int32 improved_holy_strike = 1;
+	reserved 1;
 	int32 divine_strength = 2;
 	int32 divine_intellect = 3;
 	int32 healing_light = 4;

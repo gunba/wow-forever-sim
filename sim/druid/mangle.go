@@ -9,7 +9,7 @@ import (
 // Berserk widens Mangle to a cleave.
 const MangleBerserkTargets = 3
 
-// Beta client 1.60.1.69893: Mangle is 20 Rage, a 6 sec cooldown, and 100% weapon damage plus a bonus that grows by
+// Beta client 1.60.1.70009: Primal Bite (formerly Mangle) is 20 Rage, a 6 sec cooldown, and 100% weapon damage plus a bonus that grows by
 // rank (407995, 1238069, 1238070, 1238073 at levels 25, 36, 48, 60). The client does not carry threat, so the 1.5x is
 // still Season of Discovery's.
 func (druid *Druid) registerMangleBearSpell() {
@@ -18,11 +18,12 @@ func (druid *Druid) registerMangleBearSpell() {
 	}
 
 	flatDamageBonus := map[int32]float64{25: 26, 40: 38, 50: 59, 60: 77}[druid.Level]
+	spellID := map[int32]int32{25: 407995, 40: 1238069, 50: 1238070, 60: 1238073}[druid.Level]
 	results := make([]*core.SpellResult, min(MangleBerserkTargets, druid.Env.GetNumTargets()))
 
 	druid.MangleBear = druid.RegisterSpell(Bear, core.SpellConfig{
 		SpellCode:   SpellCode_DruidMangle,
-		ActionID:    core.ActionID{SpellID: 33878},
+		ActionID:    core.ActionID{SpellID: spellID},
 		SpellSchool: core.SpellSchoolPhysical,
 		DefenseType: core.DefenseTypeMelee,
 		ProcMask:    core.ProcMaskMeleeMHSpecial,

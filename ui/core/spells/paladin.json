@@ -32,14 +32,14 @@
 		"file": "sim/paladin/holy_strike.go",
 		"note": "Beta client 1.60.1.69893: Holy Strike rank 7 of 8, baseline for every paladin. Classic used this id for an NPC spell, so its Wowhead entry describes something else. The client multiplies the flat amount by the weapon percentage, as it does for Backstab, so the sim deals that percentage of (normalized weapon damage + the flat roll), plus 0.429 of spell power.",
 		"source": "forever",
-		"tooltip": "19 Mana\nMelee Range\nInstant\n12 sec cooldown\nAn instant strike that causes 40% weapon damage plus an additional 73 to 91 as Holy damage."
+		"tooltip": "19 Mana\nMelee Range\nInstant\n10 sec cooldown\nAn instant strike that causes 46% weapon damage plus an additional 73 to 91 as Holy damage."
 	},
 	"10333": {
 		"ability": "Holy Strike",
 		"file": "sim/paladin/holy_strike.go",
 		"note": "Beta client 1.60.1.69893: Holy Strike rank 8 of 8, baseline for every paladin. Classic used this id for an NPC spell, so its Wowhead entry describes something else. The client multiplies the flat amount by the weapon percentage, as it does for Backstab, so the sim deals that percentage of (normalized weapon damage + the flat roll), plus 0.429 of spell power.",
 		"source": "forever",
-		"tooltip": "20 Mana\nMelee Range\nInstant\n12 sec cooldown\nAn instant strike that causes 40% weapon damage plus an additional 81 to 105 as Holy damage."
+		"tooltip": "20 Mana\nMelee Range\nInstant\n10 sec cooldown\nAn instant strike that causes 50% weapon damage plus an additional 81 to 105 as Holy damage."
 	},
 	"1311606": {
 		"ability": "Holy Shock",
@@ -53,7 +53,7 @@
 		"file": "sim/paladin/holy_strike.go",
 		"note": "Beta client 1.60.1.69893: Holy Strike rank 3 of 8, baseline for every paladin. Classic used this id for an NPC spell, so its Wowhead entry describes something else. The client multiplies the flat amount by the weapon percentage, as it does for Backstab, so the sim deals that percentage of (normalized weapon damage + the flat roll), plus 0.429 of spell power.",
 		"source": "forever",
-		"tooltip": "12 Mana\nMelee Range\nInstant\n12 sec cooldown\nAn instant strike that causes 30% weapon damage plus an additional 17 to 23 as Holy damage."
+		"tooltip": "12 Mana\nMelee Range\nInstant\n10 sec cooldown\nAn instant strike that causes 32% weapon damage plus an additional 17 to 23 as Holy damage."
 	},
 	"20059": {
 		"ability": "Vengeance",
@@ -359,7 +359,7 @@
 		"file": "sim/paladin/holy_strike.go",
 		"note": "Beta client 1.60.1.69893: Holy Strike rank 5 of 8, baseline for every paladin. Classic used this id for an NPC spell, so its Wowhead entry describes something else. The client multiplies the flat amount by the weapon percentage, as it does for Backstab, so the sim deals that percentage of (normalized weapon damage + the flat roll), plus 0.429 of spell power.",
 		"source": "forever",
-		"tooltip": "16 Mana\nMelee Range\nInstant\n12 sec cooldown\nAn instant strike that causes 35% weapon damage plus an additional 32 to 40 as Holy damage."
+		"tooltip": "16 Mana\nMelee Range\nInstant\n10 sec cooldown\nAn instant strike that causes 39% weapon damage plus an additional 32 to 40 as Holy damage."
 	},
 	"25713": {
 		"ability": "Seal of Righteousness",
@@ -484,7 +484,7 @@
 		"file": "sim/paladin/holy_strike.go",
 		"note": "Beta client 1.60.1.69893: Holy Strike rank 6 of 8, baseline for every paladin. Classic used this id for an NPC spell, so its Wowhead entry describes something else. The client multiplies the flat amount by the weapon percentage, as it does for Backstab, so the sim deals that percentage of (normalized weapon damage + the flat roll), plus 0.429 of spell power.",
 		"source": "forever",
-		"tooltip": "17 Mana\nMelee Range\nInstant\n12 sec cooldown\nAn instant strike that causes 35% weapon damage plus an additional 53 to 68 as Holy damage."
+		"tooltip": "17 Mana\nMelee Range\nInstant\n10 sec cooldown\nAn instant strike that causes 43% weapon damage plus an additional 53 to 68 as Holy damage."
 	},
 	"5614": {
 		"ability": "Exorcism",
@@ -512,21 +512,21 @@
 		"file": "sim/paladin/holy_strike.go",
 		"note": "Beta client 1.60.1.69893: Holy Strike rank 2 of 8, baseline for every paladin. Classic used this id for an NPC spell, so its Wowhead entry describes something else. The client multiplies the flat amount by the weapon percentage, as it does for Backstab, so the sim deals that percentage of (normalized weapon damage + the flat roll), plus 0.429 of spell power.",
 		"source": "forever",
-		"tooltip": "9 Mana\nMelee Range\nInstant\n12 sec cooldown\nAn instant strike that causes 25% weapon damage plus an additional 15 to 20 as Holy damage."
+		"tooltip": "9 Mana\nMelee Range\nInstant\n10 sec cooldown\nAn instant strike that causes 29% weapon damage plus an additional 15 to 20 as Holy damage."
 	},
 	"679": {
 		"ability": "Holy Strike",
 		"file": "sim/paladin/holy_strike.go",
 		"note": "Beta client 1.60.1.69893: Holy Strike rank 1 of 8, baseline for every paladin. Classic used this id for an NPC spell, so its Wowhead entry describes something else. The client multiplies the flat amount by the weapon percentage, as it does for Backstab, so the sim deals that percentage of (normalized weapon damage + the flat roll), plus 0.429 of spell power.",
 		"source": "forever",
-		"tooltip": "5 Mana\nMelee Range\nInstant\n12 sec cooldown\nAn instant strike that causes 25% weapon damage plus an additional 11 to 14 as Holy damage."
+		"tooltip": "5 Mana\nMelee Range\nInstant\n10 sec cooldown\nAn instant strike that causes 25% weapon damage plus an additional 11 to 14 as Holy damage."
 	},
 	"680": {
 		"ability": "Holy Strike",
 		"file": "sim/paladin/holy_strike.go",
 		"note": "Beta client 1.60.1.69893: Holy Strike rank 4 of 8, baseline for every paladin. Classic used this id for an NPC spell, so its Wowhead entry describes something else. The client multiplies the flat amount by the weapon percentage, as it does for Backstab, so the sim deals that percentage of (normalized weapon damage + the flat roll), plus 0.429 of spell power.",
 		"source": "forever",
-		"tooltip": "14 Mana\nMelee Range\nInstant\n12 sec cooldown\nAn instant strike that causes 30% weapon damage plus an additional 22 to 29 as Holy damage."
+		"tooltip": "14 Mana\nMelee Range\nInstant\n10 sec cooldown\nAn instant strike that causes 36% weapon damage plus an additional 22 to 29 as Holy damage."
 	},
 	"1311703": {
 		"ability": "Echo of Command",

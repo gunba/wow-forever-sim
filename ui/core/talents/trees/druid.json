@@ -779,15 +779,15 @@
           0
         ],
         "maxPoints": 1,
-        "name": "Mangle",
-        "description": "Mangle the target for {0}% normal damage plus {1}.",
+        "name": "Primal Bite",
+        "description": "Bite the target for {0}% normal damage plus {1}.",
         "ranks": [
           [
             100,
             26
           ]
         ],
-        "iconUrl": "assets/img/talents/druid/mangle.png"
+        "icon": "ability_racial_cannibalize"
       },
       {
         "fieldName": "predatoryStrikes",
@@ -831,8 +831,8 @@
           16961
         ],
         "maxPoints": 2,
-        "name": "Primal Fury",
-        "icon": "ability_racial_cannibalize",
+        "name": "Blood Frenzy",
+        "icon": "ability_ghoulfrenzy",
         "description": "Gives you a {0}% chance to gain an additional $/10;16959s1 Rage any time you get a critical strike while in Bear Form or Dire Bear Form. In addition, your non-periodic critical strikes from Cat Form abilities that generate Combo Points have a {1}% chance to add an additional Combo Point.",
         "ranks": [
           [

@@ -42,6 +42,9 @@ func init() {
 
 func (paladin *Paladin) sealCostMultiplier() int32 {
 	cost := paladin.benediction()
+	if paladin.Env.IsForever() && paladin.Talents.TwistOfLight {
+		cost -= 20
+	}
 	if paladin.Env.IsForever() && paladin.Ranged().ID == LibramOfInvocation {
 		cost -= 5
 	}

@@ -29,11 +29,11 @@ func TestForeverEurekaClassVariants(t *testing.T) {
 		racial, spell int32
 		discount      int32
 	}{
-		{"combat", 1259812, 11294, 20},
-		{"fury", 1259813, core.TernaryInt32(core.IncludeAQ, 25286, 11567), 40},
-		{"arcane", 1259817, 133, 50},
-		{"ds_ruin", 1259821, 686, 50},
-		{"smite", 1259823, 585, 15},
+		{"combat", 1259812, 11294, 10},
+		{"fury", 1259813, core.TernaryInt32(core.IncludeAQ, 25286, 11567), 10},
+		{"arcane", 1259817, 133, 10},
+		{"ds_ruin", 1259821, 686, 10},
+		{"smite", 1259823, 585, 10},
 	} {
 		t.Run(tc.key, func(t *testing.T) {
 			s := gnomeFixture(tc.key)

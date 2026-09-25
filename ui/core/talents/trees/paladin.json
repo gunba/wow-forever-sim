@@ -4,29 +4,6 @@
     "backgroundUrl": "https://wow.zamimg.com/images/wow/talents/backgrounds/classic/382.jpg",
     "talents": [
       {
-        "fieldName": "improvedHolyStrike",
-        "location": {
-          "rowIdx": 0,
-          "colIdx": 0
-        },
-        "spellIds": [
-          0,
-          0
-        ],
-        "maxPoints": 2,
-        "name": "Improved Holy Strike",
-        "description": "Reduces the cooldown of your Holy Strike ability by {0} sec.",
-        "ranks": [
-          [
-            1
-          ],
-          [
-            2
-          ]
-        ],
-        "iconUrl": "assets/img/talents/paladin/improved-holy-strike.png"
-      },
-      {
         "fieldName": "divineStrength",
         "location": {
           "rowIdx": 0,
@@ -455,7 +432,7 @@
         "maxPoints": 5,
         "name": "Holy Power",
         "icon": "spell_holy_power",
-        "description": "Increases the critical strike chance of your Holy Shock spell by {0}%, and all other spells by {1}%.",
+        "description": "Increases the critical strike chance of your Holy Shock and Holy Strike spells by {0}%, and all other spells by {1}%.",
         "ranks": [
           [
             3,
@@ -1319,7 +1296,7 @@
         "description": "Increases the damage of your Holy Strike ability by {0}% and causes it to refresh all Judgement effects on the target.",
         "ranks": [
           [
-            10
+            20
           ]
         ],
         "iconUrl": "assets/img/talents/paladin/sacred-arbiter.png"
@@ -1366,13 +1343,13 @@
         "description": "Increases the damage you deal with two-handed melee weapons by {0}%.",
         "ranks": [
           [
-            3
+            2
+          ],
+          [
+            4
           ],
           [
             6
-          ],
-          [
-            9
           ]
         ]
       },
@@ -1394,22 +1371,22 @@
         "maxPoints": 3,
         "name": "Vengeance",
         "icon": "ability_racial_avatar",
-        "description": "Increases your Physical and Holy damage dealt by {0}% for {1} sec after landing a critical strike. Stacks up to {2} times.",
+        "description": "Increases your Physical and Holy damage dealt by {0}% for {1} sec after landing a non-periodic critical strike. Stacks up to {2} times.",
         "ranks": [
           [
             1,
             30,
-            5
+            3
           ],
           [
             2,
             30,
-            5
+            3
           ],
           [
             3,
             30,
-            5
+            3
           ]
         ]
       },
@@ -1496,7 +1473,7 @@
         ],
         "maxPoints": 1,
         "name": "Twist of Light",
-        "description": "When you replace your Seal of Command, Seal of Righteousness, Seal of Fury, or Seal of Justice with a different Seal, gain an Echo. Your next melee attack applies the replaced Seal's effects, consuming the Echo.",
+        "description": "Reduces the Mana cost of your Seals by 20%. When you replace your Seal of Command, Seal of Righteousness, Seal of Fury, or Seal of Justice with a different Seal, gain an Echo. Your next melee attack applies the replaced Seal's effects, consuming the Echo.",
         "ranks": [
           []
         ],

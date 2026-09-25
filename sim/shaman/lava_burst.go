@@ -13,7 +13,7 @@ const LavaBurstRanks = 3
 const LavaBurstFlameShockBonus = .2
 
 var LavaBurstSpellId = [LavaBurstRanks + 1]int32{0, 408490, 1238299, 1238300}
-var LavaBurstBaseDamage = [LavaBurstRanks + 1][]float64{{0}, {105, 135}, {165, 211}, {192, 248}}
+var LavaBurstBaseDamage = [LavaBurstRanks + 1][]float64{{0}, {150, 192}, {180, 230}, {192, 248}}
 var LavaBurstSpellCoef = [LavaBurstRanks + 1]float64{0, .714, .714, .714}
 var LavaBurstManaCost = [LavaBurstRanks + 1]float64{0, 165, 230, 265}
 var LavaBurstLevel = [LavaBurstRanks + 1]int{0, 40, 50, 60}

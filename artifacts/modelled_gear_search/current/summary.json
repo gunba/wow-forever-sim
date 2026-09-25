@@ -1,13 +1,13 @@
 {
   "scenario": "modeled-65-v2",
   "searchManifest": {
-    "inputsSHA256": "970fe467a86f1d24cc315d6836828c32a68efecb24a97945b1cd36b39dbdc682",
+    "inputsSHA256": "c939f2a1a835c1ba3982996e9905b6ab5ee55fe75ce96a57f669f45e789417b1",
     "settings": {
       "screen": 100,
       "validate": 2000,
       "passes": 5,
       "iterations": 5000,
-      "seed": 20300707,
+      "seed": 20260954,
       "modeled_only": true
     },
     "jobs": [
@@ -750,8 +750,8 @@
     ]
   },
   "confirmationManifest": {
-    "inputsSHA256": "799ff47e9ae64452bc6706ae4686114aafdf7d268fc4fc82f61a55b4cddaebd2",
-    "seed": 20300731,
+    "inputsSHA256": "b0f22743896a15b0e45f2c21b0af24e4e3cb6891eab7268c754000240415e4c8",
+    "seed": 20260955,
     "iterations": 5000,
     "naturalHit": true
   },
@@ -1052,12 +1052,7 @@
     {
       "Key": "enhancement",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 822.1432802549535,
-      "CandidateDPS": 827.4809765154348,
-      "GainDPS": 5.337696260481266,
-      "GainPercent": 0.6492416089353673,
-      "Conservative95BoundDPS": 1.7235774351579083
+      "Decision": "unchanged"
     },
     {
       "Key": "enhancement",
@@ -1067,12 +1062,7 @@
     {
       "Key": "enhancement",
       "Race": "Dwarf",
-      "Decision": "retain",
-      "BaselineDPS": 826.466259306095,
-      "CandidateDPS": 833.1476413334649,
-      "GainDPS": 6.681382027369864,
-      "GainPercent": 0.8084276825746745,
-      "Conservative95BoundDPS": 1.7257991083942124
+      "Decision": "unchanged"
     },
     {
       "Key": "beast_mastery",
@@ -1137,7 +1127,12 @@
     {
       "Key": "marksmanship",
       "Race": "Human",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 829.081715851205,
+      "CandidateDPS": 830.8783058698433,
+      "GainDPS": 1.7965900186383124,
+      "GainPercent": 0.21669637434879166,
+      "Conservative95BoundDPS": 1.0763335083815806
     },
     {
       "Key": "marksmanship",
@@ -1467,12 +1462,7 @@
     {
       "Key": "subtlety",
       "Race": "Windshaper",
-      "Decision": "retain",
-      "BaselineDPS": 652.3058200091862,
-      "CandidateDPS": 653.1643219103512,
-      "GainDPS": 0.8585019011650274,
-      "GainPercent": 0.13161033902057434,
-      "Conservative95BoundDPS": 0.6833071493893805
+      "Decision": "unchanged"
     },
     {
       "Key": "subtlety",
@@ -1497,12 +1487,7 @@
     {
       "Key": "subtlety",
       "Race": "High Order",
-      "Decision": "retain",
-      "BaselineDPS": 652.3058200091862,
-      "CandidateDPS": 653.1643219103512,
-      "GainDPS": 0.8585019011650274,
-      "GainPercent": 0.13161033902057434,
-      "Conservative95BoundDPS": 0.6833071493893805
+      "Decision": "unchanged"
     },
     {
       "Key": "demonology",
@@ -1627,17 +1612,17 @@
     {
       "Key": "fury",
       "Race": "Troll",
-      "Decision": "retain",
-      "BaselineDPS": 915.7926580729063,
-      "CandidateDPS": 917.727399716328,
-      "GainDPS": 1.9347416434217166,
-      "GainPercent": 0.2112641574887677,
-      "Conservative95BoundDPS": 1.2496259773452423
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_sunder",
       "Race": "Troll",
-      "Decision": "unchanged"
+      "Decision": "revert",
+      "BaselineDPS": 889.0837850557646,
+      "CandidateDPS": 890.163038645701,
+      "GainDPS": 1.0792535899364566,
+      "GainPercent": 0.12138941324509302,
+      "Conservative95BoundDPS": 1.2676298146114167
     },
     {
       "Key": "fury",
@@ -1647,7 +1632,12 @@
     {
       "Key": "fury_sunder",
       "Race": "Undead",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 894.0845860855883,
+      "CandidateDPS": 899.9699446643381,
+      "GainDPS": 5.885358578749788,
+      "GainPercent": 0.6582552333797195,
+      "Conservative95BoundDPS": 1.2512179364677043
     },
     {
       "Key": "fury",
@@ -1672,12 +1662,7 @@
     {
       "Key": "fury",
       "Race": "Dwarf",
-      "Decision": "retain",
-      "BaselineDPS": 916.0587237216043,
-      "CandidateDPS": 919.0378413618823,
-      "GainDPS": 2.979117640277991,
-      "GainPercent": 0.32521033457057746,
-      "Conservative95BoundDPS": 1.2688950279398528
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_sunder",
@@ -1697,12 +1682,7 @@
     {
       "Key": "fury",
       "Race": "Gnome",
-      "Decision": "retain",
-      "BaselineDPS": 920.210695920777,
-      "CandidateDPS": 922.435062564175,
-      "GainDPS": 2.2243666433980707,
-      "GainPercent": 0.24172362408506187,
-      "Conservative95BoundDPS": 1.264617244756771
+      "Decision": "unchanged"
     },
     {
       "Key": "fury_sunder",
@@ -1737,12 +1717,7 @@
     {
       "Key": "arms",
       "Race": "Undead",
-      "Decision": "retain",
-      "BaselineDPS": 831.8222057349288,
-      "CandidateDPS": 842.8050076699765,
-      "GainDPS": 10.982801935047632,
-      "GainPercent": 1.3203304575578314,
-      "Conservative95BoundDPS": 1.5287676408041533
+      "Decision": "unchanged"
     },
     {
       "Key": "arms",

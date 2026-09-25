@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "20300751",
+    "fixedRngSeed": "20260956",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Alliance",
@@ -124,11 +124,13 @@
       "attackPowerBuff": "JujuMight",
       "spellPowerBuff": "GreaterArcaneElixir",
       "firePowerBuff": "ElixirOfFirepower",
+      "fillerExplosive": "ExplosiveThoriumGrenade",
       "mainHandImbue": "WindfuryWeapon",
       "defaultPotion": "MajorManaPotion",
       "defaultConjured": "ConjuredDemonicRune",
       "dragonBreathChili": true,
-      "zanzaBuff": "ROIDS"
+      "zanzaBuff": "ROIDS",
+      "sapperExplosive": "SapperGoblinSapper"
     },
     "bonusStats": {
       "stats": [
@@ -184,7 +186,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "420033152-053030031005102251",
+    "talentsString": "550133102-053030031005102251",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",

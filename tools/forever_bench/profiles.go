@@ -89,7 +89,7 @@ func (b build) player(race proto.Race) *proto.Player {
 		Equipment:     core.GetGearSet(filepath.Join("ui", b.Dir, "gear_sets"), b.Gear).GearSet,
 		Rotation:      core.GetAplRotation(filepath.Join("ui", b.Dir, "apls"), b.APL).Rotation,
 		TalentsString: b.presetTalents(), Buffs: core.ForeverIndividualBuffs,
-		Consumes: b.consumes(), DistanceFromTarget: 20,
+		Consumes: b.consumes(race), DistanceFromTarget: 20,
 		Profession1:         proto.Profession_Engineering,
 		ForeverTier1Bonuses: true,
 	}
@@ -158,7 +158,24 @@ func casterConsumes() *proto.Consumes {
 	}
 }
 
-func (b build) consumes() *proto.Consumes {
+// Thorium Grenade was compared against no filler on the same gear and APL
+// with two independent 5,000-iteration seeds for every listed race. Other
+// pairings failed the conservative confirmation bound or were not castable.
+var confirmedGrenadeRaces = map[string][]proto.Race{
+	"arms":          {proto.Race_RaceOrc, proto.Race_RaceTauren, proto.Race_RaceSkyborneWindshaper, proto.Race_RaceDwarf, proto.Race_RaceNightElf, proto.Race_RaceSkyborneHighOrder},
+	"beast_mastery": {proto.Race_RaceOrc, proto.Race_RaceTauren, proto.Race_RaceTroll, proto.Race_RaceSkyborneWindshaper, proto.Race_RaceHuman, proto.Race_RaceDwarf, proto.Race_RaceNightElf, proto.Race_RaceSkyborneHighOrder},
+	"combat":        {proto.Race_RaceOrc, proto.Race_RaceTroll, proto.Race_RaceUndead, proto.Race_RaceSkyborneWindshaper, proto.Race_RaceHuman, proto.Race_RaceDwarf, proto.Race_RaceNightElf, proto.Race_RaceGnome, proto.Race_RaceSkyborneHighOrder},
+	"enhancement":   {proto.Race_RaceOrc, proto.Race_RaceTauren, proto.Race_RaceTroll, proto.Race_RaceSkyborneWindshaper, proto.Race_RaceDwarf},
+	"fire":          {proto.Race_RaceOrc, proto.Race_RaceTroll, proto.Race_RaceUndead, proto.Race_RaceHuman, proto.Race_RaceSkyborneHighOrder},
+	"fury_2h":       {proto.Race_RaceOrc, proto.Race_RaceTauren, proto.Race_RaceUndead, proto.Race_RaceTroll, proto.Race_RaceSkyborneWindshaper, proto.Race_RaceHuman, proto.Race_RaceDwarf, proto.Race_RaceGnome, proto.Race_RaceNightElf, proto.Race_RaceSkyborneHighOrder},
+	"fury_sunder":   {proto.Race_RaceTroll},
+	"marksmanship":  {proto.Race_RaceOrc, proto.Race_RaceTauren, proto.Race_RaceTroll, proto.Race_RaceSkyborneWindshaper, proto.Race_RaceHuman, proto.Race_RaceDwarf, proto.Race_RaceNightElf, proto.Race_RaceSkyborneHighOrder},
+	"mutilate":      {proto.Race_RaceOrc, proto.Race_RaceTroll, proto.Race_RaceUndead, proto.Race_RaceSkyborneWindshaper, proto.Race_RaceHuman, proto.Race_RaceDwarf, proto.Race_RaceNightElf, proto.Race_RaceGnome, proto.Race_RaceSkyborneHighOrder},
+	"pet_melee":     {proto.Race_RaceTauren, proto.Race_RaceSkyborneWindshaper, proto.Race_RaceOrc, proto.Race_RaceHuman, proto.Race_RaceNightElf, proto.Race_RaceDwarf, proto.Race_RaceTroll, proto.Race_RaceSkyborneHighOrder},
+}
+
+func (b build) consumes(race proto.Race) *proto.Consumes {
+	buildKey := b.Key
 	physicalRet := b.Key == "retribution_physical"
 	b.Key = b.modelKey()
 	c := casterConsumes()
@@ -203,7 +220,7 @@ func (b build) consumes() *proto.Consumes {
 		c.Flask = proto.Flask_FlaskOfDistilledWisdom
 		c.SpellPowerBuff, c.ManaRegenElixir = 0, 0
 		c.DefaultConjured = proto.Conjured_ConjuredRogueThistleTea
-		c.DragonBreathChili, c.SapperExplosive = true, proto.SapperExplosive_SapperGoblinSapper
+		c.DragonBreathChili = true
 	case "combat", "mutilate", "subtlety":
 		c.DefaultPotion, c.DefaultConjured, c.ManaRegenElixir = 0, proto.Conjured_ConjuredRogueThistleTea, 0
 		c.MainHandImbue, c.OffHandImbue = proto.WeaponImbue_InstantPoison, proto.WeaponImbue_DeadlyPoison
@@ -217,6 +234,16 @@ func (b build) consumes() *proto.Consumes {
 		c.DragonBreathChili, c.SapperExplosive = true, proto.SapperExplosive_SapperGoblinSapper
 		if b.Key == "arms" {
 			c.OffHandImbue = proto.WeaponImbue_WeaponImbueUnknown
+		}
+	}
+	if b.Key == "enhancement" || b.Key == "retribution" || b.Key == "survival" {
+		// These profiles fight within the client sapper's five-yard radius.
+		c.SapperExplosive = proto.SapperExplosive_SapperGoblinSapper
+	}
+	for _, confirmed := range confirmedGrenadeRaces[buildKey] {
+		if confirmed == race {
+			c.FillerExplosive = proto.Explosive_ExplosiveThoriumGrenade
+			break
 		}
 	}
 	return c

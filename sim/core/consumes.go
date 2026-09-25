@@ -857,7 +857,7 @@ func (character *Character) newBasicExplosiveSpellConfig(sharedTimer *Timer, act
 		}
 	}
 
-	return SpellConfig{
+	config := SpellConfig{
 		ActionID:    actionID,
 		SpellSchool: school,
 		DefenseType: DefenseTypeMagic,
@@ -895,6 +895,14 @@ func (character *Character) newBasicExplosiveSpellConfig(sharedTimer *Timer, act
 			}
 		},
 	}
+	if isSapper {
+		// Spell 13237 uses SpellRadius index 8: a 5-yard self-centered blast.
+		// A stationary ranged player cannot hit the target from 12–20 yards.
+		config.ExtraCastCondition = func(sim *Simulation, target *Unit) bool {
+			return character.DistanceFromTarget <= 5
+		}
+	}
+	return config
 }
 func (character *Character) newSapperSpell(sharedTimer *Timer) *Spell {
 	return character.GetOrRegisterSpell(character.newBasicExplosiveSpellConfig(sharedTimer, SapperActionID, SpellSchoolFire, 450, 750, Cooldown{Timer: character.NewTimer(), Duration: time.Minute * 5}, 375, 625))

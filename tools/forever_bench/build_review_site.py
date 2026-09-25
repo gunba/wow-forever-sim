@@ -68,6 +68,7 @@ def main():
                         if model_v2 else "assets/db_inputs/forever_synthetic_gear.json",
                         args.output / "synthetic_gear.json")
         shutil.copyfile("docs/modelled_gear.md", args.output / "modelled_gear.md")
+        shutil.copyfile("docs/forever-70009.md", args.output / "forever-70009.md")
         shutil.copyfile("docs/modelled_build_reviews.md", args.output / "modelled_build_reviews.md")
         shutil.copyfile("artifacts/modelled_gear/proposed_gear.xlsx", args.output / "proposed_gear.xlsx")
         if model_v2:
@@ -265,11 +266,12 @@ Game icons via Wowhead.</p></footer></main></html>
             "<h1>Forever DPS · modeled gear</h1>"
             "<p style='border-left:4px solid #e3b65f;padding:.6rem 1rem;background:#373022'>"
             "<strong>Hypothetical equipment.</strong> Items named “Modeled:” are not confirmed "
-            "obtainable loot. <strong>Pre-patch mechanics:</strong> these DPS figures do not "
-            "include client 1.60.1.70009's September 24 class/racial changes. "
+            "obtainable loot. <strong>Client 1.60.1.70009:</strong> sourced September 24 "
+            "class/racial changes are included; remaining assumptions are documented. "
             "The model uses at most 20% estimated Stamina cost on projected armor and the "
             "conservative 80%-allocation passive trinket scenario. Special-stat prices and future "
-            "drops remain unknown. <a href='modelled_gear.md'>Method and limits</a> · "
+            "drops remain unknown. <a href='forever-70009.md'>Patch audit</a> · "
+            "<a href='modelled_gear.md'>Method and limits</a> · "
             "<a href='proposed_gear.xlsx' download>Proposed gear spreadsheet</a> · "
             "<a href='real-item-archive/'>Prior real-item results</a>"
             + (" · <a href='https://github.com/gunba/wow-forever-sim/blob/"

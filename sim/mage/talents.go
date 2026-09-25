@@ -507,7 +507,7 @@ func (mage *Mage) applyHotStreak() {
 	mage.HotStreakAura = mage.RegisterAura(core.Aura{
 		Label:     "Hot Streak",
 		ActionID:  core.ActionID{SpellID: 44445},
-		Duration:  time.Second * 15,
+		Duration:  time.Second * 20,
 		MaxStacks: 3,
 		OnStacksChange: func(aura *core.Aura, sim *core.Simulation, oldStacks int32, newStacks int32) {
 			castTimeMultiplier := .25 * float64(newStacks-oldStacks)

@@ -140,15 +140,17 @@ func TestShadowWordDeathBacklash(t *testing.T) {
 			t.Fatal("fixture did not land Death")
 		}
 		backlash := p.GetSpell(core.ActionID{SpellID: 1309598})
-		want := .10 * p.MaxHealth()
+		wantHits := int32(1)
 		if lethal {
-			want = 0
+			wantHits = 0
 		}
-		if got := backlash.SpellMetrics[p.UnitIndex].TotalDamage; math.Abs(got-want) > 1e-8 {
-			t.Fatalf("lethal=%v: backlash %v, want %v", lethal, got, want)
+		if got := backlash.SpellMetrics[p.UnitIndex].Hits; got != wantHits {
+			t.Fatalf("lethal=%v: backlash hits %v, want %v", lethal, got, wantHits)
 		}
-		if backlash.SpellMetrics[p.CurrentTarget.UnitIndex].TotalDamage != 0 {
-			t.Fatal("backlash dealt enemy damage")
+		for _, target := range backlash.SpellMetrics {
+			if target.TotalDamage != 0 {
+				t.Fatal("backlash entered outgoing DPS metrics")
+			}
 		}
 	}
 }

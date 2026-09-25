@@ -1,6 +1,6 @@
 # Modeled level-65 equipment
 
-The benchmark mechanics predate client build **1.60.1.70009** (September 24, 2026). The material-corrected gear selection does not incorporate that build's class and racial balance changes; its DPS ranking must not be presented as a post-patch forecast until those mechanics are reviewed and rerun.
+The benchmark incorporates the source-supported changes in client build **1.60.1.70009** (September 24, 2026). All 184 race/build profiles were rerun after those changes, with a new modeled-gear search and independent confirmation. The [patch audit](forever-70009.md) separates verified effects from unmodeled mechanics and unresolved coefficients; these projected gearsets remain estimates, not observed endgame drops.
 
 The equipment in the current benchmark is a **hypothetical, all-modeled scenario**, not obtainable loot. Every equipped item in each ranked profile has a v2 synthetic ID beginning at `920000001` and a name listing its numerical stats, armor and, where relevant, weapon damage and speed. A two-hand build naturally has an empty off-hand slot. Real enchants remain on the modeled items; no real item or v1 synthetic item is equipped. The generated catalog is [`forever_synthetic_gear_v2.json`](../assets/db_inputs/forever_synthetic_gear_v2.json). The verified source records remain separate in [`forever_gear_catalog.json`](../assets/db_inputs/forever_gear_catalog.json).
 

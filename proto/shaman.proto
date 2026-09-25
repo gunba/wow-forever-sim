@@ -12,14 +12,14 @@ message ShamanTalents {
 	int32 call_of_flame = 5;
 	int32 elemental_devastation = 6;
 	bool elemental_focus = 7;
-	int32 elemental_fury = 8;
+	int32 elemental_alacrity = 8;
 	int32 improved_fire_nova = 9;
 	int32 eye_of_the_storm = 10;
 	bool call_of_thunder = 11;
 	int32 elemental_reach = 12;
 	int32 lightning_overload = 13;
 	bool earthbound = 14;
-	int32 elemental_alacrity = 15;
+	int32 elemental_fury = 15;
 	bool lava_burst = 16;
 
 	// Enhancement

@@ -415,7 +415,9 @@ func (spell *Spell) CalcAndDealOutcome(sim *Simulation, target *Unit, outcomeApp
 func (spell *Spell) dealDamageInternal(sim *Simulation, isPeriodic bool, result *SpellResult) {
 	isPartialResist := result.DidResist()
 
-	if sim.CurrentTime >= 0 {
+	// Self-inflicted damage (Demonic Rune, Sapper) can still trigger damage
+	// taken effects, but is not damage dealt to the encounter for DPS metrics.
+	if sim.CurrentTime >= 0 && result.Target != spell.Unit {
 		spell.SpellMetrics[result.Target.UnitIndex].TotalDamage += result.Damage
 		if isPartialResist {
 			spell.SpellMetrics[result.Target.UnitIndex].TotalResistedDamage += result.Damage

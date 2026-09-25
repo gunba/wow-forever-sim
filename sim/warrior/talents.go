@@ -146,7 +146,7 @@ func (warrior *Warrior) applyBloodthrill() {
 		return
 	}
 
-	procChance := 0.02 * float64(warrior.Talents.Bloodthrill)
+	procChance := 0.04 * float64(warrior.Talents.Bloodthrill)
 
 	warrior.BloodthrillAura = warrior.RegisterAura(core.Aura{
 		Label:    "Bloodthrill",
@@ -157,7 +157,7 @@ func (warrior *Warrior) applyBloodthrill() {
 	core.MakePermanent(warrior.RegisterAura(core.Aura{
 		Label: "Bloodthrill Trigger",
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if !result.Landed() || !spell.ProcMask.Matches(core.ProcMaskMelee) {
+			if !result.Landed() || !spell.ProcMask.Matches(core.ProcMaskMeleeMH|core.ProcMaskMeleeMHSpecial) {
 				return
 			}
 

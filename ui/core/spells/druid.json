@@ -225,18 +225,48 @@
 		"note": "Beta client 1.60.1.69893: damage, the energy conversion and the 35 Energy are Classic's.",
 		"source": "classic"
 	},
-	"33878": {
-		"ability": "Mangle (Bear)",
+	"407995": {
+		"ability": "Primal Bite (Bear) Rank 1",
+		"assumptions": [
+			"The 1.5x threat is provisional; the client tables do not carry threat."
+		],
+		"file": "sim/druid/mangle.go",
+		"note": "Client 1.60.1.70009: formerly Mangle (Bear), learned at level 25. No bleed-amplification debuff.",
+		"source": "assumed",
+		"tooltip": "20 Rage\nMelee Range\nInstant\n6 sec cooldown\nBite the target for 100% normal damage plus 26. Requires Bear Form."
+	},
+	"1238069": {
+		"ability": "Primal Bite (Bear) Rank 2",
+		"assumptions": [
+			"The 1.5x threat is provisional; the client tables do not carry threat."
+		],
+		"file": "sim/druid/mangle.go",
+		"note": "Client 1.60.1.70009: formerly Mangle (Bear), learned at level 36. No bleed-amplification debuff.",
+		"source": "assumed",
+		"tooltip": "20 Rage\nMelee Range\nInstant\n6 sec cooldown\nBite the target for 100% normal damage plus 38. Requires Bear Form."
+	},
+	"1238070": {
+		"ability": "Primal Bite (Bear) Rank 3",
+		"assumptions": [
+			"The 1.5x threat is provisional; the client tables do not carry threat."
+		],
+		"file": "sim/druid/mangle.go",
+		"note": "Client 1.60.1.70009: formerly Mangle (Bear), learned at level 48. No bleed-amplification debuff.",
+		"source": "assumed",
+		"tooltip": "20 Rage\nMelee Range\nInstant\n6 sec cooldown\nBite the target for 100% normal damage plus 59. Requires Bear Form."
+	},
+	"1238073": {
+		"ability": "Primal Bite (Bear)",
 		"assumptions": [
 			"The 1.5x threat is Season of Discovery's; the client tables do not carry threat."
 		],
 		"file": "sim/druid/mangle.go",
-		"note": "Beta client 1.60.1.69893: 20 Rage, 6 sec cooldown, 100% weapon damage plus 26 / 38 / 59 / 77 at ranks learned at 25 / 36 / 48 / 60 (407995, 1238069, 1238070, 1238073). The sim carries the Burning Crusade 33878, which the Classic database does not hold. While Berserk is up the cooldown is lifted and the strike hits 3 targets.",
+		"note": "Client 1.60.1.70009: formerly Mangle (Bear), now Primal Bite without the retired signature debuff. 20 Rage, 6 sec cooldown, 100% weapon damage plus 26 / 38 / 59 / 77 at ranks learned at 25 / 36 / 48 / 60 (407995, 1238069, 1238070, 1238073). The 1.5x threat is provisional.",
 		"source": "assumed",
-		"tooltip": "20 Rage\nMelee Range\nInstant\n6 sec cooldown\nMangle the target for 100% normal damage plus 77. Requires Bear Form."
+		"tooltip": "20 Rage\nMelee Range\nInstant\n6 sec cooldown\nBite the target for 100% normal damage plus 77. Requires Bear Form."
 	},
 	"37117": {
-		"ability": "Primal Fury",
+		"ability": "Blood Frenzy",
 		"file": "sim/druid/talents.go",
 		"foreverId": 16958,
 		"note": "Beta client 1.60.1.69893: both curves are 50 / 100%, and 16959 grants 5 Rage. The sim tags the proc with the Burning Crusade 37117, which the Classic database does not hold, so the gains arrive unnamed in the metrics.",
@@ -279,37 +309,37 @@
 	"5176": {
 		"ability": "Wrath",
 		"file": "sim/druid/wrath.go",
-		"note": "Beta client 1.60.1.69893: about a quarter of Classic's damage from rank 3 up (rank 8 248-277 -> 62-69), a third less mana (rank 8 180 -> 120), and no downranking penalty (ranks 1-3 .123/.231/.443 -> .429/.486/.571). Cast times are Classic's.",
+		"note": "Client 1.60.1.70009 increased Wrath's base damage and per-level growth. Mana, cast times and spell coefficients remain as previously modeled; rank 8 deals 92-102 base damage at its max scaling level.",
 		"source": "forever",
-		"tooltip": "10 Mana\n1.5 sec cast\nCauses 10 to 13 Nature damage to the target."
+		"tooltip": "10 Mana\n1.5 sec cast\nCauses 15 to 18 Nature damage to the target."
 	},
 	"5177": {
 		"ability": "Wrath",
 		"file": "sim/druid/wrath.go",
-		"note": "Beta client 1.60.1.69893: about a quarter of Classic's damage from rank 3 up (rank 8 248-277 -> 62-69), a third less mana (rank 8 180 -> 120), and no downranking penalty (ranks 1-3 .123/.231/.443 -> .429/.486/.571). Cast times are Classic's.",
+		"note": "Client 1.60.1.70009 increased Wrath's base damage and per-level growth. Mana, cast times and spell coefficients remain as previously modeled; rank 8 deals 92-102 base damage at its max scaling level.",
 		"source": "forever",
-		"tooltip": "20 Mana\n1.7 sec cast\nCauses 16 to 19 Nature damage to the target."
+		"tooltip": "20 Mana\n1.7 sec cast\nCauses 25 to 28 Nature damage to the target."
 	},
 	"5178": {
 		"ability": "Wrath",
 		"file": "sim/druid/wrath.go",
-		"note": "Beta client 1.60.1.69893: about a quarter of Classic's damage from rank 3 up (rank 8 248-277 -> 62-69), a third less mana (rank 8 180 -> 120), and no downranking penalty (ranks 1-3 .123/.231/.443 -> .429/.486/.571). Cast times are Classic's.",
+		"note": "Client 1.60.1.70009 increased Wrath's base damage and per-level growth. Mana, cast times and spell coefficients remain as previously modeled; rank 8 deals 92-102 base damage at its max scaling level.",
 		"source": "forever",
-		"tooltip": "40 Mana\n2 sec cast\nCauses 21 to 25 Nature damage to the target."
+		"tooltip": "40 Mana\n2 sec cast\nCauses 32 to 37 Nature damage to the target."
 	},
 	"5179": {
 		"ability": "Wrath",
 		"file": "sim/druid/wrath.go",
-		"note": "Beta client 1.60.1.69893: about a quarter of Classic's damage from rank 3 up (rank 8 248-277 -> 62-69), a third less mana (rank 8 180 -> 120), and no downranking penalty (ranks 1-3 .123/.231/.443 -> .429/.486/.571). Cast times are Classic's.",
+		"note": "Client 1.60.1.70009 increased Wrath's base damage and per-level growth. Mana, cast times and spell coefficients remain as previously modeled; rank 8 deals 92-102 base damage at its max scaling level.",
 		"source": "forever",
-		"tooltip": "50 Mana\n2 sec cast\nCauses 26 to 31 Nature damage to the target."
+		"tooltip": "50 Mana\n2 sec cast\nCauses 41 to 46 Nature damage to the target."
 	},
 	"5180": {
 		"ability": "Wrath",
 		"file": "sim/druid/wrath.go",
-		"note": "Beta client 1.60.1.69893: about a quarter of Classic's damage from rank 3 up (rank 8 248-277 -> 62-69), a third less mana (rank 8 180 -> 120), and no downranking penalty (ranks 1-3 .123/.231/.443 -> .429/.486/.571). Cast times are Classic's.",
+		"note": "Client 1.60.1.70009 increased Wrath's base damage and per-level growth. Mana, cast times and spell coefficients remain as previously modeled; rank 8 deals 92-102 base damage at its max scaling level.",
 		"source": "forever",
-		"tooltip": "70 Mana\n2 sec cast\nCauses 31 to 36 Nature damage to the target."
+		"tooltip": "70 Mana\n2 sec cast\nCauses 47 to 53 Nature damage to the target."
 	},
 	"5217": {
 		"ability": "Tiger's Fury",
@@ -350,9 +380,9 @@
 	"6780": {
 		"ability": "Wrath",
 		"file": "sim/druid/wrath.go",
-		"note": "Beta client 1.60.1.69893: about a quarter of Classic's damage from rank 3 up (rank 8 248-277 -> 62-69), a third less mana (rank 8 180 -> 120), and no downranking penalty (ranks 1-3 .123/.231/.443 -> .429/.486/.571). Cast times are Classic's.",
+		"note": "Client 1.60.1.70009 increased Wrath's base damage and per-level growth. Mana, cast times and spell coefficients remain as previously modeled; rank 8 deals 92-102 base damage at its max scaling level.",
 		"source": "forever",
-		"tooltip": "80 Mana\n2 sec cast\nCauses 37 to 42 Nature damage to the target."
+		"tooltip": "80 Mana\n2 sec cast\nCauses 56 to 63 Nature damage to the target."
 	},
 	"6793": {
 		"ability": "Tiger's Fury",
@@ -406,9 +436,9 @@
 	"8905": {
 		"ability": "Wrath",
 		"file": "sim/druid/wrath.go",
-		"note": "Beta client 1.60.1.69893: about a quarter of Classic's damage from rank 3 up (rank 8 248-277 -> 62-69), a third less mana (rank 8 180 -> 120), and no downranking penalty (ranks 1-3 .123/.231/.443 -> .429/.486/.571). Cast times are Classic's.",
+		"note": "Client 1.60.1.70009 increased Wrath's base damage and per-level growth. Mana, cast times and spell coefficients remain as previously modeled; rank 8 deals 92-102 base damage at its max scaling level.",
 		"source": "forever",
-		"tooltip": "100 Mana\n2 sec cast\nCauses 46 to 51 Nature damage to the target."
+		"tooltip": "100 Mana\n2 sec cast\nCauses 70 to 77 Nature damage to the target."
 	},
 	"8921": {
 		"ability": "Moonfire",
@@ -676,8 +706,8 @@
 	"9912": {
 		"ability": "Wrath",
 		"file": "sim/druid/wrath.go",
-		"note": "Beta client 1.60.1.69893: about a quarter of Classic's damage from rank 3 up (rank 8 248-277 -> 62-69), a third less mana (rank 8 180 -> 120), and no downranking penalty (ranks 1-3 .123/.231/.443 -> .429/.486/.571). Cast times are Classic's.",
+		"note": "Client 1.60.1.70009 increased Wrath's base damage and per-level growth. Mana, cast times and spell coefficients remain as previously modeled; rank 8 deals 92-102 base damage at its max scaling level.",
 		"source": "forever",
-		"tooltip": "120 Mana\n2 sec cast\nCauses 62 to 69 Nature damage to the target."
+		"tooltip": "120 Mana\n2 sec cast\nCauses 92 to 102 Nature damage to the target."
 	}
 }

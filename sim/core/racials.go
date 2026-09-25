@@ -309,7 +309,13 @@ func (character *Character) registerTouchOfTheGrave() {
 		ActionID: ActionID{SpellID: passiveID},
 		Icd:      &icd,
 		OnSpellHitDealt: func(_ *Aura, sim *Simulation, spell *Spell, result *SpellResult) {
-			if !result.Landed() || spell == drain || !icd.IsReady(sim) {
+			// The client now requires an enemy-facing damaging ability. Dot
+			// applications such as Shadow Word: Pain count once; their ticks use
+			// OnPeriodicDamageDealt and cannot trigger this aura. Utility casts
+			// and self-damage (e.g. Demonic Rune) do not qualify.
+			if !result.Landed() || result.Target.Type != EnemyUnit ||
+				(result.Damage <= 0 && !spell.Flags.Matches(SpellFlagPureDot)) ||
+				spell == drain || !icd.IsReady(sim) {
 				return
 			}
 			if sim.Proc(procChance, "Touch of the Grave") {

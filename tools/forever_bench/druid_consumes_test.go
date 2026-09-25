@@ -12,7 +12,7 @@ import (
 	"github.com/wowsims/classic/sim/druid"
 )
 
-func TestDemonicRuneDamagesOnlyItsUser(t *testing.T) {
+func TestDemonicRuneSelfHitIsNotOutgoingDPS(t *testing.T) {
 	var shadow build
 	for _, candidate := range builds() {
 		if candidate.Key == "shadow" {
@@ -43,10 +43,8 @@ func TestDemonicRuneDamagesOnlyItsUser(t *testing.T) {
 		if len(action.Targets) < 2 || action.Targets[0].Damage != 0 || action.Targets[1].Hits == 0 {
 			t.Fatalf("rune must hit the player, not the boss: %+v", action.Targets)
 		}
-		// Client spell 16666 rolls 800 ±25% before Shadow resistance.
-		rolled := (action.Targets[1].Damage + action.Targets[1].ResistedDamage) / float64(action.Targets[1].Hits)
-		if rolled < 600 || rolled > 1000 {
-			t.Fatalf("rune self-hit mean outside the client range: %.2f", rolled)
+		if action.Targets[1].Damage != 0 || action.Targets[1].ResistedDamage != 0 {
+			t.Fatalf("self-hit entered outgoing DPS metrics: %+v", action.Targets[1])
 		}
 		return
 	}
@@ -88,6 +86,42 @@ func TestForeverManaConsumablesPreserveForms(t *testing.T) {
 			if d.AutoAttacks.MainhandSwingAt() != swing {
 				t.Fatal("mana consumable changed the swing timer")
 			}
+		}
+	}
+}
+
+func TestConfirmedExplosivesRespectRangeAndCatForm(t *testing.T) {
+	for _, tc := range []struct {
+		key, race string
+		grenade   bool
+		sapper    bool
+	}{
+		{"feral", "Tauren", false, false},
+		{"beast_mastery", "Orc", true, false},
+		{"marksmanship", "Orc", true, false},
+		{"fire", "Gnome", false, false},
+		{"combat", "Orc", true, true},
+		{"enhancement", "Orc", true, true},
+	} {
+		for _, b := range builds() {
+			if b.Key != tc.key {
+				continue
+			}
+			var race proto.Race
+			for _, candidate := range b.races() {
+				if raceName(candidate) == tc.race {
+					race = candidate
+				}
+			}
+			if race == proto.Race_RaceUnknown {
+				t.Fatalf("%s/%s unavailable", tc.key, tc.race)
+			}
+			c := b.consumes(race)
+			if (c.FillerExplosive == proto.Explosive_ExplosiveThoriumGrenade) != tc.grenade ||
+				(c.SapperExplosive == proto.SapperExplosive_SapperGoblinSapper) != tc.sapper {
+				t.Fatalf("%s/%s: unexpected explosives: %+v", tc.key, tc.race, c)
+			}
+			break
 		}
 	}
 }

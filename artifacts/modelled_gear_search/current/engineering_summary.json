@@ -1,0 +1,962 @@
+{
+  "Source": "https://www.wowhead.com/forever/spell=19769/thorium-grenade",
+  "ItemID": 15993,
+  "IterationsPerArmPerSeed": 5000,
+  "Seeds": [
+    20260933,
+    20260943
+  ],
+  "ConfidenceRule": "Keep only if mean paired gain exceeds the largest per-seed conservative 95% bound (1.96 times sum of marginal standard errors).",
+  "Scope": "Fixed modeled gear, talents, APL, buffs, consumables other than grenade, and 300-second encounter; not an exhaustive gear or grenade-timing optimization.",
+  "Selected": 69,
+  "Decisions": [
+    {
+      "Build": "enhancement",
+      "Race": "Orc",
+      "GainDPS": 3.9561,
+      "Conservative95BoundDPS": 2.3195,
+      "Decision": "include"
+    },
+    {
+      "Build": "enhancement",
+      "Race": "Tauren",
+      "GainDPS": 4.4839,
+      "Conservative95BoundDPS": 2.2657,
+      "Decision": "include"
+    },
+    {
+      "Build": "enhancement",
+      "Race": "Troll",
+      "GainDPS": 2.7388,
+      "Conservative95BoundDPS": 2.3385,
+      "Decision": "include"
+    },
+    {
+      "Build": "enhancement",
+      "Race": "Windshaper",
+      "GainDPS": 5.5805,
+      "Conservative95BoundDPS": 2.2899,
+      "Decision": "include"
+    },
+    {
+      "Build": "enhancement",
+      "Race": "Dwarf",
+      "GainDPS": 4.4637,
+      "Conservative95BoundDPS": 2.32,
+      "Decision": "include"
+    },
+    {
+      "Build": "beast_mastery",
+      "Race": "Orc",
+      "GainDPS": 4.6847,
+      "Conservative95BoundDPS": 1.1254,
+      "Decision": "include"
+    },
+    {
+      "Build": "beast_mastery",
+      "Race": "Tauren",
+      "GainDPS": 4.0965,
+      "Conservative95BoundDPS": 1.2092,
+      "Decision": "include"
+    },
+    {
+      "Build": "beast_mastery",
+      "Race": "Troll",
+      "GainDPS": 3.667,
+      "Conservative95BoundDPS": 1.2197,
+      "Decision": "include"
+    },
+    {
+      "Build": "beast_mastery",
+      "Race": "Windshaper",
+      "GainDPS": 3.4215,
+      "Conservative95BoundDPS": 1.2194,
+      "Decision": "include"
+    },
+    {
+      "Build": "beast_mastery",
+      "Race": "Human",
+      "GainDPS": 4.8961,
+      "Conservative95BoundDPS": 1.1316,
+      "Decision": "include"
+    },
+    {
+      "Build": "beast_mastery",
+      "Race": "Dwarf",
+      "GainDPS": 3.9235,
+      "Conservative95BoundDPS": 1.2127,
+      "Decision": "include"
+    },
+    {
+      "Build": "beast_mastery",
+      "Race": "Night Elf",
+      "GainDPS": 4.0006,
+      "Conservative95BoundDPS": 1.2314,
+      "Decision": "include"
+    },
+    {
+      "Build": "beast_mastery",
+      "Race": "High Order",
+      "GainDPS": 3.4215,
+      "Conservative95BoundDPS": 1.2194,
+      "Decision": "include"
+    },
+    {
+      "Build": "marksmanship",
+      "Race": "Orc",
+      "GainDPS": 2.8537,
+      "Conservative95BoundDPS": 1.5266,
+      "Decision": "include"
+    },
+    {
+      "Build": "marksmanship",
+      "Race": "Tauren",
+      "GainDPS": 3.3507,
+      "Conservative95BoundDPS": 1.4952,
+      "Decision": "include"
+    },
+    {
+      "Build": "marksmanship",
+      "Race": "Troll",
+      "GainDPS": 2.3501,
+      "Conservative95BoundDPS": 1.6118,
+      "Decision": "include",
+      "InitialDecision": "include",
+      "PostGearGainDPS": 1.8603106501061575,
+      "PostGearConservative95BoundDPS": 1.6189806921934082
+    },
+    {
+      "Build": "marksmanship",
+      "Race": "Windshaper",
+      "GainDPS": 3.1722,
+      "Conservative95BoundDPS": 1.5955,
+      "Decision": "include"
+    },
+    {
+      "Build": "marksmanship",
+      "Race": "Human",
+      "GainDPS": 3.244,
+      "Conservative95BoundDPS": 1.5168,
+      "Decision": "include",
+      "PostGearGainDPS": 3.0376718551221416,
+      "PostGearConservative95BoundDPS": 1.5232514961641295
+    },
+    {
+      "Build": "marksmanship",
+      "Race": "Dwarf",
+      "GainDPS": 3.2714,
+      "Conservative95BoundDPS": 1.4998,
+      "Decision": "include",
+      "InitialDecision": "include",
+      "PostGearGainDPS": 3.568692887668135,
+      "PostGearConservative95BoundDPS": 1.483331746682248
+    },
+    {
+      "Build": "marksmanship",
+      "Race": "Night Elf",
+      "GainDPS": 3.6701,
+      "Conservative95BoundDPS": 1.5211,
+      "Decision": "include"
+    },
+    {
+      "Build": "marksmanship",
+      "Race": "High Order",
+      "GainDPS": 3.1722,
+      "Conservative95BoundDPS": 1.5955,
+      "Decision": "include"
+    },
+    {
+      "Build": "fire",
+      "Race": "Orc",
+      "GainDPS": 3.0835,
+      "Conservative95BoundDPS": 1.962,
+      "Decision": "include"
+    },
+    {
+      "Build": "fire",
+      "Race": "Troll",
+      "GainDPS": 1.8728,
+      "Conservative95BoundDPS": 1.8352,
+      "Decision": "include"
+    },
+    {
+      "Build": "fire",
+      "Race": "Undead",
+      "GainDPS": 2.2121,
+      "Conservative95BoundDPS": 1.9332,
+      "Decision": "include"
+    },
+    {
+      "Build": "fire",
+      "Race": "Human",
+      "GainDPS": 1.9681,
+      "Conservative95BoundDPS": 1.9527,
+      "Decision": "include"
+    },
+    {
+      "Build": "fire",
+      "Race": "Gnome",
+      "GainDPS": 0.7743,
+      "Conservative95BoundDPS": 1.8733,
+      "Decision": "omit"
+    },
+    {
+      "Build": "fire",
+      "Race": "High Order",
+      "GainDPS": 2.326,
+      "Conservative95BoundDPS": 1.7572,
+      "Decision": "include"
+    },
+    {
+      "Build": "combat",
+      "Race": "Orc",
+      "GainDPS": 3.6231,
+      "Conservative95BoundDPS": 1.05,
+      "Decision": "include"
+    },
+    {
+      "Build": "combat",
+      "Race": "Troll",
+      "GainDPS": 4.4124,
+      "Conservative95BoundDPS": 1.0605,
+      "Decision": "include"
+    },
+    {
+      "Build": "combat",
+      "Race": "Undead",
+      "GainDPS": 4.8024,
+      "Conservative95BoundDPS": 1.0737,
+      "Decision": "include"
+    },
+    {
+      "Build": "combat",
+      "Race": "Windshaper",
+      "GainDPS": 4.1549,
+      "Conservative95BoundDPS": 1.0289,
+      "Decision": "include"
+    },
+    {
+      "Build": "combat",
+      "Race": "Human",
+      "GainDPS": 4.4062,
+      "Conservative95BoundDPS": 1.0363,
+      "Decision": "include"
+    },
+    {
+      "Build": "combat",
+      "Race": "Dwarf",
+      "GainDPS": 3.7167,
+      "Conservative95BoundDPS": 1.0403,
+      "Decision": "include"
+    },
+    {
+      "Build": "combat",
+      "Race": "Night Elf",
+      "GainDPS": 3.7437,
+      "Conservative95BoundDPS": 1.047,
+      "Decision": "include"
+    },
+    {
+      "Build": "combat",
+      "Race": "Gnome",
+      "GainDPS": 3.9377,
+      "Conservative95BoundDPS": 1.0694,
+      "Decision": "include"
+    },
+    {
+      "Build": "combat",
+      "Race": "High Order",
+      "GainDPS": 4.1549,
+      "Conservative95BoundDPS": 1.0289,
+      "Decision": "include"
+    },
+    {
+      "Build": "mutilate",
+      "Race": "Orc",
+      "GainDPS": 3.4896,
+      "Conservative95BoundDPS": 1.1222,
+      "Decision": "include"
+    },
+    {
+      "Build": "mutilate",
+      "Race": "Troll",
+      "GainDPS": 4.2767,
+      "Conservative95BoundDPS": 1.1198,
+      "Decision": "include"
+    },
+    {
+      "Build": "mutilate",
+      "Race": "Undead",
+      "GainDPS": 5.0147,
+      "Conservative95BoundDPS": 1.1632,
+      "Decision": "include"
+    },
+    {
+      "Build": "mutilate",
+      "Race": "Windshaper",
+      "GainDPS": 4.389,
+      "Conservative95BoundDPS": 1.1087,
+      "Decision": "include"
+    },
+    {
+      "Build": "mutilate",
+      "Race": "Human",
+      "GainDPS": 4.7352,
+      "Conservative95BoundDPS": 1.1196,
+      "Decision": "include"
+    },
+    {
+      "Build": "mutilate",
+      "Race": "Dwarf",
+      "GainDPS": 3.472,
+      "Conservative95BoundDPS": 1.1176,
+      "Decision": "include"
+    },
+    {
+      "Build": "mutilate",
+      "Race": "Night Elf",
+      "GainDPS": 4.2676,
+      "Conservative95BoundDPS": 1.0953,
+      "Decision": "include"
+    },
+    {
+      "Build": "mutilate",
+      "Race": "Gnome",
+      "GainDPS": 4.4773,
+      "Conservative95BoundDPS": 1.113,
+      "Decision": "include"
+    },
+    {
+      "Build": "mutilate",
+      "Race": "High Order",
+      "GainDPS": 4.389,
+      "Conservative95BoundDPS": 1.1087,
+      "Decision": "include"
+    },
+    {
+      "Build": "fury_sunder",
+      "Race": "Orc",
+      "GainDPS": 1.4423,
+      "Conservative95BoundDPS": 1.8379,
+      "Decision": "omit"
+    },
+    {
+      "Build": "fury_sunder",
+      "Race": "Tauren",
+      "GainDPS": 1.7643,
+      "Conservative95BoundDPS": 1.764,
+      "Decision": "omit",
+      "InitialDecision": "include",
+      "PostGearGainDPS": 1.12745218067505,
+      "PostGearConservative95BoundDPS": 1.823797000107518
+    },
+    {
+      "Build": "fury_sunder",
+      "Race": "Troll",
+      "GainDPS": 2.265,
+      "Conservative95BoundDPS": 1.7985,
+      "Decision": "include"
+    },
+    {
+      "Build": "fury_sunder",
+      "Race": "Undead",
+      "GainDPS": 1.0263,
+      "Conservative95BoundDPS": 1.7652,
+      "Decision": "omit"
+    },
+    {
+      "Build": "fury_sunder",
+      "Race": "Windshaper",
+      "GainDPS": 1.3441,
+      "Conservative95BoundDPS": 1.7651,
+      "Decision": "omit"
+    },
+    {
+      "Build": "fury_sunder",
+      "Race": "Human",
+      "GainDPS": 1.3169,
+      "Conservative95BoundDPS": 1.7899,
+      "Decision": "omit"
+    },
+    {
+      "Build": "fury_sunder",
+      "Race": "Dwarf",
+      "GainDPS": 1.666,
+      "Conservative95BoundDPS": 1.7696,
+      "Decision": "omit"
+    },
+    {
+      "Build": "fury_sunder",
+      "Race": "Night Elf",
+      "GainDPS": 1.2746,
+      "Conservative95BoundDPS": 1.801,
+      "Decision": "omit"
+    },
+    {
+      "Build": "fury_sunder",
+      "Race": "Gnome",
+      "GainDPS": 1.6845,
+      "Conservative95BoundDPS": 1.8121,
+      "Decision": "omit"
+    },
+    {
+      "Build": "fury_sunder",
+      "Race": "High Order",
+      "GainDPS": 1.3441,
+      "Conservative95BoundDPS": 1.7651,
+      "Decision": "omit"
+    },
+    {
+      "Build": "arms",
+      "Race": "Orc",
+      "GainDPS": 3.6707,
+      "Conservative95BoundDPS": 2.2069,
+      "Decision": "include"
+    },
+    {
+      "Build": "arms",
+      "Race": "Tauren",
+      "GainDPS": 3.7869,
+      "Conservative95BoundDPS": 2.1741,
+      "Decision": "include"
+    },
+    {
+      "Build": "arms",
+      "Race": "Troll",
+      "GainDPS": 2.0582,
+      "Conservative95BoundDPS": 2.1698,
+      "Decision": "omit"
+    },
+    {
+      "Build": "arms",
+      "Race": "Undead",
+      "GainDPS": 1.6712,
+      "Conservative95BoundDPS": 2.2035,
+      "Decision": "omit"
+    },
+    {
+      "Build": "arms",
+      "Race": "Windshaper",
+      "GainDPS": 3.7261,
+      "Conservative95BoundDPS": 2.1829,
+      "Decision": "include"
+    },
+    {
+      "Build": "arms",
+      "Race": "Human",
+      "GainDPS": 1.8499,
+      "Conservative95BoundDPS": 2.2042,
+      "Decision": "omit"
+    },
+    {
+      "Build": "arms",
+      "Race": "Dwarf",
+      "GainDPS": 3.7899,
+      "Conservative95BoundDPS": 2.1802,
+      "Decision": "include"
+    },
+    {
+      "Build": "arms",
+      "Race": "Night Elf",
+      "GainDPS": 2.3145,
+      "Conservative95BoundDPS": 2.2006,
+      "Decision": "include"
+    },
+    {
+      "Build": "arms",
+      "Race": "Gnome",
+      "GainDPS": 1.7051,
+      "Conservative95BoundDPS": 2.1876,
+      "Decision": "omit"
+    },
+    {
+      "Build": "arms",
+      "Race": "High Order",
+      "GainDPS": 3.7261,
+      "Conservative95BoundDPS": 2.1829,
+      "Decision": "include"
+    },
+    {
+      "Build": "pet_melee",
+      "Race": "Tauren",
+      "GainDPS": 2.798,
+      "Conservative95BoundDPS": 1.6766,
+      "Decision": "include"
+    },
+    {
+      "Build": "pet_melee",
+      "Race": "Windshaper",
+      "GainDPS": 2.7915,
+      "Conservative95BoundDPS": 1.6978,
+      "Decision": "include"
+    },
+    {
+      "Build": "pet_melee",
+      "Race": "Orc",
+      "GainDPS": 2.0047,
+      "Conservative95BoundDPS": 1.7155,
+      "Decision": "include"
+    },
+    {
+      "Build": "pet_melee",
+      "Race": "Human",
+      "GainDPS": 2.0874,
+      "Conservative95BoundDPS": 1.7179,
+      "Decision": "include"
+    },
+    {
+      "Build": "pet_melee",
+      "Race": "Night Elf",
+      "GainDPS": 2.2692,
+      "Conservative95BoundDPS": 1.6994,
+      "Decision": "include"
+    },
+    {
+      "Build": "pet_melee",
+      "Race": "Dwarf",
+      "GainDPS": 2.9373,
+      "Conservative95BoundDPS": 1.6831,
+      "Decision": "include"
+    },
+    {
+      "Build": "pet_melee",
+      "Race": "Troll",
+      "GainDPS": 2.3951,
+      "Conservative95BoundDPS": 1.6761,
+      "Decision": "include"
+    },
+    {
+      "Build": "pet_melee",
+      "Race": "High Order",
+      "GainDPS": 2.7915,
+      "Conservative95BoundDPS": 1.6978,
+      "Decision": "include"
+    },
+    {
+      "Build": "fury_2h",
+      "Race": "Orc",
+      "GainDPS": 3.5976,
+      "Conservative95BoundDPS": 2.0019,
+      "Decision": "include"
+    },
+    {
+      "Build": "fury_2h",
+      "Race": "Tauren",
+      "GainDPS": 2.2752,
+      "Conservative95BoundDPS": 1.979,
+      "Decision": "include"
+    },
+    {
+      "Build": "fury_2h",
+      "Race": "Undead",
+      "GainDPS": 2.9277,
+      "Conservative95BoundDPS": 2.0083,
+      "Decision": "include"
+    },
+    {
+      "Build": "fury_2h",
+      "Race": "Troll",
+      "GainDPS": 3.0109,
+      "Conservative95BoundDPS": 1.9782,
+      "Decision": "include"
+    },
+    {
+      "Build": "fury_2h",
+      "Race": "Windshaper",
+      "GainDPS": 3.2581,
+      "Conservative95BoundDPS": 1.9779,
+      "Decision": "include"
+    },
+    {
+      "Build": "fury_2h",
+      "Race": "Human",
+      "GainDPS": 3.5682,
+      "Conservative95BoundDPS": 1.9774,
+      "Decision": "include"
+    },
+    {
+      "Build": "fury_2h",
+      "Race": "Dwarf",
+      "GainDPS": 3.5852,
+      "Conservative95BoundDPS": 1.9787,
+      "Decision": "include"
+    },
+    {
+      "Build": "fury_2h",
+      "Race": "Gnome",
+      "GainDPS": 4.15,
+      "Conservative95BoundDPS": 1.9736,
+      "Decision": "include"
+    },
+    {
+      "Build": "fury_2h",
+      "Race": "Night Elf",
+      "GainDPS": 3.8085,
+      "Conservative95BoundDPS": 1.9615,
+      "Decision": "include"
+    },
+    {
+      "Build": "fury_2h",
+      "Race": "High Order",
+      "GainDPS": 3.2581,
+      "Conservative95BoundDPS": 1.9779,
+      "Decision": "include"
+    }
+  ],
+  "Screen": [
+    {
+      "build": "balance",
+      "race": "Tauren",
+      "delta": 0.0,
+      "bound95": 2.238467566573942,
+      "casts": 0,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "feral",
+      "race": "Tauren",
+      "delta": 0.0,
+      "bound95": 1.6799378200837665,
+      "casts": 0,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "elemental",
+      "race": "Orc",
+      "delta": 0.7363828282738041,
+      "bound95": 1.68477781278636,
+      "casts": 5146,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "stormcaller",
+      "race": "Orc",
+      "delta": 0.409232588287864,
+      "bound95": 1.5237258403890348,
+      "casts": 5187,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "enhancement",
+      "race": "Orc",
+      "delta": 4.264239947765532,
+      "bound95": 4.255783738419744,
+      "casts": 4171,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "beast_mastery",
+      "race": "Orc",
+      "delta": 5.016302554472077,
+      "bound95": 2.0288606399642917,
+      "casts": 5027,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "marksmanship",
+      "race": "Orc",
+      "delta": 2.735539805977055,
+      "bound95": 2.7356210151755165,
+      "casts": 5080,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "survival",
+      "race": "Orc",
+      "delta": 0.13531569806355037,
+      "bound95": 3.1733896091924545,
+      "casts": 4077,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "arcane",
+      "race": "Orc",
+      "delta": -6.703790230284312,
+      "bound95": 3.691452232802724,
+      "casts": 5623,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "fire",
+      "race": "Orc",
+      "delta": 3.1722047059702163,
+      "bound95": 3.6013369657661394,
+      "casts": 5498,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "frost",
+      "race": "Orc",
+      "delta": -3.9161044249640327,
+      "bound95": 2.9320492023642832,
+      "casts": 5645,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "retribution",
+      "race": "Undead",
+      "delta": 0.7505071676832813,
+      "bound95": 4.467534479148892,
+      "casts": 4410,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "shadow",
+      "race": "Troll",
+      "delta": -0.2330328096898029,
+      "bound95": 1.835221564865106,
+      "casts": 5356,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "smite",
+      "race": "Troll",
+      "delta": -0.14107772671138719,
+      "bound95": 1.060963968900972,
+      "casts": 5608,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "combat",
+      "race": "Orc",
+      "delta": 2.933283076397288,
+      "bound95": 1.9520015108076052,
+      "casts": 4370,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "mutilate",
+      "race": "Orc",
+      "delta": 4.447103620152461,
+      "bound95": 2.0313181232722823,
+      "casts": 4410,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "subtlety",
+      "race": "Orc",
+      "delta": 2.6152364764045615,
+      "bound95": 1.6924225995794062,
+      "casts": 4362,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "demonology",
+      "race": "Orc",
+      "delta": -3.953641071757943,
+      "bound95": 2.9431131397790495,
+      "casts": 5599,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "affliction",
+      "race": "Orc",
+      "delta": 0.39489788507273715,
+      "bound95": 3.347133165030941,
+      "casts": 5582,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "ds_ruin",
+      "race": "Orc",
+      "delta": -2.176562745561,
+      "bound95": 3.652095531867057,
+      "casts": 5505,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "destruction",
+      "race": "Orc",
+      "delta": -0.3798565728865242,
+      "bound95": 2.4159295507812244,
+      "casts": 5695,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "fury",
+      "race": "Orc",
+      "delta": 0.38856550070158846,
+      "bound95": 3.349208340441413,
+      "casts": 4558,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "fury_sunder",
+      "race": "Orc",
+      "delta": 3.052377468922373,
+      "bound95": 3.413815605190473,
+      "casts": 4611,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "arms",
+      "race": "Orc",
+      "delta": 4.715514421381272,
+      "bound95": 4.119774497093481,
+      "casts": 5075,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "pet_melee",
+      "race": "Tauren",
+      "delta": 3.3049070826343723,
+      "bound95": 3.0683871039999744,
+      "casts": 4088,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "arcane_frost",
+      "race": "Orc",
+      "delta": -4.996979191133619,
+      "bound95": 2.7424812138684107,
+      "casts": 5604,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "fury_2h",
+      "race": "Orc",
+      "delta": 2.6452601913127864,
+      "bound95": 3.6550781082528814,
+      "casts": 4802,
+      "warnings": [
+        null,
+        null
+      ]
+    },
+    {
+      "build": "retribution_physical",
+      "race": "Undead",
+      "delta": 2.4885533146386933,
+      "bound95": 4.384807806220573,
+      "casts": 4636,
+      "warnings": [
+        null,
+        null
+      ]
+    }
+  ],
+  "PostGearRecheck": [
+    {
+      "Build": "marksmanship",
+      "Race": "Troll",
+      "GainDPS": 1.8603106501061575,
+      "Conservative95BoundDPS": 1.6189806921934082,
+      "Decision": "include",
+      "Seeds": [
+        20260941,
+        20260951
+      ]
+    },
+    {
+      "Build": "marksmanship",
+      "Race": "Dwarf",
+      "GainDPS": 3.568692887668135,
+      "Conservative95BoundDPS": 1.483331746682248,
+      "Decision": "include",
+      "Seeds": [
+        20260941,
+        20260951
+      ]
+    },
+    {
+      "Build": "fury_sunder",
+      "Race": "Tauren",
+      "GainDPS": 1.12745218067505,
+      "Conservative95BoundDPS": 1.823797000107518,
+      "Decision": "omit",
+      "Seeds": [
+        20260941,
+        20260951
+      ]
+    },
+    {
+      "Build": "marksmanship",
+      "Race": "Human",
+      "GainDPS": 3.0376718551221416,
+      "Conservative95BoundDPS": 1.5232514961641295,
+      "Decision": "include",
+      "Seeds": [
+        20260961,
+        20260971
+      ]
+    }
+  ]
+}

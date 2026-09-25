@@ -6,25 +6,24 @@ import (
 	"github.com/wowsims/classic/sim/core"
 )
 
-// Holy Strike is new in Forever and baseline from level 6. Three talents hang off it - Improved Holy
-// Strike shortens its cooldown, Iron Creed sharpens its threat and Sacred Arbiter its damage.
+// Holy Strike is new in Forever and baseline from level 6. Iron Creed sharpens its
+// threat and Sacred Arbiter its damage; the former cooldown talent is now baseline.
 //
-// Beta client 1.60.1.69893 gives it eight ranks on ids Classic used for NPC spells. Each is a
+// Beta client 1.60.1.70009 gives it eight ranks on ids Classic used for NPC spells. Each is a
 // normalized weapon strike plus a flat amount (effect 121) and a weapon damage percentage (effect 31),
-// with a 12 sec cooldown and the 0.429 coefficient the sim had guessed. The client multiplies the
-// flat amount by the percentage the same way it does Backstab's, so rank 8 is 40% of (weapon + 81 to
-// 105): about 32 to 42 on top of the weapon share, close to the 36 to 46 the BlizzCon tooltip showed.
+// with a 10 sec cooldown and the 0.429 coefficient. The client multiplies the flat
+// amount by the percentage the same way it does Backstab's, so rank 8 is 50% of
+// (weapon + 81 to 105).
 // Damage is each rank's at its max level.
 // TODO: beta will confirm - Holy damage on the melee hit table, so it rolls partial resists the
 // way every other Holy ability here does. Whether a melee-table Holy strike actually partial
 // resists is unknown; if it does not, it wants SpellFlagIgnoreResists.
-const holyStrikeCooldown = time.Second * 12
+const holyStrikeCooldown = time.Second * 10
 
 func (paladin *Paladin) registerHolyStrike() {
-	// Rank 2 takes off 2 sec, so the linear reading was right. Confirmed on the beta.
 	cd := core.Cooldown{
 		Timer:    paladin.NewTimer(),
-		Duration: holyStrikeCooldown - time.Second*time.Duration(paladin.Talents.ImprovedHolyStrike),
+		Duration: holyStrikeCooldown,
 	}
 
 	// Sacred Arbiter also refreshes the paladin's Judgement effects. Judgement of the Crusader
@@ -32,7 +31,7 @@ func (paladin *Paladin) registerHolyStrike() {
 	// melee attack the paladin lands, so that half of the talent needs nothing here.
 	damageMultiplier := paladin.getWeaponSpecializationModifier()
 	if paladin.Talents.SacredArbiter {
-		damageMultiplier *= 1.1
+		damageMultiplier *= 1.2
 	}
 
 	// 5% per rank, confirmed on the beta at ranks 2, 3 and 4: 10%, 15% and 20%.
@@ -48,13 +47,13 @@ func (paladin *Paladin) registerHolyStrike() {
 		maxDamage float64
 	}{
 		{level: 6, manaCost: 5, weapon: 0.25, minDamage: 11, maxDamage: 14},
-		{level: 12, manaCost: 9, weapon: 0.25, minDamage: 15, maxDamage: 20},
-		{level: 20, manaCost: 12, weapon: 0.30, minDamage: 17, maxDamage: 23},
-		{level: 28, manaCost: 14, weapon: 0.30, minDamage: 22, maxDamage: 29},
-		{level: 36, manaCost: 16, weapon: 0.35, minDamage: 32, maxDamage: 40},
-		{level: 44, manaCost: 17, weapon: 0.35, minDamage: 53, maxDamage: 68},
-		{level: 52, manaCost: 19, weapon: 0.40, minDamage: 73, maxDamage: 91},
-		{level: 60, manaCost: 20, weapon: 0.40, minDamage: 81, maxDamage: 105},
+		{level: 12, manaCost: 9, weapon: 0.29, minDamage: 15, maxDamage: 20},
+		{level: 20, manaCost: 12, weapon: 0.32, minDamage: 17, maxDamage: 23},
+		{level: 28, manaCost: 14, weapon: 0.36, minDamage: 22, maxDamage: 29},
+		{level: 36, manaCost: 16, weapon: 0.39, minDamage: 32, maxDamage: 40},
+		{level: 44, manaCost: 17, weapon: 0.43, minDamage: 53, maxDamage: 68},
+		{level: 52, manaCost: 19, weapon: 0.46, minDamage: 73, maxDamage: 91},
+		{level: 60, manaCost: 20, weapon: 0.50, minDamage: 81, maxDamage: 105},
 	}
 
 	for i, rank := range ranks {
@@ -88,6 +87,8 @@ func (paladin *Paladin) registerHolyStrike() {
 			},
 
 			DamageMultiplier: damageMultiplier,
+			BonusCritRating: float64(paladin.Talents.HolyPower) *
+				core.CritRatingPerCritChance * 3,
 			ThreatMultiplier: threatMultiplier,
 			// Holy damage, so spell power feeds it on top of the weapon share and the flat roll.
 			BonusCoefficient: 0.429,

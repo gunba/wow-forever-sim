@@ -316,20 +316,10 @@
         "maxPoints": 5,
         "name": "Bloodthrill",
         "icon": "inv_sword_01",
-        "description": "Your melee attacks against targets afflicted by your Rend have a {0}% chance to activate your Overpower ability for {1} attack on your current target. Lasts {2} sec.",
+        "description": "Your main-hand melee attacks, including Heroic Strike and Cleave, against targets afflicted by your Rend have a {0}% chance to activate your Overpower ability for {1} attack on your current target. Lasts {2} sec.",
         "ranks": [
           [
-            2,
-            1,
-            6
-          ],
-          [
             4,
-            1,
-            6
-          ],
-          [
-            6,
             1,
             6
           ],
@@ -339,7 +329,17 @@
             6
           ],
           [
-            10,
+            12,
+            1,
+            6
+          ],
+          [
+            16,
+            1,
+            6
+          ],
+          [
+            20,
             1,
             6
           ]
@@ -422,13 +422,15 @@
         "maxPoints": 2,
         "name": "Improved Slam",
         "icon": "ability_warrior_decisivestrike",
-        "description": "Reduces the global cooldown and cast time of your Slam ability by {0} sec. In addition, Slam no longer interrupts your melee swing time.",
+        "description": "Reduces the global cooldown and cast time of your Slam ability by {0} sec and its cooldown by {1} sec. In addition, Slam no longer interrupts your melee swing time.",
         "ranks": [
           [
-            0.25
+            0.25,
+            1.5
           ],
           [
-            0.5
+            0.5,
+            3
           ]
         ]
       },
@@ -1449,10 +1451,37 @@
         "notSimulated": true
       },
       {
-        "fieldName": "bastion",
+        "fieldName": "focusedRage",
         "location": {
           "rowIdx": 4,
           "colIdx": 3
+        },
+        "spellIds": [
+          0,
+          0,
+          0
+        ],
+        "maxPoints": 3,
+        "name": "Focused Rage",
+        "icon": "ability_warrior_focusedrage",
+        "description": "Reduces the Rage cost of your offensive abilities by {0}.",
+        "ranks": [
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ]
+      },
+      {
+        "fieldName": "bastion",
+        "location": {
+          "rowIdx": 5,
+          "colIdx": 2
         },
         "spellIds": [
           0,
@@ -1480,33 +1509,6 @@
           ],
           [
             10
-          ]
-        ]
-      },
-      {
-        "fieldName": "focusedRage",
-        "location": {
-          "rowIdx": 5,
-          "colIdx": 2
-        },
-        "spellIds": [
-          0,
-          0,
-          0
-        ],
-        "maxPoints": 3,
-        "name": "Focused Rage",
-        "icon": "ability_warrior_focusedrage",
-        "description": "Reduces the Rage cost of your offensive abilities by {0}.",
-        "ranks": [
-          [
-            1
-          ],
-          [
-            2
-          ],
-          [
-            3
           ]
         ]
       },

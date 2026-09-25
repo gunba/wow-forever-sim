@@ -9,9 +9,13 @@ func (warrior *Warrior) registerSunderArmorSpell() {
 
 	spellID := int32(11597)
 
-	// Forever gives Sunder Armor an explicit threat effect, 1013 at rank 5, where Classic's
-	// 2.25 x 2 x level (261) was server side.
-	threat := 1013.0
+	// Client 1.60.1.70009 gives rank 5 a flat 206 threat (was 1013).
+	// The newly noted extra Attack Power contribution is server-side and its
+	// coefficient is not exposed in SpellEffect; do not fabricate one here.
+	threat := 2.25 * 2 * float64(warrior.Level)
+	if warrior.Env.IsForever() {
+		threat = 206
+	}
 
 	var canApplySunder bool
 

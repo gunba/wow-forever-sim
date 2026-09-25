@@ -39,7 +39,7 @@
 		"file": "sim/shaman/lightning_bolt.go",
 		"note": "Rank 3. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Spell power coefficient 0.714; Classic Era had 0.554, a 3 sec cast from rank 4 up and about twice the damage at the upper ranks.",
 		"source": "forever",
-		"tooltip": "45 Mana\n30 yd range\n2.5 sec cast\nCasts a bolt of lightning at the target for 35 to 41 Nature damage."
+		"tooltip": "45 Mana\n30 yd range\n2.5 sec cast\nCasts a bolt of lightning at the target for 44 to 52 Nature damage."
 	},
 	"905": {
 		"ability": "Lightning Shield",
@@ -53,7 +53,7 @@
 		"file": "sim/shaman/lightning_bolt.go",
 		"note": "Rank 4. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Spell power coefficient 0.714; Classic Era had 0.857, a 3 sec cast from rank 4 up and about twice the damage at the upper ranks.",
 		"source": "forever",
-		"tooltip": "60 Mana\n30 yd range\n2.5 sec cast\nCasts a bolt of lightning at the target for 49 to 57 Nature damage."
+		"tooltip": "60 Mana\n30 yd range\n2.5 sec cast\nCasts a bolt of lightning at the target for 55 to 63 Nature damage."
 	},
 	"930": {
 		"ability": "Chain Lightning",
@@ -704,7 +704,7 @@
 		"file": "sim/shaman/lava_burst.go",
 		"note": "Rank 1, taught by the talent at level 40. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Coefficient 0.714.",
 		"source": "forever",
-		"tooltip": "165 Mana\n30 yd range\n2.5 sec cast\n10 sec cooldown\nYou hurl molten lava at the target, dealing 105 to 135 Fire damage. If your Flame Shock is on the target, Lava Burst deals 20% increased damage."
+		"tooltip": "165 Mana\n30 yd range\n2.5 sec cast\n10 sec cooldown\nYou hurl molten lava at the target, dealing 150 to 192 Fire damage. If your Flame Shock is on the target, Lava Burst deals 20% increased damage."
 	},
 	"408505": {
 		"ability": "Maelstrom Weapon",
@@ -732,7 +732,7 @@
 		"file": "sim/shaman/lava_burst.go",
 		"note": "Rank 2, level 50. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Coefficient 0.714.",
 		"source": "forever",
-		"tooltip": "230 Mana\n30 yd range\n2.5 sec cast\n10 sec cooldown\nYou hurl molten lava at the target, dealing 165 to 211 Fire damage. If your Flame Shock is on the target, Lava Burst deals 20% increased damage."
+		"tooltip": "230 Mana\n30 yd range\n2.5 sec cast\n10 sec cooldown\nYou hurl molten lava at the target, dealing 180 to 230 Fire damage. If your Flame Shock is on the target, Lava Burst deals 20% increased damage."
 	},
 	"1238300": {
 		"ability": "Lava Burst",

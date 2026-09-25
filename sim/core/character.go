@@ -9,7 +9,6 @@ import (
 
 	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/core/stats"
-	"google.golang.org/protobuf/encoding/protowire"
 	"google.golang.org/protobuf/reflect/protoreflect"
 )
 
@@ -741,7 +740,10 @@ func FillTalentsProto(data protoreflect.Message, talentsStr string, treeSizes [3
 	for treeIdx, treeStr := range treeStrs {
 		for talentIdx, talentValStr := range treeStr {
 			talentVal, _ := strconv.Atoi(string(talentValStr))
-			fd := fieldDescriptors.ByNumber(protowire.Number(offset + talentIdx + 1))
+			// Tree strings follow field declaration order. Field numbers are
+			// wire identifiers, not talent positions (removed talents can
+			// leave reserved numbers in the schema).
+			fd := fieldDescriptors.Get(offset + talentIdx)
 			if fd.Kind() == protoreflect.BoolKind {
 				data.Set(fd, protoreflect.ValueOfBool(talentVal == 1))
 			} else { // Int32Kind

@@ -10,9 +10,9 @@ const WrathRanks = 8
 
 var WrathSpellId = [WrathRanks + 1]int32{0, 5176, 5177, 5178, 5179, 5180, 6780, 8905, 9912}
 
-// Beta client 1.60.1.69893: a quarter of Classic's damage at every rank from 3 up, cheaper, and no downranking penalty on
-// ranks 1-2. Ranges are the client's base plus its per level growth up to the rank's max level.
-var WrathBaseDamage = [WrathRanks + 1][]float64{{0}, {10, 13}, {16, 19}, {21, 25}, {26, 31}, {31, 36}, {37, 42}, {46, 51}, {62, 69}}
+// Client 1.60.1.70009 raises base damage and per-level growth on every rank.
+// Ranges use the client variance and growth through each rank's max level.
+var WrathBaseDamage = [WrathRanks + 1][]float64{{0}, {15, 18}, {25, 28}, {32, 37}, {41, 46}, {47, 53}, {56, 63}, {70, 77}, {92, 102}}
 var WrathSpellCoeff = [WrathRanks + 1]float64{0, 0.429, 0.486, 0.571, 0.571, 0.571, 0.571, 0.571, 0.571}
 var WrathManaCost = [WrathRanks + 1]float64{0, 10, 20, 40, 50, 70, 80, 100, 120}
 var WrathCastTime = [WrathRanks + 1]int{0, 1500, 1700, 2000, 2000, 2000, 2000, 2000, 2000}

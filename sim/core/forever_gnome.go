@@ -6,21 +6,21 @@ import (
 	"github.com/wowsims/classic/sim/core/proto"
 )
 
-// SkillLineAbility assigns the five Eureka spells by class. Their durations,
-// cost modifiers and three proc charges are captured in forever_races.json.
+// SkillLineAbility assigns the five Eureka spells by class. Since client
+// 1.60.1.70009 each discounts the next three resource-consuming abilities 10%.
 func (character *Character) registerEureka() {
-	var id, discount int32
+	var id int32
 	switch character.Class {
 	case proto.Class_ClassRogue:
-		id, discount = 1259812, 20
+		id = 1259812
 	case proto.Class_ClassWarrior:
-		id, discount = 1259813, 40
+		id = 1259813
 	case proto.Class_ClassMage:
-		id, discount = 1259817, 50
+		id = 1259817
 	case proto.Class_ClassWarlock:
-		id, discount = 1259821, 50
+		id = 1259821
 	case proto.Class_ClassPriest:
-		id, discount = 1259823, 15
+		id = 1259823
 	default:
 		return
 	}
@@ -43,12 +43,12 @@ func (character *Character) registerEureka() {
 		},
 		OnGain: func(_ *Aura, _ *Simulation) {
 			for _, spell := range affected {
-				spell.Cost.Multiplier -= discount
+				spell.Cost.Multiplier -= 10
 			}
 		},
 		OnExpire: func(_ *Aura, _ *Simulation) {
 			for _, spell := range affected {
-				spell.Cost.Multiplier += discount
+				spell.Cost.Multiplier += 10
 			}
 		},
 		OnStacksChange: func(aura *Aura, sim *Simulation, _ int32, stacks int32) {

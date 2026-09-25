@@ -15,8 +15,9 @@ and weapon coverage. None is confirmed obtainable loot. The previous
 and the separate [real-item benchmark](../../artifacts/forever_dps_5min.json)
 remain distinct historical references.
 
-This benchmark still uses **pre-1.60.1.70009 class/racial mechanics**. The
-September 24 beta changes have not been incorporated into its DPS ranking.
+This benchmark incorporates the sourced **client 1.60.1.70009 class/racial
+changes**, with post-patch modeled-gear selection and 184 rerun profiles. See
+the [patch audit](../../docs/forever-70009.md) for source gaps and exclusions.
 Modeled Leather armor has no Strength; Feral cannot equip Mail or Plate.
 The modeled Strength/Hit Mail option is a disclosed MP5-to-Hit budget
 projection from a real Mail reference, not a datamined drop.
@@ -34,25 +35,30 @@ coupled weapon layouts. It repeats coordinate passes to convergence and checks
 shortlisted gains with independent higher-iteration seeds; it does not perform
 an exhaustive combination search. Every supported race/build is searched
 separately without changing the fixed talents, APLs, consumes, buffs, enchants,
-encounter or forced Tier 1. For a fresh reproduction, obtain the pinned v1 input
-profiles rather than using the current, already-selected v2 roster:
+encounter or forced Tier 1. The archived search baseline freezes the patched
+talents, consumables and starting equipment. Do not start a reproduction from
+the current, already-selected roster:
 
 ```sh
-git show ff7b01f28:artifacts/modelled_gear/forever_dps_5min.json > /tmp/forever-v1-input.json
-python3 tools/database/generate_forever_synthetic_gear.py
-python3 tools/database/compile_forever_equipment.py
+python3 - <<'PY'
+import gzip, json
+with gzip.open('artifacts/modelled_gear_search/current/before.json.gz', 'rt') as f:
+    baseline = json.load(f)['searchBaseline']
+with open('/tmp/forever-70009-start.json', 'w') as f:
+    json.dump(baseline, f)
+PY
 go run ./tools/database/gen_db -outDir=assets -gen=db
 go build -tags with_db -o /tmp/forever-bench ./tools/forever_bench
 python3 tools/forever_bench/search_gear.py --binary /tmp/forever-bench \
-  --roster /tmp/forever-v1-input.json --baseline-results /tmp/forever-v1-input.json \
-  --modeled-only --screen 40 --validate 500 --passes 5 --iterations 5000 \
-  --seed 20300371 --workers 24 --output /tmp/model-search
+  --baseline-results /tmp/forever-70009-start.json --modeled-only \
+  --screen 100 --validate 2000 --passes 5 --iterations 5000 \
+  --seed 20260954 --workers 24 --output /tmp/model-search
 python3 tools/forever_bench/validate_gear.py --binary /tmp/forever-bench \
-  --search /tmp/model-search --iterations 5000 --seed 20300391 \
+  --search /tmp/model-search --iterations 5000 --seed 20260955 \
   --workers 24 --output /tmp/model-confirmed
 python3 tools/forever_bench/run_matrix.py --binary /tmp/forever-bench \
   --profiles /tmp/model-confirmed/selected.json --natural-hit \
-  --iterations 5000 --seed 20300411 --workers 24 --output /tmp/model-matrix
+  --iterations 5000 --seed 20260956 --workers 24 --output /tmp/model-matrix
 ```
 
 The archived [search and confirmation evidence](../../artifacts/modelled_gear_search/current/summary.json),

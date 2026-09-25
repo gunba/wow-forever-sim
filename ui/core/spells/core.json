@@ -502,36 +502,36 @@
 		"ability": "Eureka!",
 		"file": "sim/core/forever_gnome.go",
 		"source": "forever",
-		"note": "Rogue variant. Client cost modifier -20%, damage +10%, three charges, 15-second duration. Cast/periodic interactions are tracked in docs/in_game_checks.md, T03.",
-		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging abilities cost 20% less Energy and deal 10% more damage. Lasts 15 sec."
+		"note": "Rogue variant. Client 1.60.1.70009 cost modifier -10%, damage +10%, three charges, 15-second duration. Cast/periodic interactions are tracked in docs/in_game_checks.md, T03.",
+		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging abilities cost 10% less Energy and deal 10% more damage. Lasts 15 sec."
 	},
 	"1259813": {
 		"ability": "Eureka!",
 		"file": "sim/core/forever_gnome.go",
 		"source": "forever",
 		"note": "Warrior variant; SkillLineAbility class mask 1. Three charges and a 15-second duration.",
-		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging abilities cost 40% less Rage and deal 10% more damage. Lasts 15 sec."
+		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging abilities cost 10% less Rage and deal 10% more damage. Lasts 15 sec."
 	},
 	"1259817": {
 		"ability": "Eureka!",
 		"file": "sim/core/forever_gnome.go",
 		"source": "forever",
 		"note": "Mage variant; SkillLineAbility class mask 128. Three charges and a 15-second duration.",
-		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging abilities cost 50% less Mana and deal 10% more damage. Lasts 15 sec."
+		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging abilities cost 10% less Mana and deal 10% more damage. Lasts 15 sec."
 	},
 	"1259821": {
 		"ability": "Eureka!",
 		"file": "sim/core/forever_gnome.go",
 		"source": "forever",
 		"note": "Warlock variant; SkillLineAbility class mask 256. Three charges and a 15-second duration.",
-		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging abilities cost 50% less Mana and deal 10% more damage. Lasts 15 sec."
+		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging abilities cost 10% less Mana and deal 10% more damage. Lasts 15 sec."
 	},
 	"1259823": {
 		"ability": "Eureka!",
 		"file": "sim/core/forever_gnome.go",
 		"source": "forever",
-		"note": "Priest variant; SkillLineAbility class mask 16. Cost reduction is 15%, not the Mage/Warlock value.",
-		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging or healing abilities cost 15% less Mana and deal 10% more damage or healing. Lasts 15 sec."
+		"note": "Priest variant; SkillLineAbility class mask 16. Client 1.60.1.70009 cost reduction is 10% for every eligible class.",
+		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging or healing abilities cost 10% less Mana and deal 10% more damage or healing. Lasts 15 sec."
 	},
 	"5242": {
 		"ability": "Battle Shout Rank 2",

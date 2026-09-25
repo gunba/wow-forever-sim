@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "20300751",
+    "fixedRngSeed": "20260956",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Horde",
@@ -125,7 +125,8 @@
       "defaultPotion": "MajorManaPotion",
       "defaultConjured": "ConjuredDemonicRune",
       "dragonBreathChili": true,
-      "zanzaBuff": "ROIDS"
+      "zanzaBuff": "ROIDS",
+      "sapperExplosive": "SapperGoblinSapper"
     },
     "bonusStats": {
       "stats": [
@@ -181,7 +182,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "250003003-232-052250310012330301",
+    "talentsString": "52003003-232-052250310012330301",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",

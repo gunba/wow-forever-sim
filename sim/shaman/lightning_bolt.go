@@ -8,12 +8,12 @@ import (
 
 const LightningBoltRanks = 10
 
-// Damage, coefficients, cast times and costs are the Forever beta client's (build 1.60.1.69893). Damage is the
+// Damage, coefficients, cast times and costs are the Forever beta client's (build 1.60.1.70009). Damage is the
 // client's range scaled to level 60 by its per-level points, capped at the rank's max level, low end rounded
 // down and high end up. Forever halves the upper ranks, drops the cast to 2.5 sec and gives every rank from 3 up
 // the full 0.714 coefficient.
 var LightningBoltSpellId = [LightningBoltRanks + 1]int32{0, 403, 529, 548, 915, 943, 6041, 10391, 10392, 15207, 15208}
-var LightningBoltBaseDamage = [LightningBoltRanks + 1][]float64{{0}, {15, 17}, {29, 34}, {35, 41}, {49, 57}, {70, 81}, {108, 122}, {142, 160}, {157, 177}, {172, 194}, {190, 212}}
+var LightningBoltBaseDamage = [LightningBoltRanks + 1][]float64{{0}, {15, 17}, {29, 34}, {44, 52}, {55, 63}, {70, 81}, {108, 122}, {142, 160}, {157, 177}, {172, 194}, {190, 212}}
 var LightningBoltSpellCoef = [LightningBoltRanks + 1]float64{0, .429, .571, .714, .714, .714, .714, .714, .714, .714, .714}
 var LightningBoltCastTime = [LightningBoltRanks + 1]int32{0, 1500, 2000, 2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500}
 var LightningBoltManaCost = [LightningBoltRanks + 1]float64{0, 15, 30, 45, 60, 85, 110, 135, 160, 190, 220}

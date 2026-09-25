@@ -2,6 +2,7 @@ package core
 
 import (
 	"testing"
+	"time"
 
 	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/core/stats"
@@ -63,5 +64,34 @@ func TestOffHandImbuesRequireWeapon(t *testing.T) {
 				}
 			})
 		}
+	}
+}
+
+func TestSelfDamageIsNotOutgoingDPS(t *testing.T) {
+	player := &Unit{Type: PlayerUnit, UnitIndex: 0}
+	spell := &Spell{
+		Unit:         player,
+		Flags:        SpellFlagNoOnDamageDealt,
+		SpellMetrics: []SpellMetrics{{}},
+	}
+	spell.DealDamage(&Simulation{Environment: &Environment{Encounter: Encounter{}}}, &SpellResult{
+		Target: player,
+		Damage: 800, // Demonic Rune's self-hit must not become player damage dealt.
+	})
+	if got := spell.SpellMetrics[0].TotalDamage; got != 0 {
+		t.Fatalf("self-inflicted damage counted in DPS: %.0f", got)
+	}
+}
+
+func TestSapperCannotHitFromRangedPosition(t *testing.T) {
+	character := &Character{Unit: Unit{DistanceFromTarget: 20}}
+	config := character.newBasicExplosiveSpellConfig(nil, SapperActionID, SpellSchoolFire,
+		450, 750, Cooldown{Duration: 5 * time.Minute}, 375, 625)
+	if config.ExtraCastCondition == nil || config.ExtraCastCondition(nil, nil) {
+		t.Fatal("a five-yard self-centered Sapper hit from 20 yards")
+	}
+	character.DistanceFromTarget = 5
+	if !config.ExtraCastCondition(nil, nil) {
+		t.Fatal("Sapper was unavailable at its five-yard radius")
 	}
 }

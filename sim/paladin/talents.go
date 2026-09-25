@@ -189,7 +189,7 @@ func (paladin *Paladin) getWeaponSpecializationModifier() float64 {
 	if handType == proto.HandType_HandTypeMainHand || handType == proto.HandType_HandTypeOneHand {
 		return 1. + []float64{0, .03, .07, .10}[paladin.Talents.OneHandedWeaponSpecialization]
 	} else if handType == proto.HandType_HandTypeTwoHand {
-		return 1. + 0.03*float64(paladin.Talents.TwoHandedWeaponSpecialization)
+		return 1. + 0.02*float64(paladin.Talents.TwoHandedWeaponSpecialization)
 	} else {
 		return 1.
 	}
@@ -227,14 +227,14 @@ func (paladin *Paladin) applyVengeance() {
 		return
 	}
 
-	// Beta client 1.60.1.69893: 1% a stack per rank, up to 5 stacks, 30 sec (the trees had copied
+	// Beta client 1.60.1.70009: 1% a stack per rank, up to 3 stacks, 30 sec (the trees had copied
 	// rank 1 into every rank).
 	perStack := 0.01 * float64(paladin.Talents.Vengeance)
 	procAura := paladin.RegisterAura(core.Aura{
 		Label:     "Vengeance Proc",
 		ActionID:  core.ActionID{SpellID: 20059},
 		Duration:  time.Second * 30,
-		MaxStacks: 5,
+		MaxStacks: 3,
 		OnStacksChange: func(aura *core.Aura, sim *core.Simulation, oldStacks int32, newStacks int32) {
 			multiplier := (1 + perStack*float64(newStacks)) / (1 + perStack*float64(oldStacks))
 			aura.Unit.PseudoStats.SchoolDamageDealtMultiplier[stats.SchoolIndexHoly] *= multiplier
@@ -249,7 +249,8 @@ func (paladin *Paladin) applyVengeance() {
 			aura.Activate(sim)
 		},
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if result.DidCrit() {
+			// Periodic critical strikes use OnPeriodicDamageDealt instead.
+			if result.Target.Type == core.EnemyUnit && result.DidCrit() {
 				procAura.Activate(sim)
 				procAura.AddStack(sim)
 			}

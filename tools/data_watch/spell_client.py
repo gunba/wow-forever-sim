@@ -31,7 +31,7 @@ import os
 import sys
 import urllib.request
 
-FOREVER = '1.60.1.69893'
+FOREVER = '1.60.1.70009'
 ERA = '1.15.9.69722'
 CACHE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.cache')
 TABLES = ['SpellName', 'Spell', 'SpellEffect', 'SpellMisc', 'SpellCastTimes', 'SpellPower', 'SpellCooldowns',

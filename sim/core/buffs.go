@@ -412,6 +412,12 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 	if partyBuffs != nil {
 		graceOfAir = partyTristate(graceOfAir, partyBuffs.GraceOfAirTotem)
 	}
+	// Forever's air totem effects are mutually exclusive even when the two
+	// requested auras would come from different Shamans. An explicit party
+	// Windfury choice takes precedence over Grace of Air.
+	if character.Env.IsForever() && partyBuffs != nil && partyBuffs.WindfuryTotem {
+		graceOfAir = proto.TristateEffect_TristateEffectMissing
+	}
 	if graceOfAir > 0 && canReceiveShamanBuffs {
 		multiplier := GetTristateValueFloat(graceOfAir, 1, 1.15)
 		MakePermanent(GraceOfAirTotemAura(&character.Unit, multiplier))
@@ -1635,8 +1641,10 @@ func createWindfuryTotemAura(character *Character, buffActionID ActionID, auraLa
 	var bonusAP float64
 	hasWindfuryWeapon := func() bool {
 		switch character.MainHand().TempEnchant {
-		case 283, 284, 525, 1669:
+		case 283, 284, 525, 1669: // Windfury Weapon
 			return true
+		case 5, 4, 3, 523, 1665, 1666: // Flametongue Weapon; also excludes Windfury Totem in Forever
+			return character.Env.IsForever()
 		}
 		return false
 	}

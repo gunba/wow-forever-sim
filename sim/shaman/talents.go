@@ -502,7 +502,7 @@ func (shaman *Shaman) registerRageOfTheFarseerCD() {
 		return
 	}
 
-	// 30% for 25 sec on a 3 min cooldown, from the beta client's Rage of the Farseer (425336).
+	// Since client 1.60.1.70009, Rage of the Farseer grants melee speed only.
 	actionID := core.ActionID{SpellID: 425336}
 	multiplier := 1.30
 	cd := time.Minute * 3
@@ -513,11 +513,9 @@ func (shaman *Shaman) registerRageOfTheFarseerCD() {
 		Duration: time.Second * 25,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
 			shaman.MultiplyMeleeSpeed(sim, multiplier)
-			shaman.MultiplyCastSpeed(multiplier)
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
 			shaman.MultiplyMeleeSpeed(sim, 1/multiplier)
-			shaman.MultiplyCastSpeed(1 / multiplier)
 		},
 	})
 

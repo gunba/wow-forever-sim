@@ -210,37 +210,29 @@
         ]
       },
       {
-        "fieldName": "elementalFury",
+        "fieldName": "elementalAlacrity",
         "location": {
           "rowIdx": 2,
           "colIdx": 2
         },
         "spellIds": [
-          16089,
-          0,
-          0,
-          0,
-          0
+          16578,
+          16579,
+          16580
         ],
-        "maxPoints": 5,
-        "name": "Elemental Fury",
-        "icon": "spell_fire_volcano",
-        "description": "Increases the critical strike damage bonus of your Searing and Magma Totems and your Fire, Frost, and Nature spells by {0}%.",
+        "maxPoints": 3,
+        "name": "Elemental Alacrity",
+        "icon": "spell_lightning_lightningbolt01",
+        "description": "Reduces the cast time of your Lightning Bolt, Chain Lightning, and Lava Burst spells by {0} sec.",
         "ranks": [
           [
-            20
+            0.17
           ],
           [
-            40
+            0.33
           ],
           [
-            60
-          ],
-          [
-            80
-          ],
-          [
-            100
+            0.5
           ]
         ]
       },
@@ -394,7 +386,7 @@
         "notSimulated": true
       },
       {
-        "fieldName": "elementalAlacrity",
+        "fieldName": "elementalFury",
         "location": {
           "rowIdx": 5,
           "colIdx": 2
@@ -404,23 +396,31 @@
           "colIdx": 2
         },
         "spellIds": [
-          16578,
-          16579,
-          16580
+          16089,
+          0,
+          0,
+          0,
+          0
         ],
-        "maxPoints": 3,
-        "name": "Elemental Alacrity",
-        "icon": "spell_lightning_lightningbolt01",
-        "description": "Reduces the cast time of your Lightning Bolt, Chain Lightning, and Lava Burst spells by {0} sec.",
+        "maxPoints": 5,
+        "name": "Elemental Fury",
+        "icon": "spell_fire_volcano",
+        "description": "Increases the critical strike damage bonus of your Searing and Magma Totems and your Fire, Frost, and Nature spells by {0}%.",
         "ranks": [
           [
-            0.17
+            20
           ],
           [
-            0.33
+            40
           ],
           [
-            0.5
+            60
+          ],
+          [
+            80
+          ],
+          [
+            100
           ]
         ]
       },
@@ -964,7 +964,7 @@
         "maxPoints": 1,
         "name": "Rage of the Farseer",
         "icon": "spell_nature_bloodlust",
-        "description": "Increases your melee attack speed and spell casting speed by {0}% for {1} sec.",
+        "description": "Increases your melee attack speed by {0}% for {1} sec.",
         "ranks": [
           [
             30,
