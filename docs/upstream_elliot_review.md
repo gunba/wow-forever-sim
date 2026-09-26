@@ -35,6 +35,10 @@ parameters, so the new Mage ranks cannot disappear from the coverage check.
 The legacy `TestP1Hunter` and `TestP1Mage` suites reference removed item IDs
 272491 and 272457 and stop before exercising these changes. Current-profile
 regressions, not those obsolete gear fixtures, cover the affected agents.
+The runnable Warrior/Protection snapshot suites were also refreshed for
+the 25-RAP Trueshot increase and stronger Thorns. A test-only control
+restoring just those two old values reproduced all three old suites;
+the engine and fixed-profile benchmark inputs were not reverted.
 
 ### Fixed-profile results
 
