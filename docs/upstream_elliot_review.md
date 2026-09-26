@@ -1,5 +1,11 @@
 # Recent ElliotWood/Forever review
 
+Current questions and corrections to earlier interpretations are in the
+[canonical register](uncertainties.md). In particular, **DONE-010** corrects
+the Seal of Command comparison below: this engine's final multiplier already
+puts personal SP inside the 70% term. Moving fields is not an additional
+damage correction; Seal of Righteousness remains a separate unresolved formula.
+
 ## Scope and release status
 
 Compared [ElliotWood/Forever at `eccf6aa87d`](https://github.com/ElliotWood/Forever/tree/eccf6aa87ddc030ed6d5a0c4842121027ae89bb9) with this simulator's `367ac97df8` release.

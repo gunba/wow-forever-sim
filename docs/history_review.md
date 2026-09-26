@@ -1,5 +1,9 @@
 # Change-history review
 
+> This review describes its pinned revisions. Current dispositions, including
+> later resolutions of H10, H11, H20 and H29, are in the
+> [canonical register](uncertainties.md).
+
 ## Boundaries and coverage
 
 The common ancestor of this checkout and `wowsims/classic` is

@@ -1,5 +1,9 @@
 # Forever rule changes modelled in this fork
 
+> This is a historical rule ledger, not the current uncertainty tracker.
+> Use [Simulator questions and coverage](uncertainties.md) for current models
+> and dispositions; later client audits supersede the demo-era entries below.
+
 One line per rule the Forever ruleset changes, with where it lives here and what it was read
 from. Written so an implementation on a different engine (the official wowsims fork) can work
 from the rule rather than from this fork's diff. Numbers marked *demo* were read off BlizzCon

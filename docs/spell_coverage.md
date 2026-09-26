@@ -1,5 +1,8 @@
 # Spell coverage
 
+Current gaps are tracked in [Simulator questions and coverage](uncertainties.md).
+The inventory below retains its captured client/revision scope.
+
 The client dump is a discovery source, not an implementation. A previous
 class-spell export filtered only `ClassMask`; the four new Death ranks have
 `ClassMask=0` and were absent from that export. They were separately known under
@@ -40,7 +43,7 @@ These are explicit omissions, not a claim of a complete game spellbook:
 | Area | Current limitation |
 |---|---|
 | Feral stealth | Prowl/opening-stealth state, Ravage and Pounce are not implemented. Their opener contribution is absent. |
-| Mage proximity/control | Cone of Cold and Frost Nova are not implemented. The current caster profiles stand at 20 yards; in-range/AoE builds need these spells and their interactions. |
+| Mage proximity/control | Cone of Cold and Frost Nova now have sourced ranked damage, cooldowns and 10-yard checks. Root/slow control and cone geometry remain unmodeled. Current caster profiles stand at 20 yards. |
 | Warlock proximity | Hellfire is not implemented. The current profiles stand at 20 yards. |
 | Dwarf Priest | Chastise is not implemented; its Humanoid-only damage does not apply to the Dragonkin reference target. |
 | Reactive/control attacks | Incoming-attack, parry, mana-burn, interrupt and control triggers are absent from the fixed DPS encounter. Individual omissions are listed in the inventory. |

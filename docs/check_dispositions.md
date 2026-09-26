@@ -1,5 +1,9 @@
 # DPS check review
 
+> Historical evidence and dispositions. Use the [canonical register](uncertainties.md)
+> for current status: several later fixes supersede the models described below.
+> Earlier T50/T51/T52 references are qualified there rather than silently renumbered.
+
 ## Poison, periodic damage and mana review, 23 September
 
 The pinned Forever client **1.60.1.69913** exposes the level-60

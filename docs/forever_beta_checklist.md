@@ -1,5 +1,9 @@
 # Forever beta re-verification checklist
 
+> Historical inventory. The [canonical register](uncertainties.md) replaces this
+> file as the actionable checklist; old open counts and implementation claims
+> below are not the current simulator state.
+
 **The pass has happened.** This file was written before the beta client was datamined, when every number in the Forever ruleset came off a BlizzCon 2026 demo tooltip. Since 17 September the client has been the source: build `1.60.1.69913` on wago.tools, read against Classic Era `1.15.9.69722` and diffed spell by spell, with per-class write-ups in `docs/beta-pass/`. Most of what follows is history, kept because it records what each number used to rest on.
 
 Where it stands, counted from `ui/core/spells/*.json`:

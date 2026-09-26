@@ -1,5 +1,9 @@
 # MythicSim engine comparison
 
+> Historical comparison at the revisions below. The [canonical register](uncertainties.md)
+> distinguishes remaining gaps from later corrections, including finite Bulwark
+> absorption and the implemented Priest spells.
+
 ## Revisions and scope
 
 Compared [MythicSim revision `e6d999e927`](https://github.com/sage3648/mythicsim-forever-engine/tree/e6d999e9270c652db0820bee08c68f9f22a9079a)

@@ -10,6 +10,8 @@ import shutil
 
 from build_display import BUILDS, BUILD_CAVEATS, CLASS_COLORS, HYBRID_PARENTS, RACES
 from sensitivity import DISPLAY_METRICS, format_metric, load_columns
+from uncertainties import CSS as QUESTIONS_CSS, SCRIPT as QUESTIONS_SCRIPT
+from uncertainties import load_register, markdown as questions_markdown, render_html as questions_html
 
 
 SIM_PATHS = {
@@ -54,6 +56,9 @@ def main():
         default=-1,
     ), reverse=True)
     args.output.mkdir(parents=True, exist_ok=True)
+    register = load_register()
+    (args.output / "uncertainties.json").write_text(json.dumps(register, indent=2) + "\n")
+    (args.output / "uncertainties.md").write_text(questions_markdown(register) + "\n")
     shutil.copytree(args.profiles, args.output / "profiles", dirs_exist_ok=True)
     shutil.copytree("assets/img/spec_icons", args.output / "icons", dirs_exist_ok=True)
     for faction in ("alliance", "horde"):
@@ -68,7 +73,6 @@ def main():
                         if model_v2 else "assets/db_inputs/forever_synthetic_gear.json",
                         args.output / "synthetic_gear.json")
         shutil.copyfile("docs/modelled_gear.md", args.output / "modelled_gear.md")
-        shutil.copyfile("docs/forever-70009.md", args.output / "forever-70009.md")
         shutil.copyfile("docs/modelled_build_reviews.md", args.output / "modelled_build_reviews.md")
         shutil.copyfile("artifacts/modelled_gear/proposed_gear.xlsx", args.output / "proposed_gear.xlsx")
         if model_v2:
@@ -102,7 +106,7 @@ def main():
         shutil.copyfile(args.results.with_suffix("." + extension), args.output / ("results." + extension))
     for name in ("build_reviews.md", "build_updates.md", "gear_updates.md", "in_game_checks.md", "check_dispositions.md", "spell_coverage.md", "windfury.md", "energy_audit.md", "auto_attack_audit.md", "crit_model.md", "forever_gear_data.md", "mechanics_review.md", "history_review.md", "upstream-forever-review-2026-09-23.md", "upstream-forever-followup-2026-09-23.md", "mana_regeneration.md", "mythicsim_review.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
-    for name in ("weekly_review.md", "weekly_review_commits.csv", "flurry_review.md", "upstream_elliot_review.md", "tank_benchmark.md"):
+    for name in ("weekly_review.md", "weekly_review_commits.csv", "flurry_review.md", "upstream_elliot_review.md", "tank_benchmark.md", "forever-70009.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
     body = []
     for key, class_name, label, icon in builds:
@@ -156,9 +160,25 @@ def main():
         groups += (f'<th colspan="{count}" scope="colgroup" class="faction {faction.lower()}">'
                    f'<img src="icons/{faction.lower()}.png" alt="">{faction}</th>')
     groups += '<th colspan="3" scope="colgroup" class="faction gain">Gains &amp; scaling</th></tr>'
+    equipment_note = (
+        "All equipment is hypothetical level-65 modeled gear; real enchants remain. "
+        "Hit comes from items, enchants, talents and racials, with no paid conversion."
+        if model_v2 else
+        "Equipment and any historical hit-budget adjustments are recorded in each exact profile."
+    )
+    equipment_links = (
+        '<a href="modelled_gear.md">Projection method and limits</a> · '
+        '<a href="proposed_gear.xlsx" download>Gear spreadsheet</a> · '
+        '<a href="synthetic_gear.json">Modeled item catalog</a> · '
+        '<a href="gear_search/summary.json">Gear-selection evidence</a> · '
+        '<a href="spec_gear_equity.csv">Stat/budget audit</a> · '
+        '<a href="selected_gear_equity.csv">Per-race gear/hit audit</a>'
+        if model_v2 else '<a href="forever_gear_data.md">Equipment sources and gaps</a>'
+    )
+    build_review = "modelled_build_reviews.md" if modeled else "build_reviews.md"
     document = """<!doctype html>
 <html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Forever DPS benchmark</title>
+<title>Forever simulations</title>
 <style>
 body{background:#15171d;color:#e8e9ed;font:16px system-ui;margin:2rem;line-height:1.5}
 a{color:#a9d8ff}main{max-width:1800px;margin:auto}.matrix{overflow-x:auto}
@@ -172,71 +192,62 @@ th span{font-weight:400}.unavailable{color:#68707e}td a{color:inherit}
 .alliance{background:#244b80}.horde{background:#813b43}
 .faction{text-align:center}.faction img{float:none;width:auto;height:23px;vertical-align:middle;margin:0 .5rem}
 .gain{background:#243b30;color:#b6efc8;white-space:nowrap}
-</style><main>
-<h1>Forever DPS benchmark</h1>
+""" + QUESTIONS_CSS + """</style><main>
+<h1>Forever simulations</h1>
 <p>Level 60 · five-minute single target · 5,000 iterations per race/build · full role-specific Tier 1 bonuses.</p>
 <!-- equipment-status -->
 <!-- invalid-results -->
-<p>Rows are ordered by each build’s highest mean DPS. Click a DPS cell to open that exact setup.
-The simulator’s <strong>Ranked builds</strong> selector also loads complete race/build profiles.</p>
-<p class="note">* Separate hybrid rows: Pet/Melee uses an approximate Hawk guardian; Arcane–Frost uses an assumed
-Ice Lance coefficient and unresolved proc timing; 2H Bloodthirst uses unverified level-60 rage generation.
-Their equipment comes from the Survival, Frost and Arms profiles respectively.
-<a href="build_updates.md">Build comparisons and limitations</a>.</p>
-<p class="note">Equipment is recorded in each profile; no world or campfire buffs. Hit is normalized through a paid benchmark budget,
-not an obtainable reforging system. Imported bonus stats contain that fixed adjustment:
-changing gear, talents or race requires recalculation for a fair comparison.
-Energy scaling with general haste is a model assumption. Druid Omen provisionally uses the client’s
-100% proc entry and ten-second cooldown; its server proc rate needs testing.
-The optional “MP5 acts per second” setting is off in these rankings; it is a separate, unverified mana-regeneration experiment.
-General haste does not shorten the default spell GCD in this model; that still needs a Forever measurement.
-Warrior outgoing rage uses a provisional speed-normalized model; its level-60 and off-hand rules still need testing.
-Hunter pets still inherit no owner stats; the observed low-level AP inheritance has no verified level-60 rule here.
-Healing-only effects give no inferred spell damage. These are tested builds, not proven global optima.</p>
-<nav class="links"><a href="results.png">Chart PNG</a><a href="results.svg">Chart SVG</a>
-<a href="results.csv" download>CSV</a><a href="results.json" download>Raw requests/results</a>
-<a href="profiles/index.json">Replay profile index</a>
-<a href="sensitivity.json" download>Gain calculations</a>
-<a href="sensitivity/tier1_off.json" download>Tier 1 off</a>
-<a href="sensitivity/gear_110.json" download>Gear +10% run</a>
-<a href="sensitivity/gear_150.json" download>Gear +50% run</a>
-<a href="build_reviews.md">Build reviews</a><a href="in_game_checks.md">DPS checks</a>
-<a href="check_dispositions.md">Check review</a>
-<a href="spell_coverage.md">Spell coverage</a><a href="windfury.md">Windfury analysis</a>
-<a href="gear_updates.md">Gear comparisons</a>
-<a href="research_builds/validation.json.gz" download>Build validation requests/results</a>
-<a href="forever_gear_data.md">Equipment sources and gaps</a>
-<a href="energy_audit.md">Energy model</a><a href="auto_attack_audit.md">Auto-attack model</a>
-<a href="crit_model.md">Critical strike model</a>
-<a href="mechanics_review.md">Mechanics review</a><a href="history_review.md">Change-history review</a>
-<a href="weekly_review.md">September 26 review</a><a href="flurry_review.md">Flurry evidence</a><a href="upstream_elliot_review.md">Recent upstream review</a>
-<a href="upstream-forever-review-2026-09-23.md">Upstream review</a>
-<a href="mana_regeneration.md">Mana regeneration</a><a href="mana_regen/summary.json">Mana comparison data</a>
-<a href="mythicsim_review.md">Independent engine comparison</a></nav>
-<p class="note">Hover a result for its standard error and mana-limited time. A dash means that race/class combination is unavailable.</p>
-<p class="note">Equipment was selected by slot-by-slot DPS comparisons from the complete 706-item list and verified catalog supplements.
-Lower-level items remain when stronger or needed for a coverage gap; the known level-65 Undermine trinkets share a one-item limit.
-Unverified acquisition sources and unsupported item procs are excluded; some ordinary equipped-set effects remain unmodeled.
-Selections came from an earlier mechanics revision; current DPS uses the corrected engine.
-<a href="https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/gear_search/summary.json">Search evidence</a>.</p>
-<p class="note">Gain columns average each available race’s percentage DPS change with equal weights.
-Tier 1 gain compares bonuses on versus off, using the same build.
+<p class="note">""" + equipment_note + """ Ordinary MP5; no world or raid campfire buffs.
+These are tested profiles, not proven global optima or measured class balance.</p>
+<nav class="links" aria-label="Benchmark navigation"><a href="#matrix">DPS matrix</a>
+<a href="#questions">Questions &amp; coverage</a><a href="results.png">Chart</a>
+<a href="""" + build_review + """">Build details</a></nav>
+""" + questions_html(register) + """
+<details class="resource-group"><summary>Method, gear and gain columns</summary>
+<p>""" + equipment_note + """</p><p>""" + equipment_links + """</p>
+<p class="note">Gear is selected by legal slot-coordinate comparisons, not an exhaustive combination search.
+Projected allocation budgets and special-stat prices are assumptions, not a recovered Blizzard formula.
+All selected items, enchants and scenario settings are retained in the replay profiles.</p>
+<p class="note">Gain columns average each available race’s percentage DPS change equally.
+Tier 1 compares bonuses on versus off with the same build.
 Gear scenarios increase item/suffix stats and weapon damage together; enchants, weapon speed/skill,
-procs, consumables and buffs stay fixed. Tier 1 stays on and paid hit is recalculated.
+procs, consumables and buffs stay fixed. Tier 1 stays on.
 Scaling amplification is the mean +50% gain divided by five times the mean +10% gain:
 1× is linear, above 1× accelerates, below 1× flattens. A negative value means the +50% scenario loses DPS.
 An amplification dash means the +10% gain is too small or noisy for a useful ratio.
-This is finite-range curvature, not proof of exponential growth or isolated stat synergy;
-caps and resource thresholds can affect it.
-These are hypothetical sensitivities with fixed talents/rotations, not stat weights or predictions of future items.
-Cat weapon-DPS scaling remains an open mechanic. Hover gain cells for Monte Carlo uncertainty.</p>
+This is finite-range curvature, not proof of exponential growth, isolated synergy or future item strength.</p></details>
+<details class="resource-group"><summary>Replay files and downloads</summary>
+<nav class="links"><a href="results.png">PNG</a><a href="results.svg">SVG</a>
+<a href="results.csv" download>CSV</a><a href="results.json" download>Raw requests/results</a>
+<a href="profiles/index.json">Profile index</a><a href="sensitivity.json">Gain accounting</a>
+<a href="sensitivity/tier1_off.json">Tier off</a><a href="sensitivity/gear_110.json">Gear +10%</a>
+<a href="sensitivity/gear_150.json">Gear +50%</a>
+<a href="research_builds/validation.json.gz">Historical build validation</a></nav></details>
+<details class="resource-group"><summary>Evidence and earlier reviews</summary>
+<p class="note">These reports describe their pinned revisions. Current dispositions are in the register above.</p>
+<nav class="links"><a href="upstream_elliot_review.md">Latest class-effects review</a>
+<a href="weekly_review.md">September 26 review</a><a href="flurry_review.md">Flurry evidence</a>
+<a href="tank_benchmark.md">Tank scenario evidence</a>
+<a href="spell_coverage.md">Spell inventory</a><a href="forever-70009.md">70009 patch</a>
+<a href="mechanics_review.md">Mechanics review</a><a href="history_review.md">Change-history review</a>
+<a href="mythicsim_review.md">Independent engine comparison</a>
+<a href="build_updates.md">Earlier build comparisons</a>
+<a href="in_game_checks.md">Legacy test IDs</a><a href="check_dispositions.md">Legacy dispositions</a>
+<a href="energy_audit.md">Energy</a><a href="auto_attack_audit.md">Auto-attacks</a>
+<a href="crit_model.md">Crit</a><a href="mana_regeneration.md">Mana</a>
+<a href="windfury.md">Historical Windfury comparison</a></nav></details>
+<h2 id="matrix">DPS matrix</h2>
+<p>Sorted by each build’s peak mean DPS. Click a cell to load that exact race/build setup.
+The <strong>Ranked builds</strong> picker also loads complete profiles.</p>
+<p class="note">Hover cells for uncertainty and resource information. A dash means unavailable.
+* Separate build variants; their assumptions are in the register and build details.</p>
 <div class="matrix"><table><thead>""" + groups + "<tr>" + heading + \
         "</tr></thead><tbody>" + "".join(body) + """</tbody></table></div>
 <footer class="note"><p>Unofficial beta simulator. Built on
 <a href="https://github.com/wowsims/classic">WoWSims Classic</a> and
 <a href="https://github.com/ElliotWood/Forever">ElliotWood/Forever</a>.
 <a href="https://github.com/gunba/wow-forever-sim">Source and issues</a>.
-Game icons via Wowhead.</p></footer></main></html>
+Game icons via Wowhead.</p></footer></main><script>""" + QUESTIONS_SCRIPT + """</script></html>
 """
     if unenchanted:
         document = document.replace(
@@ -252,65 +263,6 @@ Game icons via Wowhead.</p></footer></main></html>
             '<strong>Invalid Shaman results:</strong> the historical dual-wield entries are hidden. '
             'Shamans cannot dual wield. Downloadable raw data and chart images still contain those '
             'superseded runs; they are not a current ranking.</p>',
-        )
-    if modeled:
-        if model_v2:
-            document = document.replace(
-                "Hit is normalized through a paid benchmark budget,\nnot an obtainable reforging system. Imported bonus stats contain that fixed adjustment:\nchanging gear, talents or race requires recalculation for a fair comparison.",
-                "Hit comes only from equipped items, enchants, talents and racials. "
-                "No paid conversion or fabricated hit stat is applied; each profile shows "
-                "its actual hit and any remaining cap shortfall.",
-            ).replace(
-                "Tier 1 stays on and paid hit is recalculated.",
-                "Tier 1 stays on and gear-derived hit scales with the item's stats.",
-            )
-        document = document.replace(
-            "<h1>Forever DPS benchmark</h1>",
-            "<h1>Forever DPS · modeled gear</h1>"
-            "<p style='border-left:4px solid #e3b65f;padding:.6rem 1rem;background:#373022'>"
-            "<strong>Hypothetical equipment.</strong> Items named “Modeled:” are not confirmed "
-            "obtainable loot. <strong>Client 1.60.1.70009:</strong> sourced September 24 "
-            "class/racial changes are included; remaining assumptions are documented. "
-            "The model uses at most 20% estimated Stamina cost on projected armor and the "
-            "conservative 80%-allocation passive trinket scenario. Special-stat prices and future "
-            "drops remain unknown. <a href='forever-70009.md'>Patch audit</a> · "
-            "<a href='modelled_gear.md'>Method and limits</a> · "
-            "<a href='proposed_gear.xlsx' download>Proposed gear spreadsheet</a> · "
-            "<a href='real-item-archive/'>Prior real-item results</a>"
-            + (" · <a href='https://github.com/gunba/wow-forever-sim/blob/"
-               "ff7b01f28/artifacts/modelled_gear/forever_dps_5min.json'>"
-               "Prior mixed modeled/real results</a>" if model_v2 else "") + ".</p>",
-        )
-        start = document.index('<p class="note">Equipment was selected by slot-by-slot')
-        end = document.index('</p>', start) + 4
-        document = (document[:start] +
-                    '<p class="note">Gear was selected by legal slot-coordinate comparisons of the ' +
-                    ('modeled-only v2 candidate pool. No real item is equipped. '
-                     'Excess hit is wasted, never converted into free offensive stats. '
-                     'Mirrored caster allocations use the same assumed modeled item budget; '
-                     'Intellect does not grant baseline spell power. ' if model_v2 else
-                     'modeled candidate pool and eligible real items. ')
-                    + 'The source records, stat '
-                    'allocations, confidence labels and actual reference item IDs are in '
-                    '<a href="synthetic_gear.json">the model catalog</a>. '
-                    'The <a href="gear_search/summary.json">search evidence</a> records every '
-                    'candidate and selected loadout. These are not obtainable items or a proven '
-                    'global optimum.</p>' + document[end:])
-        document = document.replace(
-            '<a href="gear_updates.md">Gear comparisons</a>',
-            '<a href="modelled_gear.md">Modeled gear method</a>'
-             '<a href="synthetic_gear.json">Modeled item catalog</a>'
-             + ('<a href="spec_gear_equity.csv">Spec stat and budget audit</a>'
-                '<a href="selected_gear_equity.csv">Per-race stat and hit audit</a>'
-                '<a href="gear_equity.json">Stat audit data</a>'
-                if model_v2 else '') +
-            '<a href="real-item-archive/">Previous real-item benchmark</a>'
-            '<a href="gear_updates.md">Prior gear comparisons</a>',
-        )
-        document = document.replace(
-            '<a href="build_reviews.md">Build reviews</a>',
-            '<a href="modelled_build_reviews.md">Modeled build reviews</a>'
-            '<a href="build_reviews.md">Previous build reviews</a>',
         )
     (args.output / "index.html").write_text(document)
     print(f"Review site staged at {args.output}")

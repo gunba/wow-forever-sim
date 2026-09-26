@@ -1,4 +1,9 @@
-# DPS verification
+# Earlier DPS verification notes
+
+> **Current tracker:** [Simulator questions and coverage](uncertainties.md).
+> The list below preserves earlier test descriptions, not current task status.
+> T50, T51 and T52 were reused for different questions; the canonical register
+> keeps qualified aliases and gives each question its own stable ID.
 
 Reviewed against the current **28-build / 184-profile benchmark** and updated
 on 25 September 2026. This is a list of remaining DPS uncertainties,
