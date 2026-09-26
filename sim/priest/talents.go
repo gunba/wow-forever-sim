@@ -344,6 +344,23 @@ func (priest *Priest) registerInnerFocus() {
 
 	actionID := core.ActionID{SpellID: 14751}
 
+	critAffected := func(spell *core.Spell) bool {
+		if !priest.Env.IsForever() {
+			return spell.Flags.Matches(SpellFlagPriest) && spell.Cost != nil
+		}
+		// Effect 692357's crit mask differs from effect 692356's free-cast
+		// mask. Penance's modeled bolts share their parent's SpellCode.
+		switch spell.SpellCode {
+		case SpellCode_PriestSmite, SpellCode_PriestMindBlast, SpellCode_PriestShadowWordPain,
+			SpellCode_PriestDevouringPlague, SpellCode_PriestHolyFire, SpellCode_PriestHolyNova,
+			SpellCode_PriestPenance, SpellCode_PriestFlashHeal, SpellCode_PriestGreaterHeal,
+			SpellCode_PriestHeal, SpellCode_PriestVampiricTouch:
+			return true
+		default:
+			return false
+		}
+	}
+
 	priest.InnerFocusAura = priest.RegisterAura(core.Aura{
 		Label:    "Inner Focus",
 		ActionID: actionID,
@@ -352,6 +369,8 @@ func (priest *Priest) registerInnerFocus() {
 			for _, spell := range priest.Spellbook {
 				if spell.Flags.Matches(SpellFlagPriest) && spell.Cost != nil {
 					spell.Cost.Multiplier -= 100
+				}
+				if critAffected(spell) {
 					spell.BonusCritRating += 25 * core.SpellCritRatingPerCritChance
 				}
 			}
@@ -360,6 +379,8 @@ func (priest *Priest) registerInnerFocus() {
 			for _, spell := range priest.Spellbook {
 				if spell.Flags.Matches(SpellFlagPriest) && spell.Cost != nil {
 					spell.Cost.Multiplier += 100
+				}
+				if critAffected(spell) {
 					spell.BonusCritRating -= 25 * core.SpellCritRatingPerCritChance
 				}
 			}

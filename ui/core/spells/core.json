@@ -219,11 +219,12 @@
 		"note": "The eater's aura: a 5% chance on melee hit, 10 sec internal cooldown, to breathe the 15851 fire. Unchanged from upstream Classic.",
 		"source": "classic"
 	},
-	"16190": {
+	"17359": {
 		"ability": "Mana Tide Totem",
 		"file": "sim/core/buffs.go",
-		"note": "290 mana per tick, four ticks over 12 sec, 5 min cooldown; unchanged from upstream Classic.",
-		"source": "classic"
+		"note": "Client rank 3 at level 58: 60 base mana cost, 1 sec GCD and 5 min shared rank cooldown. Four party-only pulses of 290 mana at 3/6/9/12 sec. The tagged external-provider approximation charges no recipient cast cost; a Shaman's owned spell in water_totems.go pays its cost and occupies the water slot.",
+		"tooltip": "60 Mana\nInstant\n5 min cooldown\nRestores 290 mana every 3 seconds to party members for 12 seconds.",
+		"source": "forever"
 	},
 	"16321": {
 		"ability": "Juju Escape",
@@ -319,11 +320,19 @@
 		"note": "The published Forever racial set still gives the dwarf Stoneform, and the commit that aligned the racials to that list left it alone: +10% armor for 8 sec on a 3 min cooldown, as in Classic.",
 		"source": "classic"
 	},
+	"20905": {
+		"ability": "Trueshot Aura",
+		"tooltip": "Trueshot Aura\nIncreases ranged attack power by 75. Does not grant melee attack power.",
+		"file": "sim/core/buffs.go",
+		"note": "The level-50 rank grants 75 ranged attack power and no melee AP. It is stronger than level-60 rank 20906 (50 RAP), so the external aura uses 20905.",
+		"source": "forever"
+	},
 	"20906": {
 		"ability": "Trueshot Aura",
 		"file": "sim/core/buffs.go",
-		"note": "100 attack power, paid into both the melee and the ranged pool here; unchanged from upstream Classic.",
-		"source": "classic"
+		"source": "forever",
+		"tooltip": "Trueshot Aura\nIncreases ranged attack power by 50.",
+		"note": "The level-60 rank is weaker than level-50 rank 20905. Forever simulations use the latter; this ID remains in the legacy ruleset path."
 	},
 	"22817": {
 		"ability": "Fengus' Ferocity",
@@ -594,8 +603,9 @@
 	},
 	"9910": {
 		"ability": "Thorns",
+		"tooltip": "Thorns\nReturns 22 Nature damage when struck in melee, before the configured talent modifier.",
 		"file": "sim/core/buffs.go",
-		"note": "18 Nature damage per melee hit taken, +25% per point of Brambles; unchanged from upstream Classic.",
-		"source": "classic"
+		"note": "Client 1.60.1.70009 effect 687684: 22 Nature damage per melee hit taken, with no level growth or spell-power coefficient. The configured Improved Thorns/Brambles modifier remains separate. Classic ruleset retains 18.",
+		"source": "forever"
 	}
 }

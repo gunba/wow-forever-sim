@@ -8,6 +8,34 @@ The window is **September 24, 03:33:34 UTC through September 26, 03:33:34 UTC, 2
 
 The preceding [weekly review](weekly_review.md), its corrections, refreshed results and [Flurry review](flurry_review.md) are published. The live database and results match the release files; the live Fury replay and all three tank pages match native calculations. **The additional gaps below are not yet included in those results.** No new talents, gear or rotation changes were made for this follow-up.
 
+### Implementation status
+
+The follow-up corrections are in development; the published numbers have **not** been refreshed for them.
+
+Implemented in the working engine:
+
+- Spirit-based Life Tap, with level-capped rank bases, separate health payment and mana return, no damage/proc scaling, and rank-correct pet mana metrics. Improved Life Tap follows the current parent spell's health-and-mana formula; Tier 1 multiplies mana only. Non-tanking DPS retains its existing external-healing abstraction.
+- Demonic Knowledge's explicit pet bonus, and Focused Fire on both the owner and active pet, with dismissal/resummon handling. Existing general pet inheritance is preserved, not introduced by this change.
+- Client-mask Hunter cost/crit modifiers. Verification also found missing **Efficiency discounts for Hawk and Volley**. The fixed Marksmanship profile now reports about **5.5 seconds** of mana limitation in the 200-iteration regression, rather than receiving an unsupported Sniper Shot discount; its APL is unchanged.
+- Stronger legal Trueshot rank, Thorns' 22 base damage, whole-school Moonfury, flat-threat Subtlety, Improved Healing on Penance and the separate Inner Focus crit mask.
+- All five Cone of Cold and four Frost Nova damage ranks, shared rank cooldowns, relevant talents, Cold Snap and 10-yard range checks. Root/slow control and cone geometry are not simulated. At level 60, Cone of Cold rank 5 has a **343** midpoint, not the tooltip's level-63-capped **347.5**. Frost Nova rank 4 caps at a **75.5** midpoint. Variance spreads the unscaled base in the captured data/tooltip, rather than multiplying the level-adjusted midpoint.
+- Owned Mana Tide's three legal ranks: **10/30/60 mana**, restoring **88/197/290 per pulse**, respectively. Four pulses at three-second intervals, party scope, one-second GCD, five-minute shared rank cooldown and Totemic Focus cost reduction. Dropping another owned water totem cancels remaining Tide pulses; Tide cancels owned Healing Stream. It is not added as a free extra external cooldown. The manually selected Mana Spring/Wisdom buff remains an external-provider approximation, not a second owned totem; automation of the owned Mana Spring buff itself remains a pre-existing coverage gap.
+- Incomplete APL casts return no action instead of panicking. The arbitrary aura-count ceiling is removed; duplicate-registration and finalized-environment guards remain.
+
+The qualified Seal/shield/Windfury/form differences remain unverified server behavior and are not imported. Spell metadata is updated alongside the engine; no gear search or talent/APL campaign accompanies these corrections.
+
+Verification uses the captured `SpellEffect_1.60.1.70009.csv`
+(SHA-256 `fdecddfd93a3c27b48d7bbbebc8cc733a502fa8d58de623646550f9a5cffeb00`),
+the pinned upstream store/trait data and current Forever spell pages.
+Regression coverage is in `tools/forever_bench/upstream_followup_test.go`,
+`tools/forever_bench/mana_tide_test.go`, `sim/warlock/lifetap_test.go`
+and the core APL/aura tests. The source scanner also follows typed rank-slice
+parameters, so the new Mage ranks cannot disappear from the coverage check.
+
+The legacy `TestP1Hunter` and `TestP1Mage` suites reference removed item IDs
+272491 and 272457 and stop before exercising these changes. Current-profile
+regressions, not those obsolete gear fixtures, cover the affected agents.
+
 ## Source-supported gaps
 
 Most of these appear in the upstream [talent confidence pass, `8dc1353e26`](https://github.com/ElliotWood/Forever/commit/8dc1353e26e5b65cf11293cfd1399668020cac34). The findings were compared with client effects, descriptions and our implementations rather than accepted solely because that commit calls them fixes.
@@ -15,7 +43,7 @@ Most of these appear in the upstream [talent confidence pass, `8dc1353e26`](http
 | Area | Finding in this simulator | Proposed correction and evidence |
 |---|---|---|
 | **Warlock: Life Tap** | `sim/warlock/lifetap.go` still calculates the return from a self-targeted damage result with a spell-power coefficient. | Use the current Spirit-based conversion, not spell power or outgoing damage modifiers. [Life Tap 11689](https://www.wowhead.com/forever/spell=11689/life-tap) explicitly names Spirit. Separate the mana formula from the health-cost/healing policy; see the important upstream mismatch below. |
-| **Warlock: Demonic Knowledge** | `sim/warlock/talents.go` gives the owner the level-based spell damage, but not the active demon. | Apply the explicit pet bonus as well. [412732](https://www.wowhead.com/forever/spell=412732/demonic-knowledge) names both owner and demon. This is a talent bonus, not permission to restore general owner-stat inheritance. |
+| **Warlock: Demonic Knowledge** | `sim/warlock/talents.go` gave the owner the level-based spell damage, but not the active demon. | Apply the explicit pet bonus as well. [412732](https://www.wowhead.com/forever/spell=412732/demonic-knowledge) names both owner and demon. The existing engine already has general owner-stat inheritance; this explicit talent bonus is additional and must not count inherited stats twice. |
 | **Hunter: Focused Fire** | `sim/hunter/talents.go` applies the active-pet damage bonus only to the Hunter. | Apply the 1/2% bonus to the pet too. [1223755](https://www.wowhead.com/forever/spell=1223755/focused-fire) explicitly covers both. |
 | **Hunter: Predator's Edge** | The crit-damage modifier uses every melee-defense-type spell, which is broader than the client's affected-spell mask. | Limit that part to the supported Hunter abilities, excluding ordinary auto-attacks and the modeled Hawk strike. Keep the separate off-hand damage effect separate. SpellEffect 1340259 is a masked spell modifier, not a general melee-crit modifier. |
 | **Hunter: Efficiency / Resourcefulness** | Broad shot/melee filters discount Sniper Shot and Strider Kick beyond the client masks. | Efficiency's mask excludes both; Resourcefulness's cost mask excludes Strider Kick. Compare effects 696992 and 1134467 with the abilities' family flags. The resource proc is a separate effect and must not be changed along with the cost filter. |

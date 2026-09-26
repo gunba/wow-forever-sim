@@ -7,6 +7,13 @@ import (
 	"github.com/wowsims/classic/sim/core/proto"
 )
 
+func TestCastSpellWithoutSpellID(t *testing.T) {
+	rot := &APLRotation{unit: &Unit{}}
+	if action := rot.newActionCastSpell(&proto.APLActionCastSpell{}); action != nil {
+		t.Fatal("an incomplete cast action must not create an executable action")
+	}
+}
+
 func TestValueConst(t *testing.T) {
 	sim := &Simulation{}
 	unit := &Unit{}

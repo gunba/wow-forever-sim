@@ -1,4 +1,18 @@
 {
+	"16190": {
+		"ability": "Mana Tide Totem",
+		"file": "sim/shaman/water_totems.go",
+		"source": "forever",
+		"tooltip": "10 Mana\nInstant\n5 min cooldown\nRank 1: restores 88 mana every 3 seconds to party members for 12 seconds.",
+		"note": "Client 70009: level 40; child 16191/effect 693253. Four direct mana pulses, unaffected by haste or MP5 interpretation. Totemic Focus reduces placement cost. Replacing the owned water totem stops its remaining pulses."
+	},
+	"17354": {
+		"ability": "Mana Tide Totem",
+		"file": "sim/shaman/water_totems.go",
+		"source": "forever",
+		"tooltip": "30 Mana\nInstant\n5 min cooldown\nRank 2: restores 197 mana every 3 seconds to party members for 12 seconds.",
+		"note": "Client 70009: level 48; child 17355/effect 694604. Shares cooldown and water-slot behavior with ranks 1 and 3. Rank 3 is documented under 17359 in core.json."
+	},
 	"324": {
 		"ability": "Lightning Shield",
 		"file": "sim/shaman/lightning_shield.go",

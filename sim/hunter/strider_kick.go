@@ -14,6 +14,7 @@ func (hunter *Hunter) registerStriderKickSpell() {
 	}
 
 	hunter.StriderKick = hunter.RegisterSpell(core.SpellConfig{
+		SpellCode:   SpellCode_HunterStriderKick,
 		ActionID:    core.ActionID{SpellID: 1317257},
 		SpellSchool: core.SpellSchoolPhysical,
 		DefenseType: core.DefenseTypeMelee,

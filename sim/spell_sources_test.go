@@ -578,15 +578,29 @@ func bindNames(locals map[string]ast.Expr, list []*ast.Field) {
 }
 
 func localTypeName(locals map[string]ast.Expr, name string) string {
-	bound, ok := locals[name]
-	if !ok {
-		return ""
+	// A range element may point to a typed slice parameter through an
+	// identifier, rather than directly to the parameter's synthetic literal.
+	for depth := 0; depth <= len(locals); depth++ {
+		switch bound := locals[name].(type) {
+		case *ast.CompositeLit:
+			return typeName(bound.Type)
+		case *ast.Ident:
+			name = bound.Name
+		default:
+			return ""
+		}
 	}
-	lit, ok := bound.(*ast.CompositeLit)
-	if !ok {
-		return ""
+	return ""
+}
+
+func TestSpellSourceScannerFollowsTypedRangeParameter(t *testing.T) {
+	locals := map[string]ast.Expr{
+		"rank":  ast.NewIdent("ranks"),
+		"ranks": &ast.CompositeLit{Type: &ast.ArrayType{Elt: ast.NewIdent("frostAreaRank")}},
 	}
-	return typeName(lit.Type)
+	if got := localTypeName(locals, "rank"); got != "frostAreaRank" {
+		t.Fatalf("range element resolved to %q", got)
+	}
 }
 
 func typeName(expr ast.Expr) string {

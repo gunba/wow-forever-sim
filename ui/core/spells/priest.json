@@ -154,19 +154,20 @@
 	"1316995": {
 		"ability": "Penance",
 		"assumptions": [
-			"The three bolts are spread evenly over the 2 sec channel, every 0.67 sec, instead of landing at 0, 1 and 2 sec.",
+			"Only the level-60 damage rank is implemented; lower ranks are not selectable.",
 			"The healing half (1316991, 673) is not simulated."
 		],
 		"file": "sim/priest/penance.go",
-		"note": "Beta client 1.60.1.69893: rank 4, learned at 60 (ranks 1-3: 402174, 1240720, 1240721 at 30, 40, 50). 355 mana, 12 sec cooldown, 131 a bolt (1316993) at .285. The client's rank 3 bolt is 180, larger than rank 4's.",
+		"note": "Rank 4 at level 60: 355 base mana cost, reduced 5/10/15% by Improved Healing; 12 sec cooldown, 131 base damage per bolt and .285 coefficient. One immediate bolt, then bolts at 1 and 2 seconds before channel haste. Inner Focus's crit mask covers the modeled damage bolts.",
 		"source": "assumed",
 		"tooltip": "355 Mana\nChanneled\n12 sec cooldown\nLaunches a volley of holy light at the target, causing 131 Holy damage to an enemy, or 673 healing to an ally, instantly and every 1 sec for 2 sec."
 	},
 	"14751": {
 		"ability": "Inner Focus",
+		"tooltip": "Instant\n3 min cooldown\nMakes the next eligible Priest spell free. Adds 25% critical chance only to spells in the separate crit mask; not Mind Flay, Shadow Word: Death or Starshards.",
 		"file": "sim/priest/talents.go",
-		"note": "Forever's demo tooltip is word for word Classic's 14751 and the sim matches it exactly: 100% off the next priest spell, +25% critical effect chance, 3 min cooldown.",
-		"source": "classic"
+		"note": "Effects 692356 and 692357 have different affected-spell masks. The free cast includes Mind Flay, Shadow Word: Death and Starshards; the 25% crit bonus does not. Penance's damage-child mask is represented on its modeled parent spell. Three-minute cooldown.",
+		"source": "forever"
 	},
 	"14909": {
 		"ability": "Searing Light",

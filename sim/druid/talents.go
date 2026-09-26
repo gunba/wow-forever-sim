@@ -299,6 +299,13 @@ func (druid *Druid) applyMoonfury() {
 	}
 
 	multiplier := 0.02 * float64(druid.Talents.Moonfury)
+	if druid.Env.IsForever() {
+		// 16896 / effect 694153: MOD_DAMAGE_PERCENT_DONE, Arcane | Nature (72).
+		// This includes spell power and is not restricted to the old Balance spell list.
+		druid.PseudoStats.SchoolDamageDealtMultiplier[stats.SchoolIndexArcane] *= 1 + multiplier
+		druid.PseudoStats.SchoolDamageDealtMultiplier[stats.SchoolIndexNature] *= 1 + multiplier
+		return
+	}
 
 	druid.RegisterAura(core.Aura{
 		Label: "Moonfury",
@@ -474,6 +481,10 @@ func (druid *Druid) applySubtlety() {
 	druid.OnSpellRegistered(func(spell *core.Spell) {
 		if spell.SpellSchool.Matches(core.SpellSchoolArcane | core.SpellSchoolNature) {
 			spell.ThreatMultiplier *= threatMultiplier
+			if druid.Env.IsForever() {
+				// Flat threat is added after ThreatMultiplier in ThreatFromDamage.
+				spell.FlatThreatBonus *= threatMultiplier
+			}
 		}
 	})
 }

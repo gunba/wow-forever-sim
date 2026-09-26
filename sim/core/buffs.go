@@ -716,6 +716,10 @@ func RetributionAura(character *Character, points int32) *Aura {
 
 func ThornsAura(character *Character, points int32) *Aura {
 	baseDamage := 18.0
+	if character.Env != nil && character.Env.IsForever() {
+		// SpellEffect 687684 (9910): 22, with no level or power coefficient.
+		baseDamage = 22
+	}
 
 	actionID := ActionID{SpellID: 9910}
 	damage := float64(baseDamage) * (1 + 0.25*float64(points))
@@ -1315,7 +1319,7 @@ func InnervateAura(character *Character, actionTag int32) *Aura {
 	})
 }
 
-var ManaTideTotemActionID = ActionID{SpellID: 16190}
+var ManaTideTotemActionID = ActionID{SpellID: 17359}
 var ManaTideTotemAuraTag = "ManaTideTotem"
 
 const ManaTideTotemDuration = time.Second * 12
@@ -1550,10 +1554,15 @@ func BattleShoutAura(unit *Unit, impBattleShout int32, boomingVoicePts int32, ha
 func TrueshotAura(unit *Unit) *Aura {
 	rangedAP := 50.0
 	meleeAP := 0.0
+	spellID := int32(20906)
+	if unit.Env != nil && unit.Env.IsForever() {
+		// Rank 4 is learnable at 50 and stronger than rank 5 (75 versus 50 RAP).
+		spellID, rangedAP = 20905, 75
+	}
 
 	aura := MakePermanent(unit.RegisterAura(Aura{
 		Label:    "Trueshot Aura",
-		ActionID: ActionID{SpellID: 20906},
+		ActionID: ActionID{SpellID: spellID},
 	}))
 
 	makeExclusiveBuff(aura, BuffConfig{

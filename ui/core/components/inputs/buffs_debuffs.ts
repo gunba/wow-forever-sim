@@ -248,7 +248,7 @@ export const BattleShoutBuff = withLabel(
 
 export const TrueshotAuraBuff = withLabel(
 	makeBooleanRaidBuffInput({
-		actionId: () => ActionId.fromSpellId(20906),
+		actionId: () => ActionId.fromSpellId(20905),
 		fieldName: 'trueshotAura',
 	}),
 	'Trueshot Aura',

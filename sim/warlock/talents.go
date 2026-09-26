@@ -445,14 +445,13 @@ func (warlock *Warlock) applyDemonicKnowledge() {
 		return
 	}
 
-	// The tooltip only pays the bonus out while a demon is active, so it rides on the pet
-	// rather than sitting on the character sheet.
+	// Owner and demon receive separate bonuses while the demon is active.
 	// 33/67/100% of level, the beta client's curve for the talent (412732).
 	bonus := []float64{0, 0.33, 0.67, 1.00}[warlock.Talents.DemonicKnowledge] * float64(warlock.Level)
 
 	demonicKnowledgeAura := warlock.RegisterAura(core.Aura{
 		Label:    "Demonic Knowledge",
-		ActionID: core.ActionID{SpellID: 35696},
+		ActionID: core.ActionID{SpellID: core.TernaryInt32(warlock.Env.IsForever(), 412732, 35696)},
 		Duration: core.NeverExpires,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
 			warlock.AddStatDynamic(sim, stats.SpellPower, bonus)
@@ -463,10 +462,32 @@ func (warlock *Warlock) applyDemonicKnowledge() {
 	})
 
 	for _, pet := range warlock.BasePets {
+		var petBonus *core.Aura
+		if warlock.Env.IsForever() {
+			// 412732 explicitly grants the demon its own bonus. Owner-stat
+			// inheritance is separate and remains handled by the pet stat system.
+			petBonus = pet.RegisterAura(core.Aura{
+				Label:    "Demonic Knowledge",
+				ActionID: core.ActionID{SpellID: 412732},
+				Duration: core.NeverExpires,
+				OnGain: func(aura *core.Aura, sim *core.Simulation) {
+					aura.Unit.AddStatDynamic(sim, stats.SpellPower, bonus)
+				},
+				OnExpire: func(aura *core.Aura, sim *core.Simulation) {
+					aura.Unit.AddStatDynamic(sim, stats.SpellPower, -bonus)
+				},
+			})
+		}
 		pet.ApplyOnPetEnable(func(sim *core.Simulation) {
 			demonicKnowledgeAura.Activate(sim)
+			if petBonus != nil {
+				petBonus.Activate(sim)
+			}
 		})
 		pet.ApplyOnPetDisable(func(sim *core.Simulation, isSacrifice bool) {
+			if petBonus != nil {
+				petBonus.Deactivate(sim)
+			}
 			demonicKnowledgeAura.Deactivate(sim)
 		})
 	}

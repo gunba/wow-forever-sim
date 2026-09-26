@@ -76,8 +76,7 @@ func (shaman *Shaman) newHealingStreamTotemSpellConfig(rank int) core.SpellConfi
 	}
 
 	config.ApplyEffects = func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
-		shaman.TotemExpirations[WaterTotem] = sim.CurrentTime + duration
-		shaman.ActiveTotems[WaterTotem] = spell
+		shaman.replaceWaterTotem(sim, spell, duration)
 
 		for _, agent := range shaman.Party.Players {
 			spell.Hot(&agent.GetCharacter().Unit).Activate(sim)
@@ -124,8 +123,87 @@ func (shaman *Shaman) newManaSpringTotemSpellConfig(rank int) core.SpellConfig {
 	spell.RequiredLevel = level
 	spell.Rank = rank
 	spell.ApplyEffects = func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
-		shaman.TotemExpirations[WaterTotem] = sim.CurrentTime + duration
-		shaman.ActiveTotems[WaterTotem] = spell
+		shaman.replaceWaterTotem(sim, spell, duration)
 	}
 	return spell
+}
+
+func (shaman *Shaman) replaceWaterTotem(sim *core.Simulation, next *core.Spell, duration time.Duration) {
+	if old := shaman.ActiveTotems[WaterTotem]; old != nil && len(old.Dots()) > 0 {
+		for _, agent := range shaman.Party.Players {
+			if hot := old.Hot(&agent.GetCharacter().Unit); hot != nil {
+				hot.Cancel(sim)
+			}
+		}
+	}
+	shaman.TotemExpirations[WaterTotem] = sim.CurrentTime + duration
+	shaman.ActiveTotems[WaterTotem] = next
+}
+
+var ManaTideTotemSpellId = []int32{0, 16190, 17354, 17359}
+var ManaTideTotemManaCost = []float64{0, 10, 30, 60}
+var ManaTideTotemManaRestore = []float64{0, 88, 197, 290}
+var ManaTideTotemLevel = []int{0, 40, 48, 58}
+
+func (shaman *Shaman) registerManaTideTotemSpell() {
+	if !shaman.Env.IsForever() || !shaman.Talents.ManaTideTotem {
+		return
+	}
+	shaman.ManaTideTotem = make([]*core.Spell, len(ManaTideTotemSpellId))
+	timer := shaman.NewTimer()
+	var highest int
+	for rank := 1; rank < len(ManaTideTotemSpellId); rank++ {
+		if ManaTideTotemLevel[rank] > int(shaman.Level) {
+			continue
+		}
+		spellID, restore := ManaTideTotemSpellId[rank], ManaTideTotemManaRestore[rank]
+		config := shaman.newTotemSpellConfig(ManaTideTotemManaCost[rank], spellID)
+		config.SpellSchool = core.SpellSchoolNature
+		config.Flags |= core.SpellFlagHelpful
+		config.RequiredLevel, config.Rank = ManaTideTotemLevel[rank], rank
+		config.Cast.CD = core.Cooldown{Timer: timer, Duration: 5 * time.Minute}
+		config.ExtraCastCondition = func(_ *core.Simulation, _ *core.Unit) bool {
+			return !shaman.HasActiveAuraWithTag(core.ManaTideTotemAuraTag)
+		}
+		metrics := make(map[*core.Character]*core.ResourceMetrics)
+		for _, agent := range shaman.Party.Players {
+			character := agent.GetCharacter()
+			if character.HasManaBar() {
+				metrics[character] = character.NewManaMetrics(core.ActionID{SpellID: spellID})
+			}
+		}
+		config.Hot = core.DotConfig{
+			Aura: core.Aura{
+				Label: fmt.Sprintf("Owned Mana Tide (Rank %d)", rank),
+				Tag:   core.ManaTideTotemAuraTag,
+			},
+			NumberOfTicks: 4,
+			TickLength:    3 * time.Second,
+			OnTick: func(sim *core.Simulation, _ *core.Unit, _ *core.Dot) {
+				// Direct periodic mana, not MP5: no haste or MP5-mode scaling.
+				for _, agent := range shaman.Party.Players {
+					character := agent.GetCharacter()
+					if metric := metrics[character]; metric != nil {
+						character.AddMana(sim, restore, metric)
+					}
+				}
+			},
+		}
+		config.ApplyEffects = func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
+			shaman.replaceWaterTotem(sim, spell, 12*time.Second)
+			spell.Hot(&shaman.Unit).Apply(sim)
+		}
+		shaman.ManaTideTotem[rank] = shaman.RegisterSpell(config)
+		shaman.WaterTotems = append(shaman.WaterTotems, shaman.ManaTideTotem[rank])
+		highest = rank
+	}
+	if highest > 0 {
+		shaman.AddMajorCooldown(core.MajorCooldown{
+			Spell: shaman.ManaTideTotem[highest],
+			Type:  core.CooldownTypeMana,
+			ShouldActivate: func(_ *core.Simulation, character *core.Character) bool {
+				return character.MaxMana()-character.CurrentMana() >= 4*ManaTideTotemManaRestore[highest]
+			},
+		})
+	}
 }

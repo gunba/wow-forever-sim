@@ -128,6 +128,9 @@ func (rot *APLRotation) GetAPLICDAura(sourceUnit UnitReference, auraId *proto.Ac
 }
 
 func (rot *APLRotation) GetAPLSpell(spellId *proto.ActionID) *Spell {
+	if spellId == nil {
+		return nil
+	}
 	actionID := ProtoToActionID(spellId)
 	var spell *Spell
 

@@ -32,7 +32,14 @@ func TestHunterBaselineManaSustain(t *testing.T) {
 				t.Fatal(err)
 			}
 			r := run(b, p, 200, 20260920)
-			if r.OOMSeconds > 5 {
+			limit := 5.0
+			if b.Key == "marksmanship" {
+				// Removing Efficiency's unsupported Sniper Shot discount
+				// gives this fixed profile about 5.5s of mana limitation.
+				// Still reject the former 20–30s starvation regression.
+				limit = 10
+			}
+			if r.OOMSeconds > limit {
 				t.Fatalf("mana-limited time = %.2fs in 300s", r.OOMSeconds)
 			}
 			metrics := &proto.UnitMetrics{}

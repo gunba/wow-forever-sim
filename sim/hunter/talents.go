@@ -24,7 +24,27 @@ func (hunter *Hunter) ApplyTalents() {
 		}
 
 		if hunter.Talents.FocusedFire > 0 {
-			hunter.PseudoStats.DamageDealtMultiplier *= 1 + 0.01*float64(hunter.Talents.FocusedFire)
+			multiplier := 1 + 0.01*float64(hunter.Talents.FocusedFire)
+			if hunter.Env.IsForever() {
+				// 1223755: owner and pet damage, while the pet is active.
+				aura := hunter.RegisterAura(core.Aura{
+					Label:    "Focused Fire",
+					ActionID: core.ActionID{SpellID: 1223755},
+					Duration: core.NeverExpires,
+					OnGain: func(_ *core.Aura, _ *core.Simulation) {
+						hunter.PseudoStats.DamageDealtMultiplier *= multiplier
+						hunter.pet.PseudoStats.DamageDealtMultiplier *= multiplier
+					},
+					OnExpire: func(_ *core.Aura, _ *core.Simulation) {
+						hunter.PseudoStats.DamageDealtMultiplier /= multiplier
+						hunter.pet.PseudoStats.DamageDealtMultiplier /= multiplier
+					},
+				})
+				hunter.pet.ApplyOnPetEnable(func(sim *core.Simulation) { aura.Activate(sim) })
+				hunter.pet.ApplyOnPetDisable(func(sim *core.Simulation) { aura.Deactivate(sim) })
+			} else {
+				hunter.PseudoStats.DamageDealtMultiplier *= multiplier
+			}
 		}
 	} else if hunter.Talents.LoneWolf {
 		hunter.PseudoStats.DamageDealtMultiplier *= 1.2
@@ -283,11 +303,23 @@ func (hunter *Hunter) applyEfficiency() {
 	}
 
 	hunter.OnSpellRegistered(func(spell *core.Spell) {
-		// applies to Shots, Stings and melee abilities
 		if spell.Cost == nil {
 			return
 		}
-		if spell.Flags.Matches(SpellFlagSting|SpellFlagShot) || spell.ProcMask.Matches(core.ProcMaskMeleeSpecial) {
+		affected := spell.Flags.Matches(SpellFlagSting|SpellFlagShot) || spell.ProcMask.Matches(core.ProcMaskMeleeSpecial)
+		if hunter.Env.IsForever() {
+			// 19416, effect 696992. Includes Hawk and Volley, not Sniper or Strider.
+			switch spell.SpellCode {
+			case SpellCode_HunterAimedShot, SpellCode_HunterArcaneShot, SpellCode_HunterMultiShot,
+				SpellCode_HunterSerpentSting, SpellCode_HunterRaptorStrike, SpellCode_HunterRaptorStrikeHit,
+				SpellCode_HunterMongooseBite, SpellCode_HunterWingClip, SpellCode_HunterLaceratingStrikes,
+				SpellCode_HunterSummonHawk, SpellCode_HunterVolley:
+				affected = true
+			default:
+				affected = false
+			}
+		}
+		if affected {
 			spell.Cost.Multiplier -= 3 * hunter.Talents.Efficiency
 		}
 	})
@@ -307,7 +339,19 @@ func (hunter *Hunter) applyResourcefulness() {
 		if spell.Cost == nil {
 			return
 		}
-		if spell.Flags.Matches(SpellFlagTrap) || spell.ProcMask.Matches(core.ProcMaskMeleeSpecial) {
+		affected := spell.Flags.Matches(SpellFlagTrap) || spell.ProcMask.Matches(core.ProcMaskMeleeSpecial)
+		if hunter.Env.IsForever() {
+			// 440529, effect 1134467: traps, Raptor, Wing Clip and Mongoose.
+			switch spell.SpellCode {
+			case SpellCode_HunterExplosiveTrap, SpellCode_HunterFreezingTrap, SpellCode_HunterImmolationTrap,
+				SpellCode_HunterRaptorStrike, SpellCode_HunterRaptorStrikeHit,
+				SpellCode_HunterMongooseBite, SpellCode_HunterWingClip:
+				affected = true
+			default:
+				affected = false
+			}
+		}
+		if affected {
 			spell.Cost.Multiplier -= costReduction
 		}
 	})
@@ -337,7 +381,18 @@ func (hunter *Hunter) applyPredatorsEdge() {
 	ohMultiplier := 1 + 0.1*float64(hunter.Talents.PredatorsEdge)
 
 	hunter.OnSpellRegistered(func(spell *core.Spell) {
-		if spell.DefenseType == core.DefenseTypeMelee {
+		critAffected := spell.DefenseType == core.DefenseTypeMelee
+		if hunter.Env.IsForever() {
+			// 1310627, effect 1340259 is a spell-family crit-damage modifier.
+			switch spell.SpellCode {
+			case SpellCode_HunterRaptorStrike, SpellCode_HunterRaptorStrikeHit, SpellCode_HunterMongooseBite,
+				SpellCode_HunterWingClip, SpellCode_HunterLaceratingStrikes, SpellCode_HunterStriderKick:
+				critAffected = true
+			default:
+				critAffected = false
+			}
+		}
+		if critAffected {
 			spell.CritDamageBonus += critDamageBonus
 		}
 		if spell.ProcMask.Matches(core.ProcMaskMeleeOH) && spell.BonusCoefficient > 0 {

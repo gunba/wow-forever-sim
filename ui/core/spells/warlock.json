@@ -1,4 +1,11 @@
 {
+	"412732": {
+		"ability": "Demonic Knowledge",
+		"file": "sim/warlock/talents.go",
+		"source": "forever",
+		"tooltip": "Passive\nWhile a demon is active, both the Warlock and demon gain spell power equal to 33/67/100% of the Warlock's level.",
+		"note": "The demon's explicit talent bonus is additional to ordinary owner-stat inheritance. Both bonuses are removed on dismissal and restored on resummoning."
+	},
 	"1014": {
 		"ability": "Bane of Agony",
 		"file": "sim/warlock/curses.go",
@@ -115,21 +122,24 @@
 	},
 	"11687": {
 		"ability": "Life Tap",
+		"tooltip": "Instant\nRank 4: converts (220 + Spirit) × Improved Life Tap health into mana at level 60. Tier 1 increases only the mana return.",
 		"file": "sim/warlock/lifetap.go",
-		"note": "Unchanged in the beta client 1.60.1.69893.",
-		"source": "classic"
+		"note": "Current Spirit conversion: (level-adjusted base + Spirit) × (1 + 10% per Improved Life Tap point), for both health and mana. Rank 4 base is 210 at level 36, +1 per level through 46. Tier 1 increases mana only. Non-tanking DPS retains the external-healing abstraction; tanking pays health without damage procs.",
+		"source": "forever"
 	},
 	"11688": {
 		"ability": "Life Tap",
+		"tooltip": "Instant\nRank 5: converts (310 + Spirit) × Improved Life Tap health into mana at level 60. Tier 1 increases only the mana return.",
 		"file": "sim/warlock/lifetap.go",
-		"note": "Unchanged in the beta client 1.60.1.69893.",
-		"source": "classic"
+		"note": "Current Spirit conversion: (level-adjusted base + Spirit) × (1 + 10% per Improved Life Tap point), for both health and mana. Rank 5 base is 300 at level 46, +1 per level through 56. Tier 1 increases mana only. Non-tanking DPS retains the external-healing abstraction.",
+		"source": "forever"
 	},
 	"11689": {
 		"ability": "Life Tap",
+		"tooltip": "Instant\nRank 6: converts (424 + Spirit) × (1 + 10% per Improved Life Tap point) health into mana at level 60. Tier 1 increases only the mana return.",
 		"file": "sim/warlock/lifetap.go",
-		"note": "Unchanged in the beta client 1.60.1.69893.",
-		"source": "classic"
+		"note": "Current Spirit conversion: (424 + Spirit) × (1 + 10% per Improved Life Tap point) at level 60, for both health and mana. Effect 689914 starts at 420 at level 56 and grows by 1 per level; the 430 tooltip maximum is for level 66. Spell power and damage modifiers do not apply. Tier 1 increases mana only. Non-tanking DPS retains the external-healing abstraction.",
+		"source": "forever"
 	},
 	"11699": {
 		"ability": "Drain Life",
@@ -271,21 +281,24 @@
 	},
 	"1454": {
 		"ability": "Life Tap",
+		"tooltip": "Instant\nRank 1: converts (30 + Spirit) × Improved Life Tap health into mana at level 60. Tier 1 increases only the mana return.",
 		"file": "sim/warlock/lifetap.go",
-		"note": "Unchanged in the beta client 1.60.1.69893.",
-		"source": "classic"
+		"note": "Current Spirit conversion: (level-adjusted base + Spirit) × (1 + 10% per Improved Life Tap point), for both health and mana. Rank 1 base is 20 at level 6, +1 per level through 16. Tier 1 increases mana only. Non-tanking DPS retains the external-healing abstraction.",
+		"source": "forever"
 	},
 	"1455": {
 		"ability": "Life Tap",
+		"tooltip": "Instant\nRank 2: converts (75 + Spirit) × Improved Life Tap health into mana at level 60. Tier 1 increases only the mana return.",
 		"file": "sim/warlock/lifetap.go",
-		"note": "Unchanged in the beta client 1.60.1.69893.",
-		"source": "classic"
+		"note": "Current Spirit conversion: (level-adjusted base + Spirit) × (1 + 10% per Improved Life Tap point), for both health and mana. Rank 2 base is 65 at level 16, +1 per level through 26. Tier 1 increases mana only. Non-tanking DPS retains the external-healing abstraction.",
+		"source": "forever"
 	},
 	"1456": {
 		"ability": "Life Tap",
+		"tooltip": "Instant\nRank 3: converts (140 + Spirit) × Improved Life Tap health into mana at level 60. Tier 1 increases only the mana return.",
 		"file": "sim/warlock/lifetap.go",
-		"note": "Unchanged in the beta client 1.60.1.69893.",
-		"source": "classic"
+		"note": "Current Spirit conversion: (level-adjusted base + Spirit) × (1 + 10% per Improved Life Tap point), for both health and mana. Rank 3 base is 130 at level 26, +1 per level through 36. Tier 1 increases mana only. Non-tanking DPS retains the external-healing abstraction.",
+		"source": "forever"
 	},
 	"172": {
 		"ability": "Corruption",
@@ -604,7 +617,7 @@
 		"ability": "Demonic Knowledge",
 		"file": "sim/warlock/talents.go",
 		"foreverId": 412732,
-		"note": "Forever's talent is 412732; the sim keeps TBC's buff id 35696, which the Classic database does not have. Values from the beta client 1.60.1.69893 (spell_client.py).",
+		"note": "Legacy action alias for 412732. The Forever owner and demon auras now use the current talent ID and each receive 33/67/100% of level as spell power while the demon is active. Ordinary owner-stat inheritance is accounted for separately.",
 		"source": "forever",
 		"tooltip": "Passive\nIncreases your spell damage and your Demon pet's spell damage by up to 33/67/100% of your level while you have a summoned Demon pet active."
 	},

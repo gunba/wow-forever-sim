@@ -32,8 +32,8 @@
   },
   "mage": {
     "Blast Wave": ["conditional", "Implemented in sim/mage/blast_wave.go; the sampled builds do not select the talent."],
-    "Cone of Cold": ["not-implemented", "Short-range cone damage is not implemented. Existing Mage profiles stand at 20 yards. An in-range AoE/proximity scenario needs this ability and its talent interactions."],
-    "Frost Nova": ["not-implemented", "Short-range control/AoE damage is not implemented. A future in-range scenario must distinguish damage from boss freeze immunity."],
+    "Cone of Cold": ["conditional", "All five ranks are implemented in sim/mage/frost_area.go, including Improved Cone of Cold and Frost talent interactions. Requires the caster within 10 yards; targets are assumed clustered in the cone. Existing profiles remain at 20 yards."],
+    "Frost Nova": ["conditional", "All four damage ranks are implemented in sim/mage/frost_area.go, including Improved Frost Nova and Cold Snap. Requires 10-yard proximity. Does not model roots or grant Shatter against the raid boss."],
     "Felfire": ["awaiting-availability", "ClassMask=0 retained 24530 record is not proof of a player ability. No current teacher or trait path is established."],
     "Shoot": ["alias", "Wand attacks use the core Shoot action, not spell 5019 as their damage ID."]
   },

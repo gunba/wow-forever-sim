@@ -41,7 +41,12 @@ Beta build `1.60.1.69893` against Classic Era `1.15.9.69722`, read with `tools/d
 | Firebolt r1-r7 (Imp) | 7-10 ... 85-96 | 4-5, 7-9, 12-14, 18-19, 26-28, 36-39, 43-48 |
 | Lash of Pain r1-r6 (Succubus) | 33 ... 99 | 16, 22, 30, 36, 43, 50 |
 
-Unchanged in the client: Life Tap, Demon Armor, Amplify Curse, Soul Link, the summons, Siphon Life's and Wrack's
+Life Tap's current description converts `(level-adjusted base + Spirit) × Improved Life Tap`
+health into mana; it is not the inherited spell-power-scaled damage calculation.
+Tier 1 multiplies the mana return only. The non-tanking DPS model retains its external-healing
+abstraction; tanking pays the health as a resource cost, without damage procs.
+
+Unchanged in the earlier client comparison: Demon Armor, Amplify Curse, Soul Link, the summons, Siphon Life's and Wrack's
 coefficients, every cast time except Incinerate's, and every mana cost except Death Coil's and the new ranks.
 
 ## Checklist lines

@@ -28,6 +28,8 @@ const (
 	SpellCode_MagePyroblast
 	SpellCode_MageScorch
 	SpellCode_MageFrostfireBolt
+	SpellCode_MageConeOfCold
+	SpellCode_MageFrostNova
 )
 
 var TalentTreeSizes = [3]int{18, 17, 19}
@@ -64,12 +66,14 @@ type Mage struct {
 	BlastWave               []*core.Spell
 	Blizzard                []*core.Spell
 	Counterspell            *core.Spell
+	ConeOfCold              []*core.Spell
 	Evocation               *core.Spell
 	Fireball                []*core.Spell
 	FireBlast               []*core.Spell
 	Flamestrike             []*core.Spell
 	Frostbolt               []*core.Spell
 	FrostfireBolt           []*core.Spell
+	FrostNova               []*core.Spell
 	IceBarrier              []*core.Spell
 	IceLance                *core.Spell
 	Ignite                  *core.Spell
@@ -129,6 +133,7 @@ func (mage *Mage) Initialize() {
 	mage.registerBlastWaveSpell()
 	mage.registerBlizzardSpell()
 	mage.registerFlamestrikeSpell()
+	mage.registerFrostAreaSpells()
 
 	mage.registerEvocationCD()
 	mage.registerManaGemCD()

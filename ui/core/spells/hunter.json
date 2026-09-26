@@ -1,4 +1,11 @@
 {
+	"1223755": {
+		"ability": "Focused Fire",
+		"file": "sim/hunter/talents.go",
+		"source": "forever",
+		"tooltip": "Passive\nWhile a pet is active, increases both Hunter and pet damage by 1/2%.",
+		"note": "Client 70009 effect 1212003 and the current description explicitly cover both units. The bonus stops on dismissal and does not accumulate on resummoning."
+	},
 	"1299447": {
 		"ability": "Aspect of the Beast",
 		"file": "sim/hunter/aspects.go",

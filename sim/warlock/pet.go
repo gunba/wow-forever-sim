@@ -22,8 +22,6 @@ type WarlockPet struct {
 
 	SoulLinkAura *core.Aura
 
-	LifeTapManaMetrics *core.ResourceMetrics
-
 	manaPooling bool
 }
 

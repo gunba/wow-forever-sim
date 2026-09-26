@@ -109,6 +109,7 @@ type Shaman struct {
 	LightningShieldProcs   []*core.Spell // The damage component of lightning shield is a separate spell
 	MagmaTotem             []*core.Spell
 	ManaSpringTotem        []*core.Spell
+	ManaTideTotem          []*core.Spell
 	SearingTotem           []*core.Spell
 	StoneskinTotem         []*core.Spell
 	Stormstrike            *core.Spell
@@ -189,6 +190,7 @@ func (shaman *Shaman) Initialize() {
 	shaman.registerMagmaTotemSpell()
 	shaman.registerHealingStreamTotemSpell()
 	shaman.registerManaSpringTotemSpell()
+	shaman.registerManaTideTotemSpell()
 	shaman.registerWindfuryTotemSpell()
 	shaman.registerGraceOfAirTotemSpell()
 	shaman.registerWindwallTotemSpell()

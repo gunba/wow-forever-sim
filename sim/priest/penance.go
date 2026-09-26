@@ -31,7 +31,8 @@ func (priest *Priest) registerPenanceSpell() {
 		Rank:          1,
 
 		ManaCost: core.ManaCostOptions{
-			FlatCost: 355,
+			FlatCost:   355,
+			Multiplier: 100 - 5*priest.Talents.ImprovedHealing,
 		},
 
 		Cast: core.CastConfig{

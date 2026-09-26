@@ -1,4 +1,67 @@
 {
+	"120": {
+		"ability": "Cone of Cold",
+		"file": "sim/mage/frost_area.go",
+		"source": "forever",
+		"tooltip": "210 Mana\nInstant\n10 sec cooldown\nRank 1: 101 average Frost damage at level 60, plus 0.129 per spell power, to targets in a 10-yard cone.",
+		"note": "Client 70009: base 97 +0.8 per level from 26 through 31; variance 0.0970873758 spreads the unscaled base. Improved Cone of Cold adds 12/23/35%. Frost talents and Cold Snap apply. Targets are assumed clustered; slow/control and cone geometry are not modeled."
+	},
+	"8492": {
+		"ability": "Cone of Cold",
+		"file": "sim/mage/frost_area.go",
+		"source": "forever",
+		"tooltip": "290 Mana\nInstant\n10 sec cooldown\nRank 2: 149 average Frost damage at level 60, plus 0.129 per spell power, in a 10-yard cone.",
+		"note": "Client 70009: base 144 +1 per level from 34 through 39; variance 0.0915032700. Same talent and geometry treatment as rank 1."
+	},
+	"10159": {
+		"ability": "Cone of Cold",
+		"file": "sim/mage/frost_area.go",
+		"source": "forever",
+		"tooltip": "380 Mana\nInstant\n10 sec cooldown\nRank 3: 210 average Frost damage at level 60, plus 0.129 per spell power, in a 10-yard cone.",
+		"note": "Client 70009: base 204 +1.2 per level from 42 through 47; variance 0.0938967168. Same talent and geometry treatment as rank 1."
+	},
+	"10160": {
+		"ability": "Cone of Cold",
+		"file": "sim/mage/frost_area.go",
+		"source": "forever",
+		"tooltip": "465 Mana\nInstant\n10 sec cooldown\nRank 4: 273.5 average Frost damage at level 60, plus 0.129 per spell power, in a 10-yard cone.",
+		"note": "Client 70009: base 267 +1.3 per level from 50 through 55; variance 0.0938628167. Same talent and geometry treatment as rank 1."
+	},
+	"10161": {
+		"ability": "Cone of Cold",
+		"file": "sim/mage/frost_area.go",
+		"source": "forever",
+		"tooltip": "555 Mana\nInstant\n10 sec cooldown\nRank 5: about 328.43–357.57 Frost damage at level 60, plus 0.129 per spell power, in a 10-yard cone.",
+		"note": "Client 70009: base 340 +1.5 per level from 58 through 63; level-60 mean 343. The Wowhead tooltip's mean 347.5 uses the level-63 cap. Variance 0.0857142881 spreads base 340. Same talent and geometry treatment as rank 1."
+	},
+	"122": {
+		"ability": "Frost Nova",
+		"file": "sim/mage/frost_area.go",
+		"source": "forever",
+		"tooltip": "55 Mana\nInstant\n25 sec cooldown\nRank 1: 22.5 average Frost damage at level 60, plus 0.029 per spell power, within 10 yards.",
+		"note": "Client 70009: base 20 +0.5 per level from 10 through 15; variance 0.1. Improved Frost Nova reduces cooldown by 2/4 sec; Frost talents and Cold Snap apply. Root/control is not modeled and does not freeze the raid boss."
+	},
+	"865": {
+		"ability": "Frost Nova",
+		"file": "sim/mage/frost_area.go",
+		"source": "forever",
+		"tooltip": "85 Mana\nInstant\n25 sec cooldown\nRank 2: 36.5 average Frost damage at level 60, plus 0.029 per spell power, within 10 yards.",
+		"note": "Client 70009: base 34 +0.5 per level from 26 through 31; variance 0.1142857075. Same talent and control treatment as rank 1."
+	},
+	"6131": {
+		"ability": "Frost Nova",
+		"file": "sim/mage/frost_area.go",
+		"source": "forever",
+		"tooltip": "115 Mana\nInstant\n25 sec cooldown\nRank 3: 55.5 average Frost damage at level 60, plus 0.029 per spell power, within 10 yards.",
+		"note": "Client 70009: base 53 +0.5 per level from 40 through 45; variance 0.1090909094. Same talent and control treatment as rank 1."
+	},
+	"10230": {
+		"ability": "Frost Nova",
+		"file": "sim/mage/frost_area.go",
+		"source": "forever",
+		"tooltip": "145 Mana\nInstant\n25 sec cooldown\nRank 4: about 71.61–79.39 Frost damage at level 60, plus 0.029 per spell power, within 10 yards.",
+		"note": "Client 70009: base 73 +0.5 per level from 54 through 59; variance 0.1066666692. Same talent and control treatment as rank 1."
+	},
 	"401502": {
 		"ability": "Frostfire Bolt",
 		"file": "sim/mage/frostfire_bolt.go",

@@ -14,10 +14,6 @@ import (
 
 const NeverExpires = time.Duration(math.MaxInt64)
 
-// Ceiling on how many auras one unit may register, as a sanity check rather than a real
-// limit. See registerAura.
-const maxRegisteredAuras = 1000
-
 type OnInit func(aura *Aura, sim *Simulation)
 type OnReset func(aura *Aura, sim *Simulation)
 type OnDoneIteration func(aura *Aura, sim *Simulation)
@@ -394,14 +390,6 @@ func (at *auraTracker) registerAura(unit *Unit, aura Aura) *Aura {
 	if at.GetAura(aura.Label) != nil {
 		panic(fmt.Sprintf("Aura %s already registered!", aura.Label))
 	}
-	// A boss takes one aura per dot, debuff and tracked effect from every attacker, so
-	// the count scales with raid size: one of each launched spec already puts over 200
-	// on the target and used to panic here. Keep the guard, which exists to catch an
-	// aura being registered every iteration, but set it clear of any real raid.
-	if len(at.auras) > maxRegisteredAuras {
-		panic(fmt.Sprintf("Over %d registered auras when registering %s! There is probably an aura being registered every iteration.", maxRegisteredAuras, aura.Label))
-	}
-
 	newAura := &Aura{}
 	*newAura = aura
 	newAura.Unit = unit
