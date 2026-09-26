@@ -10,7 +10,7 @@ from build_display import BUILDS, BUILD_CAVEATS
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--results", type=Path, default=Path("artifacts/forever_dps_5min.json"))
+    parser.add_argument("--results", type=Path, default=Path("artifacts/modelled_gear/forever_dps_5min.json"))
     parser.add_argument("--output", type=Path, default=Path("docs/build_reviews.md"))
     args = parser.parse_args()
     names = {}
@@ -112,8 +112,12 @@ def main():
          results.get("GearScenario") == "modeled-65-v2" else
          "paid shared-hit normalization. ") +
         "[Scenario and exchange model](../tools/forever_bench/README.md) · "
-        "[In-game checks](in_game_checks.md)", "",
+        "[Questions and coverage](uncertainties.md)", "",
     ]
+    if any(row.get("Tank") for row in results["Results"]):
+        lines += ["Tank rows include frontal incoming attacks and modeled healing, with their recorded "
+        "class-specific external support. They do not share the non-attacking DPS encounter. "
+        "[Tank selection and guardrails](tank_selection.md).", ""]
     slots = ["Head", "Neck", "Shoulders", "Back", "Chest", "Wrists", "Hands",
              "Waist", "Legs", "Feet", "Ring 1", "Ring 2", "Trinket 1", "Trinket 2",
              "Main hand", "Off hand", "Ranged/relic"]
@@ -127,9 +131,12 @@ def main():
         lines += [f"## {cls} — {spec}", "",
                   f"**Talents:** {'/'.join(map(str, points))} · `{p['talentsString']}`", "",
                   f"[Requests and results]({raw_path}) · "
-                  f"[Equipment search]({search_path})", ""]
+                  f"[Equipment search]({'../artifacts/tanks/current/validation.json' if representative.get('Tank') else search_path})", ""]
         if key in BUILD_CAVEATS:
             lines += ["**Model limitations:** " + " ".join(BUILD_CAVEATS[key]), ""]
+        if len({row["BaselinePlayer"]["talentsString"] for row in rows}) > 1:
+            lines += [f"**Talent variants:** The allocation above is for {representative['Race']}. "
+                      "Other races have independently validated allocations in their exact profiles.", ""]
         if len({json.dumps(row["BaselinePlayer"]["rotation"], sort_keys=True) for row in rows}) > 1:
             lines += [
                 f"**Rotation variants:** The priorities below are for {representative['Race']}. "
@@ -143,6 +150,14 @@ def main():
             lines.append(f"| {r['Race']} | {r['DPS']:.2f} | "
                          f"{r['StandardError']:.2f} | {r['OOMSeconds']:.2f} |")
         lines += ["", "Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.", ""]
+        if representative.get("Tank"):
+            lines += ["### Tank metrics", "", "| Race | TPS | DTPS | TMI | Modeled death probability |",
+                      "|---|---:|---:|---:|---:|"]
+            for r in rows:
+                tank = r["Tank"]
+                lines.append(f'| {r["Race"]} | {tank["TPS"]:.2f} | {tank["DTPS"]:.2f} | '
+                             f'{tank["TMI"]:.2f} | {100*tank["ChanceOfDeath"]:.2f}% |')
+            lines += ["", "These stress-scenario results are not measured boss balance or an equal-support survival ranking.", ""]
         lines += [f"### Equipment — {representative['Race']}", "",
                   "| Slot | Item | Item level | Enchant |", "|---|---|---:|---|"]
         for slot, entry in zip(slots, p["equipment"]["items"]):

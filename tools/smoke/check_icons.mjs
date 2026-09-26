@@ -6,6 +6,7 @@ const base = process.env.SITE_URL || 'http://localhost:8080/classic/';
 const profiles = JSON.parse(readFileSync('ui/core/forever_ranked_profiles.json', 'utf8')).profiles;
 const representatives = [...new Map(profiles.map(profile => [profile.key, profile])).values()];
 const routeFor = profile => {
+	if (profile.tankMetrics) return profile.key;
 	const cls = profile.settings.player.class.replace(/^Class/, '').toLowerCase();
 	if (cls === 'druid') return profile.key === 'balance' ? 'balance_druid' : 'feral_druid';
 	if (cls === 'priest') return profile.key === 'smite' ? 'smite_priest' : 'shadow_priest';

@@ -7,7 +7,7 @@ Reviewed against `b9d8ef4a47271dd65a96259351daa696a37bd4fa`. Current level-60 DP
 This is the current register. Earlier audits preserve historical findings, not current task status.
 An implementation gap is not a request to test an unknown game rule. Model assumptions are not measured facts.
 
-Needs evidence: **81** · Implementation gap: **25** · Model assumption: **5** · Resolved: **15** · Outside current scenarios: **1**
+Needs evidence: **82** · Implementation gap: **25** · Model assumption: **5** · Resolved: **16** · Outside current scenarios: **1**
 
 ## Updating an answer
 
@@ -708,6 +708,22 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **References:** [sim/druid/lacerate.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/lacerate.go) · [docs/forever_rules.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/forever_rules.md) · [docs/beta-pass/druid.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/druid.md)
 
 **Related:** DRU-005
+
+### DRU-011 — Proc enchants in animal forms
+
+**Needs evidence · High priority · Later access**
+
+**Question:** Can Cat and Bear trigger Crusader, and which weapon speed determines its proc rate?
+
+**Current model:** The generic enchant handler permits form melee attacks and retains a 1-PPM rule. The selected Bear gear and an existing Night Elf Feral profile use Crusader; Forever form eligibility has not been demonstrated.
+
+**Impact:** Druid enchant selection, temporary Strength and resulting damage/threat. Simulation confirmation does not establish that the proc occurs in game.
+
+**To close:** Isolate the enchanted weapon in and out of form, recording attack/proc timestamps and both equipped-weapon and form swing speeds. If the effect is ineligible, remove its form benefit and refresh affected profiles.
+
+**References:** [sim/common/enchant_effects.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/common/enchant_effects.go) · [sim/druid/forms.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/forms.go) · [docs/tank_selection.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/tank_selection.md)
+
+**Related:** DRU-003, DATA-006
 
 ### DRU-002 — Furor's lower-rank Energy carryover
 
@@ -1463,6 +1479,24 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [sim/core/forever_equipment_sets.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/forever_equipment_sets.go) · [docs/weekly_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/weekly_review.md) · [docs/forever_gear_data.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/forever_gear_data.md)
 
+### DATA-006 — Legacy item and enchant proc assumptions
+
+**Needs evidence · Medium priority · Sources / code**
+
+**Question:** Which inherited handlers still use assumed PPM, triggers or obsolete effect values?
+
+**Current model:** Numerous real-item handlers retain explicit assumptions; some source-supported amount updates are known but not imported. Synthetic weapons/trinkets have no implicit item procs, but their selected enchants can supply proc effects.
+
+**Impact:** Manual catalog items and proc enchants on the projected gear pool. Form-specific enchant eligibility is tracked separately.
+
+**To close:** Use the per-item TODOs and manifest IDs to resolve probability, trigger mask, duration and amount independently. The MythicSim review names the outstanding amount corrections; do not verify an entire proc from one number.
+
+**References:** [sim/common/item_effects.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/common/item_effects.go) · [sim/common/enchant_effects.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/common/enchant_effects.go) · [docs/mythicsim_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/mythicsim_review.md) · [ui/core/spells/common.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/spells/common.json)
+
+**Earlier references:** M08 / legacy proc TODO inventory
+
+**Related:** DRU-011
+
 ### DATA-009 — Two Arcanums of Rapidity
 
 **Needs evidence · Medium priority · Later access**
@@ -1549,22 +1583,6 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [sim/common/item_sets/natures_bounty.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/common/item_sets/natures_bounty.go) · [docs/weekly_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/weekly_review.md)
 
-### DATA-006 — Legacy item proc rates and incomplete effects
-
-**Needs evidence · Low priority · Sources / code**
-
-**Question:** Which inherited item handlers still use assumed PPM, triggers or obsolete effect values?
-
-**Current model:** Numerous real-item handlers retain explicit assumptions; some source-supported amount updates are known but not imported. None is silently attached to synthetic weapons/trinkets.
-
-**Impact:** Manual catalog/legacy items, not the stat-only projected pool.
-
-**To close:** Use the per-item TODOs and manifest IDs to resolve probability, trigger mask, duration and amount independently. The MythicSim review names the outstanding amount corrections; do not verify an entire proc from one number.
-
-**References:** [sim/common/item_effects.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/common/item_effects.go) · [sim/common/enchant_effects.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/common/enchant_effects.go) · [docs/mythicsim_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/mythicsim_review.md) · [ui/core/spells/common.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/spells/common.json)
-
-**Earlier references:** M08 / legacy proc TODO inventory
-
 ### DATA-007 — Item guardian stats and attacks
 
 **Needs evidence · Low priority · Later access**
@@ -1640,20 +1658,6 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **To close:** Implement explicit target cycling/selection that respects target-local debuffs and proc state; validate per-target threat and maintenance, not just aggregate DPS.
 
 **References:** [docs/tank_benchmark.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/tank_benchmark.md) · [proto/apl.proto](https://github.com/gunba/wow-forever-sim/blob/forever/proto/apl.proto) · [sim/core/apl_helpers.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/apl_helpers.go)
-
-### SCEN-004 — Tank gear search and exact matrix profiles
-
-**Implementation gap · High priority · Sources / code**
-
-**Question:** Are all tank races using validated auto-selected gear and full reproducible ranking defaults?
-
-**Current model:** Three tank routes and 17 race smoke checks exist, but current gear is a starting setup, not a defensively constrained coordinate search; tanks are absent from the main matrix.
-
-**Impact:** Fair tank comparisons and reproducible UI defaults.
-
-**To close:** Integrate 17 exact profiles, select legal normalized gear/enchants and validate talent/APL choices against survival/threat controls. Publish paired sensitivities and mark tank scenarios distinctly.
-
-**References:** [docs/tank_benchmark.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/tank_benchmark.md) · [tools/forever_tanks/main.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_tanks/main.go) · [tools/forever_bench/build_display.py](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/build_display.py)
 
 ### SCEN-002 — Non-tank external healing abstraction
 
@@ -1745,6 +1749,22 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Related:** PAL-003
 
+### SCEN-014 — Legacy regression-suite alignment
+
+**Implementation gap · Medium priority · Sources / code**
+
+**Question:** Can the full inherited test suite run against the current Forever data and presets, beyond the maintained release checks?
+
+**Current model:** The release runs targeted mechanics, source-coverage, tank and browser tests. The broader suite still includes excluded Classic items, pre-patch talent metadata, obsolete tree/proto-layout expectations and old landing-page assumptions.
+
+**Impact:** Automated regression coverage; a failing legacy fixture is not itself evidence that current game calculations are wrong.
+
+**To close:** Migrate the stale fixtures and assertions to the current catalog, legal trees and UI contract, preserving meaningful regression checks. Do not change sourced mechanics merely to match older expected numbers. Local cache/file-permission failures are separate environment issues.
+
+**References:** [.github/workflows/deploy.yml](https://github.com/gunba/wow-forever-sim/blob/forever/.github/workflows/deploy.yml) · [sim/confirmed_talents_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/confirmed_talents_test.go) · [sim/talents_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/talents_test.go) · [sim/core/simsignals/api_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/simsignals/api_test.go)
+
+**Related:** DATA-014
+
 ### SCEN-009 — Geometry, movement, kills and latency
 
 **Model assumption · Low priority · Model decision**
@@ -1786,6 +1806,22 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **To close:** Add explicit target selection and ownership/cost/cooldown handling, with no double application of external coverage.
 
 **References:** [sim/priest/power_infusion.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/priest/power_infusion.go) · [docs/beta-pass/priest.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/priest.md)
+
+### SCEN-004 — Tank gear search and exact matrix profiles
+
+**Resolved · High priority · Sources / code**
+
+**Question:** Are all tank races using validated auto-selected gear and full reproducible ranking defaults?
+
+**Current model:** All three tank roles and 17 race profiles have guarded normalized-gear searches, legal talent/APL comparisons, independent-seed confirmation and exact ranking defaults. Tank rows are included in the 31-build, 201-profile matrix with separate survival/threat context.
+
+**Impact:** Tank DPS, equipment and rotations are integrated; this does not resolve the class mechanics or projected defensive-stat coverage gaps.
+
+**To close:** Implemented with frozen controls and explicit safeguards in both single- and three-attacker workloads. Preserve source/model qualifications, especially Seal of Fury, form enchant procs and fixed-target pack threat.
+
+**References:** [docs/tank_selection.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/tank_selection.md) · [artifacts/tanks/current/validation.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/tanks/current/validation.json) · [tools/forever_bench/tank_search.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/tank_search.go) · [tools/forever_bench/tanks.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/tanks.go)
+
+**Related:** PAL-005, DRU-011, DATA-002, SCEN-001, SCEN-003
 
 ### SCEN-007 — Healing specializations and utility spellbooks
 

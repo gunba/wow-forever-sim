@@ -11104,5 +11104,852 @@
       ],
       "Exclusions": null
     }
+  },
+  {
+    "build": "Protection Warrior",
+    "race": "Orc",
+    "file": "tank_warrior__orc.json",
+    "dps": 692.9091263273745,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 18.799999999999997,
+      "SpellFinal": 18.799999999999997,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 25288}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.799999999999997
+        },
+        {
+          "Action": "{SpellID: 23925}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.799999999999997
+        },
+        {
+          "Action": "{SpellID: 11581}",
+          "Kind": "spell",
+          "AdditionalPercent": -2.799999999999997
+        },
+        {
+          "Action": "{SpellID: 25286}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.799999999999997
+        },
+        {
+          "Action": "{SpellID: 20569}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.799999999999997
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.799999999999997
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Protection Warrior",
+    "race": "Tauren",
+    "file": "tank_warrior__tauren.json",
+    "dps": 691.4050323251721,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 17,
+      "SpellFinal": 17,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 25288}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8
+        },
+        {
+          "Action": "{SpellID: 23925}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8
+        },
+        {
+          "Action": "{SpellID: 11581}",
+          "Kind": "spell",
+          "AdditionalPercent": -1
+        },
+        {
+          "Action": "{SpellID: 25286}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8
+        },
+        {
+          "Action": "{SpellID: 20569}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Protection Warrior",
+    "race": "Troll",
+    "file": "tank_warrior__troll.json",
+    "dps": 694.0640876426351,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 18.799999999999997,
+      "SpellFinal": 18.799999999999997,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 25288}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.799999999999997
+        },
+        {
+          "Action": "{SpellID: 23925}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.799999999999997
+        },
+        {
+          "Action": "{SpellID: 11581}",
+          "Kind": "spell",
+          "AdditionalPercent": -2.799999999999997
+        },
+        {
+          "Action": "{SpellID: 25286}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.799999999999997
+        },
+        {
+          "Action": "{SpellID: 20569}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.799999999999997
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.799999999999997
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Protection Warrior",
+    "race": "Undead",
+    "file": "tank_warrior__undead.json",
+    "dps": 713.6858985314859,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 16.8,
+      "SpellFinal": 16.8,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 25288}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.800000000000001
+        },
+        {
+          "Action": "{SpellID: 23925}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.800000000000001
+        },
+        {
+          "Action": "{SpellID: 11581}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.8000000000000007
+        },
+        {
+          "Action": "{SpellID: 25286}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.800000000000001
+        },
+        {
+          "Action": "{SpellID: 20569}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.800000000000001
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.800000000000001
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Protection Warrior",
+    "race": "Windshaper",
+    "file": "tank_warrior__windshaper.json",
+    "dps": 696.1219060563675,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 18.1,
+      "SpellFinal": 18.1,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 25288}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.100000000000001
+        },
+        {
+          "Action": "{SpellID: 23925}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.100000000000001
+        },
+        {
+          "Action": "{SpellID: 11581}",
+          "Kind": "spell",
+          "AdditionalPercent": -2.1000000000000014
+        },
+        {
+          "Action": "{SpellID: 25286}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.100000000000001
+        },
+        {
+          "Action": "{SpellID: 20569}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.100000000000001
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.100000000000001
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Protection Warrior",
+    "race": "Human",
+    "file": "tank_warrior__human.json",
+    "dps": 704.1064676467229,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 18.799999999999997,
+      "SpellFinal": 18.799999999999997,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 25288}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.799999999999997
+        },
+        {
+          "Action": "{SpellID: 23925}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.799999999999997
+        },
+        {
+          "Action": "{SpellID: 11581}",
+          "Kind": "spell",
+          "AdditionalPercent": -2.799999999999997
+        },
+        {
+          "Action": "{SpellID: 25286}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.799999999999997
+        },
+        {
+          "Action": "{SpellID: 20569}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.799999999999997
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.799999999999997
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Protection Warrior",
+    "race": "Dwarf",
+    "file": "tank_warrior__dwarf.json",
+    "dps": 694.4090826096043,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 18.1,
+      "SpellFinal": 18.1,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 25288}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.100000000000001
+        },
+        {
+          "Action": "{SpellID: 23925}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.100000000000001
+        },
+        {
+          "Action": "{SpellID: 11581}",
+          "Kind": "spell",
+          "AdditionalPercent": -2.1000000000000014
+        },
+        {
+          "Action": "{SpellID: 25286}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.100000000000001
+        },
+        {
+          "Action": "{SpellID: 20569}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.100000000000001
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.100000000000001
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Protection Warrior",
+    "race": "Night Elf",
+    "file": "tank_warrior__night_elf.json",
+    "dps": 691.5561870051959,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 17.8,
+      "SpellFinal": 17.8,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 25288}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.8
+        },
+        {
+          "Action": "{SpellID: 23925}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.8
+        },
+        {
+          "Action": "{SpellID: 11581}",
+          "Kind": "spell",
+          "AdditionalPercent": -1.8000000000000007
+        },
+        {
+          "Action": "{SpellID: 25286}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.8
+        },
+        {
+          "Action": "{SpellID: 20569}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.8
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.8
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Protection Warrior",
+    "race": "Gnome",
+    "file": "tank_warrior__gnome.json",
+    "dps": 698.2302182159493,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 16.8,
+      "SpellFinal": 16.8,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 25288}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.800000000000001
+        },
+        {
+          "Action": "{SpellID: 23925}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.800000000000001
+        },
+        {
+          "Action": "{SpellID: 11581}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.8000000000000007
+        },
+        {
+          "Action": "{SpellID: 25286}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.800000000000001
+        },
+        {
+          "Action": "{SpellID: 20569}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.800000000000001
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.800000000000001
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Protection Warrior",
+    "race": "High Order",
+    "file": "tank_warrior__high_order.json",
+    "dps": 696.1219060563675,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 18.1,
+      "SpellFinal": 18.1,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 25288}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.100000000000001
+        },
+        {
+          "Action": "{SpellID: 23925}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.100000000000001
+        },
+        {
+          "Action": "{SpellID: 11581}",
+          "Kind": "spell",
+          "AdditionalPercent": -2.1000000000000014
+        },
+        {
+          "Action": "{SpellID: 25286}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.100000000000001
+        },
+        {
+          "Action": "{SpellID: 20569}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.100000000000001
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.100000000000001
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Protection Paladin",
+    "race": "Undead",
+    "file": "protection_paladin__undead.json",
+    "dps": 423.71149181254674,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 16.400000000000002,
+      "SpellFinal": 16.400000000000002,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{ItemID: 18641}",
+          "Kind": "spell",
+          "AdditionalPercent": -100.4
+        },
+        {
+          "Action": "{SpellID: 10333}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.400000000000002
+        },
+        {
+          "Action": "{SpellID: 26573}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.40000000000000213
+        },
+        {
+          "Action": "{SpellID: 20924}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.40000000000000213
+        },
+        {
+          "Action": "{SpellID: 24239}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.400000000000002
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.400000000000002
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Protection Paladin",
+    "race": "Human",
+    "file": "protection_paladin__human.json",
+    "dps": 407.32030537749364,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 16.400000000000002,
+      "SpellFinal": 16.400000000000002,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{ItemID: 18641}",
+          "Kind": "spell",
+          "AdditionalPercent": -100.4
+        },
+        {
+          "Action": "{SpellID: 10333}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.400000000000002
+        },
+        {
+          "Action": "{SpellID: 26573}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.40000000000000213
+        },
+        {
+          "Action": "{SpellID: 20924}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.40000000000000213
+        },
+        {
+          "Action": "{SpellID: 24239}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.400000000000002
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.400000000000002
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Protection Paladin",
+    "race": "Dwarf",
+    "file": "protection_paladin__dwarf.json",
+    "dps": 400.24335768955024,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 16.400000000000002,
+      "SpellFinal": 16.400000000000002,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{ItemID: 18641}",
+          "Kind": "spell",
+          "AdditionalPercent": -100.4
+        },
+        {
+          "Action": "{SpellID: 10333}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.400000000000002
+        },
+        {
+          "Action": "{SpellID: 26573}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.40000000000000213
+        },
+        {
+          "Action": "{SpellID: 20924}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.40000000000000213
+        },
+        {
+          "Action": "{SpellID: 24239}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.400000000000002
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.400000000000002
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Bear",
+    "race": "Tauren",
+    "file": "feral_tank_druid__tauren.json",
+    "dps": 640.9458991132585,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 18.200000000000003,
+      "SpellFinal": 18.200000000000003,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 414644}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.200000000000003
+        },
+        {
+          "Action": "{SpellID: 1238073}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.200000000000003
+        },
+        {
+          "Action": "{SpellID: 9881}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.200000000000003
+        },
+        {
+          "Action": "{SpellID: 9908}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.200000000000003
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.200000000000003
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Bear",
+    "race": "Windshaper",
+    "file": "feral_tank_druid__windshaper.json",
+    "dps": 646.4542971098534,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 16.700000000000003,
+      "SpellFinal": 16.700000000000003,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 414644}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.700000000000003
+        },
+        {
+          "Action": "{SpellID: 1238073}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.700000000000003
+        },
+        {
+          "Action": "{SpellID: 9881}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.700000000000003
+        },
+        {
+          "Action": "{SpellID: 9908}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.700000000000003
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.700000000000003
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Bear",
+    "race": "Night Elf",
+    "file": "feral_tank_druid__night_elf.json",
+    "dps": 646.2541128047225,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 19.000000000000007,
+      "SpellFinal": 19.000000000000007,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 414644}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -10.000000000000007
+        },
+        {
+          "Action": "{SpellID: 1238073}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -10.000000000000007
+        },
+        {
+          "Action": "{SpellID: 9881}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -10.000000000000007
+        },
+        {
+          "Action": "{SpellID: 9908}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -10.000000000000007
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -10.000000000000007
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Bear",
+    "race": "High Order",
+    "file": "feral_tank_druid__high_order.json",
+    "dps": 646.4542971098534,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 16.700000000000003,
+      "SpellFinal": 16.700000000000003,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 414644}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.700000000000003
+        },
+        {
+          "Action": "{SpellID: 1238073}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.700000000000003
+        },
+        {
+          "Action": "{SpellID: 9881}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.700000000000003
+        },
+        {
+          "Action": "{SpellID: 9908}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.700000000000003
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.700000000000003
+        }
+      ],
+      "Exclusions": null
+    }
   }
 ]

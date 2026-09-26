@@ -179,6 +179,11 @@ def main():
               + ("These modeled items are not obtainable loot. " if modeled else "")
               + "Beta model; icons via Wowhead.",
              fontsize=8.5, color="#64748b")
+    if any(row.get("Tank") for row in rows):
+        fig.text(.07, .01,
+                 "Tank rows: frontal boss attacks + modeled healing and class-specific support; "
+                 "not an equal-encounter survival ranking. Bear's Crusader/form proc eligibility is unverified.",
+                 fontsize=8.5, color="#64748b")
     prefix = args.output or args.results.with_suffix("")
     prefix.parent.mkdir(parents=True, exist_ok=True)
     for extension in ("svg", "png"):

@@ -1,18 +1,18 @@
 {
   "Baseline": "artifacts/modelled_gear/forever_dps_5min.json",
-  "BaselineSHA256": "361a72818b6ac818a09d25bcaf1de4bc76dcbfe74ba304ddb7d8caec4b8b9ac5",
+  "BaselineSHA256": "94bfec3c436f104ecc0ef8505f62ac262d0d2bdd04e0ce5d0895873ecd582726",
   "Sources": {
     "tier1": {
       "Path": "artifacts/modelled_gear/sensitivity/tier1_off.json",
-      "SHA256": "3520fa0eaa19df4a69bd60d526a017d00ffee27bbde9d862af0554430cda1a14"
+      "SHA256": "5d05cdad27308c423b38f5d98aabe91f82c23bd374ca82ce47cbc3e0524c6f40"
     },
     "gear10": {
       "Path": "artifacts/modelled_gear/sensitivity/gear_110.json",
-      "SHA256": "440eef0df2a4c981c18bee505dc2bf88e81ab66546c648235ad3f3fd8d6976ae"
+      "SHA256": "2afb8cc2f0b171e192b0d58b12ef0534f6bdb77a4336bf036bbe8ae3c4cc1a24"
     },
     "gear50": {
       "Path": "artifacts/modelled_gear/sensitivity/gear_150.json",
-      "SHA256": "3b62b733f3cd1fcccfc8d4dae68b8d9021ff5ed8d9367c76bb88f2bb28fec50f"
+      "SHA256": "f9010c74ded6b21e09b740a9357e6a5364a82e212d9a3c3b70d875724fe2c24c"
     }
   },
   "Model": {
@@ -7072,6 +7072,672 @@
             "MonteCarlo95Bound": 0.2992260318976611,
             "BaselineDPS": 1006.1573666977296,
             "ScenarioDPS": 1291.024429734521,
+            "OOMSeconds": 0,
+            "Warnings": null
+          }
+        ]
+      }
+    },
+    {
+      "Key": "tank_warrior",
+      "Averages": {
+        "tier1": {
+          "Races": 10,
+          "GainPercent": 1.9221023613748045,
+          "MonteCarlo95Bound": 0.3313047217006144
+        },
+        "gear10": {
+          "Races": 10,
+          "GainPercent": 4.114598592430127,
+          "MonteCarlo95Bound": 0.3342839569243027
+        },
+        "gear50": {
+          "Races": 10,
+          "GainPercent": 19.065980896842717,
+          "MonteCarlo95Bound": 0.38878157581048206
+        },
+        "amplification": {
+          "Races": 10,
+          "Gear10GainPercent": 4.114598592430127,
+          "Gear50GainPercent": 19.065980896842717,
+          "Amplification": 0.9267480396226033,
+          "MonteCarlo95Bound": 0.09418982391915112
+        }
+      },
+      "Comparisons": {
+        "tier1": [
+          {
+            "Key": "tank_warrior",
+            "Race": "Orc",
+            "Faction": "Horde",
+            "GainPercent": 2.010039373347472,
+            "MonteCarlo95Bound": 0.34028335312365193,
+            "BaselineDPS": 692.9091263273745,
+            "ScenarioDPS": 679.2558169607112,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Tauren",
+            "Faction": "Horde",
+            "GainPercent": 1.9447580145040888,
+            "MonteCarlo95Bound": 0.3349224914986481,
+            "BaselineDPS": 691.4050323251721,
+            "ScenarioDPS": 678.2153842837148,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Troll",
+            "Faction": "Horde",
+            "GainPercent": 2.016544904591888,
+            "MonteCarlo95Bound": 0.3314748196972861,
+            "BaselineDPS": 694.0640876426351,
+            "ScenarioDPS": 680.3446326198746,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Undead",
+            "Faction": "Horde",
+            "GainPercent": 1.9118272845474849,
+            "MonteCarlo95Bound": 0.3292110227188704,
+            "BaselineDPS": 713.6858985314859,
+            "ScenarioDPS": 700.2974213570003,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Windshaper",
+            "Faction": "Horde",
+            "GainPercent": 1.8209044327048618,
+            "MonteCarlo95Bound": 0.3318506026826359,
+            "BaselineDPS": 696.1219060563675,
+            "ScenarioDPS": 683.6728763457862,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Human",
+            "Faction": "Alliance",
+            "GainPercent": 1.9579107241241012,
+            "MonteCarlo95Bound": 0.3292680357421081,
+            "BaselineDPS": 704.1064676467229,
+            "ScenarioDPS": 690.5854216176336,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Dwarf",
+            "Faction": "Alliance",
+            "GainPercent": 1.9229106204790014,
+            "MonteCarlo95Bound": 0.3278281400627273,
+            "BaselineDPS": 694.4090826096043,
+            "ScenarioDPS": 681.3081361023055,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Night Elf",
+            "Faction": "Alliance",
+            "GainPercent": 2.00233299820205,
+            "MonteCarlo95Bound": 0.32868968222085737,
+            "BaselineDPS": 691.5561870051959,
+            "ScenarioDPS": 677.9807546337058,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Gnome",
+            "Faction": "Alliance",
+            "GainPercent": 1.8128908285422352,
+            "MonteCarlo95Bound": 0.32766846657672294,
+            "BaselineDPS": 698.2302182159493,
+            "ScenarioDPS": 685.7974589797301,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "High Order",
+            "Faction": "Alliance",
+            "GainPercent": 1.8209044327048618,
+            "MonteCarlo95Bound": 0.3318506026826359,
+            "BaselineDPS": 696.1219060563675,
+            "ScenarioDPS": 683.6728763457862,
+            "OOMSeconds": 0,
+            "Warnings": null
+          }
+        ],
+        "gear10": [
+          {
+            "Key": "tank_warrior",
+            "Race": "Orc",
+            "Faction": "Horde",
+            "GainPercent": 4.022008015520506,
+            "MonteCarlo95Bound": 0.33965845573536624,
+            "BaselineDPS": 692.9091263273745,
+            "ScenarioDPS": 720.7779869285346,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Tauren",
+            "Faction": "Horde",
+            "GainPercent": 4.358730976819425,
+            "MonteCarlo95Bound": 0.33867644437264055,
+            "BaselineDPS": 691.4050323251721,
+            "ScenarioDPS": 721.5415176444177,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Troll",
+            "Faction": "Horde",
+            "GainPercent": 3.962842243685838,
+            "MonteCarlo95Bound": 0.33387579412180646,
+            "BaselineDPS": 694.0640876426351,
+            "ScenarioDPS": 721.5687525059901,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Undead",
+            "Faction": "Horde",
+            "GainPercent": 4.015800994880991,
+            "MonteCarlo95Bound": 0.3292240013817774,
+            "BaselineDPS": 713.6858985314859,
+            "ScenarioDPS": 742.3461039450386,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Windshaper",
+            "Faction": "Horde",
+            "GainPercent": 4.090604330673875,
+            "MonteCarlo95Bound": 0.33337713281853215,
+            "BaselineDPS": 696.1219060563675,
+            "ScenarioDPS": 724.5974988922788,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Human",
+            "Faction": "Alliance",
+            "GainPercent": 3.9822123384671837,
+            "MonteCarlo95Bound": 0.33482207561985683,
+            "BaselineDPS": 704.1064676467229,
+            "ScenarioDPS": 732.1454822772962,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Dwarf",
+            "Faction": "Alliance",
+            "GainPercent": 4.206341775742284,
+            "MonteCarlo95Bound": 0.33315821191770884,
+            "BaselineDPS": 694.4090826096043,
+            "ScenarioDPS": 723.6183019459609,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Night Elf",
+            "Faction": "Alliance",
+            "GainPercent": 4.188634839708283,
+            "MonteCarlo95Bound": 0.3367744500214291,
+            "BaselineDPS": 691.5561870051959,
+            "ScenarioDPS": 720.5229503902536,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Gnome",
+            "Faction": "Alliance",
+            "GainPercent": 4.228206078129015,
+            "MonteCarlo95Bound": 0.3298958704353771,
+            "BaselineDPS": 698.2302182159493,
+            "ScenarioDPS": 727.7528307418896,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "High Order",
+            "Faction": "Alliance",
+            "GainPercent": 4.090604330673875,
+            "MonteCarlo95Bound": 0.33337713281853215,
+            "BaselineDPS": 696.1219060563675,
+            "ScenarioDPS": 724.5974988922788,
+            "OOMSeconds": 0,
+            "Warnings": null
+          }
+        ],
+        "gear50": [
+          {
+            "Key": "tank_warrior",
+            "Race": "Orc",
+            "Faction": "Horde",
+            "GainPercent": 18.428555144235492,
+            "MonteCarlo95Bound": 0.3975284930343637,
+            "BaselineDPS": 692.9091263273745,
+            "ScenarioDPS": 820.602266772055,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Tauren",
+            "Faction": "Horde",
+            "GainPercent": 19.28583231437473,
+            "MonteCarlo95Bound": 0.39336845203564236,
+            "BaselineDPS": 691.4050323251721,
+            "ScenarioDPS": 824.7482474725532,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Troll",
+            "Faction": "Horde",
+            "GainPercent": 19.212158038315373,
+            "MonteCarlo95Bound": 0.3903415392883453,
+            "BaselineDPS": 694.0640876426351,
+            "ScenarioDPS": 827.4087770477298,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Undead",
+            "Faction": "Horde",
+            "GainPercent": 18.97121083954396,
+            "MonteCarlo95Bound": 0.3838439183593749,
+            "BaselineDPS": 713.6858985314859,
+            "ScenarioDPS": 849.0807550739879,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Windshaper",
+            "Faction": "Horde",
+            "GainPercent": 19.244092527716774,
+            "MonteCarlo95Bound": 0.3878752580775006,
+            "BaselineDPS": 696.1219060563675,
+            "ScenarioDPS": 830.0842497635605,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Human",
+            "Faction": "Alliance",
+            "GainPercent": 18.246929494330956,
+            "MonteCarlo95Bound": 0.38267308014303736,
+            "BaselineDPS": 704.1064676467229,
+            "ScenarioDPS": 832.5842783632446,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Dwarf",
+            "Faction": "Alliance",
+            "GainPercent": 19.42652685229842,
+            "MonteCarlo95Bound": 0.38811813593084704,
+            "BaselineDPS": 694.4090826096043,
+            "ScenarioDPS": 829.3086495075582,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Night Elf",
+            "Faction": "Alliance",
+            "GainPercent": 19.192734131989255,
+            "MonteCarlo95Bound": 0.3870200439767768,
+            "BaselineDPS": 691.5561870051959,
+            "ScenarioDPS": 824.2847273504256,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "Gnome",
+            "Faction": "Alliance",
+            "GainPercent": 19.407677097905452,
+            "MonteCarlo95Bound": 0.38917157918143164,
+            "BaselineDPS": 698.2302182159493,
+            "ScenarioDPS": 833.7404843673014,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "tank_warrior",
+            "Race": "High Order",
+            "Faction": "Alliance",
+            "GainPercent": 19.244092527716774,
+            "MonteCarlo95Bound": 0.3878752580775006,
+            "BaselineDPS": 696.1219060563675,
+            "ScenarioDPS": 830.0842497635605,
+            "OOMSeconds": 0,
+            "Warnings": null
+          }
+        ]
+      }
+    },
+    {
+      "Key": "protection_paladin",
+      "Averages": {
+        "tier1": {
+          "Races": 3,
+          "GainPercent": 2.0366141927159465,
+          "MonteCarlo95Bound": 0.2481329453529714
+        },
+        "gear10": {
+          "Races": 3,
+          "GainPercent": 4.641680119030174,
+          "MonteCarlo95Bound": 0.24672598729702513
+        },
+        "gear50": {
+          "Races": 3,
+          "GainPercent": 23.88708997505508,
+          "MonteCarlo95Bound": 0.2888871597415221
+        },
+        "amplification": {
+          "Races": 3,
+          "Gear10GainPercent": 4.641680119030174,
+          "Gear50GainPercent": 23.88708997505508,
+          "Amplification": 1.0292432637536433,
+          "MonteCarlo95Bound": 0.06715639259343545
+        }
+      },
+      "Comparisons": {
+        "tier1": [
+          {
+            "Key": "protection_paladin",
+            "Race": "Undead",
+            "Faction": "Horde",
+            "GainPercent": 2.075776715733424,
+            "MonteCarlo95Bound": 0.25078870286252836,
+            "BaselineDPS": 423.71149181254674,
+            "ScenarioDPS": 415.0950455096934,
+            "OOMSeconds": 2.8018079999999967,
+            "Warnings": null
+          },
+          {
+            "Key": "protection_paladin",
+            "Race": "Human",
+            "Faction": "Alliance",
+            "GainPercent": 1.9649369728012012,
+            "MonteCarlo95Bound": 0.24706409338002316,
+            "BaselineDPS": 407.32030537749364,
+            "ScenarioDPS": 399.47095292781376,
+            "OOMSeconds": 2.6171959999999976,
+            "Warnings": null
+          },
+          {
+            "Key": "protection_paladin",
+            "Race": "Dwarf",
+            "Faction": "Alliance",
+            "GainPercent": 2.0691288896132143,
+            "MonteCarlo95Bound": 0.24654603981636267,
+            "BaselineDPS": 400.24335768955024,
+            "ScenarioDPS": 392.12968900950415,
+            "OOMSeconds": 2.659354,
+            "Warnings": null
+          }
+        ],
+        "gear10": [
+          {
+            "Key": "protection_paladin",
+            "Race": "Undead",
+            "Faction": "Horde",
+            "GainPercent": 4.514705302565214,
+            "MonteCarlo95Bound": 0.2505111173400709,
+            "BaselineDPS": 423.71149181254674,
+            "ScenarioDPS": 442.84081700098596,
+            "OOMSeconds": 1.6297519999999994,
+            "Warnings": null
+          },
+          {
+            "Key": "protection_paladin",
+            "Race": "Human",
+            "Faction": "Alliance",
+            "GainPercent": 4.693803216828396,
+            "MonteCarlo95Bound": 0.24449110360668436,
+            "BaselineDPS": 407.32030537749364,
+            "ScenarioDPS": 426.43911897409765,
+            "OOMSeconds": 1.4361740000000012,
+            "Warnings": null
+          },
+          {
+            "Key": "protection_paladin",
+            "Race": "Dwarf",
+            "Faction": "Alliance",
+            "GainPercent": 4.716531837696913,
+            "MonteCarlo95Bound": 0.2451757409443201,
+            "BaselineDPS": 400.24335768955024,
+            "ScenarioDPS": 419.12096308324504,
+            "OOMSeconds": 1.4633,
+            "Warnings": null
+          }
+        ],
+        "gear50": [
+          {
+            "Key": "protection_paladin",
+            "Race": "Undead",
+            "Faction": "Horde",
+            "GainPercent": 23.622311765304737,
+            "MonteCarlo95Bound": 0.2904779856029688,
+            "BaselineDPS": 423.71149181254674,
+            "ScenarioDPS": 523.8019413939302,
+            "OOMSeconds": 0.222908,
+            "Warnings": null
+          },
+          {
+            "Key": "protection_paladin",
+            "Race": "Human",
+            "Faction": "Alliance",
+            "GainPercent": 23.98669888377869,
+            "MonteCarlo95Bound": 0.2868916562370797,
+            "BaselineDPS": 407.32030537749364,
+            "ScenarioDPS": 505.0230005208809,
+            "OOMSeconds": 0.2050619999999999,
+            "Warnings": null
+          },
+          {
+            "Key": "protection_paladin",
+            "Race": "Dwarf",
+            "Faction": "Alliance",
+            "GainPercent": 24.052259276081813,
+            "MonteCarlo95Bound": 0.2892918373845179,
+            "BaselineDPS": 400.24335768955024,
+            "ScenarioDPS": 496.5109278163364,
+            "OOMSeconds": 0.2363420000000001,
+            "Warnings": null
+          }
+        ]
+      }
+    },
+    {
+      "Key": "feral_tank_druid",
+      "Averages": {
+        "tier1": {
+          "Races": 4,
+          "GainPercent": 2.8951853233997182,
+          "MonteCarlo95Bound": 0.25353927498795503
+        },
+        "gear10": {
+          "Races": 4,
+          "GainPercent": 2.8352649285137366,
+          "MonteCarlo95Bound": 0.24702817899619328
+        },
+        "gear50": {
+          "Races": 4,
+          "GainPercent": 14.371058644687768,
+          "MonteCarlo95Bound": 0.27136778168900877
+        },
+        "amplification": {
+          "Races": 4,
+          "Gear10GainPercent": 2.8352649285137366,
+          "Gear50GainPercent": 14.371058644687768,
+          "Amplification": 1.013736564802864,
+          "MonteCarlo95Bound": 0.1074661668680933
+        }
+      },
+      "Comparisons": {
+        "tier1": [
+          {
+            "Key": "feral_tank_druid",
+            "Race": "Tauren",
+            "Faction": "Horde",
+            "GainPercent": 2.8724196221007414,
+            "MonteCarlo95Bound": 0.24976921735223448,
+            "BaselineDPS": 640.9458991132585,
+            "ScenarioDPS": 623.049308519968,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "feral_tank_druid",
+            "Race": "Windshaper",
+            "Faction": "Horde",
+            "GainPercent": 2.9357200121018723,
+            "MonteCarlo95Bound": 0.2549541305209053,
+            "BaselineDPS": 646.4542971098534,
+            "ScenarioDPS": 628.0174627756542,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "feral_tank_druid",
+            "Race": "Night Elf",
+            "Faction": "Alliance",
+            "GainPercent": 2.836881647294387,
+            "MonteCarlo95Bound": 0.254479621557775,
+            "BaselineDPS": 646.2541128047225,
+            "ScenarioDPS": 628.4263996075043,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "feral_tank_druid",
+            "Race": "High Order",
+            "Faction": "Alliance",
+            "GainPercent": 2.9357200121018723,
+            "MonteCarlo95Bound": 0.2549541305209053,
+            "BaselineDPS": 646.4542971098534,
+            "ScenarioDPS": 628.0174627756542,
+            "OOMSeconds": 0,
+            "Warnings": null
+          }
+        ],
+        "gear10": [
+          {
+            "Key": "feral_tank_druid",
+            "Race": "Tauren",
+            "Faction": "Horde",
+            "GainPercent": 2.8264346095626447,
+            "MonteCarlo95Bound": 0.24436450496719206,
+            "BaselineDPS": 640.9458991132585,
+            "ScenarioDPS": 659.0618158343681,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "feral_tank_druid",
+            "Race": "Windshaper",
+            "Faction": "Horde",
+            "GainPercent": 2.8801980938605976,
+            "MonteCarlo95Bound": 0.2485411282311404,
+            "BaselineDPS": 646.4542971098534,
+            "ScenarioDPS": 665.0734614528914,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "feral_tank_druid",
+            "Race": "Night Elf",
+            "Faction": "Alliance",
+            "GainPercent": 2.7542289167711065,
+            "MonteCarlo95Bound": 0.24666595455530024,
+            "BaselineDPS": 646.2541128047225,
+            "ScenarioDPS": 664.0534304554127,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "feral_tank_druid",
+            "Race": "High Order",
+            "Faction": "Alliance",
+            "GainPercent": 2.8801980938605976,
+            "MonteCarlo95Bound": 0.2485411282311404,
+            "BaselineDPS": 646.4542971098534,
+            "ScenarioDPS": 665.0734614528914,
+            "OOMSeconds": 0,
+            "Warnings": null
+          }
+        ],
+        "gear50": [
+          {
+            "Key": "feral_tank_druid",
+            "Race": "Tauren",
+            "Faction": "Horde",
+            "GainPercent": 14.520546881945219,
+            "MonteCarlo95Bound": 0.2693355078240111,
+            "BaselineDPS": 640.9458991132585,
+            "ScenarioDPS": 734.0147488819046,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "feral_tank_druid",
+            "Race": "Windshaper",
+            "Faction": "Horde",
+            "GainPercent": 14.40086807832477,
+            "MonteCarlo95Bound": 0.272443808576184,
+            "BaselineDPS": 646.4542971098534,
+            "ScenarioDPS": 739.5493276233051,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "feral_tank_druid",
+            "Race": "Night Elf",
+            "Faction": "Alliance",
+            "GainPercent": 14.161951540156315,
+            "MonteCarlo95Bound": 0.2712480017796561,
+            "BaselineDPS": 646.2541128047225,
+            "ScenarioDPS": 737.7763070863944,
+            "OOMSeconds": 0,
+            "Warnings": null
+          },
+          {
+            "Key": "feral_tank_druid",
+            "Race": "High Order",
+            "Faction": "Alliance",
+            "GainPercent": 14.40086807832477,
+            "MonteCarlo95Bound": 0.272443808576184,
+            "BaselineDPS": 646.4542971098534,
+            "ScenarioDPS": 739.5493276233051,
             "OOMSeconds": 0,
             "Warnings": null
           }

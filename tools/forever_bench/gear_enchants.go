@@ -25,13 +25,18 @@ var benchmarkEnchants = sync.OnceValue(func() []*proto.UIEnchant {
 		// Enchanting recipes are crafting. Item-based enhancements also include
 		// unavailable raid rewards, so those require a separate source list.
 		crafted := enchant.ItemId == 0 && strings.HasPrefix(enchant.Name, "Enchant ")
+		// These ItemIds identify Enchanting formula items, not consumable
+		// reward enchants. In particular, the existing tank shield's +7
+		// Stamina enchant must not be rejected as an unavailable raid reward.
+		craftedShield := enchant.EnchantType == proto.EnchantType_EnchantTypeShield &&
+			slices.Contains([]int32{13464, 13689, 13817, 13933, 20017, 20016}, enchant.SpellId)
 		nonraidItem := slices.Contains([]int32{
 			30, 32, 33, 34, 663, 664, 2523, // crafted scopes / counterweight
 			15, 16, 17, 18, 2503, 8719, 8720, // crafted armor kits and new scope
 			1483, 1503, 1504, 1505, 1506, 1507, 1508, 1509, 1510, // librams
 			2488, 2543, 2544, 2545, // Argent Dawn and Dire Maul
 		}, enchant.EffectId)
-		if crafted || nonraidItem {
+		if crafted || craftedShield || nonraidItem {
 			enchants = append(enchants, enchant)
 		}
 	}

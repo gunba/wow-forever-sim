@@ -125,7 +125,7 @@
                                     },
                                     "rhs": {
                                         "const": {
-                                            "val": "20"
+                                            "val": "15"
                                         }
                                     }
                                 }
@@ -373,6 +373,28 @@
             "action": {
                 "castSpell": {
                     "spellId": {
+                        "spellId": 11581
+                    }
+                },
+                "condition": {
+                    "cmp": {
+                        "op": "OpGe",
+                        "lhs": {
+                            "numberTargets": {}
+                        },
+                        "rhs": {
+                            "const": {
+                                "val": "3"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "action": {
+                "castSpell": {
+                    "spellId": {
                         "spellId": 25288
                     }
                 }
@@ -418,7 +440,7 @@
                                     },
                                     "rhs": {
                                         "const": {
-                                            "val": "45"
+                                            "val": "20"
                                         }
                                     }
                                 }
@@ -459,7 +481,7 @@
                                     },
                                     "rhs": {
                                         "const": {
-                                            "val": "30"
+                                            "val": "20"
                                         }
                                     }
                                 }

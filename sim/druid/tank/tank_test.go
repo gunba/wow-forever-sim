@@ -39,7 +39,7 @@ func TestP1FeralTank(t *testing.T) {
 	}))
 }
 
-var P1Talents = "-5003232120132010501-0550325"
+var P1Talents = "01-5002232123132210551-055"
 
 var PlayerOptionsDefault = &proto.Player_FeralTankDruid{
 	FeralTankDruid: &proto.FeralTankDruid{

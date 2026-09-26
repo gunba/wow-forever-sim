@@ -12,17 +12,32 @@ stat amounts appear in their item names and in the
 assumed stat prices, explicitly projected high-hit and caster templates, projected fixed-stat relics
 and weapon coverage. None is confirmed obtainable loot. The previous
 [mixed real/v1 modeled results](https://github.com/gunba/wow-forever-sim/blob/ff7b01f28/artifacts/modelled_gear/forever_dps_5min.json)
-and the separate [real-item benchmark](../../artifacts/forever_dps_5min.json)
+and the separate [real-item benchmark](https://github.com/gunba/wow-forever-sim/blob/175b1a9de5/artifacts/forever_dps_5min.json)
 remain distinct historical references.
 
 This benchmark incorporates the sourced **client 1.60.1.70009 class/racial
-changes**, with post-patch modeled-gear selection and 184 rerun profiles. See
+changes**, with post-patch modeled-gear selection. The current roster contains
+**31 builds and 201 race/build profiles** (99 Alliance, 102 Horde). See
 the [patch audit](../../docs/forever-70009.md) for source gaps and exclusions.
 The [class-effects follow-up](../../docs/upstream_elliot_review.md) replays
 all 736 baseline/sensitivity scenarios after the Life Tap, pet/talent,
 Moonfury and buff corrections. Gear selections remain from the earlier search;
 the refreshed results do not establish a new gear optimum. The preceding
 results are [archived](../../artifacts/history/367ac97df8/).
+The latest release adds all 17 tank profiles and replays **804** baseline,
+Tier-off, +10% and +50% scenarios. The 184 existing DPS profiles retain identical
+requests and metric values; unordered metric collections can differ.
+[Preservation check](../../artifacts/tanks/current/dps_preservation.json).
+
+Protection Warrior, Protection Paladin and Bear use frontal incoming attacks
+and explicit healing. Their chart DPS is **not an equal-encounter comparison**
+with un-attacked DPS rows. Gear, legal talents and APLs were selected against
+frozen tank controls with survival and per-target threat safeguards, then
+validated on two independent seeds across every race.
+[Tank methods and replay instructions](../../docs/tank_selection.md) ·
+[Validation](../../artifacts/tanks/current/validation.json) ·
+[Research archives](../../artifacts/tanks/current/archives.json).
+
 Modeled Leather armor has no Strength; Feral cannot equip Mail or Plate.
 The modeled Strength/Hit Mail option is a disclosed MP5-to-Hit budget
 projection from a real Mail reference, not a datamined drop.
@@ -35,10 +50,10 @@ never turns excess hit into attack or spell power. The previous paid-hit model
 is retained only for older scenarios; this is a new benchmark, not a
 retroactive alteration to their saved requests.
 
-The selector tries every legal current modeled candidate per slot and compares
+The DPS selector tries every legal current modeled candidate per slot and compares
 coupled weapon layouts. It repeats coordinate passes to convergence and checks
 shortlisted gains with independent higher-iteration seeds; it does not perform
-an exhaustive combination search. Every supported race/build is searched
+an exhaustive combination search. Every supported DPS race/build is searched
 separately without changing the fixed talents, APLs, consumes, buffs, enchants,
 encounter or forced Tier 1. The archived search baseline freezes the patched
 talents, consumables and starting equipment. Do not start a reproduction from
@@ -70,13 +85,13 @@ The archived [search and confirmation evidence](../../artifacts/modelled_gear_se
 [complete requests/results](../../artifacts/modelled_gear/forever_dps_5min.json),
 [Tier and gear sensitivities](../../artifacts/modelled_gear/forever_sensitivity.json),
 [selected-stat budget audit](../../artifacts/modelled_gear/gear_equity.json)
-and [class reviews](../../docs/modelled_build_reviews.md) keep this explicitly
+and [class reviews](../../docs/build_reviews.md) keep this explicitly
 hypothetical release reproducible without claiming either verified future gear
 or globally optimal equipment.
 
 ## Earlier real-item reference
 
-The benchmark contains 28 level-60 builds and 184 race/build combinations:
+The historical real-item benchmark contained 28 level-60 builds and 184 race/build combinations:
 90 Alliance and 94 Horde. The [client roster and racial audit](../../docs/forever_races.md)
 record availability and remaining interaction questions.
 Profiles use the [crafted/dungeon catalog](../../docs/forever_gear_data.md),
@@ -96,14 +111,17 @@ and spell-power-focused enchants. No new gear search was performed for either
 newly changed row.
 [Build comparisons and limitations](../../docs/build_updates.md).
 
+## Replay current results
+
 Replay the current exact native profiles, including race-specific equipment:
 
 ```sh
 python3 tools/forever_bench/run_matrix.py --binary /path/to/forever-bench \
-  --profiles artifacts/forever_input_profiles.json --output /tmp/forever-matrix --workers 24
+  --profiles artifacts/modelled_gear/forever_input_profiles.json --natural-hit \
+  --iterations 5000 --seed 20291951 --output /tmp/forever-matrix --workers 24
 ```
 
-`forever_input_profiles.json` freezes the 184 unnormalized starting players
+`artifacts/modelled_gear/forever_input_profiles.json` freezes the 201 selected players
 independently of the results. It also provides the native benchmark defaults.
 Each output retains its complete request and baseline player.
 
@@ -113,7 +131,7 @@ Those earlier 26-build recipes and matched validation requests/results are
 archived in `artifacts/research_builds/validation.json.gz` at their pinned
 revision. They predate the additional build and haste timing change; use that
 revision to replay their original comparisons, not this roster. The current
-chart uses seed **20296421** and 5,000 iterations per race/scenario.
+chart uses seed **20291951** and 5,000 iterations per race/scenario.
 
 Run from the repository root:
 
@@ -122,11 +140,11 @@ python3 tools/database/compile_forever_equipment.py
 go run ./tools/database/gen_db -outDir=assets -gen=db
 python3 -m unittest discover -s tools/database -p 'test_*forever*.py'
 go test -tags with_db ./tools/forever_bench
-go run -tags with_db ./tools/forever_bench -baseline-results artifacts/forever_dps_5min.json \
-  -iterations 5000 -seed 20296421 -output /tmp/forever-replay
+go run -tags with_db ./tools/forever_bench -baseline-results artifacts/modelled_gear/forever_input_profiles.json \
+  -natural-hit -iterations 5000 -seed 20291951 -output /tmp/forever-replay
 python3 tools/forever_bench/fetch_icons.py
-python3 tools/forever_bench/chart.py artifacts/forever_dps_5min.json \
-  --sensitivity artifacts/forever_sensitivity.json
+python3 tools/forever_bench/chart.py artifacts/modelled_gear/forever_dps_5min.json \
+  --sensitivity artifacts/modelled_gear/forever_sensitivity.json
 ```
 
 Chart rendering requires Python's `matplotlib`. Go builds can use
@@ -137,7 +155,7 @@ combination is unavailable; a missing available result is an error.
 Use `-faction horde` or `-faction alliance` to limit the benchmark; the chart
 accepts the matching `--faction` filter.
 
-### Equipment search
+### Historical real-item equipment search
 
 `assets/db_inputs/forever_ilvl65_items.json` contains all 706 distinct entries
 from the Wowhead item-level-65 list, including the rows beyond the first rendered

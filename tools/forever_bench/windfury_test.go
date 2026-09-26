@@ -71,6 +71,7 @@ func TestReferenceAirTotemSelection(t *testing.T) {
 		"retribution": true, "retribution_physical": true,
 		"combat": true, "mutilate": true, "subtlety": true,
 		"fury": true, "fury_sunder": true, "fury_2h": true, "arms": true,
+		"tank_warrior": true, "protection_paladin": true, "feral_tank_druid": true,
 	}
 	for _, b := range builds() {
 		race := b.races()[0]

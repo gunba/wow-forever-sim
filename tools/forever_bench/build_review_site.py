@@ -21,17 +21,19 @@ SIM_PATHS = {
     "retribution_physical": "retribution_paladin",
     "fury_sunder": "warrior",
     "shadow": "shadow_priest", "smite": "smite_priest",
+    "tank_warrior": "tank_warrior",
+    "protection_paladin": "protection_paladin",
+    "feral_tank_druid": "feral_tank_druid",
 }
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--results", type=Path, default=Path("artifacts/forever_dps_5min.json"))
-    parser.add_argument("--profiles", type=Path, default=Path("artifacts/ui_profiles"))
+    parser.add_argument("--results", type=Path, default=Path("artifacts/modelled_gear/forever_dps_5min.json"))
+    parser.add_argument("--profiles", type=Path, default=Path("artifacts/modelled_gear/ui_profiles"))
     parser.add_argument("--output", type=Path, default=Path("dist/classic/review"))
-    parser.add_argument("--sensitivity", type=Path, default=Path("artifacts/forever_sensitivity.json"))
-    parser.add_argument("--gear-search", type=Path, default=Path("artifacts/gear_search/current"))
-    parser.add_argument("--previous-results", type=Path, default=Path("artifacts/forever_dps_5min.json"))
+    parser.add_argument("--sensitivity", type=Path, default=Path("artifacts/modelled_gear/forever_sensitivity.json"))
+    parser.add_argument("--gear-search", type=Path, default=Path("artifacts/modelled_gear_search/current"))
     args = parser.parse_args()
     data = json.loads(args.results.read_text())
     model_v2 = data.get("GearScenario") == "modeled-65-v2"
@@ -51,7 +53,7 @@ def main():
         off_hand = row["BaselinePlayer"]["equipment"]["items"][15].get("id", 0)
         if items.get(off_hand, {}).get("weaponType") in {1, 2, 3, 4, 6, 8, 9}:
             invalid.add((row["Key"], row["Race"]))
-    builds = sorted(BUILDS, key=lambda b: max(
+    builds = sorted((b for b in BUILDS if any(r["Key"] == b[0] for r in rows)), key=lambda b: max(
         (r["DPS"] for r in rows if r["Key"] == b[0] and (r["Key"], r["Race"]) not in invalid),
         default=-1,
     ), reverse=True)
@@ -80,25 +82,6 @@ def main():
                              "spec_gear_equity.csv"):
                 shutil.copyfile(Path("artifacts/modelled_gear") / filename,
                                 args.output / filename)
-        if args.previous_results.exists() and args.previous_results.resolve() != args.results.resolve():
-            previous = args.output / "real-item-archive"
-            previous.mkdir(exist_ok=True)
-            for extension in ("json", "csv", "svg", "png"):
-                shutil.copyfile(args.previous_results.with_suffix("." + extension),
-                                previous / ("results." + extension))
-            shutil.copyfile("artifacts/forever_sensitivity.json", previous / "sensitivity.json")
-            (previous / "index.html").write_text(
-                "<!doctype html><meta charset='utf-8'><title>Previous real-item benchmark</title>"
-                "<style>body{background:#15171d;color:#eee;font:18px system-ui;"
-                "max-width:1100px;margin:3rem auto}a{color:#a9d8ff}img{max-width:100%}</style>"
-                "<h1>Previous real-item benchmark</h1>"
-                "<p>This historical ranking predates the modeled equipment scenario. "
-                "Its exact requests and results remain available for comparison.</p>"
-                "<p><a href='../'>Current modeled benchmark</a> · "
-                "<a href='results.json'>Raw requests/results</a> · "
-                "<a href='results.csv'>CSV</a> · "
-                "<a href='sensitivity.json'>Gain accounting</a></p>"
-                "<img src='results.svg' alt='Historical race-by-build DPS matrix'>")
     for directory in ("profile_corrections", "windfury"):
         shutil.copytree(Path("artifacts") / directory, args.output / directory, dirs_exist_ok=True)
     shutil.copyfile("artifacts/spell_coverage.json", args.output / "spell_coverage.json")
@@ -106,7 +89,7 @@ def main():
         shutil.copyfile(args.results.with_suffix("." + extension), args.output / ("results." + extension))
     for name in ("build_reviews.md", "build_updates.md", "gear_updates.md", "in_game_checks.md", "check_dispositions.md", "spell_coverage.md", "windfury.md", "energy_audit.md", "auto_attack_audit.md", "crit_model.md", "forever_gear_data.md", "mechanics_review.md", "history_review.md", "upstream-forever-review-2026-09-23.md", "upstream-forever-followup-2026-09-23.md", "mana_regeneration.md", "mythicsim_review.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
-    for name in ("weekly_review.md", "weekly_review_commits.csv", "flurry_review.md", "upstream_elliot_review.md", "tank_benchmark.md", "forever-70009.md"):
+    for name in ("weekly_review.md", "weekly_review_commits.csv", "flurry_review.md", "upstream_elliot_review.md", "tank_benchmark.md", "tank_selection.md", "forever-70009.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
     body = []
     for key, class_name, label, icon in builds:
@@ -126,6 +109,10 @@ def main():
                 raise ValueError(f"Missing replay profile: {filename}")
             title = f"Mean {row['DPS']:.2f} DPS; SE {row['StandardError']:.2f}; mana-limited {row['OOMSeconds']:.2f}s"
             title += " " + " ".join(BUILD_CAVEATS.get(key, []))
+            if row.get("Tank"):
+                tank = row["Tank"]
+                title += (f' Tank scenario: {tank["TPS"]:.1f} TPS; {tank["DTPS"]:.1f} DTPS; '
+                          f'{100*tank["ChanceOfDeath"]:.2f}% modeled death probability.')
             if row.get("UnmodeledSetBonuses"):
                 title += f'; {len(row["UnmodeledSetBonuses"])} equipped-set effects omitted'
             cells.append(f'<td><a href="../{simulator}/?profile={key}__{race_file}" title="{escape(title)}">{row["DPS"]:.0f}</a></td>')
@@ -176,6 +163,40 @@ def main():
         if model_v2 else '<a href="forever_gear_data.md">Equipment sources and gaps</a>'
     )
     build_review = "modelled_build_reviews.md" if modeled else "build_reviews.md"
+    tank_rows = [r for r in rows if r.get("Tank")]
+    tank_html = ""
+    if tank_rows:
+        table = []
+        validation = json.loads(Path("artifacts/tanks/current/validation.json").read_text())
+        selected_tanks = {(r["Key"], r["Race"]): r for r in validation["selections"]}
+        for row in sorted(tank_rows, key=lambda r: (r["Build"], -r["DPS"])):
+            tank = row["Tank"]
+            multi = selected_tanks[(row["Key"], row["Race"])]["Multi"]
+            table.append(
+                f'<tr><th>{escape(row["Build"])} · {escape(row["Race"])}</th>'
+                f'<td>{row["DPS"]:.1f}</td><td>{tank["TPS"]:.1f}</td>'
+                f'<td>{tank["DTPS"]:.1f}</td><td>{tank["TMI"]:.1f}</td>'
+                f'<td>{100*tank["ChanceOfDeath"]:.2f}%</td>'
+                f'<td title="Lowest mean enemy TPS in the separate 90-second, three-attacker validation">'
+                f'{multi["LeastTargetTPS"]:.1f}</td>'
+                f'<td>{", ".join(f"{t:.0f}" for t in multi["TargetTPS"])}</td></tr>')
+        tank_html = (
+            '<section id="tanks"><h2>Tank performance</h2>'
+            '<p>Tank rows take frontal attacks: 3,000 base damage every two seconds, parry haste, '
+            '1,500 HPS in three-second heals. Other DPS rows do not take these attacks. '
+            'External support differs between tank classes; this is not an equal-support survival ranking.</p>'
+            '<p class="note">Iterations continue after a modeled death. DPS is not discounted for death downtime; '
+            'survival is evaluated separately.</p>'
+            '<p><a href="tank_selection.md">Selection safeguards and three-attacker scenario</a> · '
+            '<a href="tanks/validation.json">Matched validation and per-target threat</a> · '
+            '<a href="tanks/metrics.csv">Tank metrics CSV</a> · '
+            '<a href="tanks/archives.json">Research archives</a></p>'
+            '<div class="matrix"><table><thead><tr><th>Build / race</th><th>DPS</th><th>TPS</th>'
+            '<th>DTPS</th><th>TMI</th><th>Modeled death</th>'
+            '<th>3 attackers: minimum TPS</th><th>TPS by attacker</th></tr></thead><tbody>'
+            + "".join(table) + '</tbody></table></div></section>'
+        )
+        shutil.copytree("artifacts/tanks/current", args.output / "tanks", dirs_exist_ok=True)
     document = """<!doctype html>
 <html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Forever simulations</title>
@@ -264,6 +285,15 @@ Game icons via Wowhead.</p></footer></main><script>""" + QUESTIONS_SCRIPT + """<
             'Shamans cannot dual wield. Downloadable raw data and chart images still contain those '
             'superseded runs; they are not a current ranking.</p>',
         )
+    document = document.replace('<footer class="note">', tank_html + '<footer class="note">')
+    if tank_rows:
+        document = document.replace(
+            '<a href="#questions">Questions &amp; coverage</a>',
+            '<a href="#questions">Questions &amp; coverage</a><a href="#tanks">Tank metrics</a>')
+        document = document.replace(
+            '<!-- equipment-status -->',
+            '<p class="note">Rows marked Tank include incoming attacks and modeled healing; '
+            'their rage, threat and survival are scenario-dependent. See <a href="#tanks">tank metrics</a>.</p>')
     (args.output / "index.html").write_text(document)
     print(f"Review site staged at {args.output}")
 

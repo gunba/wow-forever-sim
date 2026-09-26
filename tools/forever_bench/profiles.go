@@ -51,6 +51,9 @@ func builds() []build {
 		{"fury_sunder", "Fury (Sunder)", "warrior", "TalentsP1DPS", "forever_fury_sunder", "forever_fury", proto.Class_ClassWarrior, [3]int{0, 31, 0}, "bloodthirst"},
 		{"arms", "Arms", "warrior", "TalentsArms", "forever_arms", "forever_arms", proto.Class_ClassWarrior, [3]int{31, 0, 0}, "mortalStrike"},
 		{"fury_2h", "2H Bloodthirst", "warrior", "TalentsFuryTwoHand", "forever_fury_2h", "forever_arms", proto.Class_ClassWarrior, [3]int{11, 31, 0}, "bloodthirst"},
+		{"tank_warrior", "Protection Warrior", "tank_warrior", "TalentsProtection", "forever_protection", "launch", proto.Class_ClassWarrior, [3]int{0, 0, 31}, "shieldSlam"},
+		{"protection_paladin", "Protection Paladin", "protection_paladin", "TalentsProtection", "forever_protection", "launch", proto.Class_ClassPaladin, [3]int{0, 31, 0}, "holyShield"},
+		{"feral_tank_druid", "Bear", "feral_tank_druid", "TalentsBearTank", "forever_bear", "launch", proto.Class_ClassDruid, [3]int{0, 31, 0}, "berserk"},
 	}
 }
 
@@ -84,6 +87,14 @@ func (b build) presetTalents() string {
 }
 
 func (b build) player(race proto.Race) *proto.Player {
+	if b.isTank() {
+		p := googleProto.Clone(tankControl(b.Key).Raid.Parties[0].Players[0]).(*proto.Player)
+		p.Name, p.Race = b.Name, race
+		p.Equipment = core.GetGearSet(filepath.Join("ui", b.Dir, "gear_sets"), b.Gear).GearSet
+		p.Rotation = core.GetAplRotation(filepath.Join("ui", b.Dir, "apls"), b.APL).Rotation
+		p.TalentsString = b.presetTalents()
+		return p
+	}
 	p := &proto.Player{
 		Name: b.Name, Class: b.Class, Race: race,
 		Equipment:     core.GetGearSet(filepath.Join("ui", b.Dir, "gear_sets"), b.Gear).GearSet,

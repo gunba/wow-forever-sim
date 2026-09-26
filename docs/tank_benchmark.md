@@ -1,4 +1,9 @@
-# Tank simulations
+# Tank simulation controls
+
+This report preserves the earlier controls and their original comparisons,
+not the new matrix selections. See [Tank selection](tank_selection.md) for
+the integration method and safeguards. The exact current ranking requests
+are authoritative for the published profiles.
 
 Three Forever tank pages are available: [Protection Warrior](../ui/tank_warrior/), [Protection Paladin](../ui/protection_paladin/) and [Feral Bear](../ui/feral_tank_druid/). Their selectable defaults contain the rotation, legal level-60 talents, projected level-65 equipment, enchants, consumes, buffs and encounter. The role-specific Forever Tier 1 bonuses are enabled separately from equipped items. These are **tank scenarios**, not additions to the DPS ranking or evidence that one tank is universally better.
 

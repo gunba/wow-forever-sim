@@ -53,6 +53,7 @@ def main():
 
     digest = hashlib.sha256()
     paths = {args.binary, Path("assets/database/db.json")}
+    paths.update(Path("artifacts/tanks").glob("*_1t_20261993_selected.json"))
     if args.baseline_results:
         args.baseline_results = args.baseline_results.resolve()
         paths.add(args.baseline_results)

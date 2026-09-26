@@ -5,9 +5,6 @@ import sys
 import tempfile
 import unittest
 
-from build_display import expected_roster
-
-
 class BuildReviewTests(unittest.TestCase):
     def test_review_portal_discloses_current_warrior_rage_model(self):
         root = Path(__file__).resolve().parents[2]
@@ -24,6 +21,8 @@ class BuildReviewTests(unittest.TestCase):
         self.assertNotIn("Warrior rage still uses an inherited damage-based model", html)
         self.assertNotIn("Hunter pets still inherit no owner stats", html)
         self.assertNotIn("General haste does not shorten the default spell GCD", html)
+        for route in ("tank_warrior", "protection_paladin", "feral_tank_druid"):
+            self.assertIn(f'href="../{route}/?profile={route}__', html)
 
     def test_current_results_do_not_claim_historical_paired_gains(self):
         root = Path(__file__).resolve().parents[2]
@@ -38,7 +37,10 @@ class BuildReviewTests(unittest.TestCase):
         self.assertNotIn("Baseline DPS", text)
         self.assertNotIn("under the same engine and seed", text)
         self.assertIn("Standard error", text)
-        self.assertIn("earlier mechanics revision", text)
+        self.assertIn("hypothetical modeled-only gear results", text)
+        self.assertIn("Tank rows include frontal incoming attacks", text)
         races = {row["Race"] for row in json.loads(results.read_text())["Results"]}
-        rows = [line for line in text.splitlines() if any(line.startswith(f"| {race} |") for race in races)]
-        self.assertEqual(len(rows), len(expected_roster()))
+        result_tables = [section.split("\n### ", 1)[0] for section in text.split("### Results\n")[1:]]
+        rows = [line for table in result_tables for line in table.splitlines()
+                if any(line.startswith(f"| {race} |") for race in races)]
+        self.assertEqual(len(rows), len(json.loads(results.read_text())["Results"]))

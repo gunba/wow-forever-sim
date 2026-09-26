@@ -47,6 +47,7 @@ def main():
         args.original_baselines = args.original_baselines.resolve()
         scenarios["original"] = (args.original_baselines, [])
     paths = {args.binary, args.profiles, Path("assets/database/db.json")}
+    paths.update(Path("artifacts/tanks").glob("*_1t_20261993_selected.json"))
     if args.original_baselines:
         paths.add(args.original_baselines)
     paths.update(Path("assets/db_inputs").glob("forever_*.json"))

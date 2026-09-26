@@ -60,6 +60,7 @@ type resultRow struct {
 	UnmodeledSetBonuses                    []string
 	Request                                json.RawMessage
 	Metrics                                json.RawMessage
+	Tank                                   *tankMetrics `json:",omitempty"`
 }
 
 func encounter() *proto.Encounter {
@@ -90,6 +91,16 @@ func request(player *proto.Player, count int, rng int64) *proto.RaidSimRequest {
 }
 
 func requestForBuild(b build, player *proto.Player, count int, rng int64) *proto.RaidSimRequest {
+	if b.isTank() {
+		req := tankRequest(b, player, count, rng, *targetCount, *duration)
+		for _, target := range req.Encounter.Targets {
+			target.Stats[stats.Armor] = *targetArmor
+			if *demon {
+				target.MobType = proto.MobType_MobTypeDemon
+			}
+		}
+		return req
+	}
 	req := request(player, count, rng)
 	if *noBattleShout {
 		req.Raid.Buffs.BattleShout = proto.TristateEffect_TristateEffectMissing
@@ -118,6 +129,11 @@ func requestForBuild(b build, player *proto.Player, count int, rng int64) *proto
 }
 
 func run(b build, p *proto.Player, count int, rng int64) resultRow {
+	return runWithRequest(b, p, count, rng, requestForBuild)
+}
+
+func runWithRequest(b build, p *proto.Player, count int, rng int64,
+	makeRequest func(build, *proto.Player, int, int64) *proto.RaidSimRequest) resultRow {
 	if !b.allowsRace(p.Race) {
 		panic(fmt.Errorf("%s: race %v is not available", b.Key, p.Race))
 	}
@@ -125,6 +141,9 @@ func run(b build, p *proto.Player, count int, rng int64) resultRow {
 		panic(fmt.Errorf("%s: %w", b.Key, err))
 	}
 	if err := validateGear(p); err != nil {
+		panic(err)
+	}
+	if err := b.validateTankIdentity(p); err != nil {
 		panic(err)
 	}
 	baseline, err := protojson.Marshal(p)
@@ -140,7 +159,7 @@ func run(b build, p *proto.Player, count int, rng int64) resultRow {
 	if err != nil {
 		panic(err)
 	}
-	req := requestForBuild(b, p, count, rng)
+	req := makeRequest(b, p, count, rng)
 	_, rs, _ := core.NewEnvironment(req.Raid, req.Encounter, proto.Ruleset_RulesetForever, false)
 	ps := rs.Parties[0].Players[0]
 	var warnings []string
@@ -148,7 +167,7 @@ func run(b build, p *proto.Player, count int, rng int64) resultRow {
 		warnings = append(warnings, a.Warnings...)
 	}
 	// Fresh request keeps the saved replay independent of the stats probe.
-	req = requestForBuild(b, p, count, rng)
+	req = makeRequest(b, p, count, rng)
 	saved, err := protojson.Marshal(req)
 	if err != nil {
 		panic(err)
@@ -162,7 +181,7 @@ func run(b build, p *proto.Player, count int, rng int64) resultRow {
 		panic(err)
 	}
 	dps := result.RaidMetrics.Dps
-	return resultRow{
+	row := resultRow{
 		Key: b.Key, Build: b.Name, Race: raceName(p.Race), Faction: raceFaction(p.Race), Talents: p.TalentsString,
 		DPS: dps.Avg, StdDev: dps.Stdev, StandardError: dps.Stdev / math.Sqrt(float64(result.IterationsDone)),
 		OOMSeconds: result.RaidMetrics.Parties[0].Players[0].SecondsOomAvg,
@@ -170,6 +189,10 @@ func run(b build, p *proto.Player, count int, rng int64) resultRow {
 		Warnings: warnings, UnmodeledSetBonuses: unmodeledSetBonuses(p),
 		BaselinePlayer: baseline, Request: saved, Metrics: metrics,
 	}
+	if b.isTank() {
+		row.Tank = tankResultMetrics(result)
+	}
+	return row
 }
 
 func selectBuilds() []build {
@@ -360,6 +383,27 @@ func main() {
 			if *refreshEnchants {
 				prepareGearEnchants(b, p)
 			}
+			if *tankNeighbors {
+				if !b.isTank() || *output == "" {
+					panic("tank-neighbors requires a tank and output")
+				}
+				config := loadTalents(b)
+				if err := config.validate(p.TalentsString); err != nil {
+					panic(err)
+				}
+				data, err := json.Marshal(config.neighbors(p.TalentsString))
+				if err != nil {
+					panic(err)
+				}
+				if err := os.WriteFile(*output+".neighbors.json", data, 0644); err != nil {
+					panic(err)
+				}
+				continue
+			}
+			if *tankPairOutput {
+				writeTankPair(b, p)
+				continue
+			}
 			if *spellInventory {
 				spellRows = append(spellRows, inventorySpells(b, p))
 				continue
@@ -380,6 +424,9 @@ func main() {
 	}
 	if *spellInventory {
 		writeSpellInventory(spellRows)
+		return
+	}
+	if *tankPairOutput || *tankNeighbors {
 		return
 	}
 	if len(rows) == 0 {

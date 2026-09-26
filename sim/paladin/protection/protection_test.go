@@ -38,7 +38,7 @@ func TestProtection(t *testing.T) {
 	}))
 }
 
-var ProtectionTalents = "-5532513321301551-15"
+var ProtectionTalents = "-5521513321301551-15002"
 
 var ProtectionConsumes = core.ConsumesCombo{
 	Label: "Forever Protection",

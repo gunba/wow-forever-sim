@@ -33,6 +33,12 @@ try {
 		['mage', 'arcane_frost__gnome'],
 		['warrior', 'fury_2h__human'],
 		['warrior', 'fury_sunder__orc'],
+		['tank_warrior', 'tank_warrior__human'],
+		['tank_warrior', 'tank_warrior__tauren'],
+		['protection_paladin', 'protection_paladin__human'],
+		['protection_paladin', 'protection_paladin__undead'],
+		['feral_tank_druid', 'feral_tank_druid__tauren'],
+		['feral_tank_druid', 'feral_tank_druid__night_elf'],
 	].filter(([, id]) => !process.env.ONLY_PROFILE || id === process.env.ONLY_PROFILE)) {
 		const profile = bundle.profiles.find(profile => profile.id === id);
 		assert.ok(profile, `missing ${id}`);
@@ -47,7 +53,9 @@ try {
 		assert.ok(fresh.player.foreverTier1Bonuses, 'fresh default lacks Tier 1');
 		assert.ok(fresh.player.equipment.items.filter(item => item.enchant).length >= 9, 'fresh default lacks enchants');
 		assert.equal(fresh.encounter.duration, 300);
-		assert.equal(fresh.raidBuffs.moonkinAura, true, `${id}: startup hid the shared crit buff`);
+		if (!profile.tankMetrics) {
+			assert.equal(fresh.raidBuffs.moonkinAura, true, `${id}: startup hid the shared crit buff`);
+		}
 
 		await page.getByLabel('Ranked build', { exact: true }).selectOption(id);
 		await page.getByRole('button', { name: 'Load build', exact: true }).click();
@@ -83,10 +91,23 @@ try {
 		assert.deepEqual(stored.raidBuffs, expected.raidBuffs);
 		assert.deepEqual(stored.partyBuffs, expected.partyBuffs);
 		assert.deepEqual(stored.debuffs, expected.debuffs);
+		if (profile.tankMetrics) {
+			assert.equal(stored.player.inFrontOfTarget, true, `${id}: not facing the boss`);
+			assert.deepEqual(stored.player.healingModel, expected.player.healingModel, `${id}: external healing`);
+			assert.deepEqual(stored.tanks, expected.tanks, `${id}: tank assignment`);
+			assert.deepEqual(stored.encounter, expected.encounter, `${id}: incoming encounter`);
+		}
 		await page.getByRole('button', { name: 'Simulate', exact: true }).click();
 		await page.getByText('Save as Reference', { exact: true }).first().waitFor({ timeout: 180000 });
 		const actual = Number(await page.locator('.results-sim-dps .topline-result-avg').first().innerText());
 		assert.ok(Math.abs(actual - profile.dps) < .015, `${id}: WASM ${actual} vs native ${profile.dps}`);
+		if (profile.tankMetrics) {
+			for (const [selector, field] of [['tps', 'TPS'], ['dtps', 'DTPS'], ['tmi', 'TMI']]) {
+				const value = Number(await page.locator(`.results-sim-${selector} .topline-result-avg`).first().innerText());
+				assert.ok(Math.abs(value - profile.tankMetrics[field]) < .015,
+					`${id}: ${field} WASM ${value} vs native ${profile.tankMetrics[field]}`);
+			}
+		}
 		console.log(`${id}: fully loaded from the picker, ${actual} DPS, native match`);
 
 		if (route === 'enhancement_shaman') {

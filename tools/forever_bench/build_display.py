@@ -32,9 +32,13 @@ BUILDS = [
     ("fury", "Warrior", "Fury", "ability_warrior_innerrage"),
     ("fury_sunder", "Warrior", "Fury (Sunder)", "ability_warrior_sunder"),
     ("fury_2h", "Warrior", "2H Bloodthirst", "ability_warrior_innerrage"),
+    ("tank_warrior", "Warrior", "Protection · Tank", "ability_warrior_defensivestance"),
+    ("protection_paladin", "Paladin", "Protection · Tank", "spell_holy_devotionaura"),
+    ("feral_tank_druid", "Druid", "Bear · Tank", "ability_racial_bearform"),
 ]
 
 BUILD_CAVEATS = {
+    "feral": ["Crusader's proc eligibility and PPM in animal forms are unverified (DRU-011); the current Night Elf profile uses that enchant."],
     "pet_melee": ["Hawk damage uses an approximate guardian/pet model. Tracking talents affect its comparison with Survival on different creature types."],
     "marksmanship": ["Lone Wolf requires no active pet. Improved Tracking assumes tracking matches the Dragonkin reference target."],
     "shadow": ["Death's script value 150 and backlash interactions remain unverified; no extra execute multiplier is inferred. Self-damage is recorded without healer survival constraints."],
@@ -46,6 +50,9 @@ BUILD_CAVEATS = {
     "retribution_physical": ["Strength/AP equipment is unchanged. Champion of the Light converts existing Intellect into spell power without equipping caster gear; the separate seal Echoes still require the T53 in-game check."],
     "smite": ["The rank-2 Smite fallback depends on the modeled low-rank spell-power coefficient."],
     "stormcaller": ["The rank-2 Lightning Bolt filler depends on the modeled low-rank spell-power coefficient."],
+    "tank_warrior": ["Tank encounter: frontal attacks, incoming boss damage and modeled healing. Different external support from the non-attacking DPS rows. Rage, shield proc eligibility and scripted Tier effects remain qualified in the uncertainty register."],
+    "protection_paladin": ["Tank encounter: frontal attacks, incoming boss damage and modeled healing. Seal of Fury is not implemented; shield and Spiritual Attunement questions remain in the uncertainty register. This is not a survival ranking."],
+    "feral_tank_druid": ["Tank encounter: frontal attacks, incoming boss damage and modeled healing. Bear rage and threat coefficients remain provisional; see the uncertainty register. This is not a survival ranking.", "Crusader's proc eligibility and PPM in animal forms are unverified (DRU-011); the selected enchant gain depends on that model."],
 }
 
 HYBRID_PARENTS = {"pet_melee": "survival", "arcane_frost": "frost", "fury_2h": "arms", "fury_sunder": "fury"}

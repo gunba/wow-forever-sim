@@ -4,6 +4,37 @@
     "priorityList": [
         {
             "action": {
+                "castSpell": {
+                    "spellId": {
+                        "spellId": 22842
+                    }
+                },
+                "condition": {
+                    "cmp": {
+                        "op": "OpLt",
+                        "lhs": {
+                            "currentHealthPercent": {}
+                        },
+                        "rhs": {
+                            "const": {
+                                "val": "30%"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "action": {
+                "castSpell": {
+                    "spellId": {
+                        "spellId": 22812
+                    }
+                }
+            }
+        },
+        {
+            "action": {
                 "autocastOtherCooldowns": {}
             }
         },
@@ -222,7 +253,7 @@
                         },
                         "rhs": {
                             "const": {
-                                "val": "35"
+                                "val": "25"
                             }
                         }
                     }

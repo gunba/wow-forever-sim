@@ -61,6 +61,9 @@ func (a *talentAudit) save() {
 // Screen every legal one-point reallocation, then independently verify the best
 // candidates. The input gear, APL, consumes, buffs and encounter do not change.
 func optimizeTalents(b build, input *proto.Player) *proto.Player {
+	if b.isTank() {
+		panic("DPS-only talent optimization is not valid for tanks; use research_tanks.py and select_tanks.py with both tank scenarios")
+	}
 	config := loadTalents(b)
 	if err := config.validate(input.TalentsString); err != nil {
 		panic(err)

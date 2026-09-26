@@ -312,7 +312,7 @@ func equippedHitOnly(b build, input *proto.Player) (*proto.Player, hitAdjustment
 	if bonus[stats.MeleeHit] != 0 || bonus[stats.SpellHit] != 0 {
 		return nil, hitAdjustment{}, fmt.Errorf("equipment-only hit forbids manual hit overrides")
 	}
-	req := request(p, 1, 1)
+	req := requestForBuild(b, p, 1, 1)
 	env, _, _ := core.NewEnvironment(req.Raid, req.Encounter, proto.Ruleset_RulesetForever, false)
 	unit, target := env.Raid.AllPlayerUnits[0], env.Encounter.TargetUnits[0]
 	character := env.Raid.Parties[0].Players[0].GetCharacter()

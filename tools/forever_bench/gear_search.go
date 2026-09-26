@@ -31,17 +31,26 @@ type gearTrial struct {
 	DPS, StandardError     float64
 	Stage                  string
 	Warnings               []string
+	Tank                   *tankMetrics `json:",omitempty"`
+	TankMulti              *tankMetrics `json:",omitempty"`
+	RejectedFor            []string     `json:",omitempty"`
 }
 
 type gearSearchReport struct {
-	Build, Race     string
-	Baseline, Final resultRow
-	Passes          int
-	Converged       bool
-	Trials          []gearTrial
-	Accepted        []gearTrial
-	PoolIDs         []int32
-	Excluded        map[int32]string
+	Build, Race      string
+	Baseline, Final  resultRow
+	Passes           int
+	Converged        bool
+	Trials           []gearTrial
+	Accepted         []gearTrial
+	PoolIDs          []int32
+	Excluded         map[int32]string
+	TankGuardPolicy  *tankGuardPolicy `json:",omitempty"`
+	TankControl      *tankPair        `json:",omitempty"`
+	TankFinal        *tankPair        `json:",omitempty"`
+	TankProposed     *tankPair        `json:",omitempty"`
+	FinalDisposition string           `json:",omitempty"`
+	FinalRejection   []string         `json:",omitempty"`
 }
 
 func comparisonGearPool(b build, p *proto.Player) ([]core.Item, map[int32]string) {
@@ -154,7 +163,8 @@ func gearCandidates(b build, p *proto.Player, slot int, pool []core.Item) []*pro
 			}
 		}
 		prepareGearEnchants(b, candidate)
-		if googleProto.Equal(candidate.Equipment, p.Equipment) || validateGear(candidate) != nil {
+		if googleProto.Equal(candidate.Equipment, p.Equipment) || validateGear(candidate) != nil ||
+			b.validateTankIdentity(candidate) != nil {
 			return
 		}
 		candidates = append(candidates, candidate)
@@ -165,7 +175,7 @@ func gearCandidates(b build, p *proto.Player, slot int, pool []core.Item) []*pro
 		}
 		return candidates
 	}
-	twoHand := b.modelKey() == "arms" || b.modelKey() == "retribution" || b.modelKey() == "feral"
+	twoHand := b.modelKey() == "arms" || b.modelKey() == "retribution" || b.modelKey() == "feral" || b.Key == "feral_tank_druid"
 	dual := b.Class == proto.Class_ClassRogue || b.Key == "fury"
 	weapons := append([]core.Item{}, pool...)
 	for _, index := range []int{14, 15} {
@@ -187,6 +197,9 @@ func gearCandidates(b build, p *proto.Player, slot int, pool []core.Item) []*pro
 		if twoHand != (mh.HandType == proto.HandType_HandTypeTwoHand) && (twoHand || dual) {
 			continue
 		}
+		if b.isTank() && !twoHand && mh.HandType == proto.HandType_HandTypeTwoHand {
+			continue
+		}
 		if b.Key == "mutilate" && mh.WeaponType != proto.WeaponType_WeaponTypeDagger {
 			continue
 		}
@@ -195,6 +208,9 @@ func gearCandidates(b build, p *proto.Player, slot int, pool []core.Item) []*pro
 			continue
 		}
 		for _, oh := range weapons {
+			if b.isTank() && oh.WeaponType != proto.WeaponType_WeaponTypeShield {
+				continue
+			}
 			if oh.Type != proto.ItemType_ItemTypeWeapon || dual && oh.WeaponDamageMin == 0 {
 				continue
 			}
@@ -309,6 +325,9 @@ func optimizeGear(b build, initial *proto.Player) *proto.Player {
 	}
 	if !initial.ForeverTier1Bonuses {
 		panic("gear comparison requires the fixed Tier 1 override")
+	}
+	if b.isTank() {
+		return optimizeTankGear(b, initial)
 	}
 	p := googleProto.Clone(initial).(*proto.Player)
 	prepareGearEnchants(b, p)

@@ -23,6 +23,8 @@ def ui_settings(row):
             "phase": 1,
             "faction": row["Faction"],
             "showDamageMetrics": True,
+            **({"showThreatMetrics": True, "showExperimental": True}
+               if row.get("Tank") else {}),
         },
         "raidBuffs": raid.get("buffs", {}),
         "partyBuffs": party.get("buffs", {}),
@@ -60,6 +62,8 @@ def main():
             "hitAdjustment": row["Hit"], "unmodeledSetBonuses": row.get("UnmodeledSetBonuses") or [],
             "modeledGear": modeled,
             "caveats": BUILD_CAVEATS.get(row["Key"], []),
+            **({"tankMetrics": {key: value for key, value in row["Tank"].items()
+                                if key != "EncounterMetrics"}} if row.get("Tank") else {}),
         })
     (args.output / "index.json").write_text(json.dumps(index, indent=2) + "\n")
     if args.bundle:
