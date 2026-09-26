@@ -202,6 +202,9 @@ const (
 	SpellFlagAgentReserved4
 	SpellFlagAgentReserved5
 
+	// Damage component of a queued next-swing attack, not a directly castable APL action.
+	SpellFlagOnNextSwing
+
 	SpellFlagIgnoreModifiers = SpellFlagIgnoreAttackerModifiers | SpellFlagIgnoreTargetModifiers
 )
 

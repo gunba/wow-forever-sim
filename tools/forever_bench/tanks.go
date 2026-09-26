@@ -52,6 +52,35 @@ func tankControl(key string) *proto.RaidSimRequest {
 	return request
 }
 
+// The original Warrior controls used an invalid direct-cast rotation. Freeze
+// the corrected per-race inputs separately; never move the guard with a trial.
+func tankGuardPlayer(b build, race proto.Race) *proto.Player {
+	if b.Key == "tank_warrior" {
+		var controls struct {
+			Results []struct {
+				Race           string
+				BaselinePlayer json.RawMessage
+			}
+		}
+		if err := json.Unmarshal(mustRead("artifacts/tanks/queue_corrected_warrior_controls.json"), &controls); err != nil {
+			panic(err)
+		}
+		for _, row := range controls.Results {
+			if row.Race == raceName(race) {
+				player := &proto.Player{}
+				if err := protojson.Unmarshal(row.BaselinePlayer, player); err != nil {
+					panic(err)
+				}
+				return player
+			}
+		}
+		panic("missing queue-corrected Warrior guard control")
+	}
+	player := googleProto.Clone(tankControl(b.Key).Raid.Parties[0].Players[0]).(*proto.Player)
+	player.Race = race
+	return player
+}
+
 func tankRequest(b build, p *proto.Player, count int, rng int64, targets int, seconds float64) *proto.RaidSimRequest {
 	if targets < 1 || targets > 10 {
 		panic("tank targets must be between 1 and 10")

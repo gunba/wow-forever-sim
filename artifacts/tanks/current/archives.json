@@ -17421,5 +17421,13 @@
       "description": "Original Paladin APL comparisons are superseded by the separate mana-correction validation.",
       "archiveIndex": "https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/paladin_mana/archives.json"
     }
-  ]
+  ],
+  "supersededBuilds": {
+    "tank_warrior": {
+      "reason": "Direct Heroic Strike/Cleave casts bypassed queue replacement.",
+      "archive": "../../history/a7fe4cd30b/protection_before_queue_fix.json.gz",
+      "searchStatus": "Prior gear/talent/APL selection claims invalid; no corrected-model re-optimization claimed."
+    }
+  },
+  "queueCorrection": "../../protection_queue/archives.json"
 }

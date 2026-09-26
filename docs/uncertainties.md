@@ -7,7 +7,7 @@ Reviewed against `b9d8ef4a47271dd65a96259351daa696a37bd4fa`. Current level-60 DP
 This is the current register. Earlier audits preserve historical findings, not current task status.
 An implementation gap is not a request to test an unknown game rule. Model assumptions are not measured facts.
 
-Needs evidence: **83** · Implementation gap: **25** · Model assumption: **5** · Resolved: **17** · Outside current scenarios: **1**
+Needs evidence: **84** · Implementation gap: **26** · Model assumption: **5** · Resolved: **17** · Outside current scenarios: **1**
 
 ## Updating an answer
 
@@ -740,6 +740,22 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **References:** [sim/common/enchant_effects.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/common/enchant_effects.go) · [sim/druid/forms.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/forms.go) · [docs/tank_selection.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/tank_selection.md)
 
 **Related:** DRU-003, DATA-006
+
+### DRU-012 — Bear outgoing and incoming rage formulas
+
+**Needs evidence · High priority · Level 20**
+
+**Question:** Does Forever Bear retain damage-based rage or use normalized rules, and how are avoided swings handled?
+
+**Current model:** Bear retains inherited damage-based outgoing and incoming rage. Outgoing miss awards none; dodge/parry use pre-outcome damage. Maul replaces the white swing and does not award ordinary swing rage. Incoming damage is a major resource source in the tank benchmark. Warrior's low-level measurements were not applied to Bear.
+
+**Impact:** Bear Maul uptime, other ability throughput, rage from boss damage and gear/talent value. Frequent Maul alone cannot validate the model.
+
+**To close:** At level 20, record uncapped Bear rage around isolated outgoing hits while independently varying damage and haste; separate normal hits, crits and avoidance. For incoming rage, disable autos and compare known damage, armor and maximum health. Exclude Enrage, Primal Fury and Natural Reaction where possible. Repeat at higher levels before extrapolating.
+
+**References:** [sim/core/rage.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/rage.go) · [sim/druid/tank/tank.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/tank/tank.go) · [sim/druid/maul.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/maul.go) · [docs/protection_queue.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/protection_queue.md)
+
+**Related:** WAR-001, WAR-003, DRU-005, SCEN-001
 
 ### DRU-002 — Furor's lower-rank Energy carryover
 
@@ -1675,6 +1691,22 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [docs/tank_benchmark.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/tank_benchmark.md) · [proto/apl.proto](https://github.com/gunba/wow-forever-sim/blob/forever/proto/apl.proto) · [sim/core/apl_helpers.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/apl_helpers.go)
 
+### SCEN-004 — Protection search after queue correction
+
+**Implementation gap · High priority · Sources / code**
+
+**Question:** Has Protection gear/talent/APL selection been repeated with actual queued attacks?
+
+**Current model:** All three tank roles and 17 race profiles have exact matrix defaults. Protection's direct-cast Heroic Strike/Cleave bug invalidated its earlier search gains and guard claims. The corrected profiles retain their gear/talents and have fresh matched replays; Paladin and Bear selection evidence remains separate.
+
+**Impact:** Protection selection quality is not established by the superseded search. Corrected damage/threat results are not a new optimization claim.
+
+**To close:** Repeat Protection selection with the corrected queue model when optimization resumes, using legal frozen controls and both tank workloads. Preserve class-mechanic and projected defensive-stat qualifications.
+
+**References:** [docs/protection_queue.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/protection_queue.md) · [docs/tank_selection.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/tank_selection.md) · [artifacts/tanks/current/validation.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/tanks/current/validation.json) · [tools/forever_bench/tank_search.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/tank_search.go)
+
+**Related:** WAR-013, PAL-005, DRU-011, DATA-002, SCEN-001, SCEN-003
+
 ### SCEN-002 — Non-tank external healing abstraction
 
 **Model assumption · Medium priority · Model decision**
@@ -1823,22 +1855,6 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [sim/priest/power_infusion.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/priest/power_infusion.go) · [docs/beta-pass/priest.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/priest.md)
 
-### SCEN-004 — Tank gear search and exact matrix profiles
-
-**Resolved · High priority · Sources / code**
-
-**Question:** Are all tank races using validated auto-selected gear and full reproducible ranking defaults?
-
-**Current model:** All three tank roles and 17 race profiles have guarded normalized-gear searches, legal talent/APL comparisons, independent-seed confirmation and exact ranking defaults. Tank rows are included in the 31-build, 201-profile matrix with separate survival/threat context.
-
-**Impact:** Tank DPS, equipment and rotations are integrated; this does not resolve the class mechanics or projected defensive-stat coverage gaps.
-
-**To close:** Implemented with frozen controls and explicit safeguards in both single- and three-attacker workloads. Preserve source/model qualifications, especially Seal of Fury, form enchant procs and fixed-target pack threat.
-
-**References:** [docs/tank_selection.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/tank_selection.md) · [artifacts/tanks/current/validation.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/tanks/current/validation.json) · [tools/forever_bench/tank_search.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/tank_search.go) · [tools/forever_bench/tanks.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/tanks.go)
-
-**Related:** PAL-005, DRU-011, DATA-002, SCEN-001, SCEN-003
-
 ### SCEN-007 — Healing specializations and utility spellbooks
 
 **Outside current scenarios · Low priority · Sources / code**
@@ -1982,6 +1998,22 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **References:** [docs/paladin_mana.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/paladin_mana.md) · [ui/protection_paladin/apls/forever_protection.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/protection_paladin/apls/forever_protection.apl.json) · [tools/forever_bench/paladin_apl_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/paladin_apl_test.go) · [sim/paladin/judgement.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/judgement.go)
 
 **Related:** CORE-014, PAL-001
+
+### WAR-013 — Protection next-swing queue bypass
+
+**Resolved · High priority · Sources / code**
+
+**Question:** Did the Protection APL add Heroic Strike/Cleave damage without replacing a white swing?
+
+**Current model:** Both actions use their queue entries in all ten Protection profiles. An on-next-swing flag rejects direct APL casts of Heroic Strike, Cleave and Maul damage components. Fury and Bear already used the correct queue entries.
+
+**Impact:** The old Protection DPS, rage availability and threat were inflated. Earlier selection-gain claims are invalid; current results use corrected inputs.
+
+**To close:** Closed by profile-tag checks, runtime rejection/queue regressions, matched independent-seed replays and refreshed exact defaults. No rage formula was changed.
+
+**References:** [docs/protection_queue.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/protection_queue.md) · [sim/core/apl_actions_casting.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/apl_actions_casting.go) · [sim/warrior/heroic_strike_cleave.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/heroic_strike_cleave.go) · [tools/forever_bench/queued_attacks_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/queued_attacks_test.go)
+
+**Related:** SCEN-004, WAR-001, WAR-003
 
 ### DONE-008 — Demonic Sacrifice coexistence false lead
 

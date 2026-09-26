@@ -61,6 +61,22 @@ try {
       assert.ok(Math.abs(web - expected) < 0.03, `${route}: ${label} web ${web}, native ${expected}`);
     }
     console.log(`${route}: tank APL, Tier 1, modeled gear and native/WASM DPS/TPS/DTPS match`);
+    if (route === 'tank_warrior') {
+      const invalid = structuredClone(state);
+      const strike = invalid.player.rotation.priorityList.find(
+        item => item.action?.castSpell?.spellId?.spellId === 25286,
+      );
+      assert.equal(strike.action.castSpell.spellId.tag, 1);
+      delete strike.action.castSpell.spellId.tag;
+      await page.evaluate(({ key, invalid }) => localStorage.setItem(key, JSON.stringify(invalid)), { key, invalid });
+      await page.reload({ waitUntil: 'networkidle' });
+      await page.getByRole('tab', { name: 'Rotation', exact: true }).click();
+      const warning = page.locator('.apl-warnings:visible').first();
+      await warning.waitFor({ state: 'visible' });
+      await warning.hover();
+      await page.getByText(/replaces the next melee swing; use its queue action/).waitFor();
+      console.log('tank_warrior: saved direct-cast Heroic Strike is rejected with a queue warning');
+    }
     await context.close();
   }
 } finally {

@@ -14,9 +14,12 @@ Both use level-63 Dragonkin, 3,731 starting armor, two-second enemy swings,
 parry haste and a six-second burst window. These are stress scenarios, not
 measured boss/healer behavior.
 
-Each race's control is its class's previously published selected tank setup,
-with only the race changed. The frozen inputs are the
-`artifacts/tanks/*_1t_20261993_selected.json` requests. Their actual buffs,
+Paladin/Bear controls are their classes' previously published selected tank
+setups, with only the race changed, from the
+`artifacts/tanks/*_1t_20261993_selected.json` requests.
+After the queue correction, future Warrior searches instead use the ten
+frozen `artifacts/tanks/queue_corrected_warrior_controls.json` profiles.
+These controls do not move with candidate trials. Their actual buffs,
 debuff ownership, professions and consumables are retained. Support differs
 between tank classes and from the non-attacking DPS scenario: the matrix must
 not imply an equal-encounter survival ranking.
@@ -84,14 +87,21 @@ armor is universally the best tank gear.
 
 ## Selected profiles
 
-The final checks use two independent seeds per arm and both workloads:
-20,000 iterations per seed for Warrior/Bear, and 100,000 for Paladin.
-The higher Paladin count resolves small differences in modeled death probability.
-All 17 retained profiles pass the conservative DPS and survival/threat checks.
+The Bear selection checks use two independent seeds per arm with 20,000
+iterations per seed; Paladin uses 100,000 to resolve small differences in modeled
+death probability. Both pass the stated safeguards in both workloads.
+
+**Protection Warrior's previous selection evidence is invalid.** Its APL
+directly cast Heroic Strike/Cleave damage rather than queuing replacements.
+The [queue correction](protection_queue.md) retains the existing gear/talents
+and replays both workloads with 10,000 iterations on each of two independent
+seeds. It is a correctness repair, not a new optimization or a claim of
+non-inferiority against an invalid control. Earlier Warrior search results and
+their 42.2–45.8% gain claims are superseded.
 
 | Tank | Races | Single-target DPS gain over the original control |
 |---|---:|---:|
-| Protection Warrior | 10 | 42.2–45.8% |
+| Protection Warrior | 10 | Not established after queue correction |
 | Protection Paladin | 3 | 11.9–12.5% |
 | Bear | 4 | 17.7–18.2% |
 
@@ -100,10 +110,11 @@ talent effects or evidence of live-game balance. Each race has its exact saved
 selection. The matrix uses a separate common-seed 5,000-iteration replay, so its
 rounded DPS can differ slightly from the confirmation estimates.
 
-- **Warrior:** 4/6/41, with race-specific Protection point choices. Improved
+- **Warrior:** retained 4/6/41, with race-specific Protection point choices. Improved
   Heroic Strike, Cruelty and Unbridled Wrath replace some utility/threat points.
-  Lower queue thresholds are paired with earlier Shield Block availability;
-  debuffs and health-gated defensive cooldowns remain. Thunder Clap is also
+  Heroic Strike/Cleave use actual queue actions with the existing thresholds;
+  the earlier threshold comparison was invalid. Shield Block availability,
+  debuffs and health-gated defensive cooldowns remain unchanged. Thunder Clap is also
   prioritized for three or more attackers. Fixed-target pack threat remains
   uneven: preserving the least-target control does not establish reliable
   aggro against a damage-dealing party. Charge/interrupt utility is not exercised
@@ -129,6 +140,9 @@ and inherited proc-rate model are not verified by Forever logs (DRU-011).
 The earlier static-Agility configuration already gained roughly 15% in the
 independent checks; the additional enchant/gear gain is not proof that Crusader
 works in game. Existing Night Elf Feral DPS uses the same unresolved handler.
+Bear also retains inherited damage-based outgoing/incoming rage; this has not
+been established for Forever (DRU-012). Warrior measurements are not a verified
+replacement formula for Bear.
 
 The [selection ledger](../artifacts/tanks/current/validation.json) includes
 the frozen controls, per-seed checks, uncertainty bounds, rejection reasons and

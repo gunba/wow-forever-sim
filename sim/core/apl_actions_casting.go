@@ -17,6 +17,10 @@ func (rot *APLRotation) newActionCastSpell(config *proto.APLActionCastSpell) APL
 	if spell == nil {
 		return nil
 	}
+	if spell.Flags.Matches(SpellFlagOnNextSwing) {
+		rot.ValidationWarning("%s replaces the next melee swing; use its queue action (tag 1), not the damage action", spell.ActionID)
+		return nil
+	}
 	target := rot.GetTargetUnit(config.Target)
 	if target.Get() == nil {
 		return nil

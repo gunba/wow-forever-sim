@@ -82,9 +82,11 @@ func optimizeTankGear(b build, initial *proto.Player) *proto.Player {
 		panic("tank search must start from a complete modeled-v2 control")
 	}
 	pool, excluded := comparisonGearPool(b, p)
-	referencePlayer := googleProto.Clone(tankControl(b.Key).Raid.Parties[0].Players[0]).(*proto.Player)
-	referencePlayer.Race = p.Race
+	referencePlayer := tankGuardPlayer(b, p.Race)
 	anchor := runTankPair(b, referencePlayer, *iterations, *seed)
+	if len(anchor.Single.Warnings)+len(anchor.Multi.Warnings) != 0 {
+		panic("tank gear search requires a valid frozen control without APL warnings")
+	}
 	initialPair := runTankPair(b, p, *iterations, *seed)
 	report := gearSearchReport{
 		Build: b.Key, Race: raceName(p.Race), Baseline: initialPair.Single,

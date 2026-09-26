@@ -1,0 +1,842 @@
+{
+  "format": 1,
+  "description": "Original JSON values keyed by source filename; text hashes describe the source records before JSON framing.",
+  "archives": [
+    {
+      "archive": "confirmation-20263441.json.gz",
+      "sha256": "3cf13412757f2e449d2a7722b32a516cd734c0e8b2907eea84fc99f631b16385",
+      "bytes": 359020,
+      "records": [
+        {
+          "file": "dwarf-corrected.pair.json",
+          "sha256": "a54cb3545914bf46411d52852622f8d4ed51a7454528b50990b9c9c8c6cb842a",
+          "bytes": 178175
+        },
+        {
+          "file": "dwarf-corrected.player.json",
+          "sha256": "386e955acece5e5342ee44e0b2ceda76bdeed138289fd3d7852c795fac85b247",
+          "bytes": 15335
+        },
+        {
+          "file": "dwarf-invalid-direct-cast.pair.json",
+          "sha256": "5f7318207e595d20bd6d3334e145f1ee207c5af6dc4ddf97d0bf8ff57861f206",
+          "bytes": 179574
+        },
+        {
+          "file": "dwarf-invalid-direct-cast.player.json",
+          "sha256": "c9616dae24d313faaa724655b77eb226f7d12b3d25b0cef5c3336f52032b95f0",
+          "bytes": 15287
+        },
+        {
+          "file": "gnome-corrected.pair.json",
+          "sha256": "38561876376a3bb48b528a8ab4a6e80715fd0f204248831fa3ed4393c6862b3b",
+          "bytes": 178322
+        },
+        {
+          "file": "gnome-corrected.player.json",
+          "sha256": "14c7816cf0b71ecdf0b6dde9fb7bd9ffd5d5ef8782c139bbe5db7c44f8367492",
+          "bytes": 15335
+        },
+        {
+          "file": "gnome-invalid-direct-cast.pair.json",
+          "sha256": "0e28f9de314ba5087d2471c09cbe77ae438adb992552549e091456498d0d514b",
+          "bytes": 179552
+        },
+        {
+          "file": "gnome-invalid-direct-cast.player.json",
+          "sha256": "1f2507f4244a447be190a55012c86b30c3f4322bea1d6e0646b594587e1aa967",
+          "bytes": 15287
+        },
+        {
+          "file": "high_order-corrected.pair.json",
+          "sha256": "b24de01800ad44f9de05ce63e5acb5e37917311effe94a3b21f3040f0791a816",
+          "bytes": 177653
+        },
+        {
+          "file": "high_order-corrected.player.json",
+          "sha256": "28f12f73a3ea7091bdb8dbb639f4564ff51bbf76fbc430435fdcfdf7bdc76483",
+          "bytes": 15347
+        },
+        {
+          "file": "high_order-invalid-direct-cast.pair.json",
+          "sha256": "9296194dfa9a87d17889cdc6a67f8f5a10cf23356131e16ee0b007e2f30048a2",
+          "bytes": 178924
+        },
+        {
+          "file": "high_order-invalid-direct-cast.player.json",
+          "sha256": "46c5b7050b061c368ea04e1cc22fbdc45420ef8649bf1ea5042b238cb5695c86",
+          "bytes": 15299
+        },
+        {
+          "file": "human-corrected.pair.json",
+          "sha256": "db672e3cb75d4e5afab0d86672bbf9d02ed1ad6225bf9c3473a1dc0a6102ccf6",
+          "bytes": 177955
+        },
+        {
+          "file": "human-corrected.player.json",
+          "sha256": "beea6e682c85a2c154ef51536949a71f6fc2756802c9a313bb31fe6aaa71d852",
+          "bytes": 15335
+        },
+        {
+          "file": "human-invalid-direct-cast.pair.json",
+          "sha256": "4c8722cc04989ca5cb33ad21ba5a186ce7c4d4c35a5e1e340d5441838bb137ef",
+          "bytes": 179135
+        },
+        {
+          "file": "human-invalid-direct-cast.player.json",
+          "sha256": "843604e013ca44df096457b39c76ba87258822542effa3d0760a8a01737f96b0",
+          "bytes": 15287
+        },
+        {
+          "file": "manifest.json",
+          "sha256": "ff56a3d19b3784799fd19108894e99d5904ec4ec75f2d3de1c11c3f2566478d9",
+          "bytes": 396373
+        },
+        {
+          "file": "night_elf-corrected.pair.json",
+          "sha256": "9d147e44f8160b052639facfb213636c4576fe9eaa21184cef26b57ba4acfec3",
+          "bytes": 178049
+        },
+        {
+          "file": "night_elf-corrected.player.json",
+          "sha256": "bf100edbc37b327e026aaa1e21630ee60c0583487b24d305ecae71edc39d4b48",
+          "bytes": 15338
+        },
+        {
+          "file": "night_elf-invalid-direct-cast.pair.json",
+          "sha256": "ecaad7f08191774ca47b115e9481fb65709573633e3451b0d1062672b3711c94",
+          "bytes": 179294
+        },
+        {
+          "file": "night_elf-invalid-direct-cast.player.json",
+          "sha256": "b19b90df84d3de8a45581880ab77a5d59556fe34827558e01ecc2ed25a90fa6f",
+          "bytes": 15290
+        },
+        {
+          "file": "orc-corrected.pair.json",
+          "sha256": "6cc6fd206262c1e60249d1f8c902c080099e5f1afc6a0b45c55e922714c4f4f5",
+          "bytes": 178203
+        },
+        {
+          "file": "orc-corrected.player.json",
+          "sha256": "d9cac2112e6376d2990a4c136fe979bfdd1c568068d3e994d5ee0c31b212da27",
+          "bytes": 15333
+        },
+        {
+          "file": "orc-invalid-direct-cast.pair.json",
+          "sha256": "fb5fa51743a1c3dbd2cc84f0107e36c9b1e6f150ab6475e8b4eef307141d4a24",
+          "bytes": 179575
+        },
+        {
+          "file": "orc-invalid-direct-cast.player.json",
+          "sha256": "47dcce52b264911952c109156b9e77d242351985b6dc85f332893f0c1ea4d830",
+          "bytes": 15285
+        },
+        {
+          "file": "tauren-corrected.pair.json",
+          "sha256": "e662a2f17b9c3ad89e65726df23dcefba20b629cd702f7f635ffdaba5e277b47",
+          "bytes": 177651
+        },
+        {
+          "file": "tauren-corrected.player.json",
+          "sha256": "c2ad2eadf4f6106a24c7ff8e2571ce1d84038865e72ec348710ba9b383547983",
+          "bytes": 15336
+        },
+        {
+          "file": "tauren-invalid-direct-cast.pair.json",
+          "sha256": "0a4f4fb52a9e573e5b4b9dee10b976f51f5c84e11d2e06645a75b926e6ff9099",
+          "bytes": 179189
+        },
+        {
+          "file": "tauren-invalid-direct-cast.player.json",
+          "sha256": "e42e07d6870beb2a946fa5a51f97d499e29a09dfee2020fe75004c2ee32cc87a",
+          "bytes": 15288
+        },
+        {
+          "file": "troll-corrected.pair.json",
+          "sha256": "e206cc59277b9704e1b6cba3712a8637a76a595c1f81566908e618f0cc970c0a",
+          "bytes": 178403
+        },
+        {
+          "file": "troll-corrected.player.json",
+          "sha256": "2307971aa566cf3c486421a39efd2d858d54f2a8632d9240efd426e759a3ff5d",
+          "bytes": 15335
+        },
+        {
+          "file": "troll-invalid-direct-cast.pair.json",
+          "sha256": "173164576d2848fac185d902bcfead9ce6322618fd921a8310df84decae6ba06",
+          "bytes": 179767
+        },
+        {
+          "file": "troll-invalid-direct-cast.player.json",
+          "sha256": "95bef29ffb423285a0df2f084fecf83f3f1816d08c28006571e0d553c2fe6ac8",
+          "bytes": 15287
+        },
+        {
+          "file": "undead-corrected.pair.json",
+          "sha256": "150c53a2ee35fa729f604e8fffd6f14dcaa9d8621b86b304e11e83dc7ca1d9a7",
+          "bytes": 180421
+        },
+        {
+          "file": "undead-corrected.player.json",
+          "sha256": "a53b81ef177d9117e15f885526dd5fba8703cd75b0af307e4211609b81dfbeb0",
+          "bytes": 15336
+        },
+        {
+          "file": "undead-invalid-direct-cast.pair.json",
+          "sha256": "abf8ad83ab62fe862803724b2c7abfc7c48a805c739685c4c464509668cc594e",
+          "bytes": 182354
+        },
+        {
+          "file": "undead-invalid-direct-cast.player.json",
+          "sha256": "f2d4f5dfb3d8a7ed573f865940c350125198e00b9fc8e62d85a3fa87571daa22",
+          "bytes": 15288
+        },
+        {
+          "file": "windshaper-corrected.pair.json",
+          "sha256": "c9d7af46c9d91875727a7d922e5c6678a08642efd5a42fabee5549fdde3d222e",
+          "bytes": 177651
+        },
+        {
+          "file": "windshaper-corrected.player.json",
+          "sha256": "699c9452eb506fed2b3282921768b86f49111cc8e191d9c04ff012ab8ff601ae",
+          "bytes": 15348
+        },
+        {
+          "file": "windshaper-invalid-direct-cast.pair.json",
+          "sha256": "8f89cbd5bad50bca0418fd6900a4063609916d10a6012f1f0679c696610e4a88",
+          "bytes": 178922
+        },
+        {
+          "file": "windshaper-invalid-direct-cast.player.json",
+          "sha256": "779e4175d3ed43c344ecf5f92d6e6f86084d37de027c88554925dad4fefe9eb8",
+          "bytes": 15300
+        }
+      ]
+    },
+    {
+      "archive": "confirmation-20263493.json.gz",
+      "sha256": "30f4ed8ed0afca26e8a6552bc3ab2d3fb627ad788b2e6d7df38a9e37740acfbb",
+      "bytes": 358869,
+      "records": [
+        {
+          "file": "dwarf-corrected.pair.json",
+          "sha256": "c2ff36d3babea22fd2e47c7ac290601c510e23b09f4111392fda724ea5c4474c",
+          "bytes": 178185
+        },
+        {
+          "file": "dwarf-corrected.player.json",
+          "sha256": "386e955acece5e5342ee44e0b2ceda76bdeed138289fd3d7852c795fac85b247",
+          "bytes": 15335
+        },
+        {
+          "file": "dwarf-invalid-direct-cast.pair.json",
+          "sha256": "ed9f567a2bc8588a6eda157455754df956a03c173c5abcee980390ca9c68ca90",
+          "bytes": 179566
+        },
+        {
+          "file": "dwarf-invalid-direct-cast.player.json",
+          "sha256": "c9616dae24d313faaa724655b77eb226f7d12b3d25b0cef5c3336f52032b95f0",
+          "bytes": 15287
+        },
+        {
+          "file": "gnome-corrected.pair.json",
+          "sha256": "50fe1ac117ad13503921c5e635eeb96daa6b6b48968493e8c4db3c3df4cf3297",
+          "bytes": 178333
+        },
+        {
+          "file": "gnome-corrected.player.json",
+          "sha256": "14c7816cf0b71ecdf0b6dde9fb7bd9ffd5d5ef8782c139bbe5db7c44f8367492",
+          "bytes": 15335
+        },
+        {
+          "file": "gnome-invalid-direct-cast.pair.json",
+          "sha256": "525ffb141514ee95abf1ef2773345f2ac367c369bd131c37de38b43dfa5e6ac9",
+          "bytes": 179543
+        },
+        {
+          "file": "gnome-invalid-direct-cast.player.json",
+          "sha256": "1f2507f4244a447be190a55012c86b30c3f4322bea1d6e0646b594587e1aa967",
+          "bytes": 15287
+        },
+        {
+          "file": "high_order-corrected.pair.json",
+          "sha256": "b064df08d2c3ef7658cd30f33922ce08b35801f03311fb51d901b34295809fec",
+          "bytes": 177632
+        },
+        {
+          "file": "high_order-corrected.player.json",
+          "sha256": "28f12f73a3ea7091bdb8dbb639f4564ff51bbf76fbc430435fdcfdf7bdc76483",
+          "bytes": 15347
+        },
+        {
+          "file": "high_order-invalid-direct-cast.pair.json",
+          "sha256": "92bc9273e706ed874e8f78d9f8af893a029644920ef681405b80c6c4cab00bff",
+          "bytes": 178932
+        },
+        {
+          "file": "high_order-invalid-direct-cast.player.json",
+          "sha256": "46c5b7050b061c368ea04e1cc22fbdc45420ef8649bf1ea5042b238cb5695c86",
+          "bytes": 15299
+        },
+        {
+          "file": "human-corrected.pair.json",
+          "sha256": "c9e158ccd84ed709e503a04d343f0129a942192b22cd16513c8ff14c3d53c07c",
+          "bytes": 177961
+        },
+        {
+          "file": "human-corrected.player.json",
+          "sha256": "beea6e682c85a2c154ef51536949a71f6fc2756802c9a313bb31fe6aaa71d852",
+          "bytes": 15335
+        },
+        {
+          "file": "human-invalid-direct-cast.pair.json",
+          "sha256": "b35ff39bcd120da02589f7a59d5e6f2faf9eb93284ea1a17f9d5b2f92e488cf9",
+          "bytes": 179152
+        },
+        {
+          "file": "human-invalid-direct-cast.player.json",
+          "sha256": "843604e013ca44df096457b39c76ba87258822542effa3d0760a8a01737f96b0",
+          "bytes": 15287
+        },
+        {
+          "file": "manifest.json",
+          "sha256": "fb0ca498b0071628d685613ccc1622dc2fac5c6d0696822eb3b83ea45c6c8467",
+          "bytes": 396373
+        },
+        {
+          "file": "night_elf-corrected.pair.json",
+          "sha256": "d2ef21edce15247712c4c771870ce95e2cd65c03ce8aba06282fa1314c53a027",
+          "bytes": 178059
+        },
+        {
+          "file": "night_elf-corrected.player.json",
+          "sha256": "bf100edbc37b327e026aaa1e21630ee60c0583487b24d305ecae71edc39d4b48",
+          "bytes": 15338
+        },
+        {
+          "file": "night_elf-invalid-direct-cast.pair.json",
+          "sha256": "e134403b1a5faf944b40a5eabb5c4e588946cc8295aca6d41fb8ea5039ee3fc4",
+          "bytes": 179301
+        },
+        {
+          "file": "night_elf-invalid-direct-cast.player.json",
+          "sha256": "b19b90df84d3de8a45581880ab77a5d59556fe34827558e01ecc2ed25a90fa6f",
+          "bytes": 15290
+        },
+        {
+          "file": "orc-corrected.pair.json",
+          "sha256": "e13b420ca5f0723b38d898ae8d8ad7747d3ec06301108a35fb499c6b001b01a6",
+          "bytes": 178161
+        },
+        {
+          "file": "orc-corrected.player.json",
+          "sha256": "d9cac2112e6376d2990a4c136fe979bfdd1c568068d3e994d5ee0c31b212da27",
+          "bytes": 15333
+        },
+        {
+          "file": "orc-invalid-direct-cast.pair.json",
+          "sha256": "2410da8eb32c0f60888622b7fdab2aec63b38f2628f5a028d61599ede83fa9d2",
+          "bytes": 179544
+        },
+        {
+          "file": "orc-invalid-direct-cast.player.json",
+          "sha256": "47dcce52b264911952c109156b9e77d242351985b6dc85f332893f0c1ea4d830",
+          "bytes": 15285
+        },
+        {
+          "file": "tauren-corrected.pair.json",
+          "sha256": "ae4f4bfa3b7d6ac1515f7483d0f7380420c06c46dc1b2a52bacc76c9abbcfaa3",
+          "bytes": 177686
+        },
+        {
+          "file": "tauren-corrected.player.json",
+          "sha256": "c2ad2eadf4f6106a24c7ff8e2571ce1d84038865e72ec348710ba9b383547983",
+          "bytes": 15336
+        },
+        {
+          "file": "tauren-invalid-direct-cast.pair.json",
+          "sha256": "d5a044f92f59a6961e3e5a7b73946f4469672e50c5fb29bcdaa27baa66da34c8",
+          "bytes": 179203
+        },
+        {
+          "file": "tauren-invalid-direct-cast.player.json",
+          "sha256": "e42e07d6870beb2a946fa5a51f97d499e29a09dfee2020fe75004c2ee32cc87a",
+          "bytes": 15288
+        },
+        {
+          "file": "troll-corrected.pair.json",
+          "sha256": "b721ddd1388900cf732d4779cb25cb3df0dab32c0b12ffc4c39dae61df2a466f",
+          "bytes": 178420
+        },
+        {
+          "file": "troll-corrected.player.json",
+          "sha256": "2307971aa566cf3c486421a39efd2d858d54f2a8632d9240efd426e759a3ff5d",
+          "bytes": 15335
+        },
+        {
+          "file": "troll-invalid-direct-cast.pair.json",
+          "sha256": "4c579d99ee8206efa673a989723dff8ceba406b0d22cd1ebeca0f7972a25a30e",
+          "bytes": 179734
+        },
+        {
+          "file": "troll-invalid-direct-cast.player.json",
+          "sha256": "95bef29ffb423285a0df2f084fecf83f3f1816d08c28006571e0d553c2fe6ac8",
+          "bytes": 15287
+        },
+        {
+          "file": "undead-corrected.pair.json",
+          "sha256": "007c22ea8e217bca27b61550225fea79bc4213411508e2445ea980d61f4f1e5d",
+          "bytes": 180439
+        },
+        {
+          "file": "undead-corrected.player.json",
+          "sha256": "a53b81ef177d9117e15f885526dd5fba8703cd75b0af307e4211609b81dfbeb0",
+          "bytes": 15336
+        },
+        {
+          "file": "undead-invalid-direct-cast.pair.json",
+          "sha256": "e80d98d4736dea1ba9fc9e07c788ed8d713d2d07172b77246f67e5d96f1e632b",
+          "bytes": 182355
+        },
+        {
+          "file": "undead-invalid-direct-cast.player.json",
+          "sha256": "f2d4f5dfb3d8a7ed573f865940c350125198e00b9fc8e62d85a3fa87571daa22",
+          "bytes": 15288
+        },
+        {
+          "file": "windshaper-corrected.pair.json",
+          "sha256": "b979c79ecfbd16f020845dfab610bb1684e38672c25aeb46bb59c703664e1b58",
+          "bytes": 177630
+        },
+        {
+          "file": "windshaper-corrected.player.json",
+          "sha256": "699c9452eb506fed2b3282921768b86f49111cc8e191d9c04ff012ab8ff601ae",
+          "bytes": 15348
+        },
+        {
+          "file": "windshaper-invalid-direct-cast.pair.json",
+          "sha256": "d160f85f5a2c4a9fed8eab60e13d3ec4a59187125f2364e332abbd1fd7a5a038",
+          "bytes": 178928
+        },
+        {
+          "file": "windshaper-invalid-direct-cast.player.json",
+          "sha256": "779e4175d3ed43c344ecf5f92d6e6f86084d37de027c88554925dad4fefe9eb8",
+          "bytes": 15300
+        }
+      ]
+    },
+    {
+      "archive": "matrix.json.gz",
+      "sha256": "b1c9fed251488614ff5b9dd68625394514b7492e8febe7b85a868d8481c75c03",
+      "bytes": 373503,
+      "records": [
+        {
+          "file": "baseline-dwarf.json",
+          "sha256": "f840f59d0daa5146417892581722b424e8c58f9765128777ca9b7b80e5ee67d9",
+          "bytes": 86422
+        },
+        {
+          "file": "baseline-dwarf.player.json",
+          "sha256": "386e955acece5e5342ee44e0b2ceda76bdeed138289fd3d7852c795fac85b247",
+          "bytes": 15335
+        },
+        {
+          "file": "baseline-gnome.json",
+          "sha256": "bffaa1440a0173266080c1ca768c0faf85e5f1927d95a37a82715b4cce9acbe6",
+          "bytes": 86402
+        },
+        {
+          "file": "baseline-gnome.player.json",
+          "sha256": "14c7816cf0b71ecdf0b6dde9fb7bd9ffd5d5ef8782c139bbe5db7c44f8367492",
+          "bytes": 15335
+        },
+        {
+          "file": "baseline-high_order.json",
+          "sha256": "738c389e9908efe646224df678f7d3f0754d5e2ff9abdd292a8bcc1963e15aff",
+          "bytes": 85893
+        },
+        {
+          "file": "baseline-high_order.player.json",
+          "sha256": "28f12f73a3ea7091bdb8dbb639f4564ff51bbf76fbc430435fdcfdf7bdc76483",
+          "bytes": 15347
+        },
+        {
+          "file": "baseline-human.json",
+          "sha256": "a1688f86fe07689c800a727dc58f8c005f3bf257f168ab1ac1eb9b157448cde7",
+          "bytes": 86107
+        },
+        {
+          "file": "baseline-human.player.json",
+          "sha256": "beea6e682c85a2c154ef51536949a71f6fc2756802c9a313bb31fe6aaa71d852",
+          "bytes": 15335
+        },
+        {
+          "file": "baseline-night_elf.json",
+          "sha256": "32a66324f0bedebed010573d6b4b12a991d23e972b2d1e7a68634fff4a5aad2b",
+          "bytes": 86211
+        },
+        {
+          "file": "baseline-night_elf.player.json",
+          "sha256": "bf100edbc37b327e026aaa1e21630ee60c0583487b24d305ecae71edc39d4b48",
+          "bytes": 15338
+        },
+        {
+          "file": "baseline-orc.json",
+          "sha256": "c44e074cdf251b3ad0aa77b3de586d0ff49d8e4826eee40a6ff2dc50bd8d7c2f",
+          "bytes": 86452
+        },
+        {
+          "file": "baseline-orc.player.json",
+          "sha256": "d9cac2112e6376d2990a4c136fe979bfdd1c568068d3e994d5ee0c31b212da27",
+          "bytes": 15333
+        },
+        {
+          "file": "baseline-tauren.json",
+          "sha256": "887378feac8b734461a9d7b6803189260c167f876e24b73e8a112bf23e3bbaaf",
+          "bytes": 85892
+        },
+        {
+          "file": "baseline-tauren.player.json",
+          "sha256": "c2ad2eadf4f6106a24c7ff8e2571ce1d84038865e72ec348710ba9b383547983",
+          "bytes": 15336
+        },
+        {
+          "file": "baseline-troll.json",
+          "sha256": "c22519f013486e8f1c3ab3b8240e081a410f938f3e537a854a10e0b2d9937f51",
+          "bytes": 86435
+        },
+        {
+          "file": "baseline-troll.player.json",
+          "sha256": "2307971aa566cf3c486421a39efd2d858d54f2a8632d9240efd426e759a3ff5d",
+          "bytes": 15335
+        },
+        {
+          "file": "baseline-undead.json",
+          "sha256": "220ed22430b82a8dbc70af645eebc3ff72e597a947c527aef819e5355f4ced2e",
+          "bytes": 87139
+        },
+        {
+          "file": "baseline-undead.player.json",
+          "sha256": "a53b81ef177d9117e15f885526dd5fba8703cd75b0af307e4211609b81dfbeb0",
+          "bytes": 15336
+        },
+        {
+          "file": "baseline-windshaper.json",
+          "sha256": "d127f4788c00a9bbb945290d7e97df863094fb1e13953c5070c546b0ea778d0d",
+          "bytes": 85888
+        },
+        {
+          "file": "baseline-windshaper.player.json",
+          "sha256": "699c9452eb506fed2b3282921768b86f49111cc8e191d9c04ff012ab8ff601ae",
+          "bytes": 15348
+        },
+        {
+          "file": "gear_110-dwarf.json",
+          "sha256": "d3eca14703e9e526727e113effd2bd28abb70ae3f53fbaae7b51dac1d38889aa",
+          "bytes": 86243
+        },
+        {
+          "file": "gear_110-dwarf.player.json",
+          "sha256": "386e955acece5e5342ee44e0b2ceda76bdeed138289fd3d7852c795fac85b247",
+          "bytes": 15335
+        },
+        {
+          "file": "gear_110-gnome.json",
+          "sha256": "d6e872a405596b80603a7cd39ffcf06e34eeda3b2d5e0740ef077f9a32baaa36",
+          "bytes": 86513
+        },
+        {
+          "file": "gear_110-gnome.player.json",
+          "sha256": "14c7816cf0b71ecdf0b6dde9fb7bd9ffd5d5ef8782c139bbe5db7c44f8367492",
+          "bytes": 15335
+        },
+        {
+          "file": "gear_110-high_order.json",
+          "sha256": "55e6c5c8bdb4db86abe6fda6ed46902258f105854bcbf16f0cb71af972b9218d",
+          "bytes": 85988
+        },
+        {
+          "file": "gear_110-high_order.player.json",
+          "sha256": "28f12f73a3ea7091bdb8dbb639f4564ff51bbf76fbc430435fdcfdf7bdc76483",
+          "bytes": 15347
+        },
+        {
+          "file": "gear_110-human.json",
+          "sha256": "75851279642dba8159b9d375cb40a77bffc1f4c184d5a9fa72c5122d81d62d23",
+          "bytes": 86162
+        },
+        {
+          "file": "gear_110-human.player.json",
+          "sha256": "beea6e682c85a2c154ef51536949a71f6fc2756802c9a313bb31fe6aaa71d852",
+          "bytes": 15335
+        },
+        {
+          "file": "gear_110-night_elf.json",
+          "sha256": "f930cd7b511021233689550cabb5aac28c800402c35b938065dcbfb54646074a",
+          "bytes": 86425
+        },
+        {
+          "file": "gear_110-night_elf.player.json",
+          "sha256": "bf100edbc37b327e026aaa1e21630ee60c0583487b24d305ecae71edc39d4b48",
+          "bytes": 15338
+        },
+        {
+          "file": "gear_110-orc.json",
+          "sha256": "8dec465551276b62c563504d646e0a9258e299e482b0d8ef17751434aeb6009f",
+          "bytes": 86495
+        },
+        {
+          "file": "gear_110-orc.player.json",
+          "sha256": "d9cac2112e6376d2990a4c136fe979bfdd1c568068d3e994d5ee0c31b212da27",
+          "bytes": 15333
+        },
+        {
+          "file": "gear_110-tauren.json",
+          "sha256": "178b4faa50678a79484147847135b694ee17e06d6ca3538e90b770b24f6a48ec",
+          "bytes": 86252
+        },
+        {
+          "file": "gear_110-tauren.player.json",
+          "sha256": "c2ad2eadf4f6106a24c7ff8e2571ce1d84038865e72ec348710ba9b383547983",
+          "bytes": 15336
+        },
+        {
+          "file": "gear_110-troll.json",
+          "sha256": "36211c9fd8e0266c8d3dc766f7ad026f02e08c41eef846e9f5d3c8a94c4a39d6",
+          "bytes": 86223
+        },
+        {
+          "file": "gear_110-troll.player.json",
+          "sha256": "2307971aa566cf3c486421a39efd2d858d54f2a8632d9240efd426e759a3ff5d",
+          "bytes": 15335
+        },
+        {
+          "file": "gear_110-undead.json",
+          "sha256": "576926dfa2d23bd6526c51de5aeea2dbdfcc039e67f87271b14b8e050d9d1f5a",
+          "bytes": 87294
+        },
+        {
+          "file": "gear_110-undead.player.json",
+          "sha256": "a53b81ef177d9117e15f885526dd5fba8703cd75b0af307e4211609b81dfbeb0",
+          "bytes": 15336
+        },
+        {
+          "file": "gear_110-windshaper.json",
+          "sha256": "ccdfd6cdf378eb68ef375c0c9de8aa683b658bf6bb5d90a5e149c72c3d579e9b",
+          "bytes": 85989
+        },
+        {
+          "file": "gear_110-windshaper.player.json",
+          "sha256": "699c9452eb506fed2b3282921768b86f49111cc8e191d9c04ff012ab8ff601ae",
+          "bytes": 15348
+        },
+        {
+          "file": "gear_150-dwarf.json",
+          "sha256": "3f867943f074b9cec24ffa7c667cb43f4020d114c5803e05e783b4371066dbe3",
+          "bytes": 85051
+        },
+        {
+          "file": "gear_150-dwarf.player.json",
+          "sha256": "386e955acece5e5342ee44e0b2ceda76bdeed138289fd3d7852c795fac85b247",
+          "bytes": 15335
+        },
+        {
+          "file": "gear_150-gnome.json",
+          "sha256": "ddf351e4e2a1162704d7dd7da656560441166bd4208d84e79ab32c024400bfc7",
+          "bytes": 85264
+        },
+        {
+          "file": "gear_150-gnome.player.json",
+          "sha256": "14c7816cf0b71ecdf0b6dde9fb7bd9ffd5d5ef8782c139bbe5db7c44f8367492",
+          "bytes": 15335
+        },
+        {
+          "file": "gear_150-high_order.json",
+          "sha256": "e9e46a94edf5e96e1a396e132fe14e29e4c0c88b99b47caaf386fee3e6cc9290",
+          "bytes": 84868
+        },
+        {
+          "file": "gear_150-high_order.player.json",
+          "sha256": "28f12f73a3ea7091bdb8dbb639f4564ff51bbf76fbc430435fdcfdf7bdc76483",
+          "bytes": 15347
+        },
+        {
+          "file": "gear_150-human.json",
+          "sha256": "0c7754a9732adb9c33f1c5e26e689306856c745f93769166c356f02bee4436c8",
+          "bytes": 85088
+        },
+        {
+          "file": "gear_150-human.player.json",
+          "sha256": "beea6e682c85a2c154ef51536949a71f6fc2756802c9a313bb31fe6aaa71d852",
+          "bytes": 15335
+        },
+        {
+          "file": "gear_150-night_elf.json",
+          "sha256": "61d2395980fe2e4d6991da49428bcb33a63fa0698a2a35432db9f69ad7460c7f",
+          "bytes": 85275
+        },
+        {
+          "file": "gear_150-night_elf.player.json",
+          "sha256": "bf100edbc37b327e026aaa1e21630ee60c0583487b24d305ecae71edc39d4b48",
+          "bytes": 15338
+        },
+        {
+          "file": "gear_150-orc.json",
+          "sha256": "1d89ddf523b0302365604f9c1ea88878727f475705c92dfcfedf5fb5cc22b6e7",
+          "bytes": 85210
+        },
+        {
+          "file": "gear_150-orc.player.json",
+          "sha256": "d9cac2112e6376d2990a4c136fe979bfdd1c568068d3e994d5ee0c31b212da27",
+          "bytes": 15333
+        },
+        {
+          "file": "gear_150-tauren.json",
+          "sha256": "5fcc9aeac63b31e3d144bb0a9a5ffe58cae6b8b46bacfd02e2314fe67a04c47e",
+          "bytes": 84855
+        },
+        {
+          "file": "gear_150-tauren.player.json",
+          "sha256": "c2ad2eadf4f6106a24c7ff8e2571ce1d84038865e72ec348710ba9b383547983",
+          "bytes": 15336
+        },
+        {
+          "file": "gear_150-troll.json",
+          "sha256": "1087979e34257087e38049b98bcb131d829e24da99511c60be32e14c70ebb8c9",
+          "bytes": 85187
+        },
+        {
+          "file": "gear_150-troll.player.json",
+          "sha256": "2307971aa566cf3c486421a39efd2d858d54f2a8632d9240efd426e759a3ff5d",
+          "bytes": 15335
+        },
+        {
+          "file": "gear_150-undead.json",
+          "sha256": "50eb4b40e657286c71f7ad701061f9e3503651b0b345f6de832b7ef98b2f7c98",
+          "bytes": 86089
+        },
+        {
+          "file": "gear_150-undead.player.json",
+          "sha256": "a53b81ef177d9117e15f885526dd5fba8703cd75b0af307e4211609b81dfbeb0",
+          "bytes": 15336
+        },
+        {
+          "file": "gear_150-windshaper.json",
+          "sha256": "a7569e508aa7522ccdde56ad97248f90c3b1c78d08a2dd1ebfb34b31ffb86339",
+          "bytes": 84867
+        },
+        {
+          "file": "gear_150-windshaper.player.json",
+          "sha256": "699c9452eb506fed2b3282921768b86f49111cc8e191d9c04ff012ab8ff601ae",
+          "bytes": 15348
+        },
+        {
+          "file": "manifest.json",
+          "sha256": "4016f082a50a38b5ff4a31464ebf800d0161a33a66e5ce106d0a53ac9dd0affc",
+          "bytes": 791671
+        },
+        {
+          "file": "tier1_off-dwarf.json",
+          "sha256": "3566aa9693d619f2ffcd59c1ac4e80642304f87a4aaffa4cd0ef01ed13f187cc",
+          "bytes": 86091
+        },
+        {
+          "file": "tier1_off-dwarf.player.json",
+          "sha256": "386e955acece5e5342ee44e0b2ceda76bdeed138289fd3d7852c795fac85b247",
+          "bytes": 15335
+        },
+        {
+          "file": "tier1_off-gnome.json",
+          "sha256": "e688ee62100aa224516f27d88ed7812863da2c1fba30d6c4cce90214dd0634a8",
+          "bytes": 86028
+        },
+        {
+          "file": "tier1_off-gnome.player.json",
+          "sha256": "14c7816cf0b71ecdf0b6dde9fb7bd9ffd5d5ef8782c139bbe5db7c44f8367492",
+          "bytes": 15335
+        },
+        {
+          "file": "tier1_off-high_order.json",
+          "sha256": "3a5bd6d25967bdfbbae2dfcc42edf4e417a29e2b68354e26bbb497d674a47164",
+          "bytes": 85747
+        },
+        {
+          "file": "tier1_off-high_order.player.json",
+          "sha256": "28f12f73a3ea7091bdb8dbb639f4564ff51bbf76fbc430435fdcfdf7bdc76483",
+          "bytes": 15347
+        },
+        {
+          "file": "tier1_off-human.json",
+          "sha256": "89305537bab730b8b8bc796da1c0fa64a9be3881c92f2e3fa77e951d03dd1d18",
+          "bytes": 85837
+        },
+        {
+          "file": "tier1_off-human.player.json",
+          "sha256": "beea6e682c85a2c154ef51536949a71f6fc2756802c9a313bb31fe6aaa71d852",
+          "bytes": 15335
+        },
+        {
+          "file": "tier1_off-night_elf.json",
+          "sha256": "c8ea3cbd3d5e23f09d80e1786ae52b5bb3164d21b0cb46993ef5f20d752a3d44",
+          "bytes": 85990
+        },
+        {
+          "file": "tier1_off-night_elf.player.json",
+          "sha256": "bf100edbc37b327e026aaa1e21630ee60c0583487b24d305ecae71edc39d4b48",
+          "bytes": 15338
+        },
+        {
+          "file": "tier1_off-orc.json",
+          "sha256": "a7a838ebbfaca97e38c1277a98f409aa5f879aacbc8342a3e5cbd2da4b58f714",
+          "bytes": 86071
+        },
+        {
+          "file": "tier1_off-orc.player.json",
+          "sha256": "d9cac2112e6376d2990a4c136fe979bfdd1c568068d3e994d5ee0c31b212da27",
+          "bytes": 15333
+        },
+        {
+          "file": "tier1_off-tauren.json",
+          "sha256": "d6810be332946b40480c5f45ef9ff5bf0ccfe906b9ca39e03d4ce5497c8d8e1f",
+          "bytes": 85779
+        },
+        {
+          "file": "tier1_off-tauren.player.json",
+          "sha256": "c2ad2eadf4f6106a24c7ff8e2571ce1d84038865e72ec348710ba9b383547983",
+          "bytes": 15336
+        },
+        {
+          "file": "tier1_off-troll.json",
+          "sha256": "e0866e185eb71261666b0c4531c0b19cbacc724fa8adcb2e437d7fcfc580595a",
+          "bytes": 86202
+        },
+        {
+          "file": "tier1_off-troll.player.json",
+          "sha256": "2307971aa566cf3c486421a39efd2d858d54f2a8632d9240efd426e759a3ff5d",
+          "bytes": 15335
+        },
+        {
+          "file": "tier1_off-undead.json",
+          "sha256": "efa33e26d0db2d630470cafcb2758d75a11c906f3bfc80f7d5e0f737a1c3b14c",
+          "bytes": 86827
+        },
+        {
+          "file": "tier1_off-undead.player.json",
+          "sha256": "a53b81ef177d9117e15f885526dd5fba8703cd75b0af307e4211609b81dfbeb0",
+          "bytes": 15336
+        },
+        {
+          "file": "tier1_off-windshaper.json",
+          "sha256": "aac1ca84ac44099d2da16f86f86ecba6b1a55a0712fbe655e3aed0e9b2eca74e",
+          "bytes": 85748
+        },
+        {
+          "file": "tier1_off-windshaper.player.json",
+          "sha256": "699c9452eb506fed2b3282921768b86f49111cc8e191d9c04ff012ab8ff601ae",
+          "bytes": 15348
+        }
+      ]
+    }
+  ]
+}
