@@ -102,7 +102,7 @@ def main():
         shutil.copyfile(args.results.with_suffix("." + extension), args.output / ("results." + extension))
     for name in ("build_reviews.md", "build_updates.md", "gear_updates.md", "in_game_checks.md", "check_dispositions.md", "spell_coverage.md", "windfury.md", "energy_audit.md", "auto_attack_audit.md", "crit_model.md", "forever_gear_data.md", "mechanics_review.md", "history_review.md", "upstream-forever-review-2026-09-23.md", "upstream-forever-followup-2026-09-23.md", "mana_regeneration.md", "mythicsim_review.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
-    for name in ("weekly_review.md", "weekly_review_commits.csv", "flurry_review.md", "tank_benchmark.md"):
+    for name in ("weekly_review.md", "weekly_review_commits.csv", "flurry_review.md", "upstream_elliot_review.md", "tank_benchmark.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
     body = []
     for key, class_name, label, icon in builds:
@@ -209,7 +209,7 @@ Healing-only effects give no inferred spell damage. These are tested builds, not
 <a href="energy_audit.md">Energy model</a><a href="auto_attack_audit.md">Auto-attack model</a>
 <a href="crit_model.md">Critical strike model</a>
 <a href="mechanics_review.md">Mechanics review</a><a href="history_review.md">Change-history review</a>
-<a href="weekly_review.md">September 26 review</a><a href="flurry_review.md">Flurry evidence</a>
+<a href="weekly_review.md">September 26 review</a><a href="flurry_review.md">Flurry evidence</a><a href="upstream_elliot_review.md">Recent upstream review</a>
 <a href="upstream-forever-review-2026-09-23.md">Upstream review</a>
 <a href="mana_regeneration.md">Mana regeneration</a><a href="mana_regen/summary.json">Mana comparison data</a>
 <a href="mythicsim_review.md">Independent engine comparison</a></nav>
