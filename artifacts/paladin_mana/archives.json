@@ -1,0 +1,2597 @@
+{
+  "format": 1,
+  "description": "Original JSON values keyed by source filename; text hashes describe the source records before JSON framing.",
+  "archives": [
+    {
+      "archive": "reproduction.json.gz",
+      "sha256": "63dc47d10ff4ec13d0378147dfd1bbfd21a9f7a0a05dc0b768839b9011700be5",
+      "bytes": 261665,
+      "records": [
+        {
+          "file": "manifest.json",
+          "sha256": "0f9f4b8ce76ba8ce2703a81d8f79ec6520ed5ae0759194fe12664f857fd2ac93",
+          "bytes": 222
+        },
+        {
+          "file": "protection_paladin__dwarf__maintenance_only.pair.json",
+          "sha256": "f2ce6b7292b9d946670d0c57aecf1f832a6bf616119b2b10793a20b0d4f98f7d",
+          "bytes": 146736
+        },
+        {
+          "file": "protection_paladin__dwarf__maintenance_only.player.json",
+          "sha256": "81ace79cad84e3c2253932db2486cbca3fcd3cae6d68a48216a79fb248cb0a05",
+          "bytes": 3284
+        },
+        {
+          "file": "protection_paladin__dwarf__no_sor.pair.json",
+          "sha256": "c13786fa6aadd69c94282d0d69ece6fe354d606ff3742cff00efd3adb1f2b6e6",
+          "bytes": 138115
+        },
+        {
+          "file": "protection_paladin__dwarf__no_sor.player.json",
+          "sha256": "2f37948183148fdd46b5f7985d6bae08df0e66381e70fe607afabfcce6a059eb",
+          "bytes": 3128
+        },
+        {
+          "file": "protection_paladin__dwarf__published.pair.json",
+          "sha256": "b17265ee1e5a394aefa613781d29535527ef10f877bef148f760e8d6dafa002f",
+          "bytes": 145560
+        },
+        {
+          "file": "protection_paladin__dwarf__published.player.json",
+          "sha256": "74c49a2ed47c086ebb39e6a9fe309a7c6902700f9b26336570417978984ffaad",
+          "bytes": 3328
+        },
+        {
+          "file": "protection_paladin__human__maintenance_only.pair.json",
+          "sha256": "62bd2b4cabfaeb0b1b236c73f3fa8a4892ab8a0fa388cc783ef68e045fe7a8d8",
+          "bytes": 146939
+        },
+        {
+          "file": "protection_paladin__human__maintenance_only.player.json",
+          "sha256": "d5522cd181f0b6a07de11bf92211632e16b11fb567e2342eb0b79fd28b84c5f1",
+          "bytes": 3284
+        },
+        {
+          "file": "protection_paladin__human__no_sor.pair.json",
+          "sha256": "7ac76a28c2054ef707e76d50e2f2cdd2f48840ebc0247caef7f007b6a8f9ab97",
+          "bytes": 138324
+        },
+        {
+          "file": "protection_paladin__human__no_sor.player.json",
+          "sha256": "db677dd32f8b3ece9f25facc0252e18f92a980bfe55619b96de2b1f12f573f70",
+          "bytes": 3128
+        },
+        {
+          "file": "protection_paladin__human__published.pair.json",
+          "sha256": "b27e5568ed3435fbecb4da4a438e493cd5e1875ea8992dbe7f185c899a4b4c75",
+          "bytes": 145644
+        },
+        {
+          "file": "protection_paladin__human__published.player.json",
+          "sha256": "e3eec66ce1895897b014f3ccea02005c3720446805186969e5d39b28d8c038ca",
+          "bytes": 3328
+        },
+        {
+          "file": "protection_paladin__undead__maintenance_only.pair.json",
+          "sha256": "748146a0178d3fd38ec8dd9ad5bd12c225b22cd9407968534eac78a74090d515",
+          "bytes": 149713
+        },
+        {
+          "file": "protection_paladin__undead__maintenance_only.player.json",
+          "sha256": "3ec8e5acda873eba1afb3e4cb9b29d145e0f2c61b1e8bdd9ffaae70b44d2cde6",
+          "bytes": 3285
+        },
+        {
+          "file": "protection_paladin__undead__no_sor.pair.json",
+          "sha256": "09c23236a10e167eb99e0f768cbe902cef97428534e1daa535dadc8836656f23",
+          "bytes": 140871
+        },
+        {
+          "file": "protection_paladin__undead__no_sor.player.json",
+          "sha256": "812e3abf15910f66db6d82358f571354021d5bd1a94432dee17e46f96deda926",
+          "bytes": 3129
+        },
+        {
+          "file": "protection_paladin__undead__published.pair.json",
+          "sha256": "b10445ebd1fe06e24e48b0f5dc9a096772eb22dd546b2808eda7a49f196fdad8",
+          "bytes": 147754
+        },
+        {
+          "file": "protection_paladin__undead__published.player.json",
+          "sha256": "80527cc1e83edd0f61a964b783c07368870a0a6015278871ea9d565fb0ca42a0",
+          "bytes": 3329
+        },
+        {
+          "file": "retribution__dwarf__no_sor.json",
+          "sha256": "78b5ebaffcab704cd9e23df5a565ef480d3273175a66e8184d124183012df6d0",
+          "bytes": 51920
+        },
+        {
+          "file": "retribution__dwarf__no_sor.player.json",
+          "sha256": "6dbb615ae282b6140a55aa1796ebbb7b8df8b059764ec6c647a333c76dd3699a",
+          "bytes": 2584
+        },
+        {
+          "file": "retribution__dwarf__published.json",
+          "sha256": "eafd2281be78ef39716691139ae5736f66bbe84826ac493fb84c881871714524",
+          "bytes": 60256
+        },
+        {
+          "file": "retribution__dwarf__published.player.json",
+          "sha256": "61c213b77f2a5fb4ca01b402b9b7bd3d79b4933114e467dc4af5f852265b6496",
+          "bytes": 2892
+        },
+        {
+          "file": "retribution__human__no_sor.json",
+          "sha256": "12c9331c188c84a736fceabb354ffebb7d9c960553b4da5bf0c72b6901929527",
+          "bytes": 51402
+        },
+        {
+          "file": "retribution__human__no_sor.player.json",
+          "sha256": "202196ff9c4cfbbfdb44ba3e4355f47b656a41bdbd772043b873529a7bdcc203",
+          "bytes": 2584
+        },
+        {
+          "file": "retribution__human__published.json",
+          "sha256": "788c6ecdb6ae8044c66e4f2ec12d03d930bdb90bb07dee8693418c85bb27888b",
+          "bytes": 60014
+        },
+        {
+          "file": "retribution__human__published.player.json",
+          "sha256": "d3997fa8222e8952e78f5ea3281201e003657b2c11d9eac7ebf170f4d1948076",
+          "bytes": 2892
+        },
+        {
+          "file": "retribution__undead__no_sor.json",
+          "sha256": "eb57c153c22874564b2688aa4ee43b278a5302c69fea17d033e4b5039b8fd426",
+          "bytes": 53381
+        },
+        {
+          "file": "retribution__undead__no_sor.player.json",
+          "sha256": "9e2912998a3d61b075c637c6f3a6f095ab398bdba228468896d9cb31a66e3fda",
+          "bytes": 2585
+        },
+        {
+          "file": "retribution__undead__published.json",
+          "sha256": "f398a071dade391bf5124332a4b8ea3ddbac3edc69c1aaf63f0b6e2c1513737c",
+          "bytes": 61794
+        },
+        {
+          "file": "retribution__undead__published.player.json",
+          "sha256": "816dd1830135b81f57cf566fd557ed501f1e423b1200db059b9d30a2353f1007",
+          "bytes": 2893
+        },
+        {
+          "file": "retribution_physical__dwarf__no_sor.json",
+          "sha256": "6c94e64d552dbc68315656639c980e014311f0779d84af87f57f77fd4ebd861b",
+          "bytes": 50555
+        },
+        {
+          "file": "retribution_physical__dwarf__no_sor.player.json",
+          "sha256": "67560b2b2dfc7e35846a83916b8b69218dd26e127533984f98a9dd9880bebde5",
+          "bytes": 2477
+        },
+        {
+          "file": "retribution_physical__dwarf__published.json",
+          "sha256": "71b044aab7598d7c3c279c816e69bd49abce4100975f8b1c58d1ca92f8612196",
+          "bytes": 59223
+        },
+        {
+          "file": "retribution_physical__dwarf__published.player.json",
+          "sha256": "b02ce211bea8a57d97cbbf89bbb388939ba3edc461b746189da2fbc103d280e2",
+          "bytes": 2785
+        },
+        {
+          "file": "retribution_physical__human__no_sor.json",
+          "sha256": "57974217df90c925917b1c6dd1ca039b341c437cb78c6b384f7814ba831327fa",
+          "bytes": 50455
+        },
+        {
+          "file": "retribution_physical__human__no_sor.player.json",
+          "sha256": "1f09d88f7c58ee235a503c36ca5f2270566f35add61e74e4e1509900f7268d77",
+          "bytes": 2477
+        },
+        {
+          "file": "retribution_physical__human__published.json",
+          "sha256": "3a3fbe20e96938dcdcd8723c10ceba729156fcd013b2d909c88f9bf56a2ccab0",
+          "bytes": 58779
+        },
+        {
+          "file": "retribution_physical__human__published.player.json",
+          "sha256": "02e8f727d98cd07fb46b8c376cd44bacf38bd3b7c4a61e9b5866f7dde3d09a66",
+          "bytes": 2785
+        },
+        {
+          "file": "retribution_physical__undead__no_sor.json",
+          "sha256": "310d8a1440ce2d3dabf90bd67cf6f620f707db1d612cb9f4448d322879386bbd",
+          "bytes": 51580
+        },
+        {
+          "file": "retribution_physical__undead__no_sor.player.json",
+          "sha256": "52909ecc1520b0d94dc12d92e62edad3702b9b654baf8fadccae1d289d2b1a1b",
+          "bytes": 2478
+        },
+        {
+          "file": "retribution_physical__undead__published.json",
+          "sha256": "0718de9758a3dcb5a1000a223f4b9d8f8cafa6c5f9d7b10345892df3074b848c",
+          "bytes": 59777
+        },
+        {
+          "file": "retribution_physical__undead__published.player.json",
+          "sha256": "4d92336680f0de6bfb7a777c68731bbf194ac429adddba54be45910c2ae79dbe",
+          "bytes": 2786
+        },
+        {
+          "file": "summary.json",
+          "sha256": "8dc8a596fb26c8cdbf9a620c96812e082a9a1e715c89c20839685c42990b4714",
+          "bytes": 83207
+        }
+      ]
+    },
+    {
+      "archive": "screen.json.gz",
+      "sha256": "151cdebc5ed939024410159ad1bf1ba1c80dd5223191aa603c8adcca78e631f9",
+      "bytes": 2923286,
+      "records": [
+        {
+          "file": "dwarf__maintenance.pair.json",
+          "sha256": "98a6bbed92d7121bce2a44c1a2e327cc280fa834ef0a02bcedac1a335ee8e9fd",
+          "bytes": 140448
+        },
+        {
+          "file": "dwarf__maintenance.player.json",
+          "sha256": "81ace79cad84e3c2253932db2486cbca3fcd3cae6d68a48216a79fb248cb0a05",
+          "bytes": 3284
+        },
+        {
+          "file": "dwarf__published.pair.json",
+          "sha256": "46344c5c8b0e89f1d98b0eac176e3dbb6cf9890df2b1a91a01b745116a81441a",
+          "bytes": 141246
+        },
+        {
+          "file": "dwarf__published.player.json",
+          "sha256": "74c49a2ed47c086ebb39e6a9fe309a7c6902700f9b26336570417978984ffaad",
+          "bytes": 3328
+        },
+        {
+          "file": "dwarf__rank1_mana0_strike0.pair.json",
+          "sha256": "4ac566ad4aa45f661af8ba39f68934dba7daa9647bf8762f5dddb539fc95cfb9",
+          "bytes": 140442
+        },
+        {
+          "file": "dwarf__rank1_mana0_strike0.player.json",
+          "sha256": "37abe870ddc169fe963c6834242a98e866026887cf771785fd923ba1bb5b65f9",
+          "bytes": 3283
+        },
+        {
+          "file": "dwarf__rank1_mana0_strike1.pair.json",
+          "sha256": "59cedcfac6054c1602dad68f313ff4eb314310f8033cdf3652f0a4616a278d09",
+          "bytes": 140599
+        },
+        {
+          "file": "dwarf__rank1_mana0_strike1.player.json",
+          "sha256": "577dee4e3ca048f98303c0a8da711ceb2c5cd411f0072168d27d9b55b0024cee",
+          "bytes": 3283
+        },
+        {
+          "file": "dwarf__rank1_mana15_strike0.pair.json",
+          "sha256": "6eb061b7340a18cb28fcc834476f6b3e897fa87c6861fd156d89154939438286",
+          "bytes": 140448
+        },
+        {
+          "file": "dwarf__rank1_mana15_strike0.player.json",
+          "sha256": "81ace79cad84e3c2253932db2486cbca3fcd3cae6d68a48216a79fb248cb0a05",
+          "bytes": 3284
+        },
+        {
+          "file": "dwarf__rank1_mana15_strike1.pair.json",
+          "sha256": "c68cc5668ee31128cc25fca40f552f86965556e8a277b541c43c12c030acb495",
+          "bytes": 140603
+        },
+        {
+          "file": "dwarf__rank1_mana15_strike1.player.json",
+          "sha256": "3b4de15b11bcf679b39e586f7dda91d46de1478da1e9f26d6d45b7775eb41380",
+          "bytes": 3284
+        },
+        {
+          "file": "dwarf__rank1_mana30_strike0.pair.json",
+          "sha256": "e3f7f17f2e42dfc721cbc48c17975b05aedd2f41984e4654c8684c0d6eaa9566",
+          "bytes": 140448
+        },
+        {
+          "file": "dwarf__rank1_mana30_strike0.player.json",
+          "sha256": "a2d9c93e2daf706ebb4a0f8f0a4bc32d343eaaf751b942ec1eb956736cbd6a79",
+          "bytes": 3284
+        },
+        {
+          "file": "dwarf__rank1_mana30_strike1.pair.json",
+          "sha256": "d6641cf28042fe17262f8a3452a8227e2af09dc32573816de56c3f66b567055a",
+          "bytes": 140605
+        },
+        {
+          "file": "dwarf__rank1_mana30_strike1.player.json",
+          "sha256": "79c67cd63186e046742dbf704b0850574100900b69dc5ce859ac5155b341129b",
+          "bytes": 3284
+        },
+        {
+          "file": "dwarf__rank1_mana50_strike0.pair.json",
+          "sha256": "64689501219cefd77d99724b40a47091609ee6bfcf24805c05c117e098f9ecfc",
+          "bytes": 140437
+        },
+        {
+          "file": "dwarf__rank1_mana50_strike0.player.json",
+          "sha256": "01e4de84bdabe3195d614e445ff60d1b4c0d39c1642312eb80570a21a6e446c0",
+          "bytes": 3284
+        },
+        {
+          "file": "dwarf__rank1_mana50_strike1.pair.json",
+          "sha256": "f9f0943f70e7dc406d68212d3bcb07b4f8d96c3792ec1e6a9044113d354864d7",
+          "bytes": 140603
+        },
+        {
+          "file": "dwarf__rank1_mana50_strike1.player.json",
+          "sha256": "68bb5d3c99f2884a36de6e2b87d2add7cada62c7e35f9d8eaa9418dadf568b4d",
+          "bytes": 3284
+        },
+        {
+          "file": "dwarf__rank1_mana70_strike0.pair.json",
+          "sha256": "cca6a58f52e42e1ea7e0db5828e3b5b23968961a3d57da252175ef260838afb7",
+          "bytes": 140372
+        },
+        {
+          "file": "dwarf__rank1_mana70_strike0.player.json",
+          "sha256": "6c390e34116387f62aabb91e36ce97e6e3d4c11c1b3bd4dd7bd8ff29a8d57bac",
+          "bytes": 3284
+        },
+        {
+          "file": "dwarf__rank1_mana70_strike1.pair.json",
+          "sha256": "4a9252f34e0d4d41990243c11efb439517ae817cca3c319e29f8b871b7a2c19e",
+          "bytes": 140661
+        },
+        {
+          "file": "dwarf__rank1_mana70_strike1.player.json",
+          "sha256": "a1d53b5ba7b6147bd214c7f7dcc5587ce4576ad4323bc7133480270aafcb85bb",
+          "bytes": 3284
+        },
+        {
+          "file": "dwarf__rank2_mana0_strike0.pair.json",
+          "sha256": "2ed483f7f22df7e168907f6d8fb6de611d0099de4784826e34176a9303484a59",
+          "bytes": 143005
+        },
+        {
+          "file": "dwarf__rank2_mana0_strike0.player.json",
+          "sha256": "36f7055452931ab5d2ea3097c18da5959538a1e7184f092df3ecfb08084785e6",
+          "bytes": 3450
+        },
+        {
+          "file": "dwarf__rank2_mana0_strike1.pair.json",
+          "sha256": "473bbb454e16a6cea65187d770d75aa2054a53482a59c59a8751865043bc0839",
+          "bytes": 143087
+        },
+        {
+          "file": "dwarf__rank2_mana0_strike1.player.json",
+          "sha256": "fe5af0a366ec0603f6b6f8786e4b659098ec04664538331ca766ce62ae1f5795",
+          "bytes": 3450
+        },
+        {
+          "file": "dwarf__rank2_mana15_strike0.pair.json",
+          "sha256": "4ec29e3c27167e6a96e3bc9abcd0245ccdce4209335ad69c7c022b1e740eab28",
+          "bytes": 143009
+        },
+        {
+          "file": "dwarf__rank2_mana15_strike0.player.json",
+          "sha256": "79a47cba7b3c3048fcacf30b3305a271cd0dc2418f2551a7d6679c51284d70a9",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank2_mana15_strike1.pair.json",
+          "sha256": "c23b64b2aab6d260ce67e8d7945a90b37ce342004165aea2916bd9ce1f78633a",
+          "bytes": 143091
+        },
+        {
+          "file": "dwarf__rank2_mana15_strike1.player.json",
+          "sha256": "f86231cc9f507bab055b08a3432c26fede2cda499eb2de8d8ab77fe466b29ac8",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank2_mana30_strike0.pair.json",
+          "sha256": "749bb7eed3e848200c75ff3ad2fb40b5e116a68e4d4a9e4932da319929f71014",
+          "bytes": 143009
+        },
+        {
+          "file": "dwarf__rank2_mana30_strike0.player.json",
+          "sha256": "8b45568e8b95a49d07278f42bb860fca441012d5890af92aa9a131c594777a88",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank2_mana30_strike1.pair.json",
+          "sha256": "c8f4098401e99fd2f23c1ddff1b66a66b8f07b92b7ef36c4df622ebdf7072a7a",
+          "bytes": 143091
+        },
+        {
+          "file": "dwarf__rank2_mana30_strike1.player.json",
+          "sha256": "0c26bbaca0a2ae777afed8c53a0c93e0fa4e67661bf68b1384c4df81a93c5179",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank2_mana50_strike0.pair.json",
+          "sha256": "7d3118140de262fdda2706828aab176ef9049531eb1f64b1b25825b586f56fb7",
+          "bytes": 143900
+        },
+        {
+          "file": "dwarf__rank2_mana50_strike0.player.json",
+          "sha256": "a30c883ee10bad8a0278d01c7ab6f6fa25b01d77d441d66b1c39ac9a885df9d9",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank2_mana50_strike1.pair.json",
+          "sha256": "d2f9d2e484290974f71aea47ed5bd633b8c7fa71a00241efe1e7749ea63a4dfe",
+          "bytes": 143091
+        },
+        {
+          "file": "dwarf__rank2_mana50_strike1.player.json",
+          "sha256": "9a564cd0cca44d09f2d032385030167c5cf8a12672be798e5e4dd0ae638c2447",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank2_mana70_strike0.pair.json",
+          "sha256": "f83ed3d5c210a34a67a7ee8255f417a3dc82a3ce57c11bdfe3a92b44c7ac83e6",
+          "bytes": 144112
+        },
+        {
+          "file": "dwarf__rank2_mana70_strike0.player.json",
+          "sha256": "5197a4eb3483e97d9578d5b52c6b71bddcf038b8e6bd40604331b567dea918fb",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank2_mana70_strike1.pair.json",
+          "sha256": "3585ea932a346c4f7d6b88c03b0cc5608a0bdbb6856162f5b908fc3ee6fd81bb",
+          "bytes": 144169
+        },
+        {
+          "file": "dwarf__rank2_mana70_strike1.player.json",
+          "sha256": "3344609f3f90934a290e7e71f18210c990ecc42c3902b7621eb2ae6dc198e805",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank3_mana0_strike0.pair.json",
+          "sha256": "45cedada1dc4af675ba9ca393c5613eff4541357c96d22c40c6d7038ffd536aa",
+          "bytes": 143184
+        },
+        {
+          "file": "dwarf__rank3_mana0_strike0.player.json",
+          "sha256": "8e9c35be76e30ac904acc9d6766da309ae6700206d79dd068228e680fc394031",
+          "bytes": 3450
+        },
+        {
+          "file": "dwarf__rank3_mana0_strike1.pair.json",
+          "sha256": "379fcc73d073de2bba872d1586b97c5306ba6b3712445d92937b63eb04c5e9b7",
+          "bytes": 143203
+        },
+        {
+          "file": "dwarf__rank3_mana0_strike1.player.json",
+          "sha256": "254d0860aaab7a3f53c9ee528646ed11a00d1e974b08c59955e90c2adaa5591c",
+          "bytes": 3450
+        },
+        {
+          "file": "dwarf__rank3_mana15_strike0.pair.json",
+          "sha256": "a97c891196be29a40310c68aa8d392233bb002d11610a2cb86fa4b19f08522ee",
+          "bytes": 143188
+        },
+        {
+          "file": "dwarf__rank3_mana15_strike0.player.json",
+          "sha256": "a9414c44c7590425988e20b8c2c68731372dbd8f7a33c02ed11a07329d4958d0",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank3_mana15_strike1.pair.json",
+          "sha256": "7dcef2fd58c5b38b6c45dd8f48f2908aace214dbb2b15b30d13a0afb42c7de4f",
+          "bytes": 143207
+        },
+        {
+          "file": "dwarf__rank3_mana15_strike1.player.json",
+          "sha256": "92128398afb08106eed51657c645e1e40a537cb960b3d8eb9f125b3b4b978c9c",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank3_mana30_strike0.pair.json",
+          "sha256": "a715fa0f9cbda5f2dfbfe14b9ebb7d959e46d1052afeed090299cb23c1af791f",
+          "bytes": 143188
+        },
+        {
+          "file": "dwarf__rank3_mana30_strike0.player.json",
+          "sha256": "e0fbbe4619ab26b15b4d8422f8805bf99a17947cbdf668d4853f8387aa1ead83",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank3_mana30_strike1.pair.json",
+          "sha256": "6cd53bd221e2f81553588949676824bb91d2df5eca24e58f10946ab01d7543d1",
+          "bytes": 143207
+        },
+        {
+          "file": "dwarf__rank3_mana30_strike1.player.json",
+          "sha256": "8bd23c195834418eb862f23fa78e7f617696c0447242f27f9854e94e604ac113",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank3_mana50_strike0.pair.json",
+          "sha256": "b77c7cb833cb33d34161768a80b9b43f7eee5fa97a7ac7d951bedbe8a1fcfdbe",
+          "bytes": 144201
+        },
+        {
+          "file": "dwarf__rank3_mana50_strike0.player.json",
+          "sha256": "34dafb5cce5973e46e8545f18f21b8141a33567c96d653e2794baf8d487aabed",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank3_mana50_strike1.pair.json",
+          "sha256": "fe7b4c6588adfbcde6d285db28c6812acea44729f4fd4c7bdfe2e47bcee3882b",
+          "bytes": 143209
+        },
+        {
+          "file": "dwarf__rank3_mana50_strike1.player.json",
+          "sha256": "3bbed2207b2419d857d9b85c78d669e29100648cac33f30663336ce30cc5a86f",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank3_mana70_strike0.pair.json",
+          "sha256": "df3a0787162d8a61657a0f4d3c78fec44b9b4ee1f8f603886efae6b7466dfa3b",
+          "bytes": 144014
+        },
+        {
+          "file": "dwarf__rank3_mana70_strike0.player.json",
+          "sha256": "e6efb76361ce6fe60392412309a0a995a04e61668f9fd4b59e605669179b0558",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank3_mana70_strike1.pair.json",
+          "sha256": "011afe0df617de629143d7762e66e459938bd9011ea355104215a1854e8739d6",
+          "bytes": 143970
+        },
+        {
+          "file": "dwarf__rank3_mana70_strike1.player.json",
+          "sha256": "d55af9d581ccf3d942a13379a4325262aa7b997a830035e97595bd8ef218d0d1",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank4_mana0_strike0.pair.json",
+          "sha256": "5e464e8f1b6e2ca24947593f254240ed2bf2d091e10a32e8d6dae6154628ca5b",
+          "bytes": 142800
+        },
+        {
+          "file": "dwarf__rank4_mana0_strike0.player.json",
+          "sha256": "4b7fca39fbb3a3b7bfd75df2d77a95f420047926816718094ff4eb0b9b861108",
+          "bytes": 3450
+        },
+        {
+          "file": "dwarf__rank4_mana0_strike1.pair.json",
+          "sha256": "7a6ce9cabb2fd94eb77ea1a533f986624068823d3fc420ea608019196d80f27a",
+          "bytes": 143595
+        },
+        {
+          "file": "dwarf__rank4_mana0_strike1.player.json",
+          "sha256": "a664f7b845848793331ea5d7d68388f2d7a068e5fee2262181996889f727ea8b",
+          "bytes": 3450
+        },
+        {
+          "file": "dwarf__rank4_mana15_strike0.pair.json",
+          "sha256": "ceb6a4760072b5d48900ce365c14ebfaf2d0b32762b02bfcf087162c88e5a859",
+          "bytes": 142779
+        },
+        {
+          "file": "dwarf__rank4_mana15_strike0.player.json",
+          "sha256": "8466e132d3d20ccf7d8db523e281b7fa68260a84dae58fc3fb81c8b69c6c511c",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank4_mana15_strike1.pair.json",
+          "sha256": "b377197b75deeb075b8faa16b15d37c24a02678e4055d9fbaeb20b96cbad2f47",
+          "bytes": 143609
+        },
+        {
+          "file": "dwarf__rank4_mana15_strike1.player.json",
+          "sha256": "9a522bf4f5928308adff340e7f0eeb471c198b9998654ef32c337896b0e194f2",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank4_mana30_strike0.pair.json",
+          "sha256": "431e1fe231dfd0a0ab0217e32058b8e0b8e8b9e08bb1f49f0fde4e84aba4a79c",
+          "bytes": 143995
+        },
+        {
+          "file": "dwarf__rank4_mana30_strike0.player.json",
+          "sha256": "4ce2e78d2bda94e25916d0c560ae96a073580180df1efd2aa4e5bd72e0b2d953",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank4_mana30_strike1.pair.json",
+          "sha256": "2b6172ea182a8fc17bd29f2d1a7f3312d09253a0a426815777f0533ce67164c0",
+          "bytes": 144561
+        },
+        {
+          "file": "dwarf__rank4_mana30_strike1.player.json",
+          "sha256": "81f64c05b13789ac8c85c6bbdb034be7a639c3836dc62fe8281eb19dbcd9f498",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank4_mana50_strike0.pair.json",
+          "sha256": "6f54c5f6fda493b641c2df8d7e059f4ddd8599fa8739ebee3eac2c51351ed40d",
+          "bytes": 143959
+        },
+        {
+          "file": "dwarf__rank4_mana50_strike0.player.json",
+          "sha256": "efe671cf85deddd6681e0b7de7a15e11637579734eebef42768465b1abb275d2",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank4_mana50_strike1.pair.json",
+          "sha256": "d03b3c8f10f3e48b3997d5cd6e31879742a6d95f0b7f10cc2e71a5d25bb1ded5",
+          "bytes": 144733
+        },
+        {
+          "file": "dwarf__rank4_mana50_strike1.player.json",
+          "sha256": "b61f299437afccd3ef78fd09c305a4b0f325b789177e4b839ae1606f577262e9",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank4_mana70_strike0.pair.json",
+          "sha256": "28b6008fdd3802e008515d021e3ec70dfc27f0938099b3b223c595d412ec7c83",
+          "bytes": 143771
+        },
+        {
+          "file": "dwarf__rank4_mana70_strike0.player.json",
+          "sha256": "ae9a20eb3c58c99631d78ba68ba34b4fb64371f579ead612b5b783d3d48b3355",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank4_mana70_strike1.pair.json",
+          "sha256": "12a4c8533b55dedbfddbcedc2d10e751e9a81ee63927e5e5d9c683a7a6453e1a",
+          "bytes": 144244
+        },
+        {
+          "file": "dwarf__rank4_mana70_strike1.player.json",
+          "sha256": "c69cf1babaa74eb500f2782e87998ed8e54cb7650b969196fd1f4ee89beec365",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank5_mana0_strike0.pair.json",
+          "sha256": "5247d34b2ce6b838391005662e4787c925e3fb7c972fde57940269cb60eced37",
+          "bytes": 141509
+        },
+        {
+          "file": "dwarf__rank5_mana0_strike0.player.json",
+          "sha256": "a5dd53c0e4b0c40cca36ff2f8218aa86c398538ebf59261a8309ddd8a87dfab4",
+          "bytes": 3450
+        },
+        {
+          "file": "dwarf__rank5_mana0_strike1.pair.json",
+          "sha256": "a2cb97f3c5f9a35c48fc9f44e54a7ba4fe428f1b57c3ca5d5c6436403601166e",
+          "bytes": 141760
+        },
+        {
+          "file": "dwarf__rank5_mana0_strike1.player.json",
+          "sha256": "4f175743c4b79df14417a2c5496c41707ad429adc0e34618a198a5c237d446e0",
+          "bytes": 3450
+        },
+        {
+          "file": "dwarf__rank5_mana15_strike0.pair.json",
+          "sha256": "e4717930a1d68ee2f7141ec404eeba14f7f383f80e27f7f93b84ab15e286b3fe",
+          "bytes": 141535
+        },
+        {
+          "file": "dwarf__rank5_mana15_strike0.player.json",
+          "sha256": "93fabc7fe1305f889ee93416d87e8a7ea8ed803c93ec0e27ee61a1a0bbe30b85",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank5_mana15_strike1.pair.json",
+          "sha256": "5d647c87feec0618cb36fd7d7aa572883bd03527ef74eba1aa6a51f2c0ef17f5",
+          "bytes": 141652
+        },
+        {
+          "file": "dwarf__rank5_mana15_strike1.player.json",
+          "sha256": "faa435a3af0fc27022dd09d51ef8391c97ae57fb66102683ae3b2ac32daf22dd",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank5_mana30_strike0.pair.json",
+          "sha256": "04b2e9932da189e5925414b7095a2ca73a76a49aeeccd6b72d2d36fa0834d6e8",
+          "bytes": 142677
+        },
+        {
+          "file": "dwarf__rank5_mana30_strike0.player.json",
+          "sha256": "93f31d36ddf86e3ec45d67607906dd9ef31d4490f25a4cd35a40c0bac30de432",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank5_mana30_strike1.pair.json",
+          "sha256": "23b1f44f195efa7be1bf804798e91c4a20650f376a369af9edc321314804139d",
+          "bytes": 142935
+        },
+        {
+          "file": "dwarf__rank5_mana30_strike1.player.json",
+          "sha256": "07c2fb68da2c4d41e640c37cf330c8c2da88acf63c88cf61b73cf61db40eab4c",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank5_mana50_strike0.pair.json",
+          "sha256": "ad27a5fc7552002088da6ef2ff51ef9ac909ea5a9622f86f5d44f664fab0ab56",
+          "bytes": 142775
+        },
+        {
+          "file": "dwarf__rank5_mana50_strike0.player.json",
+          "sha256": "d849d30e96a36dd3df3dd83f4a85fb6370e6cb133c939d45f55cdeb069d0c21c",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank5_mana50_strike1.pair.json",
+          "sha256": "0e9e4193fd8c21f67ac3385cf508279016e09de99dbfec9ac0625f1b51232d73",
+          "bytes": 142827
+        },
+        {
+          "file": "dwarf__rank5_mana50_strike1.player.json",
+          "sha256": "f1dafef89d6f352991d4286ea238da053cfc4ead7f4bd6ced446a7c6ab551d9e",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank5_mana70_strike0.pair.json",
+          "sha256": "c4e3201f9c5d45125a128bafa6d8c6a152a4511c4eef2092c8da23cc397a0138",
+          "bytes": 143028
+        },
+        {
+          "file": "dwarf__rank5_mana70_strike0.player.json",
+          "sha256": "e9d2cf2420fe39371bb8bb7c7cae34498835ff2213c9742f0d645f8d68c022d9",
+          "bytes": 3451
+        },
+        {
+          "file": "dwarf__rank5_mana70_strike1.pair.json",
+          "sha256": "a46b4303674a97ef4f26694aa2fed5aec961eaeb40eb3830169a29c5d5e04a63",
+          "bytes": 143963
+        },
+        {
+          "file": "dwarf__rank5_mana70_strike1.player.json",
+          "sha256": "216cf90bcf8d1e58207b320dee4a2fb6f9bd47a1c206953f597ba589670bcb23",
+          "bytes": 3451
+        },
+        {
+          "file": "human__maintenance.pair.json",
+          "sha256": "58d5987cda1d90a6c7c6060a42c7a435e6185712fda977731ee2abd16ad0780f",
+          "bytes": 141834
+        },
+        {
+          "file": "human__maintenance.player.json",
+          "sha256": "d5522cd181f0b6a07de11bf92211632e16b11fb567e2342eb0b79fd28b84c5f1",
+          "bytes": 3284
+        },
+        {
+          "file": "human__published.pair.json",
+          "sha256": "e4c0ee982ebed495c6ec84dd0e27fb6d8b2f1ca8a5f90911d38c48822a40c3d8",
+          "bytes": 141336
+        },
+        {
+          "file": "human__published.player.json",
+          "sha256": "e3eec66ce1895897b014f3ccea02005c3720446805186969e5d39b28d8c038ca",
+          "bytes": 3328
+        },
+        {
+          "file": "human__rank1_mana0_strike0.pair.json",
+          "sha256": "001ff1d91c4267293206e26b137a8008f61e86d1551b28f1c2feaa5e4505fba3",
+          "bytes": 141829
+        },
+        {
+          "file": "human__rank1_mana0_strike0.player.json",
+          "sha256": "4af71741b9f7f548fd48e428c2c391b143e8b71f127529db1c24c6a630e916f6",
+          "bytes": 3283
+        },
+        {
+          "file": "human__rank1_mana0_strike1.pair.json",
+          "sha256": "1dda3ff268a2d8c4e0ee26a85d8d388cd3f3cfdaff715193892290861fb4c83c",
+          "bytes": 140358
+        },
+        {
+          "file": "human__rank1_mana0_strike1.player.json",
+          "sha256": "b7b502f9172b03e792aa1361506f0c22a3e0694389f3135d0b691d508647c4a7",
+          "bytes": 3283
+        },
+        {
+          "file": "human__rank1_mana15_strike0.pair.json",
+          "sha256": "195e03831648bf04c9f79900a10dbbaf448573589e86bbb21ca507441e96f876",
+          "bytes": 141834
+        },
+        {
+          "file": "human__rank1_mana15_strike0.player.json",
+          "sha256": "d5522cd181f0b6a07de11bf92211632e16b11fb567e2342eb0b79fd28b84c5f1",
+          "bytes": 3284
+        },
+        {
+          "file": "human__rank1_mana15_strike1.pair.json",
+          "sha256": "a9d177a72fa0fcc7b955399f8535e5114d6e648a7eaffd34ffc2392a473234f4",
+          "bytes": 140362
+        },
+        {
+          "file": "human__rank1_mana15_strike1.player.json",
+          "sha256": "af37203d502d3343276fe98e4cd53b67ee534be5f78c69c7ed139e35685c277b",
+          "bytes": 3284
+        },
+        {
+          "file": "human__rank1_mana30_strike0.pair.json",
+          "sha256": "1f88e54c2a9fb3ac342521f1d2f9173df937fc4280262a48ea162675f325fa83",
+          "bytes": 141834
+        },
+        {
+          "file": "human__rank1_mana30_strike0.player.json",
+          "sha256": "45c950ef1f32f1209b76b3c958e2c1769e256f35833a91aabb49542c05ac895b",
+          "bytes": 3284
+        },
+        {
+          "file": "human__rank1_mana30_strike1.pair.json",
+          "sha256": "1dd662265184e4e5ff4767dd418dd5800fdfdb92b83b99f8e1bc6674ca4b781c",
+          "bytes": 140362
+        },
+        {
+          "file": "human__rank1_mana30_strike1.player.json",
+          "sha256": "4988e197070ca643aa6ae5d7a9cd09aac9aed1561c445638e4bb83cfad04cf6c",
+          "bytes": 3284
+        },
+        {
+          "file": "human__rank1_mana50_strike0.pair.json",
+          "sha256": "fe8915aa9a557e7669002abee4af7a5fcc4eba23fee23a540ed1b186bd2e4a42",
+          "bytes": 139843
+        },
+        {
+          "file": "human__rank1_mana50_strike0.player.json",
+          "sha256": "3e8ab2c9af2a34ea656d70651f4d7615d7f45031081a234a8e64a34e6580669b",
+          "bytes": 3284
+        },
+        {
+          "file": "human__rank1_mana50_strike1.pair.json",
+          "sha256": "9486e0a54dfed7c85308b8a3d37978aeedcfae68c8165dce7c50ff9f6936ef7b",
+          "bytes": 140362
+        },
+        {
+          "file": "human__rank1_mana50_strike1.player.json",
+          "sha256": "e9b2c5661a65d6f9de13b3f8d576010d6a9249aa1c40b964af216e824b9096ae",
+          "bytes": 3284
+        },
+        {
+          "file": "human__rank1_mana70_strike0.pair.json",
+          "sha256": "9b9c7c15ab475cce8dcb5890358d823503583044cda96dbdf20cf99dff701c2d",
+          "bytes": 139741
+        },
+        {
+          "file": "human__rank1_mana70_strike0.player.json",
+          "sha256": "4fd70f59b0cdf710960d824007c992629aa8fde5953f727451a64ec2ea7d3ee8",
+          "bytes": 3284
+        },
+        {
+          "file": "human__rank1_mana70_strike1.pair.json",
+          "sha256": "2ea03444717aebac5d2c2e46ae23d3deabf90f11157de6c769a73fce7fb706ad",
+          "bytes": 140285
+        },
+        {
+          "file": "human__rank1_mana70_strike1.player.json",
+          "sha256": "bf71acac773addf45f7f0bf75f62dd1b90165a30c8b9ae03ff5a87ac3a69f148",
+          "bytes": 3284
+        },
+        {
+          "file": "human__rank2_mana0_strike0.pair.json",
+          "sha256": "96742ad5887b03ba9bb342869248f9da22bc0a186afbc4e1e0f195f79e734730",
+          "bytes": 144648
+        },
+        {
+          "file": "human__rank2_mana0_strike0.player.json",
+          "sha256": "71670a7eb31b279bf573d6f6ce39f22caab516aefcf706d5c4f10999da1d5b4b",
+          "bytes": 3450
+        },
+        {
+          "file": "human__rank2_mana0_strike1.pair.json",
+          "sha256": "fc3284412f36dc207ac179bc77c048d31b7de60428e92bb39e617b2943642c99",
+          "bytes": 142820
+        },
+        {
+          "file": "human__rank2_mana0_strike1.player.json",
+          "sha256": "1468bde6e67f5012d29e65d3a01fd889408f68ca38c2e26b5c088c186aff6bdd",
+          "bytes": 3450
+        },
+        {
+          "file": "human__rank2_mana15_strike0.pair.json",
+          "sha256": "d815222b2b1cfca4462d8d3cba6f98676bed4823735b32c290682dc0a24cfd21",
+          "bytes": 144653
+        },
+        {
+          "file": "human__rank2_mana15_strike0.player.json",
+          "sha256": "ee5a2c8f18f843b9473ace1b74907aee7000c885eff0c1d22bfbc491e762b6a7",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank2_mana15_strike1.pair.json",
+          "sha256": "b488910c0b7104e9599a29bc7f6c071bab720ca1cff619ddddd85a1c0fd773c0",
+          "bytes": 142824
+        },
+        {
+          "file": "human__rank2_mana15_strike1.player.json",
+          "sha256": "7c0ceb6b5d155c3170b5377faab95fc6ee3364620d85648092d8b9124425b4d6",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank2_mana30_strike0.pair.json",
+          "sha256": "a5137fc8c5304899da9e87bf4a8726e9941060a7766752b180e77730e200d7f7",
+          "bytes": 144653
+        },
+        {
+          "file": "human__rank2_mana30_strike0.player.json",
+          "sha256": "d192a9c9f1978e0d52ab73ff4bab351dbc944a971185620b28c88f059f249220",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank2_mana30_strike1.pair.json",
+          "sha256": "3a1c063e77988d534314d30305a4f8094ec33482db900a46d1823818f60e76f4",
+          "bytes": 142824
+        },
+        {
+          "file": "human__rank2_mana30_strike1.player.json",
+          "sha256": "e9956070c9648668c2917b069e0a98dcc5dc21ea17f4e289fa01443b1fa64b59",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank2_mana50_strike0.pair.json",
+          "sha256": "45893790e2f08dd76092dda086a1094ae4b5e8788f1c2a8d5bd92bf906ed42e5",
+          "bytes": 144654
+        },
+        {
+          "file": "human__rank2_mana50_strike0.player.json",
+          "sha256": "91609afa6b0c1399f5b7ef76c4467caf0cf3129e6c676b54bf47e31033ac7994",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank2_mana50_strike1.pair.json",
+          "sha256": "76a5ad2c5999faddadf5ba49ff15fca7ef57be88dc25508a3f04c13cdfc1bbd1",
+          "bytes": 142824
+        },
+        {
+          "file": "human__rank2_mana50_strike1.player.json",
+          "sha256": "503210f7dafcebfad96e6f570d61cd929d054563c42900a94965bb217440ce57",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank2_mana70_strike0.pair.json",
+          "sha256": "76b0614d68a430d193eadff00f9eb4ebfea1228b7dee1ed7e69d2f296a22635c",
+          "bytes": 145778
+        },
+        {
+          "file": "human__rank2_mana70_strike0.player.json",
+          "sha256": "d8c7c1e2fb7364a6aaf50031c46c857104ff52d2e2a2fd512ee4840a2974454a",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank2_mana70_strike1.pair.json",
+          "sha256": "20c5cfea72c6f81255effee4e706c7cb4838dc4fa666a7f0300db16658122ee3",
+          "bytes": 144027
+        },
+        {
+          "file": "human__rank2_mana70_strike1.player.json",
+          "sha256": "d484d43c05b9d99b71bb2f1c4178f2337a34727097bd86ed136822ab87e5931f",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank3_mana0_strike0.pair.json",
+          "sha256": "746a6f7ef3564be11ccb51c1114667313f2f4ad8f9b12ce315f37dade0f69cad",
+          "bytes": 144681
+        },
+        {
+          "file": "human__rank3_mana0_strike0.player.json",
+          "sha256": "bb09380ead63cb79728c1166c09a32254dce9f7d7fbb51315706c2fef4a154b5",
+          "bytes": 3450
+        },
+        {
+          "file": "human__rank3_mana0_strike1.pair.json",
+          "sha256": "d3e94cee3b78b55b5ad30f67079035c88daeea10fc9aa8f581175ecaeb89059e",
+          "bytes": 143129
+        },
+        {
+          "file": "human__rank3_mana0_strike1.player.json",
+          "sha256": "2034f9e42d0e937788a70418c181c88343ac90772cd21bcfd2dc633ef61ac0a0",
+          "bytes": 3450
+        },
+        {
+          "file": "human__rank3_mana15_strike0.pair.json",
+          "sha256": "19cbe2f8c19435fd693a1b17a16cad741d8f4392a856e347db4041b419a0cdeb",
+          "bytes": 144684
+        },
+        {
+          "file": "human__rank3_mana15_strike0.player.json",
+          "sha256": "0aa20fb7013d001f6168dfe815c0d210839f42db3d6ad5cd4f7b840487d583ea",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank3_mana15_strike1.pair.json",
+          "sha256": "302387776ce371b5d33e429b3848edb7fc8238768c406aed6ec99a83d9f45718",
+          "bytes": 143133
+        },
+        {
+          "file": "human__rank3_mana15_strike1.player.json",
+          "sha256": "b0d5d09943cafa14083d9a0c58b8566cce877b7e3bcd00a6a210ec6909c561e4",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank3_mana30_strike0.pair.json",
+          "sha256": "9cfbe6a6774f5b09051fb11f2cf35e3d626dcbf8df5d96f523f22648c6fe2680",
+          "bytes": 144684
+        },
+        {
+          "file": "human__rank3_mana30_strike0.player.json",
+          "sha256": "131006352139b1f44760f5d863ee5e7260cad2d3b3c13d4cc067fbd647dfef13",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank3_mana30_strike1.pair.json",
+          "sha256": "793e89b2e1d619b3bafe2b4852ced4616bfbe54984484f5196a306fafd25fdc8",
+          "bytes": 143133
+        },
+        {
+          "file": "human__rank3_mana30_strike1.player.json",
+          "sha256": "bcaadd28ea81db0805b1f9a9ca01668f29f5a64bf7f801d28ca46b26b38894a5",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank3_mana50_strike0.pair.json",
+          "sha256": "5855e026694c785f80c4faa496391917b374df5282ffda3fa709be85a4c059c0",
+          "bytes": 145719
+        },
+        {
+          "file": "human__rank3_mana50_strike0.player.json",
+          "sha256": "c0a8bf1e2166c42d9e73bae91b9006c15b88ce3a97920b7bea8a63b9dc173e5a",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank3_mana50_strike1.pair.json",
+          "sha256": "5a9db4969ff750812726045b08007ea8a0af42f2919b20e0ac353236d516c6b8",
+          "bytes": 143947
+        },
+        {
+          "file": "human__rank3_mana50_strike1.player.json",
+          "sha256": "7200b40a4287a6303924fe4eced51dfca0763252d10c48a53a88c272091209da",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank3_mana70_strike0.pair.json",
+          "sha256": "aa434e4d658eac2c8f9261c570a100be397f5b7f45461089517aeeec5fdb6717",
+          "bytes": 145548
+        },
+        {
+          "file": "human__rank3_mana70_strike0.player.json",
+          "sha256": "a3a219d2c59cfdf577e0a86c0ba8d9308578e6b112dbac698ddacd3142911717",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank3_mana70_strike1.pair.json",
+          "sha256": "f1f53d4f4917c3c0dd96e8d6a0d06987d17b9b1c931f3d83698de1994764f7e8",
+          "bytes": 143754
+        },
+        {
+          "file": "human__rank3_mana70_strike1.player.json",
+          "sha256": "09d35a4426ced38661817a3696068e559a4d2fb04130eeec099057a53ce01e63",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank4_mana0_strike0.pair.json",
+          "sha256": "2edfa35ec4828c61bb68250d4a473a03300fa7d3e5604f8192573fdad061a9a9",
+          "bytes": 144271
+        },
+        {
+          "file": "human__rank4_mana0_strike0.player.json",
+          "sha256": "eaa7c653d7753f93f7d74f1fb28102eda3df43fd5049feec9bd95e3134734dc2",
+          "bytes": 3450
+        },
+        {
+          "file": "human__rank4_mana0_strike1.pair.json",
+          "sha256": "7dea6f3824b340593627e894d001dade5f2dc940a3d77bec9a046d47c1a56ba5",
+          "bytes": 142986
+        },
+        {
+          "file": "human__rank4_mana0_strike1.player.json",
+          "sha256": "490bbeb4ef265427241d721a87b7b838801e36c4da3ef64fea1a81c46e143096",
+          "bytes": 3450
+        },
+        {
+          "file": "human__rank4_mana15_strike0.pair.json",
+          "sha256": "aba754069e641726f27c2e60444a8925984298449a8c2487fedbf27f5822120e",
+          "bytes": 144239
+        },
+        {
+          "file": "human__rank4_mana15_strike0.player.json",
+          "sha256": "5492f2a117f6682425e2e4f24a8cde3f6db9f2af84dab3247ee281bd0a9f75c2",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank4_mana15_strike1.pair.json",
+          "sha256": "61f42a2925ba3b0eca6f167270f9e5f375bab8c2e6d3a379b9b6cec1da0e2447",
+          "bytes": 142990
+        },
+        {
+          "file": "human__rank4_mana15_strike1.player.json",
+          "sha256": "2c6d0c4779f3b8a36632ff21ab86022de4ffa07a3eb10b27678bdb19add95e06",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank4_mana30_strike0.pair.json",
+          "sha256": "b1add461211edcfc2864635e7ed59d4003e6da0c7ec6e6a739fae781f4230805",
+          "bytes": 145436
+        },
+        {
+          "file": "human__rank4_mana30_strike0.player.json",
+          "sha256": "50c641daf454a77c78da7b6bd59663aacc486c7689be5592527aa37712ddb8d0",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank4_mana30_strike1.pair.json",
+          "sha256": "9e48467c24b8ad1cbf0ef20c59b80033c6c7228d983595ac9e2d7d750fa721d3",
+          "bytes": 144192
+        },
+        {
+          "file": "human__rank4_mana30_strike1.player.json",
+          "sha256": "8b5c86cec6b7ac139bb9ca638eeef5784aedf23f747ab6e0a848f2a41304ee91",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank4_mana50_strike0.pair.json",
+          "sha256": "582bccbadb437bd5df5d552483c9956344201d0c7ce8c6964e6cd4bae03c3dab",
+          "bytes": 145426
+        },
+        {
+          "file": "human__rank4_mana50_strike0.player.json",
+          "sha256": "45807dd39c38bec26c076265bc4333e445c2df5f33ca8321a568b6371ec56886",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank4_mana50_strike1.pair.json",
+          "sha256": "88a51ab27e0b4618fd419f9b5f57905a92ba6127797ddd12199c3caf06ccb93a",
+          "bytes": 144195
+        },
+        {
+          "file": "human__rank4_mana50_strike1.player.json",
+          "sha256": "21a1114c2ef8e1c5a9782d64c8fbd5bcc60416ffef331ed2012553287641844c",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank4_mana70_strike0.pair.json",
+          "sha256": "f78788b0f6a7e6bf5ab8650fcf2b6bf2728fb07a3645af42dec5eb3bc6b0950b",
+          "bytes": 145243
+        },
+        {
+          "file": "human__rank4_mana70_strike0.player.json",
+          "sha256": "9cbfdf47958e2fe4434b06b232e72b071fb5de3f7a6dddbe7d793d002d046f9b",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank4_mana70_strike1.pair.json",
+          "sha256": "2cae9071e0872fb0bf9a670f27a7685cd46289689b0b6167f591e258ca6e6849",
+          "bytes": 143787
+        },
+        {
+          "file": "human__rank4_mana70_strike1.player.json",
+          "sha256": "a9475423fc653a56e1b29a76f92c4c6c1c7d24356a6fcb52c880e91564fd53a8",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank5_mana0_strike0.pair.json",
+          "sha256": "1047bb5d2662c33b0f2fcb73db7fb6fd280e8ce45002d4cfdde85f213da68f3f",
+          "bytes": 141047
+        },
+        {
+          "file": "human__rank5_mana0_strike0.player.json",
+          "sha256": "81826c406965ebe39a52de7e66fe18ddd21526355d2b98d1dd928622c3f13ec2",
+          "bytes": 3450
+        },
+        {
+          "file": "human__rank5_mana0_strike1.pair.json",
+          "sha256": "e35d8bfff16b58a491b1404c068a7b24dbba3beae2968a8eca7b0ba8428ecd98",
+          "bytes": 141599
+        },
+        {
+          "file": "human__rank5_mana0_strike1.player.json",
+          "sha256": "7ec306760d95bd6459f78836b377ed79a517bf3d7f55e0012438bb2832ff173f",
+          "bytes": 3450
+        },
+        {
+          "file": "human__rank5_mana15_strike0.pair.json",
+          "sha256": "44cdbcf106777db9cae8d2cf4a68e2e42f82ca36ff82a940bff6876f6ffcba09",
+          "bytes": 141031
+        },
+        {
+          "file": "human__rank5_mana15_strike0.player.json",
+          "sha256": "4c283e2e6b37f2ae075aa62269c5371d54969eaafefef11ec46774f40119d42b",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank5_mana15_strike1.pair.json",
+          "sha256": "06ee43168fb85d7dc9ca087beef52f52422a8c21903bf3f691d162ae07861c64",
+          "bytes": 141554
+        },
+        {
+          "file": "human__rank5_mana15_strike1.player.json",
+          "sha256": "40c82b061419ca4290926754159ffa02f97d5eb1f25ce53206607c2144a947e3",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank5_mana30_strike0.pair.json",
+          "sha256": "0663a9ecddf23aeabc078cd95d5da64e78e38e490acf47cc338f3d5b82ae9102",
+          "bytes": 142245
+        },
+        {
+          "file": "human__rank5_mana30_strike0.player.json",
+          "sha256": "68dee2b7a074d95a571721f02cf0634993a6787e8234b2fb10eedaade9f86457",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank5_mana30_strike1.pair.json",
+          "sha256": "0edb53c800a3aa0355ea6205f186e3ca400fe745f8949c6d19fb704a2b3f0d30",
+          "bytes": 142807
+        },
+        {
+          "file": "human__rank5_mana30_strike1.player.json",
+          "sha256": "bf87b08ef284182a9a7297206fc5527eb172d4ae2d355723708531b5dbd6935d",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank5_mana50_strike0.pair.json",
+          "sha256": "afe9720b14f4b3ad6a05ffa026c3aa866e44a66b8b1263499ea5ba7855be9d0c",
+          "bytes": 144188
+        },
+        {
+          "file": "human__rank5_mana50_strike0.player.json",
+          "sha256": "f500020ffd6d2f0f6a610edd92e9a5eb0a1c08b625080b9322ba25aef68b9591",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank5_mana50_strike1.pair.json",
+          "sha256": "22e13bdf976e781846da3c53b9d6af3a937122a0c3e221ef9f0f95a2f3f52a1f",
+          "bytes": 142796
+        },
+        {
+          "file": "human__rank5_mana50_strike1.player.json",
+          "sha256": "a85ab4a42179d0ddef6b87a6e966e0fd5e642d6c7661336e3a7fad43d740e17b",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank5_mana70_strike0.pair.json",
+          "sha256": "28a19ff515df25f3d51a488a8b0355da074c7b18f57e42216b4ba54c33a4f3e6",
+          "bytes": 144521
+        },
+        {
+          "file": "human__rank5_mana70_strike0.player.json",
+          "sha256": "89c45d6ccba3c78cfb76313ab20a25a017f6ac0f62d4e851627e4b4457d7cbac",
+          "bytes": 3451
+        },
+        {
+          "file": "human__rank5_mana70_strike1.pair.json",
+          "sha256": "a28568188d0362abbac598a4af7db7bbab5e9b1079d50bfefffd5fe228d2dae8",
+          "bytes": 143601
+        },
+        {
+          "file": "human__rank5_mana70_strike1.player.json",
+          "sha256": "ad04aee72e5b92424ccf4394ffa0b28a18c67fe6756a7ba6b5384205c684286a",
+          "bytes": 3451
+        },
+        {
+          "file": "manifest.json",
+          "sha256": "9a2adcab049098a6a893cd58821a5da2a5fcab88a883155733b8acc5ff4de15a",
+          "bytes": 215
+        },
+        {
+          "file": "summary.json",
+          "sha256": "897680c8d4b0a1f1724a8e109da52f766d7428488d3ef554f0f3180e4a047b3c",
+          "bytes": 4794699
+        },
+        {
+          "file": "undead__maintenance.pair.json",
+          "sha256": "eff13975e8c6b2038d46190e163b6bf0eb216bce116a87f6261c9c25760d6fbb",
+          "bytes": 142157
+        },
+        {
+          "file": "undead__maintenance.player.json",
+          "sha256": "3ec8e5acda873eba1afb3e4cb9b29d145e0f2c61b1e8bdd9ffaae70b44d2cde6",
+          "bytes": 3285
+        },
+        {
+          "file": "undead__published.pair.json",
+          "sha256": "3e97d3dcac76825600496108187c63a5735f5c13330f3bd8521c1fb3cae7c83c",
+          "bytes": 143545
+        },
+        {
+          "file": "undead__published.player.json",
+          "sha256": "80527cc1e83edd0f61a964b783c07368870a0a6015278871ea9d565fb0ca42a0",
+          "bytes": 3329
+        },
+        {
+          "file": "undead__rank1_mana0_strike0.pair.json",
+          "sha256": "f5321306a0fdd658ac884d1bab8c66abd76ff81affe2318abf6709845713cf66",
+          "bytes": 142153
+        },
+        {
+          "file": "undead__rank1_mana0_strike0.player.json",
+          "sha256": "2d1c2732976c11721f40cdd53df562f93e10e04b7038b00d80f348be61e553dd",
+          "bytes": 3284
+        },
+        {
+          "file": "undead__rank1_mana0_strike1.pair.json",
+          "sha256": "c7e033b154316d8bdfa545f9c9d0e7825c313ecb433b426a45e94dda5d4ad700",
+          "bytes": 141903
+        },
+        {
+          "file": "undead__rank1_mana0_strike1.player.json",
+          "sha256": "633217a86f2dd443061c86fd32ccfa0738f2a16e977f44f6498322d8d72dcb57",
+          "bytes": 3284
+        },
+        {
+          "file": "undead__rank1_mana15_strike0.pair.json",
+          "sha256": "e077fc4d1f6e46f6ae0ef2e753efdbf72278d11a84698d090ba2ef6961f5dbf9",
+          "bytes": 142158
+        },
+        {
+          "file": "undead__rank1_mana15_strike0.player.json",
+          "sha256": "3ec8e5acda873eba1afb3e4cb9b29d145e0f2c61b1e8bdd9ffaae70b44d2cde6",
+          "bytes": 3285
+        },
+        {
+          "file": "undead__rank1_mana15_strike1.pair.json",
+          "sha256": "3e1388f94cd4b292edcf0832ac2f657c80fb3edea9b12fa60583902533a4e41f",
+          "bytes": 141907
+        },
+        {
+          "file": "undead__rank1_mana15_strike1.player.json",
+          "sha256": "aabf51be206296ff23b9939605a0252b7790bc8eeccc27e58a333d47924bc17e",
+          "bytes": 3285
+        },
+        {
+          "file": "undead__rank1_mana30_strike0.pair.json",
+          "sha256": "d6e4153a1a3f3e56a8d715e76335626eb1cc1287f26d7ebc3590056d1b36f6bf",
+          "bytes": 142157
+        },
+        {
+          "file": "undead__rank1_mana30_strike0.player.json",
+          "sha256": "710767cbcd9cf1c10ed2e457e533a0e369b94723a38f82b4448d29cbd5c32205",
+          "bytes": 3285
+        },
+        {
+          "file": "undead__rank1_mana30_strike1.pair.json",
+          "sha256": "1377457c13e3274b95caa9dbb953726b8083cc9bff07e96c17b2795ec89a7a1f",
+          "bytes": 141907
+        },
+        {
+          "file": "undead__rank1_mana30_strike1.player.json",
+          "sha256": "11042cea07aae92a3fd60538f416425e43d86bf7033064a393b18fc143bb1d6f",
+          "bytes": 3285
+        },
+        {
+          "file": "undead__rank1_mana50_strike0.pair.json",
+          "sha256": "26b5ffdc91fef743997a74275257e955be89077905d6de40aff0adbd4f662570",
+          "bytes": 142158
+        },
+        {
+          "file": "undead__rank1_mana50_strike0.player.json",
+          "sha256": "28dfc9abf703a0014bfed80d7388eb65100b52e3e2880c46c333da9ce44f988c",
+          "bytes": 3285
+        },
+        {
+          "file": "undead__rank1_mana50_strike1.pair.json",
+          "sha256": "a40533b6c3b06876d03d03fd0a0654728c9d3d470270ffa19daca56291d83c7f",
+          "bytes": 141907
+        },
+        {
+          "file": "undead__rank1_mana50_strike1.player.json",
+          "sha256": "00b736aca7d5b3373e52e4f3a74e2b3d087c8d6ced5f0e4ec1b5bfd04a68739f",
+          "bytes": 3285
+        },
+        {
+          "file": "undead__rank1_mana70_strike0.pair.json",
+          "sha256": "d32c0bde0c118a17a5f2b9aad40685f98738ef40af59912c3ed1d4b54551d4b2",
+          "bytes": 142198
+        },
+        {
+          "file": "undead__rank1_mana70_strike0.player.json",
+          "sha256": "67e71eaa49b0ddd2a51a067c84cb1d0274b9b87d8484003211baba1404f93db5",
+          "bytes": 3285
+        },
+        {
+          "file": "undead__rank1_mana70_strike1.pair.json",
+          "sha256": "56e43ecea15f33120a4dd05fb0626884bed2c030b3258dc3bb8831c412cfa516",
+          "bytes": 141779
+        },
+        {
+          "file": "undead__rank1_mana70_strike1.player.json",
+          "sha256": "90aecfb49f33f670fa44ee2873cb5a4fc784334786ddaefc4445a1c850a9b9b8",
+          "bytes": 3285
+        },
+        {
+          "file": "undead__rank2_mana0_strike0.pair.json",
+          "sha256": "d9d20b7c57320c31d8b3cf1a3403a8ae094a4123167c11100b6ca00cf372a813",
+          "bytes": 145229
+        },
+        {
+          "file": "undead__rank2_mana0_strike0.player.json",
+          "sha256": "5a9668a2b80931d2acc1f4d0f330cd42995b766c52bc9150ba66714a078e4936",
+          "bytes": 3451
+        },
+        {
+          "file": "undead__rank2_mana0_strike1.pair.json",
+          "sha256": "4e2e3c13bc1b6ef8982a254733f839f6a6bf0d822a8952da384ae29446f6c768",
+          "bytes": 145013
+        },
+        {
+          "file": "undead__rank2_mana0_strike1.player.json",
+          "sha256": "3fea3bd75ac9245a2ff7270682310012d6706d7899beaa1abda0b3db193c0a67",
+          "bytes": 3451
+        },
+        {
+          "file": "undead__rank2_mana15_strike0.pair.json",
+          "sha256": "f012d5d5b5ef0b5c093d1fd66de044e263fcf4d524726b2835cc84141506d888",
+          "bytes": 145231
+        },
+        {
+          "file": "undead__rank2_mana15_strike0.player.json",
+          "sha256": "507edb9c8159dc0b7435da784960cf910f4a66992f79e7b0d9e23b595bbb427c",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank2_mana15_strike1.pair.json",
+          "sha256": "576d0699835ea7f690c764099b201cd6536580f1324ae4914d936d5aa172091b",
+          "bytes": 145017
+        },
+        {
+          "file": "undead__rank2_mana15_strike1.player.json",
+          "sha256": "63b223c37e4c2c7d45a85bdf14fb870f7626a57774e5e78f5b70dabf4323b389",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank2_mana30_strike0.pair.json",
+          "sha256": "147c6e1a316d4d18f2b768ba0f0500ada6d1be947c5927f0847f907183932838",
+          "bytes": 145230
+        },
+        {
+          "file": "undead__rank2_mana30_strike0.player.json",
+          "sha256": "968442afb11f33a945f4b0c4cca7aab573dadaa7ad8351005a6aa3957a293a7a",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank2_mana30_strike1.pair.json",
+          "sha256": "b5443afd7aa5f49e9c6e04e3df5f4e36559244e5c598c102601c365eb10070a6",
+          "bytes": 145017
+        },
+        {
+          "file": "undead__rank2_mana30_strike1.player.json",
+          "sha256": "5733cf6c6aaca652586b3a2a3d0c35edef61fa8fe01e856a94961fae1e7ad8e4",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank2_mana50_strike0.pair.json",
+          "sha256": "fefafc94f15e2a2883439a76150181380d700a92288ff3b5c6503f0ac4c0dacd",
+          "bytes": 146248
+        },
+        {
+          "file": "undead__rank2_mana50_strike0.player.json",
+          "sha256": "58aa2deaa0e7a9db53edff3e03f258c66ee40a085c37f9a62e8727db091a5f42",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank2_mana50_strike1.pair.json",
+          "sha256": "46ba2c083a92ed4e6a8c674754b3be793783ade25e5dfb777bd61e8e4883c6d7",
+          "bytes": 145928
+        },
+        {
+          "file": "undead__rank2_mana50_strike1.player.json",
+          "sha256": "9961b5ff0775aa284ffe7cd88595167e4c47979ce23a99c9c0e4d3debed5ca99",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank2_mana70_strike0.pair.json",
+          "sha256": "e92e63b1fe72fe9fd9918c719a7e82dcd0bcce78e023530e6e5dece2137c4c7a",
+          "bytes": 146184
+        },
+        {
+          "file": "undead__rank2_mana70_strike0.player.json",
+          "sha256": "57f56e7db4d38b540c1e95dff7fb57e2e06e312a5df823b7b15b6bb133f0e1b4",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank2_mana70_strike1.pair.json",
+          "sha256": "3b155bcca5060107954f94201f065aa8f23dd3f56893430fc08f3f1f9b43d9f0",
+          "bytes": 145770
+        },
+        {
+          "file": "undead__rank2_mana70_strike1.player.json",
+          "sha256": "dada39d9554cb02fb0f0a5bf4debe2ec11a68056a10662e87bbb7c75a8bd169c",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank3_mana0_strike0.pair.json",
+          "sha256": "014d8080b6ad20cedb3d54bf3ccbfc68a135a1e590a58a581d15faf37a276126",
+          "bytes": 145419
+        },
+        {
+          "file": "undead__rank3_mana0_strike0.player.json",
+          "sha256": "dd58bb46bdaa245d507509bdb7fe52d30af99638378423faa03a797736317338",
+          "bytes": 3451
+        },
+        {
+          "file": "undead__rank3_mana0_strike1.pair.json",
+          "sha256": "5dd5384c3637e1f9778347973e00a371cf1552889328b35cdd60c57490798346",
+          "bytes": 144767
+        },
+        {
+          "file": "undead__rank3_mana0_strike1.player.json",
+          "sha256": "db158542896937424619d06e4f3d91bddf26d495550aa75130d0634affaeb2df",
+          "bytes": 3451
+        },
+        {
+          "file": "undead__rank3_mana15_strike0.pair.json",
+          "sha256": "5e60bb255250604132f8e586cac8a1f0957b7d941191a37f5103659dedfb836b",
+          "bytes": 145424
+        },
+        {
+          "file": "undead__rank3_mana15_strike0.player.json",
+          "sha256": "75fd57bb28a8ff8bbfc1d66be8f308f6430a9923c046adffa1bd4358cb556394",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank3_mana15_strike1.pair.json",
+          "sha256": "96632b0757edc50b8f509a204cab81478591ba146c1ba90e7acda557e16ae6f0",
+          "bytes": 144771
+        },
+        {
+          "file": "undead__rank3_mana15_strike1.player.json",
+          "sha256": "32f51b3b26dd5fca3edbbae36ff36fd2b1e03915b87d0e7e5fa90b743b15a289",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank3_mana30_strike0.pair.json",
+          "sha256": "9f777f4a898db20f47f053ba87b7548f7c9bd3a9049a1c894787002aa0bcec6b",
+          "bytes": 145423
+        },
+        {
+          "file": "undead__rank3_mana30_strike0.player.json",
+          "sha256": "d30d8dda3c75c64c342c89b862d799f0e4a772edb6cd0a06f8a0568c8d9d9982",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank3_mana30_strike1.pair.json",
+          "sha256": "d198eff8886922a0240ced07b47d719e245edaf796c9626765dbe9ee4ebd23ca",
+          "bytes": 144771
+        },
+        {
+          "file": "undead__rank3_mana30_strike1.player.json",
+          "sha256": "5b449d3357493cf3f6b6c73bee4f8d11edb88228109ddbd7a1167e1d510b4c42",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank3_mana50_strike0.pair.json",
+          "sha256": "5b59cb76881b500b6795448a41190575c13d2d266ff527c0e93a53e97cc15f28",
+          "bytes": 146587
+        },
+        {
+          "file": "undead__rank3_mana50_strike0.player.json",
+          "sha256": "9790132f626c771b549db75acb5ac835d481b7c35e81ef8af9300fefd678cdd0",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank3_mana50_strike1.pair.json",
+          "sha256": "73c27899bc0c72f0207961ba7d99a956279e68eba5860d2a505c91ca0c044662",
+          "bytes": 144771
+        },
+        {
+          "file": "undead__rank3_mana50_strike1.player.json",
+          "sha256": "4e8b095fb59c3cccdd661b69ac03727caecc59379f1af1c2e8c97df46ce0c624",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank3_mana70_strike0.pair.json",
+          "sha256": "2202e7850adc842a889963a3a703039841b109321d20726615554420b8d35a27",
+          "bytes": 146269
+        },
+        {
+          "file": "undead__rank3_mana70_strike0.player.json",
+          "sha256": "58c53b702f46058e061a6487de720f765b9388ba38df1e33da5366770b4fa0a5",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank3_mana70_strike1.pair.json",
+          "sha256": "a6257a39e6ea111e21ed8f8f6bd9a4801a1d5e402a12be7f068ebc799722a266",
+          "bytes": 145910
+        },
+        {
+          "file": "undead__rank3_mana70_strike1.player.json",
+          "sha256": "a8110a77fe889e608e1d030af7d6d26bc5cca51727606ea62c0979722baeace6",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank4_mana0_strike0.pair.json",
+          "sha256": "9aae38874a1b12d6bb2f8be1ecf37353b31ece46332f3f55e02c54dc21ec6086",
+          "bytes": 145023
+        },
+        {
+          "file": "undead__rank4_mana0_strike0.player.json",
+          "sha256": "59d7a47511440efb1413ce4735e7bb1596be8fb4f78af8b295005d3de40eace6",
+          "bytes": 3451
+        },
+        {
+          "file": "undead__rank4_mana0_strike1.pair.json",
+          "sha256": "e300b96c1bbc966f96a05bcd2e55324c786ed4f3e91c60783931f97c39d6ad3f",
+          "bytes": 144579
+        },
+        {
+          "file": "undead__rank4_mana0_strike1.player.json",
+          "sha256": "7b96c83647095a49272b785acbda68f40d26a22b242ee7ac2c1a0b5fa585d141",
+          "bytes": 3451
+        },
+        {
+          "file": "undead__rank4_mana15_strike0.pair.json",
+          "sha256": "343127eef1e81c0c954333cb101d2ba4545393a84c92dac11a255fc71ba090c3",
+          "bytes": 145028
+        },
+        {
+          "file": "undead__rank4_mana15_strike0.player.json",
+          "sha256": "40fa79b8d5d263fdd8691a131422d1f60059e6c93afbd8018da98a0a6da61cb8",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank4_mana15_strike1.pair.json",
+          "sha256": "2c9b3ebda74a2c843f652070cb7e565be9defccad331fcfcfa43b4cfdd3f3ae5",
+          "bytes": 144599
+        },
+        {
+          "file": "undead__rank4_mana15_strike1.player.json",
+          "sha256": "6971d2d443161792b525bc4a156a37f6acb65c94e710687787ccc7040a76b82b",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank4_mana30_strike0.pair.json",
+          "sha256": "1dd70b293266c1509c0fe9bce9185c4e8ff9295fd5f0236ac1c6dc14f334825e",
+          "bytes": 146196
+        },
+        {
+          "file": "undead__rank4_mana30_strike0.player.json",
+          "sha256": "b62c1ee29a9ce95eb22d84e06535dde17eae222a6b950c4ba95217b292e4b893",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank4_mana30_strike1.pair.json",
+          "sha256": "54582ec10f5708c2279ae5e828ceeff893e087e8278343cbc522e887dcc149bf",
+          "bytes": 145742
+        },
+        {
+          "file": "undead__rank4_mana30_strike1.player.json",
+          "sha256": "d87b219a25c80cd6d67fdd364b8f8380ee41ca906bbb8df880974e26a142faea",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank4_mana50_strike0.pair.json",
+          "sha256": "18a08866e8cf4cd3182a40ccda8159275e535ade9fcded8897bcd272126cab08",
+          "bytes": 146101
+        },
+        {
+          "file": "undead__rank4_mana50_strike0.player.json",
+          "sha256": "34c30d1797ffcd7f81dcf9a7bde6489b265f8f94ef8916bd913a6d7876e30edc",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank4_mana50_strike1.pair.json",
+          "sha256": "b29ea52c58c9cedc2667dc9cd466c0eb7e526ec65009a1c3b1d20a26e1d4e11f",
+          "bytes": 145790
+        },
+        {
+          "file": "undead__rank4_mana50_strike1.player.json",
+          "sha256": "698875f6a6ec2e7662c034071fef7df1cae5531676a910a4bfbd001f1f4f95d8",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank4_mana70_strike0.pair.json",
+          "sha256": "5ca3894218caab12c421149665d5ea853fb3e722299518242520bd09962bfbea",
+          "bytes": 146360
+        },
+        {
+          "file": "undead__rank4_mana70_strike0.player.json",
+          "sha256": "0621e05c105bec517ab799446ba2e1ce0bcb5bfc66e88f09813a4be3512e8383",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank4_mana70_strike1.pair.json",
+          "sha256": "9c6c4ce8c386fda36ff9fdd37e782c75a73294fbaacc0f0af5e795accc82a5f6",
+          "bytes": 146547
+        },
+        {
+          "file": "undead__rank4_mana70_strike1.player.json",
+          "sha256": "576425ce6b6aab6b22d41eecf3044aebefc792477d92ecb2dee080bea0a4b29c",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank5_mana0_strike0.pair.json",
+          "sha256": "848d6a2fff1b465eb16034570039c4974a4ab0816ba53d874693150bb38bf75e",
+          "bytes": 143715
+        },
+        {
+          "file": "undead__rank5_mana0_strike0.player.json",
+          "sha256": "eb6b49848d62ce364cbd07fb2176ea476324a25c7d60ed494b6c85184c14f700",
+          "bytes": 3451
+        },
+        {
+          "file": "undead__rank5_mana0_strike1.pair.json",
+          "sha256": "de16adb4629c7ec584677495dd954e4ce55c4644d4f52ecd6da989052e54c0f1",
+          "bytes": 143353
+        },
+        {
+          "file": "undead__rank5_mana0_strike1.player.json",
+          "sha256": "40c0a95541dbc6fd3477e17c1420faa5299a6c3b88f75513964564bd32eef691",
+          "bytes": 3451
+        },
+        {
+          "file": "undead__rank5_mana15_strike0.pair.json",
+          "sha256": "3d2bec29df7df96ef31a5b6515e85e0da1f824dbed03446f44107dc9e49bdf69",
+          "bytes": 143616
+        },
+        {
+          "file": "undead__rank5_mana15_strike0.player.json",
+          "sha256": "7d0e892a6149e1534430bf0f993ce9379263fcb5584fc333f52195339117f3c0",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank5_mana15_strike1.pair.json",
+          "sha256": "7d072e9bf4e8a47bc19f7fd1709374ca100d603381dbcdd017120673e567cbd8",
+          "bytes": 143358
+        },
+        {
+          "file": "undead__rank5_mana15_strike1.player.json",
+          "sha256": "c1302ce7b2b6c4e2afc9c5e356df55726b31c94ad10d12173f2f295fcc80b995",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank5_mana30_strike0.pair.json",
+          "sha256": "11ac33235b88999741eadd9e6e5b77291457d938827145822e81125e6fcb093b",
+          "bytes": 144790
+        },
+        {
+          "file": "undead__rank5_mana30_strike0.player.json",
+          "sha256": "2e7ffd09bf78a6860f628dfe9c62a055408cbfc1e270e72e4c439e32f24f5eda",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank5_mana30_strike1.pair.json",
+          "sha256": "7d45fa27cd55684f9f9183357cc43ede49160e6b6101a5a9037c711cfe7a4116",
+          "bytes": 144525
+        },
+        {
+          "file": "undead__rank5_mana30_strike1.player.json",
+          "sha256": "cea9d0914b8c8bf83cfabd23e624d7da019902c5490d85d38699fa15b22b2bff",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank5_mana50_strike0.pair.json",
+          "sha256": "0fef270fe6cd96d36ce2a919a1cac14847ce534ab6a41ca3c02c709c62ab1613",
+          "bytes": 144908
+        },
+        {
+          "file": "undead__rank5_mana50_strike0.player.json",
+          "sha256": "b17dc664971491a31850351cc0e010b40f0371371be1f7446215bd88719a19c9",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank5_mana50_strike1.pair.json",
+          "sha256": "c62454a4d00def625372c9587f22c6e3307851a8a28090cddbc98bb132f74b65",
+          "bytes": 144483
+        },
+        {
+          "file": "undead__rank5_mana50_strike1.player.json",
+          "sha256": "bd75de166d90027f17d7d2f9b70d272fb92f3f2746d64e9ebdb7adbe49a42e5d",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank5_mana70_strike0.pair.json",
+          "sha256": "de56d64538dec35decc91d4699124d91641903e3b9e826b432ea955c478c3fa2",
+          "bytes": 145502
+        },
+        {
+          "file": "undead__rank5_mana70_strike0.player.json",
+          "sha256": "fc6d8ce11064a71c51470f167f7944ff05edfe399820f3309097c2d5c5af172c",
+          "bytes": 3452
+        },
+        {
+          "file": "undead__rank5_mana70_strike1.pair.json",
+          "sha256": "d105ceb926d8df038aa3393d133314376c390d905b633556092ccfd57cedb0fd",
+          "bytes": 145231
+        },
+        {
+          "file": "undead__rank5_mana70_strike1.player.json",
+          "sha256": "771176cef50e9bccc6f9177ceabc3c49b19224567ae8b51ccca8877e59305e78",
+          "bytes": 3452
+        }
+      ]
+    },
+    {
+      "archive": "confirmation-a.json.gz",
+      "sha256": "c8f9a12c5706b1345df7c4794c03c5f9b4e12b69a547d2e99583d3602215c876",
+      "bytes": 444887,
+      "records": [
+        {
+          "file": "manifest.json",
+          "sha256": "2ed60116aecb306ce504bc0c93a86c545669089b052fb529b41170ca232c13bb",
+          "bytes": 201551
+        },
+        {
+          "file": "protection_paladin__dwarf__1467dd707c3c0760.pair.json",
+          "sha256": "cee7acdb62c6efbabea48e63aa717f75ce0892228a59c8543728fa2c32c9e1f5",
+          "bytes": 160084
+        },
+        {
+          "file": "protection_paladin__dwarf__1467dd707c3c0760.player.json",
+          "sha256": "07c2fb68da2c4d41e640c37cf330c8c2da88acf63c88cf61b73cf61db40eab4c",
+          "bytes": 3451
+        },
+        {
+          "file": "protection_paladin__dwarf__44084e749e9954d6.pair.json",
+          "sha256": "2e33ea164950fa0be4aaba4d1ac74b1101361d1cc0d0810a3f2b039f72dbe81e",
+          "bytes": 159813
+        },
+        {
+          "file": "protection_paladin__dwarf__44084e749e9954d6.player.json",
+          "sha256": "d849d30e96a36dd3df3dd83f4a85fb6370e6cb133c939d45f55cdeb069d0c21c",
+          "bytes": 3451
+        },
+        {
+          "file": "protection_paladin__dwarf__703d5b336a27a60f.pair.json",
+          "sha256": "0b660b9f870613585506abdab48cd20a7ce5cb1165f1f678f48aa7a313d90b02",
+          "bytes": 159675
+        },
+        {
+          "file": "protection_paladin__dwarf__703d5b336a27a60f.player.json",
+          "sha256": "93f31d36ddf86e3ec45d67607906dd9ef31d4490f25a4cd35a40c0bac30de432",
+          "bytes": 3451
+        },
+        {
+          "file": "protection_paladin__dwarf__8a35c68ab4a99914.pair.json",
+          "sha256": "e86041f4f9b8789a68d506129b1edcd8231d6465b051fcbb8e0ebcf7e97f8921",
+          "bytes": 159157
+        },
+        {
+          "file": "protection_paladin__dwarf__8a35c68ab4a99914.player.json",
+          "sha256": "74c49a2ed47c086ebb39e6a9fe309a7c6902700f9b26336570417978984ffaad",
+          "bytes": 3328
+        },
+        {
+          "file": "protection_paladin__dwarf__b730598d9562fcdb.pair.json",
+          "sha256": "434843d7f21f7067e581d474cb27052842df484058f61a14a7f6e09d7efd9df7",
+          "bytes": 162877
+        },
+        {
+          "file": "protection_paladin__dwarf__b730598d9562fcdb.player.json",
+          "sha256": "4ce2e78d2bda94e25916d0c560ae96a073580180df1efd2aa4e5bd72e0b2d953",
+          "bytes": 3451
+        },
+        {
+          "file": "protection_paladin__dwarf__bd02e675eeac0812.pair.json",
+          "sha256": "a0fa2b92c505c33640192145ae4d518e5d9a2097b730a3e1e3cc5ab6ca7808c1",
+          "bytes": 155951
+        },
+        {
+          "file": "protection_paladin__dwarf__bd02e675eeac0812.player.json",
+          "sha256": "81ace79cad84e3c2253932db2486cbca3fcd3cae6d68a48216a79fb248cb0a05",
+          "bytes": 3284
+        },
+        {
+          "file": "protection_paladin__dwarf__c673394cebf0cd50.pair.json",
+          "sha256": "5a5711bce5490c29d40e8ee80efedbfe3345bb7ab7dedc9f3680edf198b7093e",
+          "bytes": 159000
+        },
+        {
+          "file": "protection_paladin__dwarf__c673394cebf0cd50.player.json",
+          "sha256": "5bdaeeec8f5bc63fd5eab2c3ba9e7f9714ccca361ffbdd8c062130bfc28fe94b",
+          "bytes": 3325
+        },
+        {
+          "file": "protection_paladin__human__147708f14167dc08.pair.json",
+          "sha256": "96a247ac993169ce925ca7fd3a177d30ac272e11d2dee741adb789b6a120af7b",
+          "bytes": 158646
+        },
+        {
+          "file": "protection_paladin__human__147708f14167dc08.player.json",
+          "sha256": "f88daba98958f2568c700c749cbdad7e615dafc1f391d6b8545c35251ff02dd3",
+          "bytes": 3325
+        },
+        {
+          "file": "protection_paladin__human__3721657b0a9e0a39.pair.json",
+          "sha256": "dd63a9cf487a9d10108c828a6715fbceb4b0c7aeec12bce4f0798820e3e1cd7f",
+          "bytes": 160219
+        },
+        {
+          "file": "protection_paladin__human__3721657b0a9e0a39.player.json",
+          "sha256": "bf87b08ef284182a9a7297206fc5527eb172d4ae2d355723708531b5dbd6935d",
+          "bytes": 3451
+        },
+        {
+          "file": "protection_paladin__human__3e2fdf15b64a26b8.pair.json",
+          "sha256": "c85fcd78163a9db76969a3a695170d4bcd9fe54d30f0017dbcfd70a9229c79f5",
+          "bytes": 159307
+        },
+        {
+          "file": "protection_paladin__human__3e2fdf15b64a26b8.player.json",
+          "sha256": "68dee2b7a074d95a571721f02cf0634993a6787e8234b2fb10eedaade9f86457",
+          "bytes": 3451
+        },
+        {
+          "file": "protection_paladin__human__7433144cd39098df.pair.json",
+          "sha256": "ef40ca5e574081b1390f9d88000fc19e9a9e6d80d3b1a8a998dd7a222aa3347d",
+          "bytes": 159540
+        },
+        {
+          "file": "protection_paladin__human__7433144cd39098df.player.json",
+          "sha256": "f500020ffd6d2f0f6a610edd92e9a5eb0a1c08b625080b9322ba25aef68b9591",
+          "bytes": 3451
+        },
+        {
+          "file": "protection_paladin__human__8aaeb29b74e9e1d8.pair.json",
+          "sha256": "8d2fcac8af827283ed032fba41ad67a8c89ba1bd4ea2e4914dd80b0507ea62f0",
+          "bytes": 158808
+        },
+        {
+          "file": "protection_paladin__human__8aaeb29b74e9e1d8.player.json",
+          "sha256": "e3eec66ce1895897b014f3ccea02005c3720446805186969e5d39b28d8c038ca",
+          "bytes": 3328
+        },
+        {
+          "file": "protection_paladin__human__da3bc802491ca7f7.pair.json",
+          "sha256": "1036edcd2b7ad6c18bcbaeb833068ec62408e235e4e780759c846c04ff88dc43",
+          "bytes": 162605
+        },
+        {
+          "file": "protection_paladin__human__da3bc802491ca7f7.player.json",
+          "sha256": "50c641daf454a77c78da7b6bd59663aacc486c7689be5592527aa37712ddb8d0",
+          "bytes": 3451
+        },
+        {
+          "file": "protection_paladin__human__f3e61ac349c0a966.pair.json",
+          "sha256": "e8bf4297d87b87d8bf7a86c10898f17a110050ff5420879b8442c1e5387a72d5",
+          "bytes": 155853
+        },
+        {
+          "file": "protection_paladin__human__f3e61ac349c0a966.player.json",
+          "sha256": "d5522cd181f0b6a07de11bf92211632e16b11fb567e2342eb0b79fd28b84c5f1",
+          "bytes": 3284
+        },
+        {
+          "file": "protection_paladin__undead__01224c04e798d146.pair.json",
+          "sha256": "1b740c909b5895a632ce6c8171e9fc448a69d7d506c1b91bbeec21b02192ca29",
+          "bytes": 162320
+        },
+        {
+          "file": "protection_paladin__undead__01224c04e798d146.player.json",
+          "sha256": "b17dc664971491a31850351cc0e010b40f0371371be1f7446215bd88719a19c9",
+          "bytes": 3452
+        },
+        {
+          "file": "protection_paladin__undead__1c25382eb3d618b8.pair.json",
+          "sha256": "56b3b3d222d039a81df8c515396b54e0ebac52002b73fa5cdefe94dd4555ebe2",
+          "bytes": 161435
+        },
+        {
+          "file": "protection_paladin__undead__1c25382eb3d618b8.player.json",
+          "sha256": "bec7f9eac8a8210cb7287f577f3a5fc425864eb4d3a01d01ca2adf2c4eb65b5d",
+          "bytes": 3326
+        },
+        {
+          "file": "protection_paladin__undead__58b01b33076f09c4.pair.json",
+          "sha256": "f558bad0b1ecb8fcb088440250da844974a9aa22520f80176848c1744e8d7712",
+          "bytes": 161452
+        },
+        {
+          "file": "protection_paladin__undead__58b01b33076f09c4.player.json",
+          "sha256": "80527cc1e83edd0f61a964b783c07368870a0a6015278871ea9d565fb0ca42a0",
+          "bytes": 3329
+        },
+        {
+          "file": "protection_paladin__undead__79c0c940ad870537.pair.json",
+          "sha256": "d0cac52d24c572514ecb0ad04bc869a8c9c04e94fdc791b556f448807cffe821",
+          "bytes": 161778
+        },
+        {
+          "file": "protection_paladin__undead__79c0c940ad870537.player.json",
+          "sha256": "2e7ffd09bf78a6860f628dfe9c62a055408cbfc1e270e72e4c439e32f24f5eda",
+          "bytes": 3452
+        },
+        {
+          "file": "protection_paladin__undead__87e88823346b98a4.pair.json",
+          "sha256": "89d011f3969c583beb3663b76a2ebe62fc3af4880ad85389bc38218cec3bb345",
+          "bytes": 165357
+        },
+        {
+          "file": "protection_paladin__undead__87e88823346b98a4.player.json",
+          "sha256": "b62c1ee29a9ce95eb22d84e06535dde17eae222a6b950c4ba95217b292e4b893",
+          "bytes": 3452
+        },
+        {
+          "file": "protection_paladin__undead__8fbe307d82cdc50f.pair.json",
+          "sha256": "7b2054a735099883039062827d3fb3a4b58b7cbe54c7a03dfe3c7fc86eef877a",
+          "bytes": 162650
+        },
+        {
+          "file": "protection_paladin__undead__8fbe307d82cdc50f.player.json",
+          "sha256": "cea9d0914b8c8bf83cfabd23e624d7da019902c5490d85d38699fa15b22b2bff",
+          "bytes": 3452
+        },
+        {
+          "file": "protection_paladin__undead__917403efe88c5576.pair.json",
+          "sha256": "f96bbf3e3e3f4c4539a1c1647cc10a3e05288f27f726e39dc6070ce9af26f60f",
+          "bytes": 158653
+        },
+        {
+          "file": "protection_paladin__undead__917403efe88c5576.player.json",
+          "sha256": "3ec8e5acda873eba1afb3e4cb9b29d145e0f2c61b1e8bdd9ffaae70b44d2cde6",
+          "bytes": 3285
+        }
+      ]
+    },
+    {
+      "archive": "confirmation-b.json.gz",
+      "sha256": "cf476d45766d8e2d51496958970b14513e56f8b16b10847bee8388665732a2d0",
+      "bytes": 444866,
+      "records": [
+        {
+          "file": "manifest.json",
+          "sha256": "946aaa50774a00f5d1dbb65a26bbaa72a901fe181d77ee35785ab34916c0c508",
+          "bytes": 201551
+        },
+        {
+          "file": "protection_paladin__dwarf__1467dd707c3c0760.pair.json",
+          "sha256": "291463427355e117905adbdcdc0f50d9502026d09f4d088e0364d9ba6946b9f3",
+          "bytes": 160147
+        },
+        {
+          "file": "protection_paladin__dwarf__1467dd707c3c0760.player.json",
+          "sha256": "07c2fb68da2c4d41e640c37cf330c8c2da88acf63c88cf61b73cf61db40eab4c",
+          "bytes": 3451
+        },
+        {
+          "file": "protection_paladin__dwarf__44084e749e9954d6.pair.json",
+          "sha256": "663abc7d3d7b2f501068cd46edac149984b8b4e9a3433c45531d83d5c33fa84d",
+          "bytes": 159837
+        },
+        {
+          "file": "protection_paladin__dwarf__44084e749e9954d6.player.json",
+          "sha256": "d849d30e96a36dd3df3dd83f4a85fb6370e6cb133c939d45f55cdeb069d0c21c",
+          "bytes": 3451
+        },
+        {
+          "file": "protection_paladin__dwarf__703d5b336a27a60f.pair.json",
+          "sha256": "bb37690e16bffab08e38341cf50ff40945abfc8b74a23bf5934ce48f4f6032a4",
+          "bytes": 159683
+        },
+        {
+          "file": "protection_paladin__dwarf__703d5b336a27a60f.player.json",
+          "sha256": "93f31d36ddf86e3ec45d67607906dd9ef31d4490f25a4cd35a40c0bac30de432",
+          "bytes": 3451
+        },
+        {
+          "file": "protection_paladin__dwarf__8a35c68ab4a99914.pair.json",
+          "sha256": "4c5c4dd9b5922e57b4e66550c4cab37d302f041c031a5c68c865d5004f650dcf",
+          "bytes": 159142
+        },
+        {
+          "file": "protection_paladin__dwarf__8a35c68ab4a99914.player.json",
+          "sha256": "74c49a2ed47c086ebb39e6a9fe309a7c6902700f9b26336570417978984ffaad",
+          "bytes": 3328
+        },
+        {
+          "file": "protection_paladin__dwarf__b730598d9562fcdb.pair.json",
+          "sha256": "e1a108daae8dff52b2effa8aafa4048130bef7f1aec69eb2a81e41c65c147eb6",
+          "bytes": 162875
+        },
+        {
+          "file": "protection_paladin__dwarf__b730598d9562fcdb.player.json",
+          "sha256": "4ce2e78d2bda94e25916d0c560ae96a073580180df1efd2aa4e5bd72e0b2d953",
+          "bytes": 3451
+        },
+        {
+          "file": "protection_paladin__dwarf__bd02e675eeac0812.pair.json",
+          "sha256": "b4cf572818ec72a397368936ce7ce52c59cca57a48364c93d8e4c132e77e126a",
+          "bytes": 155966
+        },
+        {
+          "file": "protection_paladin__dwarf__bd02e675eeac0812.player.json",
+          "sha256": "81ace79cad84e3c2253932db2486cbca3fcd3cae6d68a48216a79fb248cb0a05",
+          "bytes": 3284
+        },
+        {
+          "file": "protection_paladin__dwarf__c673394cebf0cd50.pair.json",
+          "sha256": "63a996cf5551046d02de7e969977bf54abb3a61c9d07bc8685ca08ef14c43031",
+          "bytes": 158994
+        },
+        {
+          "file": "protection_paladin__dwarf__c673394cebf0cd50.player.json",
+          "sha256": "5bdaeeec8f5bc63fd5eab2c3ba9e7f9714ccca361ffbdd8c062130bfc28fe94b",
+          "bytes": 3325
+        },
+        {
+          "file": "protection_paladin__human__147708f14167dc08.pair.json",
+          "sha256": "ff4a6d1ba1457b1383a6518bd18d21a0773745c2817bc3b8b44f0e27942d310b",
+          "bytes": 158667
+        },
+        {
+          "file": "protection_paladin__human__147708f14167dc08.player.json",
+          "sha256": "f88daba98958f2568c700c749cbdad7e615dafc1f391d6b8545c35251ff02dd3",
+          "bytes": 3325
+        },
+        {
+          "file": "protection_paladin__human__3721657b0a9e0a39.pair.json",
+          "sha256": "2394ca47f4874dcea2f83adbded5e1da15980632e17d9ee72b8d03f892c8bedd",
+          "bytes": 160221
+        },
+        {
+          "file": "protection_paladin__human__3721657b0a9e0a39.player.json",
+          "sha256": "bf87b08ef284182a9a7297206fc5527eb172d4ae2d355723708531b5dbd6935d",
+          "bytes": 3451
+        },
+        {
+          "file": "protection_paladin__human__3e2fdf15b64a26b8.pair.json",
+          "sha256": "fe702360d7ceca6feeb53a38fd884e057e8fd21cfa6f0641a782a3bebfa7841d",
+          "bytes": 159256
+        },
+        {
+          "file": "protection_paladin__human__3e2fdf15b64a26b8.player.json",
+          "sha256": "68dee2b7a074d95a571721f02cf0634993a6787e8234b2fb10eedaade9f86457",
+          "bytes": 3451
+        },
+        {
+          "file": "protection_paladin__human__7433144cd39098df.pair.json",
+          "sha256": "cd54f99ca328011af68b9729d8b95ec442d53e4bbb3b2a2728a98fcd204d6563",
+          "bytes": 159487
+        },
+        {
+          "file": "protection_paladin__human__7433144cd39098df.player.json",
+          "sha256": "f500020ffd6d2f0f6a610edd92e9a5eb0a1c08b625080b9322ba25aef68b9591",
+          "bytes": 3451
+        },
+        {
+          "file": "protection_paladin__human__8aaeb29b74e9e1d8.pair.json",
+          "sha256": "591ea9ce8544c83570d8b117d55d501a1f1d937b4596990f097d284732fcf76d",
+          "bytes": 158835
+        },
+        {
+          "file": "protection_paladin__human__8aaeb29b74e9e1d8.player.json",
+          "sha256": "e3eec66ce1895897b014f3ccea02005c3720446805186969e5d39b28d8c038ca",
+          "bytes": 3328
+        },
+        {
+          "file": "protection_paladin__human__da3bc802491ca7f7.pair.json",
+          "sha256": "2d44830afdcb70237f9b823bbb90cf4456df6015bbefc318e79c55840d17e5ac",
+          "bytes": 162545
+        },
+        {
+          "file": "protection_paladin__human__da3bc802491ca7f7.player.json",
+          "sha256": "50c641daf454a77c78da7b6bd59663aacc486c7689be5592527aa37712ddb8d0",
+          "bytes": 3451
+        },
+        {
+          "file": "protection_paladin__human__f3e61ac349c0a966.pair.json",
+          "sha256": "873f2e6fc9e333cc7253a09f5d94d6bb883e593d8b57a8e9cdfd17a74a832c89",
+          "bytes": 155814
+        },
+        {
+          "file": "protection_paladin__human__f3e61ac349c0a966.player.json",
+          "sha256": "d5522cd181f0b6a07de11bf92211632e16b11fb567e2342eb0b79fd28b84c5f1",
+          "bytes": 3284
+        },
+        {
+          "file": "protection_paladin__undead__01224c04e798d146.pair.json",
+          "sha256": "758071bf0853c71ee9d023be770d72d8ee25208ca35edaec7a1a728e29a81dd6",
+          "bytes": 162301
+        },
+        {
+          "file": "protection_paladin__undead__01224c04e798d146.player.json",
+          "sha256": "b17dc664971491a31850351cc0e010b40f0371371be1f7446215bd88719a19c9",
+          "bytes": 3452
+        },
+        {
+          "file": "protection_paladin__undead__1c25382eb3d618b8.pair.json",
+          "sha256": "0041c1d497e894a0c7a9d2dafdb71f0131529bf54a0aaed0131c5a1988befe38",
+          "bytes": 161459
+        },
+        {
+          "file": "protection_paladin__undead__1c25382eb3d618b8.player.json",
+          "sha256": "bec7f9eac8a8210cb7287f577f3a5fc425864eb4d3a01d01ca2adf2c4eb65b5d",
+          "bytes": 3326
+        },
+        {
+          "file": "protection_paladin__undead__58b01b33076f09c4.pair.json",
+          "sha256": "0ba4098e0061da6d19fb186c7b85ada231e05db110eb22f32ed2eaf03eba27d0",
+          "bytes": 161476
+        },
+        {
+          "file": "protection_paladin__undead__58b01b33076f09c4.player.json",
+          "sha256": "80527cc1e83edd0f61a964b783c07368870a0a6015278871ea9d565fb0ca42a0",
+          "bytes": 3329
+        },
+        {
+          "file": "protection_paladin__undead__79c0c940ad870537.pair.json",
+          "sha256": "46f9ae6793ff7e1aafa494fd0789b131105917d051e5b68d6c0be31877ce8005",
+          "bytes": 161772
+        },
+        {
+          "file": "protection_paladin__undead__79c0c940ad870537.player.json",
+          "sha256": "2e7ffd09bf78a6860f628dfe9c62a055408cbfc1e270e72e4c439e32f24f5eda",
+          "bytes": 3452
+        },
+        {
+          "file": "protection_paladin__undead__87e88823346b98a4.pair.json",
+          "sha256": "901c2bdf8c22bae3e67da29181cde60b715a5ede53490f6f38c36fbcd657106b",
+          "bytes": 165330
+        },
+        {
+          "file": "protection_paladin__undead__87e88823346b98a4.player.json",
+          "sha256": "b62c1ee29a9ce95eb22d84e06535dde17eae222a6b950c4ba95217b292e4b893",
+          "bytes": 3452
+        },
+        {
+          "file": "protection_paladin__undead__8fbe307d82cdc50f.pair.json",
+          "sha256": "5b3ed64bc38fb81eec150de2d620e9b8213f29375d20ee059d04262dfd953b9f",
+          "bytes": 162632
+        },
+        {
+          "file": "protection_paladin__undead__8fbe307d82cdc50f.player.json",
+          "sha256": "cea9d0914b8c8bf83cfabd23e624d7da019902c5490d85d38699fa15b22b2bff",
+          "bytes": 3452
+        },
+        {
+          "file": "protection_paladin__undead__917403efe88c5576.pair.json",
+          "sha256": "29b1ab05eba7e2fdf1607a1c1045c9da376011a5d3a78f8f089fb5bfd0fdbb09",
+          "bytes": 158601
+        },
+        {
+          "file": "protection_paladin__undead__917403efe88c5576.player.json",
+          "sha256": "3ec8e5acda873eba1afb3e4cb9b29d145e0f2c61b1e8bdd9ffaae70b44d2cde6",
+          "bytes": 3285
+        }
+      ]
+    },
+    {
+      "archive": "prepull.json.gz",
+      "sha256": "d203d48145ead05a9e62c7b786d6da024bd63ae2dc7b97e4b0121ec58f486ade",
+      "bytes": 178560,
+      "records": [
+        {
+          "file": "dwarf__seal.pair.json",
+          "sha256": "19027fa884c90c235a5fe2df369d64726a7ff4f50e44e93e097bdf7bc0b2e4b2",
+          "bytes": 141057
+        },
+        {
+          "file": "dwarf__seal.player.json",
+          "sha256": "273f7734998d988e96de879a1ecdeac1dc7a54fbd9578834013d0a993bedf4f6",
+          "bytes": 3282
+        },
+        {
+          "file": "dwarf__seal_shield.pair.json",
+          "sha256": "349269cc211999f3e5813362911d1be48ea34a1b17a49444e535300e4986ce5b",
+          "bytes": 145938
+        },
+        {
+          "file": "dwarf__seal_shield.player.json",
+          "sha256": "c7b56d58984de3756b894ec457ee7e94a94ccd86efaedb3b470e1d3ad2dfd2e7",
+          "bytes": 3382
+        },
+        {
+          "file": "dwarf__simplified.pair.json",
+          "sha256": "3d1cc60355273193ec2898fe425cfb4b9e7ddf0d59efff794086ae97845dd740",
+          "bytes": 140950
+        },
+        {
+          "file": "dwarf__simplified.player.json",
+          "sha256": "7b638b7f8f794e7c001802bb716ac579c9e4a5899d005f04a68ad38a641f2fff",
+          "bytes": 3176
+        },
+        {
+          "file": "human__seal.pair.json",
+          "sha256": "b8d953e6a8941af117b1eb4f045a6ad1b72054caa385e024bd5f441fc6dfea8e",
+          "bytes": 140935
+        },
+        {
+          "file": "human__seal.player.json",
+          "sha256": "388d38f657c06ae0214c98dce1ff7d1664185d73e311c51ec0215fffd46ef315",
+          "bytes": 3282
+        },
+        {
+          "file": "human__seal_shield.pair.json",
+          "sha256": "0d4f62da9d76f233e6cd32e570b6c2387b7212020933ba9d01cf9ed6168618d3",
+          "bytes": 145740
+        },
+        {
+          "file": "human__seal_shield.player.json",
+          "sha256": "f6f897a10b09c6ffe9ae2a1127419068721dfe66bf45695f4ae5eca9b973b55c",
+          "bytes": 3382
+        },
+        {
+          "file": "human__simplified.pair.json",
+          "sha256": "a34258ad9da094571d1bd58f70b4d5ea478571a69d8a321fff10f85daa696c98",
+          "bytes": 140639
+        },
+        {
+          "file": "human__simplified.player.json",
+          "sha256": "fae63f3f18b4649dbebf9aef4c4fbea371d4a6fccf9eabc9120336dfd7c63dd0",
+          "bytes": 3176
+        },
+        {
+          "file": "manifest.json",
+          "sha256": "efd04f5e910341caa6926a38efbbd7ed6c4a5c7bcc180320cffc9741e54783d2",
+          "bytes": 217
+        },
+        {
+          "file": "summary.json",
+          "sha256": "0ad13b02edc29f7df50f431cc27c25a5846733e257b7dd10ccd6ae587147ac3e",
+          "bytes": 284289
+        },
+        {
+          "file": "undead__seal.pair.json",
+          "sha256": "08698969a4baf834d8af6d00e9e2f4d1cf865d14afe3c1129ce1accbe1d9f948",
+          "bytes": 143516
+        },
+        {
+          "file": "undead__seal.player.json",
+          "sha256": "c3b4291d2185c32986920fdb1dd16ac5caf2e0ce16753dac71ca967eef7a9ad0",
+          "bytes": 3283
+        },
+        {
+          "file": "undead__seal_shield.pair.json",
+          "sha256": "01368c09cb5ade2ea5d68e81b3fb64c6c9b56db019266afa5823e515025852d2",
+          "bytes": 148441
+        },
+        {
+          "file": "undead__seal_shield.player.json",
+          "sha256": "b5083bc10a975610f1ce2ec1eedff99471510e3a2625b62cde18ec490d889752",
+          "bytes": 3383
+        },
+        {
+          "file": "undead__simplified.pair.json",
+          "sha256": "bbf3a908f3255dc091774463d8be9184d80bb09501c5665b016a235ce23678e1",
+          "bytes": 143489
+        },
+        {
+          "file": "undead__simplified.player.json",
+          "sha256": "db1c74c6d08cf552d87d34486445b0e67b93b3232cf7662b4f6f237a2de5edea",
+          "bytes": 3177
+        }
+      ]
+    },
+    {
+      "archive": "final-a.json.gz",
+      "sha256": "8d9d38e3b8833f9f73cda9762fbc610e687d3546acd60da996cf087b13bbf5ed",
+      "bytes": 191464,
+      "records": [
+        {
+          "file": "manifest.json",
+          "sha256": "9ede3997cdd744a73c098dee11ca23d96b6c873f0e44c57982f74289eb7485bd",
+          "bytes": 83804
+        },
+        {
+          "file": "protection_paladin__dwarf__8a35c68ab4a99914.pair.json",
+          "sha256": "44cb0b849d09cfacfffb91376f05100a67be138c42255fde271684025453907b",
+          "bytes": 159205
+        },
+        {
+          "file": "protection_paladin__dwarf__8a35c68ab4a99914.player.json",
+          "sha256": "74c49a2ed47c086ebb39e6a9fe309a7c6902700f9b26336570417978984ffaad",
+          "bytes": 3328
+        },
+        {
+          "file": "protection_paladin__dwarf__bda601566e35807c.pair.json",
+          "sha256": "79eabefcc1fa96092c6fc2a3600d7d40359e743a114e7b90141df6b90707c652",
+          "bytes": 157983
+        },
+        {
+          "file": "protection_paladin__dwarf__bda601566e35807c.player.json",
+          "sha256": "c7b56d58984de3756b894ec457ee7e94a94ccd86efaedb3b470e1d3ad2dfd2e7",
+          "bytes": 3382
+        },
+        {
+          "file": "protection_paladin__dwarf__c673394cebf0cd50.pair.json",
+          "sha256": "ae81620f635fa671654895f0e5a330370a4faab5f6dcd853518125721c27331f",
+          "bytes": 159060
+        },
+        {
+          "file": "protection_paladin__dwarf__c673394cebf0cd50.player.json",
+          "sha256": "5bdaeeec8f5bc63fd5eab2c3ba9e7f9714ccca361ffbdd8c062130bfc28fe94b",
+          "bytes": 3325
+        },
+        {
+          "file": "protection_paladin__human__147708f14167dc08.pair.json",
+          "sha256": "0deaad661b8392216cd1acfee0fc3fb6999108bfb9a92941965c8d58d7fbbf52",
+          "bytes": 158642
+        },
+        {
+          "file": "protection_paladin__human__147708f14167dc08.player.json",
+          "sha256": "f88daba98958f2568c700c749cbdad7e615dafc1f391d6b8545c35251ff02dd3",
+          "bytes": 3325
+        },
+        {
+          "file": "protection_paladin__human__8aaeb29b74e9e1d8.pair.json",
+          "sha256": "ceeeff95f251af7ba31e1b1b1ec865934a53f3eb0152c475b8e50ddf95c12885",
+          "bytes": 158801
+        },
+        {
+          "file": "protection_paladin__human__8aaeb29b74e9e1d8.player.json",
+          "sha256": "e3eec66ce1895897b014f3ccea02005c3720446805186969e5d39b28d8c038ca",
+          "bytes": 3328
+        },
+        {
+          "file": "protection_paladin__human__9fa78ae63354bd3d.pair.json",
+          "sha256": "fa7701ed72ed4447aebdcb4abe8eaa12ca76ef08ba63817d1bfd77f56eb6e4b5",
+          "bytes": 157848
+        },
+        {
+          "file": "protection_paladin__human__9fa78ae63354bd3d.player.json",
+          "sha256": "f6f897a10b09c6ffe9ae2a1127419068721dfe66bf45695f4ae5eca9b973b55c",
+          "bytes": 3382
+        },
+        {
+          "file": "protection_paladin__undead__1c25382eb3d618b8.pair.json",
+          "sha256": "6b58a311e4e3e959496d892a3485d72f009bd2c433d15b4f01513dc74f4a647d",
+          "bytes": 161375
+        },
+        {
+          "file": "protection_paladin__undead__1c25382eb3d618b8.player.json",
+          "sha256": "bec7f9eac8a8210cb7287f577f3a5fc425864eb4d3a01d01ca2adf2c4eb65b5d",
+          "bytes": 3326
+        },
+        {
+          "file": "protection_paladin__undead__42f8223a028f6561.pair.json",
+          "sha256": "54c2b219c99c1cc9eac7e3d9b43f3c5314d81de5c7ecc211dcee06c642b75335",
+          "bytes": 159995
+        },
+        {
+          "file": "protection_paladin__undead__42f8223a028f6561.player.json",
+          "sha256": "b5083bc10a975610f1ce2ec1eedff99471510e3a2625b62cde18ec490d889752",
+          "bytes": 3383
+        },
+        {
+          "file": "protection_paladin__undead__58b01b33076f09c4.pair.json",
+          "sha256": "9f102c7a986d2ce46d4e66f64ec1b56b401ca95a8ae36c86d456763cf1a4bdd8",
+          "bytes": 161399
+        },
+        {
+          "file": "protection_paladin__undead__58b01b33076f09c4.player.json",
+          "sha256": "80527cc1e83edd0f61a964b783c07368870a0a6015278871ea9d565fb0ca42a0",
+          "bytes": 3329
+        }
+      ]
+    },
+    {
+      "archive": "final-b.json.gz",
+      "sha256": "67ad02b8393d677f0c4b61d8fdce781082de4fa16323255abf920d3e28cc1e9d",
+      "bytes": 191618,
+      "records": [
+        {
+          "file": "manifest.json",
+          "sha256": "661ae2569093786db94db63659c73b9845e29caea61d4be11ed880387579796f",
+          "bytes": 83804
+        },
+        {
+          "file": "protection_paladin__dwarf__8a35c68ab4a99914.pair.json",
+          "sha256": "6e5bb4b3d97170790790a6a3ec92b45089c42e4983ef78b36a4cec48ada5f6f7",
+          "bytes": 159213
+        },
+        {
+          "file": "protection_paladin__dwarf__8a35c68ab4a99914.player.json",
+          "sha256": "74c49a2ed47c086ebb39e6a9fe309a7c6902700f9b26336570417978984ffaad",
+          "bytes": 3328
+        },
+        {
+          "file": "protection_paladin__dwarf__bda601566e35807c.pair.json",
+          "sha256": "bb66bd308df8389ad226f3ed4ecaecce2de01a6039fbc439eab3707eba0b5640",
+          "bytes": 158024
+        },
+        {
+          "file": "protection_paladin__dwarf__bda601566e35807c.player.json",
+          "sha256": "c7b56d58984de3756b894ec457ee7e94a94ccd86efaedb3b470e1d3ad2dfd2e7",
+          "bytes": 3382
+        },
+        {
+          "file": "protection_paladin__dwarf__c673394cebf0cd50.pair.json",
+          "sha256": "a62a222fa96f7470fafafe36fd9c0f2cb26344e6e27f016218f101de7536c70b",
+          "bytes": 159056
+        },
+        {
+          "file": "protection_paladin__dwarf__c673394cebf0cd50.player.json",
+          "sha256": "5bdaeeec8f5bc63fd5eab2c3ba9e7f9714ccca361ffbdd8c062130bfc28fe94b",
+          "bytes": 3325
+        },
+        {
+          "file": "protection_paladin__human__147708f14167dc08.pair.json",
+          "sha256": "69906c4330005a0e7744f154d616543bdcca6de8318d4682db515e3727d3951d",
+          "bytes": 158633
+        },
+        {
+          "file": "protection_paladin__human__147708f14167dc08.player.json",
+          "sha256": "f88daba98958f2568c700c749cbdad7e615dafc1f391d6b8545c35251ff02dd3",
+          "bytes": 3325
+        },
+        {
+          "file": "protection_paladin__human__8aaeb29b74e9e1d8.pair.json",
+          "sha256": "12cb4aee9a949de7c3480b43ef17b533000ea9fb5a2e136d6ba7cc03b1ce3185",
+          "bytes": 158789
+        },
+        {
+          "file": "protection_paladin__human__8aaeb29b74e9e1d8.player.json",
+          "sha256": "e3eec66ce1895897b014f3ccea02005c3720446805186969e5d39b28d8c038ca",
+          "bytes": 3328
+        },
+        {
+          "file": "protection_paladin__human__9fa78ae63354bd3d.pair.json",
+          "sha256": "e5aabe9ec706d05d1817c3f23d3c4e21d94137c6c1824e899232c19cf4adc295",
+          "bytes": 157879
+        },
+        {
+          "file": "protection_paladin__human__9fa78ae63354bd3d.player.json",
+          "sha256": "f6f897a10b09c6ffe9ae2a1127419068721dfe66bf45695f4ae5eca9b973b55c",
+          "bytes": 3382
+        },
+        {
+          "file": "protection_paladin__undead__1c25382eb3d618b8.pair.json",
+          "sha256": "489ec2664d9f00fdfd8629af52690223128183cfe02eac9859393278bb8a7050",
+          "bytes": 161452
+        },
+        {
+          "file": "protection_paladin__undead__1c25382eb3d618b8.player.json",
+          "sha256": "bec7f9eac8a8210cb7287f577f3a5fc425864eb4d3a01d01ca2adf2c4eb65b5d",
+          "bytes": 3326
+        },
+        {
+          "file": "protection_paladin__undead__42f8223a028f6561.pair.json",
+          "sha256": "b30db1632670a9a7851a7e446e27959c22a3ce3b2dcfcfe2d89164e15ebe8fa4",
+          "bytes": 159993
+        },
+        {
+          "file": "protection_paladin__undead__42f8223a028f6561.player.json",
+          "sha256": "b5083bc10a975610f1ce2ec1eedff99471510e3a2625b62cde18ec490d889752",
+          "bytes": 3383
+        },
+        {
+          "file": "protection_paladin__undead__58b01b33076f09c4.pair.json",
+          "sha256": "0d54bf3d4a6de3daff4c1d8ca65665842750bc0ce5b5f4153f6decb9d87a1480",
+          "bytes": 161459
+        },
+        {
+          "file": "protection_paladin__undead__58b01b33076f09c4.player.json",
+          "sha256": "80527cc1e83edd0f61a964b783c07368870a0a6015278871ea9d565fb0ca42a0",
+          "bytes": 3329
+        }
+      ]
+    },
+    {
+      "archive": "replay.json.gz",
+      "sha256": "b49ee0ac4173a9fecec510e682d942a0f4c4604ae8c2f38780e1fbd0a60b8625",
+      "bytes": 101874,
+      "records": [
+        {
+          "file": "gear_110.json",
+          "sha256": "7bba7e1dfd7614db06b43c4c4e24c9c9125a3a2b5edee0bc3ad8a98ead5548ae",
+          "bytes": 208082
+        },
+        {
+          "file": "gear_150.json",
+          "sha256": "d2b4a39047e23fbbd6c3f6dd38d8fc66a312a0809a4f237fbe329ceccd292921",
+          "bytes": 208444
+        },
+        {
+          "file": "main.json",
+          "sha256": "1a4e47d3d2e39ad17c47611c9591c83466539f18032d995971501f4b0649baf8",
+          "bytes": 207322
+        },
+        {
+          "file": "manifest.json",
+          "sha256": "d8ed86deeeba1ab52bee0944b8c35578227e8fca5c6e32a49dd880dfd18fe74e",
+          "bytes": 216
+        },
+        {
+          "file": "tier1_off.json",
+          "sha256": "3e1a9acf47209eb674f2e796629f3b3303770b12937eccbcf346b4a7941eae02",
+          "bytes": 206059
+        }
+      ]
+    }
+  ]
+}

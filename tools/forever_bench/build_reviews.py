@@ -55,6 +55,7 @@ def main():
             "currentEnergy": "Energy", "currentRage": "Rage",
             "currentComboPoints": "Combo points", "remainingTime": "Time remaining",
             "currentTime": "Time elapsed", "numberTargets": "Target count",
+            "currentSealRemainingTime": "Seal time remaining",
         }.items():
             if key in value:
                 return label
@@ -177,7 +178,12 @@ def main():
             lines += ["### Before the pull", ""]
             for entry in p["rotation"]["prepullActions"]:
                 a = entry["action"]
-                text = action_name(a["castSpell"]["spellId"]) if "castSpell" in a else "`" + json.dumps(a) + "`"
+                if "castSpell" in a:
+                    text = action_name(a["castSpell"]["spellId"])
+                elif "castPaladinPrimarySeal" in a:
+                    text = "Cast primary seal"
+                else:
+                    text = "`" + json.dumps(a) + "`"
                 lines.append(f"- {condition(entry['doAtValue'])}: {text}.")
             lines.append("")
         lines += ["### Rotation priorities", ""]
@@ -187,6 +193,8 @@ def main():
                 text = "Cast " + action_name(a["castSpell"]["spellId"])
             elif "autocastOtherCooldowns" in a:
                 text = "Use ready automatic cooldowns"
+            elif "castPaladinPrimarySeal" in a:
+                text = "Cast primary seal"
             else:
                 text = "`" + json.dumps(a, separators=(",", ":")) + "`"
             if "condition" in a:

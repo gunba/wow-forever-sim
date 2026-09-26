@@ -82,14 +82,14 @@ def main():
                              "spec_gear_equity.csv"):
                 shutil.copyfile(Path("artifacts/modelled_gear") / filename,
                                 args.output / filename)
-    for directory in ("profile_corrections", "windfury"):
+    for directory in ("profile_corrections", "windfury", "paladin_mana"):
         shutil.copytree(Path("artifacts") / directory, args.output / directory, dirs_exist_ok=True)
     shutil.copyfile("artifacts/spell_coverage.json", args.output / "spell_coverage.json")
     for extension in ("json", "csv", "svg", "png"):
         shutil.copyfile(args.results.with_suffix("." + extension), args.output / ("results." + extension))
     for name in ("build_reviews.md", "build_updates.md", "gear_updates.md", "in_game_checks.md", "check_dispositions.md", "spell_coverage.md", "windfury.md", "energy_audit.md", "auto_attack_audit.md", "crit_model.md", "forever_gear_data.md", "mechanics_review.md", "history_review.md", "upstream-forever-review-2026-09-23.md", "upstream-forever-followup-2026-09-23.md", "mana_regeneration.md", "mythicsim_review.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
-    for name in ("weekly_review.md", "weekly_review_commits.csv", "flurry_review.md", "upstream_elliot_review.md", "tank_benchmark.md", "tank_selection.md", "forever-70009.md"):
+    for name in ("weekly_review.md", "weekly_review_commits.csv", "flurry_review.md", "upstream_elliot_review.md", "tank_benchmark.md", "tank_selection.md", "paladin_mana.md", "forever-70009.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
     body = []
     for key, class_name, label, icon in builds:
@@ -190,7 +190,8 @@ def main():
             '<p><a href="tank_selection.md">Selection safeguards and three-attacker scenario</a> · '
             '<a href="tanks/validation.json">Matched validation and per-target threat</a> · '
             '<a href="tanks/metrics.csv">Tank metrics CSV</a> · '
-            '<a href="tanks/archives.json">Research archives</a></p>'
+            '<a href="tanks/archives.json">Research archives</a> · '
+            '<a href="paladin_mana/validation.json">Protection mana correction</a></p>'
             '<div class="matrix"><table><thead><tr><th>Build / race</th><th>DPS</th><th>TPS</th>'
             '<th>DTPS</th><th>TMI</th><th>Modeled death</th>'
             '<th>3 attackers: minimum TPS</th><th>TPS by attacker</th></tr></thead><tbody>'

@@ -1,9 +1,5 @@
 {
   "engineSHA256": "8ebc6bdce27a82a7c0415c98d5c6b0960bb1b1ba2b981095b7c51cb5393429f8",
-  "seeds": [
-    20262501,
-    20262763
-  ],
   "iterationsPerSeed": [
     20000,
     20000
@@ -421,119 +417,122 @@
     {
       "Key": "protection_paladin",
       "Race": "Undead",
-      "SelectedID": "protection_paladin__undead__58b01b33076f09c4",
+      "SelectedID": "protection_paladin__undead__42f8223a028f6561",
       "ControlID": "protection_paladin__undead__1c25382eb3d618b8",
       "Disposition": "retain",
-      "DPSGain": 6.024263859952043,
-      "DPSConservative95Bound": 0.1607957288379017,
+      "DPSGain": 49.755872708620416,
+      "DPSConservative95Bound": 0.15909107697161712,
       "Single": {
-        "TPS": 633.9388800793811,
-        "DTPS": 767.1243717184627,
-        "TMI": 88.9945781416578,
-        "ChanceOfDeath": 0.014445,
-        "LeastTargetTPS": 633.9388800793805,
-        "TPSStandardError": 0.059981168472396915,
-        "DTPSStandardError": 0.07783757125094071,
-        "TMIStandardError": 0.01476602296067964,
+        "TPS": 703.4599056029795,
+        "DTPS": 763.3811656170715,
+        "TMI": 88.58086981804632,
+        "ChanceOfDeath": 0.01433,
+        "LeastTargetTPS": 703.4599056029789,
+        "TPSStandardError": 0.05624046214895113,
+        "DTPSStandardError": 0.07703748474297262,
+        "TMIStandardError": 0.014794889490466343,
         "TargetTPS": [
-          633.9388800793805
+          703.4599056029789
         ],
         "Iterations": 200000
       },
       "Multi": {
-        "TPS": 1132.6423627921913,
-        "DTPS": 1086.1840453741625,
-        "TMI": 107.14358583926071,
-        "ChanceOfDeath": 0.03327,
-        "LeastTargetTPS": 203.95835626775627,
-        "TPSStandardError": 0.13460014669212375,
-        "DTPSStandardError": 0.12329797276525765,
-        "TMIStandardError": 0.01486341681361758,
+        "TPS": 1183.1239823871388,
+        "DTPS": 1075.0424214364766,
+        "TMI": 105.91927859314865,
+        "ChanceOfDeath": 0.028495,
+        "LeastTargetTPS": 212.31308452557536,
+        "TPSStandardError": 0.12710318751695207,
+        "DTPSStandardError": 0.12552555397186463,
+        "TMIStandardError": 0.015107833803633446,
         "TargetTPS": [
-          719.5318265272701,
-          209.15217999715287,
-          203.95835626775627
+          753.0928456288391,
+          217.71805223270758,
+          212.31308452557536
         ],
         "Iterations": 200000
-      }
+      },
+      "Evidence": "../../paladin_mana/validation.json"
     },
     {
       "Key": "protection_paladin",
       "Race": "Human",
-      "SelectedID": "protection_paladin__human__8aaeb29b74e9e1d8",
+      "SelectedID": "protection_paladin__human__9fa78ae63354bd3d",
       "ControlID": "protection_paladin__human__147708f14167dc08",
       "Disposition": "retain",
-      "DPSGain": 6.034576391724897,
-      "DPSConservative95Bound": 0.15072680393898383,
+      "DPSGain": 49.6475961436372,
+      "DPSConservative95Bound": 0.14876850381520312,
       "Single": {
-        "TPS": 619.8701832996178,
-        "DTPS": 765.6235694485052,
-        "TMI": 89.07495438154206,
-        "ChanceOfDeath": 0.016505,
-        "LeastTargetTPS": 619.8701832996205,
-        "TPSStandardError": 0.057879900816663735,
-        "DTPSStandardError": 0.07817047236059727,
-        "TMIStandardError": 0.014971655916343958,
+        "TPS": 689.3800148014885,
+        "DTPS": 761.9822706568087,
+        "TMI": 88.7066285509652,
+        "ChanceOfDeath": 0.016315000000000003,
+        "LeastTargetTPS": 689.3800148014918,
+        "TPSStandardError": 0.05418458002030016,
+        "DTPSStandardError": 0.07741579287865283,
+        "TMIStandardError": 0.014856589539301475,
         "TargetTPS": [
-          619.8701832996205
+          689.3800148014918
         ],
         "Iterations": 200000
       },
       "Multi": {
-        "TPS": 1115.5099597837832,
-        "DTPS": 1082.7445027970562,
-        "TMI": 107.2603865080616,
-        "ChanceOfDeath": 0.041245000000000004,
-        "LeastTargetTPS": 202.78642962239064,
-        "TPSStandardError": 0.13073294290661047,
-        "DTPSStandardError": 0.1219482326311245,
-        "TMIStandardError": 0.015121043073867588,
+        "TPS": 1165.8036014144723,
+        "DTPS": 1071.1327907010473,
+        "TMI": 106.0033592868262,
+        "ChanceOfDeath": 0.03544,
+        "LeastTargetTPS": 211.19580067146126,
+        "TPSStandardError": 0.12456002943956451,
+        "DTPSStandardError": 0.1255582054172378,
+        "TMIStandardError": 0.0152030825156442,
         "TargetTPS": [
-          704.9960612087261,
-          207.7274689526778,
-          202.78642962239064
+          738.0282107824717,
+          216.5795899605074,
+          211.19580067146126
         ],
         "Iterations": 200000
-      }
+      },
+      "Evidence": "../../paladin_mana/validation.json"
     },
     {
       "Key": "protection_paladin",
       "Race": "Dwarf",
-      "SelectedID": "protection_paladin__dwarf__8a35c68ab4a99914",
+      "SelectedID": "protection_paladin__dwarf__bda601566e35807c",
       "ControlID": "protection_paladin__dwarf__c673394cebf0cd50",
       "Disposition": "retain",
-      "DPSGain": 6.031329223241642,
-      "DPSConservative95Bound": 0.14784094251484406,
+      "DPSGain": 49.20130568189347,
+      "DPSConservative95Bound": 0.1457388382184471,
       "Single": {
-        "TPS": 610.2573601913655,
-        "DTPS": 767.8138942200035,
-        "TMI": 88.72273837188548,
-        "ChanceOfDeath": 0.014465,
-        "LeastTargetTPS": 610.2573601913691,
-        "TPSStandardError": 0.05707187870021971,
-        "DTPSStandardError": 0.0777742220677963,
-        "TMIStandardError": 0.01476981249112065,
+        "TPS": 679.1039872436694,
+        "DTPS": 764.3086829327369,
+        "TMI": 88.36485580043163,
+        "ChanceOfDeath": 0.01485,
+        "LeastTargetTPS": 679.1039872436727,
+        "TPSStandardError": 0.053215161448949055,
+        "DTPSStandardError": 0.07742171131181175,
+        "TMIStandardError": 0.014734640424898117,
         "TargetTPS": [
-          610.2573601913691
+          679.1039872436727
         ],
         "Iterations": 200000
       },
       "Multi": {
-        "TPS": 1101.9981409052798,
-        "DTPS": 1085.7441615815824,
-        "TMI": 106.89470388461689,
-        "ChanceOfDeath": 0.037875,
-        "LeastTargetTPS": 201.41246691380672,
-        "TPSStandardError": 0.12867590106310287,
-        "DTPSStandardError": 0.12207863774883203,
-        "TMIStandardError": 0.014904340349824524,
+        "TPS": 1151.3339928803402,
+        "DTPS": 1074.4062155467673,
+        "TMI": 105.71626430564223,
+        "ChanceOfDeath": 0.032845,
+        "LeastTargetTPS": 209.71895765316833,
+        "TPSStandardError": 0.12226537214222939,
+        "DTPSStandardError": 0.12574533933375745,
+        "TMIStandardError": 0.015113650816409401,
         "TargetTPS": [
-          694.1963879515092,
-          206.38928603997226,
-          201.41246691380672
+          726.5692695005223,
+          215.04576572664706,
+          209.71895765316833
         ],
         "Iterations": 200000
-      }
+      },
+      "Evidence": "../../paladin_mana/validation.json"
     },
     {
       "Key": "feral_tank_druid",
@@ -2023,416 +2022,6 @@
       "checks": {
         "Single": {
           "DTPS": {
-            "candidate": 767.1243717184627,
-            "reference": 767.1243717184627,
-            "boundaryDifference": -7.671243717184666,
-            "conservative95Bound": 0.30664889570020604,
-            "passed": true
-          },
-          "TMI": {
-            "candidate": 88.9945781416578,
-            "reference": 88.9945781416578,
-            "boundaryDifference": -1.779891562833157,
-            "conservative95Bound": 0.05846163810592283,
-            "passed": true
-          },
-          "TPS": {
-            "candidate": 633.9388800793811,
-            "reference": 626.1647243610332,
-            "boundaryDifference": 14.035802961958211,
-            "conservative95Bound": 0.23246722638862002,
-            "passed": true
-          },
-          "death": {
-            "candidate": 0.014445,
-            "reference": 0.014445,
-            "candidateWilson97_5": [
-              0.01385907568286031,
-              0.015055317434975264
-            ],
-            "referenceWilson97_5": [
-              0.01385907568286031,
-              0.015055317434975264
-            ],
-            "conservativeUpperDifference": 0.0011962417521149543,
-            "passed": true
-          },
-          "leastTargetTPS": {
-            "candidate": 633.9388800793805,
-            "reference": 626.1647243610277,
-            "passed": true,
-            "uncertainty": "Per-target threat variance is not exported; the threshold must pass each independent seed."
-          }
-        },
-        "Multi": {
-          "DTPS": {
-            "candidate": 1086.1840453741625,
-            "reference": 1086.1840453741625,
-            "boundaryDifference": -10.861840453741706,
-            "conservative95Bound": 0.485744693506009,
-            "passed": true
-          },
-          "TMI": {
-            "candidate": 107.14358583926071,
-            "reference": 107.14358583926071,
-            "boundaryDifference": -2.1428717167852227,
-            "conservative95Bound": 0.058847239848474724,
-            "passed": true
-          },
-          "TPS": {
-            "candidate": 1132.6423627921913,
-            "reference": 1123.9033361224024,
-            "boundaryDifference": 19.978060031013,
-            "conservative95Bound": 0.521668462952521,
-            "passed": true
-          },
-          "death": {
-            "candidate": 0.03327,
-            "reference": 0.03327,
-            "candidateWilson97_5": [
-              0.03238281541596188,
-              0.034180631979054944
-            ],
-            "referenceWilson97_5": [
-              0.03238281541596188,
-              0.034180631979054944
-            ],
-            "conservativeUpperDifference": 0.001797816563093066,
-            "passed": true
-          },
-          "leastTargetTPS": {
-            "candidate": 203.95835626775627,
-            "reference": 203.95835626775624,
-            "passed": true,
-            "uncertainty": "Per-target threat variance is not exported; the threshold must pass each independent seed."
-          }
-        }
-      },
-      "DPSGain": 6.024263859952043,
-      "DPSConservative95Bound": 0.1607957288379017,
-      "RejectedFor": [],
-      "MeanDPS": 423.83950809401495,
-      "perSeedMeanGuardFailures": [
-        [],
-        []
-      ],
-      "ID": "protection_paladin__undead__58b01b33076f09c4",
-      "Key": "protection_paladin",
-      "Race": "Undead",
-      "Control": "protection_paladin__undead__1c25382eb3d618b8"
-    },
-    {
-      "checks": {
-        "Single": {
-          "DTPS": {
-            "candidate": 765.6235694485052,
-            "reference": 765.6235694485052,
-            "boundaryDifference": -7.656235694485076,
-            "conservative95Bound": 0.307960392911809,
-            "passed": true
-          },
-          "TMI": {
-            "candidate": 89.07495438154206,
-            "reference": 89.07495438154206,
-            "boundaryDifference": -1.7814990876308485,
-            "conservative95Bound": 0.059275780103989,
-            "passed": true
-          },
-          "TPS": {
-            "candidate": 619.8701832996178,
-            "reference": 612.0789450304783,
-            "boundaryDifference": 13.912027719444268,
-            "conservative95Bound": 0.2242880201182346,
-            "passed": true
-          },
-          "death": {
-            "candidate": 0.016505,
-            "reference": 0.016505,
-            "candidateWilson97_5": [
-              0.01587848171721322,
-              0.01715580791116649
-            ],
-            "referenceWilson97_5": [
-              0.01587848171721322,
-              0.01715580791116649
-            ],
-            "conservativeUpperDifference": 0.0012773261939532723,
-            "passed": true
-          },
-          "leastTargetTPS": {
-            "candidate": 619.8701832996205,
-            "reference": 612.0789450304802,
-            "passed": true,
-            "uncertainty": "Per-target threat variance is not exported; the threshold must pass each independent seed."
-          }
-        },
-        "Multi": {
-          "DTPS": {
-            "candidate": 1082.7445027970562,
-            "reference": 1082.7445027970562,
-            "boundaryDifference": -10.827445027970498,
-            "conservative95Bound": 0.4804272572735781,
-            "passed": true
-          },
-          "TMI": {
-            "candidate": 107.2603865080616,
-            "reference": 107.2603865080616,
-            "boundaryDifference": -2.145207730161232,
-            "conservative95Bound": 0.05986723373805655,
-            "passed": true
-          },
-          "TPS": {
-            "candidate": 1115.5099597837832,
-            "reference": 1106.7868065438358,
-            "boundaryDifference": 19.79102130538581,
-            "conservative95Bound": 0.5064730407243446,
-            "passed": true
-          },
-          "death": {
-            "candidate": 0.041245,
-            "reference": 0.041245,
-            "candidateWilson97_5": [
-              0.040259815370894396,
-              0.04225323137926295
-            ],
-            "referenceWilson97_5": [
-              0.040259815370894396,
-              0.04225323137926295
-            ],
-            "conservativeUpperDifference": 0.0019934160083685537,
-            "passed": true
-          },
-          "leastTargetTPS": {
-            "candidate": 202.78642962239064,
-            "reference": 202.78642962239064,
-            "passed": true,
-            "uncertainty": "Per-target threat variance is not exported; the threshold must pass each independent seed."
-          }
-        }
-      },
-      "DPSGain": 6.034576391724897,
-      "DPSConservative95Bound": 0.15072680393898383,
-      "RejectedFor": [],
-      "MeanDPS": 407.191097399845,
-      "perSeedMeanGuardFailures": [
-        [],
-        []
-      ],
-      "ID": "protection_paladin__human__8aaeb29b74e9e1d8",
-      "Key": "protection_paladin",
-      "Race": "Human",
-      "Control": "protection_paladin__human__147708f14167dc08"
-    },
-    {
-      "checks": {
-        "Single": {
-          "DTPS": {
-            "candidate": 767.8138942200035,
-            "reference": 767.8138942200035,
-            "boundaryDifference": -7.6781389422000075,
-            "conservative95Bound": 0.3063993252582903,
-            "passed": true
-          },
-          "TMI": {
-            "candidate": 88.72273837188548,
-            "reference": 88.72273837188548,
-            "boundaryDifference": -1.7744547674377174,
-            "conservative95Bound": 0.05847664161484487,
-            "passed": true
-          },
-          "TPS": {
-            "candidate": 610.2573601913655,
-            "reference": 602.4697619189495,
-            "boundaryDifference": 13.812295891605459,
-            "conservative95Bound": 0.22098377061587166,
-            "passed": true
-          },
-          "death": {
-            "candidate": 0.014465,
-            "reference": 0.014465,
-            "candidateWilson97_5": [
-              0.013878667508826069,
-              0.01507572460425751
-            ],
-            "referenceWilson97_5": [
-              0.013878667508826069,
-              0.01507572460425751
-            ],
-            "conservativeUpperDifference": 0.001197057095431442,
-            "passed": true
-          },
-          "leastTargetTPS": {
-            "candidate": 610.2573601913691,
-            "reference": 602.4697619189487,
-            "passed": true,
-            "uncertainty": "Per-target threat variance is not exported; the threshold must pass each independent seed."
-          }
-        },
-        "Multi": {
-          "DTPS": {
-            "candidate": 1085.7441615815824,
-            "reference": 1085.7441615815824,
-            "boundaryDifference": -10.857441615815787,
-            "conservative95Bound": 0.48094100127529865,
-            "passed": true
-          },
-          "TMI": {
-            "candidate": 106.89470388461689,
-            "reference": 106.89470388461689,
-            "boundaryDifference": -2.137894077692337,
-            "conservative95Bound": 0.05900926431302525,
-            "passed": true
-          },
-          "TPS": {
-            "candidate": 1101.9981409052798,
-            "reference": 1093.2402493298086,
-            "boundaryDifference": 19.690294068769163,
-            "conservative95Bound": 0.498410424265025,
-            "passed": true
-          },
-          "death": {
-            "candidate": 0.037875,
-            "reference": 0.037875,
-            "candidateWilson97_5": [
-              0.03692980293349754,
-              0.03884341311737159
-            ],
-            "referenceWilson97_5": [
-              0.03692980293349754,
-              0.03884341311737159
-            ],
-            "conservativeUpperDifference": 0.001913610183874051,
-            "passed": true
-          },
-          "leastTargetTPS": {
-            "candidate": 201.41246691380672,
-            "reference": 201.41246691380672,
-            "passed": true,
-            "uncertainty": "Per-target threat variance is not exported; the threshold must pass each independent seed."
-          }
-        }
-      },
-      "DPSGain": 6.031329223241642,
-      "DPSConservative95Bound": 0.14784094251484406,
-      "RejectedFor": [],
-      "MeanDPS": 400.06240399917624,
-      "perSeedMeanGuardFailures": [
-        [],
-        []
-      ],
-      "ID": "protection_paladin__dwarf__8a35c68ab4a99914",
-      "Key": "protection_paladin",
-      "Race": "Dwarf",
-      "Control": "protection_paladin__dwarf__c673394cebf0cd50"
-    },
-    {
-      "checks": {
-        "Single": {
-          "DTPS": {
-            "candidate": 768.8848859215094,
-            "reference": 767.8138942200035,
-            "boundaryDifference": -6.607147240694076,
-            "conservative95Bound": 0.30649039751911805,
-            "passed": true
-          },
-          "TMI": {
-            "candidate": 88.80601978667275,
-            "reference": 88.72273837188548,
-            "boundaryDifference": -1.691173352650452,
-            "conservative95Bound": 0.05843548837526549,
-            "passed": true
-          },
-          "TPS": {
-            "candidate": 673.6820480006099,
-            "reference": 602.4697619189495,
-            "boundaryDifference": 77.23698370084992,
-            "conservative95Bound": 0.22989183780743816,
-            "passed": true
-          },
-          "death": {
-            "candidate": 0.014535,
-            "reference": 0.014465,
-            "candidateWilson97_5": [
-              0.013947241213077902,
-              0.01514714738337368
-            ],
-            "referenceWilson97_5": [
-              0.013878667508826069,
-              0.01507572460425751
-            ],
-            "conservativeUpperDifference": 0.0012684798745476109,
-            "passed": true
-          },
-          "leastTargetTPS": {
-            "candidate": 673.6820480006063,
-            "reference": 602.4697619189487,
-            "passed": true,
-            "uncertainty": "Per-target threat variance is not exported; the threshold must pass each independent seed."
-          }
-        },
-        "Multi": {
-          "DTPS": {
-            "candidate": 1088.525981956232,
-            "reference": 1085.7441615815824,
-            "boundaryDifference": -8.075621241166118,
-            "conservative95Bound": 0.4808059074956304,
-            "passed": true
-          },
-          "TMI": {
-            "candidate": 107.15166820360987,
-            "reference": 106.89470388461689,
-            "boundaryDifference": -1.8809297586993523,
-            "conservative95Bound": 0.05898741797090492,
-            "passed": true
-          },
-          "TPS": {
-            "candidate": 1218.4675245868088,
-            "reference": 1093.2402493298086,
-            "boundaryDifference": 136.15967775029821,
-            "conservative95Bound": 0.5215173979132514,
-            "passed": true
-          },
-          "death": {
-            "candidate": 0.03857,
-            "reference": 0.037875,
-            "candidateWilson97_5": [
-              0.03761639701147104,
-              0.03954678412426614
-            ],
-            "referenceWilson97_5": [
-              0.03692980293349754,
-              0.03884341311737159
-            ],
-            "conservativeUpperDifference": 0.0026169811907685997,
-            "passed": false
-          },
-          "leastTargetTPS": {
-            "candidate": 227.19761589595817,
-            "reference": 201.41246691380672,
-            "passed": true,
-            "uncertainty": "Per-target threat variance is not exported; the threshold must pass each independent seed."
-          }
-        }
-      },
-      "DPSGain": 38.73173683478274,
-      "DPSConservative95Bound": 0.15144242765454863,
-      "RejectedFor": [
-        "Multi:death noninferiority unresolved/failed"
-      ],
-      "MeanDPS": 432.76281161071734,
-      "perSeedMeanGuardFailures": [
-        [],
-        []
-      ],
-      "ID": "protection_paladin__dwarf__01054a87573506b2",
-      "Key": "protection_paladin",
-      "Race": "Dwarf",
-      "Control": "protection_paladin__dwarf__c673394cebf0cd50"
-    },
-    {
-      "checks": {
-        "Single": {
-          "DTPS": {
             "candidate": 714.9909410123278,
             "reference": 754.5452942920065,
             "boundaryDifference": -47.09980622259877,
@@ -3244,6 +2833,312 @@
       "Key": "feral_tank_druid",
       "Race": "High Order",
       "Control": "feral_tank_druid__high_order__709504fe48c1e4f9"
+    },
+    {
+      "checks": {
+        "Single": {
+          "DTPS": {
+            "candidate": 763.3811656170715,
+            "reference": 767.114217475639,
+            "boundaryDifference": -11.404194033323847,
+            "conservative95Bound": 0.30509406940880607,
+            "passed": true
+          },
+          "TMI": {
+            "candidate": 88.58086981804632,
+            "reference": 88.99362372379849,
+            "boundaryDifference": -2.192626380228134,
+            "conservative95Bound": 0.0585274281151073,
+            "passed": true
+          },
+          "TPS": {
+            "candidate": 703.4599056029795,
+            "reference": 626.1704043766765,
+            "boundaryDifference": 83.55120527006977,
+            "conservative95Bound": 0.2251549593345705,
+            "passed": true
+          },
+          "death": {
+            "candidate": 0.01433,
+            "reference": 0.014485,
+            "candidateWilson97_5": [
+              0.013746428424366706,
+              0.014937970470792865
+            ],
+            "referenceWilson97_5": [
+              0.013898259629052691,
+              0.015096131479278886
+            ],
+            "conservativeUpperDifference": 0.0010397108417401733,
+            "passed": true
+          },
+          "leastTargetTPS": {
+            "candidate": 703.4599056029789,
+            "reference": 626.1704043766715,
+            "passed": true,
+            "uncertainty": "Per-target threat variance is not exported; the threshold must pass each independent seed."
+          }
+        },
+        "Multi": {
+          "DTPS": {
+            "candidate": 1075.0424214364766,
+            "reference": 1086.1723638134822,
+            "boundaryDifference": -21.99166601514048,
+            "conservative95Bound": 0.49011866196243803,
+            "passed": true
+          },
+          "TMI": {
+            "candidate": 105.91927859314865,
+            "reference": 107.14456160960145,
+            "boundaryDifference": -3.3681742486448343,
+            "conservative95Bound": 0.05933103091739324,
+            "passed": true
+          },
+          "TPS": {
+            "candidate": 1183.1239823871388,
+            "reference": 1123.901807554555,
+            "boundaryDifference": 70.4611929081293,
+            "conservative95Bound": 0.5069484394086757,
+            "passed": true
+          },
+          "death": {
+            "candidate": 0.028495,
+            "reference": 0.033275,
+            "candidateWilson97_5": [
+              0.027672874281942497,
+              0.029340812997614013
+            ],
+            "referenceWilson97_5": [
+              0.0323877500839654,
+              0.03418569705986342
+            ],
+            "conservativeUpperDifference": -0.003046937086351384,
+            "passed": true
+          },
+          "leastTargetTPS": {
+            "candidate": 212.31308452557536,
+            "reference": 203.96109169649282,
+            "passed": true,
+            "uncertainty": "Per-target threat variance is not exported; the threshold must pass each independent seed."
+          }
+        }
+      },
+      "DPSGain": 49.755872708620416,
+      "DPSConservative95Bound": 0.15909107697161712,
+      "RejectedFor": [],
+      "MeanDPS": 467.5760039514736,
+      "perSeedMeanGuardFailures": [
+        [],
+        []
+      ],
+      "ID": "protection_paladin__undead__42f8223a028f6561",
+      "Key": "protection_paladin",
+      "Race": "Undead",
+      "Control": "protection_paladin__undead__1c25382eb3d618b8"
+    },
+    {
+      "checks": {
+        "Single": {
+          "DTPS": {
+            "candidate": 761.9822706568087,
+            "reference": 765.6151778273972,
+            "boundaryDifference": -11.289058948862476,
+            "conservative95Bound": 0.3064455859774445,
+            "passed": true
+          },
+          "TMI": {
+            "candidate": 88.7066285509652,
+            "reference": 89.07415175260496,
+            "boundaryDifference": -2.1490062366918607,
+            "conservative95Bound": 0.059059073504732676,
+            "passed": true
+          },
+          "TPS": {
+            "candidate": 689.3800148014885,
+            "reference": 612.0846102110098,
+            "boundaryDifference": 83.41625069258885,
+            "conservative95Bound": 0.21704981206283813,
+            "passed": true
+          },
+          "death": {
+            "candidate": 0.016315000000000003,
+            "reference": 0.016505,
+            "candidateWilson97_5": [
+              0.01569211042953945,
+              0.016962188743984256
+            ],
+            "referenceWilson97_5": [
+              0.01587848171721322,
+              0.01715580791116649
+            ],
+            "conservativeUpperDifference": 0.0010837070267710365,
+            "passed": true
+          },
+          "leastTargetTPS": {
+            "candidate": 689.3800148014918,
+            "reference": 612.0846102110115,
+            "passed": true,
+            "uncertainty": "Per-target threat variance is not exported; the threshold must pass each independent seed."
+          }
+        },
+        "Multi": {
+          "DTPS": {
+            "candidate": 1071.1327907010473,
+            "reference": 1082.7245464873274,
+            "boundaryDifference": -22.41900125115353,
+            "conservative95Bound": 0.48745077762778727,
+            "passed": true
+          },
+          "TMI": {
+            "candidate": 106.0033592868262,
+            "reference": 107.25823502613312,
+            "boundaryDifference": -3.4000404398295956,
+            "conservative95Bound": 0.06003965724299398,
+            "passed": true
+          },
+          "TPS": {
+            "candidate": 1165.8036014144723,
+            "reference": 1106.7779622199614,
+            "boundaryDifference": 70.09341881671048,
+            "conservative95Bound": 0.49435842907515387,
+            "passed": true
+          },
+          "death": {
+            "candidate": 0.035440000000000006,
+            "reference": 0.041255,
+            "candidateWilson97_5": [
+              0.034524955971501174,
+              0.036378382407923814
+            ],
+            "referenceWilson97_5": [
+              0.04026969951622195,
+              0.04226334673155941
+            ],
+            "conservativeUpperDifference": -0.0038913171082981396,
+            "passed": true
+          },
+          "leastTargetTPS": {
+            "candidate": 211.19580067146126,
+            "reference": 202.78927804646776,
+            "passed": true,
+            "uncertainty": "Per-target threat variance is not exported; the threshold must pass each independent seed."
+          }
+        }
+      },
+      "DPSGain": 49.6475961436372,
+      "DPSConservative95Bound": 0.14876850381520312,
+      "RejectedFor": [],
+      "MeanDPS": 450.80769014465284,
+      "perSeedMeanGuardFailures": [
+        [],
+        []
+      ],
+      "ID": "protection_paladin__human__9fa78ae63354bd3d",
+      "Key": "protection_paladin",
+      "Race": "Human",
+      "Control": "protection_paladin__human__147708f14167dc08"
+    },
+    {
+      "checks": {
+        "Single": {
+          "DTPS": {
+            "candidate": 764.3086829327369,
+            "reference": 767.7992230643486,
+            "boundaryDifference": -11.168532362255064,
+            "conservative95Bound": 0.3056661250515182,
+            "passed": true
+          },
+          "TMI": {
+            "candidate": 88.36485580043163,
+            "reference": 88.7194003333808,
+            "boundaryDifference": -2.128932539616798,
+            "conservative95Bound": 0.058410840713093194,
+            "passed": true
+          },
+          "TPS": {
+            "candidate": 679.1039872436694,
+            "reference": 602.4771883213145,
+            "boundaryDifference": 82.65157080556799,
+            "conservative95Bound": 0.21341717784533987,
+            "passed": true
+          },
+          "death": {
+            "candidate": 0.01485,
+            "reference": 0.01448,
+            "candidateWilson97_5": [
+              0.014255866810878554,
+              0.015468505960729049
+            ],
+            "referenceWilson97_5": [
+              0.013893361571441928,
+              0.01509102978807765
+            ],
+            "conservativeUpperDifference": 0.0015751443892871204,
+            "passed": true
+          },
+          "leastTargetTPS": {
+            "candidate": 679.1039872436727,
+            "reference": 602.4771883213123,
+            "passed": true,
+            "uncertainty": "Per-target threat variance is not exported; the threshold must pass each independent seed."
+          }
+        },
+        "Multi": {
+          "DTPS": {
+            "candidate": 1074.4062155467673,
+            "reference": 1085.7107030223813,
+            "boundaryDifference": -22.16159450583791,
+            "conservative95Bound": 0.48808502566843576,
+            "passed": true
+          },
+          "TMI": {
+            "candidate": 105.71626430564223,
+            "reference": 106.89290978933575,
+            "boundaryDifference": -3.3145036794802394,
+            "conservative95Bound": 0.05942998642334682,
+            "passed": true
+          },
+          "TPS": {
+            "candidate": 1151.3339928803402,
+            "reference": 1093.224018335788,
+            "boundaryDifference": 69.04221472791005,
+            "conservative95Bound": 0.48580280819573246,
+            "passed": true
+          },
+          "death": {
+            "candidate": 0.032845,
+            "reference": 0.037895,
+            "candidateWilson97_5": [
+              0.03196338860058218,
+              0.03375008014541461
+            ],
+            "referenceWilson97_5": [
+              0.03694955983184169,
+              0.038863655214275435
+            ],
+            "conservativeUpperDifference": -0.00319947968642708,
+            "passed": true
+          },
+          "leastTargetTPS": {
+            "candidate": 209.71895765316833,
+            "reference": 201.41420121513926,
+            "passed": true,
+            "uncertainty": "Per-target threat variance is not exported; the threshold must pass each independent seed."
+          }
+        }
+      },
+      "DPSGain": 49.20130568189347,
+      "DPSConservative95Bound": 0.1457388382184471,
+      "RejectedFor": [],
+      "MeanDPS": 443.23803994837203,
+      "perSeedMeanGuardFailures": [
+        [],
+        []
+      ],
+      "ID": "protection_paladin__dwarf__bda601566e35807c",
+      "Key": "protection_paladin",
+      "Race": "Dwarf",
+      "Control": "protection_paladin__dwarf__c673394cebf0cd50"
     }
   ],
   "frozenControlSHA256": {
@@ -3251,5 +3146,20 @@
     "protection_paladin_1t_20261993_selected.json": "d403b39388da644459b8ca8fcbbfc53ad09107683992e6f49932f16c8524662a",
     "tank_warrior_1t_20261993_selected.json": "72df5217d976daf50eae4923032eedbb3d129ff3f0ba0b47335e275f7dc3be2d"
   },
-  "matrixContext": "The matrix uses its own 5000-iteration common seed. These survival/selection estimates pool separate confirmation seeds."
+  "matrixContext": "The matrix uses its own 5000-iteration common seed. These survival/selection estimates pool separate confirmation seeds.",
+  "seedsByBuild": {
+    "tank_warrior": [
+      20262501,
+      20262763
+    ],
+    "feral_tank_druid": [
+      20262501,
+      20262763
+    ],
+    "protection_paladin": [
+      20263237,
+      20263283
+    ]
+  },
+  "correctionEvidence": "../../paladin_mana/validation.json"
 }

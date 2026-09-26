@@ -59,7 +59,7 @@ Other races can use different equipment. Their complete setups are available in 
 1. Use ready automatic cooldowns.
 2. Cast [Holy Strike](https://www.wowhead.com/forever/spell=10333).
 3. Cast [Judgement of Light](https://www.wowhead.com/forever/spell=20271).
-4. Cast [Spell 20919](https://www.wowhead.com/forever/spell=20919) when `{"currentSealRemainingTime":{}}` ≤ 1s.
+4. Cast [Spell 20919](https://www.wowhead.com/forever/spell=20919) when Seal time remaining ≤ 1s.
 5. Cast [Spell 20293](https://www.wowhead.com/forever/spell=20293) when (Mana fraction ≥ 15% AND NOT [Echo of Command](https://www.wowhead.com/forever/spell=1311703) active AND [Spell 20919](https://www.wowhead.com/forever/spell=20919) active).
 6. Cast [Spell 20919](https://www.wowhead.com/forever/spell=20919) when (Mana fraction ≥ 15% AND NOT [Echo of Righteousness](https://www.wowhead.com/forever/spell=1311704) active AND [Spell 20293](https://www.wowhead.com/forever/spell=20293) active).
 7. Cast [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239).
@@ -235,7 +235,7 @@ Other races can use different equipment. Their complete setups are available in 
 1. Use ready automatic cooldowns.
 2. Cast [Holy Strike](https://www.wowhead.com/forever/spell=10333).
 3. Cast [Judgement of Light](https://www.wowhead.com/forever/spell=20271).
-4. Cast [Spell 20919](https://www.wowhead.com/forever/spell=20919) when `{"currentSealRemainingTime":{}}` ≤ 1s.
+4. Cast [Spell 20919](https://www.wowhead.com/forever/spell=20919) when Seal time remaining ≤ 1s.
 5. Cast [Spell 20293](https://www.wowhead.com/forever/spell=20293) when (Mana fraction ≥ 15% AND NOT [Echo of Command](https://www.wowhead.com/forever/spell=1311703) active AND [Spell 20919](https://www.wowhead.com/forever/spell=20919) active).
 6. Cast [Spell 20919](https://www.wowhead.com/forever/spell=20919) when (Mana fraction ≥ 15% AND NOT [Echo of Righteousness](https://www.wowhead.com/forever/spell=1311704) active AND [Spell 20293](https://www.wowhead.com/forever/spell=20293) active).
 7. Cast [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239).
@@ -2690,9 +2690,9 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
-| Undead | 423.71 | 0.26 | 2.43 |
-| Human | 407.32 | 0.25 | 2.25 |
-| Dwarf | 400.24 | 0.24 | 2.34 |
+| Undead | 468.01 | 0.25 | 0.05 |
+| Human | 450.49 | 0.24 | 0.05 |
+| Dwarf | 443.02 | 0.24 | 0.04 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
@@ -2700,9 +2700,9 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 
 | Race | TPS | DTPS | TMI | Modeled death probability |
 |---|---:|---:|---:|---:|
-| Undead | 633.60 | 766.58 | 88.93 | 1.60% |
-| Human | 620.03 | 765.76 | 89.15 | 1.64% |
-| Dwarf | 610.41 | 767.59 | 88.75 | 1.62% |
+| Undead | 704.04 | 763.09 | 88.41 | 1.32% |
+| Human | 688.89 | 761.75 | 88.71 | 1.58% |
+| Dwarf | 678.61 | 763.56 | 88.32 | 1.64% |
 
 These stress-scenario results are not measured boss balance or an equal-support survival ranking.
 
@@ -2730,46 +2730,50 @@ These stress-scenario results are not measured boss balance or an equal-support 
 
 Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
+### Before the pull
+
+- -3s: Cast primary seal.
+- -1.5s: [Holy Shield](https://www.wowhead.com/forever/spell=20928).
+
 ### Rotation priorities
 
 1. Use ready automatic cooldowns.
 2. Cast [Templar's Bulwark](https://www.wowhead.com/forever/spell=1311015) when `{"currentHealthPercent":{}}` < 30%.
 3. Cast [Holy Shield](https://www.wowhead.com/forever/spell=20928) when `{"auraRemainingTime":{"sourceUnit":{"type":"Self"},"auraId":{"spellId":20928}}}` ≤ 2s.
-4. `{"condition":{"cmp":{"op":"OpLe","lhs":{"currentSealRemainingTime":{}},"rhs":{"const":{"val":"2s"}}}},"castPaladinPrimarySeal":{}}` when `{"currentSealRemainingTime":{}}` ≤ 2s.
+4. Cast primary seal when Seal time remaining ≤ 2s.
 5. Cast [Judgement of Light](https://www.wowhead.com/forever/spell=20271).
-6. Cast [Consecration](https://www.wowhead.com/forever/spell=20924) when (Target count ≥ 2 AND Mana fraction ≥ 40%).
+6. Cast [Consecration](https://www.wowhead.com/forever/spell=20924) when Mana fraction ≥ 30%.
 7. Cast [Consecration](https://www.wowhead.com/forever/spell=26573) when Mana fraction ≥ 15%.
 8. Cast [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239).
 9. Cast [Holy Strike](https://www.wowhead.com/forever/spell=10333).
 10. Cast [Holy Shield](https://www.wowhead.com/forever/spell=20928).
-11. `{"castPaladinPrimarySeal":{}}`.
 
 ### Damage breakdown — Undead
 
 | Action | DPS |
 |---|---:|
-| Auto-attack (tag 1) | 106.43 |
-| [Seal of Righteousness](https://www.wowhead.com/forever/spell=25713) | 65.98 |
-| Auto-attack (tag 3) | 45.62 |
-| [Holy Shield](https://www.wowhead.com/forever/spell=20957) | 42.89 |
-| [Judgement of Righteousness](https://www.wowhead.com/forever/spell=20286) | 42.23 |
-| [Consecration](https://www.wowhead.com/forever/spell=26573) | 31.31 |
-| [Holy Strike](https://www.wowhead.com/forever/spell=10333) | 30.60 |
-| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 24.18 |
+| Auto-attack (tag 1) | 106.46 |
+| [Consecration](https://www.wowhead.com/forever/spell=20924) | 67.51 |
+| [Seal of Righteousness](https://www.wowhead.com/forever/spell=25713) | 66.86 |
+| Auto-attack (tag 3) | 46.10 |
+| [Holy Shield](https://www.wowhead.com/forever/spell=20957) | 45.18 |
+| [Judgement of Righteousness](https://www.wowhead.com/forever/spell=20286) | 43.24 |
+| [Holy Strike](https://www.wowhead.com/forever/spell=10333) | 32.03 |
+| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 24.59 |
 
 ### Resource flow
 
 | Resource | Action | Net amount per fight |
 |---|---|---:|
-| Health | OtherActionDamageTaken | -229968.3 |
-| Health | OtherActionHealingModel | +225648.9 |
-| Mana | [Spell 20293](https://www.wowhead.com/forever/spell=20293) | -18105.5 |
-| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +14255.5 |
-| Mana | [Shield Specialization](https://www.wowhead.com/forever/spell=20148) | +10059.4 |
-| Mana | [Holy Shield](https://www.wowhead.com/forever/spell=20928) | -6225.3 |
-| Health | [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | +4266.1 |
-| Mana | [Consecration](https://www.wowhead.com/forever/spell=26573) | -3666.0 |
-| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3361.4 |
-| Mana | [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239) | -2918.4 |
-| Mana | OtherActionManaRegen (tag 1) | +2373.1 |
-| Mana | [Judgement of Light](https://www.wowhead.com/forever/spell=20271) | -2100.5 |
+| Health | OtherActionDamageTaken | -228922.5 |
+| Health | OtherActionHealingModel | +224504.1 |
+| Mana | [Consecration](https://www.wowhead.com/forever/spell=20924) | -17749.2 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +14257.9 |
+| Mana | [Shield Specialization](https://www.wowhead.com/forever/spell=20148) | +10166.3 |
+| Mana | [Holy Shield](https://www.wowhead.com/forever/spell=20928) | -6479.6 |
+| Health | [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | +4344.6 |
+| Mana | [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239) | -3091.9 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +2613.0 |
+| Mana | OtherActionManaRegen (tag 1) | +2350.3 |
+| Mana | [Judgement of Light](https://www.wowhead.com/forever/spell=20271) | -2163.1 |
+| Mana | [Spell 20293](https://www.wowhead.com/forever/spell=20293) | -1980.0 |

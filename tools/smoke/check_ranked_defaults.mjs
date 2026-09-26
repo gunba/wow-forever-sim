@@ -37,6 +37,7 @@ try {
 		['tank_warrior', 'tank_warrior__tauren'],
 		['protection_paladin', 'protection_paladin__human'],
 		['protection_paladin', 'protection_paladin__undead'],
+		['protection_paladin', 'protection_paladin__dwarf'],
 		['feral_tank_druid', 'feral_tank_druid__tauren'],
 		['feral_tank_druid', 'feral_tank_druid__night_elf'],
 	].filter(([, id]) => !process.env.ONLY_PROFILE || id === process.env.ONLY_PROFILE)) {

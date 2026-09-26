@@ -1,18 +1,18 @@
 {
   "Baseline": "artifacts/modelled_gear/forever_dps_5min.json",
-  "BaselineSHA256": "94bfec3c436f104ecc0ef8505f62ac262d0d2bdd04e0ce5d0895873ecd582726",
+  "BaselineSHA256": "3ae3ed61468fe1ec1e0793b3bf4b8edd739af62a859428b8e9d623ac42659001",
   "Sources": {
     "tier1": {
       "Path": "artifacts/modelled_gear/sensitivity/tier1_off.json",
-      "SHA256": "5d05cdad27308c423b38f5d98aabe91f82c23bd374ca82ce47cbc3e0524c6f40"
+      "SHA256": "1da2664e7330ea3c112f1028fe624b3125a12ca0cb3f0cde742fb4a001fd60fa"
     },
     "gear10": {
       "Path": "artifacts/modelled_gear/sensitivity/gear_110.json",
-      "SHA256": "2afb8cc2f0b171e192b0d58b12ef0534f6bdb77a4336bf036bbe8ae3c4cc1a24"
+      "SHA256": "c773a3265236ce8d173b052604ab1442870db96190a785fa4431a41ec4d69a4d"
     },
     "gear50": {
       "Path": "artifacts/modelled_gear/sensitivity/gear_150.json",
-      "SHA256": "f9010c74ded6b21e09b740a9357e6a5364a82e212d9a3c3b70d875724fe2c24c"
+      "SHA256": "4213b72ad284b78f62a6999b505edc80eb931e2721df24753c246fb757d7328b"
     }
   },
   "Model": {
@@ -7448,25 +7448,25 @@
       "Averages": {
         "tier1": {
           "Races": 3,
-          "GainPercent": 2.0366141927159465,
-          "MonteCarlo95Bound": 0.2481329453529714
+          "GainPercent": 1.8878243030775528,
+          "MonteCarlo95Bound": 0.21735139470682058
         },
         "gear10": {
           "Races": 3,
-          "GainPercent": 4.641680119030174,
-          "MonteCarlo95Bound": 0.24672598729702513
+          "GainPercent": 4.258296932083942,
+          "MonteCarlo95Bound": 0.2205420222883393
         },
         "gear50": {
           "Races": 3,
-          "GainPercent": 23.88708997505508,
-          "MonteCarlo95Bound": 0.2888871597415221
+          "GainPercent": 22.05843469444213,
+          "MonteCarlo95Bound": 0.2587463921860143
         },
         "amplification": {
           "Races": 3,
-          "Gear10GainPercent": 4.641680119030174,
-          "Gear50GainPercent": 23.88708997505508,
-          "Amplification": 1.0292432637536433,
-          "MonteCarlo95Bound": 0.06715639259343545
+          "Gear10GainPercent": 4.258296932083942,
+          "Gear50GainPercent": 22.05843469444213,
+          "Amplification": 1.036021444547179,
+          "MonteCarlo95Bound": 0.06580930062445915
         }
       },
       "Comparisons": {
@@ -7475,33 +7475,33 @@
             "Key": "protection_paladin",
             "Race": "Undead",
             "Faction": "Horde",
-            "GainPercent": 2.075776715733424,
-            "MonteCarlo95Bound": 0.25078870286252836,
-            "BaselineDPS": 423.71149181254674,
-            "ScenarioDPS": 415.0950455096934,
-            "OOMSeconds": 2.8018079999999967,
+            "GainPercent": 1.9960145681704455,
+            "MonteCarlo95Bound": 0.21804935438135786,
+            "BaselineDPS": 468.0081545339699,
+            "ScenarioDPS": 458.8494526138275,
+            "OOMSeconds": 0.07324200000000002,
             "Warnings": null
           },
           {
             "Key": "protection_paladin",
             "Race": "Human",
             "Faction": "Alliance",
-            "GainPercent": 1.9649369728012012,
-            "MonteCarlo95Bound": 0.24706409338002316,
-            "BaselineDPS": 407.32030537749364,
-            "ScenarioDPS": 399.47095292781376,
-            "OOMSeconds": 2.6171959999999976,
+            "GainPercent": 1.779496938957159,
+            "MonteCarlo95Bound": 0.21794070946196198,
+            "BaselineDPS": 450.49392757527073,
+            "ScenarioDPS": 442.61756161504417,
+            "OOMSeconds": 0.078658,
             "Warnings": null
           },
           {
             "Key": "protection_paladin",
             "Race": "Dwarf",
             "Faction": "Alliance",
-            "GainPercent": 2.0691288896132143,
-            "MonteCarlo95Bound": 0.24654603981636267,
-            "BaselineDPS": 400.24335768955024,
-            "ScenarioDPS": 392.12968900950415,
-            "OOMSeconds": 2.659354,
+            "GainPercent": 1.887961402105054,
+            "MonteCarlo95Bound": 0.21606412027714186,
+            "BaselineDPS": 443.01518712504674,
+            "ScenarioDPS": 434.8062136376142,
+            "OOMSeconds": 0.07756199999999999,
             "Warnings": null
           }
         ],
@@ -7510,33 +7510,33 @@
             "Key": "protection_paladin",
             "Race": "Undead",
             "Faction": "Horde",
-            "GainPercent": 4.514705302565214,
-            "MonteCarlo95Bound": 0.2505111173400709,
-            "BaselineDPS": 423.71149181254674,
-            "ScenarioDPS": 442.84081700098596,
-            "OOMSeconds": 1.6297519999999994,
+            "GainPercent": 4.159822914591449,
+            "MonteCarlo95Bound": 0.22278976408113232,
+            "BaselineDPS": 468.0081545339699,
+            "ScenarioDPS": 487.4764649884305,
+            "OOMSeconds": 0.03340599999999999,
             "Warnings": null
           },
           {
             "Key": "protection_paladin",
             "Race": "Human",
             "Faction": "Alliance",
-            "GainPercent": 4.693803216828396,
-            "MonteCarlo95Bound": 0.24449110360668436,
-            "BaselineDPS": 407.32030537749364,
-            "ScenarioDPS": 426.43911897409765,
-            "OOMSeconds": 1.4361740000000012,
+            "GainPercent": 4.325342280208377,
+            "MonteCarlo95Bound": 0.22030294897559172,
+            "BaselineDPS": 450.49392757527073,
+            "ScenarioDPS": 469.9793318944552,
+            "OOMSeconds": 0.023169999999999996,
             "Warnings": null
           },
           {
             "Key": "protection_paladin",
             "Race": "Dwarf",
             "Faction": "Alliance",
-            "GainPercent": 4.716531837696913,
-            "MonteCarlo95Bound": 0.2451757409443201,
-            "BaselineDPS": 400.24335768955024,
-            "ScenarioDPS": 419.12096308324504,
-            "OOMSeconds": 1.4633,
+            "GainPercent": 4.289725601451999,
+            "MonteCarlo95Bound": 0.21853335380829383,
+            "BaselineDPS": 443.01518712504674,
+            "ScenarioDPS": 462.0193230254703,
+            "OOMSeconds": 0.028231999999999993,
             "Warnings": null
           }
         ],
@@ -7545,33 +7545,33 @@
             "Key": "protection_paladin",
             "Race": "Undead",
             "Faction": "Horde",
-            "GainPercent": 23.622311765304737,
-            "MonteCarlo95Bound": 0.2904779856029688,
-            "BaselineDPS": 423.71149181254674,
-            "ScenarioDPS": 523.8019413939302,
-            "OOMSeconds": 0.222908,
+            "GainPercent": 21.73788047277323,
+            "MonteCarlo95Bound": 0.26208615104175,
+            "BaselineDPS": 468.0081545339699,
+            "ScenarioDPS": 569.7432077693961,
+            "OOMSeconds": 0.00065,
             "Warnings": null
           },
           {
             "Key": "protection_paladin",
             "Race": "Human",
             "Faction": "Alliance",
-            "GainPercent": 23.98669888377869,
-            "MonteCarlo95Bound": 0.2868916562370797,
-            "BaselineDPS": 407.32030537749364,
-            "ScenarioDPS": 505.0230005208809,
-            "OOMSeconds": 0.2050619999999999,
+            "GainPercent": 22.186170102646543,
+            "MonteCarlo95Bound": 0.2584547124396442,
+            "BaselineDPS": 450.49392757527073,
+            "ScenarioDPS": 550.4412766492136,
+            "OOMSeconds": 0.00016,
             "Warnings": null
           },
           {
             "Key": "protection_paladin",
             "Race": "Dwarf",
             "Faction": "Alliance",
-            "GainPercent": 24.052259276081813,
-            "MonteCarlo95Bound": 0.2892918373845179,
-            "BaselineDPS": 400.24335768955024,
-            "ScenarioDPS": 496.5109278163364,
-            "OOMSeconds": 0.2363420000000001,
+            "GainPercent": 22.251253507906622,
+            "MonteCarlo95Bound": 0.25569831307664875,
+            "BaselineDPS": 443.01518712504674,
+            "ScenarioDPS": 541.5916194907678,
+            "OOMSeconds": 2.9999999999999997e-05,
             "Warnings": null
           }
         ]

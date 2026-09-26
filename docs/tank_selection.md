@@ -92,7 +92,7 @@ All 17 retained profiles pass the conservative DPS and survival/threat checks.
 | Tank | Races | Single-target DPS gain over the original control |
 |---|---:|---:|
 | Protection Warrior | 10 | 42.2–45.8% |
-| Protection Paladin | 3 | 1.4–1.5% |
+| Protection Paladin | 3 | 11.9–12.5% |
 | Bear | 4 | 17.7–18.2% |
 
 These gains combine equipment, talents and APL changes; they are not isolated
@@ -109,10 +109,14 @@ rounded DPS can differ slightly from the confirmation estimates.
   aggro against a damage-dealing party. Charge/interrupt utility is not exercised
   by these stationary, noncasting targets.
 - **Paladin:** 0/43/8. Two points move from Precision/Guardian's Favor to
-  Conviction. The existing maintenance APL and original equipment remain.
-  Higher-DPS gear and full-rank Consecration alternatives were rejected when
-  the independent survival checks did not pass. Seal of Fury remains a major
-  implementation gap.
+  Conviction; equipment remains unchanged. The
+  [mana correction](paladin_mana.md) removes redundant seal refreshes,
+  pre-buffs Righteousness/Holy Shield and uses full-rank Consecration above
+  a mana reserve with a cheaper fallback. It passes both the original and
+  previous-release controls on two new independent seeds. Earlier Paladin
+  rotation comparisons used the wasteful seal filler and are superseded;
+  they do not establish that full-rank Consecration is unsuitable.
+  Seal of Fury remains a major implementation gap.
 - **Bear:** 1/40/10, adding damage/resource talents and removing restoration
   investments not used by this rotation. Frenzied Regeneration is explicitly
   health-gated, Barkskin is proactive, and Maul starts at 25 rage. Captured
@@ -131,6 +135,9 @@ the frozen controls, per-seed checks, uncertainty bounds, rejection reasons and
 pooled per-target threat. Compressed research records preserve the candidate
 inputs and both encounter results. No combat-engine mechanic was changed for
 these selections.
+The ledger records seeds per build: Paladin's later correction has separate
+[validation and archives](paladin_mana.md). Mana-restoration threat remains an
+inherited assumption tracked as CORE-014, not verified Forever threat behavior.
 
 ## Reproduction
 

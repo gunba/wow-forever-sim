@@ -7,7 +7,7 @@ Reviewed against `b9d8ef4a47271dd65a96259351daa696a37bd4fa`. Current level-60 DP
 This is the current register. Earlier audits preserve historical findings, not current task status.
 An implementation gap is not a request to test an unknown game rule. Model assumptions are not measured facts.
 
-Needs evidence: **82** · Implementation gap: **25** · Model assumption: **5** · Resolved: **16** · Outside current scenarios: **1**
+Needs evidence: **83** · Implementation gap: **25** · Model assumption: **5** · Resolved: **17** · Outside current scenarios: **1**
 
 ## Updating an answer
 
@@ -152,6 +152,22 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **References:** [sim/core/base_stats.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/base_stats.go) · [docs/upstream-forever-review-2026-09-23.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/upstream-forever-review-2026-09-23.md) · [docs/crit_model.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/crit_model.md)
 
 **Earlier references:** T51 in in_game_checks.md (base attributes)
+
+### CORE-014 — Mana restoration threat
+
+**Needs evidence · High priority · Level 20**
+
+**Question:** Which mana returns generate threat, who receives it, and is it divided between enemies?
+
+**Current model:** The inherited accounting assigns 0.5 threat per effective mana gained to each enemy for non-exempt returns. Passive regeneration and attributed Innervate are excluded; Vampiric Touch has separate ownership. These source exemptions and per-enemy allocation are not established Forever behavior.
+
+**Impact:** Tank TPS and rotation comparisons: wasting mana can increase subsequent effective restoration and its credited threat without improving damage or survival.
+
+**To close:** Compare isolated available mana returns against a second character's known threat on one and multiple enemies. Start with low-level mana potions; Wisdom and deep-talent returns need later access. Check source-specific client threat flags and ownership before changing the generic accounting.
+
+**References:** [sim/core/mana.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/mana.go) · [sim/core/spell.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/spell.go)
+
+**Related:** CORE-007, SCEN-003
 
 ### CORE-006 — Optional MP5-per-second interpretation
 
@@ -1950,6 +1966,22 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **References:** [docs/upstream_elliot_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/upstream_elliot_review.md)
 
 **Earlier references:** T26 (Moonfury portion) / latest upstream source-supported gaps
+
+### PAL-014 — Protection seal refresh waste
+
+**Resolved · High priority · Sources / code**
+
+**Question:** Does Protection repeatedly pay for an already active Seal of Righteousness?
+
+**Current model:** The unconditional seal filler is removed. Seal maintenance, paid pre-pull buffs and mana-reserved Consecration replace the wasteful rotation in all three ranked Protection profiles.
+
+**Impact:** The old five-minute rotation spent about 16,100 unnecessary mana on seal refreshes. The corrected same-gear/talent rotation gains roughly 10–11% single-target DPS.
+
+**To close:** Closed by a cast-count regression and independent-seed comparisons against both previous-release and original tank controls, preserving survival and threat safeguards. Ret seal switching is a separate interaction and remains unchanged.
+
+**References:** [docs/paladin_mana.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/paladin_mana.md) · [ui/protection_paladin/apls/forever_protection.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/protection_paladin/apls/forever_protection.apl.json) · [tools/forever_bench/paladin_apl_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/paladin_apl_test.go) · [sim/paladin/judgement.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/judgement.go)
+
+**Related:** CORE-014, PAL-001
 
 ### DONE-008 — Demonic Sacrifice coexistence false lead
 

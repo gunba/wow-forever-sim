@@ -76941,35 +76941,16 @@
             {
               "action": {
                 "condition": {
-                  "and": {
-                    "vals": [
-                      {
-                        "cmp": {
-                          "op": "OpGe",
-                          "lhs": {
-                            "numberTargets": {}
-                          },
-                          "rhs": {
-                            "const": {
-                              "val": "2"
-                            }
-                          }
-                        }
-                      },
-                      {
-                        "cmp": {
-                          "op": "OpGe",
-                          "lhs": {
-                            "currentManaPercent": {}
-                          },
-                          "rhs": {
-                            "const": {
-                              "val": "40%"
-                            }
-                          }
-                        }
+                  "cmp": {
+                    "op": "OpGe",
+                    "lhs": {
+                      "currentManaPercent": {}
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "30%"
                       }
-                    ]
+                    }
                   }
                 },
                 "castSpell": {
@@ -77027,10 +77008,31 @@
                   }
                 }
               }
-            },
+            }
+          ],
+          "prepullActions": [
             {
               "action": {
                 "castPaladinPrimarySeal": {}
+              },
+              "doAtValue": {
+                "const": {
+                  "val": "-3s"
+                }
+              }
+            },
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20928
+                  }
+                }
+              },
+              "doAtValue": {
+                "const": {
+                  "val": "-1.5s"
+                }
               }
             }
           ]
@@ -77329,35 +77331,16 @@
             {
               "action": {
                 "condition": {
-                  "and": {
-                    "vals": [
-                      {
-                        "cmp": {
-                          "op": "OpGe",
-                          "lhs": {
-                            "numberTargets": {}
-                          },
-                          "rhs": {
-                            "const": {
-                              "val": "2"
-                            }
-                          }
-                        }
-                      },
-                      {
-                        "cmp": {
-                          "op": "OpGe",
-                          "lhs": {
-                            "currentManaPercent": {}
-                          },
-                          "rhs": {
-                            "const": {
-                              "val": "40%"
-                            }
-                          }
-                        }
+                  "cmp": {
+                    "op": "OpGe",
+                    "lhs": {
+                      "currentManaPercent": {}
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "30%"
                       }
-                    ]
+                    }
                   }
                 },
                 "castSpell": {
@@ -77415,10 +77398,31 @@
                   }
                 }
               }
-            },
+            }
+          ],
+          "prepullActions": [
             {
               "action": {
                 "castPaladinPrimarySeal": {}
+              },
+              "doAtValue": {
+                "const": {
+                  "val": "-3s"
+                }
+              }
+            },
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20928
+                  }
+                }
+              },
+              "doAtValue": {
+                "const": {
+                  "val": "-1.5s"
+                }
               }
             }
           ]
@@ -77717,35 +77721,16 @@
             {
               "action": {
                 "condition": {
-                  "and": {
-                    "vals": [
-                      {
-                        "cmp": {
-                          "op": "OpGe",
-                          "lhs": {
-                            "numberTargets": {}
-                          },
-                          "rhs": {
-                            "const": {
-                              "val": "2"
-                            }
-                          }
-                        }
-                      },
-                      {
-                        "cmp": {
-                          "op": "OpGe",
-                          "lhs": {
-                            "currentManaPercent": {}
-                          },
-                          "rhs": {
-                            "const": {
-                              "val": "40%"
-                            }
-                          }
-                        }
+                  "cmp": {
+                    "op": "OpGe",
+                    "lhs": {
+                      "currentManaPercent": {}
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "30%"
                       }
-                    ]
+                    }
                   }
                 },
                 "castSpell": {
@@ -77803,10 +77788,31 @@
                   }
                 }
               }
-            },
+            }
+          ],
+          "prepullActions": [
             {
               "action": {
                 "castPaladinPrimarySeal": {}
+              },
+              "doAtValue": {
+                "const": {
+                  "val": "-3s"
+                }
+              }
+            },
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20928
+                  }
+                }
+              },
+              "doAtValue": {
+                "const": {
+                  "val": "-1.5s"
+                }
               }
             }
           ]
