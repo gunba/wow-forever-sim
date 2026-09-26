@@ -74,9 +74,9 @@ jobs:
 
       - name: Test
         run: |
-          go test -tags with_db ./tools/forever_bench ./sim/core ./sim/druid ./tools/database ./tools/database/gen_db ./tools/icons
+          go test -tags with_db ./tools/forever_bench ./sim/core ./sim/druid ./sim/warlock ./tools/database ./tools/database/gen_db ./tools/icons
           go test -tags with_db ./tools/forever_tanks ./sim/warrior/dps_warrior ./sim/warrior/tank_warrior ./sim/paladin/protection
-          go test -tags with_db ./sim -run 'Test(EveryRegisteredSpellSaysWhereItsNumbersCameFrom|EverySpellRegistrationResolvesToAnID|SpellSourcesAreWellFormed|UnreviewedSpellsOnlyShrink|SpellSourceScannerKeepsBranchesAndRejectsRankScalars)$'
+          go test -tags with_db ./sim -run 'Test(EveryRegisteredSpellSaysWhereItsNumbersCameFrom|EverySpellRegistrationResolvesToAnID|SpellSourcesAreWellFormed|UnreviewedSpellsOnlyShrink|SpellSourceScannerKeepsBranchesAndRejectsRankScalars|SpellSourceScannerFollowsTypedRangeParameter)$'
           python3 -m unittest discover -s tools/forever_bench
           python3 -m unittest discover -s tools/database
           python3 -m unittest discover -s tools/data_watch

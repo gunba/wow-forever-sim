@@ -19,6 +19,9 @@ Both APL arms were replayed after the September 26 correctness review, with
 all 24 requests unchanged. The shield-tank results now include intrinsic
 shield Block and refreshed Shield Block charges. Earlier results remain in
 [`artifacts/history/51cc3d6e2/tanks/`](../artifacts/history/51cc3d6e2/tanks/).
+The subsequent [class-effects follow-up](upstream_elliot_review.md) also
+replayed all 24 unchanged requests and checked all 17 race/tank defaults.
+It does not change these tank comparison numbers.
 
 Bear's new Swipe priority trades some *total* threat for much better threat on the least-threatened add. Warrior's three-target rotation remains **single-target focused**: its 37 TPS on the least-threatened add cannot hold an active damage dealer. The simulator does not yet select or cycle to the enemy with the least threat; tab-targeting is necessary in an actual pull. Do not use its summed three-target TPS to claim reliable pack control. The previous and current warrior rotations both keep Shield Block and attack-speed/power debuffs; removing these raises threat but measurably worsens mitigation. Full paired requests and results are in [`artifacts/tanks/`](../artifacts/tanks/).
 

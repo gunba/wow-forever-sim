@@ -18,6 +18,11 @@ remain distinct historical references.
 This benchmark incorporates the sourced **client 1.60.1.70009 class/racial
 changes**, with post-patch modeled-gear selection and 184 rerun profiles. See
 the [patch audit](../../docs/forever-70009.md) for source gaps and exclusions.
+The [class-effects follow-up](../../docs/upstream_elliot_review.md) replays
+all 736 baseline/sensitivity scenarios after the Life Tap, pet/talent,
+Moonfury and buff corrections. Gear selections remain from the earlier search;
+the refreshed results do not establish a new gear optimum. The preceding
+results are [archived](../../artifacts/history/367ac97df8/).
 Modeled Leather armor has no Strength; Feral cannot equip Mail or Plate.
 The modeled Strength/Hit Mail option is a disclosed MP5-to-Hit budget
 projection from a real Mail reference, not a datamined drop.

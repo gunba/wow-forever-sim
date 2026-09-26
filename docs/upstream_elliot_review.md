@@ -6,13 +6,13 @@ Compared [ElliotWood/Forever at `eccf6aa87d`](https://github.com/ElliotWood/Fore
 
 The window is **September 24, 03:33:34 UTC through September 26, 03:33:34 UTC, 2026**: 161 reachable commits, including 83 first-parent commits. These include changelogs, generated data and imported WoWSims work; they are not 161 independent mechanics fixes. Commit metadata was screened across the window, with the relevant implementation diffs and corresponding local code examined below. This is not a fresh audit of every file in the other simulator.
 
-The preceding [weekly review](weekly_review.md), its corrections, refreshed results and [Flurry review](flurry_review.md) are published. The live database and results match the release files; the live Fury replay and all three tank pages match native calculations. **The additional gaps below are not yet included in those results.** No new talents, gear or rotation changes were made for this follow-up.
+The preceding [weekly review](weekly_review.md) and [Flurry review](flurry_review.md) remain the baseline for this follow-up. Their results are preserved in [the historical archive](../artifacts/history/367ac97df8/). The tables below describe findings against that baseline; the implementation and refreshed results are summarized here.
 
 ### Implementation status
 
-The follow-up corrections are in development; the published numbers have **not** been refreshed for them.
+The supported corrections are implemented at [`3b2d47961`](https://github.com/gunba/wow-forever-sim/commit/3b2d47961). All **184 fixed profiles** and their Tier-off/+10%/+50% scenarios were replayed: **736 runs**, 5,000 iterations each, seed 20291951, zero warnings. Requests and baseline players match the preceding release exactly. Gear selections, talents and APLs were not reoptimized.
 
-Implemented in the working engine:
+Implemented:
 
 - Spirit-based Life Tap, with level-capped rank bases, separate health payment and mana return, no damage/proc scaling, and rank-correct pet mana metrics. Improved Life Tap follows the current parent spell's health-and-mana formula; Tier 1 multiplies mana only. Non-tanking DPS retains its existing external-healing abstraction.
 - Demonic Knowledge's explicit pet bonus, and Focused Fire on both the owner and active pet, with dismissal/resummon handling. Existing general pet inheritance is preserved, not introduced by this change.
@@ -35,6 +35,29 @@ parameters, so the new Mage ranks cannot disappear from the coverage check.
 The legacy `TestP1Hunter` and `TestP1Mage` suites reference removed item IDs
 272491 and 272457 and stop before exercising these changes. Current-profile
 regressions, not those obsolete gear fixtures, cover the affected agents.
+
+### Fixed-profile results
+
+Equal-race-weight mean DPS across each build's supported races:
+
+| Build | Previous | Corrected | Change |
+|---|---:|---:|---:|
+| Balance | 663.46 | 705.66 | +6.36% |
+| Beast Mastery | 1,000.25 | 1,011.57 | +1.13% |
+| Marksmanship | 825.55 | 826.07 | +0.06% |
+| Survival | 989.12 | 954.25 | −3.53% |
+| Pet/Melee Hunter | 1,014.88 | 978.34 | −3.60% |
+| Demonology | 896.73 | 887.39 | −1.04% |
+| Affliction | 831.60 | 804.82 | −3.22% |
+| DS/Ruin | 799.42 | 766.62 | −4.10% |
+| Destruction | 825.25 | 801.48 | −2.88% |
+
+These are combined engine-change effects, not isolated gains from individual
+fixes. Other build means changed by less than 0.01 DPS. The 24 paired tank
+requests and 17 race/tank smoke checks also passed; the tank comparison
+numbers are unchanged. Full requests/results remain in the
+[current benchmark](../artifacts/modelled_gear/forever_dps_5min.json) and its
+paired sensitivities.
 
 ## Source-supported gaps
 
