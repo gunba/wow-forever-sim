@@ -41,7 +41,9 @@ def compile_effects(effects):
                     add(stat, value)
         elif aura == 30 and misc == 95:
             add("Defense", value)
-        elif aura == 85 and misc == 0 and int(r["EffectAuraPeriod"]) == 5000:
+        elif aura == 85 and misc == 0 and int(r["EffectAuraPeriod"]) in (0, 5000):
+            # Passive power regeneration is not periodic energize (aura 24).
+            # 18378/21625/21636 have period=0 and explicit per-five-second text.
             add("MP5", value)
         elif aura == 134:
             spirit += value / 100

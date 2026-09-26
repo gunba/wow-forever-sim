@@ -85,7 +85,7 @@ def main():
     cols=['Synthetic ID','Slot','Inventory type','Armor / weapon type','Class archetype',
           'Modeled item name (with amounts)','Status / policy','Reference ID','Source item name','Source category',
           'Reference URL','Source slot','Stat capacity (q4/65)']+STAT_COLS+[
-          'Base armor','Speed (s)','Minimum damage','Maximum damage','Base weapon DPS',
+          'Base armor','Base Block','Speed (s)','Minimum damage','Maximum damage','Base weapon DPS',
           'Source modeled capacity used','Proposed modeled capacity used','Confidence','Limitations']
     sh=w.add_worksheet('Proposed gear');sh.freeze_panes(1,7);sh.set_row(0,47)
     for j,title in enumerate(cols):sh.write(0,j,title,header)
@@ -108,7 +108,7 @@ def main():
                 sh.write_formula(i,j,f'=ROUND($M{i+1}*\'Editable allocations\'!$C${index}/10000,0)',None,
                                  r['Stats'].get(name,0))
             else:sh.write_number(i,j,0)
-        tail=[r['Armor'],r['Speed'],r['Min'],r['Max'],r['DPS'],
+        tail=[r['Armor'],r.get('BaseBlockValue',0),r['Speed'],r['Min'],r['Max'],r['DPS'],
               r['SourceBudget'],r['ProposedBudget'],r['Confidence'],r['Notes']]
         for j,v in enumerate(tail,13+len(STAT_COLS)):
             if v is not None:sh.write(i,j,v)

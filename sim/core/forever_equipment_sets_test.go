@@ -7,6 +7,40 @@ import (
 	"github.com/wowsims/classic/sim/core/stats"
 )
 
+func TestForeverEquippedSetManaRegeneration(t *testing.T) {
+	for _, tc := range []struct {
+		id, pieces int32
+		mp5        float64
+	}{
+		{181, 6, 8}, {182, 6, 8}, {183, 6, 8}, {185, 6, 8},
+		{186, 6, 8}, {187, 6, 8}, {188, 6, 8}, {443, 3, 12}, {490, 2, 3},
+	} {
+		bonus := foreverEquipmentSets[tc.id].Bonuses[tc.pieces]
+		if !bonus.Supported || bonus.Stats[stats.MP5] != tc.mp5 {
+			t.Fatalf("set %d/%d: missing %g MP5", tc.id, tc.pieces, tc.mp5)
+		}
+		c := &Character{Unit: Unit{Env: &Environment{Ruleset: proto.Ruleset_RulesetForever}}}
+		for slot := int32(0); slot < tc.pieces; slot++ {
+			c.Equipment[slot] = Item{SetID: tc.id}
+		}
+		found := 0
+		for _, active := range c.foreverEquippedBonuses() {
+			if active.NumPieces == tc.pieces {
+				found++
+			}
+		}
+		if found != 1 {
+			t.Fatalf("set %d: expected the mana bonus once, found %d", tc.id, found)
+		}
+		c.Equipment[0] = Item{}
+		for _, active := range c.foreverEquippedBonuses() {
+			if active.NumPieces == tc.pieces {
+				t.Fatalf("set %d: mana bonus survived removing the required piece", tc.id)
+			}
+		}
+	}
+}
+
 func TestForeverOrdinarySetThresholds(t *testing.T) {
 	c := &Character{Unit: Unit{Env: &Environment{Ruleset: proto.Ruleset_RulesetForever}}}
 	for slot := 0; slot < 3; slot++ {

@@ -131,7 +131,7 @@
 	"12964": {
 		"ability": "Unbridled Wrath",
 		"file": "sim/warrior/talents.go",
-		"note": "Beta client 1.60.1.69893: the rank curve reads 12/24/36/48/60% for 1 Rage, doubled with a two-handed weapon (Classic 8% per point, 1 Rage). The sim only procs it from white swings.",
+		"note": "The client rank curve reads 12/24/36/48/60% for 1 Rage, doubled with a two-handed weapon. Heroic Strike/Cleave are excluded, matching the published low-level logs. The lower beta proc rate was acknowledged as a game bug; the model uses the intended rate, with the server-fix rollout still unverified.",
 		"source": "forever",
 		"tooltip": "Passive\nGives you a 12% chance per point to generate 1 additional Rage when you deal melee damage with a weapon. This effect is increased to 2 Rage for two-handed weapons."
 	},

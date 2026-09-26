@@ -71,35 +71,7 @@ var ItemSetWildheartRaiment = core.NewItemSet(core.ItemSet{
 		},
 		// Wild Heart: a movement speed burst when struck.
 		4: func(_ core.Agent) {},
-		// Nature's Bounty, moved down from 6 pieces: a spellcast returns 200 mana, a melee attack
-		// 4 energy a second for 5 sec, and being struck 10 rage. The client stores no proc chance,
-		// so Classic's 2% is kept.
-		5: func(agent core.Agent) {
-			c := agent.GetCharacter()
-			actionID := core.ActionID{SpellID: 450608}
-			manaMetrics := c.NewManaMetrics(actionID)
-			energyMetrics := c.NewEnergyMetrics(actionID)
-			rageMetrics := c.NewRageMetrics(actionID)
-
-			core.MakeProcTriggerAura(&c.Unit, core.ProcTrigger{
-				ActionID:   actionID,
-				Name:       "Nature's Bounty",
-				Callback:   core.CallbackOnSpellHitTaken,
-				ProcMask:   core.ProcMaskMelee,
-				ProcChance: 0.02,
-				Handler: func(sim *core.Simulation, _ *core.Spell, _ *core.SpellResult) {
-					if c.HasManaBar() {
-						c.AddMana(sim, 200, manaMetrics)
-					}
-					if c.HasEnergyBar() {
-						c.AddEnergy(sim, 20, energyMetrics)
-					}
-					if c.HasRageBar() {
-						c.AddRage(sim, 10, rageMetrics)
-					}
-				},
-			})
-		},
+		5: ApplyNaturesBounty,
 		6: manaPerFive,
 	},
 })

@@ -75,10 +75,13 @@ jobs:
       - name: Test
         run: |
           go test -tags with_db ./tools/forever_bench ./sim/core ./sim/druid ./tools/database ./tools/database/gen_db ./tools/icons
+          go test -tags with_db ./tools/forever_tanks ./sim/warrior/dps_warrior ./sim/warrior/tank_warrior ./sim/paladin/protection
           go test -tags with_db ./sim -run 'Test(EveryRegisteredSpellSaysWhereItsNumbersCameFrom|EverySpellRegistrationResolvesToAnID|SpellSourcesAreWellFormed|UnreviewedSpellsOnlyShrink|SpellSourceScannerKeepsBranchesAndRejectsRankScalars)$'
           python3 -m unittest discover -s tools/forever_bench
           python3 -m unittest discover -s tools/database
           python3 -m unittest discover -s tools/data_watch
+          node_modules/.bin/esbuild ui/scrub/scrub.test.ts --bundle --platform=node --outfile=/tmp/forever-scrub-test.cjs
+          node /tmp/forever-scrub-test.cjs
 
       - name: Stage benchmark review portal
         run: |
@@ -99,6 +102,7 @@ jobs:
           ln -s "$PWD/dist/classic" "site${SITE_BASE%/}"
           python3 -m http.server 8080 --directory site >/dev/null 2>&1 &
           SITE_URL="http://localhost:8080$SITE_BASE" node tools/smoke/check_pages.mjs
+          SITE_URL="http://localhost:8080$SITE_BASE" node tools/smoke/check_scrub.mjs
           SITE_URL="http://localhost:8080$SITE_BASE" node tools/smoke/check_icons.mjs
           SITE_URL="http://localhost:8080$SITE_BASE" node tools/smoke/check_benchmark_replay.mjs
           SITE_URL="http://localhost:8080$SITE_BASE" node tools/smoke/check_ranked_defaults.mjs

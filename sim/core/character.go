@@ -138,6 +138,9 @@ func NewCharacter(party *Party, partyIndex int, player *proto.Player) Character 
 	}
 	character.foreverMP5PerSecond = player.ForeverMp5PerSecond
 
+	if err := ValidateEquipmentArmor(character.Class, character.Equipment); err != nil {
+		panic(err)
+	}
 	if err := ValidateWeaponLayout(character.Class, *character.MainHand(), *character.OffHand()); err != nil {
 		panic(err)
 	}

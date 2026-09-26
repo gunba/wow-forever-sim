@@ -105,6 +105,7 @@ func (hunter *Hunter) getAspectOfTheHawkSpellConfig(rank int) core.SpellConfig {
 
 	return core.SpellConfig{
 		ActionID:      actionID,
+		SpellSchool:   core.SpellSchoolNature,
 		Flags:         core.SpellFlagAPL,
 		Rank:          rank,
 		RequiredLevel: level,

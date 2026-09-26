@@ -10,6 +10,13 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 class EquipmentTest(unittest.TestCase):
+    def test_intrinsic_block_is_separate_from_allocated_bonus_block(self):
+        item = copy.deepcopy(self.items[272591])
+        item["baseBlockValue"] = 44
+        item["stats"]["BlockValue"] = 10
+        self.assertEqual(compile_item(item, self.rates)["stats"][30], 54)
+        self.assertEqual(item["stats"]["BlockValue"], 10)
+
     @classmethod
     def setUpClass(cls):
         cls.items = {x["id"]: x for x in json.loads(

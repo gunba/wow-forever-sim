@@ -152,8 +152,11 @@ func (warlock *Warlock) Initialize() {
 	})
 }
 
-func (warlock *Warlock) AddRaidBuffs(raidBuffs *proto.RaidBuffs) {
-	raidBuffs.BloodPact = max(raidBuffs.BloodPact, core.MakeTristateValue(
+func (warlock *Warlock) AddRaidBuffs(_ *proto.RaidBuffs) {}
+
+func (warlock *Warlock) AddPartyBuffs(partyBuffs *proto.PartyBuffs) {
+	// Spell 11767 applies a party aura, not a raid aura.
+	partyBuffs.BloodPact = max(partyBuffs.BloodPact, core.MakeTristateValue(
 		warlock.Options.Summon == proto.WarlockOptions_Imp,
 		warlock.Talents.ImprovedImp == 3,
 	))

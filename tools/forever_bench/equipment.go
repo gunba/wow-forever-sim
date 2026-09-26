@@ -8,11 +8,7 @@ import (
 )
 
 func classPreferredArmor(class proto.Class) proto.ArmorType {
-	return map[proto.Class]proto.ArmorType{
-		proto.Class_ClassDruid: 2, proto.Class_ClassHunter: 3, proto.Class_ClassMage: 1,
-		proto.Class_ClassPaladin: 4, proto.Class_ClassPriest: 1, proto.Class_ClassRogue: 2,
-		proto.Class_ClassShaman: 3, proto.Class_ClassWarlock: 1, proto.Class_ClassWarrior: 4,
-	}[class]
+	return core.ClassMaxArmorType(class)
 }
 
 func validateEquipmentSlot(p *proto.Player, slot int, item core.Item) error {

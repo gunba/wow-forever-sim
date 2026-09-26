@@ -53,14 +53,13 @@ function readString(view: DataView, bytes: Uint8Array, offset: number): { text: 
 	const length = view.getUint16(offset, true);
 	if (length < 2 || offset + 2 + length > bytes.length) return null;
 	if (bytes[offset + 2 + length - 1] !== 0) return null;
-	let text = '';
-	for (let i = offset + 2; i < offset + 2 + length - 1; i++) {
-		const c = bytes[i];
-		// Printable ASCII only; anything else means this is not a string, it is binary that
-		// happened to start with a plausible length.
-		if (c < 32 || c >= 127) return null;
-		text += String.fromCharCode(c);
+	let text: string;
+	try {
+		text = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(bytes.subarray(offset + 2, offset + 1 + length));
+	} catch {
+		return null;
 	}
+	if (/[\p{C}\p{Z}]/u.test(text.replace(/ /g, ''))) return null;
 	return { text, next: offset + 2 + length };
 }
 
@@ -71,7 +70,7 @@ export function readRecords(bytes: Uint8Array): ActorRecord[] {
 	let i = 0;
 	while (i < bytes.length - 4) {
 		const name = readString(view, bytes, i);
-		if (name && name.text.length >= 3) {
+		if (name) {
 			const className = readString(view, bytes, name.next);
 			if (className && CLASS_TOKENS.has(className.text) && className.next + 28 <= bytes.length) {
 				const at = className.next;
@@ -120,7 +119,8 @@ export function scrub(bytes: Uint8Array): ScrubResult {
 
 	const out = new Uint8Array(bytes);
 	for (const [name, placeholder] of placeholders) {
-		const padded = placeholder.padEnd(name.length, '.').slice(0, name.length);
+		const byteLength = new TextEncoder().encode(name).length;
+		const padded = placeholder.padEnd(byteLength, '.').slice(0, byteLength);
 		for (const offset of findStringOffsets(bytes, name)) {
 			for (let i = 0; i < padded.length; i++) out[offset + 2 + i] = padded.charCodeAt(i);
 		}
@@ -137,9 +137,10 @@ export function scrub(bytes: Uint8Array): ScrubResult {
 
 /** Offsets of the length prefix of every complete occurrence of `text` as a string. */
 function findStringOffsets(bytes: Uint8Array, text: string): number[] {
-	const needle = new Uint8Array(text.length + 3);
-	new DataView(needle.buffer).setUint16(0, text.length + 1, true);
-	for (let i = 0; i < text.length; i++) needle[2 + i] = text.charCodeAt(i);
+	const encoded = new TextEncoder().encode(text);
+	const needle = new Uint8Array(encoded.length + 3);
+	new DataView(needle.buffer).setUint16(0, encoded.length + 1, true);
+	needle.set(encoded, 2);
 	needle[needle.length - 1] = 0;
 
 	const out: number[] = [];

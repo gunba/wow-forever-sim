@@ -157,6 +157,7 @@ def synthetic(identifier,slot,material,archetype,template,alloc,policy,confidenc
                 Archetype=archetype,Policy=policy,SourceID=src['id'],SourceName=src['name'],
                 SourceKind=source_kind(src),SourceSlot=SLOT[src['inventoryType']],
                 Scale=scale(slot),Allocation=alloc,Stats=v,Armor=armor,
+                BaseBlockValue=src.get('baseBlockValue', 0) if slot==14 else 0,
                 Speed=speed,Min=dmin,Max=dmax,DPS=dps,
                 SourceBudget=norm(normalized_alloc(src),src['inventoryType']),
                 ProposedBudget=norm(alloc,slot),
@@ -501,6 +502,8 @@ def modeled_name(proposal):
                for stat, amount in proposal['Stats'].items() if amount]
     if proposal['Armor']:
         numbers.append(f"{proposal['Armor']} armor")
+    if proposal.get('BaseBlockValue'):
+        numbers.append(f"{proposal['BaseBlockValue']} Block")
     if proposal['Speed'] is not None:
         numbers.append(f"{proposal['Min']}–{proposal['Max']} dmg @ {proposal['Speed']:g}s")
     return label + ' [' + ', '.join(numbers) + ']'

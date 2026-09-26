@@ -64,6 +64,7 @@ def compile_stats(item: dict, rates: dict) -> tuple[list[float], list[float], fl
     # Forever's published armor line excludes the separate Bonus Armor line:
     # Cloak of Warding is 44 base + 170 bonus, not 170 within a total of 44.
     stats[26] = item["armor"]
+    stats[30] += item.get("baseBlockValue", 0)
     stats[27] += stats[17]
     return stats, skills, physical_damage
 

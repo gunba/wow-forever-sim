@@ -83,7 +83,7 @@ func (rogue *Rogue) registerExposeArmorSpell() {
 
 			result := spell.CalcOutcome(sim, target, spell.OutcomeMeleeSpecialHit)
 			if result.Landed() {
-				eaAura.ExclusiveEffects[0].Priority = arpen
+				eaAura.ExclusiveEffects[0].SetPriority(sim, arpen)
 				eaAura.Activate(sim)
 				rogue.SpendComboPoints(sim, spell)
 				if rogue.Talents.ImprovedExposeArmor > 0 && comboPoints == 5 {

@@ -20,7 +20,9 @@ func (warlock *Warlock) getBaneOfAgonyBaseConfig(rank int) core.SpellConfig {
 	manaCost := [BaneOfAgonyRanks + 1]float64{0, 25, 50, 90, 130, 170, 215}[rank]
 	level := [BaneOfAgonyRanks + 1]int{0, 8, 18, 28, 38, 48, 58}[rank]
 
-	snapshotBaseDmgNoBonus := 0.0
+	// Each target retains its own application bonus (including Amplify Curse).
+	// A later application to another target must not change this one's ramp.
+	snapshotBaseDmgNoBonus := make(map[*core.Dot]float64)
 
 	return core.SpellConfig{
 		SpellCode:     SpellCode_WarlockBaneOfAgony,
@@ -65,15 +67,15 @@ func (warlock *Warlock) getBaneOfAgonyBaseConfig(rank int) core.SpellConfig {
 
 				// BoA starts with 50% base damage, but bonus from spell power is not changed.
 				// Every 4 ticks this base damage is added again, resulting in 150% base damage for the last 4 ticks
-				snapshotBaseDmgNoBonus = baseDmg * 0.5
+				snapshotBaseDmgNoBonus[dot] = baseDmg * 0.5
 
-				dot.Snapshot(target, snapshotBaseDmgNoBonus, isRollover)
+				dot.Snapshot(target, snapshotBaseDmgNoBonus[dot], isRollover)
 			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
 				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
 				if dot.TickCount%4 == 0 { // BoA ramp up
-					dot.SnapshotBaseDamage += snapshotBaseDmgNoBonus
-					dot.SnapshotRawBaseDamage += snapshotBaseDmgNoBonus
+					dot.SnapshotBaseDamage += snapshotBaseDmgNoBonus[dot]
+					dot.SnapshotRawBaseDamage += snapshotBaseDmgNoBonus[dot]
 				}
 			},
 		},

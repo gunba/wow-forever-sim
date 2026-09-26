@@ -49,7 +49,7 @@ var P1Consumes = core.ConsumesCombo{
 		DefaultPotion:     proto.Potions_MightyRagePotion,
 		DragonBreathChili: true,
 		Food:              proto.Food_FoodSmokedDesertDumpling,
-		MainHandImbue:     proto.WeaponImbue_Windfury,
+		MainHandImbue:     proto.WeaponImbue_ElementalSharpeningStone,
 		OffHandImbue:      proto.WeaponImbue_ElementalSharpeningStone,
 		StrengthBuff:      proto.StrengthBuff_JujuPower,
 	},

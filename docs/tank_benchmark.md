@@ -8,12 +8,17 @@ The default is one level-63 Dragonkin with 3,731 armor, 805 attack power and a 3
 
 | Tank | Scenario | Previous TPS | Current TPS | Current DTPS | Least target: previous → current TPS |
 |---|---|---:|---:|---:|---:|
-| Protection Warrior (Human) | One boss, 300 s | 1,005 | 1,031 | 520 | — |
-| Protection Warrior (Human) | Three enemies, 90 s | 1,163 | 1,178 | 772 | 37 → 37 |
-| Protection Paladin (Human) | One boss, 300 s | 545 | 612 | 780 | — |
-| Protection Paladin (Human) | Three enemies, 90 s | 840 | 1,101 | 1,137 | 121 → 202 |
+| Protection Warrior (Human) | One boss, 300 s | 1,019 | 1,043 | 502 | — |
+| Protection Warrior (Human) | Three enemies, 90 s | 1,166 | 1,180 | 751 | 37 → 37 |
+| Protection Paladin (Human) | One boss, 300 s | 545 | 612 | 765 | — |
+| Protection Paladin (Human) | Three enemies, 90 s | 844 | 1,106 | 1,083 | 122 → 203 |
 | Feral Bear (Tauren) | One boss, 300 s | 1,450 | 1,450 | 755 | — |
 | Feral Bear (Tauren) | Three enemies, 90 s | 1,703 | 1,656 | 1,095 | 107 → 210 |
+
+Both APL arms were replayed after the September 26 correctness review, with
+all 24 requests unchanged. The shield-tank results now include intrinsic
+shield Block and refreshed Shield Block charges. Earlier results remain in
+[`artifacts/history/51cc3d6e2/tanks/`](../artifacts/history/51cc3d6e2/tanks/).
 
 Bear's new Swipe priority trades some *total* threat for much better threat on the least-threatened add. Warrior's three-target rotation remains **single-target focused**: its 37 TPS on the least-threatened add cannot hold an active damage dealer. The simulator does not yet select or cycle to the enemy with the least threat; tab-targeting is necessary in an actual pull. Do not use its summed three-target TPS to claim reliable pack control. The previous and current warrior rotations both keep Shield Block and attack-speed/power debuffs; removing these raises threat but measurably worsens mitigation. Full paired requests and results are in [`artifacts/tanks/`](../artifacts/tanks/).
 

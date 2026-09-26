@@ -272,9 +272,9 @@ func init() {
 	})
 
 	// https://www.wowhead.com/classic/item=18671/baron-charrs-sceptre
-	// Chance on hit: Blasts a target for 35 Fire damage.
+	// Client 1.60.1.70009, effect 691018: 90 Fire damage (formerly 35).
 	// 1 PPM assumed
-	itemhelpers.CreateWeaponCoHProcDamage(BaronCharrsSceptre, "Baron Charr's Sceptre", 1.0, 13442, core.SpellSchoolFire, 35, 0, 0, core.DefenseTypeMagic)
+	itemhelpers.CreateWeaponCoHProcDamage(BaronCharrsSceptre, "Baron Charr's Sceptre", 1.0, 13442, core.SpellSchoolFire, 90, 0, 0, core.DefenseTypeMagic)
 
 	// https://www.wowhead.com/classic/item=14541/barovian-family-sword
 	// Chance on hit: Deals 30 Shadow damage every 3 sec for 15 sec. All damage done is then transferred to the caster.
@@ -1496,7 +1496,8 @@ func init() {
 	})
 
 	// https://www.wowhead.com/classic/item=11902/linkens-sword-of-mastery
-	itemhelpers.CreateWeaponCoHProcDamage(LinkensSwordOfMastery, "Linken's Sword of Mastery", 1.0, 18089, core.SpellSchoolNature, 45, 30, 0, core.DefenseTypeMagic)
+	// Client 1.60.1.70009, effect 695940: 98 mean with 0.5 variance.
+	itemhelpers.CreateWeaponCoHProcDamage(LinkensSwordOfMastery, "Linken's Sword of Mastery", 1.0, 18089, core.SpellSchoolNature, 73.5, 49, 0, core.DefenseTypeMagic)
 
 	//https://www.wowhead.com/classic/item=19324/the-lobotomizer
 	// Chance on hit: Wounds the target for 200 to 300 damage and lowers Intellect of target by 25 for 30 sec.
@@ -2119,7 +2120,8 @@ func init() {
 	itemhelpers.CreateWeaponCoHProcDamage(TeebusBlazingLongsword, "Teebu's Blazing Longsword", 1.0, 18086, core.SpellSchoolFire, 150, 0, 0, core.DefenseTypeMagic)
 
 	// https://www.wowhead.com/classic/item=13401/the-cruel-hand-of-timmy
-	// Beta client 1.60.1 (spell 17505): "Steals 210 life from target enemy". Era's is "Lowers all
+	// Client 1.60.1.70009 (spell 17505, effect 695399): steals 85 life, down from 210.
+	// Era's is "Lowers all
 	// attributes of target by 15 for 1 min", so this is a different ability rather than a retune -
 	// the attribute debuff is gone and it deals Shadow damage instead.
 	// 0.65 PPM from Armaments Discord
@@ -2136,7 +2138,7 @@ func init() {
 			DamageMultiplier: 1,
 			ThreatMultiplier: 1,
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				result := spell.CalcAndDealDamage(sim, target, 210, spell.OutcomeAlwaysHit)
+				result := spell.CalcAndDealDamage(sim, target, 85, spell.OutcomeAlwaysHit)
 				character.GainHealth(sim, result.Damage, healthMetrics)
 			},
 		})

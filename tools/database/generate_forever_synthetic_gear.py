@@ -78,6 +78,8 @@ def record(proposal: dict, index: int) -> dict:
         'modelAllocations': proposal['Allocation'],
         'modelBudgetRatio': proposal['ProposedBudget'],
     }
+    if proposal.get('BaseBlockValue'):
+        result['baseBlockValue'] = proposal['BaseBlockValue']
     if speed is not None:
         result['weapon'] = {'min': proposal['Min'], 'max': proposal['Max'],
                             'speed': speed, 'school': source['weapon'].get('school', 0)}
@@ -115,6 +117,7 @@ def main() -> None:
             'sourceItemName': BY_ID[item['modelReferenceItemID']]['name'],
             'stats': item['stats'],
             'armor': item['armor'],
+            **({'baseBlockValue': item['baseBlockValue']} if item.get('baseBlockValue') else {}),
             'weapon': item.get('weapon'),
             'confidence': item['modelConfidence'],
             'notes': item['modelNotes'],

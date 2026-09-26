@@ -87,6 +87,7 @@ func (paladin *Paladin) registerHolyShield() {
 		paladin.RegisterSpell(core.SpellConfig{
 			ActionID:      core.ActionID{SpellID: spellID},
 			SpellCode:     SpellCode_PaladinHolyShield,
+			SpellSchool:   core.SpellSchoolHoly,
 			Flags:         core.SpellFlagAPL,
 			RequiredLevel: int(level),
 			Rank:          rank,

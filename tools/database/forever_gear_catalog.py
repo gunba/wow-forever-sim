@@ -16,7 +16,7 @@ import os
 from pathlib import Path
 import sys
 
-from import_forever_vendor import parse_planner, read_vendor_exports
+from import_forever_vendor import parse_planner, read_vendor_exports, shield_block_value
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "data_watch"))
 import spell_client
@@ -298,6 +298,22 @@ TABLES = ("Item", "ItemSparse", "RandPropPoints", "ItemEffect", "ItemXItemEffect
           "ItemSet", "ItemSetSpell", "ItemLimitCategory", "GlobalStrings")
 
 
+def add_shield_block_values(items: list[dict], evidence: list[dict], vendors: dict) -> None:
+    captured = {row["id"]: row for row in evidence}
+    for item in items:
+        if item["inventoryType"] != 14:
+            continue
+        source = captured.get(item["id"])
+        if source:
+            item["baseBlockValue"] = source["baseBlockValue"]
+            item["baseBlockSource"] = source["source"]
+        vendor = vendors.get(item["id"])
+        value = shield_block_value(vendor) if vendor else None
+        if value is not None:
+            item["baseBlockValue"] = value
+            item["baseBlockSource"] = "Forever vendor export: intrinsic Block tooltip line"
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--planner", type=Path, default=Path("assets/db_inputs/wowhead_forever_gearplanner.txt"))
@@ -306,6 +322,8 @@ def main() -> None:
     parser.add_argument("--cache", type=Path, default=Path(os.environ.get("XDG_CACHE_HOME", Path.home() / ".cache")) / "wowsims-forever")
     parser.add_argument("--out", type=Path, default=Path("assets/db_inputs/forever_gear_catalog.json"))
     parser.add_argument("--reviews", type=Path, default=Path("assets/db_inputs/forever_gear_reviews.json"))
+    parser.add_argument("--shield-block", type=Path,
+                        default=Path("assets/db_inputs/forever_shield_block.json"))
     args = parser.parse_args()
     spell_client.CACHE = str(args.cache)
     tables = {name: spell_client.table(args.build, name) for name in TABLES}
@@ -320,6 +338,7 @@ def main() -> None:
                     if field in item:
                         existing[field] = item[field]
     catalog = build_catalog(planner, tables, vendors)
+    add_shield_block_values(catalog["items"], json.loads(args.shield_block.read_text()), vendors)
     reviews = json.loads(args.reviews.read_text())["items"]
     for item in catalog["items"]:
         review = reviews.get(str(item["id"]), {})

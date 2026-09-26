@@ -21315,7 +21315,7 @@
     },
     {
       "id": 920000383,
-      "name": "Modeled: Physical shield — Shield [+24 Sta, +10 Str, 2468 armor]",
+      "name": "Modeled: Physical shield — Shield [+24 Sta, +10 Str, 2468 armor, 44 Block]",
       "icon": "inv_shield_19",
       "itemLevel": 65,
       "requiredLevel": 60,
@@ -21362,11 +21362,12 @@
         "Stamina": 0.8814627311858979,
         "Strength": 0.3831896808455194
       },
-      "modelBudgetRatio": 1.0
+      "modelBudgetRatio": 1.0,
+      "baseBlockValue": 44
     },
     {
       "id": 920000384,
-      "name": "Modeled: Hybrid damage shield — Shield [+21 Sta, +9 Int, +6 Dmg, +18 Heal, 2468 armor]",
+      "name": "Modeled: Hybrid damage shield — Shield [+21 Sta, +9 Int, +6 Dmg, +18 Heal, 2468 armor, 44 Block]",
       "icon": "inv_shield_19",
       "itemLevel": 65,
       "requiredLevel": 60,
@@ -21417,7 +21418,8 @@
         "SpellDamage": 0.21776238075033202,
         "HealingPower": 0.653287142250996
       },
-      "modelBudgetRatio": 0.9999999999999999
+      "modelBudgetRatio": 0.9999999999999999,
+      "baseBlockValue": 44
     },
     {
       "id": 920000385,

@@ -8,6 +8,12 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 class VendorImportTest(unittest.TestCase):
+    def test_intrinsic_shield_block_is_not_in_get_item_stats(self):
+        for item_id in (272591, 278469):
+            source = self.exports[item_id]
+            self.assertEqual(vendor.shield_block_value(source), 44)
+            self.assertEqual(vendor.build_stats(self.planner[str(item_id)], source)[30], 44)
+
     @classmethod
     def setUpClass(cls):
         cls.planner = vendor.parse_planner(ROOT / "assets/db_inputs/wowhead_forever_gearplanner.txt")

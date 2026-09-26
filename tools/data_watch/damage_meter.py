@@ -62,9 +62,15 @@ def read_string(blob, i):
 	if length < 2 or i + 2 + length > len(blob):
 		return None, i
 	raw = blob[i + 2:i + 2 + length]
-	if not raw.endswith(b'\x00') or not all(32 <= c < 127 for c in raw[:-1]):
+	if not raw.endswith(b'\x00'):
 		return None, i
-	return raw[:-1].decode(), i + 2 + length
+	try:
+		text = raw[:-1].decode('utf-8')
+	except UnicodeDecodeError:
+		return None, i
+	if not text.isprintable():
+		return None, i
+	return text, i + 2 + length
 
 
 def records(blob):
@@ -73,7 +79,7 @@ def records(blob):
 	i = 0
 	while i < len(blob) - 4:
 		name, after_name = read_string(blob, i)
-		if name and len(name) >= 3:
+		if name:
 			klass, after_class = read_string(blob, after_name)
 			if klass in CLASSES and after_class + 28 <= len(blob):
 				hits, spell, spell_again, damage = struct.unpack_from('<4I', blob, after_class)
@@ -111,12 +117,13 @@ def scrub(blob, rows, path):
 	# "Murloc" was itself a scrubbed name.
 	out = bytes(blob)
 	for name, placeholder in names.items():
-		padded = placeholder.ljust(len(name), '.')[:len(name)]
-		envelope = struct.pack('<H', len(name) + 1) + name.encode() + NUL
-		replacement = struct.pack('<H', len(name) + 1) + padded.encode() + NUL
+		encoded = name.encode('utf-8')
+		padded = placeholder.ljust(len(encoded), '.')[:len(encoded)]
+		envelope = struct.pack('<H', len(encoded) + 1) + encoded + NUL
+		replacement = struct.pack('<H', len(encoded) + 1) + padded.encode() + NUL
 		out = out.replace(envelope, replacement)
 
-	leaked = [n for n in names if n.encode() in out]
+	leaked = [n for n in names if struct.pack('<H', len(n.encode()) + 1) + n.encode() + NUL in out]
 	if leaked:
 		sys.exit(f'refusing to write {path}: {len(leaked)} name(s) survived scrubbing')
 

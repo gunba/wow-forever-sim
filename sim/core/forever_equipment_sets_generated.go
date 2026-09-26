@@ -57,21 +57,21 @@ var foreverEquipmentSets = map[int32]foreverEquipmentSet{
 		3: {Supported: true, Stats: stats.Stats{stats.HealingPower: 18, stats.SpellDamage: 18}, SpiritRegen: 0},
 		4: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
 		5: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
-		6: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
+		6: {Supported: true, Stats: stats.Stats{stats.MP5: 8}, SpiritRegen: 0},
 	}},
 	182: {Name: "Vestments of the Devout", Profession: proto.Profession(0), Bonuses: map[int32]foreverEquipmentBonus{
 		2: {Supported: true, Stats: stats.Stats{stats.ArcaneResistance: 8, stats.FireResistance: 8, stats.FrostResistance: 8, stats.NatureResistance: 8, stats.ShadowResistance: 8}, SpiritRegen: 0},
 		3: {Supported: true, Stats: stats.Stats{stats.HealingPower: 18, stats.SpellDamage: 18}, SpiritRegen: 0},
 		4: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
 		5: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
-		6: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
+		6: {Supported: true, Stats: stats.Stats{stats.MP5: 8}, SpiritRegen: 0},
 	}},
 	183: {Name: "Dreadmist Raiment", Profession: proto.Profession(0), Bonuses: map[int32]foreverEquipmentBonus{
 		2: {Supported: true, Stats: stats.Stats{stats.ArcaneResistance: 8, stats.FireResistance: 8, stats.FrostResistance: 8, stats.NatureResistance: 8, stats.ShadowResistance: 8}, SpiritRegen: 0},
 		3: {Supported: true, Stats: stats.Stats{stats.HealingPower: 18, stats.SpellDamage: 18}, SpiritRegen: 0},
 		4: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
 		5: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
-		6: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
+		6: {Supported: true, Stats: stats.Stats{stats.MP5: 8}, SpiritRegen: 0},
 	}},
 	184: {Name: "Shadowcraft Armor", Profession: proto.Profession(0), Bonuses: map[int32]foreverEquipmentBonus{
 		2: {Supported: true, Stats: stats.Stats{stats.ArcaneResistance: 8, stats.FireResistance: 8, stats.FrostResistance: 8, stats.NatureResistance: 8, stats.ShadowResistance: 8}, SpiritRegen: 0},
@@ -85,28 +85,28 @@ var foreverEquipmentSets = map[int32]foreverEquipmentSet{
 		3: {Supported: true, Stats: stats.Stats{stats.AttackPower: 30, stats.HealingPower: 18, stats.RangedAttackPower: 30, stats.SpellDamage: 18}, SpiritRegen: 0},
 		4: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
 		5: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
-		6: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
+		6: {Supported: true, Stats: stats.Stats{stats.MP5: 8}, SpiritRegen: 0},
 	}},
 	186: {Name: "Beaststalker Armor", Profession: proto.Profession(0), Bonuses: map[int32]foreverEquipmentBonus{
 		2: {Supported: true, Stats: stats.Stats{stats.ArcaneResistance: 8, stats.FireResistance: 8, stats.FrostResistance: 8, stats.NatureResistance: 8, stats.ShadowResistance: 8}, SpiritRegen: 0},
 		3: {Supported: true, Stats: stats.Stats{stats.AttackPower: 30, stats.RangedAttackPower: 30}, SpiritRegen: 0},
 		4: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
 		5: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
-		6: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
+		6: {Supported: true, Stats: stats.Stats{stats.MP5: 8}, SpiritRegen: 0},
 	}},
 	187: {Name: "The Elements", Profession: proto.Profession(0), Bonuses: map[int32]foreverEquipmentBonus{
 		2: {Supported: true, Stats: stats.Stats{stats.ArcaneResistance: 8, stats.FireResistance: 8, stats.FrostResistance: 8, stats.NatureResistance: 8, stats.ShadowResistance: 8}, SpiritRegen: 0},
 		3: {Supported: true, Stats: stats.Stats{stats.HealingPower: 18, stats.SpellDamage: 18}, SpiritRegen: 0},
 		4: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
 		5: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
-		6: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
+		6: {Supported: true, Stats: stats.Stats{stats.MP5: 8}, SpiritRegen: 0},
 	}},
 	188: {Name: "Lightforge Armor", Profession: proto.Profession(0), Bonuses: map[int32]foreverEquipmentBonus{
 		2: {Supported: true, Stats: stats.Stats{stats.ArcaneResistance: 8, stats.FireResistance: 8, stats.FrostResistance: 8, stats.NatureResistance: 8, stats.ShadowResistance: 8}, SpiritRegen: 0},
 		3: {Supported: true, Stats: stats.Stats{stats.HealingPower: 18, stats.SpellDamage: 18}, SpiritRegen: 0},
 		4: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
 		5: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
-		6: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
+		6: {Supported: true, Stats: stats.Stats{stats.MP5: 8}, SpiritRegen: 0},
 	}},
 	189: {Name: "Battlegear of Valor", Profession: proto.Profession(0), Bonuses: map[int32]foreverEquipmentBonus{
 		2: {Supported: true, Stats: stats.Stats{stats.ArcaneResistance: 8, stats.FireResistance: 8, stats.FrostResistance: 8, stats.NatureResistance: 8, stats.ShadowResistance: 8}, SpiritRegen: 0},
@@ -142,7 +142,7 @@ var foreverEquipmentSets = map[int32]foreverEquipmentSet{
 		2: {Supported: true, Stats: stats.Stats{stats.MeleeCrit: 1, stats.SpellCrit: 1}, SpiritRegen: 0},
 	}},
 	443: {Name: "Bloodsoul Embrace", Profession: proto.Profession(0), Bonuses: map[int32]foreverEquipmentBonus{
-		3: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
+		3: {Supported: true, Stats: stats.Stats{stats.MP5: 12}, SpiritRegen: 0},
 	}},
 	444: {Name: "The Darksoul", Profession: proto.Profession(2), Bonuses: map[int32]foreverEquipmentBonus{
 		3: {Supported: true, Stats: stats.Stats{stats.Defense: 20}, SpiritRegen: 0},
@@ -201,7 +201,7 @@ var foreverEquipmentSets = map[int32]foreverEquipmentSet{
 		4: {Supported: true, Stats: stats.Stats{stats.FireResistance: 10}, SpiritRegen: 0},
 	}},
 	490: {Name: "Green Dragon Mail", Profession: proto.Profession(0), Bonuses: map[int32]foreverEquipmentBonus{
-		2: {Supported: false, Stats: stats.Stats{}, SpiritRegen: 0},
+		2: {Supported: true, Stats: stats.Stats{stats.MP5: 3}, SpiritRegen: 0},
 		3: {Supported: true, Stats: stats.Stats{}, SpiritRegen: 0.15},
 	}},
 	491: {Name: "Blue Dragon Mail", Profession: proto.Profession(0), Bonuses: map[int32]foreverEquipmentBonus{

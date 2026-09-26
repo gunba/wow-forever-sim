@@ -47,8 +47,9 @@ func (paladin *Paladin) registerTemplarsBulwark() {
 	cooldown := time.Minute*5 - time.Second*30*time.Duration(paladin.Talents.SacredDuty)
 
 	bulwark := paladin.RegisterSpell(core.SpellConfig{
-		ActionID: actionID,
-		Flags:    core.SpellFlagAPL | SpellFlag_Forbearance,
+		ActionID:    actionID,
+		SpellSchool: core.SpellSchoolHoly,
+		Flags:       core.SpellFlagAPL | SpellFlag_Forbearance,
 
 		ManaCost: core.ManaCostOptions{
 			FlatCost:   110,
@@ -56,9 +57,8 @@ func (paladin *Paladin) registerTemplarsBulwark() {
 		},
 
 		Cast: core.CastConfig{
-			DefaultCast: core.Cast{
-				GCD: core.GCDDefault,
-			},
+			// SpellCooldowns 1311015: no StartRecoveryTime / GCD category.
+			DefaultCast: core.Cast{},
 			IgnoreHaste: true,
 			CD: core.Cooldown{
 				Timer:    paladin.NewTimer(),

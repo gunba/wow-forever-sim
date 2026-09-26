@@ -76,7 +76,8 @@ var BuffSpellValues = map[BuffName]stats.Stats{
 		stats.Agility:  TernaryFloat64(IncludeAQ, 89, 70.15),
 	},
 	BloodPact: {
-		stats.Stamina: 49,
+		// Rank 5: 49 at level 50 plus 0.5 per level, capped at 60.
+		stats.Stamina: 54,
 	},
 	CommandingShout: {
 		stats.Stamina: 42,

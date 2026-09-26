@@ -16,6 +16,15 @@ spec.loader.exec_module(generator)
 
 
 class SyntheticGearTest(unittest.TestCase):
+    def test_modeled_shields_retain_intrinsic_block_without_spending_stat_budget(self):
+        for proposal in generator.proposals_v2():
+            if proposal["SlotID"] != 14:
+                continue
+            item = generator.record(proposal, 1)
+            self.assertEqual(item["baseBlockValue"], 44)
+            self.assertIn("44 Block", item["name"])
+            self.assertNotIn("BlockValue", item["stats"])
+
     def test_projected_armor_never_inherits_weapon_class(self):
         # The caster MP5 armor is derived from a one-hand mace.
         proposal = next(

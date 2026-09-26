@@ -15,21 +15,17 @@ import (
 	"testing"
 )
 
-// The Go sim carries an integer for every ability and nothing else. Every name, icon and
-// hover tooltip the site shows is resolved in the browser from Wowhead's Classic data for
-// that integer, so an ability Forever changed is described by its Classic ancestor unless
-// something says otherwise. That is the same trap the talent trees fell into, where 42
-// talents wore another talent's tooltip and Improved Revenge kept Classic's stun long
-// after Forever turned it into damage.
+// The Go sim identifies abilities by integer IDs. The browser now uses Forever's
+// metadata, but that alone does not record which values the engine implements.
 //
 // ui/core/spells/<class>.json is that something: one entry per spell id the sim registers,
 // saying where the numbers came from and, when Forever changed them, what the ability
-// actually does. The UI renders those entries instead of the Wowhead tooltip. This test
+// actually does. The UI renders supplied tooltips instead of the external tooltip. This test
 // keeps the manifest and the sim in step - an ability cannot be registered without saying
 // where its numbers came from, and the number still waiting on an answer can only fall.
 
 // Raised by hand when an id is deliberately left undeclared, never by a tool. Every entry
-// needs a reason, because an undeclared id is an ability the site describes wrongly.
+// needs a reason, because an undeclared ID has no recorded implementation source.
 const unreviewedSpellBudget = 44
 
 // Registration sites whose id the walk cannot read from the source. Each one is an ability
@@ -708,7 +704,7 @@ func TestEveryRegisteredSpellSaysWhereItsNumbersCameFrom(t *testing.T) {
 	}
 	sort.Ints(undeclared)
 	for _, id := range undeclared {
-		t.Errorf("spell %d (%s) is not in ui/core/spells, so the site describes it with Wowhead's Classic entry",
+		t.Errorf("spell %d (%s) has no implementation-source entry in ui/core/spells",
 			id, strings.Join(registered[id], ", "))
 	}
 
@@ -736,8 +732,8 @@ func TestSpellSourcesAreWellFormed(t *testing.T) {
 			t.Errorf("spell %d (%s): %q is not a source", id, source.Ability, source.Source)
 		}
 
-		// An ability Forever changed has to carry its own words, or the site falls back to
-		// the Classic tooltip and the entry has bought nothing.
+		// Changed or assumed behavior needs an explicit implementation tooltip,
+		// rather than silently relying on the external tooltip.
 		if source.Source == "forever" || source.Source == "assumed" {
 			if source.Tooltip == "" {
 				t.Errorf("spell %d (%s): %s with no tooltip of its own", id, source.Ability, source.Source)

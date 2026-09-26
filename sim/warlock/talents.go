@@ -629,8 +629,9 @@ func (warlock *Warlock) applySoulLink() {
 	}
 
 	warlock.RegisterSpell(core.SpellConfig{
-		ActionID: actionID,
-		Flags:    core.SpellFlagAPL,
+		ActionID:    actionID,
+		SpellSchool: core.SpellSchoolShadow,
+		Flags:       core.SpellFlagAPL,
 
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{

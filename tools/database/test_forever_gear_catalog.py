@@ -12,6 +12,16 @@ def sparse(slot, quality, ilvl, mods):
 
 
 class GearCatalogTest(unittest.TestCase):
+    def test_shield_block_uses_vendor_tooltip_before_web_capture(self):
+        from forever_gear_catalog import add_shield_block_values
+        items = [{"id": 1, "inventoryType": 14}, {"id": 2, "inventoryType": 14}]
+        evidence = [{"id": id, "baseBlockValue": 40, "source": "captured tooltip"} for id in (1, 2)]
+        vendor = {"item": {"equipLocation": "INVTYPE_SHIELD"},
+                  "tooltip": {"lines": [{"left": "44 Block"}]}}
+        add_shield_block_values(items, evidence, {1: vendor})
+        self.assertEqual(items[0]["baseBlockValue"], 44)
+        self.assertEqual(items[1]["baseBlockValue"], 40)
+
     def test_unused_effect_reference_does_not_block_catalog(self):
         tables = {name: [] for name in TABLES}
         tables["ItemXItemEffect"] = [{"ItemID": "240068", "ItemEffectID": "112960"}]

@@ -18,6 +18,7 @@ type SyntheticItemMetadata = {
 	sourceItemName: string;
 	stats: Record<string, number>;
 	armor: number;
+	baseBlockValue?: number;
 	weapon?: { min: number; max: number; speed: number } | null;
 	confidence: string;
 	notes: string;
@@ -243,7 +244,8 @@ export class ActionId {
 			tippy(elem, {
 				content:
 					`${modeled.name}. Hypothetical level-65 item; not obtainable loot. ` +
-					`${stats}${modeled.armor ? ` · ${modeled.armor} armor` : ''}${weapon}. ` +
+					`${stats}${modeled.armor ? ` · ${modeled.armor} armor` : ''}` +
+					`${modeled.baseBlockValue ? ` · ${modeled.baseBlockValue} Block` : ''}${weapon}. ` +
 					`Reference: ${modeled.sourceItemName} (item ${modeled.sourceItemId}); ` +
 					`its actual stats are not this item's stats. ${modeled.notes} ` +
 					(modeled.rankingEligible ? '' : 'Sensitivity only; excluded from rankings.'),

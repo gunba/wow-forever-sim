@@ -39,8 +39,9 @@ type RageBarOptions struct {
 }
 
 // Measured in the Forever beta at low levels, not established at level 60.
-// The half-rate off-hand follows Cataclysm's published rule provisionally;
-// no Forever off-hand measurement is available yet.
+// Low-level dual-wield observations also support the half-rate off-hand:
+// https://ppach-warriorcompendium.share.connect.posit.cloud/rage.html
+// Extrapolation to level 60 remains provisional.
 func foreverWarriorRagePerSwing(speed float64, twoHand, offHand bool) float64 {
 	if speed <= 0 {
 		return 0

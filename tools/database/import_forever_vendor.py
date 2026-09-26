@@ -256,6 +256,7 @@ def build_stats(
             bonus_armor = re.fullmatch(r"\+(\d+) Armor", line)
             if bonus_armor:
                 stats[40] += int(bonus_armor[1])
+        stats[30] += shield_block_value(source_item) or 0
         stats[26] -= stats[40]
         if exported.get("ITEM_MOD_CRIT_RATING_SHORT"):
             stats[19] = tooltip_percent(source_item, r"critical strike by ([\d.]+)%")
@@ -279,6 +280,17 @@ def build_stats(
 
     stats[27] += stats[17]
     return stats
+
+
+def shield_block_value(source_item: dict[str, Any]) -> int | None:
+    # GetItemStats omits a shield's intrinsic Block line.
+    if source_item["item"].get("equipLocation") != "INVTYPE_SHIELD":
+        return None
+    for line in tooltip_lines(source_item):
+        match = re.fullmatch(r"([\d,]+) Block", line)
+        if match:
+            return int(match[1].replace(",", ""))
+    return None
 
 
 def class_allowlist(

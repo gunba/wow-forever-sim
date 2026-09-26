@@ -273,8 +273,8 @@
 		"ability": "Hand of Timmy",
 		"file": "sim/common/item_effects.go",
 		"source": "forever",
-		"tooltip": "Steals 210 life from target enemy.",
-		"note": "Beta client 1.60.1 (spell 17505). A different ability, not a retune. Era's is \"Lowers all attributes of target by 15 for 1 min\"; the attribute debuff is gone and it deals Shadow damage instead."
+		"tooltip": "Steals 85 life from target enemy.",
+		"note": "Client 1.60.1.70009 reduced the effect from 210 to 85. Era's attribute debuff is gone; Forever deals Shadow damage instead."
 	},
 	"17511": {
 		"ability": "Poison",
@@ -564,10 +564,31 @@
 	},
 	"450608": {
 		"ability": "Nature's Bounty",
-		"file": "sim/common/item_sets/dungeon_set_1.go",
+		"file": "sim/common/item_sets/natures_bounty.go",
 		"source": "forever",
 		"tooltip": "Chance on spellcast to restore 200 mana, on melee attack to regenerate 20 Energy over 5 sec, and when struck to generate 10 Rage.",
-		"note": "Wildheart Raiment 5 piece and Feralheart Raiment 4 piece. Classic's version gave 300 mana, 40 Energy or 10 Rage (27781). The client stores no proc chance, so Classic's 2% is kept."
+		"note": "Wildheart Raiment 5 piece and Feralheart Raiment 4 piece. The dummy aura's 100% does not establish the script's resource-return chance; the inherited 2% remains an assumption."
+	},
+	"27782": {
+		"ability": "Nature's Bounty — Mana",
+		"file": "sim/common/item_sets/natures_bounty.go",
+		"source": "forever",
+		"tooltip": "Restores 200 mana.",
+		"note": "Resource return for 450608; the parent proc chance remains an assumption."
+	},
+	"27783": {
+		"ability": "Nature's Bounty — Rage",
+		"file": "sim/common/item_sets/natures_bounty.go",
+		"source": "forever",
+		"tooltip": "Generates 10 Rage.",
+		"note": "Resource return for 450608; the parent proc chance remains an assumption."
+	},
+	"27784": {
+		"ability": "Nature's Bounty — Energy",
+		"file": "sim/common/item_sets/natures_bounty.go",
+		"source": "forever",
+		"tooltip": "Regenerates 4 Energy every second for 5 seconds.",
+		"note": "Client 1.60.1.70009 periodic energize and duration; the parent proc chance remains an assumption."
 	},
 	"450625": {
 		"ability": "Crusader's Wrath",

@@ -1,6 +1,5 @@
 import { SITE_BASE, SITE_REPO_URL } from '../core/constants/other';
 import { ActorRecord, plausible, readRecords, scrub } from './scrub';
-import { upload } from './upload';
 
 const ISSUE_URL = `${SITE_REPO_URL}/issues/new?template=hotfix_cache.md`;
 
@@ -56,7 +55,6 @@ const dropZone = (id: string, title: string, hint: string, onFile: (file: File |
 export class ScrubPage {
 	private readonly hotfixResult: HTMLElement;
 	private readonly meterResult: HTMLElement;
-	private note = '';
 
 	constructor(parent: HTMLElement) {
 		parent.appendChild(
@@ -67,10 +65,10 @@ export class ScrubPage {
 							<img className="forever-logo" src={`${SITE_BASE}assets/img/forever_logo.png`} alt="World of Warcraft: Forever" />
 						</a>
 						<div className="scrub-title-block">
-							<h1 className="scrub-title">Send the beta&apos;s own numbers</h1>
+							<h1 className="scrub-title">Inspect beta cache files</h1>
 							<p className="scrub-subtitle">
 								This sim reads Blizzard&apos;s data tables, which say what an ability is <em>meant</em> to do. Two files on your machine say
-								things the tables cannot. Drop either one below, and that is the whole job &mdash; no account, no form.
+								things the tables cannot. Files stay in this browser; this site has no upload service.
 							</p>
 						</div>
 					</div>
@@ -84,17 +82,15 @@ export class ScrubPage {
 							</h2>
 							<p className="scrub-file-sub">What Blizzard changed after the build shipped</p>
 							<p>
-								Hotfixes never reach a datamining site. They exist only in the cache your client downloads them into, so a value this sim reads
-								can be stale the moment it is tuned, and there is no way to know from outside.
+								A client cache can contain hotfixes newer than the static tables used by the simulator.
 							</p>
 							<p className="scrub-path">
 								<code>World of Warcraft\_classic_beta_\Cache\ADB\enUS\</code>
 							</p>
 							<p className="scrub-file-note">
-								Carries no character name, account, realm or Battle.net tag &mdash; it is NPC dialogue, item names and tuning rows &mdash; so it
-								goes straight up.
+								This checks the file header locally. It does not upload the cache or apply it to the simulator.
 							</p>
-							{dropZone('hotfix-drop', 'Choose DBCache.bin', 'or drag it here', file => this.sendHotfix(file))}
+							{dropZone('hotfix-drop', 'Choose DBCache.bin', 'or drag it here', file => this.inspectHotfix(file))}
 							<div className="scrub-result scrub-result-hotfix" />
 						</section>
 
@@ -104,9 +100,7 @@ export class ScrubPage {
 							</h2>
 							<p className="scrub-file-sub">What the server actually paid out</p>
 							<p>
-								Nothing on this site has been checked against a running game, and Forever blocks addons from reading damage, so the
-								client&apos;s own meter is the only measurement there will be. It is the only thing that can show a number here is wrong rather
-								than merely unverified.
+								The client&apos;s meter records observed totals, which can help check behavior that static spell tables do not establish.
 							</p>
 							<p className="scrub-path">
 								<code>World of Warcraft\_classic_beta_\Cache\</code>
@@ -117,8 +111,8 @@ export class ScrubPage {
 								copy it out &mdash; ideally without closing the game first.
 							</p>
 							<p className="scrub-file-note scrub-warn">
-								This one holds character names, yours and everyone you grouped with. They are taken out <strong>in your browser</strong> before
-								anything is sent, and you get to see what is left first.
+								This file holds character names. Recognized class-tagged names are replaced <strong>in your browser</strong>.
+								Pet names, unrecognized records and other identifying data may remain. The download is not guaranteed anonymous.
 							</p>
 							{dropZone('meter-drop', 'Choose DamageMeter.bin', 'or drag it here', file => this.scrubMeter(file))}
 							<div className="scrub-result scrub-result-meter" />
@@ -126,22 +120,12 @@ export class ScrubPage {
 					</div>
 
 					<section className="scrub-drop-section">
-						<label className="scrub-note">
-							<span>Anything worth saying about it? Optional.</span>
-							<input
-								type="text"
-								maxLength={200}
-								placeholder="Fury warrior, dummy, 3 min - or a tooltip that disagrees with the sim"
-								oninput={(event: Event) => (this.note = (event.target as HTMLInputElement).value)}
-							/>
-						</label>
 						<p className="scrub-file-note">
-							Files land in a private bucket, are read and thrown away, and are never committed to the repository. If you would rather send it
-							yourself,{' '}
+							Review any file before sharing it. You can{' '}
 							<a href={ISSUE_URL} target="_blank" rel="noreferrer">
 								open an issue
 							</a>{' '}
-							instead.
+							to discuss a finding without attaching a file.
 						</p>
 					</section>
 				</main>
@@ -151,24 +135,19 @@ export class ScrubPage {
 		this.meterResult = parent.querySelector('.scrub-result-meter') as HTMLElement;
 	}
 
-	/** No names in it, so it goes as soon as it is dropped. */
-	private async sendHotfix(file: File | undefined) {
+	private async inspectHotfix(file: File | undefined) {
 		if (!file) return;
-		this.hotfixResult.replaceChildren(<p className="scrub-message">Sending {file.name}...</p>);
-		const bytes = new Uint8Array(await file.arrayBuffer());
-		const result = await upload('dbcache', bytes, this.note);
+		const header = new Uint8Array(await file.slice(0, 4).arrayBuffer());
+		const recognized = new TextDecoder().decode(header) === 'XFTH';
 		this.hotfixResult.replaceChildren(
-			result.ok ? (
-				<p className="scrub-sent">
-					<i className="fas fa-check" /> Sent, thank you. Reference <code>{result.receipt.split('/').pop()!.slice(0, 8)}</code>.
-				</p>
-			) : (
-				<p className="scrub-warn scrub-message">{result.error}</p>
-			),
+			<p className="scrub-message">
+				{file.name}: {recognized ? 'recognized XFTH header' : 'not a recognized hotfix-cache header'}.
+				Nothing was uploaded.
+			</p>,
 		);
 	}
 
-	/** Names out first, then show what is left, then send on a deliberate click. */
+	/** Show and download the locally scrubbed copy. */
 	private async scrubMeter(file: File | undefined) {
 		if (!file) return;
 		this.meterResult.replaceChildren(<p className="scrub-message">Reading {file.name}...</p>);
@@ -198,28 +177,6 @@ export class ScrubPage {
 		const shown = records.filter(plausible).length;
 		const url = URL.createObjectURL(new Blob([scrubbed as unknown as BlobPart], { type: 'application/octet-stream' }));
 
-		const send = (
-			<button className="scrub-button" type="button">
-				<i className="fas fa-paper-plane" />
-				<span>Send it</span>
-			</button>
-		) as HTMLButtonElement;
-
-		send.addEventListener('click', async () => {
-			send.disabled = true;
-			send.replaceChildren(<span>Sending...</span>);
-			const result = await upload('damagemeter', scrubbed, this.note);
-			send.replaceWith(
-				result.ok ? (
-					<p className="scrub-sent">
-						<i className="fas fa-check" /> Sent, thank you. Reference <code>{result.receipt.split('/').pop()!.slice(0, 8)}</code>.
-					</p>
-				) : (
-					<p className="scrub-warn scrub-message">{result.error}</p>
-				),
-			);
-		});
-
 		return (
 			<div className="scrub-report">
 				<p className="scrub-report-head">
@@ -229,13 +186,12 @@ export class ScrubPage {
 					from {String(records.length)} records. Same size, every damage number untouched.
 				</p>
 				<p className="scrub-actions">
-					{send}
 					<a className="scrub-button scrub-button-quiet" href={url} download={`scrubbed-${name}`}>
 						<i className="fas fa-download" />
-						<span>Or download it</span>
+						<span>Download locally</span>
 					</a>
 				</p>
-				<p className="scrub-report-note">The {String(shown)} records whose numbers read cleanly are below, exactly as they would arrive.</p>
+				<p className="scrub-report-note">The {String(shown)} records whose numbers read cleanly are shown below.</p>
 				<ul className="scrub-summary">
 					{[...byActor.entries()].map(([actor, row]) =>
 						summaryRow(actor, [row.className, `${row.damage.toLocaleString()} damage`, `${row.hits.toLocaleString()} hits`]),

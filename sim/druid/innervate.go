@@ -36,7 +36,8 @@ func (druid *Druid) registerInnervateCD() {
 	})
 
 	druid.Innervate = druid.RegisterSpell(Humanoid|Moonkin, core.SpellConfig{
-		ActionID: actionID,
+		ActionID:    actionID,
+		SpellSchool: core.SpellSchoolNature,
 
 		ManaCost: core.ManaCostOptions{
 			BaseCost: 0.05,

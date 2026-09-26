@@ -194,7 +194,13 @@ func (warrior *Warrior) applyUnbridledWrath() {
 				return
 			}
 
-			if spell.ProcMask.Matches(core.ProcMaskMeleeWhiteHit) && sim.RandomFloat("Unbrided Wrath") < procChance {
+			// Queued Heroic Strike/Cleave carry both auto and special masks
+			// for other proc systems. Forever logs exclude them from UW.
+			eligible := spell.ProcMask.Matches(core.ProcMaskMeleeWhiteHit)
+			if warrior.Env.IsForever() && spell.ProcMask.Matches(core.ProcMaskMeleeSpecial) {
+				eligible = false
+			}
+			if eligible && sim.RandomFloat("Unbrided Wrath") < procChance {
 				warrior.AddRage(sim, rageGain, rageMetrics)
 			}
 		},

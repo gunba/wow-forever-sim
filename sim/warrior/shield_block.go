@@ -25,7 +25,6 @@ func (warrior *Warrior) RegisterShieldBlockCD() {
 		MaxStacks: maxBlocks,
 
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
-			aura.SetStacks(sim, aura.MaxStacks)
 			warrior.AddStatDynamic(sim, stats.Block, 75*core.BlockRatingPerBlockChance)
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
@@ -58,6 +57,9 @@ func (warrior *Warrior) RegisterShieldBlockCD() {
 
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, _ *core.Spell) {
 			warrior.ShieldBlockAura.Activate(sim)
+			// The five-second cooldown is shorter than the Forever aura.
+			// Refreshing an active aura does not call OnGain again.
+			warrior.ShieldBlockAura.SetStacks(sim, warrior.ShieldBlockAura.MaxStacks)
 		},
 	})
 

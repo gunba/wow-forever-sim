@@ -12,8 +12,9 @@ import { plausible, readRecords, scrub } from './scrub';
 
 /** A length-prefixed, NUL-terminated string, the way the client writes one. */
 function str(text: string): number[] {
-	const length = text.length + 1;
-	return [length & 0xff, (length >> 8) & 0xff, ...[...text].map(c => c.charCodeAt(0)), 0];
+	const bytes = new TextEncoder().encode(text);
+	const length = bytes.length + 1;
+	return [length & 0xff, (length >> 8) & 0xff, ...bytes, 0];
 }
 
 function u32(value: number): number[] {
@@ -84,6 +85,16 @@ function file(...parts: number[][]): Uint8Array {
 	const { scrubbed, namesRemoved } = scrub(bytes);
 	assert.strictEqual(namesRemoved, 2, "the nonsense record's name must still be scrubbed");
 	assert.ok(!Buffer.from(scrubbed).includes('Geosculptor Yip'), 'a name survived because its record looked odd');
+}
+
+// Valid short and UTF-8 names must not disappear from the discovery pass.
+for (const name of ['Al', 'Björn', '李雷']) {
+	const bytes = file(record(name, 'ROGUE', 2, 1752, 36), str(name));
+	const { scrubbed, namesRemoved } = scrub(bytes);
+	assert.strictEqual(namesRemoved, 1, `missed ${name}`);
+	assert.ok(!Buffer.from(scrubbed).includes(Buffer.from(str(name))), `left ${name}`);
+	assert.strictEqual(scrubbed.length, bytes.length);
+	assert.strictEqual(readRecords(scrubbed)[0].damage, 36);
 }
 
 console.log('scrub: all checks passed');

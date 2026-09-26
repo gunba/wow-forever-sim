@@ -24,8 +24,8 @@ func TestShadowformCostAndRestrictions(t *testing.T) {
 	if !p.Shadowform.Cast(sim, &p.Unit) || math.Abs(before-p.CurrentMana()-.4*p.BaseMana) > 1e-8 {
 		t.Fatal("Shadowform did not charge 40% base mana")
 	}
-	if p.GCD.TimeToReady(sim) != core.GCDDefault {
-		t.Fatal("Shadowform did not trigger its 1.5-second GCD")
+	if p.GCD.TimeToReady(sim) != p.ApplyCastSpeed(core.GCDDefault) {
+		t.Fatal("Shadowform did not trigger its hasted spell GCD")
 	}
 	sim.CurrentTime = 2 * time.Second
 	if !p.Smite[priest.SmiteRanks].CanCast(sim, p.CurrentTarget) || !p.HolyFire[priest.HolyFireRanks].CanCast(sim, p.CurrentTarget) {

@@ -432,8 +432,9 @@ func (priest *Priest) registerShadowform() {
 	})
 
 	priest.Shadowform = priest.RegisterSpell(core.SpellConfig{
-		ActionID: actionID,
-		Flags:    core.SpellFlagNoOnCastComplete | core.SpellFlagAPL,
+		ActionID:    actionID,
+		SpellSchool: core.SpellSchoolShadow,
+		Flags:       core.SpellFlagNoOnCastComplete | core.SpellFlagAPL,
 
 		ManaCost: core.ManaCostOptions{BaseCost: 0.40},
 		Cast: core.CastConfig{
