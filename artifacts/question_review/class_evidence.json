@@ -1,0 +1,166 @@
+{
+  "revision": "35cab052456a320358e998c12416687d69cae142",
+  "scope": "Selected public client fields and existing-result accounting supporting the class-question review. No combat mechanics or benchmark requests were changed.",
+  "tables": {
+    "SpellEffect_1.60.1.70009.csv": "fdecddfd93a3c27b48d7bbbebc8cc733a502fa8d58de623646550f9a5cffeb00",
+    "SpellAuraOptions_1.60.1.69977.csv": "dbbc55288c4e787979d87b15f549b26710abc28950b6919242412c4d5a48bd38",
+    "SpellMisc_1.60.1.70009.csv": "6e4c26027a38b519c2a61cbaf94b557d06cbf61b94c94377504957774ed7e145",
+    "SpellLevels_1.60.1.69977.csv": "552b476ddbe494b9f87c26a488c83da7ae4dc0d757d38dcddff0772d4b720286",
+    "SpellClassOptions_1.60.1.69893.csv": "6e73cc62a16159bc68d641143830c64e2d67eca83c117416ed6fa256b5d9a211",
+    "SpellItemEnchantment_1.60.1.69893.csv": "ba14173e6123089f723a03568f7fcf46a6613b6502f2b6e89870719fc1f0424b",
+    "SpellDuration_1.60.1.69913.csv": "8a2d2a82c96d2a3dfa20883093cf9a1071abc8b26f9681da3500324e9560b31c"
+  },
+  "findings": [
+    {
+      "ids": ["WL-003"],
+      "spell": 1316697,
+      "effect": 1349557,
+      "fields": {"EffectAura": 271, "EffectBasePointsF": 10, "EffectSpellClassMask_0": 1026},
+      "family_matches": [
+        {"spell": 172, "name": "Corruption", "SpellClassSet": 5, "SpellClassMask_0": 2, "matches": true},
+        {"spell": 980, "name": "Agony", "SpellClassSet": 5, "SpellClassMask_0": 1024, "matches": true},
+        {"spell": 603, "name": "Doom", "SpellClassSet": 5, "SpellClassMask_0": 2147483648, "SpellClassMask_1": 2, "matches": false},
+        {"spell": 689, "name": "Drain Life", "SpellClassSet": 5, "SpellClassMask_0": 8, "matches": false},
+        {"spell": 11675, "name": "Drain Soul", "SpellClassSet": 5, "SpellClassMask_0": 16384, "matches": false}
+      ],
+      "qualification": "Signed mask fields are interpreted as unsigned 32-bit bitsets. The earlier family table is qualified by its exact build; the current public affected-spell list corroborates the same scope.",
+      "public_source": "https://www.wowhead.com/forever/spell=1316697/wrack",
+      "code": "sim/warlock/wrack.go: broad Shadow-school/has-DoT condition"
+    },
+    {
+      "ids": ["ROG-005"],
+      "aura_options": [
+        {"ID": 125982, "SpellID": 13960, "ProcCategoryRecovery": 200, "ProcChance": 1, "ProcTypeMask_0": 20},
+        {"ID": 245687, "SpellID": 1290312, "ProcCategoryRecovery": 200, "ProcChance": 5, "ProcTypeMask_0": 20}
+      ],
+      "qualification": "The rank curve sets magnitude; these two records independently specify the 200-ms recovery. They do not establish every mixed-hand modifier rule."
+    },
+    {
+      "ids": ["SHA-003"],
+      "enchant_to_aura": {"283": 439431, "284": 439431, "525": 439431, "1669": 439431},
+      "aura_options": {"ID": 235799, "SpellID": 439431, "ProcCategoryRecovery": 1500, "ProcChance": 20, "ProcTypeMask_0": 20},
+      "active_effect": {"ID": 1132731, "SpellID": 439431, "Effect": 6, "EffectAura": 4, "EffectBasePointsF": 46, "EffectRealPointsPerLevel": 7.19999980927},
+      "qualification": "The active enchant points to a dummy script, not directly to legacy extra-attack effect 8233. The latter is still referenced by descriptive text. This settles the data-backed ICD, not the script's attack table or rank routing.",
+      "public_source": "https://www.wowhead.com/forever/spell=439431/windfury-weapon"
+    },
+    {
+      "ids": ["HUN-004"],
+      "opening_spells": [
+        {"spell": 1293241, "base": 32},
+        {"spell": 1293525, "base": 47},
+        {"spell": 1293526, "base": 85},
+        {"spell": 1293527, "base": 108}
+      ],
+      "shared_fields": {"EffectIndex_2_dummy_max_hawks": 2, "EffectIndex_3_dummy_RAP_percent": 5, "EffectIndex_1_trigger": 1312639},
+      "summon_records": [
+        {"spell": 1293248, "Effect": 28, "creature": 264850, "summon_properties": 6837},
+        {"spell": 1312637, "Effect": 28, "creature": 264850, "summon_properties": 6838}
+      ],
+      "qualification": "These fields do not provide guardian melee damage, attack speed or inheritance."
+    },
+    {
+      "ids": ["HUN-009"],
+      "teaching_spell": 24582,
+      "active_spell": 24579,
+      "damage_effect": {"ID": 702151, "EffectBasePointsF": 33, "Variance": 0.55555558205},
+      "ap_effect": {"ID": 702152, "EffectAura": 99, "EffectBasePointsF": -198, "EffectRealPointsPerLevel": -1.60000002384},
+      "levels": {"SpellLevel": 56, "MaxLevel": 60},
+      "duration": {"index": 9, "milliseconds": 30000},
+      "qualification": "The actual debuff is not the old remembered -100 AP/four-second Screech. Rank one 24423 also records a ten-second recovery. Rounding and strongest-provider handling belong in the implementation regression."
+    },
+    {
+      "ids": ["MAG-004"],
+      "aura": 400625,
+      "aura_options": {"CumulativeAura": 3, "ProcCharges": 1, "ProcChance": 100},
+      "duration": {"index": 18, "milliseconds": 20000},
+      "qualification": "Engine duration agrees. The UI's 15-second talent prose is stale. Charge fields do not establish interrupted/in-flight consumption order."
+    },
+    {
+      "ids": ["PRI-001"],
+      "spell": 1309595,
+      "effects": [
+        {"ID": 1338637, "Effect": 2, "EffectBasePointsF": 295, "EffectBonusCoefficient": 0.42899999022},
+        {"ID": 1338638, "Effect": 77, "EffectBasePointsF": 150},
+        {"ID": 1338639, "Effect": 3, "EffectBasePointsF": 10}
+      ],
+      "qualification": "150 is a script-effect argument, not an explicit damage-percent aura."
+    },
+    {
+      "ids": ["PRI-004"],
+      "ranks": [
+        {"spell": 14752, "level": 30, "spirit": 17},
+        {"spell": 14818, "level": 40, "spirit": 23},
+        {"spell": 14819, "level": 50, "spirit": 33},
+        {"spell": 27841, "level": 60, "spirit": 40}
+      ],
+      "availability_source": "https://news.blizzard.com/en-us/article/24303313/world-of-warcraft-forever-deep-dive-panel-recap",
+      "qualification": "Blizzard explicitly confirms baseline class-buff availability. Trainer delivery and numeric effect values are separate sources."
+    },
+    {
+      "ids": ["ROG-001"],
+      "cold_blood": {"spell": 14177, "EffectAura": 107, "EffectMiscValue_0": 7, "EffectSpellClassMask_0": 131590, "EffectSpellClassMask_1": 6, "ProcCharges": 1},
+      "mutilate_children": {"1310707": [1310706, 1310705], "1241584": [1241586, 1241590]},
+      "qualification": "Family eligibility and one charge do not establish when that charge is removed relative to two triggered children."
+    },
+    {
+      "ids": ["ROG-003"],
+      "coating_limits": [
+        {"spell": 11340, "effect": 1340483, "charges": 175},
+        {"spell": 25351, "effect": 1340531, "charges": 180}
+      ],
+      "existing_result_accounting": {
+        "path": "artifacts/forever_dps_5min.json",
+        "sha256": "499ea30c15d0f6339486613fa1d22311aa540dc4cc7aa06324f59bff3389e5e2",
+        "profile_count": 27,
+        "iterations_per_profile": 5000,
+        "duration_seconds": 300,
+        "method": "Sum hits+crits+misses for the Instant/Deadly application actions and divide by iterations. Exclude Deadly tag-100 periodic ticks. Resisted-hit/crit fields are subsets, not extra applications.",
+        "max_average_instant_attempts": 92.29,
+        "max_average_deadly_applications": 96.05,
+        "qualification": "Aggregate averages, not per-iteration maxima or a guarantee against depletion. No new simulation was run."
+      }
+    },
+    {
+      "ids": ["WL-001"],
+      "description_variable_ids": [1017, 1018],
+      "formula": "(1.5 * (level - 26) + uniform(14,17) + 0.078 * matching_school_power) * pet_modifiers",
+      "children": [
+        {"spell": 1293697, "school_mask": 32, "Attributes_3": 262144},
+        {"spell": 1293698, "school_mask": 4, "Attributes_3": 262144}
+      ],
+      "qualification": "Always-hit is explicit. The description's power variable does not identify the server script's caster context. An exact 3x threat multiplier and cannot-crit rule are not established here."
+    },
+    {
+      "ids": ["WL-004"],
+      "effects": [
+        {"ID": 1233765, "SpellID": 1237162, "EffectAura": 13, "EffectBasePointsF": 14, "EffectMiscValue_0": 36},
+        {"ID": 1233768, "SpellID": 1237164, "EffectAura": 13, "EffectBasePointsF": 17, "EffectMiscValue_0": 36},
+        {"ID": 1233770, "SpellID": 1237165, "EffectAura": 13, "EffectBasePointsF": 21, "EffectMiscValue_0": 36}
+      ],
+      "qualification": "School mask 36 is Fire|Shadow. Separate aura-65 effects provide 1/2/2 casting speed, not generic attack haste."
+    },
+    {
+      "ids": ["WL-006", "WL-008", "SCEN-006"],
+      "spell": 18694,
+      "active_trait": 135439,
+      "firebolt_effect": {"ID": 1230516, "EffectAura": 108, "EffectMiscValue_0": 0, "EffectSpellClassMask_0": 4096},
+      "damage_percent_by_rank": [10, 20, 30],
+      "dummy_effect": {"ID": 1242910, "EffectAura": 4},
+      "dummy_by_rank": [-300, -700, -1000],
+      "qualification": "The ordinary damage-percent modifier includes spell-power damage. Its separate dummy has no declared cast-time operation. The code's base-only damage multiplier and its omitted dummy are different issues. Neither named modifier covers Blood Pact; the current talent description explicitly names only Firebolt and Fire Shield.",
+      "blood_pact_model": {
+        "current_external_improved_stamina": 70,
+        "sourced_regular_stamina": 54,
+        "saved_dps_requests_with_improved_flag": 184,
+        "saved_tank_requests_without_blood_pact": 17,
+        "qualification": "The current regression locks in the obsolete 30% multiplier. Passing that regression is not source verification. This review reports the discrepancy without changing the requests."
+      },
+      "public_source": "https://www.wowhead.com/forever/spell=18694/improved-imp"
+    }
+  ],
+  "access_gaps": [
+    "Hunter issues 22, 23, 35, 39, 45, 46 and 47 were fetched with their comments. Each contained a Discord-channel pointer and no public result comments. They were not counted as answered experiments.",
+    "The current client table collection spans multiple builds; no claim is made that every table was newly exported from 70009.",
+    "No finite-shard inventory, copied-damage formula or server dummy implementation was inferred merely from an external simulator."
+  ]
+}

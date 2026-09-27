@@ -16,6 +16,7 @@ try {
 		& Node.DOCUMENT_POSITION_FOLLOWING));
 	assert.equal(await page.locator('.question-group:not([hidden])[open]').count(), 0);
 	assert.equal(await page.locator('.question-card[data-status="resolved"]:not([hidden])').count(), 0);
+	assert.equal(await page.locator('.question-card[data-status="provisional"]:not([hidden])').count(), 0);
 	await page.locator('#question-search').fill('Maelstrom');
 	assert(await page.locator('#SHA-001').isVisible());
 	assert(await page.locator('.question-group[open]').count() > 0);
@@ -30,10 +31,19 @@ try {
 	await page.locator('#question-search').fill('');
 	await page.locator('#question-status').selectOption('needs-code');
 	await page.locator('#question-priority').selectOption('high');
-	await page.locator('#question-access').selectOption('source-code');
+	await page.locator('#question-access').selectOption('offline');
 	assert(await page.locator('.question-card:not([hidden])').count() > 0);
 	assert.equal(await page.locator('.question-card:not([hidden]):not([data-status="needs-code"])').count(), 0);
 	assert.equal(await page.locator('.question-card:not([hidden]):not([data-priority="high"])').count(), 0);
+	for (const stage of ['current-beta', 'level30', 'launch', 'offline']) {
+		await page.locator(`button[data-stage="${stage}"]`).click();
+		const expected = register.items.filter(item =>
+			['needs-evidence', 'needs-code', 'model-choice'].includes(item.status)
+			&& item.review.tests.some(test => test.stage === stage)).map(item => item.id).sort();
+		const visible = await page.locator('.question-card:not([hidden])').evaluateAll(cards => cards.map(c => c.id).sort());
+		assert.deepEqual(visible, expected, `${stage}: multi-stage filter mismatch`);
+	}
+	await page.locator('button[data-stage="current-beta"]').click();
 	await page.setViewportSize({ width: 390, height: 844 });
 	assert(await page.evaluate(() => document.querySelector('#questions').scrollWidth <= window.innerWidth));
 	assert.deepEqual(errors, []);

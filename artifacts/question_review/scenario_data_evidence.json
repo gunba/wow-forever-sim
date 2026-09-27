@@ -1,0 +1,148 @@
+{
+  "revision": "35cab052456a320358e998c12416687d69cae142",
+  "scope": "Selected client fields and existing-artifact inspection. No simulations or combat-code changes.",
+  "client_provenance": "artifacts/question_review/sources.json",
+  "effect_table": "SpellEffect_1.60.1.70009.csv",
+  "description_table": "Spell_1.60.1.69977.csv",
+  "enchantment_table": "SpellItemEnchantment_1.60.1.69893.csv",
+  "duration_table": "SpellDuration_1.60.1.69913.csv",
+  "proc_enchants": {
+    "1900": {
+      "name": "Crusader",
+      "spells": [20007, 458112],
+      "effects": [
+        {"id": 697922, "kind": "Strength aura", "base": 100},
+        {"id": 697923, "kind": "self heal", "base": 100, "variance": 0.5, "range": [75, 125]}
+      ],
+      "duration_seconds": 15,
+      "current_handler": "Strength only; 100 - 4 * (level - 60), without a below-60 clamp.",
+      "qualification": "The wrapper's proc-chance field does not establish the effective enchant PPM. Healing outcome, eligibility and threat must not be inferred from the flat amount alone."
+    },
+    "803": {
+      "name": "Fiery Weapon",
+      "spell": 13897,
+      "effect": 690415,
+      "damage": 40,
+      "qualification": "The sourced amount agrees with the handler. It does not verify the inherited 6 PPM or proc masks."
+    },
+    "1898": {
+      "name": "Lifestealing",
+      "spell": 20004,
+      "effect": 697642,
+      "effect_type": 9,
+      "base": 30,
+      "current_handler": "Damage only, not a health-leech implementation.",
+      "qualification": "No current profile equips this enchant; full leech outcome and healing behavior remain separately scoped."
+    }
+  },
+  "current_equipment": {
+    "source": "artifacts/forever_dps_5min.json",
+    "sha256": "499ea30c15d0f6339486613fa1d22311aa540dc4cc7aa06324f59bff3389e5e2",
+    "profiles": 201,
+    "builds": 31,
+    "enchanted_slot_counts": {"1900": 120, "803": 28, "1898": 0, "8720": 109},
+    "crusader_tank_profiles": {"tank_warrior": 10, "protection_paladin": 3, "feral_tank_druid": 4},
+    "qualification": "Counts are equipment slots, not assumed proc events. All 17 current tanks have one Crusader enchant; this does not quantify effective healing or DPS impact."
+  },
+  "vendor_effects": [
+    {
+      "item": 272437,
+      "name": "Adaptive Combat Assistant",
+      "parent": 1291097,
+      "absorb_effect": 1310285,
+      "absorb": 450,
+      "school_mask": 127,
+      "duration_index": 8,
+      "duration_seconds": 15,
+      "explosion_spell": 1291099,
+      "explosion_effect": 1310289,
+      "explosion_mean": 100,
+      "explosion_variance": 0.2,
+      "explosion_range": [90, 110],
+      "explosion_school": "Nature",
+      "item_cooldown_ms": 90000,
+      "qualification": "Description ties the explosion to the shield expiring before its normal duration. Depletion, dispel and other early-removal semantics remain a script question."
+    },
+    {
+      "item": 272440,
+      "name": "Defender's Grip Stabilizer",
+      "spell": 1291105,
+      "effect": 1310297,
+      "block_percent": 8,
+      "duration_seconds": 15,
+      "item_cooldown_ms": 360000,
+      "location_multiplier": "Description doubles the effect in Strongholds and Cities.",
+      "qualification": "The ordinary outside-city branch is sufficiently specified without inventing location-dependent combat behavior."
+    },
+    {
+      "item": 272432,
+      "name": "Totem of the Storm",
+      "spell": 1291078,
+      "effect": 1310258,
+      "aura_type": 4,
+      "base_points": 50,
+      "meaning": "Lightning Bolt may trigger Maelstrom Weapon with a 50% reduced chance.",
+      "qualification": "The dummy effect does not specify the effective spell-event probability or a PPM normalization basis."
+    }
+  ],
+  "spell_inventory": {
+    "source": "artifacts/spell_coverage.json",
+    "families": 151,
+    "dispositions": {
+      "registered": 91,
+      "alias": 12,
+      "conditional": 10,
+      "not-used": 18,
+      "not-implemented": 6,
+      "awaiting-pet-data": 8,
+      "awaiting-availability": 6
+    },
+    "qualification": "This is the saved historical inventory, not a refreshed runtime census. Its tank/selected-talent descriptions need updating; static source-ID coverage is a different check.",
+    "held_acquisition": ["Black Arrow", "Hunter Lacerate", "Mage Felfire", "Lava Breath", "Hammer of the Righteous", "Victory Rush"]
+  },
+  "weapon_racial_scope": {
+    "spell": 20574,
+    "effect": 697940,
+    "aura_type": 290,
+    "base_percent": 1,
+    "equipped_item_class": 2,
+    "equipped_item_subclass_mask": 3,
+    "description_scope": "All spells and abilities while an axe or two-handed axe is equipped.",
+    "community_scope": "Forever Hunter wiki excludes ranged crit but includes melee/spell/pet crit.",
+    "current_code": "AddWeaponSpecializationCrit adds MeleeCrit and SpellCrit; ranged outcome resolution also reads MeleeCrit.",
+    "qualification": "A real source/code disagreement, not proof that generic gear crit should stop sharing. Current live scope needs a focused racial-weapon control."
+  },
+  "legacy_fixture_probe": {
+    "command": "go test -tags with_db ./sim -run 'Test(TalentTreesMatchTheirProtos|TalentsDoNotShareASlot|PresetBuildsAreLegal|ConfirmedTalentRanksMatchTheSim|LandingPageBuildLinksNamePresets|SimTitleDropdownBuildsMatchLandingPage)$' -count=1",
+    "exit_code": 1,
+    "passed": ["TestTalentsDoNotShareASlot"],
+    "failures": {
+      "TestConfirmedTalentRanksMatchTheSim": "Seven assertion failures compare sourced post-patch Paladin/Warrior values against generated 69893 expectations.",
+      "TestTalentTreesMatchTheirProtos": "Assumes contiguous wire field numbers rather than declaration order; also identifies the stale production Paladin final-tree size of 18 versus 17.",
+      "TestPresetBuildsAreLegal": "Two obsolete Holy Paladin exports and Elemental's old Level 60 export are illegal. The latter is not part of Elemental's current BuildPresets picker list.",
+      "TestLandingPageBuildLinksNamePresets": "Expects legacy build-link markup absent from the current landing page.",
+      "TestSimTitleDropdownBuildsMatchLandingPage": "Uses the same obsolete landing-page link contract."
+    },
+    "qualification": "This small fixture probe does not claim a complete inherited-suite audit. No combat requests or benchmark results were rerun."
+  },
+  "talent_source_reconciliation": {
+    "retired_input": "tools/forever_talents/data/",
+    "current_ui": "ui/core/talents/trees/",
+    "old_conflicts": "The later reversal in docs/talent-check-2026-09-17.md supersedes its earlier seven-conflict rejection. The crawl was BlizzCon-derived, not contemporaneous beta verification.",
+    "current_rank_values": {
+      "Moonglow": [8, 17, 25],
+      "Moonfury": [2, 4, 6, 8, 10],
+      "Lethality": [4, 8, 12, 16, 20],
+      "ImprovedStingsDamage": [6, 13, 20]
+    },
+    "position_conflict": {
+      "table": "TraitNode_1.60.1.70009.csv",
+      "captured_focused_rage": {"node": 105961, "x": 10280, "y": 5130, "spell": 29787},
+      "captured_bastion": {"node": 105962, "x": 10880, "y": 4530, "spell": 16538},
+      "current_ui_focused_rage": {"rowIdx": 4, "colIdx": 3},
+      "current_ui_bastion": {"rowIdx": 5, "colIdx": 2},
+      "disposition": "Current UI follows the explicit September 24 official position swap, not the older positions retained in the captured node rows.",
+      "source": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-september-24/2360696"
+    }
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "captured": "2026-09-27",
+  "class_review_evidence": "artifacts/question_review/class_evidence.json",
+  "scenario_data_evidence": "artifacts/question_review/scenario_data_evidence.json",
+  "seed_interval_review": "artifacts/question_review/seed_ranges.json",
+  "policy": "Public source provenance and aggregate findings only. Original private chat, raw combat logs and character identifiers are not published.",
+  "access_notes": [
+    "A fresh fetch for missing objects from the local partial-clone wowsims/forever remote returned Repository not found during this pass. Pinned source descriptions already captured locally remain usable, but this pass does not claim a fresh review of unavailable upstream objects.",
+    "Client tables are a versioned collection, not a single complete 70009 export: the per-table build and hash below identify exactly what was inspected.",
+    "Public Wowhead pages can contain stale text, failed trait-rank interpolation or script-level gaps. Conflicts with the captured client are recorded, not silently averaged."
+  ],
+  "repositories": [
+    {
+      "url": "https://github.com/classic-hunter/forever-hunter/wiki",
+      "revision": "21963eea7bb4c96a33ceb1c8a2799aeb8bab17d4",
+      "page": "Forever-Beta-Changes.md",
+      "qualification": "Forever-specific community findings. Its older Classic pages are not independent Forever measurements."
+    },
+    {
+      "url": "https://github.com/ppach/marrow.github.io",
+      "revision": "fc8d55362ba4511a379070a956688bc5a3f18e1e",
+      "paths_reviewed": ["eternal/data/analyze.py", "eternal/data/parse_log.py", "eternal/data/logs/metadata.yaml", "eternal/data/derived/swing_clusters.csv", "eternal/04-flurry.Rmd"],
+      "qualification": "The rage chapter includes observations. The Flurry chapter explicitly remains a model. Weapon metadata and recorded levels have qualifications; neither proves level-60 behavior."
+    }
+  ],
+  "public_responses": [
+    {
+      "topic": "Gear-specific MP5 beta defect",
+      "url": "https://github.com/ClassicWoWCommunity/forever-bugs/issues/54#issuecomment-5773153815",
+      "updated": "2026-09-22T08:05:58Z",
+      "body_sha256": "56cc94525fb1e25f7d634c193d06e2daa3947610bb844bb3275e7f4284f117c7"
+    },
+    {
+      "topic": "Poison AP ratios",
+      "url": "https://github.com/ClassicWoWCommunity/forever-bugs/issues/100#issuecomment-5804701503",
+      "updated": "2026-09-23T23:33:09Z",
+      "body_sha256": "80cc16dea8bff14695e9460a2b30e7d0f8549d3dfd190915494cfa81595b43a5"
+    },
+    {
+      "topic": "Pet external buff exclusion",
+      "url": "https://github.com/ClassicWoWCommunity/forever-bugs/issues/27#issuecomment-5732694574",
+      "updated": "2026-09-18T16:04:38Z",
+      "body_sha256": "3fdb196e6c170a1f63070b2b05fc0933ad47c0d0b5d3a507e67cefd0557fc940"
+    },
+    {
+      "topic": "Unbridled Wrath future-build correction",
+      "url": "https://github.com/ClassicWoWCommunity/forever-bugs/issues/105#issuecomment-5807253054",
+      "updated": "2026-09-24T03:51:55Z",
+      "body_sha256": "85cc113cfc0a864fcd11c8e260f32b8626704e28a43a736c9fd4d24b28d0ff65"
+    },
+    {
+      "topic": "Intentional dynamic Thorns and Retribution Aura SP",
+      "url": "https://github.com/ClassicWoWCommunity/forever-bugs/issues/117#issuecomment-5822983107",
+      "updated": "2026-09-24T22:03:51Z",
+      "body_sha256": "4807b4240e8d33236107f0a1ccb6b05d7c3ca4475538763361d873c16314249a"
+    },
+    {
+      "topic": "Swipe AP script, not an SP coefficient",
+      "url": "https://github.com/ClassicWoWCommunity/forever-bugs/issues/125#issuecomment-5841232704",
+      "updated": "2026-09-25T23:53:37Z",
+      "body_sha256": "3c9c09ccf9821ed2e21cc354fd522c5c01b2293e70054c14f8936e28fbf3295c"
+    },
+    {
+      "topic": "Swipe fix is internal, planned for a later build",
+      "url": "https://github.com/ClassicWoWCommunity/forever-bugs/issues/125#issuecomment-5842005903",
+      "updated": "2026-09-26T01:35:10Z",
+      "body_sha256": "ce04c9ea0739e72f0945e70d1e96accf8cbeee2ca0d05e41708b58e6bd11f8be"
+    },
+    {
+      "topic": "When-struck effects, full blocks and stance modifiers",
+      "url": "https://github.com/ClassicWoWCommunity/forever-bugs/issues/104#issuecomment-5806310943",
+      "updated": "2026-09-24T02:21:17Z",
+      "body_sha256": "f8daa99f22f5a6baff79a662990594c5e961b0eca55d71aab22b3083cc33241a"
+    },
+    {
+      "topic": "Incoming versus outgoing rage through Priest shields",
+      "url": "https://github.com/ClassicWoWCommunity/forever-bugs/issues/78#issuecomment-5786631000",
+      "updated": "2026-09-23T00:10:45Z",
+      "body_sha256": "f153b7423faa9e7e6465556d79fcab089f9565005005dd85247f7a68624b72bb"
+    },
+    {
+      "topic": "Incoming rage is still under investigation",
+      "url": "https://github.com/ClassicWoWCommunity/forever-bugs/issues/72#issuecomment-5808179814",
+      "updated": "2026-09-24T05:19:29Z",
+      "body_sha256": "40580c1a72a8e623561f46d07f1806aa33f68c67da9892896c63a43acd8efc68"
+    }
+  ],
+  "client_tables": [
+    {"table": "Spell", "build": "1.60.1.69977", "sha256": "7c9acd23c5bc839cc2c66009b8ac3911f7091f795d1f9412254fe42730606007"},
+    {"table": "SpellEffect", "build": "1.60.1.70009", "sha256": "fdecddfd93a3c27b48d7bbbebc8cc733a502fa8d58de623646550f9a5cffeb00"},
+    {"table": "SpellAuraOptions", "build": "1.60.1.69977", "sha256": "dbbc55288c4e787979d87b15f549b26710abc28950b6919242412c4d5a48bd38"},
+    {"table": "SpellCooldowns", "build": "1.60.1.69977", "sha256": "988c4ce99d5652a89eba379a4844aa12489b5c89a75205b45d565dcec5121b0c"},
+    {"table": "SpellCategories", "build": "1.60.1.69977", "sha256": "2dcc4b90f667fbbdd8032d02bac784261fcf86c61876f46853dd151c4524bb3d"},
+    {"table": "SpellLevels", "build": "1.60.1.69977", "sha256": "552b476ddbe494b9f87c26a488c83da7ae4dc0d757d38dcddff0772d4b720286"},
+    {"table": "SpellMisc", "build": "1.60.1.70009", "sha256": "6e4c26027a38b519c2a61cbaf94b557d06cbf61b94c94377504957774ed7e145"},
+    {"table": "TraitDefinition", "build": "1.60.1.70009", "sha256": "afa7acf4bc91143377a660dd20613bc7a6488f1adf4bf5aad9ec0ac61bef22c7"},
+    {"table": "TraitDefinitionEffectPoints", "build": "1.60.1.69977", "sha256": "64105c2e36b1f4381ba4584d7924aacec9dd1fdfbdaac0089034f90fbb97e147"},
+    {"table": "TraitNode", "build": "1.60.1.70009", "sha256": "d3553ec219c1f82eb1b1c933ca5ecf0c66fb11d857699060f46d03550c87efed"},
+    {"table": "TraitNodeEntry", "build": "1.60.1.70009", "sha256": "4f13a6dc76af27ab26b39492e47105b49f5fb471e31c61f7fa3ef655871f4b50"},
+    {"table": "TraitNodeXTraitNodeEntry", "build": "1.60.1.70009", "sha256": "b54ec6d8f2a6c4985ca0da8e40e91c0c0e81084fd883055bef801e08c3eeb83e"},
+    {"table": "CurvePoint", "build": "1.60.1.69977", "sha256": "6b6f53aaa7e27d29706a3411d651594eb7cfe05b3ec21360c7ec19d0c226ee04"},
+    {"table": "SpellPower", "build": "1.60.1.69977", "sha256": "02f4ef844b849fe94f0c4b49fb7e21a178213c90d44afa7d1665cb8b62a32380"}
+  ],
+  "client_findings": [
+    {
+      "topic": "Consecrated Ground",
+      "definition": 142624,
+      "node": 110872,
+      "spell": 1310905,
+      "effect_curves": {"0": 110322},
+      "curve_values": {"110322": [5, 10]},
+      "interpretation": "Holy damage amplification for the first four enemies entering Consecration, not mitigation."
+    },
+    {
+      "topic": "Retribution Aura rank 5",
+      "spell": 10301,
+      "effect": 687971,
+      "base_points": 30,
+      "interpretation": "The engine's base 20 is stale. Numeric SP scaling is not exposed by this effect row; the public developer response confirms scripted scaling exists."
+    },
+    {
+      "topic": "Judgement of Wisdom",
+      "parent_spells": [20186, 20354, 20355],
+      "proc_chance_field": 100,
+      "proc_mask": 139944,
+      "intermediate_spell": 1826,
+      "mana_spell": 20353,
+      "mana_effect": 698050,
+      "mana_amount": 59,
+      "interpretation": "The intermediate is a dummy script. Wowhead's displayed 50% and the parent's 100% field do not resolve effective proc chance."
+    },
+    {
+      "topic": "Builder versus finisher refund attribute",
+      "attribute_word": 1,
+      "attribute_bit": "0x04000000",
+      "present": [1752, 1082, 1822],
+      "absent": [2098, 1943, 1079, 22568],
+      "interpretation": "Supports differing refund eligibility, not a measured 80% refund fraction."
+    },
+    {
+      "topic": "Light's Vigil enemy branch",
+      "parent_spells": [1310911, 1311590, 1311595],
+      "damage_children": [1310914, 1311592, 1311598],
+      "spell_power_coefficient": 0.429,
+      "refund_percent": 75,
+      "interpretation": "The consuming Holy Shock triggers no new cooldown; this is not evidence that an already-running cooldown is reset on mark application."
+    },
+    {
+      "topic": "Thick Hide",
+      "definition": 134403,
+      "node": 104942,
+      "effect_curves": {"0": 85346, "1": 111990},
+      "curve_values": {"85346": [67, 133, 200], "111990": [1, 2, 3]},
+      "interpretation": "The description divides effect 0 by 100. Bonus-Defense coefficients are 0.67/1.33/2.00; the per-level base armor is 1/2/3."
+    },
+    {
+      "topic": "Improved Moonfire",
+      "definition": 134392,
+      "spell": 16821,
+      "effect_curves": {"0": 85327, "1": 111699, "2": 111698},
+      "curve_values": {"85327": [5, 10], "111699": [5, 10], "111698": [5, 10]},
+      "interpretation": "Separate critical-chance, direct-damage and periodic-damage family modifiers; no explicit base-only SP exclusion."
+    },
+    {
+      "topic": "Redoubt",
+      "definition": 135151,
+      "spell": 20127,
+      "effect_curves": {"0": 82946, "1": 82945},
+      "curve_values": {"82946": [6, 12, 18, 24, 30], "82945": [2, 4, 6, 8, 10]},
+      "interpretation": "Supports the adopted rank curve. The second effect's proc interpretation is corroborated by the top-rank 10% aura field, not an independent measured rank sweep."
+    }
+  ],
+  "accessibility": {
+    "method": "Earliest talent level = 10 + 5 * zero-based row, before adding further ranks or combining talents from different trees. Runtime max-rank RequiredLevel fields and obsolete spell aliases do not establish game acquisition.",
+    "tree_revision": "35cab052456a320358e998c12416687d69cae142",
+    "talents": [
+      {"class": "Mage", "talent": "Ice Lance", "first_rank": 20, "maximum_rank": 20},
+      {"class": "Mage", "talent": "Hot Streak", "first_rank": 25, "maximum_rank": 25},
+      {"class": "Mage", "talent": "Fingers of Frost", "first_rank": 30, "maximum_rank": 31},
+      {"class": "Paladin", "talent": "Redoubt", "first_rank": 10, "maximum_rank": 14},
+      {"class": "Paladin", "talent": "Twist of Light", "first_rank": 40, "maximum_rank": 40},
+      {"class": "Priest", "talent": "Inner Focus", "first_rank": 20, "maximum_rank": 20},
+      {"class": "Rogue", "talent": "Cold Blood", "first_rank": 25, "maximum_rank": 25},
+      {"class": "Rogue", "talent": "Mutilate", "first_rank": 30, "maximum_rank": 30},
+      {"class": "Rogue", "talent": "Blade Flurry", "first_rank": 30, "maximum_rank": 30},
+      {"class": "Warrior", "talent": "Weaponmaster", "first_rank": 30, "maximum_rank": 34},
+      {"class": "Warrior", "talent": "Flurry", "first_rank": 35, "maximum_rank": 39},
+      {"class": "Warrior", "talent": "Shield Slam", "first_rank": 40, "maximum_rank": 40},
+      {"class": "Shaman", "talent": "Flurry", "first_rank": 25, "maximum_rank": 29},
+      {"class": "Shaman", "talent": "Maelstrom Weapon", "first_rank": 35, "maximum_rank": 39},
+      {"class": "Hunter", "talent": "Summon Hawk", "first_rank": 25, "maximum_rank": 25}
+    ],
+    "selected_learned_records": [
+      {"spell": 8679, "name": "Instant Poison", "level": 20},
+      {"spell": 2823, "name": "Deadly Poison", "level": 30},
+      {"spell": 8232, "name": "Windfury Weapon", "level": 30},
+      {"spell": 8512, "name": "Windfury Totem", "level": 32},
+      {"spell": 18499, "name": "Berserker Rage", "level": 32},
+      {"spell": 20166, "name": "Seal of Wisdom", "level": 38},
+      {"spell": 1510, "name": "Volley", "level": 40}
+    ],
+    "qualification": "Level records supply an access floor for identified player abilities, not proof every similarly named retained spell is trainable. Max-level values, set pieces and rank-specific server overrides still require their own evidence."
+  }
+}

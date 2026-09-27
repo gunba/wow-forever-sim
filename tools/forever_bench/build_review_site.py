@@ -61,6 +61,8 @@ def main():
     register = load_register()
     (args.output / "uncertainties.json").write_text(json.dumps(register, indent=2) + "\n")
     (args.output / "uncertainties.md").write_text(questions_markdown(register) + "\n")
+    shutil.copyfile("docs/question_review.md", args.output / "question_review.md")
+    shutil.copytree("artifacts/question_review", args.output / "question_review", dirs_exist_ok=True)
     shutil.copytree(args.profiles, args.output / "profiles", dirs_exist_ok=True)
     shutil.copytree("assets/img/spec_icons", args.output / "icons", dirs_exist_ok=True)
     for faction in ("alliance", "horde"):

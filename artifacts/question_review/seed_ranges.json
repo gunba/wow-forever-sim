@@ -1,0 +1,40 @@
+{
+  "revision": "35cab052456a320358e998c12416687d69cae142",
+  "rule": "sim/core/sim.go reseedRands uses RandomSeed + iteration index. A run occupies the inclusive interval [seed, seed+iterations-1].",
+  "scope": "Retained explicit confirmation artifacts and the current Sunder control. This is an interval audit, not recomputed confidence intervals or replacement simulation results.",
+  "interpretation": [
+    "Same seeds across matched baseline/candidate arms are intentional. The problem is counting overlapping repeated runs of the same arm as independent replication.",
+    "Unique seed counts are per identical arm, not an assertion that different gear/APL requests have identical outcomes.",
+    "A repeated mean is not automatically a false gain. Independence-based SE pooling needs correction; a method already using a conservative per-seed bound has a different statistical consequence.",
+    "The current single-seed benchmark rows and paired sensitivity requests do not claim two independent replications merely by sharing their baseline seed."
+  ],
+  "cohorts": [
+    {"name": "Current modeled gear", "sources": ["artifacts/modelled_gear_search/current/validation.json.gz"], "seeds": [20260954, 20260955], "iterations": 5000, "unique_seeds": 5001, "overlap": 4999},
+    {"name": "Initial 70009 modeled gear", "sources": ["artifacts/modelled_gear_search/patch_70009_initial/validation.json.gz"], "seeds": [20260926, 20260927], "iterations": 5000, "unique_seeds": 5001, "overlap": 4999},
+    {"name": "Engineering-era modeled gear", "sources": ["artifacts/modelled_gear_search/patch_70009_engineering/validation.json.gz"], "seeds": [20260934, 20260935], "iterations": 5000, "unique_seeds": 5001, "overlap": 4999},
+    {"name": "Real-item gear confirmation", "sources": ["artifacts/gear_search/current/validation.json.gz"], "seeds": [20296317, 20296383], "iterations": 5000, "unique_seeds": 5066, "overlap": 4934},
+    {"name": "Historical real-item gear", "sources": ["artifacts/gear_search/history/7fe1b5366/validation.json.gz"], "seeds": [20295941, 20296071], "iterations": 5000, "unique_seeds": 5130, "overlap": 4870},
+    {"name": "Research-build integration", "sources": ["artifacts/research_builds/validation.json.gz"], "seeds": [20295211, 20295271], "iterations": 5000, "unique_seeds": 5060, "overlap": 4940},
+    {"name": "Hunter profile correction", "sources": ["artifacts/profile_corrections/hunter.json.gz"], "seeds": [20295511, 20295571], "iterations": 5000, "unique_seeds": 5060, "overlap": 4940},
+    {"name": "Priest profile confirmation", "sources": ["artifacts/profile_corrections/priest.json.gz"], "seeds": [20295651, 20295691], "iterations": 5000, "unique_seeds": 5040, "overlap": 4960},
+    {"name": "September 24 APL confirmation", "sources": ["artifacts/optimization/apl_priority_20260924.json.gz"], "seeds": [20481217, 20481307], "iterations": 5000, "unique_seeds": 5090, "overlap": 4910},
+    {"name": "September 24 APL extended confirmation", "sources": ["artifacts/optimization/apl_priority_20260924.json.gz"], "seeds": [20481217, 20481307], "iterations": 20000, "unique_seeds": 20090, "overlap": 19910},
+    {"name": "Historical tank final confirmation", "sources": ["artifacts/tanks/current/final-confirmation-a.json.gz", "artifacts/tanks/current/final-confirmation-b.json.gz"], "seeds": [20262501, 20262763], "iterations": 20000, "unique_seeds": 20262, "overlap": 19738},
+    {"name": "Historical Paladin extended final confirmation", "sources": ["artifacts/tanks/current/final-confirmation-a.json.gz", "artifacts/tanks/current/final-confirmation-b.json.gz"], "seeds": [20262501, 20262763], "iterations": 100000, "unique_seeds": 100262, "overlap": 99738},
+    {"name": "Historical tank all-race confirmation", "sources": ["artifacts/tanks/current/allrace-20000-a.json.gz", "artifacts/tanks/current/allrace-20000-b.json.gz"], "seeds": [20261301, 20261363], "iterations": 20000, "unique_seeds": 20062, "overlap": 19938},
+    {"name": "Historical Paladin selection", "sources": ["artifacts/tanks/current/paladin-100000-a.json.gz", "artifacts/tanks/current/paladin-100000-b.json.gz"], "seeds": [20261401, 20261463], "iterations": 100000, "unique_seeds": 100062, "overlap": 99938},
+    {"name": "Paladin mana intermediate confirmation", "sources": ["artifacts/paladin_mana/intermediate-validation.json"], "seeds": [20263101, 20263163], "iterations": 100000, "unique_seeds": 100062, "overlap": 99938},
+    {"name": "Paladin mana final confirmation", "sources": ["artifacts/paladin_mana/validation.json"], "seeds": [20263237, 20263283], "iterations": 100000, "unique_seeds": 100046, "overlap": 99954},
+    {"name": "Protection queue correction", "sources": ["artifacts/protection_queue/validation.json"], "seeds": [20263441, 20263493], "iterations": 10000, "unique_seeds": 10052, "overlap": 9948},
+    {"name": "Shared tank support", "sources": ["artifacts/tank_support/validation.json", "artifacts/tanks/current/validation.json"], "seeds": [20263611, 20263649], "iterations": 10000, "unique_seeds": 10038, "overlap": 9962},
+    {"name": "Engineering initial paired confirmation", "sources": ["artifacts/modelled_gear_search/current/engineering_validation.json.gz"], "seeds": [20260933, 20260943], "iterations": 5000, "unique_seeds": 5010, "overlap": 4990, "qualification": "The summary retains the largest per-seed conservative bound, not an independence-based quadrature reduction. Other recorded follow-up starts are 20260941/20260951 and 20260961/20260971; all have 5,000 iterations and also overlap."},
+    {"name": "Current Sunder standard confirmation", "sources": ["artifacts/protection_sunder/validation.json"], "seeds": [20275001, 20300001], "iterations": 10000, "unique_seeds": 20000, "overlap": 0},
+    {"name": "Current Sunder Orc extended confirmation", "sources": ["artifacts/protection_sunder/validation.json"], "seeds": [20275001, 20300001], "iterations": 25000, "unique_seeds": 50000, "overlap": 0}
+  ],
+  "confirmed_tool_gap": {
+    "source": "tools/forever_bench/validate_gear.py",
+    "validation": "Accepts any second starting seed different from the first; does not compare iteration intervals.",
+    "pooling": "Combines per-run standard errors using hypot(SE1, SE2)/2, which assumes independent replications.",
+    "followup": "Guard interval disjointness and qualify older confidence claims. Do not alter archived requests/results."
+  }
+}
