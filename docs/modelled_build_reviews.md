@@ -6,7 +6,7 @@ The tables and [matrix](../artifacts/modelled_gear/forever_dps_5min.png) use the
 
 The benchmark uses level 60, 300 seconds, one level-63 target, complete role-specific Tier 1 bonuses, and hit from selected gear, enchants, talents and racials only. [Scenario and exchange model](../tools/forever_bench/README.md) · [Questions and coverage](uncertainties.md)
 
-Tank rows include frontal incoming attacks and modeled healing, with their recorded class-specific external support. They do not share the non-attacking DPS encounter. [Tank selection and guardrails](tank_selection.md).
+Tank rows include frontal incoming attacks and modeled healing, with their recorded shared raid support except assigned self-maintained duties. They do not share the non-attacking DPS encounter. [Support and Judgement correction](tank_support.md). [Tank selection and guardrails](tank_selection.md).
 
 ## Paladin — Retribution
 
@@ -2208,7 +2208,7 @@ Other races can use different equipment. Their complete setups are available in 
 
 **Talents:** 1/40/10 · `01-5002232123132210551-055`
 
-[Requests and results](../artifacts/modelled_gear/forever_dps_5min.json) · [Equipment search](../artifacts/tanks/current/validation.json)
+[Requests and results](../artifacts/modelled_gear/forever_dps_5min.json) · [Tank replay evidence](../artifacts/tanks/current/validation.json)
 
 **Model limitations:** Tank encounter: frontal attacks, incoming boss damage and modeled healing. Bear retains unverified damage-based rage, not Warrior's normalized formula (DRU-012); threat coefficients also remain provisional. This is not a survival ranking. Crusader's proc eligibility and PPM in animal forms are unverified (DRU-011); the selected enchant gain depends on that model.
 
@@ -2217,10 +2217,10 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
-| Tauren | 640.95 | 0.39 | 0.00 |
-| Windshaper | 646.45 | 0.40 | 0.00 |
-| Night Elf | 646.25 | 0.40 | 0.00 |
-| High Order | 646.45 | 0.40 | 0.00 |
+| Tauren | 638.30 | 0.38 | 0.00 |
+| Windshaper | 643.42 | 0.40 | 0.00 |
+| Night Elf | 643.08 | 0.40 | 0.00 |
+| High Order | 643.42 | 0.40 | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
@@ -2228,10 +2228,10 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 
 | Race | TPS | DTPS | TMI | Modeled death probability |
 |---|---:|---:|---:|---:|
-| Tauren | 1708.30 | 734.31 | 73.26 | 0.08% |
-| Windshaper | 1720.39 | 734.98 | 78.54 | 0.44% |
-| Night Elf | 1719.35 | 719.29 | 78.01 | 0.64% |
-| High Order | 1720.39 | 734.98 | 78.54 | 0.44% |
+| Tauren | 1700.20 | 716.96 | 72.68 | 0.14% |
+| Windshaper | 1711.53 | 717.52 | 77.92 | 0.58% |
+| Night Elf | 1710.36 | 702.21 | 77.35 | 0.50% |
+| High Order | 1711.53 | 717.52 | 77.92 | 0.58% |
 
 These stress-scenario results are not measured boss balance or an equal-support survival ranking.
 
@@ -2275,30 +2275,132 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Action | DPS |
 |---|---:|
-| [Maul](https://www.wowhead.com/forever/spell=9881) | 364.31 |
-| [Primal Bite (Bear)](https://www.wowhead.com/forever/spell=1238073) | 128.65 |
-| [Lacerate](https://www.wowhead.com/forever/spell=414644) | 105.87 |
-| [Lacerate](https://www.wowhead.com/forever/spell=414647) | 33.30 |
-| Auto-attack (tag 1) | 6.42 |
-| Auto-attack (tag 3) | 5.80 |
-| [Dragonbreath Chili (proc)](https://www.wowhead.com/forever/spell=15851) | 2.09 |
+| [Maul](https://www.wowhead.com/forever/spell=9881) | 359.72 |
+| [Primal Bite (Bear)](https://www.wowhead.com/forever/spell=1238073) | 128.11 |
+| [Lacerate](https://www.wowhead.com/forever/spell=414644) | 105.78 |
+| [Lacerate](https://www.wowhead.com/forever/spell=414647) | 33.36 |
+| Auto-attack (tag 1) | 7.48 |
+| Auto-attack (tag 3) | 6.67 |
+| [Dragonbreath Chili (proc)](https://www.wowhead.com/forever/spell=15851) | 2.29 |
 
 ### Resource flow
 
 | Resource | Action | Net amount per fight |
 |---|---|---:|
-| Health | OtherActionDamageTaken | -221783.2 |
-| Health | OtherActionHealingModel | +221245.7 |
-| Rage | OtherActionDamageTaken | +2152.5 |
-| Rage | [Lacerate](https://www.wowhead.com/forever/spell=414644) | -1424.9 |
-| Rage | [Maul](https://www.wowhead.com/forever/spell=9881) | -1271.6 |
-| Rage | [Primal Bite (Bear)](https://www.wowhead.com/forever/spell=1238073) | -867.9 |
-| Rage | OtherActionRefund | +561.3 |
+| Health | OtherActionDamageTaken | -216545.7 |
+| Health | OtherActionHealingModel | +215968.3 |
+| Rage | OtherActionDamageTaken | +2113.3 |
+| Rage | [Lacerate](https://www.wowhead.com/forever/spell=414644) | -1422.4 |
+| Rage | [Maul](https://www.wowhead.com/forever/spell=9881) | -1260.2 |
+| Rage | [Primal Bite (Bear)](https://www.wowhead.com/forever/spell=1238073) | -865.1 |
+| Rage | OtherActionRefund | +559.0 |
 | Rage | [Blood Frenzy](https://www.wowhead.com/forever/spell=37117) | +554.8 |
-| Health | [Frenzied Regeneration](https://www.wowhead.com/forever/spell=22842) | +409.1 |
-| Rage | [Natural Reaction](https://www.wowhead.com/forever/spell=57878) | +197.8 |
-| Rage | Auto-attack (tag 1) | +139.5 |
-| Rage | [Enrage](https://www.wowhead.com/forever/spell=5229) | +136.7 |
+| Health | [Frenzied Regeneration](https://www.wowhead.com/forever/spell=22842) | +454.4 |
+| Rage | [Natural Reaction](https://www.wowhead.com/forever/spell=57878) | +197.9 |
+| Rage | Auto-attack (tag 1) | +161.6 |
+| Rage | [Enrage](https://www.wowhead.com/forever/spell=5229) | +137.0 |
+
+## Paladin — Protection · Tank
+
+**Talents:** 0/43/8 · `-5521513321301551-15002`
+
+[Requests and results](../artifacts/modelled_gear/forever_dps_5min.json) · [Tank replay evidence](../artifacts/tanks/current/validation.json)
+
+**Model limitations:** Tank encounter: frontal attacks, incoming boss damage and modeled healing. Seal of Fury is not implemented; shield and Spiritual Attunement questions remain in the uncertainty register. This is not a survival ranking.
+
+
+### Results
+
+| Race | DPS | Standard error | Mana-limited seconds |
+|---|---:|---:|---:|
+| Undead | 567.96 | 0.30 | 0.02 |
+| Human | 548.24 | 0.29 | 0.01 |
+| Dwarf | 538.66 | 0.29 | 0.02 |
+
+Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Tank metrics
+
+| Race | TPS | DTPS | TMI | Modeled death probability |
+|---|---:|---:|---:|---:|
+| Undead | 845.08 | 698.29 | 75.18 | 0.18% |
+| Human | 828.56 | 697.37 | 75.30 | 0.06% |
+| Dwarf | 815.68 | 699.64 | 75.04 | 0.10% |
+
+These stress-scenario results are not measured boss balance or an equal-support survival ranking.
+
+### Equipment — Undead
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Modeled: Intellect / spell power / crit — Head (Plate) [+18 Sta, +23 Int, +29 SP, +14 Crit, 599 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | Lesser Arcanum of Voracity |
+| Neck | [Modeled: Intellect / spell power / crit — Neck [+11 Sta, +13 Int, +17 SP, +8 Crit] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | — |
+| Shoulders | [Modeled: Intellect / spell power / crit — Shoulders (Plate) [+14 Sta, +18 Int, +22 SP, +11 Crit, 553 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | Chromatic Mantle of the Dawn |
+| Back | [Modeled: Intellect / spell power / crit — Back (Cloth) [+11 Sta, +13 Int, +17 SP, +8 Crit, 50 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | Enchant Boots - Lesser Agility |
+| Chest | [Modeled: Intellect / spell power / crit — Chest (Plate) [+18 Sta, +23 Int, +29 SP, +14 Crit, 738 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Modeled: Strength / crit / hit — Wrists (Plate) [+11 Sta, +12 Crit, +12 Str, +13 Hit, 323 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Bracer - Superior Strength |
+| Hands | [Modeled: Strength / crit / hit — Hands (Plate) [+14 Sta, +16 Crit, +16 Str, +18 Hit, 461 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Gloves - Healing Power |
+| Waist | [Modeled: Strength / crit / hit — Waist (Plate) [+14 Sta, +16 Crit, +16 Str, +18 Hit, 415 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
+| Legs | [Modeled: Strength / crit / hit — Legs (Plate) [+18 Sta, +21 Crit, +21 Str, +23 Hit, 646 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Lesser Arcanum of Voracity |
+| Feet | [Modeled: Strength / crit / hit — Feet (Plate) [+14 Sta, +16 Crit, +16 Str, +18 Hit, 507 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Boots - Greater Agility |
+| Ring 1 | [Modeled: Strength / crit / hit — Finger [+11 Sta, +12 Crit, +12 Str, +13 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
+| Ring 2 | [Modeled: Strength / crit / hit — Finger [+11 Sta, +12 Crit, +12 Str, +13 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
+| Trinket 1 | [Modeled: Passive Strength / crit / hit — Trinket [+11 Sta, +13 Crit, +13 Str, +14 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
+| Trinket 2 | [Modeled: Passive Strength / crit / hit — Trinket [+11 Sta, +13 Crit, +13 Str, +14 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
+| Main hand | [Modeled: Sword one-hand — One-hand [+2 Sta, +24 AP, +14 Crit, 68–102 dmg @ 1.8s] (modeled; reference only)](https://www.wowhead.com/forever/item=272452) | 65 | Enchant Weapon - Crusader |
+| Off hand | [Modeled: Hybrid damage shield — Shield [+21 Sta, +9 Int, +6 Dmg, +18 Heal, 2468 armor, 44 Block] (modeled; reference only)](https://www.wowhead.com/forever/item=278469) | 65 | Enchant Shield - Greater Stamina |
+| Ranged/relic | [Modeled: Physical libram — Relic [+8 Sta, +4 Agi, +26 AP] (modeled; reference only)](https://www.wowhead.com/forever/item=279247) | 65 | — |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
+
+### Before the pull
+
+- -3s: Cast primary seal.
+- -1.5s: [Holy Shield](https://www.wowhead.com/forever/spell=20928).
+
+### Rotation priorities
+
+1. Cast [Judgement of Light](https://www.wowhead.com/forever/spell=20271).
+2. Cast [Swift Judgement](https://www.wowhead.com/forever/spell=53671) when `{"spellTimeToReady":{"spellId":{"spellId":20271}}}` ≥ 6s.
+3. Use ready automatic cooldowns.
+4. Cast [Templar's Bulwark](https://www.wowhead.com/forever/spell=1311015) when `{"currentHealthPercent":{}}` < 30%.
+5. Cast [Holy Shield](https://www.wowhead.com/forever/spell=20928) when `{"auraRemainingTime":{"sourceUnit":{"type":"Self"},"auraId":{"spellId":20928}}}` ≤ 2s.
+6. Cast primary seal when Seal time remaining ≤ 2s.
+7. Cast [Consecration](https://www.wowhead.com/forever/spell=20924) when Mana fraction ≥ 30%.
+8. Cast [Consecration](https://www.wowhead.com/forever/spell=26573) when Mana fraction ≥ 15%.
+9. Cast [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239).
+10. Cast [Holy Strike](https://www.wowhead.com/forever/spell=10333).
+11. Cast [Holy Shield](https://www.wowhead.com/forever/spell=20928).
+
+### Damage breakdown — Undead
+
+| Action | DPS |
+|---|---:|
+| Auto-attack (tag 1) | 130.16 |
+| [Seal of Righteousness](https://www.wowhead.com/forever/spell=25713) | 81.55 |
+| [Consecration](https://www.wowhead.com/forever/spell=20924) | 79.79 |
+| [Judgement of Righteousness](https://www.wowhead.com/forever/spell=20286) | 57.33 |
+| Auto-attack (tag 3) | 55.64 |
+| [Holy Shield](https://www.wowhead.com/forever/spell=20957) | 50.63 |
+| [Holy Strike](https://www.wowhead.com/forever/spell=10333) | 41.13 |
+| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 28.88 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Health | OtherActionDamageTaken | -209486.4 |
+| Health | OtherActionHealingModel | +204531.4 |
+| Mana | [Consecration](https://www.wowhead.com/forever/spell=20924) | -17855.1 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +14248.1 |
+| Mana | [Shield Specialization](https://www.wowhead.com/forever/spell=20148) | +10721.3 |
+| Mana | [Holy Shield](https://www.wowhead.com/forever/spell=20928) | -6480.0 |
+| Health | [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | +4936.3 |
+| Mana | [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239) | -3102.9 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +2461.7 |
+| Mana | [Judgement of Light](https://www.wowhead.com/forever/spell=20271) | -2449.4 |
+| Mana | OtherActionManaRegen (tag 1) | +2322.9 |
+| Mana | [Spell 20293](https://www.wowhead.com/forever/spell=20293) | -1980.0 |
 
 ## Priest — Smite
 
@@ -2558,112 +2660,11 @@ Other races can use different equipment. Their complete setups are available in 
 | Mana | [Searing Totem](https://www.wowhead.com/forever/spell=10438) | -765.0 |
 | Mana | OtherActionManaRegen (tag 2) | +206.9 |
 
-## Paladin — Protection · Tank
-
-**Talents:** 0/43/8 · `-5521513321301551-15002`
-
-[Requests and results](../artifacts/modelled_gear/forever_dps_5min.json) · [Equipment search](../artifacts/tanks/current/validation.json)
-
-**Model limitations:** Tank encounter: frontal attacks, incoming boss damage and modeled healing. Seal of Fury is not implemented; shield and Spiritual Attunement questions remain in the uncertainty register. This is not a survival ranking.
-
-
-### Results
-
-| Race | DPS | Standard error | Mana-limited seconds |
-|---|---:|---:|---:|
-| Undead | 468.01 | 0.25 | 0.05 |
-| Human | 450.49 | 0.24 | 0.05 |
-| Dwarf | 443.02 | 0.24 | 0.04 |
-
-Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
-
-### Tank metrics
-
-| Race | TPS | DTPS | TMI | Modeled death probability |
-|---|---:|---:|---:|---:|
-| Undead | 704.04 | 763.09 | 88.41 | 1.32% |
-| Human | 688.89 | 761.75 | 88.71 | 1.58% |
-| Dwarf | 678.61 | 763.56 | 88.32 | 1.64% |
-
-These stress-scenario results are not measured boss balance or an equal-support survival ranking.
-
-### Equipment — Undead
-
-| Slot | Item | Item level | Enchant |
-|---|---|---:|---|
-| Head | [Modeled: Intellect / spell power / crit — Head (Plate) [+18 Sta, +23 Int, +29 SP, +14 Crit, 599 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | Lesser Arcanum of Voracity |
-| Neck | [Modeled: Intellect / spell power / crit — Neck [+11 Sta, +13 Int, +17 SP, +8 Crit] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | — |
-| Shoulders | [Modeled: Intellect / spell power / crit — Shoulders (Plate) [+14 Sta, +18 Int, +22 SP, +11 Crit, 553 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | Chromatic Mantle of the Dawn |
-| Back | [Modeled: Intellect / spell power / crit — Back (Cloth) [+11 Sta, +13 Int, +17 SP, +8 Crit, 50 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | Enchant Boots - Lesser Agility |
-| Chest | [Modeled: Intellect / spell power / crit — Chest (Plate) [+18 Sta, +23 Int, +29 SP, +14 Crit, 738 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | Enchant Chest - Greater Stats |
-| Wrists | [Modeled: Strength / crit / hit — Wrists (Plate) [+11 Sta, +12 Crit, +12 Str, +13 Hit, 323 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Bracer - Superior Strength |
-| Hands | [Modeled: Strength / crit / hit — Hands (Plate) [+14 Sta, +16 Crit, +16 Str, +18 Hit, 461 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Gloves - Healing Power |
-| Waist | [Modeled: Strength / crit / hit — Waist (Plate) [+14 Sta, +16 Crit, +16 Str, +18 Hit, 415 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
-| Legs | [Modeled: Strength / crit / hit — Legs (Plate) [+18 Sta, +21 Crit, +21 Str, +23 Hit, 646 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Lesser Arcanum of Voracity |
-| Feet | [Modeled: Strength / crit / hit — Feet (Plate) [+14 Sta, +16 Crit, +16 Str, +18 Hit, 507 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Boots - Greater Agility |
-| Ring 1 | [Modeled: Strength / crit / hit — Finger [+11 Sta, +12 Crit, +12 Str, +13 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
-| Ring 2 | [Modeled: Strength / crit / hit — Finger [+11 Sta, +12 Crit, +12 Str, +13 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
-| Trinket 1 | [Modeled: Passive Strength / crit / hit — Trinket [+11 Sta, +13 Crit, +13 Str, +14 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
-| Trinket 2 | [Modeled: Passive Strength / crit / hit — Trinket [+11 Sta, +13 Crit, +13 Str, +14 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
-| Main hand | [Modeled: Sword one-hand — One-hand [+2 Sta, +24 AP, +14 Crit, 68–102 dmg @ 1.8s] (modeled; reference only)](https://www.wowhead.com/forever/item=272452) | 65 | Enchant Weapon - Crusader |
-| Off hand | [Modeled: Hybrid damage shield — Shield [+21 Sta, +9 Int, +6 Dmg, +18 Heal, 2468 armor, 44 Block] (modeled; reference only)](https://www.wowhead.com/forever/item=278469) | 65 | Enchant Shield - Greater Stamina |
-| Ranged/relic | [Modeled: Physical libram — Relic [+8 Sta, +4 Agi, +26 AP] (modeled; reference only)](https://www.wowhead.com/forever/item=279247) | 65 | — |
-
-Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
-
-### Before the pull
-
-- -3s: Cast primary seal.
-- -1.5s: [Holy Shield](https://www.wowhead.com/forever/spell=20928).
-
-### Rotation priorities
-
-1. Use ready automatic cooldowns.
-2. Cast [Templar's Bulwark](https://www.wowhead.com/forever/spell=1311015) when `{"currentHealthPercent":{}}` < 30%.
-3. Cast [Holy Shield](https://www.wowhead.com/forever/spell=20928) when `{"auraRemainingTime":{"sourceUnit":{"type":"Self"},"auraId":{"spellId":20928}}}` ≤ 2s.
-4. Cast primary seal when Seal time remaining ≤ 2s.
-5. Cast [Judgement of Light](https://www.wowhead.com/forever/spell=20271).
-6. Cast [Consecration](https://www.wowhead.com/forever/spell=20924) when Mana fraction ≥ 30%.
-7. Cast [Consecration](https://www.wowhead.com/forever/spell=26573) when Mana fraction ≥ 15%.
-8. Cast [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239).
-9. Cast [Holy Strike](https://www.wowhead.com/forever/spell=10333).
-10. Cast [Holy Shield](https://www.wowhead.com/forever/spell=20928).
-
-### Damage breakdown — Undead
-
-| Action | DPS |
-|---|---:|
-| Auto-attack (tag 1) | 106.46 |
-| [Consecration](https://www.wowhead.com/forever/spell=20924) | 67.51 |
-| [Seal of Righteousness](https://www.wowhead.com/forever/spell=25713) | 66.86 |
-| Auto-attack (tag 3) | 46.10 |
-| [Holy Shield](https://www.wowhead.com/forever/spell=20957) | 45.18 |
-| [Judgement of Righteousness](https://www.wowhead.com/forever/spell=20286) | 43.24 |
-| [Holy Strike](https://www.wowhead.com/forever/spell=10333) | 32.03 |
-| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 24.59 |
-
-### Resource flow
-
-| Resource | Action | Net amount per fight |
-|---|---|---:|
-| Health | OtherActionDamageTaken | -228922.5 |
-| Health | OtherActionHealingModel | +224504.1 |
-| Mana | [Consecration](https://www.wowhead.com/forever/spell=20924) | -17749.2 |
-| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +14257.9 |
-| Mana | [Shield Specialization](https://www.wowhead.com/forever/spell=20148) | +10166.3 |
-| Mana | [Holy Shield](https://www.wowhead.com/forever/spell=20928) | -6479.6 |
-| Health | [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | +4344.6 |
-| Mana | [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239) | -3091.9 |
-| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +2613.0 |
-| Mana | OtherActionManaRegen (tag 1) | +2350.3 |
-| Mana | [Judgement of Light](https://www.wowhead.com/forever/spell=20271) | -2163.1 |
-| Mana | [Spell 20293](https://www.wowhead.com/forever/spell=20293) | -1980.0 |
-
 ## Warrior — Protection · Tank
 
 **Talents:** 4/6/41 · `31-0501-532531232300210351`
 
-[Requests and results](../artifacts/modelled_gear/forever_dps_5min.json) · [Equipment search](../artifacts/tanks/current/validation.json)
+[Requests and results](../artifacts/modelled_gear/forever_dps_5min.json) · [Tank replay evidence](../artifacts/tanks/current/validation.json)
 
 **Model limitations:** Tank encounter: frontal attacks, incoming boss damage and modeled healing. Different external support from the non-attacking DPS rows. Rage, shield proc eligibility and scripted Tier effects remain qualified in the uncertainty register. Heroic Strike/Cleave now replace swings. Earlier Protection gear/talent search gains used an invalid direct-cast APL and are superseded; the existing gear and talents have been replayed, not re-optimized.
 
@@ -2676,16 +2677,16 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
-| Orc | 386.49 | 0.31 | 0.00 |
-| Tauren | 388.89 | 0.31 | 0.00 |
-| Troll | 385.85 | 0.30 | 0.00 |
-| Undead | 399.38 | 0.31 | 0.00 |
-| Windshaper | 387.66 | 0.30 | 0.00 |
-| Human | 391.42 | 0.30 | 0.00 |
-| Dwarf | 385.96 | 0.31 | 0.00 |
-| Night Elf | 385.86 | 0.30 | 0.00 |
-| Gnome | 388.95 | 0.30 | 0.00 |
-| High Order | 387.66 | 0.30 | 0.00 |
+| Orc | 386.66 | 0.31 | 0.00 |
+| Tauren | 389.06 | 0.31 | 0.00 |
+| Troll | 386.00 | 0.30 | 0.00 |
+| Undead | 400.71 | 0.31 | 0.00 |
+| Windshaper | 387.83 | 0.30 | 0.00 |
+| Human | 391.57 | 0.30 | 0.00 |
+| Dwarf | 386.11 | 0.31 | 0.00 |
+| Night Elf | 386.03 | 0.30 | 0.00 |
+| Gnome | 389.10 | 0.30 | 0.00 |
+| High Order | 387.83 | 0.30 | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
@@ -2693,16 +2694,16 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 
 | Race | TPS | DTPS | TMI | Modeled death probability |
 |---|---:|---:|---:|---:|
-| Orc | 872.53 | 476.07 | 47.75 | 0.00% |
-| Tauren | 874.47 | 461.69 | 44.59 | 0.00% |
-| Troll | 870.73 | 474.52 | 47.97 | 0.00% |
-| Undead | 853.06 | 464.85 | 47.61 | 0.00% |
-| Windshaper | 836.59 | 471.31 | 48.03 | 0.00% |
-| Human | 842.69 | 475.15 | 48.03 | 0.00% |
-| Dwarf | 870.65 | 473.19 | 47.66 | 0.00% |
-| Night Elf | 833.81 | 461.42 | 47.55 | 0.00% |
-| Gnome | 838.18 | 462.80 | 47.33 | 0.00% |
-| High Order | 836.59 | 471.31 | 48.03 | 0.00% |
+| Orc | 872.78 | 476.07 | 47.75 | 0.00% |
+| Tauren | 874.72 | 461.69 | 44.59 | 0.00% |
+| Troll | 870.96 | 474.52 | 47.97 | 0.00% |
+| Undead | 854.95 | 464.85 | 47.61 | 0.00% |
+| Windshaper | 836.83 | 471.31 | 48.03 | 0.00% |
+| Human | 842.91 | 475.15 | 48.03 | 0.00% |
+| Dwarf | 870.88 | 473.19 | 47.66 | 0.00% |
+| Night Elf | 834.05 | 461.42 | 47.55 | 0.00% |
+| Gnome | 838.40 | 462.80 | 47.33 | 0.00% |
+| High Order | 836.83 | 471.31 | 48.03 | 0.00% |
 
 These stress-scenario results are not measured boss balance or an equal-support survival ranking.
 
@@ -2757,17 +2758,17 @@ Other races can use different equipment. Their complete setups are available in 
 | Auto-attack (tag 1) | 80.54 |
 | Auto-attack (tag 3) | 47.86 |
 | [Revenge](https://www.wowhead.com/forever/spell=25288) | 43.23 |
-| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 11.60 |
+| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 12.76 |
 | [Thunder Clap](https://www.wowhead.com/forever/spell=11581) | 3.63 |
-| [Dragonbreath Chili (proc)](https://www.wowhead.com/forever/spell=15851) | 1.67 |
+| [Dragonbreath Chili (proc)](https://www.wowhead.com/forever/spell=15851) | 1.83 |
 
 ### Resource flow
 
 | Resource | Action | Net amount per fight |
 |---|---|---:|
 | Health | OtherActionDamageTaken | -139455.5 |
-| Health | OtherActionHealingModel | +137800.1 |
-| Health | [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | +1643.3 |
+| Health | OtherActionHealingModel | +137635.7 |
+| Health | [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | +1807.6 |
 | Rage | Auto-attack (tag 1) | +650.7 |
 | Rage | [Shield Slam](https://www.wowhead.com/forever/spell=23925) | -646.9 |
 | Rage | [Shield Block](https://www.wowhead.com/forever/spell=2565) | -495.8 |

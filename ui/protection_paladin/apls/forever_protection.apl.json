@@ -29,6 +29,41 @@
   "priorityList": [
     {
       "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 20271
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 53671
+          }
+        },
+        "condition": {
+          "cmp": {
+            "op": "OpGe",
+            "lhs": {
+              "spellTimeToReady": {
+                "spellId": {
+                  "spellId": 20271
+                }
+              }
+            },
+            "rhs": {
+              "const": {
+                "val": "6s"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
         "autocastOtherCooldowns": {}
       }
     },
@@ -97,15 +132,6 @@
                 "val": "2s"
               }
             }
-          }
-        }
-      }
-    },
-    {
-      "action": {
-        "castSpell": {
-          "spellId": {
-            "spellId": 20271
           }
         }
       }

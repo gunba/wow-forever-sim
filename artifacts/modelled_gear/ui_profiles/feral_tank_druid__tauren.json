@@ -10,11 +10,13 @@
     "showExperimental": true
   },
   "raidBuffs": {
-    "giftOfTheWild": "TristateEffectImproved",
-    "powerWordFortitude": "TristateEffectImproved",
+    "giftOfTheWild": "TristateEffectRegular",
+    "powerWordFortitude": "TristateEffectRegular",
     "strengthOfEarthTotem": "TristateEffectImproved",
-    "battleShout": "TristateEffectImproved",
-    "fireResistanceTotem": true,
+    "arcaneBrilliance": true,
+    "divineSpirit": true,
+    "battleShout": "TristateEffectRegular",
+    "leaderOfThePack": true,
     "fireResistanceAura": true,
     "devotionAura": "TristateEffectRegular",
     "stoneskinTotem": "TristateEffectRegular"
@@ -23,10 +25,13 @@
     "windfuryTotem": true
   },
   "debuffs": {
+    "judgementOfWisdom": true,
+    "judgementOfTheCrusader": "TristateEffectImproved",
     "faerieFire": true,
+    "curseOfElements": true,
     "exposeArmor": "TristateEffectImproved",
-    "sunderArmor": true,
     "curseOfRecklessness": true,
+    "insectSwarm": true,
     "giftOfArthas": true
   },
   "tanks": [
@@ -202,7 +207,8 @@
     "itemSwap": {},
     "buffs": {
       "blessingOfKings": true,
-      "blessingOfMight": "TristateEffectImproved"
+      "blessingOfWisdom": "TristateEffectRegular",
+      "blessingOfMight": "TristateEffectRegular"
     },
     "talentsString": "01-5002232123132210551-055",
     "profession1": "Engineering",

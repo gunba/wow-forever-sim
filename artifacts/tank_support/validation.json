@@ -1177,21 +1177,5 @@
       "Race": "Dwarf",
       "Scope": "APL only with identical common support"
     }
-  ],
-  "engineSHA256": "381bc33d86f6bbf01d3d6830900c5eba9f30279fe3910c7e72063405fc61533b",
-  "correctionEvidence": "../../tank_support/validation.json",
-  "supersededBuilds": {
-    "tank_warrior": {
-      "reason": "Class-specific support replaced by common support; retained gear/talents have not been re-optimized.",
-      "archive": "../../history/807db6aaea/tanks_before_shared_support.json.gz"
-    },
-    "feral_tank_druid": {
-      "reason": "Class-specific support replaced by common support; retained gear/talents have not been re-optimized.",
-      "archive": "../../history/807db6aaea/tanks_before_shared_support.json.gz"
-    },
-    "protection_paladin": {
-      "reason": "Class-specific support replaced by common support; retained gear/talents have not been re-optimized.",
-      "archive": "../../history/807db6aaea/tanks_before_shared_support.json.gz"
-    }
-  }
+  ]
 }

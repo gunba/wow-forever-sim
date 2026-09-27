@@ -3,11 +3,50 @@
 package main
 
 import (
+	"regexp"
 	"testing"
 
 	"github.com/wowsims/classic/sim/core"
 	"github.com/wowsims/classic/sim/core/proto"
 )
+
+func TestProtectionSwiftJudgementImmediatelyPaysForASecondJudgement(t *testing.T) {
+	casts := regexp.MustCompile(`(?m)^\[([0-9.]+)\].* Casting \{SpellID: (20271|53671)\} \(Cost = ([0-9.]+)`)
+	for _, b := range builds() {
+		if b.Key != "protection_paladin" {
+			continue
+		}
+		for name, player := range map[string]*proto.Player{
+			"prototype": b.player(proto.Race_RaceHuman),
+			"ranked":    b.rankedPlayer(proto.Race_RaceHuman),
+		} {
+			t.Run(name, func(t *testing.T) {
+				request := tankRequest(b, player, 1, 20263511, 1, 300)
+				request.SimOptions.Debug = true
+				result := core.RunRaidSim(request)
+				if result.Error != nil {
+					t.Fatal(result.Error.Message)
+				}
+				events := casts.FindAllStringSubmatch(result.Logs, -1)
+				resets, judgements := 0, 0
+				for i, event := range events {
+					if event[2] == "20271" {
+						judgements++
+						continue
+					}
+					resets++
+					if i+1 == len(events) || events[i+1][2] != "20271" ||
+						events[i+1][1] != event[1] || events[i+1][3] != "0.000" {
+						t.Fatalf("reset did not immediately produce a free Judgement: %v", events[i:])
+					}
+				}
+				if resets != 5 || judgements < 34 {
+					t.Fatalf("%d resets, %d Judgements: cooldown opportunity was wasted", resets, judgements)
+				}
+			})
+		}
+	}
+}
 
 func TestProtectionSealMaintenanceDoesNotSpamAnActiveSeal(t *testing.T) {
 	for _, b := range builds() {

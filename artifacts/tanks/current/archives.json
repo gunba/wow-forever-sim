@@ -17424,10 +17424,18 @@
   ],
   "supersededBuilds": {
     "tank_warrior": {
-      "reason": "Direct Heroic Strike/Cleave casts bypassed queue replacement.",
-      "archive": "../../history/a7fe4cd30b/protection_before_queue_fix.json.gz",
-      "searchStatus": "Prior gear/talent/APL selection claims invalid; no corrected-model re-optimization claimed."
+      "reason": "Class-specific support replaced by common support; retained gear/talents have not been re-optimized.",
+      "archive": "../../history/807db6aaea/tanks_before_shared_support.json.gz"
+    },
+    "feral_tank_druid": {
+      "reason": "Class-specific support replaced by common support; retained gear/talents have not been re-optimized.",
+      "archive": "../../history/807db6aaea/tanks_before_shared_support.json.gz"
+    },
+    "protection_paladin": {
+      "reason": "Class-specific support replaced by common support; retained gear/talents have not been re-optimized.",
+      "archive": "../../history/807db6aaea/tanks_before_shared_support.json.gz"
     }
   },
-  "queueCorrection": "../../protection_queue/archives.json"
+  "queueCorrection": "../../protection_queue/archives.json",
+  "sharedSupportCorrection": "../../tank_support/archives.json"
 }

@@ -7,7 +7,7 @@ Reviewed against `b9d8ef4a47271dd65a96259351daa696a37bd4fa`. Current level-60 DP
 This is the current register. Earlier audits preserve historical findings, not current task status.
 An implementation gap is not a request to test an unknown game rule. Model assumptions are not measured facts.
 
-Needs evidence: **84** · Implementation gap: **26** · Model assumption: **5** · Resolved: **17** · Outside current scenarios: **1**
+Needs evidence: **84** · Implementation gap: **26** · Model assumption: **5** · Resolved: **19** · Outside current scenarios: **1**
 
 ## Updating an answer
 
@@ -1691,19 +1691,19 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [docs/tank_benchmark.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/tank_benchmark.md) · [proto/apl.proto](https://github.com/gunba/wow-forever-sim/blob/forever/proto/apl.proto) · [sim/core/apl_helpers.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/apl_helpers.go)
 
-### SCEN-004 — Protection search after queue correction
+### SCEN-004 — Tank selection after correctness and support corrections
 
 **Implementation gap · High priority · Sources / code**
 
-**Question:** Has Protection gear/talent/APL selection been repeated with actual queued attacks?
+**Question:** Has tank gear/talent selection been repeated under the corrected queue model and common support?
 
-**Current model:** All three tank roles and 17 race profiles have exact matrix defaults. Protection's direct-cast Heroic Strike/Cleave bug invalidated its earlier search gains and guard claims. The corrected profiles retain their gear/talents and have fresh matched replays; Paladin and Bear selection evidence remains separate.
+**Current model:** All 17 tanks have common raid support and fresh matched replays with fixed equipment/talents. Protection Warrior’s earlier direct-cast search is invalid. Other historical selection gains describe superseded class-specific support, not a current optimum.
 
 **Impact:** Protection selection quality is not established by the superseded search. Corrected damage/threat results are not a new optimization claim.
 
-**To close:** Repeat Protection selection with the corrected queue model when optimization resumes, using legal frozen controls and both tank workloads. Preserve class-mechanic and projected defensive-stat qualifications.
+**To close:** When optimization resumes, use the fixed shared-support controls and both tank workloads. Do not restore the invalid Warrior damage actions or treat historical unequal-support gains as current.
 
-**References:** [docs/protection_queue.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/protection_queue.md) · [docs/tank_selection.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/tank_selection.md) · [artifacts/tanks/current/validation.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/tanks/current/validation.json) · [tools/forever_bench/tank_search.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/tank_search.go)
+**References:** [docs/protection_queue.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/protection_queue.md) · [docs/tank_selection.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/tank_selection.md) · [artifacts/tanks/current/validation.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/tanks/current/validation.json) · [tools/forever_bench/tank_search.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/tank_search.go) · [docs/tank_support.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/tank_support.md) · [artifacts/tanks/shared_support_controls.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/tanks/shared_support_controls.json)
 
 **Related:** WAR-013, PAL-005, DRU-011, DATA-002, SCEN-001, SCEN-003
 
@@ -1999,6 +1999,22 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Related:** CORE-014, PAL-001
 
+### SCEN-015 — Unequal tank raid support
+
+**Resolved · High priority · Sources / code**
+
+**Question:** Do tank defaults provide consistent raid support and supported weapon consumables?
+
+**Current model:** A shared native/web support definition covers all 17 tank profiles, preserving explicitly self-maintained duties. Paladin has Brilliant Wizard Oil and Curse of Elements; Titans remains the main tank flask.
+
+**Impact:** The old Paladin preset omitted substantial damage support. Comparisons now use the corrected settings without claiming that all class survival mechanics are verified.
+
+**To close:** Closed by profile-wide support regressions and matched independent-seed replays; earlier support/selection evidence remains archived.
+
+**References:** [sim/core/forever_tank_support.json](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/forever_tank_support.json) · [docs/tank_support.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/tank_support.md) · [artifacts/tank_support/validation.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/tank_support/validation.json)
+
+**Related:** SCEN-001, SCEN-004
+
 ### WAR-013 — Protection next-swing queue bypass
 
 **Resolved · High priority · Sources / code**
@@ -2114,6 +2130,22 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **Earlier references:** T31 (Expose Prey) / H17 / H18 / H21
 
 **Related:** HUN-008, WAR-011
+
+### PAL-015 — Swift Judgement cooldown timing
+
+**Resolved · Medium priority · Sources / code**
+
+**Question:** Does Protection actually exploit Swift Judgement’s reset and free cast?
+
+**Current model:** The reset already worked. Explicit APL placement now avoids resetting a nearly completed cooldown and casts the free Judgement before unrelated cooldowns.
+
+**Impact:** About 31.5 to 35 Judgements per five minutes; roughly 5–6 DPS from the APL alone with shared support.
+
+**To close:** Closed by same-timestamp free-cast regression and all-three-race, two-workload independent-seed comparisons with matching support.
+
+**References:** [sim/paladin/swift_judgement.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/swift_judgement.go) · [ui/protection_paladin/apls/forever_protection.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/protection_paladin/apls/forever_protection.apl.json) · [tools/forever_bench/paladin_apl_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/paladin_apl_test.go) · [artifacts/tank_support/validation.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/tank_support/validation.json)
+
+**Related:** PAL-014
 
 ### DONE-012 — Removed and unavailable effects excluded
 

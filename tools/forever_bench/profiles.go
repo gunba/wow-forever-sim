@@ -93,6 +93,10 @@ func (b build) player(race proto.Race) *proto.Player {
 		p.Equipment = core.GetGearSet(filepath.Join("ui", b.Dir, "gear_sets"), b.Gear).GearSet
 		p.Rotation = core.GetAplRotation(filepath.Join("ui", b.Dir, "apls"), b.APL).Rotation
 		p.TalentsString = b.presetTalents()
+		p.Buffs = core.ForeverTankSupport(b.Class).Player
+		if b.Key == "protection_paladin" {
+			p.Consumes.MainHandImbue = proto.WeaponImbue_BrilliantWizardOil
+		}
 		return p
 	}
 	p := &proto.Player{

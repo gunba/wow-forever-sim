@@ -85,7 +85,8 @@ func main() {
 	}
 	player.ForeverTier1Bonuses = *tier
 	player.HealingModel = &proto.HealingModel{Hps: *healing, CadenceSeconds: 3, BurstWindow: 6}
-	raid := core.SinglePlayerRaidProto(player, core.ForeverBuffs.Party, core.ForeverBuffs.Raid, core.ForeverBuffs.Debuffs)
+	support := core.ForeverTankSupport(player.Class)
+	raid := core.SinglePlayerRaidProto(player, support.Party, support.Raid, support.Debuffs)
 	raid = googleProto.Clone(raid).(*proto.Raid)
 	raid.Tanks = []*proto.UnitReference{{Type: proto.UnitReference_Player, Index: 0}}
 	// Forever's air totems are exclusive. The tank is in a melee group.

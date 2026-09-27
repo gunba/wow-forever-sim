@@ -10,11 +10,16 @@
     "showExperimental": true
   },
   "raidBuffs": {
-    "giftOfTheWild": "TristateEffectImproved",
-    "powerWordFortitude": "TristateEffectImproved",
+    "giftOfTheWild": "TristateEffectRegular",
+    "powerWordFortitude": "TristateEffectRegular",
+    "strengthOfEarthTotem": "TristateEffectImproved",
     "arcaneBrilliance": true,
     "divineSpirit": true,
-    "battleShout": "TristateEffectImproved"
+    "battleShout": "TristateEffectRegular",
+    "leaderOfThePack": true,
+    "fireResistanceAura": true,
+    "devotionAura": "TristateEffectRegular",
+    "stoneskinTotem": "TristateEffectRegular"
   },
   "partyBuffs": {
     "windfuryTotem": true
@@ -23,8 +28,10 @@
     "judgementOfWisdom": true,
     "judgementOfTheCrusader": "TristateEffectImproved",
     "faerieFire": true,
+    "curseOfElements": true,
     "exposeArmor": "TristateEffectImproved",
     "curseOfRecklessness": true,
+    "insectSwarm": true,
     "giftOfArthas": true
   },
   "tanks": [
@@ -110,6 +117,7 @@
       "spellPowerBuff": "GreaterArcaneElixir",
       "firePowerBuff": "ElixirOfGreaterFirepower",
       "fillerExplosive": "ExplosiveDenseDynamite",
+      "mainHandImbue": "BrilliantWizardOil",
       "defaultPotion": "MajorManaPotion",
       "dragonBreathChili": true,
       "zanzaBuff": "ROIDS",
@@ -205,7 +213,9 @@
     "foreverTier1Bonuses": true,
     "itemSwap": {},
     "buffs": {
-      "blessingOfWisdom": "TristateEffectImproved"
+      "blessingOfKings": true,
+      "blessingOfWisdom": "TristateEffectRegular",
+      "blessingOfMight": "TristateEffectRegular"
     },
     "talentsString": "-5521513321301551-15002",
     "profession1": "Blacksmithing",
@@ -240,6 +250,41 @@
         }
       ],
       "priorityList": [
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 20271
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpGe",
+                "lhs": {
+                  "spellTimeToReady": {
+                    "spellId": {
+                      "spellId": 20271
+                    }
+                  }
+                },
+                "rhs": {
+                  "const": {
+                    "val": "6s"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 53671
+              }
+            }
+          }
+        },
         {
           "action": {
             "autocastOtherCooldowns": {}
@@ -312,15 +357,6 @@
               }
             },
             "castPaladinPrimarySeal": {}
-          }
-        },
-        {
-          "action": {
-            "castSpell": {
-              "spellId": {
-                "spellId": 20271
-              }
-            }
           }
         },
         {

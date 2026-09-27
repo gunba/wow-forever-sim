@@ -7,6 +7,7 @@ import { chromium } from 'playwright';
 
 const site = process.env.SITE_URL || 'http://127.0.0.1:8767/wow-forever-sim/classic/';
 const engine = process.env.TANK_BENCH || '/tmp/forever-tank-bench';
+const support = JSON.parse(readFileSync('sim/core/forever_tank_support.json', 'utf8'));
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined });
 const temp = mkdtempSync(join(tmpdir(), 'forever-tanks-'));
 try {
@@ -34,6 +35,22 @@ try {
     assert.equal(state.encounter.targets[0].stats[17], 805);
     assert.equal(state.encounter.targets[0].stats[26], 3731);
     assert.ok(state.player.equipment.items.every(item => !item.id || item.id >= 920000001));
+    for (const [field, expected] of Object.entries(support.player)) {
+      assert.equal(state.player.buffs[field], expected, `${route}: personal ${field}`);
+    }
+    for (const [field, expected] of Object.entries(support.raid)) {
+      if (route === 'tank_warrior' && field === 'battleShout') continue;
+      assert.equal(state.raidBuffs[field], expected, `${route}: raid ${field}`);
+    }
+    assert.equal(state.debuffs.curseOfElements, true);
+    assert.equal(state.partyBuffs.windfuryTotem, true);
+    assert.ok(!state.raidBuffs.graceOfAirTotem);
+    assert.equal(state.player.consumes.flask, 'FlaskOfTheTitans');
+    if (route === 'protection_paladin') {
+      assert.equal(state.player.consumes.mainHandImbue, 'BrilliantWizardOil');
+      assert.equal(state.player.rotation.priorityList[0].action.castSpell.spellId.spellId, 20271);
+      assert.equal(state.player.rotation.priorityList[1].action.castSpell.spellId.spellId, 53671);
+    }
     const request = {
       raid: {
         parties: [{ players: [state.player], buffs: state.partyBuffs }],

@@ -33,7 +33,11 @@ Protection Warrior, Protection Paladin and Bear use frontal incoming attacks
 and explicit healing. Their chart DPS is **not an equal-encounter comparison**
 with un-attacked DPS rows. Gear, legal talents and APLs were selected against
 frozen tank controls with survival and per-target threat safeguards, then
-validated on two independent seeds across every race.
+validated on two independent seeds across every race under the earlier support
+conditions. The [tank support correction](../../docs/tank_support.md)
+standardizes raid support, adds Paladin oil and improves Swift Judgement timing,
+then replays every tank race without reselecting gear/talents. Historical
+selection gains do not establish an optimum under the new settings.
 [Tank methods and replay instructions](../../docs/tank_selection.md) ·
 [Validation](../../artifacts/tanks/current/validation.json) ·
 [Research archives](../../artifacts/tanks/current/archives.json).

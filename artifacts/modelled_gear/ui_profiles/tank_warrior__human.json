@@ -10,11 +10,12 @@
     "showExperimental": true
   },
   "raidBuffs": {
-    "giftOfTheWild": "TristateEffectImproved",
-    "powerWordFortitude": "TristateEffectImproved",
+    "giftOfTheWild": "TristateEffectRegular",
+    "powerWordFortitude": "TristateEffectRegular",
     "strengthOfEarthTotem": "TristateEffectImproved",
+    "arcaneBrilliance": true,
+    "divineSpirit": true,
     "leaderOfThePack": true,
-    "fireResistanceTotem": true,
     "fireResistanceAura": true,
     "devotionAura": "TristateEffectRegular",
     "stoneskinTotem": "TristateEffectRegular"
@@ -23,7 +24,10 @@
     "windfuryTotem": true
   },
   "debuffs": {
+    "judgementOfWisdom": true,
+    "judgementOfTheCrusader": "TristateEffectImproved",
     "faerieFire": true,
+    "curseOfElements": true,
     "curseOfRecklessness": true,
     "insectSwarm": true,
     "giftOfArthas": true
@@ -206,7 +210,8 @@
     "itemSwap": {},
     "buffs": {
       "blessingOfKings": true,
-      "blessingOfMight": "TristateEffectImproved"
+      "blessingOfWisdom": "TristateEffectRegular",
+      "blessingOfMight": "TristateEffectRegular"
     },
     "talentsString": "31-0501-532531232300210351",
     "profession1": "Blacksmithing",

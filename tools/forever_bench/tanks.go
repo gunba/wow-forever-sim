@@ -18,9 +18,8 @@ import (
 var tankPairOutput = flag.Bool("tank-pair", false, "record the fixed single/multi-target tank scenarios together")
 var tankNeighbors = flag.Bool("tank-neighbors", false, "write legal one-point tank talent alternatives without simulation")
 
-// Frozen published controls retain each tank's actual external support,
-// consumables and healing scenario. They are not interchangeable with the
-// non-attacking DPS encounter or an assertion of equal support across classes.
+// Historical templates retain encounter/healing settings. Current requests
+// replace their unequal external support with the shared tank scenario.
 var tankControls = sync.OnceValue(func() map[string]*proto.RaidSimRequest {
 	controls := map[string]*proto.RaidSimRequest{}
 	for _, key := range []string{"tank_warrior", "protection_paladin", "feral_tank_druid"} {
@@ -52,33 +51,29 @@ func tankControl(key string) *proto.RaidSimRequest {
 	return request
 }
 
-// The original Warrior controls used an invalid direct-cast rotation. Freeze
-// the corrected per-race inputs separately; never move the guard with a trial.
+// Freeze the corrected per-race inputs under shared raid support. Historical
+// class-specific support/selection controls are not current guard targets.
 func tankGuardPlayer(b build, race proto.Race) *proto.Player {
-	if b.Key == "tank_warrior" {
-		var controls struct {
-			Results []struct {
-				Race           string
-				BaselinePlayer json.RawMessage
-			}
+	var controls struct {
+		Results []struct {
+			Key            string
+			Race           string
+			BaselinePlayer json.RawMessage
 		}
-		if err := json.Unmarshal(mustRead("artifacts/tanks/queue_corrected_warrior_controls.json"), &controls); err != nil {
-			panic(err)
-		}
-		for _, row := range controls.Results {
-			if row.Race == raceName(race) {
-				player := &proto.Player{}
-				if err := protojson.Unmarshal(row.BaselinePlayer, player); err != nil {
-					panic(err)
-				}
-				return player
-			}
-		}
-		panic("missing queue-corrected Warrior guard control")
 	}
-	player := googleProto.Clone(tankControl(b.Key).Raid.Parties[0].Players[0]).(*proto.Player)
-	player.Race = race
-	return player
+	if err := json.Unmarshal(mustRead("artifacts/tanks/shared_support_controls.json"), &controls); err != nil {
+		panic(err)
+	}
+	for _, row := range controls.Results {
+		if row.Key == b.Key && row.Race == raceName(race) {
+			player := &proto.Player{}
+			if err := protojson.Unmarshal(row.BaselinePlayer, player); err != nil {
+				panic(err)
+			}
+			return player
+		}
+	}
+	panic("missing shared-support tank guard control")
 }
 
 func tankRequest(b build, p *proto.Player, count int, rng int64, targets int, seconds float64) *proto.RaidSimRequest {
@@ -86,6 +81,9 @@ func tankRequest(b build, p *proto.Player, count int, rng int64, targets int, se
 		panic("tank targets must be between 1 and 10")
 	}
 	req := googleProto.Clone(tankControl(b.Key)).(*proto.RaidSimRequest)
+	support := core.ForeverTankSupport(b.Class)
+	req.Raid.Buffs, req.Raid.Debuffs = support.Raid, support.Debuffs
+	req.Raid.Parties[0].Buffs = support.Party
 	req.Raid.Parties[0].Players[0] = googleProto.Clone(p).(*proto.Player)
 	req.Encounter.Duration = seconds
 	target := req.Encounter.Targets[0]

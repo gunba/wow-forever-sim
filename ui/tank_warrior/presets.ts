@@ -1,22 +1,20 @@
 import { ClassicPhase } from '../core/constants/other.js';
+import { foreverTankSupport } from '../core/forever_tank_support.js';
 import * as PresetUtils from '../core/preset_utils.js';
 import {
 	AgilityElixir,
 	Alcohol,
 	ArmorElixir,
 	AttackPowerBuff,
+	Class,
 	Consumes,
-	Debuffs,
 	Flask,
 	Food,
 	HealthElixir,
-	IndividualBuffs,
 	Potions,
 	Profession,
 	Race,
-	RaidBuffs,
 	StrengthBuff,
-	TristateEffect,
 	WeaponImbue,
 	ZanzaBuff,
 } from '../core/proto/common.js';
@@ -92,28 +90,11 @@ export const DefaultConsumes = Consumes.create({
 	zanzaBuff: ZanzaBuff.ROIDS,
 });
 
-export const DefaultRaidBuffs = RaidBuffs.create({
-	devotionAura: TristateEffect.TristateEffectRegular,
-	fireResistanceAura: true,
-	fireResistanceTotem: true,
-	giftOfTheWild: TristateEffect.TristateEffectImproved,
-	leaderOfThePack: true,
-	powerWordFortitude: TristateEffect.TristateEffectImproved,
-	strengthOfEarthTotem: TristateEffect.TristateEffectImproved,
-	stoneskinTotem: TristateEffect.TristateEffectRegular,
-});
-
-export const DefaultIndividualBuffs = IndividualBuffs.create({
-	blessingOfKings: true,
-	blessingOfMight: TristateEffect.TristateEffectImproved,
-});
-
-export const DefaultDebuffs = Debuffs.create({
-	curseOfRecklessness: true,
-	faerieFire: true,
-	giftOfArthas: true,
-	insectSwarm: true,
-});
+const Support = foreverTankSupport(Class.ClassWarrior);
+export const DefaultRaidBuffs = Support.raid;
+export const DefaultPartyBuffs = Support.party;
+export const DefaultIndividualBuffs = Support.player;
+export const DefaultDebuffs = Support.debuffs;
 
 export const OtherDefaults = {
 	profession1: Profession.Blacksmithing,

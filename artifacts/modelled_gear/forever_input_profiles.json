@@ -69636,7 +69636,8 @@
         "itemSwap": {},
         "buffs": {
           "blessingOfKings": true,
-          "blessingOfMight": "TristateEffectImproved"
+          "blessingOfMight": "TristateEffectRegular",
+          "blessingOfWisdom": "TristateEffectRegular"
         },
         "talentsString": "31-0501-522531233300210351",
         "profession1": "Blacksmithing",
@@ -70359,7 +70360,8 @@
         "itemSwap": {},
         "buffs": {
           "blessingOfKings": true,
-          "blessingOfMight": "TristateEffectImproved"
+          "blessingOfMight": "TristateEffectRegular",
+          "blessingOfWisdom": "TristateEffectRegular"
         },
         "talentsString": "31-0501-532531233300110351",
         "profession1": "Blacksmithing",
@@ -71082,7 +71084,8 @@
         "itemSwap": {},
         "buffs": {
           "blessingOfKings": true,
-          "blessingOfMight": "TristateEffectImproved"
+          "blessingOfMight": "TristateEffectRegular",
+          "blessingOfWisdom": "TristateEffectRegular"
         },
         "talentsString": "31-0501-532531233300110351",
         "profession1": "Blacksmithing",
@@ -71805,7 +71808,8 @@
         "itemSwap": {},
         "buffs": {
           "blessingOfKings": true,
-          "blessingOfMight": "TristateEffectImproved"
+          "blessingOfMight": "TristateEffectRegular",
+          "blessingOfWisdom": "TristateEffectRegular"
         },
         "talentsString": "31-0501-532531232300210351",
         "profession1": "Blacksmithing",
@@ -72528,7 +72532,8 @@
         "itemSwap": {},
         "buffs": {
           "blessingOfKings": true,
-          "blessingOfMight": "TristateEffectImproved"
+          "blessingOfMight": "TristateEffectRegular",
+          "blessingOfWisdom": "TristateEffectRegular"
         },
         "talentsString": "31-0501-532531232300210351",
         "profession1": "Blacksmithing",
@@ -73251,7 +73256,8 @@
         "itemSwap": {},
         "buffs": {
           "blessingOfKings": true,
-          "blessingOfMight": "TristateEffectImproved"
+          "blessingOfMight": "TristateEffectRegular",
+          "blessingOfWisdom": "TristateEffectRegular"
         },
         "talentsString": "31-0501-532531232300210351",
         "profession1": "Blacksmithing",
@@ -73974,7 +73980,8 @@
         "itemSwap": {},
         "buffs": {
           "blessingOfKings": true,
-          "blessingOfMight": "TristateEffectImproved"
+          "blessingOfMight": "TristateEffectRegular",
+          "blessingOfWisdom": "TristateEffectRegular"
         },
         "talentsString": "31-0501-532531233300110351",
         "profession1": "Blacksmithing",
@@ -74697,7 +74704,8 @@
         "itemSwap": {},
         "buffs": {
           "blessingOfKings": true,
-          "blessingOfMight": "TristateEffectImproved"
+          "blessingOfMight": "TristateEffectRegular",
+          "blessingOfWisdom": "TristateEffectRegular"
         },
         "talentsString": "31-0501-532531232300210351",
         "profession1": "Blacksmithing",
@@ -75420,7 +75428,8 @@
         "itemSwap": {},
         "buffs": {
           "blessingOfKings": true,
-          "blessingOfMight": "TristateEffectImproved"
+          "blessingOfMight": "TristateEffectRegular",
+          "blessingOfWisdom": "TristateEffectRegular"
         },
         "talentsString": "31-0501-532531232300210351",
         "profession1": "Blacksmithing",
@@ -76143,7 +76152,8 @@
         "itemSwap": {},
         "buffs": {
           "blessingOfKings": true,
-          "blessingOfMight": "TristateEffectImproved"
+          "blessingOfMight": "TristateEffectRegular",
+          "blessingOfWisdom": "TristateEffectRegular"
         },
         "talentsString": "31-0501-532531232300210351",
         "profession1": "Blacksmithing",
@@ -76776,7 +76786,8 @@
           "zanzaBuff": "ROIDS",
           "armorElixir": "ElixirOfSuperiorDefense",
           "healthElixir": "ElixirOfFortitude",
-          "alcohol": "AlcoholRumseyRumBlackLabel"
+          "alcohol": "AlcoholRumseyRumBlackLabel",
+          "mainHandImbue": "BrilliantWizardOil"
         },
         "bonusStats": {
           "stats": [
@@ -76866,7 +76877,9 @@
         "foreverTier1Bonuses": true,
         "itemSwap": {},
         "buffs": {
-          "blessingOfWisdom": "TristateEffectImproved"
+          "blessingOfKings": true,
+          "blessingOfMight": "TristateEffectRegular",
+          "blessingOfWisdom": "TristateEffectRegular"
         },
         "talentsString": "-5521513321301551-15002",
         "profession1": "Blacksmithing",
@@ -76874,7 +76887,68 @@
         "cooldowns": {},
         "rotation": {
           "type": "TypeAPL",
+          "prepullActions": [
+            {
+              "action": {
+                "castPaladinPrimarySeal": {}
+              },
+              "doAtValue": {
+                "const": {
+                  "val": "-3s"
+                }
+              }
+            },
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20928
+                  }
+                }
+              },
+              "doAtValue": {
+                "const": {
+                  "val": "-1.5s"
+                }
+              }
+            }
+          ],
           "priorityList": [
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20271
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 53671
+                  }
+                },
+                "condition": {
+                  "cmp": {
+                    "op": "OpGe",
+                    "lhs": {
+                      "spellTimeToReady": {
+                        "spellId": {
+                          "spellId": 20271
+                        }
+                      }
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "6s"
+                      }
+                    }
+                  }
+                }
+              }
+            },
             {
               "action": {
                 "autocastOtherCooldowns": {}
@@ -76882,6 +76956,11 @@
             },
             {
               "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 1311015
+                  }
+                },
                 "condition": {
                   "cmp": {
                     "op": "OpLt",
@@ -76894,16 +76973,16 @@
                       }
                     }
                   }
-                },
-                "castSpell": {
-                  "spellId": {
-                    "spellId": 1311015
-                  }
                 }
               }
             },
             {
               "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20928
+                  }
+                },
                 "condition": {
                   "cmp": {
                     "op": "OpLe",
@@ -76923,16 +77002,12 @@
                       }
                     }
                   }
-                },
-                "castSpell": {
-                  "spellId": {
-                    "spellId": 20928
-                  }
                 }
               }
             },
             {
               "action": {
+                "castPaladinPrimarySeal": {},
                 "condition": {
                   "cmp": {
                     "op": "OpLe",
@@ -76945,21 +77020,16 @@
                       }
                     }
                   }
-                },
-                "castPaladinPrimarySeal": {}
+                }
               }
             },
             {
               "action": {
                 "castSpell": {
                   "spellId": {
-                    "spellId": 20271
+                    "spellId": 20924
                   }
-                }
-              }
-            },
-            {
-              "action": {
+                },
                 "condition": {
                   "cmp": {
                     "op": "OpGe",
@@ -76972,16 +77042,16 @@
                       }
                     }
                   }
-                },
-                "castSpell": {
-                  "spellId": {
-                    "spellId": 20924
-                  }
                 }
               }
             },
             {
               "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 26573
+                  }
+                },
                 "condition": {
                   "cmp": {
                     "op": "OpGe",
@@ -76993,11 +77063,6 @@
                         "val": "15%"
                       }
                     }
-                  }
-                },
-                "castSpell": {
-                  "spellId": {
-                    "spellId": 26573
                   }
                 }
               }
@@ -77026,32 +77091,6 @@
                   "spellId": {
                     "spellId": 20928
                   }
-                }
-              }
-            }
-          ],
-          "prepullActions": [
-            {
-              "action": {
-                "castPaladinPrimarySeal": {}
-              },
-              "doAtValue": {
-                "const": {
-                  "val": "-3s"
-                }
-              }
-            },
-            {
-              "action": {
-                "castSpell": {
-                  "spellId": {
-                    "spellId": 20928
-                  }
-                }
-              },
-              "doAtValue": {
-                "const": {
-                  "val": "-1.5s"
                 }
               }
             }
@@ -77166,7 +77205,8 @@
           "zanzaBuff": "ROIDS",
           "armorElixir": "ElixirOfSuperiorDefense",
           "healthElixir": "ElixirOfFortitude",
-          "alcohol": "AlcoholRumseyRumBlackLabel"
+          "alcohol": "AlcoholRumseyRumBlackLabel",
+          "mainHandImbue": "BrilliantWizardOil"
         },
         "bonusStats": {
           "stats": [
@@ -77256,7 +77296,9 @@
         "foreverTier1Bonuses": true,
         "itemSwap": {},
         "buffs": {
-          "blessingOfWisdom": "TristateEffectImproved"
+          "blessingOfKings": true,
+          "blessingOfMight": "TristateEffectRegular",
+          "blessingOfWisdom": "TristateEffectRegular"
         },
         "talentsString": "-5521513321301551-15002",
         "profession1": "Blacksmithing",
@@ -77264,7 +77306,68 @@
         "cooldowns": {},
         "rotation": {
           "type": "TypeAPL",
+          "prepullActions": [
+            {
+              "action": {
+                "castPaladinPrimarySeal": {}
+              },
+              "doAtValue": {
+                "const": {
+                  "val": "-3s"
+                }
+              }
+            },
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20928
+                  }
+                }
+              },
+              "doAtValue": {
+                "const": {
+                  "val": "-1.5s"
+                }
+              }
+            }
+          ],
           "priorityList": [
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20271
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 53671
+                  }
+                },
+                "condition": {
+                  "cmp": {
+                    "op": "OpGe",
+                    "lhs": {
+                      "spellTimeToReady": {
+                        "spellId": {
+                          "spellId": 20271
+                        }
+                      }
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "6s"
+                      }
+                    }
+                  }
+                }
+              }
+            },
             {
               "action": {
                 "autocastOtherCooldowns": {}
@@ -77272,6 +77375,11 @@
             },
             {
               "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 1311015
+                  }
+                },
                 "condition": {
                   "cmp": {
                     "op": "OpLt",
@@ -77284,16 +77392,16 @@
                       }
                     }
                   }
-                },
-                "castSpell": {
-                  "spellId": {
-                    "spellId": 1311015
-                  }
                 }
               }
             },
             {
               "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20928
+                  }
+                },
                 "condition": {
                   "cmp": {
                     "op": "OpLe",
@@ -77313,16 +77421,12 @@
                       }
                     }
                   }
-                },
-                "castSpell": {
-                  "spellId": {
-                    "spellId": 20928
-                  }
                 }
               }
             },
             {
               "action": {
+                "castPaladinPrimarySeal": {},
                 "condition": {
                   "cmp": {
                     "op": "OpLe",
@@ -77335,21 +77439,16 @@
                       }
                     }
                   }
-                },
-                "castPaladinPrimarySeal": {}
+                }
               }
             },
             {
               "action": {
                 "castSpell": {
                   "spellId": {
-                    "spellId": 20271
+                    "spellId": 20924
                   }
-                }
-              }
-            },
-            {
-              "action": {
+                },
                 "condition": {
                   "cmp": {
                     "op": "OpGe",
@@ -77362,16 +77461,16 @@
                       }
                     }
                   }
-                },
-                "castSpell": {
-                  "spellId": {
-                    "spellId": 20924
-                  }
                 }
               }
             },
             {
               "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 26573
+                  }
+                },
                 "condition": {
                   "cmp": {
                     "op": "OpGe",
@@ -77383,11 +77482,6 @@
                         "val": "15%"
                       }
                     }
-                  }
-                },
-                "castSpell": {
-                  "spellId": {
-                    "spellId": 26573
                   }
                 }
               }
@@ -77416,32 +77510,6 @@
                   "spellId": {
                     "spellId": 20928
                   }
-                }
-              }
-            }
-          ],
-          "prepullActions": [
-            {
-              "action": {
-                "castPaladinPrimarySeal": {}
-              },
-              "doAtValue": {
-                "const": {
-                  "val": "-3s"
-                }
-              }
-            },
-            {
-              "action": {
-                "castSpell": {
-                  "spellId": {
-                    "spellId": 20928
-                  }
-                }
-              },
-              "doAtValue": {
-                "const": {
-                  "val": "-1.5s"
                 }
               }
             }
@@ -77556,7 +77624,8 @@
           "zanzaBuff": "ROIDS",
           "armorElixir": "ElixirOfSuperiorDefense",
           "healthElixir": "ElixirOfFortitude",
-          "alcohol": "AlcoholRumseyRumBlackLabel"
+          "alcohol": "AlcoholRumseyRumBlackLabel",
+          "mainHandImbue": "BrilliantWizardOil"
         },
         "bonusStats": {
           "stats": [
@@ -77646,7 +77715,9 @@
         "foreverTier1Bonuses": true,
         "itemSwap": {},
         "buffs": {
-          "blessingOfWisdom": "TristateEffectImproved"
+          "blessingOfKings": true,
+          "blessingOfMight": "TristateEffectRegular",
+          "blessingOfWisdom": "TristateEffectRegular"
         },
         "talentsString": "-5521513321301551-15002",
         "profession1": "Blacksmithing",
@@ -77654,7 +77725,68 @@
         "cooldowns": {},
         "rotation": {
           "type": "TypeAPL",
+          "prepullActions": [
+            {
+              "action": {
+                "castPaladinPrimarySeal": {}
+              },
+              "doAtValue": {
+                "const": {
+                  "val": "-3s"
+                }
+              }
+            },
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20928
+                  }
+                }
+              },
+              "doAtValue": {
+                "const": {
+                  "val": "-1.5s"
+                }
+              }
+            }
+          ],
           "priorityList": [
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20271
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 53671
+                  }
+                },
+                "condition": {
+                  "cmp": {
+                    "op": "OpGe",
+                    "lhs": {
+                      "spellTimeToReady": {
+                        "spellId": {
+                          "spellId": 20271
+                        }
+                      }
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "6s"
+                      }
+                    }
+                  }
+                }
+              }
+            },
             {
               "action": {
                 "autocastOtherCooldowns": {}
@@ -77662,6 +77794,11 @@
             },
             {
               "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 1311015
+                  }
+                },
                 "condition": {
                   "cmp": {
                     "op": "OpLt",
@@ -77674,16 +77811,16 @@
                       }
                     }
                   }
-                },
-                "castSpell": {
-                  "spellId": {
-                    "spellId": 1311015
-                  }
                 }
               }
             },
             {
               "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 20928
+                  }
+                },
                 "condition": {
                   "cmp": {
                     "op": "OpLe",
@@ -77703,16 +77840,12 @@
                       }
                     }
                   }
-                },
-                "castSpell": {
-                  "spellId": {
-                    "spellId": 20928
-                  }
                 }
               }
             },
             {
               "action": {
+                "castPaladinPrimarySeal": {},
                 "condition": {
                   "cmp": {
                     "op": "OpLe",
@@ -77725,21 +77858,16 @@
                       }
                     }
                   }
-                },
-                "castPaladinPrimarySeal": {}
+                }
               }
             },
             {
               "action": {
                 "castSpell": {
                   "spellId": {
-                    "spellId": 20271
+                    "spellId": 20924
                   }
-                }
-              }
-            },
-            {
-              "action": {
+                },
                 "condition": {
                   "cmp": {
                     "op": "OpGe",
@@ -77752,16 +77880,16 @@
                       }
                     }
                   }
-                },
-                "castSpell": {
-                  "spellId": {
-                    "spellId": 20924
-                  }
                 }
               }
             },
             {
               "action": {
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 26573
+                  }
+                },
                 "condition": {
                   "cmp": {
                     "op": "OpGe",
@@ -77773,11 +77901,6 @@
                         "val": "15%"
                       }
                     }
-                  }
-                },
-                "castSpell": {
-                  "spellId": {
-                    "spellId": 26573
                   }
                 }
               }
@@ -77806,32 +77929,6 @@
                   "spellId": {
                     "spellId": 20928
                   }
-                }
-              }
-            }
-          ],
-          "prepullActions": [
-            {
-              "action": {
-                "castPaladinPrimarySeal": {}
-              },
-              "doAtValue": {
-                "const": {
-                  "val": "-3s"
-                }
-              }
-            },
-            {
-              "action": {
-                "castSpell": {
-                  "spellId": {
-                    "spellId": 20928
-                  }
-                }
-              },
-              "doAtValue": {
-                "const": {
-                  "val": "-1.5s"
                 }
               }
             }
@@ -78031,7 +78128,8 @@
         "itemSwap": {},
         "buffs": {
           "blessingOfKings": true,
-          "blessingOfMight": "TristateEffectImproved"
+          "blessingOfMight": "TristateEffectRegular",
+          "blessingOfWisdom": "TristateEffectRegular"
         },
         "talentsString": "01-5002232123132210551-055",
         "profession1": "Engineering",
@@ -78500,7 +78598,8 @@
         "itemSwap": {},
         "buffs": {
           "blessingOfKings": true,
-          "blessingOfMight": "TristateEffectImproved"
+          "blessingOfMight": "TristateEffectRegular",
+          "blessingOfWisdom": "TristateEffectRegular"
         },
         "talentsString": "01-5002232123132210551-055",
         "profession1": "Engineering",
@@ -78969,7 +79068,8 @@
         "itemSwap": {},
         "buffs": {
           "blessingOfKings": true,
-          "blessingOfMight": "TristateEffectImproved"
+          "blessingOfMight": "TristateEffectRegular",
+          "blessingOfWisdom": "TristateEffectRegular"
         },
         "talentsString": "01-5002232123132210551-055",
         "profession1": "Engineering",
@@ -79438,7 +79538,8 @@
         "itemSwap": {},
         "buffs": {
           "blessingOfKings": true,
-          "blessingOfMight": "TristateEffectImproved"
+          "blessingOfMight": "TristateEffectRegular",
+          "blessingOfWisdom": "TristateEffectRegular"
         },
         "talentsString": "01-5002232123132210551-055",
         "profession1": "Engineering",

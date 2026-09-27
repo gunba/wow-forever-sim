@@ -14,15 +14,19 @@ Both use level-63 Dragonkin, 3,731 starting armor, two-second enemy swings,
 parry haste and a six-second burst window. These are stress scenarios, not
 measured boss/healer behavior.
 
-Paladin/Bear controls are their classes' previously published selected tank
-setups, with only the race changed, from the
-`artifacts/tanks/*_1t_20261993_selected.json` requests.
-After the queue correction, future Warrior searches instead use the ten
-frozen `artifacts/tanks/queue_corrected_warrior_controls.json` profiles.
-These controls do not move with candidate trials. Their actual buffs,
-debuff ownership, professions and consumables are retained. Support differs
-between tank classes and from the non-attacking DPS scenario: the matrix must
-not imply an equal-encounter survival ranking.
+Current controls are the 17 frozen
+`artifacts/tanks/shared_support_controls.json` profiles. Native and web
+defaults use the same [support definition](../sim/core/forever_tank_support.json).
+Warrior still supplies Battle Shout and Sunder; Warrior/Bear retain their
+own attack-speed/power debuff duties. The controls do not move with trials.
+Earlier class-specific support and the intermediate queue-corrected Warrior
+controls remain historical, not current guard targets.
+
+The [support correction](tank_support.md) keeps gear/talents and tank workloads
+unchanged, adds Paladin's missing oil and improves Swift Judgement timing.
+These are corrected replays, not a new equipment/talent search. Tanks still
+differ from the non-attacking DPS scenario; the matrix is not an
+equal-encounter survival ranking.
 
 ## Screening safeguards
 
@@ -85,7 +89,13 @@ The search trades its existing stats and supported enchants, not an unrestricted
 future tank-loot catalog. This is a coverage limit, not a claim that offensive
 armor is universally the best tank gear.
 
-## Selected profiles
+## Historical selection evidence
+
+The gains below describe the earlier class-specific support conditions.
+They are not current gains under shared support. The raw comparisons remain
+available, but equipment/talent optimality has not been re-established after
+the corrections. Current damage, survival and threat come from the new
+[matched replays](../artifacts/tank_support/validation.json).
 
 The Bear selection checks use two independent seeds per arm with 20,000
 iterations per seed; Paladin uses 100,000 to resolve small differences in modeled
@@ -144,12 +154,11 @@ Bear also retains inherited damage-based outgoing/incoming rage; this has not
 been established for Forever (DRU-012). Warrior measurements are not a verified
 replacement formula for Bear.
 
-The [selection ledger](../artifacts/tanks/current/validation.json) includes
-the frozen controls, per-seed checks, uncertainty bounds, rejection reasons and
-pooled per-target threat. Compressed research records preserve the candidate
-inputs and both encounter results. No combat-engine mechanic was changed for
-these selections.
-The ledger records seeds per build: Paladin's later correction has separate
+The [current ledger](../artifacts/tanks/current/validation.json) records
+the shared-support replays and their historical supersession. Earlier
+selection checks are preserved in the [pre-correction archive](../artifacts/history/807db6aaea/tanks_before_shared_support.json.gz).
+Compressed research records preserve the candidate inputs and both encounter
+results. Paladin's earlier mana correction also has separate
 [validation and archives](paladin_mana.md). Mana-restoration threat remains an
 inherited assumption tracked as CORE-014, not verified Forever threat behavior.
 

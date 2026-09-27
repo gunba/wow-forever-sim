@@ -3,7 +3,9 @@
 This report preserves the earlier controls and their original comparisons,
 not the new matrix selections. See [Tank selection](tank_selection.md) for
 the integration method and safeguards. The exact current ranking requests
-are authoritative for the published profiles.
+are authoritative for the published profiles. Current tanks use
+[shared raid support](tank_support.md); the class-specific settings and
+comparisons below are historical.
 
 **The Warrior comparisons below are invalid:** both historical APL arms bypassed
 the Heroic Strike/Cleave queue. See the [queue correction](protection_queue.md)

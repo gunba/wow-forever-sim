@@ -1,20 +1,18 @@
 import { ClassicPhase } from '../core/constants/other.js';
+import { foreverTankSupport } from '../core/forever_tank_support.js';
 import * as PresetUtils from '../core/preset_utils.js';
 import {
 	AgilityElixir,
 	Alcohol,
 	ArmorElixir,
 	AttackPowerBuff,
+	Class,
 	Consumes,
-	Debuffs,
 	Flask,
 	Food,
 	HealthElixir,
-	IndividualBuffs,
 	Potions,
-	RaidBuffs,
 	StrengthBuff,
-	TristateEffect,
 	UnitReference,
 	ZanzaBuff,
 } from '../core/proto/common.js';
@@ -75,7 +73,7 @@ export const DefaultOptions = DruidOptions.create({
 	startingRage: 0,
 });
 
-// No weapon imbue: sharpening stones and Windfury do nothing for a bear's paws.
+// No weapon coating for Bear. The separate party Windfury buff is enabled.
 export const DefaultConsumes = Consumes.create({
 	agilityElixir: AgilityElixir.ElixirOfTheMongoose,
 	alcohol: Alcohol.AlcoholRumseyRumBlackLabel,
@@ -90,26 +88,8 @@ export const DefaultConsumes = Consumes.create({
 	zanzaBuff: ZanzaBuff.ROIDS,
 });
 
-export const DefaultRaidBuffs = RaidBuffs.create({
-	battleShout: TristateEffect.TristateEffectImproved,
-	devotionAura: TristateEffect.TristateEffectRegular,
-	fireResistanceAura: true,
-	fireResistanceTotem: true,
-	giftOfTheWild: TristateEffect.TristateEffectImproved,
-	powerWordFortitude: TristateEffect.TristateEffectImproved,
-	strengthOfEarthTotem: TristateEffect.TristateEffectImproved,
-	stoneskinTotem: TristateEffect.TristateEffectRegular,
-});
-
-export const DefaultIndividualBuffs = IndividualBuffs.create({
-	blessingOfKings: true,
-	blessingOfMight: TristateEffect.TristateEffectImproved,
-});
-
-export const DefaultDebuffs = Debuffs.create({
-	curseOfRecklessness: true,
-	exposeArmor: TristateEffect.TristateEffectImproved,
-	faerieFire: true,
-	giftOfArthas: true,
-	sunderArmor: true,
-});
+const Support = foreverTankSupport(Class.ClassDruid);
+export const DefaultRaidBuffs = Support.raid;
+export const DefaultPartyBuffs = Support.party;
+export const DefaultIndividualBuffs = Support.player;
+export const DefaultDebuffs = Support.debuffs;

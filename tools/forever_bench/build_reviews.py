@@ -117,7 +117,8 @@ def main():
     ]
     if any(row.get("Tank") for row in results["Results"]):
         lines += ["Tank rows include frontal incoming attacks and modeled healing, with their recorded "
-        "class-specific external support. They do not share the non-attacking DPS encounter. "
+        "shared raid support except assigned self-maintained duties. They do not share the non-attacking DPS encounter. "
+        "[Support and Judgement correction](tank_support.md). "
         "[Tank selection and guardrails](tank_selection.md).", ""]
     slots = ["Head", "Neck", "Shoulders", "Back", "Chest", "Wrists", "Hands",
              "Waist", "Legs", "Feet", "Ring 1", "Ring 2", "Trinket 1", "Trinket 2",
@@ -132,7 +133,8 @@ def main():
         lines += [f"## {cls} — {spec}", "",
                   f"**Talents:** {'/'.join(map(str, points))} · `{p['talentsString']}`", "",
                   f"[Requests and results]({raw_path}) · "
-                  f"[Equipment search]({'../artifacts/tanks/current/validation.json' if representative.get('Tank') else search_path})", ""]
+                  f"[{'Tank replay evidence' if representative.get('Tank') else 'Equipment search'}]"
+                  f"({'../artifacts/tanks/current/validation.json' if representative.get('Tank') else search_path})", ""]
         if key in BUILD_CAVEATS:
             lines += ["**Model limitations:** " + " ".join(BUILD_CAVEATS[key]), ""]
         if len({row["BaselinePlayer"]["talentsString"] for row in rows}) > 1:

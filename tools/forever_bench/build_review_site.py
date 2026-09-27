@@ -82,14 +82,14 @@ def main():
                              "spec_gear_equity.csv"):
                 shutil.copyfile(Path("artifacts/modelled_gear") / filename,
                                 args.output / filename)
-    for directory in ("profile_corrections", "windfury", "paladin_mana", "protection_queue"):
+    for directory in ("profile_corrections", "windfury", "paladin_mana", "protection_queue", "tank_support"):
         shutil.copytree(Path("artifacts") / directory, args.output / directory, dirs_exist_ok=True)
     shutil.copyfile("artifacts/spell_coverage.json", args.output / "spell_coverage.json")
     for extension in ("json", "csv", "svg", "png"):
         shutil.copyfile(args.results.with_suffix("." + extension), args.output / ("results." + extension))
     for name in ("build_reviews.md", "build_updates.md", "gear_updates.md", "in_game_checks.md", "check_dispositions.md", "spell_coverage.md", "windfury.md", "energy_audit.md", "auto_attack_audit.md", "crit_model.md", "forever_gear_data.md", "mechanics_review.md", "history_review.md", "upstream-forever-review-2026-09-23.md", "upstream-forever-followup-2026-09-23.md", "mana_regeneration.md", "mythicsim_review.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
-    for name in ("weekly_review.md", "weekly_review_commits.csv", "flurry_review.md", "upstream_elliot_review.md", "tank_benchmark.md", "tank_selection.md", "paladin_mana.md", "protection_queue.md", "forever-70009.md"):
+    for name in ("weekly_review.md", "weekly_review_commits.csv", "flurry_review.md", "upstream_elliot_review.md", "tank_benchmark.md", "tank_selection.md", "paladin_mana.md", "protection_queue.md", "tank_support.md", "forever-70009.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
     body = []
     for key, class_name, label, icon in builds:
@@ -184,12 +184,15 @@ def main():
             '<section id="tanks"><h2>Tank performance</h2>'
             '<p>Tank rows take frontal attacks: 3,000 base damage every two seconds, parry haste, '
             '1,500 HPS in three-second heals. Other DPS rows do not take these attacks. '
-            'External support differs between tank classes; this is not an equal-support survival ranking.</p>'
+            'Tanks share raid support except their assigned self-maintained duties. '
+            'Gear, talents and unverified class mechanics still differ; this is not a verified survival ranking.</p>'
             '<p class="note">Iterations continue after a modeled death. DPS is not discounted for death downtime; '
             'survival is evaluated separately.</p>'
             '<p class="note">Protection Warrior now queues Heroic Strike/Cleave correctly. Its previous '
             'direct-cast DPS and selection gains are invalid; current gear and talents are replayed, not re-optimized. '
-            '<a href="protection_queue.md">Correction and evidence</a>.</p>'
+            '<a href="protection_queue.md">Queue correction</a>. '
+            'Shared support and Paladin oil/Judgement timing are included in the current replays; '
+            '<a href="tank_support.md">settings and evidence</a>.</p>'
             '<p><a href="tank_selection.md">Selection safeguards and three-attacker scenario</a> · '
             '<a href="tanks/validation.json">Matched validation and per-target threat</a> · '
             '<a href="tanks/metrics.csv">Tank metrics CSV</a> · '
@@ -203,6 +206,8 @@ def main():
         shutil.copytree("artifacts/tanks/current", args.output / "tanks", dirs_exist_ok=True)
         shutil.copyfile("artifacts/tanks/queue_corrected_warrior_controls.json",
                         args.output / "tanks/queue_corrected_warrior_controls.json")
+        shutil.copyfile("artifacts/tanks/shared_support_controls.json",
+                        args.output / "tanks/shared_support_controls.json")
     document = """<!doctype html>
 <html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Forever simulations</title>

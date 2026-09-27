@@ -6,6 +6,7 @@ import (
 	"math"
 	"testing"
 
+	"github.com/wowsims/classic/sim/core"
 	"github.com/wowsims/classic/sim/core/proto"
 	googleProto "google.golang.org/protobuf/proto"
 )
@@ -32,8 +33,15 @@ func TestPublishedTankControlsEnterBenchmark(t *testing.T) {
 		control := tankControl(b.Key)
 		player := googleProto.Clone(control.Raid.Parties[0].Players[0]).(*proto.Player)
 		request := tankRequest(b, player, int(control.SimOptions.Iterations), control.SimOptions.RandomSeed, 1, 300)
-		if !googleProto.Equal(control, request) {
-			t.Fatalf("%s: baseline template changed its published scenario", b.Key)
+		if !googleProto.Equal(control.Encounter, request.Encounter) ||
+			!googleProto.Equal(control.Raid.Parties[0].Players[0], request.Raid.Parties[0].Players[0]) {
+			t.Fatalf("%s: shared support changed the encounter or supplied player", b.Key)
+		}
+		support := core.ForeverTankSupport(b.Class)
+		if !googleProto.Equal(request.Raid.Buffs, support.Raid) ||
+			!googleProto.Equal(request.Raid.Debuffs, support.Debuffs) ||
+			!googleProto.Equal(request.Raid.Parties[0].Buffs, support.Party) {
+			t.Fatalf("%s: scenario did not use shared tank support", b.Key)
 		}
 		multi := tankRequest(b, player, 10, 11, 3, 90)
 		if len(multi.Encounter.Targets) != 3 || multi.Encounter.Duration != 90 ||
@@ -51,6 +59,42 @@ func TestPublishedTankControlsEnterBenchmark(t *testing.T) {
 	}
 	if profiles != 17 {
 		t.Fatalf("%d tank race profiles, want 17", profiles)
+	}
+}
+
+func TestTankDefaultsShareSupportAndRetainDefensiveFlasks(t *testing.T) {
+	for _, b := range builds() {
+		if !b.isTank() {
+			continue
+		}
+		support := core.ForeverTankSupport(b.Class)
+		if !support.Debuffs.CurseOfElements || !support.Raid.LeaderOfThePack ||
+			support.Raid.MoonkinAura || !support.Party.WindfuryTotem ||
+			support.Raid.GraceOfAirTotem != 0 || support.Party.GraceOfAirTotem != 0 ||
+			support.Debuffs.SunderArmor || support.Debuffs.ThunderClap != 0 ||
+			support.Debuffs.DemoralizingRoar != 0 || support.Debuffs.DemoralizingShout != 0 {
+			t.Fatalf("%s: missing shared support or duplicate/self-maintained effects", b.Key)
+		}
+		if (support.Raid.BattleShout == 0) != (b.Key == "tank_warrior") ||
+			(support.Debuffs.ExposeArmor == 0) != (b.Key == "tank_warrior") {
+			t.Fatal("Warrior must maintain its own shout and Sunder")
+		}
+		for _, race := range b.races() {
+			for name, player := range map[string]*proto.Player{
+				"prototype": b.player(race),
+				"ranked":    b.rankedPlayer(race),
+				"guard":     tankGuardPlayer(b, race),
+			} {
+				if !googleProto.Equal(player.Buffs, support.Player) ||
+					player.Consumes.Flask != proto.Flask_FlaskOfTheTitans {
+					t.Fatalf("%s/%s/%s: unequal support or offensive flask substituted", b.Key, raceName(race), name)
+				}
+				if b.Key == "protection_paladin" &&
+					player.Consumes.MainHandImbue != proto.WeaponImbue_BrilliantWizardOil {
+					t.Fatal("Protection Paladin lacks weapon oil")
+				}
+			}
+		}
 	}
 }
 
