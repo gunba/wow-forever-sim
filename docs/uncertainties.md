@@ -7,7 +7,7 @@ Reviewed against `b9d8ef4a47271dd65a96259351daa696a37bd4fa`. Current level-60 DP
 This is the current register. Earlier audits preserve historical findings, not current task status.
 An implementation gap is not a request to test an unknown game rule. Model assumptions are not measured facts.
 
-Needs evidence: **84** · Implementation gap: **26** · Model assumption: **5** · Resolved: **19** · Outside current scenarios: **1**
+Needs evidence: **84** · Implementation gap: **27** · Model assumption: **5** · Resolved: **20** · Outside current scenarios: **1**
 
 ## Updating an answer
 
@@ -1813,6 +1813,22 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Related:** DATA-014
 
+### SCEN-016 — Overlapping seeds in historical validation
+
+**Implementation gap · Medium priority · Sources / code**
+
+**Question:** Which earlier pooled comparisons counted overlapping iteration seeds as independent replications?
+
+**Current model:** The engine uses starting seed plus iteration index. The preceding tank-support and queue reports used starts 38 and 52 apart for 10,000 iterations, reusing most seeds. New Sunder validation uses disjoint ranges.
+
+**Impact:** Legacy pooled sample-size and uncertainty claims need reassessment; this does not by itself invalidate saved DPS means or change combat behavior.
+
+**To close:** Inventory earlier validation seed ranges and recalculate affected uncertainty or repeat material decisions with disjoint ranges. Keep original raw evidence and distinguish independent runs from overlapping repeats.
+
+**References:** [sim/core/sim.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/sim.go) · [docs/protection_sunder.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/protection_sunder.md) · [artifacts/tank_support/validation.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/tank_support/validation.json) · [artifacts/protection_queue/validation.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/protection_queue/validation.json)
+
+**Related:** SCEN-004
+
 ### SCEN-009 — Geometry, movement, kills and latency
 
 **Model assumption · Low priority · Model decision**
@@ -2009,7 +2025,7 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Impact:** The old Paladin preset omitted substantial damage support. Comparisons now use the corrected settings without claiming that all class survival mechanics are verified.
 
-**To close:** Closed by profile-wide support regressions and matched independent-seed replays; earlier support/selection evidence remains archived.
+**To close:** Closed by profile-wide support regressions and matched replays; their overlapping seed ranges are qualified by SCEN-016. Earlier support/selection evidence remains archived.
 
 **References:** [sim/core/forever_tank_support.json](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/forever_tank_support.json) · [docs/tank_support.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/tank_support.md) · [artifacts/tank_support/validation.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/tank_support/validation.json)
 
@@ -2030,6 +2046,22 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **References:** [docs/protection_queue.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/protection_queue.md) · [sim/core/apl_actions_casting.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/apl_actions_casting.go) · [sim/warrior/heroic_strike_cleave.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/heroic_strike_cleave.go) · [tools/forever_bench/queued_attacks_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/queued_attacks_test.go)
 
 **Related:** SCEN-004, WAR-001, WAR-003
+
+### WAR-014 — Protection Sunder maintenance starvation
+
+**Resolved · High priority · Sources / code**
+
+**Question:** Does the Protection rotation preserve five Sunder stacks under competing rage demands?
+
+**Current model:** An eight-second refresh window and dynamic-cost rage reserves substantially reduce lapses, with no free external armor debuff. Essential defenses retain priority.
+
+**Impact:** In matched coverage samples, five-stack losses fall from 42.22% to 0.57% of single-attacker fights. Mean post-ramp time below five falls from 4.86 to 0.053 seconds.
+
+**To close:** Closed by a reproduced Night Elf lapse, targeted regression and all-race coverage/survival/threat checks in both workloads. Avoidance and resource pressure can still cause rare lapses.
+
+**References:** [docs/protection_sunder.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/protection_sunder.md) · [tools/forever_bench/sunder_maintenance_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/sunder_maintenance_test.go) · [tools/sunder_audit/main.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/sunder_audit/main.go)
+
+**Related:** WAR-013, SCEN-004
 
 ### DONE-008 — Demonic Sacrifice coexistence false lead
 
@@ -2141,7 +2173,7 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Impact:** About 31.5 to 35 Judgements per five minutes; roughly 5–6 DPS from the APL alone with shared support.
 
-**To close:** Closed by same-timestamp free-cast regression and all-three-race, two-workload independent-seed comparisons with matching support.
+**To close:** Closed by same-timestamp free-cast regression and all-three-race, two-workload matched comparisons with matching support. Their overlapping seed ranges are qualified by SCEN-016.
 
 **References:** [sim/paladin/swift_judgement.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/swift_judgement.go) · [ui/protection_paladin/apls/forever_protection.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/protection_paladin/apls/forever_protection.apl.json) · [tools/forever_bench/paladin_apl_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/paladin_apl_test.go) · [artifacts/tank_support/validation.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/tank_support/validation.json)
 

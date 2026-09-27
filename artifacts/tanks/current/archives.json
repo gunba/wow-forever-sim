@@ -17424,8 +17424,8 @@
   ],
   "supersededBuilds": {
     "tank_warrior": {
-      "reason": "Class-specific support replaced by common support; retained gear/talents have not been re-optimized.",
-      "archive": "../../history/807db6aaea/tanks_before_shared_support.json.gz"
+      "reason": "Late Sunder refresh could lose stacks. The revised APL preserves rage for maintenance; gear and talents are unchanged.",
+      "archive": "../../history/91b669cc2aa/protection_before_sunder_maintenance.json.gz"
     },
     "feral_tank_druid": {
       "reason": "Class-specific support replaced by common support; retained gear/talents have not been re-optimized.",
@@ -17437,5 +17437,6 @@
     }
   },
   "queueCorrection": "../../protection_queue/archives.json",
-  "sharedSupportCorrection": "../../tank_support/archives.json"
+  "sharedSupportCorrection": "../../tank_support/archives.json",
+  "sunderMaintenance": "../../protection_sunder/archives.json"
 }

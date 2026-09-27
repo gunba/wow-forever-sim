@@ -1,0 +1,764 @@
+{
+  "iterationsPerRacePerSeed": 2000,
+  "seeds": [
+    20275001,
+    20300001
+  ],
+  "scope": "Main-target Sunder coverage. Full-stack time counts only five stacks; initial ramp is separate. Exact-end expiration is not a drop.",
+  "results": {
+    "baseline-1": {
+      "Fights": 40000,
+      "FightsWithDrop": 16889,
+      "Drops": 20790,
+      "FirstFiveSeconds": 13.915524999999974,
+      "FullStackSeconds": 281.2272093721109,
+      "BelowFiveSecondsAfterRamp": 4.8572656278892
+    },
+    "baseline-3": {
+      "Fights": 40000,
+      "FightsWithDrop": 3521,
+      "Drops": 3735,
+      "FirstFiveSeconds": 13.69195124999997,
+      "FullStackSeconds": 75.49772477696764,
+      "BelowFiveSecondsAfterRamp": 0.8103239730323499
+    },
+    "reserve-1": {
+      "Fights": 40000,
+      "FightsWithDrop": 227,
+      "Drops": 228,
+      "FirstFiveSeconds": 12.539119999999977,
+      "FullStackSeconds": 287.4075515773799,
+      "BelowFiveSecondsAfterRamp": 0.053328422620025
+    },
+    "reserve-3": {
+      "Fights": 40000,
+      "FightsWithDrop": 15,
+      "Drops": 15,
+      "FirstFiveSeconds": 12.269866249999993,
+      "FullStackSeconds": 77.72726381435643,
+      "BelowFiveSecondsAfterRamp": 0.0028699356436000002
+    }
+  },
+  "records": {
+    "20275001-Tauren-baseline-1.coverage.json": {
+      "FirstFiveSeconds": 13.914374999999989,
+      "FullStackSeconds": 280.8260317041273,
+      "BelowFiveSecondsAfterRamp": 5.2595932958725005,
+      "Drops": 1119,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 895
+    },
+    "20300001-Troll-baseline-1.coverage.json": {
+      "FirstFiveSeconds": 13.83832499999998,
+      "FullStackSeconds": 281.58617091054384,
+      "BelowFiveSecondsAfterRamp": 4.5755040894565004,
+      "Drops": 976,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 799
+    },
+    "20275001-Orc-baseline-1.coverage.json": {
+      "FirstFiveSeconds": 14.224024999999983,
+      "FullStackSeconds": 280.3872536728642,
+      "BelowFiveSecondsAfterRamp": 5.388721327136003,
+      "Drops": 1091,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 885
+    },
+    "20300001-Orc-baseline-1.coverage.json": {
+      "FirstFiveSeconds": 14.176849999999995,
+      "FullStackSeconds": 279.9785732568845,
+      "BelowFiveSecondsAfterRamp": 5.844576743115505,
+      "Drops": 1217,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 953
+    },
+    "20300001-Tauren-baseline-1.coverage.json": {
+      "FirstFiveSeconds": 13.961199999999984,
+      "FullStackSeconds": 281.12522574049973,
+      "BelowFiveSecondsAfterRamp": 4.913574259499999,
+      "Drops": 1049,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 860
+    },
+    "20275001-Troll-baseline-1.coverage.json": {
+      "FirstFiveSeconds": 13.882024999999969,
+      "FullStackSeconds": 281.2366013576669,
+      "BelowFiveSecondsAfterRamp": 4.881373642333499,
+      "Drops": 1034,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 840
+    },
+    "20275001-Undead-baseline-1.coverage.json": {
+      "FirstFiveSeconds": 13.968749999999968,
+      "FullStackSeconds": 281.2192206134835,
+      "BelowFiveSecondsAfterRamp": 4.812029386516506,
+      "Drops": 1043,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 843
+    },
+    "20300001-Undead-baseline-1.coverage.json": {
+      "FirstFiveSeconds": 13.871824999999973,
+      "FullStackSeconds": 281.46554127676524,
+      "BelowFiveSecondsAfterRamp": 4.662633723234996,
+      "Drops": 1016,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 818
+    },
+    "20275001-Windshaper-baseline-1.coverage.json": {
+      "FirstFiveSeconds": 13.870524999999963,
+      "FullStackSeconds": 281.35051248797447,
+      "BelowFiveSecondsAfterRamp": 4.778962512026003,
+      "Drops": 1029,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 829
+    },
+    "20300001-Windshaper-baseline-1.coverage.json": {
+      "FirstFiveSeconds": 13.852249999999964,
+      "FullStackSeconds": 281.584740623495,
+      "BelowFiveSecondsAfterRamp": 4.563009376504999,
+      "Drops": 998,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 825
+    },
+    "20275001-Human-baseline-1.coverage.json": {
+      "FirstFiveSeconds": 13.86959999999997,
+      "FullStackSeconds": 281.39358910680465,
+      "BelowFiveSecondsAfterRamp": 4.736810893195497,
+      "Drops": 1020,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 835
+    },
+    "20300001-Human-baseline-1.coverage.json": {
+      "FirstFiveSeconds": 13.835949999999976,
+      "FullStackSeconds": 281.4400909401908,
+      "BelowFiveSecondsAfterRamp": 4.723959059809002,
+      "Drops": 1002,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 830
+    },
+    "20275001-Dwarf-baseline-1.coverage.json": {
+      "FirstFiveSeconds": 13.877474999999961,
+      "FullStackSeconds": 281.42300676526656,
+      "BelowFiveSecondsAfterRamp": 4.699518234734005,
+      "Drops": 1013,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 838
+    },
+    "20300001-Dwarf-baseline-1.coverage.json": {
+      "FirstFiveSeconds": 13.866474999999976,
+      "FullStackSeconds": 281.5686035326349,
+      "BelowFiveSecondsAfterRamp": 4.564921467365005,
+      "Drops": 992,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 812
+    },
+    "20275001-Night_Elf-baseline-1.coverage.json": {
+      "FirstFiveSeconds": 13.925999999999977,
+      "FullStackSeconds": 281.2912686777997,
+      "BelowFiveSecondsAfterRamp": 4.782731322200501,
+      "Drops": 1022,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 831
+    },
+    "20300001-Night_Elf-baseline-1.coverage.json": {
+      "FirstFiveSeconds": 13.877649999999969,
+      "FullStackSeconds": 281.31461610843934,
+      "BelowFiveSecondsAfterRamp": 4.807733891560503,
+      "Drops": 1046,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 839
+    },
+    "20275001-Gnome-baseline-1.coverage.json": {
+      "FirstFiveSeconds": 13.90082499999998,
+      "FullStackSeconds": 281.27072265140947,
+      "BelowFiveSecondsAfterRamp": 4.828452348590494,
+      "Drops": 1029,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 835
+    },
+    "20300001-Gnome-baseline-1.coverage.json": {
+      "FirstFiveSeconds": 13.873599999999971,
+      "FullStackSeconds": 281.1471649038988,
+      "BelowFiveSecondsAfterRamp": 4.979235096101489,
+      "Drops": 1067,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 868
+    },
+    "20300001-High_Order-baseline-1.coverage.json": {
+      "FirstFiveSeconds": 13.852249999999964,
+      "FullStackSeconds": 281.584740623495,
+      "BelowFiveSecondsAfterRamp": 4.563009376504999,
+      "Drops": 998,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 825
+    },
+    "20275001-High_Order-baseline-1.coverage.json": {
+      "FirstFiveSeconds": 13.870524999999963,
+      "FullStackSeconds": 281.35051248797447,
+      "BelowFiveSecondsAfterRamp": 4.778962512026003,
+      "Drops": 1029,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 829
+    },
+    "20300001-Tauren-baseline-3.coverage.json": {
+      "FirstFiveSeconds": 13.573674999999977,
+      "FullStackSeconds": 75.62402475245304,
+      "BelowFiveSecondsAfterRamp": 0.8023002475469999,
+      "Drops": 184,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 178
+    },
+    "20275001-Troll-baseline-3.coverage.json": {
+      "FirstFiveSeconds": 13.725374999999964,
+      "FullStackSeconds": 75.44581702969097,
+      "BelowFiveSecondsAfterRamp": 0.828807970309,
+      "Drops": 186,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 173
+    },
+    "20300001-Troll-baseline-3.coverage.json": {
+      "FirstFiveSeconds": 13.606199999999985,
+      "FullStackSeconds": 75.60775910889807,
+      "BelowFiveSecondsAfterRamp": 0.7860408911019998,
+      "Drops": 187,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 179
+    },
+    "20275001-Tauren-baseline-3.coverage.json": {
+      "FirstFiveSeconds": 13.785949999999966,
+      "FullStackSeconds": 75.46435183165998,
+      "BelowFiveSecondsAfterRamp": 0.7496981683400004,
+      "Drops": 173,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 162
+    },
+    "20300001-Orc-baseline-3.coverage.json": {
+      "FirstFiveSeconds": 13.951299999999964,
+      "FullStackSeconds": 75.04685499998196,
+      "BelowFiveSecondsAfterRamp": 1.001845000018,
+      "Drops": 223,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 204
+    },
+    "20275001-Orc-baseline-3.coverage.json": {
+      "FirstFiveSeconds": 14.062649999999959,
+      "FullStackSeconds": 75.01707945541104,
+      "BelowFiveSecondsAfterRamp": 0.9202705445889999,
+      "Drops": 202,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 191
+    },
+    "20275001-Undead-baseline-3.coverage.json": {
+      "FirstFiveSeconds": 13.75927499999997,
+      "FullStackSeconds": 75.38630792076648,
+      "BelowFiveSecondsAfterRamp": 0.8544170792335001,
+      "Drops": 192,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 178
+    },
+    "20300001-Undead-baseline-3.coverage.json": {
+      "FirstFiveSeconds": 13.625549999999977,
+      "FullStackSeconds": 75.57877034651003,
+      "BelowFiveSecondsAfterRamp": 0.79567965349,
+      "Drops": 195,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 180
+    },
+    "20275001-Windshaper-baseline-3.coverage.json": {
+      "FirstFiveSeconds": 13.703824999999963,
+      "FullStackSeconds": 75.42190366286742,
+      "BelowFiveSecondsAfterRamp": 0.8742713371324999,
+      "Drops": 192,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 181
+    },
+    "20300001-Windshaper-baseline-3.coverage.json": {
+      "FirstFiveSeconds": 13.591449999999957,
+      "FullStackSeconds": 75.67959360699395,
+      "BelowFiveSecondsAfterRamp": 0.7289563930059998,
+      "Drops": 167,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 161
+    },
+    "20275001-Human-baseline-3.coverage.json": {
+      "FirstFiveSeconds": 13.723049999999963,
+      "FullStackSeconds": 75.48144114850155,
+      "BelowFiveSecondsAfterRamp": 0.7955088514985,
+      "Drops": 180,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 169
+    },
+    "20300001-Human-baseline-3.coverage.json": {
+      "FirstFiveSeconds": 13.606649999999979,
+      "FullStackSeconds": 75.61594975245907,
+      "BelowFiveSecondsAfterRamp": 0.7774002475409996,
+      "Drops": 184,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 174
+    },
+    "20300001-Dwarf-baseline-3.coverage.json": {
+      "FirstFiveSeconds": 13.581624999999983,
+      "FullStackSeconds": 75.68242297027302,
+      "BelowFiveSecondsAfterRamp": 0.7359520297269997,
+      "Drops": 185,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 176
+    },
+    "20275001-Dwarf-baseline-3.coverage.json": {
+      "FirstFiveSeconds": 13.726099999999967,
+      "FullStackSeconds": 75.50131905937295,
+      "BelowFiveSecondsAfterRamp": 0.772580940627,
+      "Drops": 181,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 171
+    },
+    "20300001-Night_Elf-baseline-3.coverage.json": {
+      "FirstFiveSeconds": 13.550749999999981,
+      "FullStackSeconds": 75.71081237621003,
+      "BelowFiveSecondsAfterRamp": 0.7384376237899998,
+      "Drops": 172,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 161
+    },
+    "20275001-Night_Elf-baseline-3.coverage.json": {
+      "FirstFiveSeconds": 13.715749999999975,
+      "FullStackSeconds": 75.50537816828293,
+      "BelowFiveSecondsAfterRamp": 0.7788718317169998,
+      "Drops": 189,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 174
+    },
+    "20275001-Gnome-baseline-3.coverage.json": {
+      "FirstFiveSeconds": 13.679474999999966,
+      "FullStackSeconds": 75.49587876235191,
+      "BelowFiveSecondsAfterRamp": 0.824646237648,
+      "Drops": 188,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 177
+    },
+    "20300001-Gnome-baseline-3.coverage.json": {
+      "FirstFiveSeconds": 13.575099999999974,
+      "FullStackSeconds": 75.58733331680702,
+      "BelowFiveSecondsAfterRamp": 0.837566683193,
+      "Drops": 196,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 190
+    },
+    "20300001-High_Order-baseline-3.coverage.json": {
+      "FirstFiveSeconds": 13.591449999999957,
+      "FullStackSeconds": 75.67959360699395,
+      "BelowFiveSecondsAfterRamp": 0.7289563930059998,
+      "Drops": 167,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 161
+    },
+    "20275001-High_Order-baseline-3.coverage.json": {
+      "FirstFiveSeconds": 13.703824999999963,
+      "FullStackSeconds": 75.42190366286742,
+      "BelowFiveSecondsAfterRamp": 0.8742713371324999,
+      "Drops": 192,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 181
+    },
+    "20275001-Tauren-reserve-1.coverage.json": {
+      "FirstFiveSeconds": 12.591924999999986,
+      "FullStackSeconds": 287.358371287122,
+      "BelowFiveSecondsAfterRamp": 0.049703712877999996,
+      "Drops": 11,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 11
+    },
+    "20275001-Orc-reserve-1.coverage.json": {
+      "FirstFiveSeconds": 12.559374999999982,
+      "FullStackSeconds": 287.37244128712723,
+      "BelowFiveSecondsAfterRamp": 0.0681837128725,
+      "Drops": 14,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 14
+    },
+    "20300001-Tauren-reserve-1.coverage.json": {
+      "FirstFiveSeconds": 12.49964999999997,
+      "FullStackSeconds": 287.44589623761186,
+      "BelowFiveSecondsAfterRamp": 0.05445376238800001,
+      "Drops": 13,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 13
+    },
+    "20300001-Orc-reserve-1.coverage.json": {
+      "FirstFiveSeconds": 12.500699999999973,
+      "FullStackSeconds": 287.4329618151785,
+      "BelowFiveSecondsAfterRamp": 0.06633818482149999,
+      "Drops": 15,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 14
+    },
+    "20275001-Troll-reserve-1.coverage.json": {
+      "FirstFiveSeconds": 12.571624999999981,
+      "FullStackSeconds": 287.3797113696302,
+      "BelowFiveSecondsAfterRamp": 0.0486636303695,
+      "Drops": 11,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 11
+    },
+    "20300001-Troll-reserve-1.coverage.json": {
+      "FirstFiveSeconds": 12.511724999999975,
+      "FullStackSeconds": 287.45067,
+      "BelowFiveSecondsAfterRamp": 0.037605,
+      "Drops": 8,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 8
+    },
+    "20275001-Undead-reserve-1.coverage.json": {
+      "FirstFiveSeconds": 12.576074999999982,
+      "FullStackSeconds": 287.3848159653398,
+      "BelowFiveSecondsAfterRamp": 0.03910903465999999,
+      "Drops": 8,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 8
+    },
+    "20300001-Undead-reserve-1.coverage.json": {
+      "FirstFiveSeconds": 12.55869999999999,
+      "FullStackSeconds": 287.395985148512,
+      "BelowFiveSecondsAfterRamp": 0.04531485148799999,
+      "Drops": 11,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 11
+    },
+    "20275001-Windshaper-reserve-1.coverage.json": {
+      "FirstFiveSeconds": 12.562199999999981,
+      "FullStackSeconds": 287.372820734729,
+      "BelowFiveSecondsAfterRamp": 0.06497926527100001,
+      "Drops": 14,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 14
+    },
+    "20300001-Windshaper-reserve-1.coverage.json": {
+      "FirstFiveSeconds": 12.483649999999972,
+      "FullStackSeconds": 287.453678595231,
+      "BelowFiveSecondsAfterRamp": 0.06267140476899999,
+      "Drops": 13,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 13
+    },
+    "20300001-Human-reserve-1.coverage.json": {
+      "FirstFiveSeconds": 12.508774999999973,
+      "FullStackSeconds": 287.432910643564,
+      "BelowFiveSecondsAfterRamp": 0.058314356436,
+      "Drops": 13,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 13
+    },
+    "20275001-Human-reserve-1.coverage.json": {
+      "FirstFiveSeconds": 12.563074999999982,
+      "FullStackSeconds": 287.37614158414567,
+      "BelowFiveSecondsAfterRamp": 0.060783415854,
+      "Drops": 12,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 12
+    },
+    "20300001-Dwarf-reserve-1.coverage.json": {
+      "FirstFiveSeconds": 12.497224999999974,
+      "FullStackSeconds": 287.48500314355806,
+      "BelowFiveSecondsAfterRamp": 0.017771856442,
+      "Drops": 4,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 4
+    },
+    "20275001-Dwarf-reserve-1.coverage.json": {
+      "FirstFiveSeconds": 12.57522499999998,
+      "FullStackSeconds": 287.3726627722568,
+      "BelowFiveSecondsAfterRamp": 0.05211222774299999,
+      "Drops": 11,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 11
+    },
+    "20300001-Night_Elf-reserve-1.coverage.json": {
+      "FirstFiveSeconds": 12.499524999999968,
+      "FullStackSeconds": 287.43944623761206,
+      "BelowFiveSecondsAfterRamp": 0.061028762387999994,
+      "Drops": 12,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 12
+    },
+    "20275001-Night_Elf-reserve-1.coverage.json": {
+      "FirstFiveSeconds": 12.579949999999982,
+      "FullStackSeconds": 287.3546601485117,
+      "BelowFiveSecondsAfterRamp": 0.065389851488,
+      "Drops": 12,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 12
+    },
+    "20300001-Gnome-reserve-1.coverage.json": {
+      "FirstFiveSeconds": 12.510449999999974,
+      "FullStackSeconds": 287.4257449504838,
+      "BelowFiveSecondsAfterRamp": 0.06380504951600001,
+      "Drops": 14,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 14
+    },
+    "20275001-Gnome-reserve-1.coverage.json": {
+      "FirstFiveSeconds": 12.586699999999984,
+      "FullStackSeconds": 287.3906102970237,
+      "BelowFiveSecondsAfterRamp": 0.022689702976,
+      "Drops": 5,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 5
+    },
+    "20300001-High_Order-reserve-1.coverage.json": {
+      "FirstFiveSeconds": 12.483649999999972,
+      "FullStackSeconds": 287.453678595231,
+      "BelowFiveSecondsAfterRamp": 0.06267140476899999,
+      "Drops": 13,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 13
+    },
+    "20275001-High_Order-reserve-1.coverage.json": {
+      "FirstFiveSeconds": 12.562199999999981,
+      "FullStackSeconds": 287.372820734729,
+      "BelowFiveSecondsAfterRamp": 0.06497926527100001,
+      "Drops": 14,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 14
+    },
+    "20275001-Orc-reserve-3.coverage.json": {
+      "FirstFiveSeconds": 12.315499999999991,
+      "FullStackSeconds": 77.68450000000003,
+      "BelowFiveSecondsAfterRamp": 0,
+      "Drops": 0,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 0
+    },
+    "20300001-Orc-reserve-3.coverage.json": {
+      "FirstFiveSeconds": 12.244924999999993,
+      "FullStackSeconds": 77.75077500000009,
+      "BelowFiveSecondsAfterRamp": 0.0043,
+      "Drops": 1,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 1
+    },
+    "20300001-Tauren-reserve-3.coverage.json": {
+      "FirstFiveSeconds": 12.254875,
+      "FullStackSeconds": 77.74512500000007,
+      "BelowFiveSecondsAfterRamp": 0,
+      "Drops": 0,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 0
+    },
+    "20275001-Tauren-reserve-3.coverage.json": {
+      "FirstFiveSeconds": 12.277199999999992,
+      "FullStackSeconds": 77.7228,
+      "BelowFiveSecondsAfterRamp": 0,
+      "Drops": 0,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 0
+    },
+    "20275001-Troll-reserve-3.coverage.json": {
+      "FirstFiveSeconds": 12.273449999999988,
+      "FullStackSeconds": 77.72504999999998,
+      "BelowFiveSecondsAfterRamp": 0.0015,
+      "Drops": 1,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 1
+    },
+    "20300001-Troll-reserve-3.coverage.json": {
+      "FirstFiveSeconds": 12.253949999999993,
+      "FullStackSeconds": 77.74605000000005,
+      "BelowFiveSecondsAfterRamp": 0,
+      "Drops": 0,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 0
+    },
+    "20275001-Undead-reserve-3.coverage.json": {
+      "FirstFiveSeconds": 12.28802499999999,
+      "FullStackSeconds": 77.71197500000002,
+      "BelowFiveSecondsAfterRamp": 0,
+      "Drops": 0,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 0
+    },
+    "20300001-Undead-reserve-3.coverage.json": {
+      "FirstFiveSeconds": 12.279125000000002,
+      "FullStackSeconds": 77.71665000000006,
+      "BelowFiveSecondsAfterRamp": 0.004225,
+      "Drops": 1,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 1
+    },
+    "20275001-Windshaper-reserve-3.coverage.json": {
+      "FirstFiveSeconds": 12.260999999999994,
+      "FullStackSeconds": 77.73347500000007,
+      "BelowFiveSecondsAfterRamp": 0.005525,
+      "Drops": 1,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 1
+    },
+    "20300001-Windshaper-reserve-3.coverage.json": {
+      "FirstFiveSeconds": 12.256949999999996,
+      "FullStackSeconds": 77.73687500000008,
+      "BelowFiveSecondsAfterRamp": 0.006175,
+      "Drops": 1,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 1
+    },
+    "20275001-Human-reserve-3.coverage.json": {
+      "FirstFiveSeconds": 12.281049999999986,
+      "FullStackSeconds": 77.71745,
+      "BelowFiveSecondsAfterRamp": 0.0015,
+      "Drops": 1,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 1
+    },
+    "20300001-Human-reserve-3.coverage.json": {
+      "FirstFiveSeconds": 12.238524999999994,
+      "FullStackSeconds": 77.75570128712806,
+      "BelowFiveSecondsAfterRamp": 0.005773712872,
+      "Drops": 2,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 2
+    },
+    "20300001-Dwarf-reserve-3.coverage.json": {
+      "FirstFiveSeconds": 12.258099999999994,
+      "FullStackSeconds": 77.73950000000004,
+      "BelowFiveSecondsAfterRamp": 0.0024,
+      "Drops": 1,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 1
+    },
+    "20275001-Dwarf-reserve-3.coverage.json": {
+      "FirstFiveSeconds": 12.27937499999999,
+      "FullStackSeconds": 77.71762500000003,
+      "BelowFiveSecondsAfterRamp": 0.003,
+      "Drops": 1,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 1
+    },
+    "20275001-Night_Elf-reserve-3.coverage.json": {
+      "FirstFiveSeconds": 12.291199999999987,
+      "FullStackSeconds": 77.70214999999999,
+      "BelowFiveSecondsAfterRamp": 0.0066500000000000005,
+      "Drops": 2,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 2
+    },
+    "20300001-Night_Elf-reserve-3.coverage.json": {
+      "FirstFiveSeconds": 12.261424999999994,
+      "FullStackSeconds": 77.73857500000001,
+      "BelowFiveSecondsAfterRamp": 0,
+      "Drops": 0,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 0
+    },
+    "20275001-Gnome-reserve-3.coverage.json": {
+      "FirstFiveSeconds": 12.298574999999994,
+      "FullStackSeconds": 77.696775,
+      "BelowFiveSecondsAfterRamp": 0.0046500000000000005,
+      "Drops": 1,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 1
+    },
+    "20300001-Gnome-reserve-3.coverage.json": {
+      "FirstFiveSeconds": 12.266124999999995,
+      "FullStackSeconds": 77.73387500000004,
+      "BelowFiveSecondsAfterRamp": 0,
+      "Drops": 0,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 0
+    },
+    "20300001-High_Order-reserve-3.coverage.json": {
+      "FirstFiveSeconds": 12.256949999999996,
+      "FullStackSeconds": 77.73687500000008,
+      "BelowFiveSecondsAfterRamp": 0.006175,
+      "Drops": 1,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 1
+    },
+    "20275001-High_Order-reserve-3.coverage.json": {
+      "FirstFiveSeconds": 12.260999999999994,
+      "FullStackSeconds": 77.73347500000007,
+      "BelowFiveSecondsAfterRamp": 0.005525,
+      "Drops": 1,
+      "NeverFive": 0,
+      "Iterations": 2000,
+      "FightsWithDrop": 1
+    }
+  }
+}

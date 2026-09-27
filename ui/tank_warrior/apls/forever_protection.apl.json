@@ -200,6 +200,79 @@
             "action": {
                 "castSpell": {
                     "spellId": {
+                        "spellId": 11597
+                    }
+                },
+                "condition": {
+                    "and": {
+                        "vals": [
+                            {
+                                "cmp": {
+                                    "op": "OpEq",
+                                    "lhs": {
+                                        "auraNumStacks": {
+                                            "sourceUnit": {
+                                                "type": "CurrentTarget"
+                                            },
+                                            "auraId": {
+                                                "spellId": 11597
+                                            }
+                                        }
+                                    },
+                                    "rhs": {
+                                        "const": {
+                                            "val": "5"
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "cmp": {
+                                    "op": "OpLe",
+                                    "lhs": {
+                                        "auraRemainingTime": {
+                                            "sourceUnit": {
+                                                "type": "CurrentTarget"
+                                            },
+                                            "auraId": {
+                                                "spellId": 11597
+                                            }
+                                        }
+                                    },
+                                    "rhs": {
+                                        "const": {
+                                            "val": "8s"
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "cmp": {
+                                    "op": "OpGt",
+                                    "lhs": {
+                                        "remainingTime": {}
+                                    },
+                                    "rhs": {
+                                        "auraRemainingTime": {
+                                            "sourceUnit": {
+                                                "type": "CurrentTarget"
+                                            },
+                                            "auraId": {
+                                                "spellId": 11597
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "action": {
+                "castSpell": {
+                    "spellId": {
                         "spellId": 11581
                     }
                 },
@@ -325,7 +398,7 @@
             "action": {
                 "castSpell": {
                     "spellId": {
-                        "spellId": 11597
+                        "spellId": 11581
                     }
                 },
                 "condition": {
@@ -333,33 +406,290 @@
                         "vals": [
                             {
                                 "cmp": {
-                                    "op": "OpLe",
+                                    "op": "OpGe",
                                     "lhs": {
-                                        "auraRemainingTime": {
+                                        "numberTargets": {}
+                                    },
+                                    "rhs": {
+                                        "const": {
+                                            "val": "3"
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "or": {
+                                    "vals": [
+                                        {
+                                            "not": {
+                                                "val": {
+                                                    "auraShouldRefresh": {
+                                                        "sourceUnit": {
+                                                            "type": "CurrentTarget"
+                                                        },
+                                                        "auraId": {
+                                                            "spellId": 11597
+                                                        },
+                                                        "maxOverlap": {
+                                                            "const": {
+                                                                "val": "8s"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "and": {
+                                                "vals": [
+                                                    {
+                                                        "cmp": {
+                                                            "op": "OpEq",
+                                                            "lhs": {
+                                                                "auraNumStacks": {
+                                                                    "sourceUnit": {
+                                                                        "type": "CurrentTarget"
+                                                                    },
+                                                                    "auraId": {
+                                                                        "spellId": 11597
+                                                                    }
+                                                                }
+                                                            },
+                                                            "rhs": {
+                                                                "const": {
+                                                                    "val": "5"
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "or": {
+                                                            "vals": [
+                                                                {
+                                                                    "cmp": {
+                                                                        "op": "OpGt",
+                                                                        "lhs": {
+                                                                            "auraRemainingTime": {
+                                                                                "sourceUnit": {
+                                                                                    "type": "CurrentTarget"
+                                                                                },
+                                                                                "auraId": {
+                                                                                    "spellId": 11597
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "rhs": {
+                                                                            "const": {
+                                                                                "val": "8s"
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "cmp": {
+                                                                        "op": "OpLe",
+                                                                        "lhs": {
+                                                                            "remainingTime": {}
+                                                                        },
+                                                                        "rhs": {
+                                                                            "auraRemainingTime": {
+                                                                                "sourceUnit": {
+                                                                                    "type": "CurrentTarget"
+                                                                                },
+                                                                                "auraId": {
+                                                                                    "spellId": 11597
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "cmp": {
+                                                "op": "OpGe",
+                                                "lhs": {
+                                                    "currentRage": {}
+                                                },
+                                                "rhs": {
+                                                    "math": {
+                                                        "op": "OpAdd",
+                                                        "lhs": {
+                                                            "spellCurrentCost": {
+                                                                "spellId": {
+                                                                    "spellId": 11581
+                                                                }
+                                                            }
+                                                        },
+                                                        "rhs": {
+                                                            "math": {
+                                                                "op": "OpAdd",
+                                                                "lhs": {
+                                                                    "spellCurrentCost": {
+                                                                        "spellId": {
+                                                                            "spellId": 11597
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "rhs": {
+                                                                    "spellCurrentCost": {
+                                                                        "spellId": {
+                                                                            "spellId": 2565
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "action": {
+                "castSpell": {
+                    "spellId": {
+                        "spellId": 25288
+                    }
+                },
+                "condition": {
+                    "or": {
+                        "vals": [
+                            {
+                                "not": {
+                                    "val": {
+                                        "auraShouldRefresh": {
                                             "sourceUnit": {
                                                 "type": "CurrentTarget"
                                             },
                                             "auraId": {
                                                 "spellId": 11597
+                                            },
+                                            "maxOverlap": {
+                                                "const": {
+                                                    "val": "8s"
+                                                }
                                             }
                                         }
-                                    },
-                                    "rhs": {
-                                        "const": {
-                                            "val": "4s"
-                                        }
                                     }
+                                }
+                            },
+                            {
+                                "and": {
+                                    "vals": [
+                                        {
+                                            "cmp": {
+                                                "op": "OpEq",
+                                                "lhs": {
+                                                    "auraNumStacks": {
+                                                        "sourceUnit": {
+                                                            "type": "CurrentTarget"
+                                                        },
+                                                        "auraId": {
+                                                            "spellId": 11597
+                                                        }
+                                                    }
+                                                },
+                                                "rhs": {
+                                                    "const": {
+                                                        "val": "5"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "or": {
+                                                "vals": [
+                                                    {
+                                                        "cmp": {
+                                                            "op": "OpGt",
+                                                            "lhs": {
+                                                                "auraRemainingTime": {
+                                                                    "sourceUnit": {
+                                                                        "type": "CurrentTarget"
+                                                                    },
+                                                                    "auraId": {
+                                                                        "spellId": 11597
+                                                                    }
+                                                                }
+                                                            },
+                                                            "rhs": {
+                                                                "const": {
+                                                                    "val": "8s"
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "cmp": {
+                                                            "op": "OpLe",
+                                                            "lhs": {
+                                                                "remainingTime": {}
+                                                            },
+                                                            "rhs": {
+                                                                "auraRemainingTime": {
+                                                                    "sourceUnit": {
+                                                                        "type": "CurrentTarget"
+                                                                    },
+                                                                    "auraId": {
+                                                                        "spellId": 11597
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
                                 }
                             },
                             {
                                 "cmp": {
                                     "op": "OpGe",
                                     "lhs": {
-                                        "remainingTime": {}
+                                        "currentRage": {}
                                     },
                                     "rhs": {
-                                        "const": {
-                                            "val": "4s"
+                                        "math": {
+                                            "op": "OpAdd",
+                                            "lhs": {
+                                                "spellCurrentCost": {
+                                                    "spellId": {
+                                                        "spellId": 25288
+                                                    }
+                                                }
+                                            },
+                                            "rhs": {
+                                                "math": {
+                                                    "op": "OpAdd",
+                                                    "lhs": {
+                                                        "spellCurrentCost": {
+                                                            "spellId": {
+                                                                "spellId": 11597
+                                                            }
+                                                        }
+                                                    },
+                                                    "rhs": {
+                                                        "spellCurrentCost": {
+                                                            "spellId": {
+                                                                "spellId": 2565
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -373,38 +703,141 @@
             "action": {
                 "castSpell": {
                     "spellId": {
-                        "spellId": 11581
+                        "spellId": 23925
                     }
                 },
                 "condition": {
-                    "cmp": {
-                        "op": "OpGe",
-                        "lhs": {
-                            "numberTargets": {}
-                        },
-                        "rhs": {
-                            "const": {
-                                "val": "3"
+                    "or": {
+                        "vals": [
+                            {
+                                "not": {
+                                    "val": {
+                                        "auraShouldRefresh": {
+                                            "sourceUnit": {
+                                                "type": "CurrentTarget"
+                                            },
+                                            "auraId": {
+                                                "spellId": 11597
+                                            },
+                                            "maxOverlap": {
+                                                "const": {
+                                                    "val": "8s"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "and": {
+                                    "vals": [
+                                        {
+                                            "cmp": {
+                                                "op": "OpEq",
+                                                "lhs": {
+                                                    "auraNumStacks": {
+                                                        "sourceUnit": {
+                                                            "type": "CurrentTarget"
+                                                        },
+                                                        "auraId": {
+                                                            "spellId": 11597
+                                                        }
+                                                    }
+                                                },
+                                                "rhs": {
+                                                    "const": {
+                                                        "val": "5"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "or": {
+                                                "vals": [
+                                                    {
+                                                        "cmp": {
+                                                            "op": "OpGt",
+                                                            "lhs": {
+                                                                "auraRemainingTime": {
+                                                                    "sourceUnit": {
+                                                                        "type": "CurrentTarget"
+                                                                    },
+                                                                    "auraId": {
+                                                                        "spellId": 11597
+                                                                    }
+                                                                }
+                                                            },
+                                                            "rhs": {
+                                                                "const": {
+                                                                    "val": "8s"
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "cmp": {
+                                                            "op": "OpLe",
+                                                            "lhs": {
+                                                                "remainingTime": {}
+                                                            },
+                                                            "rhs": {
+                                                                "auraRemainingTime": {
+                                                                    "sourceUnit": {
+                                                                        "type": "CurrentTarget"
+                                                                    },
+                                                                    "auraId": {
+                                                                        "spellId": 11597
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "cmp": {
+                                    "op": "OpGe",
+                                    "lhs": {
+                                        "currentRage": {}
+                                    },
+                                    "rhs": {
+                                        "math": {
+                                            "op": "OpAdd",
+                                            "lhs": {
+                                                "spellCurrentCost": {
+                                                    "spellId": {
+                                                        "spellId": 23925
+                                                    }
+                                                }
+                                            },
+                                            "rhs": {
+                                                "math": {
+                                                    "op": "OpAdd",
+                                                    "lhs": {
+                                                        "spellCurrentCost": {
+                                                            "spellId": {
+                                                                "spellId": 11597
+                                                            }
+                                                        }
+                                                    },
+                                                    "rhs": {
+                                                        "spellCurrentCost": {
+                                                            "spellId": {
+                                                                "spellId": 2565
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
-                        }
-                    }
-                }
-            }
-        },
-        {
-            "action": {
-                "castSpell": {
-                    "spellId": {
-                        "spellId": 25288
-                    }
-                }
-            }
-        },
-        {
-            "action": {
-                "castSpell": {
-                    "spellId": {
-                        "spellId": 23925
+                        ]
                     }
                 }
             }
@@ -421,29 +854,169 @@
                     "and": {
                         "vals": [
                             {
-                                "cmp": {
-                                    "op": "OpGt",
-                                    "lhs": {
-                                        "numberTargets": {}
-                                    },
-                                    "rhs": {
-                                        "const": {
-                                            "val": "1"
+                                "and": {
+                                    "vals": [
+                                        {
+                                            "cmp": {
+                                                "op": "OpGt",
+                                                "lhs": {
+                                                    "numberTargets": {}
+                                                },
+                                                "rhs": {
+                                                    "const": {
+                                                        "val": "1"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "cmp": {
+                                                "op": "OpGe",
+                                                "lhs": {
+                                                    "currentRage": {}
+                                                },
+                                                "rhs": {
+                                                    "const": {
+                                                        "val": "20"
+                                                    }
+                                                }
+                                            }
                                         }
-                                    }
+                                    ]
                                 }
                             },
                             {
-                                "cmp": {
-                                    "op": "OpGe",
-                                    "lhs": {
-                                        "currentRage": {}
-                                    },
-                                    "rhs": {
-                                        "const": {
-                                            "val": "20"
+                                "or": {
+                                    "vals": [
+                                        {
+                                            "not": {
+                                                "val": {
+                                                    "auraShouldRefresh": {
+                                                        "sourceUnit": {
+                                                            "type": "CurrentTarget"
+                                                        },
+                                                        "auraId": {
+                                                            "spellId": 11597
+                                                        },
+                                                        "maxOverlap": {
+                                                            "const": {
+                                                                "val": "8s"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "and": {
+                                                "vals": [
+                                                    {
+                                                        "cmp": {
+                                                            "op": "OpEq",
+                                                            "lhs": {
+                                                                "auraNumStacks": {
+                                                                    "sourceUnit": {
+                                                                        "type": "CurrentTarget"
+                                                                    },
+                                                                    "auraId": {
+                                                                        "spellId": 11597
+                                                                    }
+                                                                }
+                                                            },
+                                                            "rhs": {
+                                                                "const": {
+                                                                    "val": "5"
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "or": {
+                                                            "vals": [
+                                                                {
+                                                                    "cmp": {
+                                                                        "op": "OpGt",
+                                                                        "lhs": {
+                                                                            "auraRemainingTime": {
+                                                                                "sourceUnit": {
+                                                                                    "type": "CurrentTarget"
+                                                                                },
+                                                                                "auraId": {
+                                                                                    "spellId": 11597
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "rhs": {
+                                                                            "const": {
+                                                                                "val": "8s"
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "cmp": {
+                                                                        "op": "OpLe",
+                                                                        "lhs": {
+                                                                            "remainingTime": {}
+                                                                        },
+                                                                        "rhs": {
+                                                                            "auraRemainingTime": {
+                                                                                "sourceUnit": {
+                                                                                    "type": "CurrentTarget"
+                                                                                },
+                                                                                "auraId": {
+                                                                                    "spellId": 11597
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "cmp": {
+                                                "op": "OpGe",
+                                                "lhs": {
+                                                    "currentRage": {}
+                                                },
+                                                "rhs": {
+                                                    "math": {
+                                                        "op": "OpAdd",
+                                                        "lhs": {
+                                                            "spellCurrentCost": {
+                                                                "spellId": {
+                                                                    "spellId": 20569
+                                                                }
+                                                            }
+                                                        },
+                                                        "rhs": {
+                                                            "math": {
+                                                                "op": "OpAdd",
+                                                                "lhs": {
+                                                                    "spellCurrentCost": {
+                                                                        "spellId": {
+                                                                            "spellId": 11597
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "rhs": {
+                                                                    "spellCurrentCost": {
+                                                                        "spellId": {
+                                                                            "spellId": 2565
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
-                                    }
+                                    ]
                                 }
                             }
                         ]
@@ -463,29 +1036,169 @@
                     "and": {
                         "vals": [
                             {
-                                "cmp": {
-                                    "op": "OpEq",
-                                    "lhs": {
-                                        "numberTargets": {}
-                                    },
-                                    "rhs": {
-                                        "const": {
-                                            "val": "1"
+                                "and": {
+                                    "vals": [
+                                        {
+                                            "cmp": {
+                                                "op": "OpEq",
+                                                "lhs": {
+                                                    "numberTargets": {}
+                                                },
+                                                "rhs": {
+                                                    "const": {
+                                                        "val": "1"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "cmp": {
+                                                "op": "OpGe",
+                                                "lhs": {
+                                                    "currentRage": {}
+                                                },
+                                                "rhs": {
+                                                    "const": {
+                                                        "val": "20"
+                                                    }
+                                                }
+                                            }
                                         }
-                                    }
+                                    ]
                                 }
                             },
                             {
-                                "cmp": {
-                                    "op": "OpGe",
-                                    "lhs": {
-                                        "currentRage": {}
-                                    },
-                                    "rhs": {
-                                        "const": {
-                                            "val": "20"
+                                "or": {
+                                    "vals": [
+                                        {
+                                            "not": {
+                                                "val": {
+                                                    "auraShouldRefresh": {
+                                                        "sourceUnit": {
+                                                            "type": "CurrentTarget"
+                                                        },
+                                                        "auraId": {
+                                                            "spellId": 11597
+                                                        },
+                                                        "maxOverlap": {
+                                                            "const": {
+                                                                "val": "8s"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "and": {
+                                                "vals": [
+                                                    {
+                                                        "cmp": {
+                                                            "op": "OpEq",
+                                                            "lhs": {
+                                                                "auraNumStacks": {
+                                                                    "sourceUnit": {
+                                                                        "type": "CurrentTarget"
+                                                                    },
+                                                                    "auraId": {
+                                                                        "spellId": 11597
+                                                                    }
+                                                                }
+                                                            },
+                                                            "rhs": {
+                                                                "const": {
+                                                                    "val": "5"
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "or": {
+                                                            "vals": [
+                                                                {
+                                                                    "cmp": {
+                                                                        "op": "OpGt",
+                                                                        "lhs": {
+                                                                            "auraRemainingTime": {
+                                                                                "sourceUnit": {
+                                                                                    "type": "CurrentTarget"
+                                                                                },
+                                                                                "auraId": {
+                                                                                    "spellId": 11597
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "rhs": {
+                                                                            "const": {
+                                                                                "val": "8s"
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "cmp": {
+                                                                        "op": "OpLe",
+                                                                        "lhs": {
+                                                                            "remainingTime": {}
+                                                                        },
+                                                                        "rhs": {
+                                                                            "auraRemainingTime": {
+                                                                                "sourceUnit": {
+                                                                                    "type": "CurrentTarget"
+                                                                                },
+                                                                                "auraId": {
+                                                                                    "spellId": 11597
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "cmp": {
+                                                "op": "OpGe",
+                                                "lhs": {
+                                                    "currentRage": {}
+                                                },
+                                                "rhs": {
+                                                    "math": {
+                                                        "op": "OpAdd",
+                                                        "lhs": {
+                                                            "spellCurrentCost": {
+                                                                "spellId": {
+                                                                    "spellId": 25286
+                                                                }
+                                                            }
+                                                        },
+                                                        "rhs": {
+                                                            "math": {
+                                                                "op": "OpAdd",
+                                                                "lhs": {
+                                                                    "spellCurrentCost": {
+                                                                        "spellId": {
+                                                                            "spellId": 11597
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "rhs": {
+                                                                    "spellCurrentCost": {
+                                                                        "spellId": {
+                                                                            "spellId": 2565
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
-                                    }
+                                    ]
                                 }
                             }
                         ]

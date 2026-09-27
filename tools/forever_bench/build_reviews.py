@@ -74,7 +74,9 @@ def main():
             ("dotIsActive", "DoT active", "spellId"),
             ("dotRemainingTime", "DoT time remaining", "spellId"),
             ("auraIsActive", "active", "auraId"),
+            ("auraRemainingTime", "time remaining", "auraId"),
             ("auraNumStacks", "stacks", "auraId"),
+            ("spellCurrentCost", "current cost", "spellId"),
         ):
             if key in value:
                 return f"{action_name(value[key][identifier])} {suffix}"

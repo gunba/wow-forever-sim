@@ -39,7 +39,7 @@ Matched APL-only comparisons keep all support settings identical.
 They gain 5.4–5.9 DPS across the three Paladin races and pass the existing
 survival/total-threat/least-target-threat checks in both workloads.
 
-Representative five-minute means from two independent 10,000-iteration runs
+Representative five-minute means from two overlapping-seed 10,000-iteration runs
 per arm (these are validation seeds, not the chart's seed):
 
 | Profile | Previous support/APL | Corrected |
@@ -69,7 +69,7 @@ Bear. Threat, shield, enchant/form and boss/healer assumptions remain in the
 
 ## Evidence and replay
 
-- [Two independent-seed comparisons](../artifacts/tank_support/validation.json)
+- [Historical paired comparisons](../artifacts/tank_support/validation.json)
   cover every race and both tank workloads, with separate Paladin APL-only controls.
 - [Archived complete requests/results](../artifacts/tank_support/archives.json)
   include the 68 refreshed baseline/Tier-off/+10%/+50% runs.
@@ -90,3 +90,9 @@ go build -tags with_db -o /tmp/forever-tank-replay ./tools/forever_tanks
 Current searches use the fixed [shared-support controls](../artifacts/tanks/shared_support_controls.json),
 not the candidate itself or the historical unequal-support profiles. These
 corrections do not claim a new global gear/talent optimum.
+
+**Later review:** these two starting seeds differ by only 38. Because the engine
+increments the seed every iteration, the runs overlap and are not independent
+replications; pooled uncertainty needs review (SCEN-016). Protection Warrior's
+rotation and current results are superseded by the
+[Sunder maintenance correction](protection_sunder.md).

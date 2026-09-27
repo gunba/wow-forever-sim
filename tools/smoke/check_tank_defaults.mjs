@@ -92,6 +92,11 @@ try {
       await warning.waitFor({ state: 'visible' });
       await warning.hover();
       await page.getByText(/replaces the next melee swing; use its queue action/).waitFor();
+      // Long resource conditions must not push row controls under the sidebar
+      // or clip the action editor's dropdown.
+      await page.locator('.apl-action-picker-action .dropdown-picker-button').first().click();
+      await page.locator('.dropdown-menu.show .dropdown-item').first().hover();
+      await page.keyboard.press('Escape');
       console.log('tank_warrior: saved direct-cast Heroic Strike is rejected with a queue warning');
     }
     await context.close();

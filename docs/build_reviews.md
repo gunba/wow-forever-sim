@@ -690,8 +690,8 @@ Other races can use different equipment. Their complete setups are available in 
 
 ### Rotation priorities
 
-1. Cast [Sunder Armor (rank 5)](https://www.wowhead.com/forever/spell=11597) when ([Sunder Armor (rank 5)](https://www.wowhead.com/forever/spell=11597) stacks < 5 OR `{"auraRemainingTime":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":11597,"rank":5}}}` < 8s).
-2. `{"condition":{"and":{"vals":[{"or":{"vals":[{"cmp":{"op":"OpLt","lhs":{"auraNumStacks":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":11597,"rank":5}}},"rhs":{"const":{"val":"5"}}}},{"cmp":{"op":"OpLt","lhs":{"auraRemainingTime":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":11597,"rank":5}}},"rhs":{"const":{"val":"8s"}}}}]}},{"cmp":{"op":"OpLt","lhs":{"currentRage":{}},"rhs":{"const":{"val":"15"}}}}]}},"wait":{"duration":{"const":{"val":"500ms"}}}}` when (([Sunder Armor (rank 5)](https://www.wowhead.com/forever/spell=11597) stacks < 5 OR `{"auraRemainingTime":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":11597,"rank":5}}}` < 8s) AND Rage < 15).
+1. Cast [Sunder Armor (rank 5)](https://www.wowhead.com/forever/spell=11597) when ([Sunder Armor (rank 5)](https://www.wowhead.com/forever/spell=11597) stacks < 5 OR [Sunder Armor (rank 5)](https://www.wowhead.com/forever/spell=11597) time remaining < 8s).
+2. `{"condition":{"and":{"vals":[{"or":{"vals":[{"cmp":{"op":"OpLt","lhs":{"auraNumStacks":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":11597,"rank":5}}},"rhs":{"const":{"val":"5"}}}},{"cmp":{"op":"OpLt","lhs":{"auraRemainingTime":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":11597,"rank":5}}},"rhs":{"const":{"val":"8s"}}}}]}},{"cmp":{"op":"OpLt","lhs":{"currentRage":{}},"rhs":{"const":{"val":"15"}}}}]}},"wait":{"duration":{"const":{"val":"500ms"}}}}` when (([Sunder Armor (rank 5)](https://www.wowhead.com/forever/spell=11597) stacks < 5 OR [Sunder Armor (rank 5)](https://www.wowhead.com/forever/spell=11597) time remaining < 8s) AND Rage < 15).
 3. Cast [Recklessness](https://www.wowhead.com/forever/spell=1719) when Time remaining ≤ 300s.
 4. Use ready automatic cooldowns.
 5. Cast [Battle Stance](https://www.wowhead.com/forever/spell=2457) when ([Overpower opportunity](https://www.wowhead.com/forever/spell=1282733) active AND Rage ≤ 25 AND NOT `{"isExecutePhase":{"threshold":"E20"}}` AND NOT [Recklessness](https://www.wowhead.com/forever/spell=1719) active).
@@ -1515,7 +1515,7 @@ Other races can use different equipment. Their complete setups are available in 
 ### Rotation priorities
 
 1. Cast [Item 7676](https://www.wowhead.com/forever/item=7676) when Energy ≤ 10.
-2. Cast [Slice and Dice (rank 2)](https://www.wowhead.com/forever/spell=6774) when ((Combo points ≥ 1 AND NOT [Slice and Dice (rank 2)](https://www.wowhead.com/forever/spell=6774) active AND Time remaining ≥ 6) OR (Combo points ≥ 5 AND `{"auraRemainingTime":{"auraId":{"spellId":6774,"rank":2}}}` < 3 AND Time remaining > 9)).
+2. Cast [Slice and Dice (rank 2)](https://www.wowhead.com/forever/spell=6774) when ((Combo points ≥ 1 AND NOT [Slice and Dice (rank 2)](https://www.wowhead.com/forever/spell=6774) active AND Time remaining ≥ 6) OR (Combo points ≥ 5 AND [Slice and Dice (rank 2)](https://www.wowhead.com/forever/spell=6774) time remaining < 3 AND Time remaining > 9)).
 3. Cast [Adrenaline Rush](https://www.wowhead.com/forever/spell=13750) when Energy ≤ 40.
 4. Use ready automatic cooldowns when [Slice and Dice (rank 2)](https://www.wowhead.com/forever/spell=6774) active.
 5. Cast [Cold Blood](https://www.wowhead.com/forever/spell=14177) when Combo points ≥ 3.
@@ -1682,7 +1682,7 @@ Other races can use different equipment. Their complete setups are available in 
 ### Rotation priorities
 
 1. Cast [Item 7676](https://www.wowhead.com/forever/item=7676) when Energy ≤ 10.
-2. Cast [Slice and Dice (rank 2)](https://www.wowhead.com/forever/spell=6774) when ((Combo points ≥ 1 AND NOT [Slice and Dice (rank 2)](https://www.wowhead.com/forever/spell=6774) active AND Time remaining ≥ 6) OR (Combo points ≥ 5 AND `{"auraRemainingTime":{"auraId":{"spellId":6774,"rank":2}}}` < 3 AND Time remaining > 9)).
+2. Cast [Slice and Dice (rank 2)](https://www.wowhead.com/forever/spell=6774) when ((Combo points ≥ 1 AND NOT [Slice and Dice (rank 2)](https://www.wowhead.com/forever/spell=6774) active AND Time remaining ≥ 6) OR (Combo points ≥ 5 AND [Slice and Dice (rank 2)](https://www.wowhead.com/forever/spell=6774) time remaining < 3 AND Time remaining > 9)).
 3. Use ready automatic cooldowns when [Slice and Dice (rank 2)](https://www.wowhead.com/forever/spell=6774) active.
 4. Cast [Cold Blood](https://www.wowhead.com/forever/spell=14177) when (Combo points ≥ 4 AND [Slice and Dice (rank 2)](https://www.wowhead.com/forever/spell=6774) active).
 5. Cast [Spell 31016](https://www.wowhead.com/forever/spell=31016) when Combo points ≥ 3.
@@ -1846,7 +1846,7 @@ Other races can use different equipment. Their complete setups are available in 
 3. Cast [Evocation](https://www.wowhead.com/forever/spell=12051) when (Mana fraction < 20% AND Time remaining > 25s).
 4. Cast [Pyroblast (rank 8)](https://www.wowhead.com/forever/spell=18809) when [Hot Streak](https://www.wowhead.com/forever/spell=44445) stacks = 3.
 5. Cast [Fire Blast (rank 7)](https://www.wowhead.com/forever/spell=10199) when Mana ≥ Time remaining × 10.
-6. Cast [Scorch (rank 7)](https://www.wowhead.com/forever/spell=10207) when ([Improved Scorch](https://www.wowhead.com/forever/spell=12873) stacks < 5 OR `{"auraRemainingTime":{"auraId":{"spellId":12873}}}` ≤ 5s).
+6. Cast [Scorch (rank 7)](https://www.wowhead.com/forever/spell=10207) when ([Improved Scorch](https://www.wowhead.com/forever/spell=12873) stacks < 5 OR [Improved Scorch](https://www.wowhead.com/forever/spell=12873) time remaining ≤ 5s).
 7. Cast [Fireball](https://www.wowhead.com/forever/spell=25306) when Mana ≥ Time remaining × 150.
 8. Cast [Scorch](https://www.wowhead.com/forever/spell=10207).
 
@@ -2165,7 +2165,7 @@ Other races can use different equipment. Their complete setups are available in 
 2. Cast [Vanish](https://www.wowhead.com/forever/spell=1856) when (NOT [Stealth](https://www.wowhead.com/forever/spell=1787) active AND Energy ≥ 60 AND Combo points ≤ 1 AND [Slice and Dice](https://www.wowhead.com/forever/spell=6774) active AND Time remaining ≥ 10s).
 3. Cast [Premeditation](https://www.wowhead.com/forever/spell=14183) when Combo points ≤ 2.
 4. Cast [Ambush](https://www.wowhead.com/forever/spell=11269) when Combo points ≤ 3.
-5. Cast [Slice and Dice](https://www.wowhead.com/forever/spell=6774) when (Combo points ≥ 5 AND `{"auraRemainingTime":{"auraId":{"spellId":6774}}}` ≤ 2s AND Time remaining ≥ 6s).
+5. Cast [Slice and Dice](https://www.wowhead.com/forever/spell=6774) when (Combo points ≥ 5 AND [Slice and Dice](https://www.wowhead.com/forever/spell=6774) time remaining ≤ 2s AND Time remaining ≥ 6s).
 6. Cast [Item 7676](https://www.wowhead.com/forever/item=7676) when Energy ≤ 10.
 7. Use ready automatic cooldowns.
 8. Cast [Hemorrhage](https://www.wowhead.com/forever/spell=16511) when (NOT [Hemorrhage](https://www.wowhead.com/forever/spell=16511) active AND Combo points ≥ 2 AND NOT [Rupture](https://www.wowhead.com/forever/spell=11275) DoT active AND Time remaining ≥ 10s).
@@ -2263,8 +2263,8 @@ Other races can use different equipment. Their complete setups are available in 
 1. Cast [Frenzied Regeneration](https://www.wowhead.com/forever/spell=22842) when `{"currentHealthPercent":{}}` < 30%.
 2. Cast [Barkskin](https://www.wowhead.com/forever/spell=22812).
 3. Use ready automatic cooldowns.
-4. Cast [Demoralizing Roar](https://www.wowhead.com/forever/spell=9898) when (`{"auraRemainingTime":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":9898}}}` ≤ 4s AND Time remaining ≥ 5s).
-5. Cast [Faerie Fire](https://www.wowhead.com/forever/spell=9907) when (`{"auraRemainingTime":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":9907}}}` ≤ 3s AND Time remaining ≥ 4s).
+4. Cast [Demoralizing Roar](https://www.wowhead.com/forever/spell=9898) when ([Demoralizing Roar](https://www.wowhead.com/forever/spell=9898) time remaining ≤ 4s AND Time remaining ≥ 5s).
+5. Cast [Faerie Fire](https://www.wowhead.com/forever/spell=9907) when ([Faerie Fire](https://www.wowhead.com/forever/spell=9907) time remaining ≤ 3s AND Time remaining ≥ 4s).
 6. Cast [Primal Bite (Bear)](https://www.wowhead.com/forever/spell=1238073).
 7. Cast [Swipe](https://www.wowhead.com/forever/spell=9908) when (Target count ≥ 2 AND Rage ≥ 15).
 8. Cast [Lacerate](https://www.wowhead.com/forever/spell=414644) when ([Lacerate](https://www.wowhead.com/forever/spell=414647) stacks < 5 OR [Lacerate](https://www.wowhead.com/forever/spell=414647) DoT time remaining ≤ 4.5s).
@@ -2364,7 +2364,7 @@ Other races can use different equipment. Their complete setups are available in 
 2. Cast [Swift Judgement](https://www.wowhead.com/forever/spell=53671) when `{"spellTimeToReady":{"spellId":{"spellId":20271}}}` ≥ 6s.
 3. Use ready automatic cooldowns.
 4. Cast [Templar's Bulwark](https://www.wowhead.com/forever/spell=1311015) when `{"currentHealthPercent":{}}` < 30%.
-5. Cast [Holy Shield](https://www.wowhead.com/forever/spell=20928) when `{"auraRemainingTime":{"sourceUnit":{"type":"Self"},"auraId":{"spellId":20928}}}` ≤ 2s.
+5. Cast [Holy Shield](https://www.wowhead.com/forever/spell=20928) when [Holy Shield](https://www.wowhead.com/forever/spell=20928) time remaining ≤ 2s.
 6. Cast primary seal when Seal time remaining ≤ 2s.
 7. Cast [Consecration](https://www.wowhead.com/forever/spell=20924) when Mana fraction ≥ 30%.
 8. Cast [Consecration](https://www.wowhead.com/forever/spell=26573) when Mana fraction ≥ 15%.
@@ -2670,23 +2670,21 @@ Other races can use different equipment. Their complete setups are available in 
 
 **Talent variants:** The allocation above is for Undead. Other races have independently validated allocations in their exact profiles.
 
-**Rotation variants:** The priorities below are for Undead. Other races may use a different saved APL; their exact rotations are in the Ranked builds selector and raw requests.
-
 
 ### Results
 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
-| Orc | 386.66 | 0.31 | 0.00 |
-| Tauren | 389.06 | 0.31 | 0.00 |
-| Troll | 386.00 | 0.30 | 0.00 |
-| Undead | 400.71 | 0.31 | 0.00 |
-| Windshaper | 387.83 | 0.30 | 0.00 |
-| Human | 391.57 | 0.30 | 0.00 |
-| Dwarf | 386.11 | 0.31 | 0.00 |
-| Night Elf | 386.03 | 0.30 | 0.00 |
-| Gnome | 389.10 | 0.30 | 0.00 |
-| High Order | 387.83 | 0.30 | 0.00 |
+| Orc | 387.92 | 0.29 | 0.00 |
+| Tauren | 389.67 | 0.30 | 0.00 |
+| Troll | 387.32 | 0.29 | 0.00 |
+| Undead | 400.72 | 0.31 | 0.00 |
+| Windshaper | 388.65 | 0.29 | 0.00 |
+| Human | 392.78 | 0.30 | 0.00 |
+| Dwarf | 387.84 | 0.30 | 0.00 |
+| Night Elf | 387.27 | 0.30 | 0.00 |
+| Gnome | 390.52 | 0.30 | 0.00 |
+| High Order | 388.65 | 0.29 | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
@@ -2694,16 +2692,16 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 
 | Race | TPS | DTPS | TMI | Modeled death probability |
 |---|---:|---:|---:|---:|
-| Orc | 872.78 | 476.07 | 47.75 | 0.00% |
-| Tauren | 874.72 | 461.69 | 44.59 | 0.00% |
-| Troll | 870.96 | 474.52 | 47.97 | 0.00% |
-| Undead | 854.95 | 464.85 | 47.61 | 0.00% |
-| Windshaper | 836.83 | 471.31 | 48.03 | 0.00% |
-| Human | 842.91 | 475.15 | 48.03 | 0.00% |
-| Dwarf | 870.88 | 473.19 | 47.66 | 0.00% |
-| Night Elf | 834.05 | 461.42 | 47.55 | 0.00% |
-| Gnome | 838.40 | 462.80 | 47.33 | 0.00% |
-| High Order | 836.83 | 471.31 | 48.03 | 0.00% |
+| Orc | 873.41 | 479.85 | 48.39 | 0.00% |
+| Tauren | 874.21 | 460.87 | 44.47 | 0.00% |
+| Troll | 871.80 | 474.57 | 47.88 | 0.00% |
+| Undead | 853.61 | 464.64 | 47.56 | 0.00% |
+| Windshaper | 837.14 | 471.40 | 48.04 | 0.00% |
+| Human | 843.10 | 475.12 | 48.01 | 0.00% |
+| Dwarf | 872.04 | 473.48 | 47.67 | 0.00% |
+| Night Elf | 834.39 | 461.02 | 47.57 | 0.00% |
+| Gnome | 839.39 | 462.60 | 47.29 | 0.00% |
+| High Order | 837.14 | 471.40 | 48.04 | 0.00% |
 
 These stress-scenario results are not measured boss balance or an equal-support survival ranking.
 
@@ -2733,48 +2731,48 @@ Other races can use different equipment. Their complete setups are available in 
 
 ### Rotation priorities
 
-1. Cast [Battle Shout Rank 7](https://www.wowhead.com/forever/spell=25289) when (`{"auraRemainingTime":{"sourceUnit":{"type":"Self"},"auraId":{"spellId":25289}}}` ≤ 3s AND Time remaining ≥ 8s AND Rage ≥ 10).
+1. Cast [Battle Shout Rank 7](https://www.wowhead.com/forever/spell=25289) when ([Battle Shout Rank 7](https://www.wowhead.com/forever/spell=25289) time remaining ≤ 3s AND Time remaining ≥ 8s AND Rage ≥ 10).
 2. Cast [Shield Wall](https://www.wowhead.com/forever/spell=871) when `{"currentHealthPercent":{}}` < 35%.
 3. Cast [Last Stand](https://www.wowhead.com/forever/spell=12975) when `{"currentHealthPercent":{}}` < 30%.
-4. Cast [Shield Block](https://www.wowhead.com/forever/spell=2565) when (Rage ≥ 15 AND `{"auraRemainingTime":{"sourceUnit":{"type":"Self"},"auraId":{"spellId":2565}}}` < 1s).
+4. Cast [Shield Block](https://www.wowhead.com/forever/spell=2565) when (Rage ≥ 15 AND [Shield Block](https://www.wowhead.com/forever/spell=2565) time remaining < 1s).
 5. Cast [Bloodrage](https://www.wowhead.com/forever/spell=2687) when (Rage < 35 AND `{"currentHealthPercent":{}}` > 50%).
-6. Cast [Thunder Clap](https://www.wowhead.com/forever/spell=11581) when (`{"auraRemainingTime":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":11581}}}` ≤ 3s AND Time remaining ≥ 4s).
-7. Cast [Demoralizing Shout Rank 5](https://www.wowhead.com/forever/spell=11556) when (`{"auraRemainingTime":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":11556}}}` ≤ 4s AND Time remaining ≥ 5s).
-8. Cast [Sunder Armor](https://www.wowhead.com/forever/spell=11597) when [Sunder Armor](https://www.wowhead.com/forever/spell=11597) stacks < 5.
-9. Cast [Sunder Armor](https://www.wowhead.com/forever/spell=11597) when (`{"auraRemainingTime":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":11597}}}` ≤ 4s AND Time remaining ≥ 4s).
-10. Cast [Thunder Clap](https://www.wowhead.com/forever/spell=11581) when Target count ≥ 3.
-11. Cast [Revenge](https://www.wowhead.com/forever/spell=25288).
-12. Cast [Shield Slam](https://www.wowhead.com/forever/spell=23925).
-13. Cast [Cleave](https://www.wowhead.com/forever/spell=20569) when (Target count > 1 AND Rage ≥ 20).
-14. Cast [Heroic Strike](https://www.wowhead.com/forever/spell=25286) when (Target count = 1 AND Rage ≥ 20).
+6. Cast [Sunder Armor](https://www.wowhead.com/forever/spell=11597) when ([Sunder Armor](https://www.wowhead.com/forever/spell=11597) stacks = 5 AND [Sunder Armor](https://www.wowhead.com/forever/spell=11597) time remaining ≤ 8s AND Time remaining > [Sunder Armor](https://www.wowhead.com/forever/spell=11597) time remaining).
+7. Cast [Thunder Clap](https://www.wowhead.com/forever/spell=11581) when ([Thunder Clap](https://www.wowhead.com/forever/spell=11581) time remaining ≤ 3s AND Time remaining ≥ 4s).
+8. Cast [Demoralizing Shout Rank 5](https://www.wowhead.com/forever/spell=11556) when ([Demoralizing Shout Rank 5](https://www.wowhead.com/forever/spell=11556) time remaining ≤ 4s AND Time remaining ≥ 5s).
+9. Cast [Sunder Armor](https://www.wowhead.com/forever/spell=11597) when [Sunder Armor](https://www.wowhead.com/forever/spell=11597) stacks < 5.
+10. Cast [Thunder Clap](https://www.wowhead.com/forever/spell=11581) when (Target count ≥ 3 AND (NOT `{"auraShouldRefresh":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":11597},"maxOverlap":{"const":{"val":"8s"}}}}` OR ([Sunder Armor](https://www.wowhead.com/forever/spell=11597) stacks = 5 AND ([Sunder Armor](https://www.wowhead.com/forever/spell=11597) time remaining > 8s OR Time remaining ≤ [Sunder Armor](https://www.wowhead.com/forever/spell=11597) time remaining)) OR Rage ≥ [Thunder Clap](https://www.wowhead.com/forever/spell=11581) current cost + [Sunder Armor](https://www.wowhead.com/forever/spell=11597) current cost + [Shield Block](https://www.wowhead.com/forever/spell=2565) current cost)).
+11. Cast [Revenge](https://www.wowhead.com/forever/spell=25288) when (NOT `{"auraShouldRefresh":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":11597},"maxOverlap":{"const":{"val":"8s"}}}}` OR ([Sunder Armor](https://www.wowhead.com/forever/spell=11597) stacks = 5 AND ([Sunder Armor](https://www.wowhead.com/forever/spell=11597) time remaining > 8s OR Time remaining ≤ [Sunder Armor](https://www.wowhead.com/forever/spell=11597) time remaining)) OR Rage ≥ [Revenge](https://www.wowhead.com/forever/spell=25288) current cost + [Sunder Armor](https://www.wowhead.com/forever/spell=11597) current cost + [Shield Block](https://www.wowhead.com/forever/spell=2565) current cost).
+12. Cast [Shield Slam](https://www.wowhead.com/forever/spell=23925) when (NOT `{"auraShouldRefresh":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":11597},"maxOverlap":{"const":{"val":"8s"}}}}` OR ([Sunder Armor](https://www.wowhead.com/forever/spell=11597) stacks = 5 AND ([Sunder Armor](https://www.wowhead.com/forever/spell=11597) time remaining > 8s OR Time remaining ≤ [Sunder Armor](https://www.wowhead.com/forever/spell=11597) time remaining)) OR Rage ≥ [Shield Slam](https://www.wowhead.com/forever/spell=23925) current cost + [Sunder Armor](https://www.wowhead.com/forever/spell=11597) current cost + [Shield Block](https://www.wowhead.com/forever/spell=2565) current cost).
+13. Cast [Cleave](https://www.wowhead.com/forever/spell=20569) when ((Target count > 1 AND Rage ≥ 20) AND (NOT `{"auraShouldRefresh":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":11597},"maxOverlap":{"const":{"val":"8s"}}}}` OR ([Sunder Armor](https://www.wowhead.com/forever/spell=11597) stacks = 5 AND ([Sunder Armor](https://www.wowhead.com/forever/spell=11597) time remaining > 8s OR Time remaining ≤ [Sunder Armor](https://www.wowhead.com/forever/spell=11597) time remaining)) OR Rage ≥ [Cleave](https://www.wowhead.com/forever/spell=20569) current cost + [Sunder Armor](https://www.wowhead.com/forever/spell=11597) current cost + [Shield Block](https://www.wowhead.com/forever/spell=2565) current cost)).
+14. Cast [Heroic Strike](https://www.wowhead.com/forever/spell=25286) when ((Target count = 1 AND Rage ≥ 20) AND (NOT `{"auraShouldRefresh":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":11597},"maxOverlap":{"const":{"val":"8s"}}}}` OR ([Sunder Armor](https://www.wowhead.com/forever/spell=11597) stacks = 5 AND ([Sunder Armor](https://www.wowhead.com/forever/spell=11597) time remaining > 8s OR Time remaining ≤ [Sunder Armor](https://www.wowhead.com/forever/spell=11597) time remaining)) OR Rage ≥ [Heroic Strike](https://www.wowhead.com/forever/spell=25286) current cost + [Sunder Armor](https://www.wowhead.com/forever/spell=11597) current cost + [Shield Block](https://www.wowhead.com/forever/spell=2565) current cost)).
 15. Cast [Sunder Armor](https://www.wowhead.com/forever/spell=11597) when Rage ≥ 45.
 
 ### Damage breakdown — Undead
 
 | Action | DPS |
 |---|---:|
-| [Heroic Strike](https://www.wowhead.com/forever/spell=25286) | 117.74 |
-| [Shield Slam](https://www.wowhead.com/forever/spell=23925) | 93.11 |
-| Auto-attack (tag 1) | 80.54 |
-| Auto-attack (tag 3) | 47.86 |
-| [Revenge](https://www.wowhead.com/forever/spell=25288) | 43.23 |
-| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 12.76 |
-| [Thunder Clap](https://www.wowhead.com/forever/spell=11581) | 3.63 |
+| [Heroic Strike](https://www.wowhead.com/forever/spell=25286) | 117.13 |
+| [Shield Slam](https://www.wowhead.com/forever/spell=23925) | 93.85 |
+| Auto-attack (tag 1) | 81.10 |
+| Auto-attack (tag 3) | 47.84 |
+| [Revenge](https://www.wowhead.com/forever/spell=25288) | 42.71 |
+| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 12.62 |
+| [Thunder Clap](https://www.wowhead.com/forever/spell=11581) | 3.64 |
 | [Dragonbreath Chili (proc)](https://www.wowhead.com/forever/spell=15851) | 1.83 |
 
 ### Resource flow
 
 | Resource | Action | Net amount per fight |
 |---|---|---:|
-| Health | OtherActionDamageTaken | -139455.5 |
-| Health | OtherActionHealingModel | +137635.7 |
-| Health | [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | +1807.6 |
-| Rage | Auto-attack (tag 1) | +650.7 |
-| Rage | [Shield Slam](https://www.wowhead.com/forever/spell=23925) | -646.9 |
-| Rage | [Shield Block](https://www.wowhead.com/forever/spell=2565) | -495.8 |
-| Rage | OtherActionDamageTaken | +482.7 |
-| Rage | [Heroic Strike](https://www.wowhead.com/forever/spell=25286) | -480.1 |
-| Rage | [Shield Specialization](https://www.wowhead.com/forever/spell=12727) | +431.3 |
-| Rage | OtherActionRefund | +276.7 |
-| Rage | [Sunder Armor](https://www.wowhead.com/forever/spell=11597) | -188.8 |
+| Health | OtherActionDamageTaken | -139392.8 |
+| Health | OtherActionHealingModel | +137578.2 |
+| Health | [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | +1801.2 |
+| Rage | Auto-attack (tag 1) | +651.7 |
+| Rage | [Shield Slam](https://www.wowhead.com/forever/spell=23925) | -651.5 |
+| Rage | [Shield Block](https://www.wowhead.com/forever/spell=2565) | -497.9 |
+| Rage | OtherActionDamageTaken | +482.5 |
+| Rage | [Heroic Strike](https://www.wowhead.com/forever/spell=25286) | -477.1 |
+| Rage | [Shield Specialization](https://www.wowhead.com/forever/spell=12727) | +432.6 |
+| Rage | OtherActionRefund | +277.8 |
+| Rage | [Sunder Armor](https://www.wowhead.com/forever/spell=11597) | -190.4 |
 | Rage | [Bloodrage](https://www.wowhead.com/forever/spell=2687) | +150.2 |

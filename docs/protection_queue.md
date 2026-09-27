@@ -31,7 +31,7 @@ previous engine, strictly to measure the error; they are not legitimate
 performance targets. The raw records include complete requests, player inputs,
 resource/action metrics and engine hashes.
 
-For Orc, the independent-seed mean changes from **691.78 to 386.62 DPS**;
+For Orc, the historical pooled mean changes from **691.78 to 386.62 DPS**;
 Heroic Strike falls to about **53 casts per five minutes**. Across all ten races,
 corrected means are **385.78–399.40 DPS**. These confirmation means are separate
 from the common-seed matrix replay.
@@ -45,6 +45,10 @@ Earlier Protection gear/talent/APL selection gains and survival/threat
 non-inferiority claims are superseded. Current gear and talents are retained,
 not asserted to be optimal under the corrected queue model. Paladin and Bear
 selection evidence remains separate.
+
+The two starting seeds above are only 52 apart. Their iteration ranges overlap,
+so they are not independent replications (SCEN-016). Current Protection results
+also include the later [Sunder maintenance correction](protection_sunder.md).
 
 Future Warrior gear searches use the separately frozen
 `artifacts/tanks/queue_corrected_warrior_controls.json` inputs, never the

@@ -2731,7 +2731,7 @@
       "question": "Do tank defaults provide consistent raid support and supported weapon consumables?",
       "current_model": "A shared native/web support definition covers all 17 tank profiles, preserving explicitly self-maintained duties. Paladin has Brilliant Wizard Oil and Curse of Elements; Titans remains the main tank flask.",
       "impact": "The old Paladin preset omitted substantial damage support. Comparisons now use the corrected settings without claiming that all class survival mechanics are verified.",
-      "resolution": "Closed by profile-wide support regressions and matched independent-seed replays; earlier support/selection evidence remains archived.",
+      "resolution": "Closed by profile-wide support regressions and matched replays; their overlapping seed ranges are qualified by SCEN-016. Earlier support/selection evidence remains archived.",
       "sources": [
         "sim/core/forever_tank_support.json",
         "docs/tank_support.md",
@@ -2753,7 +2753,7 @@
       "question": "Does Protection actually exploit Swift Judgement’s reset and free cast?",
       "current_model": "The reset already worked. Explicit APL placement now avoids resetting a nearly completed cooldown and casts the free Judgement before unrelated cooldowns.",
       "impact": "About 31.5 to 35 Judgements per five minutes; roughly 5–6 DPS from the APL alone with shared support.",
-      "resolution": "Closed by same-timestamp free-cast regression and all-three-race, two-workload independent-seed comparisons with matching support.",
+      "resolution": "Closed by same-timestamp free-cast regression and all-three-race, two-workload matched comparisons with matching support. Their overlapping seed ranges are qualified by SCEN-016.",
       "sources": [
         "sim/paladin/swift_judgement.go",
         "ui/protection_paladin/apls/forever_protection.apl.json",
@@ -2763,6 +2763,36 @@
       "related": [
         "PAL-014"
       ]
+    },
+    {
+      "id": "WAR-014",
+      "category": "resolved",
+      "kind": "implementation",
+      "priority": "high",
+      "status": "resolved",
+      "access": "source-code",
+      "title": "Protection Sunder maintenance starvation",
+      "question": "Does the Protection rotation preserve five Sunder stacks under competing rage demands?",
+      "current_model": "An eight-second refresh window and dynamic-cost rage reserves substantially reduce lapses, with no free external armor debuff. Essential defenses retain priority.",
+      "impact": "In matched coverage samples, five-stack losses fall from 42.22% to 0.57% of single-attacker fights. Mean post-ramp time below five falls from 4.86 to 0.053 seconds.",
+      "resolution": "Closed by a reproduced Night Elf lapse, targeted regression and all-race coverage/survival/threat checks in both workloads. Avoidance and resource pressure can still cause rare lapses.",
+      "sources": ["docs/protection_sunder.md", "tools/forever_bench/sunder_maintenance_test.go", "tools/sunder_audit/main.go"],
+      "related": ["WAR-013", "SCEN-004"]
+    },
+    {
+      "id": "SCEN-016",
+      "category": "scenarios",
+      "kind": "implementation",
+      "priority": "medium",
+      "status": "needs-code",
+      "access": "source-code",
+      "title": "Overlapping seeds in historical validation",
+      "question": "Which earlier pooled comparisons counted overlapping iteration seeds as independent replications?",
+      "current_model": "The engine uses starting seed plus iteration index. The preceding tank-support and queue reports used starts 38 and 52 apart for 10,000 iterations, reusing most seeds. New Sunder validation uses disjoint ranges.",
+      "impact": "Legacy pooled sample-size and uncertainty claims need reassessment; this does not by itself invalidate saved DPS means or change combat behavior.",
+      "resolution": "Inventory earlier validation seed ranges and recalculate affected uncertainty or repeat material decisions with disjoint ranges. Keep original raw evidence and distinguish independent runs from overlapping repeats.",
+      "sources": ["sim/core/sim.go", "docs/protection_sunder.md", "artifacts/tank_support/validation.json", "artifacts/protection_queue/validation.json"],
+      "related": ["SCEN-004"]
     }
   ]
 }

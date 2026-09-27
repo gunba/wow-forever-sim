@@ -25,502 +25,372 @@
     {
       "Key": "tank_warrior",
       "Race": "Orc",
-      "Disposition": "shared-support",
-      "SelectedID": "tank_warrior-orc-shared-support",
+      "Disposition": "maintenance",
+      "SelectedID": "orc-maintenance",
       "Single": {
-        "TPS": 873.0343583397334,
-        "DTPS": 476.235039548337,
-        "TMI": 47.786111865216625,
+        "TPS": 873.2941473965069,
+        "DTPS": 480.3086243849086,
+        "TMI": 48.459394762726475,
         "ChanceOfDeath": 0,
-        "LeastTargetTPS": 873.0343583397307,
-        "TPSStandardError": 0.2760836060009885,
-        "DTPSStandardError": 0.18274574514312747,
-        "TMIStandardError": 0.021307142137088553,
+        "LeastTargetTPS": 873.2941473964974,
+        "TPSStandardError": 0.16865666613491964,
+        "DTPSStandardError": 0.11498800882223219,
+        "TMIStandardError": 0.01361632130771698,
         "TargetTPS": [
-          873.0343583397307
+          873.2941473964974
         ],
-        "Iterations": 20000
+        "Iterations": 50000
       },
       "Multi": {
-        "TPS": 1111.6254264321049,
-        "DTPS": 742.0517045271529,
-        "TMI": 68.09938217377307,
+        "TPS": 1109.7782839533781,
+        "DTPS": 744.0687138171019,
+        "TMI": 68.25637636696686,
         "ChanceOfDeath": 0,
-        "LeastTargetTPS": 62.59340604610115,
-        "TPSStandardError": 0.5584988993137389,
-        "DTPSStandardError": 0.3260294857472778,
-        "TMIStandardError": 0.03364780562330543,
+        "LeastTargetTPS": 63.90690087616283,
+        "TPSStandardError": 0.34279970389338343,
+        "DTPSStandardError": 0.2076301578205151,
+        "TMIStandardError": 0.021160555878530822,
         "TargetTPS": [
-          865.4780781500654,
-          183.5539422359449,
-          62.59340604610115
+          864.5393882298815,
+          181.3319948473091,
+          63.90690087616283
         ],
-        "Iterations": 20000
+        "Iterations": 50000
       },
-      "SupportComparison": {
-        "Single": {
-          "Before": 386.617376504078,
-          "After": 386.78626747220324,
-          "Difference": 0.16889096812525395,
-          "Conservative95Bound": 0.5946274092903227
-        },
-        "Multi": {
-          "Before": 473.51522097835584,
-          "After": 474.1154396633558,
-          "Difference": 0.6002186849999589,
-          "Conservative95Bound": 1.2160983227092612
-        }
-      }
+      "Evidence": "../../protection_sunder/validation.json"
     },
     {
       "Key": "tank_warrior",
       "Race": "Tauren",
-      "Disposition": "shared-support",
-      "SelectedID": "tank_warrior-tauren-shared-support",
+      "Disposition": "maintenance",
+      "SelectedID": "tauren-maintenance",
       "Single": {
-        "TPS": 874.1549682928207,
-        "DTPS": 462.0403571644882,
-        "TMI": 44.61164814863628,
+        "TPS": 874.1980424612698,
+        "DTPS": 461.3018604754542,
+        "TMI": 44.50130526223093,
         "ChanceOfDeath": 0,
-        "LeastTargetTPS": 874.154968292822,
-        "TPSStandardError": 0.2756760371806897,
-        "DTPSStandardError": 0.18338577932082326,
-        "TMIStandardError": 0.019970818250832762,
+        "LeastTargetTPS": 874.1980424612714,
+        "TPSStandardError": 0.2725575624292486,
+        "DTPSStandardError": 0.1863345719625334,
+        "TMIStandardError": 0.0202384124466138,
         "TargetTPS": [
-          874.154968292822
+          874.1980424612714
         ],
         "Iterations": 20000
       },
       "Multi": {
-        "TPS": 1116.089082870149,
-        "DTPS": 718.2678767102683,
-        "TMI": 62.82998772190248,
+        "TPS": 1116.0042569381376,
+        "DTPS": 717.028526402723,
+        "TMI": 62.695342825219186,
         "ChanceOfDeath": 0,
-        "LeastTargetTPS": 63.11899306351698,
-        "TPSStandardError": 0.5568756891272808,
-        "DTPSStandardError": 0.33044514700143274,
-        "TMIStandardError": 0.03277820662761729,
+        "LeastTargetTPS": 64.24430144571582,
+        "TPSStandardError": 0.546573455072358,
+        "DTPSStandardError": 0.32858833494781414,
+        "TMIStandardError": 0.031965044543334105,
         "TargetTPS": [
-          869.2284089621271,
-          183.74168084450008,
-          63.11899306351698
+          869.6078893886389,
+          182.15206610378897,
+          64.24430144571582
         ],
         "Iterations": 20000
       },
-      "SupportComparison": {
-        "Single": {
-          "Before": 388.5672855105251,
-          "After": 388.73464098864895,
-          "Difference": 0.1673554781238522,
-          "Conservative95Bound": 0.5965575235788814
-        },
-        "Multi": {
-          "Before": 476.664273159182,
-          "After": 477.2608509541817,
-          "Difference": 0.5965777949996891,
-          "Conservative95Bound": 1.2205706733919996
-        }
-      }
+      "Evidence": "../../protection_sunder/validation.json"
     },
     {
       "Key": "tank_warrior",
       "Race": "Troll",
-      "Disposition": "shared-support",
-      "SelectedID": "tank_warrior-troll-shared-support",
+      "Disposition": "maintenance",
+      "SelectedID": "troll-maintenance",
       "Single": {
-        "TPS": 871.056554580624,
-        "DTPS": 474.7095590053515,
-        "TMI": 47.98534177604982,
+        "TPS": 871.0255732083538,
+        "DTPS": 474.88002396419034,
+        "TMI": 47.94242817603411,
         "ChanceOfDeath": 0,
-        "LeastTargetTPS": 871.0565545806219,
-        "TPSStandardError": 0.27237137402676775,
-        "DTPSStandardError": 0.18363560840586987,
-        "TMIStandardError": 0.021746660402828,
+        "LeastTargetTPS": 871.0255732083535,
+        "TPSStandardError": 0.2659337424261686,
+        "DTPSStandardError": 0.18351601855593877,
+        "TMIStandardError": 0.021559013015409616,
         "TargetTPS": [
-          871.0565545806219
+          871.0255732083535
         ],
         "Iterations": 20000
       },
       "Multi": {
-        "TPS": 1109.3629460734921,
-        "DTPS": 736.8989751278539,
-        "TMI": 67.54984488063653,
+        "TPS": 1108.2212812624327,
+        "DTPS": 735.5095666378604,
+        "TMI": 67.37731655959058,
         "ChanceOfDeath": 0,
-        "LeastTargetTPS": 62.519206891403286,
-        "TPSStandardError": 0.5532063444937472,
-        "DTPSStandardError": 0.3289179400395505,
-        "TMIStandardError": 0.03382780282740265,
+        "LeastTargetTPS": 63.6009428058812,
+        "TPSStandardError": 0.5411910379097602,
+        "DTPSStandardError": 0.32857128787797724,
+        "TMIStandardError": 0.03353191337649844,
         "TargetTPS": [
-          863.3602613124801,
-          183.48347786960477,
-          62.519206891403286
+          863.268721939522,
+          181.35161651703274,
+          63.6009428058812
         ],
         "Iterations": 20000
       },
-      "SupportComparison": {
-        "Single": {
-          "Before": 385.8782860713419,
-          "After": 386.0315154250919,
-          "Difference": 0.1532293537500209,
-          "Conservative95Bound": 0.5895843297990737
-        },
-        "Multi": {
-          "Before": 472.91619746989386,
-          "After": 473.4675061948957,
-          "Difference": 0.5513087250018316,
-          "Conservative95Bound": 1.1995735521054616
-        }
-      }
+      "Evidence": "../../protection_sunder/validation.json"
     },
     {
       "Key": "tank_warrior",
       "Race": "Undead",
-      "Disposition": "shared-support",
-      "SelectedID": "tank_warrior-undead-shared-support",
+      "Disposition": "maintenance",
+      "SelectedID": "undead-maintenance",
       "Single": {
-        "TPS": 854.9795549938292,
-        "DTPS": 464.7786998049995,
-        "TMI": 47.553746247903604,
+        "TPS": 854.8328524780363,
+        "DTPS": 464.82455403115887,
+        "TMI": 47.5137987772018,
         "ChanceOfDeath": 0,
-        "LeastTargetTPS": 854.9795549938358,
-        "TPSStandardError": 0.2738140846725611,
-        "DTPSStandardError": 0.1852687301472822,
-        "TMIStandardError": 0.021863844690487376,
+        "LeastTargetTPS": 854.8328524780363,
+        "TPSStandardError": 0.2649792431951281,
+        "DTPSStandardError": 0.1854127771898797,
+        "TMIStandardError": 0.021786955981565787,
         "TargetTPS": [
-          854.9795549938358
+          854.8328524780363
         ],
         "Iterations": 20000
       },
       "Multi": {
-        "TPS": 1106.1503324765104,
-        "DTPS": 721.4707712744944,
-        "TMI": 66.72849903750385,
+        "TPS": 1103.987437367553,
+        "DTPS": 721.027404581506,
+        "TMI": 66.69688992616253,
         "ChanceOfDeath": 0,
-        "LeastTargetTPS": 65.44098819121487,
-        "TPSStandardError": 0.5504829453912585,
-        "DTPSStandardError": 0.32345039224856637,
-        "TMIStandardError": 0.033992634684518366,
+        "LeastTargetTPS": 66.58844557006849,
+        "TPSStandardError": 0.5370127387685797,
+        "DTPSStandardError": 0.32939665740000224,
+        "TMIStandardError": 0.03420431413266367,
         "TargetTPS": [
-          854.511890983099,
-          186.19745330219178,
-          65.44098819121487
+          852.7824562759881,
+          184.6165355214956,
+          66.58844557006849
         ],
         "Iterations": 20000
       },
-      "SupportComparison": {
-        "Single": {
-          "Before": 399.33199021533176,
-          "After": 400.65146051566774,
-          "Difference": 1.3194703003359791,
-          "Conservative95Bound": 0.6196020476751083
-        },
-        "Multi": {
-          "Before": 498.5811003177532,
-          "After": 501.31379944065986,
-          "Difference": 2.732699122906638,
-          "Conservative95Bound": 1.262264233324817
-        }
-      }
+      "Evidence": "../../protection_sunder/validation.json"
     },
     {
       "Key": "tank_warrior",
       "Race": "Windshaper",
-      "Disposition": "shared-support",
-      "SelectedID": "tank_warrior-windshaper-shared-support",
+      "Disposition": "maintenance",
+      "SelectedID": "windshaper-maintenance",
       "Single": {
-        "TPS": 837.1578140848076,
-        "DTPS": 471.74332681608354,
-        "TMI": 48.12548622345097,
+        "TPS": 837.1479478287279,
+        "DTPS": 471.5193686427361,
+        "TMI": 48.062557673927586,
         "ChanceOfDeath": 0,
-        "LeastTargetTPS": 837.1578140848133,
-        "TPSStandardError": 0.26161676360038494,
-        "DTPSStandardError": 0.18319134415470437,
-        "TMIStandardError": 0.021928440313303592,
+        "LeastTargetTPS": 837.1479478287258,
+        "TPSStandardError": 0.2552163836905653,
+        "DTPSStandardError": 0.18634187372021965,
+        "TMIStandardError": 0.021983783342390227,
         "TargetTPS": [
-          837.1578140848133
+          837.1479478287258
         ],
         "Iterations": 20000
       },
       "Multi": {
-        "TPS": 1069.4259221040209,
-        "DTPS": 730.8513495741186,
-        "TMI": 67.5523199065544,
+        "TPS": 1068.3335552782576,
+        "DTPS": 731.1684891584129,
+        "TMI": 67.5312608021552,
         "ChanceOfDeath": 0,
-        "LeastTargetTPS": 61.09404963109788,
-        "TPSStandardError": 0.5295863523840643,
-        "DTPSStandardError": 0.3313573326036644,
-        "TMIStandardError": 0.03441868360874551,
+        "LeastTargetTPS": 62.20501957055002,
+        "TPSStandardError": 0.5195034212240156,
+        "DTPSStandardError": 0.3256477542768006,
+        "TMIStandardError": 0.03388239973765887,
         "TargetTPS": [
-          830.1426298440963,
-          178.18924262882118,
-          61.09404963109788
+          829.9658033055987,
+          176.1627324021108,
+          62.20501957055002
         ],
         "Iterations": 20000
       },
-      "SupportComparison": {
-        "Single": {
-          "Before": 387.7786837329081,
-          "After": 387.9480248664112,
-          "Difference": 0.16934113350305324,
-          "Conservative95Bound": 0.586703920755723
-        },
-        "Multi": {
-          "Before": 475.803120151696,
-          "After": 476.40438654544585,
-          "Difference": 0.6012663937498246,
-          "Conservative95Bound": 1.203043637587391
-        }
-      }
+      "Evidence": "../../protection_sunder/validation.json"
     },
     {
       "Key": "tank_warrior",
       "Race": "Human",
-      "Disposition": "shared-support",
-      "SelectedID": "tank_warrior-human-shared-support",
+      "Disposition": "maintenance",
+      "SelectedID": "human-maintenance",
       "Single": {
-        "TPS": 843.8667465155982,
-        "DTPS": 475.87881370945115,
-        "TMI": 48.15522200374433,
+        "TPS": 842.9203680801695,
+        "DTPS": 475.4971376690637,
+        "TMI": 48.033822020066495,
         "ChanceOfDeath": 0,
-        "LeastTargetTPS": 843.8667465155979,
-        "TPSStandardError": 0.2670529055168433,
-        "DTPSStandardError": 0.1819407550556552,
-        "TMIStandardError": 0.021663976302329687,
+        "LeastTargetTPS": 842.9203680801689,
+        "TPSStandardError": 0.258633210632912,
+        "DTPSStandardError": 0.18220964316124919,
+        "TMIStandardError": 0.021114477690002385,
         "TargetTPS": [
-          843.8667465155979
+          842.9203680801689
         ],
         "Iterations": 20000
       },
       "Multi": {
-        "TPS": 1075.5899344334446,
-        "DTPS": 737.9178698055505,
-        "TMI": 67.71110760347891,
+        "TPS": 1074.149061698371,
+        "DTPS": 737.0274256667715,
+        "TMI": 67.61750150391865,
         "ChanceOfDeath": 0,
-        "LeastTargetTPS": 61.00093616069882,
-        "TPSStandardError": 0.537840714475764,
-        "DTPSStandardError": 0.33064281895122344,
-        "TMIStandardError": 0.03362259559180023,
+        "LeastTargetTPS": 62.02443717820171,
+        "TPSStandardError": 0.5273550076772496,
+        "DTPSStandardError": 0.32852985345033203,
+        "TMIStandardError": 0.033657641441784646,
         "TargetTPS": [
-          836.7163800643847,
-          177.87261820836468,
-          61.00093616069882
+          836.2589950023753,
+          175.8656295177957,
+          62.02443717820171
         ],
         "Iterations": 20000
       },
-      "SupportComparison": {
-        "Single": {
-          "Before": 392.0337807599482,
-          "After": 392.1881793036964,
-          "Difference": 0.15439854374824336,
-          "Conservative95Bound": 0.6029332596627656
-        },
-        "Multi": {
-          "Before": 479.99081767500445,
-          "After": 480.5421383625014,
-          "Difference": 0.5513206874969683,
-          "Conservative95Bound": 1.2245035331435532
-        }
-      }
+      "Evidence": "../../protection_sunder/validation.json"
     },
     {
       "Key": "tank_warrior",
       "Race": "Dwarf",
-      "Disposition": "shared-support",
-      "SelectedID": "tank_warrior-dwarf-shared-support",
+      "Disposition": "maintenance",
+      "SelectedID": "dwarf-maintenance",
       "Single": {
-        "TPS": 872.1621091735678,
-        "DTPS": 473.0308835084757,
-        "TMI": 47.68728711987842,
+        "TPS": 872.1569881772787,
+        "DTPS": 472.8463676590146,
+        "TMI": 47.65369889604856,
         "ChanceOfDeath": 0,
-        "LeastTargetTPS": 872.1621091735651,
-        "TPSStandardError": 0.27153901176877243,
-        "DTPSStandardError": 0.18241171616944526,
-        "TMIStandardError": 0.021207823878475945,
+        "LeastTargetTPS": 872.1569881772821,
+        "TPSStandardError": 0.2665593727735259,
+        "DTPSStandardError": 0.18290919060666483,
+        "TMIStandardError": 0.021382762146824042,
         "TargetTPS": [
-          872.1621091735651
+          872.1569881772821
         ],
         "Iterations": 20000
       },
       "Multi": {
-        "TPS": 1111.0546436221643,
-        "DTPS": 734.0587915292883,
-        "TMI": 67.1433701111261,
+        "TPS": 1110.229291900456,
+        "DTPS": 732.8280689501723,
+        "TMI": 66.97471631574396,
         "ChanceOfDeath": 0,
-        "LeastTargetTPS": 62.54118211422623,
-        "TPSStandardError": 0.5513671463929997,
-        "DTPSStandardError": 0.32785786472270273,
-        "TMIStandardError": 0.033766972669795926,
+        "LeastTargetTPS": 63.626933451095226,
+        "TPSStandardError": 0.5441710331678583,
+        "DTPSStandardError": 0.32930041890186895,
+        "TMIStandardError": 0.0333826741611707,
         "TargetTPS": [
-          864.9623043710178,
-          183.55115713692243,
-          62.54118211422623
+          864.6978855559753,
+          181.90447289339272,
+          63.626933451095226
         ],
         "Iterations": 20000
       },
-      "SupportComparison": {
-        "Single": {
-          "Before": 386.7248643577632,
-          "After": 386.8781258865123,
-          "Difference": 0.15326152874911259,
-          "Conservative95Bound": 0.5818362017279509
-        },
-        "Multi": {
-          "Before": 473.85369508788125,
-          "After": 474.3995047753795,
-          "Difference": 0.545809687498263,
-          "Conservative95Bound": 1.2040789182062586
-        }
-      }
+      "Evidence": "../../protection_sunder/validation.json"
     },
     {
       "Key": "tank_warrior",
       "Race": "Night Elf",
-      "Disposition": "shared-support",
-      "SelectedID": "tank_warrior-night_elf-shared-support",
+      "Disposition": "maintenance",
+      "SelectedID": "night_elf-maintenance",
       "Single": {
-        "TPS": 833.6737947106816,
-        "DTPS": 461.6247045054747,
-        "TMI": 47.617667068036866,
+        "TPS": 833.9894464228414,
+        "DTPS": 461.39542251060806,
+        "TMI": 47.55643723189766,
         "ChanceOfDeath": 0,
-        "LeastTargetTPS": 833.673794710685,
-        "TPSStandardError": 0.26061421864570045,
-        "DTPSStandardError": 0.1878000376426896,
-        "TMIStandardError": 0.022450612864763953,
+        "LeastTargetTPS": 833.9894464228382,
+        "TPSStandardError": 0.25507203481591023,
+        "DTPSStandardError": 0.1857961198591856,
+        "TMIStandardError": 0.021847851030754435,
         "TargetTPS": [
-          833.673794710685
+          833.9894464228382
         ],
         "Iterations": 20000
       },
       "Multi": {
-        "TPS": 1070.7991345957375,
-        "DTPS": 717.2857699430101,
-        "TMI": 66.71383404154614,
+        "TPS": 1068.6469580173725,
+        "DTPS": 715.7839139135265,
+        "TMI": 66.59034639351799,
         "ChanceOfDeath": 0,
-        "LeastTargetTPS": 61.57608363280416,
-        "TPSStandardError": 0.5264625681987125,
-        "DTPSStandardError": 0.3342501031752372,
-        "TMIStandardError": 0.03465640903358547,
+        "LeastTargetTPS": 62.61895174655447,
+        "TPSStandardError": 0.5160693906855964,
+        "DTPSStandardError": 0.33155553492133194,
+        "TMIStandardError": 0.03460403819431299,
         "TargetTPS": [
-          830.5154587530799,
-          178.70759220985138,
-          61.57608363280416
+          828.9584644573074,
+          177.06954181351105,
+          62.61895174655447
         ],
         "Iterations": 20000
       },
-      "SupportComparison": {
-        "Single": {
-          "Before": 385.75199504340316,
-          "After": 385.9194079662776,
-          "Difference": 0.16741292287446186,
-          "Conservative95Bound": 0.5862869468189886
-        },
-        "Multi": {
-          "Before": 475.5925878857108,
-          "After": 476.1897596394609,
-          "Difference": 0.5971717537500467,
-          "Conservative95Bound": 1.2001485439931008
-        }
-      }
+      "Evidence": "../../protection_sunder/validation.json"
     },
     {
       "Key": "tank_warrior",
       "Race": "Gnome",
-      "Disposition": "shared-support",
-      "SelectedID": "tank_warrior-gnome-shared-support",
+      "Disposition": "maintenance",
+      "SelectedID": "gnome-maintenance",
       "Single": {
-        "TPS": 838.5423440343015,
-        "DTPS": 462.5261245017572,
-        "TMI": 47.344148021787475,
+        "TPS": 839.4699520300401,
+        "DTPS": 462.7081894556053,
+        "TMI": 47.30825320078445,
         "ChanceOfDeath": 0,
-        "LeastTargetTPS": 838.5423440343025,
-        "TPSStandardError": 0.2638633264208389,
-        "DTPSStandardError": 0.18519359240246044,
-        "TMIStandardError": 0.022234961021033194,
+        "LeastTargetTPS": 839.4699520300398,
+        "TPSStandardError": 0.25665819198785156,
+        "DTPSStandardError": 0.18496550847057103,
+        "TMIStandardError": 0.021724144613676468,
         "TargetTPS": [
-          838.5423440343025
+          839.4699520300398
         ],
         "Iterations": 20000
       },
       "Multi": {
-        "TPS": 1074.8329895973293,
-        "DTPS": 718.6668314908586,
-        "TMI": 66.49255771684463,
+        "TPS": 1073.771689163058,
+        "DTPS": 717.3959065440133,
+        "TMI": 66.30135547875639,
         "ChanceOfDeath": 0,
-        "LeastTargetTPS": 61.056380677657685,
-        "TPSStandardError": 0.5336128334726944,
-        "DTPSStandardError": 0.3311123799796118,
-        "TMIStandardError": 0.03427551014372404,
+        "LeastTargetTPS": 62.167610017242026,
+        "TPSStandardError": 0.5241850146740913,
+        "DTPSStandardError": 0.3291604547652698,
+        "TMIStandardError": 0.034061452945578385,
         "TargetTPS": [
-          834.5984293900044,
-          179.17817952966476,
-          61.056380677657685
+          834.1155994148262,
+          177.48847973099026,
+          62.167610017242026
         ],
         "Iterations": 20000
       },
-      "SupportComparison": {
-        "Single": {
-          "Before": 389.0506548971981,
-          "After": 389.2034829296984,
-          "Difference": 0.1528280325002811,
-          "Conservative95Bound": 0.593825562344466
-        },
-        "Multi": {
-          "Before": 478.87801360486424,
-          "After": 479.42174264236246,
-          "Difference": 0.543729037498224,
-          "Conservative95Bound": 1.2158871966648472
-        }
-      }
+      "Evidence": "../../protection_sunder/validation.json"
     },
     {
       "Key": "tank_warrior",
       "Race": "High Order",
-      "Disposition": "shared-support",
-      "SelectedID": "tank_warrior-high_order-shared-support",
+      "Disposition": "maintenance",
+      "SelectedID": "high_order-maintenance",
       "Single": {
-        "TPS": 837.1578140848076,
-        "DTPS": 471.74332681608354,
-        "TMI": 48.12548622345097,
+        "TPS": 837.1479478287279,
+        "DTPS": 471.5193686427361,
+        "TMI": 48.062557673927586,
         "ChanceOfDeath": 0,
-        "LeastTargetTPS": 837.1578140848133,
-        "TPSStandardError": 0.26161676360038494,
-        "DTPSStandardError": 0.18319134415470437,
-        "TMIStandardError": 0.021928440313303592,
+        "LeastTargetTPS": 837.1479478287258,
+        "TPSStandardError": 0.2552163836905653,
+        "DTPSStandardError": 0.18634187372021965,
+        "TMIStandardError": 0.021983783342390227,
         "TargetTPS": [
-          837.1578140848133
+          837.1479478287258
         ],
         "Iterations": 20000
       },
       "Multi": {
-        "TPS": 1069.4259221040209,
-        "DTPS": 730.8513495741186,
-        "TMI": 67.5523199065544,
+        "TPS": 1068.3335552782576,
+        "DTPS": 731.1684891584129,
+        "TMI": 67.5312608021552,
         "ChanceOfDeath": 0,
-        "LeastTargetTPS": 61.09404963109788,
-        "TPSStandardError": 0.5295863523840643,
-        "DTPSStandardError": 0.3313573326036644,
-        "TMIStandardError": 0.03441868360874551,
+        "LeastTargetTPS": 62.20501957055002,
+        "TPSStandardError": 0.5195034212240156,
+        "DTPSStandardError": 0.3256477542768006,
+        "TMIStandardError": 0.03388239973765887,
         "TargetTPS": [
-          830.1426298440961,
-          178.18924262882118,
-          61.09404963109788
+          829.9658033055988,
+          176.1627324021108,
+          62.20501957055002
         ],
         "Iterations": 20000
       },
-      "SupportComparison": {
-        "Single": {
-          "Before": 387.7786837329081,
-          "After": 387.9480248664112,
-          "Difference": 0.16934113350305324,
-          "Conservative95Bound": 0.586703920755723
-        },
-        "Multi": {
-          "Before": 475.803120151696,
-          "After": 476.40438654544585,
-          "Difference": 0.6012663937498246,
-          "Conservative95Bound": 1.203043637587391
-        }
-      }
+      "Evidence": "../../protection_sunder/validation.json"
     },
     {
       "Key": "protection_paladin",
@@ -1182,8 +1052,8 @@
   "correctionEvidence": "../../tank_support/validation.json",
   "supersededBuilds": {
     "tank_warrior": {
-      "reason": "Class-specific support replaced by common support; retained gear/talents have not been re-optimized.",
-      "archive": "../../history/807db6aaea/tanks_before_shared_support.json.gz"
+      "reason": "Late Sunder refresh could lose stacks. The revised APL preserves rage for maintenance; gear and talents are unchanged.",
+      "archive": "../../history/91b669cc2aa/protection_before_sunder_maintenance.json.gz"
     },
     "feral_tank_druid": {
       "reason": "Class-specific support replaced by common support; retained gear/talents have not been re-optimized.",
@@ -1193,5 +1063,11 @@
       "reason": "Class-specific support replaced by common support; retained gear/talents have not been re-optimized.",
       "archive": "../../history/807db6aaea/tanks_before_shared_support.json.gz"
     }
-  }
+  },
+  "correctionEvidenceByBuild": {
+    "tank_warrior": "../../protection_sunder/validation.json",
+    "protection_paladin": "../../tank_support/validation.json",
+    "feral_tank_druid": "../../tank_support/validation.json"
+  },
+  "historicalSeedQualification": "The older shared-support seed ranges overlap; they are not independent replications. See SCEN-016. Warrior maintenance evidence uses disjoint ranges."
 }

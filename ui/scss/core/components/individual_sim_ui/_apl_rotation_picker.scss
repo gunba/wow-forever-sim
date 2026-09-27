@@ -33,15 +33,24 @@
 		> * > .list-picker-item-container {
 			background-color: color-mix(in srgb, var(--bs-body-bg) 80%, transparent);
 			padding: var(--apl-spacer);
+			flex-wrap: wrap;
 
 			.list-picker-item-header {
 				align-items: flex-start;
 				justify-content: flex-end;
 			}
 
+			// Keep warnings and row controls reachable when a nested condition
+			// is wider than the rotation panel.
+			> .list-picker-item-header {
+				flex: 0 0 100%;
+			}
+
 			& > .list-picker-item {
 				flex-grow: 1;
 				padding-right: var(--apl-spacer);
+				min-width: 0;
+				max-width: 100%;
 			}
 		}
 
@@ -129,12 +138,17 @@
 .apl-action-picker-root,
 .apl-value-picker-root {
 	flex-direction: row;
+	flex-wrap: wrap;
+	min-width: 0;
+	max-width: 100%;
 	margin: 0;
 	gap: var(--apl-spacer);
 
 	.input-root {
 		margin: 0;
 		width: auto;
+		min-width: 0;
+		max-width: 100%;
 		border: none;
 	}
 
