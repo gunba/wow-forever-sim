@@ -1,8 +1,5 @@
 name: Build and Deploy
 on:
-  push:
-    branches:
-      - forever
   workflow_dispatch:
 
 # Upstream deploys to wowsims/pages-deploy with a token forks do not have, so this
@@ -66,53 +63,19 @@ jobs:
         env:
           SITE_REPO: ${{ vars.SITE_REPO }}
 
-      - name: Build 🔧
-        run: make dist/classic/.dirstamp
-        env:
-          SITE_BASE: ${{ steps.base.outputs.value }}
-          SITE_REPO: ${{ steps.repo.outputs.value }}
-
-      - name: Test
-        run: |
-          go test -tags with_db ./tools/forever_bench ./sim/core ./sim/druid ./sim/warlock ./tools/database ./tools/database/gen_db ./tools/icons
-          go test -tags with_db ./tools/forever_tanks ./sim/warrior/dps_warrior ./sim/warrior/tank_warrior ./sim/paladin/protection ./sim/druid/tank
-          go test -tags with_db ./sim -run 'Test(EveryRegisteredSpellSaysWhereItsNumbersCameFrom|EverySpellRegistrationResolvesToAnID|SpellSourcesAreWellFormed|UnreviewedSpellsOnlyShrink|SpellSourceScannerKeepsBranchesAndRejectsRankScalars|SpellSourceScannerFollowsTypedRangeParameter)$'
-          python3 -m unittest discover -s tools/forever_bench
-          python3 tools/forever_bench/uncertainties.py --check
-          python3 -m unittest discover -s tools/database
-          python3 -m unittest discover -s tools/data_watch
-          node_modules/.bin/esbuild ui/scrub/scrub.test.ts --bundle --platform=node --outfile=/tmp/forever-scrub-test.cjs
-          node /tmp/forever-scrub-test.cjs
-
-      - name: Stage benchmark review portal
-        run: |
-          python3 tools/forever_bench/build_review_site.py \
-            --results artifacts/modelled_gear/forever_dps_5min.json \
-            --profiles artifacts/modelled_gear/ui_profiles \
-            --sensitivity artifacts/modelled_gear/forever_sensitivity.json \
-            --gear-search artifacts/modelled_gear_search/current
-
       # The Go tests and tsc both pass on a build whose pages throw at load, which has
       # shipped a blank site twice. Open every page before it is deployed.
+      - name: Install dependencies
+        run: npm ci
+
       - name: Install a browser for the smoke test
         run: npx playwright install --with-deps chromium
 
-      - name: Open every page
-        run: |
-          mkdir -p "site$(dirname "$SITE_BASE")"
-          ln -s "$PWD/dist/classic" "site${SITE_BASE%/}"
-          python3 -m http.server 8080 --directory site >/dev/null 2>&1 &
-          SITE_URL="http://localhost:8080$SITE_BASE" node tools/smoke/check_pages.mjs
-          SITE_URL="http://localhost:8080$SITE_BASE" node tools/smoke/check_questions.mjs
-          SITE_URL="http://localhost:8080$SITE_BASE" node tools/smoke/check_tank_matrix.mjs
-          SITE_URL="http://localhost:8080$SITE_BASE" node tools/smoke/check_scrub.mjs
-          SITE_URL="http://localhost:8080$SITE_BASE" node tools/smoke/check_icons.mjs
-          SITE_URL="http://localhost:8080$SITE_BASE" node tools/smoke/check_benchmark_replay.mjs
-          SITE_URL="http://localhost:8080$SITE_BASE" node tools/smoke/check_ranked_defaults.mjs
-          go build -tags with_db -o /tmp/forever-tank-bench ./tools/forever_tanks
-          SITE_URL="http://localhost:8080$SITE_BASE" TANK_BENCH=/tmp/forever-tank-bench node tools/smoke/check_tank_defaults.mjs
+      - name: Build and verify
+        run: make verify
         env:
           SITE_BASE: ${{ steps.base.outputs.value }}
+          SITE_REPO: ${{ steps.repo.outputs.value }}
 
       - name: Add the root redirect
         run: cp deploy/root_index.html dist/index.html

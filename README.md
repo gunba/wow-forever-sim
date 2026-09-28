@@ -354,7 +354,7 @@ Read through the core code and some examples from other classes/specs to get a f
 
 Finally, add your new sim to `RegisterAll()` in `sim/register_all.go`.
 
-Don't forget to write unit tests! Again, look at existing tests for examples. Run them with `make test` when you're ready.
+Use the affected package's existing tests while developing and add focused regression tests for observed failures. See `AGENTS.md` for local check commands.
 
 # Launch the site
 When everything is ready for release, modify `ui/core/launched_sims.ts` and `ui/index.html` to include the new spec value. This will add the sim to the dropdown menu so anyone can find it from the existing sims. This will also remove the UI warning that the sim is under development. Now tell everyone about your new sim!
@@ -366,4 +366,12 @@ Don't touch the raid sim until the individual sim is ready for launch; anything 
  - Update `ui/raid/presets.ts` to include a constructor factory in the `specSimFactories` variable and add configurations for new Players in the `playerPresets` variable.
 
 # Deployment
-`.github/workflows/deploy.yml` is inherited from upstream and deploys on pushes to `master` there. Actions do not run on this fork, so there is no site to deploy to and no published build — host it locally with `make host`.
+The maintained fork publishes [GitHub Pages](https://gunba.github.io/wow-forever-sim/classic/review/) through `.github/workflows/deploy.yml`. Pushes do not deploy. When a release is ready, run **Build and Deploy** manually on branch `forever`, or use:
+
+```sh
+gh workflow run deploy.yml --repo gunba/wow-forever-sim --ref forever
+```
+
+The workflow runs `make verify` before uploading the site. The same command runs locally with the development dependencies and either Playwright Chromium (`npx playwright install chromium`) or an installed browser selected by `CHROMIUM_PATH`. It builds the site, runs the publication tests and checks every page through a temporary local server. For a production-path local build, use `SITE_BASE=/wow-forever-sim/classic/ make verify`.
+
+During development, check only the affected behaviour. Against a locally served build, `node tools/smoke/check_pages.mjs --list` lists pages and `SITE_URL=http://localhost:8080/classic/ node tools/smoke/check_pages.mjs --page warrior` checks one. Repeat `--page` to select more; `--page .` selects the landing page. Omitting `--page` checks all pages.

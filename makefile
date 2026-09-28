@@ -197,6 +197,10 @@ sim/core/items/all_items.go: $(call rwildcard,tools/database,*.go) $(call rwildc
 test: $(OUT_DIR)/lib.wasm binary_dist/dist.go
 	go test --tags=with_db ./sim/...
 
+.PHONY: verify
+verify: $(OUT_DIR)/.dirstamp
+	python3 tools/verify.py
+
 .PHONY: update-tests
 update-tests:
 	find . -name "*.results" -type f -delete
