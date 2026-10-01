@@ -206,6 +206,9 @@ func (hp *HunterPet) newLightningBreath() *core.Spell {
 
 // Demoralizing Screech in the beta client: new damage, and a 10 sec cooldown Classic did not have.
 func (hp *HunterPet) newScreech() *core.Spell {
+	if hp.Env.IsForever() {
+		return hp.newDemoralizingScreech()
+	}
 	baseDamageMin := map[int32]float64{
 		25: 9,
 		40: 9,

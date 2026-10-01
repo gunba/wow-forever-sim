@@ -38,7 +38,7 @@ BUILDS = [
 ]
 
 BUILD_CAVEATS = {
-    "feral": ["Crusader's proc eligibility and PPM in animal forms are unverified (DRU-011); the current Night Elf profile uses that enchant."],
+    "feral": ["Blizzard supports proc-enchant form eligibility, and Crusader's sourced health return is modeled. Its exact PPM/conditional interactions remain qualified (DRU-011); the Night Elf profile uses that enchant."],
     "pet_melee": ["Hawk damage uses an approximate guardian/pet model. Tracking talents affect its comparison with Survival on different creature types."],
     "marksmanship": ["Lone Wolf requires no active pet. Improved Tracking assumes tracking matches the Dragonkin reference target."],
     "shadow": ["Death's script value 150 and backlash interactions remain unverified; no extra execute multiplier is inferred. Self-damage is recorded without healer survival constraints."],
@@ -52,7 +52,7 @@ BUILD_CAVEATS = {
     "stormcaller": ["The rank-2 Lightning Bolt filler depends on the modeled low-rank spell-power coefficient."],
     "tank_warrior": ["Tank encounter: frontal attacks, incoming boss damage and modeled healing. Different external support from the non-attacking DPS rows. Rage, shield proc eligibility and scripted Tier effects remain qualified in the uncertainty register.", "Heroic Strike/Cleave now replace swings. Earlier Protection gear/talent search gains used an invalid direct-cast APL and are superseded; the existing gear and talents have been replayed, not re-optimized."],
     "protection_paladin": ["Tank encounter: frontal attacks, incoming boss damage and modeled healing. Seal of Fury is not implemented; shield and Spiritual Attunement questions remain in the uncertainty register. This is not a survival ranking."],
-    "feral_tank_druid": ["Tank encounter: frontal attacks, incoming boss damage and modeled healing. Bear retains unverified damage-based rage, not Warrior's normalized formula (DRU-012); threat coefficients also remain provisional. This is not a survival ranking.", "Crusader's proc eligibility and PPM in animal forms are unverified (DRU-011); the selected enchant gain depends on that model."],
+    "feral_tank_druid": ["Tank encounter: frontal attacks, incoming boss damage and modeled healing. Bear retains unverified damage-based rage, not Warrior's normalized formula (DRU-012); threat coefficients also remain provisional. This is not a survival ranking.", "Proc-enchant form eligibility is supported; exact PPM/conditional interactions remain qualified (DRU-011). Historical enchant-selection gains do not validate the current model."],
 }
 
 HYBRID_PARENTS = {"pet_melee": "survival", "arcane_frost": "frost", "fury_2h": "arms", "fury_sunder": "fury"}

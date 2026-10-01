@@ -164,7 +164,7 @@ func applyDebuffEffects(target *Unit, targetIdx int, debuffs *proto.Debuffs, rai
 		MakePermanent(DemoralizingShoutAura(target))
 	}
 	if debuffs.HuntersMark != proto.TristateEffect_TristateEffectMissing {
-		MakePermanent(HuntersMarkAura(target, GetTristateValueInt32(debuffs.HuntersMark, 0, 5)))
+		MakePermanent(HuntersMarkAura(target, nil, 14325, 71*(1+0.03*float64(GetTristateValueInt32(debuffs.HuntersMark, 0, 5)))))
 	}
 
 	// Atk spd reduction
@@ -745,7 +745,8 @@ func ExposeArmorAura(target *Unit, improvedEA int32) *Aura {
 func CurseOfRecklessnessAura(target *Unit) *Aura {
 	arpen := float64(505)
 	ap := float64(90)
-	if target.Env != nil && target.Env.IsForever() {
+	forever := target.Env != nil && target.Env.IsForever()
+	if forever {
 		ap = 0
 	}
 
@@ -754,14 +755,30 @@ func CurseOfRecklessnessAura(target *Unit) *Aura {
 		ActionID: ActionID{SpellID: 11717},
 		Duration: time.Minute * 2,
 		OnGain: func(aura *Aura, sim *Simulation) {
-			aura.Unit.AddStatDynamic(sim, stats.Armor, -arpen)
+			if !forever {
+				aura.Unit.AddStatDynamic(sim, stats.Armor, -arpen)
+			}
 			aura.Unit.AddStatDynamic(sim, stats.AttackPower, ap)
 		},
 		OnExpire: func(aura *Aura, sim *Simulation) {
-			aura.Unit.AddStatDynamic(sim, stats.Armor, arpen)
+			if !forever {
+				aura.Unit.AddStatDynamic(sim, stats.Armor, arpen)
+			}
 			aura.Unit.AddStatDynamic(sim, stats.AttackPower, -ap)
 		},
 	})
+	if forever {
+		// Both debuffs may remain present; only the strongest armor effect applies.
+		aura.NewExclusiveEffect(minorArmorReductionEffectCategory, false, ExclusiveEffect{
+			Priority: arpen,
+			OnGain: func(ee *ExclusiveEffect, sim *Simulation) {
+				ee.Aura.Unit.AddStatDynamic(sim, stats.Armor, -ee.Priority)
+			},
+			OnExpire: func(ee *ExclusiveEffect, sim *Simulation) {
+				ee.Aura.Unit.AddStatDynamic(sim, stats.Armor, ee.Priority)
+			},
+		})
+	}
 	return aura
 }
 
@@ -775,7 +792,7 @@ func FaerieFireAura(target *Unit) *Aura {
 		Duration: time.Second * 40,
 	})
 
-	aura.NewExclusiveEffect(minorArmorReductionEffectCategory, true, ExclusiveEffect{
+	aura.NewExclusiveEffect(minorArmorReductionEffectCategory, target.Env == nil || !target.Env.IsForever(), ExclusiveEffect{
 		Priority: arPen,
 		OnGain: func(ee *ExclusiveEffect, sim *Simulation) {
 			ee.Aura.Unit.AddStatDynamic(sim, stats.Armor, -arPen)
@@ -810,15 +827,21 @@ func CurseOfWeaknessAura(target *Unit, points int32) *Aura {
 
 const HuntersMarkAuraTag = "HuntersMark"
 
-func HuntersMarkAura(target *Unit, points int32) *Aura {
-	bonus := 71.0
-
-	bonus *= 1 + 0.03*float64(points)
-
-	aura := target.GetOrRegisterAura(Aura{
-		Label:    "HuntersMark-" + strconv.Itoa(int(bonus)),
+func HuntersMarkAura(target *Unit, caster *Unit, spellID int32, bonus float64) *Aura {
+	source := "external"
+	tag := int32(0)
+	if caster != nil {
+		source = strconv.Itoa(int(caster.Index))
+		tag = caster.Index + 1
+	}
+	label := "HuntersMark-" + strconv.Itoa(int(spellID)) + "-" + source + "-" + strconv.FormatFloat(bonus, 'f', -1, 64)
+	if aura := target.GetAura(label); aura != nil {
+		return aura
+	}
+	aura := target.RegisterAura(Aura{
+		Label:    label,
 		Tag:      HuntersMarkAuraTag,
-		ActionID: ActionID{SpellID: 14325},
+		ActionID: ActionID{SpellID: spellID, Tag: tag},
 		Duration: time.Minute * 2,
 	})
 
@@ -907,12 +930,31 @@ func DemoralizingShoutAura(target *Unit) *Aura {
 	return aura
 }
 
-func VindicationAura(target *Unit, points int32, _ int32) *Aura {
-	aura := target.GetOrRegisterAura(Aura{
-		Label:    "Vindication",
-		ActionID: ActionID{SpellID: 26016},
-		Duration: time.Second * 10,
+func VindicationAura(target *Unit, points int32) *Aura {
+	label := "Vindication-" + strconv.Itoa(int(points))
+	if aura := target.GetAura(label); aura != nil {
+		return aura
+	}
+	// Child 440667 renders 204 AP at the supported level 60. The talent
+	// formula is rank/3 times that amount (curve 82984: ranks 1/2/3).
+	aura := target.RegisterAura(Aura{
+		Label:    label,
+		ActionID: ActionID{SpellID: 440667},
+		Duration: time.Second * 30,
 	})
+	apReductionEffect(aura, 68*float64(points))
+	return aura
+}
+
+func DemoralizingScreechAura(target *Unit, actionID ActionID, reduction float64) *Aura {
+	label := "DemoralizingScreech-" + strconv.Itoa(int(actionID.SpellID)) + "-" + strconv.Itoa(int(reduction))
+	if aura := target.GetAura(label); aura != nil {
+		return aura
+	}
+	aura := target.RegisterAura(Aura{Label: label, ActionID: actionID, Duration: 30 * time.Second})
+	// Current beta reports non-stacking with Demo Shout. Keep this provider
+	// rule qualified until controlled higher-level evidence is available.
+	apReductionEffect(aura, reduction)
 	return aura
 }
 

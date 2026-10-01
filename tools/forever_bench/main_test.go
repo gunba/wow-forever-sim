@@ -240,7 +240,7 @@ func TestForeverBossArmorShred(t *testing.T) {
 		sunder.SetStacks(sim, 5)
 		target.GetAura("Curse of Recklessness").Activate(sim)
 		target.GetAura("Faerie Fire").Activate(sim)
-		want := startingArmor - 3260 // 2250 major + 505 curse + 505 Faerie Fire.
+		want := startingArmor - 2755 // 2250 major + one 505 minor reduction; curse/FF do not stack.
 		if got := target.GetStat(stats.Armor); got != want {
 			t.Fatalf("boss armor %v: got %v, want %v", startingArmor, got, want)
 		}

@@ -544,5 +544,104 @@
 		"note": "Beta client 1.60.1.69893: rank 1 damage 90-102 -> 79-91 at its top level; cost, cooldown and the 0.429 coefficient are Classic's.",
 		"source": "forever",
 		"tooltip": "85 Mana\n30 yd range\nInstant\n15 sec cooldown\nCauses 79 to 91 Holy damage to an Undead or Demon target."
+	},
+	"1310911": {
+		"ability": "Light's Vigil (rank1, enemy cast)",
+		"file": "sim/paladin/lights_vigil.go",
+		"source": "assumed",
+		"tooltip": "730 Mana\n1.5 sec cast\n6 sec cooldown\nMarks one enemy for30seconds. A consuming Holy Shock triggers175-189 Holy damage plus0.429 spell power and refunds75% of the paid mark cost. Triggered damage is not manually castable.",
+		"note": "Client1.60.1.70009 rank at level40; enemy branch only. Linked hit sequencing and party healing are not server-verified. Captured IDs/cost/damage/coefficient are preserved; linked event behavior remains qualified.",
+		"assumptions": [
+			"The enemy mark uses a magic application roll and its child uses a separate magic hit/crit roll.",
+			"The party-healing branch is not modeled."
+		]
+	},
+	"1310910": {
+		"ability": "Light's Vigil (rank1, owned mark)",
+		"file": "sim/paladin/lights_vigil.go",
+		"source": "assumed",
+		"tooltip": "730 Mana\n1.5 sec cast\n6 sec cooldown\nMarks one enemy for30seconds. A consuming Holy Shock triggers175-189 Holy damage plus0.429 spell power and refunds75% of the paid mark cost. Triggered damage is not manually castable.",
+		"note": "Client1.60.1.70009 rank at level40; enemy branch only. Linked hit sequencing and party healing are not server-verified. Captured IDs/cost/damage/coefficient are preserved; linked event behavior remains qualified.",
+		"assumptions": [
+			"The enemy mark uses a magic application roll and its child uses a separate magic hit/crit roll.",
+			"The party-healing branch is not modeled."
+		]
+	},
+	"1310914": {
+		"ability": "Light's Vigil (rank1, triggered damage)",
+		"file": "sim/paladin/lights_vigil.go",
+		"source": "assumed",
+		"tooltip": "730 Mana\n1.5 sec cast\n6 sec cooldown\nMarks one enemy for30seconds. A consuming Holy Shock triggers175-189 Holy damage plus0.429 spell power and refunds75% of the paid mark cost. Triggered damage is not manually castable.",
+		"note": "Client1.60.1.70009 rank at level40; enemy branch only. Linked hit sequencing and party healing are not server-verified. Captured IDs/cost/damage/coefficient are preserved; linked event behavior remains qualified.",
+		"assumptions": [
+			"The enemy mark uses a magic application roll and its child uses a separate magic hit/crit roll.",
+			"The party-healing branch is not modeled."
+		]
+	},
+	"1311590": {
+		"ability": "Light's Vigil (rank2, enemy cast)",
+		"file": "sim/paladin/lights_vigil.go",
+		"source": "assumed",
+		"tooltip": "1000 Mana\n1.5 sec cast\n6 sec cooldown\nMarks one enemy for30seconds. A consuming Holy Shock triggers268-288 Holy damage plus0.429 spell power and refunds75% of the paid mark cost. Triggered damage is not manually castable.",
+		"note": "Client1.60.1.70009 rank at level50; enemy branch only. Linked hit sequencing and party healing are not server-verified. Captured IDs/cost/damage/coefficient are preserved; linked event behavior remains qualified.",
+		"assumptions": [
+			"The enemy mark uses a magic application roll and its child uses a separate magic hit/crit roll.",
+			"The party-healing branch is not modeled."
+		]
+	},
+	"1311594": {
+		"ability": "Light's Vigil (rank2, owned mark)",
+		"file": "sim/paladin/lights_vigil.go",
+		"source": "assumed",
+		"tooltip": "1000 Mana\n1.5 sec cast\n6 sec cooldown\nMarks one enemy for30seconds. A consuming Holy Shock triggers268-288 Holy damage plus0.429 spell power and refunds75% of the paid mark cost. Triggered damage is not manually castable.",
+		"note": "Client1.60.1.70009 rank at level50; enemy branch only. Linked hit sequencing and party healing are not server-verified. Captured IDs/cost/damage/coefficient are preserved; linked event behavior remains qualified.",
+		"assumptions": [
+			"The enemy mark uses a magic application roll and its child uses a separate magic hit/crit roll.",
+			"The party-healing branch is not modeled."
+		]
+	},
+	"1311592": {
+		"ability": "Light's Vigil (rank2, triggered damage)",
+		"file": "sim/paladin/lights_vigil.go",
+		"source": "assumed",
+		"tooltip": "1000 Mana\n1.5 sec cast\n6 sec cooldown\nMarks one enemy for30seconds. A consuming Holy Shock triggers268-288 Holy damage plus0.429 spell power and refunds75% of the paid mark cost. Triggered damage is not manually castable.",
+		"note": "Client1.60.1.70009 rank at level50; enemy branch only. Linked hit sequencing and party healing are not server-verified. Captured IDs/cost/damage/coefficient are preserved; linked event behavior remains qualified.",
+		"assumptions": [
+			"The enemy mark uses a magic application roll and its child uses a separate magic hit/crit roll.",
+			"The party-healing branch is not modeled."
+		]
+	},
+	"1311595": {
+		"ability": "Light's Vigil (rank3, enemy cast)",
+		"file": "sim/paladin/lights_vigil.go",
+		"source": "assumed",
+		"tooltip": "1340 Mana\n1.5 sec cast\n6 sec cooldown\nMarks one enemy for30seconds. A consuming Holy Shock triggers380-410 Holy damage plus0.429 spell power and refunds75% of the paid mark cost. Triggered damage is not manually castable.",
+		"note": "Client1.60.1.70009 rank at level60; enemy branch only. Linked hit sequencing and party healing are not server-verified. Captured IDs/cost/damage/coefficient are preserved; linked event behavior remains qualified.",
+		"assumptions": [
+			"The enemy mark uses a magic application roll and its child uses a separate magic hit/crit roll.",
+			"The party-healing branch is not modeled."
+		]
+	},
+	"1311599": {
+		"ability": "Light's Vigil (rank3, owned mark)",
+		"file": "sim/paladin/lights_vigil.go",
+		"source": "assumed",
+		"tooltip": "1340 Mana\n1.5 sec cast\n6 sec cooldown\nMarks one enemy for30seconds. A consuming Holy Shock triggers380-410 Holy damage plus0.429 spell power and refunds75% of the paid mark cost. Triggered damage is not manually castable.",
+		"note": "Client1.60.1.70009 rank at level60; enemy branch only. Linked hit sequencing and party healing are not server-verified. Captured IDs/cost/damage/coefficient are preserved; linked event behavior remains qualified.",
+		"assumptions": [
+			"The enemy mark uses a magic application roll and its child uses a separate magic hit/crit roll.",
+			"The party-healing branch is not modeled."
+		]
+	},
+	"1311598": {
+		"ability": "Light's Vigil (rank3, triggered damage)",
+		"file": "sim/paladin/lights_vigil.go",
+		"source": "assumed",
+		"tooltip": "1340 Mana\n1.5 sec cast\n6 sec cooldown\nMarks one enemy for30seconds. A consuming Holy Shock triggers380-410 Holy damage plus0.429 spell power and refunds75% of the paid mark cost. Triggered damage is not manually castable.",
+		"note": "Client1.60.1.70009 rank at level60; enemy branch only. Linked hit sequencing and party healing are not server-verified. Captured IDs/cost/damage/coefficient are preserved; linked event behavior remains qualified.",
+		"assumptions": [
+			"The enemy mark uses a magic application roll and its child uses a separate magic hit/crit roll.",
+			"The party-healing branch is not modeled."
+		]
 	}
 }

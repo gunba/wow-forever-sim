@@ -110,6 +110,7 @@ func (warlock *Warlock) GetWarlock() *Warlock {
 }
 
 func (warlock *Warlock) Initialize() {
+	warlock.registerImpBloodPact()
 	warlock.registerCorruptionSpell()
 	warlock.registerImmolateSpell()
 	warlock.registerShadowBoltSpell()
@@ -155,6 +156,10 @@ func (warlock *Warlock) Initialize() {
 func (warlock *Warlock) AddRaidBuffs(_ *proto.RaidBuffs) {}
 
 func (warlock *Warlock) AddPartyBuffs(partyBuffs *proto.PartyBuffs) {
+	if warlock.Env.IsForever() {
+		// Actual Imp enable/disable supplies the owned provider, not a permanent flag.
+		return
+	}
 	// Spell 11767 applies a party aura, not a raid aura.
 	partyBuffs.BloodPact = max(partyBuffs.BloodPact, core.MakeTristateValue(
 		warlock.Options.Summon == proto.WarlockOptions_Imp,

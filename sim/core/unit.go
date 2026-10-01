@@ -131,6 +131,7 @@ type Unit struct {
 
 	AttackTables                []map[proto.CastType]*AttackTable
 	DynamicDamageTakenModifiers []DynamicDamageTakenModifier
+	activeShields               []*Shield
 
 	GCD *Timer
 

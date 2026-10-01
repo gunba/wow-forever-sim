@@ -29,6 +29,7 @@ func NewShadowPriest(character *core.Character, options *proto.Player) *ShadowPr
 	shadowOptions := options.GetShadowPriest()
 	basePriest := priest.New(character, options.TalentsString)
 	basePriest.Latency = float64(basePriest.ChannelClipDelay.Milliseconds())
+	basePriest.PowerInfusionTarget = shadowOptions.GetOptions().GetPowerInfusionTarget()
 	spriest := &ShadowPriest{
 		Priest:  basePriest,
 		options: shadowOptions.Options,

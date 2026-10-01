@@ -16,8 +16,7 @@ func (paladin *Paladin) ApplyTalents() {
 	paladin.AddStat(stats.MeleeCrit, float64(paladin.Talents.Conviction)*core.CritRatingPerCritChance)
 	// TODO: paladin.AddStat(stats.RangedCrit, float64(paladin.Talents.Conviction)*core.CritRatingPerCritChance)
 
-	// Divine Precision: 6/12/18%, confirmed by the beta client's talent curve.
-	paladin.PseudoStats.SchoolBonusHitChance[stats.SchoolIndexHoly] += 6 * float64(paladin.Talents.DivinePrecision) * core.SpellHitRatingPerHitChance
+	paladin.applyDivinePrecision()
 
 	if paladin.Talents.Toughness > 0 {
 		paladin.ApplyEquipScaling(stats.Armor, 1.0+0.02*float64(paladin.Talents.Toughness))
@@ -56,6 +55,39 @@ func (paladin *Paladin) ApplyTalents() {
 	paladin.applyConsecratedGround()
 	paladin.applyInstrumentOfLaw()
 	paladin.applySanctifiedJudgement()
+}
+
+func (paladin *Paladin) applyDivinePrecision() {
+	if paladin.Talents.DivinePrecision == 0 {
+		return
+	}
+	bonus := 6 * float64(paladin.Talents.DivinePrecision)
+	if !paladin.Env.IsForever() {
+		paladin.PseudoStats.SchoolBonusHitChance[stats.SchoolIndexHoly] += bonus * core.SpellHitRatingPerHitChance
+		return
+	}
+	// 1310904 effect 1340799 is a family hit modifier (6/12/18%),
+	// not a Holy-school modifier. Its family includes melee Holy Strike.
+	paladin.OnSpellRegistered(func(spell *core.Spell) {
+		switch spell.SpellCode {
+		case SpellCode_PaladinHolyStrike, SpellCode_PaladinHolyShock,
+			SpellCode_PaladinConsecration, SpellCode_PaladinExorcism, SpellCode_PaladinHolyWrath:
+		default:
+			switch spell.ActionID.SpellID {
+			case 853, 5588, 5589, 10308, 20066, 2878, 5627, 10326,
+				1310909, 1310910, 1310911, 1310912, 1310914, 1311806,
+				1311590, 1311591, 1311592, 1311593, 1311594,
+				1311595, 1311596, 1311597, 1311598, 1311599:
+			default:
+				return
+			}
+		}
+		if spell.DefenseType == core.DefenseTypeMelee || spell.DefenseType == core.DefenseTypeRanged {
+			spell.BonusHitRating += bonus * core.MeleeHitRatingPerHitChance
+		} else {
+			spell.BonusHitRating += bonus * core.SpellHitRatingPerHitChance
+		}
+	})
 }
 
 // Improved Seals raises the damage of every seal and of the judgement it powers.
@@ -240,10 +272,15 @@ func (paladin *Paladin) applyVindication() {
 		return
 	}
 
-	// Beta client 1.60.1.69893: 1% attack power a rank for 30 sec, on every damaging melee attack that
-	// lands (100% proc chance). The attack power the target loses is not modelled, nothing in the sim
-	// reads an enemy's attack power.
+	// Owner AP and the target debuff are separate effects of the landed
+	// melee proc. Incoming enemy autos do read target Attack Power.
 	attackPowerMultiplier := paladin.NewDynamicMultiplyStat(stats.AttackPower, 1+0.01*float64(paladin.Talents.Vindication))
+	var targetAuras core.AuraArray
+	if paladin.Env.IsForever() {
+		targetAuras = paladin.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
+			return core.VindicationAura(target, paladin.Talents.Vindication)
+		})
+	}
 
 	vindicationAura := paladin.RegisterAura(core.Aura{
 		Label:    "Vindication Proc",
@@ -266,20 +303,22 @@ func (paladin *Paladin) applyVindication() {
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 			if result.Landed() && spell.ProcMask.Matches(core.ProcMaskMelee) {
 				vindicationAura.Activate(sim)
+				if targetAuras != nil && result.Target.Type == core.EnemyUnit {
+					targetAuras.Get(result.Target).Activate(sim)
+				}
 			}
 		},
 	})
 }
 
-// Consecrated Ground buffs Holy damage while the paladin's Consecration is on the ground.
+// Consecrated Ground buffs owned Holy damage against four enemies in the ground.
 func (paladin *Paladin) applyConsecratedGround() {
 	if paladin.Talents.ConsecratedGround == 0 {
 		return
 	}
 
-	// The tooltip caps the bonus at the first 4 enemies to enter the Consecration (Consecration's
-	// $s3 in the beta client), which is not modelled: the buff sits on the paladin, so every
-	// target takes it. It only differs from the game on a pull of more than 4.
+	// Stationary encounter order represents the first four entrants, as for
+	// Consecration's capped damage. Movement/entry order is not simulated.
 	multiplier := 1 + 0.05*float64(paladin.Talents.ConsecratedGround)
 
 	buffAura := paladin.RegisterAura(core.Aura{
@@ -287,12 +326,25 @@ func (paladin *Paladin) applyConsecratedGround() {
 		ActionID: core.ActionID{SpellID: 26573},
 		Duration: time.Second * 8,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
-			paladin.PseudoStats.SchoolDamageDealtMultiplier[stats.SchoolIndexHoly] *= multiplier
+			if !paladin.Env.IsForever() {
+				paladin.PseudoStats.SchoolDamageDealtMultiplier[stats.SchoolIndexHoly] *= multiplier
+			}
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-			paladin.PseudoStats.SchoolDamageDealtMultiplier[stats.SchoolIndexHoly] /= multiplier
+			if !paladin.Env.IsForever() {
+				paladin.PseudoStats.SchoolDamageDealtMultiplier[stats.SchoolIndexHoly] /= multiplier
+			}
 		},
 	})
+	if paladin.Env.IsForever() {
+		for _, target := range paladin.Env.Encounter.TargetUnits[:min(4, len(paladin.Env.Encounter.TargetUnits))] {
+			target.AddDynamicDamageTakenModifier(func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+				if spell.Unit == &paladin.Unit && spell.SpellSchool.Matches(core.SpellSchoolHoly) && buffAura.IsActive() {
+					result.Damage *= multiplier
+				}
+			})
+		}
+	}
 
 	paladin.RegisterAura(core.Aura{
 		Label:    "Consecrated Ground Trigger",

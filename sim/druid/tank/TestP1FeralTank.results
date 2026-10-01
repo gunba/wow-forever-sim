@@ -3,7 +3,7 @@ character_stats_results: {
  value: {
   final_stats: 355.3
   final_stats: 465.3
-  final_stats: 507.1
+  final_stats: 489.5
   final_stats: 160.6
   final_stats: 189.2
   final_stats: 0
@@ -35,7 +35,7 @@ character_stats_results: {
   final_stats: 29.165
   final_stats: 5
   final_stats: 0
-  final_stats: 9380.7
+  final_stats: 9195.9
   final_stats: 32
   final_stats: 65
   final_stats: 65
@@ -50,8 +50,8 @@ character_stats_results: {
 stat_weights_results: {
  key: "TestP1FeralTank-Phase1-StatWeights-Default"
  value: {
-  weights: 0.16908
-  weights: 0.73958
+  weights: 0.59786
+  weights: 0.2656
   weights: 0
   weights: 0
   weights: 0
@@ -67,7 +67,7 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.2629
+  weights: -0.02959
   weights: 0
   weights: 0
   weights: 0
@@ -76,12 +76,12 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: -0.02106
+  weights: 0.00776
   weights: 0
-  weights: -0.27027
+  weights: -0.49206
   weights: 0
   weights: 0
-  weights: -1.62365
+  weights: -0.8132
   weights: 0
   weights: 0
   weights: 0
@@ -99,100 +99,100 @@ stat_weights_results: {
 dps_results: {
  key: "TestP1FeralTank-Phase1-Average-Default"
  value: {
-  dps: 728.32152
-  tps: 1945.10507
-  dtps: 647.09034
+  dps: 747.452
+  tps: 1974.34741
+  dtps: 645.65209
  }
 }
 dps_results: {
  key: "TestP1FeralTank-Phase1-Settings-NightElf-launch-Default-forever_bear-FullBuffs-P1-Consumes-LongMultiTarget"
  value: {
-  dps: 156.65945
-  tps: 449.77009
+  dps: 146.76444
+  tps: 419.03212
  }
 }
 dps_results: {
  key: "TestP1FeralTank-Phase1-Settings-NightElf-launch-Default-forever_bear-FullBuffs-P1-Consumes-LongSingleTarget"
  value: {
-  dps: 33.40894
-  tps: 91.03871
+  dps: 29.13201
+  tps: 75.82512
  }
 }
 dps_results: {
  key: "TestP1FeralTank-Phase1-Settings-NightElf-launch-Default-forever_bear-FullBuffs-P1-Consumes-ShortSingleTarget"
  value: {
-  dps: 59.70829
-  tps: 131.78372
+  dps: 51.7472
+  tps: 111.4247
  }
 }
 dps_results: {
  key: "TestP1FeralTank-Phase1-Settings-NightElf-launch-Default-forever_bear-NoBuffs-P1-Consumes-LongMultiTarget"
  value: {
-  dps: 78.88336
-  tps: 323.39181
+  dps: 80.109
+  tps: 317.52916
  }
 }
 dps_results: {
  key: "TestP1FeralTank-Phase1-Settings-NightElf-launch-Default-forever_bear-NoBuffs-P1-Consumes-LongSingleTarget"
  value: {
-  dps: 27.95577
-  tps: 76.1227
+  dps: 26.13567
+  tps: 69.11757
  }
 }
 dps_results: {
  key: "TestP1FeralTank-Phase1-Settings-NightElf-launch-Default-forever_bear-NoBuffs-P1-Consumes-ShortSingleTarget"
  value: {
-  dps: 42.25832
-  tps: 98.86793
+  dps: 39.65377
+  tps: 91.1711
  }
 }
 dps_results: {
  key: "TestP1FeralTank-Phase1-Settings-Tauren-launch-Default-forever_bear-FullBuffs-P1-Consumes-LongMultiTarget"
  value: {
-  dps: 126.36189
-  tps: 366.26917
+  dps: 122.99653
+  tps: 349.95484
  }
 }
 dps_results: {
  key: "TestP1FeralTank-Phase1-Settings-Tauren-launch-Default-forever_bear-FullBuffs-P1-Consumes-LongSingleTarget"
  value: {
-  dps: 30.84048
-  tps: 84.8625
+  dps: 27.01267
+  tps: 70.36224
  }
 }
 dps_results: {
  key: "TestP1FeralTank-Phase1-Settings-Tauren-launch-Default-forever_bear-FullBuffs-P1-Consumes-ShortSingleTarget"
  value: {
-  dps: 55.60944
-  tps: 120.89624
+  dps: 46.37343
+  tps: 98.71759
  }
 }
 dps_results: {
  key: "TestP1FeralTank-Phase1-Settings-Tauren-launch-Default-forever_bear-NoBuffs-P1-Consumes-LongMultiTarget"
  value: {
-  dps: 63.83171
-  tps: 274.84906
+  dps: 63.07371
+  tps: 264.64803
  }
 }
 dps_results: {
  key: "TestP1FeralTank-Phase1-Settings-Tauren-launch-Default-forever_bear-NoBuffs-P1-Consumes-LongSingleTarget"
  value: {
-  dps: 27.62525
-  tps: 75.73257
+  dps: 25.35497
+  tps: 67.30773
  }
 }
 dps_results: {
  key: "TestP1FeralTank-Phase1-Settings-Tauren-launch-Default-forever_bear-NoBuffs-P1-Consumes-ShortSingleTarget"
  value: {
-  dps: 39.64162
-  tps: 92.89544
+  dps: 37.98964
+  tps: 87.49262
  }
 }
 dps_results: {
  key: "TestP1FeralTank-Phase1-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 636.97465
-  tps: 1712.21191
-  dtps: 730.29467
+  dps: 651.53761
+  tps: 1729.82398
+  dtps: 726.90939
  }
 }

@@ -106,7 +106,8 @@ def main():
         f"The tables and [matrix]({matrix_path}) use the same "
         f"{len(results['Results'])} common-seed replays. "
         + ("The modeled search and original real-item benchmark are separate; neither proves "
-           "available launch gear." if modeled else "Equipment selections came from an earlier "
+           "available launch gear. Equipment is frozen from an earlier mechanics revision; "
+           "historical search controls and gains do not validate this corrected release." if modeled else "Equipment selections came from an earlier "
            "mechanics revision; these results use the corrected engine. Historical search gains "
            "are not directly comparable to this release."), "",
         "The benchmark uses level 60, 300 seconds, one level-63 target, complete role-specific "
@@ -141,7 +142,8 @@ def main():
             lines += ["**Model limitations:** " + " ".join(BUILD_CAVEATS[key]), ""]
         if len({row["BaselinePlayer"]["talentsString"] for row in rows}) > 1:
             lines += [f"**Talent variants:** The allocation above is for {representative['Race']}. "
-                      "Other races have independently validated allocations in their exact profiles.", ""]
+                      "Other races retain their saved allocations in the exact profiles. Historical "
+                      "validation ranges and source qualifications are recorded separately.", ""]
         if len({json.dumps(row["BaselinePlayer"]["rotation"], sort_keys=True) for row in rows}) > 1:
             lines += [
                 f"**Rotation variants:** The priorities below are for {representative['Race']}. "

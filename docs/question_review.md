@@ -1,180 +1,66 @@
 # Questions review
 
-The starting register has 137 entries at
-`35cab052456a320358e998c12416687d69cae142`: 84 evidence questions,
-27 implementation tasks, five model choices, one out-of-scope item and
-20 resolved records. This review has not changed combat calculations or
-the published benchmark.
+The original review covered all 137 entries at `35cab052456a320358e998c12416687d69cae142` and added three specific gaps. The correctness follow-up reviews code at `4235b6feda425a82e76f1af741fa61e87dcabcc8`, the September 30 Hunter/Druid deep dive and 20 recent evidence findings. Captured client tables extend to `1.60.1.70009`.
 
-All **137 of 137 entries** now have individual adjudications. Newly identified
-Swipe AP-script, Improved Imp damage-scope and weapon-racial crit-scope gaps are recorded separately
-rather than counted as answers to existing questions.
-
-The [structured review](../artifacts/question_review/review.json) records
-individual answers, confidence, remaining scope, implementation consequences
-and test prerequisites. The [canonical register](uncertainties.md) now combines
-those findings with the original questions and stable IDs.
+The [canonical questions register](uncertainties.md) is the tracking list. Each entry keeps its stable ID, answer, confidence, remaining scope, sources and concrete test prerequisites. The [structured review](../artifacts/question_review/review.json) records the adjudications. The [follow-up coverage](../artifacts/question_review/correctness_followup.json) accounts for all 144 article feature points and all 20 recent findings without publishing private chat or identifying metadata.
 
 ## Accounting
 
-| Status | Before | Original entries now | With three additions |
+| Status | Original 137 | Initial review, 140 | Correctness follow-up, 145 |
 |---|---:|---:|---:|
-| Needs game/source evidence | 84 | 61 | 63 |
-| Implementation work | 27 | 26 | 27 |
+| Needs game/source evidence | 84 | 63 | 69 |
+| Implementation work | 27 | 27 | 13 |
 | Model/scenario choices | 5 | 8 | 8 |
-| Accepted working answers | 0 | 5 | 5 |
-| Resolved | 20 | 24 | 24 |
+| Accepted working answers | 0 | 5 | 6 |
+| Resolved | 20 | 24 | 36 |
 | Outside current scenarios | 1 | 13 | 13 |
 
-The register separates **21 source-supported implementation follow-ups** from
-remaining unknown behavior. None has been applied by this publication.
-Pending queues contain 39 questions with current-beta checks, 16 with level-30
-checks, 41 needing later access and 39 with source/code work. These overlap:
-a low-rank test does not necessarily settle its level-60 counterpart.
-Accepted-answer corroboration is optional, not included in those pending queues.
+Added records distinguish Hunter talent decoding, Hunter’s Mark rank values, Savage Strikes, Faerie Fire’s announced rules and Flametongue’s missing numeric model. A fixed implementation does not close an unrelated coefficient or script question.
 
-## Findings
+Pending queues include 39 entries with level-20 checks, 17 with level-30 checks, 42 with later-access checks and 33 with source/code work. These overlap: a low-rank test may not settle its level-60 counterpart. The level stages describe prerequisites, not an independently verified statement that every spell, item or server build is currently accessible.
 
-- **Older confirmation runs were not independent.** The
-  [seed-range inventory](../artifacts/question_review/seed_ranges.json)
-  identifies overlap in gear, build and tank confirmations. For example,
-  the current gear-selection confirmation has 5,001 distinct iteration seeds,
-  not 10,000. The latest Sunder ranges are disjoint. This does not make every
-  reported gain false, but independence-based confidence claims need correction.
-- **Some catalog unknowns do not affect the current scenario.** The projected
-  gear has no ordinary set procs, item guardians or unresolved real-item effects.
-  Those stay in the catalog backlog rather than the blocking combat-test list.
-  Weapon enchants are different: all 17 tanks equip Crusader, whose sourced
-  self-heal is absent from its current handler. Its effective impact has not
-  been simulated in this pass.
-- **Old talent-source conflicts are mostly stale history.** The September 17
-  audit contains a later reversal, and current selectable trees already use
-  the corrected rank values and removals. The retained video-extraction JSON
-  is not the current UI tree. A small inherited-fixture probe also distinguished
-  obsolete test expectations from a genuinely stale Paladin tree-size constant.
-- **Several open features need code, not beta access.** These include generic
-  absorb pools, targeting another player with owned Power Infusion, item-picker
-  shared-stat valuation, raw haste-rating representation and a refreshed
-  spell-coverage census. Defender's Grip's ordinary outside-city effect also
-  has enough client data for implementation.
-- **Weapon-racial crit has a newly isolated scope conflict.** The Hunter wiki
-  excludes ranged crit, whereas the current engine's shared physical-crit path
-  includes it. A matching/nonmatching melee-weapon control can check this at
-  level 20. This is not a proposal to change generic equipment crit.
+## Correctness follow-up
 
-- **Divine Spirit availability is answered.**
-  [Blizzard explicitly confirms it as baseline](https://news.blizzard.com/en-us/article/24303313/world-of-warcraft-forever-deep-dive-panel-recap).
-  A future trainer screenshot is not needed to justify the intended buff.
-- **Two supposedly inherited cooldowns are actually sourced.** Hack and
-  Slash has a 200-ms recovery in both its parent and child records. Windfury
-  Weapon's actual enchant points to a dummy aura with a 1.5-second recovery.
-  Windfury's attack-resolution script remains open; its cooldown does not.
-- **Wrack's modifier is too broad.** The current client family mask selects
-  Corruption and Agony, not every Shadow DoT. This is an implementation
-  correction, not a question that needs a future raid test.
-- **Improved Imp exposes two separate discrepancies.** Its documented
-  Firebolt multiplier should include the SP contribution; the engine applies
-  it only to base damage. It no longer improves Blood Pact, but the engine and
-  184 DPS requests still select the old improved Stamina bonus. The 17 tank
-  requests do not select Blood Pact. The undocumented negative dummy remains
-  a separate level-20 test.
-- **Poison charges are a lower-priority accounting gap.** Existing five-minute
-  Rogue results average at most 92.29 Instant attempts and 96.05 Deadly
-  applications against 175/180 charges. This is useful headroom, not a
-  per-iteration guarantee or permission to ignore arbitrary long fights.
-- **Gear MP5 is a reported beta bug, not a universal mana rule.**
-  [The report](https://github.com/ClassicWoWCommunity/forever-bugs/issues/54)
-  includes gear controls and distinguishes ordinary Wisdom/Mageblood behavior.
-  The optional uniform fivefold mode is a sensitivity scenario, not an exact
-  reproduction of that source-specific bug.
-- **Poison AP scaling has a published answer.**
-  [The developer response](https://github.com/ClassicWoWCommunity/forever-bugs/issues/100)
-  gives Instant and Deadly ratios absent from the current engine. Instant's
-  direct-hit term is source-ready; Deadly's tick/stack placement needs
-  reconciliation. This is narrower than treating all Rogue scaling as unknown.
-- **Ordinary off-hand rage now has Forever evidence.**
-  [New public logs and analysis](https://ppach-warriorcompendium.share.connect.posit.cloud/rage.html)
-  support the half-rate model. One independently inspected sample reproduces
-  approximately 1.73 versus 3.455 rage per weapon-second. This does not validate
-  level-60, rage-talent or proc-extra-swing behavior.
-- **Thick Hide's intended Defense coefficient is in the active rank curves.**
-  It is 0.67/1.33/2.00, not a rankless scalar or 0.67 multiplied by every rank.
-  The engine's small rounding discrepancy is implementation work. A
-  [separate live-beta bug](https://github.com/ClassicWoWCommunity/forever-bugs/issues/151)
-  does not replace the intended formula.
-- **Generic pet buff exclusion is answered for both pet classes.**
-  [The explicit response](https://github.com/ClassicWoWCommunity/forever-bugs/issues/27)
-  identifies this as intentional. Demon inheritance coefficients and AI cadence
-  are separate questions.
-- **Consecrated Ground was misclassified.** It grants extra Holy damage to
-  the first four covered enemies, not mitigation. Its current owner-wide
-  approximation needs target scoping for larger encounters; that cap does not
-  distinguish the stationary one-/three-target workloads.
-- **Retribution Aura still has a sourced base-value discrepancy.**
-  The captured rank-5 effect is 30; the engine uses 20. The
-  [developer response](https://github.com/ClassicWoWCommunity/forever-bugs/issues/117#issuecomment-5822983107)
-  also confirms intended SP scaling for Ret Aura and Thorns, but does not
-  provide their numeric coefficients.
-- **Swipe has a new, specific follow-up.**
-  [The server-side AP script was accidentally bypassed](https://github.com/ClassicWoWCommunity/forever-bugs/issues/125#issuecomment-5841232704).
-  An internal fix was announced for a later build. Its coefficient is not in
-  that response, so importing a remembered SoD number would not resolve it.
-- **Judgement of Wisdom has conflicting source layers.** Wowhead displays a
-  50% chance, while the captured client parent has 100% and invokes a dummy
-  intermediate. Neither establishes the effective server-script probability.
-  The 59-mana max-rank return itself is sourced.
-- **Some tests were scheduled too early.** Warrior Flurry and Maelstrom
-  Weapon first become available at level 35, and their fifth rank at 39.
-  They are not level-30 beta experiments. Conversely, Inner Focus can be
-  tested now at level 20.
+The [implementation ledger](correctness_workplan.md) records 45 correction groups with focused checks. They include:
 
-## Implementation follow-up
+- **Combat and resources:** competing minor armor reductions; instant-versus-hardcast swing handling; free-cast Rage refunds; caster-side pushback; finite delivered-damage absorbs and generated/absorbed/unused shield accounting.
+- **Druid/Hunter:** full Moonfire scaling, exact Thick Hide coefficients, Furor carryover, form weapon DPS/stones/enchant reconstruction, form-safe cast eligibility, Barkskin registration, trap timers, Intimidation crit scope, first-dodge Mongoose, owned Mark/Expose Prey, Carrion Screech and the sourced Savage Strikes crit family.
+- **Paladin/Warlock/support:** Holy Strike/Divine Precision scope, Vindication, four-target Consecrated Ground, enemy Light’s Vigil, Wrack ownership/family, full Improved Imp damage, Blood Pact lifecycle, PI targeting/non-stacking, Crusader/Lifestealing health returns and Defender’s Grip.
+- **Data and legality:** Hunter’s Careful Aim/Lethal Attacks decode swap, legal legacy presets, current metadata fixtures and actual menu/landing contracts.
+- **Rogue:** [Instant Poison’s sourced 0.5% AP term](https://github.com/ClassicWoWCommunity/forever-bugs/issues/100#issuecomment-5804701503). Deadly’s tick/stack placement remains open; Classic receives no new AP term.
 
-The [class evidence ledger](../artifacts/question_review/class_evidence.json)
-and [scenario/data ledger](../artifacts/question_review/scenario_data_evidence.json)
-record selected raw fields, table provenance and existing-result calculations.
-The structured review separates source-ready values from rules that still need
-an experiment. Examples of source/code work include the Ret Aura base amount,
-Thick Hide rank rounding, Improved Moonfire's damage modifier, target-scoped
-Consecrated Ground and missing supported spell families such as Seal of Fury
-and Light's Vigil. These have **not** been applied to the published simulation
-in this research pass.
+The [correctness review](correctness_release.md) records the regenerated 804 scenarios, 201 exact web defaults and 68 matched tank checks. Old requests/results are archived rather than relabeled as corrected. These are fixed-profile correctness comparisons, not optimized-build claims; publication also requires native/WASM/browser and live deployment checks.
 
-The existing register also contains historical fixes. A resolved queue or
-seal-maintenance bug should remain resolved; a separate uncertainty about rage
-or threat does not invalidate the reproduction of that bug. Conversely, older
-nearby random seeds must not be presented as independent confirmations.
+## Partial answers that remain material
 
-## Reading a disposition
+| Topic | Supported answer | Remaining question |
+|---|---|---|
+| Hunter pets | Screech’s active ranks/AP effect and Carrion assignment are corrected; basic Cat attacks remain. | Other unique abilities, new families, active metadata, coefficients and family baselines. See HUN-007/HUN-009. |
+| Summon Hawk | Its current single refreshing DoT is an approximation. | Actual concurrent guardians, stats, damage and proc behavior. HUN-004. |
+| Savage Strikes | Captured data says family-specific crit; registered scope is repaired. | The article announces melee damage instead. HUN-012 preserves the version conflict. |
+| Faerie Fire | Caster and form records are distinct. | The announced free/six-second rule conflicts with captured base spell data. DRU-014. |
+| Swipe / reactive auras | AP scaling for Swipe and provider-SP scaling for Thorns/Ret Aura are supported intentions. | Numeric server coefficients and whether the announced Swipe fix is live. DRU-013/PAL-010. |
+| Light’s Vigil | Enemy damage, one owned mark, refund and linked cooldown controls are implemented. | Party healing and the exact linked hit/proc sequence. PAL-013. |
+| Absorbs | Finite all-school pools and actual absorption are modeled. | Shielding threat and overlapping-shield priority; application order is a convention. SCEN-005. |
+| Poisons | Instant’s direct AP term is sourced and implemented. | Deadly placement, separate finisher/bleed questions and charge accounting. ROG-002/ROG-003. |
+| Shaman instant casts | Current no-reset evidence supports instant Bolt preserving swings. | Later-access combat traces; old reset-based research remains historical. SHA-002. |
+| Flametongue | Official notes prohibit stacking with Windfury Totem or Flametongue Weapon and remove lingering buffs. | A numeric damage/speed/SP/proc rule. A dummy field is not a damage formula. SHA-006. |
 
-An evidence-backed answer is not necessarily already implemented. A credible
-working answer need not be a measured level-60 server formula. A known beta
-bug is not automatically the intended launch rule, and a closed issue is not
-proof that its fix has shipped.
+The new Feral talents and row moves explicitly announced for the following build are not silently merged into current strings. Roots, utility/healer spellbooks, movement and kill-triggered features have separate coverage limits; their absence is not mistaken for an unknown coefficient in an already implemented spell.
 
-“Not material” is limited to a stated scenario or unsupported capability.
-Damage, threat, resource supply and survival all count when assessing tanks.
-Missing damage abilities and proc enchants are not dismissed merely because
-the current rotation does not select them.
+## Historical evidence
 
-Current-beta tests assume the level-20 cap. “Launch” means beyond the announced
-level-30 beta or requiring max-level content; that label must move if access
-expands. Each remaining test must identify the required ability, talent rank,
-item or target rather than simply saying “test in game.”
+The [seed-range inventory](../artifacts/question_review/seed_ranges.json) identifies overlapping historical confirmations. Distinct starting seeds do not imply disjoint iteration ranges. New validation guards compare complete ranges; retained historical means remain usable descriptions, but independence-based confidence labels require qualification. Common-seed baseline/sensitivity replays are deliberately paired and are not independent confirmations of game mechanics.
 
-## Evidence limits
+The modeled catalog has no ordinary set procs, item guardians or unresolved real-item effects. Those remain a catalog backlog, rather than blockers for this hypothetical-equipment matrix. Weapon enchants are active effects and have been reviewed separately.
 
-- The captured client is a versioned collection of tables, not one complete
-  build-70009 export. Each table's actual build and hash are retained in the
-  source ledger. Client dummy effects do not expose every server script.
-- Several Hunter issue records contain only Discord links, without publicly
-  readable test results. Their existence is not independent confirmation.
-- A fresh fetch of missing objects from `wowsims/forever` returned
-  “Repository not found.” Previously captured, pinned material was usable;
-  this review does not claim a fresh audit of unavailable upstream objects.
-- Low-level measurements, announced internal fixes and current intended
-  mechanics have different scopes. A closed issue does not prove a fix has
-  shipped, and a level-20 result does not automatically settle a later rank.
-- The older overlapping confirmation runs remain intact. Their independence
-  claims need correction; this publication does not replace their results or
-  imply that every retained build gain disappears.
+Useful source-backed answers include [baseline Divine Spirit](https://news.blizzard.com/en-us/article/24303313/world-of-warcraft-forever-deep-dive-panel-recap), [pet external-buff exclusions](https://github.com/ClassicWoWCommunity/forever-bugs/issues/27), [ordinary off-hand rage evidence](https://ppach-warriorcompendium.share.connect.posit.cloud/rage.html) and [the source-specific MP5 bug report](https://github.com/ClassicWoWCommunity/forever-bugs/issues/54). None validates every related server script or level-60 interaction.
+
+## Test priorities
+
+- **Level 20:** separate flat MP5 from Spirit/other returns; weapon-racial melee/ranged crit controls; low-rank Energy/avoidance behavior; accessible pet buff/ability controls. Record builds and isolate one variable.
+- **Level 30:** one-stack/five-stack Deadly AP controls; rank-one Flametongue at level 28; accessible later pet ranks. Grace of Air is not available for the full support comparison at this stage.
+- **Later access:** full-rank poison/form/pet effects, Maelstrom timing, high-rank Mark, guardian behavior, tank/server coefficients and full Flametongue + Grace versus Windfury comparisons.
+- **Sources/code:** shipped client updates for announced redesigns, missing active spell/family joins, historical confidence qualification and known implementation tasks. Do not wait for an in-game experiment to repair a deterministic code defect.
+
+The searchable register provides each test’s actual prerequisites and observations. A report, another simulator or a 100%-chance client wrapper is not automatically a verified effective server rule.

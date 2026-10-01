@@ -145,12 +145,12 @@ def main():
         "Model": {
             "tier1": "100*(DPS with Tier 1 / DPS without Tier 1 - 1); fixed talents and APL",
             "gear": "100*(scaled DPS / baseline DPS - 1); Tier 1 remains on",
-            "scaling": "Item and suffix stats, weapon min/max and item flat bonus damage scale; enchants, weapon speed/skill, procs, sets and external effects stay fixed. Paid hit is recalculated.",
+            "scaling": "Item and suffix stats, weapon min/max and item flat bonus damage scale; enchants, weapon speed/skill, procs, sets and external effects stay fixed. " + ("The modeled-v2 scenario has no paid hit conversion." if base.get("GearScenario") == "modeled-65-v2" else "Paid hit is recalculated."),
             "averaging": "Arithmetic mean of per-race percentage gains, equal weight per available race",
             "amplification": "Mean +50% gain / (5 * mean +10% gain). 1 = linear, >1 = accelerating, <1 = flattening; negative values mean the +50% scenario loses DPS. Ratio of means, not mean of race ratios.",
             "amplificationAvailability": f"Unavailable if the mean +10% gain is no greater than {MIN_GAIN_PERCENT} percentage points or its conservative 95% Monte Carlo bound.",
             "uncertainty": "Conservative delta-method 95% Monte Carlo bound from marginal SEs; allows within- and between-race correlation. Not a mechanics confidence interval.",
-            "interpretation": "Hypothetical proportional upgrades, not stat weights or actual future items. Amplification measures finite-range curvature, not proof of exponential growth or isolated stat synergy. Caps and resource/rotation thresholds can change it. Cat weapon-DPS scaling remains unresolved.",
+            "interpretation": "Hypothetical proportional upgrades, not stat weights or actual future items. Amplification measures finite-range curvature, not proof of exponential growth or isolated stat synergy. Caps and resource/rotation thresholds can change it. Equipped weapon DPS scales in supported Cat/Bear forms; their exact variance and conditional proc behavior retain qualifications.",
         },
         "Builds": builds,
     }

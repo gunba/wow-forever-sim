@@ -65,19 +65,61 @@ func newWeaponFromItem(item *Item, bonusDps float64) Weapon {
 	}
 }
 
-// Returns weapon stats using the main hand equipped weapon.
-func (character *Character) WeaponFromMainHand() Weapon {
-	if weapon := character.GetMHWeapon(); weapon != nil {
-		return newWeaponFromItem(weapon, character.PseudoStats.BonusMHDps)
-	} else {
-		return newWeaponFromUnarmed()
+// Permanent striking enchants belong to the equipped item, not the previously
+// constructed attack weapon. This also retains them on form changes and swaps.
+func strikingEnchantDamage(item *Item) float64 {
+	switch item.Enchant.EffectID {
+	case 250:
+		return 1
+	case 241:
+		return 2
+	case 943:
+		return 3
+	case 805:
+		return 4
+	case 1897:
+		return 5
+	default:
+		return 0
 	}
+}
+
+// Returns the equipped MH including legal weapon bonuses, before form overrides.
+func (character *Character) EquippedMainHandWeapon() Weapon {
+	if item := character.GetMHWeapon(); item != nil {
+		weapon := newWeaponFromItem(item, character.PseudoStats.BonusMHDps)
+		if character.Env != nil && character.Env.IsForever() {
+			bonus := strikingEnchantDamage(item)
+			weapon.BaseDamageMin += bonus
+			weapon.BaseDamageMax += bonus
+		}
+		weapon.BaseDamageMin += character.flatWeaponImbueDamage[0]
+		weapon.BaseDamageMax += character.flatWeaponImbueDamage[0]
+		return weapon
+	}
+	return newWeaponFromUnarmed()
+}
+
+func (character *Character) WeaponFromMainHand() Weapon {
+	weapon := character.EquippedMainHandWeapon()
+	if character.MainHandWeaponOverride != nil {
+		return character.MainHandWeaponOverride(weapon)
+	}
+	return weapon
 }
 
 // Returns weapon stats using the off-hand equipped weapon.
 func (character *Character) WeaponFromOffHand() Weapon {
-	if weapon := character.GetOHWeapon(); weapon != nil {
-		return newWeaponFromItem(weapon, character.PseudoStats.BonusOHDps)
+	if item := character.GetOHWeapon(); item != nil {
+		weapon := newWeaponFromItem(item, character.PseudoStats.BonusOHDps)
+		if character.Env != nil && character.Env.IsForever() {
+			bonus := strikingEnchantDamage(item)
+			weapon.BaseDamageMin += bonus
+			weapon.BaseDamageMax += bonus
+		}
+		weapon.BaseDamageMin += character.flatWeaponImbueDamage[1]
+		weapon.BaseDamageMax += character.flatWeaponImbueDamage[1]
+		return weapon
 	} else {
 		return Weapon{}
 	}

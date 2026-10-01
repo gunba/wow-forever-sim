@@ -165,6 +165,17 @@ func (rot *APLRotation) GetAPLSpell(spellId *proto.ActionID) *Spell {
 	return spell
 }
 
+func (rot *APLRotation) isCastableAPLSpell(spell *Spell) bool {
+	if spell == nil {
+		return false
+	}
+	if !spell.Flags.Matches(SpellFlagAPL) {
+		rot.ValidationWarning("%s is a triggered or internal spell, not a player-castable APL ability", spell.ActionID)
+		return false
+	}
+	return true
+}
+
 func (rot *APLRotation) GetAPLDot(targetUnit UnitReference, spellId *proto.ActionID) *Dot {
 	spell := rot.GetAPLSpell(spellId)
 
@@ -184,9 +195,9 @@ func (rot *APLRotation) GetAPLDot(targetUnit UnitReference, spellId *proto.Actio
 
 func (rot *APLRotation) GetAPLMultidotSpell(spellId *proto.ActionID) *Spell {
 	spell := rot.GetAPLSpell(spellId)
-	if spell == nil {
+	if !rot.isCastableAPLSpell(spell) {
 		return nil
-	} else if spell.CurDot() == nil {
+	} else if len(spell.dots) == 0 || spell.CurDot() == nil {
 		rot.ValidationWarning("Spell %s does not have an associated DoT", ProtoToActionID(spellId))
 		return nil
 	}
@@ -195,9 +206,9 @@ func (rot *APLRotation) GetAPLMultidotSpell(spellId *proto.ActionID) *Spell {
 
 func (rot *APLRotation) GetAPLMultishieldSpell(spellId *proto.ActionID) *Spell {
 	spell := rot.GetAPLSpell(spellId)
-	if spell == nil {
+	if !rot.isCastableAPLSpell(spell) {
 		return nil
-	} else if spell.Shield(spell.Unit) == nil {
+	} else if len(spell.shields) == 0 || spell.Shield(spell.Unit) == nil {
 		rot.ValidationWarning("Spell %s does not have an associated Shield", ProtoToActionID(spellId))
 		return nil
 	}

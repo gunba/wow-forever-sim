@@ -1,5 +1,5 @@
 import { Ruleset } from '../../proto/api';
-import { Faction, SaygesFortune, Stat } from '../../proto/common';
+import { Faction, SaygesFortune, Stat, TristateEffect } from '../../proto/common';
 import { ActionId } from '../../proto_utils/action_id';
 import {
 	makeBooleanDebuffInput,
@@ -141,11 +141,25 @@ export const StaminaBuff = InputHelpers.makeMultiIconInput({
 	label: 'Stamina',
 });
 
-export const BloodPactBuff = withLabel(
+const foreverBloodPact = makeBooleanRaidBuffInput({
+	actionId: () => ActionId.fromSpellId(11767),
+	fieldName: 'bloodPact',
+	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever,
+});
+foreverBloodPact.getValue = player => player.getRaid()!.getBuffs().bloodPact !== TristateEffect.TristateEffectMissing;
+foreverBloodPact.setValue = (eventID, player, enabled) => {
+	const buffs = player.getRaid()!.getBuffs();
+	buffs.bloodPact = enabled ? TristateEffect.TristateEffectRegular : TristateEffect.TristateEffectMissing;
+	player.getRaid()!.setBuffs(eventID, buffs);
+};
+export const BloodPactBuff = withLabel(foreverBloodPact, 'Blood Pact');
+
+const ClassicBloodPactBuff = withLabel(
 	makeTristateRaidBuffInput({
 		actionId: () => ActionId.fromSpellId(11767),
 		impId: ActionId.fromSpellId(18696),
 		fieldName: 'bloodPact',
+		showWhen: player => player.sim.getRuleset() !== Ruleset.RulesetForever,
 	}),
 	'Blood Pact',
 );
@@ -651,6 +665,11 @@ export const RAID_BUFFS_CONFIG = [
 	},
 	{
 		config: BloodPactBuff,
+		picker: IconPicker,
+		stats: [],
+	},
+	{
+		config: ClassicBloodPactBuff,
 		picker: IconPicker,
 		stats: [],
 	},

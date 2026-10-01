@@ -21,6 +21,9 @@ func (rot *APLRotation) newActionCastSpell(config *proto.APLActionCastSpell) APL
 		rot.ValidationWarning("%s replaces the next melee swing; use its queue action (tag 1), not the damage action", spell.ActionID)
 		return nil
 	}
+	if !rot.isCastableAPLSpell(spell) {
+		return nil
+	}
 	target := rot.GetTargetUnit(config.Target)
 	if target.Get() == nil {
 		return nil
@@ -61,6 +64,9 @@ func (rot *APLRotation) newActionChannelSpell(config *proto.APLActionChannelSpel
 
 	spell := rot.GetAPLSpell(config.SpellId)
 	if spell == nil {
+		return nil
+	}
+	if !rot.isCastableAPLSpell(spell) {
 		return nil
 	}
 	if !spell.Flags.Matches(SpellFlagChanneled) {

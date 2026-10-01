@@ -27,6 +27,7 @@ func NewSmitePriest(character *core.Character, options *proto.Player) *SmitePrie
 	smiteOptions := options.GetSmitePriest()
 	basePriest := priest.New(character, options.TalentsString)
 	basePriest.Latency = float64(basePriest.ChannelClipDelay.Milliseconds())
+	basePriest.PowerInfusionTarget = smiteOptions.GetOptions().GetPowerInfusionTarget()
 
 	return &SmitePriest{
 		Priest:  basePriest,

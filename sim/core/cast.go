@@ -99,12 +99,16 @@ func (unit *Unit) applySpellPushback() {
 				return
 			}
 
-			if hc := aura.Unit.Hardcast; aura.Unit.IsCasting(sim) && sim.Roll(0, 1.0) > spell.PushbackReduction {
+			if !aura.Unit.IsCasting(sim) {
+				return
+			}
+			hc := aura.Unit.Hardcast
+			hcSpell := aura.Unit.GetSpell(hc.ActionID)
+			protection := hcSpell.PushbackReduction + aura.Unit.PseudoStats.SpellPushbackReduction
+			if sim.Roll(0, 1.0) > protection {
 				// Do spell pushback
 				pushback := DurationFromSeconds(max(0.2, hc.Pushback))
 				aura.Unit.Hardcast.Pushback -= 0.2
-
-				hcSpell := aura.Unit.GetSpell(hc.ActionID)
 
 				if hcSpell.Flags.Matches(SpellFlagChanneled) {
 					newExpires := max(sim.CurrentTime, hc.Expires-pushback)

@@ -173,6 +173,6 @@ export const BuildPresets = [
 		distance: 12,
 	}),
 	PresetUtils.makePresetBuild('Marksmanship', { gear: GearMarksmanship, talents: TalentsP1, rotation: APLP1, options: DefaultOptions, distance: 12 }),
-	PresetUtils.makePresetBuild('Survival', { gear: GearSurvival, talents: TalentsSurvival, rotation: APLSurvival, options: PetOptions, distance: 5 }),
-	PresetUtils.makePresetBuild('Pet/Melee', { gear: GearSurvival, talents: TalentsPetMelee, rotation: APLPetMelee, options: PetOptions, distance: 5 }),
+	PresetUtils.makePresetBuild('Survival', { gear: GearSurvival, talents: TalentsSurvival, rotation: APLSurvival, options: PetOptions, distance: 5, encounter: { name: 'Owned Hunter’s Mark', debuffs: Debuffs.create({ ...DefaultDebuffs, huntersMark: TristateEffect.TristateEffectMissing }) } }),
+	PresetUtils.makePresetBuild('Pet/Melee', { gear: GearSurvival, talents: TalentsPetMelee, rotation: APLPetMelee, options: PetOptions, distance: 5, encounter: { name: 'Owned Hunter’s Mark', debuffs: Debuffs.create({ ...DefaultDebuffs, huntersMark: TristateEffect.TristateEffectMissing }) } }),
 ];

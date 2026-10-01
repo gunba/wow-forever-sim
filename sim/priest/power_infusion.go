@@ -2,19 +2,29 @@ package priest
 
 import (
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/core/proto"
 )
 
-// Power Infusion is the thirty-one point Discipline talent and the reason the Smite build
-// goes that deep, so the priest casts it on itself. The proto still carries a target option
-// for the healing specs, which the sim has no way to act on yet.
-// TODO: let the option pick a raid member once buffing another player is modelled.
+// The Priest owns the cost/cooldown; the selected friendly player owns the aura.
+// An omitted option keeps the self-target default. An explicit unassigned or
+// invalid recipient disables the owned cooldown, as in the raid assignment UI.
 func (priest *Priest) registerPowerInfusionCD() {
 	if !priest.Talents.PowerInfusion {
 		return
 	}
 
 	actionID := core.ActionID{SpellID: 10060, Tag: priest.Index}
-	powerInfusionAura := core.PowerInfusionAura(&priest.Unit, actionID.Tag)
+	recipient := &priest.Unit
+	if priest.Env.IsForever() && priest.PowerInfusionTarget != nil {
+		if priest.PowerInfusionTarget.Type != proto.UnitReference_Player && priest.PowerInfusionTarget.Type != proto.UnitReference_Self {
+			return
+		}
+		recipient = priest.GetUnit(priest.PowerInfusionTarget)
+		if recipient == nil || recipient.Type != core.PlayerUnit {
+			return
+		}
+	}
+	powerInfusionAura := core.PowerInfusionAura(recipient, actionID.Tag)
 
 	piSpell := priest.RegisterSpell(core.SpellConfig{
 		ActionID: actionID,
@@ -29,6 +39,10 @@ func (priest *Priest) registerPowerInfusionCD() {
 				Timer:    priest.NewTimer(),
 				Duration: core.PowerInfusionCD,
 			},
+		},
+
+		ExtraCastCondition: func(sim *core.Simulation, _ *core.Unit) bool {
+			return !priest.Env.IsForever() || (recipient.IsActive() && !recipient.HasActiveAuraWithTag(core.PowerInfusionAuraTag))
 		},
 
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, _ *core.Spell) {

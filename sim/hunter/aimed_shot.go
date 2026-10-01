@@ -11,7 +11,7 @@ func (hunter *Hunter) getAimedShotConfig(rank int, timer *core.Timer) core.Spell
 	spellId := [7]int32{0, 19434, 20900, 20901, 20902, 20903, 20904}[rank]
 	baseDamage := [7]float64{0, 20, 34, 55, 89, 125, 166}[rank]
 	manaCost := [7]float64{0, 75, 115, 160, 210, 260, 310}[rank]
-	level := [7]int{0, 0, 28, 36, 44, 52, 60}[rank]
+	level := [7]int{0, 20, 28, 36, 44, 52, 60}[rank]
 
 	return core.SpellConfig{
 		SpellCode:     SpellCode_HunterAimedShot,

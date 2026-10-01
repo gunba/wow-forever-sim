@@ -1,0 +1,46 @@
+{
+  "revision": "4235b6feda425a82e76f1af741fa61e87dcabcc8",
+  "status": "superseded by the pending correctness release",
+  "files": [
+    {
+      "source": "artifacts/modelled_gear/forever_dps_5min.json",
+      "archive": "forever_dps_5min.json.gz",
+      "sha256": "499ea30c15d0f6339486613fa1d22311aa540dc4cc7aa06324f59bff3389e5e2"
+    },
+    {
+      "source": "artifacts/modelled_gear/forever_sensitivity.json",
+      "archive": "forever_sensitivity.json.gz",
+      "sha256": "27b1fae62fb4f2549719e3028e241ca79c049f102fb28ca255e709a6acb510a9"
+    },
+    {
+      "source": "artifacts/modelled_gear/forever_input_profiles.json",
+      "archive": "forever_input_profiles.json.gz",
+      "sha256": "108c0953c9289edca06289486f0eff8b5ef0a9024dbe614dc570fa0dce72d64a"
+    },
+    {
+      "source": "ui/core/forever_ranked_profiles.json",
+      "archive": "forever_ranked_profiles.json.gz",
+      "sha256": "b36c962c197616b7bd1b6cea63f53c7689ba356f2415dce25b988457ec07aa4a"
+    },
+    {
+      "source": "artifacts/tanks/current/validation.json",
+      "archive": "tank_validation.json.gz",
+      "sha256": "a45c1d469b3bd594f91f94d9f0e27d5f1b9c17294ddecbe8f723b8df2c0700a4"
+    },
+    {
+      "source": "artifacts/tanks/current/dps_preservation.json",
+      "archive": "tank_dps_preservation.json.gz",
+      "sha256": "0c71c010dac84588b8699000d4e5652cfdd24db7db8387a96835eae3e9503f19"
+    },
+    {
+      "source": "artifacts/tanks/shared_support_controls.json",
+      "archive": "shared_support_controls.json.gz",
+      "sha256": "443fd0c4951806d599f0172bbc50f5a4fe5615874df1e1f960bf4e5846c0d03e"
+    },
+    {
+      "source": "artifacts/tanks/queue_corrected_warrior_controls.json",
+      "archive": "queue_corrected_warrior_controls.json.gz",
+      "sha256": "f80ce2e5dbd4d56df9ed6ba56bba3e46b4b7d20e79df4b703c44bd516a901342"
+    }
+  ]
+}

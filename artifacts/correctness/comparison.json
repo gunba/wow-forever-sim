@@ -1,0 +1,2051 @@
+{
+  "baselineRevision": "4235b6feda425a82e76f1af741fa61e87dcabcc8",
+  "seed": 20291951,
+  "iterations": 5000,
+  "profileCount": 201,
+  "scope": "Correctness replay, not a build/gear selection campaign or independent proof of game rules.",
+  "profiles": [
+    {
+      "key": "balance",
+      "race": "Tauren",
+      "beforeDPS": 702.8227076140209,
+      "afterDPS": 708.0471291125511,
+      "deltaDPS": 5.224421498530205,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "balance",
+      "race": "Windshaper",
+      "beforeDPS": 706.7022309612111,
+      "afterDPS": 711.8955528118234,
+      "deltaDPS": 5.193321850612392,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "balance",
+      "race": "Night Elf",
+      "beforeDPS": 706.4155491677592,
+      "afterDPS": 711.6436341659362,
+      "deltaDPS": 5.228084998176996,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "balance",
+      "race": "High Order",
+      "beforeDPS": 706.7022309612111,
+      "afterDPS": 711.8955528118234,
+      "deltaDPS": 5.193321850612392,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "feral",
+      "race": "Tauren",
+      "beforeDPS": 715.9542091466435,
+      "afterDPS": 689.2233790831976,
+      "deltaDPS": -26.730830063445865,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "feral",
+      "race": "Windshaper",
+      "beforeDPS": 720.8995353378018,
+      "afterDPS": 694.0168468650041,
+      "deltaDPS": -26.882688472797668,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "feral",
+      "race": "Night Elf",
+      "beforeDPS": 722.4821698828788,
+      "afterDPS": 695.3587791873483,
+      "deltaDPS": -27.123390695530475,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "feral",
+      "race": "High Order",
+      "beforeDPS": 720.8995353378018,
+      "afterDPS": 694.0168468650041,
+      "deltaDPS": -26.882688472797668,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "elemental",
+      "race": "Orc",
+      "beforeDPS": 545.9463932597416,
+      "afterDPS": 545.9463932597416,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.3412,
+      "afterOOM": 0.3412,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "elemental",
+      "race": "Tauren",
+      "beforeDPS": 540.8200888561122,
+      "afterDPS": 540.8200888561122,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.3414,
+      "afterOOM": 0.3414,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "elemental",
+      "race": "Troll",
+      "beforeDPS": 543.1562162627914,
+      "afterDPS": 543.1562162627914,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.3341554548407993,
+      "afterOOM": 0.3341554548407993,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "elemental",
+      "race": "Windshaper",
+      "beforeDPS": 544.5947649559442,
+      "afterDPS": 544.5947649559442,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.3465469407590026,
+      "afterOOM": 0.3465469407590026,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "elemental",
+      "race": "Dwarf",
+      "beforeDPS": 542.0057650122782,
+      "afterDPS": 542.0057650122782,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.3395,
+      "afterOOM": 0.3395,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "stormcaller",
+      "race": "Orc",
+      "beforeDPS": 549.3612174793227,
+      "afterDPS": 549.3612174793227,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.2693,
+      "afterOOM": 0.2693,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "stormcaller",
+      "race": "Tauren",
+      "beforeDPS": 548.341658918457,
+      "afterDPS": 548.341658918457,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.3077,
+      "afterOOM": 0.3077,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "stormcaller",
+      "race": "Troll",
+      "beforeDPS": 546.4416882918154,
+      "afterDPS": 546.4416882918154,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.2704645454645998,
+      "afterOOM": 0.2704645454645998,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "stormcaller",
+      "race": "Windshaper",
+      "beforeDPS": 547.3586718370497,
+      "afterDPS": 547.3586718370497,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.3604422775299985,
+      "afterOOM": 0.3604422775299985,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "stormcaller",
+      "race": "Dwarf",
+      "beforeDPS": 544.7723037326609,
+      "afterDPS": 544.7723037326609,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.2815,
+      "afterOOM": 0.2815,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "enhancement",
+      "race": "Orc",
+      "beforeDPS": 780.7783486638281,
+      "afterDPS": 763.5261880251702,
+      "deltaDPS": -17.25216063865787,
+      "beforeOOM": 0.0515618411208,
+      "afterOOM": 0.03840336157600001,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "enhancement",
+      "race": "Tauren",
+      "beforeDPS": 776.3226220155124,
+      "afterDPS": 759.7312979045079,
+      "deltaDPS": -16.591324111004496,
+      "beforeOOM": 0.008029014840000001,
+      "afterOOM": 0.006876350395999999,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "enhancement",
+      "race": "Troll",
+      "beforeDPS": 779.6051705500944,
+      "afterDPS": 763.743317105502,
+      "deltaDPS": -15.861853444592384,
+      "beforeOOM": 0.0053844626924,
+      "afterOOM": 0.004024273217200001,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "enhancement",
+      "race": "Windshaper",
+      "beforeDPS": 780.3801968676277,
+      "afterDPS": 762.7151705764117,
+      "deltaDPS": -17.66502629121601,
+      "beforeOOM": 0.009134384943,
+      "afterOOM": 0.005893090881999999,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "enhancement",
+      "race": "Dwarf",
+      "beforeDPS": 784.6952247946463,
+      "afterDPS": 768.2755431582933,
+      "deltaDPS": -16.419681636352948,
+      "beforeOOM": 0.008391494986400001,
+      "afterOOM": 0.009450162764399996,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Orc",
+      "beforeDPS": 1007.7050945156069,
+      "afterDPS": 943.5093002918189,
+      "deltaDPS": -64.19579422378797,
+      "beforeOOM": 1.075365618068202,
+      "afterOOM": 1.075365618068202,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Tauren",
+      "beforeDPS": 1005.5605245937245,
+      "afterDPS": 941.4158322930422,
+      "deltaDPS": -64.14469230068232,
+      "beforeOOM": 0.6106260578330001,
+      "afterOOM": 0.6106260578330001,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Troll",
+      "beforeDPS": 1012.6170667340597,
+      "afterDPS": 947.9335758274738,
+      "deltaDPS": -64.68349090658592,
+      "beforeOOM": 0.6105293663542007,
+      "afterOOM": 0.6105293663542007,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Windshaper",
+      "beforeDPS": 1014.816376890171,
+      "afterDPS": 949.9869336080241,
+      "deltaDPS": -64.82944328214694,
+      "beforeOOM": 0.4753863280649991,
+      "afterOOM": 0.4753863280649991,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Human",
+      "beforeDPS": 1009.8153289969898,
+      "afterDPS": 945.5409026543781,
+      "deltaDPS": -64.27442634261172,
+      "beforeOOM": 0.7386911263403996,
+      "afterOOM": 0.7386911263403996,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Dwarf",
+      "beforeDPS": 1007.3008123026764,
+      "afterDPS": 943.0311636379905,
+      "deltaDPS": -64.26964866468586,
+      "beforeOOM": 0.5093885034827993,
+      "afterOOM": 0.5093885034827993,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Night Elf",
+      "beforeDPS": 1019.9550904557511,
+      "afterDPS": 954.838897717003,
+      "deltaDPS": -65.11619273874817,
+      "beforeOOM": 0.45983710699999886,
+      "afterOOM": 0.45983710699999886,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "beast_mastery",
+      "race": "High Order",
+      "beforeDPS": 1014.816376890171,
+      "afterDPS": 949.9869336080241,
+      "deltaDPS": -64.82944328214694,
+      "beforeOOM": 0.4753863280649991,
+      "afterOOM": 0.4753863280649991,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "marksmanship",
+      "race": "Orc",
+      "beforeDPS": 826.91724519029,
+      "afterDPS": 774.7050640677883,
+      "deltaDPS": -52.21218112250176,
+      "beforeOOM": 5.5471047788507795,
+      "afterOOM": 5.5471047788507795,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "marksmanship",
+      "race": "Tauren",
+      "beforeDPS": 811.6817171280152,
+      "afterDPS": 760.601095665969,
+      "deltaDPS": -51.080621462046224,
+      "beforeOOM": 5.307588429334376,
+      "afterOOM": 5.307588429334376,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "marksmanship",
+      "race": "Troll",
+      "beforeDPS": 834.76678032194,
+      "afterDPS": 781.9272283755116,
+      "deltaDPS": -52.8395519464284,
+      "beforeOOM": 4.676039965404988,
+      "afterOOM": 4.676039965404988,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "marksmanship",
+      "race": "Windshaper",
+      "beforeDPS": 833.9422767795529,
+      "afterDPS": 781.2322300388728,
+      "deltaDPS": -52.71004674068013,
+      "beforeOOM": 4.5515300544243935,
+      "afterOOM": 4.5515300544243935,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "marksmanship",
+      "race": "Human",
+      "beforeDPS": 830.1126318327497,
+      "afterDPS": 778.3959122676983,
+      "deltaDPS": -51.716719565051335,
+      "beforeOOM": 3.0563481349072,
+      "afterOOM": 3.0563481349072,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "marksmanship",
+      "race": "Dwarf",
+      "beforeDPS": 812.179059038119,
+      "afterDPS": 761.5844795468845,
+      "deltaDPS": -50.594579491234526,
+      "beforeOOM": 3.543757432005195,
+      "afterOOM": 3.543757432005195,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "marksmanship",
+      "race": "Night Elf",
+      "beforeDPS": 825.0512918998689,
+      "afterDPS": 772.8842219648545,
+      "deltaDPS": -52.16706993501441,
+      "beforeOOM": 6.2716984936306,
+      "afterOOM": 6.2716984936306,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "marksmanship",
+      "race": "High Order",
+      "beforeDPS": 833.9422767795529,
+      "afterDPS": 781.2322300388728,
+      "deltaDPS": -52.71004674068013,
+      "beforeOOM": 4.5515300544243935,
+      "afterOOM": 4.5515300544243935,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "survival",
+      "race": "Orc",
+      "beforeDPS": 962.509728439474,
+      "afterDPS": 892.3243818009628,
+      "deltaDPS": -70.18534663851119,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": [
+        "rotation"
+      ]
+    },
+    {
+      "key": "survival",
+      "race": "Tauren",
+      "beforeDPS": 948.896029387247,
+      "afterDPS": 879.8499128452612,
+      "deltaDPS": -69.04611654198584,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": [
+        "rotation"
+      ]
+    },
+    {
+      "key": "survival",
+      "race": "Troll",
+      "beforeDPS": 951.8674106543862,
+      "afterDPS": 882.5923851135159,
+      "deltaDPS": -69.27502554087027,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": [
+        "rotation"
+      ]
+    },
+    {
+      "key": "survival",
+      "race": "Windshaper",
+      "beforeDPS": 951.5805641747052,
+      "afterDPS": 882.8386849341535,
+      "deltaDPS": -68.74187924055161,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": [
+        "rotation"
+      ]
+    },
+    {
+      "key": "survival",
+      "race": "Human",
+      "beforeDPS": 963.5656076141839,
+      "afterDPS": 893.5827283564344,
+      "deltaDPS": -69.98287925774957,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": [
+        "rotation"
+      ]
+    },
+    {
+      "key": "survival",
+      "race": "Dwarf",
+      "beforeDPS": 945.8163767340438,
+      "afterDPS": 876.922828691321,
+      "deltaDPS": -68.89354804272284,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": [
+        "rotation"
+      ]
+    },
+    {
+      "key": "survival",
+      "race": "Night Elf",
+      "beforeDPS": 958.1529314540204,
+      "afterDPS": 888.4848361070289,
+      "deltaDPS": -69.66809534699155,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": [
+        "rotation"
+      ]
+    },
+    {
+      "key": "survival",
+      "race": "High Order",
+      "beforeDPS": 951.5805641747052,
+      "afterDPS": 882.8386849341535,
+      "deltaDPS": -68.74187924055161,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": [
+        "rotation"
+      ]
+    },
+    {
+      "key": "arcane",
+      "race": "Orc",
+      "beforeDPS": 719.6209120316206,
+      "afterDPS": 719.6209120316206,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.07765,
+      "afterOOM": 0.07765,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "arcane",
+      "race": "Troll",
+      "beforeDPS": 720.2232792886149,
+      "afterDPS": 720.2232792886149,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.041066363640200006,
+      "afterOOM": 0.041066363640200006,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "arcane",
+      "race": "Undead",
+      "beforeDPS": 739.8808937626117,
+      "afterDPS": 739.212307455945,
+      "deltaDPS": -0.6685863066666116,
+      "beforeOOM": 0.04255,
+      "afterOOM": 0.04255,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "arcane",
+      "race": "Human",
+      "beforeDPS": 724.8431177825859,
+      "afterDPS": 724.8431177825859,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.0582,
+      "afterOOM": 0.0582,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "arcane",
+      "race": "Gnome",
+      "beforeDPS": 732.1697935780701,
+      "afterDPS": 732.1697935780701,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.01505,
+      "afterOOM": 0.01505,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "arcane",
+      "race": "High Order",
+      "beforeDPS": 725.551185866375,
+      "afterDPS": 725.551185866375,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.05747821787399998,
+      "afterOOM": 0.05747821787399998,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fire",
+      "race": "Orc",
+      "beforeDPS": 721.2376914692862,
+      "afterDPS": 721.2376914692862,
+      "deltaDPS": 0.0,
+      "beforeOOM": 5.894619999999993,
+      "afterOOM": 5.894619999999993,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fire",
+      "race": "Troll",
+      "beforeDPS": 720.3254549339251,
+      "afterDPS": 720.3254549339251,
+      "deltaDPS": 0.0,
+      "beforeOOM": 4.332586365223358,
+      "afterOOM": 4.332586365223358,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fire",
+      "race": "Undead",
+      "beforeDPS": 735.04926205478,
+      "afterDPS": 734.5121430547782,
+      "deltaDPS": -0.5371190000017805,
+      "beforeOOM": 5.483399999999994,
+      "afterOOM": 5.483399999999994,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fire",
+      "race": "Human",
+      "beforeDPS": 731.6223640963217,
+      "afterDPS": 731.6223640963217,
+      "deltaDPS": 0.0,
+      "beforeOOM": 5.193589999999993,
+      "afterOOM": 5.193589999999993,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fire",
+      "race": "Gnome",
+      "beforeDPS": 725.9036957276589,
+      "afterDPS": 725.9036957276589,
+      "deltaDPS": 0.0,
+      "beforeOOM": 5.055719999999992,
+      "afterOOM": 5.055719999999992,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fire",
+      "race": "High Order",
+      "beforeDPS": 720.9309358018234,
+      "afterDPS": 720.9309358018234,
+      "deltaDPS": 0.0,
+      "beforeOOM": 2.786012900963596,
+      "afterOOM": 2.786012900963596,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "frost",
+      "race": "Orc",
+      "beforeDPS": 703.5569218632509,
+      "afterDPS": 703.5569218632509,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.25915,
+      "afterOOM": 0.25915,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "frost",
+      "race": "Troll",
+      "beforeDPS": 700.9845297706452,
+      "afterDPS": 700.9845297706452,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.18591636377880005,
+      "afterOOM": 0.18591636377880005,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "frost",
+      "race": "Undead",
+      "beforeDPS": 705.0372025843108,
+      "afterDPS": 704.6751367043124,
+      "deltaDPS": -0.3620658799983403,
+      "beforeOOM": 0.3576,
+      "afterOOM": 0.3576,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "frost",
+      "race": "Human",
+      "beforeDPS": 707.8903025433075,
+      "afterDPS": 707.8903025433075,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.15075,
+      "afterOOM": 0.15075,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "frost",
+      "race": "Gnome",
+      "beforeDPS": 713.3525758264666,
+      "afterDPS": 713.3525758264666,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.0221,
+      "afterOOM": 0.0221,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "frost",
+      "race": "High Order",
+      "beforeDPS": 702.8003769923313,
+      "afterDPS": 702.8003769923313,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.19870871468240003,
+      "afterOOM": 0.19870871468240003,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "retribution",
+      "race": "Undead",
+      "beforeDPS": 1149.3555757957306,
+      "afterDPS": 1103.0588040425628,
+      "deltaDPS": -46.29677175316783,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "retribution",
+      "race": "Human",
+      "beforeDPS": 1139.4230294658732,
+      "afterDPS": 1096.5008204263938,
+      "deltaDPS": -42.92220903947941,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "retribution",
+      "race": "Dwarf",
+      "beforeDPS": 1146.9985162116966,
+      "afterDPS": 1103.7312928486415,
+      "deltaDPS": -43.26722336305511,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "shadow",
+      "race": "Troll",
+      "beforeDPS": 826.5570339297805,
+      "afterDPS": 826.5570339297805,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "shadow",
+      "race": "Undead",
+      "beforeDPS": 832.8023797490113,
+      "afterDPS": 832.5023463430474,
+      "deltaDPS": -0.30003340596385897,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "shadow",
+      "race": "Human",
+      "beforeDPS": 825.1937111759183,
+      "afterDPS": 825.1937111759183,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "shadow",
+      "race": "Dwarf",
+      "beforeDPS": 831.5369584178501,
+      "afterDPS": 831.5369584178501,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "shadow",
+      "race": "Night Elf",
+      "beforeDPS": 831.4993922008566,
+      "afterDPS": 831.4993922008566,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "shadow",
+      "race": "Gnome",
+      "beforeDPS": 826.8724097783008,
+      "afterDPS": 826.8724097783008,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "smite",
+      "race": "Troll",
+      "beforeDPS": 546.459688361295,
+      "afterDPS": 546.459688361295,
+      "deltaDPS": 0.0,
+      "beforeOOM": 7e-05,
+      "afterOOM": 7e-05,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "smite",
+      "race": "Undead",
+      "beforeDPS": 553.2781325334527,
+      "afterDPS": 552.9405515681212,
+      "deltaDPS": -0.33758096533142634,
+      "beforeOOM": 0.0006,
+      "afterOOM": 0.0006,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "smite",
+      "race": "Human",
+      "beforeDPS": 543.4674746170255,
+      "afterDPS": 543.4674746170255,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "smite",
+      "race": "Dwarf",
+      "beforeDPS": 543.1788384599413,
+      "afterDPS": 543.1788384599413,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.0002,
+      "afterOOM": 0.0002,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "smite",
+      "race": "Night Elf",
+      "beforeDPS": 546.4419940296767,
+      "afterDPS": 546.4419940296767,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "smite",
+      "race": "Gnome",
+      "beforeDPS": 547.5446742454455,
+      "afterDPS": 547.5446742454455,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0.0002,
+      "afterOOM": 0.0002,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "combat",
+      "race": "Orc",
+      "beforeDPS": 736.6664201107405,
+      "afterDPS": 687.0833109035694,
+      "deltaDPS": -49.583109207171105,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "combat",
+      "race": "Troll",
+      "beforeDPS": 734.5522444673089,
+      "afterDPS": 685.1631764806453,
+      "deltaDPS": -49.38906798666358,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "combat",
+      "race": "Undead",
+      "beforeDPS": 757.1411432094097,
+      "afterDPS": 708.4216700237871,
+      "deltaDPS": -48.71947318562263,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "combat",
+      "race": "Windshaper",
+      "beforeDPS": 736.1044910172208,
+      "afterDPS": 688.3826150978654,
+      "deltaDPS": -47.7218759193554,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "combat",
+      "race": "Human",
+      "beforeDPS": 738.6957197316449,
+      "afterDPS": 690.0157741593819,
+      "deltaDPS": -48.67994557226302,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "combat",
+      "race": "Dwarf",
+      "beforeDPS": 729.3266832037278,
+      "afterDPS": 680.2789599818863,
+      "deltaDPS": -49.04772322184158,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "combat",
+      "race": "Night Elf",
+      "beforeDPS": 738.3232680321498,
+      "afterDPS": 688.6495305169032,
+      "deltaDPS": -49.67373751524667,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "combat",
+      "race": "Gnome",
+      "beforeDPS": 735.6267500634799,
+      "afterDPS": 686.0908759692377,
+      "deltaDPS": -49.53587409424222,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "combat",
+      "race": "High Order",
+      "beforeDPS": 736.1044910172208,
+      "afterDPS": 688.3826150978654,
+      "deltaDPS": -47.7218759193554,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "mutilate",
+      "race": "Orc",
+      "beforeDPS": 716.252984669874,
+      "afterDPS": 672.7642177388766,
+      "deltaDPS": -43.48876693099737,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "mutilate",
+      "race": "Troll",
+      "beforeDPS": 713.3792142112653,
+      "afterDPS": 669.6109977118999,
+      "deltaDPS": -43.768216499365394,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "mutilate",
+      "race": "Undead",
+      "beforeDPS": 748.0042864182983,
+      "afterDPS": 703.8894668052283,
+      "deltaDPS": -44.11481961307004,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "mutilate",
+      "race": "Windshaper",
+      "beforeDPS": 718.4826940924488,
+      "afterDPS": 674.3665007699254,
+      "deltaDPS": -44.11619332252337,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "mutilate",
+      "race": "Human",
+      "beforeDPS": 711.2619343389008,
+      "afterDPS": 667.1588778628713,
+      "deltaDPS": -44.10305647602945,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "mutilate",
+      "race": "Dwarf",
+      "beforeDPS": 711.2310945898023,
+      "afterDPS": 667.4955170219308,
+      "deltaDPS": -43.73557756787147,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "mutilate",
+      "race": "Night Elf",
+      "beforeDPS": 719.2731965820874,
+      "afterDPS": 675.6088195493907,
+      "deltaDPS": -43.664377032696734,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "mutilate",
+      "race": "Gnome",
+      "beforeDPS": 719.1632151223131,
+      "afterDPS": 675.3790121131902,
+      "deltaDPS": -43.78420300912285,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "mutilate",
+      "race": "High Order",
+      "beforeDPS": 718.4826940924488,
+      "afterDPS": 674.3665007699254,
+      "deltaDPS": -44.11619332252337,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "subtlety",
+      "race": "Orc",
+      "beforeDPS": 666.4046540135192,
+      "afterDPS": 632.6374381751219,
+      "deltaDPS": -33.767215838397306,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "subtlety",
+      "race": "Troll",
+      "beforeDPS": 666.9680342488585,
+      "afterDPS": 632.8235270654898,
+      "deltaDPS": -34.14450718336877,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "subtlety",
+      "race": "Undead",
+      "beforeDPS": 690.0929851727774,
+      "afterDPS": 655.853089409529,
+      "deltaDPS": -34.23989576324834,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "subtlety",
+      "race": "Windshaper",
+      "beforeDPS": 669.4741351133702,
+      "afterDPS": 635.1059937013162,
+      "deltaDPS": -34.368141412054,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "subtlety",
+      "race": "Human",
+      "beforeDPS": 670.2893299854069,
+      "afterDPS": 636.2194920660083,
+      "deltaDPS": -34.06983791939854,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "subtlety",
+      "race": "Dwarf",
+      "beforeDPS": 660.9490594027864,
+      "afterDPS": 627.4958292290213,
+      "deltaDPS": -33.453230173765064,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "subtlety",
+      "race": "Night Elf",
+      "beforeDPS": 671.4897005237807,
+      "afterDPS": 636.6224653660587,
+      "deltaDPS": -34.86723515772201,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "subtlety",
+      "race": "Gnome",
+      "beforeDPS": 669.4632019681779,
+      "afterDPS": 635.3673228705819,
+      "deltaDPS": -34.095879097596026,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "subtlety",
+      "race": "High Order",
+      "beforeDPS": 669.4741351133702,
+      "afterDPS": 635.1059937013162,
+      "deltaDPS": -34.368141412054,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "demonology",
+      "race": "Orc",
+      "beforeDPS": 884.2113266838601,
+      "afterDPS": 877.5611907552355,
+      "deltaDPS": -6.650135928624536,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "demonology",
+      "race": "Troll",
+      "beforeDPS": 879.3196004451157,
+      "afterDPS": 872.709172279455,
+      "deltaDPS": -6.610428165660778,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "demonology",
+      "race": "Undead",
+      "beforeDPS": 899.590345108154,
+      "afterDPS": 892.4829665284326,
+      "deltaDPS": -7.107378579721399,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "demonology",
+      "race": "Human",
+      "beforeDPS": 891.719726399084,
+      "afterDPS": 884.9426069806702,
+      "deltaDPS": -6.777119418413804,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "demonology",
+      "race": "Gnome",
+      "beforeDPS": 882.1178804873936,
+      "afterDPS": 875.5016848987397,
+      "deltaDPS": -6.616195588653909,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "affliction",
+      "race": "Orc",
+      "beforeDPS": 807.5773587830656,
+      "afterDPS": 801.7691277881697,
+      "deltaDPS": -5.808230994895894,
+      "beforeOOM": 0.0008,
+      "afterOOM": 0.0008,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "affliction",
+      "race": "Troll",
+      "beforeDPS": 796.7849541597137,
+      "afterDPS": 790.8657856733314,
+      "deltaDPS": -5.919168486382318,
+      "beforeOOM": 0.0014909091304,
+      "afterOOM": 0.0014909091304,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "affliction",
+      "race": "Undead",
+      "beforeDPS": 808.7907265008289,
+      "afterDPS": 802.5202880184518,
+      "deltaDPS": -6.270438482377131,
+      "beforeOOM": 0.0011,
+      "afterOOM": 0.0011,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "affliction",
+      "race": "Human",
+      "beforeDPS": 814.4830839525224,
+      "afterDPS": 808.521837978128,
+      "deltaDPS": -5.961245974394387,
+      "beforeOOM": 0.0013,
+      "afterOOM": 0.0013,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "affliction",
+      "race": "Gnome",
+      "beforeDPS": 796.4862270455474,
+      "afterDPS": 790.6409730845623,
+      "deltaDPS": -5.845253960985019,
+      "beforeOOM": 0.0003,
+      "afterOOM": 0.0003,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "ds_ruin",
+      "race": "Orc",
+      "beforeDPS": 762.4048121372305,
+      "afterDPS": 762.4048121372305,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "ds_ruin",
+      "race": "Troll",
+      "beforeDPS": 752.7827179433324,
+      "afterDPS": 752.7827179433324,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "ds_ruin",
+      "race": "Undead",
+      "beforeDPS": 776.6341777101467,
+      "afterDPS": 776.1537502606369,
+      "deltaDPS": -0.4804274495097616,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "ds_ruin",
+      "race": "Human",
+      "beforeDPS": 777.5353988270984,
+      "afterDPS": 777.5353988270984,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "ds_ruin",
+      "race": "Gnome",
+      "beforeDPS": 763.7666718707869,
+      "afterDPS": 763.7666718707869,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "destruction",
+      "race": "Orc",
+      "beforeDPS": 799.0103198659394,
+      "afterDPS": 792.7416551071525,
+      "deltaDPS": -6.26866475878694,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "destruction",
+      "race": "Troll",
+      "beforeDPS": 802.5775224905577,
+      "afterDPS": 796.3189407791536,
+      "deltaDPS": -6.2585817114040765,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "destruction",
+      "race": "Undead",
+      "beforeDPS": 807.0149750077705,
+      "afterDPS": 800.2072169536648,
+      "deltaDPS": -6.807758054105761,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "destruction",
+      "race": "Human",
+      "beforeDPS": 806.4324739760701,
+      "afterDPS": 799.987305780923,
+      "deltaDPS": -6.4451681951471755,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "destruction",
+      "race": "Gnome",
+      "beforeDPS": 792.3787042852035,
+      "afterDPS": 786.0247617381925,
+      "deltaDPS": -6.353942547011002,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury",
+      "race": "Orc",
+      "beforeDPS": 902.8199644115156,
+      "afterDPS": 833.0856407824723,
+      "deltaDPS": -69.73432362904327,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Orc",
+      "beforeDPS": 868.5243438446086,
+      "afterDPS": 801.9796523166224,
+      "deltaDPS": -66.54469152798617,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury",
+      "race": "Tauren",
+      "beforeDPS": 892.2685160616198,
+      "afterDPS": 823.9715911148544,
+      "deltaDPS": -68.29692494676544,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Tauren",
+      "beforeDPS": 861.456986545022,
+      "afterDPS": 794.979352733289,
+      "deltaDPS": -66.47763381173297,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury",
+      "race": "Troll",
+      "beforeDPS": 891.1188696836535,
+      "afterDPS": 823.4314461664461,
+      "deltaDPS": -67.68742351720743,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Troll",
+      "beforeDPS": 861.2813244373739,
+      "afterDPS": 795.8119624588148,
+      "deltaDPS": -65.46936197855905,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury",
+      "race": "Undead",
+      "beforeDPS": 910.9108404708188,
+      "afterDPS": 842.1487073050089,
+      "deltaDPS": -68.76213316580993,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Undead",
+      "beforeDPS": 872.9177498125983,
+      "afterDPS": 807.6685173967949,
+      "deltaDPS": -65.24923241580348,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury",
+      "race": "Windshaper",
+      "beforeDPS": 895.2506881204088,
+      "afterDPS": 825.7251890394418,
+      "deltaDPS": -69.52549908096694,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Windshaper",
+      "beforeDPS": 857.2860922492766,
+      "afterDPS": 791.5047360081626,
+      "deltaDPS": -65.78135624111405,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury",
+      "race": "Human",
+      "beforeDPS": 901.0987755552508,
+      "afterDPS": 832.275118681481,
+      "deltaDPS": -68.82365687376978,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Human",
+      "beforeDPS": 866.2160243957834,
+      "afterDPS": 799.2852246909625,
+      "deltaDPS": -66.93079970482086,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury",
+      "race": "Dwarf",
+      "beforeDPS": 889.7882578163125,
+      "afterDPS": 821.2812791254562,
+      "deltaDPS": -68.50697869085627,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Dwarf",
+      "beforeDPS": 847.6002573761422,
+      "afterDPS": 783.3794720902857,
+      "deltaDPS": -64.22078528585644,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury",
+      "race": "Night Elf",
+      "beforeDPS": 891.5621722386431,
+      "afterDPS": 822.2648531970157,
+      "deltaDPS": -69.29731904162747,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Night Elf",
+      "beforeDPS": 858.8524292871145,
+      "afterDPS": 792.6613771238266,
+      "deltaDPS": -66.19105216328796,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury",
+      "race": "Gnome",
+      "beforeDPS": 890.2888540969768,
+      "afterDPS": 822.3449994177763,
+      "deltaDPS": -67.94385467920051,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Gnome",
+      "beforeDPS": 855.2666040109502,
+      "afterDPS": 789.6609783399165,
+      "deltaDPS": -65.60562567103375,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury",
+      "race": "High Order",
+      "beforeDPS": 895.2506881204088,
+      "afterDPS": 825.7251890394418,
+      "deltaDPS": -69.52549908096694,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury_sunder",
+      "race": "High Order",
+      "beforeDPS": 857.2860922492766,
+      "afterDPS": 791.5047360081626,
+      "deltaDPS": -65.78135624111405,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "arms",
+      "race": "Orc",
+      "beforeDPS": 846.7876868139051,
+      "afterDPS": 784.450092658149,
+      "deltaDPS": -62.337594155756165,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "arms",
+      "race": "Tauren",
+      "beforeDPS": 839.5651916486023,
+      "afterDPS": 777.7650932016078,
+      "deltaDPS": -61.800098446994525,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "arms",
+      "race": "Troll",
+      "beforeDPS": 839.7715061932195,
+      "afterDPS": 777.2847578570563,
+      "deltaDPS": -62.486748336163146,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "arms",
+      "race": "Undead",
+      "beforeDPS": 848.2708704564892,
+      "afterDPS": 785.2555462150992,
+      "deltaDPS": -63.015324241389976,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "arms",
+      "race": "Windshaper",
+      "beforeDPS": 843.8691807181019,
+      "afterDPS": 781.7030895079281,
+      "deltaDPS": -62.16609121017382,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "arms",
+      "race": "Human",
+      "beforeDPS": 848.1065305064906,
+      "afterDPS": 785.6741990524187,
+      "deltaDPS": -62.432331454071914,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "arms",
+      "race": "Dwarf",
+      "beforeDPS": 838.2220134640834,
+      "afterDPS": 776.5280475090434,
+      "deltaDPS": -61.69396595503997,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "arms",
+      "race": "Night Elf",
+      "beforeDPS": 844.8772747590898,
+      "afterDPS": 782.6859443774375,
+      "deltaDPS": -62.19133038165228,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "arms",
+      "race": "Gnome",
+      "beforeDPS": 838.1905634814958,
+      "afterDPS": 776.3328331925103,
+      "deltaDPS": -61.85773028898552,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "arms",
+      "race": "High Order",
+      "beforeDPS": 843.8691807181019,
+      "afterDPS": 781.7030895079281,
+      "deltaDPS": -62.16609121017382,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "pet_melee",
+      "race": "Tauren",
+      "beforeDPS": 971.9248131806327,
+      "afterDPS": 901.9894252069216,
+      "deltaDPS": -69.93538797371104,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": [
+        "rotation"
+      ]
+    },
+    {
+      "key": "pet_melee",
+      "race": "Windshaper",
+      "beforeDPS": 978.6211375734731,
+      "afterDPS": 909.3397278312499,
+      "deltaDPS": -69.28140974222322,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": [
+        "rotation"
+      ]
+    },
+    {
+      "key": "pet_melee",
+      "race": "Orc",
+      "beforeDPS": 985.3373464992426,
+      "afterDPS": 915.1772454060862,
+      "deltaDPS": -70.16010109315641,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": [
+        "rotation"
+      ]
+    },
+    {
+      "key": "pet_melee",
+      "race": "Human",
+      "beforeDPS": 987.5636389583412,
+      "afterDPS": 917.2585731996667,
+      "deltaDPS": -70.30506575867457,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": [
+        "rotation"
+      ]
+    },
+    {
+      "key": "pet_melee",
+      "race": "Night Elf",
+      "beforeDPS": 981.3753835298263,
+      "afterDPS": 911.6528028483687,
+      "deltaDPS": -69.72258068145766,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": [
+        "rotation"
+      ]
+    },
+    {
+      "key": "pet_melee",
+      "race": "Dwarf",
+      "beforeDPS": 967.75470820031,
+      "afterDPS": 899.5490713329822,
+      "deltaDPS": -68.20563686732783,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": [
+        "rotation"
+      ]
+    },
+    {
+      "key": "pet_melee",
+      "race": "Troll",
+      "beforeDPS": 975.519435760466,
+      "afterDPS": 905.5048331849736,
+      "deltaDPS": -70.0146025754924,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": [
+        "rotation"
+      ]
+    },
+    {
+      "key": "pet_melee",
+      "race": "High Order",
+      "beforeDPS": 978.6211375734731,
+      "afterDPS": 909.3397278312499,
+      "deltaDPS": -69.28140974222322,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": [
+        "rotation"
+      ]
+    },
+    {
+      "key": "arcane_frost",
+      "race": "Orc",
+      "beforeDPS": 742.4165743434984,
+      "afterDPS": 742.4165743434984,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "arcane_frost",
+      "race": "Troll",
+      "beforeDPS": 740.5952903388287,
+      "afterDPS": 740.5952903388287,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "arcane_frost",
+      "race": "Undead",
+      "beforeDPS": 756.0825412845186,
+      "afterDPS": 755.5362714578528,
+      "deltaDPS": -0.5462698266658208,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "arcane_frost",
+      "race": "Human",
+      "beforeDPS": 751.6448874157275,
+      "afterDPS": 751.6448874157275,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "arcane_frost",
+      "race": "Gnome",
+      "beforeDPS": 747.4771501542933,
+      "afterDPS": 747.4771501542933,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "arcane_frost",
+      "race": "High Order",
+      "beforeDPS": 748.7465149046342,
+      "afterDPS": 748.7465149046342,
+      "deltaDPS": 0.0,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury_2h",
+      "race": "Orc",
+      "beforeDPS": 809.0412046196507,
+      "afterDPS": 748.6884284314549,
+      "deltaDPS": -60.352776188195776,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury_2h",
+      "race": "Tauren",
+      "beforeDPS": 793.8654973489886,
+      "afterDPS": 734.9545488607556,
+      "deltaDPS": -58.910948488232975,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury_2h",
+      "race": "Undead",
+      "beforeDPS": 804.0038161443531,
+      "afterDPS": 745.4102073209006,
+      "deltaDPS": -58.59360882345254,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury_2h",
+      "race": "Troll",
+      "beforeDPS": 799.6196734605147,
+      "afterDPS": 741.3160495237083,
+      "deltaDPS": -58.30362393680639,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury_2h",
+      "race": "Windshaper",
+      "beforeDPS": 795.4669617481004,
+      "afterDPS": 734.5598726539166,
+      "deltaDPS": -60.90708909418379,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury_2h",
+      "race": "Human",
+      "beforeDPS": 804.0319855150246,
+      "afterDPS": 744.6379002919549,
+      "deltaDPS": -59.39408522306974,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury_2h",
+      "race": "Dwarf",
+      "beforeDPS": 798.9796516078244,
+      "afterDPS": 739.4688792507465,
+      "deltaDPS": -59.51077235707794,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury_2h",
+      "race": "Gnome",
+      "beforeDPS": 796.4395978290593,
+      "afterDPS": 737.1146727368345,
+      "deltaDPS": -59.32492509222482,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury_2h",
+      "race": "Night Elf",
+      "beforeDPS": 796.7018180286386,
+      "afterDPS": 738.1115334420651,
+      "deltaDPS": -58.59028458657349,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "fury_2h",
+      "race": "High Order",
+      "beforeDPS": 795.4669617481004,
+      "afterDPS": 734.5598726539166,
+      "deltaDPS": -60.90708909418379,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "retribution_physical",
+      "race": "Undead",
+      "beforeDPS": 1019.1650695886141,
+      "afterDPS": 985.8451224738226,
+      "deltaDPS": -33.31994711479149,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "retribution_physical",
+      "race": "Human",
+      "beforeDPS": 1014.938127860629,
+      "afterDPS": 983.6260727962928,
+      "deltaDPS": -31.312055064336278,
+      "beforeOOM": 0.000189504982,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "retribution_physical",
+      "race": "Dwarf",
+      "beforeDPS": 1006.1573666977296,
+      "afterDPS": 974.7858839168381,
+      "deltaDPS": -31.371482780891483,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Orc",
+      "beforeDPS": 387.9185939993043,
+      "afterDPS": 355.5071387688233,
+      "deltaDPS": -32.411455230480954,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Tauren",
+      "beforeDPS": 389.6702227857016,
+      "afterDPS": 357.038578121723,
+      "deltaDPS": -32.63164466397859,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Troll",
+      "beforeDPS": 387.31528062946063,
+      "afterDPS": 354.9472465042756,
+      "deltaDPS": -32.368034125185034,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Undead",
+      "beforeDPS": 400.72422393183825,
+      "afterDPS": 368.4116242681092,
+      "deltaDPS": -32.31259966372903,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Windshaper",
+      "beforeDPS": 388.6510308678726,
+      "afterDPS": 355.90317679596353,
+      "deltaDPS": -32.747854071909046,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Human",
+      "beforeDPS": 392.7753908456074,
+      "afterDPS": 360.39837828258396,
+      "deltaDPS": -32.37701256302341,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Dwarf",
+      "beforeDPS": 387.83544983627394,
+      "afterDPS": 355.50453362898884,
+      "deltaDPS": -32.3309162072851,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Night Elf",
+      "beforeDPS": 387.26521371676057,
+      "afterDPS": 354.95620676747944,
+      "deltaDPS": -32.30900694928113,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Gnome",
+      "beforeDPS": 390.52291007052713,
+      "afterDPS": 357.394158572661,
+      "deltaDPS": -33.12875149786612,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "tank_warrior",
+      "race": "High Order",
+      "beforeDPS": 388.6510308678726,
+      "afterDPS": 355.90317679596353,
+      "deltaDPS": -32.747854071909046,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "protection_paladin",
+      "race": "Undead",
+      "beforeDPS": 567.9580881632942,
+      "afterDPS": 548.5945083699653,
+      "deltaDPS": -19.36357979332888,
+      "beforeOOM": 0.018507999999999997,
+      "afterOOM": 0.00943,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "protection_paladin",
+      "race": "Human",
+      "beforeDPS": 548.2422083956615,
+      "afterDPS": 528.5298164912978,
+      "deltaDPS": -19.7123919043637,
+      "beforeOOM": 0.014929999999999999,
+      "afterOOM": 0.012507999999999998,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "protection_paladin",
+      "race": "Dwarf",
+      "beforeDPS": 538.6621673619512,
+      "afterDPS": 520.2446022008226,
+      "deltaDPS": -18.417565161128664,
+      "beforeOOM": 0.017082,
+      "afterOOM": 0.019806,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "feral_tank_druid",
+      "race": "Tauren",
+      "beforeDPS": 638.2983912467264,
+      "afterDPS": 606.5883678631818,
+      "deltaDPS": -31.71002338354458,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "feral_tank_druid",
+      "race": "Windshaper",
+      "beforeDPS": 643.4186274323348,
+      "afterDPS": 610.065464598173,
+      "deltaDPS": -33.35316283416182,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "feral_tank_druid",
+      "race": "Night Elf",
+      "beforeDPS": 643.0837163315513,
+      "afterDPS": 611.9181190045971,
+      "deltaDPS": -31.165597326954185,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    },
+    {
+      "key": "feral_tank_druid",
+      "race": "High Order",
+      "beforeDPS": 643.4186274323348,
+      "afterDPS": 610.065464598173,
+      "deltaDPS": -33.35316283416182,
+      "beforeOOM": 0,
+      "afterOOM": 0,
+      "profileFieldsChanged": []
+    }
+  ]
+}

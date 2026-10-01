@@ -7,7 +7,7 @@ import (
 	"github.com/wowsims/classic/sim/core/stats"
 )
 
-var TalentTreeSizes = [3]int{17, 16, 18}
+var TalentTreeSizes = [3]int{17, 16, 17}
 
 const (
 	SpellFlag_Forbearance = core.SpellFlagAgentReserved1
@@ -27,6 +27,7 @@ const (
 	SpellCode_PaladinLayOnHands
 	SpellCode_PaladinHammerOfWrath
 	SpellCode_PaladinHolyStrike
+	SpellCode_PaladinLightsVigil
 )
 
 type SealJudgeCode uint8
@@ -62,8 +63,9 @@ type Paladin struct {
 	spellsJotC       []*core.Spell
 
 	// Twist of Light banks a separate Echo for each replaced seal.
-	sealProcs  map[*core.Aura]sealEchoSource
-	sealEchoes map[int32]*sealEcho
+	sealProcs   map[*core.Aura]sealEchoSource
+	sealEchoes  map[int32]*sealEcho
+	activeVigil *lightsVigilMark
 
 	// Active abilities and shared cooldowns that are externally manipulated.
 	exorcism       []*core.Spell
@@ -123,6 +125,7 @@ func (paladin *Paladin) Initialize() {
 	paladin.registerTemplarsBulwark()
 	paladin.registerConsecration()
 	paladin.registerHolyShock()
+	paladin.registerLightsVigil()
 	paladin.registerExorcism()
 	paladin.registerDivineFavor()
 	paladin.registerHammerOfWrath()

@@ -47,6 +47,8 @@ type Environment struct {
 	// Effects to invoke when the Env is finalized.
 	preFinalizeEffects  []PostFinalizeEffect
 	postFinalizeEffects []PostFinalizeEffect
+	postResetEffects    []func(*Simulation)
+	resetting           bool
 
 	prepullActions []PrepullAction
 }
@@ -260,7 +262,18 @@ func (env *Environment) IsFinalized() bool {
 	return env.State >= Finalized
 }
 
+// Cross-unit providers must wait until every receiver has reset its auras.
+func (env *Environment) RegisterPostResetEffect(effect func(*Simulation)) {
+	if env.IsFinalized() {
+		panic("Cannot register post-reset effect after finalization")
+	}
+	env.postResetEffects = append(env.postResetEffects, effect)
+}
+
+func (env *Environment) IsResetting() bool { return env.resetting }
+
 func (env *Environment) reset(sim *Simulation) {
+	env.resetting = true
 	// Reset primary targets damage taken for tracking health fights.
 	env.Encounter.DamageTaken = 0
 
@@ -271,6 +284,15 @@ func (env *Environment) reset(sim *Simulation) {
 	}
 
 	env.Raid.reset(sim)
+	env.resetting = false
+	for _, effect := range env.postResetEffects {
+		effect(sim)
+	}
+	// Initial health includes cross-unit maximum-health providers, without
+	// recording their reset-time application as combat healing.
+	for _, unit := range env.AllUnits {
+		unit.healthBar.reset(sim)
+	}
 }
 
 // The maximum possible duration for any iteration.

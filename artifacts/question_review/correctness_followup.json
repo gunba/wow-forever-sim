@@ -1,0 +1,2141 @@
+{
+  "baseline_revision": "4235b6feda425a82e76f1af741fa61e87dcabcc8",
+  "source": "https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid",
+  "published": "2026-09-30T19:00:00Z",
+  "client_build": "1.60.1.70009",
+  "state": "correctness replays and native/WASM/browser checks complete",
+  "coverage": {
+    "article_points": 147,
+    "headings": 3,
+    "feature_points": 144,
+    "recent_findings": 20
+  },
+  "counts": {
+    "already-correct": 52,
+    "announced-not-shipped": 4,
+    "corrected": 11,
+    "coverage-gap": 37,
+    "metadata-checked": 15,
+    "partial-coverage": 13,
+    "partial-model": 4,
+    "registered-scope-correct": 2,
+    "scenario-immaterial": 1,
+    "source-conflict": 3,
+    "source-gap": 2
+  },
+  "feature_points": [
+    {
+      "id": "HD-003",
+      "source_point": 3,
+      "disposition": "corrected",
+      "assessment": "Aimed Shot rank one now requires level 20; existing level-60 registration remains.",
+      "code": [
+        "sim/hunter/aimed_shot.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-004",
+      "source_point": 4,
+      "disposition": "already-correct",
+      "assessment": "Aimed/Multi share a timer; Arcane uses a different timer in Forever.",
+      "code": [
+        "sim/hunter/hunter.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-005",
+      "source_point": 5,
+      "disposition": "coverage-gap",
+      "assessment": "Utility/healer/movement coverage is incomplete. No new damage/threat coefficient can be inferred from this absence. Relevance depends on workload; baseline racial damage/resources and form-safe consumes are separate audited features.",
+      "code": [
+        "sim/hunter/hunter.go",
+        "sim/druid/druid.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-006",
+      "source_point": 6,
+      "disposition": "already-correct",
+      "assessment": "Aimed/Multi share a timer; Arcane uses a different timer in Forever.",
+      "code": [
+        "sim/hunter/hunter.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-007",
+      "source_point": 7,
+      "disposition": "already-correct",
+      "assessment": "Beast AP and melee Deadly Aspects path exist at level 60; lower-rank Beast inventory is incomplete.",
+      "code": [
+        "sim/hunter/aspects.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-008",
+      "source_point": 8,
+      "disposition": "already-correct",
+      "assessment": "Combat placement and 30-second base CD are modeled; talent reductions retained.",
+      "code": [
+        "sim/hunter/explosive_trap.go",
+        "sim/hunter/immolation_trap.go",
+        "sim/hunter/freezing_trap.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-009",
+      "source_point": 9,
+      "disposition": "corrected",
+      "assessment": "Forever fire traps share a fire timer; the frost trap has its separate timer. Classic retains its shared timer.",
+      "code": [
+        "sim/hunter/hunter.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-010",
+      "source_point": 10,
+      "disposition": "partial-coverage",
+      "assessment": "Serpent talent damage and external Scorpid miss effect exist; castable Scorpid/Viper stings and their talented duration/CD do not.",
+      "code": [
+        "sim/hunter/serpent_sting.go",
+        "sim/core/debuffs.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-011",
+      "source_point": 11,
+      "disposition": "already-correct",
+      "assessment": "Owner inheritance and player-stat-buff exclusion already modeled; exact individual inheritance ratios remain distinct questions.",
+      "code": [
+        "sim/core/forever_pet_stats.go",
+        "sim/core/buffs.go",
+        "sim/hunter/pet.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-012",
+      "source_point": 12,
+      "disposition": "already-correct",
+      "assessment": "Owner inheritance and player-stat-buff exclusion already modeled; exact individual inheritance ratios remain distinct questions.",
+      "code": [
+        "sim/core/forever_pet_stats.go",
+        "sim/core/buffs.go",
+        "sim/hunter/pet.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-013",
+      "source_point": 13,
+      "disposition": "coverage-gap",
+      "assessment": "Family-specific abilities, Fox and several pet choices are absent or mapped to obsolete family abilities. Need sourced active ranks, resource/CD/scaling and pet baselines, not just ability names.",
+      "code": [
+        "sim/hunter/pet.go",
+        "sim/hunter/pet_abilities.go",
+        "proto/hunter.proto"
+      ],
+      "questions": [
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "HD-014",
+      "source_point": 14,
+      "disposition": "coverage-gap",
+      "assessment": "Family-specific abilities, Fox and several pet choices are absent or mapped to obsolete family abilities. Need sourced active ranks, resource/CD/scaling and pet baselines, not just ability names.",
+      "code": [
+        "sim/hunter/pet.go",
+        "sim/hunter/pet_abilities.go",
+        "proto/hunter.proto"
+      ],
+      "questions": [
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "HD-015",
+      "source_point": 15,
+      "disposition": "partial-coverage",
+      "assessment": "Existing families have Bite/Claw, but complete new family inventory is missing; cannot claim all-family coverage.",
+      "code": [
+        "sim/hunter/pet.go"
+      ],
+      "questions": [
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "HD-016",
+      "source_point": 16,
+      "disposition": "scenario-immaterial",
+      "assessment": "Dash/Dive travel is outside the stationary pet-uptime benchmark; movement scenarios require it.",
+      "code": [
+        "sim/hunter/pet.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-017",
+      "source_point": 17,
+      "disposition": "coverage-gap",
+      "assessment": "Family-specific abilities, Fox and several pet choices are absent or mapped to obsolete family abilities. Need sourced active ranks, resource/CD/scaling and pet baselines, not just ability names.",
+      "code": [
+        "sim/hunter/pet.go",
+        "sim/hunter/pet_abilities.go",
+        "proto/hunter.proto"
+      ],
+      "questions": [
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "HD-018",
+      "source_point": 18,
+      "disposition": "coverage-gap",
+      "assessment": "Family-specific abilities, Fox and several pet choices are absent or mapped to obsolete family abilities. Need sourced active ranks, resource/CD/scaling and pet baselines, not just ability names.",
+      "code": [
+        "sim/hunter/pet.go",
+        "sim/hunter/pet_abilities.go",
+        "proto/hunter.proto"
+      ],
+      "questions": [
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "HD-019",
+      "source_point": 19,
+      "disposition": "coverage-gap",
+      "assessment": "Family-specific abilities, Fox and several pet choices are absent or mapped to obsolete family abilities. Need sourced active ranks, resource/CD/scaling and pet baselines, not just ability names.",
+      "code": [
+        "sim/hunter/pet.go",
+        "sim/hunter/pet_abilities.go",
+        "proto/hunter.proto"
+      ],
+      "questions": [
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "HD-020",
+      "source_point": 20,
+      "disposition": "coverage-gap",
+      "assessment": "Family-specific abilities, Fox and several pet choices are absent or mapped to obsolete family abilities. Need sourced active ranks, resource/CD/scaling and pet baselines, not just ability names.",
+      "code": [
+        "sim/hunter/pet.go",
+        "sim/hunter/pet_abilities.go",
+        "proto/hunter.proto"
+      ],
+      "questions": [
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "HD-021",
+      "source_point": 21,
+      "disposition": "partial-coverage",
+      "assessment": "Carrion-only active Screech ranks, level-dependent AP debuff and nearby coverage are implemented and tested. Lower-level rounding and linked-area avoidance remain qualified.",
+      "code": [
+        "sim/hunter/demoralizing_screech.go"
+      ],
+      "questions": [
+        "HUN-009",
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "HD-022",
+      "source_point": 22,
+      "disposition": "coverage-gap",
+      "assessment": "Family-specific abilities, Fox and several pet choices are absent or mapped to obsolete family abilities. Need sourced active ranks, resource/CD/scaling and pet baselines, not just ability names.",
+      "code": [
+        "sim/hunter/pet.go",
+        "sim/hunter/pet_abilities.go",
+        "proto/hunter.proto"
+      ],
+      "questions": [
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "HD-023",
+      "source_point": 23,
+      "disposition": "coverage-gap",
+      "assessment": "Family-specific abilities, Fox and several pet choices are absent or mapped to obsolete family abilities. Need sourced active ranks, resource/CD/scaling and pet baselines, not just ability names.",
+      "code": [
+        "sim/hunter/pet.go",
+        "sim/hunter/pet_abilities.go",
+        "proto/hunter.proto"
+      ],
+      "questions": [
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "HD-024",
+      "source_point": 24,
+      "disposition": "coverage-gap",
+      "assessment": "Family-specific abilities, Fox and several pet choices are absent or mapped to obsolete family abilities. Need sourced active ranks, resource/CD/scaling and pet baselines, not just ability names.",
+      "code": [
+        "sim/hunter/pet.go",
+        "sim/hunter/pet_abilities.go",
+        "proto/hunter.proto"
+      ],
+      "questions": [
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "HD-025",
+      "source_point": 25,
+      "disposition": "coverage-gap",
+      "assessment": "Family-specific abilities, Fox and several pet choices are absent or mapped to obsolete family abilities. Need sourced active ranks, resource/CD/scaling and pet baselines, not just ability names.",
+      "code": [
+        "sim/hunter/pet.go",
+        "sim/hunter/pet_abilities.go",
+        "proto/hunter.proto"
+      ],
+      "questions": [
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "HD-026",
+      "source_point": 26,
+      "disposition": "coverage-gap",
+      "assessment": "Family-specific abilities, Fox and several pet choices are absent or mapped to obsolete family abilities. Need sourced active ranks, resource/CD/scaling and pet baselines, not just ability names.",
+      "code": [
+        "sim/hunter/pet.go",
+        "sim/hunter/pet_abilities.go",
+        "proto/hunter.proto"
+      ],
+      "questions": [
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "HD-027",
+      "source_point": 27,
+      "disposition": "coverage-gap",
+      "assessment": "Family-specific abilities, Fox and several pet choices are absent or mapped to obsolete family abilities. Need sourced active ranks, resource/CD/scaling and pet baselines, not just ability names.",
+      "code": [
+        "sim/hunter/pet.go",
+        "sim/hunter/pet_abilities.go",
+        "proto/hunter.proto"
+      ],
+      "questions": [
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "HD-028",
+      "source_point": 28,
+      "disposition": "already-correct",
+      "assessment": "Scorpid poison and Lightning Breath are implemented; rank values have separate captured-source checks.",
+      "code": [
+        "sim/hunter/pet_abilities.go"
+      ],
+      "questions": [
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "HD-029",
+      "source_point": 29,
+      "disposition": "coverage-gap",
+      "assessment": "Family-specific abilities, Fox and several pet choices are absent or mapped to obsolete family abilities. Need sourced active ranks, resource/CD/scaling and pet baselines, not just ability names.",
+      "code": [
+        "sim/hunter/pet.go",
+        "sim/hunter/pet_abilities.go",
+        "proto/hunter.proto"
+      ],
+      "questions": [
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "HD-030",
+      "source_point": 30,
+      "disposition": "coverage-gap",
+      "assessment": "Family-specific abilities, Fox and several pet choices are absent or mapped to obsolete family abilities. Need sourced active ranks, resource/CD/scaling and pet baselines, not just ability names.",
+      "code": [
+        "sim/hunter/pet.go",
+        "sim/hunter/pet_abilities.go",
+        "proto/hunter.proto"
+      ],
+      "questions": [
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "HD-031",
+      "source_point": 31,
+      "disposition": "coverage-gap",
+      "assessment": "Family-specific abilities, Fox and several pet choices are absent or mapped to obsolete family abilities. Need sourced active ranks, resource/CD/scaling and pet baselines, not just ability names.",
+      "code": [
+        "sim/hunter/pet.go",
+        "sim/hunter/pet_abilities.go",
+        "proto/hunter.proto"
+      ],
+      "questions": [
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "HD-032",
+      "source_point": 32,
+      "disposition": "already-correct",
+      "assessment": "Scorpid poison and Lightning Breath are implemented; rank values have separate captured-source checks.",
+      "code": [
+        "sim/hunter/pet_abilities.go"
+      ],
+      "questions": [
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "HD-033",
+      "source_point": 33,
+      "disposition": "coverage-gap",
+      "assessment": "Family-specific abilities, Fox and several pet choices are absent or mapped to obsolete family abilities. Need sourced active ranks, resource/CD/scaling and pet baselines, not just ability names.",
+      "code": [
+        "sim/hunter/pet.go",
+        "sim/hunter/pet_abilities.go",
+        "proto/hunter.proto"
+      ],
+      "questions": [
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "HD-034",
+      "source_point": 34,
+      "disposition": "already-correct",
+      "assessment": "Beast AP and melee Deadly Aspects path exist at level 60; lower-rank Beast inventory is incomplete.",
+      "code": [
+        "sim/hunter/aspects.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-035",
+      "source_point": 35,
+      "disposition": "corrected",
+      "assessment": "Endurance Training applies the sourced Health and Armor rank modifiers; native stat controls pass.",
+      "code": [
+        "sim/hunter/talents.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-036",
+      "source_point": 36,
+      "disposition": "already-correct",
+      "assessment": "Current damage/resource path has the stated feature. Existing coefficient, proc or guardian uncertainties are not closed by general descriptions.",
+      "code": [
+        "sim/hunter/talents.go",
+        "sim/hunter/serpent_sting.go",
+        "sim/hunter/sniper_shot.go",
+        "sim/hunter/strider_kick.go",
+        "sim/hunter/lacerating_strikes.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-037",
+      "source_point": 37,
+      "disposition": "coverage-gap",
+      "assessment": "Monkey defensive aspect/pet share and Mend Pet are not registered; relevant when Hunter/pet incoming damage/healing is modeled.",
+      "code": [
+        "sim/hunter/aspects.go",
+        "sim/hunter/hunter.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-038",
+      "source_point": 38,
+      "disposition": "metadata-checked",
+      "assessment": "Current location/rank/prerequisite data were inspected. Preserve stable field/string mappings; naming differences and announced tree changes must not shift saved talent strings silently.",
+      "code": [
+        "ui/core/talents/trees/hunter.json",
+        "ui/core/talents/trees/druid.json"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-039",
+      "source_point": 39,
+      "disposition": "partial-model",
+      "assessment": "Impact, shared Arcane timer, duration and talent modifiers exist. One refreshing DoT substitutes for a guardian; cannot retain two concurrent Hawks or validate actual guardian damage/crit with this approximation.",
+      "code": [
+        "sim/hunter/summon_hawk.go",
+        "sim/hunter/talents.go"
+      ],
+      "questions": [
+        "HUN-004"
+      ]
+    },
+    {
+      "id": "HD-040",
+      "source_point": 40,
+      "disposition": "coverage-gap",
+      "assessment": "Monkey defensive aspect/pet share and Mend Pet are not registered; relevant when Hunter/pet incoming damage/healing is modeled.",
+      "code": [
+        "sim/hunter/aspects.go",
+        "sim/hunter/hunter.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-041",
+      "source_point": 41,
+      "disposition": "partial-model",
+      "assessment": "Impact, shared Arcane timer, duration and talent modifiers exist. One refreshing DoT substitutes for a guardian; cannot retain two concurrent Hawks or validate actual guardian damage/crit with this approximation.",
+      "code": [
+        "sim/hunter/summon_hawk.go",
+        "sim/hunter/talents.go"
+      ],
+      "questions": [
+        "HUN-004"
+      ]
+    },
+    {
+      "id": "HD-042",
+      "source_point": 42,
+      "disposition": "partial-model",
+      "assessment": "Impact, shared Arcane timer, duration and talent modifiers exist. One refreshing DoT substitutes for a guardian; cannot retain two concurrent Hawks or validate actual guardian damage/crit with this approximation.",
+      "code": [
+        "sim/hunter/summon_hawk.go",
+        "sim/hunter/talents.go"
+      ],
+      "questions": [
+        "HUN-004"
+      ]
+    },
+    {
+      "id": "HD-043",
+      "source_point": 43,
+      "disposition": "corrected",
+      "assessment": "Intimidation grants both attack and spell crit for the consuming pet attack, rather than only melee crit. Native consumption controls pass.",
+      "code": [
+        "sim/hunter/talents.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-044",
+      "source_point": 44,
+      "disposition": "already-correct",
+      "assessment": "Current damage/resource path has the stated feature. Existing coefficient, proc or guardian uncertainties are not closed by general descriptions.",
+      "code": [
+        "sim/hunter/talents.go",
+        "sim/hunter/serpent_sting.go",
+        "sim/hunter/sniper_shot.go",
+        "sim/hunter/strider_kick.go",
+        "sim/hunter/lacerating_strikes.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-045",
+      "source_point": 45,
+      "disposition": "metadata-checked",
+      "assessment": "Current location/rank/prerequisite data were inspected. Preserve stable field/string mappings; naming differences and announced tree changes must not shift saved talent strings silently.",
+      "code": [
+        "ui/core/talents/trees/hunter.json",
+        "ui/core/talents/trees/druid.json"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-046",
+      "source_point": 46,
+      "disposition": "already-correct",
+      "assessment": "Current damage/resource path has the stated feature. Existing coefficient, proc or guardian uncertainties are not closed by general descriptions.",
+      "code": [
+        "sim/hunter/talents.go",
+        "sim/hunter/serpent_sting.go",
+        "sim/hunter/sniper_shot.go",
+        "sim/hunter/strider_kick.go",
+        "sim/hunter/lacerating_strikes.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-047",
+      "source_point": 47,
+      "disposition": "partial-coverage",
+      "assessment": "Serpent talent damage and external Scorpid miss effect exist; castable Scorpid/Viper stings and their talented duration/CD do not.",
+      "code": [
+        "sim/hunter/serpent_sting.go",
+        "sim/core/debuffs.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-048",
+      "source_point": 48,
+      "disposition": "already-correct",
+      "assessment": "Current damage/resource path has the stated feature. Existing coefficient, proc or guardian uncertainties are not closed by general descriptions.",
+      "code": [
+        "sim/hunter/talents.go",
+        "sim/hunter/serpent_sting.go",
+        "sim/hunter/sniper_shot.go",
+        "sim/hunter/strider_kick.go",
+        "sim/hunter/lacerating_strikes.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-049",
+      "source_point": 49,
+      "disposition": "already-correct",
+      "assessment": "Current damage/resource path has the stated feature. Existing coefficient, proc or guardian uncertainties are not closed by general descriptions.",
+      "code": [
+        "sim/hunter/talents.go",
+        "sim/hunter/serpent_sting.go",
+        "sim/hunter/sniper_shot.go",
+        "sim/hunter/strider_kick.go",
+        "sim/hunter/lacerating_strikes.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-050",
+      "source_point": 50,
+      "disposition": "partial-coverage",
+      "assessment": "Rapid Fire CD and Serpent-triggered Spirit regeneration exist. Kill-triggered Rapid Killing and enhanced regeneration during it are absent; no adds die in current reference encounter.",
+      "code": [
+        "sim/hunter/rapid_fire.go",
+        "sim/hunter/talents.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-051",
+      "source_point": 51,
+      "disposition": "already-correct",
+      "assessment": "Current damage/resource path has the stated feature. Existing coefficient, proc or guardian uncertainties are not closed by general descriptions.",
+      "code": [
+        "sim/hunter/talents.go",
+        "sim/hunter/serpent_sting.go",
+        "sim/hunter/sniper_shot.go",
+        "sim/hunter/strider_kick.go",
+        "sim/hunter/lacerating_strikes.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-052",
+      "source_point": 52,
+      "disposition": "already-correct",
+      "assessment": "Current damage/resource path has the stated feature. Existing coefficient, proc or guardian uncertainties are not closed by general descriptions.",
+      "code": [
+        "sim/hunter/talents.go",
+        "sim/hunter/serpent_sting.go",
+        "sim/hunter/sniper_shot.go",
+        "sim/hunter/strider_kick.go",
+        "sim/hunter/lacerating_strikes.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-053",
+      "source_point": 53,
+      "disposition": "partial-coverage",
+      "assessment": "Relevant damage/CD portions exist; range changes, trap rooting, Feign Death and Deterrence utility are incomplete.",
+      "code": [
+        "ui/core/talents/trees/hunter.json",
+        "sim/hunter/sniper_shot.go",
+        "sim/hunter/talents.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-054",
+      "source_point": 54,
+      "disposition": "metadata-checked",
+      "assessment": "Current location/rank/prerequisite data were inspected. Preserve stable field/string mappings; naming differences and announced tree changes must not shift saved talent strings silently.",
+      "code": [
+        "ui/core/talents/trees/hunter.json",
+        "ui/core/talents/trees/druid.json"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-055",
+      "source_point": 55,
+      "disposition": "partial-coverage",
+      "assessment": "Rapid Fire CD and Serpent-triggered Spirit regeneration exist. Kill-triggered Rapid Killing and enhanced regeneration during it are absent; no adds die in current reference encounter.",
+      "code": [
+        "sim/hunter/rapid_fire.go",
+        "sim/hunter/talents.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-056",
+      "source_point": 56,
+      "disposition": "already-correct",
+      "assessment": "Current damage/resource path has the stated feature. Existing coefficient, proc or guardian uncertainties are not closed by general descriptions.",
+      "code": [
+        "sim/hunter/talents.go",
+        "sim/hunter/serpent_sting.go",
+        "sim/hunter/sniper_shot.go",
+        "sim/hunter/strider_kick.go",
+        "sim/hunter/lacerating_strikes.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-057",
+      "source_point": 57,
+      "disposition": "partial-coverage",
+      "assessment": "Relevant damage/CD portions exist; range changes, trap rooting, Feign Death and Deterrence utility are incomplete.",
+      "code": [
+        "ui/core/talents/trees/hunter.json",
+        "sim/hunter/sniper_shot.go",
+        "sim/hunter/talents.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-058",
+      "source_point": 58,
+      "disposition": "already-correct",
+      "assessment": "Current damage/resource path has the stated feature. Existing coefficient, proc or guardian uncertainties are not closed by general descriptions.",
+      "code": [
+        "sim/hunter/talents.go",
+        "sim/hunter/serpent_sting.go",
+        "sim/hunter/sniper_shot.go",
+        "sim/hunter/strider_kick.go",
+        "sim/hunter/lacerating_strikes.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-059",
+      "source_point": 59,
+      "disposition": "partial-coverage",
+      "assessment": "Relevant damage/CD portions exist; range changes, trap rooting, Feign Death and Deterrence utility are incomplete.",
+      "code": [
+        "ui/core/talents/trees/hunter.json",
+        "sim/hunter/sniper_shot.go",
+        "sim/hunter/talents.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-060",
+      "source_point": 60,
+      "disposition": "source-conflict",
+      "assessment": "The complete registered crit family is corrected locally. The article\u2019s melee-damage redesign still conflicts with captured 70009 crit text/effect/curve; neither version is silently combined with the other.",
+      "code": [
+        "sim/hunter/raptor_strike.go",
+        "sim/hunter/mongoose_bite.go",
+        "sim/hunter/talents.go",
+        "ui/core/talents/trees/hunter.json"
+      ],
+      "questions": [
+        "HUN-012"
+      ]
+    },
+    {
+      "id": "HD-061",
+      "source_point": 61,
+      "disposition": "metadata-checked",
+      "assessment": "Current location/rank/prerequisite data were inspected. Preserve stable field/string mappings; naming differences and announced tree changes must not shift saved talent strings silently.",
+      "code": [
+        "ui/core/talents/trees/hunter.json",
+        "ui/core/talents/trees/druid.json"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-062",
+      "source_point": 62,
+      "disposition": "metadata-checked",
+      "assessment": "Current location/rank/prerequisite data were inspected. Preserve stable field/string mappings; naming differences and announced tree changes must not shift saved talent strings silently.",
+      "code": [
+        "ui/core/talents/trees/hunter.json",
+        "ui/core/talents/trees/druid.json"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-063",
+      "source_point": 63,
+      "disposition": "already-correct",
+      "assessment": "Current damage/resource path has the stated feature. Existing coefficient, proc or guardian uncertainties are not closed by general descriptions.",
+      "code": [
+        "sim/hunter/talents.go",
+        "sim/hunter/serpent_sting.go",
+        "sim/hunter/sniper_shot.go",
+        "sim/hunter/strider_kick.go",
+        "sim/hunter/lacerating_strikes.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-064",
+      "source_point": 64,
+      "disposition": "partial-coverage",
+      "assessment": "Relevant damage/CD portions exist; range changes, trap rooting, Feign Death and Deterrence utility are incomplete.",
+      "code": [
+        "ui/core/talents/trees/hunter.json",
+        "sim/hunter/sniper_shot.go",
+        "sim/hunter/talents.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-065",
+      "source_point": 65,
+      "disposition": "already-correct",
+      "assessment": "Current damage/resource path has the stated feature. Existing coefficient, proc or guardian uncertainties are not closed by general descriptions.",
+      "code": [
+        "sim/hunter/talents.go",
+        "sim/hunter/serpent_sting.go",
+        "sim/hunter/sniper_shot.go",
+        "sim/hunter/strider_kick.go",
+        "sim/hunter/lacerating_strikes.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-066",
+      "source_point": 66,
+      "disposition": "metadata-checked",
+      "assessment": "Current location/rank/prerequisite data were inspected. Preserve stable field/string mappings; naming differences and announced tree changes must not shift saved talent strings silently.",
+      "code": [
+        "ui/core/talents/trees/hunter.json",
+        "ui/core/talents/trees/druid.json"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-067",
+      "source_point": 67,
+      "disposition": "already-correct",
+      "assessment": "Current damage/resource path has the stated feature. Existing coefficient, proc or guardian uncertainties are not closed by general descriptions.",
+      "code": [
+        "sim/hunter/talents.go",
+        "sim/hunter/serpent_sting.go",
+        "sim/hunter/sniper_shot.go",
+        "sim/hunter/strider_kick.go",
+        "sim/hunter/lacerating_strikes.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-068",
+      "source_point": 68,
+      "disposition": "corrected",
+      "assessment": "Mongoose can open its first dodge window. Expose Prey requires the Hunter\u2019s own Mark, with explicit cast/refresh duties in the melee-Hunter defaults.",
+      "code": [
+        "sim/hunter/hunters_mark.go",
+        "sim/hunter/mongoose_bite.go"
+      ],
+      "questions": [
+        "HUN-008",
+        "HUN-011"
+      ]
+    },
+    {
+      "id": "HD-069",
+      "source_point": 69,
+      "disposition": "partial-coverage",
+      "assessment": "Relevant damage/CD portions exist; range changes, trap rooting, Feign Death and Deterrence utility are incomplete.",
+      "code": [
+        "ui/core/talents/trees/hunter.json",
+        "sim/hunter/sniper_shot.go",
+        "sim/hunter/talents.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-070",
+      "source_point": 70,
+      "disposition": "already-correct",
+      "assessment": "Current damage/resource path has the stated feature. Existing coefficient, proc or guardian uncertainties are not closed by general descriptions.",
+      "code": [
+        "sim/hunter/talents.go",
+        "sim/hunter/serpent_sting.go",
+        "sim/hunter/sniper_shot.go",
+        "sim/hunter/strider_kick.go",
+        "sim/hunter/lacerating_strikes.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-071",
+      "source_point": 71,
+      "disposition": "already-correct",
+      "assessment": "Current damage/resource path has the stated feature. Existing coefficient, proc or guardian uncertainties are not closed by general descriptions.",
+      "code": [
+        "sim/hunter/talents.go",
+        "sim/hunter/serpent_sting.go",
+        "sim/hunter/sniper_shot.go",
+        "sim/hunter/strider_kick.go",
+        "sim/hunter/lacerating_strikes.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-072",
+      "source_point": 72,
+      "disposition": "already-correct",
+      "assessment": "Current damage/resource path has the stated feature. Existing coefficient, proc or guardian uncertainties are not closed by general descriptions.",
+      "code": [
+        "sim/hunter/talents.go",
+        "sim/hunter/serpent_sting.go",
+        "sim/hunter/sniper_shot.go",
+        "sim/hunter/strider_kick.go",
+        "sim/hunter/lacerating_strikes.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-074",
+      "source_point": 74,
+      "disposition": "already-correct",
+      "assessment": "Potion/Tea form use exists; form-preserving legality needs direct cast-path regression, not only autocooldown selection.",
+      "code": [
+        "sim/core/consumes.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-075",
+      "source_point": 75,
+      "disposition": "corrected",
+      "assessment": "Ordinary engineering bombs reject explicit APL casts in shapeshifted forms; automatic eligibility is not the only guard. No unsupported form-safe recipe is invented.",
+      "code": [
+        "sim/druid/druid.go"
+      ],
+      "questions": [
+        "SCEN-007"
+      ]
+    },
+    {
+      "id": "HD-076",
+      "source_point": 76,
+      "disposition": "partial-coverage",
+      "assessment": "Form eligibility is supported; weapon DPS, oils, stones and striking enchants now reach form weapons. This does not establish every conditional proc rate or swap rule.",
+      "code": [
+        "sim/druid/forms.go",
+        "sim/core/item_effects.go"
+      ],
+      "questions": [
+        "DRU-003",
+        "DRU-011"
+      ]
+    },
+    {
+      "id": "HD-077",
+      "source_point": 77,
+      "disposition": "corrected",
+      "assessment": "Equipped weapon DPS enters the fixed-speed Cat/Bear weapon. AP and flat damage are not duplicated; rebuild/swap controls pass. Exact variance remains a disclosed convention.",
+      "code": [
+        "sim/druid/forms.go"
+      ],
+      "questions": [
+        "DRU-003"
+      ]
+    },
+    {
+      "id": "HD-078",
+      "source_point": 78,
+      "disposition": "coverage-gap",
+      "assessment": "Utility/healer/movement coverage is incomplete. No new damage/threat coefficient can be inferred from this absence. Relevance depends on workload; baseline racial damage/resources and form-safe consumes are separate audited features.",
+      "code": [
+        "sim/hunter/hunter.go",
+        "sim/druid/druid.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-079",
+      "source_point": 79,
+      "disposition": "coverage-gap",
+      "assessment": "Utility/healer/movement coverage is incomplete. No new damage/threat coefficient can be inferred from this absence. Relevance depends on workload; baseline racial damage/resources and form-safe consumes are separate audited features.",
+      "code": [
+        "sim/hunter/hunter.go",
+        "sim/druid/druid.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-080",
+      "source_point": 80,
+      "disposition": "announced-not-shipped",
+      "assessment": "Shifting Power, its improvement and Shredding row move are expressly not in beta yet. Replace Tiger Fury/King of Jungle and migrate exact APL/talents only after active IDs, ranks, mana cost and new tree data arrive.",
+      "code": [
+        "sim/druid/tigers_fury.go",
+        "ui/core/talents/trees/druid.json",
+        "proto/druid.proto"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-081",
+      "source_point": 81,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-082",
+      "source_point": 82,
+      "disposition": "coverage-gap",
+      "assessment": "Utility/healer/movement coverage is incomplete. No new damage/threat coefficient can be inferred from this absence. Relevance depends on workload; baseline racial damage/resources and form-safe consumes are separate audited features.",
+      "code": [
+        "sim/hunter/hunter.go",
+        "sim/druid/druid.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-083",
+      "source_point": 83,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-084",
+      "source_point": 84,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-085",
+      "source_point": 85,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-086",
+      "source_point": 86,
+      "disposition": "coverage-gap",
+      "assessment": "Utility/healer/movement coverage is incomplete. No new damage/threat coefficient can be inferred from this absence. Relevance depends on workload; baseline racial damage/resources and form-safe consumes are separate audited features.",
+      "code": [
+        "sim/hunter/hunter.go",
+        "sim/druid/druid.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-087",
+      "source_point": 87,
+      "disposition": "corrected",
+      "assessment": "Lacerate direct damage uses the existing stack count before applying its new stack; the first application does not receive a pre-existing-stack bonus.",
+      "code": [
+        "sim/druid/lacerate.go"
+      ],
+      "questions": [
+        "DRU-006"
+      ]
+    },
+    {
+      "id": "HD-088",
+      "source_point": 88,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-089",
+      "source_point": 89,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-090",
+      "source_point": 90,
+      "disposition": "source-gap",
+      "assessment": "Three-target Bear Swipe exists but has no AP coefficient. Official confirms AP scaling, not its numerical value; do not insert a SoD/private-server value.",
+      "code": [
+        "sim/druid/swipe.go"
+      ],
+      "questions": [
+        "DRU-013"
+      ]
+    },
+    {
+      "id": "HD-091",
+      "source_point": 91,
+      "disposition": "coverage-gap",
+      "assessment": "Utility/healer/movement coverage is incomplete. No new damage/threat coefficient can be inferred from this absence. Relevance depends on workload; baseline racial damage/resources and form-safe consumes are separate audited features.",
+      "code": [
+        "sim/hunter/hunter.go",
+        "sim/druid/druid.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-092",
+      "source_point": 92,
+      "disposition": "coverage-gap",
+      "assessment": "Utility/healer/movement coverage is incomplete. No new damage/threat coefficient can be inferred from this absence. Relevance depends on workload; baseline racial damage/resources and form-safe consumes are separate audited features.",
+      "code": [
+        "sim/hunter/hunter.go",
+        "sim/druid/druid.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-093",
+      "source_point": 93,
+      "disposition": "corrected",
+      "assessment": "Barkskin is registered for supported Cat/Moonkin/Bear paths, with form-safe casting, timing, mitigation and caster-side pushback protection.",
+      "code": [
+        "sim/druid/barkskin.go"
+      ],
+      "questions": [
+        "SCEN-012"
+      ]
+    },
+    {
+      "id": "HD-094",
+      "source_point": 94,
+      "disposition": "coverage-gap",
+      "assessment": "Utility/healer/movement coverage is incomplete. No new damage/threat coefficient can be inferred from this absence. Relevance depends on workload; baseline racial damage/resources and form-safe consumes are separate audited features.",
+      "code": [
+        "sim/hunter/hunter.go",
+        "sim/druid/druid.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-095",
+      "source_point": 95,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-096",
+      "source_point": 96,
+      "disposition": "source-conflict",
+      "assessment": "Article says resource-free and six-second CD. Captured 70009 base spell 9907 still costs mana with no CD. Separate intended published rule from measured current beta; verify form/script versus newer-build behavior.",
+      "code": [
+        "sim/druid/faerie_fire.go"
+      ],
+      "questions": [
+        "DRU-014"
+      ]
+    },
+    {
+      "id": "HD-097",
+      "source_point": 97,
+      "disposition": "coverage-gap",
+      "assessment": "Utility/healer/movement coverage is incomplete. No new damage/threat coefficient can be inferred from this absence. Relevance depends on workload; baseline racial damage/resources and form-safe consumes are separate audited features.",
+      "code": [
+        "sim/hunter/hunter.go",
+        "sim/druid/druid.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-098",
+      "source_point": 98,
+      "disposition": "source-gap",
+      "assessment": "Provider SP scaling is official, but coefficient is not. Preserve base and do not substitute recipient SP for an external caster.",
+      "code": [
+        "sim/core/buffs.go"
+      ],
+      "questions": [
+        "PAL-010"
+      ]
+    },
+    {
+      "id": "HD-099",
+      "source_point": 99,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-100",
+      "source_point": 100,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-101",
+      "source_point": 101,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-102",
+      "source_point": 102,
+      "disposition": "partial-coverage",
+      "assessment": "Periodic damage bonus exists; healing portions are outside implemented healer coverage.",
+      "code": [
+        "sim/druid/talents.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-103",
+      "source_point": 103,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-104",
+      "source_point": 104,
+      "disposition": "metadata-checked",
+      "assessment": "Current location/rank/prerequisite data were inspected. Preserve stable field/string mappings; naming differences and announced tree changes must not shift saved talent strings silently.",
+      "code": [
+        "ui/core/talents/trees/hunter.json",
+        "ui/core/talents/trees/druid.json"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-105",
+      "source_point": 105,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-106",
+      "source_point": 106,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-107",
+      "source_point": 107,
+      "disposition": "coverage-gap",
+      "assessment": "Utility/healer/movement coverage is incomplete. No new damage/threat coefficient can be inferred from this absence. Relevance depends on workload; baseline racial damage/resources and form-safe consumes are separate audited features.",
+      "code": [
+        "sim/hunter/hunter.go",
+        "sim/druid/druid.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-108",
+      "source_point": 108,
+      "disposition": "metadata-checked",
+      "assessment": "Current location/rank/prerequisite data were inspected. Preserve stable field/string mappings; naming differences and announced tree changes must not shift saved talent strings silently.",
+      "code": [
+        "ui/core/talents/trees/hunter.json",
+        "ui/core/talents/trees/druid.json"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-109",
+      "source_point": 109,
+      "disposition": "metadata-checked",
+      "assessment": "Current location/rank/prerequisite data were inspected. Preserve stable field/string mappings; naming differences and announced tree changes must not shift saved talent strings silently.",
+      "code": [
+        "ui/core/talents/trees/hunter.json",
+        "ui/core/talents/trees/druid.json"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-110",
+      "source_point": 110,
+      "disposition": "registered-scope-correct",
+      "assessment": "Vengeance matches the registered damaging spell family, including Hurricane. Roots remains a separate spell-coverage gap; unlearnable Starfall records do not automatically become player spells.",
+      "code": [
+        "sim/druid/talents.go"
+      ],
+      "questions": [
+        "DATA-013"
+      ]
+    },
+    {
+      "id": "HD-111",
+      "source_point": 111,
+      "disposition": "coverage-gap",
+      "assessment": "Utility/healer/movement coverage is incomplete. No new damage/threat coefficient can be inferred from this absence. Relevance depends on workload; baseline racial damage/resources and form-safe consumes are separate audited features.",
+      "code": [
+        "sim/hunter/hunter.go",
+        "sim/druid/druid.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-112",
+      "source_point": 112,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-113",
+      "source_point": 113,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-114",
+      "source_point": 114,
+      "disposition": "registered-scope-correct",
+      "assessment": "Captured Moonfury effect 694153 limits its damage modifier to Arcane/Nature. No physical-damage modifier is inferred from broader article wording.",
+      "code": [
+        "sim/druid/talents.go"
+      ],
+      "questions": [
+        "DONE-007"
+      ]
+    },
+    {
+      "id": "HD-115",
+      "source_point": 115,
+      "disposition": "partial-model",
+      "assessment": "Exclusive global crit aura is already correct. Double Omen chance is not modeled; base chance is an unresolved 100%-wrapper assumption, so doubling it cannot establish real proc frequency. Non-healing spell coverage is incomplete.",
+      "code": [
+        "sim/druid/forms.go",
+        "sim/druid/omen_of_clarity.go",
+        "sim/core/buffs.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-116",
+      "source_point": 116,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-117",
+      "source_point": 117,
+      "disposition": "metadata-checked",
+      "assessment": "Current location/rank/prerequisite data were inspected. Preserve stable field/string mappings; naming differences and announced tree changes must not shift saved talent strings silently.",
+      "code": [
+        "ui/core/talents/trees/hunter.json",
+        "ui/core/talents/trees/druid.json"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-118",
+      "source_point": 118,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-119",
+      "source_point": 119,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-120",
+      "source_point": 120,
+      "disposition": "coverage-gap",
+      "assessment": "Utility/healer/movement coverage is incomplete. No new damage/threat coefficient can be inferred from this absence. Relevance depends on workload; baseline racial damage/resources and form-safe consumes are separate audited features.",
+      "code": [
+        "sim/hunter/hunter.go",
+        "sim/druid/druid.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-121",
+      "source_point": 121,
+      "disposition": "corrected",
+      "assessment": "Thick Hide uses the exact sourced Defense coefficient at each rank, not a linear extrapolation.",
+      "code": [
+        "sim/druid/talents.go"
+      ],
+      "questions": [
+        "DRU-004"
+      ]
+    },
+    {
+      "id": "HD-122",
+      "source_point": 122,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-123",
+      "source_point": 123,
+      "disposition": "coverage-gap",
+      "assessment": "Utility/healer/movement coverage is incomplete. No new damage/threat coefficient can be inferred from this absence. Relevance depends on workload; baseline racial damage/resources and form-safe consumes are separate audited features.",
+      "code": [
+        "sim/hunter/hunter.go",
+        "sim/druid/druid.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-124",
+      "source_point": 124,
+      "disposition": "metadata-checked",
+      "assessment": "Current location/rank/prerequisite data were inspected. Preserve stable field/string mappings; naming differences and announced tree changes must not shift saved talent strings silently.",
+      "code": [
+        "ui/core/talents/trees/hunter.json",
+        "ui/core/talents/trees/druid.json"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-125",
+      "source_point": 125,
+      "disposition": "announced-not-shipped",
+      "assessment": "Shifting Power, its improvement and Shredding row move are expressly not in beta yet. Replace Tiger Fury/King of Jungle and migrate exact APL/talents only after active IDs, ranks, mana cost and new tree data arrive.",
+      "code": [
+        "sim/druid/tigers_fury.go",
+        "ui/core/talents/trees/druid.json",
+        "proto/druid.proto"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-126",
+      "source_point": 126,
+      "disposition": "announced-not-shipped",
+      "assessment": "Shifting Power, its improvement and Shredding row move are expressly not in beta yet. Replace Tiger Fury/King of Jungle and migrate exact APL/talents only after active IDs, ranks, mana cost and new tree data arrive.",
+      "code": [
+        "sim/druid/tigers_fury.go",
+        "ui/core/talents/trees/druid.json",
+        "proto/druid.proto"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-127",
+      "source_point": 127,
+      "disposition": "already-correct",
+      "assessment": "Primal Bite damage/Rage and Berserk cleave/reset/duration exist; threat factor remains borrowed. Captured Berserk family supports builders, not a new finisher crit bonus from broad article wording.",
+      "code": [
+        "sim/druid/mangle.go",
+        "sim/druid/berserk.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-128",
+      "source_point": 128,
+      "disposition": "metadata-checked",
+      "assessment": "Current location/rank/prerequisite data were inspected. Preserve stable field/string mappings; naming differences and announced tree changes must not shift saved talent strings silently.",
+      "code": [
+        "ui/core/talents/trees/hunter.json",
+        "ui/core/talents/trees/druid.json"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-129",
+      "source_point": 129,
+      "disposition": "announced-not-shipped",
+      "assessment": "Shifting Power, its improvement and Shredding row move are expressly not in beta yet. Replace Tiger Fury/King of Jungle and migrate exact APL/talents only after active IDs, ranks, mana cost and new tree data arrive.",
+      "code": [
+        "sim/druid/tigers_fury.go",
+        "ui/core/talents/trees/druid.json",
+        "proto/druid.proto"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-130",
+      "source_point": 130,
+      "disposition": "metadata-checked",
+      "assessment": "Current location/rank/prerequisite data were inspected. Preserve stable field/string mappings; naming differences and announced tree changes must not shift saved talent strings silently.",
+      "code": [
+        "ui/core/talents/trees/hunter.json",
+        "ui/core/talents/trees/druid.json"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-131",
+      "source_point": 131,
+      "disposition": "source-conflict",
+      "assessment": "Article calls row-five crit-damage talent Predatory Strikes; current tree also has old row-four AP Predatory Strikes and row-five Predatory Instincts. Verify forthcoming tree rather than changing allocation offsets or stacking two crit talents.",
+      "code": [
+        "ui/core/talents/trees/druid.json",
+        "sim/druid/talents.go",
+        "sim/druid/forms.go"
+      ],
+      "questions": [
+        "DATA-014"
+      ]
+    },
+    {
+      "id": "HD-132",
+      "source_point": 132,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-133",
+      "source_point": 133,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-134",
+      "source_point": 134,
+      "disposition": "already-correct",
+      "assessment": "Primal Bite damage/Rage and Berserk cleave/reset/duration exist; threat factor remains borrowed. Captured Berserk family supports builders, not a new finisher crit bonus from broad article wording.",
+      "code": [
+        "sim/druid/mangle.go",
+        "sim/druid/berserk.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-135",
+      "source_point": 135,
+      "disposition": "coverage-gap",
+      "assessment": "Utility/healer/movement coverage is incomplete. No new damage/threat coefficient can be inferred from this absence. Relevance depends on workload; baseline racial damage/resources and form-safe consumes are separate audited features.",
+      "code": [
+        "sim/hunter/hunter.go",
+        "sim/druid/druid.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-136",
+      "source_point": 136,
+      "disposition": "corrected",
+      "assessment": "Furor carries capped saved Energy and elapsed regeneration, clears the carryover on Bear entry, and does not grant flat free Energy on each shift. Native carryover/rank/reset controls pass.",
+      "code": [
+        "sim/druid/forms.go"
+      ],
+      "questions": [
+        "DRU-002"
+      ]
+    },
+    {
+      "id": "HD-137",
+      "source_point": 137,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-138",
+      "source_point": 138,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-139",
+      "source_point": 139,
+      "disposition": "metadata-checked",
+      "assessment": "Current location/rank/prerequisite data were inspected. Preserve stable field/string mappings; naming differences and announced tree changes must not shift saved talent strings silently.",
+      "code": [
+        "ui/core/talents/trees/hunter.json",
+        "ui/core/talents/trees/druid.json"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-140",
+      "source_point": 140,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-141",
+      "source_point": 141,
+      "disposition": "coverage-gap",
+      "assessment": "Utility/healer/movement coverage is incomplete. No new damage/threat coefficient can be inferred from this absence. Relevance depends on workload; baseline racial damage/resources and form-safe consumes are separate audited features.",
+      "code": [
+        "sim/hunter/hunter.go",
+        "sim/druid/druid.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-142",
+      "source_point": 142,
+      "disposition": "coverage-gap",
+      "assessment": "Utility/healer/movement coverage is incomplete. No new damage/threat coefficient can be inferred from this absence. Relevance depends on workload; baseline racial damage/resources and form-safe consumes are separate audited features.",
+      "code": [
+        "sim/hunter/hunter.go",
+        "sim/druid/druid.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-143",
+      "source_point": 143,
+      "disposition": "coverage-gap",
+      "assessment": "Utility/healer/movement coverage is incomplete. No new damage/threat coefficient can be inferred from this absence. Relevance depends on workload; baseline racial damage/resources and form-safe consumes are separate audited features.",
+      "code": [
+        "sim/hunter/hunter.go",
+        "sim/druid/druid.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-144",
+      "source_point": 144,
+      "disposition": "already-correct",
+      "assessment": "Relevant implemented path matches the stated broad behavior; numeric/rank/script unknowns remain separate. No new coefficient follows from an unquantified increase.",
+      "code": [
+        "sim/druid/claw.go",
+        "sim/druid/demoralizing_roar.go",
+        "sim/druid/enrage.go",
+        "sim/druid/frenzied_regeneration.go",
+        "sim/druid/rake.go",
+        "sim/druid/shred.go",
+        "sim/druid/hurricane.go",
+        "sim/druid/wrath.go",
+        "sim/druid/talents.go",
+        "sim/druid/omen_of_clarity.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-145",
+      "source_point": 145,
+      "disposition": "coverage-gap",
+      "assessment": "Utility/healer/movement coverage is incomplete. No new damage/threat coefficient can be inferred from this absence. Relevance depends on workload; baseline racial damage/resources and form-safe consumes are separate audited features.",
+      "code": [
+        "sim/hunter/hunter.go",
+        "sim/druid/druid.go"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-146",
+      "source_point": 146,
+      "disposition": "metadata-checked",
+      "assessment": "Current location/rank/prerequisite data were inspected. Preserve stable field/string mappings; naming differences and announced tree changes must not shift saved talent strings silently.",
+      "code": [
+        "ui/core/talents/trees/hunter.json",
+        "ui/core/talents/trees/druid.json"
+      ],
+      "questions": []
+    },
+    {
+      "id": "HD-147",
+      "source_point": 147,
+      "disposition": "coverage-gap",
+      "assessment": "Utility/healer/movement coverage is incomplete. No new damage/threat coefficient can be inferred from this absence. Relevance depends on workload; baseline racial damage/resources and form-safe consumes are separate audited features.",
+      "code": [
+        "sim/hunter/hunter.go",
+        "sim/druid/druid.go"
+      ],
+      "questions": []
+    }
+  ],
+  "recent_findings": [
+    {
+      "id": "WSF-001",
+      "topic": "Faerie Fire and Curse of Recklessness do not stack their armor reduction",
+      "disposition": "corrected",
+      "assessment": "Minor armor debuffs compete rather than adding their reductions.",
+      "questions": []
+    },
+    {
+      "id": "WSF-002",
+      "topic": "Instant Lightning Bolt/Chain Lightning carry a no-swing-reset attribute",
+      "disposition": "corrected",
+      "assessment": "Instant Lightning Bolt/Chain Lightning preserve swings; hardcasts still defer melee.",
+      "questions": []
+    },
+    {
+      "id": "WSF-003",
+      "topic": "Divine Precision includes Holy Strike, not every Holy attack",
+      "disposition": "corrected",
+      "assessment": "Divine Precision includes the sourced Holy Strike family, not all Holy attacks.",
+      "questions": []
+    },
+    {
+      "id": "WSF-004",
+      "topic": "Holy Strike player-SP scaling is reportedly multiplied by its weapon percentage",
+      "disposition": "corrected",
+      "assessment": "Holy Strike player SP uses the sourced weapon percentage; target bonus SP is kept separate.",
+      "questions": []
+    },
+    {
+      "id": "WSF-005",
+      "topic": "Weapon-racial crit exclusion has stronger ranged Auto Shot evidence",
+      "disposition": "evidence-lead",
+      "assessment": "Additional ranged-auto racial crit observations narrow an existing question but do not justify a generic crit change.",
+      "questions": [
+        "CORE-015"
+      ]
+    },
+    {
+      "id": "WSF-006",
+      "topic": "Pet Dust Cloud probably shares the minor armor category; further pet-debuff stacking is unproven",
+      "disposition": "evidence-lead",
+      "assessment": "Dust Cloud sharing a minor armor category is credible partial evidence; other pet-debuff stacking is not established.",
+      "questions": [
+        "HUN-007"
+      ]
+    },
+    {
+      "id": "WSF-007",
+      "topic": "Revelation creates a pet/periodic crit loophole in the current beta",
+      "disposition": "excluded-exploit",
+      "assessment": "A reported Revelation pet/periodic crit exploit is not a supported build recipe or verified intended mechanic.",
+      "questions": []
+    },
+    {
+      "id": "WSF-008",
+      "topic": "Touch of the Grave benefits from Shadow damage modifiers",
+      "disposition": "already-correct",
+      "assessment": "Touch of the Grave already follows its Shadow modifiers.",
+      "questions": []
+    },
+    {
+      "id": "WSF-009",
+      "topic": "Mage Spirit regeneration matches the old formula above50Spirit",
+      "disposition": "evidence-lead",
+      "assessment": "Mage Spirit reports corroborate the existing higher-Spirit formula; lower-Spirit observations are not a level-60 recalibration.",
+      "questions": []
+    },
+    {
+      "id": "WSF-010",
+      "topic": "Arcane Missiles has per-missile hit/crit rolls; the claimed damage bank is not demonstrated",
+      "disposition": "already-correct",
+      "assessment": "Arcane Missiles already rolls hit/crit per missile; a claimed banked-damage script remains unproved.",
+      "questions": []
+    },
+    {
+      "id": "WSF-011",
+      "topic": "Seal of Command player/target SP placement already matches the reported distinction",
+      "disposition": "already-correct",
+      "assessment": "Seal of Command player/target SP placement already matches the supported distinction.",
+      "questions": []
+    },
+    {
+      "id": "WSF-012",
+      "topic": "Seal of Righteousness20%/22% SP table is not a new discrepancy by itself",
+      "disposition": "already-correct",
+      "assessment": "The reported Seal of Righteousness coefficient table does not establish a new defect.",
+      "questions": []
+    },
+    {
+      "id": "WSF-013",
+      "topic": "Retribution Aura13.57% SP is a proposed coefficient, not a measured one",
+      "disposition": "evidence-lead",
+      "assessment": "The proposed reactive-aura SP coefficient is not a controlled measurement.",
+      "questions": [
+        "PAL-010"
+      ]
+    },
+    {
+      "id": "WSF-014",
+      "topic": "Real-item proc rates differ from Era;100% wrappers do not prove100% effective procs",
+      "disposition": "evidence-lead",
+      "assessment": "Real-item wrappers do not establish effective proc rates. The hypothetical fixed-stat catalog does not acquire those effects.",
+      "questions": [
+        "DATA-006"
+      ]
+    },
+    {
+      "id": "WSF-015",
+      "topic": "Creature-type damage racials may or may not carry a hidden crit multiplier",
+      "disposition": "evidence-lead",
+      "assessment": "A hidden creature-type racial crit multiplier remains unverified.",
+      "questions": [
+        "CORE-015"
+      ]
+    },
+    {
+      "id": "WSF-016",
+      "topic": "Consume stacking discussion does not establish new Forever rules",
+      "disposition": "evidence-lead",
+      "assessment": "Classic consume-stacking recollection is not a new Forever rule.",
+      "questions": []
+    },
+    {
+      "id": "WSF-017",
+      "topic": "Low-level Warrior dodge observations corroborate Defense skill accounting",
+      "disposition": "evidence-lead",
+      "assessment": "Low-level dodge reports support Defense accounting, not a new max-level avoidance calibration.",
+      "questions": [
+        "CORE-001"
+      ]
+    },
+    {
+      "id": "WSF-018",
+      "topic": "Shield attacks and Dual Wield Specialization discussion is not a new Forever test",
+      "disposition": "evidence-lead",
+      "assessment": "Shield/dual-wield discussion does not supply a new controlled Forever test.",
+      "questions": [
+        "WAR-008"
+      ]
+    },
+    {
+      "id": "WSF-019",
+      "topic": "AP coefficients and Ice Lance overrides are still explicitly provisional",
+      "disposition": "evidence-lead",
+      "assessment": "Missing server coefficients remain qualified; no inferred Ice Lance override is added.",
+      "questions": [
+        "MAG-001"
+      ]
+    },
+    {
+      "id": "WSF-020",
+      "topic": "Fresh upstream implementation leads are inaccessible, not validated imports",
+      "disposition": "source-inaccessible",
+      "assessment": "Unavailable upstream implementations are access gaps, not validated imports.",
+      "questions": []
+    }
+  ],
+  "limitations": [
+    "This is complete point coverage, not proof that every described spell or pet family is implemented.",
+    "Announced next-build talent changes retain separate source/version qualifications.",
+    "Private chat text, identities, message metadata and raw media are not included.",
+    "Flametongue has exclusions but lacks a supported numeric damage/script rule; SHA-006 contains the test prerequisites."
+  ],
+  "additional_corrections": [
+    {
+      "topic": "Instant Poison AP",
+      "disposition": "corrected",
+      "source": "https://github.com/ClassicWoWCommunity/forever-bugs/issues/100#issuecomment-5804701503",
+      "assessment": "Forever direct hits add 0.005 current AP before ordinary damage multipliers; Classic remains unchanged. Deadly tick/stack placement remains ROG-002.",
+      "regression": "TestEvidenceInstantPoisonAttackPower"
+    }
+  ],
+  "benchmark": {
+    "profiles": 201,
+    "builds": 31,
+    "scenarios": 804,
+    "iterations": 5000,
+    "seed": 20291951,
+    "tankChecks": 68,
+    "baseline": "artifacts/modelled_gear/forever_dps_5min.json",
+    "comparison": "artifacts/correctness/comparison.json",
+    "tankChecksFile": "artifacts/correctness/tank_checks.json.gz"
+  },
+  "checks": {
+    "focusedCorrectionGroups": 45,
+    "publicationGate": "make verify passed",
+    "additionalRogueReplayProfiles": [
+      "combat__orc",
+      "mutilate__human",
+      "subtlety__dwarf"
+    ],
+    "finalIconCoverageBuilds": 31,
+    "mirroredImageReferences": 3227,
+    "missingMirroredImages": 0,
+    "inventoryFamilies": 151,
+    "inventoryAbsentFromSamples": 54,
+    "inventoryAcquisitionBuild": "1.60.1.69893"
+  }
+}

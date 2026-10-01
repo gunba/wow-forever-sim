@@ -91,35 +91,47 @@ func TestForeverHunterAutoShotUsesClassicWindup(t *testing.T) {
 	}
 }
 
-func TestShamanCastsRestoreClassicSwingReset(t *testing.T) {
-	for _, stacks := range []int32{0, 1, 3, 5} {
-		for _, spellID := range []int32{15208, 10605} {
-			t.Run(fmt.Sprintf("%d/%d-stacks", spellID, stacks), func(t *testing.T) {
-				req := historyTalentFixture("enhancement", map[string]int{"maelstromWeapon": 5})
-				sim := core.NewSim(req, simsignals.Signals{})
-				sim.Options.Interactive = true
-				sim.Reset()
-				s := sim.Raid.Parties[0].Players[0].(shaman.ShamanAgent).GetShaman()
-				if stacks > 0 {
-					s.MaelstromWeaponAura.Activate(sim)
-					s.MaelstromWeaponAura.SetStacks(sim, stacks)
+func TestShamanCastSwingResetAndInstantExemption(t *testing.T) {
+	for _, ruleset := range []proto.Ruleset{proto.Ruleset_RulesetClassic, proto.Ruleset_RulesetForever} {
+		for _, stacks := range []int32{0, 1, 3, 5} {
+			for _, spellID := range []int32{15208, 10605} {
+				for _, swiftness := range []bool{false, true} {
+					t.Run(fmt.Sprintf("%v/%d/%d-stacks/swiftness-%v", ruleset, spellID, stacks, swiftness), func(t *testing.T) {
+						req := historyTalentFixture("enhancement", map[string]int{"maelstromWeapon": 5, "naturesSwiftness": 1})
+						req.SimOptions.Ruleset = ruleset
+						sim := core.NewSim(req, simsignals.Signals{})
+						sim.Options.Interactive = true
+						sim.Reset()
+						s := sim.Raid.Parties[0].Players[0].(shaman.ShamanAgent).GetShaman()
+						if stacks > 0 {
+							s.MaelstromWeaponAura.Activate(sim)
+							s.MaelstromWeaponAura.SetStacks(sim, stacks)
+						}
+						if swiftness {
+							s.GetAura("Natures Swiftness").Activate(sim)
+						}
+						spell := s.GetSpell(core.ActionID{SpellID: spellID})
+						castTime := spell.CastTime()
+						before := s.AutoAttacks.MainhandSwingAt()
+						if !spell.Cast(sim, s.CurrentTarget) {
+							t.Fatal("spell was not cast")
+						}
+						want := sim.CurrentTime + castTime + s.AutoAttacks.MainhandSwingSpeed()
+						if ruleset == proto.Ruleset_RulesetForever && castTime == 0 {
+							want = before
+						}
+						if got := s.AutoAttacks.MainhandSwingAt(); got != want {
+							t.Fatalf("next swing %s, want %s", got, want)
+						}
+						if castTime > 0 && s.AutoAttacks.MHAuto().CanCast(sim, s.CurrentTarget) {
+							t.Fatal("melee was allowed inside an ordinary hardcast")
+						}
+						if spellID == 10605 && s.MaelstromWeaponAura.GetStacks() != stacks {
+							t.Fatal("Chain Lightning consumed Maelstrom stacks")
+						}
+					})
 				}
-				spell := s.GetSpell(core.ActionID{SpellID: spellID})
-				castTime := spell.CastTime()
-				if !spell.Cast(sim, s.CurrentTarget) {
-					t.Fatal("spell was not cast")
-				}
-				want := sim.CurrentTime + castTime + s.AutoAttacks.MainhandSwingSpeed()
-				if got := s.AutoAttacks.MainhandSwingAt(); got != want {
-					t.Fatalf("next swing %s, want cast end + full swing timer %s", got, want)
-				}
-				if castTime > 0 && s.AutoAttacks.MHAuto().CanCast(sim, s.CurrentTarget) {
-					t.Fatal("melee was allowed inside an ordinary hardcast")
-				}
-				if spellID == 10605 && s.MaelstromWeaponAura.GetStacks() != stacks {
-					t.Fatal("Chain Lightning consumed Maelstrom stacks")
-				}
-			})
+			}
 		}
 	}
 }

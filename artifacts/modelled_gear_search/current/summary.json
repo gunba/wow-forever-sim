@@ -1884,5 +1884,14 @@
       "Race": "Dwarf",
       "Decision": "unchanged"
     }
-  ]
+  ],
+  "confidenceQualification": {
+    "state": "historical; not selection controls for the corrected engine",
+    "iterationRangesIndependent": false,
+    "iterationsPerArmPerStart": 5000,
+    "uniqueIterationSeeds": 5001,
+    "legacyBounds": "Raw confirmation bounds assumed independent starts; retain them only as historical values, not corrected confidence bounds.",
+    "source": "artifacts/question_review/seed_ranges.json",
+    "currentScope": "No new gear search. Selected equipment is frozen; corrected simulation results do not establish an optimum."
+  }
 }

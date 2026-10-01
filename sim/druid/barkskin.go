@@ -8,7 +8,7 @@ import (
 )
 
 func (druid *Druid) registerBarkskinCD() {
-	if !druid.InForm(Bear) {
+	if !druid.Env.IsForever() && !druid.InForm(Bear) {
 		return
 	}
 
@@ -21,10 +21,20 @@ func (druid *Druid) registerBarkskinCD() {
 		Duration: time.Second * 15,
 	}).AttachMultiplicativePseudoStatBuff(&druid.PseudoStats.SchoolDamageTakenMultiplier[stats.SchoolIndexPhysical], 0.8)
 
+	cast := core.Cast{}
+	school := core.SpellSchoolNone
+	if druid.Env.IsForever() {
+		cast.GCD = core.GCDDefault
+		school = core.SpellSchoolNature
+		druid.BarkskinAura.AttachAdditivePseudoStatBuff(&druid.PseudoStats.SpellPushbackReduction, 1)
+	}
 	druid.Barkskin = druid.RegisterSpell(Any, core.SpellConfig{
-		ActionID: actionId,
-		Flags:    core.SpellFlagAPL,
+		ActionID:      actionId,
+		SpellSchool:   school,
+		RequiredLevel: 44,
+		Flags:         core.SpellFlagAPL,
 		Cast: core.CastConfig{
+			DefaultCast: cast,
 			CD: core.Cooldown{
 				Timer:    druid.NewTimer(),
 				Duration: time.Second * 60,
@@ -32,7 +42,9 @@ func (druid *Druid) registerBarkskinCD() {
 		},
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, _ *core.Spell) {
 			druid.BarkskinAura.Activate(sim)
-			druid.AutoAttacks.StopMeleeUntil(sim, sim.CurrentTime, false)
+			if !druid.Env.IsForever() {
+				druid.AutoAttacks.StopMeleeUntil(sim, sim.CurrentTime, false)
+			}
 		},
 	})
 

@@ -27,7 +27,7 @@ func (warlock *Warlock) registerWrackSpell() {
 		ProcMask:    core.ProcMaskSpellDamage,
 		Flags:       core.SpellFlagAPL | core.SpellFlagChanneled | core.SpellFlagResetAttackSwing | WarlockFlagAffliction,
 
-		RequiredLevel: 60,
+		RequiredLevel: core.TernaryInt(warlock.Env.IsForever(), 40, 60),
 
 		ManaCost: core.ManaCostOptions{
 			FlatCost: manaCost,
@@ -70,14 +70,19 @@ func (warlock *Warlock) registerWrackSpell() {
 		},
 	})
 
-	// Other shadow dots on the target tick for 10% more while Wrack is on it
+	// 1316697 effect 1349557 (aura 271, family mask 0x402) modifies
+	// owned Corruption and Agony, not every Shadow DoT or drain.
 	for _, target := range warlock.Env.Encounter.TargetUnits {
 		target.AddDynamicDamageTakenModifier(func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 			if spell.Unit != &warlock.Unit || spell == warlock.Wrack {
 				return
 			}
 
-			if spell.SpellSchool.Matches(core.SpellSchoolShadow) && len(spell.Dots()) > 0 && warlock.Wrack.Dot(result.Target).IsActive() {
+			affected := spell.SpellSchool.Matches(core.SpellSchoolShadow) && len(spell.Dots()) > 0
+			if warlock.Env.IsForever() {
+				affected = spell.SpellCode == SpellCode_WarlockCorruption || spell.SpellCode == SpellCode_WarlockBaneOfAgony
+			}
+			if affected && warlock.Wrack.Dot(result.Target).IsActive() {
 				result.Damage *= 1.1
 			}
 		})

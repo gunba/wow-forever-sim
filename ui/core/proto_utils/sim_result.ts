@@ -1001,6 +1001,14 @@ export class ActionMetrics {
 		return this.combinedMetrics.shielding;
 	}
 
+	get generatedShielding() {
+		return this.combinedMetrics.generatedShielding;
+	}
+
+	get unusedShielding() {
+		return this.combinedMetrics.unusedShielding;
+	}
+
 	get avgCast() {
 		if (this.isPassiveAction) return 0;
 		return this.combinedMetrics.avgCast;
@@ -1494,11 +1502,11 @@ export class TargetedActionMetrics {
 	}
 
 	get healing() {
-		return this.data.healing + this.data.shielding;
+		return this.data.healing + this.data.absorbedShielding;
 	}
 
 	get avgHealing() {
-		return (this.data.healing + this.data.shielding) / this.iterations;
+		return (this.data.healing + this.data.absorbedShielding) / this.iterations;
 	}
 
 	get critHealing() {
@@ -1510,11 +1518,19 @@ export class TargetedActionMetrics {
 	}
 
 	get shielding() {
+		return this.data.absorbedShielding;
+	}
+
+	get generatedShielding() {
 		return this.data.shielding;
 	}
 
+	get unusedShielding() {
+		return this.data.unusedShielding;
+	}
+
 	get hps() {
-		return (this.data.healing + this.data.shielding) / this.iterations / this.duration;
+		return (this.data.healing + this.data.absorbedShielding) / this.iterations / this.duration;
 	}
 
 	get casts() {
@@ -1567,7 +1583,7 @@ export class TargetedActionMetrics {
 	}
 
 	get avgCastHealing() {
-		return (this.data.healing + this.data.shielding) / this.iterations / (this.casts || 1);
+		return (this.data.healing + this.data.absorbedShielding) / this.iterations / (this.casts || 1);
 	}
 
 	get avgCastThreat() {
@@ -1593,7 +1609,7 @@ export class TargetedActionMetrics {
 	}
 
 	get avgHitHealing() {
-		return (this.data.healing + this.data.shielding) / this.iterations / this.landedHits;
+		return (this.data.healing + this.data.absorbedShielding) / this.iterations / this.landedHits;
 	}
 
 	get avgHitThreat() {
@@ -1771,6 +1787,8 @@ export class TargetedActionMetrics {
 				healing: sum(actions.map(a => a.data.healing)),
 				critHealing: sum(actions.map(a => a.data.critHealing)),
 				shielding: sum(actions.map(a => a.data.shielding)),
+				absorbedShielding: sum(actions.map(a => a.data.absorbedShielding)),
+				unusedShielding: sum(actions.map(a => a.data.unusedShielding)),
 				castTimeMs: sum(actions.map(a => a.data.castTimeMs)),
 			}),
 			{

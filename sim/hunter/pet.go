@@ -118,6 +118,15 @@ func (hp *HunterPet) GetPet() *core.Pet {
 
 func (hp *HunterPet) Initialize() {
 	if hp.Env.IsForever() {
+		// Family assignment is made after the environment is wired, and only
+		// changes this pet's copied config, not the shared Classic family map.
+		switch hp.hunterOwner.Options.PetType {
+		case proto.Hunter_Options_Bat:
+			hp.config.FocusDump = Unknown
+		case proto.Hunter_Options_CarrionBird:
+			hp.config.SpecialAbility = Screech
+		}
+
 		// Forever keeps the selected pet's swing speed, but does not reduce
 		// its base hit damage for a faster pet.
 		weapon := *hp.AutoAttacks.MH()

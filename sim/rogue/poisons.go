@@ -294,6 +294,11 @@ func (rogue *Rogue) makeInstantPoison() *core.Spell {
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			baseDamage := sim.Roll(baseDamageByLevel, baseDamageByLevel+damageVariance)
+			if sim.IsForever() {
+				// Developer clarification: Instant's base AP ratio is 0.5%.
+				// https://github.com/ClassicWoWCommunity/forever-bugs/issues/100#issuecomment-5804701503
+				baseDamage += 0.005 * spell.MeleeAttackPower(target)
+			}
 			spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMagicHitAndCrit)
 		},
 	})

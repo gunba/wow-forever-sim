@@ -40,7 +40,7 @@ func (hunter *Hunter) getMongooseBiteConfig(rank int) core.SpellConfig {
 			return hunter.DistanceFromTarget <= core.MaxMeleeAttackDistance && hunter.DefensiveState.IsActive()
 		},
 
-		BonusCritRating:  float64(hunter.Talents.SavageStrikes) * 2 * core.CritRatingPerCritChance,
+		BonusCritRating:  hunter.savageStrikesLegacyCrit(),
 		CritDamageBonus:  hunter.mortalShots(),
 		DamageMultiplier: 1,
 		ThreatMultiplier: 1,
@@ -67,13 +67,15 @@ func (hunter *Hunter) registerMongooseBiteSpell() {
 		Label:    "Defensive State",
 		ActionID: core.ActionID{SpellID: 5302},
 		Duration: time.Second * 5,
-
-		OnSpellHitTaken: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+	})
+	core.MakePermanent(hunter.RegisterAura(core.Aura{
+		Label: "Mongoose Bite Dodge Trigger",
+		OnSpellHitTaken: func(_ *core.Aura, sim *core.Simulation, _ *core.Spell, result *core.SpellResult) {
 			if result.DidDodge() {
-				aura.Activate(sim)
+				hunter.DefensiveState.Activate(sim)
 			}
 		},
-	})
+	}))
 
 	rank := map[int32]int{
 		25: 1,

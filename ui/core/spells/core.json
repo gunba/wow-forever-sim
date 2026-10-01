@@ -177,12 +177,6 @@
 		"note": "Shadow Oil's 15% proc really does cast Shadow Bolt 1382 for 52 to 61, so the Classic name and icon are the right ones.",
 		"source": "classic"
 	},
-	"14325": {
-		"ability": "Hunter's Mark",
-		"file": "sim/core/debuffs.go",
-		"note": "110 ranged attack power against the target, +3% per point of Improved Hunter's Mark, for 2 min; unchanged from upstream Classic.",
-		"source": "classic"
-	},
 	"15235": {
 		"ability": "Crystal Yield",
 		"file": "sim/core/debuffs.go",
@@ -410,12 +404,6 @@
 		"file": "sim/core/buffs.go",
 		"source": "unreviewed"
 	},
-	"26016": {
-		"ability": "Vindication",
-		"file": "sim/core/debuffs.go",
-		"note": "Dead code: core's VindicationAura registers a 10 sec aura with no effect at all and has no caller anywhere in the sim - the paladin runs its own Vindication in sim/paladin/talents.go - so this id is never resolved by the UI.",
-		"source": "classic"
-	},
 	"26297": {
 		"ability": "Berserking",
 		"file": "sim/core/racials.go",
@@ -607,5 +595,19 @@
 		"file": "sim/core/buffs.go",
 		"note": "Client 1.60.1.70009 effect 687684: 22 Nature damage per melee hit taken, with no level growth or spell-power coefficient. The configured Improved Thorns/Brambles modifier remains separate. Classic ruleset retains 18.",
 		"source": "forever"
+	},
+	"11767": {
+		"ability": "Blood Pact",
+		"file": "sim/core/buffs.go",
+		"source": "forever",
+		"tooltip": "54 Stamina for the party while the supplying Imp is active. Does not stack with another Blood Pact provider.",
+		"note": "Client rank-five effect54. Explicit owned and external providers share one exclusive effect; Improved Imp does not amplify this family."
+	},
+	"440667": {
+		"ability": "Vindication",
+		"file": "sim/core/debuffs.go",
+		"source": "forever",
+		"tooltip": "At level60, reduces target Attack Power by68/136/204 for20seconds. Competes with other AP-reduction providers.",
+		"note": "Captured child440667 and rank multiplier. Lower-level numeric scaling is not established by the level60 effect."
 	}
 }

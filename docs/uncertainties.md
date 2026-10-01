@@ -6,17 +6,17 @@ Reviewed against `35cab052456a320358e998c12416687d69cae142`. Current level-60 DP
 
 This is the current register. Earlier audits preserve historical findings, not current task status. Research answers and implementation fixes are separate: **combat mechanics and benchmark results have not changed in this review**.
 
-**Coverage:** 137/137 original entries reviewed; 3 additional coverage gaps. Reviewed 2026-09-27.
+**Coverage:** 137/137 original entries reviewed; 8 additional coverage gaps. Reviewed 2026-09-27.
 
 ## Before and after
 
 | Status | Before | Original entries now | Including additions |
 |---|---:|---:|---:|
-| Needs evidence | 84 | 61 | 63 |
-| Implementation gap | 27 | 26 | 27 |
+| Needs evidence | 84 | 63 | 69 |
+| Implementation gap | 27 | 13 | 13 |
 | Model assumption | 5 | 8 | 8 |
-| Accepted working answer | 0 | 5 | 5 |
-| Resolved | 20 | 24 | 24 |
+| Accepted working answer | 0 | 6 | 6 |
+| Resolved | 20 | 34 | 36 |
 | Outside current scenarios | 1 | 13 | 13 |
 
 A working answer is credible enough for an explicitly qualified model, not verified server behavior. Confidence applies to the stated finding, not every effect of that class. An implementation gap is not a request for a game experiment.
@@ -104,15 +104,18 @@ An experiment possible at the current level-20 cap, subject to the listed item/a
 - **Medium · [CORE-015 — Weapon-racial crit and ranged attacks](#core-015)**
   - Prerequisites: Human or Orc Hunter and matching versus nonmatching melee weapons with equal Agility/crit stats; unchanged ranged weapon and pet.
   - Observe / verify: Record melee, ranged, spell and pet crit APIs before/after the swap, then compare ranged attack outcomes if the display and source descriptions disagree. Check one and two matching weapons separately rather than assuming the bonus stacks.
-- **Medium · [DRU-002 — Furor's lower-rank Energy carryover](#dru-002)**
-  - Prerequisites: Level-20 Druid with Cat Form and a low Furor rank.
-  - Observe / verify: Leave Cat with known Energy, compare equal waits in caster and Bear, then re-enter Cat. Include a carry-plus-wait case exceeding the rank cap.
+- **Medium · [DRU-014 — Faerie Fire announced cost/cooldown versus captured data](#dru-014)**
+  - Prerequisites: Caster Faerie Fire access and enough mana for cost observation.
+  - Observe / verify: Record mana delta, cooldown availability and spell ID; isolate Spirit/MP5 ticks.
 - **Medium · [HUN-003 — Pet external buffs and action cadence](#hun-003)**
   - Prerequisites: Only if pet cadence sensitivity proves material; a trained damage ability and a resource trace.
   - Observe / verify: Compare ability use when resource-limited versus resource-capped. Do not mix this with owner inheritance or ordinary spell cooldowns.
 - **Medium · [HUN-007 — Pet families and new trained abilities](#hun-007)**
   - Prerequisites: A family actually tameable by level 20 and its first trained rank.
   - Observe / verify: Confirm learning, resource cost and damage/cooldown for that family. This does not establish higher-rank availability.
+- **Medium · [HUN-012 — Savage Strikes article/client version conflict](#hun-012)**
+  - Prerequisites: Savage Strikes access and matched talent-on/off attacks at fixed AP, weapon and target.
+  - Observe / verify: Separate hit-size changes from crit-frequency changes, and record build/ability IDs.
 - **Medium · [MAG-005 — Clearcasting and Missile Barrage event ordering](#mag-005)**
   - Prerequisites: Arcane Concentration, Arcane Missiles and mana/aura/tick logging without other proc talents.
   - Observe / verify: Cast isolated complete and cancelled channels; count Clearcasting procs and identify whether a pre-existing proc is spent at channel start or completion.
@@ -131,9 +134,6 @@ An experiment possible at the current level-20 cap, subject to the listed item/a
 - **Medium · [PRI-003 — Inner Focus periodic crit behavior](#pri-003)**
   - Prerequisites: Level-20 Priest with Inner Focus and a DoT in its crit mask.
   - Observe / verify: Compare three arms: no aura, aura activated after the DoT and held, and aura consumed by applying the DoT. Record enough ticks and the exact build; separate live observation from intended design.
-- **Medium · [ROG-002 — Rogue finisher and poison scaling](#rog-002)**
-  - Prerequisites: Instant Poison access and two known AP totals without changing other damage modifiers.
-  - Observe / verify: An optional direct-hit slope check can confirm the published 0.005 term; a rounded tooltip is not a damage sample.
 - **Medium · [SCEN-005 — General absorb-pool and shielding threat](#scen-005)**
   - Prerequisites: Priest with Power Word: Shield, a cooperating player and a controlled hostile target with threat observation.
   - Observe / verify: Separate threat on shield application, actual absorption and unused expiry; do not attribute incidental healing or damage threat to the shield.
@@ -196,6 +196,9 @@ An experiment possible by level 30, not an assertion that the cap has already in
 - **Medium · [SHA-003 — Windfury Weapon extra-attack handling](#sha-003)**
   - Prerequisites: Level-30 Windfury Weapon, a known two-handed or one-handed MH weapon, no other extra-attack effect.
   - Observe / verify: Record the proc's two damage events, misses/crits/glances, regular swing timing and proc spacing. Change AP independently and keep the initial rank distinct from its max-scaled tooltip.
+- **Medium · [SHA-006 — Flametongue Totem damage formula and comparison](#sha-006)**
+  - Prerequisites: Rank-one Flametongue at level 28; several weapon speeds and known SP deltas.
+  - Observe / verify: Measure on-hit fire damage and eligible white/special hits, removing other damage procs. Grace of Air is not available in this stage.
 - **Medium · [WAR-010 — Weaponmaster hand-specific armor ignore](#war-010)**
   - Prerequisites: One-point Weaponmaster, comparable mace/non-mace weapons, matched AP and controlled target armor.
   - Observe / verify: Move the mace between hands and measure main-hand damage changes; separate the weapon's own damage change and sword extra attacks.
@@ -255,9 +258,6 @@ Requires access beyond the announced level-30 beta or max-level content. Reclass
 - **High · [SHA-001 — Maelstrom Weapon proc rate](#sha-001)**
   - Prerequisites: Level 35+ Enhancement; known rank, weapon speed and extra-attack sources.
   - Observe / verify: Count eligible landed swings/specials and added stacks; compare weapon speeds and talent ranks, recording Windfury separately. Move earlier only if beta access expands beyond 30.
-- **High · [SHA-002 — Instant Maelstrom Lightning Bolt swing reset](#sha-002)**
-  - Prerequisites: Level-39+ Shaman with five-point Maelstrom and a recorded swing timer.
-  - Observe / verify: Cast five-stack Bolt at multiple points in the swing cycle, then compare ordinary and partial-stack casts. Record start, completion and next auto, not only aggregate DPS.
 - **High · [WAR-001 — Level-60 outgoing rage normalization](#war-001)**
   - Prerequisites: Level 60 and known one- and two-handed base speeds.
   - Observe / verify: Measure uncapped ordinary swings while varying damage independently; test the existing 4.5 and 4.5/1.3 rates rather than fitting a damage formula anew.
@@ -285,9 +285,15 @@ Requires access beyond the announced level-30 beta or max-level content. Reclass
 - **Medium · [DRU-010 — Feral stealth openers](#dru-010)**
   - Prerequisites: Level-32 Ravage and level-36 Pounce.
   - Observe / verify: Confirm opener damage and legal states against the implemented ranks.
+- **Medium · [DRU-014 — Faerie Fire announced cost/cooldown versus captured data](#dru-014)**
+  - Prerequisites: Access to later caster and form ranks.
+  - Observe / verify: Confirm the same rules across ranks/forms rather than extrapolating the first rank.
 - **Medium · [HUN-005 — Arcane Shot, Serpent Sting and Volley SP](#hun-005)**
   - Prerequisites: Volley access above level 30, plus independent SP and RAP changes.
   - Observe / verify: Measure each tick under separate SP/RAP deltas, keeping talents and target resistance fixed.
+- **Medium · [HUN-011 — Hunter’s Mark rank-value anomaly](#hun-011)**
+  - Prerequisites: Access to ranks three and four with fixed ranged AP and no competing Mark.
+  - Observe / verify: Compare target-conditioned ranged AP/damage and tooltip values per rank; record the client build.
 - **Medium · [MAG-003 — Frostfire cross-school scripts](#mag-003)**
   - Prerequisites: Frostfire first learned at level 40 and each disputed talent/Tier effect.
   - Observe / verify: Test only the remaining script interactions independently at full rank with fixed school power.
@@ -300,12 +306,12 @@ Requires access beyond the announced level-30 beta or max-level content. Reclass
 - **Medium · [ROG-005 — Hack and Slash hand scope and ICD](#rog-005)**
   - Prerequisites: Level 34 for all five ranks, if no expanded beta access.
   - Observe / verify: Verify full-rank magnitude only if the one-point hand-scope test leaves nonlinear behavior unresolved.
-- **Medium · [SCEN-011 — Windfury Totem in animal forms](#scen-011)**
-  - Prerequisites: A Shaman with Windfury Totem (level 32), grouped Cat/Bear and no Grace of Air. Earlier only if the beta grants that buff explicitly.
-  - Observe / verify: Record buff presence and isolated auto/extra-attack events in each form; use a humanoid weapon-attack control. The Druid reaching level 20 alone is insufficient access.
 - **Medium · [SHA-003 — Windfury Weapon extra-attack handling](#sha-003)**
   - Prerequisites: Later imbue ranks and the actual Windfury Totem provider.
   - Observe / verify: Confirm rank/AP routing and that an own Windfury weapon excludes the separate Totem benefit.
+- **Medium · [SHA-006 — Flametongue Totem damage formula and comparison](#sha-006)**
+  - Prerequisites: Full-rank Flametongue, Grace of Air and Windfury; one fixed melee profile.
+  - Observe / verify: Compare exclusive FT+Grace versus Windfury with the sourced model and matched inputs; rank-one evidence is not full-rank validation.
 - **Medium · [WAR-009 — Sunder Armor AP threat coefficient](#war-009)**
   - Prerequisites: Rank-5 Sunder if low-rank results establish a nonzero slope.
   - Observe / verify: Verify whether the slope is rank-independent before applying it at level 60.
@@ -383,18 +389,12 @@ Client data, source research, code inspection or simulator testing; no game expe
 - **Medium · [HUN-007 — Pet families and new trained abilities](#hun-007)**
   - Prerequisites: Current family, teaching, child-spell, cost and cooldown records.
   - Observe / verify: Produce one supported-rank matrix per family and implement only joined learning paths. Separate direct values from scripted behavior.
-- **Medium · [HUN-008 — Dodge-triggered Mongoose Bite window](#hun-008)**
-  - Prerequisites: Hunter with an initially inactive Defensive State aura.
-  - Observe / verify: Dispatch an incoming dodge, verify Mongoose eligibility for five seconds, expiry, reset and independence from Expose Prey.
 - **Medium · [MAG-003 — Frostfire cross-school scripts](#mag-003)**
   - Prerequisites: Current spell-family masks and the individual role Tier descriptions.
   - Observe / verify: Enumerate each proposed Frostfire modifier and its positive/negative mask match; isolate genuine script-only gaps.
 - **Medium · [PAL-007 — Hammer of the Righteous availability](#pal-007)**
   - Prerequisites: Matching-build trainer/taught-spell or live talent evidence for 407632.
   - Observe / verify: Trace the player acquisition path rather than merely finding a class skill row.
-- **Medium · [PAL-009 — Consecrated Ground per-target coverage](#pal-009)**
-  - Prerequisites: A five-target simulator case plus an uncovered target.
-  - Observe / verify: Only the first four covered targets should receive the extra Holy-damage multiplier; one-/three-target in-area cases should remain unchanged.
 - **Medium · [PAL-010 — Retribution Aura provider scaling](#pal-010)**
   - Prerequisites: Ret Aura's current ranked effect rows.
   - Observe / verify: Add a rank/base-value regression before correcting the 20-to-30 mismatch; preserve Classic separately.
@@ -404,27 +404,18 @@ Client data, source research, code inspection or simulator testing; no game expe
 - **Medium · [SCEN-005 — General absorb-pool and shielding threat](#scen-005)**
   - Prerequisites: A shield with a sourced amount/duration and sequential controlled incoming hits.
   - Observe / verify: Verify partial and full consumption, expiry, overwrites and ordering without converting unconsumed capacity into effective healing.
-- **Medium · [SCEN-006 — Blood Pact talent bonus and pet-provider lifecycle](#scen-006)**
-  - Prerequisites: Forever/Classic fixtures, Improved Imp ranks 0–3, explicit external coverage and owned Imp transitions.
-  - Observe / verify: Verify no Forever talent increase to Blood Pact, preserved Classic behavior, correct party-only scope and activation/deactivation without removing an independent external provider.
 - **Medium · [SCEN-008 — In-range and reactive damage omissions](#scen-008)**
   - Prerequisites: Current Hellfire/Chastise effect chains and explicit in-range or Humanoid targets.
   - Observe / verify: Verify enemy versus self-damage, rank availability, target restrictions and range; the present Dragonkin/20-yard controls must not gain free damage.
-- **Medium · [SCEN-014 — Legacy regression-suite alignment](#scen-014)**
-  - Prerequisites: Current generated databases, known toolchain and the inherited tests outside the release allowlist.
-  - Observe / verify: Classify each failing assertion as stale fixture, real defect or environment problem before broadening the release gate.
 - **Medium · [SHA-004 — Owned buff-totem effects and replacement](#sha-004)**
   - Prerequisites: Owned low/high-rank totems plus independent external providers.
   - Observe / verify: Check actual stats/resource returns, replacement, expiry and recall. Removing an owned provider must not delete a surviving external provider or leave its own effect permanent.
+- **Medium · [SHA-006 — Flametongue Totem damage formula and comparison](#sha-006)**
+  - Prerequisites: A current script explanation or controlled Forever source with a numeric formula.
+  - Observe / verify: Resolve weapon-speed damage, SP contribution and eligible hits without treating a dummy field as damage.
 - **Medium · [WAR-012 — Shield Bash registration](#war-012)**
   - Prerequisites: Current Bash/Pummel rank and cooldown-category records.
   - Observe / verify: Check shield and stance restrictions and both cast orders against the shared timer; compare registered damage independently from interrupt behavior.
-- **Medium · [WL-003 — Wrack's amplified DoT scope](#wl-003)**
-  - Prerequisites: Controlled owned Corruption, Agony, Doom and another caster's DoT.
-  - Observe / verify: Verify positive/negative modifier scope, immediate removal on channel cancellation and low-level availability at its actual learning level.
-- **Medium · [WL-008 — Improved Imp's Firebolt damage multiplier](#wl-008)**
-  - Prerequisites: Live Imp with zero and nonzero SP at each talent rank.
-  - Observe / verify: Check the full damage ratio and ensure the SP component is multiplied exactly once. Do not simultaneously invent a cast-time change.
 - **Low · [DATA-008 — Unimplemented vendor item effects](#data-008)**
   - Prerequisites: Items 272437/272440/272432, their use/equip records and spells 1291097/1291099/1291105/1291078.
   - Observe / verify: Implement only explicitly supported branches, preserving item cooldowns and shared use categories.
@@ -440,9 +431,6 @@ Client data, source research, code inspection or simulator testing; no game expe
 - **Low · [ROG-004 — Deadly Poison V acquisition](#rog-004)**
   - Prerequisites: Current trainer/vendor/recipe or loot-source export.
   - Observe / verify: Join the learned recipe to an obtainable source; distinguish the crafted poison item from its recipe.
-- **Low · [SCEN-013 — Power Infusion on another raid member](#scen-013)**
-  - Prerequisites: A two-player raid, self/other/invalid target options and external PI controls.
-  - Observe / verify: Verify who pays the cost, who receives the aura, cooldown ownership, targeting fallback and duplicate prevention.
 - **Low · [WL-005 — Fel Armor acquisition](#wl-005)**
   - Prerequisites: A current trainer/quest/skill-path source identifying this spell, not just a same-name retained row.
   - Observe / verify: Reopen only when that acquisition chain exists; then verify effects and exclusivity before adding a selectable option.
@@ -454,27 +442,11 @@ Client data, source research, code inspection or simulator testing; no game expe
 
 The individual records identify source-ready corrections separately from assumptions. No item marked Implementation gap has been silently fixed by this research publication.
 
-- **[DRU-004 — Thick Hide Defense coefficient](#dru-004)**: Use Thick Hide's explicit 0.67/1.33/2.00 Defense-to-armor rank array instead of 0.67 times rank.
-- **[PAL-008 — Vindication's target AP reduction](#pal-008)**: Add Vindication's sourced target AP reduction and strongest-effect behavior, preserving the existing owner AP bonus.
-- **[SCEN-016 — Overlapping seeds in historical validation](#scen-016)**: Reject intersecting iteration-seed ranges in independent confirmations and qualify old independence-based uncertainty claims.
 - **[DATA-006 — Legacy item and enchant proc assumptions](#data-006)**: Add Crusader's sourced self-heal and stop the Strength formula increasing below level 60; leave PPM and proc eligibility separately qualified.
 - **[DATA-010 — Raw haste rating conversion](#data-010)**: Represent raw haste rating separately from flat percentages, using the sourced level-60 conversion of 10 rating per percent.
 - **[DATA-011 — Item-picker shared-crit EP](#data-011)**: Project shared equipment crit/hit into picker valuation exactly once, preserving explicitly scoped exceptions.
-- **[DRU-002 — Furor's lower-rank Energy carryover](#dru-002)**: Reproduce and correct Furor's inclusion of Bear time and lower-rank carry/cap ordering against the explicit client formula.
-- **[DRU-007 — Improved Moonfire SP scope](#dru-007)**: Apply Improved Moonfire's sourced damage modifiers to the SP-scaled direct and periodic components, without duplicating its separate crit bonus.
-- **[HUN-008 — Dodge-triggered Mongoose Bite window](#hun-008)**: Move Mongoose Bite's incoming-dodge listener onto an always-active trigger so the first dodge can open its window.
 - **[MAG-004 — Hot Streak interruption and new-charge ordering](#mag-004)**: Update Hot Streak's stale 15-second talent description to the sourced 20 seconds already used by the engine.
-- **[PAL-009 — Consecrated Ground per-target coverage](#pal-009)**: Scope Consecrated Ground's Holy-damage bonus to affected enemies instead of granting an owner-wide modifier.
-- **[PAL-010 — Retribution Aura provider scaling](#pal-010)**: Correct rank-5 Retribution Aura's sourced base damage from 20 to 30; provider-aware SP scaling still needs its coefficient.
-- **[SCEN-005 — General absorb-pool and shielding threat](#scen-005)**: Implement generic remaining absorb capacity separately from generated shielding; keep the unknown threat rule separate and preserve Bulwark.
-- **[SCEN-006 — Blood Pact talent bonus and pet-provider lifecycle](#scen-006)**: Remove Improved Imp's obsolete Forever Blood Pact multiplier and improved UI flag; retain the ordinary sourced buff and Classic behavior.
-- **[SCEN-014 — Legacy regression-suite alignment](#scen-014)**: Correct the stale final Paladin tree-size constant and obsolete exports; update old assertions without reverting current sourced mechanics.
-- **[WL-003 — Wrack's amplified DoT scope](#wl-003)**: Limit Wrack's amplification to Corruption and Agony and reconcile its level-40 acquisition metadata.
-- **[WL-008 — Improved Imp's Firebolt damage multiplier](#wl-008)**: Apply Improved Imp's Firebolt damage percentage to the full hit, including its SP contribution.
 - **[DATA-008 — Unimplemented vendor item effects](#data-008)**: Implement Defender's Grip's ordinary outside-city 8% Block for 15 seconds; do not invent the other items' script behavior.
-- **[HUN-009 — Demoralizing Screech target AP debuff](#hun-009)**: Implement the active Screech rank's sourced AP debuff and fix the level-25 lookup key; do not grant it without the appropriate pet.
-- **[PAL-013 — Light's Vigil damage support](#pal-013)**: Implement the sourced enemy-damage branch of Light's Vigil and its one-active-mark rule.
-- **[SCEN-013 — Power Infusion on another raid member](#scen-013)**: Wire owned Power Infusion to the selected friendly player while keeping cost and cooldown on the Priest.
 
 - [docs/question_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/question_review.md)
 - [artifacts/question_review/review.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/review.json)
@@ -1445,21 +1417,21 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 ### PAL-008 — Vindication's target AP reduction
 
-**Implementation gap · High priority · High confidence**
+**Needs evidence · High priority · Moderate confidence**
 
-**Disposition:** Known implementation work
+**Disposition:** Partly answered
 
 **Question:** Does the target-side part of Vindication reduce incoming damage?
 
-**Finding:** The active talent and child 440667 explicitly describe target melee/ranged AP reduction as well as owner AP gain. The engine implements only the latter. Target AP is now used by enemy autos, and the tank reference starts at 805 AP, so the old claim that it cannot matter is false. The child is level-scaled; stale rendered rank numbers must not be used as universal constants.
+**Finding:** Vindication applies sourced level-60 AP reduction 68/136/204 with strongest-effect handling while preserving the owner’s separate damage bonus. Incoming-damage native controls pass.
 
-**Current implementation / scenario:** Only the Paladin AP gain is implemented. The old comment that enemy AP is never read is no longer true for tank encounters.
+**Current implementation / scenario:** Vindication applies sourced level-60 AP reduction 68/136/204 with strongest-effect handling while preserving the owner’s separate damage bonus. Incoming-damage native controls pass.
 
 **Impact:** Tank mitigation and fair talent selection.
 
-**Remaining scope:** Exact level/rank evaluation and exclusivity with other AP-reduction debuffs before implementation.
+**Remaining scope:** Lower-level evaluation/rounding remains qualified rather than proved by the max-level test.
 
-**Implementation / model follow-up:** Add the target-side effect using the current level formula and strongest-effect rules, with a controlled incoming-damage check. Keep the already-correct 1/2/3% owner AP curves.
+**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
 
 **Sources / code**
 - Prerequisites: Trait curve 82984 and child 440667 level scaling plus existing AP-debuff exclusivity.
@@ -1531,51 +1503,25 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Earlier references:** T46 / M03
 
-<a id="pal-009"></a>
-
-### PAL-009 — Consecrated Ground per-target coverage
-
-**Implementation gap · Medium priority · High confidence**
-
-**Disposition:** Known implementation work
-
-**Question:** Does the Holy-damage bonus apply only against the first four enemies covered by Consecration?
-
-**Finding:** The question was misdescribed: Consecrated Ground is not mitigation. Spell 1310905 and active trait 142624 grant 5/10% increased Holy damage against the first four enemies entering Consecration. Code grants a broad owner Holy-damage buff. The cap distinction does not change the stationary one-/three-target reference workloads, but matters with more targets or uncovered enemies.
-
-**Current implementation / scenario:** An owner-wide Holy-damage buff is used instead of tracking the first four affected enemies; this is not a mitigation effect.
-
-**Impact:** Can amplify Holy damage against uncovered enemies or beyond the four-target cap. The cap does not distinguish the stationary one-/three-target workloads.
-
-**Remaining scope:** Target-scoped implementation for broader encounters, not a new mitigation experiment.
-
-**Implementation / model follow-up:** Correct the register's question and model description. Track affected enemies for the Holy-damage modifier; do not implement nonexistent damage reduction.
-
-**Sources / code**
-- Prerequisites: A five-target simulator case plus an uncovered target.
-- Observe / verify: Only the first four covered targets should receive the extra Holy-damage multiplier; one-/three-target in-area cases should remain unchanged.
-
-**References:** [sim/paladin/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/talents.go) · [sim/paladin/consecration.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/consecration.go) · [docs/beta-pass/paladin.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/paladin.md) · [https://www.wowhead.com/forever/spell=1310905/consecrated-ground](https://www.wowhead.com/forever/spell=1310905/consecrated-ground) · [https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.69977](https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.69977)
-
 <a id="pal-010"></a>
 
 ### PAL-010 — Retribution Aura provider scaling
 
-**Needs evidence · Medium priority · High confidence**
+**Needs evidence · Medium priority · Moderate confidence**
 
 **Disposition:** Partly answered
 
 **Question:** How should the aura use its provider's SP rather than the recipient's?
 
-**Finding:** The public developer response explicitly confirms intended SP scaling for both Thorns and Retribution Aura and says their snapshot bug will be fixed in a later build. The base amount is independently actionable: current rank-5 Ret Aura effect 687971 is 30, while the engine still starts at 20. Thorns already uses its sourced base 22. Zero client SP fields do not refute the acknowledged scripted scaling.
+**Finding:** Forever Retribution Aura’s base amount is corrected to 30, with Classic kept at 20. Blizzard supports caster/provider SP scaling for reactive auras, including Thorns.
 
-**Current implementation / scenario:** The retained shared aura lacks the sourced scaling follow-up; stationary DPS receives no retaliation because it is not attacked.
+**Current implementation / scenario:** Forever Retribution Aura’s base amount is corrected to 30, with Classic kept at 20. Blizzard supports caster/provider SP scaling for reactive auras, including Thorns.
 
 **Impact:** Tanks, solo damage and multi-player buff modeling.
 
-**Remaining scope:** The numeric SP coefficient and external-provider representation; deployment of the dynamic fix.
+**Remaining scope:** Numeric provider-SP coefficients are not established; do not use recipient SP or import another expansion’s coefficient.
 
-**Implementation / model follow-up:** Ret Aura's base-amount correction is source-ready. Add provider-aware scaling only after sourcing the coefficient; never silently use the recipient's SP for an external buff. Add Thorns to the same follow-up.
+**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
 
 **Sources / code**
 - Prerequisites: Ret Aura's current ranked effect rows.
@@ -1593,21 +1539,21 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 ### PAL-013 — Light's Vigil damage support
 
-**Implementation gap · Low priority · High confidence**
+**Needs evidence · Low priority · Moderate confidence**
 
-**Disposition:** Known implementation work
+**Disposition:** Partly answered
 
 **Question:** Can the supported enemy-target Holy Shock interaction be represented?
 
-**Finding:** The enemy damage path is explicit: Light's Vigil marks an enemy for the next Holy Shock, makes the consuming Shock trigger no new cooldown and refunds 75% of Vigil's cost. The child damage rows carry a 0.429 SP coefficient. This is a real missing damage ability, not healer-only coverage; its talent and first rank require 40.
+**Finding:** Light’s Vigil has ranked enemy casts, one owned enemy mark, enemy damage/refund and explicit linked Holy Shock cooldown behavior. Native cooldown/refund controls pass; manual proc casts are rejected.
 
-**Current implementation / scenario:** The spell is not implemented; the old healer-only dismissal does not establish that every damage application is irrelevant.
+**Current implementation / scenario:** Light’s Vigil has ranked enemy casts, one owned enemy mark, enemy damage/refund and explicit linked Holy Shock cooldown behavior. Native cooldown/refund controls pass; manual proc casts are rejected.
 
 **Impact:** Conditional Holy Shock builds and spellbook completeness, not a proven gain for existing Ret.
 
-**Remaining scope:** Ranked implementation and cooldown/refund interaction tests, not whether an enemy damage branch exists.
+**Remaining scope:** Party-healing behavior is unsupported and the dummy/proc hit sequence remains a server-script question; the damage branch is not full healer coverage.
 
-**Implementation / model follow-up:** Implement the sourced enemy branch and one-active-mark rule before evaluating its DPS; do not infer a whole healer simulation from that addition.
+**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
 
 **Sources / code**
 - Prerequisites: Vigil parent ranks 1310911/1311590/1311595 and their enemy damage children.
@@ -1617,7 +1563,29 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Prerequisites: Level-40+ Light's Vigil and Holy Shock.
 - Observe / verify: Confirm the linked cast sequence and amount at the first available rank; later verify max-rank scaling.
 
-**References:** [docs/beta-pass/paladin.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/paladin.md) · [https://wago.tools/db2/Spell?build=1.60.1.69977](https://wago.tools/db2/Spell?build=1.60.1.69977) · [https://wago.tools/db2/SpellEffect?build=1.60.1.70009](https://wago.tools/db2/SpellEffect?build=1.60.1.70009) · [ui/core/talents/trees/paladin.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/paladin.json)
+**References:** [docs/beta-pass/paladin.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/paladin.md) · [https://wago.tools/db2/Spell?build=1.60.1.69977](https://wago.tools/db2/Spell?build=1.60.1.69977) · [https://wago.tools/db2/SpellEffect?build=1.60.1.70009](https://wago.tools/db2/SpellEffect?build=1.60.1.70009) · [ui/core/talents/trees/paladin.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/paladin.json) · [sim/paladin/lights_vigil.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/lights_vigil.go)
+
+<a id="pal-009"></a>
+
+### PAL-009 — Consecrated Ground per-target coverage
+
+**Resolved · Medium priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Does the Holy-damage bonus apply only against the first four enemies covered by Consecration?
+
+**Finding:** Consecrated Ground amplifies owned Holy damage on the first four stationary targets, not every encounter target and not physical damage. Four-target native scope checks pass. Moving-ground geometry remains outside the fixed reference scenario.
+
+**Current implementation / scenario:** Consecrated Ground amplifies owned Holy damage on the first four stationary targets, not every encounter target and not physical damage. Four-target native scope checks pass. Moving-ground geometry remains outside the fixed reference scenario.
+
+**Impact:** Can amplify Holy damage against uncovered enemies or beyond the four-target cap. The cap does not distinguish the stationary one-/three-target workloads.
+
+**Remaining scope:** None for the resolved question; profile/result publication is a separate pending integration step.
+
+**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
+
+**References:** [sim/paladin/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/talents.go) · [sim/paladin/consecration.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/consecration.go) · [docs/beta-pass/paladin.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/paladin.md) · [https://www.wowhead.com/forever/spell=1310905/consecrated-ground](https://www.wowhead.com/forever/spell=1310905/consecrated-ground) · [https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.69977](https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.69977)
 
 <a id="pal-011"></a>
 
@@ -1697,21 +1665,21 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 ### DRU-003 — Form weapon damage and flat imbues
 
-**Needs evidence · High priority · Low confidence**
+**Needs evidence · High priority · Moderate confidence**
 
-**Disposition:** Game test needed
+**Disposition:** Partly answered
 
 **Question:** Which equipped weapon damage and flat imbue bonuses affect Cat/Bear form attacks?
 
-**Finding:** The engine explicitly substitutes fixed Cat/Bear weapons and does not use the equipped weapon's ordinary DPS. A disabled block in forms.go is not evidence for adding weapon-DPS-derived AP. No new controlled Forever source establishes flat imbue eligibility in forms.
+**Finding:** Officially supported equipped weapon DPS, stones and striking enchants now enter form weapons. Cat uses its 1-second weapon and Bear its 2.5-second weapon; native rebuild/swap controls pass without duplicating AP or flat damage.
 
-**Current implementation / scenario:** Retains form-weapon damage rules rather than ordinary equipped-weapon DPS scaling. Another fork preserving an imbue through form changes is not evidence of eligibility.
+**Current implementation / scenario:** Officially supported equipped weapon DPS, stones and striking enchants now enter form weapons. Cat uses its 1-second weapon and Bear its 2.5-second weapon; native rebuild/swap controls pass without duplicating AP or flat damage.
 
 **Impact:** Feral/Bear weapons, stones and damage scaling.
 
-**Remaining scope:** Form weapon scaling and flat weapon-damage eligibility; separate from proc-enchant eligibility.
+**Remaining scope:** The precise form damage-variance distribution is not supplied by the article; the chosen distribution remains a convention rather than an observed server rule.
 
-**Implementation / model follow-up:** Retain the existing form model rather than importing another expansion's Feral AP rule.
+**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
 
 **Current beta · level 20**
 - Prerequisites: Bear and level-20 Cat, matched-stat weapons with substantially different DPS, plus an obtainable flat-damage enchant/imbue.
@@ -1721,33 +1689,9 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Prerequisites: Level-60 forms and high-level weapon effects if low-level results imply scaling.
 - Observe / verify: Verify the actual level-60 base and any effect-specific exceptions before changing synthetic-weapon valuation.
 
-**References:** [sim/druid/forms.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/forms.go) · [sim/core/attack.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/attack.go) · [docs/upstream_elliot_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/upstream_elliot_review.md)
+**References:** [sim/druid/forms.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/forms.go) · [sim/core/attack.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/attack.go) · [docs/upstream_elliot_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/upstream_elliot_review.md) · [sim/core/item_effects.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/item_effects.go)
 
 **Earlier references:** T18 / T60
-
-<a id="dru-004"></a>
-
-### DRU-004 — Thick Hide Defense coefficient
-
-**Implementation gap · High priority · High confidence**
-
-**Disposition:** Source-backed answer
-
-**Question:** What amount of armor does each Defense point contribute in each form?
-
-**Finding:** Active definition 134403 links curves 85346 and 111990. The description divides the first curve by 100, giving exactly 0.67/1.33/2 armor per bonus Defense and 1/2/3 base armor per level, multiplied by the form. This settles the scalar/unit conflict. A recent beta report independently describes the rank-three intended +2 slope and a live negative/zero-bonus bug.
-
-**Current implementation / scenario:** Armor updates dynamically by form and bonus Defense, but the implementation multiplies 0.67 by rank instead of using the explicit 0.67/1.33/2.00 curve.
-
-**Impact:** Bear gearing, mitigation and normalized defensive-stat value.
-
-**Remaining scope:** No further experiment is needed to choose the intended coefficient. Beta deployment behavior is separate from the source formula.
-
-**Implementation / model follow-up:** The engine uses 0.67 times points, giving 1.34/2.01 rather than 1.33/2.00 at ranks two/three. Use the explicit rank array in a subsequent correction; do not reproduce the reported negative-defense bug.
-
-**References:** [sim/druid/forms.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/forms.go) · [docs/mechanics_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/mechanics_review.md) · [sim/druid/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/talents.go) · [https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.69977](https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.69977) · [https://wago.tools/db2/CurvePoint?build=1.60.1.69977](https://wago.tools/db2/CurvePoint?build=1.60.1.69977) · [https://wago.tools/db2/Spell?build=1.60.1.69977](https://wago.tools/db2/Spell?build=1.60.1.69977) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/151](https://github.com/ClassicWoWCommunity/forever-bugs/issues/151)
-
-**Earlier references:** Thick Hide follow-up
 
 <a id="dru-005"></a>
 
@@ -1817,21 +1761,21 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 ### DRU-011 — Proc enchants in animal forms
 
-**Needs evidence · High priority · Low confidence**
+**Needs evidence · High priority · Moderate confidence**
 
-**Disposition:** Game test needed
+**Disposition:** Partly answered
 
 **Question:** Can Cat and Bear trigger Crusader, and which weapon speed determines its proc rate?
 
-**Finding:** Current Crusader eligibility comes from the generic enchant handler, not a Forever form-specific source. It affects selected Bear/Feral equipment, so this cannot be removed as irrelevant. No controlled current Forever evidence found in the reviewed public sources establishes form eligibility or the weapon-speed basis.
+**Finding:** Official form eligibility is supported. Crusader now returns sourced health and Lifestealing returns actual dealt damage; form stones/oils and striking reconstruction pass locally.
 
-**Current implementation / scenario:** The generic enchant handler permits form melee attacks and retains a 1-PPM rule. The selected Bear gear and an existing Night Elf Feral profile use Crusader; Forever form eligibility has not been demonstrated.
+**Current implementation / scenario:** Official form eligibility is supported. Crusader now returns sourced health and Lifestealing returns actual dealt damage; form stones/oils and striking reconstruction pass locally.
 
 **Impact:** Druid enchant selection, temporary Strength and resulting damage/threat. Simulation confirmation does not establish that the proc occurs in game.
 
-**Remaining scope:** Whether forms proc Crusader and the eligible-event/PPM speed basis if they do.
+**Remaining scope:** Eligibility does not establish all conditional enchant proc rates, hand scope or form/swap interactions.
 
-**Implementation / model follow-up:** Retain the uncertainty rather than certify the enchant from an inherited Classic/SoD handler.
+**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
 
 **Current beta · level 20**
 - Prerequisites: Only if an enchanted weapon can actually be supplied in the beta; an obtainable enchant is not established by a low character-level requirement.
@@ -1907,58 +1851,6 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [https://github.com/ClassicWoWCommunity/forever-bugs/issues/125#issuecomment-5841232704](https://github.com/ClassicWoWCommunity/forever-bugs/issues/125#issuecomment-5841232704) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/125#issuecomment-5842005903](https://github.com/ClassicWoWCommunity/forever-bugs/issues/125#issuecomment-5842005903) · [sim/druid/swipe.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/swipe.go)
 
-<a id="dru-002"></a>
-
-### DRU-002 — Furor's lower-rank Energy carryover
-
-**Implementation gap · Medium priority · Moderate confidence**
-
-**Disposition:** Partly answered
-
-**Question:** How are carried Energy, time out of form and the rank-dependent cap combined?
-
-**Finding:** The active Furor curve and description explicitly specify the carried fraction, out-of-form rate and rank cap, excluding time in Bear as well as Cat. The present helper counts all time since Cat exit and caps only the regenerated component before adding carried Energy. This is a code/source reconciliation problem before it is a request for more gameplay footage.
-
-**Current implementation / scenario:** The helper counts all elapsed time since Cat exit, including time in Bear, and caps the regenerated component before adding carried Energy. That does not follow the captured Furor wording.
-
-**Impact:** Alternate Feral shift builds; current no-Furor profiles do not establish the rule.
-
-**Remaining scope:** Resolve the total-cap interpretation against the exact description and reproduce Bear-time handling. The public Cat-to-Bear report describes a live bug, not a replacement intended formula.
-
-**Implementation / model follow-up:** Add isolated shift-state reproductions and reconcile the helper with the captured formula before evaluating a Furor rotation. Keep current no-Furor baseline behavior separate.
-
-**Current beta · level 20**
-- Prerequisites: Level-20 Druid with Cat Form and a low Furor rank.
-- Observe / verify: Leave Cat with known Energy, compare equal waits in caster and Bear, then re-enter Cat. Include a carry-plus-wait case exceeding the rank cap.
-
-**References:** [sim/druid/forms.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/forms.go) · [docs/history_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/history_review.md) · [https://wago.tools/db2/Spell?build=1.60.1.69977](https://wago.tools/db2/Spell?build=1.60.1.69977) · [https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.69977](https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.69977) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/127](https://github.com/ClassicWoWCommunity/forever-bugs/issues/127)
-
-**Earlier references:** T15 (Furor) / H28
-
-<a id="dru-007"></a>
-
-### DRU-007 — Improved Moonfire SP scope
-
-**Implementation gap · Medium priority · Moderate confidence**
-
-**Disposition:** Credible working answer
-
-**Question:** Does Improved Moonfire multiply only base damage or the SP contribution too?
-
-**Finding:** The active Improved Moonfire definition has separate critical-chance, damage and periodic-damage family modifiers, all 5/10% through its curves. The current code instead modifies only BaseDamageMultiplierAdditive. Ordinary damage-modifier semantics and the explicit periodic effect support applying the damage bonus to the SP-scaled components, rather than inventing a base-only restriction.
-
-**Current implementation / scenario:** Retains a base-damage modifier. Moonfury's separate school-wide modifier has already been corrected and is not the same open question.
-
-**Impact:** Balance Moonfire contribution.
-
-**Remaining scope:** Verify the intended direct/periodic calculation path in a targeted native test before changing results; no zero-coefficient or unrelated Moonfury argument establishes this effect.
-
-**Implementation / model follow-up:** Source-supported full-damage modifier correction candidate. Preserve its separate crit modifier and avoid adding the same direct/periodic bonus twice.
-
-**References:** [sim/druid/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/talents.go) · [docs/upstream_elliot_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/upstream_elliot_review.md) · [https://wago.tools/db2/SpellEffect?build=1.60.1.70009](https://wago.tools/db2/SpellEffect?build=1.60.1.70009) · [https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.69977](https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.69977) · [docs/check_dispositions.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/check_dispositions.md)
-
-**Earlier references:** T26 (Improved Moonfire only)
-
 <a id="dru-008"></a>
 
 ### DRU-008 — Nature's Grace GCD stacking and timing
@@ -2019,6 +1911,36 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Earlier references:** T51 in check_dispositions.md (stealth backlog)
 
+<a id="dru-014"></a>
+
+### DRU-014 — Faerie Fire announced cost/cooldown versus captured data
+
+**Needs evidence · Medium priority · Moderate confidence**
+
+**Disposition:** Partly answered
+
+**Question:** Has resource-free six-second Faerie Fire shipped for every form?
+
+**Finding:** The official article describes a free cast and six-second cooldown; captured base spell 9907 retains mana cost and no cooldown. Feral variants cannot establish the caster’s rule.
+
+**Current implementation / scenario:** Form variants and captured caster rules remain separate.
+
+**Impact:** Could change Balance resource use and debuff maintenance.
+
+**Remaining scope:** A newer-build active record or cast/resource trace resolving the base-versus-form behavior.
+
+**Implementation / model follow-up:** Keep source versions and implementation coverage separate; no inferred script formula or automatic preset optimization.
+
+**Current beta · level 20**
+- Prerequisites: Caster Faerie Fire access and enough mana for cost observation.
+- Observe / verify: Record mana delta, cooldown availability and spell ID; isolate Spirit/MP5 ticks.
+
+**Beyond level 30 / launch**
+- Prerequisites: Access to later caster and form ranks.
+- Observe / verify: Confirm the same rules across ranks/forms rather than extrapolating the first rank.
+
+**References:** [https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid](https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid) · [sim/druid/faerie_fire.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/faerie_fire.go)
+
 <a id="dru-009"></a>
 
 ### DRU-009 — Insect Swarm's final partial tick
@@ -2046,6 +1968,78 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **References:** [docs/forever_tier1.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/forever_tier1.md) · [sim/druid/insect_swarm.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/insect_swarm.go) · [https://wago.tools/db2/SpellEffect?build=1.60.1.70009](https://wago.tools/db2/SpellEffect?build=1.60.1.70009)
 
 **Earlier references:** T11
+
+<a id="dru-004"></a>
+
+### DRU-004 — Thick Hide Defense coefficient
+
+**Resolved · High priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** What amount of armor does each Defense point contribute in each form?
+
+**Finding:** Thick Hide uses the exact sourced rank-dependent Defense coefficient rather than a linear extrapolation. Native rank controls pass.
+
+**Current implementation / scenario:** Thick Hide uses the exact sourced rank-dependent Defense coefficient rather than a linear extrapolation. Native rank controls pass.
+
+**Impact:** Bear gearing, mitigation and normalized defensive-stat value.
+
+**Remaining scope:** None for the resolved question; profile/result publication is a separate pending integration step.
+
+**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
+
+**References:** [sim/druid/forms.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/forms.go) · [docs/mechanics_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/mechanics_review.md) · [sim/druid/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/talents.go) · [https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.69977](https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.69977) · [https://wago.tools/db2/CurvePoint?build=1.60.1.69977](https://wago.tools/db2/CurvePoint?build=1.60.1.69977) · [https://wago.tools/db2/Spell?build=1.60.1.69977](https://wago.tools/db2/Spell?build=1.60.1.69977) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/151](https://github.com/ClassicWoWCommunity/forever-bugs/issues/151)
+
+**Earlier references:** Thick Hide follow-up
+
+<a id="dru-002"></a>
+
+### DRU-002 — Furor's lower-rank Energy carryover
+
+**Resolved · Medium priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** How are carried Energy, time out of form and the rank-dependent cap combined?
+
+**Finding:** Furor caps carried Cat Energy by invested rank and preserves elapsed regeneration; it does not add a flat Energy grant on each shift or change Bear form resource rules. Focused carryover/regen/reset checks pass.
+
+**Current implementation / scenario:** Furor caps carried Cat Energy by invested rank and preserves elapsed regeneration; it does not add a flat Energy grant on each shift or change Bear form resource rules. Focused carryover/regen/reset checks pass.
+
+**Impact:** Alternate Feral shift builds; current no-Furor profiles do not establish the rule.
+
+**Remaining scope:** None for the resolved question; profile/result publication is a separate pending integration step.
+
+**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
+
+**References:** [sim/druid/forms.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/forms.go) · [docs/history_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/history_review.md) · [https://wago.tools/db2/Spell?build=1.60.1.69977](https://wago.tools/db2/Spell?build=1.60.1.69977) · [https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.69977](https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.69977) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/127](https://github.com/ClassicWoWCommunity/forever-bugs/issues/127)
+
+**Earlier references:** T15 (Furor) / H28
+
+<a id="dru-007"></a>
+
+### DRU-007 — Improved Moonfire SP scope
+
+**Resolved · Medium priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Does Improved Moonfire multiply only base damage or the SP contribution too?
+
+**Finding:** Improved Moonfire increases the full direct and periodic damage, including their SP contribution, once; its separate crit bonus remains. Native coefficient controls pass.
+
+**Current implementation / scenario:** Improved Moonfire increases the full direct and periodic damage, including their SP contribution, once; its separate crit bonus remains. Native coefficient controls pass.
+
+**Impact:** Balance Moonfire contribution.
+
+**Remaining scope:** None for the resolved question; profile/result publication is a separate pending integration step.
+
+**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
+
+**References:** [sim/druid/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/talents.go) · [docs/upstream_elliot_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/upstream_elliot_review.md) · [https://wago.tools/db2/SpellEffect?build=1.60.1.70009](https://wago.tools/db2/SpellEffect?build=1.60.1.70009) · [https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.69977](https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.69977) · [docs/check_dispositions.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/check_dispositions.md) · [sim/druid/moonfire.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/moonfire.go)
+
+**Earlier references:** T26 (Improved Moonfire only)
 
 ## Hunter and pets
 
@@ -2227,15 +2221,15 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Question:** Which new family abilities can be added with verified learning paths and effects?
 
-**Finding:** The Forever Hunter wiki now supplies a concrete family inventory: Bear Swipe, Spider Web, Crab Pinch, Crocolisk Dismember, Raptor Savage Rend, Hyena Tendon Rip, Tallstrider Dust Cloud, bird Mine!, Fox Dance, Gorilla Thunderstomp and revised Wolf Howl. These are useful implementation leads with rank/cost/cooldown data, not an unanswered question about whether any new abilities exist. The public issue records checked contain Discord pointers rather than independently readable test results.
+**Finding:** Carrion-only active Screech ranks and AP debuff are corrected locally. Canonical Cats retain Bite/Claw. The complete article-point inventory identifies missing Fox support and unique Bat/Bear/Bird/Boar/Cat/Crab/Crocolisk/Gorilla/Hyena/Raptor/Spider/Tallstrider/Turtle/Wolf abilities; existing Scorpid Poison and Lightning Breath are not new omissions. This does not validate every family’s base stats or damage coefficient.
 
 **Current implementation / scenario:** Claw, Bite, Lightning Breath, Screech and Scorpid Poison are supported, not every new teaching record. Wolf Howl and Bat Sonic Blast are not active benchmark pets.
 
 **Impact:** Pet selection completeness; not a reason to grant unselected abilities.
 
-**Remaining scope:** Verify each family/teaching chain against current client rows and actual tame availability; do not enable unavailable exotic pets from a retained record.
+**Remaining scope:** Known pet-family implementation gaps and the exact active rank, cooldown, resource, damage/scaling and family-baseline prerequisites. Dash/Dive movement is immaterial to a stationary uptime benchmark but not implemented travel coverage.
 
-**Implementation / model follow-up:** Implement supported families individually. Start with damage/resource effects whose teaching and child records agree; keep control-only effects outside the current DPS queue. The commented-out old Howl implementation is not a suitable current implementation.
+**Implementation / model follow-up:** Implement a family only after its active spell/rank/effects and baseline can be joined. Do not infer all families from Cats or import NPC/teaching records as player-castable damage spells. Screech is a partial completion, not all-family coverage.
 
 **Sources / code**
 - Prerequisites: Current family, teaching, child-spell, cost and cooldown records.
@@ -2245,61 +2239,131 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Prerequisites: A family actually tameable by level 20 and its first trained rank.
 - Observe / verify: Confirm learning, resource cost and damage/cooldown for that family. This does not establish higher-rank availability.
 
-**References:** [docs/spell_coverage.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/spell_coverage.md) · [docs/beta-pass/hunter.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/hunter.md) · [docs/forever-70009.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/forever-70009.md) · [sim/hunter/pet_abilities.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/pet_abilities.go) · [https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes](https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes) · [https://github.com/classic-hunter/forever-hunter/issues/23](https://github.com/classic-hunter/forever-hunter/issues/23) · [https://github.com/classic-hunter/forever-hunter/issues/39](https://github.com/classic-hunter/forever-hunter/issues/39)
+**References:** [docs/spell_coverage.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/spell_coverage.md) · [docs/beta-pass/hunter.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/hunter.md) · [docs/forever-70009.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/forever-70009.md) · [sim/hunter/pet_abilities.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/pet_abilities.go) · [https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes](https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes) · [https://github.com/classic-hunter/forever-hunter/issues/23](https://github.com/classic-hunter/forever-hunter/issues/23) · [https://github.com/classic-hunter/forever-hunter/issues/39](https://github.com/classic-hunter/forever-hunter/issues/39) · [artifacts/question_review/correctness_followup.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/correctness_followup.json) · [https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid](https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid)
 
 **Earlier references:** T29 (family abilities)
 
-<a id="hun-008"></a>
+<a id="hun-011"></a>
 
-### HUN-008 — Dodge-triggered Mongoose Bite window
+### HUN-011 — Hunter’s Mark rank-value anomaly
 
-**Implementation gap · Medium priority · High confidence**
+**Needs evidence · Medium priority · Moderate confidence**
 
-**Disposition:** Known implementation work
+**Disposition:** Partly answered
 
-**Question:** Can a dodge activate Defensive State when its aura is initially inactive?
+**Question:** Why does captured rank three give 98 RAP while rank four gives 71?
 
-**Finding:** Code inspection settles the reachability question: core registers OnSpellHitTaken callbacks on aura activation and removes them on deactivation. The inactive Defensive State aura therefore cannot observe the dodge that should initially activate it. Expose Prey is a separate working activation path.
+**Finding:** Owned Mark casts and owner-specific Expose Prey pass locally. External/foreign marks do not supply ownership. Captured rank-three/rank-four RAP values conflict with expected progression.
 
-**Current implementation / scenario:** The dodge callback is attached to the conditional aura itself; Expose Prey separately opens the window. The current stationary DPS encounter does not exercise incoming dodges.
+**Current implementation / scenario:** Owned learned ranks use the captured values; melee Hunter maintains its own Mark for Expose Prey.
 
-**Impact:** Solo/reactive Hunter support, not a demonstrated current ranking gain.
+**Impact:** Affects mark rank choice and ownership; no rank optimization is inferred.
 
-**Remaining scope:** A focused regression and permanent listener implementation, not a server-behavior investigation.
+**Remaining scope:** A current-build tooltip/stat trace or later corrected client record establishing the intended rank values.
 
-**Implementation / model follow-up:** Move the dodge listener to an always-active trigger while retaining the conditional five-second window. The current un-attacked Hunter benchmark does not exercise this defect.
+**Implementation / model follow-up:** Keep source versions and implementation coverage separate; no inferred script formula or automatic preset optimization.
 
-**Sources / code**
-- Prerequisites: Hunter with an initially inactive Defensive State aura.
-- Observe / verify: Dispatch an incoming dodge, verify Mongoose eligibility for five seconds, expiry, reset and independence from Expose Prey.
+**Beyond level 30 / launch**
+- Prerequisites: Access to ranks three and four with fixed ranged AP and no competing Mark.
+- Observe / verify: Compare target-conditioned ranged AP/damage and tooltip values per rank; record the client build.
 
-**References:** [sim/hunter/mongoose_bite.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/mongoose_bite.go) · [sim/hunter/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/talents.go) · [sim/core/aura.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/aura.go)
+**References:** [sim/hunter/hunters_mark.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/hunters_mark.go) · [https://www.wowhead.com/forever/spell=14325](https://www.wowhead.com/forever/spell=14325)
+
+<a id="hun-012"></a>
+
+### HUN-012 — Savage Strikes article/client version conflict
+
+**Needs evidence · Medium priority · Moderate confidence**
+
+**Disposition:** Partly answered
+
+**Question:** Is Savage Strikes a melee-damage modifier or family-specific ability crit?
+
+**Finding:** The official article says melee damage, while captured effect 696821 and trait text/curve specify 2/4% ability crit. Native coverage now includes the complete registered family, not just Raptor/Mongoose.
+
+**Current implementation / scenario:** Current captured 70009 family-specific crit; full registered family corrected locally.
+
+**Impact:** Could change melee Hunter damage; stacking both interpretations is unsupported.
+
+**Remaining scope:** A newer client or controlled trace confirming the announced redesign is live.
+
+**Implementation / model follow-up:** Keep source versions and implementation coverage separate; no inferred script formula or automatic preset optimization.
+
+**Current beta · level 20**
+- Prerequisites: Savage Strikes access and matched talent-on/off attacks at fixed AP, weapon and target.
+- Observe / verify: Separate hit-size changes from crit-frequency changes, and record build/ability IDs.
+
+**References:** [https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid](https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid) · [sim/hunter/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/talents.go)
 
 <a id="hun-009"></a>
 
 ### HUN-009 — Demoralizing Screech target AP debuff
 
-**Implementation gap · Low priority · High confidence**
+**Needs evidence · Low priority · Moderate confidence**
 
-**Disposition:** Known implementation work
+**Disposition:** Partly answered
 
 **Question:** Does the pet apply its sourced AP reduction as well as damage?
 
-**Finding:** The AP reduction is explicit client data, not an unknown formula. Teaching spell 24582 points to active rank-four spell 24579: a 30-second AP aura, base -198 at level 56 with -1.6 per level through 60. The implementation deals damage only. Rank-one active spell 24423 also has a sourced ten-second cooldown; the cooldown is not an accidental Classic inheritance.
+**Finding:** Carrion-only Screech now uses active learned ranks and a separate nearby AP debuff. Sourced level-60 AP reduction is 204; damage, Focus, cooldown, expiry and strongest-effect controls pass. Teaching IDs are not cast IDs.
 
-**Current implementation / scenario:** Damage/rank values are modeled; the target AP reduction is not complete.
+**Current implementation / scenario:** Carrion-only Screech now uses active learned ranks and a separate nearby AP debuff. Sourced level-60 AP reduction is 204; damage, Focus, cooldown, expiry and strongest-effect controls pass. Teaching IDs are not cast IDs.
 
 **Impact:** Tank/solo mitigation with a Screech pet, not selected Cat damage.
 
-**Remaining scope:** Implement rank growth, area scope and AP-debuff exclusivity. Correct the level-25 ID lookup, whose current map uses key 15.
+**Remaining scope:** Linked-area avoidance behavior, lower-level rounding and higher-level non-stacking need confirmation. Other pet unique abilities are not completed by Screech.
 
-**Implementation / model follow-up:** Use the active child rather than its teaching spell as the behavior source. This is optional Screech-pet mitigation, not a change to the selected Cat's damage or a free raid debuff.
+**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
 
 **Sources / code**
 - Prerequisites: Screech pet and controlled target AP with another AP-reduction provider.
 - Observe / verify: Check rank-level growth, 30-second expiry, area coverage and strongest-effect handling; verify that disabling the selected pet removes only its effect.
 
-**References:** [sim/hunter/pet_abilities.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/pet_abilities.go) · [docs/beta-pass/hunter.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/hunter.md) · [artifacts/question_review/class_evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/class_evidence.json) · [https://www.wowhead.com/forever/spell=24579/demoralizing-screech](https://www.wowhead.com/forever/spell=24579/demoralizing-screech)
+**References:** [sim/hunter/pet_abilities.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/pet_abilities.go) · [docs/beta-pass/hunter.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/hunter.md) · [artifacts/question_review/class_evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/class_evidence.json) · [https://www.wowhead.com/forever/spell=24579/demoralizing-screech](https://www.wowhead.com/forever/spell=24579/demoralizing-screech) · [sim/hunter/demoralizing_screech.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/demoralizing_screech.go)
+
+<a id="hun-008"></a>
+
+### HUN-008 — Dodge-triggered Mongoose Bite window
+
+**Resolved · Medium priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Can a dodge activate Defensive State when its aura is initially inactive?
+
+**Finding:** An always-active dodge listener can open the first Mongoose Bite window; previously the listener was trapped inside its initially inactive window. The first-dodge regression now passes. The un-attacked reference Hunter does not exercise this trigger.
+
+**Current implementation / scenario:** An always-active dodge listener can open the first Mongoose Bite window; previously the listener was trapped inside its initially inactive window. The first-dodge regression now passes. The un-attacked reference Hunter does not exercise this trigger.
+
+**Impact:** Solo/reactive Hunter support, not a demonstrated current ranking gain.
+
+**Remaining scope:** None for the resolved question; profile/result publication is a separate pending integration step.
+
+**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
+
+**References:** [sim/hunter/mongoose_bite.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/mongoose_bite.go) · [sim/hunter/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/talents.go) · [sim/core/aura.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/aura.go)
+
+<a id="hun-010"></a>
+
+### HUN-010 — Careful Aim / Lethal Attacks talent-string mapping
+
+**Resolved · Medium priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Do native and web talent strings decode the current tree in the same order?
+
+**Finding:** A targeted metadata regression reproduced the declaration-order swap used by FillTalentsProto. Hunter proto order now matches the tree; the existing mapping check passes.
+
+**Current implementation / scenario:** Corrected declaration order with wire IDs unchanged.
+
+**Impact:** Changes affected Hunter stats and invalidates pre-correction Hunter comparisons.
+
+**Remaining scope:** None for the resolved question; profile/result publication is a separate pending integration step.
+
+**Implementation / model follow-up:** Keep source versions and implementation coverage separate; no inferred script formula or automatic preset optimization.
+
+**References:** [proto/hunter.proto](https://github.com/gunba/wow-forever-sim/blob/forever/proto/hunter.proto) · [sim/core/character.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/character.go) · [sim/talents_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/talents_test.go)
 
 ## Mage
 
@@ -2647,25 +2711,21 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Question:** Do the retained AP coefficients and poison proc probabilities match Forever?
 
-**Finding:** A public developer response explicitly supplies base AP ratios of 0.5% for Instant and 0.45% for Deadly Poison, and explains why the ratios are small. Current poisons.go adds no AP term. The missing client coefficients therefore do not establish zero scaling. Instant's direct-hit correction is source-ready; confirm Deadly's per-tick/per-stack placement before applying its ratio.
+**Finding:** The public developer response gives base AP ratios 0.5% for Instant and 0.45% for Deadly. Instant’s missing direct-hit 0.005 AP term is now implemented for Forever and a matched native AP-delta regression passes; Classic is unchanged. Ordinary damage/crit/resistance multipliers apply once after the term. This is a sourced ratio, not independent level-60 damage measurement.
 
-**Current implementation / scenario:** Explicit poison base damage is sourced, while several AP shares and 20%/30% proc probabilities retain inherited values. Venom participates in the dynamic periodic model.
+**Current implementation / scenario:** The public developer response gives base AP ratios 0.5% for Instant and 0.45% for Deadly. Instant’s missing direct-hit 0.005 AP term is now implemented for Forever and a matched native AP-delta regression passes; Classic is unchanged. Ordinary damage/crit/resistance multipliers apply once after the term. This is a sourced ratio, not independent level-60 damage measurement.
 
 **Impact:** Rogue build comparisons and poison/physical gear value.
 
-**Remaining scope:** Deadly coefficient placement and the separate finisher/bleed formulas. Do not bundle all poison and finisher questions into one unresolved test.
+**Remaining scope:** Deadly’s per-tick/per-stack coefficient placement and the separate finisher/bleed formulas remain unresolved. The Instant correction does not settle those questions.
 
-**Implementation / model follow-up:** Record the missing poison AP support as concrete implementation work. Check client proc-chance records for the base probabilities separately from Improved Poisons and Venom.
-
-**Current beta · level 20**
-- Prerequisites: Instant Poison access and two known AP totals without changing other damage modifiers.
-- Observe / verify: An optional direct-hit slope check can confirm the published 0.005 term; a rounded tooltip is not a damage sample.
+**Implementation / model follow-up:** Instant’s source-supported correction is complete locally; replace affected Rogue scenarios before publication. Do not add the Deadly ratio at an inferred placement.
 
 **Level-30 beta**
 - Prerequisites: Deadly Poison access and a controlled AP delta.
 - Observe / verify: Measure one-stack ticks and then five-stack ticks to locate the 0.0045 ratio. Audit finishers in separate AP/CP controls rather than mixing poison proc counts with their damage.
 
-**References:** [docs/beta-pass/rogue.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/rogue.md) · [sim/rogue/poisons.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/rogue/poisons.go) · [sim/rogue/rupture.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/rogue/rupture.go) · [sim/rogue/eviscerate.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/rogue/eviscerate.go) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/100](https://github.com/ClassicWoWCommunity/forever-bugs/issues/100)
+**References:** [docs/beta-pass/rogue.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/rogue.md) · [sim/rogue/poisons.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/rogue/poisons.go) · [sim/rogue/rupture.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/rogue/rupture.go) · [sim/rogue/eviscerate.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/rogue/eviscerate.go) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/100](https://github.com/ClassicWoWCommunity/forever-bugs/issues/100) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/100#issuecomment-5804701503](https://github.com/ClassicWoWCommunity/forever-bugs/issues/100#issuecomment-5804701503) · [tools/forever_bench/evidence_corrections_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/evidence_corrections_test.go)
 
 **Earlier references:** T35 (poison/finisher)
 
@@ -2847,36 +2907,6 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Earlier references:** T21
 
-<a id="sha-002"></a>
-
-### SHA-002 — Instant Maelstrom Lightning Bolt swing reset
-
-**Needs evidence · High priority · Low confidence**
-
-**Disposition:** Game test needed
-
-**Question:** Does a five-stack instant Bolt still reset the next melee swing?
-
-**Finding:** The restored Classic hook includes an instant-Bolt swing reset, but ordinary hardcast restrictions cannot prove that instant behavior. A five-stack instant test needs maximum Maelstrom rank, reachable at level 39, so this cannot be settled in the announced level-30 beta.
-
-**Current implementation / scenario:** The restored Classic Shaman hook resets next melee to cast completion plus a full swing even at zero cast time. Ordinary hardcasts cannot melee; that does not prove the instant exception.
-
-**Impact:** Enhancement APL rankings; all corrected research includes the reset.
-
-**Remaining scope:** Instant five-stack reset versus partial-stack cast resets.
-
-**Implementation / model follow-up:** Keep the modeled reset visible in Enhancement results; do not silently exempt instant Bolt on the strength of a different expansion's rules.
-
-**Beyond level 30 / launch**
-- Prerequisites: Level-39+ Shaman with five-point Maelstrom and a recorded swing timer.
-- Observe / verify: Cast five-stack Bolt at multiple points in the swing cycle, then compare ordinary and partial-stack casts. Record start, completion and next auto, not only aggregate DPS.
-
-**References:** [sim/shaman/lightning_bolt.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/shaman/lightning_bolt.go) · [docs/auto_attack_audit.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/auto_attack_audit.md) · [ui/core/talents/trees/shaman.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/shaman.json)
-
-**Earlier references:** T48
-
-**Related:** SHA-001
-
 <a id="sha-003"></a>
 
 ### SHA-003 — Windfury Weapon extra-attack handling
@@ -2934,6 +2964,70 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Observe / verify: Check actual stats/resource returns, replacement, expiry and recall. Removing an owned provider must not delete a surviving external provider or leave its own effect permanent.
 
 **References:** [sim/shaman/water_totems.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/shaman/water_totems.go) · [sim/shaman/air_totems.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/shaman/air_totems.go) · [docs/upstream_elliot_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/upstream_elliot_review.md) · [docs/beta-pass/core.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/core.md) · [sim/core/buffs.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/buffs.go)
+
+<a id="sha-006"></a>
+
+### SHA-006 — Flametongue Totem damage formula and comparison
+
+**Needs evidence · Medium priority · Moderate confidence**
+
+**Disposition:** Source gap
+
+**Question:** What numeric on-hit rule is needed to compare Flametongue + Grace with Windfury?
+
+**Finding:** September 24 official notes exclude Flametongue stacking with Windfury Totem or Flametongue Weapon and remove lingering/stacked buffs. Learned ranks are 28/38/48/58. Rank-four dummy proc 16389 has base points 1363, not an established damage hit; the live tooltip exposes weapon-speed-dependent bounds but does not prove its server formula or SP scaling.
+
+**Current implementation / scenario:** No active Flametongue Totem implementation; no fabricated comparison.
+
+**Impact:** May change melee raid support; the comparison cannot currently be simulated honestly.
+
+**Remaining scope:** Source or measured numeric per-hit/speed formula, SP scaling and proc eligibility; distinguish Windfury Weapon from Windfury Totem exclusions.
+
+**Implementation / model follow-up:** Keep source versions and implementation coverage separate; no inferred script formula or automatic preset optimization.
+
+**Sources / code**
+- Prerequisites: A current script explanation or controlled Forever source with a numeric formula.
+- Observe / verify: Resolve weapon-speed damage, SP contribution and eligible hits without treating a dummy field as damage.
+
+**Level-30 beta**
+- Prerequisites: Rank-one Flametongue at level 28; several weapon speeds and known SP deltas.
+- Observe / verify: Measure on-hit fire damage and eligible white/special hits, removing other damage procs. Grace of Air is not available in this stage.
+
+**Beyond level 30 / launch**
+- Prerequisites: Full-rank Flametongue, Grace of Air and Windfury; one fixed melee profile.
+- Observe / verify: Compare exclusive FT+Grace versus Windfury with the sourced model and matched inputs; rank-one evidence is not full-rank validation.
+
+**References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-updated-september-24/2360696](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-updated-september-24/2360696) · [https://www.wowhead.com/forever/spell=16387](https://www.wowhead.com/forever/spell=16387) · [https://warcraft.wiki.gg/wiki/Flametongue_Totem](https://warcraft.wiki.gg/wiki/Flametongue_Totem)
+
+<a id="sha-002"></a>
+
+### SHA-002 — Instant Maelstrom Lightning Bolt swing reset
+
+**Accepted working answer · High priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Does a five-stack instant Bolt still reset the next melee swing?
+
+**Finding:** The recent beta evidence supports instant Lightning Bolt preserving melee swings. Instant LB/CL no longer reset a full swing; positive-time casts still defer melee to cast end plus a full swing, with no melee during casts. Maelstrom only discounts/consumes on Lightning Bolt. Native instant/hardcast controls pass.
+
+**Current implementation / scenario:** The recent beta evidence supports instant Lightning Bolt preserving melee swings. Instant LB/CL no longer reset a full swing; positive-time casts still defer melee to cast end plus a full swing, with no melee during casts. Maelstrom only discounts/consumes on Lightning Bolt. Native instant/hardcast controls pass.
+
+**Impact:** Enhancement APL rankings; all corrected research includes the reset.
+
+**Remaining scope:** Confirm instant versus partial-stack timing with a combat trace at a level where Maelstrom is available; earlier reset-based Enhancement results are historical, not validation of this corrected assumption.
+
+**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
+
+**Optional / conditional · Beyond level 30 / launch**
+- Prerequisites: Level-39+ Shaman with five-point Maelstrom and a recorded swing timer.
+- Observe / verify: Cast five-stack Bolt at multiple points in the swing cycle, then compare ordinary and partial-stack casts. Record start, completion and next auto, not only aggregate DPS.
+
+**References:** [sim/shaman/lightning_bolt.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/shaman/lightning_bolt.go) · [docs/auto_attack_audit.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/auto_attack_audit.md) · [ui/core/talents/trees/shaman.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/shaman.json) · [sim/shaman/chain_lightning.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/shaman/chain_lightning.go)
+
+**Earlier references:** T48
+
+**Related:** SHA-001
 
 <a id="sha-005"></a>
 
@@ -3025,34 +3119,6 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Earlier references:** T08
 
-<a id="wl-003"></a>
-
-### WL-003 — Wrack's amplified DoT scope
-
-**Implementation gap · Medium priority · High confidence**
-
-**Disposition:** Known implementation work
-
-**Question:** Which other Shadow DoTs receive its amplification, and exactly when does cancellation remove it?
-
-**Finding:** The current Wrack modifier is aura 271 with family mask 0x402. Joining the spell-family records selects Corruption (0x2) and Agony (0x400), not Doom or Drain Life/Soul. Wowhead's affected-spell list independently matches that narrower scope. The engine instead accepts almost any other owned Shadow spell with a DoT. Channel cancellation is already implemented.
-
-**Current implementation / scenario:** Channel cancellation works; its modifier ends on cancellation. Current scope is not independently verified for every effect, especially Doom.
-
-**Impact:** Affliction channel/DoT interactions.
-
-**Remaining scope:** Correct the overly broad mask and test cancellation; no server experiment is needed to implement the current explicit client scope.
-
-**Implementation / model follow-up:** Restrict the modifier to the sourced family, retaining owner/target checks. Reconcile the level-40 learning record with the engine's level-60 registration metadata. Treat any later server evidence of broader behavior as a versioned contradiction, not the default assumption.
-
-**Sources / code**
-- Prerequisites: Controlled owned Corruption, Agony, Doom and another caster's DoT.
-- Observe / verify: Verify positive/negative modifier scope, immediate removal on channel cancellation and low-level availability at its actual learning level.
-
-**References:** [sim/warlock/wrack.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warlock/wrack.go) · [docs/check_dispositions.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/check_dispositions.md) · [https://www.wowhead.com/forever/spell=1316697/wrack](https://www.wowhead.com/forever/spell=1316697/wrack) · [artifacts/question_review/class_evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/class_evidence.json)
-
-**Earlier references:** T07
-
 <a id="wl-006"></a>
 
 ### WL-006 — Improved Imp's extra dummy effect
@@ -3080,34 +3146,6 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **References:** [sim/warlock/imp.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warlock/imp.go) · [docs/beta-pass/warlock.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/warlock.md) · [https://www.wowhead.com/forever/spell=18694/improved-imp](https://www.wowhead.com/forever/spell=18694/improved-imp) · [artifacts/question_review/class_evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/class_evidence.json)
 
 **Related:** WL-008
-
-<a id="wl-008"></a>
-
-### WL-008 — Improved Imp's Firebolt damage multiplier
-
-**Implementation gap · Medium priority · High confidence**
-
-**Disposition:** Known implementation work
-
-**Question:** Does Improved Imp multiply Firebolt's spell-power contribution as well as its base damage?
-
-**Finding:** Improved Imp's Firebolt effect is an ordinary damage-percent modifier, with a 10/20/30 rank curve and explicit Firebolt family mask. The engine multiplies only the base damage range, leaving its spell-power component outside the talent bonus. This is independent of the unresolved negative dummy in WL-006.
-
-**Current implementation / scenario:** The talent increases Firebolt's base damage range but leaves the SP contribution outside that multiplier.
-
-**Impact:** Undervalues the talent for an active Imp with spell power; this is separate from generic pet inheritance and the undocumented dummy effect.
-
-**Remaining scope:** A focused regression and correction to the full Firebolt damage multiplier; preserve the separate Fire Shield modifier scope.
-
-**Implementation / model follow-up:** Apply the documented percentage once to the full Firebolt damage. Current saved Warlock profiles use Succubus or a sacrificed Imp, so this is live-Imp coverage rather than a demonstrated current baseline gain.
-
-**Sources / code**
-- Prerequisites: Live Imp with zero and nonzero SP at each talent rank.
-- Observe / verify: Check the full damage ratio and ensure the SP component is multiplied exactly once. Do not simultaneously invent a cast-time change.
-
-**References:** [sim/warlock/imp.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warlock/imp.go) · [https://www.wowhead.com/forever/spell=18694/improved-imp](https://www.wowhead.com/forever/spell=18694/improved-imp) · [artifacts/question_review/class_evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/class_evidence.json)
-
-**Related:** WL-006
 
 <a id="wl-005"></a>
 
@@ -3162,6 +3200,54 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Observe / verify: Check inventory conservation, cast eligibility at zero, reset and exact qualifying kill events; keep assumed unlimited-shard reference results clearly labeled.
 
 **References:** [sim/warlock/warlock.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warlock/warlock.go) · [docs/beta-pass/warlock.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/warlock.md) · [https://www.warcrafttavern.com/forever/guides/warlock/](https://www.warcrafttavern.com/forever/guides/warlock/)
+
+<a id="wl-003"></a>
+
+### WL-003 — Wrack's amplified DoT scope
+
+**Resolved · Medium priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Which other Shadow DoTs receive its amplification, and exactly when does cancellation remove it?
+
+**Finding:** Wrack amplification is confined to the caster’s sourced Corruption/Curse of Agony family; unrelated or another owner’s DoTs do not gain the modifier. Native ownership, family and cancellation controls pass; learn-level metadata is 40.
+
+**Current implementation / scenario:** Wrack amplification is confined to the caster’s sourced Corruption/Curse of Agony family; unrelated or another owner’s DoTs do not gain the modifier. Native ownership, family and cancellation controls pass; learn-level metadata is 40.
+
+**Impact:** Affliction channel/DoT interactions.
+
+**Remaining scope:** None for the resolved question; profile/result publication is a separate pending integration step.
+
+**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
+
+**References:** [sim/warlock/wrack.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warlock/wrack.go) · [docs/check_dispositions.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/check_dispositions.md) · [https://www.wowhead.com/forever/spell=1316697/wrack](https://www.wowhead.com/forever/spell=1316697/wrack) · [artifacts/question_review/class_evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/class_evidence.json)
+
+**Earlier references:** T07
+
+<a id="wl-008"></a>
+
+### WL-008 — Improved Imp's Firebolt damage multiplier
+
+**Resolved · Medium priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Does Improved Imp multiply Firebolt's spell-power contribution as well as its base damage?
+
+**Finding:** Improved Imp multiplies full Firebolt damage, including its SP component, at all three talent ranks. The separate unexplained dummy effect is still tracked under WL-006.
+
+**Current implementation / scenario:** Improved Imp multiplies full Firebolt damage, including its SP component, at all three talent ranks. The separate unexplained dummy effect is still tracked under WL-006.
+
+**Impact:** Undervalues the talent for an active Imp with spell power; this is separate from generic pet inheritance and the undocumented dummy effect.
+
+**Remaining scope:** None for the resolved question; profile/result publication is a separate pending integration step.
+
+**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
+
+**References:** [sim/warlock/imp.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warlock/imp.go) · [https://www.wowhead.com/forever/spell=18694/improved-imp](https://www.wowhead.com/forever/spell=18694/improved-imp) · [artifacts/question_review/class_evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/class_evidence.json)
+
+**Related:** WL-006
 
 <a id="wl-004"></a>
 
@@ -3657,27 +3743,27 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 ### SCEN-016 — Overlapping seeds in historical validation
 
-**Implementation gap · High priority · High confidence**
+**Needs evidence · High priority · Moderate confidence**
 
-**Disposition:** Known implementation work
+**Disposition:** Partly answered
 
 **Question:** Which earlier pooled comparisons counted overlapping iteration seeds as independent replications?
 
-**Finding:** The overlap extends beyond the two known tank reports. Current modeled-gear confirmation uses starts one apart for 5,000 iterations: 5,001 distinct iteration seeds, not 10,000. Research-build confirmation has 5,060 distinct seeds; Paladin mana confirmation has 100,046 rather than 200,000. Several historical tank selection cohorts similarly overlap. The latest Sunder confirmation is genuinely disjoint, including its 25,000-iteration Orc extension.
+**Finding:** New validation guards compare complete iteration-seed intervals, not only distinct starting seeds. Historical overlapping cohorts retain raw means and requests but must not be called independent; conservative interval qualification is implemented locally.
 
-**Current implementation / scenario:** The engine uses starting seed plus iteration index. The preceding tank-support and queue reports used starts 38 and 52 apart for 10,000 iterations, reusing most seeds. New Sunder validation uses disjoint ranges.
+**Current implementation / scenario:** New validation guards compare complete iteration-seed intervals, not only distinct starting seeds. Historical overlapping cohorts retain raw means and requests but must not be called independent; conservative interval qualification is implemented locally.
 
 **Impact:** Legacy pooled sample-size and uncertainty claims need reassessment; this does not by itself invalidate saved DPS means or change combat behavior.
 
-**Remaining scope:** Correct older independence claims/uncertainty estimates and use nonoverlapping seed ranges for future selection confirmations.
+**Remaining scope:** Regenerate affected historical summary qualifications and verify every retained public interval label before closing the integration work.
 
-**Implementation / model follow-up:** Guard full [seed, seed+iterations-1] intervals, not just unequal starting seeds. validate_gear.py currently accepts unequal starts and then combines their SEs as independent. Preserve original results; repeated means are not automatically false gains, but the stated independent-replication confidence is unsupported. Current single-seed benchmark rows and deliberately paired baseline/Tier comparisons are not the same error.
+**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
 
 **Sources / code**
 - Prerequisites: Saved requests/iteration counts and the explicit seed-range inventory.
 - Observe / verify: Reject overlap within claimed independent replications. Recalculate uncertainty from unique iterations where available, or repeat only material decisions with disjoint ranges; do not rewrite archived raw evidence.
 
-**References:** [sim/core/sim.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/sim.go) · [docs/protection_sunder.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/protection_sunder.md) · [artifacts/tank_support/validation.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/tank_support/validation.json) · [artifacts/protection_queue/validation.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/protection_queue/validation.json) · [tools/forever_bench/validate_gear.py](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/validate_gear.py) · [artifacts/question_review/seed_ranges.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/seed_ranges.json) · [artifacts/protection_sunder/validation.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/protection_sunder/validation.json)
+**References:** [sim/core/sim.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/sim.go) · [docs/protection_sunder.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/protection_sunder.md) · [artifacts/tank_support/validation.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/tank_support/validation.json) · [artifacts/protection_queue/validation.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/protection_queue/validation.json) · [tools/forever_bench/validate_gear.py](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/validate_gear.py) · [artifacts/question_review/seed_ranges.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/seed_ranges.json) · [artifacts/protection_sunder/validation.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/protection_sunder/validation.json) · [tools/forever_bench/seed_intervals.py](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/seed_intervals.py)
 
 **Related:** SCEN-004
 
@@ -3711,21 +3797,21 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 ### SCEN-005 — General absorb-pool and shielding threat
 
-**Needs evidence · Medium priority · High confidence**
+**Needs evidence · Medium priority · Moderate confidence**
 
 **Disposition:** Partly answered
 
 **Question:** Do generic shields consume finite incoming damage and generate correct threat?
 
-**Finding:** The generic Shield helper really does only activate an aura and record generated shielding; it has no remaining-capacity consumption path and sets threat to zero as a TODO. Bulwark independently has a finite health-sized pool. Implementing the generic pool is source/code work, while effective shielding threat and interactions need their own evidence.
+**Finding:** Delivered damage now depletes finite all-school absorb pools after mitigation; dry damage probes do not consume them. Native/web metrics distinguish generated, absorbed and unused shielding. Bulwark probe isolation and delivery controls pass.
 
-**Current implementation / scenario:** The generic Shield helper records shielding without a full pool-consumption model or shielding threat. Templar's Bulwark has its own finite pool and is no longer the old 99% reduction shortcut.
+**Current implementation / scenario:** Delivered damage now depletes finite all-school absorb pools after mitigation; dry damage probes do not consume them. Native/web metrics distinguish generated, absorbed and unused shielding. Bulwark probe isolation and delivery controls pass.
 
 **Impact:** Priest/healing shields and future Seal of Fury integration; not a reason to revert correct Bulwark behavior.
 
-**Remaining scope:** Generic absorption, expiry and ordering; sourced threat on application versus absorption. Current tanks do not acquire a generic external shield from the existing healing model.
+**Remaining scope:** Shielding threat and overlap priority remain unresolved; application-order consumption is an explicit simulator convention. This is not a school-filtered shield or complete heal/absorb engine.
 
-**Implementation / model follow-up:** Reuse an explicit finite-pool model rather than treating generated shielding as effective mitigation. Keep generated, consumed and expired shielding distinct; preserve Bulwark's existing behavior.
+**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
 
 **Sources / code**
 - Prerequisites: A shield with a sourced amount/duration and sequential controlled incoming hits.
@@ -3735,37 +3821,9 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Prerequisites: Priest with Power Word: Shield, a cooperating player and a controlled hostile target with threat observation.
 - Observe / verify: Separate threat on shield application, actual absorption and unused expiry; do not attribute incidental healing or damage threat to the shield.
 
-**References:** [sim/core/shield.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/shield.go) · [sim/paladin/templars_bulwark.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/templars_bulwark.go) · [docs/weekly_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/weekly_review.md)
+**References:** [sim/core/shield.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/shield.go) · [sim/paladin/templars_bulwark.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/templars_bulwark.go) · [docs/weekly_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/weekly_review.md) · [sim/core/spell_result.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/spell_result.go) · [proto/api.proto](https://github.com/gunba/wow-forever-sim/blob/forever/proto/api.proto)
 
 **Earlier references:** H20 / M02 (remaining generic-shield portion)
-
-<a id="scen-006"></a>
-
-### SCEN-006 — Blood Pact talent bonus and pet-provider lifecycle
-
-**Implementation gap · Medium priority · High confidence**
-
-**Disposition:** Known implementation work
-
-**Question:** Does the current Improved Imp talent still increase Blood Pact, and do owned pet transitions update party buffs?
-
-**Finding:** There is a more immediate sourced defect than partial-rank lifecycle handling: current Improved Imp modifies Firebolt and Fire Shield, not Blood Pact. The engine still turns three points into an improved Blood Pact and applies a 30% Stamina multiplier to that external flag. A regression currently asserts 70 instead of the ordinary 54. All 184 saved DPS requests select the improved flag; the 17 tank requests do not select Blood Pact.
-
-**Current implementation / scenario:** The engine still supplies an obsolete 30% improved Blood Pact flag, turning 54 Stamina into 70. Automatic party provision also remains static rather than following all pet transitions.
-
-**Impact:** Tank health and party simulations involving an Imp.
-
-**Remaining scope:** Remove the obsolete talent multiplier and improved UI choice under Forever, then implement provider lifecycle independently. There is no new partial-rank Blood Pact bonus to invent.
-
-**Implementation / model follow-up:** Preserve Classic separately, the sourced base/rank growth and party scope. Record the current affected health totals before correcting requests; do not silently rerun or relabel benchmark results during this research pass. Summoning/sacrificing/dismissing an Imp must not supply a permanent owned aura.
-
-**Sources / code**
-- Prerequisites: Forever/Classic fixtures, Improved Imp ranks 0–3, explicit external coverage and owned Imp transitions.
-- Observe / verify: Verify no Forever talent increase to Blood Pact, preserved Classic behavior, correct party-only scope and activation/deactivation without removing an independent external provider.
-
-**References:** [docs/weekly_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/weekly_review.md) · [sim/warlock/warlock.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warlock/warlock.go) · [sim/core/buffs.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/buffs.go) · [tools/forever_bench/blood_pact_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/blood_pact_test.go) · [ui/core/components/inputs/buffs_debuffs.ts](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/components/inputs/buffs_debuffs.ts) · [https://www.wowhead.com/forever/spell=18694/improved-imp](https://www.wowhead.com/forever/spell=18694/improved-imp) · [artifacts/question_review/class_evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/class_evidence.json)
-
-**Related:** WL-006, WL-008
 
 <a id="scen-008"></a>
 
@@ -3817,31 +3875,51 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [docs/forever_tier1.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/forever_tier1.md) · [docs/modelled_gear.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/modelled_gear.md) · [tools/forever_bench/sensitivity.py](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/sensitivity.py) · [sim/core/equipment_scaling_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/equipment_scaling_test.go)
 
+<a id="scen-006"></a>
+
+### SCEN-006 — Blood Pact talent bonus and pet-provider lifecycle
+
+**Resolved · Medium priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Does the current Improved Imp talent still increase Blood Pact, and do owned pet transitions update party buffs?
+
+**Finding:** Forever Blood Pact uses sourced base Stamina without the inherited talent bonus. Owned Imp support follows pet enable/disable, sacrifice and reset; external support remains independent, party-scoped and non-duplicating. Native lifecycle and initial-health checks pass.
+
+**Current implementation / scenario:** Forever Blood Pact uses sourced base Stamina without the inherited talent bonus. Owned Imp support follows pet enable/disable, sacrifice and reset; external support remains independent, party-scoped and non-duplicating. Native lifecycle and initial-health checks pass.
+
+**Impact:** Tank health and party simulations involving an Imp.
+
+**Remaining scope:** None for the resolved question; profile/result publication is a separate pending integration step.
+
+**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
+
+**References:** [docs/weekly_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/weekly_review.md) · [sim/warlock/warlock.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warlock/warlock.go) · [sim/core/buffs.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/buffs.go) · [tools/forever_bench/blood_pact_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/blood_pact_test.go) · [ui/core/components/inputs/buffs_debuffs.ts](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/components/inputs/buffs_debuffs.ts) · [https://www.wowhead.com/forever/spell=18694/improved-imp](https://www.wowhead.com/forever/spell=18694/improved-imp) · [artifacts/question_review/class_evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/class_evidence.json) · [sim/warlock/imp.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warlock/imp.go)
+
+**Related:** WL-006, WL-008
+
 <a id="scen-011"></a>
 
 ### SCEN-011 — Windfury Totem in animal forms
 
-**Needs evidence · Medium priority · Low confidence**
+**Resolved · Medium priority · High confidence**
 
-**Disposition:** Game test needed
+**Disposition:** Source-backed answer
 
 **Question:** Does the redesigned party buff proc for Cat and Bear?
 
-**Finding:** The redesigned Totem is a party buff rather than a weapon imbue, so the removed weapon-application restriction no longer proves form exclusion. It also does not prove form eligibility. No direct Forever form-proc measurement was found in the reviewed public evidence.
+**Finding:** Blizzard explicitly supports Windfury Totem benefits in Cat/Bear forms. Form eligibility is implemented; this does not establish every proc amount/charge rule, which remains under PAL-003.
 
-**Current implementation / scenario:** Cat/form eligibility is provisionally enabled under the separate party-buff model; the removed weapon-imbue restriction is not conclusive proof.
+**Current implementation / scenario:** Blizzard explicitly supports Windfury Totem benefits in Cat/Bear forms. Form eligibility is implemented; this does not establish every proc amount/charge rule, which remains under PAL-003.
 
 **Impact:** Feral and Bear damage, rage and proc interactions.
 
-**Remaining scope:** Cat/Bear eligibility and extra-swing outcomes under the current party buff.
+**Remaining scope:** None for the resolved question; profile/result publication is a separate pending integration step.
 
-**Implementation / model follow-up:** Keep the current allowed-form treatment explicitly provisional and separate from Crusader form eligibility.
+**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
 
-**Beyond level 30 / launch**
-- Prerequisites: A Shaman with Windfury Totem (level 32), grouped Cat/Bear and no Grace of Air. Earlier only if the beta grants that buff explicitly.
-- Observe / verify: Record buff presence and isolated auto/extra-attack events in each form; use a humanoid weapon-attack control. The Druid reaching level 20 alone is insufficient access.
-
-**References:** [docs/forever-70009.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/forever-70009.md) · [sim/core/buffs.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/buffs.go) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-september-24/2360696](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-september-24/2360696)
+**References:** [docs/forever-70009.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/forever-70009.md) · [sim/core/buffs.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/buffs.go) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-september-24/2360696](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-september-24/2360696) · [https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid](https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid)
 
 **Earlier references:** T52 in in_game_checks.md (Totem/form eligibility)
 
@@ -3851,55 +3929,25 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 ### SCEN-014 — Legacy regression-suite alignment
 
-**Implementation gap · Medium priority · High confidence**
+**Resolved · Medium priority · High confidence**
 
-**Disposition:** Known implementation work
+**Disposition:** Source-backed answer
 
 **Question:** Can the full inherited test suite run against the current Forever data and presets, beyond the maintained release checks?
 
-**Finding:** A focused rerun reproduced five failing inherited checks: old 69893 talent values, contiguous proto-number assumptions, stale exported presets, and two obsolete landing-page contracts. The slot-collision check passed. One production metadata constant also remains stale: Paladin's final tree size is 18 although the current tree has 17 entries. This last-tree size does not shift the current valid strings, but it should be corrected rather than dismissing every failure as a fixture issue.
+**Finding:** Five reproduced legacy metadata checks now pass: current sourced rank fixtures, declaration-order talent mapping, legal selectable presets, the review-portal landing redirect and current fallback-menu names. The same check uncovered and corrected the real Hunter Careful Aim/Lethal Attacks decode swap. This is not a claim that every inherited suite or unsupported healer scenario is complete.
 
-**Current implementation / scenario:** The release runs targeted mechanics, source-coverage, tank and browser tests. The broader suite still includes excluded Classic items, pre-patch talent metadata, obsolete tree/proto-layout expectations and old landing-page assumptions.
+**Current implementation / scenario:** Five reproduced legacy metadata checks now pass: current sourced rank fixtures, declaration-order talent mapping, legal selectable presets, the review-portal landing redirect and current fallback-menu names. The same check uncovered and corrected the real Hunter Careful Aim/Lethal Attacks decode swap. This is not a claim that every inherited suite or unsupported healer scenario is complete.
 
 **Impact:** Automated regression coverage; a failing legacy fixture is not itself evidence that current game calculations are wrong.
 
-**Remaining scope:** Fixture/preset/metadata cleanup and a documented full-suite contract, separate from environment/toolchain failures.
+**Remaining scope:** None for the resolved question; profile/result publication is a separate pending integration step.
 
-**Implementation / model follow-up:** Update the retained Paladin size and obsolete preset exports, and migrate assertions to declaration-order fields/current sources. Elemental's invalid legacy Level 60 export is not the BuildPresets list actually used by its current picker. Do not revert source-backed post-patch values to satisfy old expectations.
+**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
 
-**Sources / code**
-- Prerequisites: Current generated databases, known toolchain and the inherited tests outside the release allowlist.
-- Observe / verify: Classify each failing assertion as stale fixture, real defect or environment problem before broadening the release gate.
-
-**References:** [.github/workflows/deploy.yml](https://github.com/gunba/wow-forever-sim/blob/forever/.github/workflows/deploy.yml) · [sim/confirmed_talents_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/confirmed_talents_test.go) · [sim/talents_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/talents_test.go) · [sim/core/simsignals/api_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/simsignals/api_test.go) · [sim/paladin/paladin.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/paladin.go) · [ui/elemental_shaman/presets.ts](https://github.com/gunba/wow-forever-sim/blob/forever/ui/elemental_shaman/presets.ts) · [artifacts/question_review/scenario_data_evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/scenario_data_evidence.json)
+**References:** [.github/workflows/deploy.yml](https://github.com/gunba/wow-forever-sim/blob/forever/.github/workflows/deploy.yml) · [sim/confirmed_talents_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/confirmed_talents_test.go) · [sim/talents_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/talents_test.go) · [sim/core/simsignals/api_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/simsignals/api_test.go) · [sim/paladin/paladin.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/paladin.go) · [ui/elemental_shaman/presets.ts](https://github.com/gunba/wow-forever-sim/blob/forever/ui/elemental_shaman/presets.ts) · [artifacts/question_review/scenario_data_evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/scenario_data_evidence.json) · [proto/hunter.proto](https://github.com/gunba/wow-forever-sim/blob/forever/proto/hunter.proto) · [ui/core/community_builds.ts](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/community_builds.ts) · [ui/holy_paladin/presets.ts](https://github.com/gunba/wow-forever-sim/blob/forever/ui/holy_paladin/presets.ts)
 
 **Related:** DATA-014
-
-<a id="scen-013"></a>
-
-### SCEN-013 — Power Infusion on another raid member
-
-**Implementation gap · Low priority · High confidence**
-
-**Disposition:** Known implementation work
-
-**Question:** Can an owned Priest cast Power Infusion on a selected other player?
-
-**Finding:** The owned Priest spell explicitly constructs Power Infusion on its own Unit and ignores the target-player option. External PI is a different abstraction. There is no missing probability or hidden coefficient preventing a target-selection implementation.
-
-**Current implementation / scenario:** The owned ability lacks a general target-player option; external buff settings are a separate abstraction.
-
-**Impact:** Multi-player raid support and support-DPS comparisons.
-
-**Remaining scope:** Native/web target plumbing and provider ownership.
-
-**Implementation / model follow-up:** Retain the Priest's mana cost/cooldown while applying the aura to the selected valid friendly player. Prevent overlap with independently configured external coverage.
-
-**Sources / code**
-- Prerequisites: A two-player raid, self/other/invalid target options and external PI controls.
-- Observe / verify: Verify who pays the cost, who receives the aura, cooldown ownership, targeting fallback and duplicate prevention.
-
-**References:** [sim/priest/power_infusion.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/priest/power_infusion.go) · [docs/beta-pass/priest.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/priest.md) · [sim/core/buffs.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/buffs.go)
 
 <a id="scen-007"></a>
 
@@ -3968,6 +4016,28 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **References:** [docs/beta-pass/druid.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/druid.md) · [sim/mage/counterspell.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/counterspell.go) · [sim/core/target.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/target.go) · [docs/tank_benchmark.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/tank_benchmark.md)
 
 **Related:** HUN-009, SCEN-003, ROG-006
+
+<a id="scen-013"></a>
+
+### SCEN-013 — Power Infusion on another raid member
+
+**Resolved · Low priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Can an owned Priest cast Power Infusion on a selected other player?
+
+**Finding:** Owned Power Infusion can target a selected friendly unit. Omitted target defaults to self; explicitly unassigned disables it. The magic-damage/healing bonus and mana reduction do not stack with another PI provider. Native target and overlap checks pass.
+
+**Current implementation / scenario:** Owned Power Infusion can target a selected friendly unit. Omitted target defaults to self; explicitly unassigned disables it. The magic-damage/healing bonus and mana reduction do not stack with another PI provider. Native target and overlap checks pass.
+
+**Impact:** Multi-player raid support and support-DPS comparisons.
+
+**Remaining scope:** None for the resolved question; profile/result publication is a separate pending integration step.
+
+**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
+
+**References:** [sim/priest/power_infusion.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/priest/power_infusion.go) · [docs/beta-pass/priest.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/priest.md) · [sim/core/buffs.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/buffs.go)
 
 ## Resolved questions and superseded claims
 

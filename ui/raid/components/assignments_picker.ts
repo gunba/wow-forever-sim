@@ -134,7 +134,7 @@ class PowerInfusionsPicker extends AssignedBuffPicker {
 	}
 
 	getPlayerValue(player: Player<any>): UnitReference {
-		return (player as Player<Spec.SpecShadowPriest>).getSpecOptions().powerInfusionTarget || emptyUnitReference();
+		return (player as Player<Spec.SpecShadowPriest>).getSpecOptions().powerInfusionTarget || player.makeUnitReference();
 	}
 
 	setPlayerValue(eventID: EventID, player: Player<any>, newValue: UnitReference) {

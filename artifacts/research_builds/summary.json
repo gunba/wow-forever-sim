@@ -13,6 +13,8 @@
     20295271
   ],
   "IterationsPerArmPerSeed": 5000,
+  "SeedIntervalsIndependent": false,
+  "ErrorAggregation": "conservative-marginal-maximum",
   "Choices": [
     {
       "Key": "enhancement",
@@ -28,7 +30,7 @@
           "CandidateDPS": 740.3731906479039,
           "GainDPS": 136.1161819351346,
           "GainPercent": 22.526206559870744,
-          "Conservative95BoundDPS": 1.4503334492178646,
+          "Conservative95BoundDPS": 2.052633436798757,
           "BaselineOOM": 42.46343797680278,
           "CandidateOOM": 0.022475000000000002
         },
@@ -38,7 +40,7 @@
           "CandidateDPS": 736.4265600845602,
           "GainDPS": 134.1832838794761,
           "GainPercent": 22.28057816186928,
-          "Conservative95BoundDPS": 1.4720794006466404,
+          "Conservative95BoundDPS": 2.0824693600154305,
           "BaselineOOM": 45.791922548902576,
           "CandidateOOM": 0.018405000000000005
         },
@@ -48,7 +50,7 @@
           "CandidateDPS": 739.2018911879857,
           "GainDPS": 137.25313822218368,
           "GainPercent": 22.801465663968457,
-          "Conservative95BoundDPS": 1.4631858647211267,
+          "Conservative95BoundDPS": 2.0700446058072113,
           "BaselineOOM": 40.058388155827444,
           "CandidateOOM": 0.01064
         },
@@ -58,7 +60,7 @@
           "CandidateDPS": 732.4708212184448,
           "GainDPS": 136.21887680968518,
           "GainPercent": 22.84585871577478,
-          "Conservative95BoundDPS": 1.4354759781620818,
+          "Conservative95BoundDPS": 2.031753585521877,
           "BaselineOOM": 39.00834944273539,
           "CandidateOOM": 0.018919999999999992
         },
@@ -68,7 +70,7 @@
           "CandidateDPS": 731.8780578651749,
           "GainDPS": 132.27559997903018,
           "GainPercent": 22.06054999263316,
-          "Conservative95BoundDPS": 1.447319168044276,
+          "Conservative95BoundDPS": 2.0503899134819306,
           "BaselineOOM": 42.354076424174835,
           "CandidateOOM": 0.02634000000000001
         }
@@ -89,7 +91,7 @@
           "CandidateDPS": 833.6759215325142,
           "GainDPS": 56.05691418832362,
           "GainPercent": 7.208789093231571,
-          "Conservative95BoundDPS": 1.2281773708269106,
+          "Conservative95BoundDPS": 1.7374556228017064,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -99,7 +101,7 @@
           "CandidateDPS": 838.9645211711216,
           "GainDPS": 56.03545010035646,
           "GainPercent": 7.157155375993396,
-          "Conservative95BoundDPS": 1.224852786187166,
+          "Conservative95BoundDPS": 1.7345437803206822,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -109,7 +111,7 @@
           "CandidateDPS": 854.6862236365112,
           "GainDPS": 57.39885441403794,
           "GainPercent": 7.199267996684089,
-          "Conservative95BoundDPS": 1.2612494334074495,
+          "Conservative95BoundDPS": 1.7837811915325785,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -119,7 +121,7 @@
           "CandidateDPS": 846.9522397245,
           "GainDPS": 56.50207274456636,
           "GainPercent": 7.148087900397737,
-          "Conservative95BoundDPS": 1.2510217258130203,
+          "Conservative95BoundDPS": 1.7697225228762339,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -129,7 +131,7 @@
           "CandidateDPS": 849.7856300612891,
           "GainDPS": 56.671346102603025,
           "GainPercent": 7.1454199286057785,
-          "Conservative95BoundDPS": 1.2540193748017034,
+          "Conservative95BoundDPS": 1.773609760004673,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -139,7 +141,7 @@
           "CandidateDPS": 837.7921516198148,
           "GainDPS": 56.23884167156598,
           "GainPercent": 7.195778068586245,
-          "Conservative95BoundDPS": 1.2343078290227085,
+          "Conservative95BoundDPS": 1.7460555832043636,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -149,7 +151,7 @@
           "CandidateDPS": 842.1899257161715,
           "GainDPS": 57.94391746228007,
           "GainPercent": 7.388487394572918,
-          "Conservative95BoundDPS": 1.2443731024001852,
+          "Conservative95BoundDPS": 1.761417551510074,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -159,7 +161,7 @@
           "CandidateDPS": 838.9645211711216,
           "GainDPS": 56.03545010035646,
           "GainPercent": 7.157155375993396,
-          "Conservative95BoundDPS": 1.224852786187166,
+          "Conservative95BoundDPS": 1.7345437803206822,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         }
@@ -180,7 +182,7 @@
           "CandidateDPS": 847.6352357445533,
           "GainDPS": 30.910958456048547,
           "GainPercent": 3.784748331306109,
-          "Conservative95BoundDPS": 1.107736794775069,
+          "Conservative95BoundDPS": 1.5676378345792767,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -190,7 +192,7 @@
           "CandidateDPS": 836.4413606778256,
           "GainDPS": 33.002445310719054,
           "GainPercent": 4.107648345069226,
-          "Conservative95BoundDPS": 1.1063389820390686,
+          "Conservative95BoundDPS": 1.5652250700233596,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -200,7 +202,7 @@
           "CandidateDPS": 844.7899966071668,
           "GainDPS": 32.7590890136355,
           "GainPercent": 4.034217011605845,
-          "Conservative95BoundDPS": 1.112137529266975,
+          "Conservative95BoundDPS": 1.5732129112938493,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -210,7 +212,7 @@
           "CandidateDPS": 839.1481605960782,
           "GainDPS": 35.69633341719009,
           "GainPercent": 4.442871645774771,
-          "Conservative95BoundDPS": 1.0921451964055495,
+          "Conservative95BoundDPS": 1.5447405206313434,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -220,7 +222,7 @@
           "CandidateDPS": 849.3021252347678,
           "GainDPS": 34.48315820799462,
           "GainPercent": 4.232002396044066,
-          "Conservative95BoundDPS": 1.1072903894574422,
+          "Conservative95BoundDPS": 1.5664568763588858,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         }
@@ -241,7 +243,7 @@
           "CandidateDPS": 550.8279483433066,
           "GainDPS": 8.111991606067477,
           "GainPercent": 1.4947029851187787,
-          "Conservative95BoundDPS": 0.5840424059974767,
+          "Conservative95BoundDPS": 0.8266331174521111,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -251,7 +253,7 @@
           "CandidateDPS": 559.6485092656459,
           "GainDPS": 12.885384087808575,
           "GainPercent": 2.3566666248053147,
-          "Conservative95BoundDPS": 0.6084140196455149,
+          "Conservative95BoundDPS": 0.8615317945657622,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -261,7 +263,7 @@
           "CandidateDPS": 556.8347642175524,
           "GainDPS": 17.286797584895567,
           "GainPercent": 3.2039408271304026,
-          "Conservative95BoundDPS": 0.6088144910183134,
+          "Conservative95BoundDPS": 0.8611975899043323,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -271,7 +273,7 @@
           "CandidateDPS": 562.5809445624363,
           "GainDPS": 8.258438826617407,
           "GainPercent": 1.4898256414205946,
-          "Conservative95BoundDPS": 0.5963261261121048,
+          "Conservative95BoundDPS": 0.8440565961047529,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -281,7 +283,7 @@
           "CandidateDPS": 559.9065737244337,
           "GainDPS": 8.257366129106913,
           "GainPercent": 1.496850900067681,
-          "Conservative95BoundDPS": 0.5910417244787812,
+          "Conservative95BoundDPS": 0.8364424691583587,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -291,7 +293,7 @@
           "CandidateDPS": 556.7279948804353,
           "GainDPS": 8.279835513871603,
           "GainPercent": 1.5096842559257473,
-          "Conservative95BoundDPS": 0.5922687496549212,
+          "Conservative95BoundDPS": 0.8380252122262931,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -301,7 +303,7 @@
           "CandidateDPS": 558.4867107708601,
           "GainDPS": 16.70965419784386,
           "GainPercent": 3.0842306803355424,
-          "Conservative95BoundDPS": 0.603466074991903,
+          "Conservative95BoundDPS": 0.8540380865533325,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -311,7 +313,7 @@
           "CandidateDPS": 579.992244201029,
           "GainDPS": 7.762318080728846,
           "GainPercent": 1.3565033435698037,
-          "Conservative95BoundDPS": 0.6374663626420232,
+          "Conservative95BoundDPS": 0.9020299926388787,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -321,7 +323,7 @@
           "CandidateDPS": 556.8347642175524,
           "GainDPS": 17.286797584895567,
           "GainPercent": 3.2039408271304026,
-          "Conservative95BoundDPS": 0.6088144910183134,
+          "Conservative95BoundDPS": 0.8611975899043323,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         }
@@ -344,7 +346,7 @@
           "CandidateDPS": 535.0788503173268,
           "GainDPS": 10.112553956332818,
           "GainPercent": 1.9263244186211281,
-          "Conservative95BoundDPS": 0.6132299640127545,
+          "Conservative95BoundDPS": 0.8679487042654515,
           "BaselineOOM": 1.4564,
           "CandidateOOM": 0.3069
         },
@@ -354,7 +356,7 @@
           "CandidateDPS": 539.6930952430971,
           "GainDPS": 10.409929089897787,
           "GainPercent": 1.966797690838451,
-          "Conservative95BoundDPS": 0.6135061386198505,
+          "Conservative95BoundDPS": 0.8681692953004665,
           "BaselineOOM": 1.4438499999999999,
           "CandidateOOM": 0.29415
         },
@@ -364,7 +366,7 @@
           "CandidateDPS": 538.7769639984537,
           "GainDPS": 10.25187227523179,
           "GainPercent": 1.9397134470581667,
-          "Conservative95BoundDPS": 0.616976044047657,
+          "Conservative95BoundDPS": 0.8731134683736126,
           "BaselineOOM": 1.4487,
           "CandidateOOM": 0.28345
         },
@@ -374,7 +376,7 @@
           "CandidateDPS": 535.4908023531895,
           "GainDPS": 10.2477573680452,
           "GainPercent": 1.9510505595243144,
-          "Conservative95BoundDPS": 0.6084888357357967,
+          "Conservative95BoundDPS": 0.86110723695974,
           "BaselineOOM": 1.4222045454679937,
           "CandidateOOM": 0.2600954545472004
         },
@@ -384,7 +386,7 @@
           "CandidateDPS": 535.5112928717772,
           "GainDPS": 9.093545864426574,
           "GainPercent": 1.7274390759283387,
-          "Conservative95BoundDPS": 0.6146303813642819,
+          "Conservative95BoundDPS": 0.8696776256270683,
           "BaselineOOM": 1.4506141097730976,
           "CandidateOOM": 0.27826391109799975
         }
@@ -407,7 +409,7 @@
           "CandidateDPS": 533.6922321108848,
           "GainDPS": 8.725935749890823,
           "GainPercent": 1.662189708249473,
-          "Conservative95BoundDPS": 0.609642586155398,
+          "Conservative95BoundDPS": 0.8625470157843905,
           "BaselineOOM": 1.4564,
           "CandidateOOM": 0.3433
         },
@@ -417,7 +419,7 @@
           "CandidateDPS": 538.1072083549477,
           "GainDPS": 8.824042201748398,
           "GainPercent": 1.667168496190996,
-          "Conservative95BoundDPS": 0.6138186447635631,
+          "Conservative95BoundDPS": 0.8683324127382387,
           "BaselineOOM": 1.4438499999999999,
           "CandidateOOM": 0.34725
         },
@@ -427,7 +429,7 @@
           "CandidateDPS": 537.2924260351298,
           "GainDPS": 8.767334311907916,
           "GainPercent": 1.658830290028912,
-          "Conservative95BoundDPS": 0.6139830996179712,
+          "Conservative95BoundDPS": 0.8685275466650316,
           "BaselineOOM": 1.4487,
           "CandidateOOM": 0.3487
         },
@@ -437,7 +439,7 @@
           "CandidateDPS": 534.6072446862247,
           "GainDPS": 9.364199701080452,
           "GainPercent": 1.7828317367525104,
-          "Conservative95BoundDPS": 0.611948756257388,
+          "Conservative95BoundDPS": 0.8659855684977673,
           "BaselineOOM": 1.4222045454679937,
           "CandidateOOM": 0.3995327275291993
         },
@@ -447,7 +449,7 @@
           "CandidateDPS": 534.9832374497714,
           "GainDPS": 8.56549044242081,
           "GainPercent": 1.6271279779443315,
-          "Conservative95BoundDPS": 0.6205507325870967,
+          "Conservative95BoundDPS": 0.8776415127401971,
           "BaselineOOM": 1.4506141097730976,
           "CandidateOOM": 0.36723753846770213
         }
@@ -470,7 +472,7 @@
           "CandidateDPS": 1033.41034290372,
           "GainDPS": 30.107639809390093,
           "GainPercent": 3.0008530542710465,
-          "Conservative95BoundDPS": 1.228646585381427,
+          "Conservative95BoundDPS": 1.7388184355179142,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.00037999999999999997
         },
@@ -480,7 +482,7 @@
           "CandidateDPS": 1034.984751033194,
           "GainDPS": 30.116903395090958,
           "GainPercent": 2.9971009089284184,
-          "Conservative95BoundDPS": 1.2275003914808098,
+          "Conservative95BoundDPS": 1.7380660360736138,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.00011999999999999999
         },
@@ -490,7 +492,7 @@
           "CandidateDPS": 1051.1370654243742,
           "GainDPS": 26.062831358087806,
           "GainPercent": 2.542531115497959,
-          "Conservative95BoundDPS": 1.2308728977906076,
+          "Conservative95BoundDPS": 1.7414480453611092,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0004
         }
@@ -511,7 +513,7 @@
           "CandidateDPS": 766.7340178217075,
           "GainDPS": 2.280631228636821,
           "GainPercent": 0.29833489767123744,
-          "Conservative95BoundDPS": 0.5740898164545405,
+          "Conservative95BoundDPS": 0.8119398832656581,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -521,7 +523,7 @@
           "CandidateDPS": 772.8740962031088,
           "GainDPS": 2.0187805570395767,
           "GainPercent": 0.26188838762142286,
-          "Conservative95BoundDPS": 0.5786663642827778,
+          "Conservative95BoundDPS": 0.8184849160926718,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -531,7 +533,7 @@
           "CandidateDPS": 766.9869899908151,
           "GainDPS": 2.2422037557921612,
           "GainPercent": 0.293196344211899,
-          "Conservative95BoundDPS": 0.5761420670776327,
+          "Conservative95BoundDPS": 0.8149650830984695,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -541,7 +543,7 @@
           "CandidateDPS": 772.4421831126831,
           "GainDPS": 2.264694299722578,
           "GainPercent": 0.2940483632172919,
-          "Conservative95BoundDPS": 0.5822360541893974,
+          "Conservative95BoundDPS": 0.8235589882081692,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -551,7 +553,7 @@
           "CandidateDPS": 765.8282373056097,
           "GainDPS": 2.10508966704856,
           "GainPercent": 0.27563517926063597,
-          "Conservative95BoundDPS": 0.5760752610171256,
+          "Conservative95BoundDPS": 0.8152275600575126,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -561,7 +563,7 @@
           "CandidateDPS": 777.7855676164256,
           "GainDPS": 3.5605039808028778,
           "GainPercent": 0.45987971044019194,
-          "Conservative95BoundDPS": 0.5845879277785624,
+          "Conservative95BoundDPS": 0.8271924334575668,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         }
@@ -584,7 +586,7 @@
           "CandidateDPS": 556.6421559395534,
           "GainDPS": 7.175979198260848,
           "GainPercent": 1.3059910695175647,
-          "Conservative95BoundDPS": 0.40913732895604316,
+          "Conservative95BoundDPS": 0.5791393848092947,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -594,7 +596,7 @@
           "CandidateDPS": 560.6120507506719,
           "GainDPS": 6.165135347497085,
           "GainPercent": 1.1119433035377213,
-          "Conservative95BoundDPS": 0.4135489446712114,
+          "Conservative95BoundDPS": 0.5853353878275751,
           "BaselineOOM": 0.0,
           "CandidateOOM": 1e-05
         },
@@ -604,7 +606,7 @@
           "CandidateDPS": 557.1889460035145,
           "GainDPS": 6.982958287318752,
           "GainPercent": 1.269153452201377,
-          "Conservative95BoundDPS": 0.4157691420427238,
+          "Conservative95BoundDPS": 0.5885353385013904,
           "BaselineOOM": 1e-05,
           "CandidateOOM": 3.0000000000000004e-05
         },
@@ -614,7 +616,7 @@
           "CandidateDPS": 559.6251845444624,
           "GainDPS": 6.983198781131023,
           "GainPercent": 1.2636026507261366,
-          "Conservative95BoundDPS": 0.4156230591128573,
+          "Conservative95BoundDPS": 0.5883582962859911,
           "BaselineOOM": 0.0,
           "CandidateOOM": 1e-05
         },
@@ -624,7 +626,7 @@
           "CandidateDPS": 559.0874596501469,
           "GainDPS": 7.553274015165584,
           "GainPercent": 1.369502419232549,
-          "Conservative95BoundDPS": 0.4168797339578217,
+          "Conservative95BoundDPS": 0.5899580405514379,
           "BaselineOOM": 0.0,
           "CandidateOOM": 7e-05
         },
@@ -634,7 +636,7 @@
           "CandidateDPS": 563.0752586226339,
           "GainDPS": 7.71592006395565,
           "GainPercent": 1.3893563190961578,
-          "Conservative95BoundDPS": 0.4180193909180036,
+          "Conservative95BoundDPS": 0.5917707882857896,
           "BaselineOOM": 3.0000000000000004e-05,
           "CandidateOOM": 0.0
         }
@@ -657,7 +659,7 @@
           "CandidateDPS": 865.2622918639045,
           "GainDPS": 26.481873785558605,
           "GainPercent": 3.157187890273927,
-          "Conservative95BoundDPS": 0.8728830364728037,
+          "Conservative95BoundDPS": 1.235858314375957,
           "BaselineOOM": 0.028995,
           "CandidateOOM": 0.36724500000000004
         },
@@ -667,7 +669,7 @@
           "CandidateDPS": 874.3312914483499,
           "GainDPS": 27.46497227477107,
           "GainPercent": 3.2431296006166566,
-          "Conservative95BoundDPS": 0.8788491291591559,
+          "Conservative95BoundDPS": 1.2432782643067,
           "BaselineOOM": 0.026039999999999997,
           "CandidateOOM": 0.37858999999999987
         },
@@ -677,7 +679,7 @@
           "CandidateDPS": 882.26343705512,
           "GainDPS": 27.477465530670997,
           "GainPercent": 3.214543341377829,
-          "Conservative95BoundDPS": 0.8937312974347262,
+          "Conservative95BoundDPS": 1.265128098734311,
           "BaselineOOM": 0.03147708457980001,
           "CandidateOOM": 0.2638699999999997
         },
@@ -687,7 +689,7 @@
           "CandidateDPS": 878.8216779362197,
           "GainDPS": 27.99886873943649,
           "GainPercent": 3.2907990285155453,
-          "Conservative95BoundDPS": 0.8885292181282443,
+          "Conservative95BoundDPS": 1.2581837622734755,
           "BaselineOOM": 0.025970000000000007,
           "CandidateOOM": 0.33183000000000007
         },
@@ -697,7 +699,7 @@
           "CandidateDPS": 878.4943461594654,
           "GainDPS": 26.239038948368602,
           "GainPercent": 3.0787768320543085,
-          "Conservative95BoundDPS": 0.894598977706654,
+          "Conservative95BoundDPS": 1.2663332883581693,
           "BaselineOOM": 0.03513000000000001,
           "CandidateOOM": 0.3691300000000003
         },
@@ -707,7 +709,7 @@
           "CandidateDPS": 867.7805462047961,
           "GainDPS": 26.28470482832472,
           "GainPercent": 3.1235691890443285,
-          "Conservative95BoundDPS": 0.8793030870755449,
+          "Conservative95BoundDPS": 1.2446098270162238,
           "BaselineOOM": 0.03877499999999999,
           "CandidateOOM": 0.3891297366548003
         },
@@ -717,7 +719,7 @@
           "CandidateDPS": 873.9827903548011,
           "GainDPS": 27.136108141814134,
           "GainPercent": 3.204370839701687,
-          "Conservative95BoundDPS": 0.882430749413505,
+          "Conservative95BoundDPS": 1.2483840404804487,
           "BaselineOOM": 0.026549202631400003,
           "CandidateOOM": 0.4337350000000002
         },
@@ -727,7 +729,7 @@
           "CandidateDPS": 874.3312914483499,
           "GainDPS": 27.46497227477107,
           "GainPercent": 3.2431296006166566,
-          "Conservative95BoundDPS": 0.8788491291591559,
+          "Conservative95BoundDPS": 1.2432782643067,
           "BaselineOOM": 0.026039999999999997,
           "CandidateOOM": 0.37858999999999987
         }
@@ -750,7 +752,7 @@
           "CandidateDPS": 858.0298852690618,
           "GainDPS": 80.41087792487122,
           "GainPercent": 10.340652320150866,
-          "Conservative95BoundDPS": 1.2139386848239548,
+          "Conservative95BoundDPS": 1.7170607940261517,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -760,7 +762,7 @@
           "CandidateDPS": 862.3540280405272,
           "GainDPS": 79.42495696976198,
           "GainPercent": 10.144591624518062,
-          "Conservative95BoundDPS": 1.213671662344056,
+          "Conservative95BoundDPS": 1.7183011668601589,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -770,7 +772,7 @@
           "CandidateDPS": 879.3563290055267,
           "GainDPS": 82.06895978305351,
           "GainPercent": 10.29352313245453,
-          "Conservative95BoundDPS": 1.2476600464688503,
+          "Conservative95BoundDPS": 1.7647893384433562,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -780,7 +782,7 @@
           "CandidateDPS": 872.0889151897275,
           "GainDPS": 81.63874820979379,
           "GainPercent": 10.328133463708443,
-          "Conservative95BoundDPS": 1.2353796801462664,
+          "Conservative95BoundDPS": 1.7474044391565169,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -790,7 +792,7 @@
           "CandidateDPS": 873.3206040008163,
           "GainDPS": 80.20632004213019,
           "GainPercent": 10.112832622531375,
-          "Conservative95BoundDPS": 1.2411179452768852,
+          "Conservative95BoundDPS": 1.755286918194704,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -800,7 +802,7 @@
           "CandidateDPS": 861.9984281270634,
           "GainDPS": 80.4451181788146,
           "GainPercent": 10.292979014335103,
-          "Conservative95BoundDPS": 1.2220256016596889,
+          "Conservative95BoundDPS": 1.7285263540343805,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -810,7 +812,7 @@
           "CandidateDPS": 864.5573190178475,
           "GainDPS": 80.31131076395604,
           "GainPercent": 10.240576288398028,
-          "Conservative95BoundDPS": 1.2362624233621637,
+          "Conservative95BoundDPS": 1.7497576079096153,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -820,7 +822,7 @@
           "CandidateDPS": 862.3540280405272,
           "GainDPS": 79.42495696976198,
           "GainPercent": 10.144591624518062,
-          "Conservative95BoundDPS": 1.213671662344056,
+          "Conservative95BoundDPS": 1.7183011668601589,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         }
@@ -843,7 +845,7 @@
           "CandidateDPS": 711.8398229611748,
           "GainDPS": 28.50485188177447,
           "GainPercent": 4.171431741119291,
-          "Conservative95BoundDPS": 1.0982554162537832,
+          "Conservative95BoundDPS": 1.5540105806697304,
           "BaselineOOM": 0.043075,
           "CandidateOOM": 0.0
         },
@@ -853,7 +855,7 @@
           "CandidateDPS": 711.8979360879987,
           "GainDPS": 29.149445261585356,
           "GainPercent": 4.269426538944421,
-          "Conservative95BoundDPS": 1.0806521404108504,
+          "Conservative95BoundDPS": 1.5293826427684798,
           "BaselineOOM": 0.1469146058007999,
           "CandidateOOM": 0.0
         },
@@ -863,7 +865,7 @@
           "CandidateDPS": 706.745670990647,
           "GainDPS": 29.777141339712557,
           "GainPercent": 4.398600530968033,
-          "Conservative95BoundDPS": 1.0864903923562317,
+          "Conservative95BoundDPS": 1.5373915173756845,
           "BaselineOOM": 0.11435000000000001,
           "CandidateOOM": 0.0
         },
@@ -873,7 +875,7 @@
           "CandidateDPS": 711.0784622159013,
           "GainDPS": 30.2231839017187,
           "GainPercent": 4.439002658032143,
-          "Conservative95BoundDPS": 1.0891831352640204,
+          "Conservative95BoundDPS": 1.54136228713974,
           "BaselineOOM": 0.19715,
           "CandidateOOM": 0.0
         },
@@ -883,7 +885,7 @@
           "CandidateDPS": 710.3228357997868,
           "GainDPS": 29.347685078332688,
           "GainPercent": 4.309655799810086,
-          "Conservative95BoundDPS": 1.0844410945029164,
+          "Conservative95BoundDPS": 1.5344487641644162,
           "BaselineOOM": 0.14159363653200036,
           "CandidateOOM": 0.0
         },
@@ -893,7 +895,7 @@
           "CandidateDPS": 719.4781761080724,
           "GainDPS": 34.460578286013515,
           "GainPercent": 5.030612117933497,
-          "Conservative95BoundDPS": 1.0856177846007933,
+          "Conservative95BoundDPS": 1.53590310683411,
           "BaselineOOM": 0.1502,
           "CandidateOOM": 0.0
         }
@@ -916,7 +918,7 @@
           "CandidateDPS": 792.5612098693749,
           "GainDPS": 11.698191434678279,
           "GainPercent": 1.4981105723419041,
-          "Conservative95BoundDPS": 1.434624285061939,
+          "Conservative95BoundDPS": 2.030204545513109,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -926,7 +928,7 @@
           "CandidateDPS": 793.6477808291747,
           "GainDPS": 10.43391958358984,
           "GainPercent": 1.3321929168868651,
-          "Conservative95BoundDPS": 1.4432208399043176,
+          "Conservative95BoundDPS": 2.0419688231026973,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -936,7 +938,7 @@
           "CandidateDPS": 793.0629207896098,
           "GainDPS": 8.93097276660967,
           "GainPercent": 1.1389630009499108,
-          "Conservative95BoundDPS": 1.4424676016323927,
+          "Conservative95BoundDPS": 2.0414437341127085,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -946,7 +948,7 @@
           "CandidateDPS": 805.8469874915993,
           "GainDPS": 12.94488886040915,
           "GainPercent": 1.6325961153030422,
-          "Conservative95BoundDPS": 1.449212734974952,
+          "Conservative95BoundDPS": 2.0501533522860242,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -956,7 +958,7 @@
           "CandidateDPS": 795.2235143157353,
           "GainDPS": 8.2418462015562,
           "GainPercent": 1.0472729588868246,
-          "Conservative95BoundDPS": 1.4579522701622682,
+          "Conservative95BoundDPS": 2.0626702563750547,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -966,7 +968,7 @@
           "CandidateDPS": 802.9410042527077,
           "GainDPS": 13.973491960939327,
           "GainPercent": 1.7711111982734895,
-          "Conservative95BoundDPS": 1.4734796556481418,
+          "Conservative95BoundDPS": 2.0853093891547916,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -976,7 +978,7 @@
           "CandidateDPS": 797.8169894319449,
           "GainDPS": 12.027351889310467,
           "GainPercent": 1.5306070880398925,
-          "Conservative95BoundDPS": 1.4516475629310364,
+          "Conservative95BoundDPS": 2.0535363109347515,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -986,7 +988,7 @@
           "CandidateDPS": 795.621448386479,
           "GainDPS": 13.471813867629066,
           "GainPercent": 1.7224087659283294,
-          "Conservative95BoundDPS": 1.4411569878866075,
+          "Conservative95BoundDPS": 2.0392717541118808,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -996,7 +998,7 @@
           "CandidateDPS": 800.5179186119849,
           "GainDPS": 8.614671117001762,
           "GainPercent": 1.0878438930832068,
-          "Conservative95BoundDPS": 1.4444129701222488,
+          "Conservative95BoundDPS": 2.0435449293365395,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -1006,7 +1008,7 @@
           "CandidateDPS": 793.0629207896098,
           "GainDPS": 8.93097276660967,
           "GainPercent": 1.1389630009499108,
-          "Conservative95BoundDPS": 1.4424676016323927,
+          "Conservative95BoundDPS": 2.0414437341127085,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         }
@@ -1028,7 +1030,7 @@
           "CandidateDPS": 905.751189119401,
           "GainDPS": 66.97077104105517,
           "GainPercent": 7.984303114095814,
-          "Conservative95BoundDPS": 0.9855726930811166,
+          "Conservative95BoundDPS": 1.3950243878106676,
           "BaselineOOM": 0.028995,
           "CandidateOOM": 0.6223550271618016
         },
@@ -1038,7 +1040,7 @@
           "CandidateDPS": 916.7673552940594,
           "GainDPS": 69.90103612048051,
           "GainPercent": 8.254081492896548,
-          "Conservative95BoundDPS": 0.9934206684441171,
+          "Conservative95BoundDPS": 1.4051105409550178,
           "BaselineOOM": 0.026039999999999997,
           "CandidateOOM": 0.6328069784251996
         },
@@ -1048,7 +1050,7 @@
           "CandidateDPS": 927.815727958033,
           "GainDPS": 73.029756433584,
           "GainPercent": 8.54363067088486,
-          "Conservative95BoundDPS": 1.010920289482438,
+          "Conservative95BoundDPS": 1.4306383561582117,
           "BaselineOOM": 0.03147708457980001,
           "CandidateOOM": 0.47087000000000007
         },
@@ -1058,7 +1060,7 @@
           "CandidateDPS": 922.4936416975752,
           "GainDPS": 71.67083250079202,
           "GainPercent": 8.423708406272358,
-          "Conservative95BoundDPS": 1.0074975446064316,
+          "Conservative95BoundDPS": 1.4262944710838352,
           "BaselineOOM": 0.025970000000000007,
           "CandidateOOM": 0.6168000000000005
         },
@@ -1068,7 +1070,7 @@
           "CandidateDPS": 922.3657397799916,
           "GainDPS": 70.1104325688948,
           "GainPercent": 8.226458899777667,
-          "Conservative95BoundDPS": 1.0124762703109274,
+          "Conservative95BoundDPS": 1.4328510237148222,
           "BaselineOOM": 0.03513000000000001,
           "CandidateOOM": 0.5909366060880005
         },
@@ -1078,7 +1080,7 @@
           "CandidateDPS": 909.2342704593851,
           "GainDPS": 67.73842908291374,
           "GainPercent": 8.04976397412862,
-          "Conservative95BoundDPS": 0.9939521319004173,
+          "Conservative95BoundDPS": 1.4065895566617905,
           "BaselineOOM": 0.03877499999999999,
           "CandidateOOM": 0.6271094576250014
         },
@@ -1088,7 +1090,7 @@
           "CandidateDPS": 916.0137157211764,
           "GainDPS": 69.16703350818943,
           "GainPercent": 8.167598097856565,
-          "Conservative95BoundDPS": 0.9976299615823399,
+          "Conservative95BoundDPS": 1.4119363950634152,
           "BaselineOOM": 0.026549202631400003,
           "CandidateOOM": 0.6925049999999999
         },
@@ -1098,7 +1100,7 @@
           "CandidateDPS": 916.7673552940594,
           "GainDPS": 69.90103612048051,
           "GainPercent": 8.254081492896548,
-          "Conservative95BoundDPS": 0.9934206684441171,
+          "Conservative95BoundDPS": 1.4051105409550178,
           "BaselineOOM": 0.026039999999999997,
           "CandidateOOM": 0.6328069784251996
         }
@@ -1120,7 +1122,7 @@
           "CandidateDPS": 801.2809645625116,
           "GainDPS": 36.82757796944088,
           "GainPercent": 4.817504718445931,
-          "Conservative95BoundDPS": 0.5995283243594126,
+          "Conservative95BoundDPS": 0.8478893853970179,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -1130,7 +1132,7 @@
           "CandidateDPS": 807.6127239725374,
           "GainDPS": 36.75740832646818,
           "GainPercent": 4.768392664667687,
-          "Conservative95BoundDPS": 0.6008941520201343,
+          "Conservative95BoundDPS": 0.8503799908893812,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -1140,7 +1142,7 @@
           "CandidateDPS": 801.2592707012279,
           "GainDPS": 36.514484466204976,
           "GainPercent": 4.774728134594075,
-          "Conservative95BoundDPS": 0.6001313375803038,
+          "Conservative95BoundDPS": 0.849054953584253,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -1150,7 +1152,7 @@
           "CandidateDPS": 807.3812474935601,
           "GainDPS": 37.20375868059955,
           "GainPercent": 4.83054350730765,
-          "Conservative95BoundDPS": 0.606662360394642,
+          "Conservative95BoundDPS": 0.8581586427045919,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -1160,7 +1162,7 @@
           "CandidateDPS": 800.2367603430769,
           "GainDPS": 36.51361270451571,
           "GainPercent": 4.781001180521516,
-          "Conservative95BoundDPS": 0.5958607742100399,
+          "Conservative95BoundDPS": 0.8430049966506614,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         },
@@ -1170,7 +1172,7 @@
           "CandidateDPS": 810.1962852619839,
           "GainDPS": 35.97122162636117,
           "GainPercent": 4.646093663959516,
-          "Conservative95BoundDPS": 0.6136145469486356,
+          "Conservative95BoundDPS": 0.86842916311972,
           "BaselineOOM": 0.0,
           "CandidateOOM": 0.0
         }

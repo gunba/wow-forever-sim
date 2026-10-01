@@ -20,17 +20,17 @@ import BlankGear from './gear_sets/blank.gear.json';
 
 export const DefaultGear = PresetUtils.makePresetGear('Blank', BlankGear);
 
-// Default talents. Uses the wowhead calculator format, make the talents on
-// https://wowhead.com/classic/talent-calc and copy the numbers in the url.
+// Legal level-60 Holy allocation. This is not a validated healer optimum;
+// full healing-model coverage remains separate from the tank/DPS benchmarks.
 
 export const StandardTalents = {
 	name: 'Standard',
 	data: SavedTalents.create({
-		talentsString: '005321013025131251-503210302',
+		talentsString: '05323213225121051-55021',
 	}),
 };
 
-export const TalentsHolyHealer = PresetUtils.makePresetTalents('Holy 38/13/0', SavedTalents.create({ talentsString: '205320213225131051-50323' }));
+export const TalentsHolyHealer = PresetUtils.makePresetTalents('Holy 38/13/0', SavedTalents.create({ talentsString: '05323213225121051-55021' }));
 
 export const DefaultOptions = HolyPaladinOptions.create({
 	aura: PaladinAura.DevotionAura,

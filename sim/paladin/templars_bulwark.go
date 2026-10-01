@@ -19,37 +19,18 @@ func (paladin *Paladin) registerTemplarsBulwark() {
 
 	actionID := core.ActionID{SpellID: 1311015}
 
-	var remainingAbsorb float64
-	bulwarkAura := paladin.RegisterAura(core.Aura{
-		Label:    "Templar's Bulwark",
-		ActionID: actionID,
-		Duration: time.Second * 8,
-		OnGain: func(aura *core.Aura, sim *core.Simulation) {
-			remainingAbsorb = paladin.MaxHealth()
-		},
-		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-			remainingAbsorb = 0
-		},
-	})
-	paladin.AddDynamicDamageTakenModifier(func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-		if !bulwarkAura.IsActive() || result.Damage <= 0 {
-			return
-		}
-		absorbed := min(remainingAbsorb, result.Damage)
-		result.Damage -= absorbed
-		remainingAbsorb -= absorbed
-		if remainingAbsorb <= 0 {
-			bulwarkAura.Deactivate(sim)
-		}
-	})
-
 	// Sacred Duty: 30 sec a rank, confirmed by the beta client's talent data.
 	cooldown := time.Minute*5 - time.Second*30*time.Duration(paladin.Talents.SacredDuty)
 
 	bulwark := paladin.RegisterSpell(core.SpellConfig{
-		ActionID:    actionID,
-		SpellSchool: core.SpellSchoolHoly,
-		Flags:       core.SpellFlagAPL | SpellFlag_Forbearance,
+		ActionID:         actionID,
+		SpellSchool:      core.SpellSchoolHoly,
+		Flags:            core.SpellFlagAPL | SpellFlag_Forbearance,
+		ProcMask:         core.ProcMaskEmpty,
+		DamageMultiplier: 1,
+		Shield: core.ShieldConfig{SelfOnly: true, Aura: core.Aura{
+			Label: "Templar's Bulwark", ActionID: actionID, Duration: 8 * time.Second,
+		}},
 
 		ManaCost: core.ManaCostOptions{
 			FlatCost:   110,
@@ -66,8 +47,8 @@ func (paladin *Paladin) registerTemplarsBulwark() {
 			},
 		},
 
-		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, _ *core.Spell) {
-			bulwarkAura.Activate(sim)
+		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
+			spell.SelfShield().Apply(sim, paladin.MaxHealth())
 		},
 	})
 

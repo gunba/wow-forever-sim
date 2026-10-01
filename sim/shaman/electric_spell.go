@@ -39,7 +39,12 @@ func (shaman *Shaman) newElectricSpellConfig(actionID core.ActionID, baseCost fl
 			},
 			ModifyCast: func(sim *core.Simulation, spell *core.Spell, cast *core.Cast) {
 				castTime := shaman.ApplyCastSpeedForSpell(cast.CastTime, spell)
-				shaman.AutoAttacks.StopMeleeUntil(sim, sim.CurrentTime+castTime, false)
+				// Both spells have client attribute 6, 0x02000000:
+				// instant casts preserve the swing timer. Partial reductions
+				// remain ordinary hardcasts and reset the full swing.
+				if castTime > 0 || !shaman.Env.IsForever() {
+					shaman.AutoAttacks.StopMeleeUntil(sim, sim.CurrentTime+castTime, false)
+				}
 			},
 		},
 

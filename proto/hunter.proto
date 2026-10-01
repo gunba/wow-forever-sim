@@ -25,10 +25,10 @@ message HunterTalents {
 	// Marksmanship
 	int32 hawk_eye = 17;
 	int32 improved_concussive_shot = 18;
-	int32 careful_aim = 22;
+	int32 lethal_attacks = 19;
 	int32 improved_stings = 20;
 	int32 efficiency = 21;
-	int32 lethal_attacks = 19;
+	int32 careful_aim = 22;
 	int32 rapid_killing = 23;
 	int32 improved_arcane_shot = 24;
 	bool lone_wolf = 25;

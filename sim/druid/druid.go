@@ -174,11 +174,26 @@ func (druid *Druid) RegisterSpell(formMask DruidForm, config core.SpellConfig) *
 }
 
 func (druid *Druid) Initialize() {
+	if druid.Env.IsForever() {
+		druid.MainHandWeaponOverride = func(equipped core.Weapon) core.Weapon {
+			switch druid.form {
+			case Cat:
+				return formWeapon(equipped, 1)
+			case Bear:
+				return formWeapon(equipped, 2.5)
+			default:
+				return equipped
+			}
+		}
+	}
 	druid.BleedCategories = druid.GetEnemyExclusiveCategories(core.BleedEffectCategory)
 
 	druid.registerOmenOfClarity()
 	druid.registerFaerieFireSpell()
 	druid.registerInnervateCD()
+	if druid.Env.IsForever() {
+		druid.registerBarkskinCD()
+	}
 }
 
 func (druid *Druid) RegisterBalanceSpells() {
@@ -208,7 +223,9 @@ func (druid *Druid) RegisterFeralCatSpells() {
 
 func (druid *Druid) RegisterFeralTankSpells() {
 	druid.registerBearFormSpell()
-	druid.registerBarkskinCD()
+	if !druid.Env.IsForever() {
+		druid.registerBarkskinCD()
+	}
 	druid.registerBerserkCD()
 	druid.registerDemoralizingRoarSpell()
 	druid.registerEnrageSpell()
@@ -221,8 +238,7 @@ func (druid *Druid) RegisterFeralTankSpells() {
 
 func (druid *Druid) Reset(_ *core.Simulation) {
 	druid.BleedsActive = 0
-	druid.lastCatFormEnergy = 0
-	druid.lastCatFormExitAt = core.NeverExpires
+	druid.resetFurorHistory(core.NeverExpires)
 	druid.form = druid.StartingForm
 	druid.disabledMCDs = []*core.MajorCooldown{}
 }

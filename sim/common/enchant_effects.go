@@ -8,6 +8,30 @@ import (
 	"github.com/wowsims/classic/sim/core/stats"
 )
 
+func applyStrikingEnchant(agent core.Agent, slot proto.ItemSlot, bonus float64) {
+	character := agent.GetCharacter()
+	if character.Env.IsForever() {
+		// Read the actual equipped enchant, including when a different swap
+		// enchant's registration is being visited during initialization.
+		if slot == proto.ItemSlot_ItemSlotOffHand {
+			character.AutoAttacks.SetOH(character.WeaponFromOffHand())
+		} else {
+			character.AutoAttacks.SetMH(character.WeaponFromMainHand())
+		}
+		return
+	}
+	weapon := character.AutoAttacks.MH()
+	if slot == proto.ItemSlot_ItemSlotOffHand {
+		weapon = character.AutoAttacks.OH()
+	}
+	weapon.BaseDamageMin += bonus
+	weapon.BaseDamageMax += bonus
+}
+
+func crusaderStrengthBonus(level int32) float64 {
+	return max(0, 100-4*float64(max(0, level-60)))
+}
+
 func init() {
 	core.AddEffectsToTest = false
 
@@ -76,12 +100,7 @@ func init() {
 
 	// Weapon - Lesser Striking
 	core.AddWeaponEffect(241, func(agent core.Agent, slot proto.ItemSlot) {
-		w := agent.GetCharacter().AutoAttacks.MH()
-		if slot == proto.ItemSlot_ItemSlotOffHand {
-			w = agent.GetCharacter().AutoAttacks.OH()
-		}
-		w.BaseDamageMin += 2
-		w.BaseDamageMax += 2
+		applyStrikingEnchant(agent, slot, 2)
 	})
 
 	// Weapon - Beast Slaying
@@ -105,12 +124,7 @@ func init() {
 
 	// Weapon - Minor Striking
 	core.AddWeaponEffect(250, func(agent core.Agent, slot proto.ItemSlot) {
-		w := agent.GetCharacter().AutoAttacks.MH()
-		if slot == proto.ItemSlot_ItemSlotOffHand {
-			w = agent.GetCharacter().AutoAttacks.OH()
-		}
-		w.BaseDamageMin += 1
-		w.BaseDamageMax += 1
+		applyStrikingEnchant(agent, slot, 1)
 	})
 
 	// Deadly Scope
@@ -173,12 +187,7 @@ func init() {
 
 	// Weapon - Greater Striking
 	core.AddWeaponEffect(805, func(agent core.Agent, slot proto.ItemSlot) {
-		w := agent.GetCharacter().AutoAttacks.MH()
-		if slot == proto.ItemSlot_ItemSlotOffHand {
-			w = agent.GetCharacter().AutoAttacks.OH()
-		}
-		w.BaseDamageMin += 4
-		w.BaseDamageMax += 4
+		applyStrikingEnchant(agent, slot, 4)
 	})
 
 	// Weapon - Lesser Beastslayer
@@ -233,22 +242,12 @@ func init() {
 
 	// Weapon - Striking
 	core.AddWeaponEffect(943, func(agent core.Agent, slot proto.ItemSlot) {
-		w := agent.GetCharacter().AutoAttacks.MH()
-		if slot == proto.ItemSlot_ItemSlotOffHand {
-			w = agent.GetCharacter().AutoAttacks.OH()
-		}
-		w.BaseDamageMin += 3
-		w.BaseDamageMax += 3
+		applyStrikingEnchant(agent, slot, 3)
 	})
 
 	// Weapon - Superior Striking
 	core.AddWeaponEffect(1897, func(agent core.Agent, slot proto.ItemSlot) {
-		w := agent.GetCharacter().AutoAttacks.MH()
-		if slot == proto.ItemSlot_ItemSlotOffHand {
-			w = agent.GetCharacter().AutoAttacks.OH()
-		}
-		w.BaseDamageMin += 5
-		w.BaseDamageMax += 5
+		applyStrikingEnchant(agent, slot, 5)
 	})
 
 	// Weapon - Lifestealing
@@ -257,6 +256,7 @@ func init() {
 
 		procMask := character.GetProcMaskForEnchant(1898)
 		ppmm := character.AutoAttacks.NewPPMManager(6.66, procMask)
+		healthMetrics := character.NewHealthMetrics(core.ActionID{SpellID: 20004})
 
 		procMaskOnAuto := core.ProcMaskDamageProc     // Both spell and melee proc combo
 		procMaskOnSpecial := core.ProcMaskSpellDamage // TODO: check if core.ProcMaskSpellDamage remains on special
@@ -272,7 +272,11 @@ func init() {
 			ThreatMultiplier: 1,
 
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				spell.CalcAndDealDamage(sim, target, 30, spell.OutcomeMagicHitAndCrit)
+				result := spell.CalcAndDealDamage(sim, target, 30, spell.OutcomeMagicHitAndCrit)
+				if character.Env.IsForever() {
+					// Effect 697642 is health leech, not damage alone.
+					character.GainHealth(sim, result.Damage, healthMetrics)
+				}
 			},
 		})
 
@@ -303,8 +307,9 @@ func init() {
 		procMask := character.GetProcMaskForEnchant(1900)
 		ppmm := character.AutoAttacks.NewPPMManager(1.0, procMask)
 
-		// -4 str per level over 60
-		strBonus := 100.0 - 4.0*float64(character.Level-60)
+		// -4 Strength per level above 60, never a bonus below 60.
+		strBonus := crusaderStrengthBonus(character.Level)
+		healthMetrics := character.NewHealthMetrics(core.ActionID{SpellID: 20007})
 		mhAura := character.NewTemporaryStatsAura("Crusader Enchant MH", core.ActionID{SpellID: 20007, Tag: 1}, stats.Stats{stats.Strength: strBonus}, time.Second*15)
 		ohAura := character.NewTemporaryStatsAura("Crusader Enchant OH", core.ActionID{SpellID: 20007, Tag: 2}, stats.Stats{stats.Strength: strBonus}, time.Second*15)
 
@@ -319,6 +324,11 @@ func init() {
 					return
 				}
 				if ppmm.Proc(sim, spell.ProcMask, "Crusader") {
+					if character.Env.IsForever() {
+						// Effect 697923: 100 mean, 0.5 variance. Match existing
+						// item health-return accounting; proc healing threat remains unverified.
+						character.GainHealth(sim, sim.Roll(75, 125), healthMetrics)
+					}
 					if spell.IsMH() {
 						mhAura.Activate(sim)
 					} else {

@@ -139,27 +139,13 @@ func addImbueStats(character *Character, imbue proto.WeaponImbue, isMh bool, sha
 				stats.HealingPower: 25,
 			})
 
-		// Sharpening Stones
-		case proto.WeaponImbue_SolidSharpeningStone:
-			if !character.PseudoStats.FeralCombatEnabled {
-				weapon := character.AutoAttacks.MH()
-				if !isMh {
-					weapon = character.AutoAttacks.OH()
-				}
-				weapon.BaseDamageMin += 6
-				weapon.BaseDamageMax += 6
-			}
-		case proto.WeaponImbue_DenseSharpeningStone:
-			if !character.PseudoStats.FeralCombatEnabled {
-				weapon := character.AutoAttacks.MH()
-				if !isMh {
-					weapon = character.AutoAttacks.OH()
-				}
-				weapon.BaseDamageMin += 8
-				weapon.BaseDamageMax += 8
-			}
+		// Weapon stones
+		case proto.WeaponImbue_SolidSharpeningStone, proto.WeaponImbue_SolidWeightstone:
+			character.addFlatWeaponImbueDamage(isMh, 6)
+		case proto.WeaponImbue_DenseSharpeningStone, proto.WeaponImbue_DenseWeightstone:
+			character.addFlatWeaponImbueDamage(isMh, 8)
 		case proto.WeaponImbue_ElementalSharpeningStone:
-			if !character.PseudoStats.FeralCombatEnabled {
+			if !character.PseudoStats.FeralCombatEnabled || (character.Env != nil && character.Env.IsForever()) {
 				character.AddStats(stats.Stats{
 					stats.MeleeCrit: 2 * CritRatingPerCritChance,
 				})
@@ -178,25 +164,6 @@ func addImbueStats(character *Character, imbue proto.WeaponImbue, isMh bool, sha
 				}
 			})
 
-		// Weightstones
-		case proto.WeaponImbue_SolidWeightstone:
-			if !character.PseudoStats.FeralCombatEnabled {
-				weapon := character.AutoAttacks.MH()
-				if !isMh {
-					weapon = character.AutoAttacks.OH()
-				}
-				weapon.BaseDamageMin += 6
-				weapon.BaseDamageMax += 6
-			}
-		case proto.WeaponImbue_DenseWeightstone:
-			if !character.PseudoStats.FeralCombatEnabled {
-				weapon := character.AutoAttacks.MH()
-				if !isMh {
-					weapon = character.AutoAttacks.OH()
-				}
-				weapon.BaseDamageMin += 8
-				weapon.BaseDamageMax += 8
-			}
 		// Windfury
 		case proto.WeaponImbue_Windfury:
 			if character.Env.IsForever() {
@@ -206,15 +173,36 @@ func addImbueStats(character *Character, imbue proto.WeaponImbue, isMh bool, sha
 				ApplyWindfury(character)
 			}
 		case proto.WeaponImbue_ShadowOil:
-			if !character.PseudoStats.FeralCombatEnabled {
+			if !character.PseudoStats.FeralCombatEnabled || (character.Env != nil && character.Env.IsForever()) {
 				registerShadowOil(character, isMh, shadowOilIcd)
 			}
 		case proto.WeaponImbue_FrostOil:
-			if !character.PseudoStats.FeralCombatEnabled {
+			if !character.PseudoStats.FeralCombatEnabled || (character.Env != nil && character.Env.IsForever()) {
 				registerFrostOil(character, isMh)
 			}
 		}
 	}
+}
+
+func (character *Character) addFlatWeaponImbueDamage(isMh bool, amount float64) {
+	if character.PseudoStats.FeralCombatEnabled && (character.Env == nil || !character.Env.IsForever()) {
+		return
+	}
+	slot := TernaryInt(isMh, 0, 1)
+	character.flatWeaponImbueDamage[slot] += amount
+	if character.PseudoStats.FeralCombatEnabled {
+		// Form weapons are constructed after consumes during initialization.
+		if isMh && character.MainHandWeaponOverride != nil {
+			character.AutoAttacks.SetMH(character.WeaponFromMainHand())
+		}
+		return
+	}
+	weapon := character.AutoAttacks.MH()
+	if !isMh {
+		weapon = character.AutoAttacks.OH()
+	}
+	weapon.BaseDamageMin += amount
+	weapon.BaseDamageMax += amount
 }
 
 func registerShadowOil(character *Character, isMh bool, icd Cooldown) {
@@ -876,8 +864,17 @@ func (character *Character) newBasicExplosiveSpellConfig(sharedTimer *Timer, act
 				Duration: time.Minute,
 			},
 			ModifyCast: func(sim *Simulation, _ *Spell, _ *Cast) {
-				character.CancelShapeshift(sim)
+				if character.Env == nil || !character.Env.IsForever() {
+					character.CancelShapeshift(sim)
+				}
 			},
+		},
+		ExtraCastCondition: func(_ *Simulation, _ *Unit) bool {
+			if character.Env != nil && character.Env.IsForever() && character.IsShapeshifted() {
+				return false
+			}
+			// Sapper spell 13237 has a 5-yard self-centered blast (radius index 8).
+			return !isSapper || character.DistanceFromTarget <= 5
 		},
 
 		// Explosives always have 1% resist chance, so just give them hit cap.
@@ -897,13 +894,6 @@ func (character *Character) newBasicExplosiveSpellConfig(sharedTimer *Timer, act
 				spell.CalcAndDealDamage(sim, &character.Unit, baseDamage, spell.OutcomeMagicHitAndCrit)
 			}
 		},
-	}
-	if isSapper {
-		// Spell 13237 uses SpellRadius index 8: a 5-yard self-centered blast.
-		// A stationary ranged player cannot hit the target from 12–20 yards.
-		config.ExtraCastCondition = func(sim *Simulation, target *Unit) bool {
-			return character.DistanceFromTarget <= 5
-		}
 	}
 	return config
 }

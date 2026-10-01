@@ -13,7 +13,10 @@ import (
 // normalized weapon strike plus a flat amount (effect 121) and a weapon damage percentage (effect 31),
 // with a 10 sec cooldown and the 0.429 coefficient. The client multiplies the flat
 // amount by the percentage the same way it does Backstab's, so rank 8 is 50% of
-// (weapon + 81 to 105).
+// (weapon + 81 to 105). Beta observations also put player SP inside that percentage:
+// https://us.forums.blizzard.com/en/wow/t/major-bug-with-the-damage-formula-for-seal-of-command-and-holy-strike-in-forever-beta/2364842
+// Target-side Holy damage uses the full coefficient instead. This models the observed
+// beta behavior, not a prediction of whether Blizzard will change it.
 // Damage is each rank's at its max level.
 // TODO: beta will confirm - Holy damage on the melee hit table, so it rolls partial resists the
 // way every other Holy ability here does. Whether a melee-table Holy strike actually partial
@@ -63,6 +66,10 @@ func (paladin *Paladin) registerHolyStrike() {
 			break
 		}
 
+		spellDamageMultiplier := damageMultiplier
+		if paladin.Env.IsForever() {
+			spellDamageMultiplier *= rank.weapon
+		}
 		paladin.RegisterSpell(core.SpellConfig{
 			ActionID:    core.ActionID{SpellID: spellID},
 			SpellCode:   SpellCode_PaladinHolyStrike,
@@ -86,11 +93,12 @@ func (paladin *Paladin) registerHolyStrike() {
 				CD:          cd,
 			},
 
-			DamageMultiplier: damageMultiplier,
+			DamageMultiplier: spellDamageMultiplier,
 			BonusCritRating: float64(paladin.Talents.HolyPower) *
 				core.CritRatingPerCritChance * 3,
 			ThreatMultiplier: threatMultiplier,
-			// Holy damage, so spell power feeds it on top of the weapon share and the flat roll.
+			// The attacker multiplier scales player SP by the weapon percentage.
+			// Core applies target-side Holy bonuses afterward, at the full coefficient.
 			BonusCoefficient: 0.429,
 
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
@@ -100,8 +108,11 @@ func (paladin *Paladin) registerHolyStrike() {
 
 				// A share of weapon damage, so it takes the normalized swing the way every other
 				// percentage-of-weapon strike in the sim does.
-				baseDamage := rank.weapon * (spell.Unit.MHNormalizedWeaponDamage(sim, spell.MeleeAttackPower(target)) +
-					sim.Roll(rank.minDamage, rank.maxDamage))
+				baseDamage := spell.Unit.MHNormalizedWeaponDamage(sim, spell.MeleeAttackPower(target)) +
+					sim.Roll(rank.minDamage, rank.maxDamage)
+				if !paladin.Env.IsForever() {
+					baseDamage *= rank.weapon
+				}
 				spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialHitAndCrit)
 			},
 		})

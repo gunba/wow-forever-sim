@@ -324,11 +324,17 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 		bloodPact = partyTristate(bloodPact, partyBuffs.BloodPact)
 	}
 	if bloodPact > 0 {
-		updateStats := BuffSpellValues[BloodPact]
-		if bloodPact == proto.TristateEffect_TristateEffectImproved {
-			updateStats = updateStats.Multiply(1.3).Floor()
+		if character.Env.IsForever() {
+			aura := BloodPactAura(&character.Unit, "Blood Pact (external)")
+			aura.BuildPhase = CharacterBuildPhaseBuffs
+			MakePermanent(aura)
+		} else {
+			updateStats := BuffSpellValues[BloodPact]
+			if bloodPact == proto.TristateEffect_TristateEffectImproved {
+				updateStats = updateStats.Multiply(1.3).Floor()
+			}
+			character.AddStats(updateStats)
 		}
-		character.AddStats(updateStats)
 	}
 
 	if raidBuffs.ShadowResistanceAura {
@@ -678,8 +684,34 @@ func StoneskinTotemAura(unit *Unit, points int32) *Aura {
 	})
 }
 
+// Owned and explicit external Blood Pact are distinct providers of one effect.
+func BloodPactAura(unit *Unit, label string) *Aura {
+	if aura := unit.GetAura(label); aura != nil {
+		return aura
+	}
+	aura := unit.RegisterAura(Aura{Label: label, ActionID: ActionID{SpellID: 11767}, Duration: NeverExpires})
+	bonus := BuffSpellValues[BloodPact]
+	aura.NewExclusiveEffect("BloodPact", false, ExclusiveEffect{
+		Priority: bonus[stats.Stamina],
+		OnGain: func(ee *ExclusiveEffect, sim *Simulation) {
+			ee.Aura.Unit.AddBuildPhaseStatsDynamic(sim, bonus)
+		},
+		OnExpire: func(ee *ExclusiveEffect, sim *Simulation) {
+			ee.Aura.Unit.AddBuildPhaseStatsDynamic(sim, bonus.Invert())
+			if ee.Aura.Unit.HasHealthBar() {
+				ee.Aura.Unit.healthBar.currentHealth = min(ee.Aura.Unit.CurrentHealth(), ee.Aura.Unit.MaxHealth())
+			}
+		},
+	})
+	return aura
+}
+
 func RetributionAura(character *Character, points int32) *Aura {
 	baseDamage := 20.0
+	if character.Env != nil && character.Env.IsForever() {
+		// Rank-five effect 687971. Provider-SP scaling is a separate script question.
+		baseDamage = 30
+	}
 
 	actionID := ActionID{SpellID: 10301}
 
@@ -952,19 +984,41 @@ func registerPowerInfusionCD(agent Agent, numPowerInfusions int32) {
 
 func PowerInfusionAura(character *Unit, actionTag int32) *Aura {
 	actionID := ActionID{SpellID: 10060, Tag: actionTag}
-	aura := character.GetOrRegisterAura(Aura{
-		Label:    "PowerInfusion-" + actionID.String(),
+	label := "PowerInfusion-" + actionID.String()
+	if existing := character.GetAura(label); existing != nil {
+		return existing
+	}
+	aura := character.RegisterAura(Aura{
+		Label:    label,
 		Tag:      PowerInfusionAuraTag,
 		ActionID: actionID,
 		Duration: PowerInfusionDuration,
 		OnGain: func(aura *Aura, sim *Simulation) {
-			character.PseudoStats.SchoolDamageDealtMultiplier.MultiplyMagicSchools(1.2)
-
+			if !character.Env.IsForever() {
+				character.PseudoStats.SchoolDamageDealtMultiplier.MultiplyMagicSchools(1.2)
+			}
 		},
 		OnExpire: func(aura *Aura, sim *Simulation) {
-			character.PseudoStats.SchoolDamageDealtMultiplier.MultiplyMagicSchools(1 / 1.2)
+			if !character.Env.IsForever() {
+				character.PseudoStats.SchoolDamageDealtMultiplier.MultiplyMagicSchools(1 / 1.2)
+			}
 		},
 	})
+	if character.Env.IsForever() {
+		// Effects 688356/688357 modify healing and magic damage by 20%.
+		// Distinct owned/external providers are one effect, not multiplicative copies.
+		aura.NewExclusiveEffect(PowerInfusionAuraTag, false, ExclusiveEffect{
+			Priority: 1.2,
+			OnGain: func(ee *ExclusiveEffect, sim *Simulation) {
+				character.PseudoStats.SchoolDamageDealtMultiplier.MultiplyMagicSchools(1.2)
+				character.PseudoStats.HealingDealtMultiplier *= 1.2
+			},
+			OnExpire: func(ee *ExclusiveEffect, sim *Simulation) {
+				character.PseudoStats.SchoolDamageDealtMultiplier.MultiplyMagicSchools(1 / 1.2)
+				character.PseudoStats.HealingDealtMultiplier /= 1.2
+			},
+		})
+	}
 	return aura
 }
 

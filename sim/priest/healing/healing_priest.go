@@ -33,6 +33,7 @@ func NewHealingPriest(character *core.Character, options *proto.Player) *Healing
 	healingOptions := options.GetHealingPriest()
 
 	basePriest := priest.New(character, options.TalentsString)
+	basePriest.PowerInfusionTarget = healingOptions.GetOptions().GetPowerInfusionTarget()
 	hpriest := &HealingPriest{
 		Priest:  basePriest,
 		Options: healingOptions.Options,

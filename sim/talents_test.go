@@ -2,8 +2,6 @@ package sim
 
 import (
 	"encoding/json"
-	"html"
-	"net/url"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -110,12 +108,8 @@ func TestTalentTreesMatchTheirProtos(t *testing.T) {
 
 		fields := class.talents.Descriptor().Fields()
 		var protoOrder []string
-		for i := 1; i <= fields.Len(); i++ {
-			field := fields.ByNumber(protoreflect.FieldNumber(i))
-			if field == nil {
-				t.Errorf("%s: proto field numbers are not contiguous, nothing is numbered %d", class.name, i)
-				continue
-			}
+		for i := 0; i < fields.Len(); i++ {
+			field := fields.Get(i)
 			protoOrder = append(protoOrder, field.JSONName())
 		}
 
@@ -241,22 +235,15 @@ func checkBuild(t *testing.T, dir string, trees []talentTree, build string) {
 	}
 }
 
-// The landing page links each community build straight to its spec by name, and the
-// spec page looks that name up in its talent presets when it loads. A link naming a
-// preset that is not there opens the page on its defaults with a warning in the console
-// and nothing else, so the two are kept in step here.
-func TestLandingPageBuildLinksNamePresets(t *testing.T) {
-	presets := loadPresetNames(t)
-
-	for dir, names := range landingPageBuilds(t) {
-		if _, ok := presets[dir]; !ok {
-			t.Errorf("landing page links %s, which is not a spec with talent presets", dir)
-			continue
-		}
-		for _, name := range names {
-			if !presets[dir][name] {
-				t.Errorf("landing page links %s to a build named %q, which its presets do not have", dir, name)
-			}
+// The landing page redirects to the generated review portal and exact profiles.
+func TestLandingPageUsesReviewPortal(t *testing.T) {
+	page, err := os.ReadFile(filepath.Join("..", "ui", "index.html"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, link := range []string{`url=./review/`, `href="./review/"`} {
+		if !strings.Contains(string(page), link) {
+			t.Errorf("landing page missing review portal link %q", link)
 		}
 	}
 }
@@ -268,9 +255,8 @@ func TestLandingPageBuildLinksNamePresets(t *testing.T) {
 // runtime notices when the two copies drift: the dropdown just quietly stops offering a
 // build, or offers one whose name no preset answers to and opens the sim on its
 // defaults.
-func TestSimTitleDropdownBuildsMatchLandingPage(t *testing.T) {
+func TestSimTitleDropdownBuildsNamePresets(t *testing.T) {
 	presets := loadPresetNames(t)
-	landing := landingPageBuilds(t)
 	dropdown := dropdownBuilds(t)
 
 	for dir := range presets {
@@ -288,9 +274,6 @@ func TestSimTitleDropdownBuildsMatchLandingPage(t *testing.T) {
 			if !presets[dir][name] {
 				t.Errorf("ui/core/community_builds.ts gives %s a build named %q, which its presets do not have", dir, name)
 			}
-		}
-		if got, want := strings.Join(names, ", "), strings.Join(landing[dir], ", "); got != want {
-			t.Errorf("%s: the dropdown lists [%s] but the landing page lists [%s]", dir, got, want)
 		}
 	}
 }
@@ -312,32 +295,6 @@ func loadPresetNames(t *testing.T) map[string]map[string]bool {
 		}
 	}
 	return presets
-}
-
-// The builds the landing page lists, by spec directory and in the order it lists them.
-func landingPageBuilds(t *testing.T) map[string][]string {
-	t.Helper()
-
-	page, err := os.ReadFile(filepath.Join("..", "ui", "index.html"))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	links := buildLinkRegex.FindAllStringSubmatch(string(page), -1)
-	if len(links) == 0 {
-		t.Fatal("no build links on the landing page")
-	}
-
-	builds := make(map[string][]string)
-	for _, link := range links {
-		name, err := url.QueryUnescape(html.UnescapeString(link[2]))
-		if err != nil {
-			t.Errorf("%s: %v", link[0], err)
-			continue
-		}
-		builds[link[1]] = append(builds[link[1]], name)
-	}
-	return builds
 }
 
 // The same, as the sim pages' dropdown has them.

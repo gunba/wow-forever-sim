@@ -13,6 +13,7 @@ import re
 import subprocess
 
 from build_display import expected_roster
+from seed_intervals import require_independent_seed_ranges
 
 
 def fixed_player(row):
@@ -39,7 +40,7 @@ def main():
     parser.add_argument("--binary", required=True, type=Path)
     parser.add_argument("--search", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
-    parser.add_argument("--seed", type=int, default=20296071)
+    parser.add_argument("--seed", type=int, default=30296071)
     parser.add_argument("--iterations", type=int, default=5000)
     cpus = len(os.sched_getaffinity(0)) if hasattr(os, "sched_getaffinity") else os.cpu_count() or 1
     parser.add_argument("--workers", type=int, default=cpus)
@@ -68,8 +69,10 @@ def main():
                     raise ValueError(f"{pair}: a modeled result used paid or fabricated hit")
         for row in (base, candidate):
             options = row["Request"]["simOptions"]
-            if options["iterations"] != args.iterations or int(options["randomSeed"]) == args.seed:
-                raise ValueError("First confirmation pair needs equal iterations and an independent seed")
+            if options["iterations"] != args.iterations:
+                raise ValueError("First confirmation pair needs equal iterations")
+            require_independent_seed_ranges([(options["randomSeed"], options["iterations"]),
+                                             (args.seed, args.iterations)])
         if base["BaselinePlayer"] != candidate["BaselinePlayer"]:
             changed.append(pair)
 

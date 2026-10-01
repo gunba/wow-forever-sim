@@ -67,6 +67,26 @@ func TestOffHandImbuesRequireWeapon(t *testing.T) {
 	}
 }
 
+func TestFlatWeaponStonesSurviveWeaponConstruction(t *testing.T) {
+	for _, ruleset := range []proto.Ruleset{proto.Ruleset_RulesetForever, proto.Ruleset_RulesetClassic} {
+		c := &Character{Unit: Unit{Env: &Environment{Ruleset: ruleset}, PseudoStats: stats.NewPseudoStats()}}
+		c.Equipment[proto.ItemSlot_ItemSlotMainHand] = Item{ID: 1, WeaponType: proto.WeaponType_WeaponTypeSword, WeaponDamageMin: 100, WeaponDamageMax: 120, SwingSpeed: 2}
+		c.Equipment[proto.ItemSlot_ItemSlotOffHand] = Item{ID: 2, WeaponType: proto.WeaponType_WeaponTypeDagger, WeaponDamageMin: 30, WeaponDamageMax: 40, SwingSpeed: 1}
+		c.AutoAttacks.mh.Weapon = c.WeaponFromMainHand()
+		c.AutoAttacks.oh.Weapon = c.WeaponFromOffHand()
+		applyWeaponImbueConsumes(c, &proto.Consumes{MainHandImbue: proto.WeaponImbue_SolidSharpeningStone, OffHandImbue: proto.WeaponImbue_DenseSharpeningStone})
+		for i := 0; i < 3; i++ {
+			mh, oh := c.WeaponFromMainHand(), c.WeaponFromOffHand()
+			if mh.BaseDamageMin != 106 || mh.BaseDamageMax != 126 || oh.BaseDamageMin != 38 || oh.BaseDamageMax != 48 {
+				t.Fatal("weapon reconstruction lost or duplicated stone damage")
+			}
+			if *c.AutoAttacks.MH() != mh || *c.AutoAttacks.OH() != oh {
+				t.Fatal("ordinary auto weapon and reconstructed weapon disagree")
+			}
+		}
+	}
+}
+
 func TestSelfDamageIsNotOutgoingDPS(t *testing.T) {
 	player := &Unit{Type: PlayerUnit, UnitIndex: 0}
 	spell := &Spell{

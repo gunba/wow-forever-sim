@@ -8,6 +8,7 @@ from pathlib import Path
 import statistics
 
 from research_tanks import failures
+from seed_intervals import require_independent_seed_ranges
 
 
 def mean(rows, field):
@@ -102,8 +103,11 @@ def main():
     if len(args.confirmation) < 2:
         raise SystemExit("At least two independent seeds are required")
     manifests = [json.loads((path / "manifest.json").read_text()) for path in args.confirmation]
-    if len({manifest["seed"] for manifest in manifests}) != len(manifests):
-        raise SystemExit("Seeds are not independent")
+    for build in {job["build"] for manifest in manifests for job in manifest["jobs"].values()}:
+        require_independent_seed_ranges([
+            (manifest["seed"], manifest.get("iterationsByBuild", {}).get(build, manifest["iterations"]))
+            for manifest in manifests
+        ])
     if any(set(m["jobs"]) != set(manifests[0]["jobs"]) for m in manifests):
         raise SystemExit("Candidate coverage differs")
     if len({m["binarySHA256"] for m in manifests}) != 1:

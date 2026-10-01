@@ -700,5 +700,77 @@
 		"file": "sim/hunter/aspects.go",
 		"note": "Beta client 1.60.1.69893: every rank of Deadly Aspects triggers this same 30% for 12 sec, unchanged from Classic; the talent curve is 2/4/6/8/10%. The Aspect of the Beast half (Quick Strikes, 1299448) is not modelled.",
 		"source": "classic"
+	},
+	"1130": {
+		"ability": "Hunter's Mark (rank 1)",
+		"file": "sim/hunter/hunters_mark.go",
+		"source": "forever",
+		"tooltip": "15 Mana\nInstant\nMarks one enemy for 120 seconds and grants 26 ranged Attack Power against it. Each Hunter can maintain one owned mark.",
+		"note": "Captured client rank at level 6; rank-three 98 versus rank-four 71 RAP is retained as a source anomaly. Expose Prey requires this Hunter\u2019s owned, active mark; external or foreign providers do not suffice."
+	},
+	"14323": {
+		"ability": "Hunter's Mark (rank 2)",
+		"file": "sim/hunter/hunters_mark.go",
+		"source": "forever",
+		"tooltip": "30 Mana\nInstant\nMarks one enemy for 120 seconds and grants 59 ranged Attack Power against it. Each Hunter can maintain one owned mark.",
+		"note": "Captured client rank at level 22; rank-three 98 versus rank-four 71 RAP is retained as a source anomaly. Expose Prey requires this Hunter\u2019s owned, active mark; external or foreign providers do not suffice."
+	},
+	"14324": {
+		"ability": "Hunter's Mark (rank 3)",
+		"file": "sim/hunter/hunters_mark.go",
+		"source": "forever",
+		"tooltip": "45 Mana\nInstant\nMarks one enemy for 120 seconds and grants 98 ranged Attack Power against it. Each Hunter can maintain one owned mark.",
+		"note": "Captured client rank at level 40; rank-three 98 versus rank-four 71 RAP is retained as a source anomaly. Expose Prey requires this Hunter\u2019s owned, active mark; external or foreign providers do not suffice."
+	},
+	"14325": {
+		"ability": "Hunter's Mark (rank 4)",
+		"file": "sim/hunter/hunters_mark.go",
+		"source": "forever",
+		"tooltip": "60 Mana\nInstant\nMarks one enemy for 120 seconds and grants 71 ranged Attack Power against it. Each Hunter can maintain one owned mark.",
+		"note": "Captured client rank at level 58; rank-three 98 versus rank-four 71 RAP is retained as a source anomaly. Expose Prey requires this Hunter\u2019s owned, active mark; external or foreign providers do not suffice."
+	},
+	"24423": {
+		"ability": "Demoralizing Screech (rank 1)",
+		"file": "sim/hunter/demoralizing_screech.go",
+		"source": "assumed",
+		"tooltip": "20 Focus\n10 sec cooldown\nDeals 7-9 damage to the primary target and applies a 30-second nearby Attack Power reduction. At the learn level 8, the base reduction is 41; rank four is 204 at level 60.",
+		"note": "Active client records, not Hunter teaching IDs. Carrion-only registration and capped per-level AP effects are sourced. Stationary enemies use a melee cluster; a landed primary application gates the linked area effect. Exact linked-area avoidance and lower-level rounding remain qualified.",
+		"assumptions": [
+			"The linked area debuff follows the primary application result.",
+			"AP-reduction providers compete rather than stack; higher-level controlled confirmation remains open."
+		]
+	},
+	"24577": {
+		"ability": "Demoralizing Screech (rank 2)",
+		"file": "sim/hunter/demoralizing_screech.go",
+		"source": "assumed",
+		"tooltip": "20 Focus\n10 sec cooldown\nDeals 9-13 damage to the primary target and applies a 30-second nearby Attack Power reduction. At the learn level 24, the base reduction is 77; rank four is 204 at level 60.",
+		"note": "Active client records, not Hunter teaching IDs. Carrion-only registration and capped per-level AP effects are sourced. Stationary enemies use a melee cluster; a landed primary application gates the linked area effect. Exact linked-area avoidance and lower-level rounding remain qualified.",
+		"assumptions": [
+			"The linked area debuff follows the primary application result.",
+			"AP-reduction providers compete rather than stack; higher-level controlled confirmation remains open."
+		]
+	},
+	"24578": {
+		"ability": "Demoralizing Screech (rank 3)",
+		"file": "sim/hunter/demoralizing_screech.go",
+		"source": "assumed",
+		"tooltip": "20 Focus\n10 sec cooldown\nDeals 21-27 damage to the primary target and applies a 30-second nearby Attack Power reduction. At the learn level 48, the base reduction is 153; rank four is 204 at level 60.",
+		"note": "Active client records, not Hunter teaching IDs. Carrion-only registration and capped per-level AP effects are sourced. Stationary enemies use a melee cluster; a landed primary application gates the linked area effect. Exact linked-area avoidance and lower-level rounding remain qualified.",
+		"assumptions": [
+			"The linked area debuff follows the primary application result.",
+			"AP-reduction providers compete rather than stack; higher-level controlled confirmation remains open."
+		]
+	},
+	"24579": {
+		"ability": "Demoralizing Screech (rank 4)",
+		"file": "sim/hunter/demoralizing_screech.go",
+		"source": "assumed",
+		"tooltip": "20 Focus\n10 sec cooldown\nDeals 24-42 damage to the primary target and applies a 30-second nearby Attack Power reduction. At the learn level 56, the base reduction is 198; rank four is 204 at level 60.",
+		"note": "Active client records, not Hunter teaching IDs. Carrion-only registration and capped per-level AP effects are sourced. Stationary enemies use a melee cluster; a landed primary application gates the linked area effect. Exact linked-area avoidance and lower-level rounding remain qualified.",
+		"assumptions": [
+			"The linked area debuff follows the primary application result.",
+			"AP-reduction providers compete rather than stack; higher-level controlled confirmation remains open."
+		]
 	}
 }

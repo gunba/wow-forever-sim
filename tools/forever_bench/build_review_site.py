@@ -62,6 +62,10 @@ def main():
     (args.output / "uncertainties.json").write_text(json.dumps(register, indent=2) + "\n")
     (args.output / "uncertainties.md").write_text(questions_markdown(register) + "\n")
     shutil.copyfile("docs/question_review.md", args.output / "question_review.md")
+    for name in ("correctness_release.md", "correctness_workplan.md"):
+        shutil.copyfile(Path("docs") / name, args.output / name)
+    shutil.copytree("artifacts/correctness", args.output / "correctness", dirs_exist_ok=True)
+    shutil.copytree("artifacts/history/4235b6feda/correctness", args.output / "correctness/history", dirs_exist_ok=True)
     shutil.copytree("artifacts/question_review", args.output / "question_review", dirs_exist_ok=True)
     shutil.copytree(args.profiles, args.output / "profiles", dirs_exist_ok=True)
     shutil.copytree("assets/img/spec_icons", args.output / "icons", dirs_exist_ok=True)
@@ -190,7 +194,10 @@ def main():
             'Gear, talents and unverified class mechanics still differ; this is not a verified survival ranking.</p>'
             '<p class="note">Iterations continue after a modeled death. DPS is not discounted for death downtime; '
             'survival is evaluated separately.</p>'
-            '<p class="note">Protection Warrior now queues Heroic Strike/Cleave correctly. Its previous '
+            '<p class="note">Current correctness checks replay all 17 fixed tank profiles in their original workloads; '
+            'two disjoint 5,000-iteration ranges are pooled for the separate three-attacker table. '
+            '<a href="correctness_release.md">Corrections and limits</a>. '
+            'Protection Warrior now queues Heroic Strike/Cleave correctly. Its previous '
             'direct-cast DPS and selection gains are invalid; current gear and talents are replayed, not re-optimized. '
             '<a href="protection_queue.md">Queue correction</a>. '
             'Shared support and Paladin oil/Judgement timing are included in the current replays; '
@@ -261,7 +268,12 @@ This is finite-range curvature, not proof of exponential growth, isolated synerg
 <a href="research_builds/validation.json.gz">Historical build validation</a></nav></details>
 <details class="resource-group"><summary>Evidence and earlier reviews</summary>
 <p class="note">These reports describe their pinned revisions. Current dispositions are in the register above.</p>
-<nav class="links"><a href="upstream_elliot_review.md">Latest class-effects review</a>
+<nav class="links"><a href="correctness_release.md">Correctness review</a>
+<a href="correctness_workplan.md">Implementation ledger</a>
+<a href="question_review/correctness_followup.json">Feature coverage</a>
+<a href="correctness/tank_checks.json.gz">Current tank requests/results</a>
+<a href="correctness/history/manifest.json">Superseded baseline evidence</a>
+<a href="upstream_elliot_review.md">Earlier class-effects review</a>
 <a href="weekly_review.md">September 26 review</a><a href="flurry_review.md">Flurry evidence</a>
 <a href="tank_benchmark.md">Tank scenario evidence</a>
 <a href="spell_coverage.md">Spell inventory</a><a href="forever-70009.md">70009 patch</a>

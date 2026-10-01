@@ -94,6 +94,10 @@ type Character struct {
 	Pets []*Pet // cached in AddPet, for advance()
 
 	ActiveShapeShift *Aura // Some things can't be used in shapeshift forms
+
+	flatWeaponImbueDamage [2]float64
+	// Applied to equipment-derived MH weapons before swap effect callbacks.
+	MainHandWeaponOverride func(Weapon) Weapon
 }
 
 func NewCharacter(party *Party, partyIndex int, player *proto.Player) Character {

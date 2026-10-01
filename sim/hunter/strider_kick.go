@@ -38,7 +38,7 @@ func (hunter *Hunter) registerStriderKickSpell() {
 			return hunter.DistanceFromTarget <= core.MaxMeleeAttackDistance
 		},
 
-		BonusCritRating:  float64(hunter.Talents.SavageStrikes) * 2 * core.CritRatingPerCritChance,
+		BonusCritRating:  hunter.savageStrikesLegacyCrit(),
 		DamageMultiplier: 1,
 		ThreatMultiplier: 1,
 		BonusCoefficient: 1,

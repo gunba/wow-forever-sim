@@ -13,12 +13,15 @@ export const SelfPowerInfusion = InputHelpers.makeSpecOptionsBooleanIconInput<Sp
 	extraCssClasses: [
 		'within-raid-sim-hide',
 	],
-	getValue: (player: Player<Spec.SpecHealingPriest>) => player.getSpecOptions().powerInfusionTarget?.type == UnitType.Player,
+	getValue: (player: Player<Spec.SpecHealingPriest>) => {
+		const target = player.getSpecOptions().powerInfusionTarget;
+		return !target || target.type == UnitType.Self || (target.type == UnitType.Player && target.index == player.getRaidIndex());
+	},
 	setValue: (eventID: EventID, player: Player<Spec.SpecHealingPriest>, newValue: boolean) => {
 		const newOptions = player.getSpecOptions();
 		newOptions.powerInfusionTarget = UnitReference.create({
 			type: newValue ? UnitType.Player : UnitType.Unknown,
-			index: 0,
+			index: player.getRaidIndex(),
 		});
 		player.setSpecOptions(eventID, newOptions);
 	},

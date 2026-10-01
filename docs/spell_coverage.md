@@ -11,10 +11,13 @@ Discovery now includes both class masks and class skill lines, with a regression
 test for that failure.
 
 The audit joins client build **1.60.1.69893** spell names, effects, levels and
-class-associated skill rows to the actual owner/pet spellbooks of all 171
-profiles. It follows taught/triggered actions and known client/native aliases.
-The subsequent Physical Ret row shares the already audited Paladin spellbook;
-the original audit's profile count is historical.
+class-associated skill rows to the current owner/pet spellbooks of all 201
+profiles, including all three tank roles. It follows taught/triggered actions and
+known client/native aliases. The refreshed inventory finds 151 candidate damage
+families, with 54 absent from the sampled spellbooks. Adding the complete current
+roster identifies already-registered Lacerate, Maul, Swipe, Cone of Cold, Frost
+Nova and Shield Slam that were absent from the earlier sample. This does not
+make every rank or server effect verified.
 Every unmatched damage family has an explicit disposition in
 [`assets/spell_coverage_dispositions.json`](../assets/spell_coverage_dispositions.json).
 The generated [full inventory](../artifacts/spell_coverage.json) includes individual
@@ -30,7 +33,8 @@ ranks and source-table hashes.
   evidence that their current client spells are missing.
 - Trap child effects are recorded under trap placement actions.
 - Pet teaching spells are not the pet's damage action IDs. Unselected pet
-  families and Bear-only abilities do not appear in the sampled Cat/raid profiles.
+  families can still be absent from these fixed profiles. Bear-only abilities now
+  appear in the tank samples.
 - Many melee abilities intentionally register only the highest learned rank.
   Lower ranks are listed separately; they are not silently treated as supported.
 - A registered spell is not a claim that every coefficient or interaction is

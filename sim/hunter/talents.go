@@ -20,7 +20,12 @@ func (hunter *Hunter) ApplyTalents() {
 		hunter.pet.PseudoStats.DamageDealtMultiplier *= 1 + 0.03*float64(hunter.Talents.UnleashedFury)
 
 		if hunter.Talents.EnduranceTraining > 0 {
-			hunter.pet.MultiplyStat(stats.Health, 1+(0.03*float64(hunter.Talents.EnduranceTraining)))
+			multiplier := 1 + 0.03*float64(hunter.Talents.EnduranceTraining)
+			hunter.pet.MultiplyStat(stats.Health, multiplier)
+			if hunter.Env.IsForever() {
+				// Endurance Training includes the former Thick Hide effect.
+				hunter.pet.MultiplyStat(stats.Armor, multiplier)
+			}
 		}
 
 		if hunter.Talents.FocusedFire > 0 {
@@ -124,6 +129,29 @@ func (hunter *Hunter) ApplyTalents() {
 	hunter.applyPredatorsEdge()
 	hunter.applyRapidRecuperation()
 	hunter.applyExposePrey()
+	hunter.applySavageStrikes()
+}
+
+func (hunter *Hunter) savageStrikesLegacyCrit() float64 {
+	if hunter.Env.IsForever() {
+		return 0
+	}
+	return float64(hunter.Talents.SavageStrikes) * 2 * core.CritRatingPerCritChance
+}
+
+func (hunter *Hunter) applySavageStrikes() {
+	if !hunter.Env.IsForever() || hunter.Talents.SavageStrikes == 0 {
+		return
+	}
+	// Captured 19159/effect696821 is CRIT_CHANCE for this family. The newer
+	// article's damage redesign remains a version conflict, not a second bonus.
+	hunter.OnSpellRegistered(func(spell *core.Spell) {
+		switch spell.SpellCode {
+		case SpellCode_HunterRaptorStrike, SpellCode_HunterRaptorStrikeHit, SpellCode_HunterMongooseBite,
+			SpellCode_HunterWingClip, SpellCode_HunterLaceratingStrikes, SpellCode_HunterStriderKick:
+			spell.BonusCritRating += float64(hunter.Talents.SavageStrikes) * 2 * core.CritRatingPerCritChance
+		}
+	})
 }
 
 func (hunter *Hunter) applyFrenzy() {
@@ -209,17 +237,21 @@ func (hunter *Hunter) registerIntimidationCD() {
 	}
 
 	actionID := core.ActionID{SpellID: 19577}
-	bonusCrit := 100.0 * core.CritRatingPerCritChance
+	bonusCrit := stats.Stats{stats.MeleeCrit: 100 * core.CritRatingPerCritChance}
+	if hunter.Env.IsForever() {
+		// Client effect 1230284 is global crit aura 290, not melee-only crit.
+		bonusCrit[stats.SpellCrit] = 100 * core.SpellCritRatingPerCritChance
+	}
 
 	hunter.IntimidationPetAura = hunter.pet.RegisterAura(core.Aura{
 		Label:    "Intimidation",
 		ActionID: actionID,
 		Duration: time.Second * 15,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
-			aura.Unit.AddStatDynamic(sim, stats.MeleeCrit, bonusCrit)
+			aura.Unit.AddStatsDynamic(sim, bonusCrit)
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-			aura.Unit.AddStatDynamic(sim, stats.MeleeCrit, -bonusCrit)
+			aura.Unit.AddStatsDynamic(sim, bonusCrit.Invert())
 		},
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 			if result.Landed() {
@@ -438,7 +470,7 @@ func (hunter *Hunter) applyExposePrey() {
 			// Client 1310532 uses proc mask 0x154: melee/ranged autos and
 			// attacks, not generic spell hits such as trap damage.
 			if !result.Landed() || !spell.ProcMask.Matches(core.ProcMaskMelee|core.ProcMaskRanged) ||
-				!result.Target.HasActiveAuraWithTag(core.HuntersMarkAuraTag) {
+				!hunter.hasOwnHuntersMark(result.Target) {
 				return
 			}
 			if sim.Proc(procChance, "Expose Prey") {

@@ -114,7 +114,11 @@ func (druid *Druid) applyImprovedMoonfire() {
 					continue
 				}
 
-				spell.BaseDamageMultiplierAdditive += damageMultiplier
+				if druid.Env.IsForever() {
+					spell.DamageMultiplierAdditive += damageMultiplier
+				} else {
+					spell.BaseDamageMultiplierAdditive += damageMultiplier
+				}
 				spell.BonusCritRating += bonusCrit
 			}
 		},
@@ -338,14 +342,18 @@ func (druid *Druid) applyFeralSwiftness() {
 }
 
 // Attach the form-dependent armor rather than freezing the starting form and
-// equipment. The inherited Defense coefficient still needs rank verification.
+// equipment. Forever's sourced rank coefficients are exact, not 0.67 per point.
 func (druid *Druid) attachThickHide(aura *core.Aura, formMultiplier float64) {
 	if druid.Talents.ThickHide == 0 {
 		return
 	}
 	points := float64(druid.Talents.ThickHide)
+	armorPerDefense := 0.67 * points
+	if druid.Env.IsForever() {
+		armorPerDefense = []float64{0, 0.67, 1.33, 2}[druid.Talents.ThickHide]
+	}
 	aura.AttachStatBuff(stats.Armor, points*float64(druid.Level)*formMultiplier)
-	aura.AttachStatDependency(druid.NewDynamicStatDependency(stats.Defense, stats.Armor, 0.67*points*formMultiplier))
+	aura.AttachStatDependency(druid.NewDynamicStatDependency(stats.Defense, stats.Armor, armorPerDefense*formMultiplier))
 }
 
 // Forever folds the old Blood Frenzy combo point proc into Primal Fury.

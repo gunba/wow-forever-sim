@@ -1,6 +1,8 @@
 package druid
 
 import (
+	"time"
+
 	"github.com/wowsims/classic/sim/core"
 	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/core/stats"
@@ -28,7 +30,21 @@ func (druid *Druid) InForm(form DruidForm) bool {
 	return druid.form.Matches(form)
 }
 
+func formWeapon(equipped core.Weapon, interval float64) core.Weapon {
+	weapon := core.Weapon{SwingSpeed: interval, NormalizedSwingSpeed: interval, AttackPowerPerDPS: core.DefaultAttackPowerPerDPS}
+	if equipped.SwingSpeed > 0 {
+		// Mean DPS follows the equipped weapon. Preserve its relative range
+		// as a modeling convention; the server's form variance is unverified.
+		weapon.BaseDamageMin = equipped.BaseDamageMin * interval / equipped.SwingSpeed
+		weapon.BaseDamageMax = equipped.BaseDamageMax * interval / equipped.SwingSpeed
+	}
+	return weapon
+}
+
 func (druid *Druid) GetCatWeapon() core.Weapon {
+	if druid.Env != nil && druid.Env.IsForever() {
+		return formWeapon(druid.EquippedMainHandWeapon(), 1)
+	}
 	return core.Weapon{
 		BaseDamageMin:        43.84,
 		BaseDamageMax:        65.76,
@@ -39,6 +55,9 @@ func (druid *Druid) GetCatWeapon() core.Weapon {
 }
 
 func (druid *Druid) GetBearWeapon() core.Weapon {
+	if druid.Env != nil && druid.Env.IsForever() {
+		return formWeapon(druid.EquippedMainHandWeapon(), 2.5)
+	}
 	return core.Weapon{
 		BaseDamageMin:        109,
 		BaseDamageMax:        165,
@@ -98,8 +117,6 @@ func (druid *Druid) registerCatFormSpell() {
 		hotwDep = druid.NewDynamicMultiplyStat(stats.Strength, 1.0+0.02*float64(druid.Talents.HeartOfTheWild))
 	}
 
-	clawWeapon := druid.GetCatWeapon()
-
 	predBonus := stats.Stats{}
 
 	druid.CatFormAura = druid.RegisterAura(core.Aura{
@@ -114,7 +131,7 @@ func (druid *Druid) registerCatFormSpell() {
 			druid.form = Cat
 			druid.SetCurrentPowerBar(core.EnergyBar)
 
-			druid.AutoAttacks.SetMH(clawWeapon)
+			druid.AutoAttacks.SetMH(druid.GetCatWeapon())
 
 			druid.PseudoStats.ThreatMultiplier *= 0.71
 			druid.SetShapeshift(aura)
@@ -223,8 +240,14 @@ func (druid *Druid) registerCatFormSpell() {
 // small amount for every second spent out of form.
 // The beta client's curve is 20-100 and the text builds all three from it: that share of the energy, a tenth of it a
 // second, and the whole of it as the cap, so 20%, 2 a second and 20 Energy per point.
+func (druid *Druid) resetFurorHistory(exitAt time.Duration) {
+	druid.lastCatFormEnergy = 0
+	druid.lastCatFormExitAt = exitAt
+}
+
 func (druid *Druid) furorShiftEnergy(sim *core.Simulation) float64 {
-	if druid.Talents.Furor == 0 {
+	forever := druid.Env != nil && druid.Env.IsForever()
+	if druid.Talents.Furor == 0 || (forever && druid.InForm(Bear)) {
 		return 0
 	}
 
@@ -232,10 +255,12 @@ func (druid *Druid) furorShiftEnergy(sim *core.Simulation) float64 {
 	carryOver := druid.lastCatFormEnergy * 0.2 * points
 	outOfForm := 0.0
 	if druid.lastCatFormExitAt != core.NeverExpires {
-		outOfForm = min(20*points, 2*points*(sim.CurrentTime-druid.lastCatFormExitAt).Seconds())
+		outOfForm = 2 * points * (sim.CurrentTime - druid.lastCatFormExitAt).Seconds()
 	}
-
-	return min(druid.MaxEnergy(), carryOver+outOfForm)
+	if forever {
+		return min(druid.MaxEnergy(), 20*points, carryOver+max(0, outOfForm))
+	}
+	return min(druid.MaxEnergy(), carryOver+min(20*points, outOfForm))
 }
 
 // Dire Bear Form: 180 attack power, 1240 health, 360% more armor from items and 30%
@@ -259,7 +284,6 @@ func (druid *Druid) registerBearFormSpell() {
 		hotwDep = druid.NewDynamicMultiplyStat(stats.Stamina, 1.0+0.04*float64(druid.Talents.HeartOfTheWild))
 	}
 
-	clawWeapon := druid.GetBearWeapon()
 	predBonus := stats.Stats{}
 
 	druid.BearFormAura = druid.RegisterAura(core.Aura{
@@ -272,9 +296,13 @@ func (druid *Druid) registerBearFormSpell() {
 				druid.CancelShapeshift(sim)
 			}
 			druid.form = Bear
+			if druid.Env.IsForever() {
+				// Entering Bear destroys saved Cat Energy; Bear time cannot regenerate it.
+				druid.resetFurorHistory(core.NeverExpires)
+			}
 			druid.SetCurrentPowerBar(core.RageBar)
 
-			druid.AutoAttacks.SetMH(clawWeapon)
+			druid.AutoAttacks.SetMH(druid.GetBearWeapon())
 
 			druid.PseudoStats.ThreatMultiplier *= BearFormThreatMultiplier
 			druid.SetShapeshift(aura)
@@ -309,6 +337,9 @@ func (druid *Druid) registerBearFormSpell() {
 			druid.AutoAttacks.SetMH(druid.WeaponFromMainHand())
 
 			druid.PseudoStats.ThreatMultiplier /= BearFormThreatMultiplier
+			if druid.Env.IsForever() {
+				druid.resetFurorHistory(sim.CurrentTime)
+			}
 			healthFrac := druid.CurrentHealth() / druid.MaxHealth()
 			druid.SetShapeshift(nil)
 

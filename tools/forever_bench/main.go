@@ -102,6 +102,10 @@ func requestForBuild(b build, player *proto.Player, count int, rng int64) *proto
 		return req
 	}
 	req := request(player, count, rng)
+	if b.Key == "survival" || b.Key == "pet_melee" {
+		// Expose Prey requires this Hunter's finite, self-maintained mark.
+		req.Raid.Debuffs.HuntersMark = proto.TristateEffect_TristateEffectMissing
+	}
 	if *noBattleShout {
 		req.Raid.Buffs.BattleShout = proto.TristateEffect_TristateEffectMissing
 		req.Raid.Parties[0].Buffs.BattleShout = proto.TristateEffect_TristateEffectMissing
@@ -223,6 +227,9 @@ func prepare(b build, race proto.Race) *proto.Player {
 	if *talentsOverride != "" {
 		p.TalentsString = *talentsOverride
 	}
+	if *aplOverride == "" && *playerOverride == "" && (b.Key == "survival" || b.Key == "pet_melee") {
+		p.Rotation = core.APLRotationFromJsonString(string(mustRead("ui/hunter/apls/" + b.Key + ".apl.json")))
+	}
 	if *aplOverride != "" {
 		p.Rotation = core.APLRotationFromJsonString(string(mustRead(*aplOverride)))
 	}
@@ -260,7 +267,7 @@ func writeResults(rows []resultRow) {
 		Mechanics                                map[string]string
 		Results                                  []resultRow
 	}{*duration, *targetArmor, *spellPower, false, *tier1, *equipmentScale, map[string]string{
-		"autoAttacks":           "classic-spell-swing-resets-slam-exception-no-caster-weaving",
+		"autoAttacks":           "hardcast-full-swing-delay-instant-exemption-slam-exception-no-caster-weaving",
 		"hunterCasts":           "client-special-durations-classic-autoshot-half-second-windup",
 		"energy":                "10-per-second-100ms-integration-general-haste-assumed",
 		"eureka":                "charge-reserved-before-nested-effects",
@@ -286,6 +293,11 @@ func writeResults(rows []resultRow) {
 		"jow":                   "client-rank3-59-mana-classic-50pct-eligible-event-chance-assumed",
 		"speed":                 "general-haste-separated-from-casting-and-attack-only-effects",
 		"mp5":                   "per-player-foreverMp5PerSecond-opt-in-unverified-fivefold-MP5-only",
+		"formWeapons":           "equipped-weapon-dps-flat-enchants-stones-on-fixed-cat-bear-speed-variance-convention",
+		"minorArmor":            "strongest-faerie-fire-curse-reduction-not-additive",
+		"hunterMark":            "melee-hunters-own-finite-mark-for-expose-prey",
+		"instantPoison":         "forever-source-0.005-current-ap-before-damage-modifiers-classic-unchanged",
+		"shielding":             "finite-all-school-delivered-damage-absorbs-no-probe-depletion-overlap-order-assumed-threat-unresolved",
 	}, rows}
 	data, err := json.MarshalIndent(payload, "", "  ")
 	if err != nil {

@@ -35,7 +35,8 @@ type Priest struct {
 	core.Character
 	Talents *proto.PriestTalents
 
-	Latency float64
+	Latency             float64
+	PowerInfusionTarget *proto.UnitReference
 
 	CircleOfHealing *core.Spell
 	DevouringPlague []*core.Spell

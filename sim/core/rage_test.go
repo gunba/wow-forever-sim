@@ -1,6 +1,10 @@
 package core
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/wowsims/classic/sim/core/proto"
+)
 
 // `^` is XOR in Go, not a power, so the level term used to read 60^2 = 62 instead of 3600 and
 // every warrior generated 16% too much rage.
@@ -25,6 +29,28 @@ func TestForeverWarriorRagePerSwing(t *testing.T) {
 		got := foreverWarriorRagePerSwing(tc.speed, tc.twoHand, tc.offHand)
 		if delta := got - tc.want; delta < -0.000001 || delta > 0.000001 {
 			t.Errorf("speed %.1f two-hand %t off-hand %t: got %.4f, want %.4f", tc.speed, tc.twoHand, tc.offHand, got, tc.want)
+		}
+	}
+}
+
+func TestForeverRageRefundUsesPaidCost(t *testing.T) {
+	for _, ruleset := range []proto.Ruleset{proto.Ruleset_RulesetForever, proto.Ruleset_RulesetClassic} {
+		for _, paid := range []float64{0, 5, 15} {
+			unit := &Unit{Env: &Environment{Ruleset: ruleset}}
+			unit.rageBar = rageBar{unit: unit, currentRage: 20, maxRage: 100, RageRefundMetrics: &ResourceMetrics{}}
+			spell := &Spell{Unit: unit}
+			spell.Cost = newRageCost(spell, RageCostOptions{Cost: 15, Refund: .8})
+			spell.CurCast.Cost = paid
+			sim := &Simulation{Options: &proto.SimOptions{Interactive: true}, pendingActions: []*PendingAction{{NextActionAt: NeverExpires}}}
+			spell.Cost.SpendCost(sim, spell)
+			spell.Cost.IssueRefund(sim, spell)
+			refund := 12.0
+			if ruleset == proto.Ruleset_RulesetForever {
+				refund = .8 * paid
+			}
+			if got, want := unit.CurrentRage(), 20-paid+refund; got != want {
+				t.Errorf("%v paid %v: Rage %v, want %v", ruleset, paid, got, want)
+			}
 		}
 	}
 }

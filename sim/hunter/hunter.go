@@ -110,6 +110,7 @@ type Hunter struct {
 	SummonHawk        *core.Spell
 	Volley            *core.Spell
 	WingClip          *core.Spell
+	HuntersMarkAuras  []core.AuraArray
 
 	Shots       []*core.Spell
 	Strikes     []*core.Spell
@@ -189,12 +190,17 @@ func (hunter *Hunter) Initialize() {
 	hunter.registerWingClipSpell()
 	hunter.registerStriderKickSpell()
 	hunter.registerVolleySpell()
+	hunter.registerHuntersMark()
 
-	traps := hunter.NewTimer()
+	fireTraps := hunter.NewTimer()
+	frostTraps := fireTraps
+	if hunter.Env.IsForever() {
+		frostTraps = hunter.NewTimer()
+	}
 
-	hunter.registerExplosiveTrapSpell(traps)
-	hunter.registerImmolationTrapSpell(traps)
-	hunter.registerFreezingTrapSpell(traps)
+	hunter.registerExplosiveTrapSpell(fireTraps)
+	hunter.registerImmolationTrapSpell(fireTraps)
+	hunter.registerFreezingTrapSpell(frostTraps)
 
 	hunter.registerRapidFire()
 }

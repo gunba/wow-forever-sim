@@ -405,9 +405,9 @@
 	"8679": {
 		"ability": "Instant Poison",
 		"file": "sim/rogue/poisons.go",
-		"note": "Beta client 1.60.1.69893: about a third less damage at every rank (rank 6 112-148 -> 76-100) and about 1.5x the charges, which the sim does not model. The 20% proc chance is Classic's.",
+		"note": "Beta client 1.60.1.69893: about a third less damage at every rank (rank 6 112-148 -> 76-100) and about 1.5x the charges, which the sim does not model. The 20% proc chance is Classic's. Developer clarification: https://github.com/ClassicWoWCommunity/forever-bugs/issues/100#issuecomment-5804701503. No new AP term outside Forever.",
 		"source": "forever",
-		"tooltip": "3 sec cast\nCoats a weapon with poison that lasts for 30 minutes. Each strike has a 20% chance of poisoning the enemy which instantly inflicts 13 to 17 Nature damage. 60 charges."
+		"tooltip": "3 sec cast\nCoats a weapon with poison that lasts for 30 minutes. Each strike has a 20% chance of poisoning the enemy which instantly inflicts 13 to 17 Nature damage. 60 charges.\nIn Forever, adds 0.5% current Attack Power before damage multipliers."
 	},
 	"8688": {
 		"ability": "Instant Poison III",

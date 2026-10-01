@@ -7,8 +7,8 @@
     "SpellEffect": "f08c0780f920f41f84b6d6d13ada78db59a4c5ae8ca369c8bee3ab7642af41c1",
     "SkillLineAbility": "d2619ca3a30648f77d614beda1e4b43a272544e4d299b6c964c4164f58f3f3cc"
   },
-  "InventorySHA256": "dd45b1a1d6a209fe294079fa10d873e20d6d954315f9bd87bea09e328e6b7df8",
-  "Scope": "Class-mask and class-skill-line damage candidates at level 60 or below. Association is not proof of current availability. Registration is not proof that every effect is verified.",
+  "InventorySHA256": "0bc8b82f0598e6e9112eba5e358fc628a1613b8587245af50210b20d733bf2d7",
+  "Scope": "Class-mask and class-skill-line damage candidates at level 60 or below. Association is not proof of current availability. Registration is not proof that every effect is verified. This refresh uses current fixed-profile spellbooks against the captured 69893 acquisition tables; it does not claim that the later article has shipped or that inactive talents/all pet families were sampled.",
   "Families": [
     {
       "Class": "druid",
@@ -304,7 +304,9 @@
           "AcquireMethod": 0,
           "SkillRowID": 49504,
           "Description": "Lacerates the enemy target, making them bleed for $o1 damage over $d plus $s2% weapon damage per existing application of Lacerate on the target. Causes a high amount of threat. This effect stacks up to $u times on the same target.",
-          "RegisteredIDs": []
+          "RegisteredIDs": [
+            414644
+          ]
         },
         {
           "SpellID": 1235826,
@@ -329,9 +331,9 @@
           "RegisteredIDs": []
         }
       ],
-      "AnyRegistered": false,
-      "Disposition": "conditional",
-      "Detail": "Implemented for Bear in sim/druid/lacerate.go; absent from the Cat/Balance sample."
+      "AnyRegistered": true,
+      "Disposition": "registered",
+      "Detail": "At least one direct, aliased or triggered action is registered; inspect individual ranks."
     },
     {
       "Class": "druid",
@@ -412,12 +414,14 @@
           "AcquireMethod": 0,
           "SkillRowID": 5277,
           "Description": "Increases the druid's next attack by $s1 damage.",
-          "RegisteredIDs": []
+          "RegisteredIDs": [
+            9881
+          ]
         }
       ],
-      "AnyRegistered": false,
-      "Disposition": "conditional",
-      "Detail": "Implemented in sim/druid/maul.go; the sampled Feral DPS agent registers Cat abilities."
+      "AnyRegistered": true,
+      "Disposition": "registered",
+      "Detail": "At least one direct, aliased or triggered action is registered; inspect individual ranks."
     },
     {
       "Class": "druid",
@@ -1083,12 +1087,14 @@
           "AcquireMethod": 0,
           "SkillRowID": 5287,
           "Description": "Swipe $x1 nearby enemies, inflicting $s1 damage.",
-          "RegisteredIDs": []
+          "RegisteredIDs": [
+            9908
+          ]
         }
       ],
-      "AnyRegistered": false,
-      "Disposition": "conditional",
-      "Detail": "Implemented in sim/druid/swipe.go; the sampled Feral DPS agent registers Cat abilities."
+      "AnyRegistered": true,
+      "Disposition": "registered",
+      "Detail": "At least one direct, aliased or triggered action is registered; inspect individual ranks."
     },
     {
       "Class": "druid",
@@ -3411,7 +3417,9 @@
           "AcquireMethod": 0,
           "SkillRowID": 4707,
           "Description": "Targets in a cone in front of the caster take ${$m2*$<frostdamage>} to ${$M2*$<frostdamage>}  Frost damage and are slowed by $s1% for $d.",
-          "RegisteredIDs": []
+          "RegisteredIDs": [
+            120
+          ]
         },
         {
           "SpellID": 8492,
@@ -3422,7 +3430,9 @@
           "AcquireMethod": 0,
           "SkillRowID": 4716,
           "Description": "Targets in a cone in front of the caster take ${$m2*$<frostdamage>} to ${$M2*$<frostdamage>}  Frost damage and are slowed by $s1% for $d.",
-          "RegisteredIDs": []
+          "RegisteredIDs": [
+            8492
+          ]
         },
         {
           "SpellID": 10159,
@@ -3433,7 +3443,9 @@
           "AcquireMethod": 0,
           "SkillRowID": 5439,
           "Description": "Targets in a cone in front of the caster take ${$m2*$<frostdamage>} to ${$M2*$<frostdamage>}  Frost damage and are slowed by $s1% for $d.",
-          "RegisteredIDs": []
+          "RegisteredIDs": [
+            10159
+          ]
         },
         {
           "SpellID": 10160,
@@ -3444,7 +3456,9 @@
           "AcquireMethod": 0,
           "SkillRowID": 5440,
           "Description": "Targets in a cone in front of the caster take ${$m2*$<frostdamage>} to ${$M2*$<frostdamage>}  Frost damage and are slowed by $s1% for $d.",
-          "RegisteredIDs": []
+          "RegisteredIDs": [
+            10160
+          ]
         },
         {
           "SpellID": 10161,
@@ -3455,12 +3469,14 @@
           "AcquireMethod": 0,
           "SkillRowID": 5441,
           "Description": "Targets in a cone in front of the caster take ${$m2*$<frostdamage>} to ${$M2*$<frostdamage>}  Frost damage and are slowed by $s1% for $d.",
-          "RegisteredIDs": []
+          "RegisteredIDs": [
+            10161
+          ]
         }
       ],
-      "AnyRegistered": false,
-      "Disposition": "not-implemented",
-      "Detail": "Short-range cone damage is not implemented. Existing Mage profiles stand at 20 yards. An in-range AoE/proximity scenario needs this ability and its talent interactions."
+      "AnyRegistered": true,
+      "Disposition": "registered",
+      "Detail": "At least one direct, aliased or triggered action is registered; inspect individual ranks."
     },
     {
       "Class": "mage",
@@ -3847,7 +3863,9 @@
           "AcquireMethod": 0,
           "SkillRowID": 474,
           "Description": "Blasts enemies near the caster for ${$m1*$<frostdamage>} to ${$M1*$<frostdamage>} Frost damage and freezes them in place for up to $d.  Damage caused may interrupt the effect.",
-          "RegisteredIDs": []
+          "RegisteredIDs": [
+            122
+          ]
         },
         {
           "SpellID": 865,
@@ -3858,7 +3876,9 @@
           "AcquireMethod": 0,
           "SkillRowID": 751,
           "Description": "Blasts enemies near the caster for ${$m1*$<frostdamage>} to ${$M1*$<frostdamage>} Frost damage and freezes them in place for up to $d.  Damage caused may interrupt the effect.",
-          "RegisteredIDs": []
+          "RegisteredIDs": [
+            865
+          ]
         },
         {
           "SpellID": 6131,
@@ -3869,7 +3889,9 @@
           "AcquireMethod": 0,
           "SkillRowID": 4042,
           "Description": "Blasts enemies near the caster for ${$m1*$<frostdamage>} to ${$M1*$<frostdamage>} Frost damage and freezes them in place for up to $d.  Damage caused may interrupt the effect.",
-          "RegisteredIDs": []
+          "RegisteredIDs": [
+            6131
+          ]
         },
         {
           "SpellID": 10230,
@@ -3880,12 +3902,14 @@
           "AcquireMethod": 0,
           "SkillRowID": 5476,
           "Description": "Blasts enemies near the caster for ${$m1*$<frostdamage>} to ${$M1*$<frostdamage>} Frost damage and freezes them in place for up to $d.  Damage caused may interrupt the effect.",
-          "RegisteredIDs": []
+          "RegisteredIDs": [
+            10230
+          ]
         }
       ],
-      "AnyRegistered": false,
-      "Disposition": "not-implemented",
-      "Detail": "Short-range control/AoE damage is not implemented. A future in-range scenario must distinguish damage from boss freeze immunity."
+      "AnyRegistered": true,
+      "Disposition": "registered",
+      "Detail": "At least one direct, aliased or triggered action is registered; inspect individual ranks."
     },
     {
       "Class": "mage",
@@ -9665,12 +9689,14 @@
           "AcquireMethod": 0,
           "SkillRowID": 12799,
           "Description": "Slam the target with your shield, causing $s2 damage, increased by your Block Value, and has a 50% chance of dispelling $s1 magic effect on the target. Causes a very high amount of threat.",
-          "RegisteredIDs": []
+          "RegisteredIDs": [
+            23925
+          ]
         }
       ],
-      "AnyRegistered": false,
-      "Disposition": "conditional",
-      "Detail": "Implemented in sim/warrior/shield_slam.go when talented; no sampled Warrior takes it."
+      "AnyRegistered": true,
+      "Disposition": "registered",
+      "Detail": "At least one direct, aliased or triggered action is registered; inspect individual ranks."
     },
     {
       "Class": "warrior",
@@ -11170,7 +11196,9 @@
       "AcquireMethod": 3,
       "SkillRowID": 49505,
       "Description": "",
-      "RegisteredIDs": []
+      "RegisteredIDs": [
+        414647
+      ]
     },
     {
       "Class": "druid",
@@ -12119,7 +12147,9 @@
       "AcquireMethod": 3,
       "SkillRowID": 53143,
       "Description": "Mangle the target for $s2% normal damage plus $s1.",
-      "RegisteredIDs": []
+      "RegisteredIDs": [
+        1238073
+      ]
     },
     {
       "Class": "druid",
@@ -12342,5 +12372,6 @@
       "Description": "Dealing $s1 Holy damage every $1316994t2 sec.",
       "RegisteredIDs": []
     }
-  ]
+  ],
+  "InventoryPath": "artifacts/correctness/spell_inventory.json"
 }

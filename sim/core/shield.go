@@ -1,6 +1,9 @@
 package core
 
-import "strconv"
+import (
+	"slices"
+	"strconv"
+)
 
 type ShieldConfig struct {
 	SelfOnly bool // Set to true to only create the self-shield.
@@ -10,13 +13,17 @@ type ShieldConfig struct {
 	Aura
 }
 
-// Rerpresents an absorption effect, e.g. Power Word: Shield.
+// Represents a finite all-school absorption effect, e.g. Power Word: Shield.
 type Shield struct {
 	Spell *Spell
 
 	// Embed Aura so we can use IsActive/Refresh/etc directly.
 	*Aura
+
+	remainingAbsorb float64
 }
+
+func (shield *Shield) RemainingAbsorb() float64 { return shield.remainingAbsorb }
 
 func (shield *Shield) Apply(sim *Simulation, shieldAmount float64) {
 	caster := shield.Spell.Unit
@@ -25,10 +32,14 @@ func (shield *Shield) Apply(sim *Simulation, shieldAmount float64) {
 
 	// Shields are not affected by healing pseudostats the same way heals are.
 	// So we only apply the spell-specific multiplier and shield-specific multiplier.
-	shieldAmount *= shield.Spell.DamageMultiplier * caster.PseudoStats.ShieldDealtMultiplier
+	shieldAmount = max(0, shieldAmount*shield.Spell.DamageMultiplier*caster.PseudoStats.ShieldDealtMultiplier)
 
 	shield.Aura.Deactivate(sim)
-	shield.Aura.Activate(sim)
+	shield.remainingAbsorb = shieldAmount
+	if shieldAmount > 0 {
+		shield.Aura.Activate(sim)
+		target.activeShields = append(target.activeShields, shield)
+	}
 
 	threat := 0.0 // TODO
 	shield.Spell.SpellMetrics[target.UnitIndex].TotalThreat += threat
@@ -43,8 +54,40 @@ func (shield *Shield) Apply(sim *Simulation, shieldAmount float64) {
 func newShield(config Shield) *Shield {
 	shield := &Shield{}
 	*shield = config
+	previousExpire := shield.Aura.OnExpire
+	shield.Aura.OnExpire = func(aura *Aura, sim *Simulation) {
+		shield.remainingAbsorb = 0
+		aura.Unit.activeShields = slices.DeleteFunc(aura.Unit.activeShields, func(active *Shield) bool { return active == shield })
+		if previousExpire != nil {
+			previousExpire(aura, sim)
+		}
+	}
 
 	return shield
+}
+
+// Pools are consumed after mitigation and only during damage delivery. In the
+// absence of a verified multi-shield priority rule, overlaps use application
+// order. Refreshing a pool replaces it and moves it to the end of that order.
+func (unit *Unit) absorbDamage(sim *Simulation, result *SpellResult) {
+	for result.Damage > 0 && len(unit.activeShields) > 0 {
+		shield := unit.activeShields[0]
+		if shield.ExpiresAt() <= sim.CurrentTime {
+			shield.Deactivate(sim)
+			continue
+		}
+		amount := min(result.Damage, shield.remainingAbsorb)
+		shield.remainingAbsorb -= amount
+		result.Damage -= amount
+		result.AbsorbedDamage += amount
+		shield.Spell.SpellMetrics[unit.UnitIndex].TotalAbsorbedShielding += amount
+		if sim.Log != nil {
+			shield.Spell.Unit.Log(sim, "%s %s absorbed %0.3f damage (%0.3f remaining).", unit.LogLabel(), shield.Spell.ActionID, amount, shield.remainingAbsorb)
+		}
+		if shield.remainingAbsorb <= 0 {
+			shield.Deactivate(sim)
+		}
+	}
 }
 
 type ShieldArray []*Shield

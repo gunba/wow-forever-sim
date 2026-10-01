@@ -439,6 +439,7 @@ type PseudoStats struct {
 
 	HealingDealtMultiplier float64 // All healing
 	ShieldDealtMultiplier  float64 // Increases the effectiveness of your shielding spells.
+	SpellPushbackReduction float64 // Unit-wide resistance, added to the spell's own reduction.
 
 	// Important when unit is attacker or target
 	BlockValueMultiplier float64

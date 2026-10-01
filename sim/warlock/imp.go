@@ -68,6 +68,44 @@ func (warlock *Warlock) makeImp() *WarlockPet {
 	return warlock.makePet(cfg, warlock.Options.Summon == proto.WarlockOptions_Imp)
 }
 
+func (warlock *Warlock) registerImpBloodPact() {
+	if !warlock.Env.IsForever() {
+		return
+	}
+	auras := []*core.Aura{}
+	for _, recipient := range warlock.Party.PlayersAndPets {
+		aura := core.BloodPactAura(&recipient.GetCharacter().Unit, "Blood Pact-"+warlock.Imp.Label)
+		aura.BuildPhase = core.Ternary(warlock.Options.Summon == proto.WarlockOptions_Imp, core.CharacterBuildPhaseBuffs, core.CharacterBuildPhaseNone)
+		auras = append(auras, aura)
+		if petAgent, ok := recipient.(core.PetAgent); ok {
+			petAgent.GetPet().ApplyOnPetEnable(func(sim *core.Simulation) {
+				if warlock.Imp.IsEnabled() && !warlock.Env.IsResetting() {
+					aura.Activate(sim)
+				}
+			})
+		}
+	}
+	activate := func(sim *core.Simulation) {
+		if warlock.Env.IsResetting() {
+			return
+		}
+		for _, aura := range auras {
+			aura.Activate(sim)
+		}
+	}
+	warlock.Imp.Pet.ApplyOnPetEnable(activate)
+	warlock.Env.RegisterPostResetEffect(func(sim *core.Simulation) {
+		if warlock.Imp.IsEnabled() {
+			activate(sim)
+		}
+	})
+	warlock.Imp.Pet.ApplyOnPetDisable(func(sim *core.Simulation) {
+		for _, aura := range auras {
+			aura.Deactivate(sim)
+		}
+	})
+}
+
 func (wp *WarlockPet) registerImpFireboltSpell() {
 	warlockLevel := wp.owner.Level
 	// assuming max rank available
@@ -88,8 +126,14 @@ func (wp *WarlockPet) registerImpFireboltSpell() {
 	level := [8]int{0, 1, 8, 18, 28, 38, 48, 58}[rank]
 
 	improvedImp := []float64{1, 1.1, 1.2, 1.3}[wp.owner.Talents.ImprovedImp]
-	baseDamage[0] *= improvedImp
-	baseDamage[1] *= improvedImp
+	damageMultiplier := 1.0
+	if wp.Env.IsForever() {
+		// Improved Imp is a full damage modifier, including Firebolt's SP term.
+		damageMultiplier = improvedImp
+	} else {
+		baseDamage[0] *= improvedImp
+		baseDamage[1] *= improvedImp
+	}
 
 	wp.primaryAbility = wp.RegisterSpell(core.SpellConfig{
 		ActionID:      core.ActionID{SpellID: spellId},
@@ -114,7 +158,7 @@ func (wp *WarlockPet) registerImpFireboltSpell() {
 			},
 		},
 
-		DamageMultiplier: 1,
+		DamageMultiplier: damageMultiplier,
 		ThreatMultiplier: 1,
 		BonusCoefficient: spellCoeff,
 

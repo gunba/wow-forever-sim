@@ -330,7 +330,7 @@ func newRageCost(spell *Spell, options RageCostOptions) *SpellCost {
 		BaseCost:   options.Cost,
 		Multiplier: 100,
 		SpellCostFunctions: &RageCost{
-			Refund:          options.Refund * options.Cost,
+			Refund:          options.Refund,
 			RefundMetrics:   options.RefundMetrics,
 			ResourceMetrics: spell.Unit.NewRageMetrics(spell.ActionID),
 		},
@@ -354,7 +354,13 @@ func (rc *RageCost) SpendCost(sim *Simulation, spell *Spell) {
 	}
 }
 func (rc *RageCost) IssueRefund(sim *Simulation, spell *Spell) {
-	if rc.Refund > 0 {
-		spell.Unit.AddRage(sim, rc.Refund, rc.RefundMetrics)
+	cost := spell.Cost.BaseCost
+	if spell.Unit.Env != nil && spell.Unit.Env.IsForever() {
+		// Refund the paid cost, not the undiscounted cost. Clearcasting
+		// cannot generate Rage by refunding a free, avoided attack.
+		cost = spell.CurCast.Cost
+	}
+	if refund := rc.Refund * cost; refund > 0 {
+		spell.Unit.AddRage(sim, refund, rc.RefundMetrics)
 	}
 }

@@ -8,9 +8,18 @@ import json
 import math
 from pathlib import Path
 
+from seed_intervals import require_independent_seed_ranges
+
 
 def summarize(data):
     output = {key: data[key] for key in ("EngineBaseRevision", "Correction", "Seeds", "IterationsPerArmPerSeed")}
+    try:
+        require_independent_seed_ranges([(seed, data["IterationsPerArmPerSeed"]) for seed in data["Seeds"]])
+        independent = True
+    except ValueError:
+        independent = False
+    output["SeedIntervalsIndependent"] = independent
+    output["ErrorAggregation"] = "independent-quadrature" if independent else "conservative-marginal-maximum"
     output["Choices"] = []
     for choice in data["Choices"]:
         item = deepcopy(choice)
@@ -27,7 +36,8 @@ def summarize(data):
                     raise ValueError(f"{choice['Key']}/{race}/{candidate}: invalid run")
                 arms[candidate] = {
                     "DPS": sum(row["DPS"] for row in runs) / len(runs),
-                    "SE": math.sqrt(sum(row["StandardError"] ** 2 for row in runs)) / len(runs),
+                    "SE": (math.sqrt(sum(row["StandardError"] ** 2 for row in runs)) / len(runs)
+                           if independent else max(row["StandardError"] for row in runs)),
                     "OOM": sum(row["OOMSeconds"] for row in runs) / len(runs),
                 }
             base, new = arms["baseline"], arms[choice["Candidate"]]

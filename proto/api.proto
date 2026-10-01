@@ -161,7 +161,7 @@ message ActionMetrics {
 	bool is_passive = 5;
 }
 
-// Metrics for a specific action, when cast at a particular target.  Next = 37
+// Metrics for a specific action, when cast at a particular target.  Next = 39
 message TargetedActionMetrics {
 	reserved 19, 20;
 	reserved "crit_block_damage", "crit_blocks";
@@ -262,8 +262,12 @@ message TargetedActionMetrics {
 	// Total critical healing done to this target by this action.
 	double crit_healing = 16;
 
-	// Total shielding done to this target by this action.
+	// Total shield capacity generated for this target by this action.
 	double shielding = 13;
+ // Damage actually absorbed by that capacity (included in healing throughput).
+ double absorbed_shielding = 37;
+ // Generated capacity not consumed before replacement, expiry or encounter end.
+ double unused_shielding = 38;
 
 	// Total time spent casting this action, in milliseconds, either from hard casts, GCD, or channeling.
 	double cast_time_ms = 14;

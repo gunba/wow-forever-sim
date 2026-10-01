@@ -1,7 +1,7 @@
 {
  "_readme": "Talent rank values from the Forever beta client, numbers only, in the order they appear in each rank tooltip. TestConfirmedTalentRanksMatchTheSim holds the trees to them. Regenerate with tools/forever_talents/apply_beta_tooltips.py.",
- "source": "beta client 1.60.1.69893",
- "generated": "1.60.1.69893",
+ "source": "beta client 1.60.1.69893 plus sourced 1.60.1.70009 updates",
+ "generated": "1.60.1.70009 reconciliation; unchanged 1.60.1.69893 entries retained",
  "talents": {
   "Druid": {
    "Improved Wrath": [
@@ -1636,18 +1636,18 @@
    ],
    "Sacred Arbiter": [
     [
-     10
+     20
     ]
    ],
    "Two-Handed Weapon Specialization": [
     [
-     3
+     2
+    ],
+    [
+     4
     ],
     [
      6
-    ],
-    [
-     9
     ]
    ],
    "Champion of the Light": [
@@ -1672,7 +1672,9 @@
     ]
    ],
    "Twist of Light": [
-    []
+    [
+     20
+    ]
    ]
   },
   "Priest": {
@@ -3598,10 +3600,12 @@
    ],
    "Improved Slam": [
     [
-     0.25
+     0.25,
+     1.5
     ],
     [
-     0.5
+     0.5,
+     3
     ]
    ],
    "Booming Voice": [
@@ -3882,6 +3886,29 @@
      10
     ]
    ]
+  }
+ },
+ "source_updates": {
+  "build": "1.60.1.70009",
+  "entries": {
+   "Paladin/Sacred Arbiter": {
+    "spell_id": 1311087
+   },
+   "Paladin/Two-Handed Weapon Specialization": {
+    "spell_id": 20111,
+    "effect_id": 697263
+   },
+   "Paladin/Twist of Light": {
+    "spell_id": 1310735
+   },
+   "Warrior/Improved Slam": {
+    "spell_id": 12862,
+    "effect_ids": [
+     690854,
+     1230916,
+     1339521
+    ]
+   }
   }
  }
 }

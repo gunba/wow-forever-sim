@@ -9,7 +9,7 @@ import (
 const LacerateMaxStacks int32 = 5
 
 // Forever trains Lacerate at 42, 50 and 58 (414644, 1235826, 1235827). Beta client 1.60.1.69893: 15 Rage, 10% weapon
-// damage per stack on the hit, and a bleed of 10 / 12 / 15 a tick per stack over 15 sec that no longer scales with
+// damage per existing stack on the hit (Sept 30 class deep dive), and a bleed of 10 / 12 / 15 a tick per stack over 15 sec that no longer scales with
 // attack power. The client does not carry threat, so the 3.33x is still Season of Discovery's.
 func (druid *Druid) registerLacerateSpell() {
 	druid.registerLacerateBleedSpell()
@@ -39,7 +39,10 @@ func (druid *Druid) registerLacerateSpell() {
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			// Berserk's extra-target modifier names only Mangle (family mask 0x40),
 			// not Lacerate (0x100).
-			stacks := min(druid.LacerateBleed.Dot(target).GetStacks()+1, LacerateMaxStacks)
+			stacks := druid.LacerateBleed.Dot(target).GetStacks()
+			if !druid.Env.IsForever() {
+				stacks = min(stacks+1, LacerateMaxStacks)
+			}
 			baseDamage := spell.Unit.MHWeaponDamage(sim, spell.MeleeAttackPower(target)) * 0.1 * float64(stacks)
 			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialHitAndCrit)
 			if result.Landed() {
