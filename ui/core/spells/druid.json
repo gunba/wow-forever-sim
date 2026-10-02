@@ -1,4 +1,11 @@
 {
+	"1322605": {
+		"ability": "Shifting Power",
+		"file": "sim/druid/shifting_power.go",
+		"source": "forever",
+		"tooltip": "Cat Form only. Costs 55% base Mana before supported shapeshift discounts. Restores 40 Energy. 1-second GCD; 16-second cooldown.",
+		"note": "October 1 notes and static client 1.60.1.70170: spell 1322605. Improved Shifting Power 1322670 curve reduces CD 4/8s; Cat T1/item 272427 each subtract 1s via 1291059. Wolfshead 8345/17768 adds 20 Energy. These are current effects, not legacy Tiger's Fury."
+	},
 	"1079": {
 		"ability": "Rip",
 		"file": "sim/druid/rip.go",

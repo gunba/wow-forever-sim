@@ -41,9 +41,13 @@ func (paladin *Paladin) ApplyTalents() {
 	// https://github.com/wowsims/sod/issues/1025 gets resolved.
 	paladin.PseudoStats.BlockValueMultiplier += 0.1 * float64(paladin.Talents.ShieldSpecialization)
 
-	// Champion of the Light: 33/66/100%, confirmed by the beta client.
+	// October 1: 20/40/60% Intellect contributes to damage, never healing.
 	if paladin.Talents.ChampionOfTheLight > 0 {
-		paladin.AddStatDependency(stats.Intellect, stats.SpellPower, []float64{0, 0.33, 0.66, 1.00}[paladin.Talents.ChampionOfTheLight])
+		if paladin.Env.IsForever() {
+			paladin.AddStatDependency(stats.Intellect, stats.SpellDamage, .2*float64(paladin.Talents.ChampionOfTheLight))
+		} else {
+			paladin.AddStatDependency(stats.Intellect, stats.SpellPower, []float64{0, 0.33, 0.66, 1.00}[paladin.Talents.ChampionOfTheLight])
+		}
 	}
 
 	paladin.applyWeaponSpecialization()
@@ -118,7 +122,11 @@ func (paladin *Paladin) applyRedoubt() {
 	// blocks. The trees had the block flat at 6% and the chance at 10% a rank. The chance is the
 	// curve on effect index 1, which the talent spell has no effect for; its rank 5 value is the
 	// 10% ProcChance the spell carries, the way a spell's own number is always the top rank's.
-	blockBonus := 6.0 * float64(paladin.Talents.Redoubt) * core.BlockRatingPerBlockChance
+	blockPerPoint := 6.0
+	if paladin.Env.IsForever() {
+		blockPerPoint = 4
+	}
+	blockBonus := blockPerPoint * float64(paladin.Talents.Redoubt) * core.BlockRatingPerBlockChance
 
 	paladin.redoubtAura = paladin.RegisterAura(core.Aura{
 		Label:     "Redoubt",

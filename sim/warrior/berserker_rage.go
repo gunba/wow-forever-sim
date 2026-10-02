@@ -7,7 +7,11 @@ import (
 )
 
 func (warrior *Warrior) registerBerserkerRageSpell() {
-	if warrior.Level < 32 {
+	requiredLevel := int32(32)
+	if warrior.Env.IsForever() {
+		requiredLevel = 30
+	}
+	if warrior.Level < requiredLevel {
 		return
 	}
 

@@ -9,25 +9,43 @@ import (
 // Berserk widens Mangle to a cleave.
 const MangleBerserkTargets = 3
 
-// Beta client 1.60.1.70009: Primal Bite (formerly Mangle) is 20 Rage, a 6 sec cooldown, and 100% weapon damage plus a bonus that grows by
-// rank (407995, 1238069, 1238070, 1238073 at levels 25, 36, 48, 60). The client does not carry threat, so the 1.5x is
-// still Season of Discovery's.
+// Client 70170: Primal Bite is 20 Rage, a 6 sec cooldown, and 100%
+// weapon damage plus 26/38/59/77 at levels 25/36/48/60. The October 1
+// notes roughly double threat; this applies a 2x relative change to the
+// inherited, still-unverified 1.5x coefficient, not a measured absolute value.
+func primalBiteRank(level int32) int {
+	rank := 0
+	for candidate, learned := range []int32{25, 36, 48, 60} {
+		if level >= learned {
+			rank = candidate + 1
+		}
+	}
+	return rank
+}
+
 func (druid *Druid) registerMangleBearSpell() {
-	if !druid.Talents.Mangle {
+	if !druid.Talents.Mangle || druid.Level < 25 {
 		return
 	}
 
-	flatDamageBonus := map[int32]float64{25: 26, 40: 38, 50: 59, 60: 77}[druid.Level]
-	spellID := map[int32]int32{25: 407995, 40: 1238069, 50: 1238070, 60: 1238073}[druid.Level]
+	rank := primalBiteRank(druid.Level)
+	flatDamageBonus := [...]float64{0, 26, 38, 59, 77}[rank]
+	spellID := [...]int32{0, 407995, 1238069, 1238070, 1238073}[rank]
+	threatMultiplier := 1.5
+	if druid.Env.IsForever() {
+		threatMultiplier *= 2
+	}
 	results := make([]*core.SpellResult, min(MangleBerserkTargets, druid.Env.GetNumTargets()))
 
 	druid.MangleBear = druid.RegisterSpell(Bear, core.SpellConfig{
-		SpellCode:   SpellCode_DruidMangle,
-		ActionID:    core.ActionID{SpellID: spellID},
-		SpellSchool: core.SpellSchoolPhysical,
-		DefenseType: core.DefenseTypeMelee,
-		ProcMask:    core.ProcMaskMeleeMHSpecial,
-		Flags:       core.SpellFlagMeleeMetrics | core.SpellFlagAPL,
+		SpellCode:     SpellCode_DruidMangle,
+		ActionID:      core.ActionID{SpellID: spellID},
+		Rank:          rank,
+		RequiredLevel: int([]int32{25, 36, 48, 60}[rank-1]),
+		SpellSchool:   core.SpellSchoolPhysical,
+		DefenseType:   core.DefenseTypeMelee,
+		ProcMask:      core.ProcMaskMeleeMHSpecial,
+		Flags:         core.SpellFlagMeleeMetrics | core.SpellFlagAPL,
 
 		RageCost: core.RageCostOptions{
 			Cost:   20 - float64(druid.Talents.Ferocity),
@@ -45,7 +63,7 @@ func (druid *Druid) registerMangleBearSpell() {
 		},
 
 		DamageMultiplier: 1,
-		ThreatMultiplier: 1.5,
+		ThreatMultiplier: threatMultiplier,
 		BonusCoefficient: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {

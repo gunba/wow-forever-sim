@@ -13,13 +13,25 @@ func (warrior *Warrior) ToughnessArmorMultiplier() float64 {
 	return 1.0 + 0.02*float64(warrior.Talents.Toughness)
 }
 
+func (warrior *Warrior) ResolveTalentTree() {
+	if warrior.Env.IsForever() {
+		core.FillTalentsProtoByName(warrior.Talents.ProtoReflect(), warrior.talentsString, ForeverTalentTreeFields)
+	} else {
+		core.FillTalentsProto(warrior.Talents.ProtoReflect(), warrior.talentsString, TalentTreeSizes)
+	}
+}
+
 func (warrior *Warrior) ApplyTalents() {
 	warrior.AddStat(stats.MeleeCrit, core.CritRatingPerCritChance*1*float64(warrior.Talents.Cruelty))
-	warrior.AddStat(stats.MeleeHit, core.MeleeHitRatingPerHitChance*1*float64(warrior.Talents.Precision))
-	warrior.ApplyEquipScaling(stats.Armor, warrior.ToughnessArmorMultiplier())
+	if !warrior.Env.IsForever() {
+		warrior.AddStat(stats.MeleeHit, core.MeleeHitRatingPerHitChance*float64(warrior.Talents.Precision))
+		warrior.ApplyEquipScaling(stats.Armor, warrior.ToughnessArmorMultiplier())
+	}
 	warrior.AddStat(stats.Defense, 4*float64(warrior.Talents.Anticipation))
 	warrior.AddStat(stats.Parry, 1*float64(warrior.Talents.Deflection))
-	warrior.AddMaxRage(10 * float64(warrior.Talents.BoundlessRage))
+	if !warrior.Env.IsForever() {
+		warrior.AddMaxRage(10 * float64(warrior.Talents.BoundlessRage))
+	}
 
 	warrior.applyBastion()
 	warrior.applyFocusedRage()
@@ -30,6 +42,7 @@ func (warrior *Warrior) ApplyTalents() {
 	warrior.applyBloodthrill()
 	warrior.applyUnbridledWrath()
 	warrior.applyDualWieldSpecialization()
+	warrior.applyFuriousPrecision()
 	warrior.applyEnrage()
 	warrior.applyFlurry()
 	warrior.applyShieldSpecialization()
@@ -180,6 +193,9 @@ func (warrior *Warrior) applyUnbridledWrath() {
 
 	procChance := 0.12 * float64(warrior.Talents.UnbridledWrath)
 	rageGain := core.TernaryFloat64(warrior.MainHand().HandType == proto.HandType_HandTypeTwoHand, 2, 1)
+	if warrior.Env.IsForever() {
+		rageGain = 1
+	}
 
 	rageMetrics := warrior.NewRageMetrics(core.ActionID{SpellID: 12964})
 
@@ -207,8 +223,8 @@ func (warrior *Warrior) applyUnbridledWrath() {
 	})
 }
 
-// 5% off-hand damage, 20% off-hand Rage and 2% off-hand hit per point, confirmed by the beta
-// client's rank curves.
+// The current client-derived tree retains 5% off-hand damage and 10% off-hand
+// Rage per point. The removed bonus was 20% Rage per point; hit moved to Furious Precision.
 func (warrior *Warrior) applyDualWieldSpecialization() {
 	points := warrior.Talents.DualWieldSpecialization
 	if points == 0 {
@@ -218,7 +234,12 @@ func (warrior *Warrior) applyDualWieldSpecialization() {
 	multiplier := 1 + 0.05*float64(points)
 	bonusHit := 2 * core.MeleeHitRatingPerHitChance * float64(points)
 
-	warrior.AddOffHandDealtRageMultiplier(1 + 0.2*float64(points))
+	if warrior.Env.IsForever() {
+		bonusHit = 0
+		warrior.AddOffHandDealtRageMultiplier(1 + 0.1*float64(points))
+	} else {
+		warrior.AddOffHandDealtRageMultiplier(1 + 0.2*float64(points))
+	}
 
 	warrior.OnSpellRegistered(func(spell *core.Spell) {
 		if !spell.ProcMask.Matches(core.ProcMaskMeleeOH) {
@@ -229,6 +250,18 @@ func (warrior *Warrior) applyDualWieldSpecialization() {
 			spell.DamageMultiplier *= multiplier
 		}
 		spell.BonusHitRating += bonusHit
+	})
+}
+
+func (warrior *Warrior) applyFuriousPrecision() {
+	if !warrior.Env.IsForever() || warrior.Talents.FuriousPrecision == 0 {
+		return
+	}
+	bonus := []float64{0, 4, 7, 10}[warrior.Talents.FuriousPrecision] * core.MeleeHitRatingPerHitChance
+	warrior.OnSpellRegistered(func(spell *core.Spell) {
+		if spell.ProcMask.Matches(core.ProcMaskMeleeOH) {
+			spell.BonusHitRating += bonus
+		}
 	})
 }
 
@@ -543,8 +576,9 @@ func (warrior *Warrior) registerLastStandCD() {
 	})
 }
 
-// Blood Craze heals 1% of maximum health per point over 6 sec (3 ticks) after being crit, dealing
-// damage with Bloodthirst, or taking more than 20% of maximum health in one hit. Beta client.
+// Blood Craze heals 1% of maximum health per point over 6 sec (3 ticks)
+// after being crit or taking more than 20% of maximum health in one hit.
+// October 1 removed Bloodthirst as a Forever trigger.
 func (warrior *Warrior) applyBloodCraze() {
 	if warrior.Talents.BloodCraze == 0 {
 		return
@@ -589,7 +623,7 @@ func (warrior *Warrior) applyBloodCraze() {
 			}
 		},
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if spell.SpellCode == SpellCode_WarriorBloodthirst && result.Landed() && result.Damage > 0 {
+			if !sim.IsForever() && spell.SpellCode == SpellCode_WarriorBloodthirst && result.Landed() && result.Damage > 0 {
 				bloodCraze.Cast(sim, &warrior.Unit)
 			}
 		},

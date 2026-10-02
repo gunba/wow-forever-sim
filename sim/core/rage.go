@@ -23,6 +23,7 @@ type rageBar struct {
 	flatDamageDealtBonusRage float64
 	flatDamageTakenBonusRage float64
 	foreverWarriorRage       bool
+	foreverBearCriticalRage  bool
 
 	startingRage float64
 	currentRage  float64
@@ -36,6 +37,8 @@ type RageBarOptions struct {
 	DamageDealtMultiplier float64
 	DamageTakenMultiplier float64
 	ForeverWarriorRage    bool
+	// Only adjusts the critical-swing ratio; Bear's base rage formula is unchanged.
+	ForeverBearCriticalRage bool
 }
 
 // Measured in the Forever beta at low levels, not established at level 60.
@@ -133,6 +136,10 @@ func (unit *Unit) EnableRageBar(options RageBarOptions) {
 					}
 				}
 				generatedRage = foreverWarriorRagePerSwing(weapon.SwingSpeed, twoHand, offHand)
+				// The later, specific Warrior bullet in the October 1 notes specifies +100%.
+				if result.DidCrit() {
+					generatedRage *= 2
+				}
 			} else {
 				damage := result.Damage
 				if result.Outcome.Matches(OutcomeDodge | OutcomeParry) {
@@ -140,6 +147,12 @@ func (unit *Unit) EnableRageBar(options RageBarOptions) {
 					damage = result.PreOutcomeDamage
 				}
 				generatedRage = damage * 7.5 / rageConversion
+				if unit.rageBar.foreverBearCriticalRage && unit.Env != nil && unit.Env.IsForever() && result.DidCrit() {
+					// Strip the damage crit multiplier, then apply the sourced +75% Rage.
+					// This does not assert that Bear's baseline generation is normalized.
+					at := unit.AttackTables[result.Target.UnitIndex][spell.CastType]
+					generatedRage *= 1.75 / spell.CritMultiplier(at)
+				}
 			}
 			generatedRage *= unit.rageBar.damageDealtMultiplier
 			if spell.ProcMask == ProcMaskMeleeOHAuto {
@@ -182,14 +195,15 @@ func (unit *Unit) EnableRageBar(options RageBarOptions) {
 	})
 
 	unit.rageBar = rageBar{
-		unit:                   unit,
-		damageDealtMultiplier:  options.DamageDealtMultiplier,
-		damageTakenMultiplier:  options.DamageTakenMultiplier,
-		offHandDealtMultiplier: 1,
-		foreverWarriorRage:     options.ForeverWarriorRage,
-		startingRage:           max(0, min(options.StartingRage, MaxRage)),
-		maxRage:                MaxRage,
-		RageRefundMetrics:      unit.NewRageMetrics(ActionID{OtherID: proto.OtherAction_OtherActionRefund}),
+		unit:                    unit,
+		damageDealtMultiplier:   options.DamageDealtMultiplier,
+		damageTakenMultiplier:   options.DamageTakenMultiplier,
+		offHandDealtMultiplier:  1,
+		foreverWarriorRage:      options.ForeverWarriorRage,
+		foreverBearCriticalRage: options.ForeverBearCriticalRage,
+		startingRage:            max(0, min(options.StartingRage, MaxRage)),
+		maxRage:                 MaxRage,
+		RageRefundMetrics:       unit.NewRageMetrics(ActionID{OtherID: proto.OtherAction_OtherActionRefund}),
 	}
 }
 

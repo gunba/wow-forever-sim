@@ -41,9 +41,12 @@ func (warrior *Warrior) registerBloodthirstSpell(cdTimer *core.Timer) {
 		BonusCoefficient: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			// Rank 4 (23894) in the beta client: 48 plus 35% of attack power. The talent tooltip's
-			// 30 is rank 1's (23881).
-			baseDamage := 0.35*spell.MeleeAttackPower(target) + 48
+			// October 1 increases the AP coefficient; retain rank 4's flat 48.
+			coefficient := .35
+			if sim.IsForever() {
+				coefficient = .45
+			}
+			baseDamage := coefficient*spell.MeleeAttackPower(target) + 48
 			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialHitAndCrit)
 			if !result.Landed() {
 				spell.IssueRefund(sim)

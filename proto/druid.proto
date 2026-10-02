@@ -62,6 +62,10 @@ message DruidTalents {
 	int32 improved_tranquility = 49;
 	int32 improved_regrowth = 50;
 	bool wild_growth = 51;
+
+	// October 1 replaces Tiger's Fury and King of the Jungle.
+	bool shifting_power = 52;
+	int32 improved_shifting_power = 53;
 }
 
 message BalanceDruid {

@@ -84,22 +84,58 @@ func (character *Character) attachEurekaCast(aura *Aura, parent *Spell, mask Pro
 			spell.DamageMultiplier *= factor
 		}
 	}
-	dots := parent.Dots()
+	dots := append([]*Dot(nil), parent.Dots()...)
+	if dot := parent.AOEDot(); dot != nil {
+		dots = append(dots, dot)
+	}
 	chargedDots := make(map[*Dot]bool)
 	applying := false
+	chargedApplication := false
 	for _, dot := range dots {
-		if dot == nil || !dot.isChanneled || len(children) == 0 || dot.OnTick == nil {
+		if dot == nil {
 			continue
 		}
-		onTick := dot.OnTick
-		dot.OnTick = func(sim *Simulation, target *Unit, dot *Dot) {
-			charged := chargedDots[dot] && !applying
-			if charged {
-				multiply(children, 1.1)
+		if !dot.isChanneled {
+			// Ordinary periodic effects cannot retain the direct cast's damage bonus,
+			// including a snapshot or a tick performed inside ApplyEffects.
+			if snapshot := dot.OnSnapshot; snapshot != nil {
+				dot.OnSnapshot = func(sim *Simulation, target *Unit, dot *Dot, rollover bool) {
+					if chargedApplication {
+						multiply(effects, 1/1.1)
+					}
+					snapshot(sim, target, dot, rollover)
+					if chargedApplication {
+						multiply(effects, 1.1)
+					}
+				}
 			}
-			onTick(sim, target, dot)
-			if charged {
-				multiply(children, 1/1.1)
+			if tick := dot.OnTick; tick != nil {
+				dot.OnTick = func(sim *Simulation, target *Unit, dot *Dot) {
+					if chargedApplication {
+						multiply(effects, 1/1.1)
+					}
+					tick(sim, target, dot)
+					if chargedApplication {
+						multiply(effects, 1.1)
+					}
+				}
+			}
+			continue
+		}
+		channelEffects := children
+		if len(channelEffects) == 0 {
+			channelEffects = []*Spell{parent}
+		}
+		if onTick := dot.OnTick; onTick != nil {
+			dot.OnTick = func(sim *Simulation, target *Unit, dot *Dot) {
+				charged := chargedDots[dot] && !applying
+				if charged {
+					multiply(channelEffects, 1.1)
+				}
+				onTick(sim, target, dot)
+				if charged {
+					multiply(channelEffects, 1/1.1)
+				}
 			}
 		}
 	}
@@ -107,7 +143,7 @@ func (character *Character) attachEurekaCast(aura *Aura, parent *Spell, mask Pro
 	parent.ApplyEffects = func(sim *Simulation, target *Unit, spell *Spell) {
 		charged := aura.IsActive() && aura.GetStacks() > 0
 		for _, dot := range dots {
-			if dot != nil && dot.Unit == target {
+			if dot != nil && (dot.Unit == target || dot == parent.AOEDot()) {
 				chargedDots[dot] = charged
 			}
 		}
@@ -119,7 +155,9 @@ func (character *Character) attachEurekaCast(aura *Aura, parent *Spell, mask Pro
 			aura.RemoveStack(sim)
 		}
 		applying = true
+		chargedApplication = charged
 		apply(sim, target, spell)
+		chargedApplication = false
 		applying = false
 		if charged {
 			multiply(effects, 1/1.1)

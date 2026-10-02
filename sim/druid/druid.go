@@ -37,7 +37,8 @@ type Druid struct {
 	core.Character
 	SelfBuffs
 
-	Talents *proto.DruidTalents
+	Talents       *proto.DruidTalents
+	talentsString string
 
 	DruidSpells []*DruidSpell
 
@@ -76,6 +77,7 @@ type Druid struct {
 	Starfire             []*DruidSpell
 	SwipeBear            *DruidSpell
 	TigersFury           *DruidSpell
+	ShiftingPower        *DruidSpell
 	Wrath                []*DruidSpell
 
 	BearForm    *DruidSpell
@@ -217,7 +219,11 @@ func (druid *Druid) RegisterFeralCatSpells() {
 	druid.registerShredSpell()
 	druid.registerClawSpell()
 	// druid.registerSwipeBearSpell()
-	druid.registerTigersFurySpell()
+	if druid.Env.IsForever() {
+		druid.registerShiftingPowerSpell()
+	} else {
+		druid.registerTigersFurySpell()
+	}
 	druid.registerBerserkCD()
 }
 
@@ -252,7 +258,7 @@ func New(character *core.Character, form DruidForm, selfBuffs SelfBuffs, talents
 		form:              form,
 		lastCatFormExitAt: core.NeverExpires,
 	}
-	core.FillTalentsProto(druid.Talents.ProtoReflect(), talents, TalentTreeSizes)
+	druid.talentsString = talents
 	druid.EnableManaBar()
 
 	druid.AddStatDependency(stats.Strength, stats.AttackPower, core.APPerStrength[character.Class])

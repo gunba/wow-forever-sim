@@ -51,9 +51,11 @@ func (warrior *Warrior) registerCleaveSpell(realismICD *core.Cooldown) {
 	spellID := int32(20569)
 	threat := 100.0
 
-	// Improved Cleave discounts Rage in Forever instead of adding damage, and Raging Blows
-	// takes another 2 off the top.
 	rageCost := 20 - float64(warrior.Talents.ImprovedCleave) - core.TernaryFloat64(warrior.Talents.RagingBlows, 2, 0)
+	if warrior.Env.IsForever() {
+		// Improved Cleave was removed; Raging Blows now discounts both attacks by three.
+		rageCost = 20 - core.TernaryFloat64(warrior.Talents.RagingBlows, 3, 0)
+	}
 
 	results := make([]*core.SpellResult, min(int32(2), warrior.Env.GetNumTargets()))
 
@@ -114,11 +116,8 @@ func (warrior *Warrior) makeQueueSpellsAndAura(srcSpell *WarriorSpell, realismIC
 			}
 			warrior.curQueueAura = aura
 			warrior.curQueuedAutoSpell = srcSpell
-			// A level-20 Forever test found off-hand white swings use the
-			// single-wield miss table while either next-swing attack is queued.
-			if forever {
-				warrior.PseudoStats.DisableDWMissPenalty = true
-			}
+			// October 1 removes the queued attack's off-hand hit-table benefit.
+			// Only the replacement main-hand attack uses the special hit table.
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
 			if forever {
@@ -160,7 +159,7 @@ func (warrior *Warrior) makeQueueSpellsAndAura(srcSpell *WarriorSpell, realismIC
 }
 
 // Heroic Strike and Cleave replace the main-hand swing and roll as specials.
-// Preserve the queue's off-hand hit-table state until the queue expires.
+// The replacement main-hand roll must not leak its special hit table to off-hand swings.
 func (warrior *Warrior) calcQueuedSwing(sim *core.Simulation, spell *core.Spell, target *core.Unit, baseDamage float64) *core.SpellResult {
 	wasDisabled := warrior.PseudoStats.DisableDWMissPenalty
 	warrior.PseudoStats.DisableDWMissPenalty = true

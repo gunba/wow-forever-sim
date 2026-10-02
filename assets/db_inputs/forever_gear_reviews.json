@@ -11,7 +11,7 @@
     "6463": {"status": "verified", "source": "https://www.wowhead.com/forever/item=6463", "note": "Tooltip confirms stats only and unique-equipped."},
     "249469": {"status": "implemented", "spells": [1249110], "note": "29 Frost and Shadow power for 15 seconds; five-minute cooldown, 15-second shared trinket cooldown. No snowy-area bonus in a neutral encounter."},
     "249470": {"status": "implemented", "spells": [1249113], "note": "55 AP and RAP for 15 seconds; five-minute cooldown, 15-second shared trinket cooldown. Its hidden flat physical damage is imported from client item stats. No volcanic-area bonus."},
-    "272427": {"status": "implemented", "source": "https://www.wowhead.com/forever/item=272427", "spells": [1291059], "note": "Three seconds off Tiger's Fury, additive with the separate Tier 1 cooldown reduction."},
+    "272427": {"status": "implemented", "source": "https://www.wowhead.com/forever/item=272427", "spells": [1291059], "note": "Client 70170 spell 1291059 and current tooltip: one second off Shifting Power, additive with the separate one-second Tier 1 cooldown reduction."},
     "272430": {"status": "implemented", "source": "https://www.wowhead.com/forever/item=272430", "spells": [1291061], "note": "Two extra seconds of Insect Swarm: one full tick, preserving its per-tick damage and the Tier 1 aura remainder."},
     "272433": {"status": "implemented", "source": "https://www.wowhead.com/forever/item=272433", "spells": [1291077], "note": "Three extra seconds of Flame Shock: one full tick with unchanged damage per tick."},
     "272435": {"status": "implemented", "source": "https://www.wowhead.com/forever/item=272435", "spells": [1291086], "note": "Four percent increased Judgement of Command and Judgement of Righteousness damage, including spell-power scaling."},
@@ -23,6 +23,6 @@
     "249398": {"status": "implemented", "spells": [1248756], "note": "Eight percentage points of Spirit regeneration while casting."},
     "249442": {"status": "implemented", "spells": [1249005], "note": "Five percentage points of Seal mana-cost reduction."},
     "279248": {"status": "implemented", "spells": [1306429], "note": "Six percentage points of Holy Shock critical chance."},
-    "8345": {"status": "implemented", "spells": [17768], "note": "Twenty extra Energy on Tiger's Fury and five extra initial Rage on Enrage. No Forever energy bonus from shifting."}
+    "8345": {"status": "implemented", "spells": [17768], "note": "Client 70170 spell 17768 and current tooltip: twenty extra Energy on Shifting Power and five extra initial Rage on Enrage. No energy bonus from entering Cat Form."}
   }
 }

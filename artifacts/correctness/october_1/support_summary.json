@@ -1,0 +1,28 @@
+{
+  "model": "External provisional Flametongue only; speed-scaled dummy/100, zeroSP, unverified eligibility/hit/crit. Not server verification or an all-spec support optimum.",
+  "seeds": [
+    2026100141,
+    2026110141
+  ],
+  "iterationsPerArmSeed": 5000,
+  "summary": [
+    {
+      "build": "retribution",
+      "race": "Human",
+      "windfuryDPS": 1037.3858803747712,
+      "flametongueGraceDPS": 974.8926677903019,
+      "deltaDPS": -62.49321258446935,
+      "deltaPercentVersusWindfury": -6.02410479713612
+    },
+    {
+      "build": "fury",
+      "race": "Human",
+      "windfuryDPS": 893.770335247323,
+      "flametongueGraceDPS": 871.6316604782976,
+      "deltaDPS": -22.138674769025442,
+      "deltaPercentVersusWindfury": -2.476998161155042
+    }
+  ],
+  "sourceHash": "bd9a3fcad5ec19cf48dc2fe0994ae8cba18e47c33341bdb99a9cc4f98cf74d93",
+  "replayBinaryHash": "3654139cc8c85ab9d4bcbab7e090e901fb0975efc9386c8eb1a98673d46fbf91"
+}

@@ -1,4 +1,92 @@
 {
+	"8230": {
+		"ability": "Flametongue Totem",
+		"file": "sim/core/flametongue_totem.go",
+		"source": "assumed",
+		"note": "External opt-in provisional model. Client dummy values 548/781/1061/1363 are interpreted as damage per weapon-second divided by 100, using active main-hand base speed and zero SP. The division, magic hit/crit and special/extra-swing/form eligibility are unverified. Grace may coexist; Windfury Totem and Flametongue Weapon suppress it. See docs/october-1-corrections.md and SHA-006. No caster-owned placement is registered.",
+		"tooltip": "Provisional simulation effect: eligible main-hand hits cause Fire damage proportional to base weapon speed, with zero Spell Power scaling. This is model text, not a verified server damage tooltip.",
+		"assumptions": [
+			"Measure per-hit damage across weapon speeds and SP changes.",
+			"Determine special/extra-swing/form eligibility and magic hit/crit behavior."
+		]
+	},
+	"8248": {
+		"ability": "Flametongue Totem hit",
+		"file": "sim/core/flametongue_totem.go",
+		"source": "assumed",
+		"note": "External opt-in provisional model. Client dummy values 548/781/1061/1363 are interpreted as damage per weapon-second divided by 100, using active main-hand base speed and zero SP. The division, magic hit/crit and special/extra-swing/form eligibility are unverified. Grace may coexist; Windfury Totem and Flametongue Weapon suppress it. See docs/october-1-corrections.md and SHA-006. No caster-owned placement is registered.",
+		"tooltip": "Provisional simulation effect: eligible main-hand hits cause Fire damage proportional to base weapon speed, with zero Spell Power scaling. This is model text, not a verified server damage tooltip.",
+		"assumptions": [
+			"Measure per-hit damage across weapon speeds and SP changes.",
+			"Determine special/extra-swing/form eligibility and magic hit/crit behavior."
+		]
+	},
+	"8250": {
+		"ability": "Flametongue Totem",
+		"file": "sim/core/flametongue_totem.go",
+		"source": "assumed",
+		"note": "External opt-in provisional model. Client dummy values 548/781/1061/1363 are interpreted as damage per weapon-second divided by 100, using active main-hand base speed and zero SP. The division, magic hit/crit and special/extra-swing/form eligibility are unverified. Grace may coexist; Windfury Totem and Flametongue Weapon suppress it. See docs/october-1-corrections.md and SHA-006. No caster-owned placement is registered.",
+		"tooltip": "Provisional simulation effect: eligible main-hand hits cause Fire damage proportional to base weapon speed, with zero Spell Power scaling. This is model text, not a verified server damage tooltip.",
+		"assumptions": [
+			"Measure per-hit damage across weapon speeds and SP changes.",
+			"Determine special/extra-swing/form eligibility and magic hit/crit behavior."
+		]
+	},
+	"8253": {
+		"ability": "Flametongue Totem hit",
+		"file": "sim/core/flametongue_totem.go",
+		"source": "assumed",
+		"note": "External opt-in provisional model. Client dummy values 548/781/1061/1363 are interpreted as damage per weapon-second divided by 100, using active main-hand base speed and zero SP. The division, magic hit/crit and special/extra-swing/form eligibility are unverified. Grace may coexist; Windfury Totem and Flametongue Weapon suppress it. See docs/october-1-corrections.md and SHA-006. No caster-owned placement is registered.",
+		"tooltip": "Provisional simulation effect: eligible main-hand hits cause Fire damage proportional to base weapon speed, with zero Spell Power scaling. This is model text, not a verified server damage tooltip.",
+		"assumptions": [
+			"Measure per-hit damage across weapon speeds and SP changes.",
+			"Determine special/extra-swing/form eligibility and magic hit/crit behavior."
+		]
+	},
+	"10521": {
+		"ability": "Flametongue Totem",
+		"file": "sim/core/flametongue_totem.go",
+		"source": "assumed",
+		"note": "External opt-in provisional model. Client dummy values 548/781/1061/1363 are interpreted as damage per weapon-second divided by 100, using active main-hand base speed and zero SP. The division, magic hit/crit and special/extra-swing/form eligibility are unverified. Grace may coexist; Windfury Totem and Flametongue Weapon suppress it. See docs/october-1-corrections.md and SHA-006. No caster-owned placement is registered.",
+		"tooltip": "Provisional simulation effect: eligible main-hand hits cause Fire damage proportional to base weapon speed, with zero Spell Power scaling. This is model text, not a verified server damage tooltip.",
+		"assumptions": [
+			"Measure per-hit damage across weapon speeds and SP changes.",
+			"Determine special/extra-swing/form eligibility and magic hit/crit behavior."
+		]
+	},
+	"10523": {
+		"ability": "Flametongue Totem hit",
+		"file": "sim/core/flametongue_totem.go",
+		"source": "assumed",
+		"note": "External opt-in provisional model. Client dummy values 548/781/1061/1363 are interpreted as damage per weapon-second divided by 100, using active main-hand base speed and zero SP. The division, magic hit/crit and special/extra-swing/form eligibility are unverified. Grace may coexist; Windfury Totem and Flametongue Weapon suppress it. See docs/october-1-corrections.md and SHA-006. No caster-owned placement is registered.",
+		"tooltip": "Provisional simulation effect: eligible main-hand hits cause Fire damage proportional to base weapon speed, with zero Spell Power scaling. This is model text, not a verified server damage tooltip.",
+		"assumptions": [
+			"Measure per-hit damage across weapon speeds and SP changes.",
+			"Determine special/extra-swing/form eligibility and magic hit/crit behavior."
+		]
+	},
+	"15036": {
+		"ability": "Flametongue Totem",
+		"file": "sim/core/flametongue_totem.go",
+		"source": "assumed",
+		"note": "External opt-in provisional model. Client dummy values 548/781/1061/1363 are interpreted as damage per weapon-second divided by 100, using active main-hand base speed and zero SP. The division, magic hit/crit and special/extra-swing/form eligibility are unverified. Grace may coexist; Windfury Totem and Flametongue Weapon suppress it. See docs/october-1-corrections.md and SHA-006. No caster-owned placement is registered.",
+		"tooltip": "Provisional simulation effect: eligible main-hand hits cause Fire damage proportional to base weapon speed, with zero Spell Power scaling. This is model text, not a verified server damage tooltip.",
+		"assumptions": [
+			"Measure per-hit damage across weapon speeds and SP changes.",
+			"Determine special/extra-swing/form eligibility and magic hit/crit behavior."
+		]
+	},
+	"16389": {
+		"ability": "Flametongue Totem hit",
+		"file": "sim/core/flametongue_totem.go",
+		"source": "assumed",
+		"note": "External opt-in provisional model. Client dummy values 548/781/1061/1363 are interpreted as damage per weapon-second divided by 100, using active main-hand base speed and zero SP. The division, magic hit/crit and special/extra-swing/form eligibility are unverified. Grace may coexist; Windfury Totem and Flametongue Weapon suppress it. See docs/october-1-corrections.md and SHA-006. No caster-owned placement is registered.",
+		"tooltip": "Provisional simulation effect: eligible main-hand hits cause Fire damage proportional to base weapon speed, with zero Spell Power scaling. This is model text, not a verified server damage tooltip.",
+		"assumptions": [
+			"Measure per-hit damage across weapon speeds and SP changes.",
+			"Determine special/extra-swing/form eligibility and magic hit/crit behavior."
+		]
+	},
 	"23736": {
 		"ability": "Sayge's Dark Fortune of Agility",
 		"file": "sim/core/buffs.go",

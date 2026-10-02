@@ -218,10 +218,32 @@ windfuryTotemInput.setValue = (eventID, player, value) => {
 			buffs.graceOfAirTotem = 0;
 			raid.setBuffs(eventID, buffs);
 		}
+		const party = player.getParty()!;
+		const partyBuffs = party.getBuffs();
+		partyBuffs.graceOfAirTotem = 0;
+		partyBuffs.flametongueTotem = false;
+		party.setBuffs(eventID, partyBuffs);
 	}
 	setWindfuryTotem(eventID, player, value);
 };
 export const WindfuryTotemBuff = withLabel(windfuryTotemInput, 'Windfury Totem');
+
+const flametongueTotemInput = makeBooleanPartyBuffInput({
+	actionId: () => ActionId.fromSpellId(16387),
+	fieldName: 'flametongueTotem',
+	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever,
+});
+const setFlametongueTotem = flametongueTotemInput.setValue;
+flametongueTotemInput.setValue = (eventID, player, value) => {
+	if (value) {
+		const party = player.getParty()!;
+		const buffs = party.getBuffs();
+		buffs.windfuryTotem = false;
+		party.setBuffs(eventID, buffs);
+	}
+	setFlametongueTotem(eventID, player, value);
+};
+export const FlametongueTotemBuff = withLabel(flametongueTotemInput, 'Flametongue Totem (provisional)');
 
 export const IntellectBuff = InputHelpers.makeMultiIconInput({
 	values: [
@@ -729,6 +751,11 @@ export const RAID_BUFFS_CONFIG = [
 	},
 	{
 		config: WindfuryTotemBuff,
+		picker: IconPicker,
+		stats: [],
+	},
+	{
+		config: FlametongueTotemBuff,
 		picker: IconPicker,
 		stats: [],
 	},

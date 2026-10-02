@@ -34,9 +34,10 @@ func relicTestSim(t *testing.T, key string, itemID int32, tier bool) *core.Simul
 func TestForeverRelicCooldownsAndDurations(t *testing.T) {
 	sim := relicTestSim(t, "feral", 272427, true)
 	c := sim.Raid.Parties[0].Players[0].GetCharacter()
-	// Thirty seconds, minus three from Tier 1 and three from the idol.
-	if got := c.GetSpell(core.ActionID{SpellID: 9846}).CD.Duration; got != 24*time.Second {
-		t.Fatalf("Tiger's Fury cooldown: %s", got)
+	// Sixteen seconds, minus eight from Improved Shifting Power and one
+	// each from the full role Tier 1 override and Howling Idol.
+	if got := c.GetSpell(core.ActionID{SpellID: 1322605}).CD.Duration; got != 6*time.Second {
+		t.Fatalf("Shifting Power cooldown: %s", got)
 	}
 	for _, tier := range []bool{false, true} {
 		base := relicTestSim(t, "balance", 0, tier)

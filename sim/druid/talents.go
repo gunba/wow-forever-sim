@@ -17,6 +17,14 @@ var balanceSpellCodes = []int32{
 	SpellCode_DruidHurricane,
 }
 
+func (druid *Druid) ResolveTalentTree() {
+	if druid.Env.IsForever() {
+		core.FillTalentsProtoByName(druid.Talents.ProtoReflect(), druid.talentsString, ForeverTalentTreeFields)
+	} else {
+		core.FillTalentsProto(druid.Talents.ProtoReflect(), druid.talentsString, TalentTreeSizes)
+	}
+}
+
 func (druid *Druid) ApplyTalents() {
 	// Balance
 	druid.applyGenesis()

@@ -16,7 +16,7 @@ class BuildReviewTests(unittest.TestCase):
             ], cwd=root, check=True, capture_output=True)
             html = (output / "index.html").read_text()
         self.assertIn('id="WAR-001"', html)
-        self.assertIn("Damage-independent rage:", html)
+        self.assertIn("Damage-independent base-speed Rage:", html)
         self.assertLess(html.index('id="questions"'), html.index('id="matrix"'))
         self.assertNotIn("Warrior rage still uses an inherited damage-based model", html)
         self.assertNotIn("Hunter pets still inherit no owner stats", html)

@@ -43,7 +43,7 @@ func (druid *Druid) registerFaerieFireSpell() {
 				druid.FaerieFireAuras.Get(target).Activate(sim)
 			}
 
-			if druid.InForm(Humanoid | Moonkin) {
+			if !druid.Env.IsForever() && druid.InForm(Humanoid|Moonkin) {
 				druid.AutoAttacks.StopMeleeUntil(sim, sim.CurrentTime, false)
 			}
 		},

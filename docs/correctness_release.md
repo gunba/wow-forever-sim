@@ -1,5 +1,9 @@
 # Correctness review
 
+The current results include the [October 1 corrections](october-1-corrections.md). That report records the current talent/max-rank migrations, resource limitations, refreshed scenarios and superseded controls. The comparison tables below describe the earlier September 30 phase, not the current matrix.
+
+## September 30 phase
+
 The September 30 [Hunter/Druid deep dive](https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid) and recent evidence review led to 45 correction groups. The [implementation ledger](correctness_workplan.md) gives code/source scope and focused checks; [feature accounting](question_review/correctness_followup.json) covers all 144 article feature points and 20 recent findings. Announced changes, numeric script gaps and conflicting sources remain distinct.
 
 ## Reproduced results

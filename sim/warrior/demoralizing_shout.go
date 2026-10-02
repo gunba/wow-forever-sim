@@ -29,7 +29,7 @@ func (warrior *Warrior) registerDemoralizingShoutSpell() {
 		Flags:       core.SpellFlagAPL | SpellFlagOffensive,
 
 		RageCost: core.RageCostOptions{
-			Cost: 10,
+			Cost: 10 * core.TernaryFloat64(warrior.Env.IsForever(), 1-.05*float64(warrior.Talents.BoomingVoice), 1),
 		},
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{

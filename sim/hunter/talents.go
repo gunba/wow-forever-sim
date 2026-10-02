@@ -93,7 +93,11 @@ func (hunter *Hunter) ApplyTalents() {
 	hunter.AddStat(stats.MeleeCrit, float64(hunter.Talents.LethalAttacks)*1*core.CritRatingPerCritChance)
 	hunter.AddStat(stats.SpellCrit, float64(hunter.Talents.LethalAttacks)*1*core.SpellCritRatingPerCritChance)
 
-	hunter.AddStat(stats.Parry, 2*float64(hunter.Talents.Deflection))
+	parryPerPoint := 2.0
+	if hunter.Env.IsForever() {
+		parryPerPoint = 1
+	}
+	hunter.AddStat(stats.Parry, parryPerPoint*float64(hunter.Talents.Deflection))
 
 	if hunter.Talents.CarefulAim > 0 {
 		// The tooltip only says Attack Power, but melee and ranged attack power are separate stats

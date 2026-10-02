@@ -32,7 +32,10 @@ func TestHunterBaselineManaSustain(t *testing.T) {
 				t.Fatal(err)
 			}
 			r := run(b, p, 200, 20260920)
-			limit := 5.0
+			// The max-rank BM migration has 38–42s of mana limitation in
+			// the fixed gear scenario. Keep consumable checks and a bounded
+			// resource regression, not the old downranked near-zero-OOM target.
+			limit := 55.0
 			if b.Key == "marksmanship" {
 				// Removing Efficiency's unsupported Sniper Shot discount
 				// gives this fixed profile about 5.5s of mana limitation.

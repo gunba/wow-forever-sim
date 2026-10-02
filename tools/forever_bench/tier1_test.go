@@ -105,7 +105,7 @@ func TestForeverTier1StatsAndCooldowns(t *testing.T) {
 		reduction time.Duration
 	}{
 		{"arcane", 2139, 5 * time.Second}, {"marksmanship", 20904, time.Second},
-		{"marksmanship", 2643, time.Second}, {"feral", 9846, 3 * time.Second},
+		{"marksmanship", 2643, time.Second}, {"feral", 1322605, time.Second},
 		{"fury", 1719, 30 * time.Second}, {"retribution", 20271, 500 * time.Millisecond},
 		{"enhancement", 17364, 500 * time.Millisecond}, {"elemental", 1238300, time.Second},
 		{"smite", 1316995, time.Second}, {"shadow", 19280, time.Minute},

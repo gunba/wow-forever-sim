@@ -15,7 +15,7 @@ func (warrior *Warrior) registerSpearingStrikeSpell() {
 		return
 	}
 
-	warrior.RegisterSpell(AnyStance, core.SpellConfig{
+	warrior.RegisterSpell(BattleStance, core.SpellConfig{
 		ActionID:    core.ActionID{SpellID: 1310222},
 		SpellSchool: core.SpellSchoolPhysical,
 		DefenseType: core.DefenseTypeMelee,

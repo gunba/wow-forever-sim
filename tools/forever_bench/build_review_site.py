@@ -88,6 +88,7 @@ def main():
                              "spec_gear_equity.csv"):
                 shutil.copyfile(Path("artifacts/modelled_gear") / filename,
                                 args.output / filename)
+    shutil.copytree("artifacts/correctness/october_1", args.output / "october_1", dirs_exist_ok=True)
     for directory in ("profile_corrections", "windfury", "paladin_mana", "protection_queue", "tank_support", "protection_sunder"):
         shutil.copytree(Path("artifacts") / directory, args.output / directory, dirs_exist_ok=True)
     shutil.copyfile("artifacts/spell_coverage.json", args.output / "spell_coverage.json")
@@ -95,7 +96,7 @@ def main():
         shutil.copyfile(args.results.with_suffix("." + extension), args.output / ("results." + extension))
     for name in ("build_reviews.md", "build_updates.md", "gear_updates.md", "in_game_checks.md", "check_dispositions.md", "spell_coverage.md", "windfury.md", "energy_audit.md", "auto_attack_audit.md", "crit_model.md", "forever_gear_data.md", "mechanics_review.md", "history_review.md", "upstream-forever-review-2026-09-23.md", "upstream-forever-followup-2026-09-23.md", "mana_regeneration.md", "mythicsim_review.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
-    for name in ("weekly_review.md", "weekly_review_commits.csv", "flurry_review.md", "upstream_elliot_review.md", "tank_benchmark.md", "tank_selection.md", "paladin_mana.md", "protection_queue.md", "tank_support.md", "protection_sunder.md", "forever-70009.md"):
+    for name in ("weekly_review.md", "weekly_review_commits.csv", "flurry_review.md", "upstream_elliot_review.md", "tank_benchmark.md", "tank_selection.md", "paladin_mana.md", "protection_queue.md", "tank_support.md", "protection_sunder.md", "forever-70009.md", "october-1-corrections.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
     body = []
     for key, class_name, label, icon in builds:
@@ -244,6 +245,7 @@ th span{font-weight:400}.unavailable{color:#68707e}td a{color:inherit}
 These are tested profiles, not proven global optima or measured class balance.</p>
 <nav class="links" aria-label="Benchmark navigation"><a href="#matrix">DPS matrix</a>
 <a href="#questions">Questions &amp; coverage</a><a href="results.png">Chart</a>
+<a href="october-1-corrections.md">October 1 corrections</a>
 <a href="""" + build_review + """">Build details</a></nav>
 """ + questions_html(register) + """
 <details class="resource-group"><summary>Method, gear and gain columns</summary>
@@ -272,6 +274,9 @@ This is finite-range curvature, not proof of exponential growth, isolated synerg
 <a href="correctness_workplan.md">Implementation ledger</a>
 <a href="question_review/correctness_followup.json">Feature coverage</a>
 <a href="correctness/tank_checks.json.gz">Current tank requests/results</a>
+<a href="october_1/comparison.json">October 1 profile changes</a>
+<a href="october_1/before.json.gz">Superseded October 1 controls</a>
+<a href="october_1/support_comparison.json.gz">Provisional Flametongue comparison</a>
 <a href="correctness/history/manifest.json">Superseded baseline evidence</a>
 <a href="upstream_elliot_review.md">Earlier class-effects review</a>
 <a href="weekly_review.md">September 26 review</a><a href="flurry_review.md">Flurry evidence</a>

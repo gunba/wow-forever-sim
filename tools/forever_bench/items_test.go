@@ -98,11 +98,11 @@ func TestForeverWolfsheadEnergy(t *testing.T) {
 		s := itemFixture("feral", proto.ItemSlot_ItemSlotHead, id)
 		u := s.Raid.AllPlayerUnits[0]
 		u.SpendEnergy(s, u.CurrentEnergy(), u.NewEnergyMetrics(core.ActionID{SpellID: 1}))
-		tf := u.GetSpell(core.ActionID{SpellID: 9846})
-		tf.ApplyEffects(s, u, tf)
+		power := u.GetSpell(core.ActionID{SpellID: 1322605})
+		power.ApplyEffects(s, u, power)
 		energy = append(energy, u.CurrentEnergy())
 	}
 	if energy[1]-energy[0] != 20 {
-		t.Fatalf("Wolfshead must add 20 Tiger's Fury energy: %v", energy)
+		t.Fatalf("Wolfshead must add 20 Shifting Power energy: %v", energy)
 	}
 }

@@ -17,7 +17,7 @@ func (warrior *Warrior) newShoutSpellConfig(actionID core.ActionID, rank int32, 
 		Flags:    core.SpellFlagNoOnCastComplete | core.SpellFlagAPL | core.SpellFlagHelpful,
 
 		RageCost: core.RageCostOptions{
-			Cost: 10,
+			Cost: 10 * core.TernaryFloat64(warrior.Env.IsForever(), 1-.05*float64(warrior.Talents.BoomingVoice), 1),
 		},
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
@@ -51,7 +51,7 @@ func (warrior *Warrior) registerBattleShout() {
 	warrior.BattleShout = warrior.newShoutSpellConfig(core.ActionID{SpellID: actionId}, rank, warrior.NewPartyAuraArray(func(unit *core.Unit) *core.Aura {
 		// Improved Battle Shout is gone from the Forever tree and did not become baseline: the beta
 		// client's rank 7 gives 139 attack power for 3 min, 60% of Classic's 232 for 2 min. Booming
-		// Voice only widens the radius. The base value and duration live in core.BattleShoutAura.
+		// Voice widens the radius and, since October 1, discounts the Rage cost. The base value and duration live in core.BattleShoutAura.
 		return core.BattleShoutAura(unit, 0, 0, has3pcWrath)
 	}))
 }

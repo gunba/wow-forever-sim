@@ -156,7 +156,9 @@ func (druid *Druid) registerCatFormSpell() {
 			druid.form = Humanoid
 			druid.SetCurrentPowerBar(core.ManaBar)
 
-			druid.TigersFuryAura.Deactivate(sim)
+			if druid.TigersFuryAura != nil {
+				druid.TigersFuryAura.Deactivate(sim)
+			}
 
 			druid.AutoAttacks.SetMH(druid.WeaponFromMainHand())
 

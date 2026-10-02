@@ -11,14 +11,10 @@ import (
 	"testing"
 )
 
-// Most of this fork's talent ranks were extrapolated from the one rank a BlizzCon demo
-// tooltip showed. As the beta confirms them, talentsforever.com marks those talents
-// complete, and assets/confirmed_talents.json keeps the rank values of the ones confirmed
-// so far. A rank that has been read off the game is the one kind of number this sim cannot
-// argue with, so drifting from one is always a bug.
-//
-// Refresh the file with `node tools/refresh_confirmed_talents.mjs` when more are confirmed;
-// this then reports anything the sim assumed that the game has since contradicted.
+// The sourced rank ledger retains older client values and identifies later
+// note/client-derived updates. This check catches display drift; matching the
+// ledger does not independently verify server-script behavior. Update source
+// provenance alongside changed values in assets/confirmed_talents.json.
 type confirmedTalents struct {
 	Generated string                            `json:"generated"`
 	Talents   map[string]map[string][][]float64 `json:"talents"`

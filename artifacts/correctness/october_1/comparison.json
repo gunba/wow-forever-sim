@@ -1,0 +1,2006 @@
+{
+  "previousRelease": "bb146403bd36e29fa6993433b08dcf246bf44c99",
+  "currentPhase": "October1 source corrections, static70170/current client-derived tree; fixed modeled-v2 gear, ordinary MP5, natural hit",
+  "matching": "Fixed equipment/options/buffs/consumes/encounter. Only documented talent/rotation migration differs. Before/after seeds differ: gains are descriptions, not paired build-optimization evidence.",
+  "currentSeeds": {
+    "main": 2026100191,
+    "iterations": 5000
+  },
+  "rows": [
+    {
+      "key": "balance",
+      "race": "Tauren",
+      "migratedFields": [],
+      "beforeDPS": 708.0471291125511,
+      "currentDPS": 708.2427691745786,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "balance",
+      "race": "Windshaper",
+      "migratedFields": [],
+      "beforeDPS": 711.8955528118234,
+      "currentDPS": 711.5253877822104,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "balance",
+      "race": "Night Elf",
+      "migratedFields": [],
+      "beforeDPS": 711.6436341659362,
+      "currentDPS": 711.5576603049635,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "balance",
+      "race": "High Order",
+      "migratedFields": [],
+      "beforeDPS": 711.8955528118234,
+      "currentDPS": 711.5253877822104,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "feral",
+      "race": "Tauren",
+      "migratedFields": [
+        "rotation",
+        "talentsString"
+      ],
+      "beforeDPS": 689.2233790831976,
+      "currentDPS": 717.9341609191323,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 1.9942200000000037
+    },
+    {
+      "key": "feral",
+      "race": "Windshaper",
+      "migratedFields": [
+        "rotation",
+        "talentsString"
+      ],
+      "beforeDPS": 694.0168468650041,
+      "currentDPS": 721.1562651575598,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 1.52582
+    },
+    {
+      "key": "feral",
+      "race": "Night Elf",
+      "migratedFields": [
+        "rotation",
+        "talentsString"
+      ],
+      "beforeDPS": 695.3587791873483,
+      "currentDPS": 725.6121497006933,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 1.7245699999999993
+    },
+    {
+      "key": "feral",
+      "race": "High Order",
+      "migratedFields": [
+        "rotation",
+        "talentsString"
+      ],
+      "beforeDPS": 694.0168468650041,
+      "currentDPS": 721.1562651575598,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 1.52582
+    },
+    {
+      "key": "elemental",
+      "race": "Orc",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 545.9463932597416,
+      "currentDPS": 484.66891517406174,
+      "beforeOOMSeconds": 0.3412,
+      "currentOOMSeconds": 47.9671
+    },
+    {
+      "key": "elemental",
+      "race": "Tauren",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 540.8200888561122,
+      "currentDPS": 481.8404923217387,
+      "beforeOOMSeconds": 0.3414,
+      "currentOOMSeconds": 46.7103
+    },
+    {
+      "key": "elemental",
+      "race": "Troll",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 543.1562162627914,
+      "currentDPS": 483.3890675538802,
+      "beforeOOMSeconds": 0.3341554548407993,
+      "currentOOMSeconds": 47.61896454572317
+    },
+    {
+      "key": "elemental",
+      "race": "Windshaper",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 544.5947649559442,
+      "currentDPS": 482.8824055948876,
+      "beforeOOMSeconds": 0.3465469407590026,
+      "currentOOMSeconds": 48.3332808998828
+    },
+    {
+      "key": "elemental",
+      "race": "Dwarf",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 542.0057650122782,
+      "currentDPS": 483.1921371161787,
+      "beforeOOMSeconds": 0.3395,
+      "currentOOMSeconds": 46.5529
+    },
+    {
+      "key": "stormcaller",
+      "race": "Orc",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 549.3612174793227,
+      "currentDPS": 452.966656293404,
+      "beforeOOMSeconds": 0.2693,
+      "currentOOMSeconds": 67.2268
+    },
+    {
+      "key": "stormcaller",
+      "race": "Tauren",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 548.341658918457,
+      "currentDPS": 456.263733961564,
+      "beforeOOMSeconds": 0.3077,
+      "currentOOMSeconds": 65.0644
+    },
+    {
+      "key": "stormcaller",
+      "race": "Troll",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 546.4416882918154,
+      "currentDPS": 448.0739432939446,
+      "beforeOOMSeconds": 0.2704645454645998,
+      "currentOOMSeconds": 69.4616863637892
+    },
+    {
+      "key": "stormcaller",
+      "race": "Windshaper",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 547.3586718370497,
+      "currentDPS": 448.6541573008186,
+      "beforeOOMSeconds": 0.3604422775299985,
+      "currentOOMSeconds": 69.70799505479225
+    },
+    {
+      "key": "stormcaller",
+      "race": "Dwarf",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 544.7723037326609,
+      "currentDPS": 450.5805155694071,
+      "beforeOOMSeconds": 0.2815,
+      "currentOOMSeconds": 67.1845
+    },
+    {
+      "key": "enhancement",
+      "race": "Orc",
+      "migratedFields": [],
+      "beforeDPS": 763.5261880251702,
+      "currentDPS": 763.7210012462564,
+      "beforeOOMSeconds": 0.03840336157600001,
+      "currentOOMSeconds": 0.04053459771359996
+    },
+    {
+      "key": "enhancement",
+      "race": "Tauren",
+      "migratedFields": [],
+      "beforeDPS": 759.7312979045079,
+      "currentDPS": 760.0223751918053,
+      "beforeOOMSeconds": 0.006876350395999999,
+      "currentOOMSeconds": 0.006826807204399999
+    },
+    {
+      "key": "enhancement",
+      "race": "Troll",
+      "migratedFields": [],
+      "beforeDPS": 763.743317105502,
+      "currentDPS": 765.1604079775428,
+      "beforeOOMSeconds": 0.004024273217200001,
+      "currentOOMSeconds": 0.004512247395200001
+    },
+    {
+      "key": "enhancement",
+      "race": "Windshaper",
+      "migratedFields": [],
+      "beforeDPS": 762.7151705764117,
+      "currentDPS": 763.3339955961578,
+      "beforeOOMSeconds": 0.005893090881999999,
+      "currentOOMSeconds": 0.010201603230600001
+    },
+    {
+      "key": "enhancement",
+      "race": "Dwarf",
+      "migratedFields": [],
+      "beforeDPS": 768.2755431582933,
+      "currentDPS": 768.5669026481254,
+      "beforeOOMSeconds": 0.009450162764399996,
+      "currentOOMSeconds": 0.006656991502
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Orc",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 943.5093002918189,
+      "currentDPS": 930.2927448739862,
+      "beforeOOMSeconds": 1.075365618068202,
+      "currentOOMSeconds": 41.275891291252655
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Tauren",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 941.4158322930422,
+      "currentDPS": 926.6003640097234,
+      "beforeOOMSeconds": 0.6106260578330001,
+      "currentOOMSeconds": 38.57681633333479
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Troll",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 947.9335758274738,
+      "currentDPS": 931.7894635553303,
+      "beforeOOMSeconds": 0.6105293663542007,
+      "currentOOMSeconds": 38.75002561405443
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Windshaper",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 949.9869336080241,
+      "currentDPS": 935.4394298830816,
+      "beforeOOMSeconds": 0.4753863280649991,
+      "currentOOMSeconds": 37.60351296503658
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Human",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 945.5409026543781,
+      "currentDPS": 933.2288476660746,
+      "beforeOOMSeconds": 0.7386911263403996,
+      "currentOOMSeconds": 39.57728281792809
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Dwarf",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 943.0311636379905,
+      "currentDPS": 928.1000124268741,
+      "beforeOOMSeconds": 0.5093885034827993,
+      "currentOOMSeconds": 38.121998449727975
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Night Elf",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 954.838897717003,
+      "currentDPS": 939.6694953865091,
+      "beforeOOMSeconds": 0.45983710699999886,
+      "currentOOMSeconds": 37.70769543532602
+    },
+    {
+      "key": "beast_mastery",
+      "race": "High Order",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 949.9869336080241,
+      "currentDPS": 935.4394298830816,
+      "beforeOOMSeconds": 0.4753863280649991,
+      "currentOOMSeconds": 37.60351296503658
+    },
+    {
+      "key": "marksmanship",
+      "race": "Orc",
+      "migratedFields": [],
+      "beforeDPS": 774.7050640677883,
+      "currentDPS": 775.4865801345711,
+      "beforeOOMSeconds": 5.5471047788507795,
+      "currentOOMSeconds": 5.599572393012997
+    },
+    {
+      "key": "marksmanship",
+      "race": "Tauren",
+      "migratedFields": [],
+      "beforeDPS": 760.601095665969,
+      "currentDPS": 761.2526776604478,
+      "beforeOOMSeconds": 5.307588429334376,
+      "currentOOMSeconds": 5.290558932706386
+    },
+    {
+      "key": "marksmanship",
+      "race": "Troll",
+      "migratedFields": [],
+      "beforeDPS": 781.9272283755116,
+      "currentDPS": 781.9608652361662,
+      "beforeOOMSeconds": 4.676039965404988,
+      "currentOOMSeconds": 4.618001933261002
+    },
+    {
+      "key": "marksmanship",
+      "race": "Windshaper",
+      "migratedFields": [],
+      "beforeDPS": 781.2322300388728,
+      "currentDPS": 781.4625467409942,
+      "beforeOOMSeconds": 4.5515300544243935,
+      "currentOOMSeconds": 4.556568503849202
+    },
+    {
+      "key": "marksmanship",
+      "race": "Human",
+      "migratedFields": [],
+      "beforeDPS": 778.3959122676983,
+      "currentDPS": 779.1161285225147,
+      "beforeOOMSeconds": 3.0563481349072,
+      "currentOOMSeconds": 2.9629464958630014
+    },
+    {
+      "key": "marksmanship",
+      "race": "Dwarf",
+      "migratedFields": [],
+      "beforeDPS": 761.5844795468845,
+      "currentDPS": 761.8315348381275,
+      "beforeOOMSeconds": 3.543757432005195,
+      "currentOOMSeconds": 3.606014223166206
+    },
+    {
+      "key": "marksmanship",
+      "race": "Night Elf",
+      "migratedFields": [],
+      "beforeDPS": 772.8842219648545,
+      "currentDPS": 773.5908112963336,
+      "beforeOOMSeconds": 6.2716984936306,
+      "currentOOMSeconds": 6.403961678964387
+    },
+    {
+      "key": "marksmanship",
+      "race": "High Order",
+      "migratedFields": [],
+      "beforeDPS": 781.2322300388728,
+      "currentDPS": 781.4625467409942,
+      "beforeOOMSeconds": 4.5515300544243935,
+      "currentOOMSeconds": 4.556568503849202
+    },
+    {
+      "key": "survival",
+      "race": "Orc",
+      "migratedFields": [],
+      "beforeDPS": 892.3243818009628,
+      "currentDPS": 892.4081809332777,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "survival",
+      "race": "Tauren",
+      "migratedFields": [],
+      "beforeDPS": 879.8499128452612,
+      "currentDPS": 879.172556994126,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "survival",
+      "race": "Troll",
+      "migratedFields": [],
+      "beforeDPS": 882.5923851135159,
+      "currentDPS": 881.6334476410199,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "survival",
+      "race": "Windshaper",
+      "migratedFields": [],
+      "beforeDPS": 882.8386849341535,
+      "currentDPS": 882.7909138315861,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "survival",
+      "race": "Human",
+      "migratedFields": [],
+      "beforeDPS": 893.5827283564344,
+      "currentDPS": 893.5533803351577,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "survival",
+      "race": "Dwarf",
+      "migratedFields": [],
+      "beforeDPS": 876.922828691321,
+      "currentDPS": 876.917143487101,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "survival",
+      "race": "Night Elf",
+      "migratedFields": [],
+      "beforeDPS": 888.4848361070289,
+      "currentDPS": 888.3832431542442,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "survival",
+      "race": "High Order",
+      "migratedFields": [],
+      "beforeDPS": 882.8386849341535,
+      "currentDPS": 882.7909138315861,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "arcane",
+      "race": "Orc",
+      "migratedFields": [],
+      "beforeDPS": 719.6209120316206,
+      "currentDPS": 719.8153446612071,
+      "beforeOOMSeconds": 0.07765,
+      "currentOOMSeconds": 0.0667
+    },
+    {
+      "key": "arcane",
+      "race": "Troll",
+      "migratedFields": [],
+      "beforeDPS": 720.2232792886149,
+      "currentDPS": 720.3205394325894,
+      "beforeOOMSeconds": 0.041066363640200006,
+      "currentOOMSeconds": 0.04836636363719999
+    },
+    {
+      "key": "arcane",
+      "race": "Undead",
+      "migratedFields": [],
+      "beforeDPS": 739.212307455945,
+      "currentDPS": 739.4038808560488,
+      "beforeOOMSeconds": 0.04255,
+      "currentOOMSeconds": 0.0477
+    },
+    {
+      "key": "arcane",
+      "race": "Human",
+      "migratedFields": [],
+      "beforeDPS": 724.8431177825859,
+      "currentDPS": 724.903407987026,
+      "beforeOOMSeconds": 0.0582,
+      "currentOOMSeconds": 0.0553
+    },
+    {
+      "key": "arcane",
+      "race": "Gnome",
+      "migratedFields": [],
+      "beforeDPS": 732.1697935780701,
+      "currentDPS": 732.5194883142456,
+      "beforeOOMSeconds": 0.01505,
+      "currentOOMSeconds": 0.00825
+    },
+    {
+      "key": "arcane",
+      "race": "High Order",
+      "migratedFields": [],
+      "beforeDPS": 725.551185866375,
+      "currentDPS": 725.8560814446489,
+      "beforeOOMSeconds": 0.05747821787399998,
+      "currentOOMSeconds": 0.05539128715440002
+    },
+    {
+      "key": "fire",
+      "race": "Orc",
+      "migratedFields": [],
+      "beforeDPS": 721.2376914692862,
+      "currentDPS": 714.6329966905124,
+      "beforeOOMSeconds": 5.894619999999993,
+      "currentOOMSeconds": 6.016659999999991
+    },
+    {
+      "key": "fire",
+      "race": "Troll",
+      "migratedFields": [],
+      "beforeDPS": 720.3254549339251,
+      "currentDPS": 713.1682470958873,
+      "beforeOOMSeconds": 4.332586365223358,
+      "currentOOMSeconds": 4.316823637957753
+    },
+    {
+      "key": "fire",
+      "race": "Undead",
+      "migratedFields": [],
+      "beforeDPS": 734.5121430547782,
+      "currentDPS": 726.2256621496164,
+      "beforeOOMSeconds": 5.483399999999994,
+      "currentOOMSeconds": 5.636809999999991
+    },
+    {
+      "key": "fire",
+      "race": "Human",
+      "migratedFields": [],
+      "beforeDPS": 731.6223640963217,
+      "currentDPS": 725.2486570024332,
+      "beforeOOMSeconds": 5.193589999999993,
+      "currentOOMSeconds": 5.219929999999994
+    },
+    {
+      "key": "fire",
+      "race": "Gnome",
+      "migratedFields": [],
+      "beforeDPS": 725.9036957276589,
+      "currentDPS": 718.6332222480072,
+      "beforeOOMSeconds": 5.055719999999992,
+      "currentOOMSeconds": 5.279759999999998
+    },
+    {
+      "key": "fire",
+      "race": "High Order",
+      "migratedFields": [],
+      "beforeDPS": 720.9309358018234,
+      "currentDPS": 713.3568537021257,
+      "beforeOOMSeconds": 2.786012900963596,
+      "currentOOMSeconds": 3.010359433058793
+    },
+    {
+      "key": "frost",
+      "race": "Orc",
+      "migratedFields": [],
+      "beforeDPS": 703.5569218632509,
+      "currentDPS": 703.704184609332,
+      "beforeOOMSeconds": 0.25915,
+      "currentOOMSeconds": 0.22345
+    },
+    {
+      "key": "frost",
+      "race": "Troll",
+      "migratedFields": [],
+      "beforeDPS": 700.9845297706452,
+      "currentDPS": 700.9537520210284,
+      "beforeOOMSeconds": 0.18591636377880005,
+      "currentOOMSeconds": 0.1642209092036
+    },
+    {
+      "key": "frost",
+      "race": "Undead",
+      "migratedFields": [],
+      "beforeDPS": 704.6751367043124,
+      "currentDPS": 705.0019290234331,
+      "beforeOOMSeconds": 0.3576,
+      "currentOOMSeconds": 0.3623
+    },
+    {
+      "key": "frost",
+      "race": "Human",
+      "migratedFields": [],
+      "beforeDPS": 707.8903025433075,
+      "currentDPS": 707.9641631061891,
+      "beforeOOMSeconds": 0.15075,
+      "currentOOMSeconds": 0.12865
+    },
+    {
+      "key": "frost",
+      "race": "Gnome",
+      "migratedFields": [],
+      "beforeDPS": 713.3525758264666,
+      "currentDPS": 713.0157976633375,
+      "beforeOOMSeconds": 0.0221,
+      "currentOOMSeconds": 0.01715
+    },
+    {
+      "key": "frost",
+      "race": "High Order",
+      "migratedFields": [],
+      "beforeDPS": 702.8003769923313,
+      "currentDPS": 702.8230001120679,
+      "beforeOOMSeconds": 0.19870871468240003,
+      "currentOOMSeconds": 0.20651455613480024
+    },
+    {
+      "key": "retribution",
+      "race": "Undead",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 1103.0588040425628,
+      "currentDPS": 1053.2558402149764,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0.0024370297027999995
+    },
+    {
+      "key": "retribution",
+      "race": "Human",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 1096.5008204263938,
+      "currentDPS": 1037.4773684859879,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0.0027179207920000003
+    },
+    {
+      "key": "retribution",
+      "race": "Dwarf",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 1103.7312928486415,
+      "currentDPS": 1044.0798077263391,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0.0025032673268000002
+    },
+    {
+      "key": "shadow",
+      "race": "Troll",
+      "migratedFields": [],
+      "beforeDPS": 826.5570339297805,
+      "currentDPS": 826.5340685234082,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "shadow",
+      "race": "Undead",
+      "migratedFields": [],
+      "beforeDPS": 832.5023463430474,
+      "currentDPS": 832.188204177501,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "shadow",
+      "race": "Human",
+      "migratedFields": [],
+      "beforeDPS": 825.1937111759183,
+      "currentDPS": 825.4011163248026,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "shadow",
+      "race": "Dwarf",
+      "migratedFields": [],
+      "beforeDPS": 831.5369584178501,
+      "currentDPS": 831.7240654355043,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "shadow",
+      "race": "Night Elf",
+      "migratedFields": [],
+      "beforeDPS": 831.4993922008566,
+      "currentDPS": 831.6648186261132,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "shadow",
+      "race": "Gnome",
+      "migratedFields": [],
+      "beforeDPS": 826.8724097783008,
+      "currentDPS": 828.6560442188,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "smite",
+      "race": "Troll",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 546.459688361295,
+      "currentDPS": 462.3127921931398,
+      "beforeOOMSeconds": 7e-05,
+      "currentOOMSeconds": 50.58032727278685
+    },
+    {
+      "key": "smite",
+      "race": "Undead",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 552.9405515681212,
+      "currentDPS": 479.5761824078761,
+      "beforeOOMSeconds": 0.0006,
+      "currentOOMSeconds": 44.54358999999986
+    },
+    {
+      "key": "smite",
+      "race": "Human",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 543.4674746170255,
+      "currentDPS": 469.12677385419755,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 46.67306999999992
+    },
+    {
+      "key": "smite",
+      "race": "Dwarf",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 543.1788384599413,
+      "currentDPS": 465.69204673650006,
+      "beforeOOMSeconds": 0.0002,
+      "currentOOMSeconds": 48.23470999999991
+    },
+    {
+      "key": "smite",
+      "race": "Night Elf",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 546.4419940296767,
+      "currentDPS": 466.7488021548707,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 49.41519999999993
+    },
+    {
+      "key": "smite",
+      "race": "Gnome",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 547.5446742454455,
+      "currentDPS": 478.51193932027894,
+      "beforeOOMSeconds": 0.0002,
+      "currentOOMSeconds": 43.72912999999993
+    },
+    {
+      "key": "combat",
+      "race": "Orc",
+      "migratedFields": [],
+      "beforeDPS": 687.0833109035694,
+      "currentDPS": 686.6202863141008,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "combat",
+      "race": "Troll",
+      "migratedFields": [],
+      "beforeDPS": 685.1631764806453,
+      "currentDPS": 685.2825891753624,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "combat",
+      "race": "Undead",
+      "migratedFields": [],
+      "beforeDPS": 708.4216700237871,
+      "currentDPS": 708.1659435693936,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "combat",
+      "race": "Windshaper",
+      "migratedFields": [],
+      "beforeDPS": 688.3826150978654,
+      "currentDPS": 688.1788275817966,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "combat",
+      "race": "Human",
+      "migratedFields": [],
+      "beforeDPS": 690.0157741593819,
+      "currentDPS": 690.0663964968023,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "combat",
+      "race": "Dwarf",
+      "migratedFields": [],
+      "beforeDPS": 680.2789599818863,
+      "currentDPS": 679.8474388922808,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "combat",
+      "race": "Night Elf",
+      "migratedFields": [],
+      "beforeDPS": 688.6495305169032,
+      "currentDPS": 688.2639971171517,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "combat",
+      "race": "Gnome",
+      "migratedFields": [],
+      "beforeDPS": 686.0908759692377,
+      "currentDPS": 685.418341001806,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "combat",
+      "race": "High Order",
+      "migratedFields": [],
+      "beforeDPS": 688.3826150978654,
+      "currentDPS": 688.1788275817966,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "mutilate",
+      "race": "Orc",
+      "migratedFields": [],
+      "beforeDPS": 672.7642177388766,
+      "currentDPS": 672.8065499927455,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "mutilate",
+      "race": "Troll",
+      "migratedFields": [],
+      "beforeDPS": 669.6109977118999,
+      "currentDPS": 669.9369992994019,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "mutilate",
+      "race": "Undead",
+      "migratedFields": [],
+      "beforeDPS": 703.8894668052283,
+      "currentDPS": 704.6641730456463,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "mutilate",
+      "race": "Windshaper",
+      "migratedFields": [],
+      "beforeDPS": 674.3665007699254,
+      "currentDPS": 674.5875999682985,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "mutilate",
+      "race": "Human",
+      "migratedFields": [],
+      "beforeDPS": 667.1588778628713,
+      "currentDPS": 667.4205173312872,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "mutilate",
+      "race": "Dwarf",
+      "migratedFields": [],
+      "beforeDPS": 667.4955170219308,
+      "currentDPS": 668.2335486430012,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "mutilate",
+      "race": "Night Elf",
+      "migratedFields": [],
+      "beforeDPS": 675.6088195493907,
+      "currentDPS": 675.3296547448667,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "mutilate",
+      "race": "Gnome",
+      "migratedFields": [],
+      "beforeDPS": 675.3790121131902,
+      "currentDPS": 676.0457141788079,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "mutilate",
+      "race": "High Order",
+      "migratedFields": [],
+      "beforeDPS": 674.3665007699254,
+      "currentDPS": 674.5875999682985,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "subtlety",
+      "race": "Orc",
+      "migratedFields": [],
+      "beforeDPS": 632.6374381751219,
+      "currentDPS": 632.9570930085001,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "subtlety",
+      "race": "Troll",
+      "migratedFields": [],
+      "beforeDPS": 632.8235270654898,
+      "currentDPS": 633.0852531580181,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "subtlety",
+      "race": "Undead",
+      "migratedFields": [],
+      "beforeDPS": 655.853089409529,
+      "currentDPS": 656.1436374062213,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "subtlety",
+      "race": "Windshaper",
+      "migratedFields": [],
+      "beforeDPS": 635.1059937013162,
+      "currentDPS": 635.3194708588818,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "subtlety",
+      "race": "Human",
+      "migratedFields": [],
+      "beforeDPS": 636.2194920660083,
+      "currentDPS": 636.678353698819,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "subtlety",
+      "race": "Dwarf",
+      "migratedFields": [],
+      "beforeDPS": 627.4958292290213,
+      "currentDPS": 627.5587884788322,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "subtlety",
+      "race": "Night Elf",
+      "migratedFields": [],
+      "beforeDPS": 636.6224653660587,
+      "currentDPS": 636.3564098269545,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "subtlety",
+      "race": "Gnome",
+      "migratedFields": [],
+      "beforeDPS": 635.3673228705819,
+      "currentDPS": 635.1423966501224,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "subtlety",
+      "race": "High Order",
+      "migratedFields": [],
+      "beforeDPS": 635.1059937013162,
+      "currentDPS": 635.3194708588818,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "demonology",
+      "race": "Orc",
+      "migratedFields": [],
+      "beforeDPS": 877.5611907552355,
+      "currentDPS": 877.6328017282536,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "demonology",
+      "race": "Troll",
+      "migratedFields": [],
+      "beforeDPS": 872.709172279455,
+      "currentDPS": 872.929485748257,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "demonology",
+      "race": "Undead",
+      "migratedFields": [],
+      "beforeDPS": 892.4829665284326,
+      "currentDPS": 892.3868546894552,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "demonology",
+      "race": "Human",
+      "migratedFields": [],
+      "beforeDPS": 884.9426069806702,
+      "currentDPS": 884.0170185352422,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "demonology",
+      "race": "Gnome",
+      "migratedFields": [],
+      "beforeDPS": 875.5016848987397,
+      "currentDPS": 874.350725159412,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "affliction",
+      "race": "Orc",
+      "migratedFields": [],
+      "beforeDPS": 801.7691277881697,
+      "currentDPS": 801.4130268285323,
+      "beforeOOMSeconds": 0.0008,
+      "currentOOMSeconds": 0.0007
+    },
+    {
+      "key": "affliction",
+      "race": "Troll",
+      "migratedFields": [],
+      "beforeDPS": 790.8657856733314,
+      "currentDPS": 790.5247608335984,
+      "beforeOOMSeconds": 0.0014909091304,
+      "currentOOMSeconds": 0.0017636364113999996
+    },
+    {
+      "key": "affliction",
+      "race": "Undead",
+      "migratedFields": [],
+      "beforeDPS": 802.5202880184518,
+      "currentDPS": 802.3307625966074,
+      "beforeOOMSeconds": 0.0011,
+      "currentOOMSeconds": 0.0028
+    },
+    {
+      "key": "affliction",
+      "race": "Human",
+      "migratedFields": [],
+      "beforeDPS": 808.521837978128,
+      "currentDPS": 809.5109526873604,
+      "beforeOOMSeconds": 0.0013,
+      "currentOOMSeconds": 0.0011
+    },
+    {
+      "key": "affliction",
+      "race": "Gnome",
+      "migratedFields": [],
+      "beforeDPS": 790.6409730845623,
+      "currentDPS": 790.3974190120357,
+      "beforeOOMSeconds": 0.0003,
+      "currentOOMSeconds": 0.0003
+    },
+    {
+      "key": "ds_ruin",
+      "race": "Orc",
+      "migratedFields": [],
+      "beforeDPS": 762.4048121372305,
+      "currentDPS": 761.8157357752083,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "ds_ruin",
+      "race": "Troll",
+      "migratedFields": [],
+      "beforeDPS": 752.7827179433324,
+      "currentDPS": 752.6765270709226,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "ds_ruin",
+      "race": "Undead",
+      "migratedFields": [],
+      "beforeDPS": 776.1537502606369,
+      "currentDPS": 775.1620931993917,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "ds_ruin",
+      "race": "Human",
+      "migratedFields": [],
+      "beforeDPS": 777.5353988270984,
+      "currentDPS": 777.976725496106,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "ds_ruin",
+      "race": "Gnome",
+      "migratedFields": [],
+      "beforeDPS": 763.7666718707869,
+      "currentDPS": 763.726523380561,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "destruction",
+      "race": "Orc",
+      "migratedFields": [],
+      "beforeDPS": 792.7416551071525,
+      "currentDPS": 792.391699179739,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "destruction",
+      "race": "Troll",
+      "migratedFields": [],
+      "beforeDPS": 796.3189407791536,
+      "currentDPS": 796.3545768259473,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "destruction",
+      "race": "Undead",
+      "migratedFields": [],
+      "beforeDPS": 800.2072169536648,
+      "currentDPS": 800.0197237304707,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "destruction",
+      "race": "Human",
+      "migratedFields": [],
+      "beforeDPS": 799.987305780923,
+      "currentDPS": 800.4242133412615,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "destruction",
+      "race": "Gnome",
+      "migratedFields": [],
+      "beforeDPS": 786.0247617381925,
+      "currentDPS": 786.313950302613,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury",
+      "race": "Orc",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 833.0856407824723,
+      "currentDPS": 897.9573544861955,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Orc",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 801.9796523166224,
+      "currentDPS": 867.1982023643611,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury",
+      "race": "Tauren",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 823.9715911148544,
+      "currentDPS": 881.4203269818026,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Tauren",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 794.979352733289,
+      "currentDPS": 854.4400821262179,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury",
+      "race": "Troll",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 823.4314461664461,
+      "currentDPS": 885.4354948569886,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Troll",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 795.8119624588148,
+      "currentDPS": 859.261641110368,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury",
+      "race": "Undead",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 842.1487073050089,
+      "currentDPS": 899.5629955130728,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Undead",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 807.6685173967949,
+      "currentDPS": 864.2003464697352,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury",
+      "race": "Windshaper",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 825.7251890394418,
+      "currentDPS": 884.4210471992774,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Windshaper",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 791.5047360081626,
+      "currentDPS": 847.9474199333783,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury",
+      "race": "Human",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 832.275118681481,
+      "currentDPS": 893.7917651017457,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Human",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 799.2852246909625,
+      "currentDPS": 860.589177883172,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury",
+      "race": "Dwarf",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 821.2812791254562,
+      "currentDPS": 878.958864635749,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Dwarf",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 783.3794720902857,
+      "currentDPS": 845.0107047306949,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury",
+      "race": "Night Elf",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 822.2648531970157,
+      "currentDPS": 883.4964151420116,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Night Elf",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 792.6613771238266,
+      "currentDPS": 858.1636017171863,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury",
+      "race": "Gnome",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 822.3449994177763,
+      "currentDPS": 884.8791508598625,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Gnome",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 789.6609783399165,
+      "currentDPS": 851.5554022915408,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury",
+      "race": "High Order",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 825.7251890394418,
+      "currentDPS": 884.4210471992774,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury_sunder",
+      "race": "High Order",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 791.5047360081626,
+      "currentDPS": 847.9474199333783,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "arms",
+      "race": "Orc",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 784.450092658149,
+      "currentDPS": 813.7320842775158,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "arms",
+      "race": "Tauren",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 777.7650932016078,
+      "currentDPS": 806.6274792253148,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "arms",
+      "race": "Troll",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 777.2847578570563,
+      "currentDPS": 806.8370460262418,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "arms",
+      "race": "Undead",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 785.2555462150992,
+      "currentDPS": 814.6751363228886,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "arms",
+      "race": "Windshaper",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 781.7030895079281,
+      "currentDPS": 809.6201905428212,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "arms",
+      "race": "Human",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 785.6741990524187,
+      "currentDPS": 815.1892396990539,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "arms",
+      "race": "Dwarf",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 776.5280475090434,
+      "currentDPS": 805.803369006195,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "arms",
+      "race": "Night Elf",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 782.6859443774375,
+      "currentDPS": 812.3063843696196,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "arms",
+      "race": "Gnome",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 776.3328331925103,
+      "currentDPS": 805.7136044374043,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "arms",
+      "race": "High Order",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 781.7030895079281,
+      "currentDPS": 809.6201905428212,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "pet_melee",
+      "race": "Tauren",
+      "migratedFields": [],
+      "beforeDPS": 901.9894252069216,
+      "currentDPS": 901.658833690764,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "pet_melee",
+      "race": "Windshaper",
+      "migratedFields": [],
+      "beforeDPS": 909.3397278312499,
+      "currentDPS": 910.0102361320393,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "pet_melee",
+      "race": "Orc",
+      "migratedFields": [],
+      "beforeDPS": 915.1772454060862,
+      "currentDPS": 914.5907809148887,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "pet_melee",
+      "race": "Human",
+      "migratedFields": [],
+      "beforeDPS": 917.2585731996667,
+      "currentDPS": 916.755617209718,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "pet_melee",
+      "race": "Night Elf",
+      "migratedFields": [],
+      "beforeDPS": 911.6528028483687,
+      "currentDPS": 911.116439178747,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "pet_melee",
+      "race": "Dwarf",
+      "migratedFields": [],
+      "beforeDPS": 899.5490713329822,
+      "currentDPS": 898.6241424917141,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "pet_melee",
+      "race": "Troll",
+      "migratedFields": [],
+      "beforeDPS": 905.5048331849736,
+      "currentDPS": 904.8505710758549,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "pet_melee",
+      "race": "High Order",
+      "migratedFields": [],
+      "beforeDPS": 909.3397278312499,
+      "currentDPS": 910.0102361320393,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "arcane_frost",
+      "race": "Orc",
+      "migratedFields": [],
+      "beforeDPS": 742.4165743434984,
+      "currentDPS": 743.0611015336716,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "arcane_frost",
+      "race": "Troll",
+      "migratedFields": [],
+      "beforeDPS": 740.5952903388287,
+      "currentDPS": 740.7572272903109,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "arcane_frost",
+      "race": "Undead",
+      "migratedFields": [],
+      "beforeDPS": 755.5362714578528,
+      "currentDPS": 755.3072732461807,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "arcane_frost",
+      "race": "Human",
+      "migratedFields": [],
+      "beforeDPS": 751.6448874157275,
+      "currentDPS": 752.6931344374248,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "arcane_frost",
+      "race": "Gnome",
+      "migratedFields": [],
+      "beforeDPS": 747.4771501542933,
+      "currentDPS": 748.9696476057248,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "arcane_frost",
+      "race": "High Order",
+      "migratedFields": [],
+      "beforeDPS": 748.7465149046342,
+      "currentDPS": 749.748867301932,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury_2h",
+      "race": "Orc",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 748.6884284314549,
+      "currentDPS": 811.8672579684116,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury_2h",
+      "race": "Tauren",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 734.9545488607556,
+      "currentDPS": 797.1717060828929,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury_2h",
+      "race": "Undead",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 745.4102073209006,
+      "currentDPS": 805.8911219937725,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury_2h",
+      "race": "Troll",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 741.3160495237083,
+      "currentDPS": 800.8933514641229,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury_2h",
+      "race": "Windshaper",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 734.5598726539166,
+      "currentDPS": 796.8095826474445,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury_2h",
+      "race": "Human",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 744.6379002919549,
+      "currentDPS": 807.6163243088462,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury_2h",
+      "race": "Dwarf",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 739.4688792507465,
+      "currentDPS": 802.0516190625889,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury_2h",
+      "race": "Gnome",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 737.1146727368345,
+      "currentDPS": 797.7889116032434,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury_2h",
+      "race": "Night Elf",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 738.1115334420651,
+      "currentDPS": 800.5493081333959,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "fury_2h",
+      "race": "High Order",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 734.5598726539166,
+      "currentDPS": 796.8095826474445,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "retribution_physical",
+      "race": "Undead",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 985.8451224738226,
+      "currentDPS": 958.8270392164131,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0.03256996047220001
+    },
+    {
+      "key": "retribution_physical",
+      "race": "Human",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 983.6260727962928,
+      "currentDPS": 956.8301032061236,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0.030835841646400006
+    },
+    {
+      "key": "retribution_physical",
+      "race": "Dwarf",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 974.7858839168381,
+      "currentDPS": 948.3959309566807,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0.0407658020444
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Orc",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 355.5071387688233,
+      "currentDPS": 366.12545686411255,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Tauren",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 357.038578121723,
+      "currentDPS": 368.0659687810048,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Troll",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 354.9472465042756,
+      "currentDPS": 365.14328723265834,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Undead",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 368.4116242681092,
+      "currentDPS": 379.3317319827615,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Windshaper",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 355.90317679596353,
+      "currentDPS": 366.14127208224124,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Human",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 360.39837828258396,
+      "currentDPS": 370.7285393624647,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Dwarf",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 355.50453362898884,
+      "currentDPS": 365.386617794262,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Night Elf",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 354.95620676747944,
+      "currentDPS": 365.5162931532619,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Gnome",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 357.394158572661,
+      "currentDPS": 368.018698385781,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "tank_warrior",
+      "race": "High Order",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 355.90317679596353,
+      "currentDPS": 366.14127208224124,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "protection_paladin",
+      "race": "Undead",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 548.5945083699653,
+      "currentDPS": 563.7507602352209,
+      "beforeOOMSeconds": 0.00943,
+      "currentOOMSeconds": 0.00486
+    },
+    {
+      "key": "protection_paladin",
+      "race": "Human",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 528.5298164912978,
+      "currentDPS": 543.055494574792,
+      "beforeOOMSeconds": 0.012507999999999998,
+      "currentOOMSeconds": 0.008348000000000001
+    },
+    {
+      "key": "protection_paladin",
+      "race": "Dwarf",
+      "migratedFields": [
+        "rotation"
+      ],
+      "beforeDPS": 520.2446022008226,
+      "currentDPS": 534.1707021437343,
+      "beforeOOMSeconds": 0.019806,
+      "currentOOMSeconds": 0.01188
+    },
+    {
+      "key": "feral_tank_druid",
+      "race": "Tauren",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 606.5883678631818,
+      "currentDPS": 607.1275701075278,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "feral_tank_druid",
+      "race": "Windshaper",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 610.065464598173,
+      "currentDPS": 609.6238774697737,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "feral_tank_druid",
+      "race": "Night Elf",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 611.9181190045971,
+      "currentDPS": 611.0266437848733,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    },
+    {
+      "key": "feral_tank_druid",
+      "race": "High Order",
+      "migratedFields": [
+        "talentsString"
+      ],
+      "beforeDPS": 610.065464598173,
+      "currentDPS": 609.6238774697737,
+      "beforeOOMSeconds": 0,
+      "currentOOMSeconds": 0
+    }
+  ]
+}

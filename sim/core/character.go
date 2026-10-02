@@ -444,6 +444,11 @@ func (character *Character) AddPartyBuffs(partyBuffs *proto.PartyBuffs) {
 }
 
 func (character *Character) initialize(agent Agent) {
+	// Tree layout depends on the ruleset, which is attached after construction.
+	// Resolve it before item, set and talent effects can inspect allocations.
+	if resolver, ok := agent.(interface{ ResolveTalentTree() }); ok {
+		resolver.ResolveTalentTree()
+	}
 	character.majorCooldownManager.initialize(character)
 	character.ItemSwap.initialize(character)
 
@@ -734,11 +739,36 @@ func GetPrimaryTalentTreeIndex(talentStr string) uint8 {
 	return uint8(bestTree)
 }
 
-// Uses proto reflection to set fields in a talents proto (e.g. MageTalents,
-// WarriorTalents) based on a talentsStr. treeSizes should contain the number
-// of talents in each tree, usually around 30. This is needed because talent
-// strings truncate 0's at the end of each tree, so we can't infer the start index
-// of the tree from the string.
+// FillTalentsProtoByName decodes a tree whose current positions differ from the
+// schema's wire/declaration order. Names are the proto fields' JSON names.
+func FillTalentsProtoByName(data protoreflect.Message, talentsStr string, fields [3][]string) {
+	parts := strings.Split(talentsStr, "-")
+	if len(parts) > len(fields) {
+		panic("too many talent trees")
+	}
+	for tree, part := range parts {
+		if len(part) > len(fields[tree]) {
+			panic("talent string does not match the current tree")
+		}
+		for position, rank := range part {
+			if rank < '0' || rank > '9' {
+				panic("invalid talent rank")
+			}
+			fd := data.Descriptor().Fields().ByJSONName(fields[tree][position])
+			if fd == nil {
+				panic("talent tree refers to an unknown field: " + fields[tree][position])
+			}
+			if fd.Kind() == protoreflect.BoolKind {
+				data.Set(fd, protoreflect.ValueOfBool(rank == '1'))
+			} else {
+				data.Set(fd, protoreflect.ValueOfInt32(int32(rank-'0')))
+			}
+		}
+	}
+}
+
+// FillTalentsProto uses declaration-order positions. Tree sizes are explicit
+// because strings truncate trailing zero ranks independently for each tree.
 func FillTalentsProto(data protoreflect.Message, talentsStr string, treeSizes [3]int) {
 	treeStrs := strings.Split(talentsStr, "-")
 	fieldDescriptors := data.Descriptor().Fields()

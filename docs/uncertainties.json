@@ -33,13 +33,15 @@
       "status": "needs-evidence",
       "title": "Server downranking penalties",
       "question": "Does the server apply additional low-rank SP penalties beyond client coefficients?",
-      "current_model": "Uses each captured rank coefficient; no unobserved level-60 penalty is invented.",
+      "current_model": "Captured rank coefficients remain; active source presets migrate to highest registered ranks. No unobserved server penalty curve is invented and low-rank imports are not categorically banned.",
       "impact": "Current rank-2 Smite/Lightning Bolt, lower-rank Paladin choices and conditional Frostfire research.",
       "sources": [
         "docs/build_updates.md",
         "docs/check_dispositions.md",
         "https://www.60.tools/downrank-calculator",
-        "sim/mage/frostfire_bolt.go"
+        "sim/mage/frostfire_bolt.go",
+        "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696/4",
+        "docs/october-1-corrections.md"
       ],
       "legacy": [
         "T12"
@@ -48,9 +50,9 @@
       "review": {
         "disposition": "partial",
         "confidence": "moderate",
-        "answer": "Rank coefficients are readable in the client and already used by the engine. The current Forever downranking calculator independently reads build 70009 and likewise warns that hidden server penalties are unconfirmed. Tooltip-based online claims do not measure that missing server term.",
-        "remaining": "Whether an additional penalty depends on player level versus the spell's learned level; especially the level-60 use of very low ranks.",
-        "implementation": "Retain captured coefficients, not an imported Classic/TBC penalty. This remains material to low-rank fillers even after their base damage and costs are sourced.",
+        "answer": "October 1 describes downranking SP/proc penalties rather than a ban. Deliberate low-rank fillers are removed from active source presets; exact penalty curves still require a source or experiment. Historical low-rank research remains distinct.",
+        "remaining": "Server SP/proc penalty curves versus spell and player level, including imported low-rank rotations.",
+        "implementation": "Migrate affected exact defaults and refresh their resource/DPS evidence; retain captured rank coefficients for custom imports and disclose unsupported additional penalties.",
         "tests": [
           {
             "stage": "current-beta",
@@ -68,7 +70,14 @@
             "measure": "Repeat the two-SP slope comparison for low and maximum ranks; separate learned-level base growth from the coefficient."
           }
         ],
-        "previous_status": "needs-evidence"
+        "previous_status": "needs-evidence",
+        "history": [
+          {
+            "phase": "before October 1 reconciliation",
+            "answer": "Rank coefficients are readable in the client and already used by the engine. The current Forever downranking calculator independently reads build 70009 and likewise warns that hidden server penalties are unconfirmed. Tooltip-based online claims do not measure that missing server term.",
+            "implementation": "Retain captured coefficients, not an imported Classic/TBC penalty. This remains material to low-rank fillers even after their base damage and costs are sourced."
+          }
+        ]
       }
     },
     {
@@ -2647,7 +2656,7 @@
       "status": "needs-evidence",
       "title": "Level-60 outgoing rage normalization",
       "question": "Do the measured low-level speed-based rage rates persist at level 60?",
-      "current_model": "Damage-independent rage: base weapon speed × 4.5 for two-handers, or × (4.5/1.3) for one-hand main hand. Crits/glances do not increase it; haste changes swing frequency, not rage per hit.",
+      "current_model": "Damage-independent base-speed Rage: 4.5 per weapon-second for two-handed, 4.5/1.3 for one-handed MH; outgoing white criticals now award twice normal Rage. Haste changes event frequency, not base speed.",
       "impact": "All Warrior damage, gear selection and rotation decisions.",
       "sources": [
         "sim/core/rage.go",
@@ -2655,7 +2664,9 @@
         "docs/flurry_review.md",
         "https://github.com/tzcnt/forever-data/tree/main/raw-logs",
         "https://ppach-warriorcompendium.share.connect.posit.cloud/rage.html",
-        "https://github.com/ClassicWoWCommunity/forever-bugs/issues/47"
+        "https://github.com/ClassicWoWCommunity/forever-bugs/issues/47",
+        "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696/4",
+        "docs/october-1-corrections.md"
       ],
       "legacy": [
         "T02 (outgoing rates) / M06"
@@ -2664,9 +2675,9 @@
       "review": {
         "disposition": "partial",
         "confidence": "high",
-        "answer": "Newer public logs extend the evidence beyond the original captures, and the no-extra-rage-on-crit report was explicitly answered as intended behavior. Speed-based damage-independent rage is well supported at tested beta levels; max-level extrapolation remains a distinct assumption.",
-        "remaining": "The level-60 rate, not the already answered low-level damage-versus-rage question.",
-        "implementation": "No change to the current base-speed rule. Do not spend another current-beta experiment rediscovering the same damage independence.",
+        "answer": "October 1 supersedes the earlier no-extra-critical-Rage beta answer: the final Warrior-specific note gives +100%, after an earlier +75% bullet. The tested low-level base-speed model remains separate from this source-supported critical multiplier.",
+        "remaining": "Level-60 base rates and applicability to unusual extra swings remain unmeasured.",
+        "implementation": "Implement the final +100% critical multiplier; retain the qualified base-speed extrapolation and separate incoming-Rage model.",
         "tests": [
           {
             "stage": "level30",
@@ -2679,7 +2690,14 @@
             "measure": "Measure uncapped ordinary swings while varying damage independently; test the existing 4.5 and 4.5/1.3 rates rather than fitting a damage formula anew."
           }
         ],
-        "previous_status": "needs-evidence"
+        "previous_status": "needs-evidence",
+        "history": [
+          {
+            "phase": "before October 1 reconciliation",
+            "answer": "Newer public logs extend the evidence beyond the original captures, and the no-extra-rage-on-crit report was explicitly answered as intended behavior. Speed-based damage-independent rage is well supported at tested beta levels; max-level extrapolation remains a distinct assumption.",
+            "implementation": "No change to the current base-speed rule. Do not spend another current-beta experiment rediscovering the same damage independence."
+          }
+        ]
       }
     },
     {
@@ -2690,13 +2708,15 @@
       "status": "needs-evidence",
       "title": "Off-hand and extra-swing rage",
       "question": "What rage do off-hand, avoided and proc-generated swings award?",
-      "current_model": "Half-rate off-hand before the sourced Dual Wield Specialization multiplier; avoided autos award none. This is not a measured complete level-60 Fury rule.",
+      "current_model": "Half-rate OH before current DWS +10% Rage per point; landed criticals multiply ordinary outgoing Rage by two. Avoided autos award none; extra-swing/max-level behavior remains qualified.",
       "impact": "Fury, Windfury and weapon-proc value.",
       "sources": [
         "sim/core/rage.go",
         "docs/check_dispositions.md",
         "https://ppach-warriorcompendium.share.connect.posit.cloud/rage.html",
-        "https://github.com/ppach/marrow.github.io/tree/master/eternal/data"
+        "https://github.com/ppach/marrow.github.io/tree/master/eternal/data",
+        "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696/4",
+        "docs/october-1-corrections.md"
       ],
       "legacy": [
         "T02 (off-hand/extra attacks/avoidance)"
@@ -2707,9 +2727,9 @@
       "review": {
         "disposition": "partial",
         "confidence": "high",
-        "answer": "The half-rate off-hand rule now has Forever log support, not just a Cataclysm analogy. An independently inspected public dual-wield sample has dominant clusters of 3.2878 rage with reported 1.9 speed and 6.91 with 2.0 speed: approximately 1.7304 and 3.455 rage per weapon-second. The public analysis reports additional matching weapon pairs.",
-        "remaining": "Proc-generated extra swings, the Dual Wield Specialization interaction, and max-level extrapolation are not established by ordinary low-level off-hand samples.",
-        "implementation": "Retain the half-rate model, upgrading its evidence status only for ordinary tested off-hand swings. Do not describe all extra-attack rage as verified.",
+        "answer": "Ordinary low-level OH half-rate has log support. Current client-derived DWS ranks give 10% OH Rage per point, replacing the old 20%; Furious Precision separately gives 4/7/10% OH hit. Known-issue stale DWS hit is not treated as intended behavior.",
+        "remaining": "Proc-generated extra-swing eligibility, avoidance exceptions and max-level extrapolation; measure DWS separately from critical swings.",
+        "implementation": "Keep ordinary OH evidence distinct from extra-attack assumptions. Apply DWS +10% per point and the separate OH-only hit talent.",
         "tests": [
           {
             "stage": "level30",
@@ -2722,7 +2742,14 @@
             "measure": "Repeat the off-hand ratio with the rage talent and test proc-generated swings, independently of damage and crit."
           }
         ],
-        "previous_status": "needs-evidence"
+        "previous_status": "needs-evidence",
+        "history": [
+          {
+            "phase": "before October 1 reconciliation",
+            "answer": "The half-rate off-hand rule now has Forever log support, not just a Cataclysm analogy. An independently inspected public dual-wield sample has dominant clusters of 3.2878 rage with reported 1.9 speed and 6.91 with 2.0 speed: approximately 1.7304 and 3.455 rage per weapon-second. The public analysis reports additional matching weapon pairs.",
+            "implementation": "Retain the half-rate model, upgrading its evidence status only for ordinary tested off-hand swings. Do not describe all extra-attack rage as verified."
+          }
+        ]
       }
     },
     {
@@ -3514,7 +3541,7 @@
       "status": "needs-evidence",
       "title": "Eureka cast and periodic bonuses",
       "question": "Does the last Eureka charge benefit every tick of the consuming channel/DoT after the aura expires?",
-      "current_model": "The wrapper preserves tagged channel-child bonuses. Ordinary dynamic DoTs are not covered by that wrapper; current resource discounts are 10%, with the engine's additive cost convention.",
+      "current_model": "Ordinary periodic damage excludes Eureka; direct channel ticks retain the consuming-cast bonus after charge expiry, including same-spell and tagged child representations. Resource discounts retain the existing 10% convention.",
       "impact": "Gnome resource use and damage, particularly channels.",
       "sources": [
         "docs/forever_races.md",
@@ -3522,7 +3549,9 @@
         "https://github.com/ClassicWoWCommunity/forever-bugs/issues/35",
         "https://github.com/ClassicWoWCommunity/forever-bugs/issues/90",
         "https://wago.tools/db2/SpellEffect?build=1.60.1.70009",
-        "sim/core/spell_result.go"
+        "sim/core/spell_result.go",
+        "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696/4",
+        "docs/october-1-corrections.md"
       ],
       "legacy": [
         "T03"
@@ -3531,9 +3560,9 @@
       "review": {
         "disposition": "partial",
         "confidence": "moderate",
-        "answer": "Public reports describe already-running DoTs gaining Eureka's bonus dynamically and channels consuming charges per tick; these are unresolved beta reports, not confirmation of the intended charged-cast model. The current client still has explicit direct and periodic damage modifiers. Code preserves tagged channel-child bonuses, but the ordinary dynamic-DoT path is not covered by that wrapper. The older claim that all charged DoTs retain a snapshot is no longer accurate.",
-        "remaining": "Intended versus live-beta charge consumption and periodic bonus lifetime.",
-        "implementation": "Correct the documentation, then reproduce ordinary DoT and channel behavior separately before choosing an engine correction. Current patch costs are 10% for every class, not the old class-specific discounts in the historical racial document.",
+        "answer": "October 1 excludes periodic damage/healing from Eureka. The ordinary-DoT snapshot/application-tick leak is reproduced and repaired, and same-spell channel coverage is checked. Historical reports of dynamic DoT bonuses remain preserved as pre-fix behavior, not intended rules.",
+        "remaining": "Live server consumption/ordering and the last-charge channel semantics; healer-specific periodic coverage is not established by damage checks.",
+        "implementation": "Focused periodic-application, same-spell channel and nested-charge regressions pass. Do not relabel the old snapshot assumptions as current game verification.",
         "tests": [
           {
             "stage": "offline",
@@ -3546,7 +3575,14 @@
             "measure": "Repeat those three cases in game. Do not infer intended behavior from an open bug report or conflate the old mana-discount amount with current values."
           }
         ],
-        "previous_status": "needs-evidence"
+        "previous_status": "needs-evidence",
+        "history": [
+          {
+            "phase": "before October 1 reconciliation",
+            "answer": "Public reports describe already-running DoTs gaining Eureka's bonus dynamically and channels consuming charges per tick; these are unresolved beta reports, not confirmation of the intended charged-cast model. The current client still has explicit direct and periodic damage modifiers. Code preserves tagged channel-child bonuses, but the ordinary dynamic-DoT path is not covered by that wrapper. The older claim that all charged DoTs retain a snapshot is no longer accurate.",
+            "implementation": "Correct the documentation, then reproduce ordinary DoT and channel behavior separately before choosing an engine correction. Current patch costs are 10% for every class, not the old class-specific discounts in the historical racial document."
+          }
+        ]
       }
     },
     {
@@ -3978,7 +4014,7 @@
       "status": "needs-evidence",
       "title": "Bear threat multipliers",
       "question": "What are Forever's form, Primal Bite, Lacerate and Swipe threat multipliers?",
-      "current_model": "Bear form 1.3×, Primal Bite 1.5×, Lacerate 3.33× and Swipe 2× retain inherited components without complete Forever threat measurements.",
+      "current_model": "Bear form 1.3×, Primal Bite provisional 3×, Lacerate 3.33× and Swipe 2× retain qualified inherited components. Primal Bite applies a roughly twofold October 1 relative change to the old unverified 1.5× value.",
       "impact": "Tank threat coverage and comparisons; these must not be marketed as verified threat formulas.",
       "sources": [
         "sim/druid/forms.go",
@@ -3986,7 +4022,9 @@
         "sim/druid/lacerate.go",
         "sim/druid/swipe.go",
         "docs/tank_benchmark.md",
-        "https://us.forums.blizzard.com/en/wow/t/feral-druid-threat/2355903"
+        "https://us.forums.blizzard.com/en/wow/t/feral-druid-threat/2355903",
+        "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696/4",
+        "docs/october-1-corrections.md"
       ],
       "legacy": [
         "Bear threat notes in beta-pass/druid.md"
@@ -3995,9 +4033,9 @@
       "review": {
         "disposition": "experiment",
         "confidence": "low",
-        "answer": "Current code explicitly traces Primal Bite's 1.5 and Swipe's 2.0 threat multipliers to SoD; Lacerate's 3.33 is also inherited. The public Bear discussions report weak threat but supply no per-action measurements that validate these numbers. 'High threat' in Lacerate's tooltip is not a coefficient.",
-        "remaining": "Separate form and per-action threat amounts, not a single universal Bear multiplier.",
-        "implementation": "Keep the inherited assumptions visible. The newly acknowledged Swipe AP bug is a damage issue, tracked separately from threat.",
+        "answer": "October 1 says Primal Bite threat is roughly doubled, but does not supply an absolute formula. The model applies that relative correction; it is not measurement-based proof of an exact 3× coefficient. Other Bear threat components are not validated by this note.",
+        "remaining": "Absolute form/ability threat coefficients and exact Primal Bite increase; controlled measurements remain needed.",
+        "implementation": "Apply and disclose the approximate relative change without silently promoting inherited SoD coefficients to verified Forever behavior.",
         "tests": [
           {
             "stage": "current-beta",
@@ -4015,7 +4053,14 @@
             "measure": "Separate application and bleed threat at each stack; distinguish flat threat from damage multipliers."
           }
         ],
-        "previous_status": "needs-evidence"
+        "previous_status": "needs-evidence",
+        "history": [
+          {
+            "phase": "before October 1 reconciliation",
+            "answer": "Current code explicitly traces Primal Bite's 1.5 and Swipe's 2.0 threat multipliers to SoD; Lacerate's 3.33 is also inherited. The public Bear discussions report weak threat but supply no per-action measurements that validate these numbers. 'High threat' in Lacerate's tooltip is not a coefficient.",
+            "implementation": "Keep the inherited assumptions visible. The newly acknowledged Swipe AP bug is a damage issue, tracked separately from threat."
+          }
+        ]
       }
     },
     {
@@ -4215,14 +4260,16 @@
       "status": "needs-evidence",
       "title": "Bear outgoing and incoming rage formulas",
       "question": "Does Forever Bear retain damage-based rage or use normalized rules, and how are avoided swings handled?",
-      "current_model": "Bear retains inherited damage-based outgoing and incoming rage. Outgoing miss awards none; dodge/parry use pre-outcome damage. Maul replaces the white swing and does not award ordinary swing rage. Incoming damage is a major resource source in the tank benchmark. Warrior's low-level measurements were not applied to Bear.",
+      "current_model": "Inherited Bear base outgoing/incoming Rage remains; ordinary outgoing criticals strip the damage critical multiplier and gain the source-supported 75% Rage bonus. Maul replacements do not receive white-swing Rage.",
       "impact": "Bear Maul uptime, other ability throughput, rage from boss damage and gear/talent value. Frequent Maul alone cannot validate the model.",
       "sources": [
         "sim/core/rage.go",
         "sim/druid/tank/tank.go",
         "sim/druid/maul.go",
         "docs/protection_queue.md",
-        "https://us.forums.blizzard.com/en/wow/t/bear-druids/2358994?page=2"
+        "https://us.forums.blizzard.com/en/wow/t/bear-druids/2358994?page=2",
+        "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696/4",
+        "docs/october-1-corrections.md"
       ],
       "related": [
         "WAR-001",
@@ -4233,9 +4280,9 @@
       "review": {
         "disposition": "experiment",
         "confidence": "low",
-        "answer": "Public Bear discussions use 'normalized' inconsistently and do not supply a controlled outgoing/incoming formula. The Warrior measurements cannot establish Bear behavior. The inherited Bear rule is therefore still genuinely unresolved, not a suitable place for a guessed Warrior formula.",
-        "remaining": "Damage dependence, avoidance and incoming armor/health dependence for Bear.",
-        "implementation": "Keep Bear and Warrior models separate until the same controls have been measured for Bear.",
+        "answer": "October 1 explicitly establishes +75% outgoing Rage on Bear criticals. This does not establish Warrior-style Bear normalization or resolve damage, avoidance and incoming dependence.",
+        "remaining": "Bear base formula, avoidance and incoming armor/health dependence; level-60 extrapolation.",
+        "implementation": "Add the source-supported critical ratio while keeping Bear and Warrior base models separate.",
         "tests": [
           {
             "stage": "current-beta",
@@ -4248,7 +4295,14 @@
             "measure": "Check that the low-level formula still fits; test queued Maul separately because it replaces the ordinary white event."
           }
         ],
-        "previous_status": "needs-evidence"
+        "previous_status": "needs-evidence",
+        "history": [
+          {
+            "phase": "before October 1 reconciliation",
+            "answer": "Public Bear discussions use 'normalized' inconsistently and do not supply a controlled outgoing/incoming formula. The Warrior measurements cannot establish Bear behavior. The inherited Bear rule is therefore still genuinely unresolved, not a suitable place for a guessed Warrior formula.",
+            "implementation": "Keep Bear and Warrior models separate until the same controls have been measured for Bear."
+          }
+        ]
       }
     },
     {
@@ -4976,22 +5030,24 @@
       "priority": "high",
       "title": "Bear Swipe's missing server AP term",
       "question": "What is Swipe's intended AP coefficient, and has the announced beta script fix shipped?",
-      "current_model": "Swipe has flat base damage and no AP term. A public response identifies a live-beta script guard that also suppressed the intended AP scaling.",
+      "current_model": "Swipe now adds 3% Attack Power, alongside the existing flat damage and supported modifiers.",
       "impact": "Could change Bear damage and multi-target threat; copying a remembered SoD coefficient would not establish the Forever value.",
       "id": "DRU-013",
-      "status": "needs-evidence",
+      "status": "resolved",
       "sources": [
         "https://github.com/ClassicWoWCommunity/forever-bugs/issues/125#issuecomment-5841232704",
         "https://github.com/ClassicWoWCommunity/forever-bugs/issues/125#issuecomment-5842005903",
-        "sim/druid/swipe.go"
+        "sim/druid/swipe.go",
+        "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696/4",
+        "docs/october-1-corrections.md"
       ],
       "related": [],
       "review": {
-        "disposition": "partial",
+        "disposition": "evidence-answer",
         "confidence": "high",
-        "answer": "A public developer response identifies an obsolete SoD guard in the server's Swipe script: current beta Swipe has flat damage, but the intended script adds AP. The response says the guard was fixed internally for a later build and explicitly rejects the claim that it was an SP coefficient. Our Swipe also has no AP term. The response does not give the numeric AP coefficient.",
-        "remaining": "The numeric AP term and confirmation that the announced fix is live.",
-        "implementation": "Track as a newly identified coverage gap, not an already implemented correction. Do not copy a remembered SoD coefficient or silently change current tank results.",
+        "answer": "The October 1 official notes give the previously missing numeric coefficient: 3% AP. They explicitly warn that the tooltip remains stale. The supported term is implemented; no remembered SoD coefficient is imported.",
+        "remaining": "No unresolved coefficient question remains. A current-beta AP-only slope check can confirm the deployed server fix but is not needed to guess its intended value.",
+        "implementation": "Implemented in sim/druid/swipe.go; refresh affected results separately from source reconciliation.",
         "tests": [
           {
             "stage": "offline",
@@ -5004,7 +5060,14 @@
             "measure": "Measure Swipe damage across AP values, with an SP-only control. Record the build so a still-flat pre-fix result is not mistaken for intended behavior."
           }
         ],
-        "previous_status": null
+        "previous_status": "needs-evidence",
+        "history": [
+          {
+            "phase": "before October 1 reconciliation",
+            "answer": "A public developer response identifies an obsolete SoD guard in the server's Swipe script: current beta Swipe has flat damage, but the intended script adds AP. The response says the guard was fixed internally for a later build and explicitly rejects the claim that it was an SP coefficient. Our Swipe also has no AP term. The response does not give the numeric AP coefficient.",
+            "implementation": "Track as a newly identified coverage gap, not an already implemented correction. Do not copy a remembered SoD coefficient or silently change current tank results."
+          }
+        ]
       }
     },
     {
@@ -5132,27 +5195,70 @@
       }
     },
     {
+      "id": "WAR-015",
+      "category": "warrior",
+      "kind": "mechanic",
+      "priority": "medium",
+      "status": "needs-evidence",
+      "title": "Gore Drinker heal charges and refresh",
+      "question": "Which melee events consume the next three healing attacks, and how do repeated triggers refresh the effect?",
+      "current_model": "Current talent text gives 0.5/1% maximum Health on the next three melee attacks after Enrage, Berserker Rage, Bloodrage, Death Wish or Bloodthirst. The tree marks Gore Drinker not simulated; no guessed healing is supplied.",
+      "impact": "Potential Warrior healing/survival and hybrid comparisons. Current migrated benchmark allocations do not take Gore Drinker.",
+      "sources": [
+        "https://www.wowhead.com/forever/spell=1323967/gore-drinker",
+        "docs/october-1-corrections.md",
+        "ui/core/talents/trees/warrior.json",
+        "sim/warrior/talents.go"
+      ],
+      "legacy": [],
+      "related": [
+        "WAR-008"
+      ],
+      "review": {
+        "disposition": "partial",
+        "confidence": "moderate",
+        "answer": "The current client-derived tooltip establishes triggers, three attacks and the Health percentage, but does not settle charge decrement on avoided attacks, multi-target/extra-swing ordering, refreshed stacks or expiry. The numerical tooltip is not a full proc implementation.",
+        "remaining": "Triggered-aura details and event/refresh rules needed for a sourced implementation.",
+        "implementation": "Keep the talent visibly not simulated until supported charge and trigger behavior is available. Do not add arbitrary healing to existing profiles.",
+        "tests": [
+          {
+            "stage": "offline",
+            "requires": "Current hotfix rows for the triggered aura and charge/proc attributes, or a credible event-level Forever study.",
+            "measure": "Trace the exact heal trigger, charge decrement, lifetime and refresh rule; separate visible percentage from server scripting."
+          },
+          {
+            "stage": "launch",
+            "requires": "At least level35 for the first Gore Drinker point (25 previous Fury points), controlled missing Health, melee outcomes and the relevant trigger abilities. Outside the level30 cap.",
+            "measure": "Isolate white/special/queued/extra swings, avoided attacks and multi-target attacks; compare Health gains and charge changes. Trigger again with charges remaining to determine refresh behavior."
+          }
+        ],
+        "previous_status": "new"
+      }
+    },
+    {
       "category": "shaman",
       "kind": "implementation",
       "priority": "medium",
       "title": "Flametongue Totem damage formula and comparison",
       "question": "What numeric on-hit rule is needed to compare Flametongue + Grace with Windfury?",
-      "current_model": "No active Flametongue Totem implementation; no fabricated comparison.",
-      "impact": "May change melee raid support; the comparison cannot currently be simulated honestly.",
+      "current_model": "Opt-in external model: zero SP, provisional per-hit damage = rank dummy value /100 × base MH speed. Grace may coexist; Windfury Totem or Flametongue Weapon suppresses the proc. Canonical Windfury support remains unchanged.",
+      "impact": "May change melee raid support. A provisional comparison is possible, but does not verify the server formula.",
       "id": "SHA-006",
       "status": "needs-evidence",
       "sources": [
         "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-updated-september-24/2360696",
         "https://www.wowhead.com/forever/spell=16387",
-        "https://warcraft.wiki.gg/wiki/Flametongue_Totem"
+        "https://warcraft.wiki.gg/wiki/Flametongue_Totem",
+        "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696/4",
+        "docs/october-1-corrections.md"
       ],
       "related": [],
       "review": {
         "disposition": "source-gap",
         "confidence": "moderate",
-        "answer": "September 24 official notes exclude Flametongue stacking with Windfury Totem or Flametongue Weapon and remove lingering/stacked buffs. Learned ranks are 28/38/48/58. Rank-four dummy proc 16389 has base points 1363, not an established damage hit; the live tooltip exposes weapon-speed-dependent bounds but does not prove its server formula or SP scaling.",
-        "remaining": "Source or measured numeric per-hit/speed formula, SP scaling and proc eligibility; distinguish Windfury Weapon from Windfury Totem exclusions.",
-        "implementation": "Keep source versions and implementation coverage separate; no inferred script formula or automatic preset optimization.",
+        "answer": "A provisional speed-only external model now enables explicit sensitivity comparisons. Two non-overlapping 5000/arm seed ranges on fixed Human Ret/Fury give Flametongue+Grace 6.02%/2.48% less DPS than Windfury. This is not verification of the dummy-field interpretation, full-rank script or all melee specs.",
+        "remaining": "Actual speed formula, SP scaling, special/extra-swing eligibility, hit/crit behavior and form interpretation; caster-owned totem actions remain separate coverage.",
+        "implementation": "Keep the alternate clearly provisional and preserve exact comparison requests/results; do not silently replace canonical support or present it as a sourced server formula.",
         "tests": [
           {
             "stage": "offline",
@@ -5170,7 +5276,14 @@
             "measure": "Compare exclusive FT+Grace versus Windfury with the sourced model and matched inputs; rank-one evidence is not full-rank validation."
           }
         ],
-        "previous_status": null
+        "previous_status": null,
+        "history": [
+          {
+            "phase": "before October 1 reconciliation",
+            "answer": "September 24 official notes exclude Flametongue stacking with Windfury Totem or Flametongue Weapon and remove lingering/stacked buffs. Learned ranks are 28/38/48/58. Rank-four dummy proc 16389 has base points 1363, not an established damage hit; the live tooltip exposes weapon-speed-dependent bounds but does not prove its server formula or SP scaling.",
+            "implementation": "Keep source versions and implementation coverage separate; no inferred script formula or automatic preset optimization."
+          }
+        ]
       }
     }
   ],
@@ -5178,7 +5291,8 @@
     "date": "2026-09-27",
     "original_entries": 137,
     "reviewed_original_entries": 137,
-    "added_entries": 8,
+    "added_entries": 9,
+    "latest_followup": "October 1 corrections: stable prior IDs reconciled; WAR-015 adds the sourced Gore Drinker trigger/charge gap.",
     "before": {
       "needs-evidence": 84,
       "needs-code": 27,
@@ -5187,8 +5301,8 @@
       "resolved": 20
     },
     "stage_definitions": {
-      "current-beta": "An experiment possible at the current level-20 cap, subject to the listed item/ability prerequisites.",
-      "level30": "An experiment possible by level 30, not an assertion that the cap has already increased.",
+      "current-beta": "An experiment within the announced current level-30 beta cap, subject to actual realm access and listed prerequisites. Existing level-20 observations do not certify later ranks.",
+      "level30": "An experiment requiring abilities or items by level 30. The October 1 notes announce that cap; actual access and prerequisites still need checking.",
       "launch": "Requires access beyond the announced level-30 beta or max-level content. Reclassify if later beta access is announced.",
       "offline": "Client data, source research, code inspection or simulator testing; no game experiment is required."
     },

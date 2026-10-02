@@ -63,7 +63,11 @@ func (druid *Druid) registerSwipeBearSpell() {
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			for idx := range results {
-				results[idx] = spell.CalcDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialHitAndCrit)
+				damage := baseDamage
+				if sim.IsForever() {
+					damage += .03 * spell.MeleeAttackPower(target)
+				}
+				results[idx] = spell.CalcDamage(sim, target, damage, spell.OutcomeMeleeSpecialHitAndCrit)
 				target = sim.Environment.NextTargetUnit(target)
 			}
 

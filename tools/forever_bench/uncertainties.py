@@ -21,7 +21,7 @@ STATUSES = {
 }
 KINDS = {"mechanic", "implementation", "scenario", "data"}
 STAGES = {
-    "current-beta": "Current beta · level 20",
+    "current-beta": "Current beta · level 30",
     "level30": "Level-30 beta",
     "launch": "Beyond level 30 / launch",
     "offline": "Sources / code",

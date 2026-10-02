@@ -505,7 +505,7 @@ func (mage *Mage) applyHotStreak() {
 	})
 
 	mage.HotStreakAura = mage.RegisterAura(core.Aura{
-		Label:     "Hot Streak",
+		Label:     "Heating Up",
 		ActionID:  core.ActionID{SpellID: 44445},
 		Duration:  time.Second * 20,
 		MaxStacks: 3,
@@ -523,7 +523,7 @@ func (mage *Mage) applyHotStreak() {
 	})
 
 	mage.RegisterAura(core.Aura{
-		Label:    "Hot Streak Trigger",
+		Label:    "Heating Up Trigger",
 		Duration: core.NeverExpires,
 		OnReset: func(aura *core.Aura, sim *core.Simulation) {
 			aura.Activate(sim)
@@ -539,8 +539,8 @@ func (mage *Mage) applyHotStreak() {
 	})
 }
 
-// Number of non-periodic fire crits Combustion lasts for, up from 3 in Classic.
-const CombustionCrits = 4
+// October 1 restores three critical strikes per Combustion activation.
+const CombustionCrits = 3
 
 func (mage *Mage) registerCombustionCD() {
 	if !mage.Talents.Combustion {

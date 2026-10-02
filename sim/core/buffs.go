@@ -436,6 +436,9 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 	if partyBuffs != nil && partyBuffs.WindfuryTotem && (character.Env.IsForever() || !character.PseudoStats.FeralCombatEnabled) {
 		ApplyWindfury(character)
 	}
+	if character.Env.IsForever() && partyBuffs != nil && partyBuffs.FlametongueTotem {
+		MakePermanent(FlametongueTotemAura(character, 4))
+	}
 
 	manaSpring := raidBuffs.ManaSpringTotem
 	if partyBuffs != nil {
@@ -1826,6 +1829,7 @@ func ApplyWindfury(character *Character) *Aura {
 		// External party Windfury occupies the air-totem slot even if Grace
 		// is cast later by another Shaman.
 		character.GetAura("Windfury").NewExclusiveEffect("ForeverAirTotem", false, ExclusiveEffect{Priority: 3})
+		character.GetAura("Windfury").NewExclusiveEffect("ForeverWeaponTotem", false, ExclusiveEffect{Priority: 2})
 	}
 	return apAura
 

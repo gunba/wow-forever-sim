@@ -351,10 +351,9 @@ func (priest *Priest) registerInnerFocus() {
 		// Effect 692357's crit mask differs from effect 692356's free-cast
 		// mask. Penance's modeled bolts share their parent's SpellCode.
 		switch spell.SpellCode {
-		case SpellCode_PriestSmite, SpellCode_PriestMindBlast, SpellCode_PriestShadowWordPain,
-			SpellCode_PriestDevouringPlague, SpellCode_PriestHolyFire, SpellCode_PriestHolyNova,
+		case SpellCode_PriestSmite, SpellCode_PriestMindBlast, SpellCode_PriestHolyFire, SpellCode_PriestHolyNova,
 			SpellCode_PriestPenance, SpellCode_PriestFlashHeal, SpellCode_PriestGreaterHeal,
-			SpellCode_PriestHeal, SpellCode_PriestVampiricTouch:
+			SpellCode_PriestHeal:
 			return true
 		default:
 			return false

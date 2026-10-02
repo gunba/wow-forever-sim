@@ -48,7 +48,8 @@ const (
 type Warrior struct {
 	core.Character
 
-	Talents *proto.WarriorTalents
+	Talents       *proto.WarriorTalents
+	talentsString string
 
 	WarriorInputs
 
@@ -235,7 +236,7 @@ func NewWarrior(character *core.Character, talents string, inputs WarriorInputs)
 		Talents:       &proto.WarriorTalents{},
 		WarriorInputs: inputs,
 	}
-	core.FillTalentsProto(warrior.Talents.ProtoReflect(), talents, TalentTreeSizes)
+	warrior.talentsString = talents
 
 	warrior.PseudoStats.CanParry = true
 

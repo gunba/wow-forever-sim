@@ -17,12 +17,20 @@ type registeredSpellInventory struct {
 	Build, Class, Race, Talents string
 	SpellIDs                    []int32
 	PetSpellIDs                 []int32
+	Ranks                       []registeredSpellRank
+}
+
+type registeredSpellRank struct {
+	ID, Code    int32
+	Rank, Level int
+	Castable    bool
 }
 
 func inventorySpells(b build, player *proto.Player) registeredSpellInventory {
 	req := request(player, 1, 1)
 	env, _, _ := core.NewEnvironment(req.Raid, req.Encounter, proto.Ruleset_RulesetForever, false)
 	ids, petIDs := []int32{}, []int32{}
+	ranks := []registeredSpellRank{}
 	for _, unit := range env.Raid.AllUnits {
 		for _, spell := range unit.Spellbook {
 			if spell.SpellID > 0 {
@@ -30,6 +38,10 @@ func inventorySpells(b build, player *proto.Player) registeredSpellInventory {
 					petIDs = append(petIDs, spell.SpellID)
 				} else {
 					ids = append(ids, spell.SpellID)
+					ranks = append(ranks, registeredSpellRank{
+						ID: spell.SpellID, Code: spell.SpellCode, Rank: spell.Rank,
+						Level: spell.RequiredLevel, Castable: spell.Flags.Matches(core.SpellFlagAPL),
+					})
 				}
 			}
 		}
@@ -38,7 +50,7 @@ func inventorySpells(b build, player *proto.Player) registeredSpellInventory {
 	slices.Sort(petIDs)
 	return registeredSpellInventory{
 		Build: b.Key, Class: b.Class.String(), Race: raceName(player.Race),
-		Talents: player.TalentsString, SpellIDs: slices.Compact(ids), PetSpellIDs: slices.Compact(petIDs),
+		Talents: player.TalentsString, SpellIDs: slices.Compact(ids), PetSpellIDs: slices.Compact(petIDs), Ranks: ranks,
 	}
 }
 

@@ -66,7 +66,7 @@ func TestForeverRecklessnessCoversEveryDamageSchool(t *testing.T) {
 	}
 }
 
-func TestForeverQueuedWarriorSwingChangesOffHandHitTable(t *testing.T) {
+func TestForeverQueuedWarriorSwingDoesNotChangeOffHandHitTable(t *testing.T) {
 	req := racialFixture("fury", proto.Race_RaceOrc)
 	req.Raid.Parties[0].Players[0].Rotation = &proto.APLRotation{}
 	sim := core.NewSim(req, simsignals.Signals{})
@@ -83,8 +83,8 @@ func TestForeverQueuedWarriorSwingChangesOffHandHitTable(t *testing.T) {
 			t.Fatalf("no queue aura for %s", queued.ActionID)
 		}
 		aura.Activate(sim)
-		if !w.PseudoStats.DisableDWMissPenalty {
-			t.Fatalf("off-hand still pays dual-wield miss penalty while %s is queued", queued.ActionID)
+		if w.PseudoStats.DisableDWMissPenalty {
+			t.Fatalf("off-hand gains a hit-table benefit while %s is queued", queued.ActionID)
 		}
 		aura.Deactivate(sim)
 		if w.PseudoStats.DisableDWMissPenalty {

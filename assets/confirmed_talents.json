@@ -1,7 +1,7 @@
 {
  "_readme": "Talent rank values from the Forever beta client, numbers only, in the order they appear in each rank tooltip. TestConfirmedTalentRanksMatchTheSim holds the trees to them. Regenerate with tools/forever_talents/apply_beta_tooltips.py.",
- "source": "beta client 1.60.1.69893 plus sourced 1.60.1.70009 updates",
- "generated": "1.60.1.70009 reconciliation; unchanged 1.60.1.69893 entries retained",
+ "source": "Client 1.60.1.69893/70009 entries retained; October 1 development notes and client-derived current talent data for 70170 reconciled separately.",
+ "generated": "1.60.1.70170 reconciliation",
  "talents": {
   "Druid": {
    "Improved Wrath": [
@@ -262,17 +262,6 @@
      20
     ]
    ],
-   "King of the Jungle": [
-    [
-     20
-    ],
-    [
-     40
-    ],
-    [
-     60
-    ]
-   ],
    "Rend and Tear": [
     [
      2
@@ -454,6 +443,14 @@
     ],
     [
      50
+    ]
+   ],
+   "Improved Shifting Power": [
+    [
+     4
+    ],
+    [
+     8
     ]
    ]
   },
@@ -746,19 +743,19 @@
    ],
    "Deflection": [
     [
+     1
+    ],
+    [
      2
+    ],
+    [
+     3
     ],
     [
      4
     ],
     [
-     6
-    ],
-    [
-     8
-    ],
-    [
-     10
+     5
     ]
    ],
    "Entrapment": [
@@ -1290,6 +1287,12 @@
    ],
    "Cold Snap": [
     []
+   ],
+   "Combustion": [
+    [
+     10,
+     3
+    ]
    ]
   },
   "Paladin": {
@@ -1652,13 +1655,13 @@
    ],
    "Champion of the Light": [
     [
-     33
+     20
     ],
     [
-     66
+     40
     ],
     [
-     100
+     60
     ]
    ],
    "Instrument of Law": [
@@ -1674,6 +1677,47 @@
    "Twist of Light": [
     [
      20
+    ]
+   ],
+   "Redoubt": [
+    [
+     2,
+     4,
+     10,
+     5
+    ],
+    [
+     4,
+     8,
+     10,
+     5
+    ],
+    [
+     6,
+     12,
+     10,
+     5
+    ],
+    [
+     8,
+     16,
+     10,
+     5
+    ],
+    [
+     10,
+     20,
+     10,
+     5
+    ]
+   ],
+   "Holy Shield": [
+    [
+     30,
+     10,
+     110,
+     20,
+     4
     ]
    ]
   },
@@ -3470,6 +3514,18 @@
     [
      25
     ]
+   ],
+   "Soul Harvest": [
+    [
+     50,
+     10,
+     50
+    ],
+    [
+     100,
+     10,
+     100
+    ]
    ]
   },
   "Warrior": {
@@ -3610,19 +3666,24 @@
    ],
    "Booming Voice": [
     [
+     10,
+     5
+    ],
+    [
+     20,
      10
     ],
     [
+     30,
+     15
+    ],
+    [
+     40,
      20
     ],
     [
-     30
-    ],
-    [
-     40
-    ],
-    [
-     50
+     50,
+     25
     ]
    ],
    "Cruelty": [
@@ -3659,58 +3720,31 @@
      15
     ]
    ],
-   "Improved Cleave": [
-    [
-     1
-    ],
-    [
-     2
-    ],
-    [
-     3
-    ]
-   ],
-   "Boundless Rage": [
-    [
-     10
-    ],
-    [
-     20
-    ],
-    [
-     30
-    ]
-   ],
    "Dual Wield Specialization": [
     [
      5,
-     20,
-     2
+     10
     ],
     [
      10,
-     40,
-     4
+     20
     ],
     [
      15,
-     60,
-     6
+     30
     ],
     [
      20,
-     80,
-     8
+     40
     ],
     [
      25,
-     100,
-     10
+     50
     ]
    ],
    "Raging Blows": [
     [
-     2
+     3
     ]
    ],
    "Improved Execute": [
@@ -3719,17 +3753,6 @@
     ],
     [
      5
-    ]
-   ],
-   "Precision": [
-    [
-     1
-    ],
-    [
-     2
-    ],
-    [
-     3
     ]
    ],
    "Improved Intercept": [
@@ -3773,23 +3796,6 @@
     ],
     [
      50
-    ]
-   ],
-   "Toughness": [
-    [
-     2
-    ],
-    [
-     4
-    ],
-    [
-     6
-    ],
-    [
-     8
-    ],
-    [
-     10
     ]
    ],
    "Improved Thunder Clap": [
@@ -3885,30 +3891,78 @@
     [
      10
     ]
+   ],
+   "Blood Craze": [
+    [
+     1,
+     6,
+     20
+    ],
+    [
+     2,
+     6,
+     20
+    ],
+    [
+     3,
+     6,
+     20
+    ]
+   ],
+   "Furious Precision": [
+    [
+     4
+    ],
+    [
+     7
+    ],
+    [
+     10
+    ]
+   ],
+   "Lingering Rage": [
+    [
+     2
+    ],
+    [
+     4
+    ],
+    [
+     6
+    ],
+    [
+     8
+    ],
+    [
+     10
+    ]
+   ],
+   "Gore Drinker": [
+    [
+     0.5
+    ],
+    [
+     1
+    ]
+   ],
+   "Bloodthirst": [
+    [
+     45,
+     30,
+     10,
+     10
+    ]
    ]
   }
  },
- "source_updates": {
-  "build": "1.60.1.70009",
-  "entries": {
-   "Paladin/Sacred Arbiter": {
-    "spell_id": 1311087
-   },
-   "Paladin/Two-Handed Weapon Specialization": {
-    "spell_id": 20111,
-    "effect_id": 697263
-   },
-   "Paladin/Twist of Light": {
-    "spell_id": 1310735
-   },
-   "Warrior/Improved Slam": {
-    "spell_id": 12862,
-    "effect_ids": [
-     690854,
-     1230916,
-     1339521
-    ]
-   }
+ "source_updates": [
+  {
+   "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696/4",
+   "scope": "Explicit changed values/removals; numeric hotfix notes supersede stale static tables."
+  },
+  {
+   "url": "https://foreverdb.net/data/classes.json",
+   "scope": "Current tree identities and new talent rank curves; corroborated against ForeverChanges calculator. A calculator dataset is not verification of server-script proc behavior."
   }
- }
+ ]
 }

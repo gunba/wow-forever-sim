@@ -18,7 +18,7 @@ func TestForeverHotStreakConsumedByNextPyroblast(t *testing.T) {
 	req := mageSpellFixture(map[string]int{"hotStreak": 1, "pyroblast": 1})
 	sim := core.NewSim(req, simsignals.Signals{})
 	unit := sim.Raid.AllPlayerUnits[0]
-	aura := unit.GetAura("Hot Streak")
+	aura := unit.GetAura("Heating Up")
 	fireball := unit.GetSpell(core.ActionID{SpellID: 133})
 	for _, id := range mage.PyroblastSpellId[1:] {
 		pyro := unit.GetSpell(core.ActionID{SpellID: id})
@@ -134,11 +134,11 @@ func TestForeverFrostfireTalents(t *testing.T) {
 	if spell.BonusCritRating != critBefore {
 		t.Fatal("Winter's Chill only grants crit to Frostbolt and Ice Lance")
 	}
-	unit.GetAura("Hot Streak Trigger").OnSpellHitDealt(
-		unit.GetAura("Hot Streak Trigger"), sim, spell,
+	unit.GetAura("Heating Up Trigger").OnSpellHitDealt(
+		unit.GetAura("Heating Up Trigger"), sim, spell,
 		&core.SpellResult{Target: sim.Encounter.TargetUnits[0], Outcome: core.OutcomeCrit},
 	)
-	if unit.GetAura("Hot Streak").GetStacks() != 1 {
+	if unit.GetAura("Heating Up").GetStacks() != 1 {
 		t.Fatal("Frostfire direct crit did not grant Hot Streak")
 	}
 	trigger := unit.GetAura("Missile Barrage Trigger")

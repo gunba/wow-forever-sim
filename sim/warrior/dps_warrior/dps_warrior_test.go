@@ -39,7 +39,8 @@ func TestP1DPSWarrior(t *testing.T) {
 	}))
 }
 
-var P1Talents = "30305013-050520035150310051"
+// Current legal Forever tree; the previous fixture encoded removed talents.
+var P1Talents = "20305113002-25053005151010501"
 
 var P1Consumes = core.ConsumesCombo{
 	Label: "P1-Consumes",

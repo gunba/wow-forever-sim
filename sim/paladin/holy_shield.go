@@ -27,9 +27,12 @@ func (paladin *Paladin) registerHolyShield() {
 		return
 	}
 
-	// 4 charges and 20% block (Classic 30%), from the beta client.
+	// October 1 restores 30% block; the current four-charge count is unchanged.
 	numCharges := int32(4)
 	blockBonus := 20.0 * core.BlockRatingPerBlockChance
+	if paladin.Env.IsForever() {
+		blockBonus = 30 * core.BlockRatingPerBlockChance
+	}
 
 	timer := paladin.NewTimer() // All ranks share client cooldown category 931.
 	for i, values := range HolyShieldValues {

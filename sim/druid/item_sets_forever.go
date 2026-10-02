@@ -25,8 +25,8 @@ var ItemSetGrovekeeperFerocity = core.NewItemSet(core.ItemSet{
 		// Hibernate is not modeled.
 		3: func(core.Agent) {},
 		4: core.ForeverTier1CreatureBonus(1301075, proto.MobType_MobTypeDemon, 36, 0),
-		5: core.ForeverTier1CooldownBonus(3*time.Second, func(s *core.Spell) bool {
-			return s.SpellID == 5217 || s.SpellID == 6793 || s.SpellID == 9845 || s.SpellID == 9846
+		5: core.ForeverTier1CooldownBonus(time.Second, func(s *core.Spell) bool {
+			return s.SpellID == 1322605
 		}),
 	},
 })

@@ -148,21 +148,18 @@
           "colIdx": 1
         },
         "spellIds": [
-          18213,
-          18372
+          437032
         ],
         "maxPoints": 2,
-        "name": "Soul Harvesting",
+        "name": "Soul Harvest",
         "icon": "inv_elemental_primal_shadow",
-        "description": "You gain Soul Harvest for {0} sec if a victim is killed while afflicted with your Drain Soul. Soul Harvest allows your Mana to regenerate at {1}% of normal speed while you are casting spells, and grants a {2}% increase to your Mana regeneration.",
+        "description": "Killing a non-trivial target afflicted by Drain Soul grants {0}% increased Mana regeneration for 10 sec and permits {1}% of normal regeneration while casting.",
         "ranks": [
           [
-            10,
             50,
             50
           ],
           [
-            20,
             100,
             100
           ]

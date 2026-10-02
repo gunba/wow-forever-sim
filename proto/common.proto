@@ -657,6 +657,9 @@ message PartyBuffs {
 	TristateEffect stoneskin_totem = 17;
 	TristateEffect thorns = 18;
 	bool windfury_totem = 19;
+	// Provisional Forever model: main-hand fire damage proportional to base
+	// weapon speed, with no spell-power contribution.
+	bool flametongue_totem = 20;
 }
 
 // These are usually individual actions taken by other Characters.

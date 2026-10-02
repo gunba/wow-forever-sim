@@ -38,9 +38,10 @@ func NewFeralTankDruid(character *core.Character, options *proto.Player) *FeralT
 	}
 
 	bear.EnableRageBar(core.RageBarOptions{
-		StartingRage:          bear.Options.StartingRage,
-		DamageDealtMultiplier: 1,
-		DamageTakenMultiplier: 1,
+		StartingRage:            bear.Options.StartingRage,
+		DamageDealtMultiplier:   1,
+		DamageTakenMultiplier:   1,
+		ForeverBearCriticalRage: true,
 	})
 
 	bear.EnableAutoAttacks(bear, core.AutoAttackOptions{

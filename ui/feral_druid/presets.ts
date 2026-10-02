@@ -23,7 +23,6 @@ import {
 import { FeralDruid_Options as FeralDruidOptions, FeralDruid_Rotation as FeralDruidRotation } from '../core/proto/druid.js';
 import { SavedTalents } from '../core/proto/ui.js';
 import FeralAPL from './apls/feral.apl.json';
-import SimpleVaelAPL from './apls/simple_vael.apl.json';
 import GearFeralJSON from './gear_sets/forever_feral.gear.json';
 
 // Preset options for this spec.
@@ -44,10 +43,9 @@ export const DefaultGear = GearFeral;
 ///////////////////////////////////////////////////////////////////////////
 
 export const APLFeral = PresetUtils.makePresetAPLRotation('Feral', FeralAPL);
-export const APLSimpleVael = PresetUtils.makePresetAPLRotation('Simple Vaelastrasz', SimpleVaelAPL);
 
 export const APLPresets = {
-	[ClassicPhase.Phase4]: [APLFeral, APLSimpleVael],
+	[ClassicPhase.Phase4]: [APLFeral],
 };
 
 export const DefaultAPL = APLFeral;
@@ -66,9 +64,9 @@ export const SIMPLE_ROTATION_DEFAULT = PresetUtils.makePresetSimpleRotation('Sim
 //                                 Talent Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const TalentsFeral = PresetUtils.makePresetTalents('Feral', SavedTalents.create({ talentsString: '-5521002023132213051-05503' }));
+export const TalentsFeral = PresetUtils.makePresetTalents('Feral', SavedTalents.create({ talentsString: '-55210032021132212051-05503' }));
 
-export const TalentsFeralCat = PresetUtils.makePresetTalents('Feral Cat 9/34/8', SavedTalents.create({ talentsString: '050022-3521002023032213041-053' }));
+export const TalentsFeralCat = PresetUtils.makePresetTalents('Feral Cat 9/34/8', SavedTalents.create({ talentsString: '050022-35210032021032212041-053' }));
 
 export const TalentPresets = {
 	[ClassicPhase.Phase4]: [TalentsFeral, TalentsFeralCat],

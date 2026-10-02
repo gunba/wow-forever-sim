@@ -25,8 +25,8 @@ func init() {
 		if druid.Env.IsForever() {
 			druid.OnSpellRegistered(func(spell *core.Spell) {
 				switch spell.SpellID {
-				case 5217, 6793, 9845, 9846:
-					spell.CD.Duration -= 3 * time.Second
+				case 1322605:
+					spell.CD.Duration -= time.Second
 				}
 			})
 		}

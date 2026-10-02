@@ -10,11 +10,7 @@
           "colIdx": 1
         },
         "spellIds": [
-          16814,
-          16815,
-          16816,
-          16817,
-          16818
+          16814
         ],
         "maxPoints": 5,
         "name": "Improved Wrath",
@@ -50,11 +46,7 @@
           "colIdx": 2
         },
         "spellIds": [
-          11124,
-          12378,
-          12398,
-          12399,
-          12400
+          1223081
         ],
         "maxPoints": 5,
         "name": "Genesis",
@@ -85,9 +77,7 @@
           "colIdx": 0
         },
         "spellIds": [
-          16845,
-          16846,
-          16847
+          16845
         ],
         "maxPoints": 3,
         "name": "Moonglow",
@@ -112,8 +102,7 @@
           "colIdx": 1
         },
         "spellIds": [
-          16821,
-          16822
+          16821
         ],
         "maxPoints": 2,
         "name": "Improved Moonfire",
@@ -135,8 +124,7 @@
           "colIdx": 2
         },
         "spellIds": [
-          18459,
-          18460
+          1223082
         ],
         "maxPoints": 2,
         "name": "Nature's Majesty",
@@ -158,8 +146,7 @@
           "colIdx": 3
         },
         "spellIds": [
-          16819,
-          16820
+          16819
         ],
         "maxPoints": 2,
         "name": "Nature's Reach",
@@ -183,9 +170,7 @@
           "colIdx": 0
         },
         "spellIds": [
-          16918,
-          16919,
-          16920
+          16918
         ],
         "maxPoints": 3,
         "name": "Improved Entangling Roots",
@@ -210,12 +195,8 @@
           "rowIdx": 2,
           "colIdx": 2
         },
-        "prereqLocation": {
-          "rowIdx": 1,
-          "colIdx": 2
-        },
         "spellIds": [
-          0
+          1223083
         ],
         "maxPoints": 1,
         "name": "Nature's Splendor",
@@ -227,7 +208,11 @@
             2
           ]
         ],
-        "iconUrl": "assets/img/talents/druid/natures-splendor.png"
+        "iconUrl": "assets/img/talents/druid/natures-splendor.png",
+        "prereqLocation": {
+          "rowIdx": 1,
+          "colIdx": 2
+        }
       },
       {
         "fieldName": "insectSwarm",
@@ -256,16 +241,8 @@
           "rowIdx": 3,
           "colIdx": 1
         },
-        "prereqLocation": {
-          "rowIdx": 1,
-          "colIdx": 1
-        },
         "spellIds": [
-          16909,
-          16910,
-          16911,
-          16912,
-          16913
+          16909
         ],
         "maxPoints": 5,
         "name": "Vengeance",
@@ -287,7 +264,11 @@
           [
             100
           ]
-        ]
+        ],
+        "prereqLocation": {
+          "rowIdx": 1,
+          "colIdx": 1
+        }
       },
       {
         "fieldName": "improvedStarfire",
@@ -296,11 +277,7 @@
           "colIdx": 2
         },
         "spellIds": [
-          16850,
-          16923,
-          16924,
-          16925,
-          16926
+          16850
         ],
         "maxPoints": 5,
         "name": "Improved Starfire",
@@ -336,8 +313,7 @@
           "colIdx": 0
         },
         "spellIds": [
-          0,
-          0
+          17245
         ],
         "maxPoints": 2,
         "name": "Overgrowth",
@@ -380,9 +356,7 @@
           "colIdx": 2
         },
         "spellIds": [
-          0,
-          0,
-          0
+          408248
         ],
         "maxPoints": 3,
         "name": "Eclipse",
@@ -416,11 +390,7 @@
           "colIdx": 1
         },
         "spellIds": [
-          16896,
-          16897,
-          16899,
-          16900,
-          16901
+          16896
         ],
         "maxPoints": 5,
         "name": "Moonfury",
@@ -478,11 +448,7 @@
           "colIdx": 1
         },
         "spellIds": [
-          16934,
-          16935,
-          16936,
-          16937,
-          16938
+          16934
         ],
         "maxPoints": 5,
         "name": "Ferocity",
@@ -513,11 +479,7 @@
           "colIdx": 2
         },
         "spellIds": [
-          17003,
-          17004,
-          17005,
-          17006,
-          24894
+          17003
         ],
         "maxPoints": 5,
         "name": "Heart of the Wild",
@@ -558,8 +520,7 @@
           "colIdx": 0
         },
         "spellIds": [
-          17002,
-          24866
+          17002
         ],
         "maxPoints": 2,
         "name": "Feral Swiftness",
@@ -583,9 +544,7 @@
           "colIdx": 1
         },
         "spellIds": [
-          16947,
-          16948,
-          16949
+          16947
         ],
         "maxPoints": 3,
         "name": "Feral Instinct",
@@ -616,8 +575,7 @@
           "colIdx": 2
         },
         "spellIds": [
-          16940,
-          16941
+          16940
         ],
         "maxPoints": 2,
         "name": "Brutal Impact",
@@ -642,9 +600,7 @@
           "colIdx": 3
         },
         "spellIds": [
-          16929,
-          16930,
-          16931
+          16929
         ],
         "maxPoints": 3,
         "name": "Thick Hide",
@@ -669,82 +625,13 @@
         ]
       },
       {
-        "fieldName": "savageFury",
-        "location": {
-          "rowIdx": 2,
-          "colIdx": 1
-        },
-        "spellIds": [
-          16998,
-          16999
-        ],
-        "maxPoints": 2,
-        "name": "Savage Fury",
-        "icon": "ability_druid_ravage",
-        "description": "Increases the damage caused by your Claw, Rake, Shred, Maul, and Swipe abilities by {0}%.",
-        "ranks": [
-          [
-            5
-          ],
-          [
-            10
-          ]
-        ]
-      },
-      {
-        "fieldName": "feralCharge",
-        "location": {
-          "rowIdx": 2,
-          "colIdx": 2
-        },
-        "spellIds": [
-          16979
-        ],
-        "maxPoints": 1,
-        "name": "Feral Charge",
-        "icon": "ability_hunter_pet_bear",
-        "description": "Charge an enemy, immobilizing them and interrupting any spell they are casting for {0} sec. Feral Charge (Cat): Leap behind an enemy, Dazing them for {1} sec.",
-        "ranks": [
-          [
-            4,
-            3
-          ]
-        ],
-        "notSimulated": true
-      },
-      {
-        "fieldName": "sharpenedClaws",
-        "location": {
-          "rowIdx": 2,
-          "colIdx": 3
-        },
-        "spellIds": [
-          16942,
-          16943
-        ],
-        "maxPoints": 2,
-        "name": "Sharpened Claws",
-        "icon": "inv_misc_monsterclaw_04",
-        "description": "Increases your critical strike chance while in Bear Form, Dire Bear Form, or Cat Form by {0}%.",
-        "ranks": [
-          [
-            3
-          ],
-          [
-            6
-          ]
-        ]
-      },
-      {
         "fieldName": "shreddingAttacks",
         "location": {
-          "rowIdx": 3,
+          "rowIdx": 2,
           "colIdx": 0
         },
         "spellIds": [
-          0,
-          0,
-          0
+          16966
         ],
         "maxPoints": 3,
         "name": "Shredding Attacks",
@@ -766,17 +653,99 @@
         ]
       },
       {
+        "fieldName": "savageFury",
+        "location": {
+          "rowIdx": 2,
+          "colIdx": 1
+        },
+        "spellIds": [
+          16998
+        ],
+        "maxPoints": 2,
+        "name": "Savage Fury",
+        "icon": "ability_druid_ravage",
+        "description": "Increases the damage caused by your Claw, Rake, Shred, Maul, and Swipe abilities by {0}%.",
+        "ranks": [
+          [
+            5
+          ],
+          [
+            10
+          ]
+        ]
+      },
+      {
+        "fieldName": "feralCharge",
+        "location": {
+          "rowIdx": 2,
+          "colIdx": 2
+        },
+        "spellIds": [
+          1238122
+        ],
+        "maxPoints": 1,
+        "name": "Feral Charge",
+        "icon": "ability_hunter_pet_bear",
+        "description": "Charge an enemy, immobilizing them and interrupting any spell they are casting for {0} sec. Feral Charge (Cat): Leap behind an enemy, Dazing them for {1} sec.",
+        "ranks": [
+          [
+            4,
+            3
+          ]
+        ],
+        "notSimulated": true
+      },
+      {
+        "fieldName": "sharpenedClaws",
+        "location": {
+          "rowIdx": 2,
+          "colIdx": 3
+        },
+        "spellIds": [
+          16942
+        ],
+        "maxPoints": 2,
+        "name": "Sharpened Claws",
+        "icon": "inv_misc_monsterclaw_04",
+        "description": "Increases your critical strike chance while in Bear Form, Dire Bear Form, or Cat Form by {0}%.",
+        "ranks": [
+          [
+            3
+          ],
+          [
+            6
+          ]
+        ]
+      },
+      {
+        "fieldName": "shiftingPower",
+        "location": {
+          "rowIdx": 3,
+          "colIdx": 0
+        },
+        "maxPoints": 1,
+        "name": "Shifting Power",
+        "spellIds": [
+          1322605
+        ],
+        "prereqLocation": {
+          "rowIdx": 2,
+          "colIdx": 0
+        },
+        "description": "Spends 55% of base Mana to grant 40 Energy. Shapeshifting cost reductions apply. 16-second base cooldown.",
+        "ranks": [
+          []
+        ],
+        "icon": "spell_druid_displacement"
+      },
+      {
         "fieldName": "mangle",
         "location": {
           "rowIdx": 3,
           "colIdx": 1
         },
-        "prereqLocation": {
-          "rowIdx": 2,
-          "colIdx": 1
-        },
         "spellIds": [
-          0
+          407995
         ],
         "maxPoints": 1,
         "name": "Primal Bite",
@@ -787,7 +756,11 @@
             26
           ]
         ],
-        "icon": "ability_racial_cannibalize"
+        "icon": "ability_racial_cannibalize",
+        "prereqLocation": {
+          "rowIdx": 2,
+          "colIdx": 1
+        }
       },
       {
         "fieldName": "predatoryStrikes",
@@ -796,9 +769,7 @@
           "colIdx": 2
         },
         "spellIds": [
-          16972,
-          16974,
-          16975
+          16972
         ],
         "maxPoints": 3,
         "name": "Predatory Strikes",
@@ -822,13 +793,8 @@
           "rowIdx": 3,
           "colIdx": 3
         },
-        "prereqLocation": {
-          "rowIdx": 2,
-          "colIdx": 3
-        },
         "spellIds": [
-          16958,
-          16961
+          16958
         ],
         "maxPoints": 2,
         "name": "Blood Frenzy",
@@ -843,30 +809,37 @@
             100,
             100
           ]
-        ]
+        ],
+        "prereqLocation": {
+          "rowIdx": 2,
+          "colIdx": 3
+        }
       },
       {
-        "fieldName": "predatoryInstincts",
+        "fieldName": "improvedShiftingPower",
         "location": {
           "rowIdx": 4,
           "colIdx": 0
         },
-        "spellIds": [
-          16493,
-          16494
-        ],
         "maxPoints": 2,
-        "name": "Predatory Instincts",
-        "icon": "ability_druid_predatoryinstincts",
-        "description": "Increases the critical strike damage bonus of your melee abilities by {0}%.",
+        "name": "Improved Shifting Power",
+        "spellIds": [
+          1322670
+        ],
+        "prereqLocation": {
+          "rowIdx": 3,
+          "colIdx": 0
+        },
+        "description": "Reduces Shifting Power cooldown by {0} seconds.",
         "ranks": [
           [
-            10
+            4
           ],
           [
-            20
+            8
           ]
-        ]
+        ],
+        "icon": "ability_hunter_aspectmastery"
       },
       {
         "fieldName": "leaderOfThePack",
@@ -889,31 +862,26 @@
         ]
       },
       {
-        "fieldName": "kingOfTheJungle",
+        "fieldName": "predatoryInstincts",
         "location": {
           "rowIdx": 4,
           "colIdx": 3
         },
         "spellIds": [
-          0,
-          0,
-          0
+          1223242
         ],
-        "maxPoints": 3,
-        "name": "King of the Jungle",
-        "description": "Tiger's Fury now instantly grants you {0} Energy.",
+        "maxPoints": 2,
+        "name": "Predatory Instincts",
+        "icon": "ability_druid_predatoryinstincts",
+        "description": "Increases the critical strike damage bonus of your melee abilities by {0}%.",
         "ranks": [
           [
+            10
+          ],
+          [
             20
-          ],
-          [
-            40
-          ],
-          [
-            60
           ]
-        ],
-        "iconUrl": "assets/img/talents/druid/king-of-the-jungle.png"
+        ]
       },
       {
         "fieldName": "naturalReaction",
@@ -922,11 +890,7 @@
           "colIdx": 0
         },
         "spellIds": [
-          0,
-          0,
-          0,
-          0,
-          0
+          417051
         ],
         "maxPoints": 5,
         "name": "Natural Reaction",
@@ -966,16 +930,8 @@
           "rowIdx": 5,
           "colIdx": 2
         },
-        "prereqLocation": {
-          "rowIdx": 3,
-          "colIdx": 2
-        },
         "spellIds": [
-          19616,
-          19617,
-          19618,
-          19619,
-          19620
+          1223246
         ],
         "maxPoints": 5,
         "name": "Rend and Tear",
@@ -997,7 +953,11 @@
           [
             10
           ]
-        ]
+        ],
+        "prereqLocation": {
+          "rowIdx": 3,
+          "colIdx": 2
+        }
       },
       {
         "fieldName": "berserk",
@@ -1005,12 +965,8 @@
           "rowIdx": 6,
           "colIdx": 1
         },
-        "prereqLocation": {
-          "rowIdx": 4,
-          "colIdx": 1
-        },
         "spellIds": [
-          0
+          417141
         ],
         "maxPoints": 1,
         "name": "Berserk",
@@ -1022,7 +978,11 @@
             100,
             15
           ]
-        ]
+        ],
+        "prereqLocation": {
+          "rowIdx": 4,
+          "colIdx": 1
+        }
       }
     ]
   },
@@ -1037,11 +997,7 @@
           "colIdx": 1
         },
         "spellIds": [
-          17063,
-          17065,
-          17066,
-          17067,
-          17068
+          17063
         ],
         "maxPoints": 5,
         "name": "Nature's Focus",
@@ -1073,11 +1029,7 @@
           "colIdx": 2
         },
         "spellIds": [
-          17056,
-          17058,
-          17059,
-          17060,
-          17061
+          17056
         ],
         "maxPoints": 5,
         "name": "Furor",
@@ -1128,11 +1080,7 @@
           "colIdx": 0
         },
         "spellIds": [
-          0,
-          0,
-          0,
-          0,
-          0
+          17069
         ],
         "maxPoints": 5,
         "name": "Naturalist",
@@ -1168,9 +1116,7 @@
           "colIdx": 1
         },
         "spellIds": [
-          17118,
-          17119,
-          17120
+          17118
         ],
         "maxPoints": 3,
         "name": "Subtlety",
@@ -1195,9 +1141,7 @@
           "colIdx": 2
         },
         "spellIds": [
-          16833,
-          16834,
-          16835
+          16833
         ],
         "maxPoints": 3,
         "name": "Natural Shapeshifter",
@@ -1222,9 +1166,7 @@
           "colIdx": 1
         },
         "spellIds": [
-          17106,
-          17107,
-          17108
+          17106
         ],
         "maxPoints": 3,
         "name": "Reflection",
@@ -1249,11 +1191,7 @@
           "colIdx": 2
         },
         "spellIds": [
-          17104,
-          24943,
-          24944,
-          24945,
-          24946
+          17104
         ],
         "maxPoints": 5,
         "name": "Gift of Nature",
@@ -1285,7 +1223,7 @@
           "colIdx": 3
         },
         "spellIds": [
-          0
+          414673
         ],
         "maxPoints": 1,
         "name": "Gift of the Earthmother",
@@ -1305,11 +1243,7 @@
           "colIdx": 1
         },
         "spellIds": [
-          24968,
-          24969,
-          24970,
-          24971,
-          24972
+          24968
         ],
         "maxPoints": 5,
         "name": "Tranquil Spirit",
@@ -1341,9 +1275,7 @@
           "colIdx": 2
         },
         "spellIds": [
-          17111,
-          17112,
-          17113
+          17111
         ],
         "maxPoints": 3,
         "name": "Improved Rejuvenation",
@@ -1386,10 +1318,6 @@
           "rowIdx": 4,
           "colIdx": 0
         },
-        "prereqLocation": {
-          "rowIdx": 1,
-          "colIdx": 0
-        },
         "spellIds": [
           17116
         ],
@@ -1400,7 +1328,11 @@
         "ranks": [
           []
         ],
-        "notSimulated": true
+        "notSimulated": true,
+        "prereqLocation": {
+          "rowIdx": 1,
+          "colIdx": 0
+        }
       },
       {
         "fieldName": "livingSpirit",
@@ -1409,9 +1341,7 @@
           "colIdx": 1
         },
         "spellIds": [
-          16836,
-          16839,
-          16840
+          1309631
         ],
         "maxPoints": 3,
         "name": "Living Spirit",
@@ -1436,8 +1366,7 @@
           "colIdx": 3
         },
         "spellIds": [
-          17123,
-          17124
+          17123
         ],
         "maxPoints": 2,
         "name": "Improved Tranquility",
@@ -1461,16 +1390,8 @@
           "rowIdx": 5,
           "colIdx": 2
         },
-        "prereqLocation": {
-          "rowIdx": 3,
-          "colIdx": 2
-        },
         "spellIds": [
-          17074,
-          17075,
-          17076,
-          17077,
-          17078
+          17074
         ],
         "maxPoints": 5,
         "name": "Improved Regrowth",
@@ -1493,7 +1414,11 @@
             50
           ]
         ],
-        "notSimulated": true
+        "notSimulated": true,
+        "prereqLocation": {
+          "rowIdx": 3,
+          "colIdx": 2
+        }
       },
       {
         "fieldName": "wildGrowth",
@@ -1501,12 +1426,8 @@
           "rowIdx": 6,
           "colIdx": 1
         },
-        "prereqLocation": {
-          "rowIdx": 4,
-          "colIdx": 1
-        },
         "spellIds": [
-          0
+          408120
         ],
         "maxPoints": 1,
         "name": "Wild Growth",
@@ -1519,7 +1440,11 @@
             43
           ]
         ],
-        "notSimulated": true
+        "notSimulated": true,
+        "prereqLocation": {
+          "rowIdx": 4,
+          "colIdx": 1
+        }
       }
     ]
   }

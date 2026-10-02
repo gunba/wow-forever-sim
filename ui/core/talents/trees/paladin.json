@@ -547,31 +547,31 @@
         "ranks": [
           [
             2,
-            6,
+            4,
             10,
             5
           ],
           [
             4,
-            12,
+            8,
             10,
             5
           ],
           [
             6,
-            18,
+            12,
             10,
             5
           ],
           [
             8,
-            24,
+            16,
             10,
             5
           ],
           [
             10,
-            30,
+            20,
             10,
             5
           ]
@@ -982,7 +982,7 @@
         "description": "Increases chance to block by {0}% for {1} sec. and deals {2} Holy damage for each attack blocked while active. Damage caused by Holy Shield causes {3}% additional threat. Each block expends a charge. {4} charges.",
         "ranks": [
           [
-            20,
+            30,
             10,
             110,
             20,
@@ -1399,16 +1399,16 @@
         "maxPoints": 3,
         "name": "Champion of the Light",
         "icon": "ability_paladin_enlightenedjudgements",
-        "description": "Increases your spell damage and healing by up to {0}% of your Intellect.",
+        "description": "Increases spell damage by {0}% of Intellect. Does not increase healing.",
         "ranks": [
           [
-            33
+            20
           ],
           [
-            66
+            40
           ],
           [
-            100
+            60
           ]
         ]
       },

@@ -10,9 +10,7 @@
           "colIdx": 0
         },
         "spellIds": [
-          12282,
-          12663,
-          12664
+          12282
         ],
         "maxPoints": 3,
         "name": "Improved Heroic Strike",
@@ -37,11 +35,7 @@
           "colIdx": 1
         },
         "spellIds": [
-          16462,
-          16463,
-          16464,
-          16465,
-          16466
+          16462
         ],
         "maxPoints": 5,
         "name": "Deflection",
@@ -72,9 +66,7 @@
           "colIdx": 2
         },
         "spellIds": [
-          12286,
-          12658,
-          12659
+          12286
         ],
         "maxPoints": 3,
         "name": "Improved Rend",
@@ -99,8 +91,7 @@
           "colIdx": 0
         },
         "spellIds": [
-          12285,
-          12697
+          12285
         ],
         "maxPoints": 2,
         "name": "Improved Charge",
@@ -123,11 +114,7 @@
           "colIdx": 1
         },
         "spellIds": [
-          0,
-          0,
-          0,
-          0,
-          0
+          12295
         ],
         "maxPoints": 5,
         "name": "Improved Tactical Mastery",
@@ -158,8 +145,7 @@
           "colIdx": 3
         },
         "spellIds": [
-          12290,
-          12963
+          12290
         ],
         "maxPoints": 2,
         "name": "Improved Overpower",
@@ -180,10 +166,6 @@
           "rowIdx": 2,
           "colIdx": 1
         },
-        "prereqLocation": {
-          "rowIdx": 1,
-          "colIdx": 1
-        },
         "spellIds": [
           12296
         ],
@@ -197,7 +179,11 @@
             3,
             30
           ]
-        ]
+        ],
+        "prereqLocation": {
+          "rowIdx": 1,
+          "colIdx": 1
+        }
       },
       {
         "fieldName": "deepWounds",
@@ -205,14 +191,8 @@
           "rowIdx": 2,
           "colIdx": 2
         },
-        "prereqLocation": {
-          "rowIdx": 0,
-          "colIdx": 2
-        },
         "spellIds": [
-          12834,
-          12849,
-          12867
+          12834
         ],
         "maxPoints": 3,
         "name": "Deep Wounds",
@@ -228,7 +208,11 @@
           [
             60
           ]
-        ]
+        ],
+        "prereqLocation": {
+          "rowIdx": 0,
+          "colIdx": 2
+        }
       },
       {
         "fieldName": "spearingStrike",
@@ -237,7 +221,7 @@
           "colIdx": 0
         },
         "spellIds": [
-          0
+          1310222
         ],
         "maxPoints": 1,
         "name": "Spearing Strike",
@@ -257,9 +241,7 @@
           "colIdx": 1
         },
         "spellIds": [
-          12163,
-          12711,
-          12712
+          12163
         ],
         "maxPoints": 3,
         "name": "Two-Handed Weapon Specialization",
@@ -284,8 +266,7 @@
           "colIdx": 2
         },
         "spellIds": [
-          16493,
-          16494
+          16493
         ],
         "maxPoints": 2,
         "name": "Impale",
@@ -307,11 +288,7 @@
           "colIdx": 0
         },
         "spellIds": [
-          0,
-          0,
-          0,
-          0,
-          0
+          1289682
         ],
         "maxPoints": 5,
         "name": "Bloodthrill",
@@ -371,11 +348,7 @@
           "colIdx": 2
         },
         "spellIds": [
-          0,
-          0,
-          0,
-          0,
-          0
+          1290261
         ],
         "maxPoints": 5,
         "name": "Weaponmaster",
@@ -416,8 +389,7 @@
           "colIdx": 0
         },
         "spellIds": [
-          12862,
-          12330
+          12862
         ],
         "maxPoints": 2,
         "name": "Improved Slam",
@@ -441,9 +413,7 @@
           "colIdx": 2
         },
         "spellIds": [
-          12289,
-          12668,
-          23695
+          12289
         ],
         "maxPoints": 3,
         "name": "Improved Hamstring",
@@ -468,10 +438,6 @@
           "rowIdx": 6,
           "colIdx": 1
         },
-        "prereqLocation": {
-          "rowIdx": 4,
-          "colIdx": 1
-        },
         "spellIds": [
           12294
         ],
@@ -485,7 +451,11 @@
             50,
             10
           ]
-        ]
+        ],
+        "prereqLocation": {
+          "rowIdx": 4,
+          "colIdx": 1
+        }
       }
     ]
   },
@@ -500,31 +470,32 @@
           "colIdx": 1
         },
         "spellIds": [
-          12321,
-          12835,
-          12836,
-          12837,
-          12838
+          12321
         ],
         "maxPoints": 5,
         "name": "Booming Voice",
         "icon": "spell_nature_purge",
-        "description": "Increases the radius of your Battle Shout and Demoralizing Shout abilities by {0}%.",
+        "description": "Increases shout radius by {0}% and reduces shout Rage cost by {1}%.",
         "ranks": [
           [
+            10,
+            5
+          ],
+          [
+            20,
             10
           ],
           [
+            30,
+            15
+          ],
+          [
+            40,
             20
           ],
           [
-            30
-          ],
-          [
-            40
-          ],
-          [
-            50
+            50,
+            25
           ]
         ],
         "notSimulated": true
@@ -536,11 +507,7 @@
           "colIdx": 2
         },
         "spellIds": [
-          12320,
-          12852,
-          12853,
-          12855,
-          12856
+          12320
         ],
         "maxPoints": 5,
         "name": "Cruelty",
@@ -565,39 +532,35 @@
         ]
       },
       {
-        "fieldName": "ironWill",
+        "fieldName": "lingeringRage",
         "location": {
           "rowIdx": 1,
           "colIdx": 1
         },
-        "spellIds": [
-          12300,
-          12959,
-          12960,
-          12961,
-          12962
-        ],
         "maxPoints": 5,
-        "name": "Iron Will",
-        "icon": "spell_magic_magearmor",
-        "description": "Reduces the duration of Stun and Fear effects inflicted on you by {0}%.",
+        "name": "Lingering Rage",
+        "spellIds": [
+          1323964
+        ],
+        "description": "Delays out-of-combat Rage decay by {0} seconds.",
         "ranks": [
           [
-            3
+            2
+          ],
+          [
+            4
           ],
           [
             6
           ],
           [
-            9
+            8
           ],
           [
-            12
-          ],
-          [
-            15
+            10
           ]
         ],
+        "icon": "ability_warrior_secondwind",
         "notSimulated": true
       },
       {
@@ -607,11 +570,7 @@
           "colIdx": 2
         },
         "spellIds": [
-          12322,
-          12999,
-          13000,
-          13001,
-          13002
+          12322
         ],
         "maxPoints": 5,
         "name": "Unbridled Wrath",
@@ -646,31 +605,29 @@
         ]
       },
       {
-        "fieldName": "improvedCleave",
+        "fieldName": "furiousPrecision",
         "location": {
           "rowIdx": 2,
           "colIdx": 0
         },
-        "spellIds": [
-          12329,
-          12950,
-          20496
-        ],
         "maxPoints": 3,
-        "name": "Improved Cleave",
-        "icon": "ability_warrior_cleave",
-        "description": "Reduces the Rage cost of your Cleave ability by {0}.",
+        "name": "Furious Precision",
+        "spellIds": [
+          1323963
+        ],
+        "description": "Increases off-hand hit chance by {0}%.",
         "ranks": [
           [
-            1
+            4
           ],
           [
-            2
+            7
           ],
           [
-            3
+            10
           ]
-        ]
+        ],
+        "icon": "ability_warrior_incite"
       },
       {
         "fieldName": "piercingHowl",
@@ -700,58 +657,23 @@
           "colIdx": 2
         },
         "spellIds": [
-          0,
-          0,
-          0
+          16487
         ],
         "maxPoints": 3,
         "name": "Blood Craze",
-        "description": "Regenerates {0}% of your total Health over {1} sec after being the victim of a critical strike, dealing damage with Bloodthirst, or suffering more than {2}% of your maximum Health from a single attack.",
+        "description": "Regenerates {0}% of total Health over 6 sec after receiving a critical strike or taking more than 20% of maximum Health in one attack.",
         "ranks": [
           [
-            1,
-            6,
-            20
+            1
           ],
           [
-            2,
-            6,
-            20
+            2
           ],
           [
-            3,
-            6,
-            20
+            3
           ]
         ],
         "iconUrl": "assets/img/talents/warrior/blood-crazed.png"
-      },
-      {
-        "fieldName": "boundlessRage",
-        "location": {
-          "rowIdx": 2,
-          "colIdx": 3
-        },
-        "spellIds": [
-          0,
-          0,
-          0
-        ],
-        "maxPoints": 3,
-        "name": "Boundless Rage",
-        "icon": "ability_warrior_intensifyrage",
-        "description": "Increases your maximum Rage by {0}.",
-        "ranks": [
-          [
-            10
-          ],
-          [
-            20
-          ],
-          [
-            30
-          ]
-        ]
       },
       {
         "fieldName": "dualWieldSpecialization",
@@ -760,41 +682,32 @@
           "colIdx": 0
         },
         "spellIds": [
-          23584,
-          23585,
-          23586,
-          23587,
-          23588
+          23584
         ],
         "maxPoints": 5,
         "name": "Dual Wield Specialization",
         "icon": "ability_dualwield",
-        "description": "Increases your off-hand weapon damage by {0}%, off-hand Rage generation by {1}%, and chance to hit with off-hand attacks by {2}%.",
+        "description": "Increases off-hand damage by {0}% and off-hand Rage generation by {1}%.",
         "ranks": [
           [
             5,
-            20,
-            2
+            10
           ],
           [
             10,
-            40,
-            4
+            20
           ],
           [
             15,
-            60,
-            6
+            30
           ],
           [
             20,
-            80,
-            8
+            40
           ],
           [
             25,
-            100,
-            10
+            50
           ]
         ]
       },
@@ -805,16 +718,14 @@
           "colIdx": 1
         },
         "spellIds": [
-          0
+          1310315
         ],
         "maxPoints": 1,
         "name": "Raging Blows",
         "icon": "ability_whirlwind",
-        "description": "Causes your Whirlwind to also strike with your off-hand weapon, and reduces the Rage cost of your Cleave ability by {0}.",
+        "description": "Reduces Cleave and Whirlwind Rage cost by 3.",
         "ranks": [
-          [
-            2
-          ]
+          []
         ]
       },
       {
@@ -824,11 +735,7 @@
           "colIdx": 2
         },
         "spellIds": [
-          12317,
-          13045,
-          13046,
-          13047,
-          13048
+          12317
         ],
         "maxPoints": 5,
         "name": "Enrage",
@@ -859,8 +766,7 @@
           "colIdx": 3
         },
         "spellIds": [
-          20502,
-          20503
+          20502
         ],
         "maxPoints": 2,
         "name": "Improved Execute",
@@ -876,29 +782,26 @@
         ]
       },
       {
-        "fieldName": "precision",
+        "fieldName": "improvedBerserkerRage",
         "location": {
           "rowIdx": 4,
           "colIdx": 0
         },
         "spellIds": [
-          20189,
-          20192,
-          20193
+          20500
         ],
-        "maxPoints": 3,
-        "name": "Precision",
-        "icon": "ability_marksmanship",
-        "description": "Improves your chance to hit by {0}%.",
+        "maxPoints": 2,
+        "name": "Improved Berserker Rage",
+        "icon": "spell_nature_ancestralguardian",
+        "description": "Your Berserker Rage ability will instantly generate {0} Rage and has a {1}% chance to remove all movement impairing effects when activated.",
         "ranks": [
           [
-            1
+            5,
+            50
           ],
           [
-            2
-          ],
-          [
-            3
+            10,
+            100
           ]
         ]
       },
@@ -930,8 +833,7 @@
           "colIdx": 3
         },
         "spellIds": [
-          20504,
-          20505
+          20504
         ],
         "maxPoints": 2,
         "name": "Improved Intercept",
@@ -948,46 +850,13 @@
         "notSimulated": true
       },
       {
-        "fieldName": "improvedBerserkerRage",
-        "location": {
-          "rowIdx": 5,
-          "colIdx": 0
-        },
-        "spellIds": [
-          20500,
-          20501
-        ],
-        "maxPoints": 2,
-        "name": "Improved Berserker Rage",
-        "icon": "spell_nature_ancestralguardian",
-        "description": "Your Berserker Rage ability will instantly generate {0} Rage and has a {1}% chance to remove all movement impairing effects when activated.",
-        "ranks": [
-          [
-            5,
-            50
-          ],
-          [
-            10,
-            100
-          ]
-        ]
-      },
-      {
         "fieldName": "flurry",
         "location": {
           "rowIdx": 5,
-          "colIdx": 2
-        },
-        "prereqLocation": {
-          "rowIdx": 3,
-          "colIdx": 2
+          "colIdx": 1
         },
         "spellIds": [
-          12319,
-          12971,
-          12972,
-          12973,
-          12974
+          12319
         ],
         "maxPoints": 5,
         "name": "Flurry",
@@ -1009,16 +878,43 @@
           [
             25
           ]
-        ]
+        ],
+        "prereqLocation": {
+          "rowIdx": 4,
+          "colIdx": 1
+        }
+      },
+      {
+        "fieldName": "goreDrinker",
+        "location": {
+          "rowIdx": 5,
+          "colIdx": 2
+        },
+        "maxPoints": 2,
+        "name": "Gore Drinker",
+        "spellIds": [
+          1323967
+        ],
+        "prereqLocation": {
+          "rowIdx": 3,
+          "colIdx": 2
+        },
+        "description": "Enrage, Berserker Rage, Bloodrage, Death Wish and Bloodthirst grant three melee attacks that each heal {0}% of maximum Health.",
+        "ranks": [
+          [
+            0.5
+          ],
+          [
+            1
+          ]
+        ],
+        "icon": "racial_troll_berserk",
+        "notSimulated": true
       },
       {
         "fieldName": "bloodthirst",
         "location": {
           "rowIdx": 6,
-          "colIdx": 1
-        },
-        "prereqLocation": {
-          "rowIdx": 4,
           "colIdx": 1
         },
         "spellIds": [
@@ -1030,7 +926,7 @@
         "description": "Instantly attack the target causing damage equal to {0}% of your Attack Power plus {1} and increasing your movement speed by {2}% for {3} sec.",
         "ranks": [
           [
-            35,
+            45,
             30,
             10,
             10
@@ -1044,17 +940,35 @@
     "backgroundUrl": "https://wow.zamimg.com/images/wow/talents/backgrounds/classic/163.jpg",
     "talents": [
       {
+        "fieldName": "improvedBloodrage",
+        "location": {
+          "rowIdx": 0,
+          "colIdx": 0
+        },
+        "spellIds": [
+          12301
+        ],
+        "maxPoints": 2,
+        "name": "Improved Bloodrage",
+        "icon": "ability_racial_bloodrage",
+        "description": "Increases all the Rage generated by your Bloodrage ability by {0}%.",
+        "ranks": [
+          [
+            25
+          ],
+          [
+            50
+          ]
+        ]
+      },
+      {
         "fieldName": "shieldSpecialization",
         "location": {
           "rowIdx": 0,
           "colIdx": 1
         },
         "spellIds": [
-          12298,
-          12724,
-          12725,
-          12726,
-          12727
+          12298
         ],
         "maxPoints": 5,
         "name": "Shield Specialization",
@@ -1084,17 +998,45 @@
         ]
       },
       {
-        "fieldName": "anticipation",
+        "fieldName": "ironWill",
         "location": {
           "rowIdx": 0,
           "colIdx": 2
         },
         "spellIds": [
-          12297,
-          12750,
-          12751,
-          12752,
-          12753
+          12962
+        ],
+        "maxPoints": 5,
+        "name": "Iron Will",
+        "icon": "spell_magic_magearmor",
+        "description": "Reduces the duration of Stun and Fear effects inflicted on you by {0}%.",
+        "ranks": [
+          [
+            3
+          ],
+          [
+            6
+          ],
+          [
+            9
+          ],
+          [
+            12
+          ],
+          [
+            15
+          ]
+        ],
+        "notSimulated": true
+      },
+      {
+        "fieldName": "anticipation",
+        "location": {
+          "rowIdx": 1,
+          "colIdx": 0
+        },
+        "spellIds": [
+          12297
         ],
         "maxPoints": 5,
         "name": "Anticipation",
@@ -1119,60 +1061,27 @@
         ]
       },
       {
-        "fieldName": "improvedBloodrage",
-        "location": {
-          "rowIdx": 1,
-          "colIdx": 0
-        },
-        "spellIds": [
-          12301,
-          12818
-        ],
-        "maxPoints": 2,
-        "name": "Improved Bloodrage",
-        "icon": "ability_racial_bloodrage",
-        "description": "Increases all the Rage generated by your Bloodrage ability by {0}%.",
-        "ranks": [
-          [
-            25
-          ],
-          [
-            50
-          ]
-        ]
-      },
-      {
-        "fieldName": "toughness",
+        "fieldName": "improvedRevenge",
         "location": {
           "rowIdx": 1,
           "colIdx": 2
         },
         "spellIds": [
-          12299,
-          12761,
-          12762,
-          12763,
-          12764
+          12797
         ],
-        "maxPoints": 5,
-        "name": "Toughness",
-        "icon": "spell_holy_devotion",
-        "description": "Increases your Armor value from items by {0}%.",
+        "maxPoints": 3,
+        "name": "Improved Revenge",
+        "icon": "ability_warrior_revenge",
+        "description": "Increases damage dealt by your Revenge ability by {0}%.",
         "ranks": [
           [
-            2
+            20
           ],
           [
-            4
+            40
           ],
           [
-            6
-          ],
-          [
-            8
-          ],
-          [
-            10
+            60
           ]
         ]
       },
@@ -1183,9 +1092,7 @@
           "colIdx": 3
         },
         "spellIds": [
-          12287,
-          12665,
-          12666
+          12287
         ],
         "maxPoints": 3,
         "name": "Improved Thunder Clap",
@@ -1209,10 +1116,6 @@
           "rowIdx": 2,
           "colIdx": 0
         },
-        "prereqLocation": {
-          "rowIdx": 1,
-          "colIdx": 0
-        },
         "spellIds": [
           12975
         ],
@@ -1233,13 +1136,8 @@
           "rowIdx": 2,
           "colIdx": 1
         },
-        "prereqLocation": {
-          "rowIdx": 0,
-          "colIdx": 1
-        },
         "spellIds": [
-          0,
-          0
+          1310316
         ],
         "maxPoints": 2,
         "name": "Master of Defense",
@@ -1254,34 +1152,37 @@
             100,
             5
           ]
-        ]
+        ],
+        "prereqLocation": {
+          "rowIdx": 0,
+          "colIdx": 1
+        }
       },
       {
-        "fieldName": "improvedRevenge",
+        "fieldName": "improvedDisarm",
         "location": {
           "rowIdx": 2,
           "colIdx": 2
         },
         "spellIds": [
-          12797,
-          12799,
-          12800
+          12313
         ],
         "maxPoints": 3,
-        "name": "Improved Revenge",
-        "icon": "ability_warrior_revenge",
-        "description": "Increases damage dealt by your Revenge ability by {0}%.",
+        "name": "Improved Disarm",
+        "icon": "ability_warrior_disarm",
+        "description": "Reduces the cooldown of your Disarm ability by {0} secs.",
         "ranks": [
           [
+            7
+          ],
+          [
+            13
+          ],
+          [
             20
-          ],
-          [
-            40
-          ],
-          [
-            60
           ]
-        ]
+        ],
+        "notSimulated": true
       },
       {
         "fieldName": "defiance",
@@ -1290,9 +1191,7 @@
           "colIdx": 3
         },
         "spellIds": [
-          12303,
-          12788,
-          12789
+          12792
         ],
         "maxPoints": 3,
         "name": "Defiance",
@@ -1317,9 +1216,7 @@
           "colIdx": 0
         },
         "spellIds": [
-          12308,
-          12810,
-          12811
+          12308
         ],
         "maxPoints": 3,
         "name": "Improved Sunder Armor",
@@ -1338,41 +1235,13 @@
         ]
       },
       {
-        "fieldName": "improvedDisarm",
+        "fieldName": "vanguard",
         "location": {
           "rowIdx": 3,
           "colIdx": 1
         },
         "spellIds": [
-          12313,
-          12804,
-          12807
-        ],
-        "maxPoints": 3,
-        "name": "Improved Disarm",
-        "icon": "ability_warrior_disarm",
-        "description": "Reduces the cooldown of your Disarm ability by {0} secs.",
-        "ranks": [
-          [
-            7
-          ],
-          [
-            13
-          ],
-          [
-            20
-          ]
-        ],
-        "notSimulated": true
-      },
-      {
-        "fieldName": "vanguard",
-        "location": {
-          "rowIdx": 3,
-          "colIdx": 2
-        },
-        "spellIds": [
-          0
+          1310317
         ],
         "maxPoints": 1,
         "name": "Vanguard",
@@ -1384,14 +1253,36 @@
         "iconUrl": "assets/img/talents/warrior/vanguard.png"
       },
       {
+        "fieldName": "improvedShieldBash",
+        "location": {
+          "rowIdx": 3,
+          "colIdx": 2
+        },
+        "spellIds": [
+          12311
+        ],
+        "maxPoints": 2,
+        "name": "Improved Shield Bash",
+        "icon": "ability_warrior_shieldbash",
+        "description": "Gives your Shield Bash ability a {0}% chance to Silence the target for 3 sec.",
+        "ranks": [
+          [
+            50
+          ],
+          [
+            100
+          ]
+        ],
+        "notSimulated": true
+      },
+      {
         "fieldName": "improvedShieldWall",
         "location": {
           "rowIdx": 4,
           "colIdx": 0
         },
         "spellIds": [
-          12312,
-          12803
+          12312
         ],
         "maxPoints": 2,
         "name": "Improved Shield Wall",
@@ -1427,39 +1318,13 @@
         ]
       },
       {
-        "fieldName": "improvedShieldBash",
+        "fieldName": "focusedRage",
         "location": {
           "rowIdx": 4,
           "colIdx": 2
         },
         "spellIds": [
-          12311,
-          12958
-        ],
-        "maxPoints": 2,
-        "name": "Improved Shield Bash",
-        "icon": "ability_warrior_shieldbash",
-        "description": "Gives your Shield Bash ability a {0}% chance to Silence the target for 3 sec.",
-        "ranks": [
-          [
-            50
-          ],
-          [
-            100
-          ]
-        ],
-        "notSimulated": true
-      },
-      {
-        "fieldName": "focusedRage",
-        "location": {
-          "rowIdx": 4,
-          "colIdx": 3
-        },
-        "spellIds": [
-          0,
-          0,
-          0
+          29787
         ],
         "maxPoints": 3,
         "name": "Focused Rage",
@@ -1484,11 +1349,7 @@
           "colIdx": 2
         },
         "spellIds": [
-          0,
-          0,
-          0,
-          0,
-          0
+          16538
         ],
         "maxPoints": 5,
         "name": "Bastion",
@@ -1518,10 +1379,6 @@
           "rowIdx": 6,
           "colIdx": 1
         },
-        "prereqLocation": {
-          "rowIdx": 4,
-          "colIdx": 1
-        },
         "spellIds": [
           23922
         ],
@@ -1536,7 +1393,11 @@
             50,
             1
           ]
-        ]
+        ],
+        "prereqLocation": {
+          "rowIdx": 4,
+          "colIdx": 1
+        }
       }
     ]
   }
