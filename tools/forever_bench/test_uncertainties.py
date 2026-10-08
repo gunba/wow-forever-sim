@@ -35,6 +35,13 @@ class UncertaintyRegisterTests(unittest.TestCase):
         html = render_html(data)
         text = markdown(data) + "\n"
         self.assertEqual(REGISTER.with_suffix(".md").read_text(), text)
+        for view in (html, text):
+            self.assertIn(data["review"]["latest_followup"], view)
+            self.assertIn(data["review"]["latest_followup_date"], view)
+            self.assertIn("Original adjudication baseline", view)
+            self.assertIn("october-8-review.md", view)
+        self.assertNotIn("This review does not change combat mechanics", html)
+        self.assertNotIn("have not changed in this review", text)
         for item in data["items"]:
             self.assertEqual(html.count(f'id="{item["id"]}"'), 1)
             self.assertEqual(text.count(f'### {item["id"]} —'), 1)
