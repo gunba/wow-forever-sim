@@ -32,6 +32,7 @@ func TestEvidenceInstantPoisonAttackPower(t *testing.T) {
 			p.Rotation = &proto.APLRotation{}
 			p.TalentsString = ""
 			p.Equipment = &proto.EquipmentSpec{}
+			p.GetRogue().Options = &proto.RogueOptions{}
 			p.Consumes = nil
 			p.Buffs = nil
 			p.ForeverTier1Bonuses = false
@@ -628,7 +629,7 @@ func TestEvidenceRetributionAuraBase(t *testing.T) {
 }
 
 func TestEvidenceFlatWeaponEnchantsFollowEquipment(t *testing.T) {
-	for _, build := range []string{"feral", "feral_tank_druid", "fury"} {
+	for _, build := range []string{"feral", "feral_tank_druid", "fury", "arcane"} {
 		for _, effect := range []int32{250, 241, 943, 805, 1897} {
 			req := historyTalentFixture(build, nil)
 			p := req.Raid.Parties[0].Players[0]
@@ -639,7 +640,11 @@ func TestEvidenceFlatWeaponEnchantsFollowEquipment(t *testing.T) {
 			if p.Database == nil {
 				p.Database = &proto.SimDatabase{}
 			}
-			p.Database.Items = append(p.Database.Items, &proto.SimItem{Id: 1900000001, Name: "Enchant regression weapon", Type: proto.ItemType_ItemTypeWeapon, WeaponType: proto.WeaponType_WeaponTypeMace, HandType: proto.HandType_HandTypeOneHand, WeaponDamageMin: 120, WeaponDamageMax: 180, WeaponSpeed: 3})
+			weaponType := proto.WeaponType_WeaponTypeMace
+			if build == "arcane" {
+				weaponType = proto.WeaponType_WeaponTypeDagger
+			}
+			p.Database.Items = append(p.Database.Items, &proto.SimItem{Id: 1900000001, Name: "Enchant regression weapon", Type: proto.ItemType_ItemTypeWeapon, WeaponType: weaponType, HandType: proto.HandType_HandTypeOneHand, WeaponDamageMin: 120, WeaponDamageMax: 180, WeaponSpeed: 3})
 			p.ItemSwap = &proto.ItemSwap{MhItem: &proto.ItemSpec{Id: 1900000001, Enchant: 250}}
 			sim := core.NewSim(req, simsignals.Signals{})
 			sim.Options.Interactive = true
@@ -647,9 +652,19 @@ func TestEvidenceFlatWeaponEnchantsFollowEquipment(t *testing.T) {
 			c := sim.Raid.Parties[0].Players[0].GetCharacter()
 			check := func(bonus float64) {
 				t.Helper()
+				if build == "arcane" && (c.AutoAttacks.MHAuto() != nil || c.AutoAttacks.AutoSwingMelee) {
+					t.Fatal("Striking enabled caster melee autos")
+				}
 				item := c.GetMHWeapon()
 				want := ((item.WeaponDamageMin+item.WeaponDamageMax)/2+bonus)/item.SwingSpeed + c.PseudoStats.BonusMHDps
-				if got := c.AutoAttacks.MH().DPS(); math.Abs(got-want) > 1e-7 {
+				got := c.AutoAttacks.MH().DPS()
+				if build == "arcane" {
+					// There is no melee handler to refresh after a caster swap;
+					// the equipped weapon remains the authoritative damage source.
+					weapon := c.EquippedMainHandWeapon()
+					got = weapon.DPS()
+				}
+				if math.Abs(got-want) > 1e-7 {
 					t.Errorf("%s enchant %d: %v DPS, want %v", build, effect, got, want)
 				}
 			}
@@ -657,7 +672,7 @@ func TestEvidenceFlatWeaponEnchantsFollowEquipment(t *testing.T) {
 			sim.CurrentTime = time.Second
 			c.ItemSwap.SwapItems(sim, []proto.ItemSlot{proto.ItemSlot_ItemSlotMainHand})
 			check(1)
-			if build != "fury" {
+			if build == "feral" || build == "feral_tank_druid" {
 				d := sim.Raid.Parties[0].Players[0].(druid.DruidAgent).GetDruid()
 				aura := d.CatFormAura
 				if build == "feral_tank_druid" {

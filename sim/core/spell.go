@@ -23,6 +23,7 @@ type SpellConfig struct {
 	Flags         SpellFlag
 	CastType      proto.CastType
 	MissileSpeed  float64
+	MinTravelTime time.Duration
 	BaseCost      float64
 	MetricSplits  int
 	Rank          int
@@ -99,6 +100,8 @@ type Spell struct {
 	// Speed in yards/second. Spell missile speeds can be found in the game data.
 	// Example: https://wow.tools/dbc/?dbc=spellmisc&build=3.4.0.44996
 	MissileSpeed float64
+	// Minimum projectile flight time, independent of distance.
+	MinTravelTime time.Duration
 
 	Rank          int
 	RequiredLevel int
@@ -234,14 +237,15 @@ func (unit *Unit) RegisterSpell(config SpellConfig) *Spell {
 	}
 
 	spell := &Spell{
-		ActionID:     config.ActionID,
-		SpellCode:    config.SpellCode,
-		DefenseType:  config.DefenseType,
-		Unit:         unit,
-		ProcMask:     config.ProcMask,
-		Flags:        config.Flags,
-		CastType:     config.CastType,
-		MissileSpeed: config.MissileSpeed,
+		ActionID:      config.ActionID,
+		SpellCode:     config.SpellCode,
+		DefenseType:   config.DefenseType,
+		Unit:          unit,
+		ProcMask:      config.ProcMask,
+		Flags:         config.Flags,
+		CastType:      config.CastType,
+		MissileSpeed:  config.MissileSpeed,
+		MinTravelTime: config.MinTravelTime,
 
 		SpellSchool:       config.SpellSchool,
 		SchoolIndex:       config.SpellSchool.GetSchoolIndex(),
@@ -628,11 +632,11 @@ func (spell *Spell) CastTime() time.Duration {
 }
 
 func (spell *Spell) TravelTime() time.Duration {
-	if spell.MissileSpeed == 0 {
-		return 0
-	} else {
-		return time.Duration(float64(time.Second) * spell.Unit.DistanceFromTarget / spell.MissileSpeed)
+	travelTime := time.Duration(0)
+	if spell.MissileSpeed != 0 {
+		travelTime = time.Duration(float64(time.Second) * spell.Unit.DistanceFromTarget / spell.MissileSpeed)
 	}
+	return max(spell.MinTravelTime, travelTime)
 }
 
 type CostType uint8

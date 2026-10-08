@@ -74,7 +74,8 @@ func (hunter *Hunter) getVolleyConfig(rank int) core.SpellConfig {
 		ThreatMultiplier: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			hunter.Unit.AutoAttacks.DelayRangedUntil(sim, sim.CurrentTime+(time.Second*6))
+			// The core channel gate holds owner autos until this dot expires or
+			// is canceled, preserving the remaining swing and Auto Shot wind-up.
 			spell.AOEDot().Apply(sim)
 		},
 	}

@@ -443,7 +443,7 @@
 		"ability": "Demonic Brand",
 		"assumptions": [
 			"Damage uses owner spell power at the pet hit; snapshot timing and owner-versus-pet attribution need measurement.",
-			"The proc remains noncritical with a provisional 3x threat multiplier. Voidwalker/Felhunter school assignment is unverified."
+			"Children always hit but can critically strike. Shadow retains its 3x threat model; Fire uses ordinary threat. Voidwalker/Felhunter school assignment remains unverified."
 		],
 		"file": "sim/warlock/talents.go",
 		"note": "Client description variables 1016–1020 contain the scaling formulas. Charges belong to the branded target; direct pet spells and melee can consume them.",
@@ -454,21 +454,20 @@
 		"ability": "Demonic Brand",
 		"assumptions": [
 			"Uses owner Shadow spell power at hit time; power attribution and snapshot timing need measurement.",
-			"Noncritical damage and 3x threat remain provisional."
+			"The Shadow child's 3x threat multiplier remains qualified."
 		],
 		"file": "sim/warlock/talents.go",
-		"note": "Client description variable 1017 gives level and Shadow-power scaling. Attributes_3 marks the child spell Always Hit. Pet damage modifiers apply once.",
+		"note": "Client description variable 1017 gives level and Shadow-power scaling. Attributes_3 marks the child spell Always Hit. Pet damage modifiers apply once. Always Hit does not suppress critical strikes; the child retains a pet spell-crit roll.",
 		"source": "assumed",
 		"tooltip": "Consuming a brand deals 65 to 68 Shadow damage at level 60, plus 7.8% of Shadow spell power, before pet damage modifiers."
 	},
 	"1293698": {
 		"ability": "Demonic Brand",
 		"assumptions": [
-			"Uses owner Fire spell power at hit time; power attribution and snapshot timing need measurement.",
-			"Noncritical damage and 3x threat remain provisional."
+			"Uses owner Fire spell power at hit time; power attribution and snapshot timing need measurement."
 		],
 		"file": "sim/warlock/talents.go",
-		"note": "Client description variable 1018 gives level and Fire-power scaling. Attributes_3 marks the child spell Always Hit. Pet damage modifiers apply once.",
+		"note": "Client description variable 1018 gives level and Fire-power scaling. Attributes_3 marks the child spell Always Hit. Pet damage modifiers apply once. Always Hit does not suppress critical strikes; the child retains a pet spell-crit roll. Fire uses ordinary 1x threat, not Shadow's triple multiplier.",
 		"source": "assumed",
 		"tooltip": "Consuming a brand deals 65 to 68 Fire damage at level 60, plus 7.8% of Fire spell power, before pet damage modifiers."
 	},
@@ -871,9 +870,29 @@
 		"ability": "Bane of Havoc",
 		"file": "sim/warlock/curses.go",
 		"foreverId": 1225228,
-		"note": "Forever's id in the beta client is 1225228; the sim keeps 80240. The 15% damage copy is not simulated, the sim only marks the target. Values from the beta client 1.60.1.69893 (spell_client.py).",
+		"note": "Client 1.60.1.70245 uses 1225228; the sim retains 80240 for the cast and registers driver1243338/copy1243339. One caster-owned mark copies 15% of actually dealt owner damage to other enemies, including periodic/weapon/item-proc damage but excluding pet damage. Copies do not recursively proc or receive another hit/crit/resistance/modifier pass.",
+		"source": "assumed",
+		"tooltip": "5% of base mana\nInstant\nAfflicts the target for 5 min, causing 15% of all damage done by the Warlock to other targets to also be dealt to the cursed target. Bane of Havoc is limited to 1 target, and only one Bane per Warlock can be active on any one target.",
+		"assumptions": [
+			"Exact server copy-mitigation semantics and ordinary owned copy threat remain qualified; the model applies the share to delivered damage once."
+		]
+	},
+	"1243338": {
+		"ability": "Bane of Havoc — copy driver",
+		"file": "sim/warlock/curses.go",
 		"source": "forever",
-		"tooltip": "5% of base mana\nInstant\nAfflicts the target for 5 min, causing 15% of all damage done by the Warlock to other targets to also be dealt to the cursed target. Bane of Havoc is limited to 1 target, and only one Bane per Warlock can be active on any one target."
+		"note": "Client70245 driver proc mask332116 includes owner periodic and weapon damage and permits triggered damage. Only the caster's damage to another enemy is eligible; pets are excluded.",
+		"tooltip": "Passive\nCopies eligible owner damage from other enemies to the caster's single active Bane of Havoc target."
+	},
+	"1243339": {
+		"ability": "Bane of Havoc — copied damage",
+		"file": "sim/warlock/curses.go",
+		"source": "assumed",
+		"assumptions": [
+			"The model copies 15% of delivered damage without a second mitigation/modifier pass and uses ordinary owned spell threat; exact server copy-mitigation and threat still need measurement."
+		],
+		"note": "Client70245 identifies the copy as Shadow and unable to crit. The local copy cannot trigger further damage procs or recursively copy itself.",
+		"tooltip": "Deals 15% of eligible owner damage dealt to another enemy as Shadow damage. The copy does not roll another hit or critical strike."
 	},
 	"8288": {
 		"ability": "Drain Soul",

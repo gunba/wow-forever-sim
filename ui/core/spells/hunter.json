@@ -37,44 +37,44 @@
 	"1293241": {
 		"ability": "Summon Hawk",
 		"assumptions": [
-			"The hawk is a guardian whose swings the client does not describe; the assault is modelled as the rank's dive bomb base damage every 3 sec.",
-			"Only one hawk at a time is modelled, although the tooltip allows two."
+			"Assault damage uses a provisional 0.35 share of rank base damage and 1.5% effective crit, calibrated from low-rank observations; level-60 scaling and unmeasured owner AP transfer remain uncertain.",
+			"Guardian attacks use provisional ordinary white attack-table behavior; exact retarget commands and Ferocity transfer remain qualified. No owner stats or crit are inherited."
 		],
 		"file": "sim/hunter/summon_hawk.go",
-		"note": "Beta client 1.60.1.69893: rank 1 (level 25). Dive bomb, cost, cooldown and the 18 sec hawk (1293248) come from the client.",
+		"note": "Beta client 1.60.1.69893: rank 1 (level 25). Dive bomb, cost, cooldown and the 18 sec hawk (1293248) come from the client. October 8 replaces the old one-DoT surrogate with two independent guardians, oldest replaced first, a 2.5-second base attack period inheriting ranged haste, and a one-second minimum/35-yard-per-second arrival.",
 		"source": "assumed",
 		"tooltip": "80 Mana\n8-35 yd range\nInstant\n6 sec cooldown\nCommand a hawk to dive-bomb your targeted enemy, dealing 32 plus 5% of ranged attack power Physical damage and continuing its assault for 18 sec. Only 2 hawks can be active at once. Summon Hawk shares its cooldown with Arcane Shot."
 	},
 	"1293525": {
 		"ability": "Summon Hawk",
 		"assumptions": [
-			"The hawk is a guardian whose swings the client does not describe; the assault is modelled as the rank's dive bomb base damage every 3 sec.",
-			"Only one hawk at a time is modelled, although the tooltip allows two."
+			"Assault damage uses a provisional 0.35 share of rank base damage and 1.5% effective crit, calibrated from low-rank observations; level-60 scaling and unmeasured owner AP transfer remain uncertain.",
+			"Guardian attacks use provisional ordinary white attack-table behavior; exact retarget commands and Ferocity transfer remain qualified. No owner stats or crit are inherited."
 		],
 		"file": "sim/hunter/summon_hawk.go",
-		"note": "Beta client 1.60.1.69893: rank 2 (level 36). Dive bomb, cost, cooldown and the 18 sec hawk (1293248) come from the client.",
+		"note": "Beta client 1.60.1.69893: rank 2 (level 36). Dive bomb, cost, cooldown and the 18 sec hawk (1293248) come from the client. October 8 replaces the old one-DoT surrogate with two independent guardians, oldest replaced first, a 2.5-second base attack period inheriting ranged haste, and a one-second minimum/35-yard-per-second arrival.",
 		"source": "assumed",
 		"tooltip": "105 Mana\n8-35 yd range\nInstant\n6 sec cooldown\nCommand a hawk to dive-bomb your targeted enemy, dealing 47 plus 5% of ranged attack power Physical damage and continuing its assault for 18 sec. Only 2 hawks can be active at once. Summon Hawk shares its cooldown with Arcane Shot."
 	},
 	"1293526": {
 		"ability": "Summon Hawk",
 		"assumptions": [
-			"The hawk is a guardian whose swings the client does not describe; the assault is modelled as the rank's dive bomb base damage every 3 sec.",
-			"Only one hawk at a time is modelled, although the tooltip allows two."
+			"Assault damage uses a provisional 0.35 share of rank base damage and 1.5% effective crit, calibrated from low-rank observations; level-60 scaling and unmeasured owner AP transfer remain uncertain.",
+			"Guardian attacks use provisional ordinary white attack-table behavior; exact retarget commands and Ferocity transfer remain qualified. No owner stats or crit are inherited."
 		],
 		"file": "sim/hunter/summon_hawk.go",
-		"note": "Beta client 1.60.1.69893: rank 3 (level 48). Dive bomb, cost, cooldown and the 18 sec hawk (1293248) come from the client.",
+		"note": "Beta client 1.60.1.69893: rank 3 (level 48). Dive bomb, cost, cooldown and the 18 sec hawk (1293248) come from the client. October 8 replaces the old one-DoT surrogate with two independent guardians, oldest replaced first, a 2.5-second base attack period inheriting ranged haste, and a one-second minimum/35-yard-per-second arrival.",
 		"source": "assumed",
 		"tooltip": "135 Mana\n8-35 yd range\nInstant\n6 sec cooldown\nCommand a hawk to dive-bomb your targeted enemy, dealing 85 plus 5% of ranged attack power Physical damage and continuing its assault for 18 sec. Only 2 hawks can be active at once. Summon Hawk shares its cooldown with Arcane Shot."
 	},
 	"1293527": {
 		"ability": "Summon Hawk",
 		"assumptions": [
-			"The hawk is a guardian whose swings the client does not describe; the assault is modelled as the rank's dive bomb base damage every 3 sec.",
-			"Only one hawk at a time is modelled, although the tooltip allows two."
+			"Assault damage uses a provisional 0.35 share of rank base damage and 1.5% effective crit, calibrated from low-rank observations; level-60 scaling and unmeasured owner AP transfer remain uncertain.",
+			"Guardian attacks use provisional ordinary white attack-table behavior; exact retarget commands and Ferocity transfer remain qualified. No owner stats or crit are inherited."
 		],
 		"file": "sim/hunter/summon_hawk.go",
-		"note": "Beta client 1.60.1.69893: rank 4 (level 60). Dive bomb, cost, cooldown and the 18 sec hawk (1293248) come from the client.",
+		"note": "Beta client 1.60.1.69893: rank 4 (level 60). Dive bomb, cost, cooldown and the 18 sec hawk (1293248) come from the client. October 8 replaces the old one-DoT surrogate with two independent guardians, oldest replaced first, a 2.5-second base attack period inheriting ranged haste, and a one-second minimum/35-yard-per-second arrival.",
 		"source": "assumed",
 		"tooltip": "190 Mana\n8-35 yd range\nInstant\n6 sec cooldown\nCommand a hawk to dive-bomb your targeted enemy, dealing 108 plus 5% of ranged attack power Physical damage and continuing its assault for 18 sec. Only 2 hawks can be active at once. Summon Hawk shares its cooldown with Arcane Shot."
 	},

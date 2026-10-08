@@ -22,6 +22,7 @@ type OnPetDisable func(sim *Simulation)
 
 type PetStatInheritance func(ownerStats stats.Stats) stats.Stats
 type PetMeleeSpeedInheritance func(amount float64)
+type PetRangedSpeedInheritance func(ownerRangedSpeed float64)
 
 // Pet is an extension of Character, for any entity created by a player that can
 // take actions on its own.
@@ -42,7 +43,8 @@ type Pet struct {
 	inheritedStats         stats.Stats
 
 	// DK pets also inherit their owner's MeleeSpeed. This replace OwnerAttackSpeedChanged.
-	dynamicMeleeSpeedInheritance PetMeleeSpeedInheritance
+	dynamicMeleeSpeedInheritance  PetMeleeSpeedInheritance
+	dynamicRangedSpeedInheritance PetRangedSpeedInheritance
 
 	isReset bool
 
@@ -228,6 +230,14 @@ func (pet *Pet) EnableDynamicMeleeSpeed(inheritance PetMeleeSpeedInheritance) {
 	pet.dynamicMeleeSpeedInheritance = inheritance
 }
 
+// Enables absolute ranged-speed inheritance, independently of stat inheritance.
+func (pet *Pet) EnableDynamicRangedSpeed(inheritance PetRangedSpeedInheritance) {
+	if !slices.Contains(pet.Owner.DynamicRangedSpeedPets, pet) {
+		pet.Owner.DynamicRangedSpeedPets = append(pet.Owner.DynamicRangedSpeedPets, pet)
+	}
+	pet.dynamicRangedSpeedInheritance = inheritance
+}
+
 func (pet *Pet) Disable(sim *Simulation) {
 	if !pet.enabled {
 		if sim.Log != nil {
@@ -256,6 +266,13 @@ func (pet *Pet) Disable(sim *Simulation) {
 			pet.Owner.DynamicMeleeSpeedPets = removeBySwappingToBack(pet.Owner.DynamicMeleeSpeedPets, idx)
 		}
 		pet.dynamicMeleeSpeedInheritance = nil
+	}
+
+	if pet.dynamicRangedSpeedInheritance != nil {
+		if idx := slices.Index(pet.Owner.DynamicRangedSpeedPets, pet); idx != -1 {
+			pet.Owner.DynamicRangedSpeedPets = removeBySwappingToBack(pet.Owner.DynamicRangedSpeedPets, idx)
+		}
+		pet.dynamicRangedSpeedInheritance = nil
 	}
 
 	pet.CancelGCDTimer(sim)

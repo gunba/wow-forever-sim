@@ -36,6 +36,8 @@ func (priest *Priest) registerDarkSacrifice() {
 		amount := rank.tick + float64(min(priest.Level-rank.level, 8))
 		actionID := core.ActionID{SpellID: rank.id}
 		manaMetrics := priest.NewManaMetrics(actionID)
+		// Every current rank has Attributes_1 NO_THREAT (0x400).
+		manaMetrics.NoThreat = true
 		aura := priest.RegisterAura(core.Aura{
 			Label:    fmt.Sprintf("Dark Sacrifice (Rank %d)", index+1),
 			ActionID: actionID,

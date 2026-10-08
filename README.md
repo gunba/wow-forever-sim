@@ -15,8 +15,8 @@ separate. Updated talents, racials and the explicit Tier 1 bonus setting remain
 in both scenarios. The Classic ruleset is retained for mechanic comparisons,
 not as a complete Classic simulator.
 
-The [five-minute benchmark](tools/forever_bench/README.md) covers 28 builds and
-184 Horde/Alliance race/build combinations, including separate Physical Ret
+The [five-minute benchmark](tools/forever_bench/README.md) covers 31 builds and
+201 Horde/Alliance race/build combinations, including separate Physical Ret
 and Fury (Sunder) setups. The modeled-gear [matrix](artifacts/modelled_gear/forever_dps_5min.png),
 [CSV](artifacts/modelled_gear/forever_dps_5min.csv) and
 [raw requests/results](artifacts/modelled_gear/forever_dps_5min.json) use hit from selected items, talents and racials, without a paid stat exchange,
@@ -47,8 +47,10 @@ simulator's **Ranked builds** selector. Clicking a matrix cell opens that exact
 setup and its actual gear-derived hit; no manual import is needed.
 [Frozen benchmark inputs](artifacts/modelled_gear/forever_input_profiles.json) are also the
 native benchmark defaults, separate from the results for replay.
-[Equipment-search evidence](artifacts/modelled_gear_search/current/summary.json) records
-the comparisons. Every equipped item is a projected level-65 item with its
+[October 8 evidence](artifacts/correctness/october_8/selection-evidence.json) records
+the corrected-engine build and gear comparisons; [review and limits](docs/october-8-review.md)
+explain the provisional mechanics and bounded selections. Earlier
+[equipment searches](artifacts/modelled_gear_search/current/summary.json) remain historical. Every equipped item is a projected level-65 item with its
 numeric stats in its name. None is confirmed obtainable. The
 [previous mixed modeled/real release](https://github.com/gunba/wow-forever-sim/blob/ff7b01f28/artifacts/modelled_gear/forever_dps_5min.json)
 and the distinct verified-item rankings remain available for comparison.

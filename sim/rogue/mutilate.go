@@ -28,13 +28,34 @@ func (rogue *Rogue) registerMutilateSpell() {
 	}[rogue.Level]
 
 	actionID := core.ActionID{SpellID: spellID}
+	strikeFlags := SpellFlagBuilder | SpellFlagColdBlooded | core.SpellFlagMeleeMetrics | core.SpellFlagNoOnCastComplete
+
+	rogue.mutilateMH = rogue.RegisterSpell(core.SpellConfig{
+		ActionID:    actionID.WithTag(1),
+		SpellSchool: core.SpellSchoolPhysical,
+		DefenseType: core.DefenseTypeMelee,
+		ProcMask:    core.ProcMaskMeleeMHSpecial,
+		Flags:       strikeFlags,
+
+		BonusCritRating: 5 * core.CritRatingPerCritChance * float64(rogue.Talents.PuncturingWounds),
+		CritDamageBonus: rogue.lethality(),
+
+		DamageMultiplier: []float64{1, 1.05, 1.1}[rogue.Talents.Opportunity],
+		ThreatMultiplier: 1,
+		BonusCoefficient: 1,
+
+		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+			baseDamage := rogue.mutilateDamage(target, flatDamage, rogue.MHNormalizedWeaponDamage(sim, spell.MeleeAttackPower(target)))
+			spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialBlockAndCrit)
+		},
+	})
 
 	rogue.mutilateOH = rogue.RegisterSpell(core.SpellConfig{
 		ActionID:    actionID.WithTag(2),
 		SpellSchool: core.SpellSchoolPhysical,
 		DefenseType: core.DefenseTypeMelee,
 		ProcMask:    core.ProcMaskMeleeOHSpecial,
-		Flags:       SpellFlagBuilder | core.SpellFlagMeleeMetrics | core.SpellFlagNoOnCastComplete,
+		Flags:       strikeFlags,
 
 		// Puncturing Wounds' family mask includes both child strikes.
 		BonusCritRating: 5 * core.CritRatingPerCritChance * float64(rogue.Talents.PuncturingWounds),
@@ -46,7 +67,7 @@ func (rogue *Rogue) registerMutilateSpell() {
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			baseDamage := rogue.mutilateDamage(target, flatDamage, rogue.OHNormalizedWeaponDamage(sim, spell.MeleeAttackPower(target)))
-			spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
+			spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialBlockAndCrit)
 		},
 	})
 
@@ -55,8 +76,8 @@ func (rogue *Rogue) registerMutilateSpell() {
 		ActionID:    actionID,
 		SpellSchool: core.SpellSchoolPhysical,
 		DefenseType: core.DefenseTypeMelee,
-		ProcMask:    core.ProcMaskMeleeMHSpecial,
-		Flags:       rogue.builderFlags(),
+		ProcMask:    core.ProcMaskEmpty,
+		Flags:       rogue.builderFlags() &^ SpellFlagColdBlooded,
 
 		EnergyCost: core.EnergyCostOptions{
 			Cost:   60,
@@ -73,24 +94,18 @@ func (rogue *Rogue) registerMutilateSpell() {
 			return rogue.HasDagger(core.MainHand) && rogue.HasDagger(core.OffHand)
 		},
 
-		// Puncturing Wounds gives 5% per rank (beta client).
-		BonusCritRating: 5 * core.CritRatingPerCritChance * float64(rogue.Talents.PuncturingWounds),
-
-		CritDamageBonus: rogue.lethality(),
-
-		DamageMultiplier: []float64{1, 1.05, 1.1}[rogue.Talents.Opportunity],
+		DamageMultiplier: 1,
 		ThreatMultiplier: 1,
-		BonusCoefficient: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			rogue.BreakStealth(sim)
 
-			// Cold Blood is spent on the main hand half, which is the larger of the two.
-			baseDamage := rogue.mutilateDamage(target, flatDamage, rogue.MHNormalizedWeaponDamage(sim, spell.MeleeAttackPower(target)))
-			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
-			rogue.mutilateOH.Cast(sim, target)
-
+			// Only the parent can miss, dodge or parry. The beta client's child strikes
+			// carry No Attack Miss/Dodge/Parry, but retain each hand's block and crit rolls.
+			result := spell.CalcAndDealOutcome(sim, target, spell.OutcomeMeleeSpecialHit)
 			if result.Landed() {
+				rogue.mutilateMH.Cast(sim, target)
+				rogue.mutilateOH.Cast(sim, target)
 				rogue.AddComboPoints(sim, 2, target, spell.ComboPointMetrics())
 			} else {
 				spell.IssueRefund(sim)

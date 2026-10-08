@@ -50,16 +50,16 @@ character_stats_results: {
 stat_weights_results: {
  key: "TestProtection-Phase1-StatWeights-Default"
  value: {
-  weights: 0.22487
-  weights: 0.06557
+  weights: 0.22489
+  weights: 0.06482
   weights: 0
-  weights: 0.16868
+  weights: -0.01786
   weights: 0
-  weights: 0.45243
+  weights: 0.45248
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.40743
+  weights: 0.40749
   weights: 0
   weights: 0
   weights: 0
@@ -67,22 +67,22 @@ stat_weights_results: {
   weights: 0.61193
   weights: 0
   weights: 0
-  weights: 0.10221
+  weights: 0.10222
   weights: 0
-  weights: 3.19456
-  weights: 1.84118
-  weights: 0
-  weights: 0
-  weights: 0.00464
+  weights: 3.18404
+  weights: 1.83279
   weights: 0
   weights: 0
+  weights: 0.00047
   weights: 0
   weights: 0
-  weights: -0.10496
-  weights: 2.08695
   weights: 0
-  weights: -0.39653
-  weights: 0.59707
+  weights: 0
+  weights: -0.13277
+  weights: 2.05191
+  weights: 0
+  weights: -0.37074
+  weights: 0.67439
   weights: 0
   weights: 0
   weights: 0
@@ -99,114 +99,114 @@ stat_weights_results: {
 dps_results: {
  key: "TestProtection-Phase1-AllItems-LibramofInfusion-279248"
  value: {
-  dps: 414.49688
-  tps: 598.63643
+  dps: 415.42867
+  tps: 600.44721
  }
 }
 dps_results: {
  key: "TestProtection-Phase1-AllItems-LibramofLaw-272435"
  value: {
-  dps: 416.22185
-  tps: 601.39638
+  dps: 417.16446
+  tps: 603.22447
  }
 }
 dps_results: {
  key: "TestProtection-Phase1-Average-Default"
  value: {
-  dps: 553.51156
-  tps: 834.38978
-  dtps: 635.54363
+  dps: 553.53029
+  tps: 834.37108
+  dtps: 635.52544
  }
 }
 dps_results: {
  key: "TestProtection-Phase1-Settings-Dwarf-launch-Forever Protection-forever_protection-FullBuffs-Forever Protection-LongMultiTarget"
  value: {
-  dps: 295.83862
-  tps: 702.68554
+  dps: 300.99343
+  tps: 711.23021
  }
 }
 dps_results: {
  key: "TestProtection-Phase1-Settings-Dwarf-launch-Forever Protection-forever_protection-FullBuffs-Forever Protection-LongSingleTarget"
  value: {
-  dps: 118.15908
-  tps: 216.0472
+  dps: 121.31224
+  tps: 221.10713
  }
 }
 dps_results: {
  key: "TestProtection-Phase1-Settings-Dwarf-launch-Forever Protection-forever_protection-FullBuffs-Forever Protection-ShortSingleTarget"
  value: {
-  dps: 211.39123
-  tps: 372.18345
+  dps: 211.45554
+  tps: 372.28635
  }
 }
 dps_results: {
  key: "TestProtection-Phase1-Settings-Dwarf-launch-Forever Protection-forever_protection-NoBuffs-Forever Protection-LongMultiTarget"
  value: {
-  dps: 186.60797
-  tps: 467.96975
+  dps: 185.80641
+  tps: 466.75348
  }
 }
 dps_results: {
  key: "TestProtection-Phase1-Settings-Dwarf-launch-Forever Protection-forever_protection-NoBuffs-Forever Protection-LongSingleTarget"
  value: {
-  dps: 60.47126
-  tps: 113.04541
+  dps: 60.58479
+  tps: 112.82672
  }
 }
 dps_results: {
  key: "TestProtection-Phase1-Settings-Dwarf-launch-Forever Protection-forever_protection-NoBuffs-Forever Protection-ShortSingleTarget"
  value: {
-  dps: 117.09972
-  tps: 210.00132
+  dps: 117.15301
+  tps: 210.06602
  }
 }
 dps_results: {
  key: "TestProtection-Phase1-Settings-Human-launch-Forever Protection-forever_protection-FullBuffs-Forever Protection-LongMultiTarget"
  value: {
-  dps: 300.20912
-  tps: 709.26812
+  dps: 308.60902
+  tps: 724.28065
  }
 }
 dps_results: {
  key: "TestProtection-Phase1-Settings-Human-launch-Forever Protection-forever_protection-FullBuffs-Forever Protection-LongSingleTarget"
  value: {
-  dps: 121.16041
-  tps: 220.98648
+  dps: 125.36341
+  tps: 228.22122
  }
 }
 dps_results: {
  key: "TestProtection-Phase1-Settings-Human-launch-Forever Protection-forever_protection-FullBuffs-Forever Protection-ShortSingleTarget"
  value: {
-  dps: 215.04373
-  tps: 378.30882
+  dps: 215.17235
+  tps: 378.51462
  }
 }
 dps_results: {
  key: "TestProtection-Phase1-Settings-Human-launch-Forever Protection-forever_protection-NoBuffs-Forever Protection-LongMultiTarget"
  value: {
-  dps: 188.5474
-  tps: 471.27952
+  dps: 187.30959
+  tps: 469.11993
  }
 }
 dps_results: {
  key: "TestProtection-Phase1-Settings-Human-launch-Forever Protection-forever_protection-NoBuffs-Forever Protection-LongSingleTarget"
  value: {
-  dps: 62.46828
-  tps: 116.22854
+  dps: 62.00737
+  tps: 115.65917
  }
 }
 dps_results: {
  key: "TestProtection-Phase1-Settings-Human-launch-Forever Protection-forever_protection-NoBuffs-Forever Protection-ShortSingleTarget"
  value: {
-  dps: 119.85142
-  tps: 214.73403
+  dps: 120.07136
+  tps: 215.08775
  }
 }
 dps_results: {
  key: "TestProtection-Phase1-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 521.22062
-  tps: 793.64633
-  dtps: 688.93377
+  dps: 521.73548
+  tps: 794.27494
+  dtps: 688.43254
  }
 }

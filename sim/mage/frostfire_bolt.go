@@ -63,10 +63,17 @@ func (mage *Mage) registerFrostfireBoltSpell() {
 				TickLength:    3 * time.Second,
 				// The client gives the DoT no spell-power coefficient.
 				OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
+					modifier := mage.frostfireBoltPeriodicModifier(dot.Spell)
+					dot.DamageMultiplier *= modifier
 					dot.Snapshot(target, rank.dot, isRollover)
+					dot.DamageMultiplier /= modifier
 				},
 				OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
+					// Forever recalculates offensive modifiers at each tick.
+					modifier := mage.frostfireBoltPeriodicModifier(dot.Spell)
+					dot.DamageMultiplier *= modifier
 					dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
+					dot.DamageMultiplier /= modifier
 				},
 			},
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
@@ -80,4 +87,21 @@ func (mage *Mage) registerFrostfireBoltSpell() {
 			},
 		})
 	}
+}
+
+func (mage *Mage) frostfireBoltPeriodicModifier(spell *core.Spell) float64 {
+	// Client 1.60.1.70245: Arcane Power/Instability's periodic masks
+	// exclude Frostfire Bolt, although their direct masks include it.
+	// Piercing Ice's direct effect has the 2/4/6 rank curve; its periodic
+	// effect is a flat 2 with no rank-curve override.
+	excluded := .01 * float64(mage.Talents.ArcaneInstability)
+	if mage.Talents.PiercingIce > 0 {
+		excluded += .02 * float64(mage.Talents.PiercingIce-1)
+	}
+	if mage.ArcanePowerAura != nil && mage.ArcanePowerAura.IsActive() {
+		excluded += .3
+	}
+	// Retain existing direct additive stacking and all other attacker,
+	// school and DoT modifiers; remove only these periodic exclusions.
+	return (spell.DamageMultiplierAdditive - excluded) / spell.DamageMultiplierAdditive
 }

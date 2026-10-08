@@ -39,19 +39,20 @@ BUILDS = [
 
 BUILD_CAVEATS = {
     "feral": ["Blizzard supports proc-enchant form eligibility, and Crusader's sourced health return is modeled. Its exact PPM/conditional interactions remain qualified (DRU-011); the Night Elf profile uses that enchant."],
-    "pet_melee": ["Hawk damage uses an approximate guardian/pet model. Tracking talents affect its comparison with Survival on different creature types."],
+    "pet_melee": ["Two independent Hawks use provisional high-rank damage and crit calibration (HUN-004); no owner-crit or unverified Lone Wolf coexistence is assumed. Tracking matches the Dragonkin reference target."],
+    "beast_mastery": ["Hawk lifetimes and ranged-speed behavior are source-backed; high-rank assault damage, crit and Ferocity transfer remain qualified (HUN-004). The two-Hawk policy is conditional on the central calibration."],
     "marksmanship": ["Lone Wolf requires no active pet. Improved Tracking assumes tracking matches the Dragonkin reference target."],
     "shadow": ["Death's script value 150 and backlash interactions remain unverified; no extra execute multiplier is inferred. Self-damage is recorded without healer survival constraints."],
-    "arcane_frost": ["Uses an assumed Ice Lance coefficient and unresolved Fingers of Frost, Missile Barrage and Clearcasting timing."],
-    "fury": ["Level-60 rage, queued off-hand hit and Flurry charge timing still need in-game confirmation."],
+    "arcane_frost": ["Ice Lance uses a provisional 0.10 SP share calibrated from lower ranks. Fingers of Frost ordering and Arcane Missiles/Clearcasting proc interpretation remain unresolved; Missile Barrage now requires a landed eligible hit."],
+    "fury": ["Level-60/off-hand rage and some extra-swing interactions remain provisional. The queued-Heroic-Strike off-hand hit bug is removed. Deep Wounds uses the reported intended no-AP rollover model; live delivery and off-hand payload attribution remain qualified."],
     "fury_sunder": ["This Warrior personally builds and refreshes five Sunder stacks. External Sunder and Expose Armor are disabled only for this row; its initial armor ramp and lost globals are included. The provisional Warrior rage model still applies."],
     "fury_2h": ["Level-60 rage and Flurry charge timing remain unverified; this row uses the provisional Warrior model."],
-    "retribution": ["Separate seal Echoes can coexist and fire on a landed white swing; verify their simultaneous behavior in game (T53). Lower-rank seals and Consecration also need confirmation."],
-    "retribution_physical": ["Strength/AP equipment is unchanged. Champion of the Light converts existing Intellect into spell power without equipping caster gear; the separate seal Echoes still require the T53 in-game check."],
-    "smite": ["The rank-2 Smite fallback depends on the modeled low-rank spell-power coefficient."],
-    "stormcaller": ["The rank-2 Lightning Bolt filler depends on the modeled low-rank spell-power coefficient."],
+    "retribution": ["Separate seal Echoes can coexist and fire on a landed white swing; their simultaneous server behavior remains qualified (PAL-002). Active presets use maximum registered ranks, not deliberate downranking."],
+    "retribution_physical": ["Uses a physical equipment budget without caster gear. Champion of the Light converts existing Intellect into damage-only spell bonus, not healing power. Seal Echo ordering remains qualified (PAL-002)."],
+    "smite": ["Uses maximum registered ranks. Penance's static rank anomaly and actual skill-book acquisition remain source gaps; no efficient lower-rank fallback is assumed."],
+    "stormcaller": ["Uses maximum registered Lightning Bolt. Overload uses its own client rank rows; Maelstrom/proc and server-script questions remain qualified."],
     "tank_warrior": ["Tank encounter: frontal attacks, incoming boss damage and modeled healing. Different external support from the non-attacking DPS rows. Rage, shield proc eligibility and scripted Tier effects remain qualified in the uncertainty register.", "Heroic Strike/Cleave now replace swings. Earlier Protection gear/talent search gains used an invalid direct-cast APL and are superseded; the existing gear and talents have been replayed, not re-optimized."],
-    "protection_paladin": ["Tank encounter: frontal attacks, incoming boss damage and modeled healing. Seal of Fury is not implemented; shield and Spiritual Attunement questions remain in the uncertainty register. This is not a survival ranking."],
+    "protection_paladin": ["Tank encounter: frontal attacks, incoming boss damage and modeled healing. Seal of Fury and finite shielding are implemented; remaining shield/Spiritual Attunement details are tracked separately. Gear selections must pass both workload guard policies, which permit limited mitigation tradeoffs. This is not a survival ranking."],
     "feral_tank_druid": ["Tank encounter: frontal attacks, incoming boss damage and modeled healing. Bear retains unverified damage-based rage, not Warrior's normalized formula (DRU-012); threat coefficients also remain provisional. This is not a survival ranking.", "Proc-enchant form eligibility is supported; exact PPM/conditional interactions remain qualified (DRU-011). Historical enchant-selection gains do not validate the current model."],
 }
 

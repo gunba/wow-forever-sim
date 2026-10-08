@@ -56,6 +56,8 @@ def main():
             "currentComboPoints": "Combo points", "remainingTime": "Time remaining",
             "currentTime": "Time elapsed", "numberTargets": "Target count",
             "currentSealRemainingTime": "Seal time remaining",
+            "hunterHawkCount": "Active Hawks",
+            "hunterHawkRemainingTime": "Earliest Hawk expiry",
         }.items():
             if key in value:
                 return label
@@ -77,6 +79,7 @@ def main():
             ("auraRemainingTime", "time remaining", "auraId"),
             ("auraNumStacks", "stacks", "auraId"),
             ("spellCurrentCost", "current cost", "spellId"),
+            ("spellTravelTime", "travel time", "spellId"),
         ):
             if key in value:
                 return f"{action_name(value[key][identifier])} {suffix}"
@@ -94,7 +97,7 @@ def main():
                    if modeled else "../artifacts/forever_dps_5min.png")
     raw_path = ("../artifacts/modelled_gear/forever_dps_5min.json"
                 if modeled else "../artifacts/forever_dps_5min.json")
-    search_path = ("../artifacts/modelled_gear_search/current/summary.json"
+    search_path = ("../artifacts/correctness/october_8/selection-evidence.json"
                    if modeled else "../artifacts/gear_search/summary.json")
     lines = [
         "# Build reviews", "",
@@ -106,8 +109,9 @@ def main():
         f"The tables and [matrix]({matrix_path}) use the same "
         f"{len(results['Results'])} common-seed replays. "
         + ("The modeled search and original real-item benchmark are separate; neither proves "
-           "available launch gear. Equipment is frozen from an earlier mechanics revision; "
-           "historical search controls and gains do not validate this corrected release." if modeled else "Equipment selections came from an earlier "
+           "available launch gear. [October 8](october-8-review.md) independently confirms bounded "
+           "affected-build selections. Priest, Protection Warrior and Bear gear remain fixed; "
+           "older search gains are historical, not current proof of an optimum." if modeled else "Equipment selections came from an earlier "
            "mechanics revision; these results use the corrected engine. Historical search gains "
            "are not directly comparable to this release."), "",
         "The benchmark uses level 60, 300 seconds, one level-63 target, complete role-specific "

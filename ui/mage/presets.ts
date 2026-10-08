@@ -12,6 +12,7 @@ import {
 	ManaRegenElixir,
 	Potions,
 	Profession,
+	Race,
 	RaidBuffs,
 	SpellPowerBuff,
 	TristateEffect,
@@ -63,7 +64,8 @@ export const DefaultAPL = APLFrost;
 
 export const TalentsP1Frost = PresetUtils.makePresetTalents('Frost DPS', SavedTalents.create({ talentsString: '0502050030003--055500033100030024' }));
 export const TalentsP1Arcane = PresetUtils.makePresetTalents('Arcane DPS', SavedTalents.create({ talentsString: '050215003100311531-2305003202003-' }));
-export const TalentsP1Fire = PresetUtils.makePresetTalents('Fire 17/31/3', SavedTalents.create({ talentsString: '0501252000002-23450000130133051-003' }));
+export const TalentsP1Fire = PresetUtils.makePresetTalents('Fire 18/31/2', SavedTalents.create({ talentsString: '0501252000003-23450000130133051-002' }));
+export const TalentsFireHighOrder = PresetUtils.makePresetTalents('Fire High Order 17/31/3', SavedTalents.create({ talentsString: '0501252000002-23450000130133051-003' }));
 
 export const TalentsFire = PresetUtils.makePresetTalents('Fire 0/35/16', SavedTalents.create({ talentsString: '-03552020130133151-005500033' }));
 export const TalentsFrost = PresetUtils.makePresetTalents('Frost 11/3/37', SavedTalents.create({ talentsString: '050005001-03-0555003321001301251' }));
@@ -71,7 +73,7 @@ export const TalentsArcane = PresetUtils.makePresetTalents('Arcane 33/3/15', Sav
 export const TalentsArcaneFrost = PresetUtils.makePresetTalents('Arcane–Frost 28/0/23', SavedTalents.create({ talentsString: '05020500310031053--05550002010003002' }));
 
 export const TalentPresets = {
-	[ClassicPhase.Phase1]: [TalentsP1Frost, TalentsP1Arcane, TalentsP1Fire, TalentsFire, TalentsFrost, TalentsArcane, TalentsArcaneFrost],
+	[ClassicPhase.Phase1]: [TalentsP1Frost, TalentsP1Arcane, TalentsP1Fire, TalentsFireHighOrder, TalentsFire, TalentsFrost, TalentsArcane, TalentsArcaneFrost],
 };
 
 export const DefaultTalents = TalentsFrost;
@@ -125,5 +127,6 @@ export const OtherDefaults = {
 export const BuildPresets = [
 	PresetUtils.makePresetBuild('Arcane', { gear: GearArcane, talents: TalentsArcane, rotation: APLArcane, options: DefaultOptions, distance: 20 }),
 	PresetUtils.makePresetBuild('Fire', { gear: GearFire, talents: TalentsP1Fire, rotation: APLFire, options: DefaultOptions, distance: 20 }),
+	PresetUtils.makePresetBuild('Fire (High Order)', { gear: GearFire, talents: TalentsFireHighOrder, rotation: APLFire, options: DefaultOptions, distance: 20, race: Race.RaceSkyborneHighOrder }),
 	PresetUtils.makePresetBuild('Frost', { gear: GearFrost, talents: TalentsFrost, rotation: APLFrost, options: DefaultOptions, distance: 20 }),
 ];

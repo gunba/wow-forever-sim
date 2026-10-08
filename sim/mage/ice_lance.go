@@ -14,10 +14,12 @@ func (mage *Mage) registerIceLanceSpell() {
 
 	// Beta client 1.60.1.69893: rank 6 (1240047), learned at 56 and grown to its level 60 value. The
 	// demo's 28 to 33 is the client's rank 1.
-	// TODO: the client's damage effect carries no spell power coefficient at all, like the few other
-	// spells whose coefficient moved off the effect row, so .143 is still a guess.
+	// The client has no coefficient. Public beta reports 2727/2687 fit about
+	// .10 rather than the old .143 guess (see the October evidence review).
+	// This remains a provisional extrapolation from lower ranks, not a
+	// controlled level-60 spell-power slope measurement.
 	baseDamage := []float64{136, 161}
-	spellCoeff := .143
+	spellCoeff := .10
 	manaCost := 160.0
 
 	mage.IceLance = mage.RegisterSpell(core.SpellConfig{

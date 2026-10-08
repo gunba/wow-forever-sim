@@ -104,7 +104,7 @@ export const DefaultTalents = TalentsDSRuinPandemic;
 export const DefaultOptions = WarlockOptions.create({
 	armor: Armor.DemonArmor,
 	summon: Summon.Imp,
-	weaponImbue: WarlockWeaponImbue.NoWeaponImbue,
+	weaponImbue: WarlockWeaponImbue.Spellstone,
 });
 
 // Without pet talents the Succubus out-damages the Imp, so the Affliction builds run one; a
@@ -112,7 +112,12 @@ export const DefaultOptions = WarlockOptions.create({
 export const AfflictionOptions = WarlockOptions.create({
 	armor: Armor.DemonArmor,
 	summon: Summon.Succubus,
-	weaponImbue: WarlockWeaponImbue.NoWeaponImbue,
+	weaponImbue: WarlockWeaponImbue.Spellstone,
+});
+
+export const DestructionOptions = WarlockOptions.create({
+	...AfflictionOptions,
+	weaponImbue: WarlockWeaponImbue.Firestone,
 });
 
 // Demonic Pact keeps the sacrifice when another demon is out. The Succubus stays out for Master
@@ -122,7 +127,7 @@ export const DemonicPactOptions = WarlockOptions.create({
 	armor: Armor.DemonArmor,
 	summon: Summon.Succubus,
 	sacrifice: Summon.Voidwalker,
-	weaponImbue: WarlockWeaponImbue.NoWeaponImbue,
+	weaponImbue: WarlockWeaponImbue.Spellstone,
 });
 
 export const DefaultConsumes = Consumes.create({
@@ -132,7 +137,7 @@ export const DefaultConsumes = Consumes.create({
 	flask: Flask.FlaskOfSupremePower,
 	firePowerBuff: FirePowerBuff.ElixirOfFirepower,
 	food: Food.FoodRunnTumTuberSurprise,
-	// mainHandImbue: WeaponImbue.BrilliantWizardOil,
+	mainHandImbue: WeaponImbue.BrilliantWizardOil,
 	manaRegenElixir: ManaRegenElixir.MagebloodPotion,
 	spellPowerBuff: SpellPowerBuff.GreaterArcaneElixir,
 	shadowPowerBuff: ShadowPowerBuff.ElixirOfShadowPower,
@@ -203,7 +208,7 @@ export const BuildPresets = [
 		gear: GearDestruction,
 		talents: TalentsShadowAndFlame,
 		rotation: RotationShadowAndFlame,
-		options: AfflictionOptions,
+		options: DestructionOptions,
 		distance: 20,
 	}),
 ];

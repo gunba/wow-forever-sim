@@ -96,7 +96,7 @@ def main():
         shutil.copyfile(args.results.with_suffix("." + extension), args.output / ("results." + extension))
     for name in ("build_reviews.md", "build_updates.md", "gear_updates.md", "in_game_checks.md", "check_dispositions.md", "spell_coverage.md", "windfury.md", "energy_audit.md", "auto_attack_audit.md", "crit_model.md", "forever_gear_data.md", "mechanics_review.md", "history_review.md", "upstream-forever-review-2026-09-23.md", "upstream-forever-followup-2026-09-23.md", "mana_regeneration.md", "mythicsim_review.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
-    for name in ("weekly_review.md", "weekly_review_commits.csv", "flurry_review.md", "upstream_elliot_review.md", "tank_benchmark.md", "tank_selection.md", "paladin_mana.md", "protection_queue.md", "tank_support.md", "protection_sunder.md", "forever-70009.md", "october-1-corrections.md"):
+    for name in ("weekly_review.md", "weekly_review_commits.csv", "flurry_review.md", "upstream_elliot_review.md", "tank_benchmark.md", "tank_selection.md", "paladin_mana.md", "protection_queue.md", "tank_support.md", "protection_sunder.md", "forever-70009.md", "october-1-corrections.md", "october-8-review.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
     body = []
     for key, class_name, label, icon in builds:
@@ -195,12 +195,16 @@ def main():
             'Gear, talents and unverified class mechanics still differ; this is not a verified survival ranking.</p>'
             '<p class="note">Iterations continue after a modeled death. DPS is not discounted for death downtime; '
             'survival is evaluated separately.</p>'
-            '<p class="note">Current correctness checks replay all 17 fixed tank profiles in their original workloads; '
+            '<p class="note">Current correctness checks replay all 17 selected tank profiles in their original workloads; '
             'two disjoint 5,000-iteration ranges are pooled for the separate three-attacker table. '
             '<a href="correctness_release.md">Corrections and limits</a>. '
             'Protection Warrior now queues Heroic Strike/Cleave correctly. Its previous '
-            'direct-cast DPS and selection gains are invalid; current gear and talents are replayed, not re-optimized. '
+            'direct-cast DPS and selection gains are invalid; its current gear and talents remain fixed. '
             '<a href="protection_queue.md">Queue correction</a>. '
+            'October 8 reselects only Protection Paladin gear under the original per-seed, both-workload '
+            'point-estimate guards. Small TMI increases remain within the 2% tolerance; '
+            'this is not improved survival or a 95% proof of no harm. '
+            '<a href="october-8-review.md">Current selections and limits</a>. '
             'Shared support and Paladin oil/Judgement timing are included in the current replays; '
             '<a href="tank_support.md">settings and evidence</a>. '
             'Protection reserves rage and refreshes Sunder before stacks expire; '
@@ -245,7 +249,7 @@ th span{font-weight:400}.unavailable{color:#68707e}td a{color:inherit}
 These are tested profiles, not proven global optima or measured class balance.</p>
 <nav class="links" aria-label="Benchmark navigation"><a href="#matrix">DPS matrix</a>
 <a href="#questions">Questions &amp; coverage</a><a href="results.png">Chart</a>
-<a href="october-1-corrections.md">October 1 corrections</a>
+<a href="october-8-review.md">October 8 review and corrections</a>
 <a href="""" + build_review + """">Build details</a></nav>
 """ + questions_html(register) + """
 <details class="resource-group"><summary>Method, gear and gain columns</summary>
@@ -274,6 +278,8 @@ This is finite-range curvature, not proof of exponential growth, isolated synerg
 <a href="correctness_workplan.md">Implementation ledger</a>
 <a href="question_review/correctness_followup.json">Feature coverage</a>
 <a href="correctness/tank_checks.json.gz">Current tank requests/results</a>
+<a href="correctness/october_8/selection-evidence.json">October 8 selection evidence</a>
+<a href="correctness/october_8/before.json.gz">Superseded October 2 release</a>
 <a href="october_1/comparison.json">October 1 profile changes</a>
 <a href="october_1/before.json.gz">Superseded October 1 controls</a>
 <a href="october_1/support_comparison.json.gz">Provisional Flametongue comparison</a>

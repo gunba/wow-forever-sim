@@ -1421,7 +1421,7 @@
             },
             {
               "id": 920000357,
-              "enchant": 2646
+              "enchant": 1900
             },
             {},
             {
@@ -2115,7 +2115,7 @@
             },
             {
               "id": 920000357,
-              "enchant": 2646
+              "enchant": 1900
             },
             {},
             {
@@ -2461,7 +2461,7 @@
               "id": 920000421
             },
             {
-              "id": 920000335,
+              "id": 920000382,
               "enchant": 2504
             },
             {
@@ -4367,7 +4367,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "550133130010304-054030031004002",
+        "talentsString": "550133130010304-055030021004002",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -4722,7 +4722,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "550133130010304-054030031004002",
+        "talentsString": "550133130010304-055030021004002",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -5077,7 +5077,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "550133130010304-054030031004002",
+        "talentsString": "550133130010304-055030021004002",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -5432,7 +5432,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "550133130010304-054030031004002",
+        "talentsString": "550133130010304-055030021004002",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -5785,7 +5785,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "550133130010304-054030031004002",
+        "talentsString": "550133130010304-055030021004002",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -8175,7 +8175,7 @@
               "enchant": 2564
             },
             {
-              "id": 920000374,
+              "id": 920000376,
               "enchant": 8720
             }
           ]
@@ -8249,7 +8249,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "5320001505101251-00531510005",
+        "talentsString": "5320001505101251-00522510005",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -8300,14 +8300,37 @@
             {
               "action": {
                 "condition": {
-                  "not": {
-                    "val": {
-                      "dotIsActive": {
-                        "spellId": {
-                          "spellId": 1293527
+                  "or": {
+                    "vals": [
+                      {
+                        "cmp": {
+                          "op": "OpLt",
+                          "lhs": {
+                            "hunterHawkCount": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "2"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpLe",
+                          "lhs": {
+                            "hunterHawkRemainingTime": {}
+                          },
+                          "rhs": {
+                            "spellTravelTime": {
+                              "spellId": {
+                                "spellId": 1293527
+                              }
+                            }
+                          }
                         }
                       }
-                    }
+                    ]
                   }
                 },
                 "castSpell": {
@@ -8541,7 +8564,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "5320001505101251-00531510005",
+        "talentsString": "5320001505101251-00522510005",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -8592,14 +8615,37 @@
             {
               "action": {
                 "condition": {
-                  "not": {
-                    "val": {
-                      "dotIsActive": {
-                        "spellId": {
-                          "spellId": 1293527
+                  "or": {
+                    "vals": [
+                      {
+                        "cmp": {
+                          "op": "OpLt",
+                          "lhs": {
+                            "hunterHawkCount": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "2"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpLe",
+                          "lhs": {
+                            "hunterHawkRemainingTime": {}
+                          },
+                          "rhs": {
+                            "spellTravelTime": {
+                              "spellId": {
+                                "spellId": 1293527
+                              }
+                            }
+                          }
                         }
                       }
-                    }
+                    ]
                   }
                 },
                 "castSpell": {
@@ -8833,7 +8879,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "5320001505101251-00531510005",
+        "talentsString": "5320001505101251-00522510005",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -8884,14 +8930,37 @@
             {
               "action": {
                 "condition": {
-                  "not": {
-                    "val": {
-                      "dotIsActive": {
-                        "spellId": {
-                          "spellId": 1293527
+                  "or": {
+                    "vals": [
+                      {
+                        "cmp": {
+                          "op": "OpLt",
+                          "lhs": {
+                            "hunterHawkCount": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "2"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpLe",
+                          "lhs": {
+                            "hunterHawkRemainingTime": {}
+                          },
+                          "rhs": {
+                            "spellTravelTime": {
+                              "spellId": {
+                                "spellId": 1293527
+                              }
+                            }
+                          }
                         }
                       }
-                    }
+                    ]
                   }
                 },
                 "castSpell": {
@@ -9125,7 +9194,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "5320001505101251-00531510005",
+        "talentsString": "5320001505101251-00522510005",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -9176,14 +9245,37 @@
             {
               "action": {
                 "condition": {
-                  "not": {
-                    "val": {
-                      "dotIsActive": {
-                        "spellId": {
-                          "spellId": 1293527
+                  "or": {
+                    "vals": [
+                      {
+                        "cmp": {
+                          "op": "OpLt",
+                          "lhs": {
+                            "hunterHawkCount": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "2"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpLe",
+                          "lhs": {
+                            "hunterHawkRemainingTime": {}
+                          },
+                          "rhs": {
+                            "spellTravelTime": {
+                              "spellId": {
+                                "spellId": 1293527
+                              }
+                            }
+                          }
                         }
                       }
-                    }
+                    ]
                   }
                 },
                 "castSpell": {
@@ -9343,7 +9435,7 @@
               "enchant": 2564
             },
             {
-              "id": 920000374,
+              "id": 920000376,
               "enchant": 8720
             }
           ]
@@ -9417,7 +9509,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "5320001505101251-00531510005",
+        "talentsString": "5320001505101251-00522510005",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -9468,14 +9560,37 @@
             {
               "action": {
                 "condition": {
-                  "not": {
-                    "val": {
-                      "dotIsActive": {
-                        "spellId": {
-                          "spellId": 1293527
+                  "or": {
+                    "vals": [
+                      {
+                        "cmp": {
+                          "op": "OpLt",
+                          "lhs": {
+                            "hunterHawkCount": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "2"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpLe",
+                          "lhs": {
+                            "hunterHawkRemainingTime": {}
+                          },
+                          "rhs": {
+                            "spellTravelTime": {
+                              "spellId": {
+                                "spellId": 1293527
+                              }
+                            }
+                          }
                         }
                       }
-                    }
+                    ]
                   }
                 },
                 "castSpell": {
@@ -9709,7 +9824,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "5320001505101251-00531510005",
+        "talentsString": "5320001505101251-00522510005",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -9760,14 +9875,37 @@
             {
               "action": {
                 "condition": {
-                  "not": {
-                    "val": {
-                      "dotIsActive": {
-                        "spellId": {
-                          "spellId": 1293527
+                  "or": {
+                    "vals": [
+                      {
+                        "cmp": {
+                          "op": "OpLt",
+                          "lhs": {
+                            "hunterHawkCount": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "2"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpLe",
+                          "lhs": {
+                            "hunterHawkRemainingTime": {}
+                          },
+                          "rhs": {
+                            "spellTravelTime": {
+                              "spellId": {
+                                "spellId": 1293527
+                              }
+                            }
+                          }
                         }
                       }
-                    }
+                    ]
                   }
                 },
                 "castSpell": {
@@ -10001,7 +10139,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "5320001505101251-00531510005",
+        "talentsString": "5320001505101251-00522510005",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -10052,14 +10190,37 @@
             {
               "action": {
                 "condition": {
-                  "not": {
-                    "val": {
-                      "dotIsActive": {
-                        "spellId": {
-                          "spellId": 1293527
+                  "or": {
+                    "vals": [
+                      {
+                        "cmp": {
+                          "op": "OpLt",
+                          "lhs": {
+                            "hunterHawkCount": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "2"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpLe",
+                          "lhs": {
+                            "hunterHawkRemainingTime": {}
+                          },
+                          "rhs": {
+                            "spellTravelTime": {
+                              "spellId": {
+                                "spellId": 1293527
+                              }
+                            }
+                          }
                         }
                       }
-                    }
+                    ]
                   }
                 },
                 "castSpell": {
@@ -10293,7 +10454,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "5320001505101251-00531510005",
+        "talentsString": "5320001505101251-00522510005",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -10344,14 +10505,37 @@
             {
               "action": {
                 "condition": {
-                  "not": {
-                    "val": {
-                      "dotIsActive": {
-                        "spellId": {
-                          "spellId": 1293527
+                  "or": {
+                    "vals": [
+                      {
+                        "cmp": {
+                          "op": "OpLt",
+                          "lhs": {
+                            "hunterHawkCount": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "2"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpLe",
+                          "lhs": {
+                            "hunterHawkRemainingTime": {}
+                          },
+                          "rhs": {
+                            "spellTravelTime": {
+                              "spellId": {
+                                "spellId": 1293527
+                              }
+                            }
+                          }
                         }
                       }
-                    }
+                    ]
                   }
                 },
                 "castSpell": {
@@ -15393,7 +15577,7 @@
                           },
                           "rhs": {
                             "const": {
-                              "val": "4"
+                              "val": "3"
                             }
                           }
                         }
@@ -15416,8 +15600,7 @@
                 },
                 "castSpell": {
                   "spellId": {
-                    "spellId": 25304,
-                    "rank": 11
+                    "spellId": 25304
                   }
                 }
               }
@@ -15665,7 +15848,7 @@
                           },
                           "rhs": {
                             "const": {
-                              "val": "4"
+                              "val": "3"
                             }
                           }
                         }
@@ -15688,8 +15871,7 @@
                 },
                 "castSpell": {
                   "spellId": {
-                    "spellId": 25304,
-                    "rank": 11
+                    "spellId": 25304
                   }
                 }
               }
@@ -15937,7 +16119,7 @@
                           },
                           "rhs": {
                             "const": {
-                              "val": "4"
+                              "val": "3"
                             }
                           }
                         }
@@ -15960,8 +16142,7 @@
                 },
                 "castSpell": {
                   "spellId": {
-                    "spellId": 25304,
-                    "rank": 11
+                    "spellId": 25304
                   }
                 }
               }
@@ -16209,7 +16390,7 @@
                           },
                           "rhs": {
                             "const": {
-                              "val": "4"
+                              "val": "3"
                             }
                           }
                         }
@@ -16232,8 +16413,7 @@
                 },
                 "castSpell": {
                   "spellId": {
-                    "spellId": 25304,
-                    "rank": 11
+                    "spellId": 25304
                   }
                 }
               }
@@ -16481,7 +16661,7 @@
                           },
                           "rhs": {
                             "const": {
-                              "val": "4"
+                              "val": "3"
                             }
                           }
                         }
@@ -16504,8 +16684,7 @@
                 },
                 "castSpell": {
                   "spellId": {
-                    "spellId": 25304,
-                    "rank": 11
+                    "spellId": 25304
                   }
                 }
               }
@@ -16753,7 +16932,7 @@
                           },
                           "rhs": {
                             "const": {
-                              "val": "4"
+                              "val": "3"
                             }
                           }
                         }
@@ -16776,8 +16955,7 @@
                 },
                 "castSpell": {
                   "spellId": {
-                    "spellId": 25304,
-                    "rank": 11
+                    "spellId": 25304
                   }
                 }
               }
@@ -16813,7 +16991,7 @@
         "equipment": {
           "items": [
             {
-              "id": 920000007,
+              "id": 920000386,
               "enchant": 2544
             },
             {
@@ -16941,7 +17119,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "0501252000002-23450000130133051-003",
+        "talentsString": "0501252000003-23450000130133051-002",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -17183,7 +17361,7 @@
         "equipment": {
           "items": [
             {
-              "id": 920000007,
+              "id": 920000386,
               "enchant": 2544
             },
             {
@@ -17311,7 +17489,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "0501252000002-23450000130133051-003",
+        "talentsString": "0501252000003-23450000130133051-002",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -17553,7 +17731,7 @@
         "equipment": {
           "items": [
             {
-              "id": 920000007,
+              "id": 920000386,
               "enchant": 2544
             },
             {
@@ -17681,7 +17859,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "0501252000002-23450000130133051-003",
+        "talentsString": "0501252000003-23450000130133051-002",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -17923,7 +18101,7 @@
         "equipment": {
           "items": [
             {
-              "id": 920000005,
+              "id": 920000386,
               "enchant": 2544
             },
             {
@@ -18051,7 +18229,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "0501252000002-23450000130133051-003",
+        "talentsString": "0501252000003-23450000130133051-002",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -18293,7 +18471,7 @@
         "equipment": {
           "items": [
             {
-              "id": 920000007,
+              "id": 920000386,
               "enchant": 2544
             },
             {
@@ -18420,7 +18598,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "0501252000002-23450000130133051-003",
+        "talentsString": "0501252000003-23450000130133051-002",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -20571,7 +20749,7 @@
             },
             {
               "id": 920000369,
-              "enchant": 1900
+              "enchant": 803
             },
             {},
             {
@@ -20910,8 +21088,8 @@
               "id": 920000316
             },
             {
-              "id": 920000369,
-              "enchant": 1900
+              "id": 920000360,
+              "enchant": 1898
             },
             {},
             {
@@ -21251,7 +21429,7 @@
             },
             {
               "id": 920000369,
-              "enchant": 1900
+              "enchant": 1898
             },
             {},
             {
@@ -25120,11 +25298,11 @@
               "id": 920000317
             },
             {
-              "id": 920000348,
+              "id": 920000334,
               "enchant": 1900
             },
             {
-              "id": 920000332,
+              "id": 920000335,
               "enchant": 2564
             },
             {
@@ -25141,12 +25319,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -25505,7 +25683,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -25592,12 +25773,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -25956,7 +26137,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -26043,12 +26227,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -26407,7 +26591,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -26494,12 +26681,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -26858,7 +27045,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -26924,11 +27114,11 @@
               "id": 920000317
             },
             {
-              "id": 920000348,
+              "id": 920000334,
               "enchant": 803
             },
             {
-              "id": 920000332,
+              "id": 920000338,
               "enchant": 2564
             },
             {
@@ -26945,12 +27135,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -27309,7 +27499,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -27375,11 +27568,11 @@
               "id": 920000317
             },
             {
-              "id": 920000348,
+              "id": 920000334,
               "enchant": 1900
             },
             {
-              "id": 920000332,
+              "id": 920000338,
               "enchant": 2564
             },
             {
@@ -27396,12 +27589,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -27760,7 +27953,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -27847,12 +28043,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -28211,7 +28407,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -28298,12 +28497,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -28662,7 +28861,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -28749,12 +28951,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -29113,7 +29315,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -29179,7 +29384,7 @@
               "id": 920000317
             },
             {
-              "id": 920000341,
+              "id": 920000343,
               "enchant": 803
             },
             {
@@ -29200,12 +29405,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -29482,7 +29687,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -29548,7 +29756,7 @@
               "id": 920000317
             },
             {
-              "id": 920000341,
+              "id": 920000343,
               "enchant": 803
             },
             {
@@ -29569,12 +29777,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -29851,7 +30059,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -29917,7 +30128,7 @@
               "id": 920000317
             },
             {
-              "id": 920000341,
+              "id": 920000342,
               "enchant": 803
             },
             {
@@ -29938,12 +30149,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -30220,7 +30431,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -30286,7 +30500,7 @@
               "id": 920000317
             },
             {
-              "id": 920000341,
+              "id": 920000343,
               "enchant": 803
             },
             {
@@ -30307,12 +30521,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -30589,7 +30803,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -30655,11 +30872,11 @@
               "id": 920000317
             },
             {
-              "id": 920000341,
+              "id": 920000343,
               "enchant": 1900
             },
             {
-              "id": 920000344,
+              "id": 920000345,
               "enchant": 803
             },
             {
@@ -30676,12 +30893,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -30958,7 +31175,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -31024,11 +31244,11 @@
               "id": 920000317
             },
             {
-              "id": 920000341,
+              "id": 920000342,
               "enchant": 803
             },
             {
-              "id": 920000344,
+              "id": 920000345,
               "enchant": 1900
             },
             {
@@ -31045,12 +31265,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -31327,7 +31547,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -31393,7 +31616,7 @@
               "id": 920000317
             },
             {
-              "id": 920000341,
+              "id": 920000343,
               "enchant": 803
             },
             {
@@ -31414,12 +31637,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -31696,7 +31919,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -31762,11 +31988,11 @@
               "id": 920000317
             },
             {
-              "id": 920000341,
+              "id": 920000342,
               "enchant": 803
             },
             {
-              "id": 920000344,
+              "id": 920000345,
               "enchant": 803
             },
             {
@@ -31783,12 +32009,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -32065,7 +32291,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -32131,7 +32360,7 @@
               "id": 920000317
             },
             {
-              "id": 920000341,
+              "id": 920000343,
               "enchant": 803
             },
             {
@@ -32152,12 +32381,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -32434,7 +32663,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -32520,12 +32752,12 @@
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -33014,7 +33246,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -33100,12 +33335,12 @@
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -33594,7 +33829,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -33680,12 +33918,12 @@
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -34174,7 +34412,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -34260,12 +34501,12 @@
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -34754,7 +34995,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -34821,7 +35065,7 @@
             },
             {
               "id": 920000343,
-              "enchant": 803
+              "enchant": 1900
             },
             {
               "id": 920000332,
@@ -34840,12 +35084,12 @@
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -35334,7 +35578,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -35420,12 +35667,12 @@
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -35914,7 +36161,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -36000,12 +36250,12 @@
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -36494,7 +36744,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -36580,12 +36833,12 @@
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -37074,7 +37327,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -37160,12 +37416,12 @@
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
-          "mainHandImbue": "InstantPoison",
-          "offHandImbue": "DeadlyPoison",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper"
+          "sapperExplosive": "SapperGoblinSapper",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone"
         },
         "bonusStats": {
           "stats": [
@@ -37654,7 +37910,10 @@
         },
         "distanceFromTarget": 5,
         "rogue": {
-          "options": {}
+          "options": {
+            "mainHandPoison": "InstantPoison",
+            "offHandPoison": "DeadlyPoison"
+          }
         }
       }
     },
@@ -38236,7 +38495,8 @@
           "options": {
             "armor": "DemonArmor",
             "summon": "Succubus",
-            "sacrifice": "Voidwalker"
+            "sacrifice": "Voidwalker",
+            "weaponImbue": "Spellstone"
           }
         }
       }
@@ -38819,7 +39079,8 @@
           "options": {
             "armor": "DemonArmor",
             "summon": "Succubus",
-            "sacrifice": "Voidwalker"
+            "sacrifice": "Voidwalker",
+            "weaponImbue": "Spellstone"
           }
         }
       }
@@ -39402,7 +39663,8 @@
           "options": {
             "armor": "DemonArmor",
             "summon": "Succubus",
-            "sacrifice": "Voidwalker"
+            "sacrifice": "Voidwalker",
+            "weaponImbue": "Spellstone"
           }
         }
       }
@@ -39985,7 +40247,8 @@
           "options": {
             "armor": "DemonArmor",
             "summon": "Succubus",
-            "sacrifice": "Voidwalker"
+            "sacrifice": "Voidwalker",
+            "weaponImbue": "Spellstone"
           }
         }
       }
@@ -40568,7 +40831,8 @@
           "options": {
             "armor": "DemonArmor",
             "summon": "Succubus",
-            "sacrifice": "Voidwalker"
+            "sacrifice": "Voidwalker",
+            "weaponImbue": "Spellstone"
           }
         }
       }
@@ -41193,7 +41457,8 @@
         "warlock": {
           "options": {
             "armor": "DemonArmor",
-            "summon": "Succubus"
+            "summon": "Succubus",
+            "weaponImbue": "Spellstone"
           }
         }
       }
@@ -41818,7 +42083,8 @@
         "warlock": {
           "options": {
             "armor": "DemonArmor",
-            "summon": "Succubus"
+            "summon": "Succubus",
+            "weaponImbue": "Spellstone"
           }
         }
       }
@@ -42443,7 +42709,8 @@
         "warlock": {
           "options": {
             "armor": "DemonArmor",
-            "summon": "Succubus"
+            "summon": "Succubus",
+            "weaponImbue": "Spellstone"
           }
         }
       }
@@ -43068,7 +43335,8 @@
         "warlock": {
           "options": {
             "armor": "DemonArmor",
-            "summon": "Succubus"
+            "summon": "Succubus",
+            "weaponImbue": "Spellstone"
           }
         }
       }
@@ -43693,7 +43961,8 @@
         "warlock": {
           "options": {
             "armor": "DemonArmor",
-            "summon": "Succubus"
+            "summon": "Succubus",
+            "weaponImbue": "Spellstone"
           }
         }
       }
@@ -44225,7 +44494,8 @@
         "warlock": {
           "options": {
             "armor": "DemonArmor",
-            "summon": "Imp"
+            "summon": "Imp",
+            "weaponImbue": "Spellstone"
           }
         }
       }
@@ -44757,7 +45027,8 @@
         "warlock": {
           "options": {
             "armor": "DemonArmor",
-            "summon": "Imp"
+            "summon": "Imp",
+            "weaponImbue": "Spellstone"
           }
         }
       }
@@ -45289,7 +45560,8 @@
         "warlock": {
           "options": {
             "armor": "DemonArmor",
-            "summon": "Imp"
+            "summon": "Imp",
+            "weaponImbue": "Spellstone"
           }
         }
       }
@@ -45821,7 +46093,8 @@
         "warlock": {
           "options": {
             "armor": "DemonArmor",
-            "summon": "Imp"
+            "summon": "Imp",
+            "weaponImbue": "Spellstone"
           }
         }
       }
@@ -46353,7 +46626,8 @@
         "warlock": {
           "options": {
             "armor": "DemonArmor",
-            "summon": "Imp"
+            "summon": "Imp",
+            "weaponImbue": "Spellstone"
           }
         }
       }
@@ -46881,7 +47155,8 @@
         "warlock": {
           "options": {
             "armor": "DemonArmor",
-            "summon": "Succubus"
+            "summon": "Succubus",
+            "weaponImbue": "Firestone"
           }
         }
       }
@@ -47409,7 +47684,8 @@
         "warlock": {
           "options": {
             "armor": "DemonArmor",
-            "summon": "Succubus"
+            "summon": "Succubus",
+            "weaponImbue": "Firestone"
           }
         }
       }
@@ -47937,7 +48213,8 @@
         "warlock": {
           "options": {
             "armor": "DemonArmor",
-            "summon": "Succubus"
+            "summon": "Succubus",
+            "weaponImbue": "Firestone"
           }
         }
       }
@@ -48465,7 +48742,8 @@
         "warlock": {
           "options": {
             "armor": "DemonArmor",
-            "summon": "Succubus"
+            "summon": "Succubus",
+            "weaponImbue": "Firestone"
           }
         }
       }
@@ -48993,7 +49271,8 @@
         "warlock": {
           "options": {
             "armor": "DemonArmor",
-            "summon": "Succubus"
+            "summon": "Succubus",
+            "weaponImbue": "Firestone"
           }
         }
       }
@@ -49143,7 +49422,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "20305113002-25053005151010501",
+        "talentsString": "20305213002-25053005141010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -49378,7 +49657,7 @@
               "id": 920000298
             },
             {
-              "id": 920000064,
+              "id": 920000066,
               "enchant": 2488
             },
             {
@@ -49504,7 +49783,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "20305113002-25053005151010501",
+        "talentsString": "20305213002-25053005141010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -49875,7 +50154,7 @@
               "id": 920000298
             },
             {
-              "id": 920000064,
+              "id": 920000066,
               "enchant": 2488
             },
             {
@@ -49891,7 +50170,7 @@
               "enchant": 1885
             },
             {
-              "id": 920000172,
+              "id": 920000174,
               "enchant": 931
             },
             {
@@ -50001,7 +50280,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "20305113002-25053005151010501",
+        "talentsString": "20305213002-25053005141010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -50236,7 +50515,7 @@
               "id": 920000298
             },
             {
-              "id": 920000064,
+              "id": 920000066,
               "enchant": 2488
             },
             {
@@ -50362,7 +50641,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "20305113002-25053005151010501",
+        "talentsString": "20305213002-25053005141010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -50859,7 +51138,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "20305113002-25053005151010501",
+        "talentsString": "20305213002-25053005141010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -51125,7 +51404,7 @@
               "enchant": 1887
             },
             {
-              "id": 920000307
+              "id": 920000309
             },
             {
               "id": 920000307
@@ -51221,7 +51500,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "20305113002-25053005151010501",
+        "talentsString": "20305213002-25053005141010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -51718,7 +51997,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "20305113002-25053005151010501",
+        "talentsString": "20305213002-25053005141010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -51946,7 +52225,7 @@
         "equipment": {
           "items": [
             {
-              "id": 920000028,
+              "id": 920000030,
               "enchant": 1506
             },
             {
@@ -52079,7 +52358,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "20305113002-25053005151010501",
+        "talentsString": "20305213002-25053005141010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -52576,7 +52855,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "20305113002-25053005151010501",
+        "talentsString": "20305213002-25053005141010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -52808,10 +53087,10 @@
               "enchant": 2543
             },
             {
-              "id": 920000298
+              "id": 920000300
             },
             {
-              "id": 920000064,
+              "id": 920000066,
               "enchant": 2488
             },
             {
@@ -52819,7 +53098,7 @@
               "enchant": 849
             },
             {
-              "id": 920000100,
+              "id": 920000102,
               "enchant": 1891
             },
             {
@@ -52937,7 +53216,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "20305113002-25053005151010501",
+        "talentsString": "20305213002-25053005141010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -53434,7 +53713,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "20305113002-25053005151010501",
+        "talentsString": "20305213002-25053005141010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -53662,11 +53941,11 @@
         "equipment": {
           "items": [
             {
-              "id": 920000028,
+              "id": 920000030,
               "enchant": 2543
             },
             {
-              "id": 920000298
+              "id": 920000300
             },
             {
               "id": 920000066,
@@ -53677,7 +53956,7 @@
               "enchant": 849
             },
             {
-              "id": 920000100,
+              "id": 920000102,
               "enchant": 1891
             },
             {
@@ -53795,7 +54074,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "20305113002-25053005151010501",
+        "talentsString": "20305213002-25053005141010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -54182,11 +54461,11 @@
               "enchant": 1885
             },
             {
-              "id": 920000172,
+              "id": 920000174,
               "enchant": 931
             },
             {
-              "id": 920000208
+              "id": 920000210
             },
             {
               "id": 920000246,
@@ -54209,7 +54488,7 @@
               "id": 920000316
             },
             {
-              "id": 920000334,
+              "id": 920000340,
               "enchant": 1900
             },
             {
@@ -54292,7 +54571,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "20305113002-25053005151010501",
+        "talentsString": "20305213002-25053005141010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -54550,7 +54829,7 @@
               "id": 920000208
             },
             {
-              "id": 920000244,
+              "id": 920000246,
               "enchant": 1506
             },
             {
@@ -54574,7 +54853,7 @@
               "enchant": 1900
             },
             {
-              "id": 920000350,
+              "id": 920000349,
               "enchant": 1900
             },
             {
@@ -54653,7 +54932,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "20305113002-25053005151010501",
+        "talentsString": "20305213002-25053005141010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -55150,7 +55429,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "20305113002-25053005151010501",
+        "talentsString": "20305213002-25053005141010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -55385,7 +55664,7 @@
               "id": 920000298
             },
             {
-              "id": 920000064,
+              "id": 920000066,
               "enchant": 2488
             },
             {
@@ -55511,7 +55790,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "20305113002-25053005151010501",
+        "talentsString": "20305213002-25053005141010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -56008,7 +56287,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "20305113002-25053005151010501",
+        "talentsString": "20305213002-25053005141010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -56267,7 +56546,7 @@
             },
             {
               "id": 920000246,
-              "enchant": 1506
+              "enchant": 2543
             },
             {
               "id": 920000280,
@@ -56369,7 +56648,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "20305113002-25053005151010501",
+        "talentsString": "20305213002-25053005141010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -56866,7 +57145,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "20305113002-25053005151010501",
+        "talentsString": "20305213002-25053005141010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -57098,10 +57377,10 @@
               "enchant": 2543
             },
             {
-              "id": 920000298
+              "id": 920000300
             },
             {
-              "id": 920000064,
+              "id": 920000066,
               "enchant": 2488
             },
             {
@@ -57109,7 +57388,7 @@
               "enchant": 849
             },
             {
-              "id": 920000100,
+              "id": 920000102,
               "enchant": 1891
             },
             {
@@ -57227,7 +57506,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "20305113002-25053005151010501",
+        "talentsString": "20305213002-25053005141010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -61620,7 +61899,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "53200005001-005005-5302002300502201",
+        "talentsString": "53200005001-0050051-5302002300501201",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -61740,12 +62019,14 @@
                   "and": {
                     "vals": [
                       {
-                        "not": {
-                          "val": {
-                            "dotIsActive": {
-                              "spellId": {
-                                "spellId": 1293527
-                              }
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "currentTime": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "0s"
                             }
                           }
                         }
@@ -61976,7 +62257,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "53200005001-005005-5302002300502201",
+        "talentsString": "53200005001-0050051-5302002300501201",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -62096,12 +62377,14 @@
                   "and": {
                     "vals": [
                       {
-                        "not": {
-                          "val": {
-                            "dotIsActive": {
-                              "spellId": {
-                                "spellId": 1293527
-                              }
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "currentTime": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "0s"
                             }
                           }
                         }
@@ -62332,7 +62615,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "53200005001-005005-5302002300502201",
+        "talentsString": "53200005001-0050051-5302002300501201",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -62452,12 +62735,14 @@
                   "and": {
                     "vals": [
                       {
-                        "not": {
-                          "val": {
-                            "dotIsActive": {
-                              "spellId": {
-                                "spellId": 1293527
-                              }
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "currentTime": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "0s"
                             }
                           }
                         }
@@ -62688,7 +62973,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "53200005001-005005-5302002300502201",
+        "talentsString": "53200005001-0050051-5302002300501201",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -62808,12 +63093,14 @@
                   "and": {
                     "vals": [
                       {
-                        "not": {
-                          "val": {
-                            "dotIsActive": {
-                              "spellId": {
-                                "spellId": 1293527
-                              }
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "currentTime": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "0s"
                             }
                           }
                         }
@@ -63044,7 +63331,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "53200005001-005005-5302002300502201",
+        "talentsString": "53200005001-0050051-5302002300501201",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -63164,12 +63451,14 @@
                   "and": {
                     "vals": [
                       {
-                        "not": {
-                          "val": {
-                            "dotIsActive": {
-                              "spellId": {
-                                "spellId": 1293527
-                              }
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "currentTime": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "0s"
                             }
                           }
                         }
@@ -63311,7 +63600,7 @@
               "id": 920000307
             },
             {
-              "id": 920000316
+              "id": 920000317
             },
             {
               "id": 920000316
@@ -63400,7 +63689,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "53200005001-005005-5302002300502201",
+        "talentsString": "53200005001-0050051-5302002300501201",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -63520,12 +63809,14 @@
                   "and": {
                     "vals": [
                       {
-                        "not": {
-                          "val": {
-                            "dotIsActive": {
-                              "spellId": {
-                                "spellId": 1293527
-                              }
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "currentTime": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "0s"
                             }
                           }
                         }
@@ -63756,7 +64047,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "53200005001-005005-5302002300502201",
+        "talentsString": "53200005001-0050051-5302002300501201",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -63876,12 +64167,14 @@
                   "and": {
                     "vals": [
                       {
-                        "not": {
-                          "val": {
-                            "dotIsActive": {
-                              "spellId": {
-                                "spellId": 1293527
-                              }
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "currentTime": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "0s"
                             }
                           }
                         }
@@ -64112,7 +64405,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "53200005001-005005-5302002300502201",
+        "talentsString": "53200005001-0050051-5302002300501201",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -64232,12 +64525,14 @@
                   "and": {
                     "vals": [
                       {
-                        "not": {
-                          "val": {
-                            "dotIsActive": {
-                              "spellId": {
-                                "spellId": 1293527
-                              }
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "currentTime": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "0s"
                             }
                           }
                         }
@@ -65914,7 +66209,7 @@
           "items": [
             {
               "id": 920000030,
-              "enchant": 1506
+              "enchant": 2543
             },
             {
               "id": 920000300
@@ -66043,7 +66338,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "30304203032-55050030051010501",
+        "talentsString": "30304203032-55050020151010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -66239,7 +66534,7 @@
           "items": [
             {
               "id": 920000030,
-              "enchant": 1506
+              "enchant": 2543
             },
             {
               "id": 920000300
@@ -66368,7 +66663,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "30304203032-55050030051010501",
+        "talentsString": "30304203032-55050020151010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -66564,7 +66859,7 @@
           "items": [
             {
               "id": 920000030,
-              "enchant": 1506
+              "enchant": 2543
             },
             {
               "id": 920000300
@@ -66693,7 +66988,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "30304203032-55050030051010501",
+        "talentsString": "30304203032-55050020151010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -66889,7 +67184,7 @@
           "items": [
             {
               "id": 920000030,
-              "enchant": 1506
+              "enchant": 2543
             },
             {
               "id": 920000300
@@ -67018,7 +67313,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "30304203032-55050030051010501",
+        "talentsString": "30304203032-55050020151010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -67343,7 +67638,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "30304203032-55050030051010501",
+        "talentsString": "30304203032-55050020151010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -67539,7 +67834,7 @@
           "items": [
             {
               "id": 920000030,
-              "enchant": 1506
+              "enchant": 2543
             },
             {
               "id": 920000300
@@ -67668,7 +67963,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "30304203032-55050030051010501",
+        "talentsString": "30304203032-55050020151010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -67864,7 +68159,7 @@
           "items": [
             {
               "id": 920000030,
-              "enchant": 1506
+              "enchant": 2543
             },
             {
               "id": 920000300
@@ -67993,7 +68288,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "30304203032-55050030051010501",
+        "talentsString": "30304203032-55050020151010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -68189,7 +68484,7 @@
           "items": [
             {
               "id": 920000030,
-              "enchant": 1506
+              "enchant": 2543
             },
             {
               "id": 920000300
@@ -68318,7 +68613,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "30304203032-55050030051010501",
+        "talentsString": "30304203032-55050020151010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -68514,7 +68809,7 @@
           "items": [
             {
               "id": 920000030,
-              "enchant": 1506
+              "enchant": 2543
             },
             {
               "id": 920000300
@@ -68643,7 +68938,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "30304203032-55050030051010501",
+        "talentsString": "30304203032-55050020151010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -68968,7 +69263,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "30304203032-55050030051010501",
+        "talentsString": "30304203032-55050020151010501",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -69214,7 +69509,7 @@
             },
             {
               "id": 920000354,
-              "enchant": 1900
+              "enchant": 803
             },
             {},
             {
@@ -84563,39 +84858,39 @@
               "enchant": 1891
             },
             {
-              "id": 920000136,
+              "id": 920000452,
               "enchant": 1885
             },
             {
-              "id": 920000172,
+              "id": 920000460,
               "enchant": 2617
             },
             {
-              "id": 920000208
+              "id": 920000468
             },
             {
-              "id": 920000244,
+              "id": 920000476,
               "enchant": 1506
             },
             {
-              "id": 920000280,
+              "id": 920000484,
               "enchant": 1887
             },
             {
-              "id": 920000307
+              "id": 920000490
             },
             {
-              "id": 920000307
+              "id": 920000490
             },
             {
-              "id": 920000316
+              "id": 920000492
             },
             {
-              "id": 920000316
+              "id": 920000492
             },
             {
               "id": 920000332,
-              "enchant": 1900
+              "enchant": 803
             },
             {
               "id": 920000384,
@@ -84982,43 +85277,43 @@
               "enchant": 1891
             },
             {
-              "id": 920000136,
+              "id": 920000452,
               "enchant": 1885
             },
             {
-              "id": 920000172,
+              "id": 920000460,
               "enchant": 2617
             },
             {
-              "id": 920000208
+              "id": 920000468
             },
             {
-              "id": 920000244,
+              "id": 920000476,
               "enchant": 1506
             },
             {
-              "id": 920000280,
+              "id": 920000484,
               "enchant": 1887
             },
             {
-              "id": 920000307
+              "id": 920000490
             },
             {
-              "id": 920000307
+              "id": 920000490
             },
             {
-              "id": 920000316
+              "id": 920000492
             },
             {
-              "id": 920000316
+              "id": 920000492
             },
             {
               "id": 920000332,
-              "enchant": 1900
+              "enchant": 2504
             },
             {
               "id": 920000384,
-              "enchant": 929
+              "enchant": 863
             },
             {
               "id": 920000501
@@ -85401,43 +85696,43 @@
               "enchant": 1891
             },
             {
-              "id": 920000136,
+              "id": 920000452,
               "enchant": 1885
             },
             {
-              "id": 920000172,
+              "id": 920000460,
               "enchant": 2617
             },
             {
-              "id": 920000208
+              "id": 920000468
             },
             {
-              "id": 920000244,
+              "id": 920000476,
               "enchant": 1506
             },
             {
-              "id": 920000280,
+              "id": 920000484,
               "enchant": 1887
             },
             {
-              "id": 920000307
+              "id": 920000490
             },
             {
-              "id": 920000307
+              "id": 920000490
             },
             {
-              "id": 920000316
+              "id": 920000492
             },
             {
-              "id": 920000316
+              "id": 920000492
             },
             {
               "id": 920000332,
-              "enchant": 1900
+              "enchant": 2504
             },
             {
               "id": 920000384,
-              "enchant": 929
+              "enchant": 863
             },
             {
               "id": 920000501

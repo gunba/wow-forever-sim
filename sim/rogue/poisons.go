@@ -92,7 +92,7 @@ func (rogue *Rogue) applyPoisons() {
 
 // Apply Instant Poison to weapon and enable procs
 func (rogue *Rogue) applyInstantPoison() {
-	procMask := rogue.getImbueProcMask(proto.WeaponImbue_InstantPoison)
+	procMask := rogue.getPoisonProcMask(proto.RogueOptions_InstantPoison)
 	if procMask == core.ProcMaskUnknown {
 		return
 	}
@@ -117,7 +117,7 @@ func (rogue *Rogue) applyInstantPoison() {
 
 // Apply Deadly Poison to weapon and enable procs
 func (rogue *Rogue) applyDeadlyPoison() {
-	procMask := rogue.getImbueProcMask(proto.WeaponImbue_DeadlyPoison)
+	procMask := rogue.getPoisonProcMask(proto.RogueOptions_DeadlyPoison)
 	if procMask == core.ProcMaskUnknown {
 		return
 	}
@@ -141,7 +141,7 @@ func (rogue *Rogue) applyDeadlyPoison() {
 
 // Apply Wound Poison to weapon and enable procs
 func (rogue *Rogue) applyWoundPoison() {
-	procMask := rogue.getImbueProcMask(proto.WeaponImbue_WoundPoison)
+	procMask := rogue.getPoisonProcMask(proto.RogueOptions_WoundPoison)
 	if procMask == core.ProcMaskUnknown {
 		return
 	}

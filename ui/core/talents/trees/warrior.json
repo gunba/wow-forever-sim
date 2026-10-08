@@ -575,33 +575,13 @@
         "maxPoints": 5,
         "name": "Unbridled Wrath",
         "icon": "spell_nature_stoneclawtotem",
-        "description": "Gives you a {0}% chance to generate {1} additional Rage when you deal melee damage with a weapon. This effect is increased to {2} Rage for two-handed weapons.",
+        "description": "Gives you a {0}% chance to generate {1} additional Rage when you deal melee damage with a weapon.",
         "ranks": [
-          [
-            12,
-            1,
-            2
-          ],
-          [
-            24,
-            1,
-            2
-          ],
-          [
-            36,
-            1,
-            2
-          ],
-          [
-            48,
-            1,
-            2
-          ],
-          [
-            60,
-            1,
-            2
-          ]
+          [12, 1],
+          [24, 1],
+          [36, 1],
+          [48, 1],
+          [60, 1]
         ]
       },
       {

@@ -18,6 +18,13 @@ func (warrior *Warrior) applyDeepWounds() {
 		3: 12867,
 	}[warrior.Talents.DeepWounds]
 
+	flags := core.SpellFlagNoOnCastComplete | core.SpellFlagPassiveSpell | core.SpellFlagNoPeriodicCrit
+	if warrior.Env.IsForever() {
+		// Child 412613 excludes caster damage modifiers. This is a weapon
+		// payload, not damage copied from the critical strike.
+		flags |= core.SpellFlagIgnoreAttackerModifiers
+	}
+
 	warrior.DeepWounds = warrior.RegisterSpell(AnyStance, core.SpellConfig{
 		SpellCode:   SpellCode_WarriorDeepWounds,
 		ActionID:    core.ActionID{SpellID: spellID},
@@ -26,11 +33,11 @@ func (warrior *Warrior) applyDeepWounds() {
 		ProcMask:    core.ProcMaskEmpty,
 		// The triggered Forever bleed child 412613 is explicitly unable to
 		// crit. The blanket Forever periodic rule must not grant it crits.
-		Flags: core.SpellFlagNoOnCastComplete | core.SpellFlagPassiveSpell | core.SpellFlagNoPeriodicCrit,
+		Flags: flags,
 
 		DamageMultiplier: 1,
 		ThreatMultiplier: 1,
-		BonusCoefficient: 1,
+		BonusCoefficient: core.TernaryFloat64(warrior.Env.IsForever(), 0, 1),
 
 		Dot: core.DotConfig{
 			Aura: core.Aura{
@@ -41,13 +48,9 @@ func (warrior *Warrior) applyDeepWounds() {
 
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
 				if sim.IsForever() {
-					// Forever's bleed is a fraction of current average main-hand
-					// weapon damage. Re-read AP and damage modifiers on each tick;
-					// the old crit-time pool remains the Classic-only rule.
-					baseDamage := warrior.AutoAttacks.MH().CalculateAverageWeaponDamage(dot.Spell.MeleeAttackPower(target))
-					dot.Spell.CalcAndDealPeriodicDamage(sim, target,
-						baseDamage*0.2*float64(warrior.Talents.DeepWounds)/float64(dot.NumberOfTicks),
-						dot.OutcomeTick)
+					// The rolled, unpaid weapon payload is the exception to ordinary
+					// dynamic DoTs. Target modifiers still apply once at each tick.
+					dot.Spell.CalcAndDealPeriodicDamage(sim, target, dot.SnapshotBaseDamage, dot.OutcomeTick)
 					return
 				}
 				attackTable := warrior.AttackTables[target.UnitIndex][proto.CastType_CastTypeMainHand]
@@ -57,7 +60,11 @@ func (warrior *Warrior) applyDeepWounds() {
 		},
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			spell.Dot(target).Apply(sim) //Resets the tick counter with Apply vs ApplyorRefresh
+			if sim.IsForever() {
+				spell.Dot(target).ApplyOrRefresh(sim)
+			} else {
+				spell.Dot(target).Apply(sim)
+			}
 			spell.CalcAndDealOutcome(sim, target, spell.OutcomeAlwaysHitNoHitCounter)
 		},
 	})
@@ -85,6 +92,15 @@ func (warrior *Warrior) procDeepWounds(sim *core.Simulation, target *core.Unit, 
 	dot := warrior.DeepWounds.Dot(target)
 
 	if sim.IsForever() {
+		outstanding := 0.0
+		if dot.IsActive() {
+			outstanding = dot.SnapshotBaseDamage * float64(dot.MaxTicksRemaining())
+		}
+		// Low-level measurements support the main-hand weapon-only payload.
+		// Preserve that reference until off-hand attribution is measured.
+		newDamage := warrior.AutoAttacks.MH().AverageDamage() * .2 * float64(warrior.Talents.DeepWounds)
+		dot.SnapshotBaseDamage = (outstanding + newDamage) / float64(dot.NumberOfTicks)
+		dot.SnapshotAttackerMultiplier = 1
 		warrior.DeepWounds.Cast(sim, target)
 		return
 	}

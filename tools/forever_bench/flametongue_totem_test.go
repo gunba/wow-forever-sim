@@ -90,6 +90,25 @@ func TestFlametongueTotemProcEligibilityAndConflicts(t *testing.T) {
 	}
 }
 
+func TestFlametongueTotemDoesNotTriggerFromWindfuryWeaponHits(t *testing.T) {
+	for _, id := range []int32{8232, 8235, 10486, 16362} {
+		t.Run(core.ActionID{SpellID: id}.String(), func(t *testing.T) {
+			sim, c, aura, proc := flametongueFixture(t, false)
+			// The weapon imbue may coexist with the fire totem. Its two
+			// triggered hits must not each generate another totem hit.
+			c.MainHand().TempEnchant = 1669
+			weaponProc := &core.Spell{ActionID: core.ActionID{SpellID: id}.WithTag(1), ProcMask: core.ProcMaskMeleeMHSpecial, Flags: core.SpellFlagPassiveSpell}
+			hit := &core.SpellResult{Target: c.CurrentTarget, Outcome: core.OutcomeHit}
+			aura.OnSpellHitDealt(aura, sim, c.AutoAttacks.MHAuto(), hit)
+			aura.OnSpellHitDealt(aura, sim, weaponProc, hit)
+			aura.OnSpellHitDealt(aura, sim, weaponProc, hit)
+			if got := proc.SpellMetrics[c.CurrentTarget.UnitIndex].Casts; got != 1 {
+				t.Fatalf("one white hit plus two Windfury Weapon hits generated %d totem hits, want 1", got)
+			}
+		})
+	}
+}
+
 func TestFlametongueTotemRequestRoundTrip(t *testing.T) {
 	original := &proto.PartyBuffs{FlametongueTotem: true, GraceOfAirTotem: proto.TristateEffect_TristateEffectRegular}
 	data, err := protojson.Marshal(original)

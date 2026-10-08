@@ -306,7 +306,7 @@ func (rb *rageBar) doneIteration() {
 		if resourceMetrics.ActionID.SameActionIgnoreTag(ActionID{OtherID: proto.OtherAction_OtherActionRefund}) {
 			continue
 		}
-		if resourceMetrics.ActualGainForCurrentIteration() <= 0 {
+		if resourceMetrics.NoThreat || resourceMetrics.ActualGainForCurrentIteration() <= 0 {
 			continue
 		}
 

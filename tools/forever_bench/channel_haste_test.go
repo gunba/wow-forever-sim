@@ -22,6 +22,9 @@ func channelHasteFixture(buildKey string, ruleset proto.Ruleset, haste float64) 
 	req := racialFixture(buildKey, proto.Race_RaceUndead)
 	player := req.Raid.Parties[0].Players[0]
 	player.Equipment = &proto.EquipmentSpec{}
+	if rogueSpec := player.GetRogue(); rogueSpec != nil {
+		rogueSpec.Options = &proto.RogueOptions{}
+	}
 	player.ForeverTier1Bonuses = false
 	player.Rotation = &proto.APLRotation{}
 	player.BonusStats = &proto.UnitStats{Stats: stats.Stats{

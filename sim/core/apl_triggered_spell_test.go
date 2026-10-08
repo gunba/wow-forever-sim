@@ -46,6 +46,12 @@ func TestAPLRejectsTriggeredSpells(t *testing.T) {
 	if rot.newActionMultishield(&proto.APLActionMultishield{SpellId: selfShield.ActionID.ToProto(), MaxShields: 1}) != nil {
 		t.Error("multishield accepted a self-only shield")
 	}
+	if rot.newValueDotIsActive(&proto.APLValueDotIsActive{SpellId: active.ActionID.ToProto()}) != nil {
+		t.Error("DoT active query accepted a spell without a dot")
+	}
+	if rot.newValueDotRemainingTime(&proto.APLValueDotRemainingTime{SpellId: active.ActionID.ToProto()}) != nil {
+		t.Error("DoT duration query accepted a spell without a dot")
+	}
 	if rot.GetAPLSpell(proc.ActionID.ToProto()) != proc {
 		t.Error("read-only proc references rejected")
 	}

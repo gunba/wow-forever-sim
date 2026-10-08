@@ -1,6 +1,5 @@
-import * as InputHelpers from '../core/components/input_helpers.js';
-import { Player } from '../core/player.js';
-import { ItemSlot, Spec } from '../core/proto/common.js';
+import { roguePoisonInput } from '../core/components/inputs/rogue_imbues.js';
+import { ItemSlot } from '../core/proto/common.js';
 
-// Configuration for spec-specific UI elements on the settings tab.
-// These don't need to be in a separate file but it keeps things cleaner.
+export const MainHandPoison = roguePoisonInput(ItemSlot.ItemSlotMainHand);
+export const OffHandPoison = roguePoisonInput(ItemSlot.ItemSlotOffHand);

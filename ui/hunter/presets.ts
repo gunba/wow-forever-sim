@@ -79,10 +79,10 @@ export const TalentsP1 = PresetUtils.makePresetTalents('Marksmanship 5/35/11', S
 
 export const TalentsBeastMastery = PresetUtils.makePresetTalents(
 	'Beast Mastery 31/20/0',
-	SavedTalents.create({ talentsString: '5320001505101251-00531510005' }),
+	SavedTalents.create({ talentsString: '5320001505101251-00522510005' }),
 );
 export const TalentsSurvival = PresetUtils.makePresetTalents('Survival 7/11/33', SavedTalents.create({ talentsString: '502-0050051-230230230250022151' }));
-export const TalentsPetMelee = PresetUtils.makePresetTalents('Pet/Melee 16/10/25', SavedTalents.create({ talentsString: '53200005001-005005-5302002300502201' }));
+export const TalentsPetMelee = PresetUtils.makePresetTalents('Pet/Melee 16/11/24', SavedTalents.create({ talentsString: '53200005001-0050051-5302002300501201' }));
 
 export const TalentPresets = {
 	[ClassicPhase.Phase1]: [TalentsP1, TalentsBeastMastery, TalentsSurvival, TalentsPetMelee],

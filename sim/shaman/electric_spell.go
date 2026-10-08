@@ -17,6 +17,25 @@ const (
 	ThunderfallTotem         = 45255
 )
 
+// The current 70245 client retains separate Overload damage rows for all parent
+// ranks. Their levels/caps and Shaman spell families match the parents; the
+// current three-rank 408438 trait, not a rune grant, supplies Overload. Source
+// row IDs below are provenance; metrics retain the parent ID plus Overload tag.
+// The server's implicit row selection is corroborated by upstream PR659, not
+// independently decoded. Keep this data substitution Forever-only.
+type electricOverloadDamage struct {
+	sourceSpellID                                     int32
+	basePoints, variance, pointsPerLevel, coefficient float64
+	spellLevel, maxLevel                              int
+}
+
+func (damage electricOverloadDamage) rangeAtLevel(level int32) (float64, float64) {
+	growth := float64(max(0, min(int(level), damage.maxLevel)-damage.spellLevel)) * damage.pointsPerLevel
+	spread := damage.basePoints * damage.variance / 2
+	mean := damage.basePoints + growth
+	return mean - spread, mean + spread
+}
+
 // Shared precomputation logic for LB and CL.
 func (shaman *Shaman) newElectricSpellConfig(actionID core.ActionID, baseCost float64, baseCastTime time.Duration) core.SpellConfig {
 	spell := core.SpellConfig{

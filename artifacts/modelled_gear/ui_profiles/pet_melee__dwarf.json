@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "2026100191",
+    "fixedRngSeed": "1792800001",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Alliance",
@@ -100,7 +100,7 @@
           "id": 920000307
         },
         {
-          "id": 920000316
+          "id": 920000317
         },
         {
           "id": 920000316
@@ -189,7 +189,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "53200005001-005005-5302002300502201",
+    "talentsString": "53200005001-0050051-5302002300501201",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
@@ -309,12 +309,14 @@
               "and": {
                 "vals": [
                   {
-                    "not": {
-                      "val": {
-                        "dotIsActive": {
-                          "spellId": {
-                            "spellId": 1293527
-                          }
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "currentTime": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "0s"
                         }
                       }
                     }

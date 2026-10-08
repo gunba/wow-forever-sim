@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "2026100191",
+    "fixedRngSeed": "1792800001",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Horde",
@@ -663,7 +663,8 @@
     "warlock": {
       "options": {
         "armor": "DemonArmor",
-        "summon": "Succubus"
+        "summon": "Succubus",
+        "weaponImbue": "Spellstone"
       }
     }
   },

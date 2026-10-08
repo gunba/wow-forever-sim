@@ -4,41 +4,45 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/core/proto"
 )
 
-// Summon Hawk shares its cooldown with Arcane Shot, and Ferocity and Unleashed Fury buff hawks
-// the same way they buff pets.
-//
-// The beta client (1293241, 1293525-1293527) gives the dive bomb, 32/47/85/108 plus 5% of ranged
-// attack power, the mana cost and the 18 sec hawk (1293248). The hawk that stays is a guardian whose
-// swings the client does not describe, so the assault is modelled as the rank's dive bomb base damage
-// every 3 sec. Only one hawk at a time is modelled, not the two the tooltip allows.
+var summonHawkBaseDamage = [5]float64{0, 32, 47, 85, 108}
+
+func (hunter *Hunter) summonHawkRank() int {
+	switch {
+	case hunter.Level >= 60:
+		return 4
+	case hunter.Level >= 48:
+		return 3
+	case hunter.Level >= 36:
+		return 2
+	default:
+		return 1
+	}
+}
+
 func (hunter *Hunter) registerSummonHawkSpell(timer *core.Timer) {
 	if !hunter.Talents.SummonHawk {
 		return
 	}
 
-	rank := 1
-	switch {
-	case hunter.Level >= 60:
-		rank = 4
-	case hunter.Level >= 48:
-		rank = 3
-	case hunter.Level >= 36:
-		rank = 2
-	}
+	rank := hunter.summonHawkRank()
 	spellId := [5]int32{0, 1293241, 1293525, 1293526, 1293527}[rank]
-	baseDamage := [5]float64{0, 32, 47, 85, 108}[rank]
+	baseDamage := summonHawkBaseDamage[rank]
 	manaCost := [5]float64{0, 80, 105, 135, 190}[rank]
 
 	hunter.SummonHawk = hunter.RegisterSpell(core.SpellConfig{
-		SpellCode:   SpellCode_HunterSummonHawk,
-		ActionID:    core.ActionID{SpellID: spellId},
-		Rank:        rank,
-		SpellSchool: core.SpellSchoolPhysical,
-		DefenseType: core.DefenseTypeMelee,
-		ProcMask:    core.ProcMaskEmpty,
-		Flags:       core.SpellFlagMeleeMetrics | core.SpellFlagAPL,
+		SpellCode:     SpellCode_HunterSummonHawk,
+		ActionID:      core.ActionID{SpellID: spellId},
+		Rank:          rank,
+		SpellSchool:   core.SpellSchoolPhysical,
+		DefenseType:   core.DefenseTypeRanged,
+		CastType:      proto.CastType_CastTypeRanged,
+		ProcMask:      core.ProcMaskEmpty,
+		Flags:         core.SpellFlagAPL,
+		MissileSpeed:  35,
+		MinTravelTime: time.Second,
 
 		ManaCost: core.ManaCostOptions{
 			FlatCost: manaCost,
@@ -47,7 +51,7 @@ func (hunter *Hunter) registerSummonHawkSpell(timer *core.Timer) {
 			DefaultCast: core.Cast{
 				GCD: core.GCDDefault,
 			},
-			IgnoreHaste: true, // Hunter GCD is locked at 1.5s
+			IgnoreHaste: true, // Hunter GCD is locked at 1.5s.
 			CD: core.Cooldown{
 				Timer:    timer,
 				Duration: time.Second * 6,
@@ -55,31 +59,18 @@ func (hunter *Hunter) registerSummonHawkSpell(timer *core.Timer) {
 		},
 
 		BonusCritRating:  2 * float64(hunter.Talents.Ferocity) * core.CritRatingPerCritChance,
-		DamageMultiplier: 1 + 0.03*float64(hunter.Talents.UnleashedFury),
+		DamageMultiplier: 1 + .03*float64(hunter.Talents.UnleashedFury),
 		ThreatMultiplier: 1,
 
-		Dot: core.DotConfig{
-			Aura: core.Aura{
-				Label: "Summon Hawk" + hunter.Label,
-			},
-			NumberOfTicks: 6,
-			TickLength:    time.Second * 3,
-
-			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
-				dot.Snapshot(target, baseDamage, isRollover)
-			},
-			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
-				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
-			},
-		},
-
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			damage := baseDamage + 0.05*spell.RangedAttackPower(target, false)
-			result := spell.CalcAndDealDamage(sim, target, damage, spell.OutcomeMeleeSpecialHitAndCrit)
-
-			if result.Landed() {
-				spell.Dot(target).Apply(sim)
-			}
+			// Client 70245's ALWAYS_HIT permits crits, but no failed owner hit
+			// roll can suppress the opening or its independent summon effect.
+			damage := baseDamage + .05*spell.RangedAttackPower(target, false)
+			result := spell.CalcDamage(sim, target, damage, spell.OutcomeMeleeSpecialCritOnly)
+			spell.WaitTravelTime(sim, func(sim *core.Simulation) {
+				spell.DealDamage(sim, result)
+				hunter.summonHawkGuardian(sim, target)
+			})
 		},
 	})
 }

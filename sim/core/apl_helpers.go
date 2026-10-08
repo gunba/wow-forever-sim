@@ -183,6 +183,9 @@ func (rot *APLRotation) GetAPLDot(targetUnit UnitReference, spellId *proto.Actio
 		return nil
 	} else if spell.AOEDot() != nil {
 		return spell.AOEDot()
+	} else if len(spell.dots) == 0 {
+		rot.ValidationWarning("Spell %s does not have an associated DoT", ProtoToActionID(spellId))
+		return nil
 	} else {
 		target := targetUnit.Get()
 		if target != nil {

@@ -533,6 +533,25 @@ func (spell *Spell) outcomeMeleeSpecialCritOnly(sim *Simulation, result *SpellRe
 	}
 }
 
+// Melee weapon strikes whose parent already rolled miss, dodge and parry.
+// Blocks prevent crits, as they do for other weapon-damage specials.
+func (spell *Spell) OutcomeMeleeSpecialBlockAndCrit(sim *Simulation, result *SpellResult, attackTable *AttackTable) {
+	spell.outcomeMeleeSpecialBlockAndCrit(sim, result, attackTable, true)
+}
+func (spell *Spell) OutcomeMeleeSpecialBlockAndCritNoHitCounter(sim *Simulation, result *SpellResult, attackTable *AttackTable) {
+	spell.outcomeMeleeSpecialBlockAndCrit(sim, result, attackTable, false)
+}
+func (spell *Spell) outcomeMeleeSpecialBlockAndCrit(sim *Simulation, result *SpellResult, attackTable *AttackTable, countHits bool) {
+	if spell.Unit.PseudoStats.InFrontOfTarget {
+		roll := sim.RandomFloat("White Hit Table")
+		chance := 0.0
+		if result.applyAttackTableBlock(spell, attackTable, roll, &chance, countHits) {
+			return
+		}
+	}
+	spell.outcomeMeleeSpecialCritOnly(sim, result, attackTable, countHits)
+}
+
 func (spell *Spell) OutcomeRangedHit(sim *Simulation, result *SpellResult, attackTable *AttackTable) {
 	spell.outcomeRangedHit(sim, result, attackTable, true)
 }

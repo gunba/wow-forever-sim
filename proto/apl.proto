@@ -82,7 +82,7 @@ message APLAction {
     }
 }
 
-// NextIndex: 78
+// NextIndex: 80
 message APLValue {
     oneof value {
         // Operators
@@ -171,6 +171,9 @@ message APLValue {
         APLValueTotemRemainingTime totem_remaining_time = 49;
         // Druid
         APLValueCatExcessEnergy cat_excess_energy = 52;
+        // Hunter
+        APLValueHunterHawkCount hunter_hawk_count = 78;
+        APLValueHunterHawkRemainingTime hunter_hawk_remaining_time = 79;
         // Warlock
         APLValueWarlockShouldRecastDrainSoul warlock_should_recast_drain_soul = 59;
         APLValueWarlockShouldRefreshCorruption warlock_should_refresh_corruption = 60;
@@ -525,6 +528,10 @@ message APLValueTotemRemainingTime {
     ShamanTotems.TotemType totem_type = 1;
 }
 message APLValueCatExcessEnergy {
+}
+message APLValueHunterHawkCount {
+}
+message APLValueHunterHawkRemainingTime {
 }
 message APLValueWarlockShouldRecastDrainSoul {
 }

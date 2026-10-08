@@ -72,7 +72,7 @@ export const DefaultAPLs = [APLPresets[ClassicPhase.Phase1][0]];
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsP1DPS = PresetUtils.makePresetTalents('Fury 17/34/0', SavedTalents.create({ talentsString: '20305113002-25053005151010501' }));
+export const TalentsP1DPS = PresetUtils.makePresetTalents('Fury 18/33/0', SavedTalents.create({ talentsString: '20305213002-25053005141010501' }));
 export const TalentsFurySpearing = PresetUtils.makePresetTalents(
 	'Fury Spearing Strike 18/33/0',
 	SavedTalents.create({ talentsString: '20305113102-25053005150010501' }),
@@ -81,7 +81,7 @@ export const TalentsFurySpearing = PresetUtils.makePresetTalents(
 export const TalentsArms = PresetUtils.makePresetTalents('Arms 34/17/0', SavedTalents.create({ talentsString: '20305213132515001-55050000002' }));
 export const TalentsFuryTwoHand = PresetUtils.makePresetTalents(
 	'2H Bloodthirst 20/31/0',
-	SavedTalents.create({ talentsString: '30304203032-55050030051010501' }),
+	SavedTalents.create({ talentsString: '30304203032-55050020151010501' }),
 );
 
 export const TalentPresets = {

@@ -284,6 +284,8 @@ func NewUnitMetrics() UnitMetrics {
 type ResourceMetrics struct {
 	ActionID ActionID
 	Type     proto.ResourceType
+	// Explicit source flag; a zero-damage spell multiplier does not govern resource threat.
+	NoThreat bool
 
 	Events     int32
 	Gain       float64

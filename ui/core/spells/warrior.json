@@ -113,8 +113,12 @@
 	"12834": {
 		"ability": "Deep Wounds",
 		"file": "sim/warrior/deep_wounds.go",
-		"note": "Beta client 1.60.1.69893: Deep Wounds bleeds for 20/40/60% of average weapon damage over 12 sec in 4 ticks, Classic's values; Forever folds the ranks into 12834.",
-		"source": "classic"
+		"note": "October 8 implements the reported intended weapon-only bleed: unpaid damage rolls over and reapplication preserves the next tick. AP and caster multipliers are excluded; target modifiers apply once. Classic behavior is unchanged.",
+		"source": "assumed",
+		"assumptions": [
+			"Main-hand weapon reference for off-hand crits remains qualified; the reported next-build fix is not proof of current server deployment."
+		],
+		"tooltip": "Passive\nCritical strikes bleed the target for 20/40/60% of base weapon damage over 12 sec. Unpaid bleed damage rolls over without resetting the tick timer. Attack power and caster damage multipliers do not increase the payload."
 	},
 	"12849": {
 		"ability": "Deep Wounds",
@@ -131,9 +135,9 @@
 	"12964": {
 		"ability": "Unbridled Wrath",
 		"file": "sim/warrior/talents.go",
-		"note": "The client rank curve reads 12/24/36/48/60% for 1 Rage, doubled with a two-handed weapon. Heroic Strike/Cleave are excluded, matching the published low-level logs. The lower beta proc rate was acknowledged as a game bug; the model uses the intended rate, with the server-fix rollout still unverified.",
+		"note": "Forever's sourced flat proc grants 1 Rage with either one-handed or two-handed weapons. The retained chance is 12/24/36/48/60%; Heroic Strike/Cleave are excluded. The lower beta proc rate was acknowledged as a game bug; exact server rollout remains qualified.",
 		"source": "forever",
-		"tooltip": "Passive\nGives you a 12% chance per point to generate 1 additional Rage when you deal melee damage with a weapon. This effect is increased to 2 Rage for two-handed weapons."
+		"tooltip": "Passive\nGives you a 12% chance per point to generate 1 additional Rage when you deal melee damage with a weapon, including two-handed weapons."
 	},
 	"12971": {
 		"ability": "Flurry",

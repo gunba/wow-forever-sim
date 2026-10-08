@@ -1,11 +1,14 @@
 import * as BuffDebuffInputs from '../core/components/inputs/buffs_debuffs';
 import * as OtherInputs from '../core/components/other_inputs.js';
+import { roguePoisonWarning } from '../core/components/inputs/rogue_imbues.js';
 import { ClassicPhase } from '../core/constants/other.js';
 import { IndividualSimUI, registerSpecConfig } from '../core/individual_sim_ui.js';
 import { Player } from '../core/player.js';
 import { Class, Faction, ItemSlot, PartyBuffs, PseudoStat, Race, Spec, Stat, Target, WeaponType } from '../core/proto/common.js';
 import { Stats } from '../core/proto_utils/stats.js';
 import { getSpecIcon } from '../core/proto_utils/utils.js';
+import { TypedEvent } from '../core/typed_event.js';
+import * as RogueInputs from './inputs.js';
 import * as Presets from './presets.js';
 
 const SPEC_CONFIG = registerSpecConfig(Spec.SpecRogue, {
@@ -14,6 +17,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRogue, {
 	// List any known bugs / issues here and they'll be shown on the site.
 	knownIssues: ['Rotations are not fully optimized, especially for non-standard setups.'],
 	warnings: [
+		(simUI: IndividualSimUI<Spec.SpecRogue>) => ({
+			updateOn: TypedEvent.onAny([simUI.player.consumesChangeEmitter, simUI.player.specOptionsChangeEmitter, simUI.player.gearChangeEmitter, simUI.sim.rulesetChangeEmitter]),
+			getContent: () => roguePoisonWarning(simUI.player),
+		}),
 		(simUI: IndividualSimUI<Spec.SpecRogue>) => {
 			return {
 				updateOn: simUI.sim.encounter.changeEmitter,
@@ -97,7 +104,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRogue, {
 		inputs: [],
 	},
 	// IconInputs to include in the 'Player' section on the settings tab.
-	playerIconInputs: [],
+	playerIconInputs: [RogueInputs.MainHandPoison, RogueInputs.OffHandPoison],
 	// Buff and Debuff inputs to include/exclude, overriding the EP-based defaults.
 	includeBuffDebuffInputs: [
 		BuffDebuffInputs.SpellCritBuff,

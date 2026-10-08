@@ -230,8 +230,8 @@ func TestForeverTier1MageProcChances(t *testing.T) {
 		base               float64
 		hit                bool
 	}{
-		{"arcane", "Missile Barrage Trigger", "Missile Barrage", 1237313, .20, false},
-		{"arcane", "Missile Barrage Trigger", "Missile Barrage", 133, .20, false},
+		{"arcane", "Missile Barrage Trigger", "Missile Barrage", 1237313, .20, true},
+		{"arcane", "Missile Barrage Trigger", "Missile Barrage", 133, .20, true},
 		{"frost", "Fingers of Frost Trigger", "Fingers of Frost", 1237313, .15, true},
 		{"frost", "Fingers of Frost Trigger", "Fingers of Frost", 116, .15, true},
 	} {

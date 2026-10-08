@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "2026100191",
+    "fixedRngSeed": "1792800001",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Alliance",
@@ -114,7 +114,7 @@
           "enchant": 2564
         },
         {
-          "id": 920000374,
+          "id": 920000376,
           "enchant": 8720
         }
       ]
@@ -188,7 +188,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "5320001505101251-00531510005",
+    "talentsString": "5320001505101251-00522510005",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
@@ -239,14 +239,37 @@
         {
           "action": {
             "condition": {
-              "not": {
-                "val": {
-                  "dotIsActive": {
-                    "spellId": {
-                      "spellId": 1293527
+              "or": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpLt",
+                      "lhs": {
+                        "hunterHawkCount": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "2"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpLe",
+                      "lhs": {
+                        "hunterHawkRemainingTime": {}
+                      },
+                      "rhs": {
+                        "spellTravelTime": {
+                          "spellId": {
+                            "spellId": 1293527
+                          }
+                        }
+                      }
                     }
                   }
-                }
+                ]
               }
             },
             "castSpell": {

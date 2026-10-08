@@ -1,0 +1,96 @@
+{
+  "phase": "October8 integrated corrections and independently confirmed bounded build/gear selections",
+  "studies": [
+    {
+      "study": "mage-reselection",
+      "artifact": "artifacts/correctness/october_8/mage-reselection.json.gz",
+      "nativeRuns": 120,
+      "files": 124,
+      "sha256": "4499292c7cac3638d363a4b6b3cf28f586549564977d16446c56f51f44a922ac"
+    },
+    {
+      "study": "warrior-shaman-reselection",
+      "artifact": "artifacts/correctness/october_8/warrior-shaman-reselection.json.gz",
+      "nativeRuns": 147,
+      "files": 150,
+      "sha256": "4cbf174845c354edbbfb0f85279457c1fe778eec6c4998b6ac75a465d6c34cf7"
+    },
+    {
+      "study": "rogue-gear-refresh",
+      "artifact": "artifacts/correctness/october_8/rogue-gear-refresh.json.gz",
+      "nativeRuns": 135,
+      "files": 139,
+      "sha256": "a6a2f8fa3caa9651beefe881e63030c5b6596b8a5130d3cbd4603a5b371919d3"
+    },
+    {
+      "study": "hunter-talent-refresh",
+      "artifact": "artifacts/correctness/october_8/hunter-talent-refresh.json.gz",
+      "nativeRuns": 66,
+      "files": 70,
+      "sha256": "14c62706cecee42febb84bf72f7babdcaa26f1dfc5ca4c9c51f039ad34175d05"
+    },
+    {
+      "study": "pact-stones-final",
+      "artifact": "artifacts/correctness/october_8/pact-stones-final.json.gz",
+      "nativeRuns": 30,
+      "files": 33,
+      "sha256": "bdfcf8ca0ce52d4e7779c6b2f053e0bc50334569174df156818ee8b2ce93b835"
+    },
+    {
+      "study": "hawk-apl-confirm",
+      "artifact": "artifacts/correctness/october_8/hawk-apl-confirm.json.gz",
+      "nativeRuns": 224,
+      "files": 228,
+      "sha256": "4f21393b34712222b690327be91349ad827f1ab3fcaac5583d9687e2f38e43cd"
+    },
+    {
+      "study": "bm-joint-confirm",
+      "artifact": "artifacts/correctness/october_8/bm-joint-confirm.json.gz",
+      "nativeRuns": 4,
+      "files": 5,
+      "sha256": "7a22d5ce276cfb81cd94d81a92c6d6bbb440559fa6c3c91d00617de2a39a4a7e"
+    },
+    {
+      "study": "affected-dps-gear-refresh",
+      "artifact": "artifacts/correctness/october_8/affected-dps-gear-refresh.json.gz",
+      "nativeResultFiles": 725,
+      "files": 1609,
+      "sha256": "a8adbd87d336722ff0fc3950ddbc1bb95e4095694ee60a519582408e99e799b0"
+    },
+    {
+      "study": "tank-paladin-gear-refresh",
+      "artifact": "artifacts/correctness/october_8/tank-paladin-gear-refresh.json.gz",
+      "nativeResultFiles": 18,
+      "files": 70,
+      "sha256": "76be7e822fb63c731679b0ffd6cc9ed2b697fa1b2f392a967d69e278ca02e6a1"
+    },
+    {
+      "study": "imbue-confirm",
+      "artifact": "artifacts/correctness/october_8/imbue-confirm.json.gz",
+      "nativeResultFiles": 338,
+      "files": 343,
+      "sha256": "58b6d19ff6427407c319375f489eacbb5ffa3e4d019b5f7f404b536afca15571"
+    },
+    {
+      "study": "cold-blood-confirm",
+      "artifact": "artifacts/correctness/october_8/cold-blood-confirm.json.gz",
+      "nativeResultFiles": 72,
+      "files": 76,
+      "sha256": "c68f9317272d4cf1d2ae9f543d7ec5d67c82b27a515fb2c3aed402f5b0329432"
+    },
+    {
+      "study": "hawk-comparison-v2",
+      "artifact": "artifacts/correctness/october_8/hawk-comparison-v2.json.gz",
+      "nativeResultFiles": 160,
+      "files": 163,
+      "sha256": "5d390354daae6e6fc1dc778726899594df2c817b92efbe507a3dfac1a31f8369"
+    }
+  ],
+  "statistics": "Use the final no-assumed-within-pair-covariance bounds and positive-both-independent-seeds acceptance. Earlier independence approximations are historical diagnostics, not guaranteed conservative bounds.",
+  "rawGameEvidence": "Not included; public sources are cited in docs/october-8-review.md.",
+  "notes": [
+    "Original Demonic Pact stone arms predate the Brand crit fix; pact-stones-final is its current-engine replacement. Other initial Rogue/Warlock non-Brand comparisons retain their documented engine applicability.",
+    "The145-profile DPS search retained35 supported choices; Fury/Dwarf reached the three-pass bound without convergence. No global optimum is claimed.",
+    "All3ProtectionPaladin choices satisfy the original per-seed/both-workload point-estimate guards, not a95%proof of no survival loss. Their small TMI increases are retained."
+  ]
+}

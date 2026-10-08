@@ -4,7 +4,6 @@ package main
 
 import (
 	"math"
-	"strings"
 	"testing"
 
 	"github.com/wowsims/classic/sim/core"
@@ -70,18 +69,65 @@ func TestForeverWarlockWeaponStones(t *testing.T) {
 	}
 }
 
-func TestWarlockStoneRejectsOtherImbue(t *testing.T) {
-	req := warlockEffectFixture(nil)
-	p := req.Raid.Parties[0].Players[0]
-	p.GetWarlock().Options.WeaponImbue = proto.WarlockOptions_Firestone
-	p.Consumes.MainHandImbue = proto.WeaponImbue_BrilliantWizardOil
-	defer func() {
-		err := recover()
-		if err == nil || !strings.Contains(err.(string), "cannot be combined") {
-			t.Fatalf("expected a conflicting-imbue error, got %v", err)
-		}
-	}()
-	core.NewEnvironment(req.Raid, req.Encounter, proto.Ruleset_RulesetForever, false)
+func TestForeverWarlockStoneAndOilStack(t *testing.T) {
+	makeUnit := func(stone proto.WarlockOptions_WeaponImbue, oil proto.WeaponImbue) *core.Unit {
+		req := warlockEffectFixture(nil)
+		p := req.Raid.Parties[0].Players[0]
+		p.GetWarlock().Options.WeaponImbue = stone
+		p.Consumes.MainHandImbue = oil
+		env, _, _ := core.NewEnvironment(req.Raid, req.Encounter, proto.Ruleset_RulesetForever, false)
+		return env.Raid.AllPlayerUnits[0]
+	}
+	base := makeUnit(proto.WarlockOptions_NoWeaponImbue, proto.WeaponImbue_WeaponImbueUnknown)
+	oil := makeUnit(proto.WarlockOptions_NoWeaponImbue, proto.WeaponImbue_BrilliantWizardOil)
+	for _, stone := range []proto.WarlockOptions_WeaponImbue{proto.WarlockOptions_Firestone, proto.WarlockOptions_Spellstone} {
+		t.Run(stone.String(), func(t *testing.T) {
+			defer func() {
+				if err := recover(); err != nil {
+					t.Fatalf("legal stone/oil combination rejected: %v", err)
+				}
+			}()
+			stoneOnly := makeUnit(stone, proto.WeaponImbue_WeaponImbueUnknown)
+			combined := makeUnit(stone, proto.WeaponImbue_BrilliantWizardOil)
+			want := stoneOnly.GetStats().Subtract(base.GetStats())
+			for stat, diff := range combined.GetStats().Subtract(oil.GetStats()) {
+				if math.Abs(diff-want[stat]) > 1e-8 {
+					t.Errorf("stacked %v gain %v, want %v", stats.Stat(stat), diff, want[stat])
+				}
+			}
+			if math.Abs(combined.PseudoStats.CastSpeedMultiplier/oil.PseudoStats.CastSpeedMultiplier-
+				stoneOnly.PseudoStats.CastSpeedMultiplier/base.PseudoStats.CastSpeedMultiplier) > 1e-9 {
+				t.Fatal("stone haste was lost or applied twice with oil")
+			}
+		})
+	}
+}
+
+func TestDemonicBrandAlwaysHitsAndCanCrit(t *testing.T) {
+	for _, summon := range []proto.WarlockOptions_Summon{proto.WarlockOptions_Imp, proto.WarlockOptions_Succubus} {
+		t.Run(summon.String(), func(t *testing.T) {
+			req := warlockEffectFixture(map[string]int{"demonicBrand": 3})
+			req.Raid.Parties[0].Players[0].GetWarlock().Options.Summon = summon
+			sim := core.NewSim(req, simsignals.Signals{})
+			sim.Options.Interactive = true
+			sim.Reset()
+			w := sim.Raid.Parties[0].Players[0].(*dps.DpsWarlock).GetWarlock()
+			id := int32(1293697)
+			if summon == proto.WarlockOptions_Imp {
+				id = 1293698
+			}
+			spell := w.ActivePet.GetSpell(core.ActionID{SpellID: id})
+			spell.Flags |= core.SpellFlagIgnoreResists
+			spell.BonusHitRating = -1000 * core.SpellHitRatingPerHitChance
+			spell.BonusCritRating = 1000 * core.SpellCritRatingPerCritChance
+			target := sim.Encounter.TargetUnits[0]
+			spell.Cast(sim, target)
+			metrics := spell.SpellMetrics[target.UnitIndex]
+			if metrics.Crits != 1 || metrics.Misses != 0 || metrics.TotalDamage <= 0 {
+				t.Fatalf("Brand child %d: crits=%d misses=%d damage=%v", id, metrics.Crits, metrics.Misses, metrics.TotalDamage)
+			}
+		})
+	}
 }
 
 func TestDemonicBrandDamageAndTargetScope(t *testing.T) {
@@ -104,6 +150,8 @@ func TestDemonicBrandDamageAndTargetScope(t *testing.T) {
 			}
 			brand := pet.GetSpell(core.ActionID{SpellID: id})
 			brand.Flags |= core.SpellFlagIgnoreResists
+			// Isolate the noncritical formula; crit eligibility is checked separately.
+			brand.BonusCritRating = -1000 * core.SpellCritRatingPerCritChance
 			metrics := &brand.SpellMetrics[target.UnitIndex]
 			pain := w.GetSpell(core.ActionID{SpellID: 17923})
 			pain.CalcAndDealDamage(sim, target, 1, pain.OutcomeAlwaysHit)

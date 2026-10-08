@@ -9,6 +9,53 @@ import (
 	"github.com/wowsims/classic/sim/core/stats"
 )
 
+func TestForeverCommonPlayerSpiritRegen(t *testing.T) {
+	// The consistent Hunter/Paladin samples favor this working player model.
+	// The first Paladin sample is retained as an outlier in the source review.
+	unit := &Unit{Type: PlayerUnit, Env: &Environment{Ruleset: proto.Ruleset_RulesetForever}, PseudoStats: stats.NewPseudoStats()}
+	for _, sample := range []struct{ spirit, mps float64 }{
+		{52, 12.75}, {67, 14.625}, {53, 12.875}, {59, 13.625},
+		{62, 14}, {69, 14.875}, {74, 15.5},
+	} {
+		unit.stats[stats.Spirit] = sample.spirit
+		if got := unit.SpiritManaRegenPerSecondDefault(); math.Abs(got-sample.mps) > 1e-8 {
+			t.Errorf("Spirit %v: %v MPS, want %v", sample.spirit, got, sample.mps)
+		}
+	}
+	unit.stats[stats.Spirit], unit.stats[stats.MP5] = 100, 25
+	unit.PseudoStats.SpiritRegenRateCasting = .5
+	for _, mp5PerSecond := range []bool{false, true} {
+		unit.foreverMP5PerSecond = mp5PerSecond
+		mp := 5.0
+		if mp5PerSecond {
+			mp = 25
+		}
+		for _, casting := range []bool{false, true} {
+			spirit := 18.75
+			if casting {
+				spirit *= .5
+			}
+			if got := unit.manaRegenPerSecond(casting, 1, 0); math.Abs(got-mp-spirit) > 1e-8 {
+				t.Errorf("MP5 mode %v casting %v: %v, want %v", mp5PerSecond, casting, got, mp+spirit)
+			}
+		}
+	}
+	unit.Type = PetUnit
+	if got := unit.SpiritManaRegenPerSecondDefault(); got != 17.5 {
+		t.Errorf("pet default changed: %v", got)
+	}
+	unit.Type = PlayerUnit
+	unit.Env.Ruleset = proto.Ruleset_RulesetClassic
+	if got := unit.SpiritManaRegenPerSecondDefault(); got != 17.5 {
+		t.Errorf("Classic default changed: %v", got)
+	}
+	unit.Env.Ruleset = proto.Ruleset_RulesetForever
+	unit.SpiritManaRegenPerSecond = func() float64 { return 42 }
+	if got := unit.manaRegenPerSecond(false, 1, 0); got != 25+42 {
+		t.Errorf("explicit regen override lost: %v", got)
+	}
+}
+
 func TestInnervateManaAttribution(t *testing.T) {
 	for _, tc := range []struct {
 		name     string

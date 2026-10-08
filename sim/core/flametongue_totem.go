@@ -55,6 +55,13 @@ func FlametongueTotemAura(character *Character, rank int) *Aura {
 				!character.HasMHWeapon() || hasFlametongueWeapon(character) {
 				return
 			}
+			// Windfury Weapon can coexist with this totem, but its triggered
+			// hits do not trigger additional totem damage. Keep the exclusion
+			// local: it says nothing about other weapon-proc eligibility.
+			switch spell.ActionID.SpellID {
+			case 8232, 8235, 10486, 16362:
+				return
+			}
 			proc.Cast(sim, result.Target)
 		},
 	})

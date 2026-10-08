@@ -19,7 +19,7 @@ import {
 	ZanzaBuff,
 	SapperExplosive,
 } from '../core/proto/common.js';
-import { RogueOptions } from '../core/proto/rogue.js';
+import { RogueOptions, RogueOptions_Poison as Poison } from '../core/proto/rogue.js';
 import { SavedTalents } from '../core/proto/ui.js';
 import BackstabAPL from './apls/combat_backstab.apl.json';
 import BackstabSweatyAPL from './apls/combat_backstab_sweaty.apl.json';
@@ -164,7 +164,10 @@ export const DefaultTalents = CombatSinisterStrikeTalents;
 //                                 Options
 ///////////////////////////////////////////////////////////////////////////
 
-export const DefaultOptions = RogueOptions.create({});
+export const DefaultOptions = RogueOptions.create({
+	mainHandPoison: Poison.InstantPoison,
+	offHandPoison: Poison.DeadlyPoison,
+});
 
 ///////////////////////////////////////////////////////////////////////////
 //                         Consumes/Buffs/Debuffs
@@ -174,11 +177,11 @@ export const P1Consumes = Consumes.create({
 	agilityElixir: AgilityElixir.ElixirOfTheMongoose,
 	attackPowerBuff: AttackPowerBuff.JujuMight,
 	defaultConjured: Conjured.ConjuredRogueThistleTea,
+	mainHandImbue: WeaponImbue.ShadowOil,
+	offHandImbue: WeaponImbue.ElementalSharpeningStone,
 	dragonBreathChili: true,
 	flask: Flask.FlaskOfSupremePower,
 	food: Food.FoodGrilledSquid,
-	mainHandImbue: WeaponImbue.InstantPoison,
-	offHandImbue: WeaponImbue.DeadlyPoison,
 	spellPowerBuff: SpellPowerBuff.GreaterArcaneElixir,
 	strengthBuff: StrengthBuff.JujuPower,
 	zanzaBuff: ZanzaBuff.GroundScorpokAssay,

@@ -710,6 +710,8 @@ const petNameToIcon: Record<string, string> = {
 	'Spirit Wolves': `${WOWHEAD_IMAGES}icons/large/spell_shaman_feralspirit.jpg`,
 	Infernal: `${WOWHEAD_IMAGES}icons/large/spell_shadow_summoninfernal.jpg`,
 	Gorilla: `${WOWHEAD_IMAGES}icons/medium/ability_hunter_pet_gorilla.jpg`,
+	'Hawk 1': `${WOWHEAD_IMAGES}icons/large/ability_hunter_animalhandler.jpg`,
+	'Hawk 2': `${WOWHEAD_IMAGES}icons/large/ability_hunter_animalhandler.jpg`,
 	Hyena: `${WOWHEAD_IMAGES}icons/medium/ability_hunter_pet_hyena.jpg`,
 	Imp: `${WOWHEAD_IMAGES}icons/large/spell_shadow_summonimp.jpg`,
 	'Mirror Image': `${WOWHEAD_IMAGES}icons/large/spell_magic_lesserinvisibilty.jpg`,

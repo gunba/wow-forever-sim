@@ -24,10 +24,11 @@ all 736 baseline/sensitivity scenarios after the Life Tap, pet/talent,
 Moonfury and buff corrections. Gear selections remain from the earlier search;
 the refreshed results do not establish a new gear optimum. The preceding
 results are [archived](../../artifacts/history/367ac97df8/).
-The latest release adds all 17 tank profiles and replays **804** baseline,
-Tier-off, +10% and +50% scenarios. The 184 existing DPS profiles retain identical
-requests and metric values; unordered metric collections can differ.
-[Preservation check](../../artifacts/tanks/current/dps_preservation.json).
+The [October 8 release](../../docs/october-8-review.md) replays **804** baseline,
+Tier-off, +10% and +50% scenarios after the mechanics corrections and bounded
+build/gear selections. Another 201 current-engine original-setup controls isolate
+selection changes. The earlier [184-profile preservation check](../../artifacts/tanks/current/dps_preservation.json)
+is historical, not a statement that this release preserves those results.
 
 Protection Warrior, Protection Paladin and Bear use frontal incoming attacks
 and explicit healing. Their chart DPS is **not an equal-encounter comparison**
@@ -36,8 +37,11 @@ frozen tank controls with survival and per-target threat safeguards, then
 validated on two independent seeds across every race under the earlier support
 conditions. The [tank support correction](../../docs/tank_support.md)
 standardizes raid support, adds Paladin oil and improves Swift Judgement timing,
-then replays every tank race without reselecting gear/talents. Historical
-selection gains do not establish an optimum under the new settings.
+then replays every tank race without reselecting gear/talents. October 8 independently reselects only the three Protection Paladin gear profiles
+under the existing point-estimate guards; small TMI increases are allowed and are
+not survival improvements or a 95% proof of no harm. All 17 profiles receive 68
+current workload replays. Historical selection gains do not establish an optimum
+under the new settings.
 [Tank methods and replay instructions](../../docs/tank_selection.md) ·
 [Validation](../../artifacts/tanks/current/validation.json) ·
 [Research archives](../../artifacts/tanks/current/archives.json).
@@ -122,7 +126,7 @@ Replay the current exact native profiles, including race-specific equipment:
 ```sh
 python3 tools/forever_bench/run_matrix.py --binary /path/to/forever-bench \
   --profiles artifacts/modelled_gear/forever_input_profiles.json --natural-hit \
-  --iterations 5000 --seed 20291951 --output /tmp/forever-matrix --workers 24
+  --iterations 5000 --seed 1792800001 --output /tmp/forever-matrix --workers 24
 ```
 
 `artifacts/modelled_gear/forever_input_profiles.json` freezes the 201 selected players
@@ -135,7 +139,12 @@ Those earlier 26-build recipes and matched validation requests/results are
 archived in `artifacts/research_builds/validation.json.gz` at their pinned
 revision. They predate the additional build and haste timing change; use that
 revision to replay their original comparisons, not this roster. The current
-chart uses seed **20291951** and 5,000 iterations per race/scenario.
+chart uses seed **1792800001** and 5,000 iterations per race/scenario. The
+[October 8 selection packets](../../artifacts/correctness/october_8/selection-evidence.json)
+record independent confirmation; 145 affected DPS profiles used at most three
+coordinate passes, retaining 35 supported changes. Fury/Dwarf reached that bound
+without convergence. Rogue gear and Protection Paladin guarded selections are
+separate studies; no global optimum is claimed.
 
 Run from the repository root:
 

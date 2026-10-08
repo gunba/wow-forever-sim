@@ -6,7 +6,9 @@ import (
 
 const CastTagLightningOverload = 1
 
-// Overloads are free instant copies of the spell that hit for half damage and generate no threat.
+// Overloads are free instant triggered spells with no threat. Classic halves
+// the parent; Forever configurations already carry the separate child row's
+// damage and SP coefficient, so they must not be halved a second time.
 func (shaman *Shaman) registerOverloadSpell(config core.SpellConfig) *core.Spell {
 	if shaman.Talents.LightningOverload == 0 {
 		return nil
@@ -16,7 +18,9 @@ func (shaman *Shaman) registerOverloadSpell(config core.SpellConfig) *core.Spell
 	config.Flags = config.Flags&^core.SpellFlagAPL | core.SpellFlagPassiveSpell | core.SpellFlagNoOnCastComplete
 	config.Cast = core.CastConfig{}
 	config.ManaCost = core.ManaCostOptions{}
-	config.DamageMultiplier *= .5
+	if !shaman.Env.IsForever() {
+		config.DamageMultiplier *= .5
+	}
 	config.ThreatMultiplier = 0
 
 	return shaman.RegisterSpell(config)

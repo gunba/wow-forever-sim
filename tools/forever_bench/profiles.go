@@ -108,6 +108,12 @@ func (b build) player(race proto.Race) *proto.Player {
 		Profession1:         proto.Profession_Engineering,
 		ForeverTier1Bonuses: true,
 	}
+	// The extra Meditation point only cleared validation for the other five races.
+	if b.Key == "fire" && race == proto.Race_RaceSkyborneHighOrder {
+		variant := b
+		variant.Preset = "TalentsFireHighOrder"
+		p.TalentsString = variant.presetTalents()
+	}
 	switch b.modelKey() {
 	case "balance":
 		core.WithSpec(p, &proto.Player_BalanceDruid{BalanceDruid: &proto.BalanceDruid{Options: &proto.BalanceDruid_Options{}}})
@@ -144,7 +150,9 @@ func (b build) player(race proto.Race) *proto.Player {
 		core.WithSpec(p, &proto.Player_SmitePriest{SmitePriest: &proto.SmitePriest{Options: &proto.SmitePriest_Options{}}})
 	case "combat", "mutilate", "subtlety":
 		p.DistanceFromTarget = 5
-		core.WithSpec(p, &proto.Player_Rogue{Rogue: &proto.Rogue{Options: &proto.RogueOptions{}}})
+		core.WithSpec(p, &proto.Player_Rogue{Rogue: &proto.Rogue{Options: &proto.RogueOptions{
+			MainHandPoison: proto.RogueOptions_InstantPoison, OffHandPoison: proto.RogueOptions_DeadlyPoison,
+		}}})
 	case "demonology", "affliction", "ds_ruin", "destruction":
 		summon, sacrifice := proto.WarlockOptions_Succubus, proto.WarlockOptions_NoSummon
 		if b.Key == "demonology" {
@@ -152,8 +160,12 @@ func (b build) player(race proto.Race) *proto.Player {
 		} else if b.Key == "ds_ruin" {
 			summon = proto.WarlockOptions_Imp
 		}
+		stone := proto.WarlockOptions_Spellstone
+		if b.Key == "destruction" {
+			stone = proto.WarlockOptions_Firestone
+		}
 		core.WithSpec(p, &proto.Player_Warlock{Warlock: &proto.Warlock{Options: &proto.WarlockOptions{
-			Armor: proto.WarlockOptions_DemonArmor, Summon: summon, Sacrifice: sacrifice,
+			Armor: proto.WarlockOptions_DemonArmor, Summon: summon, Sacrifice: sacrifice, WeaponImbue: stone,
 		}}})
 	case "fury", "arms":
 		p.DistanceFromTarget = 5
@@ -238,7 +250,7 @@ func (b build) consumes(race proto.Race) *proto.Consumes {
 		c.DragonBreathChili = true
 	case "combat", "mutilate", "subtlety":
 		c.DefaultPotion, c.DefaultConjured, c.ManaRegenElixir = 0, proto.Conjured_ConjuredRogueThistleTea, 0
-		c.MainHandImbue, c.OffHandImbue = proto.WeaponImbue_InstantPoison, proto.WeaponImbue_DeadlyPoison
+		c.MainHandImbue, c.OffHandImbue = proto.WeaponImbue_ShadowOil, proto.WeaponImbue_ElementalSharpeningStone
 		c.DragonBreathChili, c.SapperExplosive = true, proto.SapperExplosive_SapperGoblinSapper
 	case "fury", "arms":
 		c.Flask, c.SpellPowerBuff, c.ManaRegenElixir = 0, 0, 0

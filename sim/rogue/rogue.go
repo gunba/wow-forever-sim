@@ -56,6 +56,7 @@ type Rogue struct {
 	Hemorrhage     *core.Spell
 	GhostlyStrike  *core.Spell
 	Mutilate       *core.Spell
+	mutilateMH     *core.Spell
 	mutilateOH     *core.Spell
 	SinisterStrike *core.Spell
 	Shadowstep     *core.Spell
@@ -115,6 +116,8 @@ func (rogue *Rogue) builderFlags() core.SpellFlag {
 }
 
 func (rogue *Rogue) Initialize() {
+	rogue.validatePoisonInputs()
+	rogue.applyPoisons()
 	rogue.registerBackstabSpell()
 	rogue.registerEviscerate()
 	rogue.registerExposeArmorSpell()
@@ -174,8 +177,6 @@ func NewRogue(character *core.Character, options *proto.Player, rogueOptions *pr
 		Ranged:         rogue.WeaponFromRanged(),
 		AutoSwingMelee: true,
 	})
-	rogue.applyPoisons()
-
 	rogue.AddStatDependency(stats.Strength, stats.AttackPower, core.APPerStrength[character.Class])
 	rogue.AddStatDependency(stats.Agility, stats.AttackPower, 1)
 	rogue.AddStatDependency(stats.Agility, stats.RangedAttackPower, 1)
@@ -214,12 +215,42 @@ type RogueAgent interface {
 	GetRogue() *Rogue
 }
 
-func (rogue *Rogue) getImbueProcMask(imbue proto.WeaponImbue) core.ProcMask {
+func (rogue *Rogue) validatePoisonInputs() {
+	if !rogue.Env.IsForever() {
+		return
+	}
+	for _, imbue := range []proto.WeaponImbue{rogue.Consumes.MainHandImbue, rogue.Consumes.OffHandImbue} {
+		switch imbue {
+		case proto.WeaponImbue_InstantPoison, proto.WeaponImbue_DeadlyPoison, proto.WeaponImbue_WoundPoison:
+			panic("Forever Rogue poisons belong in RogueOptions main_hand_poison/off_hand_poison, not Consumes weapon imbues; migrate this profile")
+		}
+	}
+	for hand, poison := range []proto.RogueOptions_Poison{rogue.Options.GetMainHandPoison(), rogue.Options.GetOffHandPoison()} {
+		if _, valid := proto.RogueOptions_Poison_name[int32(poison)]; !valid {
+			panic("Invalid Rogue poison selection")
+		}
+		if poison != proto.RogueOptions_NoPoison && ((hand == 0 && !rogue.HasMHWeapon()) || (hand == 1 && !rogue.HasOHWeapon())) {
+			panic("Rogue poison requires a weapon in the selected hand")
+		}
+	}
+}
+
+func (rogue *Rogue) getPoisonProcMask(poison proto.RogueOptions_Poison) core.ProcMask {
+	mh, oh := rogue.Options.GetMainHandPoison() == poison, rogue.Options.GetOffHandPoison() == poison
+	if !rogue.Env.IsForever() {
+		// Classic poisons still occupy the temporary weapon-enchant slot.
+		imbue := map[proto.RogueOptions_Poison]proto.WeaponImbue{
+			proto.RogueOptions_InstantPoison: proto.WeaponImbue_InstantPoison,
+			proto.RogueOptions_DeadlyPoison:  proto.WeaponImbue_DeadlyPoison,
+			proto.RogueOptions_WoundPoison:   proto.WeaponImbue_WoundPoison,
+		}[poison]
+		mh, oh = rogue.Consumes.MainHandImbue == imbue, rogue.Consumes.OffHandImbue == imbue
+	}
 	var mask core.ProcMask
-	if rogue.HasMHWeapon() && rogue.Consumes.MainHandImbue == imbue {
+	if rogue.HasMHWeapon() && mh {
 		mask |= core.ProcMaskMeleeMH
 	}
-	if rogue.HasOHWeapon() && rogue.Consumes.OffHandImbue == imbue {
+	if rogue.HasOHWeapon() && oh {
 		mask |= core.ProcMaskMeleeOH
 	}
 	return mask

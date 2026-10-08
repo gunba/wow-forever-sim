@@ -255,6 +255,22 @@ func (mage *Mage) applyArcaneConcentration() {
 	})
 }
 
+// Blizzard's client E_DUMMY is an area-targeted magic application on the
+// paid parent. Its triggered damage is not a new Arcane Concentration roll.
+// Keep this application local to AC: no synthetic damage, hit counters or
+// generic callbacks for Winter's Chill, Fingers of Frost, raid or gear procs.
+func (mage *Mage) rollBlizzardArcaneConcentration(sim *core.Simulation, spell *core.Spell) {
+	if !mage.Env.IsForever() || mage.Talents.ArcaneConcentration == 0 {
+		return
+	}
+	trigger := mage.GetAura("Arcane Concentration")
+	for _, target := range sim.Encounter.TargetUnits {
+		result := spell.CalcOutcome(sim, target, spell.OutcomeMagicHitNoHitCounter)
+		trigger.OnSpellHitDealt(trigger, sim, spell, result)
+		spell.DisposeResult(result)
+	}
+}
+
 // Arcane Blast feeds Missile Barrage at twice the rate of the other nukes, so the two of them
 // are the backbone of the Forever arcane rotation.
 func (mage *Mage) applyMissileBarrage() {
@@ -291,31 +307,45 @@ func (mage *Mage) applyMissileBarrage() {
 		},
 	})
 
-	mage.RegisterAura(core.Aura{
+	tryProc := func(sim *core.Simulation, spell *core.Spell) {
+		procChance := 0.0
+		switch spell.SpellCode {
+		case SpellCode_MageArcaneBlast:
+			procChance = .40
+		case SpellCode_MageFireball, SpellCode_MageFrostbolt, SpellCode_MageFrostfireBolt:
+			procChance = .20
+		default:
+			return
+		}
+		if spell.SpellCode == SpellCode_MageFrostfireBolt {
+			procChance += tierFrostfireChance
+		}
+		if sim.Proc(procChance, "Missile Barrage") {
+			mage.MissileBarrageAura.Activate(sim)
+		}
+	}
+
+	trigger := core.Aura{
 		Label:    "Missile Barrage Trigger",
 		Duration: core.NeverExpires,
 		OnReset: func(aura *core.Aura, sim *core.Simulation) {
 			aura.Activate(sim)
 		},
-		OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
-			procChance := 0.0
-			switch spell.SpellCode {
-			case SpellCode_MageArcaneBlast:
-				procChance = .40
-			case SpellCode_MageFireball, SpellCode_MageFrostbolt, SpellCode_MageFrostfireBolt:
-				procChance = .20
-			default:
-				return
+	}
+	if mage.Env.IsForever() {
+		// Client 1.60.1.70245, SpellAuraOptions 400588: harmful spell hit,
+		// not cast completion. A projectile must land before it can proc.
+		trigger.OnSpellHitDealt = func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+			if result.Landed() && spell.ProcMask.Matches(core.ProcMaskSpellDamage) {
+				tryProc(sim, spell)
 			}
-			if spell.SpellCode == SpellCode_MageFrostfireBolt {
-				procChance += tierFrostfireChance
-			}
-
-			if sim.Proc(procChance, "Missile Barrage") {
-				mage.MissileBarrageAura.Activate(sim)
-			}
-		},
-	})
+		}
+	} else {
+		trigger.OnCastComplete = func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
+			tryProc(sim, spell)
+		}
+	}
+	mage.RegisterAura(trigger)
 }
 
 func (mage *Mage) registerPresenceOfMindCD() {
@@ -465,23 +495,36 @@ func (mage *Mage) applyMasterOfElements() {
 
 	refundCoeff := 0.1 * float64(mage.Talents.MasterOfElements)
 	manaMetrics := mage.NewManaMetrics(core.ActionID{SpellID: 29076})
+	var icd *core.Cooldown
+	if mage.Env.IsForever() {
+		// SpellAuraOptions 29074: ProcCategoryRecovery is milliseconds.
+		// Its 9ms ICD coalesces an AoE batch; Arcane Concentration is 1000ms.
+		icd = &core.Cooldown{Timer: mage.NewTimer(), Duration: 9 * time.Millisecond}
+	}
 
 	mage.RegisterAura(core.Aura{
 		Label:    "Master of Elements",
 		Duration: core.NeverExpires,
+		Icd:      icd,
 		OnReset: func(aura *core.Aura, sim *core.Simulation) {
 			aura.Activate(sim)
 		},
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if !spell.SpellSchool.Matches(core.SpellSchoolFire | core.SpellSchoolFrost) {
+			if !spell.SpellSchool.Matches(core.SpellSchoolFire|core.SpellSchoolFrost) ||
+				!result.Landed() || !result.DidCrit() || spell.Cost == nil || spell.Cost.BaseCost == 0 {
 				return
 			}
-			if spell.CurCast.Cost == 0 {
+			if !mage.Env.IsForever() && spell.CurCast.Cost == 0 {
 				return
 			}
-			if result.DidCrit() {
-				mage.AddMana(sim, spell.Cost.BaseCost*refundCoeff, manaMetrics)
+			if icd != nil {
+				if !icd.IsReady(sim) {
+					return
+				}
+				icd.Use(sim)
 			}
+			// The base-cost refund also applies to a free Forever cast.
+			mage.AddMana(sim, spell.Cost.BaseCost*refundCoeff, manaMetrics)
 		},
 	})
 }

@@ -116,14 +116,10 @@
           "and": {
             "vals": [
               {
-                "not": {
-                  "val": {
-                    "dotIsActive": {
-                      "spellId": {
-                        "spellId": 1293527
-                      }
-                    }
-                  }
+                "cmp": {
+                  "op": "OpGe",
+                  "lhs": { "currentTime": {} },
+                  "rhs": { "const": { "val": "0s" } }
                 }
               },
               {

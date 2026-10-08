@@ -115,8 +115,9 @@ type Unit struct {
 	// Pets owned by this Unit.
 	PetAgents []PetAgent
 
-	DynamicStatsPets      []*Pet
-	DynamicMeleeSpeedPets []*Pet
+	DynamicStatsPets       []*Pet
+	DynamicMeleeSpeedPets  []*Pet
+	DynamicRangedSpeedPets []*Pet
 
 	// AutoAttacks is the manager for auto attack swings.
 	// Must be enabled to use, with "EnableAutoAttacks()".
@@ -287,6 +288,7 @@ func (unit *Unit) processDynamicBonus(sim *Simulation, bonus stats.Stats) {
 	if bonus[stats.MeleeHaste] != 0 {
 		unit.updateEnergyRegenHaste(sim)
 		unit.AutoAttacks.UpdateSwingTimers(sim)
+		unit.updatePetRangedSpeed()
 	}
 	if bonus[stats.SpellHaste] != 0 {
 		unit.updateCastSpeed()
@@ -431,6 +433,13 @@ func (unit *Unit) MultiplyMeleeSpeed(sim *Simulation, amount float64) {
 func (unit *Unit) MultiplyRangedSpeed(sim *Simulation, amount float64) {
 	unit.PseudoStats.RangedSpeedMultiplier *= amount
 	unit.AutoAttacks.UpdateSwingTimers(sim)
+	unit.updatePetRangedSpeed()
+}
+
+func (unit *Unit) updatePetRangedSpeed() {
+	for _, pet := range unit.DynamicRangedSpeedPets {
+		pet.dynamicRangedSpeedInheritance(unit.RangedSwingSpeed())
+	}
 }
 
 // Helper for when both MultiplyMeleeSpeed and MultiplyRangedSpeed are needed.
@@ -442,6 +451,7 @@ func (unit *Unit) MultiplyAttackSpeed(sim *Simulation, amount float64) {
 		pet.dynamicMeleeSpeedInheritance(amount)
 	}
 	unit.AutoAttacks.UpdateSwingTimers(sim)
+	unit.updatePetRangedSpeed()
 }
 
 func (unit *Unit) AddBonusRangedHitRating(amount float64) {
@@ -546,6 +556,7 @@ func (unit *Unit) reset(sim *Simulation, _ Agent) {
 
 	unit.DynamicStatsPets = unit.DynamicStatsPets[:0]
 	unit.DynamicMeleeSpeedPets = unit.DynamicMeleeSpeedPets[:0]
+	unit.DynamicRangedSpeedPets = unit.DynamicRangedSpeedPets[:0]
 
 	if unit.Type != PetUnit {
 		sim.addTracker(&unit.auraTracker)

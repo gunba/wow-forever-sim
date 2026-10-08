@@ -1414,28 +1414,29 @@
       "category": "hunter",
       "kind": "mechanic",
       "priority": "high",
-      "status": "needs-evidence",
+      "status": "provisional",
       "title": "Summon Hawk guardian model",
       "question": "How do Hawk attacks, two-Hawk coexistence and inherited stats actually work?",
-      "current_model": "One periodic guardian surrogate: six ticks at three-second intervals using dive-bomb base values. The opening hit uses 5% RAP; this is not a measured complete guardian formula.",
+      "current_model": "Two independent 18-second guardians with global oldest replacement, arrival attacks and owner ranged-speed inheritance. Opening uses always-hit, crit-capable damage after at least one second. Assault calibration is 0.35 × rank base, 2.5-second base swings and 1.5% effective crit; UF applies once, Ferocity assault transfer is unresolved.",
       "impact": "Pet/Melee row and Hawk alternatives; major model-dependent build opportunity.",
       "sources": [
         "sim/hunter/summon_hawk.go",
         "docs/upstream_elliot_review.md",
         "https://www.wowhead.com/forever/spell=1293241/summon-hawk",
         "https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes",
-        "artifacts/question_review/class_evidence.json"
+        "artifacts/question_review/class_evidence.json",
+        "docs/october-8-review.md"
       ],
       "legacy": [
         "T14 / H19"
       ],
       "related": [],
       "review": {
-        "disposition": "partial",
-        "confidence": "high",
-        "answer": "The current client explicitly allows two Hawks, supplies a separate summon chain and specifies 5% RAP for the opening dive. One refreshed six-tick DoT cannot represent two independently expiring guardians. The remaining unknown is the sustained guardian attack profile, not whether two summons are permitted.",
-        "remaining": "Sustained attacks, inheritance, crit, target switching and replacement of the oldest guardian.",
-        "implementation": "Separate the sourced opening hit and two guardian lifetimes from the unmeasured sustained formula. Do not present the current surrogate as a complete implementation or substitute the wiki's differently rendered opening numbers for raw rank values.",
+        "disposition": "credible-answer",
+        "confidence": "moderate",
+        "answer": "Independent capture of all 222 encounters in public reports 2695/2701 supports two guardians, replacement, retargeting, minimum one-second opening travel and ranged-hasted assault timing. It finds 18 crits in 1,029 landed assaults, contradicting never-crit. These are October 2 observations, not proof of unchanged October 8 server behavior. The tested lifecycle implementation replaces the one-DoT surrogate; numerical rank-60 calibration remains provisional.",
+        "remaining": "Controlled RAP/talent/crit transfer, higher-rank scaling, boss glancing/crit behavior, exact retarget commands, racial/Tier effects and Lone Wolf coexistence. No current default combines Lone Wolf with Hawk.",
+        "implementation": "Guardian lifecycle, travel, haste, attribution, reset and proc-isolation regressions pass. Quantify 0.30–0.40 damage and 1–3% effective-crit sensitivity; consider Ferocity assault transfer separately. Revalidate Hunter choices rather than treating the calibrated default as measured level-60 data.",
         "tests": [
           {
             "stage": "level30",
@@ -1448,7 +1449,14 @@
             "measure": "Verify rank progression and Tier interactions after the low-rank guardian model is established."
           }
         ],
-        "previous_status": "needs-evidence"
+        "previous_status": "needs-evidence",
+        "history": [
+          {
+            "phase": "before October 8 review",
+            "answer": "The current client explicitly allows two Hawks, supplies a separate summon chain and specifies 5% RAP for the opening dive. One refreshed six-tick DoT cannot represent two independently expiring guardians. The remaining unknown is the sustained guardian attack profile, not whether two summons are permitted.",
+            "implementation": "Separate the sourced opening hit and two guardian lifetimes from the unmeasured sustained formula. Do not present the current surrogate as a complete implementation or substitute the wiki's differently rendered opening numbers for raw rank values."
+          }
+        ]
       }
     },
     {
@@ -1606,13 +1614,14 @@
       "status": "needs-evidence",
       "title": "Frostfire cross-school scripts",
       "question": "Which Fire/Frost talents and Tier effects stack on Frostfire beyond explicitly named client masks?",
-      "current_model": "Explicitly supported interactions are modeled; unresolved cross-school server behavior is not proof that conditional Frostfire research is deployable.",
+      "current_model": "Frostfire direct and periodic talent scopes are separated: Arcane Power/Instability do not raise its DoT; Piercing Ice gives the periodic effect a flat 2%. Existing direct additive stacking and other cross-school rules remain.",
       "impact": "Alternate Frostfire hybrids, not the full-rank Arcane–Frost identity by itself.",
       "sources": [
         "sim/mage/frostfire_bolt.go",
         "docs/forever_tier1.md",
         "docs/build_updates.md",
-        "sim/mage/talents.go"
+        "sim/mage/talents.go",
+        "docs/october-8-review.md"
       ],
       "legacy": [
         "T10"
@@ -1624,9 +1633,9 @@
       "review": {
         "disposition": "partial",
         "confidence": "moderate",
-        "answer": "This should not remain a blanket 'does Frostfire work with talents?' question. The client and existing implementation explicitly include Improved Fireball, Fire/Frost school matching, Hot Streak and the named Missile Barrage/Fingers Tier additions. Improved Frostbolt is not granted as a second cast-time reduction. The unresolved portion is scripted interaction and proc ordering beyond these explicit inclusions.",
-        "remaining": "Any claimed interaction without a matching current family mask or named Tier effect, and interactions with unresolved Fingers timing.",
-        "implementation": "Keep a per-effect inclusion table rather than retesting all known school/mask matches. Audit exact masks offline before requesting an experiment; do not use old low-rank research as proof of all interactions.",
+        "answer": "The current client direct masks include Frostfire while the relevant Arcane Power/Instability periodic masks exclude it. Piercing Ice has a 2/4/6 direct rank curve but no override of its periodic effect value 2. These scoped discrepancies are corrected and regression-tested.",
+        "remaining": "Other cross-school scripts and the general additive-versus-multiplicative stacking law; rank/acquisition and downranking remain separate questions.",
+        "implementation": "Retain the corrected client masks without treating every unmeasured cross-school combination as verified. Do not change direct stacking merely to copy another engine.",
         "tests": [
           {
             "stage": "offline",
@@ -1650,14 +1659,15 @@
       "status": "needs-evidence",
       "title": "Hot Streak interruption and new-charge ordering",
       "question": "What happens if accelerated Pyroblast is interrupted or new stacks arrive during its cast?",
-      "current_model": "A completed Pyroblast consumes all Hot Streak stacks. Persistent free acceleration is fixed; interruption/in-flight edge behavior is not measured.",
+      "current_model": "Completed Pyroblast consumes the Heating Up charge/stacks; the engine and current talent display both use the sourced 20-second duration.",
       "impact": "Fire edge cases; not a reopening of the confirmed consumption fix.",
       "sources": [
         "sim/mage/talents.go",
         "docs/mechanics_review.md",
         "ui/core/talents/trees/mage.json",
         "https://github.com/ClassicWoWCommunity/forever-bugs/issues/92",
-        "artifacts/question_review/class_evidence.json"
+        "artifacts/question_review/class_evidence.json",
+        "docs/october-8-review.md"
       ],
       "legacy": [
         "T23 (remaining edge cases)"
@@ -1666,9 +1676,9 @@
       "review": {
         "disposition": "partial",
         "confidence": "moderate",
-        "answer": "Completed-Pyro consumption is already supported and fixed. The current client child 400625 has one proc charge, three stack capacity and a 20-second duration; the engine's 20 seconds agrees, while the UI's 15-second talent description is stale. Interrupt retention is irrelevant to an uninterrupted reference fight, but an earlier projectile creating a new stack during Pyro can occur there.",
-        "remaining": "Whether a newly earned in-flight stack is also consumed; interrupted casts matter only for interruption scenarios.",
-        "implementation": "Correct the stale display text separately. Do not undo completed-Pyro consumption or call the narrow ordering question a persistent-Hot-Streak uncertainty.",
+        "answer": "Completed-Pyro consumption is supported, and the stale 15-second display was corrected before this review. The current discussion again reports all-stack consumption. That does not settle a newly earned in-flight stack or interruption edge case.",
+        "remaining": "Whether a newly earned in-flight stack is also consumed; interruption matters only for scenarios that interrupt Pyroblast.",
+        "implementation": "No further duration/display fix is needed. Preserve completed-Pyro consumption and keep the narrow ordering question separate from the old persistent-buff bug.",
         "tests": [
           {
             "stage": "level30",
@@ -1676,8 +1686,7 @@
             "measure": "Start accelerated Pyro while an earlier Fire projectile is in flight; compare aura stacks at impact and completion. Separately cancel Pyro if interruption support is being evaluated."
           }
         ],
-        "previous_status": "needs-evidence",
-        "code_ready": "Update Hot Streak's stale 15-second talent description to the sourced 20 seconds already used by the engine."
+        "previous_status": "needs-evidence"
       }
     },
     {
@@ -1688,13 +1697,14 @@
       "status": "needs-evidence",
       "title": "Clearcasting and Missile Barrage event ordering",
       "question": "How do channel ticks, last-charge consumption and simultaneous procs interact?",
-      "current_model": "Clearcasting consumes on the next eligible paid damage cast with a one-second trigger ICD. Explicit Missile Barrage timing is retained.",
+      "current_model": "Clearcasting retains its one-second ICD and cast-complete consumption. Missile Barrage now rolls on landed eligible hits, not cast completion. Blizzard has initial per-target AC-only hit rolls; periodic ticks do not create generic hit callbacks.",
       "impact": "Arcane and hybrid resources; ordinary persistent-Clearcasting bug is already fixed.",
       "sources": [
         "sim/mage/talents.go",
         "sim/mage/arcane_missiles.go",
         "docs/history_review.md",
-        "ui/core/talents/trees/mage.json"
+        "ui/core/talents/trees/mage.json",
+        "docs/october-8-review.md"
       ],
       "legacy": [
         "T34"
@@ -1703,9 +1713,9 @@
       "review": {
         "disposition": "partial",
         "confidence": "moderate",
-        "answer": "The question combines two access levels. Arcane Concentration and ordinary Arcane Missiles are testable now; Missile Barrage is a level-25 talent and does not require max-level access. Current code excludes Arcane Missiles from the ordinary Clearcasting proc callback and consumes eligible Clearcasting at cast-complete. Client percentages alone do not resolve the channel's proc opportunity or ordering.",
-        "remaining": "Whether/how Missiles proc Clearcasting, and consumption when Barrage makes a channel free or another proc arrives during it.",
-        "implementation": "Separate channel proc opportunity from the already repaired persistent-Clearcasting bug. Do not infer a Classic 1.5%-per-tick rule from the commented-out code.",
+        "answer": "Missile Barrage and Blizzard initial-roll gaps were reproduced and fixed. Arcane Missiles children explicitly carry NOT_A_PROC (0x200), which conflicts with a blanket ban on their triggering Arcane Concentration; the cited zero-proc sample has only 32 missiles. Existing AM behavior is therefore retained, not silently removed.",
+        "remaining": "Arcane Missiles proc opportunities and free-channel/new-charge consumption ordering in live Forever. Client exceptions and the small community sample disagree.",
+        "implementation": "Use the corrected landed-hit callback and isolated Blizzard parent rolls without manufacturing damage, hit counts, Winter’s Chill, FoF or item procs. Do not reject every passive or zero-cost AM child on an unsourced rule.",
         "tests": [
           {
             "stage": "current-beta",
@@ -1871,13 +1881,14 @@
       "status": "needs-evidence",
       "title": "Mutilate off-hand flat damage and Cold Blood",
       "question": "Does the off-hand penalty include Mutilate's flat bonus, and does Cold Blood cover both strikes?",
-      "current_model": "Retains the current main-hand consumption and off-hand flat-component treatment. Puncturing Wounds already applies to both hands.",
+      "current_model": "One parent avoidance roll gates both Mutilate hand strikes and two base combo points. Both children retain block/crit and proc eligibility; Cold Blood benefits both then expires on parent completion. Flat bonus placement is unchanged.",
       "impact": "Mutilate damage and cooldown value.",
       "sources": [
         "sim/rogue/mutilate.go",
         "docs/history_review.md",
         "sim/rogue/talents.go",
-        "artifacts/question_review/class_evidence.json"
+        "artifacts/question_review/class_evidence.json",
+        "docs/october-8-review.md"
       ],
       "legacy": [
         "T38 / H14"
@@ -1885,10 +1896,10 @@
       "related": [],
       "review": {
         "disposition": "partial",
-        "confidence": "moderate",
-        "answer": "Cold Blood's current family modifier covers the Mutilate family and has one proc charge; Mutilate dispatches two child attacks. That establishes eligibility but not whether the server holds the guaranteed crit for both children before consuming it. The off-hand's weapon-plus-flat ordering likewise cannot be established from a parent dummy description alone.",
-        "remaining": "Paired-child charge consumption and off-hand flat-component penalty.",
-        "implementation": "Keep the current MH-only Cold Blood interpretation disclosed. Do not use an inherited expansion's paired-strike behavior as a Forever answer.",
+        "confidence": "high",
+        "answer": "Official text and child no-miss/dodge/parry flags resolve the parent/child gate and both-hand Cold Blood eligibility. Reproductions also found and fixed a second Seal Fate attempt after a failed first-hand proc. Ordinary builder behavior remains covered.",
+        "remaining": "Off-hand flat-bonus/AP details beyond existing checks and the reported transient beta Cold Blood nonconsumption bug.",
+        "implementation": "Corrected gate, child outcomes, Cold Blood ordering and one Seal Fate attempt; do not adopt persistent Cold Blood as intended behavior. Refresh Mutilate/APL evidence on both comparison arms.",
         "tests": [
           {
             "stage": "level30",
@@ -1901,7 +1912,14 @@
             "measure": "Verify that the higher flat component follows the low-rank ordering; do not repeat already settled proc timing unless a patch changes it."
           }
         ],
-        "previous_status": "needs-evidence"
+        "previous_status": "needs-evidence",
+        "history": [
+          {
+            "phase": "before October 8 review",
+            "answer": "Cold Blood's current family modifier covers the Mutilate family and has one proc charge; Mutilate dispatches two child attacks. That establishes eligibility but not whether the server holds the guaranteed crit for both children before consuming it. The off-hand's weapon-plus-flat ordering likewise cannot be established from a parent dummy description alone.",
+            "implementation": "Keep the current MH-only Cold Blood interpretation disclosed. Do not use an inherited expansion's paired-strike behavior as a Forever answer."
+          }
+        ]
       }
     },
     {
@@ -2206,13 +2224,14 @@
       "status": "needs-evidence",
       "title": "Demonic Brand power source and threat",
       "question": "Whose school power does Brand read, can it crit, and what threat multiplier applies?",
-      "current_model": "Sourced level-60 base/coefficient and target-scoped charges; reads owner matching-school power at hit time, with provisional pet school assignment, noncrit handling and 3× threat.",
+      "current_model": "Owner-school power feeds ranked target-scoped Brand charges, with pet modifiers once. Both children always hit and can crit. Fire uses normal threat; Shadow retains the existing 3× high-threat model.",
       "impact": "Demonic Pact pet damage and threat; its formula is not just flat demo damage anymore.",
       "sources": [
         "sim/warlock/talents.go",
         "docs/history_review.md",
         "https://www.wowhead.com/forever/spell=1293697/demonic-brand",
-        "artifacts/question_review/class_evidence.json"
+        "artifacts/question_review/class_evidence.json",
+        "docs/october-8-review.md"
       ],
       "legacy": [
         "T39 / H24"
@@ -2221,9 +2240,9 @@
       "review": {
         "disposition": "partial",
         "confidence": "moderate",
-        "answer": "Description variables explicitly provide the level term and 0.078 school-power term; child records are always-hit Fire and Shadow spells. Those records do not specify whose runtime power the script reads, an exact 3x threat multiplier or a blanket cannot-crit flag. The model's unconditional noncrit and 3x threat remain interpretations, not extracted constants.",
-        "remaining": "Owner-versus-demon power source, crit eligibility and actual threat/attribution.",
-        "implementation": "Keep the sourced formula separate from its runtime context. Do not require max-level access for the first useful test: Brand is available from level 25.",
+        "answer": "The official article distinguishes Fire/Imp normal threat from high-threat Shadow. Primary child rows 1293697/1293698 are ALWAYS_HIT without CANNOT_CRIT. Regressions reproduced and corrected both the Imp threat mistake and the suppressed crit roll. Ranked 2/4/6 charges remain, despite narrative shorthand saying two.",
+        "remaining": "Exact Shadow threat, live crit-rate/inheritance, ranked script conflicts and pet-family classification beyond current school mapping.",
+        "implementation": "Refresh Demonic Pact evidence after the crit correction. Preserve the sourced damage/power scopes and do not flatten rank curves or silently promote an exact server crit rate.",
         "tests": [
           {
             "stage": "level30",
@@ -2236,7 +2255,14 @@
             "measure": "Verify the level extrapolation and Tier interactions rather than rediscovering the basic power owner."
           }
         ],
-        "previous_status": "needs-evidence"
+        "previous_status": "needs-evidence",
+        "history": [
+          {
+            "phase": "before October 8 review",
+            "answer": "Description variables explicitly provide the level term and 0.078 school-power term; child records are always-hit Fire and Shadow spells. Those records do not specify whose runtime power the script reads, an exact 3x threat multiplier or a blanket cannot-crit flag. The model's unconditional noncrit and 3x threat remain interpretations, not extracted constants.",
+            "implementation": "Keep the sourced formula separate from its runtime context. Do not require max-level access for the first useful test: Brand is available from level 25."
+          }
+        ]
       }
     },
     {
@@ -2289,7 +2315,8 @@
         "sim/warlock/wrack.go",
         "docs/check_dispositions.md",
         "https://www.wowhead.com/forever/spell=1316697/wrack",
-        "artifacts/question_review/class_evidence.json"
+        "artifacts/question_review/class_evidence.json",
+        "docs/october-8-review.md"
       ],
       "legacy": [
         "T07"
@@ -2298,11 +2325,18 @@
       "review": {
         "disposition": "evidence-answer",
         "confidence": "high",
-        "answer": "Wrack amplification is confined to the caster’s sourced Corruption/Curse of Agony family; unrelated or another owner’s DoTs do not gain the modifier. Native ownership, family and cancellation controls pass; learn-level metadata is 40.",
-        "remaining": "None for the resolved question; profile/result publication is a separate pending integration step.",
-        "implementation": "Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.",
+        "answer": "The new official article says Wrack amplifies other owned Shadow DoTs. Unchanged static effect 1349557 family mask 0 x 402 identifies only Corruption/Agony, matching current code and explicit tests excluding Doom/SiphonLife/DrainSoul. Narrative intent and client/script scope genuinely conflict.",
+        "remaining": "Controlled testing of each additional owned Shadow periodic family; article wording alone does not establish a changed live mask.",
+        "implementation": "Keep 10%, caster ownership and cancellation rules; do not silently broaden scope. Test Wrack-talented APLs separately from current no-Wrack Affliction presets after resolving the relevant family model.",
         "tests": [],
-        "previous_status": "needs-evidence"
+        "previous_status": "needs-evidence",
+        "history": [
+          {
+            "phase": "before October 8 review",
+            "answer": "Wrack amplification is confined to the caster’s sourced Corruption/Curse of Agony family; unrelated or another owner’s DoTs do not gain the modifier. Native ownership, family and cancellation controls pass; learn-level metadata is 40.",
+            "implementation": "Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released."
+          }
+        ]
       }
     },
     {
@@ -2313,12 +2347,13 @@
       "status": "provisional",
       "title": "Spellstone's Fire/Shadow mask",
       "question": "Does Spellstone increase both Fire and Shadow power despite Shadow-only wording?",
-      "current_model": "Uses the client's Fire+Shadow mask plus casting speed. Current saved profiles do not select it.",
+      "current_model": "Spellstone grants its modeled Fire/Shadow bonuses and casting speed independently of a legal weapon oil; Firestone similarly stacks. The prior native rejection/UI warning was incorrect.",
       "impact": "Optional weapon imbue, not a current baseline modifier.",
       "sources": [
         "docs/history_review.md",
         "sim/warlock/talents.go",
-        "artifacts/question_review/class_evidence.json"
+        "artifacts/question_review/class_evidence.json",
+        "docs/october-8-review.md"
       ],
       "legacy": [
         "T42"
@@ -2327,11 +2362,18 @@
       "review": {
         "disposition": "credible-answer",
         "confidence": "moderate",
-        "answer": "The captured effect uses school mask 36, explicitly Fire plus Shadow, and the implementation follows it. This is a defensible data-led answer despite narrower prose; no current saved profile selects Spellstone. A stale pre-Forever off-hand Spellstone page is not evidence against the new weapon enchant.",
+        "answer": "The official Rogue/Warlock article explicitly allows Warlock stones with Wizard Oil. Native additive coexistence now passes for both stone types and the web conflict warning is removed. This resolves stacking, not every damage-school flag.",
         "remaining": "Only a contrary server observation or later corrected effect would require reopening the selected mask.",
-        "implementation": "Retain the client mask and document the tooltip conflict. Remove this from the required benchmark experiment queue rather than waiting for launch to approve a sourced optional effect.",
+        "implementation": "Retain stone effects and compare legal stone+oil choices for current defaults; no blanket spell-power conversion or duplicate bonus.",
         "tests": [],
-        "previous_status": "needs-evidence"
+        "previous_status": "needs-evidence",
+        "history": [
+          {
+            "phase": "before October 8 review",
+            "answer": "The captured effect uses school mask 36, explicitly Fire plus Shadow, and the implementation follows it. This is a defensible data-led answer despite narrower prose; no current saved profile selects Spellstone. A stale pre-Forever off-hand Spellstone page is not evidence against the new weapon enchant.",
+            "implementation": "Retain the client mask and document the tooltip conflict. Remove this from the required benchmark experiment queue rather than waiting for launch to approve a sourced optional effect."
+          }
+        ]
       }
     },
     {
@@ -2451,7 +2493,8 @@
         "sim/core/attack.go",
         "sim/core/spell_result.go",
         "docs/check_dispositions.md",
-        "https://github.com/magey/forever-warrior/issues/1"
+        "https://github.com/magey/forever-warrior/issues/1",
+        "docs/october-8-review.md"
       ],
       "legacy": [
         "T01 / T06"
@@ -2460,9 +2503,9 @@
       "review": {
         "disposition": "partial",
         "confidence": "moderate",
-        "answer": "The updated attack-table issue now includes initial +3-level results consistent with the Classic table. Its proposed percentages and sample-size plan are not a completed level-63 test. The report explicitly excludes currently broken glancing damage.",
-        "remaining": "Boss-level tables, suppression and glancing damage after the beta fix.",
-        "implementation": "Do not tune to the acknowledged glancing-damage bug or treat the issue's hypothetical table as measured coefficients.",
+        "answer": "An October 3 public measurement has 300 misses/4259 attacks against+3 targets at 1% hit:7.04%,95% Wilson about 6.31–7.85%. It supports an 8% rather than 9% single-weapon/special cap. This supersedes treating all suppression behavior as Classic-confirmed; ranged/dual-wield/boss-level scopes are not established by this sample.",
+        "remaining": "Direct raw-event outcome/skill controls, attack-type scope, level 60 suppression and separate dodge/parry/crit/glancing rules.",
+        "implementation": "Treat suppression removal as a focused evidence-backed candidate, not a wholesale table replacement. Do not tune known glancing bugs or silently assume ranged/dual-wield equivalence.",
         "tests": [
           {
             "stage": "current-beta",
@@ -2475,7 +2518,14 @@
             "measure": "Repeat outcome and crit-suppression counts; compare damage of glances with ordinary hits at fixed AP."
           }
         ],
-        "previous_status": "needs-evidence"
+        "previous_status": "needs-evidence",
+        "history": [
+          {
+            "phase": "before October 8 review",
+            "answer": "The updated attack-table issue now includes initial +3-level results consistent with the Classic table. Its proposed percentages and sample-size plan are not a completed level-63 test. The report explicitly excludes currently broken glancing damage.",
+            "implementation": "Do not tune to the acknowledged glancing-damage bug or treat the issue's hypothetical table as measured coefficients."
+          }
+        ]
       }
     },
     {
@@ -2621,12 +2671,13 @@
       "status": "needs-evidence",
       "title": "Mana restoration threat",
       "question": "Which mana returns generate threat, who receives it, and is it divided between enemies?",
-      "current_model": "The inherited accounting assigns 0.5 threat per effective mana gained to each enemy for non-exempt returns. Passive regeneration and attributed Innervate are excluded; Vampiric Touch has separate ownership. These source exemptions and per-enemy allocation are not established Forever behavior.",
+      "current_model": "Explicit NoThreat resource metrics exclude Forever Life Tap (owner and demon transfers) and Dark Sacrifice from end-of-iteration mana threat. Other existing mana/rage allocation behavior is retained.",
       "impact": "Tank TPS and rotation comparisons: wasting mana can increase subsequent effective restoration and its credited threat without improving damage or survival.",
       "sources": [
         "sim/core/mana.go",
         "sim/core/spell.go",
-        "https://github.com/ClassicWoWCommunity/forever-bugs/issues/66"
+        "https://github.com/ClassicWoWCommunity/forever-bugs/issues/66",
+        "docs/october-8-review.md"
       ],
       "related": [
         "CORE-007",
@@ -2635,9 +2686,9 @@
       "review": {
         "disposition": "partial",
         "confidence": "moderate",
-        "answer": "There is a public resource/healing-threat report with API observations and a video. Both its observed grouped allocation and its expected even allocation distribute a finite total; neither adds the full total independently to every enemy. The current AddMana/ApplyAOEThreat path does the latter. Source exemptions and ownership are separate questions.",
-        "remaining": "Source-specific threat amounts/exemptions and whether live mixed-creature grouping has been fixed. The supplied report is community evidence, not an official statement of the complete threat system.",
-        "implementation": "Treat multi-target resource-threat duplication as a source-supported correction candidate, with a focused total-conservation test before changing tank results. Do not copy the reported creature-grouping bug into the benchmark.",
+        "answer": "All registered Life Tap and Dark Sacrifice ranks carry client Attributes_1 NO_THREAT. A zero spell-damage threat multiplier did not prevent the separate mana-gain accumulator adding threat. Actual simulations reproduced phantom owner, pet and Priest threat; scoped accounting fixes pass without changing resource amounts. Charge is not registered locally, so no Charge implementation is claimed.",
+        "remaining": "Threat ownership, target distribution and source flags for other restoration effects; current Charge/mobility coverage is separate.",
+        "implementation": "Keep explicit per-source flags rather than infer resource threat from damage multipliers. Ordinary gain accounting is unchanged; these fixes affect threat metrics, not mana supply or damage.",
         "tests": [
           {
             "stage": "current-beta",
@@ -2797,13 +2848,14 @@
       "status": "provisional",
       "title": "Unbridled Wrath beta fix status",
       "question": "Has the acknowledged lower-than-intended beta proc rate been corrected?",
-      "current_model": "Uses intended 12% per point on ordinary landed white swings. Heroic Strike and Cleave are excluded following observed eligibility.",
+      "current_model": "Intended 12% per point on ordinary landed white swings, granting one Rage with either weapon layout. HS/Cleave excluded; the calculator no longer advertises two Rage for two-handed weapons.",
       "impact": "Warrior rage supply; intended model may differ from a live beta bug.",
       "sources": [
         "docs/flurry_review.md",
         "sim/warrior/talents.go",
         "https://github.com/ClassicWoWCommunity/forever-bugs/issues/105",
-        "docs/protection_sunder.md"
+        "docs/protection_sunder.md",
+        "docs/october-8-review.md"
       ],
       "legacy": [
         "T58"
@@ -2812,9 +2864,9 @@
       "review": {
         "disposition": "credible-answer",
         "confidence": "high",
-        "answer": "The public report distinguishes the measured beta under-proc from the intended 12%-per-point rate and documents white-hit eligibility. A contributor says the fix is for a future build, specifically not the next one. The intended simulation rule is answered; the issue's Closed label does not prove the live fix was shipped.",
+        "answer": "The October 1 notes explicitly remove the doubled two-handed Rage. Engine behavior already matched; the stale calculator/confirmed-rank display is corrected. Earlier under-proc bug and live deployment status remain distinct from the intended rule.",
         "remaining": "Only deployment status and separately unmeasured proc-extra-swing eligibility.",
-        "implementation": "Keep intended 12% per point and the documented HS/Cleave exclusion. Do not reduce the model to reproduce an acknowledged transient bug.",
+        "implementation": "No proc-rate or weapon-outcome mechanics changed in this display repair. Retain intended 12% per point, one Rage, and HS/Cleave exclusion.",
         "tests": [
           {
             "stage": "current-beta",
@@ -2822,7 +2874,14 @@
             "measure": "Count energize events, including capped zero-gain events, against eligible swings. Record the build; do not count HS/Cleave as white swings."
           }
         ],
-        "previous_status": "needs-evidence"
+        "previous_status": "needs-evidence",
+        "history": [
+          {
+            "phase": "before October 8 review",
+            "answer": "The public report distinguishes the measured beta under-proc from the intended 12%-per-point rate and documents white-hit eligibility. A contributor says the fix is for a future build, specifically not the next one. The intended simulation rule is answered; the issue's Closed label does not prove the live fix was shipped.",
+            "implementation": "Keep intended 12% per point and the documented HS/Cleave exclusion. Do not reduce the model to reproduce an acknowledged transient bug."
+          }
+        ]
       }
     },
     {
@@ -3105,27 +3164,28 @@
       "category": "mage",
       "kind": "mechanic",
       "priority": "high",
-      "status": "needs-evidence",
+      "status": "provisional",
       "title": "Ice Lance coefficient and frozen multiplier",
-      "question": "Is the retained 0.143 SP coefficient correct, and does the frozen multiplier cover the whole hit?",
-      "current_model": "Uses an explicitly assumed 0.143 coefficient and modeled frozen/Fingers interactions; the client damage effect lacks the coefficient.",
+      "question": "What is the Ice Lance SP coefficient at each rank, and does the frozen multiplier cover the whole hit?",
+      "current_model": "Uses a provisional 0.10 SP coefficient and unchanged frozen/Fingers interactions; the static client effect has no coefficient. Low-rank calibration is extrapolated to the level-60 registration.",
       "impact": "Frost and Arcane–Frost, including comparisons whose baseline casts Ice Lance.",
       "sources": [
         "sim/mage/ice_lance.go",
         "docs/beta-pass/mage.md",
         "ui/core/talents/trees/mage.json",
-        "docs/talent-check-2026-09-17.md"
+        "docs/talent-check-2026-09-17.md",
+        "docs/october-8-review.md"
       ],
       "legacy": [
         "T49"
       ],
       "related": [],
       "review": {
-        "disposition": "experiment",
-        "confidence": "low",
-        "answer": "The current active talent tree makes Ice Lance available at level 20. The native action's legacy ID and RequiredLevel=60 describe this engine registration, not when a player can first learn the talent. The source still does not settle the assumed SP coefficient.",
-        "remaining": "SP slope and the frozen multiplier's scope. Rank progression remains a separate max-level check.",
-        "implementation": "Move the basic coefficient experiment into the current-beta queue. Do not infer game accessibility from a max-rank-only native registration.",
+        "disposition": "credible-answer",
+        "confidence": "moderate",
+        "answer": "Processed public event reports 2727/2687 independently favor about 0.10–0.11 over the old 0.143 guess. Frostbolt-derived SP and repeated low Ice Lance hits constrain the fit. The 0.10 working model replaces that guess, but gear/talent details and resist/absorb fields are incomplete.",
+        "remaining": "Controlled SP-delta slope, frozen-state controls and higher-rank extrapolation.",
+        "implementation": "Provisional 0.10 applied with a focused registration/SP-delta check. Revalidate affected Mage comparisons; this does not prove an exact level-60 coefficient.",
         "tests": [
           {
             "stage": "current-beta",
@@ -3138,7 +3198,14 @@
             "measure": "Repeat only the unresolved rank-scaling part, not the entire frozen test."
           }
         ],
-        "previous_status": "needs-evidence"
+        "previous_status": "needs-evidence",
+        "history": [
+          {
+            "phase": "before October 8 review",
+            "answer": "The current active talent tree makes Ice Lance available at level 20. The native action's legacy ID and RequiredLevel=60 describe this engine registration, not when a player can first learn the talent. The source still does not settle the assumed SP coefficient.",
+            "implementation": "Move the basic coefficient experiment into the current-beta queue. Do not infer game accessibility from a max-rank-only native registration."
+          }
+        ]
       }
     },
     {
@@ -5236,12 +5303,266 @@
       }
     },
     {
+      "id": "MAG-007",
+      "category": "mage",
+      "kind": "mechanic",
+      "priority": "medium",
+      "status": "resolved",
+      "title": "Master of Elements base-cost refunds and batching",
+      "question": "Do free casts refund mana, and can one simultaneous AoE batch refund repeatedly?",
+      "current_model": "Forever critical eligible hits refund the rank percentage of base mana cost, including free casts, with the sourced 9ms proc cooldown. Classic behavior is unchanged.",
+      "impact": "Mage mana pacing and AoE resource accounting.",
+      "sources": [
+        "docs/october-8-review.md",
+        "sim/mage/talents.go",
+        "tools/forever_bench/mage_october8_test.go",
+        "https://github.com/ElliotWood/Forever/pull/599",
+        "https://github.com/ElliotWood/Forever/pull/660"
+      ],
+      "legacy": [],
+      "related": [
+        "MAG-005"
+      ],
+      "review": {
+        "disposition": "evidence-answer",
+        "confidence": "high",
+        "answer": "Primary SpellAuraOptions 29074 specifies ProcCategoryRecovery 9ms, versus Arcane Concentration’s 1000ms. The base-cost refund and batch limit were reproduced: free casts returned zero and three same-batch crits refunded three times. Focused corrections now match the sourced model.",
+        "remaining": "No remaining code/source discrepancy for these two rules; client alignment is not a fresh live-server measurement.",
+        "implementation": "Base-cost refund includes free Forever casts; the first qualifying crit starts the 9ms cooldown. Resource amount, school/rank scope and Classic retention have focused regressions.",
+        "tests": [],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "WAR-016",
+      "category": "warrior",
+      "kind": "mechanic",
+      "priority": "high",
+      "status": "provisional",
+      "title": "Deep Wounds payload and refresh",
+      "question": "Which weapon contributes, and is the intended rollover/tick rule live at every rank?",
+      "current_model": "Weapon-only MH-average payload, no AP/caster multiplier, carried-over unpaid damage and preserved tick timer; target modifiers apply once.",
+      "impact": "All Warrior bleed/talent/APL comparisons.",
+      "sources": [
+        "docs/october-8-review.md",
+        "sim/warrior/deep_wounds.go",
+        "https://github.com/ClassicWoWCommunity/forever-bugs/issues/234#issuecomment-6002676309"
+      ],
+      "legacy": [],
+      "related": [],
+      "review": {
+        "disposition": "credible-answer",
+        "confidence": "moderate",
+        "answer": "Public bug 234 relays intended no AP, rollover and preserved timing; child flags and separate low-level reports support no caster modifiers. The old engine violated all three and focused regressions now pass.",
+        "remaining": "The reply says next build; live delivery and off-hand payload attribution are unmeasured. Full-rank launch behavior and Impale prerequisite need current tree confirmation.",
+        "implementation": "Keep the corrected intended model qualified. Do not infer unshipped talent edges or treat another engine that still resets ticks as timing validation.",
+        "tests": [
+          {
+            "stage": "current-beta",
+            "requires": "Known Deep Wounds rank; separated MH/OH weapon damage, AP-only gear change and timed critical strikes.",
+            "measure": "Measure bleed increments, next-tick timestamps and remaining-damage rollover; record client/build and triggering hand."
+          },
+          {
+            "stage": "launch",
+            "requires": "Higher ranks and final level60weapon/talent data.",
+            "measure": "Confirm rank scaling and any unresolved OH attribution, not a whole new rage model."
+          }
+        ],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "SHA-007",
+      "category": "shaman",
+      "kind": "mechanic",
+      "priority": "high",
+      "status": "provisional",
+      "title": "Baseline Weapon Mastery grant",
+      "question": "What rank/value is granted automatically, and at which levels?",
+      "current_model": "At level 60, retained rank-5 spell 29088 adds 10% to eligible physical weapon attacks. Lower-level grant progression is not inferred. Shield Specialization is not added.",
+      "impact": "Enhancement damage and lower-level validation.",
+      "sources": [
+        "docs/october-8-review.md",
+        "sim/shaman/talents.go",
+        "https://worldofwarcraft.blizzard.com/en-us/news/24302097"
+      ],
+      "legacy": [],
+      "related": [],
+      "review": {
+        "disposition": "credible-answer",
+        "confidence": "moderate",
+        "answer": "Fresh official full article names Weapon Mastery baseline and Shield Specialization removed. Retained rank 5 is 10% physical damage with weapon restrictions, not spell power. The engine omitted the baseline bonus.",
+        "remaining": "Direct spellbook/aura grant, intermediate ranks and lower-level availability.",
+        "implementation": "Bounded level 60 weapon-only implementation passes armed/unarmed/Classic and spell-scope checks. Do not add the removed Shield Specialization from stale search excerpts.",
+        "tests": [
+          {
+            "stage": "current-beta",
+            "requires": "Shaman trainer/spellbook access, known weapon with no procs and matched target.",
+            "measure": "Capture passive grant and compare fixed physical attacks versus magic spells through available levels."
+          },
+          {
+            "stage": "launch",
+            "requires": "Level60Shaman with current passives.",
+            "measure": "Verify full10%physical weapon bonus and weapon-swap eligibility."
+          }
+        ],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "CORE-016",
+      "category": "shared",
+      "kind": "mechanic",
+      "priority": "high",
+      "status": "provisional",
+      "title": "Common player Spirit regeneration",
+      "question": "Do all player classes share the Mage/Priest formula, including its intercept?",
+      "current_model": "Forever players use the common working formula 6.25 + effective Spirit/8 MPS. Explicit class overrides, pets, Classic regeneration and the separate MP5 contribution remain unchanged.",
+      "impact": "Mana pacing, talents and gear for non-Mage/Priest mana users.",
+      "sources": [
+        "docs/october-8-review.md",
+        "sim/core/mana.go"
+      ],
+      "legacy": [],
+      "related": [],
+      "review": {
+        "disposition": "credible-answer",
+        "confidence": "moderate",
+        "answer": "Both Hunter pairs and five of six Paladin pairs fit 6.25 + Spirit/8, apart from roughly 0.001 in API output. The first Paladin pair would fit at 48 rather than its reported 49 Spirit; this single outlier does not establish a different Paladin intercept. The API dump omitted effective-Spirit and casting-regeneration values. A common-player formula is a better-supported provisional model, not proof for all classes or level 60.",
+        "remaining": "Effective versus first-return UnitStat values, fractional stats, levels, MP 5/buff controls and coverage of other classes/pets.",
+        "implementation": "Implemented the provisional common-player formula without an API-offset fudge. Focused checks cover the consistent measurements, casting/noncasting Spirit, both MP5 modes, preserved explicit overrides and unchanged pet/Classic formulas. Refresh affected mana pacing and comparisons; retain the unmatched raw sample.",
+        "tests": [
+          {
+            "stage": "current-beta",
+            "requires": "Hunter/Paladin plus another mana class, several Spirit values, no MP5/buffs, sufficient mana deficit.",
+            "measure": "Capture all UnitStat returns, GetManaRegen values, build/level/race and timed actual regeneration both inside/outside five-second rule."
+          },
+          {
+            "stage": "launch",
+            "requires": "Unresolved higher-level classes/passives.",
+            "measure": "Repeat only remaining level/class terms rather than assume low-level intercept is universal."
+          }
+        ],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "WL-009",
+      "category": "warlock",
+      "kind": "mechanic",
+      "priority": "high",
+      "status": "needs-evidence",
+      "title": "Demonic Knowledge ranked values",
+      "question": "Does up to 33% in the article mean the full talent, or rank-one shorthand?",
+      "current_model": "Preserves the static 33/67/100% oflevel curve for owner and active demon.",
+      "impact": "Demonology talent value and pet spell damage.",
+      "sources": [
+        "docs/october-8-review.md",
+        "sim/warlock/talents.go",
+        "https://worldofwarcraft.blizzard.com/en-us/news/24310968"
+      ],
+      "legacy": [],
+      "related": [],
+      "review": {
+        "disposition": "partial",
+        "confidence": "moderate",
+        "answer": "The new official narrative says up to 33%; unchanged trait curve 83192 has 33/67/100. No current controlled rank comparison settles the conflict.",
+        "remaining": "Observed spellpower delta at each talent rank and on owner/pet independently.",
+        "implementation": "Do not silently divide the full talent by three or label the unchanged curve as newly datamined.",
+        "tests": [
+          {
+            "stage": "current-beta",
+            "requires": "Demonic Knowledge accessible with enough talent/legacy points; fixed owner and active pet.",
+            "measure": "Measure owner/pet stats at each reachable rank and despawn/resummon; record unavailable ranks."
+          },
+          {
+            "stage": "launch",
+            "requires": "Any ranks still inaccessible in beta.",
+            "measure": "Complete ranked deltas and scaling with player level."
+          }
+        ],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "ROG-008",
+      "category": "rogue",
+      "kind": "mechanic",
+      "priority": "high",
+      "status": "resolved",
+      "title": "Separate poisons and temporary weapon enchants",
+      "question": "Can each hand select its poison independently of a stone or oil?",
+      "current_model": "Explicit per-hand Rogue poison options coexist with temporary enchants in native/web controls and all27 current exact profiles. Corrected-engine legal-combination comparisons and profile exports are integrated. Historical requests stay distinct.",
+      "impact": "All Rogue profiles, weapon effects and gear selection.",
+      "sources": [
+        "docs/october-8-review.md",
+        "proto/rogue.proto",
+        "sim/rogue/rogue.go",
+        "https://worldofwarcraft.blizzard.com/en-us/news/24310968"
+      ],
+      "legacy": [],
+      "related": [],
+      "review": {
+        "disposition": "implementation",
+        "confidence": "moderate",
+        "answer": "Official article explicitly allows poisons alongside temporary enchants. The old single-enum input cannot represent that legal setup.",
+        "remaining": "Native proc coexistence, request round-trip and exact-profile migration are complete. Poison charge depletion remains the separate ROG-003 question; this resolution does not claim that mechanic is verified.",
+        "implementation": "Separate inputs, reject stale Forever poison-consume selections rather than silently discard them, preserve Classic handling, and compare current legal combinations.",
+        "tests": [
+          {
+            "stage": "offline",
+            "requires": "Native/web current profiles and isolated weapon fixtures.",
+            "measure": "Round-trip both-hand poison+enchant combinations; verify separate stats/procs, equipment restrictions and explicit legacy-input rejection."
+          }
+        ],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "WL-010",
+      "category": "warlock",
+      "kind": "mechanic",
+      "priority": "high",
+      "status": "provisional",
+      "title": "Bane of Havoc damage copying",
+      "question": "Are copy scope, one-target limit and threat represented without duplicated modifiers?",
+      "current_model": "Copies 15% of actual qualifying owner damage as a separate Shadow event to the marked enemy, with a per-owner one-target limit. No recursive copies, pet/self/healing leakage or repeated damage modifiers.",
+      "impact": "Multi-target Warlock damage; no gain in the current one-target reference.",
+      "sources": [
+        "docs/october-8-review.md",
+        "sim/warlock/curses.go",
+        "https://worldofwarcraft.blizzard.com/en-us/news/24310968"
+      ],
+      "legacy": [],
+      "related": [],
+      "review": {
+        "disposition": "credible-answer",
+        "confidence": "moderate",
+        "answer": "Client driver supports outgoing owner direct/periodic damage and one marked target; the child is Shadow, cannot crit and ignores caster damage modifiers. These source-backed omissions are now implemented and regression-tested.",
+        "remaining": "Exact copied-damage mitigation/proc/threat behavior beyond explicit source fields.",
+        "implementation": "Copy and ownership/lifecycle corrections pass focused direct/periodic two-target regressions. Ordinary copy threat and exact server copy-mitigation behavior remain qualified assumptions; the single-target reference is unaffected.",
+        "tests": [
+          {
+            "stage": "offline",
+            "requires": "Two targets and two Warlocks with independent Havoc/Banes.",
+            "measure": "Check15%copy, expiry/replacement/caster ownership, direct and periodic damage, no duplicated mitigation/crit and no recursive proc chains."
+          },
+          {
+            "stage": "current-beta",
+            "requires": "Havoc is available on the test character; otherwise defer access.",
+            "measure": "Measure copy and threat behavior with separate owner/pet/self-damage events and mitigation changes."
+          }
+        ],
+        "previous_status": null
+      }
+    },
+    {
       "category": "shaman",
       "kind": "implementation",
       "priority": "medium",
       "title": "Flametongue Totem damage formula and comparison",
       "question": "What numeric on-hit rule is needed to compare Flametongue + Grace with Windfury?",
-      "current_model": "Opt-in external model: zero SP, provisional per-hit damage = rank dummy value /100 × base MH speed. Grace may coexist; Windfury Totem or Flametongue Weapon suppresses the proc. Canonical Windfury support remains unchanged.",
+      "current_model": "Opt-in zero-SP, provisional rank dummy/100 × base MH-speed proc. Grace and Windfury Weapon may coexist; Windfury Weapon child extra attacks no longer also trigger it. Windfury Totem/Flametongue Weapon remain conflicting. Canonical Windfury support is unchanged.",
       "impact": "May change melee raid support. A provisional comparison is possible, but does not verify the server formula.",
       "id": "SHA-006",
       "status": "needs-evidence",
@@ -5250,15 +5571,16 @@
         "https://www.wowhead.com/forever/spell=16387",
         "https://warcraft.wiki.gg/wiki/Flametongue_Totem",
         "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696/4",
-        "docs/october-1-corrections.md"
+        "docs/october-1-corrections.md",
+        "docs/october-8-review.md"
       ],
       "related": [],
       "review": {
         "disposition": "source-gap",
         "confidence": "moderate",
-        "answer": "A provisional speed-only external model now enables explicit sensitivity comparisons. Two non-overlapping 5000/arm seed ranges on fixed Human Ret/Fury give Flametongue+Grace 6.02%/2.48% less DPS than Windfury. This is not verification of the dummy-field interpretation, full-rank script or all melee specs.",
-        "remaining": "Actual speed formula, SP scaling, special/extra-swing eligibility, hit/crit behavior and form interpretation; caster-owned totem actions remain separate coverage.",
-        "implementation": "Keep the alternate clearly provisional and preserve exact comparison requests/results; do not silently replace canonical support or present it as a sourced server formula.",
+        "answer": "A reviewed beta event sequence supports one Flametongue hit alongside a white swing and two Windfury Weapon hits, not three. The engine reproduced three; a local child-action exclusion fixes the duplication without disabling unrelated weapon procs. Earlier fixed-profile FT+Grace comparisons remain historical, not revalidated after current Warrior changes.",
+        "remaining": "Actual damage-speed/SP formula, other special/extra-swing eligibility, hit/crit and forms; owned totem actions remain separate coverage.",
+        "implementation": "Keep the alternate provisional; preserve legal coexistence and new extra-hit regression. Rerun any support comparison on the corrected engine before presenting a current gain.",
         "tests": [
           {
             "stage": "offline",
@@ -5282,6 +5604,11 @@
             "phase": "before October 1 reconciliation",
             "answer": "September 24 official notes exclude Flametongue stacking with Windfury Totem or Flametongue Weapon and remove lingering/stacked buffs. Learned ranks are 28/38/48/58. Rank-four dummy proc 16389 has base points 1363, not an established damage hit; the live tooltip exposes weapon-speed-dependent bounds but does not prove its server formula or SP scaling.",
             "implementation": "Keep source versions and implementation coverage separate; no inferred script formula or automatic preset optimization."
+          },
+          {
+            "phase": "before October 8 review",
+            "answer": "A provisional speed-only external model now enables explicit sensitivity comparisons. Two non-overlapping 5000/arm seed ranges on fixed Human Ret/Fury give Flametongue+Grace 6.02%/2.48% less DPS than Windfury. This is not verification of the dummy-field interpretation, full-rank script or all melee specs.",
+            "implementation": "Keep the alternate clearly provisional and preserve exact comparison requests/results; do not silently replace canonical support or present it as a sourced server formula."
           }
         ]
       }
@@ -5291,8 +5618,10 @@
     "date": "2026-09-27",
     "original_entries": 137,
     "reviewed_original_entries": 137,
-    "added_entries": 9,
-    "latest_followup": "October 1 corrections: stable prior IDs reconciled; WAR-015 adds the sourced Gore Drinker trigger/charge gap.",
+    "added_entries": 16,
+    "latest_followup": "October 8 review:284 new messages,305 public upstream commits and latest official/client sources reconciled.153 entries retained. Corrections and bounded selections integrated into201 profiles/804 scenarios plus201 current-engine original controls and68 tank workload checks; unresolved mechanics remain qualified.",
+    "latest_followup_date": "2026-10-08",
+    "latest_followup_baseline": "684f9d6cdc1782de40313b0125020c65d1680b6e",
     "before": {
       "needs-evidence": 84,
       "needs-code": 27,

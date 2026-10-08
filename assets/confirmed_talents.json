@@ -1,6 +1,6 @@
 {
  "_readme": "Talent rank values from the Forever beta client, numbers only, in the order they appear in each rank tooltip. TestConfirmedTalentRanksMatchTheSim holds the trees to them. Regenerate with tools/forever_talents/apply_beta_tooltips.py.",
- "source": "Client 1.60.1.69893/70009 entries retained; October 1 development notes and client-derived current talent data for 70170 reconciled separately.",
+ "source": "Client 1.60.1.69893/70009 entries retained; October 1 development notes and client-derived current talent data for 70170 reconciled separately. October 8 review reconciles Unbridled Wrath display with the October 1 two-hand Rage correction.",
  "generated": "1.60.1.70170 reconciliation",
  "talents": {
   "Druid": {
@@ -3529,6 +3529,7 @@
    ]
   },
   "Warrior": {
+   "Unbridled Wrath": [[12, 1], [24, 1], [36, 1], [48, 1], [60, 1]],
    "Improved Heroic Strike": [
     [
      1

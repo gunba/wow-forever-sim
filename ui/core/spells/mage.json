@@ -80,7 +80,7 @@
 		"ability": "Frostfire Bolt",
 		"file": "sim/mage/frostfire_bolt.go",
 		"source": "forever",
-		"note": "Beta 1.60.1.69893: rank 3 at level 60, 270–314 direct damage, 0.814 SP coefficient, 19 damage every 3 seconds for 9 seconds with no periodic SP coefficient. 370 mana, 3-second cast, missile speed 24. Improved Fireball, not Improved Frostbolt, reduces its cast time. Direct crits trigger Hot Streak; casts can trigger Missile Barrage. Counts as a Chill effect. Winter's Chill does not grant it crit.",
+		"note": "Beta 1.60.1.69893: rank 3 at level 60, 270–314 direct damage, 0.814 SP coefficient, 19 damage every 3 seconds for 9 seconds with no periodic SP coefficient. 370 mana, 3-second cast, missile speed 24. Improved Fireball, not Improved Frostbolt, reduces its cast time. Direct crits trigger Hot Streak; landed hits can trigger Missile Barrage. Counts as a Chill effect. Winter's Chill does not grant it crit. The periodic component excludes Arcane Power and Arcane Instability; Piercing Ice gives it a flat 2% bonus. Direct talent effects are unchanged.",
 		"tooltip": "370 Mana\n3 sec cast\nDeals 270 to 314 Frostfire damage and another 57 over 9 sec. Slows movement by 40%. Counts as Fire and Frost damage and uses the target's lower resistance."
 	},
 	"10": {
@@ -592,8 +592,9 @@
 	"29076": {
 		"ability": "Master of Elements",
 		"file": "sim/mage/talents.go",
-		"note": "10/20/30% of base mana refunded on a Fire or Frost crit, the same numbers as Classic and as the Forever talent data; the fork only corrected a school filter that had been refunding every school.",
-		"source": "classic"
+		"note": "Client 1.60.1.70245: Fire/Frost crits refund 10/20/30% of the spell's base mana cost, including free casts. A 9ms internal cooldown prevents multiple refunds from one simultaneous batch.",
+		"source": "forever",
+		"tooltip": "Passive\nFire and Frost spell criticals refund 10/20/30% of the spell's base mana cost, even when the cast was free. Refunds have a 9ms internal cooldown."
 	},
 	"2948": {
 		"ability": "Scorch",
@@ -613,7 +614,7 @@
 	"30455": {
 		"ability": "Ice Lance",
 		"assumptions": [
-			"Spell power coefficient .143. The beta client carries no coefficient on the damage effect at all, so it cannot confirm one."
+			"Spell power coefficient 0.10 is a provisional calibration from independent low-rank damage observations, not an exact measured level-60 coefficient. The client effect itself provides no coefficient."
 		],
 		"file": "sim/mage/ice_lance.go",
 		"foreverId": 1240047,
@@ -632,9 +633,9 @@
 		"ability": "Missile Barrage",
 		"file": "sim/mage/talents.go",
 		"foreverId": 400589,
-		"note": "Beta client 1.60.1.69893 (400588, 400589) confirms 40/20%, -50% channel, -100% cost and the 15 sec duration. Frostfire Bolt is included among the 20% triggers. The aura still uses legacy identifier 44404 in the sim.",
+		"note": "Beta client 1.60.1.69893 (400588, 400589) confirms 40/20%, -50% channel, -100% cost and the 15 sec duration. Frostfire Bolt is included among the 20% triggers. The aura still uses legacy identifier 44404 in the sim. Eligible hits must land; a miss or cast completion alone cannot proc the aura.",
 		"source": "forever",
-		"tooltip": "Your Arcane Blast has a 40% chance, and your Fireball and Frostbolt a 20% chance, to grant Missile Barrage.\nYour next Arcane Missiles costs no mana and fires a missile every 0.5 sec instead of every second, halving the channel. Lasts 15 sec."
+		"tooltip": "Your landed Arcane Blast has a 40% chance, and landed Fireball, Frostbolt and Frostfire Bolt a 20% chance, to grant Missile Barrage.\nYour next Arcane Missiles costs no mana and fires a missile every 0.5 sec instead of every second, halving the channel. Lasts 15 sec."
 	},
 	"44445": {
 		"ability": "Hot Streak",

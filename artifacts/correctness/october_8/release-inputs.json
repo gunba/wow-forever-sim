@@ -1,0 +1,33 @@
+{
+  "phase": "October8 final integration",
+  "previousRelease": "684f9d6cdc1782de40313b0125020c65d1680b6e",
+  "toolchain": "Go1.24.13 from cached golang:1.24-bookworm; native builds through actual Docker compiler, publication verification through an identical private full host copy.",
+  "nativeBenchSHA256": "81642f9697c2b956d7a30c62b40af86c2ff057f04522419391760ce44d215793",
+  "nativeReplayerSHA256": "974e88ded08a31b8f2d4462416d255aac3d94f280d370014d7c3cafa0e31851f",
+  "preparedInputSHA256": "9ba11fc94f4fa7f1410dc46cd299c00b93e7628a2ff69b8a0bf5a5be8e5112a4",
+  "rawMainSHA256": "b8076d76f5a4d0d5def8dd77ed99c6cf854cdbb9b5d347df6a47b0a431ed4f6c",
+  "matrix": {
+    "completed": 1005,
+    "requested": 1005,
+    "failures": []
+  },
+  "tank": {
+    "engineSHA256": "974e88ded08a31b8f2d4462416d255aac3d94f280d370014d7c3cafa0e31851f",
+    "inputSHA256": "9ba11fc94f4fa7f1410dc46cd299c00b93e7628a2ff69b8a0bf5a5be8e5112a4",
+    "workloadSourceSHA256": "7975dd7a0162986406f7f28c3c334313a05d6717e45a8b3262db183a0b71dd87",
+    "seeds": [
+      1792840001,
+      1792860001
+    ],
+    "iterations": 5000
+  },
+  "invariants": [
+    "Main BaselinePlayer exactly equals prepared final input for all201 profiles.",
+    "Sensitivity BaselinePlayer changes only forcedTier1/equipmentScale fields.",
+    "All current and current-engine-original controls use natural equipped-only hit with zero paid adjustment.",
+    "Final gear merge changes only equipment IDs/permanent enchants; profession2 changes allowed but none selected.",
+    "All68 tank requests preserve original workload/healing/support and only apply selected player gear plus independent iteration/seed fields."
+  ],
+  "postReplayMetadata": "After the native replays, publication checks required two missing Havoc source entries. Hunter/Mage/Warlock/Warrior tooltip metadata was reconciled to the already-tested mechanics. These UI source descriptions do not alter native player/scenario inputs or numerical behavior; the replay manifest retains its original broader file fingerprint.",
+  "goldenRefresh": "Existing Warrior DPS and ProtectionPaladin aggregate expectations were refreshed only after overlays restoring pre-change DeepWounds/mana made both old suites pass exactly. No mechanics changed during that refresh."
+}

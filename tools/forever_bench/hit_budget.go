@@ -129,11 +129,14 @@ func hitRequirements(b build, p *proto.Player, character *core.Character, target
 			autos[unit.AutoAttacks.RangedAuto()] = true
 		}
 	}
-	hasPoison := p.Consumes != nil &&
-		(p.Consumes.MainHandImbue == proto.WeaponImbue_InstantPoison ||
+	poisons := p.GetRogue().GetOptions()
+	hasPoison := poisons.GetMainHandPoison() != proto.RogueOptions_NoPoison || poisons.GetOffHandPoison() != proto.RogueOptions_NoPoison
+	if !character.Env.IsForever() && p.Consumes != nil {
+		hasPoison = p.Consumes.MainHandImbue == proto.WeaponImbue_InstantPoison ||
 			p.Consumes.MainHandImbue == proto.WeaponImbue_DeadlyPoison ||
 			p.Consumes.OffHandImbue == proto.WeaponImbue_InstantPoison ||
-			p.Consumes.OffHandImbue == proto.WeaponImbue_DeadlyPoison)
+			p.Consumes.OffHandImbue == proto.WeaponImbue_DeadlyPoison
+	}
 	var requirements []hitRequirement
 	var exclusions []string
 	for _, spell := range unit.Spellbook {

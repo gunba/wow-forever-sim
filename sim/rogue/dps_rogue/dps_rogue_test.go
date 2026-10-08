@@ -72,7 +72,7 @@ func TestAssassinationMutilate(t *testing.T) {
 			Buffs:       core.ForeverBuffs,
 			Consumes:    Phase1PoisonConsumes,
 			Phase:       1,
-			SpecOptions: core.SpecOptionsCombo{Label: "Poisons", SpecOptions: DefaultRogue},
+			SpecOptions: core.SpecOptionsCombo{Label: "Poisons", SpecOptions: DualPoisonRogue},
 
 			ItemFilter:      ItemFilters,
 			EPReferenceStat: proto.Stat_StatAttackPower,
@@ -96,7 +96,7 @@ func TestSubtletyHemorrhage(t *testing.T) {
 			Buffs:       core.ForeverBuffs,
 			Consumes:    Phase1PoisonConsumes,
 			Phase:       1,
-			SpecOptions: core.SpecOptionsCombo{Label: "Poisons", SpecOptions: DefaultRogue},
+			SpecOptions: core.SpecOptionsCombo{Label: "Poisons", SpecOptions: DualPoisonRogue},
 
 			ItemFilter:      ItemFilters,
 			EPReferenceStat: proto.Stat_StatAttackPower,
@@ -114,7 +114,13 @@ var SubtletyHemorrhageTalents = "125320101--5320003310013211551"
 
 var DefaultRogue = &proto.Player_Rogue{
 	Rogue: &proto.Rogue{
-		Options: &proto.RogueOptions{},
+		Options: &proto.RogueOptions{OffHandPoison: proto.RogueOptions_InstantPoison},
+	},
+}
+
+var DualPoisonRogue = &proto.Player_Rogue{
+	Rogue: &proto.Rogue{
+		Options: &proto.RogueOptions{MainHandPoison: proto.RogueOptions_InstantPoison, OffHandPoison: proto.RogueOptions_DeadlyPoison},
 	},
 }
 
@@ -148,7 +154,6 @@ var Phase1Consumes = core.ConsumesCombo{
 	Consumes: &proto.Consumes{
 		AgilityElixir:   proto.AgilityElixir_ElixirOfTheMongoose,
 		MainHandImbue:   proto.WeaponImbue_Windfury,
-		OffHandImbue:    proto.WeaponImbue_InstantPoison,
 		StrengthBuff:    proto.StrengthBuff_JujuPower,
 		AttackPowerBuff: proto.AttackPowerBuff_JujuMight,
 	},
@@ -159,8 +164,6 @@ var Phase1PoisonConsumes = core.ConsumesCombo{
 	Label: "P1-Poison-Consumes",
 	Consumes: &proto.Consumes{
 		AgilityElixir:   proto.AgilityElixir_ElixirOfTheMongoose,
-		MainHandImbue:   proto.WeaponImbue_InstantPoison,
-		OffHandImbue:    proto.WeaponImbue_DeadlyPoison,
 		StrengthBuff:    proto.StrengthBuff_JujuPower,
 		AttackPowerBuff: proto.AttackPowerBuff_JujuMight,
 	},

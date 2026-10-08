@@ -11,6 +11,8 @@ import (
 )
 
 func (shaman *Shaman) ApplyTalents() {
+	shaman.applyBaselineWeaponMastery()
+
 	// Elemental Talents
 	shaman.applyConcussion()
 	shaman.applyElementalWarding()
@@ -97,6 +99,47 @@ func (shaman *Shaman) ApplyTalents() {
 			}
 		})
 	}
+}
+
+func (shaman *Shaman) applyBaselineWeaponMastery() {
+	if !shaman.Env.IsForever() || shaman.Level < 60 {
+		return
+	}
+
+	// Blizzard names Weapon Mastery as baseline. Use the retained full-rank
+	// 29088 effect (10% physical weapon damage) at level 60. Lower-level
+	// grant/rank progression remains unmeasured and is not inferred here.
+	// This is not a bonus to spells or unarmed attacks.
+	applied := make(map[*core.Spell]bool)
+	update := func(spell *core.Spell) {
+		if spell.SpellSchool != core.SpellSchoolPhysical || !spell.ProcMask.Matches(core.ProcMaskMelee) {
+			return
+		}
+		slot := proto.ItemSlot_ItemSlotMainHand
+		if spell.ProcMask.Matches(core.ProcMaskMeleeOH) {
+			slot = proto.ItemSlot_ItemSlotOffHand
+		}
+		weapon := shaman.Equipment[slot]
+		eligible := weapon.Type == proto.ItemType_ItemTypeWeapon && slices.Contains(
+			[]proto.WeaponType{proto.WeaponType_WeaponTypeAxe, proto.WeaponType_WeaponTypeMace,
+				proto.WeaponType_WeaponTypeStaff, proto.WeaponType_WeaponTypeFist, proto.WeaponType_WeaponTypeDagger},
+			weapon.WeaponType)
+		if eligible == applied[spell] {
+			return
+		}
+		if eligible {
+			spell.DamageMultiplier *= 1.10
+		} else {
+			spell.DamageMultiplier /= 1.10
+		}
+		applied[spell] = eligible
+	}
+	shaman.OnSpellRegistered(update)
+	shaman.RegisterOnItemSwap(func(sim *core.Simulation) {
+		for _, spell := range shaman.Spellbook {
+			update(spell)
+		}
+	})
 }
 
 func (shaman *Shaman) applyConcussion() {
@@ -234,6 +277,13 @@ func (shaman *Shaman) applyElementalDevastation() {
 			aura.Activate(sim)
 		},
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+			// The consolidated Forever talent 30160 has no CanProcFromProcs
+			// attribute (SpellMisc Attributes3=0 in 70245). Passive spells
+			// are casts triggered by another spell, including Overload.
+			// Keep the existing Classic eligibility and normal spell masks.
+			if shaman.Env.IsForever() && spell.Flags.Matches(core.SpellFlagPassiveSpell) {
+				return
+			}
 			if spell.ProcMask.Matches(core.ProcMaskSpellDamage) && result.Outcome.Matches(core.OutcomeCrit) {
 				procAura.Activate(sim)
 			}

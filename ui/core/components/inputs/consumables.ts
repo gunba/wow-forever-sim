@@ -38,7 +38,7 @@ import { makeBooleanConsumeInput, makeBooleanMiscConsumeInput, makeBooleanPetMis
 import { IconPicker, IconPickerDirection } from '../icon_picker';
 import * as InputHelpers from '../input_helpers';
 import { MultiIconPicker, MultiIconPickerConfig, MultiIconPickerItemConfig } from '../multi_icon_picker';
-import { DeadlyPoisonWeaponImbue, InstantPoisonWeaponImbue, WoundPoisonWeaponImbue } from './rogue_imbues';
+import { ClassicDeadlyPoisonWeaponImbue, ClassicInstantPoisonWeaponImbue, ClassicWoundPoisonWeaponImbue } from './rogue_imbues';
 import { FlametongueWeaponImbue, FrostbrandWeaponImbue, RockbiterWeaponImbue, WindfuryWeaponImbue } from './shaman_imbues';
 import { ActionInputConfig, ItemStatOption, PickerStatOptions, StatOptions } from './stat_options';
 
@@ -1010,10 +1010,10 @@ const SHAMAN_IMBUES = (slot: ItemSlot): ConsumableStatOption<WeaponImbue>[] => [
 	{ config: WindfuryWeaponImbue(slot), stats: [] },
 ];
 
-const ROGUE_IMBUES: ConsumableStatOption<WeaponImbue>[] = [
-	{ config: InstantPoisonWeaponImbue, stats: [] },
-	{ config: DeadlyPoisonWeaponImbue, stats: [] },
-	{ config: WoundPoisonWeaponImbue, stats: [] },
+const CLASSIC_ROGUE_IMBUES: ConsumableStatOption<WeaponImbue>[] = [
+	{ config: ClassicInstantPoisonWeaponImbue, stats: [] },
+	{ config: ClassicDeadlyPoisonWeaponImbue, stats: [] },
+	{ config: ClassicWoundPoisonWeaponImbue, stats: [] },
 ];
 
 const CONSUMABLES_IMBUES = (slot: ItemSlot): ConsumableStatOption<WeaponImbue>[] => [
@@ -1040,13 +1040,13 @@ const CONSUMABLES_IMBUES = (slot: ItemSlot): ConsumableStatOption<WeaponImbue>[]
 ];
 
 export const WEAPON_IMBUES_OH_CONFIG: ConsumableStatOption<WeaponImbue>[] = [
-	...ROGUE_IMBUES,
+	...CLASSIC_ROGUE_IMBUES,
 	...SHAMAN_IMBUES(ItemSlot.ItemSlotOffHand),
 	...CONSUMABLES_IMBUES(ItemSlot.ItemSlotOffHand),
 ];
 
 export const WEAPON_IMBUES_MH_CONFIG: ConsumableStatOption<WeaponImbue>[] = [
-	...ROGUE_IMBUES,
+	...CLASSIC_ROGUE_IMBUES,
 	...SHAMAN_IMBUES(ItemSlot.ItemSlotMainHand),
 	{ config: Windfury, stats: [Stat.StatMeleeHit] },
 	...CONSUMABLES_IMBUES(ItemSlot.ItemSlotMainHand),

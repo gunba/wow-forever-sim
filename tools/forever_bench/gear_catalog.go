@@ -235,7 +235,7 @@ func classCanEquip(class proto.Class, item core.Item) bool {
 	allowed := map[proto.Class][]proto.WeaponType{
 		proto.Class_ClassDruid: {2, 3, 4, 5, 8}, proto.Class_ClassHunter: {1, 2, 3, 5, 6, 8, 9},
 		proto.Class_ClassMage: {2, 5, 8, 9}, proto.Class_ClassPaladin: {1, 4, 5, 6, 7, 9},
-		proto.Class_ClassPriest: {2, 4, 5, 8}, proto.Class_ClassRogue: {2, 3, 4, 5, 9},
+		proto.Class_ClassPriest: {2, 4, 5, 8}, proto.Class_ClassRogue: {1, 2, 3, 4, 5, 9},
 		proto.Class_ClassShaman:  {1, 2, 3, 4, 5, 7, 8},
 		proto.Class_ClassWarlock: {2, 5, 8, 9}, proto.Class_ClassWarrior: {1, 2, 3, 4, 5, 6, 7, 8, 9},
 	}

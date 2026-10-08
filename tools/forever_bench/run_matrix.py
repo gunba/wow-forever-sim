@@ -135,8 +135,8 @@ def main():
     for scenario in scenarios:
         members = [results[(scenario, *key)] for key in roster]
         combined = {**members[0][1], "ReplayManifest": manifest,
-                    "GearScenario": ("real-reference" if scenario == "original" else
-                                     profile_data.get("GearScenario", "real-reference")),
+                    "GearScenario": json.loads(scenarios[scenario][0].read_text()).get(
+                        "GearScenario", "real-reference"),
                     "Results": [data["Results"][0] for _, data in members]}
         (args.output / (scenario + ".json")).write_text(json.dumps(combined, indent=2) + "\n")
         with (args.output / (scenario + ".csv")).open("w") as stream:

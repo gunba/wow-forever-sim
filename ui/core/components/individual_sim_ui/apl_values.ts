@@ -36,6 +36,8 @@ import {
 	APLValueFrontOfTarget,
 	APLValueGCDIsReady,
 	APLValueGCDTimeToReady,
+	APLValueHunterHawkCount,
+	APLValueHunterHawkRemainingTime,
 	APLValueIsExecutePhase,
 	APLValueIsExecutePhase_ExecutePhaseThreshold as ExecutePhaseThreshold,
 	APLValueMath,
@@ -949,6 +951,22 @@ const valueKindFactories: { [f in NonNullable<APLValueKind>]: ValueKindConfig<AP
 	}),
 
 	// Class/spec specific values
+	hunterHawkCount: inputBuilder({
+		label: 'Active Hawk Count',
+		submenu: ['Hunter'],
+		shortDescription: 'Number of active Hawk guardians (0–2) across all targets. Summons still in flight are not counted.',
+		newValue: APLValueHunterHawkCount.create,
+		includeIf: (player: Player<any>, _isPrepull: boolean) => player.getClass() === Class.ClassHunter,
+		fields: [],
+	}),
+	hunterHawkRemainingTime: inputBuilder({
+		label: 'Hawk Remaining Time',
+		submenu: ['Hunter'],
+		shortDescription: 'Time until the earliest active Hawk expires across all targets, or 0 if none are active. Ignores summons still in flight.',
+		newValue: APLValueHunterHawkRemainingTime.create,
+		includeIf: (player: Player<any>, _isPrepull: boolean) => player.getClass() === Class.ClassHunter,
+		fields: [],
+	}),
 	totemRemainingTime: inputBuilder({
 		label: 'Totem Remaining Time',
 		submenu: ['Shaman'],

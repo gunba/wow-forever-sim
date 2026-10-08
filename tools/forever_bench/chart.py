@@ -154,7 +154,7 @@ def main():
     tier = "Tier 1 bonuses enabled" if data["Tier1Bonuses"] else "Tier 1 override disabled"
     fig.text(.5, .942,
              f"Level 60 · {data['Duration']:g}s single target · {tier}" +
-             (" · client 1.60.1.70009 corrections" if model_v2 else ""),
+             (" · October 8 review / client 1.60.1.70245" if model_v2 else ""),
              ha="center", fontsize=11)
     samples = "/".join(f"{n:,}" for n in sorted({r["Iterations"] for r in rows}))
     fig.text(.07, .085,
@@ -181,7 +181,7 @@ def main():
              fontsize=8.5, color="#64748b")
     if any(row.get("Tank") for row in rows):
         fig.text(.07, .01,
-                 "Tank rows: frontal boss attacks + modeled healing and class-specific support; "
+                 "Tank rows: frontal boss attacks + modeled healing; shared support except assigned duties; "
                  "not an equal-encounter survival ranking. Bear's Crusader/form proc eligibility is unverified.",
                  fontsize=8.5, color="#64748b")
     prefix = args.output or args.results.with_suffix("")

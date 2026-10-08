@@ -48,7 +48,7 @@ func (warlock *Warlock) applyWeaponImbue() {
 	if warlock.Options.WeaponImbue == proto.WarlockOptions_NoWeaponImbue {
 		return
 	}
-	if warlock.Consumes.MainHandImbue != proto.WeaponImbue_WeaponImbueUnknown {
+	if !warlock.Env.IsForever() && warlock.Consumes.MainHandImbue != proto.WeaponImbue_WeaponImbueUnknown {
 		panic("Warlock weapon stones cannot be combined with another main-hand imbue")
 	}
 	if warlock.Equipment.MainHand().ID == 0 {
@@ -386,8 +386,12 @@ func (warlock *Warlock) applyDemonicBrand() {
 	brandSpells := make(map[*core.Unit]*core.Spell)
 	for _, pet := range warlock.BasePets {
 		spellID, school, powerStat := int32(1293697), core.SpellSchoolShadow, stats.ShadowPower
+		threatMultiplier := 3.0
 		if pet == warlock.Imp {
 			spellID, school, powerStat = 1293698, core.SpellSchoolFire, stats.FirePower
+			// The non-tanking Fire child deals ordinary threat; only the
+			// Shadow child retains the high-threat behavior.
+			threatMultiplier = 1
 		}
 		brandSpells[&pet.Unit] = pet.RegisterSpell(core.SpellConfig{
 			ActionID:    core.ActionID{SpellID: spellID},
@@ -397,15 +401,16 @@ func (warlock *Warlock) applyDemonicBrand() {
 			Flags:       core.SpellFlagPassiveSpell | core.SpellFlagNoOnCastComplete,
 
 			DamageMultiplier: 1,
-			ThreatMultiplier: 3,
+			ThreatMultiplier: threatMultiplier,
 
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 				// Description variables 1017/1018 give the matching school's coefficient.
 				// Pet damage modifiers apply through the spell once, not again in this formula.
 				power := warlock.GetStat(stats.SpellPower) + warlock.GetStat(stats.SpellDamage) + warlock.GetStat(powerStat)
 				base := (float64(warlock.Level)-26)*1.5 + sim.Roll(14, 17) + .078*power
-				// Both child spells carry Attributes_3 ALWAYS_HIT (0x40000).
-				spell.CalcAndDealDamage(sim, target, base, spell.OutcomeAlwaysHit)
+				// Both children are ALWAYS_HIT, but neither has CANNOT_CRIT.
+				// Skip a second hit roll without suppressing the demon's crit roll.
+				spell.CalcAndDealDamage(sim, target, base, spell.OutcomeMagicCrit)
 			},
 		})
 	}

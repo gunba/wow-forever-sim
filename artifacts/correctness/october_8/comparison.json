@@ -1,0 +1,2743 @@
+{
+  "previousRelease": "684f9d6cdc1782de40313b0125020c65d1680b6e",
+  "scope": "October8 corrections and bounded talent/APL/enchant/gear selections;31builds/201profiles/804main+sensitivity and201current-engine-original controls.",
+  "matching": "Original current-engine controls migrate only mandatory Rogue poison fields and obsolete HawkDoT predicates. All remaining original setup choices are preserved. The current single-seed selection deltas are descriptive; selection support is the separate independent two-seed studies, not this aggregate comparison. Historical release uses its original engine/seed and is not a paired optimization control.",
+  "seed": 1792800001,
+  "iterations": 5000,
+  "rows": [
+    {
+      "key": "balance",
+      "race": "Tauren",
+      "changedPlayerFields": [],
+      "publishedDPS": 708.2427691745786,
+      "currentOriginalSetupDPS": 708.5322413643822,
+      "currentSelectedDPS": 708.5322413643822,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "balance",
+      "race": "Windshaper",
+      "changedPlayerFields": [],
+      "publishedDPS": 711.5253877822104,
+      "currentOriginalSetupDPS": 711.5684586426429,
+      "currentSelectedDPS": 711.5684586426429,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "balance",
+      "race": "Night Elf",
+      "changedPlayerFields": [],
+      "publishedDPS": 711.5576603049635,
+      "currentOriginalSetupDPS": 711.8154374266144,
+      "currentSelectedDPS": 711.8154374266144,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "balance",
+      "race": "High Order",
+      "changedPlayerFields": [],
+      "publishedDPS": 711.5253877822104,
+      "currentOriginalSetupDPS": 711.5684586426429,
+      "currentSelectedDPS": 711.5684586426429,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "feral",
+      "race": "Tauren",
+      "changedPlayerFields": [],
+      "publishedDPS": 717.9341609191323,
+      "currentOriginalSetupDPS": 718.3594618702775,
+      "currentSelectedDPS": 718.3594618702775,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 1.9942200000000037,
+      "currentOriginalOOMSeconds": 1.07606,
+      "selectedOOMSeconds": 1.07606
+    },
+    {
+      "key": "feral",
+      "race": "Windshaper",
+      "changedPlayerFields": [
+        "equipment"
+      ],
+      "publishedDPS": 721.1562651575598,
+      "currentOriginalSetupDPS": 721.340027970168,
+      "currentSelectedDPS": 724.2335010665035,
+      "selectionDeltaDPS": 2.8934730963355833,
+      "publishedOOMSeconds": 1.52582,
+      "currentOriginalOOMSeconds": 0.882270000000001,
+      "selectedOOMSeconds": 0.8751699999999997
+    },
+    {
+      "key": "feral",
+      "race": "Night Elf",
+      "changedPlayerFields": [],
+      "publishedDPS": 725.6121497006933,
+      "currentOriginalSetupDPS": 725.583298769073,
+      "currentSelectedDPS": 725.583298769073,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 1.7245699999999993,
+      "currentOriginalOOMSeconds": 0.8946699999999995,
+      "selectedOOMSeconds": 0.8946699999999995
+    },
+    {
+      "key": "feral",
+      "race": "High Order",
+      "changedPlayerFields": [
+        "equipment"
+      ],
+      "publishedDPS": 721.1562651575598,
+      "currentOriginalSetupDPS": 721.340027970168,
+      "currentSelectedDPS": 724.2335010665035,
+      "selectionDeltaDPS": 2.8934730963355833,
+      "publishedOOMSeconds": 1.52582,
+      "currentOriginalOOMSeconds": 0.882270000000001,
+      "selectedOOMSeconds": 0.8751699999999997
+    },
+    {
+      "key": "elemental",
+      "race": "Orc",
+      "changedPlayerFields": [
+        "equipment"
+      ],
+      "publishedDPS": 484.66891517406174,
+      "currentOriginalSetupDPS": 493.2948134256567,
+      "currentSelectedDPS": 495.3947630468851,
+      "selectionDeltaDPS": 2.0999496212284043,
+      "publishedOOMSeconds": 47.9671,
+      "currentOriginalOOMSeconds": 43.4969,
+      "selectedOOMSeconds": 41.8717
+    },
+    {
+      "key": "elemental",
+      "race": "Tauren",
+      "changedPlayerFields": [],
+      "publishedDPS": 481.8404923217387,
+      "currentOriginalSetupDPS": 490.11354677675376,
+      "currentSelectedDPS": 490.11354677675376,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 46.7103,
+      "currentOriginalOOMSeconds": 42.4478,
+      "selectedOOMSeconds": 42.4478
+    },
+    {
+      "key": "elemental",
+      "race": "Troll",
+      "changedPlayerFields": [],
+      "publishedDPS": 483.3890675538802,
+      "currentOriginalSetupDPS": 491.27792551054256,
+      "currentSelectedDPS": 491.27792551054256,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 47.61896454572317,
+      "currentOriginalOOMSeconds": 43.29506454567364,
+      "selectedOOMSeconds": 43.29506454567364
+    },
+    {
+      "key": "elemental",
+      "race": "Windshaper",
+      "changedPlayerFields": [],
+      "publishedDPS": 482.8824055948876,
+      "currentOriginalSetupDPS": 490.59433455749945,
+      "currentSelectedDPS": 490.59433455749945,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 48.3332808998828,
+      "currentOriginalOOMSeconds": 44.278412385004444,
+      "selectedOOMSeconds": 44.278412385004444
+    },
+    {
+      "key": "elemental",
+      "race": "Dwarf",
+      "changedPlayerFields": [],
+      "publishedDPS": 483.1921371161787,
+      "currentOriginalSetupDPS": 491.68407721770785,
+      "currentSelectedDPS": 491.68407721770785,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 46.5529,
+      "currentOriginalOOMSeconds": 42.1766,
+      "selectedOOMSeconds": 42.1766
+    },
+    {
+      "key": "stormcaller",
+      "race": "Orc",
+      "changedPlayerFields": [
+        "talentsString"
+      ],
+      "publishedDPS": 452.966656293404,
+      "currentOriginalSetupDPS": 454.59234214744157,
+      "currentSelectedDPS": 457.96616049673565,
+      "selectionDeltaDPS": 3.3738183492940834,
+      "publishedOOMSeconds": 67.2268,
+      "currentOriginalOOMSeconds": 66.2537,
+      "selectedOOMSeconds": 64.9985
+    },
+    {
+      "key": "stormcaller",
+      "race": "Tauren",
+      "changedPlayerFields": [
+        "talentsString"
+      ],
+      "publishedDPS": 456.263733961564,
+      "currentOriginalSetupDPS": 458.0057408203898,
+      "currentSelectedDPS": 460.88157943262,
+      "selectionDeltaDPS": 2.8758386122302113,
+      "publishedOOMSeconds": 65.0644,
+      "currentOriginalOOMSeconds": 63.908,
+      "selectedOOMSeconds": 62.98216
+    },
+    {
+      "key": "stormcaller",
+      "race": "Troll",
+      "changedPlayerFields": [
+        "talentsString"
+      ],
+      "publishedDPS": 448.0739432939446,
+      "currentOriginalSetupDPS": 450.1996876357142,
+      "currentSelectedDPS": 453.12091788810983,
+      "selectionDeltaDPS": 2.921230252395617,
+      "publishedOOMSeconds": 69.4616863637892,
+      "currentOriginalOOMSeconds": 68.06034818197053,
+      "selectedOOMSeconds": 67.02708727286372
+    },
+    {
+      "key": "stormcaller",
+      "race": "Windshaper",
+      "changedPlayerFields": [
+        "talentsString"
+      ],
+      "publishedDPS": 448.6541573008186,
+      "currentOriginalSetupDPS": 450.25863781859067,
+      "currentSelectedDPS": 453.74507632426395,
+      "selectionDeltaDPS": 3.486438505673277,
+      "publishedOOMSeconds": 69.70799505479225,
+      "currentOriginalOOMSeconds": 68.85437931225242,
+      "selectedOOMSeconds": 67.49650099552152
+    },
+    {
+      "key": "stormcaller",
+      "race": "Dwarf",
+      "changedPlayerFields": [
+        "talentsString"
+      ],
+      "publishedDPS": 450.5805155694071,
+      "currentOriginalSetupDPS": 452.5382239139773,
+      "currentSelectedDPS": 455.6210544692073,
+      "selectionDeltaDPS": 3.082830555230032,
+      "publishedOOMSeconds": 67.1845,
+      "currentOriginalOOMSeconds": 65.8886,
+      "selectedOOMSeconds": 64.6814
+    },
+    {
+      "key": "enhancement",
+      "race": "Orc",
+      "changedPlayerFields": [],
+      "publishedDPS": 763.7210012462564,
+      "currentOriginalSetupDPS": 813.8805817227222,
+      "currentSelectedDPS": 813.8805817227222,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0.04053459771359996,
+      "currentOriginalOOMSeconds": 0.022153806577599994,
+      "selectedOOMSeconds": 0.022153806577599994
+    },
+    {
+      "key": "enhancement",
+      "race": "Tauren",
+      "changedPlayerFields": [],
+      "publishedDPS": 760.0223751918053,
+      "currentOriginalSetupDPS": 807.0901396359377,
+      "currentSelectedDPS": 807.0901396359377,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0.006826807204399999,
+      "currentOriginalOOMSeconds": 0.0041461621628,
+      "selectedOOMSeconds": 0.0041461621628
+    },
+    {
+      "key": "enhancement",
+      "race": "Troll",
+      "changedPlayerFields": [],
+      "publishedDPS": 765.1604079775428,
+      "currentOriginalSetupDPS": 811.8491640326062,
+      "currentSelectedDPS": 811.8491640326062,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0.004512247395200001,
+      "currentOriginalOOMSeconds": 0.0025178539716,
+      "selectedOOMSeconds": 0.0025178539716
+    },
+    {
+      "key": "enhancement",
+      "race": "Windshaper",
+      "changedPlayerFields": [],
+      "publishedDPS": 763.3339955961578,
+      "currentOriginalSetupDPS": 810.6149999224205,
+      "currentSelectedDPS": 810.6149999224205,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0.010201603230600001,
+      "currentOriginalOOMSeconds": 0.0052465356896,
+      "selectedOOMSeconds": 0.0052465356896
+    },
+    {
+      "key": "enhancement",
+      "race": "Dwarf",
+      "changedPlayerFields": [],
+      "publishedDPS": 768.5669026481254,
+      "currentOriginalSetupDPS": 817.0881848419588,
+      "currentSelectedDPS": 817.0881848419588,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0.006656991502,
+      "currentOriginalOOMSeconds": 0.0038520439436000005,
+      "selectedOOMSeconds": 0.0038520439436000005
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Orc",
+      "changedPlayerFields": [
+        "equipment",
+        "rotation",
+        "talentsString"
+      ],
+      "publishedDPS": 930.2927448739862,
+      "currentOriginalSetupDPS": 893.2401917092709,
+      "currentSelectedDPS": 904.5194268091013,
+      "selectionDeltaDPS": 11.27923509983043,
+      "publishedOOMSeconds": 41.275891291252655,
+      "currentOriginalOOMSeconds": 35.31124844129637,
+      "selectedOOMSeconds": 15.938176029576566
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Tauren",
+      "changedPlayerFields": [
+        "rotation",
+        "talentsString"
+      ],
+      "publishedDPS": 926.6003640097234,
+      "currentOriginalSetupDPS": 891.9779215789824,
+      "currentSelectedDPS": 894.9574736791895,
+      "selectionDeltaDPS": 2.9795521002071155,
+      "publishedOOMSeconds": 38.57681633333479,
+      "currentOriginalOOMSeconds": 32.567769264629405,
+      "selectedOOMSeconds": 35.68572099901724
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Troll",
+      "changedPlayerFields": [
+        "rotation",
+        "talentsString"
+      ],
+      "publishedDPS": 931.7894635553303,
+      "currentOriginalSetupDPS": 898.1326187019251,
+      "currentSelectedDPS": 901.0725374951907,
+      "selectionDeltaDPS": 2.9399187932655195,
+      "publishedOOMSeconds": 38.75002561405443,
+      "currentOriginalOOMSeconds": 32.59543199886293,
+      "selectedOOMSeconds": 35.81964243985065
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Windshaper",
+      "changedPlayerFields": [
+        "rotation",
+        "talentsString"
+      ],
+      "publishedDPS": 935.4394298830816,
+      "currentOriginalSetupDPS": 900.3273066815399,
+      "currentSelectedDPS": 903.074163859882,
+      "selectionDeltaDPS": 2.746857178342111,
+      "publishedOOMSeconds": 37.60351296503658,
+      "currentOriginalOOMSeconds": 31.973951288559135,
+      "selectedOOMSeconds": 35.08124277040263
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Human",
+      "changedPlayerFields": [
+        "equipment",
+        "rotation",
+        "talentsString"
+      ],
+      "publishedDPS": 933.2288476660746,
+      "currentOriginalSetupDPS": 895.6320272243345,
+      "currentSelectedDPS": 906.42791925216,
+      "selectionDeltaDPS": 10.795892027825516,
+      "publishedOOMSeconds": 39.57728281792809,
+      "currentOriginalOOMSeconds": 33.71336243446484,
+      "selectedOOMSeconds": 14.232445399759381
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Dwarf",
+      "changedPlayerFields": [
+        "rotation",
+        "talentsString"
+      ],
+      "publishedDPS": 928.1000124268741,
+      "currentOriginalSetupDPS": 893.2978375316452,
+      "currentSelectedDPS": 896.5380622253048,
+      "selectionDeltaDPS": 3.24022469365957,
+      "publishedOOMSeconds": 38.121998449727975,
+      "currentOriginalOOMSeconds": 32.31872819850777,
+      "selectedOOMSeconds": 35.38688040931755
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Night Elf",
+      "changedPlayerFields": [
+        "rotation",
+        "talentsString"
+      ],
+      "publishedDPS": 939.6694953865091,
+      "currentOriginalSetupDPS": 904.7811667507401,
+      "currentSelectedDPS": 908.087786240151,
+      "selectionDeltaDPS": 3.3066194894108776,
+      "publishedOOMSeconds": 37.70769543532602,
+      "currentOriginalOOMSeconds": 31.74800286052468,
+      "selectedOOMSeconds": 34.771130513336104
+    },
+    {
+      "key": "beast_mastery",
+      "race": "High Order",
+      "changedPlayerFields": [
+        "rotation",
+        "talentsString"
+      ],
+      "publishedDPS": 935.4394298830816,
+      "currentOriginalSetupDPS": 900.3273066815399,
+      "currentSelectedDPS": 903.074163859882,
+      "selectionDeltaDPS": 2.746857178342111,
+      "publishedOOMSeconds": 37.60351296503658,
+      "currentOriginalOOMSeconds": 31.973951288559135,
+      "selectedOOMSeconds": 35.08124277040263
+    },
+    {
+      "key": "marksmanship",
+      "race": "Orc",
+      "changedPlayerFields": [],
+      "publishedDPS": 775.4865801345711,
+      "currentOriginalSetupDPS": 777.8499396281834,
+      "currentSelectedDPS": 777.8499396281834,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 5.599572393012997,
+      "currentOriginalOOMSeconds": 3.7049989163636026,
+      "selectedOOMSeconds": 3.7049989163636026
+    },
+    {
+      "key": "marksmanship",
+      "race": "Tauren",
+      "changedPlayerFields": [],
+      "publishedDPS": 761.2526776604478,
+      "currentOriginalSetupDPS": 763.62674947861,
+      "currentSelectedDPS": 763.62674947861,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 5.290558932706386,
+      "currentOriginalOOMSeconds": 3.5719478236681854,
+      "selectedOOMSeconds": 3.5719478236681854
+    },
+    {
+      "key": "marksmanship",
+      "race": "Troll",
+      "changedPlayerFields": [],
+      "publishedDPS": 781.9608652361662,
+      "currentOriginalSetupDPS": 785.5508653130636,
+      "currentSelectedDPS": 785.5508653130636,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 4.618001933261002,
+      "currentOriginalOOMSeconds": 3.071051589403391,
+      "selectedOOMSeconds": 3.071051589403391
+    },
+    {
+      "key": "marksmanship",
+      "race": "Windshaper",
+      "changedPlayerFields": [],
+      "publishedDPS": 781.4625467409942,
+      "currentOriginalSetupDPS": 784.810319374573,
+      "currentSelectedDPS": 784.810319374573,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 4.556568503849202,
+      "currentOriginalOOMSeconds": 2.9773184990317914,
+      "selectedOOMSeconds": 2.9773184990317914
+    },
+    {
+      "key": "marksmanship",
+      "race": "Human",
+      "changedPlayerFields": [],
+      "publishedDPS": 779.1161285225147,
+      "currentOriginalSetupDPS": 781.5970714475189,
+      "currentSelectedDPS": 781.5970714475189,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 2.9629464958630014,
+      "currentOriginalOOMSeconds": 1.6119013523200028,
+      "selectedOOMSeconds": 1.6119013523200028
+    },
+    {
+      "key": "marksmanship",
+      "race": "Dwarf",
+      "changedPlayerFields": [],
+      "publishedDPS": 761.8315348381275,
+      "currentOriginalSetupDPS": 764.6715049680847,
+      "currentSelectedDPS": 764.6715049680847,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 3.606014223166206,
+      "currentOriginalOOMSeconds": 2.1258310208835987,
+      "selectedOOMSeconds": 2.1258310208835987
+    },
+    {
+      "key": "marksmanship",
+      "race": "Night Elf",
+      "changedPlayerFields": [],
+      "publishedDPS": 773.5908112963336,
+      "currentOriginalSetupDPS": 776.4017504089779,
+      "currentSelectedDPS": 776.4017504089779,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 6.403961678964387,
+      "currentOriginalOOMSeconds": 4.227470203958397,
+      "selectedOOMSeconds": 4.227470203958397
+    },
+    {
+      "key": "marksmanship",
+      "race": "High Order",
+      "changedPlayerFields": [],
+      "publishedDPS": 781.4625467409942,
+      "currentOriginalSetupDPS": 784.810319374573,
+      "currentSelectedDPS": 784.810319374573,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 4.556568503849202,
+      "currentOriginalOOMSeconds": 2.9773184990317914,
+      "selectedOOMSeconds": 2.9773184990317914
+    },
+    {
+      "key": "survival",
+      "race": "Orc",
+      "changedPlayerFields": [],
+      "publishedDPS": 892.4081809332777,
+      "currentOriginalSetupDPS": 891.8807402530739,
+      "currentSelectedDPS": 891.8807402530739,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "survival",
+      "race": "Tauren",
+      "changedPlayerFields": [],
+      "publishedDPS": 879.172556994126,
+      "currentOriginalSetupDPS": 879.7530504945953,
+      "currentSelectedDPS": 879.7530504945953,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "survival",
+      "race": "Troll",
+      "changedPlayerFields": [],
+      "publishedDPS": 881.6334476410199,
+      "currentOriginalSetupDPS": 881.9439593756634,
+      "currentSelectedDPS": 881.9439593756634,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "survival",
+      "race": "Windshaper",
+      "changedPlayerFields": [],
+      "publishedDPS": 882.7909138315861,
+      "currentOriginalSetupDPS": 883.7487236138949,
+      "currentSelectedDPS": 883.7487236138949,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "survival",
+      "race": "Human",
+      "changedPlayerFields": [],
+      "publishedDPS": 893.5533803351577,
+      "currentOriginalSetupDPS": 893.1443540411041,
+      "currentSelectedDPS": 893.1443540411041,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "survival",
+      "race": "Dwarf",
+      "changedPlayerFields": [],
+      "publishedDPS": 876.917143487101,
+      "currentOriginalSetupDPS": 876.5167737734608,
+      "currentSelectedDPS": 876.5167737734608,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "survival",
+      "race": "Night Elf",
+      "changedPlayerFields": [],
+      "publishedDPS": 888.3832431542442,
+      "currentOriginalSetupDPS": 887.9705158997363,
+      "currentSelectedDPS": 887.9705158997363,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "survival",
+      "race": "High Order",
+      "changedPlayerFields": [],
+      "publishedDPS": 882.7909138315861,
+      "currentOriginalSetupDPS": 883.7487236138949,
+      "currentSelectedDPS": 883.7487236138949,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arcane",
+      "race": "Orc",
+      "changedPlayerFields": [
+        "rotation"
+      ],
+      "publishedDPS": 719.8153446612071,
+      "currentOriginalSetupDPS": 717.1912875433029,
+      "currentSelectedDPS": 724.328862898095,
+      "selectionDeltaDPS": 7.137575354792148,
+      "publishedOOMSeconds": 0.0667,
+      "currentOriginalOOMSeconds": 0.0966,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arcane",
+      "race": "Troll",
+      "changedPlayerFields": [
+        "rotation"
+      ],
+      "publishedDPS": 720.3205394325894,
+      "currentOriginalSetupDPS": 717.3918769329042,
+      "currentSelectedDPS": 724.1518463642668,
+      "selectionDeltaDPS": 6.759969431362606,
+      "publishedOOMSeconds": 0.04836636363719999,
+      "currentOriginalOOMSeconds": 0.05447999999999999,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arcane",
+      "race": "Undead",
+      "changedPlayerFields": [
+        "rotation"
+      ],
+      "publishedDPS": 739.4038808560488,
+      "currentOriginalSetupDPS": 736.5292656801992,
+      "currentSelectedDPS": 742.696567003055,
+      "selectionDeltaDPS": 6.167301322855792,
+      "publishedOOMSeconds": 0.0477,
+      "currentOriginalOOMSeconds": 0.0561,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arcane",
+      "race": "Human",
+      "changedPlayerFields": [
+        "rotation"
+      ],
+      "publishedDPS": 724.903407987026,
+      "currentOriginalSetupDPS": 722.3522585088723,
+      "currentSelectedDPS": 729.1521825743247,
+      "selectionDeltaDPS": 6.799924065452387,
+      "publishedOOMSeconds": 0.0553,
+      "currentOriginalOOMSeconds": 0.07995,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arcane",
+      "race": "Gnome",
+      "changedPlayerFields": [
+        "rotation"
+      ],
+      "publishedDPS": 732.5194883142456,
+      "currentOriginalSetupDPS": 729.9172835918146,
+      "currentSelectedDPS": 734.4627038347669,
+      "selectionDeltaDPS": 4.545420242952332,
+      "publishedOOMSeconds": 0.00825,
+      "currentOriginalOOMSeconds": 0.02015,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arcane",
+      "race": "High Order",
+      "changedPlayerFields": [
+        "rotation"
+      ],
+      "publishedDPS": 725.8560814446489,
+      "currentOriginalSetupDPS": 723.1592504263015,
+      "currentSelectedDPS": 729.7106949322135,
+      "selectionDeltaDPS": 6.551444505912059,
+      "publishedOOMSeconds": 0.05539128715440002,
+      "currentOriginalOOMSeconds": 0.056735940605999985,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fire",
+      "race": "Orc",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 714.6329966905124,
+      "currentOriginalSetupDPS": 714.9739867919156,
+      "currentSelectedDPS": 728.5076864075075,
+      "selectionDeltaDPS": 13.5336996155919,
+      "publishedOOMSeconds": 6.016659999999991,
+      "currentOriginalOOMSeconds": 5.645659999999986,
+      "selectedOOMSeconds": 1.6875800000000014
+    },
+    {
+      "key": "fire",
+      "race": "Troll",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 713.1682470958873,
+      "currentOriginalSetupDPS": 713.6161833386616,
+      "currentSelectedDPS": 723.4341243934775,
+      "selectionDeltaDPS": 9.817941054815947,
+      "publishedOOMSeconds": 4.316823637957753,
+      "currentOriginalOOMSeconds": 4.129839092411935,
+      "selectedOOMSeconds": 0.8953072735967911
+    },
+    {
+      "key": "fire",
+      "race": "Undead",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 726.2256621496164,
+      "currentOriginalSetupDPS": 728.6398013986786,
+      "currentSelectedDPS": 741.0164149517819,
+      "selectionDeltaDPS": 12.376613553103311,
+      "publishedOOMSeconds": 5.636809999999991,
+      "currentOriginalOOMSeconds": 5.340539999999994,
+      "selectedOOMSeconds": 1.6060600000000016
+    },
+    {
+      "key": "fire",
+      "race": "Human",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 725.2486570024332,
+      "currentOriginalSetupDPS": 726.5756164174137,
+      "currentSelectedDPS": 738.77268221959,
+      "selectionDeltaDPS": 12.197065802176326,
+      "publishedOOMSeconds": 5.219929999999994,
+      "currentOriginalOOMSeconds": 4.819809999999992,
+      "selectedOOMSeconds": 1.3093300000000005
+    },
+    {
+      "key": "fire",
+      "race": "Gnome",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 718.6332222480072,
+      "currentOriginalSetupDPS": 719.9280423967504,
+      "currentSelectedDPS": 730.9206194709799,
+      "selectionDeltaDPS": 10.99257707422953,
+      "publishedOOMSeconds": 5.279759999999998,
+      "currentOriginalOOMSeconds": 4.973069999999994,
+      "selectedOOMSeconds": 1.4255700000000013
+    },
+    {
+      "key": "fire",
+      "race": "High Order",
+      "changedPlayerFields": [],
+      "publishedDPS": 713.3568537021257,
+      "currentOriginalSetupDPS": 714.0514901927514,
+      "currentSelectedDPS": 714.0514901927514,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 3.010359433058793,
+      "currentOriginalOOMSeconds": 2.6852153732747897,
+      "selectedOOMSeconds": 2.6852153732747897
+    },
+    {
+      "key": "frost",
+      "race": "Orc",
+      "changedPlayerFields": [],
+      "publishedDPS": 703.704184609332,
+      "currentOriginalSetupDPS": 681.8662833426334,
+      "currentSelectedDPS": 681.8662833426334,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0.22345,
+      "currentOriginalOOMSeconds": 0.2444,
+      "selectedOOMSeconds": 0.2444
+    },
+    {
+      "key": "frost",
+      "race": "Troll",
+      "changedPlayerFields": [],
+      "publishedDPS": 700.9537520210284,
+      "currentOriginalSetupDPS": 679.7109546133358,
+      "currentSelectedDPS": 679.7109546133358,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0.1642209092036,
+      "currentOriginalOOMSeconds": 0.17110545468880006,
+      "selectedOOMSeconds": 0.17110545468880006
+    },
+    {
+      "key": "frost",
+      "race": "Undead",
+      "changedPlayerFields": [],
+      "publishedDPS": 705.0019290234331,
+      "currentOriginalSetupDPS": 683.1209900787902,
+      "currentSelectedDPS": 683.1209900787902,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0.3623,
+      "currentOriginalOOMSeconds": 0.34575,
+      "selectedOOMSeconds": 0.34575
+    },
+    {
+      "key": "frost",
+      "race": "Human",
+      "changedPlayerFields": [],
+      "publishedDPS": 707.9641631061891,
+      "currentOriginalSetupDPS": 686.5366085459417,
+      "currentSelectedDPS": 686.5366085459417,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0.12865,
+      "currentOriginalOOMSeconds": 0.16095,
+      "selectedOOMSeconds": 0.16095
+    },
+    {
+      "key": "frost",
+      "race": "Gnome",
+      "changedPlayerFields": [],
+      "publishedDPS": 713.0157976633375,
+      "currentOriginalSetupDPS": 691.3271491597022,
+      "currentSelectedDPS": 691.3271491597022,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0.01715,
+      "currentOriginalOOMSeconds": 0.0201,
+      "selectedOOMSeconds": 0.0201
+    },
+    {
+      "key": "frost",
+      "race": "High Order",
+      "changedPlayerFields": [],
+      "publishedDPS": 702.8230001120679,
+      "currentOriginalSetupDPS": 681.4267639909426,
+      "currentSelectedDPS": 681.4267639909426,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0.20651455613480024,
+      "currentOriginalOOMSeconds": 0.2132359425292002,
+      "selectedOOMSeconds": 0.2132359425292002
+    },
+    {
+      "key": "retribution",
+      "race": "Undead",
+      "changedPlayerFields": [
+        "equipment"
+      ],
+      "publishedDPS": 1053.2558402149764,
+      "currentOriginalSetupDPS": 1053.3503947411712,
+      "currentSelectedDPS": 1058.877725167727,
+      "selectionDeltaDPS": 5.527330426555864,
+      "publishedOOMSeconds": 0.0024370297027999995,
+      "currentOriginalOOMSeconds": 0.00039000000000000005,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "retribution",
+      "race": "Human",
+      "changedPlayerFields": [
+        "equipment"
+      ],
+      "publishedDPS": 1037.4773684859879,
+      "currentOriginalSetupDPS": 1037.521971295904,
+      "currentSelectedDPS": 1050.120164273224,
+      "selectionDeltaDPS": 12.598192977319968,
+      "publishedOOMSeconds": 0.0027179207920000003,
+      "currentOriginalOOMSeconds": 0.00517,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "retribution",
+      "race": "Dwarf",
+      "changedPlayerFields": [
+        "equipment"
+      ],
+      "publishedDPS": 1044.0798077263391,
+      "currentOriginalSetupDPS": 1044.423723915809,
+      "currentSelectedDPS": 1052.034428457517,
+      "selectionDeltaDPS": 7.610704541707946,
+      "publishedOOMSeconds": 0.0025032673268000002,
+      "currentOriginalOOMSeconds": 0.005337029702799999,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "shadow",
+      "race": "Troll",
+      "changedPlayerFields": [],
+      "publishedDPS": 826.5340685234082,
+      "currentOriginalSetupDPS": 826.0122636747822,
+      "currentSelectedDPS": 826.0122636747822,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "shadow",
+      "race": "Undead",
+      "changedPlayerFields": [],
+      "publishedDPS": 832.188204177501,
+      "currentOriginalSetupDPS": 832.6134680601804,
+      "currentSelectedDPS": 832.6134680601804,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "shadow",
+      "race": "Human",
+      "changedPlayerFields": [],
+      "publishedDPS": 825.4011163248026,
+      "currentOriginalSetupDPS": 825.2592984251052,
+      "currentSelectedDPS": 825.2592984251052,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "shadow",
+      "race": "Dwarf",
+      "changedPlayerFields": [],
+      "publishedDPS": 831.7240654355043,
+      "currentOriginalSetupDPS": 831.3808085679788,
+      "currentSelectedDPS": 831.3808085679788,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "shadow",
+      "race": "Night Elf",
+      "changedPlayerFields": [],
+      "publishedDPS": 831.6648186261132,
+      "currentOriginalSetupDPS": 831.2420850416609,
+      "currentSelectedDPS": 831.2420850416609,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "shadow",
+      "race": "Gnome",
+      "changedPlayerFields": [],
+      "publishedDPS": 828.6560442188,
+      "currentOriginalSetupDPS": 828.309635543892,
+      "currentSelectedDPS": 828.309635543892,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "smite",
+      "race": "Troll",
+      "changedPlayerFields": [],
+      "publishedDPS": 462.3127921931398,
+      "currentOriginalSetupDPS": 462.3400229303578,
+      "currentSelectedDPS": 462.3400229303578,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 50.58032727278685,
+      "currentOriginalOOMSeconds": 50.56100545460711,
+      "selectedOOMSeconds": 50.56100545460711
+    },
+    {
+      "key": "smite",
+      "race": "Undead",
+      "changedPlayerFields": [],
+      "publishedDPS": 479.5761824078761,
+      "currentOriginalSetupDPS": 479.37822778604544,
+      "currentSelectedDPS": 479.37822778604544,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 44.54358999999986,
+      "currentOriginalOOMSeconds": 44.481669999999866,
+      "selectedOOMSeconds": 44.481669999999866
+    },
+    {
+      "key": "smite",
+      "race": "Human",
+      "changedPlayerFields": [],
+      "publishedDPS": 469.12677385419755,
+      "currentOriginalSetupDPS": 469.1173917418861,
+      "currentSelectedDPS": 469.1173917418861,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 46.67306999999992,
+      "currentOriginalOOMSeconds": 46.60005999999991,
+      "selectedOOMSeconds": 46.60005999999991
+    },
+    {
+      "key": "smite",
+      "race": "Dwarf",
+      "changedPlayerFields": [],
+      "publishedDPS": 465.69204673650006,
+      "currentOriginalSetupDPS": 465.59603904501216,
+      "currentSelectedDPS": 465.59603904501216,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 48.23470999999991,
+      "currentOriginalOOMSeconds": 48.207989999999924,
+      "selectedOOMSeconds": 48.207989999999924
+    },
+    {
+      "key": "smite",
+      "race": "Night Elf",
+      "changedPlayerFields": [],
+      "publishedDPS": 466.7488021548707,
+      "currentOriginalSetupDPS": 466.6218114960927,
+      "currentSelectedDPS": 466.6218114960927,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 49.41519999999993,
+      "currentOriginalOOMSeconds": 49.44551999999993,
+      "selectedOOMSeconds": 49.44551999999993
+    },
+    {
+      "key": "smite",
+      "race": "Gnome",
+      "changedPlayerFields": [],
+      "publishedDPS": 478.51193932027894,
+      "currentOriginalSetupDPS": 478.65350847880563,
+      "currentSelectedDPS": 478.65350847880563,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 43.72912999999993,
+      "currentOriginalOOMSeconds": 43.675409999999935,
+      "selectedOOMSeconds": 43.675409999999935
+    },
+    {
+      "key": "combat",
+      "race": "Orc",
+      "changedPlayerFields": [
+        "consumes",
+        "equipment",
+        "rogue"
+      ],
+      "publishedDPS": 686.6202863141008,
+      "currentOriginalSetupDPS": 686.4793639149509,
+      "currentSelectedDPS": 713.6519462310126,
+      "selectionDeltaDPS": 27.17258231606172,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "combat",
+      "race": "Troll",
+      "changedPlayerFields": [
+        "consumes",
+        "rogue"
+      ],
+      "publishedDPS": 685.2825891753624,
+      "currentOriginalSetupDPS": 685.4971555772458,
+      "currentSelectedDPS": 705.9019980015538,
+      "selectionDeltaDPS": 20.404842424307958,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "combat",
+      "race": "Undead",
+      "changedPlayerFields": [
+        "consumes",
+        "rogue"
+      ],
+      "publishedDPS": 708.1659435693936,
+      "currentOriginalSetupDPS": 707.9303313932834,
+      "currentSelectedDPS": 729.0298870664702,
+      "selectionDeltaDPS": 21.099555673186842,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "combat",
+      "race": "Windshaper",
+      "changedPlayerFields": [
+        "consumes",
+        "rogue"
+      ],
+      "publishedDPS": 688.1788275817966,
+      "currentOriginalSetupDPS": 687.8056785526942,
+      "currentSelectedDPS": 707.9682291814244,
+      "selectionDeltaDPS": 20.162550628730173,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "combat",
+      "race": "Human",
+      "changedPlayerFields": [
+        "consumes",
+        "equipment",
+        "rogue"
+      ],
+      "publishedDPS": 690.0663964968023,
+      "currentOriginalSetupDPS": 689.9755684622808,
+      "currentSelectedDPS": 712.4126634878509,
+      "selectionDeltaDPS": 22.437095025570102,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "combat",
+      "race": "Dwarf",
+      "changedPlayerFields": [
+        "consumes",
+        "equipment",
+        "rogue"
+      ],
+      "publishedDPS": 679.8474388922808,
+      "currentOriginalSetupDPS": 679.6800228701675,
+      "currentSelectedDPS": 707.4643533649511,
+      "selectionDeltaDPS": 27.784330494783603,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "combat",
+      "race": "Night Elf",
+      "changedPlayerFields": [
+        "consumes",
+        "rogue"
+      ],
+      "publishedDPS": 688.2639971171517,
+      "currentOriginalSetupDPS": 688.0068054920044,
+      "currentSelectedDPS": 708.020932043436,
+      "selectionDeltaDPS": 20.01412655143156,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "combat",
+      "race": "Gnome",
+      "changedPlayerFields": [
+        "consumes",
+        "rogue"
+      ],
+      "publishedDPS": 685.418341001806,
+      "currentOriginalSetupDPS": 686.0179619807017,
+      "currentSelectedDPS": 705.7581948158892,
+      "selectionDeltaDPS": 19.7402328351875,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "combat",
+      "race": "High Order",
+      "changedPlayerFields": [
+        "consumes",
+        "rogue"
+      ],
+      "publishedDPS": 688.1788275817966,
+      "currentOriginalSetupDPS": 687.8056785526942,
+      "currentSelectedDPS": 707.9682291814244,
+      "selectionDeltaDPS": 20.162550628730173,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "mutilate",
+      "race": "Orc",
+      "changedPlayerFields": [
+        "consumes",
+        "equipment",
+        "rogue"
+      ],
+      "publishedDPS": 672.8065499927455,
+      "currentOriginalSetupDPS": 671.1919833159006,
+      "currentSelectedDPS": 698.7567343070117,
+      "selectionDeltaDPS": 27.564750991111055,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "mutilate",
+      "race": "Troll",
+      "changedPlayerFields": [
+        "consumes",
+        "equipment",
+        "rogue"
+      ],
+      "publishedDPS": 669.9369992994019,
+      "currentOriginalSetupDPS": 668.37187134033,
+      "currentSelectedDPS": 694.6244361038828,
+      "selectionDeltaDPS": 26.252564763552755,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "mutilate",
+      "race": "Undead",
+      "changedPlayerFields": [
+        "consumes",
+        "equipment",
+        "rogue"
+      ],
+      "publishedDPS": 704.6641730456463,
+      "currentOriginalSetupDPS": 702.5378267002199,
+      "currentSelectedDPS": 727.5437861839255,
+      "selectionDeltaDPS": 25.005959483705624,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "mutilate",
+      "race": "Windshaper",
+      "changedPlayerFields": [
+        "consumes",
+        "equipment",
+        "rogue"
+      ],
+      "publishedDPS": 674.5875999682985,
+      "currentOriginalSetupDPS": 673.1779281953116,
+      "currentSelectedDPS": 701.1988922169926,
+      "selectionDeltaDPS": 28.02096402168104,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "mutilate",
+      "race": "Human",
+      "changedPlayerFields": [
+        "consumes",
+        "equipment",
+        "rogue"
+      ],
+      "publishedDPS": 667.4205173312872,
+      "currentOriginalSetupDPS": 666.8125037735892,
+      "currentSelectedDPS": 692.712029931727,
+      "selectionDeltaDPS": 25.899526158137746,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "mutilate",
+      "race": "Dwarf",
+      "changedPlayerFields": [
+        "consumes",
+        "equipment",
+        "rogue"
+      ],
+      "publishedDPS": 668.2335486430012,
+      "currentOriginalSetupDPS": 666.3631073140716,
+      "currentSelectedDPS": 693.1017636281425,
+      "selectionDeltaDPS": 26.73865631407091,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "mutilate",
+      "race": "Night Elf",
+      "changedPlayerFields": [
+        "consumes",
+        "equipment",
+        "rogue"
+      ],
+      "publishedDPS": 675.3296547448667,
+      "currentOriginalSetupDPS": 674.0328916605438,
+      "currentSelectedDPS": 701.1432323677521,
+      "selectionDeltaDPS": 27.110340707208366,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "mutilate",
+      "race": "Gnome",
+      "changedPlayerFields": [
+        "consumes",
+        "equipment",
+        "rogue"
+      ],
+      "publishedDPS": 676.0457141788079,
+      "currentOriginalSetupDPS": 672.2739265211554,
+      "currentSelectedDPS": 698.219763426074,
+      "selectionDeltaDPS": 25.945836904918565,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "mutilate",
+      "race": "High Order",
+      "changedPlayerFields": [
+        "consumes",
+        "equipment",
+        "rogue"
+      ],
+      "publishedDPS": 674.5875999682985,
+      "currentOriginalSetupDPS": 673.1779281953116,
+      "currentSelectedDPS": 701.1988922169926,
+      "selectionDeltaDPS": 28.02096402168104,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "subtlety",
+      "race": "Orc",
+      "changedPlayerFields": [
+        "consumes",
+        "rogue"
+      ],
+      "publishedDPS": 632.9570930085001,
+      "currentOriginalSetupDPS": 632.4688059437486,
+      "currentSelectedDPS": 651.4176284188422,
+      "selectionDeltaDPS": 18.948822475093607,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "subtlety",
+      "race": "Troll",
+      "changedPlayerFields": [
+        "consumes",
+        "rogue"
+      ],
+      "publishedDPS": 633.0852531580181,
+      "currentOriginalSetupDPS": 632.3222925332306,
+      "currentSelectedDPS": 652.4815985613765,
+      "selectionDeltaDPS": 20.15930602814592,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "subtlety",
+      "race": "Undead",
+      "changedPlayerFields": [
+        "consumes",
+        "rogue"
+      ],
+      "publishedDPS": 656.1436374062213,
+      "currentOriginalSetupDPS": 656.2656983766208,
+      "currentSelectedDPS": 676.0237355030822,
+      "selectionDeltaDPS": 19.75803712646143,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "subtlety",
+      "race": "Windshaper",
+      "changedPlayerFields": [
+        "consumes",
+        "rogue"
+      ],
+      "publishedDPS": 635.3194708588818,
+      "currentOriginalSetupDPS": 634.8467262150914,
+      "currentSelectedDPS": 655.007972043744,
+      "selectionDeltaDPS": 20.161245828652568,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "subtlety",
+      "race": "Human",
+      "changedPlayerFields": [
+        "consumes",
+        "equipment",
+        "rogue"
+      ],
+      "publishedDPS": 636.678353698819,
+      "currentOriginalSetupDPS": 636.6422174233304,
+      "currentSelectedDPS": 657.6954718623822,
+      "selectionDeltaDPS": 21.053254439051784,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "subtlety",
+      "race": "Dwarf",
+      "changedPlayerFields": [
+        "consumes",
+        "rogue"
+      ],
+      "publishedDPS": 627.5587884788322,
+      "currentOriginalSetupDPS": 627.2710052835457,
+      "currentSelectedDPS": 647.3604564449712,
+      "selectionDeltaDPS": 20.089451161425472,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "subtlety",
+      "race": "Night Elf",
+      "changedPlayerFields": [
+        "consumes",
+        "rogue"
+      ],
+      "publishedDPS": 636.3564098269545,
+      "currentOriginalSetupDPS": 636.335280275853,
+      "currentSelectedDPS": 655.8770711403153,
+      "selectionDeltaDPS": 19.5417908644622,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "subtlety",
+      "race": "Gnome",
+      "changedPlayerFields": [
+        "consumes",
+        "rogue"
+      ],
+      "publishedDPS": 635.1423966501224,
+      "currentOriginalSetupDPS": 635.2551511588816,
+      "currentSelectedDPS": 654.9473494724018,
+      "selectionDeltaDPS": 19.69219831352018,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "subtlety",
+      "race": "High Order",
+      "changedPlayerFields": [
+        "consumes",
+        "rogue"
+      ],
+      "publishedDPS": 635.3194708588818,
+      "currentOriginalSetupDPS": 634.8467262150914,
+      "currentSelectedDPS": 655.007972043744,
+      "selectionDeltaDPS": 20.161245828652568,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "demonology",
+      "race": "Orc",
+      "changedPlayerFields": [
+        "warlock"
+      ],
+      "publishedDPS": 877.6328017282536,
+      "currentOriginalSetupDPS": 888.0275999246388,
+      "currentSelectedDPS": 915.9280546618667,
+      "selectionDeltaDPS": 27.900454737227847,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "demonology",
+      "race": "Troll",
+      "changedPlayerFields": [
+        "warlock"
+      ],
+      "publishedDPS": 872.929485748257,
+      "currentOriginalSetupDPS": 883.6240829035507,
+      "currentSelectedDPS": 906.9734048650542,
+      "selectionDeltaDPS": 23.349321961503506,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "demonology",
+      "race": "Undead",
+      "changedPlayerFields": [
+        "warlock"
+      ],
+      "publishedDPS": 892.3868546894552,
+      "currentOriginalSetupDPS": 903.0342156082592,
+      "currentSelectedDPS": 929.7841543794189,
+      "selectionDeltaDPS": 26.74993877115969,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "demonology",
+      "race": "Human",
+      "changedPlayerFields": [
+        "warlock"
+      ],
+      "publishedDPS": 884.0170185352422,
+      "currentOriginalSetupDPS": 895.3588902926954,
+      "currentSelectedDPS": 923.7445357431583,
+      "selectionDeltaDPS": 28.385645450462903,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "demonology",
+      "race": "Gnome",
+      "changedPlayerFields": [
+        "warlock"
+      ],
+      "publishedDPS": 874.350725159412,
+      "currentOriginalSetupDPS": 884.9779738115805,
+      "currentSelectedDPS": 912.1558140690388,
+      "selectionDeltaDPS": 27.177840257458342,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "affliction",
+      "race": "Orc",
+      "changedPlayerFields": [
+        "warlock"
+      ],
+      "publishedDPS": 801.4130268285323,
+      "currentOriginalSetupDPS": 802.1030765151966,
+      "currentSelectedDPS": 827.3944289294355,
+      "selectionDeltaDPS": 25.291352414238986,
+      "publishedOOMSeconds": 0.0007,
+      "currentOriginalOOMSeconds": 0.0008,
+      "selectedOOMSeconds": 0.0006725490800000002
+    },
+    {
+      "key": "affliction",
+      "race": "Troll",
+      "changedPlayerFields": [
+        "warlock"
+      ],
+      "publishedDPS": 790.5247608335984,
+      "currentOriginalSetupDPS": 791.3349303773797,
+      "currentSelectedDPS": 815.5622534185399,
+      "selectionDeltaDPS": 24.22732304116016,
+      "publishedOOMSeconds": 0.0017636364113999996,
+      "currentOriginalOOMSeconds": 0.0017454545959999998,
+      "selectedOOMSeconds": 0.0017907312055999997
+    },
+    {
+      "key": "affliction",
+      "race": "Undead",
+      "changedPlayerFields": [
+        "warlock"
+      ],
+      "publishedDPS": 802.3307625966074,
+      "currentOriginalSetupDPS": 802.363446371797,
+      "currentSelectedDPS": 827.9378079969371,
+      "selectionDeltaDPS": 25.574361625140114,
+      "publishedOOMSeconds": 0.0028,
+      "currentOriginalOOMSeconds": 0.0017,
+      "selectedOOMSeconds": 0.0021529413267999996
+    },
+    {
+      "key": "affliction",
+      "race": "Human",
+      "changedPlayerFields": [
+        "warlock"
+      ],
+      "publishedDPS": 809.5109526873604,
+      "currentOriginalSetupDPS": 809.5017553557859,
+      "currentSelectedDPS": 834.8661521322555,
+      "selectionDeltaDPS": 25.36439677646956,
+      "publishedOOMSeconds": 0.0011,
+      "currentOriginalOOMSeconds": 0.0014,
+      "selectedOOMSeconds": 0.0012117647899999998
+    },
+    {
+      "key": "affliction",
+      "race": "Gnome",
+      "changedPlayerFields": [
+        "warlock"
+      ],
+      "publishedDPS": 790.3974190120357,
+      "currentOriginalSetupDPS": 790.1633557338355,
+      "currentSelectedDPS": 815.7781617681775,
+      "selectionDeltaDPS": 25.614806034341996,
+      "publishedOOMSeconds": 0.0003,
+      "currentOriginalOOMSeconds": 0.0004,
+      "selectedOOMSeconds": 0.000213725545
+    },
+    {
+      "key": "ds_ruin",
+      "race": "Orc",
+      "changedPlayerFields": [
+        "warlock"
+      ],
+      "publishedDPS": 761.8157357752083,
+      "currentOriginalSetupDPS": 762.3200585617616,
+      "currentSelectedDPS": 790.1305491240665,
+      "selectionDeltaDPS": 27.81049056230495,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "ds_ruin",
+      "race": "Troll",
+      "changedPlayerFields": [
+        "warlock"
+      ],
+      "publishedDPS": 752.6765270709226,
+      "currentOriginalSetupDPS": 751.4360222255947,
+      "currentSelectedDPS": 780.0904263722052,
+      "selectionDeltaDPS": 28.654404146610545,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 2.8698917799999983e-05
+    },
+    {
+      "key": "ds_ruin",
+      "race": "Undead",
+      "changedPlayerFields": [
+        "warlock"
+      ],
+      "publishedDPS": 775.1620931993917,
+      "currentOriginalSetupDPS": 775.2973932275572,
+      "currentSelectedDPS": 802.1316642875552,
+      "selectionDeltaDPS": 26.834271059997945,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "ds_ruin",
+      "race": "Human",
+      "changedPlayerFields": [
+        "warlock"
+      ],
+      "publishedDPS": 777.976725496106,
+      "currentOriginalSetupDPS": 778.558777417995,
+      "currentSelectedDPS": 804.6747893115144,
+      "selectionDeltaDPS": 26.116011893519385,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "ds_ruin",
+      "race": "Gnome",
+      "changedPlayerFields": [
+        "warlock"
+      ],
+      "publishedDPS": 763.726523380561,
+      "currentOriginalSetupDPS": 764.467558358834,
+      "currentSelectedDPS": 790.4837284253547,
+      "selectionDeltaDPS": 26.016170066520658,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "destruction",
+      "race": "Orc",
+      "changedPlayerFields": [
+        "warlock"
+      ],
+      "publishedDPS": 792.391699179739,
+      "currentOriginalSetupDPS": 791.844387587585,
+      "currentSelectedDPS": 812.3781012894369,
+      "selectionDeltaDPS": 20.53371370185198,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "destruction",
+      "race": "Troll",
+      "changedPlayerFields": [
+        "warlock"
+      ],
+      "publishedDPS": 796.3545768259473,
+      "currentOriginalSetupDPS": 796.6361406068588,
+      "currentSelectedDPS": 816.9146214007002,
+      "selectionDeltaDPS": 20.278480793841368,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "destruction",
+      "race": "Undead",
+      "changedPlayerFields": [
+        "warlock"
+      ],
+      "publishedDPS": 800.0197237304707,
+      "currentOriginalSetupDPS": 800.355271665561,
+      "currentSelectedDPS": 820.5970734464812,
+      "selectionDeltaDPS": 20.24180178092024,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "destruction",
+      "race": "Human",
+      "changedPlayerFields": [
+        "warlock"
+      ],
+      "publishedDPS": 800.4242133412615,
+      "currentOriginalSetupDPS": 799.2832239466205,
+      "currentSelectedDPS": 819.7127487580575,
+      "selectionDeltaDPS": 20.429524811436977,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "destruction",
+      "race": "Gnome",
+      "changedPlayerFields": [
+        "warlock"
+      ],
+      "publishedDPS": 786.313950302613,
+      "currentOriginalSetupDPS": 785.5822916511943,
+      "currentSelectedDPS": 805.9454161547626,
+      "selectionDeltaDPS": 20.363124503568315,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury",
+      "race": "Orc",
+      "changedPlayerFields": [
+        "talentsString"
+      ],
+      "publishedDPS": 897.9573544861955,
+      "currentOriginalSetupDPS": 941.2352306456089,
+      "currentSelectedDPS": 950.9593222376124,
+      "selectionDeltaDPS": 9.724091592003447,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Orc",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 867.1982023643611,
+      "currentOriginalSetupDPS": 910.9534573143283,
+      "currentSelectedDPS": 924.9916456305929,
+      "selectionDeltaDPS": 14.038188316264609,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury",
+      "race": "Tauren",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 881.4203269818026,
+      "currentOriginalSetupDPS": 928.2266505662291,
+      "currentSelectedDPS": 947.5553738901095,
+      "selectionDeltaDPS": 19.328723323880467,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Tauren",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 854.4400821262179,
+      "currentOriginalSetupDPS": 901.8806458120092,
+      "currentSelectedDPS": 916.1072456394244,
+      "selectionDeltaDPS": 14.226599827415157,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury",
+      "race": "Troll",
+      "changedPlayerFields": [
+        "talentsString"
+      ],
+      "publishedDPS": 885.4354948569886,
+      "currentOriginalSetupDPS": 927.7929305483025,
+      "currentSelectedDPS": 938.7375084062633,
+      "selectionDeltaDPS": 10.94457785796078,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Troll",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 859.261641110368,
+      "currentOriginalSetupDPS": 902.0015474596573,
+      "currentSelectedDPS": 914.1255756447221,
+      "selectionDeltaDPS": 12.12402818506473,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury",
+      "race": "Undead",
+      "changedPlayerFields": [
+        "talentsString"
+      ],
+      "publishedDPS": 899.5629955130728,
+      "currentOriginalSetupDPS": 947.5308067700158,
+      "currentSelectedDPS": 958.9657504612152,
+      "selectionDeltaDPS": 11.43494369119935,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Undead",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 864.2003464697352,
+      "currentOriginalSetupDPS": 909.2223978152763,
+      "currentSelectedDPS": 924.036661151048,
+      "selectionDeltaDPS": 14.81426333577167,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury",
+      "race": "Windshaper",
+      "changedPlayerFields": [
+        "talentsString"
+      ],
+      "publishedDPS": 884.4210471992774,
+      "currentOriginalSetupDPS": 932.8626289865721,
+      "currentSelectedDPS": 943.1256468471211,
+      "selectionDeltaDPS": 10.263017860548985,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Windshaper",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 847.9474199333783,
+      "currentOriginalSetupDPS": 894.1806665190298,
+      "currentSelectedDPS": 915.8530202705998,
+      "selectionDeltaDPS": 21.672353751569972,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury",
+      "race": "Human",
+      "changedPlayerFields": [
+        "talentsString"
+      ],
+      "publishedDPS": 893.7917651017457,
+      "currentOriginalSetupDPS": 944.053097173842,
+      "currentSelectedDPS": 954.7161240332188,
+      "selectionDeltaDPS": 10.663026859376714,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Human",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 860.589177883172,
+      "currentOriginalSetupDPS": 908.5584423728993,
+      "currentSelectedDPS": 933.118030632025,
+      "selectionDeltaDPS": 24.55958825912569,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury",
+      "race": "Dwarf",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 878.958864635749,
+      "currentOriginalSetupDPS": 926.7359575207931,
+      "currentSelectedDPS": 946.446767150325,
+      "selectionDeltaDPS": 19.71080962953181,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Dwarf",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 845.0107047306949,
+      "currentOriginalSetupDPS": 886.3272869927565,
+      "currentSelectedDPS": 903.293896474636,
+      "selectionDeltaDPS": 16.96660948187946,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury",
+      "race": "Night Elf",
+      "changedPlayerFields": [
+        "talentsString"
+      ],
+      "publishedDPS": 883.4964151420116,
+      "currentOriginalSetupDPS": 932.9845577935145,
+      "currentSelectedDPS": 943.5485962397042,
+      "selectionDeltaDPS": 10.564038446189784,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Night Elf",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 858.1636017171863,
+      "currentOriginalSetupDPS": 901.5138792396415,
+      "currentSelectedDPS": 914.776975175889,
+      "selectionDeltaDPS": 13.26309593624751,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury",
+      "race": "Gnome",
+      "changedPlayerFields": [
+        "talentsString"
+      ],
+      "publishedDPS": 884.8791508598625,
+      "currentOriginalSetupDPS": 928.6084920320911,
+      "currentSelectedDPS": 938.9365544545265,
+      "selectionDeltaDPS": 10.328062422435323,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Gnome",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 851.5554022915408,
+      "currentOriginalSetupDPS": 897.2340310469275,
+      "currentSelectedDPS": 910.2063092044272,
+      "selectionDeltaDPS": 12.972278157499659,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury",
+      "race": "High Order",
+      "changedPlayerFields": [
+        "talentsString"
+      ],
+      "publishedDPS": 884.4210471992774,
+      "currentOriginalSetupDPS": 932.8626289865721,
+      "currentSelectedDPS": 943.1256468471211,
+      "selectionDeltaDPS": 10.263017860548985,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury_sunder",
+      "race": "High Order",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 847.9474199333783,
+      "currentOriginalSetupDPS": 894.1806665190298,
+      "currentSelectedDPS": 915.8530202705998,
+      "selectionDeltaDPS": 21.672353751569972,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arms",
+      "race": "Orc",
+      "changedPlayerFields": [],
+      "publishedDPS": 813.7320842775158,
+      "currentOriginalSetupDPS": 834.3501532939518,
+      "currentSelectedDPS": 834.3501532939518,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arms",
+      "race": "Tauren",
+      "changedPlayerFields": [],
+      "publishedDPS": 806.6274792253148,
+      "currentOriginalSetupDPS": 827.4802562619984,
+      "currentSelectedDPS": 827.4802562619984,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arms",
+      "race": "Troll",
+      "changedPlayerFields": [],
+      "publishedDPS": 806.8370460262418,
+      "currentOriginalSetupDPS": 828.1953768572108,
+      "currentSelectedDPS": 828.1953768572108,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arms",
+      "race": "Undead",
+      "changedPlayerFields": [],
+      "publishedDPS": 814.6751363228886,
+      "currentOriginalSetupDPS": 835.404185070791,
+      "currentSelectedDPS": 835.404185070791,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arms",
+      "race": "Windshaper",
+      "changedPlayerFields": [],
+      "publishedDPS": 809.6201905428212,
+      "currentOriginalSetupDPS": 830.859958716465,
+      "currentSelectedDPS": 830.859958716465,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arms",
+      "race": "Human",
+      "changedPlayerFields": [],
+      "publishedDPS": 815.1892396990539,
+      "currentOriginalSetupDPS": 842.3083694963019,
+      "currentSelectedDPS": 842.3083694963019,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arms",
+      "race": "Dwarf",
+      "changedPlayerFields": [],
+      "publishedDPS": 805.803369006195,
+      "currentOriginalSetupDPS": 826.562230061803,
+      "currentSelectedDPS": 826.562230061803,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arms",
+      "race": "Night Elf",
+      "changedPlayerFields": [],
+      "publishedDPS": 812.3063843696196,
+      "currentOriginalSetupDPS": 835.8892229322689,
+      "currentSelectedDPS": 835.8892229322689,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arms",
+      "race": "Gnome",
+      "changedPlayerFields": [],
+      "publishedDPS": 805.7136044374043,
+      "currentOriginalSetupDPS": 828.0549588955395,
+      "currentSelectedDPS": 828.0549588955395,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arms",
+      "race": "High Order",
+      "changedPlayerFields": [],
+      "publishedDPS": 809.6201905428212,
+      "currentOriginalSetupDPS": 830.859958716465,
+      "currentSelectedDPS": 830.859958716465,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "pet_melee",
+      "race": "Tauren",
+      "changedPlayerFields": [
+        "rotation",
+        "talentsString"
+      ],
+      "publishedDPS": 901.658833690764,
+      "currentOriginalSetupDPS": 862.3425147897424,
+      "currentSelectedDPS": 891.3557939924784,
+      "selectionDeltaDPS": 29.013279202736044,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "pet_melee",
+      "race": "Windshaper",
+      "changedPlayerFields": [
+        "rotation",
+        "talentsString"
+      ],
+      "publishedDPS": 910.0102361320393,
+      "currentOriginalSetupDPS": 869.6043085126763,
+      "currentSelectedDPS": 900.4921540516734,
+      "selectionDeltaDPS": 30.887845538997112,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "pet_melee",
+      "race": "Orc",
+      "changedPlayerFields": [
+        "rotation",
+        "talentsString"
+      ],
+      "publishedDPS": 914.5907809148887,
+      "currentOriginalSetupDPS": 874.4684524944054,
+      "currentSelectedDPS": 904.3899655618146,
+      "selectionDeltaDPS": 29.92151306740925,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "pet_melee",
+      "race": "Human",
+      "changedPlayerFields": [
+        "rotation",
+        "talentsString"
+      ],
+      "publishedDPS": 916.755617209718,
+      "currentOriginalSetupDPS": 876.2600792573115,
+      "currentSelectedDPS": 905.9256217088262,
+      "selectionDeltaDPS": 29.665542451514625,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "pet_melee",
+      "race": "Night Elf",
+      "changedPlayerFields": [
+        "rotation",
+        "talentsString"
+      ],
+      "publishedDPS": 911.116439178747,
+      "currentOriginalSetupDPS": 871.1758693293685,
+      "currentSelectedDPS": 900.8986809644256,
+      "selectionDeltaDPS": 29.72281163505704,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "pet_melee",
+      "race": "Dwarf",
+      "changedPlayerFields": [
+        "equipment",
+        "rotation",
+        "talentsString"
+      ],
+      "publishedDPS": 898.6241424917141,
+      "currentOriginalSetupDPS": 859.1844221199194,
+      "currentSelectedDPS": 890.260435306779,
+      "selectionDeltaDPS": 31.07601318685954,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "pet_melee",
+      "race": "Troll",
+      "changedPlayerFields": [
+        "rotation",
+        "talentsString"
+      ],
+      "publishedDPS": 904.8505710758549,
+      "currentOriginalSetupDPS": 865.8741340113058,
+      "currentSelectedDPS": 895.7420138615539,
+      "selectionDeltaDPS": 29.867879850248073,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "pet_melee",
+      "race": "High Order",
+      "changedPlayerFields": [
+        "rotation",
+        "talentsString"
+      ],
+      "publishedDPS": 910.0102361320393,
+      "currentOriginalSetupDPS": 869.6043085126763,
+      "currentSelectedDPS": 900.4921540516734,
+      "selectionDeltaDPS": 30.887845538997112,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arcane_frost",
+      "race": "Orc",
+      "changedPlayerFields": [],
+      "publishedDPS": 743.0611015336716,
+      "currentOriginalSetupDPS": 727.0071895988589,
+      "currentSelectedDPS": 727.0071895988589,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arcane_frost",
+      "race": "Troll",
+      "changedPlayerFields": [],
+      "publishedDPS": 740.7572272903109,
+      "currentOriginalSetupDPS": 725.6022283338884,
+      "currentSelectedDPS": 725.6022283338884,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arcane_frost",
+      "race": "Undead",
+      "changedPlayerFields": [],
+      "publishedDPS": 755.3072732461807,
+      "currentOriginalSetupDPS": 739.5491549363575,
+      "currentSelectedDPS": 739.5491549363575,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arcane_frost",
+      "race": "Human",
+      "changedPlayerFields": [],
+      "publishedDPS": 752.6931344374248,
+      "currentOriginalSetupDPS": 736.8842991134713,
+      "currentSelectedDPS": 736.8842991134713,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arcane_frost",
+      "race": "Gnome",
+      "changedPlayerFields": [],
+      "publishedDPS": 748.9696476057248,
+      "currentOriginalSetupDPS": 732.6907533497418,
+      "currentSelectedDPS": 732.6907533497418,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "arcane_frost",
+      "race": "High Order",
+      "changedPlayerFields": [],
+      "publishedDPS": 749.748867301932,
+      "currentOriginalSetupDPS": 733.7174888285866,
+      "currentSelectedDPS": 733.7174888285866,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury_2h",
+      "race": "Orc",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 811.8672579684116,
+      "currentOriginalSetupDPS": 829.2312036257559,
+      "currentSelectedDPS": 840.4971382316747,
+      "selectionDeltaDPS": 11.265934605918801,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury_2h",
+      "race": "Tauren",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 797.1717060828929,
+      "currentOriginalSetupDPS": 811.6659591573438,
+      "currentSelectedDPS": 822.9897332408214,
+      "selectionDeltaDPS": 11.323774083477588,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury_2h",
+      "race": "Undead",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 805.8911219937725,
+      "currentOriginalSetupDPS": 822.9397435599894,
+      "currentSelectedDPS": 833.8298317008862,
+      "selectionDeltaDPS": 10.89008814089675,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury_2h",
+      "race": "Troll",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 800.8933514641229,
+      "currentOriginalSetupDPS": 818.1957293996901,
+      "currentSelectedDPS": 827.3765857460407,
+      "selectionDeltaDPS": 9.180856346350652,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury_2h",
+      "race": "Windshaper",
+      "changedPlayerFields": [
+        "talentsString"
+      ],
+      "publishedDPS": 796.8095826474445,
+      "currentOriginalSetupDPS": 820.6942545270089,
+      "currentSelectedDPS": 826.5167141668333,
+      "selectionDeltaDPS": 5.8224596398243875,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury_2h",
+      "race": "Human",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 807.6163243088462,
+      "currentOriginalSetupDPS": 825.6823200251579,
+      "currentSelectedDPS": 836.3783899817332,
+      "selectionDeltaDPS": 10.696069956575343,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury_2h",
+      "race": "Dwarf",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 802.0516190625889,
+      "currentOriginalSetupDPS": 819.5417188852928,
+      "currentSelectedDPS": 830.5806774423359,
+      "selectionDeltaDPS": 11.038958557043088,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury_2h",
+      "race": "Gnome",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 797.7889116032434,
+      "currentOriginalSetupDPS": 813.9870002042646,
+      "currentSelectedDPS": 825.3440327139108,
+      "selectionDeltaDPS": 11.35703250964616,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury_2h",
+      "race": "Night Elf",
+      "changedPlayerFields": [
+        "equipment",
+        "talentsString"
+      ],
+      "publishedDPS": 800.5493081333959,
+      "currentOriginalSetupDPS": 817.2220898785191,
+      "currentSelectedDPS": 828.771134238545,
+      "selectionDeltaDPS": 11.549044360025846,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "fury_2h",
+      "race": "High Order",
+      "changedPlayerFields": [
+        "talentsString"
+      ],
+      "publishedDPS": 796.8095826474445,
+      "currentOriginalSetupDPS": 820.6942545270089,
+      "currentSelectedDPS": 826.5167141668333,
+      "selectionDeltaDPS": 5.8224596398243875,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "retribution_physical",
+      "race": "Undead",
+      "changedPlayerFields": [
+        "equipment"
+      ],
+      "publishedDPS": 958.8270392164131,
+      "currentOriginalSetupDPS": 961.5405656177726,
+      "currentSelectedDPS": 968.0121521764025,
+      "selectionDeltaDPS": 6.4715865586299515,
+      "publishedOOMSeconds": 0.03256996047220001,
+      "currentOriginalOOMSeconds": 0.0212070297402,
+      "selectedOOMSeconds": 0.0009455445852
+    },
+    {
+      "key": "retribution_physical",
+      "race": "Human",
+      "changedPlayerFields": [],
+      "publishedDPS": 956.8301032061236,
+      "currentOriginalSetupDPS": 959.2425249668566,
+      "currentSelectedDPS": 959.2425249668566,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0.030835841646400006,
+      "currentOriginalOOMSeconds": 0.02051936633159999,
+      "selectedOOMSeconds": 0.02051936633159999
+    },
+    {
+      "key": "retribution_physical",
+      "race": "Dwarf",
+      "changedPlayerFields": [],
+      "publishedDPS": 948.3959309566807,
+      "currentOriginalSetupDPS": 949.4821831294507,
+      "currentSelectedDPS": 949.4821831294507,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0.0407658020444,
+      "currentOriginalOOMSeconds": 0.022786376294399995,
+      "selectedOOMSeconds": 0.022786376294399995
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Orc",
+      "changedPlayerFields": [],
+      "publishedDPS": 366.12545686411255,
+      "currentOriginalSetupDPS": 366.35927376779375,
+      "currentSelectedDPS": 366.35927376779375,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Tauren",
+      "changedPlayerFields": [],
+      "publishedDPS": 368.0659687810048,
+      "currentOriginalSetupDPS": 367.49164506504985,
+      "currentSelectedDPS": 367.49164506504985,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Troll",
+      "changedPlayerFields": [],
+      "publishedDPS": 365.14328723265834,
+      "currentOriginalSetupDPS": 364.7142169761555,
+      "currentSelectedDPS": 364.7142169761555,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Undead",
+      "changedPlayerFields": [],
+      "publishedDPS": 379.3317319827615,
+      "currentOriginalSetupDPS": 379.00324757744164,
+      "currentSelectedDPS": 379.00324757744164,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Windshaper",
+      "changedPlayerFields": [],
+      "publishedDPS": 366.14127208224124,
+      "currentOriginalSetupDPS": 366.0789450213619,
+      "currentSelectedDPS": 366.0789450213619,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Human",
+      "changedPlayerFields": [],
+      "publishedDPS": 370.7285393624647,
+      "currentOriginalSetupDPS": 370.5322971396704,
+      "currentSelectedDPS": 370.5322971396704,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Dwarf",
+      "changedPlayerFields": [],
+      "publishedDPS": 365.386617794262,
+      "currentOriginalSetupDPS": 365.32047296272054,
+      "currentSelectedDPS": 365.32047296272054,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Night Elf",
+      "changedPlayerFields": [],
+      "publishedDPS": 365.5162931532619,
+      "currentOriginalSetupDPS": 365.0699870387752,
+      "currentSelectedDPS": 365.0699870387752,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "tank_warrior",
+      "race": "Gnome",
+      "changedPlayerFields": [],
+      "publishedDPS": 368.018698385781,
+      "currentOriginalSetupDPS": 368.3102882672998,
+      "currentSelectedDPS": 368.3102882672998,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "tank_warrior",
+      "race": "High Order",
+      "changedPlayerFields": [],
+      "publishedDPS": 366.14127208224124,
+      "currentOriginalSetupDPS": 366.0789450213619,
+      "currentSelectedDPS": 366.0789450213619,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "protection_paladin",
+      "race": "Undead",
+      "changedPlayerFields": [
+        "equipment"
+      ],
+      "publishedDPS": 563.7507602352209,
+      "currentOriginalSetupDPS": 563.5814200944889,
+      "currentSelectedDPS": 609.2413690314581,
+      "selectionDeltaDPS": 45.65994893696927,
+      "publishedOOMSeconds": 0.00486,
+      "currentOriginalOOMSeconds": 0.007239999999999999,
+      "selectedOOMSeconds": 0.0045520000000000005
+    },
+    {
+      "key": "protection_paladin",
+      "race": "Human",
+      "changedPlayerFields": [
+        "equipment"
+      ],
+      "publishedDPS": 543.055494574792,
+      "currentOriginalSetupDPS": 543.601570275147,
+      "currentSelectedDPS": 592.70449021339,
+      "selectionDeltaDPS": 49.102919938243076,
+      "publishedOOMSeconds": 0.008348000000000001,
+      "currentOriginalOOMSeconds": 0.006510000000000001,
+      "selectedOOMSeconds": 0.00471
+    },
+    {
+      "key": "protection_paladin",
+      "race": "Dwarf",
+      "changedPlayerFields": [
+        "equipment"
+      ],
+      "publishedDPS": 534.1707021437343,
+      "currentOriginalSetupDPS": 534.3422646970894,
+      "currentSelectedDPS": 583.3057071142567,
+      "selectionDeltaDPS": 48.96344241716736,
+      "publishedOOMSeconds": 0.01188,
+      "currentOriginalOOMSeconds": 0.00577,
+      "selectedOOMSeconds": 0.0025099999999999996
+    },
+    {
+      "key": "feral_tank_druid",
+      "race": "Tauren",
+      "changedPlayerFields": [],
+      "publishedDPS": 607.1275701075278,
+      "currentOriginalSetupDPS": 606.9812493925093,
+      "currentSelectedDPS": 606.9812493925093,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "feral_tank_druid",
+      "race": "Windshaper",
+      "changedPlayerFields": [],
+      "publishedDPS": 609.6238774697737,
+      "currentOriginalSetupDPS": 608.9388769595379,
+      "currentSelectedDPS": 608.9388769595379,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "feral_tank_druid",
+      "race": "Night Elf",
+      "changedPlayerFields": [],
+      "publishedDPS": 611.0266437848733,
+      "currentOriginalSetupDPS": 611.4044087262838,
+      "currentSelectedDPS": 611.4044087262838,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    },
+    {
+      "key": "feral_tank_druid",
+      "race": "High Order",
+      "changedPlayerFields": [],
+      "publishedDPS": 609.6238774697737,
+      "currentOriginalSetupDPS": 608.9388769595379,
+      "currentSelectedDPS": 608.9388769595379,
+      "selectionDeltaDPS": 0.0,
+      "publishedOOMSeconds": 0,
+      "currentOriginalOOMSeconds": 0,
+      "selectedOOMSeconds": 0
+    }
+  ]
+}

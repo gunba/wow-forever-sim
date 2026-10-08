@@ -220,7 +220,9 @@ func (aa *AutoAttacks) MH() *Weapon {
 func (aa *AutoAttacks) SetMH(weapon Weapon) {
 	aa.mh.setWeapon(weapon)
 
-	if aa.mh.extraAttacksAura == nil {
+	// Casters can update an enchanted or swapped weapon without a melee
+	// handler. Keep its weapon data without creating an autoattack source.
+	if aa.mh.extraAttacksAura == nil && aa.mh.unit != nil {
 		aa.mh.extraAttacksAura = aa.mh.unit.GetAuraByID(ActionID{SpellID: 21919})
 	}
 }

@@ -1,0 +1,971 @@
+{
+  "baseSHA256": "775684f38fda8166dcd419553ecdfcfc6ebcc299bdf354a4f6f8c8c5839386c1",
+  "finalSHA256": "9ba11fc94f4fa7f1410dc46cd299c00b93e7628a2ff69b8a0bf5a5be8e5112a4",
+  "scope": "Only equipment IDs/permanent enchants/profession2 from the two final guarded/independently confirmed gear handoffs. All other integrated fields invariant.",
+  "rows": [
+    {
+      "key": "balance",
+      "race": "Tauren",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "balance",
+      "race": "Windshaper",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "balance",
+      "race": "Night Elf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "balance",
+      "race": "High Order",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "feral",
+      "race": "Tauren",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "feral",
+      "race": "Windshaper",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "feral",
+      "race": "Night Elf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "feral",
+      "race": "High Order",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "elemental",
+      "race": "Orc",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "elemental",
+      "race": "Tauren",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "elemental",
+      "race": "Troll",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "elemental",
+      "race": "Windshaper",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "elemental",
+      "race": "Dwarf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "stormcaller",
+      "race": "Orc",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "stormcaller",
+      "race": "Tauren",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "stormcaller",
+      "race": "Troll",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "stormcaller",
+      "race": "Windshaper",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "stormcaller",
+      "race": "Dwarf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "enhancement",
+      "race": "Orc",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "enhancement",
+      "race": "Tauren",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "enhancement",
+      "race": "Troll",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "enhancement",
+      "race": "Windshaper",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "enhancement",
+      "race": "Dwarf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Orc",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Tauren",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Troll",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Windshaper",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Human",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Dwarf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "beast_mastery",
+      "race": "Night Elf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "beast_mastery",
+      "race": "High Order",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "marksmanship",
+      "race": "Orc",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "marksmanship",
+      "race": "Tauren",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "marksmanship",
+      "race": "Troll",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "marksmanship",
+      "race": "Windshaper",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "marksmanship",
+      "race": "Human",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "marksmanship",
+      "race": "Dwarf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "marksmanship",
+      "race": "Night Elf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "marksmanship",
+      "race": "High Order",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "survival",
+      "race": "Orc",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "survival",
+      "race": "Tauren",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "survival",
+      "race": "Troll",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "survival",
+      "race": "Windshaper",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "survival",
+      "race": "Human",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "survival",
+      "race": "Dwarf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "survival",
+      "race": "Night Elf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "survival",
+      "race": "High Order",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arcane",
+      "race": "Orc",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arcane",
+      "race": "Troll",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arcane",
+      "race": "Undead",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arcane",
+      "race": "Human",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arcane",
+      "race": "Gnome",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arcane",
+      "race": "High Order",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "fire",
+      "race": "Orc",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fire",
+      "race": "Troll",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fire",
+      "race": "Undead",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fire",
+      "race": "Human",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fire",
+      "race": "Gnome",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fire",
+      "race": "High Order",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "frost",
+      "race": "Orc",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "frost",
+      "race": "Troll",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "frost",
+      "race": "Undead",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "frost",
+      "race": "Human",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "frost",
+      "race": "Gnome",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "frost",
+      "race": "High Order",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "retribution",
+      "race": "Undead",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "retribution",
+      "race": "Human",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "retribution",
+      "race": "Dwarf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "demonology",
+      "race": "Orc",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "demonology",
+      "race": "Troll",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "demonology",
+      "race": "Undead",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "demonology",
+      "race": "Human",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "demonology",
+      "race": "Gnome",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "affliction",
+      "race": "Orc",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "affliction",
+      "race": "Troll",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "affliction",
+      "race": "Undead",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "affliction",
+      "race": "Human",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "affliction",
+      "race": "Gnome",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "ds_ruin",
+      "race": "Orc",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "ds_ruin",
+      "race": "Troll",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "ds_ruin",
+      "race": "Undead",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "ds_ruin",
+      "race": "Human",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "ds_ruin",
+      "race": "Gnome",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "destruction",
+      "race": "Orc",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "destruction",
+      "race": "Troll",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "destruction",
+      "race": "Undead",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "destruction",
+      "race": "Human",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "destruction",
+      "race": "Gnome",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "fury",
+      "race": "Orc",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Orc",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fury",
+      "race": "Tauren",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Tauren",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fury",
+      "race": "Troll",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Troll",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fury",
+      "race": "Undead",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Undead",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fury",
+      "race": "Windshaper",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Windshaper",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fury",
+      "race": "Human",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Human",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fury",
+      "race": "Dwarf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Dwarf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fury",
+      "race": "Night Elf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Night Elf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fury",
+      "race": "Gnome",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "fury_sunder",
+      "race": "Gnome",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fury",
+      "race": "High Order",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "fury_sunder",
+      "race": "High Order",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "arms",
+      "race": "Orc",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arms",
+      "race": "Tauren",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arms",
+      "race": "Troll",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arms",
+      "race": "Undead",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arms",
+      "race": "Windshaper",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arms",
+      "race": "Human",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arms",
+      "race": "Dwarf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arms",
+      "race": "Night Elf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arms",
+      "race": "Gnome",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arms",
+      "race": "High Order",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "pet_melee",
+      "race": "Tauren",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "pet_melee",
+      "race": "Windshaper",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "pet_melee",
+      "race": "Orc",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "pet_melee",
+      "race": "Human",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "pet_melee",
+      "race": "Night Elf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "pet_melee",
+      "race": "Dwarf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "pet_melee",
+      "race": "Troll",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "pet_melee",
+      "race": "High Order",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arcane_frost",
+      "race": "Orc",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arcane_frost",
+      "race": "Troll",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arcane_frost",
+      "race": "Undead",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arcane_frost",
+      "race": "Human",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arcane_frost",
+      "race": "Gnome",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "arcane_frost",
+      "race": "High Order",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "fury_2h",
+      "race": "Orc",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fury_2h",
+      "race": "Tauren",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fury_2h",
+      "race": "Undead",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fury_2h",
+      "race": "Troll",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fury_2h",
+      "race": "Windshaper",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "fury_2h",
+      "race": "Human",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fury_2h",
+      "race": "Dwarf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fury_2h",
+      "race": "Gnome",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fury_2h",
+      "race": "Night Elf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "fury_2h",
+      "race": "High Order",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "retribution_physical",
+      "race": "Undead",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "retribution_physical",
+      "race": "Human",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "retribution_physical",
+      "race": "Dwarf",
+      "source": "affected-dps-gear-refresh/selected-inputs.json",
+      "changedFields": []
+    },
+    {
+      "key": "protection_paladin",
+      "race": "Undead",
+      "source": "tank-paladin-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "protection_paladin",
+      "race": "Human",
+      "source": "tank-paladin-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    },
+    {
+      "key": "protection_paladin",
+      "race": "Dwarf",
+      "source": "tank-paladin-gear-refresh/selected-inputs.json",
+      "changedFields": [
+        "equipment"
+      ]
+    }
+  ]
+}

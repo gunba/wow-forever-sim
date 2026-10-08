@@ -136,7 +136,7 @@ func (mb *manaBar) doneIteration(sim *Simulation) {
 			// Vampiric Touch mana threat goes to the priest, so it's handled in the priest code.
 			continue
 		}
-		if resourceMetrics.ActualGainForCurrentIteration() <= 0 {
+		if resourceMetrics.NoThreat || resourceMetrics.ActualGainForCurrentIteration() <= 0 {
 			continue
 		}
 
@@ -153,10 +153,15 @@ func (unit *Unit) MP5ManaRegenPerSecond() float64 {
 	return unit.stats[stats.MP5] / 5.0
 }
 
-// Returns the rate of mana regen per second from spirit.
-// All classes except Priest and Mage use this.
+// Returns the default mana regeneration per second from Spirit.
 func (unit *Unit) SpiritManaRegenPerSecondDefault() float64 {
-	// 15 + Spirit/5 every 2s tick
+	if unit.Type == PlayerUnit && unit.Env != nil && unit.Env.IsForever() {
+		// Hunter/Paladin beta measurements support the Mage/Priest formula.
+		// Common-player and level-60 coverage remain a qualified working model;
+		// this does not change pet formulas, MP5 or explicit class overrides.
+		return 6.25 + unit.stats[stats.Spirit]/8
+	}
+	// Classic and default pet behavior: 15 + Spirit/5 every 2s tick.
 	return 7.5 + unit.stats[stats.Spirit]/10
 }
 

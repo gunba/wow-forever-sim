@@ -249,7 +249,7 @@ func TestMutilatePuncturingWoundsBothHands(t *testing.T) {
 		req := historyTalentFixture("mutilate", map[string]int{"mutilate": 1, "puncturingWounds": points})
 		sim := core.NewSim(req, simsignals.Signals{})
 		unit := sim.Raid.AllPlayerUnits[0]
-		for i, tag := range []int32{0, 2} {
+		for i, tag := range []int32{1, 2} {
 			spell := unit.GetSpell(core.ActionID{SpellID: 1241584, Tag: tag})
 			if spell == nil {
 				t.Fatalf("missing Mutilate hand %d", tag)

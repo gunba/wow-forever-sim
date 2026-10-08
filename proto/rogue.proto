@@ -65,7 +65,16 @@ message RogueTalents {
 }
 
 message RogueOptions {
+	enum Poison {
+		NoPoison = 0;
+		InstantPoison = 1;
+		DeadlyPoison = 2;
+		WoundPoison = 3;
+	}
 
+	// Forever poisons coexist with the temporary weapon enchants in Consumes.
+	Poison main_hand_poison = 1;
+	Poison off_hand_poison = 2;
 }
 
 message Rogue {

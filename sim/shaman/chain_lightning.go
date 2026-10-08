@@ -17,6 +17,16 @@ var ChainLightningSpellCoef = [ChainLightningRanks + 1]float64{0, .571, .571, .5
 var ChainLightningManaCost = [ChainLightningRanks + 1]float64{0, 225, 305, 390, 485}
 var ChainLightningLevel = [ChainLightningRanks + 1]int{0, 32, 40, 48, 56}
 
+// Unlike half the parent, all four child rows have their own level growth.
+// Child rank3 also stores .2855 SP, not half the parent's retained .517.
+var chainLightningOverloadDamage = [ChainLightningRanks + 1]electricOverloadDamage{
+	{},
+	{408479, 44, .13725490868, .75, .28549998999, 32, 37},
+	{408481, 50, .12244898081, .89999997616, .28549998999, 40, 45},
+	{408482, 56, .11500000209, 1.04999995232, .28549998999, 48, 53},
+	{408484, 62, .11494252831, 1.20000004768, .28549998999, 56, 61},
+}
+
 func (shaman *Shaman) registerChainLightningSpell() {
 	shaman.ChainLightning = make([]*core.Spell, ChainLightningRanks+1)
 	shaman.ChainLightningOverload = make([]*core.Spell, ChainLightningRanks+1)
@@ -24,23 +34,28 @@ func (shaman *Shaman) registerChainLightningSpell() {
 	cdTimer := shaman.NewTimer()
 
 	for rank := 1; rank <= ChainLightningRanks; rank++ {
-		config := shaman.newChainLightningSpellConfig(rank, cdTimer)
+		config := shaman.newChainLightningSpellConfig(rank, cdTimer, false)
 
 		if config.RequiredLevel <= int(shaman.Level) {
 			// The overload gets a config of its own so that the two casts share no bounce results.
-			shaman.ChainLightningOverload[rank] = shaman.registerOverloadSpell(shaman.newChainLightningSpellConfig(rank, cdTimer))
+			shaman.ChainLightningOverload[rank] = shaman.registerOverloadSpell(shaman.newChainLightningSpellConfig(rank, cdTimer, true))
 			shaman.ChainLightning[rank] = shaman.RegisterSpell(config)
 		}
 	}
 }
 
-func (shaman *Shaman) newChainLightningSpellConfig(rank int, cdTimer *core.Timer) core.SpellConfig {
+func (shaman *Shaman) newChainLightningSpellConfig(rank int, cdTimer *core.Timer, isOverload bool) core.SpellConfig {
 	spellId := ChainLightningSpellId[rank]
 	baseDamageLow := ChainLightningBaseDamage[rank][0]
 	baseDamageHigh := ChainLightningBaseDamage[rank][1]
 	spellCoeff := ChainLightningSpellCoef[rank]
 	manaCost := ChainLightningManaCost[rank]
 	level := ChainLightningLevel[rank]
+	if isOverload && shaman.Env.IsForever() {
+		damage := chainLightningOverloadDamage[rank]
+		baseDamageLow, baseDamageHigh = damage.rangeAtLevel(shaman.Level)
+		spellCoeff = damage.coefficient
+	}
 
 	cooldown := time.Second * 6
 	castTime := time.Millisecond * 2000

@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "2026100191",
+    "fixedRngSeed": "1792800001",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Horde",
@@ -107,11 +107,11 @@
           "id": 920000317
         },
         {
-          "id": 920000348,
+          "id": 920000334,
           "enchant": 1900
         },
         {
-          "id": 920000332,
+          "id": 920000335,
           "enchant": 2564
         },
         {
@@ -128,8 +128,8 @@
       "attackPowerBuff": "JujuMight",
       "spellPowerBuff": "GreaterArcaneElixir",
       "fillerExplosive": "ExplosiveThoriumGrenade",
-      "mainHandImbue": "InstantPoison",
-      "offHandImbue": "DeadlyPoison",
+      "mainHandImbue": "ShadowOil",
+      "offHandImbue": "ElementalSharpeningStone",
       "defaultConjured": "ConjuredRogueThistleTea",
       "dragonBreathChili": true,
       "zanzaBuff": "GroundScorpokAssay",
@@ -492,7 +492,10 @@
     },
     "distanceFromTarget": 5,
     "rogue": {
-      "options": {}
+      "options": {
+        "mainHandPoison": "InstantPoison",
+        "offHandPoison": "DeadlyPoison"
+      }
     }
   },
   "encounter": {

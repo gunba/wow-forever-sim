@@ -1,10 +1,10 @@
 {
   "format": 2,
-  "status": "October1 correctness fixed-profile replays; historical selections are superseded",
-  "supersedes": "artifacts/correctness/october_1/before.json.gz",
+  "status": "October8 current-profile workload replays; ProtectionPaladin gear selected with separate guarded evidence; earlier incompatible controls remain historical",
+  "supersedes": "artifacts/correctness/october_8/before.json.gz",
   "seeds": [
-    20291951,
-    20341951
+    1792840001,
+    1792860001
   ],
   "iterationsPerSeed": [
     5000,
@@ -12,12 +12,12 @@
   ],
   "seedIntervalsIndependent": true,
   "errorAggregation": "independent-quadrature within a profile; no cross-race independence claim",
-  "scope": "All17 tank race profiles; 2 unchanged workloads; 2 non-overlapping independent 5000-iteration seed ranges; only October1 talent/APL migrations",
+  "scope": "All17 tank race profiles; 2 unchanged workloads; 2 independent5000-iteration seed ranges. Protection Paladin guarded gear refresh; other14 tank profiles unchanged.",
   "scenarios": {
     "Single": "300s, one 3000-base/2s attacker, 1500 HPS",
     "Multi": "90s, three 1500-base/2s attackers, 2500 HPS"
   },
-  "selectionPolicy": "No selection performed. Preserve existing identities and fixed workload/healing assumptions; survival, DPS and per-target TPS are reported separately.",
+  "selectionPolicy": "These68 runs are fixed-profile release checks, not new selection. Separate October8 Paladin evidence retains the original per-seed/both-workload point-estimate DTPS+1%,TMI+2%,death+.0025,TPS-1%,leastTPS-2% guards; not a95%proof of no harm.",
   "selections": [
     {
       "Key": "feral_tank_druid",
@@ -25,38 +25,38 @@
       "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
       "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 1849.0298343563652,
-        "TPSStandardError": 0.7384339227429223,
-        "DTPS": 715.3577393780424,
-        "DTPSStandardError": 0.429772355932556,
-        "TMI": 77.59770276600669,
-        "TMIStandardError": 0.06902394688384701,
-        "DPS": 609.4816510906801,
-        "DPSStandardError": 0.2664758113804774,
-        "ChanceOfDeath": 0.0044,
+        "TPS": 1848.0278979294317,
+        "TPSStandardError": 0.7340957108566153,
+        "DTPS": 715.8578634352209,
+        "DTPSStandardError": 0.4285963813827148,
+        "TMI": 77.64308198043092,
+        "TMIStandardError": 0.06855564613198246,
+        "DPS": 609.0070633967364,
+        "DPSStandardError": 0.26569558212385186,
+        "ChanceOfDeath": 0.004,
         "Iterations": 10000,
         "TargetTPS": [
-          1849.029834356365
+          1848.0278979294246
         ],
-        "LeastTargetTPS": 1849.029834356365
+        "LeastTargetTPS": 1848.0278979294246
       },
       "Multi": {
-        "TPS": 2219.0006743215035,
-        "TPSStandardError": 1.386218104801067,
-        "DTPS": 1032.521466458024,
-        "DTPSStandardError": 0.6358090522968871,
-        "TMI": 90.29578830222216,
-        "TMIStandardError": 0.07215255197949182,
-        "DPS": 763.3643109502281,
-        "DPSStandardError": 0.49296392036431713,
-        "ChanceOfDeath": 0.0005,
+        "TPS": 2219.1798243872026,
+        "TPSStandardError": 1.381617688150235,
+        "DTPS": 1031.4493919089864,
+        "DTPSStandardError": 0.6390257882769423,
+        "TMI": 90.35210939810719,
+        "TMIStandardError": 0.07433654507121117,
+        "DPS": 763.4430611224002,
+        "DPSStandardError": 0.4912711811749346,
+        "ChanceOfDeath": 0.00039999999999999996,
         "Iterations": 10000,
         "TargetTPS": [
-          1562.9078385620319,
-          328.0352495676092,
-          328.05758619185576
+          1561.967637625456,
+          328.3370820835205,
+          328.8751046782246
         ],
-        "LeastTargetTPS": 328.0352495676092
+        "LeastTargetTPS": 328.3370820835205
       }
     },
     {
@@ -65,38 +65,38 @@
       "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
       "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 1858.789599129259,
-        "TPSStandardError": 0.7370065011383723,
-        "DTPS": 701.972874617875,
-        "DTPSStandardError": 0.43863085755087183,
-        "TMI": 77.25819299750535,
-        "TMIStandardError": 0.07130228832391426,
-        "DPS": 611.4447556258806,
-        "DPSStandardError": 0.265911886175293,
-        "ChanceOfDeath": 0.0041,
+        "TPS": 1858.1362736552346,
+        "TPSStandardError": 0.7434276172341491,
+        "DTPS": 702.663199491708,
+        "DTPSStandardError": 0.4301518899086213,
+        "TMI": 77.43575592048953,
+        "TMIStandardError": 0.07047715961975672,
+        "DPS": 611.3462758222566,
+        "DPSStandardError": 0.26858849862672046,
+        "ChanceOfDeath": 0.004999999999999999,
         "Iterations": 10000,
         "TargetTPS": [
-          1858.7895991292548
+          1858.136273655235
         ],
-        "LeastTargetTPS": 1858.7895991292548
+        "LeastTargetTPS": 1858.136273655235
       },
       "Multi": {
-        "TPS": 2278.5178990496274,
-        "TPSStandardError": 1.4252451495326104,
-        "DTPS": 1014.437351333472,
-        "DTPSStandardError": 0.6515796040953138,
-        "TMI": 89.38557869579057,
-        "TMIStandardError": 0.07740963105691165,
-        "DPS": 778.9668525259145,
-        "DPSStandardError": 0.5040804091297074,
-        "ChanceOfDeath": 0.0004,
+        "TPS": 2275.627242600404,
+        "TPSStandardError": 1.4102623287388019,
+        "DTPS": 1013.894093050239,
+        "DTPSStandardError": 0.6557308758552077,
+        "TMI": 89.47323058121387,
+        "TMIStandardError": 0.07706381591281666,
+        "DPS": 778.0042837419828,
+        "DPSStandardError": 0.4989628082307396,
+        "ChanceOfDeath": 0.0005,
         "Iterations": 10000,
         "TargetTPS": [
-          1593.0544708656385,
-          342.7911726747512,
-          342.6722555092349
+          1591.529079386837,
+          342.1313792081636,
+          341.9667840054045
         ],
-        "LeastTargetTPS": 342.6722555092349
+        "LeastTargetTPS": 341.9667840054045
       }
     },
     {
@@ -105,38 +105,38 @@
       "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
       "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 1846.649800428057,
-        "TPSStandardError": 0.7260416110357536,
-        "DTPS": 717.0579528101839,
-        "DTPSStandardError": 0.42406611630926605,
-        "TMI": 72.79697021617903,
-        "TMIStandardError": 0.06355392113374159,
-        "DPS": 606.2278369733942,
-        "DPSStandardError": 0.2604806100103446,
-        "ChanceOfDeath": 0.0016,
+        "TPS": 1847.6849785718703,
+        "TPSStandardError": 0.732034131301878,
+        "DTPS": 716.8614234372451,
+        "DTPSStandardError": 0.42603688665837675,
+        "TMI": 72.72579739077601,
+        "TMIStandardError": 0.06295759021099408,
+        "DPS": 606.5539708456856,
+        "DPSStandardError": 0.26352564229685593,
+        "ChanceOfDeath": 0.0018,
         "Iterations": 10000,
         "TargetTPS": [
-          1846.649800428058
+          1847.6849785718719
         ],
-        "LeastTargetTPS": 1846.649800428058
+        "LeastTargetTPS": 1847.6849785718719
       },
       "Multi": {
-        "TPS": 2220.7800346007934,
-        "TPSStandardError": 1.3781462699134093,
-        "DTPS": 1034.5881897767008,
-        "DTPSStandardError": 0.6469640119439813,
-        "TMI": 85.23364340898537,
-        "TMIStandardError": 0.07038319059541756,
-        "DPS": 762.5813671310157,
-        "DPSStandardError": 0.487670076525948,
-        "ChanceOfDeath": 0.0,
+        "TPS": 2216.427727175964,
+        "TPSStandardError": 1.3831084230687933,
+        "DTPS": 1035.1401745271164,
+        "DTPSStandardError": 0.638125714430565,
+        "TMI": 85.29452753332623,
+        "TMIStandardError": 0.06916678805468818,
+        "DPS": 761.2220873041075,
+        "DPSStandardError": 0.49019353089373763,
+        "ChanceOfDeath": 0.0001,
         "Iterations": 10000,
         "TargetTPS": [
-          1561.5708200410081,
-          329.4650151893374,
-          329.74419937044763
+          1558.0660949977694,
+          329.15338563435205,
+          329.2082465438432
         ],
-        "LeastTargetTPS": 329.4650151893374
+        "LeastTargetTPS": 329.15338563435205
       }
     },
     {
@@ -145,158 +145,158 @@
       "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
       "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 1849.0298343563652,
-        "TPSStandardError": 0.7384339227429223,
-        "DTPS": 715.3577393780424,
-        "DTPSStandardError": 0.429772355932556,
-        "TMI": 77.59770276600669,
-        "TMIStandardError": 0.06902394688384701,
-        "DPS": 609.4816510906801,
-        "DPSStandardError": 0.2664758113804774,
-        "ChanceOfDeath": 0.0044,
+        "TPS": 1848.0278979294317,
+        "TPSStandardError": 0.7340957108566153,
+        "DTPS": 715.8578634352209,
+        "DTPSStandardError": 0.4285963813827148,
+        "TMI": 77.64308198043092,
+        "TMIStandardError": 0.06855564613198246,
+        "DPS": 609.0070633967364,
+        "DPSStandardError": 0.26569558212385186,
+        "ChanceOfDeath": 0.004,
         "Iterations": 10000,
         "TargetTPS": [
-          1849.029834356365
+          1848.0278979294246
         ],
-        "LeastTargetTPS": 1849.029834356365
+        "LeastTargetTPS": 1848.0278979294246
       },
       "Multi": {
-        "TPS": 2219.0006743215035,
-        "TPSStandardError": 1.386218104801067,
-        "DTPS": 1032.521466458024,
-        "DTPSStandardError": 0.6358090522968871,
-        "TMI": 90.29578830222216,
-        "TMIStandardError": 0.07215255197949182,
-        "DPS": 763.3643109502281,
-        "DPSStandardError": 0.49296392036431713,
-        "ChanceOfDeath": 0.0005,
+        "TPS": 2219.1798243872026,
+        "TPSStandardError": 1.381617688150235,
+        "DTPS": 1031.4493919089864,
+        "DTPSStandardError": 0.6390257882769423,
+        "TMI": 90.35210939810719,
+        "TMIStandardError": 0.07433654507121117,
+        "DPS": 763.4430611224002,
+        "DPSStandardError": 0.4912711811749346,
+        "ChanceOfDeath": 0.00039999999999999996,
         "Iterations": 10000,
         "TargetTPS": [
-          1562.9078385620319,
-          328.0352495676092,
-          328.05758619185576
+          1561.967637625456,
+          328.3370820835205,
+          328.8751046782246
         ],
-        "LeastTargetTPS": 328.0352495676092
+        "LeastTargetTPS": 328.3370820835205
       }
     },
     {
       "Key": "protection_paladin",
       "Race": "Dwarf",
-      "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
-      "SelectedID": "frozen-current-profile",
+      "Disposition": "guarded-gear-selection; fixed-profile release replay",
+      "SelectedID": "october8-guarded-gear",
       "Single": {
-        "TPS": 817.8814447645796,
-        "TPSStandardError": 0.2630221485358241,
-        "DTPS": 697.3196610628108,
-        "DTPSStandardError": 0.34252692870273826,
-        "TMI": 74.86590569435282,
-        "TMIStandardError": 0.05329881883953639,
-        "DPS": 534.2289237541,
-        "DPSStandardError": 0.18685284100858776,
-        "ChanceOfDeath": 0.0013,
+        "TPS": 911.324994834064,
+        "TPSStandardError": 0.2784356955510203,
+        "DTPS": 697.5659124853635,
+        "DTPSStandardError": 0.3406093687810428,
+        "TMI": 75.90591002419907,
+        "TMIStandardError": 0.05472329419629305,
+        "DPS": 583.3584543668528,
+        "DPSStandardError": 0.1915431712239676,
+        "ChanceOfDeath": 0.0011,
         "Iterations": 10000,
         "TargetTPS": [
-          817.8814447645805
+          911.3249948340642
         ],
-        "LeastTargetTPS": 817.8814447645805
+        "LeastTargetTPS": 911.3249948340642
       },
       "Multi": {
-        "TPS": 1331.1759606240323,
-        "TPSStandardError": 0.6049917645042299,
-        "DTPS": 993.7129038198678,
-        "DTPSStandardError": 0.5507248814498729,
-        "TMI": 89.15384127731409,
-        "TMIStandardError": 0.05407504971048717,
-        "DPS": 818.2130199219308,
-        "DPSStandardError": 0.439818722680992,
-        "ChanceOfDeath": 0.0005,
+        "TPS": 1508.1468046010173,
+        "TPSStandardError": 0.6675631596135785,
+        "DTPS": 993.9359090608917,
+        "DTPSStandardError": 0.5561229831093984,
+        "TMI": 90.37765400481948,
+        "TMIStandardError": 0.05553468140067952,
+        "DPS": 924.5095303625285,
+        "DPSStandardError": 0.48185259171174805,
+        "ChanceOfDeath": 0.0007,
         "Iterations": 10000,
         "TargetTPS": [
-          843.7532233369351,
-          247.3123491719601,
-          240.11038811514743
+          935.5346172349972,
+          290.4201702264753,
+          282.19201713954715
         ],
-        "LeastTargetTPS": 240.11038811514743
+        "LeastTargetTPS": 282.19201713954715
       }
     },
     {
       "Key": "protection_paladin",
       "Race": "Human",
-      "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
-      "SelectedID": "frozen-current-profile",
+      "Disposition": "guarded-gear-selection; fixed-profile release replay",
+      "SelectedID": "october8-guarded-gear",
       "Single": {
-        "TPS": 830.1862166099704,
-        "TPSStandardError": 0.2664197728979031,
-        "DTPS": 694.9644238328513,
-        "DTPSStandardError": 0.34019685269722105,
-        "TMI": 75.1894456828749,
-        "TMIStandardError": 0.054493608137993255,
-        "DPS": 543.2799411844393,
-        "DPSStandardError": 0.189832183081855,
-        "ChanceOfDeath": 0.002,
+        "TPS": 925.2832382450081,
+        "TPSStandardError": 0.2861144343409302,
+        "DTPS": 695.3934818020182,
+        "DTPSStandardError": 0.3358426662069277,
+        "TMI": 76.23858903348909,
+        "TMIStandardError": 0.05492615061750651,
+        "DPS": 593.1817069183032,
+        "DPSStandardError": 0.19658093712701818,
+        "ChanceOfDeath": 0.0022,
         "Iterations": 10000,
         "TargetTPS": [
-          830.1862166099697
+          925.2832382450072
         ],
-        "LeastTargetTPS": 830.1862166099697
+        "LeastTargetTPS": 925.2832382450072
       },
       "Multi": {
-        "TPS": 1347.8025172499629,
-        "TPSStandardError": 0.6221982650215621,
-        "DTPS": 989.9866928490717,
-        "DTPSStandardError": 0.5501689375330314,
-        "TMI": 89.32509890049161,
-        "TMIStandardError": 0.05444455181569511,
-        "DPS": 830.2715040897845,
-        "DPSStandardError": 0.45393130948842214,
-        "ChanceOfDeath": 0.001,
+        "TPS": 1526.4132573036477,
+        "TPSStandardError": 0.6853054819094956,
+        "DTPS": 991.2254760205167,
+        "DTPSStandardError": 0.5513752738021828,
+        "TMI": 90.69163961605823,
+        "TMIStandardError": 0.05584650108072767,
+        "DPS": 937.2331394544268,
+        "DPSStandardError": 0.49356250254649114,
+        "ChanceOfDeath": 0.0007999999999999999,
         "Iterations": 10000,
         "TargetTPS": [
-          856.7260604886046,
-          249.25660104147,
-          241.81985571989117
+          949.5293595678746,
+          292.6553204493507,
+          284.22857728642555
         ],
-        "LeastTargetTPS": 241.81985571989117
+        "LeastTargetTPS": 284.22857728642555
       }
     },
     {
       "Key": "protection_paladin",
       "Race": "Undead",
-      "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
-      "SelectedID": "frozen-current-profile",
+      "Disposition": "guarded-gear-selection; fixed-profile release replay",
+      "SelectedID": "october8-guarded-gear",
       "Single": {
-        "TPS": 847.2569682578617,
-        "TPSStandardError": 0.27768515131008104,
-        "DTPS": 695.7308652497231,
-        "DTPSStandardError": 0.3409851090753776,
-        "TMI": 75.11320040233227,
-        "TMIStandardError": 0.0542917472537071,
-        "DPS": 563.658119080067,
-        "DPSStandardError": 0.20493674656116237,
-        "ChanceOfDeath": 0.0015999999999999999,
+        "TPS": 926.5917259443901,
+        "TPSStandardError": 0.29220629999222364,
+        "DTPS": 698.2769926543015,
+        "DTPSStandardError": 0.3392043018064668,
+        "TMI": 75.29014798811068,
+        "TMIStandardError": 0.05434249611729108,
+        "DPS": 609.1707461341925,
+        "DPSStandardError": 0.2109002946294009,
+        "ChanceOfDeath": 0.0013,
         "Iterations": 10000,
         "TargetTPS": [
-          847.256968257861
+          926.5917259443911
         ],
-        "LeastTargetTPS": 847.256968257861
+        "LeastTargetTPS": 926.5917259443911
       },
       "Multi": {
-        "TPS": 1369.3729417639354,
-        "TPSStandardError": 0.6410940589839105,
-        "DTPS": 995.8982344860046,
-        "DTPSStandardError": 0.5459149507648486,
-        "TMI": 89.50200941182403,
-        "TMIStandardError": 0.05391846877097439,
-        "DPS": 856.4276508011689,
-        "DPSStandardError": 0.4784913983666911,
+        "TPS": 1521.017051161533,
+        "TPSStandardError": 0.6911103246406486,
+        "DTPS": 1000.5086217537436,
+        "DTPSStandardError": 0.5602973804716478,
+        "TMI": 89.87966363135217,
+        "TMIStandardError": 0.0546068886485017,
+        "DPS": 950.4171442462168,
+        "DPSStandardError": 0.5112126852836762,
         "ChanceOfDeath": 0.0004,
         "Iterations": 10000,
         "TargetTPS": [
-          875.5532116102041,
-          250.7781706562066,
-          243.041559497526
+          957.3002627729209,
+          285.71187034899606,
+          278.004918039608
         ],
-        "LeastTargetTPS": 243.041559497526
+        "LeastTargetTPS": 278.004918039608
       }
     },
     {
@@ -305,38 +305,38 @@
       "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
       "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 842.1007881361709,
-        "TPSStandardError": 0.383248543098926,
-        "DTPS": 495.18827841652455,
-        "DTPSStandardError": 0.2683605721494379,
-        "TMI": 50.31245933968536,
-        "TMIStandardError": 0.03270468810753178,
-        "DPS": 365.8750961177019,
-        "DPSStandardError": 0.20355068574458546,
+        "TPS": 841.2434116350425,
+        "TPSStandardError": 0.38227742905614737,
+        "DTPS": 495.47250528643974,
+        "DTPSStandardError": 0.26860327410285634,
+        "TMI": 50.34890181368572,
+        "TMIStandardError": 0.032655032066924695,
+        "DPS": 365.2991491576225,
+        "DPSStandardError": 0.20180863318839687,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          842.1007881361704
+          841.2434116350435
         ],
-        "LeastTargetTPS": 842.1007881361704
+        "LeastTargetTPS": 841.2434116350435
       },
       "Multi": {
-        "TPS": 1087.5784277690295,
-        "TPSStandardError": 0.7973617870937677,
-        "DTPS": 767.8843411259136,
-        "DTPSStandardError": 0.49211155522255956,
-        "TMI": 70.6605811388358,
-        "TMIStandardError": 0.05059953896349356,
-        "DPS": 459.36476299650917,
-        "DPSStandardError": 0.4364960347653746,
+        "TPS": 1084.8307626092833,
+        "TPSStandardError": 0.800748658192641,
+        "DTPS": 767.4785313895302,
+        "DTPSStandardError": 0.4961440357949046,
+        "TMI": 70.59659873384234,
+        "TMIStandardError": 0.05049239373011206,
+        "DPS": 457.8920029860643,
+        "DPSStandardError": 0.44112746556156673,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          830.3819631643728,
-          195.52039344096536,
-          61.67607116369098
+          828.5026231300778,
+          194.67404419562627,
+          61.65409528358001
         ],
-        "LeastTargetTPS": 61.67607116369098
+        "LeastTargetTPS": 61.65409528358001
       }
     },
     {
@@ -345,38 +345,38 @@
       "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
       "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 810.5287608592025,
-        "TPSStandardError": 0.36909735063322796,
-        "DTPS": 483.9349699215553,
-        "DTPSStandardError": 0.2751553613132969,
-        "TMI": 49.9605033040207,
-        "TMIStandardError": 0.03335380091357548,
-        "DPS": 368.48972271091156,
-        "DPSStandardError": 0.2041284567155615,
+        "TPS": 809.947891584588,
+        "TPSStandardError": 0.3703423886852305,
+        "DTPS": 484.4287775793824,
+        "DTPSStandardError": 0.2720379419993789,
+        "TMI": 49.95368411508483,
+        "TMIStandardError": 0.032897228557208905,
+        "DPS": 368.1040414070975,
+        "DPSStandardError": 0.20542693173278442,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          810.5287608592034
+          809.9478915845854
         ],
-        "LeastTargetTPS": 810.5287608592034
+        "LeastTargetTPS": 809.9478915845854
       },
       "Multi": {
-        "TPS": 1051.4843444906433,
-        "TPSStandardError": 0.7739503323199676,
-        "DTPS": 751.0655540718269,
-        "DTPSStandardError": 0.49915303318686416,
-        "TMI": 70.00444290599873,
-        "TMIStandardError": 0.052630650277159116,
-        "DPS": 463.7770815115854,
-        "DPSStandardError": 0.44542959943754257,
+        "TPS": 1048.6831367645664,
+        "TPSStandardError": 0.7614392279226617,
+        "DTPS": 750.33768746709,
+        "DTPSStandardError": 0.4979141833986134,
+        "TMI": 69.84252279329317,
+        "TMIStandardError": 0.05180287898768139,
+        "DPS": 462.1589374390769,
+        "DPSStandardError": 0.4383462167092806,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          800.2971829205945,
-          190.8679945383584,
-          60.31916703169138
+          798.4702702027671,
+          189.96088260849214,
+          60.25198395330629
         ],
-        "LeastTargetTPS": 60.31916703169138
+        "LeastTargetTPS": 60.25198395330629
       }
     },
     {
@@ -385,38 +385,38 @@
       "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
       "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 807.8286433623563,
-        "TPSStandardError": 0.3710408273193749,
-        "DTPS": 493.65082529123157,
-        "DTPSStandardError": 0.2709884378733233,
-        "TMI": 50.74246283469086,
-        "TMIStandardError": 0.033150739077729904,
-        "DPS": 366.5594672711865,
-        "DPSStandardError": 0.2050182972103801,
+        "TPS": 807.4690792312249,
+        "TPSStandardError": 0.3697460268574054,
+        "DTPS": 493.47265945332316,
+        "DTPSStandardError": 0.2706629576094543,
+        "TMI": 50.81031718599051,
+        "TMIStandardError": 0.034234815575612795,
+        "DPS": 366.27421910175076,
+        "DPSStandardError": 0.20305595371907753,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          807.8286433623559
+          807.4690792312255
         ],
-        "LeastTargetTPS": 807.8286433623559
+        "LeastTargetTPS": 807.4690792312255
       },
       "Multi": {
-        "TPS": 1044.5785825211642,
-        "TPSStandardError": 0.765311848368635,
-        "DTPS": 764.1134464283175,
-        "DTPSStandardError": 0.49425773115448013,
-        "TMI": 71.10421756986182,
-        "TMIStandardError": 0.05096033912836067,
-        "DPS": 459.665907557519,
-        "DPSStandardError": 0.43951471883472987,
+        "TPS": 1044.1642782084737,
+        "TPSStandardError": 0.7713853472379057,
+        "DTPS": 763.9586337303733,
+        "DTPSStandardError": 0.4899969502253942,
+        "TMI": 71.05296479194935,
+        "TMIStandardError": 0.050705954414224416,
+        "DPS": 459.7845069741521,
+        "DPSStandardError": 0.44167113767809224,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          795.7672685199445,
-          188.5022133884044,
-          60.30910061281726
+          795.4127800919368,
+          188.48183487387337,
+          60.26966324266131
         ],
-        "LeastTargetTPS": 60.30910061281726
+        "LeastTargetTPS": 60.26966324266131
       }
     },
     {
@@ -425,38 +425,38 @@
       "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
       "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 814.5872935169173,
-        "TPSStandardError": 0.3674745398611581,
-        "DTPS": 497.569574908767,
-        "DTPSStandardError": 0.27252466832742017,
-        "TMI": 50.762170554020926,
-        "TMIStandardError": 0.03333354952427357,
-        "DPS": 370.6514193283755,
-        "DPSStandardError": 0.20327440933240964,
+        "TPS": 814.7014851499493,
+        "TPSStandardError": 0.37359249010406564,
+        "DTPS": 498.1790199103424,
+        "DTPSStandardError": 0.2688069521758797,
+        "TMI": 50.784460014241034,
+        "TMIStandardError": 0.03284510645891436,
+        "DPS": 370.68390813517203,
+        "DPSStandardError": 0.20539689574289324,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          814.5872935169186
+          814.7014851499465
         ],
-        "LeastTargetTPS": 814.5872935169186
+        "LeastTargetTPS": 814.7014851499465
       },
       "Multi": {
-        "TPS": 1052.748498893796,
-        "TPSStandardError": 0.778012995172634,
-        "DTPS": 771.8657098803659,
-        "DTPSStandardError": 0.48990292173110883,
-        "TMI": 71.24948939245519,
-        "TMIStandardError": 0.04974451621375992,
-        "DPS": 465.2281820311806,
-        "DPSStandardError": 0.4445136567553674,
+        "TPS": 1050.6995502311836,
+        "TPSStandardError": 0.7746264916955681,
+        "DTPS": 771.2785399447055,
+        "DTPSStandardError": 0.4845166442338891,
+        "TMI": 71.23752050454902,
+        "TMIStandardError": 0.050736755835646116,
+        "DPS": 464.0004703291691,
+        "DPSStandardError": 0.4452834748949253,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          802.1007562745515,
-          190.47986405721127,
-          60.16787856203415
+          800.8583737321035,
+          189.66283183328468,
+          60.178344665800196
         ],
-        "LeastTargetTPS": 60.16787856203415
+        "LeastTargetTPS": 60.178344665800196
       }
     },
     {
@@ -465,38 +465,38 @@
       "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
       "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 805.4134336750801,
-        "TPSStandardError": 0.3693839441831198,
-        "DTPS": 482.8888628413273,
-        "DTPSStandardError": 0.274262349006186,
-        "TMI": 50.245842543773044,
-        "TMIStandardError": 0.033989492627365135,
-        "DPS": 365.04454830626844,
-        "DPSStandardError": 0.20430542137311045,
+        "TPS": 805.2648194053727,
+        "TPSStandardError": 0.36579496611383283,
+        "DTPS": 483.36374967356244,
+        "DTPSStandardError": 0.27307229595172683,
+        "TMI": 50.24342010415468,
+        "TMIStandardError": 0.033375131403806615,
+        "DPS": 364.9743825501639,
+        "DPSStandardError": 0.20240158200624264,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          805.4134336750797
+          805.26481940537
         ],
-        "LeastTargetTPS": 805.4134336750797
+        "LeastTargetTPS": 805.26481940537
       },
       "Multi": {
-        "TPS": 1045.9414348338082,
-        "TPSStandardError": 0.7665995834860951,
-        "DTPS": 749.2060697337773,
-        "DTPSStandardError": 0.4982025209658996,
-        "TMI": 70.23326407117835,
-        "TMIStandardError": 0.052434182499972545,
-        "DPS": 459.8361065574326,
-        "DPSStandardError": 0.4398565635705604,
+        "TPS": 1046.1053234432243,
+        "TPSStandardError": 0.7609914675110162,
+        "DTPS": 748.8504322946234,
+        "DTPSStandardError": 0.5001878168543323,
+        "TMI": 70.09876065934526,
+        "TMIStandardError": 0.05177544011735498,
+        "DPS": 459.8164702777999,
+        "DPSStandardError": 0.43714299458924255,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          794.8855192244836,
-          190.28760926034943,
-          60.768306348978385
+          795.4850972737279,
+          189.88596781251658,
+          60.7342583569814
         ],
-        "LeastTargetTPS": 60.768306348978385
+        "LeastTargetTPS": 60.7342583569814
       }
     },
     {
@@ -505,38 +505,38 @@
       "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
       "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 842.9865303616359,
-        "TPSStandardError": 0.3859587822689925,
-        "DTPS": 502.5970146273296,
-        "DTPSStandardError": 0.27034057964627056,
-        "TMI": 51.177917345532464,
-        "TMIStandardError": 0.03290797896624586,
-        "DPS": 365.792257028167,
-        "DPSStandardError": 0.2036401632257115,
+        "TPS": 843.3987593345735,
+        "TPSStandardError": 0.384219985028199,
+        "DTPS": 503.1503012024318,
+        "DTPSStandardError": 0.26912269508300757,
+        "TMI": 51.21903478041789,
+        "TMIStandardError": 0.03328773658467454,
+        "DPS": 366.01115224762975,
+        "DPSStandardError": 0.20329265512868497,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          842.9865303616357
+          843.3987593345726
         ],
-        "LeastTargetTPS": 842.9865303616357
+        "LeastTargetTPS": 843.3987593345726
       },
       "Multi": {
-        "TPS": 1085.3166900876558,
-        "TPSStandardError": 0.7991057438816206,
-        "DTPS": 778.7787090121849,
-        "DTPSStandardError": 0.4895188503279104,
-        "TMI": 71.91577489304963,
-        "TMIStandardError": 0.05012265425499943,
-        "DPS": 458.31670464965555,
-        "DPSStandardError": 0.4370890407587336,
+        "TPS": 1085.229507218734,
+        "TPSStandardError": 0.8041182438999817,
+        "DTPS": 778.5711361650683,
+        "DTPSStandardError": 0.49047728761369236,
+        "TMI": 71.88566213047051,
+        "TMIStandardError": 0.05044231154502811,
+        "DPS": 458.2462558788463,
+        "DPSStandardError": 0.4421746676629054,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          828.4367583000635,
-          194.96567532216827,
-          61.91425646542299
+          828.6942088740157,
+          194.6361162589307,
+          61.8991820857861
         ],
-        "LeastTargetTPS": 61.91425646542299
+        "LeastTargetTPS": 61.8991820857861
       }
     },
     {
@@ -545,38 +545,38 @@
       "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
       "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 844.5684627751853,
-        "TPSStandardError": 0.39061106864508877,
-        "DTPS": 482.66491727671576,
-        "DTPSStandardError": 0.27605782156486797,
-        "TMI": 46.98059237184185,
-        "TMIStandardError": 0.030633475227790394,
-        "DPS": 367.76021349204836,
-        "DPSStandardError": 0.20714813586110362,
+        "TPS": 844.5956440436757,
+        "TPSStandardError": 0.3903720977191227,
+        "DTPS": 483.404857066482,
+        "DTPSStandardError": 0.27198565030921196,
+        "TMI": 47.05468775971983,
+        "TMIStandardError": 0.03111391185051686,
+        "DPS": 367.87080613436797,
+        "DPSStandardError": 0.20764775065466506,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          844.5684627751867
+          844.5956440436748
         ],
-        "LeastTargetTPS": 844.5684627751867
+        "LeastTargetTPS": 844.5956440436748
       },
       "Multi": {
-        "TPS": 1091.7772641067563,
-        "TPSStandardError": 0.8088820417411775,
-        "DTPS": 752.9548739803765,
-        "DTPSStandardError": 0.4872783034930858,
-        "TMI": 66.29479341586304,
-        "TMIStandardError": 0.04784707045093729,
-        "DPS": 461.5968814126114,
-        "DPSStandardError": 0.44445669231230095,
+        "TPS": 1091.1773243354,
+        "TPSStandardError": 0.799802908557509,
+        "DTPS": 752.5589694284648,
+        "DTPSStandardError": 0.48952172813033806,
+        "TMI": 66.17085066589027,
+        "TMIStandardError": 0.048348486341546405,
+        "DPS": 461.46847708043066,
+        "DPSStandardError": 0.44129252724837303,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          833.4547889216029,
-          196.00536119805804,
-          62.31711398709493
+          832.8685648350249,
+          196.04940926107741,
+          62.259350239299756
         ],
-        "LeastTargetTPS": 62.31711398709493
+        "LeastTargetTPS": 62.259350239299756
       }
     },
     {
@@ -585,38 +585,38 @@
       "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
       "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 840.74793120176,
-        "TPSStandardError": 0.38107133772109447,
-        "DTPS": 497.1154832960784,
-        "DTPSStandardError": 0.27187760115664933,
-        "TMI": 50.637850813354596,
-        "TMIStandardError": 0.03292889871646911,
-        "DPS": 364.8657361822251,
-        "DPSStandardError": 0.20273096747347488,
+        "TPS": 840.2696107070892,
+        "TPSStandardError": 0.3843387623601836,
+        "DTPS": 497.66645627043306,
+        "DTPSStandardError": 0.27229238627366675,
+        "TMI": 50.661669444636786,
+        "TMIStandardError": 0.0327546975273301,
+        "DPS": 364.6034066860195,
+        "DPSStandardError": 0.20309192076539948,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          840.7479312017578
+          840.269610707089
         ],
-        "LeastTargetTPS": 840.7479312017578
+        "LeastTargetTPS": 840.269610707089
       },
       "Multi": {
-        "TPS": 1085.7753093686606,
-        "TPSStandardError": 0.8043303626844733,
-        "DTPS": 770.718918556389,
-        "DTPSStandardError": 0.4952766019814984,
-        "TMI": 71.05631611272746,
-        "TMIStandardError": 0.050703634421232914,
-        "DPS": 458.3633120899849,
-        "DPSStandardError": 0.4401220013210259,
+        "TPS": 1083.0059654296192,
+        "TPSStandardError": 0.7900526057655816,
+        "DTPS": 769.6484072962248,
+        "DTPSStandardError": 0.4889866636545759,
+        "TMI": 71.00579213641865,
+        "TMIStandardError": 0.0508576960991112,
+        "DPS": 456.79901525298493,
+        "DPSStandardError": 0.4343171414749393,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          828.8741317635844,
-          195.24462839735372,
-          61.65654920772079
+          826.953404054967,
+          194.4100420213549,
+          61.64251935329837
         ],
-        "LeastTargetTPS": 61.65654920772079
+        "LeastTargetTPS": 61.64251935329837
       }
     },
     {
@@ -625,38 +625,38 @@
       "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
       "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 826.4894915344955,
-        "TPSStandardError": 0.38194930827167267,
-        "DTPS": 486.557397466712,
-        "DTPSStandardError": 0.2726836021591855,
-        "TMI": 50.252272929081855,
-        "TMIStandardError": 0.033959357599811966,
-        "DPS": 379.69949646961004,
-        "DPSStandardError": 0.21390175060873537,
+        "TPS": 826.2496842730861,
+        "TPSStandardError": 0.3762064630564642,
+        "DTPS": 486.88206257307945,
+        "DTPSStandardError": 0.27220780570098196,
+        "TMI": 50.28210698217809,
+        "TMIStandardError": 0.03406419376360405,
+        "DPS": 379.55601344867347,
+        "DPSStandardError": 0.21007868449613704,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          826.4894915344942
+          826.2496842730856
         ],
-        "LeastTargetTPS": 826.4894915344942
+        "LeastTargetTPS": 826.2496842730856
       },
       "Multi": {
-        "TPS": 1082.2517457143072,
-        "TPSStandardError": 0.8000848286459511,
-        "DTPS": 754.8859760447873,
-        "DTPSStandardError": 0.4930305601994486,
-        "TMI": 70.3307011455785,
-        "TMIStandardError": 0.051436213111080265,
-        "DPS": 485.5149682938529,
-        "DPSStandardError": 0.46450500309505766,
+        "TPS": 1079.6049255314224,
+        "TPSStandardError": 0.7995804294961346,
+        "DTPS": 754.5862705072277,
+        "DTPSStandardError": 0.4944810378139124,
+        "TMI": 70.30328770614769,
+        "TMIStandardError": 0.0515037757010172,
+        "DPS": 484.3047537549613,
+        "DPSStandardError": 0.4640121435067386,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          818.9388995257525,
-          198.52778092972517,
-          64.78506525882992
+          816.4603482650538,
+          198.35411247348273,
+          64.79046479288586
         ],
-        "LeastTargetTPS": 64.78506525882992
+        "LeastTargetTPS": 64.79046479288586
       }
     },
     {
@@ -665,38 +665,38 @@
       "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
       "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 807.8286433623563,
-        "TPSStandardError": 0.3710408273193749,
-        "DTPS": 493.65082529123157,
-        "DTPSStandardError": 0.2709884378733233,
-        "TMI": 50.74246283469086,
-        "TMIStandardError": 0.033150739077729904,
-        "DPS": 366.5594672711865,
-        "DPSStandardError": 0.2050182972103801,
+        "TPS": 807.4690792312249,
+        "TPSStandardError": 0.3697460268574054,
+        "DTPS": 493.47265945332316,
+        "DTPSStandardError": 0.2706629576094543,
+        "TMI": 50.81031718599051,
+        "TMIStandardError": 0.034234815575612795,
+        "DPS": 366.27421910175076,
+        "DPSStandardError": 0.20305595371907753,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          807.8286433623559
+          807.4690792312255
         ],
-        "LeastTargetTPS": 807.8286433623559
+        "LeastTargetTPS": 807.4690792312255
       },
       "Multi": {
-        "TPS": 1044.5785825211642,
-        "TPSStandardError": 0.765311848368635,
-        "DTPS": 764.1134464283175,
-        "DTPSStandardError": 0.49425773115448013,
-        "TMI": 71.10421756986182,
-        "TMIStandardError": 0.05096033912836067,
-        "DPS": 459.665907557519,
-        "DPSStandardError": 0.43951471883472987,
+        "TPS": 1044.1642782084737,
+        "TPSStandardError": 0.7713853472379057,
+        "DTPS": 763.9586337303733,
+        "DTPSStandardError": 0.4899969502253942,
+        "TMI": 71.05296479194935,
+        "TMIStandardError": 0.050705954414224416,
+        "DPS": 459.7845069741521,
+        "DPSStandardError": 0.44167113767809224,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          795.7672685199445,
-          188.5022133884044,
-          60.30910061281726
+          795.4127800919368,
+          188.48183487387337,
+          60.26966324266131
         ],
-        "LeastTargetTPS": 60.30910061281726
+        "LeastTargetTPS": 60.26966324266131
       }
     }
   ],
@@ -704,6 +704,9 @@
   "limitations": [
     "Deaths do not stop iteration damage accounting; DPS is not discounted for modeled death downtime.",
     "These are simulator checks under fixed assumed healing and incoming damage, not in-game survival verification.",
-    "Earlier overlapping-seed selection results and incompatible controls remain historical, not current confidence evidence."
-  ]
+    "Earlier overlapping-seed selection results and incompatible controls remain historical, not current confidence evidence.",
+    "ProtectionPaladin gear spends some allowed defensive tolerance: TMI rises slightly; no survivability improvement is claimed.",
+    "artifacts/tanks/summary.json and the original selected-control/search packets are historical engine/support phases, not current optimized controls."
+  ],
+  "selectionEvidence": "artifacts/correctness/october_8/tank-paladin-gear-refresh.json.gz"
 }

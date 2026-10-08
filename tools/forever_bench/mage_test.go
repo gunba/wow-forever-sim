@@ -77,6 +77,23 @@ func mageSpellFixture(pointsByName map[string]int) *proto.RaidSimRequest {
 	return req
 }
 
+func TestForeverIceLanceProvisionalSpellPower(t *testing.T) {
+	// This guards the selected model, not the unmeasured level-60 server slope.
+	req := mageSpellFixture(map[string]int{"iceLance": 1})
+	sim := core.NewSim(req, simsignals.Signals{})
+	unit, target := sim.Raid.AllPlayerUnits[0], sim.Encounter.TargetUnits[0]
+	spell := unit.GetSpell(core.ActionID{SpellID: 30455})
+	if spell == nil || spell.BonusCoefficient != .10 || spell.Cost.BaseCost != 160 {
+		t.Fatal("incorrect provisional Ice Lance registration")
+	}
+	before := spell.CalcDamage(sim, target, 136, spell.OutcomeAlwaysHit).Damage
+	unit.AddStatDynamic(sim, stats.SpellPower, 100)
+	after := spell.CalcDamage(sim, target, 136, spell.OutcomeAlwaysHit).Damage
+	if math.Abs(after-before-10) > 1e-7 {
+		t.Fatalf("Ice Lance 100 SP increment = %v, want 10", after-before)
+	}
+}
+
 func TestForeverFrostfireBolt(t *testing.T) {
 	req := mageSpellFixture(nil)
 	sim := core.NewSim(req, simsignals.Signals{})
@@ -143,10 +160,10 @@ func TestForeverFrostfireTalents(t *testing.T) {
 	}
 	trigger := unit.GetAura("Missile Barrage Trigger")
 	for i := 0; i < 100 && !unit.GetAura("Missile Barrage").IsActive(); i++ {
-		trigger.OnCastComplete(trigger, sim, spell)
+		trigger.OnSpellHitDealt(trigger, sim, spell, &core.SpellResult{Target: sim.Encounter.TargetUnits[0], Outcome: core.OutcomeHit})
 	}
 	if !unit.GetAura("Missile Barrage").IsActive() {
-		t.Fatal("Frostfire casts did not trigger Missile Barrage")
+		t.Fatal("landed Frostfire hits did not trigger Missile Barrage")
 	}
 }
 

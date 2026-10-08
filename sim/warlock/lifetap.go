@@ -33,9 +33,13 @@ func (warlock *Warlock) getLifeTapBaseConfig(rank int) core.SpellConfig {
 	tierManaMultiplier := core.TernaryFloat64(warlock.HasSetBonus(ItemSetDemonheartRaiment, 5), 1.2, 1)
 
 	manaMetrics := warlock.NewManaMetrics(actionID)
+	// All six Forever ranks have Attributes_1 NO_THREAT (0x400),
+	// including mana passed to a demon through Demonic Energies.
+	manaMetrics.NoThreat = warlock.Env.IsForever()
 	petManaMetrics := make(map[*WarlockPet]*core.ResourceMetrics)
 	for _, pet := range warlock.BasePets {
 		petManaMetrics[pet] = pet.NewManaMetrics(actionID)
+		petManaMetrics[pet].NoThreat = warlock.Env.IsForever()
 	}
 
 	config := core.SpellConfig{

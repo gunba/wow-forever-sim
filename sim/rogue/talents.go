@@ -118,7 +118,13 @@ func (rogue *Rogue) registerColdBloodCD() {
 			}
 		},
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if spell.Flags.Matches(SpellFlagColdBlooded) {
+			if spell.Flags.Matches(SpellFlagColdBlooded) && spell != rogue.mutilateMH && spell != rogue.mutilateOH {
+				aura.Deactivate(sim)
+			}
+		},
+		OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
+			// Both triggered strikes use the crit bonus before the ability spends it.
+			if spell == rogue.Mutilate {
 				aura.Deactivate(sim)
 			}
 		},
@@ -174,9 +180,13 @@ func (rogue *Rogue) applySealFate() {
 				return
 			}
 
-			if icd.IsReady(sim) && sim.Proc(procChance, "Seal Fate") {
+			if !icd.IsReady(sim) {
+				return
+			}
+			// A failed roll also uses this cast's attempt; Mutilate's other hand must not reroll it.
+			icd.Use(sim)
+			if sim.Proc(procChance, "Seal Fate") {
 				rogue.AddComboPoints(sim, 1, result.Target, cpMetrics)
-				icd.Use(sim)
 			}
 		},
 	})

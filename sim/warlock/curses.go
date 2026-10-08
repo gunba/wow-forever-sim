@@ -365,16 +365,68 @@ func (warlock *Warlock) registerBaneOfHavocSpell() {
 	}
 
 	actionID := core.ActionID{SpellID: 80240}
+	var activeHavoc *core.Aura
 
 	warlock.BaneOfHavocAuras = warlock.NewEnemyAuraArray(func(unit *core.Unit) *core.Aura {
 		return unit.RegisterAura(core.Aura{
 			Label:    "Bane of Havoc-" + warlock.Label,
 			ActionID: actionID,
 			Duration: time.Minute * 5,
+			OnGain: func(aura *core.Aura, _ *core.Simulation) {
+				activeHavoc = aura
+			},
+			OnExpire: func(aura *core.Aura, _ *core.Simulation) {
+				if activeHavoc == aura {
+					activeHavoc = nil
+				}
+				if warlock.ActiveBaneAura.Get(aura.Unit) == aura {
+					warlock.ActiveBaneAura[aura.Unit.UnitIndex] = nil
+				}
+			},
 		})
 	})
 
-	// Only marks the target for now, the 15% damage copy needs a second target to matter
+	// Client 1.60.1.70245: 1225228 copies 15% of the owner's damage to other
+	// targets. Driver 1243338 (proc mask 332116, including periodic and weapon
+	// damage) can proc from procs. Child 1243339 is Shadow and cannot crit.
+	copySpell := warlock.RegisterSpell(core.SpellConfig{
+		ActionID:    core.ActionID{SpellID: 1243339},
+		SpellSchool: core.SpellSchoolShadow,
+		ProcMask:    core.ProcMaskEmpty,
+		Flags:       core.SpellFlagPassiveSpell | core.SpellFlagNoOnCastComplete | core.SpellFlagNoOnDamageDealt,
+
+		DamageMultiplier: 1,
+		// No separate threat rule is sourced; retain ordinary owned spell damage threat.
+		ThreatMultiplier: 1,
+	})
+	copyDamage := func(_ *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+		if !activeHavoc.IsActive() || spell == copySpell || spell.Unit != &warlock.Unit ||
+			spell.Flags.Matches(core.SpellFlagHelpful) || result.Target.Type != core.EnemyUnit ||
+			result.Target == activeHavoc.Unit || !result.Landed() || result.Damage <= 0 {
+			return
+		}
+
+		// The callback receives damage after mitigation and absorption. Deliver
+		// its share without another outcome, resistance or attacker/target pass
+		// (including dynamic target modifiers); it is not a new proc opportunity.
+		copied := copySpell.NewResult(activeHavoc.Unit)
+		copied.Damage = result.Damage * 0.15
+		copied.PreOutcomeDamage = copied.Damage
+		copied.ResistanceMultiplier = 1
+		copySpell.OutcomeAlwaysHit(sim, copied, nil)
+		copied.Threat = copySpell.ThreatFromDamage(copied.Outcome, copied.Damage)
+		copySpell.DealDamage(sim, copied)
+	}
+	core.MakePermanent(warlock.RegisterAura(core.Aura{
+		Label:    "Bane of Havoc - Copy",
+		ActionID: core.ActionID{SpellID: 1243338},
+		OnReset: func(_ *core.Aura, _ *core.Simulation) {
+			activeHavoc = nil
+		},
+		OnSpellHitDealt:       copyDamage,
+		OnPeriodicDamageDealt: copyDamage,
+	}))
+
 	warlock.BaneOfHavoc = warlock.RegisterSpell(core.SpellConfig{
 		ActionID:    actionID,
 		SpellSchool: core.SpellSchoolShadow,
@@ -395,6 +447,9 @@ func (warlock *Warlock) registerBaneOfHavocSpell() {
 			result := spell.CalcOutcome(sim, target, spell.OutcomeMagicHitNoHitCounter)
 			if result.Landed() {
 				aura := warlock.BaneOfHavocAuras.Get(target)
+				if activeHavoc != nil && activeHavoc != aura {
+					activeHavoc.Deactivate(sim)
+				}
 				if activeBane := warlock.ActiveBaneAura.Get(target); activeBane != nil && activeBane != aura {
 					activeBane.Deactivate(sim)
 				}

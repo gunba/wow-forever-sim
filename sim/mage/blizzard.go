@@ -107,6 +107,7 @@ func (mage *Mage) newBlizzardSpellConfig(rank int) core.SpellConfig {
 		ThreatMultiplier: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+			mage.rollBlizzardArcaneConcentration(sim, spell)
 			spell.AOEDot().Apply(sim)
 		},
 	}
