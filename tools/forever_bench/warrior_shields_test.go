@@ -38,7 +38,8 @@ func TestWarriorShieldTalentsFollowEquipment(t *testing.T) {
 		for i := range p.Equipment.Items {
 			p.Equipment.Items[i] = &proto.ItemSpec{}
 		}
-		p.Equipment.Items[14] = &proto.ItemSpec{Id: 279261}
+		// Greenhammer is unique-equipped; use a distinct legal one-hand main hand.
+		p.Equipment.Items[14] = &proto.ItemSpec{Id: 920000337}
 		equipped, swapped := int32(279261), int32(279262)
 		if startShield {
 			equipped, swapped = swapped, equipped

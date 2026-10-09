@@ -899,23 +899,37 @@
         },
         {
           "id": "predatory-instincts",
-          "name": "Predatory Instincts",
+          "name": "Natural Instinct",
           "row": 4,
           "col": 0,
           "maxRank": 2,
           "icon": "ability_druid_predatoryinstincts",
           "iconSource": "classic",
-          "description": "Increases the critical strike damage bonus of your melee abilities by {0}%.",
-          "ranks": [[10], [20]],
-          "ranksObserved": [1],
-          "ranksSource": "classic-prior",
+          "description": "Increases the critical strike damage bonus of your melee abilities by {0}% and spell healing by {1}% of your Intellect.",
+          "ranks": [
+            [
+              10,
+              12
+            ],
+            [
+              20,
+              25
+            ]
+          ],
+          "ranksObserved": [
+            1
+          ],
+          "ranksSource": "manual",
           "ranksPrior": {
             "classicTalentId": 662,
-            "classicSpellIds": [16493, 16494],
+            "classicSpellIds": [
+              16493,
+              16494
+            ],
             "match": "description",
             "similarity": 0.96
           },
-          "ranksNote": "Classic warrior/arms/Impale (talent 662) (cross-class), matched on description (0.96): Classic 10/20 is proportional; Forever rank 1 is 10: scaled proportionally (10 x rank).",
+          "ranksNote": "Current presentation is a manually applied 1.60.1.70291 primary-client/official overlay; original observation/prior values remain in priorPresentation and source.",
           "source": {
             "kind": "video",
             "video": "DxtVEhjyROU",
@@ -925,6 +939,41 @@
             "confidence": 1.0,
             "reader": "Qwen3VL-4B-Instruct-Q4_K_M+tooltip-v3",
             "reviewed": false
+          },
+          "priorPresentation": {
+            "name": "Predatory Instincts",
+            "description": "Increases the critical strike damage bonus of your melee abilities by {0}%.",
+            "ranks": [
+              [
+                10
+              ],
+              [
+                20
+              ]
+            ],
+            "ranksSource": "classic-prior",
+            "ranksNote": "Classic warrior/arms/Impale (talent 662) (cross-class), matched on description (0.96): Classic 10/20 is proportional; Forever rank 1 is 10: scaled proportionally (10 x rank)."
+          },
+          "currentEvidenceOverlay": {
+            "build": "1.60.1.70291",
+            "authority": "Current source UI with pinned client DB2/official overlay, not a replacement video observation",
+            "sourceRows": {
+              "traitDefinition": 134411,
+              "curves": [
+                85354,
+                125352
+              ],
+              "spellId": 1223242
+            },
+            "engineCoverage": {
+              "status": "implemented",
+              "scope": "Melee critical damage10/20% and Intellect-to-HealingPower12/25%; legacy predatoryInstincts identity remains."
+            },
+            "sourceUrls": [
+              "https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.70291",
+              "https://wago.tools/db2/SpellEffect?build=1.60.1.70291",
+              "https://us.forums.blizzard.com/en/wow/t/2360696/5"
+            ]
           }
         },
         {

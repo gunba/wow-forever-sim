@@ -697,9 +697,25 @@ func (aa *AutoAttacks) reset(sim *Simulation) {
 	}
 }
 
-func (aa *AutoAttacks) startPull(sim *Simulation) {
+func (aa *AutoAttacks) deferAutosWhileStunned() bool {
+	unit := aa.mh.unit
+	if unit == nil {
+		unit = aa.ranged.unit
+	}
+	if unit == nil || !unit.PseudoStats.Stunned {
+		return false
+	}
+	if unit.stunCount > 0 {
+		unit.stunResumeAutos = true
+	}
+	return true
+}
 
+func (aa *AutoAttacks) startPull(sim *Simulation) {
 	if !aa.AutoSwingMelee && !aa.AutoSwingRanged {
+		return
+	}
+	if aa.deferAutosWhileStunned() {
 		return
 	}
 
@@ -749,6 +765,9 @@ func (aa *AutoAttacks) CancelAutoSwing(sim *Simulation) {
 // Re-enables the auto swing action for the iteration
 func (aa *AutoAttacks) EnableAutoSwing(sim *Simulation) {
 	if !aa.AutoSwingMelee && !aa.AutoSwingRanged {
+		return
+	}
+	if aa.deferAutosWhileStunned() {
 		return
 	}
 

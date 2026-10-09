@@ -30,9 +30,9 @@
 	"403": {
 		"ability": "Lightning Bolt",
 		"file": "sim/shaman/lightning_bolt.go",
-		"note": "Rank 1. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Spell power coefficient 0.429; Classic Era had 0.123, a 3 sec cast from rank 4 up and about twice the damage at the upper ranks.",
 		"source": "forever",
-		"tooltip": "15 Mana\n30 yd range\n1.5 sec cast\nCasts a bolt of lightning at the target for 15 to 17 Nature damage."
+		"tooltip": "Lightning Bolt Rank 1\n15 Mana before talent/other cost modifiers\nLevel60 source-model base: 14.428571 to 16.571429 Nature damage (+0.429 SP).",
+		"note": "Client1.60.1.70291 SpellEffect 678918, SpellLevels: BP=15, variance=0.142857, PPL=0.1, learn=1, growth cap=6. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"421": {
 		"ability": "Chain Lightning",
@@ -44,16 +44,16 @@
 	"529": {
 		"ability": "Lightning Bolt",
 		"file": "sim/shaman/lightning_bolt.go",
-		"note": "Rank 2. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Spell power coefficient 0.571; Classic Era had 0.314, a 3 sec cast from rank 4 up and about twice the damage at the upper ranks.",
 		"source": "forever",
-		"tooltip": "30 Mana\n30 yd range\n2 sec cast\nCasts a bolt of lightning at the target for 29 to 34 Nature damage."
+		"tooltip": "Lightning Bolt Rank 2\n30 Mana before talent/other cost modifiers\nLevel60 source-model base: 25.571428 to 29.428572 Nature damage (+0.571 SP).",
+		"note": "Client1.60.1.70291 SpellEffect 679369, SpellLevels: BP=27, variance=0.142857, PPL=0.1, learn=8, growth cap=13. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"548": {
 		"ability": "Lightning Bolt",
 		"file": "sim/shaman/lightning_bolt.go",
-		"note": "Rank 3. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Spell power coefficient 0.714; Classic Era had 0.554, a 3 sec cast from rank 4 up and about twice the damage at the upper ranks.",
 		"source": "forever",
-		"tooltip": "45 Mana\n30 yd range\n2.5 sec cast\nCasts a bolt of lightning at the target for 44 to 52 Nature damage."
+		"tooltip": "Lightning Bolt Rank 3\n45 Mana before talent/other cost modifiers\nLevel60 source-model base: 42.826531 to 50.173469 Nature damage (+0.714 SP).",
+		"note": "Client1.60.1.70291 SpellEffect 679030, SpellLevels: BP=45, variance=0.163265, PPL=0.3, learn=14, growth cap=19. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"905": {
 		"ability": "Lightning Shield",
@@ -65,9 +65,9 @@
 	"915": {
 		"ability": "Lightning Bolt",
 		"file": "sim/shaman/lightning_bolt.go",
-		"note": "Rank 4. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Spell power coefficient 0.714; Classic Era had 0.857, a 3 sec cast from rank 4 up and about twice the damage at the upper ranks.",
 		"source": "forever",
-		"tooltip": "60 Mana\n30 yd range\n2.5 sec cast\nCasts a bolt of lightning at the target for 55 to 63 Nature damage."
+		"tooltip": "Lightning Bolt Rank 4\n60 Mana before talent/other cost modifiers\nLevel60 source-model base: 58.887641 to 67.11236 Nature damage (+0.714 SP).",
+		"note": "Client1.60.1.70291 SpellEffect 679313, SpellLevels: BP=61, variance=0.134831, PPL=0.4, learn=20, growth cap=25. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"930": {
 		"ability": "Chain Lightning",
@@ -79,9 +79,9 @@
 	"943": {
 		"ability": "Lightning Bolt",
 		"file": "sim/shaman/lightning_bolt.go",
-		"note": "Rank 5. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Spell power coefficient 0.714; Classic Era had 0.857, a 3 sec cast from rank 4 up and about twice the damage at the upper ranks.",
 		"source": "forever",
-		"tooltip": "85 Mana\n30 yd range\n2.5 sec cast\nCasts a bolt of lightning at the target for 70 to 81 Nature damage."
+		"tooltip": "Lightning Bolt Rank 5\n85 Mana before talent/other cost modifiers\nLevel60 source-model base: 78.992537 to 90.007463 Nature damage (+0.714 SP).",
+		"note": "Client1.60.1.70291 SpellEffect 679378, SpellLevels: BP=82, variance=0.134328, PPL=0.5, learn=26, growth cap=31. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"945": {
 		"ability": "Lightning Shield",

@@ -138,9 +138,18 @@ type Spell struct {
 	CurCast    Cast
 	LastCastAt time.Duration
 
-	BonusHitRating     float64
-	BonusCritRating    float64
-	CastTimeMultiplier float64
+	BonusHitRating  float64
+	BonusCritRating float64
+	// Only applied to direct damage/healing (including explicit source-backed
+	// channel-child aliases), never ordinary DoT/HoT or outcome-only containers.
+	BonusDirectCritRating float64
+	// Called once at a direct outcome sample that actually consulted the bonus.
+	ConsumeDirectCritBonus func(*Simulation)
+	// Source-backed channel child represented by this spell's periodic tick.
+	// Only Revelation uses this alias; ordinary DoT/HoT results remain periodic.
+	RevelationPeriodicDirectChildID int32
+	directCritResult                *SpellResult
+	CastTimeMultiplier              float64
 
 	BaseDamageMultiplierAdditive     float64 // Applies an additive multiplier to spell base damage
 	DamageMultiplier                 float64 // Applies a multiplicative multiplier to full spell damage
@@ -512,6 +521,10 @@ func (spell *Spell) CanCast(sim *Simulation, target *Unit) bool {
 		return false
 	}
 
+	if spell.blockedByStun() {
+		return false
+	}
+
 	if spell.ExtraCastCondition != nil && !spell.ExtraCastCondition(sim, target) {
 		//if sim.Log != nil {
 		//	sim.Log("Cant cast because of extra condition")
@@ -570,7 +583,16 @@ func (spell *Spell) CanCast(sim *Simulation, target *Unit) bool {
 	return true
 }
 
+func (spell *Spell) blockedByStun() bool {
+	return spell.Unit.PseudoStats.Stunned && !spell.Flags.Matches(SpellFlagPassiveSpell) &&
+		(spell.DefaultCast.GCD > 0 || spell.DefaultCast.CastTime > 0 ||
+			spell.Flags.Matches(SpellFlagAPL) || spell.ProcMask.Matches(ProcMaskWhiteHit))
+}
+
 func (spell *Spell) Cast(sim *Simulation, target *Unit) bool {
+	if spell.blockedByStun() {
+		return spell.castFailureHelper(sim, "stunned")
+	}
 	if target == nil {
 		target = spell.Unit.CurrentTarget
 	}

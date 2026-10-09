@@ -24,6 +24,14 @@ func (druid *Druid) registerDemoralizingRoarSpell() {
 		return core.DemoralizingRoarAura(target)
 	})
 
+	// The October 8 notes confirm nonzero per-target threat, but publish no
+	// amount. Preserve the existing Classic-derived rank convention as a
+	// provisional scenario; do not mistake it for a measured Forever value.
+	flatThreat := 2 * float64(DemoralizingRoarLevel[rank])
+	if druid.Env.IsForever() && druid.ForeverDemoralizingThreat != nil {
+		flatThreat = *druid.ForeverDemoralizingThreat
+	}
+
 	druid.DemoralizingRoar = druid.RegisterSpell(Bear, core.SpellConfig{
 		ActionID:    core.ActionID{SpellID: DemoralizingRoarSpellId[rank]},
 		SpellSchool: core.SpellSchoolPhysical,
@@ -44,7 +52,7 @@ func (druid *Druid) registerDemoralizingRoarSpell() {
 		},
 
 		ThreatMultiplier: 1,
-		FlatThreatBonus:  2 * float64(DemoralizingRoarLevel[rank]),
+		FlatThreatBonus:  flatThreat,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			for _, aoeTarget := range sim.Encounter.TargetUnits {

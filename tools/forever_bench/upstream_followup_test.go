@@ -193,8 +193,8 @@ func TestUpstreamPriestInnerFocusAndPenanceDiscount(t *testing.T) {
 	sim := upstreamFixSim("smite", map[string]int{"innerFocus": 1, "penance": 1, "mindFlay": 1, "improvedHealing": 3})
 	unit := sim.Raid.AllPlayerUnits[0]
 	penance := unit.GetSpell(core.ActionID{SpellID: 1316995})
-	if got := penance.Cost.GetCurrentCost(); math.Abs(got-355*.85) > 1e-9 {
-		t.Fatalf("Penance cost %v, want %v", got, 355*.85)
+	if got := penance.Cost.GetCurrentCost(); math.Abs(got-385*.85) > 1e-9 {
+		t.Fatalf("Penance cost %v, want %v", got, 385*.85)
 	}
 	aura := unit.GetAura("Inner Focus")
 	beforeCrit, beforeCost := map[*core.Spell]float64{}, map[*core.Spell]float64{}
@@ -261,8 +261,8 @@ func TestUpstreamTrueshotAndThorns(t *testing.T) {
 	unit.AddStatDynamic(sim, stats.SpellHit, 100)
 	spell := unit.GetSpell(core.ActionID{SpellID: 9910})
 	spell.Cast(sim, unit.CurrentTarget)
-	if got := spell.SpellMetrics[unit.CurrentTarget.UnitIndex].TotalDamage; math.Abs(got-22) > 1e-9 {
-		t.Fatalf("Thorns damage %v, want 22", got)
+	if got := spell.SpellMetrics[unit.CurrentTarget.UnitIndex].TotalDamage; math.Abs(got-18) > 1e-9 {
+		t.Fatalf("Thorns source base with external provider SP 0: %v, want 18", got)
 	}
 }
 

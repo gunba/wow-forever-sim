@@ -344,12 +344,24 @@
           "icon": "ability_searingarrow",
           "iconSource": "classic",
           "description": "Increases the critical strike damage bonus of your abilities by {0}%.",
-          "ranks": [[10], [20]],
-          "ranksObserved": [1],
+          "ranks": [
+            [
+              10
+            ],
+            [
+              20
+            ]
+          ],
+          "ranksObserved": [
+            1
+          ],
           "ranksSource": "classic-prior",
           "ranksPrior": {
             "classicTalentId": 662,
-            "classicSpellIds": [16493, 16494],
+            "classicSpellIds": [
+              16493,
+              16494
+            ],
             "match": "exact-name",
             "similarity": 1.0
           },
@@ -363,6 +375,42 @@
             "confidence": 1.0,
             "reader": "Qwen3VL-4B-Instruct-Q4_K_M+tooltip-v3",
             "reviewed": false
+          },
+          "priorPresentation": {
+            "name": "Impale",
+            "description": "Increases the critical strike damage bonus of your abilities by {0}%.",
+            "ranks": [
+              [
+                10
+              ],
+              [
+                20
+              ]
+            ],
+            "ranksSource": "classic-prior",
+            "ranksNote": "Classic warrior/arms/Impale (talent 662): ranks copied."
+          },
+          "requires": [
+            {
+              "talent": "deep-wounds",
+              "rank": 3
+            }
+          ],
+          "currentEvidenceOverlay": {
+            "build": "1.60.1.70291",
+            "authority": "Current source UI with pinned client DB2/official overlay, not a replacement video observation",
+            "sourceRows": {
+              "requiredTalent": "deep-wounds",
+              "requiredRank": 3
+            },
+            "engineCoverage": {
+              "status": "implemented",
+              "scope": "Requires all3 points in Deep Wounds. No layout, identity, ranks or saved-string ordering change."
+            },
+            "sourceUrls": [
+              "https://wago.tools/db2/SpellEffect?build=1.60.1.70291",
+              "https://us.forums.blizzard.com/en/wow/t/2360696/5"
+            ]
           }
         },
         {

@@ -285,7 +285,11 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 		thorns = partyTristate(thorns, partyBuffs.Thorns)
 	}
 	if thorns != proto.TristateEffect_TristateEffectMissing {
-		ThornsAura(character, GetTristateValueInt32(thorns, 0, 3))
+		source := ReflectionProvider{Reference: raidBuffs.ThornsProvider, SpellPower: raidBuffs.ThornsProviderSpellPower}
+		if partyBuffs != nil && partyBuffs.Thorns != proto.TristateEffect_TristateEffectMissing && partyBuffs.Thorns >= raidBuffs.Thorns {
+			source = ReflectionProvider{Reference: partyBuffs.ThornsProvider, SpellPower: partyBuffs.ThornsProviderSpellPower, PartyScoped: true}
+		}
+		ThornsAura(character, GetTristateValueInt32(thorns, 0, 3), source)
 	}
 
 	moonkinAura := raidBuffs.MoonkinAura || (partyBuffs != nil && partyBuffs.MoonkinAura)
@@ -391,7 +395,11 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 		retributionAura = partyTristate(retributionAura, partyBuffs.RetributionAura)
 	}
 	if retributionAura != proto.TristateEffect_TristateEffectMissing && canReceivePaladinBuffs {
-		RetributionAura(character, GetTristateValueInt32(retributionAura, 0, 2))
+		source := ReflectionProvider{Reference: raidBuffs.RetributionAuraProvider, SpellPower: raidBuffs.RetributionAuraProviderSpellPower}
+		if partyBuffs != nil && partyBuffs.RetributionAura != proto.TristateEffect_TristateEffectMissing && partyBuffs.RetributionAura >= raidBuffs.RetributionAura {
+			source = ReflectionProvider{Reference: partyBuffs.RetributionAuraProvider, SpellPower: partyBuffs.RetributionAuraProviderSpellPower, PartyScoped: true}
+		}
+		RetributionAura(character, GetTristateValueInt32(retributionAura, 0, 2), source)
 	}
 
 	battleShout := raidBuffs.BattleShout
@@ -709,16 +717,61 @@ func BloodPactAura(unit *Unit, label string) *Aura {
 	return aura
 }
 
-func RetributionAura(character *Character, points int32) *Aura {
-	baseDamage := 20.0
-	if character.Env != nil && character.Env.IsForever() {
-		// Rank-five effect 687971. Provider-SP scaling is a separate script question.
-		baseDamage = 30
+// ReflectionProvider makes caster identity explicit. An absent/Unknown reference
+// means declared external damage spell power, default0, never receiver stats.
+// Range is an assumption of buff selection, not inferred from target distance.
+type ReflectionProvider struct {
+	Reference   *proto.UnitReference
+	SpellPower  float64
+	PartyScoped bool
+}
+
+func reflectionSpellPower(character *Character, class proto.Class, school stats.Stat, sources []ReflectionProvider) (func() float64, bool) {
+	source := ReflectionProvider{}
+	if len(sources) > 0 {
+		source = sources[0]
 	}
+	if source.SpellPower < 0 || math.IsNaN(source.SpellPower) || math.IsInf(source.SpellPower, 0) {
+		panic("reflection external provider spell power must be finite and nonnegative")
+	}
+	if source.Reference == nil || source.Reference.Type == proto.UnitReference_Unknown {
+		return func() float64 { return source.SpellPower }, true
+	}
+	if source.Reference.Type != proto.UnitReference_Player && source.Reference.Type != proto.UnitReference_Self {
+		panic("reflection provider must reference a simulated player")
+	}
+	unit := character.GetUnit(source.Reference)
+	if unit == nil {
+		panic("reflection provider is missing")
+	}
+	agent := character.Env.Raid.GetPlayerFromUnit(unit)
+	if agent == nil || agent.GetCharacter().Class != class {
+		panic("reflection provider has the wrong class")
+	}
+	provider := agent.GetCharacter()
+	if source.PartyScoped && provider.Party != character.Party {
+		panic("party reflection provider must belong to the receiving party")
+	}
+	// Actual Retribution Aura targets the caster's party, including when
+	// configured through the legacy RaidBuffs field.
+	if class == proto.Class_ClassPaladin && provider.Party != character.Party {
+		return nil, false
+	}
+	return func() float64 {
+		return unit.GetStat(stats.SpellPower) + unit.GetStat(stats.SpellDamage) + unit.GetStat(school)
+	}, true
+}
 
+func RetributionAura(character *Character, points int32, sources ...ReflectionProvider) *Aura {
+	power := func() float64 { return 0 }
+	if character.Env != nil && character.Env.IsForever() {
+		var eligible bool
+		power, eligible = reflectionSpellPower(character, proto.Class_ClassPaladin, stats.HolyPower, sources)
+		if !eligible {
+			return nil
+		}
+	}
 	actionID := ActionID{SpellID: 10301}
-
-	damage := float64(baseDamage) * (1 + 0.25*float64(points))
 
 	procSpell := character.RegisterSpell(SpellConfig{
 		ActionID:    actionID,
@@ -730,7 +783,7 @@ func RetributionAura(character *Character, points int32) *Aura {
 		ThreatMultiplier: 1,
 
 		ApplyEffects: func(sim *Simulation, target *Unit, spell *Spell) {
-			spell.CalcAndDealDamage(sim, target, damage, spell.OutcomeMagicHit)
+			spell.CalcAndDealDamage(sim, target, (20+0.06*power())*(1+0.25*float64(points)), spell.OutcomeMagicHit)
 		},
 	})
 
@@ -749,15 +802,16 @@ func RetributionAura(character *Character, points int32) *Aura {
 	})
 }
 
-func ThornsAura(character *Character, points int32) *Aura {
-	baseDamage := 18.0
+func ThornsAura(character *Character, points int32, sources ...ReflectionProvider) *Aura {
+	power := func() float64 { return 0 }
 	if character.Env != nil && character.Env.IsForever() {
-		// SpellEffect 687684 (9910): 22, with no level or power coefficient.
-		baseDamage = 22
+		var eligible bool
+		power, eligible = reflectionSpellPower(character, proto.Class_ClassDruid, stats.NaturePower, sources)
+		if !eligible {
+			return nil
+		}
 	}
-
 	actionID := ActionID{SpellID: 9910}
-	damage := float64(baseDamage) * (1 + 0.25*float64(points))
 
 	procSpell := character.RegisterSpell(SpellConfig{
 		ActionID:    actionID,
@@ -769,7 +823,7 @@ func ThornsAura(character *Character, points int32) *Aura {
 		ThreatMultiplier: 1,
 
 		ApplyEffects: func(sim *Simulation, target *Unit, spell *Spell) {
-			spell.CalcAndDealDamage(sim, target, damage, spell.OutcomeMagicHit)
+			spell.CalcAndDealDamage(sim, target, (18+0.06*power())*(1+0.25*float64(points)), spell.OutcomeMagicHit)
 		},
 	})
 

@@ -15,6 +15,7 @@ import {
 	HealthElixir,
 	Potions,
 	Profession,
+	Race,
 	SpellPowerBuff,
 	StrengthBuff,
 	WeaponImbue,
@@ -62,10 +63,15 @@ export const DefaultAPL = APLPresets[ClassicPhase.Phase1][0];
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsProtection = PresetUtils.makePresetTalents('Protection 0/43/8', SavedTalents.create({ talentsString: '-5521513321301551-15002' }));
+export const TalentsProtection = PresetUtils.makePresetTalents('Protection 0/42/9', SavedTalents.create({ talentsString: '-5520513321301551-15102' }));
+
+// Race-specific selected recipes; full ranked profiles also retain exact gear and APL.
+export const TalentsProtectionUndead = PresetUtils.makePresetTalents('Protection · Undead', SavedTalents.create({ talentsString: '-5520513321301551-15102' }), { customCondition: player => player.getRace() === Race.RaceUndead });
+export const TalentsProtectionHuman = PresetUtils.makePresetTalents('Protection · Human', SavedTalents.create({ talentsString: '-5521513321301551-152' }), { customCondition: player => player.getRace() === Race.RaceHuman });
+export const TalentsProtectionDwarf = PresetUtils.makePresetTalents('Protection · Dwarf', SavedTalents.create({ talentsString: '-5520513321301551-15003' }), { customCondition: player => player.getRace() === Race.RaceDwarf });
 
 export const TalentPresets = {
-	[ClassicPhase.Phase1]: [TalentsProtection],
+	[ClassicPhase.Phase1]: [TalentsProtectionUndead, TalentsProtectionHuman, TalentsProtectionDwarf],
 };
 
 export const DefaultTalents = TalentPresets[ClassicPhase.Phase1][0];

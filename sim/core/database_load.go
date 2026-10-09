@@ -27,6 +27,8 @@ func init() {
 			Name:                item.Name,
 			Type:                item.Type,
 			ArmorType:           item.ArmorType,
+			Ilvl:                item.Ilvl,
+			Unique:              item.Unique,
 			WeaponType:          item.WeaponType,
 			HandType:            item.HandType,
 			RangedWeaponType:    item.RangedWeaponType,
@@ -43,8 +45,11 @@ func init() {
 
 	for i, enchant := range db.Enchants {
 		simDB.Enchants[i] = &proto.SimEnchant{
-			EffectId: enchant.EffectId,
-			Stats:    enchant.Stats,
+			EffectId:      enchant.EffectId,
+			Stats:         enchant.Stats,
+			RequiredLevel: enchant.RequiredLevel,
+			ItemLevelMin:  enchant.ItemLevelMin,
+			ArmorTypes:    enchant.ArmorTypes,
 		}
 	}
 

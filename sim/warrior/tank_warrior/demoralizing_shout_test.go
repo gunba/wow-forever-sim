@@ -33,8 +33,8 @@ func TestDemoralizingShoutThreatByRuleset(t *testing.T) {
 					t.Fatal("Demoralizing Shout was not cast")
 				}
 				threat := action.Targets[0].Threat
-				if ruleset == proto.Ruleset_RulesetForever && threat != 0 {
-					t.Fatalf("Forever Demoralizing Shout caused %.2f threat", threat)
+				if ruleset == proto.Ruleset_RulesetForever && threat <= 0 {
+					t.Fatalf("Forever Demoralizing Shout lost its provisional nonzero threat: %.2f", threat)
 				}
 				if ruleset == proto.Ruleset_RulesetClassic && threat <= 0 {
 					t.Fatalf("Classic Demoralizing Shout lost its threat: %.2f", threat)

@@ -1,0 +1,31 @@
+{
+  "baselineRevision": "e7d0c2a6856ac1a6c947490f2f72784ccf44b400",
+  "proof": "Private Go source overlay restoring exact previous runtime plus previous source gear/APL fixture restores all3 old tank golden suites; current golden outputs captured before overlay. No engine/guard/tolerance changes and no final-matrix rerun.",
+  "oldRestorationResults": [
+    "ok  \tgithub.com/wowsims/classic/sim/warrior/tank_warrior\t5.215s",
+    "ok  \tgithub.com/wowsims/classic/sim/paladin/protection\t7.822s",
+    "ok  \tgithub.com/wowsims/classic/sim/druid/tank\t2.418s"
+  ],
+  "causes": [
+    "70291 incoming Rage explicit normalization/outcome/absorb conventions and Bear critical Rage/threat changes",
+    "70291 reflection source bases/provider SP conventions, Reckoning1.5 gate and manaNoThreat corrections",
+    "Intentional source tank gear/APL default recipe migration already independent-selected and fresh-native guarded"
+  ],
+  "refreshed": [
+    {
+      "file": "sim/warrior/tank_warrior/TestP1TankWarrior.results",
+      "previousSHA256": "ac7964e9f85c803718935f56541c1b036d14dd4914cd967441f172468047102e",
+      "currentSHA256": "fc80484de734841cf40c622cb998684eb77f7e9c9fffa29e5c3b256caa18c165"
+    },
+    {
+      "file": "sim/paladin/protection/TestProtection.results",
+      "previousSHA256": "a3b93d324917ad2a5c4e322a8d76d6e5dd6beff08a799d5cb07f11df1c822651",
+      "currentSHA256": "c150787fa87b5c967f369356b92cbd818633591f3ef55d49539a3bac33ebcc96"
+    },
+    {
+      "file": "sim/druid/tank/TestP1FeralTank.results",
+      "previousSHA256": "17590b7d75d82fa443e4bde283dc547fe4f642e48b998363adc282c82244c07f",
+      "currentSHA256": "8ef5aabcfc0e373a29bf5224a3ccb891b514907d018a9581d42d500a50031614"
+    }
+  ]
+}

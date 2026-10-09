@@ -90,7 +90,7 @@ func optimizeTankGear(b build, initial *proto.Player) *proto.Player {
 	initialPair := runTankPair(b, p, *iterations, *seed)
 	report := gearSearchReport{
 		Build: b.Key, Race: raceName(p.Race), Baseline: initialPair.Single,
-		Excluded: excluded, TankGuardPolicy: &tankPolicy, TankControl: &anchor,
+		Excluded: excluded, ExcludedEnchants: excludedEnchantsForPlayer(p), TankGuardPolicy: &tankPolicy, TankControl: &anchor,
 	}
 	for _, item := range pool {
 		report.PoolIDs = append(report.PoolIDs, item.ID)

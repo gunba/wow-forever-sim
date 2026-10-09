@@ -62,6 +62,7 @@ def main():
             "hitAdjustment": row["Hit"], "unmodeledSetBonuses": row.get("UnmodeledSetBonuses") or [],
             "modeledGear": modeled,
             "caveats": BUILD_CAVEATS.get(row["Key"], []),
+            "provisionalModels": deepcopy(row.get("ProvisionalModels", {})),
             **({"tankMetrics": {key: value for key, value in row["Tank"].items()
                                 if key != "EncounterMetrics"}} if row.get("Tank") else {}),
         })

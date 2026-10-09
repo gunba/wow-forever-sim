@@ -17,9 +17,13 @@ func (warrior *Warrior) registerDemoralizingShoutSpell() {
 	threatMultiplier := 0.4
 	flatThreatBonus := 0.4 * 2 * float64(core.DemoralizingShoutLevel[rank])
 	if warrior.Env.IsForever() {
-		// Forever's tank guide says Demoralizing Shout no longer generates threat.
-		threatMultiplier = 0
-		flatThreatBonus = 0
+		// October 8 restores threat on every affected target, superseding the
+		// old guide's zero-threat behavior. Its amount is unpublished: retain
+		// this Classic-derived rank value only as an explicit provisional
+		// convention. An optional per-target override supports sensitivity.
+		if warrior.ForeverDemoralizingThreat != nil {
+			flatThreatBonus = *warrior.ForeverDemoralizingThreat
+		}
 	}
 
 	warrior.DemoralizingShout = warrior.RegisterSpell(AnyStance, core.SpellConfig{

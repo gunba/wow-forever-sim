@@ -465,8 +465,14 @@ func (hunter *Hunter) applyExposePrey() {
 		return
 	}
 
-	// Client curve 5/10%; the Mongoose Bite window (1310726) is 5 sec at both ranks.
+	// Client curve 5/10%; 70291's 1310726 lasts ten seconds independently
+	// of the ordinary five-second dodge state.
 	procChance := 0.05 * float64(hunter.Talents.ExposePrey)
+	hunter.ExposePreyState = hunter.RegisterAura(core.Aura{
+		Label:    "Expose Prey Opportunity",
+		ActionID: core.ActionID{SpellID: 1310726},
+		Duration: 10 * time.Second,
+	})
 
 	core.MakePermanent(hunter.RegisterAura(core.Aura{
 		Label: "Expose Prey",
@@ -478,7 +484,7 @@ func (hunter *Hunter) applyExposePrey() {
 				return
 			}
 			if sim.Proc(procChance, "Expose Prey") {
-				hunter.DefensiveState.Activate(sim)
+				hunter.ExposePreyState.Activate(sim)
 			}
 		},
 	}))

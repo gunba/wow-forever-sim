@@ -243,12 +243,16 @@
 	"14267": {
 		"ability": "Wing Clip",
 		"file": "sim/hunter/wing_clip.go",
-		"source": "classic"
+		"source": "forever",
+		"tooltip": "Wing Clip\nHighest learned rank retains its physical hit/damage and slows eligible targets55% for10sec. Improved Wing Clip can root5sec at7/13/20%.",
+		"note": "Current source slow/root metadata. Only the highest trained rank is registered for the active level; this table also preserves other supported level/Classic branches. Source19229 has NO diminishing-returns mask. Unspecified lower-rank proc penalty is not modeled; no new downrank APL."
 	},
 	"14268": {
 		"ability": "Wing Clip",
 		"file": "sim/hunter/wing_clip.go",
-		"source": "classic"
+		"source": "forever",
+		"tooltip": "Wing Clip\nHighest learned rank retains its physical hit/damage and slows eligible targets60% for10sec. Improved Wing Clip can root5sec at7/13/20%.",
+		"note": "Current source slow/root metadata. Only the highest trained rank is registered for the active level; this table also preserves other supported level/Classic branches. Source19229 has NO diminishing-returns mask. Unspecified lower-rank proc penalty is not modeled; no new downrank APL."
 	},
 	"14269": {
 		"ability": "Mongoose Bite",
@@ -655,7 +659,9 @@
 	"2974": {
 		"ability": "Wing Clip",
 		"file": "sim/hunter/wing_clip.go",
-		"source": "classic"
+		"source": "forever",
+		"tooltip": "Wing Clip\nHighest learned rank retains its physical hit/damage and slows eligible targets50% for10sec. Improved Wing Clip can root5sec at7/13/20%.",
+		"note": "Current source slow/root metadata. Only the highest trained rank is registered for the active level; this table also preserves other supported level/Classic branches. Source19229 has NO diminishing-returns mask. Unspecified lower-rank proc penalty is not modeled; no new downrank APL."
 	},
 	"3009": {
 		"ability": "Claw",
@@ -772,5 +778,75 @@
 			"The linked area debuff follows the primary application result.",
 			"AP-reduction providers compete rather than stack; higher-level controlled confirmation remains open."
 		]
+	},
+	"5116": {
+		"ability": "Concussive Shot",
+		"file": "sim/hunter/utility.go",
+		"source": "forever",
+		"tooltip": "8%base Mana\n12sec cooldown\nA landed ranged hit slows an eligible target50% for4sec; Improved Concussive Shot can stun for3sec at4/8/12/16/20%.",
+		"note": "70291 source parent5116, learned8; missile speed40,1.5sGCD. Target slow/stun eligibility is explicit, defaults OFF. Curve82813 supplies stun chance; proc-stun DR group10 is a separate optional model with qualified reset anchor. No damage or default raid-boss control is invented."
+	},
+	"13809": {
+		"ability": "Frost Trap",
+		"file": "sim/hunter/utility.go",
+		"source": "forever",
+		"tooltip": "60 Mana\nShared trap cooldown30sec\nInitial successful activation slows eligible targets60% for30sec, extended15% per Clever Traps point.",
+		"note": "70291 parent13809 and aura13810. Entrapment roots on the INITIAL successful activation only, never periodic trap damage/pulses. Current selected-target activation/hit representation does not model field entry/exit/geometry; default raid targets are not assumed controllable."
+	},
+	"13810": {
+		"ability": "Frost Trap Aura",
+		"file": "sim/hunter/utility.go",
+		"source": "forever",
+		"tooltip": "60%movement slow for30sec, extended by Clever Traps, only on explicitly slow-eligible targets.",
+		"note": "Source aura13810 is attached by Frost Trap13809. A continuous spatial trap field and repeated pulses are not registered; this aura records the initial supported control application."
+	},
+	"781": {
+		"ability": "Disengage (rank 1)",
+		"file": "sim/hunter/utility.go",
+		"source": "forever",
+		"tooltip": "50 Mana\n5sec shared cooldown\nAt level60, a successful melee utility hit reduces threat by310; no damage.",
+		"note": "70291 SpellEffect63 already contains doubled threat: learn20, base reduction280, additional3 per level capped at10 levels. No second multiplier. All3 learned ranks register;1.5sGCD and melee range. This is the Classic-style threat reduction, not a later expansion leap."
+	},
+	"14272": {
+		"ability": "Disengage (rank 2)",
+		"file": "sim/hunter/utility.go",
+		"source": "forever",
+		"tooltip": "100 Mana\n5sec shared cooldown\nAt level60, a successful melee utility hit reduces threat by590; no damage.",
+		"note": "70291 SpellEffect63 already contains doubled threat: learn34, base reduction560, additional3 per level capped at10 levels. No second multiplier. All3 learned ranks register;1.5sGCD and melee range. This is the Classic-style threat reduction, not a later expansion leap."
+	},
+	"14273": {
+		"ability": "Disengage (rank 3)",
+		"file": "sim/hunter/utility.go",
+		"source": "forever",
+		"tooltip": "150 Mana\n5sec shared cooldown\nAt level60, a successful melee utility hit reduces threat by840; no damage.",
+		"note": "70291 SpellEffect63 already contains doubled threat: learn48, base reduction810, additional3 per level capped at10 levels. No second multiplier. All3 learned ranks register;1.5sGCD and melee range. This is the Classic-style threat reduction, not a later expansion leap."
+	},
+	"19185": {
+		"ability": "Entrapment",
+		"file": "sim/hunter/utility.go",
+		"source": "forever",
+		"tooltip": "Initially triggered traps root eligible affected targets for1/2/3/4/5sec.",
+		"note": "Definition134459 curve82791 provides1000..5000ms. Source diminish mask1 maps to Root group1. Optional shared DR/target eligibility are independent opt-ins; reset-anchor conventions are not measured server policy. No per-tick proc or spatial field model."
+	},
+	"19229": {
+		"ability": "Improved Wing Clip root",
+		"file": "sim/hunter/utility.go",
+		"source": "forever",
+		"tooltip": "Highest trained Wing Clip has7/13/20% chance to root an eligible target for5sec.",
+		"note": "Definition134455 curve82786. Source19229 has diminish mask0: no root DR. Official downrank reduction has no pinned numeric rule, so lower Wing Clip ranks/penalty are not introduced. Existing damage remains under Wing Clip parent IDs."
+	},
+	"19410": {
+		"ability": "Improved Concussive Shot stun",
+		"file": "sim/hunter/utility.go",
+		"source": "forever",
+		"tooltip": "3sec stun on eligible targets after a successful Concussive Shot; talent chance4/8/12/16/20%.",
+		"note": "Definition134477 curve82813; source diminish mask512 maps to shared proc-stun group10. Optional DR reset anchor and eligibility are explicit scenario conventions, not boss heuristics."
+	},
+	"1310726": {
+		"ability": "Expose Prey state",
+		"file": "sim/hunter/talents.go",
+		"source": "forever",
+		"tooltip": "Expose Prey grants Mongoose Bite availability for10sec, independently of the5sec defensive state.",
+		"note": "Source1310726 duration10s. Either state allows Mongoose Bite; using it consumes the supported availability state. The independent source aura no longer reuses the5s dodge/parry defensive-state timer."
 	}
 }

@@ -15,8 +15,7 @@ and weapon coverage. None is confirmed obtainable loot. The previous
 and the separate [real-item benchmark](https://github.com/gunba/wow-forever-sim/blob/175b1a9de5/artifacts/forever_dps_5min.json)
 remain distinct historical references.
 
-This benchmark incorporates the sourced **client 1.60.1.70009 class/racial
-changes**, with post-patch modeled-gear selection. The current roster contains
+This benchmark incorporates supported **client 1.60.1.70291 corrections**, with bounded affected-setup selection. The [overnight update](../../docs/october-8-overnight-update.md) records provisional-model assumptions, sensitivity failures and feature gaps. The current roster contains
 **31 builds and 201 race/build profiles** (99 Alliance, 102 Horde). See
 the [patch audit](../../docs/forever-70009.md) for source gaps and exclusions.
 The [class-effects follow-up](../../docs/upstream_elliot_review.md) replays
@@ -24,10 +23,7 @@ all 736 baseline/sensitivity scenarios after the Life Tap, pet/talent,
 Moonfury and buff corrections. Gear selections remain from the earlier search;
 the refreshed results do not establish a new gear optimum. The preceding
 results are [archived](../../artifacts/history/367ac97df8/).
-The [October 8 release](../../docs/october-8-review.md) replays **804** baseline,
-Tier-off, +10% and +50% scenarios after the mechanics corrections and bounded
-build/gear selections. Another 201 current-engine original-setup controls isolate
-selection changes. The earlier [184-profile preservation check](../../artifacts/tanks/current/dps_preservation.json)
+The current 70291 release replays **1,005** scenarios: 201 baseline, Tier-off, +10%, +50%, and corrected-engine original-loadout controls. Gear scales preserve all enchants/effects and recipes. The [earlier October 8 release](../../docs/october-8-review.md) is historical. The earlier [184-profile preservation check](../../artifacts/tanks/current/dps_preservation.json)
 is historical, not a statement that this release preserves those results.
 
 Protection Warrior, Protection Paladin and Bear use frontal incoming attacks
@@ -37,10 +33,7 @@ frozen tank controls with survival and per-target threat safeguards, then
 validated on two independent seeds across every race under the earlier support
 conditions. The [tank support correction](../../docs/tank_support.md)
 standardizes raid support, adds Paladin oil and improves Swift Judgement timing,
-then replays every tank race without reselecting gear/talents. October 8 independently reselects only the three Protection Paladin gear profiles
-under the existing point-estimate guards; small TMI increases are allowed and are
-not survival improvements or a 95% proof of no harm. All 17 profiles receive 68
-current workload replays. Historical selection gains do not establish an optimum
+then replays every tank race without reselecting gear/talents. 70291 selects 10 Warrior and 3 Paladin recipes; all 4 Bear players remain exact but their requests explicitly remove external Faerie Fire so they perform their own duty. Fresh native-default checks comprise 68 selected plus 68 corrected-original workload rows at two disjoint 5,000-iteration windows. Small survival tradeoffs are allowed by point-estimate guards, not confidence-proof of no harm. Six coefficient-20 sensitivity cases fail guards; central incoming-Rage assumptions are not globally robust. Historical selection gains do not establish an optimum
 under the new settings.
 [Tank methods and replay instructions](../../docs/tank_selection.md) ·
 [Validation](../../artifacts/tanks/current/validation.json) ·

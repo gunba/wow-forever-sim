@@ -1,0 +1,53 @@
+{
+  "checks": [
+    {
+      "originalFile": "feral__Tauren__release2.json",
+      "finalFile": "feral__Tauren__release3.json",
+      "differencesAfterOnlyMetricArrayNormalization": [],
+      "exactRequest": true,
+      "exactBaselinePlayer": true
+    },
+    {
+      "originalFile": "feral_tank_druid__Tauren__release2.json",
+      "finalFile": "feral_tank_druid__Tauren__release3.json",
+      "differencesAfterOnlyMetricArrayNormalization": [],
+      "exactRequest": true,
+      "exactBaselinePlayer": true
+    },
+    {
+      "originalFile": "protection_paladin__Human__release2.json",
+      "finalFile": "protection_paladin__Human__release3.json",
+      "differencesAfterOnlyMetricArrayNormalization": [],
+      "exactRequest": true,
+      "exactBaselinePlayer": true
+    },
+    {
+      "originalFile": "smite__Undead__release2.json",
+      "finalFile": "smite__Undead__release3.json",
+      "differencesAfterOnlyMetricArrayNormalization": [],
+      "exactRequest": true,
+      "exactBaselinePlayer": true
+    },
+    {
+      "originalFile": "tank_warrior__Orc__release2.json",
+      "finalFile": "tank_warrior__Orc__release3.json",
+      "differencesAfterOnlyMetricArrayNormalization": [
+        [
+          "/Results/0/Tank/TargetTPS/0",
+          849.3994299187007,
+          849.3994299187005
+        ],
+        [
+          "/Results/0/Tank/LeastTargetTPS",
+          849.3994299187007,
+          849.3994299187005
+        ]
+      ],
+      "exactRequest": true,
+      "exactBaselinePlayer": true
+    }
+  ],
+  "qualification": "ONLY unordered Go actions/auras/resources arrays within Metrics/EncounterMetrics subtrees normalized. Ordered request/player/APL arrays are untouched and exactly equal. Derived TargetTPS/LeastTargetTPS map-sum roundoff explicitly retained, not normalized away.",
+  "seed": 1814900001,
+  "iterations": 1
+}

@@ -107,6 +107,13 @@ func (db *WowDatabase) MergeEnchants(arr []*proto.UIEnchant) {
 func (db *WowDatabase) MergeEnchant(src *proto.UIEnchant) {
 	key := EnchantToDBKey(src)
 	if dst, ok := db.Enchants[key]; ok {
+		// 70291 Forceful kits have enchant MinLevel0. Tooltip application/use
+		// levels are not wearer requirements; proto.Merge cannot clear a zero.
+		switch src.EffectId {
+		case 8483, 8486, 8488, 8491:
+			dst.RequiredLevel = src.RequiredLevel
+			dst.RequiredProfession = src.RequiredProfession
+		}
 		// googleproto.Merge concatenates lists, but we want replacement, so do them manually.
 		if src.Stats != nil {
 			dst.Stats = src.Stats

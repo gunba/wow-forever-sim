@@ -29,9 +29,9 @@ func TestExposePreyMarkOwnership(t *testing.T) {
 		proc := h.GetAura("Expose Prey")
 		count := 0
 		for i := 0; i < 500; i++ {
-			h.DefensiveState.Deactivate(sim)
+			h.ExposePreyState.Deactivate(sim)
 			proc.OnSpellHitDealt(proc, sim, &core.Spell{ProcMask: core.ProcMaskMeleeMHAuto}, &core.SpellResult{Target: target, Outcome: core.OutcomeHit})
-			if h.DefensiveState.IsActive() {
+			if h.ExposePreyState.IsActive() {
 				count++
 			}
 		}
@@ -140,9 +140,9 @@ func TestExposePreyAttackMask(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			procs := 0
 			for i := 0; i < 500; i++ {
-				h.DefensiveState.Deactivate(sim)
+				h.ExposePreyState.Deactivate(sim)
 				trigger.OnSpellHitDealt(trigger, sim, &core.Spell{ProcMask: tc.mask}, &core.SpellResult{Target: target, Outcome: tc.hit})
-				if h.DefensiveState.IsActive() {
+				if h.ExposePreyState.IsActive() {
 					procs++
 				}
 			}

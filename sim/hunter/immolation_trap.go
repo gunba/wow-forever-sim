@@ -76,6 +76,7 @@ func (hunter *Hunter) getImmolationTrapConfig(rank int, timer *core.Timer) core.
 			spell.WaitTravelTime(sim, func(s *core.Simulation) {
 				spell.DealOutcome(sim, result)
 				if result.Landed() {
+					hunter.procEntrapment(sim, target)
 					spell.Dot(target).Apply(sim)
 				}
 			})

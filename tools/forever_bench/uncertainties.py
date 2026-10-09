@@ -96,10 +96,22 @@ def apply_review(data, review):
     return data
 
 
+def latest_followup_report(data):
+    """Keep historical fallback while allowing a safe docs-relative report link."""
+    value = data["review"].get("latest_followup_report", "october-8-review.md")
+    if (not isinstance(value, str) or not value.endswith(".md")
+            or not value or not value[0].isalnum()
+            or any(not (char.isascii() and (char.isalnum() or char in "._-/")) for char in value)
+            or any(part in {"", ".", ".."} for part in value.split("/"))):
+        raise ValueError("Latest follow-up report must be a safe relative Markdown path")
+    return value
+
+
 def load_register(path=REGISTER):
     data = json.loads(Path(path).read_text())
     if data["schema_version"] != 2:
         raise ValueError("Expected the adjudicated register schema")
+    latest_followup_report(data)
     ids = set()
     for item in data["items"]:
         ident = item["id"]
@@ -189,7 +201,7 @@ def markdown(data):
         "",
         f"**Latest follow-up ({meta.get('latest_followup_date', meta['date'])}):** "
         f"{meta.get('latest_followup', 'No later follow-up recorded.')} "
-        "[Current release corrections and benchmark updates](october-8-review.md).",
+        f"[Latest follow-up report]({quote(latest_followup_report(data), safe='/')}).",
         "",
         f"**Original adjudication baseline:** {meta['date']}, `{data['reviewed_revision']}`. "
         "That original review reconciled questions without changing mechanics or benchmark results. "
@@ -375,7 +387,7 @@ def render_html(data):
         f'<p class="question-finding"><strong>Latest follow-up '
         f'({escape(meta.get("latest_followup_date", meta["date"]))}):</strong> '
         f'{escape(meta.get("latest_followup", "No later follow-up recorded."))} '
-        '<a href="october-8-review.md">Current release corrections and benchmark updates</a>.</p>'
+        f'<a href="{escape(quote(latest_followup_report(data), safe="/"), quote=True)}">Latest follow-up report</a>.</p>'
         f'<p class="note"><strong>Original adjudication baseline:</strong> {escape(meta["date"])}, '
         f'<code>{escape(data["reviewed_revision"])}</code>. That original review reconciled questions '
         'without changing mechanics or benchmark results; later implementation and benchmark updates '

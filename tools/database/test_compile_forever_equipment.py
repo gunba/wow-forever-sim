@@ -3,7 +3,7 @@ import json
 import unittest
 from pathlib import Path
 
-from compile_forever_equipment import compile_item, compile_stats
+from compile_forever_equipment import apply_source_updates, compile_item, compile_stats
 from import_forever_ratings import load_level_60_coefficients
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -79,6 +79,29 @@ class EquipmentTest(unittest.TestCase):
         for id in (249469, 249470, 249473):
             self.assertTrue(self.items[id]["uniqueEquipped"])
             self.assertTrue(compile_item(self.items[id], self.rates)["unique"])
+
+    def test_70291_source_class_restrictions_and_quest_rewards(self):
+        catalog = {"items": list(self.items.values())}
+        original = copy.deepcopy(catalog)
+        updates = json.loads((ROOT / "assets/db_inputs/forever_item_updates_70291.json").read_text())
+        revised = {item["id"]: item for item in apply_source_updates(catalog, updates)["items"]}
+        self.assertEqual(catalog, original)
+        for item_id in (276538, 276539, 276540, 276541):
+            before = compile_item(self.items[item_id], self.rates)
+            after = compile_item(revised[item_id], self.rates)
+            self.assertEqual(after["classAllowlist"], [7])
+            self.assertEqual(after, dict(before, classAllowlist=[7]))
+        knife = compile_item(revised[251485], self.rates)
+        self.assertEqual(knife["stats"][1:3], [2, 2])
+        self.assertEqual((knife["weaponDamageMin"], knife["weaponDamageMax"], knife["weaponSpeed"]), (13, 26, 1.6))
+        cuffs = compile_item(revised[251486], self.rates)
+        self.assertEqual((cuffs["stats"][2], cuffs["stats"][5], cuffs["stats"][26]), (4, 3, 17))
+        for item in (knife, cuffs):
+            self.assertEqual(item["quality"], 2)
+            self.assertEqual(item["ilvl"], 24)
+            self.assertEqual(item["sources"], [{"quest": {"id": 92401, "name": "A Frightened Request"}}])
+        self.assertEqual(len(updates["deltaDispositions"]), 174)
+        self.assertEqual(len({entry["id"] for entry in updates["deltaDispositions"]}), 174)
 
     def test_catalog_is_not_mutated(self):
         item = copy.deepcopy(self.items[279253])

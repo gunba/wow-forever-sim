@@ -672,20 +672,19 @@
           "colIdx": 0
         },
         "spellIds": [
-          0
+          1314103
         ],
         "maxPoints": 1,
         "name": "Improved Seal of Fury",
         "icon": "spell_holy_righteousnessaura",
-        "description": "When Seal of Fury's shield is fully absorbed, restore {0} Mana, increased by {1}% per level the attacker is above you, up to {2}%.",
+        "description": "When Seal of Fury's shield is fully absorbed, restore Mana equal to your level ({0} at level60), increased by {1}% per level the actual attacker is above you, up to {2}%. This mana causes no threat. Shield lifetime/replacement uses an explicitly provisional model, not a verified server script.",
         "ranks": [
           [
-            38,
+            60,
             15,
             45
           ]
-        ],
-        "notSimulated": true
+        ]
       },
       {
         "fieldName": "improvedRighteousFury",

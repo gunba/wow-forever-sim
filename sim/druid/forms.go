@@ -265,13 +265,14 @@ func (druid *Druid) furorShiftEnergy(sim *core.Simulation) float64 {
 	return min(druid.MaxEnergy(), carryOver+min(20*points, outOfForm))
 }
 
-// Dire Bear Form: 180 attack power, 1240 health, 360% more armor from items and 30%
-// more threat. Rage replaces mana while it lasts.
+// Dire Bear Form: 180 attack power, 1240 health, 360% more armor from items and
+// 50% more threat in Forever (30% in Classic). Rage replaces mana while it lasts.
 const BearFormArmorMultiplier = 4.6
-const BearFormThreatMultiplier = 1.3
+const BearFormThreatMultiplier = 1.5
 
 func (druid *Druid) registerBearFormSpell() {
 	actionID := core.ActionID{SpellID: 9634}
+	threatMultiplier := core.TernaryFloat64(druid.Env.IsForever(), BearFormThreatMultiplier, 1.3)
 	healthMetrics := druid.NewHealthMetrics(actionID)
 
 	statBonus := druid.GetFormShiftStats().Add(stats.Stats{
@@ -306,7 +307,7 @@ func (druid *Druid) registerBearFormSpell() {
 
 			druid.AutoAttacks.SetMH(druid.GetBearWeapon())
 
-			druid.PseudoStats.ThreatMultiplier *= BearFormThreatMultiplier
+			druid.PseudoStats.ThreatMultiplier *= threatMultiplier
 			druid.SetShapeshift(aura)
 
 			predBonus = druid.GetDynamicPredStrikeStats()
@@ -338,7 +339,7 @@ func (druid *Druid) registerBearFormSpell() {
 
 			druid.AutoAttacks.SetMH(druid.WeaponFromMainHand())
 
-			druid.PseudoStats.ThreatMultiplier /= BearFormThreatMultiplier
+			druid.PseudoStats.ThreatMultiplier /= threatMultiplier
 			if druid.Env.IsForever() {
 				druid.resetFurorHistory(sim.CurrentTime)
 			}

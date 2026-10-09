@@ -91,6 +91,25 @@ func (hb *healthBar) SpendHealth(sim *Simulation, amount float64, metrics *Resou
 	hb.currentHealth = newHealth
 }
 
+// ExpireTemporaryHealth removes a temporary health grant without pretending it
+// was an attack/resource payment or adding a damage spike to TMI. The nonlethal
+// floor follows the Classic temporary-health convention; a dead unit stays dead.
+func (hb *healthBar) ExpireTemporaryHealth(sim *Simulation, amount float64, metrics *ResourceMetrics) {
+	if amount < 0 {
+		panic("Trying to expire negative temporary health!")
+	}
+	oldHealth := hb.currentHealth
+	floor := 0.0
+	if oldHealth > 0 {
+		floor = 1
+	}
+	hb.currentHealth = min(hb.MaxHealth(), max(floor, oldHealth-amount))
+	metrics.AddEvent(-amount, hb.currentHealth-oldHealth)
+	if sim.Log != nil {
+		hb.unit.Log(sim, "Temporary health expired from %s (%0.3f --> %0.3f).", metrics.ActionID, oldHealth, hb.currentHealth)
+	}
+}
+
 var ChanceOfDeathAuraLabel = "Chance of Death"
 
 func (character *Character) trackChanceOfDeath(healingModel *proto.HealingModel) {

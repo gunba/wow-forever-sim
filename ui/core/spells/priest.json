@@ -152,15 +152,11 @@
 		"assumptions": ["Self-damage is modeled as the unmodified client health amount; damage-buff and resistance interactions need beta testing."]
 	},
 	"1316995": {
-		"ability": "Penance",
-		"assumptions": [
-			"Only the level-60 damage rank is implemented; lower ranks are not selectable.",
-			"The healing half (1316991, 673) is not simulated."
-		],
+		"ability": "Penance (damage rank 4)",
 		"file": "sim/priest/penance.go",
-		"note": "Rank 4 at level 60: 355 base mana cost, reduced 5/10/15% by Improved Healing; 12 sec cooldown, 131 base damage per bolt and .285 coefficient. One immediate bolt, then bolts at 1 and 2 seconds before channel haste. Inner Focus's crit mask covers the modeled damage bolts.",
-		"source": "assumed",
-		"tooltip": "355 Mana\nChanneled\n12 sec cooldown\nLaunches a volley of holy light at the target, causing 131 Holy damage to an enemy, or 673 healing to an ally, instantly and every 1 sec for 2 sec."
+		"source": "forever",
+		"tooltip": "385 Mana before Improved Healing\n2sec channel, shared12sec cooldown\nAt level60, each of3 Holy bolts deals 92 damage (+0.19 SP); bolts at0/1/2sec before haste.",
+		"note": "Client1.60.1.70291 parent1316995, damage child1316993, SpellEffect 1350039; learn level60, capped PPL 0, cap0. All4 damaging ranks register and share one cooldown; Penance remains the highest learned alias. Improved Healing reduces mana5% per point. Healing Penance is NOT registered: helpful child IDs402289/1240723/1240724/1316991 are separate source data, not the damage channel1316994. No new downrank APL policy. Floats retained; final server integer rounding is unverified. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"14751": {
 		"ability": "Inner Focus",
@@ -496,9 +492,9 @@
 	"585": {
 		"ability": "Smite",
 		"file": "sim/priest/smite.go",
-		"note": "Beta client 1.60.1.69893: rank 8 384-429 -> 166-187, lower from rank 3 up, and no downranking penalty (ranks 1-3 .123/.271/.554 -> .429/.571/.714). Casts and costs are Classic's.",
 		"source": "forever",
-		"tooltip": "20 Mana\n1.5 sec cast\nSmite an enemy for 15 to 20 Holy damage."
+		"tooltip": "Smite Rank 1\n20 Mana before talent/other cost modifiers\nLevel60 source-model base: 13.5 to 17.5 Holy damage (+0.429 SP).",
+		"note": "Client1.60.1.70291 SpellEffect 678981, SpellLevels: BP=15, variance=0.266667, PPL=0.1, learn=1, growth cap=6. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"589": {
 		"ability": "Shadow Word: Pain",
@@ -510,9 +506,9 @@
 	"591": {
 		"ability": "Smite",
 		"file": "sim/priest/smite.go",
-		"note": "Beta client 1.60.1.69893: rank 8 384-429 -> 166-187, lower from rank 3 up, and no downranking penalty (ranks 1-3 .123/.271/.554 -> .429/.571/.714). Casts and costs are Classic's.",
 		"source": "forever",
-		"tooltip": "30 Mana\n2 sec cast\nSmite an enemy for 28 to 34 Holy damage."
+		"tooltip": "Smite Rank 2\n30 Mana before talent/other cost modifiers\nLevel60 source-model base: 25.607143 to 31.392857 Holy damage (+0.571 SP).",
+		"note": "Client1.60.1.70291 SpellEffect 679112, SpellLevels: BP=27, variance=0.214286, PPL=0.3, learn=6, growth cap=11. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"594": {
 		"ability": "Shadow Word: Pain",
@@ -524,9 +520,9 @@
 	"598": {
 		"ability": "Smite",
 		"file": "sim/priest/smite.go",
-		"note": "Beta client 1.60.1.69893: rank 8 384-429 -> 166-187, lower from rank 3 up, and no downranking penalty (ranks 1-3 .123/.271/.554 -> .429/.571/.714). Casts and costs are Classic's.",
 		"source": "forever",
-		"tooltip": "60 Mana\n2.5 sec cast\nSmite an enemy for 47 to 53 Holy damage."
+		"tooltip": "Smite Rank 3\n60 Mana before talent/other cost modifiers\nLevel60 source-model base: 44.396552 to 50.603448 Holy damage (+0.714 SP).",
+		"note": "Client1.60.1.70291 SpellEffect 678920, SpellLevels: BP=45, variance=0.137931, PPL=0.5, learn=14, growth cap=19. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"6060": {
 		"ability": "Smite",
@@ -587,9 +583,9 @@
 	"984": {
 		"ability": "Smite",
 		"file": "sim/priest/smite.go",
-		"note": "Beta client 1.60.1.69893: rank 8 384-429 -> 166-187, lower from rank 3 up, and no downranking penalty (ranks 1-3 .123/.271/.554 -> .429/.571/.714). Casts and costs are Classic's.",
 		"source": "forever",
-		"tooltip": "95 Mana\n2.5 sec cast\nSmite an enemy for 60 to 68 Holy damage."
+		"tooltip": "Smite Rank 4\n95 Mana before talent/other cost modifiers\nLevel60 source-model base: 59.214285 to 67.785714 Holy damage (+0.714 SP).",
+		"note": "Client1.60.1.70291 SpellEffect 679210, SpellLevels: BP=60, variance=0.142857, PPL=0.7, learn=22, growth cap=27. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"992": {
 		"ability": "Shadow Word: Pain",
@@ -605,5 +601,26 @@
 		"foreverId": 15258,
 		"tooltip": "Increases the Shadow damage you deal by 2% for 15 sec, stacking up to 5 times.",
 		"note": "Beta client 1.60.1 (spell 15258): aura 270 at 2 a stack, 15 sec. Era 15258 is \"Shadow Vulnerability\", aura 87 at 3, a damage taken debuff on the target - Forever turned it into a buff on the priest. The talent 15257 is a single spell whose three tree ranks only move the proc chance, 33/67/100%."
+	},
+	"402174": {
+		"ability": "Penance (damage rank 1)",
+		"file": "sim/priest/penance.go",
+		"source": "forever",
+		"tooltip": "150 Mana before Improved Healing\n2sec channel, shared12sec cooldown\nAt level60, each of3 Holy bolts deals 44.61 damage (+0.19 SP); bolts at0/1/2sec before haste.",
+		"note": "Client1.60.1.70291 parent402174, damage child402284, SpellEffect 1048631; learn level30, capped PPL 0.29, cap39. All4 damaging ranks register and share one cooldown; Penance remains the highest learned alias. Improved Healing reduces mana5% per point. Healing Penance is NOT registered: helpful child IDs402289/1240723/1240724/1316991 are separate source data, not the damage channel1316994. No new downrank APL policy. Floats retained; final server integer rounding is unverified. https://us.forums.blizzard.com/en/wow/t/2360696/5"
+	},
+	"1240720": {
+		"ability": "Penance (damage rank 2)",
+		"file": "sim/priest/penance.go",
+		"source": "forever",
+		"tooltip": "220 Mana before Improved Healing\n2sec channel, shared12sec cooldown\nAt level60, each of3 Holy bolts deals 52.97 damage (+0.19 SP); bolts at0/1/2sec before haste.",
+		"note": "Client1.60.1.70291 parent1240720, damage child1240727, SpellEffect 1239263; learn level40, capped PPL 0.33, cap49. All4 damaging ranks register and share one cooldown; Penance remains the highest learned alias. Improved Healing reduces mana5% per point. Healing Penance is NOT registered: helpful child IDs402289/1240723/1240724/1316991 are separate source data, not the damage channel1316994. No new downrank APL policy. Floats retained; final server integer rounding is unverified. https://us.forums.blizzard.com/en/wow/t/2360696/5"
+	},
+	"1240721": {
+		"ability": "Penance (damage rank 3)",
+		"file": "sim/priest/penance.go",
+		"source": "forever",
+		"tooltip": "270 Mana before Improved Healing\n2sec channel, shared12sec cooldown\nAt level60, each of3 Holy bolts deals 71.87 damage (+0.19 SP); bolts at0/1/2sec before haste.",
+		"note": "Client1.60.1.70291 parent1240721, damage child1240730, SpellEffect 1239266; learn level50, capped PPL 0.43, cap59. All4 damaging ranks register and share one cooldown; Penance remains the highest learned alias. Improved Healing reduces mana5% per point. Healing Penance is NOT registered: helpful child IDs402289/1240723/1240724/1316991 are separate source data, not the damage channel1316994. No new downrank APL policy. Floats retained; final server integer rounding is unverified. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	}
 }

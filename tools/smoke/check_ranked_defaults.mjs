@@ -12,8 +12,18 @@ const resultsFile = modeled
 const results = JSON.parse(readFileSync(resultsFile, 'utf8')).Results;
 assert.equal(bundle.profiles.length, results.length, 'web defaults must cover the complete roster');
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined });
+const routes = {
+	balance: 'balance_druid', feral: 'feral_druid', elemental: 'elemental_shaman', stormcaller: 'elemental_shaman',
+	enhancement: 'enhancement_shaman', beast_mastery: 'hunter', marksmanship: 'hunter', survival: 'hunter', pet_melee: 'hunter',
+	arcane: 'mage', fire: 'mage', frost: 'mage', arcane_frost: 'mage', retribution: 'retribution_paladin',
+	retribution_physical: 'retribution_paladin', shadow: 'shadow_priest', smite: 'smite_priest',
+	combat: 'rogue', mutilate: 'rogue', subtlety: 'rogue', demonology: 'warlock', affliction: 'warlock',
+	ds_ruin: 'warlock', destruction: 'warlock', fury: 'warrior', fury_sunder: 'warrior', arms: 'warrior', fury_2h: 'warrior',
+	tank_warrior: 'tank_warrior', protection_paladin: 'protection_paladin', feral_tank_druid: 'feral_tank_druid',
+};
+const simulatedBuilds = new Set();
 try {
-	for (const [route, id] of [
+	for (const [route, id] of (process.env.PROFILE_SCOPE === 'showcases' ? [
 		['mage', 'arcane__gnome'],
 		['mage', 'fire__orc'],
 		['shadow_priest', 'shadow__undead'],
@@ -43,7 +53,8 @@ try {
 		['protection_paladin', 'protection_paladin__dwarf'],
 		['feral_tank_druid', 'feral_tank_druid__tauren'],
 		['feral_tank_druid', 'feral_tank_druid__night_elf'],
-	].filter(([, id]) => !process.env.ONLY_PROFILE || id === process.env.ONLY_PROFILE)) {
+	] : bundle.profiles.map(profile => [routes[profile.key], profile.id]))
+		.filter(([, id]) => !process.env.ONLY_PROFILE || id === process.env.ONLY_PROFILE)) {
 		const profile = bundle.profiles.find(profile => profile.id === id);
 		assert.ok(profile, `missing ${id}`);
 		const context = await browser.newContext();
@@ -101,6 +112,9 @@ try {
 			assert.deepEqual(stored.tanks, expected.tanks, `${id}: tank assignment`);
 			assert.deepEqual(stored.encounter, expected.encounter, `${id}: incoming encounter`);
 		}
+		assert.equal(Boolean(stored.debuffs.faerieFire), profile.key !== 'feral_tank_druid' && Boolean(expected.debuffs.faerieFire), `${id}: owned Faerie Fire duty`);
+		// Audit exact bindings for every race; replay every build and all 17 tanks.
+		if (!simulatedBuilds.has(profile.key) || profile.tankMetrics || process.env.ONLY_PROFILE) {
 		await page.getByRole('button', { name: 'Simulate', exact: true }).click();
 		await page.getByText('Save as Reference', { exact: true }).first().waitFor({ timeout: 180000 });
 		const actual = Number(await page.locator('.results-sim-dps .topline-result-avg').first().innerText());
@@ -113,6 +127,10 @@ try {
 			}
 		}
 		console.log(`${id}: fully loaded from the picker, ${actual} DPS, native match`);
+		simulatedBuilds.add(profile.key);
+		} else {
+			console.log(`${id}: exact race/build input binding verified`);
+		}
 
 		if (route === 'enhancement_shaman') {
 			await page.getByRole('tab', { name: 'Settings', exact: true }).click();

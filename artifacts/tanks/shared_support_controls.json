@@ -1,6 +1,6 @@
 {
   "format": 2,
-  "status": "October1 fixed-profile inputs for guarded checks; earlier encoded talent controls are superseded",
+  "status": "Historical October1 full requests/results; only exact BaselinePlayer equipment/recipe anchors are intentionally used by tankGuardPlayer. Old Bear REQUESTS preapply external Faerie Fire and are explicitly superseded for current70291 owned-duty checks.",
   "sourceParentRevision": "4235b6feda425a82e76f1af741fa61e87dcabcc8",
   "Results": [
     {
@@ -61270,5 +61270,8 @@
       "ReplayPhase": "initial"
     }
   ],
-  "previousControls": "artifacts/correctness/october_1/previous_guard_controls.json.gz"
+  "previousControls": "artifacts/correctness/october_1/previous_guard_controls.json.gz",
+  "currentControls": "../correctness/october_9/original.json.gz",
+  "currentDefaultChecks": "../correctness/october_9/tank-default-checks.json.gz",
+  "historicalRequestQualification": "Do not replay old Bear raid support as current. Current native/TS helpers remove external FA for ClassDruid while preserving old Bear complete players and all other declared support. Historical metrics are not current-engine values."
 }

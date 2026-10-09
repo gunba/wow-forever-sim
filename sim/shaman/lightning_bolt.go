@@ -35,6 +35,18 @@ var lightningBoltOverloadDamage = [LightningBoltRanks + 1]electricOverloadDamage
 	{408477, 98, .11312217265, .60000002384, .35699999332, 56, 61},
 }
 
+// Build 1.60.1.70291 parent ranks1–5; overload children keep their own,
+// unchanged rows. No rounded endpoints or additional half-damage multiplier.
+// https://us.forums.blizzard.com/en/wow/t/2360696/5
+var foreverLightningBoltRankDamage = [...]electricOverloadDamage{
+	{},
+	{403, 15, 0.14285714924, 0.10000000149, 0.42899999022, 1, 6},
+	{529, 27, 0.14285714924, 0.10000000149, 0.57099997997, 8, 13},
+	{548, 45, 0.16326530278, 0.30000001192, 0.71399998665, 14, 19},
+	{915, 61, 0.13483145833, 0.40000000596, 0.71399998665, 20, 25},
+	{943, 82, 0.13432836533, 0.5, 0.71399998665, 26, 31},
+}
+
 func (shaman *Shaman) registerLightningBoltSpell() {
 	shaman.LightningBolt = make([]*core.Spell, LightningBoltRanks+1)
 	shaman.LightningBoltOverload = make([]*core.Spell, LightningBoltRanks+1)
@@ -58,6 +70,9 @@ func (shaman *Shaman) newLightningBoltSpellConfig(rank int, isOverload bool) cor
 	castTime := LightningBoltCastTime[rank]
 	manaCost := LightningBoltManaCost[rank]
 	level := LightningBoltLevel[rank]
+	if !isOverload && shaman.Env.IsForever() && rank < len(foreverLightningBoltRankDamage) {
+		baseDamageLow, baseDamageHigh = foreverLightningBoltRankDamage[rank].rangeAtLevel(shaman.Level)
+	}
 	if isOverload && shaman.Env.IsForever() {
 		damage := lightningBoltOverloadDamage[rank]
 		baseDamageLow, baseDamageHigh = damage.rangeAtLevel(shaman.Level)

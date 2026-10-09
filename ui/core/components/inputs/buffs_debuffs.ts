@@ -1,5 +1,7 @@
 import { Ruleset } from '../../proto/api';
-import { Faction, SaygesFortune, Stat, TristateEffect } from '../../proto/common';
+import { Class, Faction, SaygesFortune, Stat, TristateEffect, UnitReference, UnitReference_Type } from '../../proto/common';
+import { Player } from '../../player';
+import { TypedEvent } from '../../typed_event';
 import { ActionId } from '../../proto_utils/action_id';
 import {
 	makeBooleanDebuffInput,
@@ -15,7 +17,7 @@ import {
 	makeTristateRaidBuffInput,
 	withLabel,
 } from '../icon_inputs';
-import { IconPicker, IconPickerDirection } from '../icon_picker';
+import { IconPicker, IconPickerConfig, IconPickerDirection } from '../icon_picker';
 import * as InputHelpers from '../input_helpers';
 import { MultiIconPicker } from '../multi_icon_picker';
 import { ItemStatOption, PickerStatOptions } from './stat_options';
@@ -366,6 +368,59 @@ export const AtieshDruidBuff = makeMultistatePartyBuffInput({
 	fieldName: 'atieshDruid',
 	numStates: 5,
 });
+
+// Reflection sources are explicit scenario inputs, independent of receiver stats.
+// Keep the normal buff icon while exposing owned-caster/external-SP selection.
+class ReflectionProviderPicker extends IconPicker<Player<any>, number> {
+	constructor(parent: HTMLElement, player: Player<any>, config: IconPickerConfig<Player<any>, number>, kind: 'thorns' | 'retributionAura') {
+		super(parent, player, config);
+		const raid = player.sim.raid;
+		const refField = kind === 'thorns' ? 'thornsProvider' : 'retributionAuraProvider';
+		const spField = kind === 'thorns' ? 'thornsProviderSpellPower' : 'retributionAuraProviderSpellPower';
+		const clazz = kind === 'thorns' ? Class.ClassDruid : Class.ClassPaladin;
+		const controls = document.createElement('div');
+		controls.className = 'reflection-provider-controls';
+		controls.innerHTML = `<label>${kind === 'thorns' ? 'Thorns' : 'Ret Aura'} caster <select aria-label="Reflection caster"></select></label><label>External provider SP <input type="number" min="0" step="1" aria-label="External provider spell power"></label>`;
+		parent.appendChild(controls);
+		const select = controls.querySelector('select')!;
+		const sp = controls.querySelector('input')!;
+		controls.title = 'Owned caster uses current damage spell power, including school power. External SP is a declared scenario assumption, default0, never this receiver’s stats. Selected buffs assume range. Retribution Aura affects the caster’s party.';
+		const update = () => {
+			controls.hidden = player.sim.getRuleset() !== Ruleset.RulesetForever;
+			const buffs = raid.getBuffs();
+			select.replaceChildren(new Option('External provider (declared SP)', 'external'));
+			for (const provider of raid.getPlayers()) {
+				if (!provider || provider.getClass() !== clazz) continue;
+				if (kind === 'retributionAura' && Math.floor(provider.getRaidIndex()/5) !== Math.floor(player.getRaidIndex()/5)) continue;
+				select.add(new Option(provider.getName(), String(provider.getRaidIndex())));
+			}
+			const ref = buffs[refField];
+			select.value = ref?.type === UnitReference_Type.Player ? String(ref.index) : ref?.type === UnitReference_Type.Self ? String(player.getRaidIndex()) : 'external';
+			sp.value = String(buffs[spField]);
+			sp.disabled = select.value !== 'external';
+		};
+		select.addEventListener('change', () => {
+			const buffs = raid.getBuffs();
+			buffs[refField] = select.value === 'external' ? undefined : UnitReference.create({type: UnitReference_Type.Player, index: Number(select.value)});
+			raid.setBuffs(TypedEvent.nextEventID(), buffs);
+		});
+		sp.addEventListener('change', () => {
+			const value = Number(sp.value);
+			if (!Number.isFinite(value) || value < 0) { update(); return; }
+			const buffs = raid.getBuffs(); buffs[spField] = value;
+			raid.setBuffs(TypedEvent.nextEventID(), buffs);
+		});
+		raid.changeEmitter.on(update);
+		player.sim.rulesetChangeEmitter.on(update);
+		update();
+	}
+}
+class ThornsProviderPicker extends ReflectionProviderPicker {
+	constructor(parent: HTMLElement, player: Player<any>, config: IconPickerConfig<Player<any>, number>) { super(parent, player, config, 'thorns'); }
+}
+class RetributionProviderPicker extends ReflectionProviderPicker {
+	constructor(parent: HTMLElement, player: Player<any>, config: IconPickerConfig<Player<any>, number>) { super(parent, player, config, 'retributionAura'); }
+}
 
 export const RetributionAura = makeTristateRaidBuffInput({
 	actionId: () => ActionId.fromSpellId(10301),
@@ -817,12 +872,12 @@ export const MISC_BUFFS_CONFIG = [
 	},
 	{
 		config: Thorns,
-		picker: IconPicker,
+		picker: ThornsProviderPicker,
 		stats: [Stat.StatArmor],
 	},
 	{
 		config: RetributionAura,
-		picker: IconPicker,
+		picker: RetributionProviderPicker,
 		stats: [Stat.StatArmor],
 	},
 	{

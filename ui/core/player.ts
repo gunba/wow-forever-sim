@@ -18,6 +18,8 @@ import {
 	Consumes,
 	Cooldowns,
 	Faction,
+	ForeverIncomingRageModel,
+	ForeverRevelationModel,
 	HandType,
 	HealingModel,
 	IndividualBuffs,
@@ -254,6 +256,9 @@ export class Player<SpecType extends Spec> {
 	private stormstrikeNatureAttackerFrequency = 4.0;
 	private foreverTier1Bonuses = false;
 	private foreverMp5PerSecond = false;
+	private foreverIncomingRageModel?: ForeverIncomingRageModel;
+	private foreverRevelationModel?: ForeverRevelationModel;
+	private foreverDemoralizingThreat?: number;
 	private equipmentScale = 1;
 
 	private readonly autoRotationGenerator: AutoRotationGenerator<SpecType> | null = null;
@@ -628,6 +633,12 @@ export class Player<SpecType extends Spec> {
 	}
 
 	validateWeaponGear(newGear: Gear | ItemSwapGear) {
+		for (const equipped of newGear.asArray()) {
+			const item = equipped?.item;
+			if (item && item.classAllowlist.length > 0 && !item.classAllowlist.includes(this.getClass())) {
+				throw new Error(`Cannot equip ${item.name} for this class.`);
+			}
+		}
 		const offHand = newGear.getEquippedItem(ItemSlot.ItemSlotOffHand)?.item;
 		if (offHand && !canEquipItem(this, offHand, ItemSlot.ItemSlotOffHand)) {
 			throw new Error(`Cannot equip ${offHand.name} in the off hand for this class.`);
@@ -1081,6 +1092,38 @@ export class Player<SpecType extends Spec> {
 		this.miscOptionsChangeEmitter.emit(eventID);
 	}
 
+	getForeverIncomingRageModel(): ForeverIncomingRageModel | undefined {
+		return this.foreverIncomingRageModel === undefined ? undefined : ForeverIncomingRageModel.clone(this.foreverIncomingRageModel);
+	}
+
+	setForeverIncomingRageModel(eventID: EventID, value: ForeverIncomingRageModel | undefined) {
+		if (value === undefined && this.foreverIncomingRageModel === undefined) return;
+		if (value !== undefined && this.foreverIncomingRageModel !== undefined && ForeverIncomingRageModel.equals(value, this.foreverIncomingRageModel)) return;
+		this.foreverIncomingRageModel = value === undefined ? undefined : ForeverIncomingRageModel.clone(value);
+		this.miscOptionsChangeEmitter.emit(eventID);
+	}
+
+	getForeverRevelationModel(): ForeverRevelationModel | undefined {
+		return this.foreverRevelationModel === undefined ? undefined : ForeverRevelationModel.clone(this.foreverRevelationModel);
+	}
+
+	setForeverRevelationModel(eventID: EventID, value: ForeverRevelationModel | undefined) {
+		if (value === undefined && this.foreverRevelationModel === undefined) return;
+		if (value !== undefined && this.foreverRevelationModel !== undefined && ForeverRevelationModel.equals(value, this.foreverRevelationModel)) return;
+		this.foreverRevelationModel = value === undefined ? undefined : ForeverRevelationModel.clone(value);
+		this.miscOptionsChangeEmitter.emit(eventID);
+	}
+
+	getForeverDemoralizingThreat(): number | undefined {
+		return this.foreverDemoralizingThreat;
+	}
+
+	setForeverDemoralizingThreat(eventID: EventID, value: number | undefined) {
+		if (value === this.foreverDemoralizingThreat) return;
+		this.foreverDemoralizingThreat = value;
+		this.miscOptionsChangeEmitter.emit(eventID);
+	}
+
 	getEquipmentScale(): number {
 		return this.equipmentScale;
 	}
@@ -1453,6 +1496,9 @@ export class Player<SpecType extends Spec> {
 				stormstrikeNatureAttackerFrequency: this.getStormstrikeNatureAttackerFrequency(),
 				foreverTier1Bonuses: this.getForeverTier1Bonuses(),
 				foreverMp5PerSecond: this.getForeverMp5PerSecond(),
+				foreverIncomingRageModel: this.getForeverIncomingRageModel(),
+				foreverRevelationModel: this.getForeverRevelationModel(),
+				foreverDemoralizingThreat: this.getForeverDemoralizingThreat(),
 				equipmentScale: this.getEquipmentScale() === 1 ? 0 : this.getEquipmentScale(),
 			});
 			player = withSpecProto(this.spec, player, this.getSpecOptions());
@@ -1515,6 +1561,9 @@ export class Player<SpecType extends Spec> {
 				this.setStormstrikeNatureAttackerFrequency(eventID, proto.stormstrikeNatureAttackerFrequency);
 				this.setForeverTier1Bonuses(eventID, proto.foreverTier1Bonuses);
 				this.setForeverMp5PerSecond(eventID, proto.foreverMp5PerSecond);
+				this.setForeverIncomingRageModel(eventID, proto.foreverIncomingRageModel);
+				this.setForeverRevelationModel(eventID, proto.foreverRevelationModel);
+				this.setForeverDemoralizingThreat(eventID, proto.foreverDemoralizingThreat);
 				this.setEquipmentScale(eventID, proto.equipmentScale);
 			}
 			if (loadCategory(SimSettingCategories.External)) {

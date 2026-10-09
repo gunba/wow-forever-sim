@@ -85,7 +85,10 @@ func (hunter *Hunter) getExplosiveTrapConfig(rank int, timer *core.Timer) core.S
 				for hitIndex := int32(0); hitIndex < numHits; hitIndex++ {
 					baseDamage := sim.Roll(minDamage, maxDamage)
 					baseDamage *= sim.Encounter.AOECapMultiplier()
-					spell.CalcAndDealDamage(sim, curTarget, baseDamage, spell.OutcomeMagicHitAndCrit)
+					result := spell.CalcAndDealDamage(sim, curTarget, baseDamage, spell.OutcomeMagicHitAndCrit)
+					if result.Landed() {
+						hunter.procEntrapment(sim, curTarget)
+					}
 					curTarget = sim.Environment.NextTargetUnit(curTarget)
 				}
 				spell.Unit.AddStatDynamic(sim, stats.SpellHit, spellHit)

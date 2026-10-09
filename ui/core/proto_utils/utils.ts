@@ -1,3 +1,4 @@
+import { CURRENT_LEVEL_CAP } from '../constants/mechanics.js';
 import { SITE_BASE, WOWHEAD_IMAGES } from '../constants/other.js';
 import { Player } from '../player.js';
 import { Player as PlayerProto, ResourceType, Ruleset } from '../proto/api.js';
@@ -1573,6 +1574,8 @@ export function getEligibleEnchantSlots(enchant: Enchant): Array<ItemSlot> {
 }
 
 export function enchantAppliesToItem(enchant: Enchant, item: Item): boolean {
+	if (item.ilvl < enchant.itemLevelMin) return false;
+	if (enchant.armorTypes.length && !enchant.armorTypes.includes(item.armorType)) return false;
 	const sharedSlots = intersection(getEligibleEnchantSlots(enchant), getEligibleItemSlots(item));
 	if (sharedSlots.length == 0) return false;
 
@@ -1597,6 +1600,7 @@ export function enchantAppliesToItem(enchant: Enchant, item: Item): boolean {
 }
 
 export function canEquipEnchant(enchant: Enchant, player: Player<any>): boolean {
+	if (CURRENT_LEVEL_CAP < enchant.requiredLevel) return false;
 	if (enchant.classAllowlist.length > 0 && !enchant.classAllowlist.includes(player.getClass())) {
 		return false;
 	}

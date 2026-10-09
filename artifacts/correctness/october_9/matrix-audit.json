@@ -1,0 +1,49 @@
+{
+  "checks": [
+    {
+      "scenario": "main",
+      "profiles": 201,
+      "exactBaselinePlayerAndRequestPlayer": true,
+      "zeroWarnings": true,
+      "naturalHitAll201": true,
+      "provisionalModelsPresentWhereApplicable": true
+    },
+    {
+      "scenario": "tier1_off",
+      "profiles": 201,
+      "exactBaselinePlayerAndRequestPlayer": true,
+      "zeroWarnings": true,
+      "naturalHitAll201": true,
+      "provisionalModelsPresentWhereApplicable": true
+    },
+    {
+      "scenario": "gear_110",
+      "profiles": 201,
+      "exactBaselinePlayerAndRequestPlayer": true,
+      "zeroWarnings": true,
+      "naturalHitAll201": true,
+      "provisionalModelsPresentWhereApplicable": true
+    },
+    {
+      "scenario": "gear_150",
+      "profiles": 201,
+      "exactBaselinePlayerAndRequestPlayer": true,
+      "zeroWarnings": true,
+      "naturalHitAll201": true,
+      "provisionalModelsPresentWhereApplicable": true
+    },
+    {
+      "scenario": "original",
+      "profiles": 201,
+      "exactBaselinePlayerAndRequestPlayer": true,
+      "zeroWarnings": true,
+      "naturalHitAll201": true,
+      "provisionalModelsPresentWhereApplicable": true
+    }
+  ],
+  "completed": 1005,
+  "seed": 1815000001,
+  "iterations": 5000,
+  "gearScale": "Equipment/suffix stats and weapon damage scaled; enchants/effects/recipes unchanged",
+  "BearMigration": "Exact original PLAYERS, current requests FA false. Historical request support differs explicitly."
+}

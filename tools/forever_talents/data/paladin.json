@@ -726,10 +726,18 @@
           "maxRank": 1,
           "icon": "spell_holy_righteousnessaura",
           "iconSource": "classic",
-          "description": "When Seal of Fury's shield is fully absorbed, restore {0} Mana, increased by {1}% per level the attacker is above you, up to {2}%.",
-          "ranks": [[38, 15, 45]],
-          "ranksObserved": [1],
-          "ranksSource": "observed",
+          "description": "When Seal of Fury's shield is fully absorbed, restore Mana equal to your level ({0} at level60), increased by {1}% per level the actual attacker is above you, up to {2}%. This mana causes no threat. Shield lifetime/replacement uses an explicitly provisional model, not a verified server script.",
+          "ranks": [
+            [
+              60,
+              15,
+              45
+            ]
+          ],
+          "ranksObserved": [
+            1
+          ],
+          "ranksSource": "manual",
           "source": {
             "kind": "video",
             "video": "DxtVEhjyROU",
@@ -739,6 +747,36 @@
             "confidence": 1.0,
             "reader": "Qwen3VL-4B-Instruct-Q4_K_M+tooltip-v3",
             "reviewed": false
+          },
+          "priorPresentation": {
+            "name": "Improved Seal of Fury",
+            "description": "When Seal of Fury's shield is fully absorbed, restore {0} Mana, increased by {1}% per level the attacker is above you, up to {2}%.",
+            "ranks": [
+              [
+                38,
+                15,
+                45
+              ]
+            ],
+            "ranksSource": "observed"
+          },
+          "ranksNote": "Current presentation is a manually applied 1.60.1.70291 primary-client/official overlay; original observation/prior values remain in priorPresentation and source.",
+          "currentEvidenceOverlay": {
+            "build": "1.60.1.70291",
+            "authority": "Current source UI with pinned client DB2/official overlay, not a replacement video observation",
+            "sourceRows": {
+              "spellId": 1314103,
+              "manaActionId": 1314104,
+              "casterLevelDisplay": 60
+            },
+            "engineCoverage": {
+              "status": "implemented-provisional-model",
+              "scope": "Sourced mana uses caster level, +15% per actual-attacker level above caster, capped at3 levels, no threat. Full depletion only; shield lifetime/replacement convention remains explicitly provisional."
+            },
+            "sourceUrls": [
+              "https://wago.tools/db2/SpellEffect?build=1.60.1.70291",
+              "https://us.forums.blizzard.com/en/wow/t/2360696/5"
+            ]
           }
         },
         {

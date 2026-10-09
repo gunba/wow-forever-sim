@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 	"sync"
 
 	"github.com/wowsims/classic/sim/core"
@@ -86,7 +87,27 @@ func (b build) presetTalents() string {
 	return string(m[1])
 }
 
+// Select source-level race variants before the complete ranked defaults are loaded.
+// This keeps preset/reference routes honest as well as fresh native defaults.
+func (b build) racePreset(race proto.Race) build {
+	if b.Key == "smite" && race == proto.Race_RaceUndead {
+		b.APL = "launch_undead"
+	}
+	if b.isTank() {
+		slug := strings.ToLower(strings.ReplaceAll(raceName(race), " ", "_"))
+		b.Gear = "forever_" + slug
+		if b.Key == "tank_warrior" {
+			b.APL = "forever_protection_" + slug
+		}
+		if b.Key != "feral_tank_druid" {
+			b.Preset = "TalentsProtection" + strings.ReplaceAll(raceName(race), " ", "")
+		}
+	}
+	return b
+}
+
 func (b build) player(race proto.Race) *proto.Player {
+	b = b.racePreset(race)
 	if b.isTank() {
 		p := googleProto.Clone(tankControl(b.Key).Raid.Parties[0].Players[0]).(*proto.Player)
 		p.Name, p.Race = b.Name, race

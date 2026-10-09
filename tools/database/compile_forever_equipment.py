@@ -8,6 +8,7 @@ not certify that an item's effects are implemented.
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 from pathlib import Path
 
@@ -155,9 +156,29 @@ def compile_item(item: dict, rates: dict, vendor: dict | None = None) -> dict:
     return out
 
 
+def apply_source_updates(catalog: dict, updates: dict) -> dict:
+    """Apply reviewed real-item deltas without touching modeled gear budgets."""
+    result = copy.deepcopy(catalog)
+    items = {item["id"]: item for item in result["items"]}
+    for override in updates["classMaskOverrides"]:
+        item = items[override["id"]]
+        if item["classMask"] not in (override["previousClassMask"], override["classMask"]):
+            raise ValueError(f"unexpected class mask for {item['id']}")
+        item["classMask"] = override["classMask"]
+    for item in updates["addedItems"]:
+        if item["id"] in items:
+            raise ValueError(f"duplicate reviewed item {item['id']}")
+        added = copy.deepcopy(item)
+        result["items"].append(added)
+        items[added["id"]] = added
+    return result
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--catalog", type=Path, default=Path("assets/db_inputs/forever_gear_catalog.json"))
+    parser.add_argument("--item-updates", type=Path,
+                        default=Path("assets/db_inputs/forever_item_updates_70291.json"))
     parser.add_argument("--synthetic-catalog", type=Path,
                         default=Path("assets/db_inputs/forever_synthetic_gear.json"))
     parser.add_argument("--current-synthetic-catalog", type=Path,
@@ -166,6 +187,8 @@ def main() -> None:
     parser.add_argument("--out", type=Path, default=Path("assets/db_inputs/forever_equipment.json"))
     args = parser.parse_args()
     catalog = json.loads(args.catalog.read_text())
+    if args.item_updates.exists():
+        catalog = apply_source_updates(catalog, json.loads(args.item_updates.read_text()))
     vendors, _ = read_vendor_exports(args.vendor_dir)
     rates = load_level_60_coefficients()
     compiled = []

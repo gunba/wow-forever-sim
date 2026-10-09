@@ -166,9 +166,9 @@
 	"12975": {
 		"ability": "Last Stand",
 		"file": "sim/warrior/talents.go",
-		"note": "Beta client 1.60.1.69893: 30% of maximum health for 20 sec as in Classic, on a 3 min cooldown (Classic 10 min).",
+		"note": "30%/20s/3min are retained source values. The engine snapshots30% of final maximum Health at activation and compensates raw Health for existing multipliers (including Tauren/Mining); it is not a multiplier on future gear changes or merely a free heal. Expiration removes the grant from maximum/current Health without damage or TMI; a non-dying1HP floor is the retained Classic convention, not a newly decoded Forever script.",
 		"source": "forever",
-		"tooltip": "Instant\n3 min cooldown\nWhen activated, this ability temporarily grants you 30% of your maximum health for 20 sec. After the effect expires, the health is lost."
+		"tooltip": "Last Stand\n3min cooldown\nFor20sec grants temporary maximum and current Health equal to30% of maximum Health at activation."
 	},
 	"13048": {
 		"ability": "Enrage",

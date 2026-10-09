@@ -178,7 +178,7 @@ func (rot *APLRotation) reset(sim *Simulation) {
 // and leverage the community's existing familiarity.
 // https://github.com/simulationcraft/simc/wiki/ActionLists
 func (apl *APLRotation) DoNextAction(sim *Simulation) {
-	if sim.CurrentTime < 0 {
+	if sim.CurrentTime < 0 || apl.unit.PseudoStats.Stunned {
 		return
 	}
 

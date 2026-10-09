@@ -18,6 +18,16 @@ var FrostboltCastTime = [FrostboltRanks + 1]int32{0, 1500, 1800, 2200, 2600, 300
 var FrostboltManaCost = [FrostboltRanks + 1]float64{0, 25, 35, 50, 65, 100, 130, 160, 195, 225, 260, 290}
 var FrostboltLevel = [FrostboltRanks + 1]int{0, 4, 8, 14, 20, 26, 32, 38, 44, 50, 56, 60}
 
+// Changed low ranks only; higher ranks and Classic retain their prior arrays.
+var foreverFrostboltRankDamage = [...]mageSpellRankDamage{
+	{},
+	{19, 0.10526315868, 0.20000000298, 4, 8},
+	{29, 0.12121211737, 0.30000001192, 8, 12},
+	{46, 0.11111111194, 0.5, 14, 18},
+	{70, 0.10256409645, 0.80000001192, 20, 24},
+	{104, 0.09090909362, 1.29999995232, 26, 30},
+}
+
 func (mage *Mage) registerFrostboltSpell() {
 	mage.Frostbolt = make([]*core.Spell, FrostboltRanks+1)
 
@@ -35,6 +45,9 @@ func (mage *Mage) getFrostboltConfig(rank int) core.SpellConfig {
 	spellId := FrostboltSpellId[rank]
 	baseDamageLow := FrostboltBaseDamage[rank][0]
 	baseDamageHigh := FrostboltBaseDamage[rank][1]
+	if mage.Env.IsForever() && rank < len(foreverFrostboltRankDamage) {
+		baseDamageLow, baseDamageHigh = foreverFrostboltRankDamage[rank].rangeAtLevel(mage.Level)
+	}
 	spellCoeff := FrostboltSpellCoeff[rank]
 	castTime := FrostboltCastTime[rank]
 	manaCost := FrostboltManaCost[rank]

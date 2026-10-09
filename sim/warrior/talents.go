@@ -540,18 +540,37 @@ func (warrior *Warrior) registerLastStandCD() {
 	actionID := core.ActionID{SpellID: 12975}
 	healthMetrics := warrior.NewHealthMetrics(actionID)
 
-	var bonusHealth float64
+	var bonusHealth, rawBonusHealth float64
 	lastStandAura := warrior.RegisterAura(core.Aura{
 		Label:    "Last Stand",
 		ActionID: actionID,
 		Duration: time.Second * 20,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
-			bonusHealth = warrior.MaxHealth() * 0.3
-			warrior.AddStatsDynamic(sim, stats.Stats{stats.Health: bonusHealth})
+			if warrior.Env.IsForever() {
+				bonusHealth = warrior.MaxHealth() * .3
+				// The client describes a temporary flat-health grant calculated
+				// from maximum health at activation. Compensate raw Health for
+				// its existing multipliers, rather than multiplying Tauren/Mining
+				// a second time or amplifying later gear changes by another 30%.
+				healthFactor := warrior.ApplyStatDependencies(stats.Stats{stats.Health: 1})[stats.Health]
+				rawBonusHealth = bonusHealth / healthFactor
+				warrior.AddStatsDynamic(sim, stats.Stats{stats.Health: rawBonusHealth})
+			} else {
+				bonusHealth = warrior.MaxHealth() * 0.3
+				warrior.AddStatsDynamic(sim, stats.Stats{stats.Health: bonusHealth})
+			}
 			warrior.GainHealth(sim, bonusHealth, healthMetrics)
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-			warrior.AddStatsDynamic(sim, stats.Stats{stats.Health: -bonusHealth})
+			if warrior.Env.IsForever() {
+				before := warrior.MaxHealth()
+				warrior.AddStatsDynamic(sim, stats.Stats{stats.Health: -rawBonusHealth})
+				// Spell 12975 explicitly says the temporary health is lost on
+				// expiration. Removing maximum health alone retained a free heal.
+				warrior.ExpireTemporaryHealth(sim, before-warrior.MaxHealth(), healthMetrics)
+			} else {
+				warrior.AddStatsDynamic(sim, stats.Stats{stats.Health: -bonusHealth})
+			}
 		},
 	})
 

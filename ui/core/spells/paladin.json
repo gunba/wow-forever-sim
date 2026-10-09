@@ -1,4 +1,81 @@
 {
+	"1311649": {
+		"ability": "Seal of Fury (rank 1)",
+		"file": "sim/paladin/sof.go",
+		"source": "assumed",
+		"tooltip": "40 Mana before seal modifiers\nSeal duration30sec\nLanded white attacks deal6 Holy damage (+0.10 SP); with an equipped shield, grant absorption equal to50% of actual proc damage.",
+		"note": "70291 rank1: seal1311649, proc1311647, judgement1311650; learn10. Improved Seals multiplies supported damage5% per point once. Only landed white attacks trigger the proc,100%; no invented special/miss trigger. Damage/SP/equipment/depletion rules are primary-backed. Shield amount is50% of ACTUAL Holy proc damage with an equipped shield, not Judgement damage. One replacement pool across ranks; optional duration0 disables shield only. A new seal does not itself prove a shield lifetime. One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics.",
+		"assumptions": [
+			"One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics."
+		]
+	},
+	"1311656": {
+		"ability": "Seal of Fury (rank 2)",
+		"file": "sim/paladin/sof.go",
+		"source": "assumed",
+		"tooltip": "60 Mana before seal modifiers\nSeal duration30sec\nLanded white attacks deal9 Holy damage (+0.10 SP); with an equipped shield, grant absorption equal to50% of actual proc damage.",
+		"note": "70291 rank2: seal1311656, proc1311654, judgement1311655; learn18. Improved Seals multiplies supported damage5% per point once. Only landed white attacks trigger the proc,100%; no invented special/miss trigger. Damage/SP/equipment/depletion rules are primary-backed. Shield amount is50% of ACTUAL Holy proc damage with an equipped shield, not Judgement damage. One replacement pool across ranks; optional duration0 disables shield only. A new seal does not itself prove a shield lifetime. One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics.",
+		"assumptions": [
+			"One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics."
+		]
+	},
+	"20163": {
+		"ability": "Seal of Fury (rank 3)",
+		"file": "sim/paladin/sof.go",
+		"source": "assumed",
+		"tooltip": "90 Mana before seal modifiers\nSeal duration30sec\nLanded white attacks deal14 Holy damage (+0.10 SP); with an equipped shield, grant absorption equal to50% of actual proc damage.",
+		"note": "70291 rank3: seal20163, proc20231, judgement20183; learn25. Improved Seals multiplies supported damage5% per point once. Only landed white attacks trigger the proc,100%; no invented special/miss trigger. Damage/SP/equipment/depletion rules are primary-backed. Shield amount is50% of ACTUAL Holy proc damage with an equipped shield, not Judgement damage. One replacement pool across ranks; optional duration0 disables shield only. A new seal does not itself prove a shield lifetime. One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics.",
+		"assumptions": [
+			"One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics."
+		]
+	},
+	"20419": {
+		"ability": "Seal of Fury (rank 4)",
+		"file": "sim/paladin/sof.go",
+		"source": "assumed",
+		"tooltip": "120 Mana before seal modifiers\nSeal duration30sec\nLanded white attacks deal19 Holy damage (+0.10 SP); with an equipped shield, grant absorption equal to50% of actual proc damage.",
+		"note": "70291 rank4: seal20419, proc20415, judgement20411; learn34. Improved Seals multiplies supported damage5% per point once. Only landed white attacks trigger the proc,100%; no invented special/miss trigger. Damage/SP/equipment/depletion rules are primary-backed. Shield amount is50% of ACTUAL Holy proc damage with an equipped shield, not Judgement damage. One replacement pool across ranks; optional duration0 disables shield only. A new seal does not itself prove a shield lifetime. One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics.",
+		"assumptions": [
+			"One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics."
+		]
+	},
+	"20421": {
+		"ability": "Seal of Fury (rank 5)",
+		"file": "sim/paladin/sof.go",
+		"source": "assumed",
+		"tooltip": "140 Mana before seal modifiers\nSeal duration30sec\nLanded white attacks deal25 Holy damage (+0.10 SP); with an equipped shield, grant absorption equal to50% of actual proc damage.",
+		"note": "70291 rank5: seal20421, proc20416, judgement20412; learn42. Improved Seals multiplies supported damage5% per point once. Only landed white attacks trigger the proc,100%; no invented special/miss trigger. Damage/SP/equipment/depletion rules are primary-backed. Shield amount is50% of ACTUAL Holy proc damage with an equipped shield, not Judgement damage. One replacement pool across ranks; optional duration0 disables shield only. A new seal does not itself prove a shield lifetime. One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics.",
+		"assumptions": [
+			"One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics."
+		]
+	},
+	"20422": {
+		"ability": "Seal of Fury (rank 6)",
+		"file": "sim/paladin/sof.go",
+		"source": "assumed",
+		"tooltip": "170 Mana before seal modifiers\nSeal duration30sec\nLanded white attacks deal32 Holy damage (+0.10 SP); with an equipped shield, grant absorption equal to50% of actual proc damage.",
+		"note": "70291 rank6: seal20422, proc20417, judgement20413; learn50. Improved Seals multiplies supported damage5% per point once. Only landed white attacks trigger the proc,100%; no invented special/miss trigger. Damage/SP/equipment/depletion rules are primary-backed. Shield amount is50% of ACTUAL Holy proc damage with an equipped shield, not Judgement damage. One replacement pool across ranks; optional duration0 disables shield only. A new seal does not itself prove a shield lifetime. One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics.",
+		"assumptions": [
+			"One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics."
+		]
+	},
+	"20423": {
+		"ability": "Seal of Fury (rank 7)",
+		"file": "sim/paladin/sof.go",
+		"source": "assumed",
+		"tooltip": "200 Mana before seal modifiers\nSeal duration30sec\nLanded white attacks deal35 Holy damage (+0.10 SP); with an equipped shield, grant absorption equal to50% of actual proc damage.",
+		"note": "70291 rank7: seal20423, proc20418, judgement20414; learn58. Improved Seals multiplies supported damage5% per point once. Only landed white attacks trigger the proc,100%; no invented special/miss trigger. Damage/SP/equipment/depletion rules are primary-backed. Shield amount is50% of ACTUAL Holy proc damage with an equipped shield, not Judgement damage. One replacement pool across ranks; optional duration0 disables shield only. A new seal does not itself prove a shield lifetime. One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics.",
+		"assumptions": [
+			"One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics."
+		]
+	},
+	"1311701": {
+	"ability": "Echo of Fury",
+	"file": "sim/paladin/twist_of_light.go",
+	"source": "forever",
+	"note": "70291 one-charge white-melee proc, never expires; payload follows learned rank and retains the provisional SoF shield model.",
+	"tooltip": "Your next landed melee white attack also triggers the previous Seal of Fury rank. Misses, specials and Judgement do not consume this charge."
+},
 	"10310": {
 		"ability": "Lay on Hands",
 		"file": "sim/paladin/lay_on_hands.go",
@@ -643,5 +720,141 @@
 			"The enemy mark uses a magic application roll and its child uses a separate magic hit/crit roll.",
 			"The party-healing branch is not modeled."
 		]
+	},
+	"1311647": {
+		"ability": "Seal of Fury proc (rank 1)",
+		"file": "sim/paladin/sof.go",
+		"source": "assumed",
+		"tooltip": "6 Holy damage (+0.10 SP),100% per landed white attack; melee crit-only outcome. Equipped shield receives50% of actual damage as absorption.",
+		"note": "70291 rank1: seal1311649, proc1311647, judgement1311650; learn10. Improved Seals multiplies supported damage5% per point once. Only landed white attacks trigger the proc,100%; no invented special/miss trigger. Damage/SP/equipment/depletion rules are primary-backed. Shield amount is50% of ACTUAL Holy proc damage with an equipped shield, not Judgement damage. One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics.",
+		"assumptions": [
+			"One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics."
+		]
+	},
+	"1311650": {
+		"ability": "Judgement of Fury (rank 1)",
+		"file": "sim/paladin/sof.go",
+		"source": "forever",
+		"tooltip": "Level60 mean base 33.26 Holy damage (+0.45 SP), source variance 0.1. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
+		"note": "70291 base23, PPL1.71, learn10, cap16; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection."
+	},
+	"1311654": {
+		"ability": "Seal of Fury proc (rank 2)",
+		"file": "sim/paladin/sof.go",
+		"source": "assumed",
+		"tooltip": "9 Holy damage (+0.10 SP),100% per landed white attack; melee crit-only outcome. Equipped shield receives50% of actual damage as absorption.",
+		"note": "70291 rank2: seal1311656, proc1311654, judgement1311655; learn18. Improved Seals multiplies supported damage5% per point once. Only landed white attacks trigger the proc,100%; no invented special/miss trigger. Damage/SP/equipment/depletion rules are primary-backed. Shield amount is50% of ACTUAL Holy proc damage with an equipped shield, not Judgement damage. One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics.",
+		"assumptions": [
+			"One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics."
+		]
+	},
+	"1311655": {
+		"ability": "Judgement of Fury (rank 2)",
+		"file": "sim/paladin/sof.go",
+		"source": "forever",
+		"tooltip": "Level60 mean base 49.860002 Holy damage (+0.45 SP), source variance 0.1. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
+		"note": "70291 base36.900002, PPL2.16, learn18, cap24; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection."
+	},
+	"20231": {
+		"ability": "Seal of Fury proc (rank 3)",
+		"file": "sim/paladin/sof.go",
+		"source": "assumed",
+		"tooltip": "14 Holy damage (+0.10 SP),100% per landed white attack; melee crit-only outcome. Equipped shield receives50% of actual damage as absorption.",
+		"note": "70291 rank3: seal20163, proc20231, judgement20183; learn25. Improved Seals multiplies supported damage5% per point once. Only landed white attacks trigger the proc,100%; no invented special/miss trigger. Damage/SP/equipment/depletion rules are primary-backed. Shield amount is50% of ACTUAL Holy proc damage with an equipped shield, not Judgement damage. One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics.",
+		"assumptions": [
+			"One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics."
+		]
+	},
+	"20183": {
+		"ability": "Judgement of Fury (rank 3)",
+		"file": "sim/paladin/sof.go",
+		"source": "forever",
+		"tooltip": "Level60 mean base 69.12 Holy damage (+0.45 SP), source variance 0.1. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
+		"note": "70291 base54, PPL2.52, learn25, cap31; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection."
+	},
+	"20415": {
+		"ability": "Seal of Fury proc (rank 4)",
+		"file": "sim/paladin/sof.go",
+		"source": "assumed",
+		"tooltip": "19 Holy damage (+0.10 SP),100% per landed white attack; melee crit-only outcome. Equipped shield receives50% of actual damage as absorption.",
+		"note": "70291 rank4: seal20419, proc20415, judgement20411; learn34. Improved Seals multiplies supported damage5% per point once. Only landed white attacks trigger the proc,100%; no invented special/miss trigger. Damage/SP/equipment/depletion rules are primary-backed. Shield amount is50% of ACTUAL Holy proc damage with an equipped shield, not Judgement damage. One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics.",
+		"assumptions": [
+			"One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics."
+		]
+	},
+	"20411": {
+		"ability": "Judgement of Fury (rank 4)",
+		"file": "sim/paladin/sof.go",
+		"source": "forever",
+		"tooltip": "Level60 mean base 90.74 Holy damage (+0.45 SP), source variance 0.097561. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
+		"note": "70291 base74, PPL2.79, learn34, cap40; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection."
+	},
+	"20416": {
+		"ability": "Seal of Fury proc (rank 5)",
+		"file": "sim/paladin/sof.go",
+		"source": "assumed",
+		"tooltip": "25 Holy damage (+0.10 SP),100% per landed white attack; melee crit-only outcome. Equipped shield receives50% of actual damage as absorption.",
+		"note": "70291 rank5: seal20421, proc20416, judgement20412; learn42. Improved Seals multiplies supported damage5% per point once. Only landed white attacks trigger the proc,100%; no invented special/miss trigger. Damage/SP/equipment/depletion rules are primary-backed. Shield amount is50% of ACTUAL Holy proc damage with an equipped shield, not Judgement damage. One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics.",
+		"assumptions": [
+			"One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics."
+		]
+	},
+	"20412": {
+		"ability": "Judgement of Fury (rank 5)",
+		"file": "sim/paladin/sof.go",
+		"source": "forever",
+		"tooltip": "Level60 mean base 116.52 Holy damage (+0.45 SP), source variance 0.097561. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
+		"note": "70291 base96, PPL3.42, learn42, cap48; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection."
+	},
+	"20417": {
+		"ability": "Seal of Fury proc (rank 6)",
+		"file": "sim/paladin/sof.go",
+		"source": "assumed",
+		"tooltip": "32 Holy damage (+0.10 SP),100% per landed white attack; melee crit-only outcome. Equipped shield receives50% of actual damage as absorption.",
+		"note": "70291 rank6: seal20422, proc20417, judgement20413; learn50. Improved Seals multiplies supported damage5% per point once. Only landed white attacks trigger the proc,100%; no invented special/miss trigger. Damage/SP/equipment/depletion rules are primary-backed. Shield amount is50% of ACTUAL Holy proc damage with an equipped shield, not Judgement damage. One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics.",
+		"assumptions": [
+			"One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics."
+		]
+	},
+	"20413": {
+		"ability": "Judgement of Fury (rank 6)",
+		"file": "sim/paladin/sof.go",
+		"source": "forever",
+		"tooltip": "Level60 mean base 145.14 Holy damage (+0.45 SP), source variance 0.087591. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
+		"note": "70291 base123, PPL3.69, learn50, cap56; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection."
+	},
+	"20418": {
+		"ability": "Seal of Fury proc (rank 7)",
+		"file": "sim/paladin/sof.go",
+		"source": "assumed",
+		"tooltip": "35 Holy damage (+0.10 SP),100% per landed white attack; melee crit-only outcome. Equipped shield receives50% of actual damage as absorption.",
+		"note": "70291 rank7: seal20423, proc20418, judgement20414; learn58. Improved Seals multiplies supported damage5% per point once. Only landed white attacks trigger the proc,100%; no invented special/miss trigger. Damage/SP/equipment/depletion rules are primary-backed. Shield amount is50% of ACTUAL Holy proc damage with an equipped shield, not Judgement damage. One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics.",
+		"assumptions": [
+			"One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics."
+		]
+	},
+	"20414": {
+		"ability": "Judgement of Fury (rank 7)",
+		"file": "sim/paladin/sof.go",
+		"source": "forever",
+		"tooltip": "Level60 mean base 160.38 Holy damage (+0.45 SP), source variance 0.087591. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
+		"note": "70291 base153, PPL3.69, learn58, cap64; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection."
+	},
+	"1314104": {
+		"ability": "Improved Seal of Fury mana",
+		"file": "sim/paladin/sof.go",
+		"source": "assumed",
+		"tooltip": "On REAL full shield depletion, restore Mana equal to caster level, +15% per actual-attacker level above caster, capped at3levels/+45%. No threat.",
+		"note": "Primary talent/dummy1314103 and mana action1314104 support caster-level amount and attacker-level scaling. Replacement or expiration does not trigger mana. Actual damage spell/result identifies the attacker. The shield lifetime/replacement convention remains provisional, separate from these sourced mana numbers.",
+		"assumptions": [
+			"One shared replacement shield pool with a configurable lifetime, default30sec, is a provisional temporal convention; the seal's sourced30sec duration does not prove shield expiry/replacement semantics."
+		]
+	},
+	"20232": {
+		"ability": "Judgement of Fury taunt marker",
+		"file": "sim/paladin/sof.go",
+		"source": "forever",
+		"tooltip": "4sec taunt marker on landed Judgement of Fury.",
+		"note": "Source20232 duration4sec is registered as an aura only. Threat equalization, AI target selection and raid-boss taunt eligibility are NOT implemented by this marker; no unverified threat formula is added."
 	}
 }

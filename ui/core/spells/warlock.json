@@ -16,9 +16,9 @@
 	"1088": {
 		"ability": "Shadow Bolt",
 		"file": "sim/warlock/shadowbolt.go",
-		"note": "Forever roughly halved the damage and removed the low rank coefficient penalty. Values from the beta client 1.60.1.69893 (spell_client.py).",
 		"source": "forever",
-		"tooltip": "110 Mana\n3 sec cast\nSends a shadowy bolt at the enemy, causing 57 to 64 Shadow damage."
+		"tooltip": "Shadow Bolt Rank 4\n110 Mana before talent/other cost modifiers\nLevel60 source-model base: 58.217391 to 65.782609 Shadow damage (+0.857 SP).",
+		"note": "Client1.60.1.70291 SpellEffect 679838, SpellLevels: BP=58, variance=0.130435, PPL=0.8, learn=20, growth cap=25. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"1094": {
 		"ability": "Immolate",
@@ -702,9 +702,9 @@
 	"686": {
 		"ability": "Shadow Bolt",
 		"file": "sim/warlock/shadowbolt.go",
-		"note": "Forever roughly halved the damage and removed the low rank coefficient penalty. Values from the beta client 1.60.1.69893 (spell_client.py).",
 		"source": "forever",
-		"tooltip": "25 Mana\n1.7 sec cast\nSends a shadowy bolt at the enemy, causing 12 to 16 Shadow damage."
+		"tooltip": "Shadow Bolt Rank 1\n25 Mana before talent/other cost modifiers\nLevel60 source-model base: 11.942857 to 15.657143 Shadow damage (+0.486 SP).",
+		"note": "Client1.60.1.70291 SpellEffect 679275, SpellLevels: BP=13, variance=0.285714, PPL=0.2, learn=1, growth cap=5. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"688": {
 		"ability": "Summon Imp",
@@ -728,9 +728,9 @@
 	"695": {
 		"ability": "Shadow Bolt",
 		"file": "sim/warlock/shadowbolt.go",
-		"note": "Forever roughly halved the damage and removed the low rank coefficient penalty. Values from the beta client 1.60.1.69893 (spell_client.py).",
 		"source": "forever",
-		"tooltip": "40 Mana\n2.2 sec cast\nSends a shadowy bolt at the enemy, causing 25 to 31 Shadow damage."
+		"tooltip": "Shadow Bolt Rank 2\n40 Mana before talent/other cost modifiers\nLevel60 source-model base: 21.846154 to 27.153846 Shadow damage (+0.629 SP).",
+		"note": "Client1.60.1.70291 SpellEffect 679265, SpellLevels: BP=23, variance=0.230769, PPL=0.3, learn=6, growth cap=11. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"697": {
 		"ability": "Summon Voidwalker",
@@ -754,9 +754,9 @@
 	"705": {
 		"ability": "Shadow Bolt",
 		"file": "sim/warlock/shadowbolt.go",
-		"note": "Forever roughly halved the damage and removed the low rank coefficient penalty. Values from the beta client 1.60.1.69893 (spell_client.py).",
 		"source": "forever",
-		"tooltip": "70 Mana\n2.8 sec cast\nSends a shadowy bolt at the enemy, causing 41 to 48 Shadow damage."
+		"tooltip": "Shadow Bolt Rank 3\n70 Mana before talent/other cost modifiers\nLevel60 source-model base: 39.923077 to 46.076923 Shadow damage (+0.8 SP).",
+		"note": "Client1.60.1.70291 SpellEffect 688390, SpellLevels: BP=40, variance=0.153846, PPL=0.6, learn=12, growth cap=17. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"706": {
 		"ability": "Demon Armor",

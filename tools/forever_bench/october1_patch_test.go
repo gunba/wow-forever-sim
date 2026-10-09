@@ -19,7 +19,7 @@ func TestOctober1WarriorAndBearCriticalSwingRage(t *testing.T) {
 		key  string
 		race proto.Race
 		want float64
-	}{{"fury", proto.Race_RaceOrc, 2}, {"feral_tank_druid", proto.Race_RaceTauren, 1.75}} {
+	}{{"fury", proto.Race_RaceOrc, 2}, {"feral_tank_druid", proto.Race_RaceTauren, 2}} { // October 8 also makes Bear critical Rage +100%.
 		req := racialFixture(tc.key, tc.race)
 		req.Raid.Parties[0].Players[0].Rotation = &proto.APLRotation{}
 		sim := core.NewSim(req, simsignals.Signals{})

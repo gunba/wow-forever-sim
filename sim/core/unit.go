@@ -105,6 +105,7 @@ type Unit struct {
 	healthBar
 	manaBar
 	rageBar
+	foreverIncomingRageParameters ForeverIncomingRageParameters
 	energyBar
 	focusBar
 
@@ -140,6 +141,11 @@ type Unit struct {
 	// For channeled spells, only Expires is set.
 	// No more than one cast may be active at any given time.
 	Hardcast Hardcast
+
+	stunCount                 int
+	stunPriorFlag             bool
+	stunResumeAutos           bool
+	controlDiminishingReturns map[int32]*controlDiminishingReturns
 
 	// GCD-related PendingActions.
 	gcdAction      *PendingAction
@@ -532,7 +538,9 @@ func (unit *Unit) reset(sim *Simulation, _ Agent) {
 	unit.statsWithoutDeps = unit.initialStatsWithoutDeps
 	unit.stats = unit.initialStats
 	unit.PseudoStats = unit.initialPseudoStats
+	unit.stunCount, unit.stunPriorFlag, unit.stunResumeAutos = 0, false, false
 	unit.auraTracker.reset(sim)
+	unit.resetCrowdControlDiminishingReturns()
 	// Spellbook needs to be reset AFTER auras.
 	for _, spell := range unit.Spellbook {
 		spell.reset(sim)

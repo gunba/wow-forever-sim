@@ -87,7 +87,7 @@ func TestProtectionMaintainsSunderUnderRagePressure(t *testing.T) {
 			continue
 		}
 		player := b.rankedPlayer(proto.Race_RaceNightElf)
-		preset := core.GetAplRotation("ui/tank_warrior/apls", "forever_protection").Rotation
+		preset := core.GetAplRotation("ui/tank_warrior/apls", b.racePreset(proto.Race_RaceNightElf).APL).Rotation
 		if !googleProto.Equal(player.Rotation, preset) {
 			t.Fatal("ranked default must contain the maintained Sunder rotation")
 		}

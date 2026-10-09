@@ -45,6 +45,7 @@ type gearSearchReport struct {
 	Accepted         []gearTrial
 	PoolIDs          []int32
 	Excluded         map[int32]string
+	ExcludedEnchants map[int32]string `json:",omitempty"`
 	TankGuardPolicy  *tankGuardPolicy `json:",omitempty"`
 	TankControl      *tankPair        `json:",omitempty"`
 	TankFinal        *tankPair        `json:",omitempty"`
@@ -335,7 +336,7 @@ func optimizeGear(b build, initial *proto.Player) *proto.Player {
 	if *modeledOnly {
 		p = seedModeledGear(b, p, pool)
 	}
-	report := gearSearchReport{Build: b.Key, Race: raceName(p.Race), Excluded: excluded}
+	report := gearSearchReport{Build: b.Key, Race: raceName(p.Race), Excluded: excluded, ExcludedEnchants: excludedEnchantsForPlayer(p)}
 	for _, item := range pool {
 		report.PoolIDs = append(report.PoolIDs, item.ID)
 	}

@@ -4,7 +4,7 @@
 		"file": "sim/druid/shifting_power.go",
 		"source": "forever",
 		"tooltip": "Cat Form only. Costs 55% base Mana before supported shapeshift discounts. Restores 40 Energy. 1-second GCD; 16-second cooldown.",
-		"note": "October 1 notes and static client 1.60.1.70170: spell 1322605. Improved Shifting Power 1322670 curve reduces CD 4/8s; Cat T1/item 272427 each subtract 1s via 1291059. Wolfshead 8345/17768 adds 20 Energy. These are current effects, not legacy Tiger's Fury."
+		"note": "Current70291/official overlay:40 Energy baseline, Wolfshead8345/17768 adds5 (45 total), not20. Full Energy rejects the cast before mana/GCD/CD. Mana55%base before supported discounts; cooldown16s minus Improved Shifting Power4/8s and eligible T1/item272427 modifiers1s each. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"1079": {
 		"ability": "Rip",
@@ -316,37 +316,37 @@
 	"5176": {
 		"ability": "Wrath",
 		"file": "sim/druid/wrath.go",
-		"note": "Client 1.60.1.70009 increased Wrath's base damage and per-level growth. Mana, cast times and spell coefficients remain as previously modeled; rank 8 deals 92-102 base damage at its max scaling level.",
 		"source": "forever",
-		"tooltip": "10 Mana\n1.5 sec cast\nCauses 15 to 18 Nature damage to the target."
+		"tooltip": "Wrath Rank 1\n10 Mana before talent/other cost modifiers\nLevel60 source-model base: 14.646154 to 16.953846 Nature damage (+0.429 SP).",
+		"note": "Client1.60.1.70291 SpellEffect 683786, SpellLevels: BP=15, variance=0.153846, PPL=0.2, learn=1, growth cap=5. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"5177": {
 		"ability": "Wrath",
 		"file": "sim/druid/wrath.go",
-		"note": "Client 1.60.1.70009 increased Wrath's base damage and per-level growth. Mana, cast times and spell coefficients remain as previously modeled; rank 8 deals 92-102 base damage at its max scaling level.",
 		"source": "forever",
-		"tooltip": "20 Mana\n1.7 sec cast\nCauses 25 to 28 Nature damage to the target."
+		"tooltip": "Wrath Rank 2\n20 Mana before talent/other cost modifiers\nLevel60 source-model base: 21.244445 to 24.355556 Nature damage (+0.486 SP).",
+		"note": "Client1.60.1.70291 SpellEffect 683787, SpellLevels: BP=21, variance=0.148148, PPL=0.3, learn=6, growth cap=12. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"5178": {
 		"ability": "Wrath",
 		"file": "sim/druid/wrath.go",
-		"note": "Client 1.60.1.70009 increased Wrath's base damage and per-level growth. Mana, cast times and spell coefficients remain as previously modeled; rank 8 deals 92-102 base damage at its max scaling level.",
 		"source": "forever",
-		"tooltip": "40 Mana\n2 sec cast\nCauses 32 to 37 Nature damage to the target."
+		"tooltip": "Wrath Rank 3\n40 Mana before talent/other cost modifiers\nLevel60 source-model base: 30.5 to 35.5 Nature damage (+0.571 SP).",
+		"note": "Client1.60.1.70291 SpellEffect 683788, SpellLevels: BP=30, variance=0.166667, PPL=0.5, learn=14, growth cap=20. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"5179": {
 		"ability": "Wrath",
 		"file": "sim/druid/wrath.go",
-		"note": "Client 1.60.1.70009 increased Wrath's base damage and per-level growth. Mana, cast times and spell coefficients remain as previously modeled; rank 8 deals 92-102 base damage at its max scaling level.",
 		"source": "forever",
-		"tooltip": "50 Mana\n2 sec cast\nCauses 41 to 46 Nature damage to the target."
+		"tooltip": "Wrath Rank 4\n50 Mana before talent/other cost modifiers\nLevel60 source-model base: 37.879412 to 43.320588 Nature damage (+0.571 SP).",
+		"note": "Client1.60.1.70291 SpellEffect 683789, SpellLevels: BP=37, variance=0.147059, PPL=0.6, learn=22, growth cap=28. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"5180": {
 		"ability": "Wrath",
 		"file": "sim/druid/wrath.go",
-		"note": "Client 1.60.1.70009 increased Wrath's base damage and per-level growth. Mana, cast times and spell coefficients remain as previously modeled; rank 8 deals 92-102 base damage at its max scaling level.",
 		"source": "forever",
-		"tooltip": "70 Mana\n2 sec cast\nCauses 47 to 53 Nature damage to the target."
+		"tooltip": "Wrath Rank 5\n70 Mana before talent/other cost modifiers\nLevel60 source-model base: 46.283333 to 52.116667 Nature damage (+0.571 SP).",
+		"note": "Client1.60.1.70291 SpellEffect 683670, SpellLevels: BP=45, variance=0.12963, PPL=0.7, learn=30, growth cap=36. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"5217": {
 		"ability": "Tiger's Fury",
@@ -554,10 +554,10 @@
 	"9634": {
 		"ability": "Dire Bear Form",
 		"assumptions": [
-			"The 1.3x threat is Classic's; the client tables do not carry threat."
+			"The incoming-Rage reference-creature formula is an explicit simulator assumption, separate from the sourced outgoing Bear threat correction."
 		],
 		"file": "sim/druid/forms.go",
-		"note": "Beta client 1.60.1.69893: the passive (9635) gives 360% item armor, 600 health plus 32 a level and 120 attack power plus 3 a level, 1240 and 180 at 60, as the sim has; Furor's Bear half is 20% a point at 10 Rage. Forever moves Feral Instinct onto Swipe, so the form's threat is the flat 1.3x it carries here.",
+		"note": "Forever Dire Bear retains the client armor/health/AP package and uses1.5x outgoing threat; Classic retains1.3x. Form stat dependencies rebuild on equipment swaps. Incoming damage Rage is a separately configurable provisional reference-creature model, not established by the form tooltip.",
 		"source": "assumed",
 		"tooltip": "55% of base mana\nInstant\nShapeshift into dire bear form, increasing melee attack power by 180, health by 1240, armor contribution from items by 360% and threat caused by 30%. Rage replaces mana while the form lasts."
 	},

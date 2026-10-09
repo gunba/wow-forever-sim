@@ -144,6 +144,11 @@ func NewTarget(options *proto.Target, targetIndex int32) *Target {
 	target.PseudoStats.CanBlock = true
 	target.PseudoStats.CanParry = true
 	target.PseudoStats.CanCrush = true
+	target.PseudoStats.CanBeStunned = options.CanBeStunned
+	target.PseudoStats.CanBeRooted = options.CanBeRooted
+	target.PseudoStats.CanBeSlowed = options.CanBeSlowed
+	target.PseudoStats.UseCrowdControlDiminishingReturns = options.UseCrowdControlDiminishingReturns
+	target.PseudoStats.CrowdControlDRResetAfterApplication = options.CrowdControlDrResetAnchor == proto.CrowdControlDrResetAnchor_CrowdControlDrResetAfterApplication
 	target.PseudoStats.ParryHaste = options.ParryHaste
 	target.PseudoStats.InFrontOfTarget = true
 	target.PseudoStats.DamageSpread = options.DamageSpread

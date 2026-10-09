@@ -659,5 +659,107 @@
 		"source": "forever",
 		"tooltip": "Increases damage and healing done by magical spells and effects by up to 70 for 10 sec.",
 		"note": "The buff 1299743 applies."
+	},
+	"1248759": {
+		"ability": "Recovery",
+		"file": "sim/common/forever_enchants.go",
+		"source": "forever",
+		"note": "Client 70291 effect 136 restores 5% of current maximum health. This triggered self-heal has no mana cost. Recovery does not cancel Druid forms.",
+		"tooltip": "Heals you for 5% of maximum health when a melee auto/special is dodged or parried. Shared 10-second cooldown."
+	},
+	"1248761": {
+		"ability": "Recovery — enchant driver",
+		"file": "sim/common/forever_enchants.go",
+		"source": "forever",
+		"note": "70291 SpellAuraOptions 242962 gives ProcChance 100 and a 10,000 ms ICD; proc mask 20 is outgoing melee autos/specials. Spell 1248760 restricts outcomes to dodge/parry. Equip-aura effect 3 is not limited to the enchanted hand; duplicate enchants share one owner gate.",
+		"tooltip": "While equipped, your dodged or parried melee attacks trigger Recovery, healing 5% of maximum health, at most once every 10 seconds."
+	},
+	"1248806": {
+		"ability": "Revelation driver",
+		"file": "sim/common/forever_enchants.go",
+		"source": "assumed",
+		"tooltip": "Explicit provisional model only. Source payload:15sec,1charge,+100 percentage points direct critical chance on source-whitelisted class spell families; retained in forms. No Warrior/Rogue payload.",
+		"note": "Primary70291 enchant8217: application1248805, driver1248806; class payloads1248808/1323377/1323392/1323400/1323410/1323418/1323419. This row source SpellName is 'Revelation', SpellIconFileDataID135915. Ordinary DoT/HoT/wand/container effects are excluded; source-backed logical direct channel-child aliases preserve their existing timing/metrics. Misses that never roll crit preserve an existing charge; trigger-on-miss for a NEW proc is separately configured. Unsupported classes/nil model are rejected rather than silently using a hidden chance. Proc law is explicitly enabled/configured: conditional noncritical direct EVENT probability baseChance*(1-effectiveCritChance)^critExponent. It is not a decoded server formula; exponent0 is conditional, not per-cast.",
+		"assumptions": [
+			"Proc law is explicitly enabled/configured: conditional noncritical direct EVENT probability baseChance*(1-effectiveCritChance)^critExponent. It is not a decoded server formula; exponent0 is conditional, not per-cast.",
+			"One charge is reserved/consumed by the first eligible crit-roll sample, including the first calculated AoE target; this event/target ordering is a declared model, not proof of all-target next-spell behavior."
+		]
+	},
+	"1248808": {
+		"ability": "Revelation (Mage)",
+		"file": "sim/common/forever_enchants.go",
+		"source": "assumed",
+		"tooltip": "Explicit provisional model only. Source payload:15sec,1charge,+100 percentage points direct critical chance on source-whitelisted class spell families; retained in forms. No Warrior/Rogue payload.",
+		"note": "Primary70291 enchant8217: application1248805, driver1248806; class payloads1248808/1323377/1323392/1323400/1323410/1323418/1323419. This row source SpellName is 'Revelation', SpellIconFileDataID135934. Ordinary DoT/HoT/wand/container effects are excluded; source-backed logical direct channel-child aliases preserve their existing timing/metrics. Misses that never roll crit preserve an existing charge; trigger-on-miss for a NEW proc is separately configured. Unsupported classes/nil model are rejected rather than silently using a hidden chance. Proc law is explicitly enabled/configured: conditional noncritical direct EVENT probability baseChance*(1-effectiveCritChance)^critExponent. It is not a decoded server formula; exponent0 is conditional, not per-cast.",
+		"assumptions": [
+			"Proc law is explicitly enabled/configured: conditional noncritical direct EVENT probability baseChance*(1-effectiveCritChance)^critExponent. It is not a decoded server formula; exponent0 is conditional, not per-cast.",
+			"One charge is reserved/consumed by the first eligible crit-roll sample, including the first calculated AoE target; this event/target ordering is a declared model, not proof of all-target next-spell behavior."
+		]
+	},
+	"1323377": {
+		"ability": "Revelation (Priest)",
+		"file": "sim/common/forever_enchants.go",
+		"source": "assumed",
+		"tooltip": "Explicit provisional model only. Source payload:15sec,1charge,+100 percentage points direct critical chance on source-whitelisted class spell families; retained in forms. No Warrior/Rogue payload.",
+		"note": "Primary70291 enchant8217: application1248805, driver1248806; class payloads1248808/1323377/1323392/1323400/1323410/1323418/1323419. This row source SpellName is 'Revelation', SpellIconFileDataID135934. Ordinary DoT/HoT/wand/container effects are excluded; source-backed logical direct channel-child aliases preserve their existing timing/metrics. Misses that never roll crit preserve an existing charge; trigger-on-miss for a NEW proc is separately configured. Unsupported classes/nil model are rejected rather than silently using a hidden chance. Proc law is explicitly enabled/configured: conditional noncritical direct EVENT probability baseChance*(1-effectiveCritChance)^critExponent. It is not a decoded server formula; exponent0 is conditional, not per-cast.",
+		"assumptions": [
+			"Proc law is explicitly enabled/configured: conditional noncritical direct EVENT probability baseChance*(1-effectiveCritChance)^critExponent. It is not a decoded server formula; exponent0 is conditional, not per-cast.",
+			"One charge is reserved/consumed by the first eligible crit-roll sample, including the first calculated AoE target; this event/target ordering is a declared model, not proof of all-target next-spell behavior."
+		]
+	},
+	"1323392": {
+		"ability": "Revelation (Warlock)",
+		"file": "sim/common/forever_enchants.go",
+		"source": "assumed",
+		"tooltip": "Explicit provisional model only. Source payload:15sec,1charge,+100 percentage points direct critical chance on source-whitelisted class spell families; retained in forms. No Warrior/Rogue payload.",
+		"note": "Primary70291 enchant8217: application1248805, driver1248806; class payloads1248808/1323377/1323392/1323400/1323410/1323418/1323419. This row source SpellName is 'Revelation', SpellIconFileDataID135934. Ordinary DoT/HoT/wand/container effects are excluded; source-backed logical direct channel-child aliases preserve their existing timing/metrics. Misses that never roll crit preserve an existing charge; trigger-on-miss for a NEW proc is separately configured. Unsupported classes/nil model are rejected rather than silently using a hidden chance. Proc law is explicitly enabled/configured: conditional noncritical direct EVENT probability baseChance*(1-effectiveCritChance)^critExponent. It is not a decoded server formula; exponent0 is conditional, not per-cast.",
+		"assumptions": [
+			"Proc law is explicitly enabled/configured: conditional noncritical direct EVENT probability baseChance*(1-effectiveCritChance)^critExponent. It is not a decoded server formula; exponent0 is conditional, not per-cast.",
+			"One charge is reserved/consumed by the first eligible crit-roll sample, including the first calculated AoE target; this event/target ordering is a declared model, not proof of all-target next-spell behavior."
+		]
+	},
+	"1323400": {
+		"ability": "Revelation (Druid)",
+		"file": "sim/common/forever_enchants.go",
+		"source": "assumed",
+		"tooltip": "Explicit provisional model only. Source payload:15sec,1charge,+100 percentage points direct critical chance on source-whitelisted class spell families; retained in forms. No Warrior/Rogue payload.",
+		"note": "Primary70291 enchant8217: application1248805, driver1248806; class payloads1248808/1323377/1323392/1323400/1323410/1323418/1323419. This row source SpellName is 'Revelation', SpellIconFileDataID135934. Ordinary DoT/HoT/wand/container effects are excluded; source-backed logical direct channel-child aliases preserve their existing timing/metrics. Misses that never roll crit preserve an existing charge; trigger-on-miss for a NEW proc is separately configured. Unsupported classes/nil model are rejected rather than silently using a hidden chance. Proc law is explicitly enabled/configured: conditional noncritical direct EVENT probability baseChance*(1-effectiveCritChance)^critExponent. It is not a decoded server formula; exponent0 is conditional, not per-cast.",
+		"assumptions": [
+			"Proc law is explicitly enabled/configured: conditional noncritical direct EVENT probability baseChance*(1-effectiveCritChance)^critExponent. It is not a decoded server formula; exponent0 is conditional, not per-cast.",
+			"One charge is reserved/consumed by the first eligible crit-roll sample, including the first calculated AoE target; this event/target ordering is a declared model, not proof of all-target next-spell behavior."
+		]
+	},
+	"1323410": {
+		"ability": "Revelation (Hunter)",
+		"file": "sim/common/forever_enchants.go",
+		"source": "assumed",
+		"tooltip": "Explicit provisional model only. Source payload:15sec,1charge,+100 percentage points direct critical chance on source-whitelisted class spell families; retained in forms. No Warrior/Rogue payload.",
+		"note": "Primary70291 enchant8217: application1248805, driver1248806; class payloads1248808/1323377/1323392/1323400/1323410/1323418/1323419. This row source SpellName is 'Revelation', SpellIconFileDataID135934. Ordinary DoT/HoT/wand/container effects are excluded; source-backed logical direct channel-child aliases preserve their existing timing/metrics. Misses that never roll crit preserve an existing charge; trigger-on-miss for a NEW proc is separately configured. Unsupported classes/nil model are rejected rather than silently using a hidden chance. Proc law is explicitly enabled/configured: conditional noncritical direct EVENT probability baseChance*(1-effectiveCritChance)^critExponent. It is not a decoded server formula; exponent0 is conditional, not per-cast.",
+		"assumptions": [
+			"Proc law is explicitly enabled/configured: conditional noncritical direct EVENT probability baseChance*(1-effectiveCritChance)^critExponent. It is not a decoded server formula; exponent0 is conditional, not per-cast.",
+			"One charge is reserved/consumed by the first eligible crit-roll sample, including the first calculated AoE target; this event/target ordering is a declared model, not proof of all-target next-spell behavior."
+		]
+	},
+	"1323418": {
+		"ability": "Revelation (Shaman)",
+		"file": "sim/common/forever_enchants.go",
+		"source": "assumed",
+		"tooltip": "Explicit provisional model only. Source payload:15sec,1charge,+100 percentage points direct critical chance on source-whitelisted class spell families; retained in forms. No Warrior/Rogue payload.",
+		"note": "Primary70291 enchant8217: application1248805, driver1248806; class payloads1248808/1323377/1323392/1323400/1323410/1323418/1323419. This row source SpellName is 'Revelation', SpellIconFileDataID135934. Ordinary DoT/HoT/wand/container effects are excluded; source-backed logical direct channel-child aliases preserve their existing timing/metrics. Misses that never roll crit preserve an existing charge; trigger-on-miss for a NEW proc is separately configured. Unsupported classes/nil model are rejected rather than silently using a hidden chance. Proc law is explicitly enabled/configured: conditional noncritical direct EVENT probability baseChance*(1-effectiveCritChance)^critExponent. It is not a decoded server formula; exponent0 is conditional, not per-cast.",
+		"assumptions": [
+			"Proc law is explicitly enabled/configured: conditional noncritical direct EVENT probability baseChance*(1-effectiveCritChance)^critExponent. It is not a decoded server formula; exponent0 is conditional, not per-cast.",
+			"One charge is reserved/consumed by the first eligible crit-roll sample, including the first calculated AoE target; this event/target ordering is a declared model, not proof of all-target next-spell behavior."
+		]
+	},
+	"1323419": {
+		"ability": "Revelation (Paladin)",
+		"file": "sim/common/forever_enchants.go",
+		"source": "assumed",
+		"tooltip": "Explicit provisional model only. Source payload:15sec,1charge,+100 percentage points direct critical chance on source-whitelisted class spell families; retained in forms. No Warrior/Rogue payload.",
+		"note": "Primary70291 enchant8217: application1248805, driver1248806; class payloads1248808/1323377/1323392/1323400/1323410/1323418/1323419. This row source SpellName is 'Revelation', SpellIconFileDataID135934. Ordinary DoT/HoT/wand/container effects are excluded; source-backed logical direct channel-child aliases preserve their existing timing/metrics. Misses that never roll crit preserve an existing charge; trigger-on-miss for a NEW proc is separately configured. Unsupported classes/nil model are rejected rather than silently using a hidden chance. Proc law is explicitly enabled/configured: conditional noncritical direct EVENT probability baseChance*(1-effectiveCritChance)^critExponent. It is not a decoded server formula; exponent0 is conditional, not per-cast.",
+		"assumptions": [
+			"Proc law is explicitly enabled/configured: conditional noncritical direct EVENT probability baseChance*(1-effectiveCritChance)^critExponent. It is not a decoded server formula; exponent0 is conditional, not per-cast.",
+			"One charge is reserved/consumed by the first eligible crit-roll sample, including the first calculated AoE target; this event/target ordering is a declared model, not proof of all-target next-spell behavior."
+		]
 	}
 }

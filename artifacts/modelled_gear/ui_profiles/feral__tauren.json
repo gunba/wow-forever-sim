@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "1792800001",
+    "fixedRngSeed": "1815000001",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Horde",
@@ -216,28 +216,6 @@
         {
           "action": {
             "condition": {
-              "cmp": {
-                "op": "OpLe",
-                "lhs": {
-                  "currentEnergy": {}
-                },
-                "rhs": {
-                  "const": {
-                    "val": "40"
-                  }
-                }
-              }
-            },
-            "castSpell": {
-              "spellId": {
-                "spellId": 1322605
-              }
-            }
-          }
-        },
-        {
-          "action": {
-            "condition": {
               "and": {
                 "vals": [
                   {
@@ -369,6 +347,28 @@
             "castSpell": {
               "spellId": {
                 "spellId": 9896
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpLe",
+                "lhs": {
+                  "currentEnergy": {}
+                },
+                "rhs": {
+                  "const": {
+                    "val": "60"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 1322605
               }
             }
           }

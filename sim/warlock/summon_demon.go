@@ -10,14 +10,34 @@ func (warlock *Warlock) registerSummonDemon() {
 	manaCost := core.ManaCostOptions{
 		FlatCost: warlock.BaseMana,
 	}
-	// All have a default cast time of 10s and the active pet is dismissed when the cast starts
+	for _, pet := range warlock.BasePets {
+		pet.summonStunAura = pet.RegisterAura(core.Aura{
+			Label: "Summoning another demon", Duration: core.NeverExpires,
+			OnGain:   func(_ *core.Aura, sim *core.Simulation) { pet.AddStun(sim) },
+			OnExpire: func(_ *core.Aura, sim *core.Simulation) { pet.RemoveStun(sim) },
+		})
+	}
+	// Keep the existing Forever pet and its owned buffs until replacement.
 	cast := core.CastConfig{
 		DefaultCast: core.Cast{
 			GCD:      core.GCDDefault,
 			CastTime: time.Second * 10,
 		},
-		ModifyCast: func(sim *core.Simulation, spell *core.Spell, cast *core.Cast) {
-			warlock.changeActivePet(sim, nil, false)
+		OnCastStart: func(sim *core.Simulation, spell *core.Spell) {
+			if !warlock.Env.IsForever() {
+				warlock.changeActivePet(sim, nil, false)
+				return
+			}
+			if spell.CurCast.CastTime > 0 && warlock.ActivePet != nil && warlock.ActivePet.IsEnabled() {
+				warlock.summoningPet = warlock.ActivePet
+				warlock.summoningPet.summonStunAura.Activate(sim)
+			}
+		},
+		OnCastEnd: func(sim *core.Simulation, _ *core.Spell, _ bool) {
+			if warlock.summoningPet != nil {
+				warlock.summoningPet.summonStunAura.Deactivate(sim)
+				warlock.summoningPet = nil
+			}
 		},
 	}
 

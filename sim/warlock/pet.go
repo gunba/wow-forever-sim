@@ -20,7 +20,8 @@ type WarlockPet struct {
 	primaryAbility   *core.Spell
 	secondaryAbility *core.Spell
 
-	SoulLinkAura *core.Aura
+	SoulLinkAura   *core.Aura
+	summonStunAura *core.Aura
 
 	manaPooling bool
 }
@@ -138,6 +139,9 @@ func (wp *WarlockPet) Reset(_ *core.Simulation) {
 }
 
 func (wp *WarlockPet) Disable(sim *core.Simulation, isSacrifice bool) {
+	if !wp.IsEnabled() {
+		return
+	}
 	wp.Pet.Disable(sim)
 
 	if wp.OnPetDisable != nil {

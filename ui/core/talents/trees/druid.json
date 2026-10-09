@@ -871,15 +871,17 @@
           1223242
         ],
         "maxPoints": 2,
-        "name": "Predatory Instincts",
+        "name": "Natural Instinct",
         "icon": "ability_druid_predatoryinstincts",
-        "description": "Increases the critical strike damage bonus of your melee abilities by {0}%.",
+        "description": "Increases the critical strike damage bonus of your melee abilities by {0}% and spell healing by {1}% of your Intellect.",
         "ranks": [
           [
-            10
+            10,
+            12
           ],
           [
-            20
+            20,
+            25
           ]
         ]
       },

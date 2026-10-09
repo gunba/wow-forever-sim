@@ -1,10 +1,187 @@
 import { BooleanPicker } from '../components/boolean_picker.js';
 import { Player } from '../player.js';
-import { Spec, UnitReference } from '../proto/common.js';
+import { Ruleset } from '../proto/api.js';
+import { Class, ForeverIncomingRageModel, ForeverRevelationModel, Spec, UnitReference } from '../proto/common.js';
 import { emptyUnitReference } from '../proto_utils/utils.js';
 import { Sim } from '../sim.js';
 import { EventID, TypedEvent } from '../typed_event.js';
 import { EnumPicker } from './enum_picker.js';
+import { Input, InputConfig } from './input.js';
+
+interface ProvisionalNumberConfig extends InputConfig<Player<any>, number | undefined> {
+	id: string;
+	min: number;
+	max?: number;
+	defaultSource?: string;
+}
+
+// Unlike the general number picker, these assumptions must retain blank vs. zero
+// and display their full precision. Invalid edits never replace the saved value.
+class ProvisionalNumberPicker extends Input<Player<any>, number | undefined> {
+	private readonly inputElem: HTMLInputElement;
+	private readonly sourceElem: HTMLElement;
+	private readonly defaultSource?: string;
+
+	constructor(parent: HTMLElement, player: Player<any>, config: ProvisionalNumberConfig) {
+		super(parent, 'number-picker-root', player, config);
+		this.defaultSource = config.defaultSource;
+		this.inputElem = document.createElement('input');
+		this.inputElem.id = config.id;
+		this.inputElem.type = 'number';
+		this.inputElem.step = 'any';
+		this.inputElem.min = String(config.min);
+		if (config.max !== undefined) this.inputElem.max = String(config.max);
+		this.inputElem.required = config.defaultSource === undefined;
+		this.inputElem.placeholder = config.defaultSource === undefined ? '' : 'Default (blank)';
+		this.inputElem.classList.add('form-control');
+		this.sourceElem = document.createElement('small');
+		this.sourceElem.id = `${config.id}-source`;
+		this.sourceElem.classList.add('text-muted');
+		this.inputElem.setAttribute('aria-describedby', this.sourceElem.id);
+		this.rootElem.append(this.inputElem, this.sourceElem);
+		this.inputElem.addEventListener('change', () => {
+			const value = this.getInputValue();
+			this.inputElem.setCustomValidity(value !== undefined && !Number.isFinite(value) ? 'Enter a finite number.' : '');
+			if (!this.inputElem.reportValidity()) return;
+			this.inputChanged(TypedEvent.nextEventID());
+		}, { signal: this.signal });
+		this.init();
+	}
+
+	getInputElem(): HTMLInputElement {
+		return this.inputElem;
+	}
+
+	getInputValue(): number | undefined {
+		return this.inputElem.value === '' ? undefined : this.inputElem.valueAsNumber;
+	}
+
+	setInputValue(value: number | undefined) {
+		this.inputElem.value = value === undefined ? '' : String(value);
+		this.inputElem.setCustomValidity('');
+		this.sourceElem.textContent = value === undefined ? `Source: ${this.defaultSource}` : 'Source: manual provisional assumption.';
+	}
+}
+
+// Shared by individual and raid player settings. Returns its disposal callback.
+export function makeForeverProvisionalModelInputs(parent: HTMLElement, player: Player<any>): () => void {
+	const details = document.createElement('details');
+	details.classList.add('mt-3', 'forever-provisional-models');
+	const summary = document.createElement('summary');
+	summary.textContent = 'Advanced: provisional models';
+	details.appendChild(summary);
+	parent.appendChild(details);
+	const pickers: Array<Input<Player<any>, any>> = [];
+	const changedEvent = (p: Player<any>) => p.miscOptionsChangeEmitter;
+	const addNote = (text: string) => {
+		const note = document.createElement('p');
+		note.classList.add('small', 'mt-2');
+		note.textContent = text;
+		details.appendChild(note);
+	};
+	addNote('Unverified model assumptions for sensitivity analysis, not established game formulas. Settings are saved with the profile.');
+
+	if ([Spec.SpecWarrior, Spec.SpecTankWarrior, Spec.SpecFeralTankDruid].includes(player.spec)) {
+		addNote('Incoming rage: leave a field blank to use its declared default; enter a value for a manual assumption. Zero coefficient disables incoming rage. Bounds are model validation limits, not game claims.');
+		const addRageInput = (field: keyof ForeverIncomingRageModel, label: string, min: number, max: number, defaultSource: string) => {
+			pickers.push(new ProvisionalNumberPicker(details, player, {
+				id: `forever-incoming-rage-${field}`,
+				label,
+				min,
+				max,
+				defaultSource,
+				changedEvent,
+				getValue: p => p.getForeverIncomingRageModel()?.[field],
+				setValue: (eventID, p, value) => {
+					const model = p.getForeverIncomingRageModel() ?? ForeverIncomingRageModel.create();
+					model[field] = value;
+					p.setForeverIncomingRageModel(eventID, model);
+				},
+			}));
+		};
+		addRageInput('coefficient', 'Incoming rage coefficient (0–1000)', 0, 1000, 'declared central coefficient 10.');
+		addRageInput('referenceArmorOverride', 'Reference armor fraction (0–0.95)', 0, 0.95,
+			'clamp(ExpectedStatCreatureArmor / (Armor + ArmorConstant), 0.20, 0.40).');
+		addRageInput('expectedHealthOverride', 'Expected creature health (1–1,000,000,000)', 1, 1e9,
+			'ExpectedStatCreatureHealth at the player level.');
+		pickers.push(new ProvisionalNumberPicker(details, player, {
+			id: 'forever-demoralizing-threat',
+			label: 'Provisional Demoralizing threat per target',
+			labelTooltip: 'Flat threat per affected target for Demoralizing Shout/Roar, before stance/global modifiers. The exact Forever amount is unpublished. Blank retains the Classic-derived rank convention; explicit zero is a legacy-zero sensitivity. The finite 0–1,000,000 bounds are model validation limits, not game claims.',
+			min: 0,
+			max: 1e6,
+			defaultSource: 'retained Classic-derived rank convention (not a verified Forever amount).',
+			changedEvent,
+			getValue: p => p.getForeverDemoralizingThreat(),
+			setValue: (eventID, p, value) => p.setForeverDemoralizingThreat(eventID, value),
+		}));
+	}
+
+	addNote('Revelation (enchant 8217) requires an explicitly enabled provisional event model; no hidden proc chance is supplied (initial base chance 0%). For eligible noncritical direct events: p = baseChance × (1 − clamp(effectiveCrit, 0, 1))^exponent. Exponent 0 is flat conditional chance, not per cast. Source-backed channel damage children qualify through legacy tick aliases; ordinary DoT/HoT ticks, wands and channel containers do not. The first eligible crit-roll sample reserves one charge before projectile travel, not every target of a spell. A miss that never rolls crit preserves the charge; this is separate from allowing misses to trigger a new proc. The law, miss policy and event-sampling/consumption conventions are unverified script assumptions.');
+	if (player.getClass() === Class.ClassWarrior || player.getClass() === Class.ClassRogue) {
+		addNote('No Revelation class payload is present in the source for Warrior/Rogue. These controls can be saved, but equipping enchant 8217 on this class produces an explicit simulation error; this is an unsupported payload, not an item class restriction.');
+	}
+	pickers.push(new BooleanPicker(details, player, {
+		id: 'forever-revelation-enabled',
+		label: 'Enable provisional Revelation model',
+		changedEvent,
+		getValue: p => p.getForeverRevelationModel()?.enabled ?? false,
+		setValue: (eventID, p, enabled) => {
+			const model = p.getForeverRevelationModel() ?? ForeverRevelationModel.create();
+			model.enabled = enabled;
+			p.setForeverRevelationModel(eventID, model);
+		},
+	}));
+	const enableWhen = (p: Player<any>) => p.getForeverRevelationModel()?.enabled === true;
+	pickers.push(new ProvisionalNumberPicker(details, player, {
+		id: 'forever-revelation-base-chance',
+		label: 'Revelation base chance % (0–100)',
+		min: 0,
+		max: 100,
+		changedEvent,
+		enableWhen,
+		getValue: p => (p.getForeverRevelationModel()?.baseChance ?? 0) * 100,
+		setValue: (eventID, p, value) => {
+			if (value === undefined) return;
+			const model = p.getForeverRevelationModel() ?? ForeverRevelationModel.create();
+			model.baseChance = value / 100;
+			p.setForeverRevelationModel(eventID, model);
+		},
+	}));
+	pickers.push(new ProvisionalNumberPicker(details, player, {
+		id: 'forever-revelation-crit-exponent',
+		label: 'Revelation crit exponent (≥0)',
+		min: 0,
+		changedEvent,
+		enableWhen,
+		getValue: p => p.getForeverRevelationModel()?.critExponent ?? 0,
+		setValue: (eventID, p, value) => {
+			if (value === undefined) return;
+			const model = p.getForeverRevelationModel() ?? ForeverRevelationModel.create();
+			model.critExponent = value;
+			p.setForeverRevelationModel(eventID, model);
+		},
+	}));
+	pickers.push(new BooleanPicker(details, player, {
+		id: 'forever-revelation-trigger-on-miss',
+		label: 'Allow Revelation on eligible misses',
+		changedEvent,
+		enableWhen,
+		getValue: p => p.getForeverRevelationModel()?.triggerOnMiss ?? false,
+		setValue: (eventID, p, triggerOnMiss) => {
+			const model = p.getForeverRevelationModel() ?? ForeverRevelationModel.create();
+			model.triggerOnMiss = triggerOnMiss;
+			p.setForeverRevelationModel(eventID, model);
+		},
+	}));
+	const updateVisibility = () => { details.hidden = player.sim.getRuleset() !== Ruleset.RulesetForever; };
+	const rulesetListener = player.sim.rulesetChangeEmitter.on(updateVisibility);
+	updateVisibility();
+	return () => {
+		rulesetListener.dispose();
+		pickers.forEach(picker => picker.dispose());
+	};
+}
 
 export function makeShow1hWeaponsSelector(parent: HTMLElement, sim: Sim): BooleanPicker<Sim> {
 	parent.classList.remove('hide');

@@ -15,7 +15,7 @@ import "shaman.proto";
 import "warlock.proto";
 import "warrior.proto";
 
-// NextIndex: 52
+// NextIndex: 56
 message Player {
 	// Label used for logging.
 	string name = 1;
@@ -30,6 +30,12 @@ message Player {
 	bool forever_tier1_bonuses = 50;
 	// Provisional Forever interpretation: each MP5 stat point restores one mana per second.
 	bool forever_mp5_per_second = 52;
+	// Explicit provisional assumptions, not verified game formulas.
+	ForeverIncomingRageModel forever_incoming_rage_model = 53;
+	ForeverRevelationModel forever_revelation_model = 54;
+	// Provisional flat threat per affected target, before stance/global modifiers.
+	// Unset retains the Classic-derived rank convention; explicit zero is valid.
+	optional double forever_demoralizing_threat = 55;
 	// Hypothetical equipment sensitivity: item/suffix stats and weapon damage only.
 	// Zero means unchanged. Enchants, speeds, weapon skills and proc effects stay fixed.
 	double equipment_scale = 51;

@@ -8,6 +8,19 @@ import (
 
 const ShadowBoltRanks = 10
 
+// SpellEffect/SpellLevels 1.60.1.70291; changed low ranks only.
+// https://us.forums.blizzard.com/en/wow/t/2360696/5
+var foreverShadowBoltRankDamage = [...]struct {
+	basePoints, variance, pointsPerLevel float64
+	spellLevel, maxLevel                 int
+}{
+	{},
+	{13, 0.28571429849, 0.20000000298, 1, 5},
+	{23, 0.23076923192, 0.30000001192, 6, 11},
+	{40, 0.15384615958, 0.60000002384, 12, 17},
+	{58, 0.13043478131, 0.80000001192, 20, 25},
+}
+
 func (warlock *Warlock) getShadowBoltBaseConfig(rank int) core.SpellConfig {
 	// Beta client 1.60.1: every rank's damage moved and the low ranks lost their downranking penalty.
 	// Damage is each rank's value at the level it stops scaling at (capped at 60), as the Classic table was.
@@ -17,6 +30,12 @@ func (warlock *Warlock) getShadowBoltBaseConfig(rank int) core.SpellConfig {
 	manaCost := [ShadowBoltRanks + 1]float64{0, 25, 40, 70, 110, 160, 210, 265, 315, 370, 380}[rank]
 	level := [ShadowBoltRanks + 1]int{0, 1, 6, 12, 20, 28, 36, 44, 52, 60, 60}[rank]
 	castTime := [ShadowBoltRanks + 1]int32{0, 1700, 2200, 2800, 3000, 3000, 3000, 3000, 3000, 3000, 3000}[rank]
+	if warlock.Env.IsForever() && rank < len(foreverShadowBoltRankDamage) {
+		damage := foreverShadowBoltRankDamage[rank]
+		growth := float64(max(0, min(int(warlock.Level), damage.maxLevel)-damage.spellLevel)) * damage.pointsPerLevel
+		mean, spread := damage.basePoints+growth, damage.basePoints*damage.variance/2
+		baseDamage = []float64{mean - spread, mean + spread}
+	}
 
 	return core.SpellConfig{
 		SpellCode:     SpellCode_WarlockShadowBolt,

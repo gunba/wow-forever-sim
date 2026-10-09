@@ -22,7 +22,7 @@ import { MultiIconPicker, MultiIconPickerItemConfig } from '../multi_icon_picker
 import { NumberPicker } from '../number_picker';
 import { SavedDataManager } from '../saved_data_manager';
 import { SimTab } from '../sim_tab';
-import { IsbConfig, StormstrikeConfig } from './../other_inputs';
+import { IsbConfig, makeForeverProvisionalModelInputs, StormstrikeConfig } from './../other_inputs';
 import { ConsumesPicker } from './consumes_picker';
 import { ItemSwapPicker } from './item_swap_picker';
 import { PresetConfigurationPicker } from './preset_configuration_picker';
@@ -225,6 +225,7 @@ export class SettingsTab extends SimTab {
 					showWhen: player => player.sim.getRuleset() == Ruleset.RulesetForever,
 				});
 			}
+			this.addOnDisposeCallback(makeForeverProvisionalModelInputs(contentBlock.bodyElement, this.simUI.player));
 			const scalingNote = document.createElement('p');
 			scalingNote.classList.add('small', 'text-warning', 'mt-2');
 			const updateScalingNote = () => {
@@ -405,6 +406,9 @@ export class SettingsTab extends SimTab {
 					inFrontOfTarget: player.getInFrontOfTarget(),
 					foreverTier1Bonuses: player.getForeverTier1Bonuses(),
 					foreverMp5PerSecond: player.getForeverMp5PerSecond(),
+					foreverIncomingRageModel: player.getForeverIncomingRageModel(),
+					foreverRevelationModel: player.getForeverRevelationModel(),
+					foreverDemoralizingThreat: player.getForeverDemoralizingThreat(),
 					distanceFromTarget: player.getDistanceFromTarget(),
 					healingModel: player.getHealingModel(),
 				});
@@ -428,6 +432,9 @@ export class SettingsTab extends SimTab {
 					simUI.player.setInFrontOfTarget(eventID, newSettings.inFrontOfTarget);
 					simUI.player.setForeverTier1Bonuses(eventID, newSettings.foreverTier1Bonuses);
 					simUI.player.setForeverMp5PerSecond(eventID, newSettings.foreverMp5PerSecond);
+					simUI.player.setForeverIncomingRageModel(eventID, newSettings.foreverIncomingRageModel);
+					simUI.player.setForeverRevelationModel(eventID, newSettings.foreverRevelationModel);
+					simUI.player.setForeverDemoralizingThreat(eventID, newSettings.foreverDemoralizingThreat);
 					simUI.player.setDistanceFromTarget(eventID, newSettings.distanceFromTarget);
 					simUI.player.setHealingModel(eventID, newSettings.healingModel || HealingModel.create());
 				});

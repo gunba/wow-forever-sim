@@ -1,0 +1,61 @@
+{
+  "phase": "70291 final integration",
+  "matrixRows": 1005,
+  "nativeDefaultWorkloadRows": 68,
+  "correctedOriginalTankWorkloadRows": 68,
+  "allFiveGuardsEachWorkloadWindowPass": true,
+  "selectionInputs": "integrated-input-audit.json",
+  "matrixAudit": "matrix-audit.json",
+  "runtime": "runtime-manifest.json",
+  "phaseEquivalence": "engine-equivalence.json",
+  "currentControls": "original.json.gz",
+  "freshTankChecks": "tank-default-checks.json.gz",
+  "historicalBefore": "../../history/e7d0c2a68/manifest.json",
+  "qualification": "Conditional level60 forecasts with hypothetical modeled-v2 equipment. No server-proc law calibration/global optimum/no-survival-loss claim. Study evidence archives appended after privacy review.",
+  "nativeStudies": [
+    {
+      "study": "tank-selection",
+      "archive": "tank-selection-native.tar.gz",
+      "bytes": 28505396,
+      "sha256": "aef81d587db9078f9a664b2a42561c13524290383762348e99b27730e60b0c17",
+      "entryCount": 2354,
+      "omittedCount": 646,
+      "privacyScanPassed": true
+    },
+    {
+      "study": "dps-setups",
+      "archive": "dps-setups-native.tar.gz",
+      "bytes": 8480252,
+      "sha256": "d4efd4406ebc3c9ea9ef68cec18d0d1fb2e556ce042a19c9175717f7b5609219",
+      "entryCount": 6728,
+      "omittedCount": 1335,
+      "privacyScanPassed": true
+    },
+    {
+      "study": "revelation-sensitivity",
+      "archive": "revelation-sensitivity-native.tar.gz",
+      "bytes": 400707,
+      "sha256": "a87a37410084f9f33c0355c8ac3a4059d6bcaa1c309c167603e00df733799943",
+      "entryCount": 396,
+      "omittedCount": 115,
+      "privacyScanPassed": true
+    }
+  ],
+  "nativeEvidencePolicy": "Native JSON/JSONL/CSV and actual diagnostic debug traces only; no scripts/driver logs/private reports/client/community/chat/account/GUID captures. Host path string metadata scrubbed to STUDY_ROOT/REPO/LOCAL_PATH; every numerical value/optional-presence field preserved. Each archive includes source/public hashes, omissions, provenance and README.",
+  "sourceGuard": {
+    "registeredSourceEntries": 1128,
+    "unreviewed": 44,
+    "unresolved": 13,
+    "missing": 0,
+    "orphan": 0,
+    "errors": 0
+  },
+  "explicitInputEquivalenceRaw": {
+    "archive": "engine-equivalence-raw.tar.gz",
+    "sha256": "97c293c0604752853211e97836f889d138d00f207f9a581ac85c547c6f8b4d0e",
+    "bytes": 84275
+  },
+  "goldenCausality": "golden-causality.json",
+  "officialDispositions": "official-dispositions.json",
+  "publicationVerification": "verification.json"
+}

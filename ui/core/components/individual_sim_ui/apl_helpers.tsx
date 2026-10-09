@@ -23,6 +23,11 @@ export type ACTION_ID_SET =
 	| 'dot_spells'
 	| 'shield_spells';
 
+// Action names are literal labels, including parentheses and unknown-tag markers.
+function rankedActionNameRegex(name: string): RegExp {
+	return new RegExp(`${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')} \\(Rank [0-9]+\\)`);
+}
+
 const actionIdSets: Record<
 	ACTION_ID_SET,
 	{
@@ -35,7 +40,7 @@ const actionIdSets: Record<
 		getActionIDs: async metadata => {
 			return metadata.getAuras().map(actionId => {
 				const baseActionName = actionId.id.name.replace(/ \(Rank \d+\)/g, '');
-				const rankedNameRegex = new RegExp(`${baseActionName} \\(Rank [0-9]+\\)`);
+				const rankedNameRegex = rankedActionNameRegex(baseActionName);
 				const hasRanks = metadata.getAuras().filter(spell => !!spell.id.name.match(rankedNameRegex)).length > 1;
 				return {
 					value: actionId.id,
@@ -52,7 +57,7 @@ const actionIdSets: Record<
 				.filter(aura => aura.data.maxStacks > 0)
 				.map(actionId => {
 					const baseActionName = actionId.id.name.replace(/ \(Rank \d+\)/g, '');
-					const rankedNameRegex = new RegExp(`${baseActionName} \\(Rank [0-9]+\\)`);
+					const rankedNameRegex = rankedActionNameRegex(baseActionName);
 					const hasRanks = metadata.getAuras().filter(spell => !!spell.id.name.match(rankedNameRegex)).length > 1;
 					return {
 						value: actionId.id,
@@ -69,7 +74,7 @@ const actionIdSets: Record<
 				.filter(aura => aura.data.hasIcd)
 				.map(actionId => {
 					const baseActionName = actionId.id.name.replace(/ \(Rank \d+\)/g, '');
-					const rankedNameRegex = new RegExp(`${baseActionName} \\(Rank [0-9]+\\)`);
+					const rankedNameRegex = rankedActionNameRegex(baseActionName);
 					const hasRanks = metadata.getAuras().filter(spell => !!spell.id.name.match(rankedNameRegex)).length > 1;
 					return {
 						value: actionId.id,
@@ -86,7 +91,7 @@ const actionIdSets: Record<
 				.filter(aura => aura.data.hasExclusiveEffect)
 				.map(actionId => {
 					const baseActionName = actionId.id.name.replace(/ \(Rank \d+\)/g, '');
-					const rankedNameRegex = new RegExp(`${baseActionName} \\(Rank [0-9]+\\)`);
+					const rankedNameRegex = rankedActionNameRegex(baseActionName);
 					const hasRanks = metadata.getAuras().filter(spell => !!spell.id.name.match(rankedNameRegex)).length > 1;
 					return {
 						value: actionId.id,
@@ -120,7 +125,7 @@ const actionIdSets: Record<
 				(spells || []).map(actionId => {
 					const baseActionName = actionId.id.name.replace(/ \(Rank \d+\)/g, '');
 					// Escape "("" and ")" used to denote (DoT)
-					const rankedNameRegex = new RegExp(`${baseActionName.replace('(', '\\(').replace(')', '\\)')} \\(Rank [0-9]+\\)`);
+					const rankedNameRegex = rankedActionNameRegex(baseActionName);
 					const hasRanks = spells.filter(spell => !!spell.id.name.match(rankedNameRegex)).length > 1;
 
 					return {
@@ -143,7 +148,7 @@ const actionIdSets: Record<
 				(cooldowns || []).map(actionId => {
 					// This regex also captures the percentages used in the custom Berserking cooldowns
 					const baseActionName = actionId.id.name.replace(/ \([\w\s%]+\)/g, '');
-					const rankedNameRegex = new RegExp(`${baseActionName} \\(Rank [0-9]+\\)`);
+					const rankedNameRegex = rankedActionNameRegex(baseActionName);
 					const hasRanks = cooldowns.filter(spell => !!spell.id.name.match(rankedNameRegex)).length > 1;
 					return {
 						value: actionId.id,
@@ -180,7 +185,7 @@ const actionIdSets: Record<
 				.filter(spell => spell.data.isCastable && spell.data.isChanneled)
 				.map(actionId => {
 					const baseActionName = actionId.id.name.replace(/ \(Rank \d+\)/g, '');
-					const rankedNameRegex = new RegExp(`${baseActionName} \\(Rank [0-9]+\\)`);
+					const rankedNameRegex = rankedActionNameRegex(baseActionName);
 					const hasRanks = metadata.getSpells().filter(spell => !!spell.id.name.match(rankedNameRegex)).length > 1;
 					return {
 						value: actionId.id,
@@ -198,7 +203,7 @@ const actionIdSets: Record<
 				.map(actionId => {
 					const baseActionName = actionId.id.name.replace(/ \(Rank \d+\)/g, '');
 					// Escape "("" and ")" used to denote (DoT)
-					const rankedNameRegex = new RegExp(`${baseActionName.replace('(', '\\(').replace(')', '\\)')} \\(Rank [0-9]+\\)`);
+					const rankedNameRegex = rankedActionNameRegex(baseActionName);
 					const hasRanks = metadata.getSpells().filter(spell => !!spell.id.name.match(rankedNameRegex)).length > 1;
 					return {
 						value: actionId.id,
@@ -215,7 +220,7 @@ const actionIdSets: Record<
 				.filter(spell => spell.data.hasShield)
 				.map(actionId => {
 					const baseActionName = actionId.id.name.replace(/ \(Rank \d+\)/g, '');
-					const rankedNameRegex = new RegExp(`${baseActionName} \\(Rank [0-9]+\\)`);
+					const rankedNameRegex = rankedActionNameRegex(baseActionName);
 					const hasRanks = metadata.getSpells().filter(spell => !!spell.id.name.match(rankedNameRegex)).length > 1;
 					return {
 						value: actionId.id,

@@ -8,6 +8,7 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/wowsims/classic/sim/common"
 	"github.com/wowsims/classic/sim/core"
 	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/core/stats"
@@ -33,6 +34,7 @@ var benchmarkEnchants = sync.OnceValue(func() []*proto.UIEnchant {
 		nonraidItem := slices.Contains([]int32{
 			30, 32, 33, 34, 663, 664, 2523, // crafted scopes / counterweight
 			15, 16, 17, 18, 2503, 8719, 8720, // crafted armor kits and new scope
+			8483, 8486, 8488, 8491, // Forever Forceful armor kits
 			1483, 1503, 1504, 1505, 1506, 1507, 1508, 1509, 1510, // librams
 			2488, 2543, 2544, 2545, // Argent Dawn and Dire Maul
 		}, enchant.EffectId)
@@ -50,6 +52,12 @@ var benchmarkEnchants = sync.OnceValue(func() []*proto.UIEnchant {
 })
 
 func enchantFits(p *proto.Player, item core.Item, e *proto.UIEnchant) bool {
+	if core.CharacterMaxLevel < e.RequiredLevel || item.ItemLevel < e.ItemLevelMin {
+		return false
+	}
+	if len(e.ArmorTypes) != 0 && !slices.Contains(e.ArmorTypes, item.ArmorType) {
+		return false
+	}
 	if e.Type != item.Type && !slices.Contains(e.ExtraTypes, item.Type) {
 		return false
 	}
@@ -83,6 +91,43 @@ func enchantFits(p *proto.Player, item core.Item, e *proto.UIEnchant) bool {
 	return true
 }
 
+// A source-legal enchant can be excluded from simulation without inventing an
+// item/class restriction. Keep these reasons separate from equipment legality.
+func enchantSimulationExclusionReason(p *proto.Player, e *proto.UIEnchant) string {
+	if e.EffectId == 8217 {
+		if err := common.ValidateForeverRevelationModel(p.Class, p.ForeverRevelationModel); err != nil {
+			return err.Error()
+		}
+	}
+	return ""
+}
+
+func excludedEnchantCandidates(p *proto.Player, slot int) map[int32]string {
+	item := core.ItemsByID[p.Equipment.Items[slot].GetId()]
+	out := map[int32]string{}
+	if item.ID == 0 {
+		return out
+	}
+	for _, e := range benchmarkEnchants() {
+		if enchantFits(p, item, e) {
+			if reason := enchantSimulationExclusionReason(p, e); reason != "" {
+				out[e.EffectId] = reason
+			}
+		}
+	}
+	return out
+}
+
+func excludedEnchantsForPlayer(p *proto.Player) map[int32]string {
+	out := map[int32]string{}
+	for slot := range p.Equipment.Items {
+		for id, reason := range excludedEnchantCandidates(p, slot) {
+			out[id] = reason
+		}
+	}
+	return out
+}
+
 func legalEnchants(p *proto.Player, slot int) []*proto.UIEnchant {
 	item := core.ItemsByID[p.Equipment.Items[slot].GetId()]
 	if item.ID == 0 {
@@ -91,7 +136,7 @@ func legalEnchants(p *proto.Player, slot int) []*proto.UIEnchant {
 	var out []*proto.UIEnchant
 	seen := map[int32]bool{}
 	for _, e := range benchmarkEnchants() {
-		if !seen[e.EffectId] && enchantFits(p, item, e) {
+		if !seen[e.EffectId] && enchantFits(p, item, e) && enchantSimulationExclusionReason(p, e) == "" {
 			out = append(out, e)
 			seen[e.EffectId] = true
 		}
@@ -150,6 +195,9 @@ func validateGearEnchants(p *proto.Player) error {
 	for slot, spec := range p.Equipment.Items {
 		if spec.GetEnchant() == 0 {
 			continue
+		}
+		if reason := excludedEnchantCandidates(p, slot)[spec.Enchant]; reason != "" {
+			return fmt.Errorf("enchant %d excluded from simulation for equipment slot %d: %s", spec.Enchant, slot, reason)
 		}
 		if !slices.ContainsFunc(legalEnchants(p, slot), func(e *proto.UIEnchant) bool { return e.EffectId == spec.Enchant }) {
 			return fmt.Errorf("enchant %d is unavailable or illegal for equipment slot %d", spec.Enchant, slot)

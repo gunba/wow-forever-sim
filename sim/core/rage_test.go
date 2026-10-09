@@ -55,11 +55,13 @@ func TestForeverRageRefundUsesPaidCost(t *testing.T) {
 	}
 }
 
-func TestForeverWarriorDamageTakenUsesPreArmorHealthRatio(t *testing.T) {
-	if got := foreverWarriorDamageTakenRage(6, .5, 200); got != .6 {
-		t.Fatalf("mitigated 12 damage against 200 health gave %g rage, want 0.6", got)
+func TestForeverIncomingRageReferenceNormalization(t *testing.T) {
+	// This is an explicit sensitivity scenario, not a server measurement.
+	parameters := ForeverIncomingRageParameters{Coefficient: 10, ReferenceArmor: .5, ExpectedHealth: 200}
+	if got := parameters.rageFromDamageTaken(&SpellResult{Damage: 6}); got != .6 {
+		t.Fatalf("6 delivered damage at reference Armor .5 gave %g Rage, want .6", got)
 	}
-	if got := foreverWarriorDamageTakenRage(0, .5, 200); got != 0 {
-		t.Fatalf("missed hit generated %g rage", got)
+	if got := parameters.rageFromDamageTaken(&SpellResult{}); got != 0 {
+		t.Fatalf("missed hit generated %g Rage", got)
 	}
 }

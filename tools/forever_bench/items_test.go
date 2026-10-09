@@ -102,7 +102,7 @@ func TestForeverWolfsheadEnergy(t *testing.T) {
 		power.ApplyEffects(s, u, power)
 		energy = append(energy, u.CurrentEnergy())
 	}
-	if energy[1]-energy[0] != 20 {
-		t.Fatalf("Wolfshead must add 20 Shifting Power energy: %v", energy)
+	if energy[1]-energy[0] != 5 {
+		t.Fatalf("Wolfshead must add 5 sourced Shifting Power energy: %v", energy)
 	}
 }

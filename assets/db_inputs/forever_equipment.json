@@ -120446,6 +120446,9 @@
       "phase": 1,
       "expansion": 1,
       "armorType": 3,
+      "classAllowlist": [
+        7
+      ],
       "unique": true,
       "setId": 2111,
       "setName": "The Spiritcaller's Storm",
@@ -120514,6 +120517,9 @@
       "phase": 1,
       "expansion": 1,
       "armorType": 3,
+      "classAllowlist": [
+        7
+      ],
       "unique": true,
       "setId": 2111,
       "setName": "The Spiritcaller's Storm",
@@ -120582,6 +120588,9 @@
       "phase": 1,
       "expansion": 1,
       "armorType": 3,
+      "classAllowlist": [
+        7
+      ],
       "unique": true,
       "setId": 2111,
       "setName": "The Spiritcaller's Storm",
@@ -120650,6 +120659,9 @@
       "phase": 1,
       "expansion": 1,
       "armorType": 3,
+      "classAllowlist": [
+        7
+      ],
       "unique": true,
       "setId": 2111,
       "setName": "The Spiritcaller's Storm",
@@ -127117,6 +127129,142 @@
           "crafted": {
             "profession": 4,
             "spellId": 1308186
+          }
+        }
+      ]
+    },
+    {
+      "id": 251485,
+      "name": "Edward's Knife",
+      "icon": "inv_weapon_shortblade_14",
+      "type": 13,
+      "stats": [
+        0.0,
+        2.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ilvl": 24,
+      "quality": 2,
+      "phase": 1,
+      "expansion": 1,
+      "weaponType": 2,
+      "handType": 2,
+      "weaponDamageMin": 13,
+      "weaponDamageMax": 26,
+      "weaponSpeed": 1.6,
+      "factionRestriction": 2,
+      "sources": [
+        {
+          "quest": {
+            "id": 92401,
+            "name": "A Frightened Request"
+          }
+        }
+      ]
+    },
+    {
+      "id": 251486,
+      "name": "Tabitha's Cuffs",
+      "icon": "inv_bracer_10",
+      "type": 6,
+      "stats": [
+        0.0,
+        0.0,
+        4.0,
+        0.0,
+        0.0,
+        3.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        17,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ilvl": 24,
+      "quality": 2,
+      "phase": 1,
+      "expansion": 1,
+      "armorType": 1,
+      "factionRestriction": 2,
+      "sources": [
+        {
+          "quest": {
+            "id": 92401,
+            "name": "A Frightened Request"
           }
         }
       ]

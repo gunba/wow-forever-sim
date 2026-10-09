@@ -37,7 +37,8 @@ func (hunter *Hunter) getMongooseBiteConfig(rank int) core.SpellConfig {
 		},
 
 		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
-			return hunter.DistanceFromTarget <= core.MaxMeleeAttackDistance && hunter.DefensiveState.IsActive()
+			return hunter.DistanceFromTarget <= core.MaxMeleeAttackDistance &&
+				(hunter.DefensiveState.IsActive() || (hunter.ExposePreyState != nil && hunter.ExposePreyState.IsActive()))
 		},
 
 		BonusCritRating:  hunter.savageStrikesLegacyCrit(),
@@ -48,6 +49,9 @@ func (hunter *Hunter) getMongooseBiteConfig(rank int) core.SpellConfig {
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			hunter.DefensiveState.Deactivate(sim)
+			if hunter.ExposePreyState != nil {
+				hunter.ExposePreyState.Deactivate(sim)
+			}
 			// Forever: normalized melee weapon damage plus a smaller flat amount, where Classic dealt the flat amount alone.
 			damage := baseDamage + hunter.AutoAttacks.MH().CalculateNormalizedWeaponDamage(sim, spell.MeleeAttackPower(target))
 			result := spell.CalcAndDealDamage(sim, target, damage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)

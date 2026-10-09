@@ -18,6 +18,20 @@ var WrathManaCost = [WrathRanks + 1]float64{0, 10, 20, 40, 50, 70, 80, 100, 120}
 var WrathCastTime = [WrathRanks + 1]int{0, 1500, 1700, 2000, 2000, 2000, 2000, 2000, 2000}
 var WrathLevel = [WrathRanks + 1]int{0, 1, 6, 14, 22, 30, 38, 46, 54}
 
+// SpellEffect/SpellLevels 1.60.1.70291; changed low ranks only.
+// https://us.forums.blizzard.com/en/wow/t/2360696/5
+var foreverWrathRankDamage = [...]struct {
+	basePoints, variance, pointsPerLevel float64
+	spellLevel, maxLevel                 int
+}{
+	{},
+	{15, 0.15384615958, 0.20000000298, 1, 5},
+	{21, 0.14814814925, 0.30000001192, 6, 12},
+	{30, 0.16666667163, 0.5, 14, 20},
+	{37, 0.14705882967, 0.60000002384, 22, 28},
+	{45, 0.12962962687, 0.69999998808, 30, 36},
+}
+
 func (druid *Druid) registerWrathSpell() {
 	druid.Wrath = make([]*DruidSpell, WrathRanks+1)
 
@@ -34,6 +48,12 @@ func (druid *Druid) newWrathSpellConfig(rank int) core.SpellConfig {
 	spellId := WrathSpellId[rank]
 	baseDamageLow := WrathBaseDamage[rank][0]
 	baseDamageHigh := WrathBaseDamage[rank][1]
+	if druid.Env.IsForever() && rank < len(foreverWrathRankDamage) {
+		damage := foreverWrathRankDamage[rank]
+		growth := float64(max(0, min(int(druid.Level), damage.maxLevel)-damage.spellLevel)) * damage.pointsPerLevel
+		mean, spread := damage.basePoints+growth, damage.basePoints*damage.variance/2
+		baseDamageLow, baseDamageHigh = mean-spread, mean+spread
+	}
 	spellCoeff := WrathSpellCoeff[rank]
 	manaCost := WrathManaCost[rank]
 	castTime := WrathCastTime[rank]

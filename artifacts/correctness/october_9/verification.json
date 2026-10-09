@@ -1,0 +1,39 @@
+{
+  "verifiedUtc": "2026-10-09T10:17:23.896814+00:00",
+  "entryPoint": "SITE_BASE=/wow-forever-sim/classic/ SITE_REPO=gunba/wow-forever-sim CHROMIUM_PATH=CHROMIUM_PATH make verify",
+  "goVersion": "go1.24.13 linux/amd64",
+  "localFullPublicationGatePassed": true,
+  "nativeCoreClassPackagesPassed": true,
+  "registeredSourceGuards": {
+    "checks": 6,
+    "entries": 1128,
+    "unreviewed": 44,
+    "unresolved": 13,
+    "missingOrOrphanOrErrors": 0
+  },
+  "register": {
+    "stableIDs": 160,
+    "resolved": 42,
+    "needsCode": 12
+  },
+  "browser": {
+    "builtPages": 24,
+    "exactRankedRaceBuildBindings": 201,
+    "buildsReplayed": 31,
+    "rankedWasmReplays": 45,
+    "allTankRacesReplayed": 17,
+    "freshTankDefaultRoutes": 3,
+    "checks": [
+      "pages",
+      "questions",
+      "tank_matrix",
+      "scrub",
+      "icons",
+      "benchmark_replay",
+      "ranked_defaults",
+      "tank_defaults"
+    ]
+  },
+  "localLogSHA256": "1b0d676bca6a5cb0dd821d1a51df82ad5dfd4d0976989f765299d61ced240e45",
+  "qualification": "Local verification is not a deployment receipt. Later source-label/document metadata changes preserve all numerical inputs; built presentation refreshed separately. No mechanics/guard relaxation or final-MonteCarlo rerun."
+}

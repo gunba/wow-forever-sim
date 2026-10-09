@@ -1,0 +1,223 @@
+{
+  "source": "https://us.forums.blizzard.com/en/wow/t/2360696/5",
+  "sourceBuild": "1.60.1.70291",
+  "baselineCommit": "e7d0c2a6856ac1a6c947490f2f72784ccf44b400",
+  "scope": "Every relevant identified discrepancy receives a disposition. Unsupported server rules are not silently invented; unrelated game systems remain explicitly outside this PvE simulator.",
+  "entries": [
+    {
+      "id": "RAGE-IN",
+      "task": "Expected-creature-health incoming Rage for Warrior/Bear, outcome multipliers, absorption and reference armor",
+      "status": "implemented configurable provisional model; actual callback/validation/presence regressions passed; exact server coefficient/level/curve unresolved"
+    },
+    {
+      "id": "BEAR-CRIT",
+      "task": "Critical-swing Rage 1.75 to 2.0",
+      "status": "fixed and focused regression passed"
+    },
+    {
+      "id": "BEAR-THREAT",
+      "task": "Bear/Dire Bear threat 1.3 to 1.5",
+      "status": "fixed 1.5 Forever / retained 1.3 Classic; focused checks passed"
+    },
+    {
+      "id": "LAST-STAND",
+      "task": "Verify correct maximum/current health increase and expiration across health multipliers",
+      "status": "fixed final-health grant across multipliers and temporary health takeback; targeted repro/regressions passed; living 1HP expiry floor is qualified Classic convention"
+    },
+    {
+      "id": "DEMO-SHOUT",
+      "task": "Restore sourced nonzero multi-target threat",
+      "status": "restored nonzero per-target threat; explicit optional override; 43.2 max-rank central is provisional Classic-derived convention, not measured server value; regression passed"
+    },
+    {
+      "id": "DEMO-ROAR",
+      "task": "Validate existing nonzero multi-target threat amount",
+      "status": "retained existing 100 max-rank provisional convention, configurable per-target override; all-target/zero/Classic controls passed"
+    },
+    {
+      "id": "IMPALE",
+      "task": "Restore Deep Wounds prerequisite; verify other changed edges",
+      "status": "fixed; legal presets and missing-prerequisite regression passed; other edges already aligned"
+    },
+    {
+      "id": "DEEP-WOUNDS",
+      "task": "No AP on either hand; rollover and timer preservation",
+      "status": "published weapon-only/no-AP rollover/preserved-timer model corroborated by official notes and existing scoped checks; no double application; hand/server semantics remain qualified"
+    },
+    {
+      "id": "PENANCE",
+      "task": "All four damaging ranks: base/growth/caps/SP/mana and existing two-second timing",
+      "status": "implemented and focused checks passed"
+    },
+    {
+      "id": "EARLY-RANKS",
+      "task": "31 changed Wrath/Frostbolt/Fireball/Arcane Missiles/Smite/Lightning Bolt/Shadow Bolt ranks",
+      "status": "implemented and focused checks passed; maximum-rank presets retained"
+    },
+    {
+      "id": "HEAL-RANKS",
+      "task": "Lesser Heal/Heal/Penance healing source changes",
+      "status": "source values fully captured; unregistered healing-spell coverage explicitly separate"
+    },
+    {
+      "id": "RECKONING",
+      "task": "One shared 1.5-second gate for critical-hit/block procs",
+      "status": "shared 1.5-second ICD implemented and focused checks passed"
+    },
+    {
+      "id": "PROT-MANA-THREAT",
+      "task": "Shield Specialization and Improved Seal of Fury mana NoThreat",
+      "status": "source-backed mana NoThreat corrections implemented and passed"
+    },
+    {
+      "id": "SEAL-FURY",
+      "task": "Register sourced ranks, damage, shield requirement, talent-only depletion mana, judgement and Echo interaction",
+      "status": "actual ranks/proc/shield/talent mana/Echo/selectable native-web controls implemented and passed; ONE shared replacement pool, configurable lifetime default30/zero disables absorption, remains provisional; taunt only aura, no threat-AI target switch"
+    },
+    {
+      "id": "REFLECTION",
+      "task": "Thorns/Ret Aura rank bases and 6% actual-provider power; owned/external provider identity and UI round-trip",
+      "status": "explicit owned/external provider identity and dynamic 6% caster power implemented and passed; external default0, never receiver stats"
+    },
+    {
+      "id": "NATURAL-INSTINCT",
+      "task": "Rename and add separate 12/25% Intellect healing term without damage conversion changes",
+      "status": "renamed +12/25% Intellect HealingPower implemented; existing damage/crit scope preserved; passed"
+    },
+    {
+      "id": "SHIFTING-POWER",
+      "task": "Reject full Energy; preserve proper rank/cooldown/resource behavior",
+      "status": "full Energy rejected; focused reproduction/regression passed"
+    },
+    {
+      "id": "WOLFSHEAD",
+      "task": "Energy 20 to 5; preserve 5-Rage Enrage bonus and avoid dead-code fixes",
+      "status": "5 SP Energy fixed; Enrage5 unchanged; passed"
+    },
+    {
+      "id": "THICK-HIDE",
+      "task": "Gear changes while shifted correctly update source-scaled defenses",
+      "status": "actual shifted gear A-to-B-to-A defense test passed; no redundant engine patch"
+    },
+    {
+      "id": "CAT-HEALTH",
+      "task": "No unintended max-health loss on entering/leaving Cat Form",
+      "status": "current path verified, no unintended Cat health reduction; no redundant patch"
+    },
+    {
+      "id": "FORM-POTIONS",
+      "task": "Mana potions in Bear/Dire Bear/Cat without dropping form",
+      "status": "current form path verified, no redundant patch"
+    },
+    {
+      "id": "EXPOSE-PREY",
+      "task": "Ten-second allowance distinct from five-second dodge Mongoose window",
+      "status": "independent 10s opportunity versus 5s dodge window; fixed and passed"
+    },
+    {
+      "id": "PET-HEALTH",
+      "task": "No repeated health gain at low health/lifecycle transitions",
+      "status": "low-health repeated inheritance and enable/disable paths passed; no redundant patch"
+    },
+    {
+      "id": "UNLEASHED-FURY",
+      "task": "Correct existing pet damage application without a duplicate buff",
+      "status": "current main-pet/Hawk multiplier applied once; passed, no duplicate buff"
+    },
+    {
+      "id": "DISENGAGE",
+      "task": "Source-supported registered ability and increased threat reduction",
+      "status": "registered source-supported doubled threat reduction; passed"
+    },
+    {
+      "id": "HUNTER-CC",
+      "task": "Concussive/Wing Clip chances, Frost Trap initial trigger, root/slow/stun eligibility and diminishing returns",
+      "status": "registered utilities and source proc chances; initial Entrapment only; real opt-in CC/movement; per-spell DR primary groups and configurable reset anchor passed; default bosses immune; Wing Clip downrank penalty unmeasured, highest-rank-only registration"
+    },
+    {
+      "id": "IMPACT",
+      "task": "Register/verify direct-only fire proc, never periodic Flamestrike; no boss CC by default",
+      "status": "current3/7/10 direct Fire proc, periodic Flamestrike exclusion, opt-in stun/DR passed; source UI/talent DATA/importer/scanner reconciled; full registered-spell source guard passed"
+    },
+    {
+      "id": "ELEMENTAL-FOCUS",
+      "task": "Fire Nova does not consume a newly generated Clearcasting charge",
+      "status": "actual fresh Fire Nova Clearcasting path passed existing guard; no redundant patch"
+    },
+    {
+      "id": "FT-FORM-SPEED",
+      "task": "Flametongue Totem uses form weapon speed, not equipped speed",
+      "status": "actual Cat/Bear weapon-speed path passed; no coefficient edit"
+    },
+    {
+      "id": "PET-SUMMON-STUN",
+      "task": "Stun old pet only after successful replacement cast starts; interruption/completion restores or replaces correctly",
+      "status": "validated cast-start old-pet stun, failed validation/cancel/completion/overlap/reset passed; disabled-pet guard already implemented and covered, reused completed check without replay"
+    },
+    {
+      "id": "WEAPON-SWAPS",
+      "task": "Multiple swaps in same GCD, 2H to sword/shield, stats/enchants/legality",
+      "status": "same-ID enchant/suffix, sequential slot state, unique validation and iteration-stat drift fixed; focused checks passed"
+    },
+    {
+      "id": "ARMOR-KITS",
+      "task": "Four AP kits, single AP/RAP grant, real item/slot/level restrictions",
+      "status": "all4 source-backed single AP/RAP grants,itemminimums and allarmorclasses/body-slot restrictions compiled; wearer0 vs application/craft requirement separated;114AP/RAP profile screens+7independent finalists,nonepromoted; no synthetic budgets changed"
+    },
+    {
+      "id": "RECOVERY",
+      "task": "Source proc, five-percent health, ten-second ICD and form eligibility",
+      "status": "source proc/5% maxHP/shared10s/form/unequip boundaries passed"
+    },
+    {
+      "id": "REVELATION",
+      "task": "Correct form behavior without inventing diminishing-with-crit proc formula",
+      "status": "native seven-family explicit conditional noncritical proc-law and direct-only charge reservation/form retention/channel-child bridges implemented; scoped tests/native-web roundtrips passed;112 declared sensitivity arms complete, no calibrated rate or default promotion"
+    },
+    {
+      "id": "CHILLKNIFE",
+      "task": "Reconcile changed enchant duration 8698 and source eligibility",
+      "status": "temporary8698 source3600s(previous0), Mage/dagger/use5 restrictions captured; proc cadence/acquisition remain unestablished feature/evidence gaps; no guessed PPM/permanent optimizer entry or DPS contribution"
+    },
+    {
+      "id": "DEMONIC-BRAND",
+      "task": "Fire child normal threat rather than double/triple threat",
+      "status": "already corrected in prior published release; no duplicate change"
+    },
+    {
+      "id": "ITEM-CHANGES",
+      "task": "Source/rarity/vendor/quest changes and modeled-reference overlap",
+      "status": "all174 deltas dispositioned;4Spiritcaller source class restrictions and ordinary native/UI import rejection implemented,2verifiedquestitems added via persistent compiler overlay; compiled regression passed;889modeled records exact,38unlisted combat acquisitions remain uncertain"
+    },
+    {
+      "id": "BETA-ACCESS",
+      "task": "New dungeon/Legacy points expand concrete available tests, not the level-60 point budget",
+      "status": "realm reopening,16LegacyPoints and1silver respec minimum sourced; level30/conditional-obtainability experiment prerequisites recorded in register; no extra51-point talent budget and no unverified live70291 client/combat capture claimed"
+    },
+    {
+      "id": "GAME-ONLY",
+      "task": "XP, gamepad/voice/Cooldown Manager/visual and PvP-only critical-strike changes",
+      "status": "not mechanisms of the current PvE damage/threat/survival simulator; no artificial PvE buffs"
+    },
+    {
+      "id": "COVERAGE-TEXT",
+      "task": "Correct false Seal of Fury implemented claim and reconcile every final disposition",
+      "status": "source/selectability caveats and registered schema reconciled;1128entries zero missing/orphan/errors,unreviewed44/unresolved13 retained; final1005 matrix/native-web full201/export/report/register complete; actualpublication tracked separately by deploy.yml/live receipt"
+    }
+  ],
+  "provisionalPolicy": "Configurable provisional models and explicit sensitivities remain assumptions; simulator scenario choices do not resolve hidden server behavior.",
+  "historicalControl": "artifacts/history/e7d0c2a68/published-before-70291.tar.gz with exact-file manifest; historical research packets pinned at previous release revision.",
+  "additional_discrepancies": [
+    {
+      "id": "FIREBALL-DURATION",
+      "task": "Existing low-rank Fireball duration/tick-distribution mismatch discovered during source integration",
+      "status": "Forever ranks1/2/3 corrected4/6/6seconds,ticks2/3/3BP1/1/2,total2/3/6; actual timing/totals/no-extra-ticks regressions pass; Classic/higher/max8s retained"
+    },
+    {
+      "id": "BEAR-OWNED-FAERIE-FIRE",
+      "task": "Inherited external permanent Faerie Fire masked mandatory Bear self9907 APL",
+      "status": "native/web Druid tank support externalfalse; actual all4race/bothworkload regression passed; release1Bear study quarantined, freshrelease2 duty8/3casts and controls; oldplayers retained but request support correction explicitly disclosed"
+    }
+  ],
+  "source_discrepancy_settlement": "Supported current-pipeline discrepancies settled; explicit server assumptions/absent features remain. Final1005 matrix and136 fresh native tank workload rows complete. Publication readiness is not actualdeployment evidence."
+}

@@ -1,0 +1,4480 @@
+{
+  "schemaVersion": 1,
+  "fromClientBuild": "1.60.1.70245",
+  "clientBuild": "1.60.1.70291",
+  "scope": "Real-item delta overlay: source-backed class masks and individually reviewed dungeon-quest rewards.",
+  "deltaCounts": {
+    "changed": 153,
+    "added": 21,
+    "removed": 0,
+    "compiledChanged": 11,
+    "compiledPriceOnly": 7,
+    "compiledClassRestrictionChanged": 4,
+    "noncompiledChanged": 142,
+    "addedCombatEquipment": 2,
+    "addedGameOnly": 19
+  },
+  "catalogScope": {
+    "combatCatalog": "Uncommon-or-better crafting, published dungeon/dungeon-quest, selected nonraid/PvP vendor gear at supported character levels.",
+    "currentSourceCatalogItems": 1958,
+    "currentCompiledItems": 2797,
+    "legacyCatalogClientBuild": "1.60.1.69893",
+    "reviewedAddition": "Only quest92401 Ruins of Lordaeron16611 rewards individually admitted by this reviewed overlay. Unproven outdoor/cosmetic/quest-item availability is not promoted.",
+    "modelledDefaultGear": "Exactly unchanged; no new real items added to ranking defaults."
+  },
+  "sources": [
+    {
+      "name": "ItemSparse 1.60.1.70245",
+      "url": "https://wago.tools/db2/ItemSparse/csv?build=1.60.1.70245",
+      "sha256": "4ace92a12e1c11c22d2d463d311817a77ba29c9787b229749e02d447851c3515",
+      "retrievedAt": "2026-10-08T10:16:48.759153+00:00"
+    },
+    {
+      "name": "ItemSparse 1.60.1.70291",
+      "url": "https://wago.tools/db2/ItemSparse/csv?build=1.60.1.70291",
+      "sha256": "f5e9ba43867f16538e0e75bd410ffc108128066df0205048febd59df97b7f932",
+      "retrievedAt": "2026-10-09T01:36:40.407792+00:00"
+    },
+    {
+      "url": "https://wago.tools/db2/Item/csv?build=1.60.1.70291",
+      "retrievedAt": "2026-10-09T07:29:36.050240+00:00",
+      "sha256": "a965116a03275fa697be52d789f10d0c19a898842cdf6dd4756ec573fc7859c1"
+    },
+    {
+      "url": "https://wago.tools/db2/RandPropPoints/csv?build=1.60.1.70291",
+      "retrievedAt": "2026-10-09T07:29:36.050841+00:00",
+      "sha256": "e4a41af2ea8dc344c0c1ce36b26cba741b7f393cb74197e52d9893e6cb223db5"
+    },
+    {
+      "url": "https://wago.tools/db2/ItemDamageOneHand/csv?build=1.60.1.70291",
+      "retrievedAt": "2026-10-09T07:29:36.051194+00:00",
+      "sha256": "591fd04d419f2cf878e614bec4c37aed120f00291c82b0c54799a24afbce6f7f"
+    },
+    {
+      "url": "https://wago.tools/db2/ItemArmorQuality/csv?build=1.60.1.70291",
+      "retrievedAt": "2026-10-09T07:29:36.051530+00:00",
+      "sha256": "1411c5bd3f36fc9faa8e27b6eb5dd29b839ad85880a19ba83e2cee7f5bdd7354"
+    },
+    {
+      "url": "https://wago.tools/db2/ItemArmorTotal/csv?build=1.60.1.70291",
+      "retrievedAt": "2026-10-09T07:29:36.052018+00:00",
+      "sha256": "2cfdf38cc7dea5a92ca494eab45b4940d3415d3a137f6473716173d2d6413189"
+    },
+    {
+      "url": "https://wago.tools/db2/ArmorLocation/csv?build=1.60.1.70291",
+      "retrievedAt": "2026-10-09T07:29:36.052607+00:00",
+      "sha256": "e13b149874fe9f8075411009f9c4e0d4140dd3298a647700feb155e6ad71f2fa"
+    },
+    {
+      "url": "https://www.wowhead.com/forever/item=251485",
+      "retrievedAt": "2026-10-09T07:29:36.052854+00:00",
+      "sha256": "0eabea86721b30eac97e118641187258a2d227ce2ea9ce7022a33a20aae436e1"
+    },
+    {
+      "url": "https://www.wowhead.com/forever/item=251486",
+      "retrievedAt": "2026-10-09T07:29:36.053096+00:00",
+      "sha256": "a520f1241493435cf26c042cd53c70a4eb799a1f36158e0118fb47eee5919f95"
+    },
+    {
+      "url": "https://www.wowhead.com/forever/quest=92401",
+      "retrievedAt": "2026-10-09T07:29:36.053339+00:00",
+      "sha256": "9d5f418d6a72ce8090c48c01c233439ca337c4f9e492098960290143573fc351"
+    },
+    {
+      "url": "https://nether.wowhead.com/forever/tooltip/item/251485",
+      "sha256": "0a19eaaa1bbe7996f5bb04fb0dc77c26d414b52c244d2ae5abe26ab372b1f8f4",
+      "retrievedAt": "2026-10-09T07:28:49.399522+00:00"
+    },
+    {
+      "url": "https://nether.wowhead.com/forever/tooltip/item/251486",
+      "sha256": "2717e1485134c3381d6d166f573ade04aa20c8172d7cc33ac53c985e918d2b68",
+      "retrievedAt": "2026-10-09T07:28:49.821751+00:00"
+    },
+    {
+      "url": "https://nether.wowhead.com/forever/tooltip/item/276538",
+      "sha256": "73f0021171b504a4d245aab5b4b534ec0b07c41164751f8527d93228eb76a3d1",
+      "retrievedAt": "2026-10-09T07:28:50.276026+00:00"
+    },
+    {
+      "url": "https://nether.wowhead.com/forever/tooltip/item/276539",
+      "sha256": "06c4be8efbf2ec134e03dbf8845751208f0ab3fcb52dd80a6de1127d3cae6bfe",
+      "retrievedAt": "2026-10-09T07:33:37.283267+00:00"
+    },
+    {
+      "url": "https://nether.wowhead.com/forever/tooltip/item/276540",
+      "sha256": "d99674e9960ff480874dbb9be6b380c25d3e93abfcd3168521c5609fc4f5505d",
+      "retrievedAt": "2026-10-09T07:33:37.300855+00:00"
+    },
+    {
+      "url": "https://nether.wowhead.com/forever/tooltip/item/276541",
+      "sha256": "952b12d0f972495f7192b88b4d1ed5d2ff3d2170669323a9f2dcb3c0bc731f2a",
+      "retrievedAt": "2026-10-09T07:33:37.294261+00:00"
+    },
+    {
+      "url": "https://www.wowhead.com/forever/item=251485&xml",
+      "sha256": "246c7ce7b81e3afb1a90c398b0b3d0d7583ec74c5d9faef7f5b542f141f476f0",
+      "retrievedAt": "2026-10-09T07:28:49.529318+00:00"
+    },
+    {
+      "url": "https://www.wowhead.com/forever/item=251486&xml",
+      "sha256": "5731437dd549a36ba9d0a6a04963d1ccf25912e1ec0b19970728889e59db682d",
+      "retrievedAt": "2026-10-09T07:28:49.898471+00:00"
+    },
+    {
+      "name": "ItemXItemEffect.csv",
+      "url": "https://wago.tools/db2/ItemXItemEffect/csv?build=1.60.1.70291",
+      "sha256": "2af82e82735af98929787a76410a4ca0d2347265c8260b5d7affd5e01c26279c",
+      "retrievedAt": "2026-10-09T05:13:31.472331+00:00"
+    },
+    {
+      "name": "ItemEffect.csv",
+      "url": "https://wago.tools/db2/ItemEffect/csv?build=1.60.1.70291",
+      "sha256": "f88ab54fefd5591db80445e7f4b76ae6be836061be07870d2d4f46bc7c0d88bc",
+      "retrievedAt": "2026-10-09T05:13:31.710701+00:00"
+    },
+    {
+      "name": "Cached source-filtered acquisition planner (older snapshot, not current availability proof)",
+      "path": "assets/db_inputs/wowhead_forever_gearplanner.txt",
+      "sha256": "4c0981cdeab4036898c7a8010a277147b625dafc75963db4679d6a56c1abbf13"
+    }
+  ],
+  "classMaskOverrides": [
+    {
+      "id": 276538,
+      "previousClassMask": -1,
+      "classMask": 64,
+      "sourceField": "ItemSparse.AllowableClass",
+      "publicCorroboration": "https://nether.wowhead.com/forever/tooltip/item/276538"
+    },
+    {
+      "id": 276539,
+      "previousClassMask": -1,
+      "classMask": 64,
+      "sourceField": "ItemSparse.AllowableClass",
+      "publicCorroboration": "https://nether.wowhead.com/forever/tooltip/item/276539"
+    },
+    {
+      "id": 276540,
+      "previousClassMask": -1,
+      "classMask": 64,
+      "sourceField": "ItemSparse.AllowableClass",
+      "publicCorroboration": "https://nether.wowhead.com/forever/tooltip/item/276540"
+    },
+    {
+      "id": 276541,
+      "previousClassMask": -1,
+      "classMask": 64,
+      "sourceField": "ItemSparse.AllowableClass",
+      "publicCorroboration": "https://nether.wowhead.com/forever/tooltip/item/276541"
+    }
+  ],
+  "addedItems": [
+    {
+      "id": 251485,
+      "name": "Edward's Knife",
+      "icon": "inv_weapon_shortblade_14",
+      "itemLevel": 24,
+      "quality": 2,
+      "class": 2,
+      "subclass": 15,
+      "inventoryType": 13,
+      "requiredLevel": 0,
+      "classMask": -1,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "uniqueEquipped": false,
+      "binding": 1,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "dungeon-quest",
+          "zoneId": 16611,
+          "questId": 92401,
+          "name": "A Frightened Request",
+          "faction": "Horde"
+        }
+      ],
+      "stats": {
+        "Stamina": 2,
+        "Agility": 2
+      },
+      "armor": 0,
+      "statScale": 3.0,
+      "statAllocations": [
+        {
+          "mod": 7,
+          "allocation": 6666,
+          "value": 2
+        },
+        {
+          "mod": 3,
+          "allocation": 6666,
+          "value": 2
+        }
+      ],
+      "statSource": "client",
+      "clientStatRecord": true,
+      "weapon": {
+        "min": 13,
+        "max": 26,
+        "speed": 1.6,
+        "school": 0
+      },
+      "effects": [],
+      "effectReviewRequired": false,
+      "availability": {
+        "status": "published-beta-dungeon-quest-reward",
+        "questLevel": 22,
+        "questMinimumLevel": 15,
+        "questSource": "https://www.wowhead.com/forever/quest=92401",
+        "note": "Current public quest reward listing, not an ilvl65/max-level availability assertion. ItemSparse wearer RequiredLevel is 0; public reqlevel15 is the quest minimum."
+      },
+      "evidence": {
+        "itemSource": "https://www.wowhead.com/forever/item=251485&xml",
+        "tooltipSource": "https://nether.wowhead.com/forever/tooltip/item/251485",
+        "statFormula": "floor(RandPropPoints24 GoodF_slot * StatPercentEditor / 10000 + 0.5), corroborated by current public XML/tooltip",
+        "statPointColumn": "GoodF_3",
+        "weaponSource": "Current public XML and tooltip: 13–26 physical damage at 1.60 seconds; ItemDamageOneHand24 Quality_2=12.34019374847 is corroborating budget data, not substituted for the published rounded range.",
+        "clientItemDelayMs": 1600,
+        "clientDamageVariance": 0.60000002384
+      }
+    },
+    {
+      "id": 251486,
+      "name": "Tabitha's Cuffs",
+      "icon": "inv_bracer_10",
+      "itemLevel": 24,
+      "quality": 2,
+      "class": 4,
+      "subclass": 1,
+      "inventoryType": 9,
+      "requiredLevel": 0,
+      "classMask": -1,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "uniqueEquipped": false,
+      "binding": 1,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "dungeon-quest",
+          "zoneId": 16611,
+          "questId": 92401,
+          "name": "A Frightened Request",
+          "faction": "Horde"
+        }
+      ],
+      "stats": {
+        "Stamina": 4,
+        "SpellPower": 3
+      },
+      "armor": 17,
+      "statScale": 5.0,
+      "statAllocations": [
+        {
+          "mod": 7,
+          "allocation": 8000,
+          "value": 4
+        },
+        {
+          "mod": 45,
+          "allocation": 6000,
+          "value": 3
+        }
+      ],
+      "statSource": "client",
+      "clientStatRecord": true,
+      "effects": [],
+      "effectReviewRequired": false,
+      "availability": {
+        "status": "published-beta-dungeon-quest-reward",
+        "questLevel": 22,
+        "questMinimumLevel": 15,
+        "questSource": "https://www.wowhead.com/forever/quest=92401",
+        "note": "Current public quest reward listing, not an ilvl65/max-level availability assertion. ItemSparse wearer RequiredLevel is 0; public reqlevel15 is the quest minimum."
+      },
+      "evidence": {
+        "itemSource": "https://www.wowhead.com/forever/item=251486&xml",
+        "tooltipSource": "https://nether.wowhead.com/forever/tooltip/item/251486",
+        "statFormula": "floor(RandPropPoints24 GoodF_slot * StatPercentEditor / 10000 + 0.5), corroborated by current public XML/tooltip",
+        "statPointColumn": "GoodF_2",
+        "armorFormula": "round(ItemArmorTotal24.Cloth * ItemArmorQuality24.Qualitymod_2 * ArmorLocation9.Clothmodifier) = 17",
+        "armorFactors": [
+          236.72999572754,
+          1.0,
+          0.0700000003
+        ],
+        "note": "Current XML, item page and tooltip all give17 armor,+4 Stamina,+3 SpellPower. Search index/older locale18/+6/+4 is not selected."
+      }
+    }
+  ],
+  "dispositionCounts": {
+    "game-only-noncombat-or-bag": 54,
+    "unlisted-combat-item-no-supported-acquisition": 38,
+    "compiled-price-only-no-sim-field": 7,
+    "game-only-cosmetic-or-low-quality-equipment": 50,
+    "compiled-class-restriction-updated": 4,
+    "added-reviewed-dungeon-quest-equipment": 2,
+    "game-only-relic": 2,
+    "game-only-duplicate-consumable-record": 15,
+    "game-only-bag": 1,
+    "game-only-key": 1
+  },
+  "deltaDispositions": [
+    {
+      "id": 2840,
+      "name": "Copper Bar",
+      "kind": "changed",
+      "changes": {
+        "BagFamily": [
+          "0",
+          "1024"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 10,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 2841,
+      "name": "Bronze Bar",
+      "kind": "changed",
+      "changes": {
+        "BagFamily": [
+          "0",
+          "1024"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 20,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 2933,
+      "name": "Seal of Wrynn",
+      "kind": "changed",
+      "changes": {
+        "Flags_0": [
+          "0",
+          "524288"
+        ],
+        "Flags_1": [
+          "24580",
+          "8196"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 11,
+        "OverallQualityID": 3,
+        "ItemLevel": 31,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [
+        {
+          "c": 1519,
+          "c2": 0,
+          "n": "An Audience with the King",
+          "t": 5,
+          "ti": 396
+        }
+      ],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 3575,
+      "name": "Iron Bar",
+      "kind": "changed",
+      "changes": {
+        "BagFamily": [
+          "0",
+          "1024"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 30,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 3576,
+      "name": "Tin Bar",
+      "kind": "changed",
+      "changes": {
+        "BagFamily": [
+          "0",
+          "1024"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 20,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 3859,
+      "name": "Steel Bar",
+      "kind": "changed",
+      "changes": {
+        "BagFamily": [
+          "0",
+          "1024"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 35,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 3860,
+      "name": "Mithril Bar",
+      "kind": "changed",
+      "changes": {
+        "BagFamily": [
+          "0",
+          "1024"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 40,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 6975,
+      "name": "Whirlwind Axe",
+      "kind": "changed",
+      "changes": {
+        "StatPercentEditor_0": [
+          "6522",
+          "6956"
+        ],
+        "StatPercentEditor_1": [
+          "6087",
+          "6521"
+        ],
+        "Flags_1": [
+          "24580",
+          "8196"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 17,
+        "OverallQualityID": 3,
+        "ItemLevel": 40,
+        "AllowableClass": 1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [
+        {
+          "c": -81,
+          "c2": 4,
+          "n": "Whirlwind Weapon",
+          "t": 5,
+          "ti": 1792
+        }
+      ],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 6976,
+      "name": "Whirlwind Warhammer",
+      "kind": "changed",
+      "changes": {
+        "StatPercentEditor_0": [
+          "6087",
+          "6521"
+        ],
+        "StatPercentEditor_1": [
+          "6522",
+          "6956"
+        ],
+        "Flags_1": [
+          "24580",
+          "8196"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 17,
+        "OverallQualityID": 3,
+        "ItemLevel": 40,
+        "AllowableClass": 1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [
+        {
+          "c": -81,
+          "c2": 4,
+          "n": "Whirlwind Weapon",
+          "t": 5,
+          "ti": 1792
+        }
+      ],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 6977,
+      "name": "Whirlwind Sword",
+      "kind": "changed",
+      "changes": {
+        "StatPercentEditor_0": [
+          "6087",
+          "6521"
+        ],
+        "StatPercentEditor_1": [
+          "6522",
+          "6956"
+        ],
+        "Flags_1": [
+          "24580",
+          "8196"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 17,
+        "OverallQualityID": 3,
+        "ItemLevel": 40,
+        "AllowableClass": 1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [
+        {
+          "c": -81,
+          "c2": 4,
+          "n": "Whirlwind Weapon",
+          "t": 5,
+          "ti": 1792
+        }
+      ],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 11287,
+      "name": "Lesser Magic Wand",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "1",
+          "110"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 26,
+        "OverallQualityID": 2,
+        "ItemLevel": 15,
+        "AllowableClass": -1,
+        "RequiredLevel": 5
+      },
+      "disposition": "compiled-price-only-no-sim-field",
+      "reason": "UIItem/SimItem do not carry vendor prices; damage,stats,armor,availability and restrictions unchanged.",
+      "cachedPlannerAcquisition": [
+        {
+          "c": 11,
+          "icon": "inv_staff_02",
+          "n": "Lesser Magic Wand",
+          "s": 333,
+          "t": 6,
+          "ti": 14293
+        }
+      ],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 11288,
+      "name": "Greater Magic Wand",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "1",
+          "200"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 26,
+        "OverallQualityID": 2,
+        "ItemLevel": 23,
+        "AllowableClass": -1,
+        "RequiredLevel": 13
+      },
+      "disposition": "compiled-price-only-no-sim-field",
+      "reason": "UIItem/SimItem do not carry vendor prices; damage,stats,armor,availability and restrictions unchanged.",
+      "cachedPlannerAcquisition": [
+        {
+          "c": 11,
+          "icon": "inv_staff_07",
+          "n": "Greater Magic Wand",
+          "s": 333,
+          "t": 6,
+          "ti": 14807
+        }
+      ],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 11289,
+      "name": "Lesser Mystic Wand",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "1",
+          "450"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 26,
+        "OverallQualityID": 2,
+        "ItemLevel": 31,
+        "AllowableClass": -1,
+        "RequiredLevel": 26
+      },
+      "disposition": "compiled-price-only-no-sim-field",
+      "reason": "UIItem/SimItem do not carry vendor prices; damage,stats,armor,availability and restrictions unchanged.",
+      "cachedPlannerAcquisition": [
+        {
+          "c": 11,
+          "icon": "inv_staff_02",
+          "n": "Lesser Mystic Wand",
+          "s": 333,
+          "t": 6,
+          "ti": 14809
+        }
+      ],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 11371,
+      "name": "Dark Iron Bar",
+      "kind": "changed",
+      "changes": {
+        "BagFamily": [
+          "0",
+          "1024"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 50,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 12359,
+      "name": "Thorium Bar",
+      "kind": "changed",
+      "changes": {
+        "BagFamily": [
+          "0",
+          "1024"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 50,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 12655,
+      "name": "Enchanted Thorium Bar",
+      "kind": "changed",
+      "changes": {
+        "BagFamily": [
+          "0",
+          "1024"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 55,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 17771,
+      "name": "Elementium Bar",
+      "kind": "changed",
+      "changes": {
+        "BagFamily": [
+          "0",
+          "1024"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 5,
+        "ItemLevel": 60,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 20744,
+      "name": "Minor Wizard Oil",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "500",
+          "100"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 15,
+        "AllowableClass": -1,
+        "RequiredLevel": 5
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 212792,
+      "name": "Eye of the Tempest",
+      "kind": "changed",
+      "changes": {
+        "Flags_0": [
+          "0",
+          "2048"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 217287,
+      "name": "Greater Mystic Wand",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "1",
+          "600"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 26,
+        "OverallQualityID": 2,
+        "ItemLevel": 35,
+        "AllowableClass": -1,
+        "RequiredLevel": 30
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 221192,
+      "name": "Dream Journal",
+      "kind": "changed",
+      "changes": {
+        "LockID": [
+          "0",
+          "4579"
+        ],
+        "PageID": [
+          "1371",
+          "0"
+        ],
+        "OverallQualityID": [
+          "4",
+          "2"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 2,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 221518,
+      "name": "Whisper",
+      "kind": "changed",
+      "changes": {
+        "StatPercentEditor_0": [
+          "5259",
+          "7601"
+        ],
+        "StatPercentEditor_1": [
+          "5259",
+          "4593"
+        ],
+        "StatPercentEditor_2": [
+          "5258",
+          "2412"
+        ],
+        "StatModifier_bonusStat_1": [
+          "7",
+          "45"
+        ],
+        "ItemDelay": [
+          "3200",
+          "3400"
+        ],
+        "ItemLevel": [
+          "56",
+          "53"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 17,
+        "OverallQualityID": 3,
+        "ItemLevel": 53,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [
+        {
+          "c": -141,
+          "c2": 4,
+          "n": "The Price of Hope",
+          "t": 5,
+          "ti": 82135
+        }
+      ],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 247789,
+      "name": "Novice's Practice Wand",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "1",
+          "5"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 26,
+        "OverallQualityID": 1,
+        "ItemLevel": 6,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [
+        {
+          "c": 11,
+          "icon": "inv_weapon_shortblade_09",
+          "n": "Novice's Practice Wand",
+          "s": 333,
+          "t": 6,
+          "ti": 1245321
+        }
+      ],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 249144,
+      "name": "Twisted Nether Wand",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "1",
+          "1000"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 26,
+        "OverallQualityID": 2,
+        "ItemLevel": 42,
+        "AllowableClass": -1,
+        "RequiredLevel": 37
+      },
+      "disposition": "compiled-price-only-no-sim-field",
+      "reason": "UIItem/SimItem do not carry vendor prices; damage,stats,armor,availability and restrictions unchanged.",
+      "cachedPlannerAcquisition": [
+        {
+          "c": 11,
+          "icon": "inv_wand_03",
+          "n": "Twisted Nether Wand",
+          "s": 333,
+          "t": 6,
+          "ti": 1248461
+        }
+      ],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 249232,
+      "name": "Lesser Eternal Wand",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "1",
+          "2000"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 26,
+        "OverallQualityID": 2,
+        "ItemLevel": 54,
+        "AllowableClass": -1,
+        "RequiredLevel": 49
+      },
+      "disposition": "compiled-price-only-no-sim-field",
+      "reason": "UIItem/SimItem do not carry vendor prices; damage,stats,armor,availability and restrictions unchanged.",
+      "cachedPlannerAcquisition": [
+        {
+          "c": 11,
+          "icon": "inv_wand_05",
+          "n": "Lesser Eternal Wand",
+          "s": 333,
+          "t": 6,
+          "ti": 1248505
+        }
+      ],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 249234,
+      "name": "Dreambough Wand",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "1",
+          "1500"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 26,
+        "OverallQualityID": 2,
+        "ItemLevel": 48,
+        "AllowableClass": -1,
+        "RequiredLevel": 43
+      },
+      "disposition": "compiled-price-only-no-sim-field",
+      "reason": "UIItem/SimItem do not carry vendor prices; damage,stats,armor,availability and restrictions unchanged.",
+      "cachedPlannerAcquisition": [
+        {
+          "c": 11,
+          "icon": "inv_wand_04",
+          "n": "Dreambough Wand",
+          "s": 333,
+          "t": 6,
+          "ti": 1248509
+        }
+      ],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 249237,
+      "name": "Greater Eternal Wand",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "1",
+          "2500"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 26,
+        "OverallQualityID": 2,
+        "ItemLevel": 60,
+        "AllowableClass": -1,
+        "RequiredLevel": 55
+      },
+      "disposition": "compiled-price-only-no-sim-field",
+      "reason": "UIItem/SimItem do not carry vendor prices; damage,stats,armor,availability and restrictions unchanged.",
+      "cachedPlannerAcquisition": [
+        {
+          "c": 11,
+          "icon": "inv_wand_14",
+          "n": "Greater Eternal Wand",
+          "s": 333,
+          "t": 6,
+          "ti": 1248515
+        }
+      ],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 249409,
+      "name": "Cerulean Dye",
+      "kind": "changed",
+      "changes": {
+        "Description_lang": [
+          "Fermented by alchemists.",
+          "Crafted by alchemists."
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 2,
+        "ItemLevel": 25,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 249410,
+      "name": "Sulfuric Acid",
+      "kind": "changed",
+      "changes": {
+        "Description_lang": [
+          "Fermented by alchemists.",
+          "Crafted by alchemists."
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 2,
+        "ItemLevel": 25,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 249430,
+      "name": "Magenta Dye",
+      "kind": "changed",
+      "changes": {
+        "Description_lang": [
+          "Fermented by alchemists.",
+          "Crafted by alchemists."
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 2,
+        "ItemLevel": 45,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 249431,
+      "name": "Viridian Dye",
+      "kind": "changed",
+      "changes": {
+        "Description_lang": [
+          "Fermented by alchemists.",
+          "Crafted by alchemists."
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 2,
+        "ItemLevel": 60,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 249534,
+      "name": "Formula: Enchant Gloves - Arcane Power",
+      "kind": "changed",
+      "changes": {
+        "Description_lang": [
+          "Teaches you how to permanently enchant gloves to increase arcane damage by up to 20.",
+          "Teaches you how to permanently enchant gloves to increase Arcane damage by up to 20."
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 2,
+        "ItemLevel": 60,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 249535,
+      "name": "Formula: Enchant Gloves - Natural Power",
+      "kind": "changed",
+      "changes": {
+        "Description_lang": [
+          "Teaches you how to permanently enchant gloves to increase nature damage by up to 20.",
+          "Teaches you how to permanently enchant gloves to increase Nature damage by up to 20."
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 2,
+        "ItemLevel": 60,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 249536,
+      "name": "Formula: Enchant Gloves - Holy Power",
+      "kind": "changed",
+      "changes": {
+        "Description_lang": [
+          "Teaches you how to permanently enchant gloves to increase holy damage by up to 20.",
+          "Teaches you how to permanently enchant gloves to increase Holy damage by up to 20."
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 2,
+        "ItemLevel": 60,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 249879,
+      "name": "Recipe: Peace Tea",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "1875",
+          "10"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 249900,
+      "name": "Regurgitated Seed Pod",
+      "kind": "changed",
+      "changes": {
+        "MaxCount": [
+          "1",
+          "0"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 250181,
+      "name": "Recipe: Raging Raptor Ribs",
+      "kind": "changed",
+      "changes": {
+        "RequiredSkillRank": [
+          "275",
+          "180"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 255010,
+      "name": "Harvester Gyrostabilizer",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "31",
+          "0"
+        ],
+        "BuyPrice": [
+          "200",
+          "0"
+        ],
+        "Bonding": [
+          "0",
+          "4"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 258771,
+      "name": "Al'Aketh Cultist's Ear",
+      "kind": "changed",
+      "changes": {
+        "Description_lang": [
+          "You can't help but wonder what the Nightclaw plan to do with all these ears.",
+          "You can't help but wonder what the Nightclaw plans to do with all these ears."
+        ],
+        "Display_lang": [
+          "Al'Alketh Cultist's Ear",
+          "Al'Aketh Cultist's Ear"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 264239,
+      "name": "Schematic: EZ-Thro Magnetic Displacer",
+      "kind": "changed",
+      "changes": {
+        "Description_lang": [
+          "Teaches you how to make EZ-Throw Magnetic Displacer.",
+          "Teaches you how to make EZ-Thro Magnetic Displacer."
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 60,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 268582,
+      "name": "Corrupted Totems",
+      "kind": "changed",
+      "changes": {
+        "Flags_0": [
+          "64",
+          "2112"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 271661,
+      "name": "Thendal Novice's Boots",
+      "kind": "changed",
+      "changes": {
+        "Bonding": [
+          "0",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 8,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271664,
+      "name": "Hornbeam Heft",
+      "kind": "changed",
+      "changes": {
+        "StatPercentEditor_0": [
+          "7142",
+          "12000"
+        ],
+        "StatPercentEditor_2": [
+          "3900",
+          "0"
+        ],
+        "StatPercentEditor_3": [
+          "3900",
+          "0"
+        ],
+        "StatModifier_bonusStat_0": [
+          "7",
+          "4"
+        ],
+        "StatModifier_bonusStat_2": [
+          "4",
+          "-1"
+        ],
+        "StatModifier_bonusStat_3": [
+          "6",
+          "-1"
+        ],
+        "Flags_4": [
+          "0",
+          "768"
+        ],
+        "OverallQualityID": [
+          "3",
+          "2"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 13,
+        "OverallQualityID": 2,
+        "ItemLevel": 33,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271665,
+      "name": "Thendal Survivalist's Boots",
+      "kind": "changed",
+      "changes": {
+        "Material": [
+          "7",
+          "8"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 8,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271667,
+      "name": "Ironwood Destroyer",
+      "kind": "changed",
+      "changes": {
+        "StatPercentEditor_0": [
+          "4767",
+          "14285"
+        ],
+        "StatPercentEditor_1": [
+          "3899",
+          "0"
+        ],
+        "StatPercentEditor_2": [
+          "13334",
+          "0"
+        ],
+        "StatModifier_bonusStat_0": [
+          "7",
+          "86"
+        ],
+        "StatModifier_bonusStat_1": [
+          "6",
+          "-1"
+        ],
+        "StatModifier_bonusStat_2": [
+          "38",
+          "-1"
+        ],
+        "OverallQualityID": [
+          "3",
+          "2"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 17,
+        "OverallQualityID": 2,
+        "ItemLevel": 33,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271668,
+      "name": "Thendal Survivalist's Shirt",
+      "kind": "changed",
+      "changes": {
+        "Material": [
+          "7",
+          "8"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 4,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271670,
+      "name": "Curl of Life",
+      "kind": "changed",
+      "changes": {
+        "StatPercentEditor_1": [
+          "6667",
+          "6666"
+        ],
+        "StatPercentEditor_2": [
+          "5184",
+          "7777"
+        ],
+        "StatPercentEditor_3": [
+          "5000",
+          "0"
+        ],
+        "StatModifier_bonusStat_3": [
+          "46",
+          "-1"
+        ],
+        "OverallQualityID": [
+          "3",
+          "2"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 11,
+        "OverallQualityID": 2,
+        "ItemLevel": 33,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271716,
+      "name": "Explorer's League Dustcover",
+      "kind": "changed",
+      "changes": {
+        "StatPercentEditor_0": [
+          "6667",
+          "5100"
+        ],
+        "StatPercentEditor_3": [
+          "4444",
+          "5100"
+        ],
+        "StatPercentEditor_4": [
+          "4444",
+          "5100"
+        ],
+        "StatModifier_bonusStat_3": [
+          "4",
+          "6"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 16,
+        "OverallQualityID": 3,
+        "ItemLevel": 33,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271719,
+      "name": "Furs of the Earthen Ring",
+      "kind": "changed",
+      "changes": {
+        "StatPercentEditor_0": [
+          "5344",
+          "0"
+        ],
+        "StatPercentEditor_1": [
+          "2877",
+          "5100"
+        ],
+        "StatPercentEditor_3": [
+          "4444",
+          "5100"
+        ],
+        "StatPercentEditor_4": [
+          "4444",
+          "5100"
+        ],
+        "StatModifier_bonusStat_0": [
+          "5",
+          "-1"
+        ],
+        "StatModifier_bonusStat_1": [
+          "7",
+          "5"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 16,
+        "OverallQualityID": 3,
+        "ItemLevel": 33,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271722,
+      "name": "Shen'dorei Magister's Belt",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 6,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271723,
+      "name": "Shen'dorei Magister's Boots",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 8,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271724,
+      "name": "Shen'dorei Magister's Cloak",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 16,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271725,
+      "name": "Shen'dorei Magister's Robe",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 20,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271726,
+      "name": "Shen'dorei Magister's Gloves",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 10,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271727,
+      "name": "Shen'dorei Magister's Helm",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 1,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271728,
+      "name": "Shen'dorei Magister's Leggings",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 7,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271729,
+      "name": "Shen'dorei Magister's Vest",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 5,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271730,
+      "name": "Shen'dorei Magister's Pauldrons",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 3,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271731,
+      "name": "Ensemble: Shen'dorei Magister's Garb",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 271732,
+      "name": "Dirt-Heavy Bracers",
+      "kind": "changed",
+      "changes": {
+        "StatPercentEditor_0": [
+          "6667",
+          "5714"
+        ],
+        "StatPercentEditor_1": [
+          "8000",
+          "14285"
+        ],
+        "StatPercentEditor_2": [
+          "4444",
+          "0"
+        ],
+        "StatModifier_bonusStat_2": [
+          "7",
+          "-1"
+        ],
+        "OverallQualityID": [
+          "3",
+          "2"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 9,
+        "OverallQualityID": 2,
+        "ItemLevel": 33,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271733,
+      "name": "Shen'dorei Peacekeeper's Belt",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 6,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271734,
+      "name": "Shen'dorei Peacekeeper's Boots",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 8,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271735,
+      "name": "Shen'dorei Peacekeeper's Cloak",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 16,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271736,
+      "name": "Shen'dorei Peacekeeper's Robe",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 20,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271737,
+      "name": "Shen'dorei Peacekeeper's Gloves",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 10,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271738,
+      "name": "Shen'dorei Peacekeeper's Helm",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 1,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271739,
+      "name": "Shen'dorei Peacekeeper's Leggings",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 7,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271740,
+      "name": "Knife-Polishing Rag",
+      "kind": "changed",
+      "changes": {
+        "StatPercentEditor_0": [
+          "3900",
+          "5714"
+        ],
+        "StatPercentEditor_1": [
+          "7150",
+          "8571"
+        ],
+        "StatPercentEditor_2": [
+          "4549",
+          "0"
+        ],
+        "StatModifier_bonusStat_0": [
+          "5",
+          "6"
+        ],
+        "StatModifier_bonusStat_1": [
+          "6",
+          "45"
+        ],
+        "StatModifier_bonusStat_2": [
+          "45",
+          "-1"
+        ],
+        "OverallQualityID": [
+          "3",
+          "2"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 9,
+        "OverallQualityID": 2,
+        "ItemLevel": 33,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271742,
+      "name": "Shen'dorei Peacekeeper's Vest",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 5,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271743,
+      "name": "Shen'dorei Peacekeeper's Pauldrons",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 3,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271744,
+      "name": "Ensemble: Shen'dorei Peacekeeper's Garb",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 271746,
+      "name": "Shen'dorei Skyseer's Belt",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 6,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271747,
+      "name": "Shen'dorei Skyseer's Boots",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 8,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271748,
+      "name": "Shen'dorei Skyseer's Cloak",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 16,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271749,
+      "name": "Shen'dorei Skyseer's Robe",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 20,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271750,
+      "name": "Shen'dorei Skyseer's Gloves",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 10,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271751,
+      "name": "Shen'dorei Skyseer's Helm",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 1,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271752,
+      "name": "Shen'dorei Skyseer's Leggings",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 7,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271753,
+      "name": "Shen'dorei Skyseer's Vest",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 5,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271754,
+      "name": "Shen'dorei Skyseer's Pauldrons",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 3,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271755,
+      "name": "Ensemble: Shen'dorei Skyseer's Garb",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 271756,
+      "name": "Al'Aketh Zealot's Belt",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 6,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271757,
+      "name": "Al'Aketh Zealot's Boots",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 8,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271758,
+      "name": "Al'Aketh Zealot's Cloak",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 16,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271759,
+      "name": "Al'Aketh Zealot's Robe",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 20,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271760,
+      "name": "Al'Aketh Zealot's Gloves",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 10,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271761,
+      "name": "Al'Aketh Zealot's Helm",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 1,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271762,
+      "name": "Al'Aketh Zealot's Leggings",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 7,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271763,
+      "name": "Al'Aketh Zealot's Vest",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 5,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271764,
+      "name": "Al'Aketh Zealot's Pauldrons",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 3,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271765,
+      "name": "Ensemble: Al'Aketh Zealot's Garb",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 271766,
+      "name": "Heavehammer",
+      "kind": "changed",
+      "changes": {
+        "StatPercentEditor_0": [
+          "14300",
+          "17777"
+        ],
+        "StatPercentEditor_1": [
+          "3900",
+          "0"
+        ],
+        "StatPercentEditor_2": [
+          "38888",
+          "33333"
+        ],
+        "StatModifier_bonusStat_1": [
+          "3",
+          "-1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 17,
+        "OverallQualityID": 3,
+        "ItemLevel": 33,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 271769,
+      "name": "Daewyn's Girdle",
+      "kind": "changed",
+      "changes": {
+        "StatPercentEditor_2": [
+          "4548",
+          "7777"
+        ],
+        "StatPercentEditor_3": [
+          "7150",
+          "0"
+        ],
+        "StatModifier_bonusStat_3": [
+          "46",
+          "-1"
+        ],
+        "OverallQualityID": [
+          "3",
+          "2"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 6,
+        "OverallQualityID": 2,
+        "ItemLevel": 33,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 272184,
+      "name": "Amulet of Vengeance",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "3",
+          "2"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 2,
+        "OverallQualityID": 2,
+        "ItemLevel": 43,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 272185,
+      "name": "Amulet of Forgiveness",
+      "kind": "changed",
+      "changes": {
+        "StatPercentEditor_1": [
+          "5850",
+          "13000"
+        ],
+        "StatPercentEditor_2": [
+          "0",
+          "4000"
+        ],
+        "StatModifier_bonusStat_1": [
+          "5",
+          "41"
+        ],
+        "StatModifier_bonusStat_2": [
+          "-1",
+          "42"
+        ],
+        "OverallQualityID": [
+          "3",
+          "2"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 2,
+        "OverallQualityID": 2,
+        "ItemLevel": 43,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 273658,
+      "name": "Bloody Parchment",
+      "kind": "changed",
+      "changes": {
+        "ItemLevel": [
+          "30",
+          "23"
+        ],
+        "RequiredLevel": [
+          "30",
+          "23"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 23,
+        "AllowableClass": -1,
+        "RequiredLevel": 23
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 274391,
+      "name": "Formula: Enchant Off Hand - Superior Intellect",
+      "kind": "changed",
+      "changes": {
+        "Description_lang": [
+          "Teaches you how to permanently enchant an off-hand to give +9 Intellect.",
+          "Teaches you how to permanently enchant an Off Hand to give +9 Intellect."
+        ],
+        "Display_lang": [
+          "Formula: Enchant Off-Hand - Superior Intellect",
+          "Formula: Enchant Off Hand - Superior Intellect"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 3,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 274392,
+      "name": "Formula: Enchant Off Hand - Excellent Spirit",
+      "kind": "changed",
+      "changes": {
+        "Description_lang": [
+          "Teaches you how to permanently enchant an off-hand to give +12 Spirit.",
+          "Teaches you how to permanently enchant an Off Hand to give +12 Spirit."
+        ],
+        "Display_lang": [
+          "Formula: Enchant Off-Hand - Excellent Spirit",
+          "Formula: Enchant Off Hand - Excellent Spirit"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 3,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 274393,
+      "name": "Formula: Enchant Off Hand - Wisdom",
+      "kind": "changed",
+      "changes": {
+        "Description_lang": [
+          "Teaches you how to permanently enchant an off-hand to give +6 Intellect and +5 Spirit.",
+          "Teaches you how to permanently enchant an Off Hand to give +6 Intellect and +5 Spirit."
+        ],
+        "Display_lang": [
+          "Formula: Enchant Off-Hand - Wisdom",
+          "Formula: Enchant Off Hand - Wisdom"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 3,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 274915,
+      "name": "Sacristan Band",
+      "kind": "changed",
+      "changes": {
+        "StatPercentEditor_3": [
+          "3333",
+          "2500"
+        ],
+        "ItemLevel": [
+          "40",
+          "38"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 11,
+        "OverallQualityID": 2,
+        "ItemLevel": 38,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 274916,
+      "name": "Verger Greaves",
+      "kind": "changed",
+      "changes": {
+        "ItemLevel": [
+          "40",
+          "38"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 8,
+        "OverallQualityID": 2,
+        "ItemLevel": 38,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 274918,
+      "name": "Warding Candle",
+      "kind": "changed",
+      "changes": {
+        "ItemLevel": [
+          "40",
+          "38"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 38,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 274922,
+      "name": "Riverglades Marsh Gas",
+      "kind": "changed",
+      "changes": {
+        "ItemLevel": [
+          "40",
+          "38"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 38,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 274928,
+      "name": "Curly's Chopper",
+      "kind": "changed",
+      "changes": {
+        "ItemLevel": [
+          "40",
+          "39"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 13,
+        "OverallQualityID": 2,
+        "ItemLevel": 39,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 274929,
+      "name": "Hurley's Felling Axe",
+      "kind": "changed",
+      "changes": {
+        "ItemLevel": [
+          "40",
+          "39"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 17,
+        "OverallQualityID": 2,
+        "ItemLevel": 39,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 274938,
+      "name": "Gnollhide Tunic",
+      "kind": "changed",
+      "changes": {
+        "ItemLevel": [
+          "42",
+          "40"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 5,
+        "OverallQualityID": 2,
+        "ItemLevel": 40,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 274939,
+      "name": "Southern Watch Leggings",
+      "kind": "changed",
+      "changes": {
+        "ItemLevel": [
+          "42",
+          "40"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 7,
+        "OverallQualityID": 2,
+        "ItemLevel": 40,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 274940,
+      "name": "Unbalanced Fighting Stick",
+      "kind": "changed",
+      "changes": {
+        "ItemLevel": [
+          "42",
+          "40"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 17,
+        "OverallQualityID": 2,
+        "ItemLevel": 40,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 274941,
+      "name": "Bristle Hills Mystic Robe",
+      "kind": "changed",
+      "changes": {
+        "ItemLevel": [
+          "42",
+          "40"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 20,
+        "OverallQualityID": 2,
+        "ItemLevel": 40,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 274942,
+      "name": "Bristlepelt Vest",
+      "kind": "changed",
+      "changes": {
+        "ItemLevel": [
+          "42",
+          "40"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 5,
+        "OverallQualityID": 2,
+        "ItemLevel": 40,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 274943,
+      "name": "Gnoll Crusher Leggings",
+      "kind": "changed",
+      "changes": {
+        "ItemLevel": [
+          "42",
+          "40"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 7,
+        "OverallQualityID": 2,
+        "ItemLevel": 40,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 274944,
+      "name": "Bloodsnout Striker",
+      "kind": "changed",
+      "changes": {
+        "StatPercentEditor_1": [
+          "11764",
+          "11250"
+        ],
+        "ItemLevel": [
+          "42",
+          "40"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 17,
+        "OverallQualityID": 2,
+        "ItemLevel": 40,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 274946,
+      "name": "Gnollblood Robe",
+      "kind": "changed",
+      "changes": {
+        "ItemLevel": [
+          "42",
+          "40"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 20,
+        "OverallQualityID": 2,
+        "ItemLevel": 40,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 274955,
+      "name": "Clobrok's Block Rock",
+      "kind": "changed",
+      "changes": {
+        "ItemLevel": [
+          "43",
+          "42"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 2,
+        "OverallQualityID": 2,
+        "ItemLevel": 42,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 274957,
+      "name": "Lumber Luggers",
+      "kind": "changed",
+      "changes": {
+        "ItemLevel": [
+          "43",
+          "38"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 10,
+        "OverallQualityID": 2,
+        "ItemLevel": 38,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 274958,
+      "name": "Especially Delicious Berries",
+      "kind": "changed",
+      "changes": {
+        "Bonding": [
+          "0",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 274961,
+      "name": "Brute Slayer Band",
+      "kind": "changed",
+      "changes": {
+        "ItemLevel": [
+          "40",
+          "39"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 11,
+        "OverallQualityID": 2,
+        "ItemLevel": 39,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 274963,
+      "name": "Rot-Covered Harpoon",
+      "kind": "changed",
+      "changes": {
+        "ItemLevel": [
+          "44",
+          "42"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 17,
+        "OverallQualityID": 3,
+        "ItemLevel": 42,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 276538,
+      "name": "Spiritcaller Kilt",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "21104",
+          "40208"
+        ],
+        "BuyPrice": [
+          "105523",
+          "201040"
+        ],
+        "AllowableClass": [
+          "-1",
+          "64"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 7,
+        "OverallQualityID": 4,
+        "ItemLevel": 61,
+        "AllowableClass": 64,
+        "RequiredLevel": 60
+      },
+      "disposition": "compiled-class-restriction-updated",
+      "reason": "AllowableClass -1→64 maps only to proto ClassShaman7. Only restriction changes; existing armor-only stats/set metadata are retained.",
+      "cachedPlannerAcquisition": [
+        {
+          "c": 11,
+          "icon": "inv_misc_desecrated_mailpants",
+          "n": "Spiritcaller Leggings",
+          "s": 165,
+          "t": 6,
+          "ti": 1299914
+        }
+      ],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 276539,
+      "name": "Spiritcaller Gloves",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "21182",
+          "20181"
+        ],
+        "BuyPrice": [
+          "105910",
+          "100906"
+        ],
+        "AllowableClass": [
+          "-1",
+          "64"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 10,
+        "OverallQualityID": 4,
+        "ItemLevel": 61,
+        "AllowableClass": 64,
+        "RequiredLevel": 60
+      },
+      "disposition": "compiled-class-restriction-updated",
+      "reason": "AllowableClass -1→64 maps only to proto ClassShaman7. Only restriction changes; existing armor-only stats/set metadata are retained.",
+      "cachedPlannerAcquisition": [
+        {
+          "c": 11,
+          "icon": "inv_misc_desecrated_mailglove",
+          "n": "Spiritcaller Grips",
+          "s": 165,
+          "t": 6,
+          "ti": 1299915
+        }
+      ],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 276540,
+      "name": "Spiritcaller Mantle",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "21259",
+          "30523"
+        ],
+        "BuyPrice": [
+          "106296",
+          "152615"
+        ],
+        "AllowableClass": [
+          "-1",
+          "64"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 3,
+        "OverallQualityID": 4,
+        "ItemLevel": 61,
+        "AllowableClass": 64,
+        "RequiredLevel": 60
+      },
+      "disposition": "compiled-class-restriction-updated",
+      "reason": "AllowableClass -1→64 maps only to proto ClassShaman7. Only restriction changes; existing armor-only stats/set metadata are retained.",
+      "cachedPlannerAcquisition": [
+        {
+          "c": 11,
+          "icon": "inv_misc_desecrated_mailshoulder",
+          "n": "Spiritcaller Spaulders",
+          "s": 165,
+          "t": 6,
+          "ti": 1299916
+        }
+      ],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 276541,
+      "name": "Spiritcaller Boots",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "32147",
+          "30639"
+        ],
+        "BuyPrice": [
+          "160736",
+          "153197"
+        ],
+        "AllowableClass": [
+          "-1",
+          "64"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 8,
+        "OverallQualityID": 4,
+        "ItemLevel": 61,
+        "AllowableClass": 64,
+        "RequiredLevel": 60
+      },
+      "disposition": "compiled-class-restriction-updated",
+      "reason": "AllowableClass -1→64 maps only to proto ClassShaman7. Only restriction changes; existing armor-only stats/set metadata are retained.",
+      "cachedPlannerAcquisition": [
+        {
+          "c": 11,
+          "icon": "inv_misc_desecrated_mailboots",
+          "n": "Spiritcaller Treads",
+          "s": 165,
+          "t": 6,
+          "ti": 1299917
+        }
+      ],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 277200,
+      "name": "Scorched Leather Pouch",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "250",
+          "62"
+        ],
+        "BuyPrice": [
+          "1000",
+          "250"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 18,
+        "OverallQualityID": 1,
+        "ItemLevel": 5,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 277254,
+      "name": "Truthseeker's Bow",
+      "kind": "changed",
+      "changes": {
+        "RequiredLevel": [
+          "0",
+          "40"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 15,
+        "OverallQualityID": 3,
+        "ItemLevel": 45,
+        "AllowableClass": -1,
+        "RequiredLevel": 40
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 277977,
+      "name": "Canvas Latchbag",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "875",
+          "62"
+        ],
+        "BuyPrice": [
+          "2500",
+          "250"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 18,
+        "OverallQualityID": 1,
+        "ItemLevel": 6,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 279173,
+      "name": "Veteran Adventurer's Chestpiece",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "3",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 5,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 279174,
+      "name": "Veteran Adventurer's Belt",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "3",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 6,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 279175,
+      "name": "Veteran Adventurer's Legguards",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "3",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 7,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 279176,
+      "name": "Veteran Adventurer's Boots",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "3",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 8,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 279177,
+      "name": "Veteran Adventurer's Bracer",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "3",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 9,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 279178,
+      "name": "Veteran Adventurer's Gloves",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "3",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 10,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 279179,
+      "name": "Veteran Adventurer's Cloak",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "3",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 16,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 279180,
+      "name": "Veteran Adventurer's Hood",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "3",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 1,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 279181,
+      "name": "Veteran Adventurer's Shoulderpads",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "3",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 3,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 279182,
+      "name": "Ensemble: Veteran Adventurer's Outdoor Wear",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "3",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 279450,
+      "name": "Fractured Insignia",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "3",
+          "2"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 2,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 40
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 279936,
+      "name": "Book Bag",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "875",
+          "62"
+        ],
+        "BuyPrice": [
+          "2500",
+          "250"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 18,
+        "OverallQualityID": 1,
+        "ItemLevel": 5,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 279939,
+      "name": "Collecting Basket",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "875",
+          "62"
+        ],
+        "BuyPrice": [
+          "2500",
+          "250"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 18,
+        "OverallQualityID": 1,
+        "ItemLevel": 5,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 280088,
+      "name": "Soft Saber Sack",
+      "kind": "changed",
+      "changes": {
+        "SellPrice": [
+          "875",
+          "62"
+        ],
+        "BuyPrice": [
+          "2500",
+          "250"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 18,
+        "OverallQualityID": 1,
+        "ItemLevel": 5,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 280404,
+      "name": "Lordaeron Forever Tabard",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 19,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 280417,
+      "name": "Damaged Blue Crystal",
+      "kind": "changed",
+      "changes": {
+        "Bonding": [
+          "0",
+          "4"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 280604,
+      "name": "Rage of the Storm",
+      "kind": "changed",
+      "changes": {
+        "StatPercentEditor_0": [
+          "6956",
+          "5217"
+        ],
+        "ItemDelay": [
+          "3600",
+          "3300"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 17,
+        "OverallQualityID": 3,
+        "ItemLevel": 40,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 280614,
+      "name": "Pachimari",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "3"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 3,
+        "ItemLevel": 20,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 280623,
+      "name": "Veteran Adventurer's Rucksack",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "3",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 16,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 280729,
+      "name": "Shen'dorei Tabard",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "4",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 19,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 280740,
+      "name": "Shen'dorei Windwell",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "3",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 280766,
+      "name": "Satchel of Potions",
+      "kind": "changed",
+      "changes": {
+        "OverallQualityID": [
+          "3",
+          "2"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 12,
+        "OverallQualityID": 2,
+        "ItemLevel": 33,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 281286,
+      "name": "High Order Pendant",
+      "kind": "changed",
+      "changes": {
+        "StatPercentEditor_0": [
+          "4316",
+          "5000"
+        ],
+        "StatModifier_bonusStat_0": [
+          "7",
+          "45"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 2,
+        "OverallQualityID": 2,
+        "ItemLevel": 57,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 281313,
+      "name": "Trusty Sword",
+      "kind": "changed",
+      "changes": {
+        "SheatheType": [
+          "0",
+          "1"
+        ],
+        "Material": [
+          "6",
+          "1"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 17,
+        "OverallQualityID": 3,
+        "ItemLevel": 32,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "unlisted-combat-item-no-supported-acquisition",
+      "reason": "Absent current source-filtered catalog. Cached Forever planner acquisition: no-crafting-or-dungeon-source. No supported crafting/dungeon/nonraid-vendor acquisition is established; unchanged global filter, no fabricated availability.",
+      "cachedPlannerAcquisition": [],
+      "cachedPlannerPresent": true
+    },
+    {
+      "id": 281348,
+      "name": "Parchment of Chaos",
+      "kind": "changed",
+      "changes": {
+        "Stackable": [
+          "5",
+          "1"
+        ],
+        "MaxCount": [
+          "0",
+          "1"
+        ],
+        "RequiredSkillRank": [
+          "0",
+          "500"
+        ],
+        "RequiredSkill": [
+          "0",
+          "141"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 281349,
+      "name": "Parchment of Darkness",
+      "kind": "changed",
+      "changes": {
+        "Stackable": [
+          "5",
+          "1"
+        ],
+        "MaxCount": [
+          "0",
+          "1"
+        ],
+        "RequiredSkillRank": [
+          "0",
+          "500"
+        ],
+        "RequiredSkill": [
+          "0",
+          "139"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 281356,
+      "name": "Burnt Page",
+      "kind": "changed",
+      "changes": {
+        "MaxCount": [
+          "0",
+          "1"
+        ],
+        "PageID": [
+          "0",
+          "10948"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "game-only-noncombat-or-bag",
+      "reason": "Not a supported combat equipment slot/class; retain source delta without inventing gear or combat effects.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 287090,
+      "name": "Letter Opener",
+      "kind": "changed",
+      "changes": {
+        "Display_lang": [
+          "Sharpened Letter Opener",
+          "Letter Opener"
+        ]
+      },
+      "currentFacts": {
+        "InventoryType": 23,
+        "OverallQualityID": 1,
+        "ItemLevel": 17,
+        "AllowableClass": -1,
+        "RequiredLevel": 2
+      },
+      "disposition": "game-only-cosmetic-or-low-quality-equipment",
+      "reason": "Current quality is below Uncommon (many outfit items changed to Common); excluded by existing combat catalog quality policy.",
+      "cachedPlannerPresent": false
+    },
+    {
+      "id": 251485,
+      "name": "Edward's Knife",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 13,
+        "OverallQualityID": 2,
+        "ItemLevel": 24,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "added-reviewed-dungeon-quest-equipment",
+      "reason": "Exact current tooltip/XML stats,armor/damage and icon corroborated by70291 Item/ItemSparse/RandPropPoints; public quest92401 lists both rewards."
+    },
+    {
+      "id": 251486,
+      "name": "Tabitha's Cuffs",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 9,
+        "OverallQualityID": 2,
+        "ItemLevel": 24,
+        "AllowableClass": -1,
+        "RequiredLevel": 0
+      },
+      "disposition": "added-reviewed-dungeon-quest-equipment",
+      "reason": "Exact current tooltip/XML stats,armor/damage and icon corroborated by70291 Item/ItemSparse/RandPropPoints; public quest92401 lists both rewards."
+    },
+    {
+      "id": 287958,
+      "name": "Titan Relic",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-relic",
+      "reason": "Titan Relic currency/quest record, InventoryType0; not equippable and not a new DPS consumable."
+    },
+    {
+      "id": 287959,
+      "name": "Titan Relic",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-relic",
+      "reason": "Titan Relic currency/quest record, InventoryType0; not equippable and not a new DPS consumable."
+    },
+    {
+      "id": 287963,
+      "name": "Roasted Quail",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 55,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-duplicate-consumable-record",
+      "reason": "New game item ID for an existing named consumable/temporary enhancement, InventoryType0. Item ID addition alone does not change a consume formula or make equippable gear.",
+      "consumeModelScope": "No dedicated current DPS consume enum/model for this low-level recovery/utility record; no unrelated new consumption model added."
+    },
+    {
+      "id": 287964,
+      "name": "Morning Glory Dew",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 55,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-duplicate-consumable-record",
+      "reason": "New game item ID for an existing named consumable/temporary enhancement, InventoryType0. Item ID addition alone does not change a consume formula or make equippable gear.",
+      "consumeModelScope": "No dedicated current DPS consume enum/model for this low-level recovery/utility record; no unrelated new consumption model added."
+    },
+    {
+      "id": 287966,
+      "name": "Minor Healing Potion",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 5,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-duplicate-consumable-record",
+      "reason": "New game item ID for an existing named consumable/temporary enhancement, InventoryType0. Item ID addition alone does not change a consume formula or make equippable gear.",
+      "consumeModelScope": "No dedicated current DPS consume enum/model for this low-level recovery/utility record; no unrelated new consumption model added."
+    },
+    {
+      "id": 287967,
+      "name": "Lesser Healing Potion",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 13,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-duplicate-consumable-record",
+      "reason": "New game item ID for an existing named consumable/temporary enhancement, InventoryType0. Item ID addition alone does not change a consume formula or make equippable gear.",
+      "existingConsumeImplementation": "sim/core/consumes.go: Potions_LesserHealingPotion"
+    },
+    {
+      "id": 287968,
+      "name": "Minor Mana Potion",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 15,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-duplicate-consumable-record",
+      "reason": "New game item ID for an existing named consumable/temporary enhancement, InventoryType0. Item ID addition alone does not change a consume formula or make equippable gear.",
+      "consumeModelScope": "No dedicated current DPS consume enum/model for this low-level recovery/utility record; no unrelated new consumption model added."
+    },
+    {
+      "id": 287969,
+      "name": "Lesser Mana Potion",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 24,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-duplicate-consumable-record",
+      "reason": "New game item ID for an existing named consumable/temporary enhancement, InventoryType0. Item ID addition alone does not change a consume formula or make equippable gear.",
+      "existingConsumeImplementation": "sim/core/consumes.go: deprecated Potions_LesserManaPotion"
+    },
+    {
+      "id": 287971,
+      "name": "Woolen Bag",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 18,
+        "OverallQualityID": 1,
+        "ItemLevel": 15,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-bag",
+      "reason": "Woolen Bag, InventoryType18; no combat-equipment stats."
+    },
+    {
+      "id": 287972,
+      "name": "Rumsey Rum Dark",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-duplicate-consumable-record",
+      "reason": "New game item ID for an existing named consumable/temporary enhancement, InventoryType0. Item ID addition alone does not change a consume formula or make equippable gear.",
+      "existingConsumeImplementation": "sim/core/consumes.go: AlcoholRumseyRumDark"
+    },
+    {
+      "id": 287973,
+      "name": "Tender Wolf Steak",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 45,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-duplicate-consumable-record",
+      "reason": "New game item ID for an existing named consumable/temporary enhancement, InventoryType0. Item ID addition alone does not change a consume formula or make equippable gear.",
+      "existingConsumeImplementation": "sim/core/consumes.go: FoodTenderWolfSteak"
+    },
+    {
+      "id": 287974,
+      "name": "Grilled Squid",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 45,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-duplicate-consumable-record",
+      "reason": "New game item ID for an existing named consumable/temporary enhancement, InventoryType0. Item ID addition alone does not change a consume formula or make equippable gear.",
+      "existingConsumeImplementation": "sim/core/consumes.go: FoodGrilledSquid"
+    },
+    {
+      "id": 287975,
+      "name": "Swiftness Potion",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 15,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-duplicate-consumable-record",
+      "reason": "New game item ID for an existing named consumable/temporary enhancement, InventoryType0. Item ID addition alone does not change a consume formula or make equippable gear.",
+      "consumeModelScope": "No dedicated current DPS consume enum/model for this low-level recovery/utility record; no unrelated new consumption model added."
+    },
+    {
+      "id": 287976,
+      "name": "Free Action Potion",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 30,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-duplicate-consumable-record",
+      "reason": "New game item ID for an existing named consumable/temporary enhancement, InventoryType0. Item ID addition alone does not change a consume formula or make equippable gear.",
+      "consumeModelScope": "No dedicated current DPS consume enum/model for this low-level recovery/utility record; no unrelated new consumption model added."
+    },
+    {
+      "id": 287977,
+      "name": "Greater Healing Potion",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 31,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-duplicate-consumable-record",
+      "reason": "New game item ID for an existing named consumable/temporary enhancement, InventoryType0. Item ID addition alone does not change a consume formula or make equippable gear.",
+      "existingConsumeImplementation": "sim/core/consumes.go: Potions_GreaterHealingPotion"
+    },
+    {
+      "id": 287978,
+      "name": "Rough Sharpening Stone",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 5,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-duplicate-consumable-record",
+      "reason": "New game item ID for an existing named consumable/temporary enhancement, InventoryType0. Item ID addition alone does not change a consume formula or make equippable gear.",
+      "consumeModelScope": "No dedicated current DPS consume enum/model for this low-level recovery/utility record; no unrelated new consumption model added."
+    },
+    {
+      "id": 287979,
+      "name": "Lesser Wizard Oil",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 40,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-duplicate-consumable-record",
+      "reason": "New game item ID for an existing named consumable/temporary enhancement, InventoryType0. Item ID addition alone does not change a consume formula or make equippable gear.",
+      "existingConsumeImplementation": "sim/core/consumes.go: WeaponImbue_LesserWizardOil"
+    },
+    {
+      "id": 287980,
+      "name": "Elemental Sharpening Stone",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 2,
+        "ItemLevel": 60,
+        "AllowableClass": -1,
+        "RequiredLevel": 1
+      },
+      "disposition": "game-only-duplicate-consumable-record",
+      "reason": "New game item ID for an existing named consumable/temporary enhancement, InventoryType0. Item ID addition alone does not change a consume formula or make equippable gear.",
+      "existingConsumeImplementation": "sim/core/consumes.go: WeaponImbue_ElementalSharpeningStone"
+    },
+    {
+      "id": 287992,
+      "name": "Old Key",
+      "kind": "added",
+      "currentFacts": {
+        "InventoryType": 0,
+        "OverallQualityID": 1,
+        "ItemLevel": 1,
+        "AllowableClass": -1,
+        "RequiredLevel": 35
+      },
+      "disposition": "game-only-key",
+      "reason": "Old Key, InventoryType0; no combat-equipment or consume model."
+    }
+  ],
+  "limitations": [
+    "Static item records and public beta reward listings are not proof of max-level availability or final live-beta server behavior.",
+    "PrimaryItemSparse stat allocations are not point stats; only the existing RandPropPoints formula with current point-table24 and current public corroboration is used for the two additions.",
+    "142 changed noncompiled records are explicitly dispositioned against the existing bounded catalog. Broad world/outdoor-quest/cosmetic migration is not performed.",
+    "No new item procs or consumption formulas are implied by these static item-record additions."
+  ]
+}

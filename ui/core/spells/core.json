@@ -132,8 +132,9 @@
 	"10301": {
 		"ability": "Retribution Aura",
 		"file": "sim/core/buffs.go",
-		"note": "20 Holy damage per melee hit taken, +25% per point of Improved Retribution Aura, unchanged from upstream Classic.",
-		"source": "classic"
+		"source": "forever",
+		"tooltip": "Returns20 Holy damage (+0.06 provider spell power) when struck in melee, before configured talent modifiers.",
+		"note": "Current70291 primary SpellEffect supports base20 and0.06 SP. Actual provider power is used dynamically; an externally configured source defaults to0 SP, never borrows receiver SP. Improved Retribution Aura remains separate. Damage attribution to the buff receiver is an explicit simulator convention."
 	},
 	"10408": {
 		"ability": "Stoneskin Totem",
@@ -210,9 +211,10 @@
 	"11556": {
 		"ability": "Demoralizing Shout Rank 5",
 		"file": "sim/core/debuffs.go",
-		"source": "forever",
-		"tooltip": "Reduces the melee attack power of nearby enemies by 204 for 45 sec.",
-		"note": "Beta client 1.60.1 (spell 11556). Forever lengthens the debuff from 30 sec to 45 and folds Improved Demoralizing Shout into the base: rank 5 takes 204 attack power at level 60 where Era takes 146, and 204/146 is exactly the 1+0.08x5 the talent used to add. Only rank 5 is used at 60."
+		"source": "assumed",
+		"tooltip": "Reduces nearby enemies' melee attack power by 204 for 45 sec. Owned active Shout costs 10 Rage before Forever Booming Voice. Its per-target flat threat uses an explicit provisional default of 43.2 before stance/threat modifiers, or a configured override.",
+		"note": "The AP amount and 45-second debuff duration are primary-backed. The current shared core aura is also usable as an external configured debuff; that does not execute the owner's active cast. sim/warrior/demoralizing_shout.go restores nonzero threat on each landed affected target. No exact threat amount is published: 0.4 times 2 times rank-5 learn level 54 equals the retained code convention 43.2, not a measured Classic or Forever server result.",
+		"assumptions": ["Per-target flat threat defaults to the retained source-code convention of 43.2; an optional per-player override supports sensitivity. Known AP/duration values are not declared unverified merely because the separate threat amount is provisional."]
 	},
 	"11597": {
 		"ability": "Sunder Armor",
@@ -674,15 +676,17 @@
 	"9898": {
 		"ability": "Demoralizing Roar",
 		"file": "sim/core/debuffs.go",
-		"note": "138 attack power reduction, +8% per point of Improved Demoralizing Roar, for 30 sec. Forever's change to the druid's own Demoralizing Roar lives in sim/druid/demoralizing_roar.go; this core copy is the external-druid approximation and carries Classic's numbers.",
-		"source": "classic"
+		"source": "assumed",
+		"tooltip": "Reduces nearby enemies' melee attack power by 204 for 30 sec. Owned active Roar costs 10 Rage. Its per-target flat threat uses an explicit provisional default of 100 before stance/threat modifiers, or a configured override.",
+		"note": "The current shared core aura hardcodes 204 AP reduction; the owned Forever cast is in sim/druid/demoralizing_roar.go. An externally configured aura does not itself execute the owner's active cast or generate its cast threat. The prior metadata's external Classic 138-AP description does not match the current shared helper. Active Roar restores nonzero threat on each landed affected target; the amount is unpublished. The retained code convention is 2 times the registered rank's learn level (100 at rank 5), not a measured Classic or Forever server value.",
+		"assumptions": ["Per-target flat threat defaults to the retained source-code convention of 100 at rank 5; an optional per-player override supports sensitivity. This constant is not a measured server result."]
 	},
 	"9910": {
 		"ability": "Thorns",
-		"tooltip": "Thorns\nReturns 22 Nature damage when struck in melee, before the configured talent modifier.",
 		"file": "sim/core/buffs.go",
-		"note": "Client 1.60.1.70009 effect 687684: 22 Nature damage per melee hit taken, with no level growth or spell-power coefficient. The configured Improved Thorns/Brambles modifier remains separate. Classic ruleset retains 18.",
-		"source": "forever"
+		"source": "forever",
+		"tooltip": "Returns18 Nature damage (+0.06 provider spell power) when struck in melee, before configured talent modifiers.",
+		"note": "Current70291 primary SpellEffect supports base18 and0.06 SP. Actual provider power is used dynamically; an externally configured source defaults to0 SP, never borrows receiver SP. The configured Improved Thorns/Brambles multiplier is separate. Damage attribution to the buff receiver is an explicit simulator convention."
 	},
 	"11767": {
 		"ability": "Blood Pact",

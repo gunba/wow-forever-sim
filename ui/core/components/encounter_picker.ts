@@ -4,7 +4,8 @@ import { ListItemPickerConfig, ListPicker } from '../components/list_picker.js';
 import { NumberPicker } from '../components/number_picker.js';
 import { Encounter } from '../encounter.js';
 import { IndividualSimUI } from '../individual_sim_ui.js';
-import { InputType, MobType, SpellSchool, Stat, Target, Target as TargetProto, TargetInput } from '../proto/common.js';
+import { CrowdControlDrResetAnchor, InputType, MobType, SpellSchool, Stat, Target, Target as TargetProto, TargetInput } from '../proto/common.js';
+import { Ruleset } from '../proto/api.js';
 import { statNames } from '../proto_utils/names.js';
 import { Stats } from '../proto_utils/stats.js';
 import { isHealingSpec, isTankSpec } from '../proto_utils/utils.js';
@@ -256,6 +257,48 @@ class TargetPicker extends Input<Encounter, TargetProto> {
 		const section1 = this.rootElem.getElementsByClassName('target-picker-section1')[0] as HTMLElement;
 		const section2 = this.rootElem.getElementsByClassName('target-picker-section2')[0] as HTMLElement;
 		const section3 = this.rootElem.getElementsByClassName('target-picker-section3')[0] as HTMLElement;
+
+		// CC eligibility is explicit, never inferred from a boss's level/type.
+		const controlFields = [
+			{ field: 'canBeStunned', label: 'Allow Stuns' },
+			{ field: 'canBeRooted', label: 'Allow Roots' },
+			{ field: 'canBeSlowed', label: 'Allow Slows' },
+			{ field: 'useCrowdControlDiminishingReturns', label: 'Provisional CC DR' },
+		] as const;
+		for (const { field, label } of controlFields) {
+			new BooleanPicker(section2, null, {
+				id: `target-picker-${field}`,
+				label,
+				labelTooltip: field === 'useCrowdControlDiminishingReturns'
+					? 'Explicit scenario assumption, independent of immunity. Current client supplies 15 seconds, half duration per application, and immunity after three successes; server target policy and reset anchor are unverified.'
+					: 'Opt this target into this control mechanic. Disabled by default; no boss eligibility is inferred.',
+				showWhen: () => encounter.sim.getRuleset() === Ruleset.RulesetForever,
+				changedEvent: () => encounter.targetsChangeEmitter,
+				getValue: () => this.getTarget()[field],
+				setValue: (eventID: EventID, _: null, value: boolean) => {
+					this.getTarget()[field] = value;
+					encounter.targetsChangeEmitter.emit(eventID);
+				},
+			});
+		}
+		new EnumPicker<null>(section2, null, {
+			id: 'target-picker-crowd-control-dr-anchor',
+			label: 'Provisional DR Anchor',
+			labelTooltip: 'An explicit timer-anchor assumption, not verified Forever behavior. The sourced reset interval remains 15 seconds. After effect end waits for the last overlapping effect to expire or break.',
+			values: [
+				{ name: 'Default: after effect end', value: CrowdControlDrResetAnchor.CrowdControlDrResetAnchorDefault },
+				{ name: 'After effect end', value: CrowdControlDrResetAnchor.CrowdControlDrResetAfterEffectEnd },
+				{ name: 'After application', value: CrowdControlDrResetAnchor.CrowdControlDrResetAfterApplication },
+			],
+			showWhen: () => encounter.sim.getRuleset() === Ruleset.RulesetForever,
+			enableWhen: () => this.getTarget().useCrowdControlDiminishingReturns,
+			changedEvent: () => encounter.targetsChangeEmitter,
+			getValue: () => this.getTarget().crowdControlDrResetAnchor,
+			setValue: (eventID: EventID, _: null, value: number) => {
+				this.getTarget().crowdControlDrResetAnchor = value;
+				encounter.targetsChangeEmitter.emit(eventID);
+			},
+		});
 
 		const presetTargets = encounter.sim.db.getAllPresetTargets();
 		new EnumPicker<null>(section1, null, {

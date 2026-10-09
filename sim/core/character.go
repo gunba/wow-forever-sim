@@ -2,6 +2,7 @@ package core
 
 import (
 	"fmt"
+	"math"
 	"slices"
 	"strconv"
 	"strings"
@@ -9,6 +10,7 @@ import (
 
 	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/core/stats"
+	googleProto "google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 )
 
@@ -40,6 +42,10 @@ type Character struct {
 	Class               proto.Class
 	Spec                proto.Spec
 	ForeverTier1Bonuses bool
+	// Explicit provisional model; no implicit Revelation proc chance.
+	ForeverRevelationModel *proto.ForeverRevelationModel
+	// Optional explicit scenario assumption. Nil keeps the provisional rank convention.
+	ForeverDemoralizingThreat *float64
 
 	// Current gear.
 	Equipment
@@ -140,8 +146,39 @@ func NewCharacter(party *Party, partyIndex int, player *proto.Player) Character 
 
 		majorCooldownManager: newMajorCooldownManager(player.Cooldowns),
 	}
+	if player.ForeverRevelationModel != nil {
+		character.ForeverRevelationModel = googleProto.Clone(player.ForeverRevelationModel).(*proto.ForeverRevelationModel)
+		if model := character.ForeverRevelationModel; model.Enabled {
+			if err := validateForeverModelNumber("provisional Revelation baseChance", model.BaseChance, 0, 1); err != nil {
+				panic(err)
+			}
+			if err := validateForeverModelNumber("provisional Revelation critExponent", model.CritExponent, 0, math.MaxFloat64); err != nil {
+				panic(err)
+			}
+		}
+	}
 	character.foreverMP5PerSecond = player.ForeverMp5PerSecond
+	incomingRage, err := ResolveForeverIncomingRageModel(character.Level, player.ForeverIncomingRageModel)
+	if err != nil {
+		panic(err)
+	}
+	character.foreverIncomingRageParameters = incomingRage
+	if player.ForeverDemoralizingThreat != nil {
+		value := *player.ForeverDemoralizingThreat
+		if err := validateForeverModelNumber("provisional Demoralizing threat", value, 0, 1e6); err != nil {
+			panic(err)
+		}
+		character.ForeverDemoralizingThreat = &value
+	}
 
+	for slot, item := range character.Equipment {
+		if err := ValidateEnchantRequirements(character.Level, proto.ItemSlot(slot), item); err != nil {
+			panic(err)
+		}
+	}
+	if err := ValidateEquipmentUnique(character.Equipment); err != nil {
+		panic(err)
+	}
 	if err := ValidateEquipmentArmor(character.Class, character.Equipment); err != nil {
 		panic(err)
 	}
@@ -519,9 +556,14 @@ func (character *Character) FillPlayerStats(playerStats *proto.PlayerStats) {
 }
 
 func (character *Character) reset(sim *Simulation, agent Agent) {
+	restoredSwap := character.ItemSwap.restoreInitialEquipment()
 	character.Unit.reset(sim, agent)
 	character.majorCooldownManager.reset(sim)
-	character.ItemSwap.reset(sim)
+	if restoredSwap {
+		for _, onSwap := range character.ItemSwap.onSwapCallbacks {
+			onSwap(sim)
+		}
+	}
 	character.CurrentTarget = character.defaultTarget
 
 	agent.Reset(sim)

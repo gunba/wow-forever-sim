@@ -1,10 +1,10 @@
 {
   "format": 2,
-  "status": "October8 current-profile workload replays; ProtectionPaladin gear selected with separate guarded evidence; earlier incompatible controls remain historical",
-  "supersedes": "artifacts/correctness/october_8/before.json.gz",
+  "status": "70291 post-default-sync verification: 68 selected workload rows + 68 corrected-original controls; no reselection",
+  "supersedes": "artifacts/history/e7d0c2a68/manifest.json",
   "seeds": [
-    1792840001,
-    1792860001
+    1817000001,
+    1819000001
   ],
   "iterationsPerSeed": [
     5000,
@@ -12,701 +12,632 @@
   ],
   "seedIntervalsIndependent": true,
   "errorAggregation": "independent-quadrature within a profile; no cross-race independence claim",
-  "scope": "All17 tank race profiles; 2 unchanged workloads; 2 independent5000-iteration seed ranges. Protection Paladin guarded gear refresh; other14 tank profiles unchanged.",
+  "scope": "All17 races both workloads, fresh native defaults WITHOUT baseline/player overrides; exact corrected-original LOADOUT controls. Bear external Faerie Fire explicitly removed.",
   "scenarios": {
     "Single": "300s, one 3000-base/2s attacker, 1500 HPS",
     "Multi": "90s, three 1500-base/2s attackers, 2500 HPS"
   },
-  "selectionPolicy": "These68 runs are fixed-profile release checks, not new selection. Separate October8 Paladin evidence retains the original per-seed/both-workload point-estimate DTPS+1%,TMI+2%,death+.0025,TPS-1%,leastTPS-2% guards; not a95%proof of no harm.",
+  "selectionPolicy": "Single DPS objective; DTPS+1%, TMI+2%, death+.0025, TPS-1%, least-target TPS-2% per workload/window. Point-estimate guards, not confidence-proof of no survival loss.",
   "selections": [
     {
       "Key": "feral_tank_druid",
       "Race": "High Order",
-      "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
-      "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 1848.0278979294317,
-        "TPSStandardError": 0.7340957108566153,
-        "DTPS": 715.8578634352209,
-        "DTPSStandardError": 0.4285963813827148,
-        "TMI": 77.64308198043092,
-        "TMIStandardError": 0.06855564613198246,
-        "DPS": 609.0070633967364,
-        "DPSStandardError": 0.26569558212385186,
-        "ChanceOfDeath": 0.004,
-        "Iterations": 10000,
+        "TPS": 1867.5341256708211,
+        "TPSStandardError": 0.8198193340985561,
+        "DTPS": 714.1475807800688,
+        "DTPSStandardError": 0.427148382853088,
+        "TMI": 77.4326109031833,
+        "TMIStandardError": 0.06916786688533837,
+        "ChanceOfDeath": 0.0040999999999999995,
         "TargetTPS": [
-          1848.0278979294246
+          1867.5341256708198
         ],
-        "LeastTargetTPS": 1848.0278979294246
+        "LeastTargetTPS": 1867.5341256708198,
+        "DPS": 544.9750445022889,
+        "DPSStandardError": 0.2606204767417996
       },
       "Multi": {
-        "TPS": 2219.1798243872026,
-        "TPSStandardError": 1.381617688150235,
-        "DTPS": 1031.4493919089864,
-        "DTPSStandardError": 0.6390257882769423,
-        "TMI": 90.35210939810719,
-        "TMIStandardError": 0.07433654507121117,
-        "DPS": 763.4430611224002,
-        "DPSStandardError": 0.4912711811749346,
-        "ChanceOfDeath": 0.00039999999999999996,
-        "Iterations": 10000,
+        "TPS": 2371.0444488931926,
+        "TPSStandardError": 1.6489859524346022,
+        "DTPS": 1028.704996306261,
+        "DTPSStandardError": 0.639293051221066,
+        "TMI": 90.10416951190743,
+        "TMIStandardError": 0.07394056706674136,
+        "ChanceOfDeath": 0.00030000000000000003,
         "TargetTPS": [
-          1561.967637625456,
-          328.3370820835205,
-          328.8751046782246
+          1659.601602036194,
+          355.852281788366,
+          355.59056506863635
         ],
-        "LeastTargetTPS": 328.3370820835205
+        "LeastTargetTPS": 355.3235828738345,
+        "DPS": 711.4806687057721,
+        "DPSStandardError": 0.5057652535562828
       }
     },
     {
       "Key": "feral_tank_druid",
       "Race": "Night Elf",
-      "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
-      "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 1858.1362736552346,
-        "TPSStandardError": 0.7434276172341491,
-        "DTPS": 702.663199491708,
-        "DTPSStandardError": 0.4301518899086213,
-        "TMI": 77.43575592048953,
-        "TMIStandardError": 0.07047715961975672,
-        "DPS": 611.3462758222566,
-        "DPSStandardError": 0.26858849862672046,
-        "ChanceOfDeath": 0.004999999999999999,
-        "Iterations": 10000,
+        "TPS": 1869.9000509910702,
+        "TPSStandardError": 0.8111773593652899,
+        "DTPS": 700.0891251208518,
+        "DTPSStandardError": 0.42836551649576543,
+        "TMI": 77.01450779590145,
+        "TMIStandardError": 0.06949181924040287,
+        "ChanceOfDeath": 0.0037,
         "TargetTPS": [
-          1858.136273655235
+          1869.9000509910738
         ],
-        "LeastTargetTPS": 1858.136273655235
+        "LeastTargetTPS": 1869.9000509910738,
+        "DPS": 544.2355571884485,
+        "DPSStandardError": 0.2572292837432663
       },
       "Multi": {
-        "TPS": 2275.627242600404,
-        "TPSStandardError": 1.4102623287388019,
-        "DTPS": 1013.894093050239,
-        "DTPSStandardError": 0.6557308758552077,
-        "TMI": 89.47323058121387,
-        "TMIStandardError": 0.07706381591281666,
-        "DPS": 778.0042837419828,
-        "DPSStandardError": 0.4989628082307396,
-        "ChanceOfDeath": 0.0005,
-        "Iterations": 10000,
+        "TPS": 2395.0172760220707,
+        "TPSStandardError": 1.587632444538102,
+        "DTPS": 1010.2461851813011,
+        "DTPSStandardError": 0.6430605252213117,
+        "TMI": 89.01463956695804,
+        "TMIStandardError": 0.0757963813121917,
+        "ChanceOfDeath": 0.0007,
         "TargetTPS": [
-          1591.529079386837,
-          342.1313792081636,
-          341.9667840054045
+          1683.6386319454086,
+          356.09948516615054,
+          355.27915891051225
         ],
-        "LeastTargetTPS": 341.9667840054045
+        "LeastTargetTPS": 355.27915891051225,
+        "DPS": 717.3032059170487,
+        "DPSStandardError": 0.49355049069086665
       }
     },
     {
       "Key": "feral_tank_druid",
       "Race": "Tauren",
-      "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
-      "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 1847.6849785718703,
-        "TPSStandardError": 0.732034131301878,
-        "DTPS": 716.8614234372451,
-        "DTPSStandardError": 0.42603688665837675,
-        "TMI": 72.72579739077601,
-        "TMIStandardError": 0.06295759021099408,
-        "DPS": 606.5539708456856,
-        "DPSStandardError": 0.26352564229685593,
-        "ChanceOfDeath": 0.0018,
-        "Iterations": 10000,
+        "TPS": 1867.7570991298849,
+        "TPSStandardError": 0.8031757517635842,
+        "DTPS": 714.7711713334827,
+        "DTPSStandardError": 0.42455114539595423,
+        "TMI": 72.56821574750131,
+        "TMIStandardError": 0.06279606995000918,
+        "ChanceOfDeath": 0.0012,
         "TargetTPS": [
-          1847.6849785718719
+          1867.7570991298837
         ],
-        "LeastTargetTPS": 1847.6849785718719
+        "LeastTargetTPS": 1867.7570991298837,
+        "DPS": 543.3185601249961,
+        "DPSStandardError": 0.2538776618920539
       },
       "Multi": {
-        "TPS": 2216.427727175964,
-        "TPSStandardError": 1.3831084230687933,
-        "DTPS": 1035.1401745271164,
-        "DTPSStandardError": 0.638125714430565,
-        "TMI": 85.29452753332623,
-        "TMIStandardError": 0.06916678805468818,
-        "DPS": 761.2220873041075,
-        "DPSStandardError": 0.49019353089373763,
+        "TPS": 2323.4593514736544,
+        "TPSStandardError": 1.5615460273777317,
+        "DTPS": 1029.3945972265828,
+        "DTPSStandardError": 0.6287497002648301,
+        "TMI": 84.90470219321308,
+        "TMIStandardError": 0.06836674506024364,
         "ChanceOfDeath": 0.0001,
-        "Iterations": 10000,
         "TargetTPS": [
-          1558.0660949977694,
-          329.15338563435205,
-          329.2082465438432
+          1641.0058459815114,
+          341.7339800263594,
+          340.71952546577825
         ],
-        "LeastTargetTPS": 329.15338563435205
+        "LeastTargetTPS": 340.71952546577825,
+        "DPS": 700.16005193034,
+        "DPSStandardError": 0.48415063031952765
       }
     },
     {
       "Key": "feral_tank_druid",
       "Race": "Windshaper",
-      "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
-      "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 1848.0278979294317,
-        "TPSStandardError": 0.7340957108566153,
-        "DTPS": 715.8578634352209,
-        "DTPSStandardError": 0.4285963813827148,
-        "TMI": 77.64308198043092,
-        "TMIStandardError": 0.06855564613198246,
-        "DPS": 609.0070633967364,
-        "DPSStandardError": 0.26569558212385186,
-        "ChanceOfDeath": 0.004,
-        "Iterations": 10000,
+        "TPS": 1867.5341256708211,
+        "TPSStandardError": 0.8198193340985561,
+        "DTPS": 714.1475807800688,
+        "DTPSStandardError": 0.427148382853088,
+        "TMI": 77.4326109031833,
+        "TMIStandardError": 0.06916786688533837,
+        "ChanceOfDeath": 0.0040999999999999995,
         "TargetTPS": [
-          1848.0278979294246
+          1867.5341256708198
         ],
-        "LeastTargetTPS": 1848.0278979294246
+        "LeastTargetTPS": 1867.5341256708198,
+        "DPS": 544.9750445022889,
+        "DPSStandardError": 0.2606204767417996
       },
       "Multi": {
-        "TPS": 2219.1798243872026,
-        "TPSStandardError": 1.381617688150235,
-        "DTPS": 1031.4493919089864,
-        "DTPSStandardError": 0.6390257882769423,
-        "TMI": 90.35210939810719,
-        "TMIStandardError": 0.07433654507121117,
-        "DPS": 763.4430611224002,
-        "DPSStandardError": 0.4912711811749346,
-        "ChanceOfDeath": 0.00039999999999999996,
-        "Iterations": 10000,
+        "TPS": 2371.0444488931926,
+        "TPSStandardError": 1.6489859524346022,
+        "DTPS": 1028.704996306261,
+        "DTPSStandardError": 0.639293051221066,
+        "TMI": 90.10416951190743,
+        "TMIStandardError": 0.07394056706674136,
+        "ChanceOfDeath": 0.00030000000000000003,
         "TargetTPS": [
-          1561.967637625456,
-          328.3370820835205,
-          328.8751046782246
+          1659.601602036194,
+          355.85228178836604,
+          355.59056506863635
         ],
-        "LeastTargetTPS": 328.3370820835205
+        "LeastTargetTPS": 355.32358287383454,
+        "DPS": 711.4806687057721,
+        "DPSStandardError": 0.5057652535562828
       }
     },
     {
       "Key": "protection_paladin",
       "Race": "Dwarf",
-      "Disposition": "guarded-gear-selection; fixed-profile release replay",
-      "SelectedID": "october8-guarded-gear",
       "Single": {
-        "TPS": 911.324994834064,
-        "TPSStandardError": 0.2784356955510203,
-        "DTPS": 697.5659124853635,
-        "DTPSStandardError": 0.3406093687810428,
-        "TMI": 75.90591002419907,
-        "TMIStandardError": 0.05472329419629305,
-        "DPS": 583.3584543668528,
-        "DPSStandardError": 0.1915431712239676,
-        "ChanceOfDeath": 0.0011,
-        "Iterations": 10000,
+        "TPS": 894.8612278286703,
+        "TPSStandardError": 0.2761820724886397,
+        "DTPS": 698.1910799629645,
+        "DTPSStandardError": 0.3383932329883082,
+        "TMI": 76.03623550562892,
+        "TMIStandardError": 0.05443045265379497,
+        "ChanceOfDeath": 0.0017000000000000001,
         "TargetTPS": [
-          911.3249948340642
+          894.8612278286711
         ],
-        "LeastTargetTPS": 911.3249948340642
+        "LeastTargetTPS": 894.8612278286711,
+        "DPS": 586.3437058980826,
+        "DPSStandardError": 0.19310701084544424
       },
       "Multi": {
-        "TPS": 1508.1468046010173,
-        "TPSStandardError": 0.6675631596135785,
-        "DTPS": 993.9359090608917,
-        "DTPSStandardError": 0.5561229831093984,
-        "TMI": 90.37765400481948,
-        "TMIStandardError": 0.05553468140067952,
-        "DPS": 924.5095303625285,
-        "DPSStandardError": 0.48185259171174805,
-        "ChanceOfDeath": 0.0007,
-        "Iterations": 10000,
+        "TPS": 1412.958268471527,
+        "TPSStandardError": 0.6498981294658953,
+        "DTPS": 996.6929742896718,
+        "DTPSStandardError": 0.5571540113802486,
+        "TMI": 90.39670146687367,
+        "TMIStandardError": 0.05527437745910447,
+        "ChanceOfDeath": 0.0015,
         "TargetTPS": [
-          935.5346172349972,
-          290.4201702264753,
-          282.19201713954715
+          892.6342145590431,
+          264.5058202301567,
+          255.8182336823259
         ],
-        "LeastTargetTPS": 282.19201713954715
+        "LeastTargetTPS": 255.8182336823259,
+        "DPS": 908.2824362662625,
+        "DPSStandardError": 0.4737920997364668
       }
     },
     {
       "Key": "protection_paladin",
       "Race": "Human",
-      "Disposition": "guarded-gear-selection; fixed-profile release replay",
-      "SelectedID": "october8-guarded-gear",
       "Single": {
-        "TPS": 925.2832382450081,
-        "TPSStandardError": 0.2861144343409302,
-        "DTPS": 695.3934818020182,
-        "DTPSStandardError": 0.3358426662069277,
-        "TMI": 76.23858903348909,
-        "TMIStandardError": 0.05492615061750651,
-        "DPS": 593.1817069183032,
-        "DPSStandardError": 0.19658093712701818,
-        "ChanceOfDeath": 0.0022,
-        "Iterations": 10000,
+        "TPS": 917.0832676554535,
+        "TPSStandardError": 0.27683769195187147,
+        "DTPS": 696.1377325463226,
+        "DTPSStandardError": 0.33984076180478584,
+        "TMI": 76.28378434618739,
+        "TMIStandardError": 0.05575250064805497,
+        "ChanceOfDeath": 0.0024000000000000002,
         "TargetTPS": [
-          925.2832382450072
+          917.0832676554548
         ],
-        "LeastTargetTPS": 925.2832382450072
+        "LeastTargetTPS": 917.0832676554548,
+        "DPS": 599.3967840232671,
+        "DPSStandardError": 0.193046645054563
       },
       "Multi": {
-        "TPS": 1526.4132573036477,
-        "TPSStandardError": 0.6853054819094956,
-        "DTPS": 991.2254760205167,
-        "DTPSStandardError": 0.5513752738021828,
-        "TMI": 90.69163961605823,
-        "TMIStandardError": 0.05584650108072767,
-        "DPS": 937.2331394544268,
-        "DPSStandardError": 0.49356250254649114,
-        "ChanceOfDeath": 0.0007999999999999999,
-        "Iterations": 10000,
+        "TPS": 1444.0319381056015,
+        "TPSStandardError": 0.6749419095935736,
+        "DTPS": 992.2841682742123,
+        "DTPSStandardError": 0.561362496107281,
+        "TMI": 90.50947190418995,
+        "TMIStandardError": 0.05594759347394003,
+        "ChanceOfDeath": 0.0017,
         "TargetTPS": [
-          949.5293595678746,
-          292.6553204493507,
-          284.22857728642555
+          917.6501313427425,
+          267.33781237497294,
+          259.0439943878857
         ],
-        "LeastTargetTPS": 284.22857728642555
+        "LeastTargetTPS": 259.0439943878857,
+        "DPS": 926.1746480834879,
+        "DPSStandardError": 0.486364607106715
       }
     },
     {
       "Key": "protection_paladin",
       "Race": "Undead",
-      "Disposition": "guarded-gear-selection; fixed-profile release replay",
-      "SelectedID": "october8-guarded-gear",
       "Single": {
-        "TPS": 926.5917259443901,
-        "TPSStandardError": 0.29220629999222364,
-        "DTPS": 698.2769926543015,
-        "DTPSStandardError": 0.3392043018064668,
-        "TMI": 75.29014798811068,
-        "TMIStandardError": 0.05434249611729108,
-        "DPS": 609.1707461341925,
-        "DPSStandardError": 0.2109002946294009,
+        "TPS": 914.2835658536219,
+        "TPSStandardError": 0.28674678637299156,
+        "DTPS": 698.576244002288,
+        "DTPSStandardError": 0.34299783517301374,
+        "TMI": 75.34693536411729,
+        "TMIStandardError": 0.054646728874221985,
         "ChanceOfDeath": 0.0013,
-        "Iterations": 10000,
         "TargetTPS": [
-          926.5917259443911
+          914.2835658536205
         ],
-        "LeastTargetTPS": 926.5917259443911
+        "LeastTargetTPS": 914.2835658536205,
+        "DPS": 613.412857882126,
+        "DPSStandardError": 0.20939236716281628
       },
       "Multi": {
-        "TPS": 1521.017051161533,
-        "TPSStandardError": 0.6911103246406486,
-        "DTPS": 1000.5086217537436,
-        "DTPSStandardError": 0.5602973804716478,
-        "TMI": 89.87966363135217,
-        "TMIStandardError": 0.0546068886485017,
-        "DPS": 950.4171442462168,
-        "DPSStandardError": 0.5112126852836762,
-        "ChanceOfDeath": 0.0004,
-        "Iterations": 10000,
+        "TPS": 1435.2314299142138,
+        "TPSStandardError": 0.6619479671918885,
+        "DTPS": 1002.1038005770152,
+        "DTPSStandardError": 0.5553572377459054,
+        "TMI": 89.78284968522554,
+        "TMIStandardError": 0.053936158594331964,
+        "ChanceOfDeath": 0.0006000000000000001,
         "TargetTPS": [
-          957.3002627729209,
-          285.71187034899606,
-          278.004918039608
+          920.8317412071221,
+          261.29159091586996,
+          253.10809779122116
         ],
-        "LeastTargetTPS": 278.004918039608
+        "LeastTargetTPS": 253.10809779122116,
+        "DPS": 937.043998408283,
+        "DPSStandardError": 0.49331913140174233
       }
     },
     {
       "Key": "tank_warrior",
       "Race": "Dwarf",
-      "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
-      "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 841.2434116350425,
-        "TPSStandardError": 0.38227742905614737,
-        "DTPS": 495.47250528643974,
-        "DTPSStandardError": 0.26860327410285634,
-        "TMI": 50.34890181368572,
-        "TMIStandardError": 0.032655032066924695,
-        "DPS": 365.2991491576225,
-        "DPSStandardError": 0.20180863318839687,
+        "TPS": 876.2735924473989,
+        "TPSStandardError": 0.38048745272586415,
+        "DTPS": 496.399811602962,
+        "DTPSStandardError": 0.2719600520961,
+        "TMI": 50.43840491136703,
+        "TMIStandardError": 0.033932332362852,
         "ChanceOfDeath": 0.0,
-        "Iterations": 10000,
         "TargetTPS": [
-          841.2434116350435
+          876.2735924473989
         ],
-        "LeastTargetTPS": 841.2434116350435
+        "LeastTargetTPS": 876.2735924473989,
+        "DPS": 372.7490251302668,
+        "DPSStandardError": 0.2010025616900207
       },
       "Multi": {
-        "TPS": 1084.8307626092833,
-        "TPSStandardError": 0.800748658192641,
-        "DTPS": 767.4785313895302,
-        "DTPSStandardError": 0.4961440357949046,
-        "TMI": 70.59659873384234,
-        "TMIStandardError": 0.05049239373011206,
-        "DPS": 457.8920029860643,
-        "DPSStandardError": 0.44112746556156673,
+        "TPS": 1109.5745686721393,
+        "TPSStandardError": 0.7790059643718891,
+        "DTPS": 764.881961432088,
+        "DTPSStandardError": 0.4935088449339648,
+        "TMI": 70.42438195387454,
+        "TMIStandardError": 0.05038622604533117,
         "ChanceOfDeath": 0.0,
-        "Iterations": 10000,
         "TargetTPS": [
-          828.5026231300778,
-          194.67404419562627,
-          61.65409528358001
+          853.7631878700358,
+          191.36896690369034,
+          64.44241389841082
         ],
-        "LeastTargetTPS": 61.65409528358001
+        "LeastTargetTPS": 64.44241389841082,
+        "DPS": 462.2607491351831,
+        "DPSStandardError": 0.43078234641033925
       }
     },
     {
       "Key": "tank_warrior",
       "Race": "Gnome",
-      "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
-      "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 809.947891584588,
-        "TPSStandardError": 0.3703423886852305,
-        "DTPS": 484.4287775793824,
-        "DTPSStandardError": 0.2720379419993789,
-        "TMI": 49.95368411508483,
-        "TMIStandardError": 0.032897228557208905,
-        "DPS": 368.1040414070975,
-        "DPSStandardError": 0.20542693173278442,
+        "TPS": 832.4585376213754,
+        "TPSStandardError": 0.36838417211280466,
+        "DTPS": 482.2298636700799,
+        "DTPSStandardError": 0.27136991027496077,
+        "TMI": 49.54187117501701,
+        "TMIStandardError": 0.03335799551933256,
         "ChanceOfDeath": 0.0,
-        "Iterations": 10000,
         "TargetTPS": [
-          809.9478915845854
+          832.458537621376
         ],
-        "LeastTargetTPS": 809.9478915845854
+        "LeastTargetTPS": 832.458537621376,
+        "DPS": 376.1157154714762,
+        "DPSStandardError": 0.20459617182439796
       },
       "Multi": {
-        "TPS": 1048.6831367645664,
-        "TPSStandardError": 0.7614392279226617,
-        "DTPS": 750.33768746709,
-        "DTPSStandardError": 0.4979141833986134,
-        "TMI": 69.84252279329317,
-        "TMIStandardError": 0.05180287898768139,
-        "DPS": 462.1589374390769,
-        "DPSStandardError": 0.4383462167092806,
+        "TPS": 1074.0011874692318,
+        "TPSStandardError": 0.7466482248926534,
+        "DTPS": 749.8254384149288,
+        "DTPSStandardError": 0.49833249645900124,
+        "TMI": 69.6943038968762,
+        "TMIStandardError": 0.05126026148372499,
         "ChanceOfDeath": 0.0,
-        "Iterations": 10000,
         "TargetTPS": [
-          798.4702702027671,
-          189.96088260849214,
-          60.25198395330629
+          815.7385786741272,
+          195.55612736479384,
+          62.70648143031387
         ],
-        "LeastTargetTPS": 60.25198395330629
+        "LeastTargetTPS": 62.70648143031387,
+        "DPS": 470.9710463017694,
+        "DPSStandardError": 0.4310400236011891
       }
     },
     {
       "Key": "tank_warrior",
       "Race": "High Order",
-      "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
-      "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 807.4690792312249,
-        "TPSStandardError": 0.3697460268574054,
-        "DTPS": 493.47265945332316,
-        "DTPSStandardError": 0.2706629576094543,
-        "TMI": 50.81031718599051,
-        "TMIStandardError": 0.034234815575612795,
-        "DPS": 366.27421910175076,
-        "DPSStandardError": 0.20305595371907753,
+        "TPS": 832.3519321754236,
+        "TPSStandardError": 0.3658749021980692,
+        "DTPS": 485.2029338774818,
+        "DTPSStandardError": 0.27076536974402254,
+        "TMI": 49.93105149762881,
+        "TMIStandardError": 0.03310422030135722,
         "ChanceOfDeath": 0.0,
-        "Iterations": 10000,
         "TargetTPS": [
-          807.4690792312255
+          832.3519321754247
         ],
-        "LeastTargetTPS": 807.4690792312255
+        "LeastTargetTPS": 832.3519321754247,
+        "DPS": 375.88067093731865,
+        "DPSStandardError": 0.2027842974062648
       },
       "Multi": {
-        "TPS": 1044.1642782084737,
-        "TPSStandardError": 0.7713853472379057,
-        "DTPS": 763.9586337303733,
-        "DTPSStandardError": 0.4899969502253942,
-        "TMI": 71.05296479194935,
-        "TMIStandardError": 0.050705954414224416,
-        "DPS": 459.7845069741521,
-        "DPSStandardError": 0.44167113767809224,
+        "TPS": 1073.4830827154692,
+        "TPSStandardError": 0.7501341290004334,
+        "DTPS": 754.027313654423,
+        "DTPSStandardError": 0.4935051455565411,
+        "TMI": 70.27403340095417,
+        "TMIStandardError": 0.05142457415923976,
         "ChanceOfDeath": 0.0,
-        "Iterations": 10000,
         "TargetTPS": [
-          795.4127800919368,
-          188.48183487387337,
-          60.26966324266131
+          814.7506820498717,
+          195.78321186518446,
+          62.949188800414504
         ],
-        "LeastTargetTPS": 60.26966324266131
+        "LeastTargetTPS": 62.949188800414504,
+        "DPS": 470.7398210379332,
+        "DPSStandardError": 0.4343661653789284
       }
     },
     {
       "Key": "tank_warrior",
       "Race": "Human",
-      "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
-      "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 814.7014851499493,
-        "TPSStandardError": 0.37359249010406564,
-        "DTPS": 498.1790199103424,
-        "DTPSStandardError": 0.2688069521758797,
-        "TMI": 50.784460014241034,
-        "TMIStandardError": 0.03284510645891436,
-        "DPS": 370.68390813517203,
-        "DPSStandardError": 0.20539689574289324,
+        "TPS": 829.1719708887824,
+        "TPSStandardError": 0.3700143694613783,
+        "DTPS": 471.4946975233771,
+        "DTPSStandardError": 0.27915977912977535,
+        "TMI": 49.299412232668374,
+        "TMIStandardError": 0.03428794196385039,
         "ChanceOfDeath": 0.0,
-        "Iterations": 10000,
         "TargetTPS": [
-          814.7014851499465
+          829.1719708887808
         ],
-        "LeastTargetTPS": 814.7014851499465
+        "LeastTargetTPS": 829.1719708887808,
+        "DPS": 377.08211578950136,
+        "DPSStandardError": 0.20561749559854717
       },
       "Multi": {
-        "TPS": 1050.6995502311836,
-        "TPSStandardError": 0.7746264916955681,
-        "DTPS": 771.2785399447055,
-        "DTPSStandardError": 0.4845166442338891,
-        "TMI": 71.23752050454902,
-        "TMIStandardError": 0.050736755835646116,
-        "DPS": 464.0004703291691,
-        "DPSStandardError": 0.4452834748949253,
+        "TPS": 1100.1496234208003,
+        "TPSStandardError": 0.7908980888187641,
+        "DTPS": 733.6604955412042,
+        "DTPSStandardError": 0.5005254116115126,
+        "TMI": 68.82585659844167,
+        "TMIStandardError": 0.05246232514098831,
         "ChanceOfDeath": 0.0,
-        "Iterations": 10000,
         "TargetTPS": [
-          800.8583737321035,
-          189.66283183328468,
-          60.178344665800196
+          827.4234163132531,
+          209.47266401201603,
+          63.25354309553097
         ],
-        "LeastTargetTPS": 60.178344665800196
+        "LeastTargetTPS": 63.25354309553097,
+        "DPS": 487.67001656350385,
+        "DPSStandardError": 0.45754246437928997
       }
     },
     {
       "Key": "tank_warrior",
       "Race": "Night Elf",
-      "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
-      "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 805.2648194053727,
-        "TPSStandardError": 0.36579496611383283,
-        "DTPS": 483.36374967356244,
-        "DTPSStandardError": 0.27307229595172683,
-        "TMI": 50.24342010415468,
-        "TMIStandardError": 0.033375131403806615,
-        "DPS": 364.9743825501639,
-        "DPSStandardError": 0.20240158200624264,
+        "TPS": 829.9275006300136,
+        "TPSStandardError": 0.3581745064114912,
+        "DTPS": 481.60848961449426,
+        "DTPSStandardError": 0.2771300985411062,
+        "TMI": 49.875721768784686,
+        "TMIStandardError": 0.03366958151118816,
         "ChanceOfDeath": 0.0,
-        "Iterations": 10000,
         "TargetTPS": [
-          805.26481940537
+          829.9275006300138
         ],
-        "LeastTargetTPS": 805.26481940537
+        "LeastTargetTPS": 829.9275006300138,
+        "DPS": 374.5426834627511,
+        "DPSStandardError": 0.19725429202863445
       },
       "Multi": {
-        "TPS": 1046.1053234432243,
-        "TPSStandardError": 0.7609914675110162,
-        "DTPS": 748.8504322946234,
-        "DTPSStandardError": 0.5001878168543323,
-        "TMI": 70.09876065934526,
-        "TMIStandardError": 0.05177544011735498,
-        "DPS": 459.8164702777999,
-        "DPSStandardError": 0.43714299458924255,
+        "TPS": 1069.743088091844,
+        "TPSStandardError": 0.7368404426005045,
+        "DTPS": 747.8900554281299,
+        "DTPSStandardError": 0.4958088363044102,
+        "TMI": 70.01756021649527,
+        "TMIStandardError": 0.05194428178185541,
         "ChanceOfDeath": 0.0,
-        "Iterations": 10000,
         "TargetTPS": [
-          795.4850972737279,
-          189.88596781251658,
-          60.7342583569814
+          812.286334020125,
+          194.2541658930893,
+          63.20258817863292
         ],
-        "LeastTargetTPS": 60.7342583569814
+        "LeastTargetTPS": 63.20258817863292,
+        "DPS": 467.4487588691243,
+        "DPSStandardError": 0.419033023073575
       }
     },
     {
       "Key": "tank_warrior",
       "Race": "Orc",
-      "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
-      "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 843.3987593345735,
-        "TPSStandardError": 0.384219985028199,
-        "DTPS": 503.1503012024318,
-        "DTPSStandardError": 0.26912269508300757,
-        "TMI": 51.21903478041789,
-        "TMIStandardError": 0.03328773658467454,
-        "DPS": 366.01115224762975,
-        "DPSStandardError": 0.20329265512868497,
+        "TPS": 877.9094794188471,
+        "TPSStandardError": 0.3802819761172718,
+        "DTPS": 504.44429649945346,
+        "DTPSStandardError": 0.27114394175888284,
+        "TMI": 51.38600057073848,
+        "TMIStandardError": 0.03483434713334425,
         "ChanceOfDeath": 0.0,
-        "Iterations": 10000,
         "TargetTPS": [
-          843.3987593345726
+          877.9094794188493
         ],
-        "LeastTargetTPS": 843.3987593345726
+        "LeastTargetTPS": 877.9094794188493,
+        "DPS": 373.1409156789684,
+        "DPSStandardError": 0.20039918313931265
       },
       "Multi": {
-        "TPS": 1085.229507218734,
-        "TPSStandardError": 0.8041182438999817,
-        "DTPS": 778.5711361650683,
-        "DTPSStandardError": 0.49047728761369236,
-        "TMI": 71.88566213047051,
-        "TMIStandardError": 0.05044231154502811,
-        "DPS": 458.2462558788463,
-        "DPSStandardError": 0.4421746676629054,
+        "TPS": 1109.2416733536777,
+        "TPSStandardError": 0.769914316071351,
+        "DTPS": 775.8763805095778,
+        "DTPSStandardError": 0.48992932617411117,
+        "TMI": 71.73564246815137,
+        "TMIStandardError": 0.05030304864788179,
         "ChanceOfDeath": 0.0,
-        "Iterations": 10000,
         "TargetTPS": [
-          828.6942088740157,
-          194.6361162589307,
-          61.8991820857861
+          853.3270449525482,
+          191.11786528668648,
+          64.79676311444757
         ],
-        "LeastTargetTPS": 61.8991820857861
+        "LeastTargetTPS": 64.79676311444757,
+        "DPS": 462.0263275736621,
+        "DPSStandardError": 0.4260914650884215
       }
     },
     {
       "Key": "tank_warrior",
       "Race": "Tauren",
-      "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
-      "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 844.5956440436757,
-        "TPSStandardError": 0.3903720977191227,
-        "DTPS": 483.404857066482,
-        "DTPSStandardError": 0.27198565030921196,
-        "TMI": 47.05468775971983,
-        "TMIStandardError": 0.03111391185051686,
-        "DPS": 367.87080613436797,
-        "DPSStandardError": 0.20764775065466506,
+        "TPS": 869.783285311787,
+        "TPSStandardError": 0.38060839959103565,
+        "DTPS": 480.83703847581296,
+        "DTPSStandardError": 0.2709194672168902,
+        "TMI": 46.61658329920069,
+        "TMIStandardError": 0.030576239642952252,
         "ChanceOfDeath": 0.0,
-        "Iterations": 10000,
         "TargetTPS": [
-          844.5956440436748
+          869.7832853117875
         ],
-        "LeastTargetTPS": 844.5956440436748
+        "LeastTargetTPS": 869.7832853117875,
+        "DPS": 376.3383313349956,
+        "DPSStandardError": 0.2019150876790755
       },
       "Multi": {
-        "TPS": 1091.1773243354,
-        "TPSStandardError": 0.799802908557509,
-        "DTPS": 752.5589694284648,
-        "DTPSStandardError": 0.48952172813033806,
-        "TMI": 66.17085066589027,
-        "TMIStandardError": 0.048348486341546405,
-        "DPS": 461.46847708043066,
-        "DPSStandardError": 0.44129252724837303,
+        "TPS": 1122.8720619149994,
+        "TPSStandardError": 0.7829640946884389,
+        "DTPS": 751.1790071514508,
+        "DTPSStandardError": 0.49125455094620374,
+        "TMI": 65.99093428067853,
+        "TMIStandardError": 0.048227614478594305,
         "ChanceOfDeath": 0.0,
-        "Iterations": 10000,
         "TargetTPS": [
-          832.8685648350249,
-          196.04940926107741,
-          62.259350239299756
+          853.6628239160038,
+          204.32444530334737,
+          64.88479269564944
         ],
-        "LeastTargetTPS": 62.259350239299756
+        "LeastTargetTPS": 64.88479269564944,
+        "DPS": 472.7358761071889,
+        "DPSStandardError": 0.4322494334783885
       }
     },
     {
       "Key": "tank_warrior",
       "Race": "Troll",
-      "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
-      "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 840.2696107070892,
-        "TPSStandardError": 0.3843387623601836,
-        "DTPS": 497.66645627043306,
-        "DTPSStandardError": 0.27229238627366675,
-        "TMI": 50.661669444636786,
-        "TMIStandardError": 0.0327546975273301,
-        "DPS": 364.6034066860195,
-        "DPSStandardError": 0.20309192076539948,
+        "TPS": 867.153193600965,
+        "TPSStandardError": 0.38253178247248903,
+        "DTPS": 490.3741587191739,
+        "DTPSStandardError": 0.2718925442251943,
+        "TMI": 49.91618864366826,
+        "TMIStandardError": 0.03290676510501819,
         "ChanceOfDeath": 0.0,
-        "Iterations": 10000,
         "TargetTPS": [
-          840.269610707089
+          867.1531936009652
         ],
-        "LeastTargetTPS": 840.269610707089
+        "LeastTargetTPS": 867.1531936009652,
+        "DPS": 374.4773490089574,
+        "DPSStandardError": 0.20266785968031759
       },
       "Multi": {
-        "TPS": 1083.0059654296192,
-        "TPSStandardError": 0.7900526057655816,
-        "DTPS": 769.6484072962248,
-        "DTPSStandardError": 0.4889866636545759,
-        "TMI": 71.00579213641865,
-        "TMIStandardError": 0.0508576960991112,
-        "DPS": 456.79901525298493,
-        "DPSStandardError": 0.4343171414749393,
+        "TPS": 1114.5926816161143,
+        "TPSStandardError": 0.7813661111468697,
+        "DTPS": 761.6504927875014,
+        "DTPSStandardError": 0.4940593694273404,
+        "TMI": 70.4041837577069,
+        "TMIStandardError": 0.05051361176063499,
         "ChanceOfDeath": 0.0,
-        "Iterations": 10000,
         "TargetTPS": [
-          826.953404054967,
-          194.4100420213549,
-          61.64251935329837
+          848.0714693487477,
+          202.18776999540134,
+          64.33344227196348
         ],
-        "LeastTargetTPS": 61.64251935329837
+        "LeastTargetTPS": 64.33344227196348,
+        "DPS": 468.35331180577793,
+        "DPSStandardError": 0.4332198436877097
       }
     },
     {
       "Key": "tank_warrior",
       "Race": "Undead",
-      "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
-      "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 826.2496842730861,
-        "TPSStandardError": 0.3762064630564642,
-        "DTPS": 486.88206257307945,
-        "DTPSStandardError": 0.27220780570098196,
-        "TMI": 50.28210698217809,
-        "TMIStandardError": 0.03406419376360405,
-        "DPS": 379.55601344867347,
-        "DPSStandardError": 0.21007868449613704,
+        "TPS": 866.9375443337103,
+        "TPSStandardError": 0.33640845839160105,
+        "DTPS": 464.54169915517997,
+        "DTPSStandardError": 0.28476167176426886,
+        "TMI": 49.456171016901266,
+        "TMIStandardError": 0.037147778135739176,
         "ChanceOfDeath": 0.0,
-        "Iterations": 10000,
         "TargetTPS": [
-          826.2496842730856
+          866.937544333709
         ],
-        "LeastTargetTPS": 826.2496842730856
+        "LeastTargetTPS": 866.937544333709,
+        "DPS": 396.6863773630004,
+        "DPSStandardError": 0.18328660527870227
       },
       "Multi": {
-        "TPS": 1079.6049255314224,
-        "TPSStandardError": 0.7995804294961346,
-        "DTPS": 754.5862705072277,
-        "DTPSStandardError": 0.4944810378139124,
-        "TMI": 70.30328770614769,
-        "TMIStandardError": 0.0515037757010172,
-        "DPS": 484.3047537549613,
-        "DPSStandardError": 0.4640121435067386,
+        "TPS": 1092.4685289539334,
+        "TPSStandardError": 0.659382950404274,
+        "DTPS": 718.2488345512903,
+        "DTPSStandardError": 0.5108322072840656,
+        "TMI": 67.77671077628966,
+        "TMIStandardError": 0.05469547351875723,
         "ChanceOfDeath": 0.0,
-        "Iterations": 10000,
         "TargetTPS": [
-          816.4603482650538,
-          198.35411247348273,
-          64.79046479288586
+          832.0074356948653,
+          192.23288271832092,
+          68.22821054074896
         ],
-        "LeastTargetTPS": 64.79046479288586
+        "LeastTargetTPS": 68.22821054074896,
+        "DPS": 478.0926341560036,
+        "DPSStandardError": 0.36616904063359584
       }
     },
     {
       "Key": "tank_warrior",
       "Race": "Windshaper",
-      "Disposition": "fixed-profile-correctness-replay; not selection or optimization",
-      "SelectedID": "frozen-current-profile",
       "Single": {
-        "TPS": 807.4690792312249,
-        "TPSStandardError": 0.3697460268574054,
-        "DTPS": 493.47265945332316,
-        "DTPSStandardError": 0.2706629576094543,
-        "TMI": 50.81031718599051,
-        "TMIStandardError": 0.034234815575612795,
-        "DPS": 366.27421910175076,
-        "DPSStandardError": 0.20305595371907753,
+        "TPS": 832.3519321754236,
+        "TPSStandardError": 0.3658749021980692,
+        "DTPS": 485.2029338774818,
+        "DTPSStandardError": 0.27076536974402254,
+        "TMI": 49.93105149762881,
+        "TMIStandardError": 0.03310422030135722,
         "ChanceOfDeath": 0.0,
-        "Iterations": 10000,
         "TargetTPS": [
-          807.4690792312255
+          832.3519321754247
         ],
-        "LeastTargetTPS": 807.4690792312255
+        "LeastTargetTPS": 832.3519321754247,
+        "DPS": 375.88067093731865,
+        "DPSStandardError": 0.2027842974062648
       },
       "Multi": {
-        "TPS": 1044.1642782084737,
-        "TPSStandardError": 0.7713853472379057,
-        "DTPS": 763.9586337303733,
-        "DTPSStandardError": 0.4899969502253942,
-        "TMI": 71.05296479194935,
-        "TMIStandardError": 0.050705954414224416,
-        "DPS": 459.7845069741521,
-        "DPSStandardError": 0.44167113767809224,
+        "TPS": 1073.4830827154692,
+        "TPSStandardError": 0.7501341290004334,
+        "DTPS": 754.027313654423,
+        "DTPSStandardError": 0.4935051455565411,
+        "TMI": 70.27403340095417,
+        "TMIStandardError": 0.05142457415923976,
         "ChanceOfDeath": 0.0,
-        "Iterations": 10000,
         "TargetTPS": [
-          795.4127800919368,
-          188.48183487387337,
-          60.26966324266131
+          814.7506820498716,
+          195.78321186518446,
+          62.9491888004145
         ],
-        "LeastTargetTPS": 60.26966324266131
+        "LeastTargetTPS": 62.9491888004145,
+        "DPS": 470.7398210379332,
+        "DPSStandardError": 0.4343661653789284
       }
     }
   ],
-  "rawChecks": "artifacts/correctness/tank_checks.json.gz",
+  "rawChecks": "../../correctness/october_9/tank-default-checks.json.gz",
   "limitations": [
-    "Deaths do not stop iteration damage accounting; DPS is not discounted for modeled death downtime.",
-    "These are simulator checks under fixed assumed healing and incoming damage, not in-game survival verification.",
-    "Earlier overlapping-seed selection results and incompatible controls remain historical, not current confidence evidence.",
-    "ProtectionPaladin gear spends some allowed defensive tolerance: TMI rises slightly; no survivability improvement is claimed.",
-    "artifacts/tanks/summary.json and the original selected-control/search packets are historical engine/support phases, not current optimized controls."
+    "Central incoming Rage unverified; six alternate coefficient20 sensitivity cases fail guards.",
+    "Small defensive tradeoffs and Multi DPS losses retained and reported.",
+    "One-iteration stack traces establish duty events, not 5000-population perfection.",
+    "Original Bear player exact; historical external-Faerie-Fire REQUEST is not called unchanged."
   ],
-  "selectionEvidence": "artifacts/correctness/october_8/tank-paladin-gear-refresh.json.gz"
+  "selectionEvidence": "../../correctness/october_9/selection-evidence.json"
 }

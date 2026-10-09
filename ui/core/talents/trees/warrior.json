@@ -271,6 +271,10 @@
         "maxPoints": 2,
         "name": "Impale",
         "icon": "ability_searingarrow",
+        "prereqLocation": {
+          "rowIdx": 2,
+          "colIdx": 2
+        },
         "description": "Increases the critical strike damage bonus of your abilities by {0}%.",
         "ranks": [
           [

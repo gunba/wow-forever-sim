@@ -10,6 +10,9 @@ type ShieldConfig struct {
 
 	Spell *Spell
 
+	// Called only after an actual incoming damage result fully consumes a pool.
+	// Expiration, replacement and explicit deactivation do not invoke it.
+	OnDepleted func(*Simulation, *Spell, *SpellResult)
 	Aura
 }
 
@@ -21,6 +24,7 @@ type Shield struct {
 	*Aura
 
 	remainingAbsorb float64
+	onDepleted      func(*Simulation, *Spell, *SpellResult)
 }
 
 func (shield *Shield) RemainingAbsorb() float64 { return shield.remainingAbsorb }
@@ -69,7 +73,7 @@ func newShield(config Shield) *Shield {
 // Pools are consumed after mitigation and only during damage delivery. In the
 // absence of a verified multi-shield priority rule, overlaps use application
 // order. Refreshing a pool replaces it and moves it to the end of that order.
-func (unit *Unit) absorbDamage(sim *Simulation, result *SpellResult) {
+func (unit *Unit) absorbDamage(sim *Simulation, incoming *Spell, result *SpellResult) {
 	for result.Damage > 0 && len(unit.activeShields) > 0 {
 		shield := unit.activeShields[0]
 		if shield.ExpiresAt() <= sim.CurrentTime {
@@ -85,7 +89,12 @@ func (unit *Unit) absorbDamage(sim *Simulation, result *SpellResult) {
 			shield.Spell.Unit.Log(sim, "%s %s absorbed %0.3f damage (%0.3f remaining).", unit.LogLabel(), shield.Spell.ActionID, amount, shield.remainingAbsorb)
 		}
 		if shield.remainingAbsorb <= 0 {
+			// Remove the consumed pool first; keep the incoming caster/result
+			// available to the callback without deactivating a newly applied pool.
 			shield.Deactivate(sim)
+			if shield.onDepleted != nil {
+				shield.onDepleted(sim, incoming, result)
+			}
 		}
 	}
 }
@@ -105,7 +114,8 @@ func (spell *Spell) createShields(config ShieldConfig) {
 		config.Spell = spell
 	}
 	shield := Shield{
-		Spell: config.Spell,
+		Spell:      config.Spell,
+		onDepleted: config.OnDepleted,
 	}
 
 	auraConfig := config.Aura

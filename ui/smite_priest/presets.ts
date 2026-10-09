@@ -10,6 +10,7 @@ import {
 	ManaRegenElixir,
 	Potions,
 	Profession,
+	Race,
 	RaidBuffs,
 	SpellPowerBuff,
 	TristateEffect,
@@ -19,6 +20,7 @@ import {
 import { SmitePriest_Options as Options } from '../core/proto/priest.js';
 import { SavedTalents } from '../core/proto/ui.js';
 import LaunchAPL from './apls/launch.apl.json';
+import UndeadAPL from './apls/launch_undead.apl.json';
 import GearSmiteJSON from './gear_sets/forever_smite.gear.json';
 
 // Preset options for this spec.
@@ -38,10 +40,11 @@ export const DefaultGear = GearSmite;
 //                                 APL Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const APLLaunch = PresetUtils.makePresetAPLRotation('Smite', LaunchAPL);
+export const APLLaunch = PresetUtils.makePresetAPLRotation('Smite · Penance finisher', LaunchAPL, { customCondition: player => player.getRace() !== Race.RaceUndead });
+export const APLUndead = PresetUtils.makePresetAPLRotation('Smite · no Penance', UndeadAPL, { customCondition: player => player.getRace() === Race.RaceUndead });
 
 export const APLPresets = {
-	[ClassicPhase.Phase1]: [APLLaunch],
+	[ClassicPhase.Phase1]: [APLLaunch, APLUndead],
 };
 
 export const DefaultAPL = APLLaunch;

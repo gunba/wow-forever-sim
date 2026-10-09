@@ -54,6 +54,9 @@ const (
 	SpellCode_HunterPetScorpidPoison
 
 	SpellCode_HunterStriderKick
+	SpellCode_HunterConcussiveShot
+	SpellCode_HunterDisengage
+	SpellCode_HunterFrostTrap
 )
 
 func RegisterHunter() {
@@ -111,6 +114,9 @@ type Hunter struct {
 	SummonHawk        *core.Spell
 	Volley            *core.Spell
 	WingClip          *core.Spell
+	ConcussiveShot    *core.Spell
+	Disengage         *core.Spell
+	FrostTrap         *core.Spell
 	HuntersMarkAuras  []core.AuraArray
 
 	Shots       []*core.Spell
@@ -118,8 +124,10 @@ type Hunter struct {
 	MeleeSpells []*core.Spell
 	LastShot    *core.Spell
 
-	// The aura that allows you to cast Mongoose Bite
-	DefensiveState *core.Aura
+	// Independent Mongoose Bite opportunities: a five-second dodge state
+	// and Forever's ten-second Expose Prey proc.
+	DefensiveState  *core.Aura
+	ExposePreyState *core.Aura
 
 	RapidFireAura       *core.Aura
 	BestialWrathPetAura *core.Aura
@@ -190,6 +198,8 @@ func (hunter *Hunter) Initialize() {
 	hunter.registerLaceratingStrikesSpell()
 	hunter.registerWingClipSpell()
 	hunter.registerStriderKickSpell()
+	hunter.registerConcussiveShotSpell()
+	hunter.registerDisengageSpell()
 	hunter.registerVolleySpell()
 	hunter.registerHuntersMark()
 
@@ -202,8 +212,10 @@ func (hunter *Hunter) Initialize() {
 	hunter.registerExplosiveTrapSpell(fireTraps)
 	hunter.registerImmolationTrapSpell(fireTraps)
 	hunter.registerFreezingTrapSpell(frostTraps)
+	hunter.registerFrostTrapSpell(frostTraps)
 
 	hunter.registerRapidFire()
+	hunter.registerUtilityAuras()
 }
 
 func (hunter *Hunter) Reset(sim *core.Simulation) {

@@ -31,28 +31,6 @@
     {
       "action": {
         "condition": {
-          "cmp": {
-            "op": "OpLe",
-            "lhs": {
-              "currentEnergy": {}
-            },
-            "rhs": {
-              "const": {
-                "val": "40"
-              }
-            }
-          }
-        },
-        "castSpell": {
-          "spellId": {
-            "spellId": 1322605
-          }
-        }
-      }
-    },
-    {
-      "action": {
-        "condition": {
           "and": {
             "vals": [
               {
@@ -93,11 +71,6 @@
     },
     {
       "action": {
-        "castSpell": {
-          "spellId": {
-            "spellId": 31018
-          }
-        },
         "condition": {
           "and": {
             "vals": [
@@ -132,6 +105,11 @@
                 }
               }
             ]
+          }
+        },
+        "castSpell": {
+          "spellId": {
+            "spellId": 31018
           }
         }
       }
@@ -184,6 +162,28 @@
         "castSpell": {
           "spellId": {
             "spellId": 9896
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "condition": {
+          "cmp": {
+            "op": "OpLe",
+            "lhs": {
+              "currentEnergy": {}
+            },
+            "rhs": {
+              "const": {
+                "val": "60"
+              }
+            }
+          }
+        },
+        "castSpell": {
+          "spellId": {
+            "spellId": 1322605
           }
         }
       }

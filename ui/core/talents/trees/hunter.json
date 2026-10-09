@@ -528,7 +528,7 @@
         "maxPoints": 5,
         "name": "Improved Concussive Shot",
         "icon": "spell_frost_stun",
-        "description": "Gives your Concussive Shot a {0}% chance to stun the target for 3 sec.",
+        "description": "Gives your Concussive Shot a {0}% chance to stun the target for 3 sec. Simulation: stun eligibility and provisional diminishing returns are separate target opt-ins.",
         "ranks": [
           [
             4
@@ -546,7 +546,7 @@
             20
           ]
         ],
-        "notSimulated": true
+        "notSimulated": false
       },
       {
         "fieldName": "lethalAttacks",
@@ -1053,7 +1053,7 @@
         "maxPoints": 5,
         "name": "Entrapment",
         "icon": "spell_nature_stranglevines",
-        "description": "When your traps are triggered, all affected targets are Entrapped, preventing them from moving for {0} sec.",
+        "description": "When your traps are initially triggered, all affected targets are Entrapped, preventing them from moving for {0} sec. Simulation: root eligibility and provisional diminishing returns are separate target opt-ins.",
         "ranks": [
           [
             1
@@ -1071,7 +1071,7 @@
             5
           ]
         ],
-        "notSimulated": true
+        "notSimulated": false
       },
       {
         "fieldName": "savageStrikes",
@@ -1145,19 +1145,19 @@
         "maxPoints": 3,
         "name": "Improved Wing Clip",
         "icon": "ability_rogue_trip",
-        "description": "Gives your Wing Clip ability a {0}% chance to immobilize the target for 5 sec.",
+        "description": "Gives your Wing Clip ability a {0}% chance to immobilize the target for 5 sec. Simulation: control requires an explicitly eligible target; the additional lower-rank proc penalty is unverified and not modeled.",
         "ranks": [
           [
             7
           ],
           [
-            14
+            13
           ],
           [
-            21
+            20
           ]
         ],
-        "notSimulated": true
+        "notSimulated": false
       },
       {
         "fieldName": "cleverTraps",

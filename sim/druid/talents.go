@@ -43,7 +43,7 @@ func (druid *Druid) ApplyTalents() {
 	druid.applyHeartOfTheWild()
 	druid.applyFeralSwiftness()
 	druid.applyPrimalFury()
-	druid.applyPredatoryInstincts()
+	druid.applyNaturalInstinct()
 	druid.applyNaturalReaction()
 	druid.applyRendAndTear()
 
@@ -397,9 +397,16 @@ func (druid *Druid) applyPrimalFury() {
 	}))
 }
 
-func (druid *Druid) applyPredatoryInstincts() {
+func (druid *Druid) applyNaturalInstinct() {
 	if druid.Talents.PredatoryInstincts == 0 {
 		return
+	}
+
+	if druid.Env.IsForever() {
+		// Natural Instinct retains the existing melee critical damage bonus.
+		// Client 70291, trait 134411 effect 1 / curve 125352: 12/25% of
+		// Intellect contributes to healing only, not spell damage or power.
+		druid.AddStatDependency(stats.Intellect, stats.HealingPower, []float64{0, .12, .25}[druid.Talents.PredatoryInstincts])
 	}
 
 	critDamageBonus := 0.1 * float64(druid.Talents.PredatoryInstincts)

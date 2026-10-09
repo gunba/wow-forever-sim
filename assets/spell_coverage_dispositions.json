@@ -9,6 +9,14 @@
     "Swipe": ["conditional", "Implemented in sim/druid/swipe.go; the sampled Feral DPS agent registers Cat abilities."]
   },
   "hunter": {
+    "Concussive Shot": ["conditional", "Forever5116 is registered with sourced cost/cooldown, landed ranged hit,50% slow4s and Improved Concussive Shot4/8/12/16/20% stun3s. Control eligibility defaults OFF; optional shared DR is separate."],
+    "Disengage": ["conditional", "All3 learned threat-reduction ranks781/14272/14273 register with sourced doubled/capped threat, shared5s cooldown and melee utility hit. This is not the later expansion movement leap."],
+    "Frost Trap": ["conditional", "Forever13809 registers initial successful activation with slow aura13810 and initial-only Entrapment. Spatial field/pulses and target entry/exit are not modeled; control requires explicit eligibility."],
+    "Frost Trap Aura": ["alias", "Slow13810 is attached by placement13809. It is not a separately selectable damage spell or continuous spatial-field simulation."],
+    "Wing Clip": ["conditional", "Highest trained rank is registered with sourced slow and7/13/20% Improved Wing Clip root5s. No source DR mask on19229. Unspecified lower-rank proc penalty/downrank registrations are not introduced."],
+    "Entrapment": ["conditional", "19185 roots on INITIAL successful trap activation for1/2/3/4/5s, not on periodic ticks. Root eligibility and optional shared root DR are separate opt-ins."],
+    "Improved Concussive Shot": ["conditional", "19410 stun3s is driven by landed5116 and talent curve4/8/12/16/20. Default raid targets are not assumed stun-eligible; optional proc-stun DR remains separately qualified."],
+    "Improved Wing Clip": ["conditional", "19229 root5s is driven by the highest trained Wing Clip and talent curve7/13/20. Target eligibility is explicit; source diminish mask is0, not generic root DR."],
     "Auto Shot": ["alias", "Uses the core ranged-auto action, not spell 75 as a registered damage action."],
     "Black Arrow": ["awaiting-availability", "Retained 3674/14296 class rows do not establish current trainer availability. Obtain a current trainer/spellbook capture and ranks before adding it."],
     "Lacerate": ["awaiting-availability", "Retained active-spell ranks include 1299332. Confirm a teaching source; these are not the implemented Mongoose Bite Lacerating Strikes talent."],
@@ -31,6 +39,7 @@
     "Throw": ["not-used", "No thrown weapon is used by these profiles; the model's ranged auto is the equipped bow/gun/crossbow."]
   },
   "mage": {
+    "Impact": ["conditional", "Forever11103/12355 is implemented: current curve3/7/10%,2s stun on eligible DIRECT landed Mage Fire hits only. Periodic Flamestrike cannot trigger it. Stun eligibility defaults OFF; shared proc-stun DR is a separate scenario opt-in."],
     "Blast Wave": ["conditional", "Implemented in sim/mage/blast_wave.go; the sampled builds do not select the talent."],
     "Cone of Cold": ["conditional", "All five ranks are implemented in sim/mage/frost_area.go, including Improved Cone of Cold and Frost talent interactions. Requires the caster within 10 yards; targets are assumed clustered in the cone. Existing profiles remain at 20 yards."],
     "Frost Nova": ["conditional", "All four damage ranks are implemented in sim/mage/frost_area.go, including Improved Frost Nova and Cold Snap. Requires 10-yard proximity. Does not model roots or grant Shatter against the raid boss."],
@@ -39,9 +48,10 @@
   },
   "paladin": {
     "Hammer of the Righteous": ["awaiting-availability", "T46: verify 407632's teacher and shared cooldown with Holy Strike; retained class/rune records are insufficient."],
-    "Seal of Fury": ["not-used", "Tank/threat seal, not implemented in the Ret model. Confirm current rank/teaching paths before using its retained records."]
+    "Seal of Fury": ["conditional", "Seven source-backed learned-rank records are registered and selectable for Paladin. Damage, shield equipment and talent-only depletion mana are modeled; the ONE replacement shield pool and configurable lifetime remain provisional. A sampled non-Fury preset does not exercise it; a four-second taunt aura is not a threat-based target-selection implementation."]
   },
   "priest": {
+    "Penance": ["alias", "All4 damaging parents402174/1240720/1240721/1316995 are registered/selectable and record their child bolt damage under the parent action. Three bolts over2s, shared12s cooldown; current max92+.19SP/bolt and385mana. Healing Penance children402289/1240723/1240724/1316991 are NOT registered; no healer coverage is implied."],
     "Chastise": ["not-implemented", "Dwarf-only, Humanoid-only damage/control spell. It cannot damage the Dragonkin reference target; a Humanoid scenario needs its five ranks."],
     "Feedback": ["not-used", "Reactive racial mana-burn damage requires incoming spells, absent from the DPS encounter. Current racial availability also needs T05 verification."],
     "Holy Nova": ["conditional", "Implemented in sim/priest/holy_nova.go at the highest learned rank when talented. Neither sampled Priest build selects it."],

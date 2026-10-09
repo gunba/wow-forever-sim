@@ -51,6 +51,12 @@ export const PrimarySealSelection = InputHelpers.makeSpecOptionsEnumIconInput<Sp
 			value: PaladinSeal.Righteousness,
 		},
 		{
+			actionId: () => ActionId.fromSpellId(20423),
+			value: PaladinSeal.Fury,
+			tooltip: 'Seal of Fury: shield lifetime/replacement is provisional (one replacement pool,30s from proc). Taunt duration is represented; threat-based target selection is not simulated.',
+			showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever,
+		},
+		{
 			actionId: () => ActionId.fromSpellId(20920),
 			value: PaladinSeal.Command,
 			showWhen: (player: Player<Spec.SpecProtectionPaladin>) => player.getTalents().sealOfCommand,
@@ -58,4 +64,20 @@ export const PrimarySealSelection = InputHelpers.makeSpecOptionsEnumIconInput<Sp
 	],
 	changeEmitter: (player: Player<Spec.SpecProtectionPaladin>) =>
 		TypedEvent.onAny([player.gearChangeEmitter, player.talentsChangeEmitter, player.specOptionsChangeEmitter]),
+});
+
+export const SealOfFuryShieldLifetime = InputHelpers.makeSpecOptionsNumberInput<Spec.SpecProtectionPaladin>({
+	fieldName: 'sealOfFuryShieldDurationSeconds',
+	label: 'PROVISIONAL SoF shield lifetime (s)',
+	labelTooltip: 'Unverified server lifetime: default30seconds from each proc. One shared replacement pool;0 disables absorption but preserves sourced seal damage. Finite0..3600seconds. Compare explicit scenarios, not verified game behavior.',
+	float: true,
+	defaultValue: 30,
+	getValue: player => player.getSpecOptions().sealOfFuryShieldDurationSeconds ?? 30,
+	setValue: (eventID, player, value) => {
+		if (!Number.isFinite(value) || value < 0 || value > 3600) return;
+		const options = player.getSpecOptions();
+		options.sealOfFuryShieldDurationSeconds = value;
+		player.setSpecOptions(eventID, options);
+	},
+	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever && player.getSpecOptions().primarySeal === PaladinSeal.Fury,
 });

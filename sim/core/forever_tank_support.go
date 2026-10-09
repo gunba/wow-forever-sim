@@ -35,11 +35,15 @@ func ForeverTankSupport(class proto.Class) BuffsCombo {
 			panic(err)
 		}
 	}
-	// Warrior supplies its own shout and major armor debuff. No tank gets
-	// external Thunder Clap or Demoralizing Shout/Roar: retain those duties.
+	// Warrior supplies its own shout and major armor debuff; Bear supplies
+	// Faerie Fire. No tank gets external Thunder Clap or Demoralizing
+	// Shout/Roar: retain those explicit maintenance duties.
 	if class == proto.Class_ClassWarrior {
 		buffs.Raid.BattleShout = proto.TristateEffect_TristateEffectMissing
 		buffs.Debuffs.ExposeArmor = proto.TristateEffect_TristateEffectMissing
+	}
+	if class == proto.Class_ClassDruid {
+		buffs.Debuffs.FaerieFire = false
 	}
 	return buffs
 }

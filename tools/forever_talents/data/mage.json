@@ -682,16 +682,34 @@
           "iconSource": "crop",
           "iconCrop": "data/review/mage/fire/impact.icon.png",
           "description": "Gives your Fire spells a {0}% chance to stun the target for 2 sec.",
-          "ranks": [[3], [6], [9]],
-          "ranksObserved": [1],
-          "ranksSource": "classic-prior",
+          "ranks": [
+            [
+              3
+            ],
+            [
+              7
+            ],
+            [
+              10
+            ]
+          ],
+          "ranksObserved": [
+            1
+          ],
+          "ranksSource": "manual",
           "ranksPrior": {
             "classicTalentId": 30,
-            "classicSpellIds": [11103, 12357, 12358, 12359, 12360],
+            "classicSpellIds": [
+              11103,
+              12357,
+              12358,
+              12359,
+              12360
+            ],
             "match": "exact-name",
             "similarity": 1.0
           },
-          "ranksNote": "Classic mage/fire/Impact (talent 30): Classic 2/4/6/8/10 is proportional, Classic has 5 ranks; Forever rank 1 is 3: scaled proportionally (3 x rank).",
+          "ranksNote": "Current presentation is a manually applied 1.60.1.70291 primary-client/official overlay; original observation/prior values remain in priorPresentation and source.",
           "source": {
             "kind": "video",
             "video": "DxtVEhjyROU",
@@ -701,6 +719,44 @@
             "confidence": 1.0,
             "reader": "Qwen3VL-4B-Instruct-Q4_K_M+tooltip-v3",
             "reviewed": false
+          },
+          "priorPresentation": {
+            "name": "Impact",
+            "description": "Gives your Fire spells a {0}% chance to stun the target for 2 sec.",
+            "ranks": [
+              [
+                3
+              ],
+              [
+                6
+              ],
+              [
+                9
+              ]
+            ],
+            "ranksSource": "classic-prior",
+            "ranksNote": "Classic mage/fire/Impact (talent 30): Classic 2/4/6/8/10 is proportional, Classic has 5 ranks; Forever rank 1 is 3: scaled proportionally (3 x rank)."
+          },
+          "currentEvidenceOverlay": {
+            "build": "1.60.1.70291",
+            "authority": "Current source UI with pinned client DB2/official overlay, not a replacement video observation",
+            "sourceRows": {
+              "traitNode": 105792,
+              "traitDefinition": 135322,
+              "curve": 83091,
+              "spellId": 11103,
+              "triggerSpellId": 12355,
+              "durationMs": 2000
+            },
+            "engineCoverage": {
+              "status": "implemented",
+              "scope": "Forever direct landed Mage Fire hits only; 3/7/10%,2s; stun eligibility and shared proc-stun DR are separate target opt-ins."
+            },
+            "sourceUrls": [
+              "https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.70291",
+              "https://wago.tools/db2/SpellEffect?build=1.60.1.70291",
+              "https://us.forums.blizzard.com/en/wow/t/2360696/5"
+            ]
           }
         },
         {

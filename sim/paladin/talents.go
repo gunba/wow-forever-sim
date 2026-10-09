@@ -167,29 +167,41 @@ func (paladin *Paladin) applyReckoning() {
 	}
 
 	procID := core.ActionID{SpellID: 20178} // Reckoning Proc ID
+	// Current20177 has one1500ms ProcCategoryRecovery, shared by both
+	// trigger outcomes. Keep Classic and the existing extra-attack semantics.
+	var sharedICD *core.Cooldown
+	if paladin.Env.IsForever() {
+		sharedICD = &core.Cooldown{Timer: paladin.NewTimer(), Duration: 1500 * time.Millisecond}
+	}
+	trigger := func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
+		if sharedICD != nil {
+			if !sharedICD.IsReady(sim) {
+				return
+			}
+			sharedICD.Use(sim)
+		}
+		paladin.AutoAttacks.ExtraMHAttack(sim, 1, procID, spell.ActionID)
+	}
 
-	core.MakeProcTriggerAura(&paladin.Unit, core.ProcTrigger{
+	crit := core.MakeProcTriggerAura(&paladin.Unit, core.ProcTrigger{
 		Name:       "Reckoning Crit Trigger",
 		Callback:   core.CallbackOnSpellHitTaken,
 		Outcome:    core.OutcomeCrit,
 		ProcMask:   core.ProcMaskMeleeOrRanged,
 		ProcChance: 0.2 * float64(paladin.Talents.Reckoning),
-		Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			paladin.AutoAttacks.ExtraMHAttack(sim, 1, procID, spell.ActionID)
-		},
+		Handler:    trigger,
 	})
 
 	// Forever also gives Reckoning a smaller chance to fire off a block.
-	core.MakeProcTriggerAura(&paladin.Unit, core.ProcTrigger{
+	block := core.MakeProcTriggerAura(&paladin.Unit, core.ProcTrigger{
 		Name:       "Reckoning Block Trigger",
 		Callback:   core.CallbackOnSpellHitTaken,
 		Outcome:    core.OutcomeBlock,
 		ProcMask:   core.ProcMaskMelee,
 		ProcChance: 0.08 * float64(paladin.Talents.Reckoning),
-		Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			paladin.AutoAttacks.ExtraMHAttack(sim, 1, procID, spell.ActionID)
-		},
+		Handler:    trigger,
 	})
+	crit.Icd, block.Icd = sharedICD, sharedICD
 }
 
 // Shield Specialization returns mana on block, on top of the absorb applied in ApplyTalents.
@@ -200,6 +212,8 @@ func (paladin *Paladin) applyShieldSpecialization() {
 
 	actionID := core.ActionID{SpellID: 20148}
 	manaMetrics := paladin.NewManaMetrics(actionID)
+	// Current mana child1310925 has SPELL_ATTR1_NO_THREAT (1024).
+	manaMetrics.NoThreat = paladin.Env.IsForever()
 
 	icd := core.Cooldown{
 		Timer:    paladin.NewTimer(),

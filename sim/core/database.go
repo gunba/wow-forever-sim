@@ -48,6 +48,8 @@ type Item struct {
 	ClassAllowlist []proto.Class
 	Type           proto.ItemType
 	ArmorType      proto.ArmorType
+	ItemLevel      int32
+	Unique         bool
 
 	// Weapon Stats
 	WeaponType       proto.WeaponType
@@ -80,6 +82,8 @@ func ItemFromProto(pData *proto.SimItem) Item {
 		Name:                pData.Name,
 		Type:                pData.Type,
 		ArmorType:           pData.ArmorType,
+		ItemLevel:           pData.Ilvl,
+		Unique:              pData.Unique,
 		WeaponType:          pData.WeaponType,
 		HandType:            pData.HandType,
 		RangedWeaponType:    pData.RangedWeaponType,
@@ -121,14 +125,26 @@ func RandomSuffixFromProto(pData *proto.ItemRandomSuffix) RandomSuffix {
 }
 
 type Enchant struct {
-	EffectID int32 // Used by UI to apply effect to tooltip
-	Stats    stats.Stats
+	EffectID      int32 // Used by UI to apply effect to tooltip
+	Stats         stats.Stats
+	RequiredLevel int32
+	ItemLevelMin  int32
+	ArmorTypeMask uint32
 }
 
 func EnchantFromProto(pData *proto.SimEnchant) Enchant {
+	var armorMask uint32
+	for _, armor := range pData.ArmorTypes {
+		if armor >= proto.ArmorType_ArmorTypeCloth && armor <= proto.ArmorType_ArmorTypePlate {
+			armorMask |= 1 << uint32(armor)
+		}
+	}
 	return Enchant{
-		EffectID: pData.EffectId,
-		Stats:    stats.FromFloatArray(pData.Stats),
+		EffectID:      pData.EffectId,
+		Stats:         stats.FromFloatArray(pData.Stats),
+		RequiredLevel: pData.RequiredLevel,
+		ItemLevelMin:  pData.ItemLevelMin,
+		ArmorTypeMask: armorMask,
 	}
 }
 

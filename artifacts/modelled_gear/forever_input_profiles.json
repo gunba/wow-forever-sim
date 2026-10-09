@@ -1,13 +1,9 @@
 {
   "GearScenario": "modeled-65-v2",
-  "Duration": 300,
-  "StartingArmor": 3731,
   "Results": [
     {
       "Key": "balance",
-      "Build": "Balance",
       "Race": "Tauren",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Balance",
         "race": "RaceTauren",
@@ -257,9 +253,7 @@
     },
     {
       "Key": "balance",
-      "Build": "Balance",
       "Race": "Windshaper",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Balance",
         "race": "RaceSkyborneWindshaper",
@@ -509,9 +503,7 @@
     },
     {
       "Key": "balance",
-      "Build": "Balance",
       "Race": "Night Elf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Balance",
         "race": "RaceNightElf",
@@ -761,9 +753,7 @@
     },
     {
       "Key": "balance",
-      "Build": "Balance",
       "Race": "High Order",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Balance",
         "race": "RaceSkyborneHighOrder",
@@ -1013,9 +1003,7 @@
     },
     {
       "Key": "feral",
-      "Build": "Feral",
       "Race": "Tauren",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Feral",
         "race": "RaceTauren",
@@ -1182,28 +1170,6 @@
             {
               "action": {
                 "condition": {
-                  "cmp": {
-                    "op": "OpLe",
-                    "lhs": {
-                      "currentEnergy": {}
-                    },
-                    "rhs": {
-                      "const": {
-                        "val": "40"
-                      }
-                    }
-                  }
-                },
-                "castSpell": {
-                  "spellId": {
-                    "spellId": 1322605
-                  }
-                }
-              }
-            },
-            {
-              "action": {
-                "condition": {
                   "and": {
                     "vals": [
                       {
@@ -1341,6 +1307,28 @@
             },
             {
               "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpLe",
+                    "lhs": {
+                      "currentEnergy": {}
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "60"
+                      }
+                    }
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 1322605
+                  }
+                }
+              }
+            },
+            {
+              "action": {
                 "castSpell": {
                   "spellId": {
                     "spellId": 9830
@@ -1360,9 +1348,7 @@
     },
     {
       "Key": "feral",
-      "Build": "Feral",
       "Race": "Windshaper",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Feral",
         "race": "RaceSkyborneWindshaper",
@@ -1529,28 +1515,6 @@
             {
               "action": {
                 "condition": {
-                  "cmp": {
-                    "op": "OpLe",
-                    "lhs": {
-                      "currentEnergy": {}
-                    },
-                    "rhs": {
-                      "const": {
-                        "val": "40"
-                      }
-                    }
-                  }
-                },
-                "castSpell": {
-                  "spellId": {
-                    "spellId": 1322605
-                  }
-                }
-              }
-            },
-            {
-              "action": {
-                "condition": {
                   "and": {
                     "vals": [
                       {
@@ -1688,6 +1652,28 @@
             },
             {
               "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpLe",
+                    "lhs": {
+                      "currentEnergy": {}
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "60"
+                      }
+                    }
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 1322605
+                  }
+                }
+              }
+            },
+            {
+              "action": {
                 "castSpell": {
                   "spellId": {
                     "spellId": 9830
@@ -1707,9 +1693,7 @@
     },
     {
       "Key": "feral",
-      "Build": "Feral",
       "Race": "Night Elf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Feral",
         "race": "RaceNightElf",
@@ -1876,28 +1860,6 @@
             {
               "action": {
                 "condition": {
-                  "cmp": {
-                    "op": "OpLe",
-                    "lhs": {
-                      "currentEnergy": {}
-                    },
-                    "rhs": {
-                      "const": {
-                        "val": "40"
-                      }
-                    }
-                  }
-                },
-                "castSpell": {
-                  "spellId": {
-                    "spellId": 1322605
-                  }
-                }
-              }
-            },
-            {
-              "action": {
-                "condition": {
                   "and": {
                     "vals": [
                       {
@@ -2035,6 +1997,28 @@
             },
             {
               "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpLe",
+                    "lhs": {
+                      "currentEnergy": {}
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "60"
+                      }
+                    }
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 1322605
+                  }
+                }
+              }
+            },
+            {
+              "action": {
                 "castSpell": {
                   "spellId": {
                     "spellId": 9830
@@ -2054,9 +2038,7 @@
     },
     {
       "Key": "feral",
-      "Build": "Feral",
       "Race": "High Order",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Feral",
         "race": "RaceSkyborneHighOrder",
@@ -2223,28 +2205,6 @@
             {
               "action": {
                 "condition": {
-                  "cmp": {
-                    "op": "OpLe",
-                    "lhs": {
-                      "currentEnergy": {}
-                    },
-                    "rhs": {
-                      "const": {
-                        "val": "40"
-                      }
-                    }
-                  }
-                },
-                "castSpell": {
-                  "spellId": {
-                    "spellId": 1322605
-                  }
-                }
-              }
-            },
-            {
-              "action": {
-                "condition": {
                   "and": {
                     "vals": [
                       {
@@ -2382,6 +2342,28 @@
             },
             {
               "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpLe",
+                    "lhs": {
+                      "currentEnergy": {}
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "60"
+                      }
+                    }
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 1322605
+                  }
+                }
+              }
+            },
+            {
+              "action": {
                 "castSpell": {
                   "spellId": {
                     "spellId": 9830
@@ -2401,9 +2383,7 @@
     },
     {
       "Key": "elemental",
-      "Build": "Elemental",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Elemental",
         "race": "RaceOrc",
@@ -2767,9 +2747,7 @@
     },
     {
       "Key": "elemental",
-      "Build": "Elemental",
       "Race": "Tauren",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Elemental",
         "race": "RaceTauren",
@@ -3133,9 +3111,7 @@
     },
     {
       "Key": "elemental",
-      "Build": "Elemental",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Elemental",
         "race": "RaceTroll",
@@ -3499,9 +3475,7 @@
     },
     {
       "Key": "elemental",
-      "Build": "Elemental",
       "Race": "Windshaper",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Elemental",
         "race": "RaceSkyborneWindshaper",
@@ -3865,9 +3839,7 @@
     },
     {
       "Key": "elemental",
-      "Build": "Elemental",
       "Race": "Dwarf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Elemental",
         "race": "RaceDwarf",
@@ -4229,9 +4201,7 @@
     },
     {
       "Key": "stormcaller",
-      "Build": "Stormcaller",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Stormcaller",
         "race": "RaceOrc",
@@ -4584,9 +4554,7 @@
     },
     {
       "Key": "stormcaller",
-      "Build": "Stormcaller",
       "Race": "Tauren",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Stormcaller",
         "race": "RaceTauren",
@@ -4939,9 +4907,7 @@
     },
     {
       "Key": "stormcaller",
-      "Build": "Stormcaller",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Stormcaller",
         "race": "RaceTroll",
@@ -5294,9 +5260,7 @@
     },
     {
       "Key": "stormcaller",
-      "Build": "Stormcaller",
       "Race": "Windshaper",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Stormcaller",
         "race": "RaceSkyborneWindshaper",
@@ -5649,9 +5613,7 @@
     },
     {
       "Key": "stormcaller",
-      "Build": "Stormcaller",
       "Race": "Dwarf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Stormcaller",
         "race": "RaceDwarf",
@@ -6002,9 +5964,7 @@
     },
     {
       "Key": "enhancement",
-      "Build": "Enhancement",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Enhancement",
         "race": "RaceOrc",
@@ -6423,9 +6383,7 @@
     },
     {
       "Key": "enhancement",
-      "Build": "Enhancement",
       "Race": "Tauren",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Enhancement",
         "race": "RaceTauren",
@@ -6844,9 +6802,7 @@
     },
     {
       "Key": "enhancement",
-      "Build": "Enhancement",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Enhancement",
         "race": "RaceTroll",
@@ -7265,9 +7221,7 @@
     },
     {
       "Key": "enhancement",
-      "Build": "Enhancement",
       "Race": "Windshaper",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Enhancement",
         "race": "RaceSkyborneWindshaper",
@@ -7686,9 +7640,7 @@
     },
     {
       "Key": "enhancement",
-      "Build": "Enhancement",
       "Race": "Dwarf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Enhancement",
         "race": "RaceDwarf",
@@ -8107,9 +8059,7 @@
     },
     {
       "Key": "beast_mastery",
-      "Build": "Beast Mastery",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Beast Mastery",
         "race": "RaceOrc",
@@ -8422,9 +8372,7 @@
     },
     {
       "Key": "beast_mastery",
-      "Build": "Beast Mastery",
       "Race": "Tauren",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Beast Mastery",
         "race": "RaceTauren",
@@ -8737,9 +8685,7 @@
     },
     {
       "Key": "beast_mastery",
-      "Build": "Beast Mastery",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Beast Mastery",
         "race": "RaceTroll",
@@ -9052,9 +8998,7 @@
     },
     {
       "Key": "beast_mastery",
-      "Build": "Beast Mastery",
       "Race": "Windshaper",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Beast Mastery",
         "race": "RaceSkyborneWindshaper",
@@ -9367,9 +9311,7 @@
     },
     {
       "Key": "beast_mastery",
-      "Build": "Beast Mastery",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Beast Mastery",
         "race": "RaceHuman",
@@ -9682,9 +9624,7 @@
     },
     {
       "Key": "beast_mastery",
-      "Build": "Beast Mastery",
       "Race": "Dwarf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Beast Mastery",
         "race": "RaceDwarf",
@@ -9997,9 +9937,7 @@
     },
     {
       "Key": "beast_mastery",
-      "Build": "Beast Mastery",
       "Race": "Night Elf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Beast Mastery",
         "race": "RaceNightElf",
@@ -10312,9 +10250,7 @@
     },
     {
       "Key": "beast_mastery",
-      "Build": "Beast Mastery",
       "Race": "High Order",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Beast Mastery",
         "race": "RaceSkyborneHighOrder",
@@ -10627,9 +10563,7 @@
     },
     {
       "Key": "marksmanship",
-      "Build": "Marksmanship",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Marksmanship",
         "race": "RaceOrc",
@@ -10902,9 +10836,7 @@
     },
     {
       "Key": "marksmanship",
-      "Build": "Marksmanship",
       "Race": "Tauren",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Marksmanship",
         "race": "RaceTauren",
@@ -11177,9 +11109,7 @@
     },
     {
       "Key": "marksmanship",
-      "Build": "Marksmanship",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Marksmanship",
         "race": "RaceTroll",
@@ -11452,9 +11382,7 @@
     },
     {
       "Key": "marksmanship",
-      "Build": "Marksmanship",
       "Race": "Windshaper",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Marksmanship",
         "race": "RaceSkyborneWindshaper",
@@ -11727,9 +11655,7 @@
     },
     {
       "Key": "marksmanship",
-      "Build": "Marksmanship",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Marksmanship",
         "race": "RaceHuman",
@@ -12002,9 +11928,7 @@
     },
     {
       "Key": "marksmanship",
-      "Build": "Marksmanship",
       "Race": "Dwarf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Marksmanship",
         "race": "RaceDwarf",
@@ -12277,9 +12201,7 @@
     },
     {
       "Key": "marksmanship",
-      "Build": "Marksmanship",
       "Race": "Night Elf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Marksmanship",
         "race": "RaceNightElf",
@@ -12552,9 +12474,7 @@
     },
     {
       "Key": "marksmanship",
-      "Build": "Marksmanship",
       "Race": "High Order",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Marksmanship",
         "race": "RaceSkyborneHighOrder",
@@ -12827,9 +12747,7 @@
     },
     {
       "Key": "survival",
-      "Build": "Survival",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Survival",
         "race": "RaceOrc",
@@ -13143,9 +13061,7 @@
     },
     {
       "Key": "survival",
-      "Build": "Survival",
       "Race": "Tauren",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Survival",
         "race": "RaceTauren",
@@ -13459,9 +13375,7 @@
     },
     {
       "Key": "survival",
-      "Build": "Survival",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Survival",
         "race": "RaceTroll",
@@ -13775,9 +13689,7 @@
     },
     {
       "Key": "survival",
-      "Build": "Survival",
       "Race": "Windshaper",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Survival",
         "race": "RaceSkyborneWindshaper",
@@ -14091,9 +14003,7 @@
     },
     {
       "Key": "survival",
-      "Build": "Survival",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Survival",
         "race": "RaceHuman",
@@ -14407,9 +14317,7 @@
     },
     {
       "Key": "survival",
-      "Build": "Survival",
       "Race": "Dwarf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Survival",
         "race": "RaceDwarf",
@@ -14723,9 +14631,7 @@
     },
     {
       "Key": "survival",
-      "Build": "Survival",
       "Race": "Night Elf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Survival",
         "race": "RaceNightElf",
@@ -15039,9 +14945,7 @@
     },
     {
       "Key": "survival",
-      "Build": "Survival",
       "Race": "High Order",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Survival",
         "race": "RaceSkyborneHighOrder",
@@ -15355,9 +15259,7 @@
     },
     {
       "Key": "arcane",
-      "Build": "Arcane",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Arcane",
         "race": "RaceOrc",
@@ -15626,9 +15528,7 @@
     },
     {
       "Key": "arcane",
-      "Build": "Arcane",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Arcane",
         "race": "RaceTroll",
@@ -15897,9 +15797,7 @@
     },
     {
       "Key": "arcane",
-      "Build": "Arcane",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Arcane",
         "race": "RaceUndead",
@@ -16168,9 +16066,7 @@
     },
     {
       "Key": "arcane",
-      "Build": "Arcane",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Arcane",
         "race": "RaceHuman",
@@ -16439,9 +16335,7 @@
     },
     {
       "Key": "arcane",
-      "Build": "Arcane",
       "Race": "Gnome",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Arcane",
         "race": "RaceGnome",
@@ -16710,9 +16604,7 @@
     },
     {
       "Key": "arcane",
-      "Build": "Arcane",
       "Race": "High Order",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Arcane",
         "race": "RaceSkyborneHighOrder",
@@ -16981,9 +16873,7 @@
     },
     {
       "Key": "fire",
-      "Build": "Fire",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Fire",
         "race": "RaceOrc",
@@ -17351,9 +17241,7 @@
     },
     {
       "Key": "fire",
-      "Build": "Fire",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Fire",
         "race": "RaceTroll",
@@ -17721,9 +17609,7 @@
     },
     {
       "Key": "fire",
-      "Build": "Fire",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Fire",
         "race": "RaceUndead",
@@ -18091,9 +17977,7 @@
     },
     {
       "Key": "fire",
-      "Build": "Fire",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Fire",
         "race": "RaceHuman",
@@ -18461,9 +18345,7 @@
     },
     {
       "Key": "fire",
-      "Build": "Fire",
       "Race": "Gnome",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Fire",
         "race": "RaceGnome",
@@ -18830,9 +18712,7 @@
     },
     {
       "Key": "fire",
-      "Build": "Fire",
       "Race": "High Order",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Fire",
         "race": "RaceSkyborneHighOrder",
@@ -19200,9 +19080,7 @@
     },
     {
       "Key": "frost",
-      "Build": "Frost",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Frost",
         "race": "RaceOrc",
@@ -19448,9 +19326,7 @@
     },
     {
       "Key": "frost",
-      "Build": "Frost",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Frost",
         "race": "RaceTroll",
@@ -19696,9 +19572,7 @@
     },
     {
       "Key": "frost",
-      "Build": "Frost",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Frost",
         "race": "RaceUndead",
@@ -19944,9 +19818,7 @@
     },
     {
       "Key": "frost",
-      "Build": "Frost",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Frost",
         "race": "RaceHuman",
@@ -20192,9 +20064,7 @@
     },
     {
       "Key": "frost",
-      "Build": "Frost",
       "Race": "Gnome",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Frost",
         "race": "RaceGnome",
@@ -20440,9 +20310,7 @@
     },
     {
       "Key": "frost",
-      "Build": "Frost",
       "Race": "High Order",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Frost",
         "race": "RaceSkyborneHighOrder",
@@ -20688,9 +20556,7 @@
     },
     {
       "Key": "retribution",
-      "Build": "Retribution",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Retribution",
         "race": "RaceUndead",
@@ -21028,9 +20894,7 @@
     },
     {
       "Key": "retribution",
-      "Build": "Retribution",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Retribution",
         "race": "RaceHuman",
@@ -21368,9 +21232,7 @@
     },
     {
       "Key": "retribution",
-      "Build": "Retribution",
       "Race": "Dwarf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Retribution",
         "race": "RaceDwarf",
@@ -21708,9 +21570,7 @@
     },
     {
       "Key": "shadow",
-      "Build": "Shadow",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Shadow",
         "race": "RaceTroll",
@@ -22086,9 +21946,7 @@
     },
     {
       "Key": "shadow",
-      "Build": "Shadow",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Shadow",
         "race": "RaceUndead",
@@ -22464,9 +22322,7 @@
     },
     {
       "Key": "shadow",
-      "Build": "Shadow",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Shadow",
         "race": "RaceHuman",
@@ -22751,9 +22607,7 @@
     },
     {
       "Key": "shadow",
-      "Build": "Shadow",
       "Race": "Dwarf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Shadow",
         "race": "RaceDwarf",
@@ -23038,9 +22892,7 @@
     },
     {
       "Key": "shadow",
-      "Build": "Shadow",
       "Race": "Night Elf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Shadow",
         "race": "RaceNightElf",
@@ -23325,9 +23177,7 @@
     },
     {
       "Key": "shadow",
-      "Build": "Shadow",
       "Race": "Gnome",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Shadow",
         "race": "RaceGnome",
@@ -23612,9 +23462,7 @@
     },
     {
       "Key": "smite",
-      "Build": "Smite",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Smite",
         "race": "RaceTroll",
@@ -23776,6 +23624,19 @@
             },
             {
               "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpLe",
+                    "lhs": {
+                      "remainingTime": {}
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "2.5s"
+                      }
+                    }
+                  }
+                },
                 "castSpell": {
                   "spellId": {
                     "spellId": 1316995
@@ -23883,9 +23744,7 @@
     },
     {
       "Key": "smite",
-      "Build": "Smite",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Smite",
         "race": "RaceUndead",
@@ -24047,15 +23906,6 @@
             },
             {
               "action": {
-                "castSpell": {
-                  "spellId": {
-                    "spellId": 1316995
-                  }
-                }
-              }
-            },
-            {
-              "action": {
                 "condition": {
                   "cmp": {
                     "op": "OpLt",
@@ -24154,9 +24004,7 @@
     },
     {
       "Key": "smite",
-      "Build": "Smite",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Smite",
         "race": "RaceHuman",
@@ -24318,6 +24166,19 @@
             },
             {
               "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpLe",
+                    "lhs": {
+                      "remainingTime": {}
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "2.5s"
+                      }
+                    }
+                  }
+                },
                 "castSpell": {
                   "spellId": {
                     "spellId": 1316995
@@ -24425,9 +24286,7 @@
     },
     {
       "Key": "smite",
-      "Build": "Smite",
       "Race": "Dwarf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Smite",
         "race": "RaceDwarf",
@@ -24589,6 +24448,19 @@
             },
             {
               "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpLe",
+                    "lhs": {
+                      "remainingTime": {}
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "2.5s"
+                      }
+                    }
+                  }
+                },
                 "castSpell": {
                   "spellId": {
                     "spellId": 1316995
@@ -24696,9 +24568,7 @@
     },
     {
       "Key": "smite",
-      "Build": "Smite",
       "Race": "Night Elf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Smite",
         "race": "RaceNightElf",
@@ -24860,6 +24730,19 @@
             },
             {
               "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpLe",
+                    "lhs": {
+                      "remainingTime": {}
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "2.5s"
+                      }
+                    }
+                  }
+                },
                 "castSpell": {
                   "spellId": {
                     "spellId": 1316995
@@ -24967,9 +24850,7 @@
     },
     {
       "Key": "smite",
-      "Build": "Smite",
       "Race": "Gnome",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Smite",
         "race": "RaceGnome",
@@ -25131,6 +25012,19 @@
             },
             {
               "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpLe",
+                    "lhs": {
+                      "remainingTime": {}
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "2.5s"
+                      }
+                    }
+                  }
+                },
                 "castSpell": {
                   "spellId": {
                     "spellId": 1316995
@@ -25238,9 +25132,7 @@
     },
     {
       "Key": "combat",
-      "Build": "Combat",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Combat",
         "race": "RaceOrc",
@@ -25319,12 +25211,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -25692,9 +25584,7 @@
     },
     {
       "Key": "combat",
-      "Build": "Combat",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Combat",
         "race": "RaceTroll",
@@ -25773,12 +25663,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -26146,9 +26036,7 @@
     },
     {
       "Key": "combat",
-      "Build": "Combat",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Combat",
         "race": "RaceUndead",
@@ -26227,12 +26115,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -26600,9 +26488,7 @@
     },
     {
       "Key": "combat",
-      "Build": "Combat",
       "Race": "Windshaper",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Combat",
         "race": "RaceSkyborneWindshaper",
@@ -26681,12 +26567,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -27054,9 +26940,7 @@
     },
     {
       "Key": "combat",
-      "Build": "Combat",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Combat",
         "race": "RaceHuman",
@@ -27135,12 +27019,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -27508,9 +27392,7 @@
     },
     {
       "Key": "combat",
-      "Build": "Combat",
       "Race": "Dwarf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Combat",
         "race": "RaceDwarf",
@@ -27589,12 +27471,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -27962,9 +27844,7 @@
     },
     {
       "Key": "combat",
-      "Build": "Combat",
       "Race": "Night Elf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Combat",
         "race": "RaceNightElf",
@@ -28043,12 +27923,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -28416,9 +28296,7 @@
     },
     {
       "Key": "combat",
-      "Build": "Combat",
       "Race": "Gnome",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Combat",
         "race": "RaceGnome",
@@ -28497,12 +28375,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -28870,9 +28748,7 @@
     },
     {
       "Key": "combat",
-      "Build": "Combat",
       "Race": "High Order",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Combat",
         "race": "RaceSkyborneHighOrder",
@@ -28951,12 +28827,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -29324,9 +29200,7 @@
     },
     {
       "Key": "mutilate",
-      "Build": "Mutilate",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Mutilate",
         "race": "RaceOrc",
@@ -29405,12 +29279,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -29696,9 +29570,7 @@
     },
     {
       "Key": "mutilate",
-      "Build": "Mutilate",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Mutilate",
         "race": "RaceTroll",
@@ -29777,12 +29649,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -30068,9 +29940,7 @@
     },
     {
       "Key": "mutilate",
-      "Build": "Mutilate",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Mutilate",
         "race": "RaceUndead",
@@ -30149,12 +30019,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -30440,9 +30310,7 @@
     },
     {
       "Key": "mutilate",
-      "Build": "Mutilate",
       "Race": "Windshaper",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Mutilate",
         "race": "RaceSkyborneWindshaper",
@@ -30521,12 +30389,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -30812,9 +30680,7 @@
     },
     {
       "Key": "mutilate",
-      "Build": "Mutilate",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Mutilate",
         "race": "RaceHuman",
@@ -30893,12 +30759,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -31184,9 +31050,7 @@
     },
     {
       "Key": "mutilate",
-      "Build": "Mutilate",
       "Race": "Dwarf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Mutilate",
         "race": "RaceDwarf",
@@ -31265,12 +31129,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -31556,9 +31420,7 @@
     },
     {
       "Key": "mutilate",
-      "Build": "Mutilate",
       "Race": "Night Elf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Mutilate",
         "race": "RaceNightElf",
@@ -31637,12 +31499,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -31928,9 +31790,7 @@
     },
     {
       "Key": "mutilate",
-      "Build": "Mutilate",
       "Race": "Gnome",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Mutilate",
         "race": "RaceGnome",
@@ -32009,12 +31869,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -32300,9 +32160,7 @@
     },
     {
       "Key": "mutilate",
-      "Build": "Mutilate",
       "Race": "High Order",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Mutilate",
         "race": "RaceSkyborneHighOrder",
@@ -32381,12 +32239,12 @@
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
           "fillerExplosive": "ExplosiveThoriumGrenade",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -32672,9 +32530,7 @@
     },
     {
       "Key": "subtlety",
-      "Build": "Subtlety",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Subtlety",
         "race": "RaceOrc",
@@ -32752,12 +32608,12 @@
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -33255,9 +33111,7 @@
     },
     {
       "Key": "subtlety",
-      "Build": "Subtlety",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Subtlety",
         "race": "RaceTroll",
@@ -33335,12 +33189,12 @@
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -33838,9 +33692,7 @@
     },
     {
       "Key": "subtlety",
-      "Build": "Subtlety",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Subtlety",
         "race": "RaceUndead",
@@ -33918,12 +33770,12 @@
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -34421,9 +34273,7 @@
     },
     {
       "Key": "subtlety",
-      "Build": "Subtlety",
       "Race": "Windshaper",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Subtlety",
         "race": "RaceSkyborneWindshaper",
@@ -34501,12 +34351,12 @@
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -35004,9 +34854,7 @@
     },
     {
       "Key": "subtlety",
-      "Build": "Subtlety",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Subtlety",
         "race": "RaceHuman",
@@ -35084,12 +34932,12 @@
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -35587,9 +35435,7 @@
     },
     {
       "Key": "subtlety",
-      "Build": "Subtlety",
       "Race": "Dwarf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Subtlety",
         "race": "RaceDwarf",
@@ -35667,12 +35513,12 @@
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -36170,9 +36016,7 @@
     },
     {
       "Key": "subtlety",
-      "Build": "Subtlety",
       "Race": "Night Elf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Subtlety",
         "race": "RaceNightElf",
@@ -36250,12 +36094,12 @@
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -36753,9 +36597,7 @@
     },
     {
       "Key": "subtlety",
-      "Build": "Subtlety",
       "Race": "Gnome",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Subtlety",
         "race": "RaceGnome",
@@ -36833,12 +36675,12 @@
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -37336,9 +37178,7 @@
     },
     {
       "Key": "subtlety",
-      "Build": "Subtlety",
       "Race": "High Order",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Subtlety",
         "race": "RaceSkyborneHighOrder",
@@ -37416,12 +37256,12 @@
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
           "spellPowerBuff": "GreaterArcaneElixir",
+          "mainHandImbue": "ShadowOil",
+          "offHandImbue": "ElementalSharpeningStone",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
           "zanzaBuff": "GroundScorpokAssay",
-          "sapperExplosive": "SapperGoblinSapper",
-          "mainHandImbue": "ShadowOil",
-          "offHandImbue": "ElementalSharpeningStone"
+          "sapperExplosive": "SapperGoblinSapper"
         },
         "bonusStats": {
           "stats": [
@@ -37919,9 +37759,7 @@
     },
     {
       "Key": "demonology",
-      "Build": "Demonic Pact",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Demonic Pact",
         "race": "RaceOrc",
@@ -38495,17 +38333,15 @@
           "options": {
             "armor": "DemonArmor",
             "summon": "Succubus",
-            "sacrifice": "Voidwalker",
-            "weaponImbue": "Spellstone"
+            "weaponImbue": "Spellstone",
+            "sacrifice": "Voidwalker"
           }
         }
       }
     },
     {
       "Key": "demonology",
-      "Build": "Demonic Pact",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Demonic Pact",
         "race": "RaceTroll",
@@ -39079,17 +38915,15 @@
           "options": {
             "armor": "DemonArmor",
             "summon": "Succubus",
-            "sacrifice": "Voidwalker",
-            "weaponImbue": "Spellstone"
+            "weaponImbue": "Spellstone",
+            "sacrifice": "Voidwalker"
           }
         }
       }
     },
     {
       "Key": "demonology",
-      "Build": "Demonic Pact",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Demonic Pact",
         "race": "RaceUndead",
@@ -39663,17 +39497,15 @@
           "options": {
             "armor": "DemonArmor",
             "summon": "Succubus",
-            "sacrifice": "Voidwalker",
-            "weaponImbue": "Spellstone"
+            "weaponImbue": "Spellstone",
+            "sacrifice": "Voidwalker"
           }
         }
       }
     },
     {
       "Key": "demonology",
-      "Build": "Demonic Pact",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Demonic Pact",
         "race": "RaceHuman",
@@ -40247,17 +40079,15 @@
           "options": {
             "armor": "DemonArmor",
             "summon": "Succubus",
-            "sacrifice": "Voidwalker",
-            "weaponImbue": "Spellstone"
+            "weaponImbue": "Spellstone",
+            "sacrifice": "Voidwalker"
           }
         }
       }
     },
     {
       "Key": "demonology",
-      "Build": "Demonic Pact",
       "Race": "Gnome",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Demonic Pact",
         "race": "RaceGnome",
@@ -40831,17 +40661,15 @@
           "options": {
             "armor": "DemonArmor",
             "summon": "Succubus",
-            "sacrifice": "Voidwalker",
-            "weaponImbue": "Spellstone"
+            "weaponImbue": "Spellstone",
+            "sacrifice": "Voidwalker"
           }
         }
       }
     },
     {
       "Key": "affliction",
-      "Build": "Affliction",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Affliction",
         "race": "RaceOrc",
@@ -41465,9 +41293,7 @@
     },
     {
       "Key": "affliction",
-      "Build": "Affliction",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Affliction",
         "race": "RaceTroll",
@@ -42091,9 +41917,7 @@
     },
     {
       "Key": "affliction",
-      "Build": "Affliction",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Affliction",
         "race": "RaceUndead",
@@ -42717,9 +42541,7 @@
     },
     {
       "Key": "affliction",
-      "Build": "Affliction",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Affliction",
         "race": "RaceHuman",
@@ -43343,9 +43165,7 @@
     },
     {
       "Key": "affliction",
-      "Build": "Affliction",
       "Race": "Gnome",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Affliction",
         "race": "RaceGnome",
@@ -43969,9 +43789,7 @@
     },
     {
       "Key": "ds_ruin",
-      "Build": "DS/Ruin",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "DS/Ruin",
         "race": "RaceOrc",
@@ -44502,9 +44320,7 @@
     },
     {
       "Key": "ds_ruin",
-      "Build": "DS/Ruin",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "DS/Ruin",
         "race": "RaceTroll",
@@ -45035,9 +44851,7 @@
     },
     {
       "Key": "ds_ruin",
-      "Build": "DS/Ruin",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "DS/Ruin",
         "race": "RaceUndead",
@@ -45568,9 +45382,7 @@
     },
     {
       "Key": "ds_ruin",
-      "Build": "DS/Ruin",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "DS/Ruin",
         "race": "RaceHuman",
@@ -46101,9 +45913,7 @@
     },
     {
       "Key": "ds_ruin",
-      "Build": "DS/Ruin",
       "Race": "Gnome",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "DS/Ruin",
         "race": "RaceGnome",
@@ -46634,9 +46444,7 @@
     },
     {
       "Key": "destruction",
-      "Build": "Destruction",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Destruction",
         "race": "RaceOrc",
@@ -47163,9 +46971,7 @@
     },
     {
       "Key": "destruction",
-      "Build": "Destruction",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Destruction",
         "race": "RaceTroll",
@@ -47692,9 +47498,7 @@
     },
     {
       "Key": "destruction",
-      "Build": "Destruction",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Destruction",
         "race": "RaceUndead",
@@ -48221,9 +48025,7 @@
     },
     {
       "Key": "destruction",
-      "Build": "Destruction",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Destruction",
         "race": "RaceHuman",
@@ -48750,9 +48552,7 @@
     },
     {
       "Key": "destruction",
-      "Build": "Destruction",
       "Race": "Gnome",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Destruction",
         "race": "RaceGnome",
@@ -49279,9 +49079,7 @@
     },
     {
       "Key": "fury",
-      "Build": "Fury",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Fury",
         "race": "RaceOrc",
@@ -49640,9 +49438,7 @@
     },
     {
       "Key": "fury_sunder",
-      "Build": "Fury (Sunder)",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Fury (Sunder)",
         "race": "RaceOrc",
@@ -50137,9 +49933,7 @@
     },
     {
       "Key": "fury",
-      "Build": "Fury",
       "Race": "Tauren",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Fury",
         "race": "RaceTauren",
@@ -50498,9 +50292,7 @@
     },
     {
       "Key": "fury_sunder",
-      "Build": "Fury (Sunder)",
       "Race": "Tauren",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Fury (Sunder)",
         "race": "RaceTauren",
@@ -50995,9 +50787,7 @@
     },
     {
       "Key": "fury",
-      "Build": "Fury",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Fury",
         "race": "RaceTroll",
@@ -51356,9 +51146,7 @@
     },
     {
       "Key": "fury_sunder",
-      "Build": "Fury (Sunder)",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Fury (Sunder)",
         "race": "RaceTroll",
@@ -51854,9 +51642,7 @@
     },
     {
       "Key": "fury",
-      "Build": "Fury",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Fury",
         "race": "RaceUndead",
@@ -52215,9 +52001,7 @@
     },
     {
       "Key": "fury_sunder",
-      "Build": "Fury (Sunder)",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Fury (Sunder)",
         "race": "RaceUndead",
@@ -52712,9 +52496,7 @@
     },
     {
       "Key": "fury",
-      "Build": "Fury",
       "Race": "Windshaper",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Fury",
         "race": "RaceSkyborneWindshaper",
@@ -53073,9 +52855,7 @@
     },
     {
       "Key": "fury_sunder",
-      "Build": "Fury (Sunder)",
       "Race": "Windshaper",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Fury (Sunder)",
         "race": "RaceSkyborneWindshaper",
@@ -53570,9 +53350,7 @@
     },
     {
       "Key": "fury",
-      "Build": "Fury",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Fury",
         "race": "RaceHuman",
@@ -53931,9 +53709,7 @@
     },
     {
       "Key": "fury_sunder",
-      "Build": "Fury (Sunder)",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Fury (Sunder)",
         "race": "RaceHuman",
@@ -54428,9 +54204,7 @@
     },
     {
       "Key": "fury",
-      "Build": "Fury",
       "Race": "Dwarf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Fury",
         "race": "RaceDwarf",
@@ -54789,9 +54563,7 @@
     },
     {
       "Key": "fury_sunder",
-      "Build": "Fury (Sunder)",
       "Race": "Dwarf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Fury (Sunder)",
         "race": "RaceDwarf",
@@ -55286,9 +55058,7 @@
     },
     {
       "Key": "fury",
-      "Build": "Fury",
       "Race": "Night Elf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Fury",
         "race": "RaceNightElf",
@@ -55647,9 +55417,7 @@
     },
     {
       "Key": "fury_sunder",
-      "Build": "Fury (Sunder)",
       "Race": "Night Elf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Fury (Sunder)",
         "race": "RaceNightElf",
@@ -56144,9 +55912,7 @@
     },
     {
       "Key": "fury",
-      "Build": "Fury",
       "Race": "Gnome",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Fury",
         "race": "RaceGnome",
@@ -56505,9 +56271,7 @@
     },
     {
       "Key": "fury_sunder",
-      "Build": "Fury (Sunder)",
       "Race": "Gnome",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Fury (Sunder)",
         "race": "RaceGnome",
@@ -57002,9 +56766,7 @@
     },
     {
       "Key": "fury",
-      "Build": "Fury",
       "Race": "High Order",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Fury",
         "race": "RaceSkyborneHighOrder",
@@ -57363,9 +57125,7 @@
     },
     {
       "Key": "fury_sunder",
-      "Build": "Fury (Sunder)",
       "Race": "High Order",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Fury (Sunder)",
         "race": "RaceSkyborneHighOrder",
@@ -57860,9 +57620,7 @@
     },
     {
       "Key": "arms",
-      "Build": "Arms",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Arms",
         "race": "RaceOrc",
@@ -58250,9 +58008,7 @@
     },
     {
       "Key": "arms",
-      "Build": "Arms",
       "Race": "Tauren",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Arms",
         "race": "RaceTauren",
@@ -58640,9 +58396,7 @@
     },
     {
       "Key": "arms",
-      "Build": "Arms",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Arms",
         "race": "RaceTroll",
@@ -59029,9 +58783,7 @@
     },
     {
       "Key": "arms",
-      "Build": "Arms",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Arms",
         "race": "RaceUndead",
@@ -59418,9 +59170,7 @@
     },
     {
       "Key": "arms",
-      "Build": "Arms",
       "Race": "Windshaper",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Arms",
         "race": "RaceSkyborneWindshaper",
@@ -59808,9 +59558,7 @@
     },
     {
       "Key": "arms",
-      "Build": "Arms",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Arms",
         "race": "RaceHuman",
@@ -60197,9 +59945,7 @@
     },
     {
       "Key": "arms",
-      "Build": "Arms",
       "Race": "Dwarf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Arms",
         "race": "RaceDwarf",
@@ -60587,9 +60333,7 @@
     },
     {
       "Key": "arms",
-      "Build": "Arms",
       "Race": "Night Elf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Arms",
         "race": "RaceNightElf",
@@ -60977,9 +60721,7 @@
     },
     {
       "Key": "arms",
-      "Build": "Arms",
       "Race": "Gnome",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Arms",
         "race": "RaceGnome",
@@ -61366,9 +61108,7 @@
     },
     {
       "Key": "arms",
-      "Build": "Arms",
       "Race": "High Order",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Arms",
         "race": "RaceSkyborneHighOrder",
@@ -61756,9 +61496,7 @@
     },
     {
       "Key": "pet_melee",
-      "Build": "Pet/Melee",
       "Race": "Tauren",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Survival",
         "race": "RaceTauren",
@@ -62114,9 +61852,7 @@
     },
     {
       "Key": "pet_melee",
-      "Build": "Pet/Melee",
       "Race": "Windshaper",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Survival",
         "race": "RaceSkyborneWindshaper",
@@ -62472,9 +62208,7 @@
     },
     {
       "Key": "pet_melee",
-      "Build": "Pet/Melee",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Survival",
         "race": "RaceOrc",
@@ -62830,9 +62564,7 @@
     },
     {
       "Key": "pet_melee",
-      "Build": "Pet/Melee",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Survival",
         "race": "RaceHuman",
@@ -63188,9 +62920,7 @@
     },
     {
       "Key": "pet_melee",
-      "Build": "Pet/Melee",
       "Race": "Night Elf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Survival",
         "race": "RaceNightElf",
@@ -63546,9 +63276,7 @@
     },
     {
       "Key": "pet_melee",
-      "Build": "Pet/Melee",
       "Race": "Dwarf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Survival",
         "race": "RaceDwarf",
@@ -63904,9 +63632,7 @@
     },
     {
       "Key": "pet_melee",
-      "Build": "Pet/Melee",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Survival",
         "race": "RaceTroll",
@@ -64262,9 +63988,7 @@
     },
     {
       "Key": "pet_melee",
-      "Build": "Pet/Melee",
       "Race": "High Order",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Survival",
         "race": "RaceSkyborneHighOrder",
@@ -64620,9 +64344,7 @@
     },
     {
       "Key": "arcane_frost",
-      "Build": "Arcane\u2013Frost",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Frost",
         "race": "RaceOrc",
@@ -64883,9 +64605,7 @@
     },
     {
       "Key": "arcane_frost",
-      "Build": "Arcane\u2013Frost",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Frost",
         "race": "RaceTroll",
@@ -65146,9 +64866,7 @@
     },
     {
       "Key": "arcane_frost",
-      "Build": "Arcane\u2013Frost",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Frost",
         "race": "RaceUndead",
@@ -65409,9 +65127,7 @@
     },
     {
       "Key": "arcane_frost",
-      "Build": "Arcane\u2013Frost",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Frost",
         "race": "RaceHuman",
@@ -65672,9 +65388,7 @@
     },
     {
       "Key": "arcane_frost",
-      "Build": "Arcane\u2013Frost",
       "Race": "Gnome",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Frost",
         "race": "RaceGnome",
@@ -65935,9 +65649,7 @@
     },
     {
       "Key": "arcane_frost",
-      "Build": "Arcane\u2013Frost",
       "Race": "High Order",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Frost",
         "race": "RaceSkyborneHighOrder",
@@ -66198,9 +65910,7 @@
     },
     {
       "Key": "fury_2h",
-      "Build": "2H Bloodthirst",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Arms",
         "race": "RaceOrc",
@@ -66523,9 +66233,7 @@
     },
     {
       "Key": "fury_2h",
-      "Build": "2H Bloodthirst",
       "Race": "Tauren",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Arms",
         "race": "RaceTauren",
@@ -66848,9 +66556,7 @@
     },
     {
       "Key": "fury_2h",
-      "Build": "2H Bloodthirst",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Arms",
         "race": "RaceUndead",
@@ -67173,9 +66879,7 @@
     },
     {
       "Key": "fury_2h",
-      "Build": "2H Bloodthirst",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Arms",
         "race": "RaceTroll",
@@ -67498,9 +67202,7 @@
     },
     {
       "Key": "fury_2h",
-      "Build": "2H Bloodthirst",
       "Race": "Windshaper",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Arms",
         "race": "RaceSkyborneWindshaper",
@@ -67823,9 +67525,7 @@
     },
     {
       "Key": "fury_2h",
-      "Build": "2H Bloodthirst",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Arms",
         "race": "RaceHuman",
@@ -68148,9 +67848,7 @@
     },
     {
       "Key": "fury_2h",
-      "Build": "2H Bloodthirst",
       "Race": "Dwarf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Arms",
         "race": "RaceDwarf",
@@ -68473,9 +68171,7 @@
     },
     {
       "Key": "fury_2h",
-      "Build": "2H Bloodthirst",
       "Race": "Gnome",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Arms",
         "race": "RaceGnome",
@@ -68798,9 +68494,7 @@
     },
     {
       "Key": "fury_2h",
-      "Build": "2H Bloodthirst",
       "Race": "Night Elf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Arms",
         "race": "RaceNightElf",
@@ -69123,9 +68817,7 @@
     },
     {
       "Key": "fury_2h",
-      "Build": "2H Bloodthirst",
       "Race": "High Order",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Arms",
         "race": "RaceSkyborneHighOrder",
@@ -69448,9 +69140,7 @@
     },
     {
       "Key": "retribution_physical",
-      "Build": "Physical Ret",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Physical Ret",
         "race": "RaceUndead",
@@ -69785,9 +69475,7 @@
     },
     {
       "Key": "retribution_physical",
-      "Build": "Physical Ret",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Physical Ret",
         "race": "RaceHuman",
@@ -70122,9 +69810,7 @@
     },
     {
       "Key": "retribution_physical",
-      "Build": "Physical Ret",
       "Race": "Dwarf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Physical Ret",
         "race": "RaceDwarf",
@@ -70459,9 +70145,7 @@
     },
     {
       "Key": "tank_warrior",
-      "Build": "Protection Warrior",
       "Race": "Orc",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Protection Warrior",
         "race": "RaceOrc",
@@ -71514,7 +71198,7 @@
                                 },
                                 "rhs": {
                                   "const": {
-                                    "val": "20"
+                                    "val": "45"
                                   }
                                 }
                               }
@@ -71696,7 +71380,7 @@
                                 },
                                 "rhs": {
                                   "const": {
-                                    "val": "20"
+                                    "val": "45"
                                   }
                                 }
                               }
@@ -71896,9 +71580,7 @@
     },
     {
       "Key": "tank_warrior",
-      "Build": "Protection Warrior",
       "Race": "Tauren",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Protection Warrior",
         "race": "RaceTauren",
@@ -72951,7 +72633,7 @@
                                 },
                                 "rhs": {
                                   "const": {
-                                    "val": "20"
+                                    "val": "30"
                                   }
                                 }
                               }
@@ -73133,7 +72815,7 @@
                                 },
                                 "rhs": {
                                   "const": {
-                                    "val": "20"
+                                    "val": "30"
                                   }
                                 }
                               }
@@ -73333,9 +73015,7 @@
     },
     {
       "Key": "tank_warrior",
-      "Build": "Protection Warrior",
       "Race": "Troll",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Protection Warrior",
         "race": "RaceTroll",
@@ -73387,7 +73067,7 @@
               "id": 920000307
             },
             {
-              "id": 920000316
+              "id": 920000318
             },
             {
               "id": 920000316
@@ -74388,7 +74068,7 @@
                                 },
                                 "rhs": {
                                   "const": {
-                                    "val": "20"
+                                    "val": "30"
                                   }
                                 }
                               }
@@ -74570,7 +74250,7 @@
                                 },
                                 "rhs": {
                                   "const": {
-                                    "val": "20"
+                                    "val": "30"
                                   }
                                 }
                               }
@@ -74770,9 +74450,7 @@
     },
     {
       "Key": "tank_warrior",
-      "Build": "Protection Warrior",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Protection Warrior",
         "race": "RaceUndead",
@@ -74824,17 +74502,17 @@
               "id": 920000307
             },
             {
-              "id": 920000316
+              "id": 920000318
             },
             {
               "id": 920000316
             },
             {
-              "id": 920000334,
-              "enchant": 1900
+              "id": 920000332,
+              "enchant": 803
             },
             {
-              "id": 920000384,
+              "id": 920000383,
               "enchant": 929
             },
             {
@@ -74949,7 +74627,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "31-0501-255333120230021351",
+        "talentsString": "35-0501-251333120230021351",
         "profession1": "Blacksmithing",
         "profession2": "Enchanting",
         "cooldowns": {},
@@ -76207,9 +75885,7 @@
     },
     {
       "Key": "tank_warrior",
-      "Build": "Protection Warrior",
       "Race": "Windshaper",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Protection Warrior",
         "race": "RaceSkyborneWindshaper",
@@ -76244,7 +75920,7 @@
               "enchant": 931
             },
             {
-              "id": 920000208
+              "id": 920000210
             },
             {
               "id": 920000246,
@@ -77262,7 +76938,7 @@
                                 },
                                 "rhs": {
                                   "const": {
-                                    "val": "20"
+                                    "val": "30"
                                   }
                                 }
                               }
@@ -77444,7 +77120,7 @@
                                 },
                                 "rhs": {
                                   "const": {
-                                    "val": "20"
+                                    "val": "30"
                                   }
                                 }
                               }
@@ -77644,9 +77320,7 @@
     },
     {
       "Key": "tank_warrior",
-      "Build": "Protection Warrior",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Protection Warrior",
         "race": "RaceHuman",
@@ -77823,7 +77497,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "31-0501-255333120230021351",
+        "talentsString": "35-0501-251333120230021351",
         "profession1": "Blacksmithing",
         "profession2": "Enchanting",
         "cooldowns": {},
@@ -79081,9 +78755,7 @@
     },
     {
       "Key": "tank_warrior",
-      "Build": "Protection Warrior",
       "Race": "Dwarf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Protection Warrior",
         "race": "RaceDwarf",
@@ -80136,7 +79808,7 @@
                                 },
                                 "rhs": {
                                   "const": {
-                                    "val": "20"
+                                    "val": "45"
                                   }
                                 }
                               }
@@ -80318,7 +79990,7 @@
                                 },
                                 "rhs": {
                                   "const": {
-                                    "val": "20"
+                                    "val": "45"
                                   }
                                 }
                               }
@@ -80518,9 +80190,7 @@
     },
     {
       "Key": "tank_warrior",
-      "Build": "Protection Warrior",
       "Race": "Night Elf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Protection Warrior",
         "race": "RaceNightElf",
@@ -80579,7 +80249,7 @@
             },
             {
               "id": 920000334,
-              "enchant": 1900
+              "enchant": 803
             },
             {
               "id": 920000384,
@@ -81573,7 +81243,7 @@
                                 },
                                 "rhs": {
                                   "const": {
-                                    "val": "20"
+                                    "val": "30"
                                   }
                                 }
                               }
@@ -81755,7 +81425,7 @@
                                 },
                                 "rhs": {
                                   "const": {
-                                    "val": "20"
+                                    "val": "30"
                                   }
                                 }
                               }
@@ -81955,9 +81625,7 @@
     },
     {
       "Key": "tank_warrior",
-      "Build": "Protection Warrior",
       "Race": "Gnome",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Protection Warrior",
         "race": "RaceGnome",
@@ -83010,7 +82678,7 @@
                                 },
                                 "rhs": {
                                   "const": {
-                                    "val": "20"
+                                    "val": "30"
                                   }
                                 }
                               }
@@ -83192,7 +82860,7 @@
                                 },
                                 "rhs": {
                                   "const": {
-                                    "val": "20"
+                                    "val": "30"
                                   }
                                 }
                               }
@@ -83392,9 +83060,7 @@
     },
     {
       "Key": "tank_warrior",
-      "Build": "Protection Warrior",
       "Race": "High Order",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Protection Warrior",
         "race": "RaceSkyborneHighOrder",
@@ -83429,7 +83095,7 @@
               "enchant": 931
             },
             {
-              "id": 920000208
+              "id": 920000210
             },
             {
               "id": 920000246,
@@ -84447,7 +84113,7 @@
                                 },
                                 "rhs": {
                                   "const": {
-                                    "val": "20"
+                                    "val": "30"
                                   }
                                 }
                               }
@@ -84629,7 +84295,7 @@
                                 },
                                 "rhs": {
                                   "const": {
-                                    "val": "20"
+                                    "val": "30"
                                   }
                                 }
                               }
@@ -84829,9 +84495,7 @@
     },
     {
       "Key": "protection_paladin",
-      "Build": "Protection Paladin",
       "Race": "Undead",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Player",
         "race": "RaceUndead",
@@ -85010,7 +84674,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "-5521513321301551-15002",
+        "talentsString": "-5520513321301551-15102",
         "profession1": "Blacksmithing",
         "profession2": "Engineering",
         "cooldowns": {},
@@ -85248,9 +84912,7 @@
     },
     {
       "Key": "protection_paladin",
-      "Build": "Protection Paladin",
       "Race": "Human",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Player",
         "race": "RaceHuman",
@@ -85429,7 +85091,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "-5521513321301551-15002",
+        "talentsString": "-5521513321301551-152",
         "profession1": "Blacksmithing",
         "profession2": "Engineering",
         "cooldowns": {},
@@ -85667,9 +85329,7 @@
     },
     {
       "Key": "protection_paladin",
-      "Build": "Protection Paladin",
       "Race": "Dwarf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Player",
         "race": "RaceDwarf",
@@ -85848,7 +85508,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "-5521513321301551-15002",
+        "talentsString": "-5520513321301551-15003",
         "profession1": "Blacksmithing",
         "profession2": "Engineering",
         "cooldowns": {},
@@ -86086,9 +85746,7 @@
     },
     {
       "Key": "feral_tank_druid",
-      "Build": "Bear",
       "Race": "Tauren",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Bear",
         "race": "RaceTauren",
@@ -86556,9 +86214,7 @@
     },
     {
       "Key": "feral_tank_druid",
-      "Build": "Bear",
       "Race": "Windshaper",
-      "Faction": "Horde",
       "BaselinePlayer": {
         "name": "Bear",
         "race": "RaceSkyborneWindshaper",
@@ -87026,9 +86682,7 @@
     },
     {
       "Key": "feral_tank_druid",
-      "Build": "Bear",
       "Race": "Night Elf",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Bear",
         "race": "RaceNightElf",
@@ -87496,9 +87150,7 @@
     },
     {
       "Key": "feral_tank_druid",
-      "Build": "Bear",
       "Race": "High Order",
-      "Faction": "Alliance",
       "BaselinePlayer": {
         "name": "Bear",
         "race": "RaceSkyborneHighOrder",

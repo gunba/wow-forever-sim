@@ -28,10 +28,13 @@ func (druid *Druid) registerShiftingPowerSpell() {
 				Duration: time.Duration(16-4*druid.Talents.ImprovedShiftingPower) * time.Second,
 			},
 		},
+		ExtraCastCondition: func(_ *core.Simulation, _ *core.Unit) bool {
+			return druid.CurrentEnergy() < druid.MaxEnergy()
+		},
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, _ *core.Spell) {
 			amount := 40.0
 			if druid.Equipment.Head().ID == WolfsheadHelm {
-				amount += 20
+				amount += 5
 			}
 			druid.AddEnergy(sim, amount, energy)
 		},

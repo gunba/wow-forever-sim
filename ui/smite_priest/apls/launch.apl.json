@@ -25,6 +25,19 @@
     },
     {
       "action": {
+        "condition": {
+          "cmp": {
+            "op": "OpLe",
+            "lhs": {
+              "remainingTime": {}
+            },
+            "rhs": {
+              "const": {
+                "val": "2.5s"
+              }
+            }
+          }
+        },
         "castSpell": {
           "spellId": {
             "spellId": 1316995

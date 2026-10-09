@@ -13,6 +13,7 @@ export function foreverTankSupport(playerClass: Class) {
 		debuffs: Debuffs.fromJson({
 			...Support.debuffs,
 			exposeArmor: warrior ? 'TristateEffectMissing' : Support.debuffs.exposeArmor,
+			faerieFire: playerClass === Class.ClassDruid ? false : Support.debuffs.faerieFire,
 		}),
 	};
 }

@@ -188,12 +188,28 @@
           "icon": "ability_hunter_beastsoothe",
           "iconSource": "classic",
           "description": "Revive Pet's casting time is reduced by {0} sec, mana cost is reduced by {1}%, and increases the health your pet returns with by an additional {2}%.",
-          "ranks": [[3, 20, 15], [6, 40, 30]],
-          "ranksObserved": [1],
+          "ranks": [
+            [
+              3,
+              20,
+              15
+            ],
+            [
+              6,
+              40,
+              30
+            ]
+          ],
+          "ranksObserved": [
+            1
+          ],
           "ranksSource": "classic-prior",
           "ranksPrior": {
             "classicTalentId": 1625,
-            "classicSpellIds": [24443, 19575],
+            "classicSpellIds": [
+              24443,
+              19575
+            ],
             "match": "exact-name",
             "similarity": 1.0
           },
@@ -209,6 +225,19 @@
             "reviewed": true,
             "reviewedBy": "data-audit",
             "reviewedAt": "2026-09-13T00:00:00Z"
+          },
+          "currentEvidenceOverlay": {
+            "build": "1.60.1.70291",
+            "authority": "Current source UI with pinned client DB2/official overlay, not a replacement video observation",
+            "sourceRows": {},
+            "engineCoverage": {
+              "status": "not-simulated",
+              "scope": "No Hunter Revive Pet spell or ImprovedRevivePet talent implementation is registered. Shared pet casting/CC support does not implement this talent."
+            },
+            "sourceUrls": [
+              "https://wago.tools/db2/SpellEffect?build=1.60.1.70291",
+              "https://us.forums.blizzard.com/en/wow/t/2360696/5"
+            ]
           }
         },
         {
@@ -380,8 +409,15 @@
           "icon": "ability_devour",
           "iconSource": "classic",
           "description": "Command your pet to Stun the target for {0} sec on its next successful attack, which also gains {1}% increased critical strike chance. Generates high threat.",
-          "ranks": [[3, 100]],
-          "ranksObserved": [1],
+          "ranks": [
+            [
+              3,
+              100
+            ]
+          ],
+          "ranksObserved": [
+            1
+          ],
           "ranksSource": "observed",
           "requires": [
             {
@@ -401,6 +437,19 @@
             "reviewedBy": "data-audit",
             "reviewedAt": "2026-09-13T00:00:00Z",
             "note": "prerequisite from tree arrow (stage 7): Bestial Swiftness at rank 1 = its max rank (Classic rule; rank-0 tooltips do not list talent prerequisites)"
+          },
+          "currentEvidenceOverlay": {
+            "build": "1.60.1.70291",
+            "authority": "Current source UI with pinned client DB2/official overlay, not a replacement video observation",
+            "sourceRows": {},
+            "engineCoverage": {
+              "status": "partial",
+              "scope": "Next successful pet attack receives100 percentage points of crit chance. The source stun/high-threat payload is not implemented."
+            },
+            "sourceUrls": [
+              "https://wago.tools/db2/SpellEffect?build=1.60.1.70291",
+              "https://us.forums.blizzard.com/en/wow/t/2360696/5"
+            ]
           }
         },
         {
@@ -412,8 +461,19 @@
           "icon": "spell_nature_abolishmagic",
           "iconSource": "classic",
           "description": "Increases the Focus regeneration of your pets by {0}% and allows {1}% of your Mana regeneration to continue while casting.",
-          "ranks": [[10, 25], [20, 50]],
-          "ranksObserved": [1],
+          "ranks": [
+            [
+              10,
+              25
+            ],
+            [
+              20,
+              50
+            ]
+          ],
+          "ranksObserved": [
+            1
+          ],
           "ranksSource": "extrapolated",
           "ranksNote": "Classic match hunter/beast-mastery/Bestial Discipline (talent 1390) has no alignable slots; proportional x2..x2 of rank 1 assumed.",
           "source": {
@@ -425,6 +485,19 @@
             "confidence": 1.0,
             "reader": "Qwen3VL-4B-Instruct-Q4_K_M+tooltip-v3",
             "reviewed": false
+          },
+          "currentEvidenceOverlay": {
+            "build": "1.60.1.70291",
+            "authority": "Current source UI with pinned client DB2/official overlay, not a replacement video observation",
+            "sourceRows": {},
+            "engineCoverage": {
+              "status": "implemented",
+              "scope": "Pet focus regeneration10/20% and owner while-casting mana regeneration25/50% are implemented; no new numerical overlay."
+            },
+            "sourceUrls": [
+              "https://wago.tools/db2/SpellEffect?build=1.60.1.70291",
+              "https://us.forums.blizzard.com/en/wow/t/2360696/5"
+            ]
           }
         },
         {
@@ -553,13 +626,37 @@
           "maxRank": 5,
           "icon": "spell_frost_stun",
           "iconSource": "classic",
-          "description": "Gives your Concussive Shot a {0}% chance to stun the target for 3 sec.",
-          "ranks": [[4], [8], [12], [16], [20]],
-          "ranksObserved": [1],
+          "description": "Gives your Concussive Shot a {0}% chance to stun the target for 3 sec. Simulation: stun eligibility and provisional diminishing returns are separate target opt-ins.",
+          "ranks": [
+            [
+              4
+            ],
+            [
+              8
+            ],
+            [
+              12
+            ],
+            [
+              16
+            ],
+            [
+              20
+            ]
+          ],
+          "ranksObserved": [
+            1
+          ],
           "ranksSource": "classic-prior",
           "ranksPrior": {
             "classicTalentId": 1341,
-            "classicSpellIds": [19407, 19412, 19413, 19414, 19415],
+            "classicSpellIds": [
+              19407,
+              19412,
+              19413,
+              19414,
+              19415
+            ],
             "match": "exact-name",
             "similarity": 1.0
           },
@@ -573,6 +670,47 @@
             "confidence": 1.0,
             "reader": "Qwen3VL-4B-Instruct-Q4_K_M+tooltip-v3",
             "reviewed": false
+          },
+          "priorPresentation": {
+            "name": "Improved Concussive Shot",
+            "description": "Gives your Concussive Shot a {0}% chance to stun the target for 3 sec.",
+            "ranks": [
+              [
+                4
+              ],
+              [
+                8
+              ],
+              [
+                12
+              ],
+              [
+                16
+              ],
+              [
+                20
+              ]
+            ],
+            "ranksSource": "classic-prior",
+            "ranksNote": "Classic hunter/marksmanship/Improved Concussive Shot (talent 1341): ranks copied."
+          },
+          "currentEvidenceOverlay": {
+            "build": "1.60.1.70291",
+            "authority": "Current source UI with pinned client DB2/official overlay, not a replacement video observation",
+            "sourceRows": {
+              "traitDefinition": 134477,
+              "curve": 82813,
+              "spellId": 19410
+            },
+            "engineCoverage": {
+              "status": "implemented",
+              "scope": "Landed Concussive Shot has4/8/12/16/20% chance for3s stun on explicitly eligible targets; optional shared proc-stun DR."
+            },
+            "sourceUrls": [
+              "https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.70291",
+              "https://wago.tools/db2/SpellEffect?build=1.60.1.70291",
+              "https://us.forums.blizzard.com/en/wow/t/2360696/5"
+            ]
           }
         },
         {
@@ -1060,11 +1198,29 @@
           "maxRank": 5,
           "icon": "spell_nature_stranglevines",
           "iconSource": "classic",
-          "description": "When your traps are triggered, all affected targets are Entrapped, preventing them from moving for {0} sec.",
-          "ranks": [[1], [1], [1], [1], [1]],
-          "ranksObserved": [1],
+          "description": "When your traps are initially triggered, all affected targets are Entrapped, preventing them from moving for {0} sec. Simulation: root eligibility and provisional diminishing returns are separate target opt-ins.",
+          "ranks": [
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ],
+            [
+              4
+            ],
+            [
+              5
+            ]
+          ],
+          "ranksObserved": [
+            1
+          ],
           "ranksSource": "manual",
-          "ranksNote": "needs manual ranks: Classic hunter/survival/Entrapment (talent 1304) has 5/10/15/20/25 without unit where Forever rank 1 has 1 sec; units differ; ranks 2..5 are copies of rank 1.",
+          "ranksNote": "Current presentation is a manually applied 1.60.1.70291 primary-client/official overlay; original observation/prior values remain in priorPresentation and source.",
           "source": {
             "kind": "video",
             "video": "DxtVEhjyROU",
@@ -1074,6 +1230,47 @@
             "confidence": 1.0,
             "reader": "Qwen3VL-4B-Instruct-Q4_K_M+tooltip-v3",
             "reviewed": false
+          },
+          "priorPresentation": {
+            "name": "Entrapment",
+            "description": "When your traps are triggered, all affected targets are Entrapped, preventing them from moving for {0} sec.",
+            "ranks": [
+              [
+                1
+              ],
+              [
+                1
+              ],
+              [
+                1
+              ],
+              [
+                1
+              ],
+              [
+                1
+              ]
+            ],
+            "ranksSource": "manual",
+            "ranksNote": "needs manual ranks: Classic hunter/survival/Entrapment (talent 1304) has 5/10/15/20/25 without unit where Forever rank 1 has 1 sec; units differ; ranks 2..5 are copies of rank 1."
+          },
+          "currentEvidenceOverlay": {
+            "build": "1.60.1.70291",
+            "authority": "Current source UI with pinned client DB2/official overlay, not a replacement video observation",
+            "sourceRows": {
+              "traitDefinition": 134459,
+              "curve": 82791,
+              "spellId": 19185
+            },
+            "engineCoverage": {
+              "status": "partial",
+              "scope": "1/2/3/4/5s root on initial successful trap activation only; no field/pulse model; eligibility/DR separately opt in."
+            },
+            "sourceUrls": [
+              "https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.70291",
+              "https://wago.tools/db2/SpellEffect?build=1.60.1.70291",
+              "https://us.forums.blizzard.com/en/wow/t/2360696/5"
+            ]
           }
         },
         {
@@ -1145,17 +1342,35 @@
           "icon": "crop-improved-wing-clip",
           "iconSource": "crop",
           "iconCrop": "data/review/hunter/survival/improved-wing-clip.icon.png",
-          "description": "Gives your Wing Clip ability a {0}% chance to immobilize the target for 5 sec.",
-          "ranks": [[7], [14], [21]],
-          "ranksObserved": [1],
-          "ranksSource": "classic-prior",
+          "description": "Gives your Wing Clip ability a {0}% chance to immobilize the target for 5 sec. Simulation: control requires an explicitly eligible target; the additional lower-rank proc penalty is unverified and not modeled.",
+          "ranks": [
+            [
+              7
+            ],
+            [
+              13
+            ],
+            [
+              20
+            ]
+          ],
+          "ranksObserved": [
+            1
+          ],
+          "ranksSource": "manual",
           "ranksPrior": {
             "classicTalentId": 1305,
-            "classicSpellIds": [19228, 19232, 19233, 19234, 19235],
+            "classicSpellIds": [
+              19228,
+              19232,
+              19233,
+              19234,
+              19235
+            ],
             "match": "exact-name",
             "similarity": 1.0
           },
-          "ranksNote": "Classic hunter/survival/Improved Wing Clip (talent 1305): Classic 4/8/12/16/20 is proportional, Classic has 5 ranks; Forever rank 1 is 7: scaled proportionally (7 x rank). Rounding: rank 3 21 may read 20 (values above are the raw scaled numbers).",
+          "ranksNote": "Current presentation is a manually applied 1.60.1.70291 primary-client/official overlay; original observation/prior values remain in priorPresentation and source.",
           "source": {
             "kind": "video",
             "video": "DxtVEhjyROU",
@@ -1165,6 +1380,41 @@
             "confidence": 1.0,
             "reader": "Qwen3VL-4B-Instruct-Q4_K_M+tooltip-v3",
             "reviewed": false
+          },
+          "priorPresentation": {
+            "name": "Improved Wing Clip",
+            "description": "Gives your Wing Clip ability a {0}% chance to immobilize the target for 5 sec.",
+            "ranks": [
+              [
+                7
+              ],
+              [
+                14
+              ],
+              [
+                21
+              ]
+            ],
+            "ranksSource": "classic-prior",
+            "ranksNote": "Classic hunter/survival/Improved Wing Clip (talent 1305): Classic 4/8/12/16/20 is proportional, Classic has 5 ranks; Forever rank 1 is 7: scaled proportionally (7 x rank). Rounding: rank 3 21 may read 20 (values above are the raw scaled numbers)."
+          },
+          "currentEvidenceOverlay": {
+            "build": "1.60.1.70291",
+            "authority": "Current source UI with pinned client DB2/official overlay, not a replacement video observation",
+            "sourceRows": {
+              "traitDefinition": 134455,
+              "curve": 82786,
+              "spellId": 19229
+            },
+            "engineCoverage": {
+              "status": "partial",
+              "scope": "7/13/20% on highest trained registered Wing Clip,5s root; no DR in source mask; unspecified downrank penalty not implemented."
+            },
+            "sourceUrls": [
+              "https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.70291",
+              "https://wago.tools/db2/SpellEffect?build=1.60.1.70291",
+              "https://us.forums.blizzard.com/en/wow/t/2360696/5"
+            ]
           }
         },
         {

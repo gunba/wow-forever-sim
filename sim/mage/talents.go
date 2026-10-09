@@ -92,6 +92,7 @@ func (mage *Mage) applyArcaneTalents() {
 }
 
 func (mage *Mage) applyFireTalents() {
+	mage.applyImpact()
 	mage.applyIgnite()
 	mage.applyImprovedScorch()
 	mage.applyMasterOfElements()
@@ -140,6 +141,44 @@ func (mage *Mage) applyFireTalents() {
 			}
 		})
 	}
+}
+
+// Client 1.60.1.70291: node105792/definition135322 curve83091 is3/7/10.
+// Spell11103 triggers the2s stun12355 on direct hits (proc mask0x15550,
+// no periodic flag). CAN_PROC_FROM_PROCS permits direct Mage-family fire procs.
+// https://us.forums.blizzard.com/en/wow/t/2360696/5
+func (mage *Mage) applyImpact() {
+	if !mage.Env.IsForever() || mage.Talents.Impact == 0 {
+		return
+	}
+	chance := []float64{0, .03, .07, .10}[mage.Talents.Impact]
+	stuns := mage.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
+		return target.RegisterCrowdControlAura(core.Aura{
+			Label:    "Impact-" + mage.Label,
+			ActionID: core.ActionID{SpellID: 12355},
+			Duration: 2 * time.Second,
+			OnGain: func(aura *core.Aura, sim *core.Simulation) {
+				aura.Unit.AddStun(sim)
+			},
+			OnExpire: func(aura *core.Aura, sim *core.Simulation) {
+				aura.Unit.RemoveStun(sim)
+			},
+		}, core.CrowdControlDRStunProc)
+	})
+	core.MakePermanent(mage.RegisterAura(core.Aura{
+		Label:    "Impact Trigger",
+		ActionID: core.ActionID{SpellID: 11103},
+		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+			if !result.Landed() || !result.Target.PseudoStats.CanBeStunned ||
+				!spell.Flags.Matches(SpellFlagMage) || !spell.SpellSchool.Matches(core.SpellSchoolFire) ||
+				!spell.ProcMask.Matches(core.ProcMaskSpellOrSpellProc|core.ProcMaskSpellDamageProc) {
+				return
+			}
+			if stun := stuns.Get(result.Target); stun != nil && sim.Proc(chance, "Impact") {
+				result.Target.ApplyCrowdControl(sim, stun, 2*time.Second, core.CrowdControlDRStunProc)
+			}
+		},
+	}))
 }
 
 func (mage *Mage) applyFrostTalents() {

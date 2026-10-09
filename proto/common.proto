@@ -563,7 +563,7 @@ enum SaygesFortune {
 }
 
 // Buffs that affect the entire raid.
-// NextIndex: 40
+// NextIndex: 44
 message RaidBuffs {
 	reserved 36, 37, 38, 39;
 	reserved "atiesh_druid", "atiesh_mage", "atiesh_priest", "atiesh_warlock";
@@ -627,6 +627,12 @@ message RaidBuffs {
 	TristateEffect retribution_aura = 25;
 	bool sanctity_aura = 33;
 	int32 battle_squawk = 34;
+	// Optional explicit simulated caster; missing/Unknown means external.
+	UnitReference thorns_provider = 40;
+	UnitReference retribution_aura_provider = 41;
+	// Declared external-provider damage spell power, default0; not receiver SP.
+	double thorns_provider_spell_power = 42;
+	double retribution_aura_provider_spell_power = 43;
 }
 
 // Buffs that affect a single party.
@@ -660,6 +666,10 @@ message PartyBuffs {
 	// Provisional Forever model: main-hand fire damage proportional to base
 	// weapon speed, with no spell-power contribution.
 	bool flametongue_totem = 20;
+	UnitReference thorns_provider = 21;
+	UnitReference retribution_aura_provider = 22;
+	double thorns_provider_spell_power = 23;
+	double retribution_aura_provider_spell_power = 24;
 }
 
 // These are usually individual actions taken by other Characters.
@@ -793,6 +803,24 @@ message TargetInput {
 	repeated string enum_options = 7;
 }
 
+// Explicit provisional scenarios, not measured hidden server formulas.
+message ForeverIncomingRageModel {
+	optional double coefficient = 1;
+	optional double reference_armor_override = 2;
+	optional double expected_health_override = 3;
+}
+message ForeverRevelationModel {
+	bool enabled = 1;
+	double base_chance = 2;
+	double crit_exponent = 3;
+	bool trigger_on_miss = 4;
+}
+enum CrowdControlDrResetAnchor {
+	CrowdControlDrResetAnchorDefault = 0;
+	CrowdControlDrResetAfterEffectEnd = 1;
+	CrowdControlDrResetAfterApplication = 2;
+}
+
 message Target {
 	// The in-game NPC ID.
 	int32 id = 1;
@@ -817,6 +845,13 @@ message Target {
 
 	// Custom Target AI parameters
 	repeated TargetInput target_inputs = 14;
+	// Explicit encounter opt-ins; existing targets remain CC-ineligible.
+	bool can_be_stunned = 15;
+	bool can_be_rooted = 16;
+	bool can_be_slowed = 17;
+	// Separate opt-in convention; eligibility alone does not imply DR.
+	bool use_crowd_control_diminishing_returns = 18;
+	CrowdControlDrResetAnchor crowd_control_dr_reset_anchor = 19;
 }
 
 message Encounter {
@@ -875,7 +910,7 @@ message SimDatabase {
 }
 
 // Contains only the Item info needed by the sim.
-// NextIndex: 20
+// NextIndex: 22
 message SimItem {
 	int32 id = 1;
 	repeated Class class_allowlist = 17;
@@ -897,6 +932,8 @@ message SimItem {
 	string set_name = 14;
 	int32 set_id = 18;
 	repeated double weapon_skills = 15;
+	int32 ilvl = 20;
+	bool unique = 21;
 }
 
 // Extra enum for describing which items are eligible for an enchant, when
@@ -913,6 +950,9 @@ enum EnchantType {
 message SimEnchant {
 	int32 effect_id = 1;
 	repeated double stats = 2;
+	int32 required_level = 3;
+	int32 item_level_min = 4;
+	repeated ArmorType armor_types = 5;
 }
 
 message UnitReference {

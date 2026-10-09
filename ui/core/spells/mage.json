@@ -287,9 +287,9 @@
 	"116": {
 		"ability": "Frostbolt",
 		"file": "sim/mage/frostbolt.go",
-		"note": "Beta client 1.60.1.69893: lower damage from rank 3 up (rank 11 515-555 -> 457-493) and the low ranks lost their downranking penalty (rank 1 coefficient .163 -> .407). Cast times and costs are Classic's.",
 		"source": "forever",
-		"tooltip": "25 Mana\n1.5 sec cast\nLaunches a bolt of frost at the enemy, causing 20 to 22 Frost damage and slowing movement speed by 40%."
+		"tooltip": "Frostbolt Rank 1\n25 Mana before talent/other cost modifiers\nLevel60 source-model base: 18.8 to 20.8 Frost damage (+0.407 SP). Slows movement by40% for9sec.",
+		"note": "Client1.60.1.70291 SpellEffect 679001, SpellLevels: BP=19, variance=0.105263, PPL=0.2, learn=4, growth cap=8. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"12042": {
 		"ability": "Arcane Power",
@@ -438,16 +438,16 @@
 	"133": {
 		"ability": "Fireball",
 		"file": "sim/mage/fireball.go",
-		"note": "Beta client 1.60.1.69893: lower damage at every rank from 2 up (rank 12 596-760 -> 425-541, dot 76 -> 60) and no downranking penalty (rank 1 coefficient .123 -> .429). Cast times and costs are Classic's.",
 		"source": "forever",
-		"tooltip": "30 Mana\n1.5 sec cast\nHurls a fiery ball that causes 16 to 25 Fire damage and an additional 2 Fire damage over 4 sec."
+		"tooltip": "Fireball Rank 1\n30 Mana before talent/other cost modifiers\nLevel60 source-model base: 14.8 to 22.8 Fire damage (+0.429 SP). Another2 Fire damage over4sec.",
+		"note": "Client1.60.1.70291 SpellEffect 679020, SpellLevels: BP=18, variance=0.444444, PPL=0.2, learn=1, growth cap=5. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5 The direct-rank update preserves source DoT total2; source duration4s and2000ms aura period require2 ticks. No periodic SP coefficient. Forever low-rank cadence is source-corrected; Classic retains its prior four-tick branch."
 	},
 	"143": {
 		"ability": "Fireball",
 		"file": "sim/mage/fireball.go",
-		"note": "Beta client 1.60.1.69893: lower damage at every rank from 2 up (rank 12 596-760 -> 425-541, dot 76 -> 60) and no downranking penalty (rank 1 coefficient .123 -> .429). Cast times and costs are Classic's.",
 		"source": "forever",
-		"tooltip": "45 Mana\n2 sec cast\nHurls a fiery ball that causes 32 to 47 Fire damage and an additional 3 Fire damage over 6 sec."
+		"tooltip": "Fireball Rank 2\n45 Mana before talent/other cost modifiers\nLevel60 source-model base: 27.305263 to 39.094737 Fire damage (+0.571 SP). Another3 Fire damage over6sec.",
+		"note": "Client1.60.1.70291 SpellEffect 679022, SpellLevels: BP=32, variance=0.368421, PPL=0.3, learn=6, growth cap=10. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5 The direct-rank update preserves source DoT total3; source duration6s and2000ms aura period require3 ticks. No periodic SP coefficient. Forever low-rank cadence is source-corrected; Classic retains its prior four-tick branch."
 	},
 	"1449": {
 		"ability": "Arcane Explosion",
@@ -459,9 +459,9 @@
 	"145": {
 		"ability": "Fireball",
 		"file": "sim/mage/fireball.go",
-		"note": "Beta client 1.60.1.69893: lower damage at every rank from 2 up (rank 12 596-760 -> 425-541, dot 76 -> 60) and no downranking penalty (rank 1 coefficient .123 -> .429). Cast times and costs are Classic's.",
 		"source": "forever",
-		"tooltip": "65 Mana\n2.5 sec cast\nHurls a fiery ball that causes 48 to 65 Fire damage and an additional 6 Fire damage over 6 sec."
+		"tooltip": "Fireball Rank 3\n65 Mana before talent/other cost modifiers\nLevel60 source-model base: 45.304762 to 61.495238 Fire damage (+0.714 SP). Another6 Fire damage over6sec.",
+		"note": "Client1.60.1.70291 SpellEffect 679024, SpellLevels: BP=51, variance=0.31746, PPL=0.6, learn=12, growth cap=16. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5 The direct-rank update preserves source DoT total6; source duration6s and2000ms aura period require3 ticks. No periodic SP coefficient. Forever low-rank cadence is source-corrected; Classic retains its prior four-tick branch."
 	},
 	"18809": {
 		"ability": "Pyroblast",
@@ -473,9 +473,9 @@
 	"205": {
 		"ability": "Frostbolt",
 		"file": "sim/mage/frostbolt.go",
-		"note": "Beta client 1.60.1.69893: lower damage from rank 3 up (rank 11 515-555 -> 457-493) and the low ranks lost their downranking penalty (rank 1 coefficient .163 -> .407). Cast times and costs are Classic's.",
 		"source": "forever",
-		"tooltip": "35 Mana\n1.8 sec cast\nLaunches a bolt of frost at the enemy, causing 33 to 38 Frost damage and slowing movement speed by 40%."
+		"tooltip": "Frostbolt Rank 2\n35 Mana before talent/other cost modifiers\nLevel60 source-model base: 28.442424 to 31.957576 Frost damage (+0.489 SP). Slows movement by40% for9sec.",
+		"note": "Client1.60.1.70291 SpellEffect 679600, SpellLevels: BP=29, variance=0.121212, PPL=0.3, learn=8, growth cap=12. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"2120": {
 		"ability": "Flamestrike",
@@ -625,9 +625,9 @@
 	"3140": {
 		"ability": "Fireball",
 		"file": "sim/mage/fireball.go",
-		"note": "Beta client 1.60.1.69893: lower damage at every rank from 2 up (rank 12 596-760 -> 425-541, dot 76 -> 60) and no downranking penalty (rank 1 coefficient .123 -> .429). Cast times and costs are Classic's.",
 		"source": "forever",
-		"tooltip": "95 Mana\n3 sec cast\nHurls a fiery ball that causes 66 to 91 Fire damage and an additional 12 Fire damage over 8 sec."
+		"tooltip": "Fireball Rank 4\n95 Mana before talent/other cost modifiers\nLevel60 source-model base: 68.28 to 92.92 Fire damage (+0.857 SP). Another12 Fire damage over8sec.",
+		"note": "Client1.60.1.70291 SpellEffect 682174, SpellLevels: BP=77, variance=0.32, PPL=0.9, learn=18, growth cap=22. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5 The direct-rank update preserves source DoT total12; source duration8s and2000ms aura period require4 ticks. No periodic SP coefficient. Forever low-rank cadence is source-corrected; Classic retains its prior four-tick branch."
 	},
 	"44404": {
 		"ability": "Missile Barrage",
@@ -659,23 +659,23 @@
 	"5143": {
 		"ability": "Arcane Missiles",
 		"file": "sim/mage/arcane_missiles.go",
-		"note": "Beta client 1.60.1.69893, from the missile spells each rank triggers: less damage per missile (rank 8 230 -> 209) but a .286 coefficient per missile at every rank, up from .24.",
 		"source": "forever",
-		"tooltip": "85 Mana\nChanneled\nLaunches Arcane Missiles at the enemy, causing 26 Arcane damage each second for 3 sec."
+		"tooltip": "Arcane Missiles Rank 1\n85 Mana before talent/other cost modifiers\nLevel60 source-model base per missile: 24.8 to 24.8 Arcane damage (+0.286 SP). 3 missiles over 3 seconds before haste/Missile Barrage.",
+		"note": "Client1.60.1.70291 SpellEffect 684878, SpellLevels: BP=24, variance=0, PPL=0.2, learn=8, growth cap=12. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5 Damage child7268 is recorded under parent5143's tagged tick action, not a separately selectable child. Missile Barrage halves tick/channel time and makes the parent free; no unverified extra15% trigger bonus is adopted."
 	},
 	"5144": {
 		"ability": "Arcane Missiles",
 		"file": "sim/mage/arcane_missiles.go",
-		"note": "Beta client 1.60.1.69893, from the missile spells each rank triggers: less damage per missile (rank 8 230 -> 209) but a .286 coefficient per missile at every rank, up from .24.",
 		"source": "forever",
-		"tooltip": "140 Mana\nChanneled\nLaunches Arcane Missiles at the enemy, causing 33 Arcane damage each second for 4 sec."
+		"tooltip": "Arcane Missiles Rank 2\n140 Mana before talent/other cost modifiers\nLevel60 source-model base per missile: 35.2 to 35.2 Arcane damage (+0.286 SP). 4 missiles over 4 seconds before haste/Missile Barrage.",
+		"note": "Client1.60.1.70291 SpellEffect 684879, SpellLevels: BP=34, variance=0, PPL=0.3, learn=16, growth cap=20. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5 Damage child7269 is recorded under parent5144's tagged tick action, not a separately selectable child. Missile Barrage halves tick/channel time and makes the parent free; no unverified extra15% trigger bonus is adopted."
 	},
 	"5145": {
 		"ability": "Arcane Missiles",
 		"file": "sim/mage/arcane_missiles.go",
-		"note": "Beta client 1.60.1.69893, from the missile spells each rank triggers: less damage per missile (rank 8 230 -> 209) but a .286 coefficient per missile at every rank, up from .24.",
 		"source": "forever",
-		"tooltip": "235 Mana\nChanneled\nLaunches Arcane Missiles at the enemy, causing 46 Arcane damage each second for 5 sec."
+		"tooltip": "Arcane Missiles Rank 3\n235 Mana before talent/other cost modifiers\nLevel60 source-model base per missile: 48.6 to 48.6 Arcane damage (+0.286 SP). 5 missiles over 5 seconds before haste/Missile Barrage.",
+		"note": "Client1.60.1.70291 SpellEffect 684897, SpellLevels: BP=47, variance=0, PPL=0.4, learn=24, growth cap=28. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5 Damage child7270 is recorded under parent5145's tagged tick action, not a separately selectable child. Missile Barrage halves tick/channel time and makes the parent free; no unverified extra15% trigger bonus is adopted."
 	},
 	"6117": {
 		"ability": "Mage Armor",
@@ -706,23 +706,23 @@
 	"7322": {
 		"ability": "Frostbolt",
 		"file": "sim/mage/frostbolt.go",
-		"note": "Beta client 1.60.1.69893: lower damage from rank 3 up (rank 11 515-555 -> 457-493) and the low ranks lost their downranking penalty (rank 1 coefficient .163 -> .407). Cast times and costs are Classic's.",
 		"source": "forever",
-		"tooltip": "65 Mana\n2.6 sec cast\nLaunches a bolt of frost at the enemy, causing 61 to 68 Frost damage and slowing movement speed by 40%."
+		"tooltip": "Frostbolt Rank 4\n65 Mana before talent/other cost modifiers\nLevel60 source-model base: 69.610257 to 76.789743 Frost damage (+0.706 SP). Slows movement by40% for9sec.",
+		"note": "Client1.60.1.70291 SpellEffect 686795, SpellLevels: BP=70, variance=0.102564, PPL=0.8, learn=20, growth cap=24. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"837": {
 		"ability": "Frostbolt",
 		"file": "sim/mage/frostbolt.go",
-		"note": "Beta client 1.60.1.69893: lower damage from rank 3 up (rank 11 515-555 -> 457-493) and the low ranks lost their downranking penalty (rank 1 coefficient .163 -> .407). Cast times and costs are Classic's.",
 		"source": "forever",
-		"tooltip": "50 Mana\n2.2 sec cast\nLaunches a bolt of frost at the enemy, causing 46 to 53 Frost damage and slowing movement speed by 40%."
+		"tooltip": "Frostbolt Rank 3\n50 Mana before talent/other cost modifiers\nLevel60 source-model base: 45.444444 to 50.555556 Frost damage (+0.597 SP). Slows movement by40% for9sec.",
+		"note": "Client1.60.1.70291 SpellEffect 679405, SpellLevels: BP=46, variance=0.111111, PPL=0.5, learn=14, growth cap=18. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"8400": {
 		"ability": "Fireball",
 		"file": "sim/mage/fireball.go",
-		"note": "Beta client 1.60.1.69893: lower damage at every rank from 2 up (rank 12 596-760 -> 425-541, dot 76 -> 60) and no downranking penalty (rank 1 coefficient .123 -> .429). Cast times and costs are Classic's.",
 		"source": "forever",
-		"tooltip": "140 Mana\n3.5 sec cast\nHurls a fiery ball that causes 98 to 130 Fire damage and an additional 16 Fire damage over 8 sec."
+		"tooltip": "Fireball Rank 5\n140 Mana before talent/other cost modifiers\nLevel60 source-model base: 107.931288 to 143.268712 Fire damage (+1 SP). Another16 Fire damage over8sec.",
+		"note": "Client1.60.1.70291 SpellEffect 687382, SpellLevels: BP=120, variance=0.294479, PPL=1.4, learn=24, growth cap=28. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5 The direct-rank update preserves source DoT total16; source duration8s and2000ms aura period require4 ticks. No periodic SP coefficient. Forever low-rank cadence is source-corrected; Classic retains its prior four-tick branch."
 	},
 	"8401": {
 		"ability": "Fireball",
@@ -741,9 +741,9 @@
 	"8406": {
 		"ability": "Frostbolt",
 		"file": "sim/mage/frostbolt.go",
-		"note": "Beta client 1.60.1.69893: lower damage from rank 3 up (rank 11 515-555 -> 457-493) and the low ranks lost their downranking penalty (rank 1 coefficient .163 -> .407). Cast times and costs are Classic's.",
 		"source": "forever",
-		"tooltip": "100 Mana\n3 sec cast\nLaunches a bolt of frost at the enemy, causing 97 to 105 Frost damage and slowing movement speed by 40%."
+		"tooltip": "Frostbolt Rank 5\n100 Mana before talent/other cost modifiers\nLevel60 source-model base: 104.472727 to 113.927273 Frost damage (+0.814 SP). Slows movement by40% for9sec.",
+		"note": "Client1.60.1.70291 SpellEffect 687433, SpellLevels: BP=104, variance=0.090909, PPL=1.3, learn=26, growth cap=30. The model retains BP +/- BP*variance/2 + capped level growth as floating values; displayed decimals are not a claimed server integer-rounding rule. SP coefficient is unchanged; AP/RAP coefficient is0. Classic and unchanged higher ranks retain their prior model. https://us.forums.blizzard.com/en/wow/t/2360696/5"
 	},
 	"8407": {
 		"ability": "Frostbolt",
@@ -849,5 +849,19 @@
 		"note": "Beta client 1.60.1.69893: about 30% less damage at every rank (rank 7 237-280 -> 166-197); coefficient .429, cost and cast unchanged.",
 		"source": "forever",
 		"tooltip": "100 Mana\n1.5 sec cast\nScorch the enemy for 89 to 106 Fire damage."
+	},
+	"11103": {
+		"ability": "Impact",
+		"file": "sim/mage/talents.go",
+		"source": "forever",
+		"tooltip": "Passive\nDirect landed Mage Fire hits have a3/7/10% chance to stun for2sec on explicitly stun-eligible targets. Periodic Flamestrike damage cannot trigger it.",
+		"note": "70291 current tree1112 node105792, definition135322, curve83091=3/7/10 (not prior3/6/9). Aura11103 triggers12355; proc flags exclude periodic damage and allow eligible triggered Mage hits. No default boss stun. Optional shared proc-stun DR is source group10; configured reset-anchor convention/target scope are not decoded server policy."
+	},
+	"12355": {
+		"ability": "Impact stun",
+		"file": "sim/mage/talents.go",
+		"source": "forever",
+		"tooltip": "Impact:2sec stun, only on explicitly eligible targets.",
+		"note": "SpellDuration39=2000ms; SpellCategories diminish mask512 maps to proc-stun group10. Shared DR15s/.5/immunity after3 is sourced; optional reset-after-effect-end versus reset-after-application is an explicit model convention. Classic Impact remains unmodeled."
 	}
 }

@@ -1,6 +1,8 @@
 package hunter
 
 import (
+	"time"
+
 	"github.com/wowsims/classic/sim/core"
 )
 
@@ -39,7 +41,16 @@ func (hunter *Hunter) getWingClipConfig(rank int) core.SpellConfig {
 		ThreatMultiplier: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
+			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
+			if hunter.Env.IsForever() && result.Landed() {
+				hunter.slowTarget(sim, target, spell.SpellID, 10*time.Second, []float64{0, .5, .55, .6}[rank])
+				// Trait134455 / curve82786 is 7/13/20%, not 7/14/21%.
+				// The registered level-60 ability is max rank; the server's
+				// additional downrank proc penalty is not exported/assumed.
+				if target.PseudoStats.CanBeRooted && sim.Proc([]float64{0, .07, .13, .20}[hunter.Talents.ImprovedWingClip], "Improved Wing Clip") {
+					hunter.rootTarget(sim, target, 19229, 5*time.Second)
+				}
+			}
 		},
 	}
 }

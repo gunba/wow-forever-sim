@@ -40,6 +40,17 @@ class UncertaintyRegisterTests(unittest.TestCase):
             self.assertIn(data["review"]["latest_followup_date"], view)
             self.assertIn("Original adjudication baseline", view)
             self.assertIn("october-8-review.md", view)
+        report = data["review"].get("latest_followup_report", "october-8-review.md")
+        self.assertIn(f"]({report})", text)
+        self.assertIn(f'href="{report}"', html)
+        historical = copy.deepcopy(data)
+        historical["review"].pop("latest_followup_report", None)
+        self.assertIn("](october-8-review.md)", markdown(historical))
+        for unsafe in ("../outside.md", "/absolute.md", "https://example.com/x.md", "x.md\" onclick=\"bad"):
+            invalid = copy.deepcopy(data)
+            invalid["review"]["latest_followup_report"] = unsafe
+            with self.assertRaisesRegex(ValueError, "safe relative"):
+                render_html(invalid)
         self.assertNotIn("This review does not change combat mechanics", html)
         self.assertNotIn("have not changed in this review", text)
         for item in data["items"]:

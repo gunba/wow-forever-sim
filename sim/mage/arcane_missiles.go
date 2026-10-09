@@ -19,6 +19,22 @@ var ArcaneMissilesCastTime = [ArcaneMissilesRanks + 1]int32{0, 3, 4, 5, 5, 5, 5,
 var ArcaneMissilesManaCost = [ArcaneMissilesRanks + 1]float64{0, 85, 140, 235, 320, 410, 500, 595, 655}
 var ArcaneMissilesLevel = [ArcaneMissilesRanks + 1]int{0, 8, 16, 24, 32, 40, 48, 56, 56}
 
+// Build 1.60.1.70291 damage children7268/7269/7270, not the channel aura.
+var foreverArcaneMissilesRankDamage = [...]mageSpellRankDamage{
+	{},
+	{24, 0, 0.20000000298, 8, 12},
+	{34, 0, 0.30000001192, 16, 20},
+	{47, 0, 0.40000000596, 24, 28},
+}
+
+func (mage *Mage) arcaneMissilesTickBaseDamage(rank int) float64 {
+	if mage.Env.IsForever() && rank < len(foreverArcaneMissilesRankDamage) {
+		damage, _ := foreverArcaneMissilesRankDamage[rank].rangeAtLevel(mage.Level)
+		return damage
+	}
+	return ArcaneMissilesBaseTickDamage[rank]
+}
+
 func (mage *Mage) registerArcaneMissilesSpell() {
 	mage.ArcaneMissiles = make([]*core.Spell, ArcaneMissilesRanks+1)
 	mage.ArcaneMissilesTickSpell = make([]*core.Spell, ArcaneMissilesRanks+1)
@@ -35,7 +51,7 @@ func (mage *Mage) registerArcaneMissilesSpell() {
 
 func (mage *Mage) getArcaneMissilesSpellConfig(rank int) core.SpellConfig {
 	spellId := ArcaneMissilesSpellId[rank]
-	baseTickDamage := ArcaneMissilesBaseTickDamage[rank]
+	baseTickDamage := mage.arcaneMissilesTickBaseDamage(rank)
 	castTime := ArcaneMissilesCastTime[rank]
 	manaCost := ArcaneMissilesManaCost[rank]
 	level := ArcaneMissilesLevel[rank]
@@ -109,7 +125,7 @@ func (mage *Mage) getArcaneMissilesSpellConfig(rank int) core.SpellConfig {
 
 func (mage *Mage) getArcaneMissilesTickSpell(rank int) *core.Spell {
 	spellId := ArcaneMissilesSpellId[rank]
-	baseTickDamage := ArcaneMissilesBaseTickDamage[rank]
+	baseTickDamage := mage.arcaneMissilesTickBaseDamage(rank)
 	spellCoeff := ArcaneMissilesSpellCoeff[rank]
 
 	return mage.RegisterSpell(core.SpellConfig{

@@ -59,18 +59,6 @@ func foreverWarriorRagePerSwing(speed float64, twoHand, offHand bool) float64 {
 	return speed * rate
 }
 
-// Geared low-level Forever logs fit ten times unmitigated damage divided by
-// maximum health. The observed low-armor doubling remains unresolved.
-func foreverWarriorDamageTakenRage(damage, mitigation, maxHealth float64) float64 {
-	if damage <= 0 || maxHealth <= 0 {
-		return 0
-	}
-	if mitigation > 0 {
-		damage /= mitigation
-	}
-	return damage * 10 / maxHealth
-}
-
 func GetRageConversion(attacker_level int32) float64 {
 	if attacker_level == 25 {
 		return 82.25 // Tested
@@ -87,6 +75,19 @@ func GetRageConversion(attacker_level int32) float64 {
 }
 
 func (unit *Unit) EnableRageBar(options RageBarOptions) {
+	if unit.foreverIncomingRageParameters.ExpectedHealth == 0 {
+		level := unit.Level
+		if level == 0 {
+			// Standalone test/helper units may omit level; real players resolve it
+			// in NewCharacter before class construction.
+			level = CharacterMaxLevel
+		}
+		parameters, err := ResolveForeverIncomingRageModel(level, nil)
+		if err != nil {
+			panic(err)
+		}
+		unit.foreverIncomingRageParameters = parameters
+	}
 	rageFromDamageTakenMetrics := unit.NewRageMetrics(ActionID{OtherID: proto.OtherAction_OtherActionDamageTaken})
 	rageConversion := GetRageConversion(unit.Level)
 
@@ -148,10 +149,10 @@ func (unit *Unit) EnableRageBar(options RageBarOptions) {
 				}
 				generatedRage = damage * 7.5 / rageConversion
 				if unit.rageBar.foreverBearCriticalRage && unit.Env != nil && unit.Env.IsForever() && result.DidCrit() {
-					// Strip the damage crit multiplier, then apply the sourced +75% Rage.
+					// Strip the damage crit multiplier, then apply October 8's +100% Rage.
 					// This does not assert that Bear's baseline generation is normalized.
 					at := unit.AttackTables[result.Target.UnitIndex][spell.CastType]
-					generatedRage *= 1.75 / spell.CritMultiplier(at)
+					generatedRage *= 2 / spell.CritMultiplier(at)
 				}
 			}
 			generatedRage *= unit.rageBar.damageDealtMultiplier
@@ -177,8 +178,10 @@ func (unit *Unit) EnableRageBar(options RageBarOptions) {
 				return
 			}
 			generatedRage := 0.0
-			if unit.rageBar.foreverWarriorRage && unit.Env != nil && unit.Env.IsForever() {
-				generatedRage = foreverWarriorDamageTakenRage(result.Damage, result.ResistanceMultiplier, unit.MaxHealth())
+			if unit.Env != nil && unit.Env.IsForever() {
+				// Explicitly provisional, shared Warrior/Bear incoming scenario.
+				// Keep actual mitigation/outcomes; restore only absorbed damage.
+				generatedRage = unit.foreverIncomingRageParameters.rageFromDamageTaken(result)
 			} else {
 				rageConversionDamageTaken := GetRageConversion(spell.Unit.Level)
 				generatedRage = result.Damage * 2.5 / rageConversionDamageTaken

@@ -383,6 +383,18 @@ export class ActionId {
 					name += ' (Proc)';
 				}
 				break;
+			case 'Seal of Fury':
+				if (this.tag === 1) name += ' (Absorb; provisional lifetime)';
+				break;
+			// Hunter control auras use caster raid index + 1, not a spell rank.
+			case 'Concussive Shot':
+			case 'Improved Concussive Shot':
+			case 'Wing Clip':
+			case 'Improved Wing Clip':
+			case 'Entrapment':
+			case 'Frost Trap Aura':
+				if (this.tag > 0) name += ` (caster #${this.tag})`;
+				break;
 			case 'Demonic Rune':
 				if (this.tag === 1) {
 					name += ' (Self damage)';

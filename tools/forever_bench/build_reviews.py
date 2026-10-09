@@ -97,7 +97,7 @@ def main():
                    if modeled else "../artifacts/forever_dps_5min.png")
     raw_path = ("../artifacts/modelled_gear/forever_dps_5min.json"
                 if modeled else "../artifacts/forever_dps_5min.json")
-    search_path = ("../artifacts/correctness/october_8/selection-evidence.json"
+    search_path = ("../artifacts/correctness/october_9/selection-evidence.json"
                    if modeled else "../artifacts/gear_search/summary.json")
     lines = [
         "# Build reviews", "",
@@ -109,9 +109,9 @@ def main():
         f"The tables and [matrix]({matrix_path}) use the same "
         f"{len(results['Results'])} common-seed replays. "
         + ("The modeled search and original real-item benchmark are separate; neither proves "
-           "available launch gear. [October 8](october-8-review.md) independently confirms bounded "
-           "affected-build selections. Priest, Protection Warrior and Bear gear remain fixed; "
-           "older search gains are historical, not current proof of an optimum." if modeled else "Equipment selections came from an earlier "
+           "available launch gear. [Current 70291 update](october-8-overnight-update.md) records bounded "
+           "affected-build selections, resource tradeoffs and model-sensitivity failures. "
+           "Earlier search gains are historical, not current proof of an optimum." if modeled else "Equipment selections came from an earlier "
            "mechanics revision; these results use the corrected engine. Historical search gains "
            "are not directly comparable to this release."), "",
         "The benchmark uses level 60, 300 seconds, one level-63 target, complete role-specific "

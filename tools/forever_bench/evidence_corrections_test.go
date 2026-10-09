@@ -621,7 +621,8 @@ func TestEvidenceRetributionAuraBase(t *testing.T) {
 		spell.Flags |= core.SpellFlagIgnoreModifiers | core.SpellFlagIgnoreResists
 		spell.BonusHitRating = 10000
 		spell.ApplyEffects(sim, u.CurrentTarget, spell)
-		want := core.TernaryFloat64(ruleset == proto.Ruleset_RulesetForever, 30, 20)
+		// 70291 source base is 20; explicit external provider defaults to 0 SP.
+		want := 20.0
 		if got := spell.SpellMetrics[u.CurrentTarget.UnitIndex].TotalDamage; math.Abs(got-want) > 1e-7 {
 			t.Errorf("%v: Ret Aura %v, want %v", ruleset, got, want)
 		}

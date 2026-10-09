@@ -60,7 +60,8 @@ type resultRow struct {
 	UnmodeledSetBonuses                    []string
 	Request                                json.RawMessage
 	Metrics                                json.RawMessage
-	Tank                                   *tankMetrics `json:",omitempty"`
+	Tank                                   *tankMetrics   `json:",omitempty"`
+	ProvisionalModels                      map[string]any `json:",omitempty"`
 }
 
 func encounter() *proto.Encounter {
@@ -164,7 +165,7 @@ func runWithRequest(b build, p *proto.Player, count int, rng int64,
 		panic(err)
 	}
 	req := makeRequest(b, p, count, rng)
-	_, rs, _ := core.NewEnvironment(req.Raid, req.Encounter, proto.Ruleset_RulesetForever, false)
+	env, rs, _ := core.NewEnvironment(req.Raid, req.Encounter, proto.Ruleset_RulesetForever, false)
 	ps := rs.Parties[0].Players[0]
 	var warnings []string
 	for _, a := range append(ps.RotationStats.GetPrepullActions(), ps.RotationStats.GetPriorityList()...) {
@@ -192,6 +193,7 @@ func runWithRequest(b build, p *proto.Player, count int, rng int64,
 		Iterations: result.IterationsDone, Hit: hit, Stats: ps.FinalStats.Stats, Sets: ps.Sets,
 		Warnings: warnings, UnmodeledSetBonuses: unmodeledSetBonuses(p),
 		BaselinePlayer: baseline, Request: saved, Metrics: metrics,
+		ProvisionalModels: provisionalModelsForCharacter(env.Raid.Parties[0].Players[0].GetCharacter(), p),
 	}
 	if b.isTank() {
 		row.Tank = tankResultMetrics(result)
@@ -295,6 +297,19 @@ func writeResults(rows []resultRow) {
 		"spiritMana":            "forever-player-provisional-common-6.25-plus-effective-spirit-over8-pets-unchanged",
 		"naturesGrace":          "10pct-cast-haste-separate-10pct-gcd-reduction-including-instants",
 		"rage":                  "forever-provisional-speed-normalized-low-level-rates-half-rate-offhand-assumed",
+		"incomingRage":          core.ForeverIncomingRageAssumptions,
+		"bearCritRage":          "october8-source-100pct-extra-outgoing-crit-rage-base-normalization-still-qualified",
+		"bearThreat":            "october8-source-1.5-form-threat-multiplier",
+		"demoralizingThreat":    "nonzero-source-classic-derived-rank-amount-provisional-optional-per-target-override",
+		"lastStand":             "30pct-final-max-health-snapshot-temporary-health-takeback-nondamage-classic-nonlethal-floor",
+		"sealOfFury":            "source-white-holy-proc-shield50pct-actual-damage-talent-only-depletion-mana-provisional-replacement-pool-lifetime",
+		"reflections":           "vanilla-base-plus6pct-explicit-provider-damage-power-external0-default-never-receiver-power",
+		"reckoning":             "client-shared1.5s-crit-block-icd",
+		"penance":               "four-source-damaging-ranks-0.19sp-three-bolts-over2s-max385mana-healing-unregistered",
+		"crowdControl":          "explicit-target-capabilities-default-off-client-dr-groups-provisional-reset-anchor-opt-in",
+		"revelation":            "requires-explicit-provisional-proc-model-source-class-masks-direct-event-reservation-not-verified-script",
+		"recovery":              "source-melee-dodge-parry5pct-current-max-health-shared10s-icd-forms",
+		"weaponSwaps":           "atomic-prospective-layout-same-id-enchant-suffix-sequential-slot-state-one-gcd-stable-iteration-reset",
 		"periodic":              "forever-current-offensive-stats-each-tick-classic-snapshots",
 		"deepWounds":            "weapon-only-unpaid-payload-rollover-preserved-timer-no-ap-no-caster-multiplier-oh-attribution-qualified",
 		"airTotems":             "melee-windfury-party-buff-ranged-hunter-grace-exclusive-no-legacy-weapon-imbue",

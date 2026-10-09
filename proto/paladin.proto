@@ -88,6 +88,7 @@ enum PaladinSeal {
 	NoSeal = 0;
 	Righteousness = 1;
 	Command = 2;
+	Fury = 3;
 }
 
 message PaladinOptions {
@@ -97,6 +98,10 @@ message PaladinOptions {
 
     bool righteousFury = 8;
     Blessings personalBlessing = 9;
+    // Explicit PROVISIONAL SoF shield lifetime; absent =30s. Zero disables
+    // absorption without disabling sourced seal damage. Replacement remains
+    // one shared pool; server expiry/replacement has not been verified.
+    optional double seal_of_fury_shield_duration_seconds = 10;
 }
 
 message RetributionPaladin {

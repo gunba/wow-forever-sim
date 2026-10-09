@@ -7,6 +7,7 @@ import (
 const (
 	echoOfCommand       int32 = 1311703
 	echoOfRighteousness int32 = 1311704
+	echoOfFury          int32 = 1311701
 )
 
 type sealEchoSource struct {
@@ -61,9 +62,17 @@ func (paladin *Paladin) registerTwistOfLight() {
 		},
 		OnSpellHitDealt: righteousness.consume,
 	})
+	fury := &sealEcho{}
+	fury.aura = paladin.RegisterAura(core.Aura{
+		Label: "Echo of Fury", ActionID: core.ActionID{SpellID: echoOfFury},
+		Duration: core.NeverExpires, MaxStacks: 1,
+		OnGain:          func(aura *core.Aura, sim *core.Simulation) { aura.SetStacks(sim, 1) },
+		OnSpellHitDealt: fury.consume,
+	})
 	paladin.sealEchoes = map[int32]*sealEcho{
 		echoOfCommand:       command,
 		echoOfRighteousness: righteousness,
+		echoOfFury:          fury,
 	}
 }
 

@@ -16,6 +16,8 @@ type Hardcast struct {
 	Expires          time.Duration
 	ActionID         ActionID
 	OnComplete       func(*Simulation, *Unit)
+	OnInterrupt      func(*Simulation)
+	GCDReadyAt       time.Duration
 	Target           *Unit
 	Pushback         float64
 	allowAutoAttacks bool
@@ -28,6 +30,11 @@ type CastConfig struct {
 
 	// Dynamic modifications for each cast.
 	ModifyCast func(*Simulation, *Spell, *Cast)
+
+	// Lifecycle hooks run only after cast validation. OnCastEnd runs exactly
+	// once when a hardcast completes or is interrupted (instant casts end immediately).
+	OnCastStart func(*Simulation, *Spell)
+	OnCastEnd   func(*Simulation, *Spell, bool)
 
 	// Ignores haste when calculating the GCD and cast time for this cast.
 	// Automatically set if GCD and cast times are all 0, e.g. for empty casts.
@@ -218,6 +225,10 @@ func (spell *Spell) makeCastFunc(config CastConfig) CastSuccessFunc {
 			return spell.castFailureHelper(sim, "channeling %v for %s, curTime = %s", dot.ActionID, dot.expires-sim.CurrentTime, sim.CurrentTime)
 		}
 
+		originalGCDReadyAt := spell.Unit.GCD.ReadyAt()
+		if spell.CurCast.GCD > 0 {
+			originalGCDReadyAt = max(originalGCDReadyAt, sim.CurrentTime+spell.CurCast.GCD)
+		}
 		if effectiveTime := spell.CurCast.EffectiveTime(); effectiveTime != 0 {
 			if spell.Flags.Matches(SpellFlagCastTimeNoGCD) {
 				effectiveTime = max(effectiveTime, spell.Unit.GCD.TimeToReady(sim))
@@ -240,6 +251,16 @@ func (spell *Spell) makeCastFunc(config CastConfig) CastSuccessFunc {
 			spell.Unit.AutoAttacks.StopMeleeUntil(sim, restartMeleeAt, false)
 		}
 
+		ended := false
+		endCast := func(sim *Simulation, interrupted bool) {
+			if !ended {
+				ended = true
+				if config.OnCastEnd != nil {
+					config.OnCastEnd(sim, spell, interrupted)
+				}
+			}
+		}
+
 		// Hardcasts
 		if spell.CurCast.CastTime > 0 {
 			if sim.Log != nil && !spell.Flags.Matches(SpellFlagNoLogs) {
@@ -252,7 +273,10 @@ func (spell *Spell) makeCastFunc(config CastConfig) CastSuccessFunc {
 				ActionID:         spell.ActionID,
 				Pushback:         1.0,
 				allowAutoAttacks: spell.Flags.Matches(SpellFlagAllowAutoAttacks),
+				GCDReadyAt:       originalGCDReadyAt,
+				OnInterrupt:      func(sim *Simulation) { endCast(sim, true) },
 				OnComplete: func(sim *Simulation, target *Unit) {
+					defer endCast(sim, false)
 					spell.LastCastAt = sim.CurrentTime
 
 					if sim.Log != nil && !spell.Flags.Matches(SpellFlagNoLogs) {
@@ -273,6 +297,7 @@ func (spell *Spell) makeCastFunc(config CastConfig) CastSuccessFunc {
 						spell.Unit.OnCastComplete(sim, spell)
 					}
 
+					endCast(sim, false)
 					if !sim.Options.Interactive {
 						spell.Unit.Rotation.DoNextAction(sim)
 					}
@@ -283,10 +308,16 @@ func (spell *Spell) makeCastFunc(config CastConfig) CastSuccessFunc {
 			if spell.Unit.Hardcast.Expires != spell.Unit.NextGCDAt() {
 				spell.Unit.newHardcastAction(sim)
 			}
-
+			if config.OnCastStart != nil {
+				config.OnCastStart(sim, spell)
+			}
 			return true
 		}
 
+		if config.OnCastStart != nil {
+			config.OnCastStart(sim, spell)
+		}
+		defer endCast(sim, false)
 		spell.LastCastAt = sim.CurrentTime
 
 		if sim.Log != nil && !spell.Flags.Matches(SpellFlagNoLogs) {

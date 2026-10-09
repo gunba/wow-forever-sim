@@ -1,0 +1,2095 @@
+{
+  "qualification": "Equal-weight available-race mean level60 modeled-v2 forecast. Historical published numbers are pinned e7d0c2a68, not corrected-engine controls. Original Bear player exact but support explicitly FA false. Recipe delta isolates final setup changes at the same current matrix seed1815000001; selection independence established separately. Historical-versus-current differences also include Monte Carlo sampling at a new seed; they are not a same-seed causal engine estimate.",
+  "Results": [
+    {
+      "Key": "balance",
+      "Race": "Tauren",
+      "historicalPublishedDPS": 708.5322413643822,
+      "correctedOriginalLoadoutDPS": 708.1263377782902,
+      "currentSelectedDPS": 708.1263377782902,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.40590358609199484
+    },
+    {
+      "Key": "balance",
+      "Race": "Windshaper",
+      "historicalPublishedDPS": 711.5684586426429,
+      "correctedOriginalLoadoutDPS": 711.5663680857703,
+      "currentSelectedDPS": 711.5663680857703,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.002090556872644811
+    },
+    {
+      "Key": "balance",
+      "Race": "Night Elf",
+      "historicalPublishedDPS": 711.8154374266144,
+      "correctedOriginalLoadoutDPS": 711.1879006164467,
+      "currentSelectedDPS": 711.1879006164467,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.6275368101677259
+    },
+    {
+      "Key": "balance",
+      "Race": "High Order",
+      "historicalPublishedDPS": 711.5684586426429,
+      "correctedOriginalLoadoutDPS": 711.5663680857703,
+      "currentSelectedDPS": 711.5663680857703,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.002090556872644811
+    },
+    {
+      "Key": "feral",
+      "Race": "Tauren",
+      "historicalPublishedDPS": 718.3594618702775,
+      "correctedOriginalLoadoutDPS": 718.4157736827569,
+      "currentSelectedDPS": 720.2479623599866,
+      "selectedRecipeDelta": 1.8321886772296239,
+      "historicalToCorrectedDifference": 0.05631181247940731
+    },
+    {
+      "Key": "feral",
+      "Race": "Windshaper",
+      "historicalPublishedDPS": 724.2335010665035,
+      "correctedOriginalLoadoutDPS": 724.454247480574,
+      "currentSelectedDPS": 726.0564332681708,
+      "selectedRecipeDelta": 1.6021857875967953,
+      "historicalToCorrectedDifference": 0.22074641407050422
+    },
+    {
+      "Key": "feral",
+      "Race": "Night Elf",
+      "historicalPublishedDPS": 725.583298769073,
+      "correctedOriginalLoadoutDPS": 725.7077201230503,
+      "currentSelectedDPS": 727.7583362328572,
+      "selectedRecipeDelta": 2.050616109806924,
+      "historicalToCorrectedDifference": 0.12442135397725451
+    },
+    {
+      "Key": "feral",
+      "Race": "High Order",
+      "historicalPublishedDPS": 724.2335010665035,
+      "correctedOriginalLoadoutDPS": 724.454247480574,
+      "currentSelectedDPS": 726.0564332681708,
+      "selectedRecipeDelta": 1.6021857875967953,
+      "historicalToCorrectedDifference": 0.22074641407050422
+    },
+    {
+      "Key": "elemental",
+      "Race": "Orc",
+      "historicalPublishedDPS": 495.3947630468851,
+      "correctedOriginalLoadoutDPS": 494.9308907705714,
+      "currentSelectedDPS": 494.9308907705714,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.4638722763136798
+    },
+    {
+      "Key": "elemental",
+      "Race": "Tauren",
+      "historicalPublishedDPS": 490.11354677675376,
+      "correctedOriginalLoadoutDPS": 489.88418632509325,
+      "currentSelectedDPS": 489.88418632509325,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.22936045166051144
+    },
+    {
+      "Key": "elemental",
+      "Race": "Troll",
+      "historicalPublishedDPS": 491.27792551054256,
+      "correctedOriginalLoadoutDPS": 490.83424382598986,
+      "currentSelectedDPS": 490.83424382598986,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.4436816845527005
+    },
+    {
+      "Key": "elemental",
+      "Race": "Windshaper",
+      "historicalPublishedDPS": 490.59433455749945,
+      "correctedOriginalLoadoutDPS": 490.21515446271485,
+      "currentSelectedDPS": 490.21515446271485,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.37918009478460135
+    },
+    {
+      "Key": "elemental",
+      "Race": "Dwarf",
+      "historicalPublishedDPS": 491.68407721770785,
+      "correctedOriginalLoadoutDPS": 491.3919953263104,
+      "currentSelectedDPS": 491.3919953263104,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.29208189139745855
+    },
+    {
+      "Key": "stormcaller",
+      "Race": "Orc",
+      "historicalPublishedDPS": 457.96616049673565,
+      "correctedOriginalLoadoutDPS": 457.1835984538241,
+      "currentSelectedDPS": 457.1835984538241,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.7825620429115361
+    },
+    {
+      "Key": "stormcaller",
+      "Race": "Tauren",
+      "historicalPublishedDPS": 460.88157943262,
+      "correctedOriginalLoadoutDPS": 460.5327020814588,
+      "currentSelectedDPS": 460.5327020814588,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.34887735116120666
+    },
+    {
+      "Key": "stormcaller",
+      "Race": "Troll",
+      "historicalPublishedDPS": 453.12091788810983,
+      "correctedOriginalLoadoutDPS": 453.1240806363336,
+      "currentSelectedDPS": 453.1240806363336,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.0031627482237581717
+    },
+    {
+      "Key": "stormcaller",
+      "Race": "Windshaper",
+      "historicalPublishedDPS": 453.74507632426395,
+      "correctedOriginalLoadoutDPS": 453.2140599172541,
+      "currentSelectedDPS": 453.2140599172541,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.5310164070098722
+    },
+    {
+      "Key": "stormcaller",
+      "Race": "Dwarf",
+      "historicalPublishedDPS": 455.6210544692073,
+      "correctedOriginalLoadoutDPS": 454.6526028670137,
+      "currentSelectedDPS": 454.6526028670137,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.9684516021936247
+    },
+    {
+      "Key": "enhancement",
+      "Race": "Orc",
+      "historicalPublishedDPS": 813.8805817227222,
+      "correctedOriginalLoadoutDPS": 813.4855713895978,
+      "currentSelectedDPS": 813.4855713895978,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.39501033312444633
+    },
+    {
+      "Key": "enhancement",
+      "Race": "Tauren",
+      "historicalPublishedDPS": 807.0901396359377,
+      "correctedOriginalLoadoutDPS": 807.6932405304015,
+      "currentSelectedDPS": 807.6932405304015,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.6031008944637506
+    },
+    {
+      "Key": "enhancement",
+      "Race": "Troll",
+      "historicalPublishedDPS": 811.8491640326062,
+      "correctedOriginalLoadoutDPS": 812.4567792360738,
+      "currentSelectedDPS": 812.4567792360738,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.607615203467617
+    },
+    {
+      "Key": "enhancement",
+      "Race": "Windshaper",
+      "historicalPublishedDPS": 810.6149999224205,
+      "correctedOriginalLoadoutDPS": 809.7632402031916,
+      "currentSelectedDPS": 809.7632402031916,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.8517597192288804
+    },
+    {
+      "Key": "enhancement",
+      "Race": "Dwarf",
+      "historicalPublishedDPS": 817.0881848419588,
+      "correctedOriginalLoadoutDPS": 816.9588122656531,
+      "currentSelectedDPS": 816.9588122656531,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.12937257630562726
+    },
+    {
+      "Key": "beast_mastery",
+      "Race": "Orc",
+      "historicalPublishedDPS": 904.5194268091013,
+      "correctedOriginalLoadoutDPS": 904.2048888027815,
+      "currentSelectedDPS": 904.2048888027815,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.31453800631982176
+    },
+    {
+      "Key": "beast_mastery",
+      "Race": "Tauren",
+      "historicalPublishedDPS": 894.9574736791895,
+      "correctedOriginalLoadoutDPS": 894.8568603694681,
+      "currentSelectedDPS": 894.8568603694681,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.10061330972143878
+    },
+    {
+      "Key": "beast_mastery",
+      "Race": "Troll",
+      "historicalPublishedDPS": 901.0725374951907,
+      "correctedOriginalLoadoutDPS": 901.3510640647561,
+      "currentSelectedDPS": 901.3510640647561,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.27852656956542887
+    },
+    {
+      "Key": "beast_mastery",
+      "Race": "Windshaper",
+      "historicalPublishedDPS": 903.074163859882,
+      "correctedOriginalLoadoutDPS": 903.5668212665848,
+      "currentSelectedDPS": 903.5668212665848,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.49265740670284686
+    },
+    {
+      "Key": "beast_mastery",
+      "Race": "Human",
+      "historicalPublishedDPS": 906.42791925216,
+      "correctedOriginalLoadoutDPS": 906.4630405861683,
+      "currentSelectedDPS": 906.4630405861683,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.03512133400829498
+    },
+    {
+      "Key": "beast_mastery",
+      "Race": "Dwarf",
+      "historicalPublishedDPS": 896.5380622253048,
+      "correctedOriginalLoadoutDPS": 896.4122835869947,
+      "currentSelectedDPS": 896.4122835869947,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.12577863831006653
+    },
+    {
+      "Key": "beast_mastery",
+      "Race": "Night Elf",
+      "historicalPublishedDPS": 908.087786240151,
+      "correctedOriginalLoadoutDPS": 907.8966306335274,
+      "currentSelectedDPS": 907.8966306335274,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.1911556066236244
+    },
+    {
+      "Key": "beast_mastery",
+      "Race": "High Order",
+      "historicalPublishedDPS": 903.074163859882,
+      "correctedOriginalLoadoutDPS": 903.5668212665848,
+      "currentSelectedDPS": 903.5668212665848,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.49265740670284686
+    },
+    {
+      "Key": "marksmanship",
+      "Race": "Orc",
+      "historicalPublishedDPS": 777.8499396281834,
+      "correctedOriginalLoadoutDPS": 777.2822899073273,
+      "currentSelectedDPS": 777.2822899073273,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.5676497208561386
+    },
+    {
+      "Key": "marksmanship",
+      "Race": "Tauren",
+      "historicalPublishedDPS": 763.62674947861,
+      "correctedOriginalLoadoutDPS": 763.0990369052852,
+      "currentSelectedDPS": 763.0990369052852,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.527712573324834
+    },
+    {
+      "Key": "marksmanship",
+      "Race": "Troll",
+      "historicalPublishedDPS": 785.5508653130636,
+      "correctedOriginalLoadoutDPS": 784.8206908873477,
+      "currentSelectedDPS": 784.8206908873477,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.7301744257158589
+    },
+    {
+      "Key": "marksmanship",
+      "Race": "Windshaper",
+      "historicalPublishedDPS": 784.810319374573,
+      "correctedOriginalLoadoutDPS": 783.8603203710389,
+      "currentSelectedDPS": 783.8603203710389,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.949999003534117
+    },
+    {
+      "Key": "marksmanship",
+      "Race": "Human",
+      "historicalPublishedDPS": 781.5970714475189,
+      "correctedOriginalLoadoutDPS": 780.8692782106075,
+      "currentSelectedDPS": 780.8692782106075,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.7277932369114524
+    },
+    {
+      "Key": "marksmanship",
+      "Race": "Dwarf",
+      "historicalPublishedDPS": 764.6715049680847,
+      "correctedOriginalLoadoutDPS": 763.9820794421084,
+      "currentSelectedDPS": 763.9820794421084,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.6894255259762758
+    },
+    {
+      "Key": "marksmanship",
+      "Race": "Night Elf",
+      "historicalPublishedDPS": 776.4017504089779,
+      "correctedOriginalLoadoutDPS": 775.4014922451581,
+      "currentSelectedDPS": 775.4014922451581,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -1.000258163819808
+    },
+    {
+      "Key": "marksmanship",
+      "Race": "High Order",
+      "historicalPublishedDPS": 784.810319374573,
+      "correctedOriginalLoadoutDPS": 783.8603203710389,
+      "currentSelectedDPS": 783.8603203710389,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.949999003534117
+    },
+    {
+      "Key": "survival",
+      "Race": "Orc",
+      "historicalPublishedDPS": 891.8807402530739,
+      "correctedOriginalLoadoutDPS": 899.472539383245,
+      "currentSelectedDPS": 899.472539383245,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 7.591799130171125
+    },
+    {
+      "Key": "survival",
+      "Race": "Tauren",
+      "historicalPublishedDPS": 879.7530504945953,
+      "correctedOriginalLoadoutDPS": 886.9385365127431,
+      "currentSelectedDPS": 886.9385365127431,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 7.185486018147799
+    },
+    {
+      "Key": "survival",
+      "Race": "Troll",
+      "historicalPublishedDPS": 881.9439593756634,
+      "correctedOriginalLoadoutDPS": 888.4489834781592,
+      "currentSelectedDPS": 888.4489834781592,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 6.505024102495781
+    },
+    {
+      "Key": "survival",
+      "Race": "Windshaper",
+      "historicalPublishedDPS": 883.7487236138949,
+      "correctedOriginalLoadoutDPS": 889.8137041668922,
+      "currentSelectedDPS": 889.8137041668922,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 6.064980552997326
+    },
+    {
+      "Key": "survival",
+      "Race": "Human",
+      "historicalPublishedDPS": 893.1443540411041,
+      "correctedOriginalLoadoutDPS": 900.5396687531089,
+      "currentSelectedDPS": 900.5396687531089,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 7.395314712004847
+    },
+    {
+      "Key": "survival",
+      "Race": "Dwarf",
+      "historicalPublishedDPS": 876.5167737734608,
+      "correctedOriginalLoadoutDPS": 883.807691609971,
+      "currentSelectedDPS": 883.807691609971,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 7.290917836510175
+    },
+    {
+      "Key": "survival",
+      "Race": "Night Elf",
+      "historicalPublishedDPS": 887.9705158997363,
+      "correctedOriginalLoadoutDPS": 895.4052132509688,
+      "currentSelectedDPS": 895.4052132509688,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 7.434697351232558
+    },
+    {
+      "Key": "survival",
+      "Race": "High Order",
+      "historicalPublishedDPS": 883.7487236138949,
+      "correctedOriginalLoadoutDPS": 889.8137041668922,
+      "currentSelectedDPS": 889.8137041668922,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 6.064980552997326
+    },
+    {
+      "Key": "arcane",
+      "Race": "Orc",
+      "historicalPublishedDPS": 724.328862898095,
+      "correctedOriginalLoadoutDPS": 724.5987007401532,
+      "currentSelectedDPS": 724.5987007401532,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.26983784205810935
+    },
+    {
+      "Key": "arcane",
+      "Race": "Troll",
+      "historicalPublishedDPS": 724.1518463642668,
+      "correctedOriginalLoadoutDPS": 724.8125280621058,
+      "currentSelectedDPS": 724.8125280621058,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.6606816978389816
+    },
+    {
+      "Key": "arcane",
+      "Race": "Undead",
+      "historicalPublishedDPS": 742.696567003055,
+      "correctedOriginalLoadoutDPS": 742.3486263141626,
+      "currentSelectedDPS": 742.3486263141626,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.3479406888923222
+    },
+    {
+      "Key": "arcane",
+      "Race": "Human",
+      "historicalPublishedDPS": 729.1521825743247,
+      "correctedOriginalLoadoutDPS": 729.0455865722867,
+      "currentSelectedDPS": 729.0455865722867,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.10659600203803166
+    },
+    {
+      "Key": "arcane",
+      "Race": "Gnome",
+      "historicalPublishedDPS": 734.4627038347669,
+      "correctedOriginalLoadoutDPS": 734.7777810867562,
+      "currentSelectedDPS": 734.7777810867562,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.31507725198935077
+    },
+    {
+      "Key": "arcane",
+      "Race": "High Order",
+      "historicalPublishedDPS": 729.7106949322135,
+      "correctedOriginalLoadoutDPS": 730.1158426021665,
+      "currentSelectedDPS": 730.1158426021665,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.40514766995295304
+    },
+    {
+      "Key": "fire",
+      "Race": "Orc",
+      "historicalPublishedDPS": 728.5076864075075,
+      "correctedOriginalLoadoutDPS": 728.4245286115095,
+      "currentSelectedDPS": 728.4245286115095,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.08315779599809048
+    },
+    {
+      "Key": "fire",
+      "Race": "Troll",
+      "historicalPublishedDPS": 723.4341243934775,
+      "correctedOriginalLoadoutDPS": 723.3012811866912,
+      "currentSelectedDPS": 723.3012811866912,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.1328432067863332
+    },
+    {
+      "Key": "fire",
+      "Race": "Undead",
+      "historicalPublishedDPS": 741.0164149517819,
+      "correctedOriginalLoadoutDPS": 741.3800115559363,
+      "currentSelectedDPS": 741.3800115559363,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.3635966041543952
+    },
+    {
+      "Key": "fire",
+      "Race": "Human",
+      "historicalPublishedDPS": 738.77268221959,
+      "correctedOriginalLoadoutDPS": 738.857369699613,
+      "currentSelectedDPS": 738.857369699613,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.08468748002292159
+    },
+    {
+      "Key": "fire",
+      "Race": "Gnome",
+      "historicalPublishedDPS": 730.9206194709799,
+      "correctedOriginalLoadoutDPS": 730.4810392185431,
+      "currentSelectedDPS": 730.4810392185431,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.4395802524368264
+    },
+    {
+      "Key": "fire",
+      "Race": "High Order",
+      "historicalPublishedDPS": 714.0514901927514,
+      "correctedOriginalLoadoutDPS": 713.6239480358753,
+      "currentSelectedDPS": 713.6239480358753,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.42754215687614305
+    },
+    {
+      "Key": "frost",
+      "Race": "Orc",
+      "historicalPublishedDPS": 681.8662833426334,
+      "correctedOriginalLoadoutDPS": 681.642793841969,
+      "currentSelectedDPS": 681.642793841969,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.22348950066441375
+    },
+    {
+      "Key": "frost",
+      "Race": "Troll",
+      "historicalPublishedDPS": 679.7109546133358,
+      "correctedOriginalLoadoutDPS": 679.2471488584,
+      "currentSelectedDPS": 679.2471488584,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.46380575493583365
+    },
+    {
+      "Key": "frost",
+      "Race": "Undead",
+      "historicalPublishedDPS": 683.1209900787902,
+      "correctedOriginalLoadoutDPS": 682.544240447742,
+      "currentSelectedDPS": 682.544240447742,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.5767496310481874
+    },
+    {
+      "Key": "frost",
+      "Race": "Human",
+      "historicalPublishedDPS": 686.5366085459417,
+      "correctedOriginalLoadoutDPS": 686.1202840973351,
+      "currentSelectedDPS": 686.1202840973351,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.4163244486065878
+    },
+    {
+      "Key": "frost",
+      "Race": "Gnome",
+      "historicalPublishedDPS": 691.3271491597022,
+      "correctedOriginalLoadoutDPS": 690.622636290334,
+      "currentSelectedDPS": 690.622636290334,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.7045128693682727
+    },
+    {
+      "Key": "frost",
+      "Race": "High Order",
+      "historicalPublishedDPS": 681.4267639909426,
+      "correctedOriginalLoadoutDPS": 681.0021030619658,
+      "currentSelectedDPS": 681.0021030619658,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.42466092897677754
+    },
+    {
+      "Key": "retribution",
+      "Race": "Undead",
+      "historicalPublishedDPS": 1058.877725167727,
+      "correctedOriginalLoadoutDPS": 1057.9770256651939,
+      "currentSelectedDPS": 1057.9770256651939,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.9006995025331435
+    },
+    {
+      "Key": "retribution",
+      "Race": "Human",
+      "historicalPublishedDPS": 1050.120164273224,
+      "correctedOriginalLoadoutDPS": 1051.1394505927062,
+      "currentSelectedDPS": 1051.1394505927062,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 1.0192863194822621
+    },
+    {
+      "Key": "retribution",
+      "Race": "Dwarf",
+      "historicalPublishedDPS": 1052.034428457517,
+      "correctedOriginalLoadoutDPS": 1052.9207600103045,
+      "currentSelectedDPS": 1052.9207600103045,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.8863315527876239
+    },
+    {
+      "Key": "shadow",
+      "Race": "Troll",
+      "historicalPublishedDPS": 826.0122636747822,
+      "correctedOriginalLoadoutDPS": 826.0898236569726,
+      "currentSelectedDPS": 826.0898236569726,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.07755998219045068
+    },
+    {
+      "Key": "shadow",
+      "Race": "Undead",
+      "historicalPublishedDPS": 832.6134680601804,
+      "correctedOriginalLoadoutDPS": 832.7482932192139,
+      "currentSelectedDPS": 832.7482932192139,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.13482515903353942
+    },
+    {
+      "Key": "shadow",
+      "Race": "Human",
+      "historicalPublishedDPS": 825.2592984251052,
+      "correctedOriginalLoadoutDPS": 825.0696197133848,
+      "currentSelectedDPS": 825.0696197133848,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.18967871172037576
+    },
+    {
+      "Key": "shadow",
+      "Race": "Dwarf",
+      "historicalPublishedDPS": 831.3808085679788,
+      "correctedOriginalLoadoutDPS": 831.2987211343013,
+      "currentSelectedDPS": 831.2987211343013,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.08208743367742954
+    },
+    {
+      "Key": "shadow",
+      "Race": "Night Elf",
+      "historicalPublishedDPS": 831.2420850416609,
+      "correctedOriginalLoadoutDPS": 831.1162621875018,
+      "currentSelectedDPS": 831.1162621875018,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.12582285415908245
+    },
+    {
+      "Key": "shadow",
+      "Race": "Gnome",
+      "historicalPublishedDPS": 828.309635543892,
+      "correctedOriginalLoadoutDPS": 828.1693634137309,
+      "currentSelectedDPS": 828.1693634137309,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.14027213016106543
+    },
+    {
+      "Key": "smite",
+      "Race": "Troll",
+      "historicalPublishedDPS": 462.3400229303578,
+      "correctedOriginalLoadoutDPS": 420.5291352998848,
+      "currentSelectedDPS": 444.04714663117977,
+      "selectedRecipeDelta": 23.518011331294986,
+      "historicalToCorrectedDifference": -41.81088763047302
+    },
+    {
+      "Key": "smite",
+      "Race": "Undead",
+      "historicalPublishedDPS": 479.37822778604544,
+      "correctedOriginalLoadoutDPS": 434.7257237760651,
+      "currentSelectedDPS": 463.9375945693925,
+      "selectedRecipeDelta": 29.21187079332742,
+      "historicalToCorrectedDifference": -44.65250400998036
+    },
+    {
+      "Key": "smite",
+      "Race": "Human",
+      "historicalPublishedDPS": 469.1173917418861,
+      "correctedOriginalLoadoutDPS": 426.0292486193936,
+      "currentSelectedDPS": 446.6512844677655,
+      "selectedRecipeDelta": 20.622035848371866,
+      "historicalToCorrectedDifference": -43.088143122492454
+    },
+    {
+      "Key": "smite",
+      "Race": "Dwarf",
+      "historicalPublishedDPS": 465.59603904501216,
+      "correctedOriginalLoadoutDPS": 422.9239994706044,
+      "currentSelectedDPS": 443.72532920331287,
+      "selectedRecipeDelta": 20.801329732708496,
+      "historicalToCorrectedDifference": -42.67203957440779
+    },
+    {
+      "Key": "smite",
+      "Race": "Night Elf",
+      "historicalPublishedDPS": 466.6218114960927,
+      "correctedOriginalLoadoutDPS": 423.7891165253147,
+      "currentSelectedDPS": 445.0263810531117,
+      "selectedRecipeDelta": 21.237264527797038,
+      "historicalToCorrectedDifference": -42.83269497077799
+    },
+    {
+      "Key": "smite",
+      "Race": "Gnome",
+      "historicalPublishedDPS": 478.65350847880563,
+      "correctedOriginalLoadoutDPS": 434.48863913497235,
+      "currentSelectedDPS": 455.24474175315567,
+      "selectedRecipeDelta": 20.75610261818332,
+      "historicalToCorrectedDifference": -44.16486934383329
+    },
+    {
+      "Key": "combat",
+      "Race": "Orc",
+      "historicalPublishedDPS": 713.6519462310126,
+      "correctedOriginalLoadoutDPS": 714.2603054501343,
+      "currentSelectedDPS": 714.2603054501343,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.6083592191216667
+    },
+    {
+      "Key": "combat",
+      "Race": "Troll",
+      "historicalPublishedDPS": 705.9019980015538,
+      "correctedOriginalLoadoutDPS": 705.7946698313746,
+      "currentSelectedDPS": 705.7946698313746,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.1073281701792439
+    },
+    {
+      "Key": "combat",
+      "Race": "Undead",
+      "historicalPublishedDPS": 729.0298870664702,
+      "correctedOriginalLoadoutDPS": 728.9289344877428,
+      "currentSelectedDPS": 728.9289344877428,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.10095257872740149
+    },
+    {
+      "Key": "combat",
+      "Race": "Windshaper",
+      "historicalPublishedDPS": 707.9682291814244,
+      "correctedOriginalLoadoutDPS": 708.4628380601289,
+      "currentSelectedDPS": 708.4628380601289,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.4946088787045255
+    },
+    {
+      "Key": "combat",
+      "Race": "Human",
+      "historicalPublishedDPS": 712.4126634878509,
+      "correctedOriginalLoadoutDPS": 712.0584755347172,
+      "currentSelectedDPS": 712.0584755347172,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.35418795313364626
+    },
+    {
+      "Key": "combat",
+      "Race": "Dwarf",
+      "historicalPublishedDPS": 707.4643533649511,
+      "correctedOriginalLoadoutDPS": 708.0039383525198,
+      "currentSelectedDPS": 708.0039383525198,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.5395849875686736
+    },
+    {
+      "Key": "combat",
+      "Race": "Night Elf",
+      "historicalPublishedDPS": 708.020932043436,
+      "correctedOriginalLoadoutDPS": 708.1837387542297,
+      "currentSelectedDPS": 708.1837387542297,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.16280671079368858
+    },
+    {
+      "Key": "combat",
+      "Race": "Gnome",
+      "historicalPublishedDPS": 705.7581948158892,
+      "correctedOriginalLoadoutDPS": 706.2085196777781,
+      "currentSelectedDPS": 706.2085196777781,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.4503248618889302
+    },
+    {
+      "Key": "combat",
+      "Race": "High Order",
+      "historicalPublishedDPS": 707.9682291814244,
+      "correctedOriginalLoadoutDPS": 708.4628380601289,
+      "currentSelectedDPS": 708.4628380601289,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.4946088787045255
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Orc",
+      "historicalPublishedDPS": 698.7567343070117,
+      "correctedOriginalLoadoutDPS": 698.6792916864091,
+      "currentSelectedDPS": 698.6792916864091,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.07744262060259643
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Troll",
+      "historicalPublishedDPS": 694.6244361038828,
+      "correctedOriginalLoadoutDPS": 695.1187105922497,
+      "currentSelectedDPS": 695.1187105922497,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.49427448836695476
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Undead",
+      "historicalPublishedDPS": 727.5437861839255,
+      "correctedOriginalLoadoutDPS": 727.8393640269953,
+      "currentSelectedDPS": 727.8393640269953,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.29557784306985013
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Windshaper",
+      "historicalPublishedDPS": 701.1988922169926,
+      "correctedOriginalLoadoutDPS": 701.4293174281742,
+      "currentSelectedDPS": 701.4293174281742,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.23042521118156856
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Human",
+      "historicalPublishedDPS": 692.712029931727,
+      "correctedOriginalLoadoutDPS": 692.8844445694859,
+      "currentSelectedDPS": 692.8844445694859,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.17241463775894772
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Dwarf",
+      "historicalPublishedDPS": 693.1017636281425,
+      "correctedOriginalLoadoutDPS": 693.0732179178293,
+      "currentSelectedDPS": 693.0732179178293,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.028545710313210293
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Night Elf",
+      "historicalPublishedDPS": 701.1432323677521,
+      "correctedOriginalLoadoutDPS": 701.5638714723185,
+      "currentSelectedDPS": 701.5638714723185,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.4206391045663622
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Gnome",
+      "historicalPublishedDPS": 698.219763426074,
+      "correctedOriginalLoadoutDPS": 697.9623330021325,
+      "currentSelectedDPS": 697.9623330021325,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.25743042394151416
+    },
+    {
+      "Key": "mutilate",
+      "Race": "High Order",
+      "historicalPublishedDPS": 701.1988922169926,
+      "correctedOriginalLoadoutDPS": 701.4293174281742,
+      "currentSelectedDPS": 701.4293174281742,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.23042521118156856
+    },
+    {
+      "Key": "subtlety",
+      "Race": "Orc",
+      "historicalPublishedDPS": 651.4176284188422,
+      "correctedOriginalLoadoutDPS": 652.6622916367542,
+      "currentSelectedDPS": 652.6622916367542,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 1.2446632179119206
+    },
+    {
+      "Key": "subtlety",
+      "Race": "Troll",
+      "historicalPublishedDPS": 652.4815985613765,
+      "correctedOriginalLoadoutDPS": 652.6325198480012,
+      "currentSelectedDPS": 652.6325198480012,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.15092128662467985
+    },
+    {
+      "Key": "subtlety",
+      "Race": "Undead",
+      "historicalPublishedDPS": 676.0237355030822,
+      "correctedOriginalLoadoutDPS": 676.1534644355781,
+      "currentSelectedDPS": 676.1534644355781,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.12972893249593653
+    },
+    {
+      "Key": "subtlety",
+      "Race": "Windshaper",
+      "historicalPublishedDPS": 655.007972043744,
+      "correctedOriginalLoadoutDPS": 655.2581622073085,
+      "currentSelectedDPS": 655.2581622073085,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.2501901635645254
+    },
+    {
+      "Key": "subtlety",
+      "Race": "Human",
+      "historicalPublishedDPS": 657.6954718623822,
+      "correctedOriginalLoadoutDPS": 657.3928478370977,
+      "currentSelectedDPS": 657.3928478370977,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.30262402528444454
+    },
+    {
+      "Key": "subtlety",
+      "Race": "Dwarf",
+      "historicalPublishedDPS": 647.3604564449712,
+      "correctedOriginalLoadoutDPS": 647.552244074729,
+      "currentSelectedDPS": 647.552244074729,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.19178762975775498
+    },
+    {
+      "Key": "subtlety",
+      "Race": "Night Elf",
+      "historicalPublishedDPS": 655.8770711403153,
+      "correctedOriginalLoadoutDPS": 655.7743591955174,
+      "currentSelectedDPS": 655.7743591955174,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.10271194479787482
+    },
+    {
+      "Key": "subtlety",
+      "Race": "Gnome",
+      "historicalPublishedDPS": 654.9473494724018,
+      "correctedOriginalLoadoutDPS": 654.8120894165402,
+      "currentSelectedDPS": 654.8120894165402,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.13526005586163592
+    },
+    {
+      "Key": "subtlety",
+      "Race": "High Order",
+      "historicalPublishedDPS": 655.007972043744,
+      "correctedOriginalLoadoutDPS": 655.2581622073085,
+      "currentSelectedDPS": 655.2581622073085,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.2501901635645254
+    },
+    {
+      "Key": "demonology",
+      "Race": "Orc",
+      "historicalPublishedDPS": 915.9280546618667,
+      "correctedOriginalLoadoutDPS": 915.9929805126267,
+      "currentSelectedDPS": 915.9929805126267,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.06492585076000523
+    },
+    {
+      "Key": "demonology",
+      "Race": "Troll",
+      "historicalPublishedDPS": 906.9734048650542,
+      "correctedOriginalLoadoutDPS": 906.2289936615315,
+      "currentSelectedDPS": 906.2289936615315,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.744411203522759
+    },
+    {
+      "Key": "demonology",
+      "Race": "Undead",
+      "historicalPublishedDPS": 929.7841543794189,
+      "correctedOriginalLoadoutDPS": 929.7674020660763,
+      "currentSelectedDPS": 929.7674020660763,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.01675231334252203
+    },
+    {
+      "Key": "demonology",
+      "Race": "Human",
+      "historicalPublishedDPS": 923.7445357431583,
+      "correctedOriginalLoadoutDPS": 923.359521042043,
+      "currentSelectedDPS": 923.359521042043,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.385014701115324
+    },
+    {
+      "Key": "demonology",
+      "Race": "Gnome",
+      "historicalPublishedDPS": 912.1558140690388,
+      "correctedOriginalLoadoutDPS": 911.4672556422515,
+      "currentSelectedDPS": 911.4672556422515,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.6885584267872673
+    },
+    {
+      "Key": "affliction",
+      "Race": "Orc",
+      "historicalPublishedDPS": 827.3944289294355,
+      "correctedOriginalLoadoutDPS": 826.239154556734,
+      "currentSelectedDPS": 826.239154556734,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -1.1552743727015695
+    },
+    {
+      "Key": "affliction",
+      "Race": "Troll",
+      "historicalPublishedDPS": 815.5622534185399,
+      "correctedOriginalLoadoutDPS": 815.9394793071075,
+      "currentSelectedDPS": 815.9394793071075,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.3772258885676365
+    },
+    {
+      "Key": "affliction",
+      "Race": "Undead",
+      "historicalPublishedDPS": 827.9378079969371,
+      "correctedOriginalLoadoutDPS": 827.2000349906848,
+      "currentSelectedDPS": 827.2000349906848,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.7377730062522687
+    },
+    {
+      "Key": "affliction",
+      "Race": "Human",
+      "historicalPublishedDPS": 834.8661521322555,
+      "correctedOriginalLoadoutDPS": 835.4783833731072,
+      "currentSelectedDPS": 835.4783833731072,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.61223124085177
+    },
+    {
+      "Key": "affliction",
+      "Race": "Gnome",
+      "historicalPublishedDPS": 815.7781617681775,
+      "correctedOriginalLoadoutDPS": 815.1629074323993,
+      "currentSelectedDPS": 815.1629074323993,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.6152543357782179
+    },
+    {
+      "Key": "ds_ruin",
+      "Race": "Orc",
+      "historicalPublishedDPS": 790.1305491240665,
+      "correctedOriginalLoadoutDPS": 790.564226366895,
+      "currentSelectedDPS": 790.564226366895,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.4336772428284803
+    },
+    {
+      "Key": "ds_ruin",
+      "Race": "Troll",
+      "historicalPublishedDPS": 780.0904263722052,
+      "correctedOriginalLoadoutDPS": 779.6727519073529,
+      "currentSelectedDPS": 779.6727519073529,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.4176744648523254
+    },
+    {
+      "Key": "ds_ruin",
+      "Race": "Undead",
+      "historicalPublishedDPS": 802.1316642875552,
+      "correctedOriginalLoadoutDPS": 802.2583314088508,
+      "currentSelectedDPS": 802.2583314088508,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.12666712129566804
+    },
+    {
+      "Key": "ds_ruin",
+      "Race": "Human",
+      "historicalPublishedDPS": 804.6747893115144,
+      "correctedOriginalLoadoutDPS": 805.4393860756256,
+      "currentSelectedDPS": 805.4393860756256,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.7645967641112748
+    },
+    {
+      "Key": "ds_ruin",
+      "Race": "Gnome",
+      "historicalPublishedDPS": 790.4837284253547,
+      "correctedOriginalLoadoutDPS": 789.5883278006235,
+      "currentSelectedDPS": 789.5883278006235,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.8954006247312236
+    },
+    {
+      "Key": "destruction",
+      "Race": "Orc",
+      "historicalPublishedDPS": 812.3781012894369,
+      "correctedOriginalLoadoutDPS": 812.9224094565825,
+      "currentSelectedDPS": 812.9224094565825,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.544308167145573
+    },
+    {
+      "Key": "destruction",
+      "Race": "Troll",
+      "historicalPublishedDPS": 816.9146214007002,
+      "correctedOriginalLoadoutDPS": 816.6801984353118,
+      "currentSelectedDPS": 816.6801984353118,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.23442296538837581
+    },
+    {
+      "Key": "destruction",
+      "Race": "Undead",
+      "historicalPublishedDPS": 820.5970734464812,
+      "correctedOriginalLoadoutDPS": 819.8209814392501,
+      "currentSelectedDPS": 819.8209814392501,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.7760920072311137
+    },
+    {
+      "Key": "destruction",
+      "Race": "Human",
+      "historicalPublishedDPS": 819.7127487580575,
+      "correctedOriginalLoadoutDPS": 819.8712735528051,
+      "currentSelectedDPS": 819.8712735528051,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.15852479474756365
+    },
+    {
+      "Key": "destruction",
+      "Race": "Gnome",
+      "historicalPublishedDPS": 805.9454161547626,
+      "correctedOriginalLoadoutDPS": 806.3023660625031,
+      "currentSelectedDPS": 806.3023660625031,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.35694990774049984
+    },
+    {
+      "Key": "fury",
+      "Race": "Orc",
+      "historicalPublishedDPS": 950.9593222376124,
+      "correctedOriginalLoadoutDPS": 952.0860611136899,
+      "currentSelectedDPS": 952.0860611136899,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 1.1267388760775248
+    },
+    {
+      "Key": "fury_sunder",
+      "Race": "Orc",
+      "historicalPublishedDPS": 924.9916456305929,
+      "correctedOriginalLoadoutDPS": 924.2156560779035,
+      "currentSelectedDPS": 924.2156560779035,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.7759895526893388
+    },
+    {
+      "Key": "fury",
+      "Race": "Tauren",
+      "historicalPublishedDPS": 947.5553738901095,
+      "correctedOriginalLoadoutDPS": 947.6202527746773,
+      "currentSelectedDPS": 947.6202527746773,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.06487888456774726
+    },
+    {
+      "Key": "fury_sunder",
+      "Race": "Tauren",
+      "historicalPublishedDPS": 916.1072456394244,
+      "correctedOriginalLoadoutDPS": 916.6836536914402,
+      "currentSelectedDPS": 916.6836536914402,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.5764080520158359
+    },
+    {
+      "Key": "fury",
+      "Race": "Troll",
+      "historicalPublishedDPS": 938.7375084062633,
+      "correctedOriginalLoadoutDPS": 938.6967083782986,
+      "currentSelectedDPS": 938.6967083782986,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.04080002796467852
+    },
+    {
+      "Key": "fury_sunder",
+      "Race": "Troll",
+      "historicalPublishedDPS": 914.1255756447221,
+      "correctedOriginalLoadoutDPS": 913.9796243716174,
+      "currentSelectedDPS": 913.9796243716174,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.14595127310462885
+    },
+    {
+      "Key": "fury",
+      "Race": "Undead",
+      "historicalPublishedDPS": 958.9657504612152,
+      "correctedOriginalLoadoutDPS": 958.2378584140837,
+      "currentSelectedDPS": 958.2378584140837,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.7278920471314905
+    },
+    {
+      "Key": "fury_sunder",
+      "Race": "Undead",
+      "historicalPublishedDPS": 924.036661151048,
+      "correctedOriginalLoadoutDPS": 924.3029700730847,
+      "currentSelectedDPS": 924.3029700730847,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.2663089220367283
+    },
+    {
+      "Key": "fury",
+      "Race": "Windshaper",
+      "historicalPublishedDPS": 943.1256468471211,
+      "correctedOriginalLoadoutDPS": 944.7629683157813,
+      "currentSelectedDPS": 944.7629683157813,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 1.637321468660275
+    },
+    {
+      "Key": "fury_sunder",
+      "Race": "Windshaper",
+      "historicalPublishedDPS": 915.8530202705998,
+      "correctedOriginalLoadoutDPS": 915.8017957981639,
+      "currentSelectedDPS": 915.8017957981639,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.05122447243593342
+    },
+    {
+      "Key": "fury",
+      "Race": "Human",
+      "historicalPublishedDPS": 954.7161240332188,
+      "correctedOriginalLoadoutDPS": 955.1216123949994,
+      "currentSelectedDPS": 955.1216123949994,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.40548836178061265
+    },
+    {
+      "Key": "fury_sunder",
+      "Race": "Human",
+      "historicalPublishedDPS": 933.118030632025,
+      "correctedOriginalLoadoutDPS": 932.8531909841865,
+      "currentSelectedDPS": 932.8531909841865,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.26483964783847114
+    },
+    {
+      "Key": "fury",
+      "Race": "Dwarf",
+      "historicalPublishedDPS": 946.446767150325,
+      "correctedOriginalLoadoutDPS": 946.5968353836357,
+      "currentSelectedDPS": 946.5968353836357,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.15006823331077612
+    },
+    {
+      "Key": "fury_sunder",
+      "Race": "Dwarf",
+      "historicalPublishedDPS": 903.293896474636,
+      "correctedOriginalLoadoutDPS": 903.114055645566,
+      "currentSelectedDPS": 903.114055645566,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.17984082906991716
+    },
+    {
+      "Key": "fury",
+      "Race": "Night Elf",
+      "historicalPublishedDPS": 943.5485962397042,
+      "correctedOriginalLoadoutDPS": 943.1090715722146,
+      "currentSelectedDPS": 943.1090715722146,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.4395246674896498
+    },
+    {
+      "Key": "fury_sunder",
+      "Race": "Night Elf",
+      "historicalPublishedDPS": 914.776975175889,
+      "correctedOriginalLoadoutDPS": 915.8285869421223,
+      "currentSelectedDPS": 915.8285869421223,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 1.05161176623335
+    },
+    {
+      "Key": "fury",
+      "Race": "Gnome",
+      "historicalPublishedDPS": 938.9365544545265,
+      "correctedOriginalLoadoutDPS": 938.9298372938243,
+      "currentSelectedDPS": 938.9298372938243,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.006717160702123692
+    },
+    {
+      "Key": "fury_sunder",
+      "Race": "Gnome",
+      "historicalPublishedDPS": 910.2063092044272,
+      "correctedOriginalLoadoutDPS": 911.7008924446341,
+      "currentSelectedDPS": 911.7008924446341,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 1.4945832402069072
+    },
+    {
+      "Key": "fury",
+      "Race": "High Order",
+      "historicalPublishedDPS": 943.1256468471211,
+      "correctedOriginalLoadoutDPS": 944.7629683157813,
+      "currentSelectedDPS": 944.7629683157813,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 1.637321468660275
+    },
+    {
+      "Key": "fury_sunder",
+      "Race": "High Order",
+      "historicalPublishedDPS": 915.8530202705998,
+      "correctedOriginalLoadoutDPS": 915.8017957981639,
+      "currentSelectedDPS": 915.8017957981639,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.05122447243593342
+    },
+    {
+      "Key": "arms",
+      "Race": "Orc",
+      "historicalPublishedDPS": 834.3501532939518,
+      "correctedOriginalLoadoutDPS": 834.843902812925,
+      "currentSelectedDPS": 834.843902812925,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.49374951897311803
+    },
+    {
+      "Key": "arms",
+      "Race": "Tauren",
+      "historicalPublishedDPS": 827.4802562619984,
+      "correctedOriginalLoadoutDPS": 828.144900706103,
+      "currentSelectedDPS": 828.144900706103,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.6646444441046242
+    },
+    {
+      "Key": "arms",
+      "Race": "Troll",
+      "historicalPublishedDPS": 828.1953768572108,
+      "correctedOriginalLoadoutDPS": 828.2102859900685,
+      "currentSelectedDPS": 828.2102859900685,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.014909132857724217
+    },
+    {
+      "Key": "arms",
+      "Race": "Undead",
+      "historicalPublishedDPS": 835.404185070791,
+      "correctedOriginalLoadoutDPS": 836.6744804239928,
+      "currentSelectedDPS": 836.6744804239928,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 1.2702953532018455
+    },
+    {
+      "Key": "arms",
+      "Race": "Windshaper",
+      "historicalPublishedDPS": 830.859958716465,
+      "correctedOriginalLoadoutDPS": 831.8440637233065,
+      "currentSelectedDPS": 831.8440637233065,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.9841050068414461
+    },
+    {
+      "Key": "arms",
+      "Race": "Human",
+      "historicalPublishedDPS": 842.3083694963019,
+      "correctedOriginalLoadoutDPS": 840.5711643185539,
+      "currentSelectedDPS": 840.5711643185539,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -1.7372051777480237
+    },
+    {
+      "Key": "arms",
+      "Race": "Dwarf",
+      "historicalPublishedDPS": 826.562230061803,
+      "correctedOriginalLoadoutDPS": 826.9011327255586,
+      "currentSelectedDPS": 826.9011327255586,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.33890266375556166
+    },
+    {
+      "Key": "arms",
+      "Race": "Night Elf",
+      "historicalPublishedDPS": 835.8892229322689,
+      "correctedOriginalLoadoutDPS": 836.5039876118839,
+      "currentSelectedDPS": 836.5039876118839,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.6147646796149502
+    },
+    {
+      "Key": "arms",
+      "Race": "Gnome",
+      "historicalPublishedDPS": 828.0549588955395,
+      "correctedOriginalLoadoutDPS": 827.7942318814904,
+      "currentSelectedDPS": 827.7942318814904,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.26072701404905274
+    },
+    {
+      "Key": "arms",
+      "Race": "High Order",
+      "historicalPublishedDPS": 830.859958716465,
+      "correctedOriginalLoadoutDPS": 831.8440637233065,
+      "currentSelectedDPS": 831.8440637233065,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.9841050068414461
+    },
+    {
+      "Key": "pet_melee",
+      "Race": "Tauren",
+      "historicalPublishedDPS": 891.3557939924784,
+      "correctedOriginalLoadoutDPS": 898.1936160437178,
+      "currentSelectedDPS": 898.1936160437178,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 6.837822051239414
+    },
+    {
+      "Key": "pet_melee",
+      "Race": "Windshaper",
+      "historicalPublishedDPS": 900.4921540516734,
+      "correctedOriginalLoadoutDPS": 906.3440104721619,
+      "currentSelectedDPS": 906.3440104721619,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 5.851856420488502
+    },
+    {
+      "Key": "pet_melee",
+      "Race": "Orc",
+      "historicalPublishedDPS": 904.3899655618146,
+      "correctedOriginalLoadoutDPS": 911.8931861415547,
+      "currentSelectedDPS": 911.8931861415547,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 7.503220579740059
+    },
+    {
+      "Key": "pet_melee",
+      "Race": "Human",
+      "historicalPublishedDPS": 905.9256217088262,
+      "correctedOriginalLoadoutDPS": 913.2014601903396,
+      "currentSelectedDPS": 913.2014601903396,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 7.2758384815134605
+    },
+    {
+      "Key": "pet_melee",
+      "Race": "Night Elf",
+      "historicalPublishedDPS": 900.8986809644256,
+      "correctedOriginalLoadoutDPS": 907.390324269394,
+      "currentSelectedDPS": 907.390324269394,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 6.49164330496842
+    },
+    {
+      "Key": "pet_melee",
+      "Race": "Dwarf",
+      "historicalPublishedDPS": 890.260435306779,
+      "correctedOriginalLoadoutDPS": 897.1002013688092,
+      "currentSelectedDPS": 897.1002013688092,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 6.839766062030208
+    },
+    {
+      "Key": "pet_melee",
+      "Race": "Troll",
+      "historicalPublishedDPS": 895.7420138615539,
+      "correctedOriginalLoadoutDPS": 902.1480862366557,
+      "currentSelectedDPS": 902.1480862366557,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 6.406072375101758
+    },
+    {
+      "Key": "pet_melee",
+      "Race": "High Order",
+      "historicalPublishedDPS": 900.4921540516734,
+      "correctedOriginalLoadoutDPS": 906.3440104721619,
+      "currentSelectedDPS": 906.3440104721619,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 5.851856420488502
+    },
+    {
+      "Key": "arcane_frost",
+      "Race": "Orc",
+      "historicalPublishedDPS": 727.0071895988589,
+      "correctedOriginalLoadoutDPS": 726.72904840883,
+      "currentSelectedDPS": 726.72904840883,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.2781411900289186
+    },
+    {
+      "Key": "arcane_frost",
+      "Race": "Troll",
+      "historicalPublishedDPS": 725.6022283338884,
+      "correctedOriginalLoadoutDPS": 724.772211991959,
+      "currentSelectedDPS": 724.772211991959,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.8300163419294222
+    },
+    {
+      "Key": "arcane_frost",
+      "Race": "Undead",
+      "historicalPublishedDPS": 739.5491549363575,
+      "correctedOriginalLoadoutDPS": 739.6907361707496,
+      "currentSelectedDPS": 739.6907361707496,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.14158123439210613
+    },
+    {
+      "Key": "arcane_frost",
+      "Race": "Human",
+      "historicalPublishedDPS": 736.8842991134713,
+      "correctedOriginalLoadoutDPS": 737.0706891290982,
+      "currentSelectedDPS": 737.0706891290982,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.18639001562689828
+    },
+    {
+      "Key": "arcane_frost",
+      "Race": "Gnome",
+      "historicalPublishedDPS": 732.6907533497418,
+      "correctedOriginalLoadoutDPS": 732.7460027240475,
+      "currentSelectedDPS": 732.7460027240475,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.055249374305617494
+    },
+    {
+      "Key": "arcane_frost",
+      "Race": "High Order",
+      "historicalPublishedDPS": 733.7174888285866,
+      "correctedOriginalLoadoutDPS": 733.1236800540357,
+      "currentSelectedDPS": 733.1236800540357,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.5938087745508938
+    },
+    {
+      "Key": "fury_2h",
+      "Race": "Orc",
+      "historicalPublishedDPS": 840.4971382316747,
+      "correctedOriginalLoadoutDPS": 839.4963307174717,
+      "currentSelectedDPS": 839.4963307174717,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -1.0008075142030748
+    },
+    {
+      "Key": "fury_2h",
+      "Race": "Tauren",
+      "historicalPublishedDPS": 822.9897332408214,
+      "correctedOriginalLoadoutDPS": 821.718134354957,
+      "currentSelectedDPS": 821.718134354957,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -1.271598885864364
+    },
+    {
+      "Key": "fury_2h",
+      "Race": "Undead",
+      "historicalPublishedDPS": 833.8298317008862,
+      "correctedOriginalLoadoutDPS": 834.5624579907234,
+      "currentSelectedDPS": 834.5624579907234,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.7326262898371851
+    },
+    {
+      "Key": "fury_2h",
+      "Race": "Troll",
+      "historicalPublishedDPS": 827.3765857460407,
+      "correctedOriginalLoadoutDPS": 826.3580544828988,
+      "currentSelectedDPS": 826.3580544828988,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -1.0185312631419947
+    },
+    {
+      "Key": "fury_2h",
+      "Race": "Windshaper",
+      "historicalPublishedDPS": 826.5167141668333,
+      "correctedOriginalLoadoutDPS": 826.1279578585023,
+      "currentSelectedDPS": 826.1279578585023,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.388756308330926
+    },
+    {
+      "Key": "fury_2h",
+      "Race": "Human",
+      "historicalPublishedDPS": 836.3783899817332,
+      "correctedOriginalLoadoutDPS": 835.8424995106385,
+      "currentSelectedDPS": 835.8424995106385,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.5358904710947172
+    },
+    {
+      "Key": "fury_2h",
+      "Race": "Dwarf",
+      "historicalPublishedDPS": 830.5806774423359,
+      "correctedOriginalLoadoutDPS": 829.6330299497944,
+      "currentSelectedDPS": 829.6330299497944,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.9476474925414777
+    },
+    {
+      "Key": "fury_2h",
+      "Race": "Gnome",
+      "historicalPublishedDPS": 825.3440327139108,
+      "correctedOriginalLoadoutDPS": 825.6443701158337,
+      "currentSelectedDPS": 825.6443701158337,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.3003374019228886
+    },
+    {
+      "Key": "fury_2h",
+      "Race": "Night Elf",
+      "historicalPublishedDPS": 828.771134238545,
+      "correctedOriginalLoadoutDPS": 827.8719501142078,
+      "currentSelectedDPS": 827.8719501142078,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.8991841243371255
+    },
+    {
+      "Key": "fury_2h",
+      "Race": "High Order",
+      "historicalPublishedDPS": 826.5167141668333,
+      "correctedOriginalLoadoutDPS": 826.1279578585023,
+      "currentSelectedDPS": 826.1279578585023,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.388756308330926
+    },
+    {
+      "Key": "retribution_physical",
+      "Race": "Undead",
+      "historicalPublishedDPS": 968.0121521764025,
+      "correctedOriginalLoadoutDPS": 967.9672644168569,
+      "currentSelectedDPS": 967.9672644168569,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.04488775954564517
+    },
+    {
+      "Key": "retribution_physical",
+      "Race": "Human",
+      "historicalPublishedDPS": 959.2425249668566,
+      "correctedOriginalLoadoutDPS": 959.7679491592409,
+      "currentSelectedDPS": 959.7679491592409,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.5254241923842073
+    },
+    {
+      "Key": "retribution_physical",
+      "Race": "Dwarf",
+      "historicalPublishedDPS": 949.4821831294507,
+      "correctedOriginalLoadoutDPS": 950.7910945750928,
+      "currentSelectedDPS": 950.7910945750928,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 1.3089114456420248
+    },
+    {
+      "Key": "tank_warrior",
+      "Race": "Orc",
+      "historicalPublishedDPS": 366.35927376779375,
+      "correctedOriginalLoadoutDPS": 368.93451642540856,
+      "currentSelectedDPS": 373.1415138491986,
+      "selectedRecipeDelta": 4.206997423790028,
+      "historicalToCorrectedDifference": 2.575242657614808
+    },
+    {
+      "Key": "tank_warrior",
+      "Race": "Tauren",
+      "historicalPublishedDPS": 367.49164506504985,
+      "correctedOriginalLoadoutDPS": 371.57841171773237,
+      "currentSelectedDPS": 376.7506297799895,
+      "selectedRecipeDelta": 5.172218062257116,
+      "historicalToCorrectedDifference": 4.086766652682513
+    },
+    {
+      "Key": "tank_warrior",
+      "Race": "Troll",
+      "historicalPublishedDPS": 364.7142169761555,
+      "correctedOriginalLoadoutDPS": 367.82230528307326,
+      "currentSelectedDPS": 374.3077431783773,
+      "selectedRecipeDelta": 6.485437895304017,
+      "historicalToCorrectedDifference": 3.1080883069177503
+    },
+    {
+      "Key": "tank_warrior",
+      "Race": "Undead",
+      "historicalPublishedDPS": 379.00324757744164,
+      "correctedOriginalLoadoutDPS": 381.9503005378033,
+      "currentSelectedDPS": 396.88024961035524,
+      "selectedRecipeDelta": 14.929949072551949,
+      "historicalToCorrectedDifference": 2.9470529603616455
+    },
+    {
+      "Key": "tank_warrior",
+      "Race": "Windshaper",
+      "historicalPublishedDPS": 366.0789450213619,
+      "correctedOriginalLoadoutDPS": 368.9644934427483,
+      "currentSelectedDPS": 375.8075225486645,
+      "selectedRecipeDelta": 6.84302910591623,
+      "historicalToCorrectedDifference": 2.8855484213863747
+    },
+    {
+      "Key": "tank_warrior",
+      "Race": "Human",
+      "historicalPublishedDPS": 370.5322971396704,
+      "correctedOriginalLoadoutDPS": 373.72453382370037,
+      "currentSelectedDPS": 376.8507079003765,
+      "selectedRecipeDelta": 3.1261740766761363,
+      "historicalToCorrectedDifference": 3.1922366840299787
+    },
+    {
+      "Key": "tank_warrior",
+      "Race": "Dwarf",
+      "historicalPublishedDPS": 365.32047296272054,
+      "correctedOriginalLoadoutDPS": 368.19123403724427,
+      "currentSelectedDPS": 372.3671741907109,
+      "selectedRecipeDelta": 4.175940153466627,
+      "historicalToCorrectedDifference": 2.8707610745237275
+    },
+    {
+      "Key": "tank_warrior",
+      "Race": "Night Elf",
+      "historicalPublishedDPS": 365.0699870387752,
+      "correctedOriginalLoadoutDPS": 367.77131184847445,
+      "currentSelectedDPS": 374.56347346642417,
+      "selectedRecipeDelta": 6.792161617949716,
+      "historicalToCorrectedDifference": 2.7013248096992584
+    },
+    {
+      "Key": "tank_warrior",
+      "Race": "Gnome",
+      "historicalPublishedDPS": 368.3102882672998,
+      "correctedOriginalLoadoutDPS": 371.0317511404307,
+      "currentSelectedDPS": 375.9496930379119,
+      "selectedRecipeDelta": 4.917941897481228,
+      "historicalToCorrectedDifference": 2.7214628731308608
+    },
+    {
+      "Key": "tank_warrior",
+      "Race": "High Order",
+      "historicalPublishedDPS": 366.0789450213619,
+      "correctedOriginalLoadoutDPS": 368.9644934427483,
+      "currentSelectedDPS": 375.8075225486645,
+      "selectedRecipeDelta": 6.84302910591623,
+      "historicalToCorrectedDifference": 2.8855484213863747
+    },
+    {
+      "Key": "protection_paladin",
+      "Race": "Undead",
+      "historicalPublishedDPS": 609.2413690314581,
+      "correctedOriginalLoadoutDPS": 608.31390362752,
+      "currentSelectedDPS": 613.4618155409972,
+      "selectedRecipeDelta": 5.147911913477287,
+      "historicalToCorrectedDifference": -0.9274654039381858
+    },
+    {
+      "Key": "protection_paladin",
+      "Race": "Human",
+      "historicalPublishedDPS": 592.70449021339,
+      "correctedOriginalLoadoutDPS": 591.5704837047705,
+      "currentSelectedDPS": 599.0797394432307,
+      "selectedRecipeDelta": 7.509255738460183,
+      "historicalToCorrectedDifference": -1.1340065086195636
+    },
+    {
+      "Key": "protection_paladin",
+      "Race": "Dwarf",
+      "historicalPublishedDPS": 583.3057071142567,
+      "correctedOriginalLoadoutDPS": 582.2898314198904,
+      "currentSelectedDPS": 585.8452884913642,
+      "selectedRecipeDelta": 3.555457071473711,
+      "historicalToCorrectedDifference": -1.0158756943662866
+    },
+    {
+      "Key": "feral_tank_druid",
+      "Race": "Tauren",
+      "historicalPublishedDPS": 606.9812493925093,
+      "correctedOriginalLoadoutDPS": 543.8253343398411,
+      "currentSelectedDPS": 543.8253343398411,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -63.155915052668206
+    },
+    {
+      "Key": "feral_tank_druid",
+      "Race": "Windshaper",
+      "historicalPublishedDPS": 608.9388769595379,
+      "correctedOriginalLoadoutDPS": 545.3314714946681,
+      "currentSelectedDPS": 545.3314714946681,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -63.60740546486977
+    },
+    {
+      "Key": "feral_tank_druid",
+      "Race": "Night Elf",
+      "historicalPublishedDPS": 611.4044087262838,
+      "correctedOriginalLoadoutDPS": 544.4007989062375,
+      "currentSelectedDPS": 544.4007989062375,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -67.00360982004634
+    },
+    {
+      "Key": "feral_tank_druid",
+      "Race": "High Order",
+      "historicalPublishedDPS": 608.9388769595379,
+      "correctedOriginalLoadoutDPS": 545.3314714946681,
+      "currentSelectedDPS": 545.3314714946681,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -63.60740546486977
+    }
+  ],
+  "BuildMeans": [
+    {
+      "Key": "affliction",
+      "Races": 5,
+      "historicalPublishedDPS": 824.307760849069,
+      "correctedOriginalLoadoutDPS": 824.0039919320066,
+      "currentSelectedDPS": 824.0039919320066,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.3037689170625299
+    },
+    {
+      "Key": "arcane",
+      "Races": 6,
+      "historicalPublishedDPS": 730.750476267787,
+      "correctedOriginalLoadoutDPS": 730.9498442296051,
+      "currentSelectedDPS": 730.9498442296051,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.19936796181817348
+    },
+    {
+      "Key": "arcane_frost",
+      "Races": 6,
+      "historicalPublishedDPS": 732.5751856934841,
+      "correctedOriginalLoadoutDPS": 732.3553947464534,
+      "currentSelectedDPS": 732.3553947464534,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.21979094703076876
+    },
+    {
+      "Key": "arms",
+      "Races": 10,
+      "historicalPublishedDPS": 831.9964670302795,
+      "correctedOriginalLoadoutDPS": 832.3332213917189,
+      "currentSelectedDPS": 832.3332213917189,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.33675436143936394
+    },
+    {
+      "Key": "balance",
+      "Races": 4,
+      "historicalPublishedDPS": 710.8711490190706,
+      "correctedOriginalLoadoutDPS": 710.6117436415693,
+      "currentSelectedDPS": 710.6117436415693,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.2594053775012526
+    },
+    {
+      "Key": "beast_mastery",
+      "Races": 8,
+      "historicalPublishedDPS": 902.2189416776076,
+      "correctedOriginalLoadoutDPS": 902.2898013221082,
+      "currentSelectedDPS": 902.2898013221082,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.07085964450055826
+    },
+    {
+      "Key": "combat",
+      "Races": 9,
+      "historicalPublishedDPS": 710.9084925971125,
+      "correctedOriginalLoadoutDPS": 711.1515842454171,
+      "currentSelectedDPS": 711.1515842454171,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.24309164830463537
+    },
+    {
+      "Key": "demonology",
+      "Races": 5,
+      "historicalPublishedDPS": 917.7171927437074,
+      "correctedOriginalLoadoutDPS": 917.3632305849058,
+      "currentSelectedDPS": 917.3632305849058,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.35396215880157345
+    },
+    {
+      "Key": "destruction",
+      "Races": 5,
+      "historicalPublishedDPS": 815.1095922098876,
+      "correctedOriginalLoadoutDPS": 815.1194457892905,
+      "currentSelectedDPS": 815.1194457892905,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.009853579402829382
+    },
+    {
+      "Key": "ds_ruin",
+      "Races": 5,
+      "historicalPublishedDPS": 793.5022315041392,
+      "correctedOriginalLoadoutDPS": 793.5046047118695,
+      "currentSelectedDPS": 793.5046047118695,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.0023732077303748158
+    },
+    {
+      "Key": "elemental",
+      "Races": 5,
+      "historicalPublishedDPS": 491.81292942187775,
+      "correctedOriginalLoadoutDPS": 491.45129414213596,
+      "currentSelectedDPS": 491.45129414213596,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.3616352797417903
+    },
+    {
+      "Key": "enhancement",
+      "Races": 5,
+      "historicalPublishedDPS": 812.104614031129,
+      "correctedOriginalLoadoutDPS": 812.0715287249835,
+      "currentSelectedDPS": 812.0715287249835,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.03308530614551728
+    },
+    {
+      "Key": "feral",
+      "Races": 4,
+      "historicalPublishedDPS": 723.1024406930894,
+      "correctedOriginalLoadoutDPS": 723.2579971917388,
+      "currentSelectedDPS": 725.0297912822964,
+      "selectedRecipeDelta": 1.7717940905575347,
+      "historicalToCorrectedDifference": 0.15555649864941756
+    },
+    {
+      "Key": "feral_tank_druid",
+      "Races": 4,
+      "historicalPublishedDPS": 609.0658530094672,
+      "correctedOriginalLoadoutDPS": 544.7222690588537,
+      "currentSelectedDPS": 544.7222690588537,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -64.34358395061352
+    },
+    {
+      "Key": "fire",
+      "Races": 6,
+      "historicalPublishedDPS": 729.4505029393481,
+      "correctedOriginalLoadoutDPS": 729.3446963846948,
+      "currentSelectedDPS": 729.3446963846948,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.10580655465334605
+    },
+    {
+      "Key": "frost",
+      "Races": 6,
+      "historicalPublishedDPS": 683.9981249552243,
+      "correctedOriginalLoadoutDPS": 683.529867766291,
+      "currentSelectedDPS": 683.529867766291,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.4682571889333455
+    },
+    {
+      "Key": "fury",
+      "Races": 10,
+      "historicalPublishedDPS": 946.6117290567217,
+      "correctedOriginalLoadoutDPS": 946.9924173956986,
+      "currentSelectedDPS": 946.9924173956986,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.38068833897692683
+    },
+    {
+      "Key": "fury_2h",
+      "Races": 10,
+      "historicalPublishedDPS": 829.8800951629614,
+      "correctedOriginalLoadoutDPS": 829.338274295353,
+      "currentSelectedDPS": 829.338274295353,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.5418208676084533
+    },
+    {
+      "Key": "fury_sunder",
+      "Races": 10,
+      "historicalPublishedDPS": 917.2362380093964,
+      "correctedOriginalLoadoutDPS": 917.4282221826883,
+      "currentSelectedDPS": 917.4282221826883,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.19198417329185985
+    },
+    {
+      "Key": "marksmanship",
+      "Races": 8,
+      "historicalPublishedDPS": 777.4148149991981,
+      "correctedOriginalLoadoutDPS": 776.646938542489,
+      "currentSelectedDPS": 776.646938542489,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.7678764567090752
+    },
+    {
+      "Key": "mutilate",
+      "Races": 9,
+      "historicalPublishedDPS": 700.9443922647223,
+      "correctedOriginalLoadoutDPS": 701.1088742359743,
+      "currentSelectedDPS": 701.1088742359743,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.16448197125199235
+    },
+    {
+      "Key": "pet_melee",
+      "Races": 8,
+      "historicalPublishedDPS": 898.6946024374031,
+      "correctedOriginalLoadoutDPS": 905.3268618993493,
+      "currentSelectedDPS": 905.3268618993493,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 6.6322594619462905
+    },
+    {
+      "Key": "protection_paladin",
+      "Races": 3,
+      "historicalPublishedDPS": 595.083855453035,
+      "correctedOriginalLoadoutDPS": 594.0580729173936,
+      "currentSelectedDPS": 599.4622811585307,
+      "selectedRecipeDelta": 5.40420824113706,
+      "historicalToCorrectedDifference": -1.0257825356413452
+    },
+    {
+      "Key": "retribution",
+      "Races": 3,
+      "historicalPublishedDPS": 1053.6774392994894,
+      "correctedOriginalLoadoutDPS": 1054.0124120894016,
+      "currentSelectedDPS": 1054.0124120894016,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.3349727899122475
+    },
+    {
+      "Key": "retribution_physical",
+      "Races": 3,
+      "historicalPublishedDPS": 958.91228675757,
+      "correctedOriginalLoadoutDPS": 959.5087693837302,
+      "currentSelectedDPS": 959.5087693837302,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.5964826261601957
+    },
+    {
+      "Key": "shadow",
+      "Races": 6,
+      "historicalPublishedDPS": 829.1362598855999,
+      "correctedOriginalLoadoutDPS": 829.0820138875175,
+      "currentSelectedDPS": 829.0820138875175,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.05424599808232718
+    },
+    {
+      "Key": "smite",
+      "Races": 6,
+      "historicalPublishedDPS": 470.28450024636663,
+      "correctedOriginalLoadoutDPS": 427.0809771377058,
+      "currentSelectedDPS": 449.7720796129863,
+      "selectedRecipeDelta": 22.69110247528052,
+      "historicalToCorrectedDifference": -43.20352310866082
+    },
+    {
+      "Key": "stormcaller",
+      "Races": 5,
+      "historicalPublishedDPS": 456.2669577221873,
+      "correctedOriginalLoadoutDPS": 455.74140879117687,
+      "currentSelectedDPS": 455.74140879117687,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": -0.5255489310104963
+    },
+    {
+      "Key": "subtlety",
+      "Races": 9,
+      "historicalPublishedDPS": 656.2021394989844,
+      "correctedOriginalLoadoutDPS": 656.3884600954261,
+      "currentSelectedDPS": 656.3884600954261,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 0.18632059644170973
+    },
+    {
+      "Key": "survival",
+      "Races": 8,
+      "historicalPublishedDPS": 884.838355133178,
+      "correctedOriginalLoadoutDPS": 891.7800051652475,
+      "currentSelectedDPS": 891.7800051652475,
+      "selectedRecipeDelta": 0.0,
+      "historicalToCorrectedDifference": 6.941650032069617
+    },
+    {
+      "Key": "tank_warrior",
+      "Races": 10,
+      "historicalPublishedDPS": 367.89593188376307,
+      "correctedOriginalLoadoutDPS": 370.8933351699364,
+      "currentSelectedDPS": 377.2426230110673,
+      "selectedRecipeDelta": 6.349287841130928,
+      "historicalToCorrectedDifference": 2.9974032861733293
+    }
+  ]
+}

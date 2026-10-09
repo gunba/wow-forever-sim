@@ -166,6 +166,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionPaladin, {
 	// Inputs to include in the 'Other' section on the settings tab.
 	otherInputs: {
 		inputs: [
+			ProtectionPaladinInputs.SealOfFuryShieldLifetime,
 			OtherInputs.TankAssignment,
 			OtherInputs.IncomingHps,
 			OtherInputs.HealingCadence,

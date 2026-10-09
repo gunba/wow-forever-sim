@@ -38,6 +38,12 @@ func (hunter *Hunter) getFreezingTrapConfig(timer *core.Timer) core.SpellConfig 
 		ThreatMultiplier: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+			if hunter.Env.IsForever() && hunter.DistanceFromTarget <= 5 {
+				result := spell.CalcAndDealOutcome(sim, target, spell.OutcomeMagicHit)
+				if result.Landed() {
+					hunter.procEntrapment(sim, target)
+				}
+			}
 		},
 	}
 }

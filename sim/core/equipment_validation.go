@@ -2,6 +2,7 @@ package core
 
 import (
 	"fmt"
+	"slices"
 
 	"github.com/wowsims/classic/sim/core/proto"
 )
@@ -25,6 +26,9 @@ func ClassMaxArmorType(class proto.Class) proto.ArmorType {
 
 func ValidateEquipmentArmor(class proto.Class, equipment Equipment) error {
 	for slot, item := range equipment {
+		if item.ID != 0 && len(item.ClassAllowlist) > 0 && !slices.Contains(item.ClassAllowlist, class) {
+			return fmt.Errorf("%s cannot equip %s in %s: class restriction", class, item.Name, proto.ItemSlot(slot))
+		}
 		if item.ID != 0 && item.ArmorType > ClassMaxArmorType(class) {
 			return fmt.Errorf("%s cannot wear %s (%s) in %s", class, item.Name, item.ArmorType, proto.ItemSlot(slot))
 		}

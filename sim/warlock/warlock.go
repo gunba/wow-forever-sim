@@ -46,6 +46,7 @@ type Warlock struct {
 
 	BasePets      []*WarlockPet
 	ActivePet     *WarlockPet
+	summoningPet  *WarlockPet
 	SacrificedPet *WarlockPet
 	Felhunter     *WarlockPet
 	Imp           *WarlockPet
@@ -168,6 +169,7 @@ func (warlock *Warlock) AddPartyBuffs(partyBuffs *proto.PartyBuffs) {
 }
 
 func (warlock *Warlock) Reset(sim *core.Simulation) {
+	warlock.summoningPet = nil
 	warlock.setDefaultActivePet()
 	warlock.SacrificedPet = nil
 	if pet := warlock.petFromSummon(warlock.Options.Sacrifice); pet != nil && warlock.DemonicSacrificeAuras != nil {

@@ -55,12 +55,14 @@ type Paladin struct {
 	aurasSoR         []*core.Aura
 	aurasSoC         []*core.Aura
 	aurasSotC        []*core.Aura
+	aurasSoF         []*core.Aura
 
 	currentJudgement *core.Spell
 	allJudgeSpells   [][]*core.Spell
 	spellsJoR        []*core.Spell
 	spellsJoC        []*core.Spell
 	spellsJotC       []*core.Spell
+	spellsJoF        []*core.Spell
 
 	// Twist of Light banks a separate Echo for each replaced seal.
 	sealProcs   map[*core.Aura]sealEchoSource
@@ -78,6 +80,9 @@ type Paladin struct {
 	// highest rank seal spell if available
 	sealOfRighteousness *core.Spell
 	sealOfCommand       *core.Spell
+	sealOfFury          *core.Spell
+	furyShield          *core.Shield
+	furyManaMetrics     *core.ResourceMetrics
 }
 
 // Implemented by each Paladin spec.
@@ -110,14 +115,17 @@ func (paladin *Paladin) Initialize() {
 	paladin.registerSealOfRighteousness()
 	paladin.registerSealOfCommand()
 	paladin.registerSealOfTheCrusader()
+	paladin.registerSealOfFury()
 
 	paladin.allJudgeSpells = append(paladin.allJudgeSpells, paladin.spellsJoR)
 	paladin.allJudgeSpells = append(paladin.allJudgeSpells, paladin.spellsJoC)
 	paladin.allJudgeSpells = append(paladin.allJudgeSpells, paladin.spellsJotC)
+	paladin.allJudgeSpells = append(paladin.allJudgeSpells, paladin.spellsJoF)
 
 	paladin.allSealAuras = append(paladin.allSealAuras, paladin.aurasSoR)
 	paladin.allSealAuras = append(paladin.allSealAuras, paladin.aurasSoC)
 	paladin.allSealAuras = append(paladin.allSealAuras, paladin.aurasSotC)
+	paladin.allSealAuras = append(paladin.allSealAuras, paladin.aurasSoF)
 
 	// Active abilities
 	paladin.registerForbearance()
@@ -156,7 +164,7 @@ func NewPaladin(character *core.Character, options *proto.Player, paladinOptions
 	}
 	core.FillTalentsProto(paladin.Talents.ProtoReflect(), options.TalentsString, TalentTreeSizes)
 
-	if paladin.Options.Aura == proto.PaladinAura_SanctityAura {
+	if paladin.Options.Aura == proto.PaladinAura_SanctityAura || paladin.Options.Aura == proto.PaladinAura_RetributionAura {
 		paladin.primaryPaladinAura = paladin.Options.Aura
 	}
 
@@ -203,6 +211,14 @@ func (paladin *Paladin) ResetCurrentPaladinAura() {
 	if paladin.primaryPaladinAura == proto.PaladinAura_SanctityAura && !paladin.Env.IsForever() {
 		paladin.currentPaladinAura = core.SanctityAuraAura(paladin.GetCharacter())
 	}
+	if paladin.primaryPaladinAura == proto.PaladinAura_RetributionAura && paladin.Env.IsForever() {
+		// Explicit raid/party configuration wins. Without one, this option
+		// unambiguously names the receiving Paladin as its own caster.
+		paladin.currentPaladinAura = paladin.GetAura("Retribution Aura")
+		if paladin.currentPaladinAura == nil {
+			paladin.currentPaladinAura = core.RetributionAura(paladin.GetCharacter(), 0, core.ReflectionProvider{Reference: &proto.UnitReference{Type: proto.UnitReference_Self}})
+		}
+	}
 }
 
 func (paladin *Paladin) getPrimarySealSpell(primarySeal proto.PaladinSeal) *core.Spell {
@@ -212,6 +228,8 @@ func (paladin *Paladin) getPrimarySealSpell(primarySeal proto.PaladinSeal) *core
 		return paladin.sealOfCommand
 	case proto.PaladinSeal_Righteousness:
 		return paladin.sealOfRighteousness
+	case proto.PaladinSeal_Fury:
+		return paladin.sealOfFury
 	default:
 		return paladin.sealOfRighteousness
 	}

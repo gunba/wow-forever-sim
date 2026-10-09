@@ -1,0 +1,12 @@
+{
+  "uiSourceDigest": "68eec46ffbd79078fcda05f159ce51a4f27775ffd853981b3acfcd98cddba15a",
+  "wasmLocalSHA256": "3f9b1366828dafa3a325c0b25f29b9463cf55eb2971b091a6d6f204fd54187ca",
+  "finalPresentationChecks": [
+    "typecheck",
+    "built source-presets labels",
+    "test_build_reviews.py",
+    "uncertainties.py --check",
+    "check_questions.mjs"
+  ],
+  "nativeRecipesUnchanged": true
+}

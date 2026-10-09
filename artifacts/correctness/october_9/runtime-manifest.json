@@ -1,0 +1,2572 @@
+{
+  "phase": "70291-final-defaults-release3",
+  "createdUtc": "2026-10-09T09:49:16.670504+00:00",
+  "sourceDigest": "8e9749d9de2256f29d72a1579e8fd713a66555e16ceb91a523868b9416a62749",
+  "sourceDigestAlgorithm": "sha256(sorted(path+NUL+sha256+newline))",
+  "sources": [
+    {
+      "path": "assets/database/db.bin",
+      "sha256": "a6dde83f779683dfff39486b24916bf5d7b35282d505dde071b7bbcced875d02"
+    },
+    {
+      "path": "assets/database/db.json",
+      "sha256": "b827269a2204adfd60c9faa32cf6ebe82fd3639cff2bc72cf502800a288375c0"
+    },
+    {
+      "path": "proto/api.proto",
+      "sha256": "25e0b480b482302bfaee9341dc7b6e89093744a314a9062cf5961c1963e69cd0"
+    },
+    {
+      "path": "proto/apl.proto",
+      "sha256": "e83a829791d7845dbbe4a0f81f69ab9a064502d8173cbd02bc1af21fa1a5afd8"
+    },
+    {
+      "path": "proto/common.proto",
+      "sha256": "da38361ce5cd6b47d72ca99f16abdc4bf811844e0733d2dd917a4eb99a838448"
+    },
+    {
+      "path": "proto/druid.proto",
+      "sha256": "ad5cbfc8c494194cb75389298a37db3dfe0e3233013e920d6fd8d0b739b899f2"
+    },
+    {
+      "path": "proto/hunter.proto",
+      "sha256": "3c13b194ef7314b3a316c3e8ff1d82a65b15b67ee9fbaa55e8616006cfc85e7c"
+    },
+    {
+      "path": "proto/mage.proto",
+      "sha256": "11ac93aa7bf72ed0fb1654679853c4f221edcd5f4e024b1565889c15a932b560"
+    },
+    {
+      "path": "proto/paladin.proto",
+      "sha256": "f19e13f98ac9b70609d831415d606aa8ccd125b80edd263d5b6e5774a0bb0feb"
+    },
+    {
+      "path": "proto/priest.proto",
+      "sha256": "d7a1882ce94aecefe6d6a580e9d8c67be7977c51df611f631da5c88cc6a75231"
+    },
+    {
+      "path": "proto/rogue.proto",
+      "sha256": "c98bf8e9a91eef7010f07aa5357b3512292f09f32bb78d7c5d03c53705d9e110"
+    },
+    {
+      "path": "proto/shaman.proto",
+      "sha256": "36cadb508b86cb4f5260d9d41156cd3a87571ad67357684bd50404a5168a2041"
+    },
+    {
+      "path": "proto/test.proto",
+      "sha256": "9c2ebd33db66a0e46afa139e5147f427b6dc95535fc0d4fca8c797b4bd011909"
+    },
+    {
+      "path": "proto/ui.proto",
+      "sha256": "7fbfb27dd4c076492ff16a3b70c768ac608817ed82df0264f171f8c66b32810d"
+    },
+    {
+      "path": "proto/warlock.proto",
+      "sha256": "98e6bb59a0d0906aac4fa542e753a87a023e788e644a4e4051e359bbad771559"
+    },
+    {
+      "path": "proto/warrior.proto",
+      "sha256": "2b05f8435548e90beca92abd9c713a1185ef279b62c5e388d3f08be6ea8b98fe"
+    },
+    {
+      "path": "sim/common/enchant_effects.go",
+      "sha256": "0607f69ad5979239b332af50a213c25ae5ff9c5f05064250e10ab3309ec3c7f9"
+    },
+    {
+      "path": "sim/common/forever_enchants.go",
+      "sha256": "1e63df479ce91f0c3b22703f5b1d06f93b2a6cf8fc85c2dd9cf12a5f4f5d2fb7"
+    },
+    {
+      "path": "sim/common/forever_item_effects.go",
+      "sha256": "751019e2d56c7693b4a5d5197f725bafa01e55bf9c84293e414b6f6b32ddfb53"
+    },
+    {
+      "path": "sim/common/forever_items.go",
+      "sha256": "c411ce0d9bd0fd0f0a85982b36d833eda946c13c715d8991fc9c05c66104f9df"
+    },
+    {
+      "path": "sim/common/guardians/core_hound.go",
+      "sha256": "d558d67049f6a86aa933d6fbbe397ba6203130a1af77f578037f93101fcf27fe"
+    },
+    {
+      "path": "sim/common/guardians/emerald_dragon_whelp.go",
+      "sha256": "764433012b7ab36502d31590350d72636be59bf0e2bbcfe63867700fb27374d2"
+    },
+    {
+      "path": "sim/common/guardians/eskhandar.go",
+      "sha256": "34a9cc8b765a1208e8e4d9e30e82cd16d317e2bb0707944ffb9a8c8087d743e1"
+    },
+    {
+      "path": "sim/common/guardians/guardians.go",
+      "sha256": "74a66afc45f45d4bdf76302db394d85f147bc8d7f7aa7239a8830546cde1290f"
+    },
+    {
+      "path": "sim/common/includes.go",
+      "sha256": "57e751db9aed78cb6d2b8802cb2d436a2b967115dc95a123d939b6be492bc67c"
+    },
+    {
+      "path": "sim/common/item_effects.go",
+      "sha256": "a319c033177af0fc4a7c03a889d21227ac7adae9abaa4c30e722ce980b3f8ff4"
+    },
+    {
+      "path": "sim/common/item_sets/crafted.go",
+      "sha256": "565a5ce36680c384ded57a66044361363cbd1a130402fcf6aa84627c635ef7c0"
+    },
+    {
+      "path": "sim/common/item_sets/dungeon_set_1.go",
+      "sha256": "4c3a82f5b68192e4f63361b68bea69cb6e2a9b142e73a2449651730155efbe81"
+    },
+    {
+      "path": "sim/common/item_sets/item_sets_pve.go",
+      "sha256": "eb3c4316e1a7bed8967f927673cb260acb190067818e0db08996cc1b2d1c038f"
+    },
+    {
+      "path": "sim/common/item_sets/item_sets_pvp.go",
+      "sha256": "2cc4b1fa447675bd9b225b5f601f3622672b3eb1113421e23b25c720d1725490"
+    },
+    {
+      "path": "sim/common/item_sets/natures_bounty.go",
+      "sha256": "541390b8ee8abad4e6f5ce7faa79bd42195d3d45684432409a2ff14c66acfaa6"
+    },
+    {
+      "path": "sim/common/itemhelpers/stat_bonus_procs.go",
+      "sha256": "c7e41a7bd76cfec10c71f826584cff279cc95c6a2ed5f7c147d8d408cc5b1e29"
+    },
+    {
+      "path": "sim/common/itemhelpers/weaponprocs.go",
+      "sha256": "5588edccf26c51eb81242fbd7f669aef01f137d08d5a71d8ceda6c8bc1159f09"
+    },
+    {
+      "path": "sim/core/agent.go",
+      "sha256": "e6f7f0c33dbca959ac2584a0e4bf614e05b4a0ed960684ad66fc4ab4d0fddcbd"
+    },
+    {
+      "path": "sim/core/api.go",
+      "sha256": "7c79e8705bf075b91b6710c913e48635878bd6cbb932c78f5a1a1b8066aa768a"
+    },
+    {
+      "path": "sim/core/apl.go",
+      "sha256": "481f6b7c1e864f027fb37f6f00c82665cd82bdb001070d8ba8348c3120d245e7"
+    },
+    {
+      "path": "sim/core/apl_action.go",
+      "sha256": "14a63489728969919b1b8c986f8530f92d3853c6c16f2f99f4d1e27c9c5673a2"
+    },
+    {
+      "path": "sim/core/apl_actions_casting.go",
+      "sha256": "00860b4b978d64b96191a7d74a979e9e5e513efc74447e9937b875e36c992f2d"
+    },
+    {
+      "path": "sim/core/apl_actions_misc.go",
+      "sha256": "0db0d565d5da8b7dcc21bc2b297ca0d19189602b2cbe898c4ca07aef5e244a2e"
+    },
+    {
+      "path": "sim/core/apl_actions_sequences.go",
+      "sha256": "5509ff0c272a2177a75505b307e0b5dfcee31f9f58f82f4fc0f6b38228e7f934"
+    },
+    {
+      "path": "sim/core/apl_actions_timing.go",
+      "sha256": "ed180e1145023e978e1b24fbbe8e66424c242141e2bda2913b22246bfdea5a6b"
+    },
+    {
+      "path": "sim/core/apl_helpers.go",
+      "sha256": "61b15bb56550ec4273d0d5b17a4acf4247e7048cb516a478424d201760156782"
+    },
+    {
+      "path": "sim/core/apl_value.go",
+      "sha256": "beddac5db9dc2a57bbfe00dae50f5bfd8037e7a1a0f19cfd059a100b392a8787"
+    },
+    {
+      "path": "sim/core/apl_values_aura.go",
+      "sha256": "2e0e871f56b9ea54e40639de065f931ca32f1649d2bd9c507f78effd1c7e3956"
+    },
+    {
+      "path": "sim/core/apl_values_auto_attacks.go",
+      "sha256": "da8f3cc53f739e73cadaa4d2cc1542791c4ab2be1c8bd87f52bc6bf7bee6c41b"
+    },
+    {
+      "path": "sim/core/apl_values_core.go",
+      "sha256": "1fec09a2c195685b9f5edd18e8bb5ec44eab541f7b4d6ec5fe1c033db3e423d3"
+    },
+    {
+      "path": "sim/core/apl_values_encounter.go",
+      "sha256": "98f59855561684cb420cf63c00a3c23b0970c067a3163e8f2117ef43ee18f02a"
+    },
+    {
+      "path": "sim/core/apl_values_gcd.go",
+      "sha256": "3a5e63f9a1e4e80c9b01505e18ed7b176c1e5b34904b8e57d339a504f2bf53a4"
+    },
+    {
+      "path": "sim/core/apl_values_operators.go",
+      "sha256": "ba6f8c3ddd4f20a242e246c287ab04963388ba3c348aa72d1f5c834d55c2cf4f"
+    },
+    {
+      "path": "sim/core/apl_values_properties.go",
+      "sha256": "109bd97c8d4aa4bcff03c7426a32a4370e27b9473b417bcacb790a943bfc0cda"
+    },
+    {
+      "path": "sim/core/apl_values_resources.go",
+      "sha256": "a2f7acc05887610e25e3662402abe07b5d234d0345227884f4eb470d8a5a5875"
+    },
+    {
+      "path": "sim/core/apl_values_sequences.go",
+      "sha256": "684c6b04b0391d26aae516be591af68c5812ca8657b41c9e3653d374560c0f4e"
+    },
+    {
+      "path": "sim/core/apl_values_spell.go",
+      "sha256": "d4385da39ecf34476e8fe24d9cd12179221ef317e734307c7044b19621438837"
+    },
+    {
+      "path": "sim/core/apl_values_stats.go",
+      "sha256": "953b7ece7968d466fdf3428d91e32610a454df0e830acf02dcdcc81a8dfee3da"
+    },
+    {
+      "path": "sim/core/attack.go",
+      "sha256": "ea0ae2b489743ec7985dee871261d6cd09ccdf26f62cc04b5c1b7354166fc9cd"
+    },
+    {
+      "path": "sim/core/aura.go",
+      "sha256": "2e4d188fb765207d7d9ba90a2c513488b41560f60d7e79ffb589ddf060ea60b1"
+    },
+    {
+      "path": "sim/core/aura_helpers.go",
+      "sha256": "724f1f5a7604399425c5ddbeee578685cbcbe5cc0fc6ec346d2780d8bcb3af0d"
+    },
+    {
+      "path": "sim/core/base_stats.go",
+      "sha256": "a485e9ccd2043421511c73b28a91c4734b7768f4b4ee68f65954b4e984358f16"
+    },
+    {
+      "path": "sim/core/base_stats_auto_gen.go",
+      "sha256": "edc6879f7e2636b058c5b7bf1a8c7962fed627dbf012dfc6239ca3d8a9d9e0cd"
+    },
+    {
+      "path": "sim/core/buffs.go",
+      "sha256": "bdf250a187a25e17599f433f18fccefb9e6c11ead232a61892ab0f9b420c0b17"
+    },
+    {
+      "path": "sim/core/bulksim.go",
+      "sha256": "5cfaa6fad85cc3155d01fd1b9148a6f38c115e4d504de610a50b4c62a66d954c"
+    },
+    {
+      "path": "sim/core/cast.go",
+      "sha256": "909d6f3f67e7ec031a00e77326c81598f1c1c952ef33f50172a3eac99971bd45"
+    },
+    {
+      "path": "sim/core/character.go",
+      "sha256": "3470891a7755558fa29b2e4400e782e21c68172580541ea9ae18897d4410d1ef"
+    },
+    {
+      "path": "sim/core/config.go",
+      "sha256": "274a91036ffcbb67b08f74971075aa7b9972238ddbffdc6b5ef1c51749560606"
+    },
+    {
+      "path": "sim/core/constants.go",
+      "sha256": "46b564294f274ff39791b25bfab8724da1858aceaad2be2e28dbe5b7d19f2493"
+    },
+    {
+      "path": "sim/core/consumes.go",
+      "sha256": "87b0da4e77882be5851bf04d6e263b369d864f686ba2a67a64d0b47cb3cb44f5"
+    },
+    {
+      "path": "sim/core/cooldown.go",
+      "sha256": "9bdb9b08312b2296e374f4de0f401feb4be8ffbee0517bb12c30ca988dc5d26e"
+    },
+    {
+      "path": "sim/core/crowd_control.go",
+      "sha256": "596869e761503f1c4e0f76371df7e0bfc5f916d5d4a5b82b2eacf73566b51b9d"
+    },
+    {
+      "path": "sim/core/database.go",
+      "sha256": "d3ca41acf492e19abe06f1388b4a96565ef798320d20a7d24c043e1051d34b24"
+    },
+    {
+      "path": "sim/core/database_load.go",
+      "sha256": "5d8d0c8f24ee7cf2fa488aa5fc5234bbe8cd133276149c196e67fe17b275e02a"
+    },
+    {
+      "path": "sim/core/debuffs.go",
+      "sha256": "91fab9b86b553908853bbd241e7119f93fb739cb942fb36473ab6d783b4aecc5"
+    },
+    {
+      "path": "sim/core/dot.go",
+      "sha256": "3d468891f0e9ad3102d33e4f9350fbaf1eea87441ac2b13a8a8710ee5ce5e776"
+    },
+    {
+      "path": "sim/core/enchant_requirements.go",
+      "sha256": "39da53361c05935c6933d50c3b8f94297ace5672b07f92e6d2de33a4f7a353f9"
+    },
+    {
+      "path": "sim/core/energy.go",
+      "sha256": "dcb16375c1c44238370b21f0ee6895a02c3a2655d5bae030e29a4abbeaaab012"
+    },
+    {
+      "path": "sim/core/environment.go",
+      "sha256": "58274f9eb72fd34b17decdab80dc3bb8138ff548ca859ab6ba1215b6b4ea0233"
+    },
+    {
+      "path": "sim/core/equipment_scaling.go",
+      "sha256": "c2d479c36cc01b8a5881a4ac878501cd620d701b6f3bcfc028aecbb7f0cad50a"
+    },
+    {
+      "path": "sim/core/equipment_validation.go",
+      "sha256": "b3ab0b80f19e346c40b78ac33b641f5842dcc9d2a091f7f672ccac1ec1c3a25c"
+    },
+    {
+      "path": "sim/core/exclusive_effect.go",
+      "sha256": "b466bab9f1ae37e7628bf0a461183defab3c839bad34a21ea36bc2c7232f15ac"
+    },
+    {
+      "path": "sim/core/flags.go",
+      "sha256": "adfb69c1f242d7a53291ba9bf962cb8a9206db99d6320e97aba5b6e145f75017"
+    },
+    {
+      "path": "sim/core/flametongue_totem.go",
+      "sha256": "12b855daf3944e678a83c3d1c2b2ce279e799e44d452505e0ff20edf98a197e6"
+    },
+    {
+      "path": "sim/core/focus.go",
+      "sha256": "f398c67766cb888957af2d0e91e710ede609415d26e890f76e696ce35a0d3345"
+    },
+    {
+      "path": "sim/core/forever_equipment_sets.go",
+      "sha256": "bf83be0b0aac61c3024ec2b01f5fd5a9f39ace58b060eb794bc58f90d226662f"
+    },
+    {
+      "path": "sim/core/forever_equipment_sets_generated.go",
+      "sha256": "27eb5e514adc13053da123e91e92459578a8c0f1dad1e56bd9828a966dcc64d3"
+    },
+    {
+      "path": "sim/core/forever_expected_stats.go",
+      "sha256": "12e671d15e6f97cec8455bd8839a0c410b9caec53861de2f2adebfc7166a800e"
+    },
+    {
+      "path": "sim/core/forever_gnome.go",
+      "sha256": "2689751e04bb7f7879b54e887325bbcab117ca8ddc60bb44fc4bda7645d3025a"
+    },
+    {
+      "path": "sim/core/forever_incoming_rage.go",
+      "sha256": "9021253dc3b2ecfc6913af2b3e7240cb909c820e5c7f26c33ed3dc6e0cbeafd3"
+    },
+    {
+      "path": "sim/core/forever_pet_stats.go",
+      "sha256": "d63a87d6b6bcf2d228b85da883562c9ceaa375967c244d5f1dfb4f80de2fdbdf"
+    },
+    {
+      "path": "sim/core/forever_tank_support.go",
+      "sha256": "d500493293d63d72b9ad7a32b0222f06261c5ffd01251c375e32b4f9be15f7da"
+    },
+    {
+      "path": "sim/core/forever_tank_support.json",
+      "sha256": "e5a70866641ad3a7b326524e192698920f51d386a7531dbe023f0ca329fd5ccf"
+    },
+    {
+      "path": "sim/core/forever_tier1.go",
+      "sha256": "9110f4f5b7e29794b368ab82f7f238fa3337233a9b11bbf94680c53696a417e8"
+    },
+    {
+      "path": "sim/core/gcd.go",
+      "sha256": "0e9873e8109414a00cce1f60cb23657e1e26645cd421b7d412954e4a33f7e2d3"
+    },
+    {
+      "path": "sim/core/health.go",
+      "sha256": "2b3115170715b0ed051424236e0b297115dc7e9090d947c7870af397000b6821"
+    },
+    {
+      "path": "sim/core/item_effects.go",
+      "sha256": "88e6fdb50b99b6d7bd77b0e6e5fd75458ec2069193f9bd90788b06e74f8c4e81"
+    },
+    {
+      "path": "sim/core/item_sets.go",
+      "sha256": "638b09728a20485706c8299ca62b12304a398233d743cbee07da0ad8a338d359"
+    },
+    {
+      "path": "sim/core/item_swaps.go",
+      "sha256": "4632d08462a20f305d4c95776293581006a4b09fc14475903048f00c3541d46a"
+    },
+    {
+      "path": "sim/core/major_cooldown.go",
+      "sha256": "422c4e57ae20034ca9df8a772d5958bb8561448a864333549126729360fc66e4"
+    },
+    {
+      "path": "sim/core/mana.go",
+      "sha256": "88d9b2c55ae43421599378102c0c61062ff8f76dd4d1b1b4715e8c6166f83613"
+    },
+    {
+      "path": "sim/core/metrics_aggregator.go",
+      "sha256": "484edc25e5c613fb0fd1be86fa125546a4ce37fa25361952dc98aa0fa04403c9"
+    },
+    {
+      "path": "sim/core/movement.go",
+      "sha256": "4f059acfae64cb6e810a255618fe1514b1f71b4e7988c7d78b598acd41a07b64"
+    },
+    {
+      "path": "sim/core/pending_action.go",
+      "sha256": "d6e856c394a46c64481830dfffc250518fbab89c12ce4aad048d7069d19c2b6b"
+    },
+    {
+      "path": "sim/core/periodic_action.go",
+      "sha256": "fab4f5b26f26d60d9654ff07f0c2d6afd43f9faab06c51c85acfbd9b8cbd62d0"
+    },
+    {
+      "path": "sim/core/pet.go",
+      "sha256": "516cb881caa29b1d7f430e98938e15efd7dcf386afd204d608992563c672137d"
+    },
+    {
+      "path": "sim/core/presim.go",
+      "sha256": "397b52cf63aa09ce990fd79a69f96d1744d49eb52584e8810d80e50532146287"
+    },
+    {
+      "path": "sim/core/professions.go",
+      "sha256": "ae806eca0d331117b4022de5e7701fe3e0f62e21bf8621b3b4d5192f9f5af352"
+    },
+    {
+      "path": "sim/core/proto/api.pb.go",
+      "sha256": "156bdd34025d5814d08384e0f41f2148b38858c3959d3519b2818628f677afb7"
+    },
+    {
+      "path": "sim/core/proto/apl.pb.go",
+      "sha256": "f73a74ceeb7150892e031594d2daf6bac628deecc960fd866e878236055740cd"
+    },
+    {
+      "path": "sim/core/proto/common.pb.go",
+      "sha256": "00d2814c15fb6c03dcf1e230ef5d8382a2bb10eb2e015152117d1facf739667c"
+    },
+    {
+      "path": "sim/core/proto/druid.pb.go",
+      "sha256": "064259f021768434ac2d57944a7f93b9daea845231ef26a67ae87a785d02924c"
+    },
+    {
+      "path": "sim/core/proto/hunter.pb.go",
+      "sha256": "4bcc439ff02cabdc82dc6dd292e792d7812b53c2865c05b2e81ca36a314ab458"
+    },
+    {
+      "path": "sim/core/proto/mage.pb.go",
+      "sha256": "f715d567cee82f90e4fb14132c82f710b800019f7411f6f735597742e2c93008"
+    },
+    {
+      "path": "sim/core/proto/paladin.pb.go",
+      "sha256": "fcf2910c1098ff00cbb84ef9c1cba700403d3919295dcee3d2fa06f1a76ea509"
+    },
+    {
+      "path": "sim/core/proto/priest.pb.go",
+      "sha256": "1e4c771cede7509471ff55a34bdf45e36719bd2228ea2c61505692701354b70d"
+    },
+    {
+      "path": "sim/core/proto/rogue.pb.go",
+      "sha256": "f57bd4128209fca836b90c5f3e5aacb3156ece37b7087825b6590e5dbfaa9bd2"
+    },
+    {
+      "path": "sim/core/proto/shaman.pb.go",
+      "sha256": "d56b7f44798f1ac56b23768c475e1bb64293b7888802c90e3096963f4bd88397"
+    },
+    {
+      "path": "sim/core/proto/test.pb.go",
+      "sha256": "01f0c32a57807aca93362e15362d89591c4f14ef96e66b4215e29a7fbeb56439"
+    },
+    {
+      "path": "sim/core/proto/ui.pb.go",
+      "sha256": "517a6a4d73fbb009d4ca96d4a2cc811c13b3e4042657fd1799f34b5d4f185360"
+    },
+    {
+      "path": "sim/core/proto/warlock.pb.go",
+      "sha256": "383615a42618773e5a20466c32dc75e4d1d0a9d84b75ee6c761eed6b70672623"
+    },
+    {
+      "path": "sim/core/proto/warrior.pb.go",
+      "sha256": "c2a4a2a76fffd0774e41a5fcc1daaad3d48e6b29be20497fc54a4a62158526e3"
+    },
+    {
+      "path": "sim/core/racials.go",
+      "sha256": "3f22a0918579503d46422f81039e750e390d4e1dd385421b08769f02517d54db"
+    },
+    {
+      "path": "sim/core/rage.go",
+      "sha256": "f3c242bcddd8c32541dd42a5231006e3295463101212c51609a4b6452862cf8c"
+    },
+    {
+      "path": "sim/core/raid.go",
+      "sha256": "f8262e3cf6993d265fe5f5b1336be31f548d7ca5da7e4bbc97c19acba175f48d"
+    },
+    {
+      "path": "sim/core/rand.go",
+      "sha256": "4559c35f4b95cdc9a4b1a2fb5fe4e3ed33f4774bb0abf258a4c9100a38293559"
+    },
+    {
+      "path": "sim/core/ruleset.go",
+      "sha256": "be84b9ee6e929de48c8a6801739bfd8782412ff48b273e5b505cdb097cabd586"
+    },
+    {
+      "path": "sim/core/shield.go",
+      "sha256": "055861eecad34192bd93a6539e7e6046d1947e0f2f0f0477c765cc2f98e96af5"
+    },
+    {
+      "path": "sim/core/sim.go",
+      "sha256": "7593b011d0b9059c4db051076ecca40c8971c63a549483bbc45d5fd9c177e892"
+    },
+    {
+      "path": "sim/core/sim_concurrent.go",
+      "sha256": "65a9c243a0d6a4bf8bc07bfcf25fe4e77eaafab824acccec7d07b35eb345c54b"
+    },
+    {
+      "path": "sim/core/simsignals/api.go",
+      "sha256": "0189aa3eaa546752ead14997757464e2ee4705039a08dc3faa7b642ee8ead12e"
+    },
+    {
+      "path": "sim/core/simsignals/signals.go",
+      "sha256": "b27e06d8153d996e1aaa06c655f6c4f3bc712d90120c5780228d49ee634ca23d"
+    },
+    {
+      "path": "sim/core/specializations.go",
+      "sha256": "2814abe6d088bfb3b5ce60c691446be110b581a384cdab6c7af5db9c962510c7"
+    },
+    {
+      "path": "sim/core/spell.go",
+      "sha256": "6164e7287862922988929819ae67d71ccc143f9b201591b5e67413b29e12021e"
+    },
+    {
+      "path": "sim/core/spell_outcome.go",
+      "sha256": "681ca3357edb07d2872d7c5fc5a33802ec9c139427663b86b35ea9bdbf6d2bd7"
+    },
+    {
+      "path": "sim/core/spell_resistances.go",
+      "sha256": "1003619d77ac7f5b69ebcd2f217c44c9301d803029f18576905fc72585bd2861"
+    },
+    {
+      "path": "sim/core/spell_result.go",
+      "sha256": "94c912d0733c79911e204b9a419720b80417552c91b0919d9760c31ec21432d3"
+    },
+    {
+      "path": "sim/core/spell_school.go",
+      "sha256": "e4bc70657d0824c209fffacbaea277df61dc477b3ed6494889ca47db1e2a1b10"
+    },
+    {
+      "path": "sim/core/stats/bonuses.go",
+      "sha256": "90a2f11b269520c7e363cbc7e52fda99ede0d471e422eaf7260c5b271621f39e"
+    },
+    {
+      "path": "sim/core/stats/deps.go",
+      "sha256": "a246f576a858be59ac3094be7df7ba67349a85d6530256177a2cb710a89991c8"
+    },
+    {
+      "path": "sim/core/stats/stats.go",
+      "sha256": "2a2119dae2c8a6638149062e9c8551a55c261c3ec51cb04f2102451eb71debae"
+    },
+    {
+      "path": "sim/core/statweight.go",
+      "sha256": "f88eebf9370b8541a42631985d8df8a59f648d686ab53752336180190723d24d"
+    },
+    {
+      "path": "sim/core/stun.go",
+      "sha256": "4a10ff337319e545e86c528dba733b85af98fd2fedccbe0a27d3cb501df250bd"
+    },
+    {
+      "path": "sim/core/target.go",
+      "sha256": "eb103abc5a67c89ac64cec5e5a57ea65c7cb46fc1a0def510d7fa8bdbfdbacb7"
+    },
+    {
+      "path": "sim/core/target_ai.go",
+      "sha256": "d80004662d6b0f76ffd04e53daef9c487298fa444e581017c6ffd47a48c3b679"
+    },
+    {
+      "path": "sim/core/target_dummy.go",
+      "sha256": "01ee997767a0ee20a519a169652cd88cb8524c9c7162e54f1fef802263818f7b"
+    },
+    {
+      "path": "sim/core/test_generators.go",
+      "sha256": "31610880377f7090325ee357abc4845c85b32d5bdb8e9c417e4f42269adf2175"
+    },
+    {
+      "path": "sim/core/test_result_compare.go",
+      "sha256": "14eb1099ce5f848394da7cfed3202c60163d8cbe0725652c915a2ac44ea3c5ee"
+    },
+    {
+      "path": "sim/core/test_suite.go",
+      "sha256": "454e2ea00d50cba401d003ac811a5015f86d7f7203b60ba54d0c362609b08852"
+    },
+    {
+      "path": "sim/core/test_utils.go",
+      "sha256": "2aab2fe522f55141344b6483a542bed44e319e333d36c6af838bdfe02788a4d4"
+    },
+    {
+      "path": "sim/core/unit.go",
+      "sha256": "075d726af6179424f2d3d4c42ca8af9c71ad6cca54370fdcdc2e5b6324b4759d"
+    },
+    {
+      "path": "sim/core/utils.go",
+      "sha256": "f2f6a0d3729393bb97f5a398d91b058d9fe1e1ab2b370391f39538acd32fc34e"
+    },
+    {
+      "path": "sim/core/weapon_layout.go",
+      "sha256": "1f7cb5c4f47f2870bc24bcd13c0eabbd4434fe74e745b387411e7ab8987c706b"
+    },
+    {
+      "path": "sim/druid/_restoration/restoration.go",
+      "sha256": "c1784648740e5d978edf6b68e4e2b94422880693603d7e21324e28654f70993e"
+    },
+    {
+      "path": "sim/druid/balance/balance.go",
+      "sha256": "9f807f9330555f945cdf313b94a35a5534e61a4af5ad3c5caf014bb2e6de8ca2"
+    },
+    {
+      "path": "sim/druid/barkskin.go",
+      "sha256": "25f04416de600be57dfca057e6b6823d4e2b8f5fecc29364c2d45fc547aa31a9"
+    },
+    {
+      "path": "sim/druid/berserk.go",
+      "sha256": "b04754c17d6edb1232d3e29269d607fc8e1e00200f2eea4811972f4a9bd87e85"
+    },
+    {
+      "path": "sim/druid/claw.go",
+      "sha256": "a83bf95f78f6800c37f12a47aa387b60da82564a95aff745b9e0eb49846a5c84"
+    },
+    {
+      "path": "sim/druid/demoralizing_roar.go",
+      "sha256": "f36d6c483c85d86f4c73564d8529a8d17574e275dde164f448342305145bf334"
+    },
+    {
+      "path": "sim/druid/druid.go",
+      "sha256": "abe6e275a6e7403179cd5bfac316cc5f4d0accce7faff279e63938c90d3704ac"
+    },
+    {
+      "path": "sim/druid/enrage.go",
+      "sha256": "045d3d09e8087411a602c9a09100b9848ac3f2c69997718b08678c3b05453e10"
+    },
+    {
+      "path": "sim/druid/faerie_fire.go",
+      "sha256": "447803974f993239288c778aca9aa1ba6eb204f374c6e7925fd9bea147ec32ea"
+    },
+    {
+      "path": "sim/druid/feral/apl_values.go",
+      "sha256": "05e93ba2da3baec81ca54e4231bb9cf162d398509865e0a605f68d075110ad59"
+    },
+    {
+      "path": "sim/druid/feral/feral.go",
+      "sha256": "45970a35d6976812f24a0471ac9f031a52ad05e8c2b28867e49fac00c9514f11"
+    },
+    {
+      "path": "sim/druid/feral/pooling_actions.go",
+      "sha256": "c8ec9ff7fa6350f9ee94a3dde11cd3ca3b03961584db05f0fea364b035b315ba"
+    },
+    {
+      "path": "sim/druid/feral/rotation.go",
+      "sha256": "f37a341646fab5f1f25b8741bcb3efed70a95065efcb1832819e14d19ae2f96c"
+    },
+    {
+      "path": "sim/druid/feral/rotation_aoe.go",
+      "sha256": "55904880d273e212cc7f672b91aa3253b31a24a9f1ab00023a44a151dbdc731b"
+    },
+    {
+      "path": "sim/druid/ferocious_bite.go",
+      "sha256": "b27d12ae1fcecbaa0d5b9af0875fae1a2fba538ee94ba91ad260df258cd5cc09"
+    },
+    {
+      "path": "sim/druid/forever_talent_layout.go",
+      "sha256": "3cb9c6a4b3efe5b6d699e1f86fcbb0a58fbd6bc831eb3336ac79f08115770213"
+    },
+    {
+      "path": "sim/druid/forms.go",
+      "sha256": "8ca1f345adbcbb5ff8b12373484f0e28ebad66d230a4abeb0a34a89051dedcf8"
+    },
+    {
+      "path": "sim/druid/frenzied_regeneration.go",
+      "sha256": "0e2c812de9b80083a1df6dc48ba908169217ffc5ebeccefd01ef4d1ba6f6a93b"
+    },
+    {
+      "path": "sim/druid/hurricane.go",
+      "sha256": "ab5e4287db7d51c7cc8455e157a2520c43c2df00d272035ee2257c67b03d9b3b"
+    },
+    {
+      "path": "sim/druid/innervate.go",
+      "sha256": "85bc4a486a489c4a2c0dc4030c60954f03153293fbfc1704a0193add76cfc92c"
+    },
+    {
+      "path": "sim/druid/insect_swarm.go",
+      "sha256": "8d088149517d51fa016c539d1c6546681ea5abfcbe869d4b5b224c76c673d2e2"
+    },
+    {
+      "path": "sim/druid/item_sets_forever.go",
+      "sha256": "54603858ed077689893b0a6c2351080affc08148361ca87b908b2b9c138816ff"
+    },
+    {
+      "path": "sim/druid/item_sets_pve.go",
+      "sha256": "1550aca23fbac9f2110311851d586722397227a68099da0e60b58edda2dd4c70"
+    },
+    {
+      "path": "sim/druid/item_sets_pvp.go",
+      "sha256": "aeb22fe7aa945e9fe96198a129bb53001f362339f067174df8326a22d3bd42e7"
+    },
+    {
+      "path": "sim/druid/items.go",
+      "sha256": "40cfe23f4d6f3180f9d3f152bdaf5061c4a15b5e7fc3ff883b529a253ad691fd"
+    },
+    {
+      "path": "sim/druid/lacerate.go",
+      "sha256": "1489df5f2fea41e10e26898ecc68013c655b2c3c06a741855dcd42b1802eed7b"
+    },
+    {
+      "path": "sim/druid/mangle.go",
+      "sha256": "9f0c3a16e1afcfbc6bf5647a65574e292563a3eec99d12c2f457874cba688ab4"
+    },
+    {
+      "path": "sim/druid/maul.go",
+      "sha256": "76c248d4692339753c0327f57673e702aa5ee7dd77715ad8752d9c14442e0d31"
+    },
+    {
+      "path": "sim/druid/moonfire.go",
+      "sha256": "716498a00db35dfdfdf5f795520c59e74daac2855f19a2dbc1b729b4e54fbd38"
+    },
+    {
+      "path": "sim/druid/omen_of_clarity.go",
+      "sha256": "262b2ca23daf858b40942040ed882bd720a5e72cdaae8d0340582dcb278906e9"
+    },
+    {
+      "path": "sim/druid/rake.go",
+      "sha256": "45db5a8cce5ee87778c9dade133b85e463b8a024bc63f77f927c174acc9970bc"
+    },
+    {
+      "path": "sim/druid/rip.go",
+      "sha256": "677e59aa6a63dd33f6445d6d0f7ada7b9cfe72ed277b8c495f3db9a202a17198"
+    },
+    {
+      "path": "sim/druid/shifting_power.go",
+      "sha256": "0a69b7b9e0d0c3932d88d314fb6f3c4a809c0c4dbd45459739a508251c5430d3"
+    },
+    {
+      "path": "sim/druid/shred.go",
+      "sha256": "48ded21db84d3c5938909d9c2e740ae2ef4cf30008606ddf9700ef52b6b2dc31"
+    },
+    {
+      "path": "sim/druid/starfire.go",
+      "sha256": "6934e802702b7f5fb9bb653dff25b9ff3b503d779af05d6e735573bcd4fdc1f9"
+    },
+    {
+      "path": "sim/druid/swipe.go",
+      "sha256": "2154d8698fe6d09bd8e7f33aba2e876bd1fe76bd38da56ac52d63176713d190a"
+    },
+    {
+      "path": "sim/druid/talents.go",
+      "sha256": "3a9d1efa132c7913f6755f0b970dfed9fb4785e6e0d78e20b8f938c2b810bdb4"
+    },
+    {
+      "path": "sim/druid/tank/tank.go",
+      "sha256": "bf0a36e664ae0715280b141acaaa87c7d936849e514327d2c9ca9f5c7a6457b0"
+    },
+    {
+      "path": "sim/druid/tigers_fury.go",
+      "sha256": "e575613d1dffdaf40f2c4604c1c485df9c937775eb09e88569a5b120070a3bc4"
+    },
+    {
+      "path": "sim/druid/wrath.go",
+      "sha256": "e684947c6815b204fa10263a11f8c86eaec86c5abd628d3b9ec4db92a1ae1c8e"
+    },
+    {
+      "path": "sim/encounters/blackwing_lair.go",
+      "sha256": "2fdea8d8f7f0169715224a429f3157d4944f917ef605d82d6fe223abab8482e0"
+    },
+    {
+      "path": "sim/encounters/default_ai.go",
+      "sha256": "e274f955709c1bf2e2bc4e51c7fd8903cc9fc93ca6657bcd9a22649590dc3bee"
+    },
+    {
+      "path": "sim/encounters/default_presets.go",
+      "sha256": "bdf5a38e13260af8d54cb9bdf67a0efa97a11ad832e58749e28fd596c98415ac"
+    },
+    {
+      "path": "sim/encounters/naxxramas/kelthuzad25_ai.go",
+      "sha256": "2530bf15a6ff3ec5409d3be54e298ff63d74851f9e872788c47223df761db073"
+    },
+    {
+      "path": "sim/encounters/naxxramas/loatheb25_ai.go",
+      "sha256": "03f87785afe0a4cde672e519932dfcd97199971bcbded972f2aff06a145ee659"
+    },
+    {
+      "path": "sim/encounters/naxxramas/naxxrammas.go",
+      "sha256": "3bf01c8c6b384cfcc665f854f30042ed8e80ed0afa33ff8a9e289b7e8e7bee92"
+    },
+    {
+      "path": "sim/encounters/naxxramas/patchwerk10_ai.go",
+      "sha256": "ea2538de9a2455e829b45ba1f1b76935de0b674e86d43e54954f253686e06bd4"
+    },
+    {
+      "path": "sim/encounters/naxxramas/patchwerk25_ai.go",
+      "sha256": "dccdb1a1b6c463d6a0d9f35afe34838b26a003ec7a9f36d158dd1fc47bc5d8ec"
+    },
+    {
+      "path": "sim/encounters/naxxramas/thaddius25_ai.go",
+      "sha256": "d0be11a8c7a26feabfcf9fd24cd6cf2df6c401ae0fea19a3a6d3e90447e106e8"
+    },
+    {
+      "path": "sim/encounters/onyxias_lair.go",
+      "sha256": "d2de4a22eff55072745971dbe33f5d1fb0268410e3201681419b716e18ba36ff"
+    },
+    {
+      "path": "sim/encounters/register_all.go",
+      "sha256": "2070462bb55243e1dafc99c4b2b538dd1fad1fa8daabd2f3a0bc9fe7c26fff9d"
+    },
+    {
+      "path": "sim/hunter/aimed_shot.go",
+      "sha256": "56ce3c206a0635e7719af9ffba69ea1d3a7fd1ba9430785f865b6cad1dd1a78e"
+    },
+    {
+      "path": "sim/hunter/apl_values.go",
+      "sha256": "7368de7f89d9db678d12bca63bf212ab6239f7a2bb611daf41fb91ffe5302411"
+    },
+    {
+      "path": "sim/hunter/arcane_shot.go",
+      "sha256": "a98cd8fb8e91f99d4d092b05e03b1e50b9779247bb39acc67aeec3413482b332"
+    },
+    {
+      "path": "sim/hunter/aspects.go",
+      "sha256": "f13e703ba26e3f9e228cc1bac20ed6e1e38f2de3f979e1f9d63bd5dbbe9287df"
+    },
+    {
+      "path": "sim/hunter/demoralizing_screech.go",
+      "sha256": "1c6aa1d9f7b577e6612dff9e8939ccf03db41116ce272b3d62010f3e0d68b4b6"
+    },
+    {
+      "path": "sim/hunter/explosive_trap.go",
+      "sha256": "ff1422cb39d22784187f9def3e21abb89e86bcb132234993b7a28a206213f1ee"
+    },
+    {
+      "path": "sim/hunter/freezing_trap.go",
+      "sha256": "fb319b31a52fc30ba2dd6ed50c307c7971a9d735a1a7941d7f54f8eb1d3ee401"
+    },
+    {
+      "path": "sim/hunter/hawk.go",
+      "sha256": "6a1cb5f985cc3200dd3658da81414ec22fad1ae4e7616c03f38ee138458de3e3"
+    },
+    {
+      "path": "sim/hunter/hunter.go",
+      "sha256": "33c30e0ac2f64dfb9208874396c1e458590665c432e6b361f45c6b881531a321"
+    },
+    {
+      "path": "sim/hunter/hunters_mark.go",
+      "sha256": "55c2e725ff48791cbe5b18a445b6831102096f294932d9084f5f9dbec823935f"
+    },
+    {
+      "path": "sim/hunter/immolation_trap.go",
+      "sha256": "d2687e6bac2e744b210fb3efaf02c3a9803685269e1c436bc924b33ad6f2c261"
+    },
+    {
+      "path": "sim/hunter/item_sets_forever.go",
+      "sha256": "429826bf680ea3e6cc34f864cdeb8a17108e60bae32c35a799a3acb19a39580b"
+    },
+    {
+      "path": "sim/hunter/item_sets_pve.go",
+      "sha256": "d98ea473d3682ea4b561782bb14142838ed00b607b62780737d4483c604ff3a9"
+    },
+    {
+      "path": "sim/hunter/item_sets_pvp.go",
+      "sha256": "7acbfb22d9a91ccf3075b90f768779bdd421f202cc08918badf84d36f439ffd0"
+    },
+    {
+      "path": "sim/hunter/items.go",
+      "sha256": "065fb40d689fccae1b647860ae1e9fc567bb4eb1eb8e5369703e7e9ba90de024"
+    },
+    {
+      "path": "sim/hunter/lacerating_strikes.go",
+      "sha256": "40edec97d95d3597c84d376c8f811b2075910f9244987287db21e04abe1193d8"
+    },
+    {
+      "path": "sim/hunter/mongoose_bite.go",
+      "sha256": "3fff0b9a6601b50cfed1a70079d9fc42ac96cfebb41ede1ef0d6cb25c369e15d"
+    },
+    {
+      "path": "sim/hunter/multi_shot.go",
+      "sha256": "b1afa4254c38f188b318f37c6043a5975c3d04e73c89d21bb68c929bf81f02a8"
+    },
+    {
+      "path": "sim/hunter/pet.go",
+      "sha256": "556027a889c54b6526eaf8d88c04987e8d14102a98115fd01d632a594622ed22"
+    },
+    {
+      "path": "sim/hunter/pet_abilities.go",
+      "sha256": "bc5537a3600edc16ca25edb136a75b44a814cbb14e0ec52f40f1cecc634ee856"
+    },
+    {
+      "path": "sim/hunter/rapid_fire.go",
+      "sha256": "72872af27562b986333a8815232d20ad66898b0fc3098ab19ef7f5e9ed35edf5"
+    },
+    {
+      "path": "sim/hunter/raptor_strike.go",
+      "sha256": "03f40af6bc73f430e08588d9380eec09fccb833a23f7b2f54827db86dd4147b0"
+    },
+    {
+      "path": "sim/hunter/serpent_sting.go",
+      "sha256": "b29ab1ed7f3ab705f6d77da6ad96d0bc60db4704f767241e2571efe22c49f92c"
+    },
+    {
+      "path": "sim/hunter/sniper_shot.go",
+      "sha256": "cf6f7d129099442ea67e70a704758afd80deddee09a3b544597db7b92ce51626"
+    },
+    {
+      "path": "sim/hunter/strider_kick.go",
+      "sha256": "3456d8ed825c9c7db9ebbdd9d11ffc351a17e8e63c31dc38553f30e7807c4dbb"
+    },
+    {
+      "path": "sim/hunter/summon_hawk.go",
+      "sha256": "23cd5f899f28f910868f52f3c585d86bd1c4b133d4477c0bf89372536a09ca08"
+    },
+    {
+      "path": "sim/hunter/talents.go",
+      "sha256": "e6b16d93d24b7d2092b25c5f0c2cdf057728b5809cfd0d123229a0c4fec83afc"
+    },
+    {
+      "path": "sim/hunter/utility.go",
+      "sha256": "e9da7d095a89b58a2caccc17695f317303049f0d63f2addff50806e209006cd9"
+    },
+    {
+      "path": "sim/hunter/volley.go",
+      "sha256": "b9cca8eb5096b195e9a74ddc5c3ba7de445d7ec3dd53ad608d02d0d6a9b581cc"
+    },
+    {
+      "path": "sim/hunter/wing_clip.go",
+      "sha256": "ef96946559d0b1e43f6db306775afec643f0d9e552b6d7d0071d11e089d125cc"
+    },
+    {
+      "path": "sim/lib/library.go",
+      "sha256": "60bd2517211481026254478643f722114b938ac19d26cba0956bff445a2e5b05"
+    },
+    {
+      "path": "sim/mage/arcane_blast.go",
+      "sha256": "b03c684d5718d07eac3acf993c56e8d53fd98d37b333aaff00d74b9b9f69116c"
+    },
+    {
+      "path": "sim/mage/arcane_explosion.go",
+      "sha256": "281dbec656145d0a09330d31ef0eeb76a0b873296366f0afded5943d1f928f92"
+    },
+    {
+      "path": "sim/mage/arcane_missiles.go",
+      "sha256": "3aab3b8ffe2abda40670baea573c1e195dc5a90bfb429064cf9655cd8c6b77e1"
+    },
+    {
+      "path": "sim/mage/armors.go",
+      "sha256": "13e77850958aca01892f95ee8daa3918bcfbeb49f44753ee1bdac8b3c6b1bbf0"
+    },
+    {
+      "path": "sim/mage/blast_wave.go",
+      "sha256": "35f01c3bceb6eb964e384d70db9f7bfcb0f5f77b9c4ae0b507bac772661b2ff0"
+    },
+    {
+      "path": "sim/mage/blizzard.go",
+      "sha256": "d7cc7f13a663c0fb96b47e00f7ed33583ecbd5a51dab9fc3d2508af71bd18482"
+    },
+    {
+      "path": "sim/mage/counterspell.go",
+      "sha256": "2ae094b81579e5da74b3c7de984294cd55127f5b3b3a1480c1c9ab3af24309fb"
+    },
+    {
+      "path": "sim/mage/evocation.go",
+      "sha256": "0f5a9e88a394cc01a694960e4cb041e1c0fb2f96c6cdd9c803d89022e0f261f6"
+    },
+    {
+      "path": "sim/mage/fire_blast.go",
+      "sha256": "5f3ef020a8add0a21661fcd6a4069d67db8061135e1929c513cc4a5fa22c30c1"
+    },
+    {
+      "path": "sim/mage/fireball.go",
+      "sha256": "c0a270c2f4f6dba8d7fe9957963a5b907b36ff3f0d36d25161a976e8ae577e95"
+    },
+    {
+      "path": "sim/mage/flamestrike.go",
+      "sha256": "e3df0b6dc722355101364e06b8cd60ae4a204204542cfe217bd9c3998ab608f4"
+    },
+    {
+      "path": "sim/mage/frost_area.go",
+      "sha256": "5924f1b7b0e55f0a8e7b438b499260647c5b577bd72f2e81de3514077287f2c3"
+    },
+    {
+      "path": "sim/mage/frostbolt.go",
+      "sha256": "1ae2a5448cd06b5782641239cb9b01f148cc923e7c2cf2dfe8bc7d749b409ec9"
+    },
+    {
+      "path": "sim/mage/frostfire_bolt.go",
+      "sha256": "dc3ab3d9a6c2f8b18d022526a272b8dbce8b781dd1cdf76d24a8ac3f4a848505"
+    },
+    {
+      "path": "sim/mage/ice_barrier.go",
+      "sha256": "451f848af6b27e16694467ae59db3d967291cccd98d6f60780acd0f257c1731e"
+    },
+    {
+      "path": "sim/mage/ice_lance.go",
+      "sha256": "e1a498e378326ac1c6ac41c95b456f0ab24e0504021eafaa53688e668330c2f0"
+    },
+    {
+      "path": "sim/mage/ignite.go",
+      "sha256": "0d39217c232b340d0679ccaaa3e033a7b7cc0a2744741912e738d5b5bd777c04"
+    },
+    {
+      "path": "sim/mage/item_sets_forever.go",
+      "sha256": "0071057df2edcf8a17aaec3df31eb86885c90e90da523d62ce7417d4a575d6c1"
+    },
+    {
+      "path": "sim/mage/item_sets_pve.go",
+      "sha256": "a2049b29a7893ea6ed9db826faf033e8c2f15951a124a4d95aaf91a55ea89a7d"
+    },
+    {
+      "path": "sim/mage/item_sets_pvp.go",
+      "sha256": "0bcda656756a5695defa7024f54d2b932f9a3a42fd9d2655945f910a6fcf1538"
+    },
+    {
+      "path": "sim/mage/items.go",
+      "sha256": "03969af4d62788659de271f55db072724417da0ed076d99b3374a5ca05cc89a0"
+    },
+    {
+      "path": "sim/mage/mage.go",
+      "sha256": "7857ec2ed52ae4dfc50692267e0c45f6a3470c355e02e315bbbc9e7c05a244a1"
+    },
+    {
+      "path": "sim/mage/mana_gem.go",
+      "sha256": "abde43c5c6f8d6f6f0e47de8be434dfefb41f56cf2be0d63cd3b9993e347c37a"
+    },
+    {
+      "path": "sim/mage/pyroblast.go",
+      "sha256": "a3acb1a4cdbd4bed7f333b8f822b1177ba51401eeb9ba9214fc8cfc5c4520f63"
+    },
+    {
+      "path": "sim/mage/scorch.go",
+      "sha256": "eafcf494274b132b505d48f8f5912035bdabf5e82ec5541c0b60806c52a6c713"
+    },
+    {
+      "path": "sim/mage/talents.go",
+      "sha256": "d873896539a9e8bd7ae40331f3128f93102fbd09430fb719586ee1259afa8cf9"
+    },
+    {
+      "path": "sim/paladin/apl_values.go",
+      "sha256": "37dda7ef1ea69e779d37200326037c1d2318d164f889acf30d356ed203eb3754"
+    },
+    {
+      "path": "sim/paladin/blessing_of_sanctuary.go",
+      "sha256": "59d10e11ac8338a44565372bad4cbf0fec9be81e55c3930e5a4767386e0e7e26"
+    },
+    {
+      "path": "sim/paladin/consecration.go",
+      "sha256": "2f0c3af1881260a1b7e19e320ba6954f8dfae97a2a5f2115b52e635d4394db75"
+    },
+    {
+      "path": "sim/paladin/divine_favor.go",
+      "sha256": "e7c1628e055d8347db48527444ec2b8ba72769bae1c0c11dd20b01a78f503a1d"
+    },
+    {
+      "path": "sim/paladin/exorcism.go",
+      "sha256": "c39cd1a5a1b6c3c4880fec44c1baa77b8a7a94d8e2a1e121fc07cb014851b899"
+    },
+    {
+      "path": "sim/paladin/forbearance.go",
+      "sha256": "dd8f45c33d455b6516261f6542fd7843ab267b3ac27411f9bbeef5359161dd13"
+    },
+    {
+      "path": "sim/paladin/hammer_of_wrath.go",
+      "sha256": "b1410e64bbcf5c08dae4c88e779ddf109c4829d7ba8646e4f73fa4ab6f9118db"
+    },
+    {
+      "path": "sim/paladin/holy_shield.go",
+      "sha256": "2d66556d8f2f35f07b4559592658213174cabbefc6799cf0dc6e538b95bd8aeb"
+    },
+    {
+      "path": "sim/paladin/holy_shock.go",
+      "sha256": "7d213a0940db278b6261dc4f8b3c430f718a655956548ad4d9419b946b79635e"
+    },
+    {
+      "path": "sim/paladin/holy_strike.go",
+      "sha256": "917f757b414350eb640fe9457856e6def8966013817c6ca443e6a2dc436bbf0f"
+    },
+    {
+      "path": "sim/paladin/holy_wrath.go",
+      "sha256": "b85ec34088eca8ef77a8cfd38763e4768ca005017ab0c6af59ccd01edd75d714"
+    },
+    {
+      "path": "sim/paladin/item_sets_forever.go",
+      "sha256": "5ddb5185315e5a2229e7ea0dbce11d6fdc4011f711459b6d98a176c5d4b74727"
+    },
+    {
+      "path": "sim/paladin/item_sets_pve.go",
+      "sha256": "6a6e5d34ad2bdde9b858777445b024ae2ccffa7a8ea7efe6b41cb756d1ebc1f8"
+    },
+    {
+      "path": "sim/paladin/item_sets_pvp.go",
+      "sha256": "52a80c84efe7e3308a81b3f0996a28858b27c8a8fa614d5c3f680d94ebbeca4f"
+    },
+    {
+      "path": "sim/paladin/items.go",
+      "sha256": "ff29fb04b050f3bde22e3368af185efa778bcf8b84869bf56415d3ab8a5ecef9"
+    },
+    {
+      "path": "sim/paladin/judgement.go",
+      "sha256": "0d3e66bc5a566e437c5fe0ac935eeaf83fe12c870015c1e8db7280048cf4c8e2"
+    },
+    {
+      "path": "sim/paladin/lay_on_hands.go",
+      "sha256": "6916ed5578e25a56cdd3cf664ae2b3f74f6d85fa38becca99c6ae3e421d1f274"
+    },
+    {
+      "path": "sim/paladin/lights_vigil.go",
+      "sha256": "e21e8e0185227bb6d2991becd30e5dd85642b65d1acb85a1badd14f9ae9f31b2"
+    },
+    {
+      "path": "sim/paladin/paladin.go",
+      "sha256": "42d68983f6034a1dd3210e144da5934be292eae8d9e4c6756e58fff2602c688c"
+    },
+    {
+      "path": "sim/paladin/protection/protection.go",
+      "sha256": "359d3b8b7324b2fc6b02f5b436bd2219d0f608052bad6241a81459f2e6dbfe1e"
+    },
+    {
+      "path": "sim/paladin/retribution/retribution.go",
+      "sha256": "29a48a1b9f9f2b1ddcba8e97df17d95436a3e80c35b1c052357fc8142d431f70"
+    },
+    {
+      "path": "sim/paladin/righteous_fury.go",
+      "sha256": "d559e0dc09c2b6fe87bd254049bade6f3be448bc5257880f279ae1c4788aaf6d"
+    },
+    {
+      "path": "sim/paladin/soc.go",
+      "sha256": "e77de598966032dfa002d6890d7159a7b13d7d57b4dade8b943d672db46451da"
+    },
+    {
+      "path": "sim/paladin/sof.go",
+      "sha256": "8da1a69e3d02acf032a6f222a209947055f6e4c570a12c7d55367fa607ed4e8b"
+    },
+    {
+      "path": "sim/paladin/sor.go",
+      "sha256": "c2d79765d8900fba5353697432ad145edf2bf60e3e39eb732153c8349fe84256"
+    },
+    {
+      "path": "sim/paladin/sotc.go",
+      "sha256": "ddc89a2eed237ea5e32c751c19cb9188861c6dde2d8bde73fa7aa7bdfef6a76e"
+    },
+    {
+      "path": "sim/paladin/swift_judgement.go",
+      "sha256": "dc38390086f10e58a1e6277658848266dfd09be776675b17252d17f343842553"
+    },
+    {
+      "path": "sim/paladin/talents.go",
+      "sha256": "9fb736f9aa74f93ee7872c10a0c10c3c7d0e3c174c87d7806490c7622b992b9c"
+    },
+    {
+      "path": "sim/paladin/templars_bulwark.go",
+      "sha256": "475f01aa27d3be131ecf8b1474badbbba91d74c38f323778ab01c15b34aa1e56"
+    },
+    {
+      "path": "sim/paladin/twist_of_light.go",
+      "sha256": "0c53275f3cb5712f5a9f89e2cf0f3366bbb49cfc55ad0df050b5aaebff1ab6ac"
+    },
+    {
+      "path": "sim/priest/_items.go",
+      "sha256": "370049b45e436b9eb79ba14a60153db72e1ee17ad93863020f3398dd3fb88b86"
+    },
+    {
+      "path": "sim/priest/dark_sacrifice.go",
+      "sha256": "589ce40ff200d926393de0e36e77f711209c2eddf0d769045486c9a0bc5de9a7"
+    },
+    {
+      "path": "sim/priest/devouring_plague.go",
+      "sha256": "d824ab8ea1e6abff909606bd4ccd82ba4ea0fd08a721611f8f243aad345805a6"
+    },
+    {
+      "path": "sim/priest/flash_heal.go",
+      "sha256": "57189966675cfee6757173f2a4313fd810f7abe232553d3a2ec8cc0cdad69185"
+    },
+    {
+      "path": "sim/priest/greater_heal.go",
+      "sha256": "40b76b20516f379429a62f3dcfa8e44970b08cfffd86add805b65d1fdce04b11"
+    },
+    {
+      "path": "sim/priest/healing/healing_priest.go",
+      "sha256": "91c190da29982dd7a51f0faed3d18578a8941fc673891f4f36e96dbc137f6c2a"
+    },
+    {
+      "path": "sim/priest/holy_fire.go",
+      "sha256": "fcda2f87a65e6dd0efe021570c224dd364b68a3ef03655e6642210e484200741"
+    },
+    {
+      "path": "sim/priest/holy_nova.go",
+      "sha256": "5876efc24a9d8b16fcb0b31d723d416c28670e9f4de90b0ffe717ea2d6b3b9dd"
+    },
+    {
+      "path": "sim/priest/item_sets_forever.go",
+      "sha256": "e9037e429cb84d7de3bd4b98391081ef215885e5ffc2dbde75c4d03f21a66588"
+    },
+    {
+      "path": "sim/priest/item_sets_pve.go",
+      "sha256": "50c6b36f6677f224b38233443f5864fff34a084da8ad1f8745898192efc06af8"
+    },
+    {
+      "path": "sim/priest/item_sets_pvp.go",
+      "sha256": "6a27f7fb607c22f27f1a00b4d2d51b920fd805edee7af1c7a90026b289740c6d"
+    },
+    {
+      "path": "sim/priest/mind_blast.go",
+      "sha256": "9e0ce8a0ec464ae0c09005ffeef95c139ad99683a37d1f108c93288d07c9646e"
+    },
+    {
+      "path": "sim/priest/mind_flay.go",
+      "sha256": "51d411976af0844c65f2e719da1f3a00a5b7acaff649258e7726769b54925350"
+    },
+    {
+      "path": "sim/priest/penance.go",
+      "sha256": "c2a05cba0445cf86b8719c7edb61396b0bf19d4f51805a974c07ce1657301e93"
+    },
+    {
+      "path": "sim/priest/power_infusion.go",
+      "sha256": "c7ed9889653ebaacda12ae28da5890a751a6f1e847a58275a3ff27786b9f0bfd"
+    },
+    {
+      "path": "sim/priest/power_word_shield.go",
+      "sha256": "594b7f73fc66e06771157a6e9456f4afd0c1065a65711c922014bcc6ba1e2e2f"
+    },
+    {
+      "path": "sim/priest/prayer_of_healing.go",
+      "sha256": "cb82767920871146c0d24ba695eccf3da3bee3bf627bdeed1c2b168e925c01bd"
+    },
+    {
+      "path": "sim/priest/priest.go",
+      "sha256": "3a0d59284ab571c413d006910ea081b5e05d5637f2d3bbd0bd94492316b97ba2"
+    },
+    {
+      "path": "sim/priest/renew.go",
+      "sha256": "3a223c73e824839a0fb358a859418e5d8d8b27afbda152c0dedfb14a9903553a"
+    },
+    {
+      "path": "sim/priest/shadow/shadow_priest.go",
+      "sha256": "30a4a1f16239e9814e7dca7a8ad17b4c7bc092eb8134eb996a05f9cc1ddc6f9b"
+    },
+    {
+      "path": "sim/priest/shadow_word_death.go",
+      "sha256": "e9c5a7d14a90eaca2da9286b23f2c47799949930ec483d037a2b2722569a292e"
+    },
+    {
+      "path": "sim/priest/shadow_word_pain.go",
+      "sha256": "f12f5a4076a6ffce6b9c930069d6e7eaea64ad6ba870ba5b3aff4853ed069740"
+    },
+    {
+      "path": "sim/priest/smite/smite_priest.go",
+      "sha256": "019bc903004f8d0bdfd111e549a593b5433d77176ac3e328b773620e74282c68"
+    },
+    {
+      "path": "sim/priest/smite.go",
+      "sha256": "35188d2539cc25b56e97f085773262e322dd91f8635003fbf21352367515519a"
+    },
+    {
+      "path": "sim/priest/starshards.go",
+      "sha256": "9e64a1388b3ec6fe68539551e7d18e987556ffb0bff56440399abdb62c2a1bb3"
+    },
+    {
+      "path": "sim/priest/talents.go",
+      "sha256": "c4bfb443af5e87c1b97225c234481e1845e1253054a61bf2145898f2a8b565dc"
+    },
+    {
+      "path": "sim/priest/vampiric_embrace.go",
+      "sha256": "7d79cbbb1f7752f9b82d84b6823eb295251a12692be826f85ed1c4ddd527c047"
+    },
+    {
+      "path": "sim/register_all.go",
+      "sha256": "8b4f910339697e694662859c875c54f233c387028316338394553f8325e288d2"
+    },
+    {
+      "path": "sim/rogue/ambush.go",
+      "sha256": "25f7dda0cff17bb5fdaffe2542360dea1e6b61553e030023620a30d5b457a86b"
+    },
+    {
+      "path": "sim/rogue/backstab.go",
+      "sha256": "aaaf87f11b0596405725acfea7a88ccb91fc99811594084c0e163d47ec156272"
+    },
+    {
+      "path": "sim/rogue/dps_rogue/dps_rogue.go",
+      "sha256": "6f1fdeefa06fcad26123cc6087b7435bc3b7d3d58e067ab8729c76796db3a307"
+    },
+    {
+      "path": "sim/rogue/evasion.go",
+      "sha256": "a14257b81305b7a329b81e258824a347eef3f7b10741530bdcf506cd5348826f"
+    },
+    {
+      "path": "sim/rogue/eviscerate.go",
+      "sha256": "a0a6b65db5a37aae71d4efa643f640515debb714cf1a75f06417084458479767"
+    },
+    {
+      "path": "sim/rogue/expose_armor.go",
+      "sha256": "b03075fbebb183f4937b67b87ae1c0937bb2b875a2f69efc0432c4554946e60d"
+    },
+    {
+      "path": "sim/rogue/feint.go",
+      "sha256": "caadf85ff33ad410577a4011c870a559399306928f90c503d119cee0bc122a4d"
+    },
+    {
+      "path": "sim/rogue/garrote.go",
+      "sha256": "b9d0ed0e856facc9f55931a79985bbf435804a0197004a81744ee62476828a95"
+    },
+    {
+      "path": "sim/rogue/ghostly_strike.go",
+      "sha256": "26818cd396beed11214a91fa88ff6889cc70225a39315aec53cd61d8f2bca087"
+    },
+    {
+      "path": "sim/rogue/hack_and_slash.go",
+      "sha256": "b2b59e9839acb454dce54f47a06bc24b75d82dfb86657721043c18c094f26f02"
+    },
+    {
+      "path": "sim/rogue/hemorrhage.go",
+      "sha256": "f29434a2b178eafc35f8a885b37c79e595c6e1dc3fdd0dee0b05f2bb89f6d2e9"
+    },
+    {
+      "path": "sim/rogue/item_sets_forever.go",
+      "sha256": "324b3407e1fdbf061a4a699ce99668599d857ec8dcf51602fc2ff2580b5e0070"
+    },
+    {
+      "path": "sim/rogue/items.go",
+      "sha256": "cbf796cb35b72cec728b6c46822eb3c1abb9b4d77a4c1d95e4969e0eaefd35fe"
+    },
+    {
+      "path": "sim/rogue/items_sets_pve.go",
+      "sha256": "ac74d7ca9b8a315c338e8531d56c685504c97ef792e44232ed2dbe7236c4843f"
+    },
+    {
+      "path": "sim/rogue/items_sets_pvp.go",
+      "sha256": "e04e1838c5327f90091b16a1582ce44ff6078bb15a36e6019359519e8b42cdf8"
+    },
+    {
+      "path": "sim/rogue/mutilate.go",
+      "sha256": "b6cec7118ac6fd690c63b1f3bbcbd1f2326664ab32974cc084617dd5efa5e7b1"
+    },
+    {
+      "path": "sim/rogue/poisons.go",
+      "sha256": "19dec36fd262a2759a5d8fd635dfb525e8328c65d87d6c06ad7d1011640aa131"
+    },
+    {
+      "path": "sim/rogue/premeditation.go",
+      "sha256": "8d04726ddea1d60d9ffe20a7a15aca8b018bdd5b8221764e363f0addcf9b412c"
+    },
+    {
+      "path": "sim/rogue/preparation.go",
+      "sha256": "38803f54719dfaba9b3f3df2893b7c74e3c347015c4897dc7a717ca81c0392ad"
+    },
+    {
+      "path": "sim/rogue/riposte.go",
+      "sha256": "5d7c35e5706ad2c9f49644a1dfdcfc8909326caf3960865398f3958636ca74cd"
+    },
+    {
+      "path": "sim/rogue/rogue.go",
+      "sha256": "ad8f0a810dc857df2313b10bd271a9cca768506928fd37e7ca5f85dc853e3ce2"
+    },
+    {
+      "path": "sim/rogue/rupture.go",
+      "sha256": "1d2c15e605c016c22a0e8c2eb3ceac16f84f3cb788c1b17d1b1b415a7bf536bb"
+    },
+    {
+      "path": "sim/rogue/sinister_strike.go",
+      "sha256": "8853d26ca071a26cebca4496915ba44ecfef8614c4aa089ed7378b578db63a49"
+    },
+    {
+      "path": "sim/rogue/slice_and_dice.go",
+      "sha256": "85b2e93644722e48c2fa331aaeb0472b441909c5b2577887d7865626f3679f43"
+    },
+    {
+      "path": "sim/rogue/stealth.go",
+      "sha256": "af2546a3837bd6626d0bc5fa39a16bdd99f3209770af99145536c9806fd3374a"
+    },
+    {
+      "path": "sim/rogue/talents.go",
+      "sha256": "3132b6e4b72fdf19fc88e07f1f5d3b9c4f67be123a4e34087c91726df8814a9b"
+    },
+    {
+      "path": "sim/rogue/vanish.go",
+      "sha256": "73328417c01c6c6bd260c7e7be230fbcf3dfb581bd4b088d0cbcfe4a5f28a03a"
+    },
+    {
+      "path": "sim/rogue/venom.go",
+      "sha256": "923a1d2438d09010fd153242cf3ec1465e87198ecd66e0c38ffba21373a884b5"
+    },
+    {
+      "path": "sim/shaman/_restoration/restoration.go",
+      "sha256": "6e91e3af93de6e3eb382a985d7f1c10e2ba5dc34378140b17c9d2b6ff31bddf0"
+    },
+    {
+      "path": "sim/shaman/air_totems.go",
+      "sha256": "af1b36b351ecc097e0679c57b84f5345d21f689c685796e6a263d49d1d51482a"
+    },
+    {
+      "path": "sim/shaman/apl_values.go",
+      "sha256": "b0550c59af0ae4a68c80504dd9587ad964f20843a7403208fd4d427504087062"
+    },
+    {
+      "path": "sim/shaman/chain_lightning.go",
+      "sha256": "2fca920cb37910d76365ffbbd5b45be92003aeabef02e0c84a0c2d91e1197a41"
+    },
+    {
+      "path": "sim/shaman/earth_shock.go",
+      "sha256": "33723193437ae24ff9c7842c24683ff014ff4125e8a9083c17b93b3996321df0"
+    },
+    {
+      "path": "sim/shaman/earth_totems.go",
+      "sha256": "a79664bc7a5dce7d7b47e0fdd87e4edf0e9bf0559968e973198ce688cbd0034e"
+    },
+    {
+      "path": "sim/shaman/electric_spell.go",
+      "sha256": "dedb00ecb26a7b783bcd2b7aaa500a0d1a2d14f9ca0a2e0676b82290c9983d62"
+    },
+    {
+      "path": "sim/shaman/elemental/elemental.go",
+      "sha256": "2a50ceae9cbba66d5e6d509b67e4ea030c1e2887e02aae63c3c5f6eada41afaa"
+    },
+    {
+      "path": "sim/shaman/enhancement/enhancement.go",
+      "sha256": "e19b6973d335f0c11b37c4713d37771ceefacf0fd9ef17d35f5cd1b607cddebb"
+    },
+    {
+      "path": "sim/shaman/fire_totems.go",
+      "sha256": "a38b7fdf390443d09e0247b36283d8a8fe003ccf792e42a64dfc0d2be513ad96"
+    },
+    {
+      "path": "sim/shaman/flame_shock.go",
+      "sha256": "7878704b82c463d625e26f575e610842f612ec5453f10b56047befc790933610"
+    },
+    {
+      "path": "sim/shaman/flametongue_weapon.go",
+      "sha256": "585dce6214695c0d4280a5de9c6d83dcd741250a1ba4b744d5375fa6386041f1"
+    },
+    {
+      "path": "sim/shaman/frost_shock.go",
+      "sha256": "61e2ad9964a1e64a06bae306b768cb8a1bc1fcc437a104c14fa377ce84165014"
+    },
+    {
+      "path": "sim/shaman/frostbrand_weapon.go",
+      "sha256": "82822bd7cc0b7781d3d7322c193847c20eaa01567be9b3195a28064a0c2dee56"
+    },
+    {
+      "path": "sim/shaman/item_sets_forever.go",
+      "sha256": "0acaeb91546ab81503002a5264314577c466e5bc7caef159e5ff5009460efc5d"
+    },
+    {
+      "path": "sim/shaman/item_sets_pve.go",
+      "sha256": "2608177b30bffabc5337c958caa46fbb5086c29b0c7b6040f623d63b6776f9c5"
+    },
+    {
+      "path": "sim/shaman/item_sets_pvp.go",
+      "sha256": "0db35a62a0d59124d860c8a56eef8709dd072478190971e7b1e22b6c6099b227"
+    },
+    {
+      "path": "sim/shaman/items.go",
+      "sha256": "4f9653fc83406c002be2350776a9ea48aa7b9809e18753981b4f3cc104326980"
+    },
+    {
+      "path": "sim/shaman/lava_burst.go",
+      "sha256": "f0062d4948ade33bbf0b1ad04ca2923dba54234c796504c2cb48d81bdeacad8c"
+    },
+    {
+      "path": "sim/shaman/lightning_bolt.go",
+      "sha256": "41660abea07f8e1aeda8637c0396a235d8aa45a7c7e9665a6b1033b99f232abc"
+    },
+    {
+      "path": "sim/shaman/lightning_overload.go",
+      "sha256": "4c46223f01bd42d86c9299d94c711c37d5df3b66fe09838804e40f85c095b37d"
+    },
+    {
+      "path": "sim/shaman/lightning_shield.go",
+      "sha256": "5ee5a79dd0ba585a45ef8855ad758d1cbd8f72e80fac4717e09e35cb069368c0"
+    },
+    {
+      "path": "sim/shaman/rockbiter_weapon.go",
+      "sha256": "d953a799389188613d82ec0c3c59b239bd25353fa9c4621f40c56f7b004b1110"
+    },
+    {
+      "path": "sim/shaman/shaman.go",
+      "sha256": "0bd606898b318965c3980813540739f3c292658ff2bc6cde9260a8c752f86eb3"
+    },
+    {
+      "path": "sim/shaman/shocks.go",
+      "sha256": "84d1f2d21ad61c91ecee53e523e04dd5b813f44f4c31dac40a1ffa4e3444f828"
+    },
+    {
+      "path": "sim/shaman/stormstrike.go",
+      "sha256": "d370b6ede213a3b6ab516f6e4d3c8d8d263cd9d00810b17993eaeb35ecc47fcf"
+    },
+    {
+      "path": "sim/shaman/talents.go",
+      "sha256": "bf15444fece8450c12baef5e2a153a7f573bad9039059c53a9296641ebd83646"
+    },
+    {
+      "path": "sim/shaman/totems.go",
+      "sha256": "8291974d72d1bca9148a7c839c2f2a6f3688cdaf2d743a607099f6349cf6d24e"
+    },
+    {
+      "path": "sim/shaman/water_shield.go",
+      "sha256": "66db1acdfb144eb364644efb76befc7525fc45e8b7635b818a86853e9ac5a104"
+    },
+    {
+      "path": "sim/shaman/water_totems.go",
+      "sha256": "893d545675ba9af36f55fa55097e0609dc7a8dd0916845191ed8104843fbf199"
+    },
+    {
+      "path": "sim/shaman/weapon_imbues.go",
+      "sha256": "1a3558723cc952cc24531243203a0f6fa420817faee1949aea2d72d746128c27"
+    },
+    {
+      "path": "sim/shaman/windfury_weapon.go",
+      "sha256": "210bb5d6f1ea9efd07fbcc3a65613b7a8c15c253c1534bf1d5f722b68bcaf957"
+    },
+    {
+      "path": "sim/warlock/apl_values.go",
+      "sha256": "804ff518a6a202fa841d75015febe7096907cf83d9b8d80d32fe88aabe999cf7"
+    },
+    {
+      "path": "sim/warlock/armors.go",
+      "sha256": "6b0d9bedf53969c863794267d8749ecadf3fb8f8961749b275474b69c0ade85f"
+    },
+    {
+      "path": "sim/warlock/conflagrate.go",
+      "sha256": "b1222572fdacd0c9245527f0e7a949ed26b73055a56abec62f002e79df804ae8"
+    },
+    {
+      "path": "sim/warlock/corruption.go",
+      "sha256": "3684e8b9305d94ba5d21b0c3edcfb4546e7cd314aecf9e5c1f398ff91c8a95fd"
+    },
+    {
+      "path": "sim/warlock/curses.go",
+      "sha256": "4bf2de4df222afe7919f840ac0587a97f4a16350a9f17c7405c38b4c44ab8c4e"
+    },
+    {
+      "path": "sim/warlock/death_coil.go",
+      "sha256": "fad3b6b6f735cc611b4f96e24423f15c7b1a64d39a94a7c7da5a45f215553824"
+    },
+    {
+      "path": "sim/warlock/dps/dps_warlock.go",
+      "sha256": "c877c5da729e0a6c0ab45b79785c3734dd11c4372e10510abf110f849ce5689a"
+    },
+    {
+      "path": "sim/warlock/drain_life.go",
+      "sha256": "ba98e8fdb0876d2704619f13e94110a2a61201a6a2b73e330713c30978d7b4f9"
+    },
+    {
+      "path": "sim/warlock/drain_soul.go",
+      "sha256": "5aefc67fc651822a30afb1477aad37410248a4371a0b987bcbd67dec734b5cf0"
+    },
+    {
+      "path": "sim/warlock/fel_domination.go",
+      "sha256": "8943151bdb8c7f3a933103f3a567d6aa64c242da3a28e8732950659e907ccd69"
+    },
+    {
+      "path": "sim/warlock/felhunter.go",
+      "sha256": "b78ae2600d6818fb0dd4c1e824d49841f7ed2ea4531aeb22205a5c506371cc26"
+    },
+    {
+      "path": "sim/warlock/immolate.go",
+      "sha256": "5e1c96180f5afb053d5838d4e6626e4b989d5a2c4730bad8d8d3f3da55fc7e9c"
+    },
+    {
+      "path": "sim/warlock/imp.go",
+      "sha256": "68e89b79e4cc9fd3fd321034aab162e391090c167353a18a33d409da9a5fef18"
+    },
+    {
+      "path": "sim/warlock/incinerate.go",
+      "sha256": "a0fd6c7bf6dec2a53c8c92e4bccba0243eeaeb947eb77a64cc332214b3b2a03e"
+    },
+    {
+      "path": "sim/warlock/item_sets_forever.go",
+      "sha256": "a2e5efb85184bbc643965bcbceedf3fc1dc7c16a2befab0d4f387711ff1ea007"
+    },
+    {
+      "path": "sim/warlock/item_sets_pve.go",
+      "sha256": "a954d41dd4d76812de21f654f588f5aa4d1b9cb9d5695dcc840c996d831dddbe"
+    },
+    {
+      "path": "sim/warlock/item_sets_pvp.go",
+      "sha256": "2d15fe2065694d76ea1d095d1761969e6d882cd2aaf78df44b44b240be1d879e"
+    },
+    {
+      "path": "sim/warlock/items.go",
+      "sha256": "a991c6560a6a0b75cab47b1ff0222ca523297f3d06ad99fab5e4f33e225c4335"
+    },
+    {
+      "path": "sim/warlock/lifetap.go",
+      "sha256": "0aadc67beba8240f1bfe199cf5fb3558fa9ddd52bd3078db33109dfb5f6a0fdf"
+    },
+    {
+      "path": "sim/warlock/pet.go",
+      "sha256": "eb56485e14467c6abf204ad473c9481b561aac73bd62947e16ee6fe4e9fab1a5"
+    },
+    {
+      "path": "sim/warlock/rain_of_fire.go",
+      "sha256": "1f6830d26053076112b6eee50363416c8e93975cb7eec22525569744f46a9345"
+    },
+    {
+      "path": "sim/warlock/searing_pain.go",
+      "sha256": "dd9bda9e261a8961cde968098cc94b8e9aeb690cfae3ddf97ed26f5e01deab0c"
+    },
+    {
+      "path": "sim/warlock/shadowbolt.go",
+      "sha256": "7efd0d08fee7cab30b8816d97fe619ae53cd6cc00fd5b196030a551a142518b0"
+    },
+    {
+      "path": "sim/warlock/shadowburn.go",
+      "sha256": "0e396757b169c6c6cc08eb3062942806421d6f1e323668b434a03a3e0db156a1"
+    },
+    {
+      "path": "sim/warlock/siphon_life.go",
+      "sha256": "82e3d726da19ade2adf69f10bebcdc239cdcfa07120449bd0e03a9bcb42d7d93"
+    },
+    {
+      "path": "sim/warlock/soul_fire.go",
+      "sha256": "24ec7c42f063d44c0179e6f345ff0a5a8a2d1dbafcc2b86e091ebd78848a6707"
+    },
+    {
+      "path": "sim/warlock/succubus.go",
+      "sha256": "21daa1730e2c1394691a93289fd4ba8fd166698ee675fbda7c4358554f8a5fcc"
+    },
+    {
+      "path": "sim/warlock/summon_demon.go",
+      "sha256": "fc80699770df6bead88aa18bfe262f306bbe6e5a9694a5d98150511fc413c707"
+    },
+    {
+      "path": "sim/warlock/talents.go",
+      "sha256": "7865c1bf652254af7125aab03e44ca02bf79e278498b664e5b6115a2f84e9604"
+    },
+    {
+      "path": "sim/warlock/voidwalker.go",
+      "sha256": "7c9e58d1453f7c36060c6f605d066170602b821c61882a099c922927cb4b0e5a"
+    },
+    {
+      "path": "sim/warlock/warlock.go",
+      "sha256": "d86c0ea0e50bb28c13ab8becbb23e90ccac0171bd883f09a76fa05bae47602f7"
+    },
+    {
+      "path": "sim/warlock/wrack.go",
+      "sha256": "6e908c765b0c67b72fe05f15227e3400850fbc015b1cdfb056d0f2a4cca8fdb3"
+    },
+    {
+      "path": "sim/warrior/berserker_rage.go",
+      "sha256": "75516b640325b42160c2bc3f5a28d1d4e0ef8e1e86569875a1adeca0ba0faae7"
+    },
+    {
+      "path": "sim/warrior/bloodrage.go",
+      "sha256": "2d9b128ca0476e6d6175859bc238162d8e610425d61dd762af3da4c9e96ec41a"
+    },
+    {
+      "path": "sim/warrior/bloodthirst.go",
+      "sha256": "197d217184d9f03685be99097d0f5fbda3f509fa8796d91802eefee8ad349b6b"
+    },
+    {
+      "path": "sim/warrior/deep_wounds.go",
+      "sha256": "b7a4c009a172fdef76d7595241ab3bc99396a38cbc4a4603bcaad261a9400545"
+    },
+    {
+      "path": "sim/warrior/demoralizing_shout.go",
+      "sha256": "4c484039c93e40a114d6f532bf302aa7d1626231ac8fb4046c27bbfddcd0af2b"
+    },
+    {
+      "path": "sim/warrior/dps_warrior/dps_warrior.go",
+      "sha256": "8e078f7a1067e9fcd4c8eedd65a5a76de622a17deded70c9504039546851d719"
+    },
+    {
+      "path": "sim/warrior/execute.go",
+      "sha256": "f292477b406bb64b5fa8de96f67bd04d344a35d88183fd12e27645a8ec26c060"
+    },
+    {
+      "path": "sim/warrior/forever_talent_layout.go",
+      "sha256": "3a7e7e562f13d4db881ef51968f1d5552e09c37cbd72b8ffdbb3a1a574068cee"
+    },
+    {
+      "path": "sim/warrior/hamstring.go",
+      "sha256": "d2d677d517f007c43cb057cc6bf00bbfab515002cd6400fa22756e22bdec97f4"
+    },
+    {
+      "path": "sim/warrior/heroic_strike_cleave.go",
+      "sha256": "a963f9ae02a7a53a1fe8e98679491fa92a73d5a29c04ed792df533013fe4c6b9"
+    },
+    {
+      "path": "sim/warrior/item_sets_forever.go",
+      "sha256": "e83b3ae33499a8440ba82d065fb7c4168ce75651a9d2dbe9b7dc96917dc9a654"
+    },
+    {
+      "path": "sim/warrior/item_sets_pve.go",
+      "sha256": "0a6c432b9c8491c3571a6dbff07977143e578a9cfab9cba590e28598d0f1d9fd"
+    },
+    {
+      "path": "sim/warrior/item_sets_pvp.go",
+      "sha256": "8c74cb40e2107209ddd9511e86a05d1b1a1ca2ec66838ab23c9d7550205cbe6e"
+    },
+    {
+      "path": "sim/warrior/items.go",
+      "sha256": "ebbe79dc56582f5cd1a7da2b2d66ce01f3c396194813fdedfe217d966d001292"
+    },
+    {
+      "path": "sim/warrior/mortal_strike.go",
+      "sha256": "10e0ebb9f5a072be21a2b211c627cb5c4e89ee0bfd4e541b0fd33eb7804d8c5b"
+    },
+    {
+      "path": "sim/warrior/overpower.go",
+      "sha256": "cd5d10dbc89e1042e8d36748ec9f7294ab57679f1b491a0f5d6eda12ff4a210a"
+    },
+    {
+      "path": "sim/warrior/pummel.go",
+      "sha256": "b74da15086802b5b349fe3bf076de446d10bb8599ef81cba171a004a059c68e1"
+    },
+    {
+      "path": "sim/warrior/recklessness.go",
+      "sha256": "26f91c74d8398c22f231be8c53813042f8da0e7d21ae7a10207570042f0ba540"
+    },
+    {
+      "path": "sim/warrior/rend.go",
+      "sha256": "2086a01477404fe3c2b50c16929259b4abb65a50276a013276bbbb5e6c91b2db"
+    },
+    {
+      "path": "sim/warrior/revenge.go",
+      "sha256": "32e27c66a80f4c622717fa1a6f6f47a21fd2c0ad2f58544d1411a51fd6dc4d28"
+    },
+    {
+      "path": "sim/warrior/shield_block.go",
+      "sha256": "7e0b12b47df90636716a57665460958ea17f492e9c50b487ae9e9f20c05b2012"
+    },
+    {
+      "path": "sim/warrior/shield_slam.go",
+      "sha256": "95303e06a687b9e5dcf37d3d5f3e894121dc41c45ac625bfeebd026802fd5213"
+    },
+    {
+      "path": "sim/warrior/shield_wall.go",
+      "sha256": "7477eacd1c34c556efd4943c5c74fb756afc01fe42a0780ee9f001885971e827"
+    },
+    {
+      "path": "sim/warrior/shouts.go",
+      "sha256": "82d1d6c884bd90336b0efee6211a51c1b40f81f0ceaa07398cd1b4281d79f531"
+    },
+    {
+      "path": "sim/warrior/slam.go",
+      "sha256": "206dfa0b180bb5869e6aa8fed89ab785952618f6f9ee3e9268d3d96b57223a05"
+    },
+    {
+      "path": "sim/warrior/spearing_strike.go",
+      "sha256": "a64f42f069fe718d4e0b4afa58ea6c2598e2f0d96082200c21acd84fed0edb0f"
+    },
+    {
+      "path": "sim/warrior/stances.go",
+      "sha256": "b8b7188bab626f3f86422fa17cc970a6178b1174663113393ca0326e16b4b912"
+    },
+    {
+      "path": "sim/warrior/sunder_armor.go",
+      "sha256": "7a563b70b4da0d2eeabffdccd6d340bc00e6bd14dea9f3b66ee354f52a5d7201"
+    },
+    {
+      "path": "sim/warrior/sweeping_strikes.go",
+      "sha256": "1594635afa69eeb94cc3680e9c901713ccbc6c02373fdb4c86a65bbd1b74456c"
+    },
+    {
+      "path": "sim/warrior/talents.go",
+      "sha256": "1db8327c19b865e520d9be8d38a73e6439ca825afa65ac97b1226ab08e768ff5"
+    },
+    {
+      "path": "sim/warrior/tank_warrior/tank_warrior.go",
+      "sha256": "366e21f63e080a04ecad134337b09fccb4badf66db862f4da77b1222e48daeb7"
+    },
+    {
+      "path": "sim/warrior/thunder_clap.go",
+      "sha256": "f616c56ab7a6a521c5fdf61191c6027db7b095fe22d19f47507e2085155afa9e"
+    },
+    {
+      "path": "sim/warrior/warrior.go",
+      "sha256": "f9bfd2603fb402ae6420805308940e443c474f4b89a630055a233ce24ebbf5b4"
+    },
+    {
+      "path": "sim/warrior/whirlwind.go",
+      "sha256": "0dd85c33b9bd91715e9739020b58575831fc9597b5ee7e17d3931eb66ea4c250"
+    },
+    {
+      "path": "sim/wasm/main.go",
+      "sha256": "59084a52d9bac3d5ca46679630eddd2e4df6f956385ec9ee1ec73b0cd0b8f619"
+    },
+    {
+      "path": "sim/web/main.go",
+      "sha256": "c64bb41175b3678b93473c18a83308752112b99883db8c523874030c802bac86"
+    },
+    {
+      "path": "tools/forever_bench/equipment.go",
+      "sha256": "ae14170aec7b72d41b172290d5d97007e7fd0c9d6ba2df60eadef29773ba2478"
+    },
+    {
+      "path": "tools/forever_bench/gear_catalog.go",
+      "sha256": "4d5ceba5d8b2dc9a87202a573b3377991bc7324233ec878d7301ae984ac02aff"
+    },
+    {
+      "path": "tools/forever_bench/gear_enchants.go",
+      "sha256": "2be3e1372425fc20e4899a5b6e165705baf3e71b7ac299818d5cef8693085a8c"
+    },
+    {
+      "path": "tools/forever_bench/gear_search.go",
+      "sha256": "5d7c3cdf7671ae94333bb615bef07b1380f67d651a88dc46d0c5deaeb08856c4"
+    },
+    {
+      "path": "tools/forever_bench/gear_seed.go",
+      "sha256": "24fad1e8cad1eed8585c6f337fd085bfd9547a6e2279bfa71d00bf9ade8d7060"
+    },
+    {
+      "path": "tools/forever_bench/hit_budget.go",
+      "sha256": "54c7fbd595ccd9df66a9c763a434287657a5b1f4260ba4bd1cae3b1949648e0d"
+    },
+    {
+      "path": "tools/forever_bench/main.go",
+      "sha256": "0df24835eade118f401d0b54fe201f9f1dc8a2d27a3583387bbef8e1a1d8a01c"
+    },
+    {
+      "path": "tools/forever_bench/optimize.go",
+      "sha256": "389fd6f88ad1b57b4676bd5259c7ad98a52cd2f4d2c3661d359438fb809687db"
+    },
+    {
+      "path": "tools/forever_bench/profiles.go",
+      "sha256": "7886cbab371790330556aad26bdd907bdeaf8c89b2fbb57e4f290fcfa79fb36d"
+    },
+    {
+      "path": "tools/forever_bench/provisional_models.go",
+      "sha256": "7c70e23482ca026b43ca740a84ae62081f68aeeed80c321b33adfcd5e33794cb"
+    },
+    {
+      "path": "tools/forever_bench/races.go",
+      "sha256": "ca2212dc7bb5c68eb96e148506fd1e77cbbfe7d93990f961ed0566bb94a2aa95"
+    },
+    {
+      "path": "tools/forever_bench/spell_inventory.go",
+      "sha256": "23e690346a22143f50d45466428f52dbe04b148e2aa8914183ba8c4bc815ae16"
+    },
+    {
+      "path": "tools/forever_bench/talents.go",
+      "sha256": "44c9131b16e7b70f84a0e4c63ac067180a8b11456c2c2e0ab511a4c4845b571f"
+    },
+    {
+      "path": "tools/forever_bench/tank_search.go",
+      "sha256": "6b9da81cd9c1ecc4e336177ef21ad78f5dd468f8576c8ad9dd6ce925cc2f5c2c"
+    },
+    {
+      "path": "tools/forever_bench/tanks.go",
+      "sha256": "06136a06898faace9abd27849bc5bed5305e7fca2cb2459cfcb08ffff3f4d29f"
+    },
+    {
+      "path": "tools/forever_tanks/main.go",
+      "sha256": "3805fa433b3ce6e311d98fe697a55b276b410e2a17d52718630b00432b3b2e05"
+    }
+  ],
+  "defaultInputDigest": "5d7afc4b469ec00d2148282ee4ac47dd69c9a93dac04923b79d797b864ba064a",
+  "defaultInputSources": [
+    {
+      "path": "artifacts/modelled_gear/forever_input_profiles.json",
+      "sha256": "3387890817c8925e1d3e9f3b87c1bd7dbebf5ab99e6628ba3e174db1b43b9098"
+    },
+    {
+      "path": "ui/balance_druid/apls/balance.apl.json",
+      "sha256": "30d7be30814b8f6297e7003f514444429f0f7f3be421e046de60d35d86be0e27"
+    },
+    {
+      "path": "ui/balance_druid/apls/launch.apl.json",
+      "sha256": "a30bbb6b7d5cac1c4a15d24fae797119d99b2b3720b232463c3df05529655d73"
+    },
+    {
+      "path": "ui/balance_druid/apls/p1.apl.json",
+      "sha256": "c3f374edf6f2c2ecc037cd106273a637fa67881c9d33747f21b3055ee6872bd1"
+    },
+    {
+      "path": "ui/balance_druid/gear_sets/forever_balance.gear.json",
+      "sha256": "4675211aa4ccfc3fea8a31d37a5ae121a0807ccacea4f91173f1653272c7f325"
+    },
+    {
+      "path": "ui/balance_druid/gear_sets/launch.gear.json",
+      "sha256": "8858c0e18a242b259147cef26c3d56b8ed89c2b5363a015bfb0056889cd5fd8a"
+    },
+    {
+      "path": "ui/balance_druid/gear_sets/p0.bis.gear.json",
+      "sha256": "02a27ecc5ce6338be2c0944d4bff269d548f2587ae2b6e1ecb3746d14d23f369"
+    },
+    {
+      "path": "ui/balance_druid/gear_sets/p1.bis.gear.json",
+      "sha256": "02a27ecc5ce6338be2c0944d4bff269d548f2587ae2b6e1ecb3746d14d23f369"
+    },
+    {
+      "path": "ui/balance_druid/gear_sets/p2.bis.gear.json",
+      "sha256": "02a27ecc5ce6338be2c0944d4bff269d548f2587ae2b6e1ecb3746d14d23f369"
+    },
+    {
+      "path": "ui/balance_druid/presets.ts",
+      "sha256": "143043129aba945871089347b905abb632cb6c4bcf5903768cc716555d2a7f58"
+    },
+    {
+      "path": "ui/elemental_shaman/apls/default.apl.json",
+      "sha256": "bd327b9ca63d8cbf8d4e5bf84a007c39b93cf7a04df4ec80bf9e5c4a6f630f55"
+    },
+    {
+      "path": "ui/elemental_shaman/apls/stormcaller.apl.json",
+      "sha256": "c055a191e06952bab01b4fa402ed789355b239cb1f69b3453a8b5eac341d4419"
+    },
+    {
+      "path": "ui/elemental_shaman/gear_sets/forever_elemental.gear.json",
+      "sha256": "4e8f2b2228dbaa50160ea5d0b4b15b762d7381a5606709ffadc5aa57f027302b"
+    },
+    {
+      "path": "ui/elemental_shaman/gear_sets/forever_stormcaller.gear.json",
+      "sha256": "4e8f2b2228dbaa50160ea5d0b4b15b762d7381a5606709ffadc5aa57f027302b"
+    },
+    {
+      "path": "ui/elemental_shaman/gear_sets/launch.gear.json",
+      "sha256": "02e2b4f05e616f291f494122380cc175a4805da184170cc6ab170b1fcdb91899"
+    },
+    {
+      "path": "ui/elemental_shaman/gear_sets/phase_1.gear.json",
+      "sha256": "d0749bf9f996f7c163bf3194d7310cdfdf68396fdc763dc198d76aebd3d603fd"
+    },
+    {
+      "path": "ui/elemental_shaman/gear_sets/phase_2.gear.json",
+      "sha256": "a676bd0264c335881f5488d651fbcc2093a3d400672a149369a7e203bf0e4849"
+    },
+    {
+      "path": "ui/elemental_shaman/presets.ts",
+      "sha256": "947a7397310611ec020ebc39da06684a4a9ea0ad77fc3f94aa89b4743cb1ca89"
+    },
+    {
+      "path": "ui/enhancement_shaman/apls/default.apl.json",
+      "sha256": "2039a61986be3d4a36a21e38bdba271ce119118d8ce0ea6ab972ede8bf93e86d"
+    },
+    {
+      "path": "ui/enhancement_shaman/gear_sets/forever_enhancement.gear.json",
+      "sha256": "ad6160d76f1aefabb92343e9f27fa82e48d09d5f2fa9909f5280a3b006298c54"
+    },
+    {
+      "path": "ui/enhancement_shaman/gear_sets/launch.gear.json",
+      "sha256": "70e98abd3396e483972a806ac9d6d82491ca2880fcce7fa4beea9e494f02cb52"
+    },
+    {
+      "path": "ui/enhancement_shaman/gear_sets/phase_1.gear.json",
+      "sha256": "a0f76109456eb22e761e30a308a1bda01274b72c4368d1ef10793e30afc42d66"
+    },
+    {
+      "path": "ui/enhancement_shaman/gear_sets/phase_2.gear.json",
+      "sha256": "a0f76109456eb22e761e30a308a1bda01274b72c4368d1ef10793e30afc42d66"
+    },
+    {
+      "path": "ui/enhancement_shaman/presets.ts",
+      "sha256": "b2e060fceb95d506898bb6558e4db5b4d2417e10df0fd05e62f33ac998ed06fe"
+    },
+    {
+      "path": "ui/feral_druid/apls/feral.apl.json",
+      "sha256": "cec88133eca171f1bdf63316a2a2511eb5ca3c399e1c7d49ffe952bd5310185a"
+    },
+    {
+      "path": "ui/feral_druid/apls/p1.apl.json",
+      "sha256": "2b31e29909edf3fb0f8b62715fbd236d984ce609f72d75619b9b81d851d473ce"
+    },
+    {
+      "path": "ui/feral_druid/gear_sets/forever_feral.gear.json",
+      "sha256": "fe58be6f1bf3ff6fc00a6e7084924992babd6bab2927cd2bac2b474362ea0b56"
+    },
+    {
+      "path": "ui/feral_druid/gear_sets/launch.gear.json",
+      "sha256": "00eb57f10e690a7b25471bcf3f73ae110cc14718c372bb0a85cb96b1bac3452e"
+    },
+    {
+      "path": "ui/feral_druid/gear_sets/p0.bis.gear.json",
+      "sha256": "6e6e573251ad18a466179163ee25379ce91c63c28417c436dcf2074f499380ac"
+    },
+    {
+      "path": "ui/feral_druid/gear_sets/p1.bis.gear.json",
+      "sha256": "6e6e573251ad18a466179163ee25379ce91c63c28417c436dcf2074f499380ac"
+    },
+    {
+      "path": "ui/feral_druid/gear_sets/p2.bis.gear.json",
+      "sha256": "989ebcd110080ed3e08a0d839a8967ec8b56e9d9a47dba595836c864609faaa1"
+    },
+    {
+      "path": "ui/feral_druid/gear_sets/p2.pre-bis.gear.json",
+      "sha256": "989ebcd110080ed3e08a0d839a8967ec8b56e9d9a47dba595836c864609faaa1"
+    },
+    {
+      "path": "ui/feral_druid/presets.ts",
+      "sha256": "1c31492ffaa6c6895daa1bfbd380ea086a75e6f3504f57782cdd2539395e7cee"
+    },
+    {
+      "path": "ui/feral_tank_druid/apls/bear.apl.json",
+      "sha256": "225f2560e798ee8f643691e2a8f8d1ae5135eeac74ffe5202d02ceaba3f4d79c"
+    },
+    {
+      "path": "ui/feral_tank_druid/apls/forever_bear.apl.json",
+      "sha256": "cc65e35c87a51823856fa553313d8f6b415027b01626bcde3c438c13c71bda39"
+    },
+    {
+      "path": "ui/feral_tank_druid/gear_sets/forever_high_order.gear.json",
+      "sha256": "b64cec577203002ac6ca0a998b645c21582500f190f426254d50d8316690aafb"
+    },
+    {
+      "path": "ui/feral_tank_druid/gear_sets/forever_night_elf.gear.json",
+      "sha256": "d76c11d76bc47bc2b85c9c4bdbb07a8cecd39eef596f5fb5abf4ae55708bef74"
+    },
+    {
+      "path": "ui/feral_tank_druid/gear_sets/forever_tauren.gear.json",
+      "sha256": "38ec8261341d684ac8418dc7c375fca8b57a4b81eeeb2d075fe8ff738cb1100b"
+    },
+    {
+      "path": "ui/feral_tank_druid/gear_sets/forever_windshaper.gear.json",
+      "sha256": "b64cec577203002ac6ca0a998b645c21582500f190f426254d50d8316690aafb"
+    },
+    {
+      "path": "ui/feral_tank_druid/gear_sets/launch.gear.json",
+      "sha256": "b64cec577203002ac6ca0a998b645c21582500f190f426254d50d8316690aafb"
+    },
+    {
+      "path": "ui/feral_tank_druid/presets.ts",
+      "sha256": "58d1c26c6d21a17f00759b4b041c41926449f46fde3fa0794f20215a417f8aa6"
+    },
+    {
+      "path": "ui/healing_priest/apls/disc.apl.json",
+      "sha256": "548050719f77214c792a4b667d2f7cd77c58cc9c3751f61357626c5ff1aeb81e"
+    },
+    {
+      "path": "ui/healing_priest/apls/holy.apl.json",
+      "sha256": "405d4b80b5ea9243942dd1f37f2f07c69fff9766f7af4dd5cce884bbb093c367"
+    },
+    {
+      "path": "ui/healing_priest/gear_sets/blank.gear.json",
+      "sha256": "eeb85c2675888473ec64b7580aa0c76c6fd6b2bd51828870286ef202ad89dae2"
+    },
+    {
+      "path": "ui/healing_priest/presets.ts",
+      "sha256": "4a46093ce77e9bc16795b2b47c33c93cc1adbfb75fb7ca8872c27c15c4e42471"
+    },
+    {
+      "path": "ui/holy_paladin/gear_sets/blank.gear.json",
+      "sha256": "eeb85c2675888473ec64b7580aa0c76c6fd6b2bd51828870286ef202ad89dae2"
+    },
+    {
+      "path": "ui/holy_paladin/presets.ts",
+      "sha256": "ce1411d1953cf06f4d8e97fff4166e6bedba3c72a2eb4895d6cff9cc02dd0739"
+    },
+    {
+      "path": "ui/hunter/apls/beast_mastery.apl.json",
+      "sha256": "37e5e3cbd345feb8bd35bd624c985108a03f1022ee78c64e24449684fa648916"
+    },
+    {
+      "path": "ui/hunter/apls/p1.apl.json",
+      "sha256": "f8a8b2b8bcaa54c117b9af206fe664457a2a91391cd4e06b20f3d3610d0437a0"
+    },
+    {
+      "path": "ui/hunter/apls/pet_melee.apl.json",
+      "sha256": "f4ea24aa81558e5d0389fb7e435d50752349f2fed457371652a283f8533d7084"
+    },
+    {
+      "path": "ui/hunter/apls/survival.apl.json",
+      "sha256": "f24dd7209a712f2dde19809ff5c0409a8e1027971f1d1e6729efe701f2c86bf5"
+    },
+    {
+      "path": "ui/hunter/gear_sets/forever_beast_mastery.gear.json",
+      "sha256": "5e32c92645576e673af10114fcc4f304761e98a3660b47558fa85e42d41dafb9"
+    },
+    {
+      "path": "ui/hunter/gear_sets/forever_marksmanship.gear.json",
+      "sha256": "5e32c92645576e673af10114fcc4f304761e98a3660b47558fa85e42d41dafb9"
+    },
+    {
+      "path": "ui/hunter/gear_sets/forever_survival.gear.json",
+      "sha256": "8c18c66c9d1f49f85cd61b37f7c3a71b7ead21ac171583e12214abe3e66ca1e7"
+    },
+    {
+      "path": "ui/hunter/gear_sets/launch.gear.json",
+      "sha256": "f44a51ddf03f3d857565bceaa3a06ac056c1498b24d230b2f21039b031a8769a"
+    },
+    {
+      "path": "ui/hunter/gear_sets/p0.bis.gear.json",
+      "sha256": "f1364d77329cf00cd202a64f44c396c1e88a98901d4b1485fe86754ddcfe40d0"
+    },
+    {
+      "path": "ui/hunter/gear_sets/p1.bis.gear.json",
+      "sha256": "eec14bf93dbfbd2aca7c9487a847ed491976a1100f11734390155632c81aad2a"
+    },
+    {
+      "path": "ui/hunter/presets.ts",
+      "sha256": "e4ed428def77f07f47a4d976ff52e6ff565e2bccd9085dd52acab70ab54a92c0"
+    },
+    {
+      "path": "ui/mage/apls/forever_arcane.apl.json",
+      "sha256": "e68cfa3c0db464993ca4a9236cdb8d674841fba19b30ef01d7bea24bb3298dd0"
+    },
+    {
+      "path": "ui/mage/apls/forever_arcane_frost.apl.json",
+      "sha256": "10992693d4f42e50db00e2cc59136dd6b56087506fd8cf2d1b5f720158cec373"
+    },
+    {
+      "path": "ui/mage/apls/forever_fire.apl.json",
+      "sha256": "16f2f132ce753507d024c3005c4da5661e7e488c1c35fb2b6eb2a97c74936c17"
+    },
+    {
+      "path": "ui/mage/apls/forever_frost.apl.json",
+      "sha256": "b9c93e27603117e5d4bf526a31dc777d2a6a4efbb4b881292025e40812b8a3b8"
+    },
+    {
+      "path": "ui/mage/gear_sets/forever_arcane.gear.json",
+      "sha256": "efc466cc7d41e4671b49745144ab8d9932003d8e06dcda0f125d17030653b6c3"
+    },
+    {
+      "path": "ui/mage/gear_sets/forever_fire.gear.json",
+      "sha256": "e9a83229e885c688f9bca9f1a783a9c95a7ef5c5ebf4b4719cd8b6fcdf29246c"
+    },
+    {
+      "path": "ui/mage/gear_sets/forever_frost.gear.json",
+      "sha256": "ffa803d624c041e8fc65b23bbb4a71210c7f2d82a7417cb3f5bf904eb4d76145"
+    },
+    {
+      "path": "ui/mage/gear_sets/launch.gear.json",
+      "sha256": "52a620f5f640c620997cdd4d55ac703073b3b5a3c76bd32c358af63a1c87c68c"
+    },
+    {
+      "path": "ui/mage/gear_sets/p0.bis.gear.json",
+      "sha256": "182bd2d24a51961c661e362ede3dcbaabde2b8af532aec7cc5a467fa1350ac16"
+    },
+    {
+      "path": "ui/mage/gear_sets/p1.bis.gear.json",
+      "sha256": "182bd2d24a51961c661e362ede3dcbaabde2b8af532aec7cc5a467fa1350ac16"
+    },
+    {
+      "path": "ui/mage/presets.ts",
+      "sha256": "59af059a6a0dae0362cf6de309db1b2ba04c57cec2b3b5f3a7258f4b446e9a18"
+    },
+    {
+      "path": "ui/protection_paladin/apls/basic_prot.apl.json",
+      "sha256": "b81e8e46829521e1751523c3ba69a44e5ebd7c082a11b7fd7238cfcee526e3ef"
+    },
+    {
+      "path": "ui/protection_paladin/apls/forever_protection.apl.json",
+      "sha256": "9f834cc7689395ba14ae8837ee119a71ad5b14c1d20fa3c701f6be1c29395edf"
+    },
+    {
+      "path": "ui/protection_paladin/apls/p5prot.apl.json",
+      "sha256": "b63c589ba8a519019f241d85d5acf67a89c767955c8040cebf7787e3d6e8b615"
+    },
+    {
+      "path": "ui/protection_paladin/gear_sets/blank.gear.json",
+      "sha256": "eeb85c2675888473ec64b7580aa0c76c6fd6b2bd51828870286ef202ad89dae2"
+    },
+    {
+      "path": "ui/protection_paladin/gear_sets/forever_dwarf.gear.json",
+      "sha256": "dc5e30574341aa5f86629323025305244cf907b9e7a7c102f67bcefca0df34d2"
+    },
+    {
+      "path": "ui/protection_paladin/gear_sets/forever_human.gear.json",
+      "sha256": "dc5e30574341aa5f86629323025305244cf907b9e7a7c102f67bcefca0df34d2"
+    },
+    {
+      "path": "ui/protection_paladin/gear_sets/forever_undead.gear.json",
+      "sha256": "0676c335f8cc5e181f9fefd4abe59ae032ccccb8eb2e46144dda91e5dc4f52c7"
+    },
+    {
+      "path": "ui/protection_paladin/gear_sets/launch.gear.json",
+      "sha256": "0676c335f8cc5e181f9fefd4abe59ae032ccccb8eb2e46144dda91e5dc4f52c7"
+    },
+    {
+      "path": "ui/protection_paladin/presets.ts",
+      "sha256": "37547577ff3448ba1da7cd98f4960dc1fb702ed478d2674c93d27e39ee8adfc3"
+    },
+    {
+      "path": "ui/raid/presets.ts",
+      "sha256": "9578edebf370d1690cded757fa23dea743578e3e01cdd75d06e7bcd6848201f7"
+    },
+    {
+      "path": "ui/restoration_druid/gear_sets/blank.gear.json",
+      "sha256": "eeb85c2675888473ec64b7580aa0c76c6fd6b2bd51828870286ef202ad89dae2"
+    },
+    {
+      "path": "ui/restoration_druid/presets.ts",
+      "sha256": "949177d6d63a01817d347445dbe2438ea94690be24fbc32419a8a8da2d34a3b5"
+    },
+    {
+      "path": "ui/restoration_shaman/gear_sets/blank.gear.json",
+      "sha256": "eeb85c2675888473ec64b7580aa0c76c6fd6b2bd51828870286ef202ad89dae2"
+    },
+    {
+      "path": "ui/restoration_shaman/presets.ts",
+      "sha256": "1102acd30680091471ba726c7807f80be45eb415ae59656b9c7551c7c3edd11c"
+    },
+    {
+      "path": "ui/retribution_paladin/apls/basic_ret.apl.json",
+      "sha256": "79ac39f979269866aadc3f9928ad0960481a3a1c24bde82052d219141e23a624"
+    },
+    {
+      "path": "ui/retribution_paladin/gear_sets/blank.gear.json",
+      "sha256": "eeb85c2675888473ec64b7580aa0c76c6fd6b2bd51828870286ef202ad89dae2"
+    },
+    {
+      "path": "ui/retribution_paladin/gear_sets/forever_retribution.gear.json",
+      "sha256": "339cda512ed92b35753067d1b9b34b4fecdaa3194549bd37953363698d52c729"
+    },
+    {
+      "path": "ui/retribution_paladin/gear_sets/launch.gear.json",
+      "sha256": "bfafdb1e63c6b033406ac08c780dd93b8277893cf896bc41b62c8e97e6df9c0a"
+    },
+    {
+      "path": "ui/retribution_paladin/presets.ts",
+      "sha256": "74d2a51ac6c1484dcc65b5caefc70321697facc6be4e9e096b95c856662ed93c"
+    },
+    {
+      "path": "ui/rogue/apls/combat_backstab.apl.json",
+      "sha256": "b9c4fd3befece4ecd117d68c6d3beccb6cd77e9ae058139ba1a3f0308cbc115d"
+    },
+    {
+      "path": "ui/rogue/apls/combat_backstab_sweaty.apl.json",
+      "sha256": "33ad9a20fc05f46e8c1f9b170ca8e1c129bea76490816871b17538f27ecde85a"
+    },
+    {
+      "path": "ui/rogue/apls/combat_sinister_strike.apl.json",
+      "sha256": "c4d4085a7fb732c8f45f6ab6cc502959b9485fa36dd4f0debf3c932c392dc9fc"
+    },
+    {
+      "path": "ui/rogue/apls/combat_sinister_strike_iea.apl.json",
+      "sha256": "06b1cd89817c85a06320ab68820885a7ed145c9bd17b135dca3c930ec40acac4"
+    },
+    {
+      "path": "ui/rogue/apls/combat_sinister_strike_sweaty.apl.json",
+      "sha256": "ae2310ae712302cbed0a77337abf7403574ff5099cc2498c6b72243dd51b0ec6"
+    },
+    {
+      "path": "ui/rogue/apls/forever_hemorrhage.apl.json",
+      "sha256": "97596d6847245278a2b05f5d4a90dd1f51f4b79f64effac05b9facf4bc7d118a"
+    },
+    {
+      "path": "ui/rogue/apls/forever_mutilate.apl.json",
+      "sha256": "9ecd6d4aeb03fe7301e5ce1a36f5b518c5d49df9b61146d3e8b70f79d9da0246"
+    },
+    {
+      "path": "ui/rogue/gear_sets/backstab_launch.gear.json",
+      "sha256": "8149bc8c8612339dffa497d0d0493f6f004279d0da8a1938cc792a3f6952dd99"
+    },
+    {
+      "path": "ui/rogue/gear_sets/blank.gear.json",
+      "sha256": "eeb85c2675888473ec64b7580aa0c76c6fd6b2bd51828870286ef202ad89dae2"
+    },
+    {
+      "path": "ui/rogue/gear_sets/combat_backstab_p1_bis.gear.json",
+      "sha256": "585413308ba4517dccc457050833f64011c8741a701d4f187be5fdcc3cb72b05"
+    },
+    {
+      "path": "ui/rogue/gear_sets/combat_backstab_p2_bis.gear.json",
+      "sha256": "585413308ba4517dccc457050833f64011c8741a701d4f187be5fdcc3cb72b05"
+    },
+    {
+      "path": "ui/rogue/gear_sets/combat_backstab_prebis.gear.json",
+      "sha256": "585413308ba4517dccc457050833f64011c8741a701d4f187be5fdcc3cb72b05"
+    },
+    {
+      "path": "ui/rogue/gear_sets/combat_sinister_strike_p1_bis.gear.json",
+      "sha256": "039155b269df3214946fecf98d9d37b1e5a76dfdd2ca050c896fe4c014a060f1"
+    },
+    {
+      "path": "ui/rogue/gear_sets/combat_sinister_strike_p2_bis.gear.json",
+      "sha256": "039155b269df3214946fecf98d9d37b1e5a76dfdd2ca050c896fe4c014a060f1"
+    },
+    {
+      "path": "ui/rogue/gear_sets/combat_sinister_strike_prebis.gear.json",
+      "sha256": "039155b269df3214946fecf98d9d37b1e5a76dfdd2ca050c896fe4c014a060f1"
+    },
+    {
+      "path": "ui/rogue/gear_sets/forever_combat.gear.json",
+      "sha256": "d93cabcf38c1b9c189e139f117adcb92e32f829a0b22bf1790eeb844349d3ab2"
+    },
+    {
+      "path": "ui/rogue/gear_sets/forever_mutilate.gear.json",
+      "sha256": "6e4085ee82b77b5cea8b78c9249f07403969cf188edea55de50bb60f879ea24b"
+    },
+    {
+      "path": "ui/rogue/gear_sets/forever_subtlety.gear.json",
+      "sha256": "d93cabcf38c1b9c189e139f117adcb92e32f829a0b22bf1790eeb844349d3ab2"
+    },
+    {
+      "path": "ui/rogue/gear_sets/sinister_strike_launch.gear.json",
+      "sha256": "f1f637430785d8986733ca1ddc6a85460800626ea75749b9e892de5ee85e4b4a"
+    },
+    {
+      "path": "ui/rogue/presets.ts",
+      "sha256": "9168871f4a46cde53d3a085282567bab32ca57fcf85f038e5552cf3a41bdff55"
+    },
+    {
+      "path": "ui/shadow_priest/apls/clip.apl.json",
+      "sha256": "856345dac2cd3fa07971374bf679050fb2b139e60559e6ec129fb3f55e7b510f"
+    },
+    {
+      "path": "ui/shadow_priest/apls/death_first_adaptive.apl.json",
+      "sha256": "223f745491bf7ff4cafd290ec0a75e9b5b79f3a218535a638c5c25bfdf212b9a"
+    },
+    {
+      "path": "ui/shadow_priest/apls/p1.apl.json",
+      "sha256": "456b67e157eac2673262a39281f3411ca389a2fa4ec41c6968b622ca9756c5fc"
+    },
+    {
+      "path": "ui/shadow_priest/gear_sets/forever_shadow.gear.json",
+      "sha256": "db43b77b3dd65b1765ee6fcca37eb26ab7fb50d630f38120030188a33b69f47e"
+    },
+    {
+      "path": "ui/shadow_priest/gear_sets/launch.gear.json",
+      "sha256": "4b1c96cea07be282095798a53c87ed07fd8976bd3328a133616fd4de9ddf1efb"
+    },
+    {
+      "path": "ui/shadow_priest/gear_sets/p0.bis.gear.json",
+      "sha256": "4cff43448ab3ce4c2bccd728bfb17169ff957938d1f022c831f7764fe8b3ad13"
+    },
+    {
+      "path": "ui/shadow_priest/gear_sets/p1.bis.gear.json",
+      "sha256": "4b1c96cea07be282095798a53c87ed07fd8976bd3328a133616fd4de9ddf1efb"
+    },
+    {
+      "path": "ui/shadow_priest/presets.ts",
+      "sha256": "57992d61d55ece81477e97875e0ed3cc4511c45e091410a3cf013cdd6ea3e5ad"
+    },
+    {
+      "path": "ui/smite_priest/apls/launch.apl.json",
+      "sha256": "add32055f9facc079e2be0e7fb253d3f789f5cb8379fe419e3d71cabc7d7095a"
+    },
+    {
+      "path": "ui/smite_priest/apls/launch_undead.apl.json",
+      "sha256": "bc231d50f52b744b9d1ddd44a2ea744ee2f7948b54379123b23ad4abd4ef034c"
+    },
+    {
+      "path": "ui/smite_priest/gear_sets/forever_smite.gear.json",
+      "sha256": "67f70b26684c538ff315f33f6d7723af8ee7d40459d1dc5884e32b339db70ca6"
+    },
+    {
+      "path": "ui/smite_priest/gear_sets/launch.gear.json",
+      "sha256": "4b1c96cea07be282095798a53c87ed07fd8976bd3328a133616fd4de9ddf1efb"
+    },
+    {
+      "path": "ui/smite_priest/presets.ts",
+      "sha256": "ea11cc63019b252e599b7c6cd956c4c3c5ed86dcd411f81084c412db264ff526"
+    },
+    {
+      "path": "ui/tank_warrior/apls/dps_no_reck.apl.json",
+      "sha256": "96c871987b77f253870aad5827f520196483a723f47323b1f4272643ab4acb7c"
+    },
+    {
+      "path": "ui/tank_warrior/apls/dps_reck.apl.json",
+      "sha256": "3b8c7c61fd63ea2380ac6a9dc57291aa2318de592e47317f61a210576b0a2840"
+    },
+    {
+      "path": "ui/tank_warrior/apls/forever_protection.apl.json",
+      "sha256": "5f7f3b72103f99a9ae0feb0f83eb1faaa01a6caee4e73e6ea57283611b758908"
+    },
+    {
+      "path": "ui/tank_warrior/apls/forever_protection_dwarf.apl.json",
+      "sha256": "aab772964d4c286207dc3765de308a4548022a327f4de09bcc0b85af2a04c685"
+    },
+    {
+      "path": "ui/tank_warrior/apls/forever_protection_gnome.apl.json",
+      "sha256": "c805e43e5d7aa2b01d2d887628fd5224485e3002a37e31b89a371ae66084e6c8"
+    },
+    {
+      "path": "ui/tank_warrior/apls/forever_protection_high_order.apl.json",
+      "sha256": "c805e43e5d7aa2b01d2d887628fd5224485e3002a37e31b89a371ae66084e6c8"
+    },
+    {
+      "path": "ui/tank_warrior/apls/forever_protection_human.apl.json",
+      "sha256": "5f7f3b72103f99a9ae0feb0f83eb1faaa01a6caee4e73e6ea57283611b758908"
+    },
+    {
+      "path": "ui/tank_warrior/apls/forever_protection_night_elf.apl.json",
+      "sha256": "c805e43e5d7aa2b01d2d887628fd5224485e3002a37e31b89a371ae66084e6c8"
+    },
+    {
+      "path": "ui/tank_warrior/apls/forever_protection_orc.apl.json",
+      "sha256": "aab772964d4c286207dc3765de308a4548022a327f4de09bcc0b85af2a04c685"
+    },
+    {
+      "path": "ui/tank_warrior/apls/forever_protection_tauren.apl.json",
+      "sha256": "c805e43e5d7aa2b01d2d887628fd5224485e3002a37e31b89a371ae66084e6c8"
+    },
+    {
+      "path": "ui/tank_warrior/apls/forever_protection_troll.apl.json",
+      "sha256": "c805e43e5d7aa2b01d2d887628fd5224485e3002a37e31b89a371ae66084e6c8"
+    },
+    {
+      "path": "ui/tank_warrior/apls/forever_protection_undead.apl.json",
+      "sha256": "5f7f3b72103f99a9ae0feb0f83eb1faaa01a6caee4e73e6ea57283611b758908"
+    },
+    {
+      "path": "ui/tank_warrior/apls/forever_protection_windshaper.apl.json",
+      "sha256": "c805e43e5d7aa2b01d2d887628fd5224485e3002a37e31b89a371ae66084e6c8"
+    },
+    {
+      "path": "ui/tank_warrior/apls/protection.apl.json",
+      "sha256": "bcba3fe698ff99e622ffac91ac22ee299e8450aad9528bc8d01e580b981b31b7"
+    },
+    {
+      "path": "ui/tank_warrior/gear_sets/forever_dwarf.gear.json",
+      "sha256": "34b8201e4f46f58f470a1da36d258328c637d4ced66fe316f1d07b138cbe09e8"
+    },
+    {
+      "path": "ui/tank_warrior/gear_sets/forever_gnome.gear.json",
+      "sha256": "69838c1c9c79f38826a4a23d3e0e76e8c2bb891f9b5d5731e9e809ac19bac151"
+    },
+    {
+      "path": "ui/tank_warrior/gear_sets/forever_high_order.gear.json",
+      "sha256": "50a4bbcbf3d5b815433d49a6c0da05eabc3543c91e3588d0c05744fa392953b7"
+    },
+    {
+      "path": "ui/tank_warrior/gear_sets/forever_human.gear.json",
+      "sha256": "e380d2a3b414f165fa1f9b251da6ec21477bdc85a69dd6733cabc868e1ec3052"
+    },
+    {
+      "path": "ui/tank_warrior/gear_sets/forever_night_elf.gear.json",
+      "sha256": "48a1785575b85d2541a086556a5131e30473ea1838848b7def84f735efc22ae8"
+    },
+    {
+      "path": "ui/tank_warrior/gear_sets/forever_orc.gear.json",
+      "sha256": "63aa71232674ae4d0d803935869db8181ee27a33ed5f0263d6eebf3c8267b859"
+    },
+    {
+      "path": "ui/tank_warrior/gear_sets/forever_tauren.gear.json",
+      "sha256": "186d28891efd9ae40503a97dfe32e1a20af547ce84035fcf7dc12938cfb1610a"
+    },
+    {
+      "path": "ui/tank_warrior/gear_sets/forever_troll.gear.json",
+      "sha256": "cc26a46fdfa0a3c493963600a9597d0236d040368661660236c4c10ff5efbcf0"
+    },
+    {
+      "path": "ui/tank_warrior/gear_sets/forever_undead.gear.json",
+      "sha256": "037c745e00f417c4bfbf072447344d85fa4c000cfd48bd4308b7411ad13c5074"
+    },
+    {
+      "path": "ui/tank_warrior/gear_sets/forever_windshaper.gear.json",
+      "sha256": "50a4bbcbf3d5b815433d49a6c0da05eabc3543c91e3588d0c05744fa392953b7"
+    },
+    {
+      "path": "ui/tank_warrior/gear_sets/launch.gear.json",
+      "sha256": "037c745e00f417c4bfbf072447344d85fa4c000cfd48bd4308b7411ad13c5074"
+    },
+    {
+      "path": "ui/tank_warrior/gear_sets/p0.bis.gear.json",
+      "sha256": "58771ccf53742391182621c62dd9cd130410f4222e51ab3833608bbac436b6b3"
+    },
+    {
+      "path": "ui/tank_warrior/gear_sets/p1.bis.gear.json",
+      "sha256": "30c8c531912e32a406001c3b01b04df1862ee357354c396c376c00390a6626e8"
+    },
+    {
+      "path": "ui/tank_warrior/presets.ts",
+      "sha256": "d720d0302de934c493224745355d83f1a1a49ea8c20a7f0bd7d1c7241551fbf5"
+    },
+    {
+      "path": "ui/warlock/apls/forever_affliction.apl.json",
+      "sha256": "cacd6e2f3c9b0aa8972cd92316f97a7a8f161422670801601b55628652e8e4fa"
+    },
+    {
+      "path": "ui/warlock/apls/forever_ds_ruin.apl.json",
+      "sha256": "c787659a522a622c0a9c353f63ffdd90f26873ca8c20b410455162b4066edb0e"
+    },
+    {
+      "path": "ui/warlock/apls/forever_pact.apl.json",
+      "sha256": "5c845d581eac08a66db33424df379a82afc3f94f47b30f5207d5907a448b81b1"
+    },
+    {
+      "path": "ui/warlock/apls/forever_shadow_and_flame.apl.json",
+      "sha256": "b23371ff9d7bc0410a4e78b6704fc3e1aaa5c27703a77024b31d1ce4965f4e52"
+    },
+    {
+      "path": "ui/warlock/gear_sets/blank.gear.json",
+      "sha256": "eeb85c2675888473ec64b7580aa0c76c6fd6b2bd51828870286ef202ad89dae2"
+    },
+    {
+      "path": "ui/warlock/gear_sets/forever_affliction.gear.json",
+      "sha256": "16cbfa6dac2f0349bc792dc34548efb4e3296cb1bbc4fcc51c1518dd42f57f71"
+    },
+    {
+      "path": "ui/warlock/gear_sets/forever_demonology.gear.json",
+      "sha256": "16cbfa6dac2f0349bc792dc34548efb4e3296cb1bbc4fcc51c1518dd42f57f71"
+    },
+    {
+      "path": "ui/warlock/gear_sets/forever_destruction.gear.json",
+      "sha256": "e9a83229e885c688f9bca9f1a783a9c95a7ef5c5ebf4b4719cd8b6fcdf29246c"
+    },
+    {
+      "path": "ui/warlock/gear_sets/forever_ds_ruin.gear.json",
+      "sha256": "16cbfa6dac2f0349bc792dc34548efb4e3296cb1bbc4fcc51c1518dd42f57f71"
+    },
+    {
+      "path": "ui/warlock/gear_sets/launch.gear.json",
+      "sha256": "a2c6c22e60633e1310b7076e711949996df2f9356df1cb1eacc402f9ae1f8fee"
+    },
+    {
+      "path": "ui/warlock/gear_sets/mc.gear.json",
+      "sha256": "951cd1730d6c9425fe8871004dcc626c6165fc425e40d2906bdaf3960ee54905"
+    },
+    {
+      "path": "ui/warlock/gear_sets/prebis.gear.json",
+      "sha256": "304b1bfb3e40cd0058c613cf5596426f629fab43cf76beb4a6a9aba35e57fbb9"
+    },
+    {
+      "path": "ui/warlock/presets.ts",
+      "sha256": "05c7a30115f3295107868aeaaf7dcac0f28028fe0098128f1512e7af63ab3faa"
+    },
+    {
+      "path": "ui/warrior/apls/dps_no_reck.apl.json",
+      "sha256": "618ab364977a5eb82dfa96ad8c7be583d0da547034574a06f3caa4a52b2f4af7"
+    },
+    {
+      "path": "ui/warrior/apls/dps_reck.apl.json",
+      "sha256": "eaee861ebcbf21c4e80f318cacce274ba91a3cacb30ad44470f1847473a3c397"
+    },
+    {
+      "path": "ui/warrior/apls/forever_arms.apl.json",
+      "sha256": "05761fe8cbe06f01746ac5c3d49b9276fde3e71992794a885312cfd370c8975f"
+    },
+    {
+      "path": "ui/warrior/apls/forever_fury.apl.json",
+      "sha256": "f3d7982052d299dfe78d071078ccad27fd7e975de14e5de9364d8eecbfb94079"
+    },
+    {
+      "path": "ui/warrior/apls/forever_fury_2h.apl.json",
+      "sha256": "2e567ed4d4e8d0746a8d1435b4748f0a16e7406b9fabcabf0f3a5faec1df2461"
+    },
+    {
+      "path": "ui/warrior/apls/forever_fury_aoe.apl.json",
+      "sha256": "9afe581211f20a1374370bd88ad96418e3f33f361c7f64760c6ebf601c2848ce"
+    },
+    {
+      "path": "ui/warrior/apls/forever_fury_spearing.apl.json",
+      "sha256": "e8c2aacb4cff9e028cde68834b48cf88a9846a88e4a5934d57789e25c388fce5"
+    },
+    {
+      "path": "ui/warrior/apls/forever_fury_sunder.apl.json",
+      "sha256": "f0b98ac0dec27c23c71d7d9a756a7590b97230941d87e60a003c657786a4282c"
+    },
+    {
+      "path": "ui/warrior/gear_sets/arms_launch.gear.json",
+      "sha256": "68b686434f30b0bd5acf273d61c6986928ea20e30aa40782b93b638523230576"
+    },
+    {
+      "path": "ui/warrior/gear_sets/forever_arms.gear.json",
+      "sha256": "62dc5e364865c366a38de189a3a174582268a4b42fe5f9c99bad08ec653caca6"
+    },
+    {
+      "path": "ui/warrior/gear_sets/forever_fury.gear.json",
+      "sha256": "d87b87e643ab106e17ba33dff58d2ab726cb19612443849ccb25304e6be8383f"
+    },
+    {
+      "path": "ui/warrior/gear_sets/launch.gear.json",
+      "sha256": "a491b14f0546307e1f2e3f6388561d3d1b6d9d3be371b18330a17bbe3aa455fc"
+    },
+    {
+      "path": "ui/warrior/gear_sets/p0.bis.gear.json",
+      "sha256": "91354fcd36e5b46a762405e82d89e0a20b7dbf01baa41be6a0709ad8bdc74c6b"
+    },
+    {
+      "path": "ui/warrior/gear_sets/phase_1.gear.json",
+      "sha256": "91354fcd36e5b46a762405e82d89e0a20b7dbf01baa41be6a0709ad8bdc74c6b"
+    },
+    {
+      "path": "ui/warrior/gear_sets/phase_2.gear.json",
+      "sha256": "91354fcd36e5b46a762405e82d89e0a20b7dbf01baa41be6a0709ad8bdc74c6b"
+    },
+    {
+      "path": "ui/warrior/presets.ts",
+      "sha256": "a006535a5f5889228f1737b1ab06db92729d9aba81ba16ab17c50958342f0b8f"
+    }
+  ],
+  "binaries": {
+    "forever-bench": "512b673d7b5c86433feadab6e1aa3ef805f817f9b0f4638aaac1df9bcdb96290",
+    "forever-replay": "350a24878f176b9255a09a2a389843ed9709b4a860eacdd3db707ca85b579056"
+  },
+  "finalInputsSha256": "3387890817c8925e1d3e9f3b87c1bd7dbebf5ab99e6628ba3e174db1b43b9098",
+  "originalInputsSha256": "8fbe850fc4a0575cd824a0cb6cc492dd9f4727565475e66aa3bff4975398a46e",
+  "runtimeSourceDeltaFromRelease2": [
+    "tools/forever_bench/profiles.go"
+  ],
+  "initialExpandedSnapshotDigest": "71cbdd84e6ea9c0e96e5dd65c519251edc12c1fc8d164b6e6b5808139bb04495",
+  "phaseQualification": "Final binary compiled after native/default recipe synchronization. Later TS-only preset option labels/conditional availability, generated exact web bundle, report/register and proof metadata do not change explicit input combat math. Current runtime/default hashes describe final publication inputs; initial expanded snapshot retained privately.",
+  "explicitInputEquivalence": "engine-equivalence.json",
+  "presentationQualification": "Final hidden source preset labels8/6/37 and0/42/9 corrected after passing numerical/201binding gate; exact source recipes unchanged. Final presentation build/typecheck/report/questions passed."
+}

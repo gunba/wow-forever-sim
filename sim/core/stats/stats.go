@@ -481,6 +481,14 @@ type PseudoStats struct {
 	CanCrush bool
 	Stunned  bool // prevents blocks, dodges, and parries
 
+	// Explicit scenario opt-ins; existing raid targets remain CC-immune.
+	CanBeStunned                      bool
+	CanBeRooted                       bool
+	CanBeSlowed                       bool
+	UseCrowdControlDiminishingReturns bool
+	// An explicit alternative assumption; false is the after-final-effect-end convention.
+	CrowdControlDRResetAfterApplication bool
+
 	ParryHaste bool
 
 	ReducedCritTakenChance float64 // Reduces chance to be crit.
