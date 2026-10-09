@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { availableParallelism } from 'node:os';
 import { chromium } from 'playwright';
 
 const base = process.env.SITE_URL || 'http://localhost:8080/classic/';
@@ -23,7 +24,7 @@ const routes = {
 };
 const simulatedBuilds = new Set();
 try {
-	for (const [route, id] of (process.env.PROFILE_SCOPE === 'showcases' ? [
+	const cases = (process.env.PROFILE_SCOPE === 'showcases' ? [
 		['mage', 'arcane__gnome'],
 		['mage', 'fire__orc'],
 		['shadow_priest', 'shadow__undead'],
@@ -54,7 +55,21 @@ try {
 		['feral_tank_druid', 'feral_tank_druid__tauren'],
 		['feral_tank_druid', 'feral_tank_druid__night_elf'],
 	] : bundle.profiles.map(profile => [routes[profile.key], profile.id]))
-		.filter(([, id]) => !process.env.ONLY_PROFILE || id === process.env.ONLY_PROFILE)) {
+		.filter(([, id]) => !process.env.ONLY_PROFILE || id === process.env.ONLY_PROFILE);
+	// Select replay coverage before parallel work: every build and every tank
+	// race still runs exactly once, independent of worker completion order.
+	const replayProfileIds = new Set();
+	for (const [, id] of cases) {
+		const profile = bundle.profiles.find(profile => profile.id === id);
+		assert.ok(profile, `missing ${id}`);
+		if (!simulatedBuilds.has(profile.key) || profile.tankMetrics || process.env.ONLY_PROFILE) {
+			replayProfileIds.add(id);
+			simulatedBuilds.add(profile.key);
+		}
+	}
+	const workers = Math.min(cases.length, availableParallelism());
+	let next = 0;
+	async function checkProfile([route, id]) {
 		const profile = bundle.profiles.find(profile => profile.id === id);
 		assert.ok(profile, `missing ${id}`);
 		const context = await browser.newContext();
@@ -114,7 +129,7 @@ try {
 		}
 		assert.equal(Boolean(stored.debuffs.faerieFire), profile.key !== 'feral_tank_druid' && Boolean(expected.debuffs.faerieFire), `${id}: owned Faerie Fire duty`);
 		// Audit exact bindings for every race; replay every build and all 17 tanks.
-		if (!simulatedBuilds.has(profile.key) || profile.tankMetrics || process.env.ONLY_PROFILE) {
+		if (replayProfileIds.has(id)) {
 		await page.getByRole('button', { name: 'Simulate', exact: true }).click();
 		await page.getByText('Save as Reference', { exact: true }).first().waitFor({ timeout: 180000 });
 		const actual = Number(await page.locator('.results-sim-dps .topline-result-avg').first().innerText());
@@ -127,7 +142,6 @@ try {
 			}
 		}
 		console.log(`${id}: fully loaded from the picker, ${actual} DPS, native match`);
-		simulatedBuilds.add(profile.key);
 		} else {
 			console.log(`${id}: exact race/build input binding verified`);
 		}
@@ -166,6 +180,10 @@ try {
 		assert.deepEqual(linked.debuffs, expected.debuffs, `${id}: direct-link debuffs`);
 		await context.close();
 	}
+	await Promise.all(Array.from({ length: workers }, async () => {
+		while (next < cases.length) await checkProfile(cases[next++]);
+	}));
+	console.log(`${cases.length} exact bindings, ${replayProfileIds.size} WASM replays across ${simulatedBuilds.size} builds; ${workers} browser workers`);
 } finally {
 	await browser.close();
 }
