@@ -2560,14 +2560,9 @@
         "implementation": "Retain the 200-ms gate. Narrow the experiment to mixed weapons and any observed contradiction; do not spend a large sample re-estimating a value already supplied by the current client.",
         "tests": [
           {
-            "stage": "level30",
-            "requires": "One point in Hack and Slash at level 30; matched dagger/fist, mace and sword pairs.",
+            "stage": "current-beta",
+            "requires": "Level-30 Rogue with 5/5 Hack and Slash (20 Combat points first; 26 points are available) and matched dagger/fist, mace and sword pairs.",
             "measure": "Swap MH/OH placement. Compare each hand's crit and armor-sensitive damage, plus a non-weapon spell control; separate a displayed character-sheet bonus from hand-specific outcomes."
-          },
-          {
-            "stage": "launch",
-            "requires": "Level 34 for all five ranks, if no expanded beta access.",
-            "measure": "Verify full-rank magnitude only if the one-point hand-scope test leaves nonlinear behavior unresolved."
           }
         ],
         "previous_status": "needs-evidence"
@@ -3452,19 +3447,19 @@
       "review": {
         "disposition": "experiment",
         "confidence": "low",
-        "answer": "The linked Flurry issue and current compendium chapter explicitly remain a model/testing plan. The active Warrior tree puts the first rank behind 25 points: level 35, with rank five at 39. Ordinary haste retaining rage per swing is supported elsewhere, but does not establish every Flurry charge rule. October 11 log audit: The public foreverlogs.gg reports contain no Warrior Flurry windows. They do show that Shaman Flurry, which has the same three client charges, ends on the first white swing after the crit that applied or refreshed it (SHA-009). Warrior Flurry may differ (the Shaman version also has a 500 ms consumption lockout), so the Warrior model keeps three charges until a Warrior is measured.",
+        "answer": "The linked Flurry issue and current compendium chapter explicitly remain a model/testing plan. The active Warrior tree puts the first rank behind 25 points: level 35, with rank five at 39. Ordinary haste retaining rage per swing is supported elsewhere, but does not establish every Flurry charge rule. October 11 log audit: The public foreverlogs.gg reports contain no Warrior Flurry windows. They do show that Shaman Flurry, which has the same three client charges, ends on the first white swing after the crit that applied or refreshed it (SHA-009). Warrior Flurry may differ (the Shaman version also has a 500 ms consumption lockout), so the Warrior model keeps three charges until a Warrior is measured. Talent access: The level-30 beta gives 26 talent points, so a Warrior can take 25 Fury points (including Death Wish) and 1/5 Flurry now. The question matters: if Warrior Flurry lasts one white swing like Shaman Flurry (SHA-009), Fury and Fury (Sunder) lose about 7% and 2H Bloodthirst about 6% in the benchmark.",
         "remaining": "White/queued/extra-swing consumption, multi-target Cleave, refresh order and mid-swing timing.",
         "implementation": "Retain the current disclosed model; no source justifies changing charge logic in this research pass.",
         "tests": [
           {
-            "stage": "launch",
-            "requires": "Warrior level 35+ for the first rank; level 39 for rank five. Later beta access could move this earlier.",
-            "measure": "Record aura stack changes and swing times for crits, avoided swings, paired MH/OH swings, HS and multi-target Cleave. Verify refresh/consumption ordering without assuming a 500-ms gate."
+            "stage": "current-beta",
+            "requires": "Level-30 Warrior with 26 Fury points including Death Wish and 1/5 Flurry (for example Fury 25053005040010100, no Arms or Protection points); advanced combat logging.",
+            "measure": "Auto-attack a mob for three minutes with one weapon, then dual wielding, then with Heroic Strike queued every swing. Count white swings between each Flurry gain and fade, and note whether the buff icon shows 3 charges. About 60 Flurry procs per setup."
           },
           {
-            "stage": "current-beta",
-            "requires": "Warrior with 1/5 Flurry (25 Fury points first) or an Enhancement Shaman with Flurry; raw combat log.",
-            "measure": "Swing timestamps and Flurry gain/fade events with one weapon, dual wield, and Heroic Strike queued every swing. About 300 white swings per setup."
+            "stage": "launch",
+            "requires": "Warrior with 2/5-5/5 Flurry (27-30 talent points, beyond the level-30 beta).",
+            "measure": "Swing intervals with each rank to confirm 5% attack speed per rank."
           }
         ],
         "previous_status": "needs-evidence"
@@ -4039,14 +4034,14 @@
         "implementation": "Implemented 10 procs per minute at every rank (sim/shaman/talents.go).",
         "tests": [
           {
-            "stage": "launch",
-            "requires": "Level 35+ Enhancement; known rank, weapon speed and extra-attack sources.",
-            "measure": "Count eligible landed swings/specials and added stacks; compare weapon speeds and talent ranks, recording Windfury separately. Move earlier only if beta access expands beyond 30."
-          },
-          {
             "stage": "current-beta",
             "requires": "Enhancement Shaman with 1/5 Maelstrom Weapon (25 Enhancement points first), a slow and a fast weapon.",
             "measure": "Melee without casting Lightning Bolt; count stack gains per landed melee hit with each weapon. About 150 gains per weapon."
+          },
+          {
+            "stage": "launch",
+            "requires": "Enhancement Shaman with 2/5 or more Maelstrom Weapon (more than 26 talent points).",
+            "measure": "Repeat the count to confirm that the proc rate does not change with rank."
           }
         ],
         "previous_status": "needs-evidence"
@@ -4790,14 +4785,14 @@
         "implementation": "Keep the current gate provisional; do not replace it solely with another fork's main-hand-only rule.",
         "tests": [
           {
-            "stage": "level30",
-            "requires": "One-point Weaponmaster, comparable mace/non-mace weapons, matched AP and controlled target armor.",
-            "measure": "Move the mace between hands and measure main-hand damage changes; separate the weapon's own damage change and sword extra attacks."
+            "stage": "current-beta",
+            "requires": "Level-30 Warrior with 1/5 to 5/5 Weaponmaster (20 Arms points first; 26 points are available), comparable mace and non-mace weapons, matched AP and controlled target armor.",
+            "measure": "Move the mace between hands and measure main-hand damage changes; separate the weapon's own damage change and sword extra attacks. Repeat at 1/5 and 5/5 to confirm rank scaling."
           },
           {
             "stage": "launch",
-            "requires": "Full talent rank and relevant armor-ignore combinations.",
-            "measure": "Confirm rank scaling and stacking if the one-point hand test finds an effect."
+            "requires": "Level-60 armor-ignore combinations (items and debuffs not available in the beta).",
+            "measure": "Confirm stacking with other armor-ignore effects."
           }
         ],
         "previous_status": "needs-evidence"
@@ -5851,8 +5846,8 @@
           },
           {
             "stage": "current-beta",
-            "requires": "One-point Vindication at 20 and matched enemy swings.",
-            "measure": "Optional validation of the target aura and damage reduction, without confusing owner AP growth with enemy AP loss."
+            "requires": "Paladin with 1/3 to 3/3 Vindication (10 Retribution points first) and matched enemy swings.",
+            "measure": "Validate the target aura and damage reduction at each rank, without confusing owner AP growth with enemy AP loss."
           }
         ],
         "previous_status": "needs-code"
@@ -6629,13 +6624,13 @@
         "tests": [
           {
             "stage": "current-beta",
-            "requires": "Demonic Knowledge accessible with enough talent/legacy points; fixed owner and active pet.",
-            "measure": "Measure owner/pet stats at each reachable rank and despawn/resummon; record unavailable ranks."
+            "requires": "Level-30 Warlock with 1/3, 2/3 and 3/3 Demonic Knowledge (20 Demonology points first; 26 points are available), fixed owner gear and an active pet.",
+            "measure": "Measure owner and pet spell power at each rank, despawning and resummoning after each change."
           },
           {
             "stage": "launch",
-            "requires": "Any ranks still inaccessible in beta.",
-            "measure": "Complete ranked deltas and scaling with player level."
+            "requires": "Higher-level Warlock.",
+            "measure": "Confirm how the bonus scales with player level."
           }
         ],
         "previous_status": null

@@ -86,8 +86,9 @@ There are 65 questions: 36 can be tested in the current level-30 beta, 14 can be
 
 ## Quick tests for a level-30 Warrior
 
-Each of these takes 10–20 minutes on a Warrior at level 28–30 and answers a question that changes Warrior results.
+Each of these takes 10–20 minutes on a Warrior at level 28–30 and answers a question that changes Warrior results. Level 30 gives 26 talent points, so any talent in the first six rows of a tree can be tested now; the sixth row needs 25 points in that tree first.
 
+- **[WAR-006](#war-006)** Flurry charges (highest value: about 7% of Fury DPS depends on it): move to 26 Fury points with 1/5 Flurry (Fury 25053005040010100). Auto-attack for three minutes, then count white swings between each Flurry gain and fade in the combat log.
 - **[WAR-002](#war-002)** Off-hand rage: dual wield, auto-attack only for 3 minutes, Dual Wield Specialization 0/5 then 5/5. Note the Rage change after each off-hand swing.
 - **[WAR-021](#war-021)** Revenge AP slope: tank one mob with two gear sets that differ only in Attack Power. Cast Revenge after every block, dodge or parry. 50 non-crit Revenges per set.
 - **[WAR-020](#war-020)** Rend and Thunder Clap AP slope: the same two gear sets, Improved Rend 0/3. 50 Rend ticks and 30 Thunder Claps per set.
@@ -121,16 +122,17 @@ Each of these takes 10–20 minutes on a Warrior at level 28–30 and answers a 
 
 *Affects: DPS rankings. State: Open.*
 
-- **Why it matters:** Flurry is the main Fury haste source and changes rage income because each swing gives fixed Rage.
+- **Why it matters:** Flurry is the main Fury haste source and drives rage income, because each swing gives fixed Rage. If Warrior Flurry lasts one swing, as Shaman Flurry does in the logs (SHA-009), Fury and Fury (Sunder) lose about 7% and 2H Bloodthirst about 6%.
 - **What the simulator assumes now:** A melee crit gives 3 charges of 5-25% attack speed; every white swing (including avoided ones and queued Heroic Strikes) spends a charge; charges are shared between hands.
-- **Setup:** Warrior or Enhancement Shaman with Flurry (Warrior: 25 Fury points, so 1/5 Flurry is reachable with the 26 points available at level 30). One weapon first, then dual wield.
+- **Setup:** Level-30 Warrior with 26 Fury points: 25 in rows 1-5 including Death Wish, plus 1/5 Flurry (for example Fury 25053005040010100, with no Arms or Protection points). Advanced combat logging on.
 - **Steps:**
-  1. Auto-attack a training mob for three minutes with one weapon.
+  1. Auto-attack a mob at or below your level for three minutes with one weapon, using no abilities.
   2. Repeat while dual wielding.
-  3. Repeat while queueing Heroic Strike on every swing.
-- **Record:** Swing timestamps, crits, misses/dodges/parries, and Flurry gain and fade events from a raw combat log (the processed foreverlogs feed does not show charge changes reliably).
-- **Sample size:** About 300 white swings per run (roughly 60-80 crits).
-- **How the result is used:** The hasted swing interval gives the haste per rank; swings between gain and fade give the charge count and what spends a charge.
+  3. Repeat while queueing Heroic Strike on every main-hand swing.
+  4. During each run, glance at the Flurry buff icon after a crit and note whether it shows a charge count of 3.
+- **Record:** Each Flurry gain and fade in the combat log, and every white swing (hit, crit, miss, dodge, parry) between them.
+- **Sample size:** About 60 Flurry procs per setup (about three minutes each).
+- **How the result is used:** Swings per Flurry window give the charge count: almost always 1 means one charge, as for Shamans; up to 3 means the current model is right. The dual-wield and Heroic Strike runs show what spends a charge.
 
 <a id="war-003"></a>
 #### WAR-003: Incoming rage and mitigation
@@ -167,7 +169,7 @@ Each of these takes 10–20 minutes on a Warrior at level 28–30 and answers a 
 
 - **Why it matters:** Weaponmaster's armor ignore with a mace.
 - **What the simulator assumes now:** A mace in either hand grants the character-wide armor ignore.
-- **Setup:** Warrior with 1/5 Weaponmaster (20 Arms points, reachable at 30), one mace and one non-mace one-hander.
+- **Setup:** Warrior with 5/5 Weaponmaster (20 Arms points first; 25 of the 26 points available at level 30), one mace and one non-mace one-hander.
 - **Steps:** Hit the same mob type with the mace in the main hand, then in the off hand.
 - **Record:** Main-hand non-crit damage in each layout.
 - **Sample size:** 100 hits per layout.

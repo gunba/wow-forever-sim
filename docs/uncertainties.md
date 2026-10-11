@@ -71,17 +71,17 @@ An experiment within the current level-30 beta, subject to actual access, learne
   - Prerequisites: Level 20+ Paladin with Improved Seal of Fury, shield, learned ranks, uncapped mana and known incoming attacker levels.
   - Observe / verify: Measure successive procs, rank switching, partial/full depletion, replacement/expiry and capped attacker-level returns; distinguish generated capacity, absorbed damage and mana.
 - **High · [PAL-008 — Vindication's target AP reduction](#pal-008)**
-  - Prerequisites: One-point Vindication at 20 and matched enemy swings.
-  - Observe / verify: Optional validation of the target aura and damage reduction, without confusing owner AP growth with enemy AP loss.
+  - Prerequisites: Paladin with 1/3 to 3/3 Vindication (10 Retribution points first) and matched enemy swings.
+  - Observe / verify: Validate the target aura and damage reduction at each rank, without confusing owner AP growth with enemy AP loss.
 - **High · [WAR-006 — Flurry amount and charge events](#war-006)**
-  - Prerequisites: Warrior with 1/5 Flurry (25 Fury points first) or an Enhancement Shaman with Flurry; raw combat log.
-  - Observe / verify: Swing timestamps and Flurry gain/fade events with one weapon, dual wield, and Heroic Strike queued every swing. About 300 white swings per setup.
+  - Prerequisites: Level-30 Warrior with 26 Fury points including Death Wish and 1/5 Flurry (for example Fury 25053005040010100, no Arms or Protection points); advanced combat logging.
+  - Observe / verify: Auto-attack a mob for three minutes with one weapon, then dual wielding, then with Heroic Strike queued every swing. Count white swings between each Flurry gain and fade, and note whether the buff icon shows 3 charges. About 60 Flurry procs per setup.
 - **High · [WAR-008 — Shield attacks and weapon procs](#war-008)**
   - Prerequisites: Shield Bash, shield and an actually obtainable known weapon proc; autos stopped.
   - Observe / verify: Count proc events following isolated Bashes. This is a partial test, not certification of Shield Slam or Windfury.
 - **High · [WL-009 — Demonic Knowledge ranked values](#wl-009)**
-  - Prerequisites: Demonic Knowledge accessible with enough talent/legacy points; fixed owner and active pet.
-  - Observe / verify: Measure owner/pet stats at each reachable rank and despawn/resummon; record unavailable ranks.
+  - Prerequisites: Level-30 Warlock with 1/3, 2/3 and 3/3 Demonic Knowledge (20 Demonology points first; 26 points are available), fixed owner gear and an active pet.
+  - Observe / verify: Measure owner and pet spell power at each rank, despawning and resummoning after each change.
 - **Medium · [CORE-009 — Eureka cast and periodic bonuses](#core-009)**
   - Prerequisites: Gnome Mage/Warlock/Priest with a low-rank DoT or channel; exact build and buff-stack timestamps.
   - Observe / verify: Repeat those three cases in game. Do not infer intended behavior from an open bug report or conflate the old mana-discount amount with current values.
@@ -103,9 +103,15 @@ An experiment within the current level-30 beta, subject to actual access, learne
 - **Medium · [PRI-003 — Inner Focus periodic crit behavior](#pri-003)**
   - Prerequisites: Level-20 Priest with Inner Focus and a DoT in its crit mask.
   - Observe / verify: Compare three arms: no aura, aura activated after the DoT and held, and aura consumed by applying the DoT. Record enough ticks and the exact build; separate live observation from intended design.
+- **Medium · [ROG-005 — Hack and Slash hand scope and ICD](#rog-005)**
+  - Prerequisites: Level-30 Rogue with 5/5 Hack and Slash (20 Combat points first; 26 points are available) and matched dagger/fist, mace and sword pairs.
+  - Observe / verify: Swap MH/OH placement. Compare each hand's crit and armor-sensitive damage, plus a non-weapon spell control; separate a displayed character-sheet bonus from hand-specific outcomes.
 - **Medium · [SCEN-005 — General absorb-pool and shielding threat](#scen-005)**
   - Prerequisites: Priest with Power Word: Shield, a cooperating player and a controlled hostile target with threat observation.
   - Observe / verify: Separate threat on shield application, actual absorption and unused expiry; do not attribute incidental healing or damage threat to the shield.
+- **Medium · [WAR-010 — Weaponmaster hand-specific armor ignore](#war-010)**
+  - Prerequisites: Level-30 Warrior with 1/5 to 5/5 Weaponmaster (20 Arms points first; 26 points are available), comparable mace and non-mace weapons, matched AP and controlled target armor.
+  - Observe / verify: Move the mace between hands and measure main-hand damage changes; separate the weapon's own damage change and sword extra attacks. Repeat at 1/5 and 5/5 to confirm rank scaling.
 - **Medium · [WL-006 — Improved Imp's extra dummy effect](#wl-006)**
   - Prerequisites: A live Imp, ranks 0/1/2/3 of Improved Imp, fixed owner/pet haste and mana.
   - Observe / verify: Record Firebolt cast start/end and the interval before the next cast. Distinguish a shorter cast from removal of the engine's artificial 200-ms recast delay.
@@ -141,12 +147,6 @@ Requires reachable level-30 abilities, talents and items. Check training, prereq
 - **Medium · [ROG-002 — Rogue finisher and poison scaling](#rog-002)**
   - Prerequisites: Deadly Poison access and a controlled AP delta.
   - Observe / verify: Measure one-stack ticks and then five-stack ticks to locate the 0.0045 ratio. Audit finishers in separate AP/CP controls rather than mixing poison proc counts with their damage.
-- **Medium · [ROG-005 — Hack and Slash hand scope and ICD](#rog-005)**
-  - Prerequisites: One point in Hack and Slash at level 30; matched dagger/fist, mace and sword pairs.
-  - Observe / verify: Swap MH/OH placement. Compare each hand's crit and armor-sensitive damage, plus a non-weapon spell control; separate a displayed character-sheet bonus from hand-specific outcomes.
-- **Medium · [WAR-010 — Weaponmaster hand-specific armor ignore](#war-010)**
-  - Prerequisites: One-point Weaponmaster, comparable mace/non-mace weapons, matched AP and controlled target armor.
-  - Observe / verify: Move the mace between hands and measure main-hand damage changes; separate the weapon's own damage change and sword extra attacks.
 
 ### Beyond level 30 / launch
 
@@ -195,8 +195,8 @@ Requires access beyond the announced level-30 beta or max-level content. Reclass
   - Prerequisites: Relevant talent ranks and the actual raid Windfury buff.
   - Observe / verify: Repeat the off-hand ratio with the rage talent and test proc-generated swings, independently of damage and crit.
 - **High · [WAR-006 — Flurry amount and charge events](#war-006)**
-  - Prerequisites: Warrior level 35+ for the first rank; level 39 for rank five. Later beta access could move this earlier.
-  - Observe / verify: Record aura stack changes and swing times for crits, avoided swings, paired MH/OH swings, HS and multi-target Cleave. Verify refresh/consumption ordering without assuming a 500-ms gate.
+  - Prerequisites: Warrior with 2/5-5/5 Flurry (27-30 talent points, beyond the level-30 beta).
+  - Observe / verify: Swing intervals with each rank to confirm 5% attack speed per rank.
 - **High · [WAR-008 — Shield attacks and weapon procs](#war-008)**
   - Prerequisites: Level-40 Shield Slam and access to the exact proc source, including level-32+ Windfury Totem where relevant.
   - Observe / verify: Repeat isolated attacks, separating landed/avoided outcomes and weapon versus shield effects.
@@ -204,8 +204,8 @@ Requires access beyond the announced level-30 beta or max-level content. Reclass
   - Prerequisites: Max-level pet ranks and relevant Tier effects.
   - Observe / verify: Verify the level extrapolation and Tier interactions rather than rediscovering the basic power owner.
 - **High · [WL-009 — Demonic Knowledge ranked values](#wl-009)**
-  - Prerequisites: Any ranks still inaccessible in beta.
-  - Observe / verify: Complete ranked deltas and scaling with player level.
+  - Prerequisites: Higher-level Warlock.
+  - Observe / verify: Confirm how the bonus scales with player level.
 - **Medium · [DATA-006 — Legacy item and enchant proc assumptions](#data-006)**
   - Prerequisites: Actual Crusader/Fiery enchants, fixed-speed weapons and separate white-only, special-attack and extra-swing samples. Move earlier only if the beta supplies these high-skill enchants.
   - Observe / verify: Estimate probability by eligible event type and weapon speed; record haste, handedness and form. A triggered spell's coefficient does not establish its PPM.
@@ -218,12 +218,9 @@ Requires access beyond the announced level-30 beta or max-level content. Reclass
 - **Medium · [ROG-001 — Mutilate off-hand flat damage and Cold Blood](#rog-001)**
   - Prerequisites: Higher Mutilate ranks.
   - Observe / verify: Verify that the higher flat component follows the low-rank ordering; do not repeat already settled proc timing unless a patch changes it.
-- **Medium · [ROG-005 — Hack and Slash hand scope and ICD](#rog-005)**
-  - Prerequisites: Level 34 for all five ranks, if no expanded beta access.
-  - Observe / verify: Verify full-rank magnitude only if the one-point hand-scope test leaves nonlinear behavior unresolved.
 - **Medium · [WAR-010 — Weaponmaster hand-specific armor ignore](#war-010)**
-  - Prerequisites: Full talent rank and relevant armor-ignore combinations.
-  - Observe / verify: Confirm rank scaling and stacking if the one-point hand test finds an effect.
+  - Prerequisites: Level-60 armor-ignore combinations (items and debuffs not available in the beta).
+  - Observe / verify: Confirm stacking with other armor-ignore effects.
 - **Medium · [WL-002 — Incinerate's Immolate bonus scope](#wl-002)**
   - Prerequisites: Level-40 Incinerate and two known SP totals on the same target.
   - Observe / verify: Measure with/without Immolate at each SP total. Compare the slopes, not just one tooltip-range average; retain identical damage talents and mitigation.
@@ -915,7 +912,7 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Question:** Which events proc, refresh and spend Flurry, and does the talent curve or triggered aura determine speed?
 
-**Finding:** The linked Flurry issue and current compendium chapter explicitly remain a model/testing plan. The active Warrior tree puts the first rank behind 25 points: level 35, with rank five at 39. Ordinary haste retaining rage per swing is supported elsewhere, but does not establish every Flurry charge rule. October 11 log audit: The public foreverlogs.gg reports contain no Warrior Flurry windows. They do show that Shaman Flurry, which has the same three client charges, ends on the first white swing after the crit that applied or refreshed it (SHA-009). Warrior Flurry may differ (the Shaman version also has a 500 ms consumption lockout), so the Warrior model keeps three charges until a Warrior is measured.
+**Finding:** The linked Flurry issue and current compendium chapter explicitly remain a model/testing plan. The active Warrior tree puts the first rank behind 25 points: level 35, with rank five at 39. Ordinary haste retaining rage per swing is supported elsewhere, but does not establish every Flurry charge rule. October 11 log audit: The public foreverlogs.gg reports contain no Warrior Flurry windows. They do show that Shaman Flurry, which has the same three client charges, ends on the first white swing after the crit that applied or refreshed it (SHA-009). Warrior Flurry may differ (the Shaman version also has a 500 ms consumption lockout), so the Warrior model keeps three charges until a Warrior is measured. Talent access: The level-30 beta gives 26 talent points, so a Warrior can take 25 Fury points (including Death Wish) and 1/5 Flurry now. The question matters: if Warrior Flurry lasts one white swing like Shaman Flurry (SHA-009), Fury and Fury (Sunder) lose about 7% and 2H Bloodthirst about 6% in the benchmark.
 
 **Current implementation / scenario:** 5–25% melee speed; three shared charges. White-tagged events, including avoided swings and queued replacements, consume charges without a 500-ms gate. Melee crits refill after consumption. Each Cleave target may consume a charge.
 
@@ -925,13 +922,13 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Implementation / model follow-up:** Retain the current disclosed model; no source justifies changing charge logic in this research pass.
 
-**Beyond level 30 / launch**
-- Prerequisites: Warrior level 35+ for the first rank; level 39 for rank five. Later beta access could move this earlier.
-- Observe / verify: Record aura stack changes and swing times for crits, avoided swings, paired MH/OH swings, HS and multi-target Cleave. Verify refresh/consumption ordering without assuming a 500-ms gate.
-
 **Current beta · level 30**
-- Prerequisites: Warrior with 1/5 Flurry (25 Fury points first) or an Enhancement Shaman with Flurry; raw combat log.
-- Observe / verify: Swing timestamps and Flurry gain/fade events with one weapon, dual wield, and Heroic Strike queued every swing. About 300 white swings per setup.
+- Prerequisites: Level-30 Warrior with 26 Fury points including Death Wish and 1/5 Flurry (for example Fury 25053005040010100, no Arms or Protection points); advanced combat logging.
+- Observe / verify: Auto-attack a mob for three minutes with one weapon, then dual wielding, then with Heroic Strike queued every swing. Count white swings between each Flurry gain and fade, and note whether the buff icon shows 3 charges. About 60 Flurry procs per setup.
+
+**Beyond level 30 / launch**
+- Prerequisites: Warrior with 2/5-5/5 Flurry (27-30 talent points, beyond the level-30 beta).
+- Observe / verify: Swing intervals with each rank to confirm 5% attack speed per rank.
 
 **References:** [docs/flurry_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/flurry_review.md) · [sim/warrior/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/talents.go) · [https://github.com/magey/forever-warrior/issues/12](https://github.com/magey/forever-warrior/issues/12) · [https://ppach-warriorcompendium.share.connect.posit.cloud/flurry.html](https://ppach-warriorcompendium.share.connect.posit.cloud/flurry.html) · [ui/core/talents/trees/warrior.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/warrior.json) · [https://foreverlogs.gg/](https://foreverlogs.gg/)
 
@@ -991,13 +988,13 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Implementation / model follow-up:** Keep the current gate provisional; do not replace it solely with another fork's main-hand-only rule.
 
-**Level-30 beta**
-- Prerequisites: One-point Weaponmaster, comparable mace/non-mace weapons, matched AP and controlled target armor.
-- Observe / verify: Move the mace between hands and measure main-hand damage changes; separate the weapon's own damage change and sword extra attacks.
+**Current beta · level 30**
+- Prerequisites: Level-30 Warrior with 1/5 to 5/5 Weaponmaster (20 Arms points first; 26 points are available), comparable mace and non-mace weapons, matched AP and controlled target armor.
+- Observe / verify: Move the mace between hands and measure main-hand damage changes; separate the weapon's own damage change and sword extra attacks. Repeat at 1/5 and 5/5 to confirm rank scaling.
 
 **Beyond level 30 / launch**
-- Prerequisites: Full talent rank and relevant armor-ignore combinations.
-- Observe / verify: Confirm rank scaling and stacking if the one-point hand test finds an effect.
+- Prerequisites: Level-60 armor-ignore combinations (items and debuffs not available in the beta).
+- Observe / verify: Confirm stacking with other armor-ignore effects.
 
 **References:** [sim/warrior/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/talents.go) · [docs/upstream-forever-review-2026-09-23.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/upstream-forever-review-2026-09-23.md) · [ui/core/talents/trees/warrior.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/warrior.json)
 
@@ -1600,8 +1597,8 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Observe / verify: Reconcile the rendered level-60 amount with raw level fields; test activation/expiry and competing debuffs against known target AP.
 
 **Current beta · level 30**
-- Prerequisites: One-point Vindication at 20 and matched enemy swings.
-- Observe / verify: Optional validation of the target aura and damage reduction, without confusing owner AP growth with enemy AP loss.
+- Prerequisites: Paladin with 1/3 to 3/3 Vindication (10 Retribution points first) and matched enemy swings.
+- Observe / verify: Validate the target aura and damage reduction at each rank, without confusing owner AP growth with enemy AP loss.
 
 **References:** [sim/paladin/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/talents.go) · [sim/core/attack.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/attack.go) · [docs/beta-pass/paladin.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/paladin.md) · [https://www.wowhead.com/forever/spell=9452/vindication](https://www.wowhead.com/forever/spell=9452/vindication) · [https://www.wowhead.com/forever/spell=440667/vindication](https://www.wowhead.com/forever/spell=440667/vindication) · [tools/forever_tanks/main.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_tanks/main.go)
 
@@ -3095,13 +3092,9 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Implementation / model follow-up:** Retain the 200-ms gate. Narrow the experiment to mixed weapons and any observed contradiction; do not spend a large sample re-estimating a value already supplied by the current client.
 
-**Level-30 beta**
-- Prerequisites: One point in Hack and Slash at level 30; matched dagger/fist, mace and sword pairs.
+**Current beta · level 30**
+- Prerequisites: Level-30 Rogue with 5/5 Hack and Slash (20 Combat points first; 26 points are available) and matched dagger/fist, mace and sword pairs.
 - Observe / verify: Swap MH/OH placement. Compare each hand's crit and armor-sensitive damage, plus a non-weapon spell control; separate a displayed character-sheet bonus from hand-specific outcomes.
-
-**Beyond level 30 / launch**
-- Prerequisites: Level 34 for all five ranks, if no expanded beta access.
-- Observe / verify: Verify full-rank magnitude only if the one-point hand-scope test leaves nonlinear behavior unresolved.
 
 **References:** [sim/rogue/hack_and_slash.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/rogue/hack_and_slash.go) · [docs/beta-pass/rogue.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/rogue.md) · [artifacts/question_review/class_evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/class_evidence.json) · [https://www.wowhead.com/forever/spell=1290312/hack-and-slash](https://www.wowhead.com/forever/spell=1290312/hack-and-slash) · [https://foreverlogs.gg/](https://foreverlogs.gg/)
 
@@ -3295,13 +3288,13 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Implementation / model follow-up:** Implemented 10 procs per minute at every rank (sim/shaman/talents.go).
 
-**Optional / conditional · Beyond level 30 / launch**
-- Prerequisites: Level 35+ Enhancement; known rank, weapon speed and extra-attack sources.
-- Observe / verify: Count eligible landed swings/specials and added stacks; compare weapon speeds and talent ranks, recording Windfury separately. Move earlier only if beta access expands beyond 30.
-
 **Optional / conditional · Current beta · level 30**
 - Prerequisites: Enhancement Shaman with 1/5 Maelstrom Weapon (25 Enhancement points first), a slow and a fast weapon.
 - Observe / verify: Melee without casting Lightning Bolt; count stack gains per landed melee hit with each weapon. About 150 gains per weapon.
+
+**Optional / conditional · Beyond level 30 / launch**
+- Prerequisites: Enhancement Shaman with 2/5 or more Maelstrom Weapon (more than 26 talent points).
+- Observe / verify: Repeat the count to confirm that the proc rate does not change with rank.
 
 **References:** [sim/shaman/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/shaman/talents.go) · [docs/beta-pass/shaman.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/shaman.md) · [docs/check_dispositions.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/check_dispositions.md) · [https://wago.tools/db2/SpellEffect?build=1.60.1.70009](https://wago.tools/db2/SpellEffect?build=1.60.1.70009) · [https://wago.tools/db2/SpellAuraOptions?build=1.60.1.69977](https://wago.tools/db2/SpellAuraOptions?build=1.60.1.69977) · [ui/core/talents/trees/shaman.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/shaman.json) · [https://foreverlogs.gg/](https://foreverlogs.gg/)
 
@@ -3562,12 +3555,12 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **Implementation / model follow-up:** Do not silently divide the full talent by three or label the unchanged curve as newly datamined.
 
 **Current beta · level 30**
-- Prerequisites: Demonic Knowledge accessible with enough talent/legacy points; fixed owner and active pet.
-- Observe / verify: Measure owner/pet stats at each reachable rank and despawn/resummon; record unavailable ranks.
+- Prerequisites: Level-30 Warlock with 1/3, 2/3 and 3/3 Demonic Knowledge (20 Demonology points first; 26 points are available), fixed owner gear and an active pet.
+- Observe / verify: Measure owner and pet spell power at each rank, despawning and resummoning after each change.
 
 **Beyond level 30 / launch**
-- Prerequisites: Any ranks still inaccessible in beta.
-- Observe / verify: Complete ranked deltas and scaling with player level.
+- Prerequisites: Higher-level Warlock.
+- Observe / verify: Confirm how the bonus scales with player level.
 
 **References:** [docs/october-8-review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-8-review.md) · [sim/warlock/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warlock/talents.go) · [https://worldofwarcraft.blizzard.com/en-us/news/24310968](https://worldofwarcraft.blizzard.com/en-us/news/24310968)
 

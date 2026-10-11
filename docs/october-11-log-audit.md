@@ -83,6 +83,13 @@ checks (seeds 1793140001 and 1793160001). Builds that changed by at least 0.05%,
 Tank checks: Protection Paladin single-target threat +0.5% (more Redoubt blocks feed Holy Shield);
 Bear single-target threat -1.0% (fewer Omen procs).
 
-The largest open questions that still affect results are Revenge's rank-6 AP coefficient (Protection
-Warrior), pet stat inheritance and per-hit damage (Hunter and Warlock pets), and Rogue poison and
-finisher scaling. All can be tested at least in part in the current beta.
+The largest open question that still affects results is Warrior Flurry (WAR-006). The Warrior model
+keeps three charges, but if Warrior Flurry lasts one swing like Shaman Flurry, Fury and Fury (Sunder)
+lose about 7% and 2H Bloodthirst about 6%. Level 30 gives 26 talent points, so 1/5 Flurry can be
+tested now. The next largest are Revenge's rank-6 AP coefficient (Protection Warrior), pet stat
+inheritance and per-hit damage (Hunter and Warlock pets), and Rogue poison and finisher scaling. All
+can be tested at least in part in the current beta.
+
+Register tests that wrongly assumed these talents need launch were corrected: Flurry, Maelstrom
+Weapon, Hack and Slash, Weaponmaster, Vindication and Demonic Knowledge are all reachable with the
+26 points available at level 30.
