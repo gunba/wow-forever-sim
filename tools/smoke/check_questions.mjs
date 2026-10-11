@@ -17,11 +17,11 @@ try {
 	assert.equal(await page.locator('.question-group:not([hidden])[open]').count(), 0);
 	assert.equal(await page.locator('.question-card[data-status="resolved"]:not([hidden])').count(), 0);
 	assert.equal(await page.locator('.question-card[data-status="provisional"]:not([hidden])').count(), 0);
-	await page.locator('#question-search').fill('Maelstrom');
-	assert(await page.locator('#SHA-001').isVisible());
+	await page.locator('#question-search').fill('Hack and Slash');
+	assert(await page.locator('#ROG-005').isVisible());
 	assert(await page.locator('.question-group[open]').count() > 0);
-	await page.locator('#SHA-001 > summary').click();
-	assert(await page.locator('#SHA-001').getAttribute('open') !== null);
+	await page.locator('#ROG-005 > summary').click();
+	assert(await page.locator('#ROG-005').getAttribute('open') !== null);
 	await page.locator('#question-search').fill('this-is-not-a-real-spell');
 	assert.equal(await page.locator('.question-card:not([hidden])').count(), 0);
 	await page.goto(new URL('review/#DONE-007', base).href, { waitUntil: 'domcontentloaded' });

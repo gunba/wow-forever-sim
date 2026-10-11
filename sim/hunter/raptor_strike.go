@@ -98,7 +98,11 @@ func (hunter *Hunter) makeQueueSpellsAndAura() *core.Spell {
 			if hunter.curQueueAura != nil {
 				hunter.curQueueAura.Deactivate(sim)
 			}
-			hunter.PseudoStats.DisableDWMissPenalty = true
+			// Forever beta testers reported on 2026-09-28 that a queued Raptor Strike no longer removes
+			// the off-hand dual-wield miss penalty; the October 1 notes removed the same effect from Heroic Strike.
+			if !hunter.Env.IsForever() {
+				hunter.PseudoStats.DisableDWMissPenalty = true
+			}
 			hunter.curQueueAura = aura
 			hunter.curQueuedAutoSpell = hunter.RaptorStrike
 		},

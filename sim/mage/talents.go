@@ -375,10 +375,11 @@ func (mage *Mage) applyMissileBarrage() {
 		// Client 1.60.1.70245, SpellAuraOptions 400588: harmful spell hit,
 		// not cast completion. A projectile must land before it can proc.
 		trigger.OnSpellHitDealt = func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if result.Landed() && spell.ProcMask.Matches(core.ProcMaskSpellDamage) {
+			if result.Landed() && spell.ProcMask.Matches(core.ProcMaskSpellDamage) && !mage.ProcsAtCast(sim, spell) {
 				tryProc(sim, spell)
 			}
 		}
+		mage.castResultHooks = append(mage.castResultHooks, tryProc)
 	} else {
 		trigger.OnCastComplete = func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
 			tryProc(sim, spell)
@@ -782,6 +783,11 @@ func (mage *Mage) applyFingersOfFrost() {
 	// TODO: the demo tooltip only says "your next 1 spell cast", beta will confirm whether a cast
 	// already in progress when the chill lands counts as that one.
 	var inFlight *core.Spell
+	var roll func(sim *core.Simulation, spell *core.Spell)
+	// Forever grants the charges when Frostbolt or Frostfire Bolt finishes casting (see fingersOfFrostOnCastResult);
+	// that cast must not spend them.
+	var grantSpell *core.Spell
+	var grantAt time.Duration
 
 	mage.FingersOfFrostAura = mage.RegisterAura(core.Aura{
 		Label:    "Fingers of Frost",
@@ -826,6 +832,9 @@ func (mage *Mage) applyFingersOfFrost() {
 				inFlight = nil
 				return
 			}
+			if spell == grantSpell && sim.CurrentTime == grantAt {
+				return
+			}
 
 			// OnCastComplete runs after the damage is rolled, so the consuming cast keeps the
 			// bonus. Each cast spends one charge; the aura falls when the last one goes.
@@ -840,20 +849,47 @@ func (mage *Mage) applyFingersOfFrost() {
 			aura.Activate(sim)
 		},
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if !result.Landed() || !spell.Flags.Matches(SpellFlagChillSpell) {
+			if !result.Landed() || !spell.Flags.Matches(SpellFlagChillSpell) || mage.ProcsAtCast(sim, spell) {
 				return
 			}
-
-			chance := procChance
-			if spell.SpellCode == SpellCode_MageFrostfireBolt {
-				chance += tierFrostfireChance
-			}
-			if sim.Proc(chance, "Fingers of Frost") {
-				mage.FingersOfFrostAura.Activate(sim)
-				mage.FingersOfFrostAura.SetStacks(sim, mage.FingersOfFrostAura.MaxStacks)
-			}
+			roll(sim, spell)
 		},
 	})
+
+	roll = func(sim *core.Simulation, spell *core.Spell) {
+		chance := procChance
+		if spell.SpellCode == SpellCode_MageFrostfireBolt {
+			chance += tierFrostfireChance
+		}
+		if sim.Proc(chance, "Fingers of Frost") {
+			grantSpell, grantAt = spell, sim.CurrentTime
+			mage.FingersOfFrostAura.Activate(sim)
+			mage.FingersOfFrostAura.SetStacks(sim, mage.FingersOfFrostAura.MaxStacks)
+		}
+	}
+	mage.castResultHooks = append(mage.castResultHooks, func(sim *core.Simulation, spell *core.Spell) {
+		if spell.Flags.Matches(SpellFlagChillSpell) {
+			roll(sim, spell)
+		}
+	})
+}
+
+// Forever rolls the caster's on-hit procs from Fireball, Frostbolt and Frostfire Bolt when the cast
+// completes and its roll does not miss, before the projectile lands. Public foreverlogs.gg reports show
+// every Frostbolt-triggered Fingers of Frost (121 of 121 outside encounter-start snapshots) and every
+// Frostbolt/Fireball Missile Barrage (11 of 11) at the cast-success timestamp, none at impact.
+func (mage *Mage) ProcsAtCast(sim *core.Simulation, spell *core.Spell) bool {
+	return sim.IsForever() && (spell.SpellCode == SpellCode_MageFrostbolt ||
+		spell.SpellCode == SpellCode_MageFrostfireBolt || spell.SpellCode == SpellCode_MageFireball)
+}
+
+func (mage *Mage) CastResultProcs(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+	if !result.Landed() || !mage.ProcsAtCast(sim, spell) {
+		return
+	}
+	for _, hook := range mage.castResultHooks {
+		hook(sim, spell)
+	}
 }
 
 // IsTargetFrozen reports whether the mage's next spell is treated as hitting a frozen target.

@@ -88,6 +88,7 @@ type Mage struct {
 	ClearcastingAura   *core.Aura
 	CombustionAura     *core.Aura
 	FingersOfFrostAura *core.Aura
+	castResultHooks    []func(sim *core.Simulation, spell *core.Spell)
 	HotStreakAura      *core.Aura
 	IceArmorAura       *core.Aura
 	IceBarrierAuras    []*core.Aura

@@ -72,13 +72,18 @@ func TestForeverOmenClientModel(t *testing.T) {
 			source = unit.AutoAttacks.MHAuto()
 		}
 		target := sim.Encounter.TargetUnits[0]
+		// Omen rolls once its ICD is ready; a failed roll leaves the ICD ready.
+		roll := func(outcome core.HitOutcome) bool {
+			for i := 0; i < 500 && !clear.IsActive(); i++ {
+				trigger.OnSpellHitDealt(trigger, sim, source, &core.SpellResult{Target: target, Outcome: outcome})
+			}
+			return clear.IsActive()
+		}
 		sim.CurrentTime = 0
-		trigger.OnSpellHitDealt(trigger, sim, source, &core.SpellResult{Target: target, Outcome: core.OutcomeMiss})
-		if clear.IsActive() {
+		if roll(core.OutcomeMiss) {
 			t.Fatal("miss triggered Omen")
 		}
-		trigger.OnSpellHitDealt(trigger, sim, source, &core.SpellResult{Target: target, Outcome: core.OutcomeHit})
-		if !clear.IsActive() || paid.Cost.GetCurrentCost() != 0 {
+		if !roll(core.OutcomeHit) || paid.Cost.GetCurrentCost() != 0 {
 			t.Fatalf("%s: proc did not waive the eligible resource cost", key)
 		}
 		clear.OnCastComplete(clear, sim, free)
@@ -123,19 +128,38 @@ func TestForeverOmenClientModel(t *testing.T) {
 		}
 		// The Cat action above happens at the white swing's timestamp: it must
 		// consume the proc even though the aura still has its full duration.
-		sim.CurrentTime = 9999 * time.Millisecond
-		trigger.OnSpellHitDealt(trigger, sim, source, &core.SpellResult{Target: target, Outcome: core.OutcomeHit})
-		if clear.IsActive() {
+		procTime := time.Duration(0) // the first proc above happened at time zero
+		sim.CurrentTime = procTime + 9999*time.Millisecond
+		if roll(core.OutcomeHit) {
 			t.Fatal("Omen ignored its ten-second ICD")
 		}
-		sim.CurrentTime = 10 * time.Second
-		trigger.OnSpellHitDealt(trigger, sim, source, &core.SpellResult{Target: target, Outcome: core.OutcomeHit})
-		if !clear.IsActive() {
+		sim.CurrentTime = procTime + 10*time.Second
+		if !roll(core.OutcomeHit) {
 			t.Fatal("Omen did not become available after ten seconds")
 		}
 		clear.Deactivate(sim)
 		if paid.Cost.GetCurrentCost() != baseCost {
 			t.Fatal("Omen expiration accumulated a cost modifier")
+		}
+		if key == "feral" {
+			// After the ICD: 20% per ability, spell or heal; white hits at 4 procs per minute of attack speed.
+			for _, c := range []struct {
+				spell *core.Spell
+				want  float64
+			}{{paid, .2}, {source, 4 * unit.AutoAttacks.MH().SwingSpeed / 60}} {
+				procs, trials := 0, 8000
+				for i := 1; i <= trials; i++ {
+					sim.CurrentTime += 10 * time.Second
+					trigger.OnSpellHitDealt(trigger, sim, c.spell, &core.SpellResult{Target: target, Outcome: core.OutcomeHit})
+					if clear.IsActive() {
+						procs++
+						clear.Deactivate(sim)
+					}
+				}
+				if rate := float64(procs) / float64(trials); math.Abs(rate-c.want) > .02 {
+					t.Fatalf("Omen proc chance after its ICD %.3f, want %.3f", rate, c.want)
+				}
+			}
 		}
 	}
 }

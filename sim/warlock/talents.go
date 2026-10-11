@@ -361,11 +361,22 @@ func (warlock *Warlock) applyDecimation() {
 			})
 		},
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+			if sim.IsForever() && spell.SpellCode == SpellCode_WarlockShadowBolt {
+				return // applied at cast completion; see decimationOnCastResult
+			}
 			if result.Landed() && sim.IsExecutePhase35() && slices.Contains(affectedSpellCodes, spell.SpellCode) {
 				warlock.DecimationAura.Activate(sim)
 			}
 		},
 	}))
+}
+
+// Forever applies Decimation when Shadow Bolt finishes casting, before the projectile lands, but only if
+// the bolt's roll did not miss (public warcraftlogs traces in the Warlock Classic research forum, 2026-10-10).
+func (warlock *Warlock) decimationOnCastResult(sim *core.Simulation, result *core.SpellResult) {
+	if warlock.DecimationAura != nil && sim.IsForever() && result.Landed() && sim.IsExecutePhase35() {
+		warlock.DecimationAura.Activate(sim)
+	}
 }
 
 func (warlock *Warlock) applyDemonicBrand() {

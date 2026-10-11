@@ -260,14 +260,20 @@ func TestShamanOctober8OverloadBoltTravelAndOrdinaryFlurry(t *testing.T) {
 	}
 	auto.BonusCritRating = 10000
 	auto.CalcAndDealDamage(sim, s.CurrentTarget, 1, auto.OutcomeMeleeSpecialCritOnly)
-	if flurry.GetStacks() != 3 {
+	// Forever Flurry lasts for one white swing (public combat logs), despite the client's three charges.
+	if flurry.GetStacks() != 1 {
 		t.Fatal("ordinary melee crit stopped granting Flurry")
 	}
-	flurry.SetStacks(sim, 1)
+	sim.CurrentTime += time.Second // past the 500 ms consumption lockout
 	// An ordinary extra-auto packet uses the same attack spell, not a new proc
 	// spell. WF's separate yellow surrogate remains explicitly unvalidated.
 	auto.CalcAndDealDamage(sim, s.CurrentTarget, 1, auto.OutcomeMeleeSpecialCritOnly)
-	if flurry.GetStacks() != 3 {
+	if flurry.GetStacks() != 1 {
 		t.Fatal("another ordinary auto crit stopped refreshing Flurry")
+	}
+	sim.CurrentTime += time.Second
+	auto.CalcAndDealDamage(sim, s.CurrentTarget, 1, auto.OutcomeAlwaysHit)
+	if flurry.IsActive() {
+		t.Fatal("the next white swing did not end Flurry")
 	}
 }

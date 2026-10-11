@@ -15,7 +15,7 @@ and weapon coverage. None is confirmed obtainable loot. The previous
 and the separate [real-item benchmark](https://github.com/gunba/wow-forever-sim/blob/175b1a9de5/artifacts/forever_dps_5min.json)
 remain distinct historical references.
 
-This benchmark incorporates the **[October 11 audit](../../docs/october-11-audit.md)** (client 1.60.1.70338): engine corrections, reselected Warrior rotations and Hunter consumables, and an independently confirmed gear re-search of every DPS profile. The earlier [overnight update](../../docs/october-8-overnight-update.md) records the 70291 provisional-model assumptions, sensitivity failures and feature gaps. The current roster contains
+This benchmark incorporates the **[October 11 log audit](../../docs/october-11-log-audit.md)** (corrections from public beta combat logs, with a confirmed gear re-search of the builds they changed) on top of the **[October 11 audit](../../docs/october-11-audit.md)** (client 1.60.1.70338): engine corrections, reselected Warrior rotations and Hunter consumables, and an independently confirmed gear re-search of every DPS profile. [Beta test procedures](../../docs/beta-test-procedures.md) lists how to settle each remaining open question. The earlier [overnight update](../../docs/october-8-overnight-update.md) records the 70291 provisional-model assumptions, sensitivity failures and feature gaps. The current roster contains
 **31 builds and 201 race/build profiles** (99 Alliance, 102 Horde). See
 the [patch audit](../../docs/forever-70009.md) for source gaps and exclusions.
 The [class-effects follow-up](../../docs/upstream_elliot_review.md) replays

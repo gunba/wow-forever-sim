@@ -6,16 +6,29 @@ import (
 	"github.com/wowsims/classic/sim/core"
 )
 
+const (
+	omenOfClarityChance   = 0.2 // abilities, spells and heals
+	omenOfClarityWhitePPM = 4.0 // white melee hits, by current weapon or form attack speed
+)
+
 func (druid *Druid) registerOmenOfClarity() {
 	if !druid.Env.IsForever() || druid.Level < 20 {
 		return
 	}
 
-	// Provisional client-data model: 16864 lists 100% proc chance, a 10-second
-	// ICD and no PPM entry. A server-side chance override has not been measured.
+	// 16864 lists a 100% chance, a 10-second ICD and no PPM entry, but the server rolls lower chances.
+	// Public foreverlogs.gg reports (691 Druid proc windows) confirm the 10-second ICD. After it, white melee
+	// hits proc at a rate that scales with attack speed (Cat 5.5-7.5% at 1.0 s, Bear 14.5-18.5% at 2.5 s:
+	// about 3.5-4.5 procs per minute), and abilities, spells and heals at about 18-23% per cast.
 	// 16870 has one charge, 15-second duration and a -100% resource-cost mod.
 	// See assets/db_inputs/forever_effect_audit.json and in-game check T25.
 	icd := core.Cooldown{Timer: druid.NewTimer(), Duration: 10 * time.Second}
+	omenChance := func(spell *core.Spell) float64 {
+		if spell.ProcMask.Matches(core.ProcMaskMeleeWhiteHit) {
+			return omenOfClarityWhitePPM * druid.AutoAttacks.MH().SwingSpeed / 60
+		}
+		return omenOfClarityChance
+	}
 	eligible := map[*core.Spell]bool{}
 	var grantSpell *core.Spell
 	var grantAt time.Duration
@@ -65,7 +78,7 @@ func (druid *Druid) registerOmenOfClarity() {
 	proc := func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 		if !result.Landed() || spell.Flags.Matches(core.SpellFlagPassiveSpell) ||
 			!spell.ProcMask.Matches(core.ProcMaskMelee|core.ProcMaskSpellDamage|core.ProcMaskSpellHealing) ||
-			!icd.IsReady(sim) {
+			!icd.IsReady(sim) || !sim.Proc(omenChance(spell), "Omen of Clarity") {
 			return
 		}
 		icd.Use(sim)

@@ -154,7 +154,7 @@ def main():
     tier = "Tier 1 bonuses enabled" if data["Tier1Bonuses"] else "Tier 1 override disabled"
     fig.text(.5, .942,
              f"Level 60 · {data['Duration']:g}s single target · {tier}" +
-             (" · October 11 audit / client 1.60.1.70338" if model_v2 else ""),
+             (" · October 11 log audit / client 1.60.1.70338" if model_v2 else ""),
              ha="center", fontsize=11)
     samples = "/".join(f"{n:,}" for n in sorted({r["Iterations"] for r in rows}))
     fig.text(.07, .085,

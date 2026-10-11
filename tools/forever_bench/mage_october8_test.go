@@ -18,21 +18,30 @@ import (
 // Client 1.60.1.70245 SpellAuraOptions/SpellEffect and TraitDefinitionEffectPoints.
 // Public context: https://github.com/ElliotWood/Forever/pull/660 and /pull/615.
 // These guard the exported client rules, not a claim about server deployment.
+// landMageNuke delivers a nuke's landed result the way the engine does: Forever rolls Fireball, Frostbolt
+// and Frostfire Bolt procs when the cast completes, other spells on impact.
+func landMageNuke(s *core.Simulation, trigger *core.Aura, spell *core.Spell, result *core.SpellResult) {
+	m := s.Raid.Parties[0].Players[0].(mage.MageAgent).GetMage()
+	if m.ProcsAtCast(s, spell) {
+		m.CastResultProcs(s, spell, result)
+		return
+	}
+	trigger.OnSpellHitDealt(trigger, s, spell, result)
+}
+
 func TestOctober8MageMissileBarrageImpact(t *testing.T) {
 	sim := core.NewSim(mageSpellFixture(map[string]int{"missileBarrage": 1, "arcaneBlast": 1}), simsignals.Signals{})
 	unit, target := sim.Raid.AllPlayerUnits[0], sim.Encounter.TargetUnits[0]
 	trigger, barrage := unit.GetAura("Missile Barrage Trigger"), unit.GetAura("Missile Barrage")
 	frostfire := unit.GetSpell(core.ActionID{SpellID: 1237313})
 
-	t.Run("not_before_impact", func(t *testing.T) {
+	t.Run("not_again_at_impact", func(t *testing.T) {
 		barrage.Deactivate(sim)
 		for i := 0; i < 100; i++ {
-			if trigger.OnCastComplete != nil {
-				trigger.OnCastComplete(trigger, sim, frostfire)
-			}
+			trigger.OnSpellHitDealt(trigger, sim, frostfire, &core.SpellResult{Target: target, Outcome: core.OutcomeHit})
 		}
 		if barrage.IsActive() {
-			t.Fatal("Missile Barrage procced at cast completion before projectile impact")
+			t.Fatal("Frostfire Bolt rolled Missile Barrage again when the projectile landed")
 		}
 	})
 	t.Run("miss", func(t *testing.T) {
@@ -41,7 +50,7 @@ func TestOctober8MageMissileBarrageImpact(t *testing.T) {
 		}
 		barrage.Deactivate(sim)
 		for i := 0; i < 100; i++ {
-			trigger.OnSpellHitDealt(trigger, sim, frostfire, &core.SpellResult{Target: target, Outcome: core.OutcomeMiss})
+			landMageNuke(sim, trigger, frostfire, &core.SpellResult{Target: target, Outcome: core.OutcomeMiss})
 		}
 		if barrage.IsActive() {
 			t.Fatal("missed Frostfire Bolt triggered Missile Barrage")
@@ -57,7 +66,7 @@ func TestOctober8MageMissileBarrageImpact(t *testing.T) {
 				spell := unit.GetSpell(core.ActionID{SpellID: id})
 				spell.CurCast.Cost = 0 // A free, landed nuke is still eligible.
 				for i := 0; i < 100 && !barrage.IsActive(); i++ {
-					trigger.OnSpellHitDealt(trigger, sim, spell, &core.SpellResult{Target: target, Outcome: outcome})
+					landMageNuke(sim, trigger, spell, &core.SpellResult{Target: target, Outcome: outcome})
 				}
 				if !barrage.IsActive() {
 					t.Fatal("eligible landed nuke did not trigger Missile Barrage")

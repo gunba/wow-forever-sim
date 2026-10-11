@@ -354,6 +354,14 @@ func (shaman *Shaman) applyFlurry() {
 	// 2 => 3
 	shaman.makeFlurryConsumptionTrigger(talentAura)
 
+	// The client gives 16257-16280 three charges, but in Forever the buff ends on the next white swing. In public
+	// foreverlogs.gg reports, all 24 Enhancement Shamans with Flurry windows (1,100 windows) lost the buff to the
+	// first white swing after the crit that applied or refreshed it; Windfury and Stormstrike attacks did not spend it.
+	charges := int32(3)
+	if shaman.Env.IsForever() {
+		charges = 1
+	}
+
 	shaman.RegisterAura(core.Aura{
 		Label:    "Flurry Proc Trigger",
 		Duration: core.NeverExpires,
@@ -364,7 +372,7 @@ func (shaman *Shaman) applyFlurry() {
 			if spell.ProcMask.Matches(core.ProcMaskMelee) && result.Outcome.Matches(core.OutcomeCrit) {
 				talentAura.Activate(sim)
 				if talentAura.IsActive() {
-					talentAura.SetStacks(sim, 3)
+					talentAura.SetStacks(sim, charges)
 				}
 				return
 			}
@@ -467,10 +475,16 @@ func (shaman *Shaman) applyMaelstromWeapon() {
 		return
 	}
 
-	// TODO: The beta client gives the talent's 4% per point per stack (its curve) but no proc rate: Maelstrom
-	// Weapon (408498) has no procs-per-minute entry and no proc chance below 100. 2 PPM per point puts 5/5 at a
-	// full stack roughly every 30 sec.
-	ppmm := shaman.AutoAttacks.NewPPMManager(2*float64(shaman.Talents.MaelstromWeapon), core.ProcMaskMelee)
+	// The beta client gives the talent's 4% per point per stack (its curve) but no proc rate: Maelstrom
+	// Weapon (408498) has no procs-per-minute entry and no proc chance below 100. Classic used 2 PPM per point.
+	// Forever's ranks change only the per-stack reduction: a 1-point Enhancement Shaman in public
+	// foreverlogs.gg reports (3.6-second mace) gained a stack on 55% of landed melee hits, about 9-10 PPM.
+	// Forever therefore uses 10 PPM at every rank, which leaves 5/5 unchanged.
+	ppm := 2 * float64(shaman.Talents.MaelstromWeapon)
+	if shaman.Env.IsForever() {
+		ppm = 10
+	}
+	ppmm := shaman.AutoAttacks.NewPPMManager(ppm, core.ProcMaskMelee)
 
 	castTimeReductionPerStack := .04 * float64(shaman.Talents.MaelstromWeapon)
 	costReductionPerStack := 4 * shaman.Talents.MaelstromWeapon

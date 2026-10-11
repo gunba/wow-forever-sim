@@ -160,7 +160,7 @@ func TestForeverFrostfireTalents(t *testing.T) {
 	}
 	trigger := unit.GetAura("Missile Barrage Trigger")
 	for i := 0; i < 100 && !unit.GetAura("Missile Barrage").IsActive(); i++ {
-		trigger.OnSpellHitDealt(trigger, sim, spell, &core.SpellResult{Target: sim.Encounter.TargetUnits[0], Outcome: core.OutcomeHit})
+		landMageNuke(sim, trigger, spell, &core.SpellResult{Target: sim.Encounter.TargetUnits[0], Outcome: core.OutcomeHit})
 	}
 	if !unit.GetAura("Missile Barrage").IsActive() {
 		t.Fatal("landed Frostfire hits did not trigger Missile Barrage")

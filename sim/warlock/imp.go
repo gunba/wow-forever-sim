@@ -151,10 +151,12 @@ func (wp *WarlockPet) registerImpFireboltSpell() {
 				GCD:      time.Millisecond * 1000,
 				CastTime: time.Millisecond * 2000,
 			},
-			// Adding an artificial CD to account for real delay in imp casts in-game
+			// An artificial CD accounts for the imp's pause between casts. Forever beta logs (2,443 cycles,
+			// foreverlogs.gg public reports) show a 2.0 s cast, then a median 432 ms (p10 389, p90 467)
+			// before the next cast starts.
 			CD: core.Cooldown{
 				Timer:    wp.NewTimer(),
-				Duration: time.Millisecond * 200,
+				Duration: core.TernaryDuration(wp.Env.IsForever(), time.Millisecond*432, time.Millisecond*200),
 			},
 		},
 

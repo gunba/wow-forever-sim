@@ -1,0 +1,2054 @@
+{
+ "gear": {
+  "search": {
+   "seeds": [
+    1793700001,
+    1794100001
+   ],
+   "screen": 100,
+   "validate": 1000,
+   "passes": 3,
+   "profiles": "52 DPS profiles of the builds whose results changed on the corrected engine: Arcane, Arcane-Frost, Frost, Balance, Feral, Demonology, Enhancement, Survival and Pet/Melee. The second search used the final engine (after the Omen of Clarity refit) and started from the confirmed selections; it found no further changes. Other DPS builds and tanks keep their selections.",
+   "finalSearch": {
+    "seed": 1794100001,
+    "completed": 52,
+    "unconverged": [],
+    "changes": 0
+   }
+  },
+  "confirmation": [
+   {
+    "seed": 1793800001,
+    "selections": [
+     {
+      "Key": "balance",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "balance",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "balance",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "balance",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "elemental",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "elemental",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "elemental",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "elemental",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "elemental",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "stormcaller",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "stormcaller",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "stormcaller",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "stormcaller",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "stormcaller",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "enhancement",
+      "Race": "Orc",
+      "Decision": "retain",
+      "BaselineDPS": 724.4518746057081,
+      "CandidateDPS": 729.4123121232471,
+      "GainDPS": 4.960437517539049,
+      "GainPercent": 0.684715947520852,
+      "Conservative95BoundDPS": 1.5107087727276247
+     },
+     {
+      "Key": "enhancement",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "enhancement",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "enhancement",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "enhancement",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "frost",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "frost",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "frost",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "frost",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "frost",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "frost",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "retribution",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "retribution",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "retribution",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "demonology",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "demonology",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "demonology",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "demonology",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "demonology",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "affliction",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "affliction",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "affliction",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "affliction",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "affliction",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "ds_ruin",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "ds_ruin",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "ds_ruin",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "ds_ruin",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "ds_ruin",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "destruction",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "destruction",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "destruction",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "destruction",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "destruction",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "retribution_physical",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "retribution_physical",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "retribution_physical",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "protection_paladin",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "protection_paladin",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "protection_paladin",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral_tank_druid",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral_tank_druid",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral_tank_druid",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral_tank_druid",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     }
+    ]
+   },
+   {
+    "seed": 1793900001,
+    "selections": [
+     {
+      "Key": "balance",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "balance",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "balance",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "balance",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "elemental",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "elemental",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "elemental",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "elemental",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "elemental",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "stormcaller",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "stormcaller",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "stormcaller",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "stormcaller",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "stormcaller",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "enhancement",
+      "Race": "Orc",
+      "Decision": "retain",
+      "BaselineDPS": 724.1513963127755,
+      "CandidateDPS": 728.8636966710069,
+      "GainDPS": 4.712300358231346,
+      "GainPercent": 0.6507341396046978,
+      "Conservative95BoundDPS": 1.512484342772003
+     },
+     {
+      "Key": "enhancement",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "enhancement",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "enhancement",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "enhancement",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "frost",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "frost",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "frost",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "frost",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "frost",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "frost",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "retribution",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "retribution",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "retribution",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "demonology",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "demonology",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "demonology",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "demonology",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "demonology",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "affliction",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "affliction",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "affliction",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "affliction",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "affliction",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "ds_ruin",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "ds_ruin",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "ds_ruin",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "ds_ruin",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "ds_ruin",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "destruction",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "destruction",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "destruction",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "destruction",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "destruction",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "retribution_physical",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "retribution_physical",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "retribution_physical",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "protection_paladin",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "protection_paladin",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "protection_paladin",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral_tank_druid",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral_tank_druid",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral_tank_druid",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral_tank_druid",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     }
+    ]
+   }
+  ],
+  "engineNote": "Both confirmations ran before the Omen of Clarity refit and the 432 ms Imp pause; those changes affect only Druid and Imp profiles, and the confirmed Enhancement profile replays identically on the final engine.",
+  "rule": "Retain a change only if the two-seed mean gain exceeds the conservative 95% bound 1.96 x (SE_base + SE_candidate) in both confirmations."
+ }
+}

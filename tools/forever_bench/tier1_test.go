@@ -246,7 +246,7 @@ func TestForeverTier1MageProcChances(t *testing.T) {
 			hits := 0
 			for i := 0; i < trials; i++ {
 				if tc.hit {
-					trigger.OnSpellHitDealt(trigger, s, spell, &core.SpellResult{Target: s.Encounter.TargetUnits[0], Outcome: core.OutcomeHit})
+					landMageNuke(s, trigger, spell, &core.SpellResult{Target: s.Encounter.TargetUnits[0], Outcome: core.OutcomeHit})
 				} else {
 					trigger.OnCastComplete(trigger, s, spell)
 				}

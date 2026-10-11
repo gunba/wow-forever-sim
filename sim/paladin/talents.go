@@ -146,11 +146,17 @@ func (paladin *Paladin) applyRedoubt() {
 		},
 	})
 
-	// Forever moved the trigger from taking a crit to any melee attack that lands.
+	// Forever moved the trigger from taking a crit to any melee attack. Public foreverlogs.gg reports
+	// (8,926 isolated attacks on Protection Paladins) show about 9.5% per landed attack and 9.2% per
+	// missed, dodged or parried attack, so avoided attacks also roll.
+	outcome := core.OutcomeLanded
+	if paladin.Env.IsForever() {
+		outcome = core.OutcomeEmpty
+	}
 	core.MakeProcTriggerAura(&paladin.Unit, core.ProcTrigger{
 		Name:       "Redoubt Trigger",
 		Callback:   core.CallbackOnSpellHitTaken,
-		Outcome:    core.OutcomeLanded,
+		Outcome:    outcome,
 		ProcMask:   core.ProcMaskMelee,
 		ProcChance: 0.02 * float64(paladin.Talents.Redoubt),
 		Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
