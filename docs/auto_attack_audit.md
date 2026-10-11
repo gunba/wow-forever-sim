@@ -16,7 +16,7 @@ flag, and a cast-in-progress guard. Only its Forever projectile speed differs.
 | Sniper Shot | Four-second base cast; Auto Shot waits for its completion. |
 | Multi-Shot | Client-listed half-second cast; Auto Shot cannot start during it. |
 | Volley | Restores the original channel's ranged-swing delay. |
-| Slam | Does not reset or suspend weapon swings, including without Improved Slam. |
+| Slam | Untalented: an ordinary weapon hardcast (no autos during the cast; both swings restart from its completion). Improved Slam: does not reset or suspend weapon swings. Client 70338 interrupt flags and `SPELL_ATTR2_DO_NOT_RESET_COMBAT_TIMERS` distinguish the two. |
 | Enhancement Lightning Bolt, Chain Lightning and Lava Burst | Reset the next melee swing to cast completion plus a full current weapon swing duration. |
 | Ordinary hardcasts and channels | Block melee autos and queued swing replacements; retain each spell's original reset/delay behavior. |
 | Caster roles | No melee weaving during or between casts. |
@@ -28,7 +28,7 @@ it even when the calculated cast time is zero: a five-stack instant Lightning
 Bolt still resets that timer in this model. Instant abilities without a reset
 hook are not given a new blanket reset.
 
-Slam retains its explicit weapon-cast exception in Forever. Hunter special
+Improved Slam retains its explicit weapon-cast exception in Forever; untalented Slam does not. Hunter special
 shots no longer have that exception: their Auto Shot uses the original Classic
 wind-up and cast gating. A ranged swing due exactly when a special shot ends
 waits for the special's completion callback before winding up. Range, movement,

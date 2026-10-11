@@ -11,15 +11,30 @@ func (warrior *Warrior) registerSlamSpell() {
 	spellID := int32(11605)
 	flatDamageBonus := 87.0
 
-	// Improved Slam now takes the same amount off the global cooldown as it does the cast time,
-	// and stops Slam from resetting the swing timer entirely.
+	// Improved Slam takes the same amount off the global cooldown as it does the cast time.
 	castReduction := time.Millisecond * 250 * time.Duration(warrior.Talents.ImprovedSlam)
 	slamCooldown := core.Cooldown{}
 	if warrior.Env.IsForever() {
+		// Client 70291+: an 18-second category cooldown on every rank. Improved Slam's cooldown
+		// modifier (12862 effect 2, op 11) is -3000 ms at both ranks (talent curve [0.25, 3], [0.5, 3]).
+		reduction := time.Duration(0)
+		if warrior.Talents.ImprovedSlam > 0 {
+			reduction = time.Second * 3
+		}
 		slamCooldown = core.Cooldown{
 			Timer:    warrior.NewTimer(),
-			Duration: time.Second*18 - time.Millisecond*1500*time.Duration(warrior.Talents.ImprovedSlam),
+			Duration: time.Second*18 - reduction,
 		}
+	}
+
+	// Untalented Slam is an ordinary weapon hardcast in Forever as in Classic: its ranks carry the
+	// Combat interrupt flag (SpellInterrupts 15) and lack SPELL_ATTR2_DO_NOT_RESET_COMBAT_TIMERS, so
+	// no auto-attacks land during the cast and both swing timers restart when it completes.
+	// Improved Slam overrides every rank with 1310196-1310200, which drop the Combat flag (7) and
+	// set DO_NOT_RESET_COMBAT_TIMERS: "Slam no longer interrupts or delays your melee swing".
+	flags := core.SpellFlagMeleeMetrics | core.SpellFlagAPL | SpellFlagOffensive
+	if warrior.Env.IsForever() && warrior.Talents.ImprovedSlam > 0 {
+		flags |= core.SpellFlagAllowAutoAttacks
 	}
 
 	warrior.Slam = warrior.RegisterSpell(AnyStance, core.SpellConfig{
@@ -28,7 +43,7 @@ func (warrior *Warrior) registerSlamSpell() {
 		SpellSchool: core.SpellSchoolPhysical,
 		DefenseType: core.DefenseTypeMelee,
 		ProcMask:    core.ProcMaskMeleeMHSpecial,
-		Flags:       core.SpellFlagMeleeMetrics | core.SpellFlagAPL | core.SpellFlagAllowAutoAttacks | SpellFlagOffensive,
+		Flags:       flags,
 
 		RequiredLevel: requiredLevel,
 
@@ -41,11 +56,10 @@ func (warrior *Warrior) registerSlamSpell() {
 				GCD:      max(core.GCDDefault-castReduction, core.GCDMin),
 				CastTime: time.Millisecond*1500 - castReduction,
 			},
-			// Forever's cooldown is 18 sec, reduced by 1.5/3 sec from Improved Slam.
 			CD: slamCooldown,
 			ModifyCast: func(sim *core.Simulation, spell *core.Spell, cast *core.Cast) {
-				if !warrior.Env.IsForever() && warrior.Talents.ImprovedSlam == 0 && spell.CastTime() > 0 {
-					warrior.AutoAttacks.StopMeleeUntil(sim, sim.CurrentTime+cast.CastTime, true)
+				if castTime := warrior.ApplyCastSpeedForSpell(cast.CastTime, spell); warrior.Talents.ImprovedSlam == 0 && castTime > 0 {
+					warrior.AutoAttacks.StopMeleeUntil(sim, sim.CurrentTime+castTime, true)
 				}
 			},
 		},

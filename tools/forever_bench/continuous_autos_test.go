@@ -136,20 +136,41 @@ func TestShamanCastSwingResetAndInstantExemption(t *testing.T) {
 	}
 }
 
-func TestForeverSlamKeepsMeleeSwings(t *testing.T) {
-	req := historyTalentFixture("arms", nil)
-	sim := core.NewSim(req, simsignals.Signals{})
-	sim.Options.Interactive = true
-	sim.Reset()
-	unit := sim.Raid.AllPlayerUnits[0]
-	unit.AddRage(sim, 100, unit.NewRageMetrics(core.ActionID{SpellID: 1464}))
-	slam := unit.GetSpell(core.ActionID{SpellID: 11605})
-	before := unit.AutoAttacks.MainhandSwingAt()
-	if !slam.Cast(sim, unit.CurrentTarget) || !unit.IsCasting(sim) {
-		t.Fatal("Slam hardcast did not start")
-	}
-	if unit.AutoAttacks.MainhandSwingAt() != before || !unit.AutoAttacks.MHAuto().CanCast(sim, unit.CurrentTarget) {
-		t.Fatal("Slam delayed or blocked a melee auto")
+// Untalented Slam keeps the Combat interrupt flag and lacks DO_NOT_RESET_COMBAT_TIMERS, so autos wait
+// for the cast and restart from its completion. Improved Slam's override ranks flip both properties.
+func TestForeverSlamSwingTimerDependsOnImprovedSlam(t *testing.T) {
+	for _, improved := range []int{0, 1, 2} {
+		fields := map[string]int{}
+		if improved > 0 {
+			fields["improvedSlam"] = improved
+		}
+		req := historyTalentFixture("arms", fields)
+		sim := core.NewSim(req, simsignals.Signals{})
+		sim.Options.Interactive = true
+		sim.Reset()
+		unit := sim.Raid.AllPlayerUnits[0]
+		unit.AddRage(sim, 100, unit.NewRageMetrics(core.ActionID{SpellID: 1464}))
+		slam := unit.GetSpell(core.ActionID{SpellID: 11605})
+		before := unit.AutoAttacks.MainhandSwingAt()
+		if !slam.Cast(sim, unit.CurrentTarget) || !unit.IsCasting(sim) {
+			t.Fatalf("improved %d: Slam hardcast did not start", improved)
+		}
+		if want := 18*time.Second - map[bool]time.Duration{true: 3 * time.Second}[improved > 0]; slam.CD.Duration != want {
+			t.Errorf("improved %d: cooldown %s, want %s", improved, slam.CD.Duration, want)
+		}
+		castEnd := sim.CurrentTime + slam.CurCast.CastTime
+		if improved > 0 {
+			if unit.AutoAttacks.MainhandSwingAt() != before || !unit.AutoAttacks.MHAuto().CanCast(sim, unit.CurrentTarget) {
+				t.Errorf("improved %d: Slam delayed or blocked a melee auto", improved)
+			}
+			continue
+		}
+		if got, want := unit.AutoAttacks.MainhandSwingAt(), castEnd+unit.AutoAttacks.MainhandSwingSpeed(); got != want {
+			t.Errorf("untalented: next swing %s, want cast end plus a full swing %s", got, want)
+		}
+		if unit.AutoAttacks.MHAuto().CanCast(sim, unit.CurrentTarget) {
+			t.Error("untalented: melee allowed during the Slam cast")
+		}
 	}
 }
 

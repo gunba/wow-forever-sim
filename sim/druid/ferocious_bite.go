@@ -76,7 +76,7 @@ func (druid *Druid) newFerociousBiteSpellConfig(rank FerociousBiteRankInfo) core
 
 		EnergyCost: core.EnergyCostOptions{
 			Cost:   35,
-			Refund: 0,
+			Refund: core.TernaryFloat64(druid.Env.IsForever(), 0.8, 0), // Forever finishers have DISCOUNT_POWER_ON_MISS, like builders
 		},
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{

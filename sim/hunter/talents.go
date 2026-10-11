@@ -274,6 +274,11 @@ func (hunter *Hunter) registerIntimidationCD() {
 		},
 
 		Cast: core.CastConfig{
+			// 19577 has a 1.5-second StartRecoveryTime in both clients; Hunter GCDs ignore haste.
+			DefaultCast: core.Cast{
+				GCD: core.GCDDefault,
+			},
+			IgnoreHaste: true,
 			CD: core.Cooldown{
 				Timer:    hunter.NewTimer(),
 				Duration: time.Minute,

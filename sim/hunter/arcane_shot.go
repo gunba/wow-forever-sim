@@ -10,8 +10,14 @@ import (
 func (hunter *Hunter) getArcaneShotConfig(rank int, timer *core.Timer) core.SpellConfig {
 	spellId := [9]int32{0, 3044, 14281, 14282, 14283, 14284, 14285, 14286, 14287}[rank]
 	baseDamage := [9]float64{0, 20, 26, 39, 65, 94, 134, 170, 217}[rank]
-	// The beta client carries no spell power coefficient on Arcane Shot at all; Classic's stand.
 	spellCoeff := [9]float64{0, .204, .3, .429, .429, .429, .429, .429, .429}[rank]
+	// Forever zeroes the client coefficient (Era 0.429) and scales Arcane Shot with ranged attack
+	// power instead: 10% RAP at ranks 1-3, no spell power (Classic Hunter Lodge #forever-testing,
+	// 2026-09-22/23). Higher ranks keep the measured 10%.
+	rapCoeff := 0.0
+	if hunter.Env.IsForever() {
+		spellCoeff, rapCoeff = 0, 0.10
+	}
 	manaCost := [9]float64{0, 25, 35, 50, 80, 105, 135, 160, 190}[rank]
 	level := [9]int{0, 6, 12, 20, 28, 36, 44, 52, 60}[rank]
 
@@ -51,7 +57,8 @@ func (hunter *Hunter) getArcaneShotConfig(rank int, timer *core.Timer) core.Spel
 		BonusCoefficient: spellCoeff,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			result := spell.CalcDamage(sim, target, baseDamage, spell.OutcomeRangedHitAndCrit)
+			damage := baseDamage + rapCoeff*spell.RangedAttackPower(target, false)
+			result := spell.CalcDamage(sim, target, damage, spell.OutcomeRangedHitAndCrit)
 
 			spell.WaitTravelTime(sim, func(sim *core.Simulation) {
 				spell.DealDamage(sim, result)

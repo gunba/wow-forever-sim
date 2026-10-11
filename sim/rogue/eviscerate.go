@@ -47,7 +47,7 @@ func (rogue *Rogue) registerEviscerate() {
 		EnergyCost: core.EnergyCostOptions{
 			Cost: 35 - core.TernaryFloat64(rogue.Talents.FlawlessExecution, 10, 0) -
 				core.TernaryFloat64(rogue.HasSetBonus(ItemSetGrimstitchArmor, 5), 5, 0),
-			Refund: 0,
+			Refund: core.TernaryFloat64(rogue.Env.IsForever(), 0.8, 0), // Forever finishers have DISCOUNT_POWER_ON_MISS, like builders
 		},
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{

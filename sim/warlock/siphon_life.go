@@ -26,7 +26,7 @@ func (warlock *Warlock) getSiphonLifeBaseConfig(rank int) core.SpellConfig {
 		SpellSchool:   core.SpellSchoolShadow,
 		DefenseType:   core.DefenseTypeMagic,
 		ProcMask:      core.ProcMaskSpellDamage,
-		Flags:         core.SpellFlagAPL | core.SpellFlagResetAttackSwing | core.SpellFlagBinary | WarlockFlagAffliction,
+		Flags:         core.SpellFlagAPL | core.SpellFlagResetAttackSwing | core.SpellFlagBinary | core.SpellFlagNoPeriodicCrit | WarlockFlagAffliction, // no PERIODIC_CAN_CRIT; forever-bugs#303: 0 crits in 219 ticks
 		RequiredLevel: level,
 		Rank:          rank,
 

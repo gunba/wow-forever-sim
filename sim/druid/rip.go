@@ -87,7 +87,7 @@ func (druid *Druid) newRipSpellConfig(ripRank RipRankInfo) core.SpellConfig {
 
 		EnergyCost: core.EnergyCostOptions{
 			Cost:   energyCost,
-			Refund: 0,
+			Refund: core.TernaryFloat64(druid.Env.IsForever(), 0.8, 0), // Forever finishers have DISCOUNT_POWER_ON_MISS, like builders
 		},
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{

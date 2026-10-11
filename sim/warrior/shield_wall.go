@@ -37,8 +37,9 @@ func (warrior *Warrior) RegisterShieldWallCD() {
 		ActionID: actionID,
 
 		Cast: core.CastConfig{
+			// 871 has a 1.5-second StartRecoveryTime in both clients.
 			DefaultCast: core.Cast{
-				GCD: 0,
+				GCD: core.GCDDefault,
 			},
 			IgnoreHaste: true,
 			CD: core.Cooldown{

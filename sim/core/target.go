@@ -313,7 +313,13 @@ func NewAttackTable(attacker *Unit, defender *Unit, weapon *Item) *AttackTable {
 		targetDefense := float64(defender.Level * 5)
 
 		if targetDefense-weaponSkill > 10 {
-			table.HitSuppression = (targetDefense - weaponSkill - 10) * 0.002
+			// Classic ignores the first (difference-10)*0.2% of hit. Forever does not: 300 misses in
+			// 4,259 attacks against +3 targets at 1% hit (7.04%, 95% CI 6.31-7.85%) and the
+			// magey/forever-warrior attack-table sweep both show the full 8% miss reduced by every
+			// point of hit (docs/uncertainties.md CORE-001).
+			if attacker.Env == nil || !attacker.Env.IsForever() {
+				table.HitSuppression = (targetDefense - weaponSkill - 10) * 0.002
+			}
 			table.BaseMissChance = 0.05 + (targetDefense-weaponSkill)*0.002
 		} else {
 			table.HitSuppression = 0

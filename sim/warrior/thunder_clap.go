@@ -45,11 +45,18 @@ func (warrior *Warrior) registerThunderClapSpell() {
 		CritDamageBonus: warrior.impale(),
 
 		DamageMultiplier: core.TernaryFloat64(has5pcConq, 1.5, 1),
-		ThreatMultiplier: 2.5,
+		// The deep dive gives Thunder Clap "significant damage scaling from Attack Power" and
+		// threat "rebalanced (reduced)" for Defensive Stance. Testers measured about 7% AP
+		// (0.068) and threat equal to damage before stance modifiers.
+		ThreatMultiplier: core.TernaryFloat64(warrior.Env.IsForever(), 1, 2.5),
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+			damage := baseDamage
+			if sim.IsForever() {
+				damage += 0.07 * spell.MeleeAttackPower(target)
+			}
 			for idx := range results {
-				results[idx] = spell.CalcDamage(sim, target, baseDamage, spell.OutcomeMagicHitAndCrit)
+				results[idx] = spell.CalcDamage(sim, target, damage, spell.OutcomeMagicHitAndCrit)
 				target = sim.Environment.NextTargetUnit(target)
 			}
 

@@ -25,7 +25,7 @@ func (rogue *Rogue) registerRupture() {
 
 		EnergyCost: core.EnergyCostOptions{
 			Cost:   25,
-			Refund: 0,
+			Refund: core.TernaryFloat64(rogue.Env.IsForever(), 0.8, 0), // Forever finishers have DISCOUNT_POWER_ON_MISS, like builders
 		},
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{

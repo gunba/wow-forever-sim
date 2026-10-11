@@ -57,7 +57,14 @@ func (warrior *Warrior) registerRendSpell() {
 				dot.Snapshot(target, baseDamage, isRollover)
 			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
-				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
+				if sim.IsForever() {
+					// "Rend: Now gains significant damage scaling from Attack Power" (Blizzard
+					// class deep dive, Priest and Warrior). Fight Club logs: 2% of current AP per
+					// tick at rank 2, read at each tick, with Improved Rend scaling the AP term.
+					dot.Spell.CalcAndDealPeriodicDamage(sim, target, baseDamage+0.02*dot.Spell.MeleeAttackPower(target), dot.OutcomeTick)
+				} else {
+					dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
+				}
 			},
 		},
 

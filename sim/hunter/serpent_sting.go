@@ -11,8 +11,14 @@ import (
 func (hunter *Hunter) getSerpentStingConfig(rank int) core.SpellConfig {
 	spellId := [10]int32{0, 1978, 13549, 13550, 13551, 13552, 13553, 13554, 13555, 25295}[rank]
 	baseDamage := [10]float64{0, 10, 30, 60, 110, 170, 240, 320, 415, 555}[rank] / 5
-	// The beta client carries no spell power coefficient on Serpent Sting at all; Classic's stand.
 	spellCoeff := [10]float64{0, .4, .625, .925, 1, 1, 1, 1, 1, 1}[rank] / 5
+	// Forever zeroes the client coefficient (Era 0.2) and scales Serpent Sting with ranged attack
+	// power: 3% of current RAP per tick, 15% in total, no spell power and no snapshot (Classic
+	// Hunter Lodge #forever-testing, ranks 1-3).
+	forever := hunter.Env.IsForever()
+	if forever {
+		spellCoeff = 0
+	}
 	manaCost := [10]float64{0, 15, 30, 50, 80, 115, 150, 190, 230, 250}[rank]
 	level := [10]int{0, 4, 10, 18, 26, 34, 42, 50, 58, 60}[rank]
 
@@ -62,6 +68,10 @@ func (hunter *Hunter) getSerpentStingConfig(rank int) core.SpellConfig {
 				dot.Snapshot(target, damage, isRollover)
 			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
+				if forever {
+					dot.Spell.CalcAndDealPeriodicDamage(sim, target, baseDamage+0.03*dot.Spell.RangedAttackPower(target, false), dot.OutcomeTick)
+					return
+				}
 				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
 			},
 		},

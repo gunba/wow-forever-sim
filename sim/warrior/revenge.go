@@ -68,12 +68,18 @@ func (warrior *Warrior) registerRevengeSpell(cdTimer *core.Timer) {
 		CritDamageBonus: warrior.impale(),
 
 		DamageMultiplier: 1 + 0.2*float64(warrior.Talents.ImprovedRevenge),
+		// Forever: threat is 2.25x damage with no flat part, and damage gains AP scaling
+		// (published 'Warrior Threat Values' sheet, six-point fit at rank 2: 1.495 * 2.25 * (roll + 0.28 AP), residuals < 0.5;
+		// 0.20 measured at rank 1). Higher ranks keep the rank-2 value until measured.
 		ThreatMultiplier: 2.25,
-		FlatThreatBonus:  2.25 * 2 * revengeLevel,
+		FlatThreatBonus:  core.TernaryFloat64(warrior.Env.IsForever(), 0, 2.25*2*revengeLevel),
 		BonusCoefficient: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			baseDamage := sim.Roll(basedamageLow, basedamageHigh)
+			if sim.IsForever() {
+				baseDamage += 0.28 * spell.MeleeAttackPower(target)
+			}
 			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialHitAndCrit)
 
 			if !result.Landed() {

@@ -1280,9 +1280,22 @@
         "answer": "The inherited Bear-duty discrepancy was reproduced and fixed in the Druid native/TS support branches. All four Bear races cast 9907 in both workloads without external Faerie Fire. Warrior/Paladin support is unchanged; exact player/loadout and explicit request-support preservation are audited separately.",
         "remaining": "Scenario plumbing is resolved. Incoming-Rage normalization and other server-mechanics questions retain their separate provisional status.",
         "implementation": "Retain TestOctober9BearOwnsFaerieFire and exact native/web race-profile bindings. Never retrofit external Faerie Fire into current Bear controls or call superseded Bear phases canonical.",
-        "tests": [{"stage": "offline", "requires": "All four Bear races, single and three-attacker workloads, native/web shared support helpers.", "measure": "Assert no external Faerie Fire and actual owned 9907 casts; preserve every player field and all other support fields."}],
+        "tests": [
+          {
+            "stage": "offline",
+            "requires": "All four Bear races, single and three-attacker workloads, native/web shared support helpers.",
+            "measure": "Assert no external Faerie Fire and actual owned 9907 casts; preserve every player field and all other support fields."
+          }
+        ],
         "previous_status": "resolved",
-        "history": [{"phase": "Before 70291 Bear-duty integration regression", "status": "resolved", "answer": "The shared support definition and all 17 tank profiles contain the intended common support, preserving self-maintained duties. Paladin's supported oil and primary Titans flask are present. This question is closed; overlapping historical confirmations concern statistical independence, not whether those request fields exist.", "remaining": "No new tank-support discrepancy identified here. DPS Improved Imp/Blood Pact is a separate issue and not selected by these tanks."}]
+        "history": [
+          {
+            "phase": "Before 70291 Bear-duty integration regression",
+            "status": "resolved",
+            "answer": "The shared support definition and all 17 tank profiles contain the intended common support, preserving self-maintained duties. Paladin's supported oil and primary Titans flask are present. This question is closed; overlapping historical confirmations concern statistical independence, not whether those request fields exist.",
+            "remaining": "No new tank-support discrepancy identified here. DPS Improved Imp/Blood Pact is a separate issue and not selected by these tanks."
+          }
+        ]
       }
     },
     {
@@ -3055,7 +3068,7 @@
       "status": "needs-evidence",
       "title": "Boss attack tables",
       "question": "What are level-60 miss, dodge, parry, crit-suppression and glancing rules against level-63 targets?",
-      "current_model": "Forever uses the explicit attack-table changes in the engine, with remaining inherited formulas. Demo columns and research checklists do not establish every boss case.",
+      "current_model": "Forever removes Classic hit suppression for melee and ranged weapon attacks: the 8% special miss against +3 targets falls with every point of hit. Crit-aura suppression (1.8% against +3) and Classic dodge, parry, block and glancing chances remain; glancing damage keeps the Classic formula while the beta's glancing penalty is acknowledged as broken.",
       "impact": "All melee, ranged and tank comparisons; hit caps and crit value.",
       "sources": [
         "sim/core/attack.go",
@@ -3071,9 +3084,9 @@
       "review": {
         "disposition": "partial",
         "confidence": "moderate",
-        "answer": "An October 3 public measurement has 300 misses/4259 attacks against+3 targets at 1% hit:7.04%,95% Wilson about 6.31–7.85%. It supports an 8% rather than 9% single-weapon/special cap. This supersedes treating all suppression behavior as Classic-confirmed; ranged/dual-wield/boss-level scopes are not established by this sample.",
-        "remaining": "Direct raw-event outcome/skill controls, attack-type scope, level 60 suppression and separate dodge/parry/crit/glancing rules.",
-        "implementation": "Treat suppression removal as a focused evidence-backed candidate, not a wholesale table replacement. Do not tune known glancing bugs or silently assume ranged/dual-wield equivalence.",
+        "answer": "An October 3 public measurement has 300 misses/4259 attacks against+3 targets at 1% hit:7.04%,95% Wilson about 6.31–7.85%. It supports an 8% rather than 9% single-weapon/special cap. This supersedes treating all suppression behavior as Classic-confirmed; ranged/dual-wield/boss-level scopes are not established by this sample. October 11 audit: Two sources agree that hit suppression is gone: the October 3 measurement (300 misses in 4,259 attacks at 1% hit against +3 targets, 7.04%, 95% CI 6.31–7.85%, excluding the 8% a suppressed table predicts) and magey/forever-warrior#1's completed checklist item 'Hit suppression is gone'. The same issue's October 10 sample (3,644 attacks) confirms crit-aura suppression (5.19% observed against 5.61% expected) and Classic miss 8%, dodge 6.5%, parry 14%, glancing 40% and block 5% rates against +3 targets. It also reports glancing damage reduction as currently broken in the beta (about 24.6% observed), so that number is not adopted.",
+        "remaining": "Glancing damage once Blizzard fixes it; two-roll special crit; bonus weapon skill; level-63 confirmation.",
+        "implementation": "Implemented: sim/core/target.go applies HitSuppression only outside Forever. Profiles selected for the old 9% cap are now 1% over the true 8% cap; gear re-selection is required to realise the gain.",
         "tests": [
           {
             "stage": "current-beta",
@@ -3665,7 +3678,7 @@
       "review": {
         "disposition": "partial",
         "confidence": "moderate",
-        "answer": "Accept the Forever-specific wiki's measured Hunter inheritance as credible working evidence, rather than leaving every listed coefficient as an unanswered question. The older Classic pages do not rebut it. Full owner-hit transfer and extending all coefficients to Warlock demons remain narrower assumptions because the client scaling auras do not export those values.",
+        "answer": "Accept the Forever-specific wiki's measured Hunter inheritance as credible working evidence, rather than leaving every listed coefficient as an unanswered question. The older Classic pages do not rebut it. Full owner-hit transfer and extending all coefficients to Warlock demons remain narrower assumptions because the client scaling auras do not export those values. October 11 audit: Pet tooltip (Hunter Lodge test, 2026-10-06, build 70235): 'Increased by 10% of Master's attack power from whichever is higher: melee or ranged', rounding down, which the implemented inheritance matches. Inheritance is refreshed by a permanent pet aura with a 2-second cooldown (forever-bugs#48 comment). Live bug: with Focused Fire talented, pet stats snapshot at summon and stop updating (forever-bugs#48, 2026-10-11). Unleashed Fury's damage bonus appeared non-functional and Ferocity probably too (same 2026-10-06 test); the engine models the intended talents.",
         "remaining": "Warlock-specific power/mana coefficients, full hit-transfer magnitude and dynamic update behavior.",
         "implementation": "No blanket removal of pet inheritance. Separate answered Hunter coefficients from extrapolated demon coefficients in the register.",
         "tests": [
@@ -3702,7 +3715,7 @@
       "review": {
         "disposition": "partial",
         "confidence": "moderate",
-        "answer": "The Forever-specific wiki and pet-speed issue agree that different speeds currently retain unnormalized per-hit damage. This is adequate evidence for the present equal-hit convention. It does not settle the owner-AP slope at different speeds or establish that the behavior will remain unchanged at launch.",
+        "answer": "The Forever-specific wiki and pet-speed issue agree that different speeds currently retain unnormalized per-hit damage. This is adequate evidence for the present equal-hit convention. It does not settle the owner-AP slope at different speeds or establish that the behavior will remain unchanged at launch. October 11 audit: Hunter Lodge 2026-10-06: a 1.2-second cat and a 2.0-second bear at similar pet AP hit for nearly the same minimum damage, so per-hit damage is still not normalized to attack speed, consistent with the equal-hit model.",
         "remaining": "The AP-added portion of the hit, especially the fixed two-second reference conversion, and future intended normalization.",
         "implementation": "Retain differing pet speeds and the supported equal-base-hit behavior. Narrow the unknown to AP scaling instead of repeatedly asking whether fast pets exist.",
         "tests": [
@@ -3756,10 +3769,10 @@
       "category": "hunter",
       "kind": "mechanic",
       "priority": "medium",
-      "status": "needs-evidence",
+      "status": "provisional",
       "title": "Arcane Shot, Serpent Sting and Volley SP",
       "question": "What SP coefficients replace the missing client coefficients?",
-      "current_model": "Retains inherited Arcane Shot/Serpent Sting/Volley coefficients. Zero or dummy client fields are not treated as proof of no scaling.",
+      "current_model": "Forever Arcane Shot: rank base + 10% RAP, no spell power. Serpent Sting: rank base + 3% of current RAP per tick (15% total), no spell power, no snapshot.",
       "impact": "SP-heavy Hunter alternatives and AoE; less important for physical-only loadouts.",
       "sources": [
         "docs/beta-pass/hunter.md",
@@ -3773,11 +3786,11 @@
       ],
       "related": [],
       "review": {
-        "disposition": "partial",
+        "disposition": "credible-answer",
         "confidence": "moderate",
-        "answer": "The Forever-specific wiki reports removal of Classic SP scaling from Arcane Shot and Serpent Sting, with RAP scaling instead. This is credible contrary evidence to the retained SP coefficients and should become a source-backed code audit, not stay an undirected coefficient question. The same source explicitly leaves Volley's coefficient undetermined.",
-        "remaining": "Volley's coefficient and a source/code check of the two direct correction candidates.",
-        "implementation": "Check the live Arcane Shot and Sting calculations against the documented RAP terms and removal of SP; retain Volley as an independent question. Do not infer Volley from Sting.",
+        "answer": "Hunter Lodge measurements (2026-09-22/23, ranks 1-3): Arcane Shot scales with 10% RAP and not with spell power; Serpent Sting with 15% RAP in total, 3% per tick, read dynamically. With the client zeroing both spell-power coefficients, this replaces the retained Classic values. Traps (Immolation) showed no AP or SP scaling.",
+        "remaining": "Rank-8/9 confirmation of the same RAP coefficients; Volley.",
+        "implementation": "Implemented. Paired impact: Marksmanship +2.9%, Beast Mastery +1.4% (RAP scaling outweighs lost SP). Hunter profiles' Flask of Supreme Power and Greater Arcane Elixir now add no damage; consumable selection should be revisited.",
         "tests": [
           {
             "stage": "launch",
@@ -3844,7 +3857,7 @@
       "review": {
         "disposition": "credible-answer",
         "confidence": "moderate",
-        "answer": "Processed public event reports 2727/2687 independently favor about 0.10–0.11 over the old 0.143 guess. Frostbolt-derived SP and repeated low Ice Lance hits constrain the fit. The 0.10 working model replaces that guess, but gear/talent details and resist/absorb fields are incomplete.",
+        "answer": "Processed public event reports 2727/2687 independently favor about 0.10–0.11 over the old 0.143 guess. Frostbolt-derived SP and repeated low Ice Lance hits constrain the fit. The 0.10 working model replaces that guess, but gear/talent details and resist/absorb fields are incomplete. October 11 audit: WoWSims #forever-mage (2026-10-08/09): Ice Lance rank 2 measured at about 0.113 SP (95% range 0.109–0.118) from 0 versus 58/71 SP logs; rank 1 at about 0.095 (0.089–0.100, 79 hits). Neither matches 1/7. The provisional 0.10 sits between the measured low ranks; the level-60 rank is unmeasured and probabilistic damage rounding widens the intervals.",
         "remaining": "Controlled SP-delta slope, frozen-state controls and higher-rank extrapolation.",
         "implementation": "Provisional 0.10 applied with a focused registration/SP-delta check. Revalidate affected Mage comparisons; this does not prove an exact level-60 coefficient.",
         "tests": [
@@ -4018,7 +4031,7 @@
       "category": "shaman",
       "kind": "mechanic",
       "priority": "high",
-      "status": "provisional",
+      "status": "resolved",
       "title": "Instant Maelstrom Lightning Bolt swing reset",
       "question": "Does a five-stack instant Bolt still reset the next melee swing?",
       "current_model": "The recent beta evidence supports instant Lightning Bolt preserving melee swings. Instant LB/CL no longer reset a full swing; positive-time casts still defer melee to cast end plus a full swing, with no melee during casts. Maelstrom only discounts/consumes on Lightning Bolt. Native instant/hardcast controls pass.",
@@ -4036,10 +4049,10 @@
         "SHA-001"
       ],
       "review": {
-        "disposition": "credible-answer",
+        "disposition": "evidence-answer",
         "confidence": "moderate",
-        "answer": "The recent beta evidence supports instant Lightning Bolt preserving melee swings. Instant LB/CL no longer reset a full swing; positive-time casts still defer melee to cast end plus a full swing, with no melee during casts. Maelstrom only discounts/consumes on Lightning Bolt. Native instant/hardcast controls pass.",
-        "remaining": "Confirm instant versus partial-stack timing with a combat trace at a level where Maelstrom is available; earlier reset-based Enhancement results are historical, not validation of this corrected assumption.",
+        "answer": "Server semantics settle the model. Lightning Bolt and Chain Lightning carry the Combat interrupt flag (SpellInterrupts 15) and SPELL_ATTR6_DOESNT_RESET_SWING_TIMER_IF_INSTANT (0x02000000), and lack DO_NOT_RESET_COMBAT_TIMERS. TrinityCore's Spell::IsAutoActionResetSpell resets combat timers at cast completion unless the spell is instant with that attribute. So an instant (five-stack) cast keeps the swing timer and any positive cast time resets it, exactly as modelled.",
+        "remaining": "A combat trace would only confirm, not change, the rule.",
         "implementation": "Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.",
         "tests": [
           {
@@ -4048,7 +4061,7 @@
             "measure": "Cast five-stack Bolt at multiple points in the swing cycle, then compare ordinary and partial-stack casts. Record start, completion and next auto, not only aggregate DPS."
           }
         ],
-        "previous_status": "needs-evidence"
+        "previous_status": "provisional"
       }
     },
     {
@@ -4135,10 +4148,10 @@
       "category": "shared",
       "kind": "mechanic",
       "priority": "high",
-      "status": "needs-evidence",
+      "status": "provisional",
       "title": "Energy refunds on avoided attacks",
       "question": "Which builders and finishers refund Energy on miss, dodge or parry, and what fraction of the paid cost returns?",
-      "current_model": "Inherited 80% builder refunds; damaging finishers generally do not refund. Costs are charged before the outcome.",
+      "current_model": "Forever finishers refund 80% of their paid Energy on a miss, dodge or parry, like builders: Eviscerate, Rupture, Expose Armor, Rip and Ferocious Bite. Combo points are spent only on a landed finisher.",
       "impact": "Feral and Rogue resource supply, especially before hit cap or when attacking from the front.",
       "sources": [
         "docs/energy_audit.md",
@@ -4152,11 +4165,11 @@
       ],
       "related": [],
       "review": {
-        "disposition": "partial",
+        "disposition": "credible-answer",
         "confidence": "moderate",
-        "answer": "The captured client distinguishes builders from finishers: Sinister Strike, Claw and Rake have the discount-on-miss attribute bit that Eviscerate, Rupture, Rip and Ferocious Bite lack. This supports the existing distinction, not a universal refund. It does not supply the server's refund percentage. Ferocious Bite first becomes available at 32, not in either announced beta cap.",
-        "remaining": "The paid-cost refund fraction and combo-point retention for each affected family.",
-        "implementation": "Retain the builder/finisher distinction. Compare actual paid cost after talents or Clearcasting, not nominal tooltip cost.",
+        "answer": "The earlier review misread the client. Every player rank of Eviscerate (2098–31016), Rupture, Slice and Dice, Expose Armor, Rip (1079–9896) and Ferocious Bite (22568–31018) carries SPELL_ATTR1_DISCOUNT_POWER_ON_MISS (0x08000000) in 70009 and 70338. The ids without it are cost-free NPC or internal records with no skill line (1271520, 1271514, 1272982, 1289141, 1289142). In Era only builders carry the bit, and builders refund 80%; Forever extends the same attribute to finishers. Primal Bite, Claw, Rake, Shred, Maul and Lacerate have it; Swipe and the retained Mangle ids do not.",
+        "remaining": "The refunded fraction is assumed to equal the builders' 80%; combo-point retention on a miss is unchanged from the existing model.",
+        "implementation": "Implemented: Forever finishers use Refund 0.8 (eviscerate.go, rupture.go, expose_armor.go, rip.go, ferocious_bite.go).",
         "tests": [
           {
             "stage": "current-beta",
@@ -4213,10 +4226,10 @@
       "category": "shared",
       "kind": "mechanic",
       "priority": "high",
-      "status": "needs-evidence",
+      "status": "resolved",
       "title": "Channel speed sources",
       "question": "Which general-haste effects compress channels, distinct from casting-speed-only effects?",
-      "current_model": "Separate SpellHaste scales supported channels provisionally. Berserking speeds hardcasts but not Arcane Missiles; Missile Barrage has its own explicit tick period. No selected item supplies raw SpellHaste.",
+      "current_model": "Channels are not hasted in Forever. The separate SpellHaste channel input has no current source and stays dormant.",
       "impact": "Mage, Priest and Warlock channels; hypothetical haste scaling.",
       "sources": [
         "docs/speed_audit.md",
@@ -4229,11 +4242,11 @@
       ],
       "related": [],
       "review": {
-        "disposition": "partial",
+        "disposition": "evidence-answer",
         "confidence": "moderate",
-        "answer": "The Berserking/Arcane Missiles observation and separate client attack/cast-speed auras support the current casting-speed versus channel-speed distinction. Current selected equipment has no raw SpellHaste source; the unverified general-haste channel multiplier therefore is not an unexplained benefit currently supplied by gear. This does not establish that every effect called haste behaves identically.",
-        "remaining": "Channel behavior of a specifically identified general-haste source, and extrapolation beyond the observed Berserking case.",
-        "implementation": "Do not merge casting speed into SpellHaste. Keep future raw-rating support under DATA-010.",
+        "answer": "No Forever channel carries SPELL_ATTR5_SPELL_HASTE_AFFECTS_PERIODIC (0x2000): Drain Life, Drain Soul, Arcane Missiles, Mind Flay, Starshards and all four Penance ranks lack it, and Penance's Era id had it before Forever removed it. In the retail-derived server (TrinityCore Unit::ModSpellDurationTime), channel duration is hasted only with that attribute or the melee-haste equivalent. This agrees with the Berserking/Arcane Missiles observation.",
+        "remaining": "None for current gear; reopen only if a channel gains the attribute.",
+        "implementation": "No code change needed while no SpellHaste source exists; a future raw haste source must not shorten channels.",
         "tests": [
           {
             "stage": "current-beta",
@@ -4398,8 +4411,8 @@
       "review": {
         "disposition": "partial",
         "confidence": "moderate",
-        "answer": "Rating conversions are not all unknown: the captured level-60 CombatRatings table supplies 14 crit rating and 10 hit/haste rating per percentage point. Those are distinct from Agility/Intellect conversion slopes and naked race/class base attributes. The latter are still inherited and are not established by the rating file or by low-level character examples.",
-        "remaining": "Level-60 naked attributes, base crit and class-specific attribute slopes.",
+        "answer": "Rating conversions are not all unknown: the captured level-60 CombatRatings table supplies 14 crit rating and 10 hit/haste rating per percentage point. Those are distinct from Agility/Intellect conversion slopes and naked race/class base attributes. The latter are still inherited and are not established by the rating file or by low-level character examples. October 11 audit: PlayerExpectedStat (70338) confirms the level-60 conversions for all nine classes exactly: crit per Agility (Warrior 0.0500%, Paladin 0.0506%, Hunter 0.0189%, Rogue 0.0345%, Priest 0.0500%, Shaman 0.0508%, Mage 0.0514%, Warlock 0.0500%, Druid 0.0500%), spell crit per Intellect, base mana (e.g. Paladin 1512, Hunter 1720, Mage 1213) and 10 health per Stamina all match base_stats.go.",
+        "remaining": "Naked level-60 base attributes per race/class; PlayerExpectedStat does not carry them.",
         "implementation": "Do not use equal item budgets or a correct generic-crit import as proof that base stat tables are correct. Avoid importing another fork's level-70 rows.",
         "tests": [
           {
@@ -4476,7 +4489,7 @@
       "review": {
         "disposition": "model-choice",
         "confidence": "moderate",
-        "answer": "October 8 establishes expected creature health, shield-independent damage and correct crit/crush treatment, but not the coefficient, level key or exact normalization. The approved configurable central model and bounds are implemented and scoped callback/import checks pass; approval is not a server-formula measurement.",
+        "answer": "October 8 establishes expected creature health, shield-independent damage and correct crit/crush treatment, but not the coefficient, level key or exact normalization. The approved configurable central model and bounds are implemented and scoped callback/import checks pass; approval is not a server-formula measurement. October 11 audit: Developers' notes quoted in Fight Club (2026-10-08): 'Previously, we were balancing Rage gained around Warriors having 50% Armor ... We have rebalanced Rage gains based on appropriate values per level in the 20% to 40% range, varying by level.' A follow-up (2026-10-10) explains that the intended formula uses a level-based curve and that player maximum health was used by mistake for a while. This supports a level-based reference-armour model rather than player health; the exact curve is still unpublished.",
         "remaining": "Exact coefficient, expected-health level selector, reference curve/operation and higher-level scaling remain unpublished. Periodic-damage eligibility is also unknown: dealDamageInternal dispatches periodic delivery only to OnPeriodicDamageTaken, while RageBar listens only to OnSpellHitTaken. Generic taking-damage wording does not verify all DoTs/channels or complete PvP support. Current tank workloads use direct swings/pulses.",
         "implementation": "Use the exposed model and record resolved values/presence with each applicable row. Current tank selection/sensitivity and matrix evidence are complete; six coefficient20 guard failures remain prominent. Do not restore the old player-health/pre-Armor fit as verified or calibrate unknown values for selection gains.",
         "tests": [
@@ -4692,10 +4705,10 @@
       "category": "warrior",
       "kind": "mechanic",
       "priority": "medium",
-      "status": "needs-evidence",
+      "status": "provisional",
       "title": "Sunder Armor AP threat coefficient",
       "question": "What AP-scaled threat was added by the patch beyond the explicit rank threat?",
-      "current_model": "Rank-5 flat threat is 206; no extra AP coefficient is invented from the development-note wording.",
+      "current_model": "Forever Sunder threat is the client's flat effect (rank 5: 206) plus 0.05 x Attack Power, before stance and talent multipliers.",
       "impact": "Protection and Fury Sunder threat, not Sunder armor reduction or direct DPS.",
       "sources": [
         "sim/warrior/sunder_armor.go",
@@ -4706,11 +4719,11 @@
       ],
       "related": [],
       "review": {
-        "disposition": "partial",
-        "confidence": "high",
-        "answer": "The client supplies the patched flat rank threats, including rank-5 206, but retains a zero AP coefficient in the exported threat effect despite development-note wording about AP. No numeric server-script coefficient was found. This uncertainty is about threat, not armor removal or damage, and still matters for tanks.",
-        "remaining": "The effective AP coefficient, if any.",
-        "implementation": "Do not infer a coefficient from the phrase 'small increase'. Preserve the sourced flat values.",
+        "disposition": "credible-answer",
+        "confidence": "moderate",
+        "answer": "The Priest and Warrior class deep dive states 'Sunder Armor: Threat generated now scales with Attack Power'. A published 'Warrior Threat Values' test sheet (https://docs.google.com/spreadsheets/d/e/2PACX-1vQxd44ah_iUJNcTdH2mpI9nTMNbQEGV9COXkD1nRHi6NGxiU-TvdtkIJBik7KkgN6gKCs7Sn2E-LVxU/pubhtml) solves 0.0433 AP at rank 1 and 0.0476 at rank 2 on top of the client's flat 34 and 75; he notes the coefficient may rise with rank. 0.05 is the provisional level-60 value.",
+        "remaining": "Rank-5 coefficient.",
+        "implementation": "Implemented in sunder_armor.go.",
         "tests": [
           {
             "stage": "current-beta",
@@ -5742,10 +5755,10 @@
       "category": "paladin",
       "kind": "data",
       "priority": "medium",
-      "status": "needs-evidence",
+      "status": "needs-code",
       "title": "Hammer of the Righteous availability",
       "question": "Is the retained spell actually learnable, and what shares its cooldown?",
-      "current_model": "Not enabled merely from a leftover rune/class-skill record.",
+      "current_model": "Not registered. Hammer of the Righteous is a learnable level-40 Forever Paladin ability that shares Holy Strike's cooldown.",
       "impact": "Potential Protection AoE action; absent from current rotations.",
       "sources": [
         "docs/mythicsim_review.md",
@@ -5759,9 +5772,9 @@
       "review": {
         "disposition": "source-gap",
         "confidence": "low",
-        "answer": "The known lead remains a retained former-rune record plus another simulator's implementation. The available inventory does not establish a current trainer/talent acquisition path. That is an availability question, not permission to enable the spell and then optimize around it.",
-        "remaining": "Authoritative current learnability and cooldown-category evidence.",
-        "implementation": "Keep disabled until a current acquisition path is shown. Do not ask for a damage experiment before proving access.",
+        "answer": "The known lead remains a retained former-rune record plus another simulator's implementation. The available inventory does not establish a current trainer/talent acquisition path. That is an availability question, not permission to enable the spell and then optimize around it. October 11 audit: 70338 adds a Protection skill-line record for 407632 (SkillLine 267, level 40, AcquireMethod 0); in Era it was a rune with no skill line. Its cooldown moved to category 2404, which it shares with every Holy Strike rank (6 seconds), and its damage effect has ChainTargets 4 (ElliotWood/Forever#754). That implementation measured a 1–5% single-target loss against Holy Strike and large gains on 2+ targets.",
+        "remaining": "Implement the spell (four-target chain, shared Holy Strike category) for multi-target tank and Retribution scenarios; single-target benchmarks are unaffected.",
+        "implementation": "Register 407632 with category 2404 and ChainTargets 4; prefer it over Holy Strike only on 2+ targets.",
         "tests": [
           {
             "stage": "offline",
@@ -6263,7 +6276,7 @@
       "review": {
         "disposition": "partial",
         "confidence": "moderate",
-        "answer": "Owned Mark casts and owner-specific Expose Prey pass locally. External/foreign marks do not supply ownership. Captured rank-three/rank-four RAP values conflict with expected progression.",
+        "answer": "Owned Mark casts and owner-specific Expose Prey pass locally. External/foreign marks do not supply ownership. Captured rank-three/rank-four RAP values conflict with expected progression. October 11 audit: Unchanged in 70338: rank 3 (14324) gives 98 RAP and rank 4 (14325) 71; a cost-identical rank-4 record without a skill line (1213268) gives 110.",
         "remaining": "A current-build tooltip/stat trace or later corrected client record establishing the intended rank values.",
         "implementation": "Keep source versions and implementation coverage separate; no inferred script formula or automatic preset optimization.",
         "tests": [
@@ -6325,7 +6338,7 @@
       "review": {
         "disposition": "partial",
         "confidence": "moderate",
-        "answer": "The official article describes a free cast and six-second cooldown; captured base spell 9907 retains mana cost and no cooldown. Feral variants cannot establish the caster’s rule.",
+        "answer": "The official article describes a free cast and six-second cooldown; captured base spell 9907 retains mana cost and no cooldown. Feral variants cannot establish the caster’s rule. October 11 audit: Unchanged in 70338: caster Faerie Fire 9907 still costs 115 mana with no cooldown, against the article's free six-second cast. The new Faerie Fire records (1286041, 1288561, 1289452) have no skill line.",
         "remaining": "A newer-build active record or cast/resource trace resolving the base-versus-form behavior.",
         "implementation": "Keep source versions and implementation coverage separate; no inferred script formula or automatic preset optimization.",
         "tests": [
@@ -6420,7 +6433,7 @@
       "category": "warrior",
       "kind": "mechanic",
       "priority": "high",
-      "status": "provisional",
+      "status": "resolved",
       "title": "Deep Wounds payload and refresh",
       "question": "Which weapon contributes, and is the intended rollover/tick rule live at every rank?",
       "current_model": "Weapon-only MH-average payload, no AP/caster multiplier, carried-over unpaid damage and preserved tick timer; target modifiers apply once.",
@@ -6438,10 +6451,10 @@
         "DATA-014"
       ],
       "review": {
-        "disposition": "credible-answer",
+        "disposition": "evidence-answer",
         "confidence": "moderate",
-        "answer": "October 8 officially corroborates rolling no-AP Deep Wounds, including no off-hand AP contribution. Current timer/payload checks already exclude AP/caster modifiers; this is not a second damage buff.",
-        "remaining": "Exact server payload/triggering-hand attribution and full-rank extrapolation; the Impale prerequisite itself is now sourced and implemented.",
+        "answer": "A developer response relayed in Fight Club (2026-10-05) states the intended behaviour: Deep Wounds rolls over its damage when refreshed, does not reset its tick timer, does not scale with Attack Power (an off-hand formula that still used AP was a bug) and scales with weapon damage; the talent connects to Impale again. This is the implemented model.",
+        "remaining": "Exact payload attribution per hand only.",
         "implementation": "Keep the weapon-only rolling model qualified, remove the obsolete prerequisite-source hold and retain narrow in-game hand/AP/timing controls.",
         "tests": [
           {
@@ -6455,7 +6468,7 @@
             "measure": "Confirm rank scaling and any unresolved OH attribution, not a whole new rage model."
           }
         ],
-        "previous_status": null,
+        "previous_status": "provisional",
         "history": [
           {
             "disposition": "credible-answer",
@@ -7109,16 +7122,169 @@
           }
         ]
       }
+    },
+    {
+      "id": "WAR-019",
+      "category": "warrior",
+      "kind": "mechanic",
+      "priority": "high",
+      "status": "resolved",
+      "title": "Slam swing timer and Improved Slam cooldown",
+      "question": "Does untalented Forever Slam interrupt melee swings, and how much cooldown does Improved Slam remove?",
+      "current_model": "Untalented Slam: no autos during the cast; both swings restart from its completion. Improved Slam: autos continue and no reset. 18-second cooldown, 15 seconds with either rank of Improved Slam.",
+      "impact": "All Warrior DPS rotations that cast Slam; the Fury and Arms benchmark rotations.",
+      "sources": [
+        "sim/warrior/slam.go",
+        "docs/forever_rules.md",
+        "docs/auto_attack_audit.md",
+        "https://wago.tools/db2/SpellMisc/csv?build=1.60.1.70338",
+        "https://wago.tools/db2/SpellInterrupts/csv?build=1.60.1.70338"
+      ],
+      "related": [],
+      "review": {
+        "disposition": "evidence-answer",
+        "confidence": "high",
+        "answer": "The 'Panel' rule that Slam no longer resets the swing timer is not what the client ships. Untalented ranks (1240193, 1464, 8820, 11604, 11605) keep InterruptFlags 15 (including Combat) and lack SPELL_ATTR2_DO_NOT_RESET_COMBAT_TIMERS, like Era's Slam. Improved Slam (12862) overrides every rank (aura 332) with 1310196–1310200, which have InterruptFlags 7 and set DO_NOT_RESET_COMBAT_TIMERS; its text says 'In addition, Slam no longer interrupts or delays your melee swing'. Its cooldown modifier is −3000 ms at both ranks (curve [0.25, 3], [0.5, 3]); the engine had 1.5 s per point.",
+        "remaining": "None.",
+        "implementation": "Implemented in slam.go with a cast-speed-correct reset; regression TestForeverSlamSwingTimerDependsOnImprovedSlam. The benchmark Warrior rotations still cast Slam at 30 (15 for Arms) Rage; with the corrected engine, Fury and Fury (Sunder) gain 4.5%/4.3% without Slam, and Arms/2H Bloodthirst 2.0%/0.7% with a 50-Rage gate.",
+        "tests": [],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "WL-011",
+      "category": "warlock",
+      "kind": "mechanic",
+      "priority": "medium",
+      "status": "resolved",
+      "title": "Siphon Life periodic critical strikes",
+      "question": "Can Siphon Life ticks crit under Forever's periodic-crit rule?",
+      "current_model": "Siphon Life ticks cannot crit; other Warlock DoTs can.",
+      "impact": "Affliction and any build that maintains Siphon Life (Affliction −1.2%).",
+      "sources": [
+        "sim/warlock/siphon_life.go",
+        "https://github.com/ClassicWoWCommunity/forever-bugs/issues/303"
+      ],
+      "related": [],
+      "review": {
+        "disposition": "evidence-answer",
+        "confidence": "high",
+        "answer": "Forever marks each crit-capable DoT with SPELL_ATTR8_PERIODIC_CAN_CRIT (added to 121 simulated spells). Siphon Life 18265/18879/18880/18881 lacks it, and a player logged 219 ticks with no crit at about 5.6% spell crit (forever-bugs#303). Pandemic's tooltip still lists Siphon Life; the live behaviour follows the attribute. No hotfix in the 70338 DBCache touches it.",
+        "remaining": "Reopen if a later build adds the attribute.",
+        "implementation": "SpellFlagNoPeriodicCrit on Siphon Life.",
+        "tests": [],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "HUN-013",
+      "category": "hunter",
+      "kind": "data",
+      "priority": "medium",
+      "status": "resolved",
+      "title": "Tier 1 five-piece Multi-Shot cooldown",
+      "question": "Does the Hunter Tier 1 five-piece reduce Multi-Shot's cooldown as its tooltip says?",
+      "current_model": "It reduces Aimed Shot's cooldown by one second only.",
+      "impact": "Hunter rotations that use Multi-Shot under forced Tier 1.",
+      "sources": [
+        "sim/hunter/item_sets_forever.go"
+      ],
+      "related": [],
+      "review": {
+        "disposition": "evidence-answer",
+        "confidence": "high",
+        "answer": "Bonus spell 1301252's cooldown modifier carries class mask 131072, which matches Aimed Shot; Multi-Shot's mask is 4096. Spell modifiers apply by mask, as the project already follows for Efficiency.",
+        "remaining": "Reopen if the mask changes.",
+        "implementation": "Multi-Shot removed from the bonus; tier1_test updated.",
+        "tests": [],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "CORE-018",
+      "category": "shared",
+      "kind": "data",
+      "priority": "low",
+      "status": "resolved",
+      "title": "Missing global cooldowns and Sweeping Strikes duration",
+      "question": "Do simulated spells use the client's GCD and aura durations?",
+      "current_model": "Shield Wall and Intimidation trigger a 1.5-second GCD; Sweeping Strikes lasts 20 seconds. Stoneform's GCD is noted but it is never cast automatically.",
+      "impact": "Protection Warrior emergency timing, Beast Mastery GCD use, multi-target Arms.",
+      "sources": [
+        "sim/warrior/shield_wall.go",
+        "sim/hunter/talents.go",
+        "sim/warrior/sweeping_strikes.go"
+      ],
+      "related": [],
+      "review": {
+        "disposition": "evidence-answer",
+        "confidence": "high",
+        "answer": "A spell-by-spell comparison of all 201 profiles' registered spells against 70338 (cast, cooldown, GCD, cost, durations, after client talent and Tier 1 modifiers) left these mismatches: Shield Wall 871, Intimidation 19577 and Stoneform 20594 have StartRecoveryTime 1500 in both Era and Forever but no GCD in the engine; Sweeping Strikes 12292 lasts 20 seconds (5 charges) in both clients, not 10.",
+        "remaining": "None.",
+        "implementation": "Implemented except Stoneform (manual-only cooldown).",
+        "tests": [],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "WAR-020",
+      "category": "warrior",
+      "kind": "mechanic",
+      "priority": "high",
+      "status": "provisional",
+      "title": "Rend and Thunder Clap Attack Power scaling and Thunder Clap threat",
+      "question": "How do Rend and Thunder Clap scale with Attack Power in Forever, and how much threat does Thunder Clap generate?",
+      "current_model": "Rend ticks add 2% of current AP each (Improved Rend multiplies the whole tick). Thunder Clap adds 7% AP to each target's damage and generates threat equal to its damage before stance/talent multipliers.",
+      "impact": "Arms (Rend upkeep) and Protection Warrior threat; multi-target Thunder Clap damage.",
+      "sources": [
+        "sim/warrior/rend.go",
+        "sim/warrior/thunder_clap.go",
+        "https://worldofwarcraft.blizzard.com/en-us/news/24301514/world-of-warcraft-forever-class-deep-dives-priest-and-warrior"
+      ],
+      "related": [],
+      "review": {
+        "disposition": "credible-answer",
+        "confidence": "moderate",
+        "answer": "The class deep dive: 'Rend: Now gains significant damage scaling from Attack Power'; 'Thunder Clap: Now gains significant damage scaling from Attack Power ... Threat rebalanced (reduced) to account for being usable in Defensive Stance.' The engine had neither. Fight Club measurements: Rend 0.02 AP per tick at rank 2 using current AP, with Improved Rend scaling the AP term; Thunder Clap about 0.068–0.07 AP, threat equal to damage.",
+        "remaining": "Max-rank coefficients.",
+        "implementation": "Implemented (Forever only). Arms moves from −5.6% to −2.9% overall after the Slam correction.",
+        "tests": [],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "WAR-021",
+      "category": "warrior",
+      "kind": "mechanic",
+      "priority": "high",
+      "status": "provisional",
+      "title": "Revenge Attack Power scaling and threat",
+      "question": "What is Revenge's AP coefficient and threat formula in Forever?",
+      "current_model": "Revenge damage = rank roll + 0.28 AP (x Improved Revenge); threat = 2.25 x damage with no flat bonus.",
+      "impact": "Protection Warrior damage and threat; the largest single change in this audit (Protection DPS +34% at level 60).",
+      "sources": [
+        "sim/warrior/revenge.go"
+      ],
+      "related": [],
+      "review": {
+        "disposition": "credible-answer",
+        "confidence": "moderate",
+        "answer": "A six-point fit at rank 2 in the published 'Warrior Threat Values' sheet (https://docs.google.com/spreadsheets/d/e/2PACX-1vQxd44ah_iUJNcTdH2mpI9nTMNbQEGV9COXkD1nRHi6NGxiU-TvdtkIJBik7KkgN6gKCs7Sn2E-LVxU/pubhtml): threat = 1.495 x 2.25 x (damage roll + 0.28 AP), residuals under 0.5 threat, with no flat component. A separate tester measured 0.20 AP at rank 1 (level 20, 130–252 AP, weapon-independent). The engine previously had no AP term and a Classic-style 2.25 x 2 x level flat bonus.",
+        "remaining": "The rank-6 coefficient: the two low-rank measurements differ (0.20, 0.28), so the level-60 value may be higher or lower. Treat Protection results as sensitive to this value.",
+        "implementation": "Implemented with 0.28 for rank 6 (Forever only).",
+        "tests": [],
+        "previous_status": null
+      }
     }
   ],
   "review": {
     "date": "2026-09-27",
     "original_entries": 137,
     "reviewed_original_entries": 137,
-    "added_entries": 23,
-    "latest_followup": "October 8 overnight build70291 notes (21:32 UTC) postdate the16:49 UTC preceding release. Supported fixes, Fireball timing, source/catalog restrictions and explicit provisional-model integration are complete. Final1005 matrix scenarios, bounded setup selection/model sensitivities and136 fresh tank default/control workload rows are recorded.160 stable entries include42 resolved implementation/source questions and12 needs-code gaps; Rage, SoF, DR, Revelation and demoralizing server conventions remain unverified. Actual publication receipt is the separate deploy.yml workflow/live verification, not inferred from readiness or push.",
-    "latest_followup_date": "2026-10-09",
-    "latest_followup_baseline": "e7d0c2a6856ac1a6c947490f2f72784ccf44b400",
+    "added_entries": 29,
+    "latest_followup": "October 11 audit against client 1.60.1.70338, its DBCache hotfixes, the official class deep dives and community test logs. Corrected: untalented Slam swing reset and Improved Slam cooldown; Forever hit suppression removed; finisher Energy refunds; Siphon Life cannot crit; Hunter Tier 1 Multi-Shot mask; Shield Wall/Intimidation GCDs; Sweeping Strikes duration; Arcane Shot/Serpent Sting RAP instead of SP; Rend/Thunder Clap AP scaling and Thunder Clap threat; Sunder AP threat; Revenge AP scaling and threat. Benchmarks are not yet regenerated.",
+    "latest_followup_date": "2026-10-11",
+    "latest_followup_baseline": "9c05fc890b2c78e95c15605895134ebeb689b857",
     "before": {
       "needs-evidence": 84,
       "needs-code": 27,
@@ -7150,7 +7316,7 @@
         "latest_followup_baseline": "684f9d6cdc1782de40313b0125020c65d1680b6e"
       }
     ],
-    "latest_followup_report": "october-8-overnight-update.md",
+    "latest_followup_report": "october-11-audit.md",
     "latest_followup_source_date": "2026-10-08T21:32:38.124Z",
     "latest_followup_publication": "pending",
     "latest_followup_benchmarks": "pending"

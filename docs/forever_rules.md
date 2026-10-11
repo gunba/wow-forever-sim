@@ -52,7 +52,7 @@ below is gated on `IsForever()` unless it says the class code is Forever-only.
 
 | Rule | Source | Here |
 |---|---|---|
-| Slam no longer resets the swing timer. | Panel | `sim/warrior/slam.go` |
+| ~~Slam no longer resets the swing timer.~~ Superseded: only Improved Slam stops the reset. Untalented ranks keep the Combat interrupt flag and lack `DO_NOT_RESET_COMBAT_TIMERS`; Improved Slam swaps in override ranks 1310196–1310200 that flip both (client 70338). | Panel; client data | `sim/warrior/slam.go` |
 | Thunder Clap usable in Defensive Stance. | Panel | `sim/warrior/thunder_clap.go` |
 | Improved Shield Wall shortens the cooldown instead of extending the duration. | Tooltip | `sim/warrior/shield_wall.go` |
 | Tactical Mastery retains 10 Rage baseline; Improved Tactical Mastery adds 3 per point. | Demo spellbook, beta ability description | `sim/warrior/stances.go` |
