@@ -13,7 +13,7 @@ import (
 	"github.com/wowsims/classic/sim/shaman"
 )
 
-func TestForeverHunterAutoShotUsesClassicWindup(t *testing.T) {
+func TestHunterAutoShotWindupAndSpecialShotOverlap(t *testing.T) {
 	var hunter build
 	for _, b := range builds() {
 		if b.Key == "marksmanship" {
@@ -55,7 +55,7 @@ func TestForeverHunterAutoShotUsesClassicWindup(t *testing.T) {
 	idle := casts(0)
 	for _, id := range []int32{20904, 2643, 1310786} {
 		if got := casts(id); got > idle || got == 0 {
-			t.Errorf("%d: Auto Shots %d, idle %d; hardcasts cannot add free shots", id, got, idle)
+			t.Errorf("%d: Auto Shots %d, idle %d; special shots cannot add free shots", id, got, idle)
 		}
 	}
 
@@ -81,8 +81,18 @@ func TestForeverHunterAutoShotUsesClassicWindup(t *testing.T) {
 		if !aimed.Cast(sim, character.CurrentTarget) {
 			t.Fatalf("%v: Aimed Shot could not start", ruleset)
 		}
-		if auto.CanCast(sim, character.CurrentTarget) {
-			t.Fatalf("%v: Auto Shot started during Aimed Shot", ruleset)
+		aimedEnds := character.Hardcast.Expires
+		forever := ruleset == proto.Ruleset_RulesetForever
+		// Forever: Auto Shot fires during Aimed/Multi/Sniper casts (forever-bugs#76) as an instant
+		// shot that leaves the special's hardcast untouched. Classic keeps waiting for the cast.
+		if got := auto.CanCast(sim, character.CurrentTarget); got != forever {
+			t.Fatalf("%v: Auto Shot castable during Aimed Shot = %v", ruleset, got)
+		}
+		if forever {
+			if !auto.Cast(sim, character.CurrentTarget) || character.Hardcast.Expires != aimedEnds ||
+				character.Hardcast.ActionID != aimed.ActionID {
+				t.Fatal("Forever: Auto Shot during Aimed Shot replaced or failed the special's hardcast")
+			}
 		}
 		sim.CurrentTime = character.Hardcast.Expires
 		if auto.CanCast(sim, character.CurrentTarget) {

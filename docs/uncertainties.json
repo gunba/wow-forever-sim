@@ -3806,10 +3806,10 @@
       "category": "hunter",
       "kind": "mechanic",
       "priority": "medium",
-      "status": "model-choice",
+      "status": "resolved",
       "title": "Auto Shot and special-shot timing",
       "question": "Does current Forever retain the Classic half-second Auto Shot wind-up and interactions with Aimed/Sniper/Multi-Shot?",
-      "current_model": "Restored original Classic Auto Shot implementation, with sourced special cast times and explicit weapon-cast exceptions. The earlier continuous-autos model is superseded.",
+      "current_model": "Classic half-second Auto Shot wind-up when idle; in Forever, Auto Shot also fires during Aimed Shot, Multi-Shot and Sniper Shot casts as an instant shot that leaves the special's cast and completion intact. Specials do not reset the ranged timer.",
       "impact": "All ranged Hunter comparisons and haste value.",
       "sources": [
         "docs/auto_attack_audit.md",
@@ -3824,13 +3824,13 @@
       ],
       "related": [],
       "review": {
-        "disposition": "model-choice",
+        "disposition": "evidence-answer",
         "confidence": "moderate",
-        "answer": "Classic Auto Shot is the explicit reference implementation. The wiki and open beta issues still describe current-beta overlaps and retry behavior, so they do not establish that the reference model exactly reproduces every live beta edge. This is a declared intended-model choice, not a reason to keep a generic mandatory timing experiment on the main list.",
-        "remaining": "Version-specific timing only if the project chooses to emulate the live beta behavior or obtains confirmed intended changes.",
-        "implementation": "Keep the restored reference path and its regressions; do not alternate implementations based on an unresolved sound/retry report.",
+        "answer": "Three independent sources now agree, and the earlier reading of #76 as a sound report missed its resolution. On forever-bugs#76 (2026-09-23) a reply states 'Confirming that you are meant to be able to Auto Shot during those actions' (Aimed Shot, Multi-Shot, Sniper Shot); the same contributor relays upcoming fix schedules elsewhere (#279). The cited forever-hunter wiki says 'Auto Shot can fire while the Hunter is casting another spell with a cast time', and beta players report the same (Hunter Lodge, 2026-10-06 to 10-09). In the client, Aimed Shot drops the Combat interrupt flag (Era 15, Forever 7), carries DO_NOT_RESET_COMBAT_TIMERS and gains SPELL_ATTR4_IGNORE_COMBAT_TIMER.",
+        "remaining": "The wiki also reports melee attacks resetting the ranged timer (intent unclear); not modelled.",
+        "implementation": "Implemented: the three shots carry SpellFlagAllowAutoAttacks under Forever; Auto Shot may cast during them with zero wind-up. Paired impact: Marksmanship +12.9%, Beast Mastery +3.6% on top of the RAP change (totals vs the published engine +16.2% / +5.1%).",
         "tests": [],
-        "previous_status": "needs-evidence"
+        "previous_status": "model-choice"
       }
     },
     {
@@ -7282,7 +7282,7 @@
     "original_entries": 137,
     "reviewed_original_entries": 137,
     "added_entries": 29,
-    "latest_followup": "October 11 audit against client 1.60.1.70338, its DBCache hotfixes, the official class deep dives and community test logs. Corrected: untalented Slam swing reset and Improved Slam cooldown; Forever hit suppression removed; finisher Energy refunds; Siphon Life cannot crit; Hunter Tier 1 Multi-Shot mask; Shield Wall/Intimidation GCDs; Sweeping Strikes duration; Arcane Shot/Serpent Sting RAP instead of SP; Rend/Thunder Clap AP scaling and Thunder Clap threat; Sunder AP threat; Revenge AP scaling and threat. Benchmarks are not yet regenerated.",
+    "latest_followup": "October 11 audit against client 1.60.1.70338, its DBCache hotfixes, the official class deep dives and community test logs. Corrected: untalented Slam swing reset and Improved Slam cooldown; Forever hit suppression removed; finisher Energy refunds; Siphon Life cannot crit; Hunter Tier 1 Multi-Shot mask; Shield Wall/Intimidation GCDs; Sweeping Strikes duration; Arcane Shot/Serpent Sting RAP instead of SP; Auto Shot during Aimed/Multi/Sniper casts; Rend/Thunder Clap AP scaling and Thunder Clap threat; Sunder AP threat; Revenge AP scaling and threat. Benchmarks are not yet regenerated.",
     "latest_followup_date": "2026-10-11",
     "latest_followup_baseline": "9c05fc890b2c78e95c15605895134ebeb689b857",
     "before": {

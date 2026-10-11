@@ -32,7 +32,8 @@ channels. Register dispositions are in [Simulator questions and coverage](uncert
 | Siphon Life cannot crit | No `PERIODIC_CAN_CRIT`; forever-bugs#303 (219 ticks, no crits) | WL-011 |
 | Hunter Tier 1 five-piece reduces Aimed Shot only | Bonus 1301252 mask 131072 | HUN-013 |
 | Shield Wall and Intimidation trigger the GCD; Sweeping Strikes lasts 20 s | Client StartRecoveryTime and duration (Era and Forever) | CORE-018 |
-| Arcane Shot +10% RAP, Serpent Sting +3% current RAP per tick, no spell power | Client coefficients zeroed (Era 0.429 / 0.2); Hunter Lodge measurements | HUN-005 |
+| Arcane Shot +10% RAP, Serpent Sting +3% current RAP per tick, no spell power | Client coefficients zeroed (Era 0.429 / 0.2); Hunter Lodge measurements; forever-hunter wiki | HUN-005 |
+| Auto Shot fires during Aimed, Multi- and Sniper Shot casts | forever-bugs#76 confirmation; forever-hunter wiki; Aimed Shot interrupt flags and `IGNORE_COMBAT_TIMER` | HUN-006 |
 | Rend +2% current AP per tick; Thunder Clap +7% AP and threat equal to damage | Deep dive (Priest and Warrior); Fight Club measurements | WAR-020 |
 | Sunder threat + 0.05 AP | Deep dive; published threat sheet | WAR-009 |
 | Revenge + 0.28 AP, threat 2.25× damage without a flat bonus | Six-point fit in the published threat sheet (rank 2); 0.20 at rank 1 | WAR-021 |
@@ -47,7 +48,7 @@ Seed 20261011, 5,000 iterations, every race, unchanged gear, talents and rotatio
 | Fury / Fury (Sunder) | −6.4% / −6.1% with the published rotations, −2.2% / −2.1% without Slam |
 | 2H Bloodthirst | −4.6%; −3.9% with Slam gated at 50 Rage |
 | Arms | −2.9%; Slam gated at 50 Rage recovers about 2% |
-| Marksmanship / Beast Mastery | +2.9% / +1.4% |
+| Marksmanship / Beast Mastery | +16.2% / +5.1% (RAP scaling, Auto Shot during casts) |
 | Affliction | −1.2% |
 | Mutilate / Subtlety / Combat / Feral | +1.1% / +1.0% / +0.6% / +0.4% |
 | Others | unchanged |

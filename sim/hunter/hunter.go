@@ -297,8 +297,13 @@ func NewHunter(character *core.Character, options *proto.Player) *Hunter {
 		DefaultCast: core.Cast{
 			CastTime: time.Millisecond * 500,
 		},
-		ModifyCast: func(_ *core.Simulation, spell *core.Spell, cast *core.Cast) {
+		ModifyCast: func(sim *core.Simulation, spell *core.Spell, cast *core.Cast) {
 			cast.CastTime = spell.CastTime()
+			if hunter.AutoAttacks.CanAutoAttackDuringCast(sim) {
+				// Fired during a special shot's cast: no wind-up of its own, and it must not
+				// replace the shot's hardcast.
+				cast.CastTime = 0
+			}
 		},
 		IgnoreHaste: true, // Hunter GCD is locked at 1.5s
 		CastTime: func(spell *core.Spell) time.Duration {
@@ -309,7 +314,8 @@ func NewHunter(character *core.Character, options *proto.Player) *Hunter {
 		// The ranged swing can be scheduled at the exact instant a special shot
 		// finishes. Let that hardcast complete first; otherwise Auto Shot
 		// replaces its completion callback before the GCD action runs.
-		return hunter.Hardcast.Expires < sim.CurrentTime
+		// Forever lets Auto Shot fire during Aimed, Multi- and Sniper Shot casts.
+		return hunter.Hardcast.Expires < sim.CurrentTime || hunter.AutoAttacks.CanAutoAttackDuringCast(sim)
 	}
 	hunter.AutoAttacks.RangedConfig().CritDamageBonus = hunter.mortalShots()
 	hunter.AutoAttacks.RangedConfig().BonusCoefficient = 1
@@ -347,4 +353,15 @@ func (hunter *Hunter) OnGCDReady(_ *core.Simulation) {
 // Agent is a generic way to access underlying hunter on any of the agents.
 type HunterAgent interface {
 	GetHunter() *Hunter
+}
+
+// Forever lets Auto Shot fire while Aimed Shot, Multi-Shot and Sniper Shot are being cast:
+// "Confirming that you are meant to be able to Auto Shot during those actions"
+// (ClassicWoWCommunity/forever-bugs#76), corroborated by beta players. In the client, Aimed Shot
+// drops the Combat interrupt flag (Era 15, Forever 7) and gains SPELL_ATTR4_IGNORE_COMBAT_TIMER.
+func (hunter *Hunter) foreverAutoShotDuringCast() core.SpellFlag {
+	if hunter.Env.IsForever() {
+		return core.SpellFlagAllowAutoAttacks
+	}
+	return 0
 }

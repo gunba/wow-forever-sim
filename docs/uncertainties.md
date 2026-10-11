@@ -4,7 +4,7 @@
 
 Current level-60 DPS and tank scenarios, plus conditional spell, item and encounter coverage. This register consolidates the recorded questions; it is not a claim that unlisted game behavior has been verified.
 
-**Latest follow-up (2026-10-11):** October 11 audit against client 1.60.1.70338, its DBCache hotfixes, the official class deep dives and community test logs. Corrected: untalented Slam swing reset and Improved Slam cooldown; Forever hit suppression removed; finisher Energy refunds; Siphon Life cannot crit; Hunter Tier 1 Multi-Shot mask; Shield Wall/Intimidation GCDs; Sweeping Strikes duration; Arcane Shot/Serpent Sting RAP instead of SP; Rend/Thunder Clap AP scaling and Thunder Clap threat; Sunder AP threat; Revenge AP scaling and threat. Benchmarks are not yet regenerated. [Latest follow-up report](october-11-audit.md).
+**Latest follow-up (2026-10-11):** October 11 audit against client 1.60.1.70338, its DBCache hotfixes, the official class deep dives and community test logs. Corrected: untalented Slam swing reset and Improved Slam cooldown; Forever hit suppression removed; finisher Energy refunds; Siphon Life cannot crit; Hunter Tier 1 Multi-Shot mask; Shield Wall/Intimidation GCDs; Sweeping Strikes duration; Arcane Shot/Serpent Sting RAP instead of SP; Auto Shot during Aimed/Multi/Sniper casts; Rend/Thunder Clap AP scaling and Thunder Clap threat; Sunder AP threat; Revenge AP scaling and threat. Benchmarks are not yet regenerated. [Latest follow-up report](october-11-audit.md).
 
 **Original adjudication baseline:** 2026-09-27, `35cab052456a320358e998c12416687d69cae142`. That original review reconciled questions without changing mechanics or benchmark results. This current register also includes the later implementation and benchmark updates linked above; earlier audits remain historical evidence, not current task status.
 
@@ -16,9 +16,9 @@ Current level-60 DPS and tank scenarios, plus conditional spell, item and encoun
 |---|---:|---:|---:|
 | Needs evidence | 84 | 56 | 64 |
 | Implementation gap | 27 | 12 | 13 |
-| Model assumption | 5 | 8 | 8 |
+| Model assumption | 5 | 7 | 7 |
 | Accepted working answer | 0 | 12 | 19 |
-| Resolved | 20 | 39 | 49 |
+| Resolved | 20 | 40 | 50 |
 | Outside current scenarios | 1 | 13 | 13 |
 
 A working answer is credible enough for an explicitly qualified model, not verified server behavior. Confidence applies to the stated finding, not every effect of that class. An implementation gap is not a request for a game experiment.
@@ -2376,30 +2376,6 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Earlier references:** T29 (buff/AI portions)
 
-<a id="hun-006"></a>
-
-### HUN-006 — Auto Shot and special-shot timing
-
-**Model assumption · Medium priority · Moderate confidence**
-
-**Disposition:** Scenario decision
-
-**Question:** Does current Forever retain the Classic half-second Auto Shot wind-up and interactions with Aimed/Sniper/Multi-Shot?
-
-**Finding:** Classic Auto Shot is the explicit reference implementation. The wiki and open beta issues still describe current-beta overlaps and retry behavior, so they do not establish that the reference model exactly reproduces every live beta edge. This is a declared intended-model choice, not a reason to keep a generic mandatory timing experiment on the main list.
-
-**Current implementation / scenario:** Restored original Classic Auto Shot implementation, with sourced special cast times and explicit weapon-cast exceptions. The earlier continuous-autos model is superseded.
-
-**Impact:** All ranged Hunter comparisons and haste value.
-
-**Remaining scope:** Version-specific timing only if the project chooses to emulate the live beta behavior or obtains confirmed intended changes.
-
-**Implementation / model follow-up:** Keep the restored reference path and its regressions; do not alternate implementations based on an unresolved sound/retry report.
-
-**References:** [docs/auto_attack_audit.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/auto_attack_audit.md) · [sim/core/attack.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/attack.go) · [sim/hunter/aimed_shot.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/aimed_shot.go) · [https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes](https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/43](https://github.com/ClassicWoWCommunity/forever-bugs/issues/43) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/76](https://github.com/ClassicWoWCommunity/forever-bugs/issues/76)
-
-**Earlier references:** T13
-
 <a id="hun-007"></a>
 
 ### HUN-007 — Pet families and new trained abilities
@@ -2569,6 +2545,30 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **References:** [docs/beta-pass/hunter.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/hunter.md) · [sim/hunter/arcane_shot.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/arcane_shot.go) · [sim/hunter/serpent_sting.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/serpent_sting.go) · [sim/hunter/volley.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/volley.go) · [https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes](https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes)
 
 **Earlier references:** Hunter missing-coefficient notes
+
+<a id="hun-006"></a>
+
+### HUN-006 — Auto Shot and special-shot timing
+
+**Resolved · Medium priority · Moderate confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Does current Forever retain the Classic half-second Auto Shot wind-up and interactions with Aimed/Sniper/Multi-Shot?
+
+**Finding:** Three independent sources now agree, and the earlier reading of #76 as a sound report missed its resolution. On forever-bugs#76 (2026-09-23) a reply states 'Confirming that you are meant to be able to Auto Shot during those actions' (Aimed Shot, Multi-Shot, Sniper Shot); the same contributor relays upcoming fix schedules elsewhere (#279). The cited forever-hunter wiki says 'Auto Shot can fire while the Hunter is casting another spell with a cast time', and beta players report the same (Hunter Lodge, 2026-10-06 to 10-09). In the client, Aimed Shot drops the Combat interrupt flag (Era 15, Forever 7), carries DO_NOT_RESET_COMBAT_TIMERS and gains SPELL_ATTR4_IGNORE_COMBAT_TIMER.
+
+**Current implementation / scenario:** Classic half-second Auto Shot wind-up when idle; in Forever, Auto Shot also fires during Aimed Shot, Multi-Shot and Sniper Shot casts as an instant shot that leaves the special's cast and completion intact. Specials do not reset the ranged timer.
+
+**Impact:** All ranged Hunter comparisons and haste value.
+
+**Remaining scope:** The wiki also reports melee attacks resetting the ranged timer (intent unclear); not modelled.
+
+**Implementation / model follow-up:** Implemented: the three shots carry SpellFlagAllowAutoAttacks under Forever; Auto Shot may cast during them with zero wind-up. Paired impact: Marksmanship +12.9%, Beast Mastery +3.6% on top of the RAP change (totals vs the published engine +16.2% / +5.1%).
+
+**References:** [docs/auto_attack_audit.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/auto_attack_audit.md) · [sim/core/attack.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/attack.go) · [sim/hunter/aimed_shot.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/aimed_shot.go) · [https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes](https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/43](https://github.com/ClassicWoWCommunity/forever-bugs/issues/43) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/76](https://github.com/ClassicWoWCommunity/forever-bugs/issues/76)
+
+**Earlier references:** T13
 
 <a id="hun-008"></a>
 

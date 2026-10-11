@@ -465,7 +465,7 @@ type AutoAttacks struct {
 }
 
 // Ordinary spells retain Classic casting restrictions. Only explicitly marked
-// weapon casts, such as Slam and Aimed Shot, permit concurrent autos.
+// weapon casts, such as Improved Slam and the Forever Hunter shots, permit concurrent autos.
 func (aa *AutoAttacks) CanAutoAttackDuringCast(sim *Simulation) bool {
 	unit := aa.mh.unit
 	return unit != nil && aa.weaponRole && unit.Env != nil && unit.Env.IsForever() &&
