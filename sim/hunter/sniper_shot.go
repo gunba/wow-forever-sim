@@ -58,7 +58,7 @@ func (hunter *Hunter) registerSniperShotSpell() {
 			return hunter.DistanceFromTarget >= core.MinRangedAttackDistance
 		},
 
-		CritDamageBonus: hunter.mortalShots(),
+		CritDamageBonus: hunter.mortalShotsOutsideForever(),
 
 		DamageMultiplier: 1,
 		ThreatMultiplier: 1,

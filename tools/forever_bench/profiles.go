@@ -263,6 +263,9 @@ func (b build) consumes(race proto.Race) *proto.Consumes {
 		}
 	case "beast_mastery", "marksmanship", "survival":
 		c.Food = proto.Food_FoodSmokedDesertDumpling
+		// Forever Hunter shots scale with ranged attack power, not spell power; mana is the
+		// remaining flask benefit (October 11: BM/MM +1.9%/+2.4% over Supreme Power).
+		c.Flask, c.SpellPowerBuff = proto.Flask_FlaskOfDistilledWisdom, proto.SpellPowerBuff_SpellPowerBuffUnknown
 		c.MainHandImbue, c.OffHandImbue = proto.WeaponImbue_ElementalSharpeningStone, proto.WeaponImbue_ElementalSharpeningStone
 	case "feral":
 		c.Flask = proto.Flask_FlaskOfDistilledWisdom

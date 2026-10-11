@@ -4,11 +4,11 @@
 
 Current level-60 DPS and tank scenarios, plus conditional spell, item and encounter coverage. This register consolidates the recorded questions; it is not a claim that unlisted game behavior has been verified.
 
-**Latest follow-up (2026-10-11):** October 11 audit against client 1.60.1.70338, its DBCache hotfixes, the official class deep dives and community test logs. Corrected: untalented Slam swing reset and Improved Slam cooldown; Forever hit suppression removed; finisher Energy refunds; Siphon Life cannot crit; Hunter Tier 1 Multi-Shot mask; Shield Wall/Intimidation GCDs; Sweeping Strikes duration; Arcane Shot/Serpent Sting RAP instead of SP; Auto Shot during Aimed/Multi/Sniper casts; Rend/Thunder Clap AP scaling and Thunder Clap threat; Sunder AP threat; Revenge AP scaling and threat. Benchmarks are not yet regenerated. [Latest follow-up report](october-11-audit.md).
+**Latest follow-up (2026-10-11):** October 11 audit against client 1.60.1.70338, its DBCache hotfixes, the official class deep dives, community trackers and class Discord test logs. Corrected: Slam swing reset and Improved Slam cooldown; Forever hit suppression removed; finisher Energy refunds; Siphon Life cannot crit; Hunter Tier 1 Multi-Shot mask; Shield Wall/Intimidation GCDs; Sweeping Strikes duration; Arcane Shot/Serpent Sting RAP instead of SP; Auto Shot during Aimed/Multi/Sniper casts; Rend/Thunder Clap AP scaling and Thunder Clap threat; Sunder AP threat; Revenge AP scaling and threat; Battle Shout threat; Shaman Weapon Mastery not baseline; Elemental Devastation scope; class-mask scopes of Twin Disciplines, Holy Precision/Specialization, Mental Agility, Mortal Shots and Impale. Warrior rotations, Hunter consumables and affected gear were reselected and all 1,005 matrix scenarios and 68 tank checks replayed. [Latest follow-up report](october-11-audit.md).
 
 **Original adjudication baseline:** 2026-09-27, `35cab052456a320358e998c12416687d69cae142`. That original review reconciled questions without changing mechanics or benchmark results. This current register also includes the later implementation and benchmark updates linked above; earlier audits remain historical evidence, not current task status.
 
-**Coverage:** 137/137 original entries reviewed; 29 additional coverage gaps, including later follow-ups.
+**Coverage:** 137/137 original entries reviewed; 34 additional coverage gaps, including later follow-ups.
 
 ## Before and after
 
@@ -17,8 +17,8 @@ Current level-60 DPS and tank scenarios, plus conditional spell, item and encoun
 | Needs evidence | 84 | 56 | 64 |
 | Implementation gap | 27 | 12 | 13 |
 | Model assumption | 5 | 7 | 7 |
-| Accepted working answer | 0 | 12 | 19 |
-| Resolved | 20 | 40 | 50 |
+| Accepted working answer | 0 | 12 | 17 |
+| Resolved | 20 | 42 | 57 |
 | Outside current scenarios | 1 | 13 | 13 |
 
 A working answer is credible enough for an explicitly qualified model, not verified server behavior. Confidence applies to the stated finding, not every effect of that class. An implementation gap is not a request for a game experiment.
@@ -860,6 +860,28 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [docs/october-8-review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-8-review.md) · [sim/core/mana.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/mana.go)
 
+<a id="core-019"></a>
+
+### CORE-019 — Talent modifier scope versus client class masks
+
+**Resolved · High priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Do simulated talents apply their damage, crit, hit and cost modifiers to the same spells as the client's class masks?
+
+**Finding:** Differential audit, October 11: each benchmark build was constructed with and without every talent it takes (583 variants). The spells whose static modifiers changed were compared with the spells covered by the talent's client modifier masks (aura 107/108, ops damage, periodic, crit, crit damage, hit, cost, cast, cooldown and GCD). Defects found and fixed: Twin Disciplines applied to every instant Priest spell, including Mind Flay, Shadow Word: Death, Starshards and Penance, while the mask covers Shadow Word: Pain, Devouring Plague and Holy Nova; a tester also found it does not affect Mind Flay. Holy Precision, Holy Specialization and Mental Agility applied to Penance (and Mental Agility to Shadow Word: Death), which their masks exclude. Mortal Shots applied to Sniper Shot, Raptor Strike, Mongoose Bite and Wing Clip but not Serpent Sting; the mask is Auto/Aimed/Multi/Arcane/Serpent/Volley. Impale did not reach Rend's crits, which its mask includes. Investigated and correct: Elemental Fury on Searing/Magma totems (the mask includes their attack spells), Aftermath and Improved Seals (applied at cast or on the proc spell). Low-impact mismatches recorded but not changed: Genesis and Survival Tactics on AoE-only spells, Call of Flame on Fire Nova, Malediction's Soul Fire scope, and Paladin seal cost reductions (Paladins are never mana-limited in the benchmark).
+
+**Current implementation / scenario:** Talent modifiers follow the client masks for every benchmark talent checked; exceptions are listed in the answer.
+
+**Impact:** Shadow and Smite Priest, Marksmanship and Beast Mastery, and Warriors using Rend.
+
+**Remaining scope:** Dynamic (aura-based) talent effects are outside a static differential check.
+
+**Implementation / model follow-up:** Fixed under Forever only; Classic behaviour unchanged.
+
+**References:** [sim/priest/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/priest/talents.go) · [sim/hunter/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/talents.go) · [sim/hunter/serpent_sting.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/serpent_sting.go) · [sim/warrior/rend.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/rend.go)
+
 <a id="core-006"></a>
 
 ### CORE-006 — Optional MP5-per-second interpretation
@@ -1468,7 +1490,7 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Question:** What exact per-target flat threat do the fixed Forever Shout and Roar generate?
 
-**Finding:** The official notes resolve nonzero threat on all affected targets, but publish no numeric amount. Scoped three-target, miss, zero/manual override and Classic-retention checks validate the exposed model, not its server coefficients.
+**Finding:** The official notes resolve nonzero threat on all affected targets, but publish no numeric amount. Scoped three-target, miss, zero/manual override and Classic-retention checks validate the exposed model, not its server coefficients. October 11 audit: The client now carries an explicit threat effect (SpellEffect 63) on every Demoralizing Shout rank: 11/19/27/35/43, so rank 5 is 43, matching the retained 43.2 convention. A published Fight Club threat sheet measured rank 2 at about 22.7 per target before modifiers on a level-30 character, slightly above the client's 19, suggesting mild level growth.
 
 **Current implementation / scenario:** Nonzero affected-target behavior is implemented. Maximum-rank defaults are 43.2 Shout and 100 Roar, before stance/global multipliers, as Classic-derived conventions. Player optional override preserves explicit zero; Classic ignores it.
 
@@ -1485,6 +1507,28 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **References:** [https://us.forums.blizzard.com/en/wow/t/2360696/5](https://us.forums.blizzard.com/en/wow/t/2360696/5) · [docs/october-8-overnight-update.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-8-overnight-update.md) · [sim/warrior/demoralizing_shout.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/demoralizing_shout.go) · [sim/druid/demoralizing_roar.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/demoralizing_roar.go) · [tools/forever_bench/october9_patch_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/october9_patch_test.go)
 
 **Related:** DRU-005, WAR-011, SCEN-003
+
+<a id="war-023"></a>
+
+### WAR-023 — Benchmark Warrior rotations after the Slam and Rend corrections
+
+**Resolved · Medium priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Which Slam and Rend usage is best for each Warrior benchmark row on the corrected engine?
+
+**Finding:** Screened Slam at no use and 30–70 Rage, with and without Rend, on every race (seed 20261012), then confirmed on an independent seed (20261099): Fury +5.31% (every race +5.15% or more), Fury (Sunder) +4.98%, Arms +1.93%, 2H Bloodthirst +0.90% (every race positive). Dual-wield Slam loses at every threshold under the swing reset; Fury rows had Improved Rend talented without casting Rend, which now scales with AP. The non-benchmark AoE and Spearing dual-wield presets also drop Slam.
+
+**Current implementation / scenario:** Fury and Fury (Sunder): no Slam; Rend maintained after Whirlwind. Arms: Slam at 50+ Rage. 2H Bloodthirst: Slam at 50+ Rage and Rend after Whirlwind.
+
+**Impact:** All four Warrior DPS rows.
+
+**Remaining scope:** None.
+
+**Implementation / model follow-up:** Presets and the 40 ranked profiles updated.
+
+**References:** [ui/warrior/apls/forever_fury.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/warrior/apls/forever_fury.apl.json) · [ui/warrior/apls/forever_arms.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/warrior/apls/forever_arms.apl.json) · [ui/warrior/apls/forever_fury_2h.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/warrior/apls/forever_fury_2h.apl.json) · [ui/warrior/apls/forever_fury_sunder.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/warrior/apls/forever_fury_sunder.apl.json)
 
 <a id="war-017"></a>
 
@@ -1513,6 +1557,28 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **References:** [https://us.forums.blizzard.com/en/wow/t/2360696/5](https://us.forums.blizzard.com/en/wow/t/2360696/5) · [docs/october-8-overnight-update.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-8-overnight-update.md) · [sim/warrior/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/talents.go) · [sim/core/health.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/health.go) · [tools/forever_bench/october9_patch_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/october9_patch_test.go)
 
 **Related:** SCEN-001
+
+<a id="war-022"></a>
+
+### WAR-022 — Battle Shout threat
+
+**Resolved · Low priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Does Battle Shout generate threat in Forever?
+
+**Finding:** Buffs and debuffs generating 0 threat was confirmed as Not A Bug (forever-bugs#64, 2026-09-22), and the published Fight Club threat sheet measured Battle Shout at 0. Demoralizing Shout's threat was later restored explicitly (WAR-018); Battle Shout's was not.
+
+**Current implementation / scenario:** No threat in Forever; Classic keeps its per-target flat threat.
+
+**Impact:** Protection Warrior threat (about 2 TPS at level 60).
+
+**Remaining scope:** None.
+
+**Implementation / model follow-up:** Battle Shout FlatThreatBonus 0 under Forever.
+
+**References:** [sim/warrior/shouts.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/shouts.go) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/64](https://github.com/ClassicWoWCommunity/forever-bugs/issues/64)
 
 ## Paladin
 
@@ -2636,6 +2702,28 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [sim/hunter/item_sets_forever.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/item_sets_forever.go)
 
+<a id="hun-014"></a>
+
+### HUN-014 — Hunter flask and elixirs without spell-power scaling
+
+**Resolved · Medium priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Which flask and elixirs should Forever Hunter profiles use now that their shots no longer scale with spell power?
+
+**Finding:** Supreme Power and Greater Arcane Elixir add no damage once Arcane Shot and Serpent Sting lose their spell-power coefficients. Every race compared at seed 20261013: Distilled Wisdom over Supreme Power gives Beast Mastery +1.9% (time out of mana 26 s to 3 s) and Marksmanship +2.4%, and is neutral for Survival and Pet/Melee.
+
+**Current implementation / scenario:** Flask of Distilled Wisdom; no Greater Arcane Elixir.
+
+**Impact:** All four Hunter rows.
+
+**Remaining scope:** None.
+
+**Implementation / model follow-up:** Profile consumables and the default consumable builder updated.
+
+**References:** [tools/forever_bench/profiles.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/profiles.go)
+
 ## Mage
 
 <a id="mag-002"></a>
@@ -3414,21 +3502,21 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 ### SHA-007 — Baseline Weapon Mastery grant
 
-**Accepted working answer · High priority · Moderate confidence**
+**Resolved · High priority · Moderate confidence**
 
-**Disposition:** Credible working answer
+**Disposition:** Source-backed answer
 
 **Question:** What rank/value is granted automatically, and at which levels?
 
-**Finding:** Fresh official full article names Weapon Mastery baseline and Shield Specialization removed. Retained rank 5 is 10% physical damage with weapon restrictions, not spell power. The engine omitted the baseline bonus.
+**Finding:** Blizzard retracted it. On ClassicWoWCommunity/forever-bugs#280 (2026-10-08) a reply relays: 'there was a mix up in the article when it was handed off. So it shouldn't have had shield spec and weapon mastery in the baseline portion' (Not A Bug). The 70338 Shaman tree has no Weapon Mastery talent, and players found no damage change on the character sheet. The engine's baseline 10% was based on the article and is removed.
 
-**Current implementation / scenario:** At level 60, retained rank-5 spell 29088 adds 10% to eligible physical weapon attacks. Lower-level grant progression is not inferred. Shield Specialization is not added.
+**Current implementation / scenario:** No baseline Weapon Mastery in Forever; the Forever tree has no Weapon Mastery talent either.
 
 **Impact:** Enhancement damage and lower-level validation.
 
-**Remaining scope:** Direct spellbook/aura grant, intermediate ranks and lower-level availability.
+**Remaining scope:** Reopen only if a later build grants it.
 
-**Implementation / model follow-up:** Bounded level 60 weapon-only implementation passes armed/unarmed/Classic and spell-scope checks. Do not add the removed Shield Specialization from stale search excerpts.
+**Implementation / model follow-up:** Removed applyBaselineWeaponMastery; test renamed TestShamanHasNoBaselineWeaponMastery. Enhancement and Stormcaller gear was re-searched without it.
 
 **Optional / conditional · Current beta · level 30**
 - Prerequisites: Shaman trainer/spellbook access, known weapon with no procs and matched target.
@@ -3467,6 +3555,28 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **References:** [sim/shaman/fire_totems.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/shaman/fire_totems.go) · [docs/mechanics_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/mechanics_review.md) · [artifacts/forever_input_profiles.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/forever_input_profiles.json)
 
 **Earlier references:** T27
+
+<a id="sha-008"></a>
+
+### SHA-008 — Elemental Devastation trigger events
+
+**Resolved · Low priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Which spell critical strikes trigger Elemental Devastation?
+
+**Finding:** Blizzard (forever-bugs#257, 2026-10-06): 'This activates off of Harmful Spell Critical. Not periodic, and not critical strikes from procs (flametongue), or proxies (totems).' The engine already excluded periodic damage, passive procs and totem attacks (empty proc mask); Fire Nova, which Forever casts from its totem, still triggered it.
+
+**Current implementation / scenario:** Direct harmful Shaman spell crits only: not periodic ticks, weapon-imbue procs, totem attacks or Fire Nova.
+
+**Impact:** Enhancement and Stormcaller melee crit; no current benchmark rotation casts Fire Nova.
+
+**Remaining scope:** None.
+
+**Implementation / model follow-up:** Fire Nova excluded under Forever.
+
+**References:** [sim/shaman/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/shaman/talents.go) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/257](https://github.com/ClassicWoWCommunity/forever-bugs/issues/257)
 
 ## Warlock
 
@@ -3646,21 +3756,21 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 ### WL-010 — Bane of Havoc damage copying
 
-**Accepted working answer · High priority · Moderate confidence**
+**Resolved · High priority · Moderate confidence**
 
-**Disposition:** Credible working answer
+**Disposition:** Source-backed answer
 
 **Question:** Are copy scope, one-target limit and threat represented without duplicated modifiers?
 
-**Finding:** Client driver supports outgoing owner direct/periodic damage and one marked target; the child is Shadow, cannot crit and ignores caster damage modifiers. These source-backed omissions are now implemented and regression-tested.
+**Finding:** A tester's public Warcraft Logs analysis (Warlock Classic Discord, 2026-10-05) matches the implemented model point for point: Bane of Havoc copies 15% of damage dealt to other targets (including AoE) to the Havoc target; pet damage and Hellfire self-damage do not trigger it; the copy cannot crit but copies 15% of a crit; it does not double-dip Curse of the Elements; overkill counts in full; wand Shoot triggers it.
 
 **Current implementation / scenario:** Copies 15% of actual qualifying owner damage as a separate Shadow event to the marked enemy, with a per-owner one-target limit. No recursive copies, pet/self/healing leakage or repeated damage modifiers.
 
 **Impact:** Multi-target Warlock damage; no gain in the current one-target reference.
 
-**Remaining scope:** Exact copied-damage mitigation/proc/threat behavior beyond explicit source fields.
+**Remaining scope:** None for the simulated cases.
 
-**Implementation / model follow-up:** Copy and ownership/lifecycle corrections pass focused direct/periodic two-target regressions. Ordinary copy threat and exact server copy-mitigation behavior remain qualified assumptions; the single-target reference is unaffected.
+**Implementation / model follow-up:** Already implemented; no change.
 
 **Optional / conditional · Sources / code**
 - Prerequisites: Two targets and two Warlocks with independent Havoc/Banes.

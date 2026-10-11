@@ -300,6 +300,15 @@ func (hunter *Hunter) mortalShots() float64 {
 	return 0.06 * float64(hunter.Talents.MortalShots)
 }
 
+// Forever's Mortal Shots modifier (aura 108, op 15) covers Auto Shot, Aimed, Multi-, Arcane Shot,
+// Serpent Sting and Volley by class mask, but not Sniper Shot or the melee strikes.
+func (hunter *Hunter) mortalShotsOutsideForever() float64 {
+	if hunter.Env.IsForever() {
+		return 0
+	}
+	return hunter.mortalShots()
+}
+
 func (hunter *Hunter) applySurvivalTactics() {
 	if hunter.Talents.SurvivalTactics == 0 {
 		return

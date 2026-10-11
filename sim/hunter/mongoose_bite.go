@@ -42,7 +42,7 @@ func (hunter *Hunter) getMongooseBiteConfig(rank int) core.SpellConfig {
 		},
 
 		BonusCritRating:  hunter.savageStrikesLegacyCrit(),
-		CritDamageBonus:  hunter.mortalShots(),
+		CritDamageBonus:  hunter.mortalShotsOutsideForever(),
 		DamageMultiplier: 1,
 		ThreatMultiplier: 1,
 		BonusCoefficient: 1,

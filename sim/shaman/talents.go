@@ -11,7 +11,6 @@ import (
 )
 
 func (shaman *Shaman) ApplyTalents() {
-	shaman.applyBaselineWeaponMastery()
 
 	// Elemental Talents
 	shaman.applyConcussion()
@@ -99,47 +98,6 @@ func (shaman *Shaman) ApplyTalents() {
 			}
 		})
 	}
-}
-
-func (shaman *Shaman) applyBaselineWeaponMastery() {
-	if !shaman.Env.IsForever() || shaman.Level < 60 {
-		return
-	}
-
-	// Blizzard names Weapon Mastery as baseline. Use the retained full-rank
-	// 29088 effect (10% physical weapon damage) at level 60. Lower-level
-	// grant/rank progression remains unmeasured and is not inferred here.
-	// This is not a bonus to spells or unarmed attacks.
-	applied := make(map[*core.Spell]bool)
-	update := func(spell *core.Spell) {
-		if spell.SpellSchool != core.SpellSchoolPhysical || !spell.ProcMask.Matches(core.ProcMaskMelee) {
-			return
-		}
-		slot := proto.ItemSlot_ItemSlotMainHand
-		if spell.ProcMask.Matches(core.ProcMaskMeleeOH) {
-			slot = proto.ItemSlot_ItemSlotOffHand
-		}
-		weapon := shaman.Equipment[slot]
-		eligible := weapon.Type == proto.ItemType_ItemTypeWeapon && slices.Contains(
-			[]proto.WeaponType{proto.WeaponType_WeaponTypeAxe, proto.WeaponType_WeaponTypeMace,
-				proto.WeaponType_WeaponTypeStaff, proto.WeaponType_WeaponTypeFist, proto.WeaponType_WeaponTypeDagger},
-			weapon.WeaponType)
-		if eligible == applied[spell] {
-			return
-		}
-		if eligible {
-			spell.DamageMultiplier *= 1.10
-		} else {
-			spell.DamageMultiplier /= 1.10
-		}
-		applied[spell] = eligible
-	}
-	shaman.OnSpellRegistered(update)
-	shaman.RegisterOnItemSwap(func(sim *core.Simulation) {
-		for _, spell := range shaman.Spellbook {
-			update(spell)
-		}
-	})
 }
 
 func (shaman *Shaman) applyConcussion() {
@@ -282,6 +240,12 @@ func (shaman *Shaman) applyElementalDevastation() {
 			// are casts triggered by another spell, including Overload.
 			// Keep the existing Classic eligibility and normal spell masks.
 			if shaman.Env.IsForever() && spell.Flags.Matches(core.SpellFlagPassiveSpell) {
+				return
+			}
+			// Blizzard: it "activates off of Harmful Spell Critical. Not periodic, and not critical
+			// strikes from procs (flametongue), or proxies (totems)"; Fire Nova is cast from its
+			// totem (ClassicWoWCommunity/forever-bugs#257).
+			if shaman.Env.IsForever() && spell.SpellCode == SpellCode_ShamanFireNova {
 				return
 			}
 			if spell.ProcMask.Matches(core.ProcMaskSpellDamage) && result.Outcome.Matches(core.OutcomeCrit) {

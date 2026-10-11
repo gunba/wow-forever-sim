@@ -6505,10 +6505,10 @@
       "category": "shaman",
       "kind": "mechanic",
       "priority": "high",
-      "status": "provisional",
+      "status": "resolved",
       "title": "Baseline Weapon Mastery grant",
       "question": "What rank/value is granted automatically, and at which levels?",
-      "current_model": "At level 60, retained rank-5 spell 29088 adds 10% to eligible physical weapon attacks. Lower-level grant progression is not inferred. Shield Specialization is not added.",
+      "current_model": "No baseline Weapon Mastery in Forever; the Forever tree has no Weapon Mastery talent either.",
       "impact": "Enhancement damage and lower-level validation.",
       "sources": [
         "docs/october-8-review.md",
@@ -6518,11 +6518,11 @@
       "legacy": [],
       "related": [],
       "review": {
-        "disposition": "credible-answer",
+        "disposition": "evidence-answer",
         "confidence": "moderate",
-        "answer": "Fresh official full article names Weapon Mastery baseline and Shield Specialization removed. Retained rank 5 is 10% physical damage with weapon restrictions, not spell power. The engine omitted the baseline bonus.",
-        "remaining": "Direct spellbook/aura grant, intermediate ranks and lower-level availability.",
-        "implementation": "Bounded level 60 weapon-only implementation passes armed/unarmed/Classic and spell-scope checks. Do not add the removed Shield Specialization from stale search excerpts.",
+        "answer": "Blizzard retracted it. On ClassicWoWCommunity/forever-bugs#280 (2026-10-08) a reply relays: 'there was a mix up in the article when it was handed off. So it shouldn't have had shield spec and weapon mastery in the baseline portion' (Not A Bug). The 70338 Shaman tree has no Weapon Mastery talent, and players found no damage change on the character sheet. The engine's baseline 10% was based on the article and is removed.",
+        "remaining": "Reopen only if a later build grants it.",
+        "implementation": "Removed applyBaselineWeaponMastery; test renamed TestShamanHasNoBaselineWeaponMastery. Enhancement and Stormcaller gear was re-searched without it.",
         "tests": [
           {
             "stage": "current-beta",
@@ -6535,7 +6535,7 @@
             "measure": "Verify full10%physical weapon bonus and weapon-swap eligibility."
           }
         ],
-        "previous_status": null
+        "previous_status": "provisional"
       }
     },
     {
@@ -6652,7 +6652,7 @@
       "category": "warlock",
       "kind": "mechanic",
       "priority": "high",
-      "status": "provisional",
+      "status": "resolved",
       "title": "Bane of Havoc damage copying",
       "question": "Are copy scope, one-target limit and threat represented without duplicated modifiers?",
       "current_model": "Copies 15% of actual qualifying owner damage as a separate Shadow event to the marked enemy, with a per-owner one-target limit. No recursive copies, pet/self/healing leakage or repeated damage modifiers.",
@@ -6665,11 +6665,11 @@
       "legacy": [],
       "related": [],
       "review": {
-        "disposition": "credible-answer",
+        "disposition": "evidence-answer",
         "confidence": "moderate",
-        "answer": "Client driver supports outgoing owner direct/periodic damage and one marked target; the child is Shadow, cannot crit and ignores caster damage modifiers. These source-backed omissions are now implemented and regression-tested.",
-        "remaining": "Exact copied-damage mitigation/proc/threat behavior beyond explicit source fields.",
-        "implementation": "Copy and ownership/lifecycle corrections pass focused direct/periodic two-target regressions. Ordinary copy threat and exact server copy-mitigation behavior remain qualified assumptions; the single-target reference is unaffected.",
+        "answer": "A tester's public Warcraft Logs analysis (Warlock Classic Discord, 2026-10-05) matches the implemented model point for point: Bane of Havoc copies 15% of damage dealt to other targets (including AoE) to the Havoc target; pet damage and Hellfire self-damage do not trigger it; the copy cannot crit but copies 15% of a crit; it does not double-dip Curse of the Elements; overkill counts in full; wand Shoot triggers it.",
+        "remaining": "None for the simulated cases.",
+        "implementation": "Already implemented; no change.",
         "tests": [
           {
             "stage": "offline",
@@ -6682,7 +6682,7 @@
             "measure": "Measure copy and threat behavior with separate owner/pet/self-damage events and mitigation changes."
           }
         ],
-        "previous_status": null
+        "previous_status": "provisional"
       }
     },
     {
@@ -7036,7 +7036,7 @@
       "review": {
         "disposition": "model-choice",
         "confidence": "moderate",
-        "answer": "The official notes resolve nonzero threat on all affected targets, but publish no numeric amount. Scoped three-target, miss, zero/manual override and Classic-retention checks validate the exposed model, not its server coefficients.",
+        "answer": "The official notes resolve nonzero threat on all affected targets, but publish no numeric amount. Scoped three-target, miss, zero/manual override and Classic-retention checks validate the exposed model, not its server coefficients. October 11 audit: The client now carries an explicit threat effect (SpellEffect 63) on every Demoralizing Shout rank: 11/19/27/35/43, so rank 5 is 43, matching the retained 43.2 convention. A published Fight Club threat sheet measured rank 2 at about 22.7 per target before modifiers on a level-30 character, slightly above the client's 19, suggesting mild level growth.",
         "remaining": "Actual per-rank flat threat and any hidden target/distribution behavior beyond the tested model.",
         "implementation": "Record defaults/override with comparisons; do not call 43.2/100 measured values or restore the former zero as intended behavior.",
         "tests": [
@@ -7275,14 +7275,142 @@
         "tests": [],
         "previous_status": null
       }
+    },
+    {
+      "id": "SHA-008",
+      "category": "shaman",
+      "kind": "mechanic",
+      "priority": "low",
+      "status": "resolved",
+      "title": "Elemental Devastation trigger events",
+      "question": "Which spell critical strikes trigger Elemental Devastation?",
+      "current_model": "Direct harmful Shaman spell crits only: not periodic ticks, weapon-imbue procs, totem attacks or Fire Nova.",
+      "impact": "Enhancement and Stormcaller melee crit; no current benchmark rotation casts Fire Nova.",
+      "sources": [
+        "sim/shaman/talents.go",
+        "https://github.com/ClassicWoWCommunity/forever-bugs/issues/257"
+      ],
+      "related": [],
+      "review": {
+        "disposition": "evidence-answer",
+        "confidence": "high",
+        "answer": "Blizzard (forever-bugs#257, 2026-10-06): 'This activates off of Harmful Spell Critical. Not periodic, and not critical strikes from procs (flametongue), or proxies (totems).' The engine already excluded periodic damage, passive procs and totem attacks (empty proc mask); Fire Nova, which Forever casts from its totem, still triggered it.",
+        "remaining": "None.",
+        "implementation": "Fire Nova excluded under Forever.",
+        "tests": [],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "WAR-022",
+      "category": "warrior",
+      "kind": "mechanic",
+      "priority": "low",
+      "status": "resolved",
+      "title": "Battle Shout threat",
+      "question": "Does Battle Shout generate threat in Forever?",
+      "current_model": "No threat in Forever; Classic keeps its per-target flat threat.",
+      "impact": "Protection Warrior threat (about 2 TPS at level 60).",
+      "sources": [
+        "sim/warrior/shouts.go",
+        "https://github.com/ClassicWoWCommunity/forever-bugs/issues/64"
+      ],
+      "related": [],
+      "review": {
+        "disposition": "evidence-answer",
+        "confidence": "high",
+        "answer": "Buffs and debuffs generating 0 threat was confirmed as Not A Bug (forever-bugs#64, 2026-09-22), and the published Fight Club threat sheet measured Battle Shout at 0. Demoralizing Shout's threat was later restored explicitly (WAR-018); Battle Shout's was not.",
+        "remaining": "None.",
+        "implementation": "Battle Shout FlatThreatBonus 0 under Forever.",
+        "tests": [],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "WAR-023",
+      "category": "warrior",
+      "kind": "scenario",
+      "priority": "medium",
+      "status": "resolved",
+      "title": "Benchmark Warrior rotations after the Slam and Rend corrections",
+      "question": "Which Slam and Rend usage is best for each Warrior benchmark row on the corrected engine?",
+      "current_model": "Fury and Fury (Sunder): no Slam; Rend maintained after Whirlwind. Arms: Slam at 50+ Rage. 2H Bloodthirst: Slam at 50+ Rage and Rend after Whirlwind.",
+      "impact": "All four Warrior DPS rows.",
+      "sources": [
+        "ui/warrior/apls/forever_fury.apl.json",
+        "ui/warrior/apls/forever_arms.apl.json",
+        "ui/warrior/apls/forever_fury_2h.apl.json",
+        "ui/warrior/apls/forever_fury_sunder.apl.json"
+      ],
+      "related": [],
+      "review": {
+        "disposition": "evidence-answer",
+        "confidence": "high",
+        "answer": "Screened Slam at no use and 30–70 Rage, with and without Rend, on every race (seed 20261012), then confirmed on an independent seed (20261099): Fury +5.31% (every race +5.15% or more), Fury (Sunder) +4.98%, Arms +1.93%, 2H Bloodthirst +0.90% (every race positive). Dual-wield Slam loses at every threshold under the swing reset; Fury rows had Improved Rend talented without casting Rend, which now scales with AP. The non-benchmark AoE and Spearing dual-wield presets also drop Slam.",
+        "remaining": "None.",
+        "implementation": "Presets and the 40 ranked profiles updated.",
+        "tests": [],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "HUN-014",
+      "category": "hunter",
+      "kind": "scenario",
+      "priority": "medium",
+      "status": "resolved",
+      "title": "Hunter flask and elixirs without spell-power scaling",
+      "question": "Which flask and elixirs should Forever Hunter profiles use now that their shots no longer scale with spell power?",
+      "current_model": "Flask of Distilled Wisdom; no Greater Arcane Elixir.",
+      "impact": "All four Hunter rows.",
+      "sources": [
+        "tools/forever_bench/profiles.go"
+      ],
+      "related": [],
+      "review": {
+        "disposition": "evidence-answer",
+        "confidence": "high",
+        "answer": "Supreme Power and Greater Arcane Elixir add no damage once Arcane Shot and Serpent Sting lose their spell-power coefficients. Every race compared at seed 20261013: Distilled Wisdom over Supreme Power gives Beast Mastery +1.9% (time out of mana 26 s to 3 s) and Marksmanship +2.4%, and is neutral for Survival and Pet/Melee.",
+        "remaining": "None.",
+        "implementation": "Profile consumables and the default consumable builder updated.",
+        "tests": [],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "CORE-019",
+      "category": "shared",
+      "kind": "data",
+      "priority": "high",
+      "status": "resolved",
+      "title": "Talent modifier scope versus client class masks",
+      "question": "Do simulated talents apply their damage, crit, hit and cost modifiers to the same spells as the client's class masks?",
+      "current_model": "Talent modifiers follow the client masks for every benchmark talent checked; exceptions are listed in the answer.",
+      "impact": "Shadow and Smite Priest, Marksmanship and Beast Mastery, and Warriors using Rend.",
+      "sources": [
+        "sim/priest/talents.go",
+        "sim/hunter/talents.go",
+        "sim/hunter/serpent_sting.go",
+        "sim/warrior/rend.go"
+      ],
+      "related": [],
+      "review": {
+        "disposition": "evidence-answer",
+        "confidence": "high",
+        "answer": "Differential audit, October 11: each benchmark build was constructed with and without every talent it takes (583 variants). The spells whose static modifiers changed were compared with the spells covered by the talent's client modifier masks (aura 107/108, ops damage, periodic, crit, crit damage, hit, cost, cast, cooldown and GCD). Defects found and fixed: Twin Disciplines applied to every instant Priest spell, including Mind Flay, Shadow Word: Death, Starshards and Penance, while the mask covers Shadow Word: Pain, Devouring Plague and Holy Nova; a tester also found it does not affect Mind Flay. Holy Precision, Holy Specialization and Mental Agility applied to Penance (and Mental Agility to Shadow Word: Death), which their masks exclude. Mortal Shots applied to Sniper Shot, Raptor Strike, Mongoose Bite and Wing Clip but not Serpent Sting; the mask is Auto/Aimed/Multi/Arcane/Serpent/Volley. Impale did not reach Rend's crits, which its mask includes. Investigated and correct: Elemental Fury on Searing/Magma totems (the mask includes their attack spells), Aftermath and Improved Seals (applied at cast or on the proc spell). Low-impact mismatches recorded but not changed: Genesis and Survival Tactics on AoE-only spells, Call of Flame on Fire Nova, Malediction's Soul Fire scope, and Paladin seal cost reductions (Paladins are never mana-limited in the benchmark).",
+        "remaining": "Dynamic (aura-based) talent effects are outside a static differential check.",
+        "implementation": "Fixed under Forever only; Classic behaviour unchanged.",
+        "tests": [],
+        "previous_status": null
+      }
     }
   ],
   "review": {
     "date": "2026-09-27",
     "original_entries": 137,
     "reviewed_original_entries": 137,
-    "added_entries": 29,
-    "latest_followup": "October 11 audit against client 1.60.1.70338, its DBCache hotfixes, the official class deep dives and community test logs. Corrected: untalented Slam swing reset and Improved Slam cooldown; Forever hit suppression removed; finisher Energy refunds; Siphon Life cannot crit; Hunter Tier 1 Multi-Shot mask; Shield Wall/Intimidation GCDs; Sweeping Strikes duration; Arcane Shot/Serpent Sting RAP instead of SP; Auto Shot during Aimed/Multi/Sniper casts; Rend/Thunder Clap AP scaling and Thunder Clap threat; Sunder AP threat; Revenge AP scaling and threat. Benchmarks are not yet regenerated.",
+    "added_entries": 34,
+    "latest_followup": "October 11 audit against client 1.60.1.70338, its DBCache hotfixes, the official class deep dives, community trackers and class Discord test logs. Corrected: Slam swing reset and Improved Slam cooldown; Forever hit suppression removed; finisher Energy refunds; Siphon Life cannot crit; Hunter Tier 1 Multi-Shot mask; Shield Wall/Intimidation GCDs; Sweeping Strikes duration; Arcane Shot/Serpent Sting RAP instead of SP; Auto Shot during Aimed/Multi/Sniper casts; Rend/Thunder Clap AP scaling and Thunder Clap threat; Sunder AP threat; Revenge AP scaling and threat; Battle Shout threat; Shaman Weapon Mastery not baseline; Elemental Devastation scope; class-mask scopes of Twin Disciplines, Holy Precision/Specialization, Mental Agility, Mortal Shots and Impale. Warrior rotations, Hunter consumables and affected gear were reselected and all 1,005 matrix scenarios and 68 tank checks replayed.",
     "latest_followup_date": "2026-10-11",
     "latest_followup_baseline": "9c05fc890b2c78e95c15605895134ebeb689b857",
     "before": {

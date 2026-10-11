@@ -26,7 +26,8 @@ func (warrior *Warrior) newShoutSpellConfig(actionID core.ActionID, rank int32, 
 			IgnoreHaste: true,
 		},
 
-		FlatThreatBonus: float64(core.BattleShoutLevel[rank]),
+		// Forever buffs generate no threat (Blizzard: Not A Bug, forever-bugs#64; Battle Shout measured 0).
+		FlatThreatBonus: core.TernaryFloat64(warrior.Env.IsForever(), 0, float64(core.BattleShoutLevel[rank])),
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			for _, aura := range allyAuras {

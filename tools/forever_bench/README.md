@@ -15,7 +15,7 @@ and weapon coverage. None is confirmed obtainable loot. The previous
 and the separate [real-item benchmark](https://github.com/gunba/wow-forever-sim/blob/175b1a9de5/artifacts/forever_dps_5min.json)
 remain distinct historical references.
 
-This benchmark incorporates supported **client 1.60.1.70291 corrections**, with bounded affected-setup selection. The [overnight update](../../docs/october-8-overnight-update.md) records provisional-model assumptions, sensitivity failures and feature gaps. The current roster contains
+This benchmark incorporates the **[October 11 audit](../../docs/october-11-audit.md)** (client 1.60.1.70338): engine corrections, reselected Warrior rotations and Hunter consumables, and an independently confirmed gear re-search of every DPS profile. The earlier [overnight update](../../docs/october-8-overnight-update.md) records the 70291 provisional-model assumptions, sensitivity failures and feature gaps. The current roster contains
 **31 builds and 201 race/build profiles** (99 Alliance, 102 Horde). See
 the [patch audit](../../docs/forever-70009.md) for source gaps and exclusions.
 The [class-effects follow-up](../../docs/upstream_elliot_review.md) replays
@@ -23,7 +23,7 @@ all 736 baseline/sensitivity scenarios after the Life Tap, pet/talent,
 Moonfury and buff corrections. Gear selections remain from the earlier search;
 the refreshed results do not establish a new gear optimum. The preceding
 results are [archived](../../artifacts/history/367ac97df8/).
-The current 70291 release replays **1,005** scenarios: 201 baseline, Tier-off, +10%, +50%, and corrected-engine original-loadout controls. Gear scales preserve all enchants/effects and recipes. The [earlier October 8 release](../../docs/october-8-review.md) is historical. The earlier [184-profile preservation check](../../artifacts/tanks/current/dps_preservation.json)
+The current release replays **1,005** scenarios: 201 baseline, Tier-off, +10%, +50%, and the previous loadouts on the corrected engine. Gear scales preserve all enchants/effects and recipes. The [earlier October 8 release](../../docs/october-8-review.md) is historical. The earlier [184-profile preservation check](../../artifacts/tanks/current/dps_preservation.json)
 is historical, not a statement that this release preserves those results.
 
 Protection Warrior, Protection Paladin and Bear use frontal incoming attacks
@@ -119,7 +119,7 @@ Replay the current exact native profiles, including race-specific equipment:
 ```sh
 python3 tools/forever_bench/run_matrix.py --binary /path/to/forever-bench \
   --profiles artifacts/modelled_gear/forever_input_profiles.json --natural-hit \
-  --iterations 5000 --seed 1792800001 --output /tmp/forever-matrix --workers 24
+  --iterations 5000 --seed 1793400001 --output /tmp/forever-matrix --workers 24
 ```
 
 `artifacts/modelled_gear/forever_input_profiles.json` freezes the 201 selected players
@@ -132,7 +132,7 @@ Those earlier 26-build recipes and matched validation requests/results are
 archived in `artifacts/research_builds/validation.json.gz` at their pinned
 revision. They predate the additional build and haste timing change; use that
 revision to replay their original comparisons, not this roster. The current
-chart uses seed **1792800001** and 5,000 iterations per race/scenario. The
+chart uses seed **1793400001** and 5,000 iterations per race/scenario. The
 [October 8 selection packets](../../artifacts/correctness/october_8/selection-evidence.json)
 record independent confirmation; 145 affected DPS profiles used at most three
 coordinate passes, retaining 35 supported changes. Fury/Dwarf reached that bound

@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "1815000001",
+    "fixedRngSeed": "1793400001",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Horde",
@@ -59,7 +59,7 @@
           "enchant": 1506
         },
         {
-          "id": 920000298
+          "id": 920000300
         },
         {
           "id": 920000064,
@@ -470,21 +470,19 @@
         {
           "action": {
             "condition": {
-              "cmp": {
-                "op": "OpGe",
-                "lhs": {
-                  "currentRage": {}
-                },
-                "rhs": {
-                  "const": {
-                    "val": "30"
+              "not": {
+                "val": {
+                  "dotIsActive": {
+                    "spellId": {
+                      "spellId": 11574
+                    }
                   }
                 }
               }
             },
             "castSpell": {
               "spellId": {
-                "spellId": 11605
+                "spellId": 11574
               }
             }
           }

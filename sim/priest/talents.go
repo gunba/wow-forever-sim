@@ -126,6 +126,17 @@ func (priest *Priest) applyTwinDisciplines() {
 
 	points := float64(priest.Talents.TwinDisciplines)
 	priest.OnSpellRegistered(func(spell *core.Spell) {
+		if priest.Env.IsForever() {
+			// The client modifier (1225132, aura 108) lists its spells by class mask rather than by
+			// cast time: of the simulated damage spells only Shadow Word: Pain, Devouring Plague
+			// and Holy Nova. Mind Flay, Shadow Word: Death, Starshards and Penance are excluded,
+			// matching a tester's finding that it does not affect Mind Flay.
+			switch spell.SpellCode {
+			case SpellCode_PriestShadowWordPain, SpellCode_PriestDevouringPlague, SpellCode_PriestHolyNova:
+				spell.DamageMultiplierAdditive += 0.01 * points
+			}
+			return
+		}
 		if spell.Flags.Matches(SpellFlagPriest) && spell.DefaultCast.CastTime == 0 {
 			spell.DamageMultiplierAdditive += 0.01 * points
 		}
@@ -139,7 +150,7 @@ func (priest *Priest) applyHolyPrecision() {
 
 	bonusHit := 6 * float64(priest.Talents.HolyPrecision) * core.SpellHitRatingPerHitChance
 	priest.OnSpellRegistered(func(spell *core.Spell) {
-		if spell.Flags.Matches(SpellFlagPriest) && spell.SpellSchool.Matches(core.SpellSchoolHoly) {
+		if spell.Flags.Matches(SpellFlagPriest) && spell.SpellSchool.Matches(core.SpellSchoolHoly) && !priest.outsideForeverHolyMasks(spell) {
 			spell.BonusHitRating += bonusHit
 		}
 	})
@@ -156,6 +167,9 @@ func (priest *Priest) applyMentalAgility() {
 			return
 		}
 
+		if priest.Env.IsForever() && (spell.SpellCode == SpellCode_PriestPenance || spell.SpellCode == SpellCode_PriestShadowWordDeath) {
+			return // outside the client modifier's class mask
+		}
 		if spell.DefaultCast.CastTime == 0 || slices.Contains(affectedSpellCodes, spell.SpellCode) {
 			spell.Cost.Multiplier -= []int32{0, 3, 7, 10}[priest.Talents.MentalAgility]
 		}
@@ -168,10 +182,16 @@ func (priest *Priest) applyHolySpecialization() {
 	}
 
 	priest.OnSpellRegistered(func(spell *core.Spell) {
-		if spell.Flags.Matches(SpellFlagPriest) && spell.SpellSchool.Matches(core.SpellSchoolHoly) {
+		if spell.Flags.Matches(SpellFlagPriest) && spell.SpellSchool.Matches(core.SpellSchoolHoly) && !priest.outsideForeverHolyMasks(spell) {
 			spell.BonusCritRating += 1 * float64(priest.Talents.HolySpecialization) * core.CritRatingPerCritChance
 		}
 	})
+}
+
+// Holy Precision's and Holy Specialization's client modifiers apply by class mask, which in
+// Forever covers Smite and Holy Fire but not the Penance ranks added for Forever.
+func (priest *Priest) outsideForeverHolyMasks(spell *core.Spell) bool {
+	return priest.Env.IsForever() && spell.SpellCode == SpellCode_PriestPenance
 }
 
 func (priest *Priest) applyInspiration() {

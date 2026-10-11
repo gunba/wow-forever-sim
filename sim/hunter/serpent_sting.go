@@ -52,6 +52,7 @@ func (hunter *Hunter) getSerpentStingConfig(rank int) core.SpellConfig {
 		// The Viper Sting cooldown and the Scorpid Sting duration are not modelled, so nothing
 		// here checks the rest of what the tree reads.
 		DamageMultiplier: 1 + []float64{0, 0.06, 0.13, 0.20}[hunter.Talents.ImprovedStings],
+		CritDamageBonus:  hunter.mortalShots(), // periodic crits in Forever; the Mortal Shots mask includes Serpent Sting
 		ThreatMultiplier: 1,
 
 		Dot: core.DotConfig{

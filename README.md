@@ -47,9 +47,10 @@ simulator's **Ranked builds** selector. Clicking a matrix cell opens that exact
 setup and its actual gear-derived hit; no manual import is needed.
 [Frozen benchmark inputs](artifacts/modelled_gear/forever_input_profiles.json) are also the
 native benchmark defaults, separate from the results for replay.
-[October 8 evidence](artifacts/correctness/october_8/selection-evidence.json) records
-the corrected-engine build and gear comparisons; [review and limits](docs/october-8-review.md)
-explain the provisional mechanics and bounded selections. Earlier
+[October 11 evidence](artifacts/correctness/october_11/selection-evidence.json) records
+the corrected-engine rotation, consumable and gear selections; the [October 11 audit](docs/october-11-audit.md)
+lists the corrections and their sources. The [October 8 review](docs/october-8-review.md)
+explains the earlier provisional mechanics and bounded selections. Earlier
 [equipment searches](artifacts/modelled_gear_search/current/summary.json) remain historical. Every equipped item is a projected level-65 item with its
 numeric stats in its name. None is confirmed obtainable. The
 [previous mixed modeled/real release](https://github.com/gunba/wow-forever-sim/blob/ff7b01f28/artifacts/modelled_gear/forever_dps_5min.json)

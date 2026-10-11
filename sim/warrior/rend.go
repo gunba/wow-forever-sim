@@ -45,6 +45,7 @@ func (warrior *Warrior) registerRendSpell() {
 
 		DamageMultiplier: damageMultiplier,
 		ThreatMultiplier: 1,
+		CritDamageBonus:  warrior.impale(), // Forever Rend ticks can crit; Impale's mask includes Rend
 
 		Dot: core.DotConfig{
 			Aura: core.Aura{

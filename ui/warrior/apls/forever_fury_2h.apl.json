@@ -23,7 +23,7 @@
               {
                 "auraIsActive": {
                   "auraId": {
-                     "spellId": 1282733
+                    "spellId": 1282733
                   }
                 }
               },
@@ -109,6 +109,26 @@
     {
       "action": {
         "condition": {
+          "not": {
+            "val": {
+              "dotIsActive": {
+                "spellId": {
+                  "spellId": 11574
+                }
+              }
+            }
+          }
+        },
+        "castSpell": {
+          "spellId": {
+            "spellId": 11574
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "condition": {
           "cmp": {
             "op": "OpGe",
             "lhs": {
@@ -116,7 +136,7 @@
             },
             "rhs": {
               "const": {
-                "val": "30"
+                "val": "50"
               }
             }
           }

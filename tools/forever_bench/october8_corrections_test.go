@@ -22,7 +22,7 @@ func TestOctober8RogueOneHandAxes(t *testing.T) {
 	}
 }
 
-func TestOctober8ShamanWeaponMastery(t *testing.T) {
+func TestShamanHasNoBaselineWeaponMastery(t *testing.T) {
 	for _, ruleset := range []proto.Ruleset{proto.Ruleset_RulesetForever, proto.Ruleset_RulesetClassic} {
 		for _, armed := range []bool{true, false} {
 			req := historyTalentFixture("enhancement", map[string]int{"stormstrike": 1})
@@ -37,10 +37,9 @@ func TestOctober8ShamanWeaponMastery(t *testing.T) {
 			}
 			sim := core.NewSim(req, simsignals.Signals{})
 			c := sim.Raid.Parties[0].Players[0].GetCharacter()
+			// Blizzard retracted the deep dive's baseline Weapon Mastery (forever-bugs#280), and
+			// the Forever tree has no Weapon Mastery talent: no ruleset grants the 10%.
 			want := 1.0
-			if ruleset == proto.Ruleset_RulesetForever && armed {
-				want = 1.10
-			}
 			seenWF := false
 			for _, spell := range c.Spellbook {
 				if spell.SpellSchool != core.SpellSchoolPhysical || !spell.ProcMask.Matches(core.ProcMaskMelee) {
