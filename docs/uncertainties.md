@@ -14,11 +14,11 @@ Current level-60 DPS and tank scenarios, plus conditional spell, item and encoun
 
 | Status | Before | Original entries now | Including additions |
 |---|---:|---:|---:|
-| Needs evidence | 84 | 56 | 64 |
+| Needs evidence | 84 | 56 | 63 |
 | Implementation gap | 27 | 12 | 13 |
 | Model assumption | 5 | 7 | 7 |
 | Accepted working answer | 0 | 12 | 17 |
-| Resolved | 20 | 42 | 57 |
+| Resolved | 20 | 43 | 58 |
 | Outside current scenarios | 1 | 13 | 13 |
 
 A working answer is credible enough for an explicitly qualified model, not verified server behavior. Confidence applies to the stated finding, not every effect of that class. An implementation gap is not a request for a game experiment.
@@ -100,9 +100,6 @@ An experiment within the current level-30 beta, subject to actual access, learne
 - **Medium · [DATA-015 — Revelation explicit proc-law model](#data-015)**
   - Prerequisites: Obtainable Revelation enchant, recorded character crit, separated direct/periodic/noncrit/crit/miss samples, no changing other procs.
   - Observe / verify: Estimate eligibility and conditional chance, charge expiry/consumption and form retention; vary crit independently.
-- **Medium · [DRU-014 — Faerie Fire announced cost/cooldown versus captured data](#dru-014)**
-  - Prerequisites: Caster Faerie Fire access and enough mana for cost observation.
-  - Observe / verify: Record mana delta, cooldown availability and spell ID; isolate Spirit/MP5 ticks.
 - **Medium · [HUN-003 — Pet external buffs and action cadence](#hun-003)**
   - Prerequisites: Only if pet cadence sensitivity proves material; a trained damage ability and a resource trace.
   - Observe / verify: Compare ability use when resource-limited versus resource-capped. Do not mix this with owner inheritance or ordinary spell cooldowns.
@@ -269,9 +266,6 @@ Requires access beyond the announced level-30 beta or max-level content. Reclass
 - **Medium · [DRU-010 — Feral stealth openers](#dru-010)**
   - Prerequisites: Level-32 Ravage and level-36 Pounce.
   - Observe / verify: Confirm opener damage and legal states against the implemented ranks.
-- **Medium · [DRU-014 — Faerie Fire announced cost/cooldown versus captured data](#dru-014)**
-  - Prerequisites: Access to later caster and form ranks.
-  - Observe / verify: Confirm the same rules across ranks/forms rather than extrapolating the first rank.
 - **Medium · [HUN-011 — Hunter’s Mark rank-value anomaly](#hun-011)**
   - Prerequisites: Access to ranks three and four with fixed ranged AP and no competing Mark.
   - Observe / verify: Compare target-conditioned ranged AP/damage and tooltip values per rank; record the client build.
@@ -750,13 +744,13 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Question:** Which builders and finishers refund Energy on miss, dodge or parry, and what fraction of the paid cost returns?
 
-**Finding:** The earlier review misread the client. Every player rank of Eviscerate (2098–31016), Rupture, Slice and Dice, Expose Armor, Rip (1079–9896) and Ferocious Bite (22568–31018) carries SPELL_ATTR1_DISCOUNT_POWER_ON_MISS (0x08000000) in 70009 and 70338. The ids without it are cost-free NPC or internal records with no skill line (1271520, 1271514, 1272982, 1289141, 1289142). In Era only builders carry the bit, and builders refund 80%; Forever extends the same attribute to finishers. Primal Bite, Claw, Rake, Shred, Maul and Lacerate have it; Swipe and the retained Mangle ids do not.
+**Finding:** The earlier review misread the client. Every player rank of Eviscerate (2098–31016), Rupture, Slice and Dice, Expose Armor, Rip (1079–9896) and Ferocious Bite (22568–31018) carries SPELL_ATTR1_DISCOUNT_POWER_ON_MISS (0x08000000) in 70009 and 70338. The ids without it are cost-free NPC or internal records with no skill line (1271520, 1271514, 1272982, 1289141, 1289142). In Era only builders carry the bit, and builders refund 80%; Forever extends the same attribute to finishers. Primal Bite, Claw, Rake, Shred, Maul and Lacerate have it; Swipe and the retained Mangle ids do not. October 11 audit: Rogue beta testers corroborate the finisher refund: 'parries or dodges refund cps and most energy' and 'energy refunds are in for everything' (Rogue Classic Discord, 2026-09-28/29). The same tester said misses do not refund, which differs from Classic's builder rule and from the engine (which refunds on any avoided outcome); that single statement is recorded, not adopted.
 
 **Current implementation / scenario:** Forever finishers refund 80% of their paid Energy on a miss, dodge or parry, like builders: Eviscerate, Rupture, Expose Armor, Rip and Ferocious Bite. Combo points are spent only on a landed finisher.
 
 **Impact:** Feral and Rogue resource supply, especially before hit cap or when attacking from the front.
 
-**Remaining scope:** The refunded fraction is assumed to equal the builders' 80%; combo-point retention on a miss is unchanged from the existing model.
+**Remaining scope:** Whether a miss (as opposed to dodge/parry) refunds, and the exact fraction ('most').
 
 **Implementation / model follow-up:** Implemented: Forever finishers use Refund 0.8 (eviscerate.go, rupture.go, expose_armor.go, rip.go, ferocious_bite.go).
 
@@ -1956,7 +1950,7 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Question:** Is the client's 100% field a literal proc guarantee after the ten-second ICD?
 
-**Finding:** The current captured Omen row really does specify a ten-second proc cooldown, 100% chance and no PPM reference, while the description says 'a chance'. That makes the literal implementation transparent, not experimentally established. Search results include stale localized pre-Forever tooltips; those are not evidence for reverting to a Classic melee-only PPM rule.
+**Finding:** The current captured Omen row really does specify a ten-second proc cooldown, 100% chance and no PPM reference, while the description says 'a chance'. That makes the literal implementation transparent, not experimentally established. Search results include stale localized pre-Forever tooltips; those are not evidence for reverting to a Classic melee-only PPM rule. October 11 audit: Community reports disagree and are not measurements: the WoW Forever Druid community FAQ (Google Doc linked from the WoW Forever US/NA #druid channel) lists Omen of Clarity as baseline for all specs, procing from spell casts as well (about 4%) with an apparent 10-second internal cooldown; a Fight Club comment says 'like 20%'. The 10-second cooldown agrees with the client; the chance remains unmeasured, so the literal client interpretation stays.
 
 **Current implementation / scenario:** Direct eligible events grant one free-action charge after the ICD under a provisional literal interpretation; Wrath and resource-free actions do not spend it.
 
@@ -2082,7 +2076,7 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Question:** Can Cat and Bear trigger Crusader, and which weapon speed determines its proc rate?
 
-**Finding:** October 8 specifically corrects Recovery and Revelation form behavior. Recovery is implemented with source-backed eligibility/payload and scoped checks; Revelation's probability law is not supplied by the note.
+**Finding:** October 8 specifically corrects Recovery and Revelation form behavior. Recovery is implemented with source-backed eligibility/payload and scoped checks; Revelation's probability law is not supplied by the note. October 11 audit: The WoW Forever Druid community FAQ (Google Doc linked from the WoW Forever US/NA #druid channel) reports that Cat and Bear weapons can proc on-hit effects in form and that feral damage scales with weapon DPS, which supports form eligibility; it does not give proc frequencies.
 
 **Current implementation / scenario:** Source-backed Recovery dodge/parry heal and ten-second gate work in forms; existing Crusader/Lifestealing and form stones/oils remain. Revelation form retention is sourced and its explicit provisional proc model is integrated locally, not released.
 
@@ -2195,36 +2189,6 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **References:** [docs/spell_coverage.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/spell_coverage.md) · [sim/druid/druid.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/druid.go) · [artifacts/spell_coverage.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/spell_coverage.json) · [https://wago.tools/db2/SpellLevels?build=1.60.1.69977](https://wago.tools/db2/SpellLevels?build=1.60.1.69977)
 
 **Earlier references:** T51 in check_dispositions.md (stealth backlog)
-
-<a id="dru-014"></a>
-
-### DRU-014 — Faerie Fire announced cost/cooldown versus captured data
-
-**Needs evidence · Medium priority · Moderate confidence**
-
-**Disposition:** Partly answered
-
-**Question:** Has resource-free six-second Faerie Fire shipped for every form?
-
-**Finding:** The official article describes a free cast and six-second cooldown; captured base spell 9907 retains mana cost and no cooldown. Feral variants cannot establish the caster’s rule. October 11 audit: Unchanged in 70338: caster Faerie Fire 9907 still costs 115 mana with no cooldown, against the article's free six-second cast. The new Faerie Fire records (1286041, 1288561, 1289452) have no skill line.
-
-**Current implementation / scenario:** Form variants and captured caster rules remain separate.
-
-**Impact:** Could change Balance resource use and debuff maintenance.
-
-**Remaining scope:** A newer-build active record or cast/resource trace resolving the base-versus-form behavior.
-
-**Implementation / model follow-up:** Keep source versions and implementation coverage separate; no inferred script formula or automatic preset optimization.
-
-**Current beta · level 30**
-- Prerequisites: Caster Faerie Fire access and enough mana for cost observation.
-- Observe / verify: Record mana delta, cooldown availability and spell ID; isolate Spirit/MP5 ticks.
-
-**Beyond level 30 / launch**
-- Prerequisites: Access to later caster and form ranks.
-- Observe / verify: Confirm the same rules across ranks/forms rather than extrapolating the first rank.
-
-**References:** [https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid](https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid) · [sim/druid/faerie_fire.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/faerie_fire.go)
 
 <a id="dru-009"></a>
 
@@ -2355,6 +2319,36 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **References:** [sim/druid/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/talents.go) · [docs/upstream_elliot_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/upstream_elliot_review.md) · [https://wago.tools/db2/SpellEffect?build=1.60.1.70009](https://wago.tools/db2/SpellEffect?build=1.60.1.70009) · [https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.69977](https://wago.tools/db2/TraitDefinitionEffectPoints?build=1.60.1.69977) · [docs/check_dispositions.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/check_dispositions.md) · [sim/druid/moonfire.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/moonfire.go)
 
 **Earlier references:** T26 (Improved Moonfire only)
+
+<a id="dru-014"></a>
+
+### DRU-014 — Faerie Fire announced cost/cooldown versus captured data
+
+**Resolved · Medium priority · Moderate confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Has resource-free six-second Faerie Fire shipped for every form?
+
+**Finding:** Beta players report that 'Faerie Fire does not have a cooldown unless cast in shapeshift form (6s)' (WoW Forever Druid community FAQ (Google Doc linked from the WoW Forever US/NA #druid channel)), and forever-bugs#307 reports the form version's 6-second cooldown wrongly persisting after leaving Cat/Bear Form. Both agree with the captured records: caster Faerie Fire 9907 keeps its mana cost and has no cooldown; the article's free six-second version is the form variant.
+
+**Current implementation / scenario:** Form variants and captured caster rules remain separate.
+
+**Impact:** Could change Balance resource use and debuff maintenance.
+
+**Remaining scope:** None for the simulated cases.
+
+**Implementation / model follow-up:** Already modelled; no change.
+
+**Optional / conditional · Current beta · level 30**
+- Prerequisites: Caster Faerie Fire access and enough mana for cost observation.
+- Observe / verify: Record mana delta, cooldown availability and spell ID; isolate Spirit/MP5 ticks.
+
+**Optional / conditional · Beyond level 30 / launch**
+- Prerequisites: Access to later caster and form ranks.
+- Observe / verify: Confirm the same rules across ranks/forms rather than extrapolating the first rank.
+
+**References:** [https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid](https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid) · [sim/druid/faerie_fire.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/druid/faerie_fire.go)
 
 ## Hunter and pets
 

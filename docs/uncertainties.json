@@ -4167,8 +4167,8 @@
       "review": {
         "disposition": "credible-answer",
         "confidence": "moderate",
-        "answer": "The earlier review misread the client. Every player rank of Eviscerate (2098–31016), Rupture, Slice and Dice, Expose Armor, Rip (1079–9896) and Ferocious Bite (22568–31018) carries SPELL_ATTR1_DISCOUNT_POWER_ON_MISS (0x08000000) in 70009 and 70338. The ids without it are cost-free NPC or internal records with no skill line (1271520, 1271514, 1272982, 1289141, 1289142). In Era only builders carry the bit, and builders refund 80%; Forever extends the same attribute to finishers. Primal Bite, Claw, Rake, Shred, Maul and Lacerate have it; Swipe and the retained Mangle ids do not.",
-        "remaining": "The refunded fraction is assumed to equal the builders' 80%; combo-point retention on a miss is unchanged from the existing model.",
+        "answer": "The earlier review misread the client. Every player rank of Eviscerate (2098–31016), Rupture, Slice and Dice, Expose Armor, Rip (1079–9896) and Ferocious Bite (22568–31018) carries SPELL_ATTR1_DISCOUNT_POWER_ON_MISS (0x08000000) in 70009 and 70338. The ids without it are cost-free NPC or internal records with no skill line (1271520, 1271514, 1272982, 1289141, 1289142). In Era only builders carry the bit, and builders refund 80%; Forever extends the same attribute to finishers. Primal Bite, Claw, Rake, Shred, Maul and Lacerate have it; Swipe and the retained Mangle ids do not. October 11 audit: Rogue beta testers corroborate the finisher refund: 'parries or dodges refund cps and most energy' and 'energy refunds are in for everything' (Rogue Classic Discord, 2026-09-28/29). The same tester said misses do not refund, which differs from Classic's builder rule and from the engine (which refunds on any avoided outcome); that single statement is recorded, not adopted.",
+        "remaining": "Whether a miss (as opposed to dodge/parry) refunds, and the exact fraction ('most').",
         "implementation": "Implemented: Forever finishers use Refund 0.8 (eviscerate.go, rupture.go, expose_armor.go, rip.go, ferocious_bite.go).",
         "tests": [
           {
@@ -4799,7 +4799,7 @@
       "review": {
         "disposition": "experiment",
         "confidence": "low",
-        "answer": "The current captured Omen row really does specify a ten-second proc cooldown, 100% chance and no PPM reference, while the description says 'a chance'. That makes the literal implementation transparent, not experimentally established. Search results include stale localized pre-Forever tooltips; those are not evidence for reverting to a Classic melee-only PPM rule.",
+        "answer": "The current captured Omen row really does specify a ten-second proc cooldown, 100% chance and no PPM reference, while the description says 'a chance'. That makes the literal implementation transparent, not experimentally established. Search results include stale localized pre-Forever tooltips; those are not evidence for reverting to a Classic melee-only PPM rule. October 11 audit: Community reports disagree and are not measurements: the WoW Forever Druid community FAQ (Google Doc linked from the WoW Forever US/NA #druid channel) lists Omen of Clarity as baseline for all specs, procing from spell casts as well (about 4%) with an apparent 10-second internal cooldown; a Fight Club comment says 'like 20%'. The 10-second cooldown agrees with the client; the chance remains unmeasured, so the literal client interpretation stays.",
         "remaining": "Effective chance and eligible events after the cooldown.",
         "implementation": "Keep the explicit provisional interpretation. Consumption exclusions for Wrath/resource-free actions are separately sourced and need not be reopened to test proc frequency.",
         "tests": [
@@ -5160,7 +5160,7 @@
       "review": {
         "disposition": "partial",
         "confidence": "moderate",
-        "answer": "October 8 specifically corrects Recovery and Revelation form behavior. Recovery is implemented with source-backed eligibility/payload and scoped checks; Revelation's probability law is not supplied by the note.",
+        "answer": "October 8 specifically corrects Recovery and Revelation form behavior. Recovery is implemented with source-backed eligibility/payload and scoped checks; Revelation's probability law is not supplied by the note. October 11 audit: The WoW Forever Druid community FAQ (Google Doc linked from the WoW Forever US/NA #druid channel) reports that Cat and Bear weapons can proc on-hit effects in form and that feral damage scales with weapon DPS, which supports form eligibility; it does not give proc frequencies.",
         "remaining": "Other proc eligibility/frequencies and Revelation law under DATA-015; form eligibility alone is not a universal proc formula.",
         "implementation": "Keep exact equipped enchant source chains and qualified rates; no wearer profession requirement is inferred from a recipe.",
         "tests": [
@@ -6329,18 +6329,18 @@
       "current_model": "Form variants and captured caster rules remain separate.",
       "impact": "Could change Balance resource use and debuff maintenance.",
       "id": "DRU-014",
-      "status": "needs-evidence",
+      "status": "resolved",
       "sources": [
         "https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid",
         "sim/druid/faerie_fire.go"
       ],
       "related": [],
       "review": {
-        "disposition": "partial",
+        "disposition": "evidence-answer",
         "confidence": "moderate",
-        "answer": "The official article describes a free cast and six-second cooldown; captured base spell 9907 retains mana cost and no cooldown. Feral variants cannot establish the caster’s rule. October 11 audit: Unchanged in 70338: caster Faerie Fire 9907 still costs 115 mana with no cooldown, against the article's free six-second cast. The new Faerie Fire records (1286041, 1288561, 1289452) have no skill line.",
-        "remaining": "A newer-build active record or cast/resource trace resolving the base-versus-form behavior.",
-        "implementation": "Keep source versions and implementation coverage separate; no inferred script formula or automatic preset optimization.",
+        "answer": "Beta players report that 'Faerie Fire does not have a cooldown unless cast in shapeshift form (6s)' (WoW Forever Druid community FAQ (Google Doc linked from the WoW Forever US/NA #druid channel)), and forever-bugs#307 reports the form version's 6-second cooldown wrongly persisting after leaving Cat/Bear Form. Both agree with the captured records: caster Faerie Fire 9907 keeps its mana cost and has no cooldown; the article's free six-second version is the form variant.",
+        "remaining": "None for the simulated cases.",
+        "implementation": "Already modelled; no change.",
         "tests": [
           {
             "stage": "current-beta",
@@ -6353,7 +6353,7 @@
             "measure": "Confirm the same rules across ranks/forms rather than extrapolating the first rank."
           }
         ],
-        "previous_status": null
+        "previous_status": "needs-evidence"
       }
     },
     {

@@ -7,7 +7,7 @@ Evidence:
 - The 70338 hotfix cache.
 - The official class deep dives. The Priest and Warrior article had not been cited before.
 - ClassicWoWCommunity/forever-bugs, including its "Not A Bug" and fix replies, and magey/forever-warrior.
-- About 145,000 messages from Discord class test channels (WoWSims Forever, Fight Club, Classic Hunter Lodge, Warlock, Priest and Shadow Priest), plus a published Warrior threat test sheet.
+- About 175,000 messages from Discord class test channels (WoWSims Forever, Fight Club, Classic Hunter Lodge, Warlock, Priest, Shadow Priest, Rogue, and the WoW Forever US/NA theorycrafting and class channels), plus a published Warrior threat test sheet and a Druid community FAQ.
 
 Register dispositions are in [Simulator questions and coverage](uncertainties.md). Raw evidence is in
 [`artifacts/correctness/october_11/`](../artifacts/correctness/october_11/). The previous results
