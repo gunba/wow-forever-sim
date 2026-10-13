@@ -271,15 +271,58 @@ def apply_probe(b, req, stat, amount, db):
         bump(p, idx, pidx, amount)
 
 
-def ref_stats(b):
-    """Final stats of the build's unmodified request (the totals cap probes are set relative to)."""
-    out = C.work / "templates" / f"{b['key']}__refstats.json"
+def ref_stats(b, variant=""):
+    """Final stats of the build's unmodified request (the totals cap probes are set relative to).
+    variant: "notalents", "nobuffs" or "nogear" strips that part, for splitting the non-gear base."""
+    out = C.work / "templates" / f"{b['key']}__refstats{('_' + variant) if variant else ''}.json"
     if not out.exists():
         out.parent.mkdir(parents=True, exist_ok=True)
-        rf = out.with_suffix(".request.json"); rf.write_text(json.dumps(base_request(b, "single")))
+        req = base_request(b, "single")
+        p = req["raid"]["parties"][0]["players"][0]
+        if variant == "notalents":
+            p["talentsString"] = ""
+        elif variant == "nobuffs":
+            req["raid"]["buffs"], req["raid"]["parties"][0]["buffs"], p["buffs"], p["consumes"] = {}, {}, {}, {}
+        elif variant == "nogear":                   # keep stat-less copies of the weapons (rogue poisons, imbues need them)
+            p.pop("foreverTier1Bonuses", None)
+            items = p["equipment"]["items"]
+            for i, e in enumerate(items):
+                it = C.db.get((e or {}).get("id")) if i in (14, 15, 16) else None
+                if not it:
+                    items[i] = {}
+                    continue
+                new_id = 1400000000 + i
+                entry = {k: v for k, v in it.items() if k != "stats"}
+                entry.update(id=new_id, name=it["name"] + " (no stats)", stats=[0] * len(it.get("stats") or []))
+                p.setdefault("database", {}).setdefault("items", []).append(entry)
+                items[i] = {"id": new_id}
+        rf = out.with_suffix(".request.json"); rf.write_text(json.dumps(req))
         out.write_text(subprocess.run([str(C.hp), str(rf)], capture_output=True, text=True, check=True).stdout)
         rf.unlink()
     return json.loads(out.read_text())
+
+
+def crit_per_agility(cls):
+    """Level-60 melee crit % per Agility point (sim/core/base_stats.go CritPerAgiAtLevel)."""
+    src = (REPO / "sim/core/base_stats.go").read_text()
+    block = src.split("var CritPerAgiAtLevel")[1].split("}")[0]
+    m = re.search(r"Class_Class%s:\s*([0-9.]+)" % cls.capitalize(), block)
+    return float(m.group(1)) if m else 0.0
+
+
+def base_parts(b, idx, gear, gear_amount=None):
+    """Split a cap stat's non-gear base into talents, buffs, set bonuses/enchants and class/race (and, for melee crit,
+    the reference Agility's crit), each net of the Agility it brings along."""
+    A = b["ref"]
+    V = {v: ref_stats(b, v) for v in ("notalents", "nobuffs", "nogear")}
+    k = crit_per_agility(b["cls"]) if idx == 19 else 0.0
+    d = {v: (A[idx] - V[v][idx]) - (A[1] - V[v][1]) * k for v in V}
+    parts = {"talents": round(d["notalents"], 2), "buffs": round(d["nobuffs"], 2),
+             "set_bonuses_and_enchants": round(d["nogear"] - (gear[idx] if gear_amount is None else gear_amount), 2)}
+    if idx == 19:
+        parts["agility_crit_at_reference"] = round(A[1] * k, 2)
+    parts["class_and_race"] = round(A[idx] - (gear[idx] if gear_amount is None else gear_amount) - sum(parts.values()), 2)
+    return parts
 
 
 def run_request(tag, req):
@@ -478,6 +521,13 @@ def cap_models(b, W, lam, norm, gear):
         m = {"segments": segs(fit), "measured_segments": segs(raw), "concave_as_measured": fit == [max(0.0, x) for x in raw],
              "base": 0.0 if idx is None else round(b["ref"][idx] - gear[idx], 2),
              "reference_total": 0.0 if idx is None else round(b["ref"][idx], 2), "probe_points": pts}
+        if idx is not None:
+            m["base_parts"] = base_parts(b, idx, gear)
+            if idx == 19:
+                k = crit_per_agility(b["cls"])
+                m["agility_per_crit_pct"] = round(1 / k, 2) if k else None
+                m["agility_at_reference"] = round(b["ref"][1])
+                m["level_rule"] = "level 60 only: the simulator has no per-level crit-per-Agility table"
         out[s] = m
     return out
 
@@ -541,6 +591,7 @@ def export(builds, W, G, out_dir):
                                                     "total (race, talents that raise the stat): gear hit caps at cap_pct - non_gear_spell_hit_pct.")
                 caps["spell_hit_pct"] = {"segments": [[16, w["spell_hit_at8"]], [None, 0.0]], "base": sb,
                                          "reference_total": round(b["ref"][13] + th, 2),
+                                         "base_parts": {**base_parts(b, 13, gear, gear[13] + gear[18]), "talent_school_hit": th},
                                          "note": "base = non-gear spell hit including talent_spell_hit_pct"}
             else:
                 hb = round(b["ref"][18] - gear[18], 2)
@@ -557,7 +608,7 @@ def export(builds, W, G, out_dir):
                         f", off-hand white at {27 - fp}% with Furious Precision" if fp else "")
                 else:
                     caps["hit_pct"] = {"segments": ([[8, w["hit_at4"]], [27, w.get("hit_at17", 0.0)]] if dw else [[8, w["hit_at4"]]]) + [[None, 0.0]],
-                                       "base": hb, "reference_total": round(b["ref"][18], 2)}
+                                       "base": hb, "reference_total": round(b["ref"][18], 2), "base_parts": base_parts(b, 18, gear)}
             prof["cap_models"] = caps
             meta = {"class": b["cls"].upper(), "spec": b["spec"], "role": "tank" if b["tank"] else "dps", "label": b["label"],
                     "weapons": b["weapons"], "weapon_model_key": mkey, "main_stat": main, "race": b["race"],
@@ -592,7 +643,9 @@ def export(builds, W, G, out_dir):
                            "show. segments = [[up_to_total, value_per_point], ..., [null, value_per_point]], made non-increasing (concave) "
                            "by pooling neighbouring intervals and floored at 0; measured_segments are the raw slopes between probe_points. "
                            "base = the reference total minus the reference gear's own amount of that stat, so it includes talents, race, "
-                           "buffs and (for crit) the reference gear's Agility. Crit: the white-hit crit cap rises one-for-one with hit until "
+                           "buffs and (for crit) the reference gear's Agility; base_parts splits it into talents, buffs (raid buffs and "
+                           "consumables), set_bonuses_and_enchants, class_and_race and, for crit, agility_crit_at_reference (reference "
+                           "Agility / agility_per_crit_pct, level 60), each net of the Agility it brings. Crit: the white-hit crit cap rises one-for-one with hit until "
                            "the white hit cap, so the crit curve holds at the reference hit. weapon_skill: points above level x 5 (racial "
                            "skill counts toward base). defense: enemy crit reaches 0 at 140 total Defense against level-63 attackers, but that is "
                            "only about a fifth of Defense's value and the survival half of the tank score rises with avoidance, so the "
