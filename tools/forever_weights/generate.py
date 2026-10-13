@@ -56,6 +56,11 @@ WEAPON_STAT = {"mh": "mh_weapon_dps", "oh": "oh_weapon_dps", "2h": "two_hand_wea
 SPEEDS = {"mh": [1.5, 1.8, 2.1, 2.4, 2.7, 3.0], "oh": [1.3, 1.5, 1.7, 2.0, 2.3, 2.6, 2.9], "2h": [2.6, 2.9, 3.2, 3.5, 3.8, 4.1],
           "ranged": [1.8, 2.1, 2.4, 2.7, 3.0, 3.3]}
 MULTS, GRID_AP = [0.6, 1.0, 1.4], [0, 600]
+# Capped stats: the character's total is set to each point and the value per point is taken between neighbouring points.
+# Defense has a point at 140 (enemy crit reaches 0 against a level-63 attacker); weapon skill is points above level x 5.
+CAP_POINTS = {"hit_pct": [0, 4, 8, 12, 17, 22, 27, 32], "crit_pct": [10, 15, 20, 25, 30, 35, 40, 45, 50, 60], "defense": [0, 40, 80, 110, 140, 170, 220],
+              "block_pct": [5, 10, 15, 20, 25, 30, 40, 50], "expertise_pct": [0, 2, 4, 6, 8, 11, 15, 20],
+              "weapon_skill": [0, 5, 10, 15, 20]}
 WORKLOADS = {"single": [], "multi": ["-targets", "3", "-duration", "90", "-swing", "1500", "-healing", "2500"]}
 
 
@@ -133,6 +138,15 @@ def stat_list(b):
     return list(dict.fromkeys(s))
 
 
+def cap_stats(b):
+    w, out = b["weapons"], []
+    if w in ("dw", "2h", "shield", "feral") or (w == "hunter" and "mh" in b["slots"]):
+        out += ["hit_pct", "crit_pct", "expertise_pct"] + (["weapon_skill"] if w != "feral" else [])
+    if b["tank"]:
+        out += ["defense"] + (["block_pct"] if w == "shield" else [])
+    return out
+
+
 def grid_slots(b):
     return {"dw": ["mh", "oh"], "2h": ["2h"], "shield": ["mh"], "hunter": ["ranged"] + (["mh", "oh"] if b["key"] in ("survival", "pet_melee") else []),
             "feral": [], "caster": []}[b["weapons"]]
@@ -171,7 +185,21 @@ def load_builds(classes):
     for b in builds.values():
         b["stats"] = stat_list(b)
         b["slots"] = grid_slots(b)
+        b["caps"] = cap_stats(b)
     return builds, db
+
+
+def gear_stats(b, db):
+    """Sum of each stat on the build's equipped items and their enchants, in item units."""
+    ench = {e["effectId"]: e for e in json.loads(DB_PATH.read_text())["enchants"]}
+    tot = [0.0] * 50
+    for e in b["player"]["equipment"]["items"]:
+        if not e or "id" not in e:
+            continue
+        for src in (db.get(e["id"], {}), ench.get(e.get("enchant"), {})):
+            for i, v in enumerate(src.get("stats") or []):
+                tot[i] += v
+    return tot
 
 
 # ---------------------------------------------------------------- requests
@@ -243,6 +271,17 @@ def apply_probe(b, req, stat, amount, db):
         bump(p, idx, pidx, amount)
 
 
+def ref_stats(b):
+    """Final stats of the build's unmodified request (the totals cap probes are set relative to)."""
+    out = C.work / "templates" / f"{b['key']}__refstats.json"
+    if not out.exists():
+        out.parent.mkdir(parents=True, exist_ok=True)
+        rf = out.with_suffix(".request.json"); rf.write_text(json.dumps(base_request(b, "single")))
+        out.write_text(subprocess.run([str(C.hp), str(rf)], capture_output=True, text=True, check=True).stdout)
+        rf.unlink()
+    return json.loads(out.read_text())
+
+
 def run_request(tag, req):
     out = C.work / "runs" / (tag + ".json")
     if not out.exists():
@@ -278,6 +317,7 @@ def weight_jobs(b):
                 jobs += [(b["key"], wl, s, 1), (b["key"], wl, s, -1)]
             else:
                 jobs += [(b["key"], wl, s, DELTA[s]), (b["key"], wl, s, -DELTA[s])]
+        jobs += [(b["key"], wl, "cap:" + s, p) for s in b["caps"] for p in CAP_POINTS[s]]
     return jobs
 
 
@@ -286,9 +326,15 @@ def do_weight_job(job):
     b = C.builds[key]
     req = base_request(b, wl)
     req["simOptions"]["iterations"], req["simOptions"]["randomSeed"] = C.iterations, str(C.seed)
-    if stat:
+    if stat and stat.startswith("cap:"):
+        s, p = stat[4:], req["raid"]["parties"][0]["players"][0]
+        if s == "weapon_skill":
+            bump(p, (), MELEE_SKILLS, amount)
+        else:
+            bump(p, PROBE[s][0], PROBE[s][1], amount - b["ref"][PROBE[s][0][0]])
+    elif stat:
         apply_probe(b, req, stat, amount, C.db)
-    tag = f"w__{key}__{wl}__{stat or 'base'}__{amount:+g}"
+    tag = f"w__{key}__{wl}__{(stat or 'base').replace(':', '_')}__{amount:+g}"
     out = run_request(tag, req)
     need_stats = b["tank"] or stat is None
     return job, metrics(out, want_stats=need_stats)
@@ -406,6 +452,45 @@ def fit_grid(b, slot, G, norm, lam, nowf):
             "dps_weight_by_ap": [round(x, 4) for x in slopes], "speed_terms": rows, "fit_max_residual": round(worst, 2)}
 
 
+def concave(points, slopes):
+    """Closest non-increasing slopes (pool adjacent violators, weighted by interval width), floored at 0."""
+    blocks = []
+    for i, s in enumerate(slopes):
+        blocks.append([s, points[i + 1] - points[i], 1])
+        while len(blocks) > 1 and blocks[-2][0] < blocks[-1][0]:
+            (a, wa, na), (c, wc, nc) = blocks[-2], blocks[-1]
+            blocks[-2:] = [[(a * wa + c * wc) / (wa + wc), wa + wc, na + nc]]
+    return [max(0.0, v) for v, _, n in blocks for _ in range(n)]
+
+
+def cap_models(b, W, lam, norm, gear):
+    wls = list(WORKLOADS) if b["tank"] else ["single"]
+    get = lambda stat, amt: {wl: W[(b["key"], wl, stat, amt)] for wl in wls}
+    base = get(None, 0)
+    out = {}
+    for s in b["caps"]:
+        pts = CAP_POINTS[s]
+        v = [value(b, get("cap:" + s, p), base, lam) / norm for p in pts]
+        raw = [(v[i + 1] - v[i]) / (pts[i + 1] - pts[i]) for i in range(len(pts) - 1)]
+        fit = concave(pts, raw)
+        segs = lambda sl: [[pts[i + 1], round(x, 3)] for i, x in enumerate(sl[:-1])] + [[None, round(sl[-1], 3)]]
+        idx = PROBE[s][0][0] if s != "weapon_skill" else None
+        m = {"segments": segs(fit), "measured_segments": segs(raw), "concave_as_measured": fit == [max(0.0, x) for x in raw],
+             "base": 0.0 if idx is None else round(b["ref"][idx] - gear[idx], 2),
+             "reference_total": 0.0 if idx is None else round(b["ref"][idx], 2), "probe_points": pts}
+        out[s] = m
+    return out
+
+
+def furious_precision(b):
+    """Forever Fury talent: +4/7/10% hit on off-hand attacks only (sim/warrior/talents.go applyFuriousPrecision)."""
+    if b["cls"] != "warrior" or b["weapons"] != "dw":
+        return 0
+    fury = (b["player"]["talentsString"].split("-") + ["", ""])[1]
+    pts = int(fury[4]) if len(fury) > 4 else 0
+    return [0, 4, 7, 10][pts]
+
+
 def talent_spell_hit(b):
     """Damage-weighted talent and school spell hit of the profile's spells, from its base run."""
     out = C.work / "runs" / f"w__{b['key']}__single__base__+0.json"
@@ -440,6 +525,8 @@ def export(builds, W, G, out_dir):
             st = base["single"]["stats"]
             dw = b["weapons"] == "dw" or (b["weapons"] == "hunter" and "mh" in b["slots"])
             prof = {k: v for k, v in w.items() if k not in LOW_SHIFT}
+            gear = gear_stats(b, C.db)
+            caps = cap_models(b, W, lam if lam is not None else 0.0, norm, gear)
             if b["weapons"] == "caster":
                 th, top = talent_spell_hit(b)
                 prof["spell_hit_model"] = {"cap_pct": 16, "cap_pct_plus2": 5, "below_cap": w["spell_hit_at8"],
@@ -447,11 +534,31 @@ def export(builds, W, G, out_dir):
                                            "talent_spell_hit_pct": th, "talent_spell_hit_top_spells": top,
                                            "note": "talent_spell_hit_pct = damage-weighted talent and school hit the cap already counts: gear hit "
                                                    "is worth below_cap per 1% until gear hit reaches cap_pct - talent_spell_hit_pct. "
-                                                   "below_cap was measured at 8% gear hit plus talents."}
+                                                   "below_cap was measured at 8% total spell hit (stat) plus per-spell talent hit."}
+                sb = round(b["ref"][13] - gear[13] - gear[18] + th, 2)      # Forever item hit counts as spell hit too
+                prof["spell_hit_model"]["non_gear_spell_hit_pct"] = sb
+                prof["spell_hit_model"]["note"] += (" non_gear_spell_hit_pct adds the non-gear spell hit already in the character's "
+                                                    "total (race, talents that raise the stat): gear hit caps at cap_pct - non_gear_spell_hit_pct.")
+                caps["spell_hit_pct"] = {"segments": [[16, w["spell_hit_at8"]], [None, 0.0]], "base": sb,
+                                         "reference_total": round(b["ref"][13] + th, 2),
+                                         "note": "base = non-gear spell hit including talent_spell_hit_pct"}
             else:
+                hb = round(b["ref"][18] - gear[18], 2)
                 prof["hit_model"] = {"special_cap_pct": 8, "below_special_cap": w["hit_at4"], "between_caps": w.get("hit_at17", 0.0) if dw else 0.0,
-                                     "white_cap_pct": 27 if dw else 8, "reference_hit_pct": round(st[18], 2),
-                                     "note": "measured at 4% and 17% hit"}
+                                     "white_cap_pct": 27 if dw else 8, "reference_hit_pct": round(st[18], 2), "talent_hit_pct": hb,
+                                     "note": "measured at 4% and 17% total hit; caps are totals, so gear hit caps at cap - talent_hit_pct"}
+                fp = furious_precision(b)
+                if fp:
+                    prof["hit_model"]["offhand_talent_hit_pct"] = fp
+                    prof["hit_model"]["note"] += (f"; Furious Precision adds {fp}% hit to off-hand attacks only, so the off-hand white "
+                                                  f"cap is {27 - fp}% total: use cap_models.hit_pct, which is measured across it")
+                if "hit_pct" in caps:
+                    caps["hit_pct"]["note"] = "measured against level-63 targets: caps at 8% (specials) and 27% (dual-wield white)" + (
+                        f", off-hand white at {27 - fp}% with Furious Precision" if fp else "")
+                else:
+                    caps["hit_pct"] = {"segments": ([[8, w["hit_at4"]], [27, w.get("hit_at17", 0.0)]] if dw else [[8, w["hit_at4"]]]) + [[None, 0.0]],
+                                       "base": hb, "reference_total": round(b["ref"][18], 2)}
+            prof["cap_models"] = caps
             meta = {"class": b["cls"].upper(), "spec": b["spec"], "role": "tank" if b["tank"] else "dps", "label": b["label"],
                     "weapons": b["weapons"], "weapon_model_key": mkey, "main_stat": main, "race": b["race"],
                     "reference": {"ap": round(st[17]), "rap": round(st[27]), "spell_power": round(st[5]), "melee_hit_pct": round(st[18], 2),
@@ -481,6 +588,16 @@ def export(builds, W, G, out_dir):
                "hit_note": "Melee: each 1% of hit is worth hit_model.below_special_cap until special_cap_pct (8% vs +3, about 6% vs +2), "
                            "then between_caps (dual wield white swings) until white_cap_pct (27% vs +3, 25% vs +2), then 0. "
                            "Casters: spell_hit_model.below_cap per 1% until cap_pct (16% vs +3, 5% vs +2, including talent school hit), then 0.",
+               "cap_note": "profiles.<p>.cap_models.<stat>: value per point of the character's total (base + gear), in the units items "
+                           "show. segments = [[up_to_total, value_per_point], ..., [null, value_per_point]], made non-increasing (concave) "
+                           "by pooling neighbouring intervals and floored at 0; measured_segments are the raw slopes between probe_points. "
+                           "base = the reference total minus the reference gear's own amount of that stat, so it includes talents, race, "
+                           "buffs and (for crit) the reference gear's Agility. Crit: the white-hit crit cap rises one-for-one with hit until "
+                           "the white hit cap, so the crit curve holds at the reference hit. weapon_skill: points above level x 5 (racial "
+                           "skill counts toward base). defense: enemy crit reaches 0 at 140 total Defense against level-63 attackers, but that is "
+                           "only about a fifth of Defense's value and the survival half of the tank score rises with avoidance, so the "
+                           "measured curve rises gently instead of stepping down and is pooled to one value. expertise_pct reduces dodge and "
+                           "parry by 1% each: 5.6% dodge for attackers behind the target, plus 14% parry for tanks in front.",
                "profiles": data["profiles"],
                "weapon_model": {"formula": "weapon_value = a * D + h_weapon_dps(s) * D + h_ap14(s) * AP / 14 + h_const(s) * AP / reference_ap. "
                                            "D = weapon DPS, s = speed, AP = current melee attack power (ranged attack power when ap_kind is "
@@ -518,6 +635,7 @@ def main():
         if b["tank"]:
             for wl in WORKLOADS:
                 tank_template(b, wl)
+        b["ref"] = ref_stats(b)
     wj = [j for b in C.builds.values() for j in weight_jobs(b)]
     gj = [j for b in C.builds.values() for j in grid_jobs(b)] + [j for b in C.builds.values() if b["key"] in NO_WINDFURY for j in grid_jobs(b, True)]
     print(f"{len(C.builds)} builds, {len(wj)} weight runs, {len(gj)} grid runs, engine {engine}", flush=True)

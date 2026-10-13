@@ -24,8 +24,12 @@ python3 tools/forever_weights/generate.py --smoke              # 100 iterations,
   tank score) is divided by the change in the stat (central differences, 20,000 iterations). Weights are normalised so the
   profile's main stat is 1: Strength or Agility for physical profiles (Strength for Warriors and Paladins, otherwise the larger),
   spell power for casters.
-- **Hit:** probed at the benchmark's hit and 10 points lower (spell hit: 8 lower), giving the value below the 8% special cap
-  and, for dual wield, between the special and white caps.
+- **Hit:** probed at 4% and 17% total hit (spell hit: 8%), giving the value below the 8% special cap and, for dual wield,
+  between the special and white caps. `talent_hit_pct` is the non-gear hit already in the total (talents, race: Forever
+  Tauren get +1%).
+- **Capped stats (`cap_models`):** crit, expertise and weapon skill for melee profiles, plus Defense and (shield) block for
+  tanks. The character's total is set to each of a few points and the value per point is taken between neighbours, then made
+  non-increasing so gear optimisers can treat it as concave. `base` is the non-gear part of the total.
 - **Weapon skill:** forward differences, +0 to +5 and +5 to +10, on every melee skill (ranged skills for Hunters).
 - **Tanks:** benchmark workloads (one boss for 300 s, three attackers for 90 s). `_lambda_X` = % threat + X × % longer
   time-to-die (max health / damage taken per second), averaged over both workloads.
