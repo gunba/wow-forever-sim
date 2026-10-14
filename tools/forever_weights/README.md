@@ -7,6 +7,7 @@ the simulator supports, written as one JSON file per class.
 python3 tools/forever_weights/generate.py                      # all classes, about an hour on 22 cores
 python3 tools/forever_weights/generate.py --classes druid,paladin
 python3 tools/forever_weights/generate.py --smoke              # 100 iterations, checks every build runs
+python3 tools/forever_weights/generate.py --item-effects items.json   # also value item proc and on-use effects
 ```
 
 - Output: `~/.cache/forever-sim-audit/statw/exports/<class>.json` (`--out` to change). The ForeverGear addon imports these.
@@ -33,6 +34,16 @@ python3 tools/forever_weights/generate.py --smoke              # 100 iterations,
 - **Weapon skill:** forward differences, +0 to +5 and +5 to +10, on every melee skill (ranged skills for Hunters).
 - **Tanks:** benchmark workloads (one boss for 300 s, three attackers for 90 s). `_lambda_X` = % threat + X × % longer
   time-to-die (max health / damage taken per second), averaged over both workloads.
+- **Magic damage (tanks):** `<tank>_magic15_*` and `<tank>_magic30_*` repeat the tank workloads with each attacker also
+  casting spells at the tank (Fire, Frost, Shadow, Nature, Arcane in turn: magic hit table and partial resists, no dodge,
+  parry, block or armor), sized so 15% or 30% of the reference tank's damage taken is magic. They add resistance weights.
+- **Item effects (`--item-effects`):** for each item and profile, the score with the item's proc or on-use effect minus
+  the score with an identical item without it (same seed, 10,000 iterations); both items carry no stats. Simulator
+  implementations are used where they exist; otherwise `item_effects.py` builds a generic effect from the client spell
+  tables (damage, damage over time, stat/attack power/spell damage/haste/crit buffs, extra attacks, armor reduction) that
+  the tool binary registers with `-itemfx`. Procs without a client rate are assumed at 1 proc per minute. Tank values of
+  purely offensive effects use the threat term only. `--enchant-effects` values enchants the same way, toggling the
+  enchant on the profile's own item.
 - **Weapon speed:** a grid of speeds × weapon DPS (60/100/140%) × attack power (+0/+600; ranged attack power for the ranged
   slot), 10,000 iterations, fitted per speed to `h_weapon_dps·D + h_ap14·AP/14 + h_const`. Forever Rage per swing depends
   only on speed, so DPS fits are exact; tank fits have small residuals. `_nowf` models repeat the grid without Windfury Totem.

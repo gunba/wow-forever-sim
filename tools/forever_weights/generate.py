@@ -39,7 +39,11 @@ S = {"str": 0, "agi": 1, "sta": 2, "int": 3, "spi": 4, "spell_power": 5, "arcane
      "holy_damage": 9, "nature_damage": 10, "shadow_damage": 11, "mp5": 12, "spell_hit_pct": 13, "spell_crit_pct": 14,
      "ap": 17, "hit_pct": 18, "crit_pct": 19, "expertise_pct": 22, "armor": 26, "rap": 27, "defense": 28, "block_pct": 29,
      "block_value": 30, "dodge_pct": 31, "parry_pct": 32, "healing": 41, "spell_damage": 42, "feral_ap": 43}
-PROBE = {k: ([v], []) for k, v in S.items()}
+ENCHANT_EFFECTS_NOTE = ("enchant_effects.<enchant spell id>.<profile key> = value of the enchant on the profile's own item in that "
+                        "slot minus the same item without an enchant (same seed), in the profile's units; it includes any stats the "
+                        "enchant carries. '<profile>:oh' = on the off-hand weapon. method as for item_effects.")
+RESISTS = {"arcane_resist": 35, "fire_resist": 36, "frost_resist": 37, "nature_resist": 38, "shadow_resist": 39}
+PROBE = {k: ([v], []) for k, v in {**S, **RESISTS}.items()}
 PROBE["ap"] = ([17, 27], [])                  # item "+N Attack Power" raises melee and ranged attack power
 PROBE["haste_pct"] = ([20, 15], [])           # "attack speed and casting speed"
 PROBE["weapon_damage"] = ([], [30])           # BonusPhysicalDamage, as set by "+N Weapon Damage" items
@@ -47,7 +51,8 @@ DELTA = {"str": 50, "agi": 50, "sta": 75, "int": 50, "spi": 50, "mp5": 10, "ap":
          "hit_pct": 2, "crit_pct": 2, "haste_pct": 3, "expertise_pct": 1, "spell_power": 50, "spell_damage": 50, "healing": 50,
          "spell_hit_pct": 2, "spell_crit_pct": 2, "armor": 600, "defense": 15, "dodge_pct": 2, "parry_pct": 2, "block_pct": 2,
          "block_value": 30, "weapon_damage": 4, "mh_weapon_dps": 5, "oh_weapon_dps": 5, "two_hand_weapon_dps": 5,
-         "ranged_weapon_dps": 5, **{f"{s}_damage": 50 for s in ("arcane", "fire", "frost", "holy", "nature", "shadow")}}
+         "ranged_weapon_dps": 5, **{f"{s}_damage": 50 for s in ("arcane", "fire", "frost", "holy", "nature", "shadow")},
+         **{r: 25 for r in RESISTS}}
 # Hit probed at fixed levels: below the 8% special cap, between the special and dual-wield white caps, below the spell cap.
 LOW_SHIFT = {"hit_at4": ("hit_pct", 4.0), "hit_at17": ("hit_pct", 17.0), "spell_hit_at8": ("spell_hit_pct", 8.0)}
 MELEE_SKILLS, RANGED_SKILLS = list(range(6, 16)), list(range(16, 20))
@@ -62,6 +67,16 @@ CAP_POINTS = {"hit_pct": [0, 4, 8, 12, 17, 22, 27, 32], "crit_pct": [10, 15, 20,
               "block_pct": [5, 10, 15, 20, 25, 30, 40, 50], "expertise_pct": [0, 2, 4, 6, 8, 11, 15, 20],
               "weapon_skill": [0, 5, 10, 15, 20]}
 WORKLOADS = {"single": [], "multi": ["-targets", "3", "-duration", "90", "-swing", "1500", "-healing", "2500"]}
+# Tank workloads with magic: each attacker also casts spells (five schools in turn) so that this share of the reference
+# tank's damage taken is magic. Profiles <tank>_<set>_lambda_X; they add resistance weights.
+MAGIC = {"magic15": 0.15, "magic30": 0.30}
+MAGIC_LABEL = {"magic15": "raid-boss mix, 15% of damage taken is magic", "magic30": "levelling-dungeon mix, 30% of damage taken is magic"}
+ITEM_EFFECTS_NOTE = ("item_effects.<item id>.<profile key> = value of the item's proc/on-use effect alone (its stats excluded), in the "
+                     "profile's units (main stat = 1). '<profile>:oh' = the weapon in the off hand. Weapons are tested at the benchmark "
+                     "weapon's DPS with the item's speed and type; other items in a trinket slot. On-use effects are used on cooldown "
+                     "(for tank profiles, whose rotations ignore item cooldowns, both runs add automatic cooldown use). method: simulated = the simulator's own implementation; "
+                     "estimated = generic effect from the client spell tables, with assumed proc rates noted; not_modelled = no value, see "
+                     "note. Values are level-60 benchmark values; fixed-damage procs are worth relatively more at low level.")
 
 
 class Ctx:
@@ -208,11 +223,60 @@ def tank_template(b, workload):
     out = C.work / "templates" / f"{b['key']}__{workload}.json"
     if not out.exists():
         out.parent.mkdir(parents=True, exist_ok=True)
+        wl, _, mset = workload.partition("_")
+        extra = ["-magic-dps", f"{magic_dps(b, wl, MAGIC[mset]):.1f}"] if mset else []
         pf = out.with_suffix(".player.json"); pf.write_text(json.dumps(b["player"]))
-        sh([str(C.bin), "-player", str(pf), "-iterations", "1", "-seed", "1", "-output", str(out), *WORKLOADS[workload]],
+        sh([str(C.bin), "-player", str(pf), "-iterations", "1", "-seed", "1", "-output", str(out), *WORKLOADS[wl], *extra],
            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, env={**os.environ, "GOMAXPROCS": "1"})
         pf.unlink()
     return json.loads(out.read_text())["request"]
+
+
+def magic_dps(b, wl, share):
+    """Spell damage per second per attacker that makes `share` of the reference tank's damage taken magic. A first guess
+    from the melee damage taken is corrected once for magic misses and partial resists."""
+    def run(name, req):
+        out = C.work / "templates" / f"{b['key']}__{wl}__{name}.json"
+        if not out.exists():
+            req["simOptions"]["iterations"], req["simOptions"]["randomSeed"] = 4000, "1"
+            rf = out.with_suffix(".request.json"); rf.write_text(json.dumps(req))
+            sh([str(C.bin), "-request", str(rf), "-output", str(out)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+               env={**os.environ, "GOMAXPROCS": "1"})
+            rf.unlink()
+        d = json.loads(out.read_text())
+        per_s = d["request"]["encounter"]["duration"] * d["request"]["simOptions"]["iterations"]
+        taken = collections.Counter()
+        for t in d["result"]["encounterMetrics"]["targets"]:
+            for a in t["actions"]:
+                kind = "magic" if a["id"].get("spellId", 0) // 10 == 990001 else "melee"
+                taken[kind] += sum(x.get("damage", 0) for x in a["targets"]) / per_s
+        return taken
+    base = tank_template(b, wl)
+    n = len(base["encounter"]["targets"])
+    want = share / (1 - share) * run("dtps", copy.deepcopy(base))["melee"]
+    guess = copy.deepcopy(base)
+    for t in guess["encounter"]["targets"]:
+        t["id"], t["targetInputs"] = 990001, [{"label": "Magic DPS", "numberValue": want / n}]
+    got = run(f"magic{share:g}", guess)["magic"]
+    return want / n * (want / got if got else 1)
+
+
+def magic_share(b, wl):
+    """Measured share of damage taken that was magic in a workload's base run."""
+    d = json.loads((C.work / "runs" / f"w__{b['key']}__{wl}__base__+0.json").read_text())
+    tot = mag = 0.0
+    for t in d["result"]["encounterMetrics"]["targets"]:
+        for a in t["actions"]:
+            dmg = sum(x.get("damage", 0) for x in a["targets"])
+            tot += dmg
+            mag += dmg if a["id"].get("spellId", 0) // 10 == 990001 else 0
+    return round(mag / tot, 3) if tot else 0.0
+
+
+def workload_sets(b):
+    if not b["tank"]:
+        return {"": ["single"]}
+    return {"": list(WORKLOADS), **{m: [f"{w}_{m}" for w in WORKLOADS] for m in MAGIC}}
 
 
 def base_request(b, workload):
@@ -325,12 +389,12 @@ def base_parts(b, idx, gear, gear_amount=None):
     return parts
 
 
-def run_request(tag, req):
+def run_request(tag, req, extra=()):
     out = C.work / "runs" / (tag + ".json")
     if not out.exists():
         out.parent.mkdir(parents=True, exist_ok=True)
         rf = out.with_suffix(".request.json"); rf.write_text(json.dumps(req))
-        sh([str(C.bin), "-request", str(rf), "-output", str(out)], stdout=subprocess.DEVNULL, stderr=subprocess.PIPE,
+        sh([str(C.bin), "-request", str(rf), "-output", str(out), *extra], stdout=subprocess.DEVNULL, stderr=subprocess.PIPE,
            env={**os.environ, "GOMAXPROCS": "1"})
         rf.unlink()
     return out
@@ -350,17 +414,19 @@ def metrics(out, want_stats=False):
 
 def weight_jobs(b):
     jobs = []
-    wls = list(WORKLOADS) if b["tank"] else ["single"]
-    for wl in wls:
-        jobs.append((b["key"], wl, None, 0))
-        for s in b["stats"]:
-            if s in ("weapon_skill", "ranged_weapon_skill"):
-                jobs += [(b["key"], wl, s, 5), (b["key"], wl, s, 10)]
-            elif s in LOW_SHIFT:
-                jobs += [(b["key"], wl, s, 1), (b["key"], wl, s, -1)]
-            else:
-                jobs += [(b["key"], wl, s, DELTA[s]), (b["key"], wl, s, -DELTA[s])]
-        jobs += [(b["key"], wl, "cap:" + s, p) for s in b["caps"] for p in CAP_POINTS[s]]
+    for mset, wls in workload_sets(b).items():
+        stats = b["stats"] + (list(RESISTS) if mset else [])
+        for wl in wls:
+            jobs.append((b["key"], wl, None, 0))
+            for s in stats:
+                if s in ("weapon_skill", "ranged_weapon_skill"):
+                    jobs += [(b["key"], wl, s, 5), (b["key"], wl, s, 10)]
+                elif s in LOW_SHIFT:
+                    jobs += [(b["key"], wl, s, 1), (b["key"], wl, s, -1)]
+                else:
+                    jobs += [(b["key"], wl, s, DELTA[s]), (b["key"], wl, s, -DELTA[s])]
+            if not mset:
+                jobs += [(b["key"], wl, "cap:" + s, p) for s in b["caps"] for p in CAP_POINTS[s]]
     return jobs
 
 
@@ -427,7 +493,7 @@ def value(b, a, ref, lam):
     if not b["tank"]:
         return a["single"]["dps"] - ref["single"]["dps"]
     T = Sv = 0.0
-    for wl in WORKLOADS:
+    for wl in a:
         x, y = a[wl], ref[wl]
         T += 50 * (x["tps"] / y["tps"] - 1)
         # Health only changes with Stamina-type probes, which always read stats; speed-grid runs share the weapon's stats.
@@ -437,12 +503,12 @@ def value(b, a, ref, lam):
     return T + lam * Sv
 
 
-def fit_weights(b, W, lam, main=None):
-    wls = list(WORKLOADS) if b["tank"] else ["single"]
+def fit_weights(b, W, lam, main=None, mset=""):
+    wls = workload_sets(b)[mset]
     get = lambda stat, amount: {wl: W[(b["key"], wl, stat, amount)] for wl in wls}
     base = get(None, 0)
     raw = {}
-    for s in b["stats"]:
+    for s in b["stats"] + (list(RESISTS) if mset else []):
         if s in ("weapon_skill", "ranged_weapon_skill"):
             v5, v10 = value(b, get(s, 5), base, lam) / 5, value(b, get(s, 10), get(s, 5), lam) / 5
             raw[s] = v5; raw[s + "_after5"] = v10
@@ -560,7 +626,8 @@ def talent_spell_hit(b):
     return round(avg, 2), {k: {"share": round(v / total, 3), "talent_hit_pct": bonus[k]["bonus_hit_pct"]} for k, v in top}
 
 
-def export(builds, W, G, out_dir):
+def export(builds, W, G, out_dir, plan=None, R=None):
+    profile_keys = collections.defaultdict(list)
     by_class = collections.defaultdict(lambda: {"profiles": {}, "weapon_model": {}})
     for key, b in builds.items():
         lams = LAMBDAS if b["tank"] else {"dps": None}
@@ -571,6 +638,7 @@ def export(builds, W, G, out_dir):
                 pkey = f"{TANKS[key]}_{lname}"
             else:
                 pkey = WARRIOR_DPS_KEYS.get(key, f"{key}_dps")
+            profile_keys[key].append((pkey, lam if lam is not None else 0.0, norm))
             mkey = (pkey if b["tank"] else SHARED_WEAPON_MODEL.get(key, key)) if b["slots"] else None
             st = base["single"]["stats"]
             dw = b["weapons"] == "dw" or (b["weapons"] == "hunter" and "mh" in b["slots"])
@@ -619,11 +687,27 @@ def export(builds, W, G, out_dir):
                 meta["label"] = b["label"] + {"lambda_0_5": ", threat + half survival", "lambda_1": ", threat + survival", "threat": ", threat only"}[lname]
             prof["meta"] = meta
             by_class[b["cls"]]["profiles"][pkey] = prof
+            for mset in (MAGIC if b["tank"] else []):
+                mw, _, _, _ = fit_weights(b, W, lam, spec_main, mset)
+                mprof = {k: v for k, v in mw.items() if k not in LOW_SHIFT}
+                mprof["resist_all"] = round(sum(mw[r] for r in RESISTS), 3)
+                for k in ("hit_model", "cap_models"):
+                    mprof[k] = prof[k]
+                mmeta = copy.deepcopy(meta)
+                mmeta["label"] = f"{b['label']}, {MAGIC_LABEL[mset]}" + meta["label"][len(b["label"]):]
+                mmeta["magic_share"] = {"target": MAGIC[mset], **{wl: magic_share(b, f"{wl}_{mset}") for wl in WORKLOADS}}
+                mmeta["note"] = ("Same workloads plus spells at the tank (Fire, Frost, Shadow, Nature, Arcane in turn; magic hit table, "
+                                 "partial resists, no dodge/parry/block/armor). hit_model and cap_models are copied from the "
+                                 "physical-only profile; weapon_model_key points at its weapon model.")
+                mprof["meta"] = mmeta
+                by_class[b["cls"]]["profiles"][f"{TANKS[key]}_{mset}_{lname}"] = mprof
             if b["slots"] and mkey == (pkey if b["tank"] else key):
                 by_class[b["cls"]]["weapon_model"][mkey] = {s: fit_grid(b, s, G, norm, lam if lam is not None else 0.0, False) for s in b["slots"]}
                 if key in NO_WINDFURY:
                     by_class[b["cls"]]["weapon_model"][mkey + "_nowf"] = {
                         s: fit_grid(b, s, G, norm, lam if lam is not None else 0.0, True) for s in b["slots"] if s in ("mh", "oh")}
+    if plan:
+        plan.export(R, by_class, profile_keys)
     out_dir.mkdir(parents=True, exist_ok=True)
     for cls, data in by_class.items():
         doc = {"schema": 2, "class": cls.upper(), "source": f"wow-forever-sim {C.rev}, level 60, client build {C.build}, benchmark profiles "
@@ -652,6 +736,8 @@ def export(builds, W, G, out_dir):
                            "measured curve rises gently instead of stepping down and is pooled to one value. expertise_pct reduces dodge and "
                            "parry by 1% each: 5.6% dodge for attackers behind the target, plus 14% parry for tanks in front.",
                "profiles": data["profiles"],
+               **({"item_effects_note": ITEM_EFFECTS_NOTE, "item_effects": data["item_effects"]} if "item_effects" in data else {}),
+               **({"enchant_effects_note": ENCHANT_EFFECTS_NOTE, "enchant_effects": data["enchant_effects"]} if "enchant_effects" in data else {}),
                "weapon_model": {"formula": "weapon_value = a * D + h_weapon_dps(s) * D + h_ap14(s) * AP / 14 + h_const(s) * AP / reference_ap. "
                                            "D = weapon DPS, s = speed, AP = current melee attack power (ranged attack power when ap_kind is "
                                            "ranged), a = dps_weight_at_reference. Interpolate between listed speeds, clamp outside.",
@@ -674,11 +760,16 @@ def main():
     ap.add_argument("--seed", type=int, default=1795000001)
     ap.add_argument("--workers", type=int, default=max(1, (os.cpu_count() or 2) - 2))
     ap.add_argument("--smoke", action="store_true", help="tiny iteration counts into a separate cache, to check every build runs")
+    ap.add_argument("--item-effects", type=pathlib.Path, help="items JSON (see item_effects.py) to value proc and on-use effects")
+    ap.add_argument("--enchant-effects", type=pathlib.Path, help="enchants JSON (see item_effects.py) to value with the items")
+    ap.add_argument("--item-iterations", type=int, default=10000)
+    ap.add_argument("--spell-build", default="1.60.1.70338", help="client build of the spell tables for item effects")
     args = ap.parse_args()
     bins = build_binaries(args.work)
     engine = hashlib.sha256(bins[0].read_bytes()).hexdigest()[:12]
     C.bin, C.hp = bins
     C.iterations, C.grid_iterations, C.seed = (100, 100, args.seed) if args.smoke else (args.iterations, args.grid_iterations, args.seed)
+    C.item_iterations = 100 if args.smoke else args.item_iterations
     C.work = args.work / (engine + ("-smoke" if args.smoke else ""))
     C.rev = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=REPO, capture_output=True, text=True).stdout.strip()
     C.build = (REPO / "assets/db_inputs/forever_client_build.txt").read_text().strip()
@@ -686,8 +777,9 @@ def main():
     C.builds, C.db = load_builds(classes)
     for b in C.builds.values():                     # templates first (cheap, serial)
         if b["tank"]:
-            for wl in WORKLOADS:
-                tank_template(b, wl)
+            for wls in workload_sets(b).values():
+                for wl in wls:
+                    tank_template(b, wl)
         b["ref"] = ref_stats(b)
     wj = [j for b in C.builds.values() for j in weight_jobs(b)]
     gj = [j for b in C.builds.values() for j in grid_jobs(b)] + [j for b in C.builds.values() if b["key"] in NO_WINDFURY for j in grid_jobs(b, True)]
@@ -704,10 +796,21 @@ def main():
             G[job] = m; done += 1
             if done % 200 == 0:
                 print(f"  grid {done}/{len(gj)}", flush=True)
+        plan, R = None, {}
+        if args.item_effects:
+            import item_effects
+            plan = item_effects.Plan(sys.modules[__name__], args.item_effects, args.spell_build, args.enchant_effects)
+            ij = plan.jobs()
+            print(f"  item effects: {len(ij)} runs", flush=True)
+            done = 0
+            for job, m in zip(ij, ex.map(lambda j: plan.job(*j), ij)):
+                R[job] = m; done += 1
+                if done % 500 == 0:
+                    print(f"  items {done}/{len(ij)}", flush=True)
     warn = {k: v["warnings"] for k, v in W.items() if v.get("warnings") and k[2] is None}
     for k, v in warn.items():
         print("APL warnings", k[0], v[:3])
-    export(C.builds, W, G, args.out if not args.smoke else args.work / "smoke-exports")
+    export(C.builds, W, G, args.out if not args.smoke else args.work / "smoke-exports", plan, R)
 
 
 if __name__ == "__main__":

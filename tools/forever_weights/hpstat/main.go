@@ -1,5 +1,6 @@
 // Prints a request's final player-0 stats (JSON array) using the simulator's ComputeStats.
 // With a second argument "spellhit", prints each player-0 spell's talent and school spell-hit bonus in percent instead.
+// "hpstat effects ids.json" prints, per id: item effect, weapon effect, enchant effect, enchant in the database.
 package main
 
 import (
@@ -16,6 +17,24 @@ import (
 
 func main() {
 	sim.RegisterAll()
+	if os.Args[1] == "effects" {
+		var ids []int32
+		data, err := os.ReadFile(os.Args[2])
+		if err != nil {
+			panic(err)
+		}
+		if err := json.Unmarshal(data, &ids); err != nil {
+			panic(err)
+		}
+		out := map[string][]bool{}
+		for _, id := range ids {
+			_, known := core.EnchantsByEffectID[id]
+			out[fmt.Sprint(id)] = []bool{core.HasItemEffect(id), core.HasWeaponEffect(id), core.HasEnchantEffect(id), known}
+		}
+		b, _ := json.Marshal(out)
+		fmt.Println(string(b))
+		return
+	}
 	data, err := os.ReadFile(os.Args[1])
 	if err != nil {
 		panic(err)

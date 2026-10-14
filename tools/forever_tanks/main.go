@@ -31,7 +31,14 @@ func main() {
 	iterations := flag.Int("iterations", 5000, "iterations")
 	seed := flag.Int64("seed", 20260925, "random seed")
 	tier := flag.Bool("tier1", true, "enable forced Forever tank Tier 1")
+	magicDPS := flag.Float64("magic-dps", 0, "spell damage per second each attacker adds at the tank, cycling five schools")
+	itemFx := flag.String("itemfx", "", "optional JSON list of generic item effects (tools/forever_weights/item_effects.py)")
 	flag.Parse()
+	registerMagicSource()
+	if *itemFx != "" {
+		registerItemFx(*itemFx)
+	}
+	overrideItems := *itemFx != ""
 	if *requestPath != "" {
 		data, err := os.ReadFile(*requestPath)
 		if err != nil {
@@ -54,6 +61,16 @@ func main() {
 				panic(err)
 			}
 			request.Raid.Parties[0].Players[0].Rotation = core.APLRotationFromJsonString(string(data))
+		}
+		if overrideItems {
+			// Item-effect probes replace known items with stat-less copies of the same id.
+			for _, party := range request.Raid.Parties {
+				for _, player := range party.Players {
+					for _, item := range player.GetDatabase().GetItems() {
+						core.ItemsByID[item.Id] = core.ItemFromProto(item)
+					}
+				}
+			}
 		}
 		runRequest(request, *out)
 		return
@@ -111,6 +128,10 @@ func main() {
 		encounter.Targets[i] = &proto.Target{Level: 63, MobType: proto.MobType_MobTypeDragonkin,
 			Stats:         stats.Stats{stats.Armor: 3731, stats.AttackPower: 805, stats.Health: 127393}.ToFloatArray(),
 			MinBaseDamage: *swing, DamageSpread: .3333, SwingSpeed: 2, ParryHaste: true, TankIndex: 0}
+		if *magicDPS > 0 {
+			encounter.Targets[i].Id = magicSourceID
+			encounter.Targets[i].TargetInputs = []*proto.TargetInput{{Label: magicDPSLabel, NumberValue: *magicDPS}}
+		}
 	}
 	request := &proto.RaidSimRequest{Raid: raid, Encounter: encounter, SimOptions: &proto.SimOptions{Iterations: int32(*iterations), RandomSeed: *seed, Ruleset: proto.Ruleset_RulesetForever}}
 	runRequest(request, *out)
