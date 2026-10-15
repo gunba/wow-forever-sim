@@ -102,6 +102,9 @@ type Character struct {
 	ActiveShapeShift *Aura // Some things can't be used in shapeshift forms
 
 	flatWeaponImbueDamage [2]float64
+
+	// Learned spell IDs (Player.known_spells); empty means everything trainable at the level.
+	KnownSpells []int32
 	// Applied to equipment-derived MH weapons before swap effect callbacks.
 	MainHandWeaponOverride func(Weapon) Weapon
 }
@@ -158,6 +161,7 @@ func NewCharacter(party *Party, partyIndex int, player *proto.Player) Character 
 		}
 	}
 	character.foreverMP5PerSecond = player.ForeverMp5PerSecond
+	character.KnownSpells = player.KnownSpells
 	incomingRage, err := ResolveForeverIncomingRageModel(character.Level, player.ForeverIncomingRageModel)
 	if err != nil {
 		panic(err)

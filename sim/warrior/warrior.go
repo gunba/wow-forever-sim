@@ -208,6 +208,10 @@ func (warrior *Warrior) Initialize() {
 
 	warrior.registerBloodrageCD()
 	warrior.RegisterRecklessnessCD()
+
+	if SetupHook != nil {
+		SetupHook(warrior)
+	}
 }
 
 func (warrior *Warrior) Reset(sim *core.Simulation) {
@@ -258,6 +262,12 @@ func NewWarrior(character *core.Character, talents string, inputs WarriorInputs)
 	}
 	warrior.talentsString = talents
 	warrior.Ranks = ranks.Selector{Level: character.Level}
+	if len(character.KnownSpells) > 0 {
+		warrior.Ranks.Known = map[int32]bool{}
+		for _, id := range character.KnownSpells {
+			warrior.Ranks.Known[id] = true
+		}
+	}
 
 	warrior.PseudoStats.CanParry = true
 
@@ -312,3 +322,30 @@ func (ws *WarriorSpell) GetStanceMask() Stance {
 
 	return ws.StanceMask
 }
+
+// ExecuteRangeHook, when set, decides whether a target is in Execute range (tools that track each enemy's health).
+var ExecuteRangeHook func(sim *core.Simulation, target *core.Unit) bool
+
+// SetupHook, when set, runs at the end of Initialize, while auras can still be registered.
+var SetupHook func(warrior *Warrior)
+
+// CustomRotationHook, when set, drives a Warrior from the APL's customRotation action. The rotation planner and its
+// scenario bench set it; the warrior package does not depend on them.
+var CustomRotationHook func(warrior *Warrior, sim *core.Simulation)
+
+func (warrior *Warrior) ExecuteCustomRotation(sim *core.Simulation) {
+	if CustomRotationHook != nil {
+		CustomRotationHook(warrior, sim)
+	}
+}
+
+// QueuedSwingSpell is the queued Heroic Strike or Cleave, or nil.
+func (warrior *Warrior) QueuedSwingSpell() *WarriorSpell {
+	if warrior.curQueueAura != nil && warrior.curQueueAura.IsActive() {
+		return warrior.curQueuedAutoSpell
+	}
+	return nil
+}
+
+// RevengeWindow is the aura that makes Revenge usable after a dodge, parry or block.
+func (warrior *Warrior) RevengeWindow() *core.Aura { return warrior.revengeProcAura }

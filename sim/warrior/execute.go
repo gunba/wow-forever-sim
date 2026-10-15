@@ -36,6 +36,9 @@ func (warrior *Warrior) registerExecuteSpell() {
 			},
 		},
 		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
+			if ExecuteRangeHook != nil {
+				return ExecuteRangeHook(sim, target)
+			}
 			return sim.IsExecutePhase20()
 		},
 

@@ -361,6 +361,18 @@ func (sim *Simulation) run() *proto.RaidSimResult {
 	return result
 }
 
+// RunIteration runs one iteration seeded with offset i, for tools that drive the simulation and read its state
+// directly.
+func (sim *Simulation) RunIteration(i int64) {
+	sim.reseedRands(i)
+	sim.runOnce()
+}
+
+// EndCombatNow ends the current iteration after the events at the current time.
+func (sim *Simulation) EndCombatNow() {
+	sim.endOfCombatDuration = sim.CurrentTime
+}
+
 // RunOnce is the main event loop. It will run the simulation for number of seconds.
 func (sim *Simulation) runOnce() {
 	sim.reset()
