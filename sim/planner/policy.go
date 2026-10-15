@@ -175,6 +175,10 @@ func (c *Ctx) basePolicy(s *State) int {
 			continue
 		}
 		v := c.immediate(s, i) - c.Mu*ab.Cost
+		// Keep the rage for a better ability coming off its cooldown within the next global cooldown.
+		if ab.Cost > 0 && v > 0 && c.starves(s, i, (v+c.Mu*ab.Cost)/ab.Cost) {
+			continue
+		}
 		if v > bestV {
 			best, bestV = i, v
 		}
@@ -295,4 +299,29 @@ func (c *Ctx) swingLoss(s *State, ab *Ability) float64 {
 // tickCrit is the expected multiplier of Forever's critting Rend ticks.
 func (c *Ctx) tickCrit() float64 {
 	return 1 + c.special.crit/max(c.special.land, 1e-9)*(c.M.SpecialCritMult-1)
+}
+
+// starves reports whether spending ability i's rage now leaves too little for a better ability (by value per rage)
+// that is ready, or comes off its cooldown within the next global cooldown, and that the rage left can't pay for.
+func (c *Ctx) starves(s *State, i int, perRage float64) bool {
+	left := s.rage - c.abil[i].Cost
+	soon := s.t + 1.6
+	for j, ab := range c.abil {
+		if j == i || j >= maxAbilities || !c.allowed[j] || !ab.Modelled || !ab.GCD || ab.CD <= 0 || ab.Cost <= left {
+			continue
+		}
+		if s.cdAt[j] > soon {
+			continue
+		}
+		if ab.Stances != 0 && ab.Stances&(1<<s.stance) == 0 {
+			continue
+		}
+		if ab.NeedsWindow == windowRevenge && s.revEnd <= s.cdAt[j] || ab.NeedsWindow == windowOverpower && s.opEnd <= s.cdAt[j] {
+			continue
+		}
+		if vj := c.immediate(s, j); vj/ab.Cost > perRage && vj-c.Mu*ab.Cost > 0 {
+			return true
+		}
+	}
+	return false
 }
