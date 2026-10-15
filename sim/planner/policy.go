@@ -236,6 +236,7 @@ func (c *Ctx) reserve(s *State) float64 {
 // terminal values what the state carries past the horizon: rage, the rest of a Rend, and debuffs and buffs.
 func (c *Ctx) terminal(s *State) float64 {
 	alive := max(0, s.deathAt-s.t)
+	v0 := c.cooldownReadiness(s, alive)
 	// Leftover rage is worth the sink's price for what can still be spent before the enemies are dead: one sink
 	// per main-hand swing and a GCD ability every 1.5 s at most.
 	left := alive
@@ -246,7 +247,7 @@ func (c *Ctx) terminal(s *State) float64 {
 		left = max(left, 10) // holding aggro: the pull goes on
 	}
 	spendable := left * (c.sinkCost/max(c.M.MH.Speed, 1) + 10/1.5)
-	v := c.Mu * c.Pr.RageKeep * min(s.rage, spendable, 70)
+	v := v0 + c.Mu*c.Pr.RageKeep*min(s.rage, spendable, 70)
 	if ab := c.M.Get(ranks.Rend); ab != nil && s.rendEnd > s.t {
 		ticks := min(s.rendEnd-s.t, alive) / 3
 		d := (ab.TickDamage + ab.TickAPCoef*c.ap(s)) * ab.DamageMult * c.armorFreeMult(s) * c.tickCrit() * ticks
@@ -324,4 +325,30 @@ func (c *Ctx) starves(s *State, i int, perRage float64) bool {
 		}
 	}
 	return false
+}
+
+// cooldownReadiness prices the cooldowns still running at the horizon: an ability on a cooldown of a few seconds
+// (Mortal Strike, Bloodthirst, Whirlwind, Shield Slam) is worth its value once per cooldown, so every second its
+// cooldown still has to run is a share of that value lost, while enemies are alive to use it on.
+func (c *Ctx) cooldownReadiness(s *State, alive float64) float64 {
+	if c.Pr.CDValue == 0 || alive <= 0 && s.targets <= 1 {
+		return 0
+	}
+	v := 0.0
+	for i, ab := range c.abil {
+		if i >= maxAbilities || !c.allowed[i] || !ab.Modelled || !ab.GCD || ab.CD < 4 || ab.CD > 30 || ab.NeedsWindow != windowNone {
+			continue
+		}
+		left := s.cdAt[i] - s.t
+		if left <= 0 {
+			continue
+		}
+		if ab.Stances != 0 && ab.Stances&(1<<s.stance) == 0 && (s.home == 0 || ab.Stances&(1<<s.home) == 0) {
+			continue
+		}
+		if imm := c.immediate(s, i) - c.Mu*ab.Cost; imm > 0 {
+			v -= c.Pr.CDValue * imm * left / ab.CD
+		}
+	}
+	return v
 }

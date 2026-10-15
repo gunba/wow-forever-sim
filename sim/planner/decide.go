@@ -20,6 +20,7 @@ type Params struct {
 	HoldFloor      float64  // threat value per point (hold) when the lead is far above secure
 	HoldLook       float64  // seconds the lead trend is projected over (capped by the time to die)
 	CeilingK       float64  // group-DPS threat cost at the ceiling, per threat point
+	CeilingStart   float64  // share of the ceiling where the group-DPS threat cost starts
 	UnknownLead    float64  // threat value per point on an enemy whose lead is unknown (hold)
 	LooseWeight    float64  // threat value per point (hold) on an enemy someone else has
 	ContestWeight  float64  // threat value per point (hold) on an enemy the player is tanking without the lead
@@ -31,13 +32,14 @@ type Params struct {
 	SinkFloor      float64  // the policy queues a rage sink only above this share of the rage price per rage
 	WaitBias       float64  // percent of its value added to waiting
 	CandFloor      float64  // candidates need immediate value net of rage above this share of their rage cost's price (-1 = off)
+	CDValue        float64  // weight of the cooldown time still running at the horizon
 	Disable        []string `json:",omitempty"` // abilities the planner never uses (diagnostics)
 	// FixedSamples, when set, replaces the time budget with a fixed sample count (reproducible benchmarks).
 	FixedSamples int `json:",omitempty"`
 }
 
-var DefaultParams = Params{Horizon: 7, MinSamples: 6, MaxSamples: 60, HoldDecay: 40, HoldFloor: 1, HoldLook: 8, CeilingK: 3, UnknownLead: 0.7,
-	LooseWeight: 1.5, ContestWeight: 2, ArmorScale: 0.5, SwingLossScale: 4, SwingLossMH: 4, NextBoost: 12, RageKeep: 0.9, SinkFloor: 0.5, WaitBias: 0, CandFloor: -0.25}
+var DefaultParams = Params{Horizon: 7, MinSamples: 6, MaxSamples: 60, HoldDecay: 40, HoldFloor: 1, HoldLook: 8, CeilingK: 3, CeilingStart: 0.7, UnknownLead: 0.7,
+	LooseWeight: 1.5, ContestWeight: 2, ArmorScale: 0.5, SwingLossScale: 4, SwingLossMH: 4, NextBoost: 12, RageKeep: 0.9, SinkFloor: 0.5, WaitBias: 0, CandFloor: -0.25, CDValue: 1}
 
 // enemyAPCoefficient is the simulator's enemy attack power coefficient (core.EnemyAutoAttackAPCoefficient): the
 // share of base damage one point of attack power adds, used to value Demoralizing Shout.
@@ -74,11 +76,14 @@ func (pr Params) holdWeight(t *ThreatState, targetsPlayer *bool, secure float64,
 }
 
 // ceilingCost is the cost of a point of threat for a damage dealer whose threat is lead% of the aggro holder's.
-func (pr Params) ceilingCost(lead, ceiling float64) float64 {
-	if lead < 0.7*ceiling {
+func (pr Params) ceilingCost(t *ThreatState, ceiling, look float64) float64 {
+	// The lead projected over the look-ahead with its rising trend: a pull comes from where the lead is heading.
+	lead := *t.LeadPct + max(f(t.LeadTrendPctPer, 0), 0)*look
+	start := pr.CeilingStart * ceiling
+	if lead < start {
 		return 0
 	}
-	x := (lead - 0.7*ceiling) / (0.3 * ceiling)
+	x := (lead - start) / (ceiling - start)
 	if x >= 1 {
 		return pr.CeilingK * (1 + (x-1)*5)
 	}
@@ -263,17 +268,21 @@ func NewCtx(m *Model, msg *DecideMsg, pr Params) (*Ctx, *State, []string) {
 	switch {
 	case pol.CeilingPct > 0:
 		// The ceiling only applies while someone else holds aggro on the target.
+		// It applies while someone else holds aggro, and also when the player has pulled it off another tank
+		// (then the tank should get it back). With no other tank, a player holding aggro is the tank.
+		ctx := msg.Intent.Context
+		tankPresent := ctx != nil && ctx.OtherTankPresent != nil && *ctx.OtherTankPresent
 		othersHold := (tg.TargetsPlayer != nil && !*tg.TargetsPlayer) || (tg.Threat != nil && tg.Threat.Status != nil && *tg.Threat.Status < 3)
-		if othersHold && tg.Threat != nil && tg.Threat.LeadPct != nil {
-			c.WThreatTarget = -pr.ceilingCost(*tg.Threat.LeadPct, pol.CeilingPct)
+		if (othersHold || tankPresent) && tg.Threat != nil && tg.Threat.LeadPct != nil {
+			c.WThreatTarget = -pr.ceilingCost(tg.Threat, pol.CeilingPct, min(pr.HoldLook, c.TTK[1]))
 			c.ThreatWeight = 1
 		}
 		cost, n := 0.0, 0
 		for _, e := range msg.Enemies {
 			n++
-			hold := (e.TargetsPlayer != nil && !*e.TargetsPlayer) || (e.Threat != nil && e.Threat.Status != nil && *e.Threat.Status < 3)
+			hold := tankPresent || (e.TargetsPlayer != nil && !*e.TargetsPlayer) || (e.Threat != nil && e.Threat.Status != nil && *e.Threat.Status < 3)
 			if hold && e.Threat != nil && e.Threat.LeadPct != nil {
-				cost += pr.ceilingCost(*e.Threat.LeadPct, pol.CeilingPct)
+				cost += pr.ceilingCost(e.Threat, pol.CeilingPct, min(pr.HoldLook, c.TTK[1]))
 			}
 		}
 		if n > 0 && cost > 0 {

@@ -163,6 +163,10 @@ func runBench(path string) {
 		scen[i] = planner.Scenario{Name: s.Name, Player: p, Enemies: s.Enemies, EnemyLevel: el, Elite: s.Elite, HPMult: def(s.HPMult, 1),
 			DmgMult: def(s.DmgMult, 1), Partner: s.Partner, HomeStance: s.HomeStance, HomeWeapon: s.HomeWeapon, TTKNoise: s.TTKNoise, Cap: def(s.Cap, 180),
 			Intent: planner.Intent{Mode: s.Mode, Source: "override"}, Front: s.Mode != "group_dps", Manual: s.Manual}
+		if s.Partner.Role == "tank" {
+			yes := true
+			scen[i].Intent.Context = &planner.IntentContext{OtherTankPresent: &yes}
+		}
 		models[i] = m
 	}
 	if bf.Calibrate {
