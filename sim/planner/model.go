@@ -43,6 +43,7 @@ const (
 // Ability is the planner's model of one trained ability for one character.
 type Ability struct {
 	Name     ranks.Ability
+	Index    int   // position in Model.Abilities (its random stream in rollouts)
 	SpellID  int32 // the simulator's action ID (top rank)
 	GameID   int32 // the rank the character has, as the game names it
 	Rank     *ranks.Rank
@@ -179,7 +180,8 @@ func (m *Model) ByGameID(id int32) *Ability {
 func (m *Model) index() {
 	m.byName = map[ranks.Ability]*Ability{}
 	m.byGameID = map[int32]*Ability{}
-	for _, ab := range m.Abilities {
+	for i, ab := range m.Abilities {
+		ab.Index = i
 		m.byName[ab.Name] = ab
 		m.byGameID[ab.GameID] = ab
 		m.byGameID[ab.SpellID] = ab

@@ -46,7 +46,7 @@ func (c *Ctx) Search(init *State, cands []Candidate, budget time.Duration, minSa
 			s := *init
 			s.rng = sampleSeed | 1
 			c.prepareSample(&s, j)
-			c.trace = debugRollout
+			c.trace = debugRollout && k < 2
 			if c.trace {
 				fmt.Fprintf(os.Stderr, "   rollout cand %d act %d mh %.2f death %.1f\n", i, cands[i].Act, s.mhAt, s.deathAt)
 			}
@@ -74,6 +74,10 @@ func (c *Ctx) Search(init *State, cands []Candidate, budget time.Duration, minSa
 			r.Terms.Terminal /= weights[i]
 		}
 		r.Value = r.Terms.Damage + r.Terms.Threat + r.Terms.Mitigation + r.Terms.Terminal
+		if r.Cand.Act == actWait {
+			// Acting must beat waiting by a margin: close calls are mostly rollout noise.
+			r.Value += c.Pr.WaitBias / 100 * abs(r.Value)
+		}
 	}
 	sort.SliceStable(res, func(a, b int) bool { return res[a].Value > res[b].Value })
 	return res
@@ -116,3 +120,10 @@ func (c *Ctx) runCandidate(s *State, cand Candidate) {
 }
 
 var debugRollout = os.Getenv("PLANNER_DEBUG_ROLLOUT") != ""
+
+func abs(x float64) float64 {
+	if x < 0 {
+		return -x
+	}
+	return x
+}

@@ -191,6 +191,11 @@ func (c *Ctx) basePolicy(s *State) int {
 				continue
 			}
 			v := c.immediate(s, i)
+			// A sink well below the rage price (Heroic Strike on a pack) waits for a better one.
+			_, _, wr := c.whiteSwingValue(s)
+			if v/(ab.Cost+wr) < c.Pr.SinkFloor*c.Mu {
+				continue
+			}
 			if v > bestV {
 				best, bestV = i, v
 			}
@@ -216,7 +221,8 @@ func (c *Ctx) reserve(s *State) float64 {
 		if ab.NeedsWindow == windowOverpower && s.t >= s.opEnd {
 			continue
 		}
-		if s.cdAt[i] <= horizon {
+		// Only what the policy would actually use: an ability not worth its rage now reserves none.
+		if s.cdAt[i] <= horizon && c.allowed[i] && c.immediate(s, i)-c.Mu*ab.Cost > 0 {
 			r = max(r, ab.Cost)
 		}
 	}
@@ -236,7 +242,7 @@ func (c *Ctx) terminal(s *State) float64 {
 		left = max(left, 10) // holding aggro: the pull goes on
 	}
 	spendable := left * (c.sinkCost/max(c.M.MH.Speed, 1) + 10/1.5)
-	v := c.Mu * min(s.rage, spendable, 70)
+	v := c.Mu * c.Pr.RageKeep * min(s.rage, spendable, 70)
 	if ab := c.M.Get(ranks.Rend); ab != nil && s.rendEnd > s.t {
 		ticks := min(s.rendEnd-s.t, alive) / 3
 		d := (ab.TickDamage + ab.TickAPCoef*c.ap(s)) * ab.DamageMult * c.armorFreeMult(s) * c.tickCrit() * ticks

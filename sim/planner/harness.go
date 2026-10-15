@@ -1,6 +1,7 @@
 package planner
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
@@ -32,10 +33,12 @@ type Harness struct {
 	My, Them      []float64
 	leadHist      [][8]float64 // lead % over the last 2 s, one sample per tick
 	leadAt        int
+	lifeHist      [][24]float64 // health lost, sampled every tick over the last six seconds
 	theyHave      []bool
 	Dead          []bool
 
 	KillTime     float64
+	LossFocus    float64 // tank: seconds the partner held the player's current target
 	LossTime     float64 // tank: enemy-seconds held by the partner; damage dealer: enemy-seconds held by the Warrior
 	Swaps        int
 	Taken        float64 // damage the Warrior took
@@ -89,7 +92,8 @@ func (h *Harness) reset(sim *core.Simulation) {
 	h.Dealt, h.Useful, h.PartnerDealt = make([]float64, n), make([]float64, n), make([]float64, n)
 	h.My, h.Them, h.theyHave, h.Dead = make([]float64, n), make([]float64, n), make([]bool, n), make([]bool, n)
 	h.leadHist, h.leadAt = make([][8]float64, n), 0
-	h.KillTime, h.LossTime, h.Swaps, h.Taken, h.events = 0, 0, 0, 0, h.events[:0]
+	h.lifeHist = make([][24]float64, n)
+	h.KillTime, h.LossTime, h.Swaps, h.Taken, h.events, h.LossFocus = 0, 0, 0, 0, h.events[:0], 0
 	h.DamageBy = map[int32]float64{}
 	for i := range h.targets {
 		h.theyHave[i] = !h.tankRole()
@@ -201,6 +205,7 @@ func (h *Harness) tick(sim *core.Simulation, dt float64) {
 	for i := range h.targets {
 		_, lead, _ := h.ThreatState(i)
 		h.leadHist[i][h.leadAt%8] = lead
+		h.lifeHist[i][h.leadAt%24] = h.HP[i] - h.left(i)
 	}
 	h.leadAt++
 	pull := 1.1
@@ -214,8 +219,14 @@ func (h *Harness) tick(sim *core.Simulation, dt float64) {
 		if h.theyHave[i] {
 			if h.tankRole() {
 				h.LossTime += dt
+				if target == h.W.CurrentTarget {
+					h.LossFocus += dt
+				}
 			}
 			if h.My[i] > pull*h.Them[i] && h.My[i] > 0 {
+				if debugPress {
+					fmt.Printf("  ** %.2f regained enemy %d\n", sim.CurrentTime.Seconds(), i)
+				}
 				h.theyHave[i] = false
 				h.Swaps++
 				target.AutoAttacks.EnableAutoSwing(sim)
@@ -225,6 +236,9 @@ func (h *Harness) tick(sim *core.Simulation, dt float64) {
 				h.LossTime += dt
 			}
 			if h.P.DPS > 0 && h.Them[i] > pull*h.My[i] && h.Them[i] > 0 {
+				if debugPress {
+					fmt.Printf("  ** %.2f partner takes enemy %d (focus %v): mine %.0f theirs %.0f\n", sim.CurrentTime.Seconds(), i, target == h.W.CurrentTarget, h.My[i], h.Them[i])
+				}
 				h.theyHave[i] = true
 				h.Swaps++
 				target.AutoAttacks.CancelAutoSwing(sim)
@@ -279,4 +293,19 @@ func spellKey(spell *core.Spell) int32 {
 		return -2
 	}
 	return spell.ActionID.SpellID
+}
+
+// RecentRate is enemy i's health loss per second over up to the last six seconds, and the window's length.
+func (h *Harness) RecentRate(i int) (float64, float64) {
+	if h.leadAt == 0 {
+		return 0, 0
+	}
+	n := min(h.leadAt, 24)
+	now := h.lifeHist[i][(h.leadAt-1)%24]
+	then := 0.0
+	if h.leadAt > 24 {
+		then = h.lifeHist[i][h.leadAt%24]
+	}
+	w := float64(n) * 0.25
+	return (now - then) / w, w
 }

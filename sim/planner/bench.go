@@ -34,11 +34,11 @@ type Scenario struct {
 
 // Outcome is one iteration's result.
 type Outcome struct {
-	KillTime, Useful, Taken, LossTime, Threat float64
-	Swaps, Decisions                          int
-	ChooseNanos                               int64
-	Casts                                     map[string]int
-	DamageBy                                  map[string]float64
+	KillTime, Useful, Taken, LossTime, Threat, LossFocus float64
+	Swaps, Decisions                                     int
+	ChooseNanos                                          int64
+	Casts                                                map[string]int
+	DamageBy                                             map[string]float64
 }
 
 var setupMu sync.Mutex
@@ -142,7 +142,7 @@ func (b *Bench) Run(i int64) Outcome {
 	for _, v := range h.My {
 		threat += v
 	}
-	out := Outcome{KillTime: kt, Useful: h.UsefulDamage(), Taken: h.Taken, LossTime: h.LossTime, Swaps: h.Swaps, Threat: threat,
+	out := Outcome{KillTime: kt, Useful: h.UsefulDamage(), Taken: h.Taken, LossTime: h.LossTime, Swaps: h.Swaps, Threat: threat, LossFocus: h.LossFocus,
 		Decisions: d.Decisions, ChooseNanos: d.ChooseNanos, Casts: map[string]int{}}
 	for k, v := range d.Casts {
 		out.Casts[string(k)] = v

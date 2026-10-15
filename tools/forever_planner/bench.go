@@ -242,10 +242,11 @@ func runBench(path string) {
 		r := benchResult{Name: s.Name, N: bf.Iterations, Diff: map[string][3]float64{}}
 		r.Planner, r.APL = summarize(pl[i]), summarize(ap[i])
 		metrics := map[string]func(o planner.Outcome) float64{
-			"kill_time": func(o planner.Outcome) float64 { return o.KillTime },
-			"useful":    func(o planner.Outcome) float64 { return o.Useful },
-			"taken":     func(o planner.Outcome) float64 { return o.Taken },
-			"loss_time": func(o planner.Outcome) float64 { return o.LossTime },
+			"kill_time":  func(o planner.Outcome) float64 { return o.KillTime },
+			"useful":     func(o planner.Outcome) float64 { return o.Useful },
+			"taken":      func(o planner.Outcome) float64 { return o.Taken },
+			"loss_time":  func(o planner.Outcome) float64 { return o.LossTime },
+			"loss_focus": func(o planner.Outcome) float64 { return o.LossFocus },
 		}
 		for name, fn := range metrics {
 			r.Diff[name] = pairedCI(pl[i], ap[i], fn)

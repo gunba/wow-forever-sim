@@ -111,7 +111,7 @@ type State struct {
 
 	dmg, threat, mitig float64
 	rng                uint64
-	draws              [rsCount]uint32
+	draws              [rsCount + maxAbilities]uint32
 }
 
 func (c *Ctx) idx(a ranks.Ability) int {
@@ -379,7 +379,7 @@ func (c *Ctx) queuedSwing(s *State) {
 			r = s.draw(rsMH)
 			s.draw(rsMH)
 		} else {
-			r = s.draw(rsStrike)
+			r = s.draw(rsStrike + ab.Index)
 		}
 		if r < o.miss+o.dodge+o.parry {
 			if r >= o.miss && r < o.miss+o.dodge && k == 0 {
@@ -579,7 +579,7 @@ func (c *Ctx) cast(s *State, i int) {
 			return
 		}
 		// Sunder Armor: miss, dodge or parry refund most of the cost.
-		r := s.draw(rsStrike)
+		r := s.draw(rsStrike + ab.Index)
 		o := &c.special
 		if r < o.miss+o.dodge+o.parry {
 			s.rage += ab.Cost * ab.Refund
@@ -596,7 +596,7 @@ func (c *Ctx) cast(s *State, i int) {
 		c.credit(s, 0, (ab.FlatThreat+ab.ThreatAP*ap)*c.stanceThreat(s), false)
 		return
 	case KindDot:
-		r := s.draw(rsStrike)
+		r := s.draw(rsStrike + ab.Index)
 		o := &c.special
 		if r < o.miss+o.dodge+o.parry {
 			s.rage += ab.Cost * ab.Refund
@@ -639,7 +639,7 @@ func (c *Ctx) cast(s *State, i int) {
 // strike resolves one hit of an ability's base damage on one enemy.
 func (c *Ctx) strike(s *State, ab *Ability, base float64, scale float64, other bool) {
 	o := c.table(ab)
-	r := s.draw(rsStrike)
+	r := s.draw(rsStrike + ab.Index)
 	if r < o.miss+o.dodge+o.parry {
 		if !other {
 			s.rage += ab.Cost * ab.Refund

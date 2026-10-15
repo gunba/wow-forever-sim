@@ -25,13 +25,18 @@ type Params struct {
 	ContestWeight  float64  // threat value per point (hold) on an enemy the player is tanking without the lead
 	ArmorScale     float64  // scale on the armor-reduction value of Sunder Armor beyond what the rollout sees
 	SwingLossScale float64  // scale on the value of swings a cast pushes back (untalented Slam)
+	NextBoost      float64  // extra threat value on other enemies as the target's death nears (hold)
+	RageKeep       float64  // share of the rage price leftover rage keeps at the horizon
+	SinkFloor      float64  // the policy queues a rage sink only above this share of the rage price per rage
+	WaitBias       float64  // percent of its value added to waiting
+	CandFloor      float64  // candidates need immediate value net of rage above this share of their rage cost's price (-1 = off)
 	Disable        []string `json:",omitempty"` // abilities the planner never uses (diagnostics)
 	// FixedSamples, when set, replaces the time budget with a fixed sample count (reproducible benchmarks).
 	FixedSamples int `json:",omitempty"`
 }
 
 var DefaultParams = Params{Horizon: 7, MinSamples: 6, MaxSamples: 60, HoldDecay: 40, HoldFloor: 1, HoldLook: 8, CeilingK: 3, UnknownLead: 0.7,
-	LooseWeight: 1.5, ContestWeight: 2, ArmorScale: 1, SwingLossScale: 4}
+	LooseWeight: 1.5, ContestWeight: 2, ArmorScale: 1, SwingLossScale: 4, NextBoost: 12, RageKeep: 0.9, SinkFloor: 0.5, WaitBias: 0, CandFloor: -0.25}
 
 // enemyAPCoefficient is the simulator's enemy attack power coefficient (core.EnemyAutoAttackAPCoefficient): the
 // share of base damage one point of attack power adds, used to value Demoralizing Shout.
@@ -184,6 +189,18 @@ func NewCtx(m *Model, msg *DecideMsg, pr Params) (*Ctx, *State, []string) {
 		}
 	}
 	c.build()
+	// A normal enemy cannot outlive what the player alone would take to kill it: cap the console's time to die
+	// (its health-trend estimate runs long on an enemy just picked up) with the model's own damage rate.
+	if !c.Elite {
+		if dps := c.physDPS(s); dps > 0 {
+			hp := ec.health * c.HealthPct / 100
+			capQ := [3]float64{0.8, 1, 1.3}
+			for i := range c.TTK {
+				c.TTK[i] = max(0.5, min(c.TTK[i], hp/dps*capQ[i]))
+			}
+			c.NextTTK = min(c.NextTTK, ec.health/dps)
+		}
+	}
 	for i, ab := range c.abil {
 		if i >= maxAbilities {
 			warn = append(warn, "more abilities than the planner tracks")
@@ -272,6 +289,9 @@ func NewCtx(m *Model, msg *DecideMsg, pr Params) (*Ctx, *State, []string) {
 		}
 		if n > 0 {
 			c.WThreatOther = other / float64(n)
+			// The next enemy becomes the focus when the target dies, and the group's damage follows it: threat
+			// banked on it before then is worth more as the target's death nears.
+			c.WThreatOther += pr.NextBoost * math.Exp(-c.TTK[1]/8)
 		} else {
 			c.WThreatOther = pr.UnknownLead
 		}
@@ -435,6 +455,12 @@ func (c *Ctx) candidates(s *State, msg *DecideMsg) []Candidate {
 		// locks in a choice the next decisions could make better.
 		if ab.Kind == KindQueued && s.mhAt > 0.5 {
 			continue
+		}
+		// An action clearly worth less than the rage it costs only wins a rollout comparison by noise.
+		if c.Pr.CandFloor > -1 && ab.Kind != KindQueued && ab.Kind != KindRage && ab.Cost > 0 {
+			if c.immediate(s, i)-c.Mu*ab.Cost < c.Pr.CandFloor*c.Mu*ab.Cost {
+				continue
+			}
 		}
 		cand := Candidate{Act: i}
 		if b, ok := borrow[i]; ok && ab.Stances != 0 && ab.Stances&(1<<s.stance) == 0 {

@@ -312,13 +312,12 @@ func (d *Driver) message(sim *core.Simulation) *DecideMsg {
 	targets := sim.Encounter.TargetUnits
 	// Time to die as the console estimates it: remaining health over the damage rate so far, with noise.
 	ttk := func(i int) *TTK {
-		spent := h.HP[i] - h.left(i)
-		var left float64
-		if now < 3*time.Second || spent <= 0 {
-			left = h.HP[i] / max(d.cfg.PriorDPS, 1)
-		} else {
-			left = h.left(i) / (spent / now.Seconds())
-		}
+		// The console's estimate: health lost over the last six seconds, blended with a prior while the
+		// window is short or the enemy is barely touched.
+		rate, w := h.RecentRate(i)
+		prior := max(d.cfg.PriorDPS, 1)
+		rate = (rate*w + prior*1.5) / (w + 1.5)
+		left := h.left(i) / max(rate, 1)
 		n := d.cfg.TTKNoise
 		return &TTK{P10: fp(left * (1 - n)), P50: fp(left), P90: fp(left * (1 + 1.5*n))}
 	}
