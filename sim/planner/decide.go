@@ -28,6 +28,7 @@ type Params struct {
 	SwingLossScale float64  // scale on the value of off-hand swings a cast pushes back (untalented Slam)
 	SwingLossMH    float64  // the same for the main hand
 	NextBoost      float64  // extra threat value on other enemies as the target's death nears (hold)
+	NextScale      float64  // seconds of the target's remaining life over which that boost fades
 	RageKeep       float64  // share of the rage price leftover rage keeps at the horizon
 	SinkFloor      float64  // the policy queues a rage sink only above this share of the rage price per rage
 	WaitBias       float64  // percent of its value added to waiting
@@ -39,7 +40,7 @@ type Params struct {
 }
 
 var DefaultParams = Params{Horizon: 7, MinSamples: 6, MaxSamples: 60, HoldDecay: 40, HoldFloor: 1, HoldLook: 8, CeilingK: 3, CeilingStart: 0.7, UnknownLead: 0.7,
-	LooseWeight: 1.5, ContestWeight: 2, ArmorScale: 0.5, SwingLossScale: 4, SwingLossMH: 4, NextBoost: 12, RageKeep: 0.9, SinkFloor: 0.5, WaitBias: 0, CandFloor: -0.25, CDValue: 1}
+	LooseWeight: 3, ContestWeight: 2, ArmorScale: 0.5, SwingLossScale: 4, SwingLossMH: 4, NextBoost: 12, NextScale: 8, RageKeep: 0.9, SinkFloor: 0.5, WaitBias: 0, CandFloor: -0.25, CDValue: 1}
 
 // enemyAPCoefficient is the simulator's enemy attack power coefficient (core.EnemyAutoAttackAPCoefficient): the
 // share of base damage one point of attack power adds, used to value Demoralizing Shout.
@@ -301,7 +302,7 @@ func NewCtx(m *Model, msg *DecideMsg, pr Params) (*Ctx, *State, []string) {
 			c.WThreatOther = other / float64(n)
 			// The next enemy becomes the focus when the target dies, and the group's damage follows it: threat
 			// banked on it before then is worth more as the target's death nears.
-			c.WThreatOther += pr.NextBoost * math.Exp(-c.TTK[1]/8)
+			c.WThreatOther += pr.NextBoost * math.Exp(-c.TTK[1]/max(pr.NextScale, 0.1))
 		} else {
 			c.WThreatOther = pr.UnknownLead
 		}
