@@ -2,12 +2,17 @@ package warrior
 
 import (
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 func (warrior *Warrior) registerExecuteSpell() {
 
-	flatDamage := 600.0
-	convertedRageDamage := 15.0
+	rank := warrior.rank(ranks.Execute)
+	if rank == nil {
+		return
+	}
+	flatDamage := rank.Find(ranks.EffectDummy, 0).Low
+	convertedRageDamage := ranks.ExecuteDamagePerRage(rank)
 	spellID := int32(20662)
 
 	var rageMetrics *core.ResourceMetrics

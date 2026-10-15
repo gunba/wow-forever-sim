@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 const ShoutExpirationThreshold = time.Second * 3
@@ -45,15 +46,19 @@ func (warrior *Warrior) newShoutSpellConfig(actionID core.ActionID, rank int32, 
 }
 
 func (warrior *Warrior) registerBattleShout() {
-	rank := core.TernaryInt32(core.IncludeAQ, 7, 6)
-	actionId := core.BattleShoutSpellId[rank]
+	trained := warrior.rank(ranks.BattleShout)
+	if trained == nil {
+		return
+	}
+	rank := min(trained.Rank, core.TernaryInt32(core.IncludeAQ, 7, 6))
+	actionId := core.BattleShoutSpellId[core.TernaryInt32(core.IncludeAQ, 7, 6)]
 	has3pcWrath := warrior.HasSetBonus(ItemSetBattleGearOfWrath, 3)
 
 	warrior.BattleShout = warrior.newShoutSpellConfig(core.ActionID{SpellID: actionId}, rank, warrior.NewPartyAuraArray(func(unit *core.Unit) *core.Aura {
 		// Improved Battle Shout is gone from the Forever tree and did not become baseline: the beta
 		// client's rank 7 gives 139 attack power for 3 min, 60% of Classic's 232 for 2 min. Booming
 		// Voice widens the radius and, since October 1, discounts the Rage cost. The base value and duration live in core.BattleShoutAura.
-		return core.BattleShoutAura(unit, 0, 0, has3pcWrath)
+		return core.BattleShoutAuraRank(unit, rank, 0, 0, has3pcWrath)
 	}))
 }
 

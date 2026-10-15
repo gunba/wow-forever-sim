@@ -174,7 +174,7 @@ func (warrior *Warrior) applyBloodthrill() {
 				return
 			}
 
-			if !warrior.Rend.Dot(result.Target).IsActive() {
+			if warrior.Rend == nil || !warrior.Rend.Dot(result.Target).IsActive() {
 				return
 			}
 

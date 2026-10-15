@@ -2,13 +2,22 @@ package warrior
 
 import (
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 func (warrior *Warrior) registerDemoralizingShoutSpell() {
-	rank := int32(5)
-	actionId := core.DemoralizingShoutSpellId[rank]
+	trained := warrior.rank(ranks.DemoralizingShout)
+	if trained == nil {
+		return
+	}
+	rank := trained.Rank
+	actionId := core.DemoralizingShoutSpellId[5]
+	apReduction := -trained.Find(ranks.EffectApplyAura, ranks.AuraModAttackPower).Low
 
 	warrior.DemoralizingShoutAuras = warrior.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
+		if rank < 5 {
+			return core.DemoralizingShoutAuraWithReduction(target, actionId, apReduction)
+		}
 		// Improved Demoralizing Shout is gone from the Forever tree and is baseline at full strength:
 		// the beta client's rank 5 reduces attack power by 196, Classic's 140 plus 40%, for 45 sec.
 		// Forever's Booming Voice only widens the radius.
@@ -21,6 +30,9 @@ func (warrior *Warrior) registerDemoralizingShoutSpell() {
 		// old guide's zero-threat behavior. Its amount is unpublished: retain
 		// this Classic-derived rank value only as an explicit provisional
 		// convention. An optional per-target override supports sensitivity.
+		if rank < 5 {
+			flatThreatBonus = trained.Find(ranks.EffectThreat, 0).Low * ranks.DemoralizingThreatScale
+		}
 		if warrior.ForeverDemoralizingThreat != nil {
 			flatThreatBonus = *warrior.ForeverDemoralizingThreat
 		}

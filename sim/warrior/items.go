@@ -56,7 +56,9 @@ func init() {
 		warrior.RegisterAura(core.Aura{
 			Label: "Hamstring Rage Reduction",
 			OnInit: func(aura *core.Aura, sim *core.Simulation) {
-				warrior.Hamstring.Cost.FlatModifier -= 3
+				if warrior.Hamstring != nil {
+					warrior.Hamstring.Cost.FlatModifier -= 3
+				}
 			},
 		})
 	})
@@ -96,7 +98,9 @@ func init() {
 		warrior.RegisterAura(core.Aura{
 			Label: "Reduces the cost of your Hamstring ability by 2 rage points.",
 			OnInit: func(aura *core.Aura, sim *core.Simulation) {
-				warrior.Hamstring.Cost.FlatModifier -= 2
+				if warrior.Hamstring != nil {
+					warrior.Hamstring.Cost.FlatModifier -= 2
+				}
 			},
 		})
 	})
@@ -107,7 +111,9 @@ func init() {
 		warrior.RegisterAura(core.Aura{
 			Label: "Hamstring Rage Reduction",
 			OnInit: func(aura *core.Aura, sim *core.Simulation) {
-				warrior.Hamstring.Cost.FlatModifier -= 3
+				if warrior.Hamstring != nil {
+					warrior.Hamstring.Cost.FlatModifier -= 3
+				}
 			},
 		})
 	})

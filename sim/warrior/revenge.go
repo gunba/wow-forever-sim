@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 const RevengeRanks = 6
@@ -15,10 +16,14 @@ var RevengeBaseDamage = [RevengeRanks + 1][]float64{{0, 0}, {20, 24}, {31, 37}, 
 var RevengeLevel = [RevengeRanks + 1]int{0, 14, 24, 34, 44, 54, 60}
 
 func (warrior *Warrior) registerRevengeSpell(cdTimer *core.Timer) {
+	rank := warrior.rank(ranks.Revenge)
+	if rank == nil {
+		return
+	}
 	actionID := core.ActionID{SpellID: core.TernaryInt32(core.IncludeAQ, 25288, 11601)}
-	basedamageLow := core.TernaryFloat64(core.IncludeAQ, 138, 109)
-	basedamageHigh := core.TernaryFloat64(core.IncludeAQ, 168, 133)
-	revengeLevel := core.TernaryFloat64(core.IncludeAQ, 60.0, 54.0)
+	damage := rank.Find(ranks.EffectSchoolDamage, 0)
+	basedamageLow, basedamageHigh := damage.Low, damage.High
+	revengeLevel := float64(rank.Level)
 
 	warrior.revengeProcAura = warrior.RegisterAura(core.Aura{
 		Label:    "Revenge",
@@ -78,7 +83,7 @@ func (warrior *Warrior) registerRevengeSpell(cdTimer *core.Timer) {
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			baseDamage := sim.Roll(basedamageLow, basedamageHigh)
 			if sim.IsForever() {
-				baseDamage += 0.28 * spell.MeleeAttackPower(target)
+				baseDamage += ranks.RevengeAPCoefficient * spell.MeleeAttackPower(target)
 			}
 			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialHitAndCrit)
 

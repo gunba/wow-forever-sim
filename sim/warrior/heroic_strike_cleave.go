@@ -2,13 +2,18 @@ package warrior
 
 import (
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 func (warrior *Warrior) registerHeroicStrikeSpell(realismICD *core.Cooldown) {
-	flatDamageBonus := core.TernaryFloat64(core.IncludeAQ, 157, 138)
+	rank := warrior.rank(ranks.HeroicStrike)
+	if rank == nil {
+		return
+	}
+	flatDamageBonus := rank.Find(ranks.EffectWeaponDamageBonus, 0).Low
+	// The action ID stays the top rank's so rotations name the ability, not a rank.
 	spellID := core.TernaryInt32(core.IncludeAQ, 25286, 11567)
-	// No known equation
-	threat := core.TernaryFloat64(core.IncludeAQ, 173, 145)
+	threat := ranks.HeroicStrikeThreat(rank)
 
 	warrior.HeroicStrike = warrior.RegisterSpell(AnyStance, core.SpellConfig{
 		ActionID:    core.ActionID{SpellID: spellID},
@@ -47,9 +52,13 @@ func (warrior *Warrior) registerHeroicStrikeSpell(realismICD *core.Cooldown) {
 }
 
 func (warrior *Warrior) registerCleaveSpell(realismICD *core.Cooldown) {
-	flatDamageBonus := 50.0
+	rank := warrior.rank(ranks.Cleave)
+	if rank == nil {
+		return
+	}
+	flatDamageBonus := rank.Find(ranks.EffectWeaponDamageBonus, 0).Low
 	spellID := int32(20569)
-	threat := 100.0
+	threat := ranks.CleaveThreat(rank)
 
 	rageCost := 20 - float64(warrior.Talents.ImprovedCleave) - core.TernaryFloat64(warrior.Talents.RagingBlows, 2, 0)
 	if warrior.Env.IsForever() {

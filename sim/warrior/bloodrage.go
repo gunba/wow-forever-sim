@@ -4,9 +4,13 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 func (warrior *Warrior) registerBloodrageCD() {
+	if warrior.rank(ranks.Bloodrage) == nil {
+		return
+	}
 	actionID := core.ActionID{SpellID: 2687}
 	rageMetrics := warrior.NewRageMetrics(actionID)
 

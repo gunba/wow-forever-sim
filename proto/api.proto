@@ -36,6 +36,8 @@ message Player {
 	// Provisional flat threat per affected target, before stance/global modifiers.
 	// Unset retains the Classic-derived rank convention; explicit zero is valid.
 	optional double forever_demoralizing_threat = 55;
+	// Character level 1-60; 0 means 60. Base stats, ability ranks and attack tables follow it.
+	int32 level = 56;
 	// Hypothetical equipment sensitivity: item/suffix stats and weapon damage only.
 	// Zero means unchanged. Enchants, speeds, weapon skills and proc effects stay fixed.
 	double equipment_scale = 51;

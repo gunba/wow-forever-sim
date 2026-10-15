@@ -7,6 +7,7 @@ import (
 	"github.com/wowsims/classic/sim/core"
 	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/core/stats"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 const (
@@ -119,6 +120,14 @@ type Warrior struct {
 	DemoralizingShoutAuras core.AuraArray
 	SunderArmorAuras       core.AuraArray
 	ThunderClapAuras       core.AuraArray
+
+	// Picks each ability's trained rank: by character level, or from known spell IDs when set.
+	Ranks ranks.Selector
+}
+
+// rank is the ability's trained rank for this character, or nil when it is not trained.
+func (warrior *Warrior) rank(a ranks.Ability) *ranks.Rank {
+	return warrior.Ranks.Rank(a)
 }
 
 func (warrior *Warrior) GetCharacter() *core.Character {
@@ -211,13 +220,24 @@ func (warrior *Warrior) Reset(sim *core.Simulation) {
 		warrior.Stance = BattleStance
 		warrior.BattleStanceAura.Activate(sim)
 	case proto.WarriorStance_WarriorStanceDefensive:
+		if warrior.DefensiveStance == nil { // not trained yet
+			warrior.Stance = BattleStance
+			warrior.BattleStanceAura.Activate(sim)
+			break
+		}
 		warrior.Stance = DefensiveStance
 		warrior.DefensiveStanceAura.Activate(sim)
 	case proto.WarriorStance_WarriorStanceBerserker:
+		if warrior.BerserkerStance == nil {
+			warrior.Stance = BattleStance
+			warrior.BattleStanceAura.Activate(sim)
+			break
+		}
 		warrior.Stance = BerserkerStance
 		warrior.BerserkerStanceAura.Activate(sim)
 	default:
-		if warrior.PrimaryTalentTree == ArmsTree {
+		if warrior.PrimaryTalentTree == ArmsTree || (warrior.PrimaryTalentTree == FuryTree && warrior.BerserkerStance == nil) ||
+			(warrior.PrimaryTalentTree != FuryTree && warrior.DefensiveStance == nil) {
 			warrior.Stance = BattleStance
 			warrior.BattleStanceAura.Activate(sim)
 		} else if warrior.PrimaryTalentTree == FuryTree {
@@ -237,13 +257,14 @@ func NewWarrior(character *core.Character, talents string, inputs WarriorInputs)
 		WarriorInputs: inputs,
 	}
 	warrior.talentsString = talents
+	warrior.Ranks = ranks.Selector{Level: character.Level}
 
 	warrior.PseudoStats.CanParry = true
 
 	warrior.AddStatDependency(stats.Strength, stats.AttackPower, core.APPerStrength[character.Class])
 	warrior.PseudoStats.BlockValuePerStrength = .05 // 20 str = 1 block
-	warrior.AddStatDependency(stats.Agility, stats.MeleeCrit, core.CritPerAgiAtLevel[character.Class]*core.CritRatingPerCritChance)
-	warrior.AddStatDependency(stats.Agility, stats.Dodge, core.DodgePerAgiAtLevel[character.Class]*core.DodgeRatingPerDodgeChance)
+	warrior.AddStatDependency(stats.Agility, stats.MeleeCrit, core.CritPerAgiForLevel(character.Class, character.Level)*core.CritRatingPerCritChance)
+	warrior.AddStatDependency(stats.Agility, stats.Dodge, core.DodgePerAgiForLevel(character.Class, character.Level)*core.DodgeRatingPerDodgeChance)
 	warrior.AddStatDependency(stats.BonusArmor, stats.Armor, 1)
 
 	guardians.ConstructGuardians(&warrior.Character)

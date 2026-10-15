@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 func (warrior *Warrior) registerMortalStrikeSpell(cdTimer *core.Timer) {
@@ -12,7 +13,11 @@ func (warrior *Warrior) registerMortalStrikeSpell(cdTimer *core.Timer) {
 	}
 
 	// Rank 4 (21553) in the beta client, as in Classic. The talent tooltip's 85 is rank 1's (12294).
-	bonusDamage := 160.0
+	rank := warrior.rank(ranks.MortalStrike)
+	if rank == nil {
+		rank = &ranks.All(ranks.MortalStrike)[0] // the talent teaches rank 1
+	}
+	bonusDamage := rank.Find(ranks.EffectNormalizedWeapon, 0).Low
 	spellID := int32(21553)
 
 	warrior.MortalStrike = warrior.RegisterSpell(AnyStance, core.SpellConfig{

@@ -4,9 +4,13 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 func (warrior *Warrior) registerWhirlwindSpell() {
+	if warrior.rank(ranks.Whirlwind) == nil {
+		return
+	}
 	results := make([]*core.SpellResult, min(4, warrior.Env.GetNumTargets()))
 	ohResults := make([]*core.SpellResult, len(results))
 

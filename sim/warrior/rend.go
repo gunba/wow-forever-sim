@@ -4,20 +4,21 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 func (warrior *Warrior) registerRendSpell() {
 
-	rend := map[int32]struct {
+	rank := warrior.rank(ranks.Rend)
+	if rank == nil {
+		return
+	}
+	tick := rank.Find(ranks.EffectApplyAura, ranks.AuraPeriodicDamage)
+	rend := struct {
 		ticks   int32
 		damage  float64
 		spellID int32
-	}{
-		25: {spellID: 6547, damage: 9, ticks: 5},
-		40: {spellID: 11572, damage: 14, ticks: 7},
-		50: {spellID: 11573, damage: 18, ticks: 7},
-		60: {spellID: 11574, damage: 21, ticks: 7},
-	}[warrior.Level]
+	}{spellID: 11574, damage: tick.Low, ticks: rank.DurationMs / tick.PeriodMs}
 
 	baseDamage := rend.damage
 
@@ -62,7 +63,7 @@ func (warrior *Warrior) registerRendSpell() {
 					// "Rend: Now gains significant damage scaling from Attack Power" (Blizzard
 					// class deep dive, Priest and Warrior). Fight Club logs: 2% of current AP per
 					// tick at rank 2, read at each tick, with Improved Rend scaling the AP term.
-					dot.Spell.CalcAndDealPeriodicDamage(sim, target, baseDamage+0.02*dot.Spell.MeleeAttackPower(target), dot.OutcomeTick)
+					dot.Spell.CalcAndDealPeriodicDamage(sim, target, baseDamage+ranks.RendAPCoefficient*dot.Spell.MeleeAttackPower(target), dot.OutcomeTick)
 				} else {
 					dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
 				}

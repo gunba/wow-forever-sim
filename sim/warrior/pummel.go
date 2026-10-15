@@ -4,9 +4,13 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 func (warrior *Warrior) registerPummelSpell() {
+	if warrior.rank(ranks.Pummel) == nil {
+		return
+	}
 	damage := 50.0
 
 	warrior.RegisterSpell(BerserkerStance, core.SpellConfig{

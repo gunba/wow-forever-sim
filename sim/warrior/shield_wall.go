@@ -4,10 +4,14 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 // TODO: Classic Update
 func (warrior *Warrior) RegisterShieldWallCD() {
+	if warrior.rank(ranks.ShieldWall) == nil {
+		return
+	}
 	// Forever trades strength for uptime: 60% for 12 sec against Classic's 75% for 10.
 	// Confirmed by the beta client.
 	forever := warrior.Env.IsForever()

@@ -4,12 +4,17 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 func (warrior *Warrior) registerSlamSpell() {
-	requiredLevel := 54
+	rank := warrior.rank(ranks.Slam)
+	if rank == nil {
+		return
+	}
+	requiredLevel := int(rank.Level)
 	spellID := int32(11605)
-	flatDamageBonus := 87.0
+	flatDamageBonus := rank.Find(ranks.EffectWeaponDamageBonus, 0).Low
 
 	// Improved Slam takes the same amount off the global cooldown as it does the cast time.
 	castReduction := time.Millisecond * 250 * time.Duration(warrior.Talents.ImprovedSlam)

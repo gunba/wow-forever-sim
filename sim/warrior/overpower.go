@@ -4,10 +4,15 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 func (warrior *Warrior) registerOverpowerSpell(cdTimer *core.Timer) {
-	bonusDamage := 35.0
+	rank := warrior.rank(ranks.Overpower)
+	if rank == nil {
+		return
+	}
+	bonusDamage := rank.Find(ranks.EffectNormalizedWeapon, 0).Low
 	spellID := int32(11585)
 	windowID := spellID
 	if warrior.Env.IsForever() {

@@ -5,6 +5,7 @@ import (
 
 	"github.com/wowsims/classic/sim/core"
 	"github.com/wowsims/classic/sim/core/stats"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 type Stance uint8
@@ -163,6 +164,10 @@ func (warrior *Warrior) registerStances() {
 	warrior.registerDefensiveStanceAura()
 	warrior.registerBerserkerStanceAura()
 	warrior.BattleStance = warrior.makeStanceSpell(BattleStance, warrior.BattleStanceAura, stanceCD)
-	warrior.DefensiveStance = warrior.makeStanceSpell(DefensiveStance, warrior.DefensiveStanceAura, stanceCD)
-	warrior.BerserkerStance = warrior.makeStanceSpell(BerserkerStance, warrior.BerserkerStanceAura, stanceCD)
+	if warrior.rank(ranks.DefensiveStance) != nil {
+		warrior.DefensiveStance = warrior.makeStanceSpell(DefensiveStance, warrior.DefensiveStanceAura, stanceCD)
+	}
+	if warrior.rank(ranks.BerserkerStance) != nil {
+		warrior.BerserkerStance = warrior.makeStanceSpell(BerserkerStance, warrior.BerserkerStanceAura, stanceCD)
+	}
 }

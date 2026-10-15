@@ -5,9 +5,13 @@ import (
 
 	"github.com/wowsims/classic/sim/core"
 	"github.com/wowsims/classic/sim/core/stats"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 func (warrior *Warrior) RegisterShieldBlockCD() {
+	if warrior.rank(ranks.ShieldBlock) == nil {
+		return
+	}
 	actionID := core.ActionID{SpellID: 2565}
 	cooldownDur := time.Second * 5
 	duration := time.Second * 5

@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 func (warrior *Warrior) registerShieldSlamSpell() {
@@ -14,8 +15,11 @@ func (warrior *Warrior) registerShieldSlamSpell() {
 	// Rank 4 in the beta client: 640-670 plus Block Value once. The 421-439 this used to carry is
 	// rank 1's, and the second Block Value and 15% of attack power were Season of Discovery's.
 	spellID := int32(23925)
-	damageLow := 640.0
-	damageHigh := 670.0
+	rank := warrior.rank(ranks.ShieldSlam)
+	if rank == nil {
+		rank = &ranks.All(ranks.ShieldSlam)[0] // the talent teaches rank 1
+	}
+	damageLow, damageHigh := rank.Find(ranks.EffectSchoolDamage, 0).Low, rank.Find(ranks.EffectSchoolDamage, 0).High
 	threat := 254.0
 
 	warrior.ShieldSlam = warrior.RegisterSpell(AnyStance, core.SpellConfig{

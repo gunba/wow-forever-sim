@@ -1,6 +1,8 @@
 package core
 
 import (
+	"math"
+
 	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/core/stats"
 )
@@ -301,4 +303,77 @@ var ClassBaseStats = map[proto.Class]stats.Stats{
 func getBaseStatsCombo(r proto.Race, c proto.Class) stats.Stats {
 	starting := ClassBaseStats[c]
 	return starting.Add(RaceOffsets[r]).Add(ClassBaseCrit[c])
+}
+
+// PlayerLevel is the player's character level: Player.level when it is 1-59, otherwise the level cap.
+func PlayerLevel(player *proto.Player) int32 {
+	if player != nil && player.Level >= 1 && player.Level < CharacterMaxLevel {
+		return player.Level
+	}
+	return CharacterMaxLevel
+}
+
+// getBaseStatsComboAtLevel returns getBaseStatsCombo at the level cap and the generated per-level class curve
+// (tools/forever_levels) below it. Base attack power follows the Classic level formulas behind ClassBaseStats.
+func getBaseStatsComboAtLevel(r proto.Race, c proto.Class, level int32) stats.Stats {
+	if level >= CharacterMaxLevel || level < 1 {
+		return getBaseStatsCombo(r, c)
+	}
+	byLevel, ok := classBaseStatsByLevel[c]
+	if !ok {
+		return getBaseStatsCombo(r, c)
+	}
+	base := byLevel[level]
+	base[stats.AttackPower] = baseAttackPowerAtLevel(c, level)
+	if c == proto.Class_ClassHunter {
+		base[stats.RangedAttackPower] = baseAttackPowerAtLevel(c, level)
+	}
+	return base.Add(RaceOffsetAtLevel(r, level)).Add(ClassBaseCrit[c])
+}
+
+func baseAttackPowerAtLevel(c proto.Class, level int32) float64 {
+	l := float64(level)
+	switch c {
+	case proto.Class_ClassWarrior, proto.Class_ClassPaladin:
+		return l*3 - 20
+	case proto.Class_ClassHunter, proto.Class_ClassRogue, proto.Class_ClassShaman:
+		return l*2 - 20
+	case proto.Class_ClassDruid:
+		return -20
+	default:
+		return -10
+	}
+}
+
+// RaceOffsetAtLevel blends Forever's reported level-1 race stats into the level-60 offsets the benchmark uses.
+// Only the endpoints are sourced; the blend in between is an assumption.
+func RaceOffsetAtLevel(r proto.Race, level int32) stats.Stats {
+	end := RaceOffsets[r]
+	start, ok := foreverRaceStartOffsets[r]
+	if !ok || level >= CharacterMaxLevel {
+		return end
+	}
+	f := float64(max(level, 1)-1) / float64(CharacterMaxLevel-1)
+	var out stats.Stats
+	for i := range out {
+		out[i] = math.Round(start[i] + (end[i]-start[i])*f)
+	}
+	return out
+}
+
+// CritPerAgiForLevel is melee crit (percent) per Agility at a level. At the level cap it is CritPerAgiAtLevel, which
+// the client table reproduces.
+func CritPerAgiForLevel(c proto.Class, level int32) float64 {
+	if table, ok := critPerAgiByLevel[c]; ok && level >= 1 && level < CharacterMaxLevel {
+		return table[level]
+	}
+	return CritPerAgiAtLevel[c]
+}
+
+// DodgePerAgiForLevel scales the level-cap dodge per Agility by the crit-per-Agility curve.
+func DodgePerAgiForLevel(c proto.Class, level int32) float64 {
+	if table, ok := critPerAgiByLevel[c]; ok && level >= 1 && level < CharacterMaxLevel && table[CharacterMaxLevel] > 0 {
+		return DodgePerAgiAtLevel[c] * table[level] / table[CharacterMaxLevel]
+	}
+	return DodgePerAgiAtLevel[c]
 }

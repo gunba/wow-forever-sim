@@ -2,12 +2,17 @@ package warrior
 
 import (
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 func (warrior *Warrior) registerHamstringSpell() {
-	damage := 45.0
+	rank := warrior.rank(ranks.Hamstring)
+	if rank == nil {
+		return
+	}
+	damage := rank.Find(ranks.EffectSchoolDamage, 0).Low
 	spellID := int32(7373)
-	spell_level := 54.0
+	spell_level := float64(rank.Level)
 
 	warrior.Hamstring = warrior.RegisterSpell(BattleStance|BerserkerStance, core.SpellConfig{
 		ActionID:    core.ActionID{SpellID: spellID},

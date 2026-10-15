@@ -4,11 +4,16 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 func (warrior *Warrior) registerThunderClapSpell() {
+	rank := warrior.rank(ranks.ThunderClap)
+	if rank == nil {
+		return
+	}
 	spellID := int32(11581)
-	baseDamage := 103.0
+	baseDamage := rank.Find(ranks.EffectSchoolDamage, 0).Low
 	has5pcConq := warrior.HasSetBonus(ItemSetConquerorsBattleGear, 5)
 	// Forever doubles the slow to 20% and moves the cooldown from 4 to 6 sec.
 	attackSpeedReduction := core.TernaryInt32(has5pcConq, 25, 20)
@@ -53,7 +58,7 @@ func (warrior *Warrior) registerThunderClapSpell() {
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			damage := baseDamage
 			if sim.IsForever() {
-				damage += 0.07 * spell.MeleeAttackPower(target)
+				damage += ranks.ThunderClapAPCoefficient * spell.MeleeAttackPower(target)
 			}
 			for idx := range results {
 				results[idx] = spell.CalcDamage(sim, target, damage, spell.OutcomeMagicHitAndCrit)

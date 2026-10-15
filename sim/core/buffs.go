@@ -1634,8 +1634,13 @@ var BattleShoutLevel = [BattleShoutRanks + 1]int{0, 1, 12, 22, 32, 42, 52, 60}
 // Forever's tooltip explicitly grants melee AP. Improved Battle Shout was removed;
 // Booming Voice increases radius, not duration.
 func BattleShoutAura(unit *Unit, impBattleShout int32, boomingVoicePts int32, has3pcWrath bool) *Aura {
-	rank := TernaryInt32(IncludeAQ, 7, 6)
-	spellId := BattleShoutSpellId[rank]
+	return BattleShoutAuraRank(unit, TernaryInt32(IncludeAQ, 7, 6), impBattleShout, boomingVoicePts, has3pcWrath)
+}
+
+// BattleShoutAuraRank is Battle Shout at a given rank (1-7).
+// Its action ID is always the top rank's, so rotations that check the buff find it at any rank.
+func BattleShoutAuraRank(unit *Unit, rank int32, impBattleShout int32, boomingVoicePts int32, has3pcWrath bool) *Aura {
+	spellId := BattleShoutSpellId[TernaryInt32(IncludeAQ, 7, 6)]
 	baseAP := BattleShoutBaseAP[rank]
 	if unit.Env != nil && unit.Env.IsForever() {
 		impBattleShout = 0

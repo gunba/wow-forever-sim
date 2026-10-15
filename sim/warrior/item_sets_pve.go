@@ -42,6 +42,9 @@ var ItemSetBattleGearOfMight = core.NewItemSet(core.ItemSet{
 			warrior.RegisterAura(core.Aura{
 				Label: "Enhanced Sunder Armor",
 				OnInit: func(aura *core.Aura, sim *core.Simulation) {
+					if warrior.SunderArmor == nil {
+						return
+					}
 					warrior.SunderArmor.ThreatMultiplier *= 1.15
 					warrior.SunderArmor.FlatThreatBonus *= 1.15
 				},
@@ -161,7 +164,9 @@ var ItemSetVindicatorsBattlegear = core.NewItemSet(core.ItemSet{
 			warrior.RegisterAura(core.Aura{
 				Label: "Improved Whirlwind",
 				OnInit: func(aura *core.Aura, sim *core.Simulation) {
-					warrior.Whirlwind.Cost.FlatModifier -= 3
+					if warrior.Whirlwind != nil {
+						warrior.Whirlwind.Cost.FlatModifier -= 3
+					}
 				},
 			})
 		},
@@ -222,10 +227,14 @@ var ItemSetConquerorsBattleGear = core.NewItemSet(core.ItemSet{
 			core.MakePermanent(warrior.RegisterAura(core.Aura{
 				Label: "Conqueror Shout Bonus",
 				OnGain: func(aura *core.Aura, sim *core.Simulation) {
-					warrior.BattleShout.Cost.Multiplier -= 35
+					if warrior.BattleShout != nil {
+						warrior.BattleShout.Cost.Multiplier -= 35
+					}
 				},
 				OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-					warrior.BattleShout.Cost.Multiplier += 35
+					if warrior.BattleShout != nil {
+						warrior.BattleShout.Cost.Multiplier += 35
+					}
 				},
 			}))
 		},

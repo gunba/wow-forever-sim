@@ -2,10 +2,22 @@ package warrior
 
 import (
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 func (warrior *Warrior) registerSunderArmorSpell() {
-	warrior.SunderArmorAuras = warrior.NewEnemyAuraArray(core.SunderArmorAura)
+	rank := warrior.rank(ranks.SunderArmor)
+	if rank == nil {
+		return
+	}
+	armorPerStack := -rank.Find(ranks.EffectApplyAura, ranks.AuraModArmorPercentOrNeg).Low
+	if rank.Rank >= 5 {
+		warrior.SunderArmorAuras = warrior.NewEnemyAuraArray(core.SunderArmorAura)
+	} else {
+		warrior.SunderArmorAuras = warrior.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
+			return core.SunderArmorAuraWithReduction(target, armorPerStack)
+		})
+	}
 
 	spellID := int32(11597)
 
@@ -15,8 +27,9 @@ func (warrior *Warrior) registerSunderArmorSpell() {
 	// flat values (34/75); 0.05 is the provisional level-60 value.
 	threat := 2.25 * 2 * float64(warrior.Level)
 	if warrior.Env.IsForever() {
-		threat = 206
+		threat = rank.Find(ranks.EffectThreat, 0).Low
 	}
+	threatAP := ranks.SunderThreatAP(rank)
 
 	var canApplySunder bool
 
@@ -55,7 +68,7 @@ func (warrior *Warrior) registerSunderArmorSpell() {
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			if sim.IsForever() {
-				spell.FlatThreatBonus = threat + 0.05*spell.MeleeAttackPower(target)
+				spell.FlatThreatBonus = threat + threatAP*spell.MeleeAttackPower(target)
 			}
 			result := spell.CalcAndDealOutcome(sim, target, spell.OutcomeMeleeWeaponSpecialNoCrit) // Cannot be blocked
 			if !result.Landed() {

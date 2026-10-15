@@ -686,7 +686,11 @@ var majorArmorReductionEffectCategory = "MajorArmorReduction"
 var minorArmorReductionEffectCategory = "MinorArmorReduction"
 
 func SunderArmorAura(target *Unit) *Aura {
-	arpen := 450.0
+	return SunderArmorAuraWithReduction(target, 450)
+}
+
+// SunderArmorAuraWithReduction is Sunder Armor with a rank's armor reduction per stack.
+func SunderArmorAuraWithReduction(target *Unit, arpen float64) *Aura {
 
 	var effect *ExclusiveEffect
 	aura := target.GetOrRegisterAura(Aura{
@@ -927,6 +931,17 @@ func DemoralizingShoutAura(target *Unit) *Aura {
 		Duration: time.Second * 45,
 	})
 	apReductionEffect(aura, baseAPReduction)
+	return aura
+}
+
+// DemoralizingShoutAuraWithReduction is a lower rank's Demoralizing Shout.
+func DemoralizingShoutAuraWithReduction(target *Unit, spellID int32, apReduction float64) *Aura {
+	aura := target.GetOrRegisterAura(Aura{
+		Label:    "DemoralizingShout",
+		ActionID: ActionID{SpellID: spellID},
+		Duration: time.Second * 45,
+	})
+	apReductionEffect(aura, apReduction)
 	return aura
 }
 
