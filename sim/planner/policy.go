@@ -280,16 +280,16 @@ func (c *Ctx) swingLoss(s *State, ab *Ability) float64 {
 	if mhAt < s.t {
 		mhAt = s.t + m.MH.Speed/2
 	}
-	loss := max(0, s.t+ab.Cast+m.MH.Speed-mhAt) / m.MH.Speed * per
+	loss := max(0, s.t+ab.Cast+m.MH.Speed-mhAt) / m.MH.Speed * per * c.Pr.SwingLossMH
 	if m.DW {
 		ohAt := s.ohAt
 		if ohAt < s.t {
 			ohAt = s.t + m.OH.Speed/2
 		}
 		ohPer := per * m.OH.DamageMult * m.OH.Avg() / max(m.MH.Avg(), 1)
-		loss += max(0, s.t+ab.Cast+1.5*m.OH.Speed-ohAt) / m.OH.Speed * ohPer
+		loss += max(0, s.t+ab.Cast+1.5*m.OH.Speed-ohAt) / m.OH.Speed * ohPer * c.Pr.SwingLossScale
 	}
-	return loss * c.Pr.SwingLossScale
+	return loss
 }
 
 // tickCrit is the expected multiplier of Forever's critting Rend ticks.

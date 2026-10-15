@@ -237,7 +237,7 @@ func BuildWarriorModel(w *warrior.Warrior, known map[int32]bool) *Model {
 }
 
 // bloodthirstAP is the Forever attack power coefficient of Bloodthirst (October 1), read from the engine's formula.
-const bloodthirstAP = 0.35
+const bloodthirstAP = 0.45
 
 func sp(ws *warrior.WarriorSpell) *core.Spell {
 	if ws == nil {

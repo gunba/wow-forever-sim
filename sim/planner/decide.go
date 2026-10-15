@@ -24,7 +24,8 @@ type Params struct {
 	LooseWeight    float64  // threat value per point (hold) on an enemy someone else has
 	ContestWeight  float64  // threat value per point (hold) on an enemy the player is tanking without the lead
 	ArmorScale     float64  // scale on the armor-reduction value of Sunder Armor beyond what the rollout sees
-	SwingLossScale float64  // scale on the value of swings a cast pushes back (untalented Slam)
+	SwingLossScale float64  // scale on the value of off-hand swings a cast pushes back (untalented Slam)
+	SwingLossMH    float64  // the same for the main hand
 	NextBoost      float64  // extra threat value on other enemies as the target's death nears (hold)
 	RageKeep       float64  // share of the rage price leftover rage keeps at the horizon
 	SinkFloor      float64  // the policy queues a rage sink only above this share of the rage price per rage
@@ -36,7 +37,7 @@ type Params struct {
 }
 
 var DefaultParams = Params{Horizon: 7, MinSamples: 6, MaxSamples: 60, HoldDecay: 40, HoldFloor: 1, HoldLook: 8, CeilingK: 3, UnknownLead: 0.7,
-	LooseWeight: 1.5, ContestWeight: 2, ArmorScale: 1, SwingLossScale: 4, NextBoost: 12, RageKeep: 0.9, SinkFloor: 0.5, WaitBias: 0, CandFloor: -0.25}
+	LooseWeight: 1.5, ContestWeight: 2, ArmorScale: 0.5, SwingLossScale: 4, SwingLossMH: 4, NextBoost: 12, RageKeep: 0.9, SinkFloor: 0.5, WaitBias: 0, CandFloor: -0.25}
 
 // enemyAPCoefficient is the simulator's enemy attack power coefficient (core.EnemyAutoAttackAPCoefficient): the
 // share of base damage one point of attack power adds, used to value Demoralizing Shout.
