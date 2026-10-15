@@ -50,6 +50,7 @@ type benchScenario struct {
 	HomeWeapon int             `json:"home_weapon"`
 	TTKNoise   float64         `json:"ttk_noise"`
 	Manual     []string        `json:"manual"` // extra abilities kept manual (ablation)
+	Realism    float64         `json:"realism"`
 	Cap        float64         `json:"cap"`
 }
 
@@ -162,7 +163,7 @@ func runBench(path string) {
 		}
 		scen[i] = planner.Scenario{Name: s.Name, Player: p, Enemies: s.Enemies, EnemyLevel: el, Elite: s.Elite, HPMult: def(s.HPMult, 1),
 			DmgMult: def(s.DmgMult, 1), Partner: s.Partner, HomeStance: s.HomeStance, HomeWeapon: s.HomeWeapon, TTKNoise: s.TTKNoise, Cap: def(s.Cap, 180),
-			Intent: planner.Intent{Mode: s.Mode, Source: "override"}, Front: s.Mode != "group_dps", Manual: s.Manual}
+			Intent: planner.Intent{Mode: s.Mode, Source: "override"}, Front: s.Mode != "group_dps", Manual: s.Manual, Realism: s.Realism}
 		if s.Partner.Role == "tank" {
 			yes := true
 			scen[i].Intent.Context = &planner.IntentContext{OtherTankPresent: &yes}

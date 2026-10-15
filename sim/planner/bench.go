@@ -30,6 +30,7 @@ type Scenario struct {
 	Cap        float64  // seconds; the fight ends here if enemies are left
 	Front      bool     // the Warrior attacks from the front (enemy parry and block)
 	Manual     []string // abilities kept manual besides the defaults
+	Realism    float64  // bus noise and latency scale
 }
 
 // Outcome is one iteration's result.
@@ -98,7 +99,7 @@ func NewBench(sc Scenario, model *Model, choose func(d *Driver) Chooser) (*Bench
 		hps[i] = hp
 	}
 	b := &Bench{Model: model}
-	cfg := DriveConfig{Intent: sc.Intent, HomeStance: sc.HomeStance, TTKNoise: sc.TTKNoise, Elite: sc.Elite, PriorDPS: 60}
+	cfg := DriveConfig{Intent: sc.Intent, HomeStance: sc.HomeStance, TTKNoise: sc.TTKNoise, Elite: sc.Elite, PriorDPS: 60, Realism: sc.Realism}
 	setupMu.Lock()
 	warrior.SetupHook = func(w *warrior.Warrior) {
 		b.harness = newHarness(w, sc.Partner, hps)

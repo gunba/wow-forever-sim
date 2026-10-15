@@ -35,6 +35,7 @@ type DriveConfig struct {
 	Harness    *Harness
 	TTKNoise   float64 // relative spread given to the time-to-die estimate
 	PriorDPS   float64 // the console's damage-rate guess before the fight shows one
+	Realism    float64 // bus noise and latency scale (0 = exact, instant)
 	Elite      bool
 }
 
@@ -52,6 +53,8 @@ type Driver struct {
 	borrowedAt  time.Duration
 	borrowed    bool
 	seq         int64
+	rng         uint64
+	pending     bool
 	lastRage    float64
 	Decisions   int
 	Sim         *core.Simulation
@@ -75,6 +78,8 @@ func newDriver(w *warrior.Warrior, cfg DriveConfig) *Driver {
 	var askedFor time.Duration = -1
 	w.RegisterResetEffect(func(sim *core.Simulation) {
 		askedFor = -1
+		d.rng = d.rng*6364136223846793005 + 1442695040888963407 | 1
+		d.pending = false
 		d.lastT, d.waitUntil, d.borrowed, d.lastRage = 0, 0, false, -1
 		core.StartPeriodicAction(sim, core.PeriodicActionOptions{
 			Period: 100 * time.Millisecond,
@@ -164,6 +169,19 @@ func (d *Driver) act(sim *core.Simulation, preSwing bool) {
 		if until > 0 && !preSwing {
 			d.waitUntil = sim.CurrentTime + time.Duration(min(until, 0.1)*float64(time.Second)) // the console asks again every frame
 		}
+		return
+	}
+	if r := d.cfg.Realism; r > 0 {
+		// Reading the bus, deciding and the key press take 40-120 ms.
+		if d.pending {
+			return
+		}
+		d.pending = true
+		delay := time.Duration((0.04 + 0.08*d.uniform()) * r * float64(time.Second))
+		sim.AddPendingAction(&core.PendingAction{NextActionAt: sim.CurrentTime + delay, OnAction: func(sim *core.Simulation) {
+			d.pending = false
+			d.press(sim, spell)
+		}})
 		return
 	}
 	d.press(sim, spell)
@@ -307,6 +325,24 @@ func (d *Driver) message(sim *core.Simulation) *DecideMsg {
 	if w.MaxHealth() > 0 {
 		p.IncomingPctPerS = &MeanSD{Mean: fp(100 * sum / window / w.MaxHealth()), SD: fp(0)}
 	}
+	if r := d.cfg.Realism; r > 0 {
+		// The bus: rage read to the point with occasional jitter, swing timers and aura times a frame or more stale.
+		rage := min(100, max(0, math.Round(*p.Rage+d.gauss()*1.5*r)))
+		p.Rage = &rage
+		for k, sw := range p.Swing {
+			v := max(0, *sw.Remaining+d.uniform()*0.08*r)
+			sw.Remaining = &v
+			p.Swing[k] = sw
+		}
+		for i := range p.Auras {
+			v := max(0, *p.Auras[i].Remaining+(d.uniform()-0.5)*0.9*r)
+			p.Auras[i].Remaining = &v
+		}
+		if p.IncomingPctPerS != nil && p.IncomingPctPerS.Mean != nil {
+			v := max(0, *p.IncomingPctPerS.Mean*(1+0.25*r*d.gauss()))
+			p.IncomingPctPerS.Mean = &v
+		}
+	}
 	msg.Player = p
 
 	targets := sim.Encounter.TargetUnits
@@ -329,7 +365,12 @@ func (d *Driver) message(sim *core.Simulation) *DecideMsg {
 	}
 	threat := func(i int) (*ThreatState, *bool) {
 		st, lead, tp := h.ThreatState(i)
-		return &ThreatState{Status: fp(st), LeadPct: fp(lead), LeadTrendPctPer: fp(h.LeadTrend(i))}, bp(tp)
+		trend := h.LeadTrend(i)
+		if r := d.cfg.Realism; r > 0 {
+			lead = max(0, lead*(1+0.08*r*d.gauss()))
+			trend += 6 * r * d.gauss()
+		}
+		return &ThreatState{Status: fp(st), LeadPct: fp(lead), LeadTrendPctPer: fp(trend)}, bp(tp)
 	}
 	tg := TargetState{Exists: true, HealthPct: fp(100 * h.HealthFrac(ti)), Level: &lvl, Classification: &class, TTK: ttk(ti), InMelee: bp(true)}
 	tg.Threat, tg.TargetsPlayer = threat(ti)
@@ -448,8 +489,6 @@ func (notNumber) Error() string { return "not a number" }
 
 var errNotNumber = notNumber{}
 
-var _ = math.Inf
-
 var debugPress = os.Getenv("PLANNER_DEBUG") != ""
 
 func (d *Driver) count(a ranks.Ability) {
@@ -457,4 +496,16 @@ func (d *Driver) count(a ranks.Ability) {
 		d.Casts = map[ranks.Ability]int{}
 	}
 	d.Casts[a]++
+}
+
+func (d *Driver) uniform() float64 {
+	d.rng ^= d.rng << 13
+	d.rng ^= d.rng >> 7
+	d.rng ^= d.rng << 17
+	return float64(d.rng>>11) / float64(1<<53)
+}
+
+func (d *Driver) gauss() float64 {
+	u1, u2 := max(d.uniform(), 1e-12), d.uniform()
+	return math.Sqrt(-2*math.Log(u1)) * math.Cos(2*math.Pi*u2)
 }
