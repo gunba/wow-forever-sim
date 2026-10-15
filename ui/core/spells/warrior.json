@@ -12,18 +12,6 @@
 		"note": "Beta client 1.60.1.69893: 138 (rank 8) and 157 (rank 9) bonus damage for 15 Rage, identical to Classic Era.",
 		"source": "classic"
 	},
-	"11572": {
-		"ability": "Rend",
-		"file": "sim/warrior/rend.go",
-		"note": "Beta client 1.60.1.69893: every Rend rank the sim uses has Classic Era's damage, tick count and 10 Rage cost.",
-		"source": "classic"
-	},
-	"11573": {
-		"ability": "Rend",
-		"file": "sim/warrior/rend.go",
-		"note": "Beta client 1.60.1.69893: every Rend rank the sim uses has Classic Era's damage, tick count and 10 Rage cost.",
-		"source": "classic"
-	},
 	"11574": {
 		"ability": "Rend",
 		"file": "sim/warrior/rend.go",
@@ -316,12 +304,6 @@
 		"note": "A new Forever Arms talent with no Classic spell, so 56638 resolves to nothing in the Classic database and the UI shows a blank tooltip today; the id is borrowed from a later expansion's version of the same mechanic and Forever's own id is unknown, while the 2/4/6/8/10% per rank scaling is corroborated by the post BlizzCon write-ups.",
 		"source": "forever",
 		"tooltip": "Passive\nYour melee attacks against targets afflicted by your Rend have a 2% chance per point to activate your Overpower ability for 1 attack on your current target. Lasts 6 sec."
-	},
-	"6547": {
-		"ability": "Rend",
-		"file": "sim/warrior/rend.go",
-		"note": "Beta client 1.60.1.69893: every Rend rank the sim uses has Classic Era's damage, tick count and 10 Rage cost.",
-		"source": "classic"
 	},
 	"6554": {
 		"ability": "Pummel",

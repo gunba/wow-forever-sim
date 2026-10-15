@@ -50,8 +50,9 @@ func (warrior *Warrior) registerBattleShout() {
 	if trained == nil {
 		return
 	}
-	rank := min(trained.Rank, core.TernaryInt32(core.IncludeAQ, 7, 6))
-	actionId := core.BattleShoutSpellId[core.TernaryInt32(core.IncludeAQ, 7, 6)]
+	topRank := core.TernaryInt32(core.IncludeAQ, 7, 6)
+	rank := min(trained.Rank, topRank)
+	actionId := core.BattleShoutSpellId[topRank]
 	has3pcWrath := warrior.HasSetBonus(ItemSetBattleGearOfWrath, 3)
 
 	warrior.BattleShout = warrior.newShoutSpellConfig(core.ActionID{SpellID: actionId}, rank, warrior.NewPartyAuraArray(func(unit *core.Unit) *core.Aura {

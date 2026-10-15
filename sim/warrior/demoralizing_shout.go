@@ -11,12 +11,13 @@ func (warrior *Warrior) registerDemoralizingShoutSpell() {
 		return
 	}
 	rank := trained.Rank
-	actionId := core.DemoralizingShoutSpellId[5]
+	topRank := int32(5)
+	actionId := core.DemoralizingShoutSpellId[topRank]
 	apReduction := -trained.Find(ranks.EffectApplyAura, ranks.AuraModAttackPower).Low
 
 	warrior.DemoralizingShoutAuras = warrior.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
 		if rank < 5 {
-			return core.DemoralizingShoutAuraWithReduction(target, actionId, apReduction)
+			return core.DemoralizingShoutAuraWithReduction(target, apReduction)
 		}
 		// Improved Demoralizing Shout is gone from the Forever tree and is baseline at full strength:
 		// the beta client's rank 5 reduces attack power by 196, Classic's 140 plus 40%, for 45 sec.

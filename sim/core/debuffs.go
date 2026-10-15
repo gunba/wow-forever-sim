@@ -934,11 +934,13 @@ func DemoralizingShoutAura(target *Unit) *Aura {
 	return aura
 }
 
-// DemoralizingShoutAuraWithReduction is a lower rank's Demoralizing Shout.
-func DemoralizingShoutAuraWithReduction(target *Unit, spellID int32, apReduction float64) *Aura {
+// DemoralizingShoutAuraWithReduction is a lower rank's Demoralizing Shout. It keeps the top rank's action ID, as
+// the trained-rank spells do.
+func DemoralizingShoutAuraWithReduction(target *Unit, apReduction float64) *Aura {
+	spellId := DemoralizingShoutSpellId[5]
 	aura := target.GetOrRegisterAura(Aura{
 		Label:    "DemoralizingShout",
-		ActionID: ActionID{SpellID: spellID},
+		ActionID: ActionID{SpellID: spellId},
 		Duration: time.Second * 45,
 	})
 	apReductionEffect(aura, apReduction)
