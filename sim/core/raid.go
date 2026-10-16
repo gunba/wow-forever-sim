@@ -266,9 +266,17 @@ func (raid *Raid) applyCharacterEffects(raidConfig *proto.Raid) *proto.RaidStats
 	raidBuffs := raid.GetRaidBuffs(raidConfig.Buffs)
 	raidStats := &proto.RaidStats{}
 
+	allPartyBuffs := make([]*proto.PartyBuffs, len(raid.Parties))
+	for partyIdx, party := range raid.Parties {
+		allPartyBuffs[partyIdx] = party.GetPartyBuffs(raidConfig.Parties[partyIdx].Buffs)
+	}
+	if len(raid.Parties) > 0 && len(raid.Parties[0].Players) > 0 && raid.Parties[0].Players[0].GetCharacter().Env.IsForever() {
+		shareForeverRaidWideBuffs(allPartyBuffs)
+	}
+
 	for partyIdx, party := range raid.Parties {
 		partyConfig := raidConfig.Parties[partyIdx]
-		partyBuffs := party.GetPartyBuffs(partyConfig.Buffs)
+		partyBuffs := allPartyBuffs[partyIdx]
 		partyStats := &proto.PartyStats{
 			Players: make([]*proto.PlayerStats, 5),
 		}
@@ -411,4 +419,31 @@ func RaidPlayersWithClass(raid *proto.Raid, class proto.Class) []*proto.Player {
 		}
 	}
 	return players
+}
+
+// Client 1.60.1.70425 (October 15 notes) makes Battle Shout, Leader of the Pack, Moonkin Aura,
+// Trueshot Aura and the Strength of Earth, Grace of Air, Windfury and Flametongue Totems raid-wide,
+// so a provider in any party reaches every party.
+func shareForeverRaidWideBuffs(parties []*proto.PartyBuffs) {
+	shared := &proto.PartyBuffs{}
+	for _, p := range parties {
+		shared.BattleShout = max(shared.BattleShout, p.BattleShout)
+		shared.StrengthOfEarthTotem = max(shared.StrengthOfEarthTotem, p.StrengthOfEarthTotem)
+		shared.GraceOfAirTotem = max(shared.GraceOfAirTotem, p.GraceOfAirTotem)
+		shared.LeaderOfThePack = shared.LeaderOfThePack || p.LeaderOfThePack
+		shared.MoonkinAura = shared.MoonkinAura || p.MoonkinAura
+		shared.TrueshotAura = shared.TrueshotAura || p.TrueshotAura
+		shared.WindfuryTotem = shared.WindfuryTotem || p.WindfuryTotem
+		shared.FlametongueTotem = shared.FlametongueTotem || p.FlametongueTotem
+	}
+	for _, p := range parties {
+		p.BattleShout = shared.BattleShout
+		p.StrengthOfEarthTotem = shared.StrengthOfEarthTotem
+		p.GraceOfAirTotem = shared.GraceOfAirTotem
+		p.LeaderOfThePack = shared.LeaderOfThePack
+		p.MoonkinAura = shared.MoonkinAura
+		p.TrueshotAura = shared.TrueshotAura
+		p.WindfuryTotem = shared.WindfuryTotem
+		p.FlametongueTotem = shared.FlametongueTotem
+	}
 }

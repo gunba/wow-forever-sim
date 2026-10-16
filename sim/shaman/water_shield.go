@@ -56,6 +56,12 @@ func (shaman *Shaman) registerWaterShieldSpell() {
 				consumeGlobe(sim)
 			}
 		},
+		// Since client 1.60.1.70425 any of the shaman's critical spells triggers it, not only heals.
+		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+			if shaman.Env.IsForever() && result.DidCrit() && spell.ProcMask.Matches(core.ProcMaskSpellDamage) {
+				consumeGlobe(sim)
+			}
+		},
 	})
 
 	shaman.WaterShield = shaman.RegisterSpell(core.SpellConfig{

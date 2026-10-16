@@ -275,7 +275,7 @@ func TestOctober9FireNovaFreshClearcasting(t *testing.T) {
 	nova.CD.Timer.Set(sim.CurrentTime)
 	s.GCD.Set(sim.CurrentTime)
 	before := s.CurrentMana()
-	if !nova.Cast(sim, target) || s.CurrentMana() != before || s.ClearcastingAura.IsActive() || nova.Cost.GetCurrentCost() != 95 {
+	if !nova.Cast(sim, target) || s.CurrentMana() != before || s.ClearcastingAura.IsActive() || nova.Cost.GetCurrentCost() != 65 { // rank 1 costs 65 since client 1.60.1.70425
 		t.Fatal("the next Fire Nova did not consume one mature free-cast charge and restore its cost")
 	}
 }

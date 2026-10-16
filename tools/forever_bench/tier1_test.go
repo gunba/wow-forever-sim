@@ -108,7 +108,10 @@ func TestForeverTier1StatsAndCooldowns(t *testing.T) {
 		{"marksmanship", 2643, 0}, {"feral", 1322605, time.Second},
 		{"fury", 1719, 30 * time.Second}, {"retribution", 20271, 500 * time.Millisecond},
 		{"enhancement", 17364, 500 * time.Millisecond}, {"elemental", 1238300, time.Second},
-		{"smite", 1316995, time.Second}, {"shadow", 19280, time.Minute},
+		{"smite", 1316995, time.Second},
+		// The five-piece still takes 60 s (1301706) off Devouring Plague, whose cooldown is 24 s since
+		// client 1.60.1.70425, so it removes the whole 24 s.
+		{"shadow", 19280, 24 * time.Second},
 	} {
 		a := tierSim(tc.key, false).Raid.AllPlayerUnits[0].GetSpell(core.ActionID{SpellID: tc.id})
 		b := tierSim(tc.key, true).Raid.AllPlayerUnits[0].GetSpell(core.ActionID{SpellID: tc.id})

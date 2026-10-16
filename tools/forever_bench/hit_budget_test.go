@@ -227,7 +227,9 @@ func TestHitBudgetNeverCreditsExcessGearHit(t *testing.T) {
 	}
 }
 
-func TestTaurenRacialReducesPaidHitWithoutCreatingBudget(t *testing.T) {
+// Since client 1.60.1.70425 Endurance is 2% critical damage, not 1% hit, so no race brings hit
+// and Tauren pay the same shortfall as Orcs.
+func TestTaurenPaysTheSameHitShortfallAsOrcs(t *testing.T) {
 	var fury build
 	for _, b := range builds() {
 		if b.Key == "fury" {
@@ -257,13 +259,12 @@ func TestTaurenRacialReducesPaidHitWithoutCreatingBudget(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if orc.RawHitDelta <= 0 || tauren.RawHitDelta < 0 ||
-		math.Abs(orc.RawHitDelta-tauren.RawHitDelta-10) > 1e-8 {
-		t.Fatalf("racial hit did not save its paid budget: Orc %+v, Tauren %+v", orc, tauren)
+	if orc.RawHitDelta <= 0 || math.Abs(orc.RawHitDelta-tauren.RawHitDelta) > 1e-8 {
+		t.Fatalf("Tauren and Orc hit shortfalls differ: Orc %+v, Tauren %+v", orc, tauren)
 	}
 }
 
-func TestEquippedHitOnlyPreservesStatsAndAppliesTaurenRacial(t *testing.T) {
+func TestEquippedHitOnlyPreservesStatsWithoutRacialHit(t *testing.T) {
 	var fury build
 	for _, b := range builds() {
 		if b.Key == "fury" {
@@ -291,8 +292,7 @@ func TestEquippedHitOnlyPreservesStatsAndAppliesTaurenRacial(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if math.Abs(tauren.MeleeFinal-orc.MeleeFinal-1) > 1e-8 ||
-		tauren.RawHitDelta != 0 {
-		t.Fatalf("Tauren racial did not grant one natural hit without conversion: %+v %+v", orc, tauren)
+	if math.Abs(tauren.MeleeFinal-orc.MeleeFinal) > 1e-8 || tauren.RawHitDelta != 0 {
+		t.Fatalf("Tauren gained natural hit or a conversion: %+v %+v", orc, tauren)
 	}
 }

@@ -97,7 +97,7 @@ def main():
                    if modeled else "../artifacts/forever_dps_5min.png")
     raw_path = ("../artifacts/modelled_gear/forever_dps_5min.json"
                 if modeled else "../artifacts/forever_dps_5min.json")
-    search_path = ("../artifacts/correctness/october_11_logs/selection-evidence.json"
+    search_path = ("../artifacts/correctness/october_15/selection-evidence.json"
                    if modeled else "../artifacts/gear_search/summary.json")
     lines = [
         "# Build reviews", "",
@@ -109,10 +109,10 @@ def main():
         f"The tables and [matrix]({matrix_path}) use the same "
         f"{len(results['Results'])} common-seed replays. "
         + ("The modeled search and original real-item benchmark are separate; neither proves "
-           "available launch gear. The [October 11 audit](october-11-audit.md) records the engine "
-           "corrections, rotation and consumable selections and the bounded gear re-search; the "
-           "[October 11 log audit](october-11-log-audit.md) records the combat-log corrections and "
-           "the confirmed re-search of the builds they changed. "
+           "available launch gear. The [October 15 update](october-15-update.md) records the client "
+           "1.60.1.70425 changes, the moved talent trees, the talent, rotation and raid-buff changes "
+           "and the confirmed re-search of every DPS profile; the earlier [October 11 audit](october-11-audit.md) "
+           "and [October 11 log audit](october-11-log-audit.md) record the corrections before it. "
            "Earlier search gains are historical, not current proof of an optimum." if modeled else "Equipment selections came from an earlier "
            "mechanics revision; these results use the corrected engine. Historical search gains "
            "are not directly comparable to this release."), "",

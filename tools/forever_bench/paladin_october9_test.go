@@ -63,39 +63,33 @@ func paladinOctober9Configured(t *testing.T, talents map[string]int, buffs *prot
 	t.Fatal("missing Protection build")
 	return nil, nil
 }
-func TestPaladinOctober9ReckoningSharedGate(t *testing.T) {
+
+// Client 1.60.1.70425: Reckoning stores charges and only its block trigger keeps the 1.5-second
+// gate ("Cannot occur from Blocks more than once every 1.5 sec").
+func TestPaladinReckoningGatesOnlyBlocks(t *testing.T) {
 	sim, p := paladinOctober9Fixture(t, map[string]int{"reckoning": 5}, nil)
 	crit, block := p.GetAura("Reckoning Crit Trigger"), p.GetAura("Reckoning Block Trigger")
-	if crit.Icd == nil || crit.Icd != block.Icd || crit.Icd.Duration != 1500*time.Millisecond {
-		t.Fatal("Reckoning outcomes do not share1500ms gate")
+	if crit.Icd != nil || block.Icd == nil || block.Icd.Duration != 1500*time.Millisecond {
+		t.Fatal("Reckoning must gate blocks only, at 1.5 seconds")
 	}
 	incoming := p.CurrentTarget.RegisterSpell(core.SpellConfig{ActionID: core.ActionID{SpellID: 1}, ProcMask: core.ProcMaskMeleeMHAuto, SpellSchool: core.SpellSchoolPhysical, DamageMultiplier: 1, ThreatMultiplier: 1})
-	hit := &core.SpellResult{Target: &p.Unit, Outcome: core.OutcomeCrit, Damage: 1}
-	crit.OnSpellHitTaken(crit, sim, incoming, hit)
-	if crit.Icd.IsReady(sim) {
-		t.Fatal("crit did not consume gate")
-	}
-	ready := crit.Icd.ReadyAt()
-	for i := 0; i < 100; i++ {
-		hit.Outcome = core.OutcomeBlock
-		block.OnSpellHitTaken(block, sim, incoming, hit)
-	}
-	if crit.Icd.ReadyAt() != ready {
-		t.Fatal("block bypassed/restarted crit gate")
-	}
-	sim.CurrentTime = 1500 * time.Millisecond
+	hit := &core.SpellResult{Target: &p.Unit, Outcome: core.OutcomeBlock, Damage: 1}
 	for i := 0; i < 100 && block.Icd.IsReady(sim); i++ {
 		block.OnSpellHitTaken(block, sim, incoming, hit)
 	}
 	if block.Icd.IsReady(sim) {
-		t.Fatal("block never consumed ready shared gate")
+		t.Fatal("block never consumed its gate")
 	}
-	if crit.Icd.ReadyAt() != 3*time.Second {
-		t.Fatal("block did not lockcrit")
+	ready := block.Icd.ReadyAt()
+	for i := 0; i < 100; i++ {
+		block.OnSpellHitTaken(block, sim, incoming, hit)
+	}
+	if block.Icd.ReadyAt() != ready || ready != 1500*time.Millisecond {
+		t.Fatal("blocks inside the gate restarted it")
 	}
 	sim.Cleanup()
 	sim.Reset()
-	if !crit.Icd.IsReady(sim) {
+	if !block.Icd.IsReady(sim) {
 		t.Fatal("ICD did not reset")
 	}
 }
@@ -106,7 +100,7 @@ func TestPaladinOctober9ShieldManaNoThreat(t *testing.T) {
 	a := p.GetAura("Shield Specialization Trigger")
 	incoming := p.CurrentTarget.RegisterSpell(core.SpellConfig{ActionID: core.ActionID{SpellID: 3}, ProcMask: core.ProcMaskMeleeMHAuto})
 	a.OnSpellHitTaken(a, sim, incoming, &core.SpellResult{Target: &p.Unit, Outcome: core.OutcomeBlock, Damage: 1})
-	if math.Abs(p.CurrentMana()-before-.06*p.MaxMana()) > 1e-8 {
+	if math.Abs(p.CurrentMana()-before-.04*p.MaxMana()) > 1e-8 { // 4% since client 1.60.1.70425
 		t.Fatal("mana amount changed")
 	}
 	sim.Cleanup()

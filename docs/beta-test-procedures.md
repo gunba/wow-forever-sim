@@ -1,8 +1,8 @@
 # Forever simulator: beta test procedures
 
-Generated 2026-10-11 from [`uncertainties.json`](uncertainties.json). Each section below explains how to settle one open simulator question with an in-game test. Resolved questions, and questions that do not change any simulated DPS or tank result, are left out; the [full register](uncertainties.md) lists them.
+Generated 2026-10-16 from [`uncertainties.json`](uncertainties.json). Each section below explains how to settle one open simulator question with an in-game test. Resolved questions, and questions that do not change any simulated DPS or tank result, are left out; the [full register](uncertainties.md) lists them.
 
-There are 65 questions: 36 can be tested in the current level-30 beta, 14 can be tested in part now (low ranks) and finished at launch, 10 need level 31+ or later content, and 5 need code or a modelling decision rather than a game test.
+There are 73 questions: 39 can be tested in the current level-30 beta, 18 can be tested in part now (low ranks) and finished at launch, 10 need level 31+ or later content, and 6 need code or a modelling decision rather than a game test.
 
 ## How to collect data
 
@@ -23,7 +23,7 @@ There are 65 questions: 36 can be tested in the current level-30 beta, 14 can be
 | [WAR-003](#war-003) | Incoming rage and mitigation | Tank results | Now | Working answer |
 | [WAR-018](#war-018) | Demoralizing Shout and Roar flat threat | Tank results | Now | Working answer |
 | [WAR-010](#war-010) | Weaponmaster hand-specific armor ignore | Small | Now | Open |
-| [PAL-001](#pal-001) | Seal of Righteousness spell-power formula | DPS rankings | Now | Open |
+| [PAL-001](#pal-001) | Seal of Righteousness spell-power formula | DPS rankings | Now | Working answer |
 | [PAL-005](#pal-005) | Seal of Fury and its judgement | Tank results | Now | Working answer |
 | [PAL-006](#pal-006) | Seal of Fury shield replacement and mana | Tank results | Now | Open |
 | [PAL-008](#pal-008) | Vindication's target AP reduction | Tank results | Now | Open |
@@ -32,6 +32,7 @@ There are 65 questions: 36 can be tested in the current level-30 beta, 14 can be
 | [HUN-001](#hun-001) | Pet owner-stat inheritance | DPS rankings | Now | Open |
 | [HUN-002](#hun-002) | Pet per-hit damage versus speed | DPS rankings | Now | Open |
 | [HUN-004](#hun-004) | Summon Hawk guardian model | DPS rankings | Now | Working answer |
+| [HUN-016](#hun-016) | Fire trap Attack Power scaling | DPS rankings | Now | Open |
 | [HUN-003](#hun-003) | Pet external buffs and action cadence | Small | Now | Open |
 | [HUN-012](#hun-012) | Savage Strikes article/client version conflict | Small | Now | Open |
 | [ROG-001](#rog-001) | Mutilate off-hand flat damage and Cold Blood | DPS rankings | Now | Open |
@@ -39,6 +40,7 @@ There are 65 questions: 36 can be tested in the current level-30 beta, 14 can be
 | [ROG-005](#rog-005) | Hack and Slash hand scope and ICD | DPS rankings | Now | Open |
 | [PRI-003](#pri-003) | Inner Focus periodic crit behavior | Small | Now | Open |
 | [SHA-001](#sha-001) | Maelstrom Weapon proc rate | DPS rankings | Now | Working answer |
+| [SHA-010](#sha-010) | Elemental changes in 1.60.1.70425 | DPS rankings | Now | Working answer |
 | [MAG-005](#mag-005) | Clearcasting and Missile Barrage event ordering | DPS rankings | Now | Working answer |
 | [WL-001](#wl-001) | Demonic Brand power source and threat | DPS rankings | Now | Open |
 | [WL-006](#wl-006) | Improved Imp's extra dummy effect | DPS rankings | Now | Open |
@@ -51,14 +53,19 @@ There are 65 questions: 36 can be tested in the current level-30 beta, 14 can be
 | [CORE-003](#core-003) | Energy refunds on avoided attacks | DPS rankings | Now | Working answer |
 | [CORE-006](#core-006) | Optional MP5-per-second interpretation | DPS rankings | Now | Working answer |
 | [CORE-016](#core-016) | Common player Spirit regeneration | DPS rankings | Now | Working answer |
+| [CORE-020](#core-020) | Critical damage racials (Tauren Endurance, Dwarf Earth Fury) | DPS rankings | Now | Working answer |
+| [CORE-021](#core-021) | Touch of the Grave after 1.60.1.70425 | DPS rankings | Now | Working answer |
 | [CORE-009](#core-009) | Eureka cast and periodic bonuses | Small | Now | Open |
-| [CORE-015](#core-015) | Weapon-racial crit and ranged attacks | Small | Now | Open |
 | [DATA-001](#data-001) | Server downranking penalties | DPS rankings | Now | Open |
 | [WAR-020](#war-020) | Rend and Thunder Clap Attack Power scaling and Thunder Clap threat | DPS rankings | Partly now | Working answer |
 | [WAR-009](#war-009) | Sunder Armor AP threat coefficient | Tank results | Partly now | Working answer |
 | [WAR-021](#war-021) | Revenge Attack Power scaling and threat | Tank results | Partly now | Working answer |
+| [PAL-016](#pal-016) | Reckoning charges | Tank results | Partly now | Working answer |
 | [HUN-005](#hun-005) | Arcane Shot, Serpent Sting and Volley SP | DPS rankings | Partly now | Working answer |
+| [PRI-006](#pri-006) | Improved Mind Flay escalation and Dark Inspiration | DPS rankings | Partly now | Working answer |
 | [MAG-001](#mag-001) | Ice Lance coefficient and frozen multiplier | DPS rankings | Partly now | Working answer |
+| [MAG-009](#mag-009) | Arcane Blast and Arcane Wrath redesign | DPS rankings | Partly now | Working answer |
+| [MAG-010](#mag-010) | Fire Power and Winter's Chill redesigns | DPS rankings | Partly now | Working answer |
 | [MAG-004](#mag-004) | Hot Streak interruption and new-charge ordering | Small | Partly now | Open |
 | [DRU-011](#dru-011) | Proc enchants in animal forms | DPS rankings | Partly now | Open |
 | [DRU-006](#dru-006) | Lacerate direct and periodic formula | Tank results | Partly now | Open |
@@ -81,6 +88,7 @@ There are 65 questions: 36 can be tested in the current level-30 beta, 14 can be
 | [SHA-004](#sha-004) | Owned buff-totem effects and replacement | DPS rankings | No game test | Code gap |
 | [DRU-010](#dru-010) | Feral stealth openers | Small | No game test | Code gap |
 | [DATA-002](#data-002) | Projected gear budget and stat prices | DPS rankings | No game test | Model choice |
+| [CORE-022](#core-022) | Benchmark raid buffs after the crit-aura split and raid-wide totems | DPS rankings | No game test | Model choice |
 | [SCEN-001](#scen-001) | Tank boss damage and external healing | Tank results | No game test | Model choice |
 | [SCEN-003](#scen-003) | Tank target selection and threat coverage | Tank results | No game test | Code gap |
 
@@ -180,10 +188,10 @@ Each of these takes 10–20 minutes on a Warrior at level 28–30 and answers a 
 <a id="pal-001"></a>
 #### PAL-001: Seal of Righteousness spell-power formula
 
-*Affects: DPS rankings. State: Open.*
+*Affects: DPS rankings. State: Working answer.*
 
 - **Why it matters:** Seal of Righteousness damage for Retribution.
-- **What the simulator assumes now:** Spell power is added twice and two-handers get a 1.1 factor (inherited).
+- **What the simulator assumes now:** Since the October 15 notes the proc adds its spell power once (0.1); two-handers keep the inherited 1.1 factor.
 - **Setup:** Paladin with Seal of Righteousness, two spell power sets, one-hander then two-hander.
 - **Steps:** Auto-attack a mob with the seal active, no Judgement of the Crusader.
 - **Record:** Seal proc damage (non-crit).
@@ -300,6 +308,21 @@ Each of these takes 10–20 minutes on a Warrior at level 28–30 and answers a 
 - **Sample size:** 100 Hawk attacks per set.
 - **How the result is used:** Fixes RAP transfer and crit; the third summon shows replacement.
 
+<a id="hun-016"></a>
+#### HUN-016: Fire trap Attack Power scaling
+
+*Affects: DPS rankings. State: Open.*
+
+- **Why it matters:** Survival and Pet/Melee place fire traps; their damage now scales with Attack Power by an unknown amount.
+- **What the simulator assumes now:** The periodic part of each fire trap gains 10% of the higher of melee and ranged Attack Power over its full duration; Explosive Trap's initial hit does not scale.
+- **Setup:** Hunter with Immolation Trap (and Explosive Trap at 34+). Two gear sets that differ only in melee Attack Power, then two that differ only in ranged Attack Power. A mob that stands still.
+- **Steps:**
+  1. Place 20 Immolation Traps under the mob with each gear set.
+  2. Repeat with Explosive Trap if trained.
+- **Record:** Each trap's total periodic damage (non-crit ticks) and Explosive Trap's initial hit.
+- **Sample size:** 20 traps per gear set.
+- **How the result is used:** The damage difference divided by the Attack Power difference gives the coefficient; comparing the melee and ranged sets shows which Attack Power counts.
+
 <a id="hun-003"></a>
 #### HUN-003: Pet external buffs and action cadence
 
@@ -334,7 +357,7 @@ Each of these takes 10–20 minutes on a Warrior at level 28–30 and answers a 
 *Affects: DPS rankings. State: Open.*
 
 - **Why it matters:** Mutilate's off-hand strike damage in the Mutilate row.
-- **What the simulator assumes now:** Both strikes share one avoidance roll; the flat bonus is applied to both hands as in the current code.
+- **What the simulator assumes now:** Both strikes share one avoidance roll; the flat bonus is applied to both hands; Cold Blood is spent when the Mutilate lands.
 - **Setup:** Rogue with Mutilate (20 Assassination points, reachable at 30), two daggers, two Attack Power sets.
 - **Steps:**
   1. Cast Mutilate repeatedly on the same mob type with each AP set.
@@ -401,6 +424,21 @@ Each of these takes 10–20 minutes on a Warrior at level 28–30 and answers a 
 - **Sample size:** 150 stack gains per weapon.
 - **How the result is used:** If the rate per hit rises with weapon speed, it is procs per minute; if it does not, it is a flat chance.
 
+<a id="sha-010"></a>
+#### SHA-010: Elemental changes in 1.60.1.70425
+
+*Affects: DPS rankings. State: Working answer.*
+
+- **Why it matters:** Elemental, Stormcaller and Enhancement use the reflowed Lava Burst ranks, Elemental Mastery and the new Call of Flame.
+- **What the simulator assumes now:** Lava Burst ranks at 30/40/50/60 with client base damage; Elemental Mastery for 15 seconds; Call of Flame adds 3/6/9 seconds to Flame Shock.
+- **Setup:** Elemental Shaman at level 30 with Lava Burst rank 1.
+- **Steps:**
+  1. Cast Lava Burst 30 times without Flame Shock.
+  2. Cast Flame Shock and time the debuff.
+- **Record:** Non-crit Lava Burst damage and Flame Shock duration.
+- **Sample size:** 30 casts.
+- **How the result is used:** Confirms the rank 1 values and the Flame Shock extension.
+
 ### Mage
 
 <a id="mag-005"></a>
@@ -409,7 +447,7 @@ Each of these takes 10–20 minutes on a Warrior at level 28–30 and answers a 
 *Affects: DPS rankings. State: Working answer.*
 
 - **Why it matters:** Arcane rotation resource use.
-- **What the simulator assumes now:** Missile Barrage now rolls at Fireball/Frostbolt cast completion (logs); Clearcasting has a 1-second cooldown and is spent at cast completion.
+- **What the simulator assumes now:** Missile Barrage rolls at cast completion (Arcane Blast 20/40%, Arcane Missiles hits 5/10%, Arcane Wrath, Fireball, Frostbolt and Frostfire Bolt 10/20%); Clearcasting rolls once per cast with a 1-second cooldown and is spent at cast completion.
 - **Setup:** Arcane Mage with Arcane Concentration and Missile Barrage.
 - **Steps:** Channel Arcane Missiles while Clearcasting is active, and note whether a Clearcasting proc from a missile is spent by the same channel.
 - **Record:** Clearcasting gain and removal times against Arcane Missiles ticks; mana spent.
@@ -565,31 +603,50 @@ Each of these takes 10–20 minutes on a Warrior at level 28–30 and answers a 
 - **Sample size:** 20 ticks per set.
 - **How the result is used:** Confirms the formula across classes and levels.
 
+<a id="core-020"></a>
+#### CORE-020: Critical damage racials (Tauren Endurance, Dwarf Earth Fury)
+
+*Affects: DPS rankings. State: Working answer.*
+
+- **Why it matters:** Tauren and Dwarf now get 2% critical damage instead of hit or a weapon skill. Whether it scales the whole crit (2.04x) or only the bonus part decides their value in every row.
+- **What the simulator assumes now:** The whole critical multiplier is scaled: melee crits 2.04x, spell crits 1.53x.
+- **Setup:** A Tauren or Dwarf character and a non-Tauren, non-Dwarf character of the same class with the same weapon. No crit-damage talents (Impale, Ice Shards and the like).
+- **Steps:**
+  1. Auto-attack a mob at or below your level for three minutes with each character.
+  2. If either can cast a direct-damage spell, cast it 50 times as well.
+- **Record:** Each white hit's and crit's damage, and each spell hit's and crit's damage.
+- **Sample size:** About 300 white swings (60 crits) per character.
+- **How the result is used:** Crit damage divided by average non-crit damage: about 2.04 for the racial against 2.00 confirms the current model; about 2.02 means only the bonus part is scaled.
+
+<a id="core-021"></a>
+#### CORE-021: Touch of the Grave after 1.60.1.70425
+
+*Affects: DPS rankings. State: Working answer.*
+
+- **Why it matters:** Touch of the Grave's new chance and cooldown set its value for every Undead row.
+- **What the simulator assumes now:** 20% (Warrior, Paladin, Rogue) or 30% (casters) on a landed damaging hit, with a 25-second cooldown that starts on the proc; 5% of maximum health.
+- **Setup:** Undead character of any class; a mob with plenty of health.
+- **Steps:**
+  1. Attack or cast continuously for ten minutes.
+  2. Note every drain proc's timestamp.
+- **Record:** The time between consecutive procs and the number of landed hits between them.
+- **Sample size:** About 25 procs.
+- **How the result is used:** The shortest gap gives the cooldown; landed hits between the cooldown ending and the next proc give the chance.
+
 <a id="core-009"></a>
 #### CORE-009: Eureka cast and periodic bonuses
 
 *Affects: Small. State: Open.*
 
 - **Why it matters:** Gnome Eureka on channels and DoTs.
-- **What the simulator assumes now:** The consuming cast keeps the bonus on all its ticks; ordinary periodic damage does not get it.
+- **What the simulator assumes now:** Eureka is an 8-second buff with no charges; direct casts inside the window get the bonus, ordinary periodic damage does not, and a channel started inside the window keeps it on its ticks.
 - **Setup:** Gnome caster with a channel (Mind Flay, Drain Life) and a DoT.
-- **Steps:** Cast each with Eureka active, without it, and as the last charge.
+- **Steps:**
+  1. Cast each with Eureka active and without it.
+  2. Start a channel in the last second of Eureka and record its later ticks.
 - **Record:** Tick damage in each case.
 - **Sample size:** 30 ticks per case.
 - **How the result is used:** Settles which ticks get the bonus.
-
-<a id="core-015"></a>
-#### CORE-015: Weapon-racial crit and ranged attacks
-
-*Affects: Small. State: Open.*
-
-- **Why it matters:** Orc/Human weapon racials on ranged attacks.
-- **What the simulator assumes now:** The racial's crit also applies to ranged attacks.
-- **Setup:** Orc Hunter with an axe, or Human Hunter with a sword.
-- **Steps:** Compare ranged crit in the character sheet and in logged Auto Shots with and without the matching melee weapon equipped.
-- **Record:** Auto Shot crit rate.
-- **Sample size:** 400 Auto Shots per setting.
-- **How the result is used:** Removes or keeps the ranged crit.
 
 ### Items and data
 
@@ -649,6 +706,21 @@ Each of these takes 10–20 minutes on a Warrior at level 28–30 and answers a 
 - **Sample size:** 50 non-crit Revenges per set.
 - **How the result is used:** Rank-2 slope now; rank 6 at launch replaces the extrapolated 0.28.
 
+### Paladin
+
+<a id="pal-016"></a>
+#### PAL-016: Reckoning charges
+
+*Affects: Tank results. State: Working answer.*
+
+- **Why it matters:** Protection Paladins with Reckoning now store extra attacks and release them on the next swing.
+- **What the simulator assumes now:** Each trigger stores a charge (up to 4); the next main-hand auto attack releases all of them. Only blocks have the 1.5-second limit.
+- **Setup:** Protection Paladin with Reckoning and a shield, tanking two or three mobs.
+- **Steps:** Tank for five minutes with auto-attack on.
+- **Record:** Extra attacks after each white swing and the swing timer after them.
+- **Sample size:** About 50 releases.
+- **How the result is used:** Confirms the charge cap and whether released attacks reset the swing timer.
+
 ### Hunter and pets
 
 <a id="hun-005"></a>
@@ -664,6 +736,21 @@ Each of these takes 10–20 minutes on a Warrior at level 28–30 and answers a 
 - **Sample size:** 40 shots and 50 ticks per set.
 - **How the result is used:** Confirms zero spell-power scaling and the RAP slopes.
 
+### Priest
+
+<a id="pri-006"></a>
+#### PRI-006: Improved Mind Flay escalation and Dark Inspiration
+
+*Affects: DPS rankings. State: Working answer.*
+
+- **Why it matters:** Improved Mind Flay and Dark Inspiration are new Shadow talents; whether the Mind Flay bonus compounds changes Shadow's main filler.
+- **What the simulator assumes now:** Each Mind Flay tick deals (1 + 0.1 x points) times the previous one (compounding). Dark Inspiration raises only the Priest's own Spirit.
+- **Setup:** Shadow Priest with 2/2 Improved Mind Flay.
+- **Steps:** Channel Mind Flay to completion 50 times on a mob.
+- **Record:** The damage of each of the three ticks of every channel.
+- **Sample size:** 50 channels.
+- **How the result is used:** Tick 3 / tick 1 = 1.44 means compounding, 1.40 means linear.
+
 ### Mage
 
 <a id="mag-001"></a>
@@ -672,12 +759,43 @@ Each of these takes 10–20 minutes on a Warrior at level 28–30 and answers a 
 *Affects: DPS rankings. State: Working answer.*
 
 - **Why it matters:** Ice Lance is in the Frost and Arcane-Frost rotations.
-- **What the simulator assumes now:** Provisional 0.10 spell-power coefficient; the frozen bonus covers the whole hit.
+- **What the simulator assumes now:** Provisional 0.10 spell-power coefficient; frozen targets take 200% more (x3), covering the whole hit.
 - **Setup:** Level-30 Mage with Ice Lance, two spell power sets.
 - **Steps:** Cast Ice Lance on an unfrozen target and on a frozen target (Frost Nova or Fingers of Frost) with each set.
 - **Record:** Non-crit damage in each case.
 - **Sample size:** 40 casts per case and set.
 - **How the result is used:** Gives the coefficient at this rank and whether the frozen multiplier applies to the spell-power part.
+
+<a id="mag-009"></a>
+#### MAG-009: Arcane Blast and Arcane Wrath redesign
+
+*Affects: DPS rankings. State: Working answer.*
+
+- **Why it matters:** Arcane and Arcane-Frost are built on the redesigned Arcane Blast stacks and the new Arcane Wrath.
+- **What the simulator assumes now:** Each Arcane Blast adds 15% of Intellect as Spell Damage (up to 4 stacks, 15 seconds from the first) and +175% Arcane Blast cost; other spells do not spend the stacks. Arcane Wrath adds 5% of maximum mana as Spell Damage.
+- **Setup:** Mage with the Arcane Blast talent; for Arcane Wrath, 16 Arcane points. Known Intellect and maximum mana.
+- **Steps:**
+  1. Cast Frostbolt with 0 and with 4 Arcane Blast stacks, 30 casts each.
+  2. Time the stacks from the first Arcane Blast until they fade.
+  3. Cast Arcane Wrath with two gear sets that differ only in maximum mana.
+- **Record:** Non-crit Frostbolt and Arcane Wrath damage, stack duration and Arcane Blast cost at each stack.
+- **Sample size:** 30 casts per setup.
+- **How the result is used:** Confirms the Spell Damage per stack, the duration rule and Arcane Wrath's mana term.
+
+<a id="mag-010"></a>
+#### MAG-010: Fire Power and Winter's Chill redesigns
+
+*Affects: DPS rankings. State: Working answer.*
+
+- **Why it matters:** Fire Power now depends on the Fire effects on the target, and Winter's Chill no longer adds crit; the two patch-note texts for Winter's Chill disagree.
+- **What the simulator assumes now:** Fire Power: 1/2/3% per Fire effect of the mage on the target (Ignite, Improved Scorch, Fireball and Pyroblast DoTs, Impact), up to 4; Frostfire Bolt benefits but does not count. Winter's Chill: +40% to the next Cone of Cold per stack.
+- **Setup:** Fire Mage with 3/3 Fire Power; Frost Mage with Winter's Chill.
+- **Steps:**
+  1. Cast Fire Blast on a target with 0, 1, 2 and 3 of your Fire effects up.
+  2. Stack Winter's Chill with Frostbolt, then cast Cone of Cold; compare with Cone of Cold on a clean target.
+- **Record:** Non-crit Fire Blast and Cone of Cold damage per setup, and the Winter's Chill debuff tooltip.
+- **Sample size:** 20 casts per setup.
+- **How the result is used:** Sets the per-effect bonus and shows which Winter's Chill text is live.
 
 <a id="mag-004"></a>
 #### MAG-004: Hot Streak interruption and new-charge ordering
@@ -1003,6 +1121,19 @@ Each of these takes 10–20 minutes on a Warrior at level 28–30 and answers a 
 - **How the result is used:** Replaces the assumed budgets; rerun the gear search.
 
 ### Scenarios
+
+<a id="core-022"></a>
+#### CORE-022: Benchmark raid buffs after the crit-aura split and raid-wide totems
+
+*Affects: DPS rankings. State: Model choice.*
+
+- **Why it matters:** All melee rows changed when the crit auras split and the air totems stopped excluding each other. Which buffs the reference raid supplies is a modelling decision.
+- **What the simulator assumes now:** Every profile gets Leader of the Pack and Moonkin Aura; melee groups get Windfury and Grace of Air; Hunters get Grace of Air; tanks keep their shared support.
+- **Setup:** No game test. Decide from expected raid compositions at launch.
+- **Steps:** Review the reference raid once 20- and 40-player compositions are known.
+- **Record:** The decision and its reason.
+- **Sample size:** Not applicable.
+- **How the result is used:** Changes the benchmark raid buffs, not the engine.
 
 <a id="scen-001"></a>
 #### SCEN-001: Tank boss damage and external healing

@@ -142,6 +142,10 @@ func (warrior *Warrior) registerWeaponmasterExtraAttack(procMask core.ProcMask, 
 			if !spell.ProcMask.Matches(procMask) {
 				return
 			}
+			// Shield Slam and Shield Bash do not trigger it (fixed in 1.60.1.70425, October 15 notes).
+			if spell.SpellCode == SpellCode_WarriorShieldSlam {
+				return
+			}
 			if !icd.IsReady(sim) {
 				return
 			}

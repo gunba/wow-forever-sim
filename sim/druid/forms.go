@@ -162,8 +162,8 @@ func (druid *Druid) registerCatFormSpell() {
 
 			druid.AutoAttacks.SetMH(druid.WeaponFromMainHand())
 
+			druid.resetFurorHistory(sim.CurrentTime)
 			druid.lastCatFormEnergy = druid.CurrentEnergy()
-			druid.lastCatFormExitAt = sim.CurrentTime
 
 			druid.PseudoStats.ThreatMultiplier /= 0.71
 			druid.SetShapeshift(nil)
@@ -242,14 +242,34 @@ func (druid *Druid) registerCatFormSpell() {
 // small amount for every second spent out of form.
 // The beta client's curve is 20-100 and the text builds all three from it: that share of the energy, a tenth of it a
 // second, and the whole of it as the cap, so 20%, 2 a second and 20 Energy per point.
+// Since client 1.60.1.70425 the saved Energy survives Bear Form, and only time outside Bear
+// earns the per-second part ("per second spent outside Bear Form or Dire Bear Form").
 func (druid *Druid) resetFurorHistory(exitAt time.Duration) {
 	druid.lastCatFormEnergy = 0
 	druid.lastCatFormExitAt = exitAt
+	druid.furorBearTime = 0
+	druid.furorBearSince = core.NeverExpires
+}
+
+// furorBearEnter and furorBearExit pause and resume the out-of-form clock around Bear Form.
+func (druid *Druid) furorBearEnter(sim *core.Simulation) {
+	druid.furorBearSince = sim.CurrentTime
+}
+
+func (druid *Druid) furorBearExit(sim *core.Simulation) {
+	if druid.furorBearSince != core.NeverExpires {
+		druid.furorBearTime += sim.CurrentTime - druid.furorBearSince
+	}
+	druid.furorBearSince = core.NeverExpires
+	if druid.lastCatFormExitAt == core.NeverExpires {
+		// No Cat history: the clock starts when Bear ends.
+		druid.lastCatFormExitAt, druid.furorBearTime = sim.CurrentTime, 0
+	}
 }
 
 func (druid *Druid) furorShiftEnergy(sim *core.Simulation) float64 {
 	forever := druid.Env != nil && druid.Env.IsForever()
-	if druid.Talents.Furor == 0 || (forever && druid.InForm(Bear)) {
+	if druid.Talents.Furor == 0 {
 		return 0
 	}
 
@@ -257,7 +277,14 @@ func (druid *Druid) furorShiftEnergy(sim *core.Simulation) float64 {
 	carryOver := druid.lastCatFormEnergy * 0.2 * points
 	outOfForm := 0.0
 	if druid.lastCatFormExitAt != core.NeverExpires {
-		outOfForm = 2 * points * (sim.CurrentTime - druid.lastCatFormExitAt).Seconds()
+		elapsed := sim.CurrentTime - druid.lastCatFormExitAt
+		if forever {
+			elapsed -= druid.furorBearTime
+			if druid.furorBearSince != core.NeverExpires {
+				elapsed -= sim.CurrentTime - druid.furorBearSince
+			}
+		}
+		outOfForm = 2 * points * elapsed.Seconds()
 	}
 	if forever {
 		return min(druid.MaxEnergy(), 20*points, carryOver+max(0, outOfForm))
@@ -300,8 +327,7 @@ func (druid *Druid) registerBearFormSpell() {
 			}
 			druid.form = Bear
 			if druid.Env.IsForever() {
-				// Entering Bear destroys saved Cat Energy; Bear time cannot regenerate it.
-				druid.resetFurorHistory(core.NeverExpires)
+				druid.furorBearEnter(sim)
 			}
 			druid.SetCurrentPowerBar(core.RageBar)
 
@@ -341,7 +367,7 @@ func (druid *Druid) registerBearFormSpell() {
 
 			druid.PseudoStats.ThreatMultiplier /= threatMultiplier
 			if druid.Env.IsForever() {
-				druid.resetFurorHistory(sim.CurrentTime)
+				druid.furorBearExit(sim)
 			}
 			healthFrac := druid.CurrentHealth() / druid.MaxHealth()
 			druid.SetShapeshift(nil)

@@ -67,7 +67,7 @@ func (shaman *Shaman) newElectricSpellConfig(actionID core.ActionID, baseCost fl
 			},
 		},
 
-		BonusCritRating: core.TernaryFloat64(shaman.Talents.CallOfThunder, 3, 0) * core.SpellCritRatingPerCritChance,
+		// Call of Thunder was removed in client 1.60.1.70425.
 
 		DamageMultiplier: 1,
 		ThreatMultiplier: 1,

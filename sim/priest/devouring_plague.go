@@ -10,6 +10,7 @@ import (
 const DevouringPlagueRanks = 6
 
 var DevouringPlagueSpellId = [DevouringPlagueRanks + 1]int32{0, 2944, 19276, 19277, 19278, 19279, 19280}
+
 // Forever beta client 1.60.1.69893.
 var DevouringPlagueBaseDamage = [DevouringPlagueRanks + 1]float64{0, 128, 232, 344, 488, 656, 848}
 var DevouringPlagueManaCost = [DevouringPlagueRanks + 1]float64{0, 215, 350, 495, 645, 810, 985}
@@ -62,7 +63,7 @@ func (priest *Priest) getDevouringPlagueConfig(rank int, cdTimer *core.Timer) co
 			},
 			CD: core.Cooldown{
 				Timer:    cdTimer,
-				Duration: time.Minute, // 3 min in Classic
+				Duration: 24 * time.Second, // 1 min until client 1.60.1.70425; 3 min in Classic
 			},
 		},
 

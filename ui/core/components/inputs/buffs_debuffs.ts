@@ -186,24 +186,13 @@ export const StrengthBuffHorde = withLabel(
 	'Strength',
 );
 
+// Since client 1.60.1.70425 Grace of Air is no longer exclusive with Windfury or Flametongue Totem.
 const graceOfAirInput = makeTristateRaidBuffInput({
 	actionId: () => ActionId.fromSpellId(25359),
 	impId: ActionId.fromSpellId(16295),
 	fieldName: 'graceOfAirTotem',
 	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever || player.getFaction() === Faction.Horde,
 });
-const setGraceOfAir = graceOfAirInput.setValue;
-graceOfAirInput.setValue = (eventID, player, value) => {
-	if (value && player.sim.getRuleset() === Ruleset.RulesetForever) {
-		const party = player.getParty()!;
-		const buffs = party.getBuffs();
-		if (buffs.windfuryTotem) {
-			buffs.windfuryTotem = false;
-			party.setBuffs(eventID, buffs);
-		}
-	}
-	setGraceOfAir(eventID, player, value);
-};
 export const GraceOfAir = withLabel(graceOfAirInput, 'Agility');
 
 const windfuryTotemInput = makeBooleanPartyBuffInput({
@@ -214,15 +203,9 @@ const windfuryTotemInput = makeBooleanPartyBuffInput({
 const setWindfuryTotem = windfuryTotemInput.setValue;
 windfuryTotemInput.setValue = (eventID, player, value) => {
 	if (value) {
-		const raid = player.getRaid()!;
-		const buffs = raid.getBuffs();
-		if (buffs.graceOfAirTotem) {
-			buffs.graceOfAirTotem = 0;
-			raid.setBuffs(eventID, buffs);
-		}
+		// Windfury and Flametongue Totem keep their exclusivity.
 		const party = player.getParty()!;
 		const partyBuffs = party.getBuffs();
-		partyBuffs.graceOfAirTotem = 0;
 		partyBuffs.flametongueTotem = false;
 		party.setBuffs(eventID, partyBuffs);
 	}
@@ -311,11 +294,12 @@ export const ManaSpringTotem = withLabel(
 	'Mana Spring Totem',
 );
 
+// Client 1.60.1.70425 splits the two again under Forever: Leader of the Pack is 3% melee and ranged
+// crit, Moonkin Aura 3% spell crit, and both reach the whole raid.
 export const MeleeCritBuff = withLabel(
 	makeBooleanRaidBuffInput({
 		actionId: () => ActionId.fromSpellId(24932),
 		fieldName: 'leaderOfThePack',
-		showWhen: player => player.sim.getRuleset() !== Ruleset.RulesetForever,
 	}),
 	'Leader of the Pack',
 );
@@ -324,28 +308,9 @@ export const SpellCritBuff = withLabel(
 	makeBooleanRaidBuffInput({
 		actionId: () => ActionId.fromSpellId(24907),
 		fieldName: 'moonkinAura',
-		showWhen: player => player.sim.getRuleset() !== Ruleset.RulesetForever,
 	}),
 	'Moonkin Aura',
 );
-
-const critAuraConfig = makeBooleanRaidBuffInput({
-	actionId: () => ActionId.fromSpellId(24907),
-	fieldName: 'moonkinAura',
-	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever,
-});
-critAuraConfig.getValue = player => {
-	const buffs = player.getRaid()!.getBuffs();
-	return buffs.moonkinAura || buffs.leaderOfThePack;
-};
-critAuraConfig.setValue = (eventID, player, enabled) => {
-	const buffs = player.getRaid()!.getBuffs();
-	buffs.moonkinAura = enabled;
-	buffs.leaderOfThePack = false;
-	player.getRaid()!.setBuffs(eventID, buffs);
-};
-critAuraConfig.labelTooltip = 'Moonkin Aura or Leader of the Pack: 3% melee, ranged and spell crit. The two providers do not stack.';
-export const CritAuraBuff = withLabel(critAuraConfig, 'Crit Aura (3%)');
 
 // Misc Buffs
 export const AtieshMageBuff = makeMultistatePartyBuffInput({
@@ -823,11 +788,6 @@ export const RAID_BUFFS_CONFIG = [
 		config: MeleeCritBuff,
 		picker: IconPicker,
 		stats: [Stat.StatMeleeCrit],
-	},
-	{
-		config: CritAuraBuff,
-		picker: IconPicker,
-		stats: [Stat.StatMeleeCrit, Stat.StatSpellCrit],
 	},
 	// Threat Buffs
 

@@ -66,18 +66,21 @@ type talentClass struct {
 	talents   protoreflect.Message
 	// The ui/ directories whose presets are written against this class's trees.
 	specDirs []string
+	// Forever trees decoded by field name (FillTalentsProtoByName) because their positions no
+	// longer follow the Classic declaration order; nil for declaration-order classes.
+	foreverFields *[3][]string
 }
 
 var talentClasses = []talentClass{
-	{"druid", druid.TalentTreeSizes, (&proto.DruidTalents{}).ProtoReflect(), []string{"balance_druid", "feral_druid", "feral_tank_druid", "restoration_druid"}},
-	{"hunter", hunter.TalentTreeSizes, (&proto.HunterTalents{}).ProtoReflect(), []string{"hunter"}},
-	{"mage", mage.TalentTreeSizes, (&proto.MageTalents{}).ProtoReflect(), []string{"mage"}},
-	{"paladin", paladin.TalentTreeSizes, (&proto.PaladinTalents{}).ProtoReflect(), []string{"holy_paladin", "protection_paladin", "retribution_paladin"}},
-	{"priest", priest.TalentTreeSizes, (&proto.PriestTalents{}).ProtoReflect(), []string{"healing_priest", "shadow_priest", "smite_priest"}},
-	{"rogue", rogue.TalentTreeSizes, (&proto.RogueTalents{}).ProtoReflect(), []string{"rogue"}},
-	{"shaman", shaman.TalentTreeSizes, (&proto.ShamanTalents{}).ProtoReflect(), []string{"elemental_shaman", "enhancement_shaman", "restoration_shaman"}},
-	{"warlock", warlock.TalentTreeSizes, (&proto.WarlockTalents{}).ProtoReflect(), []string{"warlock"}},
-	{"warrior", warrior.TalentTreeSizes, (&proto.WarriorTalents{}).ProtoReflect(), []string{"tank_warrior", "warrior"}},
+	{"druid", druid.TalentTreeSizes, (&proto.DruidTalents{}).ProtoReflect(), []string{"balance_druid", "feral_druid", "feral_tank_druid", "restoration_druid"}, &druid.ForeverTalentTreeFields},
+	{"hunter", hunter.TalentTreeSizes, (&proto.HunterTalents{}).ProtoReflect(), []string{"hunter"}, nil},
+	{"mage", mage.TalentTreeSizes, (&proto.MageTalents{}).ProtoReflect(), []string{"mage"}, nil},
+	{"paladin", paladin.TalentTreeSizes, (&proto.PaladinTalents{}).ProtoReflect(), []string{"holy_paladin", "protection_paladin", "retribution_paladin"}, nil},
+	{"priest", priest.TalentTreeSizes, (&proto.PriestTalents{}).ProtoReflect(), []string{"healing_priest", "shadow_priest", "smite_priest"}, nil},
+	{"rogue", rogue.TalentTreeSizes, (&proto.RogueTalents{}).ProtoReflect(), []string{"rogue"}, nil},
+	{"shaman", shaman.TalentTreeSizes, (&proto.ShamanTalents{}).ProtoReflect(), []string{"elemental_shaman", "enhancement_shaman", "restoration_shaman"}, nil},
+	{"warlock", warlock.TalentTreeSizes, (&proto.WarlockTalents{}).ProtoReflect(), []string{"warlock"}, nil},
+	{"warrior", warrior.TalentTreeSizes, (&proto.WarriorTalents{}).ProtoReflect(), []string{"tank_warrior", "warrior"}, &warrior.ForeverTalentTreeFields},
 }
 
 func loadTrees(t *testing.T, class string) []talentTree {
@@ -115,7 +118,15 @@ func TestTalentTreesMatchTheirProtos(t *testing.T) {
 
 		var treeOrder []string
 		for treeIdx, tree := range trees {
-			if len(tree.Talents) != class.treeSizes[treeIdx] {
+			if class.foreverFields != nil {
+				var names []string
+				for _, talent := range tree.Talents {
+					names = append(names, talent.FieldName)
+				}
+				if got, want := strings.Join(names, " "), strings.Join(class.foreverFields[treeIdx], " "); got != want {
+					t.Errorf("%s/%s: tree order differs from ForeverTalentTreeFields\n tree:   %s\n fields: %s", class.name, tree.Name, got, want)
+				}
+			} else if len(tree.Talents) != class.treeSizes[treeIdx] {
 				t.Errorf("%s/%s: %d talents in the tree but TalentTreeSizes says %d", class.name, tree.Name, len(tree.Talents), class.treeSizes[treeIdx])
 			}
 			for i, talent := range tree.Talents {
@@ -131,7 +142,13 @@ func TestTalentTreesMatchTheirProtos(t *testing.T) {
 			}
 		}
 
-		if strings.Join(protoOrder, " ") != strings.Join(treeOrder, " ") {
+		if class.foreverFields != nil {
+			for _, name := range treeOrder {
+				if fields.ByJSONName(name) == nil {
+					t.Errorf("%s: tree talent %s has no proto field", class.name, name)
+				}
+			}
+		} else if strings.Join(protoOrder, " ") != strings.Join(treeOrder, " ") {
 			t.Errorf("%s: proto fields and tree talents disagree on order\n proto: %v\n trees: %v", class.name, protoOrder, treeOrder)
 		}
 	}

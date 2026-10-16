@@ -1,7 +1,7 @@
 {
  "_readme": "Talent rank values from the Forever beta client, numbers only, in the order they appear in each rank tooltip. TestConfirmedTalentRanksMatchTheSim holds the trees to them. Regenerate with tools/forever_talents/apply_beta_tooltips.py.",
  "source": "Client 1.60.1.69893/70009 entries retained; October 1 development notes and client-derived current talent data for 70170 reconciled separately. October 8 review reconciles Unbridled Wrath display with the October 1 two-hand Rage correction.",
- "generated": "1.60.1.70170 reconciliation",
+ "generated": "1.60.1.70170 reconciliation; 1.60.1.70425 talent changes",
  "talents": {
   "Druid": {
    "Improved Wrath": [
@@ -1132,19 +1132,16 @@
    ],
    "Fire Power": [
     [
-     2
-    ],
-    [
+     1,
      4
     ],
     [
-     6
-    ],
-    [
+     2,
      8
     ],
     [
-     10
+     3,
+     12
     ]
    ],
    "Frost Warding": [
@@ -1655,13 +1652,13 @@
    ],
    "Champion of the Light": [
     [
+     10
+    ],
+    [
      20
     ],
     [
-     40
-    ],
-    [
-     60
+     30
     ]
    ],
    "Instrument of Law": [
@@ -1844,19 +1841,19 @@
    ],
    "Mental Strength": [
     [
-     3
+     2
+    ],
+    [
+     4
     ],
     [
      6
     ],
     [
-     9
+     8
     ],
     [
-     12
-    ],
-    [
-     15
+     10
     ]
    ],
    "Soul Warding": [
@@ -2118,10 +2115,12 @@
    "Devouring Contagion": [
     [
      25,
+     2,
      5
     ],
     [
      50,
+     2,
      10
     ]
    ],
@@ -2665,13 +2664,16 @@
    ],
    "Call of Flame": [
     [
-     5
+     5,
+     3
     ],
     [
-     10
+     10,
+     6
     ],
     [
-     15
+     15,
+     9
     ]
    ],
    "Elemental Fury": [
@@ -2720,11 +2722,11 @@
    "Elemental Reach": [
     [
      3,
-     8
+     10
     ],
     [
      6,
-     15
+     20
     ]
    ],
    "Lightning Overload": [
@@ -3196,19 +3198,19 @@
    ],
    "Shadow Mastery": [
     [
-     1
-    ],
-    [
      2
-    ],
-    [
-     3
     ],
     [
      4
     ],
     [
-     5
+     6
+    ],
+    [
+     8
+    ],
+    [
+     10
     ]
    ],
    "Improved Health Funnel": [
@@ -3529,7 +3531,28 @@
    ]
   },
   "Warrior": {
-   "Unbridled Wrath": [[12, 1], [24, 1], [36, 1], [48, 1], [60, 1]],
+   "Unbridled Wrath": [
+    [
+     12,
+     1
+    ],
+    [
+     24,
+     1
+    ],
+    [
+     36,
+     1
+    ],
+    [
+     48,
+     1
+    ],
+    [
+     60,
+     1
+    ]
+   ],
    "Improved Heroic Strike": [
     [
      1
@@ -3964,6 +3987,10 @@
   {
    "url": "https://foreverdb.net/data/classes.json",
    "scope": "Current tree identities and new talent rank curves; corroborated against ForeverChanges calculator. A calculator dataset is not verification of server-script proc behavior."
+  },
+  {
+   "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6",
+   "scope": "Client 1.60.1.70425 trait curves for talents the October 15 notes changed (Fire Power, Mental Strength, Devouring Contagion, Call of Flame, Elemental Reach, Shadow Mastery, Champion of the Light)."
   }
  ]
 }

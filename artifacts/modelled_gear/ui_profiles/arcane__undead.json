@@ -16,6 +16,7 @@
     "divineSpirit": true,
     "battleShout": "TristateEffectRegular",
     "trueshotAura": true,
+    "leaderOfThePack": true,
     "moonkinAura": true,
     "manaSpringTotem": "TristateEffectImproved",
     "shadowProtection": true,
@@ -66,7 +67,7 @@
           "enchant": 2488
         },
         {
-          "id": 920000486,
+          "id": 920000293,
           "enchant": 1889
         },
         {
@@ -182,7 +183,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "053005023100311531-03-005500032",
+    "talentsString": "0512005023100311531-03-005500032",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
@@ -253,11 +254,11 @@
         {
           "action": {
             "condition": {
-              "or": {
+              "and": {
                 "vals": [
                   {
                     "cmp": {
-                      "op": "OpGe",
+                      "op": "OpLt",
                       "lhs": {
                         "auraNumStacks": {
                           "auraId": {
@@ -267,14 +268,14 @@
                       },
                       "rhs": {
                         "const": {
-                          "val": "3"
+                          "val": "4"
                         }
                       }
                     }
                   },
                   {
                     "cmp": {
-                      "op": "OpLt",
+                      "op": "OpGt",
                       "lhs": {
                         "currentManaPercent": {}
                       },
@@ -290,7 +291,7 @@
             },
             "castSpell": {
               "spellId": {
-                "spellId": 25304
+                "spellId": 30451
               }
             }
           }
@@ -299,7 +300,17 @@
           "action": {
             "castSpell": {
               "spellId": {
-                "spellId": 30451
+                "spellId": 1326082
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 25345,
+                "rank": 8
               }
             }
           }

@@ -16,6 +16,7 @@
     "divineSpirit": true,
     "battleShout": "TristateEffectRegular",
     "trueshotAura": true,
+    "leaderOfThePack": true,
     "moonkinAura": true,
     "manaSpringTotem": "TristateEffectImproved",
     "shadowProtection": true,
@@ -59,14 +60,14 @@
           "enchant": 2544
         },
         {
-          "id": 920000488
+          "id": 920000302
         },
         {
           "id": 920000390,
           "enchant": 2488
         },
         {
-          "id": 920000486,
+          "id": 920000293,
           "enchant": 1889
         },
         {
@@ -79,7 +80,7 @@
         },
         {
           "id": 920000402,
-          "enchant": 2615
+          "enchant": 2617
         },
         {
           "id": 920000406
@@ -182,7 +183,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "05020500310031053--05550002010003002",
+    "talentsString": "050200500310031053--05550002010003002",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
@@ -283,6 +284,51 @@
             "castSpell": {
               "spellId": {
                 "spellId": 25345
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpLt",
+                      "lhs": {
+                        "auraNumStacks": {
+                          "auraId": {
+                            "spellId": 30451
+                          }
+                        }
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "4"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGt",
+                      "lhs": {
+                        "currentManaPercent": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "20%"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 30451
               }
             }
           }

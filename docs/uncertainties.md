@@ -4,22 +4,22 @@
 
 Current level-60 DPS and tank scenarios, plus conditional spell, item and encounter coverage. This register consolidates the recorded questions; it is not a claim that unlisted game behavior has been verified.
 
-**Latest follow-up (2026-10-11):** October 11 log audit against all public foreverlogs.gg beta reports, class Discord test reports, the October 1 notes and client 1.60.1.70338 aura options. Corrected: Shaman Flurry lasts one white swing; Omen of Clarity procs at 4 per minute from white hits and 20% from other events after its cooldown; Fingers of Frost, Missile Barrage and Decimation roll at cast completion; Redoubt rolls on avoided attacks; the Imp recast pause is 0.42 s; queued Raptor Strike keeps the off-hand miss penalty; Maelstrom Weapon is 10 procs per minute at every rank. Entries that change no simulated result moved outside current scenarios; every remaining open entry has a beta test procedure. Builds that changed were re-searched with two-seed confirmation, and all 1,005 matrix scenarios and 68 tank checks replayed. [Latest follow-up report](october-11-log-audit.md).
+**Latest follow-up (2026-10-16):** October 15 update to client 1.60.1.70425 and the October 15 development notes, with the WoW Sims, Fight Club and Hunter Lodge Discord reports since October 11. Implemented the racial replacements (critical damage, crit and haste racials, Touch of the Grave, Eureka, Blood Fury), the split raid-wide Leader of the Pack and Moonkin Aura, raid-wide totems and Battle Shout, the Mage, Priest, Shaman, Warlock and Paladin talent and spell changes, the Hunter, Druid, Rogue and Warrior fixes and four item procs. Mage, Priest, Shaman and Warlock profiles moved to the new trees; every DPS profile was re-searched with two-seed confirmation, and all 1,005 matrix scenarios and 68 tank checks replayed. [Latest follow-up report](october-15-update.md).
 
 **Original adjudication baseline:** 2026-09-27, `35cab052456a320358e998c12416687d69cae142`. That original review reconciled questions without changing mechanics or benchmark results. This current register also includes the later implementation and benchmark updates linked above; earlier audits remain historical evidence, not current task status.
 
-**Coverage:** 137/137 original entries reviewed; 37 additional coverage gaps, including later follow-ups.
+**Coverage:** 137/137 original entries reviewed; 50 additional coverage gaps, including later follow-ups.
 
 ## Before and after
 
 | Status | Before | Original entries now | Including additions |
 |---|---:|---:|---:|
-| Needs evidence | 84 | 39 | 43 |
+| Needs evidence | 84 | 38 | 42 |
 | Implementation gap | 27 | 3 | 3 |
-| Model assumption | 5 | 3 | 3 |
-| Accepted working answer | 0 | 12 | 16 |
-| Resolved | 20 | 50 | 68 |
-| Outside current scenarios | 1 | 41 | 41 |
+| Model assumption | 5 | 3 | 4 |
+| Accepted working answer | 0 | 13 | 24 |
+| Resolved | 20 | 50 | 72 |
+| Outside current scenarios | 1 | 42 | 42 |
 
 A working answer is credible enough for an explicitly qualified model, not verified server behavior. Confidence applies to the stated finding, not every effect of that class. An implementation gap is not a request for a game experiment.
 
@@ -64,9 +64,6 @@ An experiment within the current level-30 beta, subject to actual access, learne
 - **High · [HUN-002 — Pet per-hit damage versus speed](#hun-002)**
   - Prerequisites: Two same-family/same-level pets of different speeds and two owner AP totals.
   - Observe / verify: Compare the change in pet damage per hit across the AP delta for each speed; control happiness and training. This separates an AP coefficient from the already observed base-speed difference.
-- **High · [PAL-001 — Seal of Righteousness spell-power formula](#pal-001)**
-  - Prerequisites: Same low-rank seal, target and recorded weapon speed; two known personal-SP values and one-/two-hand controls.
-  - Observe / verify: Measure proc damage slopes without Judgement of the Crusader, then add that target bonus separately. Keep weapon damage, talents and crit outcomes controlled.
 - **High · [PAL-006 — Seal of Fury shield replacement and mana](#pal-006)**
   - Prerequisites: Level 20+ Paladin with Improved Seal of Fury, shield, learned ranks, uncapped mana and known incoming attacker levels.
   - Observe / verify: Measure successive procs, rank switching, partial/full depletion, replacement/expiry and capped attacker-level returns; distinguish generated capacity, absorbed damage and mana.
@@ -85,15 +82,15 @@ An experiment within the current level-30 beta, subject to actual access, learne
 - **Medium · [CORE-009 — Eureka cast and periodic bonuses](#core-009)**
   - Prerequisites: Gnome Mage/Warlock/Priest with a low-rank DoT or channel; exact build and buff-stack timestamps.
   - Observe / verify: Repeat those three cases in game. Do not infer intended behavior from an open bug report or conflate the old mana-discount amount with current values.
-- **Medium · [CORE-015 — Weapon-racial crit and ranged attacks](#core-015)**
-  - Prerequisites: Human or Orc Hunter and matching versus nonmatching melee weapons with equal Agility/crit stats; unchanged ranged weapon and pet.
-  - Observe / verify: Record melee, ranged, spell and pet crit APIs before/after the swap, then compare ranged attack outcomes if the display and source descriptions disagree. Check one and two matching weapons separately rather than assuming the bonus stacks.
 - **Medium · [HUN-003 — Pet external buffs and action cadence](#hun-003)**
   - Prerequisites: Only if pet cadence sensitivity proves material; a trained damage ability and a resource trace.
   - Observe / verify: Compare ability use when resource-limited versus resource-capped. Do not mix this with owner inheritance or ordinary spell cooldowns.
 - **Medium · [HUN-012 — Savage Strikes article/client version conflict](#hun-012)**
   - Prerequisites: Savage Strikes access and matched talent-on/off attacks at fixed AP, weapon and target.
   - Observe / verify: Separate hit-size changes from crit-frequency changes, and record build/ability IDs.
+- **Medium · [HUN-016 — Fire trap Attack Power scaling](#hun-016)**
+  - Prerequisites: Hunter with Immolation Trap and two gear sets differing only in melee or only in ranged Attack Power.
+  - Observe / verify: Total trap damage per set, about 20 traps each.
 - **Medium · [PAL-004 — Holy melee partial resistance](#pal-004)**
   - Prerequisites: Holy Strike and seal attacks against targets of known equal and higher levels; fixed damage inputs.
   - Observe / verify: Inspect explicit resisted amounts and damage clusters separately from miss/dodge outcomes. A small sample with no resist is not proof of immunity.
@@ -286,6 +283,9 @@ The individual records identify source-ready corrections separately from assumpt
 - [docs/october-11-log-audit.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-11-log-audit.md)
 - [docs/beta-test-procedures.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-test-procedures.md)
 - [https://foreverlogs.gg/](https://foreverlogs.gg/)
+- [docs/october-15-update.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-15-update.md)
+- [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6)
+- [https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374](https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374)
 
 ## Updating an answer
 
@@ -462,13 +462,13 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Question:** Does the last Eureka charge benefit every tick of the consuming channel/DoT after the aura expires?
 
-**Finding:** October 1 excludes periodic damage/healing from Eureka. The ordinary-DoT snapshot/application-tick leak is reproduced and repaired, and same-spell channel coverage is checked. Historical reports of dynamic DoT bonuses remain preserved as pre-fix behavior, not intended rules.
+**Finding:** October 1 excludes periodic damage/healing from Eureka. The ordinary-DoT snapshot/application-tick leak is reproduced and repaired, and same-spell channel coverage is checked. Historical reports of dynamic DoT bonuses remain preserved as pre-fix behavior, not intended rules. October 15 update: The October 15 notes and client (1259812-1259823, duration 15 s to 8 s) remove the charges, so the last-charge question no longer applies.
 
-**Current implementation / scenario:** Ordinary periodic damage excludes Eureka; direct channel ticks retain the consuming-cast bonus after charge expiry, including same-spell and tagged child representations. Resource discounts retain the existing 10% convention.
+**Current implementation / scenario:** Eureka is an 8-second buff with no charges (client 1.60.1.70425): every eligible direct cast inside the window gets the cost and damage bonus. Ordinary periodic damage stays excluded; a channel started inside the window keeps the bonus on its ticks.
 
 **Impact:** Gnome resource use and damage, particularly channels.
 
-**Remaining scope:** Live server consumption/ordering and the last-charge channel semantics; healer-specific periodic coverage is not established by damage checks.
+**Remaining scope:** Whether a channel started just before expiry keeps the bonus on later ticks.
 
 **Implementation / model follow-up:** Focused periodic-application, same-spell channel and nested-charge regressions pass. Do not relabel the old snapshot assumptions as current game verification.
 
@@ -480,37 +480,9 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Prerequisites: Gnome Mage/Warlock/Priest with a low-rank DoT or channel; exact build and buff-stack timestamps.
 - Observe / verify: Repeat those three cases in game. Do not infer intended behavior from an open bug report or conflate the old mana-discount amount with current values.
 
-**References:** [docs/forever_races.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/forever_races.md) · [sim/core/forever_gnome.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/forever_gnome.go) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/35](https://github.com/ClassicWoWCommunity/forever-bugs/issues/35) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/90](https://github.com/ClassicWoWCommunity/forever-bugs/issues/90) · [https://wago.tools/db2/SpellEffect?build=1.60.1.70009](https://wago.tools/db2/SpellEffect?build=1.60.1.70009) · [sim/core/spell_result.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/spell_result.go) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696/4](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696/4) · [docs/october-1-corrections.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-1-corrections.md)
+**References:** [docs/forever_races.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/forever_races.md) · [sim/core/forever_gnome.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/forever_gnome.go) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/35](https://github.com/ClassicWoWCommunity/forever-bugs/issues/35) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/90](https://github.com/ClassicWoWCommunity/forever-bugs/issues/90) · [https://wago.tools/db2/SpellEffect?build=1.60.1.70009](https://wago.tools/db2/SpellEffect?build=1.60.1.70009) · [sim/core/spell_result.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/spell_result.go) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696/4](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696/4) · [docs/october-1-corrections.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-1-corrections.md) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6)
 
 **Earlier references:** T03
-
-<a id="core-015"></a>
-
-### CORE-015 — Weapon-racial crit and ranged attacks
-
-**Needs evidence · Medium priority · Moderate confidence**
-
-**Disposition:** Partly answered
-
-**Question:** Do weapon-specialization racials affect ranged crit, or only melee, spell and inherited pet crit?
-
-**Finding:** The Forever Hunter wiki reports that weapon-specialization racial crit applies to melee/spells and the pet, but not ranged attacks. The current helper adds MeleeCrit, which the ranged outcome path also reads, so the engine includes ranged crit. The captured Orc tooltip instead says all spells and abilities; its crit-percent aura does not resolve this live-scope discrepancy by itself.
-
-**Current implementation / scenario:** A matching held weapon adds MeleeCrit and SpellCrit; the ranged attack path also reads MeleeCrit.
-
-**Impact:** Could change Hunter racial comparisons and gear choices without changing generic equipment crit.
-
-**Remaining scope:** Whether ranged exclusion is current intended behavior or a beta-specific discrepancy; separate actual crit resolution from character-sheet display.
-
-**Implementation / model follow-up:** This is a new source/code conflict, not a reason to change generic equipment crit. A scoped racial correction would need to preserve the melee/spell/pet contributions and matching-weapon condition.
-
-**Current beta · level 30**
-- Prerequisites: Human or Orc Hunter and matching versus nonmatching melee weapons with equal Agility/crit stats; unchanged ranged weapon and pet.
-- Observe / verify: Record melee, ranged, spell and pet crit APIs before/after the swap, then compare ranged attack outcomes if the display and source descriptions disagree. Check one and two matching weapons separately rather than assuming the bonus stacks.
-
-**References:** [https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes](https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes) · [sim/core/specializations.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/specializations.go) · [sim/core/racials.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/racials.go) · [sim/core/spell_result.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/spell_result.go) · [sim/core/spell_outcome.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/spell_outcome.go) · [artifacts/question_review/scenario_data_evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/scenario_data_evidence.json)
-
-**Related:** HUN-001, DATA-012
 
 <a id="core-003"></a>
 
@@ -682,6 +654,32 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [sim/priest/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/priest/talents.go) · [sim/hunter/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/talents.go) · [sim/hunter/serpent_sting.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/serpent_sting.go) · [sim/warrior/rend.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/rend.go)
 
+<a id="core-020"></a>
+
+### CORE-020 — Critical damage racials (Tauren Endurance, Dwarf Earth Fury)
+
+**Accepted working answer · High priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Does the 2% critical damage bonus scale the whole critical multiplier or only the bonus part?
+
+**Finding:** Client 1.60.1.70425: Endurance 20550 e1 aura 163 (2) and e2 aura 50 (2) replace the 1% hit; Earth Fury replaces Mace Specialization. Aura 163 scales the full critical damage in the server code this client descends from.
+
+**Current implementation / scenario:** Scales the whole multiplier, like client aura 163: melee crits 2.04x, spell crits 1.53x.
+
+**Impact:** Every Tauren and Dwarf profile, and the rotation planner for Tauren characters.
+
+**Remaining scope:** A measured Tauren or Dwarf crit/non-crit ratio.
+
+**Implementation / model follow-up:** sim/core/racials.go (critDamageAura); sim/planner/warrior_model.go reads it from the attack table.
+
+**Optional / conditional · Current beta · level 30**
+- Prerequisites: Tauren or Dwarf Warrior and a non-Tauren control with the same weapon.
+- Observe / verify: Ratio of crit to non-crit white damage over about 300 swings each.
+
+**References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [sim/core/racials.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/racials.go)
+
 <a id="core-006"></a>
 
 ### CORE-006 — Optional MP5-per-second interpretation
@@ -762,6 +760,34 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Earlier references:** T24 (shared cooldown portion)
 
+<a id="core-015"></a>
+
+### CORE-015 — Weapon-racial crit and ranged attacks
+
+**Outside current scenarios · Medium priority · Moderate confidence**
+
+**Disposition:** Outside current scenarios
+
+**Question:** Do weapon-specialization racials affect ranged crit, or only melee, spell and inherited pet crit?
+
+**Finding:** Client 1.60.1.70425 replaces the weapon racials: Human Ruthless (+2% crit with all spells and attacks), Orc Savage (+1%), Dwarf Earth Fury (+2% critical damage). None depends on the held weapon, so the ranged-scope question no longer arises.
+
+**Current implementation / scenario:** A matching held weapon adds MeleeCrit and SpellCrit; the ranged attack path also reads MeleeCrit.
+
+**Impact:** Could change Hunter racial comparisons and gear choices without changing generic equipment crit.
+
+**Remaining scope:** None.
+
+**Implementation / model follow-up:** sim/core/racials.go.
+
+**Optional / conditional · Current beta · level 30**
+- Prerequisites: Human or Orc Hunter and matching versus nonmatching melee weapons with equal Agility/crit stats; unchanged ranged weapon and pet.
+- Observe / verify: Record melee, ranged, spell and pet crit APIs before/after the swap, then compare ranged attack outcomes if the display and source descriptions disagree. Check one and two matching weapons separately rather than assuming the bonus stacks.
+
+**References:** [https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes](https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes) · [sim/core/specializations.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/specializations.go) · [sim/core/racials.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/racials.go) · [sim/core/spell_result.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/spell_result.go) · [sim/core/spell_outcome.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/spell_outcome.go) · [artifacts/question_review/scenario_data_evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/scenario_data_evidence.json) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6)
+
+**Related:** HUN-001, DATA-012
+
 <a id="core-017"></a>
 
 ### CORE-017 — Crowd-control DR target policy and reset anchor
@@ -789,6 +815,32 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **References:** [https://us.forums.blizzard.com/en/wow/t/2360696/5](https://us.forums.blizzard.com/en/wow/t/2360696/5) · [docs/october-8-overnight-update.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-8-overnight-update.md) · [sim/core/crowd_control.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/crowd_control.go) · [sim/core/movement.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/movement.go) · [tools/forever_bench/hunter_utility_october9_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/hunter_utility_october9_test.go) · [https://wago.tools/db2/SpellDiminish?build=1.60.1.70291](https://wago.tools/db2/SpellDiminish?build=1.60.1.70291)
 
 **Related:** SCEN-009, DATA-001
+
+<a id="core-021"></a>
+
+### CORE-021 — Touch of the Grave after 1.60.1.70425
+
+**Accepted working answer · Medium priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** What are the new proc chance and cooldown?
+
+**Finding:** The October 15 notes give 30%/20% and a 25-second internal cooldown and remove Shadow scaling; the client aura options changed with them.
+
+**Current implementation / scenario:** 20% (Warrior, Paladin, Rogue) or 30% (casters) on a landed damaging hit, 25-second cooldown, 5% of maximum health, no Shadow scaling.
+
+**Impact:** Undead profiles.
+
+**Remaining scope:** Whether the cooldown starts on the proc or on any eligible hit.
+
+**Implementation / model follow-up:** sim/core/racials.go.
+
+**Optional / conditional · Current beta · level 30**
+- Prerequisites: Undead caster.
+- Observe / verify: Time between procs over 10 minutes of casting.
+
+**References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374](https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374)
 
 <a id="core-013"></a>
 
@@ -978,7 +1030,7 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Question:** Can an off-hand mace grant the character-wide armor discount, and how does it stack?
 
-**Finding:** The active Weaponmaster tree grants its first point at level 30; the full five-point effect requires 34. The talent text's weapon conditions do not settle whether an off-hand mace grants an owner-wide armor discount. That hand-specific question is genuinely testable in the level-30 beta at one point.
+**Finding:** The active Weaponmaster tree grants its first point at level 30; the full five-point effect requires 34. The talent text's weapon conditions do not settle whether an off-hand mace grants an owner-wide armor discount. That hand-specific question is genuinely testable in the level-30 beta at one point. October 15 update: The October 15 notes also stop Weaponmaster's sword extra attack from triggering on Shield Bash and Shield Slam; the sim now excludes Shield Slam (Shield Bash is not a simulated attack).
 
 **Current implementation / scenario:** The retained equipment gate can grant it from an off-hand mace. The competing upstream main-hand-only rule is not verified.
 
@@ -996,7 +1048,7 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Prerequisites: Level-60 armor-ignore combinations (items and debuffs not available in the beta).
 - Observe / verify: Confirm stacking with other armor-ignore effects.
 
-**References:** [sim/warrior/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/talents.go) · [docs/upstream-forever-review-2026-09-23.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/upstream-forever-review-2026-09-23.md) · [ui/core/talents/trees/warrior.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/warrior.json)
+**References:** [sim/warrior/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/talents.go) · [docs/upstream-forever-review-2026-09-23.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/upstream-forever-review-2026-09-23.md) · [ui/core/talents/trees/warrior.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/warrior.json) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6)
 
 <a id="war-003"></a>
 
@@ -1456,35 +1508,29 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [sim/warrior/shouts.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/shouts.go) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/64](https://github.com/ClassicWoWCommunity/forever-bugs/issues/64)
 
+<a id="war-024"></a>
+
+### WAR-024 — Warrior changes in 1.60.1.70425
+
+**Resolved · Low priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Which Warrior changes affect the simulation?
+
+**Finding:** Notes; the client changes Lingering Rage to a rage-decay aura (1323965 aura 94 to 110) and rewords Bloodthrill, Gore Drinker and Victorious without changing values.
+
+**Current implementation / scenario:** Weaponmaster's extra attack no longer triggers from Shield Slam. Battle Shout reaches the whole raid. Slam pushback, Overpower against low-level enemies, Lingering Rage health regeneration and Improved Berserker Rage snare removal have no simulated effect. Human, Orc, Dwarf and Tauren racials changed (CORE-020).
+
+**Impact:** Protection and Fury tanks with Weaponmaster; racial rows.
+
+**Remaining scope:** None.
+
+**Implementation / model follow-up:** sim/warrior/talents.go.
+
+**References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374](https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374)
+
 ## Paladin
-
-<a id="pal-001"></a>
-
-### PAL-001 — Seal of Righteousness spell-power formula
-
-**Needs evidence · High priority · Low confidence**
-
-**Disposition:** Game test needed
-
-**Question:** Should the proc add SP once or twice, and is the retained two-hand 1.1 factor real in Forever?
-
-**Finding:** The code adds the proc's SP contribution in baseDamage and again through BonusCoefficient; the two-hand factor is explicitly inherited from SoD testing. A current public discussion reports a roughly flat coefficient while using Judgement of the Crusader, but that target-side bonus is not a controlled change in personal SP and the replies disagree. It cannot settle the formula.
-
-**Current implementation / scenario:** Retains the double-add formula and two-hand factor inherited from older testing. A client coefficient alone does not validate the full formula.
-
-**Impact:** Both Ret gear archetypes and Protection damage/threat; high-impact scaling uncertainty.
-
-**Remaining scope:** Personal-SP coefficient, two-hand modifier and target Holy-bonus treatment.
-
-**Implementation / model follow-up:** Do not certify the double addition from the client coefficient alone, or change it using the uncontrolled forum example. This remains a high-value small experiment.
-
-**Current beta · level 30**
-- Prerequisites: Same low-rank seal, target and recorded weapon speed; two known personal-SP values and one-/two-hand controls.
-- Observe / verify: Measure proc damage slopes without Judgement of the Crusader, then add that target bonus separately. Keep weapon damage, talents and crit outcomes controlled.
-
-**References:** [sim/paladin/sor.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/sor.go) · [docs/weekly_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/weekly_review.md) · [docs/upstream_elliot_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/upstream_elliot_review.md) · [https://us.forums.blizzard.com/en/wow/t/sor-needs-the-tbc-formula/2355721](https://us.forums.blizzard.com/en/wow/t/sor-needs-the-tbc-formula/2355721)
-
-**Earlier references:** T57 (Righteousness)
 
 <a id="pal-002"></a>
 
@@ -1658,6 +1704,34 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Related:** CORE-008, DRU-011
 
+<a id="pal-001"></a>
+
+### PAL-001 — Seal of Righteousness spell-power formula
+
+**Accepted working answer · High priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Should the proc add SP once or twice, and is the retained two-hand 1.1 factor real in Forever?
+
+**Finding:** The October 15 notes: 'Fixed an issue causing Seal of Righteousness to gain almost twice as much benefit from Spell Damage than intended.' Client 1.60.1.70425 also zeroes the aura's own coefficient (25713-25742 e0 0.1 to 0). The double addition was the in-game behavior until now and is gone.
+
+**Current implementation / scenario:** The double addition is removed: the proc adds its spell-power contribution once, through its coefficient. The two-hand factor is retained.
+
+**Impact:** Both Ret gear archetypes and Protection damage/threat; high-impact scaling uncertainty.
+
+**Remaining scope:** The two-hand factor and the target Holy-bonus treatment.
+
+**Implementation / model follow-up:** sim/paladin/sor.go (the proc keeps its 0.1 coefficient, applied once).
+
+**Optional / conditional · Current beta · level 30**
+- Prerequisites: Same low-rank seal, target and recorded weapon speed; two known personal-SP values and one-/two-hand controls.
+- Observe / verify: Measure proc damage slopes without Judgement of the Crusader, then add that target bonus separately. Keep weapon damage, talents and crit outcomes controlled.
+
+**References:** [sim/paladin/sor.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/sor.go) · [docs/weekly_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/weekly_review.md) · [docs/upstream_elliot_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/upstream_elliot_review.md) · [https://us.forums.blizzard.com/en/wow/t/sor-needs-the-tbc-formula/2355721](https://us.forums.blizzard.com/en/wow/t/sor-needs-the-tbc-formula/2355721) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374](https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374)
+
+**Earlier references:** T57 (Righteousness)
+
 <a id="pal-005"></a>
 
 ### PAL-005 — Seal of Fury and its judgement
@@ -1789,6 +1863,28 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **Implementation / model follow-up:** Keep in the control-capability backlog rather than the current test queue. Do not apply this dismissal to damaging Command/Righteousness Echoes.
 
 **References:** [docs/forever-70009.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/forever-70009.md) · [https://wago.tools/db2/SpellEffect?build=1.60.1.70009](https://wago.tools/db2/SpellEffect?build=1.60.1.70009) · [https://wago.tools/db2/Spell?build=1.60.1.69977](https://wago.tools/db2/Spell?build=1.60.1.69977)
+
+<a id="pal-016"></a>
+
+### PAL-016 — Reckoning charges
+
+**Accepted working answer · Medium priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** How are Reckoning charges stored and released?
+
+**Finding:** Notes and client 20177 ('Stores up to 4 extra attacks. Cannot occur from Blocks more than once every 1.5 sec').
+
+**Current implementation / scenario:** Each trigger stores a charge (up to 4); the next main-hand auto attack releases all of them as extra attacks. Only the block trigger keeps the 1.5-second cooldown.
+
+**Impact:** Protection Paladin with Reckoning.
+
+**Remaining scope:** Whether the released attacks reset the swing timer.
+
+**Implementation / model follow-up:** sim/paladin/talents.go.
+
+**References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374](https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374)
 
 <a id="pal-013"></a>
 
@@ -2232,6 +2328,28 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Earlier references:** T11
 
+<a id="dru-015"></a>
+
+### DRU-015 — Furor through Bear Form
+
+**Resolved · Low priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Does Furor keep Cat Energy through Bear Form?
+
+**Finding:** Notes and the new Furor 17056 text; Bear and Dire Bear gain a -100% Energy regeneration aura. Howling Idol's Shifting Power reduction is 0.5 s (1291059).
+
+**Current implementation / scenario:** Shifting into Cat restores 20% per point of the Energy last held in Cat plus 2 per point per second spent outside Bear, up to 20 per point; the saved Energy survives Bear Form and Bear time earns nothing.
+
+**Impact:** Feral (bear-weaving only).
+
+**Remaining scope:** None.
+
+**Implementation / model follow-up:** sim/druid/forms.go, sim/druid/items.go.
+
+**References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374](https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374)
+
 ## Hunter and pets
 
 <a id="hun-001"></a>
@@ -2369,6 +2487,32 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Observe / verify: Separate hit-size changes from crit-frequency changes, and record build/ability IDs.
 
 **References:** [https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid](https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid) · [sim/hunter/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/talents.go)
+
+<a id="hun-016"></a>
+
+### HUN-016 — Fire trap Attack Power scaling
+
+**Needs evidence · Medium priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** How much Attack Power do Immolation and Explosive Trap gain, and from which Attack Power?
+
+**Finding:** The October 15 notes: 'The Hunter's Fire traps now correctly scale with Attack Power.' The client carries no coefficient. Hunter Lodge testers on release day measured about 10% of Attack Power over a whole Immolation Trap, apparently from whichever Attack Power is higher.
+
+**Current implementation / scenario:** Provisional: the periodic part of each fire trap gains 10% of the higher of melee and ranged Attack Power over its full duration; Explosive Trap's initial hit is unscaled.
+
+**Impact:** Survival and Pet/Melee (trap users).
+
+**Remaining scope:** Coefficient, which Attack Power, and Explosive Trap's initial hit.
+
+**Implementation / model follow-up:** sim/hunter/immolation_trap.go fireTrapAttackPowerBonus.
+
+**Current beta · level 30**
+- Prerequisites: Hunter with Immolation Trap and two gear sets differing only in melee or only in ranged Attack Power.
+- Observe / verify: Total trap damage per set, about 20 traps each.
+
+**References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [sim/hunter/immolation_trap.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/immolation_trap.go)
 
 <a id="hun-004"></a>
 
@@ -2622,6 +2766,28 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [sim/hunter/pet_abilities.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/pet_abilities.go) · [docs/beta-pass/hunter.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/hunter.md) · [artifacts/question_review/class_evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/class_evidence.json) · [https://www.wowhead.com/forever/spell=24579/demoralizing-screech](https://www.wowhead.com/forever/spell=24579/demoralizing-screech) · [sim/hunter/demoralizing_screech.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/demoralizing_screech.go)
 
+<a id="hun-017"></a>
+
+### HUN-017 — Hunter changes in 1.60.1.70425
+
+**Resolved · Low priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Which Hunter mechanics changed?
+
+**Finding:** Client: Multi-Shot 2643 cast time 500 ms to 0 (testers confirm it fires on the move); Mortal Shots 19485 and Efficiency 19416 gain Sniper Shot's class-mask bit. Notes: Expertise, pet crit, Resourcefulness and Trueshot Aura.
+
+**Current implementation / scenario:** Multi-Shot is instant in Forever. Mortal Shots and Efficiency cover Sniper Shot. Pets inherit the owner's Expertise and take the higher of melee and ranged crit (the sim's single physical crit stat). Resourcefulness procs only from melee and ranged ability crits. Trueshot Aura is raid-wide.
+
+**Impact:** Marksmanship, Beast Mastery, Survival, Pet/Melee.
+
+**Remaining scope:** None.
+
+**Implementation / model follow-up:** sim/hunter.
+
+**References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374](https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374)
+
 ## Mage
 
 <a id="mag-004"></a>
@@ -2662,9 +2828,9 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Question:** What is the Ice Lance SP coefficient at each rank, and does the frozen multiplier cover the whole hit?
 
-**Finding:** Processed public event reports 2727/2687 independently favor about 0.10–0.11 over the old 0.143 guess. Frostbolt-derived SP and repeated low Ice Lance hits constrain the fit. The 0.10 working model replaces that guess, but gear/talent details and resist/absorb fields are incomplete. October 11 audit: WoWSims #forever-mage (2026-10-08/09): Ice Lance rank 2 measured at about 0.113 SP (95% range 0.109–0.118) from 0 versus 58/71 SP logs; rank 1 at about 0.095 (0.089–0.100, 79 hits). Neither matches 1/7. The provisional 0.10 sits between the measured low ranks; the level-60 rank is unmeasured and probabilistic damage rounding widens the intervals.
+**Finding:** Processed public event reports 2727/2687 independently favor about 0.10–0.11 over the old 0.143 guess. Frostbolt-derived SP and repeated low Ice Lance hits constrain the fit. The 0.10 working model replaces that guess, but gear/talent details and resist/absorb fields are incomplete. October 11 audit: WoWSims #forever-mage (2026-10-08/09): Ice Lance rank 2 measured at about 0.113 SP (95% range 0.109–0.118) from 0 versus 58/71 SP logs; rank 1 at about 0.095 (0.089–0.100, 79 hits). Neither matches 1/7. The provisional 0.10 sits between the measured low ranks; the level-60 rank is unmeasured and probabilistic damage rounding widens the intervals. October 15 update: The October 15 notes reduce the frozen bonus to a 200% increase.
 
-**Current implementation / scenario:** Uses a provisional 0.10 SP coefficient and unchanged frozen/Fingers interactions; the static client effect has no coefficient. Low-rank calibration is extrapolated to the level-60 registration.
+**Current implementation / scenario:** Uses a provisional 0.10 SP coefficient; against frozen targets Ice Lance deals 200% more (x3, was x4 before 1.60.1.70425). Low-rank calibration is extrapolated to the level-60 registration.
 
 **Impact:** Frost and Arcane–Frost, including comparisons whose baseline casts Ice Lance.
 
@@ -2680,7 +2846,7 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Prerequisites: Higher learned ranks if their coefficients differ from the tested rank.
 - Observe / verify: Repeat only the unresolved rank-scaling part, not the entire frozen test.
 
-**References:** [sim/mage/ice_lance.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/ice_lance.go) · [docs/beta-pass/mage.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/mage.md) · [ui/core/talents/trees/mage.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/mage.json) · [docs/talent-check-2026-09-17.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/talent-check-2026-09-17.md) · [docs/october-8-review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-8-review.md)
+**References:** [sim/mage/ice_lance.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/ice_lance.go) · [docs/beta-pass/mage.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/mage.md) · [ui/core/talents/trees/mage.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/mage.json) · [docs/talent-check-2026-09-17.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/talent-check-2026-09-17.md) · [docs/october-8-review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-8-review.md) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6)
 
 **Earlier references:** T49
 
@@ -2715,6 +2881,54 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **References:** [sim/mage/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/talents.go) · [docs/beta-pass/mage.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/mage.md) · [ui/core/talents/trees/mage.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/mage.json) · [https://www.wowhead.com/forever/spell=400647/fingers-of-frost](https://www.wowhead.com/forever/spell=400647/fingers-of-frost) · [https://foreverlogs.gg/](https://foreverlogs.gg/)
 
 **Earlier references:** T10 / T49 (Fingers timing)
+
+<a id="mag-009"></a>
+
+### MAG-009 — Arcane Blast and Arcane Wrath redesign
+
+**Accepted working answer · High priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** How do the new Arcane Blast stacks and Arcane Wrath behave?
+
+**Finding:** Notes and client 1.60.1.70425 (Arcane Blast 1239700, Arcane Wrath 1326079-1326082). With these rules the Arcane rotation stacks Arcane Blast first and fills with Arcane Missiles; Arcane-Frost stacks Arcane Blast before Frostbolts.
+
+**Current implementation / scenario:** Arcane Blast: 1.5 s, 218-254 at 0.429; each cast adds 15% of Intellect as Spell Damage and +175% Arcane Blast cost, up to 4 stacks, 15 s from the first application, not spent by other spells. Arcane Wrath: 3.5 s cast, 6 s cooldown, rank 4 406-496 at 1.0 plus Spell Damage equal to 5% of maximum mana.
+
+**Impact:** Arcane and Arcane-Frost.
+
+**Remaining scope:** Whether the stacks' Spell Damage snapshots on Arcane Missiles ticks; Arcane Wrath per-level growth inside a rank.
+
+**Implementation / model follow-up:** sim/mage/arcane_blast.go; ui/mage/apls/forever_arcane*.apl.json.
+
+**Optional / conditional · Current beta · level 30**
+- Prerequisites: Mage with Arcane Blast and 4 stacks.
+- Observe / verify: Frostbolt damage with 0 and 4 stacks; stack duration and cost per stack.
+
+**References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [sim/mage/arcane_blast.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/arcane_blast.go)
+
+<a id="mag-010"></a>
+
+### MAG-010 — Fire Power and Winter's Chill redesigns
+
+**Accepted working answer · High priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Which effects count for Fire Power, and what does Winter's Chill do now?
+
+**Finding:** Client trait ranks and the notes. The notes also carry a second, different Winter's Chill text (a 5% Cone of Cold debuff plus 7% spell damage per stack); client 1.60.1.70425 (aura 271, 40% per stack) is followed.
+
+**Current implementation / scenario:** Fire Power: 1/2/3% more Fire damage per Fire effect of the mage on the target (Ignite, Improved Scorch, Fireball and Pyroblast DoTs, Impact), up to 4; Frostfire Bolt benefits but does not count. Winter's Chill: +40% to the next Cone of Cold per stack, up to 5, consumed by it.
+
+**Impact:** Fire (Fire Power) and Frost (Winter's Chill no longer adds crit: about -13% for Frost).
+
+**Remaining scope:** Which Winter's Chill text is live; whether Improved Scorch counts per target.
+
+**Implementation / model follow-up:** sim/mage/talents.go.
+
+**References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [sim/mage/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/talents.go)
 
 <a id="mag-003"></a>
 
@@ -2760,9 +2974,9 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Question:** How do channel ticks, last-charge consumption and simultaneous procs interact?
 
-**Finding:** Public foreverlogs.gg reports show Missile Barrage gained at the cast-success timestamp of Frostbolt and Fireball (11 of 11) and of Arcane Blast (96), and removed at Arcane Missiles cast success (75 of 96 within 0 ms).
+**Finding:** Public foreverlogs.gg reports show Missile Barrage gained at the cast-success timestamp of Frostbolt and Fireball (11 of 11) and of Arcane Blast (96), and removed at Arcane Missiles cast success (75 of 96 within 0 ms). October 15 update: Client trait ranks [[20,5,10],[40,10,20]] and the October 15 notes (Missile Barrage moved to row 1 with 2 points; Clearcasting no longer rolls for every target struck).
 
-**Current implementation / scenario:** Missile Barrage rolls from Fireball, Frostbolt and Frostfire Bolt at cast completion (if not missed) and from Arcane Blast on hit; Arcane Missiles spends it when the channel starts. Clearcasting keeps its one-second cooldown and cast-complete consumption.
+**Current implementation / scenario:** Missile Barrage (2 points since 1.60.1.70425) rolls 20/40% from Arcane Blast, 5/10% from each Arcane Missiles hit and 10/20% from Arcane Wrath, Fireball, Frostbolt and Frostfire Bolt, at cast completion. Arcane Concentration rolls once per cast, not once per target struck.
 
 **Impact:** Arcane and hybrid resources; ordinary persistent-Clearcasting bug is already fixed.
 
@@ -2778,7 +2992,7 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Prerequisites: Level 25+ Missile Barrage, controlled proc state.
 - Observe / verify: Compare channels with Clearcasting only, Barrage only and both, including a new proc during the channel. Record actual mana debit rather than tooltip cost.
 
-**References:** [sim/mage/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/talents.go) · [sim/mage/arcane_missiles.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/arcane_missiles.go) · [docs/history_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/history_review.md) · [ui/core/talents/trees/mage.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/mage.json) · [docs/october-8-review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-8-review.md) · [https://foreverlogs.gg/](https://foreverlogs.gg/)
+**References:** [sim/mage/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/talents.go) · [sim/mage/arcane_missiles.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/arcane_missiles.go) · [docs/history_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/history_review.md) · [ui/core/talents/trees/mage.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/mage.json) · [docs/october-8-review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-8-review.md) · [https://foreverlogs.gg/](https://foreverlogs.gg/) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6)
 
 **Earlier references:** T34
 
@@ -3008,6 +3222,32 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Related:** SCEN-007, DATA-013, DONE-003
 
+<a id="pri-006"></a>
+
+### PRI-006 — Improved Mind Flay escalation and Dark Inspiration
+
+**Accepted working answer · Medium priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Does Improved Mind Flay compound or add per tick, and who gains Dark Inspiration's Spirit?
+
+**Finding:** Notes: 'Each instance of damage of Mind Flay deals 10/20% more damage than its previous instance.' Read as compounding.
+
+**Current implementation / scenario:** Each Mind Flay tick deals (1 + 0.1 x points)^(tick - 1) of the first. Dark Inspiration raises the priest's own Spirit 3% per point for 10 s after Mind Blast or a fully channeled Mind Flay (party members are not simulated).
+
+**Impact:** Shadow.
+
+**Remaining scope:** Compounding versus linear; whether the last tick of an interrupted channel counts.
+
+**Implementation / model follow-up:** sim/priest.
+
+**Optional / conditional · Current beta · level 30**
+- Prerequisites: Shadow Priest with 2/2 Improved Mind Flay.
+- Observe / verify: Damage of each of the three ticks over 50 channels.
+
+**References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [sim/priest/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/priest/talents.go)
+
 ## Rogue
 
 <a id="rog-001"></a>
@@ -3020,9 +3260,9 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Question:** Does the off-hand penalty include Mutilate's flat bonus, and does Cold Blood cover both strikes?
 
-**Finding:** Official text and child no-miss/dodge/parry flags resolve the parent/child gate and both-hand Cold Blood eligibility. Reproductions also found and fixed a second Seal Fate attempt after a failed first-hand proc. Ordinary builder behavior remains covered.
+**Finding:** Official text and child no-miss/dodge/parry flags resolve the parent/child gate and both-hand Cold Blood eligibility. Reproductions also found and fixed a second Seal Fate attempt after a failed first-hand proc. Ordinary builder behavior remains covered. October 15 update: The October 15 notes: 'Cold Blood is now correctly consumed when Mutilate lands a critical strike.' The sim already spent it on Mutilate; it now keeps it when neither strike lands.
 
-**Current implementation / scenario:** One parent avoidance roll gates both Mutilate hand strikes and two base combo points. Both children retain block/crit and proc eligibility; Cold Blood benefits both then expires on parent completion. Flat bonus placement is unchanged.
+**Current implementation / scenario:** One parent avoidance roll gates both Mutilate strikes and two base combo points. Both strikes keep block/crit and proc eligibility; Cold Blood benefits both and is spent when the Mutilate lands (a fully avoided Mutilate keeps it). Flat bonus placement is unchanged.
 
 **Impact:** Mutilate damage and cooldown value.
 
@@ -3038,7 +3278,7 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Prerequisites: Higher Mutilate ranks.
 - Observe / verify: Verify that the higher flat component follows the low-rank ordering; do not repeat already settled proc timing unless a patch changes it.
 
-**References:** [sim/rogue/mutilate.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/rogue/mutilate.go) · [docs/history_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/history_review.md) · [sim/rogue/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/rogue/talents.go) · [artifacts/question_review/class_evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/class_evidence.json) · [docs/october-8-review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-8-review.md)
+**References:** [sim/rogue/mutilate.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/rogue/mutilate.go) · [docs/history_review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/history_review.md) · [sim/rogue/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/rogue/talents.go) · [artifacts/question_review/class_evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/class_evidence.json) · [docs/october-8-review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-8-review.md) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6)
 
 **Earlier references:** T38 / H14
 
@@ -3449,6 +3689,28 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Observe / verify: Compare exclusive FT+Grace versus Windfury with the sourced model and matched inputs; rank-one evidence is not full-rank validation.
 
 **References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-updated-september-24/2360696](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-updated-september-24/2360696) · [https://www.wowhead.com/forever/spell=16387](https://www.wowhead.com/forever/spell=16387) · [https://warcraft.wiki.gg/wiki/Flametongue_Totem](https://warcraft.wiki.gg/wiki/Flametongue_Totem) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696/4](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-1/2360696/4) · [docs/october-1-corrections.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-1-corrections.md) · [docs/october-8-review.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-8-review.md) · [https://us.forums.blizzard.com/en/wow/t/2360696/5](https://us.forums.blizzard.com/en/wow/t/2360696/5) · [docs/october-8-overnight-update.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-8-overnight-update.md) · [tools/forever_bench/druid_hunter_shaman_october9_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/druid_hunter_shaman_october9_test.go)
+
+<a id="sha-010"></a>
+
+### SHA-010 — Elemental changes in 1.60.1.70425
+
+**Accepted working answer · Medium priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** How are the new Lava Burst ranks, Elemental Mastery and Call of Flame modelled?
+
+**Finding:** Client spell data and the notes.
+
+**Current implementation / scenario:** Lava Burst ranks at 30/40/50/60 (rank 4, 1326047: 192-248, 265 mana). Elemental Mastery: 15 s, Lightning Bolt and Lava Burst 0.5 s faster, no Chain Lightning cooldown, 3 min cooldown. Call of Flame adds 3/6/9 s to Flame Shock. Chain Lightning and Fire Nova cost less; Fire Nova 0.143. Stormstrike's charge is spent only by a spell that lands.
+
+**Impact:** Elemental, Stormcaller, Enhancement.
+
+**Remaining scope:** Lava Burst growth per level inside a rank.
+
+**Implementation / model follow-up:** sim/shaman.
+
+**References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374](https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374)
 
 <a id="sha-005"></a>
 
@@ -4278,6 +4540,28 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [docs/talent-check-2026-09-17.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/talent-check-2026-09-17.md) · [docs/talent-values-2026-09-17.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/talent-values-2026-09-17.md) · [assets/confirmed_talents.json](https://github.com/gunba/wow-forever-sim/blob/forever/assets/confirmed_talents.json) · [ui/core/talents/trees/warrior.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/warrior.json) · [ui/core/talents/trees/shaman.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/shaman.json) · [ui/core/talents/trees/druid.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/druid.json) · [ui/core/talents/trees/rogue.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/rogue.json) · [ui/core/talents/trees/hunter.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/hunter.json) · [ui/core/talents/trees/warlock.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/warlock.json) · [sim/core/forever_talent_tree_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/forever_talent_tree_test.go) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-september-24/2360696](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-september-24/2360696) · [https://us.forums.blizzard.com/en/wow/t/2360696/5](https://us.forums.blizzard.com/en/wow/t/2360696/5) · [docs/october-8-overnight-update.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-8-overnight-update.md) · [tools/forever_bench/october9_patch_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/october9_patch_test.go) · [tools/forever_bench/mage_impact_october9_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/mage_impact_october9_test.go)
 
+<a id="data-017"></a>
+
+### DATA-017 — Client 1.60.1.70425 item and data changes
+
+**Resolved · Low priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Which client data changes reach simulated items?
+
+**Finding:** Client spell effects and durations for 17504, 17152, 18796, 21142; 1301706.
+
+**Current implementation / scenario:** Bloodrazor (five 31-damage ticks over 15 s), Destiny (12 s), Fiery War Axe (231-293 plus 20 a tick), Sulfuras immolation (7). The 22-to-674 armor aura migration keeps every value. Priest Tier 1 five-piece still removes 60 s from Devouring Plague, whose cooldown is now 24 s, so it removes all of it.
+
+**Impact:** Real-item gear choices; Shadow.
+
+**Remaining scope:** Whether the Tier 1 bonus will be retuned for the 24 s cooldown.
+
+**Implementation / model follow-up:** sim/common/item_effects.go.
+
+**References:** [https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374](https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374)
+
 ## Encounters and simulator coverage
 
 <a id="scen-001"></a>
@@ -4331,6 +4615,28 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Observe / verify: Check selection, switching, maintenance and minimum target TPS; ensure current-target lookups do not accidentally read the first target's aura.
 
 **References:** [docs/tank_benchmark.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/tank_benchmark.md) · [proto/apl.proto](https://github.com/gunba/wow-forever-sim/blob/forever/proto/apl.proto) · [sim/core/apl_helpers.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/apl_helpers.go) · [artifacts/protection_sunder/validation.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/protection_sunder/validation.json)
+
+<a id="core-022"></a>
+
+### CORE-022 — Benchmark raid buffs after the crit-aura split and raid-wide totems
+
+**Model assumption · Medium priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Which crit auras and air totems should the reference raid supply?
+
+**Finding:** Before 1.60.1.70425 one druid aura supplied 3% crit to everyone and Grace of Air was exclusive with Windfury. Both constraints are gone and the buffs reach the whole raid, so a raid with one Feral and one Balance Druid and two air Shamans supplies all of them.
+
+**Current implementation / scenario:** Both Leader of the Pack and Moonkin Aura for every profile; melee groups get Windfury and Grace of Air, Hunters Grace of Air, casters neither. Tank support is unchanged.
+
+**Impact:** All melee DPS rows (+3% crit returns from Leader of the Pack; Grace of Air adds Agility).
+
+**Remaining scope:** Whether raids will actually field both Druid specs and two air Shamans.
+
+**Implementation / model follow-up:** ForeverRaidBuffs carries Leader of the Pack; tools/forever_bench/main.go keeps Grace of Air for melee and Hunters.
+
+**References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [sim/core/test_utils.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/test_utils.go) · [tools/forever_bench/main.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/main.go)
 
 <a id="scen-005"></a>
 
@@ -4746,17 +5052,17 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Question:** Are Moonkin/Leader and Windfury/Grace still incorrectly stacked?
 
-**Finding:** The raid crit auras share one global benefit; incompatible air buffs are exclusive. Windfury Weapon is Shaman-only, and nonweapon/empty slots do not receive weapon imbues. The current checks cover these configuration rules.
+**Finding:** The raid crit auras share one global benefit; incompatible air buffs are exclusive. Windfury Weapon is Shaman-only, and nonweapon/empty slots do not receive weapon imbues. The current checks cover these configuration rules. October 15 update: Client 1.60.1.70425 splits the auras again (24907 aura 57 spell crit, 24932 aura 52 weapon crit, both effect 65 raid area) and the October 15 notes make Grace of Air non-exclusive with Windfury and Flametongue Totem and all four totems raid-wide. The shared-aura and Grace/Windfury rules above were replaced accordingly.
 
-**Current implementation / scenario:** Moonkin/Leader are one 3% global-crit benefit. Windfury Totem and Grace are exclusive; only Shamans can use Windfury Weapon, and empty/nonweapon slots cannot receive weapon imbues.
+**Current implementation / scenario:** Leader of the Pack is 3% melee and ranged crit and Moonkin Aura 3% spell crit; both are raid-wide and the benchmark raid carries both. Grace of Air no longer excludes Windfury or Flametongue Totem; Windfury and Flametongue still exclude each other. Windfury Weapon is Shaman-only and empty or non-weapon slots receive no imbue.
 
 **Impact:** Confirmed configuration errors corrected; generic crit remains distinct from scoped crit effects.
 
 **Remaining scope:** Windfury's detailed attack resolution and animal-form eligibility remain separate evidence questions.
 
-**Implementation / model follow-up:** No second crit-aura benefit or non-Shaman weapon proc should be reintroduced.
+**Implementation / model follow-up:** sim/core/buffs.go, sim/core/raid.go (raid-wide sharing), the web buff controls and the benchmark raid (both crit auras; melee groups take Grace of Air and Windfury).
 
-**References:** [docs/crit_model.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/crit_model.md) · [docs/forever-70009.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/forever-70009.md) · [sim/core/equipment_validation.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/equipment_validation.go) · [sim/core/buffs.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/buffs.go) · [sim/core/forever_consumes_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/forever_consumes_test.go) · [tools/forever_bench/crit_aura_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/crit_aura_test.go)
+**References:** [docs/crit_model.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/crit_model.md) · [docs/forever-70009.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/forever-70009.md) · [sim/core/equipment_validation.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/equipment_validation.go) · [sim/core/buffs.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/buffs.go) · [sim/core/forever_consumes_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/forever_consumes_test.go) · [tools/forever_bench/crit_aura_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_bench/crit_aura_test.go) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374](https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374)
 
 <a id="done-006"></a>
 

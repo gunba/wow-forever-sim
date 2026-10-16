@@ -81,21 +81,21 @@
 	"1310687": {
 		"ability": "Sniper Shot",
 		"file": "sim/hunter/sniper_shot.go",
-		"note": "Beta client 1.60.1.69893: talent spell rank 1 (level 40). The guessed Steady Shot shape (1.5 sec, no cooldown, 110 mana) is replaced by the client's; the sim adds its 0.5 sec shot wind-up to the 4 sec cast, as for Aimed Shot.",
+		"note": "Beta client 1.60.1.69893: talent spell rank 1 (level 40). The guessed Steady Shot shape (1.5 sec, no cooldown, 110 mana) is replaced by the client's; the sim adds its 0.5 sec shot wind-up to the 4 sec cast, as for Aimed Shot. Client 1.60.1.70425: Mortal Shots and Efficiency now include Sniper Shot in their class masks.",
 		"source": "forever",
 		"tooltip": "365 Mana\n8-35 yd range\n4 sec cast\n15 sec cooldown\nA steady snipe that increases ranged damage by 160."
 	},
 	"1310785": {
 		"ability": "Sniper Shot",
 		"file": "sim/hunter/sniper_shot.go",
-		"note": "Beta client 1.60.1.69893: talent spell rank 2 (level 48). The guessed Steady Shot shape (1.5 sec, no cooldown, 110 mana) is replaced by the client's; the sim adds its 0.5 sec shot wind-up to the 4 sec cast, as for Aimed Shot.",
+		"note": "Beta client 1.60.1.69893: talent spell rank 2 (level 48). The guessed Steady Shot shape (1.5 sec, no cooldown, 110 mana) is replaced by the client's; the sim adds its 0.5 sec shot wind-up to the 4 sec cast, as for Aimed Shot. Client 1.60.1.70425: Mortal Shots and Efficiency now include Sniper Shot in their class masks.",
 		"source": "forever",
 		"tooltip": "365 Mana\n8-35 yd range\n4 sec cast\n15 sec cooldown\nA steady snipe that increases ranged damage by 225."
 	},
 	"1310786": {
 		"ability": "Sniper Shot",
 		"file": "sim/hunter/sniper_shot.go",
-		"note": "Beta client 1.60.1.69893: talent spell rank 3 (level 58). The guessed Steady Shot shape (1.5 sec, no cooldown, 110 mana) is replaced by the client's; the sim adds its 0.5 sec shot wind-up to the 4 sec cast, as for Aimed Shot.",
+		"note": "Beta client 1.60.1.69893: talent spell rank 3 (level 58). The guessed Steady Shot shape (1.5 sec, no cooldown, 110 mana) is replaced by the client's; the sim adds its 0.5 sec shot wind-up to the 4 sec cast, as for Aimed Shot. Client 1.60.1.70425: Mortal Shots and Efficiency now include Sniper Shot in their class masks.",
 		"source": "forever",
 		"tooltip": "365 Mana\n8-35 yd range\n4 sec cast\n15 sec cooldown\nA steady snipe that increases ranged damage by 295."
 	},
@@ -645,9 +645,9 @@
 	"2643": {
 		"ability": "Multi-Shot",
 		"file": "sim/hunter/multi_shot.go",
-		"note": "Beta client 1.60.1.69893: a single rank with no flat bonus, 13.9% of base mana, a 0.5 sec cast and a 6 sec cooldown shared with Aimed Shot. Ranks 2-5 (14288, 14289, 14290, 25294) are gone.",
+		"note": "Beta client 1.60.1.69893: a single rank with no flat bonus, 13.9% of base mana, a 0.5 sec cast and a 6 sec cooldown shared with Aimed Shot. Ranks 2-5 (14288, 14289, 14290, 25294) are gone. Client 1.60.1.70425: Multi-Shot is instant (0.5 sec cast before); the Classic ruleset keeps its 0.5 sec wind-up.",
 		"source": "forever",
-		"tooltip": "13.9% of base mana\n8-35 yd range\n0.5 sec cast\n6 sec cooldown\nFires several missiles, hitting 3 targets. Multi-Shot shares its cooldown with Aimed Shot."
+		"tooltip": "13.9% of base mana\n8-35 yd range\nInstant\n6 sec cooldown\nFires several missiles, hitting 3 targets. Multi-Shot shares its cooldown with Aimed Shot."
 	},
 	"2973": {
 		"ability": "Raptor Strike",

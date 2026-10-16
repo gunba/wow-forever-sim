@@ -26,7 +26,7 @@ func TestEurekaExcludesPeriodicSnapshotAndApplicationTick(t *testing.T) {
 	character.attachEurekaCast(aura, parent, ProcMaskSpellDamage)
 	parent.ApplyEffects(sim, target, parent)
 	laterTick = parent.DamageMultiplier
-	if math.Abs(direct-1.1) > 1e-9 || math.Abs(snapshot-1) > 1e-9 || math.Abs(initialTick-1) > 1e-9 || math.Abs(laterTick-1) > 1e-9 || aura.IsActive() {
+	if math.Abs(direct-1.1) > 1e-9 || math.Abs(snapshot-1) > 1e-9 || math.Abs(initialTick-1) > 1e-9 || math.Abs(laterTick-1) > 1e-9 || !aura.IsActive() {
 		t.Fatalf("direct=%v snapshot=%v initial periodic=%v later=%v active=%v", direct, snapshot, initialTick, laterTick, aura.IsActive())
 	}
 }
@@ -52,7 +52,7 @@ func TestEurekaIncludesChannelWithoutSeparateEffectSpell(t *testing.T) {
 			t.Fatalf("channel tick %d multiplier=%v retained=%v", i, tickMultiplier, parent.DamageMultiplier)
 		}
 	}
-	if aura.IsActive() {
-		t.Fatal("channel failed to spend its single cast charge")
+	if !aura.IsActive() {
+		t.Fatal("an 8-second Eureka (client 1.60.1.70425) has no charge to spend")
 	}
 }

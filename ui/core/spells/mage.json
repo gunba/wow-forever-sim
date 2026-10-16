@@ -607,9 +607,9 @@
 		"ability": "Arcane Blast",
 		"file": "sim/mage/arcane_blast.go",
 		"foreverId": 1239700,
-		"note": "Arcane Blast is a later expansion spell, so the Classic database has no entry for 30451, which the sim keeps as its action id. Beta client 1.60.1.69893 gives Forever five ranks; the sim casts rank 5 (1239700): 364-424, coefficient .714, 15% of base mana, 2.5 sec cast. The 10%, 175%, 4 stacks and 8 sec come from its buff, 400573.",
+		"note": "Arcane Blast is a later expansion spell, so the Classic database has no entry for 30451, which the sim keeps as its action id. Beta client 1.60.1.69893 gives Forever five ranks; the sim casts rank 5 (1239700): 364-424, coefficient .714, 15% of base mana, 2.5 sec cast. The 10%, 175%, 4 stacks and 8 sec come from its buff, 400573. Client 1.60.1.70425: redesigned: 1.5 sec cast, 218-254 at .429 (damage and coefficient cut 40%); each stack grants 15% of Intellect as Spell Damage and +175% cost, up to 4, for 15 sec from the first stack, no longer spent by other spells.",
 		"source": "forever",
-		"tooltip": "15% of base mana\n2.5 sec cast\nBlasts the target with energy, dealing 364 to 424 Arcane damage.\nEach cast increases the damage of all your other spells by 10% and the mana cost of Arcane Blast by 175%, stacking up to 4 times. Lasts 8 sec or until any other damage spell is cast."
+		"tooltip": "15% of base mana\n1.5 sec cast\nBlasts the target with energy, dealing 218 to 254 Arcane damage.\nEach cast grants 15% of your Intellect as Spell Damage and increases the mana cost of Arcane Blast by 175%, stacking up to 4 times. Lasts 15 sec from the first application."
 	},
 	"30455": {
 		"ability": "Ice Lance",
@@ -618,9 +618,9 @@
 		],
 		"file": "sim/mage/ice_lance.go",
 		"foreverId": 1240047,
-		"note": "Ice Lance is a later expansion spell, so the Classic database has no entry for 30455. Beta client 1.60.1.69893 gives it six ranks; the sim casts rank 6 (1240047), 133-157 plus its growth to level 60 = 136-161, 160 mana, 300% against frozen targets.",
+		"note": "Ice Lance is a later expansion spell, so the Classic database has no entry for 30455. Beta client 1.60.1.69893 gives it six ranks; the sim casts rank 6 (1240047), 133-157 plus its growth to level 60 = 136-161, 160 mana, 200% more against frozen targets (300% before client 1.60.1.70425).",
 		"source": "assumed",
-		"tooltip": "160 Mana\nInstant\nDeals 136 to 161 Frost damage to an enemy target.\nDeals 300% increased damage to a frozen target, which against a raid boss means one held by Fingers of Frost."
+		"tooltip": "160 Mana\nInstant\nDeals 136 to 161 Frost damage to an enemy target.\nDeals 200% increased damage to a frozen target, which against a raid boss means one held by Fingers of Frost."
 	},
 	"3140": {
 		"ability": "Fireball",
@@ -863,5 +863,40 @@
 		"source": "forever",
 		"tooltip": "Impact:2sec stun, only on explicitly eligible targets.",
 		"note": "SpellDuration39=2000ms; SpellCategories diminish mask512 maps to proc-stun group10. Shared DR15s/.5/immunity after3 is sourced; optional reset-after-effect-end versus reset-after-application is an explicit model convention. Classic Impact remains unmodeled."
+	},
+	"12579": {
+		"ability": "Winter's Chill",
+		"file": "sim/mage/talents.go",
+		"source": "forever",
+		"tooltip": "Increases the damage done by your next Cone of Cold spell to the target by 40%, stacking up to 5 times.",
+		"note": "Client 1.60.1.70425 (October 15 notes). Aura 271: +40% Cone of Cold damage per stack from the mage, consumed by the next Cone of Cold. No longer critical strike chance."
+	},
+	"1326079": {
+		"ability": "Arcane Wrath",
+		"file": "sim/mage/arcane_blast.go",
+		"source": "forever",
+		"tooltip": "140 Mana\n3.5 sec cast\n6 sec cooldown\nLaunches a projectile of pure Arcane energy at the enemy target, causing 108 to 132 Arcane damage. This spell gains additional Spell Damage equal to 5% of your maximum Mana.",
+		"note": "Client 1.60.1.70425 (October 15 notes). Rank 1, level 25: coefficient 1.0 plus 5% of maximum mana as Spell Damage."
+	},
+	"1326080": {
+		"ability": "Arcane Wrath",
+		"file": "sim/mage/arcane_blast.go",
+		"source": "forever",
+		"tooltip": "220 Mana\n3.5 sec cast\n6 sec cooldown\nLaunches a projectile of pure Arcane energy at the enemy target, causing 168 to 206 Arcane damage. This spell gains additional Spell Damage equal to 5% of your maximum Mana.",
+		"note": "Client 1.60.1.70425 (October 15 notes). Rank 2, level 36: coefficient 1.0 plus 5% of maximum mana as Spell Damage."
+	},
+	"1326081": {
+		"ability": "Arcane Wrath",
+		"file": "sim/mage/arcane_blast.go",
+		"source": "forever",
+		"tooltip": "305 Mana\n3.5 sec cast\n6 sec cooldown\nLaunches a projectile of pure Arcane energy at the enemy target, causing 270 to 330 Arcane damage. This spell gains additional Spell Damage equal to 5% of your maximum Mana.",
+		"note": "Client 1.60.1.70425 (October 15 notes). Rank 3, level 48: coefficient 1.0 plus 5% of maximum mana as Spell Damage."
+	},
+	"1326082": {
+		"ability": "Arcane Wrath",
+		"file": "sim/mage/arcane_blast.go",
+		"source": "forever",
+		"tooltip": "395 Mana\n3.5 sec cast\n6 sec cooldown\nLaunches a projectile of pure Arcane energy at the enemy target, causing 406 to 496 Arcane damage. This spell gains additional Spell Damage equal to 5% of your maximum Mana.",
+		"note": "Client 1.60.1.70425 (October 15 notes). Rank 4, level 60: coefficient 1.0 plus 5% of maximum mana as Spell Damage."
 	}
 }

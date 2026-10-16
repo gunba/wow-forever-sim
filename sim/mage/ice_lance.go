@@ -5,7 +5,7 @@ import (
 )
 
 // Damage bonus against a target the mage counts as frozen, i.e. one held by Fingers of Frost.
-const IceLanceFrozenMultiplier = 4.0
+const IceLanceFrozenMultiplier = 3.0 // +200% since client 1.60.1.70425 (was +300%)
 
 func (mage *Mage) registerIceLanceSpell() {
 	if !mage.Talents.IceLance {

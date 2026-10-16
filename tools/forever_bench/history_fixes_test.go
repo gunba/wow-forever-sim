@@ -54,6 +54,8 @@ func TestClearcastingConsumptionAndCooldown(t *testing.T) {
 	}
 	sim.CurrentTime += time.Second
 	for i := 0; i < 500 && !aura.IsActive(); i++ {
+		// One roll per cast since client 1.60.1.70425: each attempt is a separate cast.
+		sim.CurrentTime += time.Millisecond
 		trigger.OnSpellHitDealt(trigger, sim, fireball, &core.SpellResult{
 			Target: unit.CurrentTarget, Outcome: core.OutcomeHit,
 		})

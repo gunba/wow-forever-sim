@@ -12,14 +12,16 @@ import (
 func applyRaceEffects(agent Agent) {
 	character := agent.GetCharacter()
 
-	// Forever drops every +10 resistance racial and turns the weapon skill racials into
-	// critical strike while that weapon is held. Races also pick up a new passive each.
+	// Forever drops every +10 resistance racial. Since client 1.60.1.70425 (October 15 notes) the
+	// weapon racials are gone too: Human Ruthless and Orc Savage are critical strike with any
+	// weapon, and Dwarf Earth Fury and Tauren Endurance raise critical strike damage.
 	forever := character.Env.IsForever()
 
 	switch character.Race {
 	case proto.Race_RaceDwarf:
 		if forever {
-			character.AddWeaponSpecializationCrit(1, proto.WeaponType_WeaponTypeMace)
+			// Earth Fury (1259719): critical strike damage and healing +2%.
+			character.critDamageAura(1.02)
 			character.beastSlayingAura(1.05)
 		} else {
 			character.AddStat(stats.FrostResistance, 10)
@@ -78,8 +80,9 @@ func applyRaceEffects(agent Agent) {
 	case proto.Race_RaceHuman:
 		character.MultiplyStat(stats.Spirit, 1.05)
 		if forever {
-			// Mace Specialization moved to the Dwarves.
-			character.AddWeaponSpecializationCrit(2, proto.WeaponType_WeaponTypeSword)
+			// Ruthless (20597): +2% critical strike chance with all spells and attacks.
+			character.AddStat(stats.MeleeCrit, 2*CritRatingPerCritChance)
+			character.AddStat(stats.SpellCrit, 2*SpellCritRatingPerCritChance)
 		} else {
 			character.SwordSpecializationAura()
 			character.MaceSpecializationAura()
@@ -94,7 +97,9 @@ func applyRaceEffects(agent Agent) {
 		// TODO: Shadowmeld?
 	case proto.Race_RaceOrc:
 		if forever {
-			character.AddWeaponSpecializationCrit(1, proto.WeaponType_WeaponTypeAxe)
+			// Savage (20574): +1% critical strike chance with all spells and abilities.
+			character.AddStat(stats.MeleeCrit, 1*CritRatingPerCritChance)
+			character.AddStat(stats.SpellCrit, 1*SpellCritRatingPerCritChance)
 		} else {
 			character.AxeSpecializationAura()
 		}
@@ -156,9 +161,9 @@ func applyRaceEffects(agent Agent) {
 	case proto.Race_RaceTauren:
 		character.MultiplyStat(stats.Health, 1.05)
 		if forever {
-			// Endurance carries a point of hit alongside the health.
-			character.AddStat(stats.MeleeHit, 1*MeleeHitRatingPerHitChance)
-			character.AddStat(stats.SpellHit, 1*SpellHitRatingPerHitChance)
+			// Endurance (20550): 5% health and, since 70425, critical strike damage and healing +2%
+			// in place of the 1% hit.
+			character.critDamageAura(1.02)
 		} else {
 			character.AddStat(stats.NatureResistance, 10)
 		}
@@ -201,11 +206,11 @@ func applyRaceEffects(agent Agent) {
 			break
 		}
 
-		// Wind Blessed
-		character.PseudoStats.MeleeSpeedMultiplier *= 1.01
-		character.PseudoStats.RangedSpeedMultiplier *= 1.01
-		character.PseudoStats.CastSpeedMultiplier *= 1.01
-		character.PseudoStats.EnergyHasteMultiplier *= 1.01
+		// Wind Blessed: 3% haste since 70425 (was 1%).
+		character.PseudoStats.MeleeSpeedMultiplier *= 1.03
+		character.PseudoStats.RangedSpeedMultiplier *= 1.03
+		character.PseudoStats.CastSpeedMultiplier *= 1.03
+		character.PseudoStats.EnergyHasteMultiplier *= 1.03
 
 		// Elemental Insight
 		character.mobTypeDamageAura(proto.MobType_MobTypeElemental, 1.05)
@@ -240,7 +245,8 @@ func (character *Character) registerForeverBloodFury() {
 	})
 	spell := character.RegisterSpell(SpellConfig{
 		ActionID: actionID, Flags: SpellFlagNoOnCastComplete,
-		Cast:         CastConfig{CD: Cooldown{Timer: character.NewTimer(), Duration: time.Minute * 2}},
+		// Three minutes since 70425 (was two).
+		Cast:         CastConfig{CD: Cooldown{Timer: character.NewTimer(), Duration: time.Minute * 3}},
 		ApplyEffects: func(sim *Simulation, _ *Unit, _ *Spell) { aura.Activate(sim) },
 	})
 	character.AddMajorCooldown(MajorCooldown{Spell: spell, Type: CooldownTypeDPS})
@@ -268,16 +274,17 @@ func (character *Character) registerForeverBerserking(timer *Timer) {
 }
 
 // SkillLineAbility assigns 1260189 to Warrior/Paladin/Rogue and 1260201 to
-// Priest/Mage/Warlock. SpellAuraOptions gives 5%/10% and a shared one-second ICD.
-// The triggered drain, 1260198, is 5% of maximum health, Shadow, and cannot crit.
+// Priest/Mage/Warlock. Since 70425 SpellAuraOptions gives 20%/30% and a 25-second ICD (was
+// 5%/10% and one second). The triggered drain, 1260198, is 5% of maximum health, Shadow, and
+// cannot crit; it no longer scales with Shadow damage modifiers on the caster or the target.
 func (character *Character) registerTouchOfTheGrave() {
 	actionID := ActionID{SpellID: 1260198}
-	passiveID, procChance := int32(1260189), 0.05
+	passiveID, procChance := int32(1260189), 0.2
 	switch character.Class {
 	case proto.Class_ClassPriest, proto.Class_ClassMage, proto.Class_ClassWarlock:
-		passiveID, procChance = 1260201, 0.1
+		passiveID, procChance = 1260201, 0.3
 	}
-	icd := Cooldown{Timer: character.NewTimer(), Duration: time.Second}
+	icd := Cooldown{Timer: character.NewTimer(), Duration: 25 * time.Second}
 	healthMetrics := character.NewHealthMetrics(actionID)
 
 	drain := character.RegisterSpell(SpellConfig{
@@ -287,7 +294,7 @@ func (character *Character) registerTouchOfTheGrave() {
 		ProcMask:    ProcMaskEmpty,
 		// The drain is a proc off another hit, so it must not feed the procs that spawned
 		// it or two undead attacks would chain into each other.
-		Flags: SpellFlagNoOnCastComplete | SpellFlagPassiveSpell,
+		Flags: SpellFlagNoOnCastComplete | SpellFlagPassiveSpell | SpellFlagIgnoreModifiers,
 
 		DamageMultiplier: 1,
 		ThreatMultiplier: 1,
@@ -372,6 +379,18 @@ func (character *Character) registerElunesLight() {
 // Troll Beast Slaying, and Dwarf Big Game Hunter under Forever.
 func (character *Character) beastSlayingAura(multiplier float64) {
 	character.mobTypeDamageAura(proto.MobType_MobTypeBeast, multiplier)
+}
+
+// critDamageAura raises critical strike damage against every enemy, the way client aura 163 does: the
+// whole critical multiplier is scaled (200% -> 204% for melee at 1.02).
+func (character *Character) critDamageAura(multiplier float64) {
+	character.Env.RegisterPostFinalizeEffect(func() {
+		for _, t := range character.Env.Encounter.Targets {
+			for _, at := range character.AttackTables[t.UnitIndex] {
+				at.CritMultiplier *= multiplier
+			}
+		}
+	})
 }
 
 func (character *Character) mobTypeDamageAura(mobType proto.MobType, multiplier float64) {

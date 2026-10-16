@@ -10,6 +10,7 @@ import (
 const PyroblastRanks = 8
 
 var PyroblastSpellId = [PyroblastRanks + 1]int32{0, 11366, 12505, 12522, 12523, 12524, 12525, 12526, 18809}
+
 // Beta client 1.60.1.69893. Both halves are lower than Classic at every rank. The 76 periodic damage
 // the demo showed, once read as rank 1, is the client's rank 3.
 var PyroblastBaseDamage = [PyroblastRanks + 1][]float64{{0}, {101, 131}, {126, 163}, {179, 228}, {230, 289}, {291, 364}, {368, 456}, {448, 555}, {520, 646}}

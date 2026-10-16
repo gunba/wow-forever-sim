@@ -173,8 +173,9 @@ var ForeverRaidBuffs = func() *proto.RaidBuffs {
 	buffs.GraceOfAirTotem = proto.TristateEffect_TristateEffectRegular
 	buffs.BattleShout = proto.TristateEffect_TristateEffectRegular
 	buffs.SanctityAura = false
-	// Moonkin already supplies the single shared critical-strike aura.
-	buffs.LeaderOfThePack = false
+	// Client 1.60.1.70425 splits the shared critical-strike aura again: Moonkin Aura is spell crit
+	// and Leader of the Pack melee and ranged crit, both raid-wide, so the raid carries both.
+	buffs.LeaderOfThePack = true
 	return buffs
 }()
 

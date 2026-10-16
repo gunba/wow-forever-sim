@@ -7,20 +7,20 @@ message ShamanTalents {
 	// Elemental Combat
 	int32 convection = 1;
 	int32 concussion = 2;
-	int32 elemental_warding = 3;
-	int32 reverberation = 4;
-	int32 call_of_flame = 5;
 	int32 elemental_devastation = 6;
-	bool elemental_focus = 7;
+	int32 reverberation = 4;
 	int32 elemental_alacrity = 8;
+	int32 call_of_flame = 5;
+	bool elemental_focus = 7;
+	int32 elemental_warding = 3;
 	int32 improved_fire_nova = 9;
 	int32 eye_of_the_storm = 10;
-	bool call_of_thunder = 11;
-	int32 elemental_reach = 12;
-	int32 lightning_overload = 13;
 	bool earthbound = 14;
-	int32 elemental_fury = 15;
+	int32 elemental_reach = 12;
 	bool lava_burst = 16;
+	int32 lightning_overload = 13;
+	int32 elemental_fury = 15;
+	bool elemental_mastery = 51;
 
 	// Enhancement
 	int32 earths_grasp = 17;
@@ -44,10 +44,10 @@ message ShamanTalents {
 
 	// Restoration
 	int32 improved_healing_wave = 35;
-	int32 totemic_focus = 36;
+	int32 tidal_focus = 39;
 	int32 mindfulness = 37;
 	int32 natural_grace = 38;
-	int32 tidal_focus = 39;
+	int32 totemic_focus = 36;
 	int32 improved_reincarnation = 40;
 	int32 ancestral_healing = 41;
 	int32 healing_focus = 42;
@@ -59,6 +59,8 @@ message ShamanTalents {
 	bool natures_swiftness = 48;
 	int32 purification = 49;
 	bool riptide = 50;
+
+	reserved 11;
 }
 
 enum EarthTotem {

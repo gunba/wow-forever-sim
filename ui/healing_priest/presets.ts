@@ -28,8 +28,8 @@ export const ROTATION_PRESET_HOLY = PresetUtils.makePresetAPLRotation('Holy', Ho
 
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
-export const TalentsHolyHealer = PresetUtils.makePresetTalents('Holy 19/32/0', SavedTalents.create({ talentsString: '005203031302-2350510323000053' }));
-export const TalentsDisciplineHealer = PresetUtils.makePresetTalents('Discipline 35/16/0', SavedTalents.create({ talentsString: '005203031325101531-03505003' }));
+export const TalentsHolyHealer = PresetUtils.makePresetTalents('Holy 19/32/0', SavedTalents.create({ talentsString: '00520302133-2350510323000053' }));
+export const TalentsDisciplineHealer = PresetUtils.makePresetTalents('Discipline 35/16/0', SavedTalents.create({ talentsString: '005205031332011531-03505003' }));
 
 export const DefaultOptions = Options.create({
 	useInnerFire: true,

@@ -15,7 +15,7 @@ func (shaman *Shaman) registerStormstrikeSpell() {
 	// Forever's Stormstrike raises only this shaman's damage, so it gets an aura of its own rather than the
 	// raid-wide debuff, which the Classic ruleset still uses. The beta client (17364) narrows it to the next
 	// Lightning Bolt, Chain Lightning or Earth Shock that lands within 12 sec (one charge, +20%), puts the strike
-	// on an 8 sec cooldown and charges a flat 125 mana.
+	// on an 8 sec cooldown and, since 1.60.1.70425, costs 8% of base mana (was a flat 125).
 	forever := shaman.Env.IsForever()
 	stormstrikeSpellCodes := []int32{SpellCode_ShamanLightningBolt, SpellCode_ShamanChainLightning, SpellCode_ShamanEarthShock}
 
@@ -34,7 +34,8 @@ func (shaman *Shaman) registerStormstrikeSpell() {
 	if forever {
 		for _, target := range shaman.Env.Encounter.TargetUnits {
 			target.AddDynamicDamageTakenModifier(func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-				if spell.Unit != &shaman.Unit || !slices.Contains(stormstrikeSpellCodes, spell.SpellCode) {
+				// Since client 1.60.1.70425 a spell that does not land leaves the charge in place.
+				if spell.Unit != &shaman.Unit || !slices.Contains(stormstrikeSpellCodes, spell.SpellCode) || !result.Landed() {
 					return
 				}
 				// The charge goes on the first damage calculation, so an overload cast off the same bolt misses out.
@@ -55,8 +56,7 @@ func (shaman *Shaman) registerStormstrikeSpell() {
 		Flags:       SpellFlagShaman | core.SpellFlagAPL | core.SpellFlagMeleeMetrics,
 
 		ManaCost: core.ManaCostOptions{
-			BaseCost: core.TernaryFloat64(forever, 0, .21),
-			FlatCost: core.TernaryFloat64(forever, 125, 0),
+			BaseCost: core.TernaryFloat64(forever, .08, .21),
 		},
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{

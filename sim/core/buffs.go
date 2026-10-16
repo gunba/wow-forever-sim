@@ -294,11 +294,8 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 
 	moonkinAura := raidBuffs.MoonkinAura || (partyBuffs != nil && partyBuffs.MoonkinAura)
 	leaderOfThePack := raidBuffs.LeaderOfThePack || (partyBuffs != nil && partyBuffs.LeaderOfThePack)
-	if character.Env.IsForever() {
-		// Either provider grants the same 3% global crit aura, once.
-		critAura := moonkinAura || leaderOfThePack
-		moonkinAura, leaderOfThePack = critAura, critAura
-	}
+	// Client 1.60.1.70425 splits the two again (October 15 notes): Moonkin Aura (24907, aura 57) is
+	// 3% spell crit and Leader of the Pack (24932, aura 52) 3% melee and ranged crit, both raid-wide.
 	if moonkinAura {
 		character.AddStat(stats.SpellCrit, 3*SpellCritRatingPerCritChance)
 	}
@@ -427,12 +424,8 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 	if partyBuffs != nil {
 		graceOfAir = partyTristate(graceOfAir, partyBuffs.GraceOfAirTotem)
 	}
-	// Forever's air totem effects are mutually exclusive even when the two
-	// requested auras would come from different Shamans. An explicit party
-	// Windfury choice takes precedence over Grace of Air.
-	if character.Env.IsForever() && partyBuffs != nil && partyBuffs.WindfuryTotem {
-		graceOfAir = proto.TristateEffect_TristateEffectMissing
-	}
+	// Since 70425 Grace of Air is no longer exclusive with Windfury or Flametongue Totem; those two
+	// keep their exclusivity with each other (ForeverWeaponTotem).
 	if graceOfAir > 0 && canReceiveShamanBuffs {
 		multiplier := GetTristateValueFloat(graceOfAir, 1, 1.15)
 		MakePermanent(GraceOfAirTotemAura(&character.Unit, multiplier))
@@ -1614,13 +1607,8 @@ func GraceOfAirTotemAura(unit *Unit, multiplier float64) *Aura {
 		},
 	})
 	if unit.Env.IsForever() {
-		aura.NewExclusiveEffect("ForeverAirTotem", false, ExclusiveEffect{
-			Priority: 1,
-			OnGain:   func(_ *ExclusiveEffect, sim *Simulation) { changeStats(sim, 1) },
-			OnExpire: func(_ *ExclusiveEffect, sim *Simulation) {
-				changeStats(sim, -1)
-			},
-		})
+		aura.ApplyOnGain(func(_ *Aura, sim *Simulation) { changeStats(sim, 1) })
+		aura.ApplyOnExpire(func(_ *Aura, sim *Simulation) { changeStats(sim, -1) })
 	}
 	return aura
 }
@@ -1885,9 +1873,7 @@ func ApplyWindfury(character *Character) *Aura {
 
 	apAura := createWindfuryTotemAura(character, buffActionID, "Windfury", rank, GetWindfuryAP)
 	if character.Env.IsForever() {
-		// External party Windfury occupies the air-totem slot even if Grace
-		// is cast later by another Shaman.
-		character.GetAura("Windfury").NewExclusiveEffect("ForeverAirTotem", false, ExclusiveEffect{Priority: 3})
+		// External party Windfury occupies the weapon-totem slot shared with Flametongue Totem.
 		character.GetAura("Windfury").NewExclusiveEffect("ForeverWeaponTotem", false, ExclusiveEffect{Priority: 2})
 	}
 	return apAura

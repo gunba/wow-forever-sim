@@ -81,9 +81,9 @@ func TestForeverStormcaller(t *testing.T) {
 		}}))
 }
 
-var DefaultTalents = "5505301500103031--503352001"
-var ElementalTalents = "2505301500123031-0500001-053050001"
-var StormcallerTalents = "050433150010303-055030030004102"
+var DefaultTalents = "550533100000133--553302001"
+var ElementalTalents = "250533100002133-0500001-053050001"
+var StormcallerTalents = "053433100000033-055030030004102"
 
 var PlayerOptionsAdaptive = &proto.Player_ElementalShaman{
 	ElementalShaman: &proto.ElementalShaman{

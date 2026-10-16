@@ -67,9 +67,9 @@ func (shaman *Shaman) newWindfuryTotemSpellConfig(rank int) core.SpellConfig {
 		Duration: time.Second * 10,
 	})
 	if shaman.Env.IsForever() {
-		// The local pulse cannot coexist with an externally provided Grace
-		// of Air, including one whose configured aura never expires.
-		buffAura.NewExclusiveEffect("ForeverAirTotem", false, core.ExclusiveEffect{Priority: 2})
+		// Since 70425 Windfury and Flametongue Totem share one slot; Grace of Air no longer
+		// excludes Windfury.
+		buffAura.NewExclusiveEffect("ForeverWeaponTotem", false, core.ExclusiveEffect{Priority: 2})
 	}
 
 	periodicTriggerAura := shaman.RegisterAura(core.Aura{

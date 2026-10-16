@@ -648,6 +648,11 @@ func init() {
 
 	// https://www.wowhead.com/classic/item=809/bloodrazor
 	itemhelpers.CreateWeaponProcSpell(Bloodrazor, "Bloodrazor", 1.0, func(character *core.Character) *core.Spell {
+		// Client 1.60.1.70425: five 31-damage ticks over 15 sec (ten 12-damage ticks before).
+		ticks, tick := int32(10), 12.0
+		if character.Env.IsForever() {
+			ticks, tick = 5, 31
+		}
 		return character.GetOrRegisterSpell(core.SpellConfig{
 			ActionID:         core.ActionID{SpellID: 17504},
 			SpellSchool:      core.SpellSchoolPhysical,
@@ -663,13 +668,13 @@ func init() {
 				}
 			},
 			Dot: core.DotConfig{
-				NumberOfTicks: 10,
+				NumberOfTicks: ticks,
 				TickLength:    time.Second * 3,
 				Aura: core.Aura{
 					Label: "Rend (Bloodrazor)",
 				},
 				OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
-					dot.Spell.CalcAndDealPeriodicDamage(sim, target, 12, dot.OutcomeTick)
+					dot.Spell.CalcAndDealPeriodicDamage(sim, target, tick, dot.OutcomeTick)
 				},
 			},
 		})
@@ -780,7 +785,7 @@ func init() {
 		return character.RegisterAura(core.Aura{
 			ActionID: core.ActionID{SpellID: 17152},
 			Label:    "Destiny",
-			Duration: time.Second * 10,
+			Duration: core.TernaryDuration(character.Env.IsForever(), time.Second*12, time.Second*10), // 12 s since client 1.60.1.70425
 			OnGain: func(aura *core.Aura, sim *core.Simulation) {
 				character.AddStatDynamic(sim, stats.Strength, 200)
 			},
@@ -979,6 +984,11 @@ func init() {
 
 	// https://www.wowhead.com/classic/item=870/fiery-war-axe
 	itemhelpers.CreateWeaponProcSpell(FieryWarAxe, "Fiery War Axe", 1.0, func(character *core.Character) *core.Spell {
+		// Client 1.60.1.70425: 231-293 and 20 a tick (155-197 and 8 before).
+		low, high, tick := 155.0, 197.0, 8.0
+		if character.Env.IsForever() {
+			low, high, tick = 231, 293, 20
+		}
 		return character.GetOrRegisterSpell(core.SpellConfig{
 			ActionID:    core.ActionID{SpellID: 18796},
 			SpellSchool: core.SpellSchoolFire,
@@ -996,7 +1006,7 @@ func init() {
 				NumberOfTicks: 3,
 
 				OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
-					dot.Snapshot(target, 8, isRollover)
+					dot.Snapshot(target, tick, isRollover)
 				},
 
 				OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
@@ -1005,7 +1015,7 @@ func init() {
 			},
 
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				dmg := sim.Roll(155, 197)
+				dmg := sim.Roll(low, high)
 				result := spell.CalcAndDealDamage(sim, target, dmg, spell.OutcomeMagicHitAndCrit)
 				if result.Landed() {
 					spell.Dot(target).Apply(sim)
@@ -1972,6 +1982,7 @@ func init() {
 		character := agent.GetCharacter()
 
 		immolationActionID := core.ActionID{SpellID: 21142}
+		immolationDamage := core.TernaryFloat64(character.Env.IsForever(), 7, 5) // 7 since client 1.60.1.70425
 
 		immolationSpell := character.GetOrRegisterSpell(core.SpellConfig{
 			ActionID:    immolationActionID,
@@ -1982,7 +1993,7 @@ func init() {
 			ThreatMultiplier: 1,
 
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				spell.CalcAndDealDamage(sim, target, 5, spell.OutcomeMagicHit)
+				spell.CalcAndDealDamage(sim, target, immolationDamage, spell.OutcomeMagicHit)
 			},
 		})
 

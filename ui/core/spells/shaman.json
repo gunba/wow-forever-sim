@@ -37,9 +37,9 @@
 	"421": {
 		"ability": "Chain Lightning",
 		"file": "sim/shaman/chain_lightning.go",
-		"note": "Rank 1. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Spell power coefficient 0.571 (rank 3's 0.517 is as the client stores it); Classic Era had 0.714, a 2.5 sec cast and roughly four times the damage.",
+		"note": "Rank 1. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Spell power coefficient 0.571 (rank 3's 0.517 is as the client stores it); Classic Era had 0.714, a 2.5 sec cast and roughly four times the damage. Client 1.60.1.70425: 145 mana (225 before).",
 		"source": "forever",
-		"tooltip": "225 Mana\n30 yd range\n2 sec cast\n6 sec cooldown\nHurls a lightning bolt at the enemy, dealing 85 to 97 Nature damage and then jumping to additional nearby enemies. Each jump reduces the damage by 30%. Affects 3 total targets."
+		"tooltip": "145 Mana\n30 yd range\n2 sec cast\n6 sec cooldown\nHurls a lightning bolt at the enemy, dealing 85 to 97 Nature damage and then jumping to additional nearby enemies. Each jump reduces the damage by 30%. Affects 3 total targets."
 	},
 	"529": {
 		"ability": "Lightning Bolt",
@@ -72,9 +72,9 @@
 	"930": {
 		"ability": "Chain Lightning",
 		"file": "sim/shaman/chain_lightning.go",
-		"note": "Rank 2. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Spell power coefficient 0.571 (rank 3's 0.517 is as the client stores it); Classic Era had 0.714, a 2.5 sec cast and roughly four times the damage.",
+		"note": "Rank 2. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Spell power coefficient 0.571 (rank 3's 0.517 is as the client stores it); Classic Era had 0.714, a 2.5 sec cast and roughly four times the damage. Client 1.60.1.70425: 200 mana (305 before).",
 		"source": "forever",
-		"tooltip": "305 Mana\n30 yd range\n2 sec cast\n6 sec cooldown\nHurls a lightning bolt at the enemy, dealing 97 to 109 Nature damage and then jumping to additional nearby enemies. Each jump reduces the damage by 30%. Affects 3 total targets."
+		"tooltip": "200 Mana\n30 yd range\n2 sec cast\n6 sec cooldown\nHurls a lightning bolt at the enemy, dealing 97 to 109 Nature damage and then jumping to additional nearby enemies. Each jump reduces the damage by 30%. Affects 3 total targets."
 	},
 	"943": {
 		"ability": "Lightning Bolt",
@@ -93,9 +93,9 @@
 	"2860": {
 		"ability": "Chain Lightning",
 		"file": "sim/shaman/chain_lightning.go",
-		"note": "Rank 3. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Spell power coefficient 0.517 (rank 3's 0.517 is as the client stores it); Classic Era had 0.714, a 2.5 sec cast and roughly four times the damage.",
+		"note": "Rank 3. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Spell power coefficient 0.517 (rank 3's 0.517 is as the client stores it); Classic Era had 0.714, a 2.5 sec cast and roughly four times the damage. Client 1.60.1.70425: 250 mana (390 before).",
 		"source": "forever",
-		"tooltip": "390 Mana\n30 yd range\n2 sec cast\n6 sec cooldown\nHurls a lightning bolt at the enemy, dealing 109 to 122 Nature damage and then jumping to additional nearby enemies. Each jump reduces the damage by 30%. Affects 3 total targets."
+		"tooltip": "250 Mana\n30 yd range\n2 sec cast\n6 sec cooldown\nHurls a lightning bolt at the enemy, dealing 109 to 122 Nature damage and then jumping to additional nearby enemies. Each jump reduces the damage by 30%. Affects 3 total targets."
 	},
 	"3599": {
 		"ability": "Searing Totem",
@@ -383,14 +383,14 @@
 	"10447": {
 		"ability": "Flame Shock",
 		"file": "sim/shaman/flame_shock.go",
-		"note": "Rank 4. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Coefficients 0.214 on the hit and 0.1 per tick at every rank; the dot is stored as 21 per 3 sec tick.",
+		"note": "Rank 4. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Coefficients 0.214 on the hit and 0.1 per tick at every rank; the dot is stored as 21 per 3 sec tick. Client 1.60.1.70425: Call of Flame also extends Flame Shock by 3/6/9 sec.",
 		"source": "forever",
 		"tooltip": "250 Mana\n20 yd range\nInstant\n6 sec cooldown\nInstantly sears the target with fire, causing 89 Fire damage immediately and 84 Fire damage over 12 sec."
 	},
 	"10448": {
 		"ability": "Flame Shock",
 		"file": "sim/shaman/flame_shock.go",
-		"note": "Rank 5. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Coefficients 0.214 on the hit and 0.1 per tick at every rank; the dot is stored as 34 per 3 sec tick.",
+		"note": "Rank 5. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Coefficients 0.214 on the hit and 0.1 per tick at every rank; the dot is stored as 34 per 3 sec tick. Client 1.60.1.70425: Call of Flame also extends Flame Shock by 3/6/9 sec.",
 		"source": "forever",
 		"tooltip": "345 Mana\n20 yd range\nInstant\n6 sec cooldown\nInstantly sears the target with fire, causing 137 Fire damage immediately and 136 Fire damage over 12 sec."
 	},
@@ -480,9 +480,9 @@
 	"10605": {
 		"ability": "Chain Lightning",
 		"file": "sim/shaman/chain_lightning.go",
-		"note": "Rank 4. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Spell power coefficient 0.571 (rank 3's 0.517 is as the client stores it); Classic Era had 0.714, a 2.5 sec cast and roughly four times the damage.",
+		"note": "Rank 4. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Spell power coefficient 0.571 (rank 3's 0.517 is as the client stores it); Classic Era had 0.714, a 2.5 sec cast and roughly four times the damage. Client 1.60.1.70425: 315 mana (485 before).",
 		"source": "forever",
-		"tooltip": "485 Mana\n30 yd range\n2 sec cast\n6 sec cooldown\nHurls a lightning bolt at the enemy, dealing 119 to 134 Nature damage and then jumping to additional nearby enemies. Each jump reduces the damage by 30%. Affects 3 total targets."
+		"tooltip": "315 Mana\n30 yd range\n2 sec cast\n6 sec cooldown\nHurls a lightning bolt at the enemy, dealing 119 to 134 Nature damage and then jumping to additional nearby enemies. Each jump reduces the damage by 30%. Affects 3 total targets."
 	},
 	"15207": {
 		"ability": "Lightning Bolt",
@@ -668,7 +668,7 @@
 	"29228": {
 		"ability": "Flame Shock",
 		"file": "sim/shaman/flame_shock.go",
-		"note": "Rank 6. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Coefficients 0.214 on the hit and 0.1 per tick at every rank; the dot is stored as 44 per 3 sec tick.",
+		"note": "Rank 6. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Coefficients 0.214 on the hit and 0.1 per tick at every rank; the dot is stored as 44 per 3 sec tick. Client 1.60.1.70425: Call of Flame also extends Flame Shock by 3/6/9 sec.",
 		"source": "forever",
 		"tooltip": "410 Mana\n20 yd range\nInstant\n6 sec cooldown\nInstantly sears the target with fire, causing 166 Fire damage immediately and 176 Fire damage over 12 sec."
 	},
@@ -681,44 +681,44 @@
 	"408341": {
 		"ability": "Fire Nova",
 		"file": "sim/shaman/fire_totems.go",
-		"note": "Rank 1. Forever removes Fire Nova Totem (its ids are absent from the beta client) and the spellbook teaches this nova instead. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. The damage and 0.214 coefficient come from the nova's damage spell 408423; cost and level are the totem's.",
+		"note": "Rank 1. Forever removes Fire Nova Totem (its ids are absent from the beta client) and the spellbook teaches this nova instead. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. The damage and 0.214 coefficient come from the nova's damage spell 408423; cost and level are the totem's. Client 1.60.1.70425: 65 mana (95 before), lower base damage and a 0.143 coefficient (0.214 before).",
 		"source": "forever",
-		"tooltip": "95 Mana\nInstant\n10 sec cooldown\nCauses a burst of flame around the caster, dealing 51 to 60 Fire damage to nearby enemies."
+		"tooltip": "65 Mana\nInstant\n10 sec cooldown\nCauses a burst of flame around the caster, dealing 51 to 60 Fire damage to nearby enemies."
 	},
 	"408342": {
 		"ability": "Fire Nova",
 		"file": "sim/shaman/fire_totems.go",
-		"note": "Rank 2. Forever removes Fire Nova Totem (its ids are absent from the beta client) and the spellbook teaches this nova instead. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. The damage and 0.214 coefficient come from the nova's damage spell 408424; cost and level are the totem's.",
+		"note": "Rank 2. Forever removes Fire Nova Totem (its ids are absent from the beta client) and the spellbook teaches this nova instead. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. The damage and 0.214 coefficient come from the nova's damage spell 408424; cost and level are the totem's. Client 1.60.1.70425: 120 mana (170 before), lower base damage and a 0.143 coefficient (0.214 before).",
 		"source": "forever",
-		"tooltip": "170 Mana\nInstant\n10 sec cooldown\nCauses a burst of flame around the caster, dealing 103 to 117 Fire damage to nearby enemies."
+		"tooltip": "120 Mana\nInstant\n10 sec cooldown\nCauses a burst of flame around the caster, dealing 103 to 117 Fire damage to nearby enemies."
 	},
 	"408343": {
 		"ability": "Fire Nova",
 		"file": "sim/shaman/fire_totems.go",
-		"note": "Rank 3. Forever removes Fire Nova Totem (its ids are absent from the beta client) and the spellbook teaches this nova instead. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. The damage and 0.214 coefficient come from the nova's damage spell 408426; cost and level are the totem's.",
+		"note": "Rank 3. Forever removes Fire Nova Totem (its ids are absent from the beta client) and the spellbook teaches this nova instead. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. The damage and 0.214 coefficient come from the nova's damage spell 408426; cost and level are the totem's. Client 1.60.1.70425: 210 mana (280 before), lower base damage and a 0.143 coefficient (0.214 before).",
 		"source": "forever",
-		"tooltip": "280 Mana\nInstant\n10 sec cooldown\nCauses a burst of flame around the caster, dealing 182 to 206 Fire damage to nearby enemies."
+		"tooltip": "210 Mana\nInstant\n10 sec cooldown\nCauses a burst of flame around the caster, dealing 182 to 206 Fire damage to nearby enemies."
 	},
 	"408344": {
 		"ability": "Fire Nova",
 		"file": "sim/shaman/fire_totems.go",
-		"note": "Rank 4. Forever removes Fire Nova Totem (its ids are absent from the beta client) and the spellbook teaches this nova instead. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. The damage and 0.214 coefficient come from the nova's damage spell 408427; cost and level are the totem's.",
+		"note": "Rank 4. Forever removes Fire Nova Totem (its ids are absent from the beta client) and the spellbook teaches this nova instead. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. The damage and 0.214 coefficient come from the nova's damage spell 408427; cost and level are the totem's. Client 1.60.1.70425: 290 mana (395 before), lower base damage and a 0.143 coefficient (0.214 before).",
 		"source": "forever",
-		"tooltip": "395 Mana\nInstant\n10 sec cooldown\nCauses a burst of flame around the caster, dealing 280 to 316 Fire damage to nearby enemies."
+		"tooltip": "290 Mana\nInstant\n10 sec cooldown\nCauses a burst of flame around the caster, dealing 280 to 316 Fire damage to nearby enemies."
 	},
 	"408345": {
 		"ability": "Fire Nova",
 		"file": "sim/shaman/fire_totems.go",
-		"note": "Rank 5. Forever removes Fire Nova Totem (its ids are absent from the beta client) and the spellbook teaches this nova instead. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. The damage and 0.214 coefficient come from the nova's damage spell 408428; cost and level are the totem's.",
+		"note": "Rank 5. Forever removes Fire Nova Totem (its ids are absent from the beta client) and the spellbook teaches this nova instead. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. The damage and 0.214 coefficient come from the nova's damage spell 408428; cost and level are the totem's. Client 1.60.1.70425: 375 mana (520 before), lower base damage and a 0.143 coefficient (0.214 before).",
 		"source": "forever",
-		"tooltip": "520 Mana\nInstant\n10 sec cooldown\nCauses a burst of flame around the caster, dealing 397 to 443 Fire damage to nearby enemies."
+		"tooltip": "375 Mana\nInstant\n10 sec cooldown\nCauses a burst of flame around the caster, dealing 397 to 443 Fire damage to nearby enemies."
 	},
 	"408490": {
 		"ability": "Lava Burst",
 		"file": "sim/shaman/lava_burst.go",
-		"note": "Rank 1, taught by the talent at level 40. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Coefficient 0.714.",
+		"note": "Rank 1, taught by the talent at level 30 since client 1.60.1.70425 (40 before). Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Coefficient 0.714. Client 1.60.1.70425: ranks reflow to 30/40/50/60: rank 1 is 107-139 plus 0.8 a level, 135 mana.",
 		"source": "forever",
-		"tooltip": "165 Mana\n30 yd range\n2.5 sec cast\n10 sec cooldown\nYou hurl molten lava at the target, dealing 150 to 192 Fire damage. If your Flame Shock is on the target, Lava Burst deals 20% increased damage."
+		"tooltip": "135 Mana\n30 yd range\n2.5 sec cast\n10 sec cooldown\nYou hurl molten lava at the target, dealing 113 to 145 Fire damage. If your Flame Shock is on the target, Lava Burst deals 20% increased damage."
 	},
 	"408505": {
 		"ability": "Maelstrom Weapon",
@@ -744,16 +744,16 @@
 	"1238299": {
 		"ability": "Lava Burst",
 		"file": "sim/shaman/lava_burst.go",
-		"note": "Rank 2, level 50. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Coefficient 0.714.",
+		"note": "Rank 2, level 40 since client 1.60.1.70425 (50 before). Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Coefficient 0.714. Client 1.60.1.70425: 143-185 plus 0.9 a level, 165 mana.",
 		"source": "forever",
-		"tooltip": "230 Mana\n30 yd range\n2.5 sec cast\n10 sec cooldown\nYou hurl molten lava at the target, dealing 180 to 230 Fire damage. If your Flame Shock is on the target, Lava Burst deals 20% increased damage."
+		"tooltip": "165 Mana\n30 yd range\n2.5 sec cast\n10 sec cooldown\nYou hurl molten lava at the target, dealing 150 to 192 Fire damage. If your Flame Shock is on the target, Lava Burst deals 20% increased damage."
 	},
 	"1238300": {
 		"ability": "Lava Burst",
 		"file": "sim/shaman/lava_burst.go",
-		"note": "Rank 3, level 60. Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Coefficient 0.714. Call of Flame's 5% per point is the talent's own curve.",
+		"note": "Rank 3, level 50 since client 1.60.1.70425 (60 before). Beta client 1.60.1.69893 (tools/data_watch/spell_client.py), damage scaled to level 60 by the client's per-level points. Coefficient 0.714. Call of Flame's 5% per point is the talent's own curve. Client 1.60.1.70425: 171-221 plus 1.1 a level, 230 mana; rank 4 (1326047) takes the old level-60 values.",
 		"source": "forever",
-		"tooltip": "265 Mana\n30 yd range\n2.5 sec cast\n10 sec cooldown\nYou hurl molten lava at the target, dealing 192 to 248 Fire damage. If your Flame Shock is on the target, Lava Burst deals 20% increased damage."
+		"tooltip": "230 Mana\n30 yd range\n2.5 sec cast\n10 sec cooldown\nYou hurl molten lava at the target, dealing 180 to 230 Fire damage. If your Flame Shock is on the target, Lava Burst deals 20% increased damage."
 	},
 	"1238931": {
 		"ability": "Improved Stormstrike",
@@ -761,5 +761,19 @@
 		"note": "The buff (1238931) is 50% while-casting regeneration for 15 sec at either rank; the talent curve (1223031) scales only the two chances, 50% and 100%. The proc is rolled when the Stormstrike cast completes.",
 		"source": "forever",
 		"tooltip": "15 sec duration\nWhen you Stormstrike, you have a 50% chance per point to gain 50% mana regeneration while casting spells for 15 sec, and Stormstrike's cooldown has a 50% chance per point to reset each time you Dodge or Parry."
+	},
+	"16166": {
+		"ability": "Elemental Mastery",
+		"file": "sim/shaman/talents.go",
+		"source": "forever",
+		"tooltip": "Instant\n3 min cooldown\nGain mastery over Fire and Lightning, reducing the cast time of Lightning Bolt and Lava Burst by 0.5 sec, and removing the cooldown from Chain Lightning. Lasts 15 sec.",
+		"note": "Client 1.60.1.70425 (October 15 notes). 31-point Elemental talent; modelled as a damage cooldown."
+	},
+	"1326047": {
+		"ability": "Lava Burst",
+		"file": "sim/shaman/lava_burst.go",
+		"source": "forever",
+		"tooltip": "265 Mana\n2.5 sec cast\n10 sec cooldown\nRank 4: 192 to 248 Fire damage, 20% more against a target with your Flame Shock.",
+		"note": "Client 1.60.1.70425 (October 15 notes). New rank 4 at level 60, coefficient 0.714; ranks reflowed to levels 30/40/50/60."
 	}
 }

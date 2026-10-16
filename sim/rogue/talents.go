@@ -98,6 +98,7 @@ func (rogue *Rogue) registerColdBloodCD() {
 	}
 
 	actionID := core.ActionID{SpellID: 14177}
+	mutilateLanded := false
 
 	coldBloodAura := rogue.RegisterAura(core.Aura{
 		Label:    "Cold Blood",
@@ -118,14 +119,22 @@ func (rogue *Rogue) registerColdBloodCD() {
 			}
 		},
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if spell.Flags.Matches(SpellFlagColdBlooded) && spell != rogue.mutilateMH && spell != rogue.mutilateOH {
+			if spell == rogue.mutilateMH || spell == rogue.mutilateOH {
+				mutilateLanded = mutilateLanded || result.Landed()
+				return
+			}
+			if spell.Flags.Matches(SpellFlagColdBlooded) {
 				aura.Deactivate(sim)
 			}
 		},
 		OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
-			// Both triggered strikes use the crit bonus before the ability spends it.
+			// Both triggered strikes use the crit bonus before the ability spends it. Since client
+			// 1.60.1.70425 a Mutilate that lands (and so crits) consumes it; one fully avoided keeps it.
 			if spell == rogue.Mutilate {
-				aura.Deactivate(sim)
+				if mutilateLanded || !rogue.Env.IsForever() {
+					aura.Deactivate(sim)
+				}
+				mutilateLanded = false
 			}
 		},
 	})

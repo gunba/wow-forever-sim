@@ -47,11 +47,11 @@ simulator's **Ranked builds** selector. Clicking a matrix cell opens that exact
 setup and its actual gear-derived hit; no manual import is needed.
 [Frozen benchmark inputs](artifacts/modelled_gear/forever_input_profiles.json) are also the
 native benchmark defaults, separate from the results for replay.
-The [October 11 log audit](docs/october-11-log-audit.md) lists the corrections taken from public
-beta combat logs, and [Beta test procedures](docs/beta-test-procedures.md) explains how to settle each
-remaining open question in game. [Selection evidence](artifacts/correctness/october_11_logs/selection-evidence.json)
-records the confirmed gear re-search. The earlier [October 11 audit](docs/october-11-audit.md) lists the
-client-data corrections and [its selections](artifacts/correctness/october_11/selection-evidence.json). The [October 8 review](docs/october-8-review.md)
+The [October 15 update](docs/october-15-update.md) brings the simulator to client 1.60.1.70425 and the
+October 15 development notes, and [Beta test procedures](docs/beta-test-procedures.md) explains how to settle each
+remaining open question in game. [Selection evidence](artifacts/correctness/october_15/selection-evidence.json)
+records the talent, rotation and confirmed gear selections. The earlier [October 11 log audit](docs/october-11-log-audit.md)
+and [October 11 audit](docs/october-11-audit.md) list the corrections before it. The [October 8 review](docs/october-8-review.md)
 explains the earlier provisional mechanics and bounded selections. Earlier
 [equipment searches](artifacts/modelled_gear_search/current/summary.json) remain historical. Every equipped item is a projected level-65 item with its
 numeric stats in its name. None is confirmed obtainable. The

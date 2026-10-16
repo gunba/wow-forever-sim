@@ -60,7 +60,7 @@ func (priest *Priest) shadowWordDeathConfig(rank int, timer *core.Timer, backlas
 		ManaCost:      core.ManaCostOptions{FlatCost: cost},
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{GCD: core.GCDDefault},
-			CD:          core.Cooldown{Timer: timer, Duration: 15 * time.Second},
+			CD:          core.Cooldown{Timer: timer, Duration: 18 * time.Second}, // 15 s until client 1.60.1.70425
 		},
 		DamageMultiplier: 1,
 		ThreatMultiplier: 1,

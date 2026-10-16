@@ -111,17 +111,18 @@ func requestForBuild(b build, player *proto.Player, count int, rng int64) *proto
 		req.Raid.Buffs.BattleShout = proto.TristateEffect_TristateEffectMissing
 		req.Raid.Parties[0].Buffs.BattleShout = proto.TristateEffect_TristateEffectMissing
 	}
-	// The reference groups reserve Grace of Air for the ranged Hunters.
-	// Casters do not get a second, irrelevant air-totem provider.
-	if b.Key != "beast_mastery" && b.Key != "marksmanship" {
-		req.Raid.Buffs.GraceOfAirTotem = proto.TristateEffect_TristateEffectMissing
-	}
 	switch b.Key {
 	case "feral", "enhancement", "survival", "pet_melee", "retribution", "retribution_physical",
 		"combat", "mutilate", "subtlety", "fury", "fury_sunder", "fury_2h", "arms":
-		// Forever Windfury Totem is a party buff, not a temporary weapon enchant.
-		// Its air-totem slot excludes Grace of Air even when supplied by another Shaman.
+		// Forever Windfury Totem is a group buff, not a temporary weapon enchant. Since client
+		// 1.60.1.70425 both totems are raid-wide and Grace of Air is no longer exclusive with
+		// Windfury, so the melee groups take both from the raid's Shamans.
 		req.Raid.Parties[0].Buffs.WindfuryTotem = true
+	case "beast_mastery", "marksmanship":
+		// The ranged Hunters keep Grace of Air.
+	default:
+		// Casters do not get an irrelevant Agility totem.
+		req.Raid.Buffs.GraceOfAirTotem = proto.TristateEffect_TristateEffectMissing
 	}
 	if b.Key == "fury_sunder" {
 		// This row measures the cost of providing the raid's major armor

@@ -106,9 +106,12 @@ type Druid struct {
 	form         DruidForm
 	disabledMCDs []*core.MajorCooldown
 
-	// Energy carried out of Cat Form, for the Forever version of Furor.
+	// Energy carried out of Cat Form, for the Forever version of Furor, and the Bear time since
+	// then, which earns no Energy.
 	lastCatFormEnergy float64
 	lastCatFormExitAt time.Duration
+	furorBearTime     time.Duration
+	furorBearSince    time.Duration
 }
 
 type SelfBuffs struct {
@@ -257,6 +260,7 @@ func New(character *core.Character, form DruidForm, selfBuffs SelfBuffs, talents
 		StartingForm:      form,
 		form:              form,
 		lastCatFormExitAt: core.NeverExpires,
+		furorBearSince:    core.NeverExpires,
 	}
 	druid.talentsString = talents
 	druid.EnableManaBar()

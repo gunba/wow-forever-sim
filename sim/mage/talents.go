@@ -131,13 +131,60 @@ func (mage *Mage) applyFireTalents() {
 		})
 	}
 
-	// Fire Power
-	if mage.Talents.FirePower > 0 {
-		bonusDamageMultiplierAdditive := 0.02 * float64(mage.Talents.FirePower)
-		mage.OnSpellRegistered(func(spell *core.Spell) {
-			// Fire Power buffs pretty much all mage fire spells EXCEPT ignite
-			if spell.SpellSchool.Matches(core.SpellSchoolFire) && spell.Flags.Matches(SpellFlagMage) && spell.SpellCode != SpellCode_MageIgnite {
-				spell.DamageMultiplierAdditive += bonusDamageMultiplierAdditive
+	mage.applyFirePower()
+}
+
+// Fire Power, redesigned in client 1.60.1.70425: 1/2/3% more Fire damage per Fire effect of the mage
+// on the target, counting Ignite, Improved Scorch, the Fireball and Pyroblast damage over time and
+// Impact, up to four. Mixed-school spells (Frostfire Bolt) benefit but do not count. Ignite itself is
+// left out as before.
+func (mage *Mage) applyFirePower() {
+	if mage.Talents.FirePower == 0 {
+		return
+	}
+	perEffect := 0.01 * float64(mage.Talents.FirePower)
+	dotActive := func(spell *core.Spell, target *core.Unit) bool {
+		if spell == nil || int(target.UnitIndex) >= len(spell.Dots()) {
+			return false
+		}
+		dot := spell.Dot(target)
+		return dot != nil && dot.IsActive()
+	}
+	anyDot := func(spells []*core.Spell, target *core.Unit) bool {
+		for _, spell := range spells {
+			if dotActive(spell, target) {
+				return true
+			}
+		}
+		return false
+	}
+	effects := func(target *core.Unit) int {
+		n := 0
+		if dotActive(mage.igniteTick, target) { // the Ignite DoT lives on its tick spell
+			n++
+		}
+		if mage.ImprovedScorchAura != nil && mage.ImprovedScorchAura.IsActive() {
+			n++
+		}
+		if anyDot(mage.Fireball, target) {
+			n++
+		}
+		if anyDot(mage.Pyroblast, target) {
+			n++
+		}
+		if len(mage.ImpactAuras) > 0 && mage.ImpactAuras.Get(target) != nil && mage.ImpactAuras.Get(target).IsActive() {
+			n++
+		}
+		return min(n, 4)
+	}
+	for _, target := range mage.Env.Encounter.TargetUnits {
+		target.AddDynamicDamageTakenModifier(func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+			if spell.Unit != &mage.Unit || !spell.SpellSchool.Matches(core.SpellSchoolFire) || !spell.Flags.Matches(SpellFlagMage) ||
+				spell.SpellCode == SpellCode_MageIgnite {
+				return
+			}
+			if n := effects(result.Target); n > 0 {
+				result.Damage *= 1 + perEffect*float64(n)
 			}
 		})
 	}
@@ -152,7 +199,7 @@ func (mage *Mage) applyImpact() {
 		return
 	}
 	chance := []float64{0, .03, .07, .10}[mage.Talents.Impact]
-	stuns := mage.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
+	mage.ImpactAuras = mage.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
 		return target.RegisterCrowdControlAura(core.Aura{
 			Label:    "Impact-" + mage.Label,
 			ActionID: core.ActionID{SpellID: 12355},
@@ -174,7 +221,7 @@ func (mage *Mage) applyImpact() {
 				!spell.ProcMask.Matches(core.ProcMaskSpellOrSpellProc|core.ProcMaskSpellDamageProc) {
 				return
 			}
-			if stun := stuns.Get(result.Target); stun != nil && sim.Proc(chance, "Impact") {
+			if stun := mage.ImpactAuras.Get(result.Target); stun != nil && sim.Proc(chance, "Impact") {
 				result.Target.ApplyCrowdControl(sim, stun, 2*time.Second, core.CrowdControlDRStunProc)
 			}
 		},
@@ -268,6 +315,8 @@ func (mage *Mage) applyArcaneConcentration() {
 		},
 	})
 
+	var lastSpell *core.Spell
+	var lastAt time.Duration = -1
 	mage.RegisterAura(core.Aura{
 		Label:    "Arcane Concentration",
 		Duration: core.NeverExpires,
@@ -278,6 +327,13 @@ func (mage *Mage) applyArcaneConcentration() {
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 			if !result.Landed() || !spell.Flags.Matches(SpellFlagMage) || spell.SpellCode == SpellCode_MageArcaneMissiles || !icd.IsReady(sim) {
 				return
+			}
+			// Client 1.60.1.70425: one roll per cast, not one per target struck.
+			if mage.Env.IsForever() {
+				if lastSpell == spell && lastAt == sim.CurrentTime {
+					return
+				}
+				lastSpell, lastAt = spell, sim.CurrentTime
 			}
 
 			// TODO: Classic verify arcane missile proc chance
@@ -302,6 +358,8 @@ func (mage *Mage) rollBlizzardArcaneConcentration(sim *core.Simulation, spell *c
 	if !mage.Env.IsForever() || mage.Talents.ArcaneConcentration == 0 {
 		return
 	}
+	// Client 1.60.1.70425: Clearcasting no longer rolls for every target a spell strikes. The
+	// trigger rolls once per cast, on the first target the wave lands on.
 	trigger := mage.GetAura("Arcane Concentration")
 	for _, target := range sim.Encounter.TargetUnits {
 		result := spell.CalcOutcome(sim, target, spell.OutcomeMagicHitNoHitCounter)
@@ -313,9 +371,12 @@ func (mage *Mage) rollBlizzardArcaneConcentration(sim *core.Simulation, spell *c
 // Arcane Blast feeds Missile Barrage at twice the rate of the other nukes, so the two of them
 // are the backbone of the Forever arcane rotation.
 func (mage *Mage) applyMissileBarrage() {
-	if !mage.Talents.MissileBarrage {
+	if mage.Talents.MissileBarrage == 0 {
 		return
 	}
+	// Client 1.60.1.70425: two points; Arcane Blast 20/40%, each Arcane Missiles hit 5/10%, and Arcane
+	// Wrath, Fireball, Frostbolt and Frostfire Bolt 10/20%.
+	points := float64(mage.Talents.MissileBarrage)
 	tierFrostfireChance := core.TernaryFloat64(mage.HasSetBonus(ItemSetManaflareRegalia, 5), .10, 0)
 
 	var arcaneMissiles []*core.Spell
@@ -350,9 +411,11 @@ func (mage *Mage) applyMissileBarrage() {
 		procChance := 0.0
 		switch spell.SpellCode {
 		case SpellCode_MageArcaneBlast:
-			procChance = .40
-		case SpellCode_MageFireball, SpellCode_MageFrostbolt, SpellCode_MageFrostfireBolt:
-			procChance = .20
+			procChance = .20 * points
+		case SpellCode_MageArcaneMissilesTick:
+			procChance = .05 * points
+		case SpellCode_MageArcaneWrath, SpellCode_MageFireball, SpellCode_MageFrostbolt, SpellCode_MageFrostfireBolt:
+			procChance = .10 * points
 		default:
 			return
 		}
@@ -424,6 +487,7 @@ func (mage *Mage) registerPresenceOfMindCD() {
 				return
 			}
 
+			mage.pomUsedBy, mage.pomUsedAt = spell, sim.CurrentTime
 			aura.Deactivate(sim)
 		},
 	})
@@ -599,7 +663,8 @@ func (mage *Mage) applyHotStreak() {
 			}
 		},
 		OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
-			if spell.SpellCode == SpellCode_MagePyroblast {
+			// Client 1.60.1.70425: a Pyroblast cast instantly by Presence of Mind keeps the stacks.
+			if spell.SpellCode == SpellCode_MagePyroblast && !mage.presenceOfMindUsedBy(sim, spell) {
 				aura.Deactivate(sim)
 			}
 		},
@@ -612,12 +677,23 @@ func (mage *Mage) applyHotStreak() {
 			aura.Activate(sim)
 		},
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if !result.DidCrit() || !slices.Contains(triggerSpellCodes, spell.SpellCode) {
+			if !slices.Contains(triggerSpellCodes, spell.SpellCode) {
 				return
 			}
-
+			// Client 1.60.1.70425: Fire Blast adds a stack every time it deals damage, so a critical Fire
+			// Blast adds two.
+			stacks := int32(0)
+			if result.DidCrit() {
+				stacks++
+			}
+			if spell.SpellCode == SpellCode_MageFireBlast && result.Landed() {
+				stacks++
+			}
+			if stacks == 0 {
+				return
+			}
 			mage.HotStreakAura.Activate(sim)
-			mage.HotStreakAura.AddStack(sim)
+			mage.HotStreakAura.SetStacks(sim, min(mage.HotStreakAura.GetStacks()+stacks, mage.HotStreakAura.MaxStacks))
 		},
 	})
 }
@@ -897,34 +973,35 @@ func (mage *Mage) IsTargetFrozen() bool {
 	return mage.FingersOfFrostAura != nil && mage.FingersOfFrostAura.IsActive()
 }
 
-// The raid debuff version of Winter's Chill is a Classic mechanic, in Forever it only helps the
-// mage's own Frostbolt and Ice Lance. The beta client gives 2% crit a stack, stacking once per
-// talent point: "Stacks up to 5 times" at 5/5.
+// Winter's Chill, redesigned in client 1.60.1.70425 (12579, aura 271): no longer critical strike.
+// Each stack makes the mage's next Cone of Cold on the target deal 40% more damage, up to five, and that
+// Cone of Cold consumes them. Applied by Frost damage spells at 20% a point.
 func (mage *Mage) applyWintersChill() {
 	if mage.Talents.WintersChill == 0 {
 		return
 	}
 
 	procChance := .20 * float64(mage.Talents.WintersChill)
-	critPerStack := 2.0 * core.SpellCritRatingPerCritChance
-	affectedSpellCodes := []int32{SpellCode_MageFrostbolt, SpellCode_MageIceLance}
-
-	var affectedSpells []*core.Spell
+	var coneOfCold []*core.Spell
 	mage.OnSpellRegistered(func(spell *core.Spell) {
-		if slices.Contains(affectedSpellCodes, spell.SpellCode) {
-			affectedSpells = append(affectedSpells, spell)
+		if spell.SpellCode == SpellCode_MageConeOfCold {
+			coneOfCold = append(coneOfCold, spell)
 		}
 	})
 
 	mage.WintersChillAura = mage.RegisterAura(core.Aura{
 		Label:     "Winter's Chill",
-		ActionID:  core.ActionID{SpellID: 28593},
+		ActionID:  core.ActionID{SpellID: 12579},
 		Duration:  time.Second * 15,
-		MaxStacks: int32(mage.Talents.WintersChill),
+		MaxStacks: 5,
 		OnStacksChange: func(aura *core.Aura, sim *core.Simulation, oldStacks int32, newStacks int32) {
-			bonusCrit := critPerStack * float64(newStacks-oldStacks)
-			for _, spell := range affectedSpells {
-				spell.BonusCritRating += bonusCrit
+			for _, spell := range coneOfCold {
+				spell.DamageMultiplierAdditive += 0.4 * float64(newStacks-oldStacks)
+			}
+		},
+		OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
+			if spell.SpellCode == SpellCode_MageConeOfCold {
+				aura.Deactivate(sim)
 			}
 		},
 	})
@@ -936,7 +1013,7 @@ func (mage *Mage) applyWintersChill() {
 			aura.Activate(sim)
 		},
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if !result.Landed() || !spell.SpellSchool.Matches(core.SpellSchoolFrost) {
+			if !result.Landed() || !spell.SpellSchool.Matches(core.SpellSchoolFrost) || spell.SpellCode == SpellCode_MageConeOfCold {
 				return
 			}
 
@@ -946,4 +1023,10 @@ func (mage *Mage) applyWintersChill() {
 			}
 		},
 	})
+}
+
+// presenceOfMindUsedBy reports whether Presence of Mind made this cast instant, whichever of the two
+// cast-complete callbacks runs first.
+func (mage *Mage) presenceOfMindUsedBy(sim *core.Simulation, spell *core.Spell) bool {
+	return mage.pomUsedBy == spell && mage.pomUsedAt == sim.CurrentTime
 }

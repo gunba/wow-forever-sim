@@ -32,8 +32,10 @@ func TestBuildsAreLegal(t *testing.T) {
 
 func TestFireAndElementalTalentCorrections(t *testing.T) {
 	want := map[string]map[string]int{
-		"fire":      {"improvedFireball": 4, "wakeOfFire": 2, "hotStreak": 1},
-		"elemental": {"ancestralKnowledge": 2, "improvedLightningShield": 0, "waterShield": 0},
+		// Client 1.60.1.70425 turns Wake of Fire back into Improved Fire Blast; the October 15 talent
+		// screen moved two Totemic Focus points into Ancestral Knowledge.
+		"fire":      {"improvedFireball": 4, "improvedFireBlast": 2, "hotStreak": 1},
+		"elemental": {"ancestralKnowledge": 4, "improvedLightningShield": 0, "waterShield": 0},
 	}
 	for _, b := range builds() {
 		fields, ok := want[b.Key]
@@ -74,7 +76,7 @@ func TestRejectIllegalTalentRows(t *testing.T) {
 	}
 }
 
-func TestHitCapAndTaurenRacial(t *testing.T) {
+func TestHitCapWithoutRacialHit(t *testing.T) {
 	for _, b := range builds() {
 		if b.Key != "enhancement" && b.Key != "fury" {
 			continue
@@ -106,14 +108,9 @@ func TestHitCapAndTaurenRacial(t *testing.T) {
 			}
 			additions = append(additions, hit)
 		}
-		savings := math.Min(1, additions[0].RawHitDelta/10)
-		if math.Abs(additions[0].MeleeAdded-additions[1].MeleeAdded-savings) > 1e-8 ||
-			math.Abs(additions[0].SpellAdded-additions[1].SpellAdded-savings) > 1e-8 {
-			t.Errorf("%s: Tauren savings do not match the paid shortfall: %v", b.Key, additions)
-		}
-		if math.Abs(additions[0].RawHitDelta-additions[1].RawHitDelta-
-			math.Min(10, additions[0].RawHitDelta)) > 1e-8 {
-			t.Errorf("%s: Tauren cannot cash out hit beyond the remaining shortfall", b.Key)
+		// Endurance is 2% critical damage since client 1.60.1.70425, so Tauren pay the full shortfall.
+		if !reflect.DeepEqual(additions[0], additions[1]) {
+			t.Errorf("%s: Tauren and Orc hit adjustments differ: %v", b.Key, additions)
 		}
 	}
 }

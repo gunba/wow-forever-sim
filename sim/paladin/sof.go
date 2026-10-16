@@ -82,7 +82,7 @@ func (paladin *Paladin) registerSealOfFury() {
 		judgement := paladin.RegisterSpell(core.SpellConfig{ActionID: core.ActionID{SpellID: rank.judge}, SpellSchool: core.SpellSchoolHoly, DefenseType: core.DefenseTypeMelee, ProcMask: core.ProcMaskMeleeMHSpecial,
 			RequiredLevel: int(rank.level), Rank: index + 1,
 			Flags:            core.SpellFlagMeleeMetrics | core.SpellFlagSuppressWeaponProcs | core.SpellFlagSuppressEquipProcs | core.SpellFlagBinary,
-			DamageMultiplier: paladin.improvedSeals(), ThreatMultiplier: 1, BonusCoefficient: .44999998808,
+			DamageMultiplier: paladin.improvedSeals(), ThreatMultiplier: 1, BonusCoefficient: .429, // 0.45 until 70425 (October 15: instant-cast coefficient)
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 				result := spell.CalcDamage(sim, target, sim.Roll(mean*(1-rank.variance/2), mean*(1+rank.variance/2)), spell.OutcomeMeleeSpecialNoBlockDodgeParry)
 				spell.DealDamage(sim, result)

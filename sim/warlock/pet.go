@@ -17,6 +17,8 @@ type WarlockPet struct {
 
 	owner *Warlock
 
+	warriorCritScaling bool
+
 	primaryAbility   *core.Spell
 	secondaryAbility *core.Spell
 
@@ -108,9 +110,10 @@ func (warlock *Warlock) makePet(cfg PetConfig, enabledOnStart bool) *WarlockPet 
 		wp.AddStat(stats.AttackPower, -20)
 		wp.AddStatDependency(stats.Strength, stats.AttackPower, 2)
 
-		// Warrior crit scaling
-		wp.AddStatDependency(stats.Agility, stats.MeleeCrit, core.CritPerAgiAtLevel[proto.Class_ClassWarrior]*core.CritRatingPerCritChance)
-		wp.AddStatDependency(stats.Intellect, stats.SpellCrit, core.CritPerIntAtLevel[proto.Class_ClassWarrior]*core.SpellCritRatingPerCritChance)
+		// Warrior crit scaling in Classic, registered in Initialize: Forever demons inherit the
+		// warlock's crit and have none of their own (a level-30 Succubus measured the warlock's 4.58%
+		// melee and spell crit).
+		wp.warriorCritScaling = true
 
 		// Imps generally don't melee
 		wp.EnableAutoAttacks(wp, cfg.AutoAttacks)
@@ -131,6 +134,10 @@ func (wp *WarlockPet) GetPet() *core.Pet {
 }
 
 func (wp *WarlockPet) Initialize() {
+	if wp.warriorCritScaling && !wp.Env.IsForever() {
+		wp.AddStatDependency(stats.Agility, stats.MeleeCrit, core.CritPerAgiAtLevel[proto.Class_ClassWarrior]*core.CritRatingPerCritChance)
+		wp.AddStatDependency(stats.Intellect, stats.SpellCrit, core.CritPerIntAtLevel[proto.Class_ClassWarrior]*core.SpellCritRatingPerCritChance)
+	}
 	core.ApplyPetConsumeEffects(&wp.Pet, wp.owner.Consumes)
 }
 

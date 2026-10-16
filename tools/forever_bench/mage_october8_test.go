@@ -242,7 +242,8 @@ func TestOctober8MageBlizzardInitialConcentration(t *testing.T) {
 				t.Errorf("Blizzard initial AC disagreed with per-enemy landed-hit/ICD controls in %d trials", mismatches)
 			}
 			hitChance := 1 - spell.SpellChanceToMiss(unit.AttackTables[sim.Encounter.TargetUnits[0].UnitIndex][spell.CastType])
-			want := 1 - math.Pow(1-.1*hitChance, float64(targets))
+			// One roll per cast since client 1.60.1.70425, once any target is struck.
+			want := .1 * (1 - math.Pow(1-hitChance, float64(targets)))
 			if got := float64(procs) / trials; math.Abs(got-want) > .03 {
 				t.Errorf("initial proc chance %g, want %g with %d targets", got, want, targets)
 			}
@@ -368,7 +369,9 @@ func TestOctober8MageFrostfirePeriodicTalentScopes(t *testing.T) {
 		{"piercing1", map[string]int{"piercingIce": 1}, 1.02, 1.02, false},
 		{"piercing2", map[string]int{"piercingIce": 2}, 1.04, 1.02, false},
 		{"piercing3", map[string]int{"piercingIce": 3}, 1.06, 1.02, false},
-		{"combined", map[string]int{"arcanePower": 1, "arcaneInstability": 3, "piercingIce": 3, "firePower": 5}, 1.49, 1.12, true},
+		// Fire Power is per Fire effect on the target since client 1.60.1.70425, so with none
+		// up it adds nothing.
+		{"combined", map[string]int{"arcanePower": 1, "arcaneInstability": 3, "piercingIce": 3, "firePower": 3}, 1.39, 1.02, true},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {

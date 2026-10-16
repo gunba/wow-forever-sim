@@ -26,7 +26,7 @@ func init() {
 			druid.OnSpellRegistered(func(spell *core.Spell) {
 				switch spell.SpellID {
 				case 1322605:
-					spell.CD.Duration -= time.Second
+					spell.CD.Duration -= 500 * time.Millisecond // 1291059: -1 s until client 1.60.1.70425
 				}
 			})
 		}

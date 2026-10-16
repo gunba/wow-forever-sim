@@ -76,6 +76,11 @@ func (druid *Druid) registerOmenOfClarity() {
 	})
 
 	proc := func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+		// Faerie Fire costs nothing in Cat, Bear or Dire Bear Form and so cannot trigger Omen there
+		// (client 1.60.1.70425 fix).
+		if spell.SpellCode == SpellCode_DruidFaerieFire && druid.InForm(Cat|Bear) {
+			return
+		}
 		if !result.Landed() || spell.Flags.Matches(core.SpellFlagPassiveSpell) ||
 			!spell.ProcMask.Matches(core.ProcMaskMelee|core.ProcMaskSpellDamage|core.ProcMaskSpellHealing) ||
 			!icd.IsReady(sim) || !sim.Proc(omenChance(spell), "Omen of Clarity") {

@@ -62,15 +62,15 @@ export const DefaultAPL = APLFrost;
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsP1Frost = PresetUtils.makePresetTalents('Frost DPS', SavedTalents.create({ talentsString: '0502050030003--055500033100030024' }));
-export const TalentsP1Arcane = PresetUtils.makePresetTalents('Arcane DPS', SavedTalents.create({ talentsString: '050215003100311531-2305003202003-' }));
-export const TalentsP1Fire = PresetUtils.makePresetTalents('Fire 18/31/2', SavedTalents.create({ talentsString: '0501252000003-23450000130133051-002' }));
-export const TalentsFireHighOrder = PresetUtils.makePresetTalents('Fire High Order 17/31/3', SavedTalents.create({ talentsString: '0501252000002-23450000130133051-003' }));
+export const TalentsP1Frost = PresetUtils.makePresetTalents('Frost DPS', SavedTalents.create({ talentsString: '05002050030003--055500033100030024' }));
+export const TalentsP1Arcane = PresetUtils.makePresetTalents('Arcane DPS', SavedTalents.create({ talentsString: '0502015003100311531-2305003202003' }));
+export const TalentsP1Fire = PresetUtils.makePresetTalents('Fire 18/31/2', SavedTalents.create({ talentsString: '05001252000003-23450000130135031-002' }));
+export const TalentsFireHighOrder = PresetUtils.makePresetTalents('Fire High Order 17/31/3', SavedTalents.create({ talentsString: '05001252000002-23450000130135031-003' }));
 
-export const TalentsFire = PresetUtils.makePresetTalents('Fire 0/35/16', SavedTalents.create({ talentsString: '-03552020130133151-005500033' }));
-export const TalentsFrost = PresetUtils.makePresetTalents('Frost 11/3/37', SavedTalents.create({ talentsString: '050005001-03-0555003321001301251' }));
-export const TalentsArcane = PresetUtils.makePresetTalents('Arcane 33/3/15', SavedTalents.create({ talentsString: '053005023100311531-03-005500032' }));
-export const TalentsArcaneFrost = PresetUtils.makePresetTalents('Arcane–Frost 28/0/23', SavedTalents.create({ talentsString: '05020500310031053--05550002010003002' }));
+export const TalentsFire = PresetUtils.makePresetTalents('Fire 0/35/16', SavedTalents.create({ talentsString: '-03552020130135131-005500033' }));
+export const TalentsFrost = PresetUtils.makePresetTalents('Frost 11/3/37', SavedTalents.create({ talentsString: '0500005001-03-0555003331000301251' }));
+export const TalentsArcane = PresetUtils.makePresetTalents('Arcane 33/3/15', SavedTalents.create({ talentsString: '0512005023100311531-03-005500032' }));
+export const TalentsArcaneFrost = PresetUtils.makePresetTalents('Arcane–Frost 28/0/23', SavedTalents.create({ talentsString: '050200500310031053--05550002010003002' }));
 
 export const TalentPresets = {
 	[ClassicPhase.Phase1]: [TalentsP1Frost, TalentsP1Arcane, TalentsP1Fire, TalentsFireHighOrder, TalentsFire, TalentsFrost, TalentsArcane, TalentsArcaneFrost],

@@ -62,7 +62,8 @@ func TestUpstreamHunterTalentMasks(t *testing.T) {
 		cost int32
 		crit float64
 	}{
-		{hunter.SpellCode_HunterSniperShot, 0, 0},
+		// Efficiency covers Sniper Shot since client 1.60.1.70425.
+		{hunter.SpellCode_HunterSniperShot, 15, 0},
 		{hunter.SpellCode_HunterStriderKick, 0, .30},
 		{hunter.SpellCode_HunterSummonHawk, 15, 0},
 		{hunter.SpellCode_HunterVolley, 15, 0},

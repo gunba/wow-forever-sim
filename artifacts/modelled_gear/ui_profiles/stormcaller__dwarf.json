@@ -16,6 +16,7 @@
     "divineSpirit": true,
     "battleShout": "TristateEffectRegular",
     "trueshotAura": true,
+    "leaderOfThePack": true,
     "moonkinAura": true,
     "manaSpringTotem": "TristateEffectImproved",
     "shadowProtection": true,
@@ -105,10 +106,12 @@
           "id": 920000492
         },
         {
-          "id": 920000369,
+          "id": 920000382,
           "enchant": 2504
         },
-        {},
+        {
+          "id": 920000385
+        },
         {
           "id": 920000504
         }
@@ -181,7 +184,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "550133130010304-055030021004002",
+    "talentsString": "553233100000034-055030021004002",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",

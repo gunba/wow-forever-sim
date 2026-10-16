@@ -128,7 +128,7 @@ func TestForeverFrostfireBolt(t *testing.T) {
 func TestForeverFrostfireTalents(t *testing.T) {
 	req := mageSpellFixture(map[string]int{
 		"improvedFireball": 5, "improvedFrostbolt": 5,
-		"elementalPrecision": 3, "iceShards": 5, "firePower": 5,
+		"elementalPrecision": 3, "iceShards": 5, "firePower": 3,
 		"piercingIce": 3, "frostChanneling": 3,
 		"hotStreak": 1, "missileBarrage": 1, "wintersChill": 5,
 	})
@@ -140,7 +140,7 @@ func TestForeverFrostfireTalents(t *testing.T) {
 	}
 	if spell.BonusHitRating != 3*core.SpellHitRatingPerHitChance ||
 		spell.CritDamageBonus != 2 || spell.Cost.Multiplier != 85 ||
-		math.Abs(spell.DamageMultiplierAdditive-1.16) > 1e-7 {
+		math.Abs(spell.DamageMultiplierAdditive-1.06) > 1e-7 { // Fire Power is per target effect since 70425
 		t.Fatalf("incorrect Fire/Frost modifiers: hit %v, crit bonus %v, cost %v, damage %v",
 			spell.BonusHitRating, spell.CritDamageBonus, spell.Cost.Multiplier, spell.DamageMultiplierAdditive)
 	}
@@ -149,7 +149,7 @@ func TestForeverFrostfireTalents(t *testing.T) {
 	wc.Activate(sim)
 	wc.SetStacks(sim, 5)
 	if spell.BonusCritRating != critBefore {
-		t.Fatal("Winter's Chill only grants crit to Frostbolt and Ice Lance")
+		t.Fatal("Winter's Chill grants no crit since client 1.60.1.70425")
 	}
 	unit.GetAura("Heating Up Trigger").OnSpellHitDealt(
 		unit.GetAura("Heating Up Trigger"), sim, spell,

@@ -82,8 +82,9 @@ func TestRogueMutilateAvoidedCastHasNoHandStrikes(t *testing.T) {
 			if r.ComboPoints() != 0 || r.CurrentEnergy() != 88 {
 				t.Errorf("avoided cast: combo points %d, energy %v; want 0 and 88", r.ComboPoints(), r.CurrentEnergy())
 			}
-			if r.GetAura("Cold Blood").IsActive() {
-				t.Error("avoided Mutilate did not consume Cold Blood")
+			// Since client 1.60.1.70425 Cold Blood is spent when Mutilate lands; an avoided one keeps it.
+			if !r.GetAura("Cold Blood").IsActive() {
+				t.Error("avoided Mutilate consumed Cold Blood")
 			}
 		})
 	}

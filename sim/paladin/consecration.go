@@ -72,7 +72,7 @@ func (paladin *Paladin) registerConsecration() {
 				NumberOfTicks: 8,
 				TickLength:    time.Second * 1,
 
-				BonusCoefficient: 0.095,
+				BonusCoefficient: 0.042, // 0.095 until 70425 (October 15 notes)
 
 				OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
 					dot.Snapshot(target, rank.damage+rank.capped, isRollover)

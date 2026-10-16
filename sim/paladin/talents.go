@@ -41,10 +41,10 @@ func (paladin *Paladin) ApplyTalents() {
 	// https://github.com/wowsims/sod/issues/1025 gets resolved.
 	paladin.PseudoStats.BlockValueMultiplier += 0.1 * float64(paladin.Talents.ShieldSpecialization)
 
-	// October 1: 20/40/60% Intellect contributes to damage, never healing.
+	// October 15 (70425): 10/20/30% of Intellect contributes to damage (was 20/40/60%), never healing.
 	if paladin.Talents.ChampionOfTheLight > 0 {
 		if paladin.Env.IsForever() {
-			paladin.AddStatDependency(stats.Intellect, stats.SpellDamage, .2*float64(paladin.Talents.ChampionOfTheLight))
+			paladin.AddStatDependency(stats.Intellect, stats.SpellDamage, .1*float64(paladin.Talents.ChampionOfTheLight))
 		} else {
 			paladin.AddStatDependency(stats.Intellect, stats.SpellPower, []float64{0, 0.33, 0.66, 1.00}[paladin.Talents.ChampionOfTheLight])
 		}
@@ -173,41 +173,53 @@ func (paladin *Paladin) applyReckoning() {
 	}
 
 	procID := core.ActionID{SpellID: 20178} // Reckoning Proc ID
-	// Current20177 has one1500ms ProcCategoryRecovery, shared by both
-	// trigger outcomes. Keep Classic and the existing extra-attack semantics.
-	var sharedICD *core.Cooldown
-	if paladin.Env.IsForever() {
-		sharedICD = &core.Cooldown{Timer: paladin.NewTimer(), Duration: 1500 * time.Millisecond}
-	}
-	trigger := func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
-		if sharedICD != nil {
-			if !sharedICD.IsReady(sim) {
-				return
-			}
-			sharedICD.Use(sim)
+	if !paladin.Env.IsForever() {
+		trigger := func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
+			paladin.AutoAttacks.ExtraMHAttack(sim, 1, procID, spell.ActionID)
 		}
-		paladin.AutoAttacks.ExtraMHAttack(sim, 1, procID, spell.ActionID)
+		core.MakeProcTriggerAura(&paladin.Unit, core.ProcTrigger{
+			Name: "Reckoning Crit Trigger", Callback: core.CallbackOnSpellHitTaken, Outcome: core.OutcomeCrit,
+			ProcMask: core.ProcMaskMeleeOrRanged, ProcChance: 0.2 * float64(paladin.Talents.Reckoning), Handler: trigger,
+		})
+		return
 	}
 
-	crit := core.MakeProcTriggerAura(&paladin.Unit, core.ProcTrigger{
+	// Since 1.60.1.70425 (October 15 notes) each trigger stores a charge, up to 4, and the next
+	// main-hand auto attack releases all of them, one extra attack each, so instant attacks no
+	// longer reset the swing timer. Only the block trigger keeps the 1.5 s internal cooldown.
+	charges := int32(0)
+	paladin.RegisterResetEffect(func(_ *core.Simulation) { charges = 0 })
+	store := func(_ *core.Simulation, _ *core.Spell, _ *core.SpellResult) {
+		charges = min(charges+1, 4)
+	}
+	core.MakeProcTriggerAura(&paladin.Unit, core.ProcTrigger{
 		Name:       "Reckoning Crit Trigger",
 		Callback:   core.CallbackOnSpellHitTaken,
 		Outcome:    core.OutcomeCrit,
 		ProcMask:   core.ProcMaskMeleeOrRanged,
 		ProcChance: 0.2 * float64(paladin.Talents.Reckoning),
-		Handler:    trigger,
+		Handler:    store,
 	})
-
-	// Forever also gives Reckoning a smaller chance to fire off a block.
-	block := core.MakeProcTriggerAura(&paladin.Unit, core.ProcTrigger{
+	core.MakeProcTriggerAura(&paladin.Unit, core.ProcTrigger{
 		Name:       "Reckoning Block Trigger",
 		Callback:   core.CallbackOnSpellHitTaken,
 		Outcome:    core.OutcomeBlock,
 		ProcMask:   core.ProcMaskMelee,
 		ProcChance: 0.08 * float64(paladin.Talents.Reckoning),
-		Handler:    trigger,
+		ICD:        1500 * time.Millisecond,
+		Handler:    store,
 	})
-	crit.Icd, block.Icd = sharedICD, sharedICD
+	core.MakePermanent(paladin.RegisterAura(core.Aura{
+		Label: "Reckoning Charges",
+		OnSpellHitDealt: func(_ *core.Aura, sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
+			if charges == 0 || !spell.ProcMask.Matches(core.ProcMaskMeleeMHAuto) || spell.ActionID == procID {
+				return
+			}
+			n := charges
+			charges = 0
+			paladin.AutoAttacks.ExtraMHAttack(sim, n, procID, spell.ActionID)
+		},
+	}))
 }
 
 // Shield Specialization returns mana on block, on top of the absorb applied in ApplyTalents.
@@ -226,7 +238,7 @@ func (paladin *Paladin) applyShieldSpecialization() {
 		Duration: time.Second * 3,
 	}
 
-	// 33/66/100%, confirmed by the beta client. The 6% of maximum mana does not scale.
+	// 33/66/100%, confirmed by the beta client. 4% of maximum mana since 70425 (was 6%); it does not scale.
 	core.MakeProcTriggerAura(&paladin.Unit, core.ProcTrigger{
 		Name:       "Shield Specialization Trigger",
 		Callback:   core.CallbackOnSpellHitTaken,
@@ -238,7 +250,7 @@ func (paladin *Paladin) applyShieldSpecialization() {
 				return
 			}
 			icd.Use(sim)
-			paladin.AddMana(sim, 0.06*paladin.MaxMana(), manaMetrics)
+			paladin.AddMana(sim, 0.04*paladin.MaxMana(), manaMetrics)
 		},
 	})
 }
@@ -405,6 +417,8 @@ func (paladin *Paladin) applySanctifiedJudgement() {
 	}
 
 	manaMetrics := paladin.NewManaMetrics(core.ActionID{SpellID: 31876})
+	// The refund no longer generates threat (October 15 notes).
+	manaMetrics.NoThreat = paladin.Env.IsForever()
 
 	procChance := []float64{0, 0.33, 0.66, 1.00}[paladin.Talents.SanctifiedJudgement]
 	refund := 0.2 * float64(paladin.Talents.SanctifiedJudgement)

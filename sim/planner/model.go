@@ -135,6 +135,7 @@ type Model struct {
 	PhysMult        float64 // static physical damage multiplier (talents, race)
 	WhiteCritMult   float64
 	SpecialCritMult float64
+	CritScale       float64 // racial critical damage, 1 without one
 
 	// Defensive stats for incoming attacks.
 	DodgePct, ParryPct, BlockPct, BlockValue float64

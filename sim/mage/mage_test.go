@@ -152,14 +152,14 @@ func TestForeverMageFrost(t *testing.T) {
 	}))
 }
 
-var P1FrostTalents = "0502050030003--055500033100030024"
-var P1ArcaneTalents = "050215003100311531-2305003202003-"
-var P1FireTalents = "0502252000003-23550000130133051-"
+var P1FrostTalents = "05002050030003--055500033100030024"
+var P1ArcaneTalents = "0502015003100311531-2305003202003"
+var P1FireTalents = "05002252000003-23550000130135031"
 
 // Arcane 35/0/16, Fire 0/35/16 and Frost 14/0/37 from ui/mage/presets.ts.
-var ForeverArcaneTalents = "055005023100311531--005500033"
-var ForeverFireTalents = "-03552020130133151-005500033"
-var ForeverFrostTalents = "050005013--0555003301001301251"
+var ForeverArcaneTalents = "0532005023100311531--005500033"
+var ForeverFireTalents = "-03552020130135131-005500033"
+var ForeverFrostTalents = "0500005013--0555003301001301251"
 
 var PlayerOptions = &proto.Player_Mage{
 	Mage: &proto.Mage{

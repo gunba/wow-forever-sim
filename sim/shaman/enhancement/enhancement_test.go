@@ -58,9 +58,9 @@ func TestForeverEnhancement(t *testing.T) {
 		}}))
 }
 
-var DefaultTalents = "5505301-053030031005112251"
+var DefaultTalents = "5505031-053030031005112251"
 
-var EnhancementTalents = "05043305-055030031005102051"
+var EnhancementTalents = "053433-055030031005102051"
 
 var PlayerOptions = &proto.Player_EnhancementShaman{
 	EnhancementShaman: &proto.EnhancementShaman{

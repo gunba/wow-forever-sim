@@ -2,6 +2,7 @@ package priest
 
 import (
 	"fmt"
+	"math"
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
@@ -78,8 +79,7 @@ func (priest *Priest) newMindFlaySpellConfig(rank int, tickIdx int32) core.Spell
 			},
 		},
 
-		// Improved Mind Flay, 10/20% in the beta client.
-		DamageMultiplier: 1 + 0.1*float64(priest.Talents.ImprovedMindFlay),
+		DamageMultiplier: 1,
 		ThreatMultiplier: 1,
 
 		Dot: core.DotConfig{
@@ -94,7 +94,13 @@ func (priest *Priest) newMindFlaySpellConfig(rank int, tickIdx int32) core.Spell
 				dot.Snapshot(target, baseDamage, isRollover)
 			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
+				// Improved Mind Flay (client 1.60.1.70425): each tick deals 10/20% more than the one
+				// before, read as compounding (tick n at (1+x)^(n-1)); the beta wording does not say.
+				step := 1 + 0.1*float64(priest.Talents.ImprovedMindFlay)
+				escalation := math.Pow(step, float64(max(dot.TickCount-1, 0)))
+				dot.Spell.DamageMultiplier *= escalation
 				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
+				dot.Spell.DamageMultiplier /= escalation
 			},
 		},
 

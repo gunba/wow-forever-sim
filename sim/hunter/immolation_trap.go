@@ -56,7 +56,7 @@ func (hunter *Hunter) getImmolationTrapConfig(rank int, timer *core.Timer) core.
 			TickLength:    time.Second * 3,
 
 			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
-				tickDamage := dotDamage / float64(dot.NumberOfTicks)
+				tickDamage := (dotDamage + hunter.fireTrapAttackPowerBonus()) / float64(dot.NumberOfTicks)
 				dot.Snapshot(target, tickDamage, isRollover)
 			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
@@ -93,4 +93,14 @@ func (hunter *Hunter) registerImmolationTrapSpell(timer *core.Timer) {
 			hunter.ImmolationTrap = hunter.GetOrRegisterSpell(config)
 		}
 	}
+}
+
+// Client 1.60.1.70425 makes the fire traps scale with attack power; the coefficient is server-side.
+// Testers on the day measured about 10% of the higher of melee and ranged attack power over a whole
+// Immolation Trap, so both fire traps' periodic damage gains that, provisionally.
+func (hunter *Hunter) fireTrapAttackPowerBonus() float64 {
+	if !hunter.Env.IsForever() {
+		return 0
+	}
+	return 0.10 * max(hunter.GetStat(stats.AttackPower), hunter.GetStat(stats.RangedAttackPower))
 }

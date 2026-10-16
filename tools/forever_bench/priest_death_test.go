@@ -73,7 +73,7 @@ func TestPenanceImmediateThenOneSecondBolts(t *testing.T) {
 }
 
 func TestEarlyDemiseExecuteScopeAndReset(t *testing.T) {
-	sim, p := deathFixture("--" + strings.Repeat("0", 15) + "2")
+	sim, p := deathFixture("--" + strings.Repeat("0", 14) + "2") // Early Demise is the 15th Shadow talent in 70425
 	death := p.ShadowWordDeath[4]
 	base := death.BonusCritRating
 	execute := p.GetAura("Early Demise")
@@ -106,7 +106,7 @@ func TestShadowWordDeathRanksAndSharedCooldown(t *testing.T) {
 			t.Fatalf("missing learnable rank %d", rank)
 		}
 		if spell.RequiredLevel != []int{0, 32, 40, 48, 56}[rank] ||
-			spell.BonusCoefficient != .429 || spell.CD.Duration != 15*time.Second ||
+			spell.BonusCoefficient != .429 || spell.CD.Duration != 18*time.Second || // 18 s since client 1.60.1.70425
 			spell.DefaultCast.CastTime != 0 || spell.DefaultCast.GCD != core.GCDDefault {
 			t.Fatalf("rank %d: wrong spell configuration", rank)
 		}

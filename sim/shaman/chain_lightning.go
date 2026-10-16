@@ -14,7 +14,9 @@ const ChainLightningTargetCount = int32(3)
 var ChainLightningSpellId = [ChainLightningRanks + 1]int32{0, 421, 930, 2860, 10605}
 var ChainLightningBaseDamage = [ChainLightningRanks + 1][]float64{{0}, {85, 97}, {97, 109}, {109, 122}, {119, 134}}
 var ChainLightningSpellCoef = [ChainLightningRanks + 1]float64{0, .571, .571, .517, .571}
-var ChainLightningManaCost = [ChainLightningRanks + 1]float64{0, 225, 305, 390, 485}
+
+// Client 1.60.1.70425 cuts every rank's cost by about 35% (was 225/305/390/485).
+var ChainLightningManaCost = [ChainLightningRanks + 1]float64{0, 145, 200, 250, 315}
 var ChainLightningLevel = [ChainLightningRanks + 1]int{0, 32, 40, 48, 56}
 
 // Unlike half the parent, all four child rows have their own level growth.

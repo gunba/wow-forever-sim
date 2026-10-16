@@ -39,7 +39,7 @@ func TestSmitePriest(t *testing.T) {
 // The community Smite 31/17/3 the rankings page ranks, so the golden measures the build
 // people actually run. Thirty-one Discipline for Power Infusion, seventeen Holy for the
 // talents that scale Smite; Power in Light and Searing Light are what make the build.
-var LaunchTalents = "515030031305001031-00505023002-003"
+var LaunchTalents = "515035031030001031-00505023002-003"
 
 var LaunchConsumes = core.ConsumesCombo{
 	Label: "Launch-Consumes",

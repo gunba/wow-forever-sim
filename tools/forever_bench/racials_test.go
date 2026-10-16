@@ -35,8 +35,9 @@ func TestForeverBloodFury(t *testing.T) {
 	unit := env.Raid.AllPlayerUnits[0]
 	sim := &core.Simulation{Environment: env}
 	spell := unit.GetSpell(core.ActionID{SpellID: 20572})
-	if spell.DefaultCast.GCD != 0 || spell.Cost != nil || spell.CD.Duration != 2*time.Minute {
-		t.Fatal("Blood Fury must be free, off the GCD, on a two-minute cooldown")
+	// Client 1.60.1.70425 raises the cooldown to three minutes (October 15 notes).
+	if spell.DefaultCast.GCD != 0 || spell.Cost != nil || spell.CD.Duration != 3*time.Minute {
+		t.Fatal("Blood Fury must be free, off the GCD, on a three-minute cooldown")
 	}
 	before := unit.GetStats()
 	aura := unit.GetAura("Blood Fury")
@@ -103,7 +104,7 @@ func TestForeverWindshaperHasNoPowerCooldown(t *testing.T) {
 	if unit.GetSpell(core.ActionID{SpellID: 460530}) != nil || unit.GetAura("Windshaper") != nil {
 		t.Fatal("unsupported Windshaper power cooldown remains registered")
 	}
-	if math.Abs(unit.PseudoStats.CastSpeedMultiplier-1.01) > 1e-7 {
+	if math.Abs(unit.PseudoStats.CastSpeedMultiplier-1.03) > 1e-7 { // 3% since client 1.60.1.70425
 		t.Fatal("Wind Blessed's passive haste is missing")
 	}
 }
@@ -118,17 +119,21 @@ func TestForeverTouchOfTheGrave(t *testing.T) {
 		if key == "arcane" || key == "shadow" || key == "affliction" {
 			wantID = 1260201
 		}
-		if aura.ActionID.SpellID != wantID || aura.Icd == nil || aura.Icd.Duration != time.Second {
+		// Client 1.60.1.70425: 20% (30% for casters) with a 25-second internal cooldown.
+		if aura.ActionID.SpellID != wantID || aura.Icd == nil || aura.Icd.Duration != 25*time.Second {
 			t.Errorf("%s: incorrect racial variant or ICD", key)
 		}
 	}
 
+	// A fight shorter than the 25-second cooldown procs at most once, so the share of fights
+	// with a proc is 1 - (1 - 0.3 x hit)^casts for the caster variant.
 	req := racialFixture("arcane", proto.Race_RaceUndead)
 	p := req.Raid.Parties[0].Players[0]
 	p.TalentsString = ""
 	p.Rotation = core.APLRotationFromJsonString(`{"type":"TypeAPL","priorityList":[{"action":{"castSpell":{"spellId":{"spellId":133}}}}]}`)
-	req.SimOptions.Iterations = 500
-	req.Encounter.Duration = 60
+	req.SimOptions.Iterations = 4000
+	req.Encounter.Duration = 4
+	req.Encounter.DurationVariation = 0
 	req.Encounter.Targets[0].Level = 60
 	env, _, _ := core.NewEnvironment(req.Raid, req.Encounter, proto.Ruleset_RulesetForever, false)
 	maxHealth := env.Raid.AllPlayerUnits[0].MaxHealth()
@@ -136,12 +141,13 @@ func TestForeverTouchOfTheGrave(t *testing.T) {
 	if result.Error != nil {
 		t.Fatal(result.Error.Message)
 	}
-	var sourceHits, procs float64
+	var landed, casts, procs float64
 	for _, action := range result.RaidMetrics.Parties[0].Players[0].Actions {
 		for _, m := range action.Targets {
 			switch action.Id.GetSpellId() {
 			case 133:
-				sourceHits += float64(m.Hits + m.Crits)
+				landed += float64(m.Hits + m.Crits)
+				casts += float64(m.Hits + m.Crits + m.Misses)
 			case 1260198:
 				procs += float64(m.Hits + m.Misses)
 				if m.Crits != 0 || math.Abs(m.Damage-float64(m.Hits)*maxHealth*.05) > 1e-5 {
@@ -150,8 +156,11 @@ func TestForeverTouchOfTheGrave(t *testing.T) {
 			}
 		}
 	}
-	if sourceHits == 0 || math.Abs(procs/sourceHits-.1) > .01 {
-		t.Fatalf("caster racial proc rate = %v / %v", procs, sourceHits)
+	n := float64(req.SimOptions.Iterations)
+	perFight, hit := casts/n, landed/casts
+	want := 1 - math.Pow(1-.3*hit, perFight)
+	if casts == 0 || procs > n || math.Abs(procs/n-want) > .035 {
+		t.Fatalf("caster racial proc share = %v, want %v (%.2f casts per fight, %.3f landed)", procs/n, want, perFight, hit)
 	}
 }
 

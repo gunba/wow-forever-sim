@@ -24,6 +24,7 @@ func (shaman *Shaman) ApplyTalents() {
 	shaman.applyImprovedStormstrike()
 	shaman.applyMaelstromWeapon()
 	shaman.registerRageOfTheFarseerCD()
+	shaman.registerElementalMasteryCD()
 
 	if shaman.Talents.AncestralKnowledge > 0 {
 		shaman.MultiplyStat(stats.Intellect, 1+.02*float64(shaman.Talents.AncestralKnowledge))
@@ -579,4 +580,60 @@ func (shaman *Shaman) restorativeTotemsModifier() float64 {
 // Purification uses Mod Spell Effectiveness (Base Healing)
 func (shaman *Shaman) purificationHealingModifier() float64 {
 	return .02 * float64(shaman.Talents.Purification)
+}
+
+// Elemental Mastery (client 1.60.1.70425), the 31-point Elemental talent: for 15 sec Lightning Bolt and Lava
+// Burst cast 0.5 sec faster and Chain Lightning has no cooldown. Three-minute cooldown.
+func (shaman *Shaman) registerElementalMasteryCD() {
+	if !shaman.Talents.ElementalMastery {
+		return
+	}
+	actionID := core.ActionID{SpellID: 16166}
+	var faster, chain []*core.Spell
+	aura := shaman.RegisterAura(core.Aura{
+		Label:    "Elemental Mastery",
+		ActionID: actionID,
+		Duration: 15 * time.Second,
+		OnInit: func(_ *core.Aura, _ *core.Simulation) {
+			for _, spell := range shaman.Spellbook {
+				switch spell.SpellCode {
+				case SpellCode_ShamanLightningBolt, SpellCode_ShamanLavaBurst:
+					if spell.DefaultCast.CastTime > 0 {
+						faster = append(faster, spell)
+					}
+				case SpellCode_ShamanChainLightning:
+					if spell.CD.Timer != nil {
+						chain = append(chain, spell)
+					}
+				}
+			}
+		},
+		OnGain: func(_ *core.Aura, sim *core.Simulation) {
+			for _, spell := range faster {
+				spell.DefaultCast.CastTime -= 500 * time.Millisecond
+			}
+			for _, spell := range chain {
+				spell.CD.Reset()
+			}
+		},
+		OnExpire: func(_ *core.Aura, _ *core.Simulation) {
+			for _, spell := range faster {
+				spell.DefaultCast.CastTime += 500 * time.Millisecond
+			}
+		},
+		OnCastComplete: func(_ *core.Aura, sim *core.Simulation, spell *core.Spell) {
+			if spell.SpellCode == SpellCode_ShamanChainLightning && spell.CD.Timer != nil {
+				spell.CD.Reset()
+			}
+		},
+	})
+	spell := shaman.RegisterSpell(core.SpellConfig{
+		ActionID: actionID,
+		Flags:    core.SpellFlagNoOnCastComplete,
+		Cast:     core.CastConfig{CD: core.Cooldown{Timer: shaman.NewTimer(), Duration: 3 * time.Minute}},
+		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, _ *core.Spell) {
+			aura.Activate(sim)
+		},
+	})
+	shaman.AddMajorCooldown(core.MajorCooldown{Spell: spell, Type: core.CooldownTypeDPS})
 }

@@ -9,6 +9,7 @@ import (
 const FireBlastRanks = 7
 
 var FireBlastSpellId = [FireBlastRanks + 1]int32{0, 2136, 2137, 2138, 8412, 8413, 10197, 10199}
+
 // Beta client 1.60.1.69893.
 var FireBlastBaseDamage = [FireBlastRanks + 1][]float64{{0}, {27, 35}, {57, 69}, {97, 117}, {157, 187}, {226, 268}, {316, 372}, {417, 489}}
 var FireBlastSpellCoeff = [FireBlastRanks + 1]float64{0, .429, .429, .429, .429, .429, .429, .429}
@@ -37,8 +38,8 @@ func (mage *Mage) newFireBlastSpellConfig(rank int, cdTimer *core.Timer) core.Sp
 	manaCost := FireBlastManaCost[rank]
 	level := FireBlastLevel[rank]
 
-	// Wake of Fire takes 1 and 2 sec off in the beta client.
-	cooldown := time.Second*8 - []time.Duration{0, time.Second, time.Second * 2}[mage.Talents.WakeOfFire]
+	// Improved Fire Blast (Wake of Fire reverted in client 1.60.1.70425) takes 1 and 2 sec off.
+	cooldown := time.Second*8 - []time.Duration{0, time.Second, time.Second * 2}[mage.Talents.ImprovedFireBlast]
 	flags := SpellFlagMage | core.SpellFlagAPL
 
 	return core.SpellConfig{

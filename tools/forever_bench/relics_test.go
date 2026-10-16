@@ -34,9 +34,9 @@ func relicTestSim(t *testing.T, key string, itemID int32, tier bool) *core.Simul
 func TestForeverRelicCooldownsAndDurations(t *testing.T) {
 	sim := relicTestSim(t, "feral", 272427, true)
 	c := sim.Raid.Parties[0].Players[0].GetCharacter()
-	// Sixteen seconds, minus eight from Improved Shifting Power and one
-	// each from the full role Tier 1 override and Howling Idol.
-	if got := c.GetSpell(core.ActionID{SpellID: 1322605}).CD.Duration; got != 6*time.Second {
+	// Sixteen seconds, minus eight from Improved Shifting Power, one from the full role Tier 1
+	// override and half a second from Howling Idol (1291059, client 1.60.1.70425).
+	if got := c.GetSpell(core.ActionID{SpellID: 1322605}).CD.Duration; got != 6500*time.Millisecond {
 		t.Fatalf("Shifting Power cooldown: %s", got)
 	}
 	for _, tier := range []bool{false, true} {
@@ -53,7 +53,8 @@ func TestForeverRelicCooldownsAndDurations(t *testing.T) {
 	sim = relicTestSim(t, "elemental", 272433, true)
 	c = sim.Raid.Parties[0].Players[0].GetCharacter()
 	dot := c.GetSpell(core.ActionID{SpellID: 29228}).Dot(sim.Encounter.TargetUnits[0])
-	if dot.NumberOfTicks != 5 || dot.Duration != 15*time.Second {
+	// Four base ticks, three from Call of Flame 3/3 (+9 s since client 1.60.1.70425) and one from the totem.
+	if dot.NumberOfTicks != 8 || dot.Duration != 24*time.Second {
 		t.Fatalf("Flame Shock: %d ticks, %s", dot.NumberOfTicks, dot.Duration)
 	}
 }

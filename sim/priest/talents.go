@@ -18,7 +18,8 @@ func (priest *Priest) ApplyTalents() {
 
 	if priest.Talents.SilentResolve > 0 {
 		priest.OnSpellRegistered(func(spell *core.Spell) {
-			if spell.Flags.Matches(SpellFlagPriest) && spell.SpellSchool.Matches(core.SpellSchoolHoly) {
+			// Every spell since client 1.60.1.70425 (was Holy only).
+			if spell.Flags.Matches(SpellFlagPriest) {
 				spell.ThreatMultiplier *= 1 - .1*float64(priest.Talents.SilentResolve)
 			}
 		})
@@ -28,8 +29,9 @@ func (priest *Priest) ApplyTalents() {
 	// wowforevertalents read it this way; no beta tooltip past rank 1 has been seen.
 	priest.PseudoStats.SpiritRegenRateCasting = []float64{0.0, 0.17, 0.33, 0.50}[priest.Talents.Meditation]
 
+	// 2/4/6/8/10% Intellect since client 1.60.1.70425 (was 3% a point).
 	if priest.Talents.MentalStrength > 0 {
-		priest.MultiplyStat(stats.Intellect, 1.0+0.03*float64(priest.Talents.MentalStrength))
+		priest.MultiplyStat(stats.Intellect, 1.0+0.02*float64(priest.Talents.MentalStrength))
 	}
 
 	// Holy
@@ -49,7 +51,7 @@ func (priest *Priest) ApplyTalents() {
 	priest.registerVampiricEmbraceSpell()
 	priest.registerShadowform()
 	priest.applySpiritTap()
-	priest.applyShadowAffinity()
+	priest.applyDarkInspiration()
 	priest.applyShadowFocus()
 	priest.applyShadowWeaving()
 	priest.applyDarkness()
@@ -92,7 +94,8 @@ func (priest *Priest) applyEarlyDemise() {
 	}))
 }
 
-// Smite and Penance hit harder while the target is burning from this priest's Holy Fire, 2% per point.
+// Smite and Penance hit harder while the target has this priest's Holy Fire or, since client
+// 1.60.1.70425, Shadow Word: Pain, 2% per point.
 func (priest *Priest) applyPowerInLight() {
 	if priest.Talents.PowerInLight == 0 {
 		return
@@ -103,7 +106,8 @@ func (priest *Priest) applyPowerInLight() {
 
 	for _, target := range priest.Env.Encounter.TargetUnits {
 		target.AddDynamicDamageTakenModifier(func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if spell.Unit == &priest.Unit && slices.Contains(affectedSpellCodes, spell.SpellCode) && priest.hasActiveHolyFire(result.Target) {
+			if spell.Unit == &priest.Unit && slices.Contains(affectedSpellCodes, spell.SpellCode) &&
+				(priest.hasActiveHolyFire(result.Target) || priest.hasActiveShadowWordPain(result.Target)) {
 				result.Damage *= multiplier
 			}
 		})
@@ -112,6 +116,15 @@ func (priest *Priest) applyPowerInLight() {
 
 func (priest *Priest) hasActiveHolyFire(target *core.Unit) bool {
 	for _, spell := range priest.HolyFire {
+		if spell != nil && spell.Dot(target).IsActive() {
+			return true
+		}
+	}
+	return false
+}
+
+func (priest *Priest) hasActiveShadowWordPain(target *core.Unit) bool {
+	for _, spell := range priest.ShadowWordPain {
 		if spell != nil && spell.Dot(target).IsActive() {
 			return true
 		}
@@ -128,11 +141,11 @@ func (priest *Priest) applyTwinDisciplines() {
 	priest.OnSpellRegistered(func(spell *core.Spell) {
 		if priest.Env.IsForever() {
 			// The client modifier (1225132, aura 108) lists its spells by class mask rather than by
-			// cast time: of the simulated damage spells only Shadow Word: Pain, Devouring Plague
-			// and Holy Nova. Mind Flay, Shadow Word: Death, Starshards and Penance are excluded,
-			// matching a tester's finding that it does not affect Mind Flay.
+			// cast time. Shadow Word: Pain, Devouring Plague and Holy Nova were always in it; client
+			// 1.60.1.70425 adds Shadow Word: Death, Mind Flay, Starshards and Penance (October 15).
 			switch spell.SpellCode {
-			case SpellCode_PriestShadowWordPain, SpellCode_PriestDevouringPlague, SpellCode_PriestHolyNova:
+			case SpellCode_PriestShadowWordPain, SpellCode_PriestDevouringPlague, SpellCode_PriestHolyNova,
+				SpellCode_PriestShadowWordDeath, SpellCode_PriestMindFlay, SpellCode_PriestStarshards, SpellCode_PriestPenance:
 				spell.DamageMultiplierAdditive += 0.01 * points
 			}
 			return
@@ -289,17 +302,7 @@ func (priest *Priest) applySpiritTap() {
 	})
 }
 
-func (priest *Priest) applyShadowAffinity() {
-	if priest.Talents.ShadowAffinity == 0 {
-		return
-	}
-
-	priest.OnSpellRegistered(func(spell *core.Spell) {
-		if spell.Flags.Matches(SpellFlagPriest) && spell.SpellSchool.Matches(core.SpellSchoolShadow) {
-			spell.ThreatMultiplier *= 1 - 0.1*float64(priest.Talents.ShadowAffinity)
-		}
-	})
-}
+// Shadow Affinity was removed in client 1.60.1.70425; Silent Resolve now covers every spell.
 
 func (priest *Priest) applyShadowFocus() {
 	if priest.Talents.ShadowFocus == 0 {
@@ -493,4 +496,36 @@ func (priest *Priest) shadowformSpells() []*core.Spell {
 	return core.FilterSlice(priest.Spellbook, func(spell *core.Spell) bool {
 		return spell.Flags.Matches(SpellFlagPriest) && spell.SpellSchool.Matches(core.SpellSchoolShadow)
 	})
+}
+
+// Dark Inspiration (client 1.60.1.70425): Mind Blast and fully channeled Mind Flay raise the party's
+// Spirit by 3/6/9/12/15% for 10 sec. Only the priest's own Spirit is modelled.
+func (priest *Priest) applyDarkInspiration() {
+	if priest.Talents.DarkInspiration == 0 {
+		return
+	}
+	dep := priest.NewDynamicMultiplyStat(stats.Spirit, 1+0.03*float64(priest.Talents.DarkInspiration))
+	aura := priest.RegisterAura(core.Aura{
+		Label:    "Dark Inspiration",
+		ActionID: core.ActionID{SpellID: 1326168},
+		Duration: 10 * time.Second,
+		OnGain:   func(_ *core.Aura, sim *core.Simulation) { priest.EnableDynamicStatDep(sim, dep) },
+		OnExpire: func(_ *core.Aura, sim *core.Simulation) { priest.DisableDynamicStatDep(sim, dep) },
+	})
+	core.MakePermanent(priest.RegisterAura(core.Aura{
+		Label: "Dark Inspiration Trigger",
+		OnCastComplete: func(_ *core.Aura, sim *core.Simulation, spell *core.Spell) {
+			if spell.SpellCode == SpellCode_PriestMindBlast {
+				aura.Activate(sim)
+			}
+		},
+		OnPeriodicDamageDealt: func(_ *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+			if spell.SpellCode != SpellCode_PriestMindFlay {
+				return
+			}
+			if dot := spell.Dot(result.Target); dot != nil && dot.NumberOfTicks >= 3 && dot.TickCount >= dot.NumberOfTicks {
+				aura.Activate(sim)
+			}
+		},
+	}))
 }

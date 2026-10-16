@@ -77,15 +77,15 @@ export const TalentsPactOptimised = PresetUtils.makePresetTalents(
 );
 export const TalentsDeepAffliction = PresetUtils.makePresetTalents(
 	'Deep Affliction 31/0/20',
-	SavedTalents.create({ talentsString: '2525000013520105--0550015103' }),
+	SavedTalents.create({ talentsString: '2550020013520105--0550015103' }),
 );
 export const TalentsDSRuinPandemic = PresetUtils.makePresetTalents(
 	'DS/Ruin Pandemic 21/11/19',
-	SavedTalents.create({ talentsString: '252200001351-0025003001-0550005103' }),
+	SavedTalents.create({ talentsString: '254000001351-0025003001-0550005103' }),
 );
 export const TalentsShadowAndFlame = PresetUtils.makePresetTalents(
 	'Shadow and Flame 13/5/33',
-	SavedTalents.create({ talentsString: '2521000003-0005-0050355103101351' }),
+	SavedTalents.create({ talentsString: '2530000003-0005-0050355103101351' }),
 );
 
 export const TalentPresets = [

@@ -8,6 +8,7 @@ message MageTalents {
 	int32 wand_specialization = 1;
 	int32 arcane_focus = 2;
 	int32 improved_channeling = 3;
+	int32 missile_barrage = 14;
 	int32 arcane_subtlety = 4;
 	int32 magic_absorption = 5;
 	int32 arcane_concentration = 6;
@@ -18,14 +19,14 @@ message MageTalents {
 	int32 arcane_shielding = 11;
 	int32 improved_counterspell = 12;
 	int32 arcane_meditation = 13;
-	bool missile_barrage = 14;
+	bool arcane_wrath = 55;
 	bool presence_of_mind = 15;
 	int32 arcane_mind = 16;
 	int32 arcane_instability = 17;
 	bool arcane_power = 18;
 
 	// Fire
-	int32 wake_of_fire = 19;
+	int32 improved_fire_blast = 19;
 	int32 incineration = 20;
 	int32 improved_fireball = 21;
 	int32 ignite = 22;

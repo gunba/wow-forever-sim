@@ -34,9 +34,9 @@ func (hunter *Hunter) getMultiShotConfig(timer *core.Timer) core.SpellConfig {
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
 				GCD: core.GCDDefault,
-				// The client now shows the 0.5 sec itself, where Classic showed an instant and the sim
-				// added the shot wind-up; read as the same 0.5 sec rather than 0.5 on top of it.
-				CastTime: time.Millisecond * 500,
+				// Classic keeps the 0.5 sec shot wind-up. Forever showed it as a 0.5 sec cast until client
+				// 1.60.1.70425, which makes Multi-Shot instant (testers confirm it fires on the move).
+				CastTime: core.TernaryDuration(hunter.Env.IsForever(), 0, time.Millisecond*500),
 			},
 			ModifyCast: func(sim *core.Simulation, spell *core.Spell, cast *core.Cast) {
 				cast.CastTime = spell.CastTime()

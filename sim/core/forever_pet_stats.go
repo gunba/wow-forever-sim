@@ -23,8 +23,15 @@ func ForeverPetInheritance(owner stats.Stats, casterOwner bool) stats.Stats {
 		stats.AttackPower: 0.10 * offensivePower,
 		stats.MeleeHit:    owner[stats.MeleeHit],
 		stats.SpellHit:    owner[stats.SpellHit],
-		stats.MeleeCrit:   owner[stats.MeleeCrit],
-		stats.SpellCrit:   owner[stats.SpellCrit],
+		// Since client 1.60.1.70425 Hunter pets take the higher of the owner's melee and ranged crit.
+		// The sim keeps one physical crit stat, and its ranged-only modifiers only lower ranged crit
+		// (Elemental Sharpening Stone), so MeleeCrit is that higher value.
+		stats.MeleeCrit: owner[stats.MeleeCrit],
+		stats.SpellCrit: owner[stats.SpellCrit],
+	}
+	if !casterOwner {
+		// Hunter pets benefit from the owner's Expertise since client 1.60.1.70425 (October 15 notes).
+		inherited[stats.Expertise] = owner[stats.Expertise]
 	}
 	if casterOwner {
 		inherited[stats.SpellPower] = 0.10 * spellPower

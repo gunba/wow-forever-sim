@@ -103,9 +103,11 @@ func (hunter *Hunter) NewHunterPet() *HunterPet {
 
 	hp.AddStatDependency(stats.Strength, stats.AttackPower, 2)
 
-	// Warrior crit scaling
-	hp.AddStatDependency(stats.Agility, stats.MeleeCrit, core.CritPerAgiAtLevel[proto.Class_ClassWarrior]*core.CritRatingPerCritChance)
-	hp.AddStatDependency(stats.Intellect, stats.SpellCrit, core.CritPerIntAtLevel[proto.Class_ClassWarrior]*core.SpellCritRatingPerCritChance)
+	// Classic pets crit from their own Agility at Warrior rates. Forever pets inherit the owner's
+	// character-sheet crit instead (the higher of melee and ranged since 1.60.1.70425), with no Agility
+	// crit of their own: testers' logs at level 30 measured pet crit equal to the owner's crit plus the
+	// usual level/skill adjustment (forever-bugs #331).
+	// (Registered in Initialize, once the environment's ruleset is known.)
 
 	hunter.AddPet(hp)
 
@@ -117,6 +119,10 @@ func (hp *HunterPet) GetPet() *core.Pet {
 }
 
 func (hp *HunterPet) Initialize() {
+	if !hp.Env.IsForever() {
+		hp.AddStatDependency(stats.Agility, stats.MeleeCrit, core.CritPerAgiAtLevel[proto.Class_ClassWarrior]*core.CritRatingPerCritChance)
+		hp.AddStatDependency(stats.Intellect, stats.SpellCrit, core.CritPerIntAtLevel[proto.Class_ClassWarrior]*core.SpellCritRatingPerCritChance)
+	}
 	if hp.Env.IsForever() {
 		// Family assignment is made after the environment is wired, and only
 		// changes this pet's copied config, not the shared Classic family map.

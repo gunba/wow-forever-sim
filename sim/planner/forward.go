@@ -217,7 +217,7 @@ func (c *Ctx) build() {
 	c.special = special(missBase-hit, dodge, parry, block, crit, m.SpecialCritMult)
 	c.noAvoid = special(missBase-hit, 0, 0, 0, crit, m.SpecialCritMult)
 	spellMiss := []float64{0.04, 0.05, 0.06, 0.17}[int(min(max(tl-pl, 0), 3))]
-	c.magic = special(spellMiss, 0, 0, 0, crit, 1.5)
+	c.magic = special(spellMiss, 0, 0, 0, crit, 1.5*max(m.CritScale, 1))
 	k := 400 + 85*pl
 	sunder := 0.0
 	if ab := m.Get(ranks.SunderArmor); ab != nil {

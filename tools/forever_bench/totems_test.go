@@ -44,7 +44,9 @@ func TestForeverAirTotemsDoNotTwist(t *testing.T) {
 	}
 }
 
-func TestOwnWindfurySuppressesExternalGrace(t *testing.T) {
+// Since client 1.60.1.70425 Grace of Air is no longer exclusive with Windfury Totem, so another
+// Shaman's Grace stays in force under this Shaman's own Windfury.
+func TestOwnWindfuryKeepsExternalGrace(t *testing.T) {
 	for _, b := range builds() {
 		if b.Key != "enhancement" {
 			continue
@@ -57,20 +59,15 @@ func TestOwnWindfurySuppressesExternalGrace(t *testing.T) {
 		target := sim.Encounter.TargetUnits[0]
 		grace := character.GetSpell(core.ActionID{SpellID: 25359})
 		windfury := character.GetSpell(core.ActionID{SpellID: 10614})
-		windwall := character.GetSpell(core.ActionID{SpellID: 15112})
 		grace.ApplyEffects(sim, target, grace)
 		withGrace := character.GetStat(stats.Agility)
 		windfury.ApplyEffects(sim, target, windfury)
-		if !character.GetAura("Grace of Air Totem").IsActive() {
-			t.Fatal("external provider should remain configured while suppressed")
-		}
 		character.GetAura("Windfury (Rank 3)").Activate(sim)
-		if got := character.GetStat(stats.Agility); got >= withGrace {
-			t.Fatalf("Windfury and external Grace stacked: agility %.1f, prior %.1f", got, withGrace)
+		if !character.GetAura("Grace of Air Totem").IsActive() {
+			t.Fatal("external Grace of Air should remain configured")
 		}
-		windwall.ApplyEffects(sim, target, windwall)
 		if got := character.GetStat(stats.Agility); got != withGrace {
-			t.Fatalf("external Grace did not return after Windfury expired: %.1f, want %.1f", got, withGrace)
+			t.Fatalf("Windfury suppressed external Grace: agility %.1f, want %.1f", got, withGrace)
 		}
 	}
 }

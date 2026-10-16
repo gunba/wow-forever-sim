@@ -32,9 +32,9 @@ type racialExpectation struct {
 }
 
 var foreverExpectations = map[proto.Race]racialExpectation{
-	// Wind Blessed: 1% melee, ranged and cast haste.
-	proto.Race_RaceSkyborneHighOrder:  {proto.PseudoStat_PseudoStatMeleeSpeedMultiplier, 1.01},
-	proto.Race_RaceSkyborneWindshaper: {proto.PseudoStat_PseudoStatMeleeSpeedMultiplier, 1.01},
+	// Wind Blessed: 3% melee, ranged and cast haste since client 1.60.1.70425 (was 1%).
+	proto.Race_RaceSkyborneHighOrder:  {proto.PseudoStat_PseudoStatMeleeSpeedMultiplier, 1.03},
+	proto.Race_RaceSkyborneWindshaper: {proto.PseudoStat_PseudoStatMeleeSpeedMultiplier, 1.03},
 }
 
 // Under Classic the Skyborne do not exist, so nothing may be granted for them.

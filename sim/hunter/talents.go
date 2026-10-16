@@ -301,7 +301,8 @@ func (hunter *Hunter) mortalShots() float64 {
 }
 
 // Forever's Mortal Shots modifier (aura 108, op 15) covers Auto Shot, Aimed, Multi-, Arcane Shot,
-// Serpent Sting and Volley by class mask, but not Sniper Shot or the melee strikes.
+// Serpent Sting and Volley by class mask, and Sniper Shot since client 1.60.1.70425, but not the
+// melee strikes.
 func (hunter *Hunter) mortalShotsOutsideForever() float64 {
 	if hunter.Env.IsForever() {
 		return 0
@@ -358,9 +359,9 @@ func (hunter *Hunter) applyEfficiency() {
 		}
 		affected := spell.Flags.Matches(SpellFlagSting|SpellFlagShot) || spell.ProcMask.Matches(core.ProcMaskMeleeSpecial)
 		if hunter.Env.IsForever() {
-			// 19416, effect 696992. Includes Hawk and Volley, not Sniper or Strider.
+			// 19416, effect 696992. Includes Hawk and Volley, not Strider; Sniper Shot since client 1.60.1.70425.
 			switch spell.SpellCode {
-			case SpellCode_HunterAimedShot, SpellCode_HunterArcaneShot, SpellCode_HunterMultiShot,
+			case SpellCode_HunterAimedShot, SpellCode_HunterArcaneShot, SpellCode_HunterMultiShot, SpellCode_HunterSniperShot,
 				SpellCode_HunterSerpentSting, SpellCode_HunterRaptorStrike, SpellCode_HunterRaptorStrikeHit,
 				SpellCode_HunterMongooseBite, SpellCode_HunterWingClip, SpellCode_HunterLaceratingStrikes,
 				SpellCode_HunterSummonHawk, SpellCode_HunterVolley:
@@ -415,6 +416,11 @@ func (hunter *Hunter) applyResourcefulness() {
 	core.MakePermanent(hunter.RegisterAura(core.Aura{
 		Label: "Resourcefulness Trigger",
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+			// Client 1.60.1.70425 (proc mask 272): melee and ranged ability critical strikes only, not
+			// auto attacks, spells or traps.
+			if hunter.Env.IsForever() && (!spell.ProcMask.Matches(core.ProcMaskMeleeSpecial|core.ProcMaskRangedSpecial) || spell.Flags.Matches(SpellFlagTrap)) {
+				return
+			}
 			if result.DidCrit() && sim.Proc(procChance, "Resourcefulness") {
 				procAura.Activate(sim)
 			}

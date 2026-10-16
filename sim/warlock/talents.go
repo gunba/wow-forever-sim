@@ -14,7 +14,6 @@ func (warlock *Warlock) ApplyTalents() {
 
 	// Affliction
 	warlock.applySuppression()
-	warlock.applyMalediction()
 	warlock.applyPandemic()
 	warlock.applyMalevolence()
 	warlock.applyNightfall()
@@ -103,18 +102,7 @@ func (warlock *Warlock) applySuppression() {
 	warlock.PseudoStats.ThreatMultiplier *= 1 - 0.04*points
 }
 
-func (warlock *Warlock) applyMalediction() {
-	if warlock.Talents.Malediction == 0 {
-		return
-	}
-
-	points := float64(warlock.Talents.Malediction)
-	warlock.OnSpellRegistered(func(spell *core.Spell) {
-		if isWarlockSpell(spell) && (len(spell.Dots()) > 0 || spell.AOEDot() != nil) {
-			spell.PeriodicDamageMultiplierAdditive += 0.01 * points
-		}
-	})
-}
+// Malediction (periodic damage) became Grim Reach, a range talent, in client 1.60.1.70425.
 
 // Drain Life, Drain Soul and Wrack damage as the beta client's talents pay it. Improved Drains is a flat
 // 7/13/20%. Soul Siphon adds 4% per point for each of the warlock's other Affliction effects on the
@@ -231,8 +219,9 @@ func (warlock *Warlock) applyShadowMastery() {
 	})
 }
 
+// 2/4/6/8/10% since client 1.60.1.70425 (was 1-5%, October 15 notes).
 func (warlock *Warlock) shadowMasteryBonus() float64 {
-	return .01 * float64(warlock.Talents.ShadowMastery)
+	return .02 * float64(warlock.Talents.ShadowMastery)
 }
 
 ///////////////////////////////////////////////////////////////////////////

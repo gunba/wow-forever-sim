@@ -41,7 +41,7 @@ func TestRestoration(t *testing.T) {
 	}))
 }
 
-var StandardTalents = "-3020503-50005331335310501122331251"
+var StandardTalents = "-2020303-550002311351105"
 
 var BasicTotems = &proto.ShamanTotems{
 	Earth: proto.EarthTotem_TremorTotem,

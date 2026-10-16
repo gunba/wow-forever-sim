@@ -107,39 +107,28 @@
         ]
       },
       {
-        "fieldName": "malediction",
+        "fieldName": "grimReach",
         "location": {
           "rowIdx": 1,
           "colIdx": 0
         },
         "spellIds": [
-          32477,
-          32483,
-          32484,
-          32485,
-          32486
+          18218,
+          18219
         ],
-        "maxPoints": 5,
-        "name": "Malediction",
-        "icon": "spell_shadow_curseofachimonde",
-        "description": "Increases all periodic damage done by your Warlock spells by {0}%.",
+        "maxPoints": 2,
+        "name": "Grim Reach",
+        "icon": "spell_shadow_callofbone",
+        "description": "Increases the range of your Affliction spells by {0}%.",
         "ranks": [
           [
-            1
+            10
           ],
           [
-            2
-          ],
-          [
-            3
-          ],
-          [
-            4
-          ],
-          [
-            5
+            20
           ]
-        ]
+        ],
+        "notSimulated": true
       },
       {
         "fieldName": "soulHarvesting",
@@ -256,12 +245,10 @@
         "maxPoints": 1,
         "name": "Amplify Curse",
         "icon": "spell_shadow_contagion",
-        "description": "Increases the effect of your next Curse of Weakness or Bane of Agony by {0}%, or your next Curse of Exhaustion by {1}%. Lasts {2} sec.",
+        "description": "Increases the effect of your next Curse of Weakness or Bane of Agony by {0}%. Lasts 30 sec.",
         "ranks": [
           [
-            50,
-            20,
-            30
+            50
           ]
         ]
       },
@@ -445,19 +432,19 @@
         "description": "Increases the damage dealt or life drained by your Shadow spells by {0}%.",
         "ranks": [
           [
-            1
-          ],
-          [
             2
-          ],
-          [
-            3
           ],
           [
             4
           ],
           [
-            5
+            6
+          ],
+          [
+            8
+          ],
+          [
+            10
           ]
         ]
       },
@@ -467,13 +454,13 @@
           "rowIdx": 6,
           "colIdx": 1
         },
-        "spellIds": [
-          18220
-        ],
         "prereqLocation": {
           "rowIdx": 4,
           "colIdx": 1
         },
+        "spellIds": [
+          18220
+        ],
         "maxPoints": 1,
         "name": "Wrack",
         "icon": "ability_deathknight_hemorrhagicfever",
@@ -633,7 +620,6 @@
         ],
         "maxPoints": 2,
         "name": "Demonic Aegis",
-        "iconUrl": "assets/img/talents/warlock/demonic-aegis.png",
         "description": "Increases the effectiveness of your Demon Skin and Demon Armor spells by {0}%.",
         "ranks": [
           [
@@ -642,7 +628,8 @@
           [
             30
           ]
-        ]
+        ],
+        "iconUrl": "assets/img/talents/warlock/demonic-aegis.png"
       },
       {
         "fieldName": "improvedVoidwalker",
@@ -819,7 +806,6 @@
         ],
         "maxPoints": 2,
         "name": "Decimation",
-        "iconUrl": "assets/img/talents/warlock/decimation.png",
         "description": "Reduces the cooldown of your Soul Fire spell by {0}%. When you cast Shadow Bolt or Searing Pain on an enemy below {1}% health, they deal {2}% increased damage, and for the next {3} sec your Soul Fire spell has its cast time reduced by {4}% and costs no Soul Shards.",
         "ranks": [
           [
@@ -836,7 +822,8 @@
             10,
             40
           ]
-        ]
+        ],
+        "iconUrl": "assets/img/talents/warlock/decimation.png"
       },
       {
         "fieldName": "felDomination",
@@ -1048,11 +1035,11 @@
         ],
         "maxPoints": 1,
         "name": "Demonic Pact",
-        "iconUrl": "assets/img/talents/warlock/demonic-pact.png",
         "description": "Your Demonic Sacrifice effect is no longer cancelled by summoning a different Demon pet. Resummoning the sacrificed pet will still cancel the effect.",
         "ranks": [
           []
-        ]
+        ],
+        "iconUrl": "assets/img/talents/warlock/demonic-pact.png"
       }
     ]
   },
@@ -1073,7 +1060,7 @@
         "maxPoints": 2,
         "name": "Destructive Reach",
         "icon": "spell_shadow_corpseexplode",
-        "description": "Increases the range of your damaging spells by {0}%.",
+        "description": "Increases the range of your Destruction spells by {0}%.",
         "ranks": [
           [
             10

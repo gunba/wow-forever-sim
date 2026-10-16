@@ -7,6 +7,7 @@ import (
 const ArcaneExplosionRanks = 6
 
 var ArcaneExplosionSpellId = [ArcaneExplosionRanks + 1]int32{0, 1449, 8437, 8438, 8439, 10201, 10202}
+
 // Beta client 1.60.1.69893.
 var ArcaneExplosionBaseDamage = [ArcaneExplosionRanks + 1][]float64{{0}, {32, 36}, {55, 61}, {94, 103}, {133, 146}, {180, 197}, {238, 259}}
 var ArcaneExplosionSpellCoeff = [ArcaneExplosionRanks + 1]float64{0, .143, .143, .143, .143, .143, .143}

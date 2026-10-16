@@ -66,11 +66,11 @@ export const DefaultAPL = APLDefault;
 
 export const TalentsElemental = PresetUtils.makePresetTalents(
 	'Elemental 31/7/13',
-	SavedTalents.create({ talentsString: '5502301300123051-052-05305' }),
+	SavedTalents.create({ talentsString: '5503331000011351-054-05303' }),
 );
 export const TalentsStormcaller = PresetUtils.makePresetTalents(
 	'Stormcaller 28/23/0',
-	SavedTalents.create({ talentsString: '550133130010304-055030021004002' }),
+	SavedTalents.create({ talentsString: '553233100000034-055030021004002' }),
 );
 
 export const TalentPresets = {

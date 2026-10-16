@@ -44,33 +44,35 @@ func TestForeverEurekaClassVariants(t *testing.T) {
 			if racial == nil || action == nil || action.Cost == nil {
 				t.Fatal("missing racial or damaging ability")
 			}
-			if aura.Duration != 15*time.Second || racial.CD.Duration != 2*time.Minute || racial.Cost != nil {
+			// Client 1.60.1.70425: an 8-second buff with no charges.
+			if aura.Duration != 8*time.Second || racial.CD.Duration != 2*time.Minute || racial.Cost != nil {
 				t.Fatal("incorrect Eureka timing or cost")
 			}
 			cost := action.Cost.Multiplier
 			multiplier := action.DamageMultiplier
 			globalDamage := unit.PseudoStats.DamageDealtMultiplier
 			racial.ApplyEffects(s, unit, racial)
-			if aura.GetStacks() != 3 || action.Cost.Multiplier != cost-tc.discount {
-				t.Fatal("incorrect class cost reduction or charge count")
+			if !aura.IsActive() || action.Cost.Multiplier != cost-tc.discount {
+				t.Fatal("incorrect class cost reduction")
 			}
 			if unit.PseudoStats.DamageDealtMultiplier != globalDamage {
 				t.Fatal("Eureka must not amplify white attacks or incidental damage")
 			}
-			for i := int32(0); i < 3; i++ {
+			for i := int32(0); i < 4; i++ {
 				action.ApplyEffects(s, s.Encounter.TargetUnits[0], action)
-				if aura.GetStacks() != 2-i {
-					t.Fatalf("cast %d left %d charges", i+1, aura.GetStacks())
+				if !aura.IsActive() || action.Cost.Multiplier != cost-tc.discount {
+					t.Fatalf("cast %d ended Eureka; it has no charges", i+1)
 				}
 			}
-			if aura.IsActive() || action.Cost.Multiplier != cost || math.Abs(action.DamageMultiplier-multiplier) > 1e-10 {
-				t.Fatal("third cast failed to remove Eureka or restore modifiers")
+			aura.Deactivate(s)
+			if action.Cost.Multiplier != cost || math.Abs(action.DamageMultiplier-multiplier) > 1e-10 {
+				t.Fatal("expiry failed to restore modifiers")
 			}
 		})
 	}
 }
 
-func TestEurekaThirdChannelKeepsItsBonus(t *testing.T) {
+func TestEurekaChannelKeepsItsBonusWhileActive(t *testing.T) {
 	s := gnomeFixture("arcane")
 	unit := s.Raid.AllPlayerUnits[0]
 	parent := unit.GetSpell(core.ActionID{SpellID: 5143})
@@ -82,21 +84,18 @@ func TestEurekaThirdChannelKeepsItsBonus(t *testing.T) {
 	}
 	aura := unit.GetAura("Eureka!")
 	aura.Activate(s)
-	aura.SetStacks(s, 1)
 	target := s.Encounter.TargetUnits[0]
 	parent.ApplyEffects(s, target, parent)
-	if aura.IsActive() {
-		t.Fatal("channel start did not consume the final charge")
-	}
 	dot := parent.Dot(target)
 	dot.OnTick(s, target, dot)
 	if math.Abs(observed/base-1.1) > 1e-10 || math.Abs(tick.DamageMultiplier-base) > 1e-10 {
-		t.Fatal("channel lost its charged damage or leaked it to another cast")
+		t.Fatal("channel lost its Eureka damage or leaked it outside the tick")
 	}
+	aura.Deactivate(s)
 	parent.ApplyEffects(s, target, parent)
 	dot.OnTick(s, target, dot)
 	if math.Abs(observed-base) > 1e-10 {
-		t.Fatal("uncharged channel retained the previous cast's bonus")
+		t.Fatal("a channel started after Eureka expired kept the bonus")
 	}
 }
 

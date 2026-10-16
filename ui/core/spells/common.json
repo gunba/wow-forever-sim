@@ -222,7 +222,7 @@
 		"ability": "Destiny",
 		"file": "sim/common/item_effects.go",
 		"source": "classic",
-		"note": "Identical in the Forever beta client and Classic Era - duration, cooldown, cast time, cost and every effect value, coefficient, period and per-level - so Wowhead's Classic tooltip describes it. Checked with tools/data_watch/spell_diff.py."
+		"note": "Identical in the Forever beta client and Classic Era - duration, cooldown, cast time, cost and every effect value, coefficient, period and per-level - so Wowhead's Classic tooltip describes it. Checked with tools/data_watch/spell_diff.py. Client 1.60.1.70425: Destiny lasts 12 sec (10 before); the Classic ruleset keeps 10."
 	},
 	"17196": {
 		"ability": "Seeping Willow",
@@ -267,7 +267,7 @@
 		"ability": "Rend",
 		"file": "sim/common/item_effects.go",
 		"source": "classic",
-		"note": "Identical in the Forever beta client and Classic Era - duration, cooldown, cast time, cost and every effect value, coefficient, period and per-level - so Wowhead's Classic tooltip describes it. Checked with tools/data_watch/spell_diff.py."
+		"note": "Identical in the Forever beta client and Classic Era - duration, cooldown, cast time, cost and every effect value, coefficient, period and per-level - so Wowhead's Classic tooltip describes it. Checked with tools/data_watch/spell_diff.py. Client 1.60.1.70425: Rend (Bloodrazor) now ticks 31 every 3 sec for 15 sec (12 for 30 sec before); the Classic ruleset keeps the Era values."
 	},
 	"17505": {
 		"ability": "Hand of Timmy",
@@ -323,7 +323,7 @@
 		"ability": "Fireball",
 		"file": "sim/common/item_effects.go",
 		"source": "classic",
-		"note": "Identical in the Forever beta client and Classic Era - duration, cooldown, cast time, cost and every effect value, coefficient, period and per-level - so Wowhead's Classic tooltip describes it. Checked with tools/data_watch/spell_diff.py."
+		"note": "Identical in the Forever beta client and Classic Era - duration, cooldown, cast time, cost and every effect value, coefficient, period and per-level - so Wowhead's Classic tooltip describes it. Checked with tools/data_watch/spell_diff.py. Client 1.60.1.70425: Fiery War Axe's Fireball deals 231 to 293 and 20 every 2 sec (155 to 197 and 8 before); the Classic ruleset keeps the Era values."
 	},
 	"18797": {
 		"ability": "Flurry Axe",
@@ -378,7 +378,7 @@
 		"ability": "Immolation",
 		"file": "sim/common/item_effects.go",
 		"source": "classic",
-		"note": "Identical in the Forever beta client and Classic Era - duration, cooldown, cast time, cost and every effect value, coefficient, period and per-level - so Wowhead's Classic tooltip describes it. Checked with tools/data_watch/spell_diff.py."
+		"note": "Identical in the Forever beta client and Classic Era - duration, cooldown, cast time, cost and every effect value, coefficient, period and per-level - so Wowhead's Classic tooltip describes it. Checked with tools/data_watch/spell_diff.py. Client 1.60.1.70425: Sulfuras' Immolation deals 7 (5 before); the Classic ruleset keeps 5."
 	},
 	"21153": {
 		"ability": "Bonereaver's Edge",

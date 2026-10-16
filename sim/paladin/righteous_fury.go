@@ -10,10 +10,10 @@ func (paladin *Paladin) registerRighteousFury() {
 	}
 	actionID := core.ActionID{SpellID: 25780}
 
-	// Beta client 1.60.1.70009: Holy threat +60%.
+	// Beta client 1.60.1.70425: Holy threat +90% (was +60%, October 15 notes).
 	paladin.OnSpellRegistered(func(spell *core.Spell) {
 		if spell.SpellSchool.Matches(core.SpellSchoolHoly) {
-			spell.ThreatMultiplier *= 1.6
+			spell.ThreatMultiplier *= 1.9
 		}
 	})
 

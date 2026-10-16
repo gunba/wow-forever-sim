@@ -9,14 +9,15 @@ import (
 // The talent teaches rank 1 and the spellbook adds ranks 2 and 3 at 50 and 60. Everything here is the beta
 // client's: a 2.5 sec cast, a 10 sec cooldown, flat mana costs, the full 0.714 coefficient and 20% more damage
 // on a target carrying the shaman's Flame Shock. Damage is scaled to level 60 like Lightning Bolt's.
-const LavaBurstRanks = 3
+// Client 1.60.1.70425 reflows the ranks to levels 30/40/50 and adds a fourth at 60 (1326047).
+const LavaBurstRanks = 4
 const LavaBurstFlameShockBonus = .2
 
-var LavaBurstSpellId = [LavaBurstRanks + 1]int32{0, 408490, 1238299, 1238300}
-var LavaBurstBaseDamage = [LavaBurstRanks + 1][]float64{{0}, {150, 192}, {180, 230}, {192, 248}}
-var LavaBurstSpellCoef = [LavaBurstRanks + 1]float64{0, .714, .714, .714}
-var LavaBurstManaCost = [LavaBurstRanks + 1]float64{0, 165, 230, 265}
-var LavaBurstLevel = [LavaBurstRanks + 1]int{0, 40, 50, 60}
+var LavaBurstSpellId = [LavaBurstRanks + 1]int32{0, 408490, 1238299, 1238300, 1326047}
+var LavaBurstBaseDamage = [LavaBurstRanks + 1][]float64{{0}, {113, 145}, {150, 192}, {180, 230}, {192, 248}}
+var LavaBurstSpellCoef = [LavaBurstRanks + 1]float64{0, .714, .714, .714, .714}
+var LavaBurstManaCost = [LavaBurstRanks + 1]float64{0, 135, 165, 230, 265}
+var LavaBurstLevel = [LavaBurstRanks + 1]int{0, 30, 40, 50, 60}
 
 func (shaman *Shaman) registerLavaBurstSpell() {
 	shaman.LavaBurst = make([]*core.Spell, LavaBurstRanks+1)

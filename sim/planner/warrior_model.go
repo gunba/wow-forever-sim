@@ -13,6 +13,14 @@ import (
 // spells' ApplyEffects; tests compare the two.
 func BuildWarriorModel(w *warrior.Warrior, known map[int32]bool) *Model {
 	t := w.Talents
+	// Racial critical damage (Tauren Endurance, Dwarf Earth Fury: client aura 163 since 1.60.1.70425) scales the
+	// whole critical multiplier through the attack tables.
+	critScale := 1.0
+	if targets := w.Env.Encounter.TargetUnits; len(targets) > 0 {
+		if at := w.AttackTables[targets[0].UnitIndex][proto.CastType_CastTypeMainHand]; at != nil && at.CritMultiplier > 0 {
+			critScale = at.CritMultiplier
+		}
+	}
 	m := &Model{
 		Level:           w.Level,
 		Class:           "WARRIOR",
@@ -23,8 +31,9 @@ func BuildWarriorModel(w *warrior.Warrior, known map[int32]bool) *Model {
 		ExpertisePct:    w.GetStat(stats.Expertise) / core.ExpertiseRatingPerExpertiseChance,
 		ArmorIgnore:     w.PseudoStats.ArmorIgnorePercent,
 		PhysMult:        w.PseudoStats.DamageDealtMultiplier * w.PseudoStats.SchoolDamageDealtMultiplier[stats.SchoolIndexPhysical],
-		WhiteCritMult:   2,
-		SpecialCritMult: 2 + 2*0.1*float64(t.Impale),
+		WhiteCritMult:   2 * critScale,
+		SpecialCritMult: 1 + (2*critScale-1)*(1+0.2*float64(t.Impale)),
+		CritScale:       critScale,
 		Health:          w.GetStat(stats.Health),
 		Armor:           w.GetStat(stats.Armor),
 		DodgePct:        w.GetStat(stats.Dodge) / core.DodgeRatingPerDodgeChance,
@@ -149,7 +158,7 @@ func BuildWarriorModel(w *warrior.Warrior, known map[int32]bool) *Model {
 	add(ranks.ThunderClap, w.ThunderClap, func(ab *Ability) {
 		ab.Kind, ab.Table, ab.Targets = KindAoE, TableMagic, 4
 		ab.Flat, ab.APCoef, ab.Duration, ab.SlowPct = ab.Rank.Find(ranks.EffectSchoolDamage, 0).Low, ranks.ThunderClapAPCoefficient, 30, 20
-		ab.CritMult = 1 + (1.5-1)*sp(w.ThunderClap).CritDamageBonus
+		ab.CritMult = 1 + (1.5*critScale-1)*sp(w.ThunderClap).CritDamageBonus
 	})
 	add(ranks.DemoralizingShout, w.DemoralizingShout, func(ab *Ability) {
 		ab.Kind, ab.Table, ab.Targets, ab.Duration = KindDebuff, TableNone, 99, 45

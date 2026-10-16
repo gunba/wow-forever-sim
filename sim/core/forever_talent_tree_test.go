@@ -17,7 +17,8 @@ func TestForeverTalentTreePositionsAfterPatch(t *testing.T) {
 	}
 
 	shaman := &proto.ShamanTalents{}
-	FillTalentsProto(shaman.ProtoReflect(), "000000030000005", [3]int{16, 18, 16})
+	// Client 1.60.1.70425 layout: Elemental Alacrity moved to row 1 (position 4).
+	FillTalentsProto(shaman.ProtoReflect(), "000030000000005", [3]int{16, 18, 16})
 	if shaman.ElementalAlacrity != 3 || shaman.ElementalFury != 5 {
 		t.Fatalf("Elemental talent swap mapped to old fields: %+v", shaman)
 	}

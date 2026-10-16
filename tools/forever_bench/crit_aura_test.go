@@ -27,11 +27,13 @@ func TestCritAuraProvidersAndStacking(t *testing.T) {
 				if providers == 0 {
 					baseline = got
 				}
+				// Client 1.60.1.70425 splits them again under Forever too: Leader of the Pack is melee
+				// and ranged crit only, Moonkin Aura spell crit only.
 				wantMelee, wantSpell := 0.0, 0.0
-				if providers&10 != 0 || (ruleset == proto.Ruleset_RulesetForever && providers != 0) {
+				if providers&10 != 0 {
 					wantMelee = 3 * core.CritRatingPerCritChance
 				}
-				if providers&5 != 0 || (ruleset == proto.Ruleset_RulesetForever && providers != 0) {
+				if providers&5 != 0 {
 					wantSpell = 3 * core.SpellCritRatingPerCritChance
 				}
 				if math.Abs(got[stats.MeleeCrit]-baseline[stats.MeleeCrit]-wantMelee) > 1e-8 ||
@@ -44,16 +46,24 @@ func TestCritAuraProvidersAndStacking(t *testing.T) {
 	}
 }
 
-func TestCritAuraStaysWithinItsParty(t *testing.T) {
-	req := racialFixture("arcane", proto.Race_RaceHuman)
-	second := racialFixture("arcane", proto.Race_RaceHuman)
-	req.Raid.Parties[0].Buffs.LeaderOfThePack = true
-	req.Raid.Parties = append(req.Raid.Parties, second.Raid.Parties[0])
-	env, _, _ := core.NewEnvironment(req.Raid, req.Encounter, proto.Ruleset_RulesetForever, false)
-	first, other := env.Raid.AllPlayerUnits[0], env.Raid.AllPlayerUnits[1]
-	for _, stat := range []stats.Stat{stats.MeleeCrit, stats.SpellCrit} {
-		if math.Abs(first.GetStat(stat)-other.GetStat(stat)-3) > 1e-8 {
-			t.Fatalf("party crit difference for %v = %g", stat, first.GetStat(stat)-other.GetStat(stat))
+// Raid-wide since client 1.60.1.70425: a Leader of the Pack in one party reaches the next, and
+// stays within its party under Classic.
+func TestCritAuraReachesTheWholeRaid(t *testing.T) {
+	for _, tc := range []struct {
+		ruleset proto.Ruleset
+		want    float64
+	}{{proto.Ruleset_RulesetForever, 0}, {proto.Ruleset_RulesetClassic, 3 * core.CritRatingPerCritChance}} {
+		req := racialFixture("arcane", proto.Race_RaceHuman)
+		second := racialFixture("arcane", proto.Race_RaceHuman)
+		req.Raid.Parties[0].Buffs.LeaderOfThePack = true
+		req.Raid.Parties = append(req.Raid.Parties, second.Raid.Parties[0])
+		env, _, _ := core.NewEnvironment(req.Raid, req.Encounter, tc.ruleset, false)
+		first, other := env.Raid.AllPlayerUnits[0], env.Raid.AllPlayerUnits[1]
+		if diff := first.GetStat(stats.MeleeCrit) - other.GetStat(stats.MeleeCrit); math.Abs(diff-tc.want) > 1e-8 {
+			t.Fatalf("%v: party melee crit difference %g, want %g", tc.ruleset, diff, tc.want)
+		}
+		if diff := first.GetStat(stats.SpellCrit) - other.GetStat(stats.SpellCrit); math.Abs(diff) > 1e-8 {
+			t.Fatalf("%v: Leader of the Pack changed spell crit by %g", tc.ruleset, diff)
 		}
 	}
 }

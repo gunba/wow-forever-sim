@@ -338,9 +338,9 @@
 	"17364": {
 		"ability": "Stormstrike",
 		"file": "sim/core/debuffs.go",
-		"note": "Forever makes Stormstrike personal; the live Forever aura is registered in sim/shaman/stormstrike.go, and this core StormstrikeAura is the Classic raid-wide two-charge version, reached only when the ruleset is Classic. The beta client (17364, build 1.60.1.69893) gives the Forever version an 8 sec cooldown, a flat 125 mana and one charge that the next Lightning Bolt, Chain Lightning or Earth Shock spends, replacing the demo-era reading of 12 sec of +20% to all Nature damage.",
+		"note": "Forever makes Stormstrike personal; the live Forever aura is registered in sim/shaman/stormstrike.go, and this core StormstrikeAura is the Classic raid-wide two-charge version, reached only when the ruleset is Classic. The beta client (17364, build 1.60.1.69893) gives the Forever version an 8 sec cooldown, a flat 125 mana and one charge that the next Lightning Bolt, Chain Lightning or Earth Shock spends, replacing the demo-era reading of 12 sec of +20% to all Nature damage. Client 1.60.1.70425: Stormstrike costs 8% of base mana (a flat 125 before), and its charge is spent only by a spell that lands.",
 		"source": "forever",
-		"tooltip": "125 Mana\nMelee Range\nInstant\n8 sec cooldown\nInstantly strike for normal weapon damage and increase the damage you deal to the target with your next Lightning Bolt, Chain Lightning, or Earth Shock spell by 20% for 12 sec."
+		"tooltip": "8% of base mana\nMelee Range\nInstant\n8 sec cooldown\nInstantly strike for normal weapon damage and increase the damage you deal to the target with your next Lightning Bolt, Chain Lightning, or Earth Shock spell by 20% for 12 sec."
 	},
 	"17800": {
 		"ability": "Improved Shadow Bolt (Shadow Vulnerability)",
@@ -394,9 +394,9 @@
 	"20572": {
 		"ability": "Blood Fury",
 		"file": "sim/core/racials.go",
-		"note": "Beta client 20572: dynamic 10% melee AP, ranged AP and spell power; free and off the GCD, 15 seconds, two-minute cooldown. No healing penalty.",
+		"note": "Beta client 20572: dynamic 10% melee AP, ranged AP and spell power; free and off the GCD, 15 seconds, three-minute cooldown (two minutes before client 1.60.1.70425). No healing penalty.",
 		"source": "forever",
-		"tooltip": "Instant\n2 min cooldown\nIncreases your attack power and spell power by 10% for 15 sec."
+		"tooltip": "Instant\n3 min cooldown\nIncreases your attack power and spell power by 10% for 15 sec."
 	},
 	"20594": {
 		"ability": "Stoneform",
@@ -567,7 +567,7 @@
 		"ability": "Touch of the Grave",
 		"file": "sim/core/racials.go",
 		"foreverId": 1260198,
-		"note": "Triggered Shadow drain: 5% of maximum health before mitigation, no random base-damage range, cannot crit. SpellAuraOptions gives a one-second ICD.",
+		"note": "Triggered Shadow drain: 5% of maximum health before mitigation, no random base-damage range, cannot crit. The trigger's cooldown is 25 seconds since client 1.60.1.70425 (one second before), and it no longer scales with Shadow damage modifiers.",
 		"source": "forever",
 		"tooltip": "Steals life from target enemy equal to 5% of the caster's maximum Health."
 	},
@@ -575,50 +575,50 @@
 		"ability": "Touch of the Grave",
 		"file": "sim/core/racials.go",
 		"source": "forever",
-		"note": "Warrior, Paladin and Rogue variant; class mask 11 in SkillLineAbility.",
-		"tooltip": "Passive\nYour spells and attacks have a 5% chance to drain Health from the target, up to 5% of your maximum Health. One-second cooldown."
+		"note": "Warrior, Paladin and Rogue variant; class mask 11 in SkillLineAbility. Client 1.60.1.70425: 20% chance and a 25-second cooldown (5% and one second before).",
+		"tooltip": "Passive\nYour spells and attacks have a 20% chance to drain Health from the target, up to 5% of your maximum Health. 25-second cooldown."
 	},
 	"1260201": {
 		"ability": "Touch of the Grave",
 		"file": "sim/core/racials.go",
 		"source": "forever",
-		"note": "Priest, Mage and Warlock variant; class mask 400 in SkillLineAbility.",
-		"tooltip": "Passive\nYour spells and attacks have a 10% chance to drain Health from the target, up to 5% of your maximum Health. One-second cooldown."
+		"note": "Priest, Mage and Warlock variant; class mask 400 in SkillLineAbility. Client 1.60.1.70425: 30% chance and a 25-second cooldown (10% and one second before).",
+		"tooltip": "Passive\nYour spells and attacks have a 30% chance to drain Health from the target, up to 5% of your maximum Health. 25-second cooldown."
 	},
 	"1259812": {
 		"ability": "Eureka!",
 		"file": "sim/core/forever_gnome.go",
 		"source": "forever",
-		"note": "Rogue variant. Client 1.60.1.70009 cost modifier -10%, damage +10%, three charges, 15-second duration. Cast/periodic interactions are tracked in docs/in_game_checks.md, T03.",
-		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging abilities cost 10% less Energy and deal 10% more damage. Lasts 15 sec."
+		"note": "Rogue variant. Client 1.60.1.70009 cost modifier -10%, damage +10%, three charges, 15-second duration. Cast/periodic interactions are tracked in docs/in_game_checks.md, T03. Client 1.60.1.70425: an 8-second buff with no charges (three charges for 15 sec before).",
+		"tooltip": "Instant\n2 min cooldown\nYour non-periodic damaging abilities have their Energy cost reduced by 10% and deal 10% more damage. Lasts 8 sec."
 	},
 	"1259813": {
 		"ability": "Eureka!",
 		"file": "sim/core/forever_gnome.go",
 		"source": "forever",
-		"note": "Warrior variant; SkillLineAbility class mask 1. Three charges and a 15-second duration.",
-		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging abilities cost 10% less Rage and deal 10% more damage. Lasts 15 sec."
+		"note": "Warrior variant; SkillLineAbility class mask 1. Three charges and a 15-second duration. Client 1.60.1.70425: an 8-second buff with no charges (three charges for 15 sec before).",
+		"tooltip": "Instant\n2 min cooldown\nYour non-periodic damaging abilities have their Rage cost reduced by 10% and deal 10% more damage. Lasts 8 sec."
 	},
 	"1259817": {
 		"ability": "Eureka!",
 		"file": "sim/core/forever_gnome.go",
 		"source": "forever",
-		"note": "Mage variant; SkillLineAbility class mask 128. Three charges and a 15-second duration.",
-		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging abilities cost 10% less Mana and deal 10% more damage. Lasts 15 sec."
+		"note": "Mage variant; SkillLineAbility class mask 128. Three charges and a 15-second duration. Client 1.60.1.70425: an 8-second buff with no charges (three charges for 15 sec before).",
+		"tooltip": "Instant\n2 min cooldown\nYour damaging abilities have their Mana cost reduced by 10% and deal 10% more damage. Lasts 8 sec."
 	},
 	"1259821": {
 		"ability": "Eureka!",
 		"file": "sim/core/forever_gnome.go",
 		"source": "forever",
-		"note": "Warlock variant; SkillLineAbility class mask 256. Three charges and a 15-second duration.",
-		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging abilities cost 10% less Mana and deal 10% more damage. Lasts 15 sec."
+		"note": "Warlock variant; SkillLineAbility class mask 256. Three charges and a 15-second duration. Client 1.60.1.70425: an 8-second buff with no charges (three charges for 15 sec before).",
+		"tooltip": "Instant\n2 min cooldown\nYour non-periodic damaging abilities have their Mana cost reduced by 10% and deal 10% more damage. Lasts 8 sec."
 	},
 	"1259823": {
 		"ability": "Eureka!",
 		"file": "sim/core/forever_gnome.go",
 		"source": "forever",
-		"note": "Priest variant; SkillLineAbility class mask 16. Client 1.60.1.70009 cost reduction is 10% for every eligible class.",
-		"tooltip": "Instant\n2 min cooldown\nYour next 3 damaging or healing abilities cost 10% less Mana and deal 10% more damage or healing. Lasts 15 sec."
+		"note": "Priest variant; SkillLineAbility class mask 16. Client 1.60.1.70009 cost reduction is 10% for every eligible class. Client 1.60.1.70425: an 8-second buff with no charges (three charges for 15 sec before); it now also benefits Power Word: Shield.",
+		"tooltip": "Instant\n2 min cooldown\nYour non-periodic damaging or healing abilities have their Mana cost reduced by 10% and deal 10% more damage or healing. Lasts 8 sec."
 	},
 	"5242": {
 		"ability": "Battle Shout Rank 2",

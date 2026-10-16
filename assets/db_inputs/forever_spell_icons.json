@@ -225,8 +225,36 @@
       "hasBuff": false
     },
     {
+      "id": 8230,
+      "name": "Flametongue Totem",
+      "icon": "spell_nature_guardianward",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 8248,
+      "name": "Flametongue Totem Proc",
+      "icon": "spell_nature_guardianward",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
       "id": 8249,
       "name": "Flametongue Totem",
+      "icon": "spell_nature_guardianward",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 8250,
+      "name": "Flametongue Totem",
+      "icon": "spell_nature_guardianward",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 8253,
+      "name": "Flametongue Totem Proc",
       "icon": "spell_nature_guardianward",
       "rank": 0,
       "hasBuff": false
@@ -347,6 +375,20 @@
       "id": 10333,
       "name": "Holy Strike",
       "icon": "classicon_paladin",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 10521,
+      "name": "Flametongue Totem",
+      "icon": "spell_nature_guardianward",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 10523,
+      "name": "Flametongue Totem Proc",
+      "icon": "spell_nature_guardianward",
       "rank": 0,
       "hasBuff": false
     },
@@ -498,6 +540,13 @@
       "hasBuff": true
     },
     {
+      "id": 12579,
+      "name": "Winter's Chill",
+      "icon": "spell_frost_chillingblast",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
       "id": 12654,
       "name": "Ignite",
       "icon": "spell_fire_incinerate",
@@ -561,6 +610,13 @@
       "hasBuff": true
     },
     {
+      "id": 13810,
+      "name": "Frost Trap",
+      "icon": "spell_frost_frostnova",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
       "id": 13866,
       "name": "Puncturing Wounds",
       "icon": "ability_backstab"
@@ -583,6 +639,13 @@
       "id": 13964,
       "name": "Hack and Slash",
       "icon": "inv_sword_27"
+    },
+    {
+      "id": 15036,
+      "name": "Flametongue Totem",
+      "icon": "spell_nature_guardianward",
+      "rank": 0,
+      "hasBuff": true
     },
     {
       "id": 15258,
@@ -1113,6 +1176,27 @@
       "icon": "spell_lightning_lightningbolt01",
       "rank": 0,
       "hasBuff": false
+    },
+    {
+      "id": 19185,
+      "name": "Entrapment",
+      "icon": "spell_nature_stranglevines",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 19229,
+      "name": "Improved Wing Clip",
+      "icon": "ability_rogue_trip",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
+      "id": 19410,
+      "name": "Improved Concussive Shot",
+      "icon": "spell_frost_stun",
+      "rank": 0,
+      "hasBuff": true
     },
     {
       "id": 20004,
@@ -1965,8 +2049,8 @@
     },
     {
       "id": 44445,
-      "name": "Hot Streak",
-      "icon": "ability_mage_hotstreak",
+      "name": "Heating Up",
+      "icon": "spell_fire_firebolt",
       "rank": 0,
       "hasBuff": true
     },
@@ -2380,6 +2464,20 @@
       "hasBuff": false
     },
     {
+      "id": 1240720,
+      "name": "Penance",
+      "icon": "spell_holy_penance",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1240721,
+      "name": "Penance",
+      "icon": "spell_holy_penance",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
       "id": 1241582,
       "name": "Mutilate",
       "icon": "ability_rogue_deadlybrew",
@@ -2422,9 +2520,23 @@
       "hasBuff": false
     },
     {
+      "id": 1248759,
+      "name": "Recovery",
+      "icon": "spell_arcane_mindmastery",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
       "id": 1248760,
       "name": "Enchant Weapon - Recovery",
       "icon": "spell_holy_greaterheal",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1248761,
+      "name": "Recovery",
+      "icon": "spell_holy_heal",
       "rank": 0,
       "hasBuff": false
     },
@@ -3010,6 +3122,13 @@
       "hasBuff": true
     },
     {
+      "id": 1311701,
+      "name": "Echo of Fury",
+      "icon": "spell_holy_retributionaura",
+      "rank": 0,
+      "hasBuff": true
+    },
+    {
       "id": 1311703,
       "name": "Echo of Command",
       "icon": "ability_warrior_innerrage",
@@ -3127,6 +3246,48 @@
       "icon": "racial_troll_berserk",
       "rank": 0,
       "hasBuff": false
+    },
+    {
+      "id": 1326047,
+      "name": "Lava Burst",
+      "icon": "spell_shaman_lavaburst",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1326079,
+      "name": "Arcane Wrath",
+      "icon": "ability_mage_netherwindpresence",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1326080,
+      "name": "Arcane Wrath",
+      "icon": "ability_mage_netherwindpresence",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1326081,
+      "name": "Arcane Wrath",
+      "icon": "ability_mage_netherwindpresence",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1326082,
+      "name": "Arcane Wrath",
+      "icon": "ability_mage_netherwindpresence",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1326168,
+      "name": "Dark Inspiration",
+      "icon": "spell_warlock_demonsoul",
+      "rank": 0,
+      "hasBuff": true
     }
   ],
   "itemIcons": [
@@ -3726,13 +3887,6 @@
       "hasBuff": false
     },
     {
-      "id": 1248805,
-      "name": "Enchant Weapon - Revelation",
-      "icon": "inv_enchant_formulagood_01",
-      "rank": 0,
-      "hasBuff": false
-    },
-    {
       "id": 1248759,
       "name": "Recovery",
       "icon": "spell_arcane_mindmastery",
@@ -3743,6 +3897,13 @@
       "id": 1248761,
       "name": "Recovery",
       "icon": "spell_holy_heal",
+      "rank": 0,
+      "hasBuff": false
+    },
+    {
+      "id": 1248805,
+      "name": "Enchant Weapon - Revelation",
+      "icon": "inv_enchant_formulagood_01",
       "rank": 0,
       "hasBuff": false
     }

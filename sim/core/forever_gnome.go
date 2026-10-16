@@ -6,8 +6,8 @@ import (
 	"github.com/wowsims/classic/sim/core/proto"
 )
 
-// SkillLineAbility assigns the five Eureka spells by class. Since client
-// 1.60.1.70009 each discounts the next three resource-consuming abilities 10%.
+// SkillLineAbility assigns the five Eureka spells by class. Since client 1.60.1.70425 each is an
+// 8-second buff with no charges: eligible abilities cost 10% less and deal 10% more while it lasts.
 func (character *Character) registerEureka() {
 	var id int32
 	switch character.Class {
@@ -27,7 +27,7 @@ func (character *Character) registerEureka() {
 	actionID := ActionID{SpellID: id}
 	var affected []*Spell
 	aura := character.RegisterAura(Aura{
-		Label: "Eureka!", ActionID: actionID, Duration: 15 * time.Second, MaxStacks: 3,
+		Label: "Eureka!", ActionID: actionID, Duration: 8 * time.Second,
 		OnInit: func(aura *Aura, _ *Simulation) {
 			mask := ProcMaskMeleeSpecial | ProcMaskRangedSpecial | ProcMaskSpellDamage
 			if character.Class == proto.Class_ClassPriest {
@@ -51,18 +51,12 @@ func (character *Character) registerEureka() {
 				spell.Cost.Multiplier += 10
 			}
 		},
-		OnStacksChange: func(aura *Aura, sim *Simulation, _ int32, stacks int32) {
-			if stacks == 0 {
-				aura.Deactivate(sim)
-			}
-		},
 	})
 	spell := character.RegisterSpell(SpellConfig{
 		ActionID: actionID, Flags: SpellFlagNoOnCastComplete,
 		Cast: CastConfig{CD: Cooldown{Timer: character.NewTimer(), Duration: 2 * time.Minute}},
 		ApplyEffects: func(sim *Simulation, _ *Unit, _ *Spell) {
 			aura.Activate(sim)
-			aura.SetStacks(sim, 3)
 		},
 	})
 	character.AddMajorCooldown(MajorCooldown{Spell: spell, Type: CooldownTypeDPS})
@@ -141,7 +135,7 @@ func (character *Character) attachEurekaCast(aura *Aura, parent *Spell, mask Pro
 	}
 	apply := parent.ApplyEffects
 	parent.ApplyEffects = func(sim *Simulation, target *Unit, spell *Spell) {
-		charged := aura.IsActive() && aura.GetStacks() > 0
+		charged := aura.IsActive()
 		for _, dot := range dots {
 			if dot != nil && (dot.Unit == target || dot == parent.AOEDot()) {
 				chargedDots[dot] = charged
@@ -149,10 +143,6 @@ func (character *Character) attachEurekaCast(aura *Aura, parent *Spell, mask Pro
 		}
 		if charged {
 			multiply(effects, 1.1)
-			// Reserve this cast's charge before damage/resource callbacks can
-			// trigger another eligible cast. The final charge belongs to this
-			// cast, not simultaneously to every nested attack.
-			aura.RemoveStack(sim)
 		}
 		applying = true
 		chargedApplication = charged

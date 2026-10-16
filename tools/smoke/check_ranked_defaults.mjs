@@ -84,7 +84,8 @@ try {
 		assert.ok(fresh.player.equipment.items.filter(item => item.enchant).length >= 9, 'fresh default lacks enchants');
 		assert.equal(fresh.encounter.duration, 300);
 		if (!profile.tankMetrics) {
-			assert.equal(fresh.raidBuffs.moonkinAura, true, `${id}: startup hid the shared crit buff`);
+			assert.equal(fresh.raidBuffs.moonkinAura, true, `${id}: startup hid Moonkin Aura`);
+			assert.equal(fresh.raidBuffs.leaderOfThePack, true, `${id}: startup hid Leader of the Pack`);
 		}
 
 		await page.getByLabel('Ranked build', { exact: true }).selectOption(id);
@@ -147,20 +148,21 @@ try {
 		}
 
 		if (route === 'enhancement_shaman') {
+			// Separate since client 1.60.1.70425: Leader of the Pack is melee and ranged crit, Moonkin Aura spell crit.
 			await page.getByRole('tab', { name: 'Settings', exact: true }).click();
-			const critLabel = page.getByText('Crit Aura (3%)', { exact: true });
-			assert.ok(await critLabel.isVisible());
-			assert.equal(await page.getByText('Moonkin Aura', { exact: true }).isVisible(), false);
-			assert.equal(await page.getByText('Leader of the Pack', { exact: true }).isVisible(), false);
-			const button = critLabel.locator('..').locator(':scope > a.icon-picker-button');
-			await button.click();
-			const off = await page.evaluate(key => JSON.parse(localStorage.getItem(key)).raidBuffs, storageKey);
-			assert.equal(Boolean(off.moonkinAura || off.leaderOfThePack), false);
-			await button.click();
-			const on = await page.evaluate(key => JSON.parse(localStorage.getItem(key)).raidBuffs, storageKey);
-			assert.equal(on.moonkinAura, true);
-			assert.equal(Boolean(on.leaderOfThePack), false);
-			console.log('One crit-aura control; off clears both source flags, on selects one');
+			assert.equal(await page.getByText('Crit Aura (3%)', { exact: true }).count(), 0);
+			for (const [label, field] of [['Leader of the Pack', 'leaderOfThePack'], ['Moonkin Aura', 'moonkinAura']]) {
+				const control = page.getByText(label, { exact: true });
+				assert.ok(await control.isVisible(), `${label} control hidden`);
+				const button = control.locator('..').locator(':scope > a.icon-picker-button');
+				await button.click();
+				const off = await page.evaluate(key => JSON.parse(localStorage.getItem(key)).raidBuffs, storageKey);
+				assert.equal(Boolean(off[field]), false);
+				await button.click();
+				const on = await page.evaluate(key => JSON.parse(localStorage.getItem(key)).raidBuffs, storageKey);
+				assert.equal(on[field], true);
+			}
+			console.log('Separate Leader of the Pack and Moonkin Aura controls');
 		}
 
 		const other = bundle.profiles.find(candidate => candidate.key === profile.key && candidate.id !== id);

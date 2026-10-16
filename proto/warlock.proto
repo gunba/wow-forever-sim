@@ -8,7 +8,7 @@ message WarlockTalents {
 	int32 improved_life_tap = 1;
 	int32 suppression = 2;
 	int32 improved_corruption = 3;
-	int32 malediction = 4;
+	int32 grim_reach = 53;
 	int32 soul_harvesting = 5;
 	int32 improved_drains = 6;
 	int32 improved_bane_of_agony = 7;
@@ -61,6 +61,8 @@ message WarlockTalents {
 	int32 fire_and_brimstone = 50;
 	int32 shadow_and_flame = 51;
 	bool incinerate = 52;
+
+	reserved 4;
 }
 message WarlockRotation {
 }

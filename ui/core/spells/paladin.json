@@ -142,7 +142,7 @@
 	"20116": {
 		"ability": "Consecration",
 		"file": "sim/paladin/consecration.go",
-		"note": "Beta client 1.60.1.69893: baseline, and each tick now casts a damage spell (1280345-1280349) in two parts. Classic's 120 over 8 sec at 0.042 a tick becomes 24 to every enemy plus 56 at 0.095 a tick to the first 4. ",
+		"note": "Beta client 1.60.1.69893: baseline, and each tick now casts a damage spell (1280345-1280349) in two parts. Classic's 120 over 8 sec at 0.042 a tick becomes 24 to every enemy plus 56 at 0.095 a tick to the first 4. Client 1.60.1.70425: the extra damage to the first 4 enemies uses 0.042 a tick (0.095 before).",
 		"source": "forever",
 		"tooltip": "235 Mana\nInstant\n8 sec cooldown\nConsecrates the land beneath the Paladin, doing 24 Holy damage over 8 sec to enemies who enter the area. The first 4 enemies who enter the area will take an additional 56 damage over 8 sec."
 	},
@@ -170,7 +170,7 @@
 	"20187": {
 		"ability": "Judgement of Righteousness",
 		"file": "sim/paladin/sor.go",
-		"note": "Beta client 1.60.1.69893: rank 1's coefficient 0.144 -> 0.5, the same as every higher rank, and its flat 15 becomes 14 to 16.",
+		"note": "Beta client 1.60.1.69893: rank 1's coefficient 0.144 -> 0.5, the same as every higher rank, and its flat 15 becomes 14 to 16. Client 1.60.1.70425: every rank's coefficient is 0.429, the instant-cast value (0.5 before).",
 		"source": "forever",
 		"tooltip": "Causes 14 to 16 Holy damage, plus its growth with level."
 	},
@@ -190,45 +190,45 @@
 	"20280": {
 		"ability": "Judgement of Righteousness",
 		"file": "sim/paladin/sor.go",
-		"note": "Beta client 1.60.1.69893: rank 2's coefficient 0.312 -> 0.5, the same as every higher rank.",
+		"note": "Beta client 1.60.1.69893: rank 2's coefficient 0.312 -> 0.5, the same as every higher rank. Client 1.60.1.70425: every rank's coefficient is 0.429, the instant-cast value (0.5 before).",
 		"source": "forever",
 		"tooltip": "Causes 25 to 27 Holy damage, plus its growth with level."
 	},
 	"20281": {
 		"ability": "Judgement of Righteousness",
 		"file": "sim/paladin/sor.go",
-		"note": "Beta client 1.60.1.69893: rank 3's coefficient 0.462 -> 0.5, the same as every higher rank.",
+		"note": "Beta client 1.60.1.69893: rank 3's coefficient 0.462 -> 0.5, the same as every higher rank. Client 1.60.1.70425: every rank's coefficient is 0.429, the instant-cast value (0.5 before).",
 		"source": "forever",
 		"tooltip": "Causes 39 to 43 Holy damage, plus its growth with level."
 	},
 	"20282": {
 		"ability": "Judgement of Righteousness",
 		"file": "sim/paladin/sor.go",
-		"note": "Beta client 1.60.1.69893 matches Classic.",
+		"note": "Beta client 1.60.1.69893 matches Classic. Client 1.60.1.70425: every rank's coefficient is 0.429, the instant-cast value (0.5 before).",
 		"source": "classic"
 	},
 	"20283": {
 		"ability": "Judgement of Righteousness",
 		"file": "sim/paladin/sor.go",
-		"note": "Beta client 1.60.1.69893 matches Classic.",
+		"note": "Beta client 1.60.1.69893 matches Classic. Client 1.60.1.70425: every rank's coefficient is 0.429, the instant-cast value (0.5 before).",
 		"source": "classic"
 	},
 	"20284": {
 		"ability": "Judgement of Righteousness",
 		"file": "sim/paladin/sor.go",
-		"note": "Beta client 1.60.1.69893 matches Classic.",
+		"note": "Beta client 1.60.1.69893 matches Classic. Client 1.60.1.70425: every rank's coefficient is 0.429, the instant-cast value (0.5 before).",
 		"source": "classic"
 	},
 	"20285": {
 		"ability": "Judgement of Righteousness",
 		"file": "sim/paladin/sor.go",
-		"note": "Beta client 1.60.1.69893 matches Classic.",
+		"note": "Beta client 1.60.1.69893 matches Classic. Client 1.60.1.70425: every rank's coefficient is 0.429, the instant-cast value (0.5 before).",
 		"source": "classic"
 	},
 	"20286": {
 		"ability": "Judgement of Righteousness",
 		"file": "sim/paladin/sor.go",
-		"note": "Beta client 1.60.1.69893 matches Classic.",
+		"note": "Beta client 1.60.1.69893 matches Classic. Client 1.60.1.70425: every rank's coefficient is 0.429, the instant-cast value (0.5 before).",
 		"source": "classic"
 	},
 	"20300": {
@@ -305,21 +305,21 @@
 	"20922": {
 		"ability": "Consecration",
 		"file": "sim/paladin/consecration.go",
-		"note": "Beta client 1.60.1.69893: baseline, and each tick now casts a damage spell (1280345-1280349) in two parts. Classic's 192 over 8 sec at 0.042 a tick becomes 48 to every enemy plus 88 at 0.095 a tick to the first 4. ",
+		"note": "Beta client 1.60.1.69893: baseline, and each tick now casts a damage spell (1280345-1280349) in two parts. Classic's 192 over 8 sec at 0.042 a tick becomes 48 to every enemy plus 88 at 0.095 a tick to the first 4. Client 1.60.1.70425: the extra damage to the first 4 enemies uses 0.042 a tick (0.095 before).",
 		"source": "forever",
 		"tooltip": "320 Mana\nInstant\n8 sec cooldown\nConsecrates the land beneath the Paladin, doing 48 Holy damage over 8 sec to enemies who enter the area. The first 4 enemies who enter the area will take an additional 88 damage over 8 sec."
 	},
 	"20923": {
 		"ability": "Consecration",
 		"file": "sim/paladin/consecration.go",
-		"note": "Beta client 1.60.1.69893: baseline, and each tick now casts a damage spell (1280345-1280349) in two parts. Classic's 280 over 8 sec at 0.042 a tick becomes 64 to every enemy plus 160 at 0.095 a tick to the first 4. ",
+		"note": "Beta client 1.60.1.69893: baseline, and each tick now casts a damage spell (1280345-1280349) in two parts. Classic's 280 over 8 sec at 0.042 a tick becomes 64 to every enemy plus 160 at 0.095 a tick to the first 4. Client 1.60.1.70425: the extra damage to the first 4 enemies uses 0.042 a tick (0.095 before).",
 		"source": "forever",
 		"tooltip": "435 Mana\nInstant\n8 sec cooldown\nConsecrates the land beneath the Paladin, doing 64 Holy damage over 8 sec to enemies who enter the area. The first 4 enemies who enter the area will take an additional 160 damage over 8 sec."
 	},
 	"20924": {
 		"ability": "Consecration",
 		"file": "sim/paladin/consecration.go",
-		"note": "Beta client 1.60.1.69893: baseline, and each tick now casts a damage spell (1280345-1280349) in two parts. Classic's 384 over 8 sec at 0.042 a tick becomes 96 to every enemy plus 216 at 0.095 a tick to the first 4. ",
+		"note": "Beta client 1.60.1.69893: baseline, and each tick now casts a damage spell (1280345-1280349) in two parts. Classic's 384 over 8 sec at 0.042 a tick becomes 96 to every enemy plus 216 at 0.095 a tick to the first 4. Client 1.60.1.70425: the extra damage to the first 4 enemies uses 0.042 a tick (0.095 before).",
 		"source": "forever",
 		"tooltip": "565 Mana\nInstant\n8 sec cooldown\nConsecrates the land beneath the Paladin, doing 96 Holy damage over 8 sec to enemies who enter the area. The first 4 enemies who enter the area will take an additional 216 damage over 8 sec."
 	},
@@ -441,7 +441,7 @@
 	"25713": {
 		"ability": "Seal of Righteousness",
 		"file": "sim/paladin/sor.go",
-		"note": "Beta client 1.60.1.69893 matches Classic: 0.1 coefficient and the same damage.",
+		"note": "Beta client 1.60.1.69893 matches Classic: 0.1 coefficient and the same damage. Client 1.60.1.70425: the proc's 0.1 now counts once; the double addition of spell power is fixed.",
 		"source": "classic"
 	},
 	"25735": {
@@ -498,7 +498,7 @@
 	"25780": {
 		"ability": "Righteous Fury",
 		"file": "sim/paladin/righteous_fury.go",
-		"note": "Beta client 1.60.1.69893: Holy threat +60% -> +90%. Improved Righteous Fury now cuts damage taken by 2% a point instead of adding threat.",
+		"note": "Holy threat +60% until client 1.60.1.70425, +90% since. Improved Righteous Fury now cuts damage taken by 2% a point instead of adding threat.",
 		"source": "forever",
 		"tooltip": "30% of base mana\nInstant\nIncreases the threat generated by your Holy spells by 90%. Lasts 30 min."
 	},
@@ -512,7 +512,7 @@
 	"26573": {
 		"ability": "Consecration",
 		"file": "sim/paladin/consecration.go",
-		"note": "Beta client 1.60.1.69893: baseline, and each tick now casts a damage spell (1280345-1280349) in two parts. Classic's 64 over 8 sec at 0.042 a tick becomes 16 to every enemy plus 32 at 0.095 a tick to the first 4. 26573 also labels the Consecrated Ground buff in sim/paladin/talents.go.",
+		"note": "Beta client 1.60.1.69893: baseline, and each tick now casts a damage spell (1280345-1280349) in two parts. Classic's 64 over 8 sec at 0.042 a tick becomes 16 to every enemy plus 32 at 0.095 a tick to the first 4. 26573 also labels the Consecrated Ground buff in sim/paladin/talents.go. Client 1.60.1.70425: the extra damage to the first 4 enemies uses 0.042 a tick (0.095 before).",
 		"source": "forever",
 		"tooltip": "135 Mana\nInstant\n8 sec cooldown\nConsecrates the land beneath the Paladin, doing 16 Holy damage over 8 sec to enemies who enter the area. The first 4 enemies who enter the area will take an additional 32 damage over 8 sec."
 	},
@@ -735,8 +735,8 @@
 		"ability": "Judgement of Fury (rank 1)",
 		"file": "sim/paladin/sof.go",
 		"source": "forever",
-		"tooltip": "Level60 mean base 33.26 Holy damage (+0.45 SP), source variance 0.1. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
-		"note": "70291 base23, PPL1.71, learn10, cap16; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection."
+		"tooltip": "Level60 mean base 33.26 Holy damage (+0.429 SP), source variance 0.1. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
+		"note": "70291 base23, PPL1.71, learn10, cap16; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection. Client 1.60.1.70425: coefficient 0.429 (0.45 before)."
 	},
 	"1311654": {
 		"ability": "Seal of Fury proc (rank 2)",
@@ -752,8 +752,8 @@
 		"ability": "Judgement of Fury (rank 2)",
 		"file": "sim/paladin/sof.go",
 		"source": "forever",
-		"tooltip": "Level60 mean base 49.860002 Holy damage (+0.45 SP), source variance 0.1. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
-		"note": "70291 base36.900002, PPL2.16, learn18, cap24; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection."
+		"tooltip": "Level60 mean base 49.860002 Holy damage (+0.429 SP), source variance 0.1. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
+		"note": "70291 base36.900002, PPL2.16, learn18, cap24; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection. Client 1.60.1.70425: coefficient 0.429 (0.45 before)."
 	},
 	"20231": {
 		"ability": "Seal of Fury proc (rank 3)",
@@ -769,8 +769,8 @@
 		"ability": "Judgement of Fury (rank 3)",
 		"file": "sim/paladin/sof.go",
 		"source": "forever",
-		"tooltip": "Level60 mean base 69.12 Holy damage (+0.45 SP), source variance 0.1. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
-		"note": "70291 base54, PPL2.52, learn25, cap31; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection."
+		"tooltip": "Level60 mean base 69.12 Holy damage (+0.429 SP), source variance 0.1. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
+		"note": "70291 base54, PPL2.52, learn25, cap31; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection. Client 1.60.1.70425: coefficient 0.429 (0.45 before)."
 	},
 	"20415": {
 		"ability": "Seal of Fury proc (rank 4)",
@@ -786,8 +786,8 @@
 		"ability": "Judgement of Fury (rank 4)",
 		"file": "sim/paladin/sof.go",
 		"source": "forever",
-		"tooltip": "Level60 mean base 90.74 Holy damage (+0.45 SP), source variance 0.097561. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
-		"note": "70291 base74, PPL2.79, learn34, cap40; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection."
+		"tooltip": "Level60 mean base 90.74 Holy damage (+0.429 SP), source variance 0.097561. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
+		"note": "70291 base74, PPL2.79, learn34, cap40; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection. Client 1.60.1.70425: coefficient 0.429 (0.45 before)."
 	},
 	"20416": {
 		"ability": "Seal of Fury proc (rank 5)",
@@ -803,8 +803,8 @@
 		"ability": "Judgement of Fury (rank 5)",
 		"file": "sim/paladin/sof.go",
 		"source": "forever",
-		"tooltip": "Level60 mean base 116.52 Holy damage (+0.45 SP), source variance 0.097561. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
-		"note": "70291 base96, PPL3.42, learn42, cap48; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection."
+		"tooltip": "Level60 mean base 116.52 Holy damage (+0.429 SP), source variance 0.097561. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
+		"note": "70291 base96, PPL3.42, learn42, cap48; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection. Client 1.60.1.70425: coefficient 0.429 (0.45 before)."
 	},
 	"20417": {
 		"ability": "Seal of Fury proc (rank 6)",
@@ -820,8 +820,8 @@
 		"ability": "Judgement of Fury (rank 6)",
 		"file": "sim/paladin/sof.go",
 		"source": "forever",
-		"tooltip": "Level60 mean base 145.14 Holy damage (+0.45 SP), source variance 0.087591. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
-		"note": "70291 base123, PPL3.69, learn50, cap56; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection."
+		"tooltip": "Level60 mean base 145.14 Holy damage (+0.429 SP), source variance 0.087591. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
+		"note": "70291 base123, PPL3.69, learn50, cap56; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection. Client 1.60.1.70425: coefficient 0.429 (0.45 before)."
 	},
 	"20418": {
 		"ability": "Seal of Fury proc (rank 7)",
@@ -837,8 +837,8 @@
 		"ability": "Judgement of Fury (rank 7)",
 		"file": "sim/paladin/sof.go",
 		"source": "forever",
-		"tooltip": "Level60 mean base 160.38 Holy damage (+0.45 SP), source variance 0.087591. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
-		"note": "70291 base153, PPL3.69, learn58, cap64; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection."
+		"tooltip": "Level60 mean base 160.38 Holy damage (+0.429 SP), source variance 0.087591. Melee hit/crit; no block/dodge/parry. Applies a4sec taunt marker.",
+		"note": "70291 base153, PPL3.69, learn58, cap64; engine applies source variance to the grown mean. Final integer endpoint rounding is not claimed. Improved Seals applies once. No Judgement shield is invented. The4sec20232 aura does NOT implement threat-based retargeting/AI selection. Client 1.60.1.70425: coefficient 0.429 (0.45 before)."
 	},
 	"1314104": {
 		"ability": "Improved Seal of Fury mana",

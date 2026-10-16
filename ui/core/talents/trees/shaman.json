@@ -74,29 +74,29 @@
         ]
       },
       {
-        "fieldName": "elementalWarding",
+        "fieldName": "elementalDevastation",
         "location": {
           "rowIdx": 1,
           "colIdx": 0
         },
         "spellIds": [
-          28996,
-          28997,
-          28998
+          30160,
+          29179,
+          29180
         ],
         "maxPoints": 3,
-        "name": "Elemental Warding",
-        "icon": "spell_nature_spiritarmor",
-        "description": "Reduces damage taken from Fire, Frost, and Nature effects by {0}%.",
+        "name": "Elemental Devastation",
+        "icon": "classic_spell_fire_elementaldevastation",
+        "description": "Your Critical Strikes with direct damage spells increase your chance to get a Critical Strike with melee attacks by {0}% for 10 sec.",
         "ranks": [
           [
             3
           ],
           [
-            7
+            6
           ],
           [
-            10
+            9
           ]
         ]
       },
@@ -136,83 +136,9 @@
         ]
       },
       {
-        "fieldName": "callOfFlame",
-        "location": {
-          "rowIdx": 1,
-          "colIdx": 2
-        },
-        "spellIds": [
-          16038,
-          16160,
-          16161
-        ],
-        "maxPoints": 3,
-        "name": "Call of Flame",
-        "icon": "spell_fire_immolation",
-        "description": "Increases the damage done by your Fire Totems and by your Flame Shock, Fire Nova, and Lava Burst spells by {0}%.",
-        "ranks": [
-          [
-            5
-          ],
-          [
-            10
-          ],
-          [
-            15
-          ]
-        ]
-      },
-      {
-        "fieldName": "elementalDevastation",
-        "location": {
-          "rowIdx": 1,
-          "colIdx": 3
-        },
-        "spellIds": [
-          30160,
-          29179,
-          29180
-        ],
-        "maxPoints": 3,
-        "name": "Elemental Devastation",
-        "icon": "classic_spell_fire_elementaldevastation",
-        "description": "Your offensive spell critical strikes will increase your chance to get a critical strike with melee attacks by {0}% for 10 sec.",
-        "ranks": [
-          [
-            3
-          ],
-          [
-            6
-          ],
-          [
-            9
-          ]
-        ]
-      },
-      {
-        "fieldName": "elementalFocus",
-        "location": {
-          "rowIdx": 2,
-          "colIdx": 1
-        },
-        "spellIds": [
-          16164
-        ],
-        "maxPoints": 1,
-        "name": "Elemental Focus",
-        "icon": "spell_shadow_manaburn",
-        "description": "Gives you a {0}% chance to enter a Clearcasting state after casting any Fire, Frost, or Nature damage spell. The Clearcasting state reduces the mana cost of your next damage spell by {1}%.",
-        "ranks": [
-          [
-            10,
-            100
-          ]
-        ]
-      },
-      {
         "fieldName": "elementalAlacrity",
         "location": {
-          "rowIdx": 2,
+          "rowIdx": 1,
           "colIdx": 2
         },
         "spellIds": [
@@ -237,6 +163,83 @@
         ]
       },
       {
+        "fieldName": "callOfFlame",
+        "location": {
+          "rowIdx": 1,
+          "colIdx": 3
+        },
+        "spellIds": [
+          16038,
+          16160,
+          16161
+        ],
+        "maxPoints": 3,
+        "name": "Call of Flame",
+        "icon": "spell_fire_immolation",
+        "description": "Increases the damage done by your Fire Totems and by your Flame Shock, Fire Nova, and Lava Burst spells by {0}%, as well as increases the duration of your Flame Shock spell by {1} sec.",
+        "ranks": [
+          [
+            5,
+            3
+          ],
+          [
+            10,
+            6
+          ],
+          [
+            15,
+            9
+          ]
+        ]
+      },
+      {
+        "fieldName": "elementalFocus",
+        "location": {
+          "rowIdx": 2,
+          "colIdx": 0
+        },
+        "spellIds": [
+          16164
+        ],
+        "maxPoints": 1,
+        "name": "Elemental Focus",
+        "icon": "spell_shadow_manaburn",
+        "description": "Gives you a {0}% chance to enter a Clearcasting state after casting any Fire, Frost, or Nature damage spell. The Clearcasting state reduces the mana cost of your next damage spell by {1}%.",
+        "ranks": [
+          [
+            10,
+            100
+          ]
+        ]
+      },
+      {
+        "fieldName": "elementalWarding",
+        "location": {
+          "rowIdx": 2,
+          "colIdx": 1
+        },
+        "spellIds": [
+          28996,
+          28997,
+          28998
+        ],
+        "maxPoints": 3,
+        "name": "Elemental Warding",
+        "icon": "spell_nature_spiritarmor",
+        "description": "Reduces damage taken from Fire, Frost, and Nature effects by {0}%.",
+        "ranks": [
+          [
+            3
+          ],
+          [
+            7
+          ],
+          [
+            10
+          ]
+        ]
+      },
+      {
         "fieldName": "improvedFireNova",
         "location": {
           "rowIdx": 3,
@@ -247,17 +250,19 @@
           16544
         ],
         "maxPoints": 2,
-        "name": "Improved Fire Nova",
+        "name": "Trial by Fire",
         "icon": "spell_fire_sealoffire",
-        "description": "Increases the damage done by your Fire Nova spell by {0}% and reduces its cooldown by {1} sec.",
+        "description": "Increases the damage done by your Fire Nova spell by {0}% and reduces its cooldown by {1} sec, and increases the duration of your Magma Totem by {2} sec.",
         "ranks": [
           [
             10,
-            2
+            2,
+            10
           ],
           [
             20,
-            4
+            4,
+            20
           ]
         ]
       },
@@ -290,27 +295,24 @@
         "notSimulated": true
       },
       {
-        "fieldName": "callOfThunder",
+        "fieldName": "earthbound",
         "location": {
           "rowIdx": 3,
-          "colIdx": 2
-        },
-        "prereqLocation": {
-          "rowIdx": 2,
-          "colIdx": 2
+          "colIdx": 3
         },
         "spellIds": [
-          16041
+          2484
         ],
         "maxPoints": 1,
-        "name": "Call of Thunder",
-        "icon": "spell_nature_callstorm",
-        "description": "Increases the critical strike chance of your Lightning Bolt and Chain Lightning spells by {0}%.",
+        "name": "Earthbound",
+        "icon": "spell_nature_stranglevines",
+        "description": "Your Earthbind Totem immobilizes nearby targets for {0} sec when cast.",
         "ranks": [
           [
-            3
+            5
           ]
-        ]
+        ],
+        "notSimulated": true
       },
       {
         "fieldName": "elementalReach",
@@ -325,24 +327,48 @@
         "maxPoints": 2,
         "name": "Elemental Reach",
         "icon": "spell_nature_stormreach",
-        "description": "Increases the range of your Lightning Bolt, Chain Lightning, Fire Nova, and Lava Burst spells by {0} yards, and increases the range of your Flame Shock spell by {1} yards.",
+        "description": "Increases the range of your Lightning Bolt, Chain Lightning, Fire Nova, and Lava Burst spells by {0} yards and reduces the cooldown of Totemic Projection by {1} sec.",
         "ranks": [
           [
             3,
-            8
+            10
           ],
           [
             6,
-            15
+            20
           ]
         ],
         "notSimulated": true
       },
       {
-        "fieldName": "lightningOverload",
+        "fieldName": "lavaBurst",
         "location": {
           "rowIdx": 4,
           "colIdx": 1
+        },
+        "spellIds": [
+          51505
+        ],
+        "maxPoints": 1,
+        "name": "Lava Burst",
+        "icon": "spell_shaman_lavaburst",
+        "description": "You hurl molten lava at the target, dealing {0} Fire damage. If your Flame Shock is on the target, Lava Burst deals {1}% increased damage.",
+        "ranks": [
+          [
+            123,
+            20
+          ]
+        ]
+      },
+      {
+        "fieldName": "lightningOverload",
+        "location": {
+          "rowIdx": 4,
+          "colIdx": 2
+        },
+        "prereqLocation": {
+          "rowIdx": 1,
+          "colIdx": 2
         },
         "spellIds": [
           30675,
@@ -366,33 +392,13 @@
         ]
       },
       {
-        "fieldName": "earthbound",
-        "location": {
-          "rowIdx": 4,
-          "colIdx": 3
-        },
-        "spellIds": [
-          2484
-        ],
-        "maxPoints": 1,
-        "name": "Earthbound",
-        "icon": "spell_nature_stranglevines",
-        "description": "Your Earthbind Totem immobilizes nearby targets for {0} sec when cast.",
-        "ranks": [
-          [
-            5
-          ]
-        ],
-        "notSimulated": true
-      },
-      {
         "fieldName": "elementalFury",
         "location": {
           "rowIdx": 5,
           "colIdx": 2
         },
         "prereqLocation": {
-          "rowIdx": 3,
+          "rowIdx": 4,
           "colIdx": 2
         },
         "spellIds": [
@@ -425,7 +431,7 @@
         ]
       },
       {
-        "fieldName": "lavaBurst",
+        "fieldName": "elementalMastery",
         "location": {
           "rowIdx": 6,
           "colIdx": 1
@@ -435,19 +441,13 @@
           "colIdx": 1
         },
         "spellIds": [
-          51505
+          16166
         ],
         "maxPoints": 1,
-        "name": "Lava Burst",
-        "icon": "spell_shaman_lavaburst",
-        "description": "You hurl molten lava at the target, dealing {0} to {1} Fire damage. If your Flame Shock is on the target, Lava Burst deals {2}% increased damage.",
-        "ranks": [
-          [
-            158,
-            187,
-            20
-          ]
-        ]
+        "name": "Elemental Mastery",
+        "icon": "spell_nature_wispheal",
+        "description": "Gain mastery over Fire and Lightning, reducing the cast time of Lightning Bolt and Lava Burst by 0.5 sec, and removing the cooldown from Chain Lightning. Lasts 15 sec.",
+        "ranks": []
       }
     ]
   },
@@ -1015,37 +1015,42 @@
         "notSimulated": true
       },
       {
-        "fieldName": "totemicFocus",
+        "fieldName": "tidalFocus",
         "location": {
           "rowIdx": 0,
           "colIdx": 2
         },
         "spellIds": [
-          16173,
-          16222,
-          16223,
-          16224,
-          16225
+          16179,
+          16214,
+          16215,
+          16216,
+          16217
         ],
         "maxPoints": 5,
-        "name": "Totemic Focus",
-        "icon": "spell_nature_moonglow",
-        "description": "Reduces the Mana cost of your totems and any spells that summon or move them by {0}%.",
+        "name": "Tidal Focus",
+        "icon": "spell_frost_manarecharge",
+        "description": "Reduces the Mana cost of your healing spells by {0}% and improves your chance to hit by {1}%.",
         "ranks": [
           [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
             5
-          ],
-          [
-            10
-          ],
-          [
-            15
-          ],
-          [
-            20
-          ],
-          [
-            25
           ]
         ]
       },
@@ -1104,42 +1109,37 @@
         ]
       },
       {
-        "fieldName": "tidalFocus",
+        "fieldName": "totemicFocus",
         "location": {
           "rowIdx": 1,
           "colIdx": 2
         },
         "spellIds": [
-          16179,
-          16214,
-          16215,
-          16216,
-          16217
+          16173,
+          16222,
+          16223,
+          16224,
+          16225
         ],
         "maxPoints": 5,
-        "name": "Tidal Focus",
-        "icon": "spell_frost_manarecharge",
-        "description": "Reduces the Mana cost of your healing spells by {0}% and improves your chance to hit by {1}%.",
+        "name": "Totemic Focus",
+        "icon": "spell_nature_moonglow",
+        "description": "Reduces the Mana cost of your totems and any spells that summon or move them by {0}%.",
         "ranks": [
           [
-            1,
-            1
-          ],
-          [
-            2,
-            2
-          ],
-          [
-            3,
-            3
-          ],
-          [
-            4,
-            4
-          ],
-          [
-            5,
             5
+          ],
+          [
+            10
+          ],
+          [
+            15
+          ],
+          [
+            20
+          ],
+          [
+            25
           ]
         ]
       },
@@ -1238,7 +1238,7 @@
         "maxPoints": 1,
         "name": "Water Shield",
         "icon": "ability_shaman_watershield",
-        "description": "The caster is surrounded by {0} globes of water. When a spell, melee, or ranged attack hits the caster or when one of the caster's healing spells gets a critical result, {1}% of maximum mana is restored to the caster, expending one water globe. Only one globe will activate every few seconds. Lasts {2} min. Only one Elemental Shield can be active on the Shaman at any one time.",
+        "description": "The caster is surrounded by {0} globes of water. When a spell, melee, or ranged attack hits the caster or when one of the caster's spells gets a critical result, {1}% of maximum mana is restored to the caster, expending one water globe. Only one globe will activate every few seconds. Lasts {2} min. Only one Elemental Shield can be active on the Shaman at any one time.",
         "ranks": [
           [
             3,
@@ -1442,7 +1442,6 @@
         ],
         "maxPoints": 1,
         "name": "Riptide",
-        "iconUrl": "assets/img/talents/shaman/riptide.png",
         "description": "Heals a friendly target for {0} to {1}, an additional {2} over {3} sec, and increases the effectiveness of your Chain Heal casts directly on that target by {4}%.",
         "ranks": [
           [
@@ -1453,6 +1452,7 @@
             25
           ]
         ],
+        "iconUrl": "assets/img/talents/shaman/riptide.png",
         "notSimulated": true
       }
     ]

@@ -1,0 +1,8087 @@
+{
+ "gear": {
+  "search": {
+   "seed": 1793700101,
+   "screen": 100,
+   "validate": 2000,
+   "passes": 5,
+   "iterations": 5000,
+   "profiles": "All 184 DPS profiles on the final engine, starting from the migrated and re-optimized setups. Tanks keep their guarded selections.",
+   "completed": 184,
+   "unconverged": [],
+   "changes": 44
+  },
+  "confirmation": [
+   {
+    "seed": 1793900001,
+    "rule": "retain if the two-seed mean gain exceeds 1.96 x the summed standard errors",
+    "selections": [
+     {
+      "Key": "balance",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "balance",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "balance",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "balance",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "elemental",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "elemental",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "elemental",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "elemental",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "elemental",
+      "Race": "Dwarf",
+      "Decision": "retain",
+      "BaselineDPS": 524.4423866531911,
+      "CandidateDPS": 527.5911791534991,
+      "GainDPS": 3.148792500307991,
+      "GainPercent": 0.6004077054874396,
+      "Conservative95BoundDPS": 0.9899103733115303
+     },
+     {
+      "Key": "stormcaller",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "stormcaller",
+      "Race": "Tauren",
+      "Decision": "retain",
+      "BaselineDPS": 467.9003635404878,
+      "CandidateDPS": 470.6994860056429,
+      "GainDPS": 2.799122465155108,
+      "GainPercent": 0.5982304531620433,
+      "Conservative95BoundDPS": 0.8628064401306431
+     },
+     {
+      "Key": "stormcaller",
+      "Race": "Troll",
+      "Decision": "retain",
+      "BaselineDPS": 458.5204285184599,
+      "CandidateDPS": 459.5757550259302,
+      "GainDPS": 1.0553265074703404,
+      "GainPercent": 0.2301591034624651,
+      "Conservative95BoundDPS": 0.8162014167996899
+     },
+     {
+      "Key": "stormcaller",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "stormcaller",
+      "Race": "Dwarf",
+      "Decision": "retain",
+      "BaselineDPS": 463.7876323585581,
+      "CandidateDPS": 466.41767097587683,
+      "GainDPS": 2.630038617318746,
+      "GainPercent": 0.5670782129191063,
+      "Conservative95BoundDPS": 0.8465275505006937
+     },
+     {
+      "Key": "enhancement",
+      "Race": "Orc",
+      "Decision": "retain",
+      "BaselineDPS": 796.001460097846,
+      "CandidateDPS": 802.685164679142,
+      "GainDPS": 6.683704581295956,
+      "GainPercent": 0.8396598393769757,
+      "Conservative95BoundDPS": 1.6018278081131982
+     },
+     {
+      "Key": "enhancement",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "enhancement",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "enhancement",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "enhancement",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Windshaper",
+      "Decision": "retain",
+      "BaselineDPS": 980.1800659722185,
+      "CandidateDPS": 982.0449602568187,
+      "GainDPS": 1.8648942846002683,
+      "GainPercent": 0.19026037657178038,
+      "Conservative95BoundDPS": 0.797097926958016
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "High Order",
+      "Decision": "retain",
+      "BaselineDPS": 980.1800659722185,
+      "CandidateDPS": 982.0449602568187,
+      "GainDPS": 1.8648942846002683,
+      "GainPercent": 0.19026037657178038,
+      "Conservative95BoundDPS": 0.797097926958016
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "Orc",
+      "Decision": "retain",
+      "BaselineDPS": 830.9731092342784,
+      "CandidateDPS": 851.0199051950536,
+      "GainDPS": 20.046795960775285,
+      "GainPercent": 2.412448217397543,
+      "Conservative95BoundDPS": 1.9960848575550239
+     },
+     {
+      "Key": "arcane",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "Undead",
+      "Decision": "retain",
+      "BaselineDPS": 837.3838869429829,
+      "CandidateDPS": 843.9288729511292,
+      "GainDPS": 6.544986008146225,
+      "GainPercent": 0.7815992294812176,
+      "Conservative95BoundDPS": 1.9132275355523245
+     },
+     {
+      "Key": "arcane",
+      "Race": "Human",
+      "Decision": "retain",
+      "BaselineDPS": 831.043601992362,
+      "CandidateDPS": 855.8229638361117,
+      "GainDPS": 24.77936184374971,
+      "GainPercent": 2.9817162161339223,
+      "Conservative95BoundDPS": 1.9527200509469684
+     },
+     {
+      "Key": "arcane",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "High Order",
+      "Decision": "retain",
+      "BaselineDPS": 847.0247292571141,
+      "CandidateDPS": 852.6562138887049,
+      "GainDPS": 5.631484631590752,
+      "GainPercent": 0.6648548073123985,
+      "Conservative95BoundDPS": 1.964870521395616
+     },
+     {
+      "Key": "fire",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "Human",
+      "Decision": "retain",
+      "BaselineDPS": 790.6638752058543,
+      "CandidateDPS": 795.4055856541727,
+      "GainDPS": 4.741710448318372,
+      "GainPercent": 0.5997125449906052,
+      "Conservative95BoundDPS": 1.4855966795639075
+     },
+     {
+      "Key": "fire",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "frost",
+      "Race": "Orc",
+      "Decision": "retain",
+      "BaselineDPS": 603.0089717454736,
+      "CandidateDPS": 607.3120817379606,
+      "GainDPS": 4.303109992487066,
+      "GainPercent": 0.71360629677387,
+      "Conservative95BoundDPS": 0.8421211400990262
+     },
+     {
+      "Key": "frost",
+      "Race": "Troll",
+      "Decision": "retain",
+      "BaselineDPS": 596.9342637367279,
+      "CandidateDPS": 599.036710625873,
+      "GainDPS": 2.102446889145085,
+      "GainPercent": 0.35220744005948856,
+      "Conservative95BoundDPS": 0.8110920782280254
+     },
+     {
+      "Key": "frost",
+      "Race": "Undead",
+      "Decision": "retain",
+      "BaselineDPS": 599.4782390763887,
+      "CandidateDPS": 604.5113938650568,
+      "GainDPS": 5.033154788668071,
+      "GainPercent": 0.8395892395398058,
+      "Conservative95BoundDPS": 0.8280561161499765
+     },
+     {
+      "Key": "frost",
+      "Race": "Human",
+      "Decision": "retain",
+      "BaselineDPS": 604.4770837727106,
+      "CandidateDPS": 608.9556542921058,
+      "GainDPS": 4.478570519395248,
+      "GainPercent": 0.740899967860359,
+      "Conservative95BoundDPS": 0.8469016134956165
+     },
+     {
+      "Key": "frost",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "frost",
+      "Race": "High Order",
+      "Decision": "retain",
+      "BaselineDPS": 610.2175937340031,
+      "CandidateDPS": 612.1799948015625,
+      "GainDPS": 1.9624010675594263,
+      "GainPercent": 0.32159037820447484,
+      "Conservative95BoundDPS": 0.812653097276696
+     },
+     {
+      "Key": "retribution",
+      "Race": "Undead",
+      "Decision": "retain",
+      "BaselineDPS": 967.9653162464889,
+      "CandidateDPS": 1003.2679576127731,
+      "GainDPS": 35.302641366284206,
+      "GainPercent": 3.6470977599877674,
+      "Conservative95BoundDPS": 1.4643981701784106
+     },
+     {
+      "Key": "retribution",
+      "Race": "Human",
+      "Decision": "retain",
+      "BaselineDPS": 973.6381815833038,
+      "CandidateDPS": 1007.7734414248494,
+      "GainDPS": 34.135259841545576,
+      "GainPercent": 3.5059491798108975,
+      "Conservative95BoundDPS": 1.4755147786568907
+     },
+     {
+      "Key": "retribution",
+      "Race": "Dwarf",
+      "Decision": "retain",
+      "BaselineDPS": 970.8217416666253,
+      "CandidateDPS": 1002.8569472294321,
+      "GainDPS": 32.03520556280682,
+      "GainPercent": 3.299803062487195,
+      "Conservative95BoundDPS": 1.470037506101696
+     },
+     {
+      "Key": "shadow",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Human",
+      "Decision": "retain",
+      "BaselineDPS": 759.4681573426892,
+      "CandidateDPS": 761.8447491868185,
+      "GainDPS": 2.3765918441292797,
+      "GainPercent": 0.3129284382961836,
+      "Conservative95BoundDPS": 0.8615339275523713
+     },
+     {
+      "Key": "combat",
+      "Race": "Dwarf",
+      "Decision": "retain",
+      "BaselineDPS": 756.8603154043105,
+      "CandidateDPS": 761.492035581371,
+      "GainDPS": 4.631720177060515,
+      "GainPercent": 0.6119649931158402,
+      "Conservative95BoundDPS": 0.8962460777126314
+     },
+     {
+      "Key": "combat",
+      "Race": "Night Elf",
+      "Decision": "retain",
+      "BaselineDPS": 754.1226473741306,
+      "CandidateDPS": 757.8079372793275,
+      "GainDPS": 3.685289905196896,
+      "GainPercent": 0.4886857486682234,
+      "Conservative95BoundDPS": 0.8753560094482022
+     },
+     {
+      "Key": "combat",
+      "Race": "Gnome",
+      "Decision": "retain",
+      "BaselineDPS": 755.4999919197016,
+      "CandidateDPS": 758.2234978771933,
+      "GainDPS": 2.723505957491625,
+      "GainPercent": 0.36049053429786043,
+      "Conservative95BoundDPS": 0.8740539056438477
+     },
+     {
+      "Key": "combat",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Windshaper",
+      "Decision": "retain",
+      "BaselineDPS": 716.8715673766428,
+      "CandidateDPS": 717.8946235427918,
+      "GainDPS": 1.02305616614899,
+      "GainPercent": 0.14271122090848368,
+      "Conservative95BoundDPS": 0.7581423879271983
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "High Order",
+      "Decision": "retain",
+      "BaselineDPS": 716.8715673766428,
+      "CandidateDPS": 717.8946235427918,
+      "GainDPS": 1.02305616614899,
+      "GainPercent": 0.14271122090848368,
+      "Conservative95BoundDPS": 0.7581423879271983
+     },
+     {
+      "Key": "demonology",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "demonology",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "demonology",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "demonology",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "demonology",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "affliction",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "affliction",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "affliction",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "affliction",
+      "Race": "Human",
+      "Decision": "retain",
+      "BaselineDPS": 840.9591891477514,
+      "CandidateDPS": 844.3181307955297,
+      "GainDPS": 3.358941647778238,
+      "GainPercent": 0.3994179136305379,
+      "Conservative95BoundDPS": 1.3589375005216928
+     },
+     {
+      "Key": "affliction",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "ds_ruin",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "ds_ruin",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "ds_ruin",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "ds_ruin",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "ds_ruin",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "destruction",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "destruction",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "destruction",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "destruction",
+      "Race": "Human",
+      "Decision": "retain",
+      "BaselineDPS": 816.3536870738219,
+      "CandidateDPS": 819.0099732548463,
+      "GainDPS": 2.6562861810243703,
+      "GainPercent": 0.32538423272707845,
+      "Conservative95BoundDPS": 0.9453084865715489
+     },
+     {
+      "Key": "destruction",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Tauren",
+      "Decision": "retain",
+      "BaselineDPS": 992.8570051406884,
+      "CandidateDPS": 994.8269042462338,
+      "GainDPS": 1.9698991055453234,
+      "GainPercent": 0.1984071316761458,
+      "Conservative95BoundDPS": 1.4540736494556452
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Tauren",
+      "Decision": "retain",
+      "BaselineDPS": 964.4803318746552,
+      "CandidateDPS": 967.9852741716707,
+      "GainDPS": 3.5049422970154183,
+      "GainPercent": 0.36340215359320815,
+      "Conservative95BoundDPS": 1.448370002950177
+     },
+     {
+      "Key": "fury",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Undead",
+      "Decision": "retain",
+      "BaselineDPS": 950.1447825679818,
+      "CandidateDPS": 958.8607192972348,
+      "GainDPS": 8.71593672925303,
+      "GainPercent": 0.9173272209837573,
+      "Conservative95BoundDPS": 1.4043228495404807
+     },
+     {
+      "Key": "fury",
+      "Race": "Windshaper",
+      "Decision": "retain",
+      "BaselineDPS": 995.6671538265655,
+      "CandidateDPS": 1000.0459198697072,
+      "GainDPS": 4.378766043141695,
+      "GainPercent": 0.43978211255771016,
+      "Conservative95BoundDPS": 1.426597289078886
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Windshaper",
+      "Decision": "retain",
+      "BaselineDPS": 969.1106490471527,
+      "CandidateDPS": 973.2599175690505,
+      "GainDPS": 4.1492685218977385,
+      "GainPercent": 0.42815219562156037,
+      "Conservative95BoundDPS": 1.4185344789062033
+     },
+     {
+      "Key": "fury",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Dwarf",
+      "Decision": "retain",
+      "BaselineDPS": 947.274033622663,
+      "CandidateDPS": 960.8160973144572,
+      "GainDPS": 13.542063691794283,
+      "GainPercent": 1.4295824873405774,
+      "Conservative95BoundDPS": 1.452199309753799
+     },
+     {
+      "Key": "fury",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Night Elf",
+      "Decision": "retain",
+      "BaselineDPS": 951.0198961459273,
+      "CandidateDPS": 953.7037554088462,
+      "GainDPS": 2.6838592629188724,
+      "GainPercent": 0.28220852936888013,
+      "Conservative95BoundDPS": 1.4060315964828844
+     },
+     {
+      "Key": "fury",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "High Order",
+      "Decision": "retain",
+      "BaselineDPS": 995.6671538265655,
+      "CandidateDPS": 1000.0459198697072,
+      "GainDPS": 4.378766043141695,
+      "GainPercent": 0.43978211255771016,
+      "Conservative95BoundDPS": 1.426597289078886
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "High Order",
+      "Decision": "retain",
+      "BaselineDPS": 969.1106490471527,
+      "CandidateDPS": 973.2599175690505,
+      "GainDPS": 4.1492685218977385,
+      "GainPercent": 0.42815219562156037,
+      "Conservative95BoundDPS": 1.4185344789062033
+     },
+     {
+      "Key": "arms",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Troll",
+      "Decision": "retain",
+      "BaselineDPS": 948.0185596270064,
+      "CandidateDPS": 950.0788453864421,
+      "GainDPS": 2.0602857594357147,
+      "GainPercent": 0.21732546673414546,
+      "Conservative95BoundDPS": 1.0662720482328207
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "Orc",
+      "Decision": "retain",
+      "BaselineDPS": 833.6022941362864,
+      "CandidateDPS": 851.4285851250761,
+      "GainDPS": 17.82629098878965,
+      "GainPercent": 2.1384647228280316,
+      "Conservative95BoundDPS": 1.7963270772383426
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "Troll",
+      "Decision": "retain",
+      "BaselineDPS": 820.8345026913801,
+      "CandidateDPS": 837.6394716704043,
+      "GainDPS": 16.80496897902424,
+      "GainPercent": 2.047302948879894,
+      "Conservative95BoundDPS": 1.778357626066585
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "Undead",
+      "Decision": "retain",
+      "BaselineDPS": 834.3240259658679,
+      "CandidateDPS": 850.1545689825602,
+      "GainDPS": 15.830543016692332,
+      "GainPercent": 1.8974094625125846,
+      "Conservative95BoundDPS": 1.7677761787393813
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "Human",
+      "Decision": "retain",
+      "BaselineDPS": 847.2529087958525,
+      "CandidateDPS": 851.4438629183892,
+      "GainDPS": 4.190954122536709,
+      "GainPercent": 0.49465207838507746,
+      "Conservative95BoundDPS": 1.7562486601954443
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "Gnome",
+      "Decision": "retain",
+      "BaselineDPS": 847.0821864718764,
+      "CandidateDPS": 851.2654716304661,
+      "GainDPS": 4.183285158589683,
+      "GainPercent": 0.4938464325419468,
+      "Conservative95BoundDPS": 1.7607960044298194
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "High Order",
+      "Decision": "retain",
+      "BaselineDPS": 849.9721629833718,
+      "CandidateDPS": 854.0367613398009,
+      "GainDPS": 4.064598356429087,
+      "GainPercent": 0.4782037028321601,
+      "Conservative95BoundDPS": 1.758520141293216
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "retribution_physical",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "retribution_physical",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "retribution_physical",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "protection_paladin",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "protection_paladin",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "protection_paladin",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral_tank_druid",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral_tank_druid",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral_tank_druid",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral_tank_druid",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     }
+    ]
+   }
+  ]
+ },
+ "talents": {
+  "method": "Legal one-point reallocations screened at 250 iterations, the five best confirmed at 2,000 iterations on a separate seed; a move is kept above 2.5 combined standard errors; up to four rounds. One representative race per build; the result applies to every race of the build.",
+  "seed": 1793700001,
+  "builds": [
+   {
+    "Key": "affliction",
+    "Race": "Human",
+    "Start": "2550020013520105--0550015103",
+    "Final": "2550020013520105--0550015103",
+    "Rounds": 1,
+    "Screened": 103,
+    "Validated": [
+     {
+      "Talents": "2550020013520105--0550015103",
+      "DPS": 840.89411872493,
+      "StandardError": 0.7593334398505718,
+      "Round": 1,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "2550020013520105--0550105103",
+      "DPS": 842.0394523962572,
+      "StandardError": 0.7793692345219191,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "2550011013520105--0550015103",
+      "DPS": 841.2246636940363,
+      "StandardError": 0.7593378026225501,
+      "Round": 1,
+      "Stage": "validate"
+     }
+    ]
+   },
+   {
+    "Key": "arcane",
+    "Race": "Gnome",
+    "Start": "0512005023100311531-03-005500032",
+    "Final": "0512005023100311531-03-005500032",
+    "Rounds": 1,
+    "Screened": 119,
+    "Validated": [
+     {
+      "Talents": "0512005023100311531-03-005500032",
+      "DPS": 854.4827271621043,
+      "StandardError": 1.083885576709126,
+      "Round": 1,
+      "Stage": "validate-baseline"
+     }
+    ]
+   },
+   {
+    "Key": "arcane_frost",
+    "Race": "Gnome",
+    "Start": "050200500310031053--05550002010003002",
+    "Final": "050200500310031053--05550002010003002",
+    "Rounds": 1,
+    "Screened": 95,
+    "Validated": [
+     {
+      "Talents": "050200500310031053--05550002010003002",
+      "DPS": 847.9474347801734,
+      "StandardError": 0.9597181750893915,
+      "Round": 1,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "050200500310031053--05450003010003002",
+      "DPS": 849.8520867647687,
+      "StandardError": 0.9751461426618787,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050200500310031053--05450002110003002",
+      "DPS": 847.0711831984313,
+      "StandardError": 0.9726684433463806,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050200500310031053-01-05450002010003002",
+      "DPS": 848.7013239932237,
+      "StandardError": 0.9887796448547386,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050200500310031053--05550003010003001",
+      "DPS": 847.6986487926943,
+      "StandardError": 0.990635317123243,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050200500310031053--05550003010002002",
+      "DPS": 847.8932928594847,
+      "StandardError": 0.9608875741347608,
+      "Round": 1,
+      "Stage": "validate"
+     }
+    ]
+   },
+   {
+    "Key": "demonology",
+    "Race": "Human",
+    "Start": "011-0005003221220311351-0550005003",
+    "Final": "011-0005003221220311351-0550005003",
+    "Rounds": 1,
+    "Screened": 87,
+    "Validated": [
+     {
+      "Talents": "011-0005003221220311351-0550005003",
+      "DPS": 919.4069516087917,
+      "StandardError": 0.6586435041534487,
+      "Round": 1,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "101-0005003221220311351-0550005003",
+      "DPS": 917.401520542875,
+      "StandardError": 0.6578731710213065,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "011-0005003231120311351-0550005003",
+      "DPS": 920.0439385247181,
+      "StandardError": 0.6586737813355874,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "011-0005003231220301351-0550005003",
+      "DPS": 920.0439385247181,
+      "StandardError": 0.6586737813355874,
+      "Round": 1,
+      "Stage": "validate"
+     }
+    ]
+   },
+   {
+    "Key": "destruction",
+    "Race": "Human",
+    "Start": "2530000003-0005-0050355103101351",
+    "Final": "2530000003-0005-0050355103101351",
+    "Rounds": 1,
+    "Screened": 102,
+    "Validated": [
+     {
+      "Talents": "2530000003-0005-0050355103101351",
+      "DPS": 817.164943632,
+      "StandardError": 0.5326683108942818,
+      "Round": 1,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "2540000003-0004-0050355103101351",
+      "DPS": 816.5435179750559,
+      "StandardError": 0.5314320909003141,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "2540000003-0005-0050255103101351",
+      "DPS": 813.4066569079231,
+      "StandardError": 0.5343344430405624,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "2520010003-0005-0050355103101351",
+      "DPS": 813.9558102313833,
+      "StandardError": 0.5351415844508539,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "2540000003-0005-0050345103101351",
+      "DPS": 814.8483953355717,
+      "StandardError": 0.5306398529250227,
+      "Round": 1,
+      "Stage": "validate"
+     }
+    ]
+   },
+   {
+    "Key": "ds_ruin",
+    "Race": "Human",
+    "Start": "254000001351-0025003001-0550005103",
+    "Final": "254000001351-0025003001-0550005103",
+    "Rounds": 1,
+    "Screened": 110,
+    "Validated": [
+     {
+      "Talents": "254000001351-0025003001-0550005103",
+      "DPS": 802.9287841543778,
+      "StandardError": 0.8165167336145481,
+      "Round": 1,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "25400000135-0025003001-0550105103",
+      "DPS": 805.0061839051698,
+      "StandardError": 0.8165582206864315,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "25400000135-0025003001-0550015103",
+      "DPS": 804.1344824561148,
+      "StandardError": 0.7896955327111276,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "25500000135-0025003001-0550005103",
+      "DPS": 803.5030369976575,
+      "StandardError": 0.8406879856654565,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "25400010135-0025003001-0550005103",
+      "DPS": 801.8591791316354,
+      "StandardError": 0.7895074528671516,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "254000001351-0025002101-0550005103",
+      "DPS": 802.0235698965572,
+      "StandardError": 0.8034951939174336,
+      "Round": 1,
+      "Stage": "validate"
+     }
+    ]
+   },
+   {
+    "Key": "elemental",
+    "Race": "Orc",
+    "Start": "5503331000011351-052-05305",
+    "Final": "5503331000011351-054-05303",
+    "Rounds": 3,
+    "Screened": 203,
+    "Validated": [
+     {
+      "Talents": "5503331000011351-052-05305",
+      "DPS": 525.2940144957776,
+      "StandardError": 0.5628568518728052,
+      "Round": 1,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "5503331000011351-053-05304",
+      "DPS": 527.4455241263948,
+      "StandardError": 0.5768040248918125,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "5503331000011351-053-05304",
+      "DPS": 527.4260247899834,
+      "StandardError": 0.5763756402837691,
+      "Round": 2,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "5503331000011351-054-05303",
+      "DPS": 529.9225099788986,
+      "StandardError": 0.5765669194584166,
+      "Round": 2,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "5503331000011351-054-05303",
+      "DPS": 529.9059621773014,
+      "StandardError": 0.5764409910063892,
+      "Round": 3,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "5503331000011351-055-05302",
+      "DPS": 531.6958662936977,
+      "StandardError": 0.5795205358299966,
+      "Round": 3,
+      "Stage": "validate"
+     }
+    ]
+   },
+   {
+    "Key": "enhancement",
+    "Race": "Orc",
+    "Start": "553103102-053030031005102251",
+    "Final": "453203102-053030031005102251",
+    "Rounds": 2,
+    "Screened": 196,
+    "Validated": [
+     {
+      "Talents": "553103102-053030031005102251",
+      "DPS": 792.209300321418,
+      "StandardError": 0.8908344429612347,
+      "Round": 1,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "453103102-054030031005102251",
+      "DPS": 793.119065999601,
+      "StandardError": 0.9124681398737943,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "453203102-053030031005102251",
+      "DPS": 795.8289138133003,
+      "StandardError": 0.9040500926074905,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "453113102-053030031005102251",
+      "DPS": 791.2617724676722,
+      "StandardError": 0.9062125894065326,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "453103112-053030031005102251",
+      "DPS": 791.2617724676722,
+      "StandardError": 0.9062125894065326,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "453103102-053130031005102251",
+      "DPS": 791.2617724676722,
+      "StandardError": 0.9062125894065326,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "453203102-053030031005102251",
+      "DPS": 795.8364867988357,
+      "StandardError": 0.9039811329507733,
+      "Round": 2,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "443203102-054030031005102251",
+      "DPS": 796.8689400697506,
+      "StandardError": 0.9051923689850296,
+      "Round": 2,
+      "Stage": "validate"
+     }
+    ]
+   },
+   {
+    "Key": "fire",
+    "Race": "Gnome",
+    "Start": "05001252000003-23450000130135031-002",
+    "Final": "05001252000003-23450000130135031-002",
+    "Rounds": 1,
+    "Screened": 68,
+    "Validated": [
+     {
+      "Talents": "05001252000003-23450000130135031-002",
+      "DPS": 788.1561349405612,
+      "StandardError": 0.884675239143956,
+      "Round": 1,
+      "Stage": "validate-baseline"
+     }
+    ]
+   },
+   {
+    "Key": "frost",
+    "Race": "Gnome",
+    "Start": "0500005001-03-0555003321001301251",
+    "Final": "0500005001-03-0555003331000301251",
+    "Rounds": 2,
+    "Screened": 236,
+    "Validated": [
+     {
+      "Talents": "0500005001-03-0555003321001301251",
+      "DPS": 606.5844099569073,
+      "StandardError": 0.48249837986936756,
+      "Round": 1,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "0500005001-03-0555003331000301251",
+      "DPS": 613.0342319660671,
+      "StandardError": 0.513985426081197,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "0500005-03-0555003331001301251",
+      "DPS": 613.0342319660671,
+      "StandardError": 0.513985426081197,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "0500005001-03-055500333100130125",
+      "DPS": 613.0342319660671,
+      "StandardError": 0.513985426081197,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "0500005001-03-0555002331001301251",
+      "DPS": 613.0342319660671,
+      "StandardError": 0.513985426081197,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "0500005001-02-0555003331001301251",
+      "DPS": 611.6342310752726,
+      "StandardError": 0.5118679346578587,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "0500005001-03-0555003331000301251",
+      "DPS": 613.0350267147799,
+      "StandardError": 0.5139869637131336,
+      "Round": 2,
+      "Stage": "validate-baseline"
+     }
+    ]
+   },
+   {
+    "Key": "shadow",
+    "Race": "Undead",
+    "Start": "30503300103--50452001201302251",
+    "Final": "30503300103--50452001201302251",
+    "Rounds": 1,
+    "Screened": 54,
+    "Validated": [
+     {
+      "Talents": "30503300103--50452001201302251",
+      "DPS": 822.171813320582,
+      "StandardError": 0.39561584186075927,
+      "Round": 1,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "30503400102--50452001201302251",
+      "DPS": 823.3461926671378,
+      "StandardError": 0.39150953031008484,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "40503300102--50452001201302251",
+      "DPS": 822.4917288801335,
+      "StandardError": 0.3905377091256236,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "30513300102--50452001201302251",
+      "DPS": 822.4917288801335,
+      "StandardError": 0.3905377091256236,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "30503300112--50452001201302251",
+      "DPS": 822.4917288801335,
+      "StandardError": 0.3905377091256236,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "30503300102-01-50452001201302251",
+      "DPS": 822.4917288801335,
+      "StandardError": 0.3905377091256236,
+      "Round": 1,
+      "Stage": "validate"
+     }
+    ]
+   },
+   {
+    "Key": "smite",
+    "Race": "Human",
+    "Start": "515035031030001031-00505023002-003",
+    "Final": "515035031030001031-00505023002-003",
+    "Rounds": 1,
+    "Screened": 46,
+    "Validated": [
+     {
+      "Talents": "515035031030001031-00505023002-003",
+      "DPS": 443.9802636760167,
+      "StandardError": 0.2844994753941229,
+      "Round": 1,
+      "Stage": "validate-baseline"
+     }
+    ]
+   },
+   {
+    "Key": "stormcaller",
+    "Race": "Orc",
+    "Start": "553233100000034-055030021004002",
+    "Final": "553233100000034-055030021004002",
+    "Rounds": 1,
+    "Screened": 83,
+    "Validated": [
+     {
+      "Talents": "553233100000034-055030021004002",
+      "DPS": 465.2262852207598,
+      "StandardError": 0.4723066286521446,
+      "Round": 1,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "552333100000034-055030021004002",
+      "DPS": 464.9808015741482,
+      "StandardError": 0.4705965109169136,
+      "Round": 1,
+      "Stage": "validate"
+     }
+    ]
+   }
+  ]
+ },
+ "rotations": {
+  "method": "Arcane and Arcane-Frost priority variants on Gnome and Human (Undead for one variant) at 3,000 iterations, repeated on a second seed for the leading variants.",
+  "screens": [
+   {
+    "File": "out_v0__Gnome.json",
+    "Key": "arcane",
+    "Race": "Gnome",
+    "Seed": 1793500001,
+    "DPS": 834.301486111164,
+    "StandardError": 0.8539322007078838,
+    "OOMSeconds": 0.13758333333333334,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "out_v0__Human.json",
+    "Key": "arcane",
+    "Race": "Human",
+    "Seed": 1793500001,
+    "DPS": 811.5524225436292,
+    "StandardError": 0.8355537155574114,
+    "OOMSeconds": 0.206,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "out_v1_ab2__Gnome.json",
+    "Key": "arcane",
+    "Race": "Gnome",
+    "Seed": 1793500001,
+    "DPS": 787.0275657667465,
+    "StandardError": 0.7103072147882185,
+    "OOMSeconds": 0,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "2"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "out_v1_ab2__Human.json",
+    "Key": "arcane",
+    "Race": "Human",
+    "Seed": 1793500001,
+    "DPS": 769.7521745501462,
+    "StandardError": 0.699354075608031,
+    "OOMSeconds": 0,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "2"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "out_v2_ab3__Gnome.json",
+    "Key": "arcane",
+    "Race": "Gnome",
+    "Seed": 1793500001,
+    "DPS": 819.5585798877227,
+    "StandardError": 0.6947524433494952,
+    "OOMSeconds": 0,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "3"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "out_v2_ab3__Human.json",
+    "Key": "arcane",
+    "Race": "Human",
+    "Seed": 1793500001,
+    "DPS": 799.8609569731387,
+    "StandardError": 0.7160525851169308,
+    "OOMSeconds": 0,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "3"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "out_v3_noab__Gnome.json",
+    "Key": "arcane",
+    "Race": "Gnome",
+    "Seed": 1793500001,
+    "DPS": 688.1214247118179,
+    "StandardError": 0.6606515262363957,
+    "OOMSeconds": 0,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "out_v3_noab__Human.json",
+    "Key": "arcane",
+    "Race": "Human",
+    "Seed": 1793500001,
+    "DPS": 676.3384541715222,
+    "StandardError": 0.6483286078388696,
+    "OOMSeconds": 0,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "out_v4_abfirst__Gnome.json",
+    "Key": "arcane",
+    "Race": "Gnome",
+    "Seed": 1793500001,
+    "DPS": 846.4691215213346,
+    "StandardError": 0.953570831004502,
+    "OOMSeconds": 0.24158333333333334,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "out_v4_abfirst__Human.json",
+    "Key": "arcane",
+    "Race": "Human",
+    "Seed": 1793500001,
+    "DPS": 823.1640853514893,
+    "StandardError": 0.9632241567327732,
+    "OOMSeconds": 0.69425,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "out_v5_amfill__Gnome.json",
+    "Key": "arcane",
+    "Race": "Gnome",
+    "Seed": 1793500001,
+    "DPS": 840.6773366564958,
+    "StandardError": 0.776507899358596,
+    "OOMSeconds": 0.113,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "out_v5_amfill__Human.json",
+    "Key": "arcane",
+    "Race": "Human",
+    "Seed": 1793500001,
+    "DPS": 817.2790987767677,
+    "StandardError": 0.8052258349240199,
+    "OOMSeconds": 0.4285,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "out_v6_ab4m40__Gnome.json",
+    "Key": "arcane",
+    "Race": "Gnome",
+    "Seed": 1793500001,
+    "DPS": 822.5991916119995,
+    "StandardError": 0.9797329875705076,
+    "OOMSeconds": 0,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "40%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "out_v6_ab4m40__Human.json",
+    "Key": "arcane",
+    "Race": "Human",
+    "Seed": 1793500001,
+    "DPS": 798.9642907291482,
+    "StandardError": 0.9698514455660073,
+    "OOMSeconds": 0.0005,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "40%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "out_v7_ab1__Gnome.json",
+    "Key": "arcane",
+    "Race": "Gnome",
+    "Seed": 1793500001,
+    "DPS": 740.9679526457212,
+    "StandardError": 0.7168632034592435,
+    "OOMSeconds": 0,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "1"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "out_v7_ab1__Human.json",
+    "Key": "arcane",
+    "Race": "Human",
+    "Seed": 1793500001,
+    "DPS": 726.307723528265,
+    "StandardError": 0.706842835117293,
+    "OOMSeconds": 0,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "1"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "out_v8_ab3first__Gnome.json",
+    "Key": "arcane",
+    "Race": "Gnome",
+    "Seed": 1793500001,
+    "DPS": 830.094694177664,
+    "StandardError": 0.734622843699785,
+    "OOMSeconds": 0,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "3"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "out_v8_ab3first__Human.json",
+    "Key": "arcane",
+    "Race": "Human",
+    "Seed": 1793500001,
+    "DPS": 812.6343270142296,
+    "StandardError": 0.7271108234370932,
+    "OOMSeconds": 0.0016666666666666668,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "3"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s2_v0__Gnome.json",
+    "Key": "arcane",
+    "Race": "Gnome",
+    "Seed": 1793600001,
+    "DPS": 834.9444194397295,
+    "StandardError": 0.8495549530329437,
+    "OOMSeconds": 0.077,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s2_v0__Human.json",
+    "Key": "arcane",
+    "Race": "Human",
+    "Seed": 1793600001,
+    "DPS": 810.8431057523474,
+    "StandardError": 0.8663861165194365,
+    "OOMSeconds": 0.27141666666666664,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s2_v10_ab_before_mb__Gnome.json",
+    "Key": "arcane",
+    "Race": "Gnome",
+    "Seed": 1793600001,
+    "DPS": 739.597460507723,
+    "StandardError": 0.8679847557061287,
+    "OOMSeconds": 5.2345,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s2_v10_ab_before_mb__Human.json",
+    "Key": "arcane",
+    "Race": "Human",
+    "Seed": 1793600001,
+    "DPS": 714.4353080801743,
+    "StandardError": 0.8602300662082822,
+    "OOMSeconds": 8.150083333333333,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s2_v11_abfirst_m10__Gnome.json",
+    "Key": "arcane",
+    "Race": "Gnome",
+    "Seed": 1793600001,
+    "DPS": 847.6072149318368,
+    "StandardError": 0.9819112750302179,
+    "OOMSeconds": 1.2648333333333333,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "10%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s2_v11_abfirst_m10__Human.json",
+    "Key": "arcane",
+    "Race": "Human",
+    "Seed": 1793600001,
+    "DPS": 824.7004442494022,
+    "StandardError": 1.0015058533720211,
+    "OOMSeconds": 2.1378333333333335,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "10%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s2_v12_abfirst_evo10__Gnome.json",
+    "Key": "arcane",
+    "Race": "Gnome",
+    "Seed": 1793600001,
+    "DPS": 846.0939371178976,
+    "StandardError": 0.9730999223442907,
+    "OOMSeconds": 0.15116666666666667,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "10%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s2_v12_abfirst_evo10__Human.json",
+    "Key": "arcane",
+    "Race": "Human",
+    "Seed": 1793600001,
+    "DPS": 825.3729234800838,
+    "StandardError": 0.9703053347522438,
+    "OOMSeconds": 0.42933333333333334,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "10%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s2_v13_abfirst_m30__Gnome.json",
+    "Key": "arcane",
+    "Race": "Gnome",
+    "Seed": 1793600001,
+    "DPS": 838.9389889113138,
+    "StandardError": 1.0125507773757638,
+    "OOMSeconds": 0.009833333333333333,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "30%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s2_v13_abfirst_m30__Human.json",
+    "Key": "arcane",
+    "Race": "Human",
+    "Seed": 1793600001,
+    "DPS": 817.7480206640384,
+    "StandardError": 0.9961124981600881,
+    "OOMSeconds": 0.06425,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "30%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s2_v4_abfirst__Gnome.json",
+    "Key": "arcane",
+    "Race": "Gnome",
+    "Seed": 1793600001,
+    "DPS": 846.6635721485778,
+    "StandardError": 0.9502124408992074,
+    "OOMSeconds": 0.2529166666666667,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s2_v4_abfirst__Human.json",
+    "Key": "arcane",
+    "Race": "Human",
+    "Seed": 1793600001,
+    "DPS": 824.191366080552,
+    "StandardError": 0.9772951760095372,
+    "OOMSeconds": 0.70275,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s2_v4_abfirst__Undead.json",
+    "Key": "arcane",
+    "Race": "Undead",
+    "Seed": 1793600001,
+    "DPS": 829.9639698084574,
+    "StandardError": 0.9509206603123158,
+    "OOMSeconds": 0.5984166666666667,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s2_v9_abfirst_amfill__Gnome.json",
+    "Key": "arcane",
+    "Race": "Gnome",
+    "Seed": 1793600001,
+    "DPS": 854.6886237288801,
+    "StandardError": 0.8651175592688002,
+    "OOMSeconds": 0.4285,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s2_v9_abfirst_amfill__Human.json",
+    "Key": "arcane",
+    "Race": "Human",
+    "Seed": 1793600001,
+    "DPS": 832.4635531193676,
+    "StandardError": 0.8953313474277574,
+    "OOMSeconds": 1.1931666666666667,
+    "Talents": "0512005023100311531-03-005500032",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345,
+          "rank": 8
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s3_af0__Gnome.json",
+    "Key": "arcane_frost",
+    "Race": "Gnome",
+    "Seed": 1793600001,
+    "DPS": 740.017505751658,
+    "StandardError": 0.5420446946656234,
+    "OOMSeconds": 0,
+    "Talents": "050200500310031053--05550002010003002",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "condition": {
+         "cmp": {
+          "op": "OpLe",
+          "lhs": {
+           "currentManaPercent": {}
+          },
+          "rhs": {
+           "const": {
+            "val": "80%"
+           }
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "itemId": 8008
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLe",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGe",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "25s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44543
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30455
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s3_af0__Human.json",
+    "Key": "arcane_frost",
+    "Race": "Human",
+    "Seed": 1793600001,
+    "DPS": 743.721218095017,
+    "StandardError": 0.545679508721153,
+    "OOMSeconds": 0,
+    "Talents": "050200500310031053--05550002010003002",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "condition": {
+         "cmp": {
+          "op": "OpLe",
+          "lhs": {
+           "currentManaPercent": {}
+          },
+          "rhs": {
+           "const": {
+            "val": "80%"
+           }
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "itemId": 8008
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLe",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGe",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "25s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44543
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30455
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s3_af1_aw__Gnome.json",
+    "Key": "arcane_frost",
+    "Race": "Gnome",
+    "Seed": 1793600001,
+    "DPS": 726.6816669588877,
+    "StandardError": 0.5494110587627198,
+    "OOMSeconds": 0,
+    "Talents": "050200500310031053--05550002010003002",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "condition": {
+         "cmp": {
+          "op": "OpLe",
+          "lhs": {
+           "currentManaPercent": {}
+          },
+          "rhs": {
+           "const": {
+            "val": "80%"
+           }
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "itemId": 8008
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLe",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGe",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "25s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44543
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30455
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s3_af1_aw__Human.json",
+    "Key": "arcane_frost",
+    "Race": "Human",
+    "Seed": 1793600001,
+    "DPS": 726.7079754703572,
+    "StandardError": 0.5571389268998672,
+    "OOMSeconds": 0,
+    "Talents": "050200500310031053--05550002010003002",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "condition": {
+         "cmp": {
+          "op": "OpLe",
+          "lhs": {
+           "currentManaPercent": {}
+          },
+          "rhs": {
+           "const": {
+            "val": "80%"
+           }
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "itemId": 8008
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLe",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGe",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "25s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44543
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30455
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s3_af2_ab_aw__Gnome.json",
+    "Key": "arcane_frost",
+    "Race": "Gnome",
+    "Seed": 1793600001,
+    "DPS": 832.9691843922186,
+    "StandardError": 0.853008950117535,
+    "OOMSeconds": 0.6335833333333334,
+    "Talents": "050200500310031053--05550002010003002",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "condition": {
+         "cmp": {
+          "op": "OpLe",
+          "lhs": {
+           "currentManaPercent": {}
+          },
+          "rhs": {
+           "const": {
+            "val": "80%"
+           }
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "itemId": 8008
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLe",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGe",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "25s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44543
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30455
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s3_af2_ab_aw__Human.json",
+    "Key": "arcane_frost",
+    "Race": "Human",
+    "Seed": 1793600001,
+    "DPS": 831.5834548549518,
+    "StandardError": 0.869609970028884,
+    "OOMSeconds": 0.8835833333333334,
+    "Talents": "050200500310031053--05550002010003002",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "condition": {
+         "cmp": {
+          "op": "OpLe",
+          "lhs": {
+           "currentManaPercent": {}
+          },
+          "rhs": {
+           "const": {
+            "val": "80%"
+           }
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "itemId": 8008
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLe",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGe",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "25s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44543
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30455
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1326082
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s3_af3_ab__Gnome.json",
+    "Key": "arcane_frost",
+    "Race": "Gnome",
+    "Seed": 1793600001,
+    "DPS": 846.3144141729224,
+    "StandardError": 0.7814346322112724,
+    "OOMSeconds": 0.37683333333333335,
+    "Talents": "050200500310031053--05550002010003002",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "condition": {
+         "cmp": {
+          "op": "OpLe",
+          "lhs": {
+           "currentManaPercent": {}
+          },
+          "rhs": {
+           "const": {
+            "val": "80%"
+           }
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "itemId": 8008
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLe",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGe",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "25s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44543
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30455
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s3_af3_ab__Human.json",
+    "Key": "arcane_frost",
+    "Race": "Human",
+    "Seed": 1793600001,
+    "DPS": 845.8828812397988,
+    "StandardError": 0.8178922961691808,
+    "OOMSeconds": 0.5889166666666666,
+    "Talents": "050200500310031053--05550002010003002",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "condition": {
+         "cmp": {
+          "op": "OpLe",
+          "lhs": {
+           "currentManaPercent": {}
+          },
+          "rhs": {
+           "const": {
+            "val": "80%"
+           }
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "itemId": 8008
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLe",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGe",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "25s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44543
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30455
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44404
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 25345
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s4_fr0__Gnome.json",
+    "Key": "frost",
+    "Race": "Gnome",
+    "Seed": 1793600001,
+    "DPS": 606.5913456138773,
+    "StandardError": 0.38742810026710744,
+    "OOMSeconds": 0.019333333333333334,
+    "Talents": "0500005001-03-0555003321001301251",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "condition": {
+         "cmp": {
+          "op": "OpLe",
+          "lhs": {
+           "currentManaPercent": {}
+          },
+          "rhs": {
+           "const": {
+            "val": "80%"
+           }
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "itemId": 8008
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "25s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44543
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30455
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304,
+          "rank": 11
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s4_fr0__Human.json",
+    "Key": "frost",
+    "Race": "Human",
+    "Seed": 1793600001,
+    "DPS": 602.0772474957703,
+    "StandardError": 0.37264101911124914,
+    "OOMSeconds": 0.0935,
+    "Talents": "0500005001-03-0555003321001301251",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "condition": {
+         "cmp": {
+          "op": "OpLe",
+          "lhs": {
+           "currentManaPercent": {}
+          },
+          "rhs": {
+           "const": {
+            "val": "80%"
+           }
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "itemId": 8008
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "25s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44543
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30455
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304,
+          "rank": 11
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s4_fr1__Gnome.json",
+    "Key": "frost",
+    "Race": "Gnome",
+    "Seed": 1793600001,
+    "DPS": 490.02695267094526,
+    "StandardError": 0.49046903313158,
+    "OOMSeconds": 59.983666666666664,
+    "Talents": "05000050031-03-0555003331001301211",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "condition": {
+         "cmp": {
+          "op": "OpLe",
+          "lhs": {
+           "currentManaPercent": {}
+          },
+          "rhs": {
+           "const": {
+            "val": "80%"
+           }
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "itemId": 8008
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "25s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44543
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30455
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304,
+          "rank": 11
+         }
+        }
+       }
+      }
+     ]
+    }
+   },
+   {
+    "File": "s4_fr1__Human.json",
+    "Key": "frost",
+    "Race": "Human",
+    "Seed": 1793600001,
+    "DPS": 469.4582834036326,
+    "StandardError": 0.5078179277889641,
+    "OOMSeconds": 68.57225,
+    "Talents": "05000050031-03-0555003331001301211",
+    "Rotation": {
+     "type": "TypeAPL",
+     "priorityList": [
+      {
+       "action": {
+        "condition": {
+         "cmp": {
+          "op": "OpLe",
+          "lhs": {
+           "currentManaPercent": {}
+          },
+          "rhs": {
+           "const": {
+            "val": "80%"
+           }
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "itemId": 8008
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "autocastOtherCooldowns": {}
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "15%"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "remainingTime": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "25s"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 12051
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 44543
+          }
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30455
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "condition": {
+         "and": {
+          "vals": [
+           {
+            "cmp": {
+             "op": "OpLt",
+             "lhs": {
+              "auraNumStacks": {
+               "auraId": {
+                "spellId": 30451
+               }
+              }
+             },
+             "rhs": {
+              "const": {
+               "val": "4"
+              }
+             }
+            }
+           },
+           {
+            "cmp": {
+             "op": "OpGt",
+             "lhs": {
+              "currentManaPercent": {}
+             },
+             "rhs": {
+              "const": {
+               "val": "20%"
+              }
+             }
+            }
+           }
+          ]
+         }
+        },
+        "castSpell": {
+         "spellId": {
+          "spellId": 30451
+         }
+        }
+       }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 25304,
+          "rank": 11
+         }
+        }
+       }
+      }
+     ]
+    }
+   }
+  ],
+  "selected": {
+   "arcane": "Arcane Blast to 4 stacks (above 20% mana) before Arcane Wrath; Arcane Missiles on Missile Barrage first; Arcane Missiles as the filler.",
+   "arcane_frost": "Arcane Blast to 4 stacks (above 20% mana) before Frostbolt; Arcane Wrath is not cast.",
+   "frost": "Unchanged; an Arcane Blast variant with 1/1 Arcane Blast ran out of mana."
+  }
+ }
+}

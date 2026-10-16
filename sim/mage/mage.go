@@ -5,6 +5,7 @@ import (
 	"github.com/wowsims/classic/sim/core"
 	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/core/stats"
+	"time"
 )
 
 const (
@@ -30,9 +31,10 @@ const (
 	SpellCode_MageFrostfireBolt
 	SpellCode_MageConeOfCold
 	SpellCode_MageFrostNova
+	SpellCode_MageArcaneWrath
 )
 
-var TalentTreeSizes = [3]int{18, 17, 19}
+var TalentTreeSizes = [3]int{19, 17, 19}
 
 func RegisterMage() {
 	core.RegisterAgentFactory(
@@ -60,6 +62,9 @@ type Mage struct {
 	activeBarrier *core.Aura
 
 	ArcaneBlast             *core.Spell
+	ArcaneWrath             *core.Spell
+	pomUsedBy               *core.Spell
+	pomUsedAt               time.Duration
 	ArcaneExplosion         []*core.Spell
 	ArcaneMissiles          []*core.Spell
 	ArcaneMissilesTickSpell []*core.Spell
@@ -93,6 +98,7 @@ type Mage struct {
 	IceArmorAura       *core.Aura
 	IceBarrierAuras    []*core.Aura
 	ImprovedScorchAura *core.Aura
+	ImpactAuras        core.AuraArray
 	MageArmorAura      *core.Aura
 	MissileBarrageAura *core.Aura
 	WintersChillAura   *core.Aura
@@ -121,6 +127,7 @@ func (mage *Mage) AddPartyBuffs(partyBuffs *proto.PartyBuffs) {
 
 func (mage *Mage) Initialize() {
 	mage.registerArcaneBlastSpell()
+	mage.registerArcaneWrathSpell()
 	mage.registerArcaneMissilesSpell()
 	mage.registerFireballSpell()
 	mage.registerFireBlastSpell()

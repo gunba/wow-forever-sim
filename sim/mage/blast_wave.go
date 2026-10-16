@@ -9,6 +9,7 @@ import (
 const BlastWaveRanks = 5
 
 var BlastWaveSpellId = [BlastWaveRanks + 1]int32{0, 11113, 13018, 13019, 13020, 13021}
+
 // Beta client 1.60.1.69893.
 var BlastWaveBaseDamage = [BlastWaveRanks + 1][]float64{{0}, {154, 184}, {200, 239}, {276, 327}, {365, 432}, {453, 533}}
 var BlastWaveManaCost = [BlastWaveRanks + 1]float64{0, 215, 270, 355, 450, 545}

@@ -18,42 +18,46 @@ func TestClassicFormWeaponsRemainFixed(t *testing.T) {
 	}
 }
 
-func TestFurorRankCapAndBearExclusion(t *testing.T) {
+func TestFurorRankCap(t *testing.T) {
 	for rank := int32(0); rank <= 5; rank++ {
 		d := &Druid{Talents: &proto.DruidTalents{Furor: rank}}
 		d.Env = &core.Environment{Ruleset: proto.Ruleset_RulesetForever}
 		d.EnableEnergyBar(100)
-		d.lastCatFormEnergy, d.lastCatFormExitAt = 100, 0
+		d.resetFurorHistory(0)
+		d.lastCatFormEnergy = 100
 		sim := &core.Simulation{CurrentTime: 5 * time.Second}
 		if got, want := d.furorShiftEnergy(sim), float64(rank)*20; got != want {
 			t.Errorf("rank %d: %v Energy exceeds combined carry/regen cap %v", rank, got, want)
 		}
-		d.form = Bear
-		if got := d.furorShiftEnergy(sim); got != 0 {
-			t.Errorf("rank %d: recovered %v Energy while in Bear", rank, got)
-		}
 	}
 }
 
-func TestFurorBearHistoryDiscardAndResume(t *testing.T) {
+// Since client 1.60.1.70425 the saved Cat Energy survives Bear Form, and Bear time earns nothing.
+func TestFurorKeepsCatEnergyThroughBear(t *testing.T) {
 	d := &Druid{Talents: &proto.DruidTalents{Furor: 5}}
 	d.Env = &core.Environment{Ruleset: proto.Ruleset_RulesetForever}
 	d.EnableEnergyBar(100)
-	d.lastCatFormEnergy, d.lastCatFormExitAt = 90, time.Second
-	d.form = Bear
-	d.resetFurorHistory(core.NeverExpires)
-	if d.lastCatFormEnergy != 0 || d.lastCatFormExitAt != core.NeverExpires {
-		t.Fatal("Bear entry retained Cat history")
-	}
-	sim := &core.Simulation{CurrentTime: 100 * time.Second}
-	if got := d.furorShiftEnergy(sim); got != 0 {
-		t.Fatalf("long Bear stay regenerated %v Energy", got)
-	}
-	d.form = Humanoid
+	sim := &core.Simulation{CurrentTime: time.Second}
 	d.resetFurorHistory(sim.CurrentTime)
+	d.lastCatFormEnergy = 40 // carries 40 Energy at 5/5
+	sim.CurrentTime += time.Second
+	d.furorBearEnter(sim)
+	sim.CurrentTime += 100 * time.Second
+	if got := d.furorShiftEnergy(sim); got != 50 {
+		t.Fatalf("Bear to Cat: got %v, want 40 carried + 10 from the second before Bear", got)
+	}
+	d.furorBearExit(sim)
+	sim.CurrentTime += time.Second
+	if got := d.furorShiftEnergy(sim); got != 60 {
+		t.Fatalf("after Bear: got %v, want 40 carried + 20 from the two seconds outside Bear", got)
+	}
+	d.resetFurorHistory(core.NeverExpires)
+	d.furorBearEnter(sim)
+	sim.CurrentTime += 10 * time.Second
+	d.furorBearExit(sim)
 	sim.CurrentTime += time.Second
 	if got := d.furorShiftEnergy(sim); got != 10 {
-		t.Fatalf("Bear exit: got %v, want only the subsequent humanoid second's 10 Energy", got)
+		t.Fatalf("Bear exit without Cat history: got %v, want only the following second's 10 Energy", got)
 	}
 }
 

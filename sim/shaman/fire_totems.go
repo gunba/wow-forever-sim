@@ -222,14 +222,15 @@ func (shaman *Shaman) newMagmaTotemSpellConfig(rank int) core.SpellConfig {
 
 // Forever has no Fire Nova Totem: its spell ids are gone from the beta client, and the Fire Nova the spellbook
 // teaches in its place is the caster-centred nova, a 10 sec cooldown that bursts on every nearby enemy at once.
-// Mana costs and levels are the totem's; damage and the 0.214 coefficient are the beta client's, scaled to level
-// 60 like Lightning Bolt's.
+// Levels are the totem's; damage, coefficient and mana costs are the beta client's (1.60.1.70425: base damage
+// cut sharply, coefficient 0.143 from 0.214, costs 65/120/210/290/375 from 95/170/280/395/520), with damage scaled
+// up by the same per-level steps as before.
 const FireNovaRanks = 5
 
 var FireNovaSpellId = [FireNovaRanks + 1]int32{0, 408341, 408342, 408343, 408344, 408345}
-var FireNovaBaseDamage = [FireNovaRanks + 1][]float64{{0, 0}, {51, 60}, {103, 117}, {182, 206}, {280, 316}, {397, 443}}
-var FireNovaSpellCoeff = [FireNovaRanks + 1]float64{0, .214, .214, .214, .214, .214}
-var FireNovaManaCost = [FireNovaRanks + 1]float64{0, 95, 170, 280, 395, 520}
+var FireNovaBaseDamage = [FireNovaRanks + 1][]float64{{0, 0}, {32, 38}, {54, 62}, {126, 142}, {173, 195}, {232, 258}}
+var FireNovaSpellCoeff = [FireNovaRanks + 1]float64{0, .143, .143, .143, .143, .143}
+var FireNovaManaCost = [FireNovaRanks + 1]float64{0, 65, 120, 210, 290, 375}
 var FireNovaLevel = [FireNovaRanks + 1]int{0, 12, 22, 32, 42, 52}
 
 func (shaman *Shaman) registerFireNovaSpell() {
