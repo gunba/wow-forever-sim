@@ -22,7 +22,7 @@ import {
 	WeaponImbue,
 	ZanzaBuff,
 } from '../core/proto/common.js';
-import { EnhancementShaman_Options as EnhancementShamanOptions } from '../core/proto/shaman.js';
+import { EnhancementShaman_Options as EnhancementShamanOptions, ShamanWeaponImbue } from '../core/proto/shaman.js';
 import { SavedTalents } from '../core/proto/ui.js';
 import DefaultAPLJSON from './apls/default.apl.json';
 import GearEnhancementJSON from './gear_sets/forever_enhancement.gear.json';
@@ -79,7 +79,8 @@ export const DefaultTalents = TalentsEnhancement;
 //                                 Options
 ///////////////////////////////////////////////////////////////////////////
 
-export const DefaultOptions = EnhancementShamanOptions.create();
+// Forever imbues have their own slot, so Windfury Weapon sits beside the Shadow Oil.
+export const DefaultOptions = EnhancementShamanOptions.create({ mainHandImbue: ShamanWeaponImbue.WindfuryImbue });
 
 export const DefaultConsumes = Consumes.create({
 	agilityElixir: AgilityElixir.ElixirOfTheMongoose,
@@ -90,7 +91,7 @@ export const DefaultConsumes = Consumes.create({
 	firePowerBuff: FirePowerBuff.ElixirOfFirepower,
 	flask: Flask.FlaskOfSupremePower,
 	food: Food.FoodBlessSunfruit,
-	mainHandImbue: WeaponImbue.WindfuryWeapon,
+	mainHandImbue: WeaponImbue.ShadowOil,
 	manaRegenElixir: ManaRegenElixir.MagebloodPotion,
 	spellPowerBuff: SpellPowerBuff.GreaterArcaneElixir,
 	strengthBuff: StrengthBuff.JujuPower,

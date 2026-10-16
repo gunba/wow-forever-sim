@@ -934,7 +934,7 @@ export const ElementalSharpeningStone = (slot: ItemSlot): ConsumableInputConfig<
 		value: WeaponImbue.ElementalSharpeningStone,
 		showWhen: player => {
 			const weapon = player.getEquippedItem(slot);
-			return (!weapon || isWeapon(weapon.item.weaponType)) && !player.isSpec(Spec.SpecFeralDruid);
+			return (!weapon || isWeapon(weapon.item.weaponType)) && (!player.isSpec(Spec.SpecFeralDruid) || player.sim.getRuleset() === Ruleset.RulesetForever);
 		},
 	};
 };
@@ -944,7 +944,7 @@ export const DenseSharpeningStone = (slot: ItemSlot): ConsumableInputConfig<Weap
 		value: WeaponImbue.DenseSharpeningStone,
 		showWhen: player => {
 			const weapon = player.getEquippedItem(slot);
-			return (!weapon || isSharpWeaponType(weapon.item.weaponType)) && !player.isSpec(Spec.SpecFeralDruid);
+			return (!weapon || isSharpWeaponType(weapon.item.weaponType)) && (!player.isSpec(Spec.SpecFeralDruid) || player.sim.getRuleset() === Ruleset.RulesetForever);
 		},
 	};
 };
@@ -954,7 +954,7 @@ export const SolidSharpeningStone = (slot: ItemSlot): ConsumableInputConfig<Weap
 		value: WeaponImbue.SolidSharpeningStone,
 		showWhen: player => {
 			const weapon = player.getEquippedItem(slot);
-			return (!weapon || isSharpWeaponType(weapon.item.weaponType)) && !player.isSpec(Spec.SpecFeralDruid);
+			return (!weapon || isSharpWeaponType(weapon.item.weaponType)) && (!player.isSpec(Spec.SpecFeralDruid) || player.sim.getRuleset() === Ruleset.RulesetForever);
 		},
 	};
 };
@@ -966,7 +966,7 @@ export const DenseWeightstone = (slot: ItemSlot): ConsumableInputConfig<WeaponIm
 		value: WeaponImbue.DenseWeightstone,
 		showWhen: player => {
 			const weapon = player.getEquippedItem(slot);
-			return (!weapon || isBluntWeaponType(weapon.item.weaponType)) && !player.isSpec(Spec.SpecFeralDruid);
+			return (!weapon || isBluntWeaponType(weapon.item.weaponType)) && (!player.isSpec(Spec.SpecFeralDruid) || player.sim.getRuleset() === Ruleset.RulesetForever);
 		},
 	};
 };
@@ -976,7 +976,7 @@ export const SolidWeightstone = (slot: ItemSlot): ConsumableInputConfig<WeaponIm
 		value: WeaponImbue.SolidWeightstone,
 		showWhen: player => {
 			const weapon = player.getEquippedItem(slot);
-			return (!weapon || isBluntWeaponType(weapon.item.weaponType)) && !player.isSpec(Spec.SpecFeralDruid);
+			return (!weapon || isBluntWeaponType(weapon.item.weaponType)) && (!player.isSpec(Spec.SpecFeralDruid) || player.sim.getRuleset() === Ruleset.RulesetForever);
 		},
 	};
 };
@@ -988,7 +988,7 @@ export const ShadowOil = (slot: ItemSlot): ConsumableInputConfig<WeaponImbue> =>
 		value: WeaponImbue.ShadowOil,
 		showWhen: player => {
 			const weapon = player.getEquippedItem(slot);
-			return (!weapon || isWeapon(weapon.item.weaponType)) && !player.isSpec(Spec.SpecFeralDruid);
+			return (!weapon || isWeapon(weapon.item.weaponType)) && (!player.isSpec(Spec.SpecFeralDruid) || player.sim.getRuleset() === Ruleset.RulesetForever);
 		},
 	};
 };
@@ -998,7 +998,7 @@ export const FrostOil = (slot: ItemSlot): ConsumableInputConfig<WeaponImbue> => 
 		value: WeaponImbue.FrostOil,
 		showWhen: player => {
 			const weapon = player.getEquippedItem(slot);
-			return (!weapon || isWeapon(weapon.item.weaponType)) && !player.isSpec(Spec.SpecFeralDruid);
+			return (!weapon || isWeapon(weapon.item.weaponType)) && (!player.isSpec(Spec.SpecFeralDruid) || player.sim.getRuleset() === Ruleset.RulesetForever);
 		},
 	};
 };

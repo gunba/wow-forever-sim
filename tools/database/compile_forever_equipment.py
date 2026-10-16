@@ -116,6 +116,8 @@ def compile_item(item: dict, rates: dict, vendor: dict | None = None) -> dict:
         out["unique"] = True
     if item["setId"]:
         out.update(setId=item["setId"], setName=item["setName"])
+    if item.get("effectItemId"):
+        out["effectItemId"] = item["effectItemId"]
     sources = []
     for source in item["sources"]:
         if source["kind"] == "crafted":
@@ -183,6 +185,8 @@ def main() -> None:
                         default=Path("assets/db_inputs/forever_synthetic_gear.json"))
     parser.add_argument("--current-synthetic-catalog", type=Path,
                         default=Path("assets/db_inputs/forever_synthetic_gear_v2.json"))
+    parser.add_argument("--hybrid-relics", type=Path,
+                        default=Path("assets/db_inputs/forever_hybrid_relics.json"))
     parser.add_argument("--vendor-dir", type=Path, default=Path("assets/db_inputs/forever_vendor"))
     parser.add_argument("--out", type=Path, default=Path("assets/db_inputs/forever_equipment.json"))
     args = parser.parse_args()
@@ -197,7 +201,7 @@ def main() -> None:
             compiled.append(compile_item(item, rates, vendors.get(item["id"])))
         except (ValueError, KeyError) as error:
             print(f"Excluded {item['id']} {item['name']}: {error}")
-    for catalog_path in (args.synthetic_catalog, args.current_synthetic_catalog):
+    for catalog_path in (args.synthetic_catalog, args.current_synthetic_catalog, args.hybrid_relics):
         if catalog_path.exists():
             synthetic = json.loads(catalog_path.read_text())
             for item in synthetic["items"]:

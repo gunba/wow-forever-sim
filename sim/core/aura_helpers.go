@@ -44,6 +44,18 @@ type ProcTrigger struct {
 	Handler           ProcHandler
 }
 
+// ppmProc rolls a PPM trigger. Classic Cat and Bear special attacks use the equipped weapon's speed
+// (a tested Classic rule). In Forever the form attack is the equipped weapon rescaled to the form's
+// speed, and speed-scaled on-hit damage follows the form speed for white and special hits alike
+// (Flametongue Totem in beta logs), so PPM chances use the form speed throughout (DRU-018), as the
+// enchant and weapon-proc helpers already do.
+func ppmProc(sim *Simulation, ppmm *PPMManager, procMask ProcMask, label string) bool {
+	if sim.IsForever() {
+		return ppmm.Proc(sim, procMask, label)
+	}
+	return ppmm.ProcWithWeaponSpecials(sim, procMask, label)
+}
+
 func ApplyProcTriggerCallback(unit *Unit, aura *Aura, config ProcTrigger) {
 	var icd Cooldown
 	if config.ICD != 0 {
@@ -81,7 +93,7 @@ func ApplyProcTriggerCallback(unit *Unit, aura *Aura, config ProcTrigger) {
 		}
 		if config.ProcChance != 1 && sim.RandomFloat(config.Name) > config.ProcChance {
 			return
-		} else if config.PPM != 0 && !ppmm.ProcWithWeaponSpecials(sim, spell.ProcMask, config.Name) {
+		} else if config.PPM != 0 && !ppmProc(sim, &ppmm, spell.ProcMask, config.Name) {
 			return
 		}
 

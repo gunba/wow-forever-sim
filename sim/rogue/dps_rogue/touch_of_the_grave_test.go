@@ -42,7 +42,7 @@ func TestTouchOfTheGraveIsLogged(t *testing.T) {
 
 	var damage float64
 	for _, action := range result.RaidMetrics.Parties[0].Players[0].Actions {
-		if action.Id.GetSpellId() != 460540 {
+		if action.Id.GetSpellId() != 1260198 { // the triggered drain
 			continue
 		}
 		for _, target := range action.Targets {

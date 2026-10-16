@@ -57,7 +57,7 @@ var ripRanks = []RipRankInfo{
 const RipTicks int32 = 6
 
 func (druid *Druid) RipTickCount() int32 {
-	if druid.Env.IsForever() && druid.Ranged().ID == IdolOfTheDream {
+	if druid.Env.IsForever() && druid.Ranged().EffectID() == IdolOfTheDream {
 		return RipTicks + 1 // Spell 446212: two additional seconds, unchanged tick damage.
 	}
 	return RipTicks

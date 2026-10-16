@@ -2,7 +2,7 @@
 
 Generated 2026-10-16 from [`uncertainties.json`](uncertainties.json). Each section below explains how to settle one open simulator question with an in-game test. Resolved questions, and questions that do not change any simulated DPS or tank result, are left out; the [full register](uncertainties.md) lists them.
 
-There are 73 questions: 39 can be tested in the current level-30 beta, 18 can be tested in part now (low ranks) and finished at launch, 10 need level 31+ or later content, and 6 need code or a modelling decision rather than a game test.
+There are 78 questions: 41 can be tested in the current level-30 beta, 18 can be tested in part now (low ranks) and finished at launch, 12 need level 31+ or later content, and 7 need code or a modelling decision rather than a game test.
 
 ## How to collect data
 
@@ -47,9 +47,11 @@ There are 73 questions: 39 can be tested in the current level-30 beta, 18 can be
 | [WL-009](#wl-009) | Demonic Knowledge ranked values | DPS rankings | Now | Open |
 | [DRU-001](#dru-001) | Omen of Clarity proc frequency | DPS rankings | Now | Working answer |
 | [DRU-003](#dru-003) | Form weapon damage and flat imbues | DPS rankings | Now | Open |
+| [DRU-017](#dru-017) | Rake Attack Power scaling | DPS rankings | Now | Open |
 | [DRU-005](#dru-005) | Bear threat multipliers | Tank results | Now | Open |
 | [DRU-012](#dru-012) | Bear outgoing and incoming rage formulas | Tank results | Now | Open |
 | [DRU-008](#dru-008) | Nature's Grace GCD stacking and timing | Small | Now | Open |
+| [DRU-018](#dru-018) | On-hit effects at the Cat and Bear form attack speed | Small | Now | Open |
 | [CORE-003](#core-003) | Energy refunds on avoided attacks | DPS rankings | Now | Working answer |
 | [CORE-006](#core-006) | Optional MP5-per-second interpretation | DPS rankings | Now | Working answer |
 | [CORE-016](#core-016) | Common player Spirit regeneration | DPS rankings | Now | Working answer |
@@ -82,10 +84,13 @@ There are 73 questions: 39 can be tested in the current level-30 beta, 18 can be
 | [HUN-011](#hun-011) | Hunter’s Mark rank-value anomaly | Small | Launch | Open |
 | [ROG-004](#rog-004) | Deadly Poison V acquisition | Small | Launch | Open |
 | [PRI-001](#pri-001) | Shadow Word: Death script value 150 | DPS rankings | Launch | Open |
+| [SHA-011](#sha-011) | Totem of the Storm Maelstrom Weapon chance | Small | Launch | Open |
 | [WL-002](#wl-002) | Incinerate's Immolate bonus scope | DPS rankings | Launch | Open |
 | [WL-004](#wl-004) | Spellstone's Fire/Shadow mask | Small | Launch | Working answer |
 | [CORE-007](#core-007) | Judgement of Wisdom trigger rules | DPS rankings | Launch | Open |
+| [DATA-018](#data-018) | Relics: real effects with a quarter of the modeled relic stats | DPS rankings | Launch | Model choice |
 | [SHA-004](#sha-004) | Owned buff-totem effects and replacement | DPS rankings | No game test | Code gap |
+| [MAG-011](#mag-011) | Frost Mage Cone of Cold on Winter's Chill | DPS rankings | No game test | Model choice |
 | [DRU-010](#dru-010) | Feral stealth openers | Small | No game test | Code gap |
 | [DATA-002](#data-002) | Projected gear budget and stat prices | DPS rankings | No game test | Model choice |
 | [CORE-022](#core-022) | Benchmark raid buffs after the crit-aura split and raid-wide totems | DPS rankings | No game test | Model choice |
@@ -523,6 +528,21 @@ Each of these takes 10–20 minutes on a Warrior at level 28–30 and answers a 
 - **Sample size:** 100 hits per weapon.
 - **How the result is used:** Confirms the weapon-DPS and flat-bonus routing.
 
+<a id="dru-017"></a>
+#### DRU-017: Rake Attack Power scaling
+
+*Affects: DPS rankings. State: Open.*
+
+- **Why it matters:** Rake's Attack Power scaling decides whether Feral keeps Rake up; the fitted value makes it a 6% gain.
+- **What the simulator assumes now:** Hit +6.5% of Attack Power, each tick +4.5%.
+- **Setup:** Level-30 Cat with Rake, character sheet Attack Power noted in Cat Form, a training dummy or a mob that lives at least 9 seconds.
+- **Steps:**
+  1. Rake the target 10 times; record each tick's non-crit damage and the hit.
+  2. Add a known Attack Power change (Battle Shout, Blessing of Might or an AP item) and repeat.
+- **Record:** Cat Form Attack Power and the non-crit Rake hit and tick values for each state, plus talents.
+- **Sample size:** 10 Rakes per state.
+- **How the result is used:** Sets the hit and tick coefficients from the damage difference divided by the Attack Power difference.
+
 <a id="dru-005"></a>
 #### DRU-005: Bear threat multipliers
 
@@ -561,6 +581,21 @@ Each of these takes 10–20 minutes on a Warrior at level 28–30 and answers a 
 - **Record:** Nature's Grace gain time versus cast end and impact; the next GCD length.
 - **Sample size:** 40 procs.
 - **How the result is used:** Fixes the trigger point and GCD stacking.
+
+<a id="dru-018"></a>
+#### DRU-018: On-hit effects at the Cat and Bear form attack speed
+
+*Affects: Small. State: Open.*
+
+- **Why it matters:** The sim rolls Cat and Bear PPM effects at the form speed on special attacks too; with the equipped weapon's speed, a slow proc weapon would proc up to 3-4 times as often on Shred and Claw.
+- **What the simulator assumes now:** PPM x 1.0 / 60 per landed Cat hit, white or special.
+- **Setup:** Level-30 Cat with a slow weapon carrying a PPM effect (Crusader, Fiery Weapon or a chance-on-hit weapon); a training dummy or long-lived mob; combat logging on.
+- **Steps:**
+  1. Fight for several minutes using Shred and Claw normally.
+  2. Count procs, then split them by the triggering hit (white or special) using the log order.
+- **Record:** Weapon and speed, the effect, landed white and special hits, procs after each.
+- **Sample size:** About 300 landed hits of each kind.
+- **How the result is used:** Picks the form-speed or weapon-speed rule for PPM rolls on special attacks.
 
 ### Shared mechanics
 
@@ -1027,6 +1062,23 @@ Each of these takes 10–20 minutes on a Warrior at level 28–30 and answers a 
 - **Sample size:** 40 casts each.
 - **How the result is used:** Settles the unexplained script value 150.
 
+### Shaman
+
+<a id="sha-011"></a>
+#### SHA-011: Totem of the Storm Maelstrom Weapon chance
+
+*Affects: Small. State: Open.*
+
+- **Why it matters:** Totem of the Storm's rate decides whether Enhancement takes it.
+- **What the simulator assumes now:** Half the main-hand per-hit Maelstrom Weapon chance per Lightning Bolt.
+- **Setup:** Level-60 Enhancement Shaman with Maelstrom Weapon and Totem of the Storm (launch).
+- **Steps:**
+  1. Cast Lightning Bolt repeatedly on a mob without meleeing.
+  2. Count Maelstrom Weapon stacks gained.
+- **Record:** Stacks per Lightning Bolt hit.
+- **Sample size:** About 100 Lightning Bolts.
+- **How the result is used:** Sets the Lightning Bolt chance.
+
 ### Warlock
 
 <a id="wl-002"></a>
@@ -1070,6 +1122,21 @@ Each of these takes 10–20 minutes on a Warrior at level 28–30 and answers a 
 - **Sample size:** 200 events.
 - **How the result is used:** Proc chance and eligible events.
 
+### Items and data
+
+<a id="data-018"></a>
+#### DATA-018: Relics: real effects with a quarter of the modeled relic stats
+
+*Affects: DPS rankings. State: Model choice.*
+
+- **Why it matters:** The relic slot now uses real relic effects with a quarter of the modeled relic stats; the real level-65 relic stats decide how much the slot is worth.
+- **What the simulator assumes now:** Real idol, libram and totem effects plus 2 Stamina, 1 Agility, 6.5 Attack Power (physical) or 2 Stamina, 1.75 Intellect, 2.25 Spell Power (spell).
+- **Setup:** No game test until level-65 relics drop.
+- **Steps:** Record the stats on level-65 relics at launch.
+- **Record:** Relic stats and effects.
+- **Sample size:** Every level-65 relic.
+- **How the result is used:** Replaces the quarter allowance with real stats.
+
 ## No game test (code or modelling decision)
 
 ### Shaman
@@ -1085,6 +1152,21 @@ Each of these takes 10–20 minutes on a Warrior at level 28–30 and answers a 
 - **Steps:** Make owned buff totems apply their rank-correct party effect and remove the previous totem of the same element.
 - **Record:** Mana restored and buffs active with owned totems.
 - **How the result is used:** Removes the gap without double counting raid buffs.
+
+### Mage
+
+<a id="mag-011"></a>
+#### MAG-011: Frost Mage Cone of Cold on Winter's Chill
+
+*Affects: DPS rankings. State: Model choice.*
+
+- **Why it matters:** Frost gains 5% by weaving Cone of Cold at five Winter's Chill stacks, which needs 10-yard range.
+- **What the simulator assumes now:** Frost stands at 10 yards and casts Cone of Cold at 5 stacks.
+- **Setup:** No game test; decide per encounter at launch.
+- **Steps:** Review raid encounters for safe 10-yard positioning.
+- **Record:** The decision.
+- **Sample size:** Not applicable.
+- **How the result is used:** Sets the Frost benchmark distance.
 
 ### Druid
 

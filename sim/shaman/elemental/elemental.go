@@ -24,10 +24,10 @@ func RegisterElementalShaman() {
 }
 
 func NewElementalShaman(character *core.Character, options *proto.Player) *ElementalShaman {
-	_ = options.GetElementalShaman()
+	opts := options.GetElementalShaman().GetOptions()
 
 	ele := &ElementalShaman{
-		Shaman: shaman.NewShaman(character, options.TalentsString),
+		Shaman: shaman.NewShaman(character, options.TalentsString, opts.GetMainHandImbue(), opts.GetOffHandImbue()),
 	}
 
 	// Enable Auto Attacks for this spec

@@ -71,8 +71,20 @@ type Item struct {
 	RandomSuffix RandomSuffix
 	Enchant      Enchant
 
+	// A projected item that carries a real item's scripted effect names that item here.
+	EffectItemID int32
+
 	//Internal use
 	TempEnchant int32
+}
+
+// EffectID is the ID whose scripted item effects apply: the real item a projected copy carries, or the
+// item itself.
+func (item *Item) EffectID() int32 {
+	if item.EffectItemID != 0 {
+		return item.EffectItemID
+	}
+	return item.ID
 }
 
 func ItemFromProto(pData *proto.SimItem) Item {
@@ -95,6 +107,7 @@ func ItemFromProto(pData *proto.SimItem) Item {
 		SetName:             pData.SetName,
 		SetID:               pData.SetId,
 		WeaponSkills:        stats.WeaponSkillsFloatArray(pData.WeaponSkills),
+		EffectItemID:        pData.EffectItemId,
 	}
 }
 

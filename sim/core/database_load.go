@@ -40,6 +40,7 @@ func init() {
 			SetName:             item.SetName,
 			SetId:               item.SetId,
 			WeaponSkills:        item.WeaponSkills,
+			EffectItemId:        item.EffectItemId,
 		}
 	}
 

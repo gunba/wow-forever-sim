@@ -2,7 +2,7 @@
 
 These are hypothetical modeled-only gear results, not obtainable item rankings. Sources linked for modeled items are allocation references only and have different stats. Gear is compared under the [model assumptions](modelled_gear.md).
 
-The tables and [matrix](../artifacts/modelled_gear/forever_dps_5min.png) use the same 201 common-seed replays. The modeled search and original real-item benchmark are separate; neither proves available launch gear. The [October 15 update](october-15-update.md) records the client 1.60.1.70425 changes, the moved talent trees, the talent, rotation and raid-buff changes and the confirmed re-search of every DPS profile; the earlier [October 11 audit](october-11-audit.md) and [October 11 log audit](october-11-log-audit.md) record the corrections before it. Earlier search gains are historical, not current proof of an optimum.
+The tables and [matrix](../artifacts/modelled_gear/forever_dps_5min.png) use the same 201 common-seed replays. The modeled search and original real-item benchmark are separate; neither proves available launch gear. The [October 16 follow-up](october-16-follow-up.md) records the imbue slots, real relics, Rake scaling, rotation review and confirmed re-search of every DPS profile; the [October 15 update](october-15-update.md) records the client 1.60.1.70425 changes and the earlier [October 11 audit](october-11-audit.md) and [October 11 log audit](october-11-log-audit.md) record the corrections before it. Earlier search gains are historical, not current proof of an optimum.
 
 The benchmark uses level 60, 300 seconds, one level-63 target, complete role-specific Tier 1 bonuses, and hit from selected gear, enchants, talents and racials only. [Scenario and exchange model](../tools/forever_bench/README.md) · [Questions and coverage](uncertainties.md)
 
@@ -21,9 +21,9 @@ Tank rows include frontal incoming attacks and modeled healing, with their recor
 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
-| Undead | 1001.87 | 0.56 | 0.00 |
-| Human | 1008.26 | 0.56 | 0.00 |
-| Dwarf | 1003.31 | 0.57 | 0.00 |
+| Undead | 998.62 | 0.56 | 0.00 |
+| Human | 1005.42 | 0.56 | 0.00 |
+| Dwarf | 1000.47 | 0.56 | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
@@ -46,7 +46,7 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 | Trinket 1 | [Modeled: Passive Strength / crit / hit — Trinket [+11 Sta, +13 Crit, +13 Str, +14 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
 | Trinket 2 | [Modeled: Passive Strength / crit / hit — Trinket [+11 Sta, +13 Crit, +13 Str, +14 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
 | Main hand | [Modeled: Spell two-hand — Two-hand [+25 Sta, +24 Int, +24 SP, +15 Str, 187–281 dmg @ 3.8s] (modeled; reference only)](https://www.wowhead.com/forever/item=272682) | 65 | Enchant Weapon - Lifestealing |
-| Ranged/relic | [Modeled: Physical libram — Relic [+8 Sta, +4 Agi, +26 AP] (modeled; reference only)](https://www.wowhead.com/forever/item=279247) | 65 | — |
+| Ranged/relic | [Projected: Libram of Law — Relic [+2 Sta, +1 Agi, +6.5 AP]](https://www.wowhead.com/forever/item=920001035) | 65 | — |
 
 Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
@@ -69,14 +69,14 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Action | DPS |
 |---|---:|
-| [Seal of Command](https://www.wowhead.com/forever/spell=20424) | 322.05 |
-| Auto-attack (tag 1) | 207.05 |
-| [Seal of Righteousness](https://www.wowhead.com/forever/spell=25713) | 101.07 |
-| Auto-attack (tag 3) | 99.92 |
-| [Holy Strike](https://www.wowhead.com/forever/spell=10333) | 88.34 |
-| [Judgement of Righteousness](https://www.wowhead.com/forever/spell=20286) | 45.34 |
+| [Seal of Command](https://www.wowhead.com/forever/spell=20424) | 319.65 |
+| Auto-attack (tag 1) | 205.18 |
+| [Seal of Righteousness](https://www.wowhead.com/forever/spell=25713) | 100.95 |
+| Auto-attack (tag 3) | 99.08 |
+| [Holy Strike](https://www.wowhead.com/forever/spell=10333) | 87.81 |
+| [Judgement of Righteousness](https://www.wowhead.com/forever/spell=20286) | 46.83 |
+| [Judgement of Command](https://www.wowhead.com/forever/spell=20965) | 45.69 |
 | [Consecration](https://www.wowhead.com/forever/spell=20924) | 45.34 |
-| [Judgement of Command](https://www.wowhead.com/forever/spell=20965) | 44.24 |
 
 ### Resource flow
 
@@ -381,12 +381,12 @@ Other races can use different equipment. Their complete setups are available in 
 | Orc | 960.57 | 0.51 | 0.00 |
 | Tauren | 967.36 | 0.53 | 0.00 |
 | Troll | 956.01 | 0.51 | 0.00 |
-| Undead | 959.62 | 0.50 | 0.00 |
+| Undead | 962.46 | 0.50 | 0.00 |
 | Windshaper | 973.04 | 0.52 | 0.00 |
-| Human | 965.86 | 0.51 | 0.00 |
+| Human | 968.25 | 0.51 | 0.00 |
 | Dwarf | 960.39 | 0.53 | 0.00 |
 | Night Elf | 953.64 | 0.52 | 0.00 |
-| Gnome | 954.11 | 0.52 | 0.00 |
+| Gnome | 957.01 | 0.51 | 0.00 |
 | High Order | 973.04 | 0.52 | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
@@ -474,13 +474,13 @@ Other races can use different equipment. Their complete setups are available in 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
 | Tauren | 950.30 | 0.40 | 0.00 |
-| Windshaper | 961.52 | 0.38 | 0.00 |
+| Windshaper | 963.13 | 0.38 | 0.00 |
 | Orc | 955.44 | 0.40 | 0.00 |
-| Human | 959.81 | 0.39 | 0.00 |
+| Human | 962.93 | 0.39 | 0.00 |
 | Night Elf | 953.00 | 0.39 | 0.00 |
 | Dwarf | 954.24 | 0.39 | 0.00 |
-| Troll | 950.94 | 0.39 | 0.00 |
-| High Order | 961.52 | 0.38 | 0.00 |
+| Troll | 956.26 | 0.39 | 0.00 |
+| High Order | 963.13 | 0.38 | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
@@ -488,7 +488,7 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 
 | Slot | Item | Item level | Enchant |
 |---|---|---:|---|
-| Head | [Modeled: Agility / crit / hit — Head (Mail) [+18 Sta, +21 Agi, +21 Crit, +23 Hit, 338 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Lesser Arcanum of Voracity |
+| Head | [Modeled: Agility / crit / hit — Head (Mail) [+18 Sta, +21 Agi, +21 Crit, +23 Hit, 338 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Arcanum of Rapidity |
 | Neck | [Modeled: Strength / crit / hit — Neck [+11 Sta, +12 Crit, +12 Str, +13 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
 | Shoulders | [Modeled: Agility / crit / hit — Shoulders (Mail) [+14 Sta, +16 Agi, +16 Crit, +18 Hit, 312 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Chromatic Mantle of the Dawn |
 | Back | [Modeled: Strength / crit / hit — Back (Cloth) [+11 Sta, +12 Crit, +12 Str, +13 Hit, 50 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Boots - Lesser Agility |
@@ -529,31 +529,31 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Action | DPS |
 |---|---:|
-| Auto-attack (tag 2) | 167.06 |
-| Cat: Auto-attack (tag 1) | 138.25 |
-| Auto-attack (tag 1) | 135.23 |
-| [Mongoose Bite](https://www.wowhead.com/forever/spell=14271) | 108.91 |
-| [Raptor Strike](https://www.wowhead.com/forever/spell=14266) | 100.96 |
-| Auto-attack (tag 3) | 77.49 |
-| [Strider Kick](https://www.wowhead.com/forever/spell=1317257) | 57.80 |
-| Cat: [Claw](https://www.wowhead.com/forever/spell=3009) | 36.57 |
+| Auto-attack (tag 2) | 168.07 |
+| Cat: Auto-attack (tag 1) | 137.76 |
+| Auto-attack (tag 1) | 136.24 |
+| [Mongoose Bite](https://www.wowhead.com/forever/spell=14271) | 109.04 |
+| [Raptor Strike](https://www.wowhead.com/forever/spell=14266) | 101.00 |
+| Auto-attack (tag 3) | 77.93 |
+| [Strider Kick](https://www.wowhead.com/forever/spell=1317257) | 57.52 |
+| Cat: [Claw](https://www.wowhead.com/forever/spell=3009) | 36.52 |
 
 ### Resource flow
 
 | Resource | Action | Net amount per fight |
 |---|---|---:|
-| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +16064.5 |
-| Mana | [Summon Hawk](https://www.wowhead.com/forever/spell=1293527) | -7645.4 |
-| Mana | OtherActionManaRegen (tag 1) | +5940.8 |
-| Mana | [Wing Clip](https://www.wowhead.com/forever/spell=14268) | -4330.1 |
-| Mana | [Strider Kick](https://www.wowhead.com/forever/spell=1317257) | -3318.2 |
-| Mana | [Raptor Strike](https://www.wowhead.com/forever/spell=14266) | -3065.0 |
-| Mana | [Mongoose Bite](https://www.wowhead.com/forever/spell=14271) | -1648.5 |
-| Mana | [Immolation Trap](https://www.wowhead.com/forever/spell=14305) | -1543.9 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +16114.1 |
+| Mana | [Summon Hawk](https://www.wowhead.com/forever/spell=1293527) | -7642.7 |
+| Mana | OtherActionManaRegen (tag 1) | +5909.0 |
+| Mana | [Wing Clip](https://www.wowhead.com/forever/spell=14268) | -4318.3 |
+| Mana | [Strider Kick](https://www.wowhead.com/forever/spell=1317257) | -3319.2 |
+| Mana | [Raptor Strike](https://www.wowhead.com/forever/spell=14266) | -3083.9 |
+| Mana | [Mongoose Bite](https://www.wowhead.com/forever/spell=14271) | -1658.2 |
+| Mana | [Immolation Trap](https://www.wowhead.com/forever/spell=14305) | -1544.1 |
 | Mana | [Rapid Fire](https://www.wowhead.com/forever/spell=3045) | -200.0 |
 | Mana | [Hunter's Mark (rank 4)](https://www.wowhead.com/forever/spell=14325) | -180.0 |
 | Mana | [Aspect of the Beast](https://www.wowhead.com/forever/spell=1299447) | -110.0 |
-| Health | [Holy Strength](https://www.wowhead.com/forever/spell=20007) | +0.0 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +0.5 |
 
 ## Hunter — Survival
 
@@ -660,9 +660,9 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
-| Undead | 940.48 | 0.53 | 0.00 |
-| Human | 946.75 | 0.60 | 0.02 |
-| Dwarf | 941.92 | 0.60 | 0.02 |
+| Undead | 936.46 | 0.53 | 0.00 |
+| Human | 949.58 | 0.59 | 0.01 |
+| Dwarf | 945.52 | 0.59 | 0.01 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
@@ -685,7 +685,7 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 | Trinket 1 | [Modeled: Passive Strength / crit / hit — Trinket [+11 Sta, +13 Crit, +13 Str, +14 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
 | Trinket 2 | [Modeled: Passive Strength / crit / hit — Trinket [+11 Sta, +13 Crit, +13 Str, +14 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
 | Main hand | [Modeled: Sword two-hand — Two-hand [+34 Sta, +23 Str, +14 Crit, 187–281 dmg @ 3.8s] (modeled; reference only)](https://www.wowhead.com/forever/item=272604) | 65 | Enchant Weapon - Crusader |
-| Ranged/relic | [Modeled: Physical libram — Relic [+8 Sta, +4 Agi, +26 AP] (modeled; reference only)](https://www.wowhead.com/forever/item=279247) | 65 | — |
+| Ranged/relic | [Projected: Libram of Invocation — Relic [+2 Sta, +1 Agi, +6.5 AP]](https://www.wowhead.com/forever/item=920001015) | 65 | — |
 
 Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
@@ -708,31 +708,31 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Action | DPS |
 |---|---:|
-| [Seal of Command](https://www.wowhead.com/forever/spell=20424) | 320.52 |
-| Auto-attack (tag 1) | 232.40 |
-| Auto-attack (tag 3) | 111.82 |
-| [Holy Strike](https://www.wowhead.com/forever/spell=10333) | 84.87 |
-| [Seal of Righteousness](https://www.wowhead.com/forever/spell=25713) | 80.70 |
-| [Judgement of Righteousness](https://www.wowhead.com/forever/spell=20286) | 32.09 |
-| [Consecration](https://www.wowhead.com/forever/spell=20924) | 30.16 |
-| [Judgement of Command](https://www.wowhead.com/forever/spell=20965) | 30.03 |
+| [Seal of Command](https://www.wowhead.com/forever/spell=20424) | 324.34 |
+| Auto-attack (tag 1) | 230.60 |
+| Auto-attack (tag 3) | 111.47 |
+| [Holy Strike](https://www.wowhead.com/forever/spell=10333) | 84.25 |
+| [Seal of Righteousness](https://www.wowhead.com/forever/spell=25713) | 81.29 |
+| [Consecration](https://www.wowhead.com/forever/spell=20924) | 32.06 |
+| [Judgement of Righteousness](https://www.wowhead.com/forever/spell=20286) | 32.00 |
+| [Judgement of Command](https://www.wowhead.com/forever/spell=20965) | 30.10 |
 
 ### Resource flow
 
 | Resource | Action | Net amount per fight |
 |---|---|---:|
-| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +11247.9 |
-| Mana | [Spell 20293](https://www.wowhead.com/forever/spell=20293) | -9594.5 |
-| Mana | [Spell 20919](https://www.wowhead.com/forever/spell=20919) | -8698.4 |
-| Mana | [Consecration](https://www.wowhead.com/forever/spell=20924) | -5878.4 |
-| Mana | OtherActionManaRegen (tag 1) | +5418.7 |
-| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3604.8 |
-| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3553.4 |
-| Mana | [Judgement of Light](https://www.wowhead.com/forever/spell=20271) | -3203.5 |
-| Mana | [Sanctified Judgement](https://www.wowhead.com/forever/spell=31876) | +3130.3 |
-| Mana | [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239) | -1433.1 |
-| Mana | [Holy Strike](https://www.wowhead.com/forever/spell=10333) | -521.4 |
-| Mana | OtherActionManaRegen (tag 2) | +9.4 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +11309.2 |
+| Mana | [Spell 20293](https://www.wowhead.com/forever/spell=20293) | -9090.1 |
+| Mana | [Spell 20919](https://www.wowhead.com/forever/spell=20919) | -8239.6 |
+| Mana | [Consecration](https://www.wowhead.com/forever/spell=20924) | -6250.0 |
+| Mana | OtherActionManaRegen (tag 1) | +5419.4 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3598.9 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3393.6 |
+| Mana | [Judgement of Light](https://www.wowhead.com/forever/spell=20271) | -3201.5 |
+| Mana | [Sanctified Judgement](https://www.wowhead.com/forever/spell=31876) | +2904.5 |
+| Mana | [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239) | -1375.8 |
+| Mana | [Holy Strike](https://www.wowhead.com/forever/spell=10333) | -521.1 |
+| Mana | OtherActionManaRegen (tag 2) | +5.0 |
 
 ## Warlock — Demonic Pact
 
@@ -748,25 +748,25 @@ Other races can use different equipment. Their complete setups are available in 
 | Orc | 916.52 | 0.42 | 0.00 |
 | Troll | 902.66 | 0.41 | 0.00 |
 | Undead | 920.30 | 0.41 | 0.00 |
-| Human | 919.05 | 0.42 | 0.00 |
+| Human | 922.52 | 0.43 | 0.00 |
 | Gnome | 908.99 | 0.41 | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
-### Equipment — Undead
+### Equipment — Human
 
 | Slot | Item | Item level | Enchant |
 |---|---|---:|---|
 | Head | [Modeled: Intellect / spell power / crit / hit (matched cost) — Head (Cloth) [+18 Sta, +14 Crit, +10 Hit, +31 SP, +18 Int, 81 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Arcanum of Focus |
-| Neck | [Modeled: Spell power / crit / hit (matched cost) — Neck [+11 Sta, +12 Crit, +13 Hit, +13 SP] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
+| Neck | [Modeled: Intellect / spell power / crit — Neck [+11 Sta, +13 Int, +17 SP, +8 Crit] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | — |
 | Shoulders | [Modeled: Intellect / spell power / crit / hit (matched cost) — Shoulders (Cloth) [+14 Sta, +11 Crit, +8 Hit, +24 SP, +14 Int, 75 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Chromatic Mantle of the Dawn |
-| Back | [Modeled: Spell power / crit / hit (matched cost) — Back (Cloth) [+11 Sta, +12 Crit, +13 Hit, +13 SP, 50 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Cloak - Superior Defense |
-| Chest | [Modeled: Intellect / spell power / crit / hit (matched cost) — Chest (Cloth) [+18 Sta, +14 Crit, +10 Hit, +31 SP, +18 Int, 100 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Chest - Greater Stats |
-| Wrists | [Modeled: Intellect / spell power / crit — Wrists (Cloth) [+11 Sta, +13 Int, +17 SP, +8 Crit, 44 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | Enchant Bracer - Healing Power |
+| Back | [Modeled: Intellect / spell power / crit / hit (matched cost) — Back (Cloth) [+11 Sta, +8 Crit, +6 Hit, +18 SP, +10 Int, 50 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Cloak - Superior Defense |
+| Chest | [Modeled: Intellect / spell power / crit — Chest (Cloth) [+18 Sta, +23 Int, +29 SP, +14 Crit, 100 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Modeled: Intellect / spell power / crit / hit (matched cost) — Wrists (Cloth) [+11 Sta, +8 Crit, +6 Hit, +18 SP, +10 Int, 44 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Bracer - Healing Power |
 | Hands | [Modeled: Intellect / spell power / crit / hit (matched cost) — Hands (Cloth) [+14 Sta, +11 Crit, +8 Hit, +24 SP, +14 Int, 63 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Gloves - Shadow Power |
 | Waist | [Modeled: Intellect / spell power / crit / hit (matched cost) — Waist (Cloth) [+14 Sta, +11 Crit, +8 Hit, +24 SP, +14 Int, 56 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Legs | [Modeled: Intellect / spell power / crit / hit (matched cost) — Legs (Cloth) [+18 Sta, +14 Crit, +10 Hit, +31 SP, +18 Int, 88 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Arcanum of Focus |
-| Feet | [Modeled: Intellect / spell power / crit / hit (matched cost) — Feet (Cloth) [+14 Sta, +11 Crit, +8 Hit, +24 SP, +14 Int, 69 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Boots - Spirit |
+| Legs | [Modeled: Spell power / crit / hit (matched cost) — Legs (Cloth) [+18 Sta, +21 Crit, +23 Hit, +23 SP, 88 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Arcanum of Focus |
+| Feet | [Modeled: Spell power / crit / hit (matched cost) — Feet (Cloth) [+14 Sta, +16 Crit, +18 Hit, +18 SP, 69 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Boots - Spirit |
 | Ring 1 | [Modeled: Spell power / crit / hit (matched cost) — Finger [+11 Sta, +12 Crit, +13 Hit, +13 SP] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
 | Ring 2 | [Modeled: Spell power / crit / hit (matched cost) — Finger [+11 Sta, +12 Crit, +13 Hit, +13 SP] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
 | Trinket 1 | [Modeled: Spell power / crit / hit (matched cost) — Trinket [+11 Sta, +13 Crit, +14 Hit, +14 SP] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
@@ -797,34 +797,34 @@ Other races can use different equipment. Their complete setups are available in 
 12. Cast [Searing Pain](https://www.wowhead.com/forever/spell=17923) when Time remaining ≤ 2s.
 13. Cast [Shadow Bolt](https://www.wowhead.com/forever/spell=25307).
 
-### Damage breakdown — Undead
+### Damage breakdown — Human
 
 | Action | DPS |
 |---|---:|
-| [Shadow Bolt](https://www.wowhead.com/forever/spell=25307) | 337.21 |
-| [Corruption](https://www.wowhead.com/forever/spell=25311) | 97.38 |
-| [Bane of Doom](https://www.wowhead.com/forever/spell=603) | 90.26 |
-| [Immolate](https://www.wowhead.com/forever/spell=25309) | 89.56 |
-| Succubus: [Demonic Brand](https://www.wowhead.com/forever/spell=1293697) | 82.65 |
-| Succubus: Auto-attack (tag 1) | 75.53 |
-| [Searing Pain](https://www.wowhead.com/forever/spell=17923) | 55.42 |
-| [Soul Fire](https://www.wowhead.com/forever/spell=17924) | 51.01 |
+| [Shadow Bolt](https://www.wowhead.com/forever/spell=25307) | 342.80 |
+| [Corruption](https://www.wowhead.com/forever/spell=25311) | 98.34 |
+| [Bane of Doom](https://www.wowhead.com/forever/spell=603) | 91.16 |
+| [Immolate](https://www.wowhead.com/forever/spell=25309) | 90.57 |
+| Succubus: [Demonic Brand](https://www.wowhead.com/forever/spell=1293697) | 83.12 |
+| Succubus: Auto-attack (tag 1) | 77.17 |
+| [Searing Pain](https://www.wowhead.com/forever/spell=17923) | 55.87 |
+| [Soul Fire](https://www.wowhead.com/forever/spell=17924) | 51.44 |
 
 ### Resource flow
 
 | Resource | Action | Net amount per fight |
 |---|---|---:|
-| Mana | [Shadow Bolt](https://www.wowhead.com/forever/spell=25307) | -24355.6 |
-| Mana | [Life Tap](https://www.wowhead.com/forever/spell=11689) | +12073.0 |
-| Mana | [Fel Energy](https://www.wowhead.com/forever/spell=18792) | +11859.7 |
-| Mana | [Immolate](https://www.wowhead.com/forever/spell=25309) | -6562.4 |
-| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +5375.9 |
-| Mana | [Corruption](https://www.wowhead.com/forever/spell=25311) | -5158.5 |
-| Mana | [Searing Pain](https://www.wowhead.com/forever/spell=17923) | -4263.5 |
-| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +3891.8 |
-| Mana | [Soul Fire](https://www.wowhead.com/forever/spell=17924) | -3170.6 |
-| Mana | OtherActionManaRegen (tag 1) | +3114.2 |
-| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +2585.2 |
+| Mana | [Shadow Bolt](https://www.wowhead.com/forever/spell=25307) | -24327.3 |
+| Mana | [Life Tap](https://www.wowhead.com/forever/spell=11689) | +12220.6 |
+| Mana | [Fel Energy](https://www.wowhead.com/forever/spell=18792) | +11715.8 |
+| Mana | [Immolate](https://www.wowhead.com/forever/spell=25309) | -6560.9 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +5396.7 |
+| Mana | [Corruption](https://www.wowhead.com/forever/spell=25311) | -5157.3 |
+| Mana | [Searing Pain](https://www.wowhead.com/forever/spell=17923) | -4265.4 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +3885.7 |
+| Mana | [Soul Fire](https://www.wowhead.com/forever/spell=17924) | -3176.5 |
+| Mana | OtherActionManaRegen (tag 1) | +3113.6 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +2635.8 |
 | Mana | [Bane of Doom](https://www.wowhead.com/forever/spell=603) | -1200.0 |
 
 ## Warrior — Arms
@@ -919,6 +919,87 @@ Other races can use different equipment. Their complete setups are available in 
 | Rage | [Anger Management](https://www.wowhead.com/forever/spell=12296) | +98.9 |
 | Rage | [Bloodrage](https://www.wowhead.com/forever/spell=2687) | +85.6 |
 
+## Mage — Arcane–Frost
+
+**Talents:** 28/0/23 · `050200500310031053--05550002010003002`
+
+[Requests and results](../artifacts/modelled_gear/forever_dps_5min.json) · [Equipment search](../artifacts/correctness/october_15/selection-evidence.json)
+
+**Model limitations:** Ice Lance uses a provisional 0.10 SP share calibrated from lower ranks. Fingers of Frost ordering and Arcane Missiles/Clearcasting proc interpretation remain unresolved; Missile Barrage now requires a landed eligible hit.
+
+
+### Results
+
+| Race | DPS | Standard error | Mana-limited seconds |
+|---|---:|---:|---:|
+| Orc | 851.26 | 0.66 | 0.72 |
+| Troll | 838.72 | 0.64 | 0.80 |
+| Undead | 850.21 | 0.64 | 0.63 |
+| Human | 856.77 | 0.64 | 0.55 |
+| Gnome | 851.75 | 0.64 | 0.46 |
+| High Order | 855.72 | 0.63 | 0.71 |
+
+Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Human
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Modeled: Intellect / spell power / crit / hit (matched cost) — Head (Cloth) [+18 Sta, +14 Crit, +10 Hit, +31 SP, +18 Int, 81 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Arcanum of Focus |
+| Neck | [Modeled: Intellect / spell power / crit / hit (matched cost) — Neck [+11 Sta, +8 Crit, +6 Hit, +18 SP, +10 Int] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Shoulders | [Modeled: Intellect / spell power / crit / hit (matched cost) — Shoulders (Cloth) [+14 Sta, +11 Crit, +8 Hit, +24 SP, +14 Int, 75 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Chromatic Mantle of the Dawn |
+| Back | [Modeled: Intellect / spell power / crit / hit (matched cost) — Back (Cloth) [+11 Sta, +8 Crit, +6 Hit, +18 SP, +10 Int, 50 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Cloak - Superior Defense |
+| Chest | [Modeled: Intellect / spell power / crit / hit (matched cost) — Chest (Cloth) [+18 Sta, +14 Crit, +10 Hit, +31 SP, +18 Int, 100 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Modeled: Intellect / spell power / crit / hit (matched cost) — Wrists (Cloth) [+11 Sta, +8 Crit, +6 Hit, +18 SP, +10 Int, 44 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Bracer - Healing Power |
+| Hands | [Modeled: Intellect / spell power / crit / hit (matched cost) — Hands (Cloth) [+14 Sta, +11 Crit, +8 Hit, +24 SP, +14 Int, 63 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Gloves - Healing Power |
+| Waist | [Modeled: Intellect / spell power / crit / hit (matched cost) — Waist (Cloth) [+14 Sta, +11 Crit, +8 Hit, +24 SP, +14 Int, 56 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Legs | [Modeled: Intellect / spell power / crit / hit (matched cost) — Legs (Cloth) [+18 Sta, +14 Crit, +10 Hit, +31 SP, +18 Int, 88 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Arcanum of Focus |
+| Feet | [Modeled: Intellect / spell power / crit / hit (matched cost) — Feet (Cloth) [+14 Sta, +11 Crit, +8 Hit, +24 SP, +14 Int, 69 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Boots - Spirit |
+| Ring 1 | [Modeled: Intellect / spell power / crit / hit (matched cost) — Finger [+11 Sta, +8 Crit, +6 Hit, +18 SP, +10 Int] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Ring 2 | [Modeled: Intellect / spell power / crit / hit (matched cost) — Finger [+11 Sta, +8 Crit, +6 Hit, +18 SP, +10 Int] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Trinket 1 | [Modeled: Passive Intellect / spell power / crit — Trinket [+11 Sta, +14 Int, +18 SP, +9 Crit] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | — |
+| Trinket 2 | [Modeled: Spell power / crit / hit (matched cost) — Trinket [+11 Sta, +13 Crit, +14 Hit, +14 SP] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
+| Main hand | [Modeled: Caster dagger one-hand (projected) — One-hand [+11 Sta, +10 Int, +12 SP, 66–123 dmg @ 2s] (modeled; reference only)](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Spell Power |
+| Off hand | [Modeled: Spell-power held off-hand — Held off-hand [+15 Sta, +14 Int, +18 SP] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | — |
+| Ranged/relic | [Modeled: Spell-power wand (projected) — Ranged/wand [+9 Int, +12 SP, 49–92 dmg @ 1.5s] (modeled; reference only)](https://www.wowhead.com/forever/item=279246) | 65 | — |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
+
+### Rotation priorities
+
+1. Cast [Item 8008](https://www.wowhead.com/forever/item=8008) when Mana fraction ≤ 80%.
+2. Use ready automatic cooldowns.
+3. Cast [Evocation](https://www.wowhead.com/forever/spell=12051) when (Mana fraction ≤ 15% AND Time remaining ≥ 25s).
+4. Cast [Ice Lance](https://www.wowhead.com/forever/spell=30455) when [Fingers of Frost](https://www.wowhead.com/forever/spell=44543) active.
+5. Cast [Arcane Missiles](https://www.wowhead.com/forever/spell=25345) when [Missile Barrage](https://www.wowhead.com/forever/spell=44404) active.
+6. Cast [Arcane Blast](https://www.wowhead.com/forever/spell=30451) when ([Arcane Blast](https://www.wowhead.com/forever/spell=30451) stacks < 4 AND Mana fraction > 20%).
+7. Cast [Frostbolt](https://www.wowhead.com/forever/spell=25304).
+
+### Damage breakdown — Human
+
+| Action | DPS |
+|---|---:|
+| [Arcane Missiles](https://www.wowhead.com/forever/spell=25345) | 487.69 |
+| [Frostbolt](https://www.wowhead.com/forever/spell=25304) | 172.49 |
+| [Arcane Blast](https://www.wowhead.com/forever/spell=30451) | 154.59 |
+| [Ice Lance](https://www.wowhead.com/forever/spell=30455) | 42.01 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | [Arcane Blast](https://www.wowhead.com/forever/spell=30451) | -27751.5 |
+| Mana | OtherActionManaRegen (tag 1) | +10476.1 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +9209.2 |
+| Mana | [Frostbolt](https://www.wowhead.com/forever/spell=25304) | -6959.9 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +4565.4 |
+| Mana | OtherActionManaRegen (tag 2) | +4424.0 |
+| Mana | [Ice Lance](https://www.wowhead.com/forever/spell=30455) | -1277.7 |
+| Mana | [Item 8008](https://www.wowhead.com/forever/item=8008) | +1097.9 |
+| Mana | [Item 8007](https://www.wowhead.com/forever/item=8007) | +832.1 |
+| Mana | [Item 5513](https://www.wowhead.com/forever/item=5513) | +469.0 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +227.8 |
+
 ## Mage — Arcane
 
 **Talents:** 33/3/15 · `0512005023100311531-03-005500032`
@@ -995,86 +1076,88 @@ Other races can use different equipment. Their complete setups are available in 
 | Mana | [Item 8007](https://www.wowhead.com/forever/item=8007) | +849.6 |
 | Mana | [Item 5513](https://www.wowhead.com/forever/item=5513) | +589.3 |
 
-## Mage — Arcane–Frost
+## Druid — Feral
 
-**Talents:** 28/0/23 · `050200500310031053--05550002010003002`
+**Talents:** 7/34/10 · `05002-45010032021032212051-055`
 
 [Requests and results](../artifacts/modelled_gear/forever_dps_5min.json) · [Equipment search](../artifacts/correctness/october_15/selection-evidence.json)
 
-**Model limitations:** Ice Lance uses a provisional 0.10 SP share calibrated from lower ranks. Fingers of Frost ordering and Arcane Missiles/Clearcasting proc interpretation remain unresolved; Missile Barrage now requires a landed eligible hit.
+**Model limitations:** Blizzard supports proc-enchant form eligibility, and Crusader's sourced health return is modeled. Its exact PPM/conditional interactions remain qualified (DRU-011); the Night Elf profile uses that enchant.
 
 
 ### Results
 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
-| Orc | 851.26 | 0.66 | 0.72 |
-| Troll | 838.72 | 0.64 | 0.80 |
-| Undead | 850.21 | 0.64 | 0.63 |
-| Human | 852.05 | 0.64 | 0.63 |
-| Gnome | 851.75 | 0.64 | 0.46 |
-| High Order | 855.72 | 0.63 | 0.71 |
+| Tauren | 848.45 | 0.29 | 2.34 |
+| Windshaper | 851.08 | 0.28 | 0.98 |
+| Night Elf | 837.61 | 0.28 | 2.08 |
+| High Order | 851.08 | 0.28 | 0.98 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
-### Equipment — High Order
+### Equipment — Windshaper
 
 | Slot | Item | Item level | Enchant |
 |---|---|---:|---|
-| Head | [Modeled: Intellect / spell power / crit / hit (matched cost) — Head (Cloth) [+18 Sta, +14 Crit, +10 Hit, +31 SP, +18 Int, 81 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Arcanum of Focus |
-| Neck | [Modeled: Intellect / spell power / crit / hit (matched cost) — Neck [+11 Sta, +8 Crit, +6 Hit, +18 SP, +10 Int] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Shoulders | [Modeled: Intellect / spell power / crit / hit (matched cost) — Shoulders (Cloth) [+14 Sta, +11 Crit, +8 Hit, +24 SP, +14 Int, 75 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Chromatic Mantle of the Dawn |
-| Back | [Modeled: Intellect / spell power / crit — Back (Cloth) [+11 Sta, +13 Int, +17 SP, +8 Crit, 50 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | Enchant Cloak - Superior Defense |
-| Chest | [Modeled: Intellect / spell power / crit / hit (matched cost) — Chest (Cloth) [+18 Sta, +14 Crit, +10 Hit, +31 SP, +18 Int, 100 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Chest - Greater Stats |
-| Wrists | [Modeled: Intellect / spell power / crit / hit (matched cost) — Wrists (Cloth) [+11 Sta, +8 Crit, +6 Hit, +18 SP, +10 Int, 44 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Bracer - Healing Power |
-| Hands | [Modeled: Intellect / spell power / crit / hit (matched cost) — Hands (Cloth) [+14 Sta, +11 Crit, +8 Hit, +24 SP, +14 Int, 63 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Gloves - Healing Power |
-| Waist | [Modeled: Intellect / spell power / crit / hit (matched cost) — Waist (Cloth) [+14 Sta, +11 Crit, +8 Hit, +24 SP, +14 Int, 56 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Legs | [Modeled: Intellect / spell power / crit / hit (matched cost) — Legs (Cloth) [+18 Sta, +14 Crit, +10 Hit, +31 SP, +18 Int, 88 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Arcanum of Focus |
-| Feet | [Modeled: Intellect / spell power / crit / hit (matched cost) — Feet (Cloth) [+14 Sta, +11 Crit, +8 Hit, +24 SP, +14 Int, 69 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Boots - Spirit |
-| Ring 1 | [Modeled: Intellect / spell power / crit / hit (matched cost) — Finger [+11 Sta, +8 Crit, +6 Hit, +18 SP, +10 Int] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Ring 2 | [Modeled: Spell power / crit / hit (matched cost) — Finger [+11 Sta, +12 Crit, +13 Hit, +13 SP] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
-| Trinket 1 | [Modeled: Intellect / spell power / crit / hit (matched cost) — Trinket [+11 Sta, +9 Crit, +6 Hit, +19 SP, +11 Int] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Trinket 2 | [Modeled: Intellect / spell power / crit / hit (matched cost) — Trinket [+11 Sta, +9 Crit, +6 Hit, +19 SP, +11 Int] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Main hand | [Modeled: Dagger main-hand — Main hand [+8 Sta, +7 Int, +15 Crit, 56–105 dmg @ 1.7s] (modeled; reference only)](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Spell Power |
-| Off hand | [Modeled: Spell-power held off-hand — Held off-hand [+15 Sta, +14 Int, +18 SP] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | — |
-| Ranged/relic | [Modeled: Spell-power wand (projected) — Ranged/wand [+9 Int, +12 SP, 49–92 dmg @ 1.5s] (modeled; reference only)](https://www.wowhead.com/forever/item=279246) | 65 | — |
+| Head | [Modeled: Agility / crit / hit (leather) — Head (Leather) [+18 Sta, +21 Agi, +21 Crit, +23 Hit, 160 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Lesser Arcanum of Voracity |
+| Neck | [Modeled: Strength / agility / crit / hit — Neck [+16 Str, +11 Sta, +8 Crit, +6 Hit, +10 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Shoulders | [Modeled: Agility / crit / hit (leather) — Shoulders (Leather) [+14 Sta, +16 Agi, +16 Crit, +18 Hit, 148 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Chromatic Mantle of the Dawn |
+| Back | [Modeled: Strength / agility / crit / hit — Back (Cloth) [+16 Str, +11 Sta, +8 Crit, +6 Hit, +10 Agi, 50 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Boots - Lesser Agility |
+| Chest | [Modeled: Agility / crit / hit (leather) — Chest (Leather) [+18 Sta, +21 Agi, +21 Crit, +23 Hit, 197 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Modeled: Agility / crit / hit (leather) — Wrists (Leather) [+11 Sta, +12 Agi, +12 Crit, +13 Hit, 86 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Bracer - Superior Strength |
+| Hands | [Modeled: Agility / crit / hit (leather) — Hands (Leather) [+14 Sta, +16 Agi, +16 Crit, +18 Hit, 123 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Weapon - Agility |
+| Waist | [Modeled: Agility / crit / hit (leather) — Waist (Leather) [+14 Sta, +16 Agi, +16 Crit, +18 Hit, 111 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
+| Legs | [Modeled: Agility / crit / hit (leather) — Legs (Leather) [+18 Sta, +21 Agi, +21 Crit, +23 Hit, 173 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Lesser Arcanum of Voracity |
+| Feet | [Modeled: Agility / crit / hit (leather) — Feet (Leather) [+14 Sta, +16 Agi, +16 Crit, +18 Hit, 136 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Boots - Greater Agility |
+| Ring 1 | [Modeled: Strength / agility / crit / hit — Finger [+16 Str, +11 Sta, +8 Crit, +6 Hit, +10 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Ring 2 | [Modeled: Strength / agility / crit / hit — Finger [+16 Str, +11 Sta, +8 Crit, +6 Hit, +10 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Trinket 1 | [Modeled: Passive Strength / agility / crit / hit — Trinket [+17 Str, +11 Sta, +9 Crit, +6 Hit, +11 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Trinket 2 | [Modeled: Passive Strength / agility / crit / hit — Trinket [+17 Str, +11 Sta, +9 Crit, +6 Hit, +11 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Main hand | [Modeled: Mace two-hand — Two-hand [+34 Sta, +23 Str, +14 Crit, 187–281 dmg @ 3.8s] (modeled; reference only)](https://www.wowhead.com/forever/item=272601) | 65 | Enchant Weapon - Crusader |
+| Ranged/relic | [Projected: Idol of the Dream — Relic [+2 Sta, +1 Agi, +6.5 AP]](https://www.wowhead.com/forever/item=920001001) | 65 | — |
 
 Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
 ### Rotation priorities
 
-1. Cast [Item 8008](https://www.wowhead.com/forever/item=8008) when Mana fraction ≤ 80%.
+1. Cast [Item 7676](https://www.wowhead.com/forever/item=7676) when Energy ≤ 10.
 2. Use ready automatic cooldowns.
-3. Cast [Evocation](https://www.wowhead.com/forever/spell=12051) when (Mana fraction ≤ 15% AND Time remaining ≥ 25s).
-4. Cast [Ice Lance](https://www.wowhead.com/forever/spell=30455) when [Fingers of Frost](https://www.wowhead.com/forever/spell=44543) active.
-5. Cast [Arcane Missiles](https://www.wowhead.com/forever/spell=25345) when [Missile Barrage](https://www.wowhead.com/forever/spell=44404) active.
-6. Cast [Arcane Blast](https://www.wowhead.com/forever/spell=30451) when ([Arcane Blast](https://www.wowhead.com/forever/spell=30451) stacks < 4 AND Mana fraction > 20%).
-7. Cast [Frostbolt](https://www.wowhead.com/forever/spell=25304).
+3. Cast [Ferocious Bite](https://www.wowhead.com/forever/spell=31018) when (Time remaining ≤ 4s AND Combo points ≥ 3).
+4. Cast [Ferocious Bite](https://www.wowhead.com/forever/spell=31018) when (Combo points ≥ 5 AND [Rip](https://www.wowhead.com/forever/spell=9896) DoT time remaining ≥ 5s).
+5. Cast [Rip](https://www.wowhead.com/forever/spell=9896) when (Combo points ≥ 4 AND NOT [Rip](https://www.wowhead.com/forever/spell=9896) DoT active AND Time remaining ≥ 8s).
+6. Cast [Rake](https://www.wowhead.com/forever/spell=9904) when (NOT [Rake](https://www.wowhead.com/forever/spell=9904) DoT active AND Time remaining ≥ 9s AND Combo points < 5).
+7. Cast [Shifting Power](https://www.wowhead.com/forever/spell=1322605) when Energy ≤ 60.
+8. Cast [Shred](https://www.wowhead.com/forever/spell=9830).
 
-### Damage breakdown — High Order
+### Damage breakdown — Windshaper
 
 | Action | DPS |
 |---|---:|
-| [Arcane Missiles](https://www.wowhead.com/forever/spell=25345) | 484.42 |
-| [Frostbolt](https://www.wowhead.com/forever/spell=25304) | 177.24 |
-| [Arcane Blast](https://www.wowhead.com/forever/spell=30451) | 151.05 |
-| [Ice Lance](https://www.wowhead.com/forever/spell=30455) | 43.02 |
+| Auto-attack (tag 1) | 230.30 |
+| [Shred](https://www.wowhead.com/forever/spell=9830) | 220.85 |
+| [Rip](https://www.wowhead.com/forever/spell=9896) | 182.88 |
+| [Rake](https://www.wowhead.com/forever/spell=9904) | 103.44 |
+| [Ferocious Bite](https://www.wowhead.com/forever/spell=31018) | 57.11 |
+| Auto-attack (tag 3) | 53.17 |
+| [Dragonbreath Chili (proc)](https://www.wowhead.com/forever/spell=15851) | 3.34 |
 
 ### Resource flow
 
 | Resource | Action | Net amount per fight |
 |---|---|---:|
-| Mana | [Arcane Blast](https://www.wowhead.com/forever/spell=30451) | -27638.5 |
-| Mana | OtherActionManaRegen (tag 1) | +10883.7 |
-| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +9349.6 |
-| Mana | [Frostbolt](https://www.wowhead.com/forever/spell=25304) | -7323.4 |
-| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +4593.2 |
-| Mana | OtherActionManaRegen (tag 2) | +3925.8 |
-| Mana | [Ice Lance](https://www.wowhead.com/forever/spell=30455) | -1325.4 |
-| Mana | [Item 8008](https://www.wowhead.com/forever/item=8008) | +1098.5 |
-| Mana | [Item 8007](https://www.wowhead.com/forever/item=8007) | +833.4 |
-| Mana | [Item 5513](https://www.wowhead.com/forever/item=5513) | +462.0 |
-| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +240.4 |
+| Mana | [Shifting Power](https://www.wowhead.com/forever/spell=1322605) | -28116.1 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +14644.6 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3952.1 |
+| Mana | OtherActionManaRegen (tag 2) | +3492.6 |
+| Energy | [Shred](https://www.wowhead.com/forever/spell=9830) | -3257.7 |
+| Energy | OtherActionEnergyRegen | +3107.4 |
+| Energy | [Shifting Power](https://www.wowhead.com/forever/spell=1322605) | +1643.7 |
+| Mana | OtherActionManaRegen (tag 1) | +1632.3 |
+| Energy | [Rake](https://www.wowhead.com/forever/spell=9904) | -924.9 |
+| Energy | [Rip](https://www.wowhead.com/forever/spell=9896) | -553.0 |
+| Energy | [Ferocious Bite](https://www.wowhead.com/forever/spell=31018) | -444.6 |
+| Energy | OtherActionRefund | +263.2 |
 
 ## Warrior — 2H Bloodthirst
 
@@ -1278,8 +1361,8 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
-| Troll | 817.39 | 0.25 | 0.00 |
-| Undead | 822.14 | 0.25 | 0.00 |
+| Troll | 820.69 | 0.24 | 0.00 |
+| Undead | 828.86 | 0.25 | 0.00 |
 | Human | 835.32 | 0.25 | 0.00 |
 | Dwarf | 833.53 | 0.26 | 0.00 |
 | Night Elf | 828.60 | 0.25 | 0.00 |
@@ -1363,7 +1446,7 @@ Other races can use different equipment. Their complete setups are available in 
 |---|---:|---:|---:|
 | Orc | 812.37 | 0.34 | 0.00 |
 | Troll | 812.76 | 0.34 | 0.00 |
-| Undead | 809.38 | 0.33 | 0.00 |
+| Undead | 811.17 | 0.33 | 0.00 |
 | Human | 819.66 | 0.34 | 0.00 |
 | Gnome | 802.73 | 0.33 | 0.00 |
 
@@ -1451,11 +1534,11 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
-| Orc | 801.71 | 0.58 | 0.00 |
-| Tauren | 799.67 | 0.57 | 0.00 |
-| Troll | 795.82 | 0.57 | 0.00 |
-| Windshaper | 804.21 | 0.57 | 0.00 |
-| Dwarf | 803.74 | 0.59 | 0.00 |
+| Orc | 816.50 | 0.58 | 0.00 |
+| Tauren | 814.69 | 0.58 | 0.00 |
+| Troll | 806.56 | 0.58 | 0.00 |
+| Windshaper | 817.75 | 0.57 | 0.00 |
+| Dwarf | 816.25 | 0.58 | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
@@ -1478,7 +1561,7 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 | Trinket 1 | [Modeled: Passive Strength / crit / hit — Trinket [+11 Sta, +13 Crit, +13 Str, +14 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
 | Trinket 2 | [Modeled: Passive Strength / crit / hit — Trinket [+11 Sta, +13 Crit, +13 Str, +14 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
 | Main hand | [Modeled: Spell two-hand — Two-hand [+25 Sta, +24 Int, +24 SP, +15 Str, 187–281 dmg @ 3.8s] (modeled; reference only)](https://www.wowhead.com/forever/item=272682) | 65 | Enchant Weapon - Fiery Weapon |
-| Ranged/relic | [Modeled: Physical totem — Relic [+8 Sta, +4 Agi, +26 AP] (modeled; reference only)](https://www.wowhead.com/forever/item=279249) | 65 | — |
+| Ranged/relic | [Projected: Totem of the Storm — Relic [+2 Sta, +1 Agi, +6.5 AP]](https://www.wowhead.com/forever/item=920001029) | 65 | — |
 
 Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
@@ -1505,31 +1588,31 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Action | DPS |
 |---|---:|
-| Auto-attack (tag 1) | 247.77 |
-| [Windfury Weapon](https://www.wowhead.com/forever/spell=16362) | 156.50 |
-| [Stormstrike](https://www.wowhead.com/forever/spell=17364) | 102.66 |
-| [Earth Shock](https://www.wowhead.com/forever/spell=10414) | 79.99 |
-| [Fire Nova](https://www.wowhead.com/forever/spell=408345) | 63.40 |
-| [Flame Shock](https://www.wowhead.com/forever/spell=29228) | 47.48 |
-| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 46.07 |
+| Auto-attack (tag 1) | 245.73 |
+| [Windfury Weapon](https://www.wowhead.com/forever/spell=16362) | 154.85 |
+| [Stormstrike](https://www.wowhead.com/forever/spell=17364) | 101.75 |
+| [Earth Shock](https://www.wowhead.com/forever/spell=10414) | 79.52 |
+| [Fire Nova](https://www.wowhead.com/forever/spell=408345) | 63.37 |
+| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 48.76 |
+| [Flame Shock](https://www.wowhead.com/forever/spell=29228) | 47.46 |
 | [Attack](https://www.wowhead.com/forever/spell=10436) | 28.70 |
 
 ### Resource flow
 
 | Resource | Action | Net amount per fight |
 |---|---|---:|
-| Mana | [Fire Nova](https://www.wowhead.com/forever/spell=408345) | -12461.5 |
-| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +9315.5 |
-| Mana | OtherActionManaRegen (tag 1) | +7288.4 |
-| Mana | [Earth Shock](https://www.wowhead.com/forever/spell=10414) | -7034.3 |
-| Mana | [Stormstrike](https://www.wowhead.com/forever/spell=17364) | -4648.5 |
-| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3693.8 |
-| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3570.1 |
-| Mana | [Flame Shock](https://www.wowhead.com/forever/spell=29228) | -2240.7 |
+| Mana | [Fire Nova](https://www.wowhead.com/forever/spell=408345) | -12447.9 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +9343.1 |
+| Mana | OtherActionManaRegen (tag 1) | +7289.9 |
+| Mana | [Earth Shock](https://www.wowhead.com/forever/spell=10414) | -7017.9 |
+| Mana | [Stormstrike](https://www.wowhead.com/forever/spell=17364) | -4648.9 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3686.4 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3576.5 |
+| Mana | [Flame Shock](https://www.wowhead.com/forever/spell=29228) | -2237.6 |
 | Mana | [Searing Totem](https://www.wowhead.com/forever/spell=10438) | -1020.0 |
 | Mana | [Spell 10614](https://www.wowhead.com/forever/spell=10614) | -500.0 |
 | Mana | [Strength of Earth Totem](https://www.wowhead.com/forever/spell=10442) | -450.0 |
-| Mana | OtherActionManaRegen (tag 2) | +165.9 |
+| Mana | OtherActionManaRegen (tag 2) | +163.7 |
 
 ## Warlock — DS/Ruin
 
@@ -1721,14 +1804,14 @@ Other races can use different equipment. Their complete setups are available in 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
 | Orc | 760.21 | 0.32 | 0.00 |
-| Troll | 752.09 | 0.31 | 0.00 |
-| Undead | 757.51 | 0.31 | 0.00 |
-| Windshaper | 772.28 | 0.32 | 0.00 |
+| Troll | 754.77 | 0.32 | 0.00 |
+| Undead | 759.55 | 0.32 | 0.00 |
+| Windshaper | 773.58 | 0.33 | 0.00 |
 | Human | 762.37 | 0.32 | 0.00 |
 | Dwarf | 761.82 | 0.33 | 0.00 |
 | Night Elf | 758.40 | 0.32 | 0.00 |
 | Gnome | 758.33 | 0.33 | 0.00 |
-| High Order | 772.28 | 0.32 | 0.00 |
+| High Order | 773.58 | 0.33 | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
@@ -1750,7 +1833,7 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 | Ring 2 | [Modeled: Agility / crit / hit — Finger [+11 Sta, +12 Agi, +12 Crit, +13 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
 | Trinket 1 | [Modeled: Passive Agility / crit / hit — Trinket [+11 Sta, +13 Agi, +13 Crit, +14 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
 | Trinket 2 | [Modeled: Passive Agility / crit / hit — Trinket [+11 Sta, +13 Agi, +13 Crit, +14 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
-| Main hand | [Modeled: Sword one-hand — One-hand [+2 Sta, +24 AP, +14 Crit, 109–165 dmg @ 2.9s] (modeled; reference only)](https://www.wowhead.com/forever/item=272452) | 65 | Enchant Weapon - Fiery Weapon |
+| Main hand | [Modeled: Sword one-hand — One-hand [+2 Sta, +24 AP, +14 Crit, 109–165 dmg @ 2.9s] (modeled; reference only)](https://www.wowhead.com/forever/item=272452) | 65 | Enchant Weapon - Crusader |
 | Off hand | [Modeled: Sword one-hand — One-hand [+2 Sta, +24 AP, +14 Crit, 68–102 dmg @ 1.8s] (modeled; reference only)](https://www.wowhead.com/forever/item=272452) | 65 | Enchant Weapon - Crusader |
 | Ranged/relic | [Modeled: Crossbow ranged — Ranged/wand [+6 Sta, +32 AP, 98–148 dmg @ 2s] (modeled; reference only)](https://www.wowhead.com/forever/item=272595) | 65 | SAF-T Ultra Precision Scope |
 
@@ -1774,31 +1857,31 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Action | DPS |
 |---|---:|
-| Auto-attack (tag 1) | 195.11 |
-| [Sinister Strike](https://www.wowhead.com/forever/spell=11294) | 139.09 |
-| Auto-attack (tag 2) | 130.81 |
-| Auto-attack (tag 3) | 106.50 |
-| [Spell 31016](https://www.wowhead.com/forever/spell=31016) | 90.07 |
+| Auto-attack (tag 1) | 200.20 |
+| [Sinister Strike](https://www.wowhead.com/forever/spell=11294) | 141.80 |
+| Auto-attack (tag 2) | 134.34 |
+| Auto-attack (tag 3) | 108.88 |
+| [Spell 31016](https://www.wowhead.com/forever/spell=31016) | 90.50 |
 | [Spell 25347](https://www.wowhead.com/forever/spell=25347) | 39.41 |
-| [Instant Poison VI](https://www.wowhead.com/forever/spell=11340) | 25.28 |
-| [Dragonbreath Chili (proc)](https://www.wowhead.com/forever/spell=15851) | 13.24 |
+| [Instant Poison VI](https://www.wowhead.com/forever/spell=11340) | 25.35 |
+| [Dragonbreath Chili (proc)](https://www.wowhead.com/forever/spell=15851) | 13.26 |
 
 ### Resource flow
 
 | Resource | Action | Net amount per fight |
 |---|---|---:|
 | Energy | OtherActionEnergyRegen | +3271.4 |
-| Energy | [Sinister Strike](https://www.wowhead.com/forever/spell=11294) | -3027.5 |
-| Energy | [Spell 31016](https://www.wowhead.com/forever/spell=31016) | -481.5 |
-| Energy | [Relentless Strikes](https://www.wowhead.com/forever/spell=14179) | +477.8 |
-| Energy | [Slice and Dice](https://www.wowhead.com/forever/spell=6774) | -469.4 |
-| Energy | OtherActionRefund | +127.0 |
+| Energy | [Sinister Strike](https://www.wowhead.com/forever/spell=11294) | -3022.8 |
+| Energy | [Spell 31016](https://www.wowhead.com/forever/spell=31016) | -480.8 |
+| Energy | [Relentless Strikes](https://www.wowhead.com/forever/spell=14179) | +473.1 |
+| Energy | [Slice and Dice](https://www.wowhead.com/forever/spell=6774) | -468.8 |
+| Energy | OtherActionRefund | +125.6 |
 | Energy | [Item 7676](https://www.wowhead.com/forever/item=7676) | +96.7 |
 | Energy | [Blade Flurry](https://www.wowhead.com/forever/spell=13877) | -75.0 |
 | ComboPoints | [Sinister Strike](https://www.wowhead.com/forever/spell=11294) | +72.2 |
-| ComboPoints | [Spell 31016](https://www.wowhead.com/forever/spell=31016) | -69.1 |
+| ComboPoints | [Spell 31016](https://www.wowhead.com/forever/spell=31016) | -68.9 |
 | ComboPoints | [Slice and Dice](https://www.wowhead.com/forever/spell=6774) | -26.5 |
-| ComboPoints | [Ruthlessness](https://www.wowhead.com/forever/spell=14161) | +25.1 |
+| ComboPoints | [Ruthlessness](https://www.wowhead.com/forever/spell=14161) | +24.9 |
 
 ## Rogue — Mutilate
 
@@ -1886,87 +1969,6 @@ Other races can use different equipment. Their complete setups are available in 
 | ComboPoints | [Ruthlessness](https://www.wowhead.com/forever/spell=14161) | +34.5 |
 | ComboPoints | [Slice and Dice](https://www.wowhead.com/forever/spell=6774) | -22.4 |
 
-## Druid — Feral
-
-**Talents:** 9/34/8 · `050022-35210032021032212041-053`
-
-[Requests and results](../artifacts/modelled_gear/forever_dps_5min.json) · [Equipment search](../artifacts/correctness/october_15/selection-evidence.json)
-
-**Model limitations:** Blizzard supports proc-enchant form eligibility, and Crusader's sourced health return is modeled. Its exact PPM/conditional interactions remain qualified (DRU-011); the Night Elf profile uses that enchant.
-
-
-### Results
-
-| Race | DPS | Standard error | Mana-limited seconds |
-|---|---:|---:|---:|
-| Tauren | 757.99 | 0.25 | 3.47 |
-| Windshaper | 759.30 | 0.24 | 2.39 |
-| Night Elf | 749.59 | 0.24 | 3.14 |
-| High Order | 759.30 | 0.24 | 2.39 |
-
-Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
-
-### Equipment — Windshaper
-
-| Slot | Item | Item level | Enchant |
-|---|---|---:|---|
-| Head | [Modeled: Agility / crit / hit (leather) — Head (Leather) [+18 Sta, +21 Agi, +21 Crit, +23 Hit, 160 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Lesser Arcanum of Voracity |
-| Neck | [Modeled: Strength / agility / crit / hit — Neck [+16 Str, +11 Sta, +8 Crit, +6 Hit, +10 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Shoulders | [Modeled: Agility / crit / hit (leather) — Shoulders (Leather) [+14 Sta, +16 Agi, +16 Crit, +18 Hit, 148 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Chromatic Mantle of the Dawn |
-| Back | [Modeled: Strength / agility / crit / hit — Back (Cloth) [+16 Str, +11 Sta, +8 Crit, +6 Hit, +10 Agi, 50 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Boots - Lesser Agility |
-| Chest | [Modeled: Agility / crit / hit (leather) — Chest (Leather) [+18 Sta, +21 Agi, +21 Crit, +23 Hit, 197 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Chest - Greater Stats |
-| Wrists | [Modeled: Agility / crit / hit (leather) — Wrists (Leather) [+11 Sta, +12 Agi, +12 Crit, +13 Hit, 86 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Bracer - Superior Strength |
-| Hands | [Modeled: Agility / crit / hit (leather) — Hands (Leather) [+14 Sta, +16 Agi, +16 Crit, +18 Hit, 123 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Weapon - Agility |
-| Waist | [Modeled: Agility / crit / hit (leather) — Waist (Leather) [+14 Sta, +16 Agi, +16 Crit, +18 Hit, 111 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
-| Legs | [Modeled: Agility / crit / hit (leather) — Legs (Leather) [+18 Sta, +21 Agi, +21 Crit, +23 Hit, 173 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Lesser Arcanum of Voracity |
-| Feet | [Modeled: Agility / crit / hit (leather) — Feet (Leather) [+14 Sta, +16 Agi, +16 Crit, +18 Hit, 136 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Boots - Greater Agility |
-| Ring 1 | [Modeled: Strength / agility / crit / hit — Finger [+16 Str, +11 Sta, +8 Crit, +6 Hit, +10 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Ring 2 | [Modeled: Strength / agility / crit / hit — Finger [+16 Str, +11 Sta, +8 Crit, +6 Hit, +10 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Trinket 1 | [Modeled: Passive Strength / agility / crit / hit — Trinket [+17 Str, +11 Sta, +9 Crit, +6 Hit, +11 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Trinket 2 | [Modeled: Passive Strength / agility / crit / hit — Trinket [+17 Str, +11 Sta, +9 Crit, +6 Hit, +11 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Main hand | [Modeled: Mace two-hand — Two-hand [+34 Sta, +23 Str, +14 Crit, 187–281 dmg @ 3.8s] (modeled; reference only)](https://www.wowhead.com/forever/item=272601) | 65 | Enchant Weapon - Crusader |
-| Ranged/relic | [Modeled: Physical idol — Relic [+8 Sta, +4 Agi, +26 AP] (modeled; reference only)](https://www.wowhead.com/forever/item=279250) | 65 | — |
-
-Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
-
-### Rotation priorities
-
-1. Cast [Item 7676](https://www.wowhead.com/forever/item=7676) when Energy ≤ 10.
-2. Use ready automatic cooldowns.
-3. Cast [Ferocious Bite](https://www.wowhead.com/forever/spell=31018) when (Time remaining ≤ 4s AND Combo points ≥ 3).
-4. Cast [Ferocious Bite](https://www.wowhead.com/forever/spell=31018) when (Combo points ≥ 5 AND [Rip](https://www.wowhead.com/forever/spell=9896) DoT time remaining ≥ 5s).
-5. Cast [Rip](https://www.wowhead.com/forever/spell=9896) when (Combo points ≥ 4 AND NOT [Rip](https://www.wowhead.com/forever/spell=9896) DoT active AND Time remaining ≥ 8s).
-6. Cast [Shifting Power](https://www.wowhead.com/forever/spell=1322605) when Energy ≤ 60.
-7. Cast [Shred](https://www.wowhead.com/forever/spell=9830).
-
-### Damage breakdown — Windshaper
-
-| Action | DPS |
-|---|---:|
-| [Shred](https://www.wowhead.com/forever/spell=9830) | 273.58 |
-| Auto-attack (tag 1) | 225.68 |
-| [Rip](https://www.wowhead.com/forever/spell=9896) | 181.71 |
-| Auto-attack (tag 3) | 51.81 |
-| [Ferocious Bite](https://www.wowhead.com/forever/spell=31018) | 23.25 |
-| [Dragonbreath Chili (proc)](https://www.wowhead.com/forever/spell=15851) | 3.27 |
-
-### Resource flow
-
-| Resource | Action | Net amount per fight |
-|---|---|---:|
-| Mana | [Shifting Power](https://www.wowhead.com/forever/spell=1322605) | -28297.4 |
-| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +14532.2 |
-| Energy | [Shred](https://www.wowhead.com/forever/spell=9830) | -4283.0 |
-| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +4062.9 |
-| Mana | OtherActionManaRegen (tag 2) | +3427.4 |
-| Energy | OtherActionEnergyRegen | +3105.2 |
-| Energy | [Shifting Power](https://www.wowhead.com/forever/spell=1322605) | +1654.3 |
-| Mana | OtherActionManaRegen (tag 1) | +1637.7 |
-| Energy | [Rip](https://www.wowhead.com/forever/spell=9896) | -677.5 |
-| Energy | OtherActionRefund | +268.9 |
-| Energy | [Ferocious Bite](https://www.wowhead.com/forever/spell=31018) | -230.0 |
-| ComboPoints | [Rip](https://www.wowhead.com/forever/spell=9896) | -110.4 |
-
 ## Druid — Balance
 
 **Talents:** 38/0/13 · `5232220115501351--505003`
@@ -1978,10 +1980,10 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
-| Tauren | 713.50 | 0.34 | 0.00 |
-| Windshaper | 722.91 | 0.33 | 0.00 |
-| Night Elf | 710.67 | 0.33 | 0.00 |
-| High Order | 722.91 | 0.33 | 0.00 |
+| Tauren | 715.40 | 0.34 | 0.00 |
+| Windshaper | 723.39 | 0.32 | 0.00 |
+| Night Elf | 713.21 | 0.32 | 0.00 |
+| High Order | 723.39 | 0.32 | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
@@ -2005,7 +2007,7 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 | Trinket 2 | [Modeled: Spell power / crit / hit (matched cost) — Trinket [+11 Sta, +13 Crit, +14 Hit, +14 SP] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
 | Main hand | [Modeled: Caster dagger one-hand (projected) — One-hand [+11 Sta, +10 Int, +12 SP, 66–123 dmg @ 2s] (modeled; reference only)](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Spell Power |
 | Off hand | [Modeled: Spell-power held off-hand — Held off-hand [+15 Sta, +14 Int, +18 SP] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | — |
-| Ranged/relic | [Modeled: Spell-power idol — Relic [+8 Sta, +7 Int, +9 SP] (modeled; reference only)](https://www.wowhead.com/forever/item=279250) | 65 | — |
+| Ranged/relic | [Projected: Swarming Idol — Relic [+2 Sta, +1.75 Int, +2.25 SP]](https://www.wowhead.com/forever/item=920001026) | 65 | — |
 
 Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
@@ -2025,27 +2027,27 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Action | DPS |
 |---|---:|
-| [Starfire](https://www.wowhead.com/forever/spell=25298) | 422.55 |
-| [Moonfire](https://www.wowhead.com/forever/spell=9835) | 106.16 |
-| [Insect Swarm](https://www.wowhead.com/forever/spell=24977) | 97.71 |
-| [Wrath](https://www.wowhead.com/forever/spell=9912) | 96.49 |
+| [Starfire](https://www.wowhead.com/forever/spell=25298) | 423.17 |
+| [Moonfire](https://www.wowhead.com/forever/spell=9835) | 106.68 |
+| [Insect Swarm](https://www.wowhead.com/forever/spell=24977) | 97.18 |
+| [Wrath](https://www.wowhead.com/forever/spell=9912) | 96.36 |
 
 ### Resource flow
 
 | Resource | Action | Net amount per fight |
 |---|---|---:|
-| Mana | [Starfire](https://www.wowhead.com/forever/spell=25298) | -17823.3 |
-| Mana | OtherActionManaRegen (tag 1) | +7689.5 |
-| Mana | [Moonfire](https://www.wowhead.com/forever/spell=9835) | -4781.0 |
-| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +4675.6 |
-| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3693.9 |
-| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3597.8 |
-| Mana | [Insect Swarm](https://www.wowhead.com/forever/spell=24977) | -1862.3 |
-| Mana | [Wrath](https://www.wowhead.com/forever/spell=9912) | -1253.8 |
-| Mana | [Innervate](https://www.wowhead.com/forever/spell=29166) | +806.7 |
+| Mana | [Starfire](https://www.wowhead.com/forever/spell=25298) | -17972.6 |
+| Mana | OtherActionManaRegen (tag 1) | +7682.0 |
+| Mana | [Moonfire](https://www.wowhead.com/forever/spell=9835) | -4833.9 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +4653.9 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3718.4 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3603.8 |
+| Mana | [Insect Swarm](https://www.wowhead.com/forever/spell=24977) | -1662.9 |
+| Mana | [Wrath](https://www.wowhead.com/forever/spell=9912) | -1263.3 |
+| Mana | [Innervate](https://www.wowhead.com/forever/spell=29166) | +947.6 |
 | Mana | [Moonkin Form](https://www.wowhead.com/forever/spell=24858) | -435.4 |
-| Mana | OtherActionManaRegen (tag 2) | +42.9 |
-| Mana | [Innervate](https://www.wowhead.com/forever/spell=29166) | -23.1 |
+| Mana | OtherActionManaRegen (tag 2) | +55.0 |
+| Mana | [Innervate](https://www.wowhead.com/forever/spell=29166) | -27.4 |
 
 ## Rogue — Subtlety
 
@@ -2141,7 +2143,7 @@ Other races can use different equipment. Their complete setups are available in 
 
 ## Mage — Frost
 
-**Talents:** 11/3/37 · `0500005001-03-0555003331000301251`
+**Talents:** 12/3/36 · `0500105001-03-0555003331000301241`
 
 [Requests and results](../artifacts/modelled_gear/forever_dps_5min.json) · [Equipment search](../artifacts/correctness/october_15/selection-evidence.json)
 
@@ -2150,12 +2152,12 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
-| Orc | 607.99 | 0.31 | 0.04 |
-| Troll | 599.40 | 0.30 | 0.04 |
-| Undead | 604.14 | 0.31 | 0.05 |
-| Human | 609.27 | 0.31 | 0.04 |
-| Gnome | 613.46 | 0.33 | 0.01 |
-| High Order | 612.54 | 0.30 | 0.02 |
+| Orc | 639.34 | 0.41 | 9.39 |
+| Troll | 627.56 | 0.40 | 11.38 |
+| Undead | 633.93 | 0.41 | 10.28 |
+| Human | 643.43 | 0.40 | 7.79 |
+| Gnome | 652.66 | 0.36 | 3.08 |
+| High Order | 635.12 | 0.40 | 12.91 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
@@ -2189,29 +2191,32 @@ Other races can use different equipment. Their complete setups are available in 
 2. Use ready automatic cooldowns.
 3. Cast [Evocation](https://www.wowhead.com/forever/spell=12051) when (Mana fraction < 15% AND Time remaining > 25s).
 4. Cast [Ice Lance](https://www.wowhead.com/forever/spell=30455) when [Fingers of Frost](https://www.wowhead.com/forever/spell=44543) active.
-5. Cast [Frostbolt (rank 11)](https://www.wowhead.com/forever/spell=25304).
+5. Cast [Cone of Cold](https://www.wowhead.com/forever/spell=10161) when [Winter's Chill](https://www.wowhead.com/forever/spell=12579) stacks ≥ 5.
+6. Cast [Frostbolt (rank 11)](https://www.wowhead.com/forever/spell=25304).
 
 ### Damage breakdown — Gnome
 
 | Action | DPS |
 |---|---:|
-| [Frostbolt](https://www.wowhead.com/forever/spell=25304) | 480.87 |
-| [Ice Lance](https://www.wowhead.com/forever/spell=30455) | 132.59 |
+| [Frostbolt](https://www.wowhead.com/forever/spell=25304) | 419.62 |
+| [Ice Lance](https://www.wowhead.com/forever/spell=30455) | 136.29 |
+| [Cone of Cold](https://www.wowhead.com/forever/spell=10161) | 96.75 |
 
 ### Resource flow
 
 | Resource | Action | Net amount per fight |
 |---|---|---:|
-| Mana | [Frostbolt](https://www.wowhead.com/forever/spell=25304) | -22104.6 |
-| Mana | OtherActionManaRegen (tag 1) | +8591.5 |
-| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +3786.4 |
-| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3680.7 |
-| Mana | [Ice Lance](https://www.wowhead.com/forever/spell=30455) | -3632.2 |
-| Mana | OtherActionManaRegen (tag 2) | +1350.1 |
-| Mana | [Item 8008](https://www.wowhead.com/forever/item=8008) | +1100.1 |
-| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +920.7 |
-| Mana | [Item 8007](https://www.wowhead.com/forever/item=8007) | +846.7 |
-| Mana | [Item 5513](https://www.wowhead.com/forever/item=5513) | +139.1 |
+| Mana | [Frostbolt](https://www.wowhead.com/forever/spell=25304) | -19069.7 |
+| Mana | OtherActionManaRegen (tag 1) | +9323.2 |
+| Mana | [Cone of Cold](https://www.wowhead.com/forever/spell=10161) | -7331.3 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +4767.3 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +3910.5 |
+| Mana | [Ice Lance](https://www.wowhead.com/forever/spell=30455) | -3700.2 |
+| Mana | OtherActionManaRegen (tag 2) | +2448.1 |
+| Mana | [Item 8008](https://www.wowhead.com/forever/item=8008) | +1100.2 |
+| Mana | [Item 8007](https://www.wowhead.com/forever/item=8007) | +850.2 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +775.9 |
+| Mana | [Item 5513](https://www.wowhead.com/forever/item=5513) | +212.1 |
 
 ## Druid — Bear · Tank
 
@@ -2226,10 +2231,10 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
-| Tauren | 545.73 | 0.37 | 0.00 |
-| Windshaper | 544.84 | 0.36 | 0.00 |
-| Night Elf | 539.28 | 0.37 | 0.00 |
-| High Order | 544.84 | 0.36 | 0.00 |
+| Tauren | 552.02 | 0.37 | 0.00 |
+| Windshaper | 551.47 | 0.37 | 0.00 |
+| Night Elf | 545.43 | 0.37 | 0.00 |
+| High Order | 551.47 | 0.37 | 0.00 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
@@ -2237,10 +2242,10 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 
 | Race | TPS | DTPS | TMI | Modeled death probability |
 |---|---:|---:|---:|---:|
-| Tauren | 1871.57 | 714.11 | 72.37 | 0.18% |
-| Windshaper | 1861.29 | 714.50 | 77.67 | 0.52% |
-| Night Elf | 1849.98 | 699.88 | 77.05 | 0.28% |
-| High Order | 1861.29 | 714.50 | 77.67 | 0.52% |
+| Tauren | 1899.14 | 717.56 | 73.49 | 0.28% |
+| Windshaper | 1888.92 | 715.66 | 78.42 | 0.48% |
+| Night Elf | 1876.29 | 700.30 | 77.88 | 0.50% |
+| High Order | 1888.92 | 715.66 | 78.42 | 0.48% |
 
 These stress-scenario results are not measured boss balance or an equal-support survival ranking.
 
@@ -2263,7 +2268,7 @@ These stress-scenario results are not measured boss balance or an equal-support 
 | Trinket 1 | [Modeled: Passive Strength / agility / crit / hit — Trinket [+17 Str, +11 Sta, +9 Crit, +6 Hit, +11 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
 | Trinket 2 | [Modeled: Passive Strength / agility / crit / hit — Trinket [+17 Str, +11 Sta, +9 Crit, +6 Hit, +11 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
 | Main hand | [Modeled: Mace two-hand — Two-hand [+34 Sta, +23 Str, +14 Crit, 187–281 dmg @ 3.8s] (modeled; reference only)](https://www.wowhead.com/forever/item=272601) | 65 | Enchant Weapon - Crusader |
-| Ranged/relic | [Modeled: Physical idol — Relic [+8 Sta, +4 Agi, +26 AP] (modeled; reference only)](https://www.wowhead.com/forever/item=279250) | 65 | — |
+| Ranged/relic | [Projected: Enraged Idol — Relic [+2 Sta, +1 Agi, +6.5 AP]](https://www.wowhead.com/forever/item=920001021) | 65 | — |
 
 Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
@@ -2284,30 +2289,114 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Action | DPS |
 |---|---:|
-| [Maul](https://www.wowhead.com/forever/spell=9881) | 221.91 |
-| [Primal Bite (Bear)](https://www.wowhead.com/forever/spell=1238073) | 113.97 |
-| [Lacerate](https://www.wowhead.com/forever/spell=414644) | 90.78 |
-| Auto-attack (tag 1) | 54.43 |
-| [Lacerate](https://www.wowhead.com/forever/spell=414647) | 33.69 |
-| Auto-attack (tag 3) | 28.72 |
-| [Dragonbreath Chili (proc)](https://www.wowhead.com/forever/spell=15851) | 2.21 |
+| [Maul](https://www.wowhead.com/forever/spell=9881) | 229.41 |
+| [Primal Bite (Bear)](https://www.wowhead.com/forever/spell=1238073) | 115.33 |
+| [Lacerate](https://www.wowhead.com/forever/spell=414644) | 91.59 |
+| Auto-attack (tag 1) | 51.68 |
+| [Lacerate](https://www.wowhead.com/forever/spell=414647) | 34.19 |
+| Auto-attack (tag 3) | 27.62 |
+| [Dragonbreath Chili (proc)](https://www.wowhead.com/forever/spell=15851) | 2.20 |
 
 ### Resource flow
 
 | Resource | Action | Net amount per fight |
 |---|---|---:|
-| Health | OtherActionDamageTaken | -215592.8 |
-| Health | OtherActionHealingModel | +213270.1 |
-| Rage | [Lacerate](https://www.wowhead.com/forever/spell=414644) | -1266.9 |
-| Rage | Auto-attack (tag 1) | +935.0 |
-| Mana | [Faerie Fire](https://www.wowhead.com/forever/spell=9907) | -928.5 |
-| Rage | [Maul](https://www.wowhead.com/forever/spell=9881) | -847.2 |
-| Rage | OtherActionDamageTaken | +809.0 |
-| Rage | [Primal Bite (Bear)](https://www.wowhead.com/forever/spell=1238073) | -784.3 |
-| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +732.0 |
-| Health | [Holy Strength](https://www.wowhead.com/forever/spell=20007) | +554.5 |
-| Rage | [Blood Frenzy](https://www.wowhead.com/forever/spell=37117) | +539.3 |
-| Rage | OtherActionRefund | +419.5 |
+| Health | OtherActionDamageTaken | -216626.0 |
+| Health | OtherActionHealingModel | +214222.9 |
+| Rage | [Lacerate](https://www.wowhead.com/forever/spell=414644) | -1269.2 |
+| Mana | [Faerie Fire](https://www.wowhead.com/forever/spell=9907) | -929.0 |
+| Rage | Auto-attack (tag 1) | +892.1 |
+| Rage | [Maul](https://www.wowhead.com/forever/spell=9881) | -870.1 |
+| Rage | OtherActionDamageTaken | +812.9 |
+| Rage | [Primal Bite (Bear)](https://www.wowhead.com/forever/spell=1238073) | -787.3 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +733.5 |
+| Health | [Holy Strength](https://www.wowhead.com/forever/spell=20007) | +561.1 |
+| Rage | [Blood Frenzy](https://www.wowhead.com/forever/spell=37117) | +559.1 |
+| Rage | OtherActionRefund | +424.7 |
+
+## Shaman — Elemental
+
+**Talents:** 31/9/11 · `5503331000011351-054-05303`
+
+[Requests and results](../artifacts/modelled_gear/forever_dps_5min.json) · [Equipment search](../artifacts/correctness/october_15/selection-evidence.json)
+
+
+### Results
+
+| Race | DPS | Standard error | Mana-limited seconds |
+|---|---:|---:|---:|
+| Orc | 533.92 | 0.35 | 31.21 |
+| Tauren | 531.37 | 0.36 | 31.76 |
+| Troll | 526.11 | 0.34 | 33.02 |
+| Windshaper | 525.69 | 0.36 | 37.85 |
+| Dwarf | 532.06 | 0.36 | 31.67 |
+
+Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Orc
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Modeled: Intellect / spell power / crit / hit (matched cost) — Head (Mail) [+18 Sta, +14 Crit, +10 Hit, +31 SP, +18 Int, 338 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Arcanum of Focus |
+| Neck | [Modeled: Intellect / spell power / crit / hit (matched cost) — Neck [+11 Sta, +8 Crit, +6 Hit, +18 SP, +10 Int] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Shoulders | [Modeled: Intellect / spell power / crit / hit (matched cost) — Shoulders (Mail) [+14 Sta, +11 Crit, +8 Hit, +24 SP, +14 Int, 312 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Chromatic Mantle of the Dawn |
+| Back | [Modeled: Intellect / spell power / crit / hit (matched cost) — Back (Cloth) [+11 Sta, +8 Crit, +6 Hit, +18 SP, +10 Int, 50 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Cloak - Superior Defense |
+| Chest | [Modeled: Intellect / spell power / crit / hit (matched cost) — Chest (Mail) [+18 Sta, +14 Crit, +10 Hit, +31 SP, +18 Int, 416 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Modeled: Intellect / spell power / crit / hit (matched cost) — Wrists (Mail) [+11 Sta, +8 Crit, +6 Hit, +18 SP, +10 Int, 182 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Bracer - Healing Power |
+| Hands | [Modeled: Intellect / spell power / crit / hit (matched cost) — Hands (Mail) [+14 Sta, +11 Crit, +8 Hit, +24 SP, +14 Int, 260 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Gloves - Healing Power |
+| Waist | [Modeled: Intellect / spell power / crit / hit (matched cost) — Waist (Mail) [+14 Sta, +11 Crit, +8 Hit, +24 SP, +14 Int, 234 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Legs | [Modeled: Intellect / spell power / crit / hit (matched cost) — Legs (Mail) [+18 Sta, +14 Crit, +10 Hit, +31 SP, +18 Int, 364 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Arcanum of Focus |
+| Feet | [Modeled: Intellect / spell power / crit / hit (matched cost) — Feet (Mail) [+14 Sta, +11 Crit, +8 Hit, +24 SP, +14 Int, 286 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Boots - Spirit |
+| Ring 1 | [Modeled: Intellect / spell power / crit / hit (matched cost) — Finger [+11 Sta, +8 Crit, +6 Hit, +18 SP, +10 Int] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Ring 2 | [Modeled: Intellect / spell power / crit / hit (matched cost) — Finger [+11 Sta, +8 Crit, +6 Hit, +18 SP, +10 Int] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Trinket 1 | [Modeled: Intellect / spell power / crit / hit (matched cost) — Trinket [+11 Sta, +9 Crit, +6 Hit, +19 SP, +11 Int] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Trinket 2 | [Modeled: Intellect / spell power / crit / hit (matched cost) — Trinket [+11 Sta, +9 Crit, +6 Hit, +19 SP, +11 Int] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Main hand | [Modeled: Caster dagger one-hand (projected) — One-hand [+11 Sta, +10 Int, +12 SP, 66–123 dmg @ 2s] (modeled; reference only)](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Spell Power |
+| Off hand | [Modeled: Spell-power held off-hand — Held off-hand [+15 Sta, +14 Int, +18 SP] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | — |
+| Ranged/relic | [Projected: Polished Driftwood Icon — Relic [+2 Sta, +1.75 Int, +2.25 SP]](https://www.wowhead.com/forever/item=920001012) | 65 | — |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
+
+### Before the pull
+
+- -2s: [Lightning Bolt (rank 10)](https://www.wowhead.com/forever/spell=15208).
+
+### Rotation priorities
+
+1. Cast [Searing Totem (rank 6)](https://www.wowhead.com/forever/spell=10438) when (Target count = 1 AND NOT [Searing Totem (rank 6)](https://www.wowhead.com/forever/spell=10438) DoT active).
+2. Cast [Magma Totem (rank 4)](https://www.wowhead.com/forever/spell=10587) when (Target count ≥ 2 AND NOT [Magma Totem (rank 4)](https://www.wowhead.com/forever/spell=10587) DoT active).
+3. Use ready automatic cooldowns.
+4. Cast [Flame Shock (rank 6)](https://www.wowhead.com/forever/spell=29228) when NOT [Flame Shock (rank 6)](https://www.wowhead.com/forever/spell=29228) DoT active.
+5. Cast [Lava Burst (rank 4)](https://www.wowhead.com/forever/spell=1326047).
+6. Cast [Chain Lightning (rank 4)](https://www.wowhead.com/forever/spell=10605) when ([Clearcasting (Elemental Focus)](https://www.wowhead.com/forever/spell=16246) active OR Target count ≥ 2).
+7. Cast [Lightning Bolt (rank 10)](https://www.wowhead.com/forever/spell=15208) when Mana ≥ Time remaining × 35.
+8. Cast [Lightning Bolt (rank 10)](https://www.wowhead.com/forever/spell=15208).
+
+### Damage breakdown — Orc
+
+| Action | DPS |
+|---|---:|
+| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 295.11 |
+| [Lava Burst](https://www.wowhead.com/forever/spell=1326047) | 97.86 |
+| [Flame Shock](https://www.wowhead.com/forever/spell=29228) | 68.84 |
+| [Attack](https://www.wowhead.com/forever/spell=10436) | 35.00 |
+| [Chain Lightning](https://www.wowhead.com/forever/spell=10605) | 21.18 |
+| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 14.82 |
+| [Chain Lightning](https://www.wowhead.com/forever/spell=10605) | 1.10 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Mana | [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | -18637.7 |
+| Mana | OtherActionManaRegen (tag 1) | +7777.8 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +5206.3 |
+| Mana | [Lava Burst](https://www.wowhead.com/forever/spell=1326047) | -5008.0 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +4441.1 |
+| Mana | [Flame Shock](https://www.wowhead.com/forever/spell=29228) | -4140.8 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3597.8 |
+| Mana | [Searing Totem](https://www.wowhead.com/forever/spell=10438) | -867.0 |
+| Mana | OtherActionManaRegen (tag 2) | +649.5 |
 
 ## Paladin — Protection · Tank
 
@@ -2324,9 +2413,9 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
-| Undead | 531.42 | 0.26 | 0.05 |
-| Human | 530.44 | 0.26 | 0.11 |
-| Dwarf | 523.22 | 0.26 | 0.08 |
+| Undead | 531.22 | 0.26 | 0.05 |
+| Human | 530.22 | 0.25 | 0.12 |
+| Dwarf | 523.10 | 0.26 | 0.09 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
@@ -2334,9 +2423,9 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 
 | Race | TPS | DTPS | TMI | Modeled death probability |
 |---|---:|---:|---:|---:|
-| Undead | 897.32 | 703.39 | 76.37 | 0.20% |
-| Human | 915.49 | 701.03 | 77.39 | 0.22% |
-| Dwarf | 898.25 | 702.80 | 76.98 | 0.20% |
+| Undead | 898.44 | 704.02 | 77.23 | 0.16% |
+| Human | 916.72 | 702.40 | 78.36 | 0.18% |
+| Dwarf | 899.74 | 704.85 | 77.87 | 0.36% |
 
 These stress-scenario results are not measured boss balance or an equal-support survival ranking.
 
@@ -2360,7 +2449,7 @@ These stress-scenario results are not measured boss balance or an equal-support 
 | Trinket 2 | [Modeled: Spell power / crit / hit (matched cost) — Trinket [+11 Sta, +13 Crit, +14 Hit, +14 SP] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
 | Main hand | [Modeled: Sword one-hand — One-hand [+2 Sta, +24 AP, +14 Crit, 68–102 dmg @ 1.8s] (modeled; reference only)](https://www.wowhead.com/forever/item=272452) | 65 | Enchant Weapon - Fiery Weapon |
 | Off hand | [Modeled: Hybrid damage shield — Shield [+21 Sta, +9 Int, +6 Dmg, +18 Heal, 2468 armor, 44 Block] (modeled; reference only)](https://www.wowhead.com/forever/item=278469) | 65 | Enchant Shield - Greater Stamina |
-| Ranged/relic | [Modeled: Physical libram — Relic [+8 Sta, +4 Agi, +26 AP] (modeled; reference only)](https://www.wowhead.com/forever/item=279247) | 65 | — |
+| Ranged/relic | [Projected: Libram of Law — Relic [+2 Sta, +1 Agi, +6.5 AP]](https://www.wowhead.com/forever/item=920001035) | 65 | — |
 
 Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
@@ -2387,115 +2476,31 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Action | DPS |
 |---|---:|
-| Auto-attack (tag 1) | 105.71 |
-| [Seal of Righteousness](https://www.wowhead.com/forever/spell=25713) | 68.49 |
-| [Judgement of Righteousness](https://www.wowhead.com/forever/spell=20286) | 68.20 |
-| [Holy Shield](https://www.wowhead.com/forever/spell=20957) | 65.00 |
-| [Consecration](https://www.wowhead.com/forever/spell=20924) | 64.51 |
-| Auto-attack (tag 3) | 47.75 |
-| [Holy Strike](https://www.wowhead.com/forever/spell=10333) | 36.13 |
-| [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239) | 22.48 |
+| Auto-attack (tag 1) | 104.58 |
+| [Judgement of Righteousness](https://www.wowhead.com/forever/spell=20286) | 70.40 |
+| [Seal of Righteousness](https://www.wowhead.com/forever/spell=25713) | 68.47 |
+| [Holy Shield](https://www.wowhead.com/forever/spell=20957) | 64.99 |
+| [Consecration](https://www.wowhead.com/forever/spell=20924) | 64.53 |
+| Auto-attack (tag 3) | 47.09 |
+| [Holy Strike](https://www.wowhead.com/forever/spell=10333) | 35.75 |
+| [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239) | 22.38 |
 
 ### Resource flow
 
 | Resource | Action | Net amount per fight |
 |---|---|---:|
-| Health | OtherActionDamageTaken | -211016.4 |
-| Health | OtherActionHealingModel | +208678.7 |
-| Mana | [Consecration](https://www.wowhead.com/forever/spell=20924) | -17973.7 |
-| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +16712.5 |
-| Mana | [Shield Specialization](https://www.wowhead.com/forever/spell=20148) | +8641.8 |
-| Mana | [Holy Shield](https://www.wowhead.com/forever/spell=20928) | -6479.9 |
-| Mana | [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239) | -3098.2 |
-| Mana | [Judgement of Light](https://www.wowhead.com/forever/spell=20271) | -2681.9 |
-| Mana | OtherActionManaRegen (tag 1) | +2357.8 |
-| Health | [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | +2319.8 |
-| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +2316.2 |
+| Health | OtherActionDamageTaken | -211205.4 |
+| Health | OtherActionHealingModel | +208887.6 |
+| Mana | [Consecration](https://www.wowhead.com/forever/spell=20924) | -17977.6 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +16708.5 |
+| Mana | [Shield Specialization](https://www.wowhead.com/forever/spell=20148) | +8643.3 |
+| Mana | [Holy Shield](https://www.wowhead.com/forever/spell=20928) | -6479.8 |
+| Mana | [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239) | -3101.9 |
+| Mana | [Judgement of Light](https://www.wowhead.com/forever/spell=20271) | -2682.1 |
+| Mana | OtherActionManaRegen (tag 1) | +2357.0 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +2305.9 |
+| Health | [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | +2302.3 |
 | Mana | [Spell 20293](https://www.wowhead.com/forever/spell=20293) | -1980.0 |
-
-## Shaman — Elemental
-
-**Talents:** 31/9/11 · `5503331000011351-054-05303`
-
-[Requests and results](../artifacts/modelled_gear/forever_dps_5min.json) · [Equipment search](../artifacts/correctness/october_15/selection-evidence.json)
-
-
-### Results
-
-| Race | DPS | Standard error | Mana-limited seconds |
-|---|---:|---:|---:|
-| Orc | 529.58 | 0.35 | 35.70 |
-| Tauren | 527.23 | 0.36 | 36.24 |
-| Troll | 521.90 | 0.35 | 37.41 |
-| Windshaper | 520.75 | 0.36 | 42.58 |
-| Dwarf | 527.47 | 0.36 | 36.22 |
-
-Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
-
-### Equipment — Orc
-
-| Slot | Item | Item level | Enchant |
-|---|---|---:|---|
-| Head | [Modeled: Intellect / spell power / crit / hit (matched cost) — Head (Mail) [+18 Sta, +14 Crit, +10 Hit, +31 SP, +18 Int, 338 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Arcanum of Focus |
-| Neck | [Modeled: Intellect / spell power / crit / hit (matched cost) — Neck [+11 Sta, +8 Crit, +6 Hit, +18 SP, +10 Int] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Shoulders | [Modeled: Intellect / spell power / crit / hit (matched cost) — Shoulders (Mail) [+14 Sta, +11 Crit, +8 Hit, +24 SP, +14 Int, 312 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Chromatic Mantle of the Dawn |
-| Back | [Modeled: Intellect / spell power / crit / hit (matched cost) — Back (Cloth) [+11 Sta, +8 Crit, +6 Hit, +18 SP, +10 Int, 50 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Cloak - Superior Defense |
-| Chest | [Modeled: Intellect / spell power / crit / hit (matched cost) — Chest (Mail) [+18 Sta, +14 Crit, +10 Hit, +31 SP, +18 Int, 416 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Chest - Greater Stats |
-| Wrists | [Modeled: Intellect / spell power / crit / hit (matched cost) — Wrists (Mail) [+11 Sta, +8 Crit, +6 Hit, +18 SP, +10 Int, 182 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Bracer - Healing Power |
-| Hands | [Modeled: Intellect / spell power / crit / hit (matched cost) — Hands (Mail) [+14 Sta, +11 Crit, +8 Hit, +24 SP, +14 Int, 260 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Gloves - Healing Power |
-| Waist | [Modeled: Intellect / spell power / crit / hit (matched cost) — Waist (Mail) [+14 Sta, +11 Crit, +8 Hit, +24 SP, +14 Int, 234 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Legs | [Modeled: Intellect / spell power / crit / hit (matched cost) — Legs (Mail) [+18 Sta, +14 Crit, +10 Hit, +31 SP, +18 Int, 364 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Arcanum of Focus |
-| Feet | [Modeled: Intellect / spell power / crit / hit (matched cost) — Feet (Mail) [+14 Sta, +11 Crit, +8 Hit, +24 SP, +14 Int, 286 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Boots - Spirit |
-| Ring 1 | [Modeled: Intellect / spell power / crit / hit (matched cost) — Finger [+11 Sta, +8 Crit, +6 Hit, +18 SP, +10 Int] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Ring 2 | [Modeled: Intellect / spell power / crit / hit (matched cost) — Finger [+11 Sta, +8 Crit, +6 Hit, +18 SP, +10 Int] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Trinket 1 | [Modeled: Intellect / spell power / crit / hit (matched cost) — Trinket [+11 Sta, +9 Crit, +6 Hit, +19 SP, +11 Int] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Trinket 2 | [Modeled: Intellect / spell power / crit / hit (matched cost) — Trinket [+11 Sta, +9 Crit, +6 Hit, +19 SP, +11 Int] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Main hand | [Modeled: Caster dagger one-hand (projected) — One-hand [+11 Sta, +10 Int, +12 SP, 66–123 dmg @ 2s] (modeled; reference only)](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Spell Power |
-| Off hand | [Modeled: Spell-power held off-hand — Held off-hand [+15 Sta, +14 Int, +18 SP] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | — |
-| Ranged/relic | [Modeled: Spell-power totem — Relic [+8 Sta, +7 Int, +9 SP] (modeled; reference only)](https://www.wowhead.com/forever/item=279249) | 65 | — |
-
-Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
-
-### Before the pull
-
-- -2s: [Lightning Bolt (rank 10)](https://www.wowhead.com/forever/spell=15208).
-
-### Rotation priorities
-
-1. Cast [Searing Totem (rank 6)](https://www.wowhead.com/forever/spell=10438) when (Target count = 1 AND NOT [Searing Totem (rank 6)](https://www.wowhead.com/forever/spell=10438) DoT active).
-2. Cast [Magma Totem (rank 4)](https://www.wowhead.com/forever/spell=10587) when (Target count ≥ 2 AND NOT [Magma Totem (rank 4)](https://www.wowhead.com/forever/spell=10587) DoT active).
-3. Use ready automatic cooldowns.
-4. Cast [Flame Shock (rank 6)](https://www.wowhead.com/forever/spell=29228) when NOT [Flame Shock (rank 6)](https://www.wowhead.com/forever/spell=29228) DoT active.
-5. Cast [Lava Burst (rank 4)](https://www.wowhead.com/forever/spell=1326047).
-6. Cast [Chain Lightning (rank 4)](https://www.wowhead.com/forever/spell=10605) when ([Clearcasting (Elemental Focus)](https://www.wowhead.com/forever/spell=16246) active OR Target count ≥ 2).
-7. Cast [Lightning Bolt (rank 10)](https://www.wowhead.com/forever/spell=15208) when Mana ≥ Time remaining × 35.
-8. Cast [Lightning Bolt (rank 10)](https://www.wowhead.com/forever/spell=15208).
-
-### Damage breakdown — Orc
-
-| Action | DPS |
-|---|---:|
-| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 292.14 |
-| [Lava Burst](https://www.wowhead.com/forever/spell=1326047) | 97.42 |
-| [Flame Shock](https://www.wowhead.com/forever/spell=29228) | 68.27 |
-| [Attack](https://www.wowhead.com/forever/spell=10436) | 35.07 |
-| [Chain Lightning](https://www.wowhead.com/forever/spell=10605) | 21.00 |
-| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 14.62 |
-| [Chain Lightning](https://www.wowhead.com/forever/spell=10605) | 1.07 |
-
-### Resource flow
-
-| Resource | Action | Net amount per fight |
-|---|---|---:|
-| Mana | [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | -18310.6 |
-| Mana | OtherActionManaRegen (tag 1) | +7040.0 |
-| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +5280.3 |
-| Mana | [Lava Burst](https://www.wowhead.com/forever/spell=1326047) | -4946.1 |
-| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +4361.5 |
-| Mana | [Flame Shock](https://www.wowhead.com/forever/spell=29228) | -4059.1 |
-| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3596.4 |
-| Mana | [Searing Totem](https://www.wowhead.com/forever/spell=10438) | -867.0 |
-| Mana | OtherActionManaRegen (tag 2) | +763.4 |
 
 ## Warrior — Protection · Tank
 
@@ -2629,11 +2634,11 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
-| Orc | 466.50 | 0.30 | 63.84 |
-| Tauren | 470.64 | 0.31 | 62.76 |
-| Troll | 459.06 | 0.29 | 62.66 |
-| Windshaper | 456.90 | 0.30 | 71.58 |
-| Dwarf | 466.43 | 0.31 | 63.70 |
+| Orc | 468.59 | 0.31 | 60.05 |
+| Tauren | 473.35 | 0.32 | 58.78 |
+| Troll | 461.76 | 0.29 | 58.57 |
+| Windshaper | 461.33 | 0.30 | 64.69 |
+| Dwarf | 469.18 | 0.30 | 59.72 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
@@ -2657,7 +2662,7 @@ Mana-limited time counts failed mana-cost checks; it is not necessarily zero-dam
 | Trinket 2 | [Modeled: Spell power / crit / hit (matched cost) — Trinket [+11 Sta, +13 Crit, +14 Hit, +14 SP] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
 | Main hand | [Modeled: Caster dagger one-hand (projected) — One-hand [+11 Sta, +10 Int, +12 SP, 66–123 dmg @ 2s] (modeled; reference only)](https://www.wowhead.com/forever/item=272683) | 65 | Enchant Weapon - Spell Power |
 | Off hand | [Modeled: Spell-power held off-hand — Held off-hand [+15 Sta, +14 Int, +18 SP] (modeled; reference only)](https://www.wowhead.com/forever/item=272685) | 65 | — |
-| Ranged/relic | [Modeled: Spell-power totem — Relic [+8 Sta, +7 Int, +9 SP] (modeled; reference only)](https://www.wowhead.com/forever/item=279249) | 65 | — |
+| Ranged/relic | [Projected: Polished Driftwood Icon — Relic [+2 Sta, +1.75 Int, +2.25 SP]](https://www.wowhead.com/forever/item=920001012) | 65 | — |
 
 Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
 
@@ -2679,24 +2684,24 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Action | DPS |
 |---|---:|
-| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 319.50 |
-| [Flame Shock](https://www.wowhead.com/forever/spell=29228) | 76.63 |
-| [Attack](https://www.wowhead.com/forever/spell=10436) | 34.84 |
-| [Chain Lightning](https://www.wowhead.com/forever/spell=10605) | 22.54 |
-| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 15.97 |
-| [Chain Lightning](https://www.wowhead.com/forever/spell=10605) | 1.16 |
+| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 322.33 |
+| [Flame Shock](https://www.wowhead.com/forever/spell=29228) | 76.28 |
+| [Attack](https://www.wowhead.com/forever/spell=10436) | 34.75 |
+| [Chain Lightning](https://www.wowhead.com/forever/spell=10605) | 22.64 |
+| [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | 16.19 |
+| [Chain Lightning](https://www.wowhead.com/forever/spell=10605) | 1.17 |
 
 ### Resource flow
 
 | Resource | Action | Net amount per fight |
 |---|---|---:|
-| Mana | [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | -19073.3 |
-| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +5299.9 |
-| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +3866.7 |
-| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3607.2 |
-| Mana | OtherActionManaRegen (tag 1) | +2730.7 |
-| Mana | [Flame Shock](https://www.wowhead.com/forever/spell=29228) | -2352.9 |
-| Mana | OtherActionManaRegen (tag 2) | +1481.2 |
+| Mana | [Lightning Bolt](https://www.wowhead.com/forever/spell=15208) | -19426.9 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +5250.2 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +3939.1 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3598.4 |
+| Mana | OtherActionManaRegen (tag 1) | +3382.4 |
+| Mana | [Flame Shock](https://www.wowhead.com/forever/spell=29228) | -2360.1 |
+| Mana | OtherActionManaRegen (tag 2) | +1363.0 |
 | Mana | [Searing Totem](https://www.wowhead.com/forever/spell=10438) | -1020.0 |
 
 ## Priest — Smite
@@ -2714,12 +2719,12 @@ Other races can use different equipment. Their complete setups are available in 
 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
-| Troll | 437.55 | 0.18 | 44.19 |
-| Undead | 454.77 | 0.19 | 34.68 |
-| Human | 444.46 | 0.18 | 39.95 |
-| Dwarf | 441.15 | 0.18 | 41.56 |
-| Night Elf | 439.03 | 0.18 | 42.64 |
-| Gnome | 447.93 | 0.18 | 37.60 |
+| Troll | 442.22 | 0.20 | 62.17 |
+| Undead | 456.78 | 0.19 | 56.88 |
+| Human | 450.88 | 0.20 | 58.03 |
+| Dwarf | 447.13 | 0.20 | 59.93 |
+| Night Elf | 446.12 | 0.20 | 60.46 |
+| Gnome | 456.10 | 0.20 | 55.17 |
 
 Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
 
@@ -2755,30 +2760,33 @@ Other races can use different equipment. Their complete setups are available in 
 
 1. Use ready automatic cooldowns.
 2. Cast [Holy Fire (rank 8)](https://www.wowhead.com/forever/spell=15261) when [Holy Fire (rank 8)](https://www.wowhead.com/forever/spell=15261) DoT time remaining < 3s.
-3. `{"strictSequence":{"actions":[{"castSpell":{"spellId":{"spellId":14751}}},{"castSpell":{"spellId":{"spellId":10934,"rank":8}}}]}}`.
-4. Cast [Smite](https://www.wowhead.com/forever/spell=10934) when Mana ≥ Time remaining × 20.
-5. Cast [Smite](https://www.wowhead.com/forever/spell=10934).
+3. Cast [Shadow Word: Pain](https://www.wowhead.com/forever/spell=10894) when (NOT [Shadow Word: Pain](https://www.wowhead.com/forever/spell=10894) DoT active AND Time remaining ≥ 12s).
+4. `{"strictSequence":{"actions":[{"castSpell":{"spellId":{"spellId":14751}}},{"castSpell":{"spellId":{"spellId":10934,"rank":8}}}]}}`.
+5. Cast [Smite](https://www.wowhead.com/forever/spell=10934) when Mana ≥ Time remaining × 20.
+6. Cast [Smite](https://www.wowhead.com/forever/spell=10934).
 
 ### Damage breakdown — Undead
 
 | Action | DPS |
 |---|---:|
-| [Smite](https://www.wowhead.com/forever/spell=10934) | 323.05 |
-| [Holy Fire](https://www.wowhead.com/forever/spell=15261) | 123.87 |
-| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 7.85 |
+| [Smite](https://www.wowhead.com/forever/spell=10934) | 256.93 |
+| [Holy Fire](https://www.wowhead.com/forever/spell=15261) | 122.79 |
+| [Shadow Word: Pain](https://www.wowhead.com/forever/spell=10894) | 69.40 |
+| [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | 7.66 |
 
 ### Resource flow
 
 | Resource | Action | Net amount per fight |
 |---|---|---:|
-| Mana | [Smite](https://www.wowhead.com/forever/spell=10934) | -22778.2 |
-| Mana | OtherActionManaRegen (tag 1) | +7793.3 |
-| Mana | [Holy Fire](https://www.wowhead.com/forever/spell=15261) | -6249.8 |
-| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +3600.5 |
-| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3600.1 |
-| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +3496.6 |
+| Mana | [Smite](https://www.wowhead.com/forever/spell=10934) | -17946.3 |
+| Mana | OtherActionManaRegen (tag 1) | +7399.5 |
+| Mana | [Holy Fire](https://www.wowhead.com/forever/spell=15261) | -6185.9 |
+| Mana | [Shadow Word: Pain](https://www.wowhead.com/forever/spell=10894) | -4930.1 |
+| Mana | [Item 13444](https://www.wowhead.com/forever/item=13444) | +4135.7 |
+| Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +3604.8 |
+| Mana | [Judgement of Wisdom](https://www.wowhead.com/forever/spell=20355) | +3243.7 |
 | Health | OtherActionDamageTaken | -1600.0 |
 | Mana | [Dark Sacrifice](https://www.wowhead.com/forever/spell=1277328) | +1600.0 |
-| Health | [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | +1578.6 |
-| Mana | OtherActionManaRegen (tag 2) | +799.3 |
+| Health | [Touch of the Grave](https://www.wowhead.com/forever/spell=1260198) | +1574.9 |
+| Mana | OtherActionManaRegen (tag 2) | +1438.5 |
 | Mana | [Power Infusion](https://www.wowhead.com/forever/spell=10060) | -495.4 |

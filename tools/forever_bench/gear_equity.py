@@ -69,9 +69,13 @@ def main():
     parser.add_argument('--results', type=Path, required=True)
     parser.add_argument('--catalog', type=Path, default=Path(
         'assets/db_inputs/forever_synthetic_gear_v2.json'))
+    parser.add_argument('--relics', type=Path, default=Path('assets/db_inputs/forever_hybrid_relics.json'),
+                        help='projected real relics (real effect plus a share of the modeled relic stats)')
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
-    rows, summary = inspect(json.loads(args.results.read_text()), json.loads(args.catalog.read_text()))
+    catalog = json.loads(args.catalog.read_text())
+    catalog['items'] = catalog['items'] + json.loads(args.relics.read_text())['items']
+    rows, summary = inspect(json.loads(args.results.read_text()), catalog)
     args.output.mkdir(parents=True, exist_ok=True)
     for filename, records in [('selected_gear_equity.csv', rows),
                               ('spec_gear_equity.csv', summary)]:

@@ -122,12 +122,24 @@ message ShamanTotems {
 	bool enh_tier_ten_bonus = 11;
 }
 
+// Forever Shaman weapon imbues use their own enchant slot (client effect 360), so they coexist with the
+// temporary weapon enchants (stones, weightstones and oils) in Consumes. Classic keeps them in Consumes.
+enum ShamanWeaponImbue {
+	NoShamanImbue = 0;
+	RockbiterImbue = 1;
+	FlametongueImbue = 2;
+	FrostbrandImbue = 3;
+	WindfuryImbue = 4;
+}
+
 message ElementalShaman {
 	message Rotation {
 	}
 
-	// NextIndex: 6
+	// NextIndex: 8
 	message Options {
+		ShamanWeaponImbue main_hand_imbue = 6;
+		ShamanWeaponImbue off_hand_imbue = 7;
 	}
 	Options options = 3;
 }
@@ -136,10 +148,12 @@ message EnhancementShaman {
 	message Rotation {
 	}
 
-	// NextIndex: 7
+	// NextIndex: 9
 	message Options {
 		reserved 3;
 		reserved "sync_type";
+		ShamanWeaponImbue main_hand_imbue = 7;
+		ShamanWeaponImbue off_hand_imbue = 8;
 	}
 	Options options = 3;
 }
@@ -155,10 +169,12 @@ message RestorationShaman {
 	message Rotation {
 	}
 
-	// NextIndex: 8
+	// NextIndex: 10
 	message Options {
 		int32 earth_shield_p_p_m = 5;
 		ShamanTotems totems = 6 [deprecated=true];
+		ShamanWeaponImbue main_hand_imbue = 8;
+		ShamanWeaponImbue off_hand_imbue = 9;
 	}
 	Options options = 3;
 }

@@ -7829,13 +7829,14 @@
       "impact": "Feral (bear-weaving only).",
       "sources": [
         "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6",
-        "https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374"
+        "https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374",
+        "docs/october-15-update.md"
       ],
       "related": [],
       "review": {
         "disposition": "evidence-answer",
         "confidence": "high",
-        "answer": "Notes and the new Furor 17056 text; Bear and Dire Bear gain a -100% Energy regeneration aura. Howling Idol's Shifting Power reduction is 0.5 s (1291059).",
+        "answer": "Notes and the new Furor 17056 text; Bear and Dire Bear gain a -100% Energy regeneration aura. Howling Idol's Shifting Power reduction is 0.5 s (1291059). October 16 follow-up: With Furor keeping Cat Energy through Bear Form, bear-weaving was screened (Enrage plus Primal Bite or Lacerate, energy, cooldown and mana gates, with Mangle, Natural Shapeshifter, Enraged Idol and Idol of the Ursine Twins). Every variant lost (the best weaves 0.4-2.8%, frequent weaving 22-33%): each weave pays two shapeshifts (55% of base mana each) that would otherwise fund Shifting Power, and Energy does not regenerate in Bear Form.",
         "remaining": "None.",
         "implementation": "sim/druid/forms.go, sim/druid/items.go.",
         "tests": [],
@@ -7890,16 +7891,235 @@
         "tests": [],
         "previous_status": null
       }
+    },
+    {
+      "id": "CORE-023",
+      "category": "shared",
+      "kind": "mechanic",
+      "priority": "high",
+      "status": "resolved",
+      "title": "Class weapon imbues and temporary weapon enchants",
+      "question": "Can a Forever weapon carry a Shaman imbue or Rogue poison together with a stone, weightstone or oil?",
+      "current_model": "Yes. Shaman imbues and Rogue poisons are class options; stones, weightstones and oils stay in the Consumes weapon-enchant slot, on both hands. Classic keeps one shared temporary-enchant slot.",
+      "impact": "Enhancement (Windfury Weapon plus Shadow Oil), Rogues (poisons plus oils or stones), Feral and Bear (stones work in forms).",
+      "sources": [
+        "sim/shaman/shaman.go",
+        "sim/rogue/rogue.go",
+        "sim/core/consumes.go"
+      ],
+      "related": [],
+      "review": {
+        "disposition": "evidence-answer",
+        "confidence": "high",
+        "answer": "Client 1.60.1.70425: every Shaman imbue and Rogue poison rank applies its enchantment with effect 360, while stones, weightstones and oils use effect 54 (the temporary-enchant slot). Rogue and Shaman testers report poisons, stones and Windfury together since September. The 70291 notes already made weapon enchants work in forms.",
+        "remaining": "None.",
+        "implementation": "Shaman spec options main_hand_imbue/off_hand_imbue (Forever); the web shows the class controls under Forever and stones and oils for Feral.",
+        "tests": [],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "DATA-018",
+      "category": "equipment",
+      "kind": "scenario",
+      "priority": "high",
+      "status": "model-choice",
+      "title": "Relics: real effects with a quarter of the modeled relic stats",
+      "question": "Which relic should the modeled benchmark equip?",
+      "current_model": "Every real Forever idol, libram and totem whose effect the sim implements is available as a projected copy carrying its own effect plus a quarter of the modeled level-65 relic's stats (physical: 2 Stamina, 1 Agility, 6.5 Attack Power; spell: 2 Stamina, 1.75 Intellect, 2.25 Spell Power). The search picks the best one per profile; the full-capacity modeled relics are no longer ranking gear.",
+      "impact": "Druid, Paladin and Shaman rows (the relic slot).",
+      "sources": [
+        "tools/database/generate_forever_hybrid_relics.py",
+        "assets/db_inputs/forever_hybrid_relics.json"
+      ],
+      "related": [],
+      "review": {
+        "disposition": "credible-answer",
+        "confidence": "moderate",
+        "answer": "Relic effects matter more than the small stat budget a level-65 relic would carry, and the real relics are known. A quarter of the modeled slot budget keeps some stats in the slot without inventing a full item.",
+        "remaining": "Actual stats on level-65 relics at launch.",
+        "implementation": "effect_item_id on items lets a projected copy run the real item's effect.",
+        "tests": [],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "DRU-016",
+      "category": "druid",
+      "kind": "mechanic",
+      "priority": "medium",
+      "status": "resolved",
+      "title": "Feral bear-weaving and idols after 1.60.1.70425",
+      "question": "Does bear-weaving with Lacerate gain Feral damage now that Furor keeps Cat Energy through Bear Form?",
+      "current_model": "No weaving. Idol of the Dream (Rip +2 s) is the best idol. Rake is covered by DRU-017.",
+      "impact": "Feral.",
+      "sources": [
+        "sim/druid/druid.go",
+        "sim/druid/forms.go"
+      ],
+      "related": [],
+      "review": {
+        "disposition": "evidence-answer",
+        "confidence": "high",
+        "answer": "Screened on two seeds and two races: weaving variants -0.4% to -33% (shapeshift mana and frozen Energy); Idol of the Dream +1.2% over Howling Idol.",
+        "remaining": "None for the current scenario.",
+        "implementation": "The Cat spec registers Bear Form and the Bear abilities so weaving APLs can be tested.",
+        "tests": [],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "DRU-017",
+      "category": "druid",
+      "kind": "mechanic",
+      "priority": "high",
+      "status": "needs-evidence",
+      "title": "Rake Attack Power scaling",
+      "question": "How much Attack Power does Rake's hit and bleed gain?",
+      "current_model": "Hit +6.5% of Attack Power and each of the three ticks +4.5%, snapshotted on application. With it, Feral keeps Rake up (+6.1%); at two thirds of these values the gain is still +3.1%, and without the term Rake loses 2.9%.",
+      "impact": "Feral rotation and talents.",
+      "sources": [
+        "sim/druid/rake.go",
+        "https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid"
+      ],
+      "related": [],
+      "review": {
+        "disposition": "credible-answer",
+        "confidence": "moderate",
+        "answer": "The September 30 class deep dive says Rake now gains increased damage from Attack Power. The 1.60.1.70425 client carries no coefficient (the term is server-side, as with Swipe's 3%). Fitted to public beta logs from October 2-10 (1,115 rank-1 Rake events): bleed ticks of three Cats with known gear (Cat AP about 250, 330-370 and 465) are 24-28, 36 and 42 against a base of 16 with Savage Fury and Rend and Tear, giving 4-5% per tick; the hit, after armor, fits about 1.45 times the tick coefficient, as the base values do (23 against 16).",
+        "remaining": "A direct measurement at two Attack Power values.",
+        "implementation": "Forever-only Attack Power terms on the Rake hit and bleed.",
+        "tests": [
+          {
+            "stage": "current-beta",
+            "requires": "A level-30 Cat with Rake; a way to change Attack Power by a known amount (Battle Shout, a Blessing of Might or an AP item).",
+            "measure": "Rake tick damage (non-crit) with and without the Attack Power change, on a target without bleed modifiers."
+          }
+        ],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "DRU-018",
+      "category": "druid",
+      "kind": "mechanic",
+      "priority": "medium",
+      "status": "needs-evidence",
+      "title": "On-hit effects at the Cat and Bear form attack speed",
+      "question": "Do proc-per-minute effects on special attacks in Cat Form use the form's 1.0 attack speed or the equipped weapon's speed?",
+      "current_model": "In Forever the form attack is the equipped weapon's damage per second at the form's speed (Cat 1.0, Bear 2.5). White and special hits both roll PPM effects at the form speed, and speed-scaled on-hit damage uses it too. Classic keeps its tested rule (special attacks use the equipped weapon's speed).",
+      "impact": "Feral and Bear with chance-on-hit weapons or proc enchants (not the modeled ranking gear, which has no proc effects).",
+      "sources": [
+        "sim/core/aura_helpers.go",
+        "sim/core/flametongue_totem.go",
+        "sim/druid/forms.go"
+      ],
+      "related": [],
+      "review": {
+        "disposition": "credible-answer",
+        "confidence": "moderate",
+        "answer": "Druid testers confirmed on September 26 that weapon chance-on-hit effects proc in Cat Form; an October 8 question about whether 1.0 speed raises the proc rate of slow weapons went unanswered. Public beta logs (October 2-10) show Flametongue Totem damage on Cat hits at the 1.0 speed: a Wind Spirit Staff (3.3) Druid's Flametongue Attack hits for 18-19 in caster form and 5-6 in Cat Form, and a Manual Crowd Pummeler (2.0) Cat's 642 non-crit Flametongue Attacks are 9-11 with none near the 2.0-speed value, including those from special attacks. No log carries a Cat PPM proc, so the PPM rule is inferred from that. Before this change, 15 proc-trigger effects used the weapon speed on special attacks while Crusader, Fiery Weapon and the 53 weapon-proc helpers used 1.0.",
+        "remaining": "Measured PPM proc counts per Cat special attack with a slow weapon.",
+        "implementation": "Forever PPM rolls use the form speed for every path.",
+        "tests": [
+          {
+            "stage": "current-beta",
+            "requires": "A Cat with a slow (3.0+ speed) weapon carrying a PPM effect, such as Crusader, Fiery Weapon or a chance-on-hit weapon.",
+            "measure": "Procs per landed white hit and per landed Shred or Claw over a few hundred of each; compare with PPM x 1.0 / 60 and PPM x weapon speed / 60."
+          }
+        ],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "MAG-011",
+      "category": "mage",
+      "kind": "scenario",
+      "priority": "medium",
+      "status": "model-choice",
+      "title": "Frost Mage Cone of Cold on Winter's Chill",
+      "question": "Should Frost spend Winter's Chill on Cone of Cold, which needs 10-yard range?",
+      "current_model": "Frost stands at 10 yards and casts Cone of Cold at 5 Winter's Chill stacks (+200%); Winter's Chill 4/5 and Arcane Subtlety 1/2.",
+      "impact": "Frost (+5.0% confirmed on all races).",
+      "sources": [
+        "ui/mage/apls/forever_frost.apl.json",
+        "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6"
+      ],
+      "related": [],
+      "review": {
+        "disposition": "credible-answer",
+        "confidence": "moderate",
+        "answer": "The October 15 redesign makes Winter's Chill a Cone of Cold multiplier, so the intended rotation weaves Cone of Cold. Standing at 10 yards is a positioning assumption that raid mechanics may not allow.",
+        "remaining": "Whether raid encounters allow 10-yard Frost positioning.",
+        "implementation": "APL and preset distance 10.",
+        "tests": [],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "PRI-007",
+      "category": "priest",
+      "kind": "scenario",
+      "priority": "low",
+      "status": "resolved",
+      "title": "Shadow Mind Flay clipping and Smite Shadow Word: Pain",
+      "question": "Do the 70425 priest changes alter the rotations?",
+      "current_model": "Shadow channels Mind Flay fully (Improved Mind Flay makes the last tick the strongest). Smite keeps Shadow Word: Pain up after Holy Fire.",
+      "impact": "Shadow +0.4%, Smite +1.3% (confirmed on all races with independent seeds).",
+      "sources": [
+        "ui/smite_priest/apls/launch.apl.json",
+        "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6"
+      ],
+      "related": [],
+      "review": {
+        "disposition": "evidence-answer",
+        "confidence": "high",
+        "answer": "Rotation screens after the October 15 changes.",
+        "remaining": "None.",
+        "implementation": "Ranked profiles and the Smite APLs.",
+        "tests": [],
+        "previous_status": null
+      }
+    },
+    {
+      "id": "SHA-011",
+      "category": "shaman",
+      "kind": "mechanic",
+      "priority": "low",
+      "status": "needs-evidence",
+      "title": "Totem of the Storm Maelstrom Weapon chance",
+      "question": "How often does Lightning Bolt trigger Maelstrom Weapon with Totem of the Storm?",
+      "current_model": "Half the main-hand per-hit Maelstrom Weapon chance (10 per minute) per Lightning Bolt hit.",
+      "impact": "Enhancement relic choice.",
+      "sources": [
+        "sim/shaman/talents.go"
+      ],
+      "related": [],
+      "review": {
+        "disposition": "credible-answer",
+        "confidence": "moderate",
+        "answer": "Client 1.60.1.70425 spell 1291078 says 'a 50% reduced chance' but gives no spell rate.",
+        "remaining": "The actual chance per Lightning Bolt.",
+        "implementation": "Provisional half chance.",
+        "tests": [
+          {
+            "stage": "launch",
+            "requires": "Level-60 Enhancement Shaman with Maelstrom Weapon and Totem of the Storm.",
+            "measure": "Maelstrom Weapon stacks gained per Lightning Bolt over about 100 casts."
+          }
+        ],
+        "previous_status": null
+      }
     }
   ],
   "review": {
     "date": "2026-09-27",
     "original_entries": 137,
     "reviewed_original_entries": 137,
-    "added_entries": 50,
-    "latest_followup": "October 15 update to client 1.60.1.70425 and the October 15 development notes, with the WoW Sims, Fight Club and Hunter Lodge Discord reports since October 11. Implemented the racial replacements (critical damage, crit and haste racials, Touch of the Grave, Eureka, Blood Fury), the split raid-wide Leader of the Pack and Moonkin Aura, raid-wide totems and Battle Shout, the Mage, Priest, Shaman, Warlock and Paladin talent and spell changes, the Hunter, Druid, Rogue and Warrior fixes and four item procs. Mage, Priest, Shaman and Warlock profiles moved to the new trees; every DPS profile was re-searched with two-seed confirmation, and all 1,005 matrix scenarios and 68 tank checks replayed.",
+    "added_entries": 58,
+    "latest_followup": "October 16 follow-up: Shaman imbues and Rogue poisons in their own enchant slot beside stones and oils; real idols, librams and totems with a quarter of the modeled relic stats, chosen by the gear search; Rake Attack Power scaling (the September 30 deep dive, fitted to beta logs) and Rake in the Feral rotation; Cat and Bear proc rates at the form speed; bear-weaving screened (a loss); Frost Cone of Cold at five Winter’s Chill stacks, Shadow full Mind Flay channels, Smite Shadow Word: Pain, Enhancement Shadow Oil. Every DPS profile re-searched with two-seed confirmation; all 1,005 matrix scenarios and 68 tank checks replayed.",
     "latest_followup_date": "2026-10-16",
-    "latest_followup_baseline": "0facf43a061f7cbc218126b7ffab518d7fcbba36",
+    "latest_followup_baseline": "3c8abeb0c",
     "before": {
       "needs-evidence": 84,
       "needs-code": 27,
@@ -7928,7 +8148,9 @@
       "https://foreverlogs.gg/",
       "docs/october-15-update.md",
       "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6",
-      "https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374"
+      "https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374",
+      "docs/october-16-follow-up.md",
+      "https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid"
     ],
     "followup_history": [
       {
@@ -7945,9 +8167,14 @@
         "latest_followup": "October 11 log audit against all public foreverlogs.gg beta reports, class Discord test reports, the October 1 notes and client 1.60.1.70338 aura options. Corrected: Shaman Flurry lasts one white swing; Omen of Clarity procs at 4 per minute from white hits and 20% from other events after its cooldown; Fingers of Frost, Missile Barrage and Decimation roll at cast completion; Redoubt rolls on avoided attacks; the Imp recast pause is 0.42 s; queued Raptor Strike keeps the off-hand miss penalty; Maelstrom Weapon is 10 procs per minute at every rank. Entries that change no simulated result moved outside current scenarios; every remaining open entry has a beta test procedure. Builds that changed were re-searched with two-seed confirmation, and all 1,005 matrix scenarios and 68 tank checks replayed.",
         "latest_followup_date": "2026-10-11",
         "latest_followup_baseline": "e7f94795ff1b998ff103efcf26606baa6937ad0b"
+      },
+      {
+        "latest_followup": "October 15 update to client 1.60.1.70425 and the October 15 development notes, with the WoW Sims, Fight Club and Hunter Lodge Discord reports since October 11. Implemented the racial replacements (critical damage, crit and haste racials, Touch of the Grave, Eureka, Blood Fury), the split raid-wide Leader of the Pack and Moonkin Aura, raid-wide totems and Battle Shout, the Mage, Priest, Shaman, Warlock and Paladin talent and spell changes, the Hunter, Druid, Rogue and Warrior fixes and four item procs. Mage, Priest, Shaman and Warlock profiles moved to the new trees; every DPS profile was re-searched with two-seed confirmation, and all 1,005 matrix scenarios and 68 tank checks replayed.",
+        "latest_followup_date": "2026-10-16",
+        "latest_followup_baseline": "0facf43a061f7cbc218126b7ffab518d7fcbba36"
       }
     ],
-    "latest_followup_report": "october-15-update.md",
+    "latest_followup_report": "october-16-follow-up.md",
     "latest_followup_source_date": "2026-10-08T21:32:38.124Z",
     "latest_followup_publication": "pending",
     "latest_followup_benchmarks": "pending"

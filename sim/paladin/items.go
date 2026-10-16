@@ -13,6 +13,8 @@ const (
 	LibramOfHope       = 22401
 	LibramOfFervor     = 23203
 	LibramOfInvocation = 249442
+	SentinelsLibram    = 272434
+	SteadfastLibram    = 279247
 	LibramOfInfusion   = 279248
 )
 
@@ -45,7 +47,7 @@ func (paladin *Paladin) sealCostMultiplier() int32 {
 	if paladin.Env.IsForever() && paladin.Talents.TwistOfLight {
 		cost -= 20
 	}
-	if paladin.Env.IsForever() && paladin.Ranged().ID == LibramOfInvocation {
+	if paladin.Env.IsForever() && paladin.Ranged().EffectID() == LibramOfInvocation {
 		cost -= 5
 	}
 	return cost

@@ -68,7 +68,7 @@
               "id": 920000385
             },
             {
-              "id": 920000500
+              "id": 920001026
             }
           ]
         },
@@ -318,7 +318,7 @@
               "id": 920000385
             },
             {
-              "id": 920000500
+              "id": 920001026
             }
           ]
         },
@@ -568,7 +568,7 @@
               "id": 920000385
             },
             {
-              "id": 920000500
+              "id": 920001026
             }
           ]
         },
@@ -818,7 +818,7 @@
               "id": 920000385
             },
             {
-              "id": 920000500
+              "id": 920001026
             }
           ]
         },
@@ -1066,7 +1066,7 @@
             },
             {},
             {
-              "id": 920000499
+              "id": 920001001
             }
           ]
         },
@@ -1076,6 +1076,7 @@
           "agilityElixir": "ElixirOfTheMongoose",
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
+          "mainHandImbue": "ElementalSharpeningStone",
           "defaultPotion": "MajorManaPotion",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
@@ -1135,7 +1136,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "050022-35210032021032212041-053",
+        "talentsString": "05002-45010032021032212051-055",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -1301,6 +1302,58 @@
                 "castSpell": {
                   "spellId": {
                     "spellId": 9896
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "condition": {
+                  "and": {
+                    "vals": [
+                      {
+                        "not": {
+                          "val": {
+                            "dotIsActive": {
+                              "spellId": {
+                                "spellId": 9904
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "remainingTime": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "9s"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpLt",
+                          "lhs": {
+                            "currentComboPoints": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "5"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 9904
                   }
                 }
               }
@@ -1411,7 +1464,7 @@
             },
             {},
             {
-              "id": 920000499
+              "id": 920001001
             }
           ]
         },
@@ -1421,6 +1474,7 @@
           "agilityElixir": "ElixirOfTheMongoose",
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
+          "mainHandImbue": "ElementalSharpeningStone",
           "defaultPotion": "MajorManaPotion",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
@@ -1480,7 +1534,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "050022-35210032021032212041-053",
+        "talentsString": "05002-45010032021032212051-055",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -1646,6 +1700,58 @@
                 "castSpell": {
                   "spellId": {
                     "spellId": 9896
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "condition": {
+                  "and": {
+                    "vals": [
+                      {
+                        "not": {
+                          "val": {
+                            "dotIsActive": {
+                              "spellId": {
+                                "spellId": 9904
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "remainingTime": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "9s"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpLt",
+                          "lhs": {
+                            "currentComboPoints": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "5"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 9904
                   }
                 }
               }
@@ -1756,7 +1862,7 @@
             },
             {},
             {
-              "id": 920000499
+              "id": 920001001
             }
           ]
         },
@@ -1766,6 +1872,7 @@
           "agilityElixir": "ElixirOfTheMongoose",
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
+          "mainHandImbue": "ElementalSharpeningStone",
           "defaultPotion": "MajorManaPotion",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
@@ -1825,7 +1932,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "050022-35210032021032212041-053",
+        "talentsString": "05002-45010032021032212051-055",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -1991,6 +2098,58 @@
                 "castSpell": {
                   "spellId": {
                     "spellId": 9896
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "condition": {
+                  "and": {
+                    "vals": [
+                      {
+                        "not": {
+                          "val": {
+                            "dotIsActive": {
+                              "spellId": {
+                                "spellId": 9904
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "remainingTime": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "9s"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpLt",
+                          "lhs": {
+                            "currentComboPoints": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "5"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 9904
                   }
                 }
               }
@@ -2101,7 +2260,7 @@
             },
             {},
             {
-              "id": 920000499
+              "id": 920001001
             }
           ]
         },
@@ -2111,6 +2270,7 @@
           "agilityElixir": "ElixirOfTheMongoose",
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
+          "mainHandImbue": "ElementalSharpeningStone",
           "defaultPotion": "MajorManaPotion",
           "defaultConjured": "ConjuredRogueThistleTea",
           "dragonBreathChili": true,
@@ -2170,7 +2330,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "050022-35210032021032212041-053",
+        "talentsString": "05002-45010032021032212051-055",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -2336,6 +2496,58 @@
                 "castSpell": {
                   "spellId": {
                     "spellId": 9896
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "condition": {
+                  "and": {
+                    "vals": [
+                      {
+                        "not": {
+                          "val": {
+                            "dotIsActive": {
+                              "spellId": {
+                                "spellId": 9904
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "remainingTime": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "9s"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpLt",
+                          "lhs": {
+                            "currentComboPoints": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "5"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 9904
                   }
                 }
               }
@@ -2448,7 +2660,7 @@
               "id": 920000385
             },
             {
-              "id": 920000504
+              "id": 920001012
             }
           ]
         },
@@ -2812,7 +3024,7 @@
               "id": 920000385
             },
             {
-              "id": 920000504
+              "id": 920001012
             }
           ]
         },
@@ -3176,7 +3388,7 @@
               "id": 920000385
             },
             {
-              "id": 920000504
+              "id": 920001012
             }
           ]
         },
@@ -3540,7 +3752,7 @@
               "id": 920000385
             },
             {
-              "id": 920000504
+              "id": 920001012
             }
           ]
         },
@@ -3904,7 +4116,7 @@
               "id": 920000385
             },
             {
-              "id": 920000504
+              "id": 920001012
             }
           ]
         },
@@ -4268,7 +4480,7 @@
               "id": 920000385
             },
             {
-              "id": 920000504
+              "id": 920001012
             }
           ]
         },
@@ -4621,7 +4833,7 @@
               "id": 920000385
             },
             {
-              "id": 920000504
+              "id": 920001012
             }
           ]
         },
@@ -4974,7 +5186,7 @@
               "id": 920000385
             },
             {
-              "id": 920000504
+              "id": 920001012
             }
           ]
         },
@@ -5289,7 +5501,7 @@
               "enchant": 1891
             },
             {
-              "id": 920000450,
+              "id": 920000127,
               "enchant": 2566
             },
             {
@@ -5327,7 +5539,7 @@
               "id": 920000385
             },
             {
-              "id": 920000504
+              "id": 920001012
             }
           ]
         },
@@ -5680,7 +5892,7 @@
               "id": 920000385
             },
             {
-              "id": 920000504
+              "id": 920001012
             }
           ]
         },
@@ -6031,7 +6243,7 @@
             },
             {},
             {
-              "id": 920000503
+              "id": 920001029
             }
           ]
         },
@@ -6045,7 +6257,7 @@
           "spellPowerBuff": "GreaterArcaneElixir",
           "firePowerBuff": "ElixirOfFirepower",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "WindfuryWeapon",
+          "mainHandImbue": "ShadowOil",
           "defaultPotion": "MajorManaPotion",
           "defaultConjured": "ConjuredDemonicRune",
           "dragonBreathChili": true,
@@ -6381,7 +6593,9 @@
         },
         "distanceFromTarget": 5,
         "enhancementShaman": {
-          "options": {}
+          "options": {
+            "mainHandImbue": "WindfuryImbue"
+          }
         }
       }
     },
@@ -6410,7 +6624,7 @@
               "enchant": 849
             },
             {
-              "id": 920000095,
+              "id": 920000396,
               "enchant": 1891
             },
             {
@@ -6450,7 +6664,7 @@
             },
             {},
             {
-              "id": 920000503
+              "id": 920001029
             }
           ]
         },
@@ -6464,7 +6678,7 @@
           "spellPowerBuff": "GreaterArcaneElixir",
           "firePowerBuff": "ElixirOfFirepower",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "WindfuryWeapon",
+          "mainHandImbue": "ShadowOil",
           "defaultPotion": "MajorManaPotion",
           "defaultConjured": "ConjuredDemonicRune",
           "dragonBreathChili": true,
@@ -6800,7 +7014,9 @@
         },
         "distanceFromTarget": 5,
         "enhancementShaman": {
-          "options": {}
+          "options": {
+            "mainHandImbue": "WindfuryImbue"
+          }
         }
       }
     },
@@ -6869,7 +7085,7 @@
             },
             {},
             {
-              "id": 920000503
+              "id": 920001029
             }
           ]
         },
@@ -6883,7 +7099,7 @@
           "spellPowerBuff": "GreaterArcaneElixir",
           "firePowerBuff": "ElixirOfFirepower",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "WindfuryWeapon",
+          "mainHandImbue": "ShadowOil",
           "defaultPotion": "MajorManaPotion",
           "defaultConjured": "ConjuredDemonicRune",
           "dragonBreathChili": true,
@@ -7219,7 +7435,9 @@
         },
         "distanceFromTarget": 5,
         "enhancementShaman": {
-          "options": {}
+          "options": {
+            "mainHandImbue": "WindfuryImbue"
+          }
         }
       }
     },
@@ -7288,7 +7506,7 @@
             },
             {},
             {
-              "id": 920000503
+              "id": 920001029
             }
           ]
         },
@@ -7302,7 +7520,7 @@
           "spellPowerBuff": "GreaterArcaneElixir",
           "firePowerBuff": "ElixirOfFirepower",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "WindfuryWeapon",
+          "mainHandImbue": "ShadowOil",
           "defaultPotion": "MajorManaPotion",
           "defaultConjured": "ConjuredDemonicRune",
           "dragonBreathChili": true,
@@ -7638,7 +7856,9 @@
         },
         "distanceFromTarget": 5,
         "enhancementShaman": {
-          "options": {}
+          "options": {
+            "mainHandImbue": "WindfuryImbue"
+          }
         }
       }
     },
@@ -7707,7 +7927,7 @@
             },
             {},
             {
-              "id": 920000503
+              "id": 920001029
             }
           ]
         },
@@ -7721,7 +7941,7 @@
           "spellPowerBuff": "GreaterArcaneElixir",
           "firePowerBuff": "ElixirOfFirepower",
           "fillerExplosive": "ExplosiveThoriumGrenade",
-          "mainHandImbue": "WindfuryWeapon",
+          "mainHandImbue": "ShadowOil",
           "defaultPotion": "MajorManaPotion",
           "defaultConjured": "ConjuredDemonicRune",
           "dragonBreathChili": true,
@@ -8057,7 +8277,9 @@
         },
         "distanceFromTarget": 5,
         "enhancementShaman": {
-          "options": {}
+          "options": {
+            "mainHandImbue": "WindfuryImbue"
+          }
         }
       }
     },
@@ -19255,7 +19477,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "0500005001-03-0555003331000301251",
+        "talentsString": "0500105001-03-0555003331000301241",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -19346,6 +19568,32 @@
             },
             {
               "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpGe",
+                    "lhs": {
+                      "auraNumStacks": {
+                        "auraId": {
+                          "spellId": 12579
+                        }
+                      }
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "5"
+                      }
+                    }
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 10161
+                  }
+                }
+              }
+            },
+            {
+              "action": {
                 "castSpell": {
                   "spellId": {
                     "spellId": 25304,
@@ -19356,7 +19604,7 @@
             }
           ]
         },
-        "distanceFromTarget": 20,
+        "distanceFromTarget": 10,
         "mage": {
           "options": {
             "armor": "MageArmor"
@@ -19501,7 +19749,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "0500005001-03-0555003331000301251",
+        "talentsString": "0500105001-03-0555003331000301241",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -19592,6 +19840,32 @@
             },
             {
               "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpGe",
+                    "lhs": {
+                      "auraNumStacks": {
+                        "auraId": {
+                          "spellId": 12579
+                        }
+                      }
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "5"
+                      }
+                    }
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 10161
+                  }
+                }
+              }
+            },
+            {
+              "action": {
                 "castSpell": {
                   "spellId": {
                     "spellId": 25304,
@@ -19602,7 +19876,7 @@
             }
           ]
         },
-        "distanceFromTarget": 20,
+        "distanceFromTarget": 10,
         "mage": {
           "options": {
             "armor": "MageArmor"
@@ -19747,7 +20021,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "0500005001-03-0555003331000301251",
+        "talentsString": "0500105001-03-0555003331000301241",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -19838,6 +20112,32 @@
             },
             {
               "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpGe",
+                    "lhs": {
+                      "auraNumStacks": {
+                        "auraId": {
+                          "spellId": 12579
+                        }
+                      }
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "5"
+                      }
+                    }
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 10161
+                  }
+                }
+              }
+            },
+            {
+              "action": {
                 "castSpell": {
                   "spellId": {
                     "spellId": 25304,
@@ -19848,7 +20148,7 @@
             }
           ]
         },
-        "distanceFromTarget": 20,
+        "distanceFromTarget": 10,
         "mage": {
           "options": {
             "armor": "MageArmor"
@@ -19993,7 +20293,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "0500005001-03-0555003331000301251",
+        "talentsString": "0500105001-03-0555003331000301241",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -20084,6 +20384,32 @@
             },
             {
               "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpGe",
+                    "lhs": {
+                      "auraNumStacks": {
+                        "auraId": {
+                          "spellId": 12579
+                        }
+                      }
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "5"
+                      }
+                    }
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 10161
+                  }
+                }
+              }
+            },
+            {
+              "action": {
                 "castSpell": {
                   "spellId": {
                     "spellId": 25304,
@@ -20094,7 +20420,7 @@
             }
           ]
         },
-        "distanceFromTarget": 20,
+        "distanceFromTarget": 10,
         "mage": {
           "options": {
             "armor": "MageArmor"
@@ -20239,7 +20565,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "0500005001-03-0555003331000301251",
+        "talentsString": "0500105001-03-0555003331000301241",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -20330,6 +20656,32 @@
             },
             {
               "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpGe",
+                    "lhs": {
+                      "auraNumStacks": {
+                        "auraId": {
+                          "spellId": 12579
+                        }
+                      }
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "5"
+                      }
+                    }
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 10161
+                  }
+                }
+              }
+            },
+            {
+              "action": {
                 "castSpell": {
                   "spellId": {
                     "spellId": 25304,
@@ -20340,7 +20692,7 @@
             }
           ]
         },
-        "distanceFromTarget": 20,
+        "distanceFromTarget": 10,
         "mage": {
           "options": {
             "armor": "MageArmor"
@@ -20378,7 +20730,7 @@
             },
             {
               "id": 920000113,
-              "enchant": 2566
+              "enchant": 1884
             },
             {
               "id": 920000402,
@@ -20485,7 +20837,7 @@
           "blessingOfWisdom": "TristateEffectRegular",
           "blessingOfMight": "TristateEffectRegular"
         },
-        "talentsString": "0500005001-03-0555003331000301251",
+        "talentsString": "0500105001-03-0555003331000301241",
         "profession1": "Engineering",
         "rotation": {
           "type": "TypeAPL",
@@ -20576,6 +20928,32 @@
             },
             {
               "action": {
+                "condition": {
+                  "cmp": {
+                    "op": "OpGe",
+                    "lhs": {
+                      "auraNumStacks": {
+                        "auraId": {
+                          "spellId": 12579
+                        }
+                      }
+                    },
+                    "rhs": {
+                      "const": {
+                        "val": "5"
+                      }
+                    }
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 10161
+                  }
+                }
+              }
+            },
+            {
+              "action": {
                 "castSpell": {
                   "spellId": {
                     "spellId": 25304,
@@ -20586,7 +20964,7 @@
             }
           ]
         },
-        "distanceFromTarget": 20,
+        "distanceFromTarget": 10,
         "mage": {
           "options": {
             "armor": "MageArmor"
@@ -20659,7 +21037,7 @@
             },
             {},
             {
-              "id": 920000501
+              "id": 920001035
             }
           ]
         },
@@ -20997,7 +21375,7 @@
             },
             {},
             {
-              "id": 920000501
+              "id": 920001035
             }
           ]
         },
@@ -21335,7 +21713,7 @@
             },
             {},
             {
-              "id": 920000501
+              "id": 920001035
             }
           ]
         },
@@ -21881,97 +22259,6 @@
                   "spellId": {
                     "spellId": 18807,
                     "rank": 6
-                  },
-                  "interruptIf": {
-                    "and": {
-                      "vals": [
-                        {
-                          "cmp": {
-                            "op": "OpGe",
-                            "lhs": {
-                              "spellChanneledTicks": {
-                                "spellId": {
-                                  "spellId": 18807
-                                }
-                              }
-                            },
-                            "rhs": {
-                              "const": {
-                                "val": "2"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "or": {
-                            "vals": [
-                              {
-                                "spellCanCast": {
-                                  "spellId": {
-                                    "spellId": 10947
-                                  }
-                                }
-                              },
-                              {
-                                "spellCanCast": {
-                                  "spellId": {
-                                    "spellId": 1309636
-                                  }
-                                }
-                              },
-                              {
-                                "and": {
-                                  "vals": [
-                                    {
-                                      "not": {
-                                        "val": {
-                                          "dotIsActive": {
-                                            "spellId": {
-                                              "spellId": 19280
-                                            }
-                                          }
-                                        }
-                                      }
-                                    },
-                                    {
-                                      "spellCanCast": {
-                                        "spellId": {
-                                          "spellId": 19280
-                                        }
-                                      }
-                                    }
-                                  ]
-                                }
-                              },
-                              {
-                                "and": {
-                                  "vals": [
-                                    {
-                                      "not": {
-                                        "val": {
-                                          "dotIsActive": {
-                                            "spellId": {
-                                              "spellId": 10894
-                                            }
-                                          }
-                                        }
-                                      }
-                                    },
-                                    {
-                                      "spellCanCast": {
-                                        "spellId": {
-                                          "spellId": 10894
-                                        }
-                                      }
-                                    }
-                                  ]
-                                }
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
                   }
                 }
               }
@@ -22257,97 +22544,6 @@
                   "spellId": {
                     "spellId": 18807,
                     "rank": 6
-                  },
-                  "interruptIf": {
-                    "and": {
-                      "vals": [
-                        {
-                          "cmp": {
-                            "op": "OpGe",
-                            "lhs": {
-                              "spellChanneledTicks": {
-                                "spellId": {
-                                  "spellId": 18807
-                                }
-                              }
-                            },
-                            "rhs": {
-                              "const": {
-                                "val": "2"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "or": {
-                            "vals": [
-                              {
-                                "spellCanCast": {
-                                  "spellId": {
-                                    "spellId": 10947
-                                  }
-                                }
-                              },
-                              {
-                                "spellCanCast": {
-                                  "spellId": {
-                                    "spellId": 1309636
-                                  }
-                                }
-                              },
-                              {
-                                "and": {
-                                  "vals": [
-                                    {
-                                      "not": {
-                                        "val": {
-                                          "dotIsActive": {
-                                            "spellId": {
-                                              "spellId": 19280
-                                            }
-                                          }
-                                        }
-                                      }
-                                    },
-                                    {
-                                      "spellCanCast": {
-                                        "spellId": {
-                                          "spellId": 19280
-                                        }
-                                      }
-                                    }
-                                  ]
-                                }
-                              },
-                              {
-                                "and": {
-                                  "vals": [
-                                    {
-                                      "not": {
-                                        "val": {
-                                          "dotIsActive": {
-                                            "spellId": {
-                                              "spellId": 10894
-                                            }
-                                          }
-                                        }
-                                      }
-                                    },
-                                    {
-                                      "spellCanCast": {
-                                        "spellId": {
-                                          "spellId": 10894
-                                        }
-                                      }
-                                    }
-                                  ]
-                                }
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
                   }
                 }
               }
@@ -23714,6 +23910,45 @@
             },
             {
               "action": {
+                "condition": {
+                  "and": {
+                    "vals": [
+                      {
+                        "not": {
+                          "val": {
+                            "dotIsActive": {
+                              "spellId": {
+                                "spellId": 10894
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "remainingTime": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "12s"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 10894
+                  }
+                }
+              }
+            },
+            {
+              "action": {
                 "strictSequence": {
                   "actions": [
                     {
@@ -23968,6 +24203,45 @@
                   "spellId": {
                     "spellId": 15261,
                     "rank": 8
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "condition": {
+                  "and": {
+                    "vals": [
+                      {
+                        "not": {
+                          "val": {
+                            "dotIsActive": {
+                              "spellId": {
+                                "spellId": 10894
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "remainingTime": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "12s"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 10894
                   }
                 }
               }
@@ -24256,6 +24530,45 @@
             },
             {
               "action": {
+                "condition": {
+                  "and": {
+                    "vals": [
+                      {
+                        "not": {
+                          "val": {
+                            "dotIsActive": {
+                              "spellId": {
+                                "spellId": 10894
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "remainingTime": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "12s"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 10894
+                  }
+                }
+              }
+            },
+            {
+              "action": {
                 "strictSequence": {
                   "actions": [
                     {
@@ -24532,6 +24845,45 @@
                   "spellId": {
                     "spellId": 15261,
                     "rank": 8
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "condition": {
+                  "and": {
+                    "vals": [
+                      {
+                        "not": {
+                          "val": {
+                            "dotIsActive": {
+                              "spellId": {
+                                "spellId": 10894
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "remainingTime": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "12s"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 10894
                   }
                 }
               }
@@ -24820,6 +25172,45 @@
             },
             {
               "action": {
+                "condition": {
+                  "and": {
+                    "vals": [
+                      {
+                        "not": {
+                          "val": {
+                            "dotIsActive": {
+                              "spellId": {
+                                "spellId": 10894
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "remainingTime": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "12s"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 10894
+                  }
+                }
+              }
+            },
+            {
+              "action": {
                 "strictSequence": {
                   "actions": [
                     {
@@ -25096,6 +25487,45 @@
                   "spellId": {
                     "spellId": 15261,
                     "rank": 8
+                  }
+                }
+              }
+            },
+            {
+              "action": {
+                "condition": {
+                  "and": {
+                    "vals": [
+                      {
+                        "not": {
+                          "val": {
+                            "dotIsActive": {
+                              "spellId": {
+                                "spellId": 10894
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "cmp": {
+                          "op": "OpGe",
+                          "lhs": {
+                            "remainingTime": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "12s"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "castSpell": {
+                  "spellId": {
+                    "spellId": 10894
                   }
                 }
               }
@@ -25682,7 +26112,7 @@
               "id": 920000317
             },
             {
-              "id": 920000348,
+              "id": 920000334,
               "enchant": 1900
             },
             {
@@ -26135,7 +26565,7 @@
             },
             {
               "id": 920000334,
-              "enchant": 803
+              "enchant": 1900
             },
             {
               "id": 920000332,
@@ -26587,7 +27017,7 @@
             },
             {
               "id": 920000334,
-              "enchant": 803
+              "enchant": 1900
             },
             {
               "id": 920000332,
@@ -28847,7 +29277,7 @@
             },
             {
               "id": 920000334,
-              "enchant": 803
+              "enchant": 1900
             },
             {
               "id": 920000332,
@@ -39603,7 +40033,7 @@
               "id": 920000492
             },
             {
-              "id": 920000332,
+              "id": 920000341,
               "enchant": 2504
             },
             {
@@ -47596,7 +48026,7 @@
               "id": 920000492
             },
             {
-              "id": 920000341,
+              "id": 920000382,
               "enchant": 2504
             },
             {
@@ -52036,7 +52466,7 @@
           "items": [
             {
               "id": 920000030,
-              "enchant": 1506
+              "enchant": 2543
             },
             {
               "id": 920000300
@@ -53789,7 +54219,7 @@
               "enchant": 1900
             },
             {
-              "id": 920000332,
+              "id": 920000349,
               "enchant": 1900
             },
             {
@@ -56286,7 +56716,7 @@
           "items": [
             {
               "id": 920000030,
-              "enchant": 1506
+              "enchant": 2543
             },
             {
               "id": 920000300
@@ -61860,7 +62290,7 @@
           "items": [
             {
               "id": 920000020,
-              "enchant": 1508
+              "enchant": 2543
             },
             {
               "id": 920000298
@@ -62570,7 +63000,7 @@
           "items": [
             {
               "id": 920000020,
-              "enchant": 1508
+              "enchant": 2543
             },
             {
               "id": 920000298
@@ -62616,7 +63046,7 @@
               "id": 920000318
             },
             {
-              "id": 920000316
+              "id": 920000317
             },
             {
               "id": 920000334,
@@ -63645,7 +64075,7 @@
               "enchant": 2488
             },
             {
-              "id": 920000289,
+              "id": 920000290,
               "enchant": 849
             },
             {
@@ -63681,7 +64111,7 @@
               "id": 920000317
             },
             {
-              "id": 920000316
+              "id": 920000317
             },
             {
               "id": 920000334,
@@ -63990,7 +64420,7 @@
           "items": [
             {
               "id": 920000020,
-              "enchant": 1508
+              "enchant": 2543
             },
             {
               "id": 920000298
@@ -65312,7 +65742,7 @@
               "id": 920000492
             },
             {
-              "id": 920000332,
+              "id": 920000382,
               "enchant": 2504
             },
             {
@@ -69665,7 +70095,7 @@
             },
             {},
             {
-              "id": 920000501
+              "id": 920001035
             }
           ]
         },
@@ -70000,7 +70430,7 @@
             },
             {},
             {
-              "id": 920000501
+              "id": 920001015
             }
           ]
         },
@@ -70335,7 +70765,7 @@
             },
             {},
             {
-              "id": 920000501
+              "id": 920001015
             }
           ]
         },
@@ -85023,7 +85453,7 @@
               "enchant": 929
             },
             {
-              "id": 920000501
+              "id": 920001035
             }
           ]
         },
@@ -85440,7 +85870,7 @@
               "enchant": 863
             },
             {
-              "id": 920000501
+              "id": 920001035
             }
           ]
         },
@@ -85857,7 +86287,7 @@
               "enchant": 863
             },
             {
-              "id": 920000501
+              "id": 920001035
             }
           ]
         },
@@ -86271,7 +86701,7 @@
             },
             {},
             {
-              "id": 920000499
+              "id": 920001021
             }
           ]
         },
@@ -86281,6 +86711,7 @@
           "agilityElixir": "ElixirOfTheMongoose",
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
+          "mainHandImbue": "ElementalSharpeningStone",
           "defaultPotion": "GreaterStoneshieldPotion",
           "dragonBreathChili": true,
           "zanzaBuff": "ROIDS",
@@ -86739,7 +87170,7 @@
             },
             {},
             {
-              "id": 920000499
+              "id": 920001021
             }
           ]
         },
@@ -86749,6 +87180,7 @@
           "agilityElixir": "ElixirOfTheMongoose",
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
+          "mainHandImbue": "ElementalSharpeningStone",
           "defaultPotion": "GreaterStoneshieldPotion",
           "dragonBreathChili": true,
           "zanzaBuff": "ROIDS",
@@ -87207,7 +87639,7 @@
             },
             {},
             {
-              "id": 920000499
+              "id": 920001021
             }
           ]
         },
@@ -87217,6 +87649,7 @@
           "agilityElixir": "ElixirOfTheMongoose",
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
+          "mainHandImbue": "ElementalSharpeningStone",
           "defaultPotion": "GreaterStoneshieldPotion",
           "dragonBreathChili": true,
           "zanzaBuff": "ROIDS",
@@ -87675,7 +88108,7 @@
             },
             {},
             {
-              "id": 920000499
+              "id": 920001021
             }
           ]
         },
@@ -87685,6 +88118,7 @@
           "agilityElixir": "ElixirOfTheMongoose",
           "strengthBuff": "JujuPower",
           "attackPowerBuff": "JujuMight",
+          "mainHandImbue": "ElementalSharpeningStone",
           "defaultPotion": "GreaterStoneshieldPotion",
           "dragonBreathChili": true,
           "zanzaBuff": "ROIDS",

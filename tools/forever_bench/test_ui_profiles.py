@@ -18,8 +18,11 @@ class UIProfilesTest(unittest.TestCase):
         self.assertEqual(len(bundle["profiles"]), len(expected_roster()))
         profiles = {(p["key"], p["race"]): p for p in bundle["profiles"]}
         self.assertEqual(set(profiles), expected_roster())
+        # Relics are projected real relics; the full-capacity modeled relics are superseded.
         modeled_ids = {item["id"] for item in json.loads((
-            root / "assets/db_inputs/forever_synthetic_gear_v2.json").read_text())["items"]}
+            root / "assets/db_inputs/forever_synthetic_gear_v2.json").read_text())["items"] if item["inventoryType"] != 28}
+        modeled_ids |= {item["id"] for item in json.loads((
+            root / "assets/db_inputs/forever_hybrid_relics.json").read_text())["items"]}
         for row in results:
             profile = profiles[row["Key"], row["Race"]]
             self.assertEqual(profile["settings"], ui_settings(row))

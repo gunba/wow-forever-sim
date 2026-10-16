@@ -30,6 +30,8 @@ func (paladin *Paladin) registerHolyShield() {
 	// October 1 restores 30% block; the current four-charge count is unchanged.
 	numCharges := int32(4)
 	blockBonus := 20.0 * core.BlockRatingPerBlockChance
+	// Steadfast Libram (1306433): 15% more shield block value while Holy Shield is active.
+	steadfast := paladin.Env.IsForever() && paladin.Ranged().EffectID() == SteadfastLibram
 	if paladin.Env.IsForever() {
 		blockBonus = 30 * core.BlockRatingPerBlockChance
 	}
@@ -75,9 +77,15 @@ func (paladin *Paladin) registerHolyShield() {
 			OnGain: func(aura *core.Aura, sim *core.Simulation) {
 				aura.SetStacks(sim, numCharges)
 				paladin.AddStatDynamic(sim, stats.Block, blockBonus)
+				if steadfast {
+					paladin.PseudoStats.BlockValueMultiplier *= 1.15
+				}
 			},
 			OnExpire: func(aura *core.Aura, sim *core.Simulation) {
 				paladin.AddStatDynamic(sim, stats.Block, -blockBonus)
+				if steadfast {
+					paladin.PseudoStats.BlockValueMultiplier /= 1.15
+				}
 			},
 			OnSpellHitTaken: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 				if result.DidBlock() {

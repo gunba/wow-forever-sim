@@ -85,7 +85,9 @@ func TestFlametongueWeaponDoesNotSuppressWindfuryTotem(t *testing.T) {
 	req := racialFixture("enhancement", proto.Race_RaceOrc)
 	p := req.Raid.Parties[0].Players[0]
 	p.Rotation = &proto.APLRotation{}
-	p.Consumes.MainHandImbue = proto.WeaponImbue_FlametongueWeapon
+	// Forever imbues are spec options with their own enchant slot.
+	p.GetEnhancementShaman().Options.MainHandImbue = proto.ShamanWeaponImbue_FlametongueImbue
+	p.Consumes.MainHandImbue = proto.WeaponImbue_WeaponImbueUnknown
 	req.Raid.Parties[0].Buffs = &proto.PartyBuffs{WindfuryTotem: true}
 	sim := core.NewSim(req, simsignals.Signals{})
 	sim.Options.Interactive = true

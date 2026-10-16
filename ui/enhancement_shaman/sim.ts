@@ -1,3 +1,5 @@
+import { TypedEvent } from '../core/typed_event.js';
+import { shamanImbueInput, shamanImbueWarning } from '../core/components/inputs/shaman_imbues.js';
 import * as BuffDebuffInputs from '../core/components/inputs/buffs_debuffs';
 import * as ConsumesInputs from '../core/components/inputs/consumables';
 import * as OtherInputs from '../core/components/other_inputs.js';
@@ -15,6 +17,12 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecEnhancementShaman, {
 	cssScheme: 'shaman',
 	// List any known bugs / issues here and they'll be shown on the site.
 	knownIssues: [],
+	warnings: [
+		(simUI: IndividualSimUI<Spec.SpecEnhancementShaman>) => ({
+			updateOn: TypedEvent.onAny([simUI.player.consumesChangeEmitter, simUI.player.specOptionsChangeEmitter, simUI.sim.rulesetChangeEmitter]),
+			getContent: () => shamanImbueWarning(simUI.player),
+		}),
+	],
 
 	// All stats for which EP should be calculated.
 	epStats: [
@@ -104,7 +112,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecEnhancementShaman, {
 	},
 
 	// IconInputs to include in the 'Player' section on the settings tab.
-	playerIconInputs: [],
+	playerIconInputs: [shamanImbueInput<Spec.SpecEnhancementShaman>(ItemSlot.ItemSlotMainHand), shamanImbueInput<Spec.SpecEnhancementShaman>(ItemSlot.ItemSlotOffHand)],
 	// Buff and Debuff inputs to include/exclude, overriding the EP-based defaults.
 	includeBuffDebuffInputs: [BuffDebuffInputs.SpellWintersChillDebuff, BuffDebuffInputs.SpiritBuff, ConsumesInputs.ElixirOfFrostPower],
 	excludeBuffDebuffInputs: [],

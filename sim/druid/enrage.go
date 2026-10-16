@@ -13,6 +13,11 @@ import (
 func (druid *Druid) registerEnrageSpell() {
 	actionID := core.ActionID{SpellID: 5229}
 	rageMetrics := druid.NewRageMetrics(actionID)
+	// Enraged Idol (1291060): 10 more Rage over the duration (effect 1 points), one more a tick.
+	tickRage := 2.0
+	if druid.Ranged().EffectID() == EnragedIdol {
+		tickRage += 1
+	}
 
 	armorMultiplier := 1 - 0.27
 	if druid.BearForm != nil && druid.BearForm.ActionID.SpellID == 9634 {
@@ -57,7 +62,7 @@ func (druid *Druid) registerEnrageSpell() {
 				Period:   time.Second,
 				OnAction: func(sim *core.Simulation) {
 					if druid.EnrageAura.IsActive() {
-						druid.AddRage(sim, 2, rageMetrics)
+						druid.AddRage(sim, tickRage, rageMetrics)
 					}
 				},
 			})

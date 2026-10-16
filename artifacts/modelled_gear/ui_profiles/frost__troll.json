@@ -183,7 +183,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "0500005001-03-0555003331000301251",
+    "talentsString": "0500105001-03-0555003331000301241",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
@@ -274,6 +274,32 @@
         },
         {
           "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpGe",
+                "lhs": {
+                  "auraNumStacks": {
+                    "auraId": {
+                      "spellId": 12579
+                    }
+                  }
+                },
+                "rhs": {
+                  "const": {
+                    "val": "5"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 10161
+              }
+            }
+          }
+        },
+        {
+          "action": {
             "castSpell": {
               "spellId": {
                 "spellId": 25304,
@@ -284,7 +310,7 @@
         }
       ]
     },
-    "distanceFromTarget": 20,
+    "distanceFromTarget": 10,
     "mage": {
       "options": {
         "armor": "MageArmor"

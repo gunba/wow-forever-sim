@@ -9,6 +9,7 @@ import (
 const (
 	// Keep these ordered by ID
 	WushoolaysCharmOfSpirits = 19956
+	TotemOfTheStorm          = 272432
 )
 
 func init() {

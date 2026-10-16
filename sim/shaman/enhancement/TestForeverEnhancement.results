@@ -1,47 +1,47 @@
 character_stats_results: {
  key: "TestForeverEnhancement-Phase1-CharacterStats-Default"
  value: {
-  final_stats: 249.7
-  final_stats: 369.6
-  final_stats: 415.8
-  final_stats: 182.71
-  final_stats: 176
-  final_stats: 204.813
+  final_stats: 330
+  final_stats: 581.9
+  final_stats: 359.7
+  final_stats: 164.56
+  final_stats: 170.5
+  final_stats: 227.368
   final_stats: 0
   final_stats: 40
   final_stats: 0
   final_stats: 0
   final_stats: 0
   final_stats: 0
-  final_stats: 48
-  final_stats: 12
-  final_stats: 21.3878
+  final_stats: 49
+  final_stats: 4.9
+  final_stats: 17.08106
   final_stats: 0
   final_stats: 0
-  final_stats: 1312.11
-  final_stats: 12
-  final_stats: 38.47568
+  final_stats: 1392.56
+  final_stats: 4.9
+  final_stats: 45.26052
   final_stats: 0
   final_stats: 0
   final_stats: 0
-  final_stats: 3980.65
+  final_stats: 3708.4
   final_stats: 0
   final_stats: 0
-  final_stats: 2742.2
-  final_stats: 248
+  final_stats: 2953.8
+  final_stats: 271
   final_stats: 0
   final_stats: 5
   final_stats: 0
-  final_stats: 24.47568
-  final_stats: 6
+  final_stats: 31.26052
+  final_stats: 5
   final_stats: 0
-  final_stats: 5258
-  final_stats: 36
-  final_stats: 60
-  final_stats: 60
-  final_stats: 60
-  final_stats: 60
-  final_stats: 519
+  final_stats: 4697
+  final_stats: 27
+  final_stats: 97
+  final_stats: 79
+  final_stats: 87
+  final_stats: 91
+  final_stats: 385
   final_stats: 0
   final_stats: 35
   final_stats: 0
@@ -50,16 +50,12 @@ character_stats_results: {
 stat_weights_results: {
  key: "TestForeverEnhancement-Phase1-StatWeights-Default"
  value: {
-  weights: 0.47892
-  weights: 0.2698
+  weights: 0.40955
+  weights: -0.1423
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.20841
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
+  weights: 0.17442
   weights: 0
   weights: 0
   weights: 0
@@ -67,9 +63,13 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.21769
-  weights: 5.57928
-  weights: 6.65443
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0.18616
+  weights: 5.41071
+  weights: 2.98074
   weights: 0
   weights: 0
   weights: 0
@@ -97,114 +97,65 @@ stat_weights_results: {
  }
 }
 dps_results: {
- key: "TestForeverEnhancement-Phase1-AllItems-Champion'sEarthshaker"
+ key: "TestForeverEnhancement-Phase1-AllItems-TheSpiritcaller'sStorm"
  value: {
-  dps: 606.87463
-  tps: 489.29569
- }
-}
-dps_results: {
- key: "TestForeverEnhancement-Phase1-AllItems-Champion'sStormcaller"
- value: {
-  dps: 626.96161
-  tps: 503.71136
- }
-}
-dps_results: {
- key: "TestForeverEnhancement-Phase1-AllItems-GiftoftheGatheringStorm"
- value: {
-  dps: 593.86577
-  tps: 485.8478
- }
-}
-dps_results: {
- key: "TestForeverEnhancement-Phase1-AllItems-Stormcaller'sGarb"
- value: {
-  dps: 659.36792
-  tps: 527.72535
- }
-}
-dps_results: {
- key: "TestForeverEnhancement-Phase1-AllItems-TheEarthfury"
- value: {
-  dps: 587.65557
-  tps: 476.56724
- }
-}
-dps_results: {
- key: "TestForeverEnhancement-Phase1-AllItems-TheFiveThunders"
- value: {
-  dps: 613.27363
-  tps: 496.75747
- }
-}
-dps_results: {
- key: "TestForeverEnhancement-Phase1-AllItems-TheTenStorms"
- value: {
-  dps: 664.58879
-  tps: 532.06982
- }
-}
-dps_results: {
- key: "TestForeverEnhancement-Phase1-AllItems-Warlord'sEarthshaker"
- value: {
-  dps: 652.6323
-  tps: 525.04184
+  dps: 559.03115
+  tps: 607.2137
  }
 }
 dps_results: {
  key: "TestForeverEnhancement-Phase1-Average-Default"
  value: {
-  dps: 661.69828
-  tps: 526.86701
+  dps: 604.74657
+  tps: 652.58421
  }
 }
 dps_results: {
- key: "TestForeverEnhancement-Phase1-Settings-Dwarf-launch-Sync Auto-default-FullBuffs-P1-Consumes-LongMultiTarget"
+ key: "TestForeverEnhancement-Phase1-Settings-Dwarf-forever_enhancement-Default-default-FullBuffs-P1-Consumes-LongMultiTarget"
  value: {
-  dps: 222.32755
-  tps: 438.01843
+  dps: 584.02818
+  tps: 973.84981
  }
 }
 dps_results: {
- key: "TestForeverEnhancement-Phase1-Settings-Dwarf-launch-Sync Auto-default-FullBuffs-P1-Consumes-LongSingleTarget"
+ key: "TestForeverEnhancement-Phase1-Settings-Dwarf-forever_enhancement-Default-default-FullBuffs-P1-Consumes-LongSingleTarget"
  value: {
-  dps: 180.71215
-  tps: 160.25281
+  dps: 215.74468
+  tps: 244.69081
  }
 }
 dps_results: {
- key: "TestForeverEnhancement-Phase1-Settings-Dwarf-launch-Sync Auto-default-FullBuffs-P1-Consumes-ShortSingleTarget"
+ key: "TestForeverEnhancement-Phase1-Settings-Dwarf-forever_enhancement-Default-default-FullBuffs-P1-Consumes-ShortSingleTarget"
  value: {
-  dps: 235.4264
-  tps: 233.24519
+  dps: 297.43318
+  tps: 373.52584
  }
 }
 dps_results: {
- key: "TestForeverEnhancement-Phase1-Settings-Dwarf-launch-Sync Auto-default-NoBuffs-P1-Consumes-LongMultiTarget"
+ key: "TestForeverEnhancement-Phase1-Settings-Dwarf-forever_enhancement-Default-default-NoBuffs-P1-Consumes-LongMultiTarget"
  value: {
-  dps: 139.89991
-  tps: 316.14236
+  dps: 361.86238
+  tps: 661.62165
  }
 }
 dps_results: {
- key: "TestForeverEnhancement-Phase1-Settings-Dwarf-launch-Sync Auto-default-NoBuffs-P1-Consumes-LongSingleTarget"
+ key: "TestForeverEnhancement-Phase1-Settings-Dwarf-forever_enhancement-Default-default-NoBuffs-P1-Consumes-LongSingleTarget"
  value: {
-  dps: 108.31044
-  tps: 97.22362
+  dps: 122.68698
+  tps: 141.94694
  }
 }
 dps_results: {
- key: "TestForeverEnhancement-Phase1-Settings-Dwarf-launch-Sync Auto-default-NoBuffs-P1-Consumes-ShortSingleTarget"
+ key: "TestForeverEnhancement-Phase1-Settings-Dwarf-forever_enhancement-Default-default-NoBuffs-P1-Consumes-ShortSingleTarget"
  value: {
-  dps: 176.75398
-  tps: 182.01614
+  dps: 203.09829
+  tps: 259.53276
  }
 }
 dps_results: {
  key: "TestForeverEnhancement-Phase1-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 492.40946
-  tps: 405.00104
+  dps: 475.63504
+  tps: 521.40926
  }
 }

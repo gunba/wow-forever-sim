@@ -75,6 +75,7 @@ type IntentContext struct {
 type Intent struct {
 	Mode    string         `json:"mode"`
 	Source  string         `json:"source"`
+	Reason  string         `json:"reason,omitempty"`
 	Context *IntentContext `json:"context,omitempty"`
 	Weights *IntentWeights `json:"weights,omitempty"`
 	Threat  *IntentThreat  `json:"threat,omitempty"`

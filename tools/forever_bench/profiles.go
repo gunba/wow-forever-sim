@@ -145,7 +145,10 @@ func (b build) player(race proto.Race) *proto.Player {
 		core.WithSpec(p, &proto.Player_ElementalShaman{ElementalShaman: &proto.ElementalShaman{Options: &proto.ElementalShaman_Options{}}})
 	case "enhancement":
 		p.DistanceFromTarget = 5
-		core.WithSpec(p, &proto.Player_EnhancementShaman{EnhancementShaman: &proto.EnhancementShaman{Options: &proto.EnhancementShaman_Options{}}})
+		// Forever imbues have their own enchant slot, so Windfury Weapon sits beside the weapon stone.
+		core.WithSpec(p, &proto.Player_EnhancementShaman{EnhancementShaman: &proto.EnhancementShaman{Options: &proto.EnhancementShaman_Options{
+			MainHandImbue: proto.ShamanWeaponImbue_WindfuryImbue,
+		}}})
 	case "beast_mastery", "marksmanship", "survival":
 		p.DistanceFromTarget = 12
 		if b.modelKey() == "survival" {
@@ -251,11 +254,7 @@ func (b build) consumes(race proto.Race) *proto.Consumes {
 		c.ZanzaBuff, c.Food = proto.ZanzaBuff_ROIDS, proto.Food_FoodBlessSunfruit
 		c.FirePowerBuff, c.FrostPowerBuff = proto.FirePowerBuff_ElixirOfFirepower, proto.FrostPowerBuff_FrostPowerBuffUnknown
 		c.DragonBreathChili = true
-		if b.Key == "enhancement" {
-			c.MainHandImbue, c.OffHandImbue = proto.WeaponImbue_WindfuryWeapon, proto.WeaponImbue_WeaponImbueUnknown
-		} else {
-			c.MainHandImbue = proto.WeaponImbue_ElementalSharpeningStone
-		}
+		c.MainHandImbue = proto.WeaponImbue_ElementalSharpeningStone
 		if physicalRet {
 			c.Flask = proto.Flask_FlaskUnknown
 			c.SpellPowerBuff = proto.SpellPowerBuff_SpellPowerBuffUnknown

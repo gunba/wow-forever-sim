@@ -30,7 +30,7 @@ func (druid *Druid) registerSwipeBearSpell() {
 	numHits := min(3, druid.Env.GetNumTargets())
 	results := make([]*core.SpellResult, numHits)
 
-	switch druid.Ranged().ID {
+	switch druid.Ranged().EffectID() {
 	case IdolOfBrutality:
 		rageCost -= 3
 	}

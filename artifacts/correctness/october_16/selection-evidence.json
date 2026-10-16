@@ -1,0 +1,1930 @@
+{
+ "gear": {
+  "search": {
+   "seed": 1793710101,
+   "screen": 100,
+   "validate": 2000,
+   "passes": 5,
+   "iterations": 5000,
+   "profiles": "All 184 DPS profiles on the final engine, starting from the new relic, imbue, rotation and talent selections; Feral re-searched after Rake scaling. Tanks keep their guarded selections, with the relic slot moved to real relics.",
+   "completed": 184,
+   "unconverged": [],
+   "changes": 28
+  },
+  "confirmation": [
+   {
+    "seed": 1793910001,
+    "rule": "retain if the two-seed mean gain exceeds 1.96 x the summed standard errors",
+    "selections": [
+     {
+      "Key": "balance",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "balance",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "balance",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "balance",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "elemental",
+      "Race": "Orc",
+      "Decision": "retain",
+      "BaselineDPS": 526.2551328432387,
+      "CandidateDPS": 533.8546158789964,
+      "GainDPS": 7.5994830357576575,
+      "GainPercent": 1.4440682021853832,
+      "Conservative95BoundDPS": 0.9750242599835798
+     },
+     {
+      "Key": "elemental",
+      "Race": "Tauren",
+      "Decision": "retain",
+      "BaselineDPS": 524.167107163528,
+      "CandidateDPS": 531.545832180273,
+      "GainDPS": 7.378725016744966,
+      "GainPercent": 1.4077047025468872,
+      "Conservative95BoundDPS": 0.990381252528287
+     },
+     {
+      "Key": "elemental",
+      "Race": "Troll",
+      "Decision": "retain",
+      "BaselineDPS": 518.8401868741466,
+      "CandidateDPS": 526.3063533859761,
+      "GainDPS": 7.466166511829442,
+      "GainPercent": 1.439010836228938,
+      "Conservative95BoundDPS": 0.9547434529338326
+     },
+     {
+      "Key": "elemental",
+      "Race": "Windshaper",
+      "Decision": "retain",
+      "BaselineDPS": 516.923586622486,
+      "CandidateDPS": 525.4950012116217,
+      "GainDPS": 8.571414589135657,
+      "GainPercent": 1.658158925411047,
+      "Conservative95BoundDPS": 0.9721564862131071
+     },
+     {
+      "Key": "elemental",
+      "Race": "Dwarf",
+      "Decision": "retain",
+      "BaselineDPS": 524.743425004742,
+      "CandidateDPS": 532.1430915515078,
+      "GainDPS": 7.399666546765843,
+      "GainPercent": 1.410149454792878,
+      "Conservative95BoundDPS": 0.9842632501220065
+     },
+     {
+      "Key": "stormcaller",
+      "Race": "Orc",
+      "Decision": "retain",
+      "BaselineDPS": 462.1663188869982,
+      "CandidateDPS": 468.9187553810956,
+      "GainDPS": 6.752436494097367,
+      "GainPercent": 1.4610403697004084,
+      "Conservative95BoundDPS": 0.8346261107529319
+     },
+     {
+      "Key": "stormcaller",
+      "Race": "Tauren",
+      "Decision": "retain",
+      "BaselineDPS": 466.69286266011966,
+      "CandidateDPS": 473.449868577864,
+      "GainDPS": 6.757005917744323,
+      "GainPercent": 1.447848565591901,
+      "Conservative95BoundDPS": 0.8539630555610161
+     },
+     {
+      "Key": "stormcaller",
+      "Race": "Troll",
+      "Decision": "retain",
+      "BaselineDPS": 455.8929680392202,
+      "CandidateDPS": 462.0000169123201,
+      "GainDPS": 6.107048873099927,
+      "GainPercent": 1.3395795288017125,
+      "Conservative95BoundDPS": 0.809675097756236
+     },
+     {
+      "Key": "stormcaller",
+      "Race": "Windshaper",
+      "Decision": "retain",
+      "BaselineDPS": 453.51374251929474,
+      "CandidateDPS": 461.0531116930471,
+      "GainDPS": 7.539369173752334,
+      "GainPercent": 1.6624345564195493,
+      "Conservative95BoundDPS": 0.8397578688834341
+     },
+     {
+      "Key": "stormcaller",
+      "Race": "Dwarf",
+      "Decision": "retain",
+      "BaselineDPS": 462.19303304487096,
+      "CandidateDPS": 468.8046956420369,
+      "GainDPS": 6.611662597165946,
+      "GainPercent": 1.430498108898164,
+      "Conservative95BoundDPS": 0.8483371092232669
+     },
+     {
+      "Key": "enhancement",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "enhancement",
+      "Race": "Tauren",
+      "Decision": "retain",
+      "BaselineDPS": 812.7043097403915,
+      "CandidateDPS": 814.7287801054781,
+      "GainDPS": 2.024470365086586,
+      "GainPercent": 0.2491029444316935,
+      "Conservative95BoundDPS": 1.6226752235468953
+     },
+     {
+      "Key": "enhancement",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "enhancement",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "enhancement",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "beast_mastery",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "marksmanship",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "survival",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fire",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "frost",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "frost",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "frost",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "frost",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "frost",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "frost",
+      "Race": "High Order",
+      "Decision": "retain",
+      "BaselineDPS": 631.1982671243027,
+      "CandidateDPS": 634.0603535330432,
+      "GainDPS": 2.862086408740538,
+      "GainPercent": 0.45343698768059254,
+      "Conservative95BoundDPS": 1.139549959675187
+     },
+     {
+      "Key": "retribution",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "retribution",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "retribution",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "shadow",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "smite",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Troll",
+      "Decision": "retain",
+      "BaselineDPS": 752.189235315391,
+      "CandidateDPS": 754.3568560008689,
+      "GainDPS": 2.167620685477914,
+      "GainPercent": 0.2881749144640492,
+      "Conservative95BoundDPS": 0.8787529209308219
+     },
+     {
+      "Key": "combat",
+      "Race": "Undead",
+      "Decision": "retain",
+      "BaselineDPS": 757.7954148947192,
+      "CandidateDPS": 759.7535876230396,
+      "GainDPS": 1.9581727283203918,
+      "GainPercent": 0.2584038765386884,
+      "Conservative95BoundDPS": 0.8695521092166814
+     },
+     {
+      "Key": "combat",
+      "Race": "Windshaper",
+      "Decision": "retain",
+      "BaselineDPS": 772.1758009812124,
+      "CandidateDPS": 773.8683028276033,
+      "GainDPS": 1.6925018463908827,
+      "GainPercent": 0.21918607708765306,
+      "Conservative95BoundDPS": 0.8944495351327875
+     },
+     {
+      "Key": "combat",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "combat",
+      "Race": "High Order",
+      "Decision": "retain",
+      "BaselineDPS": 772.1758009812124,
+      "CandidateDPS": 773.8683028276033,
+      "GainDPS": 1.6925018463908827,
+      "GainPercent": 0.21918607708765306,
+      "Conservative95BoundDPS": 0.8944495351327875
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "mutilate",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "subtlety",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "demonology",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "demonology",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "demonology",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "demonology",
+      "Race": "Human",
+      "Decision": "retain",
+      "BaselineDPS": 919.6009173507232,
+      "CandidateDPS": 921.9775844935454,
+      "GainDPS": 2.376667142822157,
+      "GainPercent": 0.25844549499462155,
+      "Conservative95BoundDPS": 1.1558765331273715
+     },
+     {
+      "Key": "demonology",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "affliction",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "affliction",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "affliction",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "affliction",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "affliction",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "ds_ruin",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "ds_ruin",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "ds_ruin",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "ds_ruin",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "ds_ruin",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "destruction",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "destruction",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "destruction",
+      "Race": "Undead",
+      "Decision": "retain",
+      "BaselineDPS": 809.7466766616712,
+      "CandidateDPS": 811.2525346491113,
+      "GainDPS": 1.5058579874400948,
+      "GainPercent": 0.18596655359528855,
+      "Conservative95BoundDPS": 0.9188137780853702
+     },
+     {
+      "Key": "destruction",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "destruction",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Undead",
+      "Decision": "retain",
+      "BaselineDPS": 959.6980022916271,
+      "CandidateDPS": 962.5029551295086,
+      "GainDPS": 2.804952837881501,
+      "GainPercent": 0.29227453127792896,
+      "Conservative95BoundDPS": 1.4119513922215414
+     },
+     {
+      "Key": "fury",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Human",
+      "Decision": "retain",
+      "BaselineDPS": 965.7453623630067,
+      "CandidateDPS": 968.8317985035526,
+      "GainDPS": 3.0864361405458567,
+      "GainPercent": 0.3195910910712424,
+      "Conservative95BoundDPS": 1.4171007658914279
+     },
+     {
+      "Key": "fury",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "Gnome",
+      "Decision": "retain",
+      "BaselineDPS": 954.2580975423109,
+      "CandidateDPS": 956.8207587423294,
+      "GainDPS": 2.5626612000185105,
+      "GainPercent": 0.268550113079327,
+      "Conservative95BoundDPS": 1.424232438364893
+     },
+     {
+      "Key": "fury",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_sunder",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arms",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Windshaper",
+      "Decision": "retain",
+      "BaselineDPS": 961.6733964513498,
+      "CandidateDPS": 963.2264878023707,
+      "GainDPS": 1.5530913510208393,
+      "GainPercent": 0.16149883700140485,
+      "Conservative95BoundDPS": 1.0581980089267318
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Human",
+      "Decision": "retain",
+      "BaselineDPS": 958.7684655003085,
+      "CandidateDPS": 962.4398372675818,
+      "GainDPS": 3.6713717672732855,
+      "GainPercent": 0.38292579484844397,
+      "Conservative95BoundDPS": 1.0872310476428173
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "Troll",
+      "Decision": "retain",
+      "BaselineDPS": 950.5920327737983,
+      "CandidateDPS": 955.2106634741355,
+      "GainDPS": 4.618630700337121,
+      "GainPercent": 0.48586886288748904,
+      "Conservative95BoundDPS": 1.0694272337645458
+     },
+     {
+      "Key": "pet_melee",
+      "Race": "High Order",
+      "Decision": "retain",
+      "BaselineDPS": 961.6733964513498,
+      "CandidateDPS": 963.2264878023707,
+      "GainDPS": 1.5530913510208393,
+      "GainPercent": 0.16149883700140485,
+      "Conservative95BoundDPS": 1.0581980089267318
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "Human",
+      "Decision": "retain",
+      "BaselineDPS": 851.2350544557389,
+      "CandidateDPS": 855.816963470317,
+      "GainDPS": 4.581909014578059,
+      "GainPercent": 0.5382660160192335,
+      "Conservative95BoundDPS": 1.7768711412681313
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "arcane_frost",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "fury_2h",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "retribution_physical",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "retribution_physical",
+      "Race": "Human",
+      "Decision": "retain",
+      "BaselineDPS": 942.956109860299,
+      "CandidateDPS": 948.9324148796884,
+      "GainDPS": 5.976305019389429,
+      "GainPercent": 0.6337840072190456,
+      "Conservative95BoundDPS": 1.6643600386190593
+     },
+     {
+      "Key": "retribution_physical",
+      "Race": "Dwarf",
+      "Decision": "retain",
+      "BaselineDPS": 938.3056873769458,
+      "CandidateDPS": 944.5188345457602,
+      "GainDPS": 6.21314716881443,
+      "GainPercent": 0.6621666320901688,
+      "Conservative95BoundDPS": 1.6693618016789338
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Orc",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Troll",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "tank_warrior",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "protection_paladin",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "protection_paladin",
+      "Race": "Human",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "protection_paladin",
+      "Race": "Undead",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral_tank_druid",
+      "Race": "High Order",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral_tank_druid",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral_tank_druid",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+     },
+     {
+      "Key": "feral_tank_druid",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+     }
+    ]
+   }
+  ]
+ },
+ "talents": {
+  "method": "Legal one-point reallocations screened at 250 iterations, the five best confirmed at 2,000 iterations on a separate seed; a move is kept above 2.5 combined standard errors; up to four rounds. One representative race per build; the result applies to every race of the build (Frost takes the Orc result).",
+  "builds": [
+   {
+    "Key": "feral",
+    "Race": "Night Elf",
+    "Engine": "before Rake Attack Power scaling",
+    "Start": "050022-35210032021032212041-053",
+    "Final": "05002-25210032021032212051-055",
+    "Rounds": 4,
+    "Screened": 440,
+    "Validated": [
+     {
+      "Talents": "050022-35210032021032212041-053",
+      "DPS": 761.8287077424643,
+      "StandardError": 0.4110942959843711,
+      "Round": 1,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "050021-35210032021032212051-053",
+      "DPS": 769.9069329442818,
+      "StandardError": 0.41619904025475085,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050022-35200032021032212051-053",
+      "DPS": 769.9069329442818,
+      "StandardError": 0.41619904025475085,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050022-35110032021032212051-053",
+      "DPS": 769.9069329442818,
+      "StandardError": 0.41619904025475085,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050022-25210032021032212051-053",
+      "DPS": 769.9069329442818,
+      "StandardError": 0.41619904025475085,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050022-25210032021032212041-054",
+      "DPS": 769.2251029632646,
+      "StandardError": 0.41508550274324707,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050021-35210032021032212051-053",
+      "DPS": 769.9177437528568,
+      "StandardError": 0.4161662828167523,
+      "Round": 2,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "05002-35210032021032212051-054",
+      "DPS": 777.3926733038555,
+      "StandardError": 0.4202067321633534,
+      "Round": 2,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050021-25210032021032212051-054",
+      "DPS": 777.3926733038555,
+      "StandardError": 0.4202067321633534,
+      "Round": 2,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050021-35110032021032212051-054",
+      "DPS": 777.3926733038555,
+      "StandardError": 0.4202067321633534,
+      "Round": 2,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050021-35200032021032212051-054",
+      "DPS": 777.3926733038555,
+      "StandardError": 0.4202067321633534,
+      "Round": 2,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050021-34210032021032212051-054",
+      "DPS": 774.2613976934621,
+      "StandardError": 0.42229401028548863,
+      "Round": 2,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-35210032021032212051-054",
+      "DPS": 777.4086718340438,
+      "StandardError": 0.4204980570662051,
+      "Round": 3,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "05002-25210032021032212051-055",
+      "DPS": 784.8837552170645,
+      "StandardError": 0.42454130761392267,
+      "Round": 3,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-35110032021032212051-055",
+      "DPS": 784.8837552170645,
+      "StandardError": 0.42454130761392267,
+      "Round": 3,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-35200032021032212051-055",
+      "DPS": 784.8837552170645,
+      "StandardError": 0.42454130761392267,
+      "Round": 3,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-34210032021032212051-055",
+      "DPS": 781.7159994968499,
+      "StandardError": 0.42645982638875074,
+      "Round": 3,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-35210032021031212051-055",
+      "DPS": 779.2875963135382,
+      "StandardError": 0.4001918036321216,
+      "Round": 3,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-25210032021032212051-055",
+      "DPS": 784.8809593001207,
+      "StandardError": 0.4245082493734994,
+      "Round": 4,
+      "Stage": "validate-baseline"
+     }
+    ]
+   },
+   {
+    "Key": "feral",
+    "Race": "Tauren",
+    "Engine": "before Rake Attack Power scaling",
+    "Start": "050022-35210032021032212041-053",
+    "Final": "05002-25210032021032212051-055",
+    "Rounds": 4,
+    "Screened": 440,
+    "Validated": [
+     {
+      "Talents": "050022-35210032021032212041-053",
+      "DPS": 772.0540912702622,
+      "StandardError": 0.42905703791241834,
+      "Round": 1,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "050021-35210032021032212051-053",
+      "DPS": 780.2160890383119,
+      "StandardError": 0.43438583455787494,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050022-35200032021032212051-053",
+      "DPS": 780.2160890383119,
+      "StandardError": 0.43438583455787494,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050022-35110032021032212051-053",
+      "DPS": 780.2160890383119,
+      "StandardError": 0.43438583455787494,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050022-25210032021032212051-053",
+      "DPS": 780.2160890383119,
+      "StandardError": 0.43438583455787494,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050022-25210032021032212041-054",
+      "DPS": 779.5497620592962,
+      "StandardError": 0.4332226402204455,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050021-35210032021032212051-053",
+      "DPS": 780.2202169741728,
+      "StandardError": 0.43433646553434035,
+      "Round": 2,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "05002-35210032021032212051-054",
+      "DPS": 787.7951705370301,
+      "StandardError": 0.43855332442178663,
+      "Round": 2,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050021-25210032021032212051-054",
+      "DPS": 787.7951705370301,
+      "StandardError": 0.43855332442178663,
+      "Round": 2,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050021-35110032021032212051-054",
+      "DPS": 787.7951705370301,
+      "StandardError": 0.43855332442178663,
+      "Round": 2,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050021-35200032021032212051-054",
+      "DPS": 787.7951705370301,
+      "StandardError": 0.43855332442178663,
+      "Round": 2,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "050021-35210032021031212051-054",
+      "DPS": 782.6122950433007,
+      "StandardError": 0.41625849034912493,
+      "Round": 2,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-35210032021032212051-054",
+      "DPS": 787.7988778924754,
+      "StandardError": 0.4385653650568409,
+      "Round": 3,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "05002-25210032021032212051-055",
+      "DPS": 795.3738671029795,
+      "StandardError": 0.442782339721123,
+      "Round": 3,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-35110032021032212051-055",
+      "DPS": 795.3738671029795,
+      "StandardError": 0.442782339721123,
+      "Round": 3,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-35200032021032212051-055",
+      "DPS": 795.3738671029795,
+      "StandardError": 0.442782339721123,
+      "Round": 3,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-35210032021031212051-055",
+      "DPS": 790.1455627241917,
+      "StandardError": 0.4204422582436031,
+      "Round": 3,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-34210032021032212051-055",
+      "DPS": 791.8993814736776,
+      "StandardError": 0.4442226356202162,
+      "Round": 3,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-25210032021032212051-055",
+      "DPS": 795.3540992062732,
+      "StandardError": 0.4428977914184287,
+      "Round": 4,
+      "Stage": "validate-baseline"
+     }
+    ]
+   },
+   {
+    "Key": "frost",
+    "Race": "Human",
+    "Engine": "before Rake Attack Power scaling",
+    "Start": "0500005001-03-0555003331000301251",
+    "Final": "0501005001-03-0555003331000301241",
+    "Rounds": 2,
+    "Screened": 238,
+    "Validated": [
+     {
+      "Talents": "0500005001-03-0555003331000301251",
+      "DPS": 640.3967328442404,
+      "StandardError": 0.6825573451454011,
+      "Round": 1,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "0501005001-03-0555003331000301241",
+      "DPS": 643.0641087472063,
+      "StandardError": 0.6229343763108887,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "0500105001-03-0555003331000301241",
+      "DPS": 643.4058029851226,
+      "StandardError": 0.6256999411225389,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "0500015001-03-0555003331000301241",
+      "DPS": 643.4058029851226,
+      "StandardError": 0.6256999411225389,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "0500005101-03-0555003331000301241",
+      "DPS": 643.4058029851226,
+      "StandardError": 0.6256999411225389,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "0500005002-03-0555003331000301241",
+      "DPS": 643.4058029851226,
+      "StandardError": 0.6256999411225389,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "0501005001-03-0555003331000301241",
+      "DPS": 643.1014457552443,
+      "StandardError": 0.6234003101037988,
+      "Round": 2,
+      "Stage": "validate-baseline"
+     }
+    ]
+   },
+   {
+    "Key": "frost",
+    "Race": "Orc",
+    "Engine": "before Rake Attack Power scaling",
+    "Start": "0500005001-03-0555003331000301251",
+    "Final": "0500105001-03-0555003331000301241",
+    "Rounds": 2,
+    "Screened": 230,
+    "Validated": [
+     {
+      "Talents": "0500005001-03-0555003331000301251",
+      "DPS": 635.8013158275684,
+      "StandardError": 0.6810880148501651,
+      "Round": 1,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "0500105001-03-0555003331000301241",
+      "DPS": 639.2070882619562,
+      "StandardError": 0.6407064508456201,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "0500015001-03-0555003331000301241",
+      "DPS": 639.2070882619562,
+      "StandardError": 0.6407064508456201,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "0500005101-03-0555003331000301241",
+      "DPS": 639.2070882619562,
+      "StandardError": 0.6407064508456201,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "0500005002-03-0555003331000301241",
+      "DPS": 639.2070882619562,
+      "StandardError": 0.6407064508456201,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05000050011-03-0555003331000301241",
+      "DPS": 639.2070882619562,
+      "StandardError": 0.6407064508456201,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "0500105001-03-0555003331000301241",
+      "DPS": 639.2171066592207,
+      "StandardError": 0.6408481367957439,
+      "Round": 2,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "0501105001-03-0555003331000301231",
+      "DPS": 639.271260745625,
+      "StandardError": 0.5718627168969223,
+      "Round": 2,
+      "Stage": "validate"
+     }
+    ]
+   },
+   {
+    "Key": "feral",
+    "Race": "Night Elf",
+    "Engine": "with Rake Attack Power scaling and Rake in the rotation",
+    "Start": "05002-25210032021032212051-055",
+    "Final": "05002-45010032021032212051-055",
+    "Rounds": 3,
+    "Screened": 273,
+    "Validated": [
+     {
+      "Talents": "05002-25210032021032212051-055",
+      "DPS": 832.9203613954872,
+      "StandardError": 0.43658664733092317,
+      "Round": 1,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "05002-35110032021032212051-055",
+      "DPS": 835.1061650349137,
+      "StandardError": 0.44350477332861327,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-35200032021032212051-055",
+      "DPS": 835.1061650349137,
+      "StandardError": 0.44350477332861327,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-34210032021032212051-055",
+      "DPS": 831.6017048846913,
+      "StandardError": 0.44544747142012964,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-35110032021032212051-055",
+      "DPS": 835.1286689416422,
+      "StandardError": 0.44322249092795185,
+      "Round": 2,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "05002-45010032021032212051-055",
+      "DPS": 837.5648714869167,
+      "StandardError": 0.4568200762041691,
+      "Round": 2,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-45100032021032212051-055",
+      "DPS": 837.5648714869167,
+      "StandardError": 0.4568200762041691,
+      "Round": 2,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-45010032021032212051-055",
+      "DPS": 837.5449293941883,
+      "StandardError": 0.4570607279762965,
+      "Round": 3,
+      "Stage": "validate-baseline"
+     }
+    ]
+   },
+   {
+    "Key": "feral",
+    "Race": "Tauren",
+    "Engine": "with Rake Attack Power scaling and Rake in the rotation",
+    "Start": "05002-25210032021032212051-055",
+    "Final": "05002-45010032021032212051-055",
+    "Rounds": 3,
+    "Screened": 273,
+    "Validated": [
+     {
+      "Talents": "05002-25210032021032212051-055",
+      "DPS": 843.9158598898771,
+      "StandardError": 0.43319506083666554,
+      "Round": 1,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "05002-35110032021032212051-055",
+      "DPS": 845.7229139506265,
+      "StandardError": 0.4563882505849251,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-35200032021032212051-055",
+      "DPS": 845.7229139506265,
+      "StandardError": 0.4563882505849251,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-34210032021032212051-055",
+      "DPS": 842.0493440215395,
+      "StandardError": 0.4543330770261574,
+      "Round": 1,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-35110032021032212051-055",
+      "DPS": 845.7498316875921,
+      "StandardError": 0.45621919207122436,
+      "Round": 2,
+      "Stage": "validate-baseline"
+     },
+     {
+      "Talents": "05002-45010032021032212051-055",
+      "DPS": 848.41403680079,
+      "StandardError": 0.46863712910992733,
+      "Round": 2,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-45100032021032212051-055",
+      "DPS": 848.41403680079,
+      "StandardError": 0.46863712910992733,
+      "Round": 2,
+      "Stage": "validate"
+     },
+     {
+      "Talents": "05002-45010032021032212051-055",
+      "DPS": 848.3940630438129,
+      "StandardError": 0.4688196319047765,
+      "Round": 3,
+      "Stage": "validate-baseline"
+     }
+    ]
+   }
+  ]
+ },
+ "selections": {
+  "method": "Every race of each build, 5,000 iterations on seeds 1793800001 and 1793810001; mean DPS and standard error of the mean.",
+  "results": {
+   "feral": {
+    "base": {
+     "dps": 761.1190319501379,
+     "se": 0.08767940195100352,
+     "oom": 16.372571250000007,
+     "warn": 0
+    },
+    "dream_talents": {
+     "dps": 793.4982267343415,
+     "se": 0.09720065487768169,
+     "oom": 3.8134637500000057,
+     "warn": 0
+    },
+    "dream": {
+     "dps": 770.2482024536091,
+     "se": 0.09413574135917699,
+     "oom": 3.8134637500000057,
+     "warn": 0
+    }
+   },
+   "frost": {
+    "base": {
+     "dps": 607.4298874095093,
+     "se": 0.08814326287810607,
+     "oom": 0.02903239043776667,
+     "warn": 0
+    },
+    "coc": {
+     "dps": 635.1514285976062,
+     "se": 0.12229969452977361,
+     "oom": 15.438060401175914,
+     "warn": 0
+    },
+    "coc_tal_h": {
+     "dps": 637.8820539821262,
+     "se": 0.11517853121127702,
+     "oom": 9.617528520600521,
+     "warn": 0
+    },
+    "coc_tal_o": {
+     "dps": 637.8560034514217,
+     "se": 0.11444023146219301,
+     "oom": 9.597993605211894,
+     "warn": 0
+    }
+   },
+   "shadow": {
+    "base": {
+     "dps": 827.5855385786214,
+     "se": 0.0725520950655933,
+     "oom": 0,
+     "warn": 0
+    },
+    "noclip": {
+     "dps": 830.4878485195169,
+     "se": 0.07285286135614792,
+     "oom": 0,
+     "warn": 0
+    }
+   },
+   "smite": {
+    "base": {
+     "dps": 444.16716618594205,
+     "se": 0.052447764072080495,
+     "oom": 39.99166196970106,
+     "warn": 0
+    },
+    "swp": {
+     "dps": 449.79610084742853,
+     "se": 0.057565222203581096,
+     "oom": 58.69878333342284,
+     "warn": 0
+    }
+   },
+   "enhancement": {
+    "base": {
+     "dps": 804.9362036423151,
+     "se": 0.18294504361318484,
+     "oom": 5.1664165799999996e-05,
+     "warn": 0
+    },
+    "shadow_oil": {
+     "dps": 814.3617540940536,
+     "se": 0.18396927127157858,
+     "oom": 1e-05,
+     "warn": 0
+    }
+   }
+  },
+  "applied": {
+   "feral": "Idol of the Dream; talents re-optimized again with Rake (see rake)",
+   "frost": "10 yards, Cone of Cold at 5 Winter's Chill stacks, Orc talent result",
+   "shadow": "Mind Flay channelled in full",
+   "smite": "Shadow Word: Pain kept up after Holy Fire",
+   "enhancement": "Shadow Oil on the main hand with Windfury Weapon",
+   "protection_paladin": "Libram of Law (about 5 threat per second over Steadfast Libram)"
+  },
+  "kept": "Fire, Arcane and Arcane-Frost Mage, Marksmanship and Beast Mastery Hunter (Multi-Shot), Retribution and Protection Paladin (Consecration), Enhancement (Fire Nova, Maelstrom Weapon at 5), Bear relic and Feral imbue screened without a gain."
+ },
+ "rake": {
+  "method": "Feral Tauren and Night Elf, 3,000 iterations on two seeds each; DPS is the four-run mean, the interval 1.96 standard errors.",
+  "fitted": {
+   "seeds": [
+    1793510001,
+    1793610001
+   ],
+   "variants": {
+    "base (no Rake)": [
+     790.07,
+     0.35
+    ],
+    "Rake before Shifting Power": [
+     838.62,
+     0.36
+    ],
+    "Rake before Rip": [
+     838.64,
+     0.36
+    ],
+    "Rake before Shred": [
+     838.45,
+     0.36
+    ],
+    "Rake below 4 combo points": [
+     836.99,
+     0.36
+    ],
+    "Rake at 60+ Energy": [
+     825.84,
+     0.36
+    ]
+   }
+  },
+  "two_thirds_coefficients": {
+   "seeds": [
+    1793520001,
+    1793620001
+   ],
+   "variants": {
+    "base": [
+     790.52,
+     0.34
+    ],
+    "Rake before Shifting Power": [
+     814.88,
+     0.35
+    ]
+   }
+  },
+  "no_attack_power_term": {
+   "seeds": [
+    1793530001,
+    1793630001
+   ],
+   "variants": {
+    "base": [
+     790.06,
+     0.35
+    ],
+    "Rake before Shifting Power": [
+     766.85,
+     0.33
+    ]
+   }
+  },
+  "idols_and_talents_with_rake": {
+   "races": [
+    "High Order",
+    "Night Elf",
+    "Tauren",
+    "Windshaper"
+   ],
+   "seeds": [
+    1793540001,
+    1793640001
+   ],
+   "variants": {
+    "Idol of the Dream, 05002-45010032021032212051-055": [
+     847.21,
+     0.26
+    ],
+    "previous talents 05002-25210032021032212051-055": [
+     841.53,
+     0.26
+    ],
+    "Howling Idol": [
+     832.2,
+     0.24
+    ],
+    "Enraged Idol": [
+     830.47,
+     0.24
+    ],
+    "Idol of the Ursine Twins": [
+     830.47,
+     0.24
+    ],
+    "Swarming Idol": [
+     830.47,
+     0.24
+    ]
+   }
+  },
+  "bear_weaving": "Before Rake scaled, every weave variant (Enrage with Primal Bite or Lacerate, energy, cooldown and mana gates, with Mangle and Natural Shapeshifter) lost 0.4-33% on two races and two seeds (the best weaves 0.4-2.8%)."
+ }
+}

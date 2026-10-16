@@ -230,6 +230,17 @@ func (druid *Druid) RegisterFeralCatSpells() {
 	druid.registerBerserkCD()
 }
 
+// RegisterBearWeaveSpells lets a Cat APL shift into Bear Form and use the Bear abilities. Since client
+// 1.60.1.70425 Furor keeps the saved Cat Energy through Bear Form, which makes weaving a real option.
+func (druid *Druid) RegisterBearWeaveSpells() {
+	druid.registerBearFormSpell()
+	druid.registerEnrageSpell()
+	druid.registerLacerateSpell()
+	druid.registerMangleBearSpell()
+	druid.registerMaulSpell()
+	druid.registerSwipeBearSpell()
+}
+
 func (druid *Druid) RegisterFeralTankSpells() {
 	druid.registerBearFormSpell()
 	if !druid.Env.IsForever() {

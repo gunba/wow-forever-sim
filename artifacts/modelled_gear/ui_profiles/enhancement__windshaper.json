@@ -114,7 +114,7 @@
         },
         {},
         {
-          "id": 920000503
+          "id": 920001029
         }
       ]
     },
@@ -128,7 +128,7 @@
       "spellPowerBuff": "GreaterArcaneElixir",
       "firePowerBuff": "ElixirOfFirepower",
       "fillerExplosive": "ExplosiveThoriumGrenade",
-      "mainHandImbue": "WindfuryWeapon",
+      "mainHandImbue": "ShadowOil",
       "defaultPotion": "MajorManaPotion",
       "defaultConjured": "ConjuredDemonicRune",
       "dragonBreathChili": true,
@@ -464,7 +464,9 @@
     },
     "distanceFromTarget": 5,
     "enhancementShaman": {
-      "options": {}
+      "options": {
+        "mainHandImbue": "WindfuryImbue"
+      }
     }
   },
   "encounter": {

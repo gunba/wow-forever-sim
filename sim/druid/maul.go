@@ -26,7 +26,7 @@ func (druid *Druid) registerMaulSpell() {
 
 	rageCost := 15 - float64(druid.Talents.Ferocity)
 
-	switch druid.Ranged().ID {
+	switch druid.Ranged().EffectID() {
 	case IdolOfBrutality:
 		rageCost -= 3
 	}

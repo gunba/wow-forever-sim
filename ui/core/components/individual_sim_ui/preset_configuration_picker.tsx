@@ -109,10 +109,9 @@ export class PresetConfigurationPicker extends Component {
 				if (encounter.consumes) this.simUI.player.setConsumes(eventID, encounter.consumes);
 			}
 			if (options) {
-				this.simUI.player.setSpecOptions(eventID, {
-					...this.simUI.player.getSpecOptions(),
-					...options,
-				});
+				// Typed loosely: the cross product of every spec's option shapes is too large for the checker.
+				const merged: any = { ...(this.simUI.player.getSpecOptions() as object), ...(options as object) };
+				this.simUI.player.setSpecOptions(eventID, merged);
 			}
 		});
 	}

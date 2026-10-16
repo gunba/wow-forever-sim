@@ -1,0 +1,2263 @@
+{
+  "schemaVersion": 1,
+  "method": "Real relic effects with a quarter of the modeled level-65 relic stats (physical or spell allocation).",
+  "share": 0.25,
+  "items": [
+    {
+      "id": 920001001,
+      "name": "Projected: Idol of the Dream — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "inv_relics_idolofferocity",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 8,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 220606,
+      "modelReferenceItemID": 220606,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Idol of the Dream's own effect; a quarter of Physical idol's stats."
+    },
+    {
+      "id": 920001002,
+      "name": "Projected: Idol of the Dream — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "inv_relics_idolofferocity",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 8,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 220606,
+      "modelReferenceItemID": 220606,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Idol of the Dream's own effect; a quarter of Spell-power idol's stats."
+    },
+    {
+      "id": 920001003,
+      "name": "Projected: Libram of Holy Alacrity — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "inv_relics_libramofhope",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 7,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 228175,
+      "modelReferenceItemID": 228175,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Libram of Holy Alacrity's own effect; a quarter of Physical libram's stats."
+    },
+    {
+      "id": 920001004,
+      "name": "Projected: Libram of Holy Alacrity — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "inv_relics_libramofhope",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 7,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 228175,
+      "modelReferenceItemID": 228175,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Libram of Holy Alacrity's own effect; a quarter of Spell-power libram's stats."
+    },
+    {
+      "id": 920001005,
+      "name": "Projected: Totem of Thunder — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "inv_relics_totemofrebirth",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 9,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 228176,
+      "modelReferenceItemID": 228176,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Totem of Thunder's own effect; a quarter of Physical totem's stats."
+    },
+    {
+      "id": 920001006,
+      "name": "Projected: Totem of Thunder — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "inv_relics_totemofrebirth",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 9,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 228176,
+      "modelReferenceItemID": 228176,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Totem of Thunder's own effect; a quarter of Spell-power totem's stats."
+    },
+    {
+      "id": 920001007,
+      "name": "Projected: Mystic Mushroom — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "inv_mushroom_11",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 8,
+      "inventoryType": 28,
+      "classMask": 1024,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 249396,
+      "modelReferenceItemID": 249396,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Mystic Mushroom's own effect; a quarter of Physical idol's stats."
+    },
+    {
+      "id": 920001008,
+      "name": "Projected: Mystic Mushroom — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "inv_mushroom_11",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 8,
+      "inventoryType": 28,
+      "classMask": 1024,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 249396,
+      "modelReferenceItemID": 249396,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Mystic Mushroom's own effect; a quarter of Spell-power idol's stats."
+    },
+    {
+      "id": 920001009,
+      "name": "Projected: Tenets of the Silver Hand — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "inv_misc_book_13",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 7,
+      "inventoryType": 28,
+      "classMask": 2,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 249397,
+      "modelReferenceItemID": 249397,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Tenets of the Silver Hand's own effect; a quarter of Physical libram's stats."
+    },
+    {
+      "id": 920001010,
+      "name": "Projected: Tenets of the Silver Hand — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "inv_misc_book_13",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 7,
+      "inventoryType": 28,
+      "classMask": 2,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 249397,
+      "modelReferenceItemID": 249397,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Tenets of the Silver Hand's own effect; a quarter of Spell-power libram's stats."
+    },
+    {
+      "id": 920001011,
+      "name": "Projected: Polished Driftwood Icon — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "spell_shaman_totemrecall",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 9,
+      "inventoryType": 28,
+      "classMask": 64,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 249398,
+      "modelReferenceItemID": 249398,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Polished Driftwood Icon's own effect; a quarter of Physical totem's stats."
+    },
+    {
+      "id": 920001012,
+      "name": "Projected: Polished Driftwood Icon — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "spell_shaman_totemrecall",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 9,
+      "inventoryType": 28,
+      "classMask": 64,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 249398,
+      "modelReferenceItemID": 249398,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Polished Driftwood Icon's own effect; a quarter of Spell-power totem's stats."
+    },
+    {
+      "id": 920001013,
+      "name": "Projected: Talons of Wrath — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "spell_nature_natureswrath",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 8,
+      "inventoryType": 28,
+      "classMask": 1024,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 249441,
+      "modelReferenceItemID": 249441,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Talons of Wrath's own effect; a quarter of Physical idol's stats."
+    },
+    {
+      "id": 920001014,
+      "name": "Projected: Talons of Wrath — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "spell_nature_natureswrath",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 8,
+      "inventoryType": 28,
+      "classMask": 1024,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 249441,
+      "modelReferenceItemID": 249441,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Talons of Wrath's own effect; a quarter of Spell-power idol's stats."
+    },
+    {
+      "id": 920001015,
+      "name": "Projected: Libram of Invocation — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "inv_relics_libramofhope",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 7,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 249442,
+      "modelReferenceItemID": 249442,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Libram of Invocation's own effect; a quarter of Physical libram's stats."
+    },
+    {
+      "id": 920001016,
+      "name": "Projected: Libram of Invocation — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "inv_relics_libramofhope",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 7,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 249442,
+      "modelReferenceItemID": 249442,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Libram of Invocation's own effect; a quarter of Spell-power libram's stats."
+    },
+    {
+      "id": 920001017,
+      "name": "Projected: Totem of Ancestral Protection — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "inv_relics_totemofrage",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 9,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 249443,
+      "modelReferenceItemID": 249443,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Totem of Ancestral Protection's own effect; a quarter of Physical totem's stats."
+    },
+    {
+      "id": 920001018,
+      "name": "Projected: Totem of Ancestral Protection — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "inv_relics_totemofrage",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 9,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 249443,
+      "modelReferenceItemID": 249443,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Totem of Ancestral Protection's own effect; a quarter of Spell-power totem's stats."
+    },
+    {
+      "id": 920001019,
+      "name": "Projected: Howling Idol — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "trade_archaeology_catstatueemeraldeyes",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 8,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 272427,
+      "modelReferenceItemID": 272427,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Howling Idol's own effect; a quarter of Physical idol's stats."
+    },
+    {
+      "id": 920001020,
+      "name": "Projected: Howling Idol — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "trade_archaeology_catstatueemeraldeyes",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 8,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 272427,
+      "modelReferenceItemID": 272427,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Howling Idol's own effect; a quarter of Spell-power idol's stats."
+    },
+    {
+      "id": 920001021,
+      "name": "Projected: Enraged Idol — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "talentspec_druid_feral_bear",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 8,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 272428,
+      "modelReferenceItemID": 272428,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Enraged Idol's own effect; a quarter of Physical idol's stats."
+    },
+    {
+      "id": 920001022,
+      "name": "Projected: Enraged Idol — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "talentspec_druid_feral_bear",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 8,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 272428,
+      "modelReferenceItemID": 272428,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Enraged Idol's own effect; a quarter of Spell-power idol's stats."
+    },
+    {
+      "id": 920001023,
+      "name": "Projected: Idol of Synthesis — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "inv_elemental_primal_life",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 8,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 272429,
+      "modelReferenceItemID": 272429,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Idol of Synthesis's own effect; a quarter of Physical idol's stats."
+    },
+    {
+      "id": 920001024,
+      "name": "Projected: Idol of Synthesis — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "inv_elemental_primal_life",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 8,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 272429,
+      "modelReferenceItemID": 272429,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Idol of Synthesis's own effect; a quarter of Spell-power idol's stats."
+    },
+    {
+      "id": 920001025,
+      "name": "Projected: Swarming Idol — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "trade_archaeology_insect-in-amber",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 8,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 272430,
+      "modelReferenceItemID": 272430,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Swarming Idol's own effect; a quarter of Physical idol's stats."
+    },
+    {
+      "id": 920001026,
+      "name": "Projected: Swarming Idol — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "trade_archaeology_insect-in-amber",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 8,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 272430,
+      "modelReferenceItemID": 272430,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Swarming Idol's own effect; a quarter of Spell-power idol's stats."
+    },
+    {
+      "id": 920001027,
+      "name": "Projected: Tidal Totem — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "ability_shaman_manatidetotem",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 9,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 272431,
+      "modelReferenceItemID": 272431,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Tidal Totem's own effect; a quarter of Physical totem's stats."
+    },
+    {
+      "id": 920001028,
+      "name": "Projected: Tidal Totem — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "ability_shaman_manatidetotem",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 9,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 272431,
+      "modelReferenceItemID": 272431,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Tidal Totem's own effect; a quarter of Spell-power totem's stats."
+    },
+    {
+      "id": 920001029,
+      "name": "Projected: Totem of the Storm — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "spell_shaman_stormtotem",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 9,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 272432,
+      "modelReferenceItemID": 272432,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Totem of the Storm's own effect; a quarter of Physical totem's stats."
+    },
+    {
+      "id": 920001030,
+      "name": "Projected: Totem of the Storm — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "spell_shaman_stormtotem",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 9,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 272432,
+      "modelReferenceItemID": 272432,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Totem of the Storm's own effect; a quarter of Spell-power totem's stats."
+    },
+    {
+      "id": 920001031,
+      "name": "Projected: Burning Totem — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "spell_fire_totemofwrath",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 9,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 272433,
+      "modelReferenceItemID": 272433,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Burning Totem's own effect; a quarter of Physical totem's stats."
+    },
+    {
+      "id": 920001032,
+      "name": "Projected: Burning Totem — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "spell_fire_totemofwrath",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 9,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 272433,
+      "modelReferenceItemID": 272433,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Burning Totem's own effect; a quarter of Spell-power totem's stats."
+    },
+    {
+      "id": 920001033,
+      "name": "Projected: Sentinel's Libram — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "inv_misc_book_12",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 7,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 272434,
+      "modelReferenceItemID": 272434,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Sentinel's Libram's own effect; a quarter of Physical libram's stats."
+    },
+    {
+      "id": 920001034,
+      "name": "Projected: Sentinel's Libram — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "inv_misc_book_12",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 7,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 272434,
+      "modelReferenceItemID": 272434,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Sentinel's Libram's own effect; a quarter of Spell-power libram's stats."
+    },
+    {
+      "id": 920001035,
+      "name": "Projected: Libram of Law — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "inv_misc_book_04",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 7,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 272435,
+      "modelReferenceItemID": 272435,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Libram of Law's own effect; a quarter of Physical libram's stats."
+    },
+    {
+      "id": 920001036,
+      "name": "Projected: Libram of Law — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "inv_misc_book_04",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 7,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 272435,
+      "modelReferenceItemID": 272435,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Libram of Law's own effect; a quarter of Spell-power libram's stats."
+    },
+    {
+      "id": 920001037,
+      "name": "Projected: Libram of Economy — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "inv_misc_book_11",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 7,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 272436,
+      "modelReferenceItemID": 272436,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Libram of Economy's own effect; a quarter of Physical libram's stats."
+    },
+    {
+      "id": 920001038,
+      "name": "Projected: Libram of Economy — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "inv_misc_book_11",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 3,
+      "class": 4,
+      "subclass": 7,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 272436,
+      "modelReferenceItemID": 272436,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Libram of Economy's own effect; a quarter of Spell-power libram's stats."
+    },
+    {
+      "id": 920001039,
+      "name": "Projected: Steadfast Libram — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "inv_relics_libramofgrace",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 4,
+      "class": 4,
+      "subclass": 7,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 279247,
+      "modelReferenceItemID": 279247,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Steadfast Libram's own effect; a quarter of Physical libram's stats."
+    },
+    {
+      "id": 920001040,
+      "name": "Projected: Steadfast Libram — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "inv_relics_libramofgrace",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 4,
+      "class": 4,
+      "subclass": 7,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 279247,
+      "modelReferenceItemID": 279247,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Steadfast Libram's own effect; a quarter of Spell-power libram's stats."
+    },
+    {
+      "id": 920001041,
+      "name": "Projected: Libram of Infusion — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "inv_misc_book_13",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 4,
+      "class": 4,
+      "subclass": 7,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 279248,
+      "modelReferenceItemID": 279248,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Libram of Infusion's own effect; a quarter of Physical libram's stats."
+    },
+    {
+      "id": 920001042,
+      "name": "Projected: Libram of Infusion — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "inv_misc_book_13",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 4,
+      "class": 4,
+      "subclass": 7,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 279248,
+      "modelReferenceItemID": 279248,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Libram of Infusion's own effect; a quarter of Spell-power libram's stats."
+    },
+    {
+      "id": 920001043,
+      "name": "Projected: Totem of Urgency — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "inv_ability_totemicshaman_surgingtotem",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 4,
+      "class": 4,
+      "subclass": 9,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 279249,
+      "modelReferenceItemID": 279249,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Totem of Urgency's own effect; a quarter of Physical totem's stats."
+    },
+    {
+      "id": 920001044,
+      "name": "Projected: Totem of Urgency — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "inv_ability_totemicshaman_surgingtotem",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 4,
+      "class": 4,
+      "subclass": 9,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 279249,
+      "modelReferenceItemID": 279249,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Totem of Urgency's own effect; a quarter of Spell-power totem's stats."
+    },
+    {
+      "id": 920001045,
+      "name": "Projected: Idol of Swiftness — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "ability_druid_nourish",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 4,
+      "class": 4,
+      "subclass": 8,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 279250,
+      "modelReferenceItemID": 279250,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Idol of Swiftness's own effect; a quarter of Physical idol's stats."
+    },
+    {
+      "id": 920001046,
+      "name": "Projected: Idol of Swiftness — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "ability_druid_nourish",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 4,
+      "class": 4,
+      "subclass": 8,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 279250,
+      "modelReferenceItemID": 279250,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Idol of Swiftness's own effect; a quarter of Spell-power idol's stats."
+    },
+    {
+      "id": 920001047,
+      "name": "Projected: Idol of the Ursine Twins — Relic [+2 Sta, +1 Agi, +6.5 AP]",
+      "icon": "inv_misc_idol_04",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 4,
+      "class": 4,
+      "subclass": 8,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Agility": 1.0,
+        "AttackPower": 6.5
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 279251,
+      "modelReferenceItemID": 279251,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "physical",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Idol of the Ursine Twins's own effect; a quarter of Physical idol's stats."
+    },
+    {
+      "id": 920001048,
+      "name": "Projected: Idol of the Ursine Twins — Relic [+2 Sta, +1.75 Int, +2.25 SP]",
+      "icon": "inv_misc_idol_04",
+      "itemLevel": 65,
+      "requiredLevel": 60,
+      "quality": 4,
+      "class": 4,
+      "subclass": 8,
+      "inventoryType": 28,
+      "classMask": 32767,
+      "raceMasks": [
+        -1,
+        -1
+      ],
+      "requiredSkill": 0,
+      "requiredSkillRank": 0,
+      "requiredAbility": 0,
+      "maxCount": 0,
+      "limitCategory": 0,
+      "setId": 0,
+      "sources": [
+        {
+          "kind": "synthetic"
+        }
+      ],
+      "effects": [],
+      "stats": {
+        "Stamina": 2.0,
+        "Intellect": 1.75,
+        "SpellPower": 2.25
+      },
+      "armor": 0,
+      "clientStatRecord": false,
+      "statSource": "real-relic-effect-plus-quarter-modeled-stats",
+      "synthetic": true,
+      "modelVersion": 2,
+      "benchmarkEligible": true,
+      "effectItemId": 279251,
+      "modelReferenceItemID": 279251,
+      "modelSourceSlot": "Relic",
+      "modelAllocation": "spell",
+      "modelBudgetRatio": 0.25,
+      "modelPolicy": "Real relic effect plus a quarter of the modeled relic stats",
+      "modelConfidence": "unverified",
+      "modelNotes": "Idol of the Ursine Twins's own effect; a quarter of Spell-power idol's stats."
+    }
+  ]
+}

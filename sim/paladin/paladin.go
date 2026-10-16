@@ -248,10 +248,10 @@ func (paladin *Paladin) applySeal(newSeal *core.Aura, sealSpell *core.Spell, jud
 }
 
 func (paladin *Paladin) getLibramSealCostReduction() float64 {
-	// if paladin.Ranged().ID == LibramOfBenediction {
+	// if paladin.Ranged().EffectID() == LibramOfBenediction {
 	// 	return 10
 	// }
-	if paladin.Ranged().ID == LibramOfHope {
+	if paladin.Ranged().EffectID() == LibramOfHope {
 		return 20
 	}
 	return 0

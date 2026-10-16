@@ -17,11 +17,15 @@ const (
 	SpellFlagLightning = core.SpellFlagAgentReserved3
 )
 
-func NewShaman(character *core.Character, talents string) *Shaman {
+// mainHandImbue and offHandImbue are the Forever spec-option imbues. Forever imbues have their own enchant
+// slot (client effect 360) next to the temporary weapon enchant (effect 54: stones, weightstones and oils),
+// so they no longer share Consumes. A legacy profile that still names a Shaman imbue in Consumes keeps it.
+func NewShaman(character *core.Character, talents string, mainHandImbue, offHandImbue proto.ShamanWeaponImbue) *Shaman {
 	shaman := &Shaman{
 		Character: *character,
 		Talents:   &proto.ShamanTalents{},
 	}
+	shaman.optionImbues = [2]proto.ShamanWeaponImbue{mainHandImbue, offHandImbue}
 
 	core.FillTalentsProto(shaman.Talents.ProtoReflect(), talents, TalentTreeSizes)
 	shaman.EnableManaBar()
@@ -34,25 +38,58 @@ func NewShaman(character *core.Character, talents string) *Shaman {
 	shaman.AddStatDependency(stats.BonusArmor, stats.Armor, 1)
 	shaman.PseudoStats.BlockValuePerStrength = .05 // 20 str = 1 block
 
-	shaman.ApplyRockbiterImbue(shaman.getImbueProcMask(proto.WeaponImbue_RockbiterWeapon))
-	shaman.ApplyFlametongueImbue(shaman.getImbueProcMask(proto.WeaponImbue_FlametongueWeapon))
-	shaman.ApplyFrostbrandImbue(shaman.getImbueProcMask(proto.WeaponImbue_FrostbrandWeapon))
-	shaman.ApplyWindfuryImbue(shaman.getImbueProcMask(proto.WeaponImbue_WindfuryWeapon))
-
 	guardians.ConstructGuardians(&shaman.Character)
 
 	return shaman
 }
 
+var shamanImbues = map[proto.ShamanWeaponImbue]proto.WeaponImbue{
+	proto.ShamanWeaponImbue_RockbiterImbue:   proto.WeaponImbue_RockbiterWeapon,
+	proto.ShamanWeaponImbue_FlametongueImbue: proto.WeaponImbue_FlametongueWeapon,
+	proto.ShamanWeaponImbue_FrostbrandImbue:  proto.WeaponImbue_FrostbrandWeapon,
+	proto.ShamanWeaponImbue_WindfuryImbue:    proto.WeaponImbue_WindfuryWeapon,
+}
+
+// classImbue returns the Shaman imbue on one hand: the spec option if set, otherwise a Shaman imbue
+// left in the Consumes weapon-imbue field.
+func classImbue(option proto.ShamanWeaponImbue, consumable proto.WeaponImbue) proto.WeaponImbue {
+	if imbue, ok := shamanImbues[option]; ok {
+		return imbue
+	}
+	for _, imbue := range shamanImbues {
+		if consumable == imbue {
+			return imbue
+		}
+	}
+	return proto.WeaponImbue_WeaponImbueUnknown
+}
+
 func (shaman *Shaman) getImbueProcMask(imbue proto.WeaponImbue) core.ProcMask {
 	mask := core.ProcMaskUnknown
-	if shaman.HasMHWeapon() && shaman.Consumes.MainHandImbue == imbue {
+	if shaman.HasMHWeapon() && shaman.imbues[0] == imbue {
 		mask |= core.ProcMaskMeleeMH
 	}
-	if shaman.HasOHWeapon() && shaman.Consumes.OffHandImbue == imbue {
+	if shaman.HasOHWeapon() && shaman.imbues[1] == imbue {
 		mask |= core.ProcMaskMeleeOH
 	}
 	return mask
+}
+
+// resolveImbues picks each hand's imbue once the ruleset is known. Classic imbues are temporary weapon
+// enchants that share the Consumes slot with stones and oils, so the spec options are ignored there.
+func (shaman *Shaman) ResolveRulesetInputs() {
+	options := shaman.optionImbues
+	if !shaman.Env.IsForever() {
+		options = [2]proto.ShamanWeaponImbue{}
+	}
+	shaman.imbues = [2]proto.WeaponImbue{
+		classImbue(options[0], shaman.Consumes.GetMainHandImbue()),
+		classImbue(options[1], shaman.Consumes.GetOffHandImbue()),
+	}
+	shaman.ApplyRockbiterImbue(shaman.getImbueProcMask(proto.WeaponImbue_RockbiterWeapon))
+	shaman.ApplyFlametongueImbue(shaman.getImbueProcMask(proto.WeaponImbue_FlametongueWeapon))
+	shaman.ApplyFrostbrandImbue(shaman.getImbueProcMask(proto.WeaponImbue_FrostbrandWeapon))
+	shaman.ApplyWindfuryImbue(shaman.getImbueProcMask(proto.WeaponImbue_WindfuryWeapon))
 }
 
 // Indexes into NextTotemDrops for self buffs
@@ -146,6 +183,10 @@ type Shaman struct {
 	ActiveShieldAura *core.Aura
 
 	ChainLightningBounceCoefficient float64
+
+	// The weapon imbue on each hand, and the spec-option imbues it came from.
+	imbues       [2]proto.WeaponImbue
+	optionImbues [2]proto.ShamanWeaponImbue
 }
 
 // Implemented by each Shaman spec.
@@ -165,6 +206,7 @@ func (shaman *Shaman) AddRaidBuffs(_ *proto.RaidBuffs) {
 }
 
 func (shaman *Shaman) Initialize() {
+
 	// Core abilities
 	shaman.registerChainLightningSpell()
 	shaman.registerLavaBurstSpell()

@@ -93,6 +93,9 @@ func (cat *FeralDruid) Initialize() {
 	cat.Druid.Initialize()
 	cat.RegisterBalanceSpells()
 	cat.RegisterFeralCatSpells()
+	if cat.Env.IsForever() {
+		cat.RegisterBearWeaveSpells()
+	}
 	cat.maxRipTicks = cat.RipTickCount()
 }
 

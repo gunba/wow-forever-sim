@@ -114,7 +114,7 @@
         },
         {},
         {
-          "id": 920000499
+          "id": 920001001
         }
       ]
     },
@@ -124,6 +124,7 @@
       "agilityElixir": "ElixirOfTheMongoose",
       "strengthBuff": "JujuPower",
       "attackPowerBuff": "JujuMight",
+      "mainHandImbue": "ElementalSharpeningStone",
       "defaultPotion": "MajorManaPotion",
       "defaultConjured": "ConjuredRogueThistleTea",
       "dragonBreathChili": true,
@@ -183,7 +184,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "050022-35210032021032212041-053",
+    "talentsString": "05002-45010032021032212051-055",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
@@ -349,6 +350,58 @@
             "castSpell": {
               "spellId": {
                 "spellId": 9896
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "not": {
+                      "val": {
+                        "dotIsActive": {
+                          "spellId": {
+                            "spellId": 9904
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "remainingTime": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "9s"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpLt",
+                      "lhs": {
+                        "currentComboPoints": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "5"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 9904
               }
             }
           }

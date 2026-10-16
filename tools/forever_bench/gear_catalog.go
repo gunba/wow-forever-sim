@@ -19,6 +19,8 @@ type gearRecord struct {
 	Sources                                                                         []struct{ Kind, Faction string }
 	Synthetic, BenchmarkEligible                                                    bool
 	ModelVersion                                                                    int32
+	// A projected relic that carries a real relic's effect names it here.
+	EffectItemID int32
 }
 
 var readGearCatalog = sync.OnceValue(func() map[int32]gearRecord {
@@ -33,6 +35,7 @@ var readGearCatalog = sync.OnceValue(func() map[int32]gearRecord {
 	for _, path := range []string{
 		"assets/db_inputs/forever_synthetic_gear.json",
 		"assets/db_inputs/forever_synthetic_gear_v2.json",
+		"assets/db_inputs/forever_hybrid_relics.json",
 	} {
 		if err := json.Unmarshal(mustRead(path), &data); err != nil {
 			panic(err)
@@ -87,6 +90,14 @@ func gearReviewError(item core.Item) error {
 		}
 		if len(record.Effects) != 0 || record.SetID != 0 {
 			return fmt.Errorf("%s incorrectly includes a modeled effect or set", item.Name)
+		}
+		if item.Type == proto.ItemType_ItemTypeRanged && isRelic(item) && record.EffectItemID == 0 {
+			return fmt.Errorf("%s is a full-capacity modeled relic; the benchmark uses real relics", item.Name)
+		}
+		if record.EffectItemID != 0 {
+			if review := readGearReviews()[record.EffectItemID]; review != "implemented" && review != "verified" {
+				return fmt.Errorf("%s carries a relic effect the sim does not implement", item.Name)
+			}
 		}
 		return nil
 	}
@@ -251,4 +262,12 @@ func classCanEquip(class proto.Class, item core.Item) bool {
 		}
 	}
 	return true
+}
+
+func isRelic(item core.Item) bool {
+	switch item.RangedWeaponType {
+	case proto.RangedWeaponType_RangedWeaponTypeIdol, proto.RangedWeaponType_RangedWeaponTypeLibram, proto.RangedWeaponType_RangedWeaponTypeTotem:
+		return true
+	}
+	return false
 }

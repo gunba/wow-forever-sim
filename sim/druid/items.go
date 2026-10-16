@@ -15,6 +15,9 @@ const (
 	IdolOfBrutality = 23198
 	IdolOfTheDream  = 220606
 	MysticMushroom  = 249396
+	// Forever level-65 idols.
+	EnragedIdol          = 272428
+	IdolOfTheUrsineTwins = 279251
 )
 
 func init() {

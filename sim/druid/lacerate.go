@@ -13,6 +13,7 @@ const LacerateMaxStacks int32 = 5
 // attack power. The client does not carry threat, so the 3.33x is still Season of Discovery's.
 func (druid *Druid) registerLacerateSpell() {
 	druid.registerLacerateBleedSpell()
+	ursineTwins := druid.Ranged().EffectID() == IdolOfTheUrsineTwins
 
 	druid.Lacerate = druid.RegisterSpell(Bear, core.SpellConfig{
 		SpellCode:   SpellCode_DruidLacerate,
@@ -47,6 +48,10 @@ func (druid *Druid) registerLacerateSpell() {
 			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialHitAndCrit)
 			if result.Landed() {
 				druid.LacerateBleed.Cast(sim, target)
+				// Idol of the Ursine Twins (1306483): a landed Lacerate has a 4% chance to reset Primal Bite.
+				if ursineTwins && druid.MangleBear != nil && sim.Proc(0.04, "Idol of the Ursine Twins") {
+					druid.MangleBear.CD.Reset()
+				}
 			}
 			if !result.Landed() {
 				spell.IssueRefund(sim)

@@ -38,7 +38,7 @@ func (paladin *Paladin) registerSealOfTheCrusader() {
 	const improvedSotC = 1.15
 
 	var libramAp, libramBonus float64
-	if paladin.Ranged().ID == LibramOfFervor {
+	if paladin.Ranged().EffectID() == LibramOfFervor {
 		libramAp = 48
 		libramBonus = 33
 	}

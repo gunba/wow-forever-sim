@@ -51,7 +51,7 @@ func (shaman *Shaman) ApplyTalents() {
 		shaman.PseudoStats.CanParry = true
 
 		// Rockbiter is the tanking imbue, so the threat modifier flips depending on which imbue is up.
-		if shaman.Consumes.MainHandImbue == proto.WeaponImbue_RockbiterWeapon {
+		if shaman.imbues[0] == proto.WeaponImbue_RockbiterWeapon {
 			shaman.PseudoStats.ThreatMultiplier *= 1.30
 		} else {
 			shaman.PseudoStats.ThreatMultiplier *= 0.70
@@ -514,10 +514,21 @@ func (shaman *Shaman) applyMaelstromWeapon() {
 		},
 	})
 
+	// Totem of the Storm (1291078): Lightning Bolt can also trigger it, at half the chance. The client gives
+	// no rate for a spell, so it is half the main-hand per-hit chance (provisional).
+	stormTotem := shaman.Env.IsForever() && shaman.Ranged().EffectID() == TotemOfTheStorm
+	boltChance := 0.5 * ppm * shaman.MainHand().SwingSpeed / 60
 	core.MakePermanent(shaman.RegisterAura(core.Aura{
 		Label: "Maelstrom Weapon Trigger",
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if result.Landed() && ppmm.Proc(sim, spell.ProcMask, "Maelstrom Weapon") {
+			if !result.Landed() {
+				return
+			}
+			proc := ppmm.Proc(sim, spell.ProcMask, "Maelstrom Weapon")
+			if !proc && stormTotem && spell.SpellCode == SpellCode_ShamanLightningBolt && spell.ActionID.Tag != CastTagLightningOverload {
+				proc = sim.Proc(boltChance, "Totem of the Storm")
+			}
+			if proc {
 				shaman.MaelstromWeaponAura.Activate(sim)
 				shaman.MaelstromWeaponAura.AddStack(sim)
 			}

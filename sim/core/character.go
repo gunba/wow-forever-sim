@@ -421,7 +421,7 @@ func (character *Character) clearBuildPhaseAuras(phase CharacterBuildPhase) {
 // Apply effects from all equipped core.
 func (character *Character) applyItemEffects(agent Agent) {
 	for slot, eq := range character.Equipment {
-		if applyItemEffect, ok := itemEffects[eq.ID]; ok {
+		if applyItemEffect, ok := itemEffects[eq.EffectID()]; ok {
 			applyItemEffect(agent)
 		}
 
@@ -489,6 +489,10 @@ func (character *Character) initialize(agent Agent) {
 	// Resolve it before item, set and talent effects can inspect allocations.
 	if resolver, ok := agent.(interface{ ResolveTalentTree() }); ok {
 		resolver.ResolveTalentTree()
+	}
+	// Other ruleset-dependent inputs (for example Forever Shaman imbues), before equipment applies.
+	if resolver, ok := agent.(interface{ ResolveRulesetInputs() }); ok {
+		resolver.ResolveRulesetInputs()
 	}
 	character.majorCooldownManager.initialize(character)
 	character.ItemSwap.initialize(character)

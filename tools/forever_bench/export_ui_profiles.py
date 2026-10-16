@@ -45,8 +45,11 @@ def main():
     modeled = data.get("GearScenario") in {"modeled-65-v1", "modeled-65-v2"}
     v2_ids = set()
     if data.get("GearScenario") == "modeled-65-v2":
+        # Relics are projected real relics; the full-capacity modeled relics are superseded.
         v2_ids = {item["id"] for item in json.loads(Path(
-            "assets/db_inputs/forever_synthetic_gear_v2.json").read_text())["items"]}
+            "assets/db_inputs/forever_synthetic_gear_v2.json").read_text())["items"] if item["inventoryType"] != 28}
+        v2_ids |= {item["id"] for item in json.loads(Path(
+            "assets/db_inputs/forever_hybrid_relics.json").read_text())["items"]}
     args.output.mkdir(parents=True, exist_ok=True)
     index = []
     profiles = []

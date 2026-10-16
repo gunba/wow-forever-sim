@@ -25,7 +25,8 @@ func RegisterEnhancementShaman() {
 
 func NewEnhancementShaman(character *core.Character, options *proto.Player) *EnhancementShaman {
 	enh := &EnhancementShaman{
-		Shaman: shaman.NewShaman(character, options.TalentsString),
+		Shaman: shaman.NewShaman(character, options.TalentsString,
+			options.GetEnhancementShaman().GetOptions().GetMainHandImbue(), options.GetEnhancementShaman().GetOptions().GetOffHandImbue()),
 	}
 
 	// Enable Auto Attacks for this spec

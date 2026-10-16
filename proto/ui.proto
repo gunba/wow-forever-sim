@@ -89,6 +89,9 @@ message UIItem {
 	}
 
 	FactionRestriction faction_restriction = 26;
+
+	// A projected item that carries a real item's scripted effect (the real item's ID); 0 otherwise.
+	int32 effect_item_id = 31;
 }
 
 enum Expansion {

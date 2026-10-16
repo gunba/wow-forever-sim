@@ -39,8 +39,9 @@ func (paladin *Paladin) registerSwiftJudgement() {
 
 		Cast: core.CastConfig{
 			CD: core.Cooldown{
-				Timer:    paladin.NewTimer(),
-				Duration: time.Minute * 1,
+				Timer: paladin.NewTimer(),
+				// Sentinel's Libram (1291083) takes 10 sec off.
+				Duration: core.TernaryDuration(paladin.Env.IsForever() && paladin.Ranged().EffectID() == SentinelsLibram, 50*time.Second, time.Minute),
 			},
 		},
 
