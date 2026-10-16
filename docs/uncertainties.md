@@ -2395,9 +2395,9 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Question:** Does bear-weaving with Lacerate gain Feral damage now that Furor keeps Cat Energy through Bear Form?
 
-**Finding:** Screened on two seeds and two races: weaving variants -0.4% to -33% (shapeshift mana and frozen Energy); Idol of the Dream +1.2% over Howling Idol.
+**Finding:** Screened on two seeds and two races: weaving variants -0.4% to -33% (shapeshift mana and frozen Energy), and -29% to -36% once Rake is in the rotation; Idol of the Dream +1.2% over Howling Idol.
 
-**Current implementation / scenario:** No weaving. Idol of the Dream (Rip +2 s) is the best idol. Rake is covered by DRU-017.
+**Current implementation / scenario:** No weaving (rechecked with Rake in the rotation). Idol of the Dream (Rip +2 s) is the best idol. Rake is covered by DRU-017.
 
 **Impact:** Feral.
 

@@ -1,10 +1,13 @@
 package main
 
 import (
+	"crypto/sha256"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"math"
 	"os"
+	"path/filepath"
 	"runtime"
 	"sort"
 	"strings"
@@ -30,13 +33,15 @@ type benchFile struct {
 	Out        string            `json:"out"`
 	Casts      bool              `json:"casts"`
 	Calibrate  bool              `json:"calibrate"`
-	Trace      string            `json:"trace"` // scenario name: print one iteration's decisions for both choosers
+	Trace      string            `json:"trace"`   // scenario name: print one iteration's decisions for both choosers
+	ACache     string            `json:"a_cache"` // directory caching the priority-list side by its inputs and this binary
 }
 
 type benchScenario struct {
 	Name       string          `json:"name"`
 	Character  string          `json:"character"`
 	APL        string          `json:"apl"`
+	APLB       string          `json:"apl_b"` // when set, this priority list replaces the planner side (A/B of two lists)
 	Level      int32           `json:"level"` // 0: the character's
 	Talents    string          `json:"talents"`
 	Enemies    int             `json:"enemies"`
@@ -50,8 +55,8 @@ type benchScenario struct {
 	HomeWeapon int             `json:"home_weapon"`
 	TTKNoise   float64         `json:"ttk_noise"`
 	Manual     []string        `json:"manual"` // extra abilities kept manual (ablation)
-	Realism    float64         `json:"realism"`
 	Cap        float64         `json:"cap"`
+	TTKUnknown float64         `json:"ttk_unknown"`
 }
 
 type sideStats struct {
@@ -134,10 +139,40 @@ func runBench(path string) {
 		from    int
 		outs    []planner.Outcome
 	}
+	// The priority-list side of an A/B depends only on its own inputs, so a sweep of many B lists runs it once.
+	aKeys := make([]string, len(bf.Scenarios))
+	cachedA := make([][]planner.Outcome, len(bf.Scenarios))
+	if bf.ACache != "" {
+		must(os.MkdirAll(bf.ACache, 0o755))
+		exe, err := os.Executable()
+		must(err)
+		bin, err := os.ReadFile(exe)
+		must(err)
+		binSum := sha256.Sum256(bin)
+		for i, s := range bf.Scenarios {
+			key := s
+			key.Name, key.APLB = "", ""
+			char, err := os.ReadFile(bf.Characters[s.Character])
+			must(err)
+			raw, err := json.Marshal([]any{key, apls[s.APL], string(char), bf.Iterations, bf.Seed, hex.EncodeToString(binSum[:])})
+			must(err)
+			sum := sha256.Sum256(raw)
+			aKeys[i] = filepath.Join(bf.ACache, hex.EncodeToString(sum[:12])+".json")
+			if data, err := os.ReadFile(aKeys[i]); err == nil {
+				var outs []planner.Outcome
+				if json.Unmarshal(data, &outs) == nil && len(outs) == bf.Iterations {
+					cachedA[i] = outs
+				}
+			}
+		}
+	}
 	var jobs []job
 	chunk := max(bf.Iterations/max(1, workers/max(1, 2*len(bf.Scenarios))), 10)
 	for i := range bf.Scenarios {
 		for _, pl := range []bool{true, false} {
+			if !pl && cachedA[i] != nil {
+				continue
+			}
 			for from := 0; from < bf.Iterations; from += chunk {
 				jobs = append(jobs, job{i, pl, from, min(from+chunk, bf.Iterations)})
 			}
@@ -162,8 +197,8 @@ func runBench(path string) {
 			el = lvl + 1
 		}
 		scen[i] = planner.Scenario{Name: s.Name, Player: p, Enemies: s.Enemies, EnemyLevel: el, Elite: s.Elite, HPMult: def(s.HPMult, 1),
-			DmgMult: def(s.DmgMult, 1), Partner: s.Partner, HomeStance: s.HomeStance, HomeWeapon: s.HomeWeapon, TTKNoise: s.TTKNoise, Cap: def(s.Cap, 180),
-			Intent: planner.Intent{Mode: s.Mode, Source: "override"}, Front: s.Partner.Role != "tank", Manual: s.Manual, Realism: s.Realism}
+			DmgMult: def(s.DmgMult, 1), Partner: s.Partner, HomeStance: s.HomeStance, HomeWeapon: s.HomeWeapon, TTKNoise: s.TTKNoise, Cap: def(s.Cap, 180), TTKUnknown: s.TTKUnknown,
+			Intent: planner.Intent{Mode: s.Mode, Source: "override"}, Front: s.Partner.Role != "tank", Manual: s.Manual}
 		if s.Partner.Role == "tank" {
 			yes := true
 			scen[i].Intent.Context = &planner.IntentContext{OtherTankPresent: &yes}
@@ -196,14 +231,18 @@ func runBench(path string) {
 				s := bf.Scenarios[j.sc]
 				var b *planner.Bench
 				var err error
-				if j.planner {
+				if j.planner && s.APLB == "" {
 					b, err = planner.NewBench(scen[j.sc], models[j.sc], func(d *planner.Driver) planner.Chooser {
 						return &planner.PlannerChooser{D: d, Params: params}
 					})
 				} else {
-					text, ok := apls[s.APL]
+					name := s.APL
+					if j.planner {
+						name = s.APLB
+					}
+					text, ok := apls[name]
 					if !ok {
-						must(fmt.Errorf("scenario %s: unknown APL %s", s.Name, s.APL))
+						must(fmt.Errorf("scenario %s: unknown APL %s", s.Name, name))
 					}
 					rows, perr := planner.ParseAPL(text)
 					must(perr)
@@ -241,6 +280,15 @@ func runBench(path string) {
 			dst = pl[p.sc]
 		}
 		copy(dst[p.from:], p.outs)
+	}
+	for i := range scen {
+		if cachedA[i] != nil {
+			ap[i] = cachedA[i]
+		} else if aKeys[i] != "" {
+			data, err := json.Marshal(ap[i])
+			must(err)
+			must(os.WriteFile(aKeys[i], data, 0o644))
+		}
 	}
 	var out []benchResult
 	for i, s := range bf.Scenarios {

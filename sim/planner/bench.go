@@ -30,7 +30,7 @@ type Scenario struct {
 	Cap        float64  // seconds; the fight ends here if enemies are left
 	Front      bool     // the Warrior attacks from the front (enemy parry and block)
 	Manual     []string // abilities kept manual besides the defaults
-	Realism    float64  // bus noise and latency scale
+	TTKUnknown float64  // seconds after an enemy first takes damage before the console knows its time to die
 }
 
 // Outcome is one iteration's result.
@@ -99,7 +99,12 @@ func NewBench(sc Scenario, model *Model, choose func(d *Driver) Chooser) (*Bench
 		hps[i] = hp
 	}
 	b := &Bench{Model: model}
-	cfg := DriveConfig{Intent: sc.Intent, HomeStance: sc.HomeStance, TTKNoise: sc.TTKNoise, Elite: sc.Elite, PriorDPS: 60, Realism: sc.Realism}
+	group := 1
+	if sc.Partner.Role != "" {
+		group = 2
+	}
+	cfg := DriveConfig{Intent: sc.Intent, HomeStance: sc.HomeStance, TTKNoise: sc.TTKNoise, Elite: sc.Elite,
+		PriorDPS: PriorGroupDPS(float64(sc.Player.Level), group), TTKUnknown: sc.TTKUnknown}
 	setupMu.Lock()
 	warrior.SetupHook = func(w *warrior.Warrior) {
 		b.harness = newHarness(w, sc.Partner, hps)
@@ -192,4 +197,15 @@ func cloneStance(p *proto.Player, stance int) *proto.Player {
 	}
 	q.Spec = &proto.Player_TankWarrior{TankWarrior: &proto.TankWarrior{Options: &proto.TankWarrior_Options{Stance: st}}}
 	return q
+}
+
+// PriorGroupDPS is the console's damage-rate guess before a fight shows one: a Warrior's damage per second at the
+// level (0.015 L^2 + 1.4 L, fitted to the bench's priority-list fights at levels 10-60) for each player, with each
+// member after the first counted at 0.7 (tanks and healers deal less). The time to die blends it with the observed
+// rate, so the estimate exists from the pull (no unknown period) and gives way to the measured rate within seconds.
+func PriorGroupDPS(level float64, groupSize int) float64 {
+	if level <= 0 {
+		level = 60
+	}
+	return (0.015*level*level + 1.4*level) * (1 + 0.7*float64(max(groupSize, 1)-1))
 }

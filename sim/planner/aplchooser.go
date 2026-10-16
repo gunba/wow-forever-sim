@@ -249,6 +249,9 @@ func (e *aplEnv) value(id string) float64 {
 		return 0
 	case "target.time_to_die_known":
 		return b(tg.TTK != nil && tg.TTK.P50 != nil)
+	case "target.elite", "target.classification.elite":
+		// Elite, rare elite and world boss; a rare is not elite.
+		return b(tg.Classification != nil && (*tg.Classification == "elite" || *tg.Classification == "rareelite" || *tg.Classification == "worldboss"))
 	case "target.threat.known":
 		return b(status >= 0)
 	case "target.threat.secure":

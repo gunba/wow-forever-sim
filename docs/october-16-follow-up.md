@@ -53,7 +53,8 @@ The smaller relic budget costs 0.2-0.8% where the relic choice did not change.
 - **Bear-weaving loses.** With Furor keeping Cat Energy through Bear Form, every weave variant (Enrage with Primal Bite
   or Lacerate, energy, cooldown and mana gates, with Mangle, Natural Shapeshifter, Enraged Idol and Idol of the Ursine
   Twins) lost 0.4-33%: each weave pays two shapeshifts that would otherwise fund Shifting Power, and Energy does not
-  regenerate in Bear Form. (DRU-015, DRU-016)
+  regenerate in Bear Form. Re-screened with Rake in the rotation (Tauren and Night Elf, two seeds), every weave loses
+  29-36%. (DRU-015, DRU-016)
 - **Talents** with Rake: `05002-45010032021032212051-055` (Feral Cat 7/34/10), +0.7% over the October 15 screen's best.
 - **Proc rates in forms.** The form attack is the equipped weapon's damage per second at the form's speed (Cat 1.0,
   Bear 2.5). Speed-scaled on-hit damage already used that speed, and beta logs confirm it: Flametongue Totem hits from a

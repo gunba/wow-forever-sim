@@ -7951,7 +7951,7 @@
       "status": "resolved",
       "title": "Feral bear-weaving and idols after 1.60.1.70425",
       "question": "Does bear-weaving with Lacerate gain Feral damage now that Furor keeps Cat Energy through Bear Form?",
-      "current_model": "No weaving. Idol of the Dream (Rip +2 s) is the best idol. Rake is covered by DRU-017.",
+      "current_model": "No weaving (rechecked with Rake in the rotation). Idol of the Dream (Rip +2 s) is the best idol. Rake is covered by DRU-017.",
       "impact": "Feral.",
       "sources": [
         "sim/druid/druid.go",
@@ -7961,7 +7961,7 @@
       "review": {
         "disposition": "evidence-answer",
         "confidence": "high",
-        "answer": "Screened on two seeds and two races: weaving variants -0.4% to -33% (shapeshift mana and frozen Energy); Idol of the Dream +1.2% over Howling Idol.",
+        "answer": "Screened on two seeds and two races: weaving variants -0.4% to -33% (shapeshift mana and frozen Energy), and -29% to -36% once Rake is in the rotation; Idol of the Dream +1.2% over Howling Idol.",
         "remaining": "None for the current scenario.",
         "implementation": "The Cat spec registers Bear Form and the Bear abilities so weaving APLs can be tested.",
         "tests": [],
