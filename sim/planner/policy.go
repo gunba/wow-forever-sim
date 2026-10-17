@@ -88,18 +88,21 @@ func (c *Ctx) immediate(s *State, i int) float64 {
 			}
 			return c.value(0, th, mit)
 		}
-		// Sunder Armor: threat now, and the next stack's armor reduction over the target's remaining life.
+		// Sunder Armor: threat now, and the armor reduction it adds over the target's remaining life. A stack also
+		// renews the stacks already there, so it is worth the new total for its duration less what the old stacks
+		// had left (refreshing five stacks keeps them from falling off).
 		o := &c.special
 		th := (ab.FlatThreat + ab.ThreatAP*ap) * st * o.land
-		stacks := s.sunder
-		if s.t >= s.sunEnd {
-			stacks = 0
+		stacks := s.sunderStacks()
+		base := c.physDPS(s) * c.armorDR[0] / c.armorDR[stacks] // the damage rate without Sunder
+		left := max(0, min(s.sunEnd-s.t, ttk))
+		span := min(ab.Duration, ttk)
+		if c.Pr.SunderToDeath && stacks < 5 {
+			// Kept up by refreshes: a new stack lasts the target's life, and so do the ones already there.
+			span, left = ttk, ttk
 		}
-		gain := 0.0
-		if stacks < 5 {
-			gain = (c.armorDR[stacks+1]/c.armorDR[stacks] - 1) * c.Pr.ArmorScale
-		}
-		d := c.physDPS(s) * gain * min(ab.Duration, ttk) * o.land
+		next := min(stacks+1, 5)
+		d := base * ((c.armorDR[next]/c.armorDR[0]-1)*span - (c.armorDR[stacks]/c.armorDR[0]-1)*left) * c.Pr.ArmorScale * o.land
 		return c.value(d, (th+d*st)*wt, 0)
 	case KindBuff:
 		left := s.bsEnd - s.t
@@ -254,9 +257,13 @@ func (c *Ctx) terminal(s *State) float64 {
 		d := (ab.TickDamage + ab.TickAPCoef*c.ap(s)) * ab.DamageMult * c.armorFreeMult(s) * c.tickCrit() * ticks
 		v += c.value(d, d*c.stanceThreat(s)*s.wt, 0)
 	}
-	if s.sunder > 0 && s.sunEnd > s.t {
-		gain := (c.armorDR[s.sunder]/c.armorDR[0] - 1) * c.Pr.ArmorScale
-		d := c.physDPS(s) / c.armorDR[s.sunder] * c.armorDR[0] * gain * min(s.sunEnd-s.t, alive)
+	if k := s.sunderStacks(); k > 0 {
+		gain := (c.armorDR[k]/c.armorDR[0] - 1) * c.Pr.ArmorScale
+		span := min(s.sunEnd-s.t, alive)
+		if c.Pr.SunderToDeath {
+			span = alive // stacks still up at the horizon are refreshed for the rest of the fight
+		}
+		d := c.physDPS(s) / c.armorDR[k] * c.armorDR[0] * gain * span
 		v += c.value(d, d*c.stanceThreat(s)*s.wt, 0)
 	}
 	if s.tcEnd > s.t {

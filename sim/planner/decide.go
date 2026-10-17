@@ -25,6 +25,7 @@ type Params struct {
 	LooseWeight    float64  // threat value per point (hold) on an enemy someone else has
 	ContestWeight  float64  // threat value per point (hold) on an enemy the player is tanking without the lead
 	ArmorScale     float64  // scale on the armor-reduction value of Sunder Armor beyond what the rollout sees
+	SunderToDeath  bool     // value Sunder stacks up at the horizon as kept up (refreshed) until the target dies
 	SwingLossScale float64  // scale on the value of off-hand swings a cast pushes back (untalented Slam)
 	SwingLossMH    float64  // the same for the main hand
 	NextBoost      float64  // extra threat value on other enemies as the target's death nears (hold)
@@ -46,7 +47,7 @@ type Params struct {
 
 var DefaultParams = Params{Horizon: 7, MinSamples: 6, MaxSamples: 60, HoldDecay: 40, HoldFloor: 1, HoldLook: 8, CeilingK: 3, CeilingStart: 0.7, UnknownLead: 0.7,
 	LooseWeight: 3, ContestWeight: 2, ArmorScale: 0.5, SwingLossScale: 4, SwingLossMH: 4, NextBoost: 12, NextScale: 8, RageKeep: 0.9, SinkFloor: 0.5, WaitBias: 0, CandFloor: -0.25, CDValue: 1,
-	QueueGate: 0, Unqueue: true, CancelLead: 0.3, UnqueueBias: 5, GCDFirst: 1}
+	QueueGate: 0, Unqueue: true, CancelLead: 0.3, UnqueueBias: 5, GCDFirst: 1, SunderToDeath: true}
 
 // enemyAPCoefficient is the simulator's enemy attack power coefficient (core.EnemyAutoAttackAPCoefficient): the
 // share of base damage one point of attack power adds, used to value Demoralizing Shout.

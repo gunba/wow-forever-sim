@@ -242,9 +242,17 @@ func (c *Ctx) ap(s *State) float64 {
 	return ap
 }
 
+// sunderStacks is the Sunder Armor stacks still on the target at the state's time.
+func (s *State) sunderStacks() int {
+	if s.t >= s.sunEnd {
+		return 0
+	}
+	return s.sunder
+}
+
 // physMult is the multiplier on physical damage dealt at the state's time, armor included.
 func (c *Ctx) physMult(s *State) float64 {
-	m := c.M.PhysMult * c.armorDR[s.sunder]
+	m := c.M.PhysMult * c.armorDR[s.sunderStacks()]
 	if s.stance == StanceDefensive {
 		m *= 0.9
 	}
@@ -356,7 +364,7 @@ func (c *Ctx) deepWounds(s *State) {
 
 // armorFreeMult: bleeds ignore armor.
 func (c *Ctx) armorFreeMult(s *State) float64 {
-	return c.physMult(s) / c.armorDR[s.sunder]
+	return c.physMult(s) / c.armorDR[s.sunderStacks()]
 }
 
 func (c *Ctx) queuedSwing(s *State) {
