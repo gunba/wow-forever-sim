@@ -113,6 +113,8 @@ type PlayerState struct {
 	CritPct         *float64              `json:"crit_pct"`
 	Auras           []AuraState           `json:"auras"`
 	IncomingPctPerS *MeanSD               `json:"incoming_pct_per_s"`
+	LastPressAgeMs  *float64              `json:"last_press_age_ms"` // since the console's last key press (v1.5)
+	CastRemaining   *float64              `json:"cast_remaining"`    // seconds left on a cast in progress, 0 = none (v1.5)
 }
 
 type TTK struct {

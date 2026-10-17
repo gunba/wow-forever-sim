@@ -39,6 +39,7 @@ type Params struct {
 	Unqueue        bool     // the planner may cancel a queued swing (contract v1.4)
 	CancelLead     float64  // seconds before the swing the console can still be relied on to cancel the swing queued now
 	UnqueueBias    float64  // percent of its value taken off cancelling (a toggle must clearly win, not by rollout noise)
+	UnqueueQuiet   float64  // seconds without a console press before a cancel (/stopcasting) is sent; none while casting
 	GCDFirst       float64  // percent within which a global-cooldown ability goes before a queue or cancel
 	Disable        []string `json:",omitempty"` // abilities the planner never uses (diagnostics)
 	// FixedSamples, when set, replaces the time budget with a fixed sample count (reproducible benchmarks).
@@ -47,7 +48,7 @@ type Params struct {
 
 var DefaultParams = Params{Horizon: 7, MinSamples: 6, MaxSamples: 60, HoldDecay: 40, HoldFloor: 1, HoldLook: 8, CeilingK: 3, CeilingStart: 0.7, UnknownLead: 0.7,
 	LooseWeight: 3, ContestWeight: 2, ArmorScale: 0.5, SwingLossScale: 4, SwingLossMH: 4, NextBoost: 12, NextScale: 8, RageKeep: 0.9, SinkFloor: 0.5, WaitBias: 0, CandFloor: -0.25, CDValue: 1,
-	QueueGate: 0, Unqueue: true, CancelLead: 0.3, UnqueueBias: 5, GCDFirst: 1, SunderToDeath: true}
+	QueueGate: 0.5, Unqueue: false, CancelLead: 0.3, UnqueueBias: 5, GCDFirst: 1, SunderToDeath: true, UnqueueQuiet: 0.5}
 
 // enemyAPCoefficient is the simulator's enemy attack power coefficient (core.EnemyAutoAttackAPCoefficient): the
 // share of base damage one point of attack power adds, used to value Demoralizing Shout.
@@ -191,6 +192,11 @@ func NewCtx(m *Model, msg *DecideMsg, pr Params) (*Ctx, *State, []string) {
 	s := &State{queued: -1, stance: StanceBattle, mhAt: -1, ohAt: -1, mobAt: -1, amAt: -1}
 	s.rage = f(p.Rage, 0)
 	s.gcdAt = f(p.GCDRemaining, 0)
+	s.lastPress, s.prevPress = math.Inf(-1), math.Inf(-1)
+	if p.LastPressAgeMs != nil {
+		s.lastPress = -*p.LastPressAgeMs / 1000
+	}
+	s.castEnd = f(p.CastRemaining, 0)
 	if p.Stance != nil && *p.Stance >= 1 && *p.Stance <= 3 {
 		s.stance = int(*p.Stance)
 	}
@@ -516,7 +522,7 @@ func (c *Ctx) candidates(s *State, msg *DecideMsg) []Candidate {
 		}
 	}
 	// A queued swing costs nothing until it lands, so cancelling it is an off-GCD action like any other.
-	if c.Pr.Unqueue && s.queued >= 0 && engaged {
+	if c.Pr.Unqueue && s.queued >= 0 && engaged && c.canCancel(s) {
 		out = append(out, Candidate{Act: actUnqueue})
 	}
 	out = append(out, Candidate{Act: actWait, WaitUntil: max(until, 0.1)})
@@ -552,6 +558,12 @@ func (c *Ctx) gcdFirst(s *State, res []Result) []Result {
 		break
 	}
 	return res
+}
+
+// canCancel reports whether the console would send a cancel now: /stopcasting also stops a cast and clears the game's
+// spell queue, so it is sent only when the player is not casting and no other key was pressed in the last moments.
+func (c *Ctx) canCancel(s *State) bool {
+	return s.t >= s.castEnd && s.t-s.lastPress >= c.Pr.UnqueueQuiet
 }
 
 // OnlyWait reports whether waiting is the only candidate (nothing usable now), without running the search.

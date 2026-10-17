@@ -115,6 +115,7 @@ func (c *Ctx) runCandidate(s *State, cand Candidate) {
 	}
 	if cand.Act == actUnqueue {
 		s.queued, s.queuedTop, s.requeueAt = -1, false, s.t+0.4
+		s.press()
 		c.run(s, actNone, 0)
 		return
 	}
@@ -122,6 +123,7 @@ func (c *Ctx) runCandidate(s *State, cand Candidate) {
 		home := s.stance
 		s.stance = cand.Borrow
 		s.rage = min(s.rage, c.M.TacticalMastery)
+		s.press()
 		s.home, s.homeAt = home, 1.5 // the console returns home after the global cooldown
 	}
 	c.run(s, cand.Act, 0)

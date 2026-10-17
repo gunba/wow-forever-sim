@@ -55,6 +55,7 @@ type Driver struct {
 	lastRage    float64
 	hurtAt      map[int]time.Duration // when each enemy was first seen damaged, this fight
 	noQueueAt   time.Duration         // after a cancel the console presses the queued swing again no sooner than this
+	lastPressAt time.Duration         // the console's last key press this fight (-1 = none)
 	Decisions   int
 	Sim         *core.Simulation
 	Casts       map[ranks.Ability]int
@@ -76,7 +77,7 @@ func newDriver(w *warrior.Warrior, cfg DriveConfig) *Driver {
 	// The live console asks every frame in combat (about every 50 ms). While the global cooldown is ready the rotation
 	// loop already runs at that cadence; while it runs, this asks for off-GCD actions (Heroic Strike, cancelling it).
 	w.RegisterResetEffect(func(sim *core.Simulation) {
-		d.lastT, d.waitUntil, d.borrowed, d.lastRage, d.noQueueAt = 0, 0, false, -1, 0
+		d.lastT, d.waitUntil, d.borrowed, d.lastRage, d.noQueueAt, d.lastPressAt = 0, 0, false, -1, 0, -1
 		core.StartPeriodicAction(sim, core.PeriodicActionOptions{
 			Period: ConsoleCadence,
 			OnAction: func(sim *core.Simulation) {
@@ -139,7 +140,7 @@ func (d *Driver) act(sim *core.Simulation, offGCD bool) {
 		if home := d.stanceSpell(d.cfg.HomeStance); home != nil && !w.StanceMatches(stanceBit(d.cfg.HomeStance)) {
 			if home.CanCast(sim, w.CurrentTarget) {
 				home.Cast(sim, w.CurrentTarget)
-				d.borrowed = false
+				d.borrowed, d.lastPressAt = false, sim.CurrentTime
 				return
 			}
 		} else {
@@ -166,9 +167,14 @@ func (d *Driver) act(sim *core.Simulation, offGCD bool) {
 		return
 	}
 	if spell == unqueueSpell {
+		// The console's guards: /stopcasting is not sent while casting or within 0.5 s of another press.
+		if !d.cancelReady(sim) {
+			return
+		}
 		if w.CancelQueuedSwing(sim) {
 			d.count(ranks.Ability("Unqueue"))
 			d.noQueueAt = sim.CurrentTime + 400*time.Millisecond
+			d.lastPressAt = sim.CurrentTime
 		}
 		return
 	}
@@ -215,6 +221,7 @@ func (d *Driver) press(sim *core.Simulation, gameID int32) {
 		if ws.CanCast(sim, w.CurrentTarget) {
 			ws.Cast(sim, w.CurrentTarget)
 			d.borrowed = false // a stance chosen outright is not a borrow
+			d.lastPressAt = sim.CurrentTime
 			d.count(ab.Name)
 		} else if debugPress {
 			fmt.Printf("  stance %s not castable: ready %v cd %v casting %v gcd %v\n", ab.Name, ws.IsReady(sim), ws.TimeToReady(sim), w.IsCasting(sim), w.GCD.IsReady(sim))
@@ -229,7 +236,7 @@ func (d *Driver) press(sim *core.Simulation, gameID int32) {
 					return
 				}
 				sp.Cast(sim, w.CurrentTarget)
-				d.borrowed, d.borrowedAt = true, sim.CurrentTime
+				d.borrowed, d.borrowedAt, d.lastPressAt = true, sim.CurrentTime, sim.CurrentTime
 				break
 			}
 		}
@@ -237,6 +244,7 @@ func (d *Driver) press(sim *core.Simulation, gameID int32) {
 	if ws.CanCast(sim, w.CurrentTarget) {
 		ws.Cast(sim, w.CurrentTarget)
 		d.count(ab.Name)
+		d.lastPressAt = sim.CurrentTime
 		if d.borrowed {
 			d.borrowedAt = sim.CurrentTime
 		}
@@ -276,6 +284,11 @@ func (d *Driver) message(sim *core.Simulation) *DecideMsg {
 	p := PlayerState{Rage: fp(w.CurrentRage()), RageMax: fp(100), Stance: &stance, GCDRemaining: &gcd, QueuedSwing: queued, Moving: bp(false),
 		AttackPower: fp(w.GetStat(stats.AttackPower)), CritPct: fp(w.GetStat(stats.MeleeCrit) / core.CritRatingPerCritChance),
 		HealthPct: fp(100 * w.CurrentHealthPercent()), Swing: map[string]SwingTimer{}}
+	// Console facts behind the cancel guards (v1.5): time since the last press and a cast in progress.
+	p.CastRemaining = fp(max(0, (w.Hardcast.Expires - now).Seconds()))
+	if d.lastPressAt >= 0 {
+		p.LastPressAgeMs = fp(float64((now - d.lastPressAt).Milliseconds()))
+	}
 	mhLeft := (w.AutoAttacks.MainhandSwingAt() - now).Seconds()
 	p.Swing["main"] = SwingTimer{Remaining: fp(max(0, mhLeft)), Speed: fp(w.AutoAttacks.MainhandSwingSpeed().Seconds()), Known: true, AgeMs: fp(0)}
 	if w.AutoAttacks.IsDualWielding {
@@ -439,6 +452,14 @@ type PlannerChooser struct {
 	Last   DecideAnswer
 }
 
+// cancelReady mirrors the console's guards on a cancel: not casting, and no press in the last 0.5 s.
+func (d *Driver) cancelReady(sim *core.Simulation) bool {
+	if d.w.Hardcast.Expires > sim.CurrentTime {
+		return false
+	}
+	return d.lastPressAt < 0 || sim.CurrentTime-d.lastPressAt >= 500*time.Millisecond
+}
+
 // ConsoleCadence is how often the live console asks in combat.
 const ConsoleCadence = 50 * time.Millisecond
 
@@ -459,7 +480,17 @@ func (pc *PlannerChooser) Choose(msg *DecideMsg) (int32, float64) {
 		return 0, *best.Until
 	}
 	if string(best.Action) == `"unqueue"` {
-		return unqueueSpell, 0
+		if pc.D.cancelReady(pc.D.Sim) {
+			return unqueueSpell, 0
+		}
+		// The console falls through to the next ranked action.
+		if len(ans.Ranked) < 2 {
+			return 0, ConsoleCadence.Seconds()
+		}
+		best = ans.Ranked[1]
+		if best.Until != nil {
+			return 0, *best.Until
+		}
 	}
 	var id float64
 	if err := jsonNumber(best.Action, &id); err != nil {

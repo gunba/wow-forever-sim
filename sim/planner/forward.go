@@ -82,6 +82,9 @@ type State struct {
 	queued    int     // ability index of a queued Heroic Strike/Cleave, or -1
 	requeueAt float64 // after a cancel, the console presses the swing again no sooner than this
 	queuedTop bool    // the queued swing is the decision's own (queued now or before); later ones are the policy's
+	lastPress float64 // when the console last pressed a key
+	prevPress float64 // the press before that
+	castEnd   float64 // when a cast in progress (Slam) ends
 	mhAt      float64
 	ohAt      float64
 	flurry    int
@@ -242,6 +245,23 @@ func (c *Ctx) ap(s *State) float64 {
 	return ap
 }
 
+// press records a console key press at the state's time.
+func (s *State) press() { s.prevPress, s.lastPress = s.lastPress, s.t }
+
+// couldHaveCancelled reports whether the console could have cancelled the swing landing now: the cancel has to be
+// decided CancelLead before the swing, while the player is not casting and after a quiet UnqueueQuiet with no press.
+func (c *Ctx) couldHaveCancelled(s *State) bool {
+	at := s.t - c.Pr.CancelLead
+	if at < s.castEnd && s.castEnd > 0 {
+		return false
+	}
+	last := s.lastPress
+	if last > at {
+		last = s.prevPress
+	}
+	return at-last >= c.Pr.UnqueueQuiet
+}
+
 // sunderStacks is the Sunder Armor stacks still on the target at the state's time.
 func (s *State) sunderStacks() int {
 	if s.t >= s.sunEnd {
@@ -378,7 +398,7 @@ func (c *Ctx) queuedSwing(s *State) {
 	// Short of rage it is a white swing. With cancelling allowed, the swing is also cancelled (a white swing) when
 	// it would leave too little rage for an ability coming off its cooldown before the next swing: later decisions
 	// can cancel it, except the decision's own swing when it lands too soon for another one.
-	if s.rage < ab.Cost || c.Pr.Unqueue && (!top || s.t >= c.Pr.CancelLead) && s.rage-ab.Cost < c.reserve(s) {
+	if s.rage < ab.Cost || c.Pr.Unqueue && (!top || s.t >= c.Pr.CancelLead) && c.couldHaveCancelled(s) && s.rage-ab.Cost < c.reserve(s) {
 		c.whiteSwing(s, false)
 		return
 	}
@@ -545,6 +565,10 @@ func (c *Ctx) cast(s *State, i int) {
 		fmt.Fprintf(os.Stderr, "      %.2f cast %s rage %.1f mh %.2f q %d\n", s.t, ab.Name, s.rage, s.mhAt, s.queued)
 	}
 	m := c.M
+	s.press()
+	if ab.Cast > 0 {
+		s.castEnd = s.t + ab.Cast
+	}
 	if ab.GCD {
 		s.gcdAt = s.t + 1.5 + ab.Cast
 	}
@@ -791,6 +815,7 @@ func (c *Ctx) run(s *State, first int, waitUntil float64) {
 				s.stance = s.home
 				s.rage = min(s.rage, c.M.TacticalMastery)
 				s.home = 0
+				s.press()
 			}
 			s.homeAt = 0
 		}
