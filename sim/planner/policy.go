@@ -162,9 +162,10 @@ func (c *Ctx) dpsPerAP(s *State) float64 {
 // basePolicy picks the next action, or actNone to wait for the next event.
 func (c *Ctx) basePolicy(s *State) int {
 	best, bestV := actNone, 0.0
-	// A queued Heroic Strike or Cleave keeps its rage until it lands.
+	// With a gate, a queued Heroic Strike or Cleave keeps its rage until it lands. Without one the rage is paid only on
+	// the swing (a white swing when short), so other abilities may spend it.
 	held := 0.0
-	if s.queued >= 0 {
+	if s.queued >= 0 && c.Pr.QueueGate > 0 {
 		held = c.abil[s.queued].Cost
 	}
 	for i, ab := range c.abil {
@@ -188,7 +189,7 @@ func (c *Ctx) basePolicy(s *State) int {
 	}
 	// Heroic Strike or Cleave: the rage sink. Queue the better one, when it beats the white swing it replaces and
 	// the rage left covers the next GCD's likely spend. (Its rage is not priced here: the price comes from the sink.)
-	if s.queued < 0 && s.t < s.deathAt && s.mhAt-s.t <= 0.5 {
+	if s.queued < 0 && s.t < s.deathAt && s.t >= s.requeueAt && (c.Pr.QueueGate <= 0 || s.mhAt-s.t <= c.Pr.QueueGate) {
 		reserve := c.reserve(s)
 		for i, ab := range c.abil {
 			if ab.Kind != KindQueued || !c.usable(s, i) || s.rage-ab.Cost < reserve {

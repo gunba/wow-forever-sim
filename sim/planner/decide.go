@@ -34,13 +34,19 @@ type Params struct {
 	WaitBias       float64  // percent of its value added to waiting
 	CandFloor      float64  // candidates need immediate value net of rage above this share of their rage cost's price (-1 = off)
 	CDValue        float64  // weight of the cooldown time still running at the horizon
+	QueueGate      float64  // Heroic Strike/Cleave may be queued only this many seconds before the swing (<= 0: any time)
+	Unqueue        bool     // the planner may cancel a queued swing (contract v1.4)
+	CancelLead     float64  // seconds before the swing the console can still be relied on to cancel the swing queued now
+	UnqueueBias    float64  // percent of its value taken off cancelling (a toggle must clearly win, not by rollout noise)
+	GCDFirst       float64  // percent within which a global-cooldown ability goes before a queue or cancel
 	Disable        []string `json:",omitempty"` // abilities the planner never uses (diagnostics)
 	// FixedSamples, when set, replaces the time budget with a fixed sample count (reproducible benchmarks).
 	FixedSamples int `json:",omitempty"`
 }
 
 var DefaultParams = Params{Horizon: 7, MinSamples: 6, MaxSamples: 60, HoldDecay: 40, HoldFloor: 1, HoldLook: 8, CeilingK: 3, CeilingStart: 0.7, UnknownLead: 0.7,
-	LooseWeight: 3, ContestWeight: 2, ArmorScale: 0.5, SwingLossScale: 4, SwingLossMH: 4, NextBoost: 12, NextScale: 8, RageKeep: 0.9, SinkFloor: 0.5, WaitBias: 0, CandFloor: -0.25, CDValue: 1}
+	LooseWeight: 3, ContestWeight: 2, ArmorScale: 0.5, SwingLossScale: 4, SwingLossMH: 4, NextBoost: 12, NextScale: 8, RageKeep: 0.9, SinkFloor: 0.5, WaitBias: 0, CandFloor: -0.25, CDValue: 1,
+	QueueGate: 0, Unqueue: true, CancelLead: 0.3, UnqueueBias: 5, GCDFirst: 1}
 
 // enemyAPCoefficient is the simulator's enemy attack power coefficient (core.EnemyAutoAttackAPCoefficient): the
 // share of base damage one point of attack power adds, used to value Demoralizing Shout.
@@ -221,6 +227,7 @@ func NewCtx(m *Model, msg *DecideMsg, pr Params) (*Ctx, *State, []string) {
 		} else if name, r := ranks.ByID(int32(*p.QueuedSwing)); r != nil {
 			s.queued = c.idx(name)
 		}
+		s.queuedTop = s.queued >= 0
 	}
 	// Auras by spell, any rank.
 	auraLeft := func(a AuraState) float64 { return f(a.Remaining, 999) - f(a.AgeMs, 0)/1000 }
@@ -400,6 +407,7 @@ func Decide(m *Model, msg *DecideMsg, pr Params) DecideAnswer {
 		lo, hi, budget = pr.FixedSamples, pr.FixedSamples, time.Hour
 	}
 	res := c.Search(s, cands, budget, lo, hi, seed)
+	res = c.gcdFirst(s, res)
 	for _, r := range res {
 		ans.Ranked = append(ans.Ranked, r.toRanked(c))
 	}
@@ -412,6 +420,9 @@ func Decide(m *Model, msg *DecideMsg, pr Params) DecideAnswer {
 	if debugDecide {
 		for _, r := range res {
 			name := "wait"
+			if r.Cand.Act == actUnqueue {
+				name = "unqueue"
+			}
 			if r.Cand.Act >= 0 {
 				name = string(c.abil[r.Cand.Act].Name)
 			}
@@ -426,6 +437,10 @@ func Decide(m *Model, msg *DecideMsg, pr Params) DecideAnswer {
 func (r Result) toRanked(c *Ctx) RankedAction {
 	out := RankedAction{Value: round3(r.Value), Terms: Terms{Damage: round3(r.Terms.Damage), Threat: round3(r.Terms.Threat),
 		Mitigation: round3(r.Terms.Mitigation), Terminal: round3(r.Terms.Terminal)}}
+	if r.Cand.Act == actUnqueue {
+		out.Action = json.RawMessage(`"unqueue"`)
+		return out
+	}
 	if r.Cand.Act == actWait {
 		out.Action = json.RawMessage(`"wait"`)
 		u := round3(r.Cand.WaitUntil)
@@ -462,9 +477,8 @@ func (c *Ctx) candidates(s *State, msg *DecideMsg) []Candidate {
 		if !engaged && ab.Kind != KindBuff {
 			continue // out of combat: only buffs; the console engages first
 		}
-		// Heroic Strike and Cleave are queued just before the swing (the console asks then); queuing earlier only
-		// locks in a choice the next decisions could make better.
-		if ab.Kind == KindQueued && s.mhAt > 0.5 {
+		// With a gate, Heroic Strike and Cleave are queued only shortly before the swing.
+		if ab.Kind == KindQueued && c.Pr.QueueGate > 0 && s.mhAt > c.Pr.QueueGate {
 			continue
 		}
 		// An action clearly worth less than the rage it costs only wins a rollout comparison by noise.
@@ -500,8 +514,50 @@ func (c *Ctx) candidates(s *State, msg *DecideMsg) []Candidate {
 			until = min(until, s.cdAt[i])
 		}
 	}
+	// A queued swing costs nothing until it lands, so cancelling it is an off-GCD action like any other.
+	if c.Pr.Unqueue && s.queued >= 0 && engaged {
+		out = append(out, Candidate{Act: actUnqueue})
+	}
 	out = append(out, Candidate{Act: actWait, WaitUntil: max(until, 0.1)})
 	return out
+}
+
+// gcdFirst moves a global-cooldown ability ahead of a queue or cancel that only matches or narrowly beats it: the
+// console presses one key a frame, and the swing can be queued or cancelled on a later frame while the global
+// cooldown runs, unless the swing lands before then.
+func (c *Ctx) gcdFirst(s *State, res []Result) []Result {
+	if len(res) < 2 || s.mhAt >= 0 && s.mhAt <= 2*ConsoleCadence.Seconds() {
+		return res
+	}
+	top := res[0].Cand.Act
+	if top != actUnqueue && (top < 0 || c.abil[top].Kind != KindQueued) {
+		return res
+	}
+	wait := math.Inf(-1)
+	for _, r := range res {
+		if r.Cand.Act == actWait {
+			wait = r.Value
+		}
+	}
+	for k := 1; k < len(res); k++ {
+		a := res[k].Cand.Act
+		if a < 0 || !c.abil[a].GCD {
+			continue
+		}
+		if res[k].Value >= wait && res[0].Value-res[k].Value <= c.Pr.GCDFirst/100*abs(res[0].Value) {
+			out := append([]Result{res[k]}, res[:k]...)
+			return append(out, res[k+1:]...)
+		}
+		break
+	}
+	return res
+}
+
+// OnlyWait reports whether waiting is the only candidate (nothing usable now), without running the search.
+func OnlyWait(m *Model, msg *DecideMsg, pr Params) bool {
+	c, s, _ := NewCtx(m, msg, pr)
+	cands := c.candidates(s, msg)
+	return len(cands) == 1 && cands[0].Act == actWait
 }
 
 func (c *Ctx) String() string {

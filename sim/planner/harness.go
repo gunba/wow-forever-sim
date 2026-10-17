@@ -6,6 +6,7 @@ import (
 
 	"github.com/wowsims/classic/sim/core"
 	"github.com/wowsims/classic/sim/warrior"
+	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
 // Partner is the other group member in a scenario: a damage dealer competing with a tanking Warrior, or a tank
@@ -45,6 +46,7 @@ type Harness struct {
 	OnHit        func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult, periodic bool)
 	ForceExecute bool
 	DamageBy     map[int32]float64 // useful damage by spell ID (0 = white swings)
+	Results      map[int32]int     // attack results (any outcome, per target) by spell ID
 	events       []takenEvent
 }
 
@@ -95,6 +97,7 @@ func (h *Harness) reset(sim *core.Simulation) {
 	h.lifeHist = make([][24]float64, n)
 	h.KillTime, h.LossTime, h.Swaps, h.Taken, h.events, h.LossFocus = 0, 0, 0, 0, h.events[:0], 0
 	h.DamageBy = map[int32]float64{}
+	h.Results = map[int32]int{}
 	for i := range h.targets {
 		h.theyHave[i] = !h.tankRole()
 		if len(h.HP) <= i {
@@ -134,6 +137,9 @@ func (h *Harness) hit(sim *core.Simulation, spell *core.Spell, result *core.Spel
 		return
 	}
 	h.My[i] += result.Threat
+	if h.Results != nil {
+		h.Results[spellKey(spell)]++
+	}
 	if result.Damage > 0 {
 		h.Dealt[i] += result.Damage
 		if !h.Dead[i] {
@@ -286,6 +292,10 @@ func (h *Harness) LeadTrend(i int) float64 {
 }
 
 func spellKey(spell *core.Spell) int32 {
+	// Heroic Strike and Cleave replace the main-hand swing and carry its proc mask; keep them apart.
+	if a, r := ranks.ByID(spell.ActionID.SpellID); r != nil && (a == ranks.HeroicStrike || a == ranks.Cleave) {
+		return spell.ActionID.SpellID
+	}
 	if spell.ProcMask.Matches(core.ProcMaskMeleeMHAuto) {
 		return -1
 	}

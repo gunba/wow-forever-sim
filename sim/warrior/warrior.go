@@ -347,5 +347,14 @@ func (warrior *Warrior) QueuedSwingSpell() *WarriorSpell {
 	return nil
 }
 
+// CancelQueuedSwing toggles a queued Heroic Strike or Cleave off (pressing it again in game); its rage was never paid.
+func (warrior *Warrior) CancelQueuedSwing(sim *core.Simulation) bool {
+	if warrior.curQueueAura == nil || !warrior.curQueueAura.IsActive() {
+		return false
+	}
+	warrior.curQueueAura.Deactivate(sim)
+	return true
+}
+
 // RevengeWindow is the aura that makes Revenge usable after a dodge, parry or block.
 func (warrior *Warrior) RevengeWindow() *core.Aura { return warrior.revengeProcAura }

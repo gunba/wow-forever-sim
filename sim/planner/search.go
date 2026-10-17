@@ -9,7 +9,7 @@ import (
 
 // Candidate is a first action the search compares: an ability (possibly borrowing a stance), or waiting.
 type Candidate struct {
-	Act       int     // ability index, or actWait
+	Act       int     // ability index, actWait or actUnqueue
 	WaitUntil float64 // for actWait, seconds from now
 	Borrow    int     // stance to switch to first (0 = none)
 }
@@ -78,6 +78,9 @@ func (c *Ctx) Search(init *State, cands []Candidate, budget time.Duration, minSa
 			// Acting must beat waiting by a margin: close calls are mostly rollout noise.
 			r.Value += c.Pr.WaitBias / 100 * abs(r.Value)
 		}
+		if r.Cand.Act == actUnqueue {
+			r.Value -= c.Pr.UnqueueBias / 100 * abs(r.Value)
+		}
 	}
 	sort.SliceStable(res, func(a, b int) bool { return res[a].Value > res[b].Value })
 	return res
@@ -108,6 +111,11 @@ func (c *Ctx) prepareSample(s *State, j int) {
 func (c *Ctx) runCandidate(s *State, cand Candidate) {
 	if cand.Act == actWait {
 		c.run(s, actWait, cand.WaitUntil)
+		return
+	}
+	if cand.Act == actUnqueue {
+		s.queued, s.queuedTop, s.requeueAt = -1, false, s.t+0.4
+		c.run(s, actNone, 0)
 		return
 	}
 	if cand.Borrow != 0 && cand.Borrow != s.stance {

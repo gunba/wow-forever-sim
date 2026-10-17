@@ -153,6 +153,12 @@ func (b *Bench) Run(i int64) Outcome {
 	for k, v := range d.Casts {
 		out.Casts[string(k)] = v
 	}
+	// Queued swings that went off (presses minus cancels minus swings short of rage).
+	for k, v := range h.Results {
+		if a, r := ranks.ByID(k); r != nil && (a == ranks.HeroicStrike || a == ranks.Cleave) {
+			out.Casts["swing:"+string(a)] += v
+		}
+	}
 	out.DamageBy = map[string]float64{}
 	for k, v := range h.DamageBy {
 		name := fmt.Sprintf("spell %d", k)

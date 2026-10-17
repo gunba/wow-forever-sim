@@ -54,6 +54,7 @@ type Driver struct {
 	seq         int64
 	lastRage    float64
 	hurtAt      map[int]time.Duration // when each enemy was first seen damaged, this fight
+	noQueueAt   time.Duration         // after a cancel the console presses the queued swing again no sooner than this
 	Decisions   int
 	Sim         *core.Simulation
 	Casts       map[ranks.Ability]int
@@ -72,18 +73,14 @@ func newDriver(w *warrior.Warrior, cfg DriveConfig) *Driver {
 	for _, a := range DefaultManual {
 		d.manual[a] = true
 	}
-	// Heroic Strike and off-GCD decisions while the global cooldown runs: once per main-hand swing, just before it.
-	var askedFor time.Duration = -1
+	// The live console asks every frame in combat (about every 50 ms). While the global cooldown is ready the rotation
+	// loop already runs at that cadence; while it runs, this asks for off-GCD actions (Heroic Strike, cancelling it).
 	w.RegisterResetEffect(func(sim *core.Simulation) {
-		askedFor = -1
-		d.lastT, d.waitUntil, d.borrowed, d.lastRage = 0, 0, false, -1
+		d.lastT, d.waitUntil, d.borrowed, d.lastRage, d.noQueueAt = 0, 0, false, -1, 0
 		core.StartPeriodicAction(sim, core.PeriodicActionOptions{
-			Period: 100 * time.Millisecond,
+			Period: ConsoleCadence,
 			OnAction: func(sim *core.Simulation) {
-				at := w.AutoAttacks.MainhandSwingAt()
-				left := at - sim.CurrentTime
-				if left > 0 && left <= 300*time.Millisecond && at != askedFor && !w.GCD.IsReady(sim) {
-					askedFor = at
+				if !w.GCD.IsReady(sim) {
 					d.act(sim, true)
 				}
 			},
@@ -125,7 +122,7 @@ func (d *Driver) ensureModel(sim *core.Simulation) {
 }
 
 // act is one console frame: return home if a borrow is over, else ask the chooser and press.
-func (d *Driver) act(sim *core.Simulation, preSwing bool) {
+func (d *Driver) act(sim *core.Simulation, offGCD bool) {
 	d.Sim = sim
 	if sim.CurrentTime < d.lastT {
 		d.waitUntil, d.borrowed = 0, false
@@ -150,7 +147,7 @@ func (d *Driver) act(sim *core.Simulation, preSwing bool) {
 		}
 	}
 	rage := w.CurrentRage()
-	if !preSwing && sim.CurrentTime < d.waitUntil && rage == d.lastRage {
+	if !offGCD && sim.CurrentTime < d.waitUntil && rage == d.lastRage {
 		return
 	}
 	d.lastRage = rage
@@ -163,8 +160,15 @@ func (d *Driver) act(sim *core.Simulation, preSwing bool) {
 		d.Trace(sim, msg, spell, until)
 	}
 	if spell == 0 {
-		if until > 0 && !preSwing {
-			d.waitUntil = sim.CurrentTime + time.Duration(min(until, 0.1)*float64(time.Second)) // the console asks again every frame
+		if until > 0 && !offGCD {
+			d.waitUntil = sim.CurrentTime + min(time.Duration(until*float64(time.Second)), ConsoleCadence) // the console asks again every frame
+		}
+		return
+	}
+	if spell == unqueueSpell {
+		if w.CancelQueuedSwing(sim) {
+			d.count(ranks.Ability("Unqueue"))
+			d.noQueueAt = sim.CurrentTime + 400*time.Millisecond
 		}
 		return
 	}
@@ -201,6 +205,9 @@ func (d *Driver) press(sim *core.Simulation, gameID int32) {
 	}
 	ws := d.spells[ab.Name]
 	if ws == nil {
+		return
+	}
+	if ab.Kind == KindQueued && sim.CurrentTime < d.noQueueAt {
 		return
 	}
 	w := d.w
@@ -432,7 +439,16 @@ type PlannerChooser struct {
 	Last   DecideAnswer
 }
 
+// ConsoleCadence is how often the live console asks in combat.
+const ConsoleCadence = 50 * time.Millisecond
+
+// unqueueSpell is the chooser's code for cancelling the queued swing.
+const unqueueSpell int32 = -1
+
 func (pc *PlannerChooser) Choose(msg *DecideMsg) (int32, float64) {
+	if OnlyWait(pc.D.model, msg, pc.Params) {
+		return 0, ConsoleCadence.Seconds() // nothing usable: the answer is wait, without the search
+	}
 	ans := Decide(pc.D.model, msg, pc.Params)
 	pc.Last = ans
 	if len(ans.Ranked) == 0 {
@@ -441,6 +457,9 @@ func (pc *PlannerChooser) Choose(msg *DecideMsg) (int32, float64) {
 	best := ans.Ranked[0]
 	if best.Until != nil {
 		return 0, *best.Until
+	}
+	if string(best.Action) == `"unqueue"` {
+		return unqueueSpell, 0
 	}
 	var id float64
 	if err := jsonNumber(best.Action, &id); err != nil {

@@ -13,8 +13,9 @@ import (
 // inside it, a base policy (immediate value minus a rage price) makes the later decisions.
 
 const (
-	actWait = -1
-	actNone = -2
+	actWait    = -1
+	actNone    = -2
+	actUnqueue = -3
 
 	maxAbilities = 48
 )
@@ -78,7 +79,9 @@ type State struct {
 	gcdAt     float64
 	cdAt      [maxAbilities]float64
 	stance    int
-	queued    int // ability index of a queued Heroic Strike/Cleave, or -1
+	queued    int     // ability index of a queued Heroic Strike/Cleave, or -1
+	requeueAt float64 // after a cancel, the console presses the swing again no sooner than this
+	queuedTop bool    // the queued swing is the decision's own (queued now or before); later ones are the policy's
 	mhAt      float64
 	ohAt      float64
 	flurry    int
@@ -362,7 +365,12 @@ func (c *Ctx) queuedSwing(s *State) {
 		fmt.Fprintf(os.Stderr, "      %.2f queued swing %s rage %.1f\n", s.t, ab.Name, s.rage)
 	}
 	s.queued = -1
-	if s.rage < ab.Cost {
+	top := s.queuedTop
+	s.queuedTop = false
+	// Short of rage it is a white swing. With cancelling allowed, the swing is also cancelled (a white swing) when
+	// it would leave too little rage for an ability coming off its cooldown before the next swing: later decisions
+	// can cancel it, except the decision's own swing when it lands too soon for another one.
+	if s.rage < ab.Cost || c.Pr.Unqueue && (!top || s.t >= c.Pr.CancelLead) && s.rage-ab.Cost < c.reserve(s) {
 		c.whiteSwing(s, false)
 		return
 	}
@@ -482,8 +490,8 @@ func (c *Ctx) usable(s *State, i int) bool {
 	}
 	switch ab.Kind {
 	case KindQueued:
-		// Pressing the other one replaces a queued Heroic Strike or Cleave.
-		if s.queued == i || s.rage < ab.Cost {
+		// One swing is queued at a time (cancel it first to queue the other).
+		if s.queued >= 0 || s.rage < ab.Cost {
 			return false
 		}
 	case KindExecute:
@@ -536,7 +544,7 @@ func (c *Ctx) cast(s *State, i int) {
 	ap := c.ap(s)
 	switch ab.Kind {
 	case KindQueued:
-		s.queued = i
+		s.queued, s.queuedTop = i, false
 		return
 	case KindRage:
 		s.rage = min(100, s.rage+ab.RageGain)
@@ -675,6 +683,9 @@ func (c *Ctx) run(s *State, first int, waitUntil float64) {
 		holdUntil = waitUntil
 	} else if first >= 0 {
 		c.cast(s, first)
+		if c.abil[first].Kind == KindQueued {
+			s.queuedTop = true
+		}
 	}
 	actions := 0
 	for {
