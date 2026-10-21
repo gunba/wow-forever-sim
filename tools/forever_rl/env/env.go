@@ -270,6 +270,8 @@ func (e *Env) fight() {
 		seed, e.forcedSeed = e.forcedSeed, 0
 	}
 	e.episodes++
+	// Talents and the phase flag hold for the whole fight: write them once.
+	e.writeCommon(0)
 	e.inFight = true
 	e.cur.sim.RunIteration(seed)
 	e.inFight = false
@@ -328,9 +330,12 @@ func (e *Env) policy(sim *core.Simulation, ready []int) int {
 		// Waiting is the only choice: no decision to make.
 		return -1
 	}
-	sig := e.signature(sim)
-	if e.waiting && spec.Cfg.PollSeconds > 0 && sig == e.waitSig && sim.CurrentTime-e.waitAskedAt < core.DurationFromSeconds(spec.Cfg.PollSeconds) {
-		return -1
+	var sig uint64
+	if spec.Cfg.PollSeconds > 0 {
+		sig = e.signature(sim)
+		if e.waiting && sig == e.waitSig && sim.CurrentTime-e.waitAskedAt < core.DurationFromSeconds(spec.Cfg.PollSeconds) {
+			return -1
+		}
 	}
 	e.waiting = false
 	// The automatic cooldowns the agent owns come first for the teacher, under their own activation rules.
@@ -358,7 +363,6 @@ func (e *Env) policy(sim *core.Simulation, ready []int) int {
 	e.Reward += (d - e.lastDamage) * spec.Cfg.RewardScale
 	e.lastDamage = d
 	e.decisions++
-	e.writeCommon(0)
 	e.writeFight(sim)
 	e.suspend()
 	if e.Reseed != 0 {

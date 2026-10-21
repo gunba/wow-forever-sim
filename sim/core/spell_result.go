@@ -491,6 +491,9 @@ func (spell *Spell) dealDamageInternal(sim *Simulation, isPeriodic bool, result 
 	// taken effects, but is not damage dealt to the encounter for DPS metrics.
 	if sim.CurrentTime >= 0 && result.Target != spell.Unit {
 		spell.SpellMetrics[result.Target.UnitIndex].TotalDamage += result.Damage
+		if !spell.Flags.Matches(SpellFlagNoMetrics) && spell.Unit.IsOpponent(result.Target) {
+			spell.Unit.liveDamage += result.Damage
+		}
 		if isPartialResist {
 			spell.SpellMetrics[result.Target.UnitIndex].TotalResistedDamage += result.Damage
 		}

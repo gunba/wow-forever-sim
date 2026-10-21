@@ -479,20 +479,7 @@ func (spell *Spell) TagSplitMetric(splitIdx int32, tag int32) {
 // LiveDamage is the damage this unit's spells have dealt to opponents so far in the current iteration; the unit's
 // metrics only receive it when the iteration ends.
 func (unit *Unit) LiveDamage() float64 {
-	total := 0.0
-	for _, spell := range unit.Spellbook {
-		if spell.Flags.Matches(SpellFlagNoMetrics) {
-			continue
-		}
-		for _, split := range spell.splitSpellMetrics {
-			for i := range split {
-				if unit.IsOpponent(unit.Env.AllUnits[i]) {
-					total += split[i].TotalDamage
-				}
-			}
-		}
-	}
-	return total
+	return unit.liveDamage
 }
 
 func (spell *Spell) doneIteration() {

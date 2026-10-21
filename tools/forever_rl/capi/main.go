@@ -164,6 +164,25 @@ func RLRestart(h C.int, seeds *C.int64_t, obs *C.float, mask *C.uint8_t, teacher
 	return 0
 }
 
+// RLWarmup plays counts[i] decisions of the published rotation in each environment i and writes the decision each
+// is then at.
+//
+//export RLWarmup
+func RLWarmup(h C.int, counts *C.int32_t, obs *C.float, mask *C.uint8_t, teacher *C.int32_t) (rc C.int) {
+	defer func() {
+		if r := recover(); r != nil {
+			rc = setErr(r)
+		}
+	}()
+	hd := get(h)
+	if hd == nil {
+		return setErr("bad handle")
+	}
+	c := unsafe.Slice((*int32)(unsafe.Pointer(counts)), hd.n)
+	hd.vec.Warmup(c, buffers(hd, obs, mask, teacher, nil, nil, nil))
+	return 0
+}
+
 // RLStepReseed is RLStep with a per-environment reseed applied right after each action (0: none).
 //
 //export RLStepReseed

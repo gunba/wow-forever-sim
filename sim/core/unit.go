@@ -30,6 +30,9 @@ type DynamicDamageTakenModifier func(sim *Simulation, spell *Spell, result *Spel
 // Unit is an abstraction of a Character/Boss/Pet/etc, containing functionality
 // shared by all of them.
 type Unit struct {
+	// Damage dealt to opponents this iteration (LiveDamage), kept as it happens.
+	liveDamage float64
+
 	Type UnitType
 
 	// Index of this unit with its group.
@@ -530,6 +533,7 @@ func (unit *Unit) finalize() {
 
 func (unit *Unit) reset(sim *Simulation, _ Agent) {
 	unit.enabled = true
+	unit.liveDamage = 0
 	unit.resetCDs(sim)
 	unit.Hardcast.Expires = startingCDTime
 	unit.ChanneledDot = nil

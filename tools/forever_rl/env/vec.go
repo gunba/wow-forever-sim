@@ -15,8 +15,9 @@ type VecEnv struct {
 }
 
 type command struct {
-	kind    int // 0 reset, 1 step, 2 close, 3 restart with seeds
+	kind    int // 0 reset, 1 step, 2 close, 3 restart with seeds, 4 warm up (counts teacher decisions)
 	actions []int32
+	counts  []int32
 	seeds   []int64
 	buf     *Buffers
 }
@@ -70,6 +71,12 @@ func (v *VecEnv) loop(wk *worker, ready *sync.WaitGroup) {
 			case 3:
 				e.Restart(cmd.seeds[i])
 				e.Advance()
+				v.copyOut(i, e, cmd.buf)
+			case 4:
+				for j := int32(0); j < cmd.counts[i]; j++ {
+					e.Action = e.Teacher
+					e.Advance()
+				}
 				v.copyOut(i, e, cmd.buf)
 			}
 		}
@@ -126,6 +133,12 @@ func (v *VecEnv) StepReseed(actions []int32, reseeds []int64, b *Buffers) {
 // Restart starts a new episode in every environment with the given fight seeds and runs each to its first decision.
 func (v *VecEnv) Restart(seeds []int64, b *Buffers) {
 	v.broadcast(command{kind: 3, seeds: seeds, buf: b})
+}
+
+// Warmup plays counts[i] decisions of the published rotation in environment i, each on its own, so that
+// environments started together end up at different points of their fights. Call it after Reset.
+func (v *VecEnv) Warmup(counts []int32, b *Buffers) {
+	v.broadcast(command{kind: 4, counts: counts, buf: b})
 }
 
 // SetTalents makes environment i play every following episode on this build. Call it between steps.

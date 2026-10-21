@@ -28,7 +28,13 @@ every action. The reward is damage. Built for Fire first; the environment runs e
   - mutations of the leaders (talent points moved);
   - a five-network surrogate (build -> DPS) trained on the fights, proposing builds by mean + spread;
   - shared-seed evaluations of the leaders against the same network and the APL on the published build.
-  It keeps the best checkpoint and anneals the learning rate and entropy bonus.
+  It keeps the best checkpoint (paired evaluations against the published APL), anneals the learning rate and entropy
+  bonus over a decision budget, and stops early once the best evaluation is old. It then picks talents among the
+  leaders on paired fights and confirms on 4,096 fresh paired fights.
+- `run_all.py`: every DPS build at its highest-simming race (tanks excluded), with budgets by fight length (melee
+  500M decisions, casters 150M); writes `artifacts/ml/<key>.json` (learned and published DPS on the same fights,
+  talent changes, actions, cooldowns, differences, a first-minute timeline) for the review portal's Learned column
+  (`tools/forever_bench/ml_pages.py`). Resumable; `budgets.json` in the runs folder overrides budgets between builds.
 - `talent_screen.py`: every legal one-point talent move from a base build, played by an APL or a
   model; the leaders are confirmed on fresh fights and the base moves to the best significant change.
 - `compare.py`: a paired table of (build, player) rows, where a player is the published APL, another rotation file,
@@ -41,15 +47,30 @@ Environment options (`Config`):
 - `fullChoices`: major cooldowns become agent actions (the teacher uses them under their automatic rules), queued
   on-next-swing attacks can be unqueued, and 0.25 s and 1 s waits are added.
 - Decisions where waiting is the only legal action are skipped (`keepWaitOnly` keeps them).
-- `pollSeconds`: after a wait, the agent is asked again as soon as anything it sees changes, and otherwise after this
-  long.
+- `pollSeconds` (0 for results): 0 asks the agent at every engine poll, the resolution the APL is checked at. A
+  positive value asks after a wait only when something the agent sees changes or that long has passed; that loses
+  timing fidelity and is not used for published results.
 - Each environment can be given its own talents (`set_talents`), taking effect from its next episode.
 - `rotation` replaces the published APL, both as teacher and as the source of the agent's actions.
 - `labeledRands` gives one random stream per roll label. Paired fights of two builds then stay aligned: correlation
   rises from 0.12 to 0.60 on Fury, and changes that alter nothing give a difference of exactly zero.
 
-Engine hooks: `APLRotation.SetPolicy`, `PriorityConfigIndexes`, `APLAction.CastSpell`, `Unit.LiveDamage` (per-iteration
-damage is otherwise only folded into the metrics when the iteration ends).
+Engine hooks: `APLRotation.SetPolicy`, `PriorityConfigIndexes`, `APLAction.CastSpell`, `Unit.LiveDamage` (a running
+total of damage to opponents; the metrics only fold it in when the iteration ends).
+
+Speed, with fights identical bit for bit (same DPS and decisions for the same seeds; byte-identical observations):
+
+- the reward reads a running damage total instead of summing every spell's metrics at each decision;
+- with a policy set, a cast entry whose spell is cooling down, or needs the global cooldown while it runs, is skipped
+  before its condition is evaluated (Spell.CanCast would reject it anyway);
+- talents are written into the observation once per fight.
+
+Together 1.24-1.68x for the environment. The learner keeps 8,192 fights in flight on all threads with page-locked
+buffers, draws actions with the Gumbel-max trick, keeps its per-fight bookkeeping in arrays, and spreads the fights
+over the 300 s before training (each environment first plays a random number of the published rotation's decisions)
+so every batch covers the whole fight. About 500k decisions a second end to end, against 118k before. At full
+fidelity a melee decision is ~0.11 s of fight, so rollouts are 128 decisions (~14 s) with GAE lambda 0.97 (~3.6 s);
+32-decision rollouts at lambda 0.95 collapsed once the imitation anchor faded.
 
 ## Measured (Fire, RTX 4070 Ti, 12 of 24 threads)
 

@@ -252,6 +252,16 @@ func (apl *APLRotation) getNextAction(sim *Simulation) *APLAction {
 	if apl.policy != nil {
 		apl.ready = apl.ready[:0]
 		for i, action := range apl.priorityList {
+			// A cast whose spell is cooling down, or needs the global cooldown while it runs, is not ready whatever
+			// its condition says (Spell.CanCast); skip it before evaluating anything.
+			if spell := action.CastSpell(); spell != nil {
+				if spell.DefaultCast.GCD > 0 && !spell.Unit.GCD.IsReady(sim) {
+					continue
+				}
+				if !BothTimersReady(spell.CD.Timer, spell.SharedCD.Timer, sim) {
+					continue
+				}
+			}
 			if action.IsReady(sim) {
 				apl.ready = append(apl.ready, i)
 			}

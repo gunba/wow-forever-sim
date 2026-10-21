@@ -13,7 +13,9 @@ DEFAULT_LIB = Path(os.environ.get("FOREVER_RL_LIB", Path.home() / ".cache/foreve
 class VecEnv:
     """n environments stepped together. Every array is reused between calls; copy what you keep."""
 
-    def __init__(self, config: dict, n: int, lib: Path = DEFAULT_LIB):
+    def __init__(self, config: dict, n: int, lib: Path = DEFAULT_LIB, pinned: bool = False):
+        """pinned: observation and mask buffers in page-locked memory (torch), so they copy to a GPU directly;
+        obs_t and mask_t are then torch views of obs and mask."""
         self.lib = ctypes.CDLL(str(lib))
         L = self.lib
         f32p, u8p, i32p = (ctypes.POINTER(t) for t in (ctypes.c_float, ctypes.c_uint8, ctypes.c_int32))
@@ -26,6 +28,7 @@ class VecEnv:
         L.RLClose.argtypes, L.RLClose.restype = [ctypes.c_int], None
         L.RLStepReseed.argtypes, L.RLStepReseed.restype = [ctypes.c_int, i32p, ctypes.POINTER(ctypes.c_int64), f32p, u8p, i32p, f32p, u8p, f32p], ctypes.c_int
         L.RLSetTalents.argtypes, L.RLSetTalents.restype = [ctypes.c_int, ctypes.c_int, ctypes.c_char_p], ctypes.c_int
+        L.RLWarmup.argtypes, L.RLWarmup.restype = [ctypes.c_int, i32p, f32p, u8p, i32p], ctypes.c_int
         L.RLRestart.argtypes, L.RLRestart.restype = [ctypes.c_int, ctypes.POINTER(ctypes.c_int64), f32p, u8p, i32p], ctypes.c_int
         cfg = {"repo": str(REPO), **config}
         self.h = L.RLCreate(json.dumps(cfg).encode(), n)
@@ -36,8 +39,14 @@ class VecEnv:
         self.spec = json.loads(buf.value.decode())
         self.n = n
         D, A = self.spec["obsDim"], self.spec["actDim"]
-        self.obs = np.zeros((n, D), np.float32)
-        self.mask = np.zeros((n, A), np.uint8)
+        if pinned:
+            import torch
+            self.obs_t = torch.zeros((n, D), dtype=torch.float32).pin_memory()
+            self.mask_t = torch.zeros((n, A), dtype=torch.uint8).pin_memory()
+            self.obs, self.mask = self.obs_t.numpy(), self.mask_t.numpy()
+        else:
+            self.obs = np.zeros((n, D), np.float32)
+            self.mask = np.zeros((n, A), np.uint8)
         self.teacher = np.zeros(n, np.int32)
         self.reward = np.zeros(n, np.float32)
         self.done = np.zeros(n, np.uint8)
@@ -87,6 +96,16 @@ class VecEnv:
         self._seeds = np.ascontiguousarray(seeds, dtype=np.int64)
         rc = self.lib.RLRestart(self.h, self._p(self._seeds, ctypes.c_int64), self._p(self.obs, ctypes.c_float),
                                 self._p(self.mask, ctypes.c_uint8), self._p(self.teacher, ctypes.c_int32))
+        if rc < 0:
+            raise RuntimeError(self._error())
+        return self.obs, self.mask, self.teacher
+
+    def warmup(self, counts):
+        """Play counts[i] decisions of the published rotation in environment i (after reset), so environments started
+        together are spread over their fights; returns the decision each is then at."""
+        self._counts = np.ascontiguousarray(counts, dtype=np.int32)
+        rc = self.lib.RLWarmup(self.h, self._p(self._counts, ctypes.c_int32), self._p(self.obs, ctypes.c_float),
+                               self._p(self.mask, ctypes.c_uint8), self._p(self.teacher, ctypes.c_int32))
         if rc < 0:
             raise RuntimeError(self._error())
         return self.obs, self.mask, self.teacher
