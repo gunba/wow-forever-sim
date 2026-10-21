@@ -25,6 +25,7 @@ class VecEnv:
         L.RLLastError.argtypes, L.RLLastError.restype = [ctypes.c_char_p, ctypes.c_int], ctypes.c_int
         L.RLClose.argtypes, L.RLClose.restype = [ctypes.c_int], None
         L.RLStepReseed.argtypes, L.RLStepReseed.restype = [ctypes.c_int, i32p, ctypes.POINTER(ctypes.c_int64), f32p, u8p, i32p, f32p, u8p, f32p], ctypes.c_int
+        L.RLSetTalents.argtypes, L.RLSetTalents.restype = [ctypes.c_int, ctypes.c_int, ctypes.c_char_p], ctypes.c_int
         L.RLRestart.argtypes, L.RLRestart.restype = [ctypes.c_int, ctypes.POINTER(ctypes.c_int64), f32p, u8p, i32p], ctypes.c_int
         cfg = {"repo": str(REPO), **config}
         self.h = L.RLCreate(json.dumps(cfg).encode(), n)
@@ -89,6 +90,11 @@ class VecEnv:
         if rc < 0:
             raise RuntimeError(self._error())
         return self.obs, self.mask, self.teacher
+
+    def set_talents(self, i, talents):
+        """Environment i plays its following episodes (from its next episode on) on this build."""
+        if self.lib.RLSetTalents(self.h, i, talents.encode()) < 0:
+            raise RuntimeError(self._error())
 
     def talents(self, i):
         buf = ctypes.create_string_buffer(256)

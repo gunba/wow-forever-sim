@@ -36,6 +36,17 @@ type Config struct {
 	Duration       float64 `json:"duration"`       // fight length override in seconds (0: the request's)
 	Threads        int     `json:"threads"`        // worker goroutines for a vector of environments
 	LabeledRands   bool    `json:"labeledRands"`   // one random stream per roll label, so replays with one changed decision stay aligned
+	// FullChoices gives the agent every choice a player has: major cooldowns (otherwise automatic), unqueueing a
+	// queued on-next-swing attack, and longer waits.
+	FullChoices bool `json:"fullChoices"`
+	// KeepWaitOnly asks the agent even when waiting is its only legal action (default: those points are skipped).
+	KeepWaitOnly bool `json:"keepWaitOnly"`
+	// PollSeconds: after a plain wait the agent is asked again as soon as anything it sees changes (an action becomes
+	// usable or not, a whole point of rage/energy or 1% of mana, an aura appearing or fading), and otherwise only after
+	// this long. 0 asks at every engine poll (50 ms).
+	PollSeconds float64 `json:"pollSeconds"`
+	// Rotation replaces the published APL (the teacher and the source of the agent's actions): APLRotation JSON.
+	Rotation string `json:"rotation"`
 }
 
 func (c *Config) defaults() {
@@ -81,8 +92,11 @@ type Spec struct {
 	basePoints  []int
 	BaseTalents string
 	agentSpells []core.ActionID
-	macros      []*proto.APLAction // the teacher's other entries (move, channel, sequences...) without their conditions
+	cooldowns   map[core.ActionID]bool // agent spells that are otherwise automatic major cooldowns
+	macros      []*proto.APLAction     // the teacher's other entries (move, channel, sequences...) without their conditions
 	macroNames  []string
+	queueAuras  map[core.ActionID]bool
+	waits       []float64 // seconds of the agent's longer waits, before the plain wait
 	auras       []auraKey
 	Duration    float64
 
@@ -141,6 +155,13 @@ func NewSpec(cfg Config) (*Spec, error) {
 	trees, err := loadTalentTrees(cfg.Repo, class)
 	if err != nil {
 		return nil, err
+	}
+	if cfg.Rotation != "" {
+		rot := &proto.APLRotation{}
+		if err := protojson.Unmarshal([]byte(cfg.Rotation), rot); err != nil {
+			return nil, fmt.Errorf("rotation: %w", err)
+		}
+		player.Rotation = rot
 	}
 	s := &Spec{Cfg: cfg, request: req, teacher: player.Rotation, trees: trees, BaseTalents: player.TalentsString,
 		Duration: req.Encounter.Duration}
@@ -281,6 +302,7 @@ func (s *Spec) discover() error {
 	}
 	spells := map[spellGroup]*core.Spell{}
 	ranks := map[spellGroup]int{}
+	s.queueAuras = map[core.ActionID]bool{}
 	auras := map[auraKey]bool{}
 	// Cooldowns the published rotation leaves to Autocast Other Cooldowns stay automatic: listing them as agent
 	// actions would take them out of the automatic set and away from the teacher.
@@ -297,6 +319,11 @@ func (s *Spec) discover() error {
 			g := s.groupOf(spell)
 			if cur, ok := spells[g]; !ok || spell.Rank > ranks[g] || (spell.Rank == ranks[g] && spell.ActionID.SpellID > cur.ActionID.SpellID) {
 				spells[g], ranks[g] = spell, spell.Rank
+			}
+		}
+		for _, aura := range char.GetAuras() {
+			if aura.Duration == core.NeverExpires && aura.ActionID.Tag != 0 && strings.Contains(aura.Label, "Queue") {
+				s.queueAuras[aura.ActionID] = true
 			}
 		}
 		for _, unit := range []*core.Unit{&char.Unit, sim.Encounter.TargetUnits[0]} {
@@ -322,9 +349,28 @@ func (s *Spec) discover() error {
 			}
 		}
 	}
+	s.cooldowns = map[core.ActionID]bool{}
 	for _, spell := range spells {
 		if !autocast[spell.ActionID] {
 			s.agentSpells = append(s.agentSpells, spell.ActionID)
+		} else if s.Cfg.FullChoices {
+			s.agentSpells = append(s.agentSpells, spell.ActionID)
+			s.cooldowns[spell.ActionID] = true
+		}
+	}
+	if s.Cfg.FullChoices {
+		// Major cooldowns the spellbook does not flag for the APL (items, racials) are agent actions too.
+		for id := range autocast {
+			found := false
+			for _, a := range s.agentSpells {
+				if a == id {
+					found = true
+				}
+			}
+			if !found {
+				s.agentSpells = append(s.agentSpells, id)
+				s.cooldowns[id] = true
+			}
 		}
 	}
 	sort.Slice(s.agentSpells, func(i, j int) bool { return s.agentSpells[i].String() < s.agentSpells[j].String() })
@@ -384,6 +430,18 @@ func (s *Spec) buildCandidate() {
 	for k, id := range s.agentSpells {
 		add(&proto.APLListItem{Action: &proto.APLAction{Action: &proto.APLAction_CastSpell{CastSpell: &proto.APLActionCastSpell{SpellId: id.ToProto()}}}}, kindAgent, k)
 	}
+	if s.Cfg.FullChoices {
+		ids := make([]core.ActionID, 0, len(s.queueAuras))
+		for id := range s.queueAuras {
+			ids = append(ids, id)
+		}
+		sort.Slice(ids, func(i, j int) bool { return ids[i].String() < ids[j].String() })
+		for _, id := range ids {
+			s.macros = append(s.macros, &proto.APLAction{Action: &proto.APLAction_CancelAura{CancelAura: &proto.APLActionCancelAura{AuraId: id.ToProto()}}})
+			s.macroNames = append(s.macroNames, "unqueue:"+s.actionName(core.ActionID{SpellID: id.SpellID}))
+		}
+		s.waits = []float64{0.25, 1}
+	}
 	for k, m := range s.macros {
 		add(&proto.APLListItem{Action: m}, kindAgent, nSpells+k)
 	}
@@ -406,7 +464,7 @@ func macroName(m *proto.APLAction, s *Spec) string {
 
 func (s *Spec) layout() {
 	s.T = len(s.trees.Nodes)
-	s.K = len(s.agentSpells) + len(s.macros) + 1
+	s.K = len(s.agentSpells) + len(s.macros) + len(s.waits) + 1
 	s.ActDim = s.T + s.K
 	for _, n := range s.trees.Nodes {
 		s.TalentNames = append(s.TalentNames, n.Name)
@@ -416,6 +474,9 @@ func (s *Spec) layout() {
 		s.ActionNames = append(s.ActionNames, "cast:"+s.actionName(id))
 	}
 	s.ActionNames = append(s.ActionNames, s.macroNames...)
+	for _, w := range s.waits {
+		s.ActionNames = append(s.ActionNames, fmt.Sprintf("wait:%gs", w))
+	}
 	s.ActionNames = append(s.ActionNames, "wait")
 	f := []string{"phase"}
 	for _, n := range s.trees.Nodes {
@@ -506,6 +567,38 @@ func (s *Spec) TeacherMap() []string {
 	return out
 }
 
+func (s *Spec) talentMax() []int {
+	out := make([]int, len(s.trees.Nodes))
+	for i, n := range s.trees.Nodes {
+		out[i] = n.Max
+	}
+	return out
+}
+
+func (s *Spec) talentRows() []int {
+	out := make([]int, len(s.trees.Nodes))
+	for i, n := range s.trees.Nodes {
+		out[i] = n.Row
+	}
+	return out
+}
+
+func (s *Spec) talentTreeIdx() []int {
+	out := make([]int, len(s.trees.Nodes))
+	for i, n := range s.trees.Nodes {
+		out[i] = n.Tree
+	}
+	return out
+}
+
+func (s *Spec) talentPrereqs() []int {
+	out := make([]int, len(s.trees.Nodes))
+	for i, n := range s.trees.Nodes {
+		out[i] = n.Prereq
+	}
+	return out
+}
+
 // SpecJSON describes the spaces for the learner.
 func (s *Spec) SpecJSON() []byte {
 	out, _ := json.Marshal(map[string]any{
@@ -513,6 +606,8 @@ func (s *Spec) SpecJSON() []byte {
 		"featureNames": s.FeatureNames, "talentNames": s.TalentNames, "baseTalents": s.BaseTalents, "duration": s.Duration,
 		"learnTalents": s.Cfg.LearnTalents, "fixedTalents": s.Cfg.Talents, "build": s.Cfg.Build, "race": s.Cfg.Race,
 		"treeSizes": s.trees.Sizes, "treeNames": s.trees.Names, "fightsPerBuild": s.Cfg.FightsPerBuild,
+		"fullChoices": s.Cfg.FullChoices, "talentMax": s.talentMax(), "talentRow": s.talentRows(), "talentTree": s.talentTreeIdx(),
+		"talentPrereq": s.talentPrereqs(),
 	})
 	return out
 }

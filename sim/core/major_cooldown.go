@@ -181,6 +181,9 @@ type majorCooldownManager struct {
 	// the course of the sim.
 	majorCooldowns []*MajorCooldown
 	minReady       time.Duration
+
+	// Cooldowns an APL took out of the automatic set by casting them itself, kept for tools that need their timing rules.
+	removedMajorCooldowns []MajorCooldown
 }
 
 func newMajorCooldownManager(cooldowns *proto.Cooldowns) majorCooldownManager {
@@ -267,9 +270,15 @@ func (mcdm *majorCooldownManager) GetInitialMajorCooldown(actionID ActionID) Maj
 	return MajorCooldown{}
 }
 
+// GetRemovedMajorCooldowns returns the cooldowns the rotation casts itself instead of leaving them automatic.
+func (mcdm *majorCooldownManager) GetRemovedMajorCooldowns() []MajorCooldown {
+	return mcdm.removedMajorCooldowns
+}
+
 func (mcdm *majorCooldownManager) removeInitialMajorCooldown(actionID ActionID) {
 	for i, mcd := range mcdm.initialMajorCooldowns {
 		if mcd.Spell.SameAction(actionID) {
+			mcdm.removedMajorCooldowns = append(mcdm.removedMajorCooldowns, mcd)
 			mcdm.initialMajorCooldowns = append(mcdm.initialMajorCooldowns[:i], mcdm.initialMajorCooldowns[i+1:]...)
 			mcdm.majorCooldowns = mcdm.majorCooldowns[:len(mcdm.majorCooldowns)-1]
 			return

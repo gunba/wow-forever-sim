@@ -183,6 +183,20 @@ func RLStepReseed(h C.int, actions *C.int32_t, reseeds *C.int64_t, obs *C.float,
 	return 0
 }
 
+// RLSetTalents makes environment i play its following episodes on this build.
+//
+//export RLSetTalents
+func RLSetTalents(h, i C.int, talents *C.char) C.int {
+	hd := get(h)
+	if hd == nil || int(i) < 0 || int(i) >= hd.n {
+		return setErr("bad handle or index")
+	}
+	if err := hd.vec.SetTalents(int(i), C.GoString(talents)); err != nil {
+		return setErr(err)
+	}
+	return 0
+}
+
 // RLTalents writes the talent string of environment i's last finished episode.
 //
 //export RLTalents

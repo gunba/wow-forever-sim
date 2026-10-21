@@ -4,6 +4,7 @@ import (
 	"iter"
 	"math"
 	"math/rand"
+	"sort"
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
@@ -11,13 +12,16 @@ import (
 
 // One simulation per talent build, with the lookups the policy and the observation need.
 type simEntry struct {
-	sim     *core.Simulation
-	char    *core.Character
-	target  *core.Unit
-	kind    []int // per parsed priority-list entry
-	agent   []int
-	spells  []*core.Spell // per agent spell, nil when this build lacks it
-	auras   []*core.Aura  // per tracked aura, nil when absent
+	sim    *core.Simulation
+	char   *core.Character
+	target *core.Unit
+	kind   []int // per parsed priority-list entry
+	agent  []int
+	spells []*core.Spell // per agent spell, nil when this build lacks it
+	auras  []*core.Aura  // per tracked aura, nil when absent
+	// Automatic-cooldown rules for agent-owned cooldowns, highest priority first: the teacher uses them as the
+	// automatic set would.
+	cdRules []cdRule
 	usedAt  int64
 	talents string
 }
@@ -56,7 +60,12 @@ type Env struct {
 	SimSeconds    float64
 	forcedSeed    int64 // seed of the next fight when restarted (0: automatic)
 	inFight       bool
-	Reseed        int64 // when nonzero, reseed the fight's random streams right after the next action (then cleared)
+	Reseed        int64         // when nonzero, reseed the fight's random streams right after the next action (then cleared)
+	NextTalents   string        // when set, the talents of every following episode (not when talents are learned)
+	waitUntil     time.Duration // a longer wait in progress
+	waitSig       uint64        // state signature at the last plain wait
+	waitAskedAt   time.Duration
+	waiting       bool
 
 	yield func(struct{}) bool
 	next  func() (struct{}, bool)
@@ -64,6 +73,11 @@ type Env struct {
 }
 
 type stopSignal struct{}
+
+type cdRule struct {
+	agent int
+	mcd   core.MajorCooldown
+}
 
 func newEnv(spec *Spec, id int) *Env {
 	e := &Env{spec: spec, id: id, rng: rand.New(rand.NewSource(spec.Cfg.Seed*7919 + int64(id))),
@@ -114,8 +128,11 @@ func (e *Env) run(yield func(struct{}) bool) {
 			e.chooseBuild()
 			e.fightsLeft = e.spec.Cfg.FightsPerBuild
 			e.newBuild = true
-		} else if !e.spec.Cfg.LearnTalents && e.talents == "" {
+		} else if !e.spec.Cfg.LearnTalents && (e.talents == "" || (e.NextTalents != "" && e.NextTalents != e.talents)) {
 			e.talents = e.spec.Cfg.Talents
+			if e.NextTalents != "" {
+				e.talents = e.NextTalents
+			}
 			pts, err := e.spec.trees.decode(e.talents)
 			if err != nil {
 				panic(err)
@@ -213,6 +230,19 @@ func (e *Env) entry() *simEntry {
 		}
 		ent.auras[j] = unit.GetAura(a.Label)
 	}
+	if e.spec.Cfg.FullChoices {
+		for _, mcd := range char.GetRemovedMajorCooldowns() {
+			if mcd.Type.Matches(core.CooldownTypeSurvival) {
+				continue
+			}
+			for k, id := range e.spec.agentSpells {
+				if mcd.Spell.SameAction(id) {
+					ent.cdRules = append(ent.cdRules, cdRule{agent: k, mcd: mcd})
+				}
+			}
+		}
+		sort.SliceStable(ent.cdRules, func(i, j int) bool { return ent.cdRules[i].mcd.Priority > ent.cdRules[j].mcd.Priority })
+	}
 	char.Rotation.SetPolicy(func(sim *core.Simulation, ready []int) int { return e.policy(sim, ready) })
 	e.clock++
 	ent.usedAt = e.clock
@@ -233,6 +263,7 @@ func (e *Env) damage() float64 {
 func (e *Env) fight() {
 	e.cur = e.entry()
 	e.lastDamage, e.decisions, e.sameTimeCount = 0, 0, 0
+	e.waitUntil, e.waiting = 0, false
 	e.lastDecisionT = -1
 	seed := e.spec.Cfg.Seed + int64(e.id)*1_000_003 + e.episodes*7_919
 	if e.forcedSeed != 0 {
@@ -263,13 +294,20 @@ func (e *Env) policy(sim *core.Simulation, ready []int) int {
 			return k
 		}
 	}
+	if sim.CurrentTime < e.waitUntil {
+		return -1
+	}
 	spec := e.spec
 	wait := spec.T + spec.K - 1
 	for i := range e.Mask {
 		e.Mask[i] = 0
 	}
 	e.Mask[wait] = 1
+	for w := range spec.waits {
+		e.Mask[wait-len(spec.waits)+w] = 1
+	}
 	teacher, teacherSet := wait, false
+	anyAction := false
 	for k, idx := range ready {
 		switch ent.kind[idx] {
 		case kindTeacher:
@@ -283,6 +321,23 @@ func (e *Env) policy(sim *core.Simulation, ready []int) int {
 			a := ent.agent[idx]
 			e.Mask[spec.T+a] = 1
 			e.readyPos[a] = k
+			anyAction = true
+		}
+	}
+	if !anyAction && !spec.Cfg.KeepWaitOnly {
+		// Waiting is the only choice: no decision to make.
+		return -1
+	}
+	sig := e.signature(sim)
+	if e.waiting && spec.Cfg.PollSeconds > 0 && sig == e.waitSig && sim.CurrentTime-e.waitAskedAt < core.DurationFromSeconds(spec.Cfg.PollSeconds) {
+		return -1
+	}
+	e.waiting = false
+	// The automatic cooldowns the agent owns come first for the teacher, under their own activation rules.
+	for _, r := range ent.cdRules {
+		if e.Mask[spec.T+r.agent] == 1 && (r.mcd.ShouldActivate == nil || r.mcd.ShouldActivate(sim, ent.char)) {
+			teacher = spec.T + r.agent
+			break
 		}
 	}
 	if e.Mask[teacher] == 0 {
@@ -313,9 +368,44 @@ func (e *Env) policy(sim *core.Simulation, ready []int) int {
 	}
 	a := int(e.Action) - spec.T
 	if a < 0 || a >= spec.K || e.Mask[spec.T+a] == 0 || a == spec.K-1 {
+		e.waiting, e.waitSig, e.waitAskedAt = true, sig, sim.CurrentTime
+		return -1
+	}
+	if w := a - (spec.K - 1 - len(spec.waits)); w >= 0 {
+		e.waitUntil = sim.CurrentTime + core.DurationFromSeconds(spec.waits[w])
 		return -1
 	}
 	return e.readyPos[a]
+}
+
+// signature hashes what the agent sees change in steps: which actions are usable, whole resource points and which
+// tracked auras are up.
+func (e *Env) signature(sim *core.Simulation) uint64 {
+	h := uint64(14695981039346656037)
+	mix := func(v uint64) {
+		h ^= v
+		h *= 1099511628211
+	}
+	for i := e.spec.T; i < len(e.Mask); i++ {
+		mix(uint64(e.Mask[i]))
+	}
+	u := &e.cur.char.Unit
+	if u.HasRageBar() {
+		mix(uint64(u.CurrentRage()))
+	}
+	if u.HasEnergyBar() {
+		mix(uint64(u.CurrentEnergy()))
+		mix(uint64(u.ComboPoints()))
+	}
+	if u.HasManaBar() {
+		mix(uint64(u.CurrentManaPercent() * 100))
+	}
+	for j, aura := range e.cur.auras {
+		if aura != nil && aura.IsActive() {
+			mix(uint64(j + 1))
+		}
+	}
+	return h
 }
 
 func (e *Env) writeCommon(phase float32) {

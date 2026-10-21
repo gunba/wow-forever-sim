@@ -29,6 +29,9 @@ func main() {
 	policy := flag.String("policy", "teacher", "teacher or random")
 	fightsPerBuild := flag.Int("fights-per-build", 1, "fights per chosen talent build")
 	specOnly := flag.Bool("spec", false, "print the spaces and exit")
+	full := flag.Bool("full", false, "full choices: cooldowns, unqueue, longer waits")
+	keepWait := flag.Bool("keep-wait-only", false, "ask even when waiting is the only choice")
+	poll := flag.Float64("poll", 0, "event-driven polling after a wait (seconds; 0 asks every 50 ms)")
 	jsonOut := flag.Bool("json", false, "print one JSON line of results")
 	cpuProfile := flag.String("cpuprofile", "", "write a CPU profile of the stepping loop")
 	flag.Parse()
@@ -37,7 +40,7 @@ func main() {
 
 	t0 := time.Now()
 	spec, err := env.NewSpec(env.Config{Repo: repo, Build: *build, Race: *race, LearnTalents: *learn, Seed: 20291021,
-		Threads: *threads, FightsPerBuild: *fightsPerBuild})
+		Threads: *threads, FightsPerBuild: *fightsPerBuild, FullChoices: *full, KeepWaitOnly: *keepWait, PollSeconds: *poll})
 	if err != nil {
 		panic(err)
 	}

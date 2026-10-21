@@ -128,6 +128,15 @@ func (v *VecEnv) Restart(seeds []int64, b *Buffers) {
 	v.broadcast(command{kind: 3, seeds: seeds, buf: b})
 }
 
+// SetTalents makes environment i play every following episode on this build. Call it between steps.
+func (v *VecEnv) SetTalents(i int, talents string) error {
+	if _, err := v.Spec.trees.decode(talents); err != nil {
+		return err
+	}
+	v.Envs[i].NextTalents = talents
+	return nil
+}
+
 func (v *VecEnv) Close() {
 	v.broadcast(command{kind: 2})
 	for _, wk := range v.workers {

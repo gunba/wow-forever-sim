@@ -63,6 +63,10 @@ def main():
     ap.add_argument("--build", default="fire")
     ap.add_argument("--race", default="Human")
     ap.add_argument("--learn-talents", action="store_true")
+    ap.add_argument("--talents", default="", help="fixed talents (default: the published ones)")
+    ap.add_argument("--full", action="store_true", help="full choices: cooldowns, unqueue, longer waits")
+    ap.add_argument("--poll", type=float, default=0.0, help="event-driven polling after a wait (seconds; 0: every 50 ms)")
+    ap.add_argument("--init", type=Path, help="start from this model (codesign or train), e.g. a talent-conditioned policy")
     ap.add_argument("--fights-per-build", type=int, default=1)
     ap.add_argument("--envs", type=int, default=512)
     ap.add_argument("--threads", type=int, default=8)
@@ -95,13 +99,24 @@ def main():
     dev = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     cfg = dict(build=a.build, race=a.race, learnTalents=a.learn_talents, fightsPerBuild=a.fights_per_build,
-               seed=1_000_000 * a.seed + 17, rewardScale=a.reward_scale, threads=a.threads)
+               seed=1_000_000 * a.seed + 17, rewardScale=a.reward_scale, threads=a.threads, fullChoices=a.full,
+               pollSeconds=a.poll, talents=a.talents)
     env = VecEnv(cfg, a.envs)
     spec = env.spec
     D, A, T = spec["obsDim"], spec["actDim"], spec["talents"]
+    init = None
+    if a.init:
+        init = torch.load(a.init, map_location="cpu", weights_only=False)
+        if init["spec"]["obsDim"] != D or init["spec"]["actDim"] != A:
+            raise SystemExit("--init model spaces differ from this environment")
+        a.hidden = init["net"]["trunk.0.weight"].shape[0]
     net = Net(D, A, a.hidden).to(dev)
+    if init:
+        net.load_state_dict(init["net"])
     opt = torch.optim.Adam(net.parameters(), lr=a.lr, eps=1e-5)
-    eval_env = VecEnv({**cfg, "seed": 987_654_321}, min(a.eval_fights, 256))
+    # Evaluation fights use one random stream per roll label, so the network and the published APL meet the same luck.
+    eval_env = VecEnv({**cfg, "seed": 987_654_321, "labeledRands": True}, a.eval_fights)
+    eval_seeds = np.arange(1, a.eval_fights + 1, dtype=np.int64) * 7_919 + 3
     (a.out / "spec.json").write_text(json.dumps(spec))
     log = (a.out / "log.jsonl").open("a")
     t_start = time.time()
@@ -164,23 +179,40 @@ def main():
             adv[t] = last
         return adv, adv + b_val, t_env, t_inf
 
-    def evaluate():
-        eobs, emask, _ = eval_env.reset()
+    teacher_dps = None
+
+    def play(use_teacher):
+        eobs, emask, etch = eval_env.restart(eval_seeds)
         n = eval_env.n
-        dps, builds, done_envs = [], collections.Counter(), np.zeros(n, bool)
+        dps, builds = np.full(n, np.nan), collections.Counter()
         steps = 0
-        while not done_envs.all() and steps < 20000:
-            with torch.no_grad():
-                logits, _ = net(torch.from_numpy(eobs).to(dev), torch.from_numpy(emask).to(dev).bool())
-                act = logits.argmax(-1).cpu().numpy().astype(np.int32)
-            eobs, emask, _, _, edone, einfo = eval_env.step(act)
+        while np.isnan(dps).any() and steps < 100000:
+            if use_teacher:
+                act = etch.astype(np.int32)
+            else:
+                with torch.no_grad():
+                    logits, _ = net(torch.from_numpy(eobs).to(dev), torch.from_numpy(emask).to(dev).bool())
+                    act = logits.argmax(-1).cpu().numpy().astype(np.int32)
+            eobs, emask, etch, _, edone, einfo = eval_env.step(act)
             steps += 1
             for i in np.nonzero(edone)[0]:
-                if not done_envs[i]:
-                    done_envs[i] = True
-                    dps.append(float(einfo[i, 0]))
+                if np.isnan(dps[i]):
+                    dps[i] = float(einfo[i, 0])
                     builds[eval_env.talents(int(i))] += 1
-        return float(np.mean(dps)), builds.most_common(3)
+        return dps, builds
+
+    def evaluate():
+        """Greedy DPS on the evaluation fights, and its paired difference to the published APL there."""
+        nonlocal teacher_dps
+        if teacher_dps is None and not a.learn_talents:
+            teacher_dps, _ = play(True)
+        dps, builds = play(False)
+        out = {"eval_dps": round(float(dps.mean()), 2)}
+        if teacher_dps is not None:
+            d = dps - teacher_dps
+            out |= {"teacher_dps": round(float(teacher_dps.mean()), 2), "vs_teacher": round(float(d.mean()), 2),
+                    "vs_teacher_se": round(float(d.std() / np.sqrt(len(d))), 2)}
+        return out, builds.most_common(3)
 
     def update(adv, ret, bc, bc_weight=0.0):
         n = R * N
@@ -239,6 +271,7 @@ def main():
 
     it = 0
     last_eval = None
+    best_eval = -1.0
     while True:
         elapsed = time.time() - t_start
         if elapsed > a.minutes * 60 or (a.max_decisions and totals["decisions"] >= a.max_decisions):
@@ -261,14 +294,20 @@ def main():
             row["top_builds"] = ep_builds.most_common(3)
             ep_builds.clear()
         if a.eval_every and it % a.eval_every == 0:
-            row["eval_dps"], row["eval_builds"] = evaluate()
+            ev_row, row["eval_builds"] = evaluate()
+            row |= ev_row
             last_eval = row["eval_dps"]
+            if ev_row["eval_dps"] > best_eval:
+                best_eval = ev_row["eval_dps"]
+                torch.save({"net": net.state_dict(), "spec": spec, "args": vars(a) | {"out": str(a.out)}, "eval": ev_row},
+                           a.out / "best.pt")
         log.write(json.dumps(row) + "\n")
         log.flush()
         print(json.dumps({k: row[k] for k in row if k not in ("top_builds", "eval_builds")}), flush=True)
-    final_dps, final_builds = evaluate()
+    final_eval, final_builds = evaluate()
     torch.save({"net": net.state_dict(), "spec": spec, "args": vars(a) | {"out": str(a.out)}}, a.out / "model.pt")
-    summary = {"final_eval_dps": final_dps, "final_builds": final_builds, "iterations": it, "decisions": totals["decisions"],
+    summary = {"final_eval": final_eval, "best_eval_dps": best_eval, "final_builds": final_builds, "iterations": it,
+               "decisions": totals["decisions"],
                "fights": totals["fights"], "minutes": round((time.time() - t_start) / 60, 2)}
     (a.out / "summary.json").write_text(json.dumps(summary, indent=1))
     print(json.dumps(summary), flush=True)
