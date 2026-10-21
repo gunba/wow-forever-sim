@@ -1,6 +1,8 @@
 package planner
 
 import (
+	"math"
+
 	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
@@ -51,7 +53,13 @@ func (c *Ctx) immediate(s *State, i int) float64 {
 			n = min(ab.Targets, s.targets)
 		}
 		d := c.abilityRaw(ab, ap) * c.physMult(s) * (o.land - o.crit + o.crit*ab.CritMult)
-		th := (d*ab.ThreatMult + ab.FlatThreat*o.land) * st
+		// Cleave's flat threat is split between the targets it lands on. Expected share per target with n targets
+		// each landing with probability p: p * E[1/landed | it lands] = (1 - (1-p)^n) / n.
+		flat := ab.FlatThreat * o.land
+		if n > 1 {
+			flat = ab.FlatThreat * (1 - math.Pow(1-o.land, float64(n))) / float64(n)
+		}
+		th := (d*ab.ThreatMult + flat) * st
 		wd, wth, wr := c.whiteSwingValue(s)
 		v := c.value(d, th*wt, 0) - c.value(wd, wth*wt, 0) - c.Mu*wr
 		if n > 1 {

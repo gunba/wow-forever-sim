@@ -31,6 +31,7 @@ LAMBDAS = {"lambda_0_5": 0.5, "lambda_1": 1.0, "threat": 0.0}
 WARRIOR_DPS_KEYS = {"fury": "fury_dps", "fury_2h": "fury_2h_dps", "arms": "arms_dps", "fury_sunder": "fury_sunder_dps"}
 SHARED_WEAPON_MODEL = {"fury_sunder": "fury"}
 NO_WINDFURY = {"fury", "fury_tank"}
+MELEE_HUNTERS = {"survival", "pet_melee", "survival_weave"}  # hunter builds whose melee weapons matter
 SCHOOLS = {"mage": ["arcane", "fire", "frost"], "warlock": ["shadow", "fire"], "priest": ["shadow", "holy"],
            "druid": ["nature", "arcane"], "shaman": ["nature", "fire", "frost"], "paladin": ["holy"]}
 
@@ -138,7 +139,7 @@ def stat_list(b):
             s += ["mh_weapon_dps", "str", "agi", "ap", "hit_pct", "crit_pct"]
         return s
     s = ["str", "agi", "ap", "hit_pct", "hit_at4", "crit_pct", "haste_pct", "expertise_pct", "weapon_damage"]
-    if w == "dw" or b["key"] in ("survival", "pet_melee"):
+    if w == "dw" or b["key"] in MELEE_HUNTERS:
         s += ["hit_at17"]
     if w != "feral":
         s += ["weapon_skill"]
@@ -163,7 +164,7 @@ def cap_stats(b):
 
 
 def grid_slots(b):
-    return {"dw": ["mh", "oh"], "2h": ["2h"], "shield": ["mh"], "hunter": ["ranged"] + (["mh", "oh"] if b["key"] in ("survival", "pet_melee") else []),
+    return {"dw": ["mh", "oh"], "2h": ["2h"], "shield": ["mh"], "hunter": ["ranged"] + (["mh", "oh"] if b["key"] in MELEE_HUNTERS else []),
             "feral": [], "caster": []}[b["weapons"]]
 
 

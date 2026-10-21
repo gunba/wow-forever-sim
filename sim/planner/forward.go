@@ -409,6 +409,7 @@ func (c *Ctx) queuedSwing(s *State) {
 	if ab.Targets > 1 {
 		targets = min(ab.Targets, s.targets)
 	}
+	hits := make([]queuedHit, 0, targets)
 	for k := 0; k < targets; k++ {
 		var r float64
 		if k == 0 {
@@ -436,12 +437,24 @@ func (c *Ctx) queuedSwing(s *State) {
 				c.deepWounds(s)
 			}
 		}
-		th := (d*ab.ThreatMult + ab.FlatThreat) * c.stanceThreat(s)
 		if c.trace {
 			fmt.Fprintf(os.Stderr, "        hit %d dmg %.1f r %.3f\n", k, d, r)
 		}
-		c.credit(s, d, th, k > 0)
+		hits = append(hits, queuedHit{k, d})
 	}
+	// Flat threat is split between the targets the swing lands on (Cleave; Heroic Strike has one target).
+	flat := ab.FlatThreat
+	if len(hits) > 1 {
+		flat /= float64(len(hits))
+	}
+	for _, h := range hits {
+		c.credit(s, h.damage, (h.damage*ab.ThreatMult+flat)*c.stanceThreat(s), h.target > 0)
+	}
+}
+
+type queuedHit struct {
+	target int
+	damage float64
 }
 
 func (c *Ctx) mobAttack(s *State) {
