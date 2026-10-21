@@ -366,6 +366,27 @@ func (paladin *Paladin) applyVindication() {
 		},
 	})
 
+	// Forever: 5 procs a minute on the main hand's speed, from swings and melee specials alike, and the target's
+	// debuff (440667, Magic) rolls spell hit; logs show 10 misses in 305 rolls (wowsims/forever #409). Seal of the
+	// Crusader's 0.715 factor on the chance is not modelled.
+	var ppmm core.PPMManager
+	var debuff *core.Spell
+	if paladin.Env.IsForever() {
+		ppmm = paladin.AutoAttacks.NewPPMManager(5, core.ProcMaskMelee)
+		debuff = paladin.RegisterSpell(core.SpellConfig{
+			ActionID:    core.ActionID{SpellID: 440667},
+			SpellSchool: core.SpellSchoolHoly,
+			DefenseType: core.DefenseTypeMagic,
+			ProcMask:    core.ProcMaskEmpty,
+			Flags:       core.SpellFlagNoMetrics | core.SpellFlagNoOnCastComplete,
+			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+				if spell.CalcOutcome(sim, target, spell.OutcomeMagicHit).Landed() {
+					targetAuras.Get(target).Activate(sim)
+				}
+			},
+		})
+	}
+
 	paladin.RegisterAura(core.Aura{
 		Label:    "Vindication Talent",
 		Duration: core.NeverExpires,
@@ -373,11 +394,22 @@ func (paladin *Paladin) applyVindication() {
 			aura.Activate(sim)
 		},
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if result.Landed() && spell.ProcMask.Matches(core.ProcMaskMelee) {
-				vindicationAura.Activate(sim)
-				if targetAuras != nil && result.Target.Type == core.EnemyUnit {
-					targetAuras.Get(result.Target).Activate(sim)
+			if !result.Landed() || !spell.ProcMask.Matches(core.ProcMaskMelee) {
+				return
+			}
+			if debuff != nil {
+				if !ppmm.Proc(sim, spell.ProcMask, "Vindication") {
+					return
 				}
+				vindicationAura.Activate(sim)
+				if result.Target.Type == core.EnemyUnit {
+					debuff.Cast(sim, result.Target)
+				}
+				return
+			}
+			vindicationAura.Activate(sim)
+			if targetAuras != nil && result.Target.Type == core.EnemyUnit {
+				targetAuras.Get(result.Target).Activate(sim)
 			}
 		},
 	})
@@ -396,7 +428,9 @@ func (paladin *Paladin) applyConsecratedGround() {
 	buffAura := paladin.RegisterAura(core.Aura{
 		Label:    "Consecrated Ground",
 		ActionID: core.ActionID{SpellID: 26573},
-		Duration: time.Second * 8,
+		// The hidden mark (1280353) lands at the cast and stays 0.6 sec past the last of the 8 ticks
+		// (wowsims/forever #516, from a combat log).
+		Duration: time.Millisecond * 8600,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
 			if !paladin.Env.IsForever() {
 				paladin.PseudoStats.SchoolDamageDealtMultiplier[stats.SchoolIndexHoly] *= multiplier
@@ -467,7 +501,15 @@ func (paladin *Paladin) applySanctifiedJudgement() {
 			}
 
 			if sim.Proc(procChance, "Sanctified Judgement") {
-				paladin.AddMana(sim, refund*paladin.currentSealSpell.Cost.GetCurrentCost(), manaMetrics)
+				cost := paladin.currentSealSpell.Cost
+				amount := refund * cost.GetCurrentCost()
+				if paladin.Env.IsForever() {
+					// The refund is a share of the seal's base cost with the percent cost cut added on top, not
+					// taken off: 60% x 90 x 1.10 = 59.4 mana with Benediction 5/5, measured at every Benediction
+					// rank (wowsims/forever #507).
+					amount = refund * cost.BaseCost * (2 - float64(cost.Multiplier)/100)
+				}
+				paladin.AddMana(sim, amount, manaMetrics)
 			}
 		},
 	})

@@ -82,7 +82,7 @@ export function makeForeverProvisionalModelInputs(parent: HTMLElement, player: P
 	addNote('Unverified model assumptions for sensitivity analysis, not established game formulas. Settings are saved with the profile.');
 
 	if ([Spec.SpecWarrior, Spec.SpecTankWarrior, Spec.SpecFeralTankDruid].includes(player.spec)) {
-		addNote('Incoming rage: leave a field blank to use its declared default; enter a value for a manual assumption. Zero coefficient disables incoming rage. Bounds are model validation limits, not game claims.');
+		addNote('Incoming rage: with every field blank the sim uses the rule measured on Forever logs, 2.5 × (1 − A) × damage before armor, blocks and absorbs / c(attacker level), with A 20–40% by attacker level (wowsims/forever #356). Entering any field switches to the older provisional formula below; zero coefficient disables incoming rage. Bounds are model validation limits, not game claims.');
 		const addRageInput = (field: keyof ForeverIncomingRageModel, label: string, min: number, max: number, defaultSource: string) => {
 			pickers.push(new ProvisionalNumberPicker(details, player, {
 				id: `forever-incoming-rage-${field}`,
@@ -99,7 +99,7 @@ export function makeForeverProvisionalModelInputs(parent: HTMLElement, player: P
 				},
 			}));
 		};
-		addRageInput('coefficient', 'Incoming rage coefficient (0–1000)', 0, 1000, 'declared central coefficient 10.');
+		addRageInput('coefficient', 'Provisional incoming rage coefficient (0–1000)', 0, 1000, 'coefficient 10 once any field is set.');
 		addRageInput('referenceArmorOverride', 'Reference armor fraction (0–0.95)', 0, 0.95,
 			'clamp(ExpectedStatCreatureArmor / (Armor + ArmorConstant), 0.20, 0.40).');
 		addRageInput('expectedHealthOverride', 'Expected creature health (1–1,000,000,000)', 1, 1e9,

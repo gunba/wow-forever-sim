@@ -3,9 +3,9 @@ character_stats_results: {
  value: {
   final_stats: 128.7
   final_stats: 166.1
-  final_stats: 530.53
-  final_stats: 310.2
-  final_stats: 221.1
+  final_stats: 531.696
+  final_stats: 308
+  final_stats: 224.4
   final_stats: 371
   final_stats: 0
   final_stats: 40
@@ -15,7 +15,7 @@ character_stats_results: {
   final_stats: 40
   final_stats: 36
   final_stats: 5
-  final_stats: 11.8183
+  final_stats: 11.782
   final_stats: 0
   final_stats: 0
   final_stats: 341.7
@@ -24,7 +24,7 @@ character_stats_results: {
   final_stats: 0
   final_stats: 0
   final_stats: 0
-  final_stats: 6607.9
+  final_stats: 6569.95
   final_stats: 0
   final_stats: 0
   final_stats: 1820.2
@@ -35,7 +35,7 @@ character_stats_results: {
   final_stats: 10.305
   final_stats: 5
   final_stats: 0
-  final_stats: 6539.3
+  final_stats: 6550.96
   final_stats: 27
   final_stats: 65
   final_stats: 60
@@ -53,18 +53,18 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.12961
+  weights: -0.09998
   weights: 0
-  weights: 0.32709
-  weights: 0
-  weights: 0
+  weights: 0.32675
   weights: 0
   weights: 0
   weights: 0
   weights: 0
   weights: 0
-  weights: 2.14435
-  weights: 1.95861
+  weights: 0
+  weights: 0
+  weights: 2.13837
+  weights: 1.86085
   weights: 0
   weights: 0
   weights: 0
@@ -99,63 +99,63 @@ stat_weights_results: {
 dps_results: {
  key: "TestWarlockShadowAndFlame-Phase1-AllItems-Champion'sDreadgear"
  value: {
-  dps: 308.49547
-  tps: 243.00044
+  dps: 308.17482
+  tps: 242.62651
  }
 }
 dps_results: {
  key: "TestWarlockShadowAndFlame-Phase1-Average-Default"
  value: {
-  dps: 311.53774
-  tps: 245.47489
+  dps: 311.5005
+  tps: 245.4347
  }
 }
 dps_results: {
  key: "TestWarlockShadowAndFlame-Phase1-Settings-Orc-prebis-Shadow and Flame Warlock-forever_shadow_and_flame-FullBuffs-Consumes-LongMultiTarget"
  value: {
-  dps: 307.68783
-  tps: 242.29506
+  dps: 308.64911
+  tps: 243.06375
  }
 }
 dps_results: {
  key: "TestWarlockShadowAndFlame-Phase1-Settings-Orc-prebis-Shadow and Flame Warlock-forever_shadow_and_flame-FullBuffs-Consumes-LongSingleTarget"
  value: {
-  dps: 307.68783
-  tps: 242.29506
+  dps: 308.64911
+  tps: 243.06375
  }
 }
 dps_results: {
  key: "TestWarlockShadowAndFlame-Phase1-Settings-Orc-prebis-Shadow and Flame Warlock-forever_shadow_and_flame-FullBuffs-Consumes-ShortSingleTarget"
  value: {
   dps: 318.85222
-  tps: 250.92366
+  tps: 250.81641
  }
 }
 dps_results: {
  key: "TestWarlockShadowAndFlame-Phase1-Settings-Orc-prebis-Shadow and Flame Warlock-forever_shadow_and_flame-NoBuffs-Consumes-LongMultiTarget"
  value: {
-  dps: 294.02612
-  tps: 229.67551
+  dps: 295.15871
+  tps: 230.27396
  }
 }
 dps_results: {
  key: "TestWarlockShadowAndFlame-Phase1-Settings-Orc-prebis-Shadow and Flame Warlock-forever_shadow_and_flame-NoBuffs-Consumes-LongSingleTarget"
  value: {
-  dps: 294.02612
-  tps: 229.67551
+  dps: 295.15871
+  tps: 230.27396
  }
 }
 dps_results: {
  key: "TestWarlockShadowAndFlame-Phase1-Settings-Orc-prebis-Shadow and Flame Warlock-forever_shadow_and_flame-NoBuffs-Consumes-ShortSingleTarget"
  value: {
-  dps: 299.87829
-  tps: 235.80364
+  dps: 300.33781
+  tps: 235.90224
  }
 }
 dps_results: {
  key: "TestWarlockShadowAndFlame-Phase1-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 307.68783
-  tps: 242.29506
+  dps: 308.64911
+  tps: 243.06375
  }
 }

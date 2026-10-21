@@ -2,10 +2,10 @@ character_stats_results: {
  key: "TestForeverEnhancement-Phase1-CharacterStats-Default"
  value: {
   final_stats: 317.9
-  final_stats: 446.6
-  final_stats: 357.5
+  final_stats: 444.4
+  final_stats: 359.7
   final_stats: 164.56
-  final_stats: 171.6
+  final_stats: 170.5
   final_stats: 227.368
   final_stats: 0
   final_stats: 40
@@ -20,22 +20,22 @@ character_stats_results: {
   final_stats: 0
   final_stats: 1319.36
   final_stats: 4.9
-  final_stats: 38.38728
+  final_stats: 38.27552
   final_stats: 0
   final_stats: 0
   final_stats: 0
   final_stats: 3708.4
   final_stats: 0
   final_stats: 0
-  final_stats: 2683.2
+  final_stats: 2678.8
   final_stats: 271
   final_stats: 0
   final_stats: 5
   final_stats: 0
-  final_stats: 24.38728
+  final_stats: 24.27552
   final_stats: 5
   final_stats: 0
-  final_stats: 4675
+  final_stats: 4697
   final_stats: 27
   final_stats: 97
   final_stats: 79
@@ -50,16 +50,12 @@ character_stats_results: {
 stat_weights_results: {
  key: "TestForeverEnhancement-Phase1-StatWeights-Default"
  value: {
-  weights: 0.38305
-  weights: 0.13901
+  weights: 0.38273
+  weights: 0.11799
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.18466
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
+  weights: 0.18437
   weights: 0
   weights: 0
   weights: 0
@@ -67,9 +63,13 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.17411
-  weights: 6.11119
-  weights: 4.01
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0.17397
+  weights: 6.44775
+  weights: 4.18422
   weights: 0
   weights: 0
   weights: 0
@@ -99,29 +99,29 @@ stat_weights_results: {
 dps_results: {
  key: "TestForeverEnhancement-Phase1-AllItems-TheSpiritcaller'sStorm"
  value: {
-  dps: 532.43429
-  tps: 579.68136
+  dps: 531.05003
+  tps: 578.90625
  }
 }
 dps_results: {
  key: "TestForeverEnhancement-Phase1-Average-Default"
  value: {
-  dps: 572.2462
-  tps: 618.7153
+  dps: 571.94271
+  tps: 618.39314
  }
 }
 dps_results: {
  key: "TestForeverEnhancement-Phase1-Settings-Dwarf-forever_enhancement-Default-default-FullBuffs-P1-Consumes-LongMultiTarget"
  value: {
-  dps: 603.48857
-  tps: 632.45929
+  dps: 605.14797
+  tps: 634.76388
  }
 }
 dps_results: {
  key: "TestForeverEnhancement-Phase1-Settings-Dwarf-forever_enhancement-Default-default-FullBuffs-P1-Consumes-LongSingleTarget"
  value: {
-  dps: 212.19116
-  tps: 240.50984
+  dps: 213.23339
+  tps: 243.33401
  }
 }
 dps_results: {
@@ -134,15 +134,15 @@ dps_results: {
 dps_results: {
  key: "TestForeverEnhancement-Phase1-Settings-Dwarf-forever_enhancement-Default-default-NoBuffs-P1-Consumes-LongMultiTarget"
  value: {
-  dps: 382.07312
-  tps: 399.72138
+  dps: 382.8211
+  tps: 400.75981
  }
 }
 dps_results: {
  key: "TestForeverEnhancement-Phase1-Settings-Dwarf-forever_enhancement-Default-default-NoBuffs-P1-Consumes-LongSingleTarget"
  value: {
-  dps: 126.75856
-  tps: 145.67942
+  dps: 126.39782
+  tps: 145.3815
  }
 }
 dps_results: {
@@ -155,7 +155,7 @@ dps_results: {
 dps_results: {
  key: "TestForeverEnhancement-Phase1-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 464.84317
-  tps: 508.92049
+  dps: 465.13359
+  tps: 509.74073
  }
 }

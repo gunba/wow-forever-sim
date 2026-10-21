@@ -69,11 +69,11 @@ func seedScore(b build, item core.Item, slot int) float64 {
 		dps := (item.WeaponDamageMin + item.WeaponDamageMax) / (2 * item.SwingSpeed)
 		switch slot {
 		case 14:
-			if !casterBuild(b) && b.Key != "feral" && b.Key != "beast_mastery" && b.Key != "marksmanship" {
+			if !casterBuild(b) && b.Key != "feral" {
 				score += 6*dps + 8*item.SwingSpeed
 			}
 		case 15:
-			if !casterBuild(b) && b.Key != "beast_mastery" && b.Key != "marksmanship" {
+			if !casterBuild(b) {
 				score += 3 * dps
 			}
 		case 16:

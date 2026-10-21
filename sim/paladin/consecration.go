@@ -15,6 +15,7 @@ import (
 // $s3 = 4 enemies take. Classic's 48 a tick at 0.042 becomes 12 + 27 at 0.095 on the capped part.
 func (paladin *Paladin) registerConsecration() {
 	const cappedTargets = 4
+	forever := paladin.Env.IsForever()
 
 	ranks := []struct {
 		level    int32
@@ -79,15 +80,17 @@ func (paladin *Paladin) registerConsecration() {
 				},
 				OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
 					// Consecration can miss, showing up as either a resist in logs or a
-					// silent failure (missing damage tick).
+					// silent failure (missing damage tick). On Forever each tick also rolls spell
+					// crit after the hit check, although no row states Periodic Can Crit
+					// (wowsims/forever #124: ticks crit for 1.5x in game).
 					// ponytail: "first 4 to enter" is read as the first 4 targets in the encounter.
 					for j, aoeTarget := range sim.Encounter.TargetUnits {
 						if j < cappedTargets {
-							dot.CalcAndDealPeriodicSnapshotDamage(sim, aoeTarget, dot.OutcomeMagicHitAndTick)
+							dot.CalcAndDealPeriodicSnapshotDamage(sim, aoeTarget, core.Ternary(forever, dot.OutcomeMagicHitAndSnapshotCrit, dot.OutcomeMagicHitAndTick))
 						} else {
 							// The flat part alone, which carries no coefficient; the spell's own
 							// BonusCoefficient stays zero so this does not pick one up.
-							dot.Spell.CalcAndDealDamage(sim, aoeTarget, rank.damage, dot.OutcomeMagicHitAndTick)
+							dot.Spell.CalcAndDealDamage(sim, aoeTarget, rank.damage, core.Ternary(forever, dot.Spell.OutcomeMagicHitAndCrit, dot.OutcomeMagicHitAndTick))
 						}
 					}
 				},

@@ -153,25 +153,32 @@ func TestForeverTwistEchoWaitsForWhiteSwing(t *testing.T) {
 	if command == nil || righteousness == nil {
 		t.Fatal("the Retribution profile is missing its distinct Echo auras")
 	}
-	for _, id := range []int32{20919, 20293, 20919} {
+	cast := func(id int32) {
 		seal := character.GetSpell(core.ActionID{SpellID: id})
 		if seal == nil {
 			t.Fatalf("missing seal %d", id)
 		}
 		seal.ApplyEffects(sim, sim.Encounter.TargetUnits[0], seal)
 	}
-	if !command.IsActive() || !righteousness.IsActive() {
-		t.Fatal("replacing two different seals did not bank both Echoes")
+	// Forever keeps one Echo up at a time, and a seal is never up with its own Echo (wowsims/forever #124, #218).
+	cast(20919)
+	cast(20293)
+	if !command.IsActive() || righteousness.IsActive() {
+		t.Fatal("replacing Command with Righteousness did not bank Command's Echo alone")
 	}
-	command.OnSpellHitDealt(command, sim, &core.Spell{ProcMask: core.ProcMaskMeleeMHSpecial},
+	cast(20919)
+	if command.IsActive() || !righteousness.IsActive() {
+		t.Fatal("recasting Command kept its own Echo or did not bank Righteousness's")
+	}
+	righteousness.OnSpellHitDealt(righteousness, sim, &core.Spell{ProcMask: core.ProcMaskMeleeMHSpecial},
 		&core.SpellResult{Outcome: core.OutcomeHit, Target: sim.Encounter.TargetUnits[0]})
-	if !command.IsActive() || !righteousness.IsActive() {
+	if !righteousness.IsActive() {
 		t.Fatal("a melee-classified Judgement spent the seal Echo before an autoattack")
 	}
-	command.OnSpellHitDealt(command, sim, &core.Spell{ProcMask: core.ProcMaskMeleeMHAuto},
+	righteousness.OnSpellHitDealt(righteousness, sim, &core.Spell{ProcMask: core.ProcMaskMeleeMHAuto},
 		&core.SpellResult{Outcome: core.OutcomeHit, Target: sim.Encounter.TargetUnits[0]})
-	if command.IsActive() || !righteousness.IsActive() {
-		t.Fatal("spending Command's Echo also spent Righteousness's distinct charge")
+	if righteousness.IsActive() {
+		t.Fatal("an autoattack did not spend the Echo")
 	}
 }
 

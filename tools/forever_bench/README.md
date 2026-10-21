@@ -119,7 +119,7 @@ Replay the current exact native profiles, including race-specific equipment:
 ```sh
 python3 tools/forever_bench/run_matrix.py --binary /path/to/forever-bench \
   --profiles artifacts/modelled_gear/forever_input_profiles.json --natural-hit \
-  --iterations 5000 --seed 1793500001 --output /tmp/forever-matrix --workers 24
+  --iterations 5000 --seed 1793600001 --output /tmp/forever-matrix --workers 24
 ```
 
 `artifacts/modelled_gear/forever_input_profiles.json` freezes the 218 selected players
@@ -132,7 +132,7 @@ Those earlier 26-build recipes and matched validation requests/results are
 archived in `artifacts/research_builds/validation.json.gz` at their pinned
 revision. They predate the additional build and haste timing change; use that
 revision to replay their original comparisons, not this roster. The current
-chart uses seed **1793500001** and 5,000 iterations per race/scenario. The
+chart uses seed **1793600001** and 5,000 iterations per race/scenario. The
 [October 8 selection packets](../../artifacts/correctness/october_8/selection-evidence.json)
 record independent confirmation; 145 affected DPS profiles used at most three
 coordinate passes, retaining 35 supported changes. Fury/Dwarf reached that bound

@@ -152,7 +152,9 @@ type Model struct {
 	DefStanceThreat  float64 // Defensive Stance threat multiplier (1.3, more with Defiance and a shield)
 	OtherStanceMult  float64 // Battle/Berserker threat multiplier
 	ShieldSpecRage   float64 // rage per block
-	IncomingRagePerD float64 // rage per point of damage taken (Forever incoming rage model)
+	IncomingRagePerD float64 // rage per point of damage taken under a manual (provisional) incoming rage model
+	// IncomingRageManual: the character overrides Forever's measured rage-from-damage-taken rule.
+	IncomingRageManual bool
 
 	Abilities []*Ability
 	byName    map[ranks.Ability]*Ability

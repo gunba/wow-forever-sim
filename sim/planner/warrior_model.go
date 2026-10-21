@@ -64,6 +64,7 @@ func BuildWarriorModel(w *warrior.Warrior, known map[int32]bool) *Model {
 	}
 	if p := w.ForeverIncomingRageParameters(); p.ExpectedHealth > 0 {
 		m.IncomingRagePerD = p.Coefficient / p.ExpectedHealth / (1 - p.ReferenceArmor)
+		m.IncomingRageManual = p.CoefficientOverride || p.ReferenceArmorOverride || p.ExpectedHealthOverride
 	}
 
 	mh := w.AutoAttacks.MH()

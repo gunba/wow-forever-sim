@@ -498,6 +498,57 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 			AtieshMp5Effect(&character.Unit, idx)
 		}
 	}
+
+	if partyBuffs.DarkInspiration > 0 {
+		// A Shadow Priest's Mind Blast every 8 sec keeps the 10 sec buff up, so the party's copy is permanent.
+		aura := MakePermanent(character.RegisterAura(Aura{
+			Label:      "Dark Inspiration (Party)",
+			ActionID:   DarkInspirationActionID.WithTag(-1),
+			BuildPhase: CharacterBuildPhaseBuffs,
+		}))
+		AttachDarkInspiration(aura, min(partyBuffs.DarkInspiration, 5))
+	}
+
+	if partyBuffs.AdmiralsHat {
+		MakePermanent(character.RegisterAura(Aura{
+			Label:      "Admiral's Hat",
+			ActionID:   ActionID{SpellID: 12022},
+			BuildPhase: CharacterBuildPhaseBuffs,
+		}).AttachBuildPhaseStatsBuff(stats.Stats{stats.Stamina: 10}))
+	}
+
+	if partyBuffs.Darkspear {
+		applyDarkspear(character)
+	}
+}
+
+// DarkInspirationActionID is the party buff of the Forever Shadow talent Dark Inspiration.
+var DarkInspirationActionID = ActionID{SpellID: 1326168}
+
+// AttachDarkInspiration gives an aura Dark Inspiration's Spirit, 3% a talent rank (1326159 effect 1, 15% at 5/5).
+// A priest's own copy and the party's share one category: only the stronger applies.
+func AttachDarkInspiration(aura *Aura, ranks int32) {
+	dep := aura.Unit.NewDynamicMultiplyStat(stats.Spirit, 1+0.03*float64(ranks))
+	aura.NewExclusiveEffect("DarkInspiration", false, ExclusiveEffect{
+		Priority: float64(ranks),
+		OnGain: func(ee *ExclusiveEffect, sim *Simulation) {
+			ee.Aura.Unit.EnableBuildPhaseStatDep(sim, dep)
+		},
+		OnExpire: func(ee *ExclusiveEffect, sim *Simulation) {
+			ee.Aura.Unit.DisableBuildPhaseStatDep(sim, dep)
+		},
+	})
+}
+
+// Darkspear (12802), a 3.20 speed polearm: Ancestor's Vengeance (16939) gives the party 4% crit (melee, ranged and
+// spell: A_MOD_CRIT_PCT) for 20 sec, at a 5% chance on hit with a 60 sec cooldown (1314143). The wielder's swings are
+// not simulated, so the buff keeps the uptime that gives: 20 / (60 + 3.2 / 0.05) = 16%.
+func applyDarkspear(character *Character) {
+	const swing, chance, icd, duration = 3.2, 0.05, 60.0, 20.0
+	aura := character.NewTemporaryStatsAura("Ancestor's Vengeance", ActionID{SpellID: 16939},
+		stats.Stats{stats.MeleeCrit: 4 * CritRatingPerCritChance, stats.SpellCrit: 4 * SpellCritRatingPerCritChance},
+		time.Second*duration)
+	ApplyFixedUptimeAura(aura, duration/(icd+swing/chance), DurationFromSeconds(swing), time.Millisecond)
 }
 
 // Applies buffs to pets.

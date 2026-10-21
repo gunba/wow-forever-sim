@@ -83,18 +83,41 @@ func (paladin *Paladin) registerSealProc(seal *core.Aura, proc *core.Spell, echo
 	paladin.sealProcs[seal] = sealEchoSource{id: echoID, spell: proc}
 }
 
+// On Forever only one Echo is up at a time: gaining one drops any other (wowsims/forever #218, seen in game), and a
+// seal and its own Echo are never up together, so casting a seal drops its Echo and a new rank of the same seal
+// leaves none (#124).
 func (paladin *Paladin) bankSealEcho(sim *core.Simulation, newSeal *core.Aura) {
-	if paladin.sealEchoes == nil || newSeal == paladin.currentSeal || !paladin.currentSeal.IsActive() {
+	if paladin.sealEchoes == nil {
 		return
 	}
-	source, ok := paladin.sealProcs[paladin.currentSeal]
-	if !ok {
-		return
+	forever := paladin.Env.IsForever()
+	if newSeal != paladin.currentSeal && paladin.currentSeal.IsActive() {
+		if source, ok := paladin.sealProcs[paladin.currentSeal]; ok {
+			if echo := paladin.sealEchoes[source.id]; echo != nil {
+				if forever {
+					for _, other := range paladin.sealEchoes {
+						if other != echo {
+							other.drop(sim)
+						}
+					}
+				}
+				echo.spell = source.spell
+				echo.aura.Activate(sim)
+			}
+		}
 	}
-	echo := paladin.sealEchoes[source.id]
-	if echo == nil {
-		return
+	if forever {
+		if own, ok := paladin.sealProcs[newSeal]; ok {
+			if echo := paladin.sealEchoes[own.id]; echo != nil {
+				echo.drop(sim)
+			}
+		}
 	}
-	echo.spell = source.spell
-	echo.aura.Activate(sim)
+}
+
+func (echo *sealEcho) drop(sim *core.Simulation) {
+	echo.spell = nil
+	if echo.aura.IsActive() {
+		echo.aura.Deactivate(sim)
+	}
 }

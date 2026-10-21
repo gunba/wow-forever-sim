@@ -4,21 +4,21 @@
 
 Current level-60 DPS and tank scenarios, plus conditional spell, item and encounter coverage. This register consolidates the recorded questions; it is not a claim that unlisted game behavior has been verified.
 
-**Latest follow-up (2026-10-21):** October 21 update: wowsims/forever review since 23 September, server hotfixes read from the game client cache, MythicSim in-game findings; spell resistance and miss model, raid-book spell ranks off, swing reset on casts, race offsets, Warrior threat and Bloodthrill, Seal of Righteousness, hotfixed Mage Frost tree, Forever consumables; SV Weave, Frostfire and Shockadin builds; talents and consumables re-searched for every DPS build. [Latest follow-up report](october-21-update.md).
+**Latest follow-up (2026-10-21):** October 21 follow-up: Marksmanship and Beast Mastery weave, Fury Hamstring weave, one Twist of Light Echo at a time with a reworked Retribution APL, Consecration crits, Sanctified Judgement and Vindication as measured, rage from damage taken as measured, the original race offsets restored, Arcane Missiles Clearcasting and area tick crits, and new party buffs. [Latest follow-up report](october-21-follow-up.md).
 
 **Original adjudication baseline:** 2026-09-27, `35cab052456a320358e998c12416687d69cae142`. That original review reconciled questions without changing mechanics or benchmark results. This current register also includes the later implementation and benchmark updates linked above; earlier audits remain historical evidence, not current task status.
 
-**Coverage:** 137/137 original entries reviewed; 70 additional coverage gaps, including later follow-ups.
+**Coverage:** 137/137 original entries reviewed; 75 additional coverage gaps, including later follow-ups.
 
 ## Before and after
 
 | Status | Before | Original entries now | Including additions |
 |---|---:|---:|---:|
-| Needs evidence | 84 | 38 | 45 |
+| Needs evidence | 84 | 36 | 43 |
 | Implementation gap | 27 | 3 | 3 |
 | Model assumption | 5 | 3 | 6 |
-| Accepted working answer | 0 | 13 | 33 |
-| Resolved | 20 | 50 | 78 |
+| Accepted working answer | 0 | 14 | 39 |
+| Resolved | 20 | 52 | 79 |
 | Outside current scenarios | 1 | 42 | 42 |
 
 A working answer is credible enough for an explicitly qualified model, not verified server behavior. Confidence applies to the stated finding, not every effect of that class. An implementation gap is not a request for a game experiment.
@@ -70,9 +70,6 @@ An experiment within the current level-30 beta, subject to actual access, learne
 - **High · [PAL-006 — Seal of Fury shield replacement and mana](#pal-006)**
   - Prerequisites: Level 20+ Paladin with Improved Seal of Fury, shield, learned ranks, uncapped mana and known incoming attacker levels.
   - Observe / verify: Measure successive procs, rank switching, partial/full depletion, replacement/expiry and capped attacker-level returns; distinguish generated capacity, absorbed damage and mana.
-- **High · [PAL-008 — Vindication's target AP reduction](#pal-008)**
-  - Prerequisites: Paladin with 1/3 to 3/3 Vindication (10 Retribution points first) and matched enemy swings.
-  - Observe / verify: Validate the target aura and damage reduction at each rank, without confusing owner AP growth with enemy AP loss.
 - **High · [WAR-006 — Flurry amount and charge events](#war-006)**
   - Prerequisites: Level-30 Warrior with 26 Fury points including Death Wish and 1/5 Flurry (for example Fury 25053005040010100, no Arms or Protection points); advanced combat logging.
   - Observe / verify: Auto-attack a mob for three minutes with one weapon, then dual wielding, then with Heroic Strike queued every swing. Count white swings between each Flurry gain and fade, and note whether the buff icon shows 3 charges. About 60 Flurry procs per setup.
@@ -182,9 +179,6 @@ Requires access beyond the announced level-30 beta or max-level content. Reclass
 - **High · [DRU-012 — Bear outgoing and incoming rage formulas](#dru-012)**
   - Prerequisites: Level-60 Bear and known outgoing/incoming attacks.
   - Observe / verify: Check that the low-level formula still fits; test queued Maul separately because it replaces the ordinary white event.
-- **High · [PAL-002 — Seal Echo coexistence and consumption](#pal-002)**
-  - Prerequisites: Level-40+ Twist of Light, both relevant seals and aura/event logging.
-  - Observe / verify: Replace seals before the next auto, record simultaneous Echo auras, then compare landed and avoided autos plus a Judgement-only control.
 - **High · [PAL-003 — Windfury Totem proc and charge rules](#pal-003)**
   - Prerequisites: Level-32+ Shaman providing Totem, Paladin recipient, no weapon imbue or other extra-attack source.
   - Observe / verify: Count eligible autos, specials and seal events; record AP aura charges and the next normal swing. Isolate avoided events and exclude immediate recursion before estimating chance.
@@ -244,9 +238,6 @@ Client data, source research, code inspection or simulator testing; no game expe
 - **High · [DATA-002 — Projected gear budget and stat prices](#data-002)**
   - Prerequisites: A proposed alternative budget or additional sourced crafted/PvP items.
   - Observe / verify: Fit out-of-sample items and compare total selected stat budgets by role; do not judge equivalence from the final DPS ranking.
-- **High · [PAL-008 — Vindication's target AP reduction](#pal-008)**
-  - Prerequisites: Trait curve 82984 and child 440667 level scaling plus existing AP-debuff exclusivity.
-  - Observe / verify: Reconcile the rendered level-60 amount with raw level fields; test activation/expiry and competing debuffs against known target AP.
 - **High · [SCEN-001 — Tank boss damage and external healing](#scen-001)**
   - Prerequisites: A chosen workload or credible raid-log encounter specification.
   - Observe / verify: Change damage/healing assumptions as a separately labeled scenario and compare matched inputs, rather than silently redefining the tank benchmark.
@@ -979,23 +970,23 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 ### CORE-027 — Race stat offsets
 
-**Resolved · Medium priority · High confidence**
+**Resolved · Medium priority · Moderate confidence**
 
-**Disposition:** Source-backed answer
+**Disposition:** Credible working answer
 
 **Question:** What are each race's base attribute offsets in Forever?
 
-**Finding:** Level 1 naked warrior character sheets on the beta (wowsims/forever #597).
+**Finding:** Forever briefly used the modern offsets (level-1 sheets, wowsims/forever #597) and restored the original ones on 21 October 2026 (ClassicWoWCommunity/forever-bugs#414, closed as fixed; wowsims/forever #619). Staff said the two Skyborne races get new, separate offsets.
 
-**Current implementation / scenario:** Level-1 sheet offsets (e.g. Tauren +2 Str/-2 Agi/+2 Sta/-2 Int, Orc +3/-3/+1/-1, Skyborne -1/+1/-1/+1); no race changes Spirit.
+**Current implementation / scenario:** Original races take the original game's offsets (Tauren +5 Str/-5 Agi/+2 Sta/-5 Int/+2 Spi, Orc +3/-3/+2/-3/+3, Undead -1/-2/+1/-2/+5, ...). Skyborne keep the beta sheets' -1/+1/-1/+1/0 until their new offsets show.
 
 **Impact:** A few points of each attribute; Tauren Strength drops 3.
 
-**Remaining scope:** None.
+**Remaining scope:** The new Skyborne offsets.
 
-**Implementation / model follow-up:** RaceOffsets in base_stats.go.
+**Implementation / model follow-up:** sim/core/base_stats.go and the level-1 table assets/db_inputs/basestats/forever_race_starting_stats.json.
 
-**References:** [sim/core/base_stats.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/base_stats.go)
+**References:** [sim/core/base_stats.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/base_stats.go) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/414](https://github.com/ClassicWoWCommunity/forever-bugs/issues/414) · [https://github.com/wowsims/forever/pull/619](https://github.com/wowsims/forever/pull/619)
 
 <a id="core-013"></a>
 
@@ -1040,6 +1031,32 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **Implementation / model follow-up:** Implemented except Stoneform (manual-only cooldown).
 
 **References:** [sim/warrior/shield_wall.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/shield_wall.go) · [sim/hunter/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/talents.go) · [sim/warrior/sweeping_strikes.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/sweeping_strikes.go)
+
+<a id="core-030"></a>
+
+### CORE-030 — Party buffs from other players
+
+**Accepted working answer · Low priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Which party buffs from other players should the sim offer?
+
+**Finding:** Client 1.60.1.70450 rows 1326168/1326159, 1325256/1325257, 1314143/16939 and 12022; wowsims/forever's PartyBuffs.
+
+**Current implementation / scenario:** Dark Inspiration (a Shadow Priest's talent ranks: +3% Spirit a rank, kept up permanently), Mana Tide Totem (count), Darkspear's Ancestor's Vengeance (4% crit at a 16% uptime) and Admiral's Hat (+10 Stamina). All off by default; Concentration Aura is not offered (interrupts are not modelled).
+
+**Impact:** Opt-in; the benchmark does not use them.
+
+**Remaining scope:** Darkspear's wielder is not simulated (fixed uptime).
+
+**Implementation / model follow-up:** UI inputs only.
+
+**Optional / conditional · Beyond level 30 / launch**
+- Prerequisites: A party with these providers.
+- Observe / verify: Buff uptime in a log.
+
+**References:** [sim/core/buffs.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/buffs.go) · [ui/core/components/inputs/buffs_debuffs.ts](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/components/inputs/buffs_debuffs.ts)
 
 ## Warrior
 
@@ -1211,19 +1228,19 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Accepted working answer · High priority · Moderate confidence**
 
-**Disposition:** Scenario decision
+**Disposition:** Credible working answer
 
 **Question:** Does unmitigated damage × 10 / maximum health explain incoming rage at all armor/health values?
 
-**Finding:** October 8 establishes expected creature health, shield-independent damage and correct crit/crush treatment, but not the coefficient, level key or exact normalization. The approved configurable central model and bounds are implemented and scoped callback/import checks pass; approval is not a server-formula measurement. October 11 audit: Developers' notes quoted in Fight Club (2026-10-08): 'Previously, we were balancing Rage gained around Warriors having 50% Armor ... We have rebalanced Rage gains based on appropriate values per level in the 20% to 40% range, varying by level.' A follow-up (2026-10-10) explains that the intended formula uses a level-based curve and that player maximum health was used by mistake for a while. This supports a level-based reference-armour model rather than player health; the exact curve is still unpublished.
+**Finding:** wowsims/forever #356 measured k = rage x c / pre-mitigation damage on Forever logs: 1.99 (attackers 16-42), 1.75 (44), 1.61 (46), 1.55 (50-60); the build notes describe the same 20-40% armor range.
 
-**Current implementation / scenario:** Unreleased explicit provisional shared Warrior/Bear incoming model on the DIRECT hit-callback pipeline: (Damage + AbsorbedDamage) × coefficient / player-level ExpectedStat CreatureHealth / (1-reference Armor). Central coefficient 10 and clamped expected-Armor ratio 20–40% are assumptions; no actual-Armor undo or player-MaxHP denominator. Optional overrides preserve explicit zero. Periodic-only damage, including logical channel children represented as periodic, does not generate this modeled incoming Rage.
+**Current implementation / scenario:** Rage from damage taken = 2.5 x (1 - A) x pre-mitigation damage / c(attacker level), c(L) = 0.0091107836 L^2 + 3.225598133 L + 4.2652911; A = 20% up to attacker level 42, 30% at 44, 36% at 46, 38% at 50, 40% at 63, interpolated. Crits and crushing blows count, armor/blocks/absorbs do not. Any manual override returns the older coefficient-10 formula.
 
 **Impact:** Protection rotation, self-damage resource gains and tank stat trade-offs.
 
-**Remaining scope:** Exact coefficient, expected-health level selector, reference curve/operation and higher-level scaling remain unpublished. Periodic-damage eligibility is also unknown: dealDamageInternal dispatches periodic delivery only to OnPeriodicDamageTaken, while RageBar listens only to OnSpellHitTaken. Generic taking-damage wording does not verify all DoTs/channels or complete PvP support. Current tank workloads use direct swings/pulses.
+**Remaining scope:** The 63 row (40%) is not measured; at 60 the curve sits 2.4% below the logs.
 
-**Implementation / model follow-up:** Use the exposed model and record resolved values/presence with each applicable row. Current tank selection/sensitivity and matrix evidence are complete; six coefficient20 guard failures remain prominent. Do not restore the old player-health/pre-Armor fit as verified or calibrate unknown values for selection gains.
+**Implementation / model follow-up:** Engine (sim/core/forever_incoming_rage.go) and the planner's rage forecast (sim/planner) use it.
 
 **Optional / conditional · Current beta · level 30**
 - Prerequisites: Level 30 Warrior and Bear, fractional Rage trace, no outgoing autos/spending/passive gains; independent Armor/Stamina and known enemy levels.
@@ -1237,7 +1254,7 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Prerequisites: Level-30 Warrior/Bear, DoT-only attacker then separated channeled bolts; no outgoing autos, Bloodrage, Berserker Rage or other on-hit/resource bonuses. Preserve uncapped, unmodified fractional power tracing.
 - Observe / verify: Log actual damage, absorbed amounts and event types. Accumulate enough ticks for fractional Rage to be observable; compare isolated DoT/channeled delivery with a direct-hit control. Do not infer periodic eligibility from a rounded zero or mixed-resource combat.
 
-**References:** [sim/core/rage.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/rage.go) · [docs/upstream-forever-review-2026-09-23.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/upstream-forever-review-2026-09-23.md) · [https://github.com/magey/forever-warrior/issues/3](https://github.com/magey/forever-warrior/issues/3) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/72#issuecomment-5777200313](https://github.com/ClassicWoWCommunity/forever-bugs/issues/72#issuecomment-5777200313) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/72#issuecomment-5808179814](https://github.com/ClassicWoWCommunity/forever-bugs/issues/72#issuecomment-5808179814) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/78#issuecomment-5786631000](https://github.com/ClassicWoWCommunity/forever-bugs/issues/78#issuecomment-5786631000) · [https://us.forums.blizzard.com/en/wow/t/2360696/5](https://us.forums.blizzard.com/en/wow/t/2360696/5) · [docs/october-8-overnight-update.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-8-overnight-update.md) · [sim/core/forever_incoming_rage.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/forever_incoming_rage.go) · [sim/core/forever_expected_stats.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/forever_expected_stats.go) · [sim/core/forever_incoming_rage_october9_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/forever_incoming_rage_october9_test.go) · [https://wago.tools/db2/ExpectedStat?build=1.60.1.70291](https://wago.tools/db2/ExpectedStat?build=1.60.1.70291) · [sim/core/spell_result.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/spell_result.go)
+**References:** [sim/core/rage.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/rage.go) · [docs/upstream-forever-review-2026-09-23.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/upstream-forever-review-2026-09-23.md) · [https://github.com/magey/forever-warrior/issues/3](https://github.com/magey/forever-warrior/issues/3) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/72#issuecomment-5777200313](https://github.com/ClassicWoWCommunity/forever-bugs/issues/72#issuecomment-5777200313) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/72#issuecomment-5808179814](https://github.com/ClassicWoWCommunity/forever-bugs/issues/72#issuecomment-5808179814) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/78#issuecomment-5786631000](https://github.com/ClassicWoWCommunity/forever-bugs/issues/78#issuecomment-5786631000) · [https://us.forums.blizzard.com/en/wow/t/2360696/5](https://us.forums.blizzard.com/en/wow/t/2360696/5) · [docs/october-8-overnight-update.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-8-overnight-update.md) · [sim/core/forever_incoming_rage.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/forever_incoming_rage.go) · [sim/core/forever_expected_stats.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/forever_expected_stats.go) · [sim/core/forever_incoming_rage_october9_test.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/forever_incoming_rage_october9_test.go) · [https://wago.tools/db2/ExpectedStat?build=1.60.1.70291](https://wago.tools/db2/ExpectedStat?build=1.60.1.70291) · [sim/core/spell_result.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/spell_result.go) · [https://github.com/wowsims/forever/pull/356](https://github.com/wowsims/forever/pull/356)
 
 **Earlier references:** T02 (incoming rage)
 
@@ -1661,6 +1678,32 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [sim/warrior/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/talents.go)
 
+<a id="war-027"></a>
+
+### WAR-027 — Hamstring weave for Windfury Totem
+
+**Accepted working answer · Medium priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Is a Hamstring between Bloodthirst and Whirlwind worth its rage for the extra Windfury Totem procs?
+
+**Finding:** wowsims/forever #243: every landed special rolls Windfury Totem's 20%; Hamstring is the cheapest.
+
+**Current implementation / scenario:** Fury, Fury (Sunder) and 2H Bloodthirst cast Hamstring when Bloodthirst and Whirlwind are at least 1.5 s away, outside execute, with Windfury Totem up. Arms does not (it lost 30-115 DPS in every placement tried).
+
+**Impact:** Fury +18, Fury (Sunder) +12, 2H Bloodthirst +31 DPS.
+
+**Remaining scope:** Depends on the provisional Warrior rage model.
+
+**Implementation / model follow-up:** APL only.
+
+**Optional / conditional · Beyond level 30 / launch**
+- Prerequisites: Fury Warrior with Windfury Totem.
+- Observe / verify: Windfury procs and damage with and without the Hamstring weave.
+
+**References:** [ui/warrior/apls/forever_fury.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/warrior/apls/forever_fury.apl.json) · [https://github.com/wowsims/forever/pull/243](https://github.com/wowsims/forever/pull/243)
+
 <a id="war-017"></a>
 
 ### WAR-017 — Last Stand temporary-health expiry floor
@@ -1735,34 +1778,6 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 ## Paladin
 
-<a id="pal-002"></a>
-
-### PAL-002 — Seal Echo coexistence and consumption
-
-**Needs evidence · High priority · Moderate confidence**
-
-**Disposition:** Partly answered
-
-**Question:** Can separate Command/Righteousness Echoes coexist, and what exactly spends them?
-
-**Finding:** The current Echo aura rows explicitly have one charge and white-melee proc mask 4. That supports the charge count and excludes ordinary Judgements from the consumption family. Separate spell IDs do not prove simultaneous coexistence or what avoided events do. Twist of Light is a level-40 talent, so this is not a level-30 experiment.
-
-**Current implementation / scenario:** Separate one-charge Echoes wait for a landed white swing. Avoided swings and melee-classified Judgements do not consume them.
-
-**Impact:** Ret seal-weaving damage; the talent itself needs later access.
-
-**Remaining scope:** Echo coexistence, replacement and avoided-swing consumption.
-
-**Implementation / model follow-up:** Retain the sourced one-charge/white-event structure while leaving those script-level details open.
-
-**Beyond level 30 / launch**
-- Prerequisites: Level-40+ Twist of Light, both relevant seals and aura/event logging.
-- Observe / verify: Replace seals before the next auto, record simultaneous Echo auras, then compare landed and avoided autos plus a Judgement-only control.
-
-**References:** [sim/paladin/twist_of_light.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/twist_of_light.go) · [docs/upstream-forever-review-2026-09-23.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/upstream-forever-review-2026-09-23.md) · [https://wago.tools/db2/SpellAuraOptions?build=1.60.1.69977](https://wago.tools/db2/SpellAuraOptions?build=1.60.1.69977) · [ui/core/talents/trees/paladin.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/paladin.json)
-
-**Earlier references:** T53
-
 <a id="pal-003"></a>
 
 ### PAL-003 — Windfury Totem proc and charge rules
@@ -1820,36 +1835,6 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **Earlier references:** T45 shield portion / M02
 
 **Related:** CORE-014, SCEN-005
-
-<a id="pal-008"></a>
-
-### PAL-008 — Vindication's target AP reduction
-
-**Needs evidence · High priority · Moderate confidence**
-
-**Disposition:** Partly answered
-
-**Question:** Does the target-side part of Vindication reduce incoming damage?
-
-**Finding:** Vindication applies sourced level-60 AP reduction 68/136/204 with strongest-effect handling while preserving the owner’s separate damage bonus. Incoming-damage native controls pass.
-
-**Current implementation / scenario:** Vindication applies sourced level-60 AP reduction 68/136/204 with strongest-effect handling while preserving the owner’s separate damage bonus. Incoming-damage native controls pass.
-
-**Impact:** Tank mitigation and fair talent selection.
-
-**Remaining scope:** Lower-level evaluation/rounding remains qualified rather than proved by the max-level test.
-
-**Implementation / model follow-up:** Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.
-
-**Sources / code**
-- Prerequisites: Trait curve 82984 and child 440667 level scaling plus existing AP-debuff exclusivity.
-- Observe / verify: Reconcile the rendered level-60 amount with raw level fields; test activation/expiry and competing debuffs against known target AP.
-
-**Current beta · level 30**
-- Prerequisites: Paladin with 1/3 to 3/3 Vindication (10 Retribution points first) and matched enemy swings.
-- Observe / verify: Validate the target aura and damage reduction at each rank, without confusing owner AP growth with enemy AP loss.
-
-**References:** [sim/paladin/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/talents.go) · [sim/core/attack.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/attack.go) · [docs/beta-pass/paladin.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/paladin.md) · [https://www.wowhead.com/forever/spell=9452/vindication](https://www.wowhead.com/forever/spell=9452/vindication) · [https://www.wowhead.com/forever/spell=440667/vindication](https://www.wowhead.com/forever/spell=440667/vindication) · [tools/forever_tanks/main.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_tanks/main.go)
 
 <a id="pal-004"></a>
 
@@ -1935,6 +1920,34 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Earlier references:** T57 (Righteousness)
 
+<a id="pal-002"></a>
+
+### PAL-002 — Seal Echo coexistence and consumption
+
+**Resolved · High priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Can separate Command/Righteousness Echoes coexist, and what exactly spends them?
+
+**Finding:** wowsims/forever #218 (in-game clip: gaining any Echo drops the other) and #124 (a seal and its own Echo are never up together). The Retribution APL now waits for the banked Echo to be spent before twisting again.
+
+**Current implementation / scenario:** One Echo at a time: gaining an Echo drops any other, and casting a seal drops its own Echo (a new rank of the same seal leaves none). Echoes still wait for a landed white swing; Judgements do not spend them.
+
+**Impact:** Ret seal-weaving damage; the talent itself needs later access.
+
+**Remaining scope:** Avoided-swing consumption.
+
+**Implementation / model follow-up:** Forever ruleset only (sim/paladin/twist_of_light.go).
+
+**Optional / conditional · Beyond level 30 / launch**
+- Prerequisites: Level-40+ Twist of Light, both relevant seals and aura/event logging.
+- Observe / verify: Replace seals before the next auto, record simultaneous Echo auras, then compare landed and avoided autos plus a Judgement-only control.
+
+**References:** [sim/paladin/twist_of_light.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/twist_of_light.go) · [docs/upstream-forever-review-2026-09-23.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/upstream-forever-review-2026-09-23.md) · [https://wago.tools/db2/SpellAuraOptions?build=1.60.1.69977](https://wago.tools/db2/SpellAuraOptions?build=1.60.1.69977) · [ui/core/talents/trees/paladin.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/paladin.json) · [https://github.com/wowsims/forever/pull/218](https://github.com/wowsims/forever/pull/218) · [https://github.com/wowsims/forever/pull/124](https://github.com/wowsims/forever/pull/124)
+
+**Earlier references:** T53
+
 <a id="pal-005"></a>
 
 ### PAL-005 — Seal of Fury and its judgement
@@ -1968,6 +1981,36 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **Earlier references:** T45 / M01
 
 **Related:** PAL-006, SCEN-012
+
+<a id="pal-008"></a>
+
+### PAL-008 — Vindication's target AP reduction
+
+**Accepted working answer · High priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Does the target-side part of Vindication reduce incoming damage?
+
+**Finding:** wowsims/forever #409 fitted 5 PPM on weapon speed across 1.6 and 3.6 speed weapons (95% interval 4.5-5.5) and logged 10 debuff misses in 305 rolls.
+
+**Current implementation / scenario:** Vindication procs 5 times a minute on the main hand's speed from swings and melee specials; the target debuff (68/136/204 AP) rolls spell hit; the owner's damage bonus comes with every proc.
+
+**Impact:** Tank mitigation and fair talent selection.
+
+**Remaining scope:** Seal of the Crusader's 0.715 factor on the chance is not modelled; specials' share is unmeasured.
+
+**Implementation / model follow-up:** Forever ruleset only (sim/paladin/talents.go).
+
+**Optional / conditional · Sources / code**
+- Prerequisites: Trait curve 82984 and child 440667 level scaling plus existing AP-debuff exclusivity.
+- Observe / verify: Reconcile the rendered level-60 amount with raw level fields; test activation/expiry and competing debuffs against known target AP.
+
+**Optional / conditional · Current beta · level 30**
+- Prerequisites: Paladin with 1/3 to 3/3 Vindication (10 Retribution points first) and matched enemy swings.
+- Observe / verify: Validate the target aura and damage reduction at each rank, without confusing owner AP growth with enemy AP loss.
+
+**References:** [sim/paladin/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/talents.go) · [sim/core/attack.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/attack.go) · [docs/beta-pass/paladin.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/beta-pass/paladin.md) · [https://www.wowhead.com/forever/spell=9452/vindication](https://www.wowhead.com/forever/spell=9452/vindication) · [https://www.wowhead.com/forever/spell=440667/vindication](https://www.wowhead.com/forever/spell=440667/vindication) · [tools/forever_tanks/main.go](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_tanks/main.go) · [https://github.com/wowsims/forever/pull/409](https://github.com/wowsims/forever/pull/409)
 
 <a id="pal-007"></a>
 
@@ -2114,6 +2157,32 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Observe / verify: Judgement and Holy Strike hits with and without 50 spell power.
 
 **References:** [sim/paladin/sor.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/sor.go) · [sim/paladin/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/talents.go)
+
+<a id="pal-018"></a>
+
+### PAL-018 — Consecration crits, Sanctified Judgement refund, Consecrated Ground window
+
+**Accepted working answer · Medium priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Do Consecration's ticks crit, how much does Sanctified Judgement return, and how long does Consecrated Ground last?
+
+**Finding:** wowsims/forever #124 (tick crits for 1.5x in game), #507 (59.4 mana at Benediction 5/5, measured at every rank), #516 (log of the hidden mark 1280353).
+
+**Current implementation / scenario:** Forever Consecration ticks roll spell crit after the hit check; Sanctified Judgement returns its share of the seal's base cost x (2 - the percent cost modifier); Consecrated Ground's mark lasts from the cast to 0.6 s past the last tick.
+
+**Impact:** Small: Ret mana and Prot/Holy Consecration damage.
+
+**Remaining scope:** Two percent cost cuts (Benediction and Twist of Light) are added, not measured together.
+
+**Implementation / model follow-up:** Forever ruleset only.
+
+**Optional / conditional · Beyond level 30 / launch**
+- Prerequisites: Level-60 Paladin with the talents.
+- Observe / verify: Consecration crit ticks and Sanctified Judgement refunds in a log.
+
+**References:** [sim/paladin/consecration.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/consecration.go) · [sim/paladin/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/talents.go) · [https://github.com/wowsims/forever/pull/124](https://github.com/wowsims/forever/pull/124) · [https://github.com/wowsims/forever/pull/507](https://github.com/wowsims/forever/pull/507) · [https://github.com/wowsims/forever/pull/516](https://github.com/wowsims/forever/pull/516)
 
 <a id="pal-013"></a>
 
@@ -2281,21 +2350,21 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 ### DRU-012 — Bear outgoing and incoming rage formulas
 
-**Needs evidence · High priority · Low confidence**
+**Needs evidence · High priority · Moderate confidence**
 
 **Disposition:** Partly answered
 
 **Question:** Does Forever Bear retain damage-based rage or use normalized rules, and how are avoided swings handled?
 
-**Finding:** October 8 supersedes October 1's +75% outgoing critical bonus with +100%. This does not establish Warrior-style Bear base outgoing normalization. Incoming semantics are sourced, but the selected numerical scenario is explicitly provisional.
+**Finding:** Incoming Rage now follows the log-measured rule shared with Warriors (WAR-003).
 
-**Current implementation / scenario:** Bear base outgoing/avoidance interpretation remains inherited; outgoing white critical Rage is now +100%, with Maul excluded. Incoming Rage shares the explicit configurable Forever model under WAR-003; Classic remains unchanged.
+**Current implementation / scenario:** Bear base outgoing/avoidance interpretation remains inherited; outgoing white critical Rage is +100%, Maul excluded. Incoming Rage uses the measured rule under WAR-003.
 
 **Impact:** Bear Maul uptime, other ability throughput, rage from boss damage and gear/talent value. Frequent Maul alone cannot validate the model.
 
-**Remaining scope:** Base outgoing damage/speed/avoidance dependence and level 60 extrapolation; incoming formula terms under WAR-003.
+**Remaining scope:** Outgoing Rage normalization for Bears.
 
-**Implementation / model follow-up:** Preserve the new critical ratio and disclose the shared incoming assumptions without claiming identical measured class scripts.
+**Implementation / model follow-up:** Classic remains unchanged.
 
 **Current beta · level 30**
 - Prerequisites: Bear, uncapped rage, no Maul/Enrage/Primal Fury and matched attack speed while damage varies.
@@ -3069,6 +3138,32 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [ui/hunter/apls/survival_weave.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/hunter/apls/survival_weave.apl.json) · [sim/hunter/immolation_trap.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/immolation_trap.go) · [sim/hunter/strider_kick.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/strider_kick.go)
 
+<a id="hun-019"></a>
+
+### HUN-019 — Marksmanship and Beast Mastery melee weave
+
+**Accepted working answer · Medium priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Do the ranged Hunter trees gain from weaving Raptor Strike between Auto Shots, as Survival does?
+
+**Finding:** wowsims/forever ships MM Weave and BM Weave presets; the sim's own runs agree.
+
+**Current implementation / scenario:** MM Weave (0/28/23 with Expose Prey and Strider Kick, own Hunter's Mark, no pet) and BM Weave (31/20/0, Cat and two Hawks) step from 12 to 5 yards while the next Auto Shot is more than 1.5 s away, on the SV Weave gear.
+
+**Impact:** Both trees rank about 11-13% higher than standing at range; turret presets stay in the UI.
+
+**Remaining scope:** Movement uses the engine's run speed with no latency; real weaving loses some swings.
+
+**Implementation / model follow-up:** Bench builds marksmanship and beast_mastery.
+
+**Optional / conditional · Beyond level 30 / launch**
+- Prerequisites: Level-60 MM or BM Hunter with a slow melee weapon.
+- Observe / verify: Damage over 5 minutes weaving against standing at range on the same dummy.
+
+**References:** [ui/hunter/apls/marksmanship_weave.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/hunter/apls/marksmanship_weave.apl.json) · [ui/hunter/apls/beast_mastery_weave.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/hunter/apls/beast_mastery_weave.apl.json) · [https://github.com/wowsims/forever](https://github.com/wowsims/forever)
+
 <a id="hun-009"></a>
 
 ### HUN-009 — Demoralizing Screech target AP debuff
@@ -3446,6 +3541,32 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **Implementation / model follow-up:** Name-based Frost tree layout (ForeverTalentTreeFields).
 
 **References:** [sim/mage/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/talents.go) · [sim/mage/ice_barrier.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/ice_barrier.go)
+
+<a id="mag-013"></a>
+
+### MAG-013 — Arcane Missiles Clearcasting and area tick crits
+
+**Accepted working answer · Medium priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Do Arcane Missiles' missiles roll Arcane Concentration, and can Blizzard and Flamestrike ticks crit?
+
+**Finding:** wowsims/forever #489: 0 Clearcasting gains from 34 Arcane Missiles casts; tick rows lack ATTR_EX_2_CANT_CRIT and logs show tick crits.
+
+**Current implementation / scenario:** No Clearcasting from the missiles (nor the channel). Blizzard and Flamestrike burn ticks roll crit (the burn does not feed Ignite).
+
+**Impact:** Arcane loses some Clearcasting; area damage gains crits.
+
+**Remaining scope:** None known.
+
+**Implementation / model follow-up:** Forever ruleset only.
+
+**Optional / conditional · Beyond level 30 / launch**
+- Prerequisites: Mage with Arcane Concentration.
+- Observe / verify: Clearcasting gains per Arcane Missiles cast.
+
+**References:** [sim/mage/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/talents.go) · [sim/mage/blizzard.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/blizzard.go) · [sim/mage/flamestrike.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/flamestrike.go) · [https://github.com/wowsims/forever/pull/489](https://github.com/wowsims/forever/pull/489)
 
 ## Priest
 

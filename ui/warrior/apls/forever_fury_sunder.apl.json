@@ -297,6 +297,71 @@
     },
     {
       "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 7373
+          }
+        },
+        "condition": {
+          "and": {
+            "vals": [
+              {
+                "auraIsKnown": {
+                  "auraId": {
+                    "spellId": 10610
+                  }
+                }
+              },
+              {
+                "not": {
+                  "val": {
+                    "isExecutePhase": {
+                      "threshold": "E20"
+                    }
+                  }
+                }
+              },
+              {
+                "cmp": {
+                  "op": "OpGe",
+                  "lhs": {
+                    "spellTimeToReady": {
+                      "spellId": {
+                        "spellId": 23894
+                      }
+                    }
+                  },
+                  "rhs": {
+                    "const": {
+                      "val": "1.5s"
+                    }
+                  }
+                }
+              },
+              {
+                "cmp": {
+                  "op": "OpGe",
+                  "lhs": {
+                    "spellTimeToReady": {
+                      "spellId": {
+                        "spellId": 1680
+                      }
+                    }
+                  },
+                  "rhs": {
+                    "const": {
+                      "val": "1.5s"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": {
         "condition": {
           "and": {
             "vals": [

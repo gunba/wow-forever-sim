@@ -36,31 +36,36 @@ func october9IncomingRageWithModel(t *testing.T, ruleset proto.Ruleset, warrior 
 }
 
 func october9IncomingRage(t *testing.T, ruleset proto.Ruleset, warrior bool, health, damage, absorbed, mitigation float64) float64 {
-	return october9IncomingRageWithModel(t, ruleset, warrior, 60, health, nil, &SpellResult{Outcome: OutcomeHit, Damage: damage, AbsorbedDamage: absorbed, ResistanceMultiplier: mitigation})
+	pre := (damage + absorbed) / mitigation
+	return october9IncomingRageWithModel(t, ruleset, warrior, 60, health, nil, &SpellResult{Outcome: OutcomeHit, Damage: damage, AbsorbedDamage: absorbed, PreOutcomeDamage: pre * mitigation, ResistanceMultiplier: mitigation})
 }
 
-func TestForeverIncomingRageOctober9CentralContract(t *testing.T) {
-	// Explicit provisional central scenario, NOT a decoded server coefficient.
-	want := 100.0 * 10 / 4365 / (1 - 3566.0/(3566+5500))
+func TestForeverIncomingRageMeasuredContract(t *testing.T) {
+	// wowsims/forever #356: 2.5 x (1 - A) x pre-mitigation damage / c(attacker level); A = 40% at level 63.
+	c := 0.0091107836*63*63 + 3.225598133*63 + 4.2652911
+	want := 2.5 * (1 - .40) * 200 / c
 	for _, warrior := range []bool{true, false} {
 		for _, health := range []float64{3000, 9000} {
 			for _, absorbed := range []float64{0, 40, 100} {
 				got := october9IncomingRage(t, proto.Ruleset_RulesetForever, warrior, health, 100-absorbed, absorbed, .5)
 				if math.Abs(got-want) > 1e-12 {
-					t.Errorf("warrior=%t HP=%g absorbed=%g: incoming Rage %g, want provisional %g", warrior, health, absorbed, got, want)
+					t.Errorf("warrior=%t HP=%g absorbed=%g: incoming Rage %g, want measured %g", warrior, health, absorbed, got, want)
 				}
 			}
 		}
 	}
 }
 
-func TestForeverIncomingRageOctober9RetainsActualArmor(t *testing.T) {
+func TestForeverIncomingRageMeasuredIgnoresDefenderArmor(t *testing.T) {
 	for _, warrior := range []bool{true, false} {
 		naked := october9IncomingRage(t, proto.Ruleset_RulesetForever, warrior, 3000, 100, 0, 1)
 		armored := october9IncomingRage(t, proto.Ruleset_RulesetForever, warrior, 3000, 50, 0, .5)
-		if math.Abs(armored-naked/2) > 1e-12 {
-			t.Errorf("warrior=%t: armor-undone Rage %g; want half of naked %g", warrior, armored, naked)
+		if math.Abs(armored-naked) > 1e-12 {
+			t.Errorf("warrior=%t: armored Rage %g; want the naked %g (pre-mitigation damage)", warrior, armored, naked)
 		}
+	}
+	if a := ForeverAssumedArmorReduction(60); math.Abs(a-(.38+.02*10/13)) > 1e-12 {
+		t.Errorf("assumed armor reduction at 60: %g", a)
 	}
 }
 
@@ -124,7 +129,8 @@ func TestForeverIncomingRageOctober9LevelsAndValidation(t *testing.T) {
 		if parameters.ExpectedHealth != tc.health || math.Abs(parameters.ReferenceArmor-tc.reference) > 1e-12 {
 			t.Errorf("level %d: %+v", tc.level, parameters)
 		}
-		got := october9IncomingRageWithModel(t, proto.Ruleset_RulesetForever, true, tc.level, 9999, nil, &SpellResult{Damage: 100})
+		// The provisional formula, chosen by a manual coefficient.
+		got := october9IncomingRageWithModel(t, proto.Ruleset_RulesetForever, true, tc.level, 9999, &proto.ForeverIncomingRageModel{Coefficient: gproto.Float64(10)}, &SpellResult{Damage: 100})
 		if want := 100 * 10 / tc.health / (1 - tc.reference); math.Abs(got-want) > 1e-12 {
 			t.Errorf("level %d: %g, want %g", tc.level, got, want)
 		}

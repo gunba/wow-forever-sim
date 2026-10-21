@@ -49,7 +49,8 @@ func TestHunterBaselineManaSustain(t *testing.T) {
 			if err := protojson.Unmarshal(r.Metrics, metrics); err != nil {
 				t.Fatal(err)
 			}
-			for _, itemID := range []int32{13444, 12662} {
+			// The weave loadouts take Major Frenzy Potion over a mana potion; the conjured rune still restores mana.
+			for _, itemID := range []int32{12662} {
 				used := false
 				for _, resource := range metrics.Resources {
 					if resource.Id.GetItemId() == itemID && resource.ActualGain > 0 {

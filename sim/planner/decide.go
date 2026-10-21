@@ -8,6 +8,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/wowsims/classic/sim/core"
 	"github.com/wowsims/classic/sim/warrior/ranks"
 )
 
@@ -112,6 +113,12 @@ func NewCtx(m *Model, msg *DecideMsg, pr Params) (*Ctx, *State, []string) {
 	}
 	lvl := min(max(c.TLevel, 1), int32(len(expectedCreatures)-1))
 	ec := expectedCreatures[lvl]
+	// Forever's measured rule takes the hit before armor (wowsims/forever #356); the forward model counts damage
+	// after the player's armor, so divide its armor reduction back out.
+	c.RagePerTaken = m.IncomingRagePerD
+	if !m.IncomingRageManual {
+		c.RagePerTaken = core.ForeverRagePerPreMitigationDamage(c.TLevel) / max(0.2, 1-playerArmorReduction(m.Armor, c.TLevel))
+	}
 	c.TArmor = ec.armor
 	c.Elite = tg.Classification != nil && (*tg.Classification == "elite" || *tg.Classification == "rareelite" || *tg.Classification == "worldboss")
 	c.HealthPct = f(tg.HealthPct, 100)
@@ -578,3 +585,13 @@ func (c *Ctx) String() string {
 }
 
 var debugDecide = os.Getenv("PLANNER_DEBUG_DECIDE") != ""
+
+// playerArmorReduction is the share of a physical hit from an attacker of this level that the player's armor removes.
+func playerArmorReduction(armor float64, attackerLevel int32) float64 {
+	l := float64(attackerLevel)
+	k := 400 + 85*l
+	if attackerLevel >= 60 {
+		k = 400 + 85*(l+4.5*(l-59))
+	}
+	return min(0.75, max(0, armor/(armor+k)))
+}

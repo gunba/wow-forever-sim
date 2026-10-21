@@ -1,0 +1,268 @@
+{
+  "type": "TypeAPL",
+  "prepullActions": [
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 14322
+          }
+        }
+      },
+      "doAtValue": {
+        "const": {
+          "val": "-10s"
+        }
+      }
+    },
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 20904
+          }
+        }
+      },
+      "doAtValue": {
+        "const": {
+          "val": "-2s"
+        }
+      }
+    }
+  ],
+  "priorityList": [
+    {
+      "action": {
+        "autocastOtherCooldowns": {}
+      }
+    },
+    {
+      "action": {
+        "condition": {
+          "cmp": {
+            "lhs": {
+              "currentManaPercent": {}
+            },
+            "op": "OpGt",
+            "rhs": {
+              "const": {
+                "val": "80%"
+              }
+            }
+          }
+        },
+        "castSpell": {
+          "spellId": {
+            "spellId": 19577
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "condition": {
+          "or": {
+            "vals": [
+              {
+                "cmp": {
+                  "op": "OpLt",
+                  "lhs": {
+                    "hunterHawkCount": {}
+                  },
+                  "rhs": {
+                    "const": {
+                      "val": "2"
+                    }
+                  }
+                }
+              },
+              {
+                "cmp": {
+                  "op": "OpLe",
+                  "lhs": {
+                    "hunterHawkRemainingTime": {}
+                  },
+                  "rhs": {
+                    "spellTravelTime": {
+                      "spellId": {
+                        "spellId": 1293527
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "castSpell": {
+          "spellId": {
+            "spellId": 1293527
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 3045
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 13555
+          }
+        },
+        "condition": {
+          "cmp": {
+            "op": "OpLe",
+            "lhs": {
+              "dotRemainingTime": {
+                "spellId": {
+                  "spellId": 13555
+                }
+              }
+            },
+            "rhs": {
+              "const": {
+                "val": "0.5s"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 14287
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 2643
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "move": {
+          "rangeFromTarget": {
+            "const": {
+              "val": "5"
+            }
+          }
+        },
+        "condition": {
+          "cmp": {
+            "op": "OpGt",
+            "lhs": {
+              "autoTimeToNext": {
+                "autoType": "Ranged"
+              }
+            },
+            "rhs": {
+              "const": {
+                "val": "1.5s"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 14266,
+            "tag": 3
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 14271
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 14305
+          }
+        },
+        "condition": {
+          "cmp": {
+            "op": "OpGe",
+            "lhs": {
+              "remainingTime": {}
+            },
+            "rhs": {
+              "const": {
+                "val": "12s"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "move": {
+          "rangeFromTarget": {
+            "const": {
+              "val": "12"
+            }
+          }
+        },
+        "condition": {
+          "and": {
+            "vals": [
+              {
+                "not": {
+                  "val": {
+                    "auraIsActive": {
+                      "auraId": {
+                        "spellId": 14266
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "cmp": {
+                  "op": "OpGt",
+                  "lhs": {
+                    "autoTimeToNext": {
+                      "autoType": "Melee"
+                    }
+                  },
+                  "rhs": {
+                    "const": {
+                      "val": "0.5s"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

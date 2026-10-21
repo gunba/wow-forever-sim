@@ -103,8 +103,8 @@ func requestForBuild(b build, player *proto.Player, count int, rng int64) *proto
 		return req
 	}
 	req := request(player, count, rng)
-	if b.Key == "survival" || b.Key == "pet_melee" || b.Key == "survival_weave" {
-		// Expose Prey requires this Hunter's finite, self-maintained mark.
+	if b.Key == "survival" || b.Key == "pet_melee" || b.Key == "survival_weave" || b.Key == "marksmanship" {
+		// Expose Prey requires this Hunter's finite, self-maintained mark (the MM weave takes Expose Prey too).
 		req.Raid.Debuffs.HuntersMark = proto.TristateEffect_TristateEffectMissing
 	}
 	if *noBattleShout {
@@ -112,14 +112,12 @@ func requestForBuild(b build, player *proto.Player, count int, rng int64) *proto
 		req.Raid.Parties[0].Buffs.BattleShout = proto.TristateEffect_TristateEffectMissing
 	}
 	switch b.Key {
-	case "feral", "enhancement", "survival", "pet_melee", "survival_weave", "retribution", "retribution_physical", "shockadin",
+	case "feral", "enhancement", "survival", "pet_melee", "survival_weave", "beast_mastery", "marksmanship", "retribution", "retribution_physical", "shockadin",
 		"combat", "mutilate", "subtlety", "fury", "fury_sunder", "fury_2h", "arms":
 		// Forever Windfury Totem is a group buff, not a temporary weapon enchant. Since client
 		// 1.60.1.70425 both totems are raid-wide and Grace of Air is no longer exclusive with
 		// Windfury, so the melee groups take both from the raid's Shamans.
 		req.Raid.Parties[0].Buffs.WindfuryTotem = true
-	case "beast_mastery", "marksmanship":
-		// The ranged Hunters keep Grace of Air.
 	default:
 		// Casters do not get an irrelevant Agility totem.
 		req.Raid.Buffs.GraceOfAirTotem = proto.TristateEffect_TristateEffectMissing

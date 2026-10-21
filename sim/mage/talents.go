@@ -332,6 +332,11 @@ func (mage *Mage) applyArcaneConcentration() {
 			if !result.Landed() || !spell.Flags.Matches(SpellFlagMage) || spell.SpellCode == SpellCode_MageArcaneMissiles || !icd.IsReady(sim) {
 				return
 			}
+			// Forever: the missiles don't roll Clearcasting either (a log has 0 gains from 34 Arcane Missiles casts,
+			// wowsims/forever #489).
+			if mage.Env.IsForever() && spell.SpellCode == SpellCode_MageArcaneMissilesTick {
+				return
+			}
 			// Client 1.60.1.70425: one roll per cast, not one per target struck.
 			if mage.Env.IsForever() {
 				if lastSpell == spell && lastAt == sim.CurrentTime {

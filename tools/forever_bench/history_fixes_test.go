@@ -133,6 +133,10 @@ func TestForeverProjectileSpeeds(t *testing.T) {
 	} {
 		t.Run(tc.key, func(t *testing.T) {
 			req := racialFixture(tc.key, proto.Race_RaceOrc)
+			if tc.key == "marksmanship" {
+				// The ranked MM Weave talents skip Sniper Shot; the turret Marksmanship talents take it.
+				req.Raid.Parties[0].Players[0].TalentsString = "5-0053452011523051-50004"
+			}
 			sim := core.NewSim(req, simsignals.Signals{})
 			unit := sim.Raid.AllPlayerUnits[0]
 			for id, speed := range tc.speeds {

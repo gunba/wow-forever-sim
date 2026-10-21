@@ -10,7 +10,7 @@ export const communityBuilds: Record<Spec, string[]> = {
 	[Spec.SpecElementalShaman]: ['Elemental 31/11/9', 'Stormcaller 29/22/0'],
 	[Spec.SpecEnhancementShaman]: ['Enhancement 20/31/0'],
 	[Spec.SpecRestorationShaman]: [],
-	[Spec.SpecHunter]: ['Beast Mastery 31/20/0', 'Marksmanship 5/37/9', 'Survival 7/11/33', 'Pet/Melee 16/11/24', 'SV Weave 0/20/31'],
+	[Spec.SpecHunter]: ['Beast Mastery 31/20/0', 'MM Weave 0/28/23', 'Marksmanship 5/37/9', 'Survival 7/11/33', 'Pet/Melee 16/11/24', 'SV Weave 0/20/31'],
 	[Spec.SpecMage]: ['Fire 0/35/16', 'Frost 12/3/36', 'Arcane 33/3/15', 'Arcane–Frost 29/0/22', 'Frostfire 0/29/22'],
 	[Spec.SpecRogue]: ['Combat Dual-Wield 15/33/3', 'Assassination Mutilate 31/20/0', 'Subtlety Hemo 20/0/31'],
 	[Spec.SpecHolyPaladin]: [],

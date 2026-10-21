@@ -1,0 +1,266 @@
+{
+ "format": 1,
+ "release": "October 21 follow-up",
+ "talents": {
+  "method": "bench -optimize -rounds 4 at one representative race per build (opt_talents.py), as for the October 21 update",
+  "results": {
+   "beast_mastery": {
+    "race": "Orc",
+    "before": "5320001505101251-00531510005",
+    "after": "5320001505101251-00531510005",
+    "dps": 1154.26,
+    "kept": [],
+    "alternatives": {
+     "wowsims BM Weave 5320001505101251-0053250001-4": "-12.8 DPS (mean of 8 races, 3,000 iterations, seed 5151)"
+    }
+   },
+   "marksmanship": {
+    "race": "Orc",
+    "before": "-205305031150001-5502000300502201",
+    "after": "-105305131150003-5502000300501101",
+    "dps": 1175.51,
+    "kept": [
+     "KEEP marksmanship 1161.75 -> 1167.98 -205305031150002-5502000300501201",
+     "KEEP marksmanship 1168.00 -> 1171.40 -105305131150002-5502000300501201",
+     "KEEP marksmanship 1171.41 -> 1175.97 -105305131150003-5502000300501101"
+    ],
+    "start": "wowsims/forever MM Weave preset -205305031150001-5502000300502201"
+   },
+   "retribution": {
+    "race": "Undead",
+    "before": "55003-231-05225331001330301",
+    "after": "55003-231-05225331001330301",
+    "dps": 954.6,
+    "kept": []
+   },
+   "retribution_physical": {
+    "race": "Undead",
+    "before": "52003002-231-05225331001330311",
+    "after": "52003002-231-05225331001330311",
+    "dps": 881.2,
+    "kept": []
+   },
+   "arcane": {
+    "race": "Orc",
+    "before": "0502205013100311531-03-05350002",
+    "after": "0502205013100311531-03-05350002",
+    "dps": 686.83,
+    "kept": []
+   },
+   "arcane_frost": {
+    "race": "Orc",
+    "before": "050220500310030053--0535100201003002",
+    "after": "050220500310030053--0535000301003002",
+    "dps": 791.6,
+    "kept": [
+     "KEEP arcane_frost 783.05 -> 790.45 050220500310030053--0535000301003002"
+    ]
+   }
+  }
+ },
+ "consumables": {
+  "method": "coordinate descent as for the October 21 update; MM and BM Weave keep the SV Weave choices",
+  "results": {
+   "beast_mastery": {
+    "dps": 1154.23,
+    "consumes": {
+     "food": "FoodSwiftstrikeSteak",
+     "agilityElixir": "ElixirOfCunning",
+     "strengthBuff": "ElixirOfFerocity",
+     "defaultPotion": "MajorFrenzyPotion",
+     "intellectElixir": "ElixirOfTheOwl",
+     "mainHandScroll": "ScrollOfImbuePrecision",
+     "offHandScroll": "ScrollOfImbuePrecision"
+    }
+   },
+   "marksmanship": {
+    "dps": 1176.87,
+    "consumes": {
+     "food": "FoodSwiftstrikeSteak",
+     "agilityElixir": "ElixirOfCunning",
+     "strengthBuff": "ElixirOfFerocity",
+     "defaultPotion": "MajorFrenzyPotion",
+     "intellectElixir": "ElixirOfTheOwl",
+     "mainHandScroll": "ScrollOfImbuePrecision",
+     "offHandScroll": "ScrollOfImbuePrecision"
+    }
+   }
+  }
+ },
+ "gear": {
+  "method": "search_gear.py (screen 100, validate 2000, 4 passes, 5,000 iterations, seed 20261121) for MM and BM Weave from the SV Weave gear, confirmed on an independent 5,000-iteration seed 30296171; 6 Beast Mastery races retained, Marksmanship unchanged",
+  "selections": [
+   {
+    "Key": "beast_mastery",
+    "Race": "Orc",
+    "Decision": "retain",
+    "BaselineDPS": 1154.8223072010105,
+    "CandidateDPS": 1159.658820060555,
+    "GainDPS": 4.836512859544428,
+    "GainPercent": 0.41881013463161093,
+    "Conservative95BoundDPS": 0.8599503003200806
+   },
+   {
+    "Key": "beast_mastery",
+    "Race": "Tauren",
+    "Decision": "unchanged"
+   },
+   {
+    "Key": "beast_mastery",
+    "Race": "Troll",
+    "Decision": "unchanged"
+   },
+   {
+    "Key": "beast_mastery",
+    "Race": "Windshaper",
+    "Decision": "retain",
+    "BaselineDPS": 1149.9858517950856,
+    "CandidateDPS": 1156.152916532957,
+    "GainDPS": 6.167064737871442,
+    "GainPercent": 0.5362730965989608,
+    "Conservative95BoundDPS": 0.8696562320714056
+   },
+   {
+    "Key": "beast_mastery",
+    "Race": "Human",
+    "Decision": "retain",
+    "BaselineDPS": 1161.9058059375059,
+    "CandidateDPS": 1166.6095307253988,
+    "GainDPS": 4.703724787892952,
+    "GainPercent": 0.40482840896880296,
+    "Conservative95BoundDPS": 0.8548201148091954
+   },
+   {
+    "Key": "beast_mastery",
+    "Race": "Dwarf",
+    "Decision": "retain",
+    "BaselineDPS": 1150.8088200124416,
+    "CandidateDPS": 1155.679982953712,
+    "GainDPS": 4.871162941270313,
+    "GainPercent": 0.42328168298342117,
+    "Conservative95BoundDPS": 0.8764015662614737
+   },
+   {
+    "Key": "beast_mastery",
+    "Race": "Night Elf",
+    "Decision": "retain",
+    "BaselineDPS": 1155.5323908324385,
+    "CandidateDPS": 1160.4476959962044,
+    "GainDPS": 4.915305163765879,
+    "GainPercent": 0.4253714740289472,
+    "Conservative95BoundDPS": 0.8567340541608874
+   },
+   {
+    "Key": "beast_mastery",
+    "Race": "High Order",
+    "Decision": "retain",
+    "BaselineDPS": 1149.9858517950856,
+    "CandidateDPS": 1156.152916532957,
+    "GainDPS": 6.167064737871442,
+    "GainPercent": 0.5362730965989608,
+    "Conservative95BoundDPS": 0.8696562320714056
+   },
+   {
+    "Key": "marksmanship",
+    "Race": "Orc",
+    "Decision": "unchanged"
+   },
+   {
+    "Key": "marksmanship",
+    "Race": "Tauren",
+    "Decision": "unchanged"
+   },
+   {
+    "Key": "marksmanship",
+    "Race": "Troll",
+    "Decision": "unchanged"
+   },
+   {
+    "Key": "marksmanship",
+    "Race": "Windshaper",
+    "Decision": "unchanged"
+   },
+   {
+    "Key": "marksmanship",
+    "Race": "Human",
+    "Decision": "unchanged"
+   },
+   {
+    "Key": "marksmanship",
+    "Race": "Dwarf",
+    "Decision": "unchanged"
+   },
+   {
+    "Key": "marksmanship",
+    "Race": "Night Elf",
+    "Decision": "unchanged"
+   },
+   {
+    "Key": "marksmanship",
+    "Race": "High Order",
+    "Decision": "unchanged"
+   }
+  ]
+ },
+ "apls": {
+  "hunter_weave": {
+   "method": "8 races each, 2,000 iterations, seed 20291951 (ab.py), on the SV Weave gear and consumables",
+   "marksmanship_weave": 1158.63,
+   "beast_mastery_weave": 1151.81,
+   "note": "Published turret means (October 21 results, seed 1793500001): Marksmanship 1044.3, Beast Mastery 1016.4."
+  },
+  "fury_hamstring_weave": {
+   "method": "10 races each, 3,000 iterations, seed 4242",
+   "before": {
+    "fury": 961.35,
+    "fury_sunder": 931.19,
+    "arms": 822.48,
+    "fury_2h": 797.53
+   },
+   "after": {
+    "fury": 979.01,
+    "fury_sunder": 943.13,
+    "arms": 707.29,
+    "fury_2h": 828.82
+   },
+   "arms_variants": {
+    "above Execute, Windfury buff down": "-115.2",
+    "after Whirlwind": {
+     "arms": 792.52
+    },
+    "after Whirlwind, Mortal Strike and Whirlwind 1.5 s away": "+0.0 (never cast)"
+   }
+  },
+  "retribution_echo": {
+   "method": "3 races each, 3,000 iterations, seed 6161",
+   "old_rule_old_apl": {
+    "retribution": 1077.7,
+    "retribution_physical": 1011.11,
+    "shockadin": 876.02
+   },
+   "one_echo_old_apl": {
+    "retribution": 828.52,
+    "retribution_physical": 785.7,
+    "shockadin": 877.37
+   },
+   "one_echo_wait_for_banked_echo": {
+    "retribution": 955.92,
+    "retribution_physical": 887.23
+   },
+   "rejected_orders": {
+    "twist first": {
+     "retribution": 953.54,
+     "retribution_physical": 884.3
+    },
+    "twist first, Consecration gated": {
+     "retribution": 944.77,
+     "retribution_physical": 879.19
+    },
+    "wowsims order": {
+     "retribution": 946.82,
+     "retribution_physical": 879.43
+    }
+   }
+  }
+ }
+}

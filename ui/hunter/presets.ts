@@ -35,6 +35,8 @@ import P1APL from './apls/p1.apl.json';
 import BeastMasteryAPL from './apls/beast_mastery.apl.json';
 import SurvivalAPL from './apls/survival.apl.json';
 import PetMeleeAPL from './apls/pet_melee.apl.json';
+import BeastMasteryWeaveAPL from './apls/beast_mastery_weave.apl.json';
+import MarksmanshipWeaveAPL from './apls/marksmanship_weave.apl.json';
 import GearBeastMasteryJSON from './gear_sets/forever_beast_mastery.gear.json';
 import GearMarksmanshipJSON from './gear_sets/forever_marksmanship.gear.json';
 import GearSurvivalJSON from './gear_sets/forever_survival.gear.json';
@@ -61,9 +63,12 @@ export const APLP1 = PresetUtils.makePresetAPLRotation('Marksmanship', P1APL);
 export const APLBeastMastery = PresetUtils.makePresetAPLRotation('Beast Mastery', BeastMasteryAPL);
 export const APLSurvival = PresetUtils.makePresetAPLRotation('Survival', SurvivalAPL);
 export const APLPetMelee = PresetUtils.makePresetAPLRotation('Pet/Melee', PetMeleeAPL);
+// Melee weave for the ranged trees (wowsims/forever's MM Weave and BM Weave): Raptor Strike between Auto Shots.
+export const APLMarksmanshipWeave = PresetUtils.makePresetAPLRotation('MM Weave', MarksmanshipWeaveAPL);
+export const APLBeastMasteryWeave = PresetUtils.makePresetAPLRotation('BM Weave', BeastMasteryWeaveAPL);
 
 export const APLPresets = {
-	[ClassicPhase.Phase1]: [APLP1, APLBeastMastery, APLSurvival, APLPetMelee],
+	[ClassicPhase.Phase1]: [APLMarksmanshipWeave, APLBeastMasteryWeave, APLP1, APLBeastMastery, APLSurvival, APLPetMelee],
 };
 
 export const DefaultAPL = APLP1;
@@ -81,6 +86,12 @@ export const TalentsBeastMastery = PresetUtils.makePresetTalents(
 	'Beast Mastery 31/20/0',
 	SavedTalents.create({ talentsString: '5320001505101251-00531510005' }),
 );
+// Marksmanship melee weave: wowsims/forever's MM Weave preset, re-searched (Hawk Eye 1, Rapid Killing 1, Ranged
+// Weapon Specialization 3, Resourcefulness 1, Expose Prey 1).
+export const TalentsMarksmanshipWeave = PresetUtils.makePresetTalents(
+	'MM Weave 0/28/23',
+	SavedTalents.create({ talentsString: '-105305131150003-5502000300501101' }),
+);
 export const TalentsSurvival = PresetUtils.makePresetTalents('Survival 7/11/33', SavedTalents.create({ talentsString: '502-0050051-500230230250022151' }));
 // Survival melee weave, wowsims/forever's SV Weave preset.
 export const TalentsSurvivalWeave = PresetUtils.makePresetTalents(
@@ -93,7 +104,7 @@ export const TalentsPetMelee = PresetUtils.makePresetTalents(
 );
 
 export const TalentPresets = {
-	[ClassicPhase.Phase1]: [TalentsP1, TalentsBeastMastery, TalentsSurvival, TalentsPetMelee, TalentsSurvivalWeave],
+	[ClassicPhase.Phase1]: [TalentsMarksmanshipWeave, TalentsP1, TalentsBeastMastery, TalentsSurvival, TalentsPetMelee, TalentsSurvivalWeave],
 };
 
 export const DefaultTalents = TalentsP1;
@@ -173,14 +184,35 @@ export const OtherDefaults = {
 };
 
 export const BuildPresets = [
-	PresetUtils.makePresetBuild('Beast Mastery', {
+	PresetUtils.makePresetBuild('BM Weave', {
+		gear: GearBeastMastery,
+		talents: TalentsBeastMastery,
+		rotation: APLBeastMasteryWeave,
+		options: PetOptions,
+		distance: 12,
+	}),
+	PresetUtils.makePresetBuild('MM Weave', {
+		gear: GearMarksmanship,
+		talents: TalentsMarksmanshipWeave,
+		rotation: APLMarksmanshipWeave,
+		options: DefaultOptions,
+		distance: 12,
+		encounter: { name: 'Owned Hunter’s Mark', debuffs: Debuffs.create({ ...DefaultDebuffs, huntersMark: TristateEffect.TristateEffectMissing }) },
+	}),
+	PresetUtils.makePresetBuild('Beast Mastery (ranged)', {
 		gear: GearBeastMastery,
 		talents: TalentsBeastMastery,
 		rotation: APLBeastMastery,
 		options: PetOptions,
 		distance: 12,
 	}),
-	PresetUtils.makePresetBuild('Marksmanship', { gear: GearMarksmanship, talents: TalentsP1, rotation: APLP1, options: DefaultOptions, distance: 12 }),
+	PresetUtils.makePresetBuild('Marksmanship (ranged)', {
+		gear: GearMarksmanship,
+		talents: TalentsP1,
+		rotation: APLP1,
+		options: DefaultOptions,
+		distance: 12,
+	}),
 	PresetUtils.makePresetBuild('Survival', {
 		gear: GearSurvival,
 		talents: TalentsSurvival,

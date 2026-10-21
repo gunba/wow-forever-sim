@@ -88,7 +88,8 @@ func (mage *Mage) newFlamestrikeSpellConfig(rank int) core.SpellConfig {
 			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
 				for _, aoeTarget := range sim.Encounter.TargetUnits {
-					dot.CalcAndDealPeriodicSnapshotDamage(sim, aoeTarget, dot.OutcomeTick)
+					// Forever's tick rows can crit (no ATTR_EX_2_CANT_CRIT; logs show tick crits, wowsims/forever #489).
+					dot.CalcAndDealPeriodicSnapshotDamage(sim, aoeTarget, core.Ternary(mage.Env.IsForever(), dot.OutcomeSnapshotCrit, dot.OutcomeTick))
 				}
 			},
 		},

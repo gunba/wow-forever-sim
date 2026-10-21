@@ -334,6 +334,39 @@ export const AtieshDruidBuff = makeMultistatePartyBuffInput({
 	numStates: 5,
 });
 
+// Party buffs other players bring. The count is the number of Mana Tide Totems the party's Shamans drop on
+// cooldown, and the Dark Inspiration Shadow Priest's talent ranks.
+export const ManaTideTotemBuff = withLabel(
+	makeMultistatePartyBuffInput({
+		actionId: () => ActionId.fromSpellId(17359),
+		fieldName: 'manaTideTotems',
+		numStates: 5,
+	}),
+	'Mana Tide Totem',
+);
+export const DarkInspirationBuff = withLabel(
+	makeMultistatePartyBuffInput({
+		actionId: () => ActionId.fromSpellId(1326168),
+		fieldName: 'darkInspiration',
+		numStates: 6,
+	}),
+	'Dark Inspiration (talent ranks)',
+);
+export const DarkspearBuff = withLabel(
+	makeBooleanPartyBuffInput({
+		actionId: () => ActionId.fromItemId(12802),
+		fieldName: 'darkspear',
+	}),
+	'Darkspear',
+);
+export const AdmiralsHatBuff = withLabel(
+	makeBooleanPartyBuffInput({
+		actionId: () => ActionId.fromSpellId(12022),
+		fieldName: 'admiralsHat',
+	}),
+	"Admiral's Hat",
+);
+
 // Reflection sources are explicit scenario inputs, independent of receiver stats.
 // Keep the normal buff icon while exposing owned-caster/external-SP selection.
 class ReflectionProviderPicker extends IconPicker<Player<any>, number> {
@@ -826,6 +859,26 @@ export const RAID_BUFFS_CONFIG = [
 ] as PickerStatOptions[];
 
 export const MISC_BUFFS_CONFIG = [
+	{
+		config: ManaTideTotemBuff,
+		picker: IconPicker,
+		stats: [Stat.StatMP5],
+	},
+	{
+		config: DarkInspirationBuff,
+		picker: IconPicker,
+		stats: [Stat.StatSpirit],
+	},
+	{
+		config: DarkspearBuff,
+		picker: IconPicker,
+		stats: [Stat.StatMeleeCrit, Stat.StatSpellCrit],
+	},
+	{
+		config: AdmiralsHatBuff,
+		picker: IconPicker,
+		stats: [Stat.StatStamina],
+	},
 	{
 		config: AtieshMageBuff,
 		picker: IconPicker,

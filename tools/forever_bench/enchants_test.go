@@ -73,7 +73,8 @@ func TestRapidityDoesNotIncreaseEnergyRegeneration(t *testing.T) {
 }
 
 func TestForeverPrecisionScopeOnlyAffectsRangedCrit(t *testing.T) {
-	_, base := enchantFixture("marksmanship", nil)
+	// The MM gear set already carries this scope, so the base arm takes the ranged enchant off.
+	_, base := enchantFixture("marksmanship", map[proto.ItemSlot]int32{proto.ItemSlot_ItemSlotRanged: 0})
 	sim, scoped := enchantFixture("marksmanship", map[proto.ItemSlot]int32{proto.ItemSlot_ItemSlotRanged: 8720})
 	for reset := 0; reset < 2; reset++ {
 		ranged := 0

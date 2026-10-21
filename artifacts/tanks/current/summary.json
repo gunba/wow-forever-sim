@@ -1,6 +1,6 @@
 {
-  "phase": "October 21 update (wowsims/forever review, server hotfixes, book ranks off)",
-  "scope": "All 17 tank race profiles; 2 unchanged workloads; 2 independent 5000-iteration seed ranges. October 21 update: resistance model, swing resets on casts, trainer ranks, threat changes; tank equipment and talents unchanged.",
+  "phase": "October 21 follow-up (measured rage from damage taken, original race offsets, Vindication, Consecration crits)",
+  "scope": "All 17 tank race profiles; 2 unchanged workloads; 2 independent 5000-iteration seed ranges. October 21 follow-up: rage from damage taken as measured on Forever logs (wowsims/forever #356), original race offsets, Vindication 5 PPM, Consecration tick crits; tank equipment and talents unchanged.",
   "seeds": [
     1793210001,
     1793230001
@@ -12,243 +12,243 @@
       "build": "tank_warrior",
       "race": "Orc",
       "workload": "Single",
-      "dps": 475.7604593131208,
-      "tps": 1187.3226401790366,
-      "dtps": 504.06235287000914,
-      "tmi": 51.45479468563693,
+      "dps": 513.9881631168506,
+      "tps": 1311.6338142942814,
+      "dtps": 512.6752382100187,
+      "tmi": 52.542028433328085,
       "death_probability": 0.0,
-      "least_target_tps": 1187.3226401790362
+      "least_target_tps": 1311.6338142942805
     },
     {
       "build": "tank_warrior",
       "race": "Orc",
       "workload": "Multi",
-      "dps": 583.7613939413275,
-      "tps": 1296.984838544795,
-      "dtps": 784.1328802435154,
-      "tmi": 72.2364779500785,
+      "dps": 716.1277914107118,
+      "tps": 1552.3472219046573,
+      "dtps": 794.4609503537563,
+      "tmi": 72.90129892963137,
       "death_probability": 0.0,
-      "least_target_tps": 49.81182836629954
+      "least_target_tps": 50.28026077258687
     },
     {
       "build": "tank_warrior",
       "race": "Tauren",
       "workload": "Single",
-      "dps": 485.01328411494876,
-      "tps": 1186.0104453691183,
-      "dtps": 479.4322792418405,
-      "tmi": 46.475917868265356,
+      "dps": 524.0551557716551,
+      "tps": 1333.618152122408,
+      "dtps": 492.09999533695964,
+      "tmi": 48.192953879859466,
       "death_probability": 0.0,
-      "least_target_tps": 1186.0104453691172
+      "least_target_tps": 1333.618152122408
     },
     {
       "build": "tank_warrior",
       "race": "Tauren",
       "workload": "Multi",
-      "dps": 602.4448999737749,
-      "tps": 1325.881384397303,
-      "dtps": 752.4674520622151,
-      "tmi": 66.11068994798532,
+      "dps": 731.1407638321875,
+      "tps": 1582.7885074006656,
+      "dtps": 762.2502474038488,
+      "tmi": 66.8682461159012,
       "death_probability": 0.0,
-      "least_target_tps": 49.81737432989712
+      "least_target_tps": 50.58424144543039
     },
     {
       "build": "tank_warrior",
       "race": "Troll",
       "workload": "Single",
-      "dps": 477.87709905402227,
-      "tps": 1171.4298977713697,
-      "dtps": 490.1277226116222,
-      "tmi": 49.941173726076286,
+      "dps": 516.526117239128,
+      "tps": 1318.1332365980425,
+      "dtps": 501.6461261422055,
+      "tmi": 51.641055422420635,
       "death_probability": 0.0,
-      "least_target_tps": 1171.429897771369
+      "least_target_tps": 1318.1332365980415
     },
     {
       "build": "tank_warrior",
       "race": "Troll",
       "workload": "Multi",
-      "dps": 593.2988102934366,
-      "tps": 1307.6987662828346,
-      "dtps": 767.8841132899529,
-      "tmi": 70.83993521788159,
+      "dps": 719.9025131969547,
+      "tps": 1561.4492899252425,
+      "dtps": 776.9334532192307,
+      "tmi": 71.38410758885263,
       "death_probability": 0.0,
-      "least_target_tps": 49.585409833982794
+      "least_target_tps": 50.208470748953985
     },
     {
       "build": "tank_warrior",
       "race": "Undead",
       "workload": "Single",
-      "dps": 492.1341697578901,
-      "tps": 1135.9334374286263,
-      "dtps": 463.6321621264579,
-      "tmi": 49.38339440648318,
+      "dps": 542.625573285805,
+      "tps": 1314.7353788454977,
+      "dtps": 470.9605186736803,
+      "tmi": 50.48334217172569,
       "death_probability": 0.0,
-      "least_target_tps": 1135.9334374286275
+      "least_target_tps": 1314.7353788454996
     },
     {
       "build": "tank_warrior",
       "race": "Undead",
       "workload": "Multi",
-      "dps": 586.8477737814936,
-      "tps": 1238.7629549380101,
-      "dtps": 719.6194784395199,
-      "tmi": 67.81721540290718,
+      "dps": 730.223277503314,
+      "tps": 1525.6798698304851,
+      "dtps": 730.612582284806,
+      "tmi": 68.69223061907527,
       "death_probability": 0.0,
-      "least_target_tps": 49.0161816250796
+      "least_target_tps": 51.15621765250855
     },
     {
       "build": "tank_warrior",
       "race": "Windshaper",
       "workload": "Single",
-      "dps": 482.7094656995155,
-      "tps": 1127.5270058445421,
-      "dtps": 485.85380764928334,
-      "tmi": 50.027487762085386,
+      "dps": 519.9415425879444,
+      "tps": 1265.6862986870037,
+      "dtps": 496.33408164643765,
+      "tmi": 51.6757734950017,
       "death_probability": 0.0,
-      "least_target_tps": 1127.5270058445435
+      "least_target_tps": 1265.6862986870065
     },
     {
       "build": "tank_warrior",
       "race": "Windshaper",
       "workload": "Multi",
-      "dps": 600.5428765751635,
-      "tps": 1262.189981075998,
-      "dtps": 760.5703152837207,
-      "tmi": 70.76881936629097,
+      "dps": 728.6861268567274,
+      "tps": 1506.9424062980852,
+      "dtps": 769.2625920337191,
+      "tmi": 71.43261740692913,
       "death_probability": 0.0,
-      "least_target_tps": 47.71642686228953
+      "least_target_tps": 48.483494677322966
     },
     {
       "build": "tank_warrior",
       "race": "Human",
       "workload": "Single",
-      "dps": 480.6808534129576,
-      "tps": 1118.7314815979448,
-      "dtps": 471.6514421225487,
-      "tmi": 49.334996386558636,
+      "dps": 524.0334427501568,
+      "tps": 1273.265446604144,
+      "dtps": 480.500014491491,
+      "tmi": 50.63721249364839,
       "death_probability": 0.0,
-      "least_target_tps": 1118.7314815979444
+      "least_target_tps": 1273.2654466041422
     },
     {
       "build": "tank_warrior",
       "race": "Human",
       "workload": "Multi",
-      "dps": 613.2538944461548,
-      "tps": 1281.7760567277228,
-      "dtps": 738.121498513848,
-      "tmi": 69.01677911170844,
+      "dps": 742.3691823354955,
+      "tps": 1531.598290534579,
+      "dtps": 745.8107819548616,
+      "tmi": 69.61668925673257,
       "death_probability": 0.0,
-      "least_target_tps": 47.656575054685064
+      "least_target_tps": 49.09484111544795
     },
     {
       "build": "tank_warrior",
       "race": "Dwarf",
       "workload": "Single",
-      "dps": 481.8197933952754,
-      "tps": 1200.372963092307,
-      "dtps": 495.4131577695012,
-      "tmi": 50.56901100243738,
-      "death_probability": 0.0001,
-      "least_target_tps": 1200.3729630923076
+      "dps": 519.8782501908709,
+      "tps": 1324.9739877646682,
+      "dtps": 505.18376858234393,
+      "tmi": 51.66462520048145,
+      "death_probability": 0.0,
+      "least_target_tps": 1324.973987764667
     },
     {
       "build": "tank_warrior",
       "race": "Dwarf",
       "workload": "Multi",
-      "dps": 591.8541877335215,
-      "tps": 1314.0467022346681,
-      "dtps": 771.0852361824192,
-      "tmi": 70.92793588794427,
+      "dps": 724.5468933449943,
+      "tps": 1569.7032505356055,
+      "dtps": 781.0886369918662,
+      "tmi": 71.45147428690692,
       "death_probability": 0.0,
-      "least_target_tps": 49.945335846549014
+      "least_target_tps": 50.31262782960556
     },
     {
       "build": "tank_warrior",
       "race": "Night Elf",
       "workload": "Single",
-      "dps": 470.6919681356453,
-      "tps": 1095.8401187822728,
-      "dtps": 483.10908188944677,
-      "tmi": 49.84929674270492,
+      "dps": 509.6734172848863,
+      "tps": 1234.5906271466738,
+      "dtps": 493.1906998203625,
+      "tmi": 51.57560467946648,
       "death_probability": 0.0,
-      "least_target_tps": 1095.840118782271
+      "least_target_tps": 1234.5906271466797
     },
     {
       "build": "tank_warrior",
       "race": "Night Elf",
       "workload": "Multi",
-      "dps": 582.870615692761,
-      "tps": 1222.905652540129,
-      "dtps": 757.4263069715497,
-      "tmi": 70.55602717649039,
+      "dps": 704.7871739554346,
+      "tps": 1456.4081074971266,
+      "dtps": 763.6260326930524,
+      "tmi": 71.12601809549042,
       "death_probability": 0.0,
-      "least_target_tps": 46.67120458094742
+      "least_target_tps": 47.117042420238384
     },
     {
       "build": "tank_warrior",
       "race": "Gnome",
       "workload": "Single",
-      "dps": 480.2903437774223,
-      "tps": 1125.620514664447,
-      "dtps": 482.9824005267035,
-      "tmi": 49.553068324948754,
-      "death_probability": 0.0001,
-      "least_target_tps": 1125.620514664447
+      "dps": 518.5063142036286,
+      "tps": 1265.4636278201165,
+      "dtps": 493.16731922513765,
+      "tmi": 51.24566211249549,
+      "death_probability": 0.0,
+      "least_target_tps": 1265.4636278201133
     },
     {
       "build": "tank_warrior",
       "race": "Gnome",
       "workload": "Multi",
-      "dps": 596.4655019160616,
-      "tps": 1257.6307609222654,
-      "dtps": 757.3161757495693,
-      "tmi": 70.23973788316991,
+      "dps": 723.5159874746107,
+      "tps": 1500.2110614281369,
+      "dtps": 764.2082361795317,
+      "tmi": 70.74979304277606,
       "death_probability": 0.0,
-      "least_target_tps": 47.46011428278507
+      "least_target_tps": 48.05555729296715
     },
     {
       "build": "tank_warrior",
       "race": "High Order",
       "workload": "Single",
-      "dps": 482.7094656995155,
-      "tps": 1127.5270058445421,
-      "dtps": 485.85380764928334,
-      "tmi": 50.027487762085386,
+      "dps": 519.9415425879444,
+      "tps": 1265.6862986870037,
+      "dtps": 496.33408164643765,
+      "tmi": 51.6757734950017,
       "death_probability": 0.0,
-      "least_target_tps": 1127.5270058445435
+      "least_target_tps": 1265.6862986870065
     },
     {
       "build": "tank_warrior",
       "race": "High Order",
       "workload": "Multi",
-      "dps": 600.5428765751635,
-      "tps": 1262.189981075998,
-      "dtps": 760.5703152837207,
-      "tmi": 70.76881936629097,
+      "dps": 728.6861268567274,
+      "tps": 1506.9424062980852,
+      "dtps": 769.2625920337191,
+      "tmi": 71.43261740692913,
       "death_probability": 0.0,
-      "least_target_tps": 47.71642686228953
+      "least_target_tps": 48.483494677322966
     },
     {
       "build": "protection_paladin",
       "race": "Undead",
       "workload": "Single",
-      "dps": 559.328927892633,
-      "tps": 956.2180076978905,
-      "dtps": 703.9000965315611,
-      "tmi": 77.20673916123397,
+      "dps": 558.4602486219485,
+      "tps": 955.1385856299667,
+      "dtps": 704.4723115794316,
+      "tmi": 77.25426515786228,
+      "death_probability": 0.0019,
+      "least_target_tps": 955.1385856299685
+    },
+    {
+      "build": "protection_paladin",
+      "race": "Undead",
+      "workload": "Multi",
+      "dps": 880.9324546277849,
+      "tps": 1478.9159035592763,
+      "dtps": 1021.6123250359951,
+      "tmi": 91.94207970585666,
       "death_probability": 0.0014,
-      "least_target_tps": 956.2180076978893
-    },
-    {
-      "build": "protection_paladin",
-      "race": "Undead",
-      "workload": "Multi",
-      "dps": 881.7909406666304,
-      "tps": 1480.0645711763134,
-      "dtps": 1021.2295316323591,
-      "tmi": 91.93229295805517,
-      "death_probability": 0.0013,
-      "least_target_tps": 262.26776695788277
+      "least_target_tps": 262.2648992981434
     },
     {
       "build": "protection_paladin",
@@ -259,7 +259,7 @@
       "dtps": 702.1184853482814,
       "tmi": 78.32343846371876,
       "death_probability": 0.0029,
-      "least_target_tps": 976.299074340789
+      "least_target_tps": 976.2990743407888
     },
     {
       "build": "protection_paladin",
@@ -270,117 +270,117 @@
       "dtps": 1013.070639054956,
       "tmi": 92.90848666002435,
       "death_probability": 0.0015,
-      "least_target_tps": 269.4223329778061
+      "least_target_tps": 269.42233297780604
     },
     {
       "build": "protection_paladin",
       "race": "Dwarf",
       "workload": "Single",
-      "dps": 549.3408902465261,
-      "tps": 956.8849634518319,
-      "dtps": 702.5504898198187,
-      "tmi": 78.07377938927962,
-      "death_probability": 0.0026,
-      "least_target_tps": 956.8849634518325
+      "dps": 548.9861891562336,
+      "tps": 956.3429873347548,
+      "dtps": 704.4780070130996,
+      "tmi": 77.92075957413365,
+      "death_probability": 0.0022,
+      "least_target_tps": 956.3429873347563
     },
     {
       "build": "protection_paladin",
       "race": "Dwarf",
       "workload": "Multi",
-      "dps": 875.059687277283,
-      "tps": 1485.320256188458,
-      "dtps": 1014.5300589324531,
-      "tmi": 92.79389155913839,
-      "death_probability": 0.0024,
-      "least_target_tps": 268.500956154871
-    },
-    {
-      "build": "feral_tank_druid",
-      "race": "Tauren",
-      "workload": "Single",
-      "dps": 534.0072018854376,
-      "tps": 1842.3737618783748,
-      "dtps": 715.5294744658121,
-      "tmi": 73.29488958195117,
+      "dps": 874.8987208800324,
+      "tps": 1485.2380154535447,
+      "dtps": 1016.2811136675721,
+      "tmi": 92.58717797113567,
       "death_probability": 0.0017000000000000001,
-      "least_target_tps": 1842.3737618783753
+      "least_target_tps": 268.5484006234793
+    },
+    {
+      "build": "feral_tank_druid",
+      "race": "Tauren",
+      "workload": "Single",
+      "dps": 599.5035558437622,
+      "tps": 2112.842443975309,
+      "dtps": 716.4226827932578,
+      "tmi": 73.30513922984952,
+      "death_probability": 0.0016,
+      "least_target_tps": 2112.8424439753135
     },
     {
       "build": "feral_tank_druid",
       "race": "Tauren",
       "workload": "Multi",
-      "dps": 692.9073812883433,
-      "tps": 2250.4926962817904,
-      "dtps": 1029.6879565149015,
-      "tmi": 85.70923298760484,
-      "death_probability": 0.0001,
-      "least_target_tps": 321.3034966431102
+      "dps": 724.257395772875,
+      "tps": 2371.754103182472,
+      "dtps": 1033.8256503300809,
+      "tmi": 85.90690954837876,
+      "death_probability": 0.0,
+      "least_target_tps": 327.83401230301274
     },
     {
       "build": "feral_tank_druid",
       "race": "Windshaper",
       "workload": "Single",
-      "dps": 534.4367342093994,
-      "tps": 1835.313721691619,
-      "dtps": 715.8629881632819,
-      "tmi": 78.58471558814963,
-      "death_probability": 0.0055,
-      "least_target_tps": 1835.313721691617
+      "dps": 601.9821971904712,
+      "tps": 2114.760462541689,
+      "dtps": 716.1843371459637,
+      "tmi": 78.42123295115596,
+      "death_probability": 0.005,
+      "least_target_tps": 2114.7604625416843
     },
     {
       "build": "feral_tank_druid",
       "race": "Windshaper",
       "workload": "Multi",
-      "dps": 697.3623670787872,
-      "tps": 2275.0540228329332,
-      "dtps": 1029.328286517702,
-      "tmi": 91.12337676240043,
-      "death_probability": 0.0007,
-      "least_target_tps": 332.1743073065939
+      "dps": 729.2191552391223,
+      "tps": 2405.3166783726356,
+      "dtps": 1030.9613881603002,
+      "tmi": 91.24273396099377,
+      "death_probability": 0.0005,
+      "least_target_tps": 339.2521086104508
     },
     {
       "build": "feral_tank_druid",
       "race": "Night Elf",
       "workload": "Single",
-      "dps": 528.8910911766459,
-      "tps": 1824.0852507528566,
-      "dtps": 704.1961923752197,
-      "tmi": 77.86755652893817,
-      "death_probability": 0.0057,
-      "least_target_tps": 1824.0852507528573
+      "dps": 597.4227535982836,
+      "tps": 2102.232891227858,
+      "dtps": 703.2256493058385,
+      "tmi": 78.04924799220315,
+      "death_probability": 0.0031,
+      "least_target_tps": 2102.232891227858
     },
     {
       "build": "feral_tank_druid",
       "race": "Night Elf",
       "workload": "Multi",
-      "dps": 700.5667501210853,
-      "tps": 2288.5784590650946,
-      "dtps": 1014.6209473183626,
-      "tmi": 90.21351504852093,
-      "death_probability": 0.00030000000000000003,
-      "least_target_tps": 331.0153663906763
+      "dps": 729.8939429234822,
+      "tps": 2398.8697813825092,
+      "dtps": 1012.9150416572915,
+      "tmi": 90.16144169531603,
+      "death_probability": 0.0007,
+      "least_target_tps": 336.1718449550137
     },
     {
       "build": "feral_tank_druid",
       "race": "High Order",
       "workload": "Single",
-      "dps": 534.4367342093994,
-      "tps": 1835.313721691619,
-      "dtps": 715.8629881632819,
-      "tmi": 78.58471558814963,
-      "death_probability": 0.0055,
-      "least_target_tps": 1835.313721691617
+      "dps": 601.9821971904712,
+      "tps": 2114.760462541689,
+      "dtps": 716.1843371459637,
+      "tmi": 78.42123295115596,
+      "death_probability": 0.005,
+      "least_target_tps": 2114.7604625416843
     },
     {
       "build": "feral_tank_druid",
       "race": "High Order",
       "workload": "Multi",
-      "dps": 697.3623670787872,
-      "tps": 2275.0540228329332,
-      "dtps": 1029.328286517702,
-      "tmi": 91.12337676240043,
-      "death_probability": 0.0007,
-      "least_target_tps": 332.17430730659396
+      "dps": 729.2191552391223,
+      "tps": 2405.3166783726356,
+      "dtps": 1030.9613881603002,
+      "tmi": 91.24273396099377,
+      "death_probability": 0.0005,
+      "least_target_tps": 339.2521086104509
     }
   ]
 }

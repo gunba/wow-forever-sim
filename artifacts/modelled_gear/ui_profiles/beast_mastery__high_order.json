@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "1793500001",
+    "fixedRngSeed": "1793600001",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Alliance",
@@ -30,7 +30,9 @@
     "devotionAura": "TristateEffectImproved",
     "retributionAura": "TristateEffectImproved"
   },
-  "partyBuffs": {},
+  "partyBuffs": {
+    "windfuryTotem": true
+  },
   "debuffs": {
     "judgementOfWisdom": true,
     "judgementOfLight": true,
@@ -58,7 +60,7 @@
       "items": [
         {
           "id": 920000020,
-          "enchant": 2543
+          "enchant": 1508
         },
         {
           "id": 920000299
@@ -77,7 +79,7 @@
         },
         {
           "id": 920000128,
-          "enchant": 247
+          "enchant": 1883
         },
         {
           "id": 920000164,
@@ -92,7 +94,7 @@
         },
         {
           "id": 920000272,
-          "enchant": 1887
+          "enchant": 911
         },
         {
           "id": 920000308
@@ -107,15 +109,15 @@
           "id": 920000317
         },
         {
-          "id": 920000334,
+          "id": 920000333,
           "enchant": 2564
         },
         {
-          "id": 920000349,
+          "id": 920000333,
           "enchant": 2564
         },
         {
-          "id": 920000376,
+          "id": 920000375,
           "enchant": 8720
         }
       ]
@@ -127,12 +129,12 @@
       "manaRegenElixir": "MagebloodPotion",
       "strengthBuff": "ElixirOfFerocity",
       "attackPowerBuff": "JujuMight",
-      "fillerExplosive": "ExplosiveThoriumGrenade",
       "mainHandImbue": "DenseSharpeningStone",
-      "offHandImbue": "DenseWeightstone",
-      "defaultPotion": "MajorManaPotion",
+      "offHandImbue": "DenseSharpeningStone",
+      "defaultPotion": "MajorFrenzyPotion",
       "defaultConjured": "ConjuredDemonicRune",
       "zanzaBuff": "GroundScorpokAssay",
+      "sapperExplosive": "SapperGoblinSapper",
       "intellectElixir": "ElixirOfTheOwl",
       "mainHandScroll": "ScrollOfImbuePrecision",
       "offHandScroll": "ScrollOfImbuePrecision"
@@ -207,6 +209,20 @@
           "doAtValue": {
             "const": {
               "val": "-10s"
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 20904
+              }
+            }
+          },
+          "doAtValue": {
+            "const": {
+              "val": "-2s"
             }
           }
         }
@@ -284,13 +300,28 @@
         },
         {
           "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 3045
+              }
+            }
+          }
+        },
+        {
+          "action": {
             "condition": {
-              "not": {
-                "val": {
-                  "dotIsActive": {
+              "cmp": {
+                "op": "OpLe",
+                "lhs": {
+                  "dotRemainingTime": {
                     "spellId": {
                       "spellId": 13555
                     }
+                  }
+                },
+                "rhs": {
+                  "const": {
+                    "val": "0.5s"
                   }
                 }
               }
@@ -304,9 +335,27 @@
         },
         {
           "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 14287
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 2643
+              }
+            }
+          }
+        },
+        {
+          "action": {
             "condition": {
               "cmp": {
-                "op": "OpGe",
+                "op": "OpGt",
                 "lhs": {
                   "autoTimeToNext": {
                     "autoType": "Ranged"
@@ -314,14 +363,35 @@
                 },
                 "rhs": {
                   "const": {
-                    "val": "0s"
+                    "val": "1.5s"
                   }
                 }
               }
             },
+            "move": {
+              "rangeFromTarget": {
+                "const": {
+                  "val": "5"
+                }
+              }
+            }
+          }
+        },
+        {
+          "action": {
             "castSpell": {
               "spellId": {
-                "spellId": 20904
+                "spellId": 14266,
+                "tag": 3
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 14271
               }
             }
           }
@@ -332,18 +402,61 @@
               "cmp": {
                 "op": "OpGe",
                 "lhs": {
-                  "currentManaPercent": {}
+                  "remainingTime": {}
                 },
                 "rhs": {
                   "const": {
-                    "val": "15%"
+                    "val": "12s"
                   }
                 }
               }
             },
             "castSpell": {
               "spellId": {
-                "spellId": 14287
+                "spellId": 14305
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "not": {
+                      "val": {
+                        "auraIsActive": {
+                          "auraId": {
+                            "spellId": 14266
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGt",
+                      "lhs": {
+                        "autoTimeToNext": {
+                          "autoType": "Melee"
+                        }
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "0.5s"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "move": {
+              "rangeFromTarget": {
+                "const": {
+                  "val": "12"
+                }
               }
             }
           }

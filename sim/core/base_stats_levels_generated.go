@@ -604,16 +604,16 @@ var spellCritPerIntByLevel = map[proto.Class][61]float64{
 	proto.Class_ClassDruid:   {0, 0.1455, 0.1391, 0.1333, 0.128, 0.1231, 0.1185, 0.1143, 0.1143, 0.1103, 0.1, 0.0941, 0.0865, 0.0821, 0.0762, 0.0696, 0.0667, 0.0627, 0.0604, 0.0571, 0.0525, 0.0508, 0.0485, 0.0471, 0.0444, 0.0427, 0.0416, 0.04, 0.039, 0.0372, 0.0352, 0.0344, 0.033, 0.0323, 0.0314, 0.0302, 0.0296, 0.0288, 0.0281, 0.0274, 0.026, 0.0256, 0.0248, 0.0244, 0.0237, 0.0232, 0.0227, 0.0222, 0.0218, 0.0212, 0.0205, 0.0201, 0.0196, 0.0194, 0.0189, 0.0185, 0.0182, 0.0179, 0.0176, 0.0172, 0.0167},
 }
 
-// Forever level-1 race stats relative to Human (player report of Forever beta level-1 stats before class bonuses, https://www.reddit.com/r/classicwow/comments/1x10tm1/stat_scaling/ (October 2026); unverified beyond level 1).
+// Forever level-1 race stats relative to Human (original races: the original game's offsets, which Forever restored on 21 October 2026 (https://github.com/ClassicWoWCommunity/forever-bugs/issues/414, wowsims/forever #619); Skyborne: beta level-1 sheets (wowsims/forever #597), pending the new per-race Skyborne offsets announced in the same issue).
 var foreverRaceStartOffsets = map[proto.Race]stats.Stats{
 	proto.Race_RaceHuman:              {},
-	proto.Race_RaceDwarf:              {stats.Strength: 2, stats.Agility: -2, stats.Stamina: 1, stats.Intellect: -1},
-	proto.Race_RaceNightElf:           {stats.Strength: -2, stats.Agility: 2},
-	proto.Race_RaceGnome:              {stats.Strength: -3, stats.Agility: 1, stats.Stamina: -1, stats.Intellect: 3},
-	proto.Race_RaceOrc:                {stats.Strength: 3, stats.Agility: -3, stats.Stamina: 1, stats.Intellect: -1},
-	proto.Race_RaceUndead:             {stats.Strength: 2, stats.Agility: -1, stats.Stamina: 1, stats.Intellect: -2},
-	proto.Race_RaceTauren:             {stats.Strength: 2, stats.Agility: -2, stats.Stamina: 2, stats.Intellect: -2},
-	proto.Race_RaceTroll:              {stats.Strength: 1, stats.Agility: 2, stats.Intellect: -3},
+	proto.Race_RaceDwarf:              {stats.Strength: 2, stats.Agility: -4, stats.Stamina: 3, stats.Intellect: -1, stats.Spirit: -1},
+	proto.Race_RaceNightElf:           {stats.Strength: -3, stats.Agility: 5, stats.Stamina: -1},
+	proto.Race_RaceGnome:              {stats.Strength: -5, stats.Agility: 3, stats.Stamina: -1, stats.Intellect: 3},
+	proto.Race_RaceOrc:                {stats.Strength: 3, stats.Agility: -3, stats.Stamina: 2, stats.Intellect: -3, stats.Spirit: 3},
+	proto.Race_RaceUndead:             {stats.Strength: -1, stats.Agility: -2, stats.Stamina: 1, stats.Intellect: -2, stats.Spirit: 5},
+	proto.Race_RaceTauren:             {stats.Strength: 5, stats.Agility: -5, stats.Stamina: 2, stats.Intellect: -5, stats.Spirit: 2},
+	proto.Race_RaceTroll:              {stats.Strength: 1, stats.Agility: 2, stats.Stamina: 1, stats.Intellect: -4, stats.Spirit: 1},
 	proto.Race_RaceSkyborneHighOrder:  {stats.Strength: -1, stats.Agility: 1, stats.Stamina: -1, stats.Intellect: 1},
 	proto.Race_RaceSkyborneWindshaper: {stats.Strength: -1, stats.Agility: 1, stats.Stamina: -1, stats.Intellect: 1},
 }

@@ -47,13 +47,16 @@ simulator's **Ranked builds** selector. Clicking a matrix cell opens that exact
 setup and its actual gear-derived hit; no manual import is needed.
 [Frozen benchmark inputs](artifacts/modelled_gear/forever_input_profiles.json) are also the
 native benchmark defaults, separate from the results for replay.
-The [October 21 update](docs/october-21-update.md) brings the simulator up to date with wowsims/forever, the game's
-server hotfixes and MythicSim's in-game findings, adds Forever consumables and the SV Weave, Frostfire and Shockadin
-builds, and re-searches talents and consumables for every DPS build. It follows the
+The [October 21 follow-up](docs/october-21-follow-up.md) makes Marksmanship and Beast Mastery weave, adds a Hamstring
+weave for Fury, keeps one Twist of Light Echo at a time with a reworked Retribution rotation, takes rage from damage
+taken and Vindication as measured on Forever logs, restores the original race offsets and adds new party buffs. The
+[October 21 update](docs/october-21-update.md) brought the simulator up to date with wowsims/forever, the game's
+server hotfixes and MythicSim's in-game findings, added Forever consumables and the SV Weave, Frostfire and Shockadin
+builds, and re-searched talents and consumables for every DPS build. They follow the
 [October 16 follow-up](docs/october-16-follow-up.md) (class imbue slots, real relics, Rake scaling) and the
 [October 15 update](docs/october-15-update.md) (client 1.60.1.70425 and the October 15 development notes), and
 [Beta test procedures](docs/beta-test-procedures.md) explains how to settle each remaining open question in game.
-[Comparison](artifacts/correctness/october_21/comparison.json) lists every race/build against the previous release;
+[Comparison](artifacts/correctness/october_21_follow_up/comparison.json) lists every race/build against the previous release;
 [October 16 selection evidence](artifacts/correctness/october_16/selection-evidence.json) records the earlier relic,
 imbue, rotation, talent and confirmed gear selections. The earlier [October 11 log audit](docs/october-11-log-audit.md)
 and [October 11 audit](docs/october-11-audit.md) list the corrections before it. The [October 8 review](docs/october-8-review.md)

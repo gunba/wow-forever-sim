@@ -145,7 +145,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 	},
 
 	autoRotation: player => {
-		const rotation = player.getTalentTree() === 0 ? Presets.APLBeastMastery : player.getTalentTree() === 2 ? Presets.APLSurvival : Presets.APLP1;
+		const rotation = player.getTalentTree() === 0 ? Presets.APLBeastMasteryWeave : player.getTalentTree() === 2 ? Presets.APLSurvival : Presets.APLP1;
 		return rotation.rotation.rotation!;
 	},
 

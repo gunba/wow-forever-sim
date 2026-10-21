@@ -7,11 +7,9 @@ import (
 	"github.com/wowsims/classic/sim/core/proto"
 )
 
-// ForeverIncomingRageParameters is an explicitly provisional scenario, not a
-// decoded or verified server rule. October 8's official notes establish expected
-// creature health, shield-independent damage, and a varying reference Armor;
-// coefficient 10, player-level lookup, this curve and its operation are assumptions.
-// https://us.forums.blizzard.com/en/wow/t/2360696/5
+// ForeverIncomingRageParameters holds the optional manual incoming-Rage scenario. With no override the sim uses the
+// rule measured on Forever combat logs (foreverMeasuredRage); any override switches to the older provisional
+// formula (coefficient 10 / expected creature health / reference Armor), kept for sensitivity runs.
 // Copied resolved values remain stable when health/Stamina changes during a fight.
 type ForeverIncomingRageParameters struct {
 	PlayerLevel            int32
@@ -23,7 +21,7 @@ type ForeverIncomingRageParameters struct {
 	ExpectedHealthOverride bool
 }
 
-const ForeverIncomingRageAssumptions = "Provisional: coefficient 10; player-level ExpectedStat CreatureHealth; reference Armor clamp(CreatureArmor/(CreatureArmor+ArmorConstant), 0.20, 0.40); post-actual-mitigation damage including absorbs divided by (1-reference Armor). Not verified server behavior."
+const ForeverIncomingRageAssumptions = "Measured (wowsims/forever #356, Forever combat logs): Rage = 2.5 x (1 - A) x pre-mitigation damage / c(attacker level), c(L) = 0.0091107836 L^2 + 3.225598133 L + 4.2652911, A = 20% up to attacker level 42, 30% at 44, 36% at 46, 38% at 50, 40% at 63 (interpolated; 63 unmeasured). Pre-mitigation damage includes crits (x2) and crushing blows (x1.5), before armor, blocks and absorbs. A manual override switches to the provisional coefficient-10 formula."
 
 func validateForeverModelNumber(name string, value, minimum, maximum float64) error {
 	if math.IsNaN(value) || math.IsInf(value, 0) || value < minimum || value > maximum {
@@ -76,6 +74,51 @@ func ResolveForeverIncomingRageModel(level int32, model *proto.ForeverIncomingRa
 // Actual Armor, resistance and other mitigation are already included in Damage.
 // AbsorbedDamage restores damage delivered to a shield without stripping the
 // critical/crushing outcome. Never undo actual Armor or use player maximum health.
+// manual reports whether the scenario overrides the measured rule with the provisional formula.
+func (parameters ForeverIncomingRageParameters) manual() bool {
+	return parameters.CoefficientOverride || parameters.ReferenceArmorOverride || parameters.ExpectedHealthOverride
+}
+
+// ForeverAssumedArmorReduction is the armor reduction Forever assumes for Rage from damage taken, by attacker level:
+// the defender's own armor, level and health play no part (wowsims/forever #356, fitted to combat logs).
+func ForeverAssumedArmorReduction(attackerLevel int32) float64 {
+	points := [][2]float64{{42, .20}, {44, .30}, {46, .36}, {50, .38}, {63, .40}}
+	l := float64(attackerLevel)
+	if l <= points[0][0] {
+		return points[0][1]
+	}
+	for i := 1; i < len(points); i++ {
+		if l <= points[i][0] {
+			a, b := points[i-1], points[i]
+			return a[1] + (b[1]-a[1])*(l-a[0])/(b[0]-a[0])
+		}
+	}
+	return points[len(points)-1][1]
+}
+
+// ForeverRagePerPreMitigationDamage is the Rage a point of pre-mitigation damage taken from an attacker of this level
+// gives: 2.5 x (1 - A) / c(attacker level).
+func ForeverRagePerPreMitigationDamage(attackerLevel int32) float64 {
+	l := float64(attackerLevel)
+	c := 0.0091107836*l*l + 3.225598133*l + 4.2652911
+	return 2.5 * (1 - ForeverAssumedArmorReduction(attackerLevel)) / c
+}
+
+// foreverMeasuredRage: the hit with its outcome (crit, crushing blow) before armor, blocks and absorbs.
+func foreverMeasuredRage(spell *Spell, result *SpellResult) float64 {
+	if !result.Landed() || result.ResistanceMultiplier <= 0 {
+		return 0
+	}
+	damage := result.RawDamage()
+	switch {
+	case result.Outcome.Matches(OutcomeCrit):
+		damage *= spell.CritMultiplier(spell.Unit.AttackTables[result.Target.UnitIndex][spell.CastType])
+	case result.Outcome.Matches(OutcomeCrush):
+		damage *= 1.5
+	}
+	return damage * ForeverRagePerPreMitigationDamage(spell.Unit.Level)
+}
+
 func (parameters ForeverIncomingRageParameters) rageFromDamageTaken(result *SpellResult) float64 {
 	damage := result.Damage + result.AbsorbedDamage
 	if damage <= 0 || parameters.Coefficient == 0 {

@@ -628,6 +628,6 @@
 		"file": "sim/priest/talents.go",
 		"source": "forever",
 		"tooltip": "Increases Spirit of you and your party by 3/6/9/12/15% for 10 sec.",
-		"note": "Client 1.60.1.70425 (October 15 notes). Triggered by Mind Blast and fully channeled Mind Flay; only the priest's own Spirit is modelled."
+		"note": "Client 1.60.1.70425 (October 15 notes). Triggered by Mind Blast and fully channeled Mind Flay; the priest's own copy is modelled here, a party member's through PartyBuffs.DarkInspiration (sim/core/buffs.go), sharing one category."
 	}
 }

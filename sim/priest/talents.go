@@ -499,19 +499,18 @@ func (priest *Priest) shadowformSpells() []*core.Spell {
 }
 
 // Dark Inspiration (client 1.60.1.70425): Mind Blast and fully channeled Mind Flay raise the party's
-// Spirit by 3/6/9/12/15% for 10 sec. Only the priest's own Spirit is modelled.
+// Spirit by 3/6/9/12/15% for 10 sec. Only the priest's own Spirit is modelled here; party members take it
+// from PartyBuffs.DarkInspiration.
 func (priest *Priest) applyDarkInspiration() {
 	if priest.Talents.DarkInspiration == 0 {
 		return
 	}
-	dep := priest.NewDynamicMultiplyStat(stats.Spirit, 1+0.03*float64(priest.Talents.DarkInspiration))
 	aura := priest.RegisterAura(core.Aura{
 		Label:    "Dark Inspiration",
-		ActionID: core.ActionID{SpellID: 1326168},
+		ActionID: core.DarkInspirationActionID,
 		Duration: 10 * time.Second,
-		OnGain:   func(_ *core.Aura, sim *core.Simulation) { priest.EnableDynamicStatDep(sim, dep) },
-		OnExpire: func(_ *core.Aura, sim *core.Simulation) { priest.DisableDynamicStatDep(sim, dep) },
 	})
+	core.AttachDarkInspiration(aura, priest.Talents.DarkInspiration)
 	core.MakePermanent(priest.RegisterAura(core.Aura{
 		Label: "Dark Inspiration Trigger",
 		OnCastComplete: func(_ *core.Aura, sim *core.Simulation, spell *core.Spell) {

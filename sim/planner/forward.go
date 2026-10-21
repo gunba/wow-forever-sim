@@ -41,14 +41,15 @@ type Ctx struct {
 	WThreatTarget, WThreatOther float64
 
 	// Incoming melee from mobs attacking the player.
-	Attackers   float64
-	MobSpeed    float64
-	MobHit      float64 // raw damage per landed mob hit, before Demoralizing Shout and blocks
-	MobAPEquiv  float64 // damage share removed per point of Demoralizing Shout (engine's enemy AP coefficient)
-	TTK         [3]float64
-	TTKProb     [3]float64
-	ExecuteFrac float64 // share of the target's life left when it enters execute range (health 20%)
-	HealthPct   float64
+	Attackers    float64
+	MobSpeed     float64
+	MobHit       float64 // raw damage per landed mob hit, before Demoralizing Shout and blocks
+	RagePerTaken float64 // rage per point of damage taken (after the player's armor)
+	MobAPEquiv   float64 // damage share removed per point of Demoralizing Shout (engine's enemy AP coefficient)
+	TTK          [3]float64
+	TTKProb      [3]float64
+	ExecuteFrac  float64 // share of the target's life left when it enters execute range (health 20%)
+	HealthPct    float64
 
 	// Outcome tables.
 	mhWhite, ohWhite, special, noAvoid, magic outcome
@@ -509,7 +510,7 @@ func (c *Ctx) mobAttack(s *State) {
 		taken *= 0.9
 	}
 	s.mitig += saved
-	s.rage = min(100, s.rage+taken*m.IncomingRagePerD)
+	s.rage = min(100, s.rage+taken*c.RagePerTaken)
 	if m.EnrageChance > 0 && taken > 0 && r2 < m.EnrageChance {
 		s.enrEnd = s.t + 12
 	}

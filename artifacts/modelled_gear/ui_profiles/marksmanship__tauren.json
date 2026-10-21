@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "1793500001",
+    "fixedRngSeed": "1793600001",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Horde",
@@ -30,7 +30,9 @@
     "devotionAura": "TristateEffectImproved",
     "retributionAura": "TristateEffectImproved"
   },
-  "partyBuffs": {},
+  "partyBuffs": {
+    "windfuryTotem": true
+  },
   "debuffs": {
     "judgementOfWisdom": true,
     "judgementOfLight": true,
@@ -46,8 +48,7 @@
     "demoralizingShout": "TristateEffectImproved",
     "thunderClap": "TristateEffectImproved",
     "insectSwarm": true,
-    "scorpidSting": true,
-    "huntersMark": "TristateEffectRegular"
+    "scorpidSting": true
   },
   "tanks": [],
   "player": {
@@ -77,7 +78,7 @@
         },
         {
           "id": 920000128,
-          "enchant": 1883
+          "enchant": 1885
         },
         {
           "id": 920000164,
@@ -107,15 +108,15 @@
           "id": 920000317
         },
         {
-          "id": 920000334,
+          "id": 920000333,
           "enchant": 2564
         },
         {
-          "id": 920000349,
+          "id": 920000333,
           "enchant": 2564
         },
         {
-          "id": 920000376,
+          "id": 920000375,
           "enchant": 8720
         }
       ]
@@ -127,12 +128,12 @@
       "manaRegenElixir": "MagebloodPotion",
       "strengthBuff": "ElixirOfFerocity",
       "attackPowerBuff": "JujuMight",
-      "fillerExplosive": "ExplosiveThoriumGrenade",
       "mainHandImbue": "DenseSharpeningStone",
-      "offHandImbue": "DenseWeightstone",
-      "defaultPotion": "MajorManaPotion",
+      "offHandImbue": "DenseSharpeningStone",
+      "defaultPotion": "MajorFrenzyPotion",
       "defaultConjured": "ConjuredDemonicRune",
       "zanzaBuff": "GroundScorpokAssay",
+      "sapperExplosive": "SapperGoblinSapper",
       "intellectElixir": "ElixirOfTheOwl",
       "mainHandScroll": "ScrollOfImbuePrecision",
       "offHandScroll": "ScrollOfImbuePrecision"
@@ -191,7 +192,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "5-0053452011523051-50004",
+    "talentsString": "-105305131150003-5502000300501101",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
@@ -209,9 +210,67 @@
               "val": "-10s"
             }
           }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 14325
+              }
+            }
+          },
+          "doAtValue": {
+            "const": {
+              "val": "-4s"
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 20904
+              }
+            }
+          },
+          "doAtValue": {
+            "const": {
+              "val": "-2s"
+            }
+          }
         }
       ],
       "priorityList": [
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpLe",
+                "lhs": {
+                  "auraRemainingTime": {
+                    "sourceUnit": {
+                      "type": "CurrentTarget"
+                    },
+                    "auraId": {
+                      "spellId": 14325,
+                      "tag": 1
+                    }
+                  }
+                },
+                "rhs": {
+                  "const": {
+                    "val": "5s"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 14325
+              }
+            }
+          }
+        },
         {
           "action": {
             "autocastOtherCooldowns": {}
@@ -219,34 +278,30 @@
         },
         {
           "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 3045
+              }
+            }
+          }
+        },
+        {
+          "action": {
             "condition": {
-              "and": {
-                "vals": [
-                  {
-                    "not": {
-                      "val": {
-                        "dotIsActive": {
-                          "spellId": {
-                            "spellId": 13555
-                          }
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "cmp": {
-                      "op": "OpGe",
-                      "lhs": {
-                        "remainingTime": {}
-                      },
-                      "rhs": {
-                        "const": {
-                          "val": "12s"
-                        }
-                      }
+              "cmp": {
+                "op": "OpLe",
+                "lhs": {
+                  "dotRemainingTime": {
+                    "spellId": {
+                      "spellId": 13555
                     }
                   }
-                ]
+                },
+                "rhs": {
+                  "const": {
+                    "val": "0.5s"
+                  }
+                }
               }
             },
             "castSpell": {
@@ -260,51 +315,186 @@
           "action": {
             "castSpell": {
               "spellId": {
-                "spellId": 20904
-              }
-            }
-          }
-        },
-        {
-          "action": {
-            "condition": {
-              "cmp": {
-                "op": "OpGe",
-                "lhs": {
-                  "currentManaPercent": {}
-                },
-                "rhs": {
-                  "const": {
-                    "val": "30%"
-                  }
-                }
-              }
-            },
-            "castSpell": {
-              "spellId": {
-                "spellId": 1310786
-              }
-            }
-          }
-        },
-        {
-          "action": {
-            "condition": {
-              "cmp": {
-                "op": "OpGe",
-                "lhs": {
-                  "currentManaPercent": {}
-                },
-                "rhs": {
-                  "const": {
-                    "val": "15%"
-                  }
-                }
-              }
-            },
-            "castSpell": {
-              "spellId": {
                 "spellId": 14287
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 2643
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpGt",
+                "lhs": {
+                  "autoTimeToNext": {
+                    "autoType": "Ranged"
+                  }
+                },
+                "rhs": {
+                  "const": {
+                    "val": "1.5s"
+                  }
+                }
+              }
+            },
+            "move": {
+              "rangeFromTarget": {
+                "const": {
+                  "val": "5"
+                }
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 14266,
+                "tag": 3
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 14271
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 1317257
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpGe",
+                "lhs": {
+                  "remainingTime": {}
+                },
+                "rhs": {
+                  "const": {
+                    "val": "12s"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 14305
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "not": {
+                      "val": {
+                        "auraIsActive": {
+                          "auraId": {
+                            "spellId": 14266
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGt",
+                      "lhs": {
+                        "spellTimeToReady": {
+                          "spellId": {
+                            "spellId": 1317257
+                          }
+                        }
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "1.5s"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "or": {
+                      "vals": [
+                        {
+                          "not": {
+                            "val": {
+                              "auraIsActive": {
+                                "auraId": {
+                                  "spellId": 1310726
+                                }
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "cmp": {
+                            "op": "OpGt",
+                            "lhs": {
+                              "spellTimeToReady": {
+                                "spellId": {
+                                  "spellId": 14271
+                                }
+                              }
+                            },
+                            "rhs": {
+                              "const": {
+                                "val": "1.5s"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGt",
+                      "lhs": {
+                        "autoTimeToNext": {
+                          "autoType": "Melee"
+                        }
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "0.5s"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "move": {
+              "rangeFromTarget": {
+                "const": {
+                  "val": "12"
+                }
               }
             }
           }

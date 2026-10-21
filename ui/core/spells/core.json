@@ -214,7 +214,9 @@
 		"source": "assumed",
 		"tooltip": "Reduces nearby enemies' melee attack power by 204 for 45 sec. Owned active Shout costs 10 Rage before Forever Booming Voice. Its per-target flat threat uses an explicit provisional default of 43.2 before stance/threat modifiers, or a configured override.",
 		"note": "The AP amount and 45-second debuff duration are primary-backed. The current shared core aura is also usable as an external configured debuff; that does not execute the owner's active cast. sim/warrior/demoralizing_shout.go restores nonzero threat on each landed affected target. No exact threat amount is published: 0.4 times 2 times rank-5 learn level 54 equals the retained code convention 43.2, not a measured Classic or Forever server result.",
-		"assumptions": ["Per-target flat threat defaults to the retained source-code convention of 43.2; an optional per-player override supports sensitivity. Known AP/duration values are not declared unverified merely because the separate threat amount is provisional."]
+		"assumptions": [
+			"Per-target flat threat defaults to the retained source-code convention of 43.2; an optional per-player override supports sensitivity. Known AP/duration values are not declared unverified merely because the separate threat amount is provisional."
+		]
 	},
 	"11597": {
 		"ability": "Sunder Armor",
@@ -679,7 +681,9 @@
 		"source": "assumed",
 		"tooltip": "Reduces nearby enemies' melee attack power by 204 for 30 sec. Owned active Roar costs 10 Rage. Its per-target flat threat uses an explicit provisional default of 100 before stance/threat modifiers, or a configured override.",
 		"note": "The current shared core aura hardcodes 204 AP reduction; the owned Forever cast is in sim/druid/demoralizing_roar.go. An externally configured aura does not itself execute the owner's active cast or generate its cast threat. The prior metadata's external Classic 138-AP description does not match the current shared helper. Active Roar restores nonzero threat on each landed affected target; the amount is unpublished. The retained code convention is 2 times the registered rank's learn level (100 at rank 5), not a measured Classic or Forever server value.",
-		"assumptions": ["Per-target flat threat defaults to the retained source-code convention of 100 at rank 5; an optional per-player override supports sensitivity. This constant is not a measured server result."]
+		"assumptions": [
+			"Per-target flat threat defaults to the retained source-code convention of 100 at rank 5; an optional per-player override supports sensitivity. This constant is not a measured server result."
+		]
 	},
 	"9910": {
 		"ability": "Thorns",
@@ -701,5 +705,21 @@
 		"source": "forever",
 		"tooltip": "At level60, reduces target Attack Power by68/136/204 for20seconds. Competes with other AP-reduction providers.",
 		"note": "Captured child440667 and rank multiplier. Lower-level numeric scaling is not established by the level60 effect."
+	},
+	"12022": {
+		"ability": "Admiral's Hat",
+		"file": "sim/core/buffs.go",
+		"note": "Party buff from a party member's Admiral's Hat: 10 Stamina (client 1.60.1.70450 row unchanged from Classic).",
+		"source": "classic"
+	},
+	"16939": {
+		"ability": "Ancestor's Vengeance (Darkspear)",
+		"file": "sim/core/buffs.go",
+		"source": "assumed",
+		"tooltip": "Chance on hit: party members' chance to crit is increased by 4% for 20 sec.",
+		"note": "Client 1.60.1.70450: Darkspear (12802, 3.20 speed) procs 1314143 at 5% on hit with a 60 sec cooldown; the buff is A_MOD_CRIT_PCT (melee, ranged and spell).",
+		"assumptions": [
+			"The wielder's swings are not simulated: the buff keeps the uptime one 3.20 sec weapon gives, 20 / (60 + 3.2 / 0.05) = 16%."
+		]
 	}
 }

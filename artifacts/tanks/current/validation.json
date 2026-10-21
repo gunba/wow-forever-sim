@@ -1,7 +1,7 @@
 {
   "format": 2,
-  "status": "October 21 update current-engine workload replays of the tank profiles; no tank selection",
-  "supersedes": "artifacts/history/03a5b49d5/manifest.json",
+  "status": "October 21 follow-up current-engine workload replays of the tank profiles; no tank selection",
+  "supersedes": "artifacts/history/55cb7a3a4/manifest.json",
   "seeds": [
     1793210001,
     1793230001
@@ -12,49 +12,49 @@
   ],
   "seedIntervalsIndependent": true,
   "errorAggregation": "independent-quadrature within a profile; no cross-race independence claim",
-  "scope": "All 17 tank race profiles; 2 unchanged workloads; 2 independent 5000-iteration seed ranges. October 21 update: resistance model, swing resets on casts, trainer ranks, threat changes; tank equipment and talents unchanged.",
+  "scope": "All 17 tank race profiles; 2 unchanged workloads; 2 independent 5000-iteration seed ranges. October 21 follow-up: rage from damage taken as measured on Forever logs (wowsims/forever #356), original race offsets, Vindication 5 PPM, Consecration tick crits; tank equipment and talents unchanged.",
   "scenarios": {
     "Single": "300s, one 3000-base/2s attacker, 1500 HPS",
     "Multi": "90s, three 1500-base/2s attackers, 2500 HPS"
   },
-  "selectionPolicy": "These 68 runs are fixed-profile release checks, not new selection. Tank gear, talents and APLs are unchanged from the October 8 guarded selections; the October 11 Revenge/Sunder/Thunder Clap corrections change Protection Warrior results, the October 11 log-audit Redoubt and Omen of Clarity corrections change Protection Paladin and Bear results, the October 15 update (racials, Reckoning, Righteous Fury, Consecration and Judgement coefficients, Furor) changes all three, and the October 16 follow-up moves the Bear and Protection Paladin relic slot to real relics (Enraged Idol; Libram of Law, about 5 threat per second over Steadfast Libram) with a quarter of the modeled relic stats. Other gear, talents and APLs are not reselected. The October 21 update (spell resistance model, trainer ranks with no Ahn'Qiraj books, swing reset on casts, race offsets, Warrior threat per spell level with the Cleave and rage threat split, One-Handed Weapon Specialization on every school, Champion of the Light and other server hotfixes) changes all three without reselection.",
+  "selectionPolicy": "These 68 runs are fixed-profile release checks, not new selection. Tank gear, talents and APLs are unchanged from the October 8 guarded selections; the October 11 Revenge/Sunder/Thunder Clap corrections change Protection Warrior results, the October 11 log-audit Redoubt and Omen of Clarity corrections change Protection Paladin and Bear results, the October 15 update (racials, Reckoning, Righteous Fury, Consecration and Judgement coefficients, Furor) changes all three, and the October 16 follow-up moves the Bear and Protection Paladin relic slot to real relics (Enraged Idol; Libram of Law, about 5 threat per second over Steadfast Libram) with a quarter of the modeled relic stats. Other gear, talents and APLs are not reselected. The October 21 update (spell resistance model, trainer ranks with no Ahn'Qiraj books, swing reset on casts, race offsets, Warrior threat per spell level with the Cleave and rage threat split, One-Handed Weapon Specialization on every school, Champion of the Light and other server hotfixes) changes all three without reselection. The October 21 follow-up (rage from damage taken as measured on Forever logs, the original race offsets, Vindication at 5 procs a minute with a spell-hit debuff, Consecration tick crits) changes all three without reselection.",
   "selections": [
     {
       "Key": "feral_tank_druid",
       "Race": "High Order",
       "Single": {
-        "TPS": 1835.313721691619,
-        "TPSStandardError": 0.7945009953054233,
-        "DTPS": 715.8629881632819,
-        "DTPSStandardError": 0.4226558871487226,
-        "TMI": 78.58471558814963,
-        "TMIStandardError": 0.06906988828717035,
-        "DPS": 534.4367342093994,
-        "DPSStandardError": 0.2522171862415799,
-        "ChanceOfDeath": 0.0055,
+        "TPS": 2114.760462541689,
+        "TPSStandardError": 0.8500844938444312,
+        "DTPS": 716.1843371459637,
+        "DTPSStandardError": 0.4274336925380787,
+        "TMI": 78.42123295115596,
+        "TMIStandardError": 0.06924604949329646,
+        "DPS": 601.9821971904712,
+        "DPSStandardError": 0.2651095553730842,
+        "ChanceOfDeath": 0.005,
         "Iterations": 10000,
         "TargetTPS": [
-          1835.313721691617
+          2114.7604625416843
         ],
-        "LeastTargetTPS": 1835.313721691617
+        "LeastTargetTPS": 2114.7604625416843
       },
       "Multi": {
-        "TPS": 2275.0540228329332,
-        "TPSStandardError": 1.6020858211779263,
-        "DTPS": 1029.328286517702,
-        "DTPSStandardError": 0.6291597927325682,
-        "TMI": 91.12337676240043,
-        "TMIStandardError": 0.07490803698739124,
-        "DPS": 697.3623670787872,
-        "DPSStandardError": 0.4961941452214863,
-        "ChanceOfDeath": 0.0007,
+        "TPS": 2405.3166783726356,
+        "TPSStandardError": 1.5381526093031501,
+        "DTPS": 1030.9613881603002,
+        "DTPSStandardError": 0.6332134579662453,
+        "TMI": 91.24273396099377,
+        "TMIStandardError": 0.07502447261472135,
+        "DPS": 729.2191552391223,
+        "DPSStandardError": 0.4814076416688561,
+        "ChanceOfDeath": 0.0005,
         "Iterations": 10000,
         "TargetTPS": [
-          1609.7259348695393,
-          332.9183703934841,
-          332.4097175699103
+          1725.8154984846096,
+          339.907180576616,
+          339.593999311402
         ],
-        "LeastTargetTPS": 332.17430730659396
+        "LeastTargetTPS": 339.2521086104509
       },
       "Disposition": "fixed-profile-correctness-replay; relic slot moved to real relics, otherwise not selection or optimization"
     },
@@ -62,38 +62,38 @@
       "Key": "feral_tank_druid",
       "Race": "Night Elf",
       "Single": {
-        "TPS": 1824.0852507528566,
-        "TPSStandardError": 0.7911479552837981,
-        "DTPS": 704.1961923752197,
-        "DTPSStandardError": 0.43223300266179027,
-        "TMI": 77.86755652893817,
-        "TMIStandardError": 0.07125755623748574,
-        "DPS": 528.8910911766459,
-        "DPSStandardError": 0.2483720646824285,
-        "ChanceOfDeath": 0.0057,
+        "TPS": 2102.232891227858,
+        "TPSStandardError": 0.8432319903275144,
+        "DTPS": 703.2256493058385,
+        "DTPSStandardError": 0.43337187630519014,
+        "TMI": 78.04924799220315,
+        "TMIStandardError": 0.07231121299983974,
+        "DPS": 597.4227535982836,
+        "DPSStandardError": 0.26400073330244356,
+        "ChanceOfDeath": 0.0031,
         "Iterations": 10000,
         "TargetTPS": [
-          1824.0852507528573
+          2102.232891227858
         ],
-        "LeastTargetTPS": 1824.0852507528573
+        "LeastTargetTPS": 2102.232891227858
       },
       "Multi": {
-        "TPS": 2288.5784590650946,
-        "TPSStandardError": 1.5399894888700323,
-        "DTPS": 1014.6209473183626,
-        "DTPSStandardError": 0.6394473671397084,
-        "TMI": 90.21351504852093,
-        "TMIStandardError": 0.07658101972688769,
-        "DPS": 700.5667501210853,
-        "DPSStandardError": 0.48546252324521,
-        "ChanceOfDeath": 0.00030000000000000003,
+        "TPS": 2398.8697813825092,
+        "TPSStandardError": 1.5189615517645885,
+        "DTPS": 1012.9150416572915,
+        "DTPSStandardError": 0.6407438703993787,
+        "TMI": 90.16144169531603,
+        "TMIStandardError": 0.07738898077865093,
+        "DPS": 729.8939429234822,
+        "DPSStandardError": 0.4775750297614869,
+        "ChanceOfDeath": 0.0007,
         "Iterations": 10000,
         "TargetTPS": [
-          1625.9838107707508,
-          331.57928190366755,
-          331.0153663906763
+          1726.2059933729704,
+          336.4919430545258,
+          336.1718449550137
         ],
-        "LeastTargetTPS": 331.0153663906763
+        "LeastTargetTPS": 336.1718449550137
       },
       "Disposition": "fixed-profile-correctness-replay; relic slot moved to real relics, otherwise not selection or optimization"
     },
@@ -101,38 +101,38 @@
       "Key": "feral_tank_druid",
       "Race": "Tauren",
       "Single": {
-        "TPS": 1842.3737618783748,
-        "TPSStandardError": 0.8148082605055701,
-        "DTPS": 715.5294744658121,
-        "DTPSStandardError": 0.42606618456227735,
-        "TMI": 73.29488958195117,
-        "TMIStandardError": 0.06346814369169743,
-        "DPS": 534.0072018854376,
-        "DPSStandardError": 0.2564139415378947,
-        "ChanceOfDeath": 0.0017000000000000001,
+        "TPS": 2112.842443975309,
+        "TPSStandardError": 0.8617497260416399,
+        "DTPS": 716.4226827932578,
+        "DTPSStandardError": 0.42120547741156283,
+        "TMI": 73.30513922984952,
+        "TMIStandardError": 0.06418070224388593,
+        "DPS": 599.5035558437622,
+        "DPSStandardError": 0.26759522943989156,
+        "ChanceOfDeath": 0.0016,
         "Iterations": 10000,
         "TargetTPS": [
-          1842.3737618783753
+          2112.8424439753135
         ],
-        "LeastTargetTPS": 1842.3737618783753
+        "LeastTargetTPS": 2112.8424439753135
       },
       "Multi": {
-        "TPS": 2250.4926962817904,
-        "TPSStandardError": 1.5471918152195065,
-        "DTPS": 1029.6879565149015,
-        "DTPSStandardError": 0.6363969245203701,
-        "TMI": 85.70923298760484,
-        "TMIStandardError": 0.07036737699397594,
-        "DPS": 692.9073812883433,
-        "DPSStandardError": 0.4870036308480711,
-        "ChanceOfDeath": 0.0001,
+        "TPS": 2371.754103182472,
+        "TPSStandardError": 1.5185270206778765,
+        "DTPS": 1033.8256503300809,
+        "DTPSStandardError": 0.6437801820720099,
+        "TMI": 85.90690954837876,
+        "TMIStandardError": 0.06961578910168369,
+        "DPS": 724.257395772875,
+        "DPSStandardError": 0.47644821635946477,
+        "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          1606.7246795396009,
-          322.46452009907296,
-          321.3034966431102
+          1715.2316291850016,
+          328.68846169445874,
+          327.83401230301274
         ],
-        "LeastTargetTPS": 321.3034966431102
+        "LeastTargetTPS": 327.83401230301274
       },
       "Disposition": "fixed-profile-correctness-replay; relic slot moved to real relics, otherwise not selection or optimization"
     },
@@ -140,38 +140,38 @@
       "Key": "feral_tank_druid",
       "Race": "Windshaper",
       "Single": {
-        "TPS": 1835.313721691619,
-        "TPSStandardError": 0.7945009953054233,
-        "DTPS": 715.8629881632819,
-        "DTPSStandardError": 0.4226558871487226,
-        "TMI": 78.58471558814963,
-        "TMIStandardError": 0.06906988828717035,
-        "DPS": 534.4367342093994,
-        "DPSStandardError": 0.2522171862415799,
-        "ChanceOfDeath": 0.0055,
+        "TPS": 2114.760462541689,
+        "TPSStandardError": 0.8500844938444312,
+        "DTPS": 716.1843371459637,
+        "DTPSStandardError": 0.4274336925380787,
+        "TMI": 78.42123295115596,
+        "TMIStandardError": 0.06924604949329646,
+        "DPS": 601.9821971904712,
+        "DPSStandardError": 0.2651095553730842,
+        "ChanceOfDeath": 0.005,
         "Iterations": 10000,
         "TargetTPS": [
-          1835.313721691617
+          2114.7604625416843
         ],
-        "LeastTargetTPS": 1835.313721691617
+        "LeastTargetTPS": 2114.7604625416843
       },
       "Multi": {
-        "TPS": 2275.0540228329332,
-        "TPSStandardError": 1.6020858211779263,
-        "DTPS": 1029.328286517702,
-        "DTPSStandardError": 0.6291597927325682,
-        "TMI": 91.12337676240043,
-        "TMIStandardError": 0.07490803698739124,
-        "DPS": 697.3623670787872,
-        "DPSStandardError": 0.4961941452214863,
-        "ChanceOfDeath": 0.0007,
+        "TPS": 2405.3166783726356,
+        "TPSStandardError": 1.5381526093031501,
+        "DTPS": 1030.9613881603002,
+        "DTPSStandardError": 0.6332134579662453,
+        "TMI": 91.24273396099377,
+        "TMIStandardError": 0.07502447261472135,
+        "DPS": 729.2191552391223,
+        "DPSStandardError": 0.4814076416688561,
+        "ChanceOfDeath": 0.0005,
         "Iterations": 10000,
         "TargetTPS": [
-          1609.7259348695397,
-          332.9183703934841,
-          332.4097175699103
+          1725.8154984846096,
+          339.907180576616,
+          339.59399931140194
         ],
-        "LeastTargetTPS": 332.1743073065939
+        "LeastTargetTPS": 339.2521086104508
       },
       "Disposition": "fixed-profile-correctness-replay; relic slot moved to real relics, otherwise not selection or optimization"
     },
@@ -179,38 +179,38 @@
       "Key": "protection_paladin",
       "Race": "Dwarf",
       "Single": {
-        "TPS": 956.8849634518319,
-        "TPSStandardError": 0.31096048523261166,
-        "DTPS": 702.5504898198187,
-        "DTPSStandardError": 0.3413275260099791,
-        "TMI": 78.07377938927962,
-        "TMIStandardError": 0.057725866994880984,
-        "DPS": 549.3408902465261,
-        "DPSStandardError": 0.18858194518421115,
-        "ChanceOfDeath": 0.0026,
+        "TPS": 956.3429873347548,
+        "TPSStandardError": 0.3113301016047502,
+        "DTPS": 704.4780070130996,
+        "DTPSStandardError": 0.342202258114715,
+        "TMI": 77.92075957413365,
+        "TMIStandardError": 0.05715550202101583,
+        "DPS": 548.9861891562336,
+        "DPSStandardError": 0.18855862628807782,
+        "ChanceOfDeath": 0.0022,
         "Iterations": 10000,
         "TargetTPS": [
-          956.8849634518325
+          956.3429873347563
         ],
-        "LeastTargetTPS": 956.8849634518325
+        "LeastTargetTPS": 956.3429873347563
       },
       "Multi": {
-        "TPS": 1485.320256188458,
-        "TPSStandardError": 0.6753712333001121,
-        "DTPS": 1014.5300589324531,
-        "DTPSStandardError": 0.5666543338122667,
-        "TMI": 92.79389155913839,
-        "TMIStandardError": 0.0601148989800678,
-        "DPS": 875.059687277283,
-        "DPSStandardError": 0.4799877703344341,
-        "ChanceOfDeath": 0.0024,
+        "TPS": 1485.2380154535447,
+        "TPSStandardError": 0.6739372769407314,
+        "DTPS": 1016.2811136675721,
+        "DTPSStandardError": 0.5668573610547383,
+        "TMI": 92.58717797113567,
+        "TMIStandardError": 0.0593868382667809,
+        "DPS": 874.8987208800324,
+        "DPSStandardError": 0.47767958992863857,
+        "ChanceOfDeath": 0.0017000000000000001,
         "Iterations": 10000,
         "TargetTPS": [
-          936.6756007142299,
-          280.1436993193547,
-          268.500956154871
+          936.5119514374194,
+          280.17766339264335,
+          268.5484006234793
         ],
-        "LeastTargetTPS": 268.500956154871
+        "LeastTargetTPS": 268.5484006234793
       },
       "Disposition": "fixed-profile-correctness-replay; relic slot moved to real relics, otherwise not selection or optimization"
     },
@@ -229,9 +229,9 @@
         "ChanceOfDeath": 0.0029,
         "Iterations": 10000,
         "TargetTPS": [
-          976.299074340789
+          976.2990743407888
         ],
-        "LeastTargetTPS": 976.299074340789
+        "LeastTargetTPS": 976.2990743407888
       },
       "Multi": {
         "TPS": 1509.8404209123414,
@@ -247,9 +247,9 @@
         "TargetTPS": [
           958.9066637962228,
           281.51142413832645,
-          269.4223329778061
+          269.42233297780604
         ],
-        "LeastTargetTPS": 269.4223329778061
+        "LeastTargetTPS": 269.42233297780604
       },
       "Disposition": "fixed-profile-correctness-replay; relic slot moved to real relics, otherwise not selection or optimization"
     },
@@ -257,38 +257,38 @@
       "Key": "protection_paladin",
       "Race": "Undead",
       "Single": {
-        "TPS": 956.2180076978905,
-        "TPSStandardError": 0.30628182541267784,
-        "DTPS": 703.9000965315611,
-        "DTPSStandardError": 0.34839758976276114,
-        "TMI": 77.20673916123397,
-        "TMIStandardError": 0.05762757723924829,
-        "DPS": 559.328927892633,
-        "DPSStandardError": 0.18872463426815186,
+        "TPS": 955.1385856299667,
+        "TPSStandardError": 0.30694972724066283,
+        "DTPS": 704.4723115794316,
+        "DTPSStandardError": 0.34680644075107225,
+        "TMI": 77.25426515786228,
+        "TMIStandardError": 0.05733723910009783,
+        "DPS": 558.4602486219485,
+        "DPSStandardError": 0.18871485124812315,
+        "ChanceOfDeath": 0.0019,
+        "Iterations": 10000,
+        "TargetTPS": [
+          955.1385856299685
+        ],
+        "LeastTargetTPS": 955.1385856299685
+      },
+      "Multi": {
+        "TPS": 1478.9159035592763,
+        "TPSStandardError": 0.6515528960205539,
+        "DTPS": 1021.6123250359951,
+        "DTPSStandardError": 0.5509154330937042,
+        "TMI": 91.94207970585666,
+        "TMIStandardError": 0.058344834847041435,
+        "DPS": 880.9324546277849,
+        "DPSStandardError": 0.45945575811512923,
         "ChanceOfDeath": 0.0014,
         "Iterations": 10000,
         "TargetTPS": [
-          956.2180076978893
+          943.0102502603972,
+          273.64075400072727,
+          262.2648992981434
         ],
-        "LeastTargetTPS": 956.2180076978893
-      },
-      "Multi": {
-        "TPS": 1480.0645711763134,
-        "TPSStandardError": 0.6532681754825762,
-        "DTPS": 1021.2295316323591,
-        "DTPSStandardError": 0.549375142697025,
-        "TMI": 91.93229295805517,
-        "TMIStandardError": 0.05836808761274056,
-        "DPS": 881.7909406666304,
-        "DPSStandardError": 0.4612412928811955,
-        "ChanceOfDeath": 0.0013,
-        "Iterations": 10000,
-        "TargetTPS": [
-          944.1311811814994,
-          273.66562303692945,
-          262.26776695788277
-        ],
-        "LeastTargetTPS": 262.26776695788277
+        "LeastTargetTPS": 262.2648992981434
       },
       "Disposition": "fixed-profile-correctness-replay; relic slot moved to real relics, otherwise not selection or optimization"
     },
@@ -296,38 +296,38 @@
       "Key": "tank_warrior",
       "Race": "Dwarf",
       "Single": {
-        "TPS": 1200.372963092307,
-        "TPSStandardError": 0.5832749698519769,
-        "DTPS": 495.4131577695012,
-        "DTPSStandardError": 0.2727132822424483,
-        "TMI": 50.56901100243738,
-        "TMIStandardError": 0.03414195781620144,
-        "DPS": 481.8197933952754,
-        "DPSStandardError": 0.24108466097393516,
-        "ChanceOfDeath": 0.0001,
-        "Iterations": 10000,
-        "TargetTPS": [
-          1200.3729630923076
-        ],
-        "LeastTargetTPS": 1200.3729630923076
-      },
-      "Multi": {
-        "TPS": 1314.0467022346681,
-        "TPSStandardError": 1.066693154602346,
-        "DTPS": 771.0852361824192,
-        "DTPSStandardError": 0.4804547055895341,
-        "TMI": 70.92793588794427,
-        "TMIStandardError": 0.049918550045547995,
-        "DPS": 591.8541877335215,
-        "DPSStandardError": 0.4937306862541304,
+        "TPS": 1324.9739877646682,
+        "TPSStandardError": 0.5853926214037893,
+        "DTPS": 505.18376858234393,
+        "DTPSStandardError": 0.2815742063712491,
+        "TMI": 51.66462520048145,
+        "TMIStandardError": 0.03492358819420124,
+        "DPS": 519.8782501908709,
+        "DPSStandardError": 0.2445110843371431,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          1099.3395491188592,
-          164.76181726925853,
-          49.945335846549014
+          1324.973987764667
         ],
-        "LeastTargetTPS": 49.945335846549014
+        "LeastTargetTPS": 1324.973987764667
+      },
+      "Multi": {
+        "TPS": 1569.7032505356055,
+        "TPSStandardError": 1.0755616693298964,
+        "DTPS": 781.0886369918662,
+        "DTPSStandardError": 0.47608681099032024,
+        "TMI": 71.45147428690692,
+        "TMIStandardError": 0.05003016547885792,
+        "DPS": 724.5468933449943,
+        "DPSStandardError": 0.49312530679463784,
+        "ChanceOfDeath": 0.0,
+        "Iterations": 10000,
+        "TargetTPS": [
+          1214.8865278773692,
+          304.50409482863085,
+          50.31262782960556
+        ],
+        "LeastTargetTPS": 50.31262782960556
       },
       "Disposition": "fixed-profile-correctness-replay; relic slot moved to real relics, otherwise not selection or optimization"
     },
@@ -335,38 +335,38 @@
       "Key": "tank_warrior",
       "Race": "Gnome",
       "Single": {
-        "TPS": 1125.620514664447,
-        "TPSStandardError": 0.5523963074346033,
-        "DTPS": 482.9824005267035,
-        "DTPSStandardError": 0.26900246510174847,
-        "TMI": 49.553068324948754,
-        "TMIStandardError": 0.032691074003834385,
-        "DPS": 480.2903437774223,
-        "DPSStandardError": 0.2395933131522713,
-        "ChanceOfDeath": 0.0001,
-        "Iterations": 10000,
-        "TargetTPS": [
-          1125.620514664447
-        ],
-        "LeastTargetTPS": 1125.620514664447
-      },
-      "Multi": {
-        "TPS": 1257.6307609222654,
-        "TPSStandardError": 1.0085445395138004,
-        "DTPS": 757.3161757495693,
-        "DTPSStandardError": 0.47923825635354583,
-        "TMI": 70.23973788316991,
-        "TMIStandardError": 0.05102597140581795,
-        "DPS": 596.4655019160616,
-        "DPSStandardError": 0.48754626675373736,
+        "TPS": 1265.4636278201165,
+        "TPSStandardError": 0.5398459921463824,
+        "DTPS": 493.16731922513765,
+        "DTPSStandardError": 0.2847921917411592,
+        "TMI": 51.24566211249549,
+        "TMIStandardError": 0.03627793134954077,
+        "DPS": 518.5063142036286,
+        "DPSStandardError": 0.23554118151643993,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          1044.2787185631378,
-          165.89192807634424,
-          47.46011428278507
+          1265.4636278201133
         ],
-        "LeastTargetTPS": 47.46011428278507
+        "LeastTargetTPS": 1265.4636278201133
+      },
+      "Multi": {
+        "TPS": 1500.2110614281369,
+        "TPSStandardError": 1.008160293911381,
+        "DTPS": 764.2082361795317,
+        "DTPSStandardError": 0.4828986109774466,
+        "TMI": 70.74979304277606,
+        "TMIStandardError": 0.051720401838508824,
+        "DPS": 723.5159874746107,
+        "DPSStandardError": 0.4798931685938334,
+        "ChanceOfDeath": 0.0,
+        "Iterations": 10000,
+        "TargetTPS": [
+          1160.438715859195,
+          291.71678827597236,
+          48.05555729296715
+        ],
+        "LeastTargetTPS": 48.05555729296715
       },
       "Disposition": "fixed-profile-correctness-replay; relic slot moved to real relics, otherwise not selection or optimization"
     },
@@ -374,38 +374,38 @@
       "Key": "tank_warrior",
       "Race": "High Order",
       "Single": {
-        "TPS": 1127.5270058445421,
-        "TPSStandardError": 0.5394351717164697,
-        "DTPS": 485.85380764928334,
-        "DTPSStandardError": 0.2706678716239625,
-        "TMI": 50.027487762085386,
-        "TMIStandardError": 0.033297719607555856,
-        "DPS": 482.7094656995155,
-        "DPSStandardError": 0.23667274001216865,
+        "TPS": 1265.6862986870037,
+        "TPSStandardError": 0.5509778127926974,
+        "DTPS": 496.33408164643765,
+        "DTPSStandardError": 0.28087690817094796,
+        "TMI": 51.6757734950017,
+        "TMIStandardError": 0.03590572945446819,
+        "DPS": 519.9415425879444,
+        "DPSStandardError": 0.24151272198494333,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          1127.5270058445435
+          1265.6862986870065
         ],
-        "LeastTargetTPS": 1127.5270058445435
+        "LeastTargetTPS": 1265.6862986870065
       },
       "Multi": {
-        "TPS": 1262.189981075998,
-        "TPSStandardError": 1.0258016321755983,
-        "DTPS": 760.5703152837207,
-        "DTPSStandardError": 0.48738017398747874,
-        "TMI": 70.76881936629097,
-        "TMIStandardError": 0.05133531119980682,
-        "DPS": 600.5428765751635,
-        "DPSStandardError": 0.4955160020212998,
+        "TPS": 1506.9424062980852,
+        "TPSStandardError": 1.0185815287248496,
+        "DTPS": 769.2625920337191,
+        "DTPSStandardError": 0.48872865078556366,
+        "TMI": 71.43261740692913,
+        "TMIStandardError": 0.0520525719616724,
+        "DPS": 728.6861268567274,
+        "DPSStandardError": 0.4849019649953335,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          1046.4017226334856,
-          168.0718315802253,
-          47.71642686228953
+          1162.6482341543829,
+          295.81067746638024,
+          48.483494677322966
         ],
-        "LeastTargetTPS": 47.71642686228953
+        "LeastTargetTPS": 48.483494677322966
       },
       "Disposition": "fixed-profile-correctness-replay; relic slot moved to real relics, otherwise not selection or optimization"
     },
@@ -413,38 +413,38 @@
       "Key": "tank_warrior",
       "Race": "Human",
       "Single": {
-        "TPS": 1118.7314815979448,
-        "TPSStandardError": 0.5577275071944079,
-        "DTPS": 471.6514421225487,
-        "DTPSStandardError": 0.28067548425207356,
-        "TMI": 49.334996386558636,
-        "TMIStandardError": 0.03472663694518791,
-        "DPS": 480.6808534129576,
-        "DPSStandardError": 0.24325924362041546,
+        "TPS": 1273.265446604144,
+        "TPSStandardError": 0.5485365334505908,
+        "DTPS": 480.500014491491,
+        "DTPSStandardError": 0.2908207220002913,
+        "TMI": 50.63721249364839,
+        "TMIStandardError": 0.03677471484640303,
+        "DPS": 524.0334427501568,
+        "DPSStandardError": 0.2405881740029164,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          1118.7314815979444
+          1273.2654466041422
         ],
-        "LeastTargetTPS": 1118.7314815979444
+        "LeastTargetTPS": 1273.2654466041422
       },
       "Multi": {
-        "TPS": 1281.7760567277228,
-        "TPSStandardError": 1.041748120497688,
-        "DTPS": 738.121498513848,
-        "DTPSStandardError": 0.4962721724351168,
-        "TMI": 69.01677911170844,
-        "TMIStandardError": 0.053053685179104075,
-        "DPS": 613.2538944461548,
-        "DPSStandardError": 0.5058029908780505,
+        "TPS": 1531.598290534579,
+        "TPSStandardError": 1.0357956790137544,
+        "DTPS": 745.8107819548616,
+        "DTPSStandardError": 0.501207153031254,
+        "TMI": 69.61668925673257,
+        "TMIStandardError": 0.05341515982553561,
+        "DPS": 742.3691823354955,
+        "DPSStandardError": 0.4943791421046789,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          1055.9796124732877,
-          178.13986919975025,
-          47.656575054685064
+          1180.105023020468,
+          302.39842639866345,
+          49.09484111544795
         ],
-        "LeastTargetTPS": 47.656575054685064
+        "LeastTargetTPS": 49.09484111544795
       },
       "Disposition": "fixed-profile-correctness-replay; relic slot moved to real relics, otherwise not selection or optimization"
     },
@@ -452,38 +452,38 @@
       "Key": "tank_warrior",
       "Race": "Night Elf",
       "Single": {
-        "TPS": 1095.8401187822728,
-        "TPSStandardError": 0.5171479357264803,
-        "DTPS": 483.10908188944677,
-        "DTPSStandardError": 0.27646757956133555,
-        "TMI": 49.84929674270492,
-        "TMIStandardError": 0.03396609482715441,
-        "DPS": 470.6919681356453,
-        "DPSStandardError": 0.22619855992219304,
+        "TPS": 1234.5906271466738,
+        "TPSStandardError": 0.5199498947801572,
+        "DTPS": 493.1906998203625,
+        "DTPSStandardError": 0.28590769959916523,
+        "TMI": 51.57560467946648,
+        "TMIStandardError": 0.03619776711673109,
+        "DPS": 509.6734172848863,
+        "DPSStandardError": 0.22985586564478067,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          1095.840118782271
+          1234.5906271466797
         ],
-        "LeastTargetTPS": 1095.840118782271
+        "LeastTargetTPS": 1234.5906271466797
       },
       "Multi": {
-        "TPS": 1222.905652540129,
-        "TPSStandardError": 0.9451979237470785,
-        "DTPS": 757.4263069715497,
-        "DTPSStandardError": 0.48242723869262366,
-        "TMI": 70.55602717649039,
-        "TMIStandardError": 0.051230922698262224,
-        "DPS": 582.870615692761,
-        "DPSStandardError": 0.45941217948374546,
+        "TPS": 1456.4081074971266,
+        "TPSStandardError": 0.9443669624095743,
+        "DTPS": 763.6260326930524,
+        "DTPSStandardError": 0.4929224021799858,
+        "TMI": 71.12601809549042,
+        "TMIStandardError": 0.05235968758161138,
+        "DPS": 704.7871739554346,
+        "DPSStandardError": 0.4497209009726371,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          1012.5464894663932,
-          163.68795849278803,
-          46.67120458094742
+          1124.273282939806,
+          285.0177821370827,
+          47.117042420238384
         ],
-        "LeastTargetTPS": 46.67120458094742
+        "LeastTargetTPS": 47.117042420238384
       },
       "Disposition": "fixed-profile-correctness-replay; relic slot moved to real relics, otherwise not selection or optimization"
     },
@@ -491,38 +491,38 @@
       "Key": "tank_warrior",
       "Race": "Orc",
       "Single": {
-        "TPS": 1187.3226401790366,
-        "TPSStandardError": 0.5665816546994886,
-        "DTPS": 504.06235287000914,
-        "DTPSStandardError": 0.2704218374545249,
-        "TMI": 51.45479468563693,
-        "TMIStandardError": 0.03467964923931242,
-        "DPS": 475.7604593131208,
-        "DPSStandardError": 0.23571864753146962,
+        "TPS": 1311.6338142942814,
+        "TPSStandardError": 0.5679526718830054,
+        "DTPS": 512.6752382100187,
+        "DTPSStandardError": 0.2795330550943671,
+        "TMI": 52.542028433328085,
+        "TMIStandardError": 0.03594188922093279,
+        "DPS": 513.9881631168506,
+        "DPSStandardError": 0.23686396561106174,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          1187.3226401790362
+          1311.6338142942805
         ],
-        "LeastTargetTPS": 1187.3226401790362
+        "LeastTargetTPS": 1311.6338142942805
       },
       "Multi": {
-        "TPS": 1296.984838544795,
-        "TPSStandardError": 1.0404560466161554,
-        "DTPS": 784.1328802435154,
-        "DTPSStandardError": 0.46770763079711913,
-        "TMI": 72.2364779500785,
-        "TMIStandardError": 0.04970516380733717,
-        "DPS": 583.7613939413275,
-        "DPSStandardError": 0.480755378955197,
+        "TPS": 1552.3472219046573,
+        "TPSStandardError": 1.0423664646924387,
+        "DTPS": 794.4609503537563,
+        "DTPSStandardError": 0.47820452633962535,
+        "TMI": 72.90129892963137,
+        "TMIStandardError": 0.05007198927172793,
+        "DPS": 716.1277914107118,
+        "DPSStandardError": 0.4746569883136998,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          1084.3591294242349,
-          162.81388075425923,
-          49.81182836629954
+          1200.8733937839847,
+          301.19356734808446,
+          50.28026077258687
         ],
-        "LeastTargetTPS": 49.81182836629954
+        "LeastTargetTPS": 50.28026077258687
       },
       "Disposition": "fixed-profile-correctness-replay; relic slot moved to real relics, otherwise not selection or optimization"
     },
@@ -530,38 +530,38 @@
       "Key": "tank_warrior",
       "Race": "Tauren",
       "Single": {
-        "TPS": 1186.0104453691183,
-        "TPSStandardError": 0.5821448864363,
-        "DTPS": 479.4322792418405,
-        "DTPSStandardError": 0.2741353085642714,
-        "TMI": 46.475917868265356,
-        "TMIStandardError": 0.030047824803578118,
-        "DPS": 485.01328411494876,
-        "DPSStandardError": 0.2421649138844558,
+        "TPS": 1333.618152122408,
+        "TPSStandardError": 0.5813684245357563,
+        "DTPS": 492.09999533695964,
+        "DTPSStandardError": 0.28009819112304923,
+        "TMI": 48.192953879859466,
+        "TMIStandardError": 0.03343287189243055,
+        "DPS": 524.0551557716551,
+        "DPSStandardError": 0.24380331638058717,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          1186.0104453691172
+          1333.618152122408
         ],
-        "LeastTargetTPS": 1186.0104453691172
+        "LeastTargetTPS": 1333.618152122408
       },
       "Multi": {
-        "TPS": 1325.881384397303,
-        "TPSStandardError": 1.0733003397582954,
-        "DTPS": 752.4674520622151,
-        "DTPSStandardError": 0.48842352432291986,
-        "TMI": 66.11068994798532,
-        "TMIStandardError": 0.048102216921724686,
-        "DPS": 602.4448999737749,
-        "DPSStandardError": 0.4996426255927395,
+        "TPS": 1582.7885074006656,
+        "TPSStandardError": 1.086923792343062,
+        "DTPS": 762.2502474038488,
+        "DTPSStandardError": 0.4889555536046354,
+        "TMI": 66.8682461159012,
+        "TMIStandardError": 0.04901468551955195,
+        "DPS": 731.1407638321875,
+        "DPSStandardError": 0.496800670529836,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          1100.6727688621422,
-          175.39124120526424,
-          49.81737432989712
+          1224.2296483619054,
+          307.9746175933284,
+          50.58424144543039
         ],
-        "LeastTargetTPS": 49.81737432989712
+        "LeastTargetTPS": 50.58424144543039
       },
       "Disposition": "fixed-profile-correctness-replay; relic slot moved to real relics, otherwise not selection or optimization"
     },
@@ -569,38 +569,38 @@
       "Key": "tank_warrior",
       "Race": "Troll",
       "Single": {
-        "TPS": 1171.4298977713697,
-        "TPSStandardError": 0.5712565597565205,
-        "DTPS": 490.1277226116222,
-        "DTPSStandardError": 0.2693375172977556,
-        "TMI": 49.941173726076286,
-        "TMIStandardError": 0.032451977822516374,
-        "DPS": 477.87709905402227,
-        "DPSStandardError": 0.2379542233263109,
+        "TPS": 1318.1332365980425,
+        "TPSStandardError": 0.5739882010928665,
+        "DTPS": 501.6461261422055,
+        "DTPSStandardError": 0.28268658447490413,
+        "TMI": 51.641055422420635,
+        "TMIStandardError": 0.03647332972236002,
+        "DPS": 516.526117239128,
+        "DPSStandardError": 0.2393735519264534,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          1171.429897771369
+          1318.1332365980415
         ],
-        "LeastTargetTPS": 1171.429897771369
+        "LeastTargetTPS": 1318.1332365980415
       },
       "Multi": {
-        "TPS": 1307.6987662828346,
-        "TPSStandardError": 1.0579506830062393,
-        "DTPS": 767.8841132899529,
-        "DTPSStandardError": 0.48199598629551904,
-        "TMI": 70.83993521788159,
-        "TMIStandardError": 0.05009746193927909,
-        "DPS": 593.2988102934366,
-        "DPSStandardError": 0.48785266762428986,
+        "TPS": 1561.4492899252425,
+        "TPSStandardError": 1.0667708937703289,
+        "DTPS": 776.9334532192307,
+        "DTPSStandardError": 0.48150970292061707,
+        "TMI": 71.38410758885263,
+        "TMIStandardError": 0.05078121503776911,
+        "DPS": 719.9025131969547,
+        "DPSStandardError": 0.4870557913925405,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          1085.702840809235,
-          172.41051563961588,
-          49.585409833982794
+          1207.907856600567,
+          303.3329625757224,
+          50.208470748953985
         ],
-        "LeastTargetTPS": 49.585409833982794
+        "LeastTargetTPS": 50.208470748953985
       },
       "Disposition": "fixed-profile-correctness-replay; relic slot moved to real relics, otherwise not selection or optimization"
     },
@@ -608,38 +608,38 @@
       "Key": "tank_warrior",
       "Race": "Undead",
       "Single": {
-        "TPS": 1135.9334374286263,
-        "TPSStandardError": 0.49680868487345664,
-        "DTPS": 463.6321621264579,
-        "DTPSStandardError": 0.2881535750772251,
-        "TMI": 49.38339440648318,
-        "TMIStandardError": 0.037092209110228994,
-        "DPS": 492.1341697578901,
-        "DPSStandardError": 0.2068089759947223,
+        "TPS": 1314.7353788454977,
+        "TPSStandardError": 0.5010758332530684,
+        "DTPS": 470.9605186736803,
+        "DTPSStandardError": 0.2932554628479049,
+        "TMI": 50.48334217172569,
+        "TMIStandardError": 0.04016695126639665,
+        "DPS": 542.625573285805,
+        "DPSStandardError": 0.20973685131952668,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          1135.9334374286275
+          1314.7353788454996
         ],
-        "LeastTargetTPS": 1135.9334374286275
+        "LeastTargetTPS": 1314.7353788454996
       },
       "Multi": {
-        "TPS": 1238.7629549380101,
-        "TPSStandardError": 0.900638204600793,
-        "DTPS": 719.6194784395199,
-        "DTPSStandardError": 0.5039876776227945,
-        "TMI": 67.81721540290718,
-        "TMIStandardError": 0.0551491612284685,
-        "DPS": 586.8477737814936,
-        "DPSStandardError": 0.4026158734807411,
+        "TPS": 1525.6798698304851,
+        "TPSStandardError": 0.8887373175784401,
+        "DTPS": 730.612582284806,
+        "DTPSStandardError": 0.5195113163861227,
+        "TMI": 68.69223061907527,
+        "TMIStandardError": 0.05576788621218758,
+        "DPS": 730.223277503314,
+        "DPSStandardError": 0.39677192074729084,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          1035.1044780992747,
-          154.64229521366033,
-          49.0161816250796
+          1158.9533802738915,
+          315.5702719040854,
+          51.15621765250855
         ],
-        "LeastTargetTPS": 49.0161816250796
+        "LeastTargetTPS": 51.15621765250855
       },
       "Disposition": "fixed-profile-correctness-replay; relic slot moved to real relics, otherwise not selection or optimization"
     },
@@ -647,45 +647,45 @@
       "Key": "tank_warrior",
       "Race": "Windshaper",
       "Single": {
-        "TPS": 1127.5270058445421,
-        "TPSStandardError": 0.5394351717164697,
-        "DTPS": 485.85380764928334,
-        "DTPSStandardError": 0.2706678716239625,
-        "TMI": 50.027487762085386,
-        "TMIStandardError": 0.033297719607555856,
-        "DPS": 482.7094656995155,
-        "DPSStandardError": 0.23667274001216865,
+        "TPS": 1265.6862986870037,
+        "TPSStandardError": 0.5509778127926974,
+        "DTPS": 496.33408164643765,
+        "DTPSStandardError": 0.28087690817094796,
+        "TMI": 51.6757734950017,
+        "TMIStandardError": 0.03590572945446819,
+        "DPS": 519.9415425879444,
+        "DPSStandardError": 0.24151272198494333,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          1127.5270058445435
+          1265.6862986870065
         ],
-        "LeastTargetTPS": 1127.5270058445435
+        "LeastTargetTPS": 1265.6862986870065
       },
       "Multi": {
-        "TPS": 1262.189981075998,
-        "TPSStandardError": 1.0258016321755983,
-        "DTPS": 760.5703152837207,
-        "DTPSStandardError": 0.48738017398747874,
-        "TMI": 70.76881936629097,
-        "TMIStandardError": 0.05133531119980682,
-        "DPS": 600.5428765751635,
-        "DPSStandardError": 0.4955160020212998,
+        "TPS": 1506.9424062980852,
+        "TPSStandardError": 1.0185815287248496,
+        "DTPS": 769.2625920337191,
+        "DTPSStandardError": 0.48872865078556366,
+        "TMI": 71.43261740692913,
+        "TMIStandardError": 0.0520525719616724,
+        "DPS": 728.6861268567274,
+        "DPSStandardError": 0.4849019649953335,
         "ChanceOfDeath": 0.0,
         "Iterations": 10000,
         "TargetTPS": [
-          1046.4017226334856,
-          168.0718315802253,
-          47.71642686228953
+          1162.6482341543829,
+          295.81067746638024,
+          48.483494677322966
         ],
-        "LeastTargetTPS": 47.71642686228953
+        "LeastTargetTPS": 48.483494677322966
       },
       "Disposition": "fixed-profile-correctness-replay; relic slot moved to real relics, otherwise not selection or optimization"
     }
   ],
   "rawChecks": "../../correctness/tank_checks.json.gz",
   "limitations": [
-    "Central incoming Rage unverified; six alternate coefficient20 sensitivity cases fail guards.",
+    "Incoming Rage follows the rule wowsims/forever fitted to Forever logs (2.5 x (1 - A) x pre-mitigation damage / c(attacker level)); its level-63 point is extrapolated.",
     "Small defensive tradeoffs and Multi DPS losses retained and reported.",
     "One-iteration stack traces establish duty events, not 5000-population perfection.",
     "Original Bear player exact; historical external-Faerie-Fire REQUEST is not called unchanged.",

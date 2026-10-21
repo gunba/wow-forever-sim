@@ -706,7 +706,15 @@ func TestEvidenceVindicationTargetAP(t *testing.T) {
 		enemyWeapon := core.Weapon{BaseDamageMin: 100}
 		beforeDamage := enemyWeapon.EnemyWeaponDamage(sim, 805, 0)
 		trigger := c.GetAura("Vindication Talent")
-		trigger.OnSpellHitDealt(trigger, sim, c.AutoAttacks.MHAuto(), &core.SpellResult{Target: target, Outcome: core.OutcomeHit, Damage: 1})
+		aura := target.GetAura(fmt.Sprintf("Vindication-%d", rank))
+		if aura == nil {
+			t.Fatal("missing target aura")
+		}
+		// Forever procs at 5 a minute on the weapon's speed and the debuff rolls spell hit (wowsims/forever #409),
+		// so swing until it lands.
+		for i := 0; i < 1000 && !aura.IsActive(); i++ {
+			trigger.OnSpellHitDealt(trigger, sim, c.AutoAttacks.MHAuto(), &core.SpellResult{Target: target, Outcome: core.OutcomeHit, Damage: 1})
+		}
 		want := 805 - float64(rank)*68
 		if got := target.GetStat(stats.AttackPower); math.Abs(got-want) > 1e-7 {
 			t.Errorf("rank %d: target AP %v, want %v", rank, got, want)
@@ -716,10 +724,6 @@ func TestEvidenceVindicationTargetAP(t *testing.T) {
 		}
 		if got := enemyWeapon.EnemyWeaponDamage(sim, target.GetStat(stats.AttackPower), 0); got >= beforeDamage {
 			t.Error("Vindication did not reduce incoming weapon damage")
-		}
-		aura := target.GetAura(fmt.Sprintf("Vindication-%d", rank))
-		if aura == nil {
-			t.Fatal("missing target aura")
 		}
 		demo.Activate(sim)
 		if got := target.GetStat(stats.AttackPower); math.Abs(got-601) > 1e-7 {

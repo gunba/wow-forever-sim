@@ -183,9 +183,12 @@ func (unit *Unit) EnableRageBar(options RageBarOptions) {
 			}
 			generatedRage := 0.0
 			if unit.Env != nil && unit.Env.IsForever() {
-				// Explicitly provisional, shared Warrior/Bear incoming scenario.
-				// Keep actual mitigation/outcomes; restore only absorbed damage.
-				generatedRage = unit.foreverIncomingRageParameters.rageFromDamageTaken(result)
+				// The measured rule, unless the scenario sets the provisional formula by hand.
+				if unit.foreverIncomingRageParameters.manual() {
+					generatedRage = unit.foreverIncomingRageParameters.rageFromDamageTaken(result)
+				} else {
+					generatedRage = foreverMeasuredRage(spell, result)
+				}
 			} else {
 				rageConversionDamageTaken := GetRageConversion(spell.Unit.Level)
 				generatedRage = result.Damage * 2.5 / rageConversionDamageTaken

@@ -1,17 +1,87 @@
 {
- "source": "player report of Forever beta level-1 stats before class bonuses, https://www.reddit.com/r/classicwow/comments/1x10tm1/stat_scaling/ (October 2026); unverified beyond level 1",
+ "source": "original races: the original game's offsets, which Forever restored on 21 October 2026 (https://github.com/ClassicWoWCommunity/forever-bugs/issues/414, wowsims/forever #619); Skyborne: beta level-1 sheets (wowsims/forever #597), pending the new per-race Skyborne offsets announced in the same issue",
  "races": {
-  "Human": {"strength": 20, "agility": 20, "stamina": 20, "intellect": 20, "spirit": 20},
-  "Dwarf": {"strength": 22, "agility": 18, "stamina": 21, "intellect": 19, "spirit": 20},
-  "NightElf": {"strength": 18, "agility": 22, "stamina": 20, "intellect": 20, "spirit": 20},
-  "Gnome": {"strength": 17, "agility": 21, "stamina": 19, "intellect": 23, "spirit": 20},
-  "Orc": {"strength": 23, "agility": 17, "stamina": 21, "intellect": 19, "spirit": 20},
-  "Undead": {"strength": 22, "agility": 19, "stamina": 21, "intellect": 18, "spirit": 20},
-  "Tauren": {"strength": 22, "agility": 18, "stamina": 22, "intellect": 18, "spirit": 20},
-  "Troll": {"strength": 21, "agility": 22, "stamina": 20, "intellect": 17, "spirit": 20},
-  "SkyborneHighOrder": {"strength": 19, "agility": 21, "stamina": 19, "intellect": 21, "spirit": 20},
-  "SkyborneWindshaper": {"strength": 19, "agility": 21, "stamina": 19, "intellect": 21, "spirit": 20}
+  "Human": {
+   "strength": 20,
+   "agility": 20,
+   "stamina": 20,
+   "intellect": 20,
+   "spirit": 20
+  },
+  "Dwarf": {
+   "strength": 22,
+   "agility": 16,
+   "stamina": 23,
+   "intellect": 19,
+   "spirit": 19
+  },
+  "NightElf": {
+   "strength": 17,
+   "agility": 25,
+   "stamina": 19,
+   "intellect": 20,
+   "spirit": 20
+  },
+  "Gnome": {
+   "strength": 15,
+   "agility": 23,
+   "stamina": 19,
+   "intellect": 23,
+   "spirit": 20
+  },
+  "Orc": {
+   "strength": 23,
+   "agility": 17,
+   "stamina": 22,
+   "intellect": 17,
+   "spirit": 23
+  },
+  "Undead": {
+   "strength": 19,
+   "agility": 18,
+   "stamina": 21,
+   "intellect": 18,
+   "spirit": 25
+  },
+  "Tauren": {
+   "strength": 25,
+   "agility": 15,
+   "stamina": 22,
+   "intellect": 15,
+   "spirit": 22
+  },
+  "Troll": {
+   "strength": 21,
+   "agility": 22,
+   "stamina": 21,
+   "intellect": 16,
+   "spirit": 21
+  },
+  "SkyborneHighOrder": {
+   "strength": 19,
+   "agility": 21,
+   "stamina": 19,
+   "intellect": 21,
+   "spirit": 20
+  },
+  "SkyborneWindshaper": {
+   "strength": 19,
+   "agility": 21,
+   "stamina": 19,
+   "intellect": 21,
+   "spirit": 20
+  }
  },
- "proto": {"Human": "Human", "Dwarf": "Dwarf", "NightElf": "NightElf", "Gnome": "Gnome", "Orc": "Orc", "Undead": "Undead", "Tauren": "Tauren",
-           "Troll": "Troll", "SkyborneHighOrder": "SkyborneHighOrder", "SkyborneWindshaper": "SkyborneWindshaper"}
+ "proto": {
+  "Human": "Human",
+  "Dwarf": "Dwarf",
+  "NightElf": "NightElf",
+  "Gnome": "Gnome",
+  "Orc": "Orc",
+  "Undead": "Undead",
+  "Tauren": "Tauren",
+  "Troll": "Troll",
+  "SkyborneHighOrder": "SkyborneHighOrder",
+  "SkyborneWindshaper": "SkyborneWindshaper"
+ }
 }

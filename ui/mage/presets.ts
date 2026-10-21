@@ -75,7 +75,7 @@ export const TalentsFrost = PresetUtils.makePresetTalents('Frost 12/3/36', Saved
 export const TalentsArcane = PresetUtils.makePresetTalents('Arcane 33/3/15', SavedTalents.create({ talentsString: '0502205013100311531-03-05350002' }));
 export const TalentsArcaneFrost = PresetUtils.makePresetTalents(
 	'Arcane–Frost 29/0/22',
-	SavedTalents.create({ talentsString: '050220500310030053--0535100201003002' }),
+	SavedTalents.create({ talentsString: '050220500310030053--0535000301003002' }),
 );
 
 // Frostfire Bolt, wowsims/forever's FFB preset on the hotfixed Frost tree.

@@ -4492,7 +4492,7 @@
    "status": "provisional",
    "title": "Incoming rage and mitigation",
    "question": "Does unmitigated damage × 10 / maximum health explain incoming rage at all armor/health values?",
-   "current_model": "Unreleased explicit provisional shared Warrior/Bear incoming model on the DIRECT hit-callback pipeline: (Damage + AbsorbedDamage) × coefficient / player-level ExpectedStat CreatureHealth / (1-reference Armor). Central coefficient 10 and clamped expected-Armor ratio 20–40% are assumptions; no actual-Armor undo or player-MaxHP denominator. Optional overrides preserve explicit zero. Periodic-only damage, including logical channel children represented as periodic, does not generate this modeled incoming Rage.",
+   "current_model": "Rage from damage taken = 2.5 x (1 - A) x pre-mitigation damage / c(attacker level), c(L) = 0.0091107836 L^2 + 3.225598133 L + 4.2652911; A = 20% up to attacker level 42, 30% at 44, 36% at 46, 38% at 50, 40% at 63, interpolated. Crits and crushing blows count, armor/blocks/absorbs do not. Any manual override returns the older coefficient-10 formula.",
    "impact": "Protection rotation, self-damage resource gains and tank stat trade-offs.",
    "sources": [
     "sim/core/rage.go",
@@ -4507,7 +4507,8 @@
     "sim/core/forever_expected_stats.go",
     "sim/core/forever_incoming_rage_october9_test.go",
     "https://wago.tools/db2/ExpectedStat?build=1.60.1.70291",
-    "sim/core/spell_result.go"
+    "sim/core/spell_result.go",
+    "https://github.com/wowsims/forever/pull/356"
    ],
    "legacy": [
     "T02 (incoming rage)"
@@ -4516,11 +4517,11 @@
     "DRU-012"
    ],
    "review": {
-    "disposition": "model-choice",
+    "disposition": "credible-answer",
     "confidence": "moderate",
-    "answer": "October 8 establishes expected creature health, shield-independent damage and correct crit/crush treatment, but not the coefficient, level key or exact normalization. The approved configurable central model and bounds are implemented and scoped callback/import checks pass; approval is not a server-formula measurement. October 11 audit: Developers' notes quoted in Fight Club (2026-10-08): 'Previously, we were balancing Rage gained around Warriors having 50% Armor ... We have rebalanced Rage gains based on appropriate values per level in the 20% to 40% range, varying by level.' A follow-up (2026-10-10) explains that the intended formula uses a level-based curve and that player maximum health was used by mistake for a while. This supports a level-based reference-armour model rather than player health; the exact curve is still unpublished.",
-    "remaining": "Exact coefficient, expected-health level selector, reference curve/operation and higher-level scaling remain unpublished. Periodic-damage eligibility is also unknown: dealDamageInternal dispatches periodic delivery only to OnPeriodicDamageTaken, while RageBar listens only to OnSpellHitTaken. Generic taking-damage wording does not verify all DoTs/channels or complete PvP support. Current tank workloads use direct swings/pulses.",
-    "implementation": "Use the exposed model and record resolved values/presence with each applicable row. Current tank selection/sensitivity and matrix evidence are complete; six coefficient20 guard failures remain prominent. Do not restore the old player-health/pre-Armor fit as verified or calibrate unknown values for selection gains.",
+    "answer": "wowsims/forever #356 measured k = rage x c / pre-mitigation damage on Forever logs: 1.99 (attackers 16-42), 1.75 (44), 1.61 (46), 1.55 (50-60); the build notes describe the same 20-40% armor range.",
+    "remaining": "The 63 row (40%) is not measured; at 60 the curve sits 2.4% below the logs.",
+    "implementation": "Engine (sim/core/forever_incoming_rage.go) and the planner's rage forecast (sim/planner) use it.",
     "tests": [
      {
       "stage": "current-beta",
@@ -4538,7 +4539,7 @@
       "measure": "Log actual damage, absorbed amounts and event types. Accumulate enough ticks for fractional Rage to be observable; compare isolated DoT/channeled delivery with a direct-hit control. Do not infer periodic eligibility from a rounded zero or mixed-resource combat."
      }
     ],
-    "previous_status": "needs-evidence",
+    "previous_status": "provisional",
     "history": [
      {
       "disposition": "partial",
@@ -5255,7 +5256,7 @@
    "status": "needs-evidence",
    "title": "Bear outgoing and incoming rage formulas",
    "question": "Does Forever Bear retain damage-based rage or use normalized rules, and how are avoided swings handled?",
-   "current_model": "Bear base outgoing/avoidance interpretation remains inherited; outgoing white critical Rage is now +100%, with Maul excluded. Incoming Rage shares the explicit configurable Forever model under WAR-003; Classic remains unchanged.",
+   "current_model": "Bear base outgoing/avoidance interpretation remains inherited; outgoing white critical Rage is +100%, Maul excluded. Incoming Rage uses the measured rule under WAR-003.",
    "impact": "Bear Maul uptime, other ability throughput, rage from boss damage and gear/talent value. Frequent Maul alone cannot validate the model.",
    "sources": [
     "sim/core/rage.go",
@@ -5278,10 +5279,10 @@
    ],
    "review": {
     "disposition": "partial",
-    "confidence": "low",
-    "answer": "October 8 supersedes October 1's +75% outgoing critical bonus with +100%. This does not establish Warrior-style Bear base outgoing normalization. Incoming semantics are sourced, but the selected numerical scenario is explicitly provisional.",
-    "remaining": "Base outgoing damage/speed/avoidance dependence and level 60 extrapolation; incoming formula terms under WAR-003.",
-    "implementation": "Preserve the new critical ratio and disclose the shared incoming assumptions without claiming identical measured class scripts.",
+    "confidence": "moderate",
+    "answer": "Incoming Rage now follows the log-measured rule shared with Warriors (WAR-003).",
+    "remaining": "Outgoing Rage normalization for Bears.",
+    "implementation": "Classic remains unchanged.",
     "tests": [
      {
       "stage": "current-beta",
@@ -5503,27 +5504,29 @@
    "category": "paladin",
    "kind": "mechanic",
    "priority": "high",
-   "status": "needs-evidence",
+   "status": "resolved",
    "title": "Seal Echo coexistence and consumption",
    "question": "Can separate Command/Righteousness Echoes coexist, and what exactly spends them?",
-   "current_model": "Separate one-charge Echoes wait for a landed white swing. Avoided swings and melee-classified Judgements do not consume them.",
+   "current_model": "One Echo at a time: gaining an Echo drops any other, and casting a seal drops its own Echo (a new rank of the same seal leaves none). Echoes still wait for a landed white swing; Judgements do not spend them.",
    "impact": "Ret seal-weaving damage; the talent itself needs later access.",
    "sources": [
     "sim/paladin/twist_of_light.go",
     "docs/upstream-forever-review-2026-09-23.md",
     "https://wago.tools/db2/SpellAuraOptions?build=1.60.1.69977",
-    "ui/core/talents/trees/paladin.json"
+    "ui/core/talents/trees/paladin.json",
+    "https://github.com/wowsims/forever/pull/218",
+    "https://github.com/wowsims/forever/pull/124"
    ],
    "legacy": [
     "T53"
    ],
    "related": [],
    "review": {
-    "disposition": "partial",
+    "disposition": "credible-answer",
     "confidence": "moderate",
-    "answer": "The current Echo aura rows explicitly have one charge and white-melee proc mask 4. That supports the charge count and excludes ordinary Judgements from the consumption family. Separate spell IDs do not prove simultaneous coexistence or what avoided events do. Twist of Light is a level-40 talent, so this is not a level-30 experiment.",
-    "remaining": "Echo coexistence, replacement and avoided-swing consumption.",
-    "implementation": "Retain the sourced one-charge/white-event structure while leaving those script-level details open.",
+    "answer": "wowsims/forever #218 (in-game clip: gaining any Echo drops the other) and #124 (a seal and its own Echo are never up together). The Retribution APL now waits for the banked Echo to be spent before twisting again.",
+    "remaining": "Avoided-swing consumption.",
+    "implementation": "Forever ruleset only (sim/paladin/twist_of_light.go).",
     "tests": [
      {
       "stage": "launch",
@@ -5829,10 +5832,10 @@
    "category": "paladin",
    "kind": "implementation",
    "priority": "high",
-   "status": "needs-evidence",
+   "status": "provisional",
    "title": "Vindication's target AP reduction",
    "question": "Does the target-side part of Vindication reduce incoming damage?",
-   "current_model": "Vindication applies sourced level-60 AP reduction 68/136/204 with strongest-effect handling while preserving the owner’s separate damage bonus. Incoming-damage native controls pass.",
+   "current_model": "Vindication procs 5 times a minute on the main hand's speed from swings and melee specials; the target debuff (68/136/204 AP) rolls spell hit; the owner's damage bonus comes with every proc.",
    "impact": "Tank mitigation and fair talent selection.",
    "sources": [
     "sim/paladin/talents.go",
@@ -5840,15 +5843,16 @@
     "docs/beta-pass/paladin.md",
     "https://www.wowhead.com/forever/spell=9452/vindication",
     "https://www.wowhead.com/forever/spell=440667/vindication",
-    "tools/forever_tanks/main.go"
+    "tools/forever_tanks/main.go",
+    "https://github.com/wowsims/forever/pull/409"
    ],
    "related": [],
    "review": {
-    "disposition": "partial",
+    "disposition": "credible-answer",
     "confidence": "moderate",
-    "answer": "Vindication applies sourced level-60 AP reduction 68/136/204 with strongest-effect handling while preserving the owner’s separate damage bonus. Incoming-damage native controls pass.",
-    "remaining": "Lower-level evaluation/rounding remains qualified rather than proved by the max-level test.",
-    "implementation": "Corrected locally with focused native controls; affected exact profiles and published results require refresh before these changes are released.",
+    "answer": "wowsims/forever #409 fitted 5 PPM on weapon speed across 1.6 and 3.6 speed weapons (95% interval 4.5-5.5) and logged 10 debuff misses in 305 rolls.",
+    "remaining": "Seal of the Crusader's 0.715 factor on the chance is not modelled; specials' share is unmeasured.",
+    "implementation": "Forever ruleset only (sim/paladin/talents.go).",
     "tests": [
      {
       "stage": "offline",
@@ -5861,7 +5865,7 @@
       "measure": "Validate the target aura and damage reduction at each rank, without confusing owner AP growth with enemy AP loss."
      }
     ],
-    "previous_status": "needs-code"
+    "previous_status": "needs-evidence"
    }
   },
   {
@@ -8213,20 +8217,22 @@
    "status": "resolved",
    "title": "Race stat offsets",
    "question": "What are each race's base attribute offsets in Forever?",
-   "current_model": "Level-1 sheet offsets (e.g. Tauren +2 Str/-2 Agi/+2 Sta/-2 Int, Orc +3/-3/+1/-1, Skyborne -1/+1/-1/+1); no race changes Spirit.",
+   "current_model": "Original races take the original game's offsets (Tauren +5 Str/-5 Agi/+2 Sta/-5 Int/+2 Spi, Orc +3/-3/+2/-3/+3, Undead -1/-2/+1/-2/+5, ...). Skyborne keep the beta sheets' -1/+1/-1/+1/0 until their new offsets show.",
    "impact": "A few points of each attribute; Tauren Strength drops 3.",
    "sources": [
-    "sim/core/base_stats.go"
+    "sim/core/base_stats.go",
+    "https://github.com/ClassicWoWCommunity/forever-bugs/issues/414",
+    "https://github.com/wowsims/forever/pull/619"
    ],
    "related": [],
    "review": {
-    "disposition": "evidence-answer",
-    "confidence": "high",
-    "answer": "Level 1 naked warrior character sheets on the beta (wowsims/forever #597).",
-    "remaining": "None.",
-    "implementation": "RaceOffsets in base_stats.go.",
+    "disposition": "credible-answer",
+    "confidence": "moderate",
+    "answer": "Forever briefly used the modern offsets (level-1 sheets, wowsims/forever #597) and restored the original ones on 21 October 2026 (ClassicWoWCommunity/forever-bugs#414, closed as fixed; wowsims/forever #619). Staff said the two Skyborne races get new, separate offsets.",
+    "remaining": "The new Skyborne offsets.",
+    "implementation": "sim/core/base_stats.go and the level-1 table assets/db_inputs/basestats/forever_race_starting_stats.json.",
     "tests": [],
-    "previous_status": null
+    "previous_status": "resolved"
    }
   },
   {
@@ -8454,16 +8460,177 @@
     "tests": [],
     "previous_status": null
    }
+  },
+  {
+   "id": "HUN-019",
+   "category": "hunter",
+   "kind": "scenario",
+   "priority": "medium",
+   "status": "provisional",
+   "title": "Marksmanship and Beast Mastery melee weave",
+   "question": "Do the ranged Hunter trees gain from weaving Raptor Strike between Auto Shots, as Survival does?",
+   "current_model": "MM Weave (0/28/23 with Expose Prey and Strider Kick, own Hunter's Mark, no pet) and BM Weave (31/20/0, Cat and two Hawks) step from 12 to 5 yards while the next Auto Shot is more than 1.5 s away, on the SV Weave gear.",
+   "impact": "Both trees rank about 11-13% higher than standing at range; turret presets stay in the UI.",
+   "sources": [
+    "ui/hunter/apls/marksmanship_weave.apl.json",
+    "ui/hunter/apls/beast_mastery_weave.apl.json",
+    "https://github.com/wowsims/forever"
+   ],
+   "related": [],
+   "review": {
+    "disposition": "credible-answer",
+    "confidence": "moderate",
+    "answer": "wowsims/forever ships MM Weave and BM Weave presets; the sim's own runs agree.",
+    "remaining": "Movement uses the engine's run speed with no latency; real weaving loses some swings.",
+    "implementation": "Bench builds marksmanship and beast_mastery.",
+    "tests": [
+     {
+      "stage": "launch",
+      "requires": "Level-60 MM or BM Hunter with a slow melee weapon.",
+      "measure": "Damage over 5 minutes weaving against standing at range on the same dummy."
+     }
+    ],
+    "previous_status": null
+   }
+  },
+  {
+   "id": "WAR-027",
+   "category": "warrior",
+   "kind": "scenario",
+   "priority": "medium",
+   "status": "provisional",
+   "title": "Hamstring weave for Windfury Totem",
+   "question": "Is a Hamstring between Bloodthirst and Whirlwind worth its rage for the extra Windfury Totem procs?",
+   "current_model": "Fury, Fury (Sunder) and 2H Bloodthirst cast Hamstring when Bloodthirst and Whirlwind are at least 1.5 s away, outside execute, with Windfury Totem up. Arms does not (it lost 30-115 DPS in every placement tried).",
+   "impact": "Fury +18, Fury (Sunder) +12, 2H Bloodthirst +31 DPS.",
+   "sources": [
+    "ui/warrior/apls/forever_fury.apl.json",
+    "https://github.com/wowsims/forever/pull/243"
+   ],
+   "related": [],
+   "review": {
+    "disposition": "credible-answer",
+    "confidence": "moderate",
+    "answer": "wowsims/forever #243: every landed special rolls Windfury Totem's 20%; Hamstring is the cheapest.",
+    "remaining": "Depends on the provisional Warrior rage model.",
+    "implementation": "APL only.",
+    "tests": [
+     {
+      "stage": "launch",
+      "requires": "Fury Warrior with Windfury Totem.",
+      "measure": "Windfury procs and damage with and without the Hamstring weave."
+     }
+    ],
+    "previous_status": null
+   }
+  },
+  {
+   "id": "PAL-018",
+   "category": "paladin",
+   "kind": "mechanic",
+   "priority": "medium",
+   "status": "provisional",
+   "title": "Consecration crits, Sanctified Judgement refund, Consecrated Ground window",
+   "question": "Do Consecration's ticks crit, how much does Sanctified Judgement return, and how long does Consecrated Ground last?",
+   "current_model": "Forever Consecration ticks roll spell crit after the hit check; Sanctified Judgement returns its share of the seal's base cost x (2 - the percent cost modifier); Consecrated Ground's mark lasts from the cast to 0.6 s past the last tick.",
+   "impact": "Small: Ret mana and Prot/Holy Consecration damage.",
+   "sources": [
+    "sim/paladin/consecration.go",
+    "sim/paladin/talents.go",
+    "https://github.com/wowsims/forever/pull/124",
+    "https://github.com/wowsims/forever/pull/507",
+    "https://github.com/wowsims/forever/pull/516"
+   ],
+   "related": [],
+   "review": {
+    "disposition": "credible-answer",
+    "confidence": "moderate",
+    "answer": "wowsims/forever #124 (tick crits for 1.5x in game), #507 (59.4 mana at Benediction 5/5, measured at every rank), #516 (log of the hidden mark 1280353).",
+    "remaining": "Two percent cost cuts (Benediction and Twist of Light) are added, not measured together.",
+    "implementation": "Forever ruleset only.",
+    "tests": [
+     {
+      "stage": "launch",
+      "requires": "Level-60 Paladin with the talents.",
+      "measure": "Consecration crit ticks and Sanctified Judgement refunds in a log."
+     }
+    ],
+    "previous_status": null
+   }
+  },
+  {
+   "id": "MAG-013",
+   "category": "mage",
+   "kind": "mechanic",
+   "priority": "medium",
+   "status": "provisional",
+   "title": "Arcane Missiles Clearcasting and area tick crits",
+   "question": "Do Arcane Missiles' missiles roll Arcane Concentration, and can Blizzard and Flamestrike ticks crit?",
+   "current_model": "No Clearcasting from the missiles (nor the channel). Blizzard and Flamestrike burn ticks roll crit (the burn does not feed Ignite).",
+   "impact": "Arcane loses some Clearcasting; area damage gains crits.",
+   "sources": [
+    "sim/mage/talents.go",
+    "sim/mage/blizzard.go",
+    "sim/mage/flamestrike.go",
+    "https://github.com/wowsims/forever/pull/489"
+   ],
+   "related": [],
+   "review": {
+    "disposition": "credible-answer",
+    "confidence": "moderate",
+    "answer": "wowsims/forever #489: 0 Clearcasting gains from 34 Arcane Missiles casts; tick rows lack ATTR_EX_2_CANT_CRIT and logs show tick crits.",
+    "remaining": "None known.",
+    "implementation": "Forever ruleset only.",
+    "tests": [
+     {
+      "stage": "launch",
+      "requires": "Mage with Arcane Concentration.",
+      "measure": "Clearcasting gains per Arcane Missiles cast."
+     }
+    ],
+    "previous_status": null
+   }
+  },
+  {
+   "id": "CORE-030",
+   "category": "shared",
+   "kind": "data",
+   "priority": "low",
+   "status": "provisional",
+   "title": "Party buffs from other players",
+   "question": "Which party buffs from other players should the sim offer?",
+   "current_model": "Dark Inspiration (a Shadow Priest's talent ranks: +3% Spirit a rank, kept up permanently), Mana Tide Totem (count), Darkspear's Ancestor's Vengeance (4% crit at a 16% uptime) and Admiral's Hat (+10 Stamina). All off by default; Concentration Aura is not offered (interrupts are not modelled).",
+   "impact": "Opt-in; the benchmark does not use them.",
+   "sources": [
+    "sim/core/buffs.go",
+    "ui/core/components/inputs/buffs_debuffs.ts"
+   ],
+   "related": [],
+   "review": {
+    "disposition": "credible-answer",
+    "confidence": "moderate",
+    "answer": "Client 1.60.1.70450 rows 1326168/1326159, 1325256/1325257, 1314143/16939 and 12022; wowsims/forever's PartyBuffs.",
+    "remaining": "Darkspear's wielder is not simulated (fixed uptime).",
+    "implementation": "UI inputs only.",
+    "tests": [
+     {
+      "stage": "launch",
+      "requires": "A party with these providers.",
+      "measure": "Buff uptime in a log."
+     }
+    ],
+    "previous_status": null
+   }
   }
  ],
  "review": {
   "date": "2026-09-27",
   "original_entries": 137,
   "reviewed_original_entries": 137,
-  "added_entries": 70,
-  "latest_followup": "October 21 update: wowsims/forever review since 23 September, server hotfixes read from the game client cache, MythicSim in-game findings; spell resistance and miss model, raid-book spell ranks off, swing reset on casts, race offsets, Warrior threat and Bloodthrill, Seal of Righteousness, hotfixed Mage Frost tree, Forever consumables; SV Weave, Frostfire and Shockadin builds; talents and consumables re-searched for every DPS build.",
+  "added_entries": 75,
+  "latest_followup": "October 21 follow-up: Marksmanship and Beast Mastery weave, Fury Hamstring weave, one Twist of Light Echo at a time with a reworked Retribution APL, Consecration crits, Sanctified Judgement and Vindication as measured, rage from damage taken as measured, the original race offsets restored, Arcane Missiles Clearcasting and area tick crits, and new party buffs.",
   "latest_followup_date": "2026-10-21",
-  "latest_followup_baseline": "03a5b49d5",
+  "latest_followup_baseline": "55cb7a3a4",
   "before": {
    "needs-evidence": 84,
    "needs-code": 27,
@@ -8518,7 +8685,7 @@
     "latest_followup_baseline": "0facf43a061f7cbc218126b7ffab518d7fcbba36"
    }
   ],
-  "latest_followup_report": "october-21-update.md",
+  "latest_followup_report": "october-21-follow-up.md",
   "latest_followup_source_date": "2026-10-08T21:32:38.124Z",
   "latest_followup_publication": "pending",
   "latest_followup_benchmarks": "pending"
