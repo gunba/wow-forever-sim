@@ -9,7 +9,7 @@
         {"action":{"condition":{"cmp":{"op":"OpLe","lhs":{"currentEnergy":{}},"rhs":{"const":{"val":"40"}}}},"castSpell":{"spellId":{"spellId":13750}}}},
         {"action":{"condition":{"auraIsActive":{"auraId":{"spellId":6774,"rank":2}}},"autocastOtherCooldowns":{}}},
         {"action":{"condition":{"cmp":{"op":"OpGe","lhs":{"currentComboPoints":{}},"rhs":{"const":{"val":"3"}}}},"castSpell":{"spellId":{"spellId":14177}}}},
-        {"action":{"condition":{"cmp":{"op":"OpGe","lhs":{"currentComboPoints":{}},"rhs":{"const":{"val":"3"}}}},"castSpell":{"spellId":{"spellId":31016}}}},
+        {"action":{"condition":{"cmp":{"op":"OpGe","lhs":{"currentComboPoints":{}},"rhs":{"const":{"val":"3"}}}},"castSpell":{"spellId":{"spellId":11300}}}},
         {"action":{"condition":{"or":{"vals":[{"cmp":{"op":"OpGt","lhs":{"autoTimeToNext":{"autoType":"MainHand"}},"rhs":{"math":{"op":"OpSub","lhs":{"autoSwingTime":{"autoType":"MainHand"}},"rhs":{"const":{"val":"0.5"}}}}}},{"cmp":{"op":"OpLt","lhs":{"remainingTime":{}},"rhs":{"const":{"val":"6"}}}},{"cmp":{"op":"OpGe","lhs":{"currentEnergy":{}},"rhs":{"const":{"val":"79"}}}}]}},"castSpell":{"spellId":{"spellId":11294,"rank":8}}}}
     ]
 }

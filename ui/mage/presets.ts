@@ -62,18 +62,40 @@ export const DefaultAPL = APLFrost;
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsP1Frost = PresetUtils.makePresetTalents('Frost DPS', SavedTalents.create({ talentsString: '05002050030003--055500033100030024' }));
+export const TalentsP1Frost = PresetUtils.makePresetTalents('Frost DPS', SavedTalents.create({ talentsString: '05002050030003--25353023010030024' }));
 export const TalentsP1Arcane = PresetUtils.makePresetTalents('Arcane DPS', SavedTalents.create({ talentsString: '0502015003100311531-2305003202003' }));
-export const TalentsP1Fire = PresetUtils.makePresetTalents('Fire 18/31/2', SavedTalents.create({ talentsString: '05001252000003-23450000130135031-002' }));
-export const TalentsFireHighOrder = PresetUtils.makePresetTalents('Fire High Order 17/31/3', SavedTalents.create({ talentsString: '05001252000002-23450000130135031-003' }));
+export const TalentsP1Fire = PresetUtils.makePresetTalents('Fire 18/31/2', SavedTalents.create({ talentsString: '05002152000003-23450000130135031-002' }));
+export const TalentsFireHighOrder = PresetUtils.makePresetTalents(
+	'Fire High Order 17/31/3',
+	SavedTalents.create({ talentsString: '05002152000002-23450000130135031-003' }),
+);
 
-export const TalentsFire = PresetUtils.makePresetTalents('Fire 0/35/16', SavedTalents.create({ talentsString: '-03552020130135131-005500033' }));
-export const TalentsFrost = PresetUtils.makePresetTalents('Frost 12/3/36', SavedTalents.create({ talentsString: '0500105001-03-0555003331000301241' }));
-export const TalentsArcane = PresetUtils.makePresetTalents('Arcane 33/3/15', SavedTalents.create({ talentsString: '0512005023100311531-03-005500032' }));
-export const TalentsArcaneFrost = PresetUtils.makePresetTalents('Arcane–Frost 28/0/23', SavedTalents.create({ talentsString: '050200500310031053--05550002010003002' }));
+export const TalentsFire = PresetUtils.makePresetTalents('Fire 0/35/16', SavedTalents.create({ talentsString: '-03552020130135131-05350003' }));
+export const TalentsFrost = PresetUtils.makePresetTalents('Frost 12/3/36', SavedTalents.create({ talentsString: '0500205-03-253520330100301251' }));
+export const TalentsArcane = PresetUtils.makePresetTalents('Arcane 33/3/15', SavedTalents.create({ talentsString: '0502205013100311531-03-05350002' }));
+export const TalentsArcaneFrost = PresetUtils.makePresetTalents(
+	'Arcane–Frost 29/0/22',
+	SavedTalents.create({ talentsString: '050220500310030053--0535100201003002' }),
+);
+
+// Frostfire Bolt, wowsims/forever's FFB preset on the hotfixed Frost tree.
+export const TalentsFrostfire = PresetUtils.makePresetTalents(
+	'Frostfire 0/29/22',
+	SavedTalents.create({ talentsString: '-1355000013013502-2035010311013002' }),
+);
 
 export const TalentPresets = {
-	[ClassicPhase.Phase1]: [TalentsP1Frost, TalentsP1Arcane, TalentsP1Fire, TalentsFireHighOrder, TalentsFire, TalentsFrost, TalentsArcane, TalentsArcaneFrost],
+	[ClassicPhase.Phase1]: [
+		TalentsP1Frost,
+		TalentsP1Arcane,
+		TalentsP1Fire,
+		TalentsFireHighOrder,
+		TalentsFire,
+		TalentsFrost,
+		TalentsArcane,
+		TalentsArcaneFrost,
+		TalentsFrostfire,
+	],
 };
 
 export const DefaultTalents = TalentsFrost;
@@ -127,7 +149,14 @@ export const OtherDefaults = {
 export const BuildPresets = [
 	PresetUtils.makePresetBuild('Arcane', { gear: GearArcane, talents: TalentsArcane, rotation: APLArcane, options: DefaultOptions, distance: 20 }),
 	PresetUtils.makePresetBuild('Fire', { gear: GearFire, talents: TalentsP1Fire, rotation: APLFire, options: DefaultOptions, distance: 20 }),
-	PresetUtils.makePresetBuild('Fire (High Order)', { gear: GearFire, talents: TalentsFireHighOrder, rotation: APLFire, options: DefaultOptions, distance: 20, race: Race.RaceSkyborneHighOrder }),
+	PresetUtils.makePresetBuild('Fire (High Order)', {
+		gear: GearFire,
+		talents: TalentsFireHighOrder,
+		rotation: APLFire,
+		options: DefaultOptions,
+		distance: 20,
+		race: Race.RaceSkyborneHighOrder,
+	}),
 	// Frost stands within Cone of Cold range (10 yd) to spend Winter's Chill (client 1.60.1.70425).
 	PresetUtils.makePresetBuild('Frost', { gear: GearFrost, talents: TalentsFrost, rotation: APLFrost, options: DefaultOptions, distance: 10 }),
 ];

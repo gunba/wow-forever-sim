@@ -223,6 +223,10 @@ func (spell *Spell) SpellChanceToMiss(attackTable *AttackTable) float64 {
 		missChance = attackTable.BaseSpellMissChance - spell.SpellHitChance(attackTable.Defender)
 	}
 
+	if spell.Unit.Env != nil && spell.Unit.Env.IsForever() {
+		// Forever has no 1% spell miss floor; the boss spell hit cap is 17% (wowsims/forever #166).
+		return max(0, missChance)
+	}
 	// Always a 1% chance to miss in classic
 	return max(0.01, missChance)
 }

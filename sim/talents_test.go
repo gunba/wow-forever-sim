@@ -74,7 +74,7 @@ type talentClass struct {
 var talentClasses = []talentClass{
 	{"druid", druid.TalentTreeSizes, (&proto.DruidTalents{}).ProtoReflect(), []string{"balance_druid", "feral_druid", "feral_tank_druid", "restoration_druid"}, &druid.ForeverTalentTreeFields},
 	{"hunter", hunter.TalentTreeSizes, (&proto.HunterTalents{}).ProtoReflect(), []string{"hunter"}, nil},
-	{"mage", mage.TalentTreeSizes, (&proto.MageTalents{}).ProtoReflect(), []string{"mage"}, nil},
+	{"mage", mage.TalentTreeSizes, (&proto.MageTalents{}).ProtoReflect(), []string{"mage"}, &mage.ForeverTalentTreeFields},
 	{"paladin", paladin.TalentTreeSizes, (&proto.PaladinTalents{}).ProtoReflect(), []string{"holy_paladin", "protection_paladin", "retribution_paladin"}, nil},
 	{"priest", priest.TalentTreeSizes, (&proto.PriestTalents{}).ProtoReflect(), []string{"healing_priest", "shadow_priest", "smite_priest"}, nil},
 	{"rogue", rogue.TalentTreeSizes, (&proto.RogueTalents{}).ProtoReflect(), []string{"rogue"}, nil},

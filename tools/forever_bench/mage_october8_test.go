@@ -366,12 +366,9 @@ func TestOctober8MageFrostfirePeriodicTalentScopes(t *testing.T) {
 	}{
 		{"arcane_power", map[string]int{"arcanePower": 1}, 1.3, 1, true},
 		{"instability", map[string]int{"arcaneInstability": 3}, 1.03, 1, false},
-		{"piercing1", map[string]int{"piercingIce": 1}, 1.02, 1.02, false},
-		{"piercing2", map[string]int{"piercingIce": 2}, 1.04, 1.02, false},
-		{"piercing3", map[string]int{"piercingIce": 3}, 1.06, 1.02, false},
-		// Fire Power is per Fire effect on the target since client 1.60.1.70425, so with none
-		// up it adds nothing.
-		{"combined", map[string]int{"arcanePower": 1, "arcaneInstability": 3, "piercingIce": 3, "firePower": 3}, 1.39, 1.02, true},
+		// Piercing Ice left the tree in the server hotfix of 20 October 2026. Fire Power is per Fire
+		// effect on the target since client 1.60.1.70425, so with none up it adds nothing.
+		{"combined", map[string]int{"arcanePower": 1, "arcaneInstability": 3, "firePower": 3}, 1.33, 1, true},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {

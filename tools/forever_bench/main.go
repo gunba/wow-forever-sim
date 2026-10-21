@@ -103,7 +103,7 @@ func requestForBuild(b build, player *proto.Player, count int, rng int64) *proto
 		return req
 	}
 	req := request(player, count, rng)
-	if b.Key == "survival" || b.Key == "pet_melee" {
+	if b.Key == "survival" || b.Key == "pet_melee" || b.Key == "survival_weave" {
 		// Expose Prey requires this Hunter's finite, self-maintained mark.
 		req.Raid.Debuffs.HuntersMark = proto.TristateEffect_TristateEffectMissing
 	}
@@ -112,7 +112,7 @@ func requestForBuild(b build, player *proto.Player, count int, rng int64) *proto
 		req.Raid.Parties[0].Buffs.BattleShout = proto.TristateEffect_TristateEffectMissing
 	}
 	switch b.Key {
-	case "feral", "enhancement", "survival", "pet_melee", "retribution", "retribution_physical",
+	case "feral", "enhancement", "survival", "pet_melee", "survival_weave", "retribution", "retribution_physical", "shockadin",
 		"combat", "mutilate", "subtlety", "fury", "fury_sunder", "fury_2h", "arms":
 		// Forever Windfury Totem is a group buff, not a temporary weapon enchant. Since client
 		// 1.60.1.70425 both totems are raid-wide and Grace of Air is no longer exclusive with

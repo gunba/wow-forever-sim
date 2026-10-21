@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "1793400001",
+    "fixedRngSeed": "1793500001",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Horde",
@@ -126,8 +126,8 @@
       "strengthBuff": "JujuPower",
       "attackPowerBuff": "JujuMight",
       "fillerExplosive": "ExplosiveThoriumGrenade",
-      "mainHandImbue": "ElementalSharpeningStone",
-      "offHandImbue": "ElementalSharpeningStone",
+      "mainHandImbue": "DenseSharpeningStone",
+      "offHandImbue": "DenseWeightstone",
       "defaultPotion": "MightyRagePotion",
       "defaultConjured": "ConjuredDemonicRune",
       "dragonBreathChili": true,
@@ -135,7 +135,9 @@
       "armorElixir": "ElixirOfSuperiorDefense",
       "healthElixir": "ElixirOfFortitude",
       "alcohol": "AlcoholRumseyRumBlackLabel",
-      "sapperExplosive": "SapperGoblinSapper"
+      "sapperExplosive": "SapperGoblinSapper",
+      "mainHandScroll": "ScrollOfImbuePrecision",
+      "offHandScroll": "ScrollOfImbuePrecision"
     },
     "bonusStats": {
       "stats": [
@@ -191,7 +193,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "20305213002-25053005141010501",
+    "talentsString": "20305213002-25053005132010501",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
@@ -522,7 +524,7 @@
             },
             "castSpell": {
               "spellId": {
-                "spellId": 25286,
+                "spellId": 11567,
                 "tag": 1
               }
             }

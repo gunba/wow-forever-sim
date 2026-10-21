@@ -111,7 +111,8 @@ var GraceOfAirTotemLevel = [GraceOfAirTotemRanks + 1]int{0, 42, 56, 60}
 func (shaman *Shaman) registerGraceOfAirTotemSpell() {
 	shaman.GraceOfAirTotem = make([]*core.Spell, GraceOfAirTotemRanks+1)
 
-	for rank := 1; rank <= GraceOfAirTotemRanks; rank++ {
+	// The top rank is an Ahn'Qiraj book (core.IncludeAQ).
+	for rank := 1; rank <= core.TernaryInt(core.IncludeAQ, GraceOfAirTotemRanks, GraceOfAirTotemRanks-1); rank++ {
 		config := shaman.newGraceOfAirTotemSpellConfig(rank)
 
 		if config.RequiredLevel <= int(shaman.Level) {

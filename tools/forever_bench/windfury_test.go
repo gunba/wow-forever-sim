@@ -67,8 +67,8 @@ func TestForeverFeralCanReceivePartyWindfury(t *testing.T) {
 
 func TestReferenceAirTotemSelection(t *testing.T) {
 	melee := map[string]bool{
-		"feral": true, "enhancement": true, "survival": true, "pet_melee": true,
-		"retribution": true, "retribution_physical": true,
+		"feral": true, "enhancement": true, "survival": true, "pet_melee": true, "survival_weave": true,
+		"retribution": true, "retribution_physical": true, "shockadin": true,
 		"combat": true, "mutilate": true, "subtlety": true,
 		"fury": true, "fury_sunder": true, "fury_2h": true, "arms": true,
 		"tank_warrior": true, "protection_paladin": true, "feral_tank_druid": true,

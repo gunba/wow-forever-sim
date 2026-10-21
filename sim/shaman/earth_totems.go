@@ -13,7 +13,8 @@ var StrengthOfEarthTotemLevel = [StrengthOfEarthTotemRanks + 1]int{0, 10, 24, 38
 func (shaman *Shaman) registerStrengthOfEarthTotemSpell() {
 	shaman.StrengthOfEarthTotem = make([]*core.Spell, StrengthOfEarthTotemRanks+1)
 
-	for rank := 1; rank <= StrengthOfEarthTotemRanks; rank++ {
+	// The top rank is an Ahn'Qiraj book (core.IncludeAQ).
+	for rank := 1; rank <= core.TernaryInt(core.IncludeAQ, StrengthOfEarthTotemRanks, StrengthOfEarthTotemRanks-1); rank++ {
 		config := shaman.newStrengthOfEarthTotemSpellConfig(rank)
 
 		if config.RequiredLevel <= int(shaman.Level) {

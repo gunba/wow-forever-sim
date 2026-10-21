@@ -41,10 +41,12 @@ func (paladin *Paladin) ApplyTalents() {
 	// https://github.com/wowsims/sod/issues/1025 gets resolved.
 	paladin.PseudoStats.BlockValueMultiplier += 0.1 * float64(paladin.Talents.ShieldSpecialization)
 
-	// October 15 (70425): 10/20/30% of Intellect contributes to damage (was 20/40/60%), never healing.
+	// October 15 (70425) cut it to 10/20/30% of Intellect; the server hotfix that followed (CurvePoint
+	// 331369-331371 on curve 110350, game cache push 112842) puts it back at 20/40/60%. Damage only,
+	// never healing.
 	if paladin.Talents.ChampionOfTheLight > 0 {
 		if paladin.Env.IsForever() {
-			paladin.AddStatDependency(stats.Intellect, stats.SpellDamage, .1*float64(paladin.Talents.ChampionOfTheLight))
+			paladin.AddStatDependency(stats.Intellect, stats.SpellDamage, .2*float64(paladin.Talents.ChampionOfTheLight))
 		} else {
 			paladin.AddStatDependency(stats.Intellect, stats.SpellPower, []float64{0, 0.33, 0.66, 1.00}[paladin.Talents.ChampionOfTheLight])
 		}
@@ -266,9 +268,39 @@ func (paladin *Paladin) getWeaponSpecializationModifier() float64 {
 	}
 }
 
+// foreverOneHandAllSchools: in Forever One-Handed Weapon Specialization raises the paladin's damage of every school
+// with spell power in it, except Consecration, Retribution Aura and Holy Shock, as Ashreon measured on client 70425
+// (MythicSim patches 143 and 149). Two-Handed Weapon Specialization stays Physical, as the client row says.
+func (paladin *Paladin) foreverOneHandAllSchools() bool {
+	return paladin.Env.IsForever() && paladin.Talents.OneHandedWeaponSpecialization > 0 &&
+		paladin.MainHand().HandType != proto.HandType_HandTypeTwoHand
+}
+
+// The multiplier the seal procs and Holy Strike carry themselves: the specialization, unless the school-wide
+// Forever one-hander rule already pays it.
+func (paladin *Paladin) spellWeaponSpecializationModifier() float64 {
+	if paladin.foreverOneHandAllSchools() {
+		return 1
+	}
+	return paladin.getWeaponSpecializationModifier()
+}
+
 // Affects all physical damage or spells that can be rolled as physical.
 func (paladin *Paladin) applyWeaponSpecialization() {
-	paladin.PseudoStats.SchoolDamageDealtMultiplier[stats.SchoolIndexPhysical] *= paladin.getWeaponSpecializationModifier()
+	modifier := paladin.getWeaponSpecializationModifier()
+	paladin.PseudoStats.SchoolDamageDealtMultiplier[stats.SchoolIndexPhysical] *= modifier
+	if !paladin.foreverOneHandAllSchools() {
+		return
+	}
+	for school := stats.SchoolIndexArcane; school < stats.SchoolLen; school++ {
+		paladin.PseudoStats.SchoolDamageDealtMultiplier[school] *= modifier
+	}
+	paladin.OnSpellRegistered(func(spell *core.Spell) {
+		if spell.SpellCode == SpellCode_PaladinConsecration || spell.SpellCode == SpellCode_PaladinHolyShock ||
+			spell.ActionID.SpellID == 10301 {
+			spell.DamageMultiplier /= modifier
+		}
+	})
 }
 
 func (paladin *Paladin) applyVengeance() {

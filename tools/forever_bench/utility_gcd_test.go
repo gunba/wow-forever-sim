@@ -20,7 +20,7 @@ func TestForeverUtilitySpellSchoolsAndGCDs(t *testing.T) {
 	}{
 		{"balance", []int32{29166}, core.SpellSchoolNature},
 		{"elemental", []int32{324, 325, 905, 945, 8134, 10431, 10432}, core.SpellSchoolNature},
-		{"beast_mastery", []int32{25296}, core.SpellSchoolNature},
+		{"beast_mastery", []int32{14322}, core.SpellSchoolNature},
 		{"arcane", []int32{12051}, core.SpellSchoolArcane},
 		{"shadow", []int32{15473}, core.SpellSchoolShadow},
 		{"demonology", []int32{19028}, core.SpellSchoolShadow},

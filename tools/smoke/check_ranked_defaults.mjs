@@ -15,9 +15,9 @@ assert.equal(bundle.profiles.length, results.length, 'web defaults must cover th
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined });
 const routes = {
 	balance: 'balance_druid', feral: 'feral_druid', elemental: 'elemental_shaman', stormcaller: 'elemental_shaman',
-	enhancement: 'enhancement_shaman', beast_mastery: 'hunter', marksmanship: 'hunter', survival: 'hunter', pet_melee: 'hunter',
-	arcane: 'mage', fire: 'mage', frost: 'mage', arcane_frost: 'mage', retribution: 'retribution_paladin',
-	retribution_physical: 'retribution_paladin', shadow: 'shadow_priest', smite: 'smite_priest',
+	enhancement: 'enhancement_shaman', beast_mastery: 'hunter', marksmanship: 'hunter', survival: 'hunter', pet_melee: 'hunter', survival_weave: 'hunter',
+	arcane: 'mage', fire: 'mage', frost: 'mage', arcane_frost: 'mage', frostfire: 'mage', retribution: 'retribution_paladin',
+	retribution_physical: 'retribution_paladin', shockadin: 'retribution_paladin', shadow: 'shadow_priest', smite: 'smite_priest',
 	combat: 'rogue', mutilate: 'rogue', subtlety: 'rogue', demonology: 'warlock', affliction: 'warlock',
 	ds_ruin: 'warlock', destruction: 'warlock', fury: 'warrior', fury_sunder: 'warrior', arms: 'warrior', fury_2h: 'warrior',
 	tank_warrior: 'tank_warrior', protection_paladin: 'protection_paladin', feral_tank_druid: 'feral_tank_druid',

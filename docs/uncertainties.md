@@ -4,11 +4,11 @@
 
 Current level-60 DPS and tank scenarios, plus conditional spell, item and encounter coverage. This register consolidates the recorded questions; it is not a claim that unlisted game behavior has been verified.
 
-**Latest follow-up (2026-10-16):** October 16 follow-up: Shaman imbues and Rogue poisons in their own enchant slot beside stones and oils; real idols, librams and totems with a quarter of the modeled relic stats, chosen by the gear search; Rake Attack Power scaling (the September 30 deep dive, fitted to beta logs) and Rake in the Feral rotation; Cat and Bear proc rates at the form speed; bear-weaving screened (a loss); Frost Cone of Cold at five Winter’s Chill stacks, Shadow full Mind Flay channels, Smite Shadow Word: Pain, Enhancement Shadow Oil. Every DPS profile re-searched with two-seed confirmation; all 1,005 matrix scenarios and 68 tank checks replayed. [Latest follow-up report](october-16-follow-up.md).
+**Latest follow-up (2026-10-21):** October 21 update: wowsims/forever review since 23 September, server hotfixes read from the game client cache, MythicSim in-game findings; spell resistance and miss model, raid-book spell ranks off, swing reset on casts, race offsets, Warrior threat and Bloodthrill, Seal of Righteousness, hotfixed Mage Frost tree, Forever consumables; SV Weave, Frostfire and Shockadin builds; talents and consumables re-searched for every DPS build. [Latest follow-up report](october-21-update.md).
 
 **Original adjudication baseline:** 2026-09-27, `35cab052456a320358e998c12416687d69cae142`. That original review reconciled questions without changing mechanics or benchmark results. This current register also includes the later implementation and benchmark updates linked above; earlier audits remain historical evidence, not current task status.
 
-**Coverage:** 137/137 original entries reviewed; 58 additional coverage gaps, including later follow-ups.
+**Coverage:** 137/137 original entries reviewed; 70 additional coverage gaps, including later follow-ups.
 
 ## Before and after
 
@@ -17,8 +17,8 @@ Current level-60 DPS and tank scenarios, plus conditional spell, item and encoun
 | Needs evidence | 84 | 38 | 45 |
 | Implementation gap | 27 | 3 | 3 |
 | Model assumption | 5 | 3 | 6 |
-| Accepted working answer | 0 | 13 | 24 |
-| Resolved | 20 | 50 | 75 |
+| Accepted working answer | 0 | 13 | 33 |
+| Resolved | 20 | 50 | 78 |
 | Outside current scenarios | 1 | 42 | 42 |
 
 A working answer is credible enough for an explicitly qualified model, not verified server behavior. Confidence applies to the stated finding, not every effect of that class. An implementation gap is not a request for a game experiment.
@@ -713,6 +713,80 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [sim/shaman/shaman.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/shaman/shaman.go) · [sim/rogue/rogue.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/rogue/rogue.go) · [sim/core/consumes.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/consumes.go)
 
+<a id="core-024"></a>
+
+### CORE-024 — Spell resistance against bosses
+
+**Accepted working answer · High priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** How much of a magic hit does a level-63 boss resist, and what does Spell Piercing past zero do?
+
+**Finding:** wowsims/forever #293/#350/#351/#436/#166 from Forever combat logs: no partial resists at 1-9 levels above the caster, 10% steps, K fitted to 9L at caster levels 20-30.
+
+**Current implementation / scenario:** No level-based resistance. Average resist R / (|R| + 9 x caster level), R = target resistance (floored at 0) less Spell Piercing; partial resists in 10% steps; piercing past zero adds damage; DoT ticks use a tenth; no 1% spell miss floor.
+
+**Impact:** Every caster gains about 6% against bosses; Arcane Subtlety and other piercing add a few percent.
+
+**Remaining scope:** The constant above level 30 and the boss case at +3 levels.
+
+**Implementation / model follow-up:** Forever ruleset only; Classic keeps the old model.
+
+**Optional / conditional · Beyond level 30 / launch**
+- Prerequisites: Level-60 caster with known Spell Piercing on a level-63 target.
+- Observe / verify: Share of hits in each 10% bucket over 1,000+ hits.
+
+**References:** [sim/core/spell_resistances.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/spell_resistances.go) · [sim/core/spell_result.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/spell_result.go)
+
+<a id="core-025"></a>
+
+### CORE-025 — Ahn'Qiraj book ranks
+
+**Accepted working answer · High priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Can a level-60 character learn the Ahn'Qiraj book ranks (Fireball 12, Heroic Strike 9, Battle Shout 7, ...) before raids open?
+
+**Finding:** wowsims/forever caps Mage ("Rank 11 is last trainer taught"), Rogue and Druid ranks at the trainer; the books drop in raids, which open no earlier than 9 December 2026.
+
+**Current implementation / scenario:** No. Players and raid buffs use the last trainer rank (core.IncludeAQ false; warrior ranks.IncludeBookRanks).
+
+**Impact:** Lower damage and buff values for most classes (Battle Shout 111 AP, Blessing of Might 112).
+
+**Remaining scope:** Whether Forever sells or drops the books elsewhere.
+
+**Implementation / model follow-up:** All book ranks off together.
+
+**Optional / conditional · Beyond level 30 / launch**
+- Prerequisites: Level-60 trainer of each class.
+- Observe / verify: The highest rank of Fireball, Frostbolt, Heroic Strike, Battle Shout and Shadow Bolt offered.
+
+**References:** [sim/core/config.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/config.go) · [sim/warrior/ranks/ranks.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/ranks/ranks.go)
+
+<a id="core-028"></a>
+
+### CORE-028 — Server hotfixes
+
+**Resolved · High priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Which current values are server hotfixes that the client CDN tables do not carry?
+
+**Finding:** Decoded hotfix rows (WoWDBDefs layouts) compared with the 70450 CDN tables.
+
+**Current implementation / scenario:** Read from the game's own hotfix cache (DBCache.bin, build 70450, pushes to 112985): Champion of the Light 20/40/60%, Hunter's Mark rank 4 143 RAP, Bloodthrill window 5 s, the Mage Frost tree, Elemental Precision 2/4/6%, Winter's Chill, Ice Barrier and Frigid Power, Frost Blast 0.271.
+
+**Impact:** Retribution, Hunters, Arms/Fury and Mages.
+
+**Remaining scope:** Later pushes.
+
+**Implementation / model follow-up:** Re-read the cache after each client update.
+
+**References:** [sim/paladin/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/talents.go) · [sim/core/debuffs.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/debuffs.go) · [sim/warrior/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/talents.go) · [sim/mage/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/talents.go)
+
 <a id="core-006"></a>
 
 ### CORE-006 — Optional MP5-per-second interpretation
@@ -874,6 +948,54 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Observe / verify: Time between procs over 10 minutes of casting.
 
 **References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374](https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374)
+
+<a id="core-026"></a>
+
+### CORE-026 — Melee swing after a cast
+
+**Accepted working answer · Medium priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Does completing a spell with a cast time restart the melee swing timer?
+
+**Finding:** wowsims/forever #365; the vanilla rule, with SpellMisc Attributes[2] 0x20000 as the exception (Aimed Shot, Multi-Shot).
+
+**Current implementation / scenario:** Yes, unless the spell is marked Do Not Reset Combat Timers or lets autos continue: explosives, Hammer of Wrath, Holy Wrath and Shaman bolts restart the swing at cast end.
+
+**Impact:** Warriors and hunters with grenades, Retribution with Hammer of Wrath.
+
+**Remaining scope:** A Forever melee log around a grenade or Hammer of Wrath.
+
+**Implementation / model follow-up:** Forever ruleset only.
+
+**Optional / conditional · Current beta · level 30**
+- Prerequisites: A melee character with Thorium Grenades or Hammer of Wrath.
+- Observe / verify: Time from cast end to the next white swing over 20 casts.
+
+**References:** [sim/core/cast.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/cast.go)
+
+<a id="core-027"></a>
+
+### CORE-027 — Race stat offsets
+
+**Resolved · Medium priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** What are each race's base attribute offsets in Forever?
+
+**Finding:** Level 1 naked warrior character sheets on the beta (wowsims/forever #597).
+
+**Current implementation / scenario:** Level-1 sheet offsets (e.g. Tauren +2 Str/-2 Agi/+2 Sta/-2 Int, Orc +3/-3/+1/-1, Skyborne -1/+1/-1/+1); no race changes Spirit.
+
+**Impact:** A few points of each attribute; Tauren Strength drops 3.
+
+**Remaining scope:** None.
+
+**Implementation / model follow-up:** RaceOffsets in base_stats.go.
+
+**References:** [sim/core/base_stats.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/base_stats.go)
 
 <a id="core-013"></a>
 
@@ -1297,6 +1419,32 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [sim/warrior/revenge.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/revenge.go)
 
+<a id="war-025"></a>
+
+### WAR-025 — Warrior threat values
+
+**Accepted working answer · High priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** What flat threat do Heroic Strike, Cleave and Sunder Armor add, and how is rage threat counted?
+
+**Finding:** wowsims/forever #264/#385: an addon reading the threat table against the combat log; the published threat sheet agrees at Heroic Strike rank 4 and Cleave rank 2.
+
+**Current implementation / scenario:** Heroic Strike 2.54 x spell level, Cleave 1.53 x spell level split between the targets it lands on, Sunder Armor flat + 0.05 AP; rage threat 5 per rage x the threat multiplier when gained, split between enemies.
+
+**Impact:** Tank threat; Fury/Arms TPS.
+
+**Remaining scope:** Level-60 ranks.
+
+**Implementation / model follow-up:** Anger Management stays 1 rage per 3 s: Era carries the same aura row and gives 1 per 3 s (wowsims/forever #494 reads it as 1.5 per 5 s).
+
+**Optional / conditional · Beyond level 30 / launch**
+- Prerequisites: Level-60 Warrior with a threat meter.
+- Observe / verify: Threat per landed Heroic Strike rank 8.
+
+**References:** [sim/warrior/ranks/server.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/ranks/server.go) · [sim/warrior/heroic_strike_cleave.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/heroic_strike_cleave.go) · [sim/core/rage.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/rage.go)
+
 <a id="war-007"></a>
 
 ### WAR-007 — Unbridled Wrath beta fix status
@@ -1490,6 +1638,28 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **Implementation / model follow-up:** Presets and the 40 ranked profiles updated.
 
 **References:** [ui/warrior/apls/forever_fury.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/warrior/apls/forever_fury.apl.json) · [ui/warrior/apls/forever_arms.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/warrior/apls/forever_arms.apl.json) · [ui/warrior/apls/forever_fury_2h.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/warrior/apls/forever_fury_2h.apl.json) · [ui/warrior/apls/forever_fury_sunder.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/warrior/apls/forever_fury_sunder.apl.json)
+
+<a id="war-026"></a>
+
+### WAR-026 — Bloodthrill procs
+
+**Resolved · Medium priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Which attacks proc Bloodthrill, and how long is the Overpower window?
+
+**Finding:** Forever logs: 24 bystander procs all from those; 0 from off-hand swings, Hamstring, Overpower, Execute (wowsims/forever #534); server hotfix DurationIndex 28 (5 s).
+
+**Current implementation / scenario:** Main-hand white swings (extra attacks included) and the queued Heroic Strike/Cleave; 5 s window.
+
+**Impact:** Arms Overpower count.
+
+**Remaining scope:** None.
+
+**Implementation / model follow-up:** Main-hand auto mask, which the queued Heroic Strike and Cleave carry.
+
+**References:** [sim/warrior/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/talents.go)
 
 <a id="war-017"></a>
 
@@ -1918,6 +2088,32 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **Implementation / model follow-up:** sim/paladin/talents.go.
 
 **References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374](https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374)
+
+<a id="pal-017"></a>
+
+### PAL-017 — Seal of Righteousness and One-Handed Weapon Specialization
+
+**Accepted working answer · Medium priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** How does Seal of Righteousness scale with weapon speed, and what does One-Handed Weapon Specialization reach?
+
+**Finding:** wowsims/forever #110 (eighteen weapons measured); Ashreon's in-game measurement on 70425 (MythicSim patches 143/149).
+
+**Current implementation / scenario:** Seal of Righteousness per hit: value/100 x speed x 1.2 (two-hander, 0.12 SP) or x (0.85 - 0.2 x max(0, 2 - speed)) (one-hander, 0.10 SP). One-Handed Weapon Specialization raises every school except Consecration, Retribution Aura and Holy Shock; Two-Handed stays Physical.
+
+**Impact:** Retribution, Shockadin and Protection Paladin.
+
+**Remaining scope:** Judgement of Righteousness and Holy Strike coefficients remain disputed (0.429 rows against 0.70/0.286 measured); the rows are kept.
+
+**Implementation / model follow-up:** Forever ruleset; the one-hander rule pays the specialization through the school multipliers.
+
+**Optional / conditional · Beyond level 30 / launch**
+- Prerequisites: Level-60 Paladin, 1H and shield.
+- Observe / verify: Judgement and Holy Strike hits with and without 50 spell power.
+
+**References:** [sim/paladin/sor.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/sor.go) · [sim/paladin/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/paladin/talents.go)
 
 <a id="pal-013"></a>
 
@@ -2847,6 +3043,32 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [sim/hunter/raptor_strike.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/raptor_strike.go) · [https://us.forums.blizzard.com/en/wow/t/wow-classic-forever-beta-patch-notes/2360696](https://us.forums.blizzard.com/en/wow/t/wow-classic-forever-beta-patch-notes/2360696)
 
+<a id="hun-018"></a>
+
+### HUN-018 — Survival melee weave
+
+**Accepted working answer · Medium priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** How much does a melee weave gain, and what do traps and Strider Kick add?
+
+**Finding:** wowsims/forever and MythicSim SV Weave presets; trap scaling measured in game on 70425 (MythicSim patch 147); Strider Kick's speed from the client row and the 24 September notes.
+
+**Current implementation / scenario:** SV Weave steps from 12 to 5 yards while the next Auto Shot is more than 1.5 s away; traps take 13% of the higher of ranged and melee Attack Power (Explosive Trap's explosion only); Strider Kick speeds the hunter 30% for 3 s.
+
+**Impact:** Hunter ranking; SV Weave leads Survival by about 20%.
+
+**Remaining scope:** The engine's run speed and stepping cost; no latency is modelled.
+
+**Implementation / model follow-up:** New build key survival_weave on the Survival equipment model.
+
+**Optional / conditional · Beyond level 30 / launch**
+- Prerequisites: Level-60 Survival Hunter weaving.
+- Observe / verify: Auto Shots and melee abilities per minute over a five-minute fight.
+
+**References:** [ui/hunter/apls/survival_weave.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/hunter/apls/survival_weave.apl.json) · [sim/hunter/immolation_trap.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/immolation_trap.go) · [sim/hunter/strider_kick.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/strider_kick.go)
+
 <a id="hun-009"></a>
 
 ### HUN-009 — Demoralizing Screech target AP debuff
@@ -3203,6 +3425,28 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Related:** CORE-017, DATA-014
 
+<a id="mag-012"></a>
+
+### MAG-012 — Hotfixed Frost tree
+
+**Accepted working answer · Medium priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** What do Winter's Chill, Ice Barrier and Missile Barrage do after the 20 October hotfix?
+
+**Finding:** Hotfixed tooltips and rows (game cache push 112753); wowsims/forever #594 and #479.
+
+**Current implementation / scenario:** Winter's Chill from Frostbolt and Fingers of Frost Ice Lance only, +5% damage and +0.07 coefficient a stack on the next Cone of Cold, stacks to the talent rank; Ice Barrier and Frigid Power each +3% Frost damage; Missile Barrage not from Arcane Missiles; Piercing Ice removed.
+
+**Impact:** Frost and Arcane Mage.
+
+**Remaining scope:** Frost Blast is not simulated (a weak utility spell).
+
+**Implementation / model follow-up:** Name-based Frost tree layout (ForeverTalentTreeFields).
+
+**References:** [sim/mage/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/talents.go) · [sim/mage/ice_barrier.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/ice_barrier.go)
+
 ## Priest
 
 <a id="pri-001"></a>
@@ -3501,7 +3745,7 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Finding:** Current spell/item records establish Deadly Poison V's existence and values, not its obtainable recipe. The public item page still carries older damage/charge text and is not a current trainer or loot-source confirmation. Normalized equipment does not settle spell acquisition.
 
-**Current implementation / scenario:** Retained spell/item records do not independently establish acquisition in the allowed content.
+**Current implementation / scenario:** Since the October 21 update the profiles use the trainer rank (Deadly Poison IV); the book rank needs raids (CORE-025).
 
 **Impact:** Conditional highest-rank poison availability; normalized item gear does not make unavailable spells trainable.
 
@@ -3520,6 +3764,8 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **References:** [docs/check_dispositions.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/check_dispositions.md) · [sim/rogue/poisons.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/rogue/poisons.go) · [https://www.wowhead.com/forever/item=20844/deadly-poison-v](https://www.wowhead.com/forever/item=20844/deadly-poison-v)
 
 **Earlier references:** T56 (availability)
+
+**Related:** CORE-025
 
 <a id="rog-008"></a>
 
@@ -3938,6 +4184,28 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **Implementation / model follow-up:** Fire Nova excluded under Forever.
 
 **References:** [sim/shaman/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/shaman/talents.go) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/257](https://github.com/ClassicWoWCommunity/forever-bugs/issues/257)
+
+<a id="sha-012"></a>
+
+### SHA-012 — Earth Shock and Stormstrike
+
+**Accepted working answer · Low priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Does Earth Shock spend Stormstrike's charge?
+
+**Finding:** In-game beta testing relayed on 16 October 2026 (MythicSim patch 140).
+
+**Current implementation / scenario:** No: it takes the +20% and leaves the charge for the next Lightning Bolt or Chain Lightning.
+
+**Impact:** Enhancement.
+
+**Remaining scope:** A log with both.
+
+**Implementation / model follow-up:** Only Lightning Bolt and Chain Lightning spend the charge.
+
+**References:** [sim/shaman/stormstrike.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/shaman/stormstrike.go)
 
 ## Warlock
 
@@ -4388,6 +4656,32 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **Earlier references:** M08 / legacy proc TODO inventory
 
 **Related:** DRU-011, SCEN-002, DATA-015
+
+<a id="core-029"></a>
+
+### CORE-029 — Forever consumables
+
+**Accepted working answer · Medium priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Which Forever consumables apply, and do elixir crit riders stack?
+
+**Finding:** Client 1.60.1.70450 item and spell rows; wowsims/forever #209 (one elixir crit) and its elixir groups.
+
+**Current implementation / scenario:** Merchant's Favor elixirs (Ferocity, Cunning, Grizzly, Owl, Sages) and potions (Major Spellblasting, Major Frenzy), Swiftstrike Steak and Prehistoric Pulled Raptor, Scroll of Imbue Precision/Accuracy beside stones and oils. One elixir's 2% crit applies, to attacks and spells. Elemental Sharpening Stone (a Molten Core recipe) is left out.
+
+**Impact:** Every build's consumables were re-picked by simulation.
+
+**Remaining scope:** Whether elixirs of different groups stack in game, and the Scroll of Imbue source.
+
+**Implementation / model follow-up:** Elixirs grouped by first stat.
+
+**Optional / conditional · Beyond level 30 / launch**
+- Prerequisites: Two crit elixirs.
+- Observe / verify: Character-sheet crit with each and both.
+
+**References:** [sim/core/consumes.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/consumes.go) · [ui/core/components/inputs/consumables.ts](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/components/inputs/consumables.ts)
 
 <a id="data-003"></a>
 

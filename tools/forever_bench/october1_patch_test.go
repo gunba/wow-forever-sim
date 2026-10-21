@@ -154,7 +154,7 @@ func TestOctober1ChampionUsesDamageOnlyIntellectConversion(t *testing.T) {
 	before := c.GetStats()
 	c.AddStatsDynamic(sim, stats.Stats{stats.Intellect: 100})
 	after := c.GetStats()
-	want := .3 * (after[stats.Intellect] - before[stats.Intellect]) // 10/20/30% since client 1.60.1.70425
+	want := .6 * (after[stats.Intellect] - before[stats.Intellect]) // 20/40/60% again since the server hotfix after 70425
 	if got := after[stats.SpellDamage] - before[stats.SpellDamage]; math.Abs(got-want) > 1e-6 {
 		t.Fatalf("Intellect produced %v damage power, want %v", got, want)
 	}

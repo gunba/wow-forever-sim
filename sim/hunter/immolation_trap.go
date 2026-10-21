@@ -96,11 +96,12 @@ func (hunter *Hunter) registerImmolationTrapSpell(timer *core.Timer) {
 }
 
 // Client 1.60.1.70425 makes the fire traps scale with attack power; the coefficient is server-side.
-// Testers on the day measured about 10% of the higher of melee and ranged attack power over a whole
-// Immolation Trap, so both fire traps' periodic damage gains that, provisionally.
 func (hunter *Hunter) fireTrapAttackPowerBonus() float64 {
 	if !hunter.Env.IsForever() {
 		return 0
 	}
-	return 0.10 * max(hunter.GetStat(stats.AttackPower), hunter.GetStat(stats.RangedAttackPower))
+	// 13% of the higher of ranged and melee attack power, measured in game on client 70425 ("Scaling for traps are
+	// tested at 13% highest of RAP/MAP, 0sp", MythicSim patch 147): all of Immolation Trap's burn and Explosive
+	// Trap's explosion.
+	return 0.13 * max(hunter.GetStat(stats.AttackPower), hunter.GetStat(stats.RangedAttackPower))
 }

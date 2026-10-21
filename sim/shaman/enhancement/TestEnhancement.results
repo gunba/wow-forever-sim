@@ -1,41 +1,41 @@
 character_stats_results: {
  key: "TestEnhancement-Phase1-CharacterStats-Default"
  value: {
-  final_stats: 328.9
-  final_stats: 588.5
-  final_stats: 357.5
-  final_stats: 155.078
-  final_stats: 172.7
-  final_stats: 224.5234
+  final_stats: 316.8
+  final_stats: 451
+  final_stats: 356.4
+  final_stats: 156.244
+  final_stats: 171.6
+  final_stats: 224.8732
   final_stats: 0
   final_stats: 40
   final_stats: 0
   final_stats: 0
   final_stats: 0
   final_stats: 0
-  final_stats: 49
+  final_stats: 45
   final_stats: 4.9
-  final_stats: 16.92082
+  final_stats: 18.94052
   final_stats: 0
   final_stats: 0
-  final_stats: 1380.878
+  final_stats: 1308.844
   final_stats: 4.9
-  final_stats: 45.5958
+  final_stats: 38.6108
   final_stats: 0
   final_stats: 0
   final_stats: 0
-  final_stats: 3566.17
+  final_stats: 3583.66
   final_stats: 0
   final_stats: 0
-  final_stats: 2967
+  final_stats: 2692
   final_stats: 271
   final_stats: 0
   final_stats: 5
   final_stats: 0
-  final_stats: 31.5958
+  final_stats: 24.6108
   final_stats: 5
   final_stats: 0
-  final_stats: 4675
+  final_stats: 4664
   final_stats: 27
   final_stats: 97
   final_stats: 79
@@ -50,16 +50,12 @@ character_stats_results: {
 stat_weights_results: {
  key: "TestEnhancement-Phase1-StatWeights-Default"
  value: {
-  weights: 0.4092
-  weights: 0.27279
+  weights: 0.38243
+  weights: 0.28245
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.20596
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
+  weights: 0.21871
   weights: 0
   weights: 0
   weights: 0
@@ -67,9 +63,13 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.186
-  weights: 6.5625
-  weights: 3.78809
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0.17383
+  weights: 6.2002
+  weights: 4.55515
   weights: 0
   weights: 0
   weights: 0
@@ -99,105 +99,105 @@ stat_weights_results: {
 dps_results: {
  key: "TestEnhancement-Phase1-AllItems-TheSpiritcaller'sStorm"
  value: {
-  dps: 588.82975
-  tps: 458.44942
+  dps: 560.8234
+  tps: 438.32915
  }
 }
 dps_results: {
  key: "TestEnhancement-Phase1-Average-Default"
  value: {
-  dps: 633.57827
-  tps: 489.39244
+  dps: 604.65678
+  tps: 469.40607
  }
 }
 dps_results: {
  key: "TestEnhancement-Phase1-Settings-Orc-forever_enhancement-Default-default-FullBuffs-P1-Consumes-LongMultiTarget"
  value: {
-  dps: 708.43474
-  tps: 788.334
+  dps: 732.93492
+  tps: 552.33767
  }
 }
 dps_results: {
  key: "TestEnhancement-Phase1-Settings-Orc-forever_enhancement-Default-default-FullBuffs-P1-Consumes-LongSingleTarget"
  value: {
-  dps: 267.63309
-  tps: 227.70428
+  dps: 264.51516
+  tps: 224.02299
  }
 }
 dps_results: {
  key: "TestEnhancement-Phase1-Settings-Orc-forever_enhancement-Default-default-FullBuffs-P1-Consumes-ShortSingleTarget"
  value: {
-  dps: 313.99443
-  tps: 272.37103
+  dps: 314.3772
+  tps: 273.57054
  }
 }
 dps_results: {
  key: "TestEnhancement-Phase1-Settings-Orc-forever_enhancement-Default-default-NoBuffs-P1-Consumes-LongMultiTarget"
  value: {
-  dps: 416.88485
-  tps: 507.19583
+  dps: 444.49545
+  tps: 329.4507
  }
 }
 dps_results: {
  key: "TestEnhancement-Phase1-Settings-Orc-forever_enhancement-Default-default-NoBuffs-P1-Consumes-LongSingleTarget"
  value: {
-  dps: 151.53106
-  tps: 124.53286
+  dps: 156.68228
+  tps: 128.17788
  }
 }
 dps_results: {
  key: "TestEnhancement-Phase1-Settings-Orc-forever_enhancement-Default-default-NoBuffs-P1-Consumes-ShortSingleTarget"
  value: {
-  dps: 230.07341
-  tps: 208.44756
+  dps: 239.0698
+  tps: 215.47311
  }
 }
 dps_results: {
  key: "TestEnhancement-Phase1-Settings-Troll-forever_enhancement-Default-default-FullBuffs-P1-Consumes-LongMultiTarget"
  value: {
-  dps: 696.51265
-  tps: 777.27342
+  dps: 726.35552
+  tps: 546.0869
  }
 }
 dps_results: {
  key: "TestEnhancement-Phase1-Settings-Troll-forever_enhancement-Default-default-FullBuffs-P1-Consumes-LongSingleTarget"
  value: {
-  dps: 262.67318
-  tps: 222.36719
+  dps: 262.2031
+  tps: 222.41411
  }
 }
 dps_results: {
  key: "TestEnhancement-Phase1-Settings-Troll-forever_enhancement-Default-default-FullBuffs-P1-Consumes-ShortSingleTarget"
  value: {
-  dps: 309.93064
-  tps: 269.43586
+  dps: 309.23044
+  tps: 269.7905
  }
 }
 dps_results: {
  key: "TestEnhancement-Phase1-Settings-Troll-forever_enhancement-Default-default-NoBuffs-P1-Consumes-LongMultiTarget"
  value: {
-  dps: 407.49868
-  tps: 499.94694
+  dps: 436.17801
+  tps: 323.08824
  }
 }
 dps_results: {
  key: "TestEnhancement-Phase1-Settings-Troll-forever_enhancement-Default-default-NoBuffs-P1-Consumes-LongSingleTarget"
  value: {
-  dps: 149.05648
-  tps: 123.16195
+  dps: 154.97249
+  tps: 127.6151
  }
 }
 dps_results: {
  key: "TestEnhancement-Phase1-Settings-Troll-forever_enhancement-Default-default-NoBuffs-P1-Consumes-ShortSingleTarget"
  value: {
-  dps: 226.43822
-  tps: 205.72089
+  dps: 234.0381
+  tps: 211.02601
  }
 }
 dps_results: {
  key: "TestEnhancement-Phase1-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 514.85595
-  tps: 404.8785
+  dps: 507.76259
+  tps: 400.21351
  }
 }

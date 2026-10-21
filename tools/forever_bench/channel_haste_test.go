@@ -124,7 +124,7 @@ func TestForeverAPLChannelClipTracksHastedTickCadence(t *testing.T) {
 func TestForeverMissileBarrageTickCountWithHaste(t *testing.T) {
 	sim := channelHasteFixture("arcane", proto.Ruleset_RulesetForever, 100)
 	m := sim.Raid.Parties[0].Players[0].(mage.MageAgent).GetMage()
-	spell := m.ArcaneMissiles[len(m.ArcaneMissiles)-1]
+	spell := topRank(m.ArcaneMissiles)
 	m.MissileBarrageAura.Activate(sim)
 	if !spell.Cast(sim, m.CurrentTarget) {
 		t.Fatal("Missile Barrage was not castable")
@@ -158,7 +158,7 @@ func TestBerserkingDoesNotShortenArcaneMissiles(t *testing.T) {
 	if got := m.ApplyCastSpeed(time.Second); got != time.Second*10/11 {
 		t.Fatalf("Berserking should shorten hardcasts; second became %s", got)
 	}
-	spell := m.ArcaneMissiles[len(m.ArcaneMissiles)-1]
+	spell := topRank(m.ArcaneMissiles)
 	if !spell.Cast(sim, m.CurrentTarget) {
 		t.Fatal("Arcane Missiles was not castable")
 	}
@@ -306,4 +306,14 @@ func TestRogueGCDDoesNotInheritSpellHaste(t *testing.T) {
 	if r.GCD.ReadyAt() != time.Second {
 		t.Fatalf("Rogue GCD %s, want 1s", r.GCD.ReadyAt())
 	}
+}
+
+// topRank is the highest registered rank; ranks an Ahn'Qiraj book teaches are left out (core.IncludeAQ).
+func topRank(spells []*core.Spell) *core.Spell {
+	for i := len(spells) - 1; i >= 0; i-- {
+		if spells[i] != nil {
+			return spells[i]
+		}
+	}
+	return nil
 }

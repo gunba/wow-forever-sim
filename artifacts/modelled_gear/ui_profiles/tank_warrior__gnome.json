@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "1793400001",
+    "fixedRngSeed": "1793500001",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Alliance",
@@ -113,7 +113,7 @@
       "agilityElixir": "ElixirOfTheMongoose",
       "strengthBuff": "JujuPower",
       "attackPowerBuff": "JujuMight",
-      "mainHandImbue": "ElementalSharpeningStone",
+      "mainHandImbue": "DenseSharpeningStone",
       "defaultPotion": "GreaterStoneshieldPotion",
       "dragonBreathChili": true,
       "zanzaBuff": "ROIDS",
@@ -234,7 +234,7 @@
                             "type": "Self"
                           },
                           "auraId": {
-                            "spellId": 25289
+                            "spellId": 11551
                           }
                         }
                       },
@@ -276,7 +276,7 @@
             },
             "castSpell": {
               "spellId": {
-                "spellId": 25289
+                "spellId": 11551
               }
             }
           }
@@ -880,7 +880,7 @@
                           "lhs": {
                             "spellCurrentCost": {
                               "spellId": {
-                                "spellId": 25288
+                                "spellId": 11601
                               }
                             }
                           },
@@ -912,7 +912,7 @@
             },
             "castSpell": {
               "spellId": {
-                "spellId": 25288
+                "spellId": 11601
               }
             }
           }
@@ -1383,7 +1383,7 @@
                                 "lhs": {
                                   "spellCurrentCost": {
                                     "spellId": {
-                                      "spellId": 25286
+                                      "spellId": 11567
                                     }
                                   }
                                 },
@@ -1418,7 +1418,7 @@
             },
             "castSpell": {
               "spellId": {
-                "spellId": 25286,
+                "spellId": 11567,
                 "tag": 1
               }
             }

@@ -60,7 +60,8 @@ func (hunter *Hunter) getExplosiveTrapConfig(rank int, timer *core.Timer) core.S
 			TickLength:    time.Second * 2,
 
 			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
-				dot.Snapshot(target, dotDamage+hunter.fireTrapAttackPowerBonus()/float64(dot.NumberOfTicks), isRollover)
+				// The attack power share is on the explosion, not the burning ground (in game, client 70425).
+				dot.Snapshot(target, dotDamage, isRollover)
 			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
 				for _, aoeTarget := range sim.Encounter.TargetUnits {
@@ -83,7 +84,7 @@ func (hunter *Hunter) getExplosiveTrapConfig(rank int, timer *core.Timer) core.S
 				spellHit := spell.Unit.GetStat(stats.SpellHit) + target.PseudoStats.BonusSpellHitRatingTaken
 				spell.Unit.AddStatDynamic(sim, stats.SpellHit, spellHit*-1)
 				for hitIndex := int32(0); hitIndex < numHits; hitIndex++ {
-					baseDamage := sim.Roll(minDamage, maxDamage)
+					baseDamage := sim.Roll(minDamage, maxDamage) + hunter.fireTrapAttackPowerBonus()
 					baseDamage *= sim.Encounter.AOECapMultiplier()
 					result := spell.CalcAndDealDamage(sim, curTarget, baseDamage, spell.OutcomeMagicHitAndCrit)
 					if result.Landed() {

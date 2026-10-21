@@ -168,7 +168,7 @@ const ClassicBloodPactBuff = withLabel(
 
 export const BlessingOfMight = withLabel(
 	makeTristateIndividualBuffInput({
-		actionId: () => ActionId.fromSpellId(25291),
+		actionId: () => ActionId.fromSpellId(19838),
 		impId: ActionId.fromSpellId(20048),
 		fieldName: 'blessingOfMight',
 		showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever || player.getFaction() === Faction.Alliance,
@@ -178,7 +178,7 @@ export const BlessingOfMight = withLabel(
 
 export const StrengthBuffHorde = withLabel(
 	makeTristateRaidBuffInput({
-		actionId: () => ActionId.fromSpellId(25361),
+		actionId: () => ActionId.fromSpellId(10442),
 		impId: ActionId.fromSpellId(16295),
 		fieldName: 'strengthOfEarthTotem',
 		showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever || player.getFaction() === Faction.Horde,
@@ -188,7 +188,7 @@ export const StrengthBuffHorde = withLabel(
 
 // Since client 1.60.1.70425 Grace of Air is no longer exclusive with Windfury or Flametongue Totem.
 const graceOfAirInput = makeTristateRaidBuffInput({
-	actionId: () => ActionId.fromSpellId(25359),
+	actionId: () => ActionId.fromSpellId(10627),
 	impId: ActionId.fromSpellId(16295),
 	fieldName: 'graceOfAirTotem',
 	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever || player.getFaction() === Faction.Horde,
@@ -260,7 +260,7 @@ export const SpiritBuff = InputHelpers.makeMultiIconInput({
 
 export const BattleShoutBuff = withLabel(
 	makeTristateRaidBuffInput({
-		actionId: () => ActionId.fromSpellId(25289),
+		actionId: () => ActionId.fromSpellId(11551),
 		impId: ActionId.fromSpellId(12861),
 		fieldName: 'battleShout',
 	}),
@@ -277,7 +277,7 @@ export const TrueshotAuraBuff = withLabel(
 
 export const BlessingOfWisdom = withLabel(
 	makeTristateIndividualBuffInput({
-		actionId: () => ActionId.fromSpellId(25290),
+		actionId: () => ActionId.fromSpellId(19854),
 		impId: ActionId.fromSpellId(20245),
 		fieldName: 'blessingOfWisdom',
 		showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever || player.getFaction() === Faction.Alliance,
@@ -345,34 +345,46 @@ class ReflectionProviderPicker extends IconPicker<Player<any>, number> {
 		const clazz = kind === 'thorns' ? Class.ClassDruid : Class.ClassPaladin;
 		const controls = document.createElement('div');
 		controls.className = 'reflection-provider-controls';
-		controls.innerHTML = `<label>${kind === 'thorns' ? 'Thorns' : 'Ret Aura'} caster <select aria-label="Reflection caster"></select></label><label>External provider SP <input type="number" min="0" step="1" aria-label="External provider spell power"></label>`;
+		controls.innerHTML = `<label>${
+			kind === 'thorns' ? 'Thorns' : 'Ret Aura'
+		} caster <select aria-label="Reflection caster"></select></label><label>External provider SP <input type="number" min="0" step="1" aria-label="External provider spell power"></label>`;
 		parent.appendChild(controls);
 		const select = controls.querySelector('select')!;
 		const sp = controls.querySelector('input')!;
-		controls.title = 'Owned caster uses current damage spell power, including school power. External SP is a declared scenario assumption, default0, never this receiver’s stats. Selected buffs assume range. Retribution Aura affects the caster’s party.';
+		controls.title =
+			'Owned caster uses current damage spell power, including school power. External SP is a declared scenario assumption, default0, never this receiver’s stats. Selected buffs assume range. Retribution Aura affects the caster’s party.';
 		const update = () => {
 			controls.hidden = player.sim.getRuleset() !== Ruleset.RulesetForever;
 			const buffs = raid.getBuffs();
 			select.replaceChildren(new Option('External provider (declared SP)', 'external'));
 			for (const provider of raid.getPlayers()) {
 				if (!provider || provider.getClass() !== clazz) continue;
-				if (kind === 'retributionAura' && Math.floor(provider.getRaidIndex()/5) !== Math.floor(player.getRaidIndex()/5)) continue;
+				if (kind === 'retributionAura' && Math.floor(provider.getRaidIndex() / 5) !== Math.floor(player.getRaidIndex() / 5)) continue;
 				select.add(new Option(provider.getName(), String(provider.getRaidIndex())));
 			}
 			const ref = buffs[refField];
-			select.value = ref?.type === UnitReference_Type.Player ? String(ref.index) : ref?.type === UnitReference_Type.Self ? String(player.getRaidIndex()) : 'external';
+			select.value =
+				ref?.type === UnitReference_Type.Player
+					? String(ref.index)
+					: ref?.type === UnitReference_Type.Self
+					? String(player.getRaidIndex())
+					: 'external';
 			sp.value = String(buffs[spField]);
 			sp.disabled = select.value !== 'external';
 		};
 		select.addEventListener('change', () => {
 			const buffs = raid.getBuffs();
-			buffs[refField] = select.value === 'external' ? undefined : UnitReference.create({type: UnitReference_Type.Player, index: Number(select.value)});
+			buffs[refField] = select.value === 'external' ? undefined : UnitReference.create({ type: UnitReference_Type.Player, index: Number(select.value) });
 			raid.setBuffs(TypedEvent.nextEventID(), buffs);
 		});
 		sp.addEventListener('change', () => {
 			const value = Number(sp.value);
-			if (!Number.isFinite(value) || value < 0) { update(); return; }
-			const buffs = raid.getBuffs(); buffs[spField] = value;
+			if (!Number.isFinite(value) || value < 0) {
+				update();
+				return;
+			}
+			const buffs = raid.getBuffs();
+			buffs[spField] = value;
 			raid.setBuffs(TypedEvent.nextEventID(), buffs);
 		});
 		raid.changeEmitter.on(update);
@@ -381,10 +393,14 @@ class ReflectionProviderPicker extends IconPicker<Player<any>, number> {
 	}
 }
 class ThornsProviderPicker extends ReflectionProviderPicker {
-	constructor(parent: HTMLElement, player: Player<any>, config: IconPickerConfig<Player<any>, number>) { super(parent, player, config, 'thorns'); }
+	constructor(parent: HTMLElement, player: Player<any>, config: IconPickerConfig<Player<any>, number>) {
+		super(parent, player, config, 'thorns');
+	}
 }
 class RetributionProviderPicker extends ReflectionProviderPicker {
-	constructor(parent: HTMLElement, player: Player<any>, config: IconPickerConfig<Player<any>, number>) { super(parent, player, config, 'retributionAura'); }
+	constructor(parent: HTMLElement, player: Player<any>, config: IconPickerConfig<Player<any>, number>) {
+		super(parent, player, config, 'retributionAura');
+	}
 }
 
 export const RetributionAura = makeTristateRaidBuffInput({

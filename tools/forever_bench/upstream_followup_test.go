@@ -369,7 +369,7 @@ func TestUpstreamMageFrostAreaSpellbook(t *testing.T) {
 	if cone.DamageMultiplier != 1.35 || cone.BonusCoefficient != .129 || nova.BonusCoefficient != .029 ||
 		math.Abs(cone.Cost.GetCurrentCost()-555*.85) > 1e-9 ||
 		math.Abs(nova.Cost.GetCurrentCost()-145*.85) > 1e-9 ||
-		cone.BonusHitRating != 3*core.SpellHitRatingPerHitChance || cone.CritDamageBonus != 2 {
+		cone.BonusHitRating != 6*core.SpellHitRatingPerHitChance || cone.CritDamageBonus != 2 { // Elemental Precision 2% a rank since the hotfix
 		t.Fatal("Frost AOE coefficients or talent modifiers incorrect")
 	}
 	if !cone.Flags.Matches(mage.SpellFlagChillSpell) || nova.Flags.Matches(mage.SpellFlagChillSpell) {

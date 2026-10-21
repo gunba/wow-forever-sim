@@ -620,6 +620,12 @@ func (spell *Spell) finalizeExpectedDamage(result *SpellResult) {
 	if !spell.SpellSchool.Matches(SpellSchoolPhysical) {
 		result.Damage /= result.ResistanceMultiplier
 		averagePartialResistMultiplier := 1.0 - AverageMagicPartialResistPerLevelMultiplier*float64(result.Target.Level-spell.Unit.Level)
+		if spell.Unit.Env != nil && spell.Unit.Env.IsForever() {
+			averagePartialResistMultiplier = 1.0
+			if !spell.Flags.Matches(SpellFlagNoPartialResist) {
+				averagePartialResistMultiplier -= result.Target.foreverAverageResist(spell, spell.Unit, false)
+			}
+		}
 		result.Damage *= averagePartialResistMultiplier
 		result.ResistanceMultiplier = averagePartialResistMultiplier
 	}

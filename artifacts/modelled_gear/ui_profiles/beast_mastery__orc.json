@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "1793400001",
+    "fixedRngSeed": "1793500001",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Horde",
@@ -122,17 +122,20 @@
     },
     "consumes": {
       "flask": "FlaskOfDistilledWisdom",
-      "food": "FoodSmokedDesertDumpling",
-      "agilityElixir": "ElixirOfTheMongoose",
+      "food": "FoodSwiftstrikeSteak",
+      "agilityElixir": "ElixirOfCunning",
       "manaRegenElixir": "MagebloodPotion",
-      "strengthBuff": "JujuPower",
+      "strengthBuff": "ElixirOfFerocity",
       "attackPowerBuff": "JujuMight",
       "fillerExplosive": "ExplosiveThoriumGrenade",
-      "mainHandImbue": "ElementalSharpeningStone",
-      "offHandImbue": "ElementalSharpeningStone",
+      "mainHandImbue": "DenseSharpeningStone",
+      "offHandImbue": "DenseSharpeningStone",
       "defaultPotion": "MajorManaPotion",
       "defaultConjured": "ConjuredDemonicRune",
-      "zanzaBuff": "GroundScorpokAssay"
+      "zanzaBuff": "GroundScorpokAssay",
+      "intellectElixir": "ElixirOfTheOwl",
+      "mainHandScroll": "ScrollOfImbuePrecision",
+      "offHandScroll": "ScrollOfImbuePrecision"
     },
     "bonusStats": {
       "stats": [
@@ -188,7 +191,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "5320001505101251-00522510005",
+    "talentsString": "5320001505101251-00531510005",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
@@ -197,7 +200,7 @@
           "action": {
             "castSpell": {
               "spellId": {
-                "spellId": 25296
+                "spellId": 14322
               }
             }
           },
@@ -286,7 +289,7 @@
                 "val": {
                   "dotIsActive": {
                     "spellId": {
-                      "spellId": 25295
+                      "spellId": 13555
                     }
                   }
                 }
@@ -294,7 +297,7 @@
             },
             "castSpell": {
               "spellId": {
-                "spellId": 25295
+                "spellId": 13555
               }
             }
           }

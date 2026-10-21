@@ -205,6 +205,13 @@ const (
 	// Damage component of a queued next-swing attack, not a directly castable APL action.
 	SpellFlagOnNextSwing
 
+	// Damage shields (Thorns, Retribution Aura): never partially resisted in Forever logs.
+	SpellFlagNoPartialResist
+
+	// A cast-time spell marked Do Not Reset Combat Timers (SpellMisc Attributes[2] 0x20000), such as
+	// Aimed Shot: completing it leaves the melee swing alone.
+	SpellFlagKeepsSwingTimer
+
 	SpellFlagIgnoreModifiers = SpellFlagIgnoreAttackerModifiers | SpellFlagIgnoreTargetModifiers
 )
 

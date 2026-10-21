@@ -488,7 +488,7 @@ func TestEvidenceWrackFamilyAndCancellation(t *testing.T) {
 		}
 	}
 	w.Wrack.Dot(target).Apply(sim)
-	for _, id := range []int32{25311, 11713} {
+	for _, id := range []int32{11672, 11713} {
 		check(id, 1.1, false)
 		check(id, 1, true)
 	}
@@ -496,7 +496,7 @@ func TestEvidenceWrackFamilyAndCancellation(t *testing.T) {
 		check(id, 1, false)
 	}
 	w.Wrack.Dot(target).Cancel(sim)
-	check(25311, 1, false)
+	check(11672, 1, false)
 	check(11713, 1, false)
 }
 

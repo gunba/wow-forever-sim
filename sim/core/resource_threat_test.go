@@ -31,8 +31,9 @@ func TestResourceNoThreatPreservesGainsAndOrdinaryThreat(t *testing.T) {
 		t.Fatal("threat policy changed mana gains")
 	}
 	for i := 0; i < 2; i++ {
-		if got := mana.SpellMetrics[i].TotalThreat; got != 40 {
-			t.Errorf("mana target %d: threat %v, want retained ordinary amount 40", i, got)
+		// Forever splits mana threat between the enemies in combat (wowsims/forever #598).
+		if got := mana.SpellMetrics[i].TotalThreat; got != 20 {
+			t.Errorf("mana target %d: threat %v, want the ordinary amount split, 20", i, got)
 		}
 	}
 	freeMana.reset()

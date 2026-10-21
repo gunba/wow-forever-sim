@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "1793400001",
+    "fixedRngSeed": "1793500001",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Alliance",
@@ -119,13 +119,15 @@
     },
     "consumes": {
       "flask": "FlaskOfSupremePower",
-      "food": "FoodRunnTumTuberSurprise",
+      "food": "FoodNightfinSoup",
       "manaRegenElixir": "MagebloodPotion",
       "spellPowerBuff": "GreaterArcaneElixir",
       "mainHandImbue": "BrilliantWizardOil",
-      "defaultPotion": "MajorManaPotion",
+      "defaultPotion": "MajorSpellblastingPotion",
       "defaultConjured": "ConjuredDemonicRune",
-      "zanzaBuff": "CerebralCortexCompound"
+      "zanzaBuff": "CerebralCortexCompound",
+      "intellectElixir": "ElixirOfTheOwl",
+      "mainHandScroll": "ScrollOfImbuePrecision"
     },
     "bonusStats": {
       "stats": [
@@ -272,7 +274,7 @@
             },
             "castSpell": {
               "spellId": {
-                "spellId": 25298,
+                "spellId": 9876,
                 "rank": 7
               }
             }

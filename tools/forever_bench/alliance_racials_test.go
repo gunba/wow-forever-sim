@@ -130,7 +130,7 @@ func TestAllianceReceivesForeverShamanBuffs(t *testing.T) {
 		_, after, _ := core.NewEnvironment(req.Raid, req.Encounter, proto.Ruleset_RulesetForever, false)
 		b := stats.FromFloatArray(before.Parties[0].Players[0].FinalStats.Stats)
 		a := stats.FromFloatArray(after.Parties[0].Players[0].FinalStats.Stats)
-		for stat, want := range map[stats.Stat]float64{stats.Strength: 53, stats.Agility: 89, stats.MP5: 25} {
+		for stat, want := range map[stats.Stat]float64{stats.Strength: core.TernaryFloat64(core.IncludeAQ, 53, 42), stats.Agility: core.TernaryFloat64(core.IncludeAQ, 89, 77), stats.MP5: 25} {
 			if math.Abs(a[stat]-b[stat]-want) > 1e-8 {
 				t.Fatalf("%s: stat %v changed by %.2f, want %.2f", race, stat, a[stat]-b[stat], want)
 			}

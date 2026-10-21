@@ -33,9 +33,9 @@ func TestBuildsAreLegal(t *testing.T) {
 func TestFireAndElementalTalentCorrections(t *testing.T) {
 	want := map[string]map[string]int{
 		// Client 1.60.1.70425 turns Wake of Fire back into Improved Fire Blast; the October 15 talent
-		// screen moved two Totemic Focus points into Ancestral Knowledge.
+		// screen moved two Totemic Focus points into Ancestral Knowledge, and the 21 October screen a fifth.
 		"fire":      {"improvedFireball": 4, "improvedFireBlast": 2, "hotStreak": 1},
-		"elemental": {"ancestralKnowledge": 4, "improvedLightningShield": 0, "waterShield": 0},
+		"elemental": {"ancestralKnowledge": 5, "improvedLightningShield": 0, "waterShield": 0},
 	}
 	for _, b := range builds() {
 		fields, ok := want[b.Key]
@@ -289,7 +289,7 @@ func TestSacrificedPetDoesNotAttack(t *testing.T) {
 		p.Rotation = core.APLRotationFromJsonString(`{"type":"TypeAPL","prepullActions":[
 			{"action":{"castSpell":{"spellId":{"spellId":712}}},"doAtValue":{"const":{"val":"-16s"}}},
 			{"action":{"castSpell":{"spellId":{"spellId":18788}}},"doAtValue":{"const":{"val":"-5s"}}}
-		],"priorityList":[{"action":{"castSpell":{"spellId":{"spellId":25307}}}}]}`)
+		],"priorityList":[{"action":{"castSpell":{"spellId":{"spellId":11661}}}}]}`)
 		req := request(p, 2, 1)
 		req.Encounter.Duration = 30
 		result := core.RunRaidSim(req)
@@ -387,8 +387,8 @@ func TestWrackDebuffEndsWithChannel(t *testing.T) {
 		env, _, _ := core.NewEnvironment(req.Raid, req.Encounter, proto.Ruleset_RulesetForever, false)
 		unit, target := env.Raid.AllPlayerUnits[0], env.Encounter.TargetUnits[0]
 		wrack := unit.GetSpell(core.ActionID{SpellID: 11704})
-		corruption := unit.GetSpell(core.ActionID{SpellID: 25311})
-		bolt := unit.GetSpell(core.ActionID{SpellID: 25307})
+		corruption := unit.GetSpell(core.ActionID{SpellID: 11672})
+		bolt := unit.GetSpell(core.ActionID{SpellID: 11661})
 		sim := &core.Simulation{Environment: env}
 		modified := func(spell *core.Spell) float64 {
 			result := &core.SpellResult{Target: target, Damage: 100}
@@ -425,7 +425,7 @@ func TestForeverAspectOfTheBeast(t *testing.T) {
 		unit := env.Raid.AllPlayerUnits[0]
 		sim := &core.Simulation{Environment: env}
 		before := unit.GetStats()
-		hawk, beast := unit.GetAura("Aspect of the Hawk7"), unit.GetAura("Aspect of the Beast4")
+		hawk, beast := unit.GetAura(map[bool]string{true: "Aspect of the Hawk7", false: "Aspect of the Hawk6"}[core.IncludeAQ]), unit.GetAura("Aspect of the Beast4")
 		hawk.Activate(sim)
 		beast.Activate(sim)
 		if hawk.IsActive() || !beast.IsActive() {
@@ -482,15 +482,15 @@ func TestForeverBuffValues(t *testing.T) {
 			stats.Stats{stats.BonusArmor: 385, stats.Strength: 16, stats.Agility: 16, stats.Stamina: 16, stats.Intellect: 16, stats.Spirit: 16,
 				stats.ArcaneResistance: 27, stats.FireResistance: 27, stats.FrostResistance: 27, stats.NatureResistance: 27, stats.ShadowResistance: 27}},
 		{"Fortitude", func(r *proto.RaidSimRequest, v proto.TristateEffect) { r.Raid.Buffs.PowerWordFortitude = v }, stats.Stats{stats.Stamina: 70}},
-		{"Strength of Earth", func(r *proto.RaidSimRequest, v proto.TristateEffect) { r.Raid.Buffs.StrengthOfEarthTotem = v }, stats.Stats{stats.Strength: 53}},
-		{"Grace of Air", func(r *proto.RaidSimRequest, v proto.TristateEffect) { r.Raid.Buffs.GraceOfAirTotem = v }, stats.Stats{stats.Agility: 89}},
-		{"Battle Shout", func(r *proto.RaidSimRequest, v proto.TristateEffect) { r.Raid.Buffs.BattleShout = v }, stats.Stats{stats.AttackPower: 139}},
+		{"Strength of Earth", func(r *proto.RaidSimRequest, v proto.TristateEffect) { r.Raid.Buffs.StrengthOfEarthTotem = v }, stats.Stats{stats.Strength: core.TernaryFloat64(core.IncludeAQ, 53, 42)}},
+		{"Grace of Air", func(r *proto.RaidSimRequest, v proto.TristateEffect) { r.Raid.Buffs.GraceOfAirTotem = v }, stats.Stats{stats.Agility: core.TernaryFloat64(core.IncludeAQ, 89, 77)}},
+		{"Battle Shout", func(r *proto.RaidSimRequest, v proto.TristateEffect) { r.Raid.Buffs.BattleShout = v }, stats.Stats{stats.AttackPower: core.TernaryFloat64(core.IncludeAQ, 139, 111)}},
 		{"Might", func(r *proto.RaidSimRequest, v proto.TristateEffect) {
 			r.Raid.Parties[0].Players[0].Buffs.BlessingOfMight = v
-		}, stats.Stats{stats.AttackPower: 133}},
+		}, stats.Stats{stats.AttackPower: core.TernaryFloat64(core.IncludeAQ, 133, 112)}},
 		{"Wisdom", func(r *proto.RaidSimRequest, v proto.TristateEffect) {
 			r.Raid.Parties[0].Players[0].Buffs.BlessingOfWisdom = v
-		}, stats.Stats{stats.MP5: 40}},
+		}, stats.Stats{stats.MP5: core.TernaryFloat64(core.IncludeAQ, 40, 36)}},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {

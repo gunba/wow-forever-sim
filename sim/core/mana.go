@@ -141,7 +141,12 @@ func (mb *manaBar) doneIteration(sim *Simulation) {
 		}
 
 		manaGainSpell.SpellMetrics[0].Casts += resourceMetrics.EventsForCurrentIteration()
-		manaGainSpell.ApplyAOEThreatIgnoreMultipliers(resourceMetrics.ActualGainForCurrentIteration() * ThreatPerManaGained * mb.unit.PseudoStats.ThreatMultiplier)
+		threat := resourceMetrics.ActualGainForCurrentIteration() * ThreatPerManaGained * mb.unit.PseudoStats.ThreatMultiplier
+		if mb.unit.Env != nil && mb.unit.Env.IsForever() {
+			// Split between the enemies in combat, as rage threat is (wowsims/forever #598).
+			threat /= float64(max(1, mb.unit.Env.GetNumTargets()))
+		}
+		manaGainSpell.ApplyAOEThreatIgnoreMultipliers(threat)
 	}
 }
 

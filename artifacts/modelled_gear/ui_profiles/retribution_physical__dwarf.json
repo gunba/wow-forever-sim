@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "1793400001",
+    "fixedRngSeed": "1793500001",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Alliance",
@@ -119,17 +119,19 @@
       ]
     },
     "consumes": {
-      "food": "FoodBlessSunfruit",
-      "agilityElixir": "ElixirOfTheMongoose",
+      "food": "FoodSmokedDesertDumpling",
+      "agilityElixir": "ElixirOfCunning",
       "manaRegenElixir": "MagebloodPotion",
       "strengthBuff": "JujuPower",
       "attackPowerBuff": "JujuMight",
-      "mainHandImbue": "ElementalSharpeningStone",
+      "mainHandImbue": "DenseWeightstone",
       "defaultPotion": "MajorManaPotion",
       "defaultConjured": "ConjuredDemonicRune",
       "dragonBreathChili": true,
       "zanzaBuff": "ROIDS",
-      "sapperExplosive": "SapperGoblinSapper"
+      "sapperExplosive": "SapperGoblinSapper",
+      "intellectElixir": "ElixirOfTheOwl",
+      "mainHandScroll": "ScrollOfImbuePrecision"
     },
     "bonusStats": {
       "stats": [
@@ -185,7 +187,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "52003003-232-05225031101330311",
+    "talentsString": "52003002-231-05225331001330311",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",

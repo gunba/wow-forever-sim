@@ -92,7 +92,15 @@ export class ConsumesPicker extends Component {
 		);
 		const ohImbueOptions = ConsumablesInputs.makeOffHandImbuesInput(relevantStatOptions(ConsumablesInputs.WEAPON_IMBUES_OH_CONFIG, this.simUI), 'Off-Hand');
 
-		const pickers = [buildIconInput(imbuesElem, this.simUI.player, mhImbueOptions), buildIconInput(imbuesElem, this.simUI.player, ohImbueOptions)];
+		const mhScrollOptions = ConsumablesInputs.makeMainHandScrollInput(ConsumablesInputs.WEAPON_SCROLL_CONFIG, 'Main-Hand Scroll');
+		const ohScrollOptions = ConsumablesInputs.makeOffHandScrollInput(ConsumablesInputs.WEAPON_SCROLL_CONFIG, 'Off-Hand Scroll');
+
+		const pickers = [
+			buildIconInput(imbuesElem, this.simUI.player, mhImbueOptions),
+			buildIconInput(imbuesElem, this.simUI.player, ohImbueOptions),
+			buildIconInput(imbuesElem, this.simUI.player, mhScrollOptions),
+			buildIconInput(imbuesElem, this.simUI.player, ohScrollOptions),
+		];
 
 		TypedEvent.onAny([this.simUI.player.gearChangeEmitter, this.simUI.player.raceChangeEmitter]).on(() => this.updateRow(row, pickers));
 		this.updateRow(row, pickers);
@@ -149,10 +157,7 @@ export class ConsumesPicker extends Component {
 			relevantStatOptions(ConsumablesInputs.STRENGTH_CONSUMES_CONFIG, this.simUI),
 			'Strength',
 		);
-		const hitConsumableOptions = ConsumablesInputs.makeHitConsumableInput(
-			relevantStatOptions(ConsumablesInputs.HIT_CONSUMABLE_CONFIG, this.simUI),
-			'Hit',
-		);
+		const hitConsumableOptions = ConsumablesInputs.makeHitConsumableInput(relevantStatOptions(ConsumablesInputs.HIT_CONSUMABLE_CONFIG, this.simUI), 'Hit');
 
 		const pickers = [
 			buildIconInput(physicalConsumesElem, this.simUI.player, apBuffOptions),
@@ -200,23 +205,12 @@ export class ConsumesPicker extends Component {
 		const row = this.rootElem.appendChild(fragment.children[0] as HTMLElement);
 		const spellsCnsumesElem = this.rootElem.querySelector('.consumes-spells') as HTMLElement;
 
-		const spBuffOptions = ConsumablesInputs.makeSpellPowerConsumeInput(
-			ConsumablesInputs.SPELL_POWER_CONFIG,
-			'Spell Damage',
-		);
-		const fireBuffOptions = ConsumablesInputs.makeFirePowerConsumeInput(
-			ConsumablesInputs.FIRE_POWER_CONFIG,
-			'Fire Damage',
-		);
-		const frostBuffOptions = ConsumablesInputs.makeFrostPowerConsumeInput(
-			ConsumablesInputs.FROST_POWER_CONFIG,
-			'Frost Damage',
-		);
-		const shadowBuffOptions = ConsumablesInputs.makeShadowPowerConsumeInput(
-			ConsumablesInputs.SHADOW_POWER_CONFIG,
-			'Shadow Damage',
-		);
+		const spBuffOptions = ConsumablesInputs.makeSpellPowerConsumeInput(ConsumablesInputs.SPELL_POWER_CONFIG, 'Spell Damage');
+		const fireBuffOptions = ConsumablesInputs.makeFirePowerConsumeInput(ConsumablesInputs.FIRE_POWER_CONFIG, 'Fire Damage');
+		const frostBuffOptions = ConsumablesInputs.makeFrostPowerConsumeInput(ConsumablesInputs.FROST_POWER_CONFIG, 'Frost Damage');
+		const shadowBuffOptions = ConsumablesInputs.makeShadowPowerConsumeInput(ConsumablesInputs.SHADOW_POWER_CONFIG, 'Shadow Damage');
 		const mp5BuffOptions = ConsumablesInputs.makeMp5ConsumeInput(relevantStatOptions(ConsumablesInputs.MP5_CONFIG, this.simUI), 'Mana Regen');
+		const intellectOptions = ConsumablesInputs.makeIntellectElixirInput(ConsumablesInputs.INTELLECT_ELIXIR_CONFIG, 'Intellect / Spirit');
 
 		const pickers = [
 			buildIconInput(spellsCnsumesElem, this.simUI.player, spBuffOptions),
@@ -224,6 +218,7 @@ export class ConsumesPicker extends Component {
 			buildIconInput(spellsCnsumesElem, this.simUI.player, frostBuffOptions),
 			buildIconInput(spellsCnsumesElem, this.simUI.player, shadowBuffOptions),
 			buildIconInput(spellsCnsumesElem, this.simUI.player, mp5BuffOptions),
+			buildIconInput(spellsCnsumesElem, this.simUI.player, intellectOptions),
 		];
 
 		this.updateRow(row, pickers);

@@ -33,12 +33,15 @@ func builds() []build {
 		{"marksmanship", "Marksmanship", "hunter", "TalentsP1", "p1", "forever_marksmanship", proto.Class_ClassHunter, [3]int{0, 31, 0}, ""},
 		{"survival", "Survival", "hunter", "TalentsSurvival", "survival", "forever_survival", proto.Class_ClassHunter, [3]int{0, 0, 31}, "laceratingStrikes"},
 		{"pet_melee", "Pet/Melee", "hunter", "TalentsPetMelee", "pet_melee", "forever_survival", proto.Class_ClassHunter, [3]int{15, 0, 20}, "summonHawk"},
+		{"survival_weave", "SV Weave", "hunter", "TalentsSurvivalWeave", "survival_weave", "forever_survival", proto.Class_ClassHunter, [3]int{0, 0, 31}, ""},
 		{"arcane", "Arcane", "mage", "TalentsArcane", "forever_arcane", "forever_arcane", proto.Class_ClassMage, [3]int{31, 0, 0}, "arcanePower"},
 		{"fire", "Fire", "mage", "TalentsP1Fire", "forever_fire", "forever_fire", proto.Class_ClassMage, [3]int{0, 31, 0}, "combustion"},
 		{"frost", "Frost", "mage", "TalentsFrost", "forever_frost", "forever_frost", proto.Class_ClassMage, [3]int{0, 0, 30}, "wintersChill"},
 		{"arcane_frost", "Arcane–Frost", "mage", "TalentsArcaneFrost", "forever_arcane_frost", "forever_frost", proto.Class_ClassMage, [3]int{21, 0, 20}, "missileBarrage"},
+		{"frostfire", "Frostfire", "mage", "TalentsFrostfire", "forever_frostfire", "forever_fire", proto.Class_ClassMage, [3]int{0, 21, 21}, ""},
 		{"retribution", "Retribution", "retribution_paladin", "TalentsRetribution", "basic_ret", "forever_retribution", proto.Class_ClassPaladin, [3]int{0, 0, 31}, "twistOfLight"},
 		{"retribution_physical", "Physical Ret", "retribution_paladin", "TalentsPhysicalRetribution", "basic_ret", "forever_retribution", proto.Class_ClassPaladin, [3]int{0, 0, 31}, "twistOfLight"},
+		{"shockadin", "Shockadin", "retribution_paladin", "TalentsShockadin", "shockadin", "forever_retribution", proto.Class_ClassPaladin, [3]int{21, 0, 21}, "holyShock"},
 		{"shadow", "Shadow", "shadow_priest", "TalentsP1Shadow", "p1", "forever_shadow", proto.Class_ClassPriest, [3]int{0, 0, 31}, "shadowform"},
 		{"smite", "Smite", "smite_priest", "TalentsSmite", "launch", "forever_smite", proto.Class_ClassPriest, [3]int{0, 15, 0}, "searingLight"},
 		{"combat", "Combat", "rogue", "CombatSinisterStrikeTalents", "combat_sinister_strike_sweaty", "forever_combat", proto.Class_ClassRogue, [3]int{0, 31, 0}, "adrenalineRush"},
@@ -62,15 +65,17 @@ func builds() []build {
 // Talent identity and rotation remain specific to the hybrid.
 func (b build) modelKey() string {
 	switch b.Key {
-	case "pet_melee":
+	case "pet_melee", "survival_weave":
 		return "survival"
 	case "arcane_frost":
 		return "frost"
+	case "frostfire":
+		return "fire"
 	case "fury_2h":
 		return "arms"
 	case "fury_sunder":
 		return "fury"
-	case "retribution_physical":
+	case "retribution_physical", "shockadin":
 		return "retribution"
 	default:
 		return b.Key
@@ -159,6 +164,11 @@ func (b build) player(race proto.Race) *proto.Player {
 			PetType: proto.Hunter_Options_Cat, PetUptime: 1, PetAttackSpeed: proto.Hunter_Options_OneTwo,
 		}}})
 		if b.modelKey() == "marksmanship" {
+			p.GetHunter().Options.PetType = proto.Hunter_Options_PetNone
+		}
+		if b.Key == "survival_weave" {
+			// The weave starts at Auto Shot range with no pet (wowsims/forever and MythicSim SV Weave presets).
+			p.DistanceFromTarget = 12
 			p.GetHunter().Options.PetType = proto.Hunter_Options_PetNone
 		}
 	case "arcane", "fire", "frost":
@@ -254,7 +264,7 @@ func (b build) consumes(race proto.Race) *proto.Consumes {
 		c.ZanzaBuff, c.Food = proto.ZanzaBuff_ROIDS, proto.Food_FoodBlessSunfruit
 		c.FirePowerBuff, c.FrostPowerBuff = proto.FirePowerBuff_ElixirOfFirepower, proto.FrostPowerBuff_FrostPowerBuffUnknown
 		c.DragonBreathChili = true
-		c.MainHandImbue = proto.WeaponImbue_ElementalSharpeningStone
+		c.MainHandImbue = proto.WeaponImbue_DenseSharpeningStone
 		if physicalRet {
 			c.Flask = proto.Flask_FlaskUnknown
 			c.SpellPowerBuff = proto.SpellPowerBuff_SpellPowerBuffUnknown
@@ -265,7 +275,7 @@ func (b build) consumes(race proto.Race) *proto.Consumes {
 		// Forever Hunter shots scale with ranged attack power, not spell power; mana is the
 		// remaining flask benefit (October 11: BM/MM +1.9%/+2.4% over Supreme Power).
 		c.Flask, c.SpellPowerBuff = proto.Flask_FlaskOfDistilledWisdom, proto.SpellPowerBuff_SpellPowerBuffUnknown
-		c.MainHandImbue, c.OffHandImbue = proto.WeaponImbue_ElementalSharpeningStone, proto.WeaponImbue_ElementalSharpeningStone
+		c.MainHandImbue, c.OffHandImbue = proto.WeaponImbue_DenseSharpeningStone, proto.WeaponImbue_DenseSharpeningStone
 	case "feral":
 		c.Flask = proto.Flask_FlaskOfDistilledWisdom
 		c.SpellPowerBuff, c.ManaRegenElixir = 0, 0
@@ -273,14 +283,14 @@ func (b build) consumes(race proto.Race) *proto.Consumes {
 		c.DragonBreathChili = true
 	case "combat", "mutilate", "subtlety":
 		c.DefaultPotion, c.DefaultConjured, c.ManaRegenElixir = 0, proto.Conjured_ConjuredRogueThistleTea, 0
-		c.MainHandImbue, c.OffHandImbue = proto.WeaponImbue_ShadowOil, proto.WeaponImbue_ElementalSharpeningStone
+		c.MainHandImbue, c.OffHandImbue = proto.WeaponImbue_ShadowOil, proto.WeaponImbue_DenseSharpeningStone
 		c.DragonBreathChili, c.SapperExplosive = true, proto.SapperExplosive_SapperGoblinSapper
 	case "fury", "arms":
 		c.Flask, c.SpellPowerBuff, c.ManaRegenElixir = 0, 0, 0
 		c.Food, c.ZanzaBuff = proto.Food_FoodSmokedDesertDumpling, proto.ZanzaBuff_ROIDS
 		c.ArmorElixir, c.HealthElixir, c.Alcohol = proto.ArmorElixir_ElixirOfSuperiorDefense, proto.HealthElixir_ElixirOfFortitude, proto.Alcohol_AlcoholRumseyRumBlackLabel
 		c.DefaultPotion = proto.Potions_MightyRagePotion
-		c.MainHandImbue, c.OffHandImbue = proto.WeaponImbue_ElementalSharpeningStone, proto.WeaponImbue_ElementalSharpeningStone
+		c.MainHandImbue, c.OffHandImbue = proto.WeaponImbue_DenseSharpeningStone, proto.WeaponImbue_DenseSharpeningStone
 		c.DragonBreathChili, c.SapperExplosive = true, proto.SapperExplosive_SapperGoblinSapper
 		if b.Key == "arms" {
 			c.OffHandImbue = proto.WeaponImbue_WeaponImbueUnknown

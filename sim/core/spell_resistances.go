@@ -1,6 +1,8 @@
 package core
 
 import (
+	"math"
+
 	"github.com/wowsims/classic/sim/core/stats"
 )
 
@@ -33,6 +35,13 @@ func (spell *Spell) ResistanceMultiplier(sim *Simulation, isPeriodic bool, attac
 	}
 
 	// Magical resistance.
+	if attackTable.Attacker.Env != nil && attackTable.Attacker.Env.IsForever() {
+		if spell.Flags.Matches(SpellFlagNoPartialResist) {
+			return 1, OutcomeEmpty
+		}
+		return attackTable.Defender.foreverPartialResist(sim, spell, attackTable.Attacker, isPeriodic && !spell.Flags.Matches(SpellFlagChanneled))
+	}
+
 	if spell.Flags.Matches(SpellFlagBinary) {
 		return 1, OutcomeEmpty
 	}
@@ -165,8 +174,98 @@ func (unit *Unit) resistCoeff(spell *Spell, attacker *Unit, binary bool, pureDot
 }
 
 func (unit *Unit) binaryHitChance(spell *Spell, attacker *Unit) float64 {
+	if attacker.Env != nil && attacker.Env.IsForever() {
+		// A binary spell is resisted in full at the average resist (wowsims/forever #293).
+		return 1 - max(0, unit.foreverAverageResist(spell, attacker, false))
+	}
 	resistCoeff := unit.resistCoeff(spell, attacker, true, false)
 	return 1 - 0.75*resistCoeff
+}
+
+// ForeverResistanceConstant is K in a spell's average resist R / (|R| + K), per caster level. Forever
+// combat logs with fixed Spell Piercing at caster levels 20-30 fit 9L (wowsims/forever #436); the logs
+// show no level-based resist against higher-level targets at any gap (#350).
+const ForeverResistanceConstant = 9
+
+// foreverAverageResist is the average share of a magic hit resisted. R is the target's resistance, which
+// stops at 0 (a debuff that lowers it further adds nothing), less the caster's Spell Piercing; piercing past
+// the resistance makes R negative and adds damage (#293). A DoT tick, channels aside, reads a tenth of the
+// share (#288).
+func (unit *Unit) foreverAverageResist(spell *Spell, attacker *Unit, tick bool) float64 {
+	if spell.SchoolIndex <= stats.SchoolIndexPhysical {
+		return 0
+	}
+	var resistance float64
+	if spell.SchoolIndex.IsMultiSchool() {
+		resistance = 1000.0
+		for _, baseSchoolIndex := range spell.SchoolBaseIndices {
+			resistance = min(resistance, unit.GetResistanceForSchool(baseSchoolIndex))
+		}
+	} else {
+		resistance = unit.GetResistanceForSchool(spell.SchoolIndex)
+	}
+	resistance = max(0, resistance) - attacker.stats[stats.SpellPenetration]
+	k := ForeverResistanceConstant * float64(attacker.Level)
+	if k <= 0 {
+		return 0
+	}
+	average := resistance / (math.Abs(resistance) + k)
+	if tick {
+		average /= 10
+	}
+	return average
+}
+
+// foreverPartialResist rolls a magic hit's partial resist in 10% steps (Forever logs: every partial on
+// a 10% step, never 25/50/75). From an average a of 0.1 or more the steps follow the triangle
+// P(x) = 0.5 - 2.5|x - a|; below it the roll is [1 - 7.5a, 5a, 2.5a] over 0/10/20%. A negative a
+// (Spell Piercing past the target's resistance) is the same roll with the steps adding damage.
+func (unit *Unit) foreverPartialResist(sim *Simulation, spell *Spell, attacker *Unit, tick bool) (float64, HitOutcome) {
+	a := unit.foreverAverageResist(spell, attacker, tick)
+	if a == 0 {
+		return 1, OutcomeEmpty
+	}
+	sign := 1.0
+	if a < 0 {
+		sign, a = -1, -a
+	}
+	a = min(a, 1)
+	roll := sim.RandomFloat("Partial Resist")
+	steps := 0
+	if a < 0.1 {
+		switch {
+		case roll < 2.5*a:
+			steps = 2
+		case roll < 7.5*a:
+			steps = 1
+		}
+	} else {
+		cumulative := 0.0
+		for k := 0; k <= 10; k++ {
+			x := 0.1 * float64(k)
+			cumulative += max(0, 0.5-2.5*math.Abs(x-a))
+			if roll < cumulative {
+				steps = k
+				break
+			}
+			steps = k
+		}
+	}
+	if steps == 0 {
+		return 1, OutcomeEmpty
+	}
+	multiplier := 1 - sign*0.1*float64(steps)
+	if sign < 0 {
+		return multiplier, OutcomeEmpty
+	}
+	switch {
+	case steps <= 3:
+		return multiplier, OutcomePartial1_4
+	case steps <= 6:
+		return multiplier, OutcomePartial2_4
+	default:
+		return multiplier, OutcomePartial3_4
+	}
 }
 
 // Roll threshold for each type of partial resist.

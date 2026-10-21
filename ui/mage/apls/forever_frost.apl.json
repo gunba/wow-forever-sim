@@ -6,6 +6,6 @@
 	{"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpLt","lhs":{"currentManaPercent":{}},"rhs":{"const":{"val":"15%"}}}},{"cmp":{"op":"OpGt","lhs":{"remainingTime":{}},"rhs":{"const":{"val":"25s"}}}}]}},"castSpell":{"spellId":{"spellId":12051}}}},
 	{"action":{"condition":{"auraIsActive":{"auraId":{"spellId":44543}}},"castSpell":{"spellId":{"spellId":30455}}}},
 	{"action":{"castSpell":{"spellId":{"spellId":10161}},"condition":{"cmp":{"op":"OpGe","lhs":{"auraNumStacks":{"auraId":{"spellId":12579}}},"rhs":{"const":{"val":"5"}}}}}},
-	{"action":{"castSpell":{"spellId":{"spellId":25304,"rank":11}}}}
+	{"action":{"castSpell":{"spellId":{"spellId":10181,"rank":11}}}}
 	]
 }

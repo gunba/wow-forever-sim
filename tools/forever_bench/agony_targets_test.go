@@ -19,7 +19,7 @@ func TestAgonyRampRetainsEachTargetsAmplifyBonus(t *testing.T) {
 	s.Options.Interactive = true
 	s.Reset()
 	w := s.Raid.Parties[0].Players[0].(warlock.WarlockAgent).GetWarlock()
-	spell := w.BaneOfAgony[len(w.BaneOfAgony)-1]
+	spell := topRank(w.BaneOfAgony)
 	targets := s.Encounter.TargetUnits
 	dots := []*core.Dot{spell.Dot(targets[0]), spell.Dot(targets[1])}
 	w.AmplifyCurseAura.Activate(s)

@@ -126,6 +126,10 @@ type Warrior struct {
 }
 
 // rank is the ability's trained rank for this character, or nil when it is not trained.
+func init() {
+	ranks.IncludeBookRanks = core.IncludeAQ
+}
+
 func (warrior *Warrior) rank(a ranks.Ability) *ranks.Rank {
 	return warrior.Ranks.Rank(a)
 }

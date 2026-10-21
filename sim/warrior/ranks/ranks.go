@@ -99,10 +99,20 @@ const (
 // All returns every rank of an ability, lowest first.
 func All(a Ability) []Rank { return generated[a] }
 
+// BookRanks are the ranks only an Ahn'Qiraj book teaches: Heroic Strike 9, Revenge 6 and Battle Shout 7.
+// Forever's trainers stop a rank short and the books need raids (see core.IncludeAQ).
+var BookRanks = map[int32]bool{25286: true, 25288: true, 25289: true}
+
+// IncludeBookRanks lets AtLevel return a book rank. It follows core.IncludeAQ.
+var IncludeBookRanks = false
+
 // AtLevel is the highest rank a character of this level can have trained, or nil.
 func AtLevel(a Ability, level int32) *Rank {
 	rs := generated[a]
 	for i := len(rs) - 1; i >= 0; i-- {
+		if BookRanks[rs[i].ID] && !IncludeBookRanks {
+			continue
+		}
 		if rs[i].Level <= level {
 			return &rs[i]
 		}

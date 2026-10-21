@@ -128,8 +128,8 @@ func TestForeverProjectileSpeeds(t *testing.T) {
 		key    string
 		speeds map[int32]float64
 	}{
-		{"marksmanship", map[int32]float64{20904: 40, 14287: 40, 2643: 30, 25295: 40, 1310786: 60}},
-		{"destruction", map[int32]float64{686: 20, 25307: 20, 1293813: 20}},
+		{"marksmanship", map[int32]float64{20904: 40, 14287: 40, 2643: 30, 13555: 40, 1310786: 60}},
+		{"destruction", map[int32]float64{686: 20, 11661: 20, 1293813: 20}},
 	} {
 		t.Run(tc.key, func(t *testing.T) {
 			req := racialFixture(tc.key, proto.Race_RaceOrc)
@@ -358,7 +358,7 @@ func TestWarlockRanksShareCooldowns(t *testing.T) {
 		sim.Reset()
 		unit := sim.Raid.AllPlayerUnits[0]
 		target := sim.Encounter.TargetUnits[0]
-		unit.GetSpell(core.ActionID{SpellID: 25309}).Dot(target).Apply(sim)
+		unit.GetSpell(core.ActionID{SpellID: 11668}).Dot(target).Apply(sim)
 		highest := unit.GetSpell(core.ActionID{SpellID: ids[len(ids)-1]})
 		if highest == nil || !highest.Cast(sim, target) {
 			t.Fatalf("could not cast highest rank in %v", ids)
@@ -395,7 +395,7 @@ func TestDecimationDamageFollowsExecutePhase(t *testing.T) {
 	sim.Options.Interactive = true
 	sim.Reset()
 	unit := sim.Raid.AllPlayerUnits[0]
-	bolt := unit.GetSpell(core.ActionID{SpellID: 25307})
+	bolt := unit.GetSpell(core.ActionID{SpellID: 11661})
 	pain := unit.GetSpell(core.ActionID{SpellID: 17923})
 	soul := unit.GetSpell(core.ActionID{SpellID: 17924})
 	proc := unit.GetAura("Decimation")

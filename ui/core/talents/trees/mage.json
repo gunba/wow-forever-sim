@@ -1017,14 +1017,16 @@
         "maxPoints": 2,
         "name": "Frost Warding",
         "icon": "spell_frost_frostward",
-        "description": "Increases the Armor and resistance given by your Frost Armor and Ice Armor spells by {0}%. In addition, gives your Frost Ward a {1}% chance to reflect Frost spells and effects while active.",
+        "description": "Increases the Armor and resistances granted by your Frost Armor and Ice Armor spells by {0}%, gives your Frost Ward a {1}% chance to negate the warded damage spell, and increases the amount absorbed by your Ice Barrier and Frost Ward by {2}%.",
         "ranks": [
           [
             15,
+            10,
             10
           ],
           [
             30,
+            20,
             20
           ]
         ],
@@ -1074,29 +1076,21 @@
         "spellIds": [
           29438,
           29439,
-          29440,
-          0,
-          0
+          29440
         ],
-        "maxPoints": 5,
+        "maxPoints": 3,
         "name": "Elemental Precision",
         "icon": "spell_ice_magicdamage",
         "description": "Improves your chance to hit with Frost and Fire spells by {0}%.",
         "ranks": [
           [
-            1
-          ],
-          [
             2
-          ],
-          [
-            3
           ],
           [
             4
           ],
           [
-            5
+            6
           ]
         ]
       },
@@ -1136,32 +1130,29 @@
         ]
       },
       {
-        "fieldName": "permafrost",
+        "fieldName": "frostbite",
         "location": {
           "rowIdx": 1,
           "colIdx": 1
         },
         "spellIds": [
-          11175,
-          12569,
-          12571
+          11071,
+          12496,
+          12497
         ],
         "maxPoints": 3,
-        "name": "Permafrost",
-        "icon": "spell_frost_wisp",
-        "description": "Increases the duration of your Chill effects by {0}% and reduces the target's speed by an additional {1}%.",
+        "name": "Frostbite",
+        "icon": "spell_frost_frostarmor",
+        "description": "Gives your Chill effects a {0}% chance to Freeze the target for 5 sec.",
         "ranks": [
           [
-            11,
-            3
+            5
           ],
           [
-            22,
-            7
-          ],
-          [
-            33,
             10
+          ],
+          [
+            15
           ]
         ],
         "notSimulated": true
@@ -1191,65 +1182,41 @@
         "notSimulated": true
       },
       {
-        "fieldName": "frostbite",
+        "fieldName": "permafrost",
         "location": {
           "rowIdx": 1,
           "colIdx": 3
         },
         "spellIds": [
-          11071,
-          12496,
-          12497
+          11175,
+          12569,
+          12571
         ],
         "maxPoints": 3,
-        "name": "Frostbite",
-        "icon": "spell_frost_frostarmor",
-        "description": "Gives your Chill effects a {0}% chance to Freeze the target for 5 sec.",
+        "name": "Permafrost",
+        "icon": "spell_frost_wisp",
+        "description": "Increases the duration of your Chill effects by {0}% and reduces the target's speed by an additional {1}%.",
         "ranks": [
           [
-            5
+            11,
+            3
           ],
           [
+            22,
+            7
+          ],
+          [
+            33,
             10
-          ],
-          [
-            15
           ]
         ],
         "notSimulated": true
       },
       {
-        "fieldName": "piercingIce",
-        "location": {
-          "rowIdx": 2,
-          "colIdx": 0
-        },
-        "spellIds": [
-          11151,
-          12952,
-          12953
-        ],
-        "maxPoints": 3,
-        "name": "Piercing Ice",
-        "icon": "spell_frost_frostbolt",
-        "description": "Increases the damage done by your Frost spells by {0}%.",
-        "ranks": [
-          [
-            2
-          ],
-          [
-            4
-          ],
-          [
-            6
-          ]
-        ]
-      },
-      {
         "fieldName": "frostChanneling",
         "location": {
           "rowIdx": 2,
-          "colIdx": 1
+          "colIdx": 0
         },
         "spellIds": [
           11160,
@@ -1276,30 +1243,10 @@
         ]
       },
       {
-        "fieldName": "iceLance",
-        "location": {
-          "rowIdx": 2,
-          "colIdx": 2
-        },
-        "spellIds": [
-          30455
-        ],
-        "maxPoints": 1,
-        "name": "Ice Lance",
-        "icon": "spell_frost_frostblast",
-        "description": "Deals {0} Frost damage to an enemy target. Deals {1}% increased damage to Frozen targets.",
-        "ranks": [
-          [
-            28,
-            200
-          ]
-        ]
-      },
-      {
         "fieldName": "improvedBlizzard",
         "location": {
           "rowIdx": 2,
-          "colIdx": 3
+          "colIdx": 1
         },
         "spellIds": [
           11185,
@@ -1319,6 +1266,26 @@
           ],
           [
             40
+          ]
+        ]
+      },
+      {
+        "fieldName": "iceLance",
+        "location": {
+          "rowIdx": 2,
+          "colIdx": 2
+        },
+        "spellIds": [
+          30455
+        ],
+        "maxPoints": 1,
+        "name": "Ice Lance",
+        "icon": "spell_frost_frostblast",
+        "description": "Deals {0} Frost damage to an enemy target. Deals {1}% increased damage to Frozen targets.",
+        "ranks": [
+          [
+            28,
+            200
           ]
         ]
       },
@@ -1485,23 +1452,23 @@
         "maxPoints": 5,
         "name": "Winter's Chill",
         "icon": "spell_frost_chillingblast",
-        "description": "Gives your Frost damage spells a {0}% chance to apply the Winter's Chill effect, which increases the damage done by your next Cone of Cold spell to the target by 40%, stacking up to {1} times.",
+        "description": "Gives your Frostbolt, Frost Blast, and Fingers of Frost empowered Ice Lance spells a {0}% chance to apply Winter's Chill, increasing the target's damage taken from your next Cone of Cold by 5% and it gains an additional 7% of your spell damage, stacking up to {1} times.",
         "ranks": [
           [
             20,
-            5
+            1
           ],
           [
             40,
-            5
+            2
           ],
           [
             60,
-            5
+            3
           ],
           [
             80,
-            5
+            4
           ],
           [
             100,
@@ -1525,14 +1492,13 @@
         "maxPoints": 1,
         "name": "Ice Barrier",
         "icon": "spell_ice_lament",
-        "description": "Instantly shields you, absorbing {0} damage. Lasts {1} min. While the shield holds, your spellcasts will not be interrupted or delayed from taking damage.",
+        "description": "Shield yourself, absorbing {0} damage and increasing your Frost damage by 3% for {1} min. While shielded, your Frost damage is increased by an additional 3% and you do not lose casting time when you take damage.",
         "ranks": [
           [
             431,
             1
           ]
-        ],
-        "notSimulated": true
+        ]
       }
     ]
   }

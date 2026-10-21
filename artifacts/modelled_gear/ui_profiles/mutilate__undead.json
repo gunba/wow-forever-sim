@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "1793400001",
+    "fixedRngSeed": "1793500001",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Horde",
@@ -124,18 +124,21 @@
     },
     "consumes": {
       "flask": "FlaskOfSupremePower",
-      "food": "FoodGrilledSquid",
+      "food": "FoodSwiftstrikeSteak",
       "agilityElixir": "ElixirOfTheMongoose",
-      "strengthBuff": "JujuPower",
+      "strengthBuff": "ElixirOfFerocity",
       "attackPowerBuff": "JujuMight",
       "spellPowerBuff": "GreaterArcaneElixir",
       "fillerExplosive": "ExplosiveThoriumGrenade",
       "mainHandImbue": "ShadowOil",
-      "offHandImbue": "ElementalSharpeningStone",
+      "offHandImbue": "DenseSharpeningStone",
+      "defaultPotion": "MajorFrenzyPotion",
       "defaultConjured": "ConjuredRogueThistleTea",
       "dragonBreathChili": true,
       "zanzaBuff": "GroundScorpokAssay",
-      "sapperExplosive": "SapperGoblinSapper"
+      "sapperExplosive": "SapperGoblinSapper",
+      "mainHandScroll": "ScrollOfImbuePrecision",
+      "offHandScroll": "ScrollOfImbuePrecision"
     },
     "bonusStats": {
       "stats": [
@@ -394,7 +397,7 @@
             },
             "castSpell": {
               "spellId": {
-                "spellId": 31016
+                "spellId": 11300
               }
             }
           }

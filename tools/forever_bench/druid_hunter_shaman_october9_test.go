@@ -257,6 +257,8 @@ func TestOctober9FireNovaFreshClearcasting(t *testing.T) {
 	nova := s.FireNova[1]
 	for i := 0; i < 100 && !s.ClearcastingAura.IsActive(); i++ {
 		sim.CurrentTime += 2 * time.Second
+		// Keep the totem standing however long the 10% proc takes.
+		s.SearingTotem[6].ApplyEffects(sim, target, s.SearingTotem[6])
 		nova.CD.Timer.Set(sim.CurrentTime)
 		s.GCD.Set(sim.CurrentTime)
 		s.AddMana(sim, s.MaxMana(), s.NewManaMetrics(core.ActionID{SpellID: 16246}))

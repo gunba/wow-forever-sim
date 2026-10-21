@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "1793400001",
+    "fixedRngSeed": "1793500001",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Horde",
@@ -125,7 +125,7 @@
       "strengthBuff": "JujuPower",
       "attackPowerBuff": "JujuMight",
       "fillerExplosive": "ExplosiveThoriumGrenade",
-      "mainHandImbue": "ElementalSharpeningStone",
+      "mainHandImbue": "DenseSharpeningStone",
       "defaultPotion": "MightyRagePotion",
       "defaultConjured": "ConjuredDemonicRune",
       "dragonBreathChili": true,
@@ -133,7 +133,8 @@
       "armorElixir": "ElixirOfSuperiorDefense",
       "healthElixir": "ElixirOfFortitude",
       "alcohol": "AlcoholRumseyRumBlackLabel",
-      "sapperExplosive": "SapperGoblinSapper"
+      "sapperExplosive": "SapperGoblinSapper",
+      "mainHandScroll": "ScrollOfImbuePrecision"
     },
     "bonusStats": {
       "stats": [
@@ -373,7 +374,7 @@
             },
             "castSpell": {
               "spellId": {
-                "spellId": 25286,
+                "spellId": 11567,
                 "tag": 1
               }
             }

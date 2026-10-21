@@ -190,7 +190,7 @@ func TestOctober9FireballLowRankDot(t *testing.T) {
 			id    int32
 			ticks int32
 			total float64
-		}{{133, 2, 2}, {143, 3, 3}, {145, 3, 6}, {3140, 4, 12}, {25306, 4, 60}} {
+		}{{133, 2, 2}, {143, 3, 3}, {145, 3, 6}, {3140, 4, 12}, {core.TernaryInt32(core.IncludeAQ, 25306, 10151), 4, core.TernaryFloat64(core.IncludeAQ, 60, 56)}} {
 			t.Run(fmt.Sprintf("%v/%d", ruleset, row.id), func(t *testing.T) {
 				req := historyTalentFixture("arcane", nil)
 				p := req.Raid.Parties[0].Players[0]

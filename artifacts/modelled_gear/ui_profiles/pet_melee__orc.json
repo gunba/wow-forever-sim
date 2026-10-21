@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "1793400001",
+    "fixedRngSeed": "1793500001",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Horde",
@@ -123,18 +123,21 @@
     },
     "consumes": {
       "flask": "FlaskOfDistilledWisdom",
-      "food": "FoodSmokedDesertDumpling",
-      "agilityElixir": "ElixirOfTheMongoose",
+      "food": "FoodSwiftstrikeSteak",
+      "agilityElixir": "ElixirOfCunning",
       "manaRegenElixir": "MagebloodPotion",
-      "strengthBuff": "JujuPower",
+      "strengthBuff": "ElixirOfFerocity",
       "attackPowerBuff": "JujuMight",
       "fillerExplosive": "ExplosiveThoriumGrenade",
-      "mainHandImbue": "ElementalSharpeningStone",
-      "offHandImbue": "ElementalSharpeningStone",
-      "defaultPotion": "MajorManaPotion",
+      "mainHandImbue": "DenseSharpeningStone",
+      "offHandImbue": "DenseWeightstone",
+      "defaultPotion": "MajorFrenzyPotion",
       "defaultConjured": "ConjuredDemonicRune",
       "zanzaBuff": "GroundScorpokAssay",
-      "sapperExplosive": "SapperGoblinSapper"
+      "sapperExplosive": "SapperGoblinSapper",
+      "intellectElixir": "ElixirOfTheOwl",
+      "mainHandScroll": "ScrollOfImbuePrecision",
+      "offHandScroll": "ScrollOfImbuePrecision"
     },
     "bonusStats": {
       "stats": [

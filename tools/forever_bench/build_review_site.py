@@ -19,6 +19,7 @@ SIM_PATHS = {
     "elemental": "elemental_shaman", "stormcaller": "elemental_shaman",
     "enhancement": "enhancement_shaman", "retribution": "retribution_paladin",
     "retribution_physical": "retribution_paladin",
+    "shockadin": "retribution_paladin",
     "fury_sunder": "warrior",
     "shadow": "shadow_priest", "smite": "smite_priest",
     "tank_warrior": "tank_warrior",
@@ -96,13 +97,13 @@ def main():
         shutil.copyfile(args.results.with_suffix("." + extension), args.output / ("results." + extension))
     for name in ("build_reviews.md", "build_updates.md", "gear_updates.md", "in_game_checks.md", "check_dispositions.md", "spell_coverage.md", "windfury.md", "energy_audit.md", "auto_attack_audit.md", "crit_model.md", "forever_gear_data.md", "mechanics_review.md", "history_review.md", "upstream-forever-review-2026-09-23.md", "upstream-forever-followup-2026-09-23.md", "mana_regeneration.md", "mythicsim_review.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
-    for name in ("weekly_review.md", "weekly_review_commits.csv", "flurry_review.md", "upstream_elliot_review.md", "tank_benchmark.md", "tank_selection.md", "paladin_mana.md", "protection_queue.md", "tank_support.md", "protection_sunder.md", "forever-70009.md", "october-1-corrections.md", "october-8-review.md", "october-8-overnight-update.md", "october-11-audit.md", "october-11-log-audit.md", "october-15-update.md", "october-16-follow-up.md", "beta-test-procedures.md"):
+    for name in ("weekly_review.md", "weekly_review_commits.csv", "flurry_review.md", "upstream_elliot_review.md", "tank_benchmark.md", "tank_selection.md", "paladin_mana.md", "protection_queue.md", "tank_support.md", "protection_sunder.md", "forever-70009.md", "october-1-corrections.md", "october-8-review.md", "october-8-overnight-update.md", "october-11-audit.md", "october-11-log-audit.md", "october-15-update.md", "october-16-follow-up.md", "october-21-update.md", "beta-test-procedures.md"):
         shutil.copyfile(Path("docs") / name, args.output / name)
     # The source report uses repository-relative links. Stage its current
     # downloads under the review portal, without stale or nonexistent paths.
     for report in (args.output / "october-8-overnight-update.md", args.output / "october-11-audit.md",
                    args.output / "october-11-log-audit.md", args.output / "october-15-update.md",
-                   args.output / "october-16-follow-up.md"):
+                   args.output / "october-16-follow-up.md", args.output / "october-21-update.md"):
         report_text = report.read_text()
         for source, target in {
             "../artifacts/modelled_gear/forever_dps_5min.png": "results.png",
@@ -266,7 +267,7 @@ th span{font-weight:400}.unavailable{color:#68707e}td a{color:inherit}
 These are tested profiles, not proven global optima or measured class balance.</p>
 <nav class="links" aria-label="Benchmark navigation"><a href="#matrix">DPS matrix</a>
 <a href="#questions">Questions &amp; coverage</a><a href="results.png">Chart</a>
-<a href="october-16-follow-up.md">Current October 16 follow-up</a><a href="october-15-update.md">October 15 update</a><a href="october-11-log-audit.md">October 11 log audit</a><a href="october-11-audit.md">October 11 audit</a><a href="beta-test-procedures.md">Beta test procedures</a><a href="october-8-overnight-update.md">Earlier 70291 update</a>
+<a href="october-21-update.md">Current October 21 update</a><a href="october-16-follow-up.md">October 16 follow-up</a><a href="october-15-update.md">October 15 update</a><a href="october-11-log-audit.md">October 11 log audit</a><a href="october-11-audit.md">October 11 audit</a><a href="beta-test-procedures.md">Beta test procedures</a><a href="october-8-overnight-update.md">Earlier 70291 update</a>
 <a href="""" + build_review + """">Build details</a></nav>
 """ + questions_html(register) + """
 <details class="resource-group"><summary>Method, gear and gain columns</summary>
@@ -294,7 +295,7 @@ This is finite-range curvature, not proof of exponential growth, isolated synerg
 <nav class="links"><a href="correctness_release.md">Correctness review</a>
 <a href="correctness_workplan.md">Implementation ledger</a>
 <a href="question_review/correctness_followup.json">Feature coverage</a>
-<a href="correctness/tank_checks.json.gz">Current tank requests/results</a><a href="correctness/october_15/selection-evidence.json">October 15 selection evidence</a><a href="correctness/october_11_logs/selection-evidence.json">October 11 log-audit selection evidence</a><a href="correctness/october_11/selection-evidence.json">October 11 selection evidence</a><a href="correctness/october_9/tank-default-checks.json.gz">70291 tank default checks</a><a href="correctness/october_9/selection-evidence.json">70291 selection and model evidence</a>
+<a href="correctness/tank_checks.json.gz">Current tank requests/results</a><a href="correctness/october_21/comparison.json">October 21 comparison</a><a href="correctness/october_21/selection-evidence.json">October 21 selection evidence</a><a href="correctness/october_15/selection-evidence.json">October 15 selection evidence</a><a href="correctness/october_11_logs/selection-evidence.json">October 11 log-audit selection evidence</a><a href="correctness/october_11/selection-evidence.json">October 11 selection evidence</a><a href="correctness/october_9/tank-default-checks.json.gz">70291 tank default checks</a><a href="correctness/october_9/selection-evidence.json">70291 selection and model evidence</a>
 <a href="correctness/october_8/selection-evidence.json">October 8 selection evidence</a>
 <a href="correctness/october_8/before.json.gz">Superseded October 2 release</a>
 <a href="october_1/comparison.json">October 1 profile changes</a>

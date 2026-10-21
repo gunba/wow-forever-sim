@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "1793400001",
+    "fixedRngSeed": "1793500001",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Alliance",
@@ -120,8 +120,8 @@
     },
     "consumes": {
       "flask": "FlaskOfSupremePower",
-      "food": "FoodBlessSunfruit",
-      "agilityElixir": "ElixirOfTheMongoose",
+      "food": "FoodSmokedDesertDumpling",
+      "agilityElixir": "ElixirOfCunning",
       "manaRegenElixir": "MagebloodPotion",
       "strengthBuff": "JujuPower",
       "attackPowerBuff": "JujuMight",
@@ -133,7 +133,9 @@
       "defaultConjured": "ConjuredDemonicRune",
       "dragonBreathChili": true,
       "zanzaBuff": "ROIDS",
-      "sapperExplosive": "SapperGoblinSapper"
+      "sapperExplosive": "SapperGoblinSapper",
+      "intellectElixir": "ElixirOfTheOwl",
+      "mainHandScroll": "ScrollOfImbuePrecision"
     },
     "bonusStats": {
       "stats": [

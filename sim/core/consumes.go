@@ -26,6 +26,8 @@ func applyConsumeEffects(agent Agent) {
 	applyZanzaBuffConsumes(character, consumes)
 	applyHitConsumableConsumes(character, consumes)
 	applyMiscConsumes(character, consumes.MiscConsumes)
+	applyForeverElixirConsumes(character, consumes)
+	applyWeaponScrollConsumes(character, consumes)
 
 	registerPotionCD(agent, consumes)
 	registerConjuredCD(agent, consumes)
@@ -339,6 +341,12 @@ func applyFoodConsumes(character *Character, consumes *proto.Consumes) {
 			character.AddStats(stats.Stats{
 				stats.Strength: 20,
 			})
+		case proto.Food_FoodSwiftstrikeSteak:
+			// Nutritious Food 1248399 supplies 20 to Well Fed 1248420 (Agility).
+			character.AddStat(stats.Agility, 20)
+		case proto.Food_FoodPrehistoricPulledRaptor:
+			// Nutritious Food 1248400 supplies 20 to Well Fed 1248421 (Intellect).
+			character.AddStat(stats.Intellect, 20)
 		case proto.Food_FoodNightfinSoup:
 			if character.Env.IsForever() {
 				// Nutritious Food 1249513 supplies 22 to Well Fed 1249520.
@@ -503,8 +511,17 @@ func applyPhysicalBuffConsumes(character *Character, consumes *proto.Consumes) {
 		switch consumes.AgilityElixir {
 		case proto.AgilityElixir_ElixirOfTheMongoose:
 			character.AddStats(stats.Stats{
+				stats.Agility: 25,
+			})
+			if !character.Env.IsForever() {
+				character.AddStats(stats.Stats{
+					stats.MeleeCrit: 2 * CritRatingPerCritChance,
+				})
+			}
+		case proto.AgilityElixir_ElixirOfCunning:
+			character.AddStats(stats.Stats{
 				stats.Agility:   25,
-				stats.MeleeCrit: 2 * CritRatingPerCritChance,
+				stats.Intellect: 25,
 			})
 		case proto.AgilityElixir_ElixirOfGreaterAgility:
 			character.AddStats(stats.Stats{
@@ -539,6 +556,15 @@ func applyPhysicalBuffConsumes(character *Character, consumes *proto.Consumes) {
 			})
 		case proto.StrengthBuff_ScrollOfStrength:
 			character.AddStats(BuffSpellValues[ScrollOfStrength])
+		case proto.StrengthBuff_ElixirOfTheGrizzly:
+			character.AddStats(stats.Stats{
+				stats.Strength: 25,
+			})
+		case proto.StrengthBuff_ElixirOfFerocity:
+			character.AddStats(stats.Stats{
+				stats.Strength: 18,
+				stats.Agility:  18,
+			})
 		}
 	}
 }
@@ -1245,6 +1271,10 @@ func makePotionActivationInternal(potionType proto.Potions, character *Character
 
 	case proto.Potions_MagicResistancePotion:
 		return makeMagicResistancePotionMCD(character, potionCD)
+	case proto.Potions_MajorSpellblastingPotion:
+		return makeStatPotionMCD(character, potionCD, 250937, "Major Spellblasting Potion", stats.Stats{stats.SpellDamage: 47})
+	case proto.Potions_MajorFrenzyPotion:
+		return makeStatPotionMCD(character, potionCD, 250943, "Major Frenzy Potion", stats.Stats{stats.AttackPower: 80, stats.RangedAttackPower: 80})
 	// case proto.Potions_GreaterArcaneProtectionPotion:
 	// 	return makeSchoolProtectionConsumableMCD(13461, character, potionCD)
 	// case proto.Potions_GreaterFireProtectionPotion:
@@ -1320,5 +1350,76 @@ func makeThistleTeaMCD(character *Character) MajorCooldown {
 		ShouldActivate: func(sim *Simulation, character *Character) bool {
 			return character.GetCurrentPowerBar() == EnergyBar && character.CurrentEnergy() <= 10
 		},
+	}
+}
+
+// Forever's Merchant's Favor stat potions (client 1.60.1.70450): 30 sec on the shared 2 min potion cooldown.
+func makeStatPotionMCD(character *Character, cdTimer *Timer, itemID int32, label string, bonus stats.Stats) MajorCooldown {
+	actionID := ActionID{ItemID: itemID}
+	aura := character.NewTemporaryStatsAura(label, actionID, bonus, time.Second*30)
+	return MajorCooldown{
+		Type: CooldownTypeDPS,
+		Spell: character.GetOrRegisterSpell(SpellConfig{
+			ActionID: actionID,
+			Flags:    SpellFlagNoOnCastComplete,
+			Cast: CastConfig{
+				CD: Cooldown{
+					Timer:    cdTimer,
+					Duration: time.Minute * 2,
+				},
+			},
+			ApplyEffects: func(sim *Simulation, _ *Unit, _ *Spell) {
+				aura.Activate(sim)
+			},
+		}),
+	}
+}
+
+// Forever's elixirs that carry crit: the Mongoose, the Grizzly, the Owl and Sages state 2% through A_MOD_CRIT_PCT
+// (aura 290), crit with attacks and spells alike. Only one elixir's crit applies (wowsims/forever #209): four would
+// stack 8% free crit, and the client carries no stacking table.
+func applyForeverElixirConsumes(character *Character, consumes *proto.Consumes) {
+	switch consumes.IntellectElixir {
+	case proto.IntellectElixir_ElixirOfTheOwl, proto.IntellectElixir_ElixirOfGreaterIntellect:
+		character.AddStat(stats.Intellect, 25)
+	case proto.IntellectElixir_ElixirOfSages:
+		character.AddStat(stats.Spirit, 25)
+	}
+	if !character.Env.IsForever() {
+		return
+	}
+	if consumes.AgilityElixir == proto.AgilityElixir_ElixirOfTheMongoose ||
+		consumes.StrengthBuff == proto.StrengthBuff_ElixirOfTheGrizzly ||
+		consumes.IntellectElixir == proto.IntellectElixir_ElixirOfTheOwl ||
+		consumes.IntellectElixir == proto.IntellectElixir_ElixirOfSages {
+		character.AddStats(stats.Stats{
+			stats.MeleeCrit: 2 * CritRatingPerCritChance,
+			stats.SpellCrit: 2 * SpellCritRatingPerCritChance,
+		})
+	}
+}
+
+// Forever's Scroll of Imbue weapon scrolls (spell effect 360) sit beside a stone or oil on the weapon. Precision is 14
+// crit rating (1% at level 60) and Accuracy 5 hit rating (0.5%); Forever's ratings pay attacks and spells alike.
+func applyWeaponScrollConsumes(character *Character, consumes *proto.Consumes) {
+	apply := func(scroll proto.WeaponScroll) {
+		switch scroll {
+		case proto.WeaponScroll_ScrollOfImbuePrecision:
+			character.AddStats(stats.Stats{
+				stats.MeleeCrit: 1 * CritRatingPerCritChance,
+				stats.SpellCrit: 1 * SpellCritRatingPerCritChance,
+			})
+		case proto.WeaponScroll_ScrollOfImbueAccuracy:
+			character.AddStats(stats.Stats{
+				stats.MeleeHit: 0.5 * MeleeHitRatingPerHitChance,
+				stats.SpellHit: 0.5 * SpellHitRatingPerHitChance,
+			})
+		}
+	}
+	if character.HasMHWeapon() {
+		apply(consumes.MainHandScroll)
+	}
+	if character.HasOHWeapon() {
+		apply(consumes.OffHandScroll)
 	}
 }

@@ -11,7 +11,7 @@ export const StoneskinTotem = {
 };
 
 export const StrengthOfEarthTotem = {
-	actionId: () => ActionId.fromSpellId(25361),
+	actionId: () => ActionId.fromSpellId(10442),
 	value: EarthTotem.StrengthOfEarthTotem,
 };
 
@@ -63,6 +63,6 @@ export const WindfuryTotem = {
 };
 
 export const GraceOfAirTotem = {
-	actionId: () => ActionId.fromSpellId(25359),
+	actionId: () => ActionId.fromSpellId(10627),
 	value: AirTotem.GraceOfAirTotem,
 };

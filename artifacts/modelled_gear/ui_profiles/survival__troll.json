@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "1793400001",
+    "fixedRngSeed": "1793500001",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Horde",
@@ -123,17 +123,20 @@
     },
     "consumes": {
       "flask": "FlaskOfDistilledWisdom",
-      "food": "FoodSmokedDesertDumpling",
-      "agilityElixir": "ElixirOfTheMongoose",
+      "food": "FoodSwiftstrikeSteak",
+      "agilityElixir": "ElixirOfCunning",
       "manaRegenElixir": "MagebloodPotion",
-      "strengthBuff": "JujuPower",
+      "strengthBuff": "ElixirOfFerocity",
       "attackPowerBuff": "JujuMight",
-      "mainHandImbue": "ElementalSharpeningStone",
-      "offHandImbue": "ElementalSharpeningStone",
-      "defaultPotion": "MajorManaPotion",
+      "mainHandImbue": "DenseSharpeningStone",
+      "offHandImbue": "DenseWeightstone",
+      "defaultPotion": "MajorFrenzyPotion",
       "defaultConjured": "ConjuredDemonicRune",
       "zanzaBuff": "GroundScorpokAssay",
-      "sapperExplosive": "SapperGoblinSapper"
+      "sapperExplosive": "SapperGoblinSapper",
+      "intellectElixir": "ElixirOfTheOwl",
+      "mainHandScroll": "ScrollOfImbuePrecision",
+      "offHandScroll": "ScrollOfImbuePrecision"
     },
     "bonusStats": {
       "stats": [
@@ -189,7 +192,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "502-0050051-230230230250022151",
+    "talentsString": "502-0050051-500230230250022151",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",

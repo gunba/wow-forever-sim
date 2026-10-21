@@ -397,9 +397,11 @@ func (character *Character) mobTypeDamageAura(mobType proto.MobType, multiplier 
 	character.Env.RegisterPostFinalizeEffect(func() {
 		for _, t := range character.Env.Encounter.Targets {
 			if t.MobType == mobType {
+				// Damage only: Beast Slaying 20557, Big Game Hunter 1259721 and Elemental Insight 1259707
+				// are aura 168 alone; the slaying rows that raise critical damage carry aura 547 too
+				// (wowsims/forever #536).
 				for _, at := range character.AttackTables[t.UnitIndex] {
 					at.DamageDealtMultiplier *= multiplier
-					at.CritMultiplier *= multiplier
 				}
 			}
 		}

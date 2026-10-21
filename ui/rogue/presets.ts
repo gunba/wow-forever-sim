@@ -121,7 +121,7 @@ export const TalentsAssassinationMutilate = PresetUtils.makePresetTalents(
 );
 export const TalentsSubtletyHemo = PresetUtils.makePresetTalents(
 	'Subtlety Hemo 20/0/31',
-	SavedTalents.create({ talentsString: '115303101104--5320003310013211501' }),
+	SavedTalents.create({ talentsString: '005303103104--5320003310013211501' }),
 );
 
 export const TalentPresets = {
@@ -178,7 +178,7 @@ export const P1Consumes = Consumes.create({
 	attackPowerBuff: AttackPowerBuff.JujuMight,
 	defaultConjured: Conjured.ConjuredRogueThistleTea,
 	mainHandImbue: WeaponImbue.ShadowOil,
-	offHandImbue: WeaponImbue.ElementalSharpeningStone,
+	offHandImbue: WeaponImbue.DenseSharpeningStone,
 	dragonBreathChili: true,
 	flask: Flask.FlaskOfSupremePower,
 	food: Food.FoodGrilledSquid,

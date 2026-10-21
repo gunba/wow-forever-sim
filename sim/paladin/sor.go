@@ -111,6 +111,17 @@ func (paladin *Paladin) registerSealOfRighteousness() {
 			coeff = rank.proc.coeff * 1.1 // from testing in SoD
 			damage = value * 1.2 * paladin.MainHand().SwingSpeed
 		}
+		if paladin.Env.IsForever() {
+			// Measured on the beta (eighteen vendor weapons, 1.7-3.7 speed, ranks 1-4; wowsims/forever #110
+			// and its 70425 re-measure at level 30): two-handers 1.2 x speed with 0.12 of spell power,
+			// one-handers 0.85 x speed from 2.0 up, less 0.2 per second below it, with 0.10.
+			speed := paladin.MainHand().SwingSpeed
+			if paladin.has2hEquipped() {
+				coeff, damage = 0.12, value*1.2*speed
+			} else {
+				coeff, damage = 0.10, value*(0.85-0.2*max(0, 2.0-speed))*speed
+			}
+		}
 
 		procSpell := paladin.RegisterSpell(core.SpellConfig{
 			ActionID:    core.ActionID{SpellID: rank.proc.spellID},
@@ -121,7 +132,7 @@ func (paladin *Paladin) registerSealOfRighteousness() {
 
 			//BonusCritRating: paladin.holyCrit(), // TODO to be tested, but unlikely
 
-			DamageMultiplier: improvedSeals * paladin.getWeaponSpecializationModifier(),
+			DamageMultiplier: improvedSeals * paladin.spellWeaponSpecializationModifier(),
 			ThreatMultiplier: 1,
 
 			BonusCoefficient: coeff,

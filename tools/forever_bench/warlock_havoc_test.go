@@ -80,7 +80,7 @@ func TestBaneOfHavocCopiesDealtDamage(t *testing.T) {
 			result.Damage = result.Damage*11 + 13
 		})
 
-	shadowBolt := owner.ShadowBolt[len(owner.ShadowBolt)-1]
+	shadowBolt := topRank(owner.ShadowBolt)
 	deliverHavocSource(sim, shadowBolt, source, 120, false)
 	if got := havocDamage(owner, marked); math.Abs(got-18) > 1e-9 {
 		t.Fatalf("Havoc copied %g damage, want 18 from the 120 actually dealt", got)
@@ -98,7 +98,7 @@ func TestBaneOfHavocCopiesDealtDamage(t *testing.T) {
 		t.Fatalf("copy threat %g, want ordinary damage threat %g", metrics.TotalThreat, want)
 	}
 
-	corruption := owner.Corruption[len(owner.Corruption)-1]
+	corruption := topRank(owner.Corruption)
 	deliverHavocSource(sim, corruption, source, 90, true)
 	if got := havocDamage(owner, marked); math.Abs(got-31.5) > 1e-9 {
 		t.Fatalf("periodic damage brought Havoc to %g, want 31.5", got)
@@ -128,7 +128,7 @@ func TestBaneOfHavocExcludesOtherDamageAndProcChains(t *testing.T) {
 	first, second := sim.Encounter.TargetUnits[0], sim.Encounter.TargetUnits[1]
 	applyHavocBane(sim, owner.BaneOfHavoc, second)
 	applyHavocBane(sim, other.BaneOfHavoc, first)
-	bolt := owner.ShadowBolt[len(owner.ShadowBolt)-1]
+	bolt := topRank(owner.ShadowBolt)
 
 	deliverHavocSource(sim, bolt, second, 100, false) // already marked
 	deliverHavocSource(sim, bolt, &owner.Unit, 100, false)
@@ -155,7 +155,7 @@ func TestBaneOfHavocExcludesOtherDamageAndProcChains(t *testing.T) {
 		originalCallback(aura, sim, spell, result)
 	}
 	deliverHavocSource(sim, bolt, first, 100, false)
-	deliverHavocSource(sim, other.ShadowBolt[len(other.ShadowBolt)-1], second, 80, false)
+	deliverHavocSource(sim, topRank(other.ShadowBolt), second, 80, false)
 	if havocDamage(owner, second) != 15 || havocDamage(other, first) != 12 || copyCallbacks != 0 {
 		t.Fatal("Havoc duplicated damage, crossed caster ownership, or triggered a new damage proc")
 	}
@@ -165,7 +165,7 @@ func TestBaneOfHavocTargetAndBaneExclusivity(t *testing.T) {
 	sim, owners := havocFixture()
 	owner, other := owners[0], owners[1]
 	first, second := sim.Encounter.TargetUnits[0], sim.Encounter.TargetUnits[1]
-	agony := owner.BaneOfAgony[len(owner.BaneOfAgony)-1]
+	agony := topRank(owner.BaneOfAgony)
 	applyHavocBane(sim, agony, first)
 	applyHavocBane(sim, owner.BaneOfDoom, second)
 	applyHavocBane(sim, owner.BaneOfHavoc, first)
@@ -235,7 +235,7 @@ func TestBaneOfHavocCancellationAndExpiration(t *testing.T) {
 			if aura.IsActive() {
 				t.Fatal("Havoc remained active after cancellation/expiration")
 			}
-			deliverHavocSource(sim, owner.ShadowBolt[len(owner.ShadowBolt)-1], first, 100, false)
+			deliverHavocSource(sim, topRank(owner.ShadowBolt), first, 100, false)
 			if havocDamage(owner, second) != 0 {
 				t.Fatal("Havoc copied damage after cancellation/expiration")
 			}

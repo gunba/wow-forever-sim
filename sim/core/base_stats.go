@@ -29,53 +29,53 @@ var BaseStats = map[BaseStatsKey]stats.Stats{}
 // These are also scattered in various dbc/casc files,
 // `octbasempbyclass.txt`, `combatratings.txt`, `chancetospellcritbase.txt`, etc.
 
+// Race offsets from level 1 naked warrior character sheets on the Forever beta, against a Human one
+// (wowsims/forever #597). No race changes Spirit; the game files carry no race stat columns.
 var RaceOffsets = map[proto.Race]stats.Stats{
 	proto.Race_RaceUnknown: {},
 	proto.Race_RaceHuman:   {},
 	proto.Race_RaceOrc: {
 		stats.Agility:   -3,
 		stats.Strength:  3,
-		stats.Intellect: -3,
-		stats.Spirit:    3,
-		stats.Stamina:   2,
+		stats.Intellect: -1,
+		stats.Spirit:    0,
+		stats.Stamina:   1,
 	},
 	proto.Race_RaceDwarf: {
-		stats.Agility:   -4,
+		stats.Agility:   -2,
 		stats.Strength:  2,
 		stats.Intellect: -1,
-		stats.Spirit:    -1,
-		stats.Stamina:   3,
+		stats.Spirit:    0,
+		stats.Stamina:   1,
 	},
 	proto.Race_RaceNightElf: {
-		stats.Agility:   5,
-		stats.Strength:  -3,
+		stats.Agility:   2,
+		stats.Strength:  -2,
 		stats.Intellect: 0,
 		stats.Spirit:    0,
-		stats.Stamina:   -1,
+		stats.Stamina:   0,
 	},
-	// The Skyborne sit at the class baseline, which Wowhead's Forever gear planner
-	// confirms: races 95 and 96 in its baseStats.raceOffsets are zero for agility,
-	// strength, intellect, spirit and stamina alike, as the human's are. Snapshot in
-	// assets/db_inputs/wowhead_forever_gearplanner.txt.
-	proto.Race_RaceSkyborneHighOrder:  {},
-	proto.Race_RaceSkyborneWindshaper: {},
+	// Level 1 naked warrior sheets on the beta: Skyborne 22/21/21/21/20 against Human 23/20/22/20/20
+	// (wowsims/forever #597). Wowhead's gear planner lists them at zero.
+	proto.Race_RaceSkyborneHighOrder:  {stats.Strength: -1, stats.Agility: 1, stats.Stamina: -1, stats.Intellect: 1},
+	proto.Race_RaceSkyborneWindshaper: {stats.Strength: -1, stats.Agility: 1, stats.Stamina: -1, stats.Intellect: 1},
 	proto.Race_RaceUndead: {
-		stats.Agility:   -2,
-		stats.Strength:  -1,
+		stats.Agility:   -1,
+		stats.Strength:  2,
 		stats.Intellect: -2,
-		stats.Spirit:    5,
+		stats.Spirit:    0,
 		stats.Stamina:   1,
 	},
 	proto.Race_RaceTauren: {
-		stats.Agility:   -5,
-		stats.Strength:  5,
-		stats.Intellect: -5,
-		stats.Spirit:    2,
+		stats.Agility:   -2,
+		stats.Strength:  2,
+		stats.Intellect: -2,
+		stats.Spirit:    0,
 		stats.Stamina:   2,
 	},
 	proto.Race_RaceGnome: {
-		stats.Agility:   3,
-		stats.Strength:  -5,
+		stats.Agility:   1,
+		stats.Strength:  -3,
 		stats.Intellect: 3,
 		stats.Spirit:    0,
 		stats.Stamina:   -1,
@@ -83,9 +83,9 @@ var RaceOffsets = map[proto.Race]stats.Stats{
 	proto.Race_RaceTroll: {
 		stats.Agility:   2,
 		stats.Strength:  1,
-		stats.Intellect: -4,
-		stats.Spirit:    1,
-		stats.Stamina:   1,
+		stats.Intellect: -3,
+		stats.Spirit:    0,
+		stats.Stamina:   0,
 	},
 }
 

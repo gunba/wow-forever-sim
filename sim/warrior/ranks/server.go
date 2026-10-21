@@ -2,49 +2,18 @@ package ranks
 
 // Server-side numbers the client tables do not carry. Each is sourced or marked provisional.
 
-// HeroicStrikeThreat is the flat threat of a Heroic Strike rank. Measured: rank 4 adds 61 (published Warrior threat
-// sheet, level 30); ranks 8 and 9 keep the simulator's long-standing 145 and 173. Other ranks are provisional:
-// below rank 4 the measured value is scaled by the rank's bonus damage, between 4 and 8 interpolated by bonus damage.
-func HeroicStrikeThreat(r *Rank) float64 {
-	bonus := r.Find(EffectWeaponDamageBonus, 0).Low
-	switch {
-	case r.Rank >= 9:
-		return 173
-	case r.Rank == 8:
-		return 145
-	case r.Rank <= 4:
-		return 61 * bonus / 44
-	default:
-		return 61 + (145-61)*(bonus-44)/(138-44)
-	}
-}
+// HeroicStrikeThreat is the flat threat of a Heroic Strike rank: 2.54 per spell level, measured with an addon reading
+// the threat table against the combat log (wowsims/forever #264); rank 4 (level 24) gives 61, as the published Warrior
+// threat sheet measured at level 30. Rank 8 (level 56) 142.2.
+func HeroicStrikeThreat(r *Rank) float64 { return 2.54 * float64(r.Level) }
 
-// CleaveThreat is the flat threat of a Cleave rank, per target. Measured: rank 2 adds 46 (threat sheet); rank 5 keeps
-// the simulator's 100. Other ranks are provisional, interpolated by bonus damage.
-func CleaveThreat(r *Rank) float64 {
-	bonus := r.Find(EffectWeaponDamageBonus, 0).Low
-	switch {
-	case r.Rank >= 5:
-		return 100
-	case r.Rank <= 2:
-		return 46 * max(bonus, 1) / 10
-	default:
-		return 46 + (100-46)*(bonus-10)/(50-10)
-	}
-}
+// CleaveThreat is the flat threat of a Cleave rank, 1.53 per spell level (rank 2, level 30: 46 in the threat sheet;
+// rank 5: 91.8). It is split between the targets the cleave lands on (wowsims/forever #264, #385).
+func CleaveThreat(r *Rank) float64 { return 1.53 * float64(r.Level) }
 
-// SunderThreatAP is the attack power coefficient of Sunder Armor's threat: 0.0433 at rank 1 and 0.0476 at rank 2
-// (threat sheet); 0.05 at rank 5 is the simulator's provisional value, and ranks 3-4 keep rank 2's.
-func SunderThreatAP(r *Rank) float64 {
-	switch {
-	case r.Rank <= 1:
-		return 0.0433
-	case r.Rank >= 5:
-		return 0.05
-	default:
-		return 0.0476
-	}
-}
+// SunderThreatAP is the attack power coefficient of Sunder Armor's threat: (flat + 0.05 AP) x stance at every rank,
+// measured on rank 1 across 132-180 attack power in both stances (wowsims/forever #264).
+func SunderThreatAP(_ *Rank) float64 { return 0.05 }
 
 // ExecuteDamagePerRage is Classic's extra damage per Rage converted: 3 per rank.
 func ExecuteDamagePerRage(r *Rank) float64 { return 3 * float64(r.Rank) }

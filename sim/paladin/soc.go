@@ -84,7 +84,7 @@ func (paladin *Paladin) registerSealOfCommand() {
 
 			// Improved Seals is a percent modifier, so it belongs on the whole spell rather than on
 			// the base roll, which left the coefficient's share of the damage out of it.
-			DamageMultiplier: improvedSeals * paladin.getWeaponSpecializationModifier(),
+			DamageMultiplier: improvedSeals * paladin.spellWeaponSpecializationModifier(),
 			ThreatMultiplier: 1,
 			BonusCoefficient: 0.429,
 
@@ -118,7 +118,7 @@ func (paladin *Paladin) registerSealOfCommand() {
 			ProcMask:    core.ProcMaskMeleeMHSpecial | core.ProcMaskMeleeProc | core.ProcMaskMeleeDamageProc,
 			Flags:       core.SpellFlagMeleeMetrics | core.SpellFlagNotAProc,
 
-			DamageMultiplier: 0.7 * improvedSeals * paladin.getWeaponSpecializationModifier(),
+			DamageMultiplier: 0.7 * improvedSeals * paladin.spellWeaponSpecializationModifier(),
 			ThreatMultiplier: 1,
 
 			BonusCoefficient: 0.29,

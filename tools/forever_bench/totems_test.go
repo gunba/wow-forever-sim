@@ -24,7 +24,7 @@ func TestForeverAirTotemsDoNotTwist(t *testing.T) {
 		character := sim.Raid.Parties[0].Players[0].GetCharacter()
 		target := sim.Encounter.TargetUnits[0]
 		windfury := character.GetSpell(core.ActionID{SpellID: 10614})
-		grace := character.GetSpell(core.ActionID{SpellID: 25359})
+		grace := character.GetSpell(core.ActionID{SpellID: 10627})
 		windwall := character.GetSpell(core.ActionID{SpellID: 15112})
 		windfury.ApplyEffects(sim, target, windfury)
 		wf := character.GetAura("Windfury (Rank 3)")
@@ -57,7 +57,7 @@ func TestOwnWindfuryKeepsExternalGrace(t *testing.T) {
 		sim.Reset()
 		character := sim.Raid.Parties[0].Players[0].GetCharacter()
 		target := sim.Encounter.TargetUnits[0]
-		grace := character.GetSpell(core.ActionID{SpellID: 25359})
+		grace := character.GetSpell(core.ActionID{SpellID: 10627})
 		windfury := character.GetSpell(core.ActionID{SpellID: 10614})
 		grace.ApplyEffects(sim, target, grace)
 		withGrace := character.GetStat(stats.Agility)

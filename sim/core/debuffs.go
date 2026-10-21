@@ -164,7 +164,7 @@ func applyDebuffEffects(target *Unit, targetIdx int, debuffs *proto.Debuffs, rai
 		MakePermanent(DemoralizingShoutAura(target))
 	}
 	if debuffs.HuntersMark != proto.TristateEffect_TristateEffectMissing {
-		MakePermanent(HuntersMarkAura(target, nil, 14325, 71*(1+0.03*float64(GetTristateValueInt32(debuffs.HuntersMark, 0, 5)))))
+		MakePermanent(HuntersMarkAura(target, nil, 14325, HuntersMarkRank4AttackPower*(1+0.03*float64(GetTristateValueInt32(debuffs.HuntersMark, 0, 5)))))
 	}
 
 	// Atk spd reduction
@@ -830,6 +830,10 @@ func CurseOfWeaknessAura(target *Unit, points int32) *Aura {
 }
 
 const HuntersMarkAuraTag = "HuntersMark"
+
+// Rank 4's ranged attack power. The client row (14325 effect 2) states 71, below rank 3's 98; a server
+// hotfix (SpellEffect 690991, game cache push 112753+) sets it to 143.
+const HuntersMarkRank4AttackPower = 143
 
 func HuntersMarkAura(target *Unit, caster *Unit, spellID int32, bonus float64) *Aura {
 	source := "external"

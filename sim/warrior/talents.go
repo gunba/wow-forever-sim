@@ -168,13 +168,19 @@ func (warrior *Warrior) applyBloodthrill() {
 	warrior.BloodthrillAura = warrior.RegisterAura(core.Aura{
 		Label:    "Bloodthrill",
 		ActionID: core.ActionID{SpellID: 56638},
-		Duration: time.Second * 6,
+		// 1289681's window: 6 sec in the client row, 5 sec since the server hotfix (SpellMisc 837267
+		// DurationIndex 32 -> 28).
+		Duration: time.Second * 5,
 	})
 
 	core.MakePermanent(warrior.RegisterAura(core.Aura{
 		Label: "Bloodthrill Trigger",
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if !result.Landed() || !spell.ProcMask.Matches(core.ProcMaskMeleeMH|core.ProcMaskMeleeMHSpecial) {
+			// Main-hand white swings (extra attacks included) and the on-next-swing Heroic Strike and
+			// Cleave, which carry the auto mask. Forever logs: 24 bystander procs all from those; 0 from
+			// off-hand swings (0/200), Hamstring, Overpower, Execute, Thunder Clap, Victory Rush or Deep
+			// Wounds (wowsims/forever #534).
+			if !result.Landed() || !spell.ProcMask.Matches(core.ProcMaskMeleeMHAuto) {
 				return
 			}
 

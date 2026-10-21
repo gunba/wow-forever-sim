@@ -1,0 +1,2243 @@
+{
+ "format": 1,
+ "baseline": "03a5b49d5 published results",
+ "current": "October 21 update",
+ "summary": [
+  {
+   "Key": "survival_weave",
+   "Races": 8,
+   "MeanDPS": 1246.7300113064668,
+   "BestRace": "Human",
+   "BestDPS": 1258.1877480070452,
+   "MeanChangePercent": null
+  },
+  {
+   "Key": "retribution",
+   "Races": 3,
+   "MeanDPS": 1079.0835980417726,
+   "BestRace": "Human",
+   "BestDPS": 1082.7140096831388,
+   "MeanChangePercent": 7.746660116892586
+  },
+  {
+   "Key": "marksmanship",
+   "Races": 8,
+   "MeanDPS": 1044.2974612002117,
+   "BestRace": "High Order",
+   "BestDPS": 1050.8945941955878,
+   "MeanChangePercent": 8.010508598101717
+  },
+  {
+   "Key": "beast_mastery",
+   "Races": 8,
+   "MeanDPS": 1016.4456499919618,
+   "BestRace": "High Order",
+   "BestDPS": 1023.6093341093682,
+   "MeanChangePercent": 4.222434836019989
+  },
+  {
+   "Key": "retribution_physical",
+   "Races": 3,
+   "MeanDPS": 1012.1006376989844,
+   "BestRace": "Human",
+   "BestDPS": 1017.316425588653,
+   "MeanChangePercent": 7.231727551677011
+  },
+  {
+   "Key": "demonology",
+   "Races": 5,
+   "MeanDPS": 997.3895117433837,
+   "BestRace": "Human",
+   "BestDPS": 1005.8721242806276,
+   "MeanChangePercent": 9.100015119364846
+  },
+  {
+   "Key": "survival",
+   "Races": 8,
+   "MeanDPS": 979.948730703646,
+   "BestRace": "Human",
+   "BestDPS": 984.6503167291651,
+   "MeanChangePercent": 2.775495756666832
+  },
+  {
+   "Key": "fury",
+   "Races": 10,
+   "MeanDPS": 961.9028766334692,
+   "BestRace": "High Order",
+   "BestDPS": 969.2653984629925,
+   "MeanChangePercent": -2.767471887377851
+  },
+  {
+   "Key": "fury_sunder",
+   "Races": 10,
+   "MeanDPS": 931.3873450912313,
+   "BestRace": "High Order",
+   "BestDPS": 941.5755006120369,
+   "MeanChangePercent": -3.3019879137083854
+  },
+  {
+   "Key": "pet_melee",
+   "Races": 8,
+   "MeanDPS": 925.5812528811825,
+   "BestRace": "High Order",
+   "BestDPS": 932.5767788372345,
+   "MeanChangePercent": -3.3139034271233383
+  },
+  {
+   "Key": "fire",
+   "Races": 6,
+   "MeanDPS": 913.4350872511736,
+   "BestRace": "Human",
+   "BestDPS": 930.393665636756,
+   "MeanChangePercent": 17.032584199132064
+  },
+  {
+   "Key": "affliction",
+   "Races": 5,
+   "MeanDPS": 902.2479004597841,
+   "BestRace": "Human",
+   "BestDPS": 914.7153286568457,
+   "MeanChangePercent": 8.447594825607956
+  },
+  {
+   "Key": "shadow",
+   "Races": 6,
+   "MeanDPS": 906.3607690296625,
+   "BestRace": "Human",
+   "BestDPS": 913.1079892606972,
+   "MeanChangePercent": 9.32882035587752
+  },
+  {
+   "Key": "destruction",
+   "Races": 5,
+   "MeanDPS": 876.9429599269021,
+   "BestRace": "Human",
+   "BestDPS": 884.9235236722022,
+   "MeanChangePercent": 8.032682406830688
+  },
+  {
+   "Key": "ds_ruin",
+   "Races": 5,
+   "MeanDPS": 867.174896132964,
+   "BestRace": "Human",
+   "BestDPS": 879.6044084910372,
+   "MeanChangePercent": 9.437634295705367
+  },
+  {
+   "Key": "shockadin",
+   "Races": 3,
+   "MeanDPS": 876.8748105700924,
+   "BestRace": "Human",
+   "BestDPS": 878.8861587283232,
+   "MeanChangePercent": null
+  },
+  {
+   "Key": "arms",
+   "Races": 10,
+   "MeanDPS": 822.5359654880367,
+   "BestRace": "Human",
+   "BestDPS": 836.5029269271054,
+   "MeanChangePercent": -4.9850047720003925
+  },
+  {
+   "Key": "feral",
+   "Races": 4,
+   "MeanDPS": 826.8632429579491,
+   "BestRace": "High Order",
+   "BestDPS": 831.973558027495,
+   "MeanChangePercent": -2.3847181057494033
+  },
+  {
+   "Key": "arcane_frost",
+   "Races": 6,
+   "MeanDPS": 815.5707769532108,
+   "BestRace": "High Order",
+   "BestDPS": 822.8299056627653,
+   "MeanChangePercent": -4.1343810631049545
+  },
+  {
+   "Key": "enhancement",
+   "Races": 5,
+   "MeanDPS": 810.4908984326776,
+   "BestRace": "Dwarf",
+   "BestDPS": 814.1041273344081,
+   "MeanChangePercent": -0.47418798637353987
+  },
+  {
+   "Key": "fury_2h",
+   "Races": 10,
+   "MeanDPS": 797.6791040963091,
+   "BestRace": "Orc",
+   "BestDPS": 802.7263734598473,
+   "MeanChangePercent": -5.09854020004895
+  },
+  {
+   "Key": "frostfire",
+   "Races": 6,
+   "MeanDPS": 789.0509095056317,
+   "BestRace": "Human",
+   "BestDPS": 802.4154148029139,
+   "MeanChangePercent": null
+  },
+  {
+   "Key": "balance",
+   "Races": 4,
+   "MeanDPS": 789.2500591278565,
+   "BestRace": "High Order",
+   "BestDPS": 794.9006608031319,
+   "MeanChangePercent": 9.793132824670991
+  },
+  {
+   "Key": "arcane",
+   "Races": 6,
+   "MeanDPS": 778.113552360688,
+   "BestRace": "Human",
+   "BestDPS": 786.7455494752485,
+   "MeanChangePercent": -8.298411841293229
+  },
+  {
+   "Key": "combat",
+   "Races": 9,
+   "MeanDPS": 742.0703290756015,
+   "BestRace": "High Order",
+   "BestDPS": 753.4360894402231,
+   "MeanChangePercent": -2.681324561196764
+  },
+  {
+   "Key": "mutilate",
+   "Races": 9,
+   "MeanDPS": 726.081062011123,
+   "BestRace": "High Order",
+   "BestDPS": 736.7595832295334,
+   "MeanChangePercent": -3.2807445173503043
+  },
+  {
+   "Key": "subtlety",
+   "Races": 9,
+   "MeanDPS": 707.0126661241007,
+   "BestRace": "High Order",
+   "BestDPS": 718.0466001644688,
+   "MeanChangePercent": 0.021765939598909306
+  },
+  {
+   "Key": "elemental",
+   "Races": 5,
+   "MeanDPS": 632.3757596746108,
+   "BestRace": "Orc",
+   "BestDPS": 636.1218444367726,
+   "MeanChangePercent": 19.354421017040725
+  },
+  {
+   "Key": "frost",
+   "Races": 6,
+   "MeanDPS": 601.8992251566251,
+   "BestRace": "Gnome",
+   "BestDPS": 609.1632179553233,
+   "MeanChangePercent": -5.754191116672217
+  },
+  {
+   "Key": "protection_paladin",
+   "Races": 3,
+   "MeanDPS": 555.4098494588102,
+   "BestRace": "Undead",
+   "BestDPS": 559.1253111488662,
+   "MeanChangePercent": 5.154983350417641
+  },
+  {
+   "Key": "feral_tank_druid",
+   "Races": 4,
+   "MeanDPS": 532.7860094602366,
+   "BestRace": "Tauren",
+   "BestDPS": 534.4510348009441,
+   "MeanChangePercent": -3.146067769003058
+  },
+  {
+   "Key": "stormcaller",
+   "Races": 5,
+   "MeanDPS": 524.654435023543,
+   "BestRace": "Tauren",
+   "BestDPS": 532.561867680509,
+   "MeanChangePercent": 12.38170980750632
+  },
+  {
+   "Key": "smite",
+   "Races": 6,
+   "MeanDPS": 495.0020823085836,
+   "BestRace": "Gnome",
+   "BestDPS": 502.5991123888802,
+   "MeanChangePercent": 10.032016300290811
+  },
+  {
+   "Key": "tank_warrior",
+   "Races": 10,
+   "MeanDPS": 480.86439533193135,
+   "BestRace": "Undead",
+   "BestDPS": 492.06177881105316,
+   "MeanChangePercent": -5.281459635846964
+  }
+ ],
+ "rows": [
+  {
+   "Key": "affliction",
+   "Race": "Gnome",
+   "PublishedDPS": 822.2643856296761,
+   "DPS": 891.1571361293461,
+   "ChangePercent": 8.378418389957766,
+   "PublishedTalents": "2550020013520105--0550015103",
+   "Talents": "2550020013520105--0550015103"
+  },
+  {
+   "Key": "affliction",
+   "Race": "Human",
+   "PublishedDPS": 844.3621223702859,
+   "DPS": 914.7153286568457,
+   "ChangePercent": 8.332113014385921,
+   "PublishedTalents": "2550020013520105--0550015103",
+   "Talents": "2550020013520105--0550015103"
+  },
+  {
+   "Key": "affliction",
+   "Race": "Orc",
+   "PublishedDPS": 838.6441270386904,
+   "DPS": 908.7437179295305,
+   "ChangePercent": 8.358681427647575,
+   "PublishedTalents": "2550020013520105--0550015103",
+   "Talents": "2550020013520105--0550015103"
+  },
+  {
+   "Key": "affliction",
+   "Race": "Troll",
+   "PublishedDPS": 823.4330263311564,
+   "DPS": 896.686102652409,
+   "ChangePercent": 8.896057600171204,
+   "PublishedTalents": "2550020013520105--0550015103",
+   "Talents": "2550020013520105--0550015103"
+  },
+  {
+   "Key": "affliction",
+   "Race": "Undead",
+   "PublishedDPS": 831.176451877091,
+   "DPS": 899.9372169307891,
+   "ChangePercent": 8.272703695877315,
+   "PublishedTalents": "2550020013520105--0550015103",
+   "Talents": "2550020013520105--0550015103"
+  },
+  {
+   "Key": "arcane",
+   "Race": "Gnome",
+   "PublishedDPS": 854.0004272294409,
+   "DPS": 785.736698773571,
+   "ChangePercent": -7.993406827363303,
+   "PublishedTalents": "0512005023100311531-03-005500032",
+   "Talents": "0502205013100311531-03-05350002"
+  },
+  {
+   "Key": "arcane",
+   "Race": "High Order",
+   "PublishedDPS": 854.2021608759675,
+   "DPS": 783.9903064402357,
+   "ChangePercent": -8.219582863584762,
+   "PublishedTalents": "0512005023100311531-03-005500032",
+   "Talents": "0502205013100311531-03-05350002"
+  },
+  {
+   "Key": "arcane",
+   "Race": "Human",
+   "PublishedDPS": 856.3398311564405,
+   "DPS": 786.7455494752485,
+   "ChangePercent": -8.126946703764638,
+   "PublishedTalents": "0512005023100311531-03-005500032",
+   "Talents": "0502205013100311531-03-05350002"
+  },
+  {
+   "Key": "arcane",
+   "Race": "Orc",
+   "PublishedDPS": 850.6901758805088,
+   "DPS": 778.5299682344863,
+   "ChangePercent": -8.482548604882256,
+   "PublishedTalents": "0512005023100311531-03-005500032",
+   "Talents": "0502205013100311531-03-05350002"
+  },
+  {
+   "Key": "arcane",
+   "Race": "Troll",
+   "PublishedDPS": 831.4586099969799,
+   "DPS": 763.1257960990168,
+   "ChangePercent": -8.218426398664791,
+   "PublishedTalents": "0512005023100311531-03-005500032",
+   "Talents": "0502205013100311531-03-05350002"
+  },
+  {
+   "Key": "arcane",
+   "Race": "Undead",
+   "PublishedDPS": 844.4375634592147,
+   "DPS": 770.5529951415696,
+   "ChangePercent": -8.749559649499616,
+   "PublishedTalents": "0512005023100311531-03-005500032",
+   "Talents": "0502205013100311531-03-05350002"
+  },
+  {
+   "Key": "arcane_frost",
+   "Race": "Gnome",
+   "PublishedDPS": 851.7470982909806,
+   "DPS": 818.2729727969984,
+   "ChangePercent": -3.930054538623917,
+   "PublishedTalents": "050200500310031053--05550002010003002",
+   "Talents": "050220500310030053--0535100201003002"
+  },
+  {
+   "Key": "arcane_frost",
+   "Race": "High Order",
+   "PublishedDPS": 855.7213161856284,
+   "DPS": 822.8299056627653,
+   "ChangePercent": -3.8437058772213706,
+   "PublishedTalents": "050200500310031053--05550002010003002",
+   "Talents": "050220500310030053--0535100201003002"
+  },
+  {
+   "Key": "arcane_frost",
+   "Race": "Human",
+   "PublishedDPS": 856.7720731770761,
+   "DPS": 820.2074848880569,
+   "ChangePercent": -4.267714767292851,
+   "PublishedTalents": "050200500310031053--05550002010003002",
+   "Talents": "050220500310030053--0535100201003002"
+  },
+  {
+   "Key": "arcane_frost",
+   "Race": "Orc",
+   "PublishedDPS": 851.2622348397,
+   "DPS": 816.8071471185277,
+   "ChangePercent": -4.047529223196477,
+   "PublishedTalents": "050200500310031053--05550002010003002",
+   "Talents": "050220500310030053--0535100201003002"
+  },
+  {
+   "Key": "arcane_frost",
+   "Race": "Troll",
+   "PublishedDPS": 838.717573641668,
+   "DPS": 802.6245773806215,
+   "ChangePercent": -4.303355193135216,
+   "PublishedTalents": "050200500310031053--05550002010003002",
+   "Talents": "050220500310030053--0535100201003002"
+  },
+  {
+   "Key": "arcane_frost",
+   "Race": "Undead",
+   "PublishedDPS": 850.2102309346781,
+   "DPS": 812.6825738722952,
+   "ChangePercent": -4.413926779159894,
+   "PublishedTalents": "050200500310031053--05550002010003002",
+   "Talents": "050220500310030053--0535100201003002"
+  },
+  {
+   "Key": "arms",
+   "Race": "Dwarf",
+   "PublishedDPS": 868.2049934879167,
+   "DPS": 815.9930560792453,
+   "ChangePercent": -6.013779902245863,
+   "PublishedTalents": "20305213132515001-55050000002",
+   "Talents": "20305213132515101-55050000001"
+  },
+  {
+   "Key": "arms",
+   "Race": "Gnome",
+   "PublishedDPS": 857.9001851105808,
+   "DPS": 826.5622171234251,
+   "ChangePercent": -3.6528687755343348,
+   "PublishedTalents": "20305213132515001-55050000002",
+   "Talents": "20305213132515101-55050000001"
+  },
+  {
+   "Key": "arms",
+   "Race": "High Order",
+   "PublishedDPS": 868.0326756919695,
+   "DPS": 819.3420235646048,
+   "ChangePercent": -5.609310973063309,
+   "PublishedTalents": "20305213132515001-55050000002",
+   "Talents": "20305213132515101-55050000001"
+  },
+  {
+   "Key": "arms",
+   "Race": "Human",
+   "PublishedDPS": 869.8727742600448,
+   "DPS": 836.5029269271054,
+   "ChangePercent": -3.8361756248004752,
+   "PublishedTalents": "20305213132515001-55050000002",
+   "Talents": "20305213132515101-55050000001"
+  },
+  {
+   "Key": "arms",
+   "Race": "Night Elf",
+   "PublishedDPS": 865.1202539359097,
+   "DPS": 813.2018654738335,
+   "ChangePercent": -6.001291522868724,
+   "PublishedTalents": "20305213132515001-55050000002",
+   "Talents": "20305213132515101-55050000001"
+  },
+  {
+   "Key": "arms",
+   "Race": "Orc",
+   "PublishedDPS": 869.0049040265233,
+   "DPS": 817.3631755861701,
+   "ChangePercent": -5.942627964591674,
+   "PublishedTalents": "20305213132515001-55050000002",
+   "Talents": "20305213132515101-55050000001"
+  },
+  {
+   "Key": "arms",
+   "Race": "Tauren",
+   "PublishedDPS": 869.3802966829475,
+   "DPS": 815.9930560792453,
+   "ChangePercent": -6.140838572877372,
+   "PublishedTalents": "20305213132515001-55050000002",
+   "Talents": "20305213132515101-55050000001"
+  },
+  {
+   "Key": "arms",
+   "Race": "Troll",
+   "PublishedDPS": 858.5725896588925,
+   "DPS": 826.535180664605,
+   "ChangePercent": -3.7314735387739106,
+   "PublishedTalents": "20305213132515001-55050000002",
+   "Talents": "20305213132515101-55050000001"
+  },
+  {
+   "Key": "arms",
+   "Race": "Undead",
+   "PublishedDPS": 863.1136461968701,
+   "DPS": 834.524129817528,
+   "ChangePercent": -3.3123698721849504,
+   "PublishedTalents": "20305213132515001-55050000002",
+   "Talents": "20305213132515101-55050000001"
+  },
+  {
+   "Key": "arms",
+   "Race": "Windshaper",
+   "PublishedDPS": 868.0326756919695,
+   "DPS": 819.3420235646048,
+   "ChangePercent": -5.609310973063309,
+   "PublishedTalents": "20305213132515001-55050000002",
+   "Talents": "20305213132515101-55050000001"
+  },
+  {
+   "Key": "balance",
+   "Race": "High Order",
+   "PublishedDPS": 723.3908513121705,
+   "DPS": 794.9006608031319,
+   "ChangePercent": 9.885362713842527,
+   "PublishedTalents": "5232220115501351--505003",
+   "Talents": "5232220115501351--505003"
+  },
+  {
+   "Key": "balance",
+   "Race": "Night Elf",
+   "PublishedDPS": 713.2112431326368,
+   "DPS": 782.040126025833,
+   "ChangePercent": 9.650560553543608,
+   "PublishedTalents": "5232220115501351--505003",
+   "Talents": "5232220115501351--505003"
+  },
+  {
+   "Key": "balance",
+   "Race": "Tauren",
+   "PublishedDPS": 715.3985238238153,
+   "DPS": 785.1587888793293,
+   "ChangePercent": 9.751245317455304,
+   "PublishedTalents": "5232220115501351--505003",
+   "Talents": "5232220115501351--505003"
+  },
+  {
+   "Key": "balance",
+   "Race": "Windshaper",
+   "PublishedDPS": 723.3908513121705,
+   "DPS": 794.9006608031319,
+   "ChangePercent": 9.885362713842527,
+   "PublishedTalents": "5232220115501351--505003",
+   "Talents": "5232220115501351--505003"
+  },
+  {
+   "Key": "beast_mastery",
+   "Race": "Dwarf",
+   "PublishedDPS": 969.540886325209,
+   "DPS": 1012.1766648476547,
+   "ChangePercent": 4.39752248964409,
+   "PublishedTalents": "5320001505101251-00522510005",
+   "Talents": "5320001505101251-00531510005"
+  },
+  {
+   "Key": "beast_mastery",
+   "Race": "High Order",
+   "PublishedDPS": 981.7243338359848,
+   "DPS": 1023.6093341093682,
+   "ChangePercent": 4.266472657321452,
+   "PublishedTalents": "5320001505101251-00522510005",
+   "Talents": "5320001505101251-00531510005"
+  },
+  {
+   "Key": "beast_mastery",
+   "Race": "Human",
+   "PublishedDPS": 981.9164492595447,
+   "DPS": 1021.6296683277998,
+   "ChangePercent": 4.044460106376913,
+   "PublishedTalents": "5320001505101251-00522510005",
+   "Talents": "5320001505101251-00531510005"
+  },
+  {
+   "Key": "beast_mastery",
+   "Race": "Night Elf",
+   "PublishedDPS": 975.1902443833551,
+   "DPS": 1014.0010976647359,
+   "ChangePercent": 3.979823783606662,
+   "PublishedTalents": "5320001505101251-00522510005",
+   "Talents": "5320001505101251-00531510005"
+  },
+  {
+   "Key": "beast_mastery",
+   "Race": "Orc",
+   "PublishedDPS": 975.3944822638124,
+   "DPS": 1015.9191587212455,
+   "ChangePercent": 4.154696094177046,
+   "PublishedTalents": "5320001505101251-00522510005",
+   "Talents": "5320001505101251-00531510005"
+  },
+  {
+   "Key": "beast_mastery",
+   "Race": "Tauren",
+   "PublishedDPS": 967.7636494353699,
+   "DPS": 1011.9068732549329,
+   "ChangePercent": 4.561364114607724,
+   "PublishedTalents": "5320001505101251-00522510005",
+   "Talents": "5320001505101251-00531510005"
+  },
+  {
+   "Key": "beast_mastery",
+   "Race": "Troll",
+   "PublishedDPS": 968.9040308072713,
+   "DPS": 1008.713068900589,
+   "ChangePercent": 4.1086667851045755,
+   "PublishedTalents": "5320001505101251-00522510005",
+   "Talents": "5320001505101251-00531510005"
+  },
+  {
+   "Key": "beast_mastery",
+   "Race": "Windshaper",
+   "PublishedDPS": 981.7243338359848,
+   "DPS": 1023.6093341093682,
+   "ChangePercent": 4.266472657321452,
+   "PublishedTalents": "5320001505101251-00522510005",
+   "Talents": "5320001505101251-00531510005"
+  },
+  {
+   "Key": "combat",
+   "Race": "Dwarf",
+   "PublishedDPS": 761.818903469094,
+   "DPS": 741.9182783058292,
+   "ChangePercent": -2.6122514251934903,
+   "PublishedTalents": "005303103012-32003311201515231",
+   "Talents": "005303103012-32003311201515231"
+  },
+  {
+   "Key": "combat",
+   "Race": "Gnome",
+   "PublishedDPS": 758.3316592907008,
+   "DPS": 735.8972105623959,
+   "ChangePercent": -2.9583953740357827,
+   "PublishedTalents": "005303103012-32003311201515231",
+   "Talents": "005303103012-32003311201515231"
+  },
+  {
+   "Key": "combat",
+   "Race": "High Order",
+   "PublishedDPS": 773.5771076414695,
+   "DPS": 753.4360894402231,
+   "ChangePercent": -2.603621281226076,
+   "PublishedTalents": "005303103012-32003311201515231",
+   "Talents": "005303103012-32003311201515231"
+  },
+  {
+   "Key": "combat",
+   "Race": "Human",
+   "PublishedDPS": 762.3726351948117,
+   "DPS": 742.6901011891063,
+   "ChangePercent": -2.5817471794060243,
+   "PublishedTalents": "005303103012-32003311201515231",
+   "Talents": "005303103012-32003311201515231"
+  },
+  {
+   "Key": "combat",
+   "Race": "Night Elf",
+   "PublishedDPS": 758.3986777683632,
+   "DPS": 736.5145885952868,
+   "ChangePercent": -2.885565312095706,
+   "PublishedTalents": "005303103012-32003311201515231",
+   "Talents": "005303103012-32003311201515231"
+  },
+  {
+   "Key": "combat",
+   "Race": "Orc",
+   "PublishedDPS": 760.2124567994348,
+   "DPS": 739.4429657145085,
+   "ChangePercent": -2.7320640301485843,
+   "PublishedTalents": "005303103012-32003311201515231",
+   "Talents": "005303103012-32003311201515231"
+  },
+  {
+   "Key": "combat",
+   "Race": "Troll",
+   "PublishedDPS": 754.7686130609501,
+   "DPS": 734.1741240095877,
+   "ChangePercent": -2.7285831306420927,
+   "PublishedTalents": "005303103012-32003311201515231",
+   "Talents": "005303103012-32003311201515231"
+  },
+  {
+   "Key": "combat",
+   "Race": "Undead",
+   "PublishedDPS": 759.5507630919046,
+   "DPS": 741.1235144232534,
+   "ChangePercent": -2.4260720367970445,
+   "PublishedTalents": "005303103012-32003311201515231",
+   "Talents": "005303103012-32003311201515231"
+  },
+  {
+   "Key": "combat",
+   "Race": "Windshaper",
+   "PublishedDPS": 773.5771076414695,
+   "DPS": 753.4360894402231,
+   "ChangePercent": -2.603621281226076,
+   "PublishedTalents": "005303103012-32003311201515231",
+   "Talents": "005303103012-32003311201515231"
+  },
+  {
+   "Key": "demonology",
+   "Race": "Gnome",
+   "PublishedDPS": 908.9918222349545,
+   "DPS": 993.120264117728,
+   "ChangePercent": 9.255137375815469,
+   "PublishedTalents": "011-0005003221220311351-0550005003",
+   "Talents": "011-0005003221220311351-0550005003"
+  },
+  {
+   "Key": "demonology",
+   "Race": "Human",
+   "PublishedDPS": 922.5177031543604,
+   "DPS": 1005.8721242806276,
+   "ChangePercent": 9.03553621152784,
+   "PublishedTalents": "011-0005003221220311351-0550005003",
+   "Talents": "011-0005003221220311351-0550005003"
+  },
+  {
+   "Key": "demonology",
+   "Race": "Orc",
+   "PublishedDPS": 916.5228832108492,
+   "DPS": 1000.0972309003369,
+   "ChangePercent": 9.1186318662009,
+   "PublishedTalents": "011-0005003221220311351-0550005003",
+   "Talents": "011-0005003221220311351-0550005003"
+  },
+  {
+   "Key": "demonology",
+   "Race": "Troll",
+   "PublishedDPS": 902.6554252412272,
+   "DPS": 983.7839057536429,
+   "ChangePercent": 8.987757481293013,
+   "PublishedTalents": "011-0005003221220311351-0550005003",
+   "Talents": "011-0005003221220311351-0550005003"
+  },
+  {
+   "Key": "demonology",
+   "Race": "Undead",
+   "PublishedDPS": 920.2990908924884,
+   "DPS": 1004.074033664583,
+   "ChangePercent": 9.103012661987009,
+   "PublishedTalents": "011-0005003221220311351-0550005003",
+   "Talents": "011-0005003221220311351-0550005003"
+  },
+  {
+   "Key": "destruction",
+   "Race": "Gnome",
+   "PublishedDPS": 802.7327400896596,
+   "DPS": 867.6809360471616,
+   "ChangePercent": 8.090886631863015,
+   "PublishedTalents": "2530000003-0005-0050355103101351",
+   "Talents": "2530000003-0005-0050355103101351"
+  },
+  {
+   "Key": "destruction",
+   "Race": "Human",
+   "PublishedDPS": 819.6580058199198,
+   "DPS": 884.9235236722022,
+   "ChangePercent": 7.962530395466105,
+   "PublishedTalents": "2530000003-0005-0050355103101351",
+   "Talents": "2530000003-0005-0050355103101351"
+  },
+  {
+   "Key": "destruction",
+   "Race": "Orc",
+   "PublishedDPS": 812.3748872658128,
+   "DPS": 877.6406197002062,
+   "ChangePercent": 8.033942636269376,
+   "PublishedTalents": "2530000003-0005-0050355103101351",
+   "Talents": "2530000003-0005-0050355103101351"
+  },
+  {
+   "Key": "destruction",
+   "Race": "Troll",
+   "PublishedDPS": 812.7640452532405,
+   "DPS": 880.0384039209708,
+   "ChangePercent": 8.277231142375285,
+   "PublishedTalents": "2530000003-0005-0050355103101351",
+   "Talents": "2530000003-0005-0050355103101351"
+  },
+  {
+   "Key": "destruction",
+   "Race": "Undead",
+   "PublishedDPS": 811.1696457636073,
+   "DPS": 874.4313162939692,
+   "ChangePercent": 7.798821228179653,
+   "PublishedTalents": "2530000003-0005-0050355103101351",
+   "Talents": "2530000003-0005-0050355103101351"
+  },
+  {
+   "Key": "ds_ruin",
+   "Race": "Gnome",
+   "PublishedDPS": 789.8493546355579,
+   "DPS": 863.7998716983477,
+   "ChangePercent": 9.362610303949804,
+   "PublishedTalents": "254000001351-0025003001-0550005103",
+   "Talents": "254000001351-0025003001-0550005103"
+  },
+  {
+   "Key": "ds_ruin",
+   "Race": "Human",
+   "PublishedDPS": 804.0843292485921,
+   "DPS": 879.6044084910372,
+   "ChangePercent": 9.392059575768364,
+   "PublishedTalents": "254000001351-0025003001-0550005103",
+   "Talents": "254000001351-0025003001-0550005103"
+  },
+  {
+   "Key": "ds_ruin",
+   "Race": "Orc",
+   "PublishedDPS": 794.6996252989392,
+   "DPS": 868.4547098876154,
+   "ChangePercent": 9.280875722186499,
+   "PublishedTalents": "254000001351-0025003001-0550005103",
+   "Talents": "254000001351-0025003001-0550005103"
+  },
+  {
+   "Key": "ds_ruin",
+   "Race": "Troll",
+   "PublishedDPS": 778.1429633895348,
+   "DPS": 853.6918570109909,
+   "ChangePercent": 9.708870628652932,
+   "PublishedTalents": "254000001351-0025003001-0550005103",
+   "Talents": "254000001351-0025003001-0550005103"
+  },
+  {
+   "Key": "ds_ruin",
+   "Race": "Undead",
+   "PublishedDPS": 795.2245713836448,
+   "DPS": 870.3236335768286,
+   "ChangePercent": 9.443755247969232,
+   "PublishedTalents": "254000001351-0025003001-0550005103",
+   "Talents": "254000001351-0025003001-0550005103"
+  },
+  {
+   "Key": "elemental",
+   "Race": "Dwarf",
+   "PublishedDPS": 532.0640199076323,
+   "DPS": 635.7471121885355,
+   "ChangePercent": 19.486958035407632,
+   "PublishedTalents": "5503331000011351-054-05303",
+   "Talents": "5503331000011351-055000001-05301"
+  },
+  {
+   "Key": "elemental",
+   "Race": "Orc",
+   "PublishedDPS": 533.9175858747735,
+   "DPS": 636.1218444367726,
+   "ChangePercent": 19.14232856641105,
+   "PublishedTalents": "5503331000011351-054-05303",
+   "Talents": "5503331000011351-055000001-05301"
+  },
+  {
+   "Key": "elemental",
+   "Race": "Tauren",
+   "PublishedDPS": 531.3655521996592,
+   "DPS": 635.0926538910617,
+   "ChangePercent": 19.520855513122793,
+   "PublishedTalents": "5503331000011351-054-05303",
+   "Talents": "5503331000011351-055000001-05301"
+  },
+  {
+   "Key": "elemental",
+   "Race": "Troll",
+   "PublishedDPS": 526.1144265170748,
+   "DPS": 626.7721350415796,
+   "ChangePercent": 19.13228443304018,
+   "PublishedTalents": "5503331000011351-054-05303",
+   "Talents": "5503331000011351-055000001-05301"
+  },
+  {
+   "Key": "elemental",
+   "Race": "Windshaper",
+   "PublishedDPS": 525.6898005792464,
+   "DPS": 628.1450528151047,
+   "ChangePercent": 19.489678537221966,
+   "PublishedTalents": "5503331000011351-054-05303",
+   "Talents": "5503331000011351-055000001-05301"
+  },
+  {
+   "Key": "enhancement",
+   "Race": "Dwarf",
+   "PublishedDPS": 816.2484648468918,
+   "DPS": 814.1041273344081,
+   "ChangePercent": -0.2627064680465807,
+   "PublishedTalents": "453203102-053030031005102251",
+   "Talents": "453203102-053030031005102251"
+  },
+  {
+   "Key": "enhancement",
+   "Race": "Orc",
+   "PublishedDPS": 816.5004164080083,
+   "DPS": 813.374521222489,
+   "ChangePercent": -0.3828406113092875,
+   "PublishedTalents": "453203102-053030031005102251",
+   "Talents": "453203102-053030031005102251"
+  },
+  {
+   "Key": "enhancement",
+   "Race": "Tauren",
+   "PublishedDPS": 814.687521155551,
+   "DPS": 810.5891137516883,
+   "ChangePercent": -0.503064954039012,
+   "PublishedTalents": "453203102-053030031005102251",
+   "Talents": "453203102-053030031005102251"
+  },
+  {
+   "Key": "enhancement",
+   "Race": "Troll",
+   "PublishedDPS": 806.563423380935,
+   "DPS": 801.4399737965945,
+   "ChangePercent": -0.6352196784307651,
+   "PublishedTalents": "453203102-053030031005102251",
+   "Talents": "453203102-053030031005102251"
+  },
+  {
+   "Key": "enhancement",
+   "Race": "Windshaper",
+   "PublishedDPS": 817.7478207329459,
+   "DPS": 812.946756058208,
+   "ChangePercent": -0.5871082200420541,
+   "PublishedTalents": "453203102-053030031005102251",
+   "Talents": "453203102-053030031005102251"
+  },
+  {
+   "Key": "feral",
+   "Race": "High Order",
+   "PublishedDPS": 851.0823272919387,
+   "DPS": 831.973558027495,
+   "ChangePercent": -2.2452315894334163,
+   "PublishedTalents": "05002-45010032021032212051-055",
+   "Talents": "05002-55000032021032212051-055"
+  },
+  {
+   "Key": "feral",
+   "Race": "Night Elf",
+   "PublishedDPS": 837.6106975397003,
+   "DPS": 816.1702298482603,
+   "ChangePercent": -2.5597175101054304,
+   "PublishedTalents": "05002-45010032021032212051-055",
+   "Talents": "05002-55000032021032212051-055"
+  },
+  {
+   "Key": "feral",
+   "Race": "Tauren",
+   "PublishedDPS": 848.4509547055628,
+   "DPS": 827.3356259285463,
+   "ChangePercent": -2.48869173402535,
+   "PublishedTalents": "05002-45010032021032212051-055",
+   "Talents": "05002-55000032021032212051-055"
+  },
+  {
+   "Key": "feral",
+   "Race": "Windshaper",
+   "PublishedDPS": 851.0823272919387,
+   "DPS": 831.973558027495,
+   "ChangePercent": -2.2452315894334163,
+   "PublishedTalents": "05002-45010032021032212051-055",
+   "Talents": "05002-55000032021032212051-055"
+  },
+  {
+   "Key": "feral_tank_druid",
+   "Race": "High Order",
+   "PublishedDPS": 551.4666564406401,
+   "DPS": 533.6801392227754,
+   "ChangePercent": -3.225311450861801,
+   "PublishedTalents": "01-50022332120132012551-055",
+   "Talents": "01-50022332120132012551-055"
+  },
+  {
+   "Key": "feral_tank_druid",
+   "Race": "Night Elf",
+   "PublishedDPS": 545.4299942080276,
+   "DPS": 529.3327245944516,
+   "ChangePercent": -2.951298935613067,
+   "PublishedTalents": "01-50022332120132012551-055",
+   "Talents": "01-50022332120132012551-055"
+  },
+  {
+   "Key": "feral_tank_druid",
+   "Race": "Tauren",
+   "PublishedDPS": 552.0181811873091,
+   "DPS": 534.4510348009441,
+   "ChangePercent": -3.1823492386755636,
+   "PublishedTalents": "01-50022332120132012551-055",
+   "Talents": "01-50022332120132012551-055"
+  },
+  {
+   "Key": "feral_tank_druid",
+   "Race": "Windshaper",
+   "PublishedDPS": 551.4666564406401,
+   "DPS": 533.6801392227754,
+   "ChangePercent": -3.225311450861801,
+   "PublishedTalents": "01-50022332120132012551-055",
+   "Talents": "01-50022332120132012551-055"
+  },
+  {
+   "Key": "fire",
+   "Race": "Gnome",
+   "PublishedDPS": 787.5352285328817,
+   "DPS": 923.7696487743893,
+   "ChangePercent": 17.298835062312335,
+   "PublishedTalents": "05001252000003-23450000130135031-002",
+   "Talents": "05002152000003-23450000130135031-002"
+  },
+  {
+   "Key": "fire",
+   "Race": "High Order",
+   "PublishedDPS": 757.703569694389,
+   "DPS": 888.8161975971148,
+   "ChangePercent": 17.30394749962818,
+   "PublishedTalents": "05001252000002-23450000130135031-003",
+   "Talents": "05002152000002-23450000130135031-003"
+  },
+  {
+   "Key": "fire",
+   "Race": "Human",
+   "PublishedDPS": 794.4024855055995,
+   "DPS": 930.393665636756,
+   "ChangePercent": 17.118675056083752,
+   "PublishedTalents": "05001252000003-23450000130135031-002",
+   "Talents": "05002152000003-23450000130135031-002"
+  },
+  {
+   "Key": "fire",
+   "Race": "Orc",
+   "PublishedDPS": 784.1302918140184,
+   "DPS": 916.436572042293,
+   "ChangePercent": 16.872996950825026,
+   "PublishedTalents": "05001252000003-23450000130135031-002",
+   "Talents": "05002152000003-23450000130135031-002"
+  },
+  {
+   "Key": "fire",
+   "Race": "Troll",
+   "PublishedDPS": 775.560453905806,
+   "DPS": 908.9789546576532,
+   "ChangePercent": 17.202849897765837,
+   "PublishedTalents": "05001252000003-23450000130135031-002",
+   "Talents": "05002152000003-23450000130135031-002"
+  },
+  {
+   "Key": "fire",
+   "Race": "Undead",
+   "PublishedDPS": 783.7023932432742,
+   "DPS": 912.2154847988354,
+   "ChangePercent": 16.398200728177258,
+   "PublishedTalents": "05001252000003-23450000130135031-002",
+   "Talents": "05002152000003-23450000130135031-002"
+  },
+  {
+   "Key": "frost",
+   "Race": "Gnome",
+   "PublishedDPS": 652.6552176162894,
+   "DPS": 609.1632179553233,
+   "ChangePercent": -6.663855353798165,
+   "PublishedTalents": "0500105001-03-0555003331000301241",
+   "Talents": "0500205-03-253520330100301251"
+  },
+  {
+   "Key": "frost",
+   "Race": "High Order",
+   "PublishedDPS": 635.1242533073015,
+   "DPS": 600.0250281428703,
+   "ChangePercent": -5.526355666888483,
+   "PublishedTalents": "0500105001-03-0555003331000301241",
+   "Talents": "0500205-03-253520330100301251"
+  },
+  {
+   "Key": "frost",
+   "Race": "Human",
+   "PublishedDPS": 643.4264808208062,
+   "DPS": 607.6578996536653,
+   "ChangePercent": -5.559078190489098,
+   "PublishedTalents": "0500105001-03-0555003331000301241",
+   "Talents": "0500205-03-253520330100301251"
+  },
+  {
+   "Key": "frost",
+   "Race": "Orc",
+   "PublishedDPS": 639.3363093513168,
+   "DPS": 605.3481354520495,
+   "ChangePercent": -5.316165123446903,
+   "PublishedTalents": "0500105001-03-0555003331000301241",
+   "Talents": "0500205-03-253520330100301251"
+  },
+  {
+   "Key": "frost",
+   "Race": "Troll",
+   "PublishedDPS": 627.5606438809818,
+   "DPS": 592.4982886452115,
+   "ChangePercent": -5.587086376057071,
+   "PublishedTalents": "0500105001-03-0555003331000301241",
+   "Talents": "0500205-03-253520330100301251"
+  },
+  {
+   "Key": "frost",
+   "Race": "Undead",
+   "PublishedDPS": 633.9310541447051,
+   "DPS": 596.7027810906308,
+   "ChangePercent": -5.872605989353586,
+   "PublishedTalents": "0500105001-03-0555003331000301241",
+   "Talents": "0500205-03-253520330100301251"
+  },
+  {
+   "Key": "frostfire",
+   "Race": "Gnome",
+   "PublishedDPS": null,
+   "DPS": 792.5448402241086,
+   "ChangePercent": null,
+   "PublishedTalents": null,
+   "Talents": "-1355000013013502-2035010311013002"
+  },
+  {
+   "Key": "frostfire",
+   "Race": "High Order",
+   "PublishedDPS": null,
+   "DPS": 783.51469831771,
+   "ChangePercent": null,
+   "PublishedTalents": null,
+   "Talents": "-1355000013013502-2035010311013002"
+  },
+  {
+   "Key": "frostfire",
+   "Race": "Human",
+   "PublishedDPS": null,
+   "DPS": 802.4154148029139,
+   "ChangePercent": null,
+   "PublishedTalents": null,
+   "Talents": "-1355000013013502-2035010311013002"
+  },
+  {
+   "Key": "frostfire",
+   "Race": "Orc",
+   "PublishedDPS": null,
+   "DPS": 788.7260575354312,
+   "ChangePercent": null,
+   "PublishedTalents": null,
+   "Talents": "-1355000013013502-2035010311013002"
+  },
+  {
+   "Key": "frostfire",
+   "Race": "Troll",
+   "PublishedDPS": null,
+   "DPS": 783.2554847796403,
+   "ChangePercent": null,
+   "PublishedTalents": null,
+   "Talents": "-1355000013013502-2035010311013002"
+  },
+  {
+   "Key": "frostfire",
+   "Race": "Undead",
+   "PublishedDPS": null,
+   "DPS": 783.8489613739864,
+   "ChangePercent": null,
+   "PublishedTalents": null,
+   "Talents": "-1355000013013502-2035010311013002"
+  },
+  {
+   "Key": "fury",
+   "Race": "Dwarf",
+   "PublishedDPS": 986.8171322478622,
+   "DPS": 959.0239125912882,
+   "ChangePercent": -2.816450864940301,
+   "PublishedTalents": "20305213002-25053005141010501",
+   "Talents": "20305213002-25053005132010501"
+  },
+  {
+   "Key": "fury",
+   "Race": "Gnome",
+   "PublishedDPS": 982.4267460272193,
+   "DPS": 954.6487624588443,
+   "ChangePercent": -2.827486495120868,
+   "PublishedTalents": "20305213002-25053005141010501",
+   "Talents": "20305213002-25053005132010501"
+  },
+  {
+   "Key": "fury",
+   "Race": "High Order",
+   "PublishedDPS": 999.9068242699884,
+   "DPS": 969.2653984629925,
+   "ChangePercent": -3.0644281110259075,
+   "PublishedTalents": "20305213002-25053005141010501",
+   "Talents": "20305213002-25053005132010501"
+  },
+  {
+   "Key": "fury",
+   "Race": "Human",
+   "PublishedDPS": 989.6243060821187,
+   "DPS": 965.4713465773299,
+   "ChangePercent": -2.44061906688704,
+   "PublishedTalents": "20305213002-25053005141010501",
+   "Talents": "20305213002-25053005132010501"
+  },
+  {
+   "Key": "fury",
+   "Race": "Night Elf",
+   "PublishedDPS": 980.1621621050848,
+   "DPS": 953.8384894801948,
+   "ChangePercent": -2.6856446456120064,
+   "PublishedTalents": "20305213002-25053005141010501",
+   "Talents": "20305213002-25053005132010501"
+  },
+  {
+   "Key": "fury",
+   "Race": "Orc",
+   "PublishedDPS": 992.8771103951516,
+   "DPS": 966.8943092120709,
+   "ChangePercent": -2.6169201516530016,
+   "PublishedTalents": "20305213002-25053005141010501",
+   "Talents": "20305213002-25053005132010501"
+  },
+  {
+   "Key": "fury",
+   "Race": "Tauren",
+   "PublishedDPS": 994.9836323161289,
+   "DPS": 967.0784656438911,
+   "ChangePercent": -2.8045854992890695,
+   "PublishedTalents": "20305213002-25053005141010501",
+   "Talents": "20305213002-25053005132010501"
+  },
+  {
+   "Key": "fury",
+   "Race": "Troll",
+   "PublishedDPS": 982.2106169269019,
+   "DPS": 955.1469974592969,
+   "ChangePercent": -2.75537842914797,
+   "PublishedTalents": "20305213002-25053005141010501",
+   "Talents": "20305213002-25053005132010501"
+  },
+  {
+   "Key": "fury",
+   "Race": "Undead",
+   "PublishedDPS": 983.9667936166848,
+   "DPS": 958.3956859857904,
+   "ChangePercent": -2.5987774990764434,
+   "PublishedTalents": "20305213002-25053005141010501",
+   "Talents": "20305213002-25053005132010501"
+  },
+  {
+   "Key": "fury",
+   "Race": "Windshaper",
+   "PublishedDPS": 999.9068242699884,
+   "DPS": 969.2653984629925,
+   "ChangePercent": -3.0644281110259075,
+   "PublishedTalents": "20305213002-25053005141010501",
+   "Talents": "20305213002-25053005132010501"
+  },
+  {
+   "Key": "fury_2h",
+   "Race": "Dwarf",
+   "PublishedDPS": 840.9388677112745,
+   "DPS": 798.8305677429559,
+   "ChangePercent": -5.007296200129496,
+   "PublishedTalents": "30304203032-55050020151010501",
+   "Talents": "30304203032-55050020151010501"
+  },
+  {
+   "Key": "fury_2h",
+   "Race": "Gnome",
+   "PublishedDPS": 833.6249692180953,
+   "DPS": 791.3298706166256,
+   "ChangePercent": -5.073636246901369,
+   "PublishedTalents": "30304203032-55050020151010501",
+   "Talents": "30304203032-55050020151010501"
+  },
+  {
+   "Key": "fury_2h",
+   "Race": "High Order",
+   "PublishedDPS": 843.9803402512694,
+   "DPS": 800.8207413763495,
+   "ChangePercent": -5.113815668036825,
+   "PublishedTalents": "30304203032-55050020151010501",
+   "Talents": "30304203032-55050020151010501"
+  },
+  {
+   "Key": "fury_2h",
+   "Race": "Human",
+   "PublishedDPS": 843.0690148832556,
+   "DPS": 800.334503555395,
+   "ChangePercent": -5.068922066098969,
+   "PublishedTalents": "30304203032-55050020151010501",
+   "Talents": "30304203032-55050020151010501"
+  },
+  {
+   "Key": "fury_2h",
+   "Race": "Night Elf",
+   "PublishedDPS": 835.5219111937924,
+   "DPS": 791.3931346330467,
+   "ChangePercent": -5.281582202637236,
+   "PublishedTalents": "30304203032-55050020151010501",
+   "Talents": "30304203032-55050020151010501"
+  },
+  {
+   "Key": "fury_2h",
+   "Race": "Orc",
+   "PublishedDPS": 846.3500546150404,
+   "DPS": 802.7263734598473,
+   "ChangePercent": -5.154330754434133,
+   "PublishedTalents": "30304203032-55050020151010501",
+   "Talents": "30304203032-55050020151010501"
+  },
+  {
+   "Key": "fury_2h",
+   "Race": "Tauren",
+   "PublishedDPS": 842.2614443140121,
+   "DPS": 798.8305677429559,
+   "ChangePercent": -5.156460249279126,
+   "PublishedTalents": "30304203032-55050020151010501",
+   "Talents": "30304203032-55050020151010501"
+  },
+  {
+   "Key": "fury_2h",
+   "Race": "Troll",
+   "PublishedDPS": 836.8659848556836,
+   "DPS": 792.7913327765506,
+   "ChangePercent": -5.2666320386690835,
+   "PublishedTalents": "30304203032-55050020151010501",
+   "Talents": "30304203032-55050020151010501"
+  },
+  {
+   "Key": "fury_2h",
+   "Race": "Undead",
+   "PublishedDPS": 838.7444335642496,
+   "DPS": 798.9132076830143,
+   "ChangePercent": -4.748910906266435,
+   "PublishedTalents": "30304203032-55050020151010501",
+   "Talents": "30304203032-55050020151010501"
+  },
+  {
+   "Key": "fury_2h",
+   "Race": "Windshaper",
+   "PublishedDPS": 843.9803402512694,
+   "DPS": 800.8207413763495,
+   "ChangePercent": -5.113815668036825,
+   "PublishedTalents": "30304203032-55050020151010501",
+   "Talents": "30304203032-55050020151010501"
+  },
+  {
+   "Key": "fury_sunder",
+   "Race": "Dwarf",
+   "PublishedDPS": 960.3875374269899,
+   "DPS": 930.5554470657833,
+   "ChangePercent": -3.1062554644483265,
+   "PublishedTalents": "20305213002-25053005141010501",
+   "Talents": "20305213002-25053005132010501"
+  },
+  {
+   "Key": "fury_sunder",
+   "Race": "Gnome",
+   "PublishedDPS": 957.0098182692883,
+   "DPS": 926.1691488475701,
+   "ChangePercent": -3.2226074208404953,
+   "PublishedTalents": "20305213002-25053005141010501",
+   "Talents": "20305213002-25053005132010501"
+  },
+  {
+   "Key": "fury_sunder",
+   "Race": "High Order",
+   "PublishedDPS": 973.0358744011436,
+   "DPS": 941.5755006120369,
+   "ChangePercent": -3.2332182827759626,
+   "PublishedTalents": "20305213002-25053005141010501",
+   "Talents": "20305213002-25053005132010501"
+  },
+  {
+   "Key": "fury_sunder",
+   "Race": "Human",
+   "PublishedDPS": 968.2505381866855,
+   "DPS": 940.4066493118258,
+   "ChangePercent": -2.8756905136355537,
+   "PublishedTalents": "20305213002-25053005141010501",
+   "Talents": "20305213002-25053005132010501"
+  },
+  {
+   "Key": "fury_sunder",
+   "Race": "Night Elf",
+   "PublishedDPS": 953.6447008037534,
+   "DPS": 921.7412415854743,
+   "ChangePercent": -3.3454240548277725,
+   "PublishedTalents": "20305213002-25053005141010501",
+   "Talents": "20305213002-25053005132010501"
+  },
+  {
+   "Key": "fury_sunder",
+   "Race": "Orc",
+   "PublishedDPS": 960.5701154521045,
+   "DPS": 930.9793083786038,
+   "ChangePercent": -3.080546291987585,
+   "PublishedTalents": "20305213002-25053005141010501",
+   "Talents": "20305213002-25053005132010501"
+  },
+  {
+   "Key": "fury_sunder",
+   "Race": "Tauren",
+   "PublishedDPS": 967.3645569238048,
+   "DPS": 937.3807531646468,
+   "ChangePercent": -3.0995350764664975,
+   "PublishedTalents": "20305213002-25053005141010501",
+   "Talents": "20305213002-25053005132010501"
+  },
+  {
+   "Key": "fury_sunder",
+   "Race": "Troll",
+   "PublishedDPS": 956.006132334556,
+   "DPS": 908.9490061017083,
+   "ChangePercent": -4.922261964777864,
+   "PublishedTalents": "20305213002-25053005141010501",
+   "Talents": "20305213002-25053005132010501"
+  },
+  {
+   "Key": "fury_sunder",
+   "Race": "Undead",
+   "PublishedDPS": 962.4631225491389,
+   "DPS": 934.5408952326266,
+   "ChangePercent": -2.901121784547833,
+   "PublishedTalents": "20305213002-25053005141010501",
+   "Talents": "20305213002-25053005132010501"
+  },
+  {
+   "Key": "fury_sunder",
+   "Race": "Windshaper",
+   "PublishedDPS": 973.0358744011436,
+   "DPS": 941.5755006120369,
+   "ChangePercent": -3.2332182827759626,
+   "PublishedTalents": "20305213002-25053005141010501",
+   "Talents": "20305213002-25053005132010501"
+  },
+  {
+   "Key": "marksmanship",
+   "Race": "Dwarf",
+   "PublishedDPS": 963.2237609846728,
+   "DPS": 1042.2824980871098,
+   "ChangePercent": 8.207722888980417,
+   "PublishedTalents": "5-0050552011523051-50005001",
+   "Talents": "5-0053452011523051-50004"
+  },
+  {
+   "Key": "marksmanship",
+   "Race": "High Order",
+   "PublishedDPS": 973.2524034746571,
+   "DPS": 1050.8945941955878,
+   "ChangePercent": 7.9776007173202546,
+   "PublishedTalents": "5-0050552011523051-50005001",
+   "Talents": "5-0053452011523051-50004"
+  },
+  {
+   "Key": "marksmanship",
+   "Race": "Human",
+   "PublishedDPS": 971.5342458205664,
+   "DPS": 1048.0656399561306,
+   "ChangePercent": 7.877374829018513,
+   "PublishedTalents": "5-0050552011523051-50005001",
+   "Talents": "5-0053452011523051-50004"
+  },
+  {
+   "Key": "marksmanship",
+   "Race": "Night Elf",
+   "PublishedDPS": 966.8620318035502,
+   "DPS": 1040.8616213220123,
+   "ChangePercent": 7.653583146752174,
+   "PublishedTalents": "5-0050552011523051-50005001",
+   "Talents": "5-0053452011523051-50004"
+  },
+  {
+   "Key": "marksmanship",
+   "Race": "Orc",
+   "PublishedDPS": 965.8246312596623,
+   "DPS": 1042.9279902553621,
+   "ChangePercent": 7.983163454336317,
+   "PublishedTalents": "5-0050552011523051-50005001",
+   "Talents": "5-0053452011523051-50004"
+  },
+  {
+   "Key": "marksmanship",
+   "Race": "Tauren",
+   "PublishedDPS": 961.30817709892,
+   "DPS": 1041.9149353365071,
+   "ChangePercent": 8.385111055733008,
+   "PublishedTalents": "5-0050552011523051-50005001",
+   "Talents": "5-0053452011523051-50004"
+  },
+  {
+   "Key": "marksmanship",
+   "Race": "Troll",
+   "PublishedDPS": 959.5625529104699,
+   "DPS": 1036.537816253396,
+   "ChangePercent": 8.021911975352802,
+   "PublishedTalents": "5-0050552011523051-50005001",
+   "Talents": "5-0053452011523051-50004"
+  },
+  {
+   "Key": "marksmanship",
+   "Race": "Windshaper",
+   "PublishedDPS": 973.2524034746571,
+   "DPS": 1050.8945941955878,
+   "ChangePercent": 7.9776007173202546,
+   "PublishedTalents": "5-0050552011523051-50005001",
+   "Talents": "5-0053452011523051-50004"
+  },
+  {
+   "Key": "mutilate",
+   "Race": "Dwarf",
+   "PublishedDPS": 748.7430774332432,
+   "DPS": 724.9734881107886,
+   "ChangePercent": -3.174598876284618,
+   "PublishedTalents": "0053031035140105-302303202014",
+   "Talents": "0053031035140105-302303202014"
+  },
+  {
+   "Key": "mutilate",
+   "Race": "Gnome",
+   "PublishedDPS": 743.1128027884896,
+   "DPS": 718.1952663695176,
+   "ChangePercent": -3.3531297436230845,
+   "PublishedTalents": "0053031035140105-302303202014",
+   "Talents": "0053031035140105-302303202014"
+  },
+  {
+   "Key": "mutilate",
+   "Race": "High Order",
+   "PublishedDPS": 761.6156373988996,
+   "DPS": 736.7595832295334,
+   "ChangePercent": -3.2635955656393323,
+   "PublishedTalents": "0053031035140105-302303202014",
+   "Talents": "0053031035140105-302303202014"
+  },
+  {
+   "Key": "mutilate",
+   "Race": "Human",
+   "PublishedDPS": 752.7246042531822,
+   "DPS": 726.2426127084287,
+   "ChangePercent": -3.5181514454449947,
+   "PublishedTalents": "0053031035140105-302303202014",
+   "Talents": "0053031035140105-302303202014"
+  },
+  {
+   "Key": "mutilate",
+   "Race": "Night Elf",
+   "PublishedDPS": 747.967813722769,
+   "DPS": 721.6863652346058,
+   "ChangePercent": -3.513713826448739,
+   "PublishedTalents": "0053031035140105-302303202014",
+   "Talents": "0053031035140105-302303202014"
+  },
+  {
+   "Key": "mutilate",
+   "Race": "Orc",
+   "PublishedDPS": 749.4405018309117,
+   "DPS": 724.8975341442369,
+   "ChangePercent": -3.274838713242123,
+   "PublishedTalents": "0053031035140105-302303202014",
+   "Talents": "0053031035140105-302303202014"
+  },
+  {
+   "Key": "mutilate",
+   "Race": "Troll",
+   "PublishedDPS": 741.1673622790294,
+   "DPS": 716.548590304552,
+   "ChangePercent": -3.3216211651274863,
+   "PublishedTalents": "0053031035140105-302303202014",
+   "Talents": "0053031035140105-302303202014"
+  },
+  {
+   "Key": "mutilate",
+   "Race": "Undead",
+   "PublishedDPS": 749.9922320509907,
+   "DPS": 728.6665347689111,
+   "ChangePercent": -2.843455754703028,
+   "PublishedTalents": "0053031035140105-302303202014",
+   "Talents": "0053031035140105-302303202014"
+  },
+  {
+   "Key": "mutilate",
+   "Race": "Windshaper",
+   "PublishedDPS": 761.6156373988996,
+   "DPS": 736.7595832295334,
+   "ChangePercent": -3.2635955656393323,
+   "PublishedTalents": "0053031035140105-302303202014",
+   "Talents": "0053031035140105-302303202014"
+  },
+  {
+   "Key": "pet_melee",
+   "Race": "Dwarf",
+   "PublishedDPS": 954.2352249519702,
+   "DPS": 924.2087352698011,
+   "ChangePercent": -3.146654922918024,
+   "PublishedTalents": "53200005001-0050051-5302002300501201",
+   "Talents": "53200005001-0050051-5302002300501201"
+  },
+  {
+   "Key": "pet_melee",
+   "Race": "High Order",
+   "PublishedDPS": 963.1343153839665,
+   "DPS": 932.5767788372345,
+   "ChangePercent": -3.1727180787396003,
+   "PublishedTalents": "53200005001-0050051-5302002300501201",
+   "Talents": "53200005001-0050051-5302002300501201"
+  },
+  {
+   "Key": "pet_melee",
+   "Race": "Human",
+   "PublishedDPS": 962.9321692310169,
+   "DPS": 929.4099308189619,
+   "ChangePercent": -3.481266851726983,
+   "PublishedTalents": "53200005001-0050051-5302002300501201",
+   "Talents": "53200005001-0050051-5302002300501201"
+  },
+  {
+   "Key": "pet_melee",
+   "Race": "Night Elf",
+   "PublishedDPS": 953.0040939853156,
+   "DPS": 919.9123518366482,
+   "ChangePercent": -3.4723609643986797,
+   "PublishedTalents": "53200005001-0050051-5302002300501201",
+   "Talents": "53200005001-0050051-5302002300501201"
+  },
+  {
+   "Key": "pet_melee",
+   "Race": "Orc",
+   "PublishedDPS": 955.4384421592407,
+   "DPS": 922.7715425596512,
+   "ChangePercent": -3.4190480682108726,
+   "PublishedTalents": "53200005001-0050051-5302002300501201",
+   "Talents": "53200005001-0050051-5302002300501201"
+  },
+  {
+   "Key": "pet_melee",
+   "Race": "Tauren",
+   "PublishedDPS": 950.2952472424257,
+   "DPS": 918.9211492483224,
+   "ChangePercent": -3.3015105658104615,
+   "PublishedTalents": "53200005001-0050051-5302002300501201",
+   "Talents": "53200005001-0050051-5302002300501201"
+  },
+  {
+   "Key": "pet_melee",
+   "Race": "Troll",
+   "PublishedDPS": 956.2591448203715,
+   "DPS": 924.2727556416066,
+   "ChangePercent": -3.344949886442483,
+   "PublishedTalents": "53200005001-0050051-5302002300501201",
+   "Talents": "53200005001-0050051-5302002300501201"
+  },
+  {
+   "Key": "pet_melee",
+   "Race": "Windshaper",
+   "PublishedDPS": 963.1343153839665,
+   "DPS": 932.5767788372345,
+   "ChangePercent": -3.1727180787396003,
+   "PublishedTalents": "53200005001-0050051-5302002300501201",
+   "Talents": "53200005001-0050051-5302002300501201"
+  },
+  {
+   "Key": "protection_paladin",
+   "Race": "Dwarf",
+   "PublishedDPS": 523.0961993934527,
+   "DPS": 549.228537351099,
+   "ChangePercent": 4.995704038367621,
+   "PublishedTalents": "-5520513321301551-15003",
+   "Talents": "-5520513321301551-15003"
+  },
+  {
+   "Key": "protection_paladin",
+   "Race": "Human",
+   "PublishedDPS": 530.2200833396146,
+   "DPS": 557.8756998764652,
+   "ChangePercent": 5.215874955671329,
+   "PublishedTalents": "-5521513321301551-152",
+   "Talents": "-5521513321301551-152"
+  },
+  {
+   "Key": "protection_paladin",
+   "Race": "Undead",
+   "PublishedDPS": 531.2184356023477,
+   "DPS": 559.1253111488662,
+   "ChangePercent": 5.253371057213974,
+   "PublishedTalents": "-5520513321301551-15102",
+   "Talents": "-5520513321301551-15102"
+  },
+  {
+   "Key": "retribution",
+   "Race": "Dwarf",
+   "PublishedDPS": 1000.4669094941513,
+   "DPS": 1077.8991837438875,
+   "ChangePercent": 7.739613725843952,
+   "PublishedTalents": "55003-232-05225231001330301",
+   "Talents": "55003-231-05225331001330301"
+  },
+  {
+   "Key": "retribution",
+   "Race": "Human",
+   "PublishedDPS": 1005.4229629990643,
+   "DPS": 1082.7140096831388,
+   "ChangePercent": 7.687416095363875,
+   "PublishedTalents": "55003-232-05225231001330301",
+   "Talents": "55003-231-05225331001330301"
+  },
+  {
+   "Key": "retribution",
+   "Race": "Undead",
+   "PublishedDPS": 998.6162102149315,
+   "DPS": 1076.6376006982914,
+   "ChangePercent": 7.812950529469931,
+   "PublishedTalents": "55003-232-05225231001330301",
+   "Talents": "55003-231-05225331001330301"
+  },
+  {
+   "Key": "retribution_physical",
+   "Race": "Dwarf",
+   "PublishedDPS": 945.5184240262467,
+   "DPS": 1012.8580049241405,
+   "ChangePercent": 7.121974483706572,
+   "PublishedTalents": "52003003-232-05225031101330311",
+   "Talents": "52003002-231-05225331001330311"
+  },
+  {
+   "Key": "retribution_physical",
+   "Race": "Human",
+   "PublishedDPS": 949.5752148603236,
+   "DPS": 1017.316425588653,
+   "ChangePercent": 7.133843603773271,
+   "PublishedTalents": "52003003-232-05225031101330311",
+   "Talents": "52003002-231-05225331001330311"
+  },
+  {
+   "Key": "retribution_physical",
+   "Race": "Undead",
+   "PublishedDPS": 936.4607531270061,
+   "DPS": 1006.1274825841597,
+   "ChangePercent": 7.439364567551188,
+   "PublishedTalents": "52003003-232-05225031101330311",
+   "Talents": "52003002-231-05225331001330311"
+  },
+  {
+   "Key": "shadow",
+   "Race": "Dwarf",
+   "PublishedDPS": 833.5344478306839,
+   "DPS": 912.4005277025173,
+   "ChangePercent": 9.46164613557201,
+   "PublishedTalents": "30503300103--50452001201302251",
+   "Talents": "30503300103--50452001201302251"
+  },
+  {
+   "Key": "shadow",
+   "Race": "Gnome",
+   "PublishedDPS": 827.1202467691359,
+   "DPS": 904.344688830358,
+   "ChangePercent": 9.336543551300203,
+   "PublishedTalents": "30503300103--50452001201302251",
+   "Talents": "30503300103--50452001201302251"
+  },
+  {
+   "Key": "shadow",
+   "Race": "Human",
+   "PublishedDPS": 835.3234279586679,
+   "DPS": 913.1079892606972,
+   "ChangePercent": 9.311909459084156,
+   "PublishedTalents": "30503300103--50452001201302251",
+   "Talents": "30503300103--50452001201302251"
+  },
+  {
+   "Key": "shadow",
+   "Race": "Night Elf",
+   "PublishedDPS": 828.596881325226,
+   "DPS": 906.0062318761524,
+   "ChangePercent": 9.342220842917094,
+   "PublishedTalents": "30503300103--50452001201302251",
+   "Talents": "30503300103--50452001201302251"
+  },
+  {
+   "Key": "shadow",
+   "Race": "Troll",
+   "PublishedDPS": 820.6895880192844,
+   "DPS": 896.7342648934427,
+   "ChangePercent": 9.265948780669975,
+   "PublishedTalents": "30503300103--50452001201302251",
+   "Talents": "30503300103--50452001201302251"
+  },
+  {
+   "Key": "shadow",
+   "Race": "Undead",
+   "PublishedDPS": 828.8625552483124,
+   "DPS": 905.5709116148072,
+   "ChangePercent": 9.254653365721687,
+   "PublishedTalents": "30503300103--50452001201302251",
+   "Talents": "30503300103--50452001201302251"
+  },
+  {
+   "Key": "shockadin",
+   "Race": "Dwarf",
+   "PublishedDPS": null,
+   "DPS": 873.2612840624938,
+   "ChangePercent": null,
+   "PublishedTalents": null,
+   "Talents": "550030032101012--052252300012303"
+  },
+  {
+   "Key": "shockadin",
+   "Race": "Human",
+   "PublishedDPS": null,
+   "DPS": 878.8861587283232,
+   "ChangePercent": null,
+   "PublishedTalents": null,
+   "Talents": "550030032101012--052252300012303"
+  },
+  {
+   "Key": "shockadin",
+   "Race": "Undead",
+   "PublishedDPS": null,
+   "DPS": 878.4769889194603,
+   "ChangePercent": null,
+   "PublishedTalents": null,
+   "Talents": "550030032101012--052252300012303"
+  },
+  {
+   "Key": "smite",
+   "Race": "Dwarf",
+   "PublishedDPS": 447.1326504087561,
+   "DPS": 492.93215236700195,
+   "ChangePercent": 10.242933929422794,
+   "PublishedTalents": "515035031030001031-00505023002-003",
+   "Talents": "515035031030001031-00505023002-003"
+  },
+  {
+   "Key": "smite",
+   "Race": "Gnome",
+   "PublishedDPS": 456.10469265357403,
+   "DPS": 502.5991123888802,
+   "ChangePercent": 10.193804291906329,
+   "PublishedTalents": "515035031030001031-00505023002-003",
+   "Talents": "515035031030001031-00505023002-003"
+  },
+  {
+   "Key": "smite",
+   "Race": "Human",
+   "PublishedDPS": 450.88372150959486,
+   "DPS": 496.14250342691616,
+   "ChangePercent": 10.037794614937813,
+   "PublishedTalents": "515035031030001031-00505023002-003",
+   "Talents": "515035031030001031-00505023002-003"
+  },
+  {
+   "Key": "smite",
+   "Race": "Night Elf",
+   "PublishedDPS": 446.12281613101175,
+   "DPS": 490.7941582904651,
+   "ChangePercent": 10.013238629412502,
+   "PublishedTalents": "515035031030001031-00505023002-003",
+   "Talents": "515035031030001031-00505023002-003"
+  },
+  {
+   "Key": "smite",
+   "Race": "Troll",
+   "PublishedDPS": 442.224715850728,
+   "DPS": 486.73381653709623,
+   "ChangePercent": 10.06481526043701,
+   "PublishedTalents": "515035031030001031-00505023002-003",
+   "Talents": "515035031030001031-00505023002-003"
+  },
+  {
+   "Key": "smite",
+   "Race": "Undead",
+   "PublishedDPS": 456.7794455920978,
+   "DPS": 500.8107508411421,
+   "ChangePercent": 9.639511075628416,
+   "PublishedTalents": "515035031030001031-00505023002-003",
+   "Talents": "515035031030001031-00505023002-003"
+  },
+  {
+   "Key": "stormcaller",
+   "Race": "Dwarf",
+   "PublishedDPS": 469.1786276321077,
+   "DPS": 527.7908419114452,
+   "ChangePercent": 12.492515819645678,
+   "PublishedTalents": "553233100000034-055030021004002",
+   "Talents": "553233100000034-055030021004002"
+  },
+  {
+   "Key": "stormcaller",
+   "Race": "Orc",
+   "PublishedDPS": 468.5924749990377,
+   "DPS": 527.755279460992,
+   "ChangePercent": 12.625641174044855,
+   "PublishedTalents": "553233100000034-055030021004002",
+   "Talents": "553233100000034-055030021004002"
+  },
+  {
+   "Key": "stormcaller",
+   "Race": "Tauren",
+   "PublishedDPS": 473.3545229332081,
+   "DPS": 532.561867680509,
+   "ChangePercent": 12.50803401653673,
+   "PublishedTalents": "553233100000034-055030021004002",
+   "Talents": "553233100000034-055030021004002"
+  },
+  {
+   "Key": "stormcaller",
+   "Race": "Troll",
+   "PublishedDPS": 461.75654935996505,
+   "DPS": 517.6290407828171,
+   "ChangePercent": 12.099988944454875,
+   "PublishedTalents": "553233100000034-055030021004002",
+   "Talents": "553233100000034-055030021004002"
+  },
+  {
+   "Key": "stormcaller",
+   "Race": "Windshaper",
+   "PublishedDPS": 461.33376350765,
+   "DPS": 517.5351452819518,
+   "ChangePercent": 12.182369082849466,
+   "PublishedTalents": "553233100000034-055030021004002",
+   "Talents": "553233100000034-055030021004002"
+  },
+  {
+   "Key": "subtlety",
+   "Race": "Dwarf",
+   "PublishedDPS": 703.6791612307716,
+   "DPS": 704.634085998383,
+   "ChangePercent": 0.1357045682497171,
+   "PublishedTalents": "115303101104--5320003310013211501",
+   "Talents": "005303103104--5320003310013211501"
+  },
+  {
+   "Key": "subtlety",
+   "Race": "Gnome",
+   "PublishedDPS": 704.6335638683075,
+   "DPS": 704.4844347142364,
+   "ChangePercent": -0.02116407189751701,
+   "PublishedTalents": "115303101104--5320003310013211501",
+   "Talents": "005303103104--5320003310013211501"
+  },
+  {
+   "Key": "subtlety",
+   "Race": "High Order",
+   "PublishedDPS": 717.6403372194884,
+   "DPS": 718.0466001644688,
+   "ChangePercent": 0.056610940593793124,
+   "PublishedTalents": "115303101104--5320003310013211501",
+   "Talents": "005303103104--5320003310013211501"
+  },
+  {
+   "Key": "subtlety",
+   "Race": "Human",
+   "PublishedDPS": 705.7389726932063,
+   "DPS": 705.4550361712687,
+   "ChangePercent": -0.04023251271698669,
+   "PublishedTalents": "115303101104--5320003310013211501",
+   "Talents": "005303103104--5320003310013211501"
+  },
+  {
+   "Key": "subtlety",
+   "Race": "Night Elf",
+   "PublishedDPS": 702.9377621273512,
+   "DPS": 701.5869758260759,
+   "ChangePercent": -0.19216300134272668,
+   "PublishedTalents": "115303101104--5320003310013211501",
+   "Talents": "005303103104--5320003310013211501"
+  },
+  {
+   "Key": "subtlety",
+   "Race": "Orc",
+   "PublishedDPS": 705.2310777932793,
+   "DPS": 704.4604097035317,
+   "ChangePercent": -0.10927880435431803,
+   "PublishedTalents": "115303101104--5320003310013211501",
+   "Talents": "005303103104--5320003310013211501"
+  },
+  {
+   "Key": "subtlety",
+   "Race": "Troll",
+   "PublishedDPS": 700.5169776716639,
+   "DPS": 699.9656945730399,
+   "ChangePercent": -0.07869660781903987,
+   "PublishedTalents": "115303101104--5320003310013211501",
+   "Talents": "005303103104--5320003310013211501"
+  },
+  {
+   "Key": "subtlety",
+   "Race": "Undead",
+   "PublishedDPS": 703.7002681498935,
+   "DPS": 706.4341578014336,
+   "ChangePercent": 0.38850200508346866,
+   "PublishedTalents": "115303101104--5320003310013211501",
+   "Talents": "005303103104--5320003310013211501"
+  },
+  {
+   "Key": "subtlety",
+   "Race": "Windshaper",
+   "PublishedDPS": 717.6403372194884,
+   "DPS": 718.0466001644688,
+   "ChangePercent": 0.056610940593793124,
+   "PublishedTalents": "115303101104--5320003310013211501",
+   "Talents": "005303103104--5320003310013211501"
+  },
+  {
+   "Key": "survival",
+   "Race": "Dwarf",
+   "PublishedDPS": 951.7025532260272,
+   "DPS": 978.4458255879581,
+   "ChangePercent": 2.8100452469395965,
+   "PublishedTalents": "502-0050051-230230230250022151",
+   "Talents": "502-0050051-500230230250022151"
+  },
+  {
+   "Key": "survival",
+   "Race": "High Order",
+   "PublishedDPS": 956.0769192510244,
+   "DPS": 983.6984319222854,
+   "ChangePercent": 2.889047116930632,
+   "PublishedTalents": "502-0050051-230230230250022151",
+   "Talents": "502-0050051-500230230250022151"
+  },
+  {
+   "Key": "survival",
+   "Race": "Human",
+   "PublishedDPS": 958.6570623873805,
+   "DPS": 984.6503167291651,
+   "ChangePercent": 2.7114236531103897,
+   "PublishedTalents": "502-0050051-230230230250022151",
+   "Talents": "502-0050051-500230230250022151"
+  },
+  {
+   "Key": "survival",
+   "Race": "Night Elf",
+   "PublishedDPS": 953.2898015762445,
+   "DPS": 977.6237630776186,
+   "ChangePercent": 2.552630004132883,
+   "PublishedTalents": "502-0050051-230230230250022151",
+   "Talents": "502-0050051-500230230250022151"
+  },
+  {
+   "Key": "survival",
+   "Race": "Orc",
+   "PublishedDPS": 954.625403829892,
+   "DPS": 981.0758901230568,
+   "ChangePercent": 2.7707712561437337,
+   "PublishedTalents": "502-0050051-230230230250022151",
+   "Talents": "502-0050051-500230230250022151"
+  },
+  {
+   "Key": "survival",
+   "Race": "Tauren",
+   "PublishedDPS": 950.6978541725898,
+   "DPS": 978.1032918122423,
+   "ChangePercent": 2.8826653514963496,
+   "PublishedTalents": "502-0050051-230230230250022151",
+   "Talents": "502-0050051-500230230250022151"
+  },
+  {
+   "Key": "survival",
+   "Race": "Troll",
+   "PublishedDPS": 946.7474638945303,
+   "DPS": 972.2938944545562,
+   "ChangePercent": 2.6983363076504396,
+   "PublishedTalents": "502-0050051-230230230250022151",
+   "Talents": "502-0050051-500230230250022151"
+  },
+  {
+   "Key": "survival",
+   "Race": "Windshaper",
+   "PublishedDPS": 956.0769192510244,
+   "DPS": 983.6984319222854,
+   "ChangePercent": 2.889047116930632,
+   "PublishedTalents": "502-0050051-230230230250022151",
+   "Talents": "502-0050051-500230230250022151"
+  },
+  {
+   "Key": "survival_weave",
+   "Race": "Dwarf",
+   "PublishedDPS": null,
+   "DPS": 1251.5906478135678,
+   "ChangePercent": null,
+   "PublishedTalents": null,
+   "Talents": "-00530501105-530200230050121151"
+  },
+  {
+   "Key": "survival_weave",
+   "Race": "High Order",
+   "PublishedDPS": null,
+   "DPS": 1238.910328664247,
+   "ChangePercent": null,
+   "PublishedTalents": null,
+   "Talents": "-00530501105-530200230050121151"
+  },
+  {
+   "Key": "survival_weave",
+   "Race": "Human",
+   "PublishedDPS": null,
+   "DPS": 1258.1877480070452,
+   "ChangePercent": null,
+   "PublishedTalents": null,
+   "Talents": "-00530501105-530200230050121151"
+  },
+  {
+   "Key": "survival_weave",
+   "Race": "Night Elf",
+   "PublishedDPS": null,
+   "DPS": 1248.9128716654898,
+   "ChangePercent": null,
+   "PublishedTalents": null,
+   "Talents": "-00530501105-530200230050121151"
+  },
+  {
+   "Key": "survival_weave",
+   "Race": "Orc",
+   "PublishedDPS": null,
+   "DPS": 1252.9723669996838,
+   "ChangePercent": null,
+   "PublishedTalents": null,
+   "Talents": "-00530501105-530200230050121151"
+  },
+  {
+   "Key": "survival_weave",
+   "Race": "Tauren",
+   "PublishedDPS": null,
+   "DPS": 1251.1012488989556,
+   "ChangePercent": null,
+   "PublishedTalents": null,
+   "Talents": "-00530501105-530200230050121151"
+  },
+  {
+   "Key": "survival_weave",
+   "Race": "Troll",
+   "PublishedDPS": null,
+   "DPS": 1233.254549738499,
+   "ChangePercent": null,
+   "PublishedTalents": null,
+   "Talents": "-00530501105-530200230050121151"
+  },
+  {
+   "Key": "survival_weave",
+   "Race": "Windshaper",
+   "PublishedDPS": null,
+   "DPS": 1238.910328664247,
+   "ChangePercent": null,
+   "PublishedTalents": null,
+   "Talents": "-00530501105-530200230050121151"
+  },
+  {
+   "Key": "tank_warrior",
+   "Race": "Dwarf",
+   "PublishedDPS": 507.38016748166086,
+   "DPS": 481.7678445183754,
+   "ChangePercent": -5.047955084726718,
+   "PublishedTalents": "31-0501-255333120330011351",
+   "Talents": "31-0501-255333120330011351"
+  },
+  {
+   "Key": "tank_warrior",
+   "Race": "Gnome",
+   "PublishedDPS": 507.1114678366154,
+   "DPS": 479.77074288684975,
+   "ChangePercent": -5.391462564710626,
+   "PublishedTalents": "31-0501-255333120230021351",
+   "Talents": "31-0501-255333120230021351"
+  },
+  {
+   "Key": "tank_warrior",
+   "Race": "High Order",
+   "PublishedDPS": 509.9360494271488,
+   "DPS": 482.6192725340599,
+   "ChangePercent": -5.356902482924275,
+   "PublishedTalents": "31-0501-255333120230021351",
+   "Talents": "31-0501-255333120230021351"
+  },
+  {
+   "Key": "tank_warrior",
+   "Race": "Human",
+   "PublishedDPS": 508.15797452121575,
+   "DPS": 480.97572532557353,
+   "ChangePercent": -5.349173004960361,
+   "PublishedTalents": "35-0501-251333120230021351",
+   "Talents": "35-0501-251333120230021351"
+  },
+  {
+   "Key": "tank_warrior",
+   "Race": "Night Elf",
+   "PublishedDPS": 497.1957522445717,
+   "DPS": 470.5895713122184,
+   "ChangePercent": -5.35124864044808,
+   "PublishedTalents": "31-0501-255333120230021351",
+   "Talents": "31-0501-255333120230021351"
+  },
+  {
+   "Key": "tank_warrior",
+   "Race": "Orc",
+   "PublishedDPS": 501.8242350546995,
+   "DPS": 475.24724060576756,
+   "ChangePercent": -5.296076313658904,
+   "PublishedTalents": "31-0501-255233120330021351",
+   "Talents": "31-0501-255233120330021351"
+  },
+  {
+   "Key": "tank_warrior",
+   "Race": "Tauren",
+   "PublishedDPS": 513.708203692097,
+   "DPS": 485.08828889687527,
+   "ChangePercent": -5.57123958494844,
+   "PublishedTalents": "31-0501-255333120330011351",
+   "Talents": "31-0501-255333120330011351"
+  },
+  {
+   "Key": "tank_warrior",
+   "Race": "Troll",
+   "PublishedDPS": 504.845305819262,
+   "DPS": 477.9042158944806,
+   "ChangePercent": -5.336503997211873,
+   "PublishedTalents": "31-0501-255333120330011351",
+   "Talents": "31-0501-255333120330011351"
+  },
+  {
+   "Key": "tank_warrior",
+   "Race": "Undead",
+   "PublishedDPS": 516.6389780014154,
+   "DPS": 492.06177881105316,
+   "ChangePercent": -4.757132201956093,
+   "PublishedTalents": "35-0501-251333120230021351",
+   "Talents": "35-0501-251333120230021351"
+  },
+  {
+   "Key": "tank_warrior",
+   "Race": "Windshaper",
+   "PublishedDPS": 509.9360494271488,
+   "DPS": 482.6192725340599,
+   "ChangePercent": -5.356902482924275,
+   "PublishedTalents": "31-0501-255333120230021351",
+   "Talents": "31-0501-255333120230021351"
+  }
+ ]
+}

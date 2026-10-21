@@ -93,6 +93,16 @@ func (warrior *Warrior) registerCleaveSpell(realismICD *core.Cooldown) {
 				target = sim.Environment.NextTargetUnit(target)
 			}
 
+			// The flat threat is split between the targets the cleave lands on (Rank 2: damage + 46 /
+			// targets hit; wowsims/forever #385).
+			if landed := countLanded(results); landed > 1 {
+				spell.FlatThreatBonus = threat / float64(landed)
+				for _, result := range results {
+					result.Threat = spell.ThreatFromDamage(result.Outcome, result.Damage)
+				}
+				spell.FlatThreatBonus = threat
+			}
+
 			for _, result := range results {
 				spell.DealDamage(sim, result)
 			}
@@ -188,4 +198,14 @@ func (warrior *Warrior) TryHSOrCleave(sim *core.Simulation, mhSwingSpell *core.S
 	}
 
 	return warrior.curQueuedAutoSpell.Spell
+}
+
+func countLanded(results []*core.SpellResult) int {
+	n := 0
+	for _, result := range results {
+		if result.Landed() {
+			n++
+		}
+	}
+	return n
 }

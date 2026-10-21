@@ -10,12 +10,15 @@ BUILDS = [
     ("marksmanship", "Hunter", "Marksmanship", "ability_marksmanship"),
     ("survival", "Hunter", "Survival", "ability_hunter_swiftstrike"),
     ("pet_melee", "Hunter", "Pet/Melee", "ability_hunter_beasttaming"),
+    ("survival_weave", "Hunter", "SV Weave", "ability_hunter_swiftstrike"),
     ("arcane", "Mage", "Arcane", "spell_holy_magicalsentry"),
     ("fire", "Mage", "Fire", "spell_fire_firebolt02"),
     ("frost", "Mage", "Frost", "spell_frost_frostbolt02"),
     ("arcane_frost", "Mage", "Arcane–Frost", "spell_frost_frostbolt02"),
+    ("frostfire", "Mage", "Frostfire", "ability_mage_frostfirebolt"),
     ("retribution", "Paladin", "Retribution", "spell_holy_auraoflight"),
     ("retribution_physical", "Paladin", "Physical Ret", "spell_holy_blessingofstrength"),
+    ("shockadin", "Paladin", "Shockadin", "spell_holy_searinglight"),
     ("smite", "Priest", "Smite", "spell_holy_holysmite"),
     ("shadow", "Priest", "Shadow", "spell_shadow_shadowwordpain"),
     ("combat", "Rogue", "Combat", "ability_backstab"),
@@ -48,6 +51,9 @@ BUILD_CAVEATS = {
     "fury_sunder": ["This Warrior personally builds and refreshes five Sunder stacks. External Sunder and Expose Armor are disabled only for this row; its initial armor ramp and lost globals are included. The provisional Warrior rage model still applies."],
     "fury_2h": ["Level-60 rage and Flurry charge timing remain unverified; this row uses the provisional Warrior model."],
     "retribution": ["Separate seal Echoes can coexist and fire on a landed white swing; their simultaneous server behavior remains qualified (PAL-002). Active presets use maximum registered ranks, not deliberate downranking."],
+    "survival_weave": ["Melee weave from 12 yards: steps in for Raptor Strike, Mongoose Bite, Strider Kick and Immolation Trap while the next Auto Shot is more than 1.5 s away, then back out. No pet. Movement takes the engine's run speed; no latency is modelled."],
+    "frostfire": ["Frostfire Bolt spam behind five Fire Vulnerability stacks, Pyroblast on three Heating Up stacks. Uses the hotfixed Frost tree (20 October 2026)."],
+    "shockadin": ["Holy Shock Retribution with Seal of Righteousness, Judgement, Consecration, Hammer of Wrath and Holy Strike. Champion of the Light at the hotfixed 20/40/60% of Intellect. No Manual Crowd Pummeler swap."],
     "retribution_physical": ["Uses a physical equipment budget without caster gear. Champion of the Light converts existing Intellect into damage-only spell bonus, not healing power. Seal Echo ordering remains qualified (PAL-002)."],
     "smite": ["Uses maximum registered ranks. Penance's static rank anomaly and actual skill-book acquisition remain source gaps; no efficient lower-rank fallback is assumed."],
     "stormcaller": ["Uses maximum registered Lightning Bolt. Overload uses its own client rank rows; Maelstrom/proc and server-script questions remain qualified."],
@@ -56,7 +62,8 @@ BUILD_CAVEATS = {
     "feral_tank_druid": ["Tank encounter: frontal attacks, incoming boss damage and modeled healing. Bear's outgoing base Rage remains the qualified damage-based model (DRU-012), with sourced double critical Rage. Incoming Rage now shares Warrior's configurable provisional expected-health scenario. The form threat multiplier is sourced at 1.5; this is not a survival ranking.", "Proc-enchant form eligibility is supported. Recovery has a sourced heal/ICD; Revelation requires an explicit, unverified proc model. Historical enchant-selection gains do not validate those assumptions."],
 }
 
-HYBRID_PARENTS = {"pet_melee": "survival", "arcane_frost": "frost", "fury_2h": "arms", "fury_sunder": "fury"}
+HYBRID_PARENTS = {"pet_melee": "survival", "survival_weave": "survival", "arcane_frost": "frost", "frostfire": "fire",
+                  "fury_2h": "arms", "fury_sunder": "fury", "shockadin": "retribution"}
 
 
 def expected_roster():

@@ -62,17 +62,20 @@ export const DefaultAPL = APLBasicRet;
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsRetribution = PresetUtils.makePresetTalents('Retribution 13/7/31', SavedTalents.create({ talentsString: '55003-232-05225231001330301' }));
+export const TalentsRetribution = PresetUtils.makePresetTalents('Retribution 13/6/32', SavedTalents.create({ talentsString: '55003-231-05225331001330301' }));
 export const TalentsPhysicalRetribution = PresetUtils.makePresetTalents(
-	'Physical Ret 13/7/31',
-	SavedTalents.create({ talentsString: '52003003-232-05225031101330311' }),
+	'Physical Ret 12/6/33',
+	SavedTalents.create({ talentsString: '52003002-231-05225331001330311' }),
 );
+
+// Shockadin (Holy Shock Retribution), wowsims/forever's Holy Shock preset.
+export const TalentsShockadin = PresetUtils.makePresetTalents('Shockadin 23/0/28', SavedTalents.create({ talentsString: '550030032101012--052252300012303' }));
 
 export const TalentPresets = {
 	[ClassicPhase.Phase1]: [],
 	[ClassicPhase.Phase2]: [],
 	[ClassicPhase.Phase3]: [],
-	[ClassicPhase.Phase4]: [TalentsRetribution, TalentsPhysicalRetribution],
+	[ClassicPhase.Phase4]: [TalentsRetribution, TalentsPhysicalRetribution, TalentsShockadin],
 };
 
 export const DefaultTalents = TalentsRetribution;
@@ -111,7 +114,7 @@ export const PhysicalRetConsumes = Consumes.create({
 	defaultPotion: Potions.MajorManaPotion,
 	dragonBreathChili: true,
 	food: Food.FoodBlessSunfruit,
-	mainHandImbue: WeaponImbue.ElementalSharpeningStone,
+	mainHandImbue: WeaponImbue.DenseSharpeningStone,
 	manaRegenElixir: ManaRegenElixir.MagebloodPotion,
 	strengthBuff: StrengthBuff.JujuPower,
 	zanzaBuff: ZanzaBuff.ROIDS,

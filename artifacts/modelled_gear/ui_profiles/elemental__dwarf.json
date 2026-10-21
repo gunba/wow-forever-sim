@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "1793400001",
+    "fixedRngSeed": "1793500001",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Alliance",
@@ -119,7 +119,7 @@
     },
     "consumes": {
       "flask": "FlaskOfSupremePower",
-      "food": "FoodRunnTumTuberSurprise",
+      "food": "FoodNightfinSoup",
       "manaRegenElixir": "MagebloodPotion",
       "strengthBuff": "JujuPower",
       "spellPowerBuff": "GreaterArcaneElixir",
@@ -128,7 +128,9 @@
       "mainHandImbue": "BrilliantWizardOil",
       "defaultPotion": "MajorManaPotion",
       "defaultConjured": "ConjuredDemonicRune",
-      "zanzaBuff": "CerebralCortexCompound"
+      "zanzaBuff": "CerebralCortexCompound",
+      "intellectElixir": "ElixirOfTheOwl",
+      "mainHandScroll": "ScrollOfImbuePrecision"
     },
     "bonusStats": {
       "stats": [
@@ -184,7 +186,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "5503331000011351-054-05303",
+    "talentsString": "5503331000011351-055000001-05301",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",

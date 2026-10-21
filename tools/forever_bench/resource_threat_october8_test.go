@@ -15,7 +15,7 @@ func TestForeverNoThreatManaConversions(t *testing.T) {
 		name, build    string
 		spend, restore int32
 	}{
-		{"Life Tap", "demonology", 25307, 11689},
+		{"Life Tap", "demonology", 11661, 11689},
 		{"Dark Sacrifice", "shadow", 10894, 1277328},
 	} {
 		t.Run(tc.name, func(t *testing.T) {

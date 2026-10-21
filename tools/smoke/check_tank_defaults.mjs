@@ -81,7 +81,7 @@ try {
     if (route === 'tank_warrior') {
       const invalid = structuredClone(state);
       const strike = invalid.player.rotation.priorityList.find(
-        item => item.action?.castSpell?.spellId?.spellId === 25286,
+        item => item.action?.castSpell?.spellId?.spellId === 11567, // Heroic Strike 8, the last trainer rank
       );
       assert.equal(strike.action.castSpell.spellId.tag, 1);
       delete strike.action.castSpell.spellId.tag;

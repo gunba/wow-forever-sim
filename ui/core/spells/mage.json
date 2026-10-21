@@ -280,7 +280,7 @@
 	"11426": {
 		"ability": "Ice Barrier",
 		"file": "sim/mage/ice_barrier.go",
-		"note": "Beta client 1.60.1.69893: 7 less absorbed at every rank before level growth. The sim does not model the absorb, so nothing it computes changed.",
+		"note": "Beta client 1.60.1.69893: 7 less absorbed at every rank before level growth. The sim does not model the absorb, so nothing it computes changed. Server hotfix (push 112753): the shield raises Frost damage by 3% while it holds and applies Frigid Power (1326891); the sim models both, not the absorb.",
 		"source": "forever",
 		"tooltip": "305 Mana\nInstant\n30 sec cooldown\nInstantly shields you, absorbing 431 damage. Lasts 1 min. While the shield holds, your spellcasts will not be interrupted or delayed from taking damage."
 	},
@@ -417,21 +417,21 @@
 	"13031": {
 		"ability": "Ice Barrier",
 		"file": "sim/mage/ice_barrier.go",
-		"note": "Beta client 1.60.1.69893: 7 less absorbed at every rank before level growth. The sim does not model the absorb, so nothing it computes changed.",
+		"note": "Beta client 1.60.1.69893: 7 less absorbed at every rank before level growth. The sim does not model the absorb, so nothing it computes changed. Server hotfix (push 112753): the shield raises Frost damage by 3% while it holds and applies Frigid Power (1326891); the sim models both, not the absorb.",
 		"source": "forever",
 		"tooltip": "360 Mana\nInstant\n30 sec cooldown\nInstantly shields you, absorbing 542 damage. Lasts 1 min. While the shield holds, your spellcasts will not be interrupted or delayed from taking damage."
 	},
 	"13032": {
 		"ability": "Ice Barrier",
 		"file": "sim/mage/ice_barrier.go",
-		"note": "Beta client 1.60.1.69893: 7 less absorbed at every rank before level growth. The sim does not model the absorb, so nothing it computes changed.",
+		"note": "Beta client 1.60.1.69893: 7 less absorbed at every rank before level growth. The sim does not model the absorb, so nothing it computes changed. Server hotfix (push 112753): the shield raises Frost damage by 3% while it holds and applies Frigid Power (1326891); the sim models both, not the absorb.",
 		"source": "forever",
 		"tooltip": "420 Mana\nInstant\n30 sec cooldown\nInstantly shields you, absorbing 671 damage. Lasts 1 min. While the shield holds, your spellcasts will not be interrupted or delayed from taking damage."
 	},
 	"13033": {
 		"ability": "Ice Barrier",
 		"file": "sim/mage/ice_barrier.go",
-		"note": "Beta client 1.60.1.69893: 7 less absorbed at every rank before level growth. The sim does not model the absorb, so nothing it computes changed.",
+		"note": "Beta client 1.60.1.69893: 7 less absorbed at every rank before level growth. The sim does not model the absorb, so nothing it computes changed. Server hotfix (push 112753): the shield raises Frost damage by 3% while it holds and applies Frigid Power (1326891); the sim models both, not the absorb.",
 		"source": "forever",
 		"tooltip": "480 Mana\nInstant\n30 sec cooldown\nInstantly shields you, absorbing 811 damage. Lasts 1 min. While the shield holds, your spellcasts will not be interrupted or delayed from taking damage."
 	},
@@ -898,5 +898,12 @@
 		"source": "forever",
 		"tooltip": "395 Mana\n3.5 sec cast\n6 sec cooldown\nLaunches a projectile of pure Arcane energy at the enemy target, causing 406 to 496 Arcane damage. This spell gains additional Spell Damage equal to 5% of your maximum Mana.",
 		"note": "Client 1.60.1.70425 (October 15 notes). Rank 4, level 60: coefficient 1.0 plus 5% of maximum mana as Spell Damage."
+	},
+	"1326891": {
+		"ability": "Frigid Power",
+		"file": "sim/mage/ice_barrier.go",
+		"source": "forever",
+		"tooltip": "Increases the damage done by your Frost spells by 3%.",
+		"note": "Server hotfix (game cache push 112753): every Ice Barrier cast applies it for 1 min, +3% Frost damage (SpellEffect 1365007/1365008, SPELLMOD percent on direct and periodic damage). The shield itself adds another 3% while it holds."
 	}
 }

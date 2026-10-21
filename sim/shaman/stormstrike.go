@@ -41,7 +41,11 @@ func (shaman *Shaman) registerStormstrikeSpell() {
 				// The charge goes on the first damage calculation, so an overload cast off the same bolt misses out.
 				if aura := stormStrikeAuras.Get(result.Target); aura.IsActive() {
 					result.Damage *= 1.20
-					aura.Deactivate(sim)
+					// Earth Shock takes the bonus without spending the charge (in-game beta testing relayed
+					// 16 October 2026, MythicSim patch 140).
+					if spell.SpellCode != SpellCode_ShamanEarthShock {
+						aura.Deactivate(sim)
+					}
 				}
 			})
 		}

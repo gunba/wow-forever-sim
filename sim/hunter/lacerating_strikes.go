@@ -44,7 +44,13 @@ func (hunter *Hunter) registerLaceratingStrikesSpell() {
 
 func (hunter *Hunter) procLaceratingStrikes(sim *core.Simulation, result *core.SpellResult) {
 	dot := hunter.LaceratingStrikes.Dot(result.Target)
-	dot.SnapshotBaseDamage = result.Damage * 0.4 / float64(dot.NumberOfTicks)
+	// A new bite rolls the running bleed's unticked damage into the new one, as Deep Wounds does
+	// (wowsims/forever #257; MythicSim patch 132).
+	outstanding := 0.0
+	if dot.IsActive() {
+		outstanding = dot.SnapshotBaseDamage * float64(dot.MaxTicksRemaining())
+	}
+	dot.SnapshotBaseDamage = (outstanding + result.Damage*0.4) / float64(dot.NumberOfTicks)
 	dot.SnapshotAttackerMultiplier = 1
 
 	hunter.LaceratingStrikes.Cast(sim, result.Target)

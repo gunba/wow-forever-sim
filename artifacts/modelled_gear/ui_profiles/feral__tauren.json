@@ -1,7 +1,7 @@
 {
   "settings": {
     "iterations": 5000,
-    "fixedRngSeed": "1793400001",
+    "fixedRngSeed": "1793500001",
     "ruleset": "RulesetForever",
     "phase": 1,
     "faction": "Horde",
@@ -120,15 +120,16 @@
     },
     "consumes": {
       "flask": "FlaskOfDistilledWisdom",
-      "food": "FoodGrilledSquid",
+      "food": "FoodSwiftstrikeSteak",
       "agilityElixir": "ElixirOfTheMongoose",
-      "strengthBuff": "JujuPower",
+      "strengthBuff": "ElixirOfFerocity",
       "attackPowerBuff": "JujuMight",
-      "mainHandImbue": "ElementalSharpeningStone",
+      "mainHandImbue": "DenseWeightstone",
       "defaultPotion": "MajorManaPotion",
       "defaultConjured": "ConjuredRogueThistleTea",
       "dragonBreathChili": true,
-      "zanzaBuff": "GroundScorpokAssay"
+      "zanzaBuff": "GroundScorpokAssay",
+      "mainHandScroll": "ScrollOfImbuePrecision"
     },
     "bonusStats": {
       "stats": [
@@ -184,7 +185,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "05002-45010032021032212051-055",
+    "talentsString": "05002-55000032021032212051-055",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
@@ -252,7 +253,7 @@
             },
             "castSpell": {
               "spellId": {
-                "spellId": 31018
+                "spellId": 22829
               }
             }
           }
@@ -297,7 +298,7 @@
             },
             "castSpell": {
               "spellId": {
-                "spellId": 31018
+                "spellId": 22829
               }
             }
           }

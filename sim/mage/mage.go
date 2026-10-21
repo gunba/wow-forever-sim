@@ -36,6 +36,15 @@ const (
 
 var TalentTreeSizes = [3]int{19, 17, 19}
 
+// ForeverTalentTreeFields is the tree after the server hotfix of 20 October 2026 (TraitNode 105771-105776, TraitNodeEntry
+// 130507, game cache push 112753): Piercing Ice is gone, Frostbite and Permafrost trade places, Frost Channeling and
+// Improved Blizzard move left, and Elemental Precision has three ranks.
+var ForeverTalentTreeFields = [3][]string{
+	{"wandSpecialization", "arcaneFocus", "improvedChanneling", "missileBarrage", "arcaneSubtlety", "magicAbsorption", "arcaneConcentration", "arcaneResilience", "arcaneGeometry", "arcaneImpact", "arcaneBlast", "arcaneShielding", "improvedCounterspell", "arcaneMeditation", "arcaneWrath", "presenceOfMind", "arcaneMind", "arcaneInstability", "arcanePower"},
+	{"improvedFireBlast", "incineration", "improvedFireball", "ignite", "flameThrowing", "impact", "burningSoul", "improvedFlamestrike", "pyroblast", "improvedScorch", "improvedFireWard", "hotStreak", "masterOfElements", "criticalMass", "blastWave", "firePower", "combustion"},
+	{"frostWarding", "improvedFrostbolt", "elementalPrecision", "iceShards", "frostbite", "improvedFrostNova", "permafrost", "frostChanneling", "improvedBlizzard", "iceLance", "arcticReach", "iceBlock", "shatter", "improvedConeOfCold", "coldSnap", "fingersOfFrost", "wintersChill", "iceBarrier"},
+}
+
 func RegisterMage() {
 	core.RegisterAgentFactory(
 		proto.Player_Mage{},
@@ -102,6 +111,9 @@ type Mage struct {
 	MageArmorAura      *core.Aura
 	MissileBarrageAura *core.Aura
 	WintersChillAura   *core.Aura
+	frigidPowerAura    *core.Aura
+	talentsString      string
+	empoweredLances    int
 }
 
 // Agent is a generic way to access underlying mage on any of the agents.
@@ -151,6 +163,16 @@ func (mage *Mage) Initialize() {
 func (mage *Mage) Reset(sim *core.Simulation) {
 }
 
+// ResolveTalentTree fills the talents once the ruleset is known (core.Character.initialize).
+func (mage *Mage) ResolveTalentTree() {
+	mage.Talents = &proto.MageTalents{}
+	if mage.Env != nil && mage.Env.IsForever() {
+		core.FillTalentsProtoByName(mage.Talents.ProtoReflect(), mage.talentsString, ForeverTalentTreeFields)
+	} else {
+		core.FillTalentsProto(mage.Talents.ProtoReflect(), mage.talentsString, TalentTreeSizes)
+	}
+}
+
 func NewMage(character *core.Character, options *proto.Player) *Mage {
 	mageOptions := options.GetMage()
 
@@ -159,7 +181,8 @@ func NewMage(character *core.Character, options *proto.Player) *Mage {
 		Talents:   &proto.MageTalents{},
 		Options:   mageOptions.Options,
 	}
-	core.FillTalentsProto(mage.Talents.ProtoReflect(), options.TalentsString, TalentTreeSizes)
+	// The tree layout depends on the ruleset, attached after construction: see ResolveTalentTree.
+	mage.talentsString = options.TalentsString
 
 	mage.EnableManaBar()
 

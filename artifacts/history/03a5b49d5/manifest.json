@@ -1,0 +1,1138 @@
+{
+ "revision": "03a5b49d535b0f14656309375b89d353718aae22",
+ "status": "superseded release control; results from the engine and setups before the October 21 update (docs/october-21-update.md)",
+ "archive": "published-before-october-21.tar.gz",
+ "archiveSHA256": "47cb83a2eb06b764e654156dbca74a0f58b834429533df067aae22d956269cf6",
+ "files": [
+  {
+   "path": "artifacts/correctness/tank_checks.json.gz",
+   "bytes": 392454,
+   "sha256": "a0f87d0ca809d9dcbe6396c727fb2c4760964f0662c34353517ad60a7ca35092"
+  },
+  {
+   "path": "artifacts/modelled_gear/forever_dps_5min.csv",
+   "bytes": 35790,
+   "sha256": "d46595aba8e67c1fc1280dd9ad7d34112730cf860cfcf8f66a1041d897c770b6"
+  },
+  {
+   "path": "artifacts/modelled_gear/forever_dps_5min.json",
+   "bytes": 12698902,
+   "sha256": "b51f74456fb2c8eaca1a17b6d8fdc77d129e2e50553c01c14d620823eee123be"
+  },
+  {
+   "path": "artifacts/modelled_gear/forever_dps_5min.png",
+   "bytes": 795201,
+   "sha256": "12fd4b5a92e392ab877859886e3da5e00bb65cd8aa8a3d60c057aba5172fadb6"
+  },
+  {
+   "path": "artifacts/modelled_gear/forever_dps_5min.svg",
+   "bytes": 580298,
+   "sha256": "f62a49b154e49a37cb3848a7f925df8ff680aee5812a6c4601b60f4c5e1bd74d"
+  },
+  {
+   "path": "artifacts/modelled_gear/forever_input_profiles.json",
+   "bytes": 2443548,
+   "sha256": "5e02312567c7ed01b1f11daa14b75c1a2791b89eb26747e047d8732f23b12c48"
+  },
+  {
+   "path": "artifacts/modelled_gear/forever_sensitivity.json",
+   "bytes": 255652,
+   "sha256": "4a71013e03f71e03a08291d14160906a5265805c92b6d0fa2b576570603a05c0"
+  },
+  {
+   "path": "artifacts/modelled_gear/gear_equity.json",
+   "bytes": 151303,
+   "sha256": "b03062c1ee36fd5dc2f2ddb20fc27023d6c8fadf499c25ac47d831e289e6530e"
+  },
+  {
+   "path": "artifacts/modelled_gear/selected_gear_equity.csv",
+   "bytes": 20096,
+   "sha256": "3eb65fab5cbb680841431a99abecdfdfc54fdb28895b42f05d0ed7ee089f2450"
+  },
+  {
+   "path": "artifacts/modelled_gear/sensitivity/gear_110.csv",
+   "bytes": 34234,
+   "sha256": "42cc20c171bbb8ec8cec54db2d4d0e842b798c8b7f4ed4d2654a03bf5174781c"
+  },
+  {
+   "path": "artifacts/modelled_gear/sensitivity/gear_110.json",
+   "bytes": 12721433,
+   "sha256": "72985809f17eb64f4d93d1c6d567ad5e021bd29b281ad8eed9c06824048f241b"
+  },
+  {
+   "path": "artifacts/modelled_gear/sensitivity/gear_150.csv",
+   "bytes": 35632,
+   "sha256": "839ff8cec3357ad0e52343cbb53a043cbd4ee01611460cf309620ef1009e9e5d"
+  },
+  {
+   "path": "artifacts/modelled_gear/sensitivity/gear_150.json",
+   "bytes": 12746712,
+   "sha256": "aa9181e676d40065eb7a616ae1a05f1614b0fbd256fed4a22ffe4ed5e651244e"
+  },
+  {
+   "path": "artifacts/modelled_gear/sensitivity/tier1_off.csv",
+   "bytes": 35945,
+   "sha256": "e76b77ce74035ddf446dc56c2a2b31122059bb0cf794aef5e2c31500cffc78a7"
+  },
+  {
+   "path": "artifacts/modelled_gear/sensitivity/tier1_off.json",
+   "bytes": 12677385,
+   "sha256": "7574794089c9165cb386b96e86ae84a8f737a1966316f2ce7c066604cf40dc8a"
+  },
+  {
+   "path": "artifacts/modelled_gear/spec_gear_equity.csv",
+   "bytes": 3442,
+   "sha256": "ab4fd4a3f158a27c0d9075f5bd009bd66bd445d5c135c0a15c92f88df99b37e3"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/affliction__gnome.json",
+   "bytes": 17418,
+   "sha256": "6059f193f9a18bc586d22f1eea2b143e9cba8dc136159c786f44e9bd49f02486"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/affliction__human.json",
+   "bytes": 17418,
+   "sha256": "fddfaa2bf784ffca07d389c4b26f63cf1bce392a23de86f9312a63e75b367347"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/affliction__orc.json",
+   "bytes": 17413,
+   "sha256": "6f59df3b348b45ff91ee9ec47b604631f8b35b931337d333375ecd7b82922ca0"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/affliction__troll.json",
+   "bytes": 17415,
+   "sha256": "fb90124d0632132839530efd89ada78cdd6785c943b86dac0b50b0bf577f6dbe"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/affliction__undead.json",
+   "bytes": 17416,
+   "sha256": "008d73dcfe547522bbdbd0ee9d7fb68fb013275f57676e6f472f72cfd890301e"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arcane__gnome.json",
+   "bytes": 8201,
+   "sha256": "ac7c361bd6e38c7b07f496dae73c9b1538770b2c507b95b994ed102a752a8abf"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arcane__high_order.json",
+   "bytes": 8213,
+   "sha256": "7e507a4e60cdaa8b25ef12e40c262368b2bd0b75a31179b3e30cb5ff6bc8bd98"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arcane__human.json",
+   "bytes": 8201,
+   "sha256": "bbb067f221374372dbf15dfa9124edfefcc34d5a4345ca65be7470e3b5cbfa1d"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arcane__orc.json",
+   "bytes": 8196,
+   "sha256": "1ca61389b201bb3b6ddec91dcd71ee5f82e9a685fa286258755c2a95b6761306"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arcane__troll.json",
+   "bytes": 8198,
+   "sha256": "3dcae8cefd751361a94808bd3b39b538cfa230b99a3792cbbd43aa67bbd5000d"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arcane__undead.json",
+   "bytes": 8199,
+   "sha256": "e53d4aa9d0ef02ff4ff8584558f4306354c6c7aac6ea0b8c48e6cff100135d3c"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arcane_frost__gnome.json",
+   "bytes": 8813,
+   "sha256": "5a125f733ac1bba20d0bb177ad11f8a44472505870ecedf85a31df55bf554a67"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arcane_frost__high_order.json",
+   "bytes": 8825,
+   "sha256": "daa64d08e3782be28a39c5524c4debf1d81b36fbd13c9be103a9c949abba437b"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arcane_frost__human.json",
+   "bytes": 8813,
+   "sha256": "ae4283238bd86c83e822af7013ef3c2ef8718ef9f6f45eb6dc39325ad871c941"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arcane_frost__orc.json",
+   "bytes": 8808,
+   "sha256": "cf28f9f70eb269130774f903b6dff39f837fa3239079fa4adb18b22e0a719fcf"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arcane_frost__troll.json",
+   "bytes": 8810,
+   "sha256": "9f2c8e5dbec602da322b369e3e7a36653174d23cb3d5563faab7da0001236e65"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arcane_frost__undead.json",
+   "bytes": 8811,
+   "sha256": "37b91b1432cbf100ee36bad8dba7fa9515f1e63228cba1b2ab53687e23634368"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arms__dwarf.json",
+   "bytes": 10729,
+   "sha256": "1bb67565621191e8f676fd59e46cc679d6c0f9bf89a9b6faa2241f869020b0a1"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arms__gnome.json",
+   "bytes": 10677,
+   "sha256": "e1535870d08776dd0ba4cdb61903c11512c179a87f5db5a0ce4e3c35c7e4ec1c"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arms__high_order.json",
+   "bytes": 10741,
+   "sha256": "75c023b44d90d24c0155087fef10ff2337193a9c33080f67ccb53888637d3543"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arms__human.json",
+   "bytes": 10677,
+   "sha256": "e0918df72dc9876f709b6870e34205bf3ca69dbc7ebc0628452a564a9126e36b"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arms__night_elf.json",
+   "bytes": 10732,
+   "sha256": "6294bdbf85852b55af3e275f773369c7f1caa69c967c47d213e9294b1e541371"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arms__orc.json",
+   "bytes": 10724,
+   "sha256": "2ea18481785afc9f1a20a42dda24bfba8eba6cad13f837b61a81bf26094b02dd"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arms__tauren.json",
+   "bytes": 10727,
+   "sha256": "ebcf2d679d078371c76d69bdad28338b62d39f95e57fb6865f4e1f0b4037a3c4"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arms__troll.json",
+   "bytes": 10674,
+   "sha256": "197c38b8d902226db1a11f930809cdab2525ed46873e5739c972e3bd0d856080"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arms__undead.json",
+   "bytes": 10675,
+   "sha256": "5d8d93eff9073a99484c15ee9bd111a50a90cd700317ee1766c00e8d93272f9e"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/arms__windshaper.json",
+   "bytes": 10739,
+   "sha256": "676a181d44ed53bb896ae61caa90d2335c0e44ea623ab5169c34bcfa29e797be"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/balance__high_order.json",
+   "bytes": 7221,
+   "sha256": "8efeefd81bdab94ff365e0d3521ea83e86fa41d0bba1b9ba7cf685817e2315f0"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/balance__night_elf.json",
+   "bytes": 7212,
+   "sha256": "1fdde0ced4743b08d172aefa8c8b78dfce25b99a22484b23a84108b90694ff96"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/balance__tauren.json",
+   "bytes": 7207,
+   "sha256": "22ee9377e451fcfb9096f16ac4832d281b4ba9643ced9018227da6a412f2dcb2"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/balance__windshaper.json",
+   "bytes": 7219,
+   "sha256": "b70f1b49220de22b8dc9874635121b0900e89db0754ea03a038070a7f87c3bdc"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/beast_mastery__dwarf.json",
+   "bytes": 8967,
+   "sha256": "a1f90d0face8e08a5d96d2b918e8a73337579db4d9bbd1804379c9067a0c90b5"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/beast_mastery__high_order.json",
+   "bytes": 8979,
+   "sha256": "7384f88c8935e721570741023cc2690cc770d52426238809feaa9231993abde9"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/beast_mastery__human.json",
+   "bytes": 8967,
+   "sha256": "591ba312a713a158c6d49db2cb4123326a3b1b8bfdc79a044d71dece9855e818"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/beast_mastery__night_elf.json",
+   "bytes": 8970,
+   "sha256": "1afb5962b61ce2a665a20c10f2f0c968c75ade31918ae8783924fdcd5986ab82"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/beast_mastery__orc.json",
+   "bytes": 8962,
+   "sha256": "154ac3c20433a03c9b04d87558eeabba5bdc0a3ead93b39c9e35938fe3423b1e"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/beast_mastery__tauren.json",
+   "bytes": 8965,
+   "sha256": "7cd0cf16af58ce4cfc17f1ba361b1e3b939b958511d49f0e301a5417d35e63d2"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/beast_mastery__troll.json",
+   "bytes": 8964,
+   "sha256": "804f64250d8d130fb077302905f84f6d9dad51efc45a4d18069479ed4b1baeea"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/beast_mastery__windshaper.json",
+   "bytes": 8977,
+   "sha256": "141ea931bd6620bd8a89b2584fe6898e40c1839e285f592da7b54d673792d798"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/combat__dwarf.json",
+   "bytes": 13427,
+   "sha256": "f6186fe07bfe0a7b6a5ce0b88f5e45ce4a80951b0806d5e025c503d1b262255d"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/combat__gnome.json",
+   "bytes": 13427,
+   "sha256": "c6f27d23f32343b033b41cf7bb6b464a6714d429cfed7b14e3bd2096f15b2fd1"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/combat__high_order.json",
+   "bytes": 13439,
+   "sha256": "112262d0c9a628b5429d0a21ba611080e6aeb9ca19b8775f1c63ad20abbd2ac0"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/combat__human.json",
+   "bytes": 13426,
+   "sha256": "bb4ed0cbfef72bab8e693cb434e19b4c0f648db28b027275a295af1015688c05"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/combat__night_elf.json",
+   "bytes": 13430,
+   "sha256": "9938ab1fc4ccb38b71c2d6a96075be1d73b436a866dd5dac2ec98f9b05ee351f"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/combat__orc.json",
+   "bytes": 13422,
+   "sha256": "d7389af9e8e2e13e1e21ea6cb5f55d0ba5753da416a21dc8e04a2ab726065f41"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/combat__troll.json",
+   "bytes": 13424,
+   "sha256": "084609466183a147e8322fd618f8570c161aaeea3395f2ccebf65a501f6d9251"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/combat__undead.json",
+   "bytes": 13425,
+   "sha256": "fcbf367c9841e03d35189a5b865bf2a791d8be4cbaef78620205fb84799ce56d"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/combat__windshaper.json",
+   "bytes": 13437,
+   "sha256": "ab2d7a6ab45468d5b33acf972fb14a01d0d23d9e1c2ce2310be8253f85fe9516"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/demonology__gnome.json",
+   "bytes": 16101,
+   "sha256": "ea27a00415412fc28318fe7cb68b8352d15c195a628b334613f1089fb3c3f6f2"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/demonology__human.json",
+   "bytes": 16101,
+   "sha256": "4af6a86f188c3cc3cb3bbcf2e283e281c0d67dda729ac62bb42d72a20a936091"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/demonology__orc.json",
+   "bytes": 16096,
+   "sha256": "f33150e41945950a9b4306fb588f1bdaae79bdc6cf094c3ab1cfd6a28ad4457a"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/demonology__troll.json",
+   "bytes": 16098,
+   "sha256": "30e288a671935c8c4580ed398db0a4f37905571c90ae586030614ee8728e556b"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/demonology__undead.json",
+   "bytes": 16099,
+   "sha256": "c589b0f453bfa416681ef2a710cbeecf2c1e65e1acc485b9082c29bdbc805701"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/destruction__gnome.json",
+   "bytes": 14372,
+   "sha256": "b1aed59f1df3fdd9ee165b39821372dc21604f4574beec32a4d9406198a8c36e"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/destruction__human.json",
+   "bytes": 14372,
+   "sha256": "5b79981abadc184b95ec27a09685b6747ca80b834e5a32e4f4973e9a89c80136"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/destruction__orc.json",
+   "bytes": 14367,
+   "sha256": "e528f66efa857adfe224460c2846b97f0f39c6b94230ccdff9e91b6f34775ab1"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/destruction__troll.json",
+   "bytes": 14369,
+   "sha256": "0b82b2dc82a54c60cba39c755cda3c0036e7a1c99c5d7382137ce4b2b3143659"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/destruction__undead.json",
+   "bytes": 14370,
+   "sha256": "6bed4b456908db62281eb8fe7b705cedbc7936b9a57761424700bcdb24f48c90"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/ds_ruin__gnome.json",
+   "bytes": 14340,
+   "sha256": "f92412ed9053b7845c84c8e9db65f307e6eca4e044d0342faf28e4441a14de6e"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/ds_ruin__human.json",
+   "bytes": 14340,
+   "sha256": "92436db0d5a4a5ced1403007787f0fdd8bc1c31a3cc24a0807db809e69acdcf2"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/ds_ruin__orc.json",
+   "bytes": 14335,
+   "sha256": "4ce5fbf71264656e4fa2158e3d3dd4e4f480f2810ada870bc72cf18bf5cc4f62"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/ds_ruin__troll.json",
+   "bytes": 14337,
+   "sha256": "cca4edb4f1c74c723a85d10452b5d2b7a04fe14bd796caa0da2a35ef0b15283c"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/ds_ruin__undead.json",
+   "bytes": 14338,
+   "sha256": "eb68ed4a9d68e321bd31422add0a4b0117d200bcc94242a48317ef05588cd3c0"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/elemental__dwarf.json",
+   "bytes": 10237,
+   "sha256": "fe08ec0f79be16cc5f56d414a0d51ce022690615095c8b04622803360a3d752a"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/elemental__orc.json",
+   "bytes": 10232,
+   "sha256": "48e253522a2727be9b36e00cfebec47dba930a1a4a9c5d6ebcaf02760b6658c3"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/elemental__tauren.json",
+   "bytes": 10235,
+   "sha256": "1ff32f9a458f01d036ee33705f8b9cc442946929964eb111689c8b0b3edaca6f"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/elemental__troll.json",
+   "bytes": 10234,
+   "sha256": "0b28bc10304f4e6e29247365a00d95cd212bc81c20ebe6874060237f43872228"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/elemental__windshaper.json",
+   "bytes": 10247,
+   "sha256": "846ff648c5947078dc216e7aeb5f32bf98aa9dfced647cdf608b1fe9f4dc2af5"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/enhancement__dwarf.json",
+   "bytes": 11456,
+   "sha256": "883ccfac05f2ff4f2515a4e20cefd9a949fec293431e5c24b64e8e2660040d85"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/enhancement__orc.json",
+   "bytes": 11451,
+   "sha256": "60894a2fe3d8fb3b62c2b7806da38051b01b29a462a3eb1345a4da2dbbeb407a"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/enhancement__tauren.json",
+   "bytes": 11454,
+   "sha256": "34ac171031b97aa0db103bf45df50b8a9480326e3e663246ebad4da58ee3eddb"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/enhancement__troll.json",
+   "bytes": 11453,
+   "sha256": "1409feda2ff8c4b6c16f60d064ff304be5bd26cd99e04ccd8b7efa6b8868c92d"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/enhancement__windshaper.json",
+   "bytes": 11466,
+   "sha256": "c6bef932ab12dbf6f7214055d43facb3d038d11176e5dc366fa84eafedba6efc"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/feral__high_order.json",
+   "bytes": 11407,
+   "sha256": "af981c2ffa352942cffd774a95e705f9ec6ba4d536d553f878be89fa5705e569"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/feral__night_elf.json",
+   "bytes": 11398,
+   "sha256": "6fd8d387e97c85261d598c5fd285c8c81b0aac5401afcf0b54c0b28b5c79ce42"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/feral__tauren.json",
+   "bytes": 11393,
+   "sha256": "e82b9012e6d2e92b30336ff3f8f2aded37b511cb5a1b0f835208d80fb258a5c4"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/feral__windshaper.json",
+   "bytes": 11405,
+   "sha256": "5288f5294219d39b0361bce353f8a3674aaeb840bb819020bd6e9dbbdafc3f72"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/feral_tank_druid__high_order.json",
+   "bytes": 12276,
+   "sha256": "54c5da6d1b82270f679ad637fa94f6a0cc5e26912606b626374e7f38742eb9e8"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/feral_tank_druid__night_elf.json",
+   "bytes": 12267,
+   "sha256": "abe6d8f9785a0863f76705ccce7e2457ca5312eda7b85aec246dab4b2c1fbb9d"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/feral_tank_druid__tauren.json",
+   "bytes": 12262,
+   "sha256": "8517ed096b34ac53435a422a6e3327f3d8e572d44ca9a659764e7041c0d8bba1"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/feral_tank_druid__windshaper.json",
+   "bytes": 12274,
+   "sha256": "29122091e8659bac41cc04f7931a0297433631be53de7e475d3bf05613dfd9c1"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fire__gnome.json",
+   "bytes": 10394,
+   "sha256": "31abba2e0192790e49f87ed4cf27dabdaa64951f24ce9ae78e963b150c25af9b"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fire__high_order.json",
+   "bytes": 10458,
+   "sha256": "07bb53a5410a508622f37333e9e0bcf21bcc89e8c2ac073bd159b27c76e72cf8"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fire__human.json",
+   "bytes": 10446,
+   "sha256": "2f7f80fca73deac9760972d17dd7d52a35fc2f3a57352252de789e0da07fdd1d"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fire__orc.json",
+   "bytes": 10441,
+   "sha256": "619c699859a014a322ec65d5f5c143e6fb4345b894d57c589fa923471ef36daf"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fire__troll.json",
+   "bytes": 10443,
+   "sha256": "e81f27fc97a29459dcbe19e0f4e5da308c4e89060b72527423a84231e4c34129"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fire__undead.json",
+   "bytes": 10444,
+   "sha256": "aaa72cd3445b46c9f1f7663cd89e03779af68cdf19da7f44b46a0d3440120c09"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/frost__gnome.json",
+   "bytes": 7893,
+   "sha256": "4700d592cf3d4f24309df6044a42d304234395d69442e06607ece1e043110b62"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/frost__high_order.json",
+   "bytes": 7905,
+   "sha256": "cff1d3baffd970b90ad833f0ef82d5bbb480890741f3a52f7d8ec0f0fcb5aec3"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/frost__human.json",
+   "bytes": 7893,
+   "sha256": "0c4cb229a3bb1e6339011c752172584d269f421bf7e7fb58fcfb5c7aa9a17a2b"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/frost__orc.json",
+   "bytes": 7888,
+   "sha256": "3675f7fec257055052e97b4590c6563c3f8ef2c23bef95c1f2a727401a315dd5"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/frost__troll.json",
+   "bytes": 7890,
+   "sha256": "d1911d94e5a66abc6aab7c1bb306f1f3e417d5dc7add94147339db418a8c2a26"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/frost__undead.json",
+   "bytes": 7891,
+   "sha256": "58be98827db559df893d8f33e81e5bd960f29a55141305d3e96c9f980c78b371"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury_2h__dwarf.json",
+   "bytes": 9604,
+   "sha256": "7e65e4d541f638e2339326125680eb0f9a74a0d817c6ac8db241426f304c6e33"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury_2h__gnome.json",
+   "bytes": 9604,
+   "sha256": "7a0dbcf9414550ce23dffb2bd7d844930b20d62b25570ed1bc589592e12e60de"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury_2h__high_order.json",
+   "bytes": 9616,
+   "sha256": "7e37e8aa58c074c32e3edb50532a8befed46b0c247770a8fbd7648375e73e4d4"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury_2h__human.json",
+   "bytes": 9603,
+   "sha256": "6a0d9a9a9f5271d9d97cae0efce01b9819d8aeda11582841e52444811872ed5e"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury_2h__night_elf.json",
+   "bytes": 9607,
+   "sha256": "33330c6060088041f3494e269496b35ebd57ba92602d1e6f289e0cebcb33e6ee"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury_2h__orc.json",
+   "bytes": 9599,
+   "sha256": "7ddcc047088c2959da33477af1a37286ead04ffff585db28451d10e3fc43f2a8"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury_2h__tauren.json",
+   "bytes": 9602,
+   "sha256": "02936686da56846c9eebf4e6b92c4ce58137e86b31f5b32f4657f3a63c12916b"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury_2h__troll.json",
+   "bytes": 9601,
+   "sha256": "50eda56689a71c6666b5c2fef3afa2a09cd25fd32286a7f68338a56538c25155"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury_2h__undead.json",
+   "bytes": 9602,
+   "sha256": "02146c79a443ae983a5295ae56204442fef1a7d4f142371e045a4bf2b8267d6b"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury_2h__windshaper.json",
+   "bytes": 9614,
+   "sha256": "57e194708f737796bd3f07bf92476d316b97186416edc9ac3cd80d5ada20eeaf"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury__dwarf.json",
+   "bytes": 10082,
+   "sha256": "01fc5e3b70506e0588f57001ce1ac4ef25efc1857f91fed25b8e2a1cdd5af0f6"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury__gnome.json",
+   "bytes": 10082,
+   "sha256": "d467998bcbacc325af9edd518cf30adba96acba939ca9d30c22372ab1ebd09b7"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury__high_order.json",
+   "bytes": 10094,
+   "sha256": "daf99ad7643226dd8f07ecfb6a7c5a163e30bbfe1295e42b65010f9524b7778f"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury__human.json",
+   "bytes": 10082,
+   "sha256": "b002934e3687f151f4b329e7889b4deb3babe2326439678387e82889f9bbdd11"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury__night_elf.json",
+   "bytes": 10085,
+   "sha256": "ce5de174bb41b8adc758eb2fd6b61fb5277fdfa9ef285007fe720d81ce9bf93d"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury__orc.json",
+   "bytes": 10077,
+   "sha256": "8baee003542947f83a4a42e170a1c00fe104862159482e0dc19bdac3b202ab2b"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury__tauren.json",
+   "bytes": 10080,
+   "sha256": "e3af3188294fda2c7baf20be8c1b6d9e18998cdbc71d75de24990bd8463bd3a8"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury__troll.json",
+   "bytes": 10079,
+   "sha256": "b985a2cc4787716a42274f7c7440a9fbe25add74da8e149f36a63df55fdff57f"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury__undead.json",
+   "bytes": 10080,
+   "sha256": "2b0858a9d676dbbc4da35e833ae9b894d9bbe71214b4ae84b4e0dfb307422d0e"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury__windshaper.json",
+   "bytes": 10092,
+   "sha256": "cb5917489550c20df41f5ab76ce0cd7185381549da179216bb59e6b65d71574b"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury_sunder__dwarf.json",
+   "bytes": 14185,
+   "sha256": "fe38b00c97286ca58ceb466c16bc664f6eed7be0bbbd41c3df663b7dd1a68b67"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury_sunder__gnome.json",
+   "bytes": 14185,
+   "sha256": "35eb2410808acf16b3a0517fe6e0e1def0ce25f0e31f129e3f2432ce2d6d3292"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury_sunder__high_order.json",
+   "bytes": 14197,
+   "sha256": "fb7a704a7bb61b60532ccf218206e48a53bbb8b2da8d96441784b3f0a535c736"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury_sunder__human.json",
+   "bytes": 14185,
+   "sha256": "e3148188536350cfb2f71896527be02607478b35fcf0ecb83f8f622e96ac3e21"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury_sunder__night_elf.json",
+   "bytes": 14188,
+   "sha256": "1dc604b1d097b575c200e1155af55d2647ec1e37e25301b1ec611304405024d3"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury_sunder__orc.json",
+   "bytes": 14180,
+   "sha256": "34bb7c2f7900623a0cfd0fc1c34dabb5596b6ddb46dfd20de72ac105cd9f31f5"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury_sunder__tauren.json",
+   "bytes": 14183,
+   "sha256": "de23d04cd40605e544f35cc462860e9d8cb1ce4bf1b381304d35d52d5e5c0322"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury_sunder__troll.json",
+   "bytes": 14234,
+   "sha256": "4ac41118b3e29adc3a3664c4635997330b1fbde311c0c76cd99a96d2a1be9109"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury_sunder__undead.json",
+   "bytes": 14183,
+   "sha256": "71171a8fb7e61da84cd9fc8fa10aa1580548e2528f85b674679751e7b3f668b8"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/fury_sunder__windshaper.json",
+   "bytes": 14195,
+   "sha256": "8a355c9f9522db3afd555dc00fd65852f4f29b740ef70eb54831bd775d9b0872"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/index.json",
+   "bytes": 320700,
+   "sha256": "8b7062ed9590f9b3a4ca3b56957906bb4c31cacc005124726442ebf7e5518aa5"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/marksmanship__dwarf.json",
+   "bytes": 7966,
+   "sha256": "4776c4e632612fc71f83dc450ad1775436c1bed5aadbd7d978eb7365643e09c8"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/marksmanship__high_order.json",
+   "bytes": 7977,
+   "sha256": "a999b699c8a7843fb743a946723624a8c6dcab9a6ca70a5b7edbd129cffedfd5"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/marksmanship__human.json",
+   "bytes": 7966,
+   "sha256": "f46a9900c031d1aad0f6f1c9e228567674c779403615dc88f07dbc111c7759d6"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/marksmanship__night_elf.json",
+   "bytes": 7968,
+   "sha256": "30f5a5fc21a55c7f74ae3c57f95b4bdd27585122ba1d7deebacb4b51a663a11b"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/marksmanship__orc.json",
+   "bytes": 7961,
+   "sha256": "080339af8093e0aaad8b45fffdb41da8e2c1dede680c818117fc036da41c16a8"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/marksmanship__tauren.json",
+   "bytes": 7964,
+   "sha256": "919e6f3848ac8d7d29c6d02e9fa7660159b0493d5cc61a8cd47fecfc54f2f6c8"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/marksmanship__troll.json",
+   "bytes": 7963,
+   "sha256": "6a611a2e2ad39e72b52c7a689951ac4ac1b617c2ea4df4b9236bbb415232974c"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/marksmanship__windshaper.json",
+   "bytes": 7975,
+   "sha256": "b02f69737c4585746a9dee82d00099c37ba8349debac2799530fe65197431217"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/mutilate__dwarf.json",
+   "bytes": 11314,
+   "sha256": "0ec505df44d561c36f05803cc95fe816ec165a71e272db0ade5aa75108224cc7"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/mutilate__gnome.json",
+   "bytes": 11313,
+   "sha256": "793e7144e41073a6d02e24f92890f94f7d129d6ab5ec37643a2d78f44a2767d5"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/mutilate__high_order.json",
+   "bytes": 11326,
+   "sha256": "9c8323e4644686ee67d223bf8cef4c70b2fb4f4004eb5fe9d955ba0f099c9a73"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/mutilate__human.json",
+   "bytes": 11314,
+   "sha256": "5bb90f4466a8fa207b2a0e11071eb87f5f35560588ac2a770843764ca1d22cb5"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/mutilate__night_elf.json",
+   "bytes": 11316,
+   "sha256": "0aeb9773c683a3cf3aae73b61ec3182659606c707335fcf7faf3ef8c7283d45a"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/mutilate__orc.json",
+   "bytes": 11309,
+   "sha256": "244458615e3baf3d913911d52a4a4ad9e68726adcf89ebe22093c8e265f0c7f5"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/mutilate__troll.json",
+   "bytes": 11311,
+   "sha256": "1cc8cdacd38b9047fdee75dca93055973f9d95d12499dd153ecf03995600be75"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/mutilate__undead.json",
+   "bytes": 11311,
+   "sha256": "4a42b0ba110e75b7d0a4af63bc21a549e8409eb53e6b5315fde7813b865cc17f"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/mutilate__windshaper.json",
+   "bytes": 11324,
+   "sha256": "7925c940db19e5deaed433bddc7e9aa7c96bc968d433062e044ad008a4b6c86c"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/pet_melee__dwarf.json",
+   "bytes": 9785,
+   "sha256": "dde8362795fa2366aaf3da77bf8f6486d85809f8a98f28080c14fc90623ca431"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/pet_melee__high_order.json",
+   "bytes": 9796,
+   "sha256": "6ef160a5b69001c0f2f2beb89c0573fc6f5728a24a21e60827d4a4f307ef76f6"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/pet_melee__human.json",
+   "bytes": 9785,
+   "sha256": "38df1914311d48a3f61e1d0f4b53561d59d2a3de482b2bbc342df39a935494fb"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/pet_melee__night_elf.json",
+   "bytes": 9788,
+   "sha256": "2bb7dd4eae9e31e2529df8accbcaaceb09b6830e30b57d4dc3608eeed6359a30"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/pet_melee__orc.json",
+   "bytes": 9780,
+   "sha256": "4592ea0ff3f7513d95ca72d2f58e11e47ec96cdcbbe9f92707854b0dfe638943"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/pet_melee__tauren.json",
+   "bytes": 9783,
+   "sha256": "fb1c3b4367921e6ce785912ee64b71b08da48f443eaaa96049bce48b347a086e"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/pet_melee__troll.json",
+   "bytes": 9782,
+   "sha256": "fc2939bd3b44aba752202a58fc01717189e0cdc6985c11d10c07fedc3ab34f48"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/pet_melee__windshaper.json",
+   "bytes": 9794,
+   "sha256": "fae2634676b4f54d8f73aa0247d1e98c5a734df6fe83771ae011b5a8b5f3e546"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/protection_paladin__dwarf.json",
+   "bytes": 10286,
+   "sha256": "731dfd8866e062429a7d83d7daf118e834889cbc22dbddfd8d1246b5f27fa2be"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/protection_paladin__human.json",
+   "bytes": 10284,
+   "sha256": "de4d08aaaef50bb4c830c348820287993ed837001c977bf37c9c2a634844fdce"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/protection_paladin__undead.json",
+   "bytes": 10283,
+   "sha256": "d1b9e69dd0d1f3c72e992e96c09e706f7fcb40030eaa45087d6dcedbedc52008"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/retribution__dwarf.json",
+   "bytes": 9632,
+   "sha256": "680328e254b0c7619fbe2ba7e3b0df08b17eda38fb4eb10fc4b107c7805764d9"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/retribution__human.json",
+   "bytes": 9632,
+   "sha256": "2549468eeb7851ffea0f02c0837eaa45c8f4e0e5cb16165fec9c3aae783ed03d"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/retribution__undead.json",
+   "bytes": 9629,
+   "sha256": "d720f853254fbd3ab03d4adbdc42dc73bc610906407806e8d2aea7335ab0c2b7"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/retribution_physical__dwarf.json",
+   "bytes": 9507,
+   "sha256": "42253262f31e1c67159fc5c665524f655d2f1db6a4271ef9f003faea8a62bfc1"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/retribution_physical__human.json",
+   "bytes": 9507,
+   "sha256": "b5bb98159ecaf9d4e0e436629f93aa03c86030fdf40153d01dbc3f2e76af5155"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/retribution_physical__undead.json",
+   "bytes": 9504,
+   "sha256": "b677e429294f8fc9aafdd81fd5e14d39879a4812e118a603d9671c3762eea8e5"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/shadow__dwarf.json",
+   "bytes": 8117,
+   "sha256": "1beca6dee17e663b484e3da40ea86483b7de924f18714acc69ddd3b9e70f2a15"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/shadow__gnome.json",
+   "bytes": 8117,
+   "sha256": "55e2bedb87ab35bcb335ba6bb3be6e2099285cc9adf1086f9c1746e68288bc2e"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/shadow__human.json",
+   "bytes": 8117,
+   "sha256": "92c5bfe8a6d6c4c30c7068ce2725dd3b91e0fd26441bd1f2df0f753db3caa4a5"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/shadow__night_elf.json",
+   "bytes": 8120,
+   "sha256": "384db68b15a919f73f027be88e230c20fef4093c378cd0d5eabd589f8ee5330b"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/shadow__troll.json",
+   "bytes": 8117,
+   "sha256": "165ae71bd61e6be7e091d7e5bc2b919334bb6dfa0a2b08b423d9f837cae653a2"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/shadow__undead.json",
+   "bytes": 8118,
+   "sha256": "4362fb3b95fb6d1e363137081094ec1d3cfd32b61ed990b05e7dbe11ebaf53d9"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/smite__dwarf.json",
+   "bytes": 9015,
+   "sha256": "1a37cfa314f0ff26ba8376ca526c70c7fc57686a830992d4dfd536f77abdf718"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/smite__gnome.json",
+   "bytes": 9015,
+   "sha256": "8a1c00bb7b217bdfff1c88f8040d7f34a8ba14b5d5355f46a16336e217e8bc3e"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/smite__human.json",
+   "bytes": 9015,
+   "sha256": "56803af1230fe648650262a016a972aa78cb31a5530dbdf9bb644109b0c50792"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/smite__night_elf.json",
+   "bytes": 9018,
+   "sha256": "881edbe5faf06bcb4016487f3d39da4f88d22f7aef069c9332868138c42aa5c3"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/smite__troll.json",
+   "bytes": 9012,
+   "sha256": "2ec187336af530147158a06440107675ee48fe798deb4049fea19a69162fda3e"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/smite__undead.json",
+   "bytes": 8520,
+   "sha256": "08deedca126e85f32d7584f665a6c9655cae338784e38c4af7f08f2223a8ebb0"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/stormcaller__dwarf.json",
+   "bytes": 10015,
+   "sha256": "c746ffe5d6d338b0b9a0199fc60f78e185c42d68b51ad80fcc3ebbdb97201183"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/stormcaller__orc.json",
+   "bytes": 10010,
+   "sha256": "76f46a76279f326b0cb6af8a3491c016b8bb8acd3f1e08fae1171046e5abe317"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/stormcaller__tauren.json",
+   "bytes": 10013,
+   "sha256": "92bae12f30f93cd8e72989cb2a6a391ec5d48436c7a5e6767b18a2dddf2387bb"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/stormcaller__troll.json",
+   "bytes": 10012,
+   "sha256": "ea21f64d341fec062761571a3d069e8a6fce8cd073ba863ae2e4a4ade707d410"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/stormcaller__windshaper.json",
+   "bytes": 10025,
+   "sha256": "6c029cc8c33fb900488ab56964b56e4a70e225c84111d63102f81f033709e6f2"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/subtlety__dwarf.json",
+   "bytes": 16238,
+   "sha256": "53d0f3fdd14957a960f1c000086c0b278dc3745f8399b3777968095f2258ee61"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/subtlety__gnome.json",
+   "bytes": 16239,
+   "sha256": "6c7cab3acde14fd696cf6f0247923d2b8b993e81cd75763fbda9b1adf03c9d21"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/subtlety__high_order.json",
+   "bytes": 16250,
+   "sha256": "66b5ddd21e9593295b3673b2ea8f63d919eab02f5e8b1133b12a85ab74b8a3a5"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/subtlety__human.json",
+   "bytes": 16239,
+   "sha256": "eb59a5cdfa7963ccc0fdcc2fee685ea1d73ce90450f836cb6f2f1a2a6be73b77"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/subtlety__night_elf.json",
+   "bytes": 16242,
+   "sha256": "bc67af972d2527feadc098d9ae7a695753a07a96674de5112543e04ba2a8adc0"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/subtlety__orc.json",
+   "bytes": 16234,
+   "sha256": "7aa16c08d4cbbe0021267a5ca1b723cfcfbfc4875f60268f866952e46284144c"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/subtlety__troll.json",
+   "bytes": 16235,
+   "sha256": "178c879b419134adbba384644bcdab89a3580512dbf090118d5060571082e306"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/subtlety__undead.json",
+   "bytes": 16236,
+   "sha256": "01f9d1ba1a8c74e6ddc8076cc4f002f3e0094d37c9e720759973535f9b9b2571"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/subtlety__windshaper.json",
+   "bytes": 16248,
+   "sha256": "586868769b5bfa00a2d4736f5a4ff43ecb8189b894ef3de7190b1993bc953546"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/survival__dwarf.json",
+   "bytes": 8667,
+   "sha256": "7942a886bf6adf0260e191c478f0fc8f4739abc45ab15eeb1693343ac1bf9cd2"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/survival__high_order.json",
+   "bytes": 8678,
+   "sha256": "177fc5566e043c9982574cf3b41a17c47c845d95240bf2380f06ccba71899366"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/survival__human.json",
+   "bytes": 8667,
+   "sha256": "049b3f3af147335c925cb0cbddd90418e1d278d46fb0f0ebaa7215f833c22187"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/survival__night_elf.json",
+   "bytes": 8670,
+   "sha256": "edb2ff5adcf8bd7136e3a8e2e911695583dcf48479556aada501f04362c77cf2"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/survival__orc.json",
+   "bytes": 8662,
+   "sha256": "3ac24959188c0aaff75859083e23b999dddc94bf8dc9fa14f65dfdfa27e89499"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/survival__tauren.json",
+   "bytes": 8665,
+   "sha256": "d37fa7339b1fe661ae9326b3e073aa158caf2319d10e7844ac3207e8847aa297"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/survival__troll.json",
+   "bytes": 8664,
+   "sha256": "0ea529799018c45ab7eb2bb27ea900575c73fd1f52aa2a1ea19292e38db9d8af"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/survival__windshaper.json",
+   "bytes": 8676,
+   "sha256": "61694263e3dfacc76eb15788ec9a4e4ff4ff29557c355d116f206a7008d6d2c1"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/tank_warrior__dwarf.json",
+   "bytes": 47612,
+   "sha256": "617e56d5fa541e38557b49bb2185e3e2f3b61afa88e5fd7eb799eecb582512bc"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/tank_warrior__gnome.json",
+   "bytes": 47612,
+   "sha256": "56f801fb5e2b014d8e0abdfcade865d91154801361c117b2a61c0ca28d850dca"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/tank_warrior__high_order.json",
+   "bytes": 47624,
+   "sha256": "70920dbcc4b8004c7b45cf870ffec8825f2b217f0128853e7a66af292e0f3823"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/tank_warrior__human.json",
+   "bytes": 47612,
+   "sha256": "1f8d053cc106e6c8dcce560f55ac81ad23aa958c93628a46e047b339af610d4d"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/tank_warrior__night_elf.json",
+   "bytes": 47614,
+   "sha256": "939cf8f8979f5adec75202740ecc84136137b656771b060baf12467b212807a6"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/tank_warrior__orc.json",
+   "bytes": 47607,
+   "sha256": "e200e9b13fbb882b5aeb157f801e53fd6b7509a8d18a988cb506b3834650aaeb"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/tank_warrior__tauren.json",
+   "bytes": 47610,
+   "sha256": "0e6a47ab80ad34cdba714c9e39778e1a68b33868935ba28f1fdb9c0e829d3734"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/tank_warrior__troll.json",
+   "bytes": 47609,
+   "sha256": "645f465b0a99e83e4a8b6045e609391140f69ccbbad27481bf3f8856609b6434"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/tank_warrior__undead.json",
+   "bytes": 47609,
+   "sha256": "cf55c3c1544f7c4176b24e8606704f29eb7579d4fca9e8306e0fa373d1fea683"
+  },
+  {
+   "path": "artifacts/modelled_gear/ui_profiles/tank_warrior__windshaper.json",
+   "bytes": 47622,
+   "sha256": "49e098d1b973a5f51713a1be34e4c8bbf04f428503323fcbd8217389a3a5a3f6"
+  },
+  {
+   "path": "artifacts/tanks/current/archives.json",
+   "bytes": 721394,
+   "sha256": "922cc3e9fb6fdbc21b1ca81988b85b4763dd06e92f006e61a737fb4dd53c1fdd"
+  },
+  {
+   "path": "artifacts/tanks/current/dps_preservation.json",
+   "bytes": 358,
+   "sha256": "e7b9d1d012d140d85d1c1b0007f01159211c2e5054b5398e2724aa313319eeb7"
+  },
+  {
+   "path": "artifacts/tanks/current/final-confirmation-a.json.gz",
+   "bytes": 767145,
+   "sha256": "f7a2e5acd907d8cbea3d2de849b805ac574f7013a247539c28236777f28406df"
+  },
+  {
+   "path": "artifacts/tanks/current/final-confirmation-b.json.gz",
+   "bytes": 767199,
+   "sha256": "51aeab80db77651182e80c0baf32d2b014b9ef42ee9c4018f24cb3fe8329eea1"
+  },
+  {
+   "path": "artifacts/tanks/current/metrics.csv",
+   "bytes": 4414,
+   "sha256": "e5e2bb0e1ada1ac26fc08cb27fb5ff98928fd36cc7cdb0fa770ac48e9e8668ee"
+  },
+  {
+   "path": "artifacts/tanks/current/summary.json",
+   "bytes": 11008,
+   "sha256": "7a735173e15d131bcf224ea102ed4f801880472a3fa601233989938a5b2723e6"
+  },
+  {
+   "path": "artifacts/tanks/current/talent_scope_evidence.json",
+   "bytes": 12637,
+   "sha256": "59d1c4a21a2f4e4f6f72a9899bd4a924dd9b5ba6e576542a40cd39af09a837aa"
+  },
+  {
+   "path": "artifacts/tanks/current/validation.json",
+   "bytes": 25377,
+   "sha256": "f62658c7842161cead03f379466c17b9728c1babcfc9f1e1766e22ea1c971069"
+  }
+ ]
+}

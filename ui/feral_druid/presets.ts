@@ -66,7 +66,7 @@ export const SIMPLE_ROTATION_DEFAULT = PresetUtils.makePresetSimpleRotation('Sim
 
 export const TalentsFeral = PresetUtils.makePresetTalents('Feral', SavedTalents.create({ talentsString: '-55210032021132212051-05503' }));
 
-export const TalentsFeralCat = PresetUtils.makePresetTalents('Feral Cat 7/34/10', SavedTalents.create({ talentsString: '05002-45010032021032212051-055' }));
+export const TalentsFeralCat = PresetUtils.makePresetTalents('Feral Cat 7/34/10', SavedTalents.create({ talentsString: '05002-55000032021032212051-055' }));
 
 export const TalentPresets = {
 	[ClassicPhase.Phase4]: [TalentsFeral, TalentsFeralCat],
@@ -93,7 +93,7 @@ export const DefaultConsumes = Consumes.create({
 	strengthBuff: StrengthBuff.JujuPower,
 	zanzaBuff: ZanzaBuff.GroundScorpokAssay,
 	sapperExplosive: SapperExplosive.SapperGoblinSapper,
-	mainHandImbue: WeaponImbue.ElementalSharpeningStone,
+	mainHandImbue: WeaponImbue.DenseSharpeningStone,
 });
 
 export const DefaultRaidBuffs = RaidBuffs.create({

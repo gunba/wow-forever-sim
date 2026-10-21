@@ -363,6 +363,10 @@ enum Potions {
 	GreaterNatureProtectionPotion = 21;
 	GreaterShadowProtectionPotion = 22;
 
+	// Forever alchemy, Merchant's Favor recipes: 30 sec stat potions on the potion cooldown.
+	MajorSpellblastingPotion = 23; // 250937: 47 spell damage
+	MajorFrenzyPotion = 24; // 250943: 80 attack power and ranged attack power
+
 	LesserManaPotion = 1 [deprecated = true];
 }
 
@@ -401,6 +405,25 @@ enum AgilityElixir {
 	ElixirOfLesserAgility = 3;
 	ScrollOfAgility = 4;
 	ElixirOfAgility = 5;
+	// Forever alchemy, Merchant's Favor recipes (client 1.60.1.70450). Elixirs share a group by their first
+	// stat: Cunning is an Agility elixir, Ferocity a Strength one.
+	ElixirOfCunning = 7; // 250328: 25 Agility, 25 Intellect
+}
+
+// Intellect and Spirit elixirs. Forever's crit elixirs (Owl, Sages) carry A_MOD_CRIT_PCT, crit with
+// attacks and spells, and only one elixir's crit applies.
+enum IntellectElixir {
+	IntellectElixirUnknown = 0;
+	ElixirOfTheOwl = 1; // 250337: 25 Intellect, 2% crit
+	ElixirOfGreaterIntellect = 2; // 9179: 25 Intellect
+	ElixirOfSages = 3; // 250338: 25 Spirit, 2% crit
+}
+
+// Forever's weapon scrolls (Scroll of Imbue, spell effect 360): an imbue beside a stone or oil.
+enum WeaponScroll {
+	WeaponScrollUnknown = 0;
+	ScrollOfImbuePrecision = 1; // 277502, enchant 8718: 14 crit rating
+	ScrollOfImbueAccuracy = 2; // 277494, enchant 8711: 5 hit rating
 }
 
 enum ArmorElixir {
@@ -429,6 +452,8 @@ enum StrengthBuff {
 	ElixirOfGiants = 2;
 	ElixirOfOgresStrength = 3;
 	ScrollOfStrength = 4;
+	ElixirOfTheGrizzly = 5; // 250351: 25 Strength, 2% crit
+	ElixirOfFerocity = 6; // 250350: 18 Strength, 18 Agility
 }
 
 enum AttackPowerBuff {
@@ -551,6 +576,9 @@ enum Food {
 	FoodTenderWolfSteak = 9;
 	FoodSmokedSagefish = 10;
 	FoodSagefishDelight = 11;
+	// Forever cooking: Nutritious Food -> Well Fed, 20 of one stat.
+	FoodSwiftstrikeSteak = 12; // 250072: 20 Agility
+	FoodPrehistoricPulledRaptor = 13; // 250075: 20 Intellect
 }
 
 enum SaygesFortune {
@@ -729,6 +757,9 @@ message Consumes {
 	PetMiscConsumes pet_misc_consumes = 27;
 	SapperExplosive sapper_explosive = 28;
 	HitConsumable hit_consumable = 29;
+	IntellectElixir intellect_elixir = 30;
+	WeaponScroll main_hand_scroll = 31;
+	WeaponScroll off_hand_scroll = 32;
 }
 
 // NextIndex: 26

@@ -22,7 +22,7 @@ func TestRangedScopeReducesPaidHunterHit(t *testing.T) {
 		// Hawk, whose unresolved melee hit model otherwise sets the overall cap.
 		p.Rotation = core.APLRotationFromJsonString(`{
 			"type":"TypeAPL","priorityList":[
-				{"action":{"castSpell":{"spellId":{"spellId":25295}}}}
+				{"action":{"castSpell":{"spellId":{"spellId":13555}}}}
 			]}`)
 		_, before, err := capHit(b, p)
 		if err != nil {
@@ -176,7 +176,7 @@ func TestUnusedSpellSchoolsDoNotEraseHitTalents(t *testing.T) {
 		p := b.player(proto.Race_RaceOrc)
 		p.TalentsString = "05"
 		p.Rotation = core.APLRotationFromJsonString(`{
-			"priorityList":[{"action":{"channelSpell":{"spellId":{"spellId":25345}}}}]
+			"priorityList":[{"action":{"channelSpell":{"spellId":{"spellId":10212}}}}]
 		}`)
 		_, report, err := capHit(b, p)
 		if err != nil {

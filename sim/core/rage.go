@@ -30,6 +30,10 @@ type rageBar struct {
 	maxRage      float64
 
 	RageRefundMetrics *ResourceMetrics
+
+	// Forever: rage threat booked when the rage arrives, at the unit's threat multiplier of that moment and
+	// split between the enemies in combat (wowsims/forever #385). Keyed by source.
+	foreverRageThreat map[*ResourceMetrics]float64
 }
 
 type RageBarOptions struct {
@@ -249,6 +253,13 @@ func (rb *rageBar) AddRage(sim *Simulation, amount float64, metrics *ResourceMet
 
 	newRage := min(rb.currentRage+amount, rb.maxRage)
 	metrics.AddEvent(amount, newRage-rb.currentRage)
+	if rb.unit.Env != nil && rb.unit.Env.IsForever() && newRage > rb.currentRage {
+		if rb.foreverRageThreat == nil {
+			rb.foreverRageThreat = make(map[*ResourceMetrics]float64)
+		}
+		rb.foreverRageThreat[metrics] += (newRage - rb.currentRage) * rb.unit.PseudoStats.ThreatMultiplier /
+			float64(max(1, rb.unit.Env.GetNumTargets()))
+	}
 
 	if sim.Log != nil {
 		rb.unit.Log(sim, "Gained %0.3f rage from %s (%0.3f --> %0.3f).", amount, metrics.ActionID, rb.currentRage, newRage)
@@ -290,6 +301,7 @@ func (rb *rageBar) reset(_ *Simulation) {
 	}
 
 	rb.currentRage = rb.startingRage
+	clear(rb.foreverRageThreat)
 }
 
 func (rb *rageBar) doneIteration() {
@@ -321,6 +333,10 @@ func (rb *rageBar) doneIteration() {
 		}
 
 		rageGainSpell.SpellMetrics[0].Casts += resourceMetrics.EventsForCurrentIteration()
+		if weighted, ok := rb.foreverRageThreat[resourceMetrics]; ok {
+			rageGainSpell.ApplyAOEThreatIgnoreMultipliers(weighted * ThreatPerRageGained)
+			continue
+		}
 		rageGainSpell.ApplyAOEThreatIgnoreMultipliers(resourceMetrics.ActualGainForCurrentIteration() * ThreatPerRageGained)
 	}
 }

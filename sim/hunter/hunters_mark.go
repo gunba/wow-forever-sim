@@ -12,12 +12,10 @@ func (hunter *Hunter) registerHuntersMark() {
 		rank := []struct {
 			level     int32
 			mana, rap float64
-		}{{6, 15, 26}, {22, 30, 59}, {40, 45, 98}, {58, 60, 71}}[i]
+		}{{6, 15, 26}, {22, 30, 59}, {40, 45, 98}, {58, 60, core.HuntersMarkRank4AttackPower}}[i]
 		if hunter.Level < rank.level {
 			continue
 		}
-		// Preserve captured effects literally. Rank3's larger RAP than rank4 is a
-		// source anomaly, not grounds for extrapolating a new rank4 value.
 		auras := hunter.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
 			return core.HuntersMarkAura(target, &hunter.Unit, spellID, rank.rap)
 		})

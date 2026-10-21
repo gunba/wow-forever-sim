@@ -17,7 +17,8 @@ func (hunter *Hunter) getMongooseBiteConfig(rank int) core.SpellConfig {
 		ActionID:      core.ActionID{SpellID: spellId},
 		SpellSchool:   core.SpellSchoolPhysical,
 		DefenseType:   core.DefenseTypeMelee,
-		ProcMask:      core.ProcMaskMeleeSpecial,
+		// Main-hand weapon damage, a main-hand special like Raptor Strike (MythicSim patch 106).
+		ProcMask:      core.ProcMaskMeleeMHSpecial,
 		Flags:         core.SpellFlagMeleeMetrics | core.SpellFlagAPL,
 		Rank:          rank,
 		RequiredLevel: level,

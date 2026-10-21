@@ -237,6 +237,10 @@ func (mage *Mage) applyFrostTalents() {
 	// Elemental Precision
 	if mage.Talents.ElementalPrecision > 0 {
 		bonusHit := 1 * float64(mage.Talents.ElementalPrecision) * core.SpellHitRatingPerHitChance
+		if mage.Env.IsForever() {
+			// Three ranks of 2/4/6% since the server hotfix (CurvePoint 241098-241100 on curve 83078).
+			bonusHit = 2 * float64(mage.Talents.ElementalPrecision) * core.SpellHitRatingPerHitChance
+		}
 
 		mage.OnSpellRegistered(func(spell *core.Spell) {
 			if spell.Flags.Matches(SpellFlagMage) && (spell.SpellSchool.Matches(core.SpellSchoolFire) || spell.SpellSchool.Matches(core.SpellSchoolFrost)) {
@@ -374,8 +378,8 @@ func (mage *Mage) applyMissileBarrage() {
 	if mage.Talents.MissileBarrage == 0 {
 		return
 	}
-	// Client 1.60.1.70425: two points; Arcane Blast 20/40%, each Arcane Missiles hit 5/10%, and Arcane
-	// Wrath, Fireball, Frostbolt and Frostfire Bolt 10/20%.
+	// Client 1.60.1.70425: two points; Arcane Blast 20/40%, and Arcane Wrath, Fireball, Frostbolt, Frost Blast
+	// and Frostfire Bolt 10/20%. The missiles proc nothing (hotfixed tooltip).
 	points := float64(mage.Talents.MissileBarrage)
 	tierFrostfireChance := core.TernaryFloat64(mage.HasSetBonus(ItemSetManaflareRegalia, 5), .10, 0)
 
@@ -413,6 +417,11 @@ func (mage *Mage) applyMissileBarrage() {
 		case SpellCode_MageArcaneBlast:
 			procChance = .20 * points
 		case SpellCode_MageArcaneMissilesTick:
+			if mage.Env.IsForever() {
+				// A developer confirmed Arcane Missiles does not proc it; the hotfixed tooltip drops the
+				// missiles (wowsims/forever #479).
+				return
+			}
 			procChance = .05 * points
 		case SpellCode_MageArcaneWrath, SpellCode_MageFireball, SpellCode_MageFrostbolt, SpellCode_MageFrostfireBolt:
 			procChance = .10 * points
@@ -914,6 +923,9 @@ func (mage *Mage) applyFingersOfFrost() {
 
 			// OnCastComplete runs after the damage is rolled, so the consuming cast keeps the
 			// bonus. Each cast spends one charge; the aura falls when the last one goes.
+			if spell.SpellCode == SpellCode_MageIceLance {
+				mage.empoweredLances++
+			}
 			aura.RemoveStack(sim)
 		},
 	})
@@ -973,15 +985,23 @@ func (mage *Mage) IsTargetFrozen() bool {
 	return mage.FingersOfFrostAura != nil && mage.FingersOfFrostAura.IsActive()
 }
 
-// Winter's Chill, redesigned in client 1.60.1.70425 (12579, aura 271): no longer critical strike.
-// Each stack makes the mage's next Cone of Cold on the target deal 40% more damage, up to five, and that
-// Cone of Cold consumes them. Applied by Frost damage spells at 20% a point.
+// Winter's Chill after the server hotfix (game cache push 112694-112753): "Gives your Frostbolt, Frost Blast, and
+// Fingers of Frost empowered Ice Lance spells a $m2% chance to apply Winter's Chill, increasing the target's damage
+// taken from your next Cone of Cold by $12579s1% and it gains an additional $s3% of your spell damage, stacking up to
+// $s1 times." 20% a point; 5% damage and 0.07 spell power coefficient a stack (12579 effect 1 5, effect 2 7; 11180
+// effect 3 7); stacks to the talent's rank. The next Cone of Cold spends them.
 func (mage *Mage) applyWintersChill() {
 	if mage.Talents.WintersChill == 0 {
 		return
 	}
 
 	procChance := .20 * float64(mage.Talents.WintersChill)
+	damagePerStack, coefficientPerStack := 0.40, 0.0
+	maxStacks := int32(5)
+	if mage.Env.IsForever() {
+		damagePerStack, coefficientPerStack = 0.05, 0.07
+		maxStacks = mage.Talents.WintersChill
+	}
 	var coneOfCold []*core.Spell
 	mage.OnSpellRegistered(func(spell *core.Spell) {
 		if spell.SpellCode == SpellCode_MageConeOfCold {
@@ -993,10 +1013,11 @@ func (mage *Mage) applyWintersChill() {
 		Label:     "Winter's Chill",
 		ActionID:  core.ActionID{SpellID: 12579},
 		Duration:  time.Second * 15,
-		MaxStacks: 5,
+		MaxStacks: maxStacks,
 		OnStacksChange: func(aura *core.Aura, sim *core.Simulation, oldStacks int32, newStacks int32) {
 			for _, spell := range coneOfCold {
-				spell.DamageMultiplierAdditive += 0.4 * float64(newStacks-oldStacks)
+				spell.DamageMultiplierAdditive += damagePerStack * float64(newStacks-oldStacks)
+				spell.BonusCoefficient += coefficientPerStack * float64(newStacks-oldStacks)
 			}
 		},
 		OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
@@ -1006,14 +1027,28 @@ func (mage *Mage) applyWintersChill() {
 		},
 	})
 
+	applies := func(spell *core.Spell) bool {
+		if !mage.Env.IsForever() {
+			return spell.SpellSchool.Matches(core.SpellSchoolFrost) && spell.SpellCode != SpellCode_MageConeOfCold
+		}
+		return spell.SpellCode == SpellCode_MageFrostbolt
+	}
+
 	mage.RegisterAura(core.Aura{
 		Label:    "Winters Chill Talent",
 		Duration: core.NeverExpires,
 		OnReset: func(aura *core.Aura, sim *core.Simulation) {
+			mage.empoweredLances = 0
 			aura.Activate(sim)
 		},
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if !result.Landed() || !spell.SpellSchool.Matches(core.SpellSchoolFrost) || spell.SpellCode == SpellCode_MageConeOfCold {
+			eligible := applies(spell)
+			if spell.SpellCode == SpellCode_MageIceLance && mage.empoweredLances > 0 {
+				// An Ice Lance cast while Fingers of Frost was up.
+				mage.empoweredLances--
+				eligible = mage.Env.IsForever()
+			}
+			if !result.Landed() || !eligible {
 				return
 			}
 

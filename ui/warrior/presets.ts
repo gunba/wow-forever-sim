@@ -51,7 +51,8 @@ export const DefaultGear = GearFury;
 
 export const APLFury = PresetUtils.makePresetAPLRotation('Fury', APLFuryJSON);
 export const APLFuryAoE = PresetUtils.makePresetAPLRotation('Fury (Adaptive AoE)', APLFuryAoEJSON);
-APLFuryAoE.tooltip = 'Maintains Battle Shout; prioritizes Whirlwind/Cleave on multiple targets, spends surplus Rage on Bloodthirst, and uses short-fight Execute. Single-target Rend requires enough time for its ticks and a low-cost Battle Stance window.';
+APLFuryAoE.tooltip =
+	'Maintains Battle Shout; prioritizes Whirlwind/Cleave on multiple targets, spends surplus Rage on Bloodthirst, and uses short-fight Execute. Single-target Rend requires enough time for its ticks and a low-cost Battle Stance window.';
 export const APLFurySpearing = PresetUtils.makePresetAPLRotation('Fury (Giants/Dragonkin)', APLFurySpearingJSON);
 APLFurySpearing.tooltip = 'Spearing Strike build for Giant or Dragonkin targets. Not a general-purpose Fury rotation.';
 export const APLFurySunder = PresetUtils.makePresetAPLRotation('Fury (Sunder)', APLFurySunderJSON);
@@ -72,13 +73,13 @@ export const DefaultAPLs = [APLPresets[ClassicPhase.Phase1][0]];
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsP1DPS = PresetUtils.makePresetTalents('Fury 18/33/0', SavedTalents.create({ talentsString: '20305213002-25053005141010501' }));
+export const TalentsP1DPS = PresetUtils.makePresetTalents('Fury 18/33/0', SavedTalents.create({ talentsString: '20305213002-25053005132010501' }));
 export const TalentsFurySpearing = PresetUtils.makePresetTalents(
 	'Fury Spearing Strike 18/33/0',
 	SavedTalents.create({ talentsString: '20305113102-25053005150010501' }),
 );
 
-export const TalentsArms = PresetUtils.makePresetTalents('Arms 34/17/0', SavedTalents.create({ talentsString: '20305213132515001-55050000002' }));
+export const TalentsArms = PresetUtils.makePresetTalents('Arms 35/16/0', SavedTalents.create({ talentsString: '20305213132515101-55050000001' }));
 export const TalentsFuryTwoHand = PresetUtils.makePresetTalents(
 	'2H Bloodthirst 20/31/0',
 	SavedTalents.create({ talentsString: '30304203032-55050020151010501' }),
@@ -110,8 +111,8 @@ export const DefaultConsumes = Consumes.create({
 	dragonBreathChili: true,
 	food: Food.FoodSmokedDesertDumpling,
 	healthElixir: HealthElixir.ElixirOfFortitude,
-	mainHandImbue: WeaponImbue.ElementalSharpeningStone,
-	offHandImbue: WeaponImbue.ElementalSharpeningStone,
+	mainHandImbue: WeaponImbue.DenseSharpeningStone,
+	offHandImbue: WeaponImbue.DenseSharpeningStone,
 	sapperExplosive: SapperExplosive.SapperGoblinSapper,
 	strengthBuff: StrengthBuff.JujuPower,
 	zanzaBuff: ZanzaBuff.ROIDS,
@@ -147,10 +148,18 @@ export const OtherDefaults = {
 export const BuildPresets = [
 	PresetUtils.makePresetBuild('Fury', { gear: GearFury, talents: TalentsP1DPS, rotation: APLFury, options: DefaultOptions, distance: 5 }),
 	PresetUtils.makePresetBuild('Fury (Adaptive AoE)', {
-		gear: GearFury, talents: TalentsP1DPS, rotation: APLFuryAoE, options: DefaultOptions, distance: 5,
+		gear: GearFury,
+		talents: TalentsP1DPS,
+		rotation: APLFuryAoE,
+		options: DefaultOptions,
+		distance: 5,
 	}),
 	PresetUtils.makePresetBuild('Fury (Giants/Dragonkin)', {
-		gear: GearFury, talents: TalentsFurySpearing, rotation: APLFurySpearing, options: DefaultOptions, distance: 5,
+		gear: GearFury,
+		talents: TalentsFurySpearing,
+		rotation: APLFurySpearing,
+		options: DefaultOptions,
+		distance: 5,
 	}),
 	PresetUtils.makePresetBuild('Arms', { gear: GearArms, talents: TalentsArms, rotation: APLArms, options: DefaultOptions, distance: 5 }),
 ];

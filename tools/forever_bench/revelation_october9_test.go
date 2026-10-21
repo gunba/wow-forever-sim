@@ -174,8 +174,8 @@ func TestOctober9RevelationSourcePayloadsAndDirectQualification(t *testing.T) {
 		key                         string
 		payload, eligible, excluded int32
 	}{
-		{"frost", 1248808, 25304, 25306}, {"smite", 1323377, 10934, 10894},
-		{"destruction", 1323392, 25307, 25309}, {"feral", 1323400, 9912, 9835},
+		{"frost", 1248808, 10181, 10151}, {"smite", 1323377, 10934, 10894},
+		{"destruction", 1323392, 11661, 11668}, {"feral", 1323400, 9912, 9835},
 		{"survival", 1323410, 14287, 2643}, {"elemental", 1323418, 15208, 29228},
 		{"retribution", 1323419, 20286, 20924},
 	} {
@@ -222,7 +222,7 @@ func TestOctober9RevelationSourcePayloadsAndDirectQualification(t *testing.T) {
 
 func TestOctober9RevelationChargeSamplingPeriodicAndEffectiveCrit(t *testing.T) {
 	sim, c, _ := revelationOctober9Fixture("frost", &proto.ForeverRevelationModel{Enabled: true}, true, nil)
-	s := revelationOctober9Spell(t, c, 25304, 0)
+	s := revelationOctober9Spell(t, c, 10181, 0)
 	target := c.CurrentTarget
 	s.BonusCritRating += (.25 - s.SpellCritChance(target)) * core.SpellCritRatingPerCritChance * 100
 	buff := revelationOctober9Activate(sim, c)
@@ -302,8 +302,8 @@ func TestOctober9RevelationChargeSamplingPeriodicAndEffectiveCrit(t *testing.T) 
 
 func TestOctober9RevelationArcaneMissilesTravelReservation(t *testing.T) {
 	sim, c, _ := revelationOctober9Fixture("arcane", &proto.ForeverRevelationModel{Enabled: true}, true, nil)
-	child := revelationOctober9Spell(t, c, 25345, 1)
-	parent := revelationOctober9Spell(t, c, 25345, 0)
+	child := revelationOctober9Spell(t, c, 10212, 1)
+	parent := revelationOctober9Spell(t, c, 10212, 0)
 	child.BonusHitRating = 10000
 	child.BonusCritRating -= child.SpellCritChance(c.CurrentTarget) * core.SpellCritRatingPerCritChance * 100
 	buff := revelationOctober9Activate(sim, c)

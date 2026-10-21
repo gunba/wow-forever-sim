@@ -129,7 +129,7 @@ func TestForeverFrostfireTalents(t *testing.T) {
 	req := mageSpellFixture(map[string]int{
 		"improvedFireball": 5, "improvedFrostbolt": 5,
 		"elementalPrecision": 3, "iceShards": 5, "firePower": 3,
-		"piercingIce": 3, "frostChanneling": 3,
+		"frostChanneling": 3,
 		"hotStreak": 1, "missileBarrage": 1, "wintersChill": 5,
 	})
 	sim := core.NewSim(req, simsignals.Signals{})
@@ -138,9 +138,11 @@ func TestForeverFrostfireTalents(t *testing.T) {
 	if spell.DefaultCast.CastTime != 2500*time.Millisecond {
 		t.Fatal("only Improved Fireball should shorten Frostfire Bolt")
 	}
-	if spell.BonusHitRating != 3*core.SpellHitRatingPerHitChance ||
+	// Elemental Precision is 2% a rank since the server hotfix; Piercing Ice is gone. Fire Power is per
+	// target effect since 70425.
+	if spell.BonusHitRating != 6*core.SpellHitRatingPerHitChance ||
 		spell.CritDamageBonus != 2 || spell.Cost.Multiplier != 85 ||
-		math.Abs(spell.DamageMultiplierAdditive-1.06) > 1e-7 { // Fire Power is per target effect since 70425
+		math.Abs(spell.DamageMultiplierAdditive-1) > 1e-7 {
 		t.Fatalf("incorrect Fire/Frost modifiers: hit %v, crit bonus %v, cost %v, damage %v",
 			spell.BonusHitRating, spell.CritDamageBonus, spell.Cost.Multiplier, spell.DamageMultiplierAdditive)
 	}

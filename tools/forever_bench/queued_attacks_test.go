@@ -48,7 +48,7 @@ func TestNextSwingDamageCannotBeDirectlyCastByAPL(t *testing.T) {
 		race := proto.Race_RaceOrc
 		switch b.Key {
 		case "tank_warrior":
-			ids = []int32{25286, 20569}
+			ids = []int32{core.TernaryInt32(core.IncludeAQ, 25286, 11567), 20569}
 		case "feral_tank_druid":
 			ids = []int32{9881}
 			race = proto.Race_RaceTauren

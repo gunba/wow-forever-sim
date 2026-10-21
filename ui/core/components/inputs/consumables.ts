@@ -17,6 +17,7 @@ import {
 	FrostPowerBuff,
 	HealthElixir,
 	HitConsumable,
+	IntellectElixir,
 	ItemSlot,
 	ManaRegenElixir,
 	Potions,
@@ -28,6 +29,7 @@ import {
 	Stat,
 	StrengthBuff,
 	WeaponImbue,
+	WeaponScroll,
 	ZanzaBuff,
 } from '../../proto/common';
 import { ActionId } from '../../proto_utils/action_id';
@@ -77,7 +79,13 @@ function makeConsumeInputFactory<T extends number>(
 			equals: (a: T, b: T) => a == b,
 			zeroValue: 0 as T,
 			changedEvent: (player: Player<any>) =>
-				TypedEvent.onAny([player.consumesChangeEmitter, player.gearChangeEmitter, player.professionChangeEmitter, player.raceChangeEmitter, player.sim.rulesetChangeEmitter]),
+				TypedEvent.onAny([
+					player.consumesChangeEmitter,
+					player.gearChangeEmitter,
+					player.professionChangeEmitter,
+					player.raceChangeEmitter,
+					player.sim.rulesetChangeEmitter,
+				]),
 			showWhen: (player: Player<any>) => !args.showWhen || args.showWhen(player),
 			getValue: (player: Player<any>) => player.getConsumes()[args.consumesFieldName] as T,
 			setValue: (eventID: EventID, player: Player<any>, newValue: number) => {
@@ -142,9 +150,7 @@ export const ConjuredDemonicRune: ConsumableInputConfig<Conjured> = {
 export const ConjuredRogueThistleTea: ConsumableInputConfig<Conjured> = {
 	actionId: () => ActionId.fromItemId(7676),
 	value: Conjured.ConjuredRogueThistleTea,
-	showWhen: player =>
-		player.getClass() == Class.ClassRogue ||
-		(player.sim.getRuleset() === Ruleset.RulesetForever && player.isSpec(Spec.SpecFeralDruid)),
+	showWhen: player => player.getClass() == Class.ClassRogue || (player.sim.getRuleset() === Ruleset.RulesetForever && player.isSpec(Spec.SpecFeralDruid)),
 };
 
 export const CONJURED_CONFIG: ConsumableStatOption<Conjured>[] = [
@@ -292,6 +298,16 @@ export const HotWolfRibs: ConsumableInputConfig<Food> = {
 	actionId: () => ActionId.fromItemId(13851),
 	value: Food.FoodHotWolfRibs,
 };
+export const SwiftstrikeSteak: ConsumableInputConfig<Food> = {
+	actionId: () => ActionId.fromItemId(250072),
+	value: Food.FoodSwiftstrikeSteak,
+	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever,
+};
+export const PrehistoricPulledRaptor: ConsumableInputConfig<Food> = {
+	actionId: () => ActionId.fromItemId(250075),
+	value: Food.FoodPrehistoricPulledRaptor,
+	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever,
+};
 export const SmokedSagefish: ConsumableInputConfig<Food> = {
 	actionId: () => ActionId.fromItemId(21072),
 	value: Food.FoodSmokedSagefish,
@@ -300,8 +316,10 @@ export const SmokedSagefish: ConsumableInputConfig<Food> = {
 // Ordered by level
 export const FOOD_CONFIG: ConsumableStatOption<Food>[] = [
 	{ config: DirgesKickChimaerokChops, stats: [Stat.StatStamina] },
-	{ config: GrilledSquid, stats: [Stat.StatAgility] },
+	{ config: GrilledSquid, stats: [Stat.StatAgility, Stat.StatMeleeCrit, Stat.StatSpellCrit] },
+	{ config: SwiftstrikeSteak, stats: [Stat.StatAgility] },
 	{ config: SmokedDesertDumpling, stats: [Stat.StatStrength] },
+	{ config: PrehistoricPulledRaptor, stats: [Stat.StatIntellect] },
 	{ config: RunnTumTuberSurprise, stats: [Stat.StatIntellect] },
 	{ config: BlessSunfruit, stats: [Stat.StatStrength] },
 	{ config: BlessedSunfruitJuice, stats: [Stat.StatSpirit] },
@@ -444,8 +462,15 @@ export const ScrollOfAgility: ConsumableInputConfig<AgilityElixir> = {
 	value: AgilityElixir.ScrollOfAgility,
 };
 
+export const ElixirOfCunning: ConsumableInputConfig<AgilityElixir> = {
+	actionId: () => ActionId.fromItemId(250328),
+	value: AgilityElixir.ElixirOfCunning,
+	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever,
+};
+
 export const AGILITY_CONSUMES_CONFIG: ConsumableStatOption<AgilityElixir>[] = [
 	{ config: ElixirOfTheMongoose, stats: [Stat.StatAgility, Stat.StatMeleeCrit] },
+	{ config: ElixirOfCunning, stats: [Stat.StatAgility, Stat.StatIntellect] },
 	{ config: ElixirOfGreaterAgility, stats: [Stat.StatAgility] },
 	{ config: ElixirOfAgility, stats: [Stat.StatAgility] },
 	{ config: ElixirOfLesserAgility, stats: [Stat.StatAgility] },
@@ -472,8 +497,21 @@ export const ScrollOfStrength: ConsumableInputConfig<StrengthBuff> = {
 	value: StrengthBuff.ScrollOfStrength,
 };
 
+export const ElixirOfTheGrizzly: ConsumableInputConfig<StrengthBuff> = {
+	actionId: () => ActionId.fromItemId(250351),
+	value: StrengthBuff.ElixirOfTheGrizzly,
+	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever,
+};
+export const ElixirOfFerocity: ConsumableInputConfig<StrengthBuff> = {
+	actionId: () => ActionId.fromItemId(250350),
+	value: StrengthBuff.ElixirOfFerocity,
+	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever,
+};
+
 export const STRENGTH_CONSUMES_CONFIG: ConsumableStatOption<StrengthBuff>[] = [
 	{ config: JujuPower, stats: [Stat.StatStrength] },
+	{ config: ElixirOfTheGrizzly, stats: [Stat.StatStrength, Stat.StatMeleeCrit] },
+	{ config: ElixirOfFerocity, stats: [Stat.StatStrength, Stat.StatAgility] },
 	{ config: ElixirOfGiants, stats: [Stat.StatStrength] },
 	{ config: ElixirOfOgresStrength, stats: [Stat.StatStrength] },
 	{ config: ScrollOfStrength, stats: [Stat.StatStrength] },
@@ -688,6 +726,17 @@ export const RagePotion: ConsumableInputConfig<Potions> = {
 	showWhen: player => player.getClass() == Class.ClassWarrior,
 };
 
+export const MajorSpellblastingPotion: ConsumableInputConfig<Potions> = {
+	actionId: () => ActionId.fromItemId(250937),
+	value: Potions.MajorSpellblastingPotion,
+	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever,
+};
+export const MajorFrenzyPotion: ConsumableInputConfig<Potions> = {
+	actionId: () => ActionId.fromItemId(250943),
+	value: Potions.MajorFrenzyPotion,
+	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever,
+};
+
 export const MagicResistancePotion: ConsumableInputConfig<Potions> = {
 	actionId: () => ActionId.fromItemId(9036),
 	value: Potions.MagicResistancePotion,
@@ -736,6 +785,9 @@ export const POTIONS_CONFIG: ConsumableStatOption<Potions>[] = [
 	{ config: SuperiorManaPotion, stats: [Stat.StatIntellect] },
 	{ config: GreaterManaPotion, stats: [Stat.StatIntellect] },
 	{ config: ManaPotion, stats: [Stat.StatIntellect] },
+
+	{ config: MajorSpellblastingPotion, stats: [Stat.StatSpellPower, Stat.StatSpellDamage, Stat.StatIntellect] },
+	{ config: MajorFrenzyPotion, stats: [Stat.StatAttackPower, Stat.StatRangedAttackPower, Stat.StatStrength, Stat.StatAgility] },
 
 	{ config: MightRagePotion, stats: [] },
 	{ config: GreatRagePotion, stats: [] },
@@ -814,6 +866,54 @@ export const MagebloodPotion: ConsumableInputConfig<ManaRegenElixir> = {
 };
 
 export const MP5_CONFIG: ConsumableStatOption<ManaRegenElixir>[] = [{ config: MagebloodPotion, stats: [Stat.StatMP5] }];
+
+// Intellect and Spirit elixirs. In Forever the Owl's and Sages' crit is crit with attacks and spells, and only one
+// elixir's crit applies.
+export const ElixirOfTheOwl: ConsumableInputConfig<IntellectElixir> = {
+	actionId: () => ActionId.fromItemId(250337),
+	value: IntellectElixir.ElixirOfTheOwl,
+	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever,
+};
+export const ElixirOfGreaterIntellect: ConsumableInputConfig<IntellectElixir> = {
+	actionId: () => ActionId.fromItemId(9179),
+	value: IntellectElixir.ElixirOfGreaterIntellect,
+};
+export const ElixirOfSages: ConsumableInputConfig<IntellectElixir> = {
+	actionId: () => ActionId.fromItemId(250338),
+	value: IntellectElixir.ElixirOfSages,
+	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever,
+};
+export const INTELLECT_ELIXIR_CONFIG: ConsumableStatOption<IntellectElixir>[] = [
+	{ config: ElixirOfTheOwl, stats: [Stat.StatIntellect] },
+	{ config: ElixirOfGreaterIntellect, stats: [Stat.StatIntellect] },
+	{ config: ElixirOfSages, stats: [Stat.StatSpirit] },
+];
+export const makeIntellectElixirInput = makeConsumeInputFactory({ consumesFieldName: 'intellectElixir' });
+
+// Forever's Scroll of Imbue weapon scrolls sit beside a stone or oil.
+export const ScrollOfImbuePrecision: ConsumableInputConfig<WeaponScroll> = {
+	actionId: () => ActionId.fromItemId(277502),
+	value: WeaponScroll.ScrollOfImbuePrecision,
+};
+export const ScrollOfImbueAccuracy: ConsumableInputConfig<WeaponScroll> = {
+	actionId: () => ActionId.fromItemId(277494),
+	value: WeaponScroll.ScrollOfImbueAccuracy,
+};
+export const WEAPON_SCROLL_CONFIG: ConsumableStatOption<WeaponScroll>[] = [
+	{ config: ScrollOfImbuePrecision, stats: [] },
+	{ config: ScrollOfImbueAccuracy, stats: [] },
+];
+export const makeMainHandScrollInput = makeConsumeInputFactory({
+	consumesFieldName: 'mainHandScroll',
+	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever && !!player.getGear().getEquippedItem(ItemSlot.ItemSlotMainHand),
+});
+export const makeOffHandScrollInput = makeConsumeInputFactory({
+	consumesFieldName: 'offHandScroll',
+	showWhen: player => {
+		const weapon = player.getGear().getEquippedItem(ItemSlot.ItemSlotOffHand);
+		return player.sim.getRuleset() === Ruleset.RulesetForever && !!weapon && isWeapon(weapon.item.weaponType);
+	},
+});
 
 export const makeMp5ConsumeInput = makeConsumeInputFactory({ consumesFieldName: 'manaRegenElixir' });
 
@@ -933,8 +1033,10 @@ export const ElementalSharpeningStone = (slot: ItemSlot): ConsumableInputConfig<
 		actionId: () => ActionId.fromItemId(18262),
 		value: WeaponImbue.ElementalSharpeningStone,
 		showWhen: player => {
+			// A Molten Core recipe: not obtainable in Forever before raids open.
+			if (player.sim.getRuleset() === Ruleset.RulesetForever) return false;
 			const weapon = player.getEquippedItem(slot);
-			return (!weapon || isWeapon(weapon.item.weaponType)) && (!player.isSpec(Spec.SpecFeralDruid) || player.sim.getRuleset() === Ruleset.RulesetForever);
+			return !weapon || isWeapon(weapon.item.weaponType);
 		},
 	};
 };
@@ -944,7 +1046,10 @@ export const DenseSharpeningStone = (slot: ItemSlot): ConsumableInputConfig<Weap
 		value: WeaponImbue.DenseSharpeningStone,
 		showWhen: player => {
 			const weapon = player.getEquippedItem(slot);
-			return (!weapon || isSharpWeaponType(weapon.item.weaponType)) && (!player.isSpec(Spec.SpecFeralDruid) || player.sim.getRuleset() === Ruleset.RulesetForever);
+			return (
+				(!weapon || isSharpWeaponType(weapon.item.weaponType)) &&
+				(!player.isSpec(Spec.SpecFeralDruid) || player.sim.getRuleset() === Ruleset.RulesetForever)
+			);
 		},
 	};
 };
@@ -954,7 +1059,10 @@ export const SolidSharpeningStone = (slot: ItemSlot): ConsumableInputConfig<Weap
 		value: WeaponImbue.SolidSharpeningStone,
 		showWhen: player => {
 			const weapon = player.getEquippedItem(slot);
-			return (!weapon || isSharpWeaponType(weapon.item.weaponType)) && (!player.isSpec(Spec.SpecFeralDruid) || player.sim.getRuleset() === Ruleset.RulesetForever);
+			return (
+				(!weapon || isSharpWeaponType(weapon.item.weaponType)) &&
+				(!player.isSpec(Spec.SpecFeralDruid) || player.sim.getRuleset() === Ruleset.RulesetForever)
+			);
 		},
 	};
 };
@@ -966,7 +1074,10 @@ export const DenseWeightstone = (slot: ItemSlot): ConsumableInputConfig<WeaponIm
 		value: WeaponImbue.DenseWeightstone,
 		showWhen: player => {
 			const weapon = player.getEquippedItem(slot);
-			return (!weapon || isBluntWeaponType(weapon.item.weaponType)) && (!player.isSpec(Spec.SpecFeralDruid) || player.sim.getRuleset() === Ruleset.RulesetForever);
+			return (
+				(!weapon || isBluntWeaponType(weapon.item.weaponType)) &&
+				(!player.isSpec(Spec.SpecFeralDruid) || player.sim.getRuleset() === Ruleset.RulesetForever)
+			);
 		},
 	};
 };
@@ -976,7 +1087,10 @@ export const SolidWeightstone = (slot: ItemSlot): ConsumableInputConfig<WeaponIm
 		value: WeaponImbue.SolidWeightstone,
 		showWhen: player => {
 			const weapon = player.getEquippedItem(slot);
-			return (!weapon || isBluntWeaponType(weapon.item.weaponType)) && (!player.isSpec(Spec.SpecFeralDruid) || player.sim.getRuleset() === Ruleset.RulesetForever);
+			return (
+				(!weapon || isBluntWeaponType(weapon.item.weaponType)) &&
+				(!player.isSpec(Spec.SpecFeralDruid) || player.sim.getRuleset() === Ruleset.RulesetForever)
+			);
 		},
 	};
 };

@@ -75,17 +75,25 @@ export const DefaultAPL = APLP1;
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsP1 = PresetUtils.makePresetTalents('Marksmanship 5/35/11', SavedTalents.create({ talentsString: '5-0050552011523051-50005001' }));
+export const TalentsP1 = PresetUtils.makePresetTalents('Marksmanship 5/37/9', SavedTalents.create({ talentsString: '5-0053452011523051-50004' }));
 
 export const TalentsBeastMastery = PresetUtils.makePresetTalents(
 	'Beast Mastery 31/20/0',
-	SavedTalents.create({ talentsString: '5320001505101251-00522510005' }),
+	SavedTalents.create({ talentsString: '5320001505101251-00531510005' }),
 );
-export const TalentsSurvival = PresetUtils.makePresetTalents('Survival 7/11/33', SavedTalents.create({ talentsString: '502-0050051-230230230250022151' }));
-export const TalentsPetMelee = PresetUtils.makePresetTalents('Pet/Melee 16/11/24', SavedTalents.create({ talentsString: '53200005001-0050051-5302002300501201' }));
+export const TalentsSurvival = PresetUtils.makePresetTalents('Survival 7/11/33', SavedTalents.create({ talentsString: '502-0050051-500230230250022151' }));
+// Survival melee weave, wowsims/forever's SV Weave preset.
+export const TalentsSurvivalWeave = PresetUtils.makePresetTalents(
+	'SV Weave 0/20/31',
+	SavedTalents.create({ talentsString: '-00530501105-530200230050121151' }),
+);
+export const TalentsPetMelee = PresetUtils.makePresetTalents(
+	'Pet/Melee 16/11/24',
+	SavedTalents.create({ talentsString: '53200005001-0050051-5302002300501201' }),
+);
 
 export const TalentPresets = {
-	[ClassicPhase.Phase1]: [TalentsP1, TalentsBeastMastery, TalentsSurvival, TalentsPetMelee],
+	[ClassicPhase.Phase1]: [TalentsP1, TalentsBeastMastery, TalentsSurvival, TalentsPetMelee, TalentsSurvivalWeave],
 };
 
 export const DefaultTalents = TalentsP1;
@@ -114,9 +122,9 @@ export const DefaultConsumes = Consumes.create({
 	flask: Flask.FlaskOfSupremePower,
 	food: Food.FoodSmokedDesertDumpling,
 	healthElixir: HealthElixir.ElixirOfFortitude,
-	mainHandImbue: WeaponImbue.ElementalSharpeningStone,
+	mainHandImbue: WeaponImbue.DenseSharpeningStone,
 	manaRegenElixir: ManaRegenElixir.MagebloodPotion,
-	offHandImbue: WeaponImbue.ElementalSharpeningStone,
+	offHandImbue: WeaponImbue.DenseSharpeningStone,
 	sapperExplosive: SapperExplosive.SapperUnknown,
 	spellPowerBuff: SpellPowerBuff.GreaterArcaneElixir,
 	strengthBuff: StrengthBuff.JujuPower,
@@ -173,6 +181,20 @@ export const BuildPresets = [
 		distance: 12,
 	}),
 	PresetUtils.makePresetBuild('Marksmanship', { gear: GearMarksmanship, talents: TalentsP1, rotation: APLP1, options: DefaultOptions, distance: 12 }),
-	PresetUtils.makePresetBuild('Survival', { gear: GearSurvival, talents: TalentsSurvival, rotation: APLSurvival, options: PetOptions, distance: 5, encounter: { name: 'Owned Hunter’s Mark', debuffs: Debuffs.create({ ...DefaultDebuffs, huntersMark: TristateEffect.TristateEffectMissing }) } }),
-	PresetUtils.makePresetBuild('Pet/Melee', { gear: GearSurvival, talents: TalentsPetMelee, rotation: APLPetMelee, options: PetOptions, distance: 5, encounter: { name: 'Owned Hunter’s Mark', debuffs: Debuffs.create({ ...DefaultDebuffs, huntersMark: TristateEffect.TristateEffectMissing }) } }),
+	PresetUtils.makePresetBuild('Survival', {
+		gear: GearSurvival,
+		talents: TalentsSurvival,
+		rotation: APLSurvival,
+		options: PetOptions,
+		distance: 5,
+		encounter: { name: 'Owned Hunter’s Mark', debuffs: Debuffs.create({ ...DefaultDebuffs, huntersMark: TristateEffect.TristateEffectMissing }) },
+	}),
+	PresetUtils.makePresetBuild('Pet/Melee', {
+		gear: GearSurvival,
+		talents: TalentsPetMelee,
+		rotation: APLPetMelee,
+		options: PetOptions,
+		distance: 5,
+		encounter: { name: 'Owned Hunter’s Mark', debuffs: Debuffs.create({ ...DefaultDebuffs, huntersMark: TristateEffect.TristateEffectMissing }) },
+	}),
 ];
