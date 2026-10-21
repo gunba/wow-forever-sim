@@ -193,7 +193,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "20305213002-25053005132010501",
+    "talentsString": "30305213002-25053005112010501-1",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
@@ -364,6 +364,28 @@
         {
           "action": {
             "condition": {
+              "cmp": {
+                "op": "OpLe",
+                "lhs": {
+                  "currentRage": {}
+                },
+                "rhs": {
+                  "const": {
+                    "val": "60"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "itemId": 12662
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
               "and": {
                 "vals": [
                   {
@@ -381,27 +403,7 @@
                       },
                       "rhs": {
                         "const": {
-                          "val": "25"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "not": {
-                      "val": {
-                        "isExecutePhase": {
-                          "threshold": "E20"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "not": {
-                      "val": {
-                        "auraIsActive": {
-                          "auraId": {
-                            "spellId": 1719
-                          }
+                          "val": "35"
                         }
                       }
                     }
@@ -546,6 +548,21 @@
                         }
                       }
                     }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "autoTimeToNext": {
+                          "autoType": "MainHand"
+                        }
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "1s"
+                        }
+                      }
+                    }
                   }
                 ]
               }
@@ -570,7 +587,7 @@
                       },
                       "rhs": {
                         "const": {
-                          "val": "30"
+                          "val": "40"
                         }
                       }
                     }

@@ -31,6 +31,28 @@
     {
       "action": {
         "condition": {
+          "cmp": {
+            "op": "OpLe",
+            "lhs": {
+              "currentRage": {}
+            },
+            "rhs": {
+              "const": {
+                "val": "60"
+              }
+            }
+          }
+        },
+        "castSpell": {
+          "spellId": {
+            "itemId": 12662
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "condition": {
           "and": {
             "vals": [
               {
@@ -48,7 +70,40 @@
                   },
                   "rhs": {
                     "const": {
-                      "val": "25"
+                      "val": "35"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "castSpell": {
+          "spellId": {
+            "spellId": 2457
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "condition": {
+          "and": {
+            "vals": [
+              {
+                "auraIsActive": {
+                  "auraId": {
+                    "spellId": 2457
+                  }
+                }
+              },
+              {
+                "not": {
+                  "val": {
+                    "dotIsActive": {
+                      "spellId": {
+                        "spellId": 11574
+                      }
                     }
                   }
                 }
@@ -61,24 +116,13 @@
                     }
                   }
                 }
-              },
-              {
-                "not": {
-                  "val": {
-                    "auraIsActive": {
-                      "auraId": {
-                        "spellId": 1719
-                      }
-                    }
-                  }
-                }
               }
             ]
           }
         },
         "castSpell": {
           "spellId": {
-            "spellId": 2457
+            "spellId": 11574
           }
         }
       }
@@ -218,6 +262,21 @@
                     }
                   }
                 }
+              },
+              {
+                "cmp": {
+                  "op": "OpGe",
+                  "lhs": {
+                    "autoTimeToNext": {
+                      "autoType": "MainHand"
+                    }
+                  },
+                  "rhs": {
+                    "const": {
+                      "val": "1s"
+                    }
+                  }
+                }
               }
             ]
           }
@@ -237,7 +296,7 @@
                   },
                   "rhs": {
                     "const": {
-                      "val": "30"
+                      "val": "40"
                     }
                   }
                 }

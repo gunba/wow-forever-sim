@@ -1,0 +1,307 @@
+{
+ "format": 1,
+ "release": "October 21 Warrior rotations",
+ "method": "A policy network chose every action in the real engine (tools/forever_rl): major cooldowns, unqueueing Heroic Strike/Cleave and waits included. One network conditioned on the talents was trained by PPO across many Fury builds while a build search assigned the builds (codesign.py). explain.py compared its choices with the published APL on the same fights; each habit was written as an APL rule, tuned on paired fights and confirmed on fresh seeds; the tuned APL then taught a second co-design run, whose remaining habits gave the round 2 rules. Every comparison uses shared seeds with one random stream per roll label (paired standard errors about 0.5 DPS at 4,096 fights).",
+ "apls": {
+  "fury": {
+   "rules": [
+    "Battle Stance for an Overpower window up to 35 rage, also in the execute phase and during Recklessness (was 25 rage, outside both).",
+    "Rend when it is off the target while in Battle Stance, before Overpower, outside the execute phase.",
+    "Heroic Strike queued from 40 rage (was 30).",
+    "Hamstring for Windfury Totem only when the next main-hand swing is at least 1 s away.",
+    "Demonic Rune at up to 60 rage (its 600-1000 self-damage gives rage; the benchmark already carries it)."
+   ],
+   "final": {
+    "fights": 4096,
+    "rows": [
+     {
+      "talents": "20305213002-25053005132010501",
+      "rotation": "published APL",
+      "dps": 982.43,
+      "vs_first": 0.0,
+      "vs_first_se": 0.0
+     },
+     {
+      "talents": "20305213002-25053005132010501",
+      "rotation": "round 1 rules",
+      "dps": 997.62,
+      "vs_first": 15.19,
+      "vs_first_se": 0.53
+     },
+     {
+      "talents": "20305213002-25053005132010501",
+      "rotation": "round 1 + round 2 rules without Demonic Rune",
+      "dps": 1000.99,
+      "vs_first": 18.56,
+      "vs_first_se": 0.54
+     },
+     {
+      "talents": "20305213002-25053005132010501",
+      "rotation": "all rules (shipped)",
+      "dps": 1004.13,
+      "vs_first": 21.69,
+      "vs_first_se": 0.53
+     },
+     {
+      "talents": "30305213002-25053005112010501-1",
+      "rotation": "round 1 rules",
+      "dps": 999.37,
+      "vs_first": 16.93,
+      "vs_first_se": 0.54
+     },
+     {
+      "talents": "30305213002-25053005112010501-1",
+      "rotation": "round 1 + round 2 rules without Demonic Rune",
+      "dps": 1003.66,
+      "vs_first": 21.22,
+      "vs_first_se": 0.54
+     },
+     {
+      "talents": "30305213002-25053005112010501-1",
+      "rotation": "all rules (shipped)",
+      "dps": 1005.62,
+      "vs_first": 23.18,
+      "vs_first_se": 0.53
+     },
+     {
+      "talents": "20305213002-25053005132010501",
+      "rotation": "learned policy (co-design best checkpoint)",
+      "dps": 1010.76,
+      "vs_first": 28.33,
+      "vs_first_se": 0.54
+     },
+     {
+      "talents": "30305213002-25053005112010501-1",
+      "rotation": "learned policy (co-design best checkpoint)",
+      "dps": 1011.85,
+      "vs_first": 29.42,
+      "vs_first_se": 0.55
+     }
+    ],
+    "seeds": "8000000 + fight, one random stream per roll label",
+    "equipment": "published Orc Fury equipment (Axe 2.9 main hand, Fist 1.7 off hand)"
+   },
+   "round1_grid": {
+    "fights": 1024,
+    "seed": "31337 + fight",
+    "top": [
+     {
+      "variant": "d35_noreck_after_op_hs40",
+      "vs_published": 17.15,
+      "se": 1.06
+     },
+     {
+      "variant": "d30_noreck_after_op_hs40",
+      "vs_published": 16.06,
+      "se": 1.06
+     },
+     {
+      "variant": "d35_noreck_before_op_hs45",
+      "vs_published": 16.04,
+      "se": 1.08
+     },
+     {
+      "variant": "d30_noreck_before_op_hs35",
+      "vs_published": 15.98,
+      "se": 1.04
+     },
+     {
+      "variant": "d35_noreck_before_op_hs40",
+      "vs_published": 15.88,
+      "se": 1.07
+     },
+     {
+      "variant": "d30_noreck_before_op_hs45",
+      "vs_published": 15.16,
+      "se": 1.11
+     }
+    ]
+   },
+   "round1_grid_fresh_seeds": {
+    "fights": 1024,
+    "seed": "555000 + fight",
+    "top": [
+     {
+      "variant": "d35_noreck_before_op_hs40",
+      "vs_published": 17.51,
+      "se": 1.08
+     },
+     {
+      "variant": "d35_noreck_before_op_hs45",
+      "vs_published": 17.39,
+      "se": 1.1
+     },
+     {
+      "variant": "d40_noreck_after_op_hs50",
+      "vs_published": 16.8,
+      "se": 1.07
+     },
+     {
+      "variant": "d40_noreck_after_op_hs45",
+      "vs_published": 16.76,
+      "se": 1.06
+     },
+     {
+      "variant": "d40_noreck_before_op_hs45",
+      "vs_published": 16.42,
+      "se": 1.1
+     },
+     {
+      "variant": "d40_noreck_before_op_hs40",
+      "vs_published": 16.39,
+      "se": 1.07
+     }
+    ]
+   },
+   "round2_on_tuned": {
+    "fights": 4096,
+    "seed": "7000000 + fight",
+    "talents": "30305213002-25053005112010501-1",
+    "rend_not_in_execute": [
+     1.64,
+     0.17
+    ],
+    "plus_hamstring_timing": [
+     3.08,
+     0.52
+    ],
+    "plus_demonic_rune": [
+     5.07,
+     0.54
+    ]
+   },
+   "other_races_round1": {
+    "fights": 1024,
+    "Human": [
+     16.75,
+     1.07
+    ],
+    "Troll": [
+     14.88,
+     1.05
+    ]
+   }
+  },
+  "fury_sunder": {
+   "rules": [
+    "As Fury, without the Rend refresh (Sunder upkeep takes those globals): dance up to 35 rage, Heroic Strike from 40, Hamstring timing, Demonic Rune."
+   ],
+   "fights": 4096,
+   "seed": "9100000 + fight",
+   "published_dps": 934.4,
+   "round1": [
+    13.27,
+    0.51
+   ],
+   "round2_without_rune": [
+    15.35,
+    0.52
+   ],
+   "shipped": [
+    18.6,
+    0.52
+   ],
+   "round1_grid_1024": {
+    "d35_norend_hs40": [
+     14.73,
+     1.05
+    ],
+    "d35_rend_hs40": [
+     12.51,
+     1.07
+    ]
+   }
+  },
+  "fury_2h": {
+   "rules": [
+    "Dance up to 60 rage (also in execute), Rend refresh in Battle Stance outside execute, Heroic Strike from 80 (was 50), Slam unchanged at 50, Hamstring timing, Demonic Rune."
+   ],
+   "fights": 4096,
+   "seed": "9100000 + fight",
+   "published_dps": 832.4,
+   "round1": [
+    30.35,
+    0.62
+   ],
+   "round2_without_rune": [
+    31.96,
+    0.61
+   ],
+   "shipped": [
+    36.2,
+    0.6
+   ],
+   "grid_1024": {
+    "d45_rend_hs80_slam50": [
+     27.81,
+     1.22
+    ],
+    "d60_rend_hs80_slam50": [
+     29.79,
+     1.25
+    ],
+    "d60_rend_hs80_slam60": [
+     30.25,
+     1.24
+    ],
+    "d45_rend_hs80_slam40": "worse than slam 50/60"
+   }
+  }
+ },
+ "talents": {
+  "fury": {
+   "before": "20305213002-25053005132010501",
+   "after": "30305213002-25053005112010501-1",
+   "change": "Two Enrage points (0.33 DPS each beyond the tier gates) to Improved Heroic Strike 3/3 and Improved Bloodrage 1/2.",
+   "applies_to": [
+    "fury",
+    "fury_sunder (inherits Fury's talents)"
+   ],
+   "screen_published_apl": [
+    {
+     "round": 1,
+     "move": "Enrage -> Improved Heroic Strike",
+     "diff": 2.42,
+     "se": 0.53,
+     "talents": "30305213002-25053005122010501"
+    },
+    {
+     "round": 2,
+     "move": "Enrage -> Improved Bloodrage",
+     "diff": 1.61,
+     "se": 0.51,
+     "talents": "30305213002-25053005112010501-1"
+    }
+   ],
+   "screen_round1_apl": [
+    {
+     "round": 1,
+     "move": "Enrage -> Improved Heroic Strike",
+     "diff": 1.63,
+     "se": 0.51,
+     "talents": "30305213002-25053005122010501"
+    }
+   ],
+   "note": "Every legal one-point move (150-181 per round) was screened on 512 paired fights and the leaders confirmed on 4,096."
+  }
+ },
+ "weapons": "Unchanged. With racial weapon skills gone under Forever, weapon type matters only through Weaponmaster; Arms, the only Weaponmaster build, already wields the Sword, which a Weaponmaster check put ahead of Axe and Mace.",
+ "rejected": {
+  "late_heroic_strike_queue": "-1.4 to -12.2 DPS (queue at 20-30 rage when the next main-hand swing is within 0.3-0.6 s)",
+  "hamstring_rage_floor": "-6.8 (30 rage) and -13.8 (50 rage); no Hamstring at all -17.2",
+  "bloodthirst_before_execute": "+0.43 +/- 0.30 (not kept)",
+  "berserker_rage_with_improved_berserker_rage": "-0.68 +/- 1.51 in idle globals; -6.8 on cooldown",
+  "weaponmaster_or_bloodthrill_hybrids": "-140 to -183 DPS (lose Bloodthirst and Flurry)"
+ },
+ "learned_policy": {
+  "note": "Not shipped: a network, not an APL. Same fights as 'final'.",
+  "codesign_run": {
+   "minutes": 62.4,
+   "iterations": 3241,
+   "decisions": 424804352,
+   "fights": 277625,
+   "builds_seen": 31660,
+   "best_iter": 2300
+  }
+ }
+}

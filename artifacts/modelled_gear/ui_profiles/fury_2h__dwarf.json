@@ -202,6 +202,28 @@
         },
         {
           "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpLe",
+                "lhs": {
+                  "currentRage": {}
+                },
+                "rhs": {
+                  "const": {
+                    "val": "60"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "itemId": 12662
+              }
+            }
+          }
+        },
+        {
+          "action": {
             "castSpell": {
               "spellId": {
                 "spellId": 1719
@@ -229,7 +251,7 @@
                       },
                       "rhs": {
                         "const": {
-                          "val": "25"
+                          "val": "60"
                         }
                       }
                     }
@@ -240,6 +262,48 @@
             "castSpell": {
               "spellId": {
                 "spellId": 2457
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "auraIsActive": {
+                      "auraId": {
+                        "spellId": 2457
+                      }
+                    }
+                  },
+                  {
+                    "not": {
+                      "val": {
+                        "dotIsActive": {
+                          "spellId": {
+                            "spellId": 11574
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "not": {
+                      "val": {
+                        "isExecutePhase": {
+                          "threshold": "E20"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 11574
               }
             }
           }
@@ -396,6 +460,21 @@
                         }
                       }
                     }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "autoTimeToNext": {
+                          "autoType": "MainHand"
+                        }
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "1s"
+                        }
+                      }
+                    }
                   }
                 ]
               }
@@ -420,7 +499,7 @@
                       },
                       "rhs": {
                         "const": {
-                          "val": "50"
+                          "val": "80"
                         }
                       }
                     }

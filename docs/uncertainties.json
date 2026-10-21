@@ -8501,17 +8501,18 @@
    "status": "provisional",
    "title": "Hamstring weave for Windfury Totem",
    "question": "Is a Hamstring between Bloodthirst and Whirlwind worth its rage for the extra Windfury Totem procs?",
-   "current_model": "Fury, Fury (Sunder) and 2H Bloodthirst cast Hamstring when Bloodthirst and Whirlwind are at least 1.5 s away, outside execute, with Windfury Totem up. Arms does not (it lost 30-115 DPS in every placement tried).",
+   "current_model": "Fury, Fury (Sunder) and 2H Bloodthirst cast Hamstring when Bloodthirst and Whirlwind are at least 1.5 s away and the next main-hand swing at least 1 s away, outside execute, with Windfury Totem up. Arms does not (it lost 30-115 DPS in every placement tried).",
    "impact": "Fury +18, Fury (Sunder) +12, 2H Bloodthirst +31 DPS.",
    "sources": [
     "ui/warrior/apls/forever_fury.apl.json",
-    "https://github.com/wowsims/forever/pull/243"
+    "https://github.com/wowsims/forever/pull/243",
+    "docs/october-21-warrior-rotations.md"
    ],
    "related": [],
    "review": {
     "disposition": "credible-answer",
     "confidence": "moderate",
-    "answer": "wowsims/forever #243: every landed special rolls Windfury Totem's 20%; Hamstring is the cheapest.",
+    "answer": "wowsims/forever #243: every landed special rolls Windfury Totem's 20%; Hamstring is the cheapest. The swing condition came from the October 21 Warrior rotations (WAR-028): +1.4 DPS on Fury.",
     "remaining": "Depends on the provisional Warrior rage model.",
     "implementation": "APL only.",
     "tests": [
@@ -8521,7 +8522,7 @@
       "measure": "Windfury procs and damage with and without the Hamstring weave."
      }
     ],
-    "previous_status": null
+    "previous_status": "provisional"
    }
   },
   {
@@ -8621,16 +8622,82 @@
     ],
     "previous_status": null
    }
+  },
+  {
+   "id": "WAR-028",
+   "category": "warrior",
+   "kind": "scenario",
+   "priority": "medium",
+   "status": "provisional",
+   "title": "Fury rotation rules learned by reinforcement learning",
+   "question": "Which choices does the Fury rotation miss?",
+   "current_model": "Fury: Overpower dance up to 35 rage, also in execute and during Recklessness; Rend refreshed in Battle Stance outside execute; Heroic Strike from 40 rage; Hamstring only with the next main-hand swing at least 1 s away; Demonic Rune at up to 60 rage. Fury (Sunder) the same without the Rend refresh. 2H Bloodthirst: dance up to 60 rage, Heroic Strike from 80. Fury and Fury (Sunder) talents 19/31/1 (Improved Heroic Strike 3/3 and Improved Bloodrage 1/2 instead of two Enrage points).",
+   "impact": "Fury +23 (rotation +22, talents +1.5), Fury (Sunder) +19, 2H Bloodthirst +36 DPS on paired fights.",
+   "sources": [
+    "ui/warrior/apls/forever_fury.apl.json",
+    "ui/warrior/apls/forever_fury_sunder.apl.json",
+    "ui/warrior/apls/forever_fury_2h.apl.json",
+    "tools/forever_rl/README.md",
+    "artifacts/correctness/october_21_warrior/selection-evidence.json",
+    "docs/october-21-warrior-rotations.md"
+   ],
+   "related": [],
+   "review": {
+    "disposition": "credible-answer",
+    "confidence": "moderate",
+    "answer": "A policy network that chose every action in the engine beat the published rotation; its differences, written as APL rules and confirmed on 4,096 paired fights each, give these gains. The network itself stays about 6 DPS ahead.",
+    "remaining": "Depends on the provisional Warrior rage model, stance-swap rage retention and WAR-029; the network's finer swing timing is not captured.",
+    "implementation": "APLs and the Fury talent preset.",
+    "tests": [
+     {
+      "stage": "launch",
+      "requires": "Level-60 Fury Warrior.",
+      "measure": "Overpower casts and damage in the execute phase with and without the dance."
+     }
+    ],
+    "previous_status": null
+   }
+  },
+  {
+   "id": "WAR-029",
+   "category": "warrior",
+   "kind": "mechanic",
+   "priority": "medium",
+   "status": "needs-evidence",
+   "title": "Demonic Rune self-damage gives a Warrior rage",
+   "question": "Does Demonic Rune's 600-1000 self-damage (spell 16666's second effect) give a Warrior rage like other damage taken?",
+   "current_model": "Yes: the self-hit is damage taken under the measured rule (WAR-003), so Fury rotations use the Rune at up to 60 rage.",
+   "impact": "About +2 DPS for Fury builds.",
+   "sources": [
+    "sim/core/consumes.go",
+    "docs/upstream-forever-followup-2026-09-23.md"
+   ],
+   "related": [],
+   "review": {
+    "disposition": "partial",
+    "confidence": "low",
+    "answer": "The self-damage effect is client data (wowsims/forever #64); damage taken giving rage is standard.",
+    "remaining": "Not observed in a Forever log.",
+    "implementation": "Consumables (sim/core/consumes.go); APL use only.",
+    "tests": [
+     {
+      "stage": "current-beta",
+      "requires": "Warrior with a Demonic Rune.",
+      "measure": "Rage before and after using the Rune out of combat or between pulls."
+     }
+    ],
+    "previous_status": null
+   }
   }
  ],
  "review": {
   "date": "2026-09-27",
   "original_entries": 137,
   "reviewed_original_entries": 137,
-  "added_entries": 75,
-  "latest_followup": "October 21 follow-up: Marksmanship and Beast Mastery weave, Fury Hamstring weave, one Twist of Light Echo at a time with a reworked Retribution APL, Consecration crits, Sanctified Judgement and Vindication as measured, rage from damage taken as measured, the original race offsets restored, Arcane Missiles Clearcasting and area tick crits, and new party buffs.",
+  "added_entries": 77,
+  "latest_followup": "October 21 Warrior rotations: Fury, Fury (Sunder) and 2H Bloodthirst rotation rules learned by reinforcement learning (Overpower dance in execute, Rend in Battle Stance, higher Heroic Strike thresholds, swing-timed Hamstring, Demonic Rune for rage) and Fury talents 19/31/1.",
   "latest_followup_date": "2026-10-21",
-  "latest_followup_baseline": "55cb7a3a4",
+  "latest_followup_baseline": "dd5a4f036",
   "before": {
    "needs-evidence": 84,
    "needs-code": 27,
@@ -8683,9 +8750,14 @@
     "latest_followup": "October 15 update to client 1.60.1.70425 and the October 15 development notes, with the WoW Sims, Fight Club and Hunter Lodge Discord reports since October 11. Implemented the racial replacements (critical damage, crit and haste racials, Touch of the Grave, Eureka, Blood Fury), the split raid-wide Leader of the Pack and Moonkin Aura, raid-wide totems and Battle Shout, the Mage, Priest, Shaman, Warlock and Paladin talent and spell changes, the Hunter, Druid, Rogue and Warrior fixes and four item procs. Mage, Priest, Shaman and Warlock profiles moved to the new trees; every DPS profile was re-searched with two-seed confirmation, and all 1,005 matrix scenarios and 68 tank checks replayed.",
     "latest_followup_date": "2026-10-16",
     "latest_followup_baseline": "0facf43a061f7cbc218126b7ffab518d7fcbba36"
+   },
+   {
+    "latest_followup": "October 21 follow-up: Marksmanship and Beast Mastery weave, Fury Hamstring weave, one Twist of Light Echo at a time with a reworked Retribution APL, Consecration crits, Sanctified Judgement and Vindication as measured, rage from damage taken as measured, the original race offsets restored, Arcane Missiles Clearcasting and area tick crits, and new party buffs.",
+    "latest_followup_date": "2026-10-21",
+    "latest_followup_baseline": "55cb7a3a4"
    }
   ],
-  "latest_followup_report": "october-21-follow-up.md",
+  "latest_followup_report": "october-21-warrior-rotations.md",
   "latest_followup_source_date": "2026-10-08T21:32:38.124Z",
   "latest_followup_publication": "pending",
   "latest_followup_benchmarks": "pending"

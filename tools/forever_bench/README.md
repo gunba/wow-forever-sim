@@ -23,7 +23,7 @@ all 736 baseline/sensitivity scenarios after the Life Tap, pet/talent,
 Moonfury and buff corrections. Gear selections remain from the earlier search;
 the refreshed results do not establish a new gear optimum. The preceding
 results are [archived](../../artifacts/history/367ac97df8/).
-The current release replays **872** scenarios: 218 baseline, Tier-off, +10% and +50% (the previous roster lacks the three new builds, so no previous-loadout replay; the [comparison](../../artifacts/correctness/october_21/comparison.json) lists the published results). Gear scales preserve all enchants/effects and recipes. The [earlier October 8 release](../../docs/october-8-review.md) is historical. The earlier [184-profile preservation check](../../artifacts/tanks/current/dps_preservation.json)
+The current release ([October 21 Warrior rotations](../../docs/october-21-warrior-rotations.md)) replays **872** scenarios: 218 baseline, Tier-off, +10% and +50%; the [comparison](../../artifacts/correctness/october_21_warrior/comparison.json) lists each profile against the previous release. Gear scales preserve all enchants/effects and recipes. The [earlier October 8 release](../../docs/october-8-review.md) is historical. The earlier [184-profile preservation check](../../artifacts/tanks/current/dps_preservation.json)
 is historical, not a statement that this release preserves those results.
 
 Protection Warrior, Protection Paladin and Bear use frontal incoming attacks

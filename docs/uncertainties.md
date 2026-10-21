@@ -4,20 +4,20 @@
 
 Current level-60 DPS and tank scenarios, plus conditional spell, item and encounter coverage. This register consolidates the recorded questions; it is not a claim that unlisted game behavior has been verified.
 
-**Latest follow-up (2026-10-21):** October 21 follow-up: Marksmanship and Beast Mastery weave, Fury Hamstring weave, one Twist of Light Echo at a time with a reworked Retribution APL, Consecration crits, Sanctified Judgement and Vindication as measured, rage from damage taken as measured, the original race offsets restored, Arcane Missiles Clearcasting and area tick crits, and new party buffs. [Latest follow-up report](october-21-follow-up.md).
+**Latest follow-up (2026-10-21):** October 21 Warrior rotations: Fury, Fury (Sunder) and 2H Bloodthirst rotation rules learned by reinforcement learning (Overpower dance in execute, Rend in Battle Stance, higher Heroic Strike thresholds, swing-timed Hamstring, Demonic Rune for rage) and Fury talents 19/31/1. [Latest follow-up report](october-21-warrior-rotations.md).
 
 **Original adjudication baseline:** 2026-09-27, `35cab052456a320358e998c12416687d69cae142`. That original review reconciled questions without changing mechanics or benchmark results. This current register also includes the later implementation and benchmark updates linked above; earlier audits remain historical evidence, not current task status.
 
-**Coverage:** 137/137 original entries reviewed; 75 additional coverage gaps, including later follow-ups.
+**Coverage:** 137/137 original entries reviewed; 77 additional coverage gaps, including later follow-ups.
 
 ## Before and after
 
 | Status | Before | Original entries now | Including additions |
 |---|---:|---:|---:|
-| Needs evidence | 84 | 36 | 43 |
+| Needs evidence | 84 | 36 | 44 |
 | Implementation gap | 27 | 3 | 3 |
 | Model assumption | 5 | 3 | 6 |
-| Accepted working answer | 0 | 14 | 39 |
+| Accepted working answer | 0 | 15 | 40 |
 | Resolved | 20 | 52 | 79 |
 | Outside current scenarios | 1 | 42 | 42 |
 
@@ -112,6 +112,9 @@ An experiment within the current level-30 beta, subject to actual access, learne
 - **Medium · [WAR-010 — Weaponmaster hand-specific armor ignore](#war-010)**
   - Prerequisites: Level-30 Warrior with 1/5 to 5/5 Weaponmaster (20 Arms points first; 26 points are available), comparable mace and non-mace weapons, matched AP and controlled target armor.
   - Observe / verify: Move the mace between hands and measure main-hand damage changes; separate the weapon's own damage change and sword extra attacks. Repeat at 1/5 and 5/5 to confirm rank scaling.
+- **Medium · [WAR-029 — Demonic Rune self-damage gives a Warrior rage](#war-029)**
+  - Prerequisites: Warrior with a Demonic Rune.
+  - Observe / verify: Rage before and after using the Rune out of combat or between pulls.
 - **Medium · [WL-006 — Improved Imp's extra dummy effect](#wl-006)**
   - Prerequisites: A live Imp, ranks 0/1/2/3 of Improved Imp, fixed owner/pet haste and mana.
   - Observe / verify: Record Firebolt cast start/end and the interval before the next cast. Distinguish a shorter cast from removal of the engine's artificial 200-ms recast delay.
@@ -1222,6 +1225,32 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [sim/warrior/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/warrior/talents.go) · [docs/upstream-forever-review-2026-09-23.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/upstream-forever-review-2026-09-23.md) · [ui/core/talents/trees/warrior.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/talents/trees/warrior.json) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6)
 
+<a id="war-029"></a>
+
+### WAR-029 — Demonic Rune self-damage gives a Warrior rage
+
+**Needs evidence · Medium priority · Low confidence**
+
+**Disposition:** Partly answered
+
+**Question:** Does Demonic Rune's 600-1000 self-damage (spell 16666's second effect) give a Warrior rage like other damage taken?
+
+**Finding:** The self-damage effect is client data (wowsims/forever #64); damage taken giving rage is standard.
+
+**Current implementation / scenario:** Yes: the self-hit is damage taken under the measured rule (WAR-003), so Fury rotations use the Rune at up to 60 rage.
+
+**Impact:** About +2 DPS for Fury builds.
+
+**Remaining scope:** Not observed in a Forever log.
+
+**Implementation / model follow-up:** Consumables (sim/core/consumes.go); APL use only.
+
+**Current beta · level 30**
+- Prerequisites: Warrior with a Demonic Rune.
+- Observe / verify: Rage before and after using the Rune out of combat or between pulls.
+
+**References:** [sim/core/consumes.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/consumes.go) · [docs/upstream-forever-followup-2026-09-23.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/upstream-forever-followup-2026-09-23.md)
+
 <a id="war-003"></a>
 
 ### WAR-003 — Incoming rage and mitigation
@@ -1688,9 +1717,9 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Question:** Is a Hamstring between Bloodthirst and Whirlwind worth its rage for the extra Windfury Totem procs?
 
-**Finding:** wowsims/forever #243: every landed special rolls Windfury Totem's 20%; Hamstring is the cheapest.
+**Finding:** wowsims/forever #243: every landed special rolls Windfury Totem's 20%; Hamstring is the cheapest. The swing condition came from the October 21 Warrior rotations (WAR-028): +1.4 DPS on Fury.
 
-**Current implementation / scenario:** Fury, Fury (Sunder) and 2H Bloodthirst cast Hamstring when Bloodthirst and Whirlwind are at least 1.5 s away, outside execute, with Windfury Totem up. Arms does not (it lost 30-115 DPS in every placement tried).
+**Current implementation / scenario:** Fury, Fury (Sunder) and 2H Bloodthirst cast Hamstring when Bloodthirst and Whirlwind are at least 1.5 s away and the next main-hand swing at least 1 s away, outside execute, with Windfury Totem up. Arms does not (it lost 30-115 DPS in every placement tried).
 
 **Impact:** Fury +18, Fury (Sunder) +12, 2H Bloodthirst +31 DPS.
 
@@ -1702,7 +1731,33 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Prerequisites: Fury Warrior with Windfury Totem.
 - Observe / verify: Windfury procs and damage with and without the Hamstring weave.
 
-**References:** [ui/warrior/apls/forever_fury.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/warrior/apls/forever_fury.apl.json) · [https://github.com/wowsims/forever/pull/243](https://github.com/wowsims/forever/pull/243)
+**References:** [ui/warrior/apls/forever_fury.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/warrior/apls/forever_fury.apl.json) · [https://github.com/wowsims/forever/pull/243](https://github.com/wowsims/forever/pull/243) · [docs/october-21-warrior-rotations.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-21-warrior-rotations.md)
+
+<a id="war-028"></a>
+
+### WAR-028 — Fury rotation rules learned by reinforcement learning
+
+**Accepted working answer · Medium priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Which choices does the Fury rotation miss?
+
+**Finding:** A policy network that chose every action in the engine beat the published rotation; its differences, written as APL rules and confirmed on 4,096 paired fights each, give these gains. The network itself stays about 6 DPS ahead.
+
+**Current implementation / scenario:** Fury: Overpower dance up to 35 rage, also in execute and during Recklessness; Rend refreshed in Battle Stance outside execute; Heroic Strike from 40 rage; Hamstring only with the next main-hand swing at least 1 s away; Demonic Rune at up to 60 rage. Fury (Sunder) the same without the Rend refresh. 2H Bloodthirst: dance up to 60 rage, Heroic Strike from 80. Fury and Fury (Sunder) talents 19/31/1 (Improved Heroic Strike 3/3 and Improved Bloodrage 1/2 instead of two Enrage points).
+
+**Impact:** Fury +23 (rotation +22, talents +1.5), Fury (Sunder) +19, 2H Bloodthirst +36 DPS on paired fights.
+
+**Remaining scope:** Depends on the provisional Warrior rage model, stance-swap rage retention and WAR-029; the network's finer swing timing is not captured.
+
+**Implementation / model follow-up:** APLs and the Fury talent preset.
+
+**Optional / conditional · Beyond level 30 / launch**
+- Prerequisites: Level-60 Fury Warrior.
+- Observe / verify: Overpower casts and damage in the execute phase with and without the dance.
+
+**References:** [ui/warrior/apls/forever_fury.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/warrior/apls/forever_fury.apl.json) · [ui/warrior/apls/forever_fury_sunder.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/warrior/apls/forever_fury_sunder.apl.json) · [ui/warrior/apls/forever_fury_2h.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/warrior/apls/forever_fury_2h.apl.json) · [tools/forever_rl/README.md](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_rl/README.md) · [artifacts/correctness/october_21_warrior/selection-evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/correctness/october_21_warrior/selection-evidence.json) · [docs/october-21-warrior-rotations.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-21-warrior-rotations.md)
 
 <a id="war-017"></a>
 

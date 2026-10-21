@@ -2,7 +2,7 @@
 
 These are hypothetical modeled-only gear results, not obtainable item rankings. Sources linked for modeled items are allocation references only and have different stats. Gear is compared under the [model assumptions](modelled_gear.md).
 
-The tables and [matrix](../artifacts/modelled_gear/forever_dps_5min.png) use the same 218 common-seed replays. The modeled search and original real-item benchmark are separate; neither proves available launch gear. The [October 21 follow-up](october-21-follow-up.md) records the Marksmanship and Beast Mastery weave, the Fury Hamstring weave, one Twist of Light Echo at a time, measured rage from damage taken and the original race offsets; the [October 21 update](october-21-update.md) records the wowsims/forever review, server hotfixes, Forever consumables, the SV Weave, Frostfire and Shockadin builds and the re-searched talents and consumables; the [October 16 follow-up](october-16-follow-up.md) and [October 15 update](october-15-update.md) record the client 1.60.1.70425 changes and the earlier [October 11 audit](october-11-audit.md) and [October 11 log audit](october-11-log-audit.md) record the corrections before it. Earlier search gains are historical, not current proof of an optimum.
+The tables and [matrix](../artifacts/modelled_gear/forever_dps_5min.png) use the same 218 common-seed replays. The modeled search and original real-item benchmark are separate; neither proves available launch gear. The [October 21 Warrior rotations](october-21-warrior-rotations.md) record the Fury, Fury (Sunder) and 2H Bloodthirst rotation rules learned by reinforcement learning and the 19/31/1 Fury talents; the [October 21 follow-up](october-21-follow-up.md) records the Marksmanship and Beast Mastery weave, the Fury Hamstring weave, one Twist of Light Echo at a time, measured rage from damage taken and the original race offsets; the [October 21 update](october-21-update.md) records the wowsims/forever review, server hotfixes, Forever consumables, the SV Weave, Frostfire and Shockadin builds and the re-searched talents and consumables; the [October 16 follow-up](october-16-follow-up.md) and [October 15 update](october-15-update.md) record the client 1.60.1.70425 changes and the earlier [October 11 audit](october-11-audit.md) and [October 11 log audit](october-11-log-audit.md) record the corrections before it. Earlier search gains are historical, not current proof of an optimum.
 
 The benchmark uses level 60, 300 seconds, one level-63 target, complete role-specific Tier 1 bonuses, and hit from selected gear, enchants, talents and racials only. [Scenario and exchange model](../tools/forever_bench/README.md) · [Questions and coverage](uncertainties.md)
 
@@ -304,6 +304,102 @@ Other races can use different equipment. Their complete setups are available in 
 | Mana | [Aimed Shot](https://www.wowhead.com/forever/spell=20904) | -300.7 |
 | Mana | [Intimidation](https://www.wowhead.com/forever/spell=19577) | -255.9 |
 
+## Warrior — Fury
+
+**Talents:** 19/31/1 · `30305213002-25053005112010501-1`
+
+[Requests and results](../artifacts/modelled_gear/forever_dps_5min.json) · [Equipment search](../artifacts/correctness/october_15/selection-evidence.json)
+
+**Model limitations:** Level-60/off-hand rage and some extra-swing interactions remain provisional. The queued-Heroic-Strike off-hand hit bug is removed. Deep Wounds uses the reported intended no-AP rollover model; live delivery and off-hand payload attribution remain qualified. Hamstring is woven for Windfury Totem procs when Bloodthirst and Whirlwind are at least 1.5 s away, outside execute (wowsims/forever #243).
+
+
+### Results
+
+| Race | DPS | Standard error | Mana-limited seconds |
+|---|---:|---:|---:|
+| Orc | 1004.95 | 0.50 | 0.00 |
+| Tauren | 1007.16 | 0.50 | 0.00 |
+| Troll | 991.87 | 0.49 | 0.00 |
+| Undead | 993.66 | 0.49 | 0.00 |
+| Windshaper | 1008.40 | 0.49 | 0.00 |
+| Human | 1003.62 | 0.50 | 0.00 |
+| Dwarf | 996.96 | 0.50 | 0.00 |
+| Night Elf | 992.57 | 0.49 | 0.00 |
+| Gnome | 993.63 | 0.49 | 0.00 |
+| High Order | 1008.40 | 0.49 | 0.00 |
+
+Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Windshaper
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Modeled: Strength / agility / crit / hit — Head (Plate) [+28 Str, +18 Sta, +14 Crit, +10 Hit, +18 Agi, 599 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Arcanum of Rapidity |
+| Neck | [Modeled: Strength / crit / hit — Neck [+11 Sta, +12 Crit, +12 Str, +13 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
+| Shoulders | [Modeled: Strength / agility / crit / hit — Shoulders (Plate) [+21 Str, +14 Sta, +11 Crit, +8 Hit, +14 Agi, 553 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Chromatic Mantle of the Dawn |
+| Back | [Modeled: Strength / crit / hit — Back (Cloth) [+11 Sta, +12 Crit, +12 Str, +13 Hit, 50 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Boots - Lesser Agility |
+| Chest | [Modeled: Strength / agility / crit / hit — Chest (Plate) [+28 Str, +18 Sta, +14 Crit, +10 Hit, +18 Agi, 738 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Modeled: Strength / crit / hit — Wrists (Plate) [+11 Sta, +12 Crit, +12 Str, +13 Hit, 323 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Bracer - Superior Strength |
+| Hands | [Modeled: Strength / agility / crit / hit — Hands (Plate) [+21 Str, +14 Sta, +11 Crit, +8 Hit, +14 Agi, 461 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Gloves - Minor Haste |
+| Waist | [Modeled: Strength / crit / hit — Waist (Plate) [+14 Sta, +16 Crit, +16 Str, +18 Hit, 415 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
+| Legs | [Modeled: Strength / agility / crit / hit — Legs (Plate) [+28 Str, +18 Sta, +14 Crit, +10 Hit, +18 Agi, 646 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Lesser Arcanum of Voracity |
+| Feet | [Modeled: Strength / crit / hit — Feet (Plate) [+14 Sta, +16 Crit, +16 Str, +18 Hit, 507 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Boots - Greater Agility |
+| Ring 1 | [Modeled: Strength / crit / hit — Finger [+11 Sta, +12 Crit, +12 Str, +13 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
+| Ring 2 | [Modeled: Strength / crit / hit — Finger [+11 Sta, +12 Crit, +12 Str, +13 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
+| Trinket 1 | [Modeled: Passive Strength / crit / hit — Trinket [+11 Sta, +13 Crit, +13 Str, +14 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
+| Trinket 2 | [Modeled: Passive Strength / crit / hit — Trinket [+11 Sta, +13 Crit, +13 Str, +14 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
+| Main hand | [Modeled: Sword one-hand — One-hand [+2 Sta, +24 AP, +14 Crit, 109–165 dmg @ 2.9s] (modeled; reference only)](https://www.wowhead.com/forever/item=272452) | 65 | Enchant Weapon - Crusader |
+| Off hand | [Modeled: Fist off-hand — Off hand weapon [+2 Sta, +24 AP, +14 Crit, 64–97 dmg @ 1.7s] (modeled; reference only)](https://www.wowhead.com/forever/item=272598) | 65 | Enchant Weapon - Crusader |
+| Ranged/relic | [Modeled: Crossbow ranged — Ranged/wand [+6 Sta, +32 AP, 98–148 dmg @ 2s] (modeled; reference only)](https://www.wowhead.com/forever/item=272595) | 65 | SAF-T Ultra Precision Scope |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
+
+### Rotation priorities
+
+1. Cast [Recklessness](https://www.wowhead.com/forever/spell=1719) when Time remaining ≤ 300s.
+2. Use ready automatic cooldowns.
+3. Cast [Item 12662](https://www.wowhead.com/forever/item=12662) when Rage ≤ 60.
+4. Cast [Battle Stance](https://www.wowhead.com/forever/spell=2457) when ([Overpower opportunity](https://www.wowhead.com/forever/spell=1282733) active AND Rage ≤ 35).
+5. Cast [Rend](https://www.wowhead.com/forever/spell=11574) when ([Battle Stance](https://www.wowhead.com/forever/spell=2457) active AND NOT [Rend](https://www.wowhead.com/forever/spell=11574) DoT active AND NOT `{"isExecutePhase":{"threshold":"E20"}}`).
+6. Cast [Overpower](https://www.wowhead.com/forever/spell=11585).
+7. Cast [Berserker Stance](https://www.wowhead.com/forever/spell=2458) when NOT [Overpower opportunity](https://www.wowhead.com/forever/spell=1282733) active.
+8. Cast [Execute](https://www.wowhead.com/forever/spell=20662).
+9. Cast [Bloodthirst](https://www.wowhead.com/forever/spell=23894).
+10. Cast [Whirlwind](https://www.wowhead.com/forever/spell=1680).
+11. Cast [Rend](https://www.wowhead.com/forever/spell=11574) when NOT [Rend](https://www.wowhead.com/forever/spell=11574) DoT active.
+12. Cast [Hamstring](https://www.wowhead.com/forever/spell=7373) when (`{"auraIsKnown":{"auraId":{"spellId":10610}}}` AND NOT `{"isExecutePhase":{"threshold":"E20"}}` AND `{"spellTimeToReady":{"spellId":{"spellId":23894}}}` ≥ 1.5s AND `{"spellTimeToReady":{"spellId":{"spellId":1680}}}` ≥ 1.5s AND `{"autoTimeToNext":{"autoType":"MainHand"}}` ≥ 1s).
+13. Cast [Heroic Strike](https://www.wowhead.com/forever/spell=11567) when (Rage ≥ 40 AND NOT `{"isExecutePhase":{"threshold":"E20"}}`).
+
+### Damage breakdown — Windshaper
+
+| Action | DPS |
+|---|---:|
+| Auto-attack (tag 2) | 160.69 |
+| Auto-attack (tag 1) | 139.71 |
+| [Heroic Strike](https://www.wowhead.com/forever/spell=11567) | 135.06 |
+| [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | 132.23 |
+| [Execute](https://www.wowhead.com/forever/spell=20662) | 107.28 |
+| Auto-attack (tag 3) | 81.08 |
+| [Overpower](https://www.wowhead.com/forever/spell=11585) | 77.97 |
+| [Deep Wounds](https://www.wowhead.com/forever/spell=12867) | 71.22 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Rage | Auto-attack (tag 1) | +1585.5 |
+| Rage | Auto-attack (tag 2) | +1370.9 |
+| Rage | [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | -1062.7 |
+| Rage | [Execute](https://www.wowhead.com/forever/spell=20662) | -841.1 |
+| Rage | [Heroic Strike](https://www.wowhead.com/forever/spell=11567) | -543.5 |
+| Rage | [Whirlwind](https://www.wowhead.com/forever/spell=1680) | -469.8 |
+| Rage | [Hamstring](https://www.wowhead.com/forever/spell=7373) | -351.4 |
+| Rage | [Unbridled Wrath](https://www.wowhead.com/forever/spell=12964) | +191.4 |
+| Rage | [Item 13442](https://www.wowhead.com/forever/item=13442) | +150.4 |
+| Rage | [Berserker Stance](https://www.wowhead.com/forever/spell=2458) | -137.0 |
+| Rage | [Overpower](https://www.wowhead.com/forever/spell=11585) | -130.5 |
+| Rage | OtherActionRefund | +122.8 |
+
 ## Warlock — Demonic Pact
 
 **Talents:** 2/31/18 · `011-0005003221220311351-0550005003`
@@ -397,100 +493,6 @@ Other races can use different equipment. Their complete setups are available in 
 | Mana | [Item 12662](https://www.wowhead.com/forever/item=12662) | +2451.0 |
 | Mana | [Bane of Doom](https://www.wowhead.com/forever/spell=603) | -1200.0 |
 
-## Warrior — Fury
-
-**Talents:** 18/33/0 · `20305213002-25053005132010501`
-
-[Requests and results](../artifacts/modelled_gear/forever_dps_5min.json) · [Equipment search](../artifacts/correctness/october_15/selection-evidence.json)
-
-**Model limitations:** Level-60/off-hand rage and some extra-swing interactions remain provisional. The queued-Heroic-Strike off-hand hit bug is removed. Deep Wounds uses the reported intended no-AP rollover model; live delivery and off-hand payload attribution remain qualified. Hamstring is woven for Windfury Totem procs when Bloodthirst and Whirlwind are at least 1.5 s away, outside execute (wowsims/forever #243).
-
-
-### Results
-
-| Race | DPS | Standard error | Mana-limited seconds |
-|---|---:|---:|---:|
-| Orc | 983.35 | 0.52 | 0.00 |
-| Tauren | 984.87 | 0.52 | 0.00 |
-| Troll | 970.45 | 0.51 | 0.00 |
-| Undead | 971.33 | 0.50 | 0.00 |
-| Windshaper | 987.97 | 0.50 | 0.00 |
-| Human | 981.98 | 0.50 | 0.00 |
-| Dwarf | 975.91 | 0.51 | 0.00 |
-| Night Elf | 971.22 | 0.50 | 0.00 |
-| Gnome | 972.76 | 0.51 | 0.00 |
-| High Order | 987.97 | 0.50 | 0.00 |
-
-Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
-
-### Equipment — Windshaper
-
-| Slot | Item | Item level | Enchant |
-|---|---|---:|---|
-| Head | [Modeled: Strength / agility / crit / hit — Head (Plate) [+28 Str, +18 Sta, +14 Crit, +10 Hit, +18 Agi, 599 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Arcanum of Rapidity |
-| Neck | [Modeled: Strength / crit / hit — Neck [+11 Sta, +12 Crit, +12 Str, +13 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
-| Shoulders | [Modeled: Strength / agility / crit / hit — Shoulders (Plate) [+21 Str, +14 Sta, +11 Crit, +8 Hit, +14 Agi, 553 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Chromatic Mantle of the Dawn |
-| Back | [Modeled: Strength / crit / hit — Back (Cloth) [+11 Sta, +12 Crit, +12 Str, +13 Hit, 50 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Boots - Lesser Agility |
-| Chest | [Modeled: Strength / agility / crit / hit — Chest (Plate) [+28 Str, +18 Sta, +14 Crit, +10 Hit, +18 Agi, 738 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Chest - Greater Stats |
-| Wrists | [Modeled: Strength / crit / hit — Wrists (Plate) [+11 Sta, +12 Crit, +12 Str, +13 Hit, 323 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Bracer - Superior Strength |
-| Hands | [Modeled: Strength / agility / crit / hit — Hands (Plate) [+21 Str, +14 Sta, +11 Crit, +8 Hit, +14 Agi, 461 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Gloves - Minor Haste |
-| Waist | [Modeled: Strength / crit / hit — Waist (Plate) [+14 Sta, +16 Crit, +16 Str, +18 Hit, 415 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
-| Legs | [Modeled: Strength / agility / crit / hit — Legs (Plate) [+28 Str, +18 Sta, +14 Crit, +10 Hit, +18 Agi, 646 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Lesser Arcanum of Voracity |
-| Feet | [Modeled: Strength / crit / hit — Feet (Plate) [+14 Sta, +16 Crit, +16 Str, +18 Hit, 507 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Boots - Greater Agility |
-| Ring 1 | [Modeled: Strength / crit / hit — Finger [+11 Sta, +12 Crit, +12 Str, +13 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
-| Ring 2 | [Modeled: Strength / crit / hit — Finger [+11 Sta, +12 Crit, +12 Str, +13 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
-| Trinket 1 | [Modeled: Passive Strength / crit / hit — Trinket [+11 Sta, +13 Crit, +13 Str, +14 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
-| Trinket 2 | [Modeled: Passive Strength / crit / hit — Trinket [+11 Sta, +13 Crit, +13 Str, +14 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
-| Main hand | [Modeled: Sword one-hand — One-hand [+2 Sta, +24 AP, +14 Crit, 109–165 dmg @ 2.9s] (modeled; reference only)](https://www.wowhead.com/forever/item=272452) | 65 | Enchant Weapon - Crusader |
-| Off hand | [Modeled: Fist off-hand — Off hand weapon [+2 Sta, +24 AP, +14 Crit, 64–97 dmg @ 1.7s] (modeled; reference only)](https://www.wowhead.com/forever/item=272598) | 65 | Enchant Weapon - Crusader |
-| Ranged/relic | [Modeled: Crossbow ranged — Ranged/wand [+6 Sta, +32 AP, 98–148 dmg @ 2s] (modeled; reference only)](https://www.wowhead.com/forever/item=272595) | 65 | SAF-T Ultra Precision Scope |
-
-Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
-
-### Rotation priorities
-
-1. Cast [Recklessness](https://www.wowhead.com/forever/spell=1719) when Time remaining ≤ 300s.
-2. Use ready automatic cooldowns.
-3. Cast [Battle Stance](https://www.wowhead.com/forever/spell=2457) when ([Overpower opportunity](https://www.wowhead.com/forever/spell=1282733) active AND Rage ≤ 25 AND NOT `{"isExecutePhase":{"threshold":"E20"}}` AND NOT [Recklessness](https://www.wowhead.com/forever/spell=1719) active).
-4. Cast [Overpower](https://www.wowhead.com/forever/spell=11585).
-5. Cast [Berserker Stance](https://www.wowhead.com/forever/spell=2458) when NOT [Overpower opportunity](https://www.wowhead.com/forever/spell=1282733) active.
-6. Cast [Execute](https://www.wowhead.com/forever/spell=20662).
-7. Cast [Bloodthirst](https://www.wowhead.com/forever/spell=23894).
-8. Cast [Whirlwind](https://www.wowhead.com/forever/spell=1680).
-9. Cast [Rend](https://www.wowhead.com/forever/spell=11574) when NOT [Rend](https://www.wowhead.com/forever/spell=11574) DoT active.
-10. Cast [Hamstring](https://www.wowhead.com/forever/spell=7373) when (`{"auraIsKnown":{"auraId":{"spellId":10610}}}` AND NOT `{"isExecutePhase":{"threshold":"E20"}}` AND `{"spellTimeToReady":{"spellId":{"spellId":23894}}}` ≥ 1.5s AND `{"spellTimeToReady":{"spellId":{"spellId":1680}}}` ≥ 1.5s).
-11. Cast [Heroic Strike](https://www.wowhead.com/forever/spell=11567) when (Rage ≥ 30 AND NOT `{"isExecutePhase":{"threshold":"E20"}}`).
-
-### Damage breakdown — Windshaper
-
-| Action | DPS |
-|---|---:|
-| Auto-attack (tag 2) | 160.87 |
-| Auto-attack (tag 1) | 138.30 |
-| [Heroic Strike](https://www.wowhead.com/forever/spell=11567) | 134.34 |
-| [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | 125.96 |
-| [Execute](https://www.wowhead.com/forever/spell=20662) | 116.96 |
-| Auto-attack (tag 3) | 80.72 |
-| [Deep Wounds](https://www.wowhead.com/forever/spell=12867) | 72.35 |
-| [Overpower](https://www.wowhead.com/forever/spell=11585) | 63.86 |
-
-### Resource flow
-
-| Resource | Action | Net amount per fight |
-|---|---|---:|
-| Rage | Auto-attack (tag 1) | +1572.6 |
-| Rage | Auto-attack (tag 2) | +1372.5 |
-| Rage | [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | -1006.0 |
-| Rage | [Execute](https://www.wowhead.com/forever/spell=20662) | -873.5 |
-| Rage | [Heroic Strike](https://www.wowhead.com/forever/spell=11567) | -584.1 |
-| Rage | [Hamstring](https://www.wowhead.com/forever/spell=7373) | -490.7 |
-| Rage | [Whirlwind](https://www.wowhead.com/forever/spell=1680) | -468.3 |
-| Rage | [Unbridled Wrath](https://www.wowhead.com/forever/spell=12964) | +190.8 |
-| Rage | [Item 13442](https://www.wowhead.com/forever/item=13442) | +159.6 |
-| Rage | OtherActionRefund | +129.6 |
-| Rage | [Overpower](https://www.wowhead.com/forever/spell=11585) | -106.5 |
-| Rage | [Anger Management](https://www.wowhead.com/forever/spell=12296) | +100.0 |
-
 ## Hunter — Survival
 
 **Talents:** 7/11/33 · `502-0050051-500230230250022151`
@@ -583,6 +585,103 @@ Other races can use different equipment. Their complete setups are available in 
 | Mana | [Aspect of the Beast](https://www.wowhead.com/forever/spell=1299447) | -110.0 |
 | Health | [Holy Strength](https://www.wowhead.com/forever/spell=20007) | +0.0 |
 
+## Warrior — Fury (Sunder)
+
+**Talents:** 19/31/1 · `30305213002-25053005112010501-1`
+
+[Requests and results](../artifacts/modelled_gear/forever_dps_5min.json) · [Equipment search](../artifacts/correctness/october_15/selection-evidence.json)
+
+**Model limitations:** This Warrior personally builds and refreshes five Sunder stacks. External Sunder and Expose Armor are disabled only for this row; its initial armor ramp and lost globals are included. The provisional Warrior rage model still applies. Hamstring is woven for Windfury Totem procs when Bloodthirst and Whirlwind are at least 1.5 s away, outside execute (wowsims/forever #243).
+
+
+### Results
+
+| Race | DPS | Standard error | Mana-limited seconds |
+|---|---:|---:|---:|
+| Orc | 961.38 | 0.49 | 0.00 |
+| Tauren | 970.12 | 0.51 | 0.00 |
+| Troll | 939.60 | 0.49 | 0.00 |
+| Undead | 964.07 | 0.50 | 0.00 |
+| Windshaper | 971.90 | 0.49 | 0.00 |
+| Human | 972.29 | 0.49 | 0.00 |
+| Dwarf | 960.87 | 0.50 | 0.00 |
+| Night Elf | 954.12 | 0.50 | 0.00 |
+| Gnome | 957.78 | 0.49 | 0.00 |
+| High Order | 971.90 | 0.49 | 0.00 |
+
+Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Human
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Modeled: Strength / agility / crit / hit — Head (Plate) [+28 Str, +18 Sta, +14 Crit, +10 Hit, +18 Agi, 599 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Arcanum of Rapidity |
+| Neck | [Modeled: Strength / agility / crit / hit — Neck [+16 Str, +11 Sta, +8 Crit, +6 Hit, +10 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Shoulders | [Modeled: Strength / agility / crit / hit — Shoulders (Plate) [+21 Str, +14 Sta, +11 Crit, +8 Hit, +14 Agi, 553 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Chromatic Mantle of the Dawn |
+| Back | [Modeled: Strength / crit / hit — Back (Cloth) [+11 Sta, +12 Crit, +12 Str, +13 Hit, 50 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Boots - Lesser Agility |
+| Chest | [Modeled: Strength / agility / crit / hit — Chest (Plate) [+28 Str, +18 Sta, +14 Crit, +10 Hit, +18 Agi, 738 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Modeled: Strength / crit / hit — Wrists (Plate) [+11 Sta, +12 Crit, +12 Str, +13 Hit, 323 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Bracer - Superior Strength |
+| Hands | [Modeled: Strength / agility / crit / hit — Hands (Plate) [+21 Str, +14 Sta, +11 Crit, +8 Hit, +14 Agi, 461 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Gloves - Minor Haste |
+| Waist | [Modeled: Strength / crit / hit — Waist (Plate) [+14 Sta, +16 Crit, +16 Str, +18 Hit, 415 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
+| Legs | [Modeled: Strength / crit / hit — Legs (Plate) [+18 Sta, +21 Crit, +21 Str, +23 Hit, 646 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Arcanum of Rapidity |
+| Feet | [Modeled: Strength / crit / hit — Feet (Plate) [+14 Sta, +16 Crit, +16 Str, +18 Hit, 507 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Boots - Greater Agility |
+| Ring 1 | [Modeled: Strength / crit / hit — Finger [+11 Sta, +12 Crit, +12 Str, +13 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
+| Ring 2 | [Modeled: Strength / crit / hit — Finger [+11 Sta, +12 Crit, +12 Str, +13 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
+| Trinket 1 | [Modeled: Passive Strength / crit / hit — Trinket [+11 Sta, +13 Crit, +13 Str, +14 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
+| Trinket 2 | [Modeled: Passive Strength / crit / hit — Trinket [+11 Sta, +13 Crit, +13 Str, +14 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
+| Main hand | [Modeled: Sword one-hand — One-hand [+2 Sta, +24 AP, +14 Crit, 109–165 dmg @ 2.9s] (modeled; reference only)](https://www.wowhead.com/forever/item=272452) | 65 | Enchant Weapon - Crusader |
+| Off hand | [Modeled: Fist off-hand — Off hand weapon [+2 Sta, +24 AP, +14 Crit, 64–97 dmg @ 1.7s] (modeled; reference only)](https://www.wowhead.com/forever/item=272598) | 65 | Enchant Weapon - Crusader |
+| Ranged/relic | [Modeled: Crossbow ranged — Ranged/wand [+6 Sta, +32 AP, 98–148 dmg @ 2s] (modeled; reference only)](https://www.wowhead.com/forever/item=272595) | 65 | SAF-T Ultra Precision Scope |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
+
+### Rotation priorities
+
+1. Cast [Sunder Armor (rank 5)](https://www.wowhead.com/forever/spell=11597) when ([Sunder Armor (rank 5)](https://www.wowhead.com/forever/spell=11597) stacks < 5 OR [Sunder Armor (rank 5)](https://www.wowhead.com/forever/spell=11597) time remaining < 8s).
+2. `{"condition":{"and":{"vals":[{"or":{"vals":[{"cmp":{"op":"OpLt","lhs":{"auraNumStacks":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":11597,"rank":5}}},"rhs":{"const":{"val":"5"}}}},{"cmp":{"op":"OpLt","lhs":{"auraRemainingTime":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":11597,"rank":5}}},"rhs":{"const":{"val":"8s"}}}}]}},{"cmp":{"op":"OpLt","lhs":{"currentRage":{}},"rhs":{"const":{"val":"15"}}}}]}},"wait":{"duration":{"const":{"val":"500ms"}}}}` when (([Sunder Armor (rank 5)](https://www.wowhead.com/forever/spell=11597) stacks < 5 OR [Sunder Armor (rank 5)](https://www.wowhead.com/forever/spell=11597) time remaining < 8s) AND Rage < 15).
+3. Cast [Recklessness](https://www.wowhead.com/forever/spell=1719) when Time remaining ≤ 300s.
+4. Use ready automatic cooldowns.
+5. Cast [Item 12662](https://www.wowhead.com/forever/item=12662) when Rage ≤ 60.
+6. Cast [Battle Stance](https://www.wowhead.com/forever/spell=2457) when ([Overpower opportunity](https://www.wowhead.com/forever/spell=1282733) active AND Rage ≤ 35).
+7. Cast [Overpower](https://www.wowhead.com/forever/spell=11585).
+8. Cast [Berserker Stance](https://www.wowhead.com/forever/spell=2458) when NOT [Overpower opportunity](https://www.wowhead.com/forever/spell=1282733) active.
+9. Cast [Execute](https://www.wowhead.com/forever/spell=20662).
+10. Cast [Bloodthirst](https://www.wowhead.com/forever/spell=23894).
+11. Cast [Whirlwind](https://www.wowhead.com/forever/spell=1680).
+12. Cast [Rend](https://www.wowhead.com/forever/spell=11574) when NOT [Rend](https://www.wowhead.com/forever/spell=11574) DoT active.
+13. Cast [Hamstring](https://www.wowhead.com/forever/spell=7373) when (`{"auraIsKnown":{"auraId":{"spellId":10610}}}` AND NOT `{"isExecutePhase":{"threshold":"E20"}}` AND `{"spellTimeToReady":{"spellId":{"spellId":23894}}}` ≥ 1.5s AND `{"spellTimeToReady":{"spellId":{"spellId":1680}}}` ≥ 1.5s AND `{"autoTimeToNext":{"autoType":"MainHand"}}` ≥ 1s).
+14. Cast [Heroic Strike](https://www.wowhead.com/forever/spell=11567) when (Rage ≥ 40 AND NOT `{"isExecutePhase":{"threshold":"E20"}}`).
+
+### Damage breakdown — Human
+
+| Action | DPS |
+|---|---:|
+| Auto-attack (tag 2) | 158.47 |
+| Auto-attack (tag 1) | 142.62 |
+| [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | 126.52 |
+| [Heroic Strike](https://www.wowhead.com/forever/spell=11567) | 124.35 |
+| [Execute](https://www.wowhead.com/forever/spell=20662) | 100.83 |
+| Auto-attack (tag 3) | 82.09 |
+| [Overpower](https://www.wowhead.com/forever/spell=11585) | 79.93 |
+| [Deep Wounds](https://www.wowhead.com/forever/spell=12867) | 70.10 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Rage | Auto-attack (tag 1) | +1607.6 |
+| Rage | Auto-attack (tag 2) | +1351.1 |
+| Rage | [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | -998.9 |
+| Rage | [Execute](https://www.wowhead.com/forever/spell=20662) | -796.8 |
+| Rage | [Heroic Strike](https://www.wowhead.com/forever/spell=11567) | -506.2 |
+| Rage | [Whirlwind](https://www.wowhead.com/forever/spell=1680) | -443.6 |
+| Rage | [Hamstring](https://www.wowhead.com/forever/spell=7373) | -306.2 |
+| Rage | [Sunder Armor](https://www.wowhead.com/forever/spell=11597) | -273.0 |
+| Rage | [Unbridled Wrath](https://www.wowhead.com/forever/spell=12964) | +189.6 |
+| Rage | [Item 13442](https://www.wowhead.com/forever/item=13442) | +168.1 |
+| Rage | [Berserker Stance](https://www.wowhead.com/forever/spell=2458) | -148.4 |
+| Rage | [Overpower](https://www.wowhead.com/forever/spell=11585) | -132.1 |
+
 ## Paladin — Retribution
 
 **Talents:** 13/6/32 · `55003-231-05225331001330301`
@@ -669,102 +768,6 @@ Other races can use different equipment. Their complete setups are available in 
 | Mana | [Hammer of Wrath](https://www.wowhead.com/forever/spell=24239) | -2005.5 |
 | Mana | [Holy Strike](https://www.wowhead.com/forever/spell=10333) | -524.9 |
 | Mana | OtherActionManaRegen (tag 2) | +15.4 |
-
-## Warrior — Fury (Sunder)
-
-**Talents:** 18/33/0 · `20305213002-25053005132010501`
-
-[Requests and results](../artifacts/modelled_gear/forever_dps_5min.json) · [Equipment search](../artifacts/correctness/october_15/selection-evidence.json)
-
-**Model limitations:** This Warrior personally builds and refreshes five Sunder stacks. External Sunder and Expose Armor are disabled only for this row; its initial armor ramp and lost globals are included. The provisional Warrior rage model still applies. Hamstring is woven for Windfury Totem procs when Bloodthirst and Whirlwind are at least 1.5 s away, outside execute (wowsims/forever #243).
-
-
-### Results
-
-| Race | DPS | Standard error | Mana-limited seconds |
-|---|---:|---:|---:|
-| Orc | 941.72 | 0.52 | 0.00 |
-| Tauren | 948.69 | 0.53 | 0.00 |
-| Troll | 919.51 | 0.51 | 0.00 |
-| Undead | 943.30 | 0.49 | 0.00 |
-| Windshaper | 952.68 | 0.51 | 0.00 |
-| Human | 952.51 | 0.52 | 0.00 |
-| Dwarf | 939.01 | 0.52 | 0.00 |
-| Night Elf | 935.44 | 0.51 | 0.00 |
-| Gnome | 938.31 | 0.50 | 0.00 |
-| High Order | 952.68 | 0.51 | 0.00 |
-
-Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
-
-### Equipment — Windshaper
-
-| Slot | Item | Item level | Enchant |
-|---|---|---:|---|
-| Head | [Modeled: Strength / agility / crit / hit — Head (Plate) [+28 Str, +18 Sta, +14 Crit, +10 Hit, +18 Agi, 599 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Arcanum of Rapidity |
-| Neck | [Modeled: Strength / agility / crit / hit — Neck [+16 Str, +11 Sta, +8 Crit, +6 Hit, +10 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Shoulders | [Modeled: Strength / agility / crit / hit — Shoulders (Plate) [+21 Str, +14 Sta, +11 Crit, +8 Hit, +14 Agi, 553 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Chromatic Mantle of the Dawn |
-| Back | [Modeled: Strength / crit / hit — Back (Cloth) [+11 Sta, +12 Crit, +12 Str, +13 Hit, 50 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Boots - Lesser Agility |
-| Chest | [Modeled: Strength / agility / crit / hit — Chest (Plate) [+28 Str, +18 Sta, +14 Crit, +10 Hit, +18 Agi, 738 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Chest - Greater Stats |
-| Wrists | [Modeled: Strength / crit / hit — Wrists (Plate) [+11 Sta, +12 Crit, +12 Str, +13 Hit, 323 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Bracer - Superior Strength |
-| Hands | [Modeled: Strength / agility / crit / hit — Hands (Plate) [+21 Str, +14 Sta, +11 Crit, +8 Hit, +14 Agi, 461 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Gloves - Minor Haste |
-| Waist | [Modeled: Strength / crit / hit — Waist (Plate) [+14 Sta, +16 Crit, +16 Str, +18 Hit, 415 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
-| Legs | [Modeled: Strength / crit / hit — Legs (Plate) [+18 Sta, +21 Crit, +21 Str, +23 Hit, 646 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Arcanum of Rapidity |
-| Feet | [Modeled: Strength / crit / hit — Feet (Plate) [+14 Sta, +16 Crit, +16 Str, +18 Hit, 507 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | Enchant Boots - Greater Agility |
-| Ring 1 | [Modeled: Strength / crit / hit — Finger [+11 Sta, +12 Crit, +12 Str, +13 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
-| Ring 2 | [Modeled: Strength / crit / hit — Finger [+11 Sta, +12 Crit, +12 Str, +13 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
-| Trinket 1 | [Modeled: Passive Strength / crit / hit — Trinket [+11 Sta, +13 Crit, +13 Str, +14 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
-| Trinket 2 | [Modeled: Passive Strength / crit / hit — Trinket [+11 Sta, +13 Crit, +13 Str, +14 Hit] (modeled; reference only)](https://www.wowhead.com/forever/item=279253) | 65 | — |
-| Main hand | [Modeled: Sword one-hand — One-hand [+2 Sta, +24 AP, +14 Crit, 109–165 dmg @ 2.9s] (modeled; reference only)](https://www.wowhead.com/forever/item=272452) | 65 | Enchant Weapon - Crusader |
-| Off hand | [Modeled: Fist off-hand — Off hand weapon [+2 Sta, +24 AP, +14 Crit, 64–97 dmg @ 1.7s] (modeled; reference only)](https://www.wowhead.com/forever/item=272598) | 65 | Enchant Weapon - Crusader |
-| Ranged/relic | [Modeled: Crossbow ranged — Ranged/wand [+6 Sta, +32 AP, 98–148 dmg @ 2s] (modeled; reference only)](https://www.wowhead.com/forever/item=272595) | 65 | SAF-T Ultra Precision Scope |
-
-Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
-
-### Rotation priorities
-
-1. Cast [Sunder Armor (rank 5)](https://www.wowhead.com/forever/spell=11597) when ([Sunder Armor (rank 5)](https://www.wowhead.com/forever/spell=11597) stacks < 5 OR [Sunder Armor (rank 5)](https://www.wowhead.com/forever/spell=11597) time remaining < 8s).
-2. `{"condition":{"and":{"vals":[{"or":{"vals":[{"cmp":{"op":"OpLt","lhs":{"auraNumStacks":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":11597,"rank":5}}},"rhs":{"const":{"val":"5"}}}},{"cmp":{"op":"OpLt","lhs":{"auraRemainingTime":{"sourceUnit":{"type":"CurrentTarget"},"auraId":{"spellId":11597,"rank":5}}},"rhs":{"const":{"val":"8s"}}}}]}},{"cmp":{"op":"OpLt","lhs":{"currentRage":{}},"rhs":{"const":{"val":"15"}}}}]}},"wait":{"duration":{"const":{"val":"500ms"}}}}` when (([Sunder Armor (rank 5)](https://www.wowhead.com/forever/spell=11597) stacks < 5 OR [Sunder Armor (rank 5)](https://www.wowhead.com/forever/spell=11597) time remaining < 8s) AND Rage < 15).
-3. Cast [Recklessness](https://www.wowhead.com/forever/spell=1719) when Time remaining ≤ 300s.
-4. Use ready automatic cooldowns.
-5. Cast [Battle Stance](https://www.wowhead.com/forever/spell=2457) when ([Overpower opportunity](https://www.wowhead.com/forever/spell=1282733) active AND Rage ≤ 25 AND NOT `{"isExecutePhase":{"threshold":"E20"}}` AND NOT [Recklessness](https://www.wowhead.com/forever/spell=1719) active).
-6. Cast [Overpower](https://www.wowhead.com/forever/spell=11585).
-7. Cast [Berserker Stance](https://www.wowhead.com/forever/spell=2458) when NOT [Overpower opportunity](https://www.wowhead.com/forever/spell=1282733) active.
-8. Cast [Execute](https://www.wowhead.com/forever/spell=20662).
-9. Cast [Bloodthirst](https://www.wowhead.com/forever/spell=23894).
-10. Cast [Whirlwind](https://www.wowhead.com/forever/spell=1680).
-11. Cast [Rend](https://www.wowhead.com/forever/spell=11574) when NOT [Rend](https://www.wowhead.com/forever/spell=11574) DoT active.
-12. Cast [Hamstring](https://www.wowhead.com/forever/spell=7373) when (`{"auraIsKnown":{"auraId":{"spellId":10610}}}` AND NOT `{"isExecutePhase":{"threshold":"E20"}}` AND `{"spellTimeToReady":{"spellId":{"spellId":23894}}}` ≥ 1.5s AND `{"spellTimeToReady":{"spellId":{"spellId":1680}}}` ≥ 1.5s).
-13. Cast [Heroic Strike](https://www.wowhead.com/forever/spell=11567) when (Rage ≥ 30 AND NOT `{"isExecutePhase":{"threshold":"E20"}}`).
-
-### Damage breakdown — Windshaper
-
-| Action | DPS |
-|---|---:|
-| Auto-attack (tag 2) | 160.19 |
-| Auto-attack (tag 1) | 139.91 |
-| [Heroic Strike](https://www.wowhead.com/forever/spell=11567) | 129.27 |
-| [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | 116.01 |
-| [Execute](https://www.wowhead.com/forever/spell=20662) | 109.71 |
-| Auto-attack (tag 3) | 81.19 |
-| [Deep Wounds](https://www.wowhead.com/forever/spell=12867) | 68.58 |
-| [Overpower](https://www.wowhead.com/forever/spell=11585) | 60.67 |
-
-### Resource flow
-
-| Resource | Action | Net amount per fight |
-|---|---|---:|
-| Rage | Auto-attack (tag 1) | +1586.1 |
-| Rage | Auto-attack (tag 2) | +1369.2 |
-| Rage | [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | -925.6 |
-| Rage | [Execute](https://www.wowhead.com/forever/spell=20662) | -838.9 |
-| Rage | [Heroic Strike](https://www.wowhead.com/forever/spell=11567) | -574.9 |
-| Rage | [Whirlwind](https://www.wowhead.com/forever/spell=1680) | -435.6 |
-| Rage | [Hamstring](https://www.wowhead.com/forever/spell=7373) | -403.4 |
-| Rage | [Sunder Armor](https://www.wowhead.com/forever/spell=11597) | -273.1 |
-| Rage | [Unbridled Wrath](https://www.wowhead.com/forever/spell=12964) | +192.8 |
-| Rage | [Item 13442](https://www.wowhead.com/forever/item=13442) | +174.5 |
-| Rage | OtherActionRefund | +132.5 |
-| Rage | [Overpower](https://www.wowhead.com/forever/spell=11585) | -101.4 |
 
 ## Hunter — Pet/Melee
 
@@ -1483,6 +1486,102 @@ Other races can use different equipment. Their complete setups are available in 
 | Mana | [Shadowburn](https://www.wowhead.com/forever/spell=18871) | -363.4 |
 | Mana | [Searing Pain](https://www.wowhead.com/forever/spell=17923) | -193.6 |
 
+## Warrior — 2H Bloodthirst
+
+**Talents:** 20/31/0 · `30304203032-55050020151010501`
+
+[Requests and results](../artifacts/modelled_gear/forever_dps_5min.json) · [Equipment search](../artifacts/correctness/october_15/selection-evidence.json)
+
+**Model limitations:** Level-60 rage and Flurry charge timing remain unverified; this row uses the provisional Warrior model. Hamstring is woven for Windfury Totem procs when Bloodthirst and Whirlwind are at least 1.5 s away, outside execute (wowsims/forever #243).
+
+
+### Results
+
+| Race | DPS | Standard error | Mana-limited seconds |
+|---|---:|---:|---:|
+| Orc | 870.12 | 0.60 | 0.00 |
+| Tauren | 866.43 | 0.60 | 0.00 |
+| Undead | 863.57 | 0.59 | 0.00 |
+| Troll | 858.77 | 0.59 | 0.00 |
+| Windshaper | 864.11 | 0.57 | 0.00 |
+| Human | 868.03 | 0.60 | 0.00 |
+| Dwarf | 865.22 | 0.60 | 0.00 |
+| Gnome | 857.99 | 0.60 | 0.00 |
+| Night Elf | 860.14 | 0.59 | 0.00 |
+| High Order | 864.11 | 0.57 | 0.00 |
+
+Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
+
+### Equipment — Orc
+
+| Slot | Item | Item level | Enchant |
+|---|---|---:|---|
+| Head | [Modeled: Strength / agility / crit / hit — Head (Plate) [+28 Str, +18 Sta, +14 Crit, +10 Hit, +18 Agi, 599 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Arcanum of Rapidity |
+| Neck | [Modeled: Strength / agility / crit / hit — Neck [+16 Str, +11 Sta, +8 Crit, +6 Hit, +10 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Shoulders | [Modeled: Strength / agility / crit / hit — Shoulders (Plate) [+21 Str, +14 Sta, +11 Crit, +8 Hit, +14 Agi, 553 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Chromatic Mantle of the Dawn |
+| Back | [Modeled: Strength / agility / crit / hit — Back (Cloth) [+16 Str, +11 Sta, +8 Crit, +6 Hit, +10 Agi, 50 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Boots - Lesser Agility |
+| Chest | [Modeled: Strength / agility / crit / hit — Chest (Plate) [+28 Str, +18 Sta, +14 Crit, +10 Hit, +18 Agi, 738 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Chest - Greater Stats |
+| Wrists | [Modeled: Strength / agility / crit / hit — Wrists (Plate) [+16 Str, +11 Sta, +8 Crit, +6 Hit, +10 Agi, 323 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Bracer - Superior Strength |
+| Hands | [Modeled: Strength / agility / crit / hit — Hands (Plate) [+21 Str, +14 Sta, +11 Crit, +8 Hit, +14 Agi, 461 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Weapon - Agility |
+| Waist | [Modeled: Strength / agility / crit / hit — Waist (Plate) [+21 Str, +14 Sta, +11 Crit, +8 Hit, +14 Agi, 415 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Legs | [Modeled: Strength / agility / crit / hit — Legs (Plate) [+28 Str, +18 Sta, +14 Crit, +10 Hit, +18 Agi, 646 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Lesser Arcanum of Voracity |
+| Feet | [Modeled: Strength / agility / crit / hit — Feet (Plate) [+21 Str, +14 Sta, +11 Crit, +8 Hit, +14 Agi, 507 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Boots - Greater Agility |
+| Ring 1 | [Modeled: Strength / agility / crit / hit — Finger [+16 Str, +11 Sta, +8 Crit, +6 Hit, +10 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Ring 2 | [Modeled: Strength / agility / crit / hit — Finger [+16 Str, +11 Sta, +8 Crit, +6 Hit, +10 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Trinket 1 | [Modeled: Passive Strength / agility / crit / hit — Trinket [+17 Str, +11 Sta, +9 Crit, +6 Hit, +11 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Trinket 2 | [Modeled: Passive Strength / agility / crit / hit — Trinket [+17 Str, +11 Sta, +9 Crit, +6 Hit, +11 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
+| Main hand | [Modeled: Axe two-hand — Two-hand [+34 Sta, +23 Str, +14 Crit, 187–281 dmg @ 3.8s] (modeled; reference only)](https://www.wowhead.com/forever/item=272593) | 65 | Enchant Weapon - Crusader |
+| Ranged/relic | [Modeled: Crossbow ranged — Ranged/wand [+6 Sta, +32 AP, 98–148 dmg @ 2s] (modeled; reference only)](https://www.wowhead.com/forever/item=272595) | 65 | SAF-T Ultra Precision Scope |
+
+Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
+
+### Rotation priorities
+
+1. Use ready automatic cooldowns.
+2. Cast [Item 12662](https://www.wowhead.com/forever/item=12662) when Rage ≤ 60.
+3. Cast [Recklessness](https://www.wowhead.com/forever/spell=1719).
+4. Cast [Battle Stance](https://www.wowhead.com/forever/spell=2457) when ([Overpower opportunity](https://www.wowhead.com/forever/spell=1282733) active AND Rage ≤ 60).
+5. Cast [Rend](https://www.wowhead.com/forever/spell=11574) when ([Battle Stance](https://www.wowhead.com/forever/spell=2457) active AND NOT [Rend](https://www.wowhead.com/forever/spell=11574) DoT active AND NOT `{"isExecutePhase":{"threshold":"E20"}}`).
+6. Cast [Overpower](https://www.wowhead.com/forever/spell=11585).
+7. Cast [Berserker Stance](https://www.wowhead.com/forever/spell=2458) when NOT [Overpower opportunity](https://www.wowhead.com/forever/spell=1282733) active.
+8. Cast [Execute](https://www.wowhead.com/forever/spell=20662).
+9. Cast [Bloodthirst](https://www.wowhead.com/forever/spell=23894).
+10. Cast [Whirlwind](https://www.wowhead.com/forever/spell=1680).
+11. Cast [Rend](https://www.wowhead.com/forever/spell=11574) when NOT [Rend](https://www.wowhead.com/forever/spell=11574) DoT active.
+12. Cast [Slam](https://www.wowhead.com/forever/spell=11605) when Rage ≥ 50.
+13. Cast [Hamstring](https://www.wowhead.com/forever/spell=7373) when (`{"auraIsKnown":{"auraId":{"spellId":10610}}}` AND NOT `{"isExecutePhase":{"threshold":"E20"}}` AND `{"spellTimeToReady":{"spellId":{"spellId":23894}}}` ≥ 1.5s AND `{"spellTimeToReady":{"spellId":{"spellId":1680}}}` ≥ 1.5s AND `{"autoTimeToNext":{"autoType":"MainHand"}}` ≥ 1s).
+14. Cast [Heroic Strike](https://www.wowhead.com/forever/spell=11567) when (Rage ≥ 80 AND NOT `{"isExecutePhase":{"threshold":"E20"}}`).
+
+### Damage breakdown — Orc
+
+| Action | DPS |
+|---|---:|
+| Auto-attack (tag 1) | 224.95 |
+| [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | 140.53 |
+| Auto-attack (tag 3) | 124.18 |
+| [Execute](https://www.wowhead.com/forever/spell=20662) | 84.02 |
+| [Whirlwind](https://www.wowhead.com/forever/spell=1680) | 67.99 |
+| [Overpower](https://www.wowhead.com/forever/spell=11585) | 67.62 |
+| [Deep Wounds](https://www.wowhead.com/forever/spell=12867) | 59.22 |
+| [Slam](https://www.wowhead.com/forever/spell=11605) | 31.23 |
+
+### Resource flow
+
+| Resource | Action | Net amount per fight |
+|---|---|---:|
+| Rage | Auto-attack (tag 1) | +2805.8 |
+| Rage | [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | -1008.1 |
+| Rage | [Execute](https://www.wowhead.com/forever/spell=20662) | -707.8 |
+| Rage | [Whirlwind](https://www.wowhead.com/forever/spell=1680) | -469.8 |
+| Rage | [Hamstring](https://www.wowhead.com/forever/spell=7373) | -441.3 |
+| Rage | [Battle Stance](https://www.wowhead.com/forever/spell=2457) | -148.0 |
+| Rage | [Item 13442](https://www.wowhead.com/forever/item=13442) | +135.0 |
+| Rage | [Berserker Stance](https://www.wowhead.com/forever/spell=2458) | -124.2 |
+| Rage | [Slam](https://www.wowhead.com/forever/spell=11605) | -118.7 |
+| Rage | OtherActionRefund | +102.9 |
+| Rage | [Bloodrage](https://www.wowhead.com/forever/spell=2687) | +85.7 |
+| Rage | [Heroic Strike](https://www.wowhead.com/forever/spell=11567) | -76.3 |
+
 ## Warrior — Arms
 
 **Talents:** 35/16/0 · `20305213132515101-55050000001`
@@ -1574,100 +1673,6 @@ Other races can use different equipment. Their complete setups are available in 
 | Rage | OtherActionRefund | +107.1 |
 | Rage | [Anger Management](https://www.wowhead.com/forever/spell=12296) | +98.8 |
 | Rage | [Bloodrage](https://www.wowhead.com/forever/spell=2687) | +85.2 |
-
-## Warrior — 2H Bloodthirst
-
-**Talents:** 20/31/0 · `30304203032-55050020151010501`
-
-[Requests and results](../artifacts/modelled_gear/forever_dps_5min.json) · [Equipment search](../artifacts/correctness/october_15/selection-evidence.json)
-
-**Model limitations:** Level-60 rage and Flurry charge timing remain unverified; this row uses the provisional Warrior model. Hamstring is woven for Windfury Totem procs when Bloodthirst and Whirlwind are at least 1.5 s away, outside execute (wowsims/forever #243).
-
-
-### Results
-
-| Race | DPS | Standard error | Mana-limited seconds |
-|---|---:|---:|---:|
-| Orc | 833.75 | 0.60 | 0.00 |
-| Tauren | 830.16 | 0.60 | 0.00 |
-| Undead | 829.31 | 0.59 | 0.00 |
-| Troll | 822.82 | 0.59 | 0.00 |
-| Windshaper | 832.19 | 0.58 | 0.00 |
-| Human | 831.24 | 0.60 | 0.00 |
-| Dwarf | 829.21 | 0.60 | 0.00 |
-| Gnome | 823.87 | 0.59 | 0.00 |
-| Night Elf | 824.27 | 0.59 | 0.00 |
-| High Order | 832.19 | 0.58 | 0.00 |
-
-Mana-limited time counts failed mana-cost checks; it is not necessarily zero-damage time.
-
-### Equipment — Orc
-
-| Slot | Item | Item level | Enchant |
-|---|---|---:|---|
-| Head | [Modeled: Strength / agility / crit / hit — Head (Plate) [+28 Str, +18 Sta, +14 Crit, +10 Hit, +18 Agi, 599 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Arcanum of Rapidity |
-| Neck | [Modeled: Strength / agility / crit / hit — Neck [+16 Str, +11 Sta, +8 Crit, +6 Hit, +10 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Shoulders | [Modeled: Strength / agility / crit / hit — Shoulders (Plate) [+21 Str, +14 Sta, +11 Crit, +8 Hit, +14 Agi, 553 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Chromatic Mantle of the Dawn |
-| Back | [Modeled: Strength / agility / crit / hit — Back (Cloth) [+16 Str, +11 Sta, +8 Crit, +6 Hit, +10 Agi, 50 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Boots - Lesser Agility |
-| Chest | [Modeled: Strength / agility / crit / hit — Chest (Plate) [+28 Str, +18 Sta, +14 Crit, +10 Hit, +18 Agi, 738 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Chest - Greater Stats |
-| Wrists | [Modeled: Strength / agility / crit / hit — Wrists (Plate) [+16 Str, +11 Sta, +8 Crit, +6 Hit, +10 Agi, 323 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Bracer - Superior Strength |
-| Hands | [Modeled: Strength / agility / crit / hit — Hands (Plate) [+21 Str, +14 Sta, +11 Crit, +8 Hit, +14 Agi, 461 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Weapon - Agility |
-| Waist | [Modeled: Strength / agility / crit / hit — Waist (Plate) [+21 Str, +14 Sta, +11 Crit, +8 Hit, +14 Agi, 415 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Legs | [Modeled: Strength / agility / crit / hit — Legs (Plate) [+28 Str, +18 Sta, +14 Crit, +10 Hit, +18 Agi, 646 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Lesser Arcanum of Voracity |
-| Feet | [Modeled: Strength / agility / crit / hit — Feet (Plate) [+21 Str, +14 Sta, +11 Crit, +8 Hit, +14 Agi, 507 armor] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | Enchant Boots - Greater Agility |
-| Ring 1 | [Modeled: Strength / agility / crit / hit — Finger [+16 Str, +11 Sta, +8 Crit, +6 Hit, +10 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Ring 2 | [Modeled: Strength / agility / crit / hit — Finger [+16 Str, +11 Sta, +8 Crit, +6 Hit, +10 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Trinket 1 | [Modeled: Passive Strength / agility / crit / hit — Trinket [+17 Str, +11 Sta, +9 Crit, +6 Hit, +11 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Trinket 2 | [Modeled: Passive Strength / agility / crit / hit — Trinket [+17 Str, +11 Sta, +9 Crit, +6 Hit, +11 Agi] (modeled; reference only)](https://www.wowhead.com/forever/item=22651) | 65 | — |
-| Main hand | [Modeled: Axe two-hand — Two-hand [+34 Sta, +23 Str, +14 Crit, 187–281 dmg @ 3.8s] (modeled; reference only)](https://www.wowhead.com/forever/item=272593) | 65 | Enchant Weapon - Crusader |
-| Ranged/relic | [Modeled: Crossbow ranged — Ranged/wand [+6 Sta, +32 AP, 98–148 dmg @ 2s] (modeled; reference only)](https://www.wowhead.com/forever/item=272595) | 65 | SAF-T Ultra Precision Scope |
-
-Other races can use different equipment. Their complete setups are available in the simulator's Ranked builds selector.
-
-### Rotation priorities
-
-1. Use ready automatic cooldowns.
-2. Cast [Recklessness](https://www.wowhead.com/forever/spell=1719).
-3. Cast [Battle Stance](https://www.wowhead.com/forever/spell=2457) when ([Overpower opportunity](https://www.wowhead.com/forever/spell=1282733) active AND Rage ≤ 25).
-4. Cast [Overpower](https://www.wowhead.com/forever/spell=11585).
-5. Cast [Berserker Stance](https://www.wowhead.com/forever/spell=2458) when NOT [Overpower opportunity](https://www.wowhead.com/forever/spell=1282733) active.
-6. Cast [Execute](https://www.wowhead.com/forever/spell=20662).
-7. Cast [Bloodthirst](https://www.wowhead.com/forever/spell=23894).
-8. Cast [Whirlwind](https://www.wowhead.com/forever/spell=1680).
-9. Cast [Rend](https://www.wowhead.com/forever/spell=11574) when NOT [Rend](https://www.wowhead.com/forever/spell=11574) DoT active.
-10. Cast [Slam](https://www.wowhead.com/forever/spell=11605) when Rage ≥ 50.
-11. Cast [Hamstring](https://www.wowhead.com/forever/spell=7373) when (`{"auraIsKnown":{"auraId":{"spellId":10610}}}` AND NOT `{"isExecutePhase":{"threshold":"E20"}}` AND `{"spellTimeToReady":{"spellId":{"spellId":23894}}}` ≥ 1.5s AND `{"spellTimeToReady":{"spellId":{"spellId":1680}}}` ≥ 1.5s).
-12. Cast [Heroic Strike](https://www.wowhead.com/forever/spell=11567) when (Rage ≥ 50 AND NOT `{"isExecutePhase":{"threshold":"E20"}}`).
-
-### Damage breakdown — Orc
-
-| Action | DPS |
-|---|---:|
-| Auto-attack (tag 1) | 208.24 |
-| [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | 133.03 |
-| Auto-attack (tag 3) | 106.93 |
-| [Execute](https://www.wowhead.com/forever/spell=20662) | 82.79 |
-| [Heroic Strike](https://www.wowhead.com/forever/spell=11567) | 75.01 |
-| [Whirlwind](https://www.wowhead.com/forever/spell=1680) | 66.41 |
-| [Overpower](https://www.wowhead.com/forever/spell=11585) | 59.40 |
-| [Deep Wounds](https://www.wowhead.com/forever/spell=12867) | 57.27 |
-
-### Resource flow
-
-| Resource | Action | Net amount per fight |
-|---|---|---:|
-| Rage | Auto-attack (tag 1) | +2556.5 |
-| Rage | [Bloodthirst](https://www.wowhead.com/forever/spell=23894) | -960.6 |
-| Rage | [Execute](https://www.wowhead.com/forever/spell=20662) | -696.7 |
-| Rage | [Whirlwind](https://www.wowhead.com/forever/spell=1680) | -459.2 |
-| Rage | [Hamstring](https://www.wowhead.com/forever/spell=7373) | -413.8 |
-| Rage | [Heroic Strike](https://www.wowhead.com/forever/spell=11567) | -203.8 |
-| Rage | [Item 13442](https://www.wowhead.com/forever/item=13442) | +146.8 |
-| Rage | OtherActionRefund | +101.1 |
-| Rage | [Slam](https://www.wowhead.com/forever/spell=11605) | -87.8 |
-| Rage | [Bloodrage](https://www.wowhead.com/forever/spell=2687) | +87.7 |
-| Rage | [Berserker Stance](https://www.wowhead.com/forever/spell=2458) | -80.9 |
-| Rage | [Overpower](https://www.wowhead.com/forever/spell=11585) | -64.6 |
 
 ## Druid — Feral
 
