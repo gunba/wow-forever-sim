@@ -26,6 +26,14 @@ func (action *APLAction) Execute(sim *Simulation) {
 	action.impl.Execute(sim)
 }
 
+// CastSpell returns the spell a Cast Spell entry casts, or nil for any other entry.
+func (action *APLAction) CastSpell() *Spell {
+	if cast, ok := action.impl.(*APLActionCastSpell); ok {
+		return cast.spell
+	}
+	return nil
+}
+
 // Returns this Action, along with all inner Actions.
 func (action *APLAction) GetAllActions() []*APLAction {
 	actions := action.impl.GetInnerActions()

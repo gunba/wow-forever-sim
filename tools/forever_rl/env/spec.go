@@ -1,0 +1,518 @@
+// Package env is a reinforcement-learning environment over the simulator: one episode chooses a talent build point by
+// point (optional), then plays one benchmark fight in the real engine, choosing every action. The reward is damage.
+package env
+
+import (
+	"encoding/json"
+	"fmt"
+	"math/rand"
+	"os"
+	"path/filepath"
+	"sort"
+	"strings"
+	"sync"
+
+	"github.com/wowsims/classic/sim"
+	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/core/proto"
+	"github.com/wowsims/classic/sim/core/simsignals"
+	"google.golang.org/protobuf/encoding/protojson"
+	googleProto "google.golang.org/protobuf/proto"
+)
+
+// Config selects the build and how episodes run.
+type Config struct {
+	Repo           string  `json:"repo"`           // repository root
+	Results        string  `json:"results"`        // results file with complete requests (relative to Repo)
+	Build          string  `json:"build"`          // build key, e.g. "fire"
+	Race           string  `json:"race"`           // race as in the results ("Human")
+	LearnTalents   bool    `json:"learnTalents"`   // choose the talents in the episode
+	Talents        string  `json:"talents"`        // fixed talents when not learning them (default: the row's)
+	FightsPerBuild int     `json:"fightsPerBuild"` // fights played on one chosen build before choosing again
+	Seed           int64   `json:"seed"`
+	RewardScale    float64 `json:"rewardScale"`    // reward = damage * RewardScale
+	DiscoverBuilds int     `json:"discoverBuilds"` // random builds sampled to find every spell and aura a build can have
+	CachedSims     int     `json:"cachedSims"`     // simulations kept per environment, one per talent build
+	Duration       float64 `json:"duration"`       // fight length override in seconds (0: the request's)
+	Threads        int     `json:"threads"`        // worker goroutines for a vector of environments
+	LabeledRands   bool    `json:"labeledRands"`   // one random stream per roll label, so replays with one changed decision stay aligned
+}
+
+func (c *Config) defaults() {
+	if c.Results == "" {
+		c.Results = "artifacts/modelled_gear/forever_dps_5min.json"
+	}
+	if c.FightsPerBuild <= 0 {
+		c.FightsPerBuild = 1
+	}
+	if c.RewardScale == 0 {
+		c.RewardScale = 1e-3
+	}
+	if c.DiscoverBuilds == 0 {
+		c.DiscoverBuilds = 40
+	}
+	if c.CachedSims <= 0 {
+		c.CachedSims = 4
+	}
+}
+
+const (
+	kindAuto = iota
+	kindTeacher
+	kindAgent
+)
+
+type auraKey struct {
+	Target bool
+	Label  string
+}
+
+// Spec is everything the environments of one build share. It is read-only once built.
+type Spec struct {
+	Cfg         Config
+	request     *proto.RaidSimRequest
+	teacher     *proto.APLRotation
+	candidate   *proto.APLRotation
+	configKind  []int // per candidate config entry
+	configAgent []int // per candidate config entry: its agent action (teachers: the agent action of the same spell, or -1)
+	trees       *talentTrees
+	spellNames  map[int32]string
+	itemNames   map[int32]string
+	basePoints  []int
+	BaseTalents string
+	agentSpells []core.ActionID
+	macros      []*proto.APLAction // the teacher's other entries (move, channel, sequences...) without their conditions
+	macroNames  []string
+	auras       []auraKey
+	Duration    float64
+
+	T, K, ObsDim, ActDim int // talents, agent actions (spells + wait), observation and action sizes
+	ActionNames          []string
+	FeatureNames         []string
+	TalentNames          []string
+	fightOffset          int
+}
+
+var registerOnce sync.Once
+
+type resultRow struct {
+	Key, Race string
+	Request   json.RawMessage
+}
+
+// NewSpec loads the build's benchmark request and finds the spells and auras its talent builds can have.
+func NewSpec(cfg Config) (*Spec, error) {
+	cfg.defaults()
+	registerOnce.Do(sim.RegisterAll)
+	data, err := os.ReadFile(filepath.Join(cfg.Repo, cfg.Results))
+	if err != nil {
+		return nil, err
+	}
+	var results struct{ Results []resultRow }
+	if err := json.Unmarshal(data, &results); err != nil {
+		return nil, err
+	}
+	var row *resultRow
+	for i := range results.Results {
+		if results.Results[i].Key == cfg.Build && (cfg.Race == "" || results.Results[i].Race == cfg.Race) {
+			row = &results.Results[i]
+			break
+		}
+	}
+	if row == nil {
+		return nil, fmt.Errorf("no %s/%s row in %s", cfg.Build, cfg.Race, cfg.Results)
+	}
+	req := &proto.RaidSimRequest{}
+	if err := protojson.Unmarshal(row.Request, req); err != nil {
+		return nil, err
+	}
+	if cfg.Duration > 0 {
+		req.Encounter.Duration = cfg.Duration
+	}
+	req.Encounter.DurationVariation = 0
+	if req.SimOptions == nil {
+		req.SimOptions = &proto.SimOptions{}
+	}
+	// Keep the ruleset (Forever) and every other option; only the iteration count and seed change.
+	req.SimOptions.Iterations, req.SimOptions.RandomSeed = 1, cfg.Seed
+	req.SimOptions.UseLabeledRands = cfg.LabeledRands
+	player := req.Raid.Parties[0].Players[0]
+	class := strings.ToLower(strings.TrimPrefix(player.Class.String(), "Class"))
+	trees, err := loadTalentTrees(cfg.Repo, class)
+	if err != nil {
+		return nil, err
+	}
+	s := &Spec{Cfg: cfg, request: req, teacher: player.Rotation, trees: trees, BaseTalents: player.TalentsString,
+		Duration: req.Encounter.Duration}
+	if s.basePoints, err = trees.decode(player.TalentsString); err != nil {
+		return nil, err
+	}
+	if cfg.Talents == "" {
+		s.Cfg.Talents = player.TalentsString
+	}
+	s.spellNames, s.itemNames = loadSpellNames(cfg.Repo)
+	if err := s.discover(); err != nil {
+		return nil, err
+	}
+	s.buildCandidate()
+	s.layout()
+	return s, nil
+}
+
+func (s *Spec) newSim(talents string, rotation *proto.APLRotation, seed int64) (*core.Simulation, *core.Character) {
+	req := googleProto.Clone(s.request).(*proto.RaidSimRequest)
+	p := req.Raid.Parties[0].Players[0]
+	p.TalentsString = talents
+	p.Rotation = rotation
+	req.SimOptions.RandomSeed = seed
+	sim := core.NewSim(req, simsignals.Signals{})
+	return sim, sim.Raid.Parties[0].Players[0].GetCharacter()
+}
+
+// randomBuild spends every point at random among the legal choices.
+func (s *Spec) randomBuild(rng *rand.Rand) []int {
+	points := make([]int, len(s.trees.Nodes))
+	legal := make([]int, 0, len(points))
+	for spent := 0; spent < 51; spent++ {
+		legal = legal[:0]
+		for i := range points {
+			if s.trees.canAdd(points, i) {
+				legal = append(legal, i)
+			}
+		}
+		if len(legal) == 0 {
+			break
+		}
+		points[legal[rng.Intn(len(legal))]]++
+	}
+	return points
+}
+
+type spellGroup struct {
+	name string
+	code int32
+	id   core.ActionID
+}
+
+// Spell names from the database group the ranks of one spell; spells it does not name group by spell code or id.
+func loadSpellNames(repo string) (map[int32]string, map[int32]string) {
+	spells, items := map[int32]string{}, map[int32]string{}
+	data, err := os.ReadFile(filepath.Join(repo, "assets/database/db.json"))
+	if err != nil {
+		return spells, items
+	}
+	var db struct {
+		SpellIcons []struct {
+			ID   int32  `json:"id"`
+			Name string `json:"name"`
+		} `json:"spellIcons"`
+		ItemIcons []struct {
+			ID   int32  `json:"id"`
+			Name string `json:"name"`
+		} `json:"itemIcons"`
+	}
+	if json.Unmarshal(data, &db) == nil {
+		for _, x := range db.SpellIcons {
+			spells[x.ID] = x.Name
+		}
+		for _, x := range db.ItemIcons {
+			items[x.ID] = x.Name
+		}
+	}
+	return spells, items
+}
+
+// Spells that never deal damage or restore resources in a boss fight.
+var utilitySpells = map[string]bool{"Counterspell": true, "Frost Nova": true, "Blink": true, "Polymorph": true, "Remove Lesser Curse": true,
+	"Ice Block": true, "Mana Shield": true, "Fire Ward": true, "Frost Ward": true, "Slow Fall": true, "Kick": true, "Pummel": true,
+	"Shield Bash": true, "Earth Shock (interrupt)": true, "Taunt": true, "Growl": true, "Feint": true, "Vanish": true}
+
+func (s *Spec) groupOf(spell *core.Spell) spellGroup {
+	if spell.ActionID.SpellID != 0 {
+		if name, ok := s.spellNames[spell.ActionID.SpellID]; ok {
+			return spellGroup{name: name, id: core.ActionID{Tag: spell.ActionID.Tag}}
+		}
+	}
+	if spell.SpellCode != 0 {
+		return spellGroup{code: spell.SpellCode, id: core.ActionID{Tag: spell.ActionID.Tag}}
+	}
+	return spellGroup{id: spell.ActionID}
+}
+
+// deepBuild fills one tree first (31 to 41 points), then spends the rest at random.
+func (s *Spec) deepBuild(rng *rand.Rand, tree int) []int {
+	points := make([]int, len(s.trees.Nodes))
+	target := 31 + rng.Intn(11)
+	legal := make([]int, 0, len(points))
+	for spent := 0; spent < 51; spent++ {
+		legal = legal[:0]
+		inTree := spent < target
+		for i, n := range s.trees.Nodes {
+			if s.trees.canAdd(points, i) && (!inTree || n.Tree == tree) {
+				legal = append(legal, i)
+			}
+		}
+		if len(legal) == 0 && inTree {
+			for i := range points {
+				if s.trees.canAdd(points, i) {
+					legal = append(legal, i)
+				}
+			}
+		}
+		if len(legal) == 0 {
+			break
+		}
+		points[legal[rng.Intn(len(legal))]]++
+	}
+	return points
+}
+
+// discover builds the published build and random ones, and keeps every castable APL spell (top rank of each) and
+// every aura with a duration on the player or the target.
+func (s *Spec) discover() error {
+	rng := rand.New(rand.NewSource(s.Cfg.Seed + 7))
+	builds := [][]int{s.basePoints}
+	for i := 0; i < s.Cfg.DiscoverBuilds; i++ {
+		if i%4 == 3 {
+			builds = append(builds, s.randomBuild(rng))
+		} else {
+			builds = append(builds, s.deepBuild(rng, i%len(s.trees.Sizes)))
+		}
+	}
+	spells := map[spellGroup]*core.Spell{}
+	ranks := map[spellGroup]int{}
+	auras := map[auraKey]bool{}
+	// Cooldowns the published rotation leaves to Autocast Other Cooldowns stay automatic: listing them as agent
+	// actions would take them out of the automatic set and away from the teacher.
+	autocast := map[core.ActionID]bool{}
+	for _, points := range builds {
+		sim, char := s.newSim(s.trees.encode(points), s.teacher, 1)
+		for _, id := range char.GetMajorCooldownIDs() {
+			autocast[core.ProtoToActionID(id)] = true
+		}
+		for _, spell := range char.Spellbook {
+			if !spell.Flags.Matches(core.SpellFlagAPL) || utilitySpells[s.spellNames[spell.ActionID.SpellID]] {
+				continue
+			}
+			g := s.groupOf(spell)
+			if cur, ok := spells[g]; !ok || spell.Rank > ranks[g] || (spell.Rank == ranks[g] && spell.ActionID.SpellID > cur.ActionID.SpellID) {
+				spells[g], ranks[g] = spell, spell.Rank
+			}
+		}
+		for _, unit := range []*core.Unit{&char.Unit, sim.Encounter.TargetUnits[0]} {
+			for _, aura := range unit.GetAuras() {
+				if aura.Duration > 0 && aura.Duration != core.NeverExpires && aura.Label != "" {
+					auras[auraKey{Target: unit != &char.Unit, Label: aura.Label}] = true
+				}
+			}
+		}
+	}
+	// The teacher's own spells, items included, must be agent actions too.
+	for _, item := range s.teacher.PriorityList {
+		if cast := item.Action.GetCastSpell(); cast != nil {
+			id := core.ProtoToActionID(cast.SpellId)
+			found := false
+			for _, spell := range spells {
+				if spell.ActionID == id {
+					found = true
+				}
+			}
+			if !found {
+				spells[spellGroup{id: id}] = &core.Spell{ActionID: id}
+			}
+		}
+	}
+	for _, spell := range spells {
+		if !autocast[spell.ActionID] {
+			s.agentSpells = append(s.agentSpells, spell.ActionID)
+		}
+	}
+	sort.Slice(s.agentSpells, func(i, j int) bool { return s.agentSpells[i].String() < s.agentSpells[j].String() })
+	for k := range auras {
+		s.auras = append(s.auras, k)
+	}
+	sort.Slice(s.auras, func(i, j int) bool {
+		if s.auras[i].Target != s.auras[j].Target {
+			return !s.auras[i].Target
+		}
+		return s.auras[i].Label < s.auras[j].Label
+	})
+	return nil
+}
+
+// buildCandidate makes the rotation every environment runs: the automatic cooldown entry, the teacher's own entries
+// (they only say what the published rotation would do), then one unconditioned Cast Spell per agent spell.
+func (s *Spec) buildCandidate() {
+	c := &proto.APLRotation{Type: proto.APLRotation_TypeAPL, PrepullActions: s.teacher.PrepullActions}
+	add := func(item *proto.APLListItem, kind, agent int) {
+		c.PriorityList = append(c.PriorityList, item)
+		s.configKind = append(s.configKind, kind)
+		s.configAgent = append(s.configAgent, agent)
+	}
+	add(&proto.APLListItem{Action: &proto.APLAction{Action: &proto.APLAction_AutocastOtherCooldowns{AutocastOtherCooldowns: &proto.APLActionAutocastOtherCooldowns{}}}}, kindAuto, -1)
+	nSpells := len(s.agentSpells)
+	for _, item := range s.teacher.PriorityList {
+		if item.Hide || item.Action.GetAutocastOtherCooldowns() != nil {
+			continue
+		}
+		agent := -1
+		switch item.Action.Action.(type) {
+		case *proto.APLAction_CastSpell:
+			id := core.ProtoToActionID(item.Action.GetCastSpell().SpellId)
+			for k, a := range s.agentSpells {
+				if a == id {
+					agent = k
+				}
+			}
+		case *proto.APLAction_Wait, *proto.APLAction_WaitUntil, *proto.APLAction_Schedule:
+			// The agent's own wait.
+		default:
+			macro := &proto.APLAction{Action: googleProto.Clone(item.Action).(*proto.APLAction).Action}
+			for k, m := range s.macros {
+				if googleProto.Equal(m, macro) {
+					agent = nSpells + k
+				}
+			}
+			if agent < 0 {
+				s.macros = append(s.macros, macro)
+				s.macroNames = append(s.macroNames, macroName(macro, s))
+				agent = nSpells + len(s.macros) - 1
+			}
+		}
+		add(item, kindTeacher, agent)
+	}
+	for k, id := range s.agentSpells {
+		add(&proto.APLListItem{Action: &proto.APLAction{Action: &proto.APLAction_CastSpell{CastSpell: &proto.APLActionCastSpell{SpellId: id.ToProto()}}}}, kindAgent, k)
+	}
+	for k, m := range s.macros {
+		add(&proto.APLListItem{Action: m}, kindAgent, nSpells+k)
+	}
+	s.candidate = c
+}
+
+func macroName(m *proto.APLAction, s *Spec) string {
+	switch a := m.Action.(type) {
+	case *proto.APLAction_Move:
+		return "move:" + strings.Join(strings.Fields(protojson.Format(a.Move.RangeFromTarget)), "")
+	case *proto.APLAction_ChannelSpell:
+		return "channel:" + s.actionName(core.ProtoToActionID(a.ChannelSpell.SpellId))
+	}
+	j := protojson.Format(m)
+	if len(j) > 60 {
+		j = j[:60]
+	}
+	return "macro:" + strings.Join(strings.Fields(j), "")
+}
+
+func (s *Spec) layout() {
+	s.T = len(s.trees.Nodes)
+	s.K = len(s.agentSpells) + len(s.macros) + 1
+	s.ActDim = s.T + s.K
+	for _, n := range s.trees.Nodes {
+		s.TalentNames = append(s.TalentNames, n.Name)
+		s.ActionNames = append(s.ActionNames, "talent:"+n.Name)
+	}
+	for _, id := range s.agentSpells {
+		s.ActionNames = append(s.ActionNames, "cast:"+s.actionName(id))
+	}
+	s.ActionNames = append(s.ActionNames, s.macroNames...)
+	s.ActionNames = append(s.ActionNames, "wait")
+	f := []string{"phase"}
+	for _, n := range s.trees.Nodes {
+		f = append(f, "talent:"+n.Name)
+	}
+	for _, name := range s.trees.Names {
+		f = append(f, "spent:"+name)
+	}
+	f = append(f, "spent:total")
+	s.fightOffset = len(f)
+	f = append(f, "elapsed", "remaining", "remaining_s", "execute20", "execute25", "execute35", "gcd", "mana_frac", "mana",
+		"rage", "energy", "combo", "distance", "mh_swing", "oh_swing", "ranged_swing", "damage_rate")
+	for _, id := range s.agentSpells {
+		for _, p := range []string{"known", "ready", "cooldown", "cast_time", "cost"} {
+			f = append(f, s.actionName(id)+":"+p)
+		}
+	}
+	for _, name := range s.macroNames {
+		f = append(f, name+":ready")
+	}
+	for _, a := range s.auras {
+		owner := "self"
+		if a.Target {
+			owner = "target"
+		}
+		for _, p := range []string{"active", "remaining", "stacks"} {
+			f = append(f, owner+":"+a.Label+":"+p)
+		}
+	}
+	s.FeatureNames = f
+	s.ObsDim = len(f)
+}
+
+func (s *Spec) actionName(id core.ActionID) string {
+	if id.ItemID != 0 {
+		if n, ok := s.itemNames[id.ItemID]; ok {
+			return n
+		}
+	} else if n, ok := s.spellNames[id.SpellID]; ok {
+		if id.Tag != 0 {
+			return fmt.Sprintf("%s#%d", n, id.Tag)
+		}
+		return n
+	}
+	return id.String()
+}
+
+// PlainDPS runs the published rotation with no policy through the same per-iteration path, for parity checks.
+func (s *Spec) PlainDPS(fights int) float64 {
+	sim, char := s.newSim(s.Cfg.Talents, s.teacher, s.Cfg.Seed)
+	total := 0.0
+	for i := 0; i < fights; i++ {
+		sim.RunIteration(s.Cfg.Seed + int64(i))
+		total += char.Metrics.IterationDamage() / sim.Duration.Seconds()
+	}
+	return total / float64(fights)
+}
+
+// FullDPS runs the published request through the normal simulation path, for parity checks.
+func (s *Spec) FullDPS(fights int) float64 {
+	req := googleProto.Clone(s.request).(*proto.RaidSimRequest)
+	req.SimOptions.Iterations, req.SimOptions.RandomSeed = int32(fights), s.Cfg.Seed
+	res := core.RunRaidSim(req)
+	if res.Error != nil {
+		panic(res.Error.Message)
+	}
+	return res.RaidMetrics.Parties[0].Players[0].Dps.Avg
+}
+
+// TeacherMap lists each teacher entry with the agent action it maps to.
+func (s *Spec) TeacherMap() []string {
+	var out []string
+	for i, kind := range s.configKind {
+		if kind != kindTeacher {
+			continue
+		}
+		item := s.candidate.PriorityList[i]
+		target := "wait"
+		if a := s.configAgent[i]; a >= 0 {
+			target = s.ActionNames[s.T+a]
+		}
+		desc := "other"
+		if cast := item.Action.GetCastSpell(); cast != nil {
+			desc = s.actionName(core.ProtoToActionID(cast.SpellId))
+		}
+		out = append(out, fmt.Sprintf("%d %s -> %s", i, desc, target))
+	}
+	return out
+}
+
+// SpecJSON describes the spaces for the learner.
+func (s *Spec) SpecJSON() []byte {
+	out, _ := json.Marshal(map[string]any{
+		"obsDim": s.ObsDim, "actDim": s.ActDim, "talents": s.T, "agentActions": s.K, "actionNames": s.ActionNames,
+		"featureNames": s.FeatureNames, "talentNames": s.TalentNames, "baseTalents": s.BaseTalents, "duration": s.Duration,
+		"learnTalents": s.Cfg.LearnTalents, "fixedTalents": s.Cfg.Talents, "build": s.Cfg.Build, "race": s.Cfg.Race,
+		"treeSizes": s.trees.Sizes, "treeNames": s.trees.Names, "fightsPerBuild": s.Cfg.FightsPerBuild,
+	})
+	return out
+}

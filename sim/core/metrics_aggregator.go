@@ -451,6 +451,12 @@ func (unitMetrics *UnitMetrics) AddFinalPetMetrics(petMetrics *UnitMetrics) {
 	unitMetrics.dps.Total += petMetrics.dps.Total
 }
 
+// IterationDamage is the damage this unit dealt in the iteration. Spell damage is only folded in when the iteration
+// ends (pets' included); during an iteration use Unit.LiveDamage.
+func (unitMetrics *UnitMetrics) IterationDamage() float64 {
+	return unitMetrics.dps.Total
+}
+
 func (unitMetrics *UnitMetrics) AddOOMTime(sim *Simulation, dur time.Duration) {
 	if dur > 0 {
 		unitMetrics.CharacterIterationMetrics.OOMTime += dur

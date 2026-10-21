@@ -30,6 +30,13 @@ type APLRotation struct {
 	// Used to avoid recursive APL loops.
 	inLoop bool
 
+	// policy, when set, picks among the ready priority-list actions instead of the first ready one.
+	policy APLPolicy
+	ready  []int
+
+	// The config index of each priority-list entry (entries that fail to parse are dropped).
+	priorityConfigIdxs []int
+
 	// Validation warnings that occur during proto parsing.
 	// We return these back to the user for display in the UI.
 	curWarnings          []string
@@ -119,6 +126,8 @@ func (unit *Unit) newAPLRotation(config *proto.APLRotation) *APLRotation {
 			}
 		})
 	}
+
+	rotation.priorityConfigIdxs = configIdxs
 
 	// Finalize
 	for i, action := range rotation.prepullActions {
@@ -216,9 +225,45 @@ func (apl *APLRotation) DoNextAction(sim *Simulation) {
 	}
 }
 
+// APLPolicy chooses the next action from the ready priority-list entries: it gets their indexes in the priority list
+// and returns a position in that slice, or -1 to wait. Tools that learn rotations (tools/forever_rl) set one.
+type APLPolicy func(sim *Simulation, ready []int) int
+
+// SetPolicy makes the rotation ask policy for every choice; nil restores the priority order.
+func (apl *APLRotation) SetPolicy(policy APLPolicy) {
+	apl.policy = policy
+}
+
+// PriorityList exposes the parsed priority-list entries, for tools that set a policy.
+func (apl *APLRotation) PriorityList() []*APLAction {
+	return apl.priorityList
+}
+
+// PriorityConfigIndexes gives, for each parsed priority-list entry, its index in the rotation config.
+func (apl *APLRotation) PriorityConfigIndexes() []int {
+	return apl.priorityConfigIdxs
+}
+
 func (apl *APLRotation) getNextAction(sim *Simulation) *APLAction {
 	if len(apl.controllingActions) != 0 {
 		return apl.controllingActions[len(apl.controllingActions)-1].GetNextAction(sim)
+	}
+
+	if apl.policy != nil {
+		apl.ready = apl.ready[:0]
+		for i, action := range apl.priorityList {
+			if action.IsReady(sim) {
+				apl.ready = append(apl.ready, i)
+			}
+		}
+		if len(apl.ready) == 0 {
+			return nil
+		}
+		k := apl.policy(sim, apl.ready)
+		if k < 0 {
+			return nil
+		}
+		return apl.priorityList[apl.ready[k]]
 	}
 
 	for _, action := range apl.priorityList {
