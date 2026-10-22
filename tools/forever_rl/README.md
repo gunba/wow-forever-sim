@@ -37,6 +37,12 @@ every action. The reward is damage. Built for Fire first; the environment runs e
   (`tools/forever_bench/ml_pages.py`). Resumable; `budgets.json` in the runs folder overrides budgets between builds.
 - `talent_screen.py`: every legal one-point talent move from a base build, played by an APL or a
   model; the leaders are confirmed on fresh fights and the base moves to the best significant change.
+- `apl_synth.py`: a learned policy turned into an APL. Overrides go above the published APL where the network
+  disagrees with it, each an action and up to two thresholds on observation features. They are chosen by the
+  network's logit preference over the APL's choice in the states they cover, with DAgger rounds so the list learns in
+  the states it reaches itself. Each threshold compiles to the APL value that reads the same quantity (the
+  environment's `featureAPL`). The result is checked on paired fights against the published APL and the network,
+  then tuned and pruned on the same paired fights.
 - `compare.py`: a paired table of (build, player) rows, where a player is the published APL, another rotation file,
   or a model.
 - `explain.py`: a model against an APL on the same fights: agreement, the most common disagreements, actions per
