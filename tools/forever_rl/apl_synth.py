@@ -185,7 +185,8 @@ def compile_apl(dl, spec, base_rotation=None, removed=()):
 
 
 def describe_item(item, spec):
-    """A published APL entry in words: the agent action it performs, if any, and whether it has a condition."""
+    """An APL entry in words: its action as the agent knows it and its condition, in the observation features' terms
+    where the condition is one compile_apl writes; other conditions are only marked."""
     act = dict(item.get("action", {}))
     cond = act.pop("condition", None)
     name = None
@@ -194,8 +195,62 @@ def describe_item(item, spec):
             name = spec["actionNames"][spec["talents"] + k]
             break
     if name is None:
-        name = json.dumps(act, separators=(",", ":"))[:160]
-    return name + (" (conditional)" if cond else "")
+        name = "wait" if act == {"wait": {"duration": {"const": {"val": "0.05s"}}}} else json.dumps(act, separators=(",", ":"))[:160]
+    if cond is None:
+        return name
+    fa, fnames = spec["featureAPL"], spec["featureNames"]
+
+    def feature(value):
+        for f, m in enumerate(fa):
+            if m is not None and m["value"] == value:
+                return f
+        return None
+
+    def literal(c):
+        if "not" in c:
+            f = feature(c["not"]["val"])
+            return None if f is None else "not " + fnames[f]
+        if "cmp" in c and c["cmp"]["op"] in ("OpGe", "OpLe") and "const" in c["cmp"]["rhs"]:
+            f = feature(c["cmp"]["lhs"])
+            if f is None:
+                return None
+            val = c["cmp"]["rhs"]["const"]["val"]
+            x = float(val.rstrip("s"))
+            unit = "s" if fa[f]["kind"] == "time" else ""
+            return f"{fnames[f]} {'>=' if c['cmp']['op'] == 'OpGe' else '<='} {x:.2f}{unit}"
+        f = feature(c)
+        return None if f is None else fnames[f]
+
+    parts = [literal(c) for c in (cond["and"]["vals"] if "and" in cond else [cond])]
+    if any(x is None for x in parts):
+        return name + " (conditional)"
+    return name + " if " + " and ".join(parts)
+
+
+def apl_diff(published, final):
+    """(added, removed): final is a block of added entries above a subsequence of published; the block is the shortest
+    prefix whose rest is such a subsequence (an added entry may equal a published one)."""
+    key = [json.dumps(x, sort_keys=True) for x in published]
+    fin = [json.dumps(x, sort_keys=True) for x in final]
+
+    def matched(rest):
+        """Indices of published matched in order by rest, or None if rest is not a subsequence."""
+        out, j = [], 0
+        for x in rest:
+            while j < len(key) and key[j] != x:
+                j += 1
+            if j == len(key):
+                return None
+            out.append(j)
+            j += 1
+        return out
+
+    for i in range(len(fin) + 1):
+        m = matched(fin[i:])
+        if m is not None:
+            kept = set(m)
+            return final[:i], [x for j, x in enumerate(published) if j not in kept]
+    return final, list(published)
 
 
 def describe(dl, spec):
@@ -309,7 +364,6 @@ def main():
 
     t0 = time.time()
     base = json.loads(json.dumps(published["rotation"]))
-    words = {}  # compiled override JSON -> its description
     edits, log = [], []
     per_dec = None
     TS = 9_000_000
@@ -358,10 +412,7 @@ def main():
         removed, chosen = set(), []
 
         def assemble(entries, rem):
-            rot = compile_apl(DecisionList(entries, wait), spec, base, rem)
-            for e, item in zip(entries, rot["priorityList"]):
-                words[json.dumps(item, sort_keys=True)] = describe(DecisionList([e], wait), spec).split(". ", 1)[1]
-            return rot
+            return compile_apl(DecisionList(entries, wait), spec, base, rem)
 
         cur = apl_dps(base, TF, TS)
         start = cur.mean()
@@ -370,9 +421,6 @@ def main():
             dd = apl_dps(rot, TF, TS)
             g, se = paired(dd, cur)
             return g > max(0.2, a.accept_se * se), dd, g, se
-
-        def word(item):
-            return words.get(json.dumps(item, sort_keys=True)) or describe_item(item, spec)
 
         for pass_ in range(2):
             changed = False
@@ -383,8 +431,8 @@ def main():
                 if ok:
                     removed.add(i)
                     cur, changed = dd, True
-                    edits.append({"iteration": it, "edit": "remove", "entry": word(items[i]), "gain": g, "se": se})
-                    print(f"   remove {word(items[i])}: {g:+.2f} ± {se:.2f}", flush=True)
+                    edits.append({"iteration": it, "edit": "remove", "entry": describe_item(items[i], spec), "gain": g, "se": se})
+                    print(f"   remove {edits[-1]['entry']}: {g:+.2f} ± {se:.2f}", flush=True)
             # Best first: every proposal on its own, then added in order of its own gain while each still helps.
             order = []
             for e in (dl.entries + promotions) if pass_ == 0 else []:
@@ -429,11 +477,11 @@ def main():
     net_dps = rollout(published["rotation"], F, S, keep=False)
     ref = pub if (a.talents or published["talentsString"]) == published["talentsString"] else \
         apl_dps(None, F, S, talents=published["talentsString"])
-    # The final APL against the published one: entries added on top and published entries dropped.
-    pub_items = [json.dumps(x, sort_keys=True) for x in published["rotation"]["priorityList"]]
-    fin_items = [json.dumps(x, sort_keys=True) for x in base["priorityList"]]
-    added = [words.get(x) or describe_item(json.loads(x), spec) for x in fin_items if x not in pub_items]
-    dropped = [describe_item(json.loads(x), spec) for x in pub_items if x not in fin_items]
+    # The final APL against the published one: edits always add above everything, so it is a block of added entries
+    # followed by the published entries that remain, in order.
+    added, dropped = apl_diff(published["rotation"]["priorityList"], base["priorityList"])
+    added = [describe_item(x, spec) for x in added]
+    dropped = [describe_item(x, spec) for x in dropped]
     result = {"build": a.build, "race": a.race, "fights": F, "published": float(pub.mean()),
               "synthesised": float(tuned.mean()), "synthesised_vs_published": paired(tuned, pub),
               "network": float(net_dps.mean()), "network_vs_published": paired(net_dps, pub),
