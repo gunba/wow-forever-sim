@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
-"""Turn a learned policy into an APL: policy extraction into a priority list, verified in the simulator.
+"""Turn a learned policy into an APL: edits to the published APL, each chosen in the simulator.
 
-1. The network plays greedy fights; every decision is logged (observation, legal actions, its choice and how strongly
-   it preferred it). Later rounds let the candidate APL play and the network label the states the APL reaches
-   (DAgger), so the list learns to recover from its own mistakes.
-2. A decision list is induced with APL semantics, where the first ready entry fires: each position takes the action
-   and condition (up to two thresholds on observation features) that best separate "the network chose it" from "it
-   was ready but the network did something else", weighted by the network's preference. Every action the network
-   uses at least --min-uses times a fight gets an entry.
-3. Each condition compiles to the APL value that reads the same quantity (the environment exports the map), so the
-   list becomes an APL that means the same thing.
-4. The APL is checked on paired fights (one random stream per roll label) against the published APL and the network;
-   thresholds are then tuned and entries that do nothing are removed, on the same paired fights.
+Each iteration starts from the current APL (first the published one), which the environment plays as its teacher:
+1. The network plays fights and the APL plays fights; in every state the network's logits and the APL's choice are
+   logged, so the network labels both its own states and the ones the APL reaches.
+2. Overrides are induced on top of the APL: each an action and up to two thresholds on observation features, placed
+   where the network prefers that action to the APL's choice (logit difference). Each threshold compiles to the APL
+   value that reads the same quantity (the environment exports the map). Actions the network takes far more often
+   than the APL are also offered unconditionally.
+3. The simulator selects, on paired fights (one random stream per roll label): removing each APL entry, then each
+   override and promotion, every edit kept only if it raises DPS by --accept-se standard errors; thresholds are then
+   tuned the same way. The result is the next iteration's APL; iterations stop when nothing is kept.
+The final APL is checked on fresh paired fights against the published one and the network.
 
     python3 tools/forever_rl/apl_synth.py --build fury --race Orc --model runs/fury/model.pt --out runs/fury_apl
 """
@@ -61,105 +61,8 @@ class DecisionList:
         return out
 
 
-def induce(X, mask, y, w, actions, usable, wait, max_entries=24, alpha=1.0, min_uses=None, per_fight=None, quantiles=24,
-           kinds=None, cap=30_000, seed=5):
-    """Greedy sequential covering for an ordered decision list with APL semantics.
-
-    X: features (n, D); mask: legal actions (n, A); y: the network's action; w: weight per decision; actions: candidate
-    action indices; usable: feature indices with an APL counterpart; kinds[f]: "bool" or numeric. Splits are searched on
-    at most cap decisions per action (sampled), then applied to all."""
-    rng = np.random.default_rng(seed)
-    n = len(X)
-    open_ = np.ones(n, bool)
-    entries = []
-    cands = {}
-    for f in usable:
-        if kinds[f] == "bool":
-            continue
-        v = np.unique(np.quantile(X[:, f], np.linspace(0.02, 0.98, quantiles)))
-        if len(v) > 1:
-            cands[f] = v
-    must = set(a for a in actions if min_uses and per_fight is not None and per_fight.get(a, 0) >= min_uses)
-
-    def best_literal(idx, pos_w, neg_w, used):
-        """The literal maximising pos - alpha * neg over the decisions idx, with its gain; pos_w/neg_w are per idx."""
-        best_g, best_lit = -np.inf, None
-        for f in usable:
-            if f in used:
-                continue
-            x = X[idx, f]
-            if kinds[f] == "bool":
-                on = x > 0.5
-                for op, m in (("is", on), ("not", ~on)):
-                    g = pos_w[m].sum() - alpha * neg_w[m].sum()
-                    if g > best_g:
-                        best_g, best_lit = g, (f, op, 0.5)
-                continue
-            ts = cands.get(f)
-            if ts is None:
-                continue
-            L = len(ts)
-            r = np.searchsorted(ts, x, side="right")  # thresholds <= x: x >= ts[k] <=> r >= k + 1
-            l = np.searchsorted(ts, x, side="left")   # thresholds < x:  x <= ts[k] <=> l <= k
-            pr, nr = np.bincount(r, weights=pos_w, minlength=L + 1), np.bincount(r, weights=neg_w, minlength=L + 1)
-            pl, nl = np.bincount(l, weights=pos_w, minlength=L + 1), np.bincount(l, weights=neg_w, minlength=L + 1)
-            pge = np.cumsum(pr[::-1])[::-1][1:L + 1]
-            nge = np.cumsum(nr[::-1])[::-1][1:L + 1]
-            ple, nle = np.cumsum(pl)[:L], np.cumsum(nl)[:L]
-            gge, gle = pge - alpha * nge, ple - alpha * nle
-            k1, k2 = int(np.argmax(gge)), int(np.argmax(gle))
-            if gge[k1] > best_g:
-                best_g, best_lit = float(gge[k1]), (f, ">=", float(ts[k1]))
-            if gle[k2] > best_g:
-                best_g, best_lit = float(gle[k2]), (f, "<=", float(ts[k2]))
-        return best_g, best_lit
-
-    def entry_for(a):
-        """The best condition (up to two literals) for action a among the open decisions, and its gain."""
-        R = np.nonzero(open_ & (mask[:, a] == 1))[0]
-        if len(R) == 0:
-            return None
-        if len(R) > cap:
-            R = rng.choice(R, cap, replace=False)
-        is_a = y[R] == a
-        pos_w, neg_w = np.where(is_a, w[R], 0.0), np.where(~is_a, w[R], 0.0)
-        P = pos_w.sum()
-        if P <= 0:
-            return None
-        conds, idx, pw, nw = [], R, pos_w, neg_w
-        gain = P - alpha * neg_w.sum()
-        for _ in range(2):
-            g, lit = best_literal(idx, pw, nw, {c[0] for c in conds})
-            if lit is None or g <= gain + 0.01 * P:
-                break
-            keep = DecisionList.holds(X[idx], [lit])
-            conds.append(lit)
-            idx, pw, nw, gain = idx[keep], pw[keep], nw[keep], g
-        return gain / len(R) * (open_ & (mask[:, a] == 1)).sum(), conds
-
-    for _ in range(max_entries):
-        options = []
-        for a in actions:
-            r = entry_for(a)
-            if r is not None:
-                options.append((r[0], a, r[1]))
-        if not options:
-            break
-        options.sort(key=lambda o: -o[0])
-        gain, a, conds = options[0]
-        if gain <= 0:
-            forced = [o for o in options if o[1] in must]
-            if not forced:
-                break
-            gain, a, conds = forced[0]
-        entries.append((a, conds))
-        must.discard(a)
-        open_ &= ~(mask[:, a].astype(bool) & DecisionList.holds(X, conds))
-    return DecisionList(entries, wait)
-
-
 def induce_residual(X, mask, logits, base, actions, usable, wait, max_entries=16, kinds=None, cap=40_000, quantiles=24,
-                    min_gain_frac=0.002, seed=5):
+                    min_gain_frac=0.002, seed=5, literals=2):
     """Overrides on top of a base policy (the published APL): each entry fires where its action is legal and its
     condition holds, before the base list. The value of firing action a in a state is the network's preference for a
     over the base's choice there (logit difference, clipped to +-5): positive where the network would rather do a,
@@ -222,15 +125,17 @@ def induce_residual(X, mask, logits, base, actions, usable, wait, max_entries=16
                 continue
             conds, idx, b = [], R, bval
             gain = float(b.sum())
-            for _lit in range(2):
+            for _lit in range(literals):
                 g, lit = best_literal(idx, b, {c[0] for c in conds})
-                if lit is None or g <= gain + 1e-9:
+                # The first literal is taken whenever it gains at all (an unconditional override would replace the
+                # base outright); a second one only if it adds to the first.
+                if lit is None or g <= 0 or (conds and g <= gain + 1e-9):
                     break
                 keep = DecisionList.holds(X[idx], [lit])
                 conds.append(lit)
                 idx, b, gain = idx[keep], b[keep], g
             if not conds:
-                continue  # an unconditional override would replace the base outright
+                continue
             gain *= scale
             if best is None or gain > best[0]:
                 best = (gain, a, conds)
@@ -242,9 +147,10 @@ def induce_residual(X, mask, logits, base, actions, usable, wait, max_entries=16
     return DecisionList(entries, wait)
 
 
-def compile_apl(dl, spec, base_rotation=None):
+def compile_apl(dl, spec, base_rotation=None, removed=()):
     """Decision list -> APLRotation JSON, each threshold converted to the APL value's units; with base_rotation, the
-    entries go above its priority list. A wait entry becomes a 50 ms APL wait (the engine's poll)."""
+    entries go above its priority list, less the entries at the indices in removed. A wait entry becomes a 50 ms APL
+    wait (the engine's poll)."""
     fa, aa = spec["featureAPL"], spec["actionAPL"]
     T = spec["talents"]
     items = []
@@ -273,9 +179,23 @@ def compile_apl(dl, spec, base_rotation=None):
     if base_rotation is not None:
         # Everything else in the base (prepull actions above all) stays as it is.
         out = json.loads(json.dumps(base_rotation))
-        out["priorityList"] = items + base_rotation["priorityList"]
+        out["priorityList"] = items + [it for i, it in enumerate(base_rotation["priorityList"]) if i not in removed]
         return out
     return {"type": "TypeAPL", "priorityList": items}
+
+
+def describe_item(item, spec):
+    """A published APL entry in words: the agent action it performs, if any, and whether it has a condition."""
+    act = dict(item.get("action", {}))
+    cond = act.pop("condition", None)
+    name = None
+    for k, raw in enumerate(spec["actionAPL"]):
+        if raw is not None and raw == act:
+            name = spec["actionNames"][spec["talents"] + k]
+            break
+    if name is None:
+        name = json.dumps(act, separators=(",", ":"))[:160]
+    return name + (" (conditional)" if cond else "")
 
 
 def describe(dl, spec):
@@ -300,17 +220,18 @@ def main():
     ap.add_argument("--race", required=True)
     ap.add_argument("--model", type=Path, required=True)
     ap.add_argument("--talents", default="", help="talents (default: the published ones)")
-    ap.add_argument("--mode", choices=["residual", "scratch"], default="residual",
-                    help="residual: overrides above the published APL; scratch: a whole new list")
-    ap.add_argument("--fights", type=int, default=256, help="fights per data round")
-    ap.add_argument("--rounds", type=int, default=3, help="data rounds (1 = the network only; more add DAgger rounds)")
+    ap.add_argument("--iterations", type=int, default=3, help="induce-and-select iterations (stops early when nothing is kept)")
+    ap.add_argument("--decisions", type=int, default=400_000, help="decisions logged per iteration, half from each player")
+    ap.add_argument("--min-fights", type=int, default=128)
+    ap.add_argument("--max-fights", type=int, default=4096)
     ap.add_argument("--max-entries", type=int, default=16)
-    ap.add_argument("--min-gain", type=float, default=0.0005, help="residual mode: stop proposing below this share of the total preference")
-    ap.add_argument("--alpha", type=float, default=1.0, help="scratch mode: cost of firing where the network did not")
-    ap.add_argument("--min-uses", type=float, default=0.5, help="scratch mode: actions used this often a fight get an entry")
+    ap.add_argument("--literals", type=int, default=2, help="thresholds per override at most")
+    ap.add_argument("--min-gain", type=float, default=0.0005, help="stop proposing below this share of the total preference")
+    ap.add_argument("--promote", type=float, default=0.5, help="actions the network takes this much more a fight than the APL are offered unconditionally")
     ap.add_argument("--samples", type=int, default=400_000, help="decisions kept for induction")
+    ap.add_argument("--select-decisions", type=int, default=1_000_000, help="decisions per selection test (sets its paired fights)")
+    ap.add_argument("--accept-se", type=float, default=2.0, help="a selection edit must gain this many standard errors")
     ap.add_argument("--eval-fights", type=int, default=2048)
-    ap.add_argument("--tune-rounds", type=int, default=1)
     ap.add_argument("--threads", type=int, default=24)
     ap.add_argument("--profiles", type=Path, default=Path(__file__).resolve().parents[2] / "artifacts/modelled_gear/forever_input_profiles.json")
     ap.add_argument("--out", type=Path, required=True)
@@ -331,22 +252,18 @@ def main():
     waits = {T + k for k in range(K) if names[T + k].startswith("wait")}
     kinds = [m["kind"] if m else None for m in spec["featureAPL"]]
     usable = [f for f, m in enumerate(spec["featureAPL"]) if m is not None]
-    base_rotation = None
-    if a.mode == "residual":
-        rows = json.load(open(a.profiles))["Results"]
-        base_rotation = next(r["BaselinePlayer"]["rotation"] for r in rows if r["Key"] == a.build and r["Race"] == a.race)
+    published = next(r["BaselinePlayer"] for r in json.load(open(a.profiles))["Results"] if r["Key"] == a.build and r["Race"] == a.race)
     ck = torch.load(a.model, map_location="cpu", weights_only=False)
     if ck["spec"]["obsDim"] != spec["obsDim"] or ck["spec"]["actDim"] != spec["actDim"]:
         raise SystemExit("model spaces differ from this environment (same build, race and settings?)")
     net = Net(spec["obsDim"], spec["actDim"], ck["net"]["trunk.0.weight"].shape[0]).to(dev)
     net.load_state_dict(ck["net"])
     net.eval()
-    residual = a.mode == "residual"
 
-    def rollout(dl, fights, seed0, keep=True):
-        """Fights played by the network (dl None) or the list (over the published APL when residual); every decision
-        labelled with the network's logits and the published APL's choice."""
-        ev = VecEnv(cfg, fights)
+    def rollout(teacher, fights, seed0, network=True, keep=True):
+        """Fights played by the network (or by the teacher APL), every decision labelled with the network's logits
+        and the teacher's choice."""
+        ev = VecEnv({**cfg, "teacherRotation": json.dumps(teacher)}, fights)
         obs, mask, tch = ev.restart(seed0 + np.arange(fights, dtype=np.int64))
         dps = np.full(fights, np.nan)
         Xs, Ms, Ls, Ts = [], [], [], []
@@ -355,10 +272,7 @@ def main():
             with torch.no_grad():
                 logits, _ = net(torch.from_numpy(obs).to(dev), torch.from_numpy(mask).to(dev).bool())
             lg = logits.float().cpu().numpy()
-            if dl is None:
-                act = lg.argmax(-1).astype(np.int32)
-            else:
-                act = dl.act(obs, mask, tch if residual else None)
+            act = lg.argmax(-1).astype(np.int32) if network else tch.astype(np.int32)
             if keep:
                 Xs.append(obs[live].copy()); Ms.append(mask[live].copy()); Ls.append(np.maximum(lg[live], -1e4)); Ts.append(tch[live].astype(np.int32))
             obs, mask, tch, _, done, info = ev.step(act)
@@ -369,9 +283,11 @@ def main():
             return dps
         return np.concatenate(Xs), np.concatenate(Ms), np.concatenate(Ls), np.concatenate(Ts), dps
 
-    def apl_dps(rotation, fights, seed0):
-        """Paired fights of an APL (the published one when rotation is None) in the plain engine path."""
+    def apl_dps(rotation, fights, seed0, talents=None):
+        """Paired fights of an APL (the published one when rotation is None) in the engine's own APL path."""
         c = {**cfg, "fullChoices": False}
+        if talents is not None:
+            c["talents"] = talents
         if rotation is not None:
             c["rotation"] = json.dumps(rotation)
         ev = VecEnv(c, fights)
@@ -384,99 +300,154 @@ def main():
         ev.close()
         return dps
 
-    def build(Xa, Ma, La, Ta, per_fight):
-        Ya = La.argmax(1).astype(np.int32)
-        Ya = np.where(np.isin(Ya, list(waits)), wait, Ya)
-        if residual:
-            Lf = La.astype(np.float32)
-            # Every wait variant counts as the plain wait, whose value is the best of them.
-            wv = [w_ for w_ in waits]
-            Lf[:, wait] = Lf[:, wv].max(1)
-            Tb = np.where(np.isin(Ta, list(waits)), wait, Ta)
-            cand = sorted({int(v) for v in range(T, T + K)} - (waits - {wait}))
-            return induce_residual(Xa, Ma, Lf, Tb, cand, usable, wait, a.max_entries, kinds=kinds, min_gain_frac=a.min_gain)
-        srt = np.sort(La.astype(np.float32), -1)
-        weight = 0.1 + np.clip(srt[:, -1] - srt[:, -2], 0, 5)
-        cand = sorted({int(v) for v in np.unique(Ya)} - {wait})
-        return induce(Xa, Ma, Ya, weight, cand, usable, wait, a.max_entries, a.alpha, a.min_uses, per_fight, kinds=kinds)
-
-    t0 = time.time()
-    data = None
-    dl = None
-    log = []
-    per_fight = {}
-    for rnd in range(a.rounds):
-        X, M, L, Tch, dps = rollout(dl, a.fights, 100_000 + 10_000 * rnd)
-        if dl is None:
-            u, c = np.unique(L.argmax(1), return_counts=True)
-            per_fight = {int(k): v / a.fights for k, v in zip(u, c)}
-        player = "network" if dl is None else "list"
-        log.append({"round": rnd, "player": player, "dps": float(np.mean(dps)), "decisions": int(len(X))})
-        print(f"round {rnd}: {player} {np.mean(dps):.1f} DPS over {a.fights} fights, {len(X):,} decisions ({time.time() - t0:.0f}s)", flush=True)
-        data = (X, M, L, Tch) if data is None else tuple(np.concatenate([d, n]) for d, n in zip(data, (X, M, L, Tch)))
-        Xa, Ma, La, Ta = data
-        if len(Xa) > a.samples:
-            keep = rng.choice(len(Xa), a.samples, replace=False)
-            Xa, Ma, La, Ta = Xa[keep], Ma[keep], La[keep], Ta[keep]
-        dl = build(Xa, Ma, La, Ta, per_fight)
-        print(f"   {len(dl.entries)} entries", flush=True)
-        log[-1]["entries"] = len(dl.entries)
-
     def paired(x, y):
         d = x - y
         return float(d.mean()), float(d.std() / math.sqrt(len(d)))
 
-    # Verify: the compiled APL in the engine, the same list evaluated here, the published APL and the network.
-    F, S = a.eval_fights, 7_000_000
-    apl = compile_apl(dl, spec, base_rotation)
-    pub = apl_dps(None, F, S)
-    syn = apl_dps(apl, F, S)
-    lst = rollout(dl, F, S, keep=False)
-    net_dps = rollout(None, F, S, keep=False)
-    print(f"published {pub.mean():.1f}; compiled APL {syn.mean():.1f} ({paired(syn, pub)[0]:+.2f} ± {paired(syn, pub)[1]:.2f}); "
-          f"same list here {lst.mean():.1f}; network {net_dps.mean():.1f} ({paired(net_dps, pub)[0]:+.2f})", flush=True)
+    def fights_for(decisions, per_fight):
+        return int(min(a.max_fights, max(a.min_fights, math.ceil(decisions / per_fight))))
 
-    # Selection on paired fights: the induced entries in order, each kept only if it raises DPS; then thresholds.
-    TF, TS = max(512, F // 2), 9_000_000
-    if residual:
-        best_dl = DecisionList([], wait)
-        cur = apl_dps(base_rotation, TF, TS).mean()
-        for e in dl.entries:
-            trial = DecisionList(best_dl.entries + [e], wait)
-            m = apl_dps(compile_apl(trial, spec, base_rotation), TF, TS).mean()
-            if m > cur + 0.3:
-                best_dl, cur = trial, m
-    else:
-        best_dl = dl
-        cur = apl_dps(compile_apl(best_dl, spec, base_rotation), TF, TS).mean()
-    for _ in range(a.tune_rounds):
-        for e in range(len(best_dl.entries)):
-            act_, conds = best_dl.entries[e]
-            for j in range(len(conds)):
-                f, op, t = conds[j]
-                if op not in (">=", "<="):
+    t0 = time.time()
+    base = json.loads(json.dumps(published["rotation"]))
+    words = {}  # compiled override JSON -> its description
+    edits, log = [], []
+    per_dec = None
+    TS = 9_000_000
+    for it in range(a.iterations):
+        # 1. Data: the network's states and the APL's own, both labelled by the network against the APL's choice.
+        if per_dec is None:
+            X, M, L, Tch, d = rollout(base, a.min_fights, 100_000)
+            per_dec = len(X) / a.min_fights
+            n = fights_for(a.decisions / 2, per_dec) - a.min_fights
+            if n > 0:
+                parts = [(X, M, L, Tch, d), rollout(base, n, 100_000 + a.min_fights)]
+                X, M, L, Tch, d = (np.concatenate(z) for z in zip(*parts))
+            TF = fights_for(a.select_decisions, per_dec)
+        else:
+            X, M, L, Tch, d = rollout(base, fights_for(a.decisions / 2, per_dec), 100_000 + 50_000 * it)
+        net_dps, nf = float(np.mean(d)), len(d)
+        X2, M2, L2, T2, d2 = rollout(base, fights_for(a.decisions / 2, per_dec), 1_000_000 + 50_000 * it, network=False)
+        # Actions the network takes far more often than the APL would in the same states.
+        net_n = np.bincount(L.argmax(1), minlength=T + K)[T:] / nf
+        apl_n = np.bincount(Tch.astype(np.int64), minlength=T + K)[T:] / nf
+        promotions = [(T + int(k), []) for k in np.argsort(-(net_n - apl_n))
+                      if net_n[k] - apl_n[k] >= a.promote and T + k != wait and T + k not in waits]
+        # 2. Overrides on top of the current APL, induced on the network's states, the APL's and both.
+        cand = sorted({int(v) for v in range(T, T + K)} - (waits - {wait}))
+        proposals = []
+        views = ((X, M, L, Tch), (X2, M2, L2, T2), tuple(np.concatenate([u, v]) for u, v in zip((X, M, L, Tch), (X2, M2, L2, T2))))
+        for Xa, Ma, La, Ta in views:
+            if len(Xa) > a.samples:
+                keep = rng.choice(len(Xa), a.samples, replace=False)
+                Xa, Ma, La, Ta = Xa[keep], Ma[keep], La[keep], Ta[keep]
+            Lf = La.astype(np.float32)
+            Lf[:, wait] = Lf[:, sorted(waits)].max(1)  # every wait variant counts as the plain wait, worth the best of them
+            Tb = np.where(np.isin(Ta, list(waits)), wait, Ta)
+            for e in induce_residual(Xa, Ma, Lf, Tb, cand, usable, wait, a.max_entries, kinds=kinds, min_gain_frac=a.min_gain,
+                                     literals=a.literals).entries:
+                if e not in proposals:
+                    proposals.append(e)
+        dl = DecisionList(proposals, wait)
+        print(f"iteration {it}: network {net_dps:.1f} and APL {np.mean(d2):.1f} DPS (teacher path), {len(X) + len(X2):,} decisions, "
+              f"{len(dl.entries)} overrides proposed, {len(promotions)} promotions ({time.time() - t0:.0f}s)", flush=True)
+        for line in describe(dl, spec).splitlines():
+            print("      " + line, flush=True)
+
+        # 3. Selection in the simulator.
+        items = base["priorityList"]
+        removed, chosen = set(), []
+
+        def assemble(entries, rem):
+            rot = compile_apl(DecisionList(entries, wait), spec, base, rem)
+            for e, item in zip(entries, rot["priorityList"]):
+                words[json.dumps(item, sort_keys=True)] = describe(DecisionList([e], wait), spec).split(". ", 1)[1]
+            return rot
+
+        cur = apl_dps(base, TF, TS)
+        start = cur.mean()
+
+        def better(rot):
+            dd = apl_dps(rot, TF, TS)
+            g, se = paired(dd, cur)
+            return g > max(0.2, a.accept_se * se), dd, g, se
+
+        def word(item):
+            return words.get(json.dumps(item, sort_keys=True)) or describe_item(item, spec)
+
+        for pass_ in range(2):
+            changed = False
+            for i in range(len(items)):
+                if i in removed:
                     continue
+                ok, dd, g, se = better(assemble(chosen, removed | {i}))
+                if ok:
+                    removed.add(i)
+                    cur, changed = dd, True
+                    edits.append({"iteration": it, "edit": "remove", "entry": word(items[i]), "gain": g, "se": se})
+                    print(f"   remove {word(items[i])}: {g:+.2f} ± {se:.2f}", flush=True)
+            # Best first: every proposal on its own, then added in order of its own gain while each still helps.
+            order = []
+            for e in (dl.entries + promotions) if pass_ == 0 else []:
+                ok, dd, g, se = better(assemble(chosen + [e], removed))
+                if ok:
+                    order.append((g, e))
+            for _, e in sorted(order, key=lambda x: -x[0]):
+                ok, dd, g, se = better(assemble(chosen + [e], removed))
+                if ok:
+                    chosen.append(e)
+                    cur, changed = dd, True
+                    edits.append({"iteration": it, "edit": "add", "entry": describe(DecisionList([e], wait), spec).split(". ", 1)[1],
+                                  "gain": g, "se": se})
+                    print(f"   add {edits[-1]['entry']}: {g:+.2f} ± {se:.2f}", flush=True)
+            if not changed:
+                break
+        for e in range(len(chosen)):
+            act_, conds = chosen[e]
+            for j in range(len(conds)):
                 for factor in (0.85, 1.15):
+                    f, op, t = conds[j]
+                    if op not in (">=", "<="):
+                        continue
                     c2 = list(conds)
                     c2[j] = (f, op, t * factor)
-                    trial = list(best_dl.entries)
-                    trial[e] = (act_, c2)
-                    cdl = DecisionList(trial, wait)
-                    m = apl_dps(compile_apl(cdl, spec, base_rotation), TF, TS).mean()
-                    if m > cur + 0.3:
-                        best_dl, cur, conds = cdl, m, c2
-    best_apl = compile_apl(best_dl, spec, base_rotation)
-    tuned = apl_dps(best_apl, F, S)
-    result = {"build": a.build, "race": a.race, "mode": a.mode, "fights": F, "published": float(pub.mean()),
-              "compiled_untuned": float(syn.mean()), "list_untuned_in_env": float(lst.mean()),
+                    trial = chosen[:e] + [(act_, c2)] + chosen[e + 1:]
+                    ok, dd, g, se = better(assemble(trial, removed))
+                    if ok:
+                        chosen, cur, conds = trial, dd, c2
+        log.append({"iteration": it, "network_teacher_path": net_dps, "apl_teacher_path": float(np.mean(d2)),
+                    "decisions": int(len(X) + len(X2)), "proposed": len(dl.entries), "promotions": len(promotions),
+                    "kept": len(chosen), "removed": len(removed), "select_fights": TF,
+                    "gain": float(cur.mean() - start)})
+        if not chosen and not removed:
+            break
+        base = assemble(chosen, removed)
+
+    # Verify on fresh fights: the published APL, the result, the network; and the published setup (published talents).
+    F, S = a.eval_fights, 7_000_000
+    pub = apl_dps(None, F, S)
+    tuned = apl_dps(base, F, S)
+    net_dps = rollout(published["rotation"], F, S, keep=False)
+    ref = pub if (a.talents or published["talentsString"]) == published["talentsString"] else \
+        apl_dps(None, F, S, talents=published["talentsString"])
+    # The final APL against the published one: entries added on top and published entries dropped.
+    pub_items = [json.dumps(x, sort_keys=True) for x in published["rotation"]["priorityList"]]
+    fin_items = [json.dumps(x, sort_keys=True) for x in base["priorityList"]]
+    added = [words.get(x) or describe_item(json.loads(x), spec) for x in fin_items if x not in pub_items]
+    dropped = [describe_item(json.loads(x), spec) for x in pub_items if x not in fin_items]
+    result = {"build": a.build, "race": a.race, "fights": F, "published": float(pub.mean()),
               "synthesised": float(tuned.mean()), "synthesised_vs_published": paired(tuned, pub),
               "network": float(net_dps.mean()), "network_vs_published": paired(net_dps, pub),
-              "entries": len(best_dl.entries), "rounds": log, "minutes": round((time.time() - t0) / 60, 1)}
-    (a.out / "apl.json").write_text(json.dumps(best_apl, indent=2) + "\n")
-    (a.out / "rules.txt").write_text(describe(best_dl, spec) + "\n")
+              "talents": a.talents or published["talentsString"], "reference": float(ref.mean()),
+              "synthesised_vs_reference": paired(tuned, ref), "network_vs_reference": paired(net_dps, ref),
+              "added": added, "removed": dropped, "entries": len(added), "edits": edits, "iterations": log,
+              "minutes": round((time.time() - t0) / 60, 1)}
+    (a.out / "apl.json").write_text(json.dumps(base, indent=2) + "\n")
+    (a.out / "rules.txt").write_text("".join(f"{k}. {x}\n" for k, x in enumerate(added, 1))
+                                     + "".join(f"removed: {x}\n" for x in dropped))
     (a.out / "report.json").write_text(json.dumps(result, indent=1) + "\n")
-    print(describe(best_dl, spec))
-    print(json.dumps(result, indent=1), flush=True)
+    print(f"published {pub.mean():.1f}; APL {tuned.mean():.1f} ({result['synthesised_vs_published'][0]:+.2f} ± "
+          f"{result['synthesised_vs_published'][1]:.2f}); network {net_dps.mean():.1f} ({result['network_vs_published'][0]:+.2f}); "
+          f"{len(added)} added, {len(dropped)} removed ({result['minutes']} min)", flush=True)
 
 
 if __name__ == "__main__":

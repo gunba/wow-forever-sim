@@ -37,12 +37,19 @@ every action. The reward is damage. Built for Fire first; the environment runs e
   (`tools/forever_bench/ml_pages.py`). Resumable; `budgets.json` in the runs folder overrides budgets between builds.
 - `talent_screen.py`: every legal one-point talent move from a base build, played by an APL or a
   model; the leaders are confirmed on fresh fights and the base moves to the best significant change.
-- `apl_synth.py`: a learned policy turned into an APL. Overrides go above the published APL where the network
-  disagrees with it, each an action and up to two thresholds on observation features. They are chosen by the
-  network's logit preference over the APL's choice in the states they cover, with DAgger rounds so the list learns in
-  the states it reaches itself. Each threshold compiles to the APL value that reads the same quantity (the
-  environment's `featureAPL`). The result is checked on paired fights against the published APL and the network,
-  then tuned and pruned on the same paired fights.
+- `apl_synth.py`: a learned policy turned into edits to the published APL, in iterations. The environment plays the
+  current APL as its teacher (`teacherRotation`, which keeps the trained action space); the network labels its own
+  states and the APL's. Rules are induced where the network prefers another action to the APL's choice (an action and
+  up to `--literals` thresholds on observation features, each compiled to the APL value that reads the same quantity,
+  the environment's `featureAPL`), and actions the network uses far more often are offered unconditionally. The
+  simulator then keeps, on paired fights, only the removals of APL entries and the added rules that raise DPS by two
+  standard errors, and tunes the thresholds. The result is checked on fresh paired fights against the published APL
+  and the network.
+- `synth_all.py`: `apl_synth.py` for every learned build, on the learned and (when they differ) the published
+  talents, keeping the better profile; parallel jobs, resumable.
+- `learned_bench.py`: the converted profiles benched like the matrix (and the published cells with the same binary);
+  adds the network's paired gain and the profile to `artifacts/ml/<key>.json` and writes the gaining profiles for
+  `export_ui_profiles.py --learned`.
 - `compare.py`: a paired table of (build, player) rows, where a player is the published APL, another rotation file,
   or a model.
 - `explain.py`: a model against an APL on the same fights: agreement, the most common disagreements, actions per

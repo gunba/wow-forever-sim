@@ -48,6 +48,9 @@ type Config struct {
 	PollSeconds float64 `json:"pollSeconds"`
 	// Rotation replaces the published APL (the teacher and the source of the agent's actions): APLRotation JSON.
 	Rotation string `json:"rotation"`
+	// TeacherRotation replaces only the teacher, after the agent's actions are found from the published (or Rotation)
+	// APL, so the spaces stay those a trained policy expects. Its entries for actions the agent lacks count as waits.
+	TeacherRotation string `json:"teacherRotation"`
 }
 
 func (c *Config) defaults() {
@@ -188,6 +191,14 @@ func NewSpec(cfg Config) (*Spec, error) {
 	}
 	s.buildCandidate()
 	s.layout()
+	if cfg.TeacherRotation != "" {
+		rot := &proto.APLRotation{}
+		if err := protojson.Unmarshal([]byte(cfg.TeacherRotation), rot); err != nil {
+			return nil, fmt.Errorf("teacherRotation: %w", err)
+		}
+		s.teacher = rot
+		s.candidate = s.assemble(rot, false)
+	}
 	return s, nil
 }
 
@@ -404,10 +415,17 @@ func (s *Spec) discover() error {
 	return nil
 }
 
-// buildCandidate makes the rotation every environment runs: the automatic cooldown entry, the teacher's own entries
-// (they only say what the published rotation would do), then one unconditioned Cast Spell per agent spell.
+// buildCandidate makes the rotation every environment runs (see assemble) and settles the agent's actions.
 func (s *Spec) buildCandidate() {
-	c := &proto.APLRotation{Type: proto.APLRotation_TypeAPL, PrepullActions: s.teacher.PrepullActions}
+	s.candidate = s.assemble(s.teacher, true)
+}
+
+// assemble makes the rotation every environment runs: the automatic cooldown entry, the teacher's own entries (they
+// only say what the teacher would do), then one unconditioned entry per agent action. With grow, teacher actions the
+// agent lacks become new agent actions (macros); without it the action set is fixed and such entries count as waits.
+func (s *Spec) assemble(teacher *proto.APLRotation, grow bool) *proto.APLRotation {
+	s.configKind, s.configAgent = nil, nil
+	c := &proto.APLRotation{Type: proto.APLRotation_TypeAPL, PrepullActions: teacher.PrepullActions}
 	add := func(item *proto.APLListItem, kind, agent int) {
 		c.PriorityList = append(c.PriorityList, item)
 		s.configKind = append(s.configKind, kind)
@@ -415,7 +433,7 @@ func (s *Spec) buildCandidate() {
 	}
 	add(&proto.APLListItem{Action: &proto.APLAction{Action: &proto.APLAction_AutocastOtherCooldowns{AutocastOtherCooldowns: &proto.APLActionAutocastOtherCooldowns{}}}}, kindAuto, -1)
 	nSpells := len(s.agentSpells)
-	for _, item := range s.teacher.PriorityList {
+	for _, item := range teacher.PriorityList {
 		if item.Hide || item.Action.GetAutocastOtherCooldowns() != nil {
 			continue
 		}
@@ -437,7 +455,7 @@ func (s *Spec) buildCandidate() {
 					agent = nSpells + k
 				}
 			}
-			if agent < 0 {
+			if agent < 0 && grow {
 				s.macros = append(s.macros, macro)
 				s.macroNames = append(s.macroNames, macroName(macro, s))
 				agent = nSpells + len(s.macros) - 1
@@ -448,7 +466,7 @@ func (s *Spec) buildCandidate() {
 	for k, id := range s.agentSpells {
 		add(&proto.APLListItem{Action: &proto.APLAction{Action: &proto.APLAction_CastSpell{CastSpell: &proto.APLActionCastSpell{SpellId: id.ToProto()}}}}, kindAgent, k)
 	}
-	if s.Cfg.FullChoices {
+	if grow && s.Cfg.FullChoices {
 		ids := make([]core.ActionID, 0, len(s.queueAuras))
 		for id := range s.queueAuras {
 			ids = append(ids, id)
@@ -463,7 +481,7 @@ func (s *Spec) buildCandidate() {
 	for k, m := range s.macros {
 		add(&proto.APLListItem{Action: m}, kindAgent, nSpells+k)
 	}
-	s.candidate = c
+	return c
 }
 
 func macroName(m *proto.APLAction, s *Spec) string {
@@ -581,7 +599,10 @@ func (s *Spec) mapToAPL() {
 			val(&proto.APLValue{Value: &proto.APLValue_SpellCanCast{SpellCanCast: &proto.APLValueSpellCanCast{SpellId: sid}}}, "bool", 1),
 			val(&proto.APLValue{Value: &proto.APLValue_SpellTimeToReady{SpellTimeToReady: &proto.APLValueSpellTimeToReady{SpellId: sid}}}, "time", 30),
 			val(&proto.APLValue{Value: &proto.APLValue_SpellCastTime{SpellCastTime: &proto.APLValueSpellCastTime{SpellId: sid}}}, "time", 3.5),
-			nil) // cost over current mana: no APL value
+			// Cost over current mana, as observed (0 without a mana bar; there the feature is constant and unused).
+			val(&proto.APLValue{Value: &proto.APLValue_Math{Math: &proto.APLValueMath{Op: proto.APLValueMath_OpDiv,
+				Lhs: &proto.APLValue{Value: &proto.APLValue_SpellCurrentCost{SpellCurrentCost: &proto.APLValueSpellCurrentCost{SpellId: sid}}},
+				Rhs: &proto.APLValue{Value: &proto.APLValue_CurrentMana{CurrentMana: &proto.APLValueCurrentMana{}}}}}}, "num", 1))
 	}
 	for range s.macros {
 		s.featureAPL = append(s.featureAPL, nil)
