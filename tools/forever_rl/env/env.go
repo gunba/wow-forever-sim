@@ -1,9 +1,12 @@
 package env
 
 import (
+	"fmt"
 	"iter"
 	"math"
 	"math/rand"
+	"os"
+	"runtime/debug"
 	"sort"
 	"time"
 
@@ -119,6 +122,8 @@ func (e *Env) run(yield func(struct{}) bool) {
 	defer func() {
 		if r := recover(); r != nil {
 			if _, ok := r.(stopSignal); !ok {
+				// The caller re-raises this without the coroutine's stack; print where it started.
+				fmt.Fprintf(os.Stderr, "environment %d (talents %s): panic: %v\n%s\n", e.id, e.talents, r, debug.Stack())
 				panic(r)
 			}
 		}

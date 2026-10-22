@@ -723,18 +723,16 @@ func StoneskinTotemAura(unit *Unit, points int32) *Aura {
 	meleeDamageReduction *= 1 + .1*float64(points)
 	meleeDamageReduction = math.Floor(meleeDamageReduction)
 
+	// The raid buff makes this permanent (MakePermanent); a Shaman's own totem activates it when cast.
 	return unit.GetOrRegisterAura(Aura{
 		Label:    "Stoneskin",
 		ActionID: ActionID{SpellID: 10408},
 		Duration: NeverExpires,
-		OnReset: func(aura *Aura, sim *Simulation) {
-			aura.Activate(sim)
-		},
 		OnGain: func(aura *Aura, sim *Simulation) {
 			aura.Unit.PseudoStats.BonusDamageTakenAfterModifiers[DefenseTypeMelee] += meleeDamageReduction
 		},
 		OnExpire: func(aura *Aura, sim *Simulation) {
-			aura.Unit.PseudoStats.BonusDamageTakenAfterModifiers[DefenseTypeMelee] += meleeDamageReduction
+			aura.Unit.PseudoStats.BonusDamageTakenAfterModifiers[DefenseTypeMelee] -= meleeDamageReduction
 		},
 	})
 }

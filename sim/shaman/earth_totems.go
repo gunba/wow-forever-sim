@@ -61,9 +61,11 @@ var StoneskinTotemLevel = [StoneskinTotemRanks + 1]int{0, 4, 14, 24, 34, 44, 54}
 
 func (shaman *Shaman) registerStoneskinTotemSpell() {
 	shaman.StoneskinTotem = make([]*core.Spell, StoneskinTotemRanks+1)
+	// Registered with the spells: an aura cannot be added once the fight's environment is finalized.
+	buffAura := core.StoneskinTotemAura(&shaman.Unit, shaman.Talents.GuardianTotems)
 
 	for rank := 1; rank <= StoneskinTotemRanks; rank++ {
-		config := shaman.newStoneskinTotemSpellConfig(rank)
+		config := shaman.newStoneskinTotemSpellConfig(rank, buffAura)
 
 		if config.RequiredLevel <= int(shaman.Level) {
 			shaman.StoneskinTotem[rank] = shaman.RegisterSpell(config)
@@ -76,7 +78,7 @@ func (shaman *Shaman) registerStoneskinTotemSpell() {
 	)
 }
 
-func (shaman *Shaman) newStoneskinTotemSpellConfig(rank int) core.SpellConfig {
+func (shaman *Shaman) newStoneskinTotemSpellConfig(rank int, buffAura *core.Aura) core.SpellConfig {
 	spellId := StoneskinTotemSpellId[rank]
 	manaCost := StoneskinTotemManaCost[rank]
 	level := StoneskinTotemLevel[rank]
@@ -90,7 +92,7 @@ func (shaman *Shaman) newStoneskinTotemSpellConfig(rank int) core.SpellConfig {
 		shaman.TotemExpirations[EarthTotem] = sim.CurrentTime + duration
 		shaman.ActiveTotems[EarthTotem] = spell
 
-		core.StoneskinTotemAura(&shaman.Unit, shaman.Talents.GuardianTotems).Activate(sim)
+		buffAura.Activate(sim)
 	}
 	return spell
 }
