@@ -198,6 +198,8 @@ func (druid *Druid) registerCatFormSpell() {
 	druid.CatForm = druid.RegisterSpell(Any, core.SpellConfig{
 		ActionID: actionID,
 		Flags:    core.SpellFlagNoOnCastComplete | core.SpellFlagAPL,
+		// A Druid set up without an energy bar (a caster) has no energy model to shift into.
+		ExtraCastCondition: func(_ *core.Simulation, _ *core.Unit) bool { return druid.HasEnergyBar() },
 
 		ManaCost: core.ManaCostOptions{
 			BaseCost:   0.55,
@@ -410,6 +412,8 @@ func (druid *Druid) registerBearFormSpell() {
 	druid.BearForm = druid.RegisterSpell(Any, core.SpellConfig{
 		ActionID: actionID,
 		Flags:    core.SpellFlagNoOnCastComplete | core.SpellFlagAPL,
+		// A Druid set up without a rage bar (a caster) has no rage model to shift into.
+		ExtraCastCondition: func(_ *core.Simulation, _ *core.Unit) bool { return druid.HasRageBar() },
 
 		ManaCost: core.ManaCostOptions{
 			BaseCost:   0.55,

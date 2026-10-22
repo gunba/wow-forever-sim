@@ -427,7 +427,16 @@ func (ec *EnergyCost) SpendCost(sim *Simulation, spell *Spell) {
 }
 func (ec *EnergyCost) IssueRefund(sim *Simulation, spell *Spell) {
 	if ec.Refund > 0 {
-		spell.Unit.AddEnergy(sim, ec.Refund*spell.CurCast.Cost, ec.RefundMetrics)
+		metrics := ec.RefundMetrics
+		if metrics == nil {
+			// The energy bar came after the spell was registered (a caster Druid's cat abilities, used from Cat
+			// Form): book the refund on the bar's refund metrics, or the spell's own energy.
+			metrics = spell.Unit.EnergyRefundMetrics
+			if metrics == nil {
+				metrics = ec.ResourceMetrics
+			}
+		}
+		spell.Unit.AddEnergy(sim, ec.Refund*spell.CurCast.Cost, metrics)
 	}
 }
 
