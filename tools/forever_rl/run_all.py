@@ -69,7 +69,15 @@ def main():
     if a.only:
         keys = [k for k in keys if k in a.only.split(",")]
     progress = (a.runs / "progress.jsonl").open("a")
-    for key in keys:
+    # A second pass retries any build whose first attempt failed (e.g. killed for memory), from scratch.
+    for key in keys + [None] + keys:
+        if key is None:
+            for k in keys:
+                run = a.runs / k
+                if not (a.out / f"{k}.json").exists() and run.exists() and not (run / "summary.json").exists():
+                    import shutil
+                    shutil.rmtree(run)
+            continue
         row = best[key]
         report = a.out / f"{key}.json"
         if report.exists():

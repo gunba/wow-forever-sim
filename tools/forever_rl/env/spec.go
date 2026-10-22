@@ -11,6 +11,7 @@ import (
 	"sort"
 	"strings"
 	"sync"
+	"time"
 
 	"github.com/wowsims/classic/sim"
 	"github.com/wowsims/classic/sim/core"
@@ -78,6 +79,13 @@ type auraKey struct {
 	Label  string
 }
 
+// auraMeta is what an APL needs to name a tracked aura and read its observation features back in game units.
+type auraMeta struct {
+	ID        core.ActionID
+	Duration  time.Duration
+	MaxStacks int32
+}
+
 // Spec is everything the environments of one build share. It is read-only once built.
 type Spec struct {
 	Cfg         Config
@@ -98,6 +106,9 @@ type Spec struct {
 	queueAuras  map[core.ActionID]bool
 	waits       []float64 // seconds of the agent's longer waits, before the plain wait
 	auras       []auraKey
+	auraMeta    map[auraKey]auraMeta
+	featureAPL  []any // per observation feature, its APL value and scale (nil: none)
+	actionAPL   []any // per agent action, its APL action (nil: plain wait)
 	Duration    float64
 
 	T, K, ObsDim, ActDim int // talents, agent actions (spells + wait), observation and action sizes
@@ -302,6 +313,7 @@ func (s *Spec) discover() error {
 	}
 	spells := map[spellGroup]*core.Spell{}
 	ranks := map[spellGroup]int{}
+	s.auraMeta = map[auraKey]auraMeta{}
 	s.queueAuras = map[core.ActionID]bool{}
 	auras := map[auraKey]bool{}
 	// Cooldowns the published rotation leaves to Autocast Other Cooldowns stay automatic: listing them as agent
@@ -329,7 +341,11 @@ func (s *Spec) discover() error {
 		for _, unit := range []*core.Unit{&char.Unit, sim.Encounter.TargetUnits[0]} {
 			for _, aura := range unit.GetAuras() {
 				if aura.Duration > 0 && aura.Duration != core.NeverExpires && aura.Label != "" {
-					auras[auraKey{Target: unit != &char.Unit, Label: aura.Label}] = true
+					k := auraKey{Target: unit != &char.Unit, Label: aura.Label}
+					auras[k] = true
+					if _, ok := s.auraMeta[k]; !ok {
+						s.auraMeta[k] = auraMeta{ID: aura.ActionID, Duration: aura.Duration, MaxStacks: aura.MaxStacks}
+					}
 				}
 			}
 		}
@@ -508,6 +524,99 @@ func (s *Spec) layout() {
 	}
 	s.FeatureNames = f
 	s.ObsDim = len(f)
+	s.mapToAPL()
+}
+
+// mapToAPL records, for each observation feature, the APL value that reads the same quantity and the factor from
+// the feature to the value's units, and for each agent action the APL action that performs it. A learned policy's
+// conditions on features then compile to APL conditions that mean the same thing.
+func (s *Spec) mapToAPL() {
+	raw := func(m googleProto.Message) json.RawMessage {
+		b, _ := protojson.Marshal(m)
+		return b
+	}
+	val := func(v *proto.APLValue, kind string, scale float64) any {
+		return map[string]any{"value": raw(v), "kind": kind, "scale": scale}
+	}
+	self := &proto.UnitReference{Type: proto.UnitReference_Self}
+	target := &proto.UnitReference{Type: proto.UnitReference_CurrentTarget}
+	swing := func(attack proto.APLValueAutoTimeToNext_AttackType, sw proto.APLValueAutoSwingTime_SwingType) any {
+		return val(&proto.APLValue{Value: &proto.APLValue_Math{Math: &proto.APLValueMath{Op: proto.APLValueMath_OpDiv,
+			Lhs: &proto.APLValue{Value: &proto.APLValue_AutoTimeToNext{AutoTimeToNext: &proto.APLValueAutoTimeToNext{AutoType: attack}}},
+			Rhs: &proto.APLValue{Value: &proto.APLValue_AutoSwingTime{AutoSwingTime: &proto.APLValueAutoSwingTime{AutoType: sw}}}}}}, "num", 1)
+	}
+	exec := func(t proto.APLValueIsExecutePhase_ExecutePhaseThreshold) any {
+		return val(&proto.APLValue{Value: &proto.APLValue_IsExecutePhase{IsExecutePhase: &proto.APLValueIsExecutePhase{Threshold: t}}}, "bool", 1)
+	}
+	fixed := map[string]any{
+		"elapsed":      val(&proto.APLValue{Value: &proto.APLValue_CurrentTimePercent{CurrentTimePercent: &proto.APLValueCurrentTimePercent{}}}, "num", 1),
+		"remaining":    val(&proto.APLValue{Value: &proto.APLValue_RemainingTimePercent{RemainingTimePercent: &proto.APLValueRemainingTimePercent{}}}, "num", 1),
+		"remaining_s":  val(&proto.APLValue{Value: &proto.APLValue_RemainingTime{RemainingTime: &proto.APLValueRemainingTime{}}}, "time", 300),
+		"execute20":    exec(proto.APLValueIsExecutePhase_E20),
+		"execute25":    exec(proto.APLValueIsExecutePhase_E25),
+		"execute35":    exec(proto.APLValueIsExecutePhase_E35),
+		"gcd":          val(&proto.APLValue{Value: &proto.APLValue_GcdTimeToReady{GcdTimeToReady: &proto.APLValueGCDTimeToReady{}}}, "time", 1),
+		"mana_frac":    val(&proto.APLValue{Value: &proto.APLValue_CurrentManaPercent{CurrentManaPercent: &proto.APLValueCurrentManaPercent{}}}, "num", 1),
+		"mana":         val(&proto.APLValue{Value: &proto.APLValue_CurrentMana{CurrentMana: &proto.APLValueCurrentMana{}}}, "num", 10000),
+		"rage":         val(&proto.APLValue{Value: &proto.APLValue_CurrentRage{CurrentRage: &proto.APLValueCurrentRage{}}}, "num", 100),
+		"energy":       val(&proto.APLValue{Value: &proto.APLValue_CurrentEnergy{CurrentEnergy: &proto.APLValueCurrentEnergy{}}}, "num", 100),
+		"combo":        val(&proto.APLValue{Value: &proto.APLValue_CurrentComboPoints{CurrentComboPoints: &proto.APLValueCurrentComboPoints{}}}, "num", 5),
+		"mh_swing":     swing(proto.APLValueAutoTimeToNext_MainHand, proto.APLValueAutoSwingTime_MainHand),
+		"oh_swing":     swing(proto.APLValueAutoTimeToNext_OffHand, proto.APLValueAutoSwingTime_OffHand),
+		"ranged_swing": swing(proto.APLValueAutoTimeToNext_Ranged, proto.APLValueAutoSwingTime_Ranged),
+	}
+	s.featureAPL = make([]any, 0, len(s.FeatureNames))
+	for i := 0; i < s.fightOffset; i++ {
+		s.featureAPL = append(s.featureAPL, nil) // phase, talents, points spent: fixed for a fight
+	}
+	for _, name := range s.FeatureNames[s.fightOffset : s.fightOffset+17] {
+		s.featureAPL = append(s.featureAPL, fixed[name])
+	}
+	for _, id := range s.agentSpells {
+		sid := id.ToProto()
+		s.featureAPL = append(s.featureAPL,
+			val(&proto.APLValue{Value: &proto.APLValue_SpellIsKnown{SpellIsKnown: &proto.APLValueSpellIsKnown{SpellId: sid}}}, "bool", 1),
+			val(&proto.APLValue{Value: &proto.APLValue_SpellCanCast{SpellCanCast: &proto.APLValueSpellCanCast{SpellId: sid}}}, "bool", 1),
+			val(&proto.APLValue{Value: &proto.APLValue_SpellTimeToReady{SpellTimeToReady: &proto.APLValueSpellTimeToReady{SpellId: sid}}}, "time", 30),
+			val(&proto.APLValue{Value: &proto.APLValue_SpellCastTime{SpellCastTime: &proto.APLValueSpellCastTime{SpellId: sid}}}, "time", 3.5),
+			nil) // cost over current mana: no APL value
+	}
+	for range s.macros {
+		s.featureAPL = append(s.featureAPL, nil)
+	}
+	for _, k := range s.auras {
+		m, ok := s.auraMeta[k]
+		if !ok {
+			s.featureAPL = append(s.featureAPL, nil, nil, nil)
+			continue
+		}
+		unit := self
+		if k.Target {
+			unit = target
+		}
+		aid := m.ID.ToProto()
+		s.featureAPL = append(s.featureAPL,
+			val(&proto.APLValue{Value: &proto.APLValue_AuraIsActive{AuraIsActive: &proto.APLValueAuraIsActive{SourceUnit: unit, AuraId: aid}}}, "bool", 1),
+			val(&proto.APLValue{Value: &proto.APLValue_AuraRemainingTime{AuraRemainingTime: &proto.APLValueAuraRemainingTime{SourceUnit: unit, AuraId: aid}}}, "time", m.Duration.Seconds()))
+		if m.MaxStacks > 0 {
+			s.featureAPL = append(s.featureAPL,
+				val(&proto.APLValue{Value: &proto.APLValue_AuraNumStacks{AuraNumStacks: &proto.APLValueAuraNumStacks{SourceUnit: unit, AuraId: aid}}}, "num", float64(m.MaxStacks)))
+		} else {
+			s.featureAPL = append(s.featureAPL, nil)
+		}
+	}
+	s.actionAPL = make([]any, 0, s.K)
+	for _, id := range s.agentSpells {
+		s.actionAPL = append(s.actionAPL, raw(&proto.APLAction{Action: &proto.APLAction_CastSpell{CastSpell: &proto.APLActionCastSpell{SpellId: id.ToProto()}}}))
+	}
+	for _, m := range s.macros {
+		s.actionAPL = append(s.actionAPL, raw(m))
+	}
+	for _, w := range s.waits {
+		s.actionAPL = append(s.actionAPL, raw(&proto.APLAction{Action: &proto.APLAction_Wait{Wait: &proto.APLActionWait{
+			Duration: &proto.APLValue{Value: &proto.APLValue_Const{Const: &proto.APLValueConst{Val: fmt.Sprintf("%gs", w)}}}}}}))
+	}
+	s.actionAPL = append(s.actionAPL, nil)
 }
 
 func (s *Spec) actionName(id core.ActionID) string {
@@ -607,7 +716,7 @@ func (s *Spec) SpecJSON() []byte {
 		"learnTalents": s.Cfg.LearnTalents, "fixedTalents": s.Cfg.Talents, "build": s.Cfg.Build, "race": s.Cfg.Race,
 		"treeSizes": s.trees.Sizes, "treeNames": s.trees.Names, "fightsPerBuild": s.Cfg.FightsPerBuild,
 		"fullChoices": s.Cfg.FullChoices, "talentMax": s.talentMax(), "talentRow": s.talentRows(), "talentTree": s.talentTreeIdx(),
-		"talentPrereq": s.talentPrereqs(),
+		"talentPrereq": s.talentPrereqs(), "featureAPL": s.featureAPL, "actionAPL": s.actionAPL,
 	})
 	return out
 }

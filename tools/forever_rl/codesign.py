@@ -256,8 +256,10 @@ def main():
     torch.distributions.Distribution.set_default_validate_args(False)
     rng = np.random.default_rng(a.seed)
     dev = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    # Two cached simulations per environment (the running build and the next): with thousands of builds in turn, a
+    # larger cache only costs memory (pet classes ran out at four).
     cfg = dict(build=a.build, race=a.race, fullChoices=True, pollSeconds=a.poll, rewardScale=1e-5, threads=a.threads,
-               seed=1_000_000 * a.seed + 11, rotation=a.rotation.read_text() if a.rotation else "")
+               seed=1_000_000 * a.seed + 11, rotation=a.rotation.read_text() if a.rotation else "", cachedSims=2)
     env = VecEnv(cfg, a.envs, pinned=dev.type == "cuda")
     spec = env.spec
     B = Builds(spec)
