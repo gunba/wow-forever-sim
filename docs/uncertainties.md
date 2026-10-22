@@ -4,7 +4,7 @@
 
 Current level-60 DPS and tank scenarios, plus conditional spell, item and encounter coverage. This register consolidates the recorded questions; it is not a claim that unlisted game behavior has been verified.
 
-**Latest follow-up (2026-10-22):** October 22 learned rotations: the review matrix's Learned column, what a reinforcement-learning agent reached for each DPS build at its best race, with its talents and actions, and simmable profiles where APL rules converted from it beat the published APL. Published profiles do not change. [Latest follow-up report](october-22-learned-rotations.md).
+**Latest follow-up (2026-10-22):** October 22 learned rotations: a Learned column in the review matrix showing what a reinforcement-learning agent reached for each DPS build at its best race, with its talents and actions, and simmable profiles where APL rules converted from it beat the published APL. Published profiles do not change. [Latest follow-up report](october-22-learned-rotations.md).
 
 **Original adjudication baseline:** 2026-09-27, `35cab052456a320358e998c12416687d69cae142`. That original review reconciled questions without changing mechanics or benchmark results. This current register also includes the later implementation and benchmark updates linked above; earlier audits remain historical evidence, not current task status.
 
