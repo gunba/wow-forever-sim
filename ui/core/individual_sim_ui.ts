@@ -486,7 +486,8 @@ export abstract class IndividualSimUI<SpecType extends Spec> extends SimUI {
 		if (this.rankedProfiles.length) {
 			const profile = this.rankedProfiles.find(
 				row =>
-					(profileID ? row.id === profileID : row.key === wanted || row.build.toLowerCase() === wanted) && (!race || row.race.toLowerCase() === race),
+					(profileID ? row.id === profileID : !row.learned && (row.key === wanted || row.build.toLowerCase() === wanted)) &&
+					(!race || row.race.toLowerCase() === race),
 			);
 			if (profile) this.fromProto(eventID, IndividualSimSettings.clone(profile.settings));
 			else console.warn(`No ranked profile matching "${profileID || build}"`);

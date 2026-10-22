@@ -11,7 +11,7 @@ const resultsFile = modeled
 	? 'artifacts/modelled_gear/forever_dps_5min.json'
 	: 'artifacts/forever_dps_5min.json';
 const results = JSON.parse(readFileSync(resultsFile, 'utf8')).Results;
-assert.equal(bundle.profiles.length, results.length, 'web defaults must cover the complete roster');
+assert.equal(bundle.profiles.filter(profile => !profile.learned).length, results.length, 'web defaults must cover the complete roster');
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined });
 const routes = {
 	balance: 'balance_druid', feral: 'feral_druid', elemental: 'elemental_shaman', stormcaller: 'elemental_shaman',
@@ -62,9 +62,11 @@ try {
 	for (const [, id] of cases) {
 		const profile = bundle.profiles.find(profile => profile.id === id);
 		assert.ok(profile, `missing ${id}`);
-		if (!simulatedBuilds.has(profile.key) || profile.tankMetrics || process.env.ONLY_PROFILE) {
+		// A learned profile is its own build: it has its own talents and rotation.
+		const build = profile.learned ? `${profile.key} (learned)` : profile.key;
+		if (!simulatedBuilds.has(build) || profile.tankMetrics || process.env.ONLY_PROFILE) {
 			replayProfileIds.add(id);
-			simulatedBuilds.add(profile.key);
+			simulatedBuilds.add(build);
 		}
 	}
 	const workers = Math.min(cases.length, availableParallelism());

@@ -139,7 +139,7 @@ def main():
     body = []
     for key, class_name, label, icon in builds:
         simulator = SIM_PATHS.get(key, class_name.lower())
-        cells = [ml_pages.cell(key, ml)] if ml else []
+        cells = [ml_pages.cell(key, ml, simulator)] if ml else []
         for race in RACES:
             row = lookup.get((key, race))
             if (key, race) in invalid:

@@ -15,8 +15,9 @@ class UIProfilesTest(unittest.TestCase):
         bundle = json.loads((root / "ui/core/forever_ranked_profiles.json").read_text())
         self.assertEqual(bundle["gearScenario"], "modeled-65-v2")
         self.assertEqual(bundle["sourceSHA256"], hashlib.sha256(source).hexdigest())
-        self.assertEqual(len(bundle["profiles"]), len(expected_roster()))
-        profiles = {(p["key"], p["race"]): p for p in bundle["profiles"]}
+        ranked = [p for p in bundle["profiles"] if not p.get("learned")]
+        self.assertEqual(len(ranked), len(expected_roster()))
+        profiles = {(p["key"], p["race"]): p for p in ranked}
         self.assertEqual(set(profiles), expected_roster())
         # Relics are projected real relics; the full-capacity modeled relics are superseded.
         modeled_ids = {item["id"] for item in json.loads((

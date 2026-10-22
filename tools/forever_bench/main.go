@@ -41,6 +41,7 @@ var (
 	mp5PerSecond     = flag.Bool("mp5-per-second", false, "provisional MP5-as-mana-per-second interpretation; omitted preserves the saved player setting")
 	equipmentScale   = flag.Float64("equipment-scale", 1, "hypothetical item-stat and weapon-damage multiplier; enchants and effects stay fixed")
 	naturalHit       = flag.Bool("natural-hit", false, "use equipped gear, racial and talent hit only; no benchmark hit exchange")
+	anyTalents       = flag.Bool("any-talents", false, "accept any legal talents, outside the build's tree identity and required talent (learned profiles)")
 	baselineResults  = flag.String("baseline-results", "", "read exact unnormalized BaselinePlayer profiles from a previous results file")
 	optimize         = flag.Bool("optimize", false, "search legal one-point talent reallocations")
 	searchRounds     = flag.Int("rounds", 3, "talent search rounds")
@@ -141,7 +142,11 @@ func runWithRequest(b build, p *proto.Player, count int, rng int64,
 	if !b.allowsRace(p.Race) {
 		panic(fmt.Errorf("%s: race %v is not available", b.Key, p.Race))
 	}
-	if err := loadTalents(b).validate(p.TalentsString); err != nil {
+	talents := loadTalents(b)
+	if *anyTalents {
+		talents.Build.MinimumTrees, talents.Build.Required = [3]int{}, ""
+	}
+	if err := talents.validate(p.TalentsString); err != nil {
 		panic(fmt.Errorf("%s: %w", b.Key, err))
 	}
 	if err := validateGear(p); err != nil {

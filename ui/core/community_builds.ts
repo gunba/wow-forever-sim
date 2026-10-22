@@ -26,6 +26,6 @@ export const communityBuilds: Record<Spec, string[]> = {
 
 export function getCommunityBuilds(spec: Spec): string[] {
 	const ranked = getRankedProfiles(spec);
-	if (ranked.length) return [...new Set(ranked.map(profile => profile.build))];
+	if (ranked.length) return [...new Set(ranked.filter(profile => !profile.learned).map(profile => profile.build))];
 	return communityBuilds[spec] || [];
 }

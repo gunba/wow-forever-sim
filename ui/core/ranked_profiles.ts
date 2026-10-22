@@ -14,6 +14,8 @@ export interface RankedProfile {
 	unmodeledSetBonuses: string[];
 	caveats: string[];
 	modeledGear: boolean;
+	// Learned talents and rotation (docs/learned-rotations.md); listed in the picker, never chosen by ?build=.
+	learned?: boolean;
 }
 
 let profiles: RankedProfile[] | undefined;

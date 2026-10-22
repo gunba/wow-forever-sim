@@ -49,7 +49,8 @@ setup and its actual gear-derived hit; no manual import is needed.
 native benchmark defaults, separate from the results for replay.
 The review matrix's first column, **Learned**, shows what a reinforcement-learning agent reached for each DPS build at
 its highest-simming race when it chose every action and searched the talents itself, measured against the published
-setup on the same fights; each value links to the learned talents and actions ([method and caveats](docs/learned-rotations.md)).
+setup on the same fights. Each value links to the learned talents and actions; where rules converted from the agent
+beat the published APL, "sim" opens that profile in the simulator ([method and caveats](docs/learned-rotations.md)).
 The [October 21 Warrior rotations](docs/october-21-warrior-rotations.md) give Fury, Fury (Sunder) and 2H Bloodthirst
 rotation rules a reinforcement-learning agent found in the engine (Overpower in the execute phase, Rend in Battle Stance,
 higher Heroic Strike thresholds, swing-timed Hamstring, Demonic Rune for rage) and move Fury to 19/31/1 talents. The

@@ -1,7 +1,9 @@
 """Learned (reinforcement-learning) results for the review portal: the matrix's first column and one page per build.
 
-The reports come from tools/forever_rl/run_all.py (artifacts/ml/<key>.json). A learned result is a policy network that
-chose every action in the engine; it is not an APL and cannot be loaded into the simulator.
+The reports come from tools/forever_rl/run_all.py (artifacts/ml/<key>.json). Each has two results: the policy network,
+which chose every action in the engine and cannot be loaded into the simulator (the ceiling), and, when converted
+(tools/forever_rl/learned_bench.py adds "profile"), an ordinary profile: the published setup with the chosen talents and
+the published APL plus overrides converted from the network, benched exactly like the other cells.
 """
 import json
 import shutil
@@ -20,10 +22,10 @@ thead th.ml{text-align:center;min-width:0}
 """
 
 CAVEATS = (
-    "The learned result is a neural network that chose every action in the simulator, with perfect reactions and exact "
-    "knowledge of every timer, at the same 50 ms resolution the APL is checked at. It is this simulator's ceiling for the "
-    "build under its current mechanics, not a target a player can be expected to reach, and it uses whatever the model "
-    "allows. Pets act on their own. It cannot be loaded into the simulator: it is not an APL."
+    "The network chose every action in the simulator, with perfect reactions and exact knowledge of every timer, at the "
+    "same 50 ms resolution the APL is checked at. It is this simulator's ceiling for the build under its current mechanics, "
+    "not a target a player can be expected to reach, and it uses whatever the model allows. Pets act on their own. It "
+    "cannot be loaded into the simulator; the profile is the part of it that converts to APL rules."
 )
 
 
@@ -32,36 +34,60 @@ def load(directory=ML_DIR):
     if not directory.exists():
         return out
     for p in sorted(directory.glob("*.json")):
-        if p.name != "index.json":
-            r = json.loads(p.read_text())
+        r = json.loads(p.read_text())
+        if "key" in r:  # one report per build; index.json and learned_results.json are not
             out[r["key"]] = r
     return out
 
 
 def header_cell():
-    return '<th rowspan="2" scope="col" class="ml" title="Rotation and talents learned in the simulator, at the build\'s best race">Learned<br><span>best race</span></th>'
+    return ('<th rowspan="2" scope="col" class="ml" title="What a learned network reached at the build\'s best race. '
+            '&quot;sim&quot; opens the simmable profile converted from it (the published APL with overrides), where one keeps '
+            'a gain; &quot;no APL&quot; means no conversion did yet.">Learned<br><span>best race</span></th>')
+
+
+def network(r):
+    """The network's DPS, its paired gain and SE, the published setup's DPS and the number of fights. The published setup
+    is played by the engine's own APL path when measured (r["native"]); older reports compare with training's emulation."""
+    if r.get("native"):
+        N = r["native"]
+        return N["network"], N["network_vs_published"], N["network_vs_published_se"], N["published"], N["fights"]
+    L = r["learned"]
+    return L["dps"], L["vs_published"], L["vs_published_se"], r["published"]["dps"], r["fights"]
+
+
+def network_gained(r):
+    """The network beat the published setup by at least two standard errors."""
+    _, gain, se, _, _ = network(r)
+    return gain > 2 * se
 
 
 def gained(r):
-    """The learner beat the published rotation by at least two standard errors."""
-    L = r["learned"]
-    return L["vs_published"] > 2 * L["vs_published_se"]
+    """A simmable profile beat the published setup, on paired fights and on the bench."""
+    return bool((r.get("profile") or {}).get("gain"))
 
 
-def cell(key, ml):
+def cell(key, ml, simulator):
     r = ml.get(key)
     if r is None:
         return '<td class="ml unavailable">—</td>'
-    L = r["learned"]
-    title = (f'Learned rotation and talents on {r["race"]}: {L["dps"]:.1f} DPS; '
-             f'{L["vs_published"]:+.1f} ± {L["vs_published_se"]:.1f} against the published rotation and talents on the same '
-             f'{r["fights"]:,} fights. Not an APL.')
-    if not gained(r):
-        title += " The learner did not beat the published rotation here."
+    dps, gain, se, pub, fights = network(r)
+    race, Q = escape(r["race"]), r.get("profile")
+    if not network_gained(r):
+        title = (f'The learned network on {r["race"]} ({dps:.1f}; {gain:+.1f} ± {se:.1f} on {fights:,} paired fights) '
+                 f'did not beat the published setup ({pub:.1f}).')
         return (f'<td class="ml nogain"><a href="ml/{escape(key)}.html" title="{escape(title)}">no gain</a>'
-                f'<br><span>{escape(r["race"])}</span></td>')
-    return (f'<td class="ml"><a href="ml/{escape(key)}.html" title="{escape(title)}">{L["dps"]:.0f}</a>'
-            f'<br><span>{escape(r["race"])}</span></td>')
+                f'<br><span>{race}</span></td>')
+    title = f'Learned network on {r["race"]}: {dps:.1f} DPS; {gain:+.1f} ± {se:.1f} against the published setup ({pub:.1f}) on the same {fights:,} fights. '
+    if gained(r):
+        title += f'Simmable profile: {Q["dps"]:.1f} ({Q["dps"] - Q["published_dps"]:+.1f} against the published cell).'
+        sim = (f'<a href="../{escape(simulator)}/?profile={escape(Q["id"])}" title="Open the simmable profile: the published APL '
+               f'with overrides converted from the network">sim {Q["dps"]:.0f}</a>')
+    else:
+        title += "No APL reproduces this gain yet; its page lists the network's talents and actions."
+        sim = "no APL"
+    return (f'<td class="ml"><a href="ml/{escape(key)}.html" title="{escape(title)}">{dps:.0f}</a>'
+            f'<br><span>{race} · {sim}</span></td>')
 
 
 def _name(action):
@@ -89,24 +115,46 @@ def _signed(v, se=None, digits=1):
 
 
 def page(r, label, class_name, simulator, css):
-    P, L, A = r["published"], r["learned"], r.get("actions") or {}
+    P, L, A, Q = r["published"], r["learned"], r.get("actions") or {}, r.get("profile")
     race_file = r["race"].lower().replace(" ", "_")
-    gain_pct = 100 * L["vs_published"] / P["dps"] if P["dps"] else 0
-    rot_gain = L["published_talents_vs_published"]
+    dps, gain, se, pub, fights = network(r)
     parts = [f"""<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{escape(class_name)} {escape(label)} · learned</title><style>{css}</style><main class="mlpage">
 <p><a href="../index.html#matrix">← DPS matrix</a></p>
 <h1>{escape(class_name)} · {escape(label)} · learned ({escape(r["race"])})</h1>
-<p class="big">{L["dps"]:.1f} DPS, {_signed(L["vs_published"], L["vs_published_se"])} ({gain_pct:+.1f}%) against the published
-rotation and talents ({P["dps"]:.1f}) on the same {r["fights"]:,} fights.</p>
-{"" if gained(r) else "<p><strong>The learner did not beat the published rotation for this build:</strong> its best policy is "
-  "within noise of the APL or below it, so the published setup stands as the best known.</p>"}
-<p>With the published talents the learned rotation scores {L["published_talents_dps"]:.1f} ({_signed(rot_gain, L["published_talents_vs_published_se"])});
-the rest comes from the talents below. <a href="../{escape(simulator)}/?profile={escape(r["key"])}__{escape(race_file)}">Open the published
-{escape(r["race"])} setup</a> · <a href="{escape(r["key"])}.json">Report (JSON)</a></p>
+<p class="big">Network: {dps:.1f} DPS, {_signed(gain, se)} ({100 * gain / pub:+.1f}%) against the published setup ({pub:.1f})
+on the same {fights:,} fights.</p>"""]
+    if not network_gained(r):
+        parts.append("<p><strong>The learner did not beat the published setup for this build:</strong> its best policy is "
+                     "within noise of the APL or below it, so the published setup stands as the best known.</p>")
+    elif gained(r):
+        share = (Q["paired_vs_published"] / gain) if gain > 0 else 0
+        parts.append(f"""<h2>Simmable profile</h2>
+<p class="big">{Q["dps"]:.1f} DPS benched like the matrix, {_signed(Q["dps"] - Q["published_dps"])} against the published cell
+({Q["published_dps"]:.1f}). <a href="../{escape(simulator)}/?profile={escape(Q["id"])}">Open it in the simulator</a></p>
+<p>On {Q["paired_fights"]:,} paired fights it gains {_signed(Q["paired_vs_published"], Q["paired_vs_published_se"])}, {100 * share:.0f}% of the
+network's gain on those fights. It uses the {escape(Q["talent_source"])} talents <code>{escape(Q["talents"])}</code> and the published APL
+with {len(Q["overrides"])} entr{"ies" if len(Q["overrides"]) != 1 else "y"} added{f' and {len(Q["removed"])} removed' if Q.get("removed") else ""}.</p>""")
+        if Q["overrides"]:
+            parts.append("<h3>Added above the published APL</h3><p>Checked in order before the published entries. Each edit was "
+                         "kept only if it raised DPS on paired fights.</p><ol>"
+                         + "".join(f"<li><code>{escape(o)}</code></li>" for o in Q["overrides"]) + "</ol>")
+        if Q.get("removed"):
+            parts.append("<h3>Removed from the published APL</h3><ul>"
+                         + "".join(f"<li><code>{escape(o)}</code></li>" for o in Q["removed"]) + "</ul>")
+    else:
+        best = (f" (its best attempt: {_signed(Q['paired_vs_published'], Q['paired_vs_published_se'])} on {Q['paired_fights']:,} paired fights)"
+                if Q else "")
+        parts.append(f"""<h2>No APL derived</h2>
+<p>The conversion to APL rules did not reproduce this gain{best}, so there is no simmable profile for it. The network's talents and
+actions below show what it does differently from the published setup; they are the place to start investigating.</p>""")
+    parts.append(f"""<h2>The network</h2>
+<p>With the published talents the network scores {L["published_talents_dps"]:.1f}; with its own talents, below, {L["dps"]:.1f}
+(both on training's {r["fights"]:,} confirmation fights). <a href="../{escape(simulator)}/?profile={escape(r["key"])}__{escape(race_file)}">Open
+the published {escape(r["race"])} setup</a> · <a href="{escape(r["key"])}.json">Report (JSON)</a></p>
 <p class="note">{escape(CAVEATS)} <a href="../learned-rotations.md">How these were made</a></p>
 <h2>Talents</h2>
-<p>Published <code>{escape(P["talents"])}</code><br>Learned <code>{escape(L["talents"])}</code></p>"""]
+<p>Published <code>{escape(P["talents"])}</code><br>Network <code>{escape(L["talents"])}</code></p>""")
     if r["talent_changes"]:
         parts.append("<table><thead><tr><th>Talent</th><th>Tree</th><th>Published</th><th>Learned</th></tr></thead><tbody>")
         for c in r["talent_changes"]:
@@ -121,8 +169,8 @@ the rest comes from the talents below. <a href="../{escape(simulator)}/?profile=
         execute = any(x["apl_execute"] > 0 or x["policy_execute"] > 0 for x in rows)
         rage = any((x.get("policy_rage") or 0) > 0 for x in rows)
         parts.append(f'<h2>Actions</h2><p>Per fight, over {A["fights"]:,} fights of each (the APL on the published talents, the '
-                     f'learned rotation on its own). Where both had the same choice, the learned rotation took the APL\'s '
-                     f'{100 * A["agreement"]:.1f}% of the time.</p><table><thead><tr><th>Action</th><th>APL</th><th>Learned</th><th>Change</th>'
+                     f'network on its own). Where both had the same choice, the network took the APL\'s '
+                     f'{100 * A["agreement"]:.1f}% of the time.</p><table><thead><tr><th>Action</th><th>APL</th><th>Network</th><th>Change</th>'
                      + ("<th>APL in execute</th><th>Learned in execute</th>" if execute else "")
                      + ("<th>APL rage</th><th>Learned rage</th>" if rage else "") + "</tr></thead><tbody>")
         for x in rows:
