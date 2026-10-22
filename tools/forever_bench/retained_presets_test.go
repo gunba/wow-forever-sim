@@ -34,12 +34,21 @@ func TestRetainedPresetsMatchBenchmark(t *testing.T) {
 	var bundle struct {
 		Profiles []struct {
 			Key, Race string
+			Learned   bool
 			Settings  json.RawMessage
 		}
 	}
 	if err := json.Unmarshal(mustRead("ui/core/forever_ranked_profiles.json"), &bundle); err != nil {
 		t.Fatal(err)
 	}
+	// Learned profiles (tools/forever_rl) sit beside the ranking with their own talents and rotations.
+	ranked := bundle.Profiles[:0]
+	for _, profile := range bundle.Profiles {
+		if !profile.Learned {
+			ranked = append(ranked, profile)
+		}
+	}
+	bundle.Profiles = ranked
 	if len(expected) != expectedCount || len(bundle.Profiles) != expectedCount {
 		t.Fatal("incomplete current ranking/default coverage")
 	}
