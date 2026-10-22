@@ -394,8 +394,10 @@ def main():
         apl_n = np.bincount(Tch.astype(np.int64), minlength=T + K)[T:] / nf
         promotions = [(T + int(k), []) for k in np.argsort(-(net_n - apl_n))
                       if net_n[k] - apl_n[k] >= a.promote and T + k != wait and T + k not in waits]
-        # 2. Overrides on top of the current APL, induced on the network's states, the APL's and both.
-        cand = sorted({int(v) for v in range(T, T + K)} - (waits - {wait}))
+        # 2. Overrides on top of the current APL, induced on the network's states, the APL's and both. Rules never
+        # wait: the APL's Wait action is not the environment's pause (one 50 ms wait rule halved Beast Mastery's
+        # engine DPS while gaining in the environment).
+        cand = sorted({int(v) for v in range(T, T + K)} - waits - {wait})
         proposals = []
         views = ((X, M, L, Tch), (X2, M2, L2, T2), tuple(np.concatenate([u, v]) for u, v in zip((X, M, L, Tch), (X2, M2, L2, T2))))
         for Xa, Ma, La, Ta in views:
