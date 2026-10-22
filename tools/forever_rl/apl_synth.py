@@ -271,7 +271,10 @@ def compile_apl(dl, spec, base_rotation=None):
             act["condition"] = {"and": {"vals": lits}}
         items.append({"action": act})
     if base_rotation is not None:
-        items += base_rotation["priorityList"]
+        # Everything else in the base (prepull actions above all) stays as it is.
+        out = json.loads(json.dumps(base_rotation))
+        out["priorityList"] = items + base_rotation["priorityList"]
+        return out
     return {"type": "TypeAPL", "priorityList": items}
 
 
