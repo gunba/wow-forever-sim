@@ -420,9 +420,10 @@ func (s *Spec) buildCandidate() {
 	s.candidate = s.assemble(s.teacher, true)
 }
 
-// assemble makes the rotation every environment runs: the automatic cooldown entry, the teacher's own entries (they
-// only say what the teacher would do), then one unconditioned entry per agent action. With grow, teacher actions the
-// agent lacks become new agent actions (macros); without it the action set is fixed and such entries count as waits.
+// assemble makes the rotation every environment runs: the teacher's own entries (they only say what the teacher
+// would do), with its Autocast Other Cooldowns entry where the teacher has it, then one unconditioned entry per agent
+// action. With grow, teacher actions the agent lacks become new agent actions (macros); without it the action set is
+// fixed and such entries count as waits.
 func (s *Spec) assemble(teacher *proto.APLRotation, grow bool) *proto.APLRotation {
 	s.configKind, s.configAgent = nil, nil
 	c := &proto.APLRotation{Type: proto.APLRotation_TypeAPL, PrepullActions: teacher.PrepullActions}
@@ -431,10 +432,14 @@ func (s *Spec) assemble(teacher *proto.APLRotation, grow bool) *proto.APLRotatio
 		s.configKind = append(s.configKind, kind)
 		s.configAgent = append(s.configAgent, agent)
 	}
-	add(&proto.APLListItem{Action: &proto.APLAction{Action: &proto.APLAction_AutocastOtherCooldowns{AutocastOtherCooldowns: &proto.APLActionAutocastOtherCooldowns{}}}}, kindAuto, -1)
 	nSpells := len(s.agentSpells)
 	for _, item := range teacher.PriorityList {
-		if item.Hide || item.Action.GetAutocastOtherCooldowns() != nil {
+		if item.Hide {
+			continue
+		}
+		if item.Action.GetAutocastOtherCooldowns() != nil {
+			// Unconditioned, so the automatic cooldowns run exactly where the teacher would reach them.
+			add(&proto.APLListItem{Action: &proto.APLAction{Action: &proto.APLAction_AutocastOtherCooldowns{AutocastOtherCooldowns: &proto.APLActionAutocastOtherCooldowns{}}}}, kindAuto, -1)
 			continue
 		}
 		agent := -1

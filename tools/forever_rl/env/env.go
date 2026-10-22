@@ -22,9 +22,10 @@ type simEntry struct {
 	agent  []int
 	spells []*core.Spell // per agent spell, nil when this build lacks it
 	auras  []*core.Aura  // per tracked aura, nil when absent
-	// Automatic-cooldown rules for agent-owned cooldowns, highest priority first: the teacher uses them as the
-	// automatic set would.
+	// Automatic-cooldown rules for agent-owned cooldowns the teacher leaves to Autocast Other Cooldowns, highest
+	// priority first: the teacher uses them there as the automatic set would.
 	cdRules []cdRule
+	autoAt  int // the parsed position of the Autocast Other Cooldowns entry, -1 without one
 	usedAt  int64
 	talents string
 }
@@ -219,9 +220,13 @@ func (e *Env) entry() *simEntry {
 	e.SimsBuilt++
 	defer func() { e.SimSeconds += time.Since(t0).Seconds() }()
 	ent := &simEntry{sim: sim, char: char, target: sim.Encounter.TargetUnits[0], talents: e.talents}
-	for _, cfgIdx := range char.Rotation.PriorityConfigIndexes() {
+	ent.autoAt = -1
+	for i, cfgIdx := range char.Rotation.PriorityConfigIndexes() {
 		ent.kind = append(ent.kind, e.spec.configKind[cfgIdx])
 		ent.agent = append(ent.agent, e.spec.configAgent[cfgIdx])
+		if e.spec.configKind[cfgIdx] == kindAuto {
+			ent.autoAt = i
+		}
 	}
 	ent.spells = make([]*core.Spell, len(e.spec.agentSpells))
 	for k, id := range e.spec.agentSpells {
@@ -241,7 +246,8 @@ func (e *Env) entry() *simEntry {
 				continue
 			}
 			for k, id := range e.spec.agentSpells {
-				if mcd.Spell.SameAction(id) {
+				// Only the cooldowns the teacher leaves automatic; the ones it casts itself follow its entries.
+				if mcd.Spell.SameAction(id) && e.spec.cooldowns[id] {
 					ent.cdRules = append(ent.cdRules, cdRule{agent: k, mcd: mcd})
 				}
 			}
@@ -296,9 +302,13 @@ func (e *Env) fight() {
 
 func (e *Env) policy(sim *core.Simulation, ready []int) int {
 	ent := e.cur
+	// The automatic cooldowns go first only when the teacher would reach them first, as in the priority list.
 	for k, idx := range ready {
 		if ent.kind[idx] == kindAuto {
 			return k
+		}
+		if ent.kind[idx] == kindTeacher {
+			break
 		}
 	}
 	if sim.CurrentTime < e.waitUntil {
@@ -313,23 +323,50 @@ func (e *Env) policy(sim *core.Simulation, ready []int) int {
 	for w := range spec.waits {
 		e.Mask[wait-len(spec.waits)+w] = 1
 	}
-	teacher, teacherSet := wait, false
 	anyAction := false
 	for k, idx := range ready {
-		switch ent.kind[idx] {
-		case kindTeacher:
-			if !teacherSet {
-				teacherSet = true
-				if a := ent.agent[idx]; a >= 0 {
-					teacher = spec.T + a
-				}
-			}
-		case kindAgent:
+		if ent.kind[idx] == kindAgent {
 			a := ent.agent[idx]
 			e.Mask[spec.T+a] = 1
 			e.readyPos[a] = k
 			anyAction = true
 		}
+	}
+	// The teacher's choice: its first ready entry, with the agent-owned automatic cooldowns at its Autocast Other
+	// Cooldowns entry under the automatic rules (a ready cooldown that should activate, on a ready global cooldown).
+	teacher, teacherSet := wait, false
+	autoDone := ent.autoAt < 0
+	auto := func() {
+		autoDone = true
+		if !ent.char.GCD.IsReady(sim) {
+			return
+		}
+		for _, r := range ent.cdRules {
+			if e.Mask[spec.T+r.agent] == 1 && (r.mcd.ShouldActivate == nil || r.mcd.ShouldActivate(sim, ent.char)) {
+				teacher, teacherSet = spec.T+r.agent, true
+				return
+			}
+		}
+	}
+	for _, idx := range ready {
+		if teacherSet {
+			break
+		}
+		if !autoDone && idx > ent.autoAt {
+			auto()
+			if teacherSet {
+				break
+			}
+		}
+		if ent.kind[idx] == kindTeacher {
+			teacherSet = true
+			if a := ent.agent[idx]; a >= 0 {
+				teacher = spec.T + a
+			}
+		}
+	}
+	if !teacherSet && !autoDone {
+		auto()
 	}
 	if !anyAction && !spec.Cfg.KeepWaitOnly {
 		// Waiting is the only choice: no decision to make.
@@ -343,13 +380,6 @@ func (e *Env) policy(sim *core.Simulation, ready []int) int {
 		}
 	}
 	e.waiting = false
-	// The automatic cooldowns the agent owns come first for the teacher, under their own activation rules.
-	for _, r := range ent.cdRules {
-		if e.Mask[spec.T+r.agent] == 1 && (r.mcd.ShouldActivate == nil || r.mcd.ShouldActivate(sim, ent.char)) {
-			teacher = spec.T + r.agent
-			break
-		}
-	}
 	if e.Mask[teacher] == 0 {
 		teacher = wait
 	}
