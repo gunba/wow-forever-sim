@@ -41,9 +41,10 @@ def load(directory=ML_DIR):
 
 
 def header_cell():
-    return ('<th rowspan="2" scope="col" class="ml" title="What a learned network reached at the build\'s best race. '
-            '&quot;sim&quot; opens the simmable profile converted from it (the published APL with overrides), where one keeps '
-            'a gain; &quot;no APL&quot; means no conversion did yet.">Learned<br><span>best race</span></th>')
+    return ('<th rowspan="2" scope="col" class="ml" title="The best a learned agent reached at the build\'s best race: its '
+            'network, or the simmable profile converted from it when that is higher. &quot;sim&quot; opens the simmable '
+            'profile (the published APL edited by rules converted from the network); &quot;no APL&quot; means no conversion '
+            'kept a gain.">Learned<br><span>best race</span></th>')
 
 
 def network(r):
@@ -67,30 +68,56 @@ def gained(r):
     return bool((r.get("profile") or {}).get("gain"))
 
 
+def best(r):
+    """The best learned DPS and its gain over the published setup: the network's or the simmable profile's."""
+    dps, gain, _, pub, _ = network(r)
+    out = (dps, gain) if network_gained(r) else None
+    if gained(r):
+        Q = r["profile"]
+        g = Q["dps"] - Q["published_dps"]
+        if out is None or g > out[1]:
+            out = (Q["dps"], g)
+    return out
+
+
 def cell(key, ml, simulator):
     r = ml.get(key)
     if r is None:
         return '<td class="ml unavailable">—</td>'
     dps, gain, se, pub, fights = network(r)
     race, Q = escape(r["race"]), r.get("profile")
-    if not network_gained(r):
+    top = best(r)
+    if top is None:
         title = (f'The learned network on {r["race"]} ({dps:.1f}; {gain:+.1f} ± {se:.1f} on {fights:,} paired fights) '
-                 f'did not beat the published setup ({pub:.1f}).')
+                 f'did not beat the published setup ({pub:.1f}), and no converted profile did.')
         return (f'<td class="ml nogain"><a href="ml/{escape(key)}.html" title="{escape(title)}">no gain</a>'
                 f'<br><span>{race}</span></td>')
     title = f'Learned network on {r["race"]}: {dps:.1f} DPS; {gain:+.1f} ± {se:.1f} against the published setup ({pub:.1f}) on the same {fights:,} fights. '
     if gained(r):
-        title += f'Simmable profile: {Q["dps"]:.1f} ({Q["dps"] - Q["published_dps"]:+.1f} against the published cell).'
+        title += f'Simmable profile: {Q["dps"]:.1f} ({Q["dps"] - Q["published_dps"]:+.1f} against the published cell, {Q["published_dps"]:.1f}).'
         sim = (f'<a href="../{escape(simulator)}/?profile={escape(Q["id"])}" title="Open the simmable profile: the published APL '
-               f'with overrides converted from the network">sim {Q["dps"]:.0f}</a>')
+               f'edited by rules converted from the network">sim {Q["dps"]:.0f}</a>')
     else:
         title += "No APL reproduces this gain yet; its page lists the network's talents and actions."
         sim = "no APL"
-    return (f'<td class="ml"><a href="ml/{escape(key)}.html" title="{escape(title)}">{dps:.0f}</a>'
+    return (f'<td class="ml"><a href="ml/{escape(key)}.html" title="{escape(title)}">{top[0]:.0f}</a>'
             f'<br><span>{race} · {sim}</span></td>')
 
 
+# Consumables the engine defines in code, so the item database has no name for them (sim/core/consumes.go,
+# sim/mage/mana_gem.go).
+ITEM_NAMES = {5514: "Mana Agate", 5513: "Mana Jade", 8007: "Mana Citrine", 8008: "Mana Ruby", 10646: "Goblin Sapper Charge",
+              15993: "Thorium Grenade"}
+
+
+def _items(text):
+    for item, label in ITEM_NAMES.items():
+        text = text.replace(f"{{ItemID: {item}}}", label)
+    return text
+
+
 def _name(action):
+    action = _items(action)
     for prefix in ("cast:", "macro:"):
         if action.startswith(prefix):
             action = action[len(prefix):]
@@ -124,24 +151,26 @@ def page(r, label, class_name, simulator, css):
 <h1>{escape(class_name)} · {escape(label)} · learned ({escape(r["race"])})</h1>
 <p class="big">Network: {dps:.1f} DPS, {_signed(gain, se)} ({100 * gain / pub:+.1f}%) against the published setup ({pub:.1f})
 on the same {fights:,} fights.</p>"""]
-    if not network_gained(r):
-        parts.append("<p><strong>The learner did not beat the published setup for this build:</strong> its best policy is "
-                     "within noise of the APL or below it, so the published setup stands as the best known.</p>")
+    if not network_gained(r) and not gained(r):
+        parts.append("<p><strong>No gain for this build:</strong> the network is within noise of the published setup or "
+                     "below it, and no converted profile beat it, so the published setup stands as the best known.</p>")
     elif gained(r):
         share = (Q["paired_vs_published"] / gain) if gain > 0 else 0
         parts.append(f"""<h2>Simmable profile</h2>
 <p class="big">{Q["dps"]:.1f} DPS benched like the matrix, {_signed(Q["dps"] - Q["published_dps"])} against the published cell
 ({Q["published_dps"]:.1f}). <a href="../{escape(simulator)}/?profile={escape(Q["id"])}">Open it in the simulator</a></p>
-<p>On {Q["paired_fights"]:,} paired fights it gains {_signed(Q["paired_vs_published"], Q["paired_vs_published_se"])}, {100 * share:.0f}% of the
-network's gain on those fights. It uses the {escape(Q["talent_source"])} talents <code>{escape(Q["talents"])}</code> and the published APL
+<p>On {Q["paired_fights"]:,} paired fights it gains {_signed(Q["paired_vs_published"], Q["paired_vs_published_se"])}, {
+    f"{100 * share:.0f}% of the network's gain on those fights" if 0 < share <= 1 else
+    f"more than the network's own {gain:+.1f}: simulator-checked edits went past it" if network_gained(r) else
+    "where the network itself found nothing"}. It uses the {escape(Q["talent_source"])} talents <code>{escape(Q["talents"])}</code> and the published APL
 with {len(Q["overrides"])} entr{"ies" if len(Q["overrides"]) != 1 else "y"} added{f' and {len(Q["removed"])} removed' if Q.get("removed") else ""}.</p>""")
         if Q["overrides"]:
             parts.append("<h3>Added above the published APL</h3><p>Checked in order before the published entries. Each edit was "
                          "kept only if it raised DPS on paired fights.</p><ol>"
-                         + "".join(f"<li><code>{escape(o)}</code></li>" for o in Q["overrides"]) + "</ol>")
+                         + "".join(f"<li><code>{escape(_items(o))}</code></li>" for o in Q["overrides"]) + "</ol>")
         if Q.get("removed"):
             parts.append("<h3>Removed from the published APL</h3><ul>"
-                         + "".join(f"<li><code>{escape(o)}</code></li>" for o in Q["removed"]) + "</ul>")
+                         + "".join(f"<li><code>{escape(_items(o))}</code></li>" for o in Q["removed"]) + "</ul>")
     else:
         best = (f" (its best attempt: {_signed(Q['paired_vs_published'], Q['paired_vs_published_se'])} on {Q['paired_fights']:,} paired fights)"
                 if Q else "")
