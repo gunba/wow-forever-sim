@@ -1,0 +1,1221 @@
+{
+ "key": "pet_melee",
+ "build": "Pet/Melee",
+ "race": "Windshaper",
+ "class": "",
+ "published": {
+  "talents": "53200005001-0050051-5302002300501201",
+  "dps": 935.0755385458469,
+  "se": 0.38875643064337023,
+  "benchmark_dps": 932.1042065076826
+ },
+ "learned": {
+  "talents": "52210005001-005005-5202012300500221",
+  "dps": 947.5385533869267,
+  "vs_published": 12.463014841079712,
+  "vs_published_se": 0.33070187719174926,
+  "published_talents_dps": 937.1856229901314,
+  "published_talents_vs_published": 2.110084444284439,
+  "published_talents_vs_published_se": 0.32143492637488896
+ },
+ "talent_changes": [
+  {
+   "talent": "Endurance Training",
+   "tree": "Beast Mastery",
+   "published": 3,
+   "learned": 2
+  },
+  {
+   "talent": "Improved Aspect of the Monkey",
+   "tree": "Beast Mastery",
+   "published": 0,
+   "learned": 1
+  },
+  {
+   "talent": "Rapid Killing",
+   "tree": "Marksmanship",
+   "published": 1,
+   "learned": 0
+  },
+  {
+   "talent": "Deflection",
+   "tree": "Survival",
+   "published": 3,
+   "learned": 2
+  },
+  {
+   "talent": "Improved Wing Clip",
+   "tree": "Survival",
+   "published": 0,
+   "learned": 1
+  },
+  {
+   "talent": "Resourcefulness",
+   "tree": "Survival",
+   "published": 1,
+   "learned": 0
+  },
+  {
+   "talent": "Survivalist's Discipline",
+   "tree": "Survival",
+   "published": 0,
+   "learned": 2
+  }
+ ],
+ "fights": 4096,
+ "training": {
+  "stop": "time",
+  "train_minutes": 24.0,
+  "minutes": 24.7,
+  "decisions": 428867584,
+  "fights": 1017632,
+  "builds_seen": 112753,
+  "decisions_per_fight": 1020.30859375,
+  "best_decisions": 364904448
+ },
+ "actions": {
+  "fights": 1024,
+  "apl_talents": "53200005001-0050051-5302002300501201",
+  "policy_talents": "52210005001-005005-5202012300500221",
+  "apl": 932.3464057445526,
+  "policy": 947.5325148701668,
+  "diff": 15.186109125614166,
+  "diff_se": 0.6731677472259242,
+  "agreement": 0.9123186676459752,
+  "disagreements": [
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Wing Clip",
+    "per_fight": 12.016
+   },
+   {
+    "apl_would": "cast:Summon Hawk",
+    "policy_did": "wait",
+    "per_fight": 3.904
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Thorium Grenade",
+    "per_fight": 3.206
+   },
+   {
+    "apl_would": "cast:Wing Clip",
+    "policy_did": "wait",
+    "per_fight": 2.456
+   },
+   {
+    "apl_would": "cast:Raptor Strike#3",
+    "policy_did": "cast:Major Frenzy Potion",
+    "per_fight": 1.232
+   },
+   {
+    "apl_would": "cast:Summon Hawk",
+    "policy_did": "cast:Immolation Trap",
+    "per_fight": 1.227
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Major Frenzy Potion",
+    "per_fight": 1.177
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Demonic Rune",
+    "per_fight": 1.085
+   },
+   {
+    "apl_would": "cast:Hunter's Mark",
+    "policy_did": "cast:Wing Clip",
+    "per_fight": 1.078
+   },
+   {
+    "apl_would": "cast:Strider Kick",
+    "policy_did": "cast:Summon Hawk",
+    "per_fight": 1.0
+   },
+   {
+    "apl_would": "cast:Raptor Strike#3",
+    "policy_did": "cast:Goblin Sapper Charge",
+    "per_fight": 1.0
+   },
+   {
+    "apl_would": "cast:Raptor Strike#3",
+    "policy_did": "cast:Rapid Fire",
+    "per_fight": 1.0
+   },
+   {
+    "apl_would": "cast:Wing Clip",
+    "policy_did": "cast:Demonic Rune",
+    "per_fight": 0.998
+   },
+   {
+    "apl_would": "cast:Hunter's Mark",
+    "policy_did": "cast:Strider Kick",
+    "per_fight": 0.747
+   },
+   {
+    "apl_would": "cast:Hunter's Mark",
+    "policy_did": "cast:Mongoose Bite",
+    "per_fight": 0.728
+   }
+  ],
+  "actions": [
+   {
+    "action": "wait",
+    "apl": 767.5673828125,
+    "policy": 169.8291015625,
+    "apl_execute": 158.9453125,
+    "policy_execute": 94.2021484375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Wing Clip",
+    "apl": 77.361328125,
+    "policy": 69.2587890625,
+    "apl_execute": 17.052734375,
+    "policy_execute": 11.7275390625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Raptor Strike#3",
+    "apl": 43.74609375,
+    "policy": 43.59765625,
+    "apl_execute": 8.685546875,
+    "policy_execute": 8.607421875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Summon Hawk",
+    "apl": 40.2333984375,
+    "policy": 40.609375,
+    "apl_execute": 6.990234375,
+    "policy_execute": 7.7578125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Mongoose Bite",
+    "apl": 36.1845703125,
+    "policy": 35.8330078125,
+    "apl_execute": 7.3388671875,
+    "policy_execute": 7.123046875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Strider Kick",
+    "apl": 33.2177734375,
+    "policy": 33.19921875,
+    "apl_execute": 6.51953125,
+    "policy_execute": 6.728515625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Immolation Trap",
+    "apl": 9.0029296875,
+    "policy": 14.7470703125,
+    "apl_execute": 1.0986328125,
+    "policy_execute": 2.71484375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Thorium Grenade",
+    "apl": 4.0,
+    "policy": 4.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Major Frenzy Potion",
+    "apl": 3.0,
+    "policy": 3.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Hunter's Mark",
+    "apl": 2.0,
+    "policy": 2.05859375,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0576171875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Demonic Rune",
+    "apl": 0.0009765625,
+    "policy": 3.0,
+    "apl_execute": 0.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Rapid Fire",
+    "apl": 2.0,
+    "policy": 1.0,
+    "apl_execute": 1.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Goblin Sapper Charge",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Explosive Trap",
+    "apl": 0.0,
+    "policy": 0.3486328125,
+    "apl_execute": 0.0,
+    "policy_execute": 0.3486328125,
+    "apl_rage": null,
+    "policy_rage": 0.0
+   }
+  ],
+  "cooldowns": [
+   {
+    "action": "cast:Goblin Sapper Charge",
+    "apl": [
+     {
+      "mean_s": 0.0,
+      "share": 1.0
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 0.0,
+      "share": 1.0
+     }
+    ]
+   },
+   {
+    "action": "cast:Demonic Rune",
+    "apl": [
+     {
+      "mean_s": 107.3,
+      "share": 0.001
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 17.5,
+      "share": 1.0
+     },
+     {
+      "mean_s": 137.9,
+      "share": 1.0
+     },
+     {
+      "mean_s": 258.3,
+      "share": 1.0
+     }
+    ]
+   }
+  ],
+  "timeline": {
+   "apl": [
+    {
+     "t": 0.0,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Major Frenzy Potion",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Rapid Fire",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Goblin Sapper Charge",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Strider Kick",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.5,
+     "action": "cast:Mongoose Bite",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 3.0,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 99,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 4.5,
+     "action": "cast:Immolation Trap",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 5.94,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 6.39,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.44,
+     "action": "cast:Mongoose Bite",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 8.94,
+     "action": "cast:Strider Kick",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 10.44,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.94,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 12.62,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 13.44,
+     "action": "cast:Mongoose Bite",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 14.94,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.44,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 17.94,
+     "action": "cast:Strider Kick",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 19.13,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 19.44,
+     "action": "cast:Mongoose Bite",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 20.94,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 22.44,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 23.94,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.44,
+     "action": "cast:Mongoose Bite",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.6,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.94,
+     "action": "cast:Strider Kick",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 28.44,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 29.94,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 31.44,
+     "action": "cast:Mongoose Bite",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 32.94,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 33.91,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 34.44,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 35.94,
+     "action": "cast:Strider Kick",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.44,
+     "action": "cast:Mongoose Bite",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 38.94,
+     "action": "cast:Immolation Trap",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.38,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.38,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 41.88,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 43.38,
+     "action": "cast:Mongoose Bite",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 44.88,
+     "action": "cast:Strider Kick",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.38,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 47.01,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 47.88,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 49.38,
+     "action": "cast:Mongoose Bite",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.88,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.38,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 53.88,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 99,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 53.88,
+     "action": "cast:Strider Kick",
+     "rage": 0,
+     "mana_pct": 99,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 55.38,
+     "action": "cast:Mongoose Bite",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.88,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 99,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 58.38,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.88,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    }
+   ],
+   "policy": [
+    {
+     "t": 0.0,
+     "action": "cast:Major Frenzy Potion",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Rapid Fire",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Goblin Sapper Charge",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.5,
+     "action": "cast:Mongoose Bite",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 3.0,
+     "action": "cast:Strider Kick",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 4.5,
+     "action": "cast:Immolation Trap",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 5.94,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 6.43,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.44,
+     "action": "cast:Mongoose Bite",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 8.94,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 10.44,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.94,
+     "action": "cast:Strider Kick",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 12.5,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 13.44,
+     "action": "cast:Mongoose Bite",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 14.94,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.44,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 17.94,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 19.44,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 19.44,
+     "action": "cast:Mongoose Bite",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 20.94,
+     "action": "cast:Strider Kick",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 22.44,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 23.94,
+     "action": "cast:Immolation Trap",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.38,
+     "action": "cast:Mongoose Bite",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.37,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.88,
+     "action": "cast:Demonic Rune",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.88,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 28.38,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 29.88,
+     "action": "cast:Strider Kick",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 31.38,
+     "action": "cast:Mongoose Bite",
+     "rage": 0,
+     "mana_pct": 99,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 32.88,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 32.88,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 34.38,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 35.88,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.38,
+     "action": "cast:Mongoose Bite",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 38.88,
+     "action": "cast:Strider Kick",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.38,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.38,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 41.88,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 43.38,
+     "action": "cast:Immolation Trap",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 44.83,
+     "action": "cast:Mongoose Bite",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.33,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 47.83,
+     "action": "cast:Strider Kick",
+     "rage": 0,
+     "mana_pct": 99,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 48.55,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 49.33,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.83,
+     "action": "cast:Mongoose Bite",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.33,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 53.83,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 54.78,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 55.33,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.83,
+     "action": "cast:Mongoose Bite",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 58.33,
+     "action": "cast:Strider Kick",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.83,
+     "action": "cast:Wing Clip",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    }
+   ]
+  }
+ },
+ "native": {
+  "fights": 2048,
+  "published": 932.232829362154,
+  "network": 948.0805482566357,
+  "network_vs_published": 15.847718894481659,
+  "network_vs_published_se": 0.457638308005791
+ },
+ "profile": {
+  "id": "pet_melee__windshaper__learned",
+  "dps": 946.1116928697681,
+  "se": 0.35895195364120885,
+  "published_dps": 932.1042065076826,
+  "published_se": 0.35697407967929284,
+  "talents": "52210005001-005005-5202012300500221",
+  "talent_source": "learned",
+  "overrides": [
+   "cast:Goblin Sapper Charge",
+   "cast:Thorium Grenade if not Frost Trap:ready and elapsed >= 0.00",
+   "cast:Immolation Trap",
+   "cast:Wing Clip if Raptor Strike#3:cooldown >= 5.06s and mana_frac <= 0.44",
+   "cast:Summon Hawk if elapsed >= 0.96 and Thorium Grenade:cooldown >= 10.35s"
+  ],
+  "removed": [],
+  "paired_vs_published": 13.855178505182266,
+  "paired_vs_published_se": 0.4728662859262208,
+  "paired_fights": 2048,
+  "gain": true
+ }
+}

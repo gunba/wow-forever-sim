@@ -1,0 +1,1002 @@
+{
+ "key": "retribution",
+ "build": "Retribution",
+ "race": "Human",
+ "class": "",
+ "published": {
+  "talents": "55003-231-05225331001330301",
+  "dps": 958.1723309010267,
+  "se": 0.5975907829485421,
+  "benchmark_dps": 958.0197211553434
+ },
+ "learned": {
+  "talents": "55113001--15225331001330321",
+  "dps": 991.137834250927,
+  "vs_published": 32.965503349900246,
+  "vs_published_se": 0.46102927687351186,
+  "published_talents_dps": 987.2600021064281,
+  "published_talents_vs_published": 29.08767120540142,
+  "published_talents_vs_published_se": 0.47162025465117496
+ },
+ "talent_changes": [
+  {
+   "talent": "Healing Light",
+   "tree": "Holy",
+   "published": 0,
+   "learned": 1
+  },
+  {
+   "talent": "Spiritual Focus",
+   "tree": "Holy",
+   "published": 0,
+   "learned": 1
+  },
+  {
+   "talent": "Reverence",
+   "tree": "Holy",
+   "published": 0,
+   "learned": 1
+  },
+  {
+   "talent": "Toughness",
+   "tree": "Protection",
+   "published": 2,
+   "learned": 0
+  },
+  {
+   "talent": "Redoubt",
+   "tree": "Protection",
+   "published": 3,
+   "learned": 0
+  },
+  {
+   "talent": "Precision",
+   "tree": "Protection",
+   "published": 1,
+   "learned": 0
+  },
+  {
+   "talent": "Deflection",
+   "tree": "Retribution",
+   "published": 0,
+   "learned": 1
+  },
+  {
+   "talent": "Instrument of Law",
+   "tree": "Retribution",
+   "published": 0,
+   "learned": 2
+  }
+ ],
+ "fights": 4096,
+ "training": {
+  "stop": "budget",
+  "train_minutes": 19.3,
+  "minutes": 20.0,
+  "decisions": 500170752,
+  "fights": 501143,
+  "builds_seen": 57731,
+  "decisions_per_fight": 2027.3955078125,
+  "best_decisions": 456130560
+ },
+ "actions": {
+  "fights": 1024,
+  "apl_talents": "55003-231-05225331001330301",
+  "policy_talents": "55113001--15225331001330321",
+  "apl": 955.7808591723442,
+  "policy": 990.00823533535,
+  "diff": 34.22737616300583,
+  "diff_se": 0.91240430529843,
+  "agreement": 0.6125853684020555,
+  "disagreements": [
+   {
+    "apl_would": "cast:Seal of Righteousness",
+    "policy_did": "wait",
+    "per_fight": 131.206
+   },
+   {
+    "apl_would": "cast:Seal of Command",
+    "policy_did": "wait",
+    "per_fight": 118.478
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Seal of Righteousness",
+    "per_fight": 33.332
+   },
+   {
+    "apl_would": "cast:Consecration",
+    "policy_did": "cast:Seal of Righteousness",
+    "per_fight": 8.424
+   },
+   {
+    "apl_would": "cast:Consecration",
+    "policy_did": "wait",
+    "per_fight": 6.484
+   },
+   {
+    "apl_would": "cast:Seal of Righteousness",
+    "policy_did": "cast:Consecration",
+    "per_fight": 4.414
+   },
+   {
+    "apl_would": "cast:Seal of Righteousness",
+    "policy_did": "cast:Hammer of Wrath",
+    "per_fight": 2.605
+   },
+   {
+    "apl_would": "cast:Seal of Command",
+    "policy_did": "cast:Hammer of Wrath",
+    "per_fight": 2.591
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Seal of Command",
+    "per_fight": 2.341
+   },
+   {
+    "apl_would": "cast:Seal of Command",
+    "policy_did": "cast:Consecration",
+    "per_fight": 1.621
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Major Mana Potion",
+    "per_fight": 1.366
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Demonic Rune",
+    "per_fight": 1.296
+   },
+   {
+    "apl_would": "cast:Goblin Sapper Charge",
+    "policy_did": "cast:Consecration",
+    "per_fight": 1.0
+   },
+   {
+    "apl_would": "cast:Judgement",
+    "policy_did": "cast:Goblin Sapper Charge",
+    "per_fight": 1.0
+   },
+   {
+    "apl_would": "cast:Consecration",
+    "policy_did": "cast:Seal of Command",
+    "per_fight": 0.817
+   }
+  ],
+  "actions": [
+   {
+    "action": "wait",
+    "apl": 1836.9453125,
+    "policy": 588.953125,
+    "apl_execute": 244.0556640625,
+    "policy_execute": 105.4677734375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Seal of Righteousness",
+    "apl": 39.7880859375,
+    "policy": 60.0986328125,
+    "apl_execute": 7.7841796875,
+    "policy_execute": 9.7177734375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Seal of Command",
+    "apl": 39.275390625,
+    "policy": 59.5712890625,
+    "apl_execute": 7.7958984375,
+    "policy_execute": 9.6572265625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Judgement",
+    "apl": 39.572265625,
+    "policy": 39.4482421875,
+    "apl_execute": 7.7646484375,
+    "policy_execute": 7.7939453125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Consecration",
+    "apl": 33.876953125,
+    "policy": 30.0986328125,
+    "apl_execute": 6.2431640625,
+    "policy_execute": 5.7158203125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Holy Strike",
+    "apl": 29.1533203125,
+    "policy": 29.0634765625,
+    "apl_execute": 5.498046875,
+    "policy_execute": 5.34765625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Hammer of Wrath",
+    "apl": 7.9970703125,
+    "policy": 9.345703125,
+    "apl_execute": 7.9970703125,
+    "policy_execute": 9.345703125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Demonic Rune",
+    "apl": 2.0234375,
+    "policy": 2.8955078125,
+    "apl_execute": 0.4052734375,
+    "policy_execute": 0.8955078125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Major Mana Potion",
+    "apl": 1.12890625,
+    "policy": 2.017578125,
+    "apl_execute": 0.7109375,
+    "policy_execute": 0.0283203125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Goblin Sapper Charge",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   }
+  ],
+  "cooldowns": [
+   {
+    "action": "cast:Goblin Sapper Charge",
+    "apl": [
+     {
+      "mean_s": 0.0,
+      "share": 1.0
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 0.0,
+      "share": 1.0
+     }
+    ]
+   },
+   {
+    "action": "cast:Demonic Rune",
+    "apl": [
+     {
+      "mean_s": 90.2,
+      "share": 1.0
+     },
+     {
+      "mean_s": 226.4,
+      "share": 0.992
+     },
+     {
+      "mean_s": 296.2,
+      "share": 0.031
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 43.2,
+      "share": 1.0
+     },
+     {
+      "mean_s": 164.0,
+      "share": 1.0
+     },
+     {
+      "mean_s": 281.7,
+      "share": 0.896
+     }
+    ]
+   }
+  ],
+  "timeline": {
+   "apl": [
+    {
+     "t": 0.0,
+     "action": "cast:Goblin Sapper Charge",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.49,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 2.97,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 4.46,
+     "action": "cast:Seal of Command",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.52,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.54,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 10.03,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.51,
+     "action": "cast:Seal of Command",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 13.0,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 15.03,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 15.08,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 18.87,
+     "action": "cast:Seal of Command",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 20.35,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.84,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 22.58,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 23.32,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.36,
+     "action": "cast:Seal of Command",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 29.84,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 30.11,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 31.33,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 33.91,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.63,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.65,
+     "action": "cast:Seal of Command",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 39.13,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 41.37,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 78,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 42.85,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 45.14,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 77,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 45.19,
+     "action": "cast:Seal of Command",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 47.17,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 48.96,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 78,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 51.39,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 75,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.66,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 75,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.88,
+     "action": "cast:Seal of Command",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 55.21,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 77,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.7,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 74,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 58.18,
+     "action": "cast:Demonic Rune",
+     "rage": 0,
+     "mana_pct": 71,
+     "energy": 0,
+     "combo": 0
+    }
+   ],
+   "policy": [
+    {
+     "t": 0.0,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Goblin Sapper Charge",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.49,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 2.97,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 4.96,
+     "action": "cast:Seal of Command",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.53,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 8.04,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 9.53,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.51,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 13.0,
+     "action": "cast:Seal of Command",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 14.48,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 15.06,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.07,
+     "action": "cast:Seal of Command",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 17.55,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.04,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 22.52,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 22.58,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 24.01,
+     "action": "cast:Seal of Command",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.49,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.98,
+     "action": "cast:Seal of Command",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 28.46,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 29.95,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 78,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 30.12,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 75,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 32.53,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 35.02,
+     "action": "cast:Seal of Command",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 36.5,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.64,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 77,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.99,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 39.47,
+     "action": "cast:Seal of Command",
+     "rage": 0,
+     "mana_pct": 74,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 39.47,
+     "action": "cast:Demonic Rune",
+     "rage": 0,
+     "mana_pct": 71,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.96,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 99,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 42.44,
+     "action": "cast:Seal of Command",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 43.93,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 45.17,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.01,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 99,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 47.5,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 49.68,
+     "action": "cast:Seal of Command",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 51.17,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.7,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 53.95,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 55.44,
+     "action": "cast:Seal of Command",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.92,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 58.41,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    }
+   ]
+  }
+ },
+ "native": {
+  "fights": 2048,
+  "published": 958.7137025892735,
+  "network": 991.0173228979111,
+  "network_vs_published": 32.30362030863762,
+  "network_vs_published_se": 0.6547797388152776
+ },
+ "profile": {
+  "id": "retribution__human__learned",
+  "dps": 1003.3720298490792,
+  "se": 0.5159476876918683,
+  "published_dps": 958.0197211553434,
+  "published_se": 0.5452655301652725,
+  "talents": "55113001--15225331001330321",
+  "talent_source": "learned",
+  "overrides": [
+   "cast:Holy Strike if elapsed >= 0.02",
+   "cast:Hammer of Wrath if execute20",
+   "cast:Consecration if self:Seal of CommandRetribution (#1)4:remaining >= 25.03s and Holy Strike:cooldown <= 5.39s",
+   "cast:Seal of Righteousness if self:Seal of CommandRetribution (#1)4:active and Holy Strike:cooldown >= 2.26s",
+   "cast:Seal of Righteousness if self:Seal of RighteousnessRetribution (#1)8:remaining <= 0.00s and Consecration:cooldown >= 2.40s",
+   "cast:Hammer of Wrath"
+  ],
+  "removed": [
+   "cast:Seal of Righteousness (conditional)"
+  ],
+  "paired_vs_published": 44.246927469968796,
+  "paired_vs_published_se": 0.6487884496601327,
+  "paired_fights": 2048,
+  "gain": true
+ }
+}

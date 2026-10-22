@@ -1,0 +1,762 @@
+{
+ "key": "mutilate",
+ "build": "Mutilate",
+ "race": "Windshaper",
+ "class": "",
+ "published": {
+  "talents": "0053031035140105-302303202014",
+  "dps": 735.0014367997646,
+  "se": 0.3326351985130542,
+  "benchmark_dps": 735.6237187134146
+ },
+ "learned": {
+  "talents": "0053031035040105-302303202015",
+  "dps": 739.5210062116385,
+  "vs_published": 4.519569411873817,
+  "vs_published_se": 0.19082383761965757,
+  "published_talents_dps": 733.737290546298,
+  "published_talents_vs_published": -1.2641462534666061,
+  "published_talents_vs_published_se": 0.19272145636454108
+ },
+ "talent_changes": [
+  {
+   "talent": "Cold Blood",
+   "tree": "Assassination",
+   "published": 1,
+   "learned": 0
+  },
+  {
+   "talent": "Dual Wield Specialization",
+   "tree": "Combat",
+   "published": 4,
+   "learned": 5
+  }
+ ],
+ "fights": 4096,
+ "training": {
+  "stop": "converged",
+  "train_minutes": 8.7,
+  "minutes": 9.4,
+  "decisions": 272629760,
+  "fights": 115550,
+  "builds_seen": 14380,
+  "decisions_per_fight": 2173.1572265625,
+  "best_decisions": 152043520
+ },
+ "actions": {
+  "fights": 1024,
+  "apl_talents": "0053031035140105-302303202014",
+  "policy_talents": "0053031035040105-302303202015",
+  "apl": 737.3244425058365,
+  "policy": 739.6926473379135,
+  "diff": 2.3682048320770264,
+  "diff_se": 0.3862643490940296,
+  "agreement": 0.9949435458647552,
+  "disagreements": [
+   {
+    "apl_would": "cast:Eviscerate",
+    "policy_did": "wait",
+    "per_fight": 6.792
+   },
+   {
+    "apl_would": "cast:Slice and Dice",
+    "policy_did": "cast:Eviscerate",
+    "per_fight": 1.139
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Eviscerate",
+    "per_fight": 1.096
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Thorium Grenade",
+    "per_fight": 0.951
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Major Frenzy Potion",
+    "per_fight": 0.472
+   },
+   {
+    "apl_would": "cast:Slice and Dice",
+    "policy_did": "wait",
+    "per_fight": 0.152
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Slice and Dice",
+    "per_fight": 0.055
+   },
+   {
+    "apl_would": "cast:Mutilate",
+    "policy_did": "cast:Slice and Dice",
+    "per_fight": 0.048
+   },
+   {
+    "apl_would": "cast:Thorium Grenade",
+    "policy_did": "cast:Eviscerate",
+    "per_fight": 0.024
+   },
+   {
+    "apl_would": "cast:Thorium Grenade",
+    "policy_did": "cast:Mutilate",
+    "per_fight": 0.024
+   },
+   {
+    "apl_would": "cast:Mutilate",
+    "policy_did": "cast:Eviscerate",
+    "per_fight": 0.022
+   },
+   {
+    "apl_would": "cast:Major Frenzy Potion",
+    "policy_did": "cast:Eviscerate",
+    "per_fight": 0.011
+   },
+   {
+    "apl_would": "cast:Slice and Dice",
+    "policy_did": "cast:Major Frenzy Potion",
+    "per_fight": 0.01
+   },
+   {
+    "apl_would": "cast:Slice and Dice",
+    "policy_did": "cast:Thorium Grenade",
+    "per_fight": 0.003
+   }
+  ],
+  "actions": [
+   {
+    "action": "wait",
+    "apl": 2144.6552734375,
+    "policy": 2015.296875,
+    "apl_execute": 417.083984375,
+    "policy_execute": 401.8740234375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Mutilate",
+    "apl": 50.3740234375,
+    "policy": 49.9169921875,
+    "apl_execute": 9.662109375,
+    "policy_execute": 9.4560546875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Eviscerate",
+    "apl": 44.1875,
+    "policy": 45.2490234375,
+    "apl_execute": 8.6572265625,
+    "policy_execute": 9.1328125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Slice and Dice",
+    "apl": 16.1259765625,
+    "policy": 16.189453125,
+    "apl_execute": 2.9453125,
+    "policy_execute": 2.93359375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Thorium Grenade",
+    "apl": 4.0,
+    "policy": 4.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Major Frenzy Potion",
+    "apl": 3.0,
+    "policy": 3.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Cold Blood",
+    "apl": 2.0,
+    "policy": 0.0,
+    "apl_execute": 0.013671875,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": null
+   },
+   {
+    "action": "cast:Goblin Sapper Charge",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Thistle Tea",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   }
+  ],
+  "cooldowns": [
+   {
+    "action": "cast:Goblin Sapper Charge",
+    "apl": [
+     {
+      "mean_s": 0.0,
+      "share": 1.0
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 0.0,
+      "share": 1.0
+     }
+    ]
+   }
+  ],
+  "timeline": {
+   "apl": [
+    {
+     "t": 0.0,
+     "action": "cast:Major Frenzy Potion",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Goblin Sapper Charge",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 0
+    },
+    {
+     "t": 1.0,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 50,
+     "combo": 3
+    },
+    {
+     "t": 2.0,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 61,
+     "combo": 0
+    },
+    {
+     "t": 2.0,
+     "action": "cast:Thistle Tea",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 1,
+     "combo": 3
+    },
+    {
+     "t": 3.0,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 3
+    },
+    {
+     "t": 4.0,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 0
+    },
+    {
+     "t": 5.0,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 50,
+     "combo": 3
+    },
+    {
+     "t": 6.0,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 57,
+     "combo": 3
+    },
+    {
+     "t": 7.0,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 72,
+     "combo": 1
+    },
+    {
+     "t": 7.0,
+     "action": "cast:Cold Blood",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 12,
+     "combo": 4
+    },
+    {
+     "t": 8.0,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 23,
+     "combo": 4
+    },
+    {
+     "t": 11.2,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 61,
+     "combo": 0
+    },
+    {
+     "t": 13.1,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 21,
+     "combo": 3
+    },
+    {
+     "t": 16.5,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 61,
+     "combo": 1
+    },
+    {
+     "t": 18.4,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 21,
+     "combo": 3
+    },
+    {
+     "t": 21.7,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 60,
+     "combo": 1
+    },
+    {
+     "t": 23.7,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 21,
+     "combo": 4
+    },
+    {
+     "t": 26.1,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 26,
+     "combo": 1
+    },
+    {
+     "t": 29.4,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 60,
+     "combo": 0
+    },
+    {
+     "t": 31.3,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 20,
+     "combo": 3
+    },
+    {
+     "t": 37.1,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 60,
+     "combo": 1
+    },
+    {
+     "t": 39.0,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 20,
+     "combo": 4
+    },
+    {
+     "t": 40.0,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 27,
+     "combo": 4
+    },
+    {
+     "t": 43.3,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 61,
+     "combo": 0
+    },
+    {
+     "t": 44.4,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 60,
+     "combo": 0
+    },
+    {
+     "t": 46.3,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 20,
+     "combo": 3
+    },
+    {
+     "t": 47.3,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 26,
+     "combo": 3
+    },
+    {
+     "t": 52.5,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 61,
+     "combo": 1
+    },
+    {
+     "t": 54.4,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 20,
+     "combo": 4
+    },
+    {
+     "t": 57.8,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 61,
+     "combo": 0
+    },
+    {
+     "t": 58.9,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 60,
+     "combo": 0
+    }
+   ],
+   "policy": [
+    {
+     "t": 0.0,
+     "action": "cast:Major Frenzy Potion",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Goblin Sapper Charge",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 0
+    },
+    {
+     "t": 1.0,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 50,
+     "combo": 3
+    },
+    {
+     "t": 2.0,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 61,
+     "combo": 0
+    },
+    {
+     "t": 2.0,
+     "action": "cast:Thistle Tea",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 1,
+     "combo": 3
+    },
+    {
+     "t": 3.0,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 3
+    },
+    {
+     "t": 4.0,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 0
+    },
+    {
+     "t": 5.0,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 50,
+     "combo": 3
+    },
+    {
+     "t": 6.0,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 57,
+     "combo": 3
+    },
+    {
+     "t": 7.0,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 72,
+     "combo": 1
+    },
+    {
+     "t": 8.0,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 23,
+     "combo": 4
+    },
+    {
+     "t": 11.2,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 61,
+     "combo": 0
+    },
+    {
+     "t": 13.1,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 21,
+     "combo": 3
+    },
+    {
+     "t": 16.5,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 61,
+     "combo": 1
+    },
+    {
+     "t": 18.4,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 21,
+     "combo": 3
+    },
+    {
+     "t": 21.7,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 60,
+     "combo": 1
+    },
+    {
+     "t": 23.7,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 21,
+     "combo": 4
+    },
+    {
+     "t": 26.1,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 26,
+     "combo": 1
+    },
+    {
+     "t": 29.4,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 60,
+     "combo": 0
+    },
+    {
+     "t": 31.3,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 20,
+     "combo": 3
+    },
+    {
+     "t": 37.1,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 60,
+     "combo": 1
+    },
+    {
+     "t": 39.0,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 20,
+     "combo": 4
+    },
+    {
+     "t": 40.0,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 27,
+     "combo": 4
+    },
+    {
+     "t": 42.8,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 61,
+     "combo": 0
+    },
+    {
+     "t": 44.7,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 20,
+     "combo": 3
+    },
+    {
+     "t": 47.1,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 25,
+     "combo": 1
+    },
+    {
+     "t": 52.9,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 61,
+     "combo": 0
+    },
+    {
+     "t": 54.8,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 20,
+     "combo": 3
+    },
+    {
+     "t": 58.2,
+     "action": "cast:Mutilate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 61,
+     "combo": 1
+    }
+   ]
+  }
+ },
+ "native": {
+  "fights": 2048,
+  "published": 736.249419271946,
+  "network": 739.2489786446095,
+  "network_vs_published": 2.999559372663498,
+  "network_vs_published_se": 0.2708306043789515
+ },
+ "profile": {
+  "id": "mutilate__windshaper__learned",
+  "dps": 742.6758102182891,
+  "se": 0.30095028474214736,
+  "published_dps": 735.6237187134146,
+  "published_se": 0.3032160689713804,
+  "talents": "0053031035040105-302303202015",
+  "talent_source": "learned",
+  "overrides": [
+   "cast:Thorium Grenade if combo >= 2.00 and elapsed <= 0.24"
+  ],
+  "removed": [],
+  "paired_vs_published": 7.195664972066879,
+  "paired_vs_published_se": 0.23029514064895676,
+  "paired_fights": 2048,
+  "gain": true
+ }
+}

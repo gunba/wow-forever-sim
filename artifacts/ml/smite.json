@@ -1,0 +1,906 @@
+{
+ "key": "smite",
+ "build": "Smite",
+ "race": "Gnome",
+ "class": "",
+ "published": {
+  "talents": "515035031030001031-00505023002-003",
+  "dps": 502.0530828759074,
+  "se": 0.21739547845523943,
+  "benchmark_dps": 502.65157635349493
+ },
+ "learned": {
+  "talents": "504035131031001-01505130002-20302",
+  "dps": 519.5085644200444,
+  "vs_published": 17.455481544137,
+  "vs_published_se": 0.14796214584531328,
+  "published_talents_dps": 503.81187783926725,
+  "published_talents_vs_published": 1.7587949633598328,
+  "published_talents_vs_published_se": 0.12329469926087074
+ },
+ "talent_changes": [
+  {
+   "talent": "Wand Specialization",
+   "tree": "Discipline",
+   "published": 1,
+   "learned": 0
+  },
+  {
+   "talent": "Twin Disciplines",
+   "tree": "Discipline",
+   "published": 5,
+   "learned": 4
+  },
+  {
+   "talent": "Martyrdom",
+   "tree": "Discipline",
+   "published": 0,
+   "learned": 1
+  },
+  {
+   "talent": "Improved Inner Fire",
+   "tree": "Discipline",
+   "published": 0,
+   "learned": 1
+  },
+  {
+   "talent": "Divine Aegis",
+   "tree": "Discipline",
+   "published": 3,
+   "learned": 0
+  },
+  {
+   "talent": "Power Infusion",
+   "tree": "Discipline",
+   "published": 1,
+   "learned": 0
+  },
+  {
+   "talent": "Improved Renew",
+   "tree": "Holy",
+   "published": 0,
+   "learned": 1
+  },
+  {
+   "talent": "Holy Nova",
+   "tree": "Holy",
+   "published": 0,
+   "learned": 1
+  },
+  {
+   "talent": "Blessed Recovery",
+   "tree": "Holy",
+   "published": 2,
+   "learned": 3
+  },
+  {
+   "talent": "Inspiration",
+   "tree": "Holy",
+   "published": 3,
+   "learned": 0
+  },
+  {
+   "talent": "Shadow Focus",
+   "tree": "Shadow Magic",
+   "published": 0,
+   "learned": 2
+  },
+  {
+   "talent": "Improved Shadow Word: Pain",
+   "tree": "Shadow Magic",
+   "published": 0,
+   "learned": 2
+  }
+ ],
+ "fights": 4096,
+ "training": {
+  "stop": "converged",
+  "train_minutes": 8.0,
+  "minutes": 8.5,
+  "decisions": 212336640,
+  "fights": 727135,
+  "builds_seen": 23625,
+  "decisions_per_fight": 223.056640625,
+  "best_decisions": 167247872
+ },
+ "actions": {
+  "fights": 1024,
+  "apl_talents": "515035031030001031-00505023002-003",
+  "policy_talents": "504035131031001-01505130002-20302",
+  "apl": 502.7601699233055,
+  "policy": 519.8664593100548,
+  "diff": 17.106289386749268,
+  "diff_se": 0.3008015763982065,
+  "agreement": 0.96812525499796,
+  "disagreements": [
+   {
+    "apl_would": "cast:Holy Fire",
+    "policy_did": "wait",
+    "per_fight": 8.178
+   },
+   {
+    "apl_would": "cast:Eureka!",
+    "policy_did": "cast:Inner Focus",
+    "per_fight": 1.0
+   },
+   {
+    "apl_would": "macro:{\"strictSequence\":{\"actions\":[{\"ca",
+    "policy_did": "cast:Inner Focus",
+    "per_fight": 0.873
+   },
+   {
+    "apl_would": "cast:Holy Fire",
+    "policy_did": "cast:Shadow Word: Pain",
+    "per_fight": 0.864
+   },
+   {
+    "apl_would": "cast:Smite",
+    "policy_did": "cast:Holy Fire",
+    "per_fight": 0.833
+   },
+   {
+    "apl_would": "cast:Holy Fire",
+    "policy_did": "cast:Smite",
+    "per_fight": 0.774
+   },
+   {
+    "apl_would": "cast:Penance",
+    "policy_did": "cast:Smite",
+    "per_fight": 0.735
+   },
+   {
+    "apl_would": "cast:Smite",
+    "policy_did": "cast:Major Mana Potion",
+    "per_fight": 0.726
+   },
+   {
+    "apl_would": "cast:Smite",
+    "policy_did": "cast:Shadow Word: Pain",
+    "per_fight": 0.688
+   },
+   {
+    "apl_would": "cast:Holy Fire",
+    "policy_did": "cast:Mind Blast",
+    "per_fight": 0.421
+   },
+   {
+    "apl_would": "cast:Penance",
+    "policy_did": "cast:Mind Blast",
+    "per_fight": 0.236
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Holy Nova",
+    "per_fight": 0.198
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Demonic Rune",
+    "per_fight": 0.178
+   },
+   {
+    "apl_would": "cast:Demonic Rune",
+    "policy_did": "cast:Shadow Word: Pain",
+    "per_fight": 0.172
+   },
+   {
+    "apl_would": "cast:Holy Fire",
+    "policy_did": "cast:Penance",
+    "per_fight": 0.146
+   }
+  ],
+  "actions": [
+   {
+    "action": "wait",
+    "apl": 94.8740234375,
+    "policy": 389.19140625,
+    "apl_execute": 31.044921875,
+    "policy_execute": 148.6416015625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Smite",
+    "apl": 73.220703125,
+    "policy": 79.6171875,
+    "apl_execute": 11.5048828125,
+    "policy_execute": 11.4091796875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Holy Fire",
+    "apl": 25.8232421875,
+    "policy": 25.861328125,
+    "apl_execute": 4.9853515625,
+    "policy_execute": 4.7412109375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Shadow Word: Pain",
+    "apl": 11.779296875,
+    "policy": 10.1806640625,
+    "apl_execute": 2.115234375,
+    "policy_execute": 1.8505859375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Demonic Rune",
+    "apl": 3.0,
+    "policy": 3.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Major Mana Potion",
+    "apl": 3.0,
+    "policy": 3.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Eureka!",
+    "apl": 3.0,
+    "policy": 3.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "macro:{\"strictSequence\":{\"actions\":[{\"ca",
+    "apl": 2.0,
+    "policy": 0.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": null
+   },
+   {
+    "action": "cast:Power Infusion",
+    "apl": 2.0,
+    "policy": 0.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": null
+   },
+   {
+    "action": "cast:Inner Focus",
+    "apl": 0.0,
+    "policy": 2.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": null,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Penance",
+    "apl": 0.6884765625,
+    "policy": 0.271484375,
+    "apl_execute": 0.6884765625,
+    "policy_execute": 0.271484375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Mind Blast",
+    "apl": 0.0,
+    "policy": 0.6875,
+    "apl_execute": 0.0,
+    "policy_execute": 0.6875,
+    "apl_rage": null,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Holy Nova",
+    "apl": 0.0,
+    "policy": 0.1982421875,
+    "apl_execute": 0.0,
+    "policy_execute": 0.1982421875,
+    "apl_rage": null,
+    "policy_rage": 0.0
+   }
+  ],
+  "cooldowns": [
+   {
+    "action": "cast:Demonic Rune",
+    "apl": [
+     {
+      "mean_s": 17.3,
+      "share": 1.0
+     },
+     {
+      "mean_s": 138.1,
+      "share": 1.0
+     },
+     {
+      "mean_s": 258.6,
+      "share": 1.0
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 23.7,
+      "share": 1.0
+     },
+     {
+      "mean_s": 144.1,
+      "share": 1.0
+     },
+     {
+      "mean_s": 264.6,
+      "share": 1.0
+     }
+    ]
+   }
+  ],
+  "timeline": {
+   "apl": [
+    {
+     "t": 0.0,
+     "action": "cast:Power Infusion",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Eureka!",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Shadow Word: Pain",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.5,
+     "action": "macro:{\"strictSequence\":{\"actions\":[{\"ca",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 3.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 5.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.5,
+     "action": "cast:Holy Fire",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 10.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 12.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 14.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 18.5,
+     "action": "cast:Demonic Rune",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 18.5,
+     "action": "cast:Holy Fire",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.5,
+     "action": "cast:Shadow Word: Pain",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 23.0,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.0,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 27.0,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 29.0,
+     "action": "cast:Holy Fire",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 32.0,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 34.0,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 36.0,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 38.0,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.0,
+     "action": "cast:Holy Fire",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 43.0,
+     "action": "cast:Shadow Word: Pain",
+     "rage": 0,
+     "mana_pct": 78,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 44.5,
+     "action": "cast:Major Mana Potion",
+     "rage": 0,
+     "mana_pct": 73,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 44.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 48.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.5,
+     "action": "cast:Holy Fire",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 53.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 55.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 57.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    }
+   ],
+   "policy": [
+    {
+     "t": 0.0,
+     "action": "cast:Inner Focus",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Eureka!",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Shadow Word: Pain",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 99,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 3.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 5.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.5,
+     "action": "cast:Holy Fire",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 10.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 12.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 14.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 18.5,
+     "action": "cast:Holy Fire",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 23.5,
+     "action": "cast:Demonic Rune",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 23.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.5,
+     "action": "cast:Shadow Word: Pain",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 27.0,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 29.0,
+     "action": "cast:Holy Fire",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 32.0,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 34.0,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 36.0,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 38.0,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.0,
+     "action": "cast:Holy Fire",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 43.0,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 45.0,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 47.0,
+     "action": "cast:Major Mana Potion",
+     "rage": 0,
+     "mana_pct": 78,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 47.0,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 49.0,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 51.0,
+     "action": "cast:Shadow Word: Pain",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.5,
+     "action": "cast:Holy Fire",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 55.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 57.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.5,
+     "action": "cast:Smite",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    }
+   ]
+  }
+ },
+ "native": {
+  "fights": 2048,
+  "published": 502.060879483819,
+  "network": 519.3831331133842,
+  "network_vs_published": 17.32225362956524,
+  "network_vs_published_se": 0.2098902959070675
+ },
+ "profile": {
+  "id": "smite__gnome__learned",
+  "dps": 522.4354725497288,
+  "se": 0.17844107646577478,
+  "published_dps": 502.65157635349493,
+  "published_se": 0.19643591964982865,
+  "talents": "504035131031001-01505130002-20302",
+  "talent_source": "learned",
+  "overrides": [
+   "cast:Smite if not Penance:ready and target:Holy Fire (Rank 8)-1:remaining >= 2.95s",
+   "cast:Smite if elapsed >= 0.96 and target:Shadow Word: Pain (Rank 8)-1:remaining >= 7.91s"
+  ],
+  "removed": [
+   "cast:Smite"
+  ],
+  "paired_vs_published": 20.20206879079342,
+  "paired_vs_published_se": 0.2148615558260905,
+  "paired_fights": 2048,
+  "gain": true
+ }
+}

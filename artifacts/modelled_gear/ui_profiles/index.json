@@ -13556,5 +13556,1570 @@
       ],
       "Exclusions": null
     }
+  },
+  {
+    "build": "Affliction (learned)",
+    "race": "Human",
+    "file": "affliction__human__learned.json",
+    "dps": 926.0372552331414,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 16.1,
+      "SpellFinal": 16.1,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 11672}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        },
+        {
+          "Action": "{SpellID: 11668}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        },
+        {
+          "Action": "{SpellID: 11661}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        },
+        {
+          "Action": "{SpellID: 11689}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        },
+        {
+          "Action": "{SpellID: 17923}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        },
+        {
+          "Action": "{SpellID: 11713}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        },
+        {
+          "Action": "{SpellID: 603}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Arcane (learned)",
+    "race": "Gnome",
+    "file": "arcane__gnome__learned.json",
+    "dps": 776.8495576142334,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 11.5,
+      "SpellFinal": 11.5,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 30451}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.5
+        },
+        {
+          "Action": "{SpellID: 1326082}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.5
+        },
+        {
+          "Action": "{SpellID: 10212, Tag: 1}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.5
+        },
+        {
+          "Action": "{SpellID: 10212}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.5
+        },
+        {
+          "Action": "{SpellID: 10207}",
+          "Kind": "spell",
+          "AdditionalPercent": -1.5
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Arcane\u2013Frost (learned)",
+    "race": "High Order",
+    "file": "arcane_frost__high_order__learned.json",
+    "dps": 831.7253035806059,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 12.1,
+      "SpellFinal": 12.1,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 30451}",
+          "Kind": "spell",
+          "AdditionalPercent": -1.0999999999999996
+        },
+        {
+          "Action": "{SpellID: 10212, Tag: 1}",
+          "Kind": "spell",
+          "AdditionalPercent": -1.0999999999999996
+        },
+        {
+          "Action": "{SpellID: 10212}",
+          "Kind": "spell",
+          "AdditionalPercent": -1.0999999999999996
+        },
+        {
+          "Action": "{SpellID: 10181}",
+          "Kind": "spell",
+          "AdditionalPercent": -2.0999999999999996
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Arms (learned)",
+    "race": "Human",
+    "file": "arms__human__learned.json",
+    "dps": 870.144203992534,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 10.399999999999999,
+      "SpellFinal": 10.399999999999999,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{ItemID: 10646}",
+          "Kind": "spell",
+          "AdditionalPercent": -94.4
+        },
+        {
+          "Action": "{SpellID: 20662}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -2.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 21553}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -2.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 11585}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -2.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 11605}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -2.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 1680}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -2.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 11574}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -2.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 1310222}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -2.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 11567}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -2.3999999999999986
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -2.3999999999999986
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Balance (learned)",
+    "race": "Windshaper",
+    "file": "balance__windshaper__learned.json",
+    "dps": 797.5530384451829,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 16.2,
+      "SpellFinal": 16.2,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 24977}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.1999999999999993
+        },
+        {
+          "Action": "{SpellID: 9835}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.1999999999999993
+        },
+        {
+          "Action": "{SpellID: 9876}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.1999999999999993
+        },
+        {
+          "Action": "{SpellID: 9912}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.1999999999999993
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "BM Weave (learned)",
+    "race": "Human",
+    "file": "beast_mastery__human__learned.json",
+    "dps": 1180.1873915910778,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 23.400000000000002,
+      "SpellFinal": 23.400000000000002,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{ItemID: 10646}",
+          "Kind": "spell",
+          "AdditionalPercent": -107.4
+        },
+        {
+          "Action": "{SpellID: 13555}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -15.400000000000002
+        },
+        {
+          "Action": "{SpellID: 14287}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -15.400000000000002
+        },
+        {
+          "Action": "{SpellID: 20904}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -15.400000000000002
+        },
+        {
+          "Action": "{SpellID: 2643}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -15.400000000000002
+        },
+        {
+          "Action": "{SpellID: 14266, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -15.400000000000002
+        },
+        {
+          "Action": "{SpellID: 14266}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -15.400000000000002
+        },
+        {
+          "Action": "{SpellID: 14271}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -15.400000000000002
+        },
+        {
+          "Action": "{OtherID: 8}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -15.400000000000002
+        }
+      ],
+      "Exclusions": [
+        "{SpellID: 14305}: current trap implementation ignores gear hit"
+      ]
+    }
+  },
+  {
+    "build": "Combat (learned)",
+    "race": "Windshaper",
+    "file": "combat__windshaper__learned.json",
+    "dps": 760.2551734333232,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 27.400000000000002,
+      "SpellFinal": 27.400000000000002,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{ItemID: 10646}",
+          "Kind": "spell",
+          "AdditionalPercent": -111.4
+        },
+        {
+          "Action": "{ItemID: 15993}",
+          "Kind": "spell",
+          "AdditionalPercent": -111.4
+        },
+        {
+          "Action": "{SpellID: 11300}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -19.400000000000002
+        },
+        {
+          "Action": "{SpellID: 11294}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -19.400000000000002
+        },
+        {
+          "Action": "{SpellID: 11340}",
+          "Kind": "spell",
+          "AdditionalPercent": -11.400000000000002
+        },
+        {
+          "Action": "{SpellID: 11356, Tag: 100}",
+          "Kind": "spell",
+          "AdditionalPercent": -11.400000000000002
+        },
+        {
+          "Action": "{SpellID: 13219}",
+          "Kind": "spell",
+          "AdditionalPercent": -11.400000000000002
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -19.400000000000002
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 2}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -19.400000000000002
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Demonic Pact (learned)",
+    "race": "Human",
+    "file": "demonology__human__learned.json",
+    "dps": 1013.1896695696269,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 16.1,
+      "SpellFinal": 16.1,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 11672}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        },
+        {
+          "Action": "{SpellID: 11668}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        },
+        {
+          "Action": "{SpellID: 11661}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        },
+        {
+          "Action": "{SpellID: 11689}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        },
+        {
+          "Action": "{SpellID: 17923}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        },
+        {
+          "Action": "{SpellID: 11713}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        },
+        {
+          "Action": "{SpellID: 603}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "DS/Ruin (learned)",
+    "race": "Human",
+    "file": "ds_ruin__human__learned.json",
+    "dps": 881.0585715946681,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 16.2,
+      "SpellFinal": 16.2,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 11672}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.1999999999999993
+        },
+        {
+          "Action": "{SpellID: 11668}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.1999999999999993
+        },
+        {
+          "Action": "{SpellID: 11661}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.1999999999999993
+        },
+        {
+          "Action": "{SpellID: 11689}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.1999999999999993
+        },
+        {
+          "Action": "{SpellID: 17923}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.1999999999999993
+        },
+        {
+          "Action": "{SpellID: 11713}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.1999999999999993
+        },
+        {
+          "Action": "{SpellID: 603}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.1999999999999993
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Elemental (learned)",
+    "race": "Orc",
+    "file": "elemental__orc__learned.json",
+    "dps": 642.1677511241202,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 16.4,
+      "SpellFinal": 16.4,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 1326047}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 15208, Tag: 1}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 15208}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 29228}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 10438}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 10587}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.3999999999999986
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Enhancement (learned)",
+    "race": "Windshaper",
+    "file": "enhancement__windshaper__learned.json",
+    "dps": 820.2765217859555,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 16.6,
+      "SpellFinal": 16.6,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{ItemID: 10646}",
+          "Kind": "spell",
+          "AdditionalPercent": -100.6
+        },
+        {
+          "Action": "{ItemID: 15993}",
+          "Kind": "spell",
+          "AdditionalPercent": -100.6
+        },
+        {
+          "Action": "{SpellID: 15208}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.6000000000000014
+        },
+        {
+          "Action": "{SpellID: 10414}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.6000000000000014
+        },
+        {
+          "Action": "{SpellID: 29228}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.6000000000000014
+        },
+        {
+          "Action": "{SpellID: 408345}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.6000000000000014
+        },
+        {
+          "Action": "{SpellID: 17364}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.600000000000001
+        },
+        {
+          "Action": "{SpellID: 10438}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.6000000000000014
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.600000000000001
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Feral (learned)",
+    "race": "Windshaper",
+    "file": "feral__windshaper__learned.json",
+    "dps": 832.3516991420021,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 19.000000000000007,
+      "SpellFinal": 19.000000000000007,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 22829}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -11.000000000000007
+        },
+        {
+          "Action": "{SpellID: 9904}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -11.000000000000007
+        },
+        {
+          "Action": "{SpellID: 9896}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -11.000000000000007
+        },
+        {
+          "Action": "{SpellID: 9830}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -11.000000000000007
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -11.000000000000007
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Fire (learned)",
+    "race": "Human",
+    "file": "fire__human__learned.json",
+    "dps": 958.4195601091158,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 14.100000000000001,
+      "SpellFinal": 14.100000000000001,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{ItemID: 15993}",
+          "Kind": "spell",
+          "AdditionalPercent": -98.1
+        },
+        {
+          "Action": "{SpellID: 10199}",
+          "Kind": "spell",
+          "AdditionalPercent": -2.1000000000000014
+        },
+        {
+          "Action": "{SpellID: 18809}",
+          "Kind": "spell",
+          "AdditionalPercent": -2.1000000000000014
+        },
+        {
+          "Action": "{SpellID: 10207}",
+          "Kind": "spell",
+          "AdditionalPercent": -2.1000000000000014
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Frost (learned)",
+    "race": "Gnome",
+    "file": "frost__gnome__learned.json",
+    "dps": 689.2033849904731,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 11.099999999999998,
+      "SpellFinal": 11.099999999999998,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 10212, Tag: 1}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.09999999999999787
+        },
+        {
+          "Action": "{SpellID: 10212}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.09999999999999787
+        },
+        {
+          "Action": "{SpellID: 10181}",
+          "Kind": "spell",
+          "AdditionalPercent": -1.0999999999999979
+        },
+        {
+          "Action": "{SpellID: 10161}",
+          "Kind": "spell",
+          "AdditionalPercent": -1.0999999999999979
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Frostfire (learned)",
+    "race": "Human",
+    "file": "frostfire__human__learned.json",
+    "dps": 893.029837509069,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 11,
+      "SpellFinal": 11,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{ItemID: 15993}",
+          "Kind": "spell",
+          "AdditionalPercent": -95
+        },
+        {
+          "Action": "{SpellID: 10199}",
+          "Kind": "spell",
+          "AdditionalPercent": -1
+        },
+        {
+          "Action": "{SpellID: 1237313}",
+          "Kind": "spell",
+          "AdditionalPercent": -1
+        },
+        {
+          "Action": "{SpellID: 18809}",
+          "Kind": "spell",
+          "AdditionalPercent": -1
+        },
+        {
+          "Action": "{SpellID: 10207}",
+          "Kind": "spell",
+          "AdditionalPercent": -1
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Fury (learned)",
+    "race": "Windshaper",
+    "file": "fury__windshaper__learned.json",
+    "dps": 1012.76872419708,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 17.5,
+      "SpellFinal": 17.5,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{ItemID: 10646}",
+          "Kind": "spell",
+          "AdditionalPercent": -101.5
+        },
+        {
+          "Action": "{SpellID: 23894}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.5
+        },
+        {
+          "Action": "{SpellID: 20662}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.5
+        },
+        {
+          "Action": "{SpellID: 11585}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.5
+        },
+        {
+          "Action": "{SpellID: 1680, Tag: 2}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -19.5
+        },
+        {
+          "Action": "{SpellID: 1680}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.5
+        },
+        {
+          "Action": "{SpellID: 11574}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.5
+        },
+        {
+          "Action": "{SpellID: 7373}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.5
+        },
+        {
+          "Action": "{SpellID: 11567}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.5
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.5
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 2}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -19.5
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "2H Bloodthirst (learned)",
+    "race": "Orc",
+    "file": "fury_2h__orc__learned.json",
+    "dps": 883.4800244673438,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 10.399999999999999,
+      "SpellFinal": 10.399999999999999,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{ItemID: 10646}",
+          "Kind": "spell",
+          "AdditionalPercent": -94.4
+        },
+        {
+          "Action": "{ItemID: 15993}",
+          "Kind": "spell",
+          "AdditionalPercent": -94.4
+        },
+        {
+          "Action": "{SpellID: 23894}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -2.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 20662}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -2.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 11585}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -2.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 11605}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -2.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 1680}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -2.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 11574}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -2.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 7373}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -2.3999999999999986
+        },
+        {
+          "Action": "{SpellID: 11567}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -2.3999999999999986
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -2.3999999999999986
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Fury (Sunder) (learned)",
+    "race": "Human",
+    "file": "fury_sunder__human__learned.json",
+    "dps": 975.781273627567,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 18.099999999999998,
+      "SpellFinal": 18.099999999999998,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{ItemID: 10646}",
+          "Kind": "spell",
+          "AdditionalPercent": -102.1
+        },
+        {
+          "Action": "{SpellID: 23894}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -10.099999999999998
+        },
+        {
+          "Action": "{SpellID: 20662}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -10.099999999999998
+        },
+        {
+          "Action": "{SpellID: 11585}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -10.099999999999998
+        },
+        {
+          "Action": "{SpellID: 1680, Tag: 2}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -20.099999999999998
+        },
+        {
+          "Action": "{SpellID: 1680}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -10.099999999999998
+        },
+        {
+          "Action": "{SpellID: 11574}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -10.099999999999998
+        },
+        {
+          "Action": "{SpellID: 7373}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -10.099999999999998
+        },
+        {
+          "Action": "{SpellID: 11567}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -10.099999999999998
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -10.099999999999998
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 2}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -20.099999999999998
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "MM Weave (learned)",
+    "race": "Human",
+    "file": "marksmanship__human__learned.json",
+    "dps": 1219.475208486979,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 26.400000000000002,
+      "SpellFinal": 26.400000000000002,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{ItemID: 10646}",
+          "Kind": "spell",
+          "AdditionalPercent": -110.4
+        },
+        {
+          "Action": "{SpellID: 13555}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{SpellID: 14287}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{SpellID: 20904}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{SpellID: 2643}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{SpellID: 14266, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{SpellID: 14266}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{SpellID: 14271}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{SpellID: 1317257}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{OtherID: 8}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        }
+      ],
+      "Exclusions": [
+        "{SpellID: 14305}: current trap implementation ignores gear hit"
+      ]
+    }
+  },
+  {
+    "build": "Mutilate (learned)",
+    "race": "Windshaper",
+    "file": "mutilate__windshaper__learned.json",
+    "dps": 742.6758102182891,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 27.400000000000002,
+      "SpellFinal": 27.400000000000002,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{ItemID: 10646}",
+          "Kind": "spell",
+          "AdditionalPercent": -111.4
+        },
+        {
+          "Action": "{ItemID: 15993}",
+          "Kind": "spell",
+          "AdditionalPercent": -111.4
+        },
+        {
+          "Action": "{SpellID: 11300}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -19.400000000000002
+        },
+        {
+          "Action": "{SpellID: 1241584, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -19.400000000000002
+        },
+        {
+          "Action": "{SpellID: 1241584, Tag: 2}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -19.400000000000002
+        },
+        {
+          "Action": "{SpellID: 1241584}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -19.400000000000002
+        },
+        {
+          "Action": "{SpellID: 11340}",
+          "Kind": "spell",
+          "AdditionalPercent": -11.400000000000002
+        },
+        {
+          "Action": "{SpellID: 11356, Tag: 100}",
+          "Kind": "spell",
+          "AdditionalPercent": -11.400000000000002
+        },
+        {
+          "Action": "{SpellID: 13219}",
+          "Kind": "spell",
+          "AdditionalPercent": -11.400000000000002
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -19.400000000000002
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 2}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -19.400000000000002
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Pet/Melee (learned)",
+    "race": "Windshaper",
+    "file": "pet_melee__windshaper__learned.json",
+    "dps": 946.1116928697681,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 26.400000000000002,
+      "SpellFinal": 26.400000000000002,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{ItemID: 10646}",
+          "Kind": "spell",
+          "AdditionalPercent": -110.4
+        },
+        {
+          "Action": "{ItemID: 15993}",
+          "Kind": "spell",
+          "AdditionalPercent": -110.4
+        },
+        {
+          "Action": "{SpellID: 1293527}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{SpellID: 14266, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{SpellID: 14266}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{SpellID: 14271}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{SpellID: 14268}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{SpellID: 1317257}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 2}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        }
+      ],
+      "Exclusions": [
+        "{SpellID: 14305}: current trap implementation ignores gear hit"
+      ]
+    }
+  },
+  {
+    "build": "Retribution (learned)",
+    "race": "Human",
+    "file": "retribution__human__learned.json",
+    "dps": 1003.3720298490792,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 14.500000000000002,
+      "SpellFinal": 14.500000000000002,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{ItemID: 10646}",
+          "Kind": "spell",
+          "AdditionalPercent": -98.5
+        },
+        {
+          "Action": "{SpellID: 10333}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -6.500000000000002
+        },
+        {
+          "Action": "{SpellID: 20924}",
+          "Kind": "spell",
+          "AdditionalPercent": 1.4999999999999982
+        },
+        {
+          "Action": "{SpellID: 24239}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -6.500000000000002
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -6.500000000000002
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Physical Ret (learned)",
+    "race": "Human",
+    "file": "retribution_physical__human__learned.json",
+    "dps": 928.1817911579838,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 15.400000000000002,
+      "SpellFinal": 15.400000000000002,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{ItemID: 10646}",
+          "Kind": "spell",
+          "AdditionalPercent": -99.4
+        },
+        {
+          "Action": "{SpellID: 10333}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.400000000000002
+        },
+        {
+          "Action": "{SpellID: 20924}",
+          "Kind": "spell",
+          "AdditionalPercent": 0.5999999999999979
+        },
+        {
+          "Action": "{SpellID: 24239}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.400000000000002
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.400000000000002
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Shadow (learned)",
+    "race": "Human",
+    "file": "shadow__human__learned.json",
+    "dps": 914.6067970352079,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 11.6,
+      "SpellFinal": 11.6,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 10947}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.5999999999999996
+        },
+        {
+          "Action": "{SpellID: 18807}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.5999999999999996
+        },
+        {
+          "Action": "{SpellID: 18807, Tag: 1}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.5999999999999996
+        },
+        {
+          "Action": "{SpellID: 18807, Tag: 2}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.5999999999999996
+        },
+        {
+          "Action": "{SpellID: 10894}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.5999999999999996
+        },
+        {
+          "Action": "{SpellID: 1309636}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.5999999999999996
+        },
+        {
+          "Action": "{SpellID: 19280}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.5999999999999996
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Smite (learned)",
+    "race": "Gnome",
+    "file": "smite__gnome__learned.json",
+    "dps": 522.4354725497288,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 9.799999999999999,
+      "SpellFinal": 9.799999999999999,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 10894}",
+          "Kind": "spell",
+          "AdditionalPercent": 4.200000000000001
+        },
+        {
+          "Action": "{SpellID: 10934}",
+          "Kind": "spell",
+          "AdditionalPercent": -11.799999999999999
+        },
+        {
+          "Action": "{SpellID: 15261}",
+          "Kind": "spell",
+          "AdditionalPercent": -11.799999999999999
+        },
+        {
+          "Action": "{SpellID: 1316995}",
+          "Kind": "spell",
+          "AdditionalPercent": 6.200000000000001
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Stormcaller (learned)",
+    "race": "Tauren",
+    "file": "stormcaller__tauren__learned.json",
+    "dps": 562.4532618905894,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 16.1,
+      "SpellFinal": 16.1,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{SpellID: 15208, Tag: 1}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        },
+        {
+          "Action": "{SpellID: 15208}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        },
+        {
+          "Action": "{SpellID: 10414}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        },
+        {
+          "Action": "{SpellID: 29228}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        },
+        {
+          "Action": "{SpellID: 408345}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        },
+        {
+          "Action": "{SpellID: 10438}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        },
+        {
+          "Action": "{SpellID: 10587}",
+          "Kind": "spell",
+          "AdditionalPercent": -0.10000000000000142
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "SV Weave (learned)",
+    "race": "Human",
+    "file": "survival_weave__human__learned.json",
+    "dps": 1303.5640818460001,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 26.400000000000002,
+      "SpellFinal": 26.400000000000002,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{ItemID: 10646}",
+          "Kind": "spell",
+          "AdditionalPercent": -110.4
+        },
+        {
+          "Action": "{SpellID: 13555}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{SpellID: 14287}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{SpellID: 20904}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{SpellID: 2643}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{SpellID: 14266, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{SpellID: 14266}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{SpellID: 14271}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{SpellID: 14271, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{SpellID: 1317257}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        },
+        {
+          "Action": "{OtherID: 8}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.400000000000002
+        }
+      ],
+      "Exclusions": [
+        "{SpellID: 14305}: current trap implementation ignores gear hit"
+      ]
+    }
   }
 ]

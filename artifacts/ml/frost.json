@@ -1,0 +1,841 @@
+{
+ "key": "frost",
+ "build": "Frost",
+ "race": "Gnome",
+ "class": "",
+ "published": {
+  "talents": "0500205-03-253520330100301251",
+  "dps": 608.2651982605457,
+  "se": 0.33679132838075293,
+  "benchmark_dps": 609.6363557996367
+ },
+ "learned": {
+  "talents": "05022050110002-02-05350003011033025",
+  "dps": 677.6757854521275,
+  "vs_published": 69.41058719158173,
+  "vs_published_se": 0.254094494864136,
+  "published_talents_dps": 609.961431607604,
+  "published_talents_vs_published": 1.6962333470582962,
+  "published_talents_vs_published_se": 0.09467850908024396
+ },
+ "talent_changes": [
+  {
+   "talent": "Missile Barrage",
+   "tree": "Arcane",
+   "published": 0,
+   "learned": 2
+  },
+  {
+   "talent": "Arcane Geometry",
+   "tree": "Arcane",
+   "published": 0,
+   "learned": 1
+  },
+  {
+   "talent": "Arcane Impact",
+   "tree": "Arcane",
+   "published": 0,
+   "learned": 1
+  },
+  {
+   "talent": "Arcane Meditation",
+   "tree": "Arcane",
+   "published": 0,
+   "learned": 2
+  },
+  {
+   "talent": "Incineration",
+   "tree": "Fire",
+   "published": 3,
+   "learned": 2
+  },
+  {
+   "talent": "Frost Warding",
+   "tree": "Frost",
+   "published": 2,
+   "learned": 0
+  },
+  {
+   "talent": "Frostbite",
+   "tree": "Frost",
+   "published": 2,
+   "learned": 0
+  },
+  {
+   "talent": "Permafrost",
+   "tree": "Frost",
+   "published": 3,
+   "learned": 0
+  },
+  {
+   "talent": "Arctic Reach",
+   "tree": "Frost",
+   "published": 0,
+   "learned": 1
+  },
+  {
+   "talent": "Improved Cone of Cold",
+   "tree": "Frost",
+   "published": 0,
+   "learned": 3
+  },
+  {
+   "talent": "Cold Snap",
+   "tree": "Frost",
+   "published": 1,
+   "learned": 0
+  },
+  {
+   "talent": "Ice Barrier",
+   "tree": "Frost",
+   "published": 1,
+   "learned": 0
+  }
+ ],
+ "fights": 4096,
+ "training": {
+  "stop": "budget",
+  "train_minutes": 10.0,
+  "minutes": 10.2,
+  "decisions": 220200960,
+  "fights": 1266360,
+  "builds_seen": 39536,
+  "decisions_per_fight": 176.009765625,
+  "best_decisions": 197656576
+ },
+ "actions": {
+  "fights": 1024,
+  "apl_talents": "0500205-03-253520330100301251",
+  "policy_talents": "05022050110002-02-05350003011033025",
+  "apl": 609.5607675909996,
+  "policy": 678.0701947212219,
+  "diff": 68.50942713022232,
+  "diff_se": 0.47441194221864563,
+  "agreement": 0.8443996544773971,
+  "disagreements": [
+   {
+    "apl_would": "cast:Frostbolt",
+    "policy_did": "cast:Arcane Missiles",
+    "per_fight": 9.903
+   },
+   {
+    "apl_would": "cast:Frostbolt",
+    "policy_did": "cast:Cone of Cold",
+    "per_fight": 9.576
+   },
+   {
+    "apl_would": "cast:Frostbolt",
+    "policy_did": "wait",
+    "per_fight": 2.787
+   },
+   {
+    "apl_would": "cast:{ItemID: 8008}",
+    "policy_did": "wait",
+    "per_fight": 1.182
+   },
+   {
+    "apl_would": "cast:Evocation",
+    "policy_did": "cast:Frostbolt",
+    "per_fight": 0.47
+   },
+   {
+    "apl_would": "cast:Demonic Rune",
+    "policy_did": "cast:{ItemID: 8008}",
+    "per_fight": 0.344
+   },
+   {
+    "apl_would": "cast:Major Mana Potion",
+    "policy_did": "cast:Ice Lance",
+    "per_fight": 0.263
+   },
+   {
+    "apl_would": "cast:Major Mana Potion",
+    "policy_did": "cast:Frostbolt",
+    "per_fight": 0.198
+   },
+   {
+    "apl_would": "cast:Demonic Rune",
+    "policy_did": "cast:Frostbolt",
+    "per_fight": 0.187
+   },
+   {
+    "apl_would": "cast:Evocation",
+    "policy_did": "cast:Ice Lance",
+    "per_fight": 0.167
+   },
+   {
+    "apl_would": "cast:Demonic Rune",
+    "policy_did": "cast:Ice Lance",
+    "per_fight": 0.147
+   },
+   {
+    "apl_would": "cast:Frostbolt",
+    "policy_did": "cast:Major Mana Potion",
+    "per_fight": 0.146
+   },
+   {
+    "apl_would": "cast:Cone of Cold",
+    "policy_did": "cast:Frostbolt",
+    "per_fight": 0.146
+   },
+   {
+    "apl_would": "cast:Evocation",
+    "policy_did": "wait",
+    "per_fight": 0.125
+   },
+   {
+    "apl_would": "cast:Demonic Rune",
+    "policy_did": "cast:Cone of Cold",
+    "per_fight": 0.114
+   }
+  ],
+  "actions": [
+   {
+    "action": "cast:Frostbolt",
+    "apl": 86.080078125,
+    "policy": 79.5908203125,
+    "apl_execute": 17.33984375,
+    "policy_execute": 15.125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Ice Lance",
+    "apl": 31.4990234375,
+    "policy": 29.958984375,
+    "apl_execute": 6.4931640625,
+    "policy_execute": 5.810546875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "wait",
+    "apl": 22.3671875,
+    "policy": 20.4677734375,
+    "apl_execute": 7.9072265625,
+    "policy_execute": 0.3330078125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Cone of Cold",
+    "apl": 20.12890625,
+    "policy": 21.41796875,
+    "apl_execute": 4.166015625,
+    "policy_execute": 4.2822265625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Arcane Missiles",
+    "apl": 0.0,
+    "policy": 10.0400390625,
+    "apl_execute": 0.0,
+    "policy_execute": 2.990234375,
+    "apl_rage": null,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Eureka!",
+    "apl": 3.0,
+    "policy": 3.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Major Mana Potion",
+    "apl": 2.5302734375,
+    "policy": 2.1025390625,
+    "apl_execute": 0.5302734375,
+    "policy_execute": 0.1025390625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:{ItemID: 8007}",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.669921875,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:{ItemID: 8008}",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:{ItemID: 5513}",
+    "apl": 0.330078125,
+    "policy": 0.9931640625,
+    "apl_execute": 0.330078125,
+    "policy_execute": 0.9931640625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Evocation",
+    "apl": 1.0,
+    "policy": 0.0087890625,
+    "apl_execute": 0.04296875,
+    "policy_execute": 0.00390625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Cold Snap",
+    "apl": 1.0,
+    "policy": 0.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": null
+   },
+   {
+    "action": "cast:Demonic Rune",
+    "apl": 0.669921875,
+    "policy": 0.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": null
+   }
+  ],
+  "cooldowns": [
+   {
+    "action": "cast:Demonic Rune",
+    "apl": [
+     {
+      "mean_s": 27.7,
+      "share": 0.67
+     }
+    ],
+    "policy": []
+   }
+  ],
+  "timeline": {
+   "apl": [
+    {
+     "t": 0.0,
+     "action": "cast:Cold Snap",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Eureka!",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 2.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 5.0,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 10.0,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 12.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 15.0,
+     "action": "cast:Cone of Cold",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 19.0,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 24.0,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 29.0,
+     "action": "cast:Demonic Rune",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 29.0,
+     "action": "cast:Cone of Cold",
+     "rage": 0,
+     "mana_pct": 99,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 30.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 33.0,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 35.5,
+     "action": "cast:Ice Lance",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.0,
+     "action": "cast:Ice Lance",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 38.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 41.0,
+     "action": "cast:Cone of Cold",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 42.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 45.0,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 47.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.0,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 77,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 55.0,
+     "action": "cast:Cone of Cold",
+     "rage": 0,
+     "mana_pct": 75,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.5,
+     "action": "cast:Major Mana Potion",
+     "rage": 0,
+     "mana_pct": 70,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.0,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    }
+   ],
+   "policy": [
+    {
+     "t": 0.0,
+     "action": "cast:Eureka!",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 2.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 5.0,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 10.0,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 12.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 15.0,
+     "action": "cast:Cone of Cold",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 19.0,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 24.0,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 29.0,
+     "action": "cast:Cone of Cold",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 30.5,
+     "action": "cast:{ItemID: 8008}",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 30.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 33.0,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 35.5,
+     "action": "cast:Ice Lance",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.0,
+     "action": "cast:Ice Lance",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 38.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 41.0,
+     "action": "cast:Cone of Cold",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 42.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 45.0,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 47.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.0,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.5,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 55.0,
+     "action": "cast:Cone of Cold",
+     "rage": 0,
+     "mana_pct": 78,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.5,
+     "action": "cast:Arcane Missiles",
+     "rage": 0,
+     "mana_pct": 73,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.0,
+     "action": "cast:Frostbolt",
+     "rage": 0,
+     "mana_pct": 74,
+     "energy": 0,
+     "combo": 0
+    }
+   ]
+  }
+ },
+ "native": {
+  "fights": 2048,
+  "published": 608.4151811301708,
+  "network": 676.9013539850712,
+  "network_vs_published": 68.48617285490036,
+  "network_vs_published_se": 0.3469369334004169
+ },
+ "profile": {
+  "id": "frost__gnome__learned",
+  "dps": 689.2033849904731,
+  "se": 0.29723490211626047,
+  "published_dps": 609.6363557996367,
+  "published_se": 0.29605396885727414,
+  "talents": "05022050110002-02-05350003011033025",
+  "talent_source": "learned",
+  "overrides": [
+   "cast:Arcane Missiles if self:Missile Barrage:remaining >= 7.50s",
+   "cast:Arcane Missiles if self:Missile Barrage:remaining >= 8.00s and mana_frac <= 0.75",
+   "cast:Major Mana Potion if elapsed >= 0.35",
+   "cast:Frostbolt if self:Winter's Chill:stacks <= 3.00 and Cone of Cold:ready",
+   "cast:Arcane Missiles if mana_frac <= 0.19 and self:Missile Barrage:active"
+  ],
+  "removed": [
+   "cast:Evocation (conditional)",
+   "cast:Ice Lance (conditional)"
+  ],
+  "paired_vs_published": 80.65614059567451,
+  "paired_vs_published_se": 0.4111515198103185,
+  "paired_fights": 2048,
+  "gain": true
+ }
+}

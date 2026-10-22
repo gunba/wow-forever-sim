@@ -1,0 +1,1531 @@
+{
+ "key": "fury_sunder",
+ "build": "Fury (Sunder)",
+ "race": "Human",
+ "class": "",
+ "published": {
+  "talents": "30305213002-25053005112010501-1",
+  "dps": 966.7280315905809,
+  "se": 0.5546920281030744,
+  "benchmark_dps": 972.2873371592153
+ },
+ "learned": {
+  "talents": "30305213002-25053005112010501-1",
+  "dps": 988.0749276280403,
+  "vs_published": 21.346896037459373,
+  "vs_published_se": 0.5395191477421883,
+  "published_talents_dps": 988.0749276280403,
+  "published_talents_vs_published": 21.346896037459373,
+  "published_talents_vs_published_se": 0.5395191477421883
+ },
+ "talent_changes": [],
+ "fights": 4096,
+ "training": {
+  "stop": "budget",
+  "train_minutes": 18.7,
+  "minutes": 19.6,
+  "decisions": 500170752,
+  "fights": 219289,
+  "builds_seen": 26436,
+  "decisions_per_fight": 2587.8037109375,
+  "best_decisions": 486539264
+ },
+ "actions": {
+  "fights": 1024,
+  "apl_talents": "30305213002-25053005112010501-1",
+  "policy_talents": "30305213002-25053005112010501-1",
+  "apl": 973.8320939540863,
+  "policy": 987.7586053013802,
+  "diff": 13.926511347293854,
+  "diff_se": 1.0980710922010608,
+  "agreement": 0.9247864041147085,
+  "disagreements": [
+   {
+    "apl_would": "cast:Berserker Stance",
+    "policy_did": "wait",
+    "per_fight": 39.402
+   },
+   {
+    "apl_would": "cast:Sunder Armor",
+    "policy_did": "wait",
+    "per_fight": 22.05
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Heroic Strike#1",
+    "per_fight": 20.741
+   },
+   {
+    "apl_would": "cast:Battle Stance",
+    "policy_did": "wait",
+    "per_fight": 19.312
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Hamstring",
+    "per_fight": 11.644
+   },
+   {
+    "apl_would": "cast:Whirlwind",
+    "policy_did": "wait",
+    "per_fight": 8.156
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Battle Stance",
+    "per_fight": 7.117
+   },
+   {
+    "apl_would": "cast:Hamstring",
+    "policy_did": "wait",
+    "per_fight": 6.773
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Bloodrage",
+    "per_fight": 3.797
+   },
+   {
+    "apl_would": "cast:Hamstring",
+    "policy_did": "cast:Battle Stance",
+    "per_fight": 2.448
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Sunder Armor",
+    "per_fight": 2.401
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Mighty Rage Potion",
+    "per_fight": 2.279
+   },
+   {
+    "apl_would": "cast:Hamstring",
+    "policy_did": "cast:Sunder Armor",
+    "per_fight": 2.158
+   },
+   {
+    "apl_would": "cast:Rend",
+    "policy_did": "wait",
+    "per_fight": 1.924
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Goblin Sapper Charge",
+    "per_fight": 1.813
+   }
+  ],
+  "actions": [
+   {
+    "action": "wait",
+    "apl": 2295.560546875,
+    "policy": 2071.91015625,
+    "apl_execute": 333.3720703125,
+    "policy_execute": 318.126953125,
+    "apl_rage": 28.292192743121994,
+    "policy_rage": 24.921657679887396
+   },
+   {
+    "action": "cast:Heroic Strike#1",
+    "apl": 45.1943359375,
+    "policy": 50.8564453125,
+    "apl_execute": 0.0,
+    "policy_execute": 1.322265625,
+    "apl_rage": 48.33575805459311,
+    "policy_rage": 44.950692769932964
+   },
+   {
+    "action": "cast:Bloodthirst",
+    "apl": 33.3310546875,
+    "policy": 33.0205078125,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 46.142243017072765,
+    "policy_rage": 42.873525180477635
+   },
+   {
+    "action": "cast:Battle Stance",
+    "apl": 27.6357421875,
+    "policy": 34.78125,
+    "apl_execute": 5.8212890625,
+    "policy_execute": 6.794921875,
+    "apl_rage": 18.19952784265496,
+    "policy_rage": 15.023543049048126
+   },
+   {
+    "action": "cast:Berserker Stance",
+    "apl": 27.4462890625,
+    "policy": 34.5107421875,
+    "apl_execute": 5.845703125,
+    "policy_execute": 6.755859375,
+    "apl_rage": 23.8512262224216,
+    "policy_rage": 17.87443583851198
+   },
+   {
+    "action": "cast:Hamstring",
+    "apl": 30.787109375,
+    "policy": 29.861328125,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 36.0346041877946,
+    "policy_rage": 32.235674102308394
+   },
+   {
+    "action": "cast:Execute",
+    "apl": 29.5302734375,
+    "policy": 29.3603515625,
+    "apl_execute": 29.5302734375,
+    "policy_execute": 29.3603515625,
+    "apl_rage": 27.16576554739837,
+    "policy_rage": 27.23422813602678
+   },
+   {
+    "action": "cast:Overpower",
+    "apl": 26.359375,
+    "policy": 27.650390625,
+    "apl_execute": 5.6748046875,
+    "policy_execute": 5.6533203125,
+    "apl_rage": 25.791357057117185,
+    "policy_rage": 21.66708832049156
+   },
+   {
+    "action": "cast:Whirlwind",
+    "apl": 20.177734375,
+    "policy": 19.7236328125,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0009765625,
+    "apl_rage": 39.17575165489477,
+    "policy_rage": 34.99742292863234
+   },
+   {
+    "action": "cast:Sunder Armor",
+    "apl": 18.2158203125,
+    "policy": 18.5732421875,
+    "apl_execute": 2.2431640625,
+    "policy_execute": 2.5390625,
+    "apl_rage": 36.794629154502886,
+    "policy_rage": 47.81099309008156
+   },
+   {
+    "action": "cast:Rend",
+    "apl": 4.318359375,
+    "policy": 10.654296875,
+    "apl_execute": 0.0,
+    "policy_execute": 0.130859375,
+    "apl_rage": 24.19951891564827,
+    "policy_rage": 23.85679123185295
+   },
+   {
+    "action": "cast:Bloodrage",
+    "apl": 5.0,
+    "policy": 6.0,
+    "apl_execute": 1.0,
+    "policy_execute": 2.0,
+    "apl_rage": 45.31729794538114,
+    "policy_rage": 40.55818352095472
+   },
+   {
+    "action": "cast:Demonic Rune",
+    "apl": 3.0,
+    "policy": 3.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 28.844240732859664,
+    "policy_rage": 35.92970582656562
+   },
+   {
+    "action": "cast:Mighty Rage Potion",
+    "apl": 3.0,
+    "policy": 3.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 29.283518860693828,
+    "policy_rage": 38.30532818155674
+   },
+   {
+    "action": "cast:Death Wish",
+    "apl": 2.0,
+    "policy": 2.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 61.52764532342553,
+    "policy_rage": 40.04544034879655
+   },
+   {
+    "action": "cast:Goblin Sapper Charge",
+    "apl": 1.0,
+    "policy": 2.0,
+    "apl_execute": 0.0,
+    "policy_execute": 1.0,
+    "apl_rage": 88.81068174168468,
+    "policy_rage": 56.46756218309747
+   },
+   {
+    "action": "cast:Recklessness",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 30.07135468458,
+    "policy_rage": 50.0
+   }
+  ],
+  "cooldowns": [
+   {
+    "action": "cast:Goblin Sapper Charge",
+    "apl": [
+     {
+      "mean_s": 10.7,
+      "share": 1.0
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 0.0,
+      "share": 1.0
+     },
+     {
+      "mean_s": 300.0,
+      "share": 1.0
+     }
+    ]
+   },
+   {
+    "action": "cast:Demonic Rune",
+    "apl": [
+     {
+      "mean_s": 0.0,
+      "share": 1.0
+     },
+     {
+      "mean_s": 120.0,
+      "share": 1.0
+     },
+     {
+      "mean_s": 240.1,
+      "share": 1.0
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 4.9,
+      "share": 1.0
+     },
+     {
+      "mean_s": 125.3,
+      "share": 1.0
+     },
+     {
+      "mean_s": 245.4,
+      "share": 1.0
+     }
+    ]
+   },
+   {
+    "action": "cast:Mighty Rage Potion",
+    "apl": [
+     {
+      "mean_s": 9.0,
+      "share": 1.0
+     },
+     {
+      "mean_s": 129.5,
+      "share": 1.0
+     },
+     {
+      "mean_s": 250.2,
+      "share": 1.0
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 0.0,
+      "share": 1.0
+     },
+     {
+      "mean_s": 120.0,
+      "share": 1.0
+     },
+     {
+      "mean_s": 240.0,
+      "share": 1.0
+     }
+    ]
+   },
+   {
+    "action": "cast:Death Wish",
+    "apl": [
+     {
+      "mean_s": 9.0,
+      "share": 1.0
+     },
+     {
+      "mean_s": 190.0,
+      "share": 1.0
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 9.0,
+      "share": 1.0
+     },
+     {
+      "mean_s": 189.9,
+      "share": 1.0
+     }
+    ]
+   },
+   {
+    "action": "cast:Recklessness",
+    "apl": [
+     {
+      "mean_s": 9.4,
+      "share": 1.0
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 0.0,
+      "share": 1.0
+     }
+    ]
+   },
+   {
+    "action": "cast:Bloodrage",
+    "apl": [
+     {
+      "mean_s": 10.7,
+      "share": 1.0
+     },
+     {
+      "mean_s": 71.2,
+      "share": 1.0
+     },
+     {
+      "mean_s": 131.8,
+      "share": 1.0
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 0.0,
+      "share": 1.0
+     },
+     {
+      "mean_s": 60.0,
+      "share": 1.0
+     },
+     {
+      "mean_s": 120.0,
+      "share": 1.0
+     }
+    ]
+   }
+  ],
+  "timeline": {
+   "apl": [
+    {
+     "t": 0.0,
+     "action": "cast:Sunder Armor",
+     "rage": 50,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Demonic Rune",
+     "rage": 35,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.01,
+     "action": "cast:Heroic Strike#1",
+     "rage": 49,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.5,
+     "action": "cast:Sunder Armor",
+     "rage": 71,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 2.46,
+     "action": "cast:Heroic Strike#1",
+     "rage": 50,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 3.0,
+     "action": "cast:Sunder Armor",
+     "rage": 51,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 4.5,
+     "action": "cast:Sunder Armor",
+     "rage": 45,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 6.0,
+     "action": "cast:Sunder Armor",
+     "rage": 29,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 6.73,
+     "action": "cast:Battle Stance",
+     "rage": 14,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.5,
+     "action": "cast:Mighty Rage Potion",
+     "rage": 35,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.5,
+     "action": "cast:Death Wish",
+     "rage": 95,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.5,
+     "action": "cast:Heroic Strike#1",
+     "rage": 85,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 8.96,
+     "action": "cast:Heroic Strike#1",
+     "rage": 82,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 9.0,
+     "action": "cast:Bloodrage",
+     "rage": 83,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 9.0,
+     "action": "cast:Goblin Sapper Charge",
+     "rage": 96,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 9.0,
+     "action": "cast:Overpower",
+     "rage": 100,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 9.0,
+     "action": "cast:Berserker Stance",
+     "rage": 95,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 10.5,
+     "action": "cast:Recklessness",
+     "rage": 36,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 12.0,
+     "action": "cast:Bloodthirst",
+     "rage": 32,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 13.0,
+     "action": "cast:Battle Stance",
+     "rage": 24,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 13.5,
+     "action": "cast:Rend",
+     "rage": 24,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 15.0,
+     "action": "cast:Overpower",
+     "rage": 36,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 15.0,
+     "action": "cast:Berserker Stance",
+     "rage": 31,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.5,
+     "action": "cast:Battle Stance",
+     "rage": 32,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 18.0,
+     "action": "cast:Bloodthirst",
+     "rage": 37,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 20.0,
+     "action": "cast:Overpower",
+     "rage": 35,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 20.0,
+     "action": "cast:Berserker Stance",
+     "rage": 30,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 20.93,
+     "action": "cast:Heroic Strike#1",
+     "rage": 55,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.5,
+     "action": "cast:Whirlwind",
+     "rage": 57,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 23.0,
+     "action": "cast:Battle Stance",
+     "rage": 35,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.0,
+     "action": "cast:Overpower",
+     "rage": 24,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.0,
+     "action": "cast:Berserker Stance",
+     "rage": 19,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.5,
+     "action": "cast:Bloodthirst",
+     "rage": 34,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 28.05,
+     "action": "cast:Sunder Armor",
+     "rage": 25,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 28.56,
+     "action": "cast:Heroic Strike#1",
+     "rage": 40,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 31.5,
+     "action": "cast:Whirlwind",
+     "rage": 40,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 32.53,
+     "action": "cast:Heroic Strike#1",
+     "rage": 44,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 33.0,
+     "action": "cast:Bloodthirst",
+     "rage": 46,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 35.1,
+     "action": "cast:Hamstring",
+     "rage": 24,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.31,
+     "action": "cast:Heroic Strike#1",
+     "rage": 43,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.35,
+     "action": "cast:Hamstring",
+     "rage": 44,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 39.0,
+     "action": "cast:Bloodthirst",
+     "rage": 45,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.65,
+     "action": "cast:Battle Stance",
+     "rage": 13,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.65,
+     "action": "cast:Overpower",
+     "rage": 13,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 41.76,
+     "action": "cast:Berserker Stance",
+     "rage": 8,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 42.15,
+     "action": "cast:Whirlwind",
+     "rage": 24,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 43.28,
+     "action": "cast:Battle Stance",
+     "rage": 2,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 44.65,
+     "action": "cast:Rend",
+     "rage": 12,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.25,
+     "action": "cast:Overpower",
+     "rage": 7,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.25,
+     "action": "cast:Berserker Stance",
+     "rage": 2,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 47.75,
+     "action": "cast:Battle Stance",
+     "rage": 13,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.1,
+     "action": "cast:Sunder Armor",
+     "rage": 20,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 51.6,
+     "action": "cast:Overpower",
+     "rage": 27,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 51.6,
+     "action": "cast:Berserker Stance",
+     "rage": 22,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.42,
+     "action": "cast:Heroic Strike#1",
+     "rage": 51,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 53.1,
+     "action": "cast:Bloodthirst",
+     "rage": 51,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 54.0,
+     "action": "cast:Battle Stance",
+     "rage": 22,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.6,
+     "action": "cast:Overpower",
+     "rage": 15,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.6,
+     "action": "cast:Berserker Stance",
+     "rage": 10,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 58.1,
+     "action": "cast:Whirlwind",
+     "rage": 31,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 58.1,
+     "action": "cast:Battle Stance",
+     "rage": 9,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    }
+   ],
+   "policy": [
+    {
+     "t": 0.0,
+     "action": "cast:Recklessness",
+     "rage": 50,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Bloodrage",
+     "rage": 50,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Heroic Strike#1",
+     "rage": 62,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Mighty Rage Potion",
+     "rage": 62,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Goblin Sapper Charge",
+     "rage": 100,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.5,
+     "action": "cast:Sunder Armor",
+     "rage": 100,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.5,
+     "action": "cast:Heroic Strike#1",
+     "rage": 73,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 3.0,
+     "action": "cast:Sunder Armor",
+     "rage": 81,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 3.73,
+     "action": "cast:Heroic Strike#1",
+     "rage": 65,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 4.5,
+     "action": "cast:Sunder Armor",
+     "rage": 66,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 4.5,
+     "action": "cast:Demonic Rune",
+     "rage": 51,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 4.5,
+     "action": "cast:Heroic Strike#1",
+     "rage": 43,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 6.0,
+     "action": "cast:Sunder Armor",
+     "rage": 55,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 6.73,
+     "action": "cast:Heroic Strike#1",
+     "rage": 45,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.5,
+     "action": "cast:Death Wish",
+     "rage": 46,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 8.96,
+     "action": "cast:Heroic Strike#1",
+     "rage": 40,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 9.0,
+     "action": "cast:Sunder Armor",
+     "rage": 41,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 10.5,
+     "action": "cast:Bloodthirst",
+     "rage": 38,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 10.5,
+     "action": "cast:Battle Stance",
+     "rage": 8,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.56,
+     "action": "cast:Heroic Strike#1",
+     "rage": 33,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 12.0,
+     "action": "cast:Rend",
+     "rage": 35,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 12.0,
+     "action": "cast:Berserker Stance",
+     "rage": 25,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 13.5,
+     "action": "cast:Battle Stance",
+     "rage": 13,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 13.5,
+     "action": "cast:Overpower",
+     "rage": 13,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 15.0,
+     "action": "cast:Berserker Stance",
+     "rage": 28,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 15.0,
+     "action": "cast:Whirlwind",
+     "rage": 25,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.79,
+     "action": "cast:Heroic Strike#1",
+     "rage": 37,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.8,
+     "action": "cast:Bloodthirst",
+     "rage": 38,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.8,
+     "action": "cast:Battle Stance",
+     "rage": 32,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 18.5,
+     "action": "cast:Overpower",
+     "rage": 35,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 18.5,
+     "action": "cast:Berserker Stance",
+     "rage": 30,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 20.0,
+     "action": "cast:Hamstring",
+     "rage": 23,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 20.93,
+     "action": "cast:Heroic Strike#1",
+     "rage": 43,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.5,
+     "action": "cast:Hamstring",
+     "rage": 45,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 23.0,
+     "action": "cast:Bloodthirst",
+     "rage": 48,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 23.15,
+     "action": "cast:Heroic Strike#1",
+     "rage": 30,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.0,
+     "action": "cast:Whirlwind",
+     "rage": 41,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.0,
+     "action": "cast:Battle Stance",
+     "rage": 19,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.5,
+     "action": "cast:Overpower",
+     "rage": 16,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.5,
+     "action": "cast:Berserker Stance",
+     "rage": 11,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 27.58,
+     "action": "cast:Heroic Strike#1",
+     "rage": 42,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 28.75,
+     "action": "cast:Heroic Strike#1",
+     "rage": 51,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 28.9,
+     "action": "cast:Sunder Armor",
+     "rage": 57,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 30.4,
+     "action": "cast:Bloodthirst",
+     "rage": 48,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 31.9,
+     "action": "cast:Hamstring",
+     "rage": 11,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 33.4,
+     "action": "cast:Hamstring",
+     "rage": 29,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 33.41,
+     "action": "cast:Heroic Strike#1",
+     "rage": 39,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 35.0,
+     "action": "cast:Whirlwind",
+     "rage": 48,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.87,
+     "action": "cast:Heroic Strike#1",
+     "rage": 49,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.9,
+     "action": "cast:Bloodthirst",
+     "rage": 50,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 39.0,
+     "action": "cast:Battle Stance",
+     "rage": 21,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 39.4,
+     "action": "cast:Overpower",
+     "rage": 31,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.09,
+     "action": "cast:Berserker Stance",
+     "rage": 26,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.9,
+     "action": "cast:Hamstring",
+     "rage": 33,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 42.4,
+     "action": "cast:Hamstring",
+     "rage": 29,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 44.57,
+     "action": "cast:Heroic Strike#1",
+     "rage": 44,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 44.6,
+     "action": "cast:Bloodthirst",
+     "rage": 44,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.1,
+     "action": "cast:Battle Stance",
+     "rage": 15,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.1,
+     "action": "cast:Overpower",
+     "rage": 15,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 47.18,
+     "action": "cast:Berserker Stance",
+     "rage": 21,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 47.6,
+     "action": "cast:Whirlwind",
+     "rage": 26,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 49.1,
+     "action": "cast:Battle Stance",
+     "rage": 26,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 49.1,
+     "action": "cast:Rend",
+     "rage": 25,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 51.1,
+     "action": "cast:Overpower",
+     "rage": 27,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 51.1,
+     "action": "cast:Berserker Stance",
+     "rage": 22,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.75,
+     "action": "cast:Sunder Armor",
+     "rage": 26,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.75,
+     "action": "cast:Battle Stance",
+     "rage": 11,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.01,
+     "action": "cast:Heroic Strike#1",
+     "rage": 47,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.05,
+     "action": "cast:Bloodthirst",
+     "rage": 48,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 57.55,
+     "action": "cast:Overpower",
+     "rage": 47,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 57.55,
+     "action": "cast:Berserker Stance",
+     "rage": 42,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.05,
+     "action": "cast:Hamstring",
+     "rage": 22,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.93,
+     "action": "cast:Heroic Strike#1",
+     "rage": 42,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 0
+    }
+   ]
+  }
+ },
+ "native": {
+  "fights": 2048,
+  "published": 974.9528695344925,
+  "network": 988.0214685797691,
+  "network_vs_published": 13.068599045276642,
+  "network_vs_published_se": 0.7582777636128144
+ },
+ "profile": {
+  "id": "fury_sunder__human__learned",
+  "dps": 975.781273627567,
+  "se": 0.4999645607087911,
+  "published_dps": 972.2873371592153,
+  "published_se": 0.49383980410646133,
+  "talents": "30305213002-25053005112010501-1",
+  "talent_source": "learned",
+  "overrides": [
+   "cast:Overpower if rage <= 56.80 and not Mighty Rage Potion:ready"
+  ],
+  "removed": [
+   "cast:Recklessness if remaining_s <= 300.00s"
+  ],
+  "paired_vs_published": 2.866490453481674,
+  "paired_vs_published_se": 0.6307634754303616,
+  "paired_fights": 2048,
+  "gain": true
+ }
+}

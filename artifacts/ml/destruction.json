@@ -1,0 +1,894 @@
+{
+ "key": "destruction",
+ "build": "Destruction",
+ "race": "Human",
+ "class": "",
+ "published": {
+  "talents": "2530000003-0005-0050355103101351",
+  "dps": 884.8814019560814,
+  "se": 0.3797776999330988,
+  "benchmark_dps": 885.1457434477046
+ },
+ "learned": {
+  "talents": "2530000003-0005-0050355103101351",
+  "dps": 885.4839099943638,
+  "vs_published": 0.6025080382823944,
+  "vs_published_se": 0.3126604764128103,
+  "published_talents_dps": 885.4839099943638,
+  "published_talents_vs_published": 0.6025080382823944,
+  "published_talents_vs_published_se": 0.3126604764128103
+ },
+ "talent_changes": [],
+ "fights": 4096,
+ "training": {
+  "stop": "converged",
+  "train_minutes": 8.2,
+  "minutes": 8.3,
+  "decisions": 197132288,
+  "fights": 384712,
+  "builds_seen": 14247,
+  "decisions_per_fight": 191.59765625,
+  "best_decisions": 152043520
+ },
+ "actions": {
+  "fights": 1024,
+  "apl_talents": "2530000003-0005-0050355103101351",
+  "policy_talents": "2530000003-0005-0050355103101351",
+  "apl": 884.4071542620659,
+  "policy": 885.0081278085709,
+  "diff": 0.6009735465049744,
+  "diff_se": 0.6320659562060318,
+  "agreement": 0.9284147038412867,
+  "disagreements": [
+   {
+    "apl_would": "cast:{OtherID: 13}",
+    "policy_did": "cast:Major Mana Potion",
+    "per_fight": 3.0
+   },
+   {
+    "apl_would": "cast:Life Tap",
+    "policy_did": "cast:Incinerate",
+    "per_fight": 1.519
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Demonic Rune",
+    "per_fight": 0.977
+   },
+   {
+    "apl_would": "cast:Life Tap",
+    "policy_did": "cast:Conflagrate",
+    "per_fight": 0.856
+   },
+   {
+    "apl_would": "cast:{OtherID: 13}",
+    "policy_did": "cast:Conflagrate",
+    "per_fight": 0.757
+   },
+   {
+    "apl_would": "cast:Immolate",
+    "policy_did": "cast:Conflagrate",
+    "per_fight": 0.611
+   },
+   {
+    "apl_would": "cast:Immolate",
+    "policy_did": "cast:Corruption",
+    "per_fight": 0.586
+   },
+   {
+    "apl_would": "cast:Immolate",
+    "policy_did": "cast:Incinerate",
+    "per_fight": 0.578
+   },
+   {
+    "apl_would": "cast:Life Tap",
+    "policy_did": "cast:Searing Pain",
+    "per_fight": 0.522
+   },
+   {
+    "apl_would": "cast:Incinerate",
+    "policy_did": "cast:Corruption",
+    "per_fight": 0.341
+   },
+   {
+    "apl_would": "cast:Life Tap",
+    "policy_did": "cast:Shadowburn",
+    "per_fight": 0.323
+   },
+   {
+    "apl_would": "cast:Life Tap",
+    "policy_did": "cast:Immolate",
+    "per_fight": 0.291
+   },
+   {
+    "apl_would": "cast:Life Tap",
+    "policy_did": "cast:Corruption",
+    "per_fight": 0.286
+   },
+   {
+    "apl_would": "cast:{OtherID: 13}",
+    "policy_did": "cast:Incinerate",
+    "per_fight": 0.25
+   },
+   {
+    "apl_would": "cast:Immolate",
+    "policy_did": "cast:Curse of Doom",
+    "per_fight": 0.25
+   }
+  ],
+  "actions": [
+   {
+    "action": "cast:Incinerate",
+    "apl": 67.15625,
+    "policy": 66.84765625,
+    "apl_execute": 12.4501953125,
+    "policy_execute": 12.203125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Conflagrate",
+    "apl": 27.689453125,
+    "policy": 28.0869140625,
+    "apl_execute": 5.16015625,
+    "policy_execute": 5.4765625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Life Tap",
+    "apl": 23.123046875,
+    "policy": 23.083984375,
+    "apl_execute": 4.2724609375,
+    "policy_execute": 4.26171875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Immolate",
+    "apl": 19.5146484375,
+    "policy": 19.3583984375,
+    "apl_execute": 3.4375,
+    "policy_execute": 3.42578125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Shadowburn",
+    "apl": 17.3232421875,
+    "policy": 17.3388671875,
+    "apl_execute": 3.607421875,
+    "policy_execute": 3.58984375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Corruption",
+    "apl": 15.0078125,
+    "policy": 15.0537109375,
+    "apl_execute": 2.880859375,
+    "policy_execute": 2.7841796875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "wait",
+    "apl": 12.1474609375,
+    "policy": 7.01953125,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Curse of Doom",
+    "apl": 4.0,
+    "policy": 4.0048828125,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0048828125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Demonic Rune",
+    "apl": 3.0,
+    "policy": 3.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Searing Pain",
+    "apl": 2.1943359375,
+    "policy": 2.501953125,
+    "apl_execute": 2.1943359375,
+    "policy_execute": 2.501953125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Curse of Agony",
+    "apl": 2.2021484375,
+    "policy": 2.0869140625,
+    "apl_execute": 2.12109375,
+    "policy_execute": 2.01171875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Major Mana Potion",
+    "apl": 0.0,
+    "policy": 3.0,
+    "apl_execute": 0.0,
+    "policy_execute": 1.0,
+    "apl_rage": null,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:{OtherID: 13}",
+    "apl": 3.0,
+    "policy": 0.0,
+    "apl_execute": 1.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": null
+   }
+  ],
+  "cooldowns": [
+   {
+    "action": "cast:Demonic Rune",
+    "apl": [
+     {
+      "mean_s": 34.9,
+      "share": 1.0
+     },
+     {
+      "mean_s": 155.5,
+      "share": 1.0
+     },
+     {
+      "mean_s": 276.1,
+      "share": 1.0
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 6.0,
+      "share": 1.0
+     },
+     {
+      "mean_s": 126.2,
+      "share": 1.0
+     },
+     {
+      "mean_s": 246.9,
+      "share": 1.0
+     }
+    ]
+   }
+  ],
+  "timeline": {
+   "apl": [
+    {
+     "t": 0.0,
+     "action": "cast:Immolate",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.5,
+     "action": "cast:Conflagrate",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 3.0,
+     "action": "cast:Curse of Doom",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 4.5,
+     "action": "cast:Corruption",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 6.0,
+     "action": "cast:Shadowburn",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.5,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 9.5,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.5,
+     "action": "cast:Conflagrate",
+     "rage": 0,
+     "mana_pct": 76,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.5,
+     "action": "cast:{OtherID: 13}",
+     "rage": 0,
+     "mana_pct": 74,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 13.0,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 15.0,
+     "action": "cast:Immolate",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.5,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 18.5,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 20.5,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 22.5,
+     "action": "cast:Conflagrate",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 24.0,
+     "action": "cast:Corruption",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.5,
+     "action": "cast:Shadowburn",
+     "rage": 0,
+     "mana_pct": 78,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 27.0,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 75,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 29.0,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 72,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 31.0,
+     "action": "cast:Immolate",
+     "rage": 0,
+     "mana_pct": 68,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 32.5,
+     "action": "cast:Conflagrate",
+     "rage": 0,
+     "mana_pct": 64,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 34.0,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 62,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 36.0,
+     "action": "cast:Demonic Rune",
+     "rage": 0,
+     "mana_pct": 58,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 36.0,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 76,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 38.0,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 73,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.0,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 70,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 42.0,
+     "action": "cast:Corruption",
+     "rage": 0,
+     "mana_pct": 67,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 43.5,
+     "action": "cast:Conflagrate",
+     "rage": 0,
+     "mana_pct": 63,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 45.0,
+     "action": "cast:Shadowburn",
+     "rage": 0,
+     "mana_pct": 61,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.5,
+     "action": "cast:Immolate",
+     "rage": 0,
+     "mana_pct": 58,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 48.0,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 54,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.0,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 50,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.0,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 47,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 54.0,
+     "action": "cast:Conflagrate",
+     "rage": 0,
+     "mana_pct": 45,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 55.5,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 43,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 57.5,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 39,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.5,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 36,
+     "energy": 0,
+     "combo": 0
+    }
+   ],
+   "policy": [
+    {
+     "t": 0.0,
+     "action": "cast:Immolate",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.5,
+     "action": "cast:Conflagrate",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 3.0,
+     "action": "cast:Curse of Doom",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 4.5,
+     "action": "cast:Corruption",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 6.0,
+     "action": "cast:Shadowburn",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 6.0,
+     "action": "cast:Demonic Rune",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.5,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 9.5,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.5,
+     "action": "cast:Conflagrate",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 13.0,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 15.0,
+     "action": "cast:Immolate",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.5,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 18.5,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 20.5,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 78,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 22.5,
+     "action": "cast:Conflagrate",
+     "rage": 0,
+     "mana_pct": 75,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 22.5,
+     "action": "cast:Major Mana Potion",
+     "rage": 0,
+     "mana_pct": 72,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 24.0,
+     "action": "cast:Corruption",
+     "rage": 0,
+     "mana_pct": 99,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.5,
+     "action": "cast:Shadowburn",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 27.0,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 29.0,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 31.0,
+     "action": "cast:Immolate",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 32.5,
+     "action": "cast:Conflagrate",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 34.0,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 36.0,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 76,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 38.0,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 74,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.0,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 70,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 42.0,
+     "action": "cast:Corruption",
+     "rage": 0,
+     "mana_pct": 68,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 43.5,
+     "action": "cast:Conflagrate",
+     "rage": 0,
+     "mana_pct": 64,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 45.0,
+     "action": "cast:Shadowburn",
+     "rage": 0,
+     "mana_pct": 61,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.5,
+     "action": "cast:Immolate",
+     "rage": 0,
+     "mana_pct": 58,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 48.0,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 54,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.0,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 51,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.0,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 48,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 54.0,
+     "action": "cast:Conflagrate",
+     "rage": 0,
+     "mana_pct": 46,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 55.5,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 43,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 57.5,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 40,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.5,
+     "action": "cast:Incinerate",
+     "rage": 0,
+     "mana_pct": 37,
+     "energy": 0,
+     "combo": 0
+    }
+   ]
+  }
+ },
+ "native": {
+  "fights": 2048,
+  "published": 885.4640944004059,
+  "network": 885.7753401100636,
+  "network_vs_published": 0.31124570965766907,
+  "network_vs_published_se": 0.45886105998770277
+ },
+ "profile": {
+  "id": "destruction__human__learned",
+  "dps": 885.7929163676517,
+  "se": 0.34746842202847555,
+  "published_dps": 885.1457434477046,
+  "published_se": 0.35512356633582576,
+  "talents": "2530000003-0005-0050355103101351",
+  "talent_source": "learned",
+  "overrides": [
+   "cast:Conflagrate"
+  ],
+  "removed": [],
+  "paired_vs_published": 0.5918446481227875,
+  "paired_vs_published_se": 0.4591879200913149,
+  "paired_fights": 2048,
+  "gain": false
+ }
+}

@@ -1,0 +1,806 @@
+{
+ "key": "demonology",
+ "build": "Demonic Pact",
+ "race": "Human",
+ "class": "",
+ "published": {
+  "talents": "011-0005003221220311351-0550005003",
+  "dps": 1009.9117332547903,
+  "se": 0.4772016556365669,
+  "benchmark_dps": 1005.5110192596063
+ },
+ "learned": {
+  "talents": "011-0005003221220311351-0550005003",
+  "dps": 1010.5589637458324,
+  "vs_published": 0.6472304910421371,
+  "vs_published_se": 0.3444603793580191,
+  "published_talents_dps": 1010.5589637458324,
+  "published_talents_vs_published": 0.6472304910421371,
+  "published_talents_vs_published_se": 0.3444603793580191
+ },
+ "talent_changes": [],
+ "fights": 4096,
+ "training": {
+  "stop": "converged",
+  "train_minutes": 9.7,
+  "minutes": 9.9,
+  "decisions": 197132288,
+  "fights": 959929,
+  "builds_seen": 27275,
+  "decisions_per_fight": 196.314453125,
+  "best_decisions": 152043520
+ },
+ "actions": {
+  "fights": 1024,
+  "apl_talents": "011-0005003221220311351-0550005003",
+  "policy_talents": "011-0005003221220311351-0550005003",
+  "apl": 1004.1644721627235,
+  "policy": 1009.2752825021744,
+  "diff": 5.110810339450836,
+  "diff_se": 0.8441801161177289,
+  "agreement": 0.9585916994137892,
+  "disagreements": [
+   {
+    "apl_would": "cast:{OtherID: 13}",
+    "policy_did": "cast:Major Mana Potion",
+    "per_fight": 1.991
+   },
+   {
+    "apl_would": "cast:Shadow Bolt",
+    "policy_did": "cast:Demonic Rune",
+    "per_fight": 0.979
+   },
+   {
+    "apl_would": "cast:{OtherID: 13}",
+    "policy_did": "cast:Shadow Bolt",
+    "per_fight": 0.789
+   },
+   {
+    "apl_would": "cast:Life Tap",
+    "policy_did": "cast:Searing Pain",
+    "per_fight": 0.66
+   },
+   {
+    "apl_would": "cast:Shadow Bolt",
+    "policy_did": "cast:Searing Pain",
+    "per_fight": 0.578
+   },
+   {
+    "apl_would": "cast:Immolate",
+    "policy_did": "cast:Shadow Bolt",
+    "per_fight": 0.365
+   },
+   {
+    "apl_would": "cast:Life Tap",
+    "policy_did": "cast:Immolate",
+    "per_fight": 0.333
+   },
+   {
+    "apl_would": "cast:Life Tap",
+    "policy_did": "cast:Shadow Bolt",
+    "per_fight": 0.301
+   },
+   {
+    "apl_would": "cast:Life Tap",
+    "policy_did": "cast:Corruption",
+    "per_fight": 0.248
+   },
+   {
+    "apl_would": "cast:Shadow Bolt",
+    "policy_did": "cast:Immolate",
+    "per_fight": 0.234
+   },
+   {
+    "apl_would": "cast:Curse of Agony",
+    "policy_did": "cast:Corruption",
+    "per_fight": 0.225
+   },
+   {
+    "apl_would": "cast:Corruption",
+    "policy_did": "cast:Shadow Bolt",
+    "per_fight": 0.205
+   },
+   {
+    "apl_would": "cast:Corruption",
+    "policy_did": "cast:Immolate",
+    "per_fight": 0.157
+   },
+   {
+    "apl_would": "cast:Curse of Agony",
+    "policy_did": "cast:Immolate",
+    "per_fight": 0.138
+   },
+   {
+    "apl_would": "cast:Immolate",
+    "policy_did": "cast:Soul Fire",
+    "per_fight": 0.111
+   }
+  ],
+  "actions": [
+   {
+    "action": "cast:Shadow Bolt",
+    "apl": 65.1962890625,
+    "policy": 65.6572265625,
+    "apl_execute": 9.076171875,
+    "policy_execute": 9.603515625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "wait",
+    "apl": 39.84765625,
+    "policy": 36.775390625,
+    "apl_execute": 10.9091796875,
+    "policy_execute": 8.056640625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Searing Pain",
+    "apl": 25.701171875,
+    "policy": 26.478515625,
+    "apl_execute": 5.4873046875,
+    "policy_execute": 6.21484375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Immolate",
+    "apl": 17.224609375,
+    "policy": 17.072265625,
+    "apl_execute": 2.9287109375,
+    "policy_execute": 2.77734375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Corruption",
+    "apl": 15.140625,
+    "policy": 15.142578125,
+    "apl_execute": 2.091796875,
+    "policy_execute": 2.0517578125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Life Tap",
+    "apl": 14.4169921875,
+    "policy": 13.0595703125,
+    "apl_execute": 3.634765625,
+    "policy_execute": 2.33203125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Soul Fire",
+    "apl": 9.755859375,
+    "policy": 9.794921875,
+    "apl_execute": 5.6162109375,
+    "policy_execute": 5.607421875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Curse of Doom",
+    "apl": 4.0,
+    "policy": 4.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Demonic Rune",
+    "apl": 2.037109375,
+    "policy": 3.0,
+    "apl_execute": 0.037109375,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Curse of Agony",
+    "apl": 2.1123046875,
+    "policy": 2.0947265625,
+    "apl_execute": 2.001953125,
+    "policy_execute": 2.015625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:{OtherID: 13}",
+    "apl": 3.0,
+    "policy": 1.0087890625,
+    "apl_execute": 1.0,
+    "policy_execute": 0.0029296875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Major Mana Potion",
+    "apl": 0.0,
+    "policy": 1.9912109375,
+    "apl_execute": 0.0,
+    "policy_execute": 0.9970703125,
+    "apl_rage": null,
+    "policy_rage": 0.0
+   }
+  ],
+  "cooldowns": [
+   {
+    "action": "cast:Demonic Rune",
+    "apl": [
+     {
+      "mean_s": 49.5,
+      "share": 1.0
+     },
+     {
+      "mean_s": 170.8,
+      "share": 1.0
+     },
+     {
+      "mean_s": 284.8,
+      "share": 0.037
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 11.4,
+      "share": 1.0
+     },
+     {
+      "mean_s": 132.2,
+      "share": 1.0
+     },
+     {
+      "mean_s": 253.5,
+      "share": 1.0
+     }
+    ]
+   }
+  ],
+  "timeline": {
+   "apl": [
+    {
+     "t": 0.47,
+     "action": "cast:Searing Pain",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.94,
+     "action": "cast:Curse of Doom",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 3.41,
+     "action": "cast:Corruption",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 4.98,
+     "action": "cast:Immolate",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 6.48,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 8.93,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.38,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 13.83,
+     "action": "cast:Searing Pain",
+     "rage": 0,
+     "mana_pct": 77,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 15.3,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 76,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 17.75,
+     "action": "cast:{OtherID: 13}",
+     "rage": 0,
+     "mana_pct": 74,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 17.75,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 20.21,
+     "action": "cast:Immolate",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.71,
+     "action": "cast:Corruption",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 23.27,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.73,
+     "action": "cast:Searing Pain",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 27.2,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 29.65,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 32.1,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 34.55,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 76,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.0,
+     "action": "cast:Searing Pain",
+     "rage": 0,
+     "mana_pct": 74,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 38.47,
+     "action": "cast:Immolate",
+     "rage": 0,
+     "mana_pct": 72,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 39.97,
+     "action": "cast:Corruption",
+     "rage": 0,
+     "mana_pct": 69,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 41.54,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 67,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 43.99,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 63,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.44,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 61,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 48.89,
+     "action": "cast:Demonic Rune",
+     "rage": 0,
+     "mana_pct": 58,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 48.89,
+     "action": "cast:Searing Pain",
+     "rage": 0,
+     "mana_pct": 76,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.36,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 75,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.81,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 72,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 55.26,
+     "action": "cast:Immolate",
+     "rage": 0,
+     "mana_pct": 69,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.76,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 68,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.22,
+     "action": "cast:Corruption",
+     "rage": 0,
+     "mana_pct": 64,
+     "energy": 0,
+     "combo": 0
+    }
+   ],
+   "policy": [
+    {
+     "t": 0.47,
+     "action": "cast:Searing Pain",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.94,
+     "action": "cast:Curse of Doom",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 3.41,
+     "action": "cast:Corruption",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 4.98,
+     "action": "cast:Immolate",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 6.48,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 8.93,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.38,
+     "action": "cast:Demonic Rune",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.38,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 13.83,
+     "action": "cast:Searing Pain",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 15.3,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 17.75,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 20.21,
+     "action": "cast:Immolate",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.71,
+     "action": "cast:Corruption",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 23.27,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.73,
+     "action": "cast:Searing Pain",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 27.2,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 78,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 29.65,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 76,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 32.1,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 74,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 34.55,
+     "action": "cast:{OtherID: 13}",
+     "rage": 0,
+     "mana_pct": 70,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 34.55,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.0,
+     "action": "cast:Searing Pain",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 38.47,
+     "action": "cast:Immolate",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 39.97,
+     "action": "cast:Corruption",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 41.54,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 43.99,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.44,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 48.89,
+     "action": "cast:Searing Pain",
+     "rage": 0,
+     "mana_pct": 78,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.36,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 77,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.81,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 75,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 55.26,
+     "action": "cast:Immolate",
+     "rage": 0,
+     "mana_pct": 71,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.76,
+     "action": "cast:Shadow Bolt",
+     "rage": 0,
+     "mana_pct": 70,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.22,
+     "action": "cast:Corruption",
+     "rage": 0,
+     "mana_pct": 66,
+     "energy": 0,
+     "combo": 0
+    }
+   ]
+  }
+ },
+ "native": {
+  "fights": 2048,
+  "published": 1004.742241948843,
+  "network": 1009.7812154889107,
+  "network_vs_published": 5.038973540067673,
+  "network_vs_published_se": 0.5745112266123357
+ },
+ "profile": {
+  "id": "demonology__human__learned",
+  "dps": 1013.1896695696269,
+  "se": 0.4466706052397814,
+  "published_dps": 1005.5110192596063,
+  "published_se": 0.42630401433009274,
+  "talents": "011-0005003221220311351-0550005003",
+  "talent_source": "learned",
+  "overrides": [],
+  "removed": [
+   "cast:Demonic Rune if remaining_s >= 15.00s and mana_frac <= 0.60",
+   "cast:Soul Fire (conditional)"
+  ],
+  "paired_vs_published": 7.2797077894210815,
+  "paired_vs_published_se": 0.5941158617772494,
+  "paired_fights": 2048,
+  "gain": true
+ }
+}

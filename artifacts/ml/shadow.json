@@ -1,0 +1,794 @@
+{
+ "key": "shadow",
+ "build": "Shadow",
+ "race": "Human",
+ "class": "",
+ "published": {
+  "talents": "30503300103--50452001201302251",
+  "dps": 911.2161716371775,
+  "se": 0.27760202051464455,
+  "benchmark_dps": 912.7144537012645
+ },
+ "learned": {
+  "talents": "01502500112--51452001201302251",
+  "dps": 913.025593161583,
+  "vs_published": 1.8094215244054794,
+  "vs_published_se": 0.02992873672845586,
+  "published_talents_dps": 911.2126959264278,
+  "published_talents_vs_published": -0.0034757107496261597,
+  "published_talents_vs_published_se": 0.0026950682313215102
+ },
+ "talent_changes": [
+  {
+   "talent": "Power in Light",
+   "tree": "Discipline",
+   "published": 3,
+   "learned": 0
+  },
+  {
+   "talent": "Wand Specialization",
+   "tree": "Discipline",
+   "published": 0,
+   "learned": 1
+  },
+  {
+   "talent": "Holy Precision",
+   "tree": "Discipline",
+   "published": 3,
+   "learned": 2
+  },
+  {
+   "talent": "Mental Strength",
+   "tree": "Discipline",
+   "published": 3,
+   "learned": 5
+  },
+  {
+   "talent": "Improved Power Word: Shield",
+   "tree": "Discipline",
+   "published": 0,
+   "learned": 1
+  },
+  {
+   "talent": "Meditation",
+   "tree": "Discipline",
+   "published": 3,
+   "learned": 2
+  },
+  {
+   "talent": "Blackout",
+   "tree": "Shadow Magic",
+   "published": 0,
+   "learned": 1
+  }
+ ],
+ "fights": 4096,
+ "training": {
+  "stop": "converged",
+  "train_minutes": 5.3,
+  "minutes": 5.4,
+  "decisions": 150470656,
+  "fights": 430910,
+  "builds_seen": 15503,
+  "decisions_per_fight": 156.126953125,
+  "best_decisions": 76021760
+ },
+ "actions": {
+  "fights": 1024,
+  "apl_talents": "30503300103--50452001201302251",
+  "policy_talents": "01502500112--51452001201302251",
+  "apl": 913.7328282594681,
+  "policy": 913.7634108662605,
+  "diff": 0.03058260679244995,
+  "diff_se": 0.0957069195780866,
+  "agreement": 0.9807330146313197,
+  "disagreements": [
+   {
+    "apl_would": "cast:Major Spellblasting Potion",
+    "policy_did": "cast:Inner Focus",
+    "per_fight": 1.0
+   },
+   {
+    "apl_would": "cast:Mind Flay",
+    "policy_did": "cast:Inner Focus",
+    "per_fight": 0.968
+   },
+   {
+    "apl_would": "cast:Demonic Rune",
+    "policy_did": "cast:Mind Flay",
+    "per_fight": 0.383
+   },
+   {
+    "apl_would": "cast:Demonic Rune",
+    "policy_did": "cast:Mind Blast",
+    "per_fight": 0.342
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Demonic Rune",
+    "per_fight": 0.133
+   },
+   {
+    "apl_would": "cast:Mind Flay",
+    "policy_did": "cast:Demonic Rune",
+    "per_fight": 0.119
+   },
+   {
+    "apl_would": "macro:{\"strictSequence\":{\"actions\":[{\"ca",
+    "policy_did": "cast:Inner Focus",
+    "per_fight": 0.032
+   },
+   {
+    "apl_would": "cast:Demonic Rune",
+    "policy_did": "cast:Devouring Plague",
+    "per_fight": 0.003
+   },
+   {
+    "apl_would": "cast:Mind Flay",
+    "policy_did": "cast:Shadow Word: Pain",
+    "per_fight": 0.003
+   },
+   {
+    "apl_would": "cast:Demonic Rune",
+    "policy_did": "cast:Shadow Word: Death",
+    "per_fight": 0.002
+   },
+   {
+    "apl_would": "cast:Demonic Rune",
+    "policy_did": "cast:Shadow Word: Pain",
+    "per_fight": 0.001
+   },
+   {
+    "apl_would": "cast:Shadow Word: Pain",
+    "policy_did": "cast:Shadow Word: Death",
+    "per_fight": 0.001
+   },
+   {
+    "apl_would": "cast:Shadow Word: Death",
+    "policy_did": "cast:Shadow Word: Pain",
+    "per_fight": 0.001
+   }
+  ],
+  "actions": [
+   {
+    "action": "cast:Mind Flay",
+    "apl": 61.9599609375,
+    "policy": 61.958984375,
+    "apl_execute": 12.8271484375,
+    "policy_execute": 12.826171875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Mind Blast",
+    "apl": 34.951171875,
+    "policy": 36.951171875,
+    "apl_execute": 7.923828125,
+    "policy_execute": 7.923828125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Shadow Word: Death",
+    "apl": 16.0,
+    "policy": 16.0,
+    "apl_execute": 3.0,
+    "policy_execute": 3.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Devouring Plague",
+    "apl": 13.0556640625,
+    "policy": 13.0556640625,
+    "apl_execute": 3.0087890625,
+    "policy_execute": 3.0087890625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Shadow Word: Pain",
+    "apl": 12.0439453125,
+    "policy": 12.046875,
+    "apl_execute": 2.0068359375,
+    "policy_execute": 2.009765625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "wait",
+    "apl": 9.994140625,
+    "policy": 7.03515625,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Major Spellblasting Potion",
+    "apl": 3.0,
+    "policy": 3.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Demonic Rune",
+    "apl": 2.7587890625,
+    "policy": 3.0,
+    "apl_execute": 0.7587890625,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "macro:{\"strictSequence\":{\"actions\":[{\"ca",
+    "apl": 2.0,
+    "policy": 0.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": null
+   },
+   {
+    "action": "cast:Inner Focus",
+    "apl": 0.0,
+    "policy": 2.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": null,
+    "policy_rage": 0.0
+   }
+  ],
+  "cooldowns": [
+   {
+    "action": "cast:Demonic Rune",
+    "apl": [
+     {
+      "mean_s": 54.6,
+      "share": 1.0
+     },
+     {
+      "mean_s": 174.9,
+      "share": 1.0
+     },
+     {
+      "mean_s": 292.3,
+      "share": 0.759
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 36.5,
+      "share": 1.0
+     },
+     {
+      "mean_s": 156.6,
+      "share": 1.0
+     },
+     {
+      "mean_s": 276.9,
+      "share": 1.0
+     }
+    ]
+   }
+  ],
+  "timeline": {
+   "apl": [
+    {
+     "t": 0.0,
+     "action": "cast:Major Spellblasting Potion",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Devouring Plague",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.5,
+     "action": "cast:Shadow Word: Pain",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 3.0,
+     "action": "cast:Shadow Word: Death",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 4.5,
+     "action": "macro:{\"strictSequence\":{\"actions\":[{\"ca",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 6.0,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 9.0,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 12.0,
+     "action": "cast:Mind Blast",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 13.5,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.5,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 19.5,
+     "action": "cast:Mind Blast",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.0,
+     "action": "cast:Shadow Word: Death",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 22.5,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.5,
+     "action": "cast:Devouring Plague",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 27.0,
+     "action": "cast:Shadow Word: Pain",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 28.5,
+     "action": "cast:Mind Blast",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 30.0,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 33.0,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 36.0,
+     "action": "cast:Mind Blast",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.5,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.5,
+     "action": "cast:Shadow Word: Death",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 42.0,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 45.0,
+     "action": "cast:Mind Blast",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.5,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 49.5,
+     "action": "cast:Devouring Plague",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 51.0,
+     "action": "cast:Shadow Word: Pain",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.5,
+     "action": "cast:Demonic Rune",
+     "rage": 0,
+     "mana_pct": 78,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.5,
+     "action": "cast:Mind Blast",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 54.0,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 57.0,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    }
+   ],
+   "policy": [
+    {
+     "t": 0.0,
+     "action": "cast:Inner Focus",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Major Spellblasting Potion",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Devouring Plague",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.5,
+     "action": "cast:Shadow Word: Pain",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 3.0,
+     "action": "cast:Shadow Word: Death",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 4.5,
+     "action": "cast:Mind Blast",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 6.0,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 9.0,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 12.0,
+     "action": "cast:Mind Blast",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 13.5,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.5,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 19.5,
+     "action": "cast:Mind Blast",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.0,
+     "action": "cast:Shadow Word: Death",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 22.5,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.5,
+     "action": "cast:Devouring Plague",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 27.0,
+     "action": "cast:Shadow Word: Pain",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 28.5,
+     "action": "cast:Mind Blast",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 30.0,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 33.0,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 36.0,
+     "action": "cast:Mind Blast",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.5,
+     "action": "cast:Demonic Rune",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.5,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.5,
+     "action": "cast:Shadow Word: Death",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 42.0,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 45.0,
+     "action": "cast:Mind Blast",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.5,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 49.5,
+     "action": "cast:Devouring Plague",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 51.0,
+     "action": "cast:Shadow Word: Pain",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.5,
+     "action": "cast:Mind Blast",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 54.0,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 57.0,
+     "action": "cast:Mind Flay",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    }
+   ]
+  }
+ },
+ "native": {
+  "fights": 2048,
+  "published": 912.6852194666862,
+  "network": 912.6473662853241,
+  "network_vs_published": -0.0378531813621521,
+  "network_vs_published_se": 0.06583661656935297
+ },
+ "profile": {
+  "id": "shadow__human__learned",
+  "dps": 914.6067970352079,
+  "se": 0.25338755680225833,
+  "published_dps": 912.7144537012645,
+  "published_se": 0.25505090033649586,
+  "talents": "01502500112--51452001201302251",
+  "talent_source": "learned",
+  "overrides": [],
+  "removed": [],
+  "paired_vs_published": 1.7511983215808868,
+  "paired_vs_published_se": 0.04238841654143544,
+  "paired_fights": 2048,
+  "gain": true
+ }
+}

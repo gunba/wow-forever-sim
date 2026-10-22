@@ -51,6 +51,9 @@ The review matrix's first column, **Learned**, shows what a reinforcement-learni
 its highest-simming race when it chose every action and searched the talents itself, measured against the published
 setup on the same fights. Each value links to the learned talents and actions; where rules converted from the agent
 beat the published APL, "sim" opens that profile in the simulator ([method and caveats](docs/learned-rotations.md)).
+The [October 22 learned rotations](docs/october-22-learned-rotations.md) add that column for all 31 DPS builds, with
+simmable profiles for the 27 where converted rules beat the published APL, and fix the training environment's copy of
+the APL, Stoneskin Totem and Druid form crashes; published profiles and matrix numbers do not change.
 The [October 21 Warrior rotations](docs/october-21-warrior-rotations.md) give Fury, Fury (Sunder) and 2H Bloodthirst
 rotation rules a reinforcement-learning agent found in the engine (Overpower in the execute phase, Rend in Battle Stance,
 higher Heroic Strike thresholds, swing-timed Hamstring, Demonic Rune for rage) and move Fury to 19/31/1 talents. The

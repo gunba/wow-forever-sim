@@ -1,0 +1,972 @@
+{
+ "key": "fire",
+ "build": "Fire",
+ "race": "Human",
+ "class": "",
+ "published": {
+  "talents": "05002152000003-23450000130135031-002",
+  "dps": 931.5437584370375,
+  "se": 0.6529137404874343,
+  "benchmark_dps": 930.1432105548583
+ },
+ "learned": {
+  "talents": "05002152000003-23450000130135031-002",
+  "dps": 947.6258418411016,
+  "vs_published": 16.08208340406418,
+  "vs_published_se": 0.481630977878636,
+  "published_talents_dps": 947.6258418411016,
+  "published_talents_vs_published": 16.08208340406418,
+  "published_talents_vs_published_se": 0.481630977878636
+ },
+ "talent_changes": [],
+ "fights": 4096,
+ "training": {
+  "stop": "budget",
+  "train_minutes": 6.9,
+  "minutes": 7.0,
+  "decisions": 150470656,
+  "fights": 705862,
+  "builds_seen": 22805,
+  "decisions_per_fight": 218.447265625,
+  "best_decisions": 136839168
+ },
+ "actions": {
+  "fights": 1024,
+  "apl_talents": "05002152000003-23450000130135031-002",
+  "policy_talents": "05002152000003-23450000130135031-002",
+  "apl": 929.9795271158218,
+  "policy": 948.1282665133476,
+  "diff": 18.148739397525787,
+  "diff_se": 0.9599908417539667,
+  "agreement": 0.8553987161323049,
+  "disagreements": [
+   {
+    "apl_would": "cast:Fire Blast",
+    "policy_did": "cast:Scorch",
+    "per_fight": 14.505
+   },
+   {
+    "apl_would": "cast:Fireball",
+    "policy_did": "cast:Scorch",
+    "per_fight": 3.144
+   },
+   {
+    "apl_would": "cast:{ItemID: 8008}",
+    "policy_did": "cast:Scorch",
+    "per_fight": 3.066
+   },
+   {
+    "apl_would": "cast:{ItemID: 8008}",
+    "policy_did": "wait",
+    "per_fight": 2.982
+   },
+   {
+    "apl_would": "cast:{ItemID: 8008}",
+    "policy_did": "cast:Fire Blast",
+    "per_fight": 1.275
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Major Mana Potion",
+    "per_fight": 1.146
+   },
+   {
+    "apl_would": "cast:{ItemID: 8008}",
+    "policy_did": "cast:Pyroblast",
+    "per_fight": 1.055
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Thorium Grenade",
+    "per_fight": 0.952
+   },
+   {
+    "apl_would": "cast:Thorium Grenade",
+    "policy_did": "cast:Fire Blast",
+    "per_fight": 0.942
+   },
+   {
+    "apl_would": "cast:Pyroblast",
+    "policy_did": "cast:Fire Blast",
+    "per_fight": 0.803
+   },
+   {
+    "apl_would": "cast:Major Mana Potion",
+    "policy_did": "cast:Scorch",
+    "per_fight": 0.586
+   },
+   {
+    "apl_would": "cast:Major Mana Potion",
+    "policy_did": "cast:Fire Blast",
+    "per_fight": 0.477
+   },
+   {
+    "apl_would": "cast:Pyroblast",
+    "policy_did": "cast:Scorch",
+    "per_fight": 0.412
+   },
+   {
+    "apl_would": "cast:Evocation",
+    "policy_did": "cast:Scorch",
+    "per_fight": 0.249
+   },
+   {
+    "apl_would": "cast:Scorch",
+    "policy_did": "cast:Major Mana Potion",
+    "per_fight": 0.161
+   }
+  ],
+  "actions": [
+   {
+    "action": "cast:Scorch",
+    "apl": 108.2109375,
+    "policy": 114.1162109375,
+    "apl_execute": 22.404296875,
+    "policy_execute": 24.4111328125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Fire Blast",
+    "apl": 42.8095703125,
+    "policy": 42.455078125,
+    "apl_execute": 6.2568359375,
+    "policy_execute": 8.2080078125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Pyroblast",
+    "apl": 34.9267578125,
+    "policy": 35.8203125,
+    "apl_execute": 5.3828125,
+    "policy_execute": 6.970703125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "wait",
+    "apl": 18.1298828125,
+    "policy": 17.263671875,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Thorium Grenade",
+    "apl": 5.0,
+    "policy": 5.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Major Mana Potion",
+    "apl": 2.7021484375,
+    "policy": 2.6845703125,
+    "apl_execute": 0.703125,
+    "policy_execute": 0.685546875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Combustion",
+    "apl": 2.0,
+    "policy": 2.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:{ItemID: 8007}",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:{ItemID: 8008}",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Evocation",
+    "apl": 1.0,
+    "policy": 0.9970703125,
+    "apl_execute": 0.001953125,
+    "policy_execute": 0.005859375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:{ItemID: 5513}",
+    "apl": 1.0,
+    "policy": 0.986328125,
+    "apl_execute": 1.0,
+    "policy_execute": 0.986328125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Fireball",
+    "apl": 1.3857421875,
+    "policy": 0.0009765625,
+    "apl_execute": 1.3857421875,
+    "policy_execute": 0.0009765625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   }
+  ],
+  "cooldowns": [],
+  "timeline": {
+   "apl": [
+    {
+     "t": 0.0,
+     "action": "cast:Combustion",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Thorium Grenade",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.0,
+     "action": "cast:Fire Blast",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 2.5,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 4.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 5.5,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.0,
+     "action": "cast:Pyroblast",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 8.5,
+     "action": "cast:Fire Blast",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 10.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.5,
+     "action": "cast:Pyroblast",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 13.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 14.5,
+     "action": "cast:Fire Blast",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 17.5,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 19.0,
+     "action": "cast:Pyroblast",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 20.5,
+     "action": "cast:{ItemID: 8008}",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 20.5,
+     "action": "cast:Fire Blast",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 22.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 23.5,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.0,
+     "action": "cast:Pyroblast",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.5,
+     "action": "cast:Fire Blast",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 28.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 29.5,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 31.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 32.5,
+     "action": "cast:Fire Blast",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 34.0,
+     "action": "cast:Pyroblast",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 35.5,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 73,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 74,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 38.5,
+     "action": "cast:Fire Blast",
+     "rage": 0,
+     "mana_pct": 73,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 69,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 41.5,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 70,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 43.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 69,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 44.5,
+     "action": "cast:Fire Blast",
+     "rage": 0,
+     "mana_pct": 69,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.0,
+     "action": "cast:Major Mana Potion",
+     "rage": 0,
+     "mana_pct": 66,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.0,
+     "action": "cast:Pyroblast",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 47.5,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 49.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.5,
+     "action": "cast:Fire Blast",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 53.5,
+     "action": "cast:Pyroblast",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 55.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.5,
+     "action": "cast:Fire Blast",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 58.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.5,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    }
+   ],
+   "policy": [
+    {
+     "t": 0.0,
+     "action": "cast:Combustion",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Thorium Grenade",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.0,
+     "action": "cast:Fire Blast",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 2.5,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 4.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 5.5,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.0,
+     "action": "cast:Pyroblast",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 8.5,
+     "action": "cast:Fire Blast",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 10.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.5,
+     "action": "cast:Pyroblast",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 13.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 14.5,
+     "action": "cast:Fire Blast",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 17.5,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 19.0,
+     "action": "cast:Pyroblast",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 20.5,
+     "action": "cast:Fire Blast",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 22.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 76,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 23.5,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 75,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.0,
+     "action": "cast:Pyroblast",
+     "rage": 0,
+     "mana_pct": 76,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.5,
+     "action": "cast:{ItemID: 8008}",
+     "rage": 0,
+     "mana_pct": 71,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.5,
+     "action": "cast:Fire Blast",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 28.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 29.5,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 31.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 32.5,
+     "action": "cast:Fire Blast",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 34.0,
+     "action": "cast:Pyroblast",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 35.5,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 74,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 75,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 38.5,
+     "action": "cast:Fire Blast",
+     "rage": 0,
+     "mana_pct": 74,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 70,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 41.5,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 71,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 43.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 70,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 44.5,
+     "action": "cast:Fire Blast",
+     "rage": 0,
+     "mana_pct": 70,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.0,
+     "action": "cast:Pyroblast",
+     "rage": 0,
+     "mana_pct": 67,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 47.5,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 61,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 49.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 62,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.5,
+     "action": "cast:Fire Blast",
+     "rage": 0,
+     "mana_pct": 64,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.5,
+     "action": "cast:Major Mana Potion",
+     "rage": 0,
+     "mana_pct": 60,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 53.5,
+     "action": "cast:Pyroblast",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 55.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.5,
+     "action": "cast:Fire Blast",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 58.0,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.5,
+     "action": "cast:Scorch",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    }
+   ]
+  }
+ },
+ "native": {
+  "fights": 2048,
+  "published": 930.7974317669868,
+  "network": 948.3812589049339,
+  "network_vs_published": 17.583827137947083,
+  "network_vs_published_se": 0.6853341610157027
+ },
+ "profile": {
+  "id": "fire__human__learned",
+  "dps": 958.4195601091158,
+  "se": 0.5607191372598529,
+  "published_dps": 930.1432105548583,
+  "published_se": 0.6043859520063232,
+  "talents": "05002152000003-23450000130135031-002",
+  "talent_source": "learned",
+  "overrides": [
+   "cast:Major Mana Potion if mana_frac <= 0.37",
+   "cast:Fire Blast if elapsed >= 0.98 and Blizzard:cost >= 2.00",
+   "cast:Thorium Grenade if gcd >= 1.50s",
+   "cast:Fire Blast if Fireball:cost <= 0.00 and not Demonic Rune:ready",
+   "cast:Scorch if Blizzard:cost >= 2.00 and Fire Blast:ready",
+   "cast:Major Mana Potion if mana_frac <= 0.76 and Demonic Rune:cooldown >= 5.00s"
+  ],
+  "removed": [
+   "cast:Fireball (conditional)"
+  ],
+  "paired_vs_published": 27.442163079977036,
+  "paired_vs_published_se": 0.7543166739709465,
+  "paired_fights": 2048,
+  "gain": true
+ }
+}

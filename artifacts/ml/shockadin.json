@@ -1,0 +1,834 @@
+{
+ "key": "shockadin",
+ "build": "Shockadin",
+ "race": "Human",
+ "class": "",
+ "published": {
+  "talents": "550030032101012--052252300012303",
+  "dps": 879.7655878514051,
+  "se": 0.38546304123421704,
+  "benchmark_dps": 880.1689850309668
+ },
+ "learned": {
+  "talents": "550030032101012--052252300012303",
+  "dps": 875.856032282114,
+  "vs_published": -3.909555569291115,
+  "vs_published_se": 0.217971633622238,
+  "published_talents_dps": 875.856032282114,
+  "published_talents_vs_published": -3.909555569291115,
+  "published_talents_vs_published_se": 0.217971633622238
+ },
+ "talent_changes": [],
+ "fights": 4096,
+ "training": {
+  "stop": "converged",
+  "train_minutes": 8.8,
+  "minutes": 9.6,
+  "decisions": 250609664,
+  "fights": 80788,
+  "builds_seen": 9385,
+  "decisions_per_fight": 3121.244140625,
+  "best_decisions": 30408704
+ },
+ "actions": {
+  "fights": 1024,
+  "apl_talents": "550030032101012--052252300012303",
+  "policy_talents": "550030032101012--052252300012303",
+  "apl": 880.1377622485161,
+  "policy": 875.4968072772026,
+  "diff": -4.640954971313477,
+  "diff_se": 0.43869040665969594,
+  "agreement": 0.9640881388340213,
+  "disagreements": [
+   {
+    "apl_would": "cast:Seal of Righteousness",
+    "policy_did": "wait",
+    "per_fight": 89.357
+   },
+   {
+    "apl_would": "cast:Consecration",
+    "policy_did": "wait",
+    "per_fight": 8.173
+   },
+   {
+    "apl_would": "cast:Seal of Righteousness",
+    "policy_did": "cast:Holy Shock",
+    "per_fight": 1.719
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Major Mana Potion",
+    "per_fight": 1.386
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Demonic Rune",
+    "per_fight": 1.239
+   },
+   {
+    "apl_would": "cast:Seal of Righteousness",
+    "policy_did": "cast:Lay on Hands",
+    "per_fight": 1.0
+   },
+   {
+    "apl_would": "cast:Seal of Righteousness",
+    "policy_did": "cast:Consecration",
+    "per_fight": 0.968
+   },
+   {
+    "apl_would": "cast:Judgement",
+    "policy_did": "cast:Major Mana Potion",
+    "per_fight": 0.304
+   },
+   {
+    "apl_would": "cast:Judgement",
+    "policy_did": "cast:Demonic Rune",
+    "per_fight": 0.274
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Divine Favor",
+    "per_fight": 0.246
+   },
+   {
+    "apl_would": "cast:Consecration",
+    "policy_did": "cast:Seal of Righteousness",
+    "per_fight": 0.201
+   },
+   {
+    "apl_would": "cast:Seal of Righteousness",
+    "policy_did": "cast:Hammer of Wrath",
+    "per_fight": 0.14
+   },
+   {
+    "apl_would": "cast:Judgement",
+    "policy_did": "cast:Divine Favor",
+    "per_fight": 0.129
+   },
+   {
+    "apl_would": "cast:Major Mana Potion",
+    "policy_did": "cast:Seal of Righteousness",
+    "per_fight": 0.066
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Seal of Righteousness",
+    "per_fight": 0.043
+   }
+  ],
+  "actions": [
+   {
+    "action": "wait",
+    "apl": 2965.8291015625,
+    "policy": 2776.5087890625,
+    "apl_execute": 450.6025390625,
+    "policy_execute": 452.6455078125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Judgement",
+    "apl": 39.0,
+    "policy": 38.708984375,
+    "apl_execute": 7.9228515625,
+    "policy_execute": 7.7060546875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Consecration",
+    "apl": 36.0,
+    "policy": 36.796875,
+    "apl_execute": 7.0,
+    "policy_execute": 7.166015625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Holy Strike",
+    "apl": 30.0,
+    "policy": 29.6728515625,
+    "apl_execute": 6.0,
+    "policy_execute": 5.67578125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Holy Shock",
+    "apl": 29.0,
+    "policy": 29.0,
+    "apl_execute": 6.0,
+    "policy_execute": 5.09765625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Seal of Righteousness",
+    "apl": 10.0,
+    "policy": 9.076171875,
+    "apl_execute": 2.0,
+    "policy_execute": 2.0146484375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Hammer of Wrath",
+    "apl": 8.0,
+    "policy": 7.984375,
+    "apl_execute": 8.0,
+    "policy_execute": 7.984375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Demonic Rune",
+    "apl": 2.021484375,
+    "policy": 3.0,
+    "apl_execute": 0.302734375,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Major Mana Potion",
+    "apl": 1.0908203125,
+    "policy": 3.0,
+    "apl_execute": 0.8046875,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Divine Favor",
+    "apl": 2.0,
+    "policy": 2.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Goblin Sapper Charge",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Lay on Hands",
+    "apl": 0.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": null,
+    "policy_rage": 0.0
+   }
+  ],
+  "cooldowns": [
+   {
+    "action": "cast:Goblin Sapper Charge",
+    "apl": [
+     {
+      "mean_s": 0.0,
+      "share": 1.0
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 0.0,
+      "share": 1.0
+     }
+    ]
+   },
+   {
+    "action": "cast:Demonic Rune",
+    "apl": [
+     {
+      "mean_s": 86.6,
+      "share": 1.0
+     },
+     {
+      "mean_s": 219.8,
+      "share": 0.998
+     },
+     {
+      "mean_s": 292.6,
+      "share": 0.023
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 28.4,
+      "share": 1.0
+     },
+     {
+      "mean_s": 149.2,
+      "share": 1.0
+     },
+     {
+      "mean_s": 269.4,
+      "share": 1.0
+     }
+    ]
+   }
+  ],
+  "timeline": {
+   "apl": [
+    {
+     "t": 0.0,
+     "action": "cast:Goblin Sapper Charge",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 99,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.47,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 2.94,
+     "action": "cast:Holy Shock",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.51,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 8.01,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.48,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 12.95,
+     "action": "cast:Holy Shock",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 15.02,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.02,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.49,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 22.96,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 22.96,
+     "action": "cast:Holy Shock",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 24.43,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 27.5,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 30.47,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 31.52,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 33.0,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 34.47,
+     "action": "cast:Holy Shock",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.99,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 41.04,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 42.51,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 44.48,
+     "action": "cast:Holy Shock",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 45.95,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 49.05,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.52,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 53.99,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 54.49,
+     "action": "cast:Holy Shock",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.51,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 57.98,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.45,
+     "action": "cast:Demonic Rune",
+     "rage": 0,
+     "mana_pct": 76,
+     "energy": 0,
+     "combo": 0
+    }
+   ],
+   "policy": [
+    {
+     "t": 0.0,
+     "action": "cast:Goblin Sapper Charge",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 99,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.47,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 2.94,
+     "action": "cast:Holy Shock",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.51,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 8.01,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.48,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 12.95,
+     "action": "cast:Holy Shock",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 15.02,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.02,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.49,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 22.96,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 22.96,
+     "action": "cast:Holy Shock",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 24.43,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 28.5,
+     "action": "cast:Lay on Hands",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 28.5,
+     "action": "cast:Demonic Rune",
+     "rage": 0,
+     "mana_pct": 8,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 28.5,
+     "action": "cast:Major Mana Potion",
+     "rage": 0,
+     "mana_pct": 29,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 29.97,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 61,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 31.38,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 58,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 31.5,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 60,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 32.97,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 60,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 34.44,
+     "action": "cast:Holy Shock",
+     "rage": 0,
+     "mana_pct": 57,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 38.91,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 54,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 41.01,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 57,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 42.48,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 52,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 44.45,
+     "action": "cast:Holy Shock",
+     "rage": 0,
+     "mana_pct": 53,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.42,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 50,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 49.02,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 52,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.49,
+     "action": "cast:Holy Strike",
+     "rage": 0,
+     "mana_pct": 49,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 53.96,
+     "action": "cast:Judgement",
+     "rage": 0,
+     "mana_pct": 53,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 54.46,
+     "action": "cast:Holy Shock",
+     "rage": 0,
+     "mana_pct": 54,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 57.03,
+     "action": "cast:Consecration",
+     "rage": 0,
+     "mana_pct": 52,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.8,
+     "action": "cast:Seal of Righteousness",
+     "rage": 0,
+     "mana_pct": 48,
+     "energy": 0,
+     "combo": 0
+    }
+   ]
+  }
+ },
+ "native": {
+  "fights": 2048,
+  "published": 880.1326818466187,
+  "network": 876.2420994341373,
+  "network_vs_published": -3.890582412481308,
+  "network_vs_published_se": 0.31989478860173365
+ },
+ "profile": {
+  "id": "shockadin__human__learned",
+  "dps": 880.1689850309668,
+  "se": 0.3520095924428734,
+  "published_dps": 880.1689850309668,
+  "published_se": 0.3520095924428734,
+  "talents": "550030032101012--052252300012303",
+  "talent_source": "learned",
+  "overrides": [],
+  "removed": [],
+  "paired_vs_published": 0.0,
+  "paired_vs_published_se": 0.0,
+  "paired_fights": 2048,
+  "gain": false
+ }
+}

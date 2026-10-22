@@ -1,0 +1,916 @@
+{
+ "key": "enhancement",
+ "build": "Enhancement",
+ "race": "Windshaper",
+ "class": "",
+ "published": {
+  "talents": "453203102-053030031005102251",
+  "dps": 814.2767544686794,
+  "se": 0.6272853670605808,
+  "benchmark_dps": 813.3761934273082
+ },
+ "learned": {
+  "talents": "343203102-053030031005102251-02",
+  "dps": 819.9808197021484,
+  "vs_published": 5.704065233469009,
+  "vs_published_se": 0.21917649271657022,
+  "published_talents_dps": 814.873597189784,
+  "published_talents_vs_published": 0.5968427211046219,
+  "published_talents_vs_published_se": 0.034949610465886995
+ },
+ "talent_changes": [
+  {
+   "talent": "Convection",
+   "tree": "Elemental Combat",
+   "published": 4,
+   "learned": 3
+  },
+  {
+   "talent": "Concussion",
+   "tree": "Elemental Combat",
+   "published": 5,
+   "learned": 4
+  },
+  {
+   "talent": "Tidal Focus",
+   "tree": "Restoration",
+   "published": 0,
+   "learned": 2
+  }
+ ],
+ "fights": 4096,
+ "training": {
+  "stop": "converged",
+  "train_minutes": 9.8,
+  "minutes": 10.6,
+  "decisions": 250609664,
+  "fights": 139708,
+  "builds_seen": 18966,
+  "decisions_per_fight": 1794.2705078125,
+  "best_decisions": 30408704
+ },
+ "actions": {
+  "fights": 1024,
+  "apl_talents": "453203102-053030031005102251",
+  "policy_talents": "343203102-053030031005102251-02",
+  "apl": 813.4313088059425,
+  "policy": 819.4879502058029,
+  "diff": 6.056641399860382,
+  "diff_se": 0.46282913019144367,
+  "agreement": 0.986030588571088,
+  "disagreements": [
+   {
+    "apl_would": "cast:Strength of Earth Totem",
+    "policy_did": "wait",
+    "per_fight": 13.053
+   },
+   {
+    "apl_would": "cast:Demonic Rune",
+    "policy_did": "wait",
+    "per_fight": 3.703
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Demonic Rune",
+    "per_fight": 1.107
+   },
+   {
+    "apl_would": "cast:Strength of Earth Totem",
+    "policy_did": "cast:Windfury Totem",
+    "per_fight": 0.995
+   },
+   {
+    "apl_would": "cast:Major Mana Potion",
+    "policy_did": "wait",
+    "per_fight": 0.729
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Thorium Grenade",
+    "per_fight": 0.714
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Major Mana Potion",
+    "per_fight": 0.709
+   },
+   {
+    "apl_would": "cast:Strength of Earth Totem",
+    "policy_did": "cast:Earth Shock",
+    "per_fight": 0.696
+   },
+   {
+    "apl_would": "cast:Strength of Earth Totem",
+    "policy_did": "cast:Fire Nova",
+    "per_fight": 0.478
+   },
+   {
+    "apl_would": "cast:Searing Totem",
+    "policy_did": "cast:Major Mana Potion",
+    "per_fight": 0.473
+   },
+   {
+    "apl_would": "cast:Strength of Earth Totem",
+    "policy_did": "cast:Stormstrike",
+    "per_fight": 0.432
+   },
+   {
+    "apl_would": "cast:Strength of Earth Totem",
+    "policy_did": "cast:Lightning Bolt",
+    "per_fight": 0.309
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Fire Nova",
+    "per_fight": 0.304
+   },
+   {
+    "apl_would": "cast:Lightning Bolt",
+    "policy_did": "wait",
+    "per_fight": 0.166
+   },
+   {
+    "apl_would": "cast:Flame Shock",
+    "policy_did": "cast:Earth Shock",
+    "per_fight": 0.136
+   }
+  ],
+  "actions": [
+   {
+    "action": "wait",
+    "apl": 1625.0576171875,
+    "policy": 1620.478515625,
+    "apl_execute": 298.55078125,
+    "policy_execute": 307.4365234375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Fire Nova",
+    "apl": 39.0751953125,
+    "policy": 39.2978515625,
+    "apl_execute": 7.46875,
+    "policy_execute": 7.7568359375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Stormstrike",
+    "apl": 38.228515625,
+    "policy": 38.2421875,
+    "apl_execute": 7.3896484375,
+    "policy_execute": 7.404296875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Earth Shock",
+    "apl": 36.09765625,
+    "policy": 36.5859375,
+    "apl_execute": 7.42578125,
+    "policy_execute": 7.6728515625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Lightning Bolt",
+    "apl": 20.6015625,
+    "policy": 20.603515625,
+    "apl_execute": 4.0146484375,
+    "policy_execute": 3.9931640625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Flame Shock",
+    "apl": 12.4453125,
+    "policy": 12.1044921875,
+    "apl_execute": 2.130859375,
+    "policy_execute": 1.974609375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Searing Totem",
+    "apl": 5.0,
+    "policy": 5.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Thorium Grenade",
+    "apl": 4.0,
+    "policy": 4.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Demonic Rune",
+    "apl": 2.990234375,
+    "policy": 3.0,
+    "apl_execute": 0.990234375,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Major Mana Potion",
+    "apl": 2.0498046875,
+    "policy": 2.6142578125,
+    "apl_execute": 0.0654296875,
+    "policy_execute": 0.6142578125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Shamanistic Rage",
+    "apl": 2.0,
+    "policy": 2.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Goblin Sapper Charge",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Windfury Totem",
+    "apl": 1.0,
+    "policy": 0.998046875,
+    "apl_execute": 1.0,
+    "policy_execute": 0.998046875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Strength of Earth Totem",
+    "apl": 1.0,
+    "policy": 0.064453125,
+    "apl_execute": 1.0,
+    "policy_execute": 0.064453125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   }
+  ],
+  "cooldowns": [
+   {
+    "action": "cast:Goblin Sapper Charge",
+    "apl": [
+     {
+      "mean_s": 0.0,
+      "share": 1.0
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 0.0,
+      "share": 1.0
+     }
+    ]
+   },
+   {
+    "action": "cast:Demonic Rune",
+    "apl": [
+     {
+      "mean_s": 27.9,
+      "share": 1.0
+     },
+     {
+      "mean_s": 148.5,
+      "share": 1.0
+     },
+     {
+      "mean_s": 268.7,
+      "share": 0.99
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 22.1,
+      "share": 1.0
+     },
+     {
+      "mean_s": 142.6,
+      "share": 1.0
+     },
+     {
+      "mean_s": 262.9,
+      "share": 1.0
+     }
+    ]
+   }
+  ],
+  "timeline": {
+   "apl": [
+    {
+     "t": 0.0,
+     "action": "cast:Shamanistic Rage",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Goblin Sapper Charge",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Stormstrike",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.5,
+     "action": "cast:Flame Shock",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 2.93,
+     "action": "cast:Fire Nova",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.11,
+     "action": "cast:Earth Shock",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 8.53,
+     "action": "cast:Stormstrike",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 10.03,
+     "action": "cast:Lightning Bolt",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.46,
+     "action": "cast:Fire Nova",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 12.89,
+     "action": "cast:Earth Shock",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 14.67,
+     "action": "cast:Lightning Bolt",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.09,
+     "action": "cast:Stormstrike",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 17.59,
+     "action": "cast:Fire Nova",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 19.02,
+     "action": "cast:Earth Shock",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.35,
+     "action": "cast:Lightning Bolt",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 23.63,
+     "action": "cast:Stormstrike",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.13,
+     "action": "cast:Flame Shock",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.55,
+     "action": "cast:Fire Nova",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 27.98,
+     "action": "cast:Demonic Rune",
+     "rage": 0,
+     "mana_pct": 78,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 30.73,
+     "action": "cast:Earth Shock",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 32.16,
+     "action": "cast:Stormstrike",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 33.66,
+     "action": "cast:Fire Nova",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 35.09,
+     "action": "cast:Lightning Bolt",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 36.51,
+     "action": "cast:Earth Shock",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 39.69,
+     "action": "cast:Stormstrike",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 41.19,
+     "action": "cast:Fire Nova",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 42.62,
+     "action": "cast:Earth Shock",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.55,
+     "action": "cast:Lightning Bolt",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 47.97,
+     "action": "cast:Stormstrike",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 49.47,
+     "action": "cast:Flame Shock",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.9,
+     "action": "cast:Fire Nova",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 53.53,
+     "action": "cast:Searing Totem",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 55.08,
+     "action": "cast:Earth Shock",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.51,
+     "action": "cast:Stormstrike",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 58.01,
+     "action": "cast:Fire Nova",
+     "rage": 0,
+     "mana_pct": 78,
+     "energy": 0,
+     "combo": 0
+    }
+   ],
+   "policy": [
+    {
+     "t": 0.0,
+     "action": "cast:Shamanistic Rage",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Goblin Sapper Charge",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Stormstrike",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.5,
+     "action": "cast:Flame Shock",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 2.93,
+     "action": "cast:Fire Nova",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.11,
+     "action": "cast:Earth Shock",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 8.53,
+     "action": "cast:Stormstrike",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 10.03,
+     "action": "cast:Lightning Bolt",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.46,
+     "action": "cast:Fire Nova",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 12.89,
+     "action": "cast:Earth Shock",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 14.67,
+     "action": "cast:Lightning Bolt",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.09,
+     "action": "cast:Stormstrike",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 17.59,
+     "action": "cast:Fire Nova",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 19.02,
+     "action": "cast:Earth Shock",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.35,
+     "action": "cast:Lightning Bolt",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 23.63,
+     "action": "cast:Stormstrike",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.13,
+     "action": "cast:Demonic Rune",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.13,
+     "action": "cast:Flame Shock",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.55,
+     "action": "cast:Fire Nova",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 30.73,
+     "action": "cast:Earth Shock",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 32.16,
+     "action": "cast:Stormstrike",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 33.66,
+     "action": "cast:Fire Nova",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 35.09,
+     "action": "cast:Lightning Bolt",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 36.51,
+     "action": "cast:Earth Shock",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 39.69,
+     "action": "cast:Stormstrike",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 41.19,
+     "action": "cast:Fire Nova",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 42.62,
+     "action": "cast:Earth Shock",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.55,
+     "action": "cast:Lightning Bolt",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 47.97,
+     "action": "cast:Stormstrike",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 49.47,
+     "action": "cast:Flame Shock",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.9,
+     "action": "cast:Fire Nova",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 53.53,
+     "action": "cast:Major Mana Potion",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 53.53,
+     "action": "cast:Searing Totem",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 55.08,
+     "action": "cast:Earth Shock",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.51,
+     "action": "cast:Stormstrike",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 58.01,
+     "action": "cast:Fire Nova",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    }
+   ]
+  }
+ },
+ "native": {
+  "fights": 2048,
+  "published": 814.6886458694935,
+  "network": 821.0306899249554,
+  "network_vs_published": 6.3420440554618835,
+  "network_vs_published_se": 0.3155617854052734
+ },
+ "profile": {
+  "id": "enhancement__windshaper__learned",
+  "dps": 820.2765217859555,
+  "se": 0.5634536361560852,
+  "published_dps": 813.3761934273082,
+  "published_se": 0.5591754770810148,
+  "talents": "343203102-053030031005102251-02",
+  "talent_source": "learned",
+  "overrides": [
+   "cast:Thorium Grenade if elapsed >= 0.02"
+  ],
+  "removed": [
+   "cast:Strength of Earth Totem (rank 4) (conditional)",
+   "cast:Windfury Totem (rank 3) (conditional)"
+  ],
+  "paired_vs_published": 6.411454856395721,
+  "paired_vs_published_se": 0.3170636485804167,
+  "paired_fights": 2048,
+  "gain": true
+ }
+}

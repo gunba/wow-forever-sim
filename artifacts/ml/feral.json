@@ -1,0 +1,1013 @@
+{
+ "key": "feral",
+ "build": "Feral",
+ "race": "Windshaper",
+ "class": "",
+ "published": {
+  "talents": "05002-55000032021032212051-055",
+  "dps": 831.7722828686237,
+  "se": 0.3056899924390673,
+  "benchmark_dps": 831.7778489430375
+ },
+ "learned": {
+  "talents": "05002-55000032021032212051-055",
+  "dps": 836.8370341956615,
+  "vs_published": 5.064751327037811,
+  "vs_published_se": 0.22630118487604586,
+  "published_talents_dps": 836.8370341956615,
+  "published_talents_vs_published": 5.064751327037811,
+  "published_talents_vs_published_se": 0.22630118487604586
+ },
+ "talent_changes": [],
+ "fights": 4096,
+ "training": {
+  "stop": "converged",
+  "train_minutes": 11.5,
+  "minutes": 12.8,
+  "decisions": 303038464,
+  "fights": 114342,
+  "builds_seen": 15135,
+  "decisions_per_fight": 2908.408203125,
+  "best_decisions": 182452224
+ },
+ "actions": {
+  "fights": 1024,
+  "apl_talents": "05002-55000032021032212051-055",
+  "policy_talents": "05002-55000032021032212051-055",
+  "apl": 831.1239130496979,
+  "policy": 836.8032629489899,
+  "diff": 5.679349899291992,
+  "diff_se": 0.4611724938551296,
+  "agreement": 0.9879682833899701,
+  "disagreements": [
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Ferocious Bite",
+    "per_fight": 5.409
+   },
+   {
+    "apl_would": "cast:Shred",
+    "policy_did": "cast:Rake",
+    "per_fight": 3.002
+   },
+   {
+    "apl_would": "cast:Rip",
+    "policy_did": "wait",
+    "per_fight": 2.944
+   },
+   {
+    "apl_would": "cast:Ferocious Bite",
+    "policy_did": "cast:Shred",
+    "per_fight": 2.519
+   },
+   {
+    "apl_would": "cast:Thistle Tea",
+    "policy_did": "wait",
+    "per_fight": 2.183
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Rip",
+    "per_fight": 1.822
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Major Mana Potion",
+    "per_fight": 1.507
+   },
+   {
+    "apl_would": "cast:Ferocious Bite",
+    "policy_did": "wait",
+    "per_fight": 1.441
+   },
+   {
+    "apl_would": "cast:Shred",
+    "policy_did": "cast:Rip",
+    "per_fight": 1.14
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Rake",
+    "per_fight": 0.925
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Berserk",
+    "per_fight": 0.696
+   },
+   {
+    "apl_would": "cast:Ferocious Bite",
+    "policy_did": "cast:Rake",
+    "per_fight": 0.645
+   },
+   {
+    "apl_would": "cast:Rip",
+    "policy_did": "cast:Rake",
+    "per_fight": 0.615
+   },
+   {
+    "apl_would": "cast:Ferocious Bite",
+    "policy_did": "cast:Major Mana Potion",
+    "per_fight": 0.536
+   },
+   {
+    "apl_would": "cast:Thistle Tea",
+    "policy_did": "cast:Major Mana Potion",
+    "per_fight": 0.379
+   }
+  ],
+  "actions": [
+   {
+    "action": "wait",
+    "apl": 2736.2119140625,
+    "policy": 2169.1083984375,
+    "apl_execute": 464.2587890625,
+    "policy_execute": 436.3154296875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Shred",
+    "apl": 91.9326171875,
+    "policy": 88.9951171875,
+    "apl_execute": 18.01953125,
+    "policy_execute": 16.626953125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Shifting Power",
+    "apl": 41.080078125,
+    "policy": 41.0224609375,
+    "apl_execute": 8.05078125,
+    "policy_execute": 8.224609375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Rake",
+    "apl": 27.9453125,
+    "policy": 32.1416015625,
+    "apl_execute": 4.6982421875,
+    "policy_execute": 6.2919921875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Rip",
+    "apl": 20.4814453125,
+    "policy": 20.099609375,
+    "apl_execute": 3.587890625,
+    "policy_execute": 3.5048828125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Ferocious Bite",
+    "apl": 10.1005859375,
+    "policy": 13.1865234375,
+    "apl_execute": 2.4296875,
+    "policy_execute": 3.5888671875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Major Mana Potion",
+    "apl": 2.224609375,
+    "policy": 3.0,
+    "apl_execute": 0.2275390625,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Berserk",
+    "apl": 2.0,
+    "policy": 2.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Thistle Tea",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Barkskin",
+    "apl": 0.0,
+    "policy": 0.2861328125,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": null,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Cat Form",
+    "apl": 0.0,
+    "policy": 0.0048828125,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": null,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Innervate",
+    "apl": 0.0,
+    "policy": 0.0048828125,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": null,
+    "policy_rage": 0.0
+   }
+  ],
+  "cooldowns": [],
+  "timeline": {
+   "apl": [
+    {
+     "t": 0.0,
+     "action": "cast:Berserk",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 100,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Rake",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 100,
+     "combo": 0
+    },
+    {
+     "t": 1.0,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 75,
+     "combo": 2
+    },
+    {
+     "t": 2.0,
+     "action": "cast:Rip",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 44,
+     "combo": 4
+    },
+    {
+     "t": 3.0,
+     "action": "cast:Shifting Power",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 24,
+     "combo": 0
+    },
+    {
+     "t": 4.0,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 75,
+     "combo": 0
+    },
+    {
+     "t": 5.0,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 43,
+     "combo": 2
+    },
+    {
+     "t": 6.0,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 53,
+     "combo": 4
+    },
+    {
+     "t": 8.3,
+     "action": "cast:Ferocious Bite",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 35,
+     "combo": 5
+    },
+    {
+     "t": 8.3,
+     "action": "cast:Thistle Tea",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 9.3,
+     "action": "cast:Rake",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 100,
+     "combo": 0
+    },
+    {
+     "t": 10.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 75,
+     "combo": 2
+    },
+    {
+     "t": 11.3,
+     "action": "cast:Shifting Power",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 44,
+     "combo": 4
+    },
+    {
+     "t": 12.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 94,
+     "combo": 4
+    },
+    {
+     "t": 13.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 63,
+     "combo": 5
+    },
+    {
+     "t": 15.4,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 42,
+     "combo": 5
+    },
+    {
+     "t": 18.3,
+     "action": "cast:Rip",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 31,
+     "combo": 5
+    },
+    {
+     "t": 19.3,
+     "action": "cast:Rake",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 11,
+     "combo": 0
+    },
+    {
+     "t": 20.3,
+     "action": "cast:Shifting Power",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 21,
+     "combo": 2
+    },
+    {
+     "t": 21.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 72,
+     "combo": 2
+    },
+    {
+     "t": 22.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 74,
+     "combo": 2
+    },
+    {
+     "t": 23.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 76,
+     "combo": 2
+    },
+    {
+     "t": 24.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 44,
+     "combo": 4
+    },
+    {
+     "t": 27.3,
+     "action": "cast:Shifting Power",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 33,
+     "combo": 5
+    },
+    {
+     "t": 28.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 76,
+     "energy": 84,
+     "combo": 5
+    },
+    {
+     "t": 29.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 78,
+     "energy": 52,
+     "combo": 5
+    },
+    {
+     "t": 32.3,
+     "action": "cast:Rip",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 41,
+     "combo": 5
+    },
+    {
+     "t": 34.3,
+     "action": "cast:Shifting Power",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 32,
+     "combo": 0
+    },
+    {
+     "t": 35.3,
+     "action": "cast:Rake",
+     "rage": 0,
+     "mana_pct": 73,
+     "energy": 83,
+     "combo": 0
+    },
+    {
+     "t": 36.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 74,
+     "energy": 93,
+     "combo": 2
+    },
+    {
+     "t": 37.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 75,
+     "energy": 61,
+     "combo": 3
+    },
+    {
+     "t": 38.8,
+     "action": "cast:Ferocious Bite",
+     "rage": 0,
+     "mana_pct": 76,
+     "energy": 35,
+     "combo": 5
+    },
+    {
+     "t": 41.3,
+     "action": "cast:Shifting Power",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 26,
+     "combo": 0
+    },
+    {
+     "t": 42.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 68,
+     "energy": 76,
+     "combo": 0
+    },
+    {
+     "t": 43.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 69,
+     "energy": 45,
+     "combo": 2
+    },
+    {
+     "t": 46.3,
+     "action": "cast:Rip",
+     "rage": 0,
+     "mana_pct": 74,
+     "energy": 34,
+     "combo": 4
+    },
+    {
+     "t": 48.3,
+     "action": "cast:Shifting Power",
+     "rage": 0,
+     "mana_pct": 76,
+     "energy": 25,
+     "combo": 0
+    },
+    {
+     "t": 49.3,
+     "action": "cast:Rake",
+     "rage": 0,
+     "mana_pct": 65,
+     "energy": 75,
+     "combo": 0
+    },
+    {
+     "t": 50.3,
+     "action": "cast:Rake",
+     "rage": 0,
+     "mana_pct": 67,
+     "energy": 86,
+     "combo": 0
+    },
+    {
+     "t": 51.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 69,
+     "energy": 61,
+     "combo": 1
+    },
+    {
+     "t": 53.6,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 71,
+     "energy": 43,
+     "combo": 2
+    },
+    {
+     "t": 54.6,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 73,
+     "energy": 45,
+     "combo": 2
+    },
+    {
+     "t": 55.6,
+     "action": "cast:Shifting Power",
+     "rage": 0,
+     "mana_pct": 74,
+     "energy": 13,
+     "combo": 3
+    },
+    {
+     "t": 56.6,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 65,
+     "energy": 64,
+     "combo": 3
+    },
+    {
+     "t": 58.6,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 68,
+     "energy": 43,
+     "combo": 4
+    },
+    {
+     "t": 59.6,
+     "action": "cast:Rake",
+     "rage": 0,
+     "mana_pct": 68,
+     "energy": 45,
+     "combo": 4
+    }
+   ],
+   "policy": [
+    {
+     "t": 0.0,
+     "action": "cast:Berserk",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 100,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Rake",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 100,
+     "combo": 0
+    },
+    {
+     "t": 1.0,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 75,
+     "combo": 2
+    },
+    {
+     "t": 2.0,
+     "action": "cast:Rip",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 44,
+     "combo": 4
+    },
+    {
+     "t": 3.0,
+     "action": "cast:Shifting Power",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 24,
+     "combo": 0
+    },
+    {
+     "t": 4.0,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 75,
+     "combo": 0
+    },
+    {
+     "t": 5.0,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 43,
+     "combo": 2
+    },
+    {
+     "t": 6.0,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 53,
+     "combo": 4
+    },
+    {
+     "t": 8.3,
+     "action": "cast:Major Mana Potion",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 35,
+     "combo": 5
+    },
+    {
+     "t": 8.3,
+     "action": "cast:Ferocious Bite",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 35,
+     "combo": 5
+    },
+    {
+     "t": 8.3,
+     "action": "cast:Thistle Tea",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 9.3,
+     "action": "cast:Rake",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 100,
+     "combo": 0
+    },
+    {
+     "t": 10.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 75,
+     "combo": 2
+    },
+    {
+     "t": 11.3,
+     "action": "cast:Shifting Power",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 44,
+     "combo": 4
+    },
+    {
+     "t": 12.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 94,
+     "combo": 4
+    },
+    {
+     "t": 13.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 63,
+     "combo": 5
+    },
+    {
+     "t": 15.4,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 42,
+     "combo": 5
+    },
+    {
+     "t": 18.3,
+     "action": "cast:Rip",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 31,
+     "combo": 5
+    },
+    {
+     "t": 19.3,
+     "action": "cast:Rake",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 11,
+     "combo": 0
+    },
+    {
+     "t": 20.3,
+     "action": "cast:Shifting Power",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 21,
+     "combo": 2
+    },
+    {
+     "t": 21.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 72,
+     "combo": 2
+    },
+    {
+     "t": 22.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 74,
+     "combo": 2
+    },
+    {
+     "t": 23.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 76,
+     "combo": 2
+    },
+    {
+     "t": 24.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 44,
+     "combo": 4
+    },
+    {
+     "t": 27.3,
+     "action": "cast:Shifting Power",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 33,
+     "combo": 5
+    },
+    {
+     "t": 28.3,
+     "action": "cast:Rake",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 84,
+     "combo": 5
+    },
+    {
+     "t": 29.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 59,
+     "combo": 5
+    },
+    {
+     "t": 31.7,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 42,
+     "combo": 5
+    },
+    {
+     "t": 32.7,
+     "action": "cast:Rip",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 11,
+     "combo": 5
+    },
+    {
+     "t": 34.3,
+     "action": "cast:Shifting Power",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 27,
+     "combo": 0
+    },
+    {
+     "t": 35.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 76,
+     "energy": 78,
+     "combo": 0
+    },
+    {
+     "t": 36.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 77,
+     "energy": 46,
+     "combo": 2
+    },
+    {
+     "t": 39.3,
+     "action": "cast:Ferocious Bite",
+     "rage": 0,
+     "mana_pct": 78,
+     "energy": 35,
+     "combo": 4
+    },
+    {
+     "t": 41.3,
+     "action": "cast:Shifting Power",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 21,
+     "combo": 0
+    },
+    {
+     "t": 42.3,
+     "action": "cast:Rake",
+     "rage": 0,
+     "mana_pct": 71,
+     "energy": 71,
+     "combo": 0
+    },
+    {
+     "t": 43.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 72,
+     "energy": 47,
+     "combo": 1
+    },
+    {
+     "t": 44.3,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 75,
+     "energy": 15,
+     "combo": 3
+    },
+    {
+     "t": 46.9,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 77,
+     "energy": 42,
+     "combo": 3
+    },
+    {
+     "t": 48.3,
+     "action": "cast:Shifting Power",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 15,
+     "combo": 4
+    },
+    {
+     "t": 49.3,
+     "action": "cast:Rip",
+     "rage": 0,
+     "mana_pct": 68,
+     "energy": 65,
+     "combo": 4
+    },
+    {
+     "t": 50.3,
+     "action": "cast:Rip",
+     "rage": 0,
+     "mana_pct": 69,
+     "energy": 69,
+     "combo": 4
+    },
+    {
+     "t": 51.3,
+     "action": "cast:Rake",
+     "rage": 0,
+     "mana_pct": 70,
+     "energy": 50,
+     "combo": 0
+    },
+    {
+     "t": 54.0,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 74,
+     "energy": 43,
+     "combo": 2
+    },
+    {
+     "t": 55.0,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 75,
+     "energy": 45,
+     "combo": 2
+    },
+    {
+     "t": 56.0,
+     "action": "cast:Shifting Power",
+     "rage": 0,
+     "mana_pct": 77,
+     "energy": 13,
+     "combo": 3
+    },
+    {
+     "t": 57.0,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 66,
+     "energy": 64,
+     "combo": 3
+    },
+    {
+     "t": 58.0,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 69,
+     "energy": 32,
+     "combo": 4
+    },
+    {
+     "t": 59.0,
+     "action": "cast:Shred",
+     "rage": 0,
+     "mana_pct": 70,
+     "energy": 43,
+     "combo": 4
+    }
+   ]
+  }
+ },
+ "native": {
+  "fights": 2048,
+  "published": 831.7498363256454,
+  "network": 837.1571469306946,
+  "network_vs_published": 5.407310605049133,
+  "network_vs_published_se": 0.31984571883575275
+ },
+ "profile": {
+  "id": "feral__windshaper__learned",
+  "dps": 832.3516991420021,
+  "se": 0.27739718629767673,
+  "published_dps": 831.7778489430375,
+  "published_se": 0.2771859899973432,
+  "talents": "05002-55000032021032212051-055",
+  "talent_source": "learned",
+  "overrides": [
+   "cast:Shred if elapsed >= 0.98 and Shifting Power:cooldown >= 1.45s"
+  ],
+  "removed": [],
+  "paired_vs_published": 0.5210351943969727,
+  "paired_vs_published_se": 0.04236998961228565,
+  "paired_fights": 2048,
+  "gain": true
+ }
+}

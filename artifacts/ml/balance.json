@@ -1,0 +1,808 @@
+{
+ "key": "balance",
+ "build": "Balance",
+ "race": "Windshaper",
+ "class": "",
+ "published": {
+  "talents": "5232220115501351--505003",
+  "dps": 795.215625628829,
+  "se": 0.36991544875285187,
+  "benchmark_dps": 795.8325812639364
+ },
+ "learned": {
+  "talents": "543222011550135--505002",
+  "dps": 796.529065400362,
+  "vs_published": 1.3134397715330124,
+  "vs_published_se": 0.19633881804633505,
+  "published_talents_dps": 795.2156376242638,
+  "published_talents_vs_published": 1.1995434761047363e-05,
+  "published_talents_vs_published_se": 0.05047802065560955
+ },
+ "talent_changes": [
+  {
+   "talent": "Genesis",
+   "tree": "Balance",
+   "published": 2,
+   "learned": 4
+  },
+  {
+   "talent": "Moonkin Form",
+   "tree": "Balance",
+   "published": 1,
+   "learned": 0
+  },
+  {
+   "talent": "Reflection",
+   "tree": "Restoration",
+   "published": 3,
+   "learned": 2
+  }
+ ],
+ "fights": 4096,
+ "training": {
+  "stop": "converged",
+  "train_minutes": 6.0,
+  "minutes": 6.1,
+  "decisions": 150470656,
+  "fights": 667757,
+  "builds_seen": 20054,
+  "decisions_per_fight": 173.2421875,
+  "best_decisions": 30408704
+ },
+ "actions": {
+  "fights": 1024,
+  "apl_talents": "5232220115501351--505003",
+  "policy_talents": "543222011550135--505002",
+  "apl": 794.8172300457954,
+  "policy": 796.340596139431,
+  "diff": 1.523366093635559,
+  "diff_se": 0.41342584735661814,
+  "agreement": 0.994882793183725,
+  "disagreements": [
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Demonic Rune",
+    "per_fight": 0.262
+   },
+   {
+    "apl_would": "cast:Innervate",
+    "policy_did": "cast:Starfire",
+    "per_fight": 0.141
+   },
+   {
+    "apl_would": "cast:Demonic Rune",
+    "policy_did": "cast:Starfire",
+    "per_fight": 0.133
+   },
+   {
+    "apl_would": "cast:Innervate",
+    "policy_did": "cast:Wrath",
+    "per_fight": 0.085
+   },
+   {
+    "apl_would": "cast:Demonic Rune",
+    "policy_did": "cast:Wrath",
+    "per_fight": 0.081
+   },
+   {
+    "apl_would": "cast:Innervate",
+    "policy_did": "cast:Insect Swarm",
+    "per_fight": 0.047
+   },
+   {
+    "apl_would": "cast:Innervate",
+    "policy_did": "cast:Moonfire",
+    "per_fight": 0.046
+   },
+   {
+    "apl_would": "cast:Insect Swarm",
+    "policy_did": "cast:Demonic Rune",
+    "per_fight": 0.037
+   },
+   {
+    "apl_would": "cast:Moonfire",
+    "policy_did": "cast:Demonic Rune",
+    "per_fight": 0.021
+   },
+   {
+    "apl_would": "cast:Starfire",
+    "policy_did": "cast:Demonic Rune",
+    "per_fight": 0.021
+   },
+   {
+    "apl_would": "cast:Wrath",
+    "policy_did": "cast:Demonic Rune",
+    "per_fight": 0.018
+   },
+   {
+    "apl_would": "cast:Demonic Rune",
+    "policy_did": "cast:Moonfire",
+    "per_fight": 0.007
+   },
+   {
+    "apl_would": "cast:Wrath",
+    "policy_did": "cast:Innervate",
+    "per_fight": 0.002
+   }
+  ],
+  "actions": [
+   {
+    "action": "cast:Starfire",
+    "apl": 83.888671875,
+    "policy": 82.2177734375,
+    "apl_execute": 16.62109375,
+    "policy_execute": 14.966796875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Wrath",
+    "apl": 42.7138671875,
+    "policy": 45.740234375,
+    "apl_execute": 8.6982421875,
+    "policy_execute": 11.7392578125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Moonfire",
+    "apl": 19.0859375,
+    "policy": 18.810546875,
+    "apl_execute": 3.9423828125,
+    "policy_execute": 3.6728515625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Insect Swarm",
+    "apl": 15.2333984375,
+    "policy": 15.224609375,
+    "apl_execute": 3.025390625,
+    "policy_execute": 3.0234375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "wait",
+    "apl": 5.7138671875,
+    "policy": 6.76953125,
+    "apl_execute": 0.0244140625,
+    "policy_execute": 1.0146484375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Demonic Rune",
+    "apl": 3.0,
+    "policy": 3.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Major Spellblasting Potion",
+    "apl": 3.0,
+    "policy": 3.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Innervate",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0712890625,
+    "policy_execute": 0.0029296875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   }
+  ],
+  "cooldowns": [
+   {
+    "action": "cast:Demonic Rune",
+    "apl": [
+     {
+      "mean_s": 28.8,
+      "share": 1.0
+     },
+     {
+      "mean_s": 149.8,
+      "share": 1.0
+     },
+     {
+      "mean_s": 270.8,
+      "share": 1.0
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 33.7,
+      "share": 1.0
+     },
+     {
+      "mean_s": 154.7,
+      "share": 1.0
+     },
+     {
+      "mean_s": 275.6,
+      "share": 1.0
+     }
+    ]
+   }
+  ],
+  "timeline": {
+   "apl": [
+    {
+     "t": 0.0,
+     "action": "cast:Major Spellblasting Potion",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Insect Swarm",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.46,
+     "action": "cast:Moonfire",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 2.91,
+     "action": "cast:Wrath",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 4.24,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 6.44,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 8.87,
+     "action": "cast:Wrath",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 10.33,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 12.75,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 15.18,
+     "action": "cast:Wrath",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.64,
+     "action": "cast:Moonfire",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 18.09,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 20.52,
+     "action": "cast:Insect Swarm",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.98,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 24.4,
+     "action": "cast:Wrath",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.86,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 28.07,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 30.27,
+     "action": "cast:Wrath",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 31.73,
+     "action": "cast:Moonfire",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 33.19,
+     "action": "cast:Demonic Rune",
+     "rage": 0,
+     "mana_pct": 78,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 33.19,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 35.39,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.82,
+     "action": "cast:Wrath",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 39.14,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 41.35,
+     "action": "cast:Insect Swarm",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 42.81,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 45.23,
+     "action": "cast:Wrath",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.69,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 49.12,
+     "action": "cast:Moonfire",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.57,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 53.0,
+     "action": "cast:Wrath",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 54.32,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.53,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 58.96,
+     "action": "cast:Wrath",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    }
+   ],
+   "policy": [
+    {
+     "t": 0.0,
+     "action": "cast:Major Spellblasting Potion",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Insect Swarm",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.46,
+     "action": "cast:Moonfire",
+     "rage": 0,
+     "mana_pct": 99,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 2.91,
+     "action": "cast:Wrath",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 4.24,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 6.44,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 8.87,
+     "action": "cast:Wrath",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 10.33,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 12.75,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 15.18,
+     "action": "cast:Wrath",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.64,
+     "action": "cast:Moonfire",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 18.09,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 20.52,
+     "action": "cast:Insect Swarm",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.98,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 24.4,
+     "action": "cast:Wrath",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.86,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 28.07,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 30.27,
+     "action": "cast:Wrath",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 31.73,
+     "action": "cast:Moonfire",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 33.19,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 35.39,
+     "action": "cast:Demonic Rune",
+     "rage": 0,
+     "mana_pct": 78,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 35.39,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.82,
+     "action": "cast:Wrath",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 39.14,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 41.35,
+     "action": "cast:Insect Swarm",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 42.81,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 45.23,
+     "action": "cast:Wrath",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.69,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 49.12,
+     "action": "cast:Moonfire",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.57,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 53.0,
+     "action": "cast:Wrath",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 54.32,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.53,
+     "action": "cast:Starfire",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 58.96,
+     "action": "cast:Wrath",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    }
+   ]
+  }
+ },
+ "native": {
+  "fights": 2048,
+  "published": 795.8684729933739,
+  "network": 796.9395259320736,
+  "network_vs_published": 1.0710529386997223,
+  "network_vs_published_se": 0.2757380858324496
+ },
+ "profile": {
+  "id": "balance__windshaper__learned",
+  "dps": 797.5530384451829,
+  "se": 0.3372478668341211,
+  "published_dps": 795.8325812639364,
+  "published_se": 0.33319785687233083,
+  "talents": "543222011550135--505002",
+  "talent_source": "learned",
+  "overrides": [],
+  "removed": [],
+  "paired_vs_published": 1.1694910526275635,
+  "paired_vs_published_se": 0.2751855141455585,
+  "paired_fights": 2048,
+  "gain": true
+ }
+}

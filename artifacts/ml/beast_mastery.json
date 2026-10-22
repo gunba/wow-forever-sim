@@ -1,0 +1,1633 @@
+{
+ "key": "beast_mastery",
+ "build": "BM Weave",
+ "race": "Human",
+ "class": "",
+ "published": {
+  "talents": "5320001505101251-00531510005",
+  "dps": 1161.9003260433674,
+  "se": 0.34271716687866677,
+  "benchmark_dps": 1166.3089098381156
+ },
+ "learned": {
+  "talents": "5321001505101241-00531510005",
+  "dps": 1200.953640460968,
+  "vs_published": 39.05331441760063,
+  "vs_published_se": 0.33368274609055026,
+  "published_talents_dps": 1199.4422437548637,
+  "published_talents_vs_published": 37.54191771149635,
+  "published_talents_vs_published_se": 0.32497746750241147
+ },
+ "talent_changes": [
+  {
+   "talent": "Improved Aspect of the Monkey",
+   "tree": "Beast Mastery",
+   "published": 0,
+   "learned": 1
+  },
+  {
+   "talent": "Frenzy",
+   "tree": "Beast Mastery",
+   "published": 5,
+   "learned": 4
+  }
+ ],
+ "fights": 4096,
+ "training": {
+  "stop": "budget",
+  "train_minutes": 20.1,
+  "minutes": 21.5,
+  "decisions": 500170752,
+  "fights": 207171,
+  "builds_seen": 22860,
+  "decisions_per_fight": 2995.052734375,
+  "best_decisions": 395313152
+ },
+ "actions": {
+  "fights": 1024,
+  "apl_talents": "5320001505101251-00531510005",
+  "policy_talents": "5321001505101241-00531510005",
+  "apl": 1166.686165213585,
+  "policy": 1200.5091224908829,
+  "diff": 33.822957277297974,
+  "diff_se": 0.656932354770812,
+  "agreement": 0.7061288573905267,
+  "disagreements": [
+   {
+    "apl_would": "cast:Summon Hawk",
+    "policy_did": "wait",
+    "per_fight": 465.04
+   },
+   {
+    "apl_would": "cast:Immolation Trap",
+    "policy_did": "wait",
+    "per_fight": 103.959
+   },
+   {
+    "apl_would": "cast:Summon Hawk",
+    "policy_did": "cast:Arcane Shot",
+    "per_fight": 38.877
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "wait:1s",
+    "per_fight": 18.877
+   },
+   {
+    "apl_would": "cast:Serpent Sting",
+    "policy_did": "wait",
+    "per_fight": 9.744
+   },
+   {
+    "apl_would": "cast:Summon Hawk",
+    "policy_did": "wait:1s",
+    "per_fight": 9.218
+   },
+   {
+    "apl_would": "cast:Demonic Rune",
+    "policy_did": "wait",
+    "per_fight": 8.97
+   },
+   {
+    "apl_would": "cast:Summon Hawk",
+    "policy_did": "cast:Raptor Strike#3",
+    "per_fight": 4.144
+   },
+   {
+    "apl_would": "move:{\"const\":{\"val\":\"5\"}}",
+    "policy_did": "cast:Serpent Sting",
+    "per_fight": 4.026
+   },
+   {
+    "apl_would": "move:{\"const\":{\"val\":\"5\"}}",
+    "policy_did": "wait",
+    "per_fight": 3.981
+   },
+   {
+    "apl_would": "cast:Summon Hawk",
+    "policy_did": "cast:Immolation Trap",
+    "per_fight": 3.488
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Intimidation",
+    "per_fight": 1.816
+   },
+   {
+    "apl_would": "cast:Summon Hawk",
+    "policy_did": "cast:Serpent Sting",
+    "per_fight": 1.805
+   },
+   {
+    "apl_would": "move:{\"const\":{\"val\":\"5\"}}",
+    "policy_did": "cast:Bestial Wrath",
+    "per_fight": 1.303
+   },
+   {
+    "apl_would": "cast:Immolation Trap",
+    "policy_did": "wait:1s",
+    "per_fight": 1.119
+   }
+  ],
+  "actions": [
+   {
+    "action": "wait",
+    "apl": 2657.8330078125,
+    "policy": 1922.818359375,
+    "apl_execute": 532.6669921875,
+    "policy_execute": 483.029296875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "move:{\"const\":{\"val\":\"5\"}}",
+    "apl": 116.369140625,
+    "policy": 114.580078125,
+    "apl_execute": 21.6904296875,
+    "policy_execute": 21.3369140625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "move:{\"const\":{\"val\":\"12\"}}",
+    "apl": 115.8564453125,
+    "policy": 114.1298828125,
+    "apl_execute": 21.619140625,
+    "policy_execute": 21.3310546875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Raptor Strike#3",
+    "apl": 39.2333984375,
+    "policy": 39.5029296875,
+    "apl_execute": 7.4619140625,
+    "policy_execute": 7.638671875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Multi-Shot",
+    "apl": 35.587890625,
+    "policy": 38.5537109375,
+    "apl_execute": 6.97265625,
+    "policy_execute": 8.025390625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Arcane Shot",
+    "apl": 13.798828125,
+    "policy": 39.30078125,
+    "apl_execute": 2.849609375,
+    "policy_execute": 8.15625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Serpent Sting",
+    "apl": 18.85546875,
+    "policy": 20.2861328125,
+    "apl_execute": 3.826171875,
+    "policy_execute": 4.0029296875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Summon Hawk",
+    "apl": 29.7529296875,
+    "policy": 0.28515625,
+    "apl_execute": 5.896484375,
+    "policy_execute": 0.0732421875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "wait:1s",
+    "apl": 0.0,
+    "policy": 29.5107421875,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0810546875,
+    "apl_rage": null,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Immolation Trap",
+    "apl": 9.9716796875,
+    "policy": 9.55078125,
+    "apl_execute": 1.9716796875,
+    "policy_execute": 1.5966796875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Intimidation",
+    "apl": 1.865234375,
+    "policy": 5.0,
+    "apl_execute": 0.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Major Frenzy Potion",
+    "apl": 3.0,
+    "policy": 3.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Bestial Wrath",
+    "apl": 3.0,
+    "policy": 3.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Demonic Rune",
+    "apl": 2.98046875,
+    "policy": 3.0,
+    "apl_execute": 0.98046875,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Rapid Fire",
+    "apl": 2.0,
+    "policy": 2.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Goblin Sapper Charge",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Wing Clip",
+    "apl": 0.0,
+    "policy": 0.0068359375,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0029296875,
+    "apl_rage": null,
+    "policy_rage": 0.0
+   }
+  ],
+  "cooldowns": [
+   {
+    "action": "cast:Goblin Sapper Charge",
+    "apl": [
+     {
+      "mean_s": 13.5,
+      "share": 1.0
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 1.5,
+      "share": 1.0
+     }
+    ]
+   },
+   {
+    "action": "cast:Demonic Rune",
+    "apl": [
+     {
+      "mean_s": 32.2,
+      "share": 1.0
+     },
+     {
+      "mean_s": 152.6,
+      "share": 1.0
+     },
+     {
+      "mean_s": 272.4,
+      "share": 0.98
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 18.5,
+      "share": 1.0
+     },
+     {
+      "mean_s": 138.8,
+      "share": 1.0
+     },
+     {
+      "mean_s": 259.1,
+      "share": 1.0
+     }
+    ]
+   }
+  ],
+  "timeline": {
+   "apl": [
+    {
+     "t": 0.43,
+     "action": "cast:Major Frenzy Potion",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.43,
+     "action": "cast:Bestial Wrath",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.43,
+     "action": "cast:Intimidation",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.43,
+     "action": "cast:Rapid Fire",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.43,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.48,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.48,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.93,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 2.86,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 3.43,
+     "action": "cast:Immolation Trap",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 3.91,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 5.22,
+     "action": "cast:Serpent Sting",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 5.22,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 6.27,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.57,
+     "action": "cast:Multi-Shot",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.57,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 8.62,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 8.62,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 9.07,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 13.62,
+     "action": "cast:Multi-Shot",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 15.12,
+     "action": "cast:Arcane Shot",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.97,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 78,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 18.02,
+     "action": "cast:Goblin Sapper Charge",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 18.02,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 18.02,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 77,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 19.35,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 77,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 20.48,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 78,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.15,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.8,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 76,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 22.93,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 77,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 24.26,
+     "action": "cast:Serpent Sting",
+     "rage": 0,
+     "mana_pct": 78,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 24.26,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 75,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.31,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 77,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.38,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 76,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.71,
+     "action": "cast:Multi-Shot",
+     "rage": 0,
+     "mana_pct": 77,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.71,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 73,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 27.83,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 74,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 28.21,
+     "action": "cast:Demonic Rune",
+     "rage": 0,
+     "mana_pct": 75,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 28.21,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 29.26,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 30.31,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 31.82,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 32.87,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 32.87,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 33.47,
+     "action": "cast:Immolation Trap",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 34.38,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 35.43,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 36.45,
+     "action": "cast:Arcane Shot",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 36.93,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 37.98,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 38.99,
+     "action": "cast:Multi-Shot",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 39.49,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.54,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.54,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 41.59,
+     "action": "cast:Serpent Sting",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 41.95,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 43.0,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 43.07,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 44.33,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 45.45,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.78,
+     "action": "cast:Multi-Shot",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.78,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 47.9,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 47.9,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 49.23,
+     "action": "cast:Summon Hawk",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 49.23,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.36,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 51.69,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 52.81,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 54.14,
+     "action": "cast:Multi-Shot",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 54.14,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 55.26,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 55.26,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.59,
+     "action": "cast:Serpent Sting",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.59,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 57.72,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.04,
+     "action": "cast:Arcane Shot",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.04,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    }
+   ],
+   "policy": [
+    {
+     "t": 0.43,
+     "action": "cast:Major Frenzy Potion",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.43,
+     "action": "cast:Intimidation",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.43,
+     "action": "cast:Rapid Fire",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.43,
+     "action": "cast:Bestial Wrath",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.43,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.48,
+     "action": "cast:Goblin Sapper Charge",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.48,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.48,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.93,
+     "action": "cast:Immolation Trap",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 3.41,
+     "action": "cast:Arcane Shot",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 4.9,
+     "action": "cast:Serpent Sting",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 6.52,
+     "action": "cast:Multi-Shot",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 6.52,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.57,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.57,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 9.45,
+     "action": "cast:Arcane Shot",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 12.56,
+     "action": "cast:Multi-Shot",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 15.47,
+     "action": "cast:Arcane Shot",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 15.92,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 76,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.95,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 77,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 16.98,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 77,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 17.0,
+     "action": "cast:Demonic Rune",
+     "rage": 0,
+     "mana_pct": 77,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 18.31,
+     "action": "cast:Serpent Sting",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 18.31,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 19.43,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 20.76,
+     "action": "cast:Multi-Shot",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 20.76,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.88,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 23.21,
+     "action": "cast:Arcane Shot",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 23.21,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 24.33,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 24.35,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.67,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.8,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 28.23,
+     "action": "cast:Multi-Shot",
+     "rage": 0,
+     "mana_pct": 97,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 28.23,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 29.28,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 30.33,
+     "action": "cast:Arcane Shot",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 30.78,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 31.81,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 31.83,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 31.86,
+     "action": "wait:1s",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 32.86,
+     "action": "cast:Serpent Sting",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 33.34,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 34.35,
+     "action": "cast:Immolation Trap",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 34.39,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 35.9,
+     "action": "cast:Multi-Shot",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 35.9,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 36.95,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 38.0,
+     "action": "cast:Arcane Shot",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 38.45,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 39.48,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 39.51,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 39.53,
+     "action": "wait:1s",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.91,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 41.97,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 42.01,
+     "action": "wait:1s",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 43.3,
+     "action": "cast:Multi-Shot",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 43.3,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 44.42,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 45.75,
+     "action": "cast:Arcane Shot",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 45.75,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.87,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.87,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 48.2,
+     "action": "cast:Serpent Sting",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 48.2,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 49.33,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.65,
+     "action": "cast:Multi-Shot",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.65,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 51.78,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 53.11,
+     "action": "cast:Arcane Shot",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 53.11,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 54.23,
+     "action": "cast:Raptor Strike#3",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 54.23,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 55.56,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.68,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.71,
+     "action": "wait:1s",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 58.01,
+     "action": "cast:Multi-Shot",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 58.01,
+     "action": "move:{\"const\":{\"val\":\"5\"}}",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.14,
+     "action": "move:{\"const\":{\"val\":\"12\"}}",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    }
+   ]
+  }
+ },
+ "native": {
+  "fights": 2048,
+  "published": 1166.7211118340492,
+  "network": 1201.168762087822,
+  "network_vs_published": 34.447650253772736,
+  "network_vs_published_se": 0.4693552202544994
+ },
+ "profile": {
+  "id": "beast_mastery__human__learned",
+  "dps": 1180.1873915910778,
+  "se": 0.324713517182688,
+  "published_dps": 1166.3089098381156,
+  "published_se": 0.31607563894645574,
+  "talents": "5320001505101251-00531510005",
+  "talent_source": "published",
+  "overrides": [
+   "cast:Arcane Shot if not Major Frenzy Potion:ready and gcd >= 0.00s",
+   "cast:Immolation Trap if elapsed <= 0.03"
+  ],
+  "removed": [
+   "cast:Summon Hawk (conditional)"
+  ],
+  "paired_vs_published": 12.915113031864166,
+  "paired_vs_published_se": 0.4856662728794231,
+  "paired_fights": 2048,
+  "gain": true
+ }
+}

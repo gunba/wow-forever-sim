@@ -1,0 +1,927 @@
+{
+ "key": "subtlety",
+ "build": "Subtlety",
+ "race": "Windshaper",
+ "class": "",
+ "published": {
+  "talents": "005303103104--5320003310013211501",
+  "dps": 715.7398311793804,
+  "se": 0.3027061272702952,
+  "benchmark_dps": 718.1972766230626
+ },
+ "learned": {
+  "talents": "005303103104--5320003310013211501",
+  "dps": 711.2488474398851,
+  "vs_published": -4.490983739495277,
+  "vs_published_se": 0.23407176834036833,
+  "published_talents_dps": 711.2488474398851,
+  "published_talents_vs_published": -4.490983739495277,
+  "published_talents_vs_published_se": 0.23407176834036833
+ },
+ "talent_changes": [],
+ "fights": 4096,
+ "training": {
+  "stop": "converged",
+  "train_minutes": 9.8,
+  "minutes": 10.6,
+  "decisions": 272629760,
+  "fights": 193008,
+  "builds_seen": 23905,
+  "decisions_per_fight": 3237.9736328125,
+  "best_decisions": 152043520
+ },
+ "actions": {
+  "fights": 1024,
+  "apl_talents": "005303103104--5320003310013211501",
+  "policy_talents": "005303103104--5320003310013211501",
+  "apl": 718.2296562790871,
+  "policy": 710.9026295542717,
+  "diff": -7.327026724815369,
+  "diff_se": 0.4630671145404067,
+  "agreement": 0.8919024401553801,
+  "disagreements": [
+   {
+    "apl_would": "cast:Rupture",
+    "policy_did": "wait",
+    "per_fight": 87.933
+   },
+   {
+    "apl_would": "cast:Slice and Dice",
+    "policy_did": "wait",
+    "per_fight": 5.186
+   },
+   {
+    "apl_would": "cast:Rupture",
+    "policy_did": "cast:Hemorrhage",
+    "per_fight": 4.762
+   },
+   {
+    "apl_would": "cast:Hemorrhage",
+    "policy_did": "cast:Rupture",
+    "per_fight": 4.162
+   },
+   {
+    "apl_would": "cast:Eviscerate",
+    "policy_did": "wait",
+    "per_fight": 1.046
+   },
+   {
+    "apl_would": "cast:Premeditation",
+    "policy_did": "cast:Preparation",
+    "per_fight": 0.961
+   },
+   {
+    "apl_would": "cast:Rupture",
+    "policy_did": "cast:Eviscerate",
+    "per_fight": 0.836
+   },
+   {
+    "apl_would": "cast:Hemorrhage",
+    "policy_did": "cast:Vanish",
+    "per_fight": 0.784
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Rupture",
+    "per_fight": 0.733
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Major Frenzy Potion",
+    "per_fight": 0.641
+   },
+   {
+    "apl_would": "cast:Vanish",
+    "policy_did": "wait",
+    "per_fight": 0.548
+   },
+   {
+    "apl_would": "cast:Slice and Dice",
+    "policy_did": "cast:Eviscerate",
+    "per_fight": 0.535
+   },
+   {
+    "apl_would": "cast:Hemorrhage",
+    "policy_did": "cast:Eviscerate",
+    "per_fight": 0.495
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Eviscerate",
+    "per_fight": 0.178
+   },
+   {
+    "apl_would": "cast:Slice and Dice",
+    "policy_did": "cast:Rupture",
+    "per_fight": 0.094
+   }
+  ],
+  "actions": [
+   {
+    "action": "wait",
+    "apl": 2634.408203125,
+    "policy": 868.6015625,
+    "apl_execute": 547.2451171875,
+    "policy_execute": 185.6552734375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Hemorrhage",
+    "apl": 94.12890625,
+    "policy": 87.0888671875,
+    "apl_execute": 18.9189453125,
+    "policy_execute": 17.466796875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Rupture",
+    "apl": 19.634765625,
+    "policy": 19.5341796875,
+    "apl_execute": 3.3603515625,
+    "policy_execute": 3.5078125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Slice and Dice",
+    "apl": 13.369140625,
+    "policy": 15.224609375,
+    "apl_execute": 2.2705078125,
+    "policy_execute": 2.638671875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Ghostly Strike",
+    "apl": 3.845703125,
+    "policy": 6.3193359375,
+    "apl_execute": 0.5478515625,
+    "policy_execute": 1.0927734375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Major Frenzy Potion",
+    "apl": 3.0,
+    "policy": 3.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Eviscerate",
+    "apl": 1.29296875,
+    "policy": 2.373046875,
+    "apl_execute": 0.3974609375,
+    "policy_execute": 0.791015625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Vanish",
+    "apl": 1.427734375,
+    "policy": 2.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Ambush",
+    "apl": 1.427734375,
+    "policy": 1.9990234375,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Goblin Sapper Charge",
+    "apl": 1.6142578125,
+    "policy": 1.7236328125,
+    "apl_execute": 0.6142578125,
+    "policy_execute": 0.7236328125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Premeditation",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Preparation",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Thistle Tea",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Backstab",
+    "apl": 0.0,
+    "policy": 0.013671875,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": null,
+    "policy_rage": 0.0
+   }
+  ],
+  "cooldowns": [
+   {
+    "action": "cast:Goblin Sapper Charge",
+    "apl": [
+     {
+      "mean_s": 0.0,
+      "share": 1.0
+     },
+     {
+      "mean_s": 300.0,
+      "share": 0.614
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 0.0,
+      "share": 1.0
+     },
+     {
+      "mean_s": 300.0,
+      "share": 0.724
+     }
+    ]
+   }
+  ],
+  "timeline": {
+   "apl": [
+    {
+     "t": 0.0,
+     "action": "cast:Major Frenzy Potion",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Goblin Sapper Charge",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Ghostly Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 0
+    },
+    {
+     "t": 1.0,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 70,
+     "combo": 1
+    },
+    {
+     "t": 2.0,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 56,
+     "combo": 0
+    },
+    {
+     "t": 3.4,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 35,
+     "combo": 1
+    },
+    {
+     "t": 3.4,
+     "action": "cast:Thistle Tea",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 0,
+     "combo": 2
+    },
+    {
+     "t": 4.4,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 2
+    },
+    {
+     "t": 5.4,
+     "action": "cast:Rupture",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 75,
+     "combo": 3
+    },
+    {
+     "t": 6.4,
+     "action": "cast:Rupture",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 81,
+     "combo": 3
+    },
+    {
+     "t": 6.4,
+     "action": "cast:Vanish",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 81,
+     "combo": 0
+    },
+    {
+     "t": 6.4,
+     "action": "cast:Premeditation",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 81,
+     "combo": 0
+    },
+    {
+     "t": 7.4,
+     "action": "cast:Ambush",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 91,
+     "combo": 2
+    },
+    {
+     "t": 8.4,
+     "action": "cast:Preparation",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 42,
+     "combo": 4
+    },
+    {
+     "t": 9.4,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 52,
+     "combo": 4
+    },
+    {
+     "t": 10.4,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 30,
+     "combo": 5
+    },
+    {
+     "t": 11.4,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 35,
+     "combo": 5
+    },
+    {
+     "t": 12.4,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 40,
+     "combo": 1
+    },
+    {
+     "t": 14.1,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 26,
+     "combo": 2
+    },
+    {
+     "t": 15.1,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 36,
+     "combo": 0
+    },
+    {
+     "t": 17.5,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 32,
+     "combo": 1
+    },
+    {
+     "t": 20.6,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 33,
+     "combo": 2
+    },
+    {
+     "t": 21.6,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 37,
+     "combo": 2
+    },
+    {
+     "t": 23.9,
+     "action": "cast:Rupture",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 25,
+     "combo": 3
+    },
+    {
+     "t": 27.0,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 33,
+     "combo": 1
+    },
+    {
+     "t": 29.95,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 31,
+     "combo": 2
+    },
+    {
+     "t": 32.2,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 26,
+     "combo": 3
+    },
+    {
+     "t": 33.2,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 36,
+     "combo": 1
+    },
+    {
+     "t": 35.9,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 32,
+     "combo": 2
+    },
+    {
+     "t": 38.0,
+     "action": "cast:Rupture",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 25,
+     "combo": 3
+    },
+    {
+     "t": 39.0,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 36,
+     "combo": 1
+    },
+    {
+     "t": 42.0,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 32,
+     "combo": 2
+    },
+    {
+     "t": 44.9,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 33,
+     "combo": 3
+    },
+    {
+     "t": 45.9,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 37,
+     "combo": 3
+    },
+    {
+     "t": 48.6,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 30,
+     "combo": 4
+    },
+    {
+     "t": 49.7,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 36,
+     "combo": 4
+    },
+    {
+     "t": 52.1,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 26,
+     "combo": 5
+    },
+    {
+     "t": 53.1,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 36,
+     "combo": 0
+    },
+    {
+     "t": 56.1,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 35,
+     "combo": 1
+    },
+    {
+     "t": 59.5,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 36,
+     "combo": 2
+    }
+   ],
+   "policy": [
+    {
+     "t": 0.0,
+     "action": "cast:Major Frenzy Potion",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Goblin Sapper Charge",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Ghostly Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 0
+    },
+    {
+     "t": 1.0,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 70,
+     "combo": 1
+    },
+    {
+     "t": 2.0,
+     "action": "cast:Vanish",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 56,
+     "combo": 0
+    },
+    {
+     "t": 2.0,
+     "action": "cast:Preparation",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 56,
+     "combo": 0
+    },
+    {
+     "t": 2.0,
+     "action": "cast:Premeditation",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 56,
+     "combo": 0
+    },
+    {
+     "t": 3.0,
+     "action": "cast:Ambush",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 66,
+     "combo": 2
+    },
+    {
+     "t": 3.0,
+     "action": "cast:Thistle Tea",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 6,
+     "combo": 4
+    },
+    {
+     "t": 4.0,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 4
+    },
+    {
+     "t": 5.0,
+     "action": "cast:Rupture",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 75,
+     "combo": 5
+    },
+    {
+     "t": 5.0,
+     "action": "cast:Vanish",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 75,
+     "combo": 0
+    },
+    {
+     "t": 6.0,
+     "action": "cast:Ambush",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 86,
+     "combo": 0
+    },
+    {
+     "t": 7.0,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 36,
+     "combo": 2
+    },
+    {
+     "t": 9.7,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 32,
+     "combo": 3
+    },
+    {
+     "t": 12.8,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 33,
+     "combo": 4
+    },
+    {
+     "t": 15.2,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 26,
+     "combo": 5
+    },
+    {
+     "t": 16.2,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 36,
+     "combo": 1
+    },
+    {
+     "t": 18.7,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 33,
+     "combo": 2
+    },
+    {
+     "t": 21.4,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 29,
+     "combo": 3
+    },
+    {
+     "t": 23.9,
+     "action": "cast:Rupture",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 26,
+     "combo": 4
+    },
+    {
+     "t": 24.9,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 36,
+     "combo": 0
+    },
+    {
+     "t": 27.9,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 33,
+     "combo": 1
+    },
+    {
+     "t": 30.7,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 33,
+     "combo": 2
+    },
+    {
+     "t": 33.8,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 33,
+     "combo": 3
+    },
+    {
+     "t": 36.5,
+     "action": "cast:Rupture",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 29,
+     "combo": 4
+    },
+    {
+     "t": 37.5,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 40,
+     "combo": 1
+    },
+    {
+     "t": 39.6,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 32,
+     "combo": 2
+    },
+    {
+     "t": 42.55,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 31,
+     "combo": 3
+    },
+    {
+     "t": 45.5,
+     "action": "cast:Rupture",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 33,
+     "combo": 4
+    },
+    {
+     "t": 46.5,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 43,
+     "combo": 1
+    },
+    {
+     "t": 47.6,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 30,
+     "combo": 1
+    },
+    {
+     "t": 50.7,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 33,
+     "combo": 2
+    },
+    {
+     "t": 53.5,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 30,
+     "combo": 3
+    },
+    {
+     "t": 56.5,
+     "action": "cast:Rupture",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 32,
+     "combo": 4
+    },
+    {
+     "t": 57.5,
+     "action": "cast:Ghostly Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 43,
+     "combo": 0
+    },
+    {
+     "t": 58.5,
+     "action": "cast:Hemorrhage",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 45,
+     "combo": 0
+    },
+    {
+     "t": 59.55,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 26,
+     "combo": 1
+    }
+   ]
+  }
+ },
+ "native": {
+  "fights": 2048,
+  "published": 717.8203051388264,
+  "network": 711.4435537159443,
+  "network_vs_published": -6.37675142288208,
+  "network_vs_published_se": 0.32154091329810863
+ },
+ "profile": {
+  "id": "subtlety__windshaper__learned",
+  "dps": 719.0333520667255,
+  "se": 0.27603336752281654,
+  "published_dps": 718.1972766230626,
+  "published_se": 0.2758446985566823,
+  "talents": "005303103104--5320003310013211501",
+  "talent_source": "learned",
+  "overrides": [
+   "cast:Preparation if self:Slice and Dice:active"
+  ],
+  "removed": [],
+  "paired_vs_published": 0.3783468008041382,
+  "paired_vs_published_se": 0.3065746578625525,
+  "paired_fights": 2048,
+  "gain": false
+ }
+}

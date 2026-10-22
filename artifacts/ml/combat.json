@@ -1,0 +1,861 @@
+{
+ "key": "combat",
+ "build": "Combat",
+ "race": "Windshaper",
+ "class": "",
+ "published": {
+  "talents": "005303103012-32003311201515231",
+  "dps": 752.1520651578903,
+  "se": 0.3566363537803157,
+  "benchmark_dps": 753.8237812378543
+ },
+ "learned": {
+  "talents": "005303103012-32003311201515231",
+  "dps": 760.3811532109976,
+  "vs_published": 8.229088053107262,
+  "vs_published_se": 0.2302383442052072,
+  "published_talents_dps": 760.3811532109976,
+  "published_talents_vs_published": 8.229088053107262,
+  "published_talents_vs_published_se": 0.2302383442052072
+ },
+ "talent_changes": [],
+ "fights": 4096,
+ "training": {
+  "stop": "converged",
+  "train_minutes": 15.1,
+  "minutes": 16.0,
+  "decisions": 455081984,
+  "fights": 170121,
+  "builds_seen": 22180,
+  "decisions_per_fight": 2662.001953125,
+  "best_decisions": 334495744
+ },
+ "actions": {
+  "fights": 1024,
+  "apl_talents": "005303103012-32003311201515231",
+  "policy_talents": "005303103012-32003311201515231",
+  "apl": 753.8377833366394,
+  "policy": 760.294893682003,
+  "diff": 6.457110345363617,
+  "diff_se": 0.4743191180171172,
+  "agreement": 0.8830182538559502,
+  "disagreements": [
+   {
+    "apl_would": "cast:Sinister Strike",
+    "policy_did": "wait",
+    "per_fight": 197.742
+   },
+   {
+    "apl_would": "cast:Thorium Grenade",
+    "policy_did": "wait",
+    "per_fight": 29.014
+   },
+   {
+    "apl_would": "cast:Blade Flurry",
+    "policy_did": "wait",
+    "per_fight": 24.837
+   },
+   {
+    "apl_would": "cast:Adrenaline Rush",
+    "policy_did": "wait",
+    "per_fight": 21.301
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Eviscerate",
+    "per_fight": 17.919
+   },
+   {
+    "apl_would": "cast:Sinister Strike",
+    "policy_did": "cast:Eviscerate",
+    "per_fight": 7.84
+   },
+   {
+    "apl_would": "cast:Major Frenzy Potion",
+    "policy_did": "wait",
+    "per_fight": 6.866
+   },
+   {
+    "apl_would": "cast:Eviscerate",
+    "policy_did": "wait",
+    "per_fight": 3.846
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Thorium Grenade",
+    "per_fight": 2.74
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Sinister Strike",
+    "per_fight": 2.669
+   },
+   {
+    "apl_would": "cast:Slice and Dice",
+    "policy_did": "cast:Eviscerate",
+    "per_fight": 1.791
+   },
+   {
+    "apl_would": "cast:Major Frenzy Potion",
+    "policy_did": "cast:Goblin Sapper Charge",
+    "per_fight": 1.0
+   },
+   {
+    "apl_would": "cast:Major Frenzy Potion",
+    "policy_did": "cast:Cold Blood",
+    "per_fight": 1.0
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Cold Blood",
+    "per_fight": 0.952
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Major Frenzy Potion",
+    "per_fight": 0.942
+   }
+  ],
+  "actions": [
+   {
+    "action": "wait",
+    "apl": 2504.85546875,
+    "policy": 2621.4609375,
+    "apl_execute": 498.359375,
+    "policy_execute": 615.75,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Sinister Strike",
+    "apl": 75.6962890625,
+    "policy": 69.384765625,
+    "apl_execute": 13.744140625,
+    "policy_execute": 12.0439453125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Eviscerate",
+    "apl": 24.130859375,
+    "policy": 35.7060546875,
+    "apl_execute": 4.318359375,
+    "policy_execute": 7.4423828125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Slice and Dice",
+    "apl": 18.7255859375,
+    "policy": 19.9951171875,
+    "apl_execute": 3.369140625,
+    "policy_execute": 3.5068359375,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Thorium Grenade",
+    "apl": 4.0,
+    "policy": 4.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Major Frenzy Potion",
+    "apl": 3.0,
+    "policy": 3.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Blade Flurry",
+    "apl": 2.0,
+    "policy": 2.0,
+    "apl_execute": 0.6083984375,
+    "policy_execute": 0.7373046875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Cold Blood",
+    "apl": 2.0,
+    "policy": 2.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Adrenaline Rush",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Goblin Sapper Charge",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Thistle Tea",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   }
+  ],
+  "cooldowns": [
+   {
+    "action": "cast:Goblin Sapper Charge",
+    "apl": [
+     {
+      "mean_s": 0.0,
+      "share": 1.0
+     }
+    ],
+    "policy": [
+     {
+      "mean_s": 0.0,
+      "share": 1.0
+     }
+    ]
+   }
+  ],
+  "timeline": {
+   "apl": [
+    {
+     "t": 0.0,
+     "action": "cast:Major Frenzy Potion",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 85,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Goblin Sapper Charge",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 85,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 85,
+     "combo": 0
+    },
+    {
+     "t": 1.0,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 56,
+     "combo": 1
+    },
+    {
+     "t": 2.0,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 41,
+     "combo": 0
+    },
+    {
+     "t": 2.0,
+     "action": "cast:Thistle Tea",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 1,
+     "combo": 1
+    },
+    {
+     "t": 3.0,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 1
+    },
+    {
+     "t": 4.8,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 79,
+     "combo": 2
+    },
+    {
+     "t": 4.8,
+     "action": "cast:Cold Blood",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 39,
+     "combo": 3
+    },
+    {
+     "t": 5.8,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 49,
+     "combo": 3
+    },
+    {
+     "t": 7.2,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 69,
+     "combo": 0
+    },
+    {
+     "t": 8.2,
+     "action": "cast:Adrenaline Rush",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 39,
+     "combo": 1
+    },
+    {
+     "t": 9.2,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 60,
+     "combo": 1
+    },
+    {
+     "t": 10.75,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 51,
+     "combo": 2
+    },
+    {
+     "t": 11.75,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 32,
+     "combo": 3
+    },
+    {
+     "t": 13.75,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 79,
+     "combo": 1
+    },
+    {
+     "t": 14.75,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 59,
+     "combo": 2
+    },
+    {
+     "t": 15.95,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 59,
+     "combo": 0
+    },
+    {
+     "t": 18.05,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 63,
+     "combo": 1
+    },
+    {
+     "t": 20.2,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 69,
+     "combo": 2
+    },
+    {
+     "t": 21.2,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 50,
+     "combo": 3
+    },
+    {
+     "t": 22.3,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 77,
+     "combo": 1
+    },
+    {
+     "t": 23.45,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 58,
+     "combo": 2
+    },
+    {
+     "t": 24.45,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 29,
+     "combo": 3
+    },
+    {
+     "t": 26.6,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 57,
+     "combo": 1
+    },
+    {
+     "t": 29.5,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 47,
+     "combo": 2
+    },
+    {
+     "t": 30.8,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 20,
+     "combo": 3
+    },
+    {
+     "t": 33.2,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 25,
+     "combo": 1
+    },
+    {
+     "t": 35.25,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 46,
+     "combo": 0
+    },
+    {
+     "t": 39.65,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 52,
+     "combo": 1
+    },
+    {
+     "t": 43.85,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 55,
+     "combo": 2
+    },
+    {
+     "t": 44.85,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 26,
+     "combo": 3
+    },
+    {
+     "t": 46.7,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 26,
+     "combo": 1
+    },
+    {
+     "t": 50.5,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 40,
+     "combo": 0
+    },
+    {
+     "t": 52.4,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 52,
+     "combo": 0
+    },
+    {
+     "t": 56.65,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 56,
+     "combo": 1
+    },
+    {
+     "t": 59.0,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 41,
+     "combo": 2
+    }
+   ],
+   "policy": [
+    {
+     "t": 0.0,
+     "action": "cast:Cold Blood",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 85,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Goblin Sapper Charge",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 85,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Major Frenzy Potion",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 85,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 85,
+     "combo": 0
+    },
+    {
+     "t": 1.0,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 56,
+     "combo": 1
+    },
+    {
+     "t": 2.0,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 41,
+     "combo": 0
+    },
+    {
+     "t": 2.0,
+     "action": "cast:Thistle Tea",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 1,
+     "combo": 1
+    },
+    {
+     "t": 3.0,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 1
+    },
+    {
+     "t": 4.0,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 70,
+     "combo": 2
+    },
+    {
+     "t": 5.0,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 41,
+     "combo": 3
+    },
+    {
+     "t": 6.0,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 56,
+     "combo": 0
+    },
+    {
+     "t": 8.55,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 42,
+     "combo": 1
+    },
+    {
+     "t": 9.55,
+     "action": "cast:Adrenaline Rush",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 13,
+     "combo": 2
+    },
+    {
+     "t": 12.05,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 65,
+     "combo": 2
+    },
+    {
+     "t": 13.05,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 46,
+     "combo": 3
+    },
+    {
+     "t": 14.05,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 72,
+     "combo": 1
+    },
+    {
+     "t": 15.9,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 84,
+     "combo": 0
+    },
+    {
+     "t": 18.0,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 88,
+     "combo": 1
+    },
+    {
+     "t": 20.15,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 94,
+     "combo": 2
+    },
+    {
+     "t": 21.15,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 74,
+     "combo": 3
+    },
+    {
+     "t": 22.3,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 100,
+     "combo": 1
+    },
+    {
+     "t": 23.3,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 81,
+     "combo": 2
+    },
+    {
+     "t": 24.3,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 62,
+     "combo": 3
+    },
+    {
+     "t": 25.4,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 81,
+     "combo": 1
+    },
+    {
+     "t": 27.1,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 59,
+     "combo": 2
+    },
+    {
+     "t": 29.35,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 58,
+     "combo": 1
+    },
+    {
+     "t": 31.55,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 41,
+     "combo": 2
+    },
+    {
+     "t": 33.45,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 20,
+     "combo": 3
+    },
+    {
+     "t": 35.65,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 48,
+     "combo": 0
+    },
+    {
+     "t": 39.85,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 52,
+     "combo": 1
+    },
+    {
+     "t": 41.95,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 34,
+     "combo": 2
+    },
+    {
+     "t": 44.5,
+     "action": "cast:Slice and Dice",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 40,
+     "combo": 1
+    },
+    {
+     "t": 48.25,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 54,
+     "combo": 0
+    },
+    {
+     "t": 50.75,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 40,
+     "combo": 1
+    },
+    {
+     "t": 53.15,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 25,
+     "combo": 2
+    },
+    {
+     "t": 56.7,
+     "action": "cast:Sinister Strike",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 42,
+     "combo": 1
+    },
+    {
+     "t": 58.95,
+     "action": "cast:Eviscerate",
+     "rage": 0,
+     "mana_pct": 0,
+     "energy": 26,
+     "combo": 2
+    }
+   ]
+  }
+ },
+ "native": {
+  "fights": 2048,
+  "published": 753.9399037659168,
+  "network": 760.0947612226009,
+  "network_vs_published": 6.1548574566841125,
+  "network_vs_published_se": 0.3239384526589429
+ },
+ "profile": {
+  "id": "combat__windshaper__learned",
+  "dps": 760.2551734333232,
+  "se": 0.31864305407583465,
+  "published_dps": 753.8237812378543,
+  "published_se": 0.3165319479611235,
+  "talents": "005303103012-32003311201515231",
+  "talent_source": "learned",
+  "overrides": [
+   "cast:Thorium Grenade if elapsed >= 0.03 and mh_swing >= 0.13",
+   "cast:Eviscerate if elapsed >= 0.98 and combo >= 2.00"
+  ],
+  "removed": [],
+  "paired_vs_published": 8.185536950826645,
+  "paired_vs_published_se": 0.26127286875713973,
+  "paired_fights": 2048,
+  "gain": true
+ }
+}

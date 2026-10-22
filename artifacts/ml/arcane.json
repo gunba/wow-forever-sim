@@ -1,0 +1,784 @@
+{
+ "key": "arcane",
+ "build": "Arcane",
+ "race": "Gnome",
+ "class": "",
+ "published": {
+  "talents": "0502205013100311531-03-05350002",
+  "dps": 696.8624728471041,
+  "se": 0.7384751113788486,
+  "benchmark_dps": 697.722216900724
+ },
+ "learned": {
+  "talents": "0502205013100311531-03-05350002",
+  "dps": 809.0456518381834,
+  "vs_published": 112.18317899107933,
+  "vs_published_se": 0.5650075463634392,
+  "published_talents_dps": 809.0456518381834,
+  "published_talents_vs_published": 112.18317899107933,
+  "published_talents_vs_published_se": 0.5650075463634392
+ },
+ "talent_changes": [],
+ "fights": 4096,
+ "training": {
+  "stop": "budget",
+  "train_minutes": 9.9,
+  "minutes": 10.2,
+  "decisions": 220200960,
+  "fights": 1191711,
+  "builds_seen": 36983,
+  "decisions_per_fight": 666.4287109375,
+  "best_decisions": 212860928
+ },
+ "actions": {
+  "fights": 1024,
+  "apl_talents": "0502205013100311531-03-05350002",
+  "policy_talents": "0502205013100311531-03-05350002",
+  "apl": 699.1939653754234,
+  "policy": 807.6191148757935,
+  "diff": 108.42514950037003,
+  "diff_se": 1.1383648748000805,
+  "agreement": 0.7090864553100202,
+  "disagreements": [
+   {
+    "apl_would": "cast:Arcane Blast",
+    "policy_did": "cast:Arcane Wrath",
+    "per_fight": 19.028
+   },
+   {
+    "apl_would": "cast:Arcane Blast",
+    "policy_did": "cast:Arcane Missiles",
+    "per_fight": 12.846
+   },
+   {
+    "apl_would": "cast:Arcane Missiles",
+    "policy_did": "cast:Arcane Blast",
+    "per_fight": 2.117
+   },
+   {
+    "apl_would": "cast:Arcane Wrath",
+    "policy_did": "cast:Arcane Blast",
+    "per_fight": 1.076
+   },
+   {
+    "apl_would": "cast:Arcane Blast",
+    "policy_did": "cast:Evocation",
+    "per_fight": 0.968
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Scorch",
+    "per_fight": 0.75
+   },
+   {
+    "apl_would": "cast:Arcane Blast",
+    "policy_did": "cast:Major Mana Potion",
+    "per_fight": 0.647
+   },
+   {
+    "apl_would": "cast:Arcane Missiles",
+    "policy_did": "cast:Scorch",
+    "per_fight": 0.229
+   },
+   {
+    "apl_would": "wait",
+    "policy_did": "cast:Arcane Blast",
+    "per_fight": 0.171
+   },
+   {
+    "apl_would": "cast:Arcane Missiles",
+    "policy_did": "cast:Major Mana Potion",
+    "per_fight": 0.158
+   },
+   {
+    "apl_would": "cast:{ItemID: 8008}",
+    "policy_did": "cast:Arcane Wrath",
+    "per_fight": 0.051
+   },
+   {
+    "apl_would": "cast:Arcane Blast",
+    "policy_did": "cast:{ItemID: 8008}",
+    "per_fight": 0.046
+   },
+   {
+    "apl_would": "cast:Arcane Missiles",
+    "policy_did": "cast:Evocation",
+    "per_fight": 0.03
+   },
+   {
+    "apl_would": "cast:Arcane Wrath",
+    "policy_did": "cast:Arcane Missiles",
+    "per_fight": 0.027
+   },
+   {
+    "apl_would": "cast:{ItemID: 8008}",
+    "policy_did": "cast:Arcane Missiles",
+    "per_fight": 0.026
+   }
+  ],
+  "actions": [
+   {
+    "action": "wait",
+    "apl": 560.953125,
+    "policy": 1.041015625,
+    "apl_execute": 137.169921875,
+    "policy_execute": 0.0390625,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Arcane Blast",
+    "apl": 39.2890625,
+    "policy": 53.0556640625,
+    "apl_execute": 2.7646484375,
+    "policy_execute": 12.1357421875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Arcane Missiles",
+    "apl": 37.4326171875,
+    "policy": 40.3017578125,
+    "apl_execute": 7.685546875,
+    "policy_execute": 8.0205078125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Arcane Wrath",
+    "apl": 19.982421875,
+    "policy": 22.3203125,
+    "apl_execute": 4.7392578125,
+    "policy_execute": 4.01171875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Eureka!",
+    "apl": 3.0,
+    "policy": 3.0,
+    "apl_execute": 1.0,
+    "policy_execute": 1.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Major Mana Potion",
+    "apl": 2.9970703125,
+    "policy": 2.869140625,
+    "apl_execute": 0.9970703125,
+    "policy_execute": 0.8720703125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Arcane Power",
+    "apl": 2.0,
+    "policy": 2.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Presence of Mind",
+    "apl": 2.0,
+    "policy": 2.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Evocation",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0048828125,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:{ItemID: 8007}",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:{ItemID: 8008}",
+    "apl": 1.0,
+    "policy": 1.0,
+    "apl_execute": 0.0,
+    "policy_execute": 0.0,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:{ItemID: 5513}",
+    "apl": 1.0,
+    "policy": 0.9921875,
+    "apl_execute": 1.0,
+    "policy_execute": 0.9921875,
+    "apl_rage": 0.0,
+    "policy_rage": 0.0
+   },
+   {
+    "action": "cast:Scorch",
+    "apl": 0.0,
+    "policy": 0.9794921875,
+    "apl_execute": 0.0,
+    "policy_execute": 0.9794921875,
+    "apl_rage": null,
+    "policy_rage": 0.0
+   }
+  ],
+  "cooldowns": [],
+  "timeline": {
+   "apl": [
+    {
+     "t": 0.0,
+     "action": "cast:Arcane Power",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Presence of Mind",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Eureka!",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.5,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 3.0,
+     "action": "cast:Arcane Missiles",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 5.5,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 94,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.0,
+     "action": "cast:Arcane Missiles",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 9.5,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.0,
+     "action": "cast:{ItemID: 8008}",
+     "rage": 0,
+     "mana_pct": 77,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.0,
+     "action": "cast:Arcane Wrath",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 14.5,
+     "action": "cast:Arcane Missiles",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 19.5,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.0,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 22.5,
+     "action": "cast:Major Mana Potion",
+     "rage": 0,
+     "mana_pct": 75,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 22.5,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 98,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 24.0,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 25.5,
+     "action": "cast:Arcane Wrath",
+     "rage": 0,
+     "mana_pct": 90,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 29.0,
+     "action": "cast:Arcane Missiles",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 31.5,
+     "action": "cast:Arcane Missiles",
+     "rage": 0,
+     "mana_pct": 89,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 36.5,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 38.0,
+     "action": "cast:Arcane Missiles",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.5,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 88,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 42.0,
+     "action": "cast:Arcane Missiles",
+     "rage": 0,
+     "mana_pct": 85,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 44.5,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 86,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.0,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 79,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 47.5,
+     "action": "cast:Arcane Missiles",
+     "rage": 0,
+     "mana_pct": 67,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.0,
+     "action": "cast:Arcane Wrath",
+     "rage": 0,
+     "mana_pct": 69,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 53.5,
+     "action": "cast:Arcane Missiles",
+     "rage": 0,
+     "mana_pct": 67,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 56.0,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 69,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 57.5,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 69,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.0,
+     "action": "cast:Arcane Missiles",
+     "rage": 0,
+     "mana_pct": 65,
+     "energy": 0,
+     "combo": 0
+    }
+   ],
+   "policy": [
+    {
+     "t": 0.0,
+     "action": "cast:Arcane Power",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Presence of Mind",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Eureka!",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 0.0,
+     "action": "cast:Arcane Wrath",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 1.5,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 96,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 3.0,
+     "action": "cast:Arcane Missiles",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 5.5,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 7.0,
+     "action": "cast:Arcane Missiles",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 9.5,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.0,
+     "action": "cast:{ItemID: 8008}",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 11.0,
+     "action": "cast:Arcane Wrath",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 14.5,
+     "action": "cast:Arcane Missiles",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 19.5,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 21.0,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 87,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 22.5,
+     "action": "cast:Arcane Wrath",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 26.0,
+     "action": "cast:Arcane Missiles",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 31.0,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 32.5,
+     "action": "cast:Arcane Wrath",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 36.0,
+     "action": "cast:Arcane Missiles",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 38.5,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 40.0,
+     "action": "cast:Arcane Missiles",
+     "rage": 0,
+     "mana_pct": 83,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 42.5,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 84,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 44.0,
+     "action": "cast:Arcane Missiles",
+     "rage": 0,
+     "mana_pct": 81,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 46.5,
+     "action": "cast:Arcane Wrath",
+     "rage": 0,
+     "mana_pct": 82,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.0,
+     "action": "cast:Major Mana Potion",
+     "rage": 0,
+     "mana_pct": 80,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 50.0,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 100,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 51.5,
+     "action": "cast:Arcane Missiles",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 54.0,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 93,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 55.5,
+     "action": "cast:Arcane Missiles",
+     "rage": 0,
+     "mana_pct": 92,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 58.0,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 95,
+     "energy": 0,
+     "combo": 0
+    },
+    {
+     "t": 59.5,
+     "action": "cast:Arcane Blast",
+     "rage": 0,
+     "mana_pct": 91,
+     "energy": 0,
+     "combo": 0
+    }
+   ]
+  }
+ },
+ "native": {
+  "fights": 2048,
+  "published": 697.2463727891445,
+  "network": 809.2149258255959,
+  "network_vs_published": 111.96855303645134,
+  "network_vs_published_se": 0.8109772263170044
+ },
+ "profile": {
+  "id": "arcane__gnome__learned",
+  "dps": 776.8495576142334,
+  "se": 0.6896651125629525,
+  "published_dps": 697.722216900724,
+  "published_se": 0.6627513322777353,
+  "talents": "0502205013100311531-03-05350002",
+  "talent_source": "learned",
+  "overrides": [
+   "cast:Evocation if Arcane Missiles:cost >= 0.21 and not Arcane Wrath:ready",
+   "cast:Arcane Missiles if self:Clearcasting:remaining >= 15.00s and elapsed <= 0.90",
+   "cast:Major Mana Potion if mana_frac <= 0.77 and elapsed >= 0.07",
+   "cast:{ItemID: 8008} if mana_frac <= 0.73 and self:Arcane Blast:remaining >= 5.00s",
+   "cast:Arcane Blast if Arcane Missiles:cost >= 1.16 and not Arcane Wrath:ready",
+   "cast:Arcane Wrath if Arcane Missiles:cost >= 0.07 and self:Arcane Blast:active",
+   "cast:Arcane Wrath if self:Arcane Blast:stacks >= 3.00 and Arcane Missiles:cost >= 0.06",
+   "cast:Arcane Missiles if self:Clearcasting:remaining >= 15.00s and not execute25",
+   "cast:Arcane Wrath if self:Eureka!:remaining >= 8.00s and Arcane Missiles:cost >= 0.07",
+   "cast:Arcane Blast if elapsed >= 0.69 and not self:Missile Barrage:active",
+   "cast:Scorch if not Arcane Missiles:ready and not Arcane Wrath:ready"
+  ],
+  "removed": [],
+  "paired_vs_published": 78.96353203058243,
+  "paired_vs_published_se": 0.8841652353693217,
+  "paired_fights": 2048,
+  "gain": true
+ }
+}
