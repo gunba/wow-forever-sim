@@ -302,6 +302,7 @@ def main():
     ap.add_argument("--fights", type=int, default=256, help="fights per data round")
     ap.add_argument("--rounds", type=int, default=3, help="data rounds (1 = the network only; more add DAgger rounds)")
     ap.add_argument("--max-entries", type=int, default=16)
+    ap.add_argument("--min-gain", type=float, default=0.0005, help="residual mode: stop proposing below this share of the total preference")
     ap.add_argument("--alpha", type=float, default=1.0, help="scratch mode: cost of firing where the network did not")
     ap.add_argument("--min-uses", type=float, default=0.5, help="scratch mode: actions used this often a fight get an entry")
     ap.add_argument("--samples", type=int, default=400_000, help="decisions kept for induction")
@@ -356,7 +357,7 @@ def main():
             else:
                 act = dl.act(obs, mask, tch if residual else None)
             if keep:
-                Xs.append(obs[live].copy()); Ms.append(mask[live].copy()); Ls.append(lg[live].astype(np.float16)); Ts.append(tch[live].astype(np.int32))
+                Xs.append(obs[live].copy()); Ms.append(mask[live].copy()); Ls.append(np.maximum(lg[live], -1e4)); Ts.append(tch[live].astype(np.int32))
             obs, mask, tch, _, done, info = ev.step(act)
             new = (done == 1) & np.isnan(dps)
             dps[new] = info[new, 0]
@@ -390,7 +391,7 @@ def main():
             Lf[:, wait] = Lf[:, wv].max(1)
             Tb = np.where(np.isin(Ta, list(waits)), wait, Ta)
             cand = sorted({int(v) for v in range(T, T + K)} - (waits - {wait}))
-            return induce_residual(Xa, Ma, Lf, Tb, cand, usable, wait, a.max_entries, kinds=kinds)
+            return induce_residual(Xa, Ma, Lf, Tb, cand, usable, wait, a.max_entries, kinds=kinds, min_gain_frac=a.min_gain)
         srt = np.sort(La.astype(np.float32), -1)
         weight = 0.1 + np.clip(srt[:, -1] - srt[:, -2], 0, 5)
         cand = sorted({int(v) for v in np.unique(Ya)} - {wait})
@@ -432,10 +433,19 @@ def main():
     print(f"published {pub.mean():.1f}; compiled APL {syn.mean():.1f} ({paired(syn, pub)[0]:+.2f} ± {paired(syn, pub)[1]:.2f}); "
           f"same list here {lst.mean():.1f}; network {net_dps.mean():.1f} ({paired(net_dps, pub)[0]:+.2f})", flush=True)
 
-    # Tuning on paired fights: nudge each threshold, then drop entries that do nothing.
-    best_dl = dl
+    # Selection on paired fights: the induced entries in order, each kept only if it raises DPS; then thresholds.
     TF, TS = max(512, F // 2), 9_000_000
-    cur = apl_dps(compile_apl(best_dl, spec, base_rotation), TF, TS).mean()
+    if residual:
+        best_dl = DecisionList([], wait)
+        cur = apl_dps(base_rotation, TF, TS).mean()
+        for e in dl.entries:
+            trial = DecisionList(best_dl.entries + [e], wait)
+            m = apl_dps(compile_apl(trial, spec, base_rotation), TF, TS).mean()
+            if m > cur + 0.3:
+                best_dl, cur = trial, m
+    else:
+        best_dl = dl
+        cur = apl_dps(compile_apl(best_dl, spec, base_rotation), TF, TS).mean()
     for _ in range(a.tune_rounds):
         for e in range(len(best_dl.entries)):
             act_, conds = best_dl.entries[e]
@@ -452,11 +462,6 @@ def main():
                     m = apl_dps(compile_apl(cdl, spec, base_rotation), TF, TS).mean()
                     if m > cur + 0.3:
                         best_dl, cur, conds = cdl, m, c2
-        for e in reversed(range(len(best_dl.entries))):
-            cdl = DecisionList([x for k, x in enumerate(best_dl.entries) if k != e], wait)
-            m = apl_dps(compile_apl(cdl, spec, base_rotation), TF, TS).mean()
-            if m >= cur - 0.2:
-                best_dl, cur = cdl, max(cur, m)
     best_apl = compile_apl(best_dl, spec, base_rotation)
     tuned = apl_dps(best_apl, F, S)
     result = {"build": a.build, "race": a.race, "mode": a.mode, "fights": F, "published": float(pub.mean()),
