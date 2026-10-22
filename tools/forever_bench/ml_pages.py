@@ -16,6 +16,7 @@ thead th.ml{text-align:center;min-width:0}
 .mlpage table{width:auto;min-width:40%}.mlpage td,.mlpage th{text-align:left}.mlpage td.n{text-align:right}
 .mlpage .cols{display:flex;gap:3rem;flex-wrap:wrap}.mlpage .cols>div{flex:1;min-width:320px}
 .mlpage .big{font-size:1.4rem}.pos{color:#9be3b0}.neg{color:#f2a3a3}
+.ml.nogain{background:#26242e;color:#a7a2b8}
 """
 
 CAVEATS = (
@@ -41,6 +42,12 @@ def header_cell():
     return '<th rowspan="2" scope="col" class="ml" title="Rotation and talents learned in the simulator, at the build\'s best race">Learned<br><span>best race</span></th>'
 
 
+def gained(r):
+    """The learner beat the published rotation by at least two standard errors."""
+    L = r["learned"]
+    return L["vs_published"] > 2 * L["vs_published_se"]
+
+
 def cell(key, ml):
     r = ml.get(key)
     if r is None:
@@ -49,6 +56,10 @@ def cell(key, ml):
     title = (f'Learned rotation and talents on {r["race"]}: {L["dps"]:.1f} DPS; '
              f'{L["vs_published"]:+.1f} ± {L["vs_published_se"]:.1f} against the published rotation and talents on the same '
              f'{r["fights"]:,} fights. Not an APL.')
+    if not gained(r):
+        title += " The learner did not beat the published rotation here."
+        return (f'<td class="ml nogain"><a href="ml/{escape(key)}.html" title="{escape(title)}">no gain</a>'
+                f'<br><span>{escape(r["race"])}</span></td>')
     return (f'<td class="ml"><a href="ml/{escape(key)}.html" title="{escape(title)}">{L["dps"]:.0f}</a>'
             f'<br><span>{escape(r["race"])}</span></td>')
 
@@ -88,6 +99,8 @@ def page(r, label, class_name, simulator, css):
 <h1>{escape(class_name)} · {escape(label)} · learned ({escape(r["race"])})</h1>
 <p class="big">{L["dps"]:.1f} DPS, {_signed(L["vs_published"], L["vs_published_se"])} ({gain_pct:+.1f}%) against the published
 rotation and talents ({P["dps"]:.1f}) on the same {r["fights"]:,} fights.</p>
+{"" if gained(r) else "<p><strong>The learner did not beat the published rotation for this build:</strong> its best policy is "
+  "within noise of the APL or below it, so the published setup stands as the best known.</p>"}
 <p>With the published talents the learned rotation scores {L["published_talents_dps"]:.1f} ({_signed(rot_gain, L["published_talents_vs_published_se"])});
 the rest comes from the talents below. <a href="../{escape(simulator)}/?profile={escape(r["key"])}__{escape(race_file)}">Open the published
 {escape(r["race"])} setup</a> · <a href="{escape(r["key"])}.json">Report (JSON)</a></p>
