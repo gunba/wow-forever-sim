@@ -91,7 +91,7 @@ rotation and talents ({P["dps"]:.1f}) on the same {r["fights"]:,} fights.</p>
 <p>With the published talents the learned rotation scores {L["published_talents_dps"]:.1f} ({_signed(rot_gain, L["published_talents_vs_published_se"])});
 the rest comes from the talents below. <a href="../{escape(simulator)}/?profile={escape(r["key"])}__{escape(race_file)}">Open the published
 {escape(r["race"])} setup</a> · <a href="{escape(r["key"])}.json">Report (JSON)</a></p>
-<p class="note">{escape(CAVEATS)}</p>
+<p class="note">{escape(CAVEATS)} <a href="../learned-rotations.md">How these were made</a></p>
 <h2>Talents</h2>
 <p>Published <code>{escape(P["talents"])}</code><br>Learned <code>{escape(L["talents"])}</code></p>"""]
     if r["talent_changes"]:
