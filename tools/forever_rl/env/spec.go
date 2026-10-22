@@ -302,7 +302,9 @@ func (s *Spec) deepBuild(rng *rand.Rand, tree int) []int {
 // discover builds the published build and random ones, and keeps every castable APL spell (top rank of each) and
 // every aura with a duration on the player or the target.
 func (s *Spec) discover() error {
-	rng := rand.New(rand.NewSource(s.Cfg.Seed + 7))
+	// A fixed seed: every environment of a build gets the same spaces whatever its own seed (evaluation environments
+	// use other seeds). It is the seed training environments used before (1,000,011 + 7), so their models still fit.
+	rng := rand.New(rand.NewSource(1_000_018))
 	builds := [][]int{s.basePoints}
 	for i := 0; i < s.Cfg.DiscoverBuilds; i++ {
 		if i%4 == 3 {
