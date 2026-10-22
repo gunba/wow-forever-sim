@@ -62,11 +62,9 @@ try {
 	for (const [, id] of cases) {
 		const profile = bundle.profiles.find(profile => profile.id === id);
 		assert.ok(profile, `missing ${id}`);
-		// A learned profile is its own build: it has its own talents and rotation.
-		const build = profile.learned ? `${profile.key} (learned)` : profile.key;
-		if (!simulatedBuilds.has(build) || profile.tankMetrics || process.env.ONLY_PROFILE) {
+		if (!simulatedBuilds.has(profile.key) || profile.tankMetrics || process.env.ONLY_PROFILE) {
 			replayProfileIds.add(id);
-			simulatedBuilds.add(build);
+			simulatedBuilds.add(profile.key);
 		}
 	}
 	const workers = Math.min(cases.length, availableParallelism());
