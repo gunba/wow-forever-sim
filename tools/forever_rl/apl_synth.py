@@ -214,8 +214,16 @@ def describe_item(item, spec):
             f = feature(c["cmp"]["lhs"])
             if f is None:
                 return None
-            val = c["cmp"]["rhs"]["const"]["val"]
-            x = float(val.rstrip("s"))
+            val = c["cmp"]["rhs"]["const"]["val"].strip()
+            try:
+                if val.endswith("%"):
+                    x = float(val[:-1]) / 100
+                elif val.endswith("ms"):
+                    x = float(val[:-2]) / 1000
+                else:
+                    x = float(val.rstrip("s"))
+            except ValueError:
+                return None
             unit = "s" if fa[f]["kind"] == "time" else ""
             return f"{fnames[f]} {'>=' if c['cmp']['op'] == 'OpGe' else '<='} {x:.2f}{unit}"
         f = feature(c)
