@@ -184,6 +184,19 @@ def compile_apl(dl, spec, base_rotation=None, removed=()):
     return {"type": "TypeAPL", "priorityList": items}
 
 
+_NAMES = None
+
+
+def _db_names():
+    """Spell and item names from the simulator's database, for entries that are not agent actions (ranked spells)."""
+    global _NAMES
+    if _NAMES is None:
+        db = json.load(open(Path(__file__).resolve().parents[2] / "assets/database/db.json"))
+        _NAMES = ({x["id"]: x["name"] for x in db.get("spellIcons", []) if x.get("name")},
+                  {x["id"]: x["name"] for x in db.get("itemIcons", []) if x.get("name")})
+    return _NAMES
+
+
 def describe_item(item, spec):
     """An APL entry in words: its action as the agent knows it and its condition, in the observation features' terms
     where the condition is one compile_apl writes; other conditions are only marked."""
@@ -194,6 +207,12 @@ def describe_item(item, spec):
         if raw is not None and raw == act:
             name = spec["actionNames"][spec["talents"] + k]
             break
+    if name is None and "castSpell" in act:
+        sid = act["castSpell"].get("spellId", {})
+        names = _db_names()
+        label = names[0].get(sid.get("spellId")) or names[1].get(sid.get("itemId"))
+        if label:
+            name = f"cast:{label}" + (f" (rank {sid['rank']})" if sid.get("rank") else "")
     if name is None:
         name = "wait" if act == {"wait": {"duration": {"const": {"val": "0.05s"}}}} else json.dumps(act, separators=(",", ":"))[:160]
     if cond is None:
