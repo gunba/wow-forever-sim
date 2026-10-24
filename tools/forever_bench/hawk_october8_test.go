@@ -227,15 +227,12 @@ func TestHawkOctober8DynamicRangedSpeed(t *testing.T) {
 	}
 }
 
-func TestHawkOctober8AssaultCalibrationAndIsolation(t *testing.T) {
+func TestHawkLogModelAndIsolation(t *testing.T) {
 	sim, h := hawkFixture(map[string]int{"summonHawk": 1, "unleashedFury": 5, "ferocity": 5, "improvedTracking": 5, "resourcefulness": 2})
 	h.DistanceFromTarget = 30
 	target := h.CurrentTarget
 	guardian := h.Hawks[0]
 	assault := guardian.AutoAttacks.MHAuto()
-	table := guardian.AttackTables[target.UnitIndex][assault.CastType]
-	table.BaseMissChance, table.BaseDodgeChance, table.BaseGlanceChance = 0, 0, 0
-	assault.BonusCritRating = -10000
 	ownerProcs, victimProcs := 0, 0
 	trigger := h.GetAura("Resourcefulness Trigger")
 	original := trigger.OnSpellHitDealt
@@ -253,34 +250,55 @@ func TestHawkOctober8AssaultCalibrationAndIsolation(t *testing.T) {
 		}
 		originalWisdom(a, sim, spell, result)
 	}
+	h.PseudoStats.DamageDealtMultiplier *= 1.5
 	h.SummonHawk.ApplyEffects(sim, target, h.SummonHawk)
 	advanceHawks(t, sim, time.Second)
-	want := .35 * 108 * 1.15 // UF once; rank 60 is an extrapolation.
-	if got := assault.SpellMetrics[target.UnitIndex].TotalDamage; math.Abs(got-want) > 1e-9 {
-		t.Fatalf("guardian dealt %g, want calibrated %g", got, want)
+
+	// The owner's ranged attack power (80%), half its crit plus Ferocity, its hit, and its damage multipliers as summoned.
+	owner := h.GetStats()
+	if math.Abs(guardian.GetStat(stats.AttackPower)-0.8*owner[stats.RangedAttackPower]) > 1e-9 ||
+		math.Abs(guardian.GetStat(stats.MeleeCrit)-(0.5*owner[stats.MeleeCrit]+10*core.CritRatingPerCritChance)) > 1e-9 ||
+		guardian.GetStat(stats.MeleeHit) != owner[stats.MeleeHit] || guardian.GetStat(stats.Agility) != 0 ||
+		math.Abs(guardian.PseudoStats.DamageDealtMultiplier/h.PseudoStats.DamageDealtMultiplier-1) > 1e-9 {
+		t.Fatalf("hawk stats %v, multiplier %g; owner %v, multiplier %g", guardian.GetStats(), guardian.PseudoStats.DamageDealtMultiplier,
+			owner, h.PseudoStats.DamageDealtMultiplier)
 	}
+	// The owner's stats keep reaching it while it is up.
+	h.AddStatsDynamic(sim, stats.Stats{stats.RangedAttackPower: 1000})
+	if got := guardian.GetStat(stats.AttackPower); math.Abs(got-0.8*h.GetStat(stats.RangedAttackPower)) > 1e-9 {
+		t.Fatalf("hawk attack power %g did not follow the owner's ranged attack power %g", got, h.GetStat(stats.RangedAttackPower))
+	}
+	// A swing before armor and multipliers: 0.0815 of a level-60 creature's DPS over 2.5 s, a third either side, plus
+	// 2.5 s of attack power at 112 a point of DPS, the log fit stated before Unleashed Fury 5/5.
+	weapon := guardian.AutoAttacks.MH()
+	average := 0.0815 * 60.45291519165039 * 2.5 / 1.15
+	if math.Abs(weapon.BaseDamageMin-average*2/3) > 1e-9 || math.Abs(weapon.BaseDamageMax-average*4/3) > 1e-9 ||
+		math.Abs(weapon.CalculateAverageWeaponDamage(1000)-(average+2.5*1000/(112*1.15))) > 1e-9 ||
+		math.Abs(assault.DamageMultiplier-1.15) > 1e-9 {
+		t.Fatal("hawk swing differs from the log fit")
+	}
+
 	beforeParent := h.SummonHawk.SpellMetrics[target.UnitIndex].TotalDamage
-	h.PseudoStats.DamageDealtMultiplier *= 3
-	h.AddStatsDynamic(sim, stats.Stats{stats.RangedAttackPower: 10000, stats.AttackPower: 10000, stats.MeleeCrit: 10000, stats.SpellDamage: 10000})
-	assault.ApplyEffects(sim, target, assault)
-	if got := assault.SpellMetrics[target.UnitIndex].TotalDamage; math.Abs(got-2*want) > 1e-9 ||
-		guardian.GetStat(stats.AttackPower) != 0 || guardian.GetStat(stats.Agility) != 0 || guardian.GetStat(stats.SpellDamage) != 0 ||
-		math.Abs(guardian.GetStat(stats.MeleeCrit)-1.5*core.CritRatingPerCritChance) > 1e-9 {
-		t.Fatal("guardian inherited owner damage, power, Ferocity or crit instead of its own calibrated state")
+	for i := 0; i < 20; i++ {
+		assault.ApplyEffects(sim, target, assault)
 	}
 	if ownerProcs != 0 || victimProcs != 0 || assault.ProcMask != core.ProcMaskEmpty || !assault.Flags.Matches(core.SpellFlagNoOnDamageDealt) ||
 		h.SummonHawk.SpellMetrics[target.UnitIndex].TotalDamage != beforeParent || len(h.SummonHawk.Dots()) != 0 {
 		t.Fatal("guardian damage was attributed to the owner or created a proc/DoT opportunity")
 	}
 	sim.Cleanup()
+	if math.Abs(guardian.PseudoStats.DamageDealtMultiplier-1) > 1e-9 || len(h.DynamicStatsPets) != 0 {
+		t.Fatal("the dismissed hawk kept the owner's multiplier or its stat subscription")
+	}
 	metrics := h.GetMetricsProto()
 	if len(metrics.Pets) != 2 || metrics.Pets[0].Name != "Hawk 1" || len(metrics.Pets[0].Actions) == 0 || metrics.Pets[0].Dps.Avg <= 0 {
 		t.Fatal("guardian assaults were not emitted as real pet metrics")
 	}
 }
 
-func TestHawkOctober8EffectiveCritWithBossWhiteTable(t *testing.T) {
-	sim, h := hawkFixture(nil)
+func TestHawkCritsOnTheBossWhiteTable(t *testing.T) {
+	// Ferocity 5/5 gives the ungeared fixture's hawk crit to spare past the boss's suppression.
+	sim, h := hawkFixture(map[string]int{"summonHawk": 1, "ferocity": 5})
 	h.DistanceFromTarget = 30
 	target := h.CurrentTarget
 	target.Level = 63
@@ -288,20 +306,23 @@ func TestHawkOctober8EffectiveCritWithBossWhiteTable(t *testing.T) {
 	assault := guardian.AutoAttacks.MHAuto()
 	table := core.NewAttackTable(&guardian.Unit, target, nil)
 	guardian.AttackTables[target.UnitIndex][assault.CastType] = table
-	originalSuppression := table.MeleeCritSuppression
-	genericTable := core.NewAttackTable(&h.Unit, target, nil)
-	genericCrit := h.SummonHawk.PhysicalCritChance(genericTable)
 	h.SummonHawk.ApplyEffects(sim, target, h.SummonHawk)
 	advanceHawks(t, sim, time.Second)
-	for i := 0; i < 2000; i++ {
+	const swings = 4000
+	for i := 0; i < swings; i++ {
 		assault.ApplyEffects(sim, target, assault)
 	}
 	metrics := assault.SpellMetrics[target.UnitIndex]
-	if metrics.Crits == 0 || metrics.Crits > 100 || metrics.Glances == 0 || metrics.Misses == 0 || metrics.Dodges == 0 {
-		t.Fatalf("effective crit or standard boss white outcomes were lost: %+v", metrics)
+	if metrics.Glances == 0 || metrics.Misses == 0 || metrics.Dodges == 0 {
+		t.Fatalf("the boss white table was lost: %+v", metrics)
 	}
-	if originalSuppression <= 0 || table.MeleeCritSuppression != originalSuppression || h.SummonHawk.PhysicalCritChance(genericTable) != genericCrit {
-		t.Fatal("Hawk's local effective-crit scenario changed a shared attack table")
+	// Crit is the hawk's own (half the owner's), less the boss's suppression.
+	p := assault.PhysicalCritChance(table)
+	if p <= 0 {
+		t.Fatalf("hawk crit chance %g against the boss", p)
+	}
+	if got := float64(metrics.Crits) / swings; math.Abs(got-p) > 4*math.Sqrt(p*(1-p)/swings) {
+		t.Fatalf("hawk crit share %g, want %g", got, p)
 	}
 }
 
