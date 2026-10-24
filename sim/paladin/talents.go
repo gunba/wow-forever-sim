@@ -191,8 +191,18 @@ func (paladin *Paladin) applyReckoning() {
 	// longer reset the swing timer. Only the block trigger keeps the 1.5 s internal cooldown.
 	charges := int32(0)
 	paladin.RegisterResetEffect(func(_ *core.Simulation) { charges = 0 })
-	store := func(_ *core.Simulation, _ *core.Spell, _ *core.SpellResult) {
+	// The game keeps the charges on the server: the proc spell (20178) adds extra attacks and has no aura. This aura
+	// only shows the stored charges in the buffs table and the timeline; nothing reads it.
+	shown := paladin.RegisterAura(core.Aura{
+		Label:     "Reckoning",
+		ActionID:  procID,
+		Duration:  core.NeverExpires,
+		MaxStacks: 4,
+	})
+	store := func(sim *core.Simulation, _ *core.Spell, _ *core.SpellResult) {
 		charges = min(charges+1, 4)
+		shown.Activate(sim)
+		shown.SetStacks(sim, charges)
 	}
 	core.MakeProcTriggerAura(&paladin.Unit, core.ProcTrigger{
 		Name:       "Reckoning Crit Trigger",
@@ -219,6 +229,7 @@ func (paladin *Paladin) applyReckoning() {
 			}
 			n := charges
 			charges = 0
+			shown.Deactivate(sim)
 			paladin.AutoAttacks.ExtraMHAttack(sim, n, procID, spell.ActionID)
 		},
 	}))
