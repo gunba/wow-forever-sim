@@ -1400,8 +1400,12 @@ func applyForeverElixirConsumes(character *Character, consumes *proto.Consumes) 
 }
 
 // Forever's Scroll of Imbue weapon scrolls (spell effect 360) sit beside a stone or oil on the weapon. Precision is 14
-// crit rating (1% at level 60) and Accuracy 5 hit rating (0.5%); Forever's ratings pay attacks and spells alike.
+// crit rating (1% at level 60) and Accuracy 5 hit rating (0.5%); Forever's ratings pay attacks and spells alike. Both
+// items are Mage-only (ItemSparse AllowableClass 128, items 277494 and 277502), so other classes get nothing.
 func applyWeaponScrollConsumes(character *Character, consumes *proto.Consumes) {
+	if character.Class != proto.Class_ClassMage {
+		return
+	}
 	apply := func(scroll proto.WeaponScroll) {
 		switch scroll {
 		case proto.WeaponScroll_ScrollOfImbuePrecision:

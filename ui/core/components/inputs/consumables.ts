@@ -903,15 +903,19 @@ export const WEAPON_SCROLL_CONFIG: ConsumableStatOption<WeaponScroll>[] = [
 	{ config: ScrollOfImbuePrecision, stats: [] },
 	{ config: ScrollOfImbueAccuracy, stats: [] },
 ];
+// Both scrolls are Mage-only items (AllowableClass 128).
 export const makeMainHandScrollInput = makeConsumeInputFactory({
 	consumesFieldName: 'mainHandScroll',
-	showWhen: player => player.sim.getRuleset() === Ruleset.RulesetForever && !!player.getGear().getEquippedItem(ItemSlot.ItemSlotMainHand),
+	showWhen: player =>
+		player.sim.getRuleset() === Ruleset.RulesetForever &&
+		player.getClass() === Class.ClassMage &&
+		!!player.getGear().getEquippedItem(ItemSlot.ItemSlotMainHand),
 });
 export const makeOffHandScrollInput = makeConsumeInputFactory({
 	consumesFieldName: 'offHandScroll',
 	showWhen: player => {
 		const weapon = player.getGear().getEquippedItem(ItemSlot.ItemSlotOffHand);
-		return player.sim.getRuleset() === Ruleset.RulesetForever && !!weapon && isWeapon(weapon.item.weaponType);
+		return player.sim.getRuleset() === Ruleset.RulesetForever && player.getClass() === Class.ClassMage && !!weapon && isWeapon(weapon.item.weaponType);
 	},
 });
 
