@@ -29,6 +29,14 @@ func ForeverPetInheritance(owner stats.Stats, casterOwner bool) stats.Stats {
 		stats.MeleeCrit: owner[stats.MeleeCrit],
 		stats.SpellCrit: owner[stats.SpellCrit],
 	}
+	// Pet hit, fixed in game on 20 October 2026 (ClassicWoWCommunity/forever-bugs#394): a hunter's pet takes the
+	// hunter's ranged hit as melee hit and 17/8 of it as spell hit; a warlock's demon takes the warlock's spell hit as
+	// spell hit and 8/17 of it as melee hit. Ranged-only hit (scopes) is not in the owner's stats and is not passed on.
+	if casterOwner {
+		inherited[stats.MeleeHit] = owner[stats.SpellHit] / SpellHitRatingPerHitChance * 8 / 17 * MeleeHitRatingPerHitChance
+	} else {
+		inherited[stats.SpellHit] = owner[stats.MeleeHit] / MeleeHitRatingPerHitChance * 17 / 8 * SpellHitRatingPerHitChance
+	}
 	if !casterOwner {
 		// Hunter pets benefit from the owner's Expertise since client 1.60.1.70425 (October 15 notes).
 		inherited[stats.Expertise] = owner[stats.Expertise]

@@ -48,12 +48,13 @@ func TestForeverPetInheritanceAndDynamicPowerChoice(t *testing.T) {
 	hunter := core.ForeverPetInheritance(owner, false)
 	if hunter[stats.Health] != 200 || hunter[stats.Armor] != 150 ||
 		hunter[stats.AttackPower] != 50 || hunter[stats.SpellPower] != 0 ||
-		hunter[stats.MeleeHit] != 3 || hunter[stats.SpellHit] != 4 ||
+		hunter[stats.MeleeHit] != 3 || hunter[stats.SpellHit] != 3*17.0/8 ||
 		hunter[stats.MeleeCrit] != 11 || hunter[stats.SpellCrit] != 12 {
 		t.Fatalf("hunter inheritance: %v", hunter)
 	}
 	warlock := core.ForeverPetInheritance(owner, true)
-	if warlock[stats.SpellPower] != 40 || warlock[stats.AttackPower] != 50 {
+	if warlock[stats.SpellPower] != 40 || warlock[stats.AttackPower] != 50 ||
+		warlock[stats.SpellHit] != 4 || math.Abs(warlock[stats.MeleeHit]-4*8.0/17) > 1e-12 {
 		t.Fatalf("warlock inheritance: %v", warlock)
 	}
 	owner[stats.RangedAttackPower] = 250
