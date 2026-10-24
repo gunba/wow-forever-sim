@@ -133,6 +133,9 @@ type Spell struct {
 	// Optional field. Calculates expected average damage.
 	expectedInitialDamageInternal ExpectedDamageCalculator
 	expectedTickDamageInternal    ExpectedDamageCalculator
+	// Set while an expected-damage calculator runs: the partial resist is then averaged, not rolled, so an APL that
+	// reads expected damage draws no random numbers (finalizeExpectedDamage applies the average).
+	expecting bool
 
 	// The current or most recent cast data.
 	CurCast    Cast
@@ -638,17 +641,23 @@ func (spell *Spell) finalizeExpectedDamage(result *SpellResult) {
 	result.inUse = false
 }
 func (spell *Spell) ExpectedInitialDamage(sim *Simulation, target *Unit) float64 {
+	spell.expecting = true
 	result := spell.expectedInitialDamageInternal(sim, target, spell, false)
+	spell.expecting = false
 	spell.finalizeExpectedDamage(result)
 	return result.Damage
 }
 func (spell *Spell) ExpectedTickDamage(sim *Simulation, target *Unit) float64 {
+	spell.expecting = true
 	result := spell.expectedTickDamageInternal(sim, target, spell, false)
+	spell.expecting = false
 	spell.finalizeExpectedDamage(result)
 	return result.Damage
 }
 func (spell *Spell) ExpectedTickDamageFromCurrentSnapshot(sim *Simulation, target *Unit) float64 {
+	spell.expecting = true
 	result := spell.expectedTickDamageInternal(sim, target, spell, true)
+	spell.expecting = false
 	spell.finalizeExpectedDamage(result)
 	return result.Damage
 }

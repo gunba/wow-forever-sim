@@ -34,7 +34,10 @@ func (spell *Spell) ResistanceMultiplier(sim *Simulation, isPeriodic bool, attac
 		}
 	}
 
-	// Magical resistance.
+	// Magical resistance. An expected-damage call takes no roll: finalizeExpectedDamage applies the average resist.
+	if spell.expecting {
+		return 1, OutcomeEmpty
+	}
 	if attackTable.Attacker.Env != nil && attackTable.Attacker.Env.IsForever() {
 		if spell.Flags.Matches(SpellFlagNoPartialResist) {
 			return 1, OutcomeEmpty
