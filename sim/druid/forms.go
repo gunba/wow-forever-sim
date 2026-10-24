@@ -327,6 +327,8 @@ func (druid *Druid) registerBearFormSpell() {
 			if !druid.Env.MeasuringStats && druid.form != Humanoid {
 				druid.CancelShapeshift(sim)
 			}
+			// The shift keeps the fraction of maximum health, taken before the form's Health and Stamina apply.
+			healthFrac := druid.CurrentHealth() / druid.MaxHealth()
 			druid.form = Bear
 			if druid.Env.IsForever() {
 				druid.furorBearEnter(sim)
@@ -344,12 +346,11 @@ func (druid *Druid) registerBearFormSpell() {
 			druid.ApplyDynamicEquipScaling(sim, stats.Armor, BearFormArmorMultiplier)
 			druid.EnableDynamicStatDep(sim, feralApDep)
 
-			// Preserve fraction of max health when shifting. The shift at the start of
-			// every iteration is left out of the metrics, which are compared across threads.
-			healthFrac := druid.CurrentHealth() / druid.MaxHealth()
 			if hotwDep != nil {
 				druid.EnableDynamicStatDep(sim, hotwDep)
 			}
+			// The shift at the start of every iteration is left out of the metrics, which are compared across threads.
+			// Maximum health grows by at least the form's Health, so the gain is positive while the Druid lives.
 			if sim.CurrentTime > 0 {
 				druid.GainHealth(sim, healthFrac*druid.MaxHealth()-druid.CurrentHealth(), healthMetrics)
 			}
