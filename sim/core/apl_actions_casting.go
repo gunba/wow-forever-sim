@@ -262,12 +262,9 @@ func (action *APLActionAutocastOtherCooldowns) Reset(*Simulation) {
 	action.nextReadyMCD = nil
 }
 func (action *APLActionAutocastOtherCooldowns) IsReady(sim *Simulation) bool {
+	// getFirstReadyMCD applies the GCD rule: other cooldowns on a ready GCD, explosives while it runs.
 	action.nextReadyMCD = action.character.getFirstReadyMCD(sim)
-
-	// Explicitly check for GCD because MCDs are usually desired to be cast immediately
-	// before the next spell, rather than immediately after the previous spell. This is
-	// true even for MCDs which do not require the GCD.
-	return action.nextReadyMCD != nil && action.character.GCD.IsReady(sim)
+	return action.nextReadyMCD != nil
 }
 func (action *APLActionAutocastOtherCooldowns) Execute(sim *Simulation) {
 	action.nextReadyMCD.tryActivateHelper(sim, action.character)

@@ -316,13 +316,16 @@ func (mcdm *majorCooldownManager) GetMajorCooldownIDs() []*proto.ActionID {
 	return ids
 }
 
+// The first ready cooldown, by ready time and then priority, whose own conditions pass and that may fire at this
+// point of the GCD (MayFireNow).
 func (mcdm *majorCooldownManager) getFirstReadyMCD(sim *Simulation) *MajorCooldown {
 	if sim.CurrentTime < mcdm.minReady {
 		return nil
 	}
 
+	gcdLeft := mcdm.character.GCD.TimeToReady(sim)
 	for _, mcd := range mcdm.majorCooldowns {
-		if !mcd.IsReady(sim) {
+		if !mcd.IsReady(sim) || !mcd.MayFireNow(gcdLeft) {
 			continue
 		}
 		if mcd.shouldActivateHelper(sim, mcdm.character) {
@@ -331,6 +334,19 @@ func (mcdm *majorCooldownManager) getFirstReadyMCD(sim *Simulation) *MajorCooldo
 	}
 
 	return nil
+}
+
+// MayFireNow reports whether autocast may fire the cooldown with gcdLeft of the GCD to run. Cooldowns go just before
+// the next spell, on a ready GCD, so their durations are not partly spent waiting for it. Explosives are off the GCD
+// but have a cast time, so they go while the GCD runs instead; one whose cast fits in the shortest GCD also waits until
+// what is left of the GCD covers its cast, so that it never delays the next spell. A longer one goes whenever the GCD
+// runs (wowsims/forever #621, #627).
+func (mcd *MajorCooldown) MayFireNow(gcdLeft time.Duration) bool {
+	if !mcd.Type.Matches(CooldownTypeExplosive) {
+		return gcdLeft == 0
+	}
+	castTime := mcd.Spell.CastTime()
+	return gcdLeft > 0 && (gcdLeft >= castTime || castTime > GCDMin)
 }
 
 func (mcdm *majorCooldownManager) TryUseCooldowns(sim *Simulation) {

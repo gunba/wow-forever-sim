@@ -333,16 +333,15 @@ func (e *Env) policy(sim *core.Simulation, ready []int) int {
 		}
 	}
 	// The teacher's choice: its first ready entry, with the agent-owned automatic cooldowns at its Autocast Other
-	// Cooldowns entry under the automatic rules (a ready cooldown that should activate, on a ready global cooldown).
+	// Cooldowns entry under the automatic rules (a ready cooldown that should activate and may fire at this point of the
+	// GCD: MajorCooldown.MayFireNow).
 	teacher, teacherSet := wait, false
 	autoDone := ent.autoAt < 0
 	auto := func() {
 		autoDone = true
-		if !ent.char.GCD.IsReady(sim) {
-			return
-		}
+		gcdLeft := ent.char.GCD.TimeToReady(sim)
 		for _, r := range ent.cdRules {
-			if e.Mask[spec.T+r.agent] == 1 && (r.mcd.ShouldActivate == nil || r.mcd.ShouldActivate(sim, ent.char)) {
+			if e.Mask[spec.T+r.agent] == 1 && r.mcd.MayFireNow(gcdLeft) && (r.mcd.ShouldActivate == nil || r.mcd.ShouldActivate(sim, ent.char)) {
 				teacher, teacherSet = spec.T+r.agent, true
 				return
 			}
