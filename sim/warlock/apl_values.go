@@ -1,7 +1,6 @@
 package warlock
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
@@ -154,29 +153,24 @@ func (value *APLValueWarlockShouldRefreshCorruption) String() string {
 	return "Warlock Should Refresh Corruption()"
 }
 
+// The current-pet mana values read the demon active when they are evaluated, which changes when another is summoned
+// or the demon is sacrificed. Without an active demon, or with one that has no mana, they are 0.
 type APLValueWarlockCurrentPetMana struct {
 	core.DefaultAPLValueImpl
-	pet *WarlockPet
+	warlock *Warlock
 }
 
-func (warlock *Warlock) newValueWarlockCurrentPetMana(rot *core.APLRotation, config *proto.APLValueWarlockCurrentPetMana) core.APLValue {
-	pet := warlock.ActivePet
-	if pet == nil {
-		return nil
-	}
-	if !pet.GetPet().HasManaBar() {
-		rot.ValidationWarning("%s does not use Mana", pet.GetPet().Label)
-		return nil
-	}
-	return &APLValueWarlockCurrentPetMana{
-		pet: pet,
-	}
+func (warlock *Warlock) newValueWarlockCurrentPetMana(_ *core.APLRotation, _ *proto.APLValueWarlockCurrentPetMana) core.APLValue {
+	return &APLValueWarlockCurrentPetMana{warlock: warlock}
 }
 func (value *APLValueWarlockCurrentPetMana) Type() proto.APLValueType {
 	return proto.APLValueType_ValueTypeFloat
 }
-func (value *APLValueWarlockCurrentPetMana) GetFloat(sim *core.Simulation) float64 {
-	return value.pet.CurrentMana()
+func (value *APLValueWarlockCurrentPetMana) GetFloat(_ *core.Simulation) float64 {
+	if pet := value.warlock.ActivePet; pet != nil && pet.GetPet().HasManaBar() {
+		return pet.CurrentMana()
+	}
+	return 0
 }
 func (value *APLValueWarlockCurrentPetMana) String() string {
 	return "Current Pet Mana"
@@ -184,30 +178,23 @@ func (value *APLValueWarlockCurrentPetMana) String() string {
 
 type APLValueWarlockCurrentPetManaPercent struct {
 	core.DefaultAPLValueImpl
-	pet *WarlockPet
+	warlock *Warlock
 }
 
-func (warlock *Warlock) newValueWarlockCurrentPetManaPercent(rot *core.APLRotation, config *proto.APLValueWarlockCurrentPetManaPercent) core.APLValue {
-	pet := warlock.ActivePet
-	if pet == nil {
-		return nil
-	}
-	if !pet.GetPet().HasManaBar() {
-		rot.ValidationWarning("%s does not use Mana", pet.GetPet().Label)
-		return nil
-	}
-	return &APLValueWarlockCurrentPetManaPercent{
-		pet: pet,
-	}
+func (warlock *Warlock) newValueWarlockCurrentPetManaPercent(_ *core.APLRotation, _ *proto.APLValueWarlockCurrentPetManaPercent) core.APLValue {
+	return &APLValueWarlockCurrentPetManaPercent{warlock: warlock}
 }
 func (value *APLValueWarlockCurrentPetManaPercent) Type() proto.APLValueType {
 	return proto.APLValueType_ValueTypeFloat
 }
-func (value *APLValueWarlockCurrentPetManaPercent) GetFloat(sim *core.Simulation) float64 {
-	return value.pet.GetPet().CurrentManaPercent()
+func (value *APLValueWarlockCurrentPetManaPercent) GetFloat(_ *core.Simulation) float64 {
+	if pet := value.warlock.ActivePet; pet != nil && pet.GetPet().HasManaBar() {
+		return pet.GetPet().CurrentManaPercent()
+	}
+	return 0
 }
 func (value *APLValueWarlockCurrentPetManaPercent) String() string {
-	return fmt.Sprintf("Current Pet Mana %%")
+	return "Current Pet Mana %"
 }
 
 type APLValueWarlockPetIsActive struct {
@@ -227,5 +214,5 @@ func (value *APLValueWarlockPetIsActive) GetBool(sim *core.Simulation) bool {
 	return value.warlock.ActivePet != nil
 }
 func (value *APLValueWarlockPetIsActive) String() string {
-	return fmt.Sprintf("Current Pet Mana %%")
+	return "Pet Is Active"
 }
