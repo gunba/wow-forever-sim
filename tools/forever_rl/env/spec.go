@@ -5,6 +5,7 @@ package env
 import (
 	"encoding/json"
 	"fmt"
+	"math"
 	"math/rand"
 	"os"
 	"path/filepath"
@@ -23,20 +24,21 @@ import (
 
 // Config selects the build and how episodes run.
 type Config struct {
-	Repo           string  `json:"repo"`           // repository root
-	Results        string  `json:"results"`        // results file with complete requests (relative to Repo)
-	Build          string  `json:"build"`          // build key, e.g. "fire"
-	Race           string  `json:"race"`           // race as in the results ("Human")
-	LearnTalents   bool    `json:"learnTalents"`   // choose the talents in the episode
-	Talents        string  `json:"talents"`        // fixed talents when not learning them (default: the row's)
-	FightsPerBuild int     `json:"fightsPerBuild"` // fights played on one chosen build before choosing again
-	Seed           int64   `json:"seed"`
-	RewardScale    float64 `json:"rewardScale"`    // reward = damage * RewardScale
-	DiscoverBuilds int     `json:"discoverBuilds"` // random builds sampled to find every spell and aura a build can have
-	CachedSims     int     `json:"cachedSims"`     // simulations kept per environment, one per talent build
-	Duration       float64 `json:"duration"`       // fight length override in seconds (0: the request's)
-	Threads        int     `json:"threads"`        // worker goroutines for a vector of environments
-	LabeledRands   bool    `json:"labeledRands"`   // one random stream per roll label, so replays with one changed decision stay aligned
+	Repo              string  `json:"repo"`           // repository root
+	Results           string  `json:"results"`        // results file with complete requests (relative to Repo)
+	Build             string  `json:"build"`          // build key, e.g. "fire"
+	Race              string  `json:"race"`           // race as in the results ("Human")
+	LearnTalents      bool    `json:"learnTalents"`   // choose the talents in the episode
+	Talents           string  `json:"talents"`        // fixed talents when not learning them (default: the row's)
+	FightsPerBuild    int     `json:"fightsPerBuild"` // fights played on one chosen build before choosing again
+	Seed              int64   `json:"seed"`
+	RewardScale       float64 `json:"rewardScale"`       // reward = damage * RewardScale
+	DiscoverBuilds    int     `json:"discoverBuilds"`    // random builds sampled to find every spell and aura a build can have
+	CachedSims        int     `json:"cachedSims"`        // simulations kept per environment, one per talent build
+	Duration          float64 `json:"duration"`          // fight length override in seconds (0: the request's)
+	DurationVariation float64 `json:"durationVariation"` // uniform fight-length half-range in seconds (0: fixed)
+	Threads           int     `json:"threads"`           // worker goroutines for a vector of environments
+	LabeledRands      bool    `json:"labeledRands"`      // one random stream per roll label, so replays with one changed decision stay aligned
 	// FullChoices gives the agent every choice a player has: major cooldowns (otherwise automatic), unqueueing a
 	// queued on-next-swing attack, and longer waits.
 	FullChoices bool `json:"fullChoices"`
@@ -157,7 +159,10 @@ func NewSpec(cfg Config) (*Spec, error) {
 	if cfg.Duration > 0 {
 		req.Encounter.Duration = cfg.Duration
 	}
-	req.Encounter.DurationVariation = 0
+	if math.IsNaN(cfg.DurationVariation) || math.IsInf(cfg.DurationVariation, 0) || cfg.DurationVariation < 0 || cfg.DurationVariation >= req.Encounter.Duration {
+		return nil, fmt.Errorf("durationVariation must be finite, nonnegative and smaller than the fight duration")
+	}
+	req.Encounter.DurationVariation = cfg.DurationVariation
 	if req.SimOptions == nil {
 		req.SimOptions = &proto.SimOptions{}
 	}
@@ -740,7 +745,7 @@ func (s *Spec) talentPrereqs() []int {
 func (s *Spec) SpecJSON() []byte {
 	out, _ := json.Marshal(map[string]any{
 		"obsDim": s.ObsDim, "actDim": s.ActDim, "talents": s.T, "agentActions": s.K, "actionNames": s.ActionNames,
-		"featureNames": s.FeatureNames, "talentNames": s.TalentNames, "baseTalents": s.BaseTalents, "duration": s.Duration,
+		"featureNames": s.FeatureNames, "talentNames": s.TalentNames, "baseTalents": s.BaseTalents, "duration": s.Duration, "durationVariation": s.Cfg.DurationVariation,
 		"learnTalents": s.Cfg.LearnTalents, "fixedTalents": s.Cfg.Talents, "build": s.Cfg.Build, "race": s.Cfg.Race,
 		"treeSizes": s.trees.Sizes, "treeNames": s.trees.Names, "fightsPerBuild": s.Cfg.FightsPerBuild,
 		"fullChoices": s.Cfg.FullChoices, "talentMax": s.talentMax(), "talentRow": s.talentRows(), "talentTree": s.talentTreeIdx(),
