@@ -30,6 +30,9 @@ type APLRotation struct {
 	// Used to avoid recursive APL loops.
 	inLoop bool
 
+	// Values that failed to resolve while parsing (see newAPLValue).
+	unresolvedValues int
+
 	// policy, when set, picks among the ready priority-list actions instead of the first ready one.
 	policy APLPolicy
 	ready  []int

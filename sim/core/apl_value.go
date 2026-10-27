@@ -51,11 +51,20 @@ func (impl DefaultAPLValueImpl) GetString(_ *Simulation) string {
 	panic("Unimplemented GetString")
 }
 
+// newAPLValue parses a value. An empty config gives nil (no value); a value that cannot be resolved also gives nil
+// but is counted in rot.unresolvedValues, so callers can tell the two apart.
 func (rot *APLRotation) newAPLValue(config *proto.APLValue) APLValue {
-	if config == nil {
+	if config == nil || config.Value == nil {
 		return nil
 	}
+	value := rot.parseAPLValue(config)
+	if value == nil {
+		rot.unresolvedValues++
+	}
+	return value
+}
 
+func (rot *APLRotation) parseAPLValue(config *proto.APLValue) APLValue {
 	customValue := rot.unit.Env.GetAgentFromUnit(rot.unit).NewAPLValue(rot, config)
 	if customValue != nil {
 		return customValue

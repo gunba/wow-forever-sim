@@ -123,16 +123,24 @@ func (rot *APLRotation) newAPLAction(config *proto.APLAction) *APLAction {
 		return nil
 	}
 
+	unresolved := rot.unresolvedValues
+	condition := rot.coerceTo(rot.newAPLValue(config.Condition), proto.APLValueType_ValueTypeBool)
+	conditionUnresolved := rot.unresolvedValues != unresolved
 	action := &APLAction{
-		condition: rot.coerceTo(rot.newAPLValue(config.Condition), proto.APLValueType_ValueTypeBool),
+		condition: condition,
 		impl:      rot.newAPLActionImpl(config),
 	}
 
 	if action.impl == nil {
 		return nil
-	} else {
-		return action
 	}
+	if conditionUnresolved {
+		// Operators drop operands they cannot resolve, so what parsed may be weaker than what was written, or nothing
+		// (no condition at all). Neither may decide the action.
+		rot.ValidationWarning("Part of this action's condition cannot be evaluated for this character (for example a unit it does not have, or a value without meaning here), so the action never runs.")
+		action.condition = &APLValueConst{valType: proto.APLValueType_ValueTypeBool, stringVal: "false"}
+	}
+	return action
 }
 
 func (rot *APLRotation) newAPLActionImpl(config *proto.APLAction) APLActionImpl {

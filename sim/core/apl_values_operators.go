@@ -90,6 +90,13 @@ func (value *APLValueConst) String() string {
 	return value.stringVal
 }
 
+// absentAura and unknownSpell stand for a value of an aura the unit cannot have or a spell the character does not
+// know (the lookup has warned): such an aura is never active and has no stacks or time left, and such a spell can
+// never be cast, is never ready, in flight or channeled, and has no DoT up.
+func absentValue(valType proto.APLValueType, why string) APLValue {
+	return &APLValueConst{valType: valType, stringVal: why}
+}
+
 type APLValueCoerced struct {
 	DefaultAPLValueImpl
 	valueType proto.APLValueType

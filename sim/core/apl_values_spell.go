@@ -36,7 +36,7 @@ type APLValueSpellCanCast struct {
 func (rot *APLRotation) newValueSpellCanCast(config *proto.APLValueSpellCanCast) APLValue {
 	spell := rot.GetAPLSpell(config.SpellId)
 	if spell == nil {
-		return nil
+		return absentValue(proto.APLValueType_ValueTypeBool, "unknown spell")
 	}
 	return &APLValueSpellCanCast{
 		spell: spell,
@@ -60,7 +60,7 @@ type APLValueSpellIsReady struct {
 func (rot *APLRotation) newValueSpellIsReady(config *proto.APLValueSpellIsReady) APLValue {
 	spell := rot.GetAPLSpell(config.SpellId)
 	if spell == nil {
-		return nil
+		return absentValue(proto.APLValueType_ValueTypeBool, "unknown spell")
 	}
 	return &APLValueSpellIsReady{
 		spell: spell,
@@ -156,7 +156,7 @@ type APLValueSpellInFlight struct {
 func (rot *APLRotation) newValueSpellInFlight(config *proto.APLValueSpellInFlight) APLValue {
 	spell := rot.GetAPLSpell(config.SpellId)
 	if spell == nil {
-		return nil
+		return absentValue(proto.APLValueType_ValueTypeBool, "unknown spell")
 	}
 	return &APLValueSpellInFlight{
 		spell: spell,
@@ -204,7 +204,7 @@ type APLValueSpellIsChanneling struct {
 func (rot *APLRotation) newValueSpellIsChanneling(config *proto.APLValueSpellIsChanneling) APLValue {
 	spell := rot.GetAPLSpell(config.SpellId)
 	if spell == nil {
-		return nil
+		return absentValue(proto.APLValueType_ValueTypeBool, "unknown spell")
 	}
 	return &APLValueSpellIsChanneling{
 		spell: spell,

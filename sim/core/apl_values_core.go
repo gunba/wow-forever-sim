@@ -13,6 +13,9 @@ type APLValueDotIsActive struct {
 }
 
 func (rot *APLRotation) newValueDotIsActive(config *proto.APLValueDotIsActive) APLValue {
+	if rot.GetAPLSpell(config.SpellId) == nil {
+		return absentValue(proto.APLValueType_ValueTypeBool, "unknown spell")
+	}
 	dot := rot.GetAPLDot(rot.GetTargetUnit(config.TargetUnit), config.SpellId)
 	if dot == nil {
 		return nil
@@ -37,6 +40,9 @@ type APLValueDotRemainingTime struct {
 }
 
 func (rot *APLRotation) newValueDotRemainingTime(config *proto.APLValueDotRemainingTime) APLValue {
+	if rot.GetAPLSpell(config.SpellId) == nil {
+		return absentValue(proto.APLValueType_ValueTypeDuration, "unknown spell")
+	}
 	dot := rot.GetAPLDot(rot.GetTargetUnit(config.TargetUnit), config.SpellId)
 	if dot == nil {
 		return nil

@@ -37,6 +37,9 @@ func (rot *APLRotation) newValueAuraIsActive(config *proto.APLValueAuraIsActive)
 	aura := rot.GetAPLAura(rot.GetSourceUnit(config.SourceUnit), config.AuraId)
 
 	if aura.Get() == nil {
+		if rot.GetSourceUnit(config.SourceUnit).Get() != nil {
+			return absentValue(proto.APLValueType_ValueTypeBool, "absent aura")
+		}
 		return nil
 	}
 
@@ -63,6 +66,9 @@ type APLValueAuraIsActiveWithReactionTime struct {
 func (rot *APLRotation) newValueAuraIsActiveWithReactionTime(config *proto.APLValueAuraIsActiveWithReactionTime) APLValue {
 	aura := rot.GetAPLAura(rot.GetSourceUnit(config.SourceUnit), config.AuraId)
 	if aura.Get() == nil {
+		if rot.GetSourceUnit(config.SourceUnit).Get() != nil {
+			return absentValue(proto.APLValueType_ValueTypeBool, "absent aura")
+		}
 		return nil
 	}
 	return &APLValueAuraIsActiveWithReactionTime{
@@ -89,6 +95,9 @@ type APLValueAuraRemainingTime struct {
 func (rot *APLRotation) newValueAuraRemainingTime(config *proto.APLValueAuraRemainingTime) APLValue {
 	aura := rot.GetAPLAura(rot.GetSourceUnit(config.SourceUnit), config.AuraId)
 	if aura.Get() == nil {
+		if rot.GetSourceUnit(config.SourceUnit).Get() != nil {
+			return absentValue(proto.APLValueType_ValueTypeDuration, "absent aura")
+		}
 		return nil
 	}
 	return &APLValueAuraRemainingTime{
@@ -113,6 +122,9 @@ type APLValueAuraNumStacks struct {
 func (rot *APLRotation) newValueAuraNumStacks(config *proto.APLValueAuraNumStacks) APLValue {
 	aura := rot.GetAPLAura(rot.GetSourceUnit(config.SourceUnit), config.AuraId)
 	if aura.Get() == nil {
+		if rot.GetSourceUnit(config.SourceUnit).Get() != nil {
+			return absentValue(proto.APLValueType_ValueTypeInt, "absent aura")
+		}
 		return nil
 	}
 	if aura.Get().MaxStacks == 0 {
