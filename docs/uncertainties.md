@@ -4,7 +4,7 @@
 
 Current level-60 DPS and tank scenarios, plus conditional spell, item and encounter coverage. This register consolidates the recorded questions; it is not a claim that unlisted game behavior has been verified.
 
-**Latest follow-up (2026-10-27):** October 27 update: launch racial values, engine fixes from the APL search sweep, damage-over-time ranks that replace each other, pre-trapping, Mage-only imbue scrolls, pet hit at 17:8, explosives during the global cooldown and the logged Summon Hawk, with re-searched talents and rotations for 25 DPS builds. The review matrix no longer has a Learned column. [Latest follow-up report](october-27-update.md).
+**Latest follow-up (2026-10-28):** October 28 update: Orc Blood Fury on a two-minute cooldown and Undead Touch of the Grave on a 15-second internal cooldown, the launch changes Blizzard added to the racial notes on October 27. Only Orc and Undead results change. [Latest follow-up report](october-28-update.md).
 
 **Original adjudication baseline:** 2026-09-27, `35cab052456a320358e998c12416687d69cae142`. That original review reconciled questions without changing mechanics or benchmark results. This current register also includes the later implementation and benchmark updates linked above; earlier audits remain historical evidence, not current task status.
 
@@ -828,9 +828,9 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Question:** Which regeneration components does High Order's active ability increase, and does location matter?
 
-**Finding:** No benchmark rotation uses Read Ley Line. Moved outside current scenarios; it can be reopened if a scenario starts to depend on it.
+**Finding:** No benchmark rotation uses Read Leyline. The October 26 notes cut it to 50% for 15 seconds, and the October 27 clarification removes the Attuned buff (and the Windshaper's Charged) on entering a raid, so a raid never has the 100% version. Moved outside current scenarios; it can be reopened if a scenario starts to depend on it.
 
-**Current implementation / scenario:** The active regeneration effect is not used; a nearby ley line is not assumed.
+**Current implementation / scenario:** The active regeneration effect is not used. At launch Read Leyline gives 50% regeneration for 15 seconds; the one-hour Attuned buff from a ley line raises it to 100% but is removed on entering a raid.
 
 **Impact:** Potential High Order mana recovery; currently absent rather than a free benefit.
 
@@ -842,7 +842,7 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Prerequisites: High Order mana user; fixed Spirit, a known MP5 item delta, uncapped mana and no other temporary regen.
 - Observe / verify: Compare idle and continuous-spending recovery with the short buff. Record application/expiration and test the long location buff separately if needed.
 
-**References:** [docs/forever_races.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/forever_races.md) · [sim/core/racials.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/racials.go) · [https://www.wowhead.com/forever/spell=1259705/read-ley-line](https://www.wowhead.com/forever/spell=1259705/read-ley-line) · [https://us.forums.blizzard.com/en/wow/t/alliance-skybourne-racial-feedback/2362168](https://us.forums.blizzard.com/en/wow/t/alliance-skybourne-racial-feedback/2362168) · [https://wago.tools/db2/SpellEffect?build=1.60.1.70009](https://wago.tools/db2/SpellEffect?build=1.60.1.70009)
+**References:** [docs/forever_races.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/forever_races.md) · [sim/core/racials.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/racials.go) · [https://www.wowhead.com/forever/spell=1259705/read-ley-line](https://www.wowhead.com/forever/spell=1259705/read-ley-line) · [https://us.forums.blizzard.com/en/wow/t/alliance-skybourne-racial-feedback/2362168](https://us.forums.blizzard.com/en/wow/t/alliance-skybourne-racial-feedback/2362168) · [https://wago.tools/db2/SpellEffect?build=1.60.1.70009](https://wago.tools/db2/SpellEffect?build=1.60.1.70009) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696/7](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696/7) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696/8](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696/8)
 
 **Earlier references:** T04
 
@@ -936,9 +936,9 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Question:** What are the new proc chance and cooldown?
 
-**Finding:** The October 15 notes give 30%/20% and a 25-second internal cooldown and remove Shadow scaling; the client aura options changed with them.
+**Finding:** The October 15 notes give 30%/20% and a 25-second internal cooldown and remove Shadow scaling; the client aura options changed with them. On October 27 Blizzard added a launch change to the October 26 notes: the internal cooldown is 15 seconds. Client 70532, the last beta build, still has 25.
 
-**Current implementation / scenario:** 20% (Warrior, Paladin, Rogue) or 30% (casters) on a landed damaging hit, 25-second cooldown, 5% of maximum health, no Shadow scaling.
+**Current implementation / scenario:** 20% (Warrior, Paladin, Rogue) or 30% (casters) on a landed damaging hit, 15-second cooldown at launch, 5% of maximum health, no Shadow scaling.
 
 **Impact:** Undead profiles.
 
@@ -950,7 +950,7 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Prerequisites: Undead caster.
 - Observe / verify: Time between procs over 10 minutes of casting.
 
-**References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374](https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374)
+**References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374](https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696/7](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696/7) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696/8](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696/8)
 
 <a id="core-026"></a>
 

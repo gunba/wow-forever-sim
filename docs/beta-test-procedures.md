@@ -659,7 +659,7 @@ Each of these takes 10–20 minutes on a Warrior at level 28–30 and answers a 
 *Affects: DPS rankings. State: Working answer.*
 
 - **Why it matters:** Touch of the Grave's new chance and cooldown set its value for every Undead row.
-- **What the simulator assumes now:** 20% (Warrior, Paladin, Rogue) or 30% (casters) on a landed damaging hit, with a 25-second cooldown that starts on the proc; 5% of maximum health.
+- **What the simulator assumes now:** 20% (Warrior, Paladin, Rogue) or 30% (casters) on a landed damaging hit, with a 15-second cooldown that starts on the proc (Blizzard's launch value; client 70532 still has 25); 5% of maximum health.
 - **Setup:** Undead character of any class; a mob with plenty of health.
 - **Steps:**
   1. Attack or cast continuously for ten minutes.

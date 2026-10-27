@@ -4388,14 +4388,16 @@
    "status": "out-of-scope",
    "title": "Read Ley Line regeneration",
    "question": "Which regeneration components does High Order's active ability increase, and does location matter?",
-   "current_model": "The active regeneration effect is not used; a nearby ley line is not assumed.",
+   "current_model": "The active regeneration effect is not used. At launch Read Leyline gives 50% regeneration for 15 seconds; the one-hour Attuned buff from a ley line raises it to 100% but is removed on entering a raid.",
    "impact": "Potential High Order mana recovery; currently absent rather than a free benefit.",
    "sources": [
     "docs/forever_races.md",
     "sim/core/racials.go",
     "https://www.wowhead.com/forever/spell=1259705/read-ley-line",
     "https://us.forums.blizzard.com/en/wow/t/alliance-skybourne-racial-feedback/2362168",
-    "https://wago.tools/db2/SpellEffect?build=1.60.1.70009"
+    "https://wago.tools/db2/SpellEffect?build=1.60.1.70009",
+    "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696/7",
+    "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696/8"
    ],
    "legacy": [
     "T04"
@@ -4404,7 +4406,7 @@
    "review": {
     "disposition": "not-material",
     "confidence": "moderate",
-    "answer": "No benchmark rotation uses Read Ley Line. Moved outside current scenarios; it can be reopened if a scenario starts to depend on it.",
+    "answer": "No benchmark rotation uses Read Leyline. The October 26 notes cut it to 50% for 15 seconds, and the October 27 clarification removes the Attuned buff (and the Windshaper's Charged) on entering a raid, so a raid never has the 100% version. Moved outside current scenarios; it can be reopened if a scenario starts to depend on it.",
     "remaining": "None for current scenarios.",
     "implementation": "No change.",
     "tests": [
@@ -7583,17 +7585,19 @@
    "status": "provisional",
    "title": "Touch of the Grave after 1.60.1.70425",
    "question": "What are the new proc chance and cooldown?",
-   "current_model": "20% (Warrior, Paladin, Rogue) or 30% (casters) on a landed damaging hit, 25-second cooldown, 5% of maximum health, no Shadow scaling.",
+   "current_model": "20% (Warrior, Paladin, Rogue) or 30% (casters) on a landed damaging hit, 15-second cooldown at launch, 5% of maximum health, no Shadow scaling.",
    "impact": "Undead profiles.",
    "sources": [
     "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6",
-    "https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374"
+    "https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374",
+    "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696/7",
+    "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696/8"
    ],
    "related": [],
    "review": {
     "disposition": "credible-answer",
     "confidence": "moderate",
-    "answer": "The October 15 notes give 30%/20% and a 25-second internal cooldown and remove Shadow scaling; the client aura options changed with them.",
+    "answer": "The October 15 notes give 30%/20% and a 25-second internal cooldown and remove Shadow scaling; the client aura options changed with them. On October 27 Blizzard added a launch change to the October 26 notes: the internal cooldown is 15 seconds. Client 70532, the last beta build, still has 25.",
     "remaining": "Whether the cooldown starts on the proc or on any eligible hit.",
     "implementation": "sim/core/racials.go.",
     "tests": [
@@ -8970,9 +8974,9 @@
   "original_entries": 137,
   "reviewed_original_entries": 137,
   "added_entries": 87,
-  "latest_followup": "October 27 update: launch racial values, engine fixes from the APL search sweep, damage-over-time ranks that replace each other, pre-trapping, Mage-only imbue scrolls, pet hit at 17:8, explosives during the global cooldown and the logged Summon Hawk, with re-searched talents and rotations for 25 DPS builds. The review matrix no longer has a Learned column.",
-  "latest_followup_date": "2026-10-27",
-  "latest_followup_baseline": "e0fb5a249",
+  "latest_followup": "October 28 update: Orc Blood Fury on a two-minute cooldown and Undead Touch of the Grave on a 15-second internal cooldown, the launch changes Blizzard added to the racial notes on October 27. Only Orc and Undead results change.",
+  "latest_followup_date": "2026-10-28",
+  "latest_followup_baseline": "571d71465",
   "before": {
    "needs-evidence": 84,
    "needs-code": 27,
@@ -9035,9 +9039,19 @@
     "latest_followup": "October 21 Warrior rotations: Fury, Fury (Sunder) and 2H Bloodthirst rotation rules learned by reinforcement learning (Overpower dance in execute, Rend in Battle Stance, higher Heroic Strike thresholds, swing-timed Hamstring, Demonic Rune for rage) and Fury talents 19/31/1.",
     "latest_followup_date": "2026-10-21",
     "latest_followup_baseline": "dd5a4f036"
+   },
+   {
+    "latest_followup": "October 22 learned rotations: a Learned column in the review matrix showing what a reinforcement-learning agent reached for each DPS build at its best race, with its talents and actions, and simmable profiles where APL rules converted from it beat the published APL. Published profiles do not change.",
+    "latest_followup_date": "2026-10-22",
+    "latest_followup_baseline": "e0fb5a249"
+   },
+   {
+    "latest_followup": "October 27 update: launch racial values, engine fixes from the APL search sweep, damage-over-time ranks that replace each other, pre-trapping, Mage-only imbue scrolls, pet hit at 17:8, explosives during the global cooldown and the logged Summon Hawk, with re-searched talents and rotations for 25 DPS builds. The review matrix no longer has a Learned column.",
+    "latest_followup_date": "2026-10-27",
+    "latest_followup_baseline": "e0fb5a249"
    }
   ],
-  "latest_followup_report": "october-27-update.md",
+  "latest_followup_report": "october-28-update.md",
   "latest_followup_source_date": "2026-10-08T21:32:38.124Z",
   "latest_followup_publication": "pending",
   "latest_followup_benchmarks": "pending"

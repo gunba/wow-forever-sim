@@ -47,7 +47,9 @@ simulator's **Ranked builds** selector. Clicking a matrix cell opens that exact
 setup and its actual gear-derived hit; no manual import is needed.
 [Frozen benchmark inputs](artifacts/modelled_gear/forever_input_profiles.json) are also the
 native benchmark defaults, separate from the results for replay.
-The [October 27 update](docs/october-27-update.md) re-runs the matrix with the launch racial values, the APL search
+The [October 28 update](docs/october-28-update.md) gives Orc Blood Fury a two-minute cooldown and Undead Touch of the
+Grave a 15-second internal cooldown, Blizzard's October 27 additions to the launch racials; only Orc and Undead results
+change. The [October 27 update](docs/october-27-update.md) re-ran the matrix with the launch racial values, the APL search
 sweep's engine fixes (pre-pull contact warnings, conditions on things a character lacks, pre-pull swings, fractional
 durations), damage-over-time ranks that replace each other, pre-trapping, Mage-only imbue scrolls, pet hit at 17:8 and the
 logged Summon Hawk. It gives 25 DPS builds re-searched talents and rotations, and keeps six builds whose candidates changed
@@ -67,7 +69,8 @@ builds, and re-searched talents and consumables for every DPS build. They follow
 [October 16 follow-up](docs/october-16-follow-up.md) (class imbue slots, real relics, Rake scaling) and the
 [October 15 update](docs/october-15-update.md) (client 1.60.1.70425 and the October 15 development notes), and
 [Beta test procedures](docs/beta-test-procedures.md) explains how to settle each remaining open question in game.
-[Comparison](artifacts/correctness/october_27/comparison.json) lists every race/build against the previous release, and the
+[October 28 comparison](artifacts/correctness/october_28/comparison.json) lists the Orc and Undead changes,
+[October 27 comparison](artifacts/correctness/october_27/comparison.json) lists every race/build against the release before it, and the
 [October 27 selection evidence](artifacts/correctness/october_27/selection-evidence.json) records each re-searched candidate;
 [October 16 selection evidence](artifacts/correctness/october_16/selection-evidence.json) records the earlier relic,
 imbue, rotation, talent and confirmed gear selections. The earlier [October 11 log audit](docs/october-11-log-audit.md)

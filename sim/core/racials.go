@@ -13,8 +13,10 @@ func applyRaceEffects(agent Agent) {
 	character := agent.GetCharacter()
 
 	// Forever drops every +10 resistance racial and, since client 1.60.1.70425, the weapon racials.
-	// The launch values are Blizzard's October 26 tuning pass, which is not in any client build yet:
+	// The launch values are Blizzard's October 26 tuning pass, with the Orc and Undead additions
+	// posted on October 27; none is in any client build yet (70532 still has the old values):
 	// https://www.wowhead.com/forever/news/racial-ability-tuning-pass-for-wow-forever-383597
+	// https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696/8
 	forever := character.Env.IsForever()
 
 	switch character.Race {
@@ -240,8 +242,8 @@ func (character *Character) registerForeverBloodFury() {
 	})
 	spell := character.RegisterSpell(SpellConfig{
 		ActionID: actionID, Flags: SpellFlagNoOnCastComplete,
-		// Three minutes since 70425 (was two).
-		Cast:         CastConfig{CD: Cooldown{Timer: character.NewTimer(), Duration: time.Minute * 3}},
+		// Two minutes at launch; clients 70425 to 70532 have three.
+		Cast:         CastConfig{CD: Cooldown{Timer: character.NewTimer(), Duration: time.Minute * 2}},
 		ApplyEffects: func(sim *Simulation, _ *Unit, _ *Spell) { aura.Activate(sim) },
 	})
 	character.AddMajorCooldown(MajorCooldown{Spell: spell, Type: CooldownTypeDPS})
@@ -269,9 +271,10 @@ func (character *Character) registerForeverBerserking(timer *Timer) {
 }
 
 // SkillLineAbility assigns 1260189 to Warrior/Paladin/Rogue and 1260201 to
-// Priest/Mage/Warlock. Since 70425 SpellAuraOptions gives 20%/30% and a 25-second ICD (was
-// 5%/10% and one second). The triggered drain, 1260198, is 5% of maximum health, Shadow, and
-// cannot crit; it no longer scales with Shadow damage modifiers on the caster or the target.
+// Priest/Mage/Warlock. Since 70425 SpellAuraOptions gives 20%/30% (was 5%/10%); the internal
+// cooldown is 15 seconds at launch (25 in clients 70425 to 70532, one second before). The
+// triggered drain, 1260198, is 5% of maximum health, Shadow, and cannot crit; it no longer
+// scales with Shadow damage modifiers on the caster or the target.
 func (character *Character) registerTouchOfTheGrave() {
 	actionID := ActionID{SpellID: 1260198}
 	passiveID, procChance := int32(1260189), 0.2
@@ -279,7 +282,7 @@ func (character *Character) registerTouchOfTheGrave() {
 	case proto.Class_ClassPriest, proto.Class_ClassMage, proto.Class_ClassWarlock:
 		passiveID, procChance = 1260201, 0.3
 	}
-	icd := Cooldown{Timer: character.NewTimer(), Duration: 25 * time.Second}
+	icd := Cooldown{Timer: character.NewTimer(), Duration: 15 * time.Second}
 	healthMetrics := character.NewHealthMetrics(actionID)
 
 	drain := character.RegisterSpell(SpellConfig{

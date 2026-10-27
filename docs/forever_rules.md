@@ -38,15 +38,17 @@ below is gated on `IsForever()` unless it says the class code is Forever-only.
 
 | Rule | Source | Here |
 |---|---|---|
-| Every +10 resistance racial is removed. | Racials guide | `sim/core/racials.go` |
-| Weapon skill racials become +1% crit (both pools) while the matching weapon is held; Mace Specialization moves to Dwarves. | Racials guide, *demo* | `sim/core/specializations.go` |
-| Dwarf gains Beast Slaying-style +5% vs Beasts ("Big Game Hunter"). Troll keeps Beast Slaying; both ranged specializations removed. | Racials guide | `sim/core/racials.go` |
-| Orc: Command removed. Blood Fury dynamically increases melee AP, ranged AP and spell power by 10%, for 15 seconds; free and off the GCD, two-minute cooldown. | Beta client 20572 | `sim/core/racials.go` |
+| Racial values are the launch values Blizzard announced on October 26, with the Orc and Undead additions of October 27. The last beta client (70532) still has the earlier values. | [October 26 notes](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696/7) | `sim/core/racials.go` |
+| Every +10 resistance racial is removed, and so are the weapon specializations. | Racials guide; client 70425 | `sim/core/racials.go` |
+| Human: Ruthless +1% crit with spells and attacks; The Human Spirit +10% Spirit. | October 26 notes | `sim/core/racials.go` |
+| Dwarf: Artisan's Precision +1% hit with spells and attacks (Earth Fury removed); Big Game Hunter +5% damage to Beasts. Troll keeps Beast Slaying; both ranged specializations removed. | October 26 notes; racials guide | `sim/core/racials.go` |
+| Tauren Endurance: 5% health only. | October 26 notes | `sim/core/racials.go` |
+| Orc: Savage removed; Command makes Hunter and Warlock pets deal 5% more damage. Blood Fury dynamically increases melee AP, ranged AP and spell power by 10%, for 15 seconds; free and off the GCD, two-minute cooldown (three in clients 70425 to 70532). | October 26 notes and the October 27 addition; client 20572 | `sim/core/racials.go` |
 | Gnome Expansive Mind raises Mana/Rage/Energy pools by 5%, not Intellect. Eureka has three charges for 15 s, a 2 min cooldown and class-specific cost reductions. | Client spell effects and class masks; [race audit](forever_races.md) | `sim/core/racials.go`, `sim/core/forever_gnome.go` |
 | Night Elf Elune's Light (1259799): +10% crit for 15 s, 3 min cooldown. | Client spell effects, duration and cooldown | `sim/core/racials.go` |
-| Skyborne: 1% haste and 5% damage versus Elementals. Windshaper's Skysight grants movement speed, not attack or spell power. | Beta client 1259710, 1259707, 1259686 | `sim/core/racials.go` |
+| Skyborne: Wind Blessed 2% haste and Elemental Insight 5% damage versus Elementals. Skysight grants movement speed and Read Leyline regeneration; neither is used. Their one-hour Charged and Attuned buffs are removed on entering a raid. | October 26 notes and the October 27 clarification; client 1259710, 1259707, 1259686 | `sim/core/racials.go` |
 | Troll Berserking: exactly 10% attack and casting speed for ten seconds, free and off the GCD, three-minute cooldown. | Beta client 20554 | `sim/core/racials.go` |
-| Undead Touch of the Grave: 5% proc chance for Warrior/Paladin/Rogue, 10% for Priest/Mage/Warlock; one-second ICD; Shadow drain equal to 5% of max health before mitigation, cannot crit. | Beta client 1260189, 1260201, 1260198 and SpellAuraOptions | `sim/core/racials.go` |
+| Undead Touch of the Grave: 20% proc chance for Warrior/Paladin/Rogue, 30% for Priest/Mage/Warlock, from landed damaging abilities; 15-second ICD (25 in clients 70425 to 70532); Shadow drain equal to 5% of max health before mitigation, cannot crit, no Shadow scaling. | October 15 notes and the October 27 addition; client 1260189, 1260201, 1260198 and SpellAuraOptions | `sim/core/racials.go` |
 
 ## Warrior
 

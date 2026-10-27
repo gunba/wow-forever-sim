@@ -1,0 +1,485 @@
+{
+  "format": 1,
+  "baseline": "571d71465 published results (October 27 update)",
+  "current": "October 28 update",
+  "note": "Only Orc and Undead rows change; every other race/build result is identical to the baseline.",
+  "byRace": {
+    "Orc": {
+      "Builds": 25,
+      "MeanChangePercent": 0.26980439539957146,
+      "MinChangePercent": 0.0,
+      "MaxChangePercent": 0.4796943733214487
+    },
+    "Undead": {
+      "Builds": 23,
+      "MeanChangePercent": 0.6924096037720981,
+      "MinChangePercent": 0.4445118826537531,
+      "MaxChangePercent": 1.3216044652086145
+    }
+  },
+  "bestRaceChanges": [
+    {
+      "Key": "stormcaller",
+      "WasRace": "Dwarf",
+      "WasDPS": 636.8621885547383,
+      "Race": "Orc",
+      "DPS": 638.3254685954896
+    },
+    {
+      "Key": "survival",
+      "WasRace": "Night Elf",
+      "WasDPS": 1178.5588095060946,
+      "Race": "Orc",
+      "DPS": 1180.2054993547263
+    },
+    {
+      "Key": "fire",
+      "WasRace": "Human",
+      "WasDPS": 993.0290818451947,
+      "Race": "Undead",
+      "DPS": 994.529157733316
+    },
+    {
+      "Key": "smite",
+      "WasRace": "Gnome",
+      "WasDPS": 500.47068799705636,
+      "Race": "Undead",
+      "DPS": 503.6141946346877
+    },
+    {
+      "Key": "mutilate",
+      "WasRace": "Windshaper",
+      "WasDPS": 732.1453078637603,
+      "Race": "Undead",
+      "DPS": 735.2035120945822
+    },
+    {
+      "Key": "subtlety",
+      "WasRace": "Windshaper",
+      "WasDPS": 718.2318315103879,
+      "Race": "Undead",
+      "DPS": 718.5235232593102
+    },
+    {
+      "Key": "affliction",
+      "WasRace": "Human",
+      "WasDPS": 922.9966231143326,
+      "Race": "Orc",
+      "DPS": 923.2618367381133
+    },
+    {
+      "Key": "ds_ruin",
+      "WasRace": "Human",
+      "WasDPS": 864.4696060248846,
+      "Race": "Undead",
+      "DPS": 868.1490645076123
+    },
+    {
+      "Key": "destruction",
+      "WasRace": "Troll",
+      "WasDPS": 917.8657633049928,
+      "Race": "Undead",
+      "DPS": 919.0131739342097
+    },
+    {
+      "Key": "fury_sunder",
+      "WasRace": "Windshaper",
+      "WasDPS": 946.1221509730632,
+      "Race": "Undead",
+      "DPS": 952.2266356652852
+    },
+    {
+      "Key": "arcane_frost",
+      "WasRace": "Human",
+      "WasDPS": 794.2263889865206,
+      "Race": "Undead",
+      "DPS": 794.7285591822565
+    }
+  ],
+  "rows": [
+    {
+      "Key": "elemental",
+      "Race": "Orc",
+      "PublishedDPS": 654.0472075599635,
+      "DPS": 655.2038368426696,
+      "Change": 1.1566292827061488,
+      "ChangePercent": 0.17684186543982516
+    },
+    {
+      "Key": "stormcaller",
+      "Race": "Orc",
+      "PublishedDPS": 636.3882150851546,
+      "DPS": 638.3254685954896,
+      "Change": 1.9372535103350401,
+      "ChangePercent": 0.3044137940354297
+    },
+    {
+      "Key": "enhancement",
+      "Race": "Orc",
+      "PublishedDPS": 824.4939715046214,
+      "DPS": 826.1186763453677,
+      "Change": 1.6247048407462898,
+      "ChangePercent": 0.1970547871661621
+    },
+    {
+      "Key": "beast_mastery",
+      "Race": "Orc",
+      "PublishedDPS": 1197.0499478177908,
+      "DPS": 1200.2756861242651,
+      "Change": 3.225738306474341,
+      "ChangePercent": 0.2694739941599522
+    },
+    {
+      "Key": "marksmanship",
+      "Race": "Orc",
+      "PublishedDPS": 1309.045036743034,
+      "DPS": 1313.062633150745,
+      "Change": 4.017596407710926,
+      "ChangePercent": 0.3069104801548317
+    },
+    {
+      "Key": "survival",
+      "Race": "Orc",
+      "PublishedDPS": 1176.8576068863986,
+      "DPS": 1180.2054993547263,
+      "Change": 3.3478924683277,
+      "ChangePercent": 0.28447727649780763
+    },
+    {
+      "Key": "arcane",
+      "Race": "Orc",
+      "PublishedDPS": 841.9111904326694,
+      "DPS": 843.1315156895427,
+      "Change": 1.2203252568732523,
+      "ChangePercent": 0.14494702894329858
+    },
+    {
+      "Key": "arcane",
+      "Race": "Undead",
+      "PublishedDPS": 841.9945655587459,
+      "DPS": 847.6562392039468,
+      "Change": 5.661673645200949,
+      "ChangePercent": 0.6724121362284396
+    },
+    {
+      "Key": "fire",
+      "Race": "Orc",
+      "PublishedDPS": 983.2746125655581,
+      "DPS": 985.4187451088743,
+      "Change": 2.144132543316232,
+      "ChangePercent": 0.21806039898881746
+    },
+    {
+      "Key": "fire",
+      "Race": "Undead",
+      "PublishedDPS": 990.044110070598,
+      "DPS": 994.529157733316,
+      "Change": 4.485047662717989,
+      "ChangePercent": 0.4530149330819411
+    },
+    {
+      "Key": "frost",
+      "Race": "Orc",
+      "PublishedDPS": 601.0956014152858,
+      "DPS": 602.6367401950768,
+      "Change": 1.5411387797909128,
+      "ChangePercent": 0.2563882976621912
+    },
+    {
+      "Key": "frost",
+      "Race": "Undead",
+      "PublishedDPS": 598.821666870109,
+      "DPS": 602.3312912762448,
+      "Change": 3.5096244061357993,
+      "ChangePercent": 0.586088413346797
+    },
+    {
+      "Key": "retribution",
+      "Race": "Undead",
+      "PublishedDPS": 972.7478735632541,
+      "DPS": 978.010117944191,
+      "Change": 5.262244380936977,
+      "ChangePercent": 0.5409669374717874
+    },
+    {
+      "Key": "shadow",
+      "Race": "Undead",
+      "PublishedDPS": 906.3247755333192,
+      "DPS": 910.3534968559998,
+      "Change": 4.028721322680553,
+      "ChangePercent": 0.4445118826537531
+    },
+    {
+      "Key": "smite",
+      "Race": "Undead",
+      "PublishedDPS": 500.3466649339832,
+      "DPS": 503.6141946346877,
+      "Change": 3.267529700704472,
+      "ChangePercent": 0.6530531588804678
+    },
+    {
+      "Key": "combat",
+      "Race": "Orc",
+      "PublishedDPS": 734.4972560557711,
+      "DPS": 736.7697420201528,
+      "Change": 2.2724859643816444,
+      "ChangePercent": 0.3093933906009205
+    },
+    {
+      "Key": "combat",
+      "Race": "Undead",
+      "PublishedDPS": 740.2194156536207,
+      "DPS": 746.707254647593,
+      "Change": 6.487838993972332,
+      "ChangePercent": 0.8764751176167929
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Orc",
+      "PublishedDPS": 721.3799334822569,
+      "DPS": 722.992637103388,
+      "Change": 1.6127036211311179,
+      "ChangePercent": 0.2235581482487703
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Undead",
+      "PublishedDPS": 728.8763841637407,
+      "DPS": 735.2035120945822,
+      "Change": 6.3271279308414705,
+      "ChangePercent": 0.8680659805023971
+    },
+    {
+      "Key": "subtlety",
+      "Race": "Orc",
+      "PublishedDPS": 707.1632693355559,
+      "DPS": 709.2650750911547,
+      "Change": 2.1018057555987752,
+      "ChangePercent": 0.297216476977602
+    },
+    {
+      "Key": "subtlety",
+      "Race": "Undead",
+      "PublishedDPS": 712.2156156732564,
+      "DPS": 718.5235232593102,
+      "Change": 6.30790758605383,
+      "ChangePercent": 0.8856738671885189
+    },
+    {
+      "Key": "demonology",
+      "Race": "Orc",
+      "PublishedDPS": 1087.7306386900377,
+      "DPS": 1092.4196634927403,
+      "Change": 4.689024802702534,
+      "ChangePercent": 0.43108326969161226
+    },
+    {
+      "Key": "demonology",
+      "Race": "Undead",
+      "PublishedDPS": 1091.44837486632,
+      "DPS": 1097.7066527372122,
+      "Change": 6.258277870892243,
+      "ChangePercent": 0.5733920188079278
+    },
+    {
+      "Key": "affliction",
+      "Race": "Orc",
+      "PublishedDPS": 919.1535255216606,
+      "DPS": 923.2618367381133,
+      "Change": 4.108311216452648,
+      "ChangePercent": 0.44696681265743443
+    },
+    {
+      "Key": "affliction",
+      "Race": "Undead",
+      "PublishedDPS": 917.1727872204509,
+      "DPS": 921.2528920660179,
+      "Change": 4.080104845567007,
+      "ChangePercent": 0.44485672737106796
+    },
+    {
+      "Key": "ds_ruin",
+      "Race": "Orc",
+      "PublishedDPS": 852.622486702956,
+      "DPS": 856.2914170436018,
+      "Change": 3.6689303406457157,
+      "ChangePercent": 0.4303112336191406
+    },
+    {
+      "Key": "ds_ruin",
+      "Race": "Undead",
+      "PublishedDPS": 863.2227424617404,
+      "DPS": 868.1490645076123,
+      "Change": 4.926322045871871,
+      "ChangePercent": 0.5706895571151227
+    },
+    {
+      "Key": "destruction",
+      "Race": "Orc",
+      "PublishedDPS": 911.2703810260479,
+      "DPS": 915.6416937695748,
+      "Change": 4.371312743526914,
+      "ChangePercent": 0.4796943733214487
+    },
+    {
+      "Key": "destruction",
+      "Race": "Undead",
+      "PublishedDPS": 913.8224964836819,
+      "DPS": 919.0131739342097,
+      "Change": 5.190677450527801,
+      "ChangePercent": 0.5680181293961528
+    },
+    {
+      "Key": "fury",
+      "Race": "Orc",
+      "PublishedDPS": 987.2227246609431,
+      "DPS": 989.3228441747343,
+      "Change": 2.100119513791242,
+      "ChangePercent": 0.21273006195359212
+    },
+    {
+      "Key": "fury_sunder",
+      "Race": "Orc",
+      "PublishedDPS": 933.3280731429808,
+      "DPS": 934.6614689556254,
+      "Change": 1.3333958126446532,
+      "ChangePercent": 0.14286464224251283
+    },
+    {
+      "Key": "fury",
+      "Race": "Undead",
+      "PublishedDPS": 987.6214757048896,
+      "DPS": 994.522205772112,
+      "Change": 6.900730067222412,
+      "ChangePercent": 0.6987221559046297
+    },
+    {
+      "Key": "fury_sunder",
+      "Race": "Undead",
+      "PublishedDPS": 944.9366485515253,
+      "DPS": 952.2266356652852,
+      "Change": 7.289987113759935,
+      "ChangePercent": 0.7714789266491717
+    },
+    {
+      "Key": "arms",
+      "Race": "Orc",
+      "PublishedDPS": 885.6725626447746,
+      "DPS": 888.1864481696472,
+      "Change": 2.513885524872535,
+      "ChangePercent": 0.2838391557897779
+    },
+    {
+      "Key": "arms",
+      "Race": "Undead",
+      "PublishedDPS": 902.9475859303841,
+      "DPS": 908.6253808777487,
+      "Change": 5.677794947364646,
+      "ChangePercent": 0.6288067032721889
+    },
+    {
+      "Key": "pet_melee",
+      "Race": "Orc",
+      "PublishedDPS": 916.882039606322,
+      "DPS": 919.7538673265911,
+      "Change": 2.8718277202691525,
+      "ChangePercent": 0.31321670577191263
+    },
+    {
+      "Key": "arcane_frost",
+      "Race": "Orc",
+      "PublishedDPS": 785.7081559749356,
+      "DPS": 787.3668739813806,
+      "Change": 1.6587180064450422,
+      "ChangePercent": 0.21111121143788658
+    },
+    {
+      "Key": "arcane_frost",
+      "Race": "Undead",
+      "PublishedDPS": 790.0091808716246,
+      "DPS": 794.7285591822565,
+      "Change": 4.719378310631896,
+      "ChangePercent": 0.5973827171761315
+    },
+    {
+      "Key": "fury_2h",
+      "Race": "Orc",
+      "PublishedDPS": 888.7416124973959,
+      "DPS": 890.9895727429973,
+      "Change": 2.247960245601462,
+      "ChangePercent": 0.25293743580707684
+    },
+    {
+      "Key": "fury_2h",
+      "Race": "Undead",
+      "PublishedDPS": 890.8835885805895,
+      "DPS": 895.5529715672359,
+      "Change": 4.669382986646383,
+      "ChangePercent": 0.5241294201059343
+    },
+    {
+      "Key": "retribution_physical",
+      "Race": "Undead",
+      "PublishedDPS": 926.7144492523257,
+      "DPS": 932.7893250823948,
+      "Change": 6.074875830069118,
+      "ChangePercent": 0.6555283383107291
+    },
+    {
+      "Key": "tank_warrior",
+      "Race": "Orc",
+      "PublishedDPS": 509.57940646675274,
+      "DPS": 509.57940646675274,
+      "Change": 0.0,
+      "ChangePercent": 0.0
+    },
+    {
+      "Key": "tank_warrior",
+      "Race": "Undead",
+      "PublishedDPS": 542.4508003394543,
+      "DPS": 549.2199699977581,
+      "Change": 6.769169658303781,
+      "ChangePercent": 1.247886380491603
+    },
+    {
+      "Key": "protection_paladin",
+      "Race": "Undead",
+      "PublishedDPS": 560.9681991529299,
+      "DPS": 568.3819799213353,
+      "Change": 7.413780768405445,
+      "ChangePercent": 1.3216044652086145
+    },
+    {
+      "Key": "survival_weave",
+      "Race": "Orc",
+      "PublishedDPS": 1368.6885978309654,
+      "DPS": 1373.028019613143,
+      "Change": 4.339421782177624,
+      "ChangePercent": 0.3170496042017579
+    },
+    {
+      "Key": "frostfire",
+      "Race": "Orc",
+      "PublishedDPS": 921.6148617870012,
+      "DPS": 923.7766886037454,
+      "Change": 2.16182681674411,
+      "ChangePercent": 0.23456943961952526
+    },
+    {
+      "Key": "frostfire",
+      "Race": "Undead",
+      "PublishedDPS": 926.8845573398055,
+      "DPS": 932.6874005260112,
+      "Change": 5.802843186205678,
+      "ChangePercent": 0.6260588916121357
+    },
+    {
+      "Key": "shockadin",
+      "Race": "Undead",
+      "PublishedDPS": 873.537233076718,
+      "DPS": 879.7970360782223,
+      "Change": 6.259803001504224,
+      "ChangePercent": 0.7166040283659525
+    }
+  ]
+}

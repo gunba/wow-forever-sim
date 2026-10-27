@@ -35,9 +35,9 @@ func TestForeverBloodFury(t *testing.T) {
 	unit := env.Raid.AllPlayerUnits[0]
 	sim := &core.Simulation{Environment: env}
 	spell := unit.GetSpell(core.ActionID{SpellID: 20572})
-	// Client 1.60.1.70425 raises the cooldown to three minutes (October 15 notes).
-	if spell.DefaultCast.GCD != 0 || spell.Cost != nil || spell.CD.Duration != 3*time.Minute {
-		t.Fatal("Blood Fury must be free, off the GCD, on a three-minute cooldown")
+	// Two minutes at launch (October 27 addition to the October 26 notes); the clients have three.
+	if spell.DefaultCast.GCD != 0 || spell.Cost != nil || spell.CD.Duration != 2*time.Minute {
+		t.Fatal("Blood Fury must be free, off the GCD, on a two-minute cooldown")
 	}
 	before := unit.GetStats()
 	aura := unit.GetAura("Blood Fury")
@@ -119,13 +119,13 @@ func TestForeverTouchOfTheGrave(t *testing.T) {
 		if key == "arcane" || key == "shadow" || key == "affliction" {
 			wantID = 1260201
 		}
-		// Client 1.60.1.70425: 20% (30% for casters) with a 25-second internal cooldown.
-		if aura.ActionID.SpellID != wantID || aura.Icd == nil || aura.Icd.Duration != 25*time.Second {
+		// 20% (30% for casters) since client 70425; a 15-second internal cooldown at launch.
+		if aura.ActionID.SpellID != wantID || aura.Icd == nil || aura.Icd.Duration != 15*time.Second {
 			t.Errorf("%s: incorrect racial variant or ICD", key)
 		}
 	}
 
-	// A fight shorter than the 25-second cooldown procs at most once, so the share of fights
+	// A fight shorter than the 15-second cooldown procs at most once, so the share of fights
 	// with a proc is 1 - (1 - 0.3 x hit)^casts for the caster variant.
 	req := racialFixture("arcane", proto.Race_RaceUndead)
 	p := req.Raid.Parties[0].Players[0]
