@@ -186,10 +186,26 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "05002152000002-23450000130135031-003",
+    "talentsString": "03022050021003-23450000130135031-002",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
+      "prepullActions": [
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 18809
+              }
+            }
+          },
+          "doAtValue": {
+            "const": {
+              "val": "-6.05s"
+            }
+          }
+        }
+      ],
       "priorityList": [
         {
           "action": {
@@ -201,7 +217,7 @@
                 },
                 "rhs": {
                   "const": {
-                    "val": "80%"
+                    "val": "0%"
                   }
                 }
               }
@@ -231,7 +247,7 @@
                       },
                       "rhs": {
                         "const": {
-                          "val": "20%"
+                          "val": "5%"
                         }
                       }
                     }
@@ -255,6 +271,33 @@
             "castSpell": {
               "spellId": {
                 "spellId": 12051
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpLe",
+                "lhs": {
+                  "auraNumStacks": {
+                    "auraId": {
+                      "spellId": 44445
+                    }
+                  }
+                },
+                "rhs": {
+                  "const": {
+                    "val": "2"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 10199,
+                "rank": 7
               }
             }
           }
@@ -289,30 +332,15 @@
         {
           "action": {
             "condition": {
-              "cmp": {
-                "op": "OpGe",
-                "lhs": {
-                  "currentMana": {}
-                },
-                "rhs": {
-                  "math": {
-                    "op": "OpMul",
-                    "lhs": {
-                      "remainingTime": {}
-                    },
-                    "rhs": {
-                      "const": {
-                        "val": "10"
-                      }
-                    }
-                  }
+              "auraIsActive": {
+                "auraId": {
+                  "spellId": 12536
                 }
               }
             },
             "castSpell": {
               "spellId": {
-                "spellId": 10199,
-                "rank": 7
+                "spellId": 10151
               }
             }
           }
@@ -320,21 +348,25 @@
         {
           "action": {
             "condition": {
-              "or": {
+              "and": {
                 "vals": [
                   {
                     "cmp": {
-                      "op": "OpLt",
+                      "op": "OpGe",
                       "lhs": {
-                        "auraNumStacks": {
-                          "auraId": {
-                            "spellId": 12873
-                          }
-                        }
+                        "currentMana": {}
                       },
                       "rhs": {
-                        "const": {
-                          "val": "5"
+                        "math": {
+                          "op": "OpMul",
+                          "lhs": {
+                            "remainingTime": {}
+                          },
+                          "rhs": {
+                            "const": {
+                              "val": "3"
+                            }
+                          }
                         }
                       }
                     }
@@ -343,15 +375,15 @@
                     "cmp": {
                       "op": "OpLe",
                       "lhs": {
-                        "auraRemainingTime": {
+                        "auraNumStacks": {
                           "auraId": {
-                            "spellId": 12873
+                            "spellId": 30451
                           }
                         }
                       },
                       "rhs": {
                         "const": {
-                          "val": "5s"
+                          "val": "0"
                         }
                       }
                     }
@@ -361,8 +393,7 @@
             },
             "castSpell": {
               "spellId": {
-                "spellId": 10207,
-                "rank": 7
+                "spellId": 30451
               }
             }
           }
@@ -370,29 +401,15 @@
         {
           "action": {
             "condition": {
-              "cmp": {
-                "op": "OpGe",
-                "lhs": {
-                  "currentMana": {}
-                },
-                "rhs": {
-                  "math": {
-                    "op": "OpMul",
-                    "lhs": {
-                      "remainingTime": {}
-                    },
-                    "rhs": {
-                      "const": {
-                        "val": "150"
-                      }
-                    }
-                  }
+              "auraIsActive": {
+                "auraId": {
+                  "spellId": 44404
                 }
               }
             },
             "castSpell": {
               "spellId": {
-                "spellId": 10151
+                "spellId": 10212
               }
             }
           }

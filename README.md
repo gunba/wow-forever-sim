@@ -47,6 +47,11 @@ simulator's **Ranked builds** selector. Clicking a matrix cell opens that exact
 setup and its actual gear-derived hit; no manual import is needed.
 [Frozen benchmark inputs](artifacts/modelled_gear/forever_input_profiles.json) are also the
 native benchmark defaults, separate from the results for replay.
+The [October 27 update](docs/october-27-update.md) re-runs the matrix with the launch racial values, the APL search
+sweep's engine fixes (pre-pull contact warnings, conditions on things a character lacks, pre-pull swings, fractional
+durations), damage-over-time ranks that replace each other, pre-trapping, Mage-only imbue scrolls, pet hit at 17:8 and the
+logged Summon Hawk. It gives 25 DPS builds re-searched talents and rotations, and keeps six builds whose candidates changed
+theme or copied another build.
 The [October 22 learned rotations](docs/october-22-learned-rotations.md) added a Learned column to the review matrix:
 what a reinforcement-learning agent reached for each DPS build ([method and caveats](docs/learned-rotations.md)). The
 column and its simmable profiles have since been removed.
@@ -62,7 +67,8 @@ builds, and re-searched talents and consumables for every DPS build. They follow
 [October 16 follow-up](docs/october-16-follow-up.md) (class imbue slots, real relics, Rake scaling) and the
 [October 15 update](docs/october-15-update.md) (client 1.60.1.70425 and the October 15 development notes), and
 [Beta test procedures](docs/beta-test-procedures.md) explains how to settle each remaining open question in game.
-[Comparison](artifacts/correctness/october_21_warrior/comparison.json) lists every race/build against the previous release;
+[Comparison](artifacts/correctness/october_27/comparison.json) lists every race/build against the previous release, and the
+[October 27 selection evidence](artifacts/correctness/october_27/selection-evidence.json) records each re-searched candidate;
 [October 16 selection evidence](artifacts/correctness/october_16/selection-evidence.json) records the earlier relic,
 imbue, rotation, talent and confirmed gear selections. The earlier [October 11 log audit](docs/october-11-log-audit.md)
 and [October 11 audit](docs/october-11-audit.md) list the corrections before it. The [October 8 review](docs/october-8-review.md)

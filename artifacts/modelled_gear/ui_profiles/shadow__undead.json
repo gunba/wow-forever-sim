@@ -127,8 +127,7 @@
       "defaultPotion": "MajorSpellblastingPotion",
       "defaultConjured": "ConjuredDemonicRune",
       "zanzaBuff": "CerebralCortexCompound",
-      "intellectElixir": "ElixirOfTheOwl",
-      "mainHandScroll": "ScrollOfImbuePrecision"
+      "intellectElixir": "ElixirOfTheOwl"
     },
     "bonusStats": {
       "stats": [
@@ -184,7 +183,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "30503300103--50452001201302251",
+    "talentsString": "50500500102--50542001201302251",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
@@ -199,7 +198,45 @@
           },
           "doAtValue": {
             "const": {
-              "val": "-1.5s"
+              "val": "-3s"
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 10947
+              }
+            }
+          },
+          "doAtValue": {
+            "math": {
+              "op": "OpSub",
+              "lhs": {
+                "const": {
+                  "val": "0s"
+                }
+              },
+              "rhs": {
+                "math": {
+                  "op": "OpAdd",
+                  "lhs": {
+                    "spellCastTime": {
+                      "spellId": {
+                        "spellId": 10947
+                      }
+                    }
+                  },
+                  "rhs": {
+                    "spellTravelTime": {
+                      "spellId": {
+                        "spellId": 10947
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -215,69 +252,6 @@
             "castSpell": {
               "spellId": {
                 "spellId": 1309636
-              }
-            }
-          }
-        },
-        {
-          "action": {
-            "condition": {
-              "not": {
-                "val": {
-                  "dotIsActive": {
-                    "spellId": {
-                      "spellId": 19280,
-                      "rank": 6
-                    }
-                  }
-                }
-              }
-            },
-            "castSpell": {
-              "spellId": {
-                "spellId": 19280,
-                "rank": 6
-              }
-            }
-          }
-        },
-        {
-          "action": {
-            "condition": {
-              "and": {
-                "vals": [
-                  {
-                    "not": {
-                      "val": {
-                        "dotIsActive": {
-                          "spellId": {
-                            "spellId": 10894,
-                            "rank": 8
-                          }
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "cmp": {
-                      "op": "OpGe",
-                      "lhs": {
-                        "remainingTime": {}
-                      },
-                      "rhs": {
-                        "const": {
-                          "val": "10"
-                        }
-                      }
-                    }
-                  }
-                ]
-              }
-            },
-            "castSpell": {
-              "spellId": {
-                "spellId": 10894,
-                "rank": 8
               }
             }
           }
@@ -317,7 +291,99 @@
         },
         {
           "action": {
-            "channelSpell": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpLe",
+                      "lhs": {
+                        "dotRemainingTime": {
+                          "spellId": {
+                            "spellId": 10894
+                          }
+                        }
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "3s"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "remainingTime": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "9s"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 10894,
+                "rank": 8
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpLe",
+                      "lhs": {
+                        "dotRemainingTime": {
+                          "spellId": {
+                            "spellId": 19280
+                          }
+                        }
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "5s"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "remainingTime": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "12s"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 19280,
+                "rank": 6
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
               "spellId": {
                 "spellId": 18807,
                 "rank": 6

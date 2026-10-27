@@ -4,21 +4,21 @@
 
 Current level-60 DPS and tank scenarios, plus conditional spell, item and encounter coverage. This register consolidates the recorded questions; it is not a claim that unlisted game behavior has been verified.
 
-**Latest follow-up (2026-10-22):** October 22 learned rotations: a Learned column in the review matrix showing what a reinforcement-learning agent reached for each DPS build at its best race, with its talents and actions, and simmable profiles where APL rules converted from it beat the published APL. Published profiles do not change. [Latest follow-up report](october-22-learned-rotations.md).
+**Latest follow-up (2026-10-27):** October 27 update: launch racial values, engine fixes from the APL search sweep, damage-over-time ranks that replace each other, pre-trapping, Mage-only imbue scrolls, pet hit at 17:8, explosives during the global cooldown and the logged Summon Hawk, with re-searched talents and rotations for 25 DPS builds. The review matrix no longer has a Learned column. [Latest follow-up report](october-27-update.md).
 
 **Original adjudication baseline:** 2026-09-27, `35cab052456a320358e998c12416687d69cae142`. That original review reconciled questions without changing mechanics or benchmark results. This current register also includes the later implementation and benchmark updates linked above; earlier audits remain historical evidence, not current task status.
 
-**Coverage:** 137/137 original entries reviewed; 77 additional coverage gaps, including later follow-ups.
+**Coverage:** 137/137 original entries reviewed; 87 additional coverage gaps, including later follow-ups.
 
 ## Before and after
 
 | Status | Before | Original entries now | Including additions |
 |---|---:|---:|---:|
-| Needs evidence | 84 | 36 | 44 |
+| Needs evidence | 84 | 36 | 47 |
 | Implementation gap | 27 | 3 | 3 |
-| Model assumption | 5 | 3 | 6 |
-| Accepted working answer | 0 | 15 | 39 |
-| Resolved | 20 | 52 | 79 |
+| Model assumption | 5 | 3 | 7 |
+| Accepted working answer | 0 | 15 | 41 |
+| Resolved | 20 | 52 | 83 |
 | Outside current scenarios | 1 | 43 | 43 |
 
 A working answer is credible enough for an explicitly qualified model, not verified server behavior. Confidence applies to the stated finding, not every effect of that class. An implementation gap is not a request for a game experiment.
@@ -94,6 +94,12 @@ An experiment within the current level-30 beta, subject to actual access, learne
 - **Medium · [HUN-016 — Fire trap Attack Power scaling](#hun-016)**
   - Prerequisites: Hunter with Immolation Trap and two gear sets differing only in melee or only in ranged Attack Power.
   - Observe / verify: Total trap damage per set, about 20 traps each.
+- **Medium · [HUN-022 — Auto Shot wind-up and haste](#hun-022)**
+  - Prerequisites: A Hunter with Rapid Fire, recording with timestamps.
+  - Observe / verify: Time from the start of the wind-up to the shot leaving, with and without Rapid Fire.
+- **Medium · [HUN-023 — Off-hand swing after Attack is pressed](#hun-023)**
+  - Prerequisites: A dual-wielding Hunter starting melee from range, recording combat log timestamps.
+  - Observe / verify: Time from the first main-hand swing to the first off-hand swing.
 - **Medium · [PAL-004 — Holy melee partial resistance](#pal-004)**
   - Prerequisites: Holy Strike and seal attacks against targets of known equal and higher levels; fixed damage inputs.
   - Observe / verify: Inspect explicit resisted amounts and damage clusters separately from miss/dodge outcomes. A small sample with no resist is not proof of immunity.
@@ -115,6 +121,9 @@ An experiment within the current level-30 beta, subject to actual access, learne
 - **Medium · [WAR-029 — Demonic Rune self-damage gives a Warrior rage](#war-029)**
   - Prerequisites: Warrior with a Demonic Rune.
   - Observe / verify: Rage before and after using the Rune out of combat or between pulls.
+- **Medium · [WAR-030 — Rage decay before the pull](#war-030)**
+  - Prerequisites: A Warrior out of combat with Bloodrage.
+  - Observe / verify: Rage every second for 20 s after Bloodrage ends.
 - **Medium · [WL-006 — Improved Imp's extra dummy effect](#wl-006)**
   - Prerequisites: A live Imp, ranks 0/1/2/3 of Improved Imp, fixed owner/pet haste and mana.
   - Observe / verify: Record Firebolt cast start/end and the interval before the next cast. Distinguish a shorter cast from removal of the engine's artificial 200-ms recast delay.
@@ -991,6 +1000,28 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [sim/core/base_stats.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/base_stats.go) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/414](https://github.com/ClassicWoWCommunity/forever-bugs/issues/414) · [https://github.com/wowsims/forever/pull/619](https://github.com/wowsims/forever/pull/619)
 
+<a id="core-033"></a>
+
+### CORE-033 — Ranks of one damage-over-time spell on a target
+
+**Resolved · Medium priority · High confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Do two ranks of the same caster damage-over-time spell stack on one target?
+
+**Finding:** Answered by Jordan on 27 October: ranks do not stack.
+
+**Current implementation / scenario:** No. Applying one rank removes any other rank of the same spell from that target. Channels are not affected.
+
+**Impact:** Rotations cannot gain by alternating ranks of Corruption, Immolate, Shadow Word: Pain and similar spells.
+
+**Remaining scope:** None.
+
+**Implementation / model follow-up:** Dot.replaceOtherRanks in sim/core/dot.go, with a regression test.
+
+**References:** [sim/core/dot.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/dot.go)
+
 <a id="core-013"></a>
 
 ### CORE-013 — Physical multi-school mitigation
@@ -1060,6 +1091,28 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Observe / verify: Buff uptime in a log.
 
 **References:** [sim/core/buffs.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/buffs.go) · [ui/core/components/inputs/buffs_debuffs.ts](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/components/inputs/buffs_debuffs.ts)
+
+<a id="core-032"></a>
+
+### CORE-032 — Explosives thrown during the global cooldown
+
+**Accepted working answer · Low priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Can Autocast throw an engineering explosive while the global cooldown runs?
+
+**Finding:** Explosives are off the global cooldown; wowsims/forever #621 and #627 throw them inside it.
+
+**Current implementation / scenario:** Yes, if what is left of the global cooldown covers the explosive's cast. The RL environment's emulation uses the same rule.
+
+**Impact:** Same seed: Fire +1.05%, 2H Bloodthirst +0.56%, Frostfire +0.42%; other builds within 0.2%.
+
+**Remaining scope:** Not timed in a Forever log.
+
+**Implementation / model follow-up:** Autocast Other Cooldowns.
+
+**References:** [sim/core/major_cooldown.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/major_cooldown.go) · [sim/core/apl_actions_casting.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/apl_actions_casting.go) · [https://github.com/wowsims/forever/issues/621](https://github.com/wowsims/forever/issues/621) · [https://github.com/wowsims/forever/issues/627](https://github.com/wowsims/forever/issues/627)
 
 ## Warrior
 
@@ -1250,6 +1303,32 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Observe / verify: Rage before and after using the Rune out of combat or between pulls.
 
 **References:** [sim/core/consumes.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/consumes.go) · [docs/upstream-forever-followup-2026-09-23.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/upstream-forever-followup-2026-09-23.md)
+
+<a id="war-030"></a>
+
+### WAR-030 — Rage decay before the pull
+
+**Needs evidence · Medium priority · Low confidence**
+
+**Disposition:** Game test needed
+
+**Question:** Does rage decay out of combat before the pull, and how fast?
+
+**Finding:** Unanswered.
+
+**Current implementation / scenario:** Not modelled: rage gained before the pull is kept. Searches quarantine Bloodrage earlier than -10 s, and published rotations use it no earlier than -10 s.
+
+**Impact:** An early Bloodrage would otherwise carry its full rage into the fight.
+
+**Remaining scope:** The decay rate out of combat.
+
+**Implementation / model follow-up:** None yet.
+
+**Current beta · level 30**
+- Prerequisites: A Warrior out of combat with Bloodrage.
+- Observe / verify: Rage every second for 20 s after Bloodrage ends.
+
+**References:** [sim/core/rage.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/rage.go)
 
 <a id="war-003"></a>
 
@@ -2941,6 +3020,58 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [sim/hunter/immolation_trap.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/immolation_trap.go)
 
+<a id="hun-022"></a>
+
+### HUN-022 — Auto Shot wind-up and haste
+
+**Needs evidence · Medium priority · Low confidence**
+
+**Disposition:** Game test needed
+
+**Question:** Does ranged haste shorten Auto Shot's wind-up?
+
+**Finding:** Unanswered.
+
+**Current implementation / scenario:** Yes in this simulator. Upstream wowsims/forever says it does not, without citing evidence.
+
+**Impact:** Changes Hunter weave timing under Rapid Fire and other haste.
+
+**Remaining scope:** Wind-up length with and without haste.
+
+**Implementation / model follow-up:** None yet.
+
+**Current beta · level 30**
+- Prerequisites: A Hunter with Rapid Fire, recording with timestamps.
+- Observe / verify: Time from the start of the wind-up to the shot leaving, with and without Rapid Fire.
+
+**References:** [sim/hunter/hunter.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/hunter.go)
+
+<a id="hun-023"></a>
+
+### HUN-023 — Off-hand swing after Attack is pressed
+
+**Needs evidence · Medium priority · Low confidence**
+
+**Disposition:** Game test needed
+
+**Question:** Does the off hand wait half a swing after Attack is pressed?
+
+**Finding:** Unanswered.
+
+**Current implementation / scenario:** No in this simulator: the off hand swings on arrival. Upstream wowsims/forever delays it for Hunters, without citing evidence.
+
+**Impact:** About 136 DPS for SV Weave.
+
+**Remaining scope:** The off hand's first swing time.
+
+**Implementation / model follow-up:** None yet.
+
+**Current beta · level 30**
+- Prerequisites: A dual-wielding Hunter starting melee from range, recording combat log timestamps.
+- Observe / verify: Time from the first main-hand swing to the first off-hand swing.
+
+**References:** [sim/core/attack.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/attack.go)
+
 <a id="hun-004"></a>
 
 ### HUN-004 — Summon Hawk guardian model
@@ -2953,7 +3084,7 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Finding:** Independent capture of all 222 encounters in public reports 2695/2701 supports two guardians, replacement, retargeting, minimum one-second opening travel and ranged-hasted assault timing. It finds 18 crits in 1,029 landed assaults, contradicting never-crit. These are October 2 observations, not proof of unchanged October 8 server behavior. The tested lifecycle implementation replaces the one-DoT surrogate; numerical rank-60 calibration remains provisional. October 11 log audit: Public foreverlogs.gg reports (1,312 Hawks) confirm two concurrent guardians, at most 18 seconds of attacks, an opening dive about 1.0 s after the cast that never missed, and assault attacks that use the full melee table (4.9% miss, 4.6% dodge, 1.2% parry, 0.8% block). Assault swings were 2.2 s apart in most cases (1.7 s with extra haste). Assault crit was 4.8% overall: 5.1% for a 26-point and 7.6% for a 21-point Beast Mastery Hunter, but individual talent ranks (Ferocity) are not in the logs.
 
-**Current implementation / scenario:** Two independent 18-second guardians with global oldest replacement, arrival attacks and owner ranged-speed inheritance. Opening uses always-hit, crit-capable damage after at least one second. Assault calibration is 0.35 × rank base, 2.5-second base swings and 1.5% effective crit; UF applies once, Ferocity assault transfer is unresolved.
+**Current implementation / scenario:** From combat logs: 80% of the owner's ranged attack power, half the owner's crit plus Ferocity, the owner's hit and expertise, and the owner's damage multipliers (wowsims/forever 81651da66, b89878e6f). Two independent 18-second guardians with oldest replacement, arrival attacks and the owner's ranged speed.
 
 **Impact:** Pet/Melee row and Hawk alternatives; major model-dependent build opportunity.
 
@@ -3219,6 +3350,32 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **References:** [ui/hunter/apls/marksmanship_weave.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/hunter/apls/marksmanship_weave.apl.json) · [ui/hunter/apls/beast_mastery_weave.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/hunter/apls/beast_mastery_weave.apl.json) · [https://github.com/wowsims/forever](https://github.com/wowsims/forever)
 
+<a id="hun-020"></a>
+
+### HUN-020 — Pet hit at the 17:8 ratio
+
+**Accepted working answer · Medium priority · Moderate confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** How do Hunter pets and Warlock demons inherit hit from their owner?
+
+**Finding:** A developer statement in the Forever bug tracker gives the 17:8 ratio.
+
+**Current implementation / scenario:** Hunter pets get the Hunter's ranged hit as melee hit and 17/8 of it as spell hit; demons get the Warlock's spell hit as spell hit and 8/17 of it as melee hit.
+
+**Impact:** The Succubus's melee hit falls from about 16% to 7.5%. Cats cast no spells.
+
+**Remaining scope:** Not measured in a Forever log.
+
+**Implementation / model follow-up:** Pet stat inheritance (sim/core/forever_pet_stats.go).
+
+**Optional / conditional · Beyond level 30 / launch**
+- Prerequisites: A Warlock with a Succubus and known spell hit, attacking a level-63 target.
+- Observe / verify: The Succubus's melee miss rate over a few hundred swings, against 8/17 of the Warlock's spell hit.
+
+**References:** [sim/core/forever_pet_stats.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/forever_pet_stats.go) · [https://github.com/ClassicWoWCommunity/forever-bugs/issues/394](https://github.com/ClassicWoWCommunity/forever-bugs/issues/394)
+
 <a id="hun-009"></a>
 
 ### HUN-009 — Demoralizing Screech target AP debuff
@@ -3266,6 +3423,28 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **Implementation / model follow-up:** sim/hunter.
 
 **References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374](https://wago.tools/builds-diff?to=1.60.1.70425&from=1.60.1.70374)
+
+<a id="hun-021"></a>
+
+### HUN-021 — Traps laid before the pull
+
+**Resolved · Low priority · High confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Does a trap laid before the pull go off when the fight starts?
+
+**Finding:** Answered by Jordan on 27 October: Hunters can pre-trap.
+
+**Current implementation / scenario:** Yes. A trap laid at -60 s or later goes off at 0 at any distance; its cooldown starts when it is laid.
+
+**Impact:** Hunter openers can pre-trap with Immolation, Explosive, Freezing and Frost Trap.
+
+**Remaining scope:** None.
+
+**Implementation / model follow-up:** layTrapBeforePull in sim/hunter/utility.go.
+
+**References:** [sim/hunter/utility.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/utility.go) · [sim/hunter/immolation_trap.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/hunter/immolation_trap.go)
 
 ## Mage
 
@@ -3622,6 +3801,30 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Observe / verify: Clearcasting gains per Arcane Missiles cast.
 
 **References:** [sim/mage/talents.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/talents.go) · [sim/mage/blizzard.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/blizzard.go) · [sim/mage/flamestrike.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/flamestrike.go) · [https://github.com/wowsims/forever/pull/489](https://github.com/wowsims/forever/pull/489)
+
+<a id="mag-014"></a>
+
+### MAG-014 — Lower Arcane Wrath ranks
+
+**Resolved · Low priority · High confidence**
+
+**Disposition:** Credible working answer
+
+**Question:** Can a Mage cast lower ranks of Arcane Wrath?
+
+**Finding:** Answered by Jordan on 27 October.
+
+**Current implementation / scenario:** Yes. Every rank is castable and all ranks share one 6-second cooldown.
+
+**Impact:** Rotations may cast a lower rank; the Arcane preset casts the lowest.
+
+**Remaining scope:** None.
+
+**Implementation / model follow-up:** registerArcaneWrathRank in sim/mage/arcane_blast.go.
+
+**References:** [sim/mage/arcane_blast.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/mage/arcane_blast.go)
+
+**Related:** DATA-001
 
 ## Priest
 
@@ -4721,9 +4924,9 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Finding:** October 8 adds explicit reduced Improved Wing Clip proc chance for substantially downranked casts, without publishing thresholds/formula. Early caster rank smoothing is a base/growth update, not proof that hidden downrank penalties disappeared.
 
-**Current implementation / scenario:** Captured rank coefficients and new early-rank ranges remain. Active caster presets use highest registered ranks; Hunter Wing Clip likewise registers only its highest trained rank. Additional hidden SP/proc penalties are not invented.
+**Current implementation / scenario:** Each rank uses the client's coefficient (checked against client 1.60.1.70450 for the ranks the presets use); no further downranking penalty is modelled. Presets may cast lower ranks (Jordan, 27 October). Hunter Wing Clip registers only its highest trained rank.
 
-**Impact:** Current rank-2 Smite/Lightning Bolt, lower-rank Paladin choices and conditional Frostfire research.
+**Impact:** Six presets cast lower ranks. In this simulator they are worth about 270 DPS to Demonology (rank-2 Shadow Bolt at or below 80% mana), 80 to Stormcaller (rank-2 Lightning Bolt filler), 55 to Frostfire (lowest Scorch for Fire Vulnerability, lowest Fire Blast), 10 to Elemental, 8 to Destruction and 2 to Arcane. A hidden server penalty would reduce these.
 
 **Remaining scope:** Server penalty curves, including Wing Clip proc reduction and imported low-rank rotations.
 
@@ -4856,6 +5059,28 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **Optional / conditional · Beyond level 30 / launch**
 - Prerequisites: Two crit elixirs.
 - Observe / verify: Character-sheet crit with each and both.
+
+**References:** [sim/core/consumes.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/consumes.go) · [ui/core/components/inputs/consumables.ts](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/components/inputs/consumables.ts)
+
+<a id="core-031"></a>
+
+### CORE-031 — Imbue scrolls are Mage-only
+
+**Resolved · Medium priority · High confidence**
+
+**Disposition:** Source-backed answer
+
+**Question:** Can classes other than Mage use the Scrolls of Imbue (277502 Precision, 277494 Accuracy)?
+
+**Finding:** Client item data gives both scrolls AllowableClass 128 (Mage).
+
+**Current implementation / scenario:** No. The engine ignores both scrolls for other classes, and the consumable picker offers them only to Mages.
+
+**Impact:** Non-Mage builds lose the scroll's 1% crit per weapon: about 0.8% DPS with one weapon and 1.6% dual-wielding.
+
+**Remaining scope:** None.
+
+**Implementation / model follow-up:** Mage-only in the engine and the picker; frozen benchmark inputs no longer carry them for other classes.
 
 **References:** [sim/core/consumes.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/consumes.go) · [ui/core/components/inputs/consumables.ts](https://github.com/gunba/wow-forever-sim/blob/forever/ui/core/components/inputs/consumables.ts)
 
@@ -5340,6 +5565,28 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 **Earlier references:** H20 / M02 (remaining generic-shield portion)
 
 **Related:** PAL-006, WAR-003
+
+<a id="scen-017"></a>
+
+### SCEN-017 — Pre-pull actions that reach the enemy
+
+**Model assumption · Medium priority · High confidence**
+
+**Disposition:** Scenario decision
+
+**Question:** Which pre-pull actions start the fight early?
+
+**Finding:** Jordan: fire totem placement does not start the fight; the rest follows the game's rule that contact pulls.
+
+**Current implementation / scenario:** Anything that reaches the enemy before 0 (a hit, miss, tick or aura such as a curse) is flagged on the pre-pull action responsible, because in the game it starts the fight. Hunter's Mark, Battle Shout's threat and fire totem placement are exempt. Damage before 0 is not counted in any case.
+
+**Impact:** Searches reject flagged rotations, so pre-casts are timed to land at or after 0.
+
+**Remaining scope:** Whether any other effect is pull-safe in the game.
+
+**Implementation / model follow-up:** Environment.notePrepullContact in sim/core/apl.go.
+
+**References:** [sim/core/apl.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/apl.go) · [sim/core/spell_result.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/spell_result.go)
 
 <a id="scen-016"></a>
 

@@ -84,19 +84,19 @@ export const TalentsP1 = PresetUtils.makePresetTalents('Marksmanship 5/37/9', Sa
 
 export const TalentsBeastMastery = PresetUtils.makePresetTalents(
 	'Beast Mastery 31/20/0',
-	SavedTalents.create({ talentsString: '5320001505101251-00531510005' }),
+	SavedTalents.create({ talentsString: '5320001505101251-00532500005' }),
 );
 // Marksmanship melee weave: wowsims/forever's MM Weave preset, re-searched (Hawk Eye 1, Rapid Killing 1, Ranged
 // Weapon Specialization 3, Resourcefulness 1, Expose Prey 1).
 export const TalentsMarksmanshipWeave = PresetUtils.makePresetTalents(
-	'MM Weave 0/28/23',
-	SavedTalents.create({ talentsString: '-105305131150003-5502000300501101' }),
+	'MM Weave 0/27/24',
+	SavedTalents.create({ talentsString: '-005305031050302-5302002300501201' }),
 );
-export const TalentsSurvival = PresetUtils.makePresetTalents('Survival 7/11/33', SavedTalents.create({ talentsString: '502-0050051-500230230250022151' }));
+export const TalentsSurvival = PresetUtils.makePresetTalents('Survival 7/12/32', SavedTalents.create({ talentsString: '502-005205-500230230050122151' }));
 // Survival melee weave, wowsims/forever's SV Weave preset.
 export const TalentsSurvivalWeave = PresetUtils.makePresetTalents(
 	'SV Weave 0/20/31',
-	SavedTalents.create({ talentsString: '-00530501105-530200230050121151' }),
+	SavedTalents.create({ talentsString: '-00530510105-530200230050122141' }),
 );
 export const TalentsPetMelee = PresetUtils.makePresetTalents(
 	'Pet/Melee 16/11/24',

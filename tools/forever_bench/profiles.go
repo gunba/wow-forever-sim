@@ -24,7 +24,7 @@ type build struct {
 
 func builds() []build {
 	return []build{
-		{"balance", "Balance", "balance_druid", "TalentsMoonkin", "launch", "forever_balance", proto.Class_ClassDruid, [3]int{31, 0, 0}, "moonkinForm"},
+		{"balance", "Balance", "balance_druid", "TalentsMoonkin", "launch", "forever_balance", proto.Class_ClassDruid, [3]int{31, 0, 0}, ""},
 		{"feral", "Feral", "feral_druid", "TalentsFeralCat", "feral", "forever_feral", proto.Class_ClassDruid, [3]int{0, 31, 0}, "berserk"},
 		{"elemental", "Elemental", "elemental_shaman", "TalentsElemental", "default", "forever_elemental", proto.Class_ClassShaman, [3]int{31, 0, 0}, "lavaBurst"},
 		{"stormcaller", "Stormcaller", "elemental_shaman", "TalentsStormcaller", "stormcaller", "forever_stormcaller", proto.Class_ClassShaman, [3]int{21, 20, 0}, ""},
@@ -40,17 +40,17 @@ func builds() []build {
 		{"arcane_frost", "Arcane–Frost", "mage", "TalentsArcaneFrost", "forever_arcane_frost", "forever_frost", proto.Class_ClassMage, [3]int{21, 0, 20}, "missileBarrage"},
 		{"frostfire", "Frostfire", "mage", "TalentsFrostfire", "forever_frostfire", "forever_fire", proto.Class_ClassMage, [3]int{0, 21, 21}, ""},
 		{"retribution", "Retribution", "retribution_paladin", "TalentsRetribution", "basic_ret", "forever_retribution", proto.Class_ClassPaladin, [3]int{0, 0, 31}, "twistOfLight"},
-		{"retribution_physical", "Physical Ret", "retribution_paladin", "TalentsPhysicalRetribution", "basic_ret", "forever_retribution", proto.Class_ClassPaladin, [3]int{0, 0, 31}, "twistOfLight"},
+		{"retribution_physical", "Physical Ret", "retribution_paladin", "TalentsPhysicalRetribution", "physical_ret", "forever_retribution", proto.Class_ClassPaladin, [3]int{0, 0, 31}, "twistOfLight"},
 		{"shockadin", "Shockadin", "retribution_paladin", "TalentsShockadin", "shockadin", "forever_retribution", proto.Class_ClassPaladin, [3]int{21, 0, 21}, "holyShock"},
 		{"shadow", "Shadow", "shadow_priest", "TalentsP1Shadow", "p1", "forever_shadow", proto.Class_ClassPriest, [3]int{0, 0, 31}, "shadowform"},
 		{"smite", "Smite", "smite_priest", "TalentsSmite", "launch", "forever_smite", proto.Class_ClassPriest, [3]int{0, 15, 0}, "searingLight"},
 		{"combat", "Combat", "rogue", "CombatSinisterStrikeTalents", "combat_sinister_strike_sweaty", "forever_combat", proto.Class_ClassRogue, [3]int{0, 31, 0}, "adrenalineRush"},
-		{"mutilate", "Mutilate", "rogue", "AssassinationMutilateTalents", "forever_mutilate", "forever_mutilate", proto.Class_ClassRogue, [3]int{31, 0, 0}, ""},
+		{"mutilate", "Mutilate", "rogue", "AssassinationMutilateTalents", "forever_mutilate", "forever_mutilate", proto.Class_ClassRogue, [3]int{30, 0, 0}, ""},
 		{"subtlety", "Subtlety", "rogue", "TalentsSubtletyHemo", "forever_hemorrhage", "forever_subtlety", proto.Class_ClassRogue, [3]int{0, 0, 31}, "thousandCuts"},
 		{"demonology", "Demonic Pact", "warlock", "TalentsPactOptimised", "forever_pact", "forever_demonology", proto.Class_ClassWarlock, [3]int{0, 31, 0}, "demonicPact"},
-		{"affliction", "Affliction", "warlock", "TalentsDeepAffliction", "forever_affliction", "forever_affliction", proto.Class_ClassWarlock, [3]int{31, 0, 0}, ""},
+		{"affliction", "Affliction", "warlock", "TalentsDeepAffliction", "forever_affliction", "forever_affliction", proto.Class_ClassWarlock, [3]int{30, 0, 0}, ""},
 		{"ds_ruin", "DS/Ruin", "warlock", "TalentsDSRuinPandemic", "forever_ds_ruin", "forever_ds_ruin", proto.Class_ClassWarlock, [3]int{0, 11, 15}, "demonicSacrifice"},
-		{"destruction", "Destruction", "warlock", "TalentsShadowAndFlame", "forever_shadow_and_flame", "forever_destruction", proto.Class_ClassWarlock, [3]int{0, 0, 31}, "incinerate"},
+		{"destruction", "Destruction", "warlock", "TalentsShadowAndFlame", "forever_shadow_and_flame", "forever_destruction", proto.Class_ClassWarlock, [3]int{0, 0, 31}, ""},
 		{"fury", "Fury", "warrior", "TalentsP1DPS", "forever_fury", "forever_fury", proto.Class_ClassWarrior, [3]int{0, 31, 0}, "bloodthirst"},
 		{"fury_sunder", "Fury (Sunder)", "warrior", "TalentsP1DPS", "forever_fury_sunder", "forever_fury", proto.Class_ClassWarrior, [3]int{0, 31, 0}, "bloodthirst"},
 		{"arms", "Arms", "warrior", "TalentsArms", "forever_arms", "forever_arms", proto.Class_ClassWarrior, [3]int{31, 0, 0}, "mortalStrike"},
@@ -133,12 +133,6 @@ func (b build) player(race proto.Race) *proto.Player {
 		Consumes: b.consumes(race), DistanceFromTarget: 20,
 		Profession1:         proto.Profession_Engineering,
 		ForeverTier1Bonuses: true,
-	}
-	// The extra Meditation point only cleared validation for the other five races.
-	if b.Key == "fire" && race == proto.Race_RaceSkyborneHighOrder {
-		variant := b
-		variant.Preset = "TalentsFireHighOrder"
-		p.TalentsString = variant.presetTalents()
 	}
 	switch b.modelKey() {
 	case "balance":

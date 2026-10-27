@@ -136,9 +136,7 @@
       "defaultConjured": "ConjuredRogueThistleTea",
       "dragonBreathChili": true,
       "zanzaBuff": "GroundScorpokAssay",
-      "sapperExplosive": "SapperGoblinSapper",
-      "mainHandScroll": "ScrollOfImbuePrecision",
-      "offHandScroll": "ScrollOfImbuePrecision"
+      "sapperExplosive": "SapperGoblinSapper"
     },
     "bonusStats": {
       "stats": [
@@ -194,11 +192,99 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "0053031035140105-302303202014",
+    "talentsString": "0053031033150105-302303202015",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
+      "prepullActions": [
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 1784
+              }
+            }
+          },
+          "doAtValue": {
+            "const": {
+              "val": "-1s"
+            }
+          }
+        }
+      ],
       "priorityList": [
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpLe",
+                "lhs": {
+                  "remainingTime": {}
+                },
+                "rhs": {
+                  "const": {
+                    "val": "2s"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 11269
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpLe",
+                      "lhs": {
+                        "remainingTime": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "1s"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "currentEnergy": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "60"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 1856
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 11290
+              }
+            }
+          }
+        },
         {
           "action": {
             "condition": {
@@ -224,100 +310,104 @@
         {
           "action": {
             "condition": {
-              "or": {
+              "and": {
                 "vals": [
                   {
-                    "and": {
-                      "vals": [
-                        {
-                          "cmp": {
-                            "op": "OpGe",
-                            "lhs": {
-                              "currentComboPoints": {}
-                            },
-                            "rhs": {
-                              "const": {
-                                "val": "1"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "not": {
-                            "val": {
-                              "auraIsActive": {
-                                "auraId": {
-                                  "spellId": 6774,
-                                  "rank": 2
-                                }
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "cmp": {
-                            "op": "OpGe",
-                            "lhs": {
-                              "remainingTime": {}
-                            },
-                            "rhs": {
-                              "const": {
-                                "val": "6"
-                              }
-                            }
-                          }
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "currentComboPoints": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "2"
                         }
-                      ]
+                      }
                     }
                   },
                   {
-                    "and": {
-                      "vals": [
-                        {
-                          "cmp": {
-                            "op": "OpGe",
-                            "lhs": {
-                              "currentComboPoints": {}
-                            },
-                            "rhs": {
-                              "const": {
-                                "val": "5"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "cmp": {
-                            "op": "OpLt",
-                            "lhs": {
-                              "auraRemainingTime": {
-                                "auraId": {
-                                  "spellId": 6774,
-                                  "rank": 2
-                                }
-                              }
-                            },
-                            "rhs": {
-                              "const": {
-                                "val": "3"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "cmp": {
-                            "op": "OpGt",
-                            "lhs": {
-                              "remainingTime": {}
-                            },
-                            "rhs": {
-                              "const": {
-                                "val": "9"
-                              }
-                            }
+                    "cmp": {
+                      "op": "OpLe",
+                      "lhs": {
+                        "auraRemainingTime": {
+                          "auraId": {
+                            "spellId": 6774,
+                            "rank": 2
                           }
                         }
-                      ]
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "0s"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "remainingTime": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "12s"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 6774,
+                "rank": 2
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "currentComboPoints": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "1"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "not": {
+                      "val": {
+                        "auraIsActive": {
+                          "auraId": {
+                            "spellId": 6774,
+                            "rank": 2
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "remainingTime": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "12s"
+                        }
+                      }
                     }
                   }
                 ]
@@ -383,16 +473,35 @@
         {
           "action": {
             "condition": {
-              "cmp": {
-                "op": "OpGe",
-                "lhs": {
-                  "currentComboPoints": {}
-                },
-                "rhs": {
-                  "const": {
-                    "val": "3"
+              "and": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "currentComboPoints": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "1"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpLe",
+                      "lhs": {
+                        "remainingTime": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "1s"
+                        }
+                      }
+                    }
                   }
-                }
+                ]
               }
             },
             "castSpell": {
@@ -404,6 +513,79 @@
         },
         {
           "action": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "currentComboPoints": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "3"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "currentEnergy": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "50"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 11300
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpLt",
+                      "lhs": {
+                        "currentComboPoints": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "3"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "currentEnergy": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "70"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
             "castSpell": {
               "spellId": {
                 "spellId": 1241584

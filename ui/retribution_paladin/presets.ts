@@ -24,6 +24,7 @@ import {
 import { PaladinAura, PaladinOptions as RetributionPaladinOptions, PaladinSeal } from '../core/proto/paladin.js';
 import { SavedTalents } from '../core/proto/ui.js';
 import APLBasicRetJson from './apls/basic_ret.apl.json';
+import APLPhysicalRetJson from './apls/physical_ret.apl.json';
 import GearRetributionJSON from './gear_sets/forever_retribution.gear.json';
 
 // Preset options for this spec.
@@ -44,12 +45,13 @@ export const DefaultGear = GearRetribution;
 ///////////////////////////////////////////////////////////////////////////
 
 export const APLBasicRet = PresetUtils.makePresetAPLRotation('Basic Ret', APLBasicRetJson);
+export const APLPhysicalRet = PresetUtils.makePresetAPLRotation('Physical Ret', APLPhysicalRetJson);
 
 export const APLPresets = {
 	[ClassicPhase.Phase1]: [],
 	[ClassicPhase.Phase2]: [],
 	[ClassicPhase.Phase3]: [],
-	[ClassicPhase.Phase4]: [APLBasicRet],
+	[ClassicPhase.Phase4]: [APLBasicRet, APLPhysicalRet],
 	[ClassicPhase.Phase5]: [],
 };
 
@@ -62,14 +64,14 @@ export const DefaultAPL = APLBasicRet;
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsRetribution = PresetUtils.makePresetTalents('Retribution 13/6/32', SavedTalents.create({ talentsString: '55003-231-05225331001330301' }));
+export const TalentsRetribution = PresetUtils.makePresetTalents('Retribution 16/2/33', SavedTalents.create({ talentsString: '55003003-2-05225331001330311' }));
 export const TalentsPhysicalRetribution = PresetUtils.makePresetTalents(
-	'Physical Ret 12/6/33',
-	SavedTalents.create({ talentsString: '52003002-231-05225331001330311' }),
+	'Physical Ret 16/1/34',
+	SavedTalents.create({ talentsString: '55003003-1-05225331001330321' }),
 );
 
 // Shockadin (Holy Shock Retribution), wowsims/forever's Holy Shock preset.
-export const TalentsShockadin = PresetUtils.makePresetTalents('Shockadin 23/0/28', SavedTalents.create({ talentsString: '550030032101012--052252300012303' }));
+export const TalentsShockadin = PresetUtils.makePresetTalents('Shockadin 23/0/28', SavedTalents.create({ talentsString: '550030032101012--052153300012303' }));
 
 export const TalentPresets = {
 	[ClassicPhase.Phase1]: [],
@@ -163,7 +165,7 @@ export const BuildPresets = [
 		gear: GearRetribution,
 		consumes: PhysicalRetConsumes,
 		talents: TalentsPhysicalRetribution,
-		rotation: APLBasicRet,
+		rotation: APLPhysicalRet,
 		options: DefaultOptions,
 		distance: 5,
 	}),

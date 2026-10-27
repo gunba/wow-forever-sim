@@ -5,6 +5,20 @@
       "action": {
         "castSpell": {
           "spellId": {
+            "spellId": 14305
+          }
+        }
+      },
+      "doAtValue": {
+        "const": {
+          "val": "-30s"
+        }
+      }
+    },
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
             "spellId": 14322
           }
         }
@@ -39,7 +53,7 @@
       },
       "doAtValue": {
         "const": {
-          "val": "-2s"
+          "val": "-1.25s"
         }
       }
     }
@@ -47,11 +61,6 @@
   "priorityList": [
     {
       "action": {
-        "castSpell": {
-          "spellId": {
-            "spellId": 14325
-          }
-        },
         "condition": {
           "cmp": {
             "op": "OpLe",
@@ -71,6 +80,11 @@
                 "val": "5s"
               }
             }
+          }
+        },
+        "castSpell": {
+          "spellId": {
+            "spellId": 14325
           }
         }
       }
@@ -93,9 +107,13 @@
       "action": {
         "castSpell": {
           "spellId": {
-            "spellId": 13555
+            "spellId": 2643
           }
-        },
+        }
+      }
+    },
+    {
+      "action": {
         "condition": {
           "cmp": {
             "op": "OpLe",
@@ -108,9 +126,14 @@
             },
             "rhs": {
               "const": {
-                "val": "0.5s"
+                "val": "3s"
               }
             }
+          }
+        },
+        "castSpell": {
+          "spellId": {
+            "spellId": 13555
           }
         }
       }
@@ -126,22 +149,6 @@
     },
     {
       "action": {
-        "castSpell": {
-          "spellId": {
-            "spellId": 2643
-          }
-        }
-      }
-    },
-    {
-      "action": {
-        "move": {
-          "rangeFromTarget": {
-            "const": {
-              "val": "5"
-            }
-          }
-        },
         "condition": {
           "cmp": {
             "op": "OpGt",
@@ -156,15 +163,64 @@
               }
             }
           }
+        },
+        "move": {
+          "rangeFromTarget": {
+            "const": {
+              "val": "5"
+            }
+          }
         }
       }
     },
     {
       "action": {
+        "condition": {
+          "and": {
+            "vals": [
+              {
+                "cmp": {
+                  "op": "OpGe",
+                  "lhs": {
+                    "remainingTime": {}
+                  },
+                  "rhs": {
+                    "const": {
+                      "val": "6s"
+                    }
+                  }
+                }
+              },
+              {
+                "spellCanCast": {
+                  "spellId": {
+                    "spellId": 14268
+                  }
+                }
+              },
+              {
+                "cmp": {
+                  "op": "OpLe",
+                  "lhs": {
+                    "dotRemainingTime": {
+                      "spellId": {
+                        "spellId": 14305
+                      }
+                    }
+                  },
+                  "rhs": {
+                    "const": {
+                      "val": "0s"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
         "castSpell": {
           "spellId": {
-            "spellId": 14266,
-            "tag": 3
+            "spellId": 14305
           }
         }
       }
@@ -191,33 +247,14 @@
       "action": {
         "castSpell": {
           "spellId": {
-            "spellId": 14305
-          }
-        },
-        "condition": {
-          "cmp": {
-            "op": "OpGe",
-            "lhs": {
-              "remainingTime": {}
-            },
-            "rhs": {
-              "const": {
-                "val": "12s"
-              }
-            }
+            "spellId": 14266,
+            "tag": 3
           }
         }
       }
     },
     {
       "action": {
-        "move": {
-          "rangeFromTarget": {
-            "const": {
-              "val": "12"
-            }
-          }
-        },
         "condition": {
           "and": {
             "vals": [
@@ -236,57 +273,6 @@
                 "cmp": {
                   "op": "OpGt",
                   "lhs": {
-                    "spellTimeToReady": {
-                      "spellId": {
-                        "spellId": 1317257
-                      }
-                    }
-                  },
-                  "rhs": {
-                    "const": {
-                      "val": "1.5s"
-                    }
-                  }
-                }
-              },
-              {
-                "or": {
-                  "vals": [
-                    {
-                      "not": {
-                        "val": {
-                          "auraIsActive": {
-                            "auraId": {
-                              "spellId": 1310726
-                            }
-                          }
-                        }
-                      }
-                    },
-                    {
-                      "cmp": {
-                        "op": "OpGt",
-                        "lhs": {
-                          "spellTimeToReady": {
-                            "spellId": {
-                              "spellId": 14271
-                            }
-                          }
-                        },
-                        "rhs": {
-                          "const": {
-                            "val": "1.5s"
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              },
-              {
-                "cmp": {
-                  "op": "OpGt",
-                  "lhs": {
                     "autoTimeToNext": {
                       "autoType": "Melee"
                     }
@@ -299,6 +285,13 @@
                 }
               }
             ]
+          }
+        },
+        "move": {
+          "rangeFromTarget": {
+            "const": {
+              "val": "12"
+            }
           }
         }
       }

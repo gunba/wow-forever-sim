@@ -136,9 +136,7 @@
       "defaultConjured": "ConjuredRogueThistleTea",
       "dragonBreathChili": true,
       "zanzaBuff": "GroundScorpokAssay",
-      "sapperExplosive": "SapperGoblinSapper",
-      "mainHandScroll": "ScrollOfImbuePrecision",
-      "offHandScroll": "ScrollOfImbuePrecision"
+      "sapperExplosive": "SapperGoblinSapper"
     },
     "bonusStats": {
       "stats": [
@@ -209,12 +207,75 @@
           },
           "doAtValue": {
             "const": {
-              "val": "-1s"
+              "val": "-2.5s"
             }
           }
         }
       ],
       "priorityList": [
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 11290
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "currentEnergy": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "50"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpLe",
+                      "lhs": {
+                        "currentComboPoints": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "3"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGt",
+                      "lhs": {
+                        "remainingTime": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "25"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 1856
+              }
+            }
+          }
+        },
         {
           "action": {
             "condition": {
@@ -278,7 +339,7 @@
                             },
                             "rhs": {
                               "const": {
-                                "val": "6"
+                                "val": "12"
                               }
                             }
                           }
@@ -315,7 +376,7 @@
                             },
                             "rhs": {
                               "const": {
-                                "val": "3"
+                                "val": "0"
                               }
                             }
                           }
@@ -357,7 +418,7 @@
                 },
                 "rhs": {
                   "const": {
-                    "val": "40"
+                    "val": "30"
                   }
                 }
               }
@@ -385,6 +446,47 @@
         {
           "action": {
             "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpLe",
+                      "lhs": {
+                        "remainingTime": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "3"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "currentComboPoints": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "1"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 11300
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
               "cmp": {
                 "op": "OpGe",
                 "lhs": {
@@ -392,7 +494,7 @@
                 },
                 "rhs": {
                   "const": {
-                    "val": "3"
+                    "val": "5"
                   }
                 }
               }
@@ -414,7 +516,7 @@
                 },
                 "rhs": {
                   "const": {
-                    "val": "3"
+                    "val": "5"
                   }
                 }
               }
@@ -449,7 +551,7 @@
                           },
                           "rhs": {
                             "const": {
-                              "val": "0.5"
+                              "val": "0.15"
                             }
                           }
                         }
@@ -477,7 +579,7 @@
                       },
                       "rhs": {
                         "const": {
-                          "val": "79"
+                          "val": "90"
                         }
                       }
                     }

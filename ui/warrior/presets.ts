@@ -79,10 +79,10 @@ export const TalentsFurySpearing = PresetUtils.makePresetTalents(
 	SavedTalents.create({ talentsString: '20305113102-25053005150010501' }),
 );
 
-export const TalentsArms = PresetUtils.makePresetTalents('Arms 35/16/0', SavedTalents.create({ talentsString: '20305213132515101-55050000001' }));
+export const TalentsArms = PresetUtils.makePresetTalents('Arms 36/13/2', SavedTalents.create({ talentsString: '20305213132515201-3505-2' }));
 export const TalentsFuryTwoHand = PresetUtils.makePresetTalents(
 	'2H Bloodthirst 20/31/0',
-	SavedTalents.create({ talentsString: '30304203032-55050020151010501' }),
+	SavedTalents.create({ talentsString: '20305203032-45050020152010501' }),
 );
 
 export const TalentPresets = {

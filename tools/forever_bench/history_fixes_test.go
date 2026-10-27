@@ -137,6 +137,10 @@ func TestForeverProjectileSpeeds(t *testing.T) {
 				// The ranked MM Weave talents skip Sniper Shot; the turret Marksmanship talents take it.
 				req.Raid.Parties[0].Players[0].TalentsString = "5-0053452011523051-50004"
 			}
+			if tc.key == "destruction" {
+				// The ranked Destruction talents skip Incinerate.
+				req.Raid.Parties[0].Players[0].TalentsString = "2530000003-0005-0050355103101351"
+			}
 			sim := core.NewSim(req, simsignals.Signals{})
 			unit := sim.Raid.AllPlayerUnits[0]
 			for id, speed := range tc.speeds {

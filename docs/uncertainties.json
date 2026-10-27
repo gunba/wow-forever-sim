@@ -34,8 +34,8 @@
    "status": "needs-evidence",
    "title": "Server downranking penalties",
    "question": "Does the server apply additional low-rank SP penalties beyond client coefficients?",
-   "current_model": "Captured rank coefficients and new early-rank ranges remain. Active caster presets use highest registered ranks; Hunter Wing Clip likewise registers only its highest trained rank. Additional hidden SP/proc penalties are not invented.",
-   "impact": "Current rank-2 Smite/Lightning Bolt, lower-rank Paladin choices and conditional Frostfire research.",
+   "current_model": "Each rank uses the client's coefficient (checked against client 1.60.1.70450 for the ranks the presets use); no further downranking penalty is modelled. Presets may cast lower ranks (Jordan, 27 October). Hunter Wing Clip registers only its highest trained rank.",
+   "impact": "Six presets cast lower ranks. In this simulator they are worth about 270 DPS to Demonology (rank-2 Shadow Bolt at or below 80% mana), 80 to Stormcaller (rank-2 Lightning Bolt filler), 55 to Frostfire (lowest Scorch for Fire Vulnerability, lowest Fire Blast), 10 to Elemental, 8 to Destruction and 2 to Arcane. A hidden server penalty would reduce these.",
    "sources": [
     "docs/build_updates.md",
     "docs/check_dispositions.md",
@@ -1934,7 +1934,7 @@
    "status": "provisional",
    "title": "Summon Hawk guardian model",
    "question": "How do Hawk attacks, two-Hawk coexistence and inherited stats actually work?",
-   "current_model": "Two independent 18-second guardians with global oldest replacement, arrival attacks and owner ranged-speed inheritance. Opening uses always-hit, crit-capable damage after at least one second. Assault calibration is 0.35 × rank base, 2.5-second base swings and 1.5% effective crit; UF applies once, Ferocity assault transfer is unresolved.",
+   "current_model": "From combat logs: 80% of the owner's ranged attack power, half the owner's crit plus Ferocity, the owner's hit and expertise, and the owner's damage multipliers (wowsims/forever 81651da66, b89878e6f). Two independent 18-second guardians with oldest replacement, arrival attacks and the owner's ranged speed.",
    "impact": "Pet/Melee row and Hawk alternatives; major model-dependent build opportunity.",
    "sources": [
     "sim/hunter/summon_hawk.go",
@@ -8690,15 +8690,288 @@
     ],
     "previous_status": null
    }
+  },
+  {
+   "id": "CORE-031",
+   "category": "equipment",
+   "kind": "data",
+   "priority": "medium",
+   "status": "resolved",
+   "title": "Imbue scrolls are Mage-only",
+   "question": "Can classes other than Mage use the Scrolls of Imbue (277502 Precision, 277494 Accuracy)?",
+   "current_model": "No. The engine ignores both scrolls for other classes, and the consumable picker offers them only to Mages.",
+   "impact": "Non-Mage builds lose the scroll's 1% crit per weapon: about 0.8% DPS with one weapon and 1.6% dual-wielding.",
+   "sources": [
+    "sim/core/consumes.go",
+    "ui/core/components/inputs/consumables.ts"
+   ],
+   "related": [],
+   "review": {
+    "disposition": "evidence-answer",
+    "confidence": "high",
+    "answer": "Client item data gives both scrolls AllowableClass 128 (Mage).",
+    "remaining": "None.",
+    "implementation": "Mage-only in the engine and the picker; frozen benchmark inputs no longer carry them for other classes.",
+    "tests": [],
+    "previous_status": null
+   }
+  },
+  {
+   "id": "HUN-020",
+   "category": "hunter",
+   "kind": "mechanic",
+   "priority": "medium",
+   "status": "provisional",
+   "title": "Pet hit at the 17:8 ratio",
+   "question": "How do Hunter pets and Warlock demons inherit hit from their owner?",
+   "current_model": "Hunter pets get the Hunter's ranged hit as melee hit and 17/8 of it as spell hit; demons get the Warlock's spell hit as spell hit and 8/17 of it as melee hit.",
+   "impact": "The Succubus's melee hit falls from about 16% to 7.5%. Cats cast no spells.",
+   "sources": [
+    "sim/core/forever_pet_stats.go",
+    "https://github.com/ClassicWoWCommunity/forever-bugs/issues/394"
+   ],
+   "related": [],
+   "review": {
+    "disposition": "credible-answer",
+    "confidence": "moderate",
+    "answer": "A developer statement in the Forever bug tracker gives the 17:8 ratio.",
+    "remaining": "Not measured in a Forever log.",
+    "implementation": "Pet stat inheritance (sim/core/forever_pet_stats.go).",
+    "tests": [
+     {
+      "stage": "launch",
+      "requires": "A Warlock with a Succubus and known spell hit, attacking a level-63 target.",
+      "measure": "The Succubus's melee miss rate over a few hundred swings, against 8/17 of the Warlock's spell hit."
+     }
+    ],
+    "previous_status": null
+   }
+  },
+  {
+   "id": "CORE-032",
+   "category": "shared",
+   "kind": "implementation",
+   "priority": "low",
+   "status": "provisional",
+   "title": "Explosives thrown during the global cooldown",
+   "question": "Can Autocast throw an engineering explosive while the global cooldown runs?",
+   "current_model": "Yes, if what is left of the global cooldown covers the explosive's cast. The RL environment's emulation uses the same rule.",
+   "impact": "Same seed: Fire +1.05%, 2H Bloodthirst +0.56%, Frostfire +0.42%; other builds within 0.2%.",
+   "sources": [
+    "sim/core/major_cooldown.go",
+    "sim/core/apl_actions_casting.go",
+    "https://github.com/wowsims/forever/issues/621",
+    "https://github.com/wowsims/forever/issues/627"
+   ],
+   "related": [],
+   "review": {
+    "disposition": "credible-answer",
+    "confidence": "moderate",
+    "answer": "Explosives are off the global cooldown; wowsims/forever #621 and #627 throw them inside it.",
+    "remaining": "Not timed in a Forever log.",
+    "implementation": "Autocast Other Cooldowns.",
+    "tests": [],
+    "previous_status": null
+   }
+  },
+  {
+   "id": "CORE-033",
+   "category": "shared",
+   "kind": "mechanic",
+   "priority": "medium",
+   "status": "resolved",
+   "title": "Ranks of one damage-over-time spell on a target",
+   "question": "Do two ranks of the same caster damage-over-time spell stack on one target?",
+   "current_model": "No. Applying one rank removes any other rank of the same spell from that target. Channels are not affected.",
+   "impact": "Rotations cannot gain by alternating ranks of Corruption, Immolate, Shadow Word: Pain and similar spells.",
+   "sources": [
+    "sim/core/dot.go"
+   ],
+   "related": [],
+   "review": {
+    "disposition": "credible-answer",
+    "confidence": "high",
+    "answer": "Answered by Jordan on 27 October: ranks do not stack.",
+    "remaining": "None.",
+    "implementation": "Dot.replaceOtherRanks in sim/core/dot.go, with a regression test.",
+    "tests": [],
+    "previous_status": null
+   }
+  },
+  {
+   "id": "HUN-021",
+   "category": "hunter",
+   "kind": "mechanic",
+   "priority": "low",
+   "status": "resolved",
+   "title": "Traps laid before the pull",
+   "question": "Does a trap laid before the pull go off when the fight starts?",
+   "current_model": "Yes. A trap laid at -60 s or later goes off at 0 at any distance; its cooldown starts when it is laid.",
+   "impact": "Hunter openers can pre-trap with Immolation, Explosive, Freezing and Frost Trap.",
+   "sources": [
+    "sim/hunter/utility.go",
+    "sim/hunter/immolation_trap.go"
+   ],
+   "related": [],
+   "review": {
+    "disposition": "credible-answer",
+    "confidence": "high",
+    "answer": "Answered by Jordan on 27 October: Hunters can pre-trap.",
+    "remaining": "None.",
+    "implementation": "layTrapBeforePull in sim/hunter/utility.go.",
+    "tests": [],
+    "previous_status": null
+   }
+  },
+  {
+   "id": "MAG-014",
+   "category": "mage",
+   "kind": "mechanic",
+   "priority": "low",
+   "status": "resolved",
+   "title": "Lower Arcane Wrath ranks",
+   "question": "Can a Mage cast lower ranks of Arcane Wrath?",
+   "current_model": "Yes. Every rank is castable and all ranks share one 6-second cooldown.",
+   "impact": "Rotations may cast a lower rank; the Arcane preset casts the lowest.",
+   "sources": [
+    "sim/mage/arcane_blast.go"
+   ],
+   "related": [
+    "DATA-001"
+   ],
+   "review": {
+    "disposition": "credible-answer",
+    "confidence": "high",
+    "answer": "Answered by Jordan on 27 October.",
+    "remaining": "None.",
+    "implementation": "registerArcaneWrathRank in sim/mage/arcane_blast.go.",
+    "tests": [],
+    "previous_status": null
+   }
+  },
+  {
+   "id": "SCEN-017",
+   "category": "scenarios",
+   "kind": "scenario",
+   "priority": "medium",
+   "status": "model-choice",
+   "title": "Pre-pull actions that reach the enemy",
+   "question": "Which pre-pull actions start the fight early?",
+   "current_model": "Anything that reaches the enemy before 0 (a hit, miss, tick or aura such as a curse) is flagged on the pre-pull action responsible, because in the game it starts the fight. Hunter's Mark, Battle Shout's threat and fire totem placement are exempt. Damage before 0 is not counted in any case.",
+   "impact": "Searches reject flagged rotations, so pre-casts are timed to land at or after 0.",
+   "sources": [
+    "sim/core/apl.go",
+    "sim/core/spell_result.go"
+   ],
+   "related": [],
+   "review": {
+    "disposition": "model-choice",
+    "confidence": "high",
+    "answer": "Jordan: fire totem placement does not start the fight; the rest follows the game's rule that contact pulls.",
+    "remaining": "Whether any other effect is pull-safe in the game.",
+    "implementation": "Environment.notePrepullContact in sim/core/apl.go.",
+    "tests": [],
+    "previous_status": null
+   }
+  },
+  {
+   "id": "WAR-030",
+   "category": "warrior",
+   "kind": "mechanic",
+   "priority": "medium",
+   "status": "needs-evidence",
+   "title": "Rage decay before the pull",
+   "question": "Does rage decay out of combat before the pull, and how fast?",
+   "current_model": "Not modelled: rage gained before the pull is kept. Searches quarantine Bloodrage earlier than -10 s, and published rotations use it no earlier than -10 s.",
+   "impact": "An early Bloodrage would otherwise carry its full rage into the fight.",
+   "sources": [
+    "sim/core/rage.go"
+   ],
+   "related": [],
+   "review": {
+    "disposition": "experiment",
+    "confidence": "low",
+    "answer": "Unanswered.",
+    "remaining": "The decay rate out of combat.",
+    "implementation": "None yet.",
+    "tests": [
+     {
+      "stage": "current-beta",
+      "requires": "A Warrior out of combat with Bloodrage.",
+      "measure": "Rage every second for 20 s after Bloodrage ends."
+     }
+    ],
+    "previous_status": null
+   }
+  },
+  {
+   "id": "HUN-022",
+   "category": "hunter",
+   "kind": "mechanic",
+   "priority": "medium",
+   "status": "needs-evidence",
+   "title": "Auto Shot wind-up and haste",
+   "question": "Does ranged haste shorten Auto Shot's wind-up?",
+   "current_model": "Yes in this simulator. Upstream wowsims/forever says it does not, without citing evidence.",
+   "impact": "Changes Hunter weave timing under Rapid Fire and other haste.",
+   "sources": [
+    "sim/hunter/hunter.go"
+   ],
+   "related": [],
+   "review": {
+    "disposition": "experiment",
+    "confidence": "low",
+    "answer": "Unanswered.",
+    "remaining": "Wind-up length with and without haste.",
+    "implementation": "None yet.",
+    "tests": [
+     {
+      "stage": "current-beta",
+      "requires": "A Hunter with Rapid Fire, recording with timestamps.",
+      "measure": "Time from the start of the wind-up to the shot leaving, with and without Rapid Fire."
+     }
+    ],
+    "previous_status": null
+   }
+  },
+  {
+   "id": "HUN-023",
+   "category": "hunter",
+   "kind": "mechanic",
+   "priority": "medium",
+   "status": "needs-evidence",
+   "title": "Off-hand swing after Attack is pressed",
+   "question": "Does the off hand wait half a swing after Attack is pressed?",
+   "current_model": "No in this simulator: the off hand swings on arrival. Upstream wowsims/forever delays it for Hunters, without citing evidence.",
+   "impact": "About 136 DPS for SV Weave.",
+   "sources": [
+    "sim/core/attack.go"
+   ],
+   "related": [],
+   "review": {
+    "disposition": "experiment",
+    "confidence": "low",
+    "answer": "Unanswered.",
+    "remaining": "The off hand's first swing time.",
+    "implementation": "None yet.",
+    "tests": [
+     {
+      "stage": "current-beta",
+      "requires": "A dual-wielding Hunter starting melee from range, recording combat log timestamps.",
+      "measure": "Time from the first main-hand swing to the first off-hand swing."
+     }
+    ],
+    "previous_status": null
+   }
   }
  ],
  "review": {
   "date": "2026-09-27",
   "original_entries": 137,
   "reviewed_original_entries": 137,
-  "added_entries": 77,
-  "latest_followup": "October 22 learned rotations: a Learned column in the review matrix showing what a reinforcement-learning agent reached for each DPS build at its best race, with its talents and actions, and simmable profiles where APL rules converted from it beat the published APL. Published profiles do not change.",
-  "latest_followup_date": "2026-10-22",
+  "added_entries": 87,
+  "latest_followup": "October 27 update: launch racial values, engine fixes from the APL search sweep, damage-over-time ranks that replace each other, pre-trapping, Mage-only imbue scrolls, pet hit at 17:8, explosives during the global cooldown and the logged Summon Hawk, with re-searched talents and rotations for 25 DPS builds. The review matrix no longer has a Learned column.",
+  "latest_followup_date": "2026-10-27",
   "latest_followup_baseline": "e0fb5a249",
   "before": {
    "needs-evidence": 84,
@@ -8764,7 +9037,7 @@
     "latest_followup_baseline": "dd5a4f036"
    }
   ],
-  "latest_followup_report": "october-22-learned-rotations.md",
+  "latest_followup_report": "october-27-update.md",
   "latest_followup_source_date": "2026-10-08T21:32:38.124Z",
   "latest_followup_publication": "pending",
   "latest_followup_benchmarks": "pending"

@@ -149,6 +149,26 @@
     },
     {
       "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 11290
+          }
+        },
+        "condition": {
+          "not": {
+            "val": {
+              "dotIsActive": {
+                "spellId": {
+                  "spellId": 11290
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
         "condition": {
           "cmp": {
             "op": "OpLe",
@@ -199,7 +219,7 @@
                   },
                   "rhs": {
                     "const": {
-                      "val": "2s"
+                      "val": "0s"
                     }
                   }
                 }
@@ -247,11 +267,6 @@
             "itemId": 7676
           }
         }
-      }
-    },
-    {
-      "action": {
-        "autocastOtherCooldowns": {}
       }
     },
     {
@@ -357,7 +372,7 @@
                   },
                   "rhs": {
                     "const": {
-                      "val": "10s"
+                      "val": "4s"
                     }
                   }
                 }
@@ -375,16 +390,35 @@
     {
       "action": {
         "condition": {
-          "cmp": {
-            "op": "OpGe",
-            "lhs": {
-              "currentComboPoints": {}
-            },
-            "rhs": {
-              "const": {
-                "val": "5"
+          "and": {
+            "vals": [
+              {
+                "cmp": {
+                  "op": "OpGe",
+                  "lhs": {
+                    "currentComboPoints": {}
+                  },
+                  "rhs": {
+                    "const": {
+                      "val": "5"
+                    }
+                  }
+                }
+              },
+              {
+                "cmp": {
+                  "op": "OpGe",
+                  "lhs": {
+                    "currentEnergy": {}
+                  },
+                  "rhs": {
+                    "const": {
+                      "val": "60"
+                    }
+                  }
+                }
               }
-            }
+            ]
           }
         },
         "castSpell": {
@@ -422,6 +456,40 @@
           "spellId": {
             "spellId": 16511
           }
+        },
+        "condition": {
+          "cmp": {
+            "op": "OpGe",
+            "lhs": {
+              "currentEnergy": {}
+            },
+            "rhs": {
+              "const": {
+                "val": "60"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "autocastOtherCooldowns": {}
+      }
+    }
+  ],
+  "prepullActions": [
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 1784
+          }
+        }
+      },
+      "doAtValue": {
+        "const": {
+          "val": "-1s"
         }
       }
     }

@@ -1,0 +1,1001 @@
+{
+  "format": 1,
+  "engine": "ed88cb3dc",
+  "source": "ML re-search handoff of 27 October: five agents per build, 1,000 paired fights per candidate, 5,000-fight finalist confirmation, final validation on ed88cb3dc.",
+  "gainMethod": "Gains over the previous preset: 2,000 fights per race, seed 1793600001, current engine, the previous preset's talents and rotation against the new ones; race, gear and consumables as published.",
+  "rules": [
+    "A changed build is kept if it is broadly similar to its theme and not a clone of another build; a build that changes theme is kept only if it becomes its class's best.",
+    "Lower spell ranks are allowed when their coefficients are the client's (checked against client 1.60.1.70450).",
+    "Talents and rotation only; race, gear, consumables, raid and encounter stay as published."
+  ],
+  "builds": [
+    {
+      "build": "affliction",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--affliction-r01/winner-candidate.json",
+      "candidateSHA256": "ce142a855442a935e6a07bd1c9412a89e38038e4137c241c35c7b003b998bdaf",
+      "searchStopping": {
+        "state": "Stopped · no confirmed gain",
+        "round": 1,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--affliction-r01",
+        "stop_reason": "no_confirmed_improvement",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 1.4690698221873175
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 924.3070656274183,
+        "standardError": 0.5117978465673473,
+        "pairedGainOverSearchStart": 0.0,
+        "pairedStandardError": 0.0
+      },
+      "selected": true,
+      "changes": [],
+      "previousTalents": "2550020013520105--0550015103",
+      "talents": "2550002003520015--0550305003",
+      "gainOverPreviousPresetByRace": {
+        "Gnome": 23.79,
+        "Human": 23.52,
+        "Orc": 24.32,
+        "Troll": 22.47,
+        "Undead": 25.33
+      }
+    },
+    {
+      "build": "arcane",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--arcane-r01/winner-candidate.json",
+      "candidateSHA256": "b66c0e1324989bca08343e2e5b6dd8ceed889856801b143b91e78ce07562f7a2",
+      "searchStopping": {
+        "state": "Stopped · small gains",
+        "round": 1,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--arcane-r01",
+        "stop_reason": "statistical_plateau",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 1.272643746968845
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 851.8643463571768,
+        "standardError": 0.4743649315247494,
+        "pairedGainOverSearchStart": 1.0600594232896496,
+        "pairedStandardError": 0.10252849051016935
+      },
+      "selected": true,
+      "changes": [
+        "casts lower ranks (lowest Arcane Wrath) with the client's coefficients"
+      ],
+      "previousTalents": "0502205013100311531-03-05350002",
+      "talents": "0502205003100311531-03-05350003",
+      "gainOverPreviousPresetByRace": {
+        "Gnome": 155.02,
+        "High Order": 165.23,
+        "Human": 148.95,
+        "Orc": 159.98,
+        "Troll": 160.71,
+        "Undead": 155.64
+      }
+    },
+    {
+      "build": "arcane_frost",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/research-20261027/final-validation-19ee/adaptive-caster-confirm/arcane_frost/candidate.json",
+      "candidateSHA256": "b3d701f0f6308e1ed9363582c41892ccdcc8002f6368f3d87088d79efe9607c4",
+      "searchStopping": {
+        "state": "Stopped · no confirmed gain",
+        "round": 2,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--arcane_frost-r02",
+        "stop_reason": "no_confirmed_improvement",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 1.2942163653064063
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 876.8593286569234,
+        "standardError": 0.4865104069116299,
+        "pairedGainOverSearchStart": 2.446371354610201,
+        "pairedStandardError": 0.1432136579172569
+      },
+      "selected": false,
+      "reason": "Clone: took Arcane's talents (Arcane Wrath, Presence of Mind, Arcane Power) and dropped Shatter and Fingers of Frost; its damage mix matches Arcane's. Not the best Mage build (879 against Fire's 993)."
+    },
+    {
+      "build": "arms",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--arms-r01/winner-candidate.json",
+      "candidateSHA256": "bcf8fb290583bc4d36c22368bdf209f507bddb34b796d3ad73f753ba7f892136",
+      "searchStopping": {
+        "state": "Stopped · no confirmed gain",
+        "round": 1,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--arms-r01",
+        "stop_reason": "no_confirmed_improvement",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 1.893862886391382
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 901.5250625829682,
+        "standardError": 0.6179007473794675,
+        "pairedGainOverSearchStart": 0.0,
+        "pairedStandardError": 0.0
+      },
+      "selected": true,
+      "changes": [],
+      "previousTalents": "20305213132515101-55050000001",
+      "talents": "20305213132515201-3505-2",
+      "gainOverPreviousPresetByRace": {
+        "Dwarf": 79.85,
+        "Gnome": 80.34,
+        "High Order": 78.22,
+        "Human": 79.59,
+        "Night Elf": 75.55,
+        "Orc": 81.59,
+        "Tauren": 80.89,
+        "Troll": 80.26,
+        "Undead": 77.71,
+        "Windshaper": 78.22
+      }
+    },
+    {
+      "build": "balance",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/research-20261027/balance-adaptive-confirm/candidate-adaptive.json",
+      "candidateSHA256": "64bb887c43cc0fb0f07ecc5eb208d477e387b990485da23d085d6f3d5fa0f2cd",
+      "searchStopping": {
+        "state": "Stopped · small gains",
+        "round": 2,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--balance-r02",
+        "stop_reason": "statistical_plateau",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 1.223644651734617
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 794.6697682134912,
+        "standardError": 0.33634196201068584,
+        "pairedGainOverSearchStart": 2.8472544209696706,
+        "pairedStandardError": 0.028562950334456313
+      },
+      "selected": true,
+      "changes": [],
+      "previousTalents": "5232220115501351--505003",
+      "talents": "533222011550135--505003",
+      "gainOverPreviousPresetByRace": {
+        "High Order": 12.31,
+        "Night Elf": 11.14,
+        "Tauren": 11.43,
+        "Windshaper": 12.31
+      }
+    },
+    {
+      "build": "beast_mastery",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--beast_mastery-r03/winner-candidate.json",
+      "candidateSHA256": "fb5b5a3c87bf54376685cbf89bc6cfc364495d5a470963d16813f08c5dea1511",
+      "searchStopping": {
+        "state": "Stopped · small gains",
+        "round": 3,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--beast_mastery-r03",
+        "stop_reason": "statistical_plateau",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 2.732956079681497
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 1192.5050512549556,
+        "standardError": 0.3152041096130354,
+        "pairedGainOverSearchStart": 7.460728808899508,
+        "pairedStandardError": 0.2863830362633192
+      },
+      "selected": true,
+      "changes": [],
+      "previousTalents": "5320001505101251-00531510005",
+      "talents": "5320001505101251-00532500005",
+      "gainOverPreviousPresetByRace": {
+        "Dwarf": 36.94,
+        "High Order": 37.54,
+        "Human": 40.07,
+        "Night Elf": 37.91,
+        "Orc": 37.47,
+        "Tauren": 40.48,
+        "Troll": 37.9,
+        "Windshaper": 37.54
+      }
+    },
+    {
+      "build": "combat",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--combat-r02/winner-candidate.json",
+      "candidateSHA256": "f66bc3d2bd51faecbeac3e59e7b6083677d61ef68da539e84ab495af25d0a253",
+      "searchStopping": {
+        "state": "Stopped · no confirmed gain",
+        "round": 2,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--combat-r02",
+        "stop_reason": "no_confirmed_improvement",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 0.23330889903446073
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 746.816025101461,
+        "standardError": 0.29816846536092984,
+        "pairedGainOverSearchStart": 1.1891122811307453,
+        "pairedStandardError": 0.18853198762123802
+      },
+      "selected": true,
+      "changes": [],
+      "previousTalents": "005303103012-32003311201515231",
+      "talents": "005303103012-32003311201515231",
+      "gainOverPreviousPresetByRace": {
+        "Dwarf": 8.37,
+        "Gnome": 9.6,
+        "High Order": 9.06,
+        "Human": 9.49,
+        "Night Elf": 8.69,
+        "Orc": 8.99,
+        "Troll": 9.6,
+        "Undead": 8.84,
+        "Windshaper": 9.06
+      }
+    },
+    {
+      "build": "demonology",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--demonology-r02/winner-candidate.json",
+      "candidateSHA256": "e4c7d9d228ca621f3060a9d7e0172590877f040658f085460737783eec17405e",
+      "searchStopping": {
+        "state": "Stopped · no confirmed gain",
+        "round": 2,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--demonology-r02",
+        "stop_reason": "no_confirmed_improvement",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 1.206142046271607
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 1083.9232165216304,
+        "standardError": 0.40682694628875327,
+        "pairedGainOverSearchStart": 0.4404102367106279,
+        "pairedStandardError": 0.44226443467294185
+      },
+      "selected": true,
+      "changes": [
+        "casts lower ranks (rank-2 Shadow Bolt) with the client's coefficients"
+      ],
+      "previousTalents": "011-0005003221220311351-0550005003",
+      "talents": "011-0005003231220301351-0550005003",
+      "gainOverPreviousPresetByRace": {
+        "Gnome": 95.89,
+        "Human": 96.26,
+        "Orc": 98.07,
+        "Troll": 99.65,
+        "Undead": 95.3
+      }
+    },
+    {
+      "build": "destruction",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--destruction-r01/winner-candidate.json",
+      "candidateSHA256": "6fb333f7b59b23f0467a95c33499114526d5658bdb2c0cb8bb9a3bc2497b7fb3",
+      "searchStopping": {
+        "state": "Stopped · no confirmed gain",
+        "round": 1,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--destruction-r01",
+        "stop_reason": "no_confirmed_improvement",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 1.5528066699663263
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 916.8592884959968,
+        "standardError": 0.42747356576992673,
+        "pairedGainOverSearchStart": 0.0,
+        "pairedStandardError": 0.0
+      },
+      "selected": true,
+      "changes": [
+        "casts lower ranks (rank-2 Shadow Bolt) with the client's coefficients"
+      ],
+      "previousTalents": "2530000003-0005-0050355103101351",
+      "talents": "25500000035--055030510310035",
+      "gainOverPreviousPresetByRace": {
+        "Gnome": 40.7,
+        "Human": 46.08,
+        "Orc": 43.49,
+        "Troll": 45.56,
+        "Undead": 46.75
+      }
+    },
+    {
+      "build": "ds_ruin",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--ds_ruin-r01/winner-candidate.json",
+      "candidateSHA256": "978f08ea449bf6807002b8c83e21303dfb521d41547abfbac5ab59cb96f93324",
+      "searchStopping": {
+        "state": "Stopped · small gains",
+        "round": 1,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--ds_ruin-r01",
+        "stop_reason": "statistical_plateau",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 2.1554710622931483
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 1061.6099292602469,
+        "standardError": 0.4886664005364758,
+        "pairedGainOverSearchStart": 0.06488798351055029,
+        "pairedStandardError": 0.012721562971709868
+      },
+      "selected": false,
+      "reason": "Clone of the best Warlock build: keeps its demon with Demonic Pact and Master Demonologist instead of sacrificing it, with Demonology's talents (1063 against Demonology's 1092)."
+    },
+    {
+      "build": "elemental",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--elemental-r01/winner-candidate.json",
+      "candidateSHA256": "d6b1b12d2716271714a8b2324a731d4c61fab9e92ce294a133610316a48038b6",
+      "searchStopping": {
+        "state": "Stopped · small gains",
+        "round": 1,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--elemental-r01",
+        "stop_reason": "statistical_plateau",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 1.1519038662793242
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 653.8632140431071,
+        "standardError": 0.2489208858423754,
+        "pairedGainOverSearchStart": 0.34338541205507417,
+        "pairedStandardError": 0.04953773436789606
+      },
+      "selected": true,
+      "changes": [
+        "casts lower ranks (Lightning Bolt rank 7) with the client's coefficients"
+      ],
+      "previousTalents": "5503331000011351-055000001-05301",
+      "talents": "5503331000011351-055000001-05301",
+      "gainOverPreviousPresetByRace": {
+        "Dwarf": 26.27,
+        "Orc": 27.01,
+        "Tauren": 28.13,
+        "Troll": 30.35,
+        "Windshaper": 34.23
+      }
+    },
+    {
+      "build": "enhancement",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--enhancement-r01/winner-candidate.json",
+      "candidateSHA256": "15798b3dc1cfc391fac9b2234d79d0a4282174a79a8b2705e6b86f0e46f48590",
+      "searchStopping": {
+        "state": "Stopped · small gains",
+        "round": 1,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--enhancement-r01",
+        "stop_reason": "statistical_plateau",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 1.496989340151996
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 828.2717353301424,
+        "standardError": 0.5592034630304746,
+        "pairedGainOverSearchStart": 0.8536492468702638,
+        "pairedStandardError": 0.21559595718762511
+      },
+      "selected": true,
+      "changes": [],
+      "previousTalents": "453203102-053030031005102251",
+      "talents": "053503102-055030011005102251-01",
+      "gainOverPreviousPresetByRace": {
+        "Dwarf": 17.16,
+        "Orc": 22.95,
+        "Tauren": 22.38,
+        "Troll": 21.53,
+        "Windshaper": 23.15
+      }
+    },
+    {
+      "build": "feral",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/dps-sweep-handoff-2026-10-27/builds/feral/candidate.json",
+      "candidateSHA256": "42bbd0732baf35ee629532461b73adf7d495744d52b5c99aec5b907cee64d2f3",
+      "searchStopping": {
+        "state": "Previously stopped; not re-searched",
+        "round": null,
+        "run": null
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 841.9643931733524,
+        "standardError": 0.2685360837611523,
+        "pairedGainOverSearchStart": null,
+        "pairedStandardError": null
+      },
+      "selected": true,
+      "changes": [
+        "published main-hand weapon kept (the candidate's had a 3.0 s swing; no weapon changes)"
+      ],
+      "previousTalents": "05002-55000032021032212051-055",
+      "talents": "05002-55000032021032212051-055",
+      "gainOverPreviousPresetByRace": {
+        "High Order": 21.43,
+        "Night Elf": 22.5,
+        "Tauren": 22.14,
+        "Windshaper": 21.43
+      }
+    },
+    {
+      "build": "fire",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--fire-r01/winner-candidate.json",
+      "candidateSHA256": "c1780516c0179e58aa2eb76a923952c91457ae6cc86e3153d65bb9054f7e232b",
+      "searchStopping": {
+        "state": "Stopped · no confirmed gain",
+        "round": 1,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--fire-r01",
+        "stop_reason": "no_confirmed_improvement",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 0.6112237599030688
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 992.0385824209949,
+        "standardError": 0.4839519686492062,
+        "pairedGainOverSearchStart": 0.0,
+        "pairedStandardError": 0.0
+      },
+      "selected": true,
+      "changes": [],
+      "previousTalents": "05002152000003-23450000130135031-002",
+      "talents": "03022050021003-23450000130135031-002",
+      "gainOverPreviousPresetByRace": {
+        "Gnome": 59.24,
+        "High Order": 84.52,
+        "Human": 54.88,
+        "Orc": 66.4,
+        "Troll": 58.54,
+        "Undead": 64.15
+      }
+    },
+    {
+      "build": "frost",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--frost-r01/winner-candidate.json",
+      "candidateSHA256": "b313d0d2063d50043ea181b1d2c90dc317a8a525946b75f5730746befc2e700a",
+      "searchStopping": {
+        "state": "Stopped · no confirmed gain",
+        "round": 1,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--frost-r01",
+        "stop_reason": "no_confirmed_improvement",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 0.40827939186806417
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 789.760397642895,
+        "standardError": 0.38830100970394565,
+        "pairedGainOverSearchStart": 0.0,
+        "pairedStandardError": 0.0
+      },
+      "selected": false,
+      "reason": "Theme lost: Winter's Chill and deep Frost dropped for Arcane Blast, Missile Barrage and Arcane Mind; Arcane Missiles became the largest source, as in the published Arcane–Frost. Not the best Mage build (790 against Fire's 993)."
+    },
+    {
+      "build": "frostfire",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/research-20261027/final-validation-19ee/adaptive-caster-confirm/frostfire/candidate.json",
+      "candidateSHA256": "0a7ed367951d1c8bda119de878aaa2b711ce64a0a6bb6c9fa846aec13efee028",
+      "searchStopping": {
+        "state": "Stopped · no confirmed gain",
+        "round": 2,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--frostfire-r02",
+        "stop_reason": "no_confirmed_improvement",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 1.3718760397694465
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 937.1830700084904,
+        "standardError": 0.6862234641793921,
+        "pairedGainOverSearchStart": 1.300146545380676,
+        "pairedStandardError": 0.5396143005697148
+      },
+      "selected": true,
+      "changes": [
+        "casts lower ranks (lowest Scorch and Fire Blast) with the client's coefficients"
+      ],
+      "previousTalents": "-1355000013013502-2035010311013002",
+      "talents": "-0355100013013403-2035010311013002",
+      "gainOverPreviousPresetByRace": {
+        "Gnome": 126.15,
+        "High Order": 136.76,
+        "Human": 131.68,
+        "Orc": 137.74,
+        "Troll": 132.62,
+        "Undead": 137.46
+      }
+    },
+    {
+      "build": "fury",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--fury-r02/winner-candidate.json",
+      "candidateSHA256": "88614c0a586b2e764bfb46af39c6f17735b9276b8697c5fed116a915eb77e5f1",
+      "searchStopping": {
+        "state": "Stopped · no confirmed gain",
+        "round": 2,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--fury-r02",
+        "stop_reason": "no_confirmed_improvement",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 1.9073641041987692
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 994.0332158235602,
+        "standardError": 0.4893527584173166,
+        "pairedGainOverSearchStart": 1.825744005466981,
+        "pairedStandardError": 0.4547324050774889
+      },
+      "selected": true,
+      "changes": [],
+      "previousTalents": "30305213002-25053005112010501-1",
+      "talents": "30305213002-25053005112010501-1",
+      "gainOverPreviousPresetByRace": {
+        "Dwarf": 12.68,
+        "Gnome": 9.99,
+        "High Order": 11.02,
+        "Human": 8.83,
+        "Night Elf": 12.32,
+        "Orc": 10.4,
+        "Tauren": 12.46,
+        "Troll": 12.29,
+        "Undead": 12.01,
+        "Windshaper": 11.02
+      }
+    },
+    {
+      "build": "fury_2h",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--fury_2h-r02/evaluations/2c20de71765166475b81fec4eff3a8439c99bc3e15367f48b5420a7a67f59eee/candidate.json",
+      "candidateSHA256": "b2d6bf6e15c07912cf36016bce940db7eddf921e75c120b06aa5ced69bc5feba",
+      "searchStopping": {
+        "state": "Stopped · no confirmed gain",
+        "round": 2,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--fury_2h-r02",
+        "stop_reason": "no_confirmed_improvement",
+        "statistical_plateau": false,
+        "max_adjusted_upper_dps": 2.9562634698653127
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 889.2730789294293,
+        "standardError": 0.630568571176336,
+        "pairedGainOverSearchStart": 4.078125600856721,
+        "pairedStandardError": 0.5391024284318401
+      },
+      "selected": true,
+      "changes": [],
+      "previousTalents": "30304203032-55050020151010501",
+      "talents": "20305203032-45050020152010501",
+      "gainOverPreviousPresetByRace": {
+        "Dwarf": 33.7,
+        "Gnome": 33.96,
+        "High Order": 32.62,
+        "Human": 34.48,
+        "Night Elf": 35.45,
+        "Orc": 33.87,
+        "Tauren": 33.97,
+        "Troll": 31.15,
+        "Undead": 33.23,
+        "Windshaper": 32.62
+      }
+    },
+    {
+      "build": "fury_sunder",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--fury_sunder-r01/winner-candidate.json",
+      "candidateSHA256": "9e2aa847a8e24f5cb90a60d192f49be888d1169f93fc87dce77c7346834ea572",
+      "searchStopping": {
+        "state": "Stopped · no confirmed gain",
+        "round": 1,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--fury_sunder-r01",
+        "stop_reason": "no_confirmed_improvement",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 1.0657670239059995
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 975.2139742493844,
+        "standardError": 0.49620324400393095,
+        "pairedGainOverSearchStart": 0.0,
+        "pairedStandardError": 0.0
+      },
+      "selected": false,
+      "reason": "Fails the build's purpose: Sunder Armor lapses (once at 162 s), and this build supplies Sunder for the raid. Not the best Warrior build (978 against Fury's 994)."
+    },
+    {
+      "build": "marksmanship",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/research-20261027/final-validation-19ee/adaptive-marksmanship-confirm/candidate.json",
+      "candidateSHA256": "af040a0b072c0fb830aaa88eeeaec55c7cbdfea857bc130ff51dbbf7c82cf166",
+      "searchStopping": {
+        "state": "Stopped · no confirmed gain",
+        "round": 2,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--marksmanship-r02",
+        "stop_reason": "no_confirmed_improvement",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 1.2319219765323777
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 1316.559222415346,
+        "standardError": 0.40697691840049927,
+        "pairedGainOverSearchStart": 4.021188082859848,
+        "pairedStandardError": 0.184473934189417
+      },
+      "selected": true,
+      "changes": [],
+      "previousTalents": "-105305131150003-5502000300501101",
+      "talents": "-005305031050302-5302002300501201",
+      "gainOverPreviousPresetByRace": {
+        "Dwarf": 163.83,
+        "High Order": 178.23,
+        "Human": 163.86,
+        "Night Elf": 163.95,
+        "Orc": 164.02,
+        "Tauren": 163.29,
+        "Troll": 158.09,
+        "Windshaper": 178.23
+      }
+    },
+    {
+      "build": "mutilate",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--mutilate-r01/winner-candidate.json",
+      "candidateSHA256": "ba6365044231bb4e0e8a2b239a3338259cf52fb68e3c18835d965faf6db38d74",
+      "searchStopping": {
+        "state": "Stopped · small gains",
+        "round": 1,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--mutilate-r01",
+        "stop_reason": "statistical_plateau",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 0.45642537001909234
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 731.8956375122202,
+        "standardError": 0.2828086825389028,
+        "pairedGainOverSearchStart": 0.33215325234684545,
+        "pairedStandardError": 0.027049395316853325
+      },
+      "selected": true,
+      "changes": [],
+      "previousTalents": "0053031035140105-302303202014",
+      "talents": "0053031033150105-302303202015",
+      "gainOverPreviousPresetByRace": {
+        "Dwarf": 12.76,
+        "Gnome": 13.12,
+        "High Order": 13.85,
+        "Human": 15.48,
+        "Night Elf": 13.58,
+        "Orc": 12.8,
+        "Troll": 13.67,
+        "Undead": 11.75,
+        "Windshaper": 13.85
+      }
+    },
+    {
+      "build": "pet_melee",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--pet_melee-r02/winner-candidate.json",
+      "candidateSHA256": "7ab52ac59444d3c2b2559a2c9538d9e880e8d2e967154d206fd112cadb54b186",
+      "searchStopping": {
+        "state": "Stopped · small gains",
+        "round": 2,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--pet_melee-r02",
+        "stop_reason": "statistical_plateau",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 2.2967532131580333
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 1133.5468982188552,
+        "standardError": 0.3453679683918326,
+        "pairedGainOverSearchStart": 5.8913003906920824,
+        "pairedStandardError": 0.3049323399624425
+      },
+      "selected": false,
+      "reason": "Theme lost: every Beast Mastery point, Summon Hawk included, dropped; the candidate ranged-weaves with a Cat like the new Survival. Not the best Hunter build (1153 against SV Weave's 1386)."
+    },
+    {
+      "build": "retribution",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--retribution-r01/winner-candidate.json",
+      "candidateSHA256": "b6cceca92a511e78293619818bf74578f0b352210237cb050e5cc8be2ecd404e",
+      "searchStopping": {
+        "state": "Stopped · no confirmed gain",
+        "round": 1,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--retribution-r01",
+        "stop_reason": "no_confirmed_improvement",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 0.7856249696481046
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 989.4809874537458,
+        "standardError": 0.5112536809394544,
+        "pairedGainOverSearchStart": 0.0,
+        "pairedStandardError": 0.0
+      },
+      "selected": true,
+      "changes": [
+        "spare talent points in Toughness (DPS identical on the validation fights)"
+      ],
+      "previousTalents": "55003-231-05225331001330301",
+      "talents": "55003003-2-05225331001330311",
+      "gainOverPreviousPresetByRace": {
+        "Dwarf": 44.53,
+        "Human": 44.84,
+        "Undead": 24.36
+      }
+    },
+    {
+      "build": "retribution_physical",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--retribution_physical-r01/winner-candidate.json",
+      "candidateSHA256": "7f482bcad6477987e3088e5850101e0e7263f0aecc8405e9e9c372b282077a14",
+      "searchStopping": {
+        "state": "Stopped · no confirmed gain",
+        "round": 1,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--retribution_physical-r01",
+        "stop_reason": "no_confirmed_improvement",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 0.6253885829848203
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 934.0262978151359,
+        "standardError": 0.5302977799032611,
+        "pairedGainOverSearchStart": 0.0,
+        "pairedStandardError": 0.0
+      },
+      "selected": true,
+      "changes": [
+        "spare talent points in Toughness (DPS identical on the validation fights)"
+      ],
+      "previousTalents": "52003002-231-05225331001330311",
+      "talents": "55003003-1-05225331001330321",
+      "gainOverPreviousPresetByRace": {
+        "Dwarf": 53.39,
+        "Human": 55.25,
+        "Undead": 51.99
+      }
+    },
+    {
+      "build": "shadow",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/research-20261027/final-validation-19ee/adaptive-priest-zero-confirm/shadow/candidate.json",
+      "candidateSHA256": "d7165e3e2fcbb8723aa96c535c2e52dde7efec24416f4cf276cb486bd9857e9d",
+      "searchStopping": {
+        "state": "Stopped · no confirmed gain",
+        "round": 2,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--shadow-r02",
+        "stop_reason": "no_confirmed_improvement",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 0.041185287123538306
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 910.8068908733122,
+        "standardError": 0.2554789062239407,
+        "pairedGainOverSearchStart": 3.3834374134734566,
+        "pairedStandardError": 0.14447250950784624
+      },
+      "selected": true,
+      "changes": [],
+      "previousTalents": "30503300103--50452001201302251",
+      "talents": "50500500102--50542001201302251",
+      "gainOverPreviousPresetByRace": {
+        "Dwarf": 12.28,
+        "Gnome": 11.88,
+        "Human": 11.55,
+        "Night Elf": 10.59,
+        "Troll": 1.85,
+        "Undead": 6.93
+      }
+    },
+    {
+      "build": "shockadin",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--shockadin-r01/winner-candidate.json",
+      "candidateSHA256": "7da3490c610dbeb2815cea0a5cd15f2c62541fdc7fe678a7143fb51e1e00ac0a",
+      "searchStopping": {
+        "state": "Stopped · no confirmed gain",
+        "round": 1,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--shockadin-r01",
+        "stop_reason": "no_confirmed_improvement",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 0.9368725672511176
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 870.0456914119904,
+        "standardError": 0.3436978810687669,
+        "pairedGainOverSearchStart": 0.0,
+        "pairedStandardError": 0.0
+      },
+      "selected": true,
+      "changes": [],
+      "previousTalents": "550030032101012--052252300012303",
+      "talents": "550030032101012--052153300012303",
+      "gainOverPreviousPresetByRace": {
+        "Dwarf": 2.98,
+        "Human": 3.23,
+        "Undead": 0.77
+      }
+    },
+    {
+      "build": "smite",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/research-20261027/final-validation-19ee/adaptive-priest-zero-confirm/smite/candidate.json",
+      "candidateSHA256": "aecd68630c6123fc7c6536620a9ac94055e8ca8c8e3af1fca337f3dcb4394b97",
+      "searchStopping": {
+        "state": "Stopped · small gains",
+        "round": 1,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--smite-r01",
+        "stop_reason": "statistical_plateau",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 0.22086530647444172
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 849.7677540561468,
+        "standardError": 0.2574502765911293,
+        "pairedGainOverSearchStart": 0.042985348703412044,
+        "pairedStandardError": 0.008871440824767991
+      },
+      "selected": false,
+      "reason": "Theme lost: the candidate is a deep-Shadow priest (Smite 10% of damage, Mind Flay and Mind Blast most of it), close to the Shadow build and below it (851 against 910 DPS)."
+    },
+    {
+      "build": "stormcaller",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--stormcaller-r01/winner-candidate.json",
+      "candidateSHA256": "df5f9aab4368589ddfb6c7f65d70c1d5956cf4e1dac47671143a9c48ec305177",
+      "searchStopping": {
+        "state": "Stopped · no confirmed gain",
+        "round": 1,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--stormcaller-r01",
+        "stop_reason": "no_confirmed_improvement",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 0.20595212500455745
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 635.4654778735837,
+        "standardError": 0.2348854814600044,
+        "pairedGainOverSearchStart": 0.0,
+        "pairedStandardError": 0.0
+      },
+      "selected": true,
+      "changes": [
+        "casts lower ranks (Lightning Bolt ranks 7 and 2) with the client's coefficients"
+      ],
+      "previousTalents": "553233100000034-055030021004002",
+      "talents": "551333100000134-055030021004002",
+      "gainOverPreviousPresetByRace": {
+        "Dwarf": 116.73,
+        "Orc": 116.06,
+        "Tauren": 115.34,
+        "Troll": 112.59,
+        "Windshaper": 119.43
+      }
+    },
+    {
+      "build": "subtlety",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--subtlety-r03/winner-candidate.json",
+      "candidateSHA256": "bdf0710a820f131282cf32c3881ea61f4b39f5f16eb6e6da3a07aa7ad708939f",
+      "searchStopping": {
+        "state": "Stopped · small gains",
+        "round": 3,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--subtlety-r03",
+        "stop_reason": "statistical_plateau",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 1.4110554301268472
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 718.056086091889,
+        "standardError": 0.27700183170442194,
+        "pairedGainOverSearchStart": 4.300695369879389,
+        "pairedStandardError": 0.20725160011834262
+      },
+      "selected": true,
+      "changes": [],
+      "previousTalents": "005303103104--5320003310013211501",
+      "talents": "005303103005--3320203310013211501",
+      "gainOverPreviousPresetByRace": {
+        "Dwarf": 19.07,
+        "Gnome": 16.18,
+        "High Order": 18.53,
+        "Human": 20.15,
+        "Night Elf": 19.28,
+        "Orc": 19.49,
+        "Troll": 19.56,
+        "Undead": 18.92,
+        "Windshaper": 18.53
+      }
+    },
+    {
+      "build": "survival",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--survival-r02/winner-candidate.json",
+      "candidateSHA256": "b40fd58df5e7b45b61fc7a9701725875e8259d7fab73ccff2f83ae8eb2e623f8",
+      "searchStopping": {
+        "state": "Stopped · no confirmed gain",
+        "round": 2,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--survival-r02",
+        "stop_reason": "no_confirmed_improvement",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 1.526317538359063
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 1174.2995691500441,
+        "standardError": 0.3607911124556916,
+        "pairedGainOverSearchStart": 3.267416912423849,
+        "pairedStandardError": 0.04103480732883019
+      },
+      "selected": true,
+      "changes": [],
+      "previousTalents": "502-0050051-500230230250022151",
+      "talents": "502-005205-500230230050122151",
+      "gainOverPreviousPresetByRace": {
+        "Dwarf": 211.69,
+        "High Order": 203.54,
+        "Human": 215.93,
+        "Night Elf": 216.61,
+        "Orc": 213.37,
+        "Tauren": 211.86,
+        "Troll": 210.52,
+        "Windshaper": 203.54
+      }
+    },
+    {
+      "build": "survival_weave",
+      "candidate": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--survival_weave-r02/winner-candidate.json",
+      "candidateSHA256": "813616b5da482c94d54097fcec490e436bf62c74b1e902e064a2b365fd691ad3",
+      "searchStopping": {
+        "state": "Stopped · small gains",
+        "round": 2,
+        "run": "/home/jordan/.cache/forever-sim-audit/rl/feral-pilot/forever-research-16361b--survival_weave-r02",
+        "stop_reason": "statistical_plateau",
+        "statistical_plateau": true,
+        "max_adjusted_upper_dps": 2.8340112798229344
+      },
+      "validation": {
+        "engine": "ed88cb3dc",
+        "fights": 5000,
+        "meanDPS": 1377.2542883789215,
+        "standardError": 0.43657848297971813,
+        "pairedGainOverSearchStart": 7.114090175548344,
+        "pairedStandardError": 0.3256513673385199
+      },
+      "selected": true,
+      "changes": [],
+      "previousTalents": "-00530501105-530200230050121151",
+      "talents": "-00530510105-530200230050122141",
+      "gainOverPreviousPresetByRace": {
+        "Dwarf": 150.63,
+        "High Order": 162.89,
+        "Human": 153.79,
+        "Night Elf": 151.86,
+        "Orc": 150.87,
+        "Tauren": 149.96,
+        "Troll": 143.11,
+        "Windshaper": 162.89
+      }
+    }
+  ]
+}

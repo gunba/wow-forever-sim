@@ -133,8 +133,7 @@
       "dragonBreathChili": true,
       "zanzaBuff": "ROIDS",
       "sapperExplosive": "SapperGoblinSapper",
-      "intellectElixir": "ElixirOfTheOwl",
-      "mainHandScroll": "ScrollOfImbuePrecision"
+      "intellectElixir": "ElixirOfTheOwl"
     },
     "bonusStats": {
       "stats": [
@@ -190,7 +189,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "550030032101012--052252300012303",
+    "talentsString": "550030032101012--052153300012303",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
@@ -228,15 +227,6 @@
         {
           "action": {
             "autocastOtherCooldowns": {}
-          }
-        },
-        {
-          "action": {
-            "castSpell": {
-              "spellId": {
-                "spellId": 20271
-              }
-            }
           }
         },
         {
@@ -279,6 +269,15 @@
             "castSpell": {
               "spellId": {
                 "spellId": 20924
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 20271
               }
             }
           }

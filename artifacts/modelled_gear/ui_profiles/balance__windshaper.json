@@ -126,8 +126,7 @@
       "defaultPotion": "MajorSpellblastingPotion",
       "defaultConjured": "ConjuredDemonicRune",
       "zanzaBuff": "CerebralCortexCompound",
-      "intellectElixir": "ElixirOfTheOwl",
-      "mainHandScroll": "ScrollOfImbuePrecision"
+      "intellectElixir": "ElixirOfTheOwl"
     },
     "bonusStats": {
       "stats": [
@@ -183,7 +182,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "5232220115501351--505003",
+    "talentsString": "533222011550135--505003",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
@@ -192,13 +191,25 @@
           "action": {
             "castSpell": {
               "spellId": {
-                "spellId": 24858
+                "spellId": 9876
               }
             }
           },
           "doAtValue": {
-            "const": {
-              "val": "-2s"
+            "math": {
+              "op": "OpSub",
+              "lhs": {
+                "const": {
+                  "val": "0.05s"
+                }
+              },
+              "rhs": {
+                "spellCastTime": {
+                  "spellId": {
+                    "spellId": 9876
+                  }
+                }
+              }
             }
           }
         }
@@ -212,15 +223,63 @@
         {
           "action": {
             "condition": {
-              "not": {
-                "val": {
-                  "dotIsActive": {
-                    "spellId": {
-                      "spellId": 24977,
-                      "rank": 5
-                    }
+              "cmp": {
+                "op": "OpLe",
+                "lhs": {
+                  "remainingTime": {}
+                },
+                "rhs": {
+                  "const": {
+                    "val": "2.4s"
                   }
                 }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 9835,
+                "rank": 10
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpLe",
+                      "lhs": {
+                        "dotRemainingTime": {
+                          "spellId": {
+                            "spellId": 24977,
+                            "rank": 5
+                          }
+                        }
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "1.0s"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGt",
+                      "lhs": {
+                        "remainingTime": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "9s"
+                        }
+                      }
+                    }
+                  }
+                ]
               }
             },
             "castSpell": {
@@ -234,15 +293,34 @@
         {
           "action": {
             "condition": {
-              "not": {
-                "val": {
-                  "dotIsActive": {
-                    "spellId": {
-                      "spellId": 9835,
-                      "rank": 10
+              "and": {
+                "vals": [
+                  {
+                    "not": {
+                      "val": {
+                        "dotIsActive": {
+                          "spellId": {
+                            "spellId": 9835,
+                            "rank": 10
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGt",
+                      "lhs": {
+                        "remainingTime": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "6s"
+                        }
+                      }
                     }
                   }
-                }
+                ]
               }
             },
             "castSpell": {

@@ -12,6 +12,9 @@ import (
 	"github.com/wowsims/classic/sim/druid"
 )
 
+// moonkinTalents is a Balance build that takes Moonkin Form; the Balance preset no longer does.
+const moonkinTalents = "5232220115501351--505003"
+
 func TestForeverFaerieFireForms(t *testing.T) {
 	for _, form := range []druid.DruidForm{druid.Humanoid, druid.Moonkin, druid.Cat, druid.Bear} {
 		key := "balance"
@@ -20,6 +23,9 @@ func TestForeverFaerieFireForms(t *testing.T) {
 		}
 		req := racialFixture(key, proto.Race_RaceTauren)
 		p := req.Raid.Parties[0].Players[0]
+		if key == "balance" {
+			p.TalentsString = moonkinTalents
+		}
 		p.Rotation = &proto.APLRotation{}
 		p.Equipment = &proto.EquipmentSpec{}
 		p.Consumes = &proto.Consumes{}

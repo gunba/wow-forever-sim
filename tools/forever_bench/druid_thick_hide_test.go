@@ -32,11 +32,7 @@ func TestThickHideFollowsFormAndDefense(t *testing.T) {
 			feralTalents := "50000" + strconv.Itoa(int(rank))
 			p.TalentsString = "-" + feralTalents // five Ferocity, selected Thick Hide rank
 			if form == druid.Moonkin {
-				for _, b := range builds() {
-					if b.Key == "balance" {
-						p.TalentsString = strings.Split(b.player(p.Race).TalentsString, "-")[0] + "-" + feralTalents
-					}
-				}
+				p.TalentsString = strings.Split(moonkinTalents, "-")[0] + "-" + feralTalents
 			} else if form == druid.Bear {
 				p.Spec = &proto.Player_FeralTankDruid{FeralTankDruid: &proto.FeralTankDruid{Options: &proto.FeralTankDruid_Options{}}}
 			}

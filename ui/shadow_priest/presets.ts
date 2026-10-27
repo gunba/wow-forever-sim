@@ -58,7 +58,7 @@ export const DefaultAPL = APLP1Shadow;
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsP1Shadow = PresetUtils.makePresetTalents('Shadow 18/0/33', SavedTalents.create({ talentsString: '30503300103--50452001201302251' }));
+export const TalentsP1Shadow = PresetUtils.makePresetTalents('Shadow 18/0/33', SavedTalents.create({ talentsString: '50500500102--50542001201302251' }));
 
 export const TalentsShadow = PresetUtils.makePresetTalents('Shadow 15/0/36', SavedTalents.create({ talentsString: '02530003101--55052201201302251' }));
 

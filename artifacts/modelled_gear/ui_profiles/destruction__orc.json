@@ -128,8 +128,7 @@
       "defaultPotion": "MajorManaPotion",
       "defaultConjured": "ConjuredDemonicRune",
       "zanzaBuff": "CerebralCortexCompound",
-      "intellectElixir": "ElixirOfTheOwl",
-      "mainHandScroll": "ScrollOfImbuePrecision"
+      "intellectElixir": "ElixirOfTheOwl"
     },
     "bonusStats": {
       "stats": [
@@ -185,10 +184,26 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "2530000003-0005-0050355103101351",
+    "talentsString": "25500000035--055030510310035",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
+      "prepullActions": [
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 17924
+              }
+            }
+          },
+          "doAtValue": {
+            "const": {
+              "val": "-4s"
+            }
+          }
+        }
+      ],
       "priorityList": [
         {
           "action": {
@@ -216,7 +231,7 @@
                       },
                       "rhs": {
                         "const": {
-                          "val": "75%"
+                          "val": "70%"
                         }
                       }
                     }
@@ -257,7 +272,7 @@
                       },
                       "rhs": {
                         "const": {
-                          "val": "60%"
+                          "val": "80%"
                         }
                       }
                     }
@@ -326,29 +341,6 @@
         {
           "action": {
             "condition": {
-              "cmp": {
-                "op": "OpLt",
-                "lhs": {
-                  "currentManaPercent": {}
-                },
-                "rhs": {
-                  "const": {
-                    "val": "10%"
-                  }
-                }
-              }
-            },
-            "castSpell": {
-              "spellId": {
-                "spellId": 11689,
-                "rank": 6
-              }
-            }
-          }
-        },
-        {
-          "action": {
-            "condition": {
               "not": {
                 "val": {
                   "auraIsActive": {
@@ -408,20 +400,22 @@
                 "lhs": {
                   "dotRemainingTime": {
                     "spellId": {
-                      "spellId": 11668
+                      "spellId": 11672,
+                      "rank": 7
                     }
                   }
                 },
                 "rhs": {
                   "const": {
-                    "val": "15s"
+                    "val": "0s"
                   }
                 }
               }
             },
             "castSpell": {
               "spellId": {
-                "spellId": 18932
+                "spellId": 11672,
+                "rank": 7
               }
             }
           }
@@ -461,6 +455,29 @@
             "castSpell": {
               "spellId": {
                 "spellId": 603
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpLt",
+                "lhs": {
+                  "currentManaPercent": {}
+                },
+                "rhs": {
+                  "const": {
+                    "val": "5%"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 11689,
+                "rank": 6
               }
             }
           }
@@ -517,35 +534,17 @@
           "action": {
             "condition": {
               "cmp": {
-                "op": "OpLe",
+                "op": "OpGe",
                 "lhs": {
-                  "dotRemainingTime": {
-                    "spellId": {
-                      "spellId": 11672,
-                      "rank": 7
-                    }
-                  }
+                  "remainingTime": {}
                 },
                 "rhs": {
-                  "spellCastTime": {
-                    "spellId": {
-                      "spellId": 11672,
-                      "rank": 7
-                    }
+                  "const": {
+                    "val": "15s"
                   }
                 }
               }
             },
-            "castSpell": {
-              "spellId": {
-                "spellId": 11672,
-                "rank": 7
-              }
-            }
-          }
-        },
-        {
-          "action": {
             "castSpell": {
               "spellId": {
                 "spellId": 18871,
@@ -556,9 +555,57 @@
         },
         {
           "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpLe",
+                "lhs": {
+                  "dotRemainingTime": {
+                    "spellId": {
+                      "spellId": 11668
+                    }
+                  }
+                },
+                "rhs": {
+                  "const": {
+                    "val": "15s"
+                  }
+                }
+              }
+            },
             "castSpell": {
               "spellId": {
-                "spellId": 1293813
+                "spellId": 18932
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpGe",
+                "lhs": {
+                  "currentManaPercent": {}
+                },
+                "rhs": {
+                  "const": {
+                    "val": "60%"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 11661
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 695
               }
             }
           }

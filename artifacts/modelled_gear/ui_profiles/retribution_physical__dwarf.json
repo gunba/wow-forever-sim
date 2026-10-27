@@ -130,8 +130,7 @@
       "dragonBreathChili": true,
       "zanzaBuff": "ROIDS",
       "sapperExplosive": "SapperGoblinSapper",
-      "intellectElixir": "ElixirOfTheOwl",
-      "mainHandScroll": "ScrollOfImbuePrecision"
+      "intellectElixir": "ElixirOfTheOwl"
     },
     "bonusStats": {
       "stats": [
@@ -187,7 +186,7 @@
       "blessingOfWisdom": "TristateEffectRegular",
       "blessingOfMight": "TristateEffectRegular"
     },
-    "talentsString": "52003002-231-05225331001330311",
+    "talentsString": "55003003-1-05225331001330321",
     "profession1": "Engineering",
     "rotation": {
       "type": "TypeAPL",
@@ -196,13 +195,27 @@
           "action": {
             "castSpell": {
               "spellId": {
-                "spellId": 20919
+                "spellId": 20293
               }
             }
           },
           "doAtValue": {
             "const": {
-              "val": "-1.5s"
+              "val": "-5s"
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 20920
+              }
+            }
+          },
+          "doAtValue": {
+            "const": {
+              "val": "-3s"
             }
           }
         }
@@ -217,6 +230,78 @@
           "action": {
             "castSpell": {
               "spellId": {
+                "spellId": 24239
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "and": {
+                "vals": [
+                  {
+                    "cmp": {
+                      "op": "OpGe",
+                      "lhs": {
+                        "currentManaPercent": {}
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "0%"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "not": {
+                      "val": {
+                        "auraIsActive": {
+                          "auraId": {
+                            "spellId": 1311703
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "auraIsActive": {
+                      "auraId": {
+                        "spellId": 20293
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpLe",
+                      "lhs": {
+                        "spellTimeToReady": {
+                          "spellId": {
+                            "spellId": 20271
+                          }
+                        }
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "5.9s"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 20920
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
                 "spellId": 10333
               }
             }
@@ -224,6 +309,13 @@
         },
         {
           "action": {
+            "condition": {
+              "auraIsActive": {
+                "auraId": {
+                  "spellId": 20920
+                }
+              }
+            },
             "castSpell": {
               "spellId": {
                 "spellId": 20271
@@ -248,52 +340,6 @@
             },
             "castSpell": {
               "spellId": {
-                "spellId": 20919
-              }
-            }
-          }
-        },
-        {
-          "action": {
-            "condition": {
-              "and": {
-                "vals": [
-                  {
-                    "cmp": {
-                      "op": "OpGe",
-                      "lhs": {
-                        "currentManaPercent": {}
-                      },
-                      "rhs": {
-                        "const": {
-                          "val": "15%"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "not": {
-                      "val": {
-                        "auraIsActive": {
-                          "auraId": {
-                            "spellId": 1311704
-                          }
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "auraIsActive": {
-                      "auraId": {
-                        "spellId": 20919
-                      }
-                    }
-                  }
-                ]
-              }
-            },
-            "castSpell": {
-              "spellId": {
                 "spellId": 20293
               }
             }
@@ -312,18 +358,7 @@
                       },
                       "rhs": {
                         "const": {
-                          "val": "15%"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "not": {
-                      "val": {
-                        "auraIsActive": {
-                          "auraId": {
-                            "spellId": 1311703
-                          }
+                          "val": "0%"
                         }
                       }
                     }
@@ -331,7 +366,24 @@
                   {
                     "auraIsActive": {
                       "auraId": {
-                        "spellId": 20293
+                        "spellId": 20920
+                      }
+                    }
+                  },
+                  {
+                    "cmp": {
+                      "op": "OpGt",
+                      "lhs": {
+                        "spellTimeToReady": {
+                          "spellId": {
+                            "spellId": 20271
+                          }
+                        }
+                      },
+                      "rhs": {
+                        "const": {
+                          "val": "0.5s"
+                        }
                       }
                     }
                   }
@@ -340,16 +392,7 @@
             },
             "castSpell": {
               "spellId": {
-                "spellId": 20919
-              }
-            }
-          }
-        },
-        {
-          "action": {
-            "castSpell": {
-              "spellId": {
-                "spellId": 24239
+                "spellId": 20293
               }
             }
           }
@@ -364,7 +407,7 @@
                 },
                 "rhs": {
                   "const": {
-                    "val": "20%"
+                    "val": "10%"
                   }
                 }
               }

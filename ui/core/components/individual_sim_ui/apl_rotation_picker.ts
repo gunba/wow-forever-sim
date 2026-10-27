@@ -8,10 +8,9 @@ import { EventID, TypedEvent } from '../../typed_event';
 import { existsInDOM, randomUUID } from '../../utils';
 import { Component } from '../component';
 import { Input, InputConfig } from '../input';
-import { AdaptiveStringPicker } from '../inputs/string_picker';
 import { ListItemPickerConfig, ListPicker } from '../list_picker';
 import { APLActionPicker } from './apl_actions';
-import { APLValueImplStruct } from './apl_values';
+import { APLValuePicker } from './apl_values';
 
 export class APLRotationPicker extends Component {
 	constructor(parent: HTMLElement, simUI: SimUI, modPlayer: Player<any>) {
@@ -78,7 +77,7 @@ class APLPrepullActionPicker extends Input<Player<any>, APLPrepullAction> {
 	private readonly player: Player<any>;
 
 	private readonly hidePicker: Input<Player<any>, boolean>;
-	private readonly doAtPicker: Input<Player<any>, string>;
+	private readonly doAtPicker: APLValuePicker;
 	private readonly actionPicker: APLActionPicker;
 
 	private getItem(): APLPrepullAction {
@@ -107,37 +106,21 @@ class APLPrepullActionPicker extends Input<Player<any>, APLPrepullAction> {
 			},
 		});
 
-		this.doAtPicker = new AdaptiveStringPicker(this.rootElem, this.player, {
+		// Any value, not only a constant: an opener can be timed from the spell's own cast and travel time.
+		this.doAtPicker = new APLValuePicker(this.rootElem, this.player, {
 			id: randomUUID(),
 			label: 'Do At',
-			labelTooltip: "Time before pull to do the action. Should be negative, and formatted like, '-1s' or '-2500ms'.",
+			labelTooltip:
+				"Time before pull to do the action. Should be negative: a constant such as '-1s' or '-2500ms', or a value such as 0s minus the spell's cast time.",
 			extraCssClasses: ['apl-prepull-actions-doat'],
 			changedEvent: () => this.player.rotationChangeEmitter,
-			getValue: () => (this.getItem().doAtValue?.value as APLValueImplStruct<'const'> | undefined)?.const.val || '',
-			setValue: (eventID: EventID, player: Player<any>, newValue: string) => {
-				if (newValue) {
-					this.getItem().doAtValue = APLValue.create({
-						value: { oneofKind: 'const', const: { val: newValue } },
-					});
-				} else {
-					this.getItem().doAtValue = undefined;
-				}
+			getValue: () => this.getItem().doAtValue,
+			setValue: (eventID: EventID, player: Player<any>, newValue: APLValue | undefined) => {
+				this.getItem().doAtValue = newValue;
 				this.player.rotationChangeEmitter.emit(eventID);
 			},
 			inline: true,
 		});
-		//this.doAtPicker = new APLValuePicker(this.rootElem, this.player, {
-		//	label: 'Do At',
-		//	labelTooltip: 'Time before pull to do the action. Should be negative, and formatted like, \'-1s\' or \'-2500ms\'.',
-		//	extraCssClasses: ['apl-prepull-actions-doat'],
-		//	changedEvent: () => this.player.rotationChangeEmitter,
-		//	getValue: () => this.getItem().doAtValue,
-		//	setValue: (eventID: EventID, player: Player<any>, newValue: APLValue | undefined) => {
-		//		this.getItem().doAtValue = newValue;
-		//		this.player.rotationChangeEmitter.emit(eventID);
-		//	},
-		//	inline: true,
-		//});
 
 		this.actionPicker = new APLActionPicker(this.rootElem, this.player, {
 			changedEvent: () => this.player.rotationChangeEmitter,
@@ -157,9 +140,7 @@ class APLPrepullActionPicker extends Input<Player<any>, APLPrepullAction> {
 	getInputValue(): APLPrepullAction {
 		const item = APLPrepullAction.create({
 			hide: this.hidePicker.getInputValue(),
-			doAtValue: {
-				value: { oneofKind: 'const', const: { val: this.doAtPicker.getInputValue() } },
-			},
+			doAtValue: this.doAtPicker.getInputValue(),
 			action: this.actionPicker.getInputValue(),
 		});
 		return item;
@@ -170,7 +151,7 @@ class APLPrepullActionPicker extends Input<Player<any>, APLPrepullAction> {
 			return;
 		}
 		this.hidePicker.setInputValue(newValue.hide);
-		this.doAtPicker.setInputValue((newValue.doAtValue?.value as APLValueImplStruct<'const'> | undefined)?.const.val || '');
+		this.doAtPicker.setInputValue(newValue.doAtValue);
 		this.actionPicker.setInputValue(newValue.action || APLAction.create());
 	}
 }

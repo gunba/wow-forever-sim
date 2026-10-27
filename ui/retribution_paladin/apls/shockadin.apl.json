@@ -38,20 +38,6 @@
     },
     {
       "action": {
-        "castSpell": {
-          "spellId": {
-            "spellId": 20271
-          }
-        }
-      }
-    },
-    {
-      "action": {
-        "castSpell": {
-          "spellId": {
-            "spellId": 20293
-          }
-        },
         "condition": {
           "cmp": {
             "op": "OpLe",
@@ -64,16 +50,16 @@
               }
             }
           }
+        },
+        "castSpell": {
+          "spellId": {
+            "spellId": 20293
+          }
         }
       }
     },
     {
       "action": {
-        "castSpell": {
-          "spellId": {
-            "spellId": 20924
-          }
-        },
         "condition": {
           "cmp": {
             "op": "OpGe",
@@ -85,6 +71,20 @@
                 "val": "20%"
               }
             }
+          }
+        },
+        "castSpell": {
+          "spellId": {
+            "spellId": 20924
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 20271
           }
         }
       }

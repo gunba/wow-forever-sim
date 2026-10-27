@@ -54,7 +54,7 @@ export const DefaultAPL = APLLaunch;
 
 export const TalentsP1Balance = PresetUtils.makePresetTalents('Balance', SavedTalents.create({ talentsString: '5532220115001351--505302' }));
 
-export const TalentsMoonkin = PresetUtils.makePresetTalents('Moonkin 38/0/13', SavedTalents.create({ talentsString: '5232220115501351--505003' }));
+export const TalentsMoonkin = PresetUtils.makePresetTalents('Moonkin 38/0/13', SavedTalents.create({ talentsString: '533222011550135--505003' }));
 
 export const TalentPresets = {
 	[ClassicPhase.Phase1]: [TalentsP1Balance, TalentsMoonkin],

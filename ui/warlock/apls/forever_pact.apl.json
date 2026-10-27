@@ -5,13 +5,69 @@
       "action": {
         "castSpell": {
           "spellId": {
+            "spellId": 688
+          }
+        }
+      },
+      "doAtValue": {
+        "const": {
+          "val": "-25s"
+        }
+      }
+    },
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 18788
+          }
+        }
+      },
+      "doAtValue": {
+        "const": {
+          "val": "-18s"
+        }
+      }
+    },
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 712
+          }
+        }
+      },
+      "doAtValue": {
+        "const": {
+          "val": "-16s"
+        }
+      }
+    },
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
             "spellId": 19028
           }
         }
       },
       "doAtValue": {
         "const": {
-          "val": "-1s"
+          "val": "-5s"
+        }
+      }
+    },
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 11661
+          }
+        }
+      },
+      "doAtValue": {
+        "const": {
+          "val": "-2.3s"
         }
       }
     }
@@ -43,7 +99,7 @@
                   },
                   "rhs": {
                     "const": {
-                      "val": "75%"
+                      "val": "80%"
                     }
                   }
                 }
@@ -84,7 +140,7 @@
                   },
                   "rhs": {
                     "const": {
-                      "val": "60%"
+                      "val": "70%"
                     }
                   }
                 }
@@ -114,7 +170,7 @@
             },
             "rhs": {
               "const": {
-                "val": "10%"
+                "val": "1%"
               }
             }
           }
@@ -145,6 +201,92 @@
         "castSpell": {
           "spellId": {
             "spellId": 1311680
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "condition": {
+          "and": {
+            "vals": [
+              {
+                "not": {
+                  "val": {
+                    "dotIsActive": {
+                      "spellId": {
+                        "spellId": 603
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "cmp": {
+                  "op": "OpGe",
+                  "lhs": {
+                    "remainingTime": {}
+                  },
+                  "rhs": {
+                    "const": {
+                      "val": "61s"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "castSpell": {
+          "spellId": {
+            "spellId": 603
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "condition": {
+          "and": {
+            "vals": [
+              {
+                "cmp": {
+                  "op": "OpLe",
+                  "lhs": {
+                    "dotRemainingTime": {
+                      "spellId": {
+                        "spellId": 11672
+                      }
+                    }
+                  },
+                  "rhs": {
+                    "spellCastTime": {
+                      "spellId": {
+                        "spellId": 11672
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "cmp": {
+                  "op": "OpGe",
+                  "lhs": {
+                    "remainingTime": {}
+                  },
+                  "rhs": {
+                    "const": {
+                      "val": "12s"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "castSpell": {
+          "spellId": {
+            "spellId": 11672
           }
         }
       }
@@ -201,38 +343,21 @@
     {
       "action": {
         "condition": {
-          "and": {
-            "vals": [
-              {
-                "not": {
-                  "val": {
-                    "dotIsActive": {
-                      "spellId": {
-                        "spellId": 603
-                      }
-                    }
-                  }
-                }
-              },
-              {
-                "cmp": {
-                  "op": "OpGe",
-                  "lhs": {
-                    "remainingTime": {}
-                  },
-                  "rhs": {
-                    "const": {
-                      "val": "61s"
-                    }
-                  }
-                }
+          "cmp": {
+            "op": "OpLe",
+            "lhs": {
+              "remainingTime": {}
+            },
+            "rhs": {
+              "const": {
+                "val": "15s"
               }
-            ]
+            }
           }
         },
         "castSpell": {
           "spellId": {
-            "spellId": 603
+            "spellId": 11661
           }
         }
       }
@@ -298,53 +423,6 @@
                   "lhs": {
                     "dotRemainingTime": {
                       "spellId": {
-                        "spellId": 11672
-                      }
-                    }
-                  },
-                  "rhs": {
-                    "spellCastTime": {
-                      "spellId": {
-                        "spellId": 11672
-                      }
-                    }
-                  }
-                }
-              },
-              {
-                "cmp": {
-                  "op": "OpGe",
-                  "lhs": {
-                    "remainingTime": {}
-                  },
-                  "rhs": {
-                    "const": {
-                      "val": "12s"
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        "castSpell": {
-          "spellId": {
-            "spellId": 11672
-          }
-        }
-      }
-    },
-    {
-      "action": {
-        "condition": {
-          "and": {
-            "vals": [
-              {
-                "cmp": {
-                  "op": "OpLe",
-                  "lhs": {
-                    "dotRemainingTime": {
-                      "spellId": {
                         "spellId": 11668
                       }
                     }
@@ -366,7 +444,7 @@
                   },
                   "rhs": {
                     "const": {
-                      "val": "8s"
+                      "val": "20s"
                     }
                   }
                 }
@@ -377,22 +455,6 @@
         "castSpell": {
           "spellId": {
             "spellId": 11668
-          }
-        }
-      }
-    },
-    {
-      "action": {
-        "condition": {
-          "auraIsActive": {
-            "auraId": {
-              "spellId": 440873
-            }
-          }
-        },
-        "castSpell": {
-          "spellId": {
-            "spellId": 17924
           }
         }
       }
@@ -415,6 +477,28 @@
         "castSpell": {
           "spellId": {
             "spellId": 17923
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "condition": {
+          "cmp": {
+            "op": "OpLe",
+            "lhs": {
+              "currentManaPercent": {}
+            },
+            "rhs": {
+              "const": {
+                "val": "80%"
+              }
+            }
+          }
+        },
+        "castSpell": {
+          "spellId": {
+            "spellId": 695
           }
         }
       }

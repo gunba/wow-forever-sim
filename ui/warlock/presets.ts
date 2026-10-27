@@ -73,19 +73,19 @@ export const DefaultAPL = RotationDSRuin;
 
 export const TalentsPactOptimised = PresetUtils.makePresetTalents(
 	'Demonic Pact 2/31/18',
-	SavedTalents.create({ talentsString: '011-0005003221220311351-0550005003' }),
+	SavedTalents.create({ talentsString: '011-0005003231220301351-0550005003' }),
 );
 export const TalentsDeepAffliction = PresetUtils.makePresetTalents(
-	'Deep Affliction 31/0/20',
-	SavedTalents.create({ talentsString: '2550020013520105--0550015103' }),
+	'Deep Affliction 30/0/21',
+	SavedTalents.create({ talentsString: '2550002003520015--0550305003' }),
 );
 export const TalentsDSRuinPandemic = PresetUtils.makePresetTalents(
 	'DS/Ruin Pandemic 21/11/19',
 	SavedTalents.create({ talentsString: '254000001351-0025003001-0550005103' }),
 );
 export const TalentsShadowAndFlame = PresetUtils.makePresetTalents(
-	'Shadow and Flame 13/5/33',
-	SavedTalents.create({ talentsString: '2530000003-0005-0050355103101351' }),
+	'Shadow and Flame 20/0/31',
+	SavedTalents.create({ talentsString: '25500000035--055030510310035' }),
 );
 
 export const TalentPresets = [
