@@ -64,6 +64,7 @@ type Rogue struct {
 	Premeditation  *core.Spell
 	ColdBlood      *core.Spell
 	Vanish         *core.Spell
+	Stealth        *core.Spell
 
 	Eviscerate   *core.Spell
 	ExposeArmor  *core.Spell
@@ -138,6 +139,7 @@ func (rogue *Rogue) Initialize() {
 
 	// Stealth
 	rogue.registerStealthAura()
+	rogue.registerStealthSpell()
 	rogue.registerVanishSpell()
 }
 

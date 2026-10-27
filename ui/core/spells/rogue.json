@@ -234,6 +234,24 @@
 		"note": "Beta client 1.60.1.69893 matches Classic Era: flat weapon bonus, 45 Energy and normalized weapon damage are unchanged.",
 		"source": "classic"
 	},
+	"1784": {
+		"ability": "Stealth (rank 1)",
+		"file": "sim/rogue/stealth.go",
+		"note": "Castable only before the pull, like rank 4 (1787); the lower ranks differ only in movement speed, which the sim does not model.",
+		"source": "classic"
+	},
+	"1785": {
+		"ability": "Stealth (rank 2)",
+		"file": "sim/rogue/stealth.go",
+		"note": "Castable only before the pull, like rank 4 (1787); the lower ranks differ only in movement speed, which the sim does not model.",
+		"source": "classic"
+	},
+	"1786": {
+		"ability": "Stealth (rank 3)",
+		"file": "sim/rogue/stealth.go",
+		"note": "Castable only before the pull, like rank 4 (1787); the lower ranks differ only in movement speed, which the sim does not model.",
+		"source": "classic"
+	},
 	"1787": {
 		"ability": "Stealth",
 		"file": "sim/rogue/stealth.go",
