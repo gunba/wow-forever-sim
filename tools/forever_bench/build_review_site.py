@@ -9,7 +9,6 @@ import re
 import shutil
 
 from build_display import BUILDS, BUILD_CAVEATS, CLASS_COLORS, HYBRID_PARENTS, RACES
-import ml_pages
 from sensitivity import DISPLAY_METRICS, format_metric, load_columns
 from uncertainties import CSS as QUESTIONS_CSS, SCRIPT as QUESTIONS_SCRIPT
 from uncertainties import load_register, markdown as questions_markdown, render_html as questions_html
@@ -50,7 +49,6 @@ def main():
     parser.add_argument("--output", type=Path, default=Path("dist/classic/review"))
     parser.add_argument("--sensitivity", type=Path, default=Path("artifacts/modelled_gear/forever_sensitivity.json"))
     parser.add_argument("--gear-search", type=Path, default=Path("artifacts/modelled_gear_search/current"))
-    parser.add_argument("--ml", type=Path, default=ml_pages.ML_DIR, help="learned results (tools/forever_rl/run_all.py)")
     args = parser.parse_args()
     data = json.loads(args.results.read_text())
     model_v2 = data.get("GearScenario") == "modeled-65-v2"
@@ -136,11 +134,10 @@ def main():
         }.items():
             report_text = report_text.replace(source, target)
         report.write_text(report_text)
-    ml = ml_pages.load(args.ml)
     body = []
     for key, class_name, label, icon in builds:
         simulator = SIM_PATHS.get(key, class_name.lower())
-        cells = [ml_pages.cell(key, ml, simulator)] if ml else []
+        cells = []
         for race in RACES:
             row = lookup.get((key, race))
             if (key, race) in invalid:
@@ -187,7 +184,7 @@ def main():
     factions = {r["Race"]: r["Faction"] for r in rows}
     heading = "".join(f'<th scope="col" class="{factions[r].lower()}">{escape(r)}</th>' for r in RACES)
     heading += '<th scope="col" class="gain">Tier 1 gain</th><th scope="col" class="gain">Gear +10%</th><th scope="col" class="gain">Scaling amp.</th>'
-    groups = '<tr><th rowspan="2" scope="col">Class / build</th>' + (ml_pages.header_cell() if ml else "")
+    groups = '<tr><th rowspan="2" scope="col">Class / build</th>'
     for faction in ("Alliance", "Horde"):
         count = sum(factions[r] == faction for r in RACES)
         groups += (f'<th colspan="{count}" scope="colgroup" class="faction {faction.lower()}">'
@@ -265,7 +262,7 @@ def main():
 <html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Forever simulations</title>
 <style>
-""" + BASE_CSS + ml_pages.ML_CSS + QUESTIONS_CSS + """</style><main>
+""" + BASE_CSS + QUESTIONS_CSS + """</style><main>
 <h1>Forever simulations</h1>
 <p>Level 60 · five-minute single target · 5,000 iterations per race/build · full role-specific Tier 1 bonuses.</p>
 <!-- equipment-status -->
@@ -358,7 +355,6 @@ Game icons via Wowhead.</p></footer></main><script>""" + QUESTIONS_SCRIPT + """<
             '<p class="note">Rows marked Tank include incoming attacks and modeled healing; '
             'their rage, threat and survival are scenario-dependent. See <a href="#tanks">tank metrics</a>.</p>')
     (args.output / "index.html").write_text(document)
-    ml_pages.write(ml, args.output, builds, SIM_PATHS, BASE_CSS + ml_pages.ML_CSS, args.ml)
     print(f"Review site staged at {args.output}")
 
 

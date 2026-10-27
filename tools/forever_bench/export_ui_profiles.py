@@ -40,8 +40,6 @@ def main():
     parser.add_argument("--results", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--bundle", type=Path, help="also write the web default-profile bundle")
-    parser.add_argument("--learned", type=Path,
-                        help="learned-profile results (tools/forever_rl/learned_bench.py), added as '<Build> (learned)'")
     args = parser.parse_args()
     data = json.loads(args.results.read_text())
     modeled = data.get("GearScenario") in {"modeled-65-v1", "modeled-65-v2"}
@@ -71,27 +69,10 @@ def main():
             **({"tankMetrics": {key: value for key, value in row["Tank"].items()
                                 if key != "EncounterMetrics"}} if row.get("Tank") else {}),
         })
-    ranked = len(profiles)
-    if args.learned:
-        for row in json.loads(args.learned.read_text())["Results"]:
-            race = re.sub(r"[^a-z0-9]+", "_", row["Race"].lower()).strip("_")
-            name = f"{row['Key']}__{race}__learned.json"
-            (args.output / name).write_text(json.dumps(ui_settings(row), indent=2) + "\n")
-            index.append({"build": f"{row['Build']} (learned)", "race": row["Race"], "file": name,
-                          "dps": row["DPS"], "hitAdjustment": row["Hit"]})
-            profiles.append({
-                "id": f"{row['Key']}__{race}__learned", "key": row["Key"], "build": f"{row['Build']} (learned)",
-                "race": row["Race"], "dps": row["DPS"], "settings": ui_settings(row),
-                "hitAdjustment": row["Hit"], "unmodeledSetBonuses": row.get("UnmodeledSetBonuses") or [],
-                "modeledGear": modeled, "learned": True,
-                "caveats": ["Learned in the simulator: talents and APL edits converted from a trained policy "
-                            "(the review portal's Learned column)."] + BUILD_CAVEATS.get(row["Key"], []),
-                "provisionalModels": deepcopy(row.get("ProvisionalModels", {})),
-            })
     (args.output / "index.json").write_text(json.dumps(index, indent=2) + "\n")
     if args.bundle:
-        roster = {(p["key"], p["race"]) for p in profiles[:ranked]}
-        if roster != expected_roster() or ranked != len(roster):
+        roster = {(p["key"], p["race"]) for p in profiles}
+        if roster != expected_roster() or len(profiles) != len(roster):
             raise ValueError("The web bundle requires the complete current race/build roster")
         for profile in profiles:
             player = profile["settings"]["player"]
