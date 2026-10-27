@@ -821,9 +821,12 @@ func (aa *AutoAttacks) UpdateSwingTimers(sim *Simulation) {
 		oldSwingSpeed := aa.mh.curSwingSpeed
 		aa.mh.updateSwingDuration(aa.mh.unit.SwingSpeed())
 		f := oldSwingSpeed / aa.mh.curSwingSpeed
+		// Swings make no progress before the pull, so only the part of the wait after it scales; scaling the whole
+		// wait would move a swing due at the pull to before it.
+		from := max(sim.CurrentTime, 0)
 
-		if remainingSwingTime := aa.mh.swingAt - sim.CurrentTime; remainingSwingTime > 0 {
-			aa.mh.swingAt = sim.CurrentTime + time.Duration(float64(remainingSwingTime)*f)
+		if remainingSwingTime := aa.mh.swingAt - from; remainingSwingTime > 0 {
+			aa.mh.swingAt = from + time.Duration(float64(remainingSwingTime)*f)
 		}
 
 		sim.rescheduleWeaponAttack(aa.mh.swingAt)
@@ -831,8 +834,8 @@ func (aa *AutoAttacks) UpdateSwingTimers(sim *Simulation) {
 		if aa.IsDualWielding {
 			aa.oh.updateSwingDuration(aa.mh.curSwingSpeed)
 
-			if remainingSwingTime := aa.oh.swingAt - sim.CurrentTime; remainingSwingTime > 0 {
-				aa.oh.swingAt = sim.CurrentTime + time.Duration(float64(remainingSwingTime)*f)
+			if remainingSwingTime := aa.oh.swingAt - from; remainingSwingTime > 0 {
+				aa.oh.swingAt = from + time.Duration(float64(remainingSwingTime)*f)
 			}
 
 			sim.rescheduleWeaponAttack(aa.oh.swingAt)

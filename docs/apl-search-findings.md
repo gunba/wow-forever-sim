@@ -24,6 +24,7 @@ The findings below are kept as reported. The simulator now handles them as follo
 | 12. Pre-combat Stealth | **Fixed.** Every learned Stealth rank can be cast before the pull, without a GCD; it stops auto attacks. |
 | 14. Fire Nova origin | No change needed: Jordan confirmed Fire Nova needs a Fire totem, as modelled; the code comment now says so. |
 | 16. Rage before the pull | Starting with 50 rage is confirmed. Out-of-combat decay is unresolved, so the model is unchanged and Bloodrage before −10 s stays excluded. |
+| 17. Auto attack before the pull after Stealth and Blade Flurry | **Fixed.** A change in attack speed before the pull now scales only the part of a swing's wait after the pull, and the stats pass steps through weapon swings due before 0, so such a swing would also be flagged. |
 
 ## 1. Hostile effects can land before the encounter starts
 
@@ -146,6 +147,10 @@ Classic references describe Bloodrage as preventing rage decay for its ten-secon
 For Arms, a separate timing check compared the retained rotation with Bloodrage at −10 and −5 seconds on 1,000 fresh search fights; the −5-second version was selected. On 5,000 further independent fights it scored **909.62 DPS** against the original Arms starting build's **830.09 DPS** (paired gain **79.53 ± 0.61 DPS** standard error). The candidate and seed details are saved in `forever-dps-sweep-01--arms-r15/rage-timing-audit.json` under the run root. This does not implement rage decay or verify the real-game starting-rage assumption.
 
 The Fury Sunder round-two and Fury 2H round-three automatic winners used early Bloodrage. For each agent, the highest-scoring conservative proposal from the existing search bank was selected before a fresh 5,000-fight confirmation; the original summaries and winners are preserved as `pre-rage-review-*`. The reviewed winners scored **969.16 DPS** (Fury Sunder, +5.22 paired DPS) and **893.02 DPS** (Fury 2H, +5.35 paired DPS). Details, exclusions and independent seeds are in each run's `rage-review.json`; the review seed is included in subsequent round histories.
+
+## 17. Auto attack before the pull after Stealth and Blade Flurry
+
+**Reproduced and fixed.** Found during the re-search on engine 16361d540. [`rogue-stealth-blade-flurry.json`](apl-search-repros/rogue-stealth-blade-flurry.json) casts Stealth at −2 s and Blade Flurry at −1 s. Blade Flurry breaks Stealth, which turns auto attacks back on with the first swing due at the pull; Blade Flurry's 20% attack speed then rescaled the whole wait, pull included, putting an off-hand swing at −0.17 s. Each action alone left no swing before 0. The evaluator gave no warning, because the stats pass stopped stepping once no ordinary pending action was due before 0, though a weapon swing still was.
 
 ## Report not substantiated: omitted current-mana source
 

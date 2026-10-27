@@ -212,7 +212,7 @@ func (env *Environment) finalize(raidProto *proto.Raid, _ *proto.Encounter, raid
 		}, simsignals.CreateSignals())
 		sim.reset()
 		sim.PrePull()
-		for sim.pendingActions[len(sim.pendingActions)-1].NextActionAt < 0 {
+		for min(sim.pendingActions[len(sim.pendingActions)-1].NextActionAt, sim.minWeaponAttackTime, sim.minTaskTime) < 0 {
 			if sim.Step() {
 				break
 			}

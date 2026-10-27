@@ -1,0 +1,689 @@
+{
+  "raid": {
+    "parties": [
+      {
+        "players": [
+          {
+            "name": "Combat",
+            "race": "RaceSkyborneWindshaper",
+            "class": "ClassRogue",
+            "equipment": {
+              "items": [
+                {
+                  "id": 920000012,
+                  "enchant": 2543
+                },
+                {
+                  "id": 920000299
+                },
+                {
+                  "id": 920000048,
+                  "enchant": 2488
+                },
+                {
+                  "id": 920000290,
+                  "enchant": 849
+                },
+                {
+                  "id": 920000083,
+                  "enchant": 1891
+                },
+                {
+                  "id": 920000119,
+                  "enchant": 1885
+                },
+                {
+                  "id": 920000155,
+                  "enchant": 931
+                },
+                {
+                  "id": 920000191
+                },
+                {
+                  "id": 920000227,
+                  "enchant": 2543
+                },
+                {
+                  "id": 920000263,
+                  "enchant": 1887
+                },
+                {
+                  "id": 920000308
+                },
+                {
+                  "id": 920000308
+                },
+                {
+                  "id": 920000317
+                },
+                {
+                  "id": 920000317
+                },
+                {
+                  "id": 920000334,
+                  "enchant": 1900
+                },
+                {
+                  "id": 920000332,
+                  "enchant": 1900
+                },
+                {
+                  "id": 920000373,
+                  "enchant": 8720
+                }
+              ]
+            },
+            "consumes": {
+              "flask": "FlaskOfSupremePower",
+              "food": "FoodSwiftstrikeSteak",
+              "agilityElixir": "ElixirOfTheMongoose",
+              "strengthBuff": "ElixirOfFerocity",
+              "attackPowerBuff": "JujuMight",
+              "spellPowerBuff": "GreaterArcaneElixir",
+              "fillerExplosive": "ExplosiveThoriumGrenade",
+              "mainHandImbue": "ShadowOil",
+              "offHandImbue": "DenseSharpeningStone",
+              "defaultPotion": "MajorFrenzyPotion",
+              "defaultConjured": "ConjuredRogueThistleTea",
+              "dragonBreathChili": true,
+              "zanzaBuff": "GroundScorpokAssay",
+              "sapperExplosive": "SapperGoblinSapper",
+              "mainHandScroll": "ScrollOfImbuePrecision",
+              "offHandScroll": "ScrollOfImbuePrecision"
+            },
+            "bonusStats": {
+              "stats": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "foreverTier1Bonuses": true,
+            "buffs": {
+              "blessingOfKings": true,
+              "blessingOfWisdom": "TristateEffectRegular",
+              "blessingOfMight": "TristateEffectRegular"
+            },
+            "talentsString": "005303103012-32003311201515231",
+            "profession1": "Engineering",
+            "rotation": {
+              "type": "TypeAPL",
+              "prepullActions": [
+                {
+                  "action": {
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 1784
+                      }
+                    }
+                  },
+                  "doAtValue": {
+                    "const": {
+                      "val": "-2s"
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 13877
+                      }
+                    }
+                  },
+                  "doAtValue": {
+                    "const": {
+                      "val": "-1s"
+                    }
+                  }
+                }
+              ],
+              "priorityList": [
+                {
+                  "action": {
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 11290
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 1856
+                      }
+                    },
+                    "condition": {
+                      "and": {
+                        "vals": [
+                          {
+                            "cmp": {
+                              "op": "OpGe",
+                              "lhs": {
+                                "currentEnergy": {}
+                              },
+                              "rhs": {
+                                "const": {
+                                  "val": "50"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "cmp": {
+                              "op": "OpLe",
+                              "lhs": {
+                                "currentComboPoints": {}
+                              },
+                              "rhs": {
+                                "const": {
+                                  "val": "3"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "cmp": {
+                              "op": "OpGt",
+                              "lhs": {
+                                "remainingTime": {}
+                              },
+                              "rhs": {
+                                "const": {
+                                  "val": "25"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "condition": {
+                      "cmp": {
+                        "op": "OpLe",
+                        "lhs": {
+                          "currentEnergy": {}
+                        },
+                        "rhs": {
+                          "const": {
+                            "val": "10"
+                          }
+                        }
+                      }
+                    },
+                    "castSpell": {
+                      "spellId": {
+                        "itemId": 7676
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "condition": {
+                      "or": {
+                        "vals": [
+                          {
+                            "and": {
+                              "vals": [
+                                {
+                                  "cmp": {
+                                    "op": "OpGe",
+                                    "lhs": {
+                                      "currentComboPoints": {}
+                                    },
+                                    "rhs": {
+                                      "const": {
+                                        "val": "1"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "not": {
+                                    "val": {
+                                      "auraIsActive": {
+                                        "auraId": {
+                                          "spellId": 6774,
+                                          "rank": 2
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "cmp": {
+                                    "op": "OpGe",
+                                    "lhs": {
+                                      "remainingTime": {}
+                                    },
+                                    "rhs": {
+                                      "const": {
+                                        "val": "6"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "and": {
+                              "vals": [
+                                {
+                                  "cmp": {
+                                    "op": "OpGe",
+                                    "lhs": {
+                                      "currentComboPoints": {}
+                                    },
+                                    "rhs": {
+                                      "const": {
+                                        "val": "5"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "cmp": {
+                                    "op": "OpLt",
+                                    "lhs": {
+                                      "auraRemainingTime": {
+                                        "auraId": {
+                                          "spellId": 6774,
+                                          "rank": 2
+                                        }
+                                      }
+                                    },
+                                    "rhs": {
+                                      "const": {
+                                        "val": "0"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "cmp": {
+                                    "op": "OpGt",
+                                    "lhs": {
+                                      "remainingTime": {}
+                                    },
+                                    "rhs": {
+                                      "const": {
+                                        "val": "9"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 6774,
+                        "rank": 2
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "condition": {
+                      "cmp": {
+                        "op": "OpLe",
+                        "lhs": {
+                          "currentEnergy": {}
+                        },
+                        "rhs": {
+                          "const": {
+                            "val": "30"
+                          }
+                        }
+                      }
+                    },
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 13750
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "condition": {
+                      "auraIsActive": {
+                        "auraId": {
+                          "spellId": 6774,
+                          "rank": 2
+                        }
+                      }
+                    },
+                    "autocastOtherCooldowns": {}
+                  }
+                },
+                {
+                  "action": {
+                    "condition": {
+                      "and": {
+                        "vals": [
+                          {
+                            "cmp": {
+                              "op": "OpLe",
+                              "lhs": {
+                                "remainingTime": {}
+                              },
+                              "rhs": {
+                                "const": {
+                                  "val": "3"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "cmp": {
+                              "op": "OpGe",
+                              "lhs": {
+                                "currentComboPoints": {}
+                              },
+                              "rhs": {
+                                "const": {
+                                  "val": "1"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 11300
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "condition": {
+                      "cmp": {
+                        "op": "OpGe",
+                        "lhs": {
+                          "currentComboPoints": {}
+                        },
+                        "rhs": {
+                          "const": {
+                            "val": "5"
+                          }
+                        }
+                      }
+                    },
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 14177
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "condition": {
+                      "cmp": {
+                        "op": "OpGe",
+                        "lhs": {
+                          "currentComboPoints": {}
+                        },
+                        "rhs": {
+                          "const": {
+                            "val": "5"
+                          }
+                        }
+                      }
+                    },
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 11300
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "condition": {
+                      "or": {
+                        "vals": [
+                          {
+                            "cmp": {
+                              "op": "OpGt",
+                              "lhs": {
+                                "autoTimeToNext": {
+                                  "autoType": "MainHand"
+                                }
+                              },
+                              "rhs": {
+                                "math": {
+                                  "op": "OpSub",
+                                  "lhs": {
+                                    "autoSwingTime": {
+                                      "autoType": "MainHand"
+                                    }
+                                  },
+                                  "rhs": {
+                                    "const": {
+                                      "val": "0.1"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "cmp": {
+                              "op": "OpLt",
+                              "lhs": {
+                                "remainingTime": {}
+                              },
+                              "rhs": {
+                                "const": {
+                                  "val": "6"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "cmp": {
+                              "op": "OpGe",
+                              "lhs": {
+                                "currentEnergy": {}
+                              },
+                              "rhs": {
+                                "const": {
+                                  "val": "90"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 11294,
+                        "rank": 8
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "distanceFromTarget": 5,
+            "rogue": {
+              "options": {
+                "mainHandPoison": "InstantPoison",
+                "offHandPoison": "DeadlyPoison"
+              }
+            }
+          }
+        ],
+        "buffs": {
+          "windfuryTotem": true
+        }
+      }
+    ],
+    "buffs": {
+      "giftOfTheWild": "TristateEffectRegular",
+      "powerWordFortitude": "TristateEffectRegular",
+      "bloodPact": "TristateEffectImproved",
+      "strengthOfEarthTotem": "TristateEffectRegular",
+      "graceOfAirTotem": "TristateEffectRegular",
+      "arcaneBrilliance": true,
+      "divineSpirit": true,
+      "battleShout": "TristateEffectRegular",
+      "trueshotAura": true,
+      "leaderOfThePack": true,
+      "moonkinAura": true,
+      "manaSpringTotem": "TristateEffectImproved",
+      "shadowProtection": true,
+      "natureResistanceTotem": true,
+      "frostResistanceAura": true,
+      "frostResistanceTotem": true,
+      "fireResistanceTotem": true,
+      "fireResistanceAura": true,
+      "thorns": "TristateEffectImproved",
+      "devotionAura": "TristateEffectImproved",
+      "retributionAura": "TristateEffectImproved"
+    },
+    "debuffs": {
+      "judgementOfWisdom": true,
+      "judgementOfLight": true,
+      "judgementOfTheCrusader": "TristateEffectImproved",
+      "faerieFire": true,
+      "curseOfElements": true,
+      "stormstrike": true,
+      "exposeArmor": "TristateEffectRegular",
+      "sunderArmor": true,
+      "curseOfWeakness": "TristateEffectImproved",
+      "curseOfRecklessness": true,
+      "demoralizingRoar": "TristateEffectImproved",
+      "demoralizingShout": "TristateEffectImproved",
+      "thunderClap": "TristateEffectImproved",
+      "insectSwarm": true,
+      "scorpidSting": true,
+      "huntersMark": "TristateEffectRegular"
+    }
+  },
+  "encounter": {
+    "duration": 300.0,
+    "executeProportion20": 0.2,
+    "executeProportion25": 0.25,
+    "executeProportion35": 0.35,
+    "targets": [
+      {
+        "level": 63,
+        "mobType": "MobTypeDragonkin",
+        "stats": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3731,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "simOptions": {
+    "iterations": 1,
+    "randomSeed": "26100000000",
+    "ruleset": "RulesetForever",
+    "saveAllValues": true,
+    "useLabeledRands": true,
+    "debugFirstIteration": true
+  }
+}

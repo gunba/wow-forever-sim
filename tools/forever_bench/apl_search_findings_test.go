@@ -217,3 +217,19 @@ func TestTrapLaidBeforeThePullGoesOffAtThePull(t *testing.T) {
 		t.Error("the trap laid before the pull was flagged as reaching the enemy before it")
 	}
 }
+
+// Breaking Stealth before the pull turned auto attacks on, and Blade Flurry's attack speed then moved the first swing,
+// due at the pull, to -0.17s. Swings make no progress before the pull, and a swing that does land before it is flagged.
+func TestPrepullHasteDoesNotBringSwingsBeforeThePull(t *testing.T) {
+	req := aplSearchRepro(t, "rogue-stealth-blade-flurry.json")
+	result := runAPLSearchRepro(t, req)
+	for _, line := range strings.Split(result.Logs, "\n") {
+		var at float64
+		if _, err := fmt.Sscanf(line, "[%f]", &at); err == nil && at < 0 && strings.Contains(line, "] [Target 1] {OtherID: 7,") {
+			t.Errorf("auto attack before the pull: %s", line)
+		}
+	}
+	if hasWarning(rotationWarnings(req), "reaches the enemy before the pull") {
+		t.Error("the stats pass found contact before the pull")
+	}
+}
