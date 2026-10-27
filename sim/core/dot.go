@@ -143,6 +143,7 @@ func (dot *Dot) Apply(sim *Simulation) {
 	dot.TakeSnapshot(sim, false)
 
 	dot.Cancel(sim)
+	dot.replaceOtherRanks(sim, dot.Unit)
 	dot.TickCount = 0
 	dot.RecomputeAuraDuration()
 	dot.Aura.Activate(sim)
@@ -179,6 +180,7 @@ func (dot *Dot) ApplyOrReset(sim *Simulation) {
 func (dot *Dot) ApplyOrRefresh(sim *Simulation) {
 	dot.TakeSnapshot(sim, false)
 
+	dot.replaceOtherRanks(sim, dot.Unit)
 	dot.TickCount = 0
 	dot.RecomputeAuraDuration()
 	dot.Aura.Activate(sim)
@@ -302,6 +304,33 @@ func newDot(config Dot) *Dot {
 	})
 
 	return dot
+}
+
+// replaceOtherRanks ends the caster's DoT of another rank of the same spell on the target: one caster's ranks of a
+// spell do not stack, the latest replaces the others. Ranks are the caster's spells with the same nonzero SpellCode.
+// Channels are left alone, since a new channel already ends the old one.
+func (dot *Dot) replaceOtherRanks(sim *Simulation, target *Unit) {
+	spell := dot.Spell
+	if spell.SpellCode == 0 || dot.isChanneled {
+		return
+	}
+	if !spell.otherRanksFound {
+		for _, other := range spell.Unit.Spellbook {
+			if other != spell && other.SpellCode == spell.SpellCode && (len(other.dots) > 0 || other.aoeDot != nil) {
+				spell.otherRanks = append(spell.otherRanks, other)
+			}
+		}
+		spell.otherRanksFound = true
+	}
+	for _, other := range spell.otherRanks {
+		otherDot := other.aoeDot
+		if otherDot == nil && int(target.UnitIndex) < len(other.dots) {
+			otherDot = other.dots.Get(target)
+		}
+		if otherDot != nil && otherDot != dot && !otherDot.isChanneled && otherDot.IsActive() {
+			otherDot.Cancel(sim)
+		}
+	}
 }
 
 type DotArray []*Dot

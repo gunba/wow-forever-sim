@@ -180,6 +180,10 @@ type Spell struct {
 	dots   DotArray
 	aoeDot *Dot
 
+	// The caster's other ranks of this spell that have DoTs, found on first use (see Dot.replaceOtherRanks).
+	otherRanks      []*Spell
+	otherRanksFound bool
+
 	shields    ShieldArray
 	selfShield *Shield
 

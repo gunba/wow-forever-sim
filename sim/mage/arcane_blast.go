@@ -101,15 +101,15 @@ func (mage *Mage) registerArcaneWrathSpell() {
 	if !mage.Talents.ArcaneWrath {
 		return
 	}
-	rank := 0
-	for r := 1; r <= ArcaneWrathRanks; r++ {
-		if mage.Level >= ArcaneWrathLevel[r] {
-			rank = r
-		}
+	// Every learned rank can be cast; mage.ArcaneWrath is the highest. The ranks share the cooldown.
+	cooldown := mage.NewTimer()
+	for rank := 1; rank <= ArcaneWrathRanks && mage.Level >= ArcaneWrathLevel[rank]; rank++ {
+		mage.ArcaneWrath = mage.registerArcaneWrathRank(rank, cooldown)
 	}
-	if rank == 0 {
-		return
-	}
+}
+
+func (mage *Mage) registerArcaneWrathRank(rank int, cooldown *core.Timer) *core.Spell {
+	// A rank's damage grows with level until the next rank is learned.
 	cap := mage.Level
 	if rank < ArcaneWrathRanks {
 		cap = min(cap, ArcaneWrathLevel[rank+1]-1)
@@ -117,7 +117,7 @@ func (mage *Mage) registerArcaneWrathSpell() {
 	scale := ArcaneWrathDamagePerLevel[rank] * float64(max(0, cap-ArcaneWrathLevel[rank]))
 	low, high := ArcaneWrathBaseDamage[rank][0]+scale, ArcaneWrathBaseDamage[rank][1]+scale
 
-	mage.ArcaneWrath = mage.RegisterSpell(core.SpellConfig{
+	return mage.RegisterSpell(core.SpellConfig{
 		SpellCode:   SpellCode_MageArcaneWrath,
 		ActionID:    core.ActionID{SpellID: ArcaneWrathSpellId[rank]},
 		SpellSchool: core.SpellSchoolArcane,
@@ -131,7 +131,7 @@ func (mage *Mage) registerArcaneWrathSpell() {
 		ManaCost: core.ManaCostOptions{FlatCost: ArcaneWrathManaCost[rank]},
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{GCD: core.GCDDefault, CastTime: 3500 * time.Millisecond},
-			CD:          core.Cooldown{Timer: mage.NewTimer(), Duration: 6 * time.Second},
+			CD:          core.Cooldown{Timer: cooldown, Duration: 6 * time.Second},
 		},
 
 		DamageMultiplier: 1,

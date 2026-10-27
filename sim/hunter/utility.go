@@ -193,15 +193,22 @@ func (hunter *Hunter) registerFrostTrapSpell(timer *core.Timer) {
 			DefaultCast: core.Cast{GCD: core.GCDDefault}, IgnoreHaste: true,
 			CD: core.Cooldown{Timer: timer, Duration: 30 * time.Second},
 		},
-		ExtraCastCondition: func(_ *core.Simulation, _ *core.Unit) bool { return hunter.DistanceFromTarget <= 5 },
-		ThreatMultiplier:   1,
+		ExtraCastCondition: func(sim *core.Simulation, _ *core.Unit) bool {
+			return sim.CurrentTime < 0 || hunter.DistanceFromTarget <= 5
+		},
+		ThreatMultiplier: 1,
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
-			for _, target := range hunter.Env.Encounter.TargetUnits {
-				result := spell.CalcAndDealOutcome(sim, target, spell.OutcomeMagicHit)
-				if result.Landed() {
-					hunter.slowTarget(sim, target, 13810, time.Duration(float64(30*time.Second)*(1+.15*float64(hunter.Talents.CleverTraps))), .6)
-					hunter.procEntrapment(sim, target)
+			trigger := func(sim *core.Simulation) {
+				for _, target := range hunter.Env.Encounter.TargetUnits {
+					result := spell.CalcAndDealOutcome(sim, target, spell.OutcomeMagicHit)
+					if result.Landed() {
+						hunter.slowTarget(sim, target, 13810, time.Duration(float64(30*time.Second)*(1+.15*float64(hunter.Talents.CleverTraps))), .6)
+						hunter.procEntrapment(sim, target)
+					}
 				}
+			}
+			if !hunter.layTrapBeforePull(sim, trigger) {
+				trigger(sim)
 			}
 		},
 	})

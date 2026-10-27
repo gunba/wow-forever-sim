@@ -4,7 +4,7 @@ The current searches use the pinned Forever engine SHA-256 `f9c7ce22c3c9b2c1af42
 
 The issue details, reproduction requests and distinctions between confirmed bugs and unverified game rules are in [APL and simulator findings](apl-search-findings.md). Hunter's Mark is permitted before combat and is **not** a reason to rerun.
 
-As of 27 October 2026 the simulator has the fixes for pre-combat Stealth, current-pet mana, unresolved conditions, warnings visible to the search, pre-pull Autocast Other Cooldowns, and flagging of effects that reach the enemy before the pull ([resolution](apl-search-findings.md#resolution-in-the-simulator-27-october-2026)). The rows that wait on an in-game check (rank overlap, trap placement, Searing Totem, Fire Nova, Tiger's Fury, rage before the pull, Mage and Shadow Bolt ranks) are still open.
+As of 27 October 2026 the simulator has the fixes for pre-combat Stealth, current-pet mana, unresolved conditions, warnings visible to the search, pre-pull Autocast Other Cooldowns, and flagging of effects that reach the enemy before the pull ([resolution](apl-search-findings.md#resolution-in-the-simulator-27-october-2026)). Jordan has since settled the in-game questions: DoT ranks do not stack (now modelled), Hunters can pre-trap (now modelled), lower Arcane Wrath ranks are castable (now modelled), placing a fire totem does not start the fight, Fire Nova needs a Fire totem, Tiger's Fury is removed, AQ ranks cannot be learned, and 50 starting rage is right. Only out-of-combat rage decay is still open.
 
 | Class | DPS builds to rerun | Fix or verification that triggers the rerun | Why it matters |
 |---|---|---|---|

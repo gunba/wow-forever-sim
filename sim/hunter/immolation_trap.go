@@ -65,20 +65,30 @@ func (hunter *Hunter) getImmolationTrapConfig(rank int, timer *core.Timer) core.
 		},
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			if hunter.DistanceFromTarget > 5 {
-				return
+			roll := func(sim *core.Simulation) *core.SpellResult {
+				// Traps gain no benefit from hit bonuses except for the Trap Mastery talent, since this is a unique interaction this is my workaround
+				spellHit := spell.Unit.GetStat(stats.SpellHit) + target.PseudoStats.BonusSpellHitRatingTaken
+				spell.Unit.AddStatDynamic(sim, stats.SpellHit, spellHit*-1)
+				result := spell.CalcOutcome(sim, target, spell.OutcomeMagicHitNoHitCounter)
+				spell.Unit.AddStatDynamic(sim, stats.SpellHit, spellHit)
+				return result
 			}
-			// Traps gain no benefit from hit bonuses except for the Trap Mastery talent, since this is a unique interaction this is my workaround
-			spellHit := spell.Unit.GetStat(stats.SpellHit) + target.PseudoStats.BonusSpellHitRatingTaken
-			spell.Unit.AddStatDynamic(sim, stats.SpellHit, spellHit*-1)
-			result := spell.CalcOutcome(sim, target, spell.OutcomeMagicHitNoHitCounter)
-			spell.Unit.AddStatDynamic(sim, stats.SpellHit, spellHit)
-			spell.WaitTravelTime(sim, func(s *core.Simulation) {
+			land := func(sim *core.Simulation, result *core.SpellResult) {
 				spell.DealOutcome(sim, result)
 				if result.Landed() {
 					hunter.procEntrapment(sim, target)
 					spell.Dot(target).Apply(sim)
 				}
+			}
+			if hunter.layTrapBeforePull(sim, func(sim *core.Simulation) { land(sim, roll(sim)) }) {
+				return
+			}
+			if hunter.DistanceFromTarget > 5 {
+				return
+			}
+			result := roll(sim)
+			spell.WaitTravelTime(sim, func(s *core.Simulation) {
+				land(sim, result)
 			})
 		},
 	}
@@ -93,6 +103,19 @@ func (hunter *Hunter) registerImmolationTrapSpell(timer *core.Timer) {
 			hunter.ImmolationTrap = hunter.GetOrRegisterSpell(config)
 		}
 	}
+}
+
+// layTrapBeforePull handles a trap laid before the pull, reporting whether it was: the target walks onto it, so it
+// goes off when the fight starts wherever the Hunter stands, unless its minute on the ground (Classic tooltip) has
+// run out by then. In the fight the target stays put, so a trap only reaches it from melee range.
+func (hunter *Hunter) layTrapBeforePull(sim *core.Simulation, trigger func(*core.Simulation)) bool {
+	if sim.CurrentTime >= 0 {
+		return false
+	}
+	if sim.CurrentTime >= -time.Minute {
+		core.StartDelayedAction(sim, core.DelayedActionOptions{DoAt: 0, OnAction: trigger})
+	}
+	return true
 }
 
 // Client 1.60.1.70425 makes the fire traps scale with attack power; the coefficient is server-side.

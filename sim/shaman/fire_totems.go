@@ -69,7 +69,7 @@ func (shaman *Shaman) newSearingTotemSpellConfig(rank int) core.SpellConfig {
 		SpellSchool: core.SpellSchoolFire,
 		DefenseType: core.DefenseTypeMagic,
 		ProcMask:    core.ProcMaskEmpty,
-		// Placing a fire totem is not taken to start the fight until the game shows whether it does; its attacks do.
+		// Placing a fire totem does not start the fight; its attacks do.
 		Flags: SpellFlagTotem | core.SpellFlagAPL | core.SpellFlagPullSafe,
 
 		RequiredLevel: level,
@@ -178,7 +178,7 @@ func (shaman *Shaman) newMagmaTotemSpellConfig(rank int) core.SpellConfig {
 		SpellSchool: core.SpellSchoolFire,
 		DefenseType: core.DefenseTypeMagic,
 		ProcMask:    core.ProcMaskEmpty,
-		// Placing a fire totem is not taken to start the fight until the game shows whether it does; its attacks do.
+		// Placing a fire totem does not start the fight; its attacks do.
 		Flags: SpellFlagTotem | core.SpellFlagAPL | core.SpellFlagPullSafe,
 
 		RequiredLevel: level,
@@ -223,7 +223,8 @@ func (shaman *Shaman) newMagmaTotemSpellConfig(rank int) core.SpellConfig {
 }
 
 // Forever has no Fire Nova Totem: its spell ids are gone from the beta client, and the Fire Nova the spellbook
-// teaches in its place is the caster-centred nova, a 10 sec cooldown that bursts on every nearby enemy at once.
+// teaches in its place is a 10 sec cooldown that makes the Shaman's active Fire totem burst on the enemies around it,
+// so it needs a Fire totem down.
 // Levels are the totem's; damage, coefficient and mana costs are the beta client's (1.60.1.70425: base damage
 // cut sharply, coefficient 0.143 from 0.214, costs 65/120/210/290/375 from 95/170/280/395/520), with damage scaled
 // up by the same per-level steps as before.

@@ -74,11 +74,7 @@ func (hunter *Hunter) getExplosiveTrapConfig(rank int, timer *core.Timer) core.S
 		},
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			if hunter.DistanceFromTarget > 5 {
-				return
-			}
-
-			spell.WaitTravelTime(sim, func(s *core.Simulation) {
+			explode := func(sim *core.Simulation) {
 				curTarget := target
 				// Traps gain no benefit from hit bonuses except for the Trap Mastery talent, since this is a unique interaction this is my workaround
 				spellHit := spell.Unit.GetStat(stats.SpellHit) + target.PseudoStats.BonusSpellHitRatingTaken
@@ -94,7 +90,14 @@ func (hunter *Hunter) getExplosiveTrapConfig(rank int, timer *core.Timer) core.S
 				}
 				spell.Unit.AddStatDynamic(sim, stats.SpellHit, spellHit)
 				spell.AOEDot().ApplyOrReset(sim)
-			})
+			}
+			if hunter.layTrapBeforePull(sim, explode) {
+				return
+			}
+			if hunter.DistanceFromTarget > 5 {
+				return
+			}
+			spell.WaitTravelTime(sim, explode)
 		},
 	}
 }

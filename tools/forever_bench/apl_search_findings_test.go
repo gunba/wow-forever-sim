@@ -156,3 +156,64 @@ func TestPrepullEffectsReachingTheEnemyAreFlagged(t *testing.T) {
 		}
 	}
 }
+
+// mostActiveAtOnce is the most of the given auras the log shows on unit at the same time.
+func mostActiveAtOnce(result *proto.RaidSimResult, unit string, ids []int32) int {
+	active, most := map[string]bool{}, 0
+	for _, line := range strings.Split(result.Logs, "\n") {
+		for _, id := range ids {
+			// The aura's id may carry a tag: {SpellID: 1237313, Tag: 1}.
+			for _, aura := range []string{fmt.Sprintf("{SpellID: %d}", id), fmt.Sprintf("{SpellID: %d,", id)} {
+				switch {
+				case strings.Contains(line, "] ["+unit+"] Aura gained: "+aura):
+					active[aura] = true
+				case strings.Contains(line, "] ["+unit+"] Aura faded: "+aura):
+					delete(active, aura)
+				}
+			}
+		}
+		most = max(most, len(active))
+	}
+	return most
+}
+
+// One caster's ranks of a DoT do not stack: a new rank replaces the others on the target.
+func TestDotRanksReplaceEachOther(t *testing.T) {
+	for _, c := range []struct {
+		repro string
+		ids   []int32
+	}{
+		{"corruption-multiple-ranks.json", []int32{172, 6222, 6223, 7648, 11671, 11672}},
+		{"frostfire-multiple-ranks.json", []int32{401502, 1237312, 1237313}},
+	} {
+		result := runAPLSearchRepro(t, aplSearchRepro(t, c.repro))
+		if most := mostActiveAtOnce(result, "Target 1", c.ids); most != 1 {
+			t.Errorf("%s: up to %d ranks on the target at once, want 1", c.repro, most)
+		}
+	}
+}
+
+// Every learned rank of Arcane Wrath can be cast, not only the highest.
+func TestArcaneWrathLowerRanksCanBeCast(t *testing.T) {
+	if casts := playerCasts(runAPLSearchRepro(t, aplSearchRepro(t, "unavailable-arcane-wrath-rank.json")), 1326081); casts == 0 {
+		t.Error("Arcane Wrath rank 3 was never cast")
+	}
+}
+
+// A trap laid before the pull goes off when the fight starts, though the Hunter stands at range.
+func TestTrapLaidBeforeThePullGoesOffAtThePull(t *testing.T) {
+	req := aplSearchRepro(t, "hunter-trap-at-range.json")
+	action := &proto.APLPrepullAction{}
+	if err := protojson.Unmarshal([]byte(`{"action": {"castSpell": {"spellId": {"spellId": 14305}}}, "doAtValue": {"const": {"val": "-5s"}}}`), action); err != nil {
+		t.Fatal(err)
+	}
+	rotation := req.Raid.Parties[0].Players[0].Rotation
+	rotation.PrepullActions = append(rotation.PrepullActions, action)
+	result := runAPLSearchRepro(t, req)
+	if !strings.Contains(result.Logs, "[0.00] [Target 1] Aura gained: {SpellID: 14305}") {
+		t.Error("the Immolation Trap laid at -5s did not go off at the pull")
+	}
+	if hasWarning(rotationWarnings(req), "{SpellID: 14305} reaches the enemy before the pull") {
+		t.Error("the trap laid before the pull was flagged as reaching the enemy before it")
+	}
+}
