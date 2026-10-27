@@ -253,6 +253,11 @@ type APLActionAutocastOtherCooldowns struct {
 }
 
 func (rot *APLRotation) newActionAutocastOtherCooldowns(_ *proto.APLActionAutocastOtherCooldowns) APLActionImpl {
+	if rot.parsingPrepull {
+		// Pre-pull actions run without IsReady, which picks the cooldown to use.
+		rot.ValidationWarning("Autocast Other Cooldowns only works in the priority list, not before the pull; cast the cooldowns themselves instead")
+		return nil
+	}
 	unit := rot.unit
 	return &APLActionAutocastOtherCooldowns{
 		character: unit.Env.Raid.GetPlayerFromUnit(unit).GetCharacter(),
