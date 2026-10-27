@@ -194,6 +194,7 @@ const (
 	SpellFlagNotAProc                                      // Indicates the proc is not treated as a proc (Seal of Command)
 	SpellFlagNoPeriodicCrit                                // Indicates this spell's periodic damage can never crit, even under rulesets where dots normally can
 	SpellFlagAllowAutoAttacks                              // Weapon casts that explicitly allow autos to continue in Forever.
+	SpellFlagPullSafe                                      // Affects an enemy before the pull without starting the fight (see notePrepullContact).
 
 	// Used to let agents categorize their spells.
 	SpellFlagAgentReserved1

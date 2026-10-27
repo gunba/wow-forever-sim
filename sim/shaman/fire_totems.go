@@ -69,7 +69,8 @@ func (shaman *Shaman) newSearingTotemSpellConfig(rank int) core.SpellConfig {
 		SpellSchool: core.SpellSchoolFire,
 		DefenseType: core.DefenseTypeMagic,
 		ProcMask:    core.ProcMaskEmpty,
-		Flags:       SpellFlagTotem | core.SpellFlagAPL,
+		// Placing a fire totem is not taken to start the fight until the game shows whether it does; its attacks do.
+		Flags: SpellFlagTotem | core.SpellFlagAPL | core.SpellFlagPullSafe,
 
 		RequiredLevel: level,
 		Rank:          rank,
@@ -177,7 +178,8 @@ func (shaman *Shaman) newMagmaTotemSpellConfig(rank int) core.SpellConfig {
 		SpellSchool: core.SpellSchoolFire,
 		DefenseType: core.DefenseTypeMagic,
 		ProcMask:    core.ProcMaskEmpty,
-		Flags:       SpellFlagTotem | core.SpellFlagAPL,
+		// Placing a fire totem is not taken to start the fight until the game shows whether it does; its attacks do.
+		Flags: SpellFlagTotem | core.SpellFlagAPL | core.SpellFlagPullSafe,
 
 		RequiredLevel: level,
 		Rank:          rank,

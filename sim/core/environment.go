@@ -51,6 +51,12 @@ type Environment struct {
 	resetting           bool
 
 	prepullActions []PrepullAction
+
+	// The pre-pull action that ran last, and whether the effects being applied are those of a SpellFlagPullSafe spell,
+	// for noticing what reaches an enemy before the pull (see notePrepullContact).
+	lastPrepull    *APLRotation
+	lastPrepullIdx int
+	pullSafeEffect bool
 }
 
 func NewEnvironment(raidProto *proto.Raid, encounterProto *proto.Encounter, ruleset proto.Ruleset, runFakePrepull bool) (*Environment, *proto.RaidStats, *proto.EncounterStats) {
@@ -199,13 +205,18 @@ func (env *Environment) finalize(raidProto *proto.Raid, _ *proto.Encounter, raid
 	})
 
 	if runFakePrepull {
-		// Runs prepull only, for a single iteration. This lets us detect misconfigured
-		// prepull spells (e.g. GCD not available) in APL.
+		// Runs prepull only, for a single iteration, up to the pull. This lets us detect misconfigured
+		// prepull spells (e.g. GCD not available, or landing before the pull) in APL.
 		sim := newSimWithEnv(env, &proto.SimOptions{
 			Iterations: 1,
 		}, simsignals.CreateSignals())
 		sim.reset()
 		sim.PrePull()
+		for sim.pendingActions[len(sim.pendingActions)-1].NextActionAt < 0 {
+			if sim.Step() {
+				break
+			}
+		}
 		sim.Cleanup()
 	}
 

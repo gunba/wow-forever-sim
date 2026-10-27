@@ -481,6 +481,10 @@ func (spell *Spell) CalcAndDealOutcome(sim *Simulation, target *Unit, outcomeApp
 
 // Applies the fully computed spell result to the sim.
 func (spell *Spell) dealDamageInternal(sim *Simulation, isPeriodic bool, result *SpellResult) {
+	if sim.CurrentTime < 0 && result.Target.Type == EnemyUnit && spell.Unit.Type != EnemyUnit && !spell.Flags.Matches(SpellFlagPullSafe) &&
+		!spell.Unit.Env.pullSafeEffect {
+		spell.Unit.Env.notePrepullContact(spell.ActionID)
+	}
 	result.Target.absorbDamage(sim, spell, result)
 	if result.AbsorbedDamage > 0 {
 		result.Threat = spell.ThreatFromDamage(result.Outcome, result.Damage)

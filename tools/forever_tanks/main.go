@@ -140,7 +140,7 @@ func main() {
 func runRequest(request *proto.RaidSimRequest, outputPath string) {
 	// The environment compiler reports invalid APL actions before the run.
 	probe := googleProto.Clone(request).(*proto.RaidSimRequest)
-	_, rs, _ := core.NewEnvironment(probe.Raid, probe.Encounter, request.SimOptions.Ruleset, false)
+	_, rs, _ := core.NewEnvironment(probe.Raid, probe.Encounter, request.SimOptions.Ruleset, true)
 	var warnings []string
 	for _, action := range append(rs.Parties[0].Players[0].RotationStats.GetPrepullActions(), rs.Parties[0].Players[0].RotationStats.GetPriorityList()...) {
 		warnings = append(warnings, action.Warnings...)

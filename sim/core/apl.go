@@ -2,6 +2,7 @@ package core
 
 import (
 	"fmt"
+	"slices"
 	"time"
 
 	"github.com/wowsims/classic/sim/core/proto"
@@ -33,6 +34,9 @@ type APLRotation struct {
 	// Values that failed to resolve while parsing (see newAPLValue).
 	unresolvedValues int
 
+	// The config index of each entry of prepullActions, for its warnings.
+	prepullConfigIdx []int
+
 	// policy, when set, picks among the ready priority-list actions instead of the first ready one.
 	policy APLPolicy
 	ready  []int
@@ -45,6 +49,32 @@ type APLRotation struct {
 	curWarnings          []string
 	prepullWarnings      [][]string
 	priorityListWarnings [][]string
+}
+
+// notePrepullContact records that an effect of id reached an enemy before the pull. In the game that starts the fight,
+// but the simulated fight starts at 0 whatever happened before, so the pre-pull action responsible gets a warning:
+// the one using id if there is one, otherwise the last one that ran, since only pre-pull actions act before the pull.
+func (env *Environment) notePrepullContact(id ActionID) {
+	rot, idx := env.lastPrepull, env.lastPrepullIdx
+	for _, unit := range env.Raid.AllUnits {
+		if unit.Rotation == nil {
+			continue
+		}
+		for i, action := range unit.Rotation.prepullActions {
+			for _, inner := range action.GetAllActions() {
+				if spell := inner.spell(); spell != nil && spell.ActionID.SameActionIgnoreTag(id) {
+					rot, idx = unit.Rotation, unit.Rotation.prepullConfigIdx[i]
+				}
+			}
+		}
+	}
+	if rot == nil {
+		return
+	}
+	warning := fmt.Sprintf("%s reaches the enemy before the pull, which in the game starts the fight early. Do it later, so that it lands at or after 0s.", id)
+	if !slices.Contains(rot.prepullWarnings[idx], warning) {
+		rot.prepullWarnings[idx] = append(rot.prepullWarnings[idx], warning)
+	}
 }
 
 func (rot *APLRotation) ValidationWarning(message string, vals ...interface{}) {
@@ -102,10 +132,12 @@ func (unit *Unit) newAPLRotation(config *proto.APLRotation) *APLRotation {
 						action := rotation.newAPLAction(prepullItem.Action)
 						if action != nil {
 							rotation.prepullActions = append(rotation.prepullActions, action)
+							rotation.prepullConfigIdx = append(rotation.prepullConfigIdx, prepullIdx)
 							unit.RegisterPrepullAction(doAt, func(sim *Simulation) {
 								// Warnings for prepull cast failure are detected by running a fake prepull,
 								// so this action.Execute needs to record warnings.
 								rotation.doAndRecordWarnings(&rotation.prepullWarnings[prepullIdx], true, func() {
+									unit.Env.lastPrepull, unit.Env.lastPrepullIdx = rotation, prepullIdx
 									action.Execute(sim)
 								})
 							})

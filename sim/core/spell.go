@@ -612,6 +612,11 @@ func (spell *Spell) applyEffects(sim *Simulation, target *Unit) {
 	spell.SpellMetrics[target.UnitIndex].Casts++
 	spell.casts++
 
+	if sim.CurrentTime < 0 && spell.Flags.Matches(SpellFlagPullSafe) {
+		env := spell.Unit.Env
+		defer func(was bool) { env.pullSafeEffect = was }(env.pullSafeEffect)
+		env.pullSafeEffect = true
+	}
 	spell.ApplyEffects(sim, target, spell)
 }
 

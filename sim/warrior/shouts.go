@@ -15,7 +15,8 @@ func (warrior *Warrior) newShoutSpellConfig(actionID core.ActionID, rank int32, 
 
 	return warrior.RegisterSpell(AnyStance, core.SpellConfig{
 		ActionID: actionID,
-		Flags:    core.SpellFlagNoOnCastComplete | core.SpellFlagAPL | core.SpellFlagHelpful,
+		// The hits on the target only stand in for the threat of buffing the party, so they do not start the fight.
+		Flags: core.SpellFlagNoOnCastComplete | core.SpellFlagAPL | core.SpellFlagHelpful | core.SpellFlagPullSafe,
 
 		RageCost: core.RageCostOptions{
 			Cost: 10 * core.TernaryFloat64(warrior.Env.IsForever(), 1-.05*float64(warrior.Talents.BoomingVoice), 1),

@@ -26,6 +26,17 @@ func (action *APLAction) Execute(sim *Simulation) {
 	action.impl.Execute(sim)
 }
 
+// spell returns the spell a Cast Spell or Channel Spell entry uses, or nil for any other entry.
+func (action *APLAction) spell() *Spell {
+	switch impl := action.impl.(type) {
+	case *APLActionCastSpell:
+		return impl.spell
+	case *APLActionChannelSpell:
+		return impl.spell
+	}
+	return nil
+}
+
 // CastSpell returns the spell a Cast Spell entry casts, or nil for any other entry.
 func (action *APLAction) CastSpell() *Spell {
 	if cast, ok := action.impl.(*APLActionCastSpell); ok {

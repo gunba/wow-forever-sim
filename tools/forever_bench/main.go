@@ -169,7 +169,7 @@ func runWithRequest(b build, p *proto.Player, count int, rng int64,
 		panic(err)
 	}
 	req := makeRequest(b, p, count, rng)
-	env, rs, _ := core.NewEnvironment(req.Raid, req.Encounter, proto.Ruleset_RulesetForever, false)
+	env, rs, _ := core.NewEnvironment(req.Raid, req.Encounter, proto.Ruleset_RulesetForever, true)
 	ps := rs.Parties[0].Players[0]
 	var warnings []string
 	for _, a := range append(ps.RotationStats.GetPrepullActions(), ps.RotationStats.GetPriorityList()...) {

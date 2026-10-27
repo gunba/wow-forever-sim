@@ -563,6 +563,9 @@ restart:
 // exists it will be replaced with the new one.
 func (aura *Aura) Activate(sim *Simulation) {
 	aura.metrics.Procs++
+	if sim.CurrentTime < 0 && aura.Unit.Type == EnemyUnit && !aura.Unit.Env.pullSafeEffect {
+		aura.Unit.Env.notePrepullContact(aura.ActionID)
+	}
 	if aura.IsActive() {
 		aura.Refresh(sim)
 		return

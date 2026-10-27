@@ -22,7 +22,8 @@ func (hunter *Hunter) registerHuntersMark() {
 		hunter.HuntersMarkAuras = append(hunter.HuntersMarkAuras, auras)
 		hunter.RegisterSpell(core.SpellConfig{
 			ActionID: core.ActionID{SpellID: spellID}, Rank: i + 1, RequiredLevel: int(rank.level), SpellSchool: core.SpellSchoolShadow,
-			ProcMask: core.ProcMaskEmpty, Flags: core.SpellFlagAPL, ManaCost: core.ManaCostOptions{FlatCost: rank.mana},
+			// Marking an enemy does not start the fight.
+			ProcMask: core.ProcMaskEmpty, Flags: core.SpellFlagAPL | core.SpellFlagPullSafe, ManaCost: core.ManaCostOptions{FlatCost: rank.mana},
 			Cast:               core.CastConfig{DefaultCast: core.Cast{GCD: core.GCDDefault}},
 			ExtraCastCondition: func(_ *core.Simulation, target *core.Unit) bool { return target.Type == core.EnemyUnit },
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, _ *core.Spell) {
