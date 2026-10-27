@@ -271,7 +271,7 @@ func (action *APLActionMove) IsReady(sim *Simulation) bool {
 func (action *APLActionMove) Execute(sim *Simulation) {
 	moveRange := action.moveRange.GetFloat(sim)
 	if sim.Log != nil {
-		action.unit.Log(sim, "Moving to %s", moveRange)
+		action.unit.Log(sim, "Moving to %g yards", moveRange)
 	}
 
 	action.unit.MoveTo(moveRange, sim)

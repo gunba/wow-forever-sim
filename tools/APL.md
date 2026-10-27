@@ -47,7 +47,11 @@ Here is what a example prepull action looks like. It casts spell 1 at -1 seconds
                     }
                 }
             },
-            "doAt": "-1s"
+            "doAtValue": {
+                "const": {
+                    "val": "-1s"
+                }
+            }
         }
 ```
 
