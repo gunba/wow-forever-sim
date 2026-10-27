@@ -1,0 +1,317 @@
+{
+  "raid": {
+    "parties": [
+      {
+        "players": [
+          {
+            "name": "Demonic Pact",
+            "race": "RaceHuman",
+            "class": "ClassWarlock",
+            "equipment": {
+              "items": [
+                {
+                  "id": 920000386,
+                  "enchant": 2544
+                },
+                {
+                  "id": 920000302
+                },
+                {
+                  "id": 920000390,
+                  "enchant": 2488
+                },
+                {
+                  "id": 920000418,
+                  "enchant": 1889
+                },
+                {
+                  "id": 920000077,
+                  "enchant": 1891
+                },
+                {
+                  "id": 920000398,
+                  "enchant": 2566
+                },
+                {
+                  "id": 920000402,
+                  "enchant": 2614
+                },
+                {
+                  "id": 920000406
+                },
+                {
+                  "id": 920000470,
+                  "enchant": 2544
+                },
+                {
+                  "id": 920000478,
+                  "enchant": 851
+                },
+                {
+                  "id": 920000490
+                },
+                {
+                  "id": 920000490
+                },
+                {
+                  "id": 920000492
+                },
+                {
+                  "id": 920000492
+                },
+                {
+                  "id": 920000341,
+                  "enchant": 2504
+                },
+                {
+                  "id": 920000385
+                },
+                {
+                  "id": 920000494
+                }
+              ]
+            },
+            "consumes": {
+              "flask": "FlaskOfSupremePower",
+              "food": "FoodNightfinSoup",
+              "manaRegenElixir": "MagebloodPotion",
+              "spellPowerBuff": "GreaterArcaneElixir",
+              "shadowPowerBuff": "ElixirOfShadowPower",
+              "firePowerBuff": "ElixirOfFirepower",
+              "mainHandImbue": "BrilliantWizardOil",
+              "defaultPotion": "MajorManaPotion",
+              "defaultConjured": "ConjuredDemonicRune",
+              "zanzaBuff": "CerebralCortexCompound",
+              "intellectElixir": "ElixirOfTheOwl",
+              "mainHandScroll": "ScrollOfImbuePrecision"
+            },
+            "bonusStats": {
+              "stats": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "foreverTier1Bonuses": true,
+            "buffs": {
+              "blessingOfKings": true,
+              "blessingOfWisdom": "TristateEffectRegular",
+              "blessingOfMight": "TristateEffectRegular"
+            },
+            "talentsString": "011-0005003231220301351-0550005003",
+            "profession1": "Engineering",
+            "rotation": {
+              "type": "TypeAPL",
+              "prepullActions": [
+                {
+                  "doAtValue": {
+                    "const": {
+                      "val": "-15s"
+                    }
+                  },
+                  "action": {
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 688
+                      }
+                    }
+                  }
+                }
+              ],
+              "priorityList": [
+                {
+                  "action": {
+                    "condition": {
+                      "cmp": {
+                        "op": "OpLt",
+                        "lhs": {
+                          "warlockCurrentPetManaPercent": {}
+                        },
+                        "rhs": {
+                          "const": {
+                            "val": "95%"
+                          }
+                        }
+                      }
+                    },
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 11689
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 695
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "distanceFromTarget": 20,
+            "warlock": {
+              "options": {
+                "armor": "DemonArmor",
+                "summon": "Imp",
+                "weaponImbue": "Spellstone",
+                "sacrifice": "Voidwalker"
+              }
+            }
+          }
+        ],
+        "buffs": {}
+      }
+    ],
+    "buffs": {
+      "giftOfTheWild": "TristateEffectRegular",
+      "powerWordFortitude": "TristateEffectRegular",
+      "bloodPact": "TristateEffectImproved",
+      "strengthOfEarthTotem": "TristateEffectRegular",
+      "arcaneBrilliance": true,
+      "divineSpirit": true,
+      "battleShout": "TristateEffectRegular",
+      "trueshotAura": true,
+      "leaderOfThePack": true,
+      "moonkinAura": true,
+      "manaSpringTotem": "TristateEffectImproved",
+      "shadowProtection": true,
+      "natureResistanceTotem": true,
+      "frostResistanceAura": true,
+      "frostResistanceTotem": true,
+      "fireResistanceTotem": true,
+      "fireResistanceAura": true,
+      "thorns": "TristateEffectImproved",
+      "devotionAura": "TristateEffectImproved",
+      "retributionAura": "TristateEffectImproved"
+    },
+    "debuffs": {
+      "judgementOfWisdom": true,
+      "judgementOfLight": true,
+      "judgementOfTheCrusader": "TristateEffectImproved",
+      "faerieFire": true,
+      "curseOfElements": true,
+      "stormstrike": true,
+      "exposeArmor": "TristateEffectRegular",
+      "sunderArmor": true,
+      "curseOfWeakness": "TristateEffectImproved",
+      "curseOfRecklessness": true,
+      "demoralizingRoar": "TristateEffectImproved",
+      "demoralizingShout": "TristateEffectImproved",
+      "thunderClap": "TristateEffectImproved",
+      "insectSwarm": true,
+      "scorpidSting": true,
+      "huntersMark": "TristateEffectRegular"
+    }
+  },
+  "encounter": {
+    "duration": 90,
+    "executeProportion20": 0.2,
+    "executeProportion25": 0.25,
+    "executeProportion35": 0.35,
+    "targets": [
+      {
+        "level": 63,
+        "mobType": "MobTypeDragonkin",
+        "stats": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3731,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "simOptions": {
+    "iterations": 1,
+    "randomSeed": "1520220220",
+    "ruleset": "RulesetForever",
+    "saveAllValues": true,
+    "useLabeledRands": true,
+    "debug": true
+  }
+}

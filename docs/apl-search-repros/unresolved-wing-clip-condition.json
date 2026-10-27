@@ -1,0 +1,561 @@
+{
+  "raid": {
+    "parties": [
+      {
+        "players": [
+          {
+            "name": "SV Weave",
+            "race": "RaceHuman",
+            "class": "ClassHunter",
+            "equipment": {
+              "items": [
+                {
+                  "id": 920000020,
+                  "enchant": 1508
+                },
+                {
+                  "id": 920000299
+                },
+                {
+                  "id": 920000056,
+                  "enchant": 2488
+                },
+                {
+                  "id": 920000290,
+                  "enchant": 849
+                },
+                {
+                  "id": 920000092,
+                  "enchant": 1891
+                },
+                {
+                  "id": 920000128,
+                  "enchant": 1885
+                },
+                {
+                  "id": 920000164,
+                  "enchant": 2564
+                },
+                {
+                  "id": 920000200
+                },
+                {
+                  "id": 920000236,
+                  "enchant": 1508
+                },
+                {
+                  "id": 920000272,
+                  "enchant": 1887
+                },
+                {
+                  "id": 920000308
+                },
+                {
+                  "id": 920000308
+                },
+                {
+                  "id": 920000317
+                },
+                {
+                  "id": 920000317
+                },
+                {
+                  "id": 920000333,
+                  "enchant": 2564
+                },
+                {
+                  "id": 920000333,
+                  "enchant": 2564
+                },
+                {
+                  "id": 920000375,
+                  "enchant": 8720
+                }
+              ]
+            },
+            "consumes": {
+              "flask": "FlaskOfDistilledWisdom",
+              "food": "FoodSwiftstrikeSteak",
+              "agilityElixir": "ElixirOfCunning",
+              "manaRegenElixir": "MagebloodPotion",
+              "strengthBuff": "ElixirOfFerocity",
+              "attackPowerBuff": "JujuMight",
+              "mainHandImbue": "DenseSharpeningStone",
+              "offHandImbue": "DenseSharpeningStone",
+              "defaultPotion": "MajorFrenzyPotion",
+              "defaultConjured": "ConjuredDemonicRune",
+              "zanzaBuff": "GroundScorpokAssay",
+              "sapperExplosive": "SapperGoblinSapper",
+              "intellectElixir": "ElixirOfTheOwl",
+              "mainHandScroll": "ScrollOfImbuePrecision",
+              "offHandScroll": "ScrollOfImbuePrecision"
+            },
+            "bonusStats": {
+              "stats": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "foreverTier1Bonuses": true,
+            "buffs": {
+              "blessingOfKings": true,
+              "blessingOfWisdom": "TristateEffectRegular",
+              "blessingOfMight": "TristateEffectRegular"
+            },
+            "talentsString": "-01530500105-530200230250120051",
+            "profession1": "Engineering",
+            "rotation": {
+              "type": "TypeAPL",
+              "prepullActions": [
+                {
+                  "action": {
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 14322
+                      }
+                    }
+                  },
+                  "doAtValue": {
+                    "const": {
+                      "val": "-10s"
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 20904
+                      }
+                    }
+                  },
+                  "doAtValue": {
+                    "const": {
+                      "val": "-1.2s"
+                    }
+                  }
+                }
+              ],
+              "priorityList": [
+                {
+                  "action": {
+                    "condition": {
+                      "cmp": {
+                        "op": "OpLe",
+                        "lhs": {
+                          "auraRemainingTime": {
+                            "sourceUnit": {
+                              "type": "CurrentTarget"
+                            },
+                            "auraId": {
+                              "spellId": 14325,
+                              "tag": 1
+                            }
+                          }
+                        },
+                        "rhs": {
+                          "const": {
+                            "val": "5s"
+                          }
+                        }
+                      }
+                    },
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 14325
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "autocastOtherCooldowns": {}
+                  }
+                },
+                {
+                  "action": {
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 3045
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 14287
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 2643
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 20904
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "condition": {
+                      "and": {
+                        "vals": [
+                          {
+                            "cmp": {
+                              "op": "OpGe",
+                              "lhs": {
+                                "remainingTime": {}
+                              },
+                              "rhs": {
+                                "const": {
+                                  "val": "12s"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "spellCanCast": {
+                              "spellId": {
+                                "spellId": 2974
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 14305
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "condition": {
+                      "cmp": {
+                        "op": "OpLe",
+                        "lhs": {
+                          "dotRemainingTime": {
+                            "spellId": {
+                              "spellId": 13555
+                            }
+                          }
+                        },
+                        "rhs": {
+                          "const": {
+                            "val": "0.5s"
+                          }
+                        }
+                      }
+                    },
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 13555
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "condition": {
+                      "cmp": {
+                        "op": "OpGt",
+                        "lhs": {
+                          "autoTimeToNext": {
+                            "autoType": "Ranged"
+                          }
+                        },
+                        "rhs": {
+                          "const": {
+                            "val": "1.5s"
+                          }
+                        }
+                      }
+                    },
+                    "move": {
+                      "rangeFromTarget": {
+                        "const": {
+                          "val": "5"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 14266,
+                        "tag": 3
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 14271
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "condition": {
+                      "and": {
+                        "vals": [
+                          {
+                            "not": {
+                              "val": {
+                                "auraIsActive": {
+                                  "auraId": {
+                                    "spellId": 14266
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "or": {
+                              "vals": [
+                                {
+                                  "not": {
+                                    "val": {
+                                      "auraIsActive": {
+                                        "auraId": {
+                                          "spellId": 1310726
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "cmp": {
+                                    "op": "OpGt",
+                                    "lhs": {
+                                      "spellTimeToReady": {
+                                        "spellId": {
+                                          "spellId": 14271
+                                        }
+                                      }
+                                    },
+                                    "rhs": {
+                                      "const": {
+                                        "val": "1.5s"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "cmp": {
+                              "op": "OpGt",
+                              "lhs": {
+                                "autoTimeToNext": {
+                                  "autoType": "Melee"
+                                }
+                              },
+                              "rhs": {
+                                "const": {
+                                  "val": "0.5s"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "move": {
+                      "rangeFromTarget": {
+                        "const": {
+                          "val": "12"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "distanceFromTarget": 12,
+            "hunter": {
+              "options": {
+                "ammo": "ThoriumHeadedArrow",
+                "quiverBonus": "Speed15",
+                "petUptime": 1,
+                "petAttackSpeed": "OneTwo"
+              }
+            }
+          }
+        ],
+        "buffs": {
+          "windfuryTotem": true
+        }
+      }
+    ],
+    "buffs": {
+      "giftOfTheWild": "TristateEffectRegular",
+      "powerWordFortitude": "TristateEffectRegular",
+      "bloodPact": "TristateEffectImproved",
+      "strengthOfEarthTotem": "TristateEffectRegular",
+      "graceOfAirTotem": "TristateEffectRegular",
+      "arcaneBrilliance": true,
+      "divineSpirit": true,
+      "battleShout": "TristateEffectRegular",
+      "trueshotAura": true,
+      "leaderOfThePack": true,
+      "moonkinAura": true,
+      "manaSpringTotem": "TristateEffectImproved",
+      "shadowProtection": true,
+      "natureResistanceTotem": true,
+      "frostResistanceAura": true,
+      "frostResistanceTotem": true,
+      "fireResistanceTotem": true,
+      "fireResistanceAura": true,
+      "thorns": "TristateEffectImproved",
+      "devotionAura": "TristateEffectImproved",
+      "retributionAura": "TristateEffectImproved"
+    },
+    "debuffs": {
+      "judgementOfWisdom": true,
+      "judgementOfLight": true,
+      "judgementOfTheCrusader": "TristateEffectImproved",
+      "faerieFire": true,
+      "curseOfElements": true,
+      "stormstrike": true,
+      "exposeArmor": "TristateEffectRegular",
+      "sunderArmor": true,
+      "curseOfWeakness": "TristateEffectImproved",
+      "curseOfRecklessness": true,
+      "demoralizingRoar": "TristateEffectImproved",
+      "demoralizingShout": "TristateEffectImproved",
+      "thunderClap": "TristateEffectImproved",
+      "insectSwarm": true,
+      "scorpidSting": true
+    }
+  },
+  "encounter": {
+    "duration": 300.0,
+    "executeProportion20": 0.2,
+    "executeProportion25": 0.25,
+    "executeProportion35": 0.35,
+    "targets": [
+      {
+        "level": 63,
+        "mobType": "MobTypeDragonkin",
+        "stats": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3731,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "simOptions": {
+    "iterations": 1,
+    "randomSeed": "1452000001",
+    "ruleset": "RulesetForever",
+    "saveAllValues": true,
+    "useLabeledRands": true,
+    "debug": true
+  }
+}

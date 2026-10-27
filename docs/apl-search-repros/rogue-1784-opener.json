@@ -1,0 +1,310 @@
+{
+  "raid": {
+    "parties": [
+      {
+        "players": [
+          {
+            "name": "Subtlety",
+            "race": "RaceSkyborneWindshaper",
+            "class": "ClassRogue",
+            "equipment": {
+              "items": [
+                {
+                  "id": 920000011,
+                  "enchant": 2543
+                },
+                {
+                  "id": 920000299
+                },
+                {
+                  "id": 920000048,
+                  "enchant": 2488
+                },
+                {
+                  "id": 920000290,
+                  "enchant": 849
+                },
+                {
+                  "id": 920000083,
+                  "enchant": 1891
+                },
+                {
+                  "id": 920000119,
+                  "enchant": 1885
+                },
+                {
+                  "id": 920000155,
+                  "enchant": 931
+                },
+                {
+                  "id": 920000191
+                },
+                {
+                  "id": 920000227,
+                  "enchant": 2543
+                },
+                {
+                  "id": 920000263,
+                  "enchant": 1887
+                },
+                {
+                  "id": 920000308
+                },
+                {
+                  "id": 920000308
+                },
+                {
+                  "id": 920000317
+                },
+                {
+                  "id": 920000317
+                },
+                {
+                  "id": 920000343,
+                  "enchant": 1900
+                },
+                {
+                  "id": 920000349,
+                  "enchant": 1900
+                },
+                {
+                  "id": 920000373,
+                  "enchant": 8720
+                }
+              ]
+            },
+            "consumes": {
+              "flask": "FlaskOfSupremePower",
+              "food": "FoodSwiftstrikeSteak",
+              "agilityElixir": "ElixirOfTheMongoose",
+              "strengthBuff": "ElixirOfFerocity",
+              "attackPowerBuff": "JujuMight",
+              "spellPowerBuff": "GreaterArcaneElixir",
+              "mainHandImbue": "ShadowOil",
+              "offHandImbue": "DenseWeightstone",
+              "defaultPotion": "MajorFrenzyPotion",
+              "defaultConjured": "ConjuredRogueThistleTea",
+              "dragonBreathChili": true,
+              "zanzaBuff": "GroundScorpokAssay",
+              "sapperExplosive": "SapperGoblinSapper",
+              "mainHandScroll": "ScrollOfImbuePrecision",
+              "offHandScroll": "ScrollOfImbuePrecision"
+            },
+            "bonusStats": {
+              "stats": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "foreverTier1Bonuses": true,
+            "buffs": {
+              "blessingOfKings": true,
+              "blessingOfWisdom": "TristateEffectRegular",
+              "blessingOfMight": "TristateEffectRegular"
+            },
+            "talentsString": "005303103005--5320003310013211501",
+            "profession1": "Engineering",
+            "rotation": {
+              "type": "TypeAPL",
+              "priorityList": [
+                {
+                  "action": {
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 11290
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 17348
+                      }
+                    }
+                  }
+                }
+              ],
+              "prepullActions": [
+                {
+                  "doAtValue": {
+                    "const": {
+                      "val": "-1s"
+                    }
+                  },
+                  "action": {
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 1784
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "distanceFromTarget": 5,
+            "rogue": {
+              "options": {
+                "mainHandPoison": "InstantPoison",
+                "offHandPoison": "DeadlyPoison"
+              }
+            }
+          }
+        ],
+        "buffs": {
+          "windfuryTotem": true
+        }
+      }
+    ],
+    "buffs": {
+      "giftOfTheWild": "TristateEffectRegular",
+      "powerWordFortitude": "TristateEffectRegular",
+      "bloodPact": "TristateEffectImproved",
+      "strengthOfEarthTotem": "TristateEffectRegular",
+      "graceOfAirTotem": "TristateEffectRegular",
+      "arcaneBrilliance": true,
+      "divineSpirit": true,
+      "battleShout": "TristateEffectRegular",
+      "trueshotAura": true,
+      "leaderOfThePack": true,
+      "moonkinAura": true,
+      "manaSpringTotem": "TristateEffectImproved",
+      "shadowProtection": true,
+      "natureResistanceTotem": true,
+      "frostResistanceAura": true,
+      "frostResistanceTotem": true,
+      "fireResistanceTotem": true,
+      "fireResistanceAura": true,
+      "thorns": "TristateEffectImproved",
+      "devotionAura": "TristateEffectImproved",
+      "retributionAura": "TristateEffectImproved"
+    },
+    "debuffs": {
+      "judgementOfWisdom": true,
+      "judgementOfLight": true,
+      "judgementOfTheCrusader": "TristateEffectImproved",
+      "faerieFire": true,
+      "curseOfElements": true,
+      "stormstrike": true,
+      "exposeArmor": "TristateEffectRegular",
+      "sunderArmor": true,
+      "curseOfWeakness": "TristateEffectImproved",
+      "curseOfRecklessness": true,
+      "demoralizingRoar": "TristateEffectImproved",
+      "demoralizingShout": "TristateEffectImproved",
+      "thunderClap": "TristateEffectImproved",
+      "insectSwarm": true,
+      "scorpidSting": true,
+      "huntersMark": "TristateEffectRegular"
+    }
+  },
+  "encounter": {
+    "duration": 30,
+    "executeProportion20": 0.2,
+    "executeProportion25": 0.25,
+    "executeProportion35": 0.35,
+    "targets": [
+      {
+        "level": 63,
+        "mobType": "MobTypeDragonkin",
+        "stats": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3731,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "simOptions": {
+    "iterations": 1,
+    "randomSeed": "1530959530",
+    "ruleset": "RulesetForever",
+    "saveAllValues": true,
+    "useLabeledRands": true,
+    "debug": true
+  }
+}

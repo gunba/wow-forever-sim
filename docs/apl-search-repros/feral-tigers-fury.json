@@ -1,0 +1,1064 @@
+{
+  "raid": {
+    "parties": [
+      {
+        "players": [
+          {
+            "name": "Feral",
+            "race": "RaceSkyborneWindshaper",
+            "class": "ClassDruid",
+            "equipment": {
+              "items": [
+                {
+                  "id": 920000012,
+                  "enchant": 1508
+                },
+                {
+                  "id": 920000300
+                },
+                {
+                  "id": 920000048,
+                  "enchant": 2488
+                },
+                {
+                  "id": 920000291,
+                  "enchant": 849
+                },
+                {
+                  "id": 920000084,
+                  "enchant": 1891
+                },
+                {
+                  "id": 920000120,
+                  "enchant": 1885
+                },
+                {
+                  "id": 920000156,
+                  "enchant": 2564
+                },
+                {
+                  "id": 920000192
+                },
+                {
+                  "id": 920000228,
+                  "enchant": 1508
+                },
+                {
+                  "id": 920000264,
+                  "enchant": 1887
+                },
+                {
+                  "id": 920000309
+                },
+                {
+                  "id": 920000309
+                },
+                {
+                  "id": 920000318
+                },
+                {
+                  "id": 920000318
+                },
+                {
+                  "id": 920000355,
+                  "enchant": 1900
+                },
+                {},
+                {
+                  "id": 920001001
+                }
+              ]
+            },
+            "consumes": {
+              "flask": "FlaskOfDistilledWisdom",
+              "food": "FoodSwiftstrikeSteak",
+              "agilityElixir": "ElixirOfTheMongoose",
+              "strengthBuff": "ElixirOfFerocity",
+              "attackPowerBuff": "JujuMight",
+              "mainHandImbue": "DenseWeightstone",
+              "defaultPotion": "MajorManaPotion",
+              "defaultConjured": "ConjuredRogueThistleTea",
+              "dragonBreathChili": true,
+              "zanzaBuff": "GroundScorpokAssay",
+              "mainHandScroll": "ScrollOfImbuePrecision"
+            },
+            "bonusStats": {
+              "stats": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "foreverTier1Bonuses": true,
+            "buffs": {
+              "blessingOfKings": true,
+              "blessingOfWisdom": "TristateEffectRegular",
+              "blessingOfMight": "TristateEffectRegular"
+            },
+            "talentsString": "05002-55000032021032212051-055",
+            "profession1": "Engineering",
+            "rotation": {
+              "type": "TypeAPL",
+              "priorityList": [
+                {
+                  "action": {
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 9846
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "condition": {
+                      "cmp": {
+                        "op": "OpLe",
+                        "lhs": {
+                          "currentEnergy": {}
+                        },
+                        "rhs": {
+                          "const": {
+                            "val": "10"
+                          }
+                        }
+                      }
+                    },
+                    "castSpell": {
+                      "spellId": {
+                        "itemId": 7676
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "autocastOtherCooldowns": {}
+                  }
+                },
+                {
+                  "action": {
+                    "condition": {
+                      "and": {
+                        "vals": [
+                          {
+                            "cmp": {
+                              "op": "OpLe",
+                              "lhs": {
+                                "remainingTime": {}
+                              },
+                              "rhs": {
+                                "const": {
+                                  "val": "2s"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "cmp": {
+                              "op": "OpGe",
+                              "lhs": {
+                                "currentComboPoints": {}
+                              },
+                              "rhs": {
+                                "const": {
+                                  "val": "3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 22829
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "condition": {
+                      "and": {
+                        "vals": [
+                          {
+                            "cmp": {
+                              "lhs": {
+                                "dotRemainingTime": {
+                                  "spellId": {
+                                    "spellId": 9896
+                                  }
+                                }
+                              },
+                              "op": "OpGe",
+                              "rhs": {
+                                "const": {
+                                  "val": "5s"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "or": {
+                              "vals": [
+                                {
+                                  "cmp": {
+                                    "lhs": {
+                                      "currentComboPoints": {}
+                                    },
+                                    "op": "OpGe",
+                                    "rhs": {
+                                      "const": {
+                                        "val": "4"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "and": {
+                                    "vals": [
+                                      {
+                                        "cmp": {
+                                          "lhs": {
+                                            "currentComboPoints": {}
+                                          },
+                                          "op": "OpGe",
+                                          "rhs": {
+                                            "const": {
+                                              "val": "4"
+                                            }
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "cmp": {
+                                          "lhs": {
+                                            "spellTimeToReady": {
+                                              "spellId": {
+                                                "spellId": 1322605
+                                              }
+                                            }
+                                          },
+                                          "op": "OpLe",
+                                          "rhs": {
+                                            "const": {
+                                              "val": "4s"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "cmp": {
+                              "lhs": {
+                                "currentEnergy": {}
+                              },
+                              "op": "OpLe",
+                              "rhs": {
+                                "const": {
+                                  "val": "45"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "cmp": {
+                              "lhs": {
+                                "spellCurrentCost": {
+                                  "spellId": {
+                                    "spellId": 9830
+                                  }
+                                }
+                              },
+                              "op": "OpGt",
+                              "rhs": {
+                                "const": {
+                                  "val": "0"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 22829
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "condition": {
+                      "and": {
+                        "vals": [
+                          {
+                            "and": {
+                              "vals": [
+                                {
+                                  "not": {
+                                    "val": {
+                                      "dotIsActive": {
+                                        "spellId": {
+                                          "spellId": 9904
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "cmp": {
+                                    "op": "OpGe",
+                                    "lhs": {
+                                      "remainingTime": {}
+                                    },
+                                    "rhs": {
+                                      "const": {
+                                        "val": "3s"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "cmp": {
+                                    "op": "OpLt",
+                                    "lhs": {
+                                      "currentComboPoints": {}
+                                    },
+                                    "rhs": {
+                                      "const": {
+                                        "val": "5"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "or": {
+                              "vals": [
+                                {
+                                  "not": {
+                                    "val": {
+                                      "and": {
+                                        "vals": [
+                                          {
+                                            "cmp": {
+                                              "lhs": {
+                                                "currentComboPoints": {}
+                                              },
+                                              "op": "OpGe",
+                                              "rhs": {
+                                                "const": {
+                                                  "val": "5"
+                                                }
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "dotIsActive": {
+                                              "spellId": {
+                                                "spellId": 9896
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "cmp": {
+                                              "lhs": {
+                                                "dotRemainingTime": {
+                                                  "spellId": {
+                                                    "spellId": 9896
+                                                  }
+                                                }
+                                              },
+                                              "op": "OpLt",
+                                              "rhs": {
+                                                "const": {
+                                                  "val": "5s"
+                                                }
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "cmp": {
+                                              "lhs": {
+                                                "remainingTime": {}
+                                              },
+                                              "op": "OpGe",
+                                              "rhs": {
+                                                "const": {
+                                                  "val": "8s"
+                                                }
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "or": {
+                                    "vals": [
+                                      {
+                                        "cmp": {
+                                          "lhs": {
+                                            "dotRemainingTime": {
+                                              "spellId": {
+                                                "spellId": 9896
+                                              }
+                                            }
+                                          },
+                                          "op": "OpGt",
+                                          "rhs": {
+                                            "const": {
+                                              "val": "3s"
+                                            }
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "and": {
+                                          "vals": [
+                                            {
+                                              "cmp": {
+                                                "lhs": {
+                                                  "dotRemainingTime": {
+                                                    "spellId": {
+                                                      "spellId": 9896
+                                                    }
+                                                  }
+                                                },
+                                                "op": "OpGe",
+                                                "rhs": {
+                                                  "const": {
+                                                    "val": "1s"
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            {
+                                              "or": {
+                                                "vals": [
+                                                  {
+                                                    "cmp": {
+                                                      "lhs": {
+                                                        "spellCurrentCost": {
+                                                          "spellId": {
+                                                            "spellId": 9904
+                                                          }
+                                                        }
+                                                      },
+                                                      "op": "OpLe",
+                                                      "rhs": {
+                                                        "const": {
+                                                          "val": "0"
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  {
+                                                    "cmp": {
+                                                      "lhs": {
+                                                        "dotRemainingTime": {
+                                                          "spellId": {
+                                                            "spellId": 9896
+                                                          }
+                                                        }
+                                                      },
+                                                      "op": "OpGe",
+                                                      "rhs": {
+                                                        "math": {
+                                                          "lhs": {
+                                                            "math": {
+                                                              "lhs": {
+                                                                "const": {
+                                                                  "val": "100"
+                                                                }
+                                                              },
+                                                              "op": "OpSub",
+                                                              "rhs": {
+                                                                "currentEnergy": {}
+                                                              }
+                                                            }
+                                                          },
+                                                          "op": "OpDiv",
+                                                          "rhs": {
+                                                            "const": {
+                                                              "val": "10.403"
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "cmp": {
+                              "lhs": {
+                                "spellCurrentCost": {
+                                  "spellId": {
+                                    "spellId": 9830
+                                  }
+                                }
+                              },
+                              "op": "OpGt",
+                              "rhs": {
+                                "const": {
+                                  "val": "0"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 9904
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "condition": {
+                      "and": {
+                        "vals": [
+                          {
+                            "cmp": {
+                              "op": "OpGe",
+                              "lhs": {
+                                "currentComboPoints": {}
+                              },
+                              "rhs": {
+                                "const": {
+                                  "val": "4"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "not": {
+                              "val": {
+                                "dotIsActive": {
+                                  "spellId": {
+                                    "spellId": 9896
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "cmp": {
+                              "op": "OpGe",
+                              "lhs": {
+                                "remainingTime": {}
+                              },
+                              "rhs": {
+                                "const": {
+                                  "val": "6s"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "cmp": {
+                              "lhs": {
+                                "spellCurrentCost": {
+                                  "spellId": {
+                                    "spellId": 9830
+                                  }
+                                }
+                              },
+                              "op": "OpGt",
+                              "rhs": {
+                                "const": {
+                                  "val": "0"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 9896
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "condition": {
+                      "and": {
+                        "vals": [
+                          {
+                            "cmp": {
+                              "op": "OpLe",
+                              "lhs": {
+                                "currentEnergy": {}
+                              },
+                              "rhs": {
+                                "const": {
+                                  "val": "50"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "not": {
+                              "val": {
+                                "and": {
+                                  "vals": [
+                                    {
+                                      "cmp": {
+                                        "lhs": {
+                                          "currentComboPoints": {}
+                                        },
+                                        "op": "OpGe",
+                                        "rhs": {
+                                          "const": {
+                                            "val": "5"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "dotIsActive": {
+                                        "spellId": {
+                                          "spellId": 9896
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "cmp": {
+                                        "lhs": {
+                                          "dotRemainingTime": {
+                                            "spellId": {
+                                              "spellId": 9896
+                                            }
+                                          }
+                                        },
+                                        "op": "OpLt",
+                                        "rhs": {
+                                          "const": {
+                                            "val": "0s"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "cmp": {
+                                        "lhs": {
+                                          "currentEnergy": {}
+                                        },
+                                        "op": "OpGe",
+                                        "rhs": {
+                                          "spellCurrentCost": {
+                                            "spellId": {
+                                              "spellId": 9896
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "cmp": {
+                                        "lhs": {
+                                          "remainingTime": {}
+                                        },
+                                        "op": "OpGe",
+                                        "rhs": {
+                                          "const": {
+                                            "val": "8s"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 1322605
+                      }
+                    }
+                  }
+                },
+                {
+                  "action": {
+                    "castSpell": {
+                      "spellId": {
+                        "spellId": 9830
+                      }
+                    },
+                    "condition": {
+                      "and": {
+                        "vals": [
+                          {
+                            "or": {
+                              "vals": [
+                                {
+                                  "not": {
+                                    "val": {
+                                      "and": {
+                                        "vals": [
+                                          {
+                                            "cmp": {
+                                              "lhs": {
+                                                "currentComboPoints": {}
+                                              },
+                                              "op": "OpGe",
+                                              "rhs": {
+                                                "const": {
+                                                  "val": "5"
+                                                }
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "dotIsActive": {
+                                              "spellId": {
+                                                "spellId": 9896
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "cmp": {
+                                              "lhs": {
+                                                "dotRemainingTime": {
+                                                  "spellId": {
+                                                    "spellId": 9896
+                                                  }
+                                                }
+                                              },
+                                              "op": "OpLt",
+                                              "rhs": {
+                                                "const": {
+                                                  "val": "5s"
+                                                }
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "cmp": {
+                                              "lhs": {
+                                                "remainingTime": {}
+                                              },
+                                              "op": "OpGe",
+                                              "rhs": {
+                                                "const": {
+                                                  "val": "8s"
+                                                }
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "or": {
+                                    "vals": [
+                                      {
+                                        "cmp": {
+                                          "lhs": {
+                                            "dotRemainingTime": {
+                                              "spellId": {
+                                                "spellId": 9896
+                                              }
+                                            }
+                                          },
+                                          "op": "OpGt",
+                                          "rhs": {
+                                            "const": {
+                                              "val": "3s"
+                                            }
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "and": {
+                                          "vals": [
+                                            {
+                                              "cmp": {
+                                                "lhs": {
+                                                  "dotRemainingTime": {
+                                                    "spellId": {
+                                                      "spellId": 9896
+                                                    }
+                                                  }
+                                                },
+                                                "op": "OpGe",
+                                                "rhs": {
+                                                  "const": {
+                                                    "val": "0s"
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            {
+                                              "or": {
+                                                "vals": [
+                                                  {
+                                                    "cmp": {
+                                                      "lhs": {
+                                                        "spellCurrentCost": {
+                                                          "spellId": {
+                                                            "spellId": 9830
+                                                          }
+                                                        }
+                                                      },
+                                                      "op": "OpLe",
+                                                      "rhs": {
+                                                        "const": {
+                                                          "val": "0"
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  {
+                                                    "cmp": {
+                                                      "lhs": {
+                                                        "dotRemainingTime": {
+                                                          "spellId": {
+                                                            "spellId": 9896
+                                                          }
+                                                        }
+                                                      },
+                                                      "op": "OpGe",
+                                                      "rhs": {
+                                                        "math": {
+                                                          "lhs": {
+                                                            "math": {
+                                                              "lhs": {
+                                                                "const": {
+                                                                  "val": "100"
+                                                                }
+                                                              },
+                                                              "op": "OpSub",
+                                                              "rhs": {
+                                                                "currentEnergy": {}
+                                                              }
+                                                            }
+                                                          },
+                                                          "op": "OpDiv",
+                                                          "rhs": {
+                                                            "const": {
+                                                              "val": "10.403"
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "distanceFromTarget": 5,
+            "feralDruid": {
+              "options": {
+                "latencyMs": 100
+              }
+            }
+          }
+        ],
+        "buffs": {
+          "windfuryTotem": true
+        }
+      }
+    ],
+    "buffs": {
+      "giftOfTheWild": "TristateEffectRegular",
+      "powerWordFortitude": "TristateEffectRegular",
+      "bloodPact": "TristateEffectImproved",
+      "strengthOfEarthTotem": "TristateEffectRegular",
+      "graceOfAirTotem": "TristateEffectRegular",
+      "arcaneBrilliance": true,
+      "divineSpirit": true,
+      "battleShout": "TristateEffectRegular",
+      "trueshotAura": true,
+      "leaderOfThePack": true,
+      "moonkinAura": true,
+      "manaSpringTotem": "TristateEffectImproved",
+      "shadowProtection": true,
+      "natureResistanceTotem": true,
+      "frostResistanceAura": true,
+      "frostResistanceTotem": true,
+      "fireResistanceTotem": true,
+      "fireResistanceAura": true,
+      "thorns": "TristateEffectImproved",
+      "devotionAura": "TristateEffectImproved",
+      "retributionAura": "TristateEffectImproved"
+    },
+    "debuffs": {
+      "judgementOfWisdom": true,
+      "judgementOfLight": true,
+      "judgementOfTheCrusader": "TristateEffectImproved",
+      "faerieFire": true,
+      "curseOfElements": true,
+      "stormstrike": true,
+      "exposeArmor": "TristateEffectRegular",
+      "sunderArmor": true,
+      "curseOfWeakness": "TristateEffectImproved",
+      "curseOfRecklessness": true,
+      "demoralizingRoar": "TristateEffectImproved",
+      "demoralizingShout": "TristateEffectImproved",
+      "thunderClap": "TristateEffectImproved",
+      "insectSwarm": true,
+      "scorpidSting": true,
+      "huntersMark": "TristateEffectRegular"
+    }
+  },
+  "encounter": {
+    "duration": 300.0,
+    "executeProportion20": 0.2,
+    "executeProportion25": 0.25,
+    "executeProportion35": 0.35,
+    "targets": [
+      {
+        "level": 63,
+        "mobType": "MobTypeDragonkin",
+        "stats": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3731,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "durationVariation": 0
+  },
+  "simOptions": {
+    "iterations": 1,
+    "randomSeed": "1111686294",
+    "ruleset": "RulesetForever",
+    "saveAllValues": true,
+    "useLabeledRands": true,
+    "debug": true
+  }
+}
