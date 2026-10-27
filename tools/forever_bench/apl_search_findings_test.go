@@ -233,3 +233,19 @@ func TestPrepullHasteDoesNotBringSwingsBeforeThePull(t *testing.T) {
 		t.Error("the stats pass found contact before the pull")
 	}
 }
+
+// A duration divided by a number used to divide by the number's whole part: by 1 for 1.4, so a pre-cast meant to land
+// at the pull landed at -0.44s, and by 0 for 0.5, which crashed.
+func TestDurationsDividedByNumbersKeepTheFraction(t *testing.T) {
+	req := aplSearchRepro(t, "aimed-shot-duration-divided-by-1.4.json")
+	runAPLSearchRepro(t, req)
+	if hasWarning(rotationWarnings(req), "{SpellID: 20904} reaches the enemy before the pull") {
+		t.Error("Aimed Shot timed by cast time / 1.4 landed before the pull")
+	}
+	// Twice the cast time ahead of the pull is too early, but must still run.
+	req = aplSearchRepro(t, "aimed-shot-duration-divided-by-0.5.json")
+	runAPLSearchRepro(t, req)
+	if !hasWarning(rotationWarnings(req), "{SpellID: 20904} reaches the enemy before the pull") {
+		t.Error("Aimed Shot timed by cast time / 0.5 was not flagged as landing before the pull")
+	}
+}

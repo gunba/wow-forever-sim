@@ -446,33 +446,40 @@ func (value *APLValueMath) GetDuration(sim *Simulation) time.Duration {
 	case proto.APLValueMath_OpSub:
 		return value.lhs.GetDuration(sim) - value.rhs.GetDuration(sim)
 	case proto.APLValueMath_OpMul:
-		left := value.lhs.GetDuration(sim)
-		right := value.rhs.GetDuration(sim)
-
-		switch value.lhs.Type() {
-		case proto.APLValueType_ValueTypeInt:
-			left = time.Duration(value.lhs.GetInt(sim))
-		case proto.APLValueType_ValueTypeFloat:
-			left = time.Duration(value.lhs.GetFloat(sim))
+		// A number scales a duration as it is: converting it to a duration first would drop its fraction.
+		if scale, ok := aplScalar(sim, value.rhs); ok {
+			return time.Duration(float64(value.lhs.GetDuration(sim)) * scale)
 		}
-
-		switch value.rhs.Type() {
-		case proto.APLValueType_ValueTypeInt:
-			right = time.Duration(value.rhs.GetInt(sim))
-		case proto.APLValueType_ValueTypeFloat:
-			right = time.Duration(value.rhs.GetFloat(sim))
+		if scale, ok := aplScalar(sim, value.lhs); ok {
+			return time.Duration(scale * float64(value.rhs.GetDuration(sim)))
 		}
-		return left * right
+		return value.lhs.GetDuration(sim) * value.rhs.GetDuration(sim)
 	case proto.APLValueMath_OpDiv:
-		divider := value.rhs.GetDuration(sim)
-		if value.rhs.Type() == proto.APLValueType_ValueTypeFloat {
-			divider = time.Duration(value.rhs.GetFloat(sim))
-		} else if value.rhs.Type() == proto.APLValueType_ValueTypeInt {
-			divider = time.Duration(value.rhs.GetInt(sim))
+		// Dividing by zero gives 0 rather than stopping the simulation.
+		if divisor, ok := aplScalar(sim, value.rhs); ok {
+			if divisor == 0 {
+				return 0
+			}
+			return time.Duration(float64(value.lhs.GetDuration(sim)) / divisor)
 		}
-		return value.lhs.GetDuration(sim) / divider
+		divisor := value.rhs.GetDuration(sim)
+		if divisor == 0 {
+			return 0
+		}
+		return value.lhs.GetDuration(sim) / divisor
 	}
 	return 0
+}
+
+// aplScalar returns the value of an Int or Float operand, and whether it is one.
+func aplScalar(sim *Simulation, value APLValue) (float64, bool) {
+	switch value.Type() {
+	case proto.APLValueType_ValueTypeInt:
+		return float64(value.GetInt(sim)), true
+	case proto.APLValueType_ValueTypeFloat:
+		return value.GetFloat(sim), true
+	}
+	return 0, false
 }
 func (value *APLValueMath) String() string {
 	return fmt.Sprintf("Math(%s %s %s)", value.lhs, value.op, value.rhs)

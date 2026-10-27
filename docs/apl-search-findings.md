@@ -25,6 +25,7 @@ The findings below are kept as reported. The simulator now handles them as follo
 | 14. Fire Nova origin | No change needed: Jordan confirmed Fire Nova needs a Fire totem, as modelled; the code comment now says so. |
 | 16. Rage before the pull | Starting with 50 rage is confirmed. Out-of-combat decay is unresolved, so the model is unchanged and Bloodrage before −10 s stays excluded. |
 | 17. Auto attack before the pull after Stealth and Blade Flurry | **Fixed.** A change in attack speed before the pull now scales only the part of a swing's wait after the pull, and the stats pass steps through weapon swings due before 0, so such a swing would also be flagged. |
+| 18. Durations multiplied or divided by a fraction | **Fixed.** A number now scales a duration with its fraction, and dividing by zero gives 0 instead of crashing. |
 
 ## 1. Hostile effects can land before the encounter starts
 
@@ -151,6 +152,10 @@ The Fury Sunder round-two and Fury 2H round-three automatic winners used early B
 ## 17. Auto attack before the pull after Stealth and Blade Flurry
 
 **Reproduced and fixed.** Found during the re-search on engine 16361d540. [`rogue-stealth-blade-flurry.json`](apl-search-repros/rogue-stealth-blade-flurry.json) casts Stealth at −2 s and Blade Flurry at −1 s. Blade Flurry breaks Stealth, which turns auto attacks back on with the first swing due at the pull; Blade Flurry's 20% attack speed then rescaled the whole wait, pull included, putting an off-hand swing at −0.17 s. Each action alone left no swing before 0. The evaluator gave no warning, because the stats pass stopped stepping once no ordinary pending action was due before 0, though a weapon swing still was.
+
+## 18. Durations multiplied or divided by a fraction
+
+**Reproduced and fixed.** Found while timing pre-casts from their cast time on engine 19ee20575. The APL's Math value converted a number to whole nanoseconds before multiplying or dividing a duration by it, so dividing by 1.4 divided by 1 and dividing by 0.5 divided by 0, which crashed. [`aimed-shot-duration-divided-by-1.4.json`](apl-search-repros/aimed-shot-duration-divided-by-1.4.json) times Aimed Shot as 0.05 s − (cast time ÷ 1.4 + travel time) and hit at −0.44 s; it now hits at +0.05 s. [`aimed-shot-duration-divided-by-0.5.json`](apl-search-repros/aimed-shot-duration-divided-by-0.5.json) now runs, and is flagged because twice the cast time ahead of the pull lands early.
 
 ## Report not substantiated: omitted current-mana source
 
