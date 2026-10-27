@@ -17,9 +17,9 @@ Current level-60 DPS and tank scenarios, plus conditional spell, item and encoun
 | Needs evidence | 84 | 36 | 44 |
 | Implementation gap | 27 | 3 | 3 |
 | Model assumption | 5 | 3 | 6 |
-| Accepted working answer | 0 | 15 | 40 |
+| Accepted working answer | 0 | 15 | 39 |
 | Resolved | 20 | 52 | 79 |
-| Outside current scenarios | 1 | 42 | 42 |
+| Outside current scenarios | 1 | 43 | 43 |
 
 A working answer is credible enough for an explicitly qualified model, not verified server behavior. Confidence applies to the stated finding, not every effect of that class. An implementation gap is not a request for a game experiment.
 
@@ -663,27 +663,27 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 ### CORE-020 — Critical damage racials (Tauren Endurance, Dwarf Earth Fury)
 
-**Accepted working answer · High priority · Moderate confidence**
+**Outside current scenarios · High priority · Moderate confidence**
 
-**Disposition:** Credible working answer
+**Disposition:** Outside current scenarios
 
 **Question:** Does the 2% critical damage bonus scale the whole critical multiplier or only the bonus part?
 
-**Finding:** Client 1.60.1.70425: Endurance 20550 e1 aura 163 (2) and e2 aura 50 (2) replace the 1% hit; Earth Fury replaces Mace Specialization. Aura 163 scales the full critical damage in the server code this client descends from.
+**Finding:** Blizzard's October 26 tuning pass removes Earth Fury (Dwarves get +1% hit instead) and leaves Endurance with 5% health only, so no racial raises critical damage at launch.
 
-**Current implementation / scenario:** Scales the whole multiplier, like client aura 163: melee crits 2.04x, spell crits 1.53x.
+**Current implementation / scenario:** No racial changes critical damage: the October 26 tuning pass removes both bonuses for launch.
 
-**Impact:** Every Tauren and Dwarf profile, and the rotation planner for Tauren characters.
+**Impact:** None at launch.
 
-**Remaining scope:** A measured Tauren or Dwarf crit/non-crit ratio.
+**Remaining scope:** None.
 
-**Implementation / model follow-up:** sim/core/racials.go (critDamageAura); sim/planner/warrior_model.go reads it from the attack table.
+**Implementation / model follow-up:** sim/core/racials.go.
 
 **Optional / conditional · Current beta · level 30**
 - Prerequisites: Tauren or Dwarf Warrior and a non-Tauren control with the same weapon.
 - Observe / verify: Ratio of crit to non-crit white damage over about 300 swings each.
 
-**References:** [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [sim/core/racials.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/racials.go)
+**References:** [https://www.wowhead.com/forever/news/racial-ability-tuning-pass-for-wow-forever-383597](https://www.wowhead.com/forever/news/racial-ability-tuning-pass-for-wow-forever-383597) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6) · [sim/core/racials.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/racials.go)
 
 <a id="core-023"></a>
 
@@ -871,7 +871,7 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Question:** Do weapon-specialization racials affect ranged crit, or only melee, spell and inherited pet crit?
 
-**Finding:** Client 1.60.1.70425 replaces the weapon racials: Human Ruthless (+2% crit with all spells and attacks), Orc Savage (+1%), Dwarf Earth Fury (+2% critical damage). None depends on the held weapon, so the ranged-scope question no longer arises.
+**Finding:** Client 1.60.1.70425 replaced the weapon racials with weapon-independent ones, and the October 26 tuning pass sets them for launch: Human Ruthless +1% crit with all spells and attacks, Orc Savage removed, Dwarf Artisan's Precision +1% hit. None depends on the held weapon, so the ranged-scope question no longer arises.
 
 **Current implementation / scenario:** A matching held weapon adds MeleeCrit and SpellCrit; the ranged attack path also reads MeleeCrit.
 
@@ -885,7 +885,7 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Prerequisites: Human or Orc Hunter and matching versus nonmatching melee weapons with equal Agility/crit stats; unchanged ranged weapon and pet.
 - Observe / verify: Record melee, ranged, spell and pet crit APIs before/after the swap, then compare ranged attack outcomes if the display and source descriptions disagree. Check one and two matching weapons separately rather than assuming the bonus stacks.
 
-**References:** [https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes](https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes) · [sim/core/specializations.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/specializations.go) · [sim/core/racials.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/racials.go) · [sim/core/spell_result.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/spell_result.go) · [sim/core/spell_outcome.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/spell_outcome.go) · [artifacts/question_review/scenario_data_evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/scenario_data_evidence.json) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6)
+**References:** [https://www.wowhead.com/forever/news/racial-ability-tuning-pass-for-wow-forever-383597](https://www.wowhead.com/forever/news/racial-ability-tuning-pass-for-wow-forever-383597) · [https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes](https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes) · [sim/core/specializations.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/specializations.go) · [sim/core/racials.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/racials.go) · [sim/core/spell_result.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/spell_result.go) · [sim/core/spell_outcome.go](https://github.com/gunba/wow-forever-sim/blob/forever/sim/core/spell_outcome.go) · [artifacts/question_review/scenario_data_evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/question_review/scenario_data_evidence.json) · [https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6)
 
 **Related:** HUN-001, DATA-012
 

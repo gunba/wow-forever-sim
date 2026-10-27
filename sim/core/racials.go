@@ -12,16 +12,17 @@ import (
 func applyRaceEffects(agent Agent) {
 	character := agent.GetCharacter()
 
-	// Forever drops every +10 resistance racial. Since client 1.60.1.70425 (October 15 notes) the
-	// weapon racials are gone too: Human Ruthless and Orc Savage are critical strike with any
-	// weapon, and Dwarf Earth Fury and Tauren Endurance raise critical strike damage.
+	// Forever drops every +10 resistance racial and, since client 1.60.1.70425, the weapon racials.
+	// The launch values are Blizzard's October 26 tuning pass, which is not in any client build yet:
+	// https://www.wowhead.com/forever/news/racial-ability-tuning-pass-for-wow-forever-383597
 	forever := character.Env.IsForever()
 
 	switch character.Race {
 	case proto.Race_RaceDwarf:
 		if forever {
-			// Earth Fury (1259719): critical strike damage and healing +2%.
-			character.critDamageAura(1.02)
+			// Artisan's Precision: +1% hit with spells and attacks, in place of Earth Fury's critical damage.
+			character.AddStat(stats.MeleeHit, 1*MeleeHitRatingPerHitChance)
+			character.AddStat(stats.SpellHit, 1*SpellHitRatingPerHitChance)
 			character.beastSlayingAura(1.05)
 		} else {
 			character.AddStat(stats.FrostResistance, 10)
@@ -78,12 +79,13 @@ func applyRaceEffects(agent Agent) {
 			character.MultiplyStat(stats.Intellect, 1.05)
 		}
 	case proto.Race_RaceHuman:
-		character.MultiplyStat(stats.Spirit, 1.05)
 		if forever {
-			// Ruthless (20597): +2% critical strike chance with all spells and attacks.
-			character.AddStat(stats.MeleeCrit, 2*CritRatingPerCritChance)
-			character.AddStat(stats.SpellCrit, 2*SpellCritRatingPerCritChance)
+			// The Human Spirit: +10% Spirit. Ruthless (20597): +1% critical strike chance with all spells and attacks.
+			character.MultiplyStat(stats.Spirit, 1.1)
+			character.AddStat(stats.MeleeCrit, 1*CritRatingPerCritChance)
+			character.AddStat(stats.SpellCrit, 1*SpellCritRatingPerCritChance)
 		} else {
+			character.MultiplyStat(stats.Spirit, 1.05)
 			character.SwordSpecializationAura()
 			character.MaceSpecializationAura()
 		}
@@ -96,18 +98,14 @@ func applyRaceEffects(agent Agent) {
 		character.AddStat(stats.Dodge, 1)
 		// TODO: Shadowmeld?
 	case proto.Race_RaceOrc:
-		if forever {
-			// Savage (20574): +1% critical strike chance with all spells and abilities.
-			character.AddStat(stats.MeleeCrit, 1*CritRatingPerCritChance)
-			character.AddStat(stats.SpellCrit, 1*SpellCritRatingPerCritChance)
-		} else {
+		// Forever's Orc has no weapon or crit racial (Savage was removed). Shatter Curse, a curse
+		// dispel, is nothing the sim measures.
+		if !forever {
 			character.AxeSpecializationAura()
 		}
 
-		// Command is gone under Forever; Shatter Curse takes its place in the Orc's four,
-		// and dispelling a curse is nothing the sim measures.
-		if !forever && (character.Class == proto.Class_ClassHunter || character.Class == proto.Class_ClassWarlock) {
-			// Command Damage dealt by Hunter and Warlock pets increased by 5%
+		if character.Class == proto.Class_ClassHunter || character.Class == proto.Class_ClassWarlock {
+			// Command: damage dealt by Hunter and Warlock pets increased by 5%
 			for _, pet := range character.Pets {
 				if !pet.IsGuardian() {
 					pet.PseudoStats.DamageDealtMultiplier *= 1.05
@@ -159,12 +157,9 @@ func applyRaceEffects(agent Agent) {
 			Type:  CooldownTypeDPS,
 		})
 	case proto.Race_RaceTauren:
+		// Endurance (20550): 5% health. Forever's hit, then critical damage, rider is gone.
 		character.MultiplyStat(stats.Health, 1.05)
-		if forever {
-			// Endurance (20550): 5% health and, since 70425, critical strike damage and healing +2%
-			// in place of the 1% hit.
-			character.critDamageAura(1.02)
-		} else {
+		if !forever {
 			character.AddStat(stats.NatureResistance, 10)
 		}
 	case proto.Race_RaceTroll:
@@ -206,11 +201,11 @@ func applyRaceEffects(agent Agent) {
 			break
 		}
 
-		// Wind Blessed: 3% haste since 70425 (was 1%).
-		character.PseudoStats.MeleeSpeedMultiplier *= 1.03
-		character.PseudoStats.RangedSpeedMultiplier *= 1.03
-		character.PseudoStats.CastSpeedMultiplier *= 1.03
-		character.PseudoStats.EnergyHasteMultiplier *= 1.03
+		// Wind Blessed: 2% haste (3% in client 70425, 1% before).
+		character.PseudoStats.MeleeSpeedMultiplier *= 1.02
+		character.PseudoStats.RangedSpeedMultiplier *= 1.02
+		character.PseudoStats.CastSpeedMultiplier *= 1.02
+		character.PseudoStats.EnergyHasteMultiplier *= 1.02
 
 		// Elemental Insight
 		character.mobTypeDamageAura(proto.MobType_MobTypeElemental, 1.05)
@@ -379,18 +374,6 @@ func (character *Character) registerElunesLight() {
 // Troll Beast Slaying, and Dwarf Big Game Hunter under Forever.
 func (character *Character) beastSlayingAura(multiplier float64) {
 	character.mobTypeDamageAura(proto.MobType_MobTypeBeast, multiplier)
-}
-
-// critDamageAura raises critical strike damage against every enemy, the way client aura 163 does: the
-// whole critical multiplier is scaled (200% -> 204% for melee at 1.02).
-func (character *Character) critDamageAura(multiplier float64) {
-	character.Env.RegisterPostFinalizeEffect(func() {
-		for _, t := range character.Env.Encounter.Targets {
-			for _, at := range character.AttackTables[t.UnitIndex] {
-				at.CritMultiplier *= multiplier
-			}
-		}
-	})
 }
 
 func (character *Character) mobTypeDamageAura(mobType proto.MobType, multiplier float64) {

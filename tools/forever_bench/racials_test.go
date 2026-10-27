@@ -104,7 +104,7 @@ func TestForeverWindshaperHasNoPowerCooldown(t *testing.T) {
 	if unit.GetSpell(core.ActionID{SpellID: 460530}) != nil || unit.GetAura("Windshaper") != nil {
 		t.Fatal("unsupported Windshaper power cooldown remains registered")
 	}
-	if math.Abs(unit.PseudoStats.CastSpeedMultiplier-1.03) > 1e-7 { // 3% since client 1.60.1.70425
+	if math.Abs(unit.PseudoStats.CastSpeedMultiplier-1.02) > 1e-7 { // 2% at launch (October 26 tuning pass)
 		t.Fatal("Wind Blessed's passive haste is missing")
 	}
 }

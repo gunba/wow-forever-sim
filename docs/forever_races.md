@@ -28,6 +28,23 @@ Mana Spring are disabled for Forever's Alliance characters. Keeping those Era
 gates would incorrectly remove 53 Strength and 89 Agility from the Alliance
 benchmark before stat multipliers.
 
+## Launch racial values
+
+The simulator uses the values of Blizzard's [October 26 racial tuning pass](https://www.wowhead.com/forever/news/racial-ability-tuning-pass-for-wow-forever-383597),
+announced for launch and not yet in any client build (the last beta build, 1.60.1.70532, still has the October 15
+values). The passives the simulation uses are:
+
+| Race | Launch | Before |
+|---|---|---|
+| Human | Ruthless +1% crit with all spells and attacks; The Human Spirit +10% Spirit | +2% crit; +5% Spirit |
+| Dwarf | Artisan's Precision +1% hit with spells and attacks | Earth Fury +2% critical damage |
+| Tauren | Endurance +5% health only | also +2% critical damage (1% hit before October 15) |
+| Orc | Command: Hunter and Warlock pets deal 5% more damage (not the Hunter's hawks, which are guardians) | Savage +1% crit |
+| Skyborne | Wind Blessed +2% melee, ranged and cast haste | +3% |
+
+Undead, Troll, Night Elf and Gnome are unchanged. Plainsrunning and Skysight are movement speed, and Read Leyline,
+now 50% regeneration for 15 seconds (100% while Attuned), is not used in the stationary benchmark (see below).
+
 ## Alliance racial checks
 
 Values and raw spell effects are retained in
@@ -67,9 +84,6 @@ every stacking or charge-consumption edge case.
   Rage and Energy were missing from the prior implementation.
 - Elune's Light uses spell 1259799: 10 percentage points of crit for 15 seconds,
   with a three-minute cooldown.
-- Human Sword Specialization is 2 percentage points of all attack/spell crit
-  while a sword is equipped. Dwarf Mace Specialization is 1 point while a mace
-  is equipped; holding two qualifying weapons does not double either bonus.
 - Quickness's client dodge value remains 1 percentage point. Its separate
   movement-speed value is 2%; they must not be read as the same stat.
 - Wind Blessed and Elemental Insight retain their haste and creature-type

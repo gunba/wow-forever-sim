@@ -6143,6 +6143,7 @@
    "id": "CORE-015",
    "status": "out-of-scope",
    "sources": [
+    "https://www.wowhead.com/forever/news/racial-ability-tuning-pass-for-wow-forever-383597",
     "https://github.com/classic-hunter/forever-hunter/wiki/Forever-Beta-Changes",
     "sim/core/specializations.go",
     "sim/core/racials.go",
@@ -6158,7 +6159,7 @@
    "review": {
     "disposition": "not-material",
     "confidence": "moderate",
-    "answer": "Client 1.60.1.70425 replaces the weapon racials: Human Ruthless (+2% crit with all spells and attacks), Orc Savage (+1%), Dwarf Earth Fury (+2% critical damage). None depends on the held weapon, so the ranged-scope question no longer arises.",
+    "answer": "Client 1.60.1.70425 replaced the weapon racials with weapon-independent ones, and the October 26 tuning pass sets them for launch: Human Ruthless +1% crit with all spells and attacks, Orc Savage removed, Dwarf Artisan's Precision +1% hit. None depends on the held weapon, so the ranged-scope question no longer arises.",
     "remaining": "None.",
     "implementation": "sim/core/racials.go.",
     "tests": [
@@ -7547,22 +7548,23 @@
    "category": "shared",
    "kind": "mechanic",
    "priority": "high",
-   "status": "provisional",
+   "status": "out-of-scope",
    "title": "Critical damage racials (Tauren Endurance, Dwarf Earth Fury)",
    "question": "Does the 2% critical damage bonus scale the whole critical multiplier or only the bonus part?",
-   "current_model": "Scales the whole multiplier, like client aura 163: melee crits 2.04x, spell crits 1.53x.",
-   "impact": "Every Tauren and Dwarf profile, and the rotation planner for Tauren characters.",
+   "current_model": "No racial changes critical damage: the October 26 tuning pass removes both bonuses for launch.",
+   "impact": "None at launch.",
    "sources": [
+    "https://www.wowhead.com/forever/news/racial-ability-tuning-pass-for-wow-forever-383597",
     "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6",
     "sim/core/racials.go"
    ],
    "related": [],
    "review": {
-    "disposition": "credible-answer",
+    "disposition": "not-material",
     "confidence": "moderate",
-    "answer": "Client 1.60.1.70425: Endurance 20550 e1 aura 163 (2) and e2 aura 50 (2) replace the 1% hit; Earth Fury replaces Mace Specialization. Aura 163 scales the full critical damage in the server code this client descends from.",
-    "remaining": "A measured Tauren or Dwarf crit/non-crit ratio.",
-    "implementation": "sim/core/racials.go (critDamageAura); sim/planner/warrior_model.go reads it from the attack table.",
+    "answer": "Blizzard's October 26 tuning pass removes Earth Fury (Dwarves get +1% hit instead) and leaves Endurance with 5% health only, so no racial raises critical damage at launch.",
+    "remaining": "None.",
+    "implementation": "sim/core/racials.go.",
     "tests": [
      {
       "stage": "current-beta",
@@ -7570,7 +7572,7 @@
       "measure": "Ratio of crit to non-crit white damage over about 300 swings each."
      }
     ],
-    "previous_status": null
+    "previous_status": "provisional"
    }
   },
   {

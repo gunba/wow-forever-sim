@@ -5,7 +5,7 @@ character_stats_results: {
   final_stats: 377.3
   final_stats: 478.5
   final_stats: 103.4
-  final_stats: 144.375
+  final_stats: 151.25
   final_stats: 0
   final_stats: 0
   final_stats: 0
@@ -15,12 +15,12 @@ character_stats_results: {
   final_stats: 0
   final_stats: 36
   final_stats: 3
-  final_stats: 17
+  final_stats: 16
   final_stats: 0
   final_stats: 0
   final_stats: 1121.9
   final_stats: 3
-  final_stats: 32.01685
+  final_stats: 31.01685
   final_stats: 0
   final_stats: 0
   final_stats: 2
@@ -50,8 +50,8 @@ character_stats_results: {
 stat_weights_results: {
  key: "TestCombatSinisterStrike-Phase1-StatWeights-Default"
  value: {
-  weights: 0.22508
-  weights: 0.37383
+  weights: 0.22275
+  weights: 0.41239
   weights: 0
   weights: 0
   weights: 0
@@ -67,9 +67,9 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.20462
-  weights: 3.49247
-  weights: 4.51993
+  weights: 0.2025
+  weights: 3.52125
+  weights: 4.33029
   weights: 0
   weights: 0
   weights: 0
@@ -99,105 +99,105 @@ stat_weights_results: {
 dps_results: {
  key: "TestCombatSinisterStrike-Phase1-AllItems-Champion'sGuard"
  value: {
-  dps: 425.61902
-  tps: 302.1895
+  dps: 421.63289
+  tps: 299.35936
  }
 }
 dps_results: {
  key: "TestCombatSinisterStrike-Phase1-Average-Default"
  value: {
-  dps: 439.95133
-  tps: 312.36544
+  dps: 435.41244
+  tps: 309.14283
  }
 }
 dps_results: {
  key: "TestCombatSinisterStrike-Phase1-Settings-Human-combat_sinister_strike_prebis-Stone MH-combat_sinister_strike-FullBuffs-P1-Consumes-LongMultiTarget"
  value: {
-  dps: 216.45365
-  tps: 153.68209
+  dps: 214.82103
+  tps: 152.52293
  }
 }
 dps_results: {
  key: "TestCombatSinisterStrike-Phase1-Settings-Human-combat_sinister_strike_prebis-Stone MH-combat_sinister_strike-FullBuffs-P1-Consumes-LongSingleTarget"
  value: {
-  dps: 184.90693
-  tps: 131.28392
+  dps: 183.27431
+  tps: 130.12476
  }
 }
 dps_results: {
  key: "TestCombatSinisterStrike-Phase1-Settings-Human-combat_sinister_strike_prebis-Stone MH-combat_sinister_strike-FullBuffs-P1-Consumes-ShortSingleTarget"
  value: {
-  dps: 238.70212
-  tps: 169.47851
+  dps: 237.18621
+  tps: 168.40221
  }
 }
 dps_results: {
  key: "TestCombatSinisterStrike-Phase1-Settings-Human-combat_sinister_strike_prebis-Stone MH-combat_sinister_strike-NoBuffs-P1-Consumes-LongMultiTarget"
  value: {
-  dps: 145.54643
-  tps: 103.33796
+  dps: 143.89068
+  tps: 102.16238
  }
 }
 dps_results: {
  key: "TestCombatSinisterStrike-Phase1-Settings-Human-combat_sinister_strike_prebis-Stone MH-combat_sinister_strike-NoBuffs-P1-Consumes-LongSingleTarget"
  value: {
-  dps: 123.09695
-  tps: 87.39883
+  dps: 121.55679
+  tps: 86.30532
  }
 }
 dps_results: {
  key: "TestCombatSinisterStrike-Phase1-Settings-Human-combat_sinister_strike_prebis-Stone MH-combat_sinister_strike-NoBuffs-P1-Consumes-ShortSingleTarget"
  value: {
-  dps: 158.95715
-  tps: 112.85957
+  dps: 157.86177
+  tps: 112.08186
  }
 }
 dps_results: {
  key: "TestCombatSinisterStrike-Phase1-Settings-Orc-combat_sinister_strike_prebis-Stone MH-combat_sinister_strike-FullBuffs-P1-Consumes-LongMultiTarget"
  value: {
-  dps: 216.80819
-  tps: 153.93381
+  dps: 215.37499
+  tps: 152.91624
  }
 }
 dps_results: {
  key: "TestCombatSinisterStrike-Phase1-Settings-Orc-combat_sinister_strike_prebis-Stone MH-combat_sinister_strike-FullBuffs-P1-Consumes-LongSingleTarget"
  value: {
-  dps: 184.50771
-  tps: 131.00047
+  dps: 183.45548
+  tps: 130.25339
  }
 }
 dps_results: {
  key: "TestCombatSinisterStrike-Phase1-Settings-Orc-combat_sinister_strike_prebis-Stone MH-combat_sinister_strike-FullBuffs-P1-Consumes-ShortSingleTarget"
  value: {
-  dps: 241.36548
-  tps: 171.36949
+  dps: 240.93515
+  tps: 171.06396
  }
 }
 dps_results: {
  key: "TestCombatSinisterStrike-Phase1-Settings-Orc-combat_sinister_strike_prebis-Stone MH-combat_sinister_strike-NoBuffs-P1-Consumes-LongMultiTarget"
  value: {
-  dps: 144.81571
-  tps: 102.81916
+  dps: 142.97737
+  tps: 101.51393
  }
 }
 dps_results: {
  key: "TestCombatSinisterStrike-Phase1-Settings-Orc-combat_sinister_strike_prebis-Stone MH-combat_sinister_strike-NoBuffs-P1-Consumes-LongSingleTarget"
  value: {
-  dps: 122.08398
-  tps: 86.67963
+  dps: 120.59758
+  tps: 85.62428
  }
 }
 dps_results: {
  key: "TestCombatSinisterStrike-Phase1-Settings-Orc-combat_sinister_strike_prebis-Stone MH-combat_sinister_strike-NoBuffs-P1-Consumes-ShortSingleTarget"
  value: {
-  dps: 159.85101
-  tps: 113.49422
+  dps: 158.05576
+  tps: 112.21959
  }
 }
 dps_results: {
  key: "TestCombatSinisterStrike-Phase1-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 353.36135
-  tps: 250.88656
+  dps: 352.06976
+  tps: 249.96953
  }
 }

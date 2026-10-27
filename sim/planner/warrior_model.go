@@ -13,8 +13,8 @@ import (
 // spells' ApplyEffects; tests compare the two.
 func BuildWarriorModel(w *warrior.Warrior, known map[int32]bool) *Model {
 	t := w.Talents
-	// Racial critical damage (Tauren Endurance, Dwarf Earth Fury: client aura 163 since 1.60.1.70425) scales the
-	// whole critical multiplier through the attack tables.
+	// Critical damage modifiers on the attack table (none from racials since the October 26 pass) scale the whole
+	// critical multiplier.
 	critScale := 1.0
 	if targets := w.Env.Encounter.TargetUnits; len(targets) > 0 {
 		if at := w.AttackTables[targets[0].UnitIndex][proto.CastType_CastTypeMainHand]; at != nil && at.CritMultiplier > 0 {

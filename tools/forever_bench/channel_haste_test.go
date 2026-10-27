@@ -203,7 +203,7 @@ func TestForeverShocksShareHastedSpellGCD(t *testing.T) {
 			t.Fatalf("shock %d was not castable", id)
 		}
 		baseGCD := core.GCDDefault
-		want := time.Duration(float64(baseGCD) / 1.03) // Wind Blessed, 3% since client 1.60.1.70425
+		want := time.Duration(float64(baseGCD) / 1.02) // Wind Blessed, 2% at launch (October 26 tuning pass)
 		if got := s.GCD.ReadyAt(); got != want {
 			t.Fatalf("shock %d GCD %s, want %s", id, got, want)
 		}
