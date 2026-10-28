@@ -1,18 +1,18 @@
 {
   "Baseline": "artifacts/modelled_gear/forever_dps_5min.json",
-  "BaselineSHA256": "90a9b419134b3d143fb4c84aecabb469a11d0b86a2217238d77c732baed0b94f",
+  "BaselineSHA256": "c1df8d0425732de36bbae39d36eeee3e96a67602063f6fc17c67f5533816e7c0",
   "Sources": {
     "tier1": {
       "Path": "artifacts/modelled_gear/sensitivity/tier1_off.json",
-      "SHA256": "b2a72e220a1200d347dc59ffece1ae42871abad96af94e4851c075d8125eb339"
+      "SHA256": "0783168493887f3af8d1f552af9456c478dbcf128562df6803ac01ab436cc10e"
     },
     "gear10": {
       "Path": "artifacts/modelled_gear/sensitivity/gear_110.json",
-      "SHA256": "021dfde5691053b72fe4ca6ad9b11e484473bfb4eee74377762dd91e6afba78b"
+      "SHA256": "92a5e0acd352a0c30c32c842c746d6b35f0c0d969ce95c79415dda4be60cfd03"
     },
     "gear50": {
       "Path": "artifacts/modelled_gear/sensitivity/gear_150.json",
-      "SHA256": "cd20384e6bfc63646c564dce64d6f38a054b208716170c7bf7048395a8760b4c"
+      "SHA256": "6ee717c21146018cdc3c66e61d8425bc14d4dfff71a183bdd3b8af82b2358bb1"
     }
   },
   "Model": {
@@ -5256,25 +5256,25 @@
       "Averages": {
         "tier1": {
           "Races": 10,
-          "GainPercent": 0.7503803893234084,
-          "MonteCarlo95Bound": 0.19437174335617424
+          "GainPercent": 0.7556876042784655,
+          "MonteCarlo95Bound": 0.19442514283404955
         },
         "gear10": {
           "Races": 10,
-          "GainPercent": 7.230991968363483,
-          "MonteCarlo95Bound": 0.2033521718980717
+          "GainPercent": 7.224103946220348,
+          "MonteCarlo95Bound": 0.2034991442960478
         },
         "gear50": {
           "Races": 10,
-          "GainPercent": 37.98830697357565,
-          "MonteCarlo95Bound": 0.24572189751142848
+          "GainPercent": 37.9742392257981,
+          "MonteCarlo95Bound": 0.24579351680164266
         },
         "amplification": {
           "Races": 10,
-          "Gear10GainPercent": 7.230991968363483,
-          "Gear50GainPercent": 37.98830697357565,
-          "Amplification": 1.0507080394994037,
-          "MonteCarlo95Bound": 0.03634468721789122
+          "Gear10GainPercent": 7.224103946220348,
+          "Gear50GainPercent": 37.9742392257981,
+          "Amplification": 1.0513203992770959,
+          "MonteCarlo95Bound": 0.03641995006617417
         }
       },
       "Comparisons": {
@@ -5283,10 +5283,10 @@
             "Key": "fury",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 0.6986254444875994,
-            "MonteCarlo95Bound": 0.19492142279909758,
-            "BaselineDPS": 1007.4174538649198,
-            "ScenarioDPS": 1000.4282078510411,
+            "GainPercent": 0.6977893026175686,
+            "MonteCarlo95Bound": 0.19476756514746424,
+            "BaselineDPS": 1008.1007003517051,
+            "ScenarioDPS": 1001.1150267878821,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -5360,10 +5360,10 @@
             "Key": "fury",
             "Race": "Night Elf",
             "Faction": "Alliance",
-            "GainPercent": 0.7412420564113509,
-            "MonteCarlo95Bound": 0.19422963327117798,
-            "BaselineDPS": 1006.6054508905038,
-            "ScenarioDPS": 999.1989679131036,
+            "GainPercent": 0.7951503478319522,
+            "MonteCarlo95Bound": 0.1949174857015645,
+            "BaselineDPS": 1009.4339911860155,
+            "ScenarioDPS": 1001.4707926944701,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -5395,10 +5395,10 @@
             "Key": "fury",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 7.19666328160935,
-            "MonteCarlo95Bound": 0.2010258619302306,
-            "BaselineDPS": 1007.4174538649198,
-            "ScenarioDPS": 1079.9178958597404,
+            "GainPercent": 7.192194592796386,
+            "MonteCarlo95Bound": 0.20083901720447814,
+            "BaselineDPS": 1008.1007003517051,
+            "ScenarioDPS": 1080.6052644123429,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -5472,10 +5472,10 @@
             "Key": "fury",
             "Race": "Night Elf",
             "Faction": "Alliance",
-            "GainPercent": 7.143535676331392,
-            "MonteCarlo95Bound": 0.20169831436384023,
-            "BaselineDPS": 1006.6054508905038,
-            "ScenarioDPS": 1078.5126703947633,
+            "GainPercent": 7.0791241437130115,
+            "MonteCarlo95Bound": 0.20335488306935368,
+            "BaselineDPS": 1009.4339911860155,
+            "ScenarioDPS": 1080.8930765709106,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -5507,10 +5507,10 @@
             "Key": "fury",
             "Race": "Orc",
             "Faction": "Horde",
-            "GainPercent": 37.86262094043798,
-            "MonteCarlo95Bound": 0.24557987569360482,
-            "BaselineDPS": 1007.4174538649198,
-            "ScenarioDPS": 1388.8521057096061,
+            "GainPercent": 37.83488031541968,
+            "MonteCarlo95Bound": 0.24531193816839914,
+            "BaselineDPS": 1008.1007003517051,
+            "ScenarioDPS": 1389.5143937886803,
             "OOMSeconds": 0,
             "Warnings": null
           },
@@ -5584,10 +5584,10 @@
             "Key": "fury",
             "Race": "Night Elf",
             "Faction": "Alliance",
-            "GainPercent": 37.449707888085726,
-            "MonteCarlo95Bound": 0.24419805483058957,
-            "BaselineDPS": 1006.6054508905038,
-            "ScenarioDPS": 1383.5762518345457,
+            "GainPercent": 37.33677103532855,
+            "MonteCarlo95Bound": 0.2451821852579371,
+            "BaselineDPS": 1009.4339911860155,
+            "ScenarioDPS": 1386.3240492279167,
             "OOMSeconds": 0,
             "Warnings": null
           },

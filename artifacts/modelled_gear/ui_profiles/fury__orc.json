@@ -224,9 +224,45 @@
               "val": "-1.5s"
             }
           }
+        },
+        {
+          "action": {
+            "castSpell": {
+              "spellId": {
+                "spellId": 20572
+              }
+            }
+          },
+          "doAtValue": {
+            "const": {
+              "val": "-0.1s"
+            }
+          }
         }
       ],
       "priorityList": [
+        {
+          "action": {
+            "condition": {
+              "cmp": {
+                "op": "OpGe",
+                "lhs": {
+                  "currentRage": {}
+                },
+                "rhs": {
+                  "const": {
+                    "val": "50"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 20572
+              }
+            }
+          }
+        },
         {
           "action": {
             "condition": {

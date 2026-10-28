@@ -26,6 +26,7 @@ import APLFuryJSON from './apls/forever_fury.apl.json';
 import APLFuryAoEJSON from './apls/forever_fury_aoe.apl.json';
 import APLFurySpearingJSON from './apls/forever_fury_spearing.apl.json';
 import APLFurySunderJSON from './apls/forever_fury_sunder.apl.json';
+import APLFurySunderSpearingJSON from './apls/forever_fury_sunder_spearing.apl.json';
 import APLArmsJSON from './apls/forever_arms.apl.json';
 import APLFuryTwoHandJSON from './apls/forever_fury_2h.apl.json';
 import GearFuryJSON from './gear_sets/forever_fury.gear.json';
@@ -54,14 +55,16 @@ export const APLFuryAoE = PresetUtils.makePresetAPLRotation('Fury (Adaptive AoE)
 APLFuryAoE.tooltip =
 	'Maintains Battle Shout; prioritizes Whirlwind/Cleave on multiple targets, spends surplus Rage on Bloodthirst, and uses short-fight Execute. Single-target Rend requires enough time for its ticks and a low-cost Battle Stance window.';
 export const APLFurySpearing = PresetUtils.makePresetAPLRotation('Fury (Giants/Dragonkin)', APLFurySpearingJSON);
-APLFurySpearing.tooltip = 'Spearing Strike build for Giant or Dragonkin targets. Not a general-purpose Fury rotation.';
+APLFurySpearing.tooltip = 'Spearing Strike build for Giant or Dragonkin targets, such as the benchmark boss. Not a general-purpose Fury rotation.';
 export const APLFurySunder = PresetUtils.makePresetAPLRotation('Fury (Sunder)', APLFurySunderJSON);
 APLFurySunder.tooltip = 'Disable external Sunder Armor and Expose Armor, or load the exact ranked Fury (Sunder) profile.';
+export const APLFurySunderSpearing = PresetUtils.makePresetAPLRotation('Fury (Sunder, Giants/Dragonkin)', APLFurySunderSpearingJSON);
+APLFurySunderSpearing.tooltip = 'Fury (Sunder) with Spearing Strike for Giant or Dragonkin targets, such as the benchmark boss. Needs the Spearing Strike talents.';
 export const APLArms = PresetUtils.makePresetAPLRotation('Arms', APLArmsJSON);
 export const APLFuryTwoHand = PresetUtils.makePresetAPLRotation('2H Bloodthirst', APLFuryTwoHandJSON);
 
 export const APLPresets = {
-	[ClassicPhase.Phase1]: [APLFury, APLFuryAoE, APLFurySpearing, APLFurySunder, APLArms, APLFuryTwoHand],
+	[ClassicPhase.Phase1]: [APLFury, APLFuryAoE, APLFurySpearing, APLFurySunder, APLFurySunderSpearing, APLArms, APLFuryTwoHand],
 };
 
 export const DefaultAPLs = [APLPresets[ClassicPhase.Phase1][0]];
@@ -73,10 +76,10 @@ export const DefaultAPLs = [APLPresets[ClassicPhase.Phase1][0]];
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsP1DPS = PresetUtils.makePresetTalents('Fury 20/31/0', SavedTalents.create({ talentsString: '30305213102-25053005112010501' }));
+export const TalentsP1DPS = PresetUtils.makePresetTalents('Fury 19/31/1', SavedTalents.create({ talentsString: '30305213002-25053005112010501-1' }));
 export const TalentsFurySpearing = PresetUtils.makePresetTalents(
-	'Fury Spearing Strike 18/33/0',
-	SavedTalents.create({ talentsString: '20305113102-25053005150010501' }),
+	'Fury Spearing Strike 20/31/0',
+	SavedTalents.create({ talentsString: '30305213102-25053005112010501' }),
 );
 
 export const TalentsArms = PresetUtils.makePresetTalents('Arms 36/13/2', SavedTalents.create({ talentsString: '20305213132515201-3505-2' }));

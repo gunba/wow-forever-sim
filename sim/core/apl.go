@@ -130,7 +130,10 @@ func (unit *Unit) newAPLRotation(config *proto.APLRotation) *APLRotation {
 						rotation.ValidationWarning("Invalid time for 'Do At', ignoring this Prepull Action")
 					} else {
 						action := rotation.newAPLAction(prepullItem.Action)
-						if action != nil {
+						// A prepull action runs unconditionally at its Do At time; the editor offers no condition for it.
+						if action != nil && action.condition != nil {
+							rotation.ValidationWarning("Prepull actions cannot have a condition, ignoring this Prepull Action")
+						} else if action != nil {
 							rotation.prepullActions = append(rotation.prepullActions, action)
 							rotation.prepullConfigIdx = append(rotation.prepullConfigIdx, prepullIdx)
 							unit.RegisterPrepullAction(doAt, func(sim *Simulation) {

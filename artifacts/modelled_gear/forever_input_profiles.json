@@ -65080,9 +65080,45 @@
          "val": "-1.5s"
         }
        }
+      },
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 20572
+         }
+        }
+       },
+       "doAtValue": {
+        "const": {
+         "val": "-0.1s"
+        }
+       }
       }
      ],
      "priorityList": [
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 20572
+         }
+        },
+        "condition": {
+         "cmp": {
+          "op": "OpGe",
+          "lhs": {
+           "currentRage": {}
+          },
+          "rhs": {
+           "const": {
+            "val": "50"
+           }
+          }
+         }
+        }
+       }
+      },
       {
        "action": {
         "condition": {
@@ -75584,6 +75620,28 @@
       }
      ],
      "priorityList": [
+      {
+       "action": {
+        "castSpell": {
+         "spellId": {
+          "spellId": 1259799
+         }
+        },
+        "condition": {
+         "cmp": {
+          "op": "OpGe",
+          "lhs": {
+           "currentTime": {}
+          },
+          "rhs": {
+           "const": {
+            "val": "15s"
+           }
+          }
+         }
+        }
+       }
+      },
       {
        "action": {
         "condition": {

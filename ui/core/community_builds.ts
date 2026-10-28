@@ -20,7 +20,7 @@ export const communityBuilds: Record<Spec, string[]> = {
 	[Spec.SpecShadowPriest]: ['Shadow 15/0/36'],
 	[Spec.SpecSmitePriest]: ['Smite 31/17/3'],
 	[Spec.SpecWarlock]: ['Demonic Pact 2/31/18', 'Deep Affliction 31/0/20', 'DS/Ruin Pandemic 21/11/19', 'Shadow and Flame 13/5/33'],
-	[Spec.SpecWarrior]: ['Fury 18/33/0', 'Fury Spearing Strike 18/33/0', 'Arms 35/16/0', '2H Bloodthirst 20/31/0'],
+	[Spec.SpecWarrior]: ['Fury 19/31/1', 'Fury Spearing Strike 20/31/0', 'Arms 36/13/2', '2H Bloodthirst 20/31/0'],
 	[Spec.SpecTankWarrior]: ['Protection 8/6/37'],
 };
 

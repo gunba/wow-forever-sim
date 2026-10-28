@@ -292,67 +292,6 @@
               {
                 "auraIsActive": {
                   "auraId": {
-                    "spellId": 1282733
-                  }
-                }
-              },
-              {
-                "cmp": {
-                  "op": "OpLe",
-                  "lhs": {
-                    "currentRage": {}
-                  },
-                  "rhs": {
-                    "const": {
-                      "val": "35"
-                    }
-                  }
-                }
-              },
-              {
-                "cmp": {
-                  "op": "OpLe",
-                  "lhs": {
-                    "spellTimeToReady": {
-                      "spellId": {
-                        "spellId": 1310222
-                      }
-                    }
-                  },
-                  "rhs": {
-                    "const": {
-                      "val": "1s"
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
-        "castSpell": {
-          "spellId": {
-            "spellId": 2457
-          }
-        }
-      }
-    },
-    {
-      "action": {
-        "castSpell": {
-          "spellId": {
-            "spellId": 1310222
-          }
-        }
-      }
-    },
-    {
-      "action": {
-        "condition": {
-          "and": {
-            "vals": [
-              {
-                "auraIsActive": {
-                  "auraId": {
                     "spellId": 2457
                   }
                 }

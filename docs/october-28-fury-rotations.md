@@ -93,3 +93,7 @@ costs a Fury Warrior about 32 DPS instead of 42.
 
 Spearing Strike, Overpower and Rend all need a stance swap. The rage that Tactical Mastery keeps through the swap
 follows the provisional Warrior rage model (WAR-028).
+
+Spearing Strike deals three times its damage to the Dragonkin reference boss. The [October 28 Fury follow-up](october-28-fury-follow-up.md)
+keeps this build for the benchmark and the Giants/Dragonkin presets and gives the site's general presets the same rules
+without Spearing Strike.

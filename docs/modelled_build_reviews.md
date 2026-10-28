@@ -605,21 +605,23 @@ Other races can use different equipment. Their complete setups are available in 
 
 [Requests and results](../artifacts/modelled_gear/forever_dps_5min.json) · [Equipment search](../artifacts/correctness/october_15/selection-evidence.json)
 
-**Model limitations:** Level-60/off-hand rage and some extra-swing interactions remain provisional. The queued-Heroic-Strike off-hand hit bug is removed. Deep Wounds uses the reported intended no-AP rollover model; live delivery and off-hand payload attribution remain qualified. Hamstring is woven for Windfury Totem procs when Bloodthirst and Whirlwind are at least 1 s away and the next main-hand swing at least 0.7 s away, outside execute (wowsims/forever #243). Spearing Strike, Overpower and Rend are cast in Battle Stance after a stance swap; the rage kept through Tactical Mastery follows the provisional Warrior model.
+**Model limitations:** Level-60/off-hand rage and some extra-swing interactions remain provisional. The queued-Heroic-Strike off-hand hit bug is removed. Deep Wounds uses the reported intended no-AP rollover model; live delivery and off-hand payload attribution remain qualified. Hamstring is woven for Windfury Totem procs when Bloodthirst and Whirlwind are at least 1 s away and the next main-hand swing at least 0.7 s away, outside execute (wowsims/forever #243). Spearing Strike, Overpower and Rend are cast in Battle Stance after a stance swap; the rage kept through Tactical Mastery follows the provisional Warrior model. Spearing Strike deals three times its damage to Giants and Dragonkin, such as the reference boss. Against other targets the general Fury preset (19/31/1, without Spearing Strike) does about 4.6 DPS more. Orc casts Blood Fury just before the pull and then at 50 rage or more; Night Elf casts Elune's Light from 15 s.
+
+**Rotation variants:** The priorities below are for Windshaper. Other races may use a different saved APL; their exact rotations are in the Ranked builds selector and raw requests.
 
 
 ### Results
 
 | Race | DPS | Standard error | Mana-limited seconds |
 |---|---:|---:|---:|
-| Orc | 1007.42 | 0.49 | 0.00 |
+| Orc | 1008.10 | 0.49 | 0.00 |
 | Tauren | 1004.32 | 0.50 | 0.00 |
 | Troll | 1006.96 | 0.49 | 0.00 |
 | Undead | 1015.60 | 0.49 | 0.00 |
 | Windshaper | 1015.63 | 0.51 | 0.00 |
 | Human | 1004.91 | 0.48 | 0.00 |
 | Dwarf | 1011.03 | 0.51 | 0.00 |
-| Night Elf | 1006.61 | 0.49 | 0.00 |
+| Night Elf | 1009.43 | 0.50 | 0.00 |
 | Gnome | 1007.28 | 0.50 | 0.00 |
 | High Order | 1015.63 | 0.51 | 0.00 |
 
@@ -886,7 +888,7 @@ Other races can use different equipment. Their complete setups are available in 
 
 [Requests and results](../artifacts/modelled_gear/forever_dps_5min.json) · [Equipment search](../artifacts/correctness/october_15/selection-evidence.json)
 
-**Model limitations:** This Warrior personally builds and refreshes five Sunder stacks. External Sunder and Expose Armor are disabled only for this row; its initial armor ramp and lost globals are included. The provisional Warrior rage model still applies. Hamstring is woven for Windfury Totem procs when Bloodthirst and Whirlwind are at least 1 s away and the next main-hand swing at least 0.7 s away, outside execute (wowsims/forever #243). Spearing Strike, Overpower and Rend are cast in Battle Stance after a stance swap; the rage kept through Tactical Mastery follows the provisional Warrior model.
+**Model limitations:** This Warrior personally builds and refreshes five Sunder stacks. External Sunder and Expose Armor are disabled only for this row; its initial armor ramp and lost globals are included. The provisional Warrior rage model still applies. Hamstring is woven for Windfury Totem procs when Bloodthirst and Whirlwind are at least 1 s away and the next main-hand swing at least 0.7 s away, outside execute (wowsims/forever #243). Spearing Strike, Overpower and Rend are cast in Battle Stance after a stance swap; the rage kept through Tactical Mastery follows the provisional Warrior model. Spearing Strike deals three times its damage to Giants and Dragonkin, such as the reference boss. Against other targets the general Fury (Sunder) rotation (19/31/1, without Spearing Strike) does about 5.3 DPS more.
 
 
 ### Results

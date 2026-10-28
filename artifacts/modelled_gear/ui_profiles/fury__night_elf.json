@@ -231,6 +231,28 @@
           "action": {
             "condition": {
               "cmp": {
+                "op": "OpGe",
+                "lhs": {
+                  "currentTime": {}
+                },
+                "rhs": {
+                  "const": {
+                    "val": "15s"
+                  }
+                }
+              }
+            },
+            "castSpell": {
+              "spellId": {
+                "spellId": 1259799
+              }
+            }
+          }
+        },
+        {
+          "action": {
+            "condition": {
+              "cmp": {
                 "op": "OpLe",
                 "lhs": {
                   "remainingTime": {}

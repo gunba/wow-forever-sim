@@ -8637,8 +8637,8 @@
    "status": "provisional",
    "title": "Fury rotation rules learned by reinforcement learning",
    "question": "Which choices does the Fury rotation miss?",
-   "current_model": "Fury and Fury (Sunder): talents 20/31/0 (Spearing Strike instead of Improved Bloodrage, Improved Heroic Strike 3/3 instead of two Enrage points); Bloodrage 10 s and Death Wish 1.5 s before the pull; Heroic Strike from 42 rage, checked first; Overpower and Spearing Strike in Battle Stance up to 35 rage during an Overpower window; Rend refreshed in Battle Stance up to 30 rage outside execute, staying in Battle Stance up to 75 rage while Rend is down; Hamstring with Bloodthirst and Whirlwind at least 1 s away and the next main-hand swing at least 0.7 s away; Demonic Rune at up to 40 rage. Fury (Sunder) puts Sunder Armor upkeep first. 2H Bloodthirst: dance up to 60 rage, Heroic Strike from 80.",
-   "impact": "October 28: Fury +17.6 to +19.8 and Fury (Sunder) +27.9 to +29.4 DPS over the October 21 rules on every race (paired fights). October 21: Fury +23 (rotation +22, talents +1.5), Fury (Sunder) +19, 2H Bloodthirst +36 DPS.",
+   "current_model": "Benchmark Fury and Fury (Sunder), against the Dragonkin reference boss: talents 20/31/0 (Spearing Strike instead of Improved Bloodrage, Improved Heroic Strike 3/3 instead of two Enrage points); Bloodrage 10 s and Death Wish 1.5 s before the pull; Heroic Strike from 42 rage, checked first; Overpower and Spearing Strike in Battle Stance up to 35 rage during an Overpower window; Rend refreshed in Battle Stance up to 30 rage outside execute, staying in Battle Stance up to 75 rage while Rend is down; Hamstring with Bloodthirst and Whirlwind at least 1 s away and the next main-hand swing at least 0.7 s away; Demonic Rune at up to 40 rage. Fury (Sunder) puts Sunder Armor upkeep first. Fury Orc casts Blood Fury at -0.1 s and then at 50 rage or more; Fury Night Elf casts Elune's Light from 15 s. The site's general Fury and Fury (Sunder) presets use 19/31/1 and the same rules without Spearing Strike. 2H Bloodthirst: dance up to 60 rage, Heroic Strike from 80.",
+   "impact": "October 28: against the Dragonkin boss, Fury +17.6 to +19.8 and Fury (Sunder) +27.9 to +29.4 DPS over the October 21 rules on every race; the general presets gain +8.4 to +9.6 and +20.4 to +21.6 on any target, and beat the Spearing Strike builds by about 5 DPS against other targets. Fury racial rules: Orc +0.7, Night Elf +2.2 DPS. October 21: Fury +23 (rotation +22, talents +1.5), Fury (Sunder) +19, 2H Bloodthirst +36 DPS.",
    "sources": [
     "ui/warrior/apls/forever_fury.apl.json",
     "ui/warrior/apls/forever_fury_sunder.apl.json",
@@ -8647,7 +8647,9 @@
     "artifacts/correctness/october_21_warrior/selection-evidence.json",
     "docs/october-21-warrior-rotations.md",
     "docs/october-28-fury-rotations.md",
-    "artifacts/correctness/october_28_fury_rotations/selection.json"
+    "artifacts/correctness/october_28_fury_rotations/selection.json",
+    "docs/october-28-fury-follow-up.md",
+    "artifacts/correctness/october_28_fury_follow_up/selection.json"
    ],
    "related": [],
    "review": {
@@ -8976,9 +8978,9 @@
   "original_entries": 137,
   "reviewed_original_entries": 137,
   "added_entries": 87,
-  "latest_followup": "October 28 Fury rotations: Fury and Fury (Sunder) take Spearing Strike instead of Improved Bloodrage (20/31/0) and a rotation found by a simulator search (Spearing Strike and Rend in Battle Stance, earlier Bloodrage and Heroic Strike), with their gear searched again; Fury gains 18 to 21 DPS and Fury (Sunder) 28 to 35 DPS on every race.",
+  "latest_followup": "October 28 Fury follow-up: Spearing Strike stays in the benchmark Fury rows and the Giants/Dragonkin presets because the reference boss is Dragonkin; the general Fury presets return to 19/31/1 with the new rules without Spearing Strike; Fury Orc and Night Elf get Blood Fury and Elune timing; a prepull action with a condition now raises a warning and is skipped.",
   "latest_followup_date": "2026-10-28",
-  "latest_followup_baseline": "afc5d384a",
+  "latest_followup_baseline": "8222aecb8",
   "before": {
    "needs-evidence": 84,
    "needs-code": 27,
@@ -9061,9 +9063,14 @@
     "latest_followup": "October 28 follow-up: a ranged Marksmanship Hunter build (31 or more Marksmanship points with Trueshot Aura, a Cat, Auto Shot from range and no melee) beside MM Weave, and the gear of every DPS build re-selected from the modeled pool on the current engine and confirmed on a second seed.",
     "latest_followup_date": "2026-10-28",
     "latest_followup_baseline": "92120c303"
+   },
+   {
+    "latest_followup": "October 28 Fury rotations: Fury and Fury (Sunder) take Spearing Strike instead of Improved Bloodrage (20/31/0) and a rotation found by a simulator search (Spearing Strike and Rend in Battle Stance, earlier Bloodrage and Heroic Strike), with their gear searched again; Fury gains 18 to 21 DPS and Fury (Sunder) 28 to 35 DPS on every race.",
+    "latest_followup_date": "2026-10-28",
+    "latest_followup_baseline": "afc5d384a"
    }
   ],
-  "latest_followup_report": "october-28-fury-rotations.md",
+  "latest_followup_report": "october-28-fury-follow-up.md",
   "latest_followup_source_date": "2026-10-08T21:32:38.124Z",
   "latest_followup_publication": "pending",
   "latest_followup_benchmarks": "pending"

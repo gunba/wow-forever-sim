@@ -1,0 +1,4249 @@
+{
+ "format": 1,
+ "targetType": {
+  "note": "Fury rows with the follow-up gear; dragonkin is the reference boss, demon stands for any target without Spearing Strike's bonus. 5,000 fights per run; seeds 4100000001 and 5300000001.",
+  "variants": {
+   "old": "October 21 talents and rotation",
+   "new": "October 28 Spearing Strike build",
+   "nospear_old": "19/31/1 with the October 28 rules minus Spearing Strike (general preset)",
+   "giants": "previous Fury (Giants/Dragonkin) preset, 18/33/0"
+  },
+  "runs": [
+   {
+    "variant": "old",
+    "seed": "4100000001",
+    "target": "dragonkin",
+    "race": "Human",
+    "DPS": 988.4,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "old",
+    "seed": "4100000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 998.16,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "old",
+    "seed": "5300000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 989.34,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "old",
+    "seed": "4100000001",
+    "target": "dragonkin",
+    "race": "Undead",
+    "DPS": 998.16,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "old",
+    "seed": "4100000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 988.4,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "old",
+    "seed": "5300000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 987.26,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "old",
+    "seed": "5300000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 987.76,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "old",
+    "seed": "5300000001",
+    "target": "dragonkin",
+    "race": "Human",
+    "DPS": 987.95,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "old",
+    "seed": "4100000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 989.43,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "old",
+    "seed": "5300000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 987.95,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "old",
+    "seed": "4100000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 989.43,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "old",
+    "seed": "5300000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 989.34,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "old",
+    "seed": "5300000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 987.26,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "new",
+    "seed": "5300000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 993.36,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "old",
+    "seed": "5300000001",
+    "target": "dragonkin",
+    "race": "Troll",
+    "DPS": 987.76,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "old",
+    "seed": "4100000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 987.34,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "old",
+    "seed": "4100000001",
+    "target": "dragonkin",
+    "race": "Troll",
+    "DPS": 987.54,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "old",
+    "seed": "5300000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 996.97,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "new",
+    "seed": "4100000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 1001.61,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "new",
+    "seed": "4100000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 1008.37,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "old",
+    "seed": "4100000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 987.34,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "new",
+    "seed": "5300000001",
+    "target": "dragonkin",
+    "race": "Undead",
+    "DPS": 1016.03,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "old",
+    "seed": "4100000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 987.54,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "old",
+    "seed": "5300000001",
+    "target": "dragonkin",
+    "race": "Undead",
+    "DPS": 996.97,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "new",
+    "seed": "4100000001",
+    "target": "dragonkin",
+    "race": "Human",
+    "DPS": 1006.05,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "new",
+    "seed": "5300000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 1002.17,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "new",
+    "seed": "4100000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 994.27,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "new",
+    "seed": "4100000001",
+    "target": "dragonkin",
+    "race": "Undead",
+    "DPS": 1015.58,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "new",
+    "seed": "4100000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 992.07,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "new",
+    "seed": "5300000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 1007.4,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "new",
+    "seed": "5300000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 992.35,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "new",
+    "seed": "4100000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 991.46,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "nospear_old",
+    "seed": "4100000001",
+    "target": "dragonkin",
+    "race": "Undead",
+    "DPS": 1006.16,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "new",
+    "seed": "5300000001",
+    "target": "dragonkin",
+    "race": "Human",
+    "DPS": 1006.26,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "new",
+    "seed": "5300000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 1006.5,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "nospear_old",
+    "seed": "4100000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 998.47,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "new",
+    "seed": "4100000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 1005.48,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "nospear_old",
+    "seed": "5300000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 1006.92,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "new",
+    "seed": "5300000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 992.56,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "nospear_old",
+    "seed": "5300000001",
+    "target": "dragonkin",
+    "race": "Human",
+    "DPS": 996.79,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "new",
+    "seed": "4100000001",
+    "target": "dragonkin",
+    "race": "Troll",
+    "DPS": 1007.42,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "new",
+    "seed": "5300000001",
+    "target": "dragonkin",
+    "race": "Troll",
+    "DPS": 1006.71,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "nospear_old",
+    "seed": "5300000001",
+    "target": "dragonkin",
+    "race": "Undead",
+    "DPS": 1006.92,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "new",
+    "seed": "4100000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 993.61,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "nospear_old",
+    "seed": "4100000001",
+    "target": "dragonkin",
+    "race": "Human",
+    "DPS": 996.47,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "nospear_old",
+    "seed": "5300000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 996.79,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "nospear_old",
+    "seed": "5300000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 995.5,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "nospear_old",
+    "seed": "4100000001",
+    "target": "dragonkin",
+    "race": "Troll",
+    "DPS": 997.08,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "nospear_old",
+    "seed": "4100000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 996.47,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "nospear_old",
+    "seed": "4100000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 996.47,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "nospear_old",
+    "seed": "5300000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 998.16,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "nospear_old",
+    "seed": "5300000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 998.16,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "nospear_old",
+    "seed": "4100000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 1006.16,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "nospear_old",
+    "seed": "4100000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 996.47,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "nospear_old",
+    "seed": "4100000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 998.47,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "nospear_old",
+    "seed": "5300000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 997.79,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "new",
+    "seed": "5300000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 992.89,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "nospear_old",
+    "seed": "4100000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 997.08,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "nospear_old",
+    "seed": "5300000001",
+    "target": "dragonkin",
+    "race": "Troll",
+    "DPS": 997.79,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "nospear_old",
+    "seed": "5300000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 995.5,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "giants",
+    "seed": "4100000001",
+    "target": "dragonkin",
+    "race": "Undead",
+    "DPS": 913.4,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "giants",
+    "seed": "4100000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 910.72,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "giants",
+    "seed": "4100000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 905.12,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "giants",
+    "seed": "4100000001",
+    "target": "dragonkin",
+    "race": "Human",
+    "DPS": 903.05,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "giants",
+    "seed": "5300000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 910.75,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "giants",
+    "seed": "4100000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 901.79,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "giants",
+    "seed": "5300000001",
+    "target": "dragonkin",
+    "race": "Human",
+    "DPS": 903.51,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "giants",
+    "seed": "5300000001",
+    "target": "dragonkin",
+    "race": "Undead",
+    "DPS": 913.55,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "giants",
+    "seed": "4100000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 900.3,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "giants",
+    "seed": "5300000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 901.93,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "giants",
+    "seed": "4100000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 902.36,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "giants",
+    "seed": "5300000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 901.95,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "giants",
+    "seed": "5300000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 904.69,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "giants",
+    "seed": "5300000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 899.18,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "giants",
+    "seed": "4100000001",
+    "target": "dragonkin",
+    "race": "Troll",
+    "DPS": 904.45,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "giants",
+    "seed": "4100000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 899.07,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "giants",
+    "seed": "5300000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 900.72,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "giants",
+    "seed": "4100000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 901.69,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "giants",
+    "seed": "5300000001",
+    "target": "dragonkin",
+    "race": "Troll",
+    "DPS": 903.85,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "giants",
+    "seed": "5300000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 901.09,
+    "SE": 0.49,
+    "warnings": 0
+   }
+  ]
+ },
+ "generalAndRacial": {
+  "note": "block-paired runs of 5,000 fights; g_* are 19/31/1 general rotations against the October 21 ones, r_* the benchmark rows with and without the racial rules",
+  "variants": {
+   "g_fury_old": "October 21 Fury",
+   "g_fury_gen": "general Fury",
+   "g_sunder_old": "October 21 Fury (Sunder)",
+   "g_sunder_gen": "general Fury (Sunder)",
+   "r_cur": "published October 28 benchmark rows",
+   "r_racial": "with the Orc Blood Fury or Night Elf Elune's Light rules"
+  },
+  "runs": [
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Troll",
+    "DPS": 988.37,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 989.22,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Tauren",
+    "DPS": 985.81,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 989.81,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Windshaper",
+    "DPS": 997.27,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 989.81,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Troll",
+    "DPS": 987.61,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 997.92,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 997.5,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Undead",
+    "DPS": 997.68,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 989.22,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 990.13,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 988.37,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Tauren",
+    "DPS": 985.89,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Tauren",
+    "DPS": 985.88,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Windshaper",
+    "DPS": 997.1,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Windshaper",
+    "DPS": 997.27,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 990.13,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 988.37,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 997.68,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Undead",
+    "DPS": 997.5,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Tauren",
+    "DPS": 985.88,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Tauren",
+    "DPS": 985.89,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Tauren",
+    "DPS": 985.81,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Windshaper",
+    "DPS": 997.27,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Windshaper",
+    "DPS": 997.27,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Troll",
+    "DPS": 988.37,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 987.61,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Undead",
+    "DPS": 997.92,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Windshaper",
+    "DPS": 997.1,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 988.64,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Human",
+    "DPS": 988.64,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 987.37,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Dwarf",
+    "DPS": 992.42,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Dwarf",
+    "DPS": 992.55,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Dwarf",
+    "DPS": 992.55,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Dwarf",
+    "DPS": 991.88,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Gnome",
+    "DPS": 990.24,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 987.07,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 986.34,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 987.15,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Human",
+    "DPS": 987.37,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 987.07,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 987.85,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Gnome",
+    "DPS": 990.11,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "High Order",
+    "DPS": 997.27,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Human",
+    "DPS": 986.34,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Gnome",
+    "DPS": 990.24,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Gnome",
+    "DPS": 989.39,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 987.85,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "High Order",
+    "DPS": 997.27,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Dwarf",
+    "DPS": 991.88,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "High Order",
+    "DPS": 997.27,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 987.15,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "High Order",
+    "DPS": 997.1,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Gnome",
+    "DPS": 990.11,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Dwarf",
+    "DPS": 992.42,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "High Order",
+    "DPS": 997.27,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "High Order",
+    "DPS": 997.1,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_old",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Gnome",
+    "DPS": 989.39,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 998.71,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 998.33,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Tauren",
+    "DPS": 994.77,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 998.33,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Tauren",
+    "DPS": 993.77,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Undead",
+    "DPS": 1007.12,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 998.71,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Tauren",
+    "DPS": 994.77,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Tauren",
+    "DPS": 993.77,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 997.96,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 997.96,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 997.78,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Troll",
+    "DPS": 997.78,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 997.26,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 997.89,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Windshaper",
+    "DPS": 1006.57,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 1005.59,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Troll",
+    "DPS": 997.26,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 1006.32,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Undead",
+    "DPS": 1006.32,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Tauren",
+    "DPS": 994.24,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Windshaper",
+    "DPS": 1005.49,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Troll",
+    "DPS": 997.89,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Windshaper",
+    "DPS": 1005.49,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Tauren",
+    "DPS": 994.24,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Windshaper",
+    "DPS": 1006.22,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Undead",
+    "DPS": 1005.59,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Windshaper",
+    "DPS": 1006.22,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 1007.12,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Windshaper",
+    "DPS": 1006.57,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Human",
+    "DPS": 996.47,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Human",
+    "DPS": 997.13,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 997.39,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Dwarf",
+    "DPS": 1001.09,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 997.13,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 996.47,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Dwarf",
+    "DPS": 1001.14,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 996.18,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Dwarf",
+    "DPS": 1001.35,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Dwarf",
+    "DPS": 1001.14,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Dwarf",
+    "DPS": 1001.35,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Human",
+    "DPS": 997.39,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Gnome",
+    "DPS": 998.56,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Dwarf",
+    "DPS": 1001.09,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 995.21,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 995.21,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Gnome",
+    "DPS": 998.28,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Gnome",
+    "DPS": 998.28,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 997.92,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "High Order",
+    "DPS": 1006.57,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 997.92,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Gnome",
+    "DPS": 998.56,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "High Order",
+    "DPS": 1006.57,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Gnome",
+    "DPS": 999.23,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 996.18,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "High Order",
+    "DPS": 1005.49,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "High Order",
+    "DPS": 1006.22,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Gnome",
+    "DPS": 999.23,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "High Order",
+    "DPS": 1005.49,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "High Order",
+    "DPS": 1006.22,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 943.38,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Tauren",
+    "DPS": 937.19,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Tauren",
+    "DPS": 937.53,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 943.22,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 942.86,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 943.38,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Tauren",
+    "DPS": 937.55,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Tauren",
+    "DPS": 937.53,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 943.22,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Tauren",
+    "DPS": 937.55,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 942.86,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Tauren",
+    "DPS": 937.19,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Troll",
+    "DPS": 930.6,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Troll",
+    "DPS": 929.64,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Troll",
+    "DPS": 930.51,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Windshaper",
+    "DPS": 950.26,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 929.64,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 954.88,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Undead",
+    "DPS": 953.98,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 930.51,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Windshaper",
+    "DPS": 950.26,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 930.6,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Undead",
+    "DPS": 954.88,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Windshaper",
+    "DPS": 949.39,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Windshaper",
+    "DPS": 949.39,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Undead",
+    "DPS": 954.63,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 953.98,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 954.63,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Windshaper",
+    "DPS": 948.86,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Windshaper",
+    "DPS": 948.86,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 948.19,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Human",
+    "DPS": 947.9,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Human",
+    "DPS": 946.83,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 946.83,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Human",
+    "DPS": 948.19,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 947.9,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Dwarf",
+    "DPS": 935.54,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Dwarf",
+    "DPS": 936.31,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 940.37,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 940.69,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 940.94,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 940.69,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Gnome",
+    "DPS": 942.03,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Dwarf",
+    "DPS": 936.31,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Gnome",
+    "DPS": 941.27,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Dwarf",
+    "DPS": 935.54,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Dwarf",
+    "DPS": 935.83,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 940.37,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 940.94,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Dwarf",
+    "DPS": 935.83,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Gnome",
+    "DPS": 942.03,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Gnome",
+    "DPS": 941.27,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "High Order",
+    "DPS": 949.39,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "High Order",
+    "DPS": 950.26,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Gnome",
+    "DPS": 941.21,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "High Order",
+    "DPS": 950.26,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "High Order",
+    "DPS": 949.39,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "High Order",
+    "DPS": 948.86,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Gnome",
+    "DPS": 941.21,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_old",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "High Order",
+    "DPS": 948.86,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 964.24,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 964.27,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 964.27,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 964.27,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Tauren",
+    "DPS": 958.63,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Tauren",
+    "DPS": 958.61,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Tauren",
+    "DPS": 958.44,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Tauren",
+    "DPS": 958.44,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 964.24,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 964.27,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Troll",
+    "DPS": 949.76,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Tauren",
+    "DPS": 958.63,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 975.55,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Troll",
+    "DPS": 951.91,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Tauren",
+    "DPS": 958.61,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 949.76,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 951.91,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Troll",
+    "DPS": 950.12,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Undead",
+    "DPS": 974.62,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Undead",
+    "DPS": 975.55,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Undead",
+    "DPS": 975.7,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 974.62,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 975.7,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 950.12,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Windshaper",
+    "DPS": 971.52,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Windshaper",
+    "DPS": 971.52,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Windshaper",
+    "DPS": 970.58,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Windshaper",
+    "DPS": 971.33,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Windshaper",
+    "DPS": 970.58,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Windshaper",
+    "DPS": 971.33,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 968.48,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Human",
+    "DPS": 968.54,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Dwarf",
+    "DPS": 956.36,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Human",
+    "DPS": 968.48,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 968.54,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Dwarf",
+    "DPS": 956.58,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Human",
+    "DPS": 968.62,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Dwarf",
+    "DPS": 957.23,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 968.62,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 961.8,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 961.8,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Dwarf",
+    "DPS": 956.58,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Dwarf",
+    "DPS": 956.36,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 961.68,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Dwarf",
+    "DPS": 957.23,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 962.17,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "Gnome",
+    "DPS": 962.77,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 962.17,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 961.68,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "Gnome",
+    "DPS": 962.5,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "Gnome",
+    "DPS": 962.5,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "Gnome",
+    "DPS": 963.14,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "Gnome",
+    "DPS": 962.77,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "Gnome",
+    "DPS": 963.14,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "dragonkin",
+    "race": "High Order",
+    "DPS": 971.52,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "dragonkin",
+    "race": "High Order",
+    "DPS": 970.58,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "demon",
+    "race": "High Order",
+    "DPS": 971.33,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6300000001",
+    "target": "demon",
+    "race": "High Order",
+    "DPS": 970.58,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6100000001",
+    "target": "demon",
+    "race": "High Order",
+    "DPS": 971.52,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "6200000001",
+    "target": "dragonkin",
+    "race": "High Order",
+    "DPS": 971.33,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "7100000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 1008.55,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "7200000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 1008.15,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "7300000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 1008.03,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "7600000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 1007.23,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "7500000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 1007.93,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "7200000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 1005.89,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "7400000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 1007.74,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "7100000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 1006.27,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "7400000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 1006.61,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "7500000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 1006.1,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "7300000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 1006.39,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "7600000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 1006.14,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "7100000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 971.9,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "7300000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 971.85,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "7200000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 972.27,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "7600000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 972.21,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "7500000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 972.23,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "7100000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 970.96,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury",
+    "seed": "7100000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 1009.22,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "7500000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 970.66,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "7200000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 970.58,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "7400000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 971.12,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "7400000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 971.72,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "7300000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 971.02,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury",
+    "seed": "7300000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 1008.71,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "7600000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 969.75,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury",
+    "seed": "7200000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 1008.82,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury",
+    "seed": "7600000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 1007.92,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury",
+    "seed": "7500000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 1008.63,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury",
+    "seed": "7400000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 1008.42,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury",
+    "seed": "7100000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 1008.27,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury",
+    "seed": "7200000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 1008.79,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury",
+    "seed": "7500000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 1008.01,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury",
+    "seed": "7600000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 1008.34,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury",
+    "seed": "7300000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 1008.11,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury",
+    "seed": "7400000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 1008.91,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury_sunder",
+    "seed": "7200000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 970.53,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury_sunder",
+    "seed": "7100000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 970.18,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury_sunder",
+    "seed": "7400000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 970.0,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury_sunder",
+    "seed": "7300000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 970.11,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury_sunder",
+    "seed": "7600000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 970.46,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury_sunder",
+    "seed": "7500000001",
+    "target": "dragonkin",
+    "race": "Orc",
+    "DPS": 970.55,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury_sunder",
+    "seed": "7200000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 969.48,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury_sunder",
+    "seed": "7100000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 970.36,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury_sunder",
+    "seed": "7300000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 969.82,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury_sunder",
+    "seed": "7500000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 970.1,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury_sunder",
+    "seed": "7400000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 970.31,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_racial",
+    "build": "fury_sunder",
+    "seed": "7600000001",
+    "target": "dragonkin",
+    "race": "Night Elf",
+    "DPS": 969.65,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "8300000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 958.32,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "8300000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 961.89,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "8100000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 962.29,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "8200000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 959.71,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "8300000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 964.92,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "8200000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 968.85,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "8200000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 971.29,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "8100000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 970.03,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "8300000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 968.71,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "8200000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 963.11,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "8200000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 975.82,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "8200000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 951.59,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "8100000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 957.42,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "8300000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 963.21,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "8100000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 964.64,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "8200000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 964.84,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "8100000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 968.77,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "8100000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 946.37,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "8300000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 950.79,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "8100000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 963.48,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "8300000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 976.24,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "8100000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 951.44,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_sunder_gen",
+    "build": "fury_sunder",
+    "seed": "8100000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 975.86,
+    "SE": 0.51,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "8200000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 964.03,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "8300000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 957.27,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "8200000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 957.62,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "8200000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 945.72,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "8300000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 946.15,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "8100000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 958.83,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury_sunder",
+    "seed": "8300000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 971.12,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "8100000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 993.98,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "8300000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 991.33,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "8200000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 993.6,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "8100000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 992.36,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "8100000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 997.54,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "8200000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 992.15,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "8300000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 1001.54,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "8100000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 992.47,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "8100000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 997.21,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "8200000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 997.27,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "8200000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 992.84,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "8100000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 995.44,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "8100000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 993.57,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "8300000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 998.72,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "8300000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 1006.3,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "8100000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 1001.15,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "8200000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 1002.2,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "8100000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 1005.99,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "8300000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 994.22,
+    "SE": 0.48,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "8300000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 991.92,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "8300000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 997.23,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "8200000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 992.54,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "8200000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 998.27,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "8100000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 997.47,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "r_cur",
+    "build": "fury",
+    "seed": "8300000001",
+    "target": "demon",
+    "race": "Troll",
+    "DPS": 992.71,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "8200000001",
+    "target": "demon",
+    "race": "Undead",
+    "DPS": 1005.62,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "8300000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 996.09,
+    "SE": 0.5,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "8300000001",
+    "target": "demon",
+    "race": "Human",
+    "DPS": 997.9,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "8200000001",
+    "target": "demon",
+    "race": "Night Elf",
+    "DPS": 996.96,
+    "SE": 0.49,
+    "warnings": 0
+   },
+   {
+    "variant": "g_fury_gen",
+    "build": "fury",
+    "seed": "8200000001",
+    "target": "demon",
+    "race": "Orc",
+    "DPS": 999.26,
+    "SE": 0.49,
+    "warnings": 0
+   }
+  ]
+ },
+ "racialSearch": {
+  "note": "multi-agent search on the 8222aecb8 presets; 10,000 paired fights per race from seed 700000000000",
+  "orc": {
+   "candidateSHA256": "2cc31d3267478cc7be50fb0f8b06f336201082b2f7d7777215203d8b027a78c1",
+   "gainDPS": 0.695,
+   "pairedSE": 0.009
+  },
+  "nightElf": {
+   "candidateSHA256": "4f8ed63fb0bbcb841ab54750bf31c8e554b74efc1f414a2149163e830190b1ff",
+   "gainDPS": 2.66,
+   "pairedSE": 0.361
+  },
+  "notConfirmed": {
+   "troll": "Berserking +0.078 \u00b1 0.216 over 50,000 fights",
+   "gnome": "Eureka +0.105 \u00b1 0.208 over 50,000 fights",
+   "undead": "no timing change helped Touch of the Grave"
+  }
+ },
+ "selected": {
+  "benchmark": "Spearing Strike builds for fury and fury_sunder; racial rules for fury Orc and Night Elf only (they cost Fury (Sunder) 1.7 and 0.7 DPS)",
+  "sitePresets": "general Fury and Fury (Sunder) rotations on 19/31/1; Spearing Strike builds under Fury (Giants/Dragonkin) and Fury (Sunder, Giants/Dragonkin)"
+ }
+}
