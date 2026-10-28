@@ -1,0 +1,2183 @@
+{
+ "format": 1,
+ "candidate": {
+  "talents": "30305213102-25053005112010501",
+  "sha256": "4f86bda78b8ba476e267ba77b86fde7b217e38fbe7c7db79e57cb40199d326df",
+  "origin": "multi-agent rotation search on the simulator (six rounds, 1,000-fight search banks, 5,000-fight independent holdouts); talents and rotation only, gear unchanged"
+ },
+ "searchValidation": {
+  "fights": 10000,
+  "note": "paired fights against the published Fury preset on the corrected October 28 follow-up inputs",
+  "races": [
+   {
+    "race": "Dwarf",
+    "baseline_dps": 989.3327835821808,
+    "final_dps": 1008.0879713969565,
+    "gain_vs_published_dps": 18.75518781477571,
+    "gain_vs_published_se": 0.47315887623595904
+   },
+   {
+    "race": "Gnome",
+    "baseline_dps": 989.9107828912339,
+    "final_dps": 1008.3240968720049,
+    "gain_vs_published_dps": 18.413313980770948,
+    "gain_vs_published_se": 0.4805836741232343
+   },
+   {
+    "race": "High Order",
+    "baseline_dps": 996.8623388782103,
+    "final_dps": 1015.6554588703003,
+    "gain_vs_published_dps": 18.793119992090052,
+    "gain_vs_published_se": 0.48282671225418683
+   },
+   {
+    "race": "Human",
+    "baseline_dps": 988.1887427433302,
+    "final_dps": 1006.0974200026411,
+    "gain_vs_published_dps": 17.908677259310906,
+    "gain_vs_published_se": 0.47766172367582777
+   },
+   {
+    "race": "Night Elf",
+    "baseline_dps": 987.1471948478713,
+    "final_dps": 1006.1080301545358,
+    "gain_vs_published_dps": 18.960835306664404,
+    "gain_vs_published_se": 0.47026323984542096
+   },
+   {
+    "race": "Orc",
+    "baseline_dps": 989.8040095809312,
+    "final_dps": 1008.1435648307407,
+    "gain_vs_published_dps": 18.3395552498096,
+    "gain_vs_published_se": 0.4842345382618191
+   },
+   {
+    "race": "Tauren",
+    "baseline_dps": 985.3492334185763,
+    "final_dps": 1004.352464354273,
+    "gain_vs_published_dps": 19.003230935696717,
+    "gain_vs_published_se": 0.4780283243916221
+   },
+   {
+    "race": "Troll",
+    "baseline_dps": 985.3315932921315,
+    "final_dps": 1003.3578925749786,
+    "gain_vs_published_dps": 18.026299282846946,
+    "gain_vs_published_se": 0.4729161260056242
+   },
+   {
+    "race": "Undead",
+    "baseline_dps": 997.8990900205088,
+    "final_dps": 1015.5367540029131,
+    "gain_vs_published_dps": 17.63766398240424,
+    "gain_vs_published_se": 0.47432839833208074
+   },
+   {
+    "race": "Windshaper",
+    "baseline_dps": 997.6546772122259,
+    "final_dps": 1015.8758123365257,
+    "gain_vs_published_dps": 18.221135124299686,
+    "gain_vs_published_se": 0.4835526221987886
+   }
+  ]
+ },
+ "confirmation": {
+  "fights": 5000,
+  "seeds": [
+   2026102811,
+   7350019
+  ],
+  "note": "bench replays of the follow-up inputs with only talents and rotation replaced; the two seeds share no fights",
+  "variants": {
+   "fury_cand": "Fury: candidate talents and rotation",
+   "sunder_N": "Fury (Sunder): candidate talents, published Sunder rotation",
+   "sunder_A": "Fury (Sunder): published Sunder rotation plus the candidate's Spearing Strike dance, pre-pull timings and first-checked Heroic Strike",
+   "sunder_B": "Fury (Sunder): candidate rotation with the two Sunder Armor upkeep rules first (selected)",
+   "sunder_C": "Fury (Sunder): B without the Rend stance dance"
+  },
+  "runs": {
+   "fury_base@2026102811": {
+    "Night Elf": {
+     "DPS": 987.39,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Tauren": {
+     "DPS": 985.71,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Troll": {
+     "DPS": 984.63,
+     "SE": 0.48,
+     "Warnings": 0
+    },
+    "Undead": {
+     "DPS": 997.07,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Orc": {
+     "DPS": 989.73,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Human": {
+     "DPS": 988.26,
+     "SE": 0.48,
+     "Warnings": 0
+    },
+    "Dwarf": {
+     "DPS": 989.45,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Windshaper": {
+     "DPS": 996.93,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "High Order": {
+     "DPS": 996.93,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Gnome": {
+     "DPS": 990.15,
+     "SE": 0.49,
+     "Warnings": 0
+    }
+   },
+   "fury_cand@2026102811": {
+    "Orc": {
+     "DPS": 1007.37,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Windshaper": {
+     "DPS": 1015.2,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Night Elf": {
+     "DPS": 1005.29,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Troll": {
+     "DPS": 1003.1,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Undead": {
+     "DPS": 1015.54,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "High Order": {
+     "DPS": 1015.2,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Dwarf": {
+     "DPS": 1007.4,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Gnome": {
+     "DPS": 1007.83,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Human": {
+     "DPS": 1005.78,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Tauren": {
+     "DPS": 1003.94,
+     "SE": 0.5,
+     "Warnings": 0
+    }
+   },
+   "sunder_base@2026102811": {
+    "Gnome": {
+     "DPS": 941.07,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Troll": {
+     "DPS": 924.79,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Tauren": {
+     "DPS": 937.6,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Undead": {
+     "DPS": 955.28,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Human": {
+     "DPS": 947.0,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "High Order": {
+     "DPS": 950.51,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Windshaper": {
+     "DPS": 950.51,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Dwarf": {
+     "DPS": 931.54,
+     "SE": 0.48,
+     "Warnings": 0
+    },
+    "Orc": {
+     "DPS": 942.98,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Night Elf": {
+     "DPS": 940.4,
+     "SE": 0.49,
+     "Warnings": 0
+    }
+   },
+   "sunder_N@2026102811": {
+    "Troll": {
+     "DPS": 923.8,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Windshaper": {
+     "DPS": 949.88,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Undead": {
+     "DPS": 953.48,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Human": {
+     "DPS": 946.3,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Tauren": {
+     "DPS": 936.39,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Orc": {
+     "DPS": 941.76,
+     "SE": 0.51,
+     "Warnings": 0
+    },
+    "Gnome": {
+     "DPS": 940.62,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Dwarf": {
+     "DPS": 931.77,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "High Order": {
+     "DPS": 949.88,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Night Elf": {
+     "DPS": 939.5,
+     "SE": 0.49,
+     "Warnings": 0
+    }
+   },
+   "sunder_B@2026102811": {
+    "Orc": {
+     "DPS": 972.39,
+     "SE": 0.52,
+     "Warnings": 0
+    },
+    "Troll": {
+     "DPS": 952.41,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Windshaper": {
+     "DPS": 978.42,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Tauren": {
+     "DPS": 965.99,
+     "SE": 0.51,
+     "Warnings": 0
+    },
+    "High Order": {
+     "DPS": 978.42,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Night Elf": {
+     "DPS": 970.41,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Gnome": {
+     "DPS": 971.42,
+     "SE": 0.51,
+     "Warnings": 0
+    },
+    "Dwarf": {
+     "DPS": 960.7,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Undead": {
+     "DPS": 984.0,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Human": {
+     "DPS": 977.31,
+     "SE": 0.51,
+     "Warnings": 0
+    }
+   },
+   "sunder_A@2026102811": {
+    "Human": {
+     "DPS": 951.88,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Night Elf": {
+     "DPS": 945.63,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Tauren": {
+     "DPS": 943.94,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Orc": {
+     "DPS": 948.16,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Undead": {
+     "DPS": 960.12,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Gnome": {
+     "DPS": 946.57,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "High Order": {
+     "DPS": 955.01,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Troll": {
+     "DPS": 929.96,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Dwarf": {
+     "DPS": 936.68,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Windshaper": {
+     "DPS": 955.01,
+     "SE": 0.49,
+     "Warnings": 0
+    }
+   },
+   "sunder_C@2026102811": {
+    "Orc": {
+     "DPS": 951.85,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Troll": {
+     "DPS": 932.6,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Tauren": {
+     "DPS": 947.1,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Undead": {
+     "DPS": 964.37,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Human": {
+     "DPS": 956.71,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Windshaper": {
+     "DPS": 958.87,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Dwarf": {
+     "DPS": 940.66,
+     "SE": 0.48,
+     "Warnings": 0
+    },
+    "Night Elf": {
+     "DPS": 950.89,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Gnome": {
+     "DPS": 951.58,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "High Order": {
+     "DPS": 958.87,
+     "SE": 0.49,
+     "Warnings": 0
+    }
+   },
+   "fury_base@7350019": {
+    "Orc": {
+     "DPS": 989.74,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Windshaper": {
+     "DPS": 997.3,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Night Elf": {
+     "DPS": 987.02,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Human": {
+     "DPS": 988.46,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Undead": {
+     "DPS": 996.9,
+     "SE": 0.48,
+     "Warnings": 0
+    },
+    "Tauren": {
+     "DPS": 985.88,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Dwarf": {
+     "DPS": 988.55,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Gnome": {
+     "DPS": 989.26,
+     "SE": 0.48,
+     "Warnings": 0
+    },
+    "High Order": {
+     "DPS": 997.3,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Troll": {
+     "DPS": 985.47,
+     "SE": 0.49,
+     "Warnings": 0
+    }
+   },
+   "fury_cand@7350019": {
+    "Human": {
+     "DPS": 1006.11,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Gnome": {
+     "DPS": 1007.79,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Dwarf": {
+     "DPS": 1007.67,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Troll": {
+     "DPS": 1003.92,
+     "SE": 0.48,
+     "Warnings": 0
+    },
+    "Undead": {
+     "DPS": 1014.83,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Orc": {
+     "DPS": 1008.02,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Tauren": {
+     "DPS": 1004.37,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "High Order": {
+     "DPS": 1016.13,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Windshaper": {
+     "DPS": 1016.13,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Night Elf": {
+     "DPS": 1006.79,
+     "SE": 0.5,
+     "Warnings": 0
+    }
+   },
+   "sunder_base@7350019": {
+    "Undead": {
+     "DPS": 955.06,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Dwarf": {
+     "DPS": 932.42,
+     "SE": 0.48,
+     "Warnings": 0
+    },
+    "High Order": {
+     "DPS": 949.38,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Windshaper": {
+     "DPS": 949.38,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Tauren": {
+     "DPS": 937.9,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Orc": {
+     "DPS": 942.39,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Human": {
+     "DPS": 948.06,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Night Elf": {
+     "DPS": 940.95,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Troll": {
+     "DPS": 925.31,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Gnome": {
+     "DPS": 941.87,
+     "SE": 0.5,
+     "Warnings": 0
+    }
+   },
+   "sunder_B@7350019": {
+    "Troll": {
+     "DPS": 953.2,
+     "SE": 0.51,
+     "Warnings": 0
+    },
+    "Orc": {
+     "DPS": 971.36,
+     "SE": 0.51,
+     "Warnings": 0
+    },
+    "Dwarf": {
+     "DPS": 961.42,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "Undead": {
+     "DPS": 983.24,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Human": {
+     "DPS": 976.41,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Tauren": {
+     "DPS": 966.54,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Night Elf": {
+     "DPS": 970.11,
+     "SE": 0.5,
+     "Warnings": 0
+    },
+    "Gnome": {
+     "DPS": 970.72,
+     "SE": 0.51,
+     "Warnings": 0
+    },
+    "Windshaper": {
+     "DPS": 978.78,
+     "SE": 0.49,
+     "Warnings": 0
+    },
+    "High Order": {
+     "DPS": 978.78,
+     "SE": 0.49,
+     "Warnings": 0
+    }
+   }
+  }
+ },
+ "sunderCoverage": {
+  "fights": 1000,
+  "seed": 2026102811,
+  "note": "tools/sunder_audit on the confirmation requests; seconds per 300-second fight",
+  "variants": {
+   "sunder_C": {
+    "Troll": {
+     "FirstFiveSeconds": 6.606450000000002,
+     "FullStackSeconds": 293.3935500000001,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Orc": {
+     "FirstFiveSeconds": 6.612849999999998,
+     "FullStackSeconds": 293.3871499999999,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Dwarf": {
+     "FirstFiveSeconds": 6.609449999999998,
+     "FullStackSeconds": 293.39055,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Tauren": {
+     "FirstFiveSeconds": 6.6079500000000015,
+     "FullStackSeconds": 293.3920500000001,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Night Elf": {
+     "FirstFiveSeconds": 6.592000000000002,
+     "FullStackSeconds": 293.40800000000013,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Gnome": {
+     "FirstFiveSeconds": 6.5880000000000045,
+     "FullStackSeconds": 293.4120000000001,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Undead": {
+     "FirstFiveSeconds": 6.560700000000001,
+     "FullStackSeconds": 293.43930000000006,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Human": {
+     "FirstFiveSeconds": 6.588150000000004,
+     "FullStackSeconds": 293.41185000000013,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "High Order": {
+     "FirstFiveSeconds": 6.59645,
+     "FullStackSeconds": 293.3975499999999,
+     "BelowFiveSecondsAfterRamp": 0.006,
+     "Drops": 1,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 1
+    },
+    "Windshaper": {
+     "FirstFiveSeconds": 6.59645,
+     "FullStackSeconds": 293.3975499999999,
+     "BelowFiveSecondsAfterRamp": 0.006,
+     "Drops": 1,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 1
+    }
+   },
+   "sunder_B": {
+    "Troll": {
+     "FirstFiveSeconds": 6.607750000000003,
+     "FullStackSeconds": 293.39225000000016,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Night Elf": {
+     "FirstFiveSeconds": 6.596500000000003,
+     "FullStackSeconds": 293.40350000000024,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Tauren": {
+     "FirstFiveSeconds": 6.6072000000000015,
+     "FullStackSeconds": 293.39280000000014,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Orc": {
+     "FirstFiveSeconds": 6.606299999999999,
+     "FullStackSeconds": 293.39369999999997,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Dwarf": {
+     "FirstFiveSeconds": 6.617049999999999,
+     "FullStackSeconds": 293.38294999999994,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Human": {
+     "FirstFiveSeconds": 6.5910500000000045,
+     "FullStackSeconds": 293.40240000000017,
+     "BelowFiveSecondsAfterRamp": 0.006549999999999999,
+     "Drops": 1,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 1
+    },
+    "Gnome": {
+     "FirstFiveSeconds": 6.592500000000004,
+     "FullStackSeconds": 293.40750000000025,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Undead": {
+     "FirstFiveSeconds": 6.557500000000002,
+     "FullStackSeconds": 293.4425000000001,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Windshaper": {
+     "FirstFiveSeconds": 6.597399999999999,
+     "FullStackSeconds": 293.4025999999999,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "High Order": {
+     "FirstFiveSeconds": 6.597399999999999,
+     "FullStackSeconds": 293.4025999999999,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    }
+   },
+   "sunder_A": {
+    "Orc": {
+     "FirstFiveSeconds": 6.61475,
+     "FullStackSeconds": 293.3852499999999,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Tauren": {
+     "FirstFiveSeconds": 6.573100000000001,
+     "FullStackSeconds": 293.4269000000001,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Human": {
+     "FirstFiveSeconds": 6.583350000000002,
+     "FullStackSeconds": 293.41665000000006,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Gnome": {
+     "FirstFiveSeconds": 6.582550000000002,
+     "FullStackSeconds": 293.4174500000001,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Night Elf": {
+     "FirstFiveSeconds": 6.580050000000001,
+     "FullStackSeconds": 293.40907782848205,
+     "BelowFiveSecondsAfterRamp": 0.010872171518,
+     "Drops": 1,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 1
+    },
+    "Undead": {
+     "FirstFiveSeconds": 6.578550000000003,
+     "FullStackSeconds": 293.42145,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "High Order": {
+     "FirstFiveSeconds": 6.575549999999999,
+     "FullStackSeconds": 293.42445,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Dwarf": {
+     "FirstFiveSeconds": 6.6248999999999985,
+     "FullStackSeconds": 293.3751,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Windshaper": {
+     "FirstFiveSeconds": 6.575549999999999,
+     "FullStackSeconds": 293.42445,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Troll": {
+     "FirstFiveSeconds": 6.626550000000002,
+     "FullStackSeconds": 293.3674500000001,
+     "BelowFiveSecondsAfterRamp": 0.006,
+     "Drops": 1,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 1
+    }
+   },
+   "sunder_N": {
+    "Dwarf": {
+     "FirstFiveSeconds": 6.667950000000004,
+     "FullStackSeconds": 293.33205000000004,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Human": {
+     "FirstFiveSeconds": 6.640250000000002,
+     "FullStackSeconds": 293.35975000000013,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "High Order": {
+     "FirstFiveSeconds": 6.6583,
+     "FullStackSeconds": 293.34169999999995,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Troll": {
+     "FirstFiveSeconds": 6.694050000000002,
+     "FullStackSeconds": 293.3059500000001,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Night Elf": {
+     "FirstFiveSeconds": 6.644900000000001,
+     "FullStackSeconds": 293.3551000000001,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Tauren": {
+     "FirstFiveSeconds": 6.645400000000001,
+     "FullStackSeconds": 293.3546000000001,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Gnome": {
+     "FirstFiveSeconds": 6.6385000000000005,
+     "FullStackSeconds": 293.3615000000001,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Windshaper": {
+     "FirstFiveSeconds": 6.6583,
+     "FullStackSeconds": 293.34169999999995,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Orc": {
+     "FirstFiveSeconds": 6.689250000000002,
+     "FullStackSeconds": 293.31075,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Undead": {
+     "FirstFiveSeconds": 6.675050000000002,
+     "FullStackSeconds": 293.32495000000006,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    }
+   },
+   "sunder_base": {
+    "High Order": {
+     "FirstFiveSeconds": 6.6583,
+     "FullStackSeconds": 293.34169999999995,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Human": {
+     "FirstFiveSeconds": 6.640250000000002,
+     "FullStackSeconds": 293.35975000000013,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Troll": {
+     "FirstFiveSeconds": 6.694050000000002,
+     "FullStackSeconds": 293.3059500000001,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Night Elf": {
+     "FirstFiveSeconds": 6.644900000000001,
+     "FullStackSeconds": 293.3551000000001,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Orc": {
+     "FirstFiveSeconds": 6.689250000000002,
+     "FullStackSeconds": 293.31075,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Dwarf": {
+     "FirstFiveSeconds": 6.667950000000004,
+     "FullStackSeconds": 293.33205000000004,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Tauren": {
+     "FirstFiveSeconds": 6.645400000000001,
+     "FullStackSeconds": 293.3546000000001,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Undead": {
+     "FirstFiveSeconds": 6.675050000000002,
+     "FullStackSeconds": 293.32495000000006,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Gnome": {
+     "FirstFiveSeconds": 6.6385000000000005,
+     "FullStackSeconds": 293.3615000000001,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    },
+    "Windshaper": {
+     "FirstFiveSeconds": 6.6583,
+     "FullStackSeconds": 293.34169999999995,
+     "BelowFiveSecondsAfterRamp": 0,
+     "Drops": 0,
+     "NeverFive": 0,
+     "Iterations": 1000,
+     "FightsWithDrop": 0
+    }
+   }
+  }
+ },
+ "rotations": {
+  "A": {
+   "type": "TypeAPL",
+   "priorityList": [
+    {
+     "action": {
+      "condition": {
+       "or": {
+        "vals": [
+         {
+          "cmp": {
+           "op": "OpLt",
+           "lhs": {
+            "auraNumStacks": {
+             "sourceUnit": {
+              "type": "CurrentTarget"
+             },
+             "auraId": {
+              "spellId": 11597,
+              "rank": 5
+             }
+            }
+           },
+           "rhs": {
+            "const": {
+             "val": "5"
+            }
+           }
+          }
+         },
+         {
+          "cmp": {
+           "op": "OpLt",
+           "lhs": {
+            "auraRemainingTime": {
+             "sourceUnit": {
+              "type": "CurrentTarget"
+             },
+             "auraId": {
+              "spellId": 11597,
+              "rank": 5
+             }
+            }
+           },
+           "rhs": {
+            "const": {
+             "val": "8s"
+            }
+           }
+          }
+         }
+        ]
+       }
+      },
+      "castSpell": {
+       "spellId": {
+        "spellId": 11597,
+        "rank": 5
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "condition": {
+       "and": {
+        "vals": [
+         {
+          "or": {
+           "vals": [
+            {
+             "cmp": {
+              "op": "OpLt",
+              "lhs": {
+               "auraNumStacks": {
+                "sourceUnit": {
+                 "type": "CurrentTarget"
+                },
+                "auraId": {
+                 "spellId": 11597,
+                 "rank": 5
+                }
+               }
+              },
+              "rhs": {
+               "const": {
+                "val": "5"
+               }
+              }
+             }
+            },
+            {
+             "cmp": {
+              "op": "OpLt",
+              "lhs": {
+               "auraRemainingTime": {
+                "sourceUnit": {
+                 "type": "CurrentTarget"
+                },
+                "auraId": {
+                 "spellId": 11597,
+                 "rank": 5
+                }
+               }
+              },
+              "rhs": {
+               "const": {
+                "val": "8s"
+               }
+              }
+             }
+            }
+           ]
+          }
+         },
+         {
+          "cmp": {
+           "op": "OpLt",
+           "lhs": {
+            "currentRage": {}
+           },
+           "rhs": {
+            "const": {
+             "val": "15"
+            }
+           }
+          }
+         }
+        ]
+       }
+      },
+      "wait": {
+       "duration": {
+        "const": {
+         "val": "500ms"
+        }
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "condition": {
+       "cmp": {
+        "op": "OpLe",
+        "lhs": {
+         "remainingTime": {}
+        },
+        "rhs": {
+         "const": {
+          "val": "300s"
+         }
+        }
+       }
+      },
+      "castSpell": {
+       "spellId": {
+        "spellId": 1719
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "condition": {
+       "and": {
+        "vals": [
+         {
+          "cmp": {
+           "op": "OpGe",
+           "lhs": {
+            "currentRage": {}
+           },
+           "rhs": {
+            "const": {
+             "val": "42"
+            }
+           }
+          }
+         },
+         {
+          "not": {
+           "val": {
+            "isExecutePhase": {
+             "threshold": "E20"
+            }
+           }
+          }
+         }
+        ]
+       }
+      },
+      "castSpell": {
+       "spellId": {
+        "spellId": 11567,
+        "tag": 1
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "autocastOtherCooldowns": {}
+     }
+    },
+    {
+     "action": {
+      "condition": {
+       "cmp": {
+        "op": "OpLe",
+        "lhs": {
+         "currentRage": {}
+        },
+        "rhs": {
+         "const": {
+          "val": "60"
+         }
+        }
+       }
+      },
+      "castSpell": {
+       "spellId": {
+        "itemId": 12662
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "condition": {
+       "and": {
+        "vals": [
+         {
+          "auraIsActive": {
+           "auraId": {
+            "spellId": 1282733
+           }
+          }
+         },
+         {
+          "cmp": {
+           "op": "OpLe",
+           "lhs": {
+            "currentRage": {}
+           },
+           "rhs": {
+            "const": {
+             "val": "35"
+            }
+           }
+          }
+         }
+        ]
+       }
+      },
+      "castSpell": {
+       "spellId": {
+        "spellId": 2457
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "condition": {
+       "and": {
+        "vals": [
+         {
+          "auraIsActive": {
+           "auraId": {
+            "spellId": 1282733
+           }
+          }
+         },
+         {
+          "cmp": {
+           "op": "OpLe",
+           "lhs": {
+            "currentRage": {}
+           },
+           "rhs": {
+            "const": {
+             "val": "35"
+            }
+           }
+          }
+         },
+         {
+          "cmp": {
+           "op": "OpLe",
+           "lhs": {
+            "spellTimeToReady": {
+             "spellId": {
+              "spellId": 1310222
+             }
+            }
+           },
+           "rhs": {
+            "const": {
+             "val": "1s"
+            }
+           }
+          }
+         }
+        ]
+       }
+      },
+      "castSpell": {
+       "spellId": {
+        "spellId": 2457
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "castSpell": {
+       "spellId": {
+        "spellId": 11585
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "castSpell": {
+       "spellId": {
+        "spellId": 1310222
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "condition": {
+       "not": {
+        "val": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 1282733
+          }
+         }
+        }
+       }
+      },
+      "castSpell": {
+       "spellId": {
+        "spellId": 2458
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "castSpell": {
+       "spellId": {
+        "spellId": 20662
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "castSpell": {
+       "spellId": {
+        "spellId": 23894
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "castSpell": {
+       "spellId": {
+        "spellId": 1680
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "condition": {
+       "not": {
+        "val": {
+         "dotIsActive": {
+          "spellId": {
+           "spellId": 11574
+          }
+         }
+        }
+       }
+      },
+      "castSpell": {
+       "spellId": {
+        "spellId": 11574
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "castSpell": {
+       "spellId": {
+        "spellId": 7373
+       }
+      },
+      "condition": {
+       "and": {
+        "vals": [
+         {
+          "auraIsKnown": {
+           "auraId": {
+            "spellId": 10610
+           }
+          }
+         },
+         {
+          "not": {
+           "val": {
+            "isExecutePhase": {
+             "threshold": "E20"
+            }
+           }
+          }
+         },
+         {
+          "cmp": {
+           "op": "OpGe",
+           "lhs": {
+            "spellTimeToReady": {
+             "spellId": {
+              "spellId": 23894
+             }
+            }
+           },
+           "rhs": {
+            "const": {
+             "val": "1.5s"
+            }
+           }
+          }
+         },
+         {
+          "cmp": {
+           "op": "OpGe",
+           "lhs": {
+            "spellTimeToReady": {
+             "spellId": {
+              "spellId": 1680
+             }
+            }
+           },
+           "rhs": {
+            "const": {
+             "val": "1.5s"
+            }
+           }
+          }
+         },
+         {
+          "cmp": {
+           "op": "OpGe",
+           "lhs": {
+            "autoTimeToNext": {
+             "autoType": "MainHand"
+            }
+           },
+           "rhs": {
+            "const": {
+             "val": "1s"
+            }
+           }
+          }
+         }
+        ]
+       }
+      }
+     }
+    }
+   ],
+   "prepullActions": [
+    {
+     "action": {
+      "castSpell": {
+       "spellId": {
+        "spellId": 2687
+       }
+      }
+     },
+     "doAtValue": {
+      "const": {
+       "val": "-10s"
+      }
+     }
+    },
+    {
+     "action": {
+      "castSpell": {
+       "spellId": {
+        "spellId": 12328
+       }
+      }
+     },
+     "doAtValue": {
+      "const": {
+       "val": "-1.5s"
+      }
+     }
+    }
+   ]
+  },
+  "C": {
+   "type": "TypeAPL",
+   "priorityList": [
+    {
+     "action": {
+      "condition": {
+       "or": {
+        "vals": [
+         {
+          "cmp": {
+           "op": "OpLt",
+           "lhs": {
+            "auraNumStacks": {
+             "sourceUnit": {
+              "type": "CurrentTarget"
+             },
+             "auraId": {
+              "spellId": 11597,
+              "rank": 5
+             }
+            }
+           },
+           "rhs": {
+            "const": {
+             "val": "5"
+            }
+           }
+          }
+         },
+         {
+          "cmp": {
+           "op": "OpLt",
+           "lhs": {
+            "auraRemainingTime": {
+             "sourceUnit": {
+              "type": "CurrentTarget"
+             },
+             "auraId": {
+              "spellId": 11597,
+              "rank": 5
+             }
+            }
+           },
+           "rhs": {
+            "const": {
+             "val": "8s"
+            }
+           }
+          }
+         }
+        ]
+       }
+      },
+      "castSpell": {
+       "spellId": {
+        "spellId": 11597,
+        "rank": 5
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "condition": {
+       "and": {
+        "vals": [
+         {
+          "or": {
+           "vals": [
+            {
+             "cmp": {
+              "op": "OpLt",
+              "lhs": {
+               "auraNumStacks": {
+                "sourceUnit": {
+                 "type": "CurrentTarget"
+                },
+                "auraId": {
+                 "spellId": 11597,
+                 "rank": 5
+                }
+               }
+              },
+              "rhs": {
+               "const": {
+                "val": "5"
+               }
+              }
+             }
+            },
+            {
+             "cmp": {
+              "op": "OpLt",
+              "lhs": {
+               "auraRemainingTime": {
+                "sourceUnit": {
+                 "type": "CurrentTarget"
+                },
+                "auraId": {
+                 "spellId": 11597,
+                 "rank": 5
+                }
+               }
+              },
+              "rhs": {
+               "const": {
+                "val": "8s"
+               }
+              }
+             }
+            }
+           ]
+          }
+         },
+         {
+          "cmp": {
+           "op": "OpLt",
+           "lhs": {
+            "currentRage": {}
+           },
+           "rhs": {
+            "const": {
+             "val": "15"
+            }
+           }
+          }
+         }
+        ]
+       }
+      },
+      "wait": {
+       "duration": {
+        "const": {
+         "val": "500ms"
+        }
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "condition": {
+       "cmp": {
+        "op": "OpLe",
+        "lhs": {
+         "remainingTime": {}
+        },
+        "rhs": {
+         "const": {
+          "val": "300s"
+         }
+        }
+       }
+      },
+      "castSpell": {
+       "spellId": {
+        "spellId": 1719
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "condition": {
+       "cmp": {
+        "op": "OpLe",
+        "lhs": {
+         "currentRage": {}
+        },
+        "rhs": {
+         "const": {
+          "val": "40"
+         }
+        }
+       }
+      },
+      "castSpell": {
+       "spellId": {
+        "itemId": 12662
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "condition": {
+       "and": {
+        "vals": [
+         {
+          "cmp": {
+           "op": "OpGe",
+           "lhs": {
+            "currentRage": {}
+           },
+           "rhs": {
+            "const": {
+             "val": "42"
+            }
+           }
+          }
+         },
+         {
+          "not": {
+           "val": {
+            "isExecutePhase": {
+             "threshold": "E20"
+            }
+           }
+          }
+         }
+        ]
+       }
+      },
+      "castSpell": {
+       "spellId": {
+        "spellId": 11567,
+        "tag": 1
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "castSpell": {
+       "spellId": {
+        "spellId": 23894
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "castSpell": {
+       "spellId": {
+        "spellId": 11585
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "condition": {
+       "not": {
+        "val": {
+         "auraIsActive": {
+          "auraId": {
+           "spellId": 1282733
+          }
+         }
+        }
+       }
+      },
+      "castSpell": {
+       "spellId": {
+        "spellId": 2458
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "castSpell": {
+       "spellId": {
+        "spellId": 20662
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "castSpell": {
+       "spellId": {
+        "spellId": 1680
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "condition": {
+       "and": {
+        "vals": [
+         {
+          "auraIsActive": {
+           "auraId": {
+            "spellId": 1282733
+           }
+          }
+         },
+         {
+          "cmp": {
+           "op": "OpLe",
+           "lhs": {
+            "currentRage": {}
+           },
+           "rhs": {
+            "const": {
+             "val": "35"
+            }
+           }
+          }
+         },
+         {
+          "cmp": {
+           "op": "OpLe",
+           "lhs": {
+            "spellTimeToReady": {
+             "spellId": {
+              "spellId": 11585
+             }
+            }
+           },
+           "rhs": {
+            "const": {
+             "val": "1s"
+            }
+           }
+          }
+         }
+        ]
+       }
+      },
+      "castSpell": {
+       "spellId": {
+        "spellId": 2457
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "condition": {
+       "and": {
+        "vals": [
+         {
+          "auraIsActive": {
+           "auraId": {
+            "spellId": 1282733
+           }
+          }
+         },
+         {
+          "cmp": {
+           "op": "OpLe",
+           "lhs": {
+            "currentRage": {}
+           },
+           "rhs": {
+            "const": {
+             "val": "35"
+            }
+           }
+          }
+         },
+         {
+          "cmp": {
+           "op": "OpLe",
+           "lhs": {
+            "spellTimeToReady": {
+             "spellId": {
+              "spellId": 1310222
+             }
+            }
+           },
+           "rhs": {
+            "const": {
+             "val": "1s"
+            }
+           }
+          }
+         }
+        ]
+       }
+      },
+      "castSpell": {
+       "spellId": {
+        "spellId": 2457
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "castSpell": {
+       "spellId": {
+        "spellId": 1310222
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "autocastOtherCooldowns": {}
+     }
+    },
+    {
+     "action": {
+      "condition": {
+       "not": {
+        "val": {
+         "dotIsActive": {
+          "spellId": {
+           "spellId": 11574
+          }
+         }
+        }
+       }
+      },
+      "castSpell": {
+       "spellId": {
+        "spellId": 11574
+       }
+      }
+     }
+    },
+    {
+     "action": {
+      "condition": {
+       "and": {
+        "vals": [
+         {
+          "auraIsKnown": {
+           "auraId": {
+            "spellId": 10610
+           }
+          }
+         },
+         {
+          "not": {
+           "val": {
+            "isExecutePhase": {
+             "threshold": "E20"
+            }
+           }
+          }
+         },
+         {
+          "cmp": {
+           "op": "OpGe",
+           "lhs": {
+            "spellTimeToReady": {
+             "spellId": {
+              "spellId": 23894
+             }
+            }
+           },
+           "rhs": {
+            "const": {
+             "val": "1s"
+            }
+           }
+          }
+         },
+         {
+          "cmp": {
+           "op": "OpGe",
+           "lhs": {
+            "spellTimeToReady": {
+             "spellId": {
+              "spellId": 1680
+             }
+            }
+           },
+           "rhs": {
+            "const": {
+             "val": "1s"
+            }
+           }
+          }
+         },
+         {
+          "cmp": {
+           "op": "OpGe",
+           "lhs": {
+            "autoTimeToNext": {
+             "autoType": "MainHand"
+            }
+           },
+           "rhs": {
+            "const": {
+             "val": "0.7s"
+            }
+           }
+          }
+         }
+        ]
+       }
+      },
+      "castSpell": {
+       "spellId": {
+        "spellId": 7373
+       }
+      }
+     }
+    }
+   ],
+   "prepullActions": [
+    {
+     "action": {
+      "castSpell": {
+       "spellId": {
+        "spellId": 2687
+       }
+      }
+     },
+     "doAtValue": {
+      "const": {
+       "val": "-10s"
+      }
+     }
+    },
+    {
+     "action": {
+      "castSpell": {
+       "spellId": {
+        "spellId": 12328
+       }
+      }
+     },
+     "doAtValue": {
+      "const": {
+       "val": "-1.5s"
+      }
+     }
+    }
+   ]
+  }
+ },
+ "selected": {
+  "fury": "fury_cand",
+  "fury_sunder": "sunder_B"
+ }
+}

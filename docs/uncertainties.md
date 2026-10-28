@@ -4,7 +4,7 @@
 
 Current level-60 DPS and tank scenarios, plus conditional spell, item and encounter coverage. This register consolidates the recorded questions; it is not a claim that unlisted game behavior has been verified.
 
-**Latest follow-up (2026-10-28):** October 28 follow-up: a ranged Marksmanship Hunter build (31 or more Marksmanship points with Trueshot Aura, a Cat, Auto Shot from range and no melee) beside MM Weave, and the gear of every DPS build re-selected from the modeled pool on the current engine and confirmed on a second seed. [Latest follow-up report](october-28-follow-up.md).
+**Latest follow-up (2026-10-28):** October 28 Fury rotations: Fury and Fury (Sunder) take Spearing Strike instead of Improved Bloodrage (20/31/0) and a rotation found by a simulator search (Spearing Strike and Rend in Battle Stance, earlier Bloodrage and Heroic Strike), with their gear searched again; Fury gains 18 to 21 DPS and Fury (Sunder) 28 to 35 DPS on every race. [Latest follow-up report](october-28-fury-rotations.md).
 
 **Original adjudication baseline:** 2026-09-27, `35cab052456a320358e998c12416687d69cae142`. That original review reconciled questions without changing mechanics or benchmark results. This current register also includes the later implementation and benchmark updates linked above; earlier audits remain historical evidence, not current task status.
 
@@ -1822,11 +1822,11 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 
 **Question:** Which choices does the Fury rotation miss?
 
-**Finding:** A policy network that chose every action in the engine beat the published rotation; its differences, written as APL rules and confirmed on 4,096 paired fights each, give these gains. The network itself stays about 6 DPS ahead.
+**Finding:** A policy network that chose every action in the engine beat the published rotation; its differences, written as APL rules and confirmed on 4,096 paired fights each, give these gains. The network itself stays about 6 DPS ahead. On October 28 a simulator search by several agents found Spearing Strike, a Rend stance dance and an earlier Heroic Strike; the result held on independent paired fights for all ten races, and the same rules with Sunder upkeep first kept full Sunder coverage.
 
-**Current implementation / scenario:** Fury: Overpower dance up to 35 rage, also in execute and during Recklessness; Rend refreshed in Battle Stance outside execute; Heroic Strike from 40 rage; Hamstring only with the next main-hand swing at least 1 s away; Demonic Rune at up to 60 rage. Fury (Sunder) the same without the Rend refresh. 2H Bloodthirst: dance up to 60 rage, Heroic Strike from 80. Fury and Fury (Sunder) talents 19/31/1 (Improved Heroic Strike 3/3 and Improved Bloodrage 1/2 instead of two Enrage points).
+**Current implementation / scenario:** Fury and Fury (Sunder): talents 20/31/0 (Spearing Strike instead of Improved Bloodrage, Improved Heroic Strike 3/3 instead of two Enrage points); Bloodrage 10 s and Death Wish 1.5 s before the pull; Heroic Strike from 42 rage, checked first; Overpower and Spearing Strike in Battle Stance up to 35 rage during an Overpower window; Rend refreshed in Battle Stance up to 30 rage outside execute, staying in Battle Stance up to 75 rage while Rend is down; Hamstring with Bloodthirst and Whirlwind at least 1 s away and the next main-hand swing at least 0.7 s away; Demonic Rune at up to 40 rage. Fury (Sunder) puts Sunder Armor upkeep first. 2H Bloodthirst: dance up to 60 rage, Heroic Strike from 80.
 
-**Impact:** Fury +23 (rotation +22, talents +1.5), Fury (Sunder) +19, 2H Bloodthirst +36 DPS on paired fights.
+**Impact:** October 28: Fury +17.6 to +19.8 and Fury (Sunder) +27.9 to +29.4 DPS over the October 21 rules on every race (paired fights). October 21: Fury +23 (rotation +22, talents +1.5), Fury (Sunder) +19, 2H Bloodthirst +36 DPS.
 
 **Remaining scope:** Depends on the provisional Warrior rage model, stance-swap rage retention and WAR-029; the network's finer swing timing is not captured.
 
@@ -1836,7 +1836,7 @@ Old T50, T51 and T52 labels were reused for different topics. The qualified alia
 - Prerequisites: Level-60 Fury Warrior.
 - Observe / verify: Overpower casts and damage in the execute phase with and without the dance.
 
-**References:** [ui/warrior/apls/forever_fury.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/warrior/apls/forever_fury.apl.json) · [ui/warrior/apls/forever_fury_sunder.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/warrior/apls/forever_fury_sunder.apl.json) · [ui/warrior/apls/forever_fury_2h.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/warrior/apls/forever_fury_2h.apl.json) · [tools/forever_rl/README.md](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_rl/README.md) · [artifacts/correctness/october_21_warrior/selection-evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/correctness/october_21_warrior/selection-evidence.json) · [docs/october-21-warrior-rotations.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-21-warrior-rotations.md)
+**References:** [ui/warrior/apls/forever_fury.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/warrior/apls/forever_fury.apl.json) · [ui/warrior/apls/forever_fury_sunder.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/warrior/apls/forever_fury_sunder.apl.json) · [ui/warrior/apls/forever_fury_2h.apl.json](https://github.com/gunba/wow-forever-sim/blob/forever/ui/warrior/apls/forever_fury_2h.apl.json) · [tools/forever_rl/README.md](https://github.com/gunba/wow-forever-sim/blob/forever/tools/forever_rl/README.md) · [artifacts/correctness/october_21_warrior/selection-evidence.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/correctness/october_21_warrior/selection-evidence.json) · [docs/october-21-warrior-rotations.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-21-warrior-rotations.md) · [docs/october-28-fury-rotations.md](https://github.com/gunba/wow-forever-sim/blob/forever/docs/october-28-fury-rotations.md) · [artifacts/correctness/october_28_fury_rotations/selection.json](https://github.com/gunba/wow-forever-sim/blob/forever/artifacts/correctness/october_28_fury_rotations/selection.json)
 
 <a id="war-017"></a>
 

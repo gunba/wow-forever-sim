@@ -47,6 +47,8 @@ simulator's **Ranked builds** selector. Clicking a matrix cell opens that exact
 setup and its actual gear-derived hit; no manual import is needed.
 [Frozen benchmark inputs](artifacts/modelled_gear/forever_input_profiles.json) are also the
 native benchmark defaults, separate from the results for replay.
+The [October 28 Fury rotations](docs/october-28-fury-rotations.md) move Fury and Fury (Sunder) to 20/31/0 talents with
+Spearing Strike and a rotation found by a simulator search; Fury gains 18 to 21 DPS and Fury (Sunder) 28 to 35 DPS.
 The [October 28 follow-up](docs/october-28-follow-up.md) adds a ranged Marksmanship build (Trueshot Aura, no melee)
 beside MM Weave and re-selects every DPS build's gear on the current engine, confirmed on a second seed.
 The [October 28 update](docs/october-28-update.md) gives Orc Blood Fury a two-minute cooldown and Undead Touch of the
@@ -71,6 +73,7 @@ builds, and re-searched talents and consumables for every DPS build. They follow
 [October 16 follow-up](docs/october-16-follow-up.md) (class imbue slots, real relics, Rake scaling) and the
 [October 15 update](docs/october-15-update.md) (client 1.60.1.70425 and the October 15 development notes), and
 [Beta test procedures](docs/beta-test-procedures.md) explains how to settle each remaining open question in game.
+[October 28 Fury comparison](artifacts/correctness/october_28_fury_rotations/comparison.json) lists the Fury changes,
 [October 28 follow-up comparison](artifacts/correctness/october_28_follow_up/comparison.json) lists every race/build
 after the gear search, [October 28 comparison](artifacts/correctness/october_28/comparison.json) lists the Orc and Undead changes,
 [October 27 comparison](artifacts/correctness/october_27/comparison.json) lists every race/build against the release before it, and the

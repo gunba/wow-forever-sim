@@ -8738,7 +8738,7 @@
     "build": "Fury",
     "race": "Orc",
     "file": "fury__orc.json",
-    "dps": 989.3228441747343,
+    "dps": 1007.4174538649198,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -8792,6 +8792,11 @@
           "AdditionalPercent": -9.100000000000001
         },
         {
+          "Action": "{SpellID: 1310222}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.100000000000001
+        },
+        {
           "Action": "{SpellID: 11567}",
           "Kind": "physical-special",
           "AdditionalPercent": -9.100000000000001
@@ -8814,7 +8819,7 @@
     "build": "Fury (Sunder)",
     "race": "Orc",
     "file": "fury_sunder__orc.json",
-    "dps": 942.4744600212775,
+    "dps": 972.3700306445257,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -8868,6 +8873,11 @@
           "AdditionalPercent": -7.800000000000001
         },
         {
+          "Action": "{SpellID: 1310222}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -7.800000000000001
+        },
+        {
           "Action": "{SpellID: 11567}",
           "Kind": "physical-special",
           "AdditionalPercent": -7.800000000000001
@@ -8890,7 +8900,7 @@
     "build": "Fury",
     "race": "Tauren",
     "file": "fury__tauren.json",
-    "dps": 986.2023897351951,
+    "dps": 1004.3189812643791,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -8940,6 +8950,11 @@
         },
         {
           "Action": "{SpellID: 7373}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.8
+        },
+        {
+          "Action": "{SpellID: 1310222}",
           "Kind": "physical-special",
           "AdditionalPercent": -8.8
         },
@@ -8966,7 +8981,7 @@
     "build": "Fury (Sunder)",
     "race": "Tauren",
     "file": "fury_sunder__tauren.json",
-    "dps": 937.4088703488754,
+    "dps": 966.4016218218833,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9020,6 +9035,11 @@
           "AdditionalPercent": -8.8
         },
         {
+          "Action": "{SpellID: 1310222}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.8
+        },
+        {
           "Action": "{SpellID: 11567}",
           "Kind": "physical-special",
           "AdditionalPercent": -8.8
@@ -9042,12 +9062,12 @@
     "build": "Fury",
     "race": "Troll",
     "file": "fury__troll.json",
-    "dps": 985.53276080571,
+    "dps": 1006.9585780248424,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
-      "MeleeFinal": 17.5,
-      "SpellFinal": 17.5,
+      "MeleeFinal": 16.5,
+      "SpellFinal": 16.5,
       "Model": "equipped-only-v2",
       "RatingPerPercent": 10,
       "RawHitDelta": 0,
@@ -9058,57 +9078,62 @@
         {
           "Action": "{ItemID: 10646}",
           "Kind": "spell",
-          "AdditionalPercent": -101.5
+          "AdditionalPercent": -100.5
         },
         {
           "Action": "{SpellID: 23894}",
           "Kind": "physical-special",
-          "AdditionalPercent": -9.5
+          "AdditionalPercent": -8.5
         },
         {
           "Action": "{SpellID: 20662}",
           "Kind": "physical-special",
-          "AdditionalPercent": -9.5
+          "AdditionalPercent": -8.5
         },
         {
           "Action": "{SpellID: 11585}",
           "Kind": "physical-special",
-          "AdditionalPercent": -9.5
+          "AdditionalPercent": -8.5
         },
         {
           "Action": "{SpellID: 1680, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -19.5
+          "AdditionalPercent": -18.5
         },
         {
           "Action": "{SpellID: 1680}",
           "Kind": "physical-special",
-          "AdditionalPercent": -9.5
+          "AdditionalPercent": -8.5
         },
         {
           "Action": "{SpellID: 11574}",
           "Kind": "physical-special",
-          "AdditionalPercent": -9.5
+          "AdditionalPercent": -8.5
         },
         {
           "Action": "{SpellID: 7373}",
           "Kind": "physical-special",
-          "AdditionalPercent": -9.5
+          "AdditionalPercent": -8.5
+        },
+        {
+          "Action": "{SpellID: 1310222}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.5
         },
         {
           "Action": "{SpellID: 11567}",
           "Kind": "physical-special",
-          "AdditionalPercent": -9.5
+          "AdditionalPercent": -8.5
         },
         {
           "Action": "{OtherID: 7, Tag: 1}",
           "Kind": "physical-special",
-          "AdditionalPercent": -9.5
+          "AdditionalPercent": -8.5
         },
         {
           "Action": "{OtherID: 7, Tag: 2}",
           "Kind": "physical-special",
-          "AdditionalPercent": -19.5
+          "AdditionalPercent": -18.5
         }
       ],
       "Exclusions": null
@@ -9118,7 +9143,7 @@
     "build": "Fury (Sunder)",
     "race": "Troll",
     "file": "fury_sunder__troll.json",
-    "dps": 924.3655472855285,
+    "dps": 959.5007670208495,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9177,6 +9202,11 @@
           "AdditionalPercent": -9.100000000000001
         },
         {
+          "Action": "{SpellID: 1310222}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.100000000000001
+        },
+        {
           "Action": "{SpellID: 11567}",
           "Kind": "physical-special",
           "AdditionalPercent": -9.100000000000001
@@ -9199,7 +9229,7 @@
     "build": "Fury",
     "race": "Undead",
     "file": "fury__undead.json",
-    "dps": 997.2370550080908,
+    "dps": 1015.5981090780243,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9249,6 +9279,11 @@
         },
         {
           "Action": "{SpellID: 7373}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9
+        },
+        {
+          "Action": "{SpellID: 1310222}",
           "Kind": "physical-special",
           "AdditionalPercent": -9
         },
@@ -9275,7 +9310,7 @@
     "build": "Fury (Sunder)",
     "race": "Undead",
     "file": "fury_sunder__undead.json",
-    "dps": 954.8220539548122,
+    "dps": 983.0938264479549,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9329,6 +9364,11 @@
           "AdditionalPercent": -9
         },
         {
+          "Action": "{SpellID: 1310222}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9
+        },
+        {
           "Action": "{SpellID: 11567}",
           "Kind": "physical-special",
           "AdditionalPercent": -9
@@ -9351,7 +9391,7 @@
     "build": "Fury",
     "race": "Windshaper",
     "file": "fury__windshaper.json",
-    "dps": 997.2014828591751,
+    "dps": 1015.6295530603098,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9401,6 +9441,11 @@
         },
         {
           "Action": "{SpellID: 7373}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.8
+        },
+        {
+          "Action": "{SpellID: 1310222}",
           "Kind": "physical-special",
           "AdditionalPercent": -8.8
         },
@@ -9427,7 +9472,7 @@
     "build": "Fury (Sunder)",
     "race": "Windshaper",
     "file": "fury_sunder__windshaper.json",
-    "dps": 950.7906252431595,
+    "dps": 978.533510819374,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9477,6 +9522,11 @@
         },
         {
           "Action": "{SpellID: 7373}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.100000000000001
+        },
+        {
+          "Action": "{SpellID: 1310222}",
           "Kind": "physical-special",
           "AdditionalPercent": -9.100000000000001
         },
@@ -9503,7 +9553,7 @@
     "build": "Fury",
     "race": "Human",
     "file": "fury__human.json",
-    "dps": 986.6770942870917,
+    "dps": 1004.908097879859,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9557,6 +9607,11 @@
           "AdditionalPercent": -9.5
         },
         {
+          "Action": "{SpellID: 1310222}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.5
+        },
+        {
           "Action": "{SpellID: 11567}",
           "Kind": "physical-special",
           "AdditionalPercent": -9.5
@@ -9579,7 +9634,7 @@
     "build": "Fury (Sunder)",
     "race": "Human",
     "file": "fury_sunder__human.json",
-    "dps": 946.9986670211615,
+    "dps": 976.832545581991,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9633,6 +9688,11 @@
           "AdditionalPercent": -9.100000000000001
         },
         {
+          "Action": "{SpellID: 1310222}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.100000000000001
+        },
+        {
           "Action": "{SpellID: 11567}",
           "Kind": "physical-special",
           "AdditionalPercent": -9.100000000000001
@@ -9655,7 +9715,88 @@
     "build": "Fury",
     "race": "Dwarf",
     "file": "fury__dwarf.json",
-    "dps": 990.0613599204745,
+    "dps": 1011.0319372164471,
+    "hitAdjustment": {
+      "MeleeAdded": 0,
+      "SpellAdded": 0,
+      "MeleeFinal": 16.5,
+      "SpellFinal": 16.5,
+      "Model": "equipped-only-v2",
+      "RatingPerPercent": 10,
+      "RawHitDelta": 0,
+      "OffensiveBudgetBefore": 0,
+      "Balance": 0,
+      "Entries": null,
+      "Requirements": [
+        {
+          "Action": "{ItemID: 10646}",
+          "Kind": "spell",
+          "AdditionalPercent": -100.5
+        },
+        {
+          "Action": "{SpellID: 23894}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.5
+        },
+        {
+          "Action": "{SpellID: 20662}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.5
+        },
+        {
+          "Action": "{SpellID: 11585}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.5
+        },
+        {
+          "Action": "{SpellID: 1680, Tag: 2}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.5
+        },
+        {
+          "Action": "{SpellID: 1680}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.5
+        },
+        {
+          "Action": "{SpellID: 11574}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.5
+        },
+        {
+          "Action": "{SpellID: 7373}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.5
+        },
+        {
+          "Action": "{SpellID: 1310222}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.5
+        },
+        {
+          "Action": "{SpellID: 11567}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.5
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 1}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.5
+        },
+        {
+          "Action": "{OtherID: 7, Tag: 2}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -18.5
+        }
+      ],
+      "Exclusions": null
+    }
+  },
+  {
+    "build": "Fury (Sunder)",
+    "race": "Dwarf",
+    "file": "fury_sunder__dwarf.json",
+    "dps": 964.6865764984062,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9709,6 +9850,11 @@
           "AdditionalPercent": -9.5
         },
         {
+          "Action": "{SpellID: 1310222}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.5
+        },
+        {
           "Action": "{SpellID: 11567}",
           "Kind": "physical-special",
           "AdditionalPercent": -9.5
@@ -9728,86 +9874,10 @@
     }
   },
   {
-    "build": "Fury (Sunder)",
-    "race": "Dwarf",
-    "file": "fury_sunder__dwarf.json",
-    "dps": 931.7002206992606,
-    "hitAdjustment": {
-      "MeleeAdded": 0,
-      "SpellAdded": 0,
-      "MeleeFinal": 18.5,
-      "SpellFinal": 18.5,
-      "Model": "equipped-only-v2",
-      "RatingPerPercent": 10,
-      "RawHitDelta": 0,
-      "OffensiveBudgetBefore": 0,
-      "Balance": 0,
-      "Entries": null,
-      "Requirements": [
-        {
-          "Action": "{ItemID: 10646}",
-          "Kind": "spell",
-          "AdditionalPercent": -102.5
-        },
-        {
-          "Action": "{SpellID: 23894}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -10.5
-        },
-        {
-          "Action": "{SpellID: 20662}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -10.5
-        },
-        {
-          "Action": "{SpellID: 11585}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -10.5
-        },
-        {
-          "Action": "{SpellID: 1680, Tag: 2}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -20.5
-        },
-        {
-          "Action": "{SpellID: 1680}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -10.5
-        },
-        {
-          "Action": "{SpellID: 11574}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -10.5
-        },
-        {
-          "Action": "{SpellID: 7373}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -10.5
-        },
-        {
-          "Action": "{SpellID: 11567}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -10.5
-        },
-        {
-          "Action": "{OtherID: 7, Tag: 1}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -10.5
-        },
-        {
-          "Action": "{OtherID: 7, Tag: 2}",
-          "Kind": "physical-special",
-          "AdditionalPercent": -20.5
-        }
-      ],
-      "Exclusions": null
-    }
-  },
-  {
     "build": "Fury",
     "race": "Night Elf",
     "file": "fury__night_elf.json",
-    "dps": 986.3435656485543,
+    "dps": 1006.6054508905038,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9861,6 +9931,11 @@
           "AdditionalPercent": -8.8
         },
         {
+          "Action": "{SpellID: 1310222}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.8
+        },
+        {
           "Action": "{SpellID: 11567}",
           "Kind": "physical-special",
           "AdditionalPercent": -8.8
@@ -9883,7 +9958,7 @@
     "build": "Fury (Sunder)",
     "race": "Night Elf",
     "file": "fury_sunder__night_elf.json",
-    "dps": 940.6422122670375,
+    "dps": 971.6153351995835,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -9937,6 +10012,11 @@
           "AdditionalPercent": -9.8
         },
         {
+          "Action": "{SpellID: 1310222}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.8
+        },
+        {
           "Action": "{SpellID: 11567}",
           "Kind": "physical-special",
           "AdditionalPercent": -9.8
@@ -9959,7 +10039,7 @@
     "build": "Fury",
     "race": "Gnome",
     "file": "fury__gnome.json",
-    "dps": 989.368550888888,
+    "dps": 1007.2764540181599,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -10013,6 +10093,11 @@
           "AdditionalPercent": -8.8
         },
         {
+          "Action": "{SpellID: 1310222}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.8
+        },
+        {
           "Action": "{SpellID: 11567}",
           "Kind": "physical-special",
           "AdditionalPercent": -8.8
@@ -10035,7 +10120,7 @@
     "build": "Fury (Sunder)",
     "race": "Gnome",
     "file": "fury_sunder__gnome.json",
-    "dps": 941.1212089442948,
+    "dps": 970.6457817565616,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -10089,6 +10174,11 @@
           "AdditionalPercent": -9
         },
         {
+          "Action": "{SpellID: 1310222}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9
+        },
+        {
           "Action": "{SpellID: 11567}",
           "Kind": "physical-special",
           "AdditionalPercent": -9
@@ -10111,7 +10201,7 @@
     "build": "Fury",
     "race": "High Order",
     "file": "fury__high_order.json",
-    "dps": 997.2014828591751,
+    "dps": 1015.6295530603098,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -10165,6 +10255,11 @@
           "AdditionalPercent": -8.8
         },
         {
+          "Action": "{SpellID: 1310222}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -8.8
+        },
+        {
           "Action": "{SpellID: 11567}",
           "Kind": "physical-special",
           "AdditionalPercent": -8.8
@@ -10187,7 +10282,7 @@
     "build": "Fury (Sunder)",
     "race": "High Order",
     "file": "fury_sunder__high_order.json",
-    "dps": 950.7906252431595,
+    "dps": 978.533510819374,
     "hitAdjustment": {
       "MeleeAdded": 0,
       "SpellAdded": 0,
@@ -10237,6 +10332,11 @@
         },
         {
           "Action": "{SpellID: 7373}",
+          "Kind": "physical-special",
+          "AdditionalPercent": -9.100000000000001
+        },
+        {
+          "Action": "{SpellID: 1310222}",
           "Kind": "physical-special",
           "AdditionalPercent": -9.100000000000001
         },
