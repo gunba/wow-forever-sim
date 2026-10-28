@@ -15,7 +15,7 @@ assert.equal(bundle.profiles.filter(profile => !profile.learned).length, results
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined });
 const routes = {
 	balance: 'balance_druid', feral: 'feral_druid', elemental: 'elemental_shaman', stormcaller: 'elemental_shaman',
-	enhancement: 'enhancement_shaman', beast_mastery: 'hunter', marksmanship: 'hunter', survival: 'hunter', pet_melee: 'hunter', survival_weave: 'hunter',
+	enhancement: 'enhancement_shaman', beast_mastery: 'hunter', marksmanship: 'hunter', marksmanship_ranged: 'hunter', survival: 'hunter', pet_melee: 'hunter', survival_weave: 'hunter',
 	arcane: 'mage', fire: 'mage', frost: 'mage', arcane_frost: 'mage', frostfire: 'mage', retribution: 'retribution_paladin',
 	retribution_physical: 'retribution_paladin', shockadin: 'retribution_paladin', shadow: 'shadow_priest', smite: 'smite_priest',
 	combat: 'rogue', mutilate: 'rogue', subtlety: 'rogue', demonology: 'warlock', affliction: 'warlock',

@@ -119,6 +119,8 @@ func requestForBuild(b build, player *proto.Player, count int, rng int64) *proto
 		// 1.60.1.70425 both totems are raid-wide and Grace of Air is no longer exclusive with
 		// Windfury, so the melee groups take both from the raid's Shamans.
 		req.Raid.Parties[0].Buffs.WindfuryTotem = true
+	case "marksmanship_ranged":
+		// A ranged Hunter takes Grace of Air's Agility; it never swings, so no Windfury.
 	default:
 		// Casters do not get an irrelevant Agility totem.
 		req.Raid.Buffs.GraceOfAirTotem = proto.TristateEffect_TristateEffectMissing

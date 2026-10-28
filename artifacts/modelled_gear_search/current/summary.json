@@ -1,13 +1,13 @@
 {
   "scenario": "modeled-65-v2",
   "searchManifest": {
-    "inputsSHA256": "c939f2a1a835c1ba3982996e9905b6ab5ee55fe75ce96a57f669f45e789417b1",
+    "inputsSHA256": "9b0bf99858974bdac6c204c5badbc87831e18158a22b645514b1cdba7137c658",
     "settings": {
       "screen": 100,
       "validate": 2000,
       "passes": 5,
       "iterations": 5000,
-      "seed": 20260954,
+      "seed": 20261028,
       "modeled_only": true
     },
     "jobs": [
@@ -168,6 +168,38 @@
         "High Order"
       ],
       [
+        "marksmanship_ranged",
+        "Orc"
+      ],
+      [
+        "marksmanship_ranged",
+        "Tauren"
+      ],
+      [
+        "marksmanship_ranged",
+        "Troll"
+      ],
+      [
+        "marksmanship_ranged",
+        "Windshaper"
+      ],
+      [
+        "marksmanship_ranged",
+        "Human"
+      ],
+      [
+        "marksmanship_ranged",
+        "Dwarf"
+      ],
+      [
+        "marksmanship_ranged",
+        "Night Elf"
+      ],
+      [
+        "marksmanship_ranged",
+        "High Order"
+      ],
+      [
         "survival",
         "Orc"
       ],
@@ -745,206 +777,299 @@
       ],
       [
         "retribution_physical",
+        "Dwarf"
+      ],
+      [
+        "survival_weave",
+        "Orc"
+      ],
+      [
+        "survival_weave",
+        "Tauren"
+      ],
+      [
+        "survival_weave",
+        "Troll"
+      ],
+      [
+        "survival_weave",
+        "Windshaper"
+      ],
+      [
+        "survival_weave",
+        "Human"
+      ],
+      [
+        "survival_weave",
+        "Dwarf"
+      ],
+      [
+        "survival_weave",
+        "Night Elf"
+      ],
+      [
+        "survival_weave",
+        "High Order"
+      ],
+      [
+        "frostfire",
+        "Orc"
+      ],
+      [
+        "frostfire",
+        "Troll"
+      ],
+      [
+        "frostfire",
+        "Undead"
+      ],
+      [
+        "frostfire",
+        "Human"
+      ],
+      [
+        "frostfire",
+        "Gnome"
+      ],
+      [
+        "frostfire",
+        "High Order"
+      ],
+      [
+        "shockadin",
+        "Undead"
+      ],
+      [
+        "shockadin",
+        "Human"
+      ],
+      [
+        "shockadin",
         "Dwarf"
       ]
     ]
   },
   "confirmationManifest": {
-    "inputsSHA256": "b0f22743896a15b0e45f2c21b0af24e4e3cb6891eab7268c754000240415e4c8",
-    "seed": 20260955,
+    "inputsSHA256": "1ad2d5665205cc9eddf0a5ba9c907dbcec48005b2468b8904bcb07bd14be8690",
+    "seed": 30296071,
     "iterations": 5000,
     "naturalHit": true
   },
   "searchSummary": {
-    "completed": 184,
-    "requested": 184,
+    "completed": 209,
+    "requested": 209,
     "failures": [],
     "unconverged": [],
     "reports": [
-      "balance__tauren.balance.tauren.gear-search.json",
-      "balance__windshaper.balance.windshaper.gear-search.json",
-      "balance__night_elf.balance.night-elf.gear-search.json",
-      "balance__high_order.balance.high-order.gear-search.json",
-      "feral__tauren.feral.tauren.gear-search.json",
-      "feral__windshaper.feral.windshaper.gear-search.json",
-      "feral__night_elf.feral.night-elf.gear-search.json",
-      "feral__high_order.feral.high-order.gear-search.json",
-      "elemental__orc.elemental.orc.gear-search.json",
-      "elemental__tauren.elemental.tauren.gear-search.json",
-      "elemental__troll.elemental.troll.gear-search.json",
-      "elemental__windshaper.elemental.windshaper.gear-search.json",
-      "elemental__dwarf.elemental.dwarf.gear-search.json",
-      "stormcaller__orc.stormcaller.orc.gear-search.json",
-      "stormcaller__tauren.stormcaller.tauren.gear-search.json",
-      "stormcaller__troll.stormcaller.troll.gear-search.json",
-      "stormcaller__windshaper.stormcaller.windshaper.gear-search.json",
-      "stormcaller__dwarf.stormcaller.dwarf.gear-search.json",
-      "enhancement__orc.enhancement.orc.gear-search.json",
-      "enhancement__tauren.enhancement.tauren.gear-search.json",
-      "enhancement__troll.enhancement.troll.gear-search.json",
-      "enhancement__windshaper.enhancement.windshaper.gear-search.json",
-      "enhancement__dwarf.enhancement.dwarf.gear-search.json",
-      "beast_mastery__orc.beast_mastery.orc.gear-search.json",
-      "beast_mastery__tauren.beast_mastery.tauren.gear-search.json",
-      "beast_mastery__troll.beast_mastery.troll.gear-search.json",
-      "beast_mastery__windshaper.beast_mastery.windshaper.gear-search.json",
-      "beast_mastery__human.beast_mastery.human.gear-search.json",
-      "beast_mastery__dwarf.beast_mastery.dwarf.gear-search.json",
-      "beast_mastery__night_elf.beast_mastery.night-elf.gear-search.json",
-      "beast_mastery__high_order.beast_mastery.high-order.gear-search.json",
-      "marksmanship__orc.marksmanship.orc.gear-search.json",
-      "marksmanship__tauren.marksmanship.tauren.gear-search.json",
-      "marksmanship__troll.marksmanship.troll.gear-search.json",
-      "marksmanship__windshaper.marksmanship.windshaper.gear-search.json",
-      "marksmanship__human.marksmanship.human.gear-search.json",
-      "marksmanship__dwarf.marksmanship.dwarf.gear-search.json",
-      "marksmanship__night_elf.marksmanship.night-elf.gear-search.json",
-      "marksmanship__high_order.marksmanship.high-order.gear-search.json",
-      "survival__orc.survival.orc.gear-search.json",
-      "survival__tauren.survival.tauren.gear-search.json",
-      "survival__troll.survival.troll.gear-search.json",
-      "survival__windshaper.survival.windshaper.gear-search.json",
-      "survival__human.survival.human.gear-search.json",
-      "survival__dwarf.survival.dwarf.gear-search.json",
-      "survival__night_elf.survival.night-elf.gear-search.json",
-      "survival__high_order.survival.high-order.gear-search.json",
-      "arcane__orc.arcane.orc.gear-search.json",
-      "arcane__troll.arcane.troll.gear-search.json",
-      "arcane__undead.arcane.undead.gear-search.json",
-      "arcane__human.arcane.human.gear-search.json",
-      "arcane__gnome.arcane.gnome.gear-search.json",
-      "arcane__high_order.arcane.high-order.gear-search.json",
-      "fire__orc.fire.orc.gear-search.json",
-      "fire__troll.fire.troll.gear-search.json",
-      "fire__undead.fire.undead.gear-search.json",
-      "fire__human.fire.human.gear-search.json",
-      "fire__gnome.fire.gnome.gear-search.json",
-      "fire__high_order.fire.high-order.gear-search.json",
-      "frost__orc.frost.orc.gear-search.json",
-      "frost__troll.frost.troll.gear-search.json",
-      "frost__undead.frost.undead.gear-search.json",
-      "frost__human.frost.human.gear-search.json",
-      "frost__gnome.frost.gnome.gear-search.json",
-      "frost__high_order.frost.high-order.gear-search.json",
-      "retribution__undead.retribution.undead.gear-search.json",
-      "retribution__human.retribution.human.gear-search.json",
-      "retribution__dwarf.retribution.dwarf.gear-search.json",
-      "shadow__troll.shadow.troll.gear-search.json",
-      "shadow__undead.shadow.undead.gear-search.json",
-      "shadow__human.shadow.human.gear-search.json",
-      "shadow__dwarf.shadow.dwarf.gear-search.json",
-      "shadow__night_elf.shadow.night-elf.gear-search.json",
-      "shadow__gnome.shadow.gnome.gear-search.json",
-      "smite__troll.smite.troll.gear-search.json",
-      "smite__undead.smite.undead.gear-search.json",
-      "smite__human.smite.human.gear-search.json",
-      "smite__dwarf.smite.dwarf.gear-search.json",
-      "smite__night_elf.smite.night-elf.gear-search.json",
-      "smite__gnome.smite.gnome.gear-search.json",
-      "combat__orc.combat.orc.gear-search.json",
-      "combat__troll.combat.troll.gear-search.json",
-      "combat__undead.combat.undead.gear-search.json",
-      "combat__windshaper.combat.windshaper.gear-search.json",
-      "combat__human.combat.human.gear-search.json",
-      "combat__dwarf.combat.dwarf.gear-search.json",
-      "combat__night_elf.combat.night-elf.gear-search.json",
-      "combat__gnome.combat.gnome.gear-search.json",
-      "combat__high_order.combat.high-order.gear-search.json",
-      "mutilate__orc.mutilate.orc.gear-search.json",
-      "mutilate__troll.mutilate.troll.gear-search.json",
-      "mutilate__undead.mutilate.undead.gear-search.json",
-      "mutilate__windshaper.mutilate.windshaper.gear-search.json",
-      "mutilate__human.mutilate.human.gear-search.json",
-      "mutilate__dwarf.mutilate.dwarf.gear-search.json",
-      "mutilate__night_elf.mutilate.night-elf.gear-search.json",
-      "mutilate__gnome.mutilate.gnome.gear-search.json",
-      "mutilate__high_order.mutilate.high-order.gear-search.json",
-      "subtlety__orc.subtlety.orc.gear-search.json",
-      "subtlety__troll.subtlety.troll.gear-search.json",
-      "subtlety__undead.subtlety.undead.gear-search.json",
-      "subtlety__windshaper.subtlety.windshaper.gear-search.json",
-      "subtlety__human.subtlety.human.gear-search.json",
-      "subtlety__dwarf.subtlety.dwarf.gear-search.json",
-      "subtlety__night_elf.subtlety.night-elf.gear-search.json",
-      "subtlety__gnome.subtlety.gnome.gear-search.json",
-      "subtlety__high_order.subtlety.high-order.gear-search.json",
-      "demonology__orc.demonology.orc.gear-search.json",
-      "demonology__troll.demonology.troll.gear-search.json",
-      "demonology__undead.demonology.undead.gear-search.json",
-      "demonology__human.demonology.human.gear-search.json",
-      "demonology__gnome.demonology.gnome.gear-search.json",
-      "affliction__orc.affliction.orc.gear-search.json",
-      "affliction__troll.affliction.troll.gear-search.json",
-      "affliction__undead.affliction.undead.gear-search.json",
-      "affliction__human.affliction.human.gear-search.json",
-      "affliction__gnome.affliction.gnome.gear-search.json",
-      "ds_ruin__orc.ds_ruin.orc.gear-search.json",
-      "ds_ruin__troll.ds_ruin.troll.gear-search.json",
-      "ds_ruin__undead.ds_ruin.undead.gear-search.json",
-      "ds_ruin__human.ds_ruin.human.gear-search.json",
-      "ds_ruin__gnome.ds_ruin.gnome.gear-search.json",
-      "destruction__orc.destruction.orc.gear-search.json",
-      "destruction__troll.destruction.troll.gear-search.json",
-      "destruction__undead.destruction.undead.gear-search.json",
-      "destruction__human.destruction.human.gear-search.json",
-      "destruction__gnome.destruction.gnome.gear-search.json",
-      "fury__orc.fury.orc.gear-search.json",
-      "fury_sunder__orc.fury_sunder.orc.gear-search.json",
-      "fury__tauren.fury.tauren.gear-search.json",
-      "fury_sunder__tauren.fury_sunder.tauren.gear-search.json",
-      "fury__troll.fury.troll.gear-search.json",
-      "fury_sunder__troll.fury_sunder.troll.gear-search.json",
-      "fury__undead.fury.undead.gear-search.json",
-      "fury_sunder__undead.fury_sunder.undead.gear-search.json",
-      "fury__windshaper.fury.windshaper.gear-search.json",
-      "fury_sunder__windshaper.fury_sunder.windshaper.gear-search.json",
-      "fury__human.fury.human.gear-search.json",
-      "fury_sunder__human.fury_sunder.human.gear-search.json",
-      "fury__dwarf.fury.dwarf.gear-search.json",
-      "fury_sunder__dwarf.fury_sunder.dwarf.gear-search.json",
-      "fury__night_elf.fury.night-elf.gear-search.json",
-      "fury_sunder__night_elf.fury_sunder.night-elf.gear-search.json",
-      "fury__gnome.fury.gnome.gear-search.json",
-      "fury_sunder__gnome.fury_sunder.gnome.gear-search.json",
-      "fury__high_order.fury.high-order.gear-search.json",
-      "fury_sunder__high_order.fury_sunder.high-order.gear-search.json",
-      "arms__orc.arms.orc.gear-search.json",
-      "arms__tauren.arms.tauren.gear-search.json",
-      "arms__troll.arms.troll.gear-search.json",
-      "arms__undead.arms.undead.gear-search.json",
-      "arms__windshaper.arms.windshaper.gear-search.json",
-      "arms__human.arms.human.gear-search.json",
-      "arms__dwarf.arms.dwarf.gear-search.json",
-      "arms__night_elf.arms.night-elf.gear-search.json",
-      "arms__gnome.arms.gnome.gear-search.json",
-      "arms__high_order.arms.high-order.gear-search.json",
-      "pet_melee__tauren.pet_melee.tauren.gear-search.json",
-      "pet_melee__windshaper.pet_melee.windshaper.gear-search.json",
-      "pet_melee__orc.pet_melee.orc.gear-search.json",
-      "pet_melee__human.pet_melee.human.gear-search.json",
-      "pet_melee__night_elf.pet_melee.night-elf.gear-search.json",
-      "pet_melee__dwarf.pet_melee.dwarf.gear-search.json",
-      "pet_melee__troll.pet_melee.troll.gear-search.json",
-      "pet_melee__high_order.pet_melee.high-order.gear-search.json",
-      "arcane_frost__orc.arcane_frost.orc.gear-search.json",
-      "arcane_frost__troll.arcane_frost.troll.gear-search.json",
-      "arcane_frost__undead.arcane_frost.undead.gear-search.json",
-      "arcane_frost__human.arcane_frost.human.gear-search.json",
-      "arcane_frost__gnome.arcane_frost.gnome.gear-search.json",
-      "arcane_frost__high_order.arcane_frost.high-order.gear-search.json",
-      "fury_2h__orc.fury_2h.orc.gear-search.json",
-      "fury_2h__tauren.fury_2h.tauren.gear-search.json",
-      "fury_2h__undead.fury_2h.undead.gear-search.json",
-      "fury_2h__troll.fury_2h.troll.gear-search.json",
-      "fury_2h__windshaper.fury_2h.windshaper.gear-search.json",
-      "fury_2h__human.fury_2h.human.gear-search.json",
-      "fury_2h__dwarf.fury_2h.dwarf.gear-search.json",
-      "fury_2h__gnome.fury_2h.gnome.gear-search.json",
-      "fury_2h__night_elf.fury_2h.night-elf.gear-search.json",
-      "fury_2h__high_order.fury_2h.high-order.gear-search.json",
-      "retribution_physical__undead.retribution_physical.undead.gear-search.json",
-      "retribution_physical__human.retribution_physical.human.gear-search.json",
-      "retribution_physical__dwarf.retribution_physical.dwarf.gear-search.json"
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/balance__tauren.balance.tauren.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/balance__windshaper.balance.windshaper.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/balance__night_elf.balance.night-elf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/balance__high_order.balance.high-order.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/feral__tauren.feral.tauren.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/feral__windshaper.feral.windshaper.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/feral__night_elf.feral.night-elf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/feral__high_order.feral.high-order.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/elemental__orc.elemental.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/elemental__tauren.elemental.tauren.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/elemental__troll.elemental.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/elemental__windshaper.elemental.windshaper.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/elemental__dwarf.elemental.dwarf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/stormcaller__orc.stormcaller.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/stormcaller__tauren.stormcaller.tauren.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/stormcaller__troll.stormcaller.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/stormcaller__windshaper.stormcaller.windshaper.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/stormcaller__dwarf.stormcaller.dwarf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/enhancement__orc.enhancement.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/enhancement__tauren.enhancement.tauren.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/enhancement__troll.enhancement.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/enhancement__windshaper.enhancement.windshaper.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/enhancement__dwarf.enhancement.dwarf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/beast_mastery__orc.beast_mastery.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/beast_mastery__tauren.beast_mastery.tauren.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/beast_mastery__troll.beast_mastery.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/beast_mastery__windshaper.beast_mastery.windshaper.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/beast_mastery__human.beast_mastery.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/beast_mastery__dwarf.beast_mastery.dwarf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/beast_mastery__night_elf.beast_mastery.night-elf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/beast_mastery__high_order.beast_mastery.high-order.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/marksmanship__orc.marksmanship.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/marksmanship__tauren.marksmanship.tauren.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/marksmanship__troll.marksmanship.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/marksmanship__windshaper.marksmanship.windshaper.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/marksmanship__human.marksmanship.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/marksmanship__dwarf.marksmanship.dwarf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/marksmanship__night_elf.marksmanship.night-elf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/marksmanship__high_order.marksmanship.high-order.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/marksmanship_ranged__orc.marksmanship_ranged.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/marksmanship_ranged__tauren.marksmanship_ranged.tauren.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/marksmanship_ranged__troll.marksmanship_ranged.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/marksmanship_ranged__windshaper.marksmanship_ranged.windshaper.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/marksmanship_ranged__human.marksmanship_ranged.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/marksmanship_ranged__dwarf.marksmanship_ranged.dwarf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/marksmanship_ranged__night_elf.marksmanship_ranged.night-elf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/marksmanship_ranged__high_order.marksmanship_ranged.high-order.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/survival__orc.survival.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/survival__tauren.survival.tauren.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/survival__troll.survival.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/survival__windshaper.survival.windshaper.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/survival__human.survival.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/survival__dwarf.survival.dwarf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/survival__night_elf.survival.night-elf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/survival__high_order.survival.high-order.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arcane__orc.arcane.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arcane__troll.arcane.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arcane__undead.arcane.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arcane__human.arcane.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arcane__gnome.arcane.gnome.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arcane__high_order.arcane.high-order.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fire__orc.fire.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fire__troll.fire.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fire__undead.fire.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fire__human.fire.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fire__gnome.fire.gnome.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fire__high_order.fire.high-order.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/frost__orc.frost.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/frost__troll.frost.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/frost__undead.frost.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/frost__human.frost.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/frost__gnome.frost.gnome.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/frost__high_order.frost.high-order.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/retribution__undead.retribution.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/retribution__human.retribution.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/retribution__dwarf.retribution.dwarf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/shadow__troll.shadow.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/shadow__undead.shadow.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/shadow__human.shadow.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/shadow__dwarf.shadow.dwarf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/shadow__night_elf.shadow.night-elf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/shadow__gnome.shadow.gnome.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/smite__troll.smite.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/smite__undead.smite.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/smite__human.smite.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/smite__dwarf.smite.dwarf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/smite__night_elf.smite.night-elf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/smite__gnome.smite.gnome.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/combat__orc.combat.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/combat__troll.combat.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/combat__undead.combat.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/combat__windshaper.combat.windshaper.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/combat__human.combat.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/combat__dwarf.combat.dwarf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/combat__night_elf.combat.night-elf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/combat__gnome.combat.gnome.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/combat__high_order.combat.high-order.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/mutilate__orc.mutilate.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/mutilate__troll.mutilate.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/mutilate__undead.mutilate.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/mutilate__windshaper.mutilate.windshaper.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/mutilate__human.mutilate.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/mutilate__dwarf.mutilate.dwarf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/mutilate__night_elf.mutilate.night-elf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/mutilate__gnome.mutilate.gnome.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/mutilate__high_order.mutilate.high-order.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/subtlety__orc.subtlety.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/subtlety__troll.subtlety.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/subtlety__undead.subtlety.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/subtlety__windshaper.subtlety.windshaper.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/subtlety__human.subtlety.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/subtlety__dwarf.subtlety.dwarf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/subtlety__night_elf.subtlety.night-elf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/subtlety__gnome.subtlety.gnome.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/subtlety__high_order.subtlety.high-order.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/demonology__orc.demonology.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/demonology__troll.demonology.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/demonology__undead.demonology.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/demonology__human.demonology.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/demonology__gnome.demonology.gnome.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/affliction__orc.affliction.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/affliction__troll.affliction.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/affliction__undead.affliction.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/affliction__human.affliction.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/affliction__gnome.affliction.gnome.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/ds_ruin__orc.ds_ruin.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/ds_ruin__troll.ds_ruin.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/ds_ruin__undead.ds_ruin.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/ds_ruin__human.ds_ruin.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/ds_ruin__gnome.ds_ruin.gnome.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/destruction__orc.destruction.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/destruction__troll.destruction.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/destruction__undead.destruction.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/destruction__human.destruction.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/destruction__gnome.destruction.gnome.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury__orc.fury.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury_sunder__orc.fury_sunder.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury__tauren.fury.tauren.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury_sunder__tauren.fury_sunder.tauren.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury__troll.fury.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury_sunder__troll.fury_sunder.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury__undead.fury.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury_sunder__undead.fury_sunder.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury__windshaper.fury.windshaper.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury_sunder__windshaper.fury_sunder.windshaper.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury__human.fury.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury_sunder__human.fury_sunder.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury__dwarf.fury.dwarf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury_sunder__dwarf.fury_sunder.dwarf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury__night_elf.fury.night-elf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury_sunder__night_elf.fury_sunder.night-elf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury__gnome.fury.gnome.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury_sunder__gnome.fury_sunder.gnome.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury__high_order.fury.high-order.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury_sunder__high_order.fury_sunder.high-order.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arms__orc.arms.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arms__tauren.arms.tauren.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arms__troll.arms.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arms__undead.arms.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arms__windshaper.arms.windshaper.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arms__human.arms.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arms__dwarf.arms.dwarf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arms__night_elf.arms.night-elf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arms__gnome.arms.gnome.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arms__high_order.arms.high-order.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/pet_melee__tauren.pet_melee.tauren.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/pet_melee__windshaper.pet_melee.windshaper.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/pet_melee__orc.pet_melee.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/pet_melee__human.pet_melee.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/pet_melee__night_elf.pet_melee.night-elf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/pet_melee__dwarf.pet_melee.dwarf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/pet_melee__troll.pet_melee.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/pet_melee__high_order.pet_melee.high-order.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arcane_frost__orc.arcane_frost.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arcane_frost__troll.arcane_frost.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arcane_frost__undead.arcane_frost.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arcane_frost__human.arcane_frost.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arcane_frost__gnome.arcane_frost.gnome.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/arcane_frost__high_order.arcane_frost.high-order.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury_2h__orc.fury_2h.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury_2h__tauren.fury_2h.tauren.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury_2h__undead.fury_2h.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury_2h__troll.fury_2h.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury_2h__windshaper.fury_2h.windshaper.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury_2h__human.fury_2h.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury_2h__dwarf.fury_2h.dwarf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury_2h__gnome.fury_2h.gnome.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury_2h__night_elf.fury_2h.night-elf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/fury_2h__high_order.fury_2h.high-order.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/retribution_physical__undead.retribution_physical.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/retribution_physical__human.retribution_physical.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/retribution_physical__dwarf.retribution_physical.dwarf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/survival_weave__orc.survival_weave.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/survival_weave__tauren.survival_weave.tauren.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/survival_weave__troll.survival_weave.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/survival_weave__windshaper.survival_weave.windshaper.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/survival_weave__human.survival_weave.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/survival_weave__dwarf.survival_weave.dwarf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/survival_weave__night_elf.survival_weave.night-elf.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/survival_weave__high_order.survival_weave.high-order.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/frostfire__orc.frostfire.orc.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/frostfire__troll.frostfire.troll.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/frostfire__undead.frostfire.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/frostfire__human.frostfire.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/frostfire__gnome.frostfire.gnome.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/frostfire__high_order.frostfire.high-order.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/shockadin__undead.shockadin.undead.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/shockadin__human.shockadin.human.gear-search.json",
+      "/home/jordan/.cache/forever-sim-audit/oct28/gear_all/shockadin__dwarf.shockadin.dwarf.gear-search.json"
     ],
     "followupReports": []
   },
@@ -992,12 +1117,22 @@
     {
       "Key": "elemental",
       "Race": "Orc",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 654.7515996072691,
+      "CandidateDPS": 656.1247295246598,
+      "GainDPS": 1.3731299173906564,
+      "GainPercent": 0.20971768808419597,
+      "Conservative95BoundDPS": 0.7066295812911505
     },
     {
       "Key": "elemental",
       "Race": "Tauren",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 648.354803381081,
+      "CandidateDPS": 649.5725110388041,
+      "GainDPS": 1.2177076577231674,
+      "GainPercent": 0.18781501291777122,
+      "Conservative95BoundDPS": 0.70096858343936
     },
     {
       "Key": "elemental",
@@ -1012,32 +1147,62 @@
     {
       "Key": "elemental",
       "Race": "Dwarf",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 652.93961202741,
+      "CandidateDPS": 654.0184042371809,
+      "GainDPS": 1.0787922097708815,
+      "GainPercent": 0.16522082439158164,
+      "Conservative95BoundDPS": 0.678241021387528
     },
     {
       "Key": "stormcaller",
       "Race": "Orc",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 638.525284503872,
+      "CandidateDPS": 658.7909101258178,
+      "GainDPS": 20.2656256219459,
+      "GainPercent": 3.173817249491083,
+      "Conservative95BoundDPS": 0.6648390741721869
     },
     {
       "Key": "stormcaller",
       "Race": "Tauren",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 635.448224898106,
+      "CandidateDPS": 644.4268392807413,
+      "GainDPS": 8.978614382635328,
+      "GainPercent": 1.4129576621407742,
+      "Conservative95BoundDPS": 0.6544979564745768
     },
     {
       "Key": "stormcaller",
       "Race": "Troll",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 626.1229078292512,
+      "CandidateDPS": 654.7832438197299,
+      "GainDPS": 28.660335990478757,
+      "GainPercent": 4.577429707825778,
+      "Conservative95BoundDPS": 0.6541163869637282
     },
     {
       "Key": "stormcaller",
       "Race": "Windshaper",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 634.5053534619302,
+      "CandidateDPS": 654.2696060791245,
+      "GainDPS": 19.764252617194302,
+      "GainPercent": 3.1149071492239413,
+      "Conservative95BoundDPS": 0.6504441979883318
     },
     {
       "Key": "stormcaller",
       "Race": "Dwarf",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 636.935893356829,
+      "CandidateDPS": 655.5032572184484,
+      "GainDPS": 18.56736386161947,
+      "GainPercent": 2.9151071646730893,
+      "Conservative95BoundDPS": 0.6372040894393749
     },
     {
       "Key": "enhancement",
@@ -1052,27 +1217,52 @@
     {
       "Key": "enhancement",
       "Race": "Troll",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 818.6770815700436,
+      "CandidateDPS": 822.6291542193055,
+      "GainDPS": 3.952072649261936,
+      "GainPercent": 0.48273888914573315,
+      "Conservative95BoundDPS": 1.5290081952046988
     },
     {
       "Key": "enhancement",
       "Race": "Windshaper",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 828.185318843282,
+      "CandidateDPS": 830.5880537783833,
+      "GainDPS": 2.402734935101307,
+      "GainPercent": 0.29012044531979664,
+      "Conservative95BoundDPS": 1.5482810203908446
     },
     {
       "Key": "enhancement",
       "Race": "Dwarf",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 819.9313494069067,
+      "CandidateDPS": 823.9277114811814,
+      "GainDPS": 3.996362074274657,
+      "GainPercent": 0.4874020339831384,
+      "Conservative95BoundDPS": 1.550126372999955
     },
     {
       "Key": "beast_mastery",
       "Race": "Orc",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 1200.4154108884502,
+      "CandidateDPS": 1201.6338011131584,
+      "GainDPS": 1.2183902247081733,
+      "GainPercent": 0.10149738279404623,
+      "Conservative95BoundDPS": 0.8985812646216147
     },
     {
       "Key": "beast_mastery",
       "Race": "Tauren",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 1173.8084279287937,
+      "CandidateDPS": 1176.495484300874,
+      "GainDPS": 2.6870563720804057,
+      "GainPercent": 0.22891779511429863,
+      "Conservative95BoundDPS": 0.8905831598327553
     },
     {
       "Key": "beast_mastery",
@@ -1082,112 +1272,207 @@
     {
       "Key": "beast_mastery",
       "Race": "Windshaper",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 1190.2546195765935,
+      "CandidateDPS": 1193.2436684559739,
+      "GainDPS": 2.9890488793803343,
+      "GainPercent": 0.2511268454848444,
+      "Conservative95BoundDPS": 0.9154892249194618
     },
     {
       "Key": "beast_mastery",
-      "Race": "Human",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "beast_mastery",
-      "Race": "Dwarf",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "beast_mastery",
-      "Race": "Night Elf",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "beast_mastery",
-      "Race": "High Order",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "marksmanship",
-      "Race": "Orc",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "marksmanship",
-      "Race": "Tauren",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "marksmanship",
-      "Race": "Troll",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "marksmanship",
-      "Race": "Windshaper",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "marksmanship",
       "Race": "Human",
       "Decision": "retain",
-      "BaselineDPS": 829.081715851205,
-      "CandidateDPS": 830.8783058698433,
-      "GainDPS": 1.7965900186383124,
-      "GainPercent": 0.21669637434879166,
-      "Conservative95BoundDPS": 1.0763335083815806
+      "BaselineDPS": 1192.5900381739762,
+      "CandidateDPS": 1193.6430142516951,
+      "GainDPS": 1.052976077718995,
+      "GainPercent": 0.08829321426592243,
+      "Conservative95BoundDPS": 0.8803053098668251
     },
     {
-      "Key": "marksmanship",
+      "Key": "beast_mastery",
       "Race": "Dwarf",
       "Decision": "unchanged"
     },
     {
-      "Key": "marksmanship",
+      "Key": "beast_mastery",
       "Race": "Night Elf",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 1194.7054908842317,
+      "CandidateDPS": 1195.9857341245433,
+      "GainDPS": 1.28024324031162,
+      "GainPercent": 0.1071597351882998,
+      "Conservative95BoundDPS": 0.8932167910298547
+    },
+    {
+      "Key": "beast_mastery",
+      "Race": "High Order",
+      "Decision": "retain",
+      "BaselineDPS": 1190.2546195765935,
+      "CandidateDPS": 1193.2436684559739,
+      "GainDPS": 2.9890488793803343,
+      "GainPercent": 0.2511268454848444,
+      "Conservative95BoundDPS": 0.9154892249194618
     },
     {
       "Key": "marksmanship",
-      "Race": "High Order",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "survival",
       "Race": "Orc",
       "Decision": "unchanged"
     },
     {
-      "Key": "survival",
+      "Key": "marksmanship",
       "Race": "Tauren",
       "Decision": "unchanged"
     },
     {
-      "Key": "survival",
+      "Key": "marksmanship",
       "Race": "Troll",
       "Decision": "unchanged"
     },
     {
-      "Key": "survival",
+      "Key": "marksmanship",
       "Race": "Windshaper",
       "Decision": "unchanged"
     },
     {
-      "Key": "survival",
+      "Key": "marksmanship",
       "Race": "Human",
       "Decision": "unchanged"
     },
     {
-      "Key": "survival",
+      "Key": "marksmanship",
       "Race": "Dwarf",
       "Decision": "unchanged"
     },
     {
-      "Key": "survival",
+      "Key": "marksmanship",
       "Race": "Night Elf",
       "Decision": "unchanged"
     },
     {
+      "Key": "marksmanship",
+      "Race": "High Order",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "marksmanship_ranged",
+      "Race": "Orc",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "marksmanship_ranged",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "marksmanship_ranged",
+      "Race": "Troll",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "marksmanship_ranged",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "marksmanship_ranged",
+      "Race": "Human",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "marksmanship_ranged",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "marksmanship_ranged",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "marksmanship_ranged",
+      "Race": "High Order",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "survival",
+      "Race": "Orc",
+      "Decision": "retain",
+      "BaselineDPS": 1179.9967011390681,
+      "CandidateDPS": 1280.3974133327024,
+      "GainDPS": 100.40071219363426,
+      "GainPercent": 8.508558718572347,
+      "Conservative95BoundDPS": 1.0880323382668946
+    },
+    {
+      "Key": "survival",
+      "Race": "Tauren",
+      "Decision": "retain",
+      "BaselineDPS": 1160.1434761574092,
+      "CandidateDPS": 1259.4411649443996,
+      "GainDPS": 99.29768878699042,
+      "GainPercent": 8.559086942925466,
+      "Conservative95BoundDPS": 1.0752405024786955
+    },
+    {
+      "Key": "survival",
+      "Race": "Troll",
+      "Decision": "retain",
+      "BaselineDPS": 1167.203536201856,
+      "CandidateDPS": 1267.4396711584986,
+      "GainDPS": 100.23613495664267,
+      "GainPercent": 8.587716867515372,
+      "Conservative95BoundDPS": 1.0788974499660127
+    },
+    {
+      "Key": "survival",
+      "Race": "Windshaper",
+      "Decision": "retain",
+      "BaselineDPS": 1164.6297317088208,
+      "CandidateDPS": 1277.84053953403,
+      "GainDPS": 113.21080782520926,
+      "GainPercent": 9.720755424910797,
+      "Conservative95BoundDPS": 1.0802253190749385
+    },
+    {
+      "Key": "survival",
+      "Race": "Human",
+      "Decision": "retain",
+      "BaselineDPS": 1174.8321522963938,
+      "CandidateDPS": 1274.9196112888421,
+      "GainDPS": 100.08745899244832,
+      "GainPercent": 8.519298590595403,
+      "Conservative95BoundDPS": 1.0947003522551086
+    },
+    {
+      "Key": "survival",
+      "Race": "Dwarf",
+      "Decision": "retain",
+      "BaselineDPS": 1163.5294274097955,
+      "CandidateDPS": 1263.206274942897,
+      "GainDPS": 99.67684753310141,
+      "GainPercent": 8.566766356309369,
+      "Conservative95BoundDPS": 1.075320868468368
+    },
+    {
+      "Key": "survival",
+      "Race": "Night Elf",
+      "Decision": "retain",
+      "BaselineDPS": 1178.7875147990512,
+      "CandidateDPS": 1279.4931856203814,
+      "GainDPS": 100.70567082133016,
+      "GainPercent": 8.543157232073122,
+      "Conservative95BoundDPS": 1.100267232873757
+    },
+    {
       "Key": "survival",
       "Race": "High Order",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 1164.6297317088208,
+      "CandidateDPS": 1277.84053953403,
+      "GainDPS": 113.21080782520926,
+      "GainPercent": 9.720755424910797,
+      "Conservative95BoundDPS": 1.0802253190749385
     },
     {
       "Key": "arcane",
@@ -1207,7 +1492,12 @@
     {
       "Key": "arcane",
       "Race": "Human",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 848.0308682579632,
+      "CandidateDPS": 850.9843344665715,
+      "GainDPS": 2.9534662086082335,
+      "GainPercent": 0.3482734319182608,
+      "Conservative95BoundDPS": 1.3121399667662053
     },
     {
       "Key": "arcane",
@@ -1222,27 +1512,52 @@
     {
       "Key": "fire",
       "Race": "Orc",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 984.8275752831179,
+      "CandidateDPS": 988.8371535765757,
+      "GainDPS": 4.009578293457821,
+      "GainPercent": 0.4071350553222628,
+      "Conservative95BoundDPS": 1.3549408683186157
     },
     {
       "Key": "fire",
       "Race": "Troll",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 977.0607543772101,
+      "CandidateDPS": 986.4261058828449,
+      "GainDPS": 9.365351505634862,
+      "GainPercent": 0.9585229438065442,
+      "Conservative95BoundDPS": 1.3343026336656916
     },
     {
       "Key": "fire",
       "Race": "Undead",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 993.8863913584416,
+      "CandidateDPS": 999.6335388537727,
+      "GainDPS": 5.747147495331092,
+      "GainPercent": 0.578249943383962,
+      "Conservative95BoundDPS": 1.3424591786035005
     },
     {
       "Key": "fire",
       "Race": "Human",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 992.372986589796,
+      "CandidateDPS": 997.5098029545886,
+      "GainDPS": 5.136816364792594,
+      "GainPercent": 0.5176296044136408,
+      "Conservative95BoundDPS": 1.3697053808495272
     },
     {
       "Key": "fire",
       "Race": "Gnome",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 983.8100764098667,
+      "CandidateDPS": 991.8528760754261,
+      "GainDPS": 8.042799665559414,
+      "GainPercent": 0.8175154797061349,
+      "Conservative95BoundDPS": 1.3651037539453623
     },
     {
       "Key": "fire",
@@ -1262,7 +1577,12 @@
     {
       "Key": "frost",
       "Race": "Undead",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 602.7171041107729,
+      "CandidateDPS": 604.1768960521636,
+      "GainDPS": 1.4597919413906766,
+      "GainPercent": 0.2422018441876477,
+      "Conservative95BoundDPS": 0.9199859302800117
     },
     {
       "Key": "frost",
@@ -1282,17 +1602,32 @@
     {
       "Key": "retribution",
       "Race": "Undead",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 977.302369443936,
+      "CandidateDPS": 1008.8791352913809,
+      "GainDPS": 31.576765847444904,
+      "GainPercent": 3.2310129223785067,
+      "Conservative95BoundDPS": 1.4367001831453101
     },
     {
       "Key": "retribution",
       "Race": "Human",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 989.0956287453619,
+      "CandidateDPS": 1001.2775329919637,
+      "GainDPS": 12.181904246601789,
+      "GainPercent": 1.2316204715265164,
+      "Conservative95BoundDPS": 1.4519582505491389
     },
     {
       "Key": "retribution",
       "Race": "Dwarf",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 982.1964623074134,
+      "CandidateDPS": 993.5152136545754,
+      "GainDPS": 11.318751347161992,
+      "GainPercent": 1.1523917853024588,
+      "Conservative95BoundDPS": 1.447008569586673
     },
     {
       "Key": "shadow",
@@ -1307,22 +1642,42 @@
     {
       "Key": "shadow",
       "Race": "Human",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 910.7790349727422,
+      "CandidateDPS": 919.4504584210088,
+      "GainDPS": 8.671423448266523,
+      "GainPercent": 0.9520886093437626,
+      "Conservative95BoundDPS": 0.6919395855545758
     },
     {
       "Key": "shadow",
       "Race": "Dwarf",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 906.9329065615218,
+      "CandidateDPS": 913.3919405523601,
+      "GainDPS": 6.459033990838293,
+      "GainPercent": 0.7121843241223428,
+      "Conservative95BoundDPS": 0.678872075175813
     },
     {
       "Key": "shadow",
       "Race": "Night Elf",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 909.7975607501089,
+      "CandidateDPS": 918.4825805364462,
+      "GainDPS": 8.685019786337307,
+      "GainPercent": 0.9546101419723186,
+      "Conservative95BoundDPS": 0.6895251843392215
     },
     {
       "Key": "shadow",
       "Race": "Gnome",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 909.3411689722705,
+      "CandidateDPS": 918.0057620211038,
+      "GainDPS": 8.664593048833353,
+      "GainPercent": 0.9528429311768652,
+      "Conservative95BoundDPS": 0.6899358589945523
     },
     {
       "Key": "smite",
@@ -1382,7 +1737,12 @@
     {
       "Key": "combat",
       "Race": "Dwarf",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 731.5906410153443,
+      "CandidateDPS": 733.9184873560891,
+      "GainDPS": 2.327846340744827,
+      "GainPercent": 0.31818973757156127,
+      "Conservative95BoundDPS": 0.8299296208642555
     },
     {
       "Key": "combat",
@@ -1392,262 +1752,402 @@
     {
       "Key": "combat",
       "Race": "Gnome",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "combat",
-      "Race": "High Order",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "mutilate",
-      "Race": "Orc",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "mutilate",
-      "Race": "Troll",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "mutilate",
-      "Race": "Undead",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "mutilate",
-      "Race": "Windshaper",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "mutilate",
-      "Race": "Human",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "mutilate",
-      "Race": "Dwarf",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "mutilate",
-      "Race": "Night Elf",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "mutilate",
-      "Race": "Gnome",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "mutilate",
-      "Race": "High Order",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "subtlety",
-      "Race": "Orc",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "subtlety",
-      "Race": "Troll",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "subtlety",
-      "Race": "Undead",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "subtlety",
-      "Race": "Windshaper",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "subtlety",
-      "Race": "Human",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "subtlety",
-      "Race": "Dwarf",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "subtlety",
-      "Race": "Night Elf",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "subtlety",
-      "Race": "Gnome",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "subtlety",
-      "Race": "High Order",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "demonology",
-      "Race": "Orc",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "demonology",
-      "Race": "Troll",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "demonology",
-      "Race": "Undead",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "demonology",
-      "Race": "Human",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "demonology",
-      "Race": "Gnome",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "affliction",
-      "Race": "Orc",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "affliction",
-      "Race": "Troll",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "affliction",
-      "Race": "Undead",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "affliction",
-      "Race": "Human",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "affliction",
-      "Race": "Gnome",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "ds_ruin",
-      "Race": "Orc",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "ds_ruin",
-      "Race": "Troll",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "ds_ruin",
-      "Race": "Undead",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "ds_ruin",
-      "Race": "Human",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "ds_ruin",
-      "Race": "Gnome",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "destruction",
-      "Race": "Orc",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "destruction",
-      "Race": "Troll",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "destruction",
-      "Race": "Undead",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "destruction",
-      "Race": "Human",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "destruction",
-      "Race": "Gnome",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "fury",
-      "Race": "Orc",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "fury_sunder",
-      "Race": "Orc",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "fury",
-      "Race": "Tauren",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "fury_sunder",
-      "Race": "Tauren",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "fury",
-      "Race": "Troll",
-      "Decision": "unchanged"
-    },
-    {
-      "Key": "fury_sunder",
-      "Race": "Troll",
       "Decision": "revert",
-      "BaselineDPS": 889.0837850557646,
-      "CandidateDPS": 890.163038645701,
-      "GainDPS": 1.0792535899364566,
-      "GainPercent": 0.12138941324509302,
-      "Conservative95BoundDPS": 1.2676298146114167
+      "BaselineDPS": 737.5873746212055,
+      "CandidateDPS": 738.4085905358207,
+      "GainDPS": 0.8212159146152089,
+      "GainPercent": 0.11133811977692155,
+      "Conservative95BoundDPS": 0.8437113896823059
+    },
+    {
+      "Key": "combat",
+      "Race": "High Order",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Orc",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Troll",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Undead",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Human",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Dwarf",
+      "Decision": "retain",
+      "BaselineDPS": 717.1459277807444,
+      "CandidateDPS": 719.232494912202,
+      "GainDPS": 2.0865671314576275,
+      "GainPercent": 0.29095433030131646,
+      "Conservative95BoundDPS": 0.765638155866611
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "mutilate",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "mutilate",
+      "Race": "High Order",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "subtlety",
+      "Race": "Orc",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "subtlety",
+      "Race": "Troll",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "subtlety",
+      "Race": "Undead",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "subtlety",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "subtlety",
+      "Race": "Human",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "subtlety",
+      "Race": "Dwarf",
+      "Decision": "retain",
+      "BaselineDPS": 705.6770984939765,
+      "CandidateDPS": 706.5250291095991,
+      "GainDPS": 0.8479306156226585,
+      "GainPercent": 0.12015844320756235,
+      "Conservative95BoundDPS": 0.7339890112158972
+    },
+    {
+      "Key": "subtlety",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "subtlety",
+      "Race": "Gnome",
+      "Decision": "retain",
+      "BaselineDPS": 709.620534508106,
+      "CandidateDPS": 710.8647789486354,
+      "GainDPS": 1.2442444405294282,
+      "GainPercent": 0.17533940747528004,
+      "Conservative95BoundDPS": 0.7642497063635227
+    },
+    {
+      "Key": "subtlety",
+      "Race": "High Order",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "demonology",
+      "Race": "Orc",
+      "Decision": "retain",
+      "BaselineDPS": 1092.5577312479336,
+      "CandidateDPS": 1106.6535597327631,
+      "GainDPS": 14.095828484829553,
+      "GainPercent": 1.2901678402594905,
+      "Conservative95BoundDPS": 1.1318630132785246
+    },
+    {
+      "Key": "demonology",
+      "Race": "Troll",
+      "Decision": "retain",
+      "BaselineDPS": 1074.2293327316472,
+      "CandidateDPS": 1085.1692281118821,
+      "GainDPS": 10.93989538023493,
+      "GainPercent": 1.018394773527174,
+      "Conservative95BoundDPS": 1.112759484189209
+    },
+    {
+      "Key": "demonology",
+      "Race": "Undead",
+      "Decision": "retain",
+      "BaselineDPS": 1098.076565718024,
+      "CandidateDPS": 1107.305675497902,
+      "GainDPS": 9.229109779877945,
+      "GainPercent": 0.8404796230072625,
+      "Conservative95BoundDPS": 1.1292479784101754
+    },
+    {
+      "Key": "demonology",
+      "Race": "Human",
+      "Decision": "retain",
+      "BaselineDPS": 1084.0739628632848,
+      "CandidateDPS": 1090.3345557665834,
+      "GainDPS": 6.26059290329863,
+      "GainPercent": 0.5775060667228817,
+      "Conservative95BoundDPS": 1.1079688192916144
+    },
+    {
+      "Key": "demonology",
+      "Race": "Gnome",
+      "Decision": "retain",
+      "BaselineDPS": 1079.2492413686925,
+      "CandidateDPS": 1087.7708427225216,
+      "GainDPS": 8.521601353829055,
+      "GainPercent": 0.7895860406649025,
+      "Conservative95BoundDPS": 1.1231469906251819
+    },
+    {
+      "Key": "affliction",
+      "Race": "Orc",
+      "Decision": "retain",
+      "BaselineDPS": 923.3133591180184,
+      "CandidateDPS": 925.6606427213471,
+      "GainDPS": 2.3472836033287194,
+      "GainPercent": 0.2542239403501026,
+      "Conservative95BoundDPS": 1.4096498141669822
+    },
+    {
+      "Key": "affliction",
+      "Race": "Troll",
+      "Decision": "retain",
+      "BaselineDPS": 911.3164464334263,
+      "CandidateDPS": 917.875390511814,
+      "GainDPS": 6.55894407838764,
+      "GainPercent": 0.7197219038520649,
+      "Conservative95BoundDPS": 1.3556074628517976
+    },
+    {
+      "Key": "affliction",
+      "Race": "Undead",
+      "Decision": "retain",
+      "BaselineDPS": 920.905927883609,
+      "CandidateDPS": 929.6699093254545,
+      "GainDPS": 8.76398144184543,
+      "GainPercent": 0.9516695654230916,
+      "Conservative95BoundDPS": 1.3777619144583582
+    },
+    {
+      "Key": "affliction",
+      "Race": "Human",
+      "Decision": "retain",
+      "BaselineDPS": 923.1522075386584,
+      "CandidateDPS": 926.354025625257,
+      "GainDPS": 3.201818086598564,
+      "GainPercent": 0.34683533879373657,
+      "Conservative95BoundDPS": 1.4099750024732591
+    },
+    {
+      "Key": "affliction",
+      "Race": "Gnome",
+      "Decision": "retain",
+      "BaselineDPS": 906.8545715417679,
+      "CandidateDPS": 914.5700879068345,
+      "GainDPS": 7.715516365066605,
+      "GainPercent": 0.850799743110877,
+      "Conservative95BoundDPS": 1.3829179821400719
+    },
+    {
+      "Key": "ds_ruin",
+      "Race": "Orc",
+      "Decision": "retain",
+      "BaselineDPS": 856.2130154984116,
+      "CandidateDPS": 860.9982112252221,
+      "GainDPS": 4.785195726810571,
+      "GainPercent": 0.5588791153828762,
+      "Conservative95BoundDPS": 1.4577747515306234
+    },
+    {
+      "Key": "ds_ruin",
+      "Race": "Troll",
+      "Decision": "retain",
+      "BaselineDPS": 845.8112146829299,
+      "CandidateDPS": 852.7005919701016,
+      "GainDPS": 6.889377287171783,
+      "GainPercent": 0.8145289596041134,
+      "Conservative95BoundDPS": 1.4240873262688274
+    },
+    {
+      "Key": "ds_ruin",
+      "Race": "Undead",
+      "Decision": "retain",
+      "BaselineDPS": 867.2582596019506,
+      "CandidateDPS": 873.808752353424,
+      "GainDPS": 6.550492751473371,
+      "GainPercent": 0.7553105062936939,
+      "Conservative95BoundDPS": 1.4364216411239215
+    },
+    {
+      "Key": "ds_ruin",
+      "Race": "Human",
+      "Decision": "retain",
+      "BaselineDPS": 864.0708464047179,
+      "CandidateDPS": 873.0155080615407,
+      "GainDPS": 8.944661656822745,
+      "GainPercent": 1.0351768832428816,
+      "Conservative95BoundDPS": 1.4476167792910233
+    },
+    {
+      "Key": "ds_ruin",
+      "Race": "Gnome",
+      "Decision": "retain",
+      "BaselineDPS": 855.0837883291869,
+      "CandidateDPS": 863.0894273019004,
+      "GainDPS": 8.005638972713541,
+      "GainPercent": 0.9362402938729978,
+      "Conservative95BoundDPS": 1.4443411977022291
+    },
+    {
+      "Key": "destruction",
+      "Race": "Orc",
+      "Decision": "retain",
+      "BaselineDPS": 915.4371330457784,
+      "CandidateDPS": 937.5197866540243,
+      "GainDPS": 22.08265360824589,
+      "GainPercent": 2.4122523340050703,
+      "Conservative95BoundDPS": 1.2051761756784987
+    },
+    {
+      "Key": "destruction",
+      "Race": "Troll",
+      "Decision": "retain",
+      "BaselineDPS": 917.7252335069877,
+      "CandidateDPS": 928.3786055658521,
+      "GainDPS": 10.65337205886442,
+      "GainPercent": 1.1608454981839946,
+      "Conservative95BoundDPS": 1.1874293622651457
+    },
+    {
+      "Key": "destruction",
+      "Race": "Undead",
+      "Decision": "retain",
+      "BaselineDPS": 918.4915273928679,
+      "CandidateDPS": 932.0336623887029,
+      "GainDPS": 13.542134995835,
+      "GainPercent": 1.4743886679362477,
+      "Conservative95BoundDPS": 1.1769166827366975
+    },
+    {
+      "Key": "destruction",
+      "Race": "Human",
+      "Decision": "retain",
+      "BaselineDPS": 917.500201173189,
+      "CandidateDPS": 933.3900172801137,
+      "GainDPS": 15.88981610692474,
+      "GainPercent": 1.7318596864182432,
+      "Conservative95BoundDPS": 1.1914282571115897
+    },
+    {
+      "Key": "destruction",
+      "Race": "Gnome",
+      "Decision": "retain",
+      "BaselineDPS": 903.1905818406528,
+      "CandidateDPS": 924.547696741655,
+      "GainDPS": 21.357114901002205,
+      "GainPercent": 2.3646299386202165,
+      "Conservative95BoundDPS": 1.1711441984755164
+    },
+    {
+      "Key": "fury",
+      "Race": "Orc",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "fury_sunder",
+      "Race": "Orc",
+      "Decision": "retain",
+      "BaselineDPS": 935.1537494752376,
+      "CandidateDPS": 943.8572312773769,
+      "GainDPS": 8.703481802139208,
+      "GainPercent": 0.9307006261829325,
+      "Conservative95BoundDPS": 1.3889391910166404
+    },
+    {
+      "Key": "fury",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "fury_sunder",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "fury",
+      "Race": "Troll",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "fury_sunder",
+      "Race": "Troll",
+      "Decision": "retain",
+      "BaselineDPS": 921.0295686507876,
+      "CandidateDPS": 925.7440285443727,
+      "GainDPS": 4.714459893585058,
+      "GainPercent": 0.511868462647866,
+      "Conservative95BoundDPS": 1.3793182937417932
     },
     {
       "Key": "fury",
       "Race": "Undead",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 993.9458337936729,
+      "CandidateDPS": 997.3116146349271,
+      "GainDPS": 3.36578084125415,
+      "GainPercent": 0.3386281955031396,
+      "Conservative95BoundDPS": 1.3430358395322701
     },
     {
       "Key": "fury_sunder",
       "Race": "Undead",
       "Decision": "retain",
-      "BaselineDPS": 894.0845860855883,
-      "CandidateDPS": 899.9699446643381,
-      "GainDPS": 5.885358578749788,
-      "GainPercent": 0.6582552333797195,
-      "Conservative95BoundDPS": 1.2512179364677043
+      "BaselineDPS": 951.5402154475081,
+      "CandidateDPS": 954.8550965821584,
+      "GainDPS": 3.31488113465025,
+      "GainPercent": 0.34837005108515207,
+      "Conservative95BoundDPS": 1.3699366332997935
     },
     {
       "Key": "fury",
       "Race": "Windshaper",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 994.0898967266569,
+      "CandidateDPS": 997.2780347861013,
+      "GainDPS": 3.188138059444441,
+      "GainPercent": 0.3207092306181115,
+      "Conservative95BoundDPS": 1.3629242823543468
     },
     {
       "Key": "fury_sunder",
       "Race": "Windshaper",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 945.8659780921043,
+      "CandidateDPS": 950.4405024888439,
+      "GainDPS": 4.574524396739548,
+      "GainPercent": 0.4836334642215137,
+      "Conservative95BoundDPS": 1.3687590641623706
     },
     {
       "Key": "fury",
@@ -1657,12 +2157,22 @@
     {
       "Key": "fury_sunder",
       "Race": "Human",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 943.2806045909651,
+      "CandidateDPS": 947.4754134424584,
+      "GainDPS": 4.194808851493235,
+      "GainPercent": 0.4447042408247364,
+      "Conservative95BoundDPS": 1.3793808953489493
     },
     {
       "Key": "fury",
       "Race": "Dwarf",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 979.9306620422383,
+      "CandidateDPS": 989.9360892929928,
+      "GainDPS": 10.005427250754565,
+      "GainPercent": 1.021034205614366,
+      "Conservative95BoundDPS": 1.3521737373726648
     },
     {
       "Key": "fury_sunder",
@@ -1677,27 +2187,52 @@
     {
       "Key": "fury_sunder",
       "Race": "Night Elf",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 935.5907134347824,
+      "CandidateDPS": 941.350122266728,
+      "GainDPS": 5.7594088319456205,
+      "GainPercent": 0.6155906369358265,
+      "Conservative95BoundDPS": 1.3813255314613677
     },
     {
       "Key": "fury",
       "Race": "Gnome",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 985.1067463210543,
+      "CandidateDPS": 989.4364864438909,
+      "GainDPS": 4.329740122836597,
+      "GainPercent": 0.43951989355532234,
+      "Conservative95BoundDPS": 1.3757335086060738
     },
     {
       "Key": "fury_sunder",
       "Race": "Gnome",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 938.5051036310965,
+      "CandidateDPS": 941.8078612423707,
+      "GainDPS": 3.30275761127416,
+      "GainPercent": 0.35191685143700546,
+      "Conservative95BoundDPS": 1.3689632186698022
     },
     {
       "Key": "fury",
       "Race": "High Order",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 994.0898967266569,
+      "CandidateDPS": 997.2780347861013,
+      "GainDPS": 3.188138059444441,
+      "GainPercent": 0.3207092306181115,
+      "Conservative95BoundDPS": 1.3629242823543468
     },
     {
       "Key": "fury_sunder",
       "Race": "High Order",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 945.8659780921043,
+      "CandidateDPS": 950.4405024888439,
+      "GainDPS": 4.574524396739548,
+      "GainPercent": 0.4836334642215137,
+      "Conservative95BoundDPS": 1.3687590641623706
     },
     {
       "Key": "arms",
@@ -1752,42 +2287,82 @@
     {
       "Key": "pet_melee",
       "Race": "Tauren",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 901.8227604005622,
+      "CandidateDPS": 916.6936462563904,
+      "GainDPS": 14.870885855828192,
+      "GainPercent": 1.64898098704262,
+      "Conservative95BoundDPS": 0.9771594541791881
     },
     {
       "Key": "pet_melee",
       "Race": "Windshaper",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 920.9641309146816,
+      "CandidateDPS": 933.0531676851591,
+      "GainDPS": 12.089036770477492,
+      "GainPercent": 1.312650120094354,
+      "Conservative95BoundDPS": 0.9633760832539794
     },
     {
       "Key": "pet_melee",
       "Race": "Orc",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 919.536175873805,
+      "CandidateDPS": 934.7663780529904,
+      "GainDPS": 15.230202179185426,
+      "GainPercent": 1.6562917891417013,
+      "Conservative95BoundDPS": 0.9912543314502223
     },
     {
       "Key": "pet_melee",
       "Race": "Human",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 916.2838032133802,
+      "CandidateDPS": 930.4982821705441,
+      "GainDPS": 14.21447895716392,
+      "GainPercent": 1.5513183696267643,
+      "Conservative95BoundDPS": 0.9652007867730769
     },
     {
       "Key": "pet_melee",
       "Race": "Night Elf",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 914.4446908438169,
+      "CandidateDPS": 932.016457434209,
+      "GainDPS": 17.57176659039203,
+      "GainPercent": 1.92157784569534,
+      "Conservative95BoundDPS": 0.9785823226513474
     },
     {
       "Key": "pet_melee",
       "Race": "Dwarf",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 909.7500692031085,
+      "CandidateDPS": 921.5127922920963,
+      "GainDPS": 11.762723088987741,
+      "GainPercent": 1.292962043882145,
+      "Conservative95BoundDPS": 0.9765896744105553
     },
     {
       "Key": "pet_melee",
       "Race": "Troll",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 918.4355911199043,
+      "CandidateDPS": 926.7073418616485,
+      "GainDPS": 8.2717507417442,
+      "GainPercent": 0.9006348209631065,
+      "Conservative95BoundDPS": 0.9634975972114662
     },
     {
       "Key": "pet_melee",
       "Race": "High Order",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 920.9641309146816,
+      "CandidateDPS": 933.0531676851591,
+      "GainDPS": 12.089036770477492,
+      "GainPercent": 1.312650120094354,
+      "Conservative95BoundDPS": 0.9633760832539794
     },
     {
       "Key": "arcane_frost",
@@ -1872,26 +2447,170 @@
     {
       "Key": "retribution_physical",
       "Race": "Undead",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 932.605700328822,
+      "CandidateDPS": 940.0925283144757,
+      "GainDPS": 7.48682798565369,
+      "GainPercent": 0.8027859987360096,
+      "Conservative95BoundDPS": 1.4488934432812275
     },
     {
       "Key": "retribution_physical",
       "Race": "Human",
-      "Decision": "unchanged"
+      "Decision": "retain",
+      "BaselineDPS": 934.7832930243749,
+      "CandidateDPS": 938.8364800788152,
+      "GainDPS": 4.053187054440286,
+      "GainPercent": 0.4335964372369883,
+      "Conservative95BoundDPS": 1.4891772464125699
     },
     {
       "Key": "retribution_physical",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "survival_weave",
+      "Race": "Orc",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "survival_weave",
+      "Race": "Tauren",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "survival_weave",
+      "Race": "Troll",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "survival_weave",
+      "Race": "Windshaper",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "survival_weave",
+      "Race": "Human",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "survival_weave",
+      "Race": "Dwarf",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "survival_weave",
+      "Race": "Night Elf",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "survival_weave",
+      "Race": "High Order",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "frostfire",
+      "Race": "Orc",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "frostfire",
+      "Race": "Troll",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "frostfire",
+      "Race": "Undead",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "frostfire",
+      "Race": "Human",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "frostfire",
+      "Race": "Gnome",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "frostfire",
+      "Race": "High Order",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "shockadin",
+      "Race": "Undead",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "shockadin",
+      "Race": "Human",
+      "Decision": "unchanged"
+    },
+    {
+      "Key": "shockadin",
       "Race": "Dwarf",
       "Decision": "unchanged"
     }
   ],
   "confidenceQualification": {
-    "state": "historical; not selection controls for the corrected engine",
-    "iterationRangesIndependent": false,
-    "iterationsPerArmPerStart": 5000,
-    "uniqueIterationSeeds": 5001,
-    "legacyBounds": "Raw confirmation bounds assumed independent starts; retain them only as historical values, not corrected confidence bounds.",
-    "source": "artifacts/question_review/seed_ranges.json",
-    "currentScope": "No new gear search. Selected equipment is frozen; corrected simulation results do not establish an optimum."
+    "state": "selection control for the October 28 follow-up",
+    "scope": "Every DPS race/build (32 builds, 209 profiles) on the October 28 engine, with each build's published talents, rotation, consumables, race and enchants fixed. Tanks keep their separately selected equipment.",
+    "rule": "A searched loadout is kept only if, averaged over the search seed (20261028) and an independent confirmation seed (30296071) at 5,000 fights each, its gain exceeds 1.96 times the sum of the two arms' standard errors (validate_gear.py's rule).",
+    "limits": "Coordinate search with coupled weapon layouts, not an exhaustive combination search; the modeled level-65 pool is hypothetical, not obtainable loot."
+  },
+  "postSearchCorrections": {
+    "description": "The search changed weapons without changing their stones. Nine selected loadouts carried a Dense Weightstone on an edged weapon; it was replaced by a Dense Sharpening Stone, which the engine models identically (+8 weapon damage). DPS is unchanged. The search now swaps the stone with the weapon.",
+    "profiles": [
+      {
+        "Key": "survival",
+        "Race": "Orc",
+        "slot": "offHandImbue"
+      },
+      {
+        "Key": "survival",
+        "Race": "Tauren",
+        "slot": "offHandImbue"
+      },
+      {
+        "Key": "survival",
+        "Race": "Troll",
+        "slot": "offHandImbue"
+      },
+      {
+        "Key": "survival",
+        "Race": "Windshaper",
+        "slot": "offHandImbue"
+      },
+      {
+        "Key": "survival",
+        "Race": "Human",
+        "slot": "offHandImbue"
+      },
+      {
+        "Key": "survival",
+        "Race": "Dwarf",
+        "slot": "offHandImbue"
+      },
+      {
+        "Key": "survival",
+        "Race": "Night Elf",
+        "slot": "offHandImbue"
+      },
+      {
+        "Key": "survival",
+        "Race": "High Order",
+        "slot": "offHandImbue"
+      },
+      {
+        "Key": "fury",
+        "Race": "Dwarf",
+        "slot": "mainHandImbue"
+      }
+    ],
+    "from": "DenseWeightstone",
+    "to": "DenseSharpeningStone"
   }
 }

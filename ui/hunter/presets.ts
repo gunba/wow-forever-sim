@@ -39,6 +39,7 @@ import BeastMasteryWeaveAPL from './apls/beast_mastery_weave.apl.json';
 import MarksmanshipWeaveAPL from './apls/marksmanship_weave.apl.json';
 import GearBeastMasteryJSON from './gear_sets/forever_beast_mastery.gear.json';
 import GearMarksmanshipJSON from './gear_sets/forever_marksmanship.gear.json';
+import GearMarksmanshipRangedJSON from './gear_sets/forever_marksmanship_ranged.gear.json';
 import GearSurvivalJSON from './gear_sets/forever_survival.gear.json';
 
 // Preset options for this spec.
@@ -49,16 +50,18 @@ import GearSurvivalJSON from './gear_sets/forever_survival.gear.json';
 ///////////////////////////////////////////////////////////////////////////
 
 export const GearBeastMastery = PresetUtils.makePresetGear('Beast Mastery', GearBeastMasteryJSON, { tooltip: 'Level 60 Forever equipment.' });
-export const GearMarksmanship = PresetUtils.makePresetGear('Marksmanship', GearMarksmanshipJSON, { tooltip: 'Level 60 Forever equipment.' });
+export const GearMarksmanship = PresetUtils.makePresetGear('MM Weave', GearMarksmanshipJSON, { tooltip: 'Level 60 Forever equipment.' });
+export const GearMarksmanshipRanged = PresetUtils.makePresetGear('Marksmanship', GearMarksmanshipRangedJSON, { tooltip: 'Level 60 Forever equipment.' });
 export const GearSurvival = PresetUtils.makePresetGear('Survival', GearSurvivalJSON, { tooltip: 'Level 60 Forever equipment.' });
 
-export const GearPresets = [GearBeastMastery, GearMarksmanship, GearSurvival];
+export const GearPresets = [GearBeastMastery, GearMarksmanship, GearMarksmanshipRanged, GearSurvival];
 export const DefaultGear = GearMarksmanship;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets
 ///////////////////////////////////////////////////////////////////////////
 
+// Ranged Marksmanship: Aimed Shot, Arcane Shot and Sniper Shot on cooldown from 12 yards, never in melee.
 export const APLP1 = PresetUtils.makePresetAPLRotation('Marksmanship', P1APL);
 export const APLBeastMastery = PresetUtils.makePresetAPLRotation('Beast Mastery', BeastMasteryAPL);
 export const APLSurvival = PresetUtils.makePresetAPLRotation('Survival', SurvivalAPL);
@@ -80,7 +83,8 @@ export const DefaultAPL = APLP1;
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsP1 = PresetUtils.makePresetTalents('Marksmanship 5/37/9', SavedTalents.create({ talentsString: '5-0053452011523051-50004' }));
+// Ranged Marksmanship with Trueshot Aura and a Cat.
+export const TalentsP1 = PresetUtils.makePresetTalents('Marksmanship 7/37/7', SavedTalents.create({ talentsString: '502-0053552001523051-50002' }));
 
 export const TalentsBeastMastery = PresetUtils.makePresetTalents(
 	'Beast Mastery 31/20/0',
@@ -206,11 +210,11 @@ export const BuildPresets = [
 		options: PetOptions,
 		distance: 12,
 	}),
-	PresetUtils.makePresetBuild('Marksmanship (ranged)', {
-		gear: GearMarksmanship,
+	PresetUtils.makePresetBuild('Marksmanship', {
+		gear: GearMarksmanshipRanged,
 		talents: TalentsP1,
 		rotation: APLP1,
-		options: DefaultOptions,
+		options: PetOptions,
 		distance: 12,
 	}),
 	PresetUtils.makePresetBuild('Survival', {

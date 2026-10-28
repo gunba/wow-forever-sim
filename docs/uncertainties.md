@@ -4,7 +4,7 @@
 
 Current level-60 DPS and tank scenarios, plus conditional spell, item and encounter coverage. This register consolidates the recorded questions; it is not a claim that unlisted game behavior has been verified.
 
-**Latest follow-up (2026-10-28):** October 28 update: Orc Blood Fury on a two-minute cooldown and Undead Touch of the Grave on a 15-second internal cooldown, the launch changes Blizzard added to the racial notes on October 27. Only Orc and Undead results change. [Latest follow-up report](october-28-update.md).
+**Latest follow-up (2026-10-28):** October 28 follow-up: a ranged Marksmanship Hunter build (31 or more Marksmanship points with Trueshot Aura, a Cat, Auto Shot from range and no melee) beside MM Weave, and the gear of every DPS build re-selected from the modeled pool on the current engine and confirmed on a second seed. [Latest follow-up report](october-28-follow-up.md).
 
 **Original adjudication baseline:** 2026-09-27, `35cab052456a320358e998c12416687d69cae142`. That original review reconciled questions without changing mechanics or benchmark results. This current register also includes the later implementation and benchmark updates linked above; earlier audits remain historical evidence, not current task status.
 

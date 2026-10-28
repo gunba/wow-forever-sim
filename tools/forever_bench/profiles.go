@@ -31,6 +31,7 @@ func builds() []build {
 		{"enhancement", "Enhancement", "enhancement_shaman", "TalentsEnhancement", "default", "forever_enhancement", proto.Class_ClassShaman, [3]int{0, 31, 0}, "rageOfTheFarseer"},
 		{"beast_mastery", "BM Weave", "hunter", "TalentsBeastMastery", "beast_mastery_weave", "forever_beast_mastery", proto.Class_ClassHunter, [3]int{31, 0, 0}, "bestialWrath"},
 		{"marksmanship", "MM Weave", "hunter", "TalentsMarksmanshipWeave", "marksmanship_weave", "forever_marksmanship", proto.Class_ClassHunter, [3]int{0, 26, 0}, ""},
+		{"marksmanship_ranged", "Marksmanship", "hunter", "TalentsP1", "p1", "forever_marksmanship_ranged", proto.Class_ClassHunter, [3]int{0, 31, 0}, "trueshotAura"},
 		{"survival", "Survival", "hunter", "TalentsSurvival", "survival", "forever_survival", proto.Class_ClassHunter, [3]int{0, 0, 31}, "laceratingStrikes"},
 		{"pet_melee", "Pet/Melee", "hunter", "TalentsPetMelee", "pet_melee", "forever_survival", proto.Class_ClassHunter, [3]int{15, 0, 20}, "summonHawk"},
 		{"survival_weave", "SV Weave", "hunter", "TalentsSurvivalWeave", "survival_weave", "forever_survival", proto.Class_ClassHunter, [3]int{0, 0, 31}, ""},
@@ -67,6 +68,8 @@ func (b build) modelKey() string {
 	switch b.Key {
 	case "pet_melee", "survival_weave":
 		return "survival"
+	case "marksmanship_ranged":
+		return "marksmanship"
 	case "arcane_frost":
 		return "frost"
 	case "frostfire":
@@ -157,7 +160,7 @@ func (b build) player(race proto.Race) *proto.Player {
 			Ammo: proto.Hunter_Options_ThoriumHeadedArrow, QuiverBonus: proto.Hunter_Options_Speed15,
 			PetType: proto.Hunter_Options_Cat, PetUptime: 1, PetAttackSpeed: proto.Hunter_Options_OneTwo,
 		}}})
-		if b.modelKey() == "marksmanship" {
+		if b.Key == "marksmanship" {
 			p.GetHunter().Options.PetType = proto.Hunter_Options_PetNone
 		}
 		if b.Key == "survival_weave" {

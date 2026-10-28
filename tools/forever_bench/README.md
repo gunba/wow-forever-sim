@@ -56,31 +56,37 @@ coupled weapon layouts. It repeats coordinate passes to convergence and checks
 shortlisted gains with independent higher-iteration seeds; it does not perform
 an exhaustive combination search. Every supported DPS race/build is searched
 separately without changing the fixed talents, APLs, consumes, buffs, enchants,
-encounter or forced Tier 1. The archived search baseline freezes the patched
+encounter or forced Tier 1. The archived search baseline freezes the
 talents, consumables and starting equipment. Do not start a reproduction from
-the current, already-selected roster:
+the current, already-selected roster. The October 28 search covered the 32 DPS
+builds (tanks keep their separately selected equipment):
 
 ```sh
 python3 - <<'PY'
 import gzip, json
 with gzip.open('artifacts/modelled_gear_search/current/before.json.gz', 'rt') as f:
-    baseline = json.load(f)['searchBaseline']
-with open('/tmp/forever-70009-start.json', 'w') as f:
-    json.dump(baseline, f)
+    data = json.load(f)
+# The search baseline holds the DPS rows; the tank rows come from the published inputs.
+start = json.load(open('artifacts/modelled_gear/forever_input_profiles.json'))
+dps = {(r['Key'], r['Race']): r for r in data['searchBaseline']['Results']}
+start['Results'] = [{'Key': r['Key'], 'Race': r['Race'],
+                     'BaselinePlayer': dps.get((r['Key'], r['Race']), r)['BaselinePlayer']}
+                    for r in start['Results']]
+json.dump(start, open('/tmp/forever-start.json', 'w'))
 PY
-go run ./tools/database/gen_db -outDir=assets -gen=db
 go build -tags with_db -o /tmp/forever-bench ./tools/forever_bench
 python3 tools/forever_bench/search_gear.py --binary /tmp/forever-bench \
-  --baseline-results /tmp/forever-70009-start.json --modeled-only \
-  --screen 100 --validate 2000 --passes 5 --iterations 5000 \
-  --seed 20260954 --workers 24 --output /tmp/model-search
-python3 tools/forever_bench/validate_gear.py --binary /tmp/forever-bench \
-  --search /tmp/model-search --iterations 5000 --seed 20260955 \
-  --workers 24 --output /tmp/model-confirmed
-python3 tools/forever_bench/run_matrix.py --binary /tmp/forever-bench \
-  --profiles /tmp/model-confirmed/selected.json --natural-hit \
-  --iterations 5000 --seed 20260956 --workers 24 --output /tmp/model-matrix
+  --roster /tmp/forever-start.json --baseline-results /tmp/forever-start.json \
+  --builds "$(python3 -c "import sys; sys.path.insert(0, 'tools/forever_bench'); from build_display import BUILDS; print(','.join(k for k, *_ in BUILDS if k not in ('tank_warrior', 'protection_paladin', 'feral_tank_druid')))")" \
+  --modeled-only --screen 100 --validate 2000 --passes 5 --iterations 5000 \
+  --seed 20261028 --workers 22 --output /tmp/model-search
 ```
+
+Each changed loadout was then replayed for both arms on seed 30296071 (5,000
+fights) and kept under `validate_gear.py`'s rule: the mean gain over both seeds
+must exceed 1.96 times the summed standard errors. `validate_gear.py` itself
+expects the full roster including tanks, so the confirmation decisions are
+recorded in `artifacts/modelled_gear_search/current/validation.json.gz`.
 
 The archived [search and confirmation evidence](../../artifacts/modelled_gear_search/current/summary.json),
 [complete requests/results](../../artifacts/modelled_gear/forever_dps_5min.json),

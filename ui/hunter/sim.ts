@@ -182,7 +182,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 			iconUrl: getSpecIcon(Class.ClassHunter, 1),
 
 			talents: Presets.TalentsP1.data,
-			specOptions: Presets.DefaultOptions,
+			specOptions: Presets.PetOptions,
 			consumes: Presets.DefaultConsumes,
 			otherDefaults: Presets.OtherDefaults,
 			defaultFactionRaces: {
@@ -193,10 +193,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearMarksmanship.gear,
+					1: Presets.GearMarksmanshipRanged.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearMarksmanship.gear,
+					1: Presets.GearMarksmanshipRanged.gear,
 				},
 			},
 		},

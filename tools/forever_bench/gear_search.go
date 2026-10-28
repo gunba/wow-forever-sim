@@ -140,6 +140,38 @@ func physicalRetItemEligible(item core.Item) bool {
 	return s[stats.Intellect] == 0 || physical > 0
 }
 
+// matchWeaponStones keeps each weapon's stone usable on it after a weapon swap:
+// sharpening stones fit edged weapons and weightstones blunt ones. The engine
+// gives each Dense or Solid pair the same flat damage, so the swap leaves DPS
+// unchanged; other imbues are left alone.
+func matchWeaponStones(p *proto.Player) {
+	if p.Consumes == nil {
+		return
+	}
+	equivalent := map[proto.WeaponImbue][2]proto.WeaponImbue{
+		proto.WeaponImbue_DenseSharpeningStone: {proto.WeaponImbue_DenseSharpeningStone, proto.WeaponImbue_DenseWeightstone},
+		proto.WeaponImbue_DenseWeightstone:     {proto.WeaponImbue_DenseSharpeningStone, proto.WeaponImbue_DenseWeightstone},
+		proto.WeaponImbue_SolidSharpeningStone: {proto.WeaponImbue_SolidSharpeningStone, proto.WeaponImbue_SolidWeightstone},
+		proto.WeaponImbue_SolidWeightstone:     {proto.WeaponImbue_SolidSharpeningStone, proto.WeaponImbue_SolidWeightstone},
+	}
+	for slot, imbue := range map[proto.ItemSlot]*proto.WeaponImbue{
+		proto.ItemSlot_ItemSlotMainHand: &p.Consumes.MainHandImbue,
+		proto.ItemSlot_ItemSlotOffHand:  &p.Consumes.OffHandImbue,
+	} {
+		pair, ok := equivalent[*imbue]
+		if !ok {
+			continue
+		}
+		switch core.ItemsByID[p.Equipment.Items[slot].GetId()].WeaponType {
+		case proto.WeaponType_WeaponTypeAxe, proto.WeaponType_WeaponTypeDagger,
+			proto.WeaponType_WeaponTypePolearm, proto.WeaponType_WeaponTypeSword:
+			*imbue = pair[0]
+		case proto.WeaponType_WeaponTypeFist, proto.WeaponType_WeaponTypeMace, proto.WeaponType_WeaponTypeStaff:
+			*imbue = pair[1]
+		}
+	}
+}
+
 // Ordinary slots vary independently. Weapon layouts also cover transitions
 // between two-handers and legal main/off-hand combinations.
 func gearCandidates(b build, p *proto.Player, slot int, pool []core.Item) []*proto.Player {
@@ -164,6 +196,7 @@ func gearCandidates(b build, p *proto.Player, slot int, pool []core.Item) []*pro
 			}
 		}
 		prepareGearEnchants(b, candidate)
+		matchWeaponStones(candidate)
 		if googleProto.Equal(candidate.Equipment, p.Equipment) || validateGear(candidate) != nil ||
 			b.validateTankIdentity(candidate) != nil {
 			return

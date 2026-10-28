@@ -47,6 +47,8 @@ simulator's **Ranked builds** selector. Clicking a matrix cell opens that exact
 setup and its actual gear-derived hit; no manual import is needed.
 [Frozen benchmark inputs](artifacts/modelled_gear/forever_input_profiles.json) are also the
 native benchmark defaults, separate from the results for replay.
+The [October 28 follow-up](docs/october-28-follow-up.md) adds a ranged Marksmanship build (Trueshot Aura, no melee)
+beside MM Weave and re-selects every DPS build's gear on the current engine, confirmed on a second seed.
 The [October 28 update](docs/october-28-update.md) gives Orc Blood Fury a two-minute cooldown and Undead Touch of the
 Grave a 15-second internal cooldown, Blizzard's October 27 additions to the launch racials; only Orc and Undead results
 change. The [October 27 update](docs/october-27-update.md) re-ran the matrix with the launch racial values, the APL search
@@ -69,14 +71,16 @@ builds, and re-searched talents and consumables for every DPS build. They follow
 [October 16 follow-up](docs/october-16-follow-up.md) (class imbue slots, real relics, Rake scaling) and the
 [October 15 update](docs/october-15-update.md) (client 1.60.1.70425 and the October 15 development notes), and
 [Beta test procedures](docs/beta-test-procedures.md) explains how to settle each remaining open question in game.
-[October 28 comparison](artifacts/correctness/october_28/comparison.json) lists the Orc and Undead changes,
+[October 28 follow-up comparison](artifacts/correctness/october_28_follow_up/comparison.json) lists every race/build
+after the gear search, [October 28 comparison](artifacts/correctness/october_28/comparison.json) lists the Orc and Undead changes,
 [October 27 comparison](artifacts/correctness/october_27/comparison.json) lists every race/build against the release before it, and the
 [October 27 selection evidence](artifacts/correctness/october_27/selection-evidence.json) records each re-searched candidate;
 [October 16 selection evidence](artifacts/correctness/october_16/selection-evidence.json) records the earlier relic,
 imbue, rotation, talent and confirmed gear selections. The earlier [October 11 log audit](docs/october-11-log-audit.md)
 and [October 11 audit](docs/october-11-audit.md) list the corrections before it. The [October 8 review](docs/october-8-review.md)
-explains the earlier provisional mechanics and bounded selections. Earlier
-[equipment searches](artifacts/modelled_gear_search/current/summary.json) remain historical. Every equipped item is a projected level-65 item with its
+explains the earlier provisional mechanics and bounded selections. The
+[October 28 equipment search](artifacts/modelled_gear_search/current/summary.json) selected the current gear; earlier
+searches are archived beside it. Every equipped item is a projected level-65 item with its
 numeric stats in its name. None is confirmed obtainable. The
 [previous mixed modeled/real release](https://github.com/gunba/wow-forever-sim/blob/ff7b01f28/artifacts/modelled_gear/forever_dps_5min.json)
 and the distinct verified-item rankings remain available for comparison.

@@ -14,6 +14,58 @@
           "val": "-10s"
         }
       }
+    },
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 14305
+          }
+        }
+      },
+      "doAtValue": {
+        "const": {
+          "val": "-31s"
+        }
+      }
+    },
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 20904
+          }
+        }
+      },
+      "doAtValue": {
+        "math": {
+          "op": "OpSub",
+          "lhs": {
+            "const": {
+              "val": "0.05s"
+            }
+          },
+          "rhs": {
+            "math": {
+              "op": "OpAdd",
+              "lhs": {
+                "spellCastTime": {
+                  "spellId": {
+                    "spellId": 20904
+                  }
+                }
+              },
+              "rhs": {
+                "spellTravelTime": {
+                  "spellId": {
+                    "spellId": 20904
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   ],
   "priorityList": [
@@ -24,39 +76,9 @@
     },
     {
       "action": {
-        "condition": {
-          "and": {
-            "vals": [
-              {
-                "not": {
-                  "val": {
-                    "dotIsActive": {
-                      "spellId": {
-                        "spellId": 13555
-                      }
-                    }
-                  }
-                }
-              },
-              {
-                "cmp": {
-                  "op": "OpGe",
-                  "lhs": {
-                    "remainingTime": {}
-                  },
-                  "rhs": {
-                    "const": {
-                      "val": "12s"
-                    }
-                  }
-                }
-              }
-            ]
-          }
-        },
         "castSpell": {
           "spellId": {
-            "spellId": 13555
+            "spellId": 3045
           }
         }
       }
@@ -72,44 +94,72 @@
     },
     {
       "action": {
-        "condition": {
-          "cmp": {
-            "op": "OpGe",
-            "lhs": {
-              "currentManaPercent": {}
-            },
-            "rhs": {
-              "const": {
-                "val": "30%"
-              }
-            }
-          }
-        },
         "castSpell": {
           "spellId": {
-            "spellId": 1310786
+            "spellId": 2643
           }
         }
       }
     },
     {
       "action": {
-        "condition": {
-          "cmp": {
-            "op": "OpGe",
-            "lhs": {
-              "currentManaPercent": {}
-            },
-            "rhs": {
-              "const": {
-                "val": "15%"
-              }
-            }
+        "castSpell": {
+          "spellId": {
+            "spellId": 13555
           }
         },
+        "condition": {
+          "and": {
+            "vals": [
+              {
+                "cmp": {
+                  "op": "OpLe",
+                  "lhs": {
+                    "dotRemainingTime": {
+                      "spellId": {
+                        "spellId": 13555
+                      }
+                    }
+                  },
+                  "rhs": {
+                    "const": {
+                      "val": "0.5s"
+                    }
+                  }
+                }
+              },
+              {
+                "cmp": {
+                  "op": "OpGe",
+                  "lhs": {
+                    "remainingTime": {}
+                  },
+                  "rhs": {
+                    "const": {
+                      "val": "8s"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": {
         "castSpell": {
           "spellId": {
             "spellId": 14287
+          }
+        }
+      }
+    },
+    {
+      "action": {
+        "castSpell": {
+          "spellId": {
+            "spellId": 1310786
           }
         }
       }

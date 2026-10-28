@@ -82,7 +82,7 @@ func TestReferenceAirTotemSelection(t *testing.T) {
 		// Since client 1.60.1.70425 Grace of Air no longer excludes Windfury, so melee DPS groups take both;
 		// tanks keep their shared support (Windfury only) and casters take neither.
 		tank := b.Key == "tank_warrior" || b.Key == "protection_paladin" || b.Key == "feral_tank_druid"
-		wantGrace := b.Key == "beast_mastery" || b.Key == "marksmanship" || melee[b.Key] && !tank
+		wantGrace := b.Key == "beast_mastery" || b.Key == "marksmanship" || b.Key == "marksmanship_ranged" || melee[b.Key] && !tank
 		if hasWindfury != melee[b.Key] || hasGrace != wantGrace {
 			t.Errorf("%s: Windfury=%v Grace=%v", b.Key, hasWindfury, hasGrace)
 		}

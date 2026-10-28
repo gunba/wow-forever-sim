@@ -77,7 +77,7 @@ func seedScore(b build, item core.Item, slot int) float64 {
 				score += 3 * dps
 			}
 		case 16:
-			if b.Key == "beast_mastery" || b.Key == "marksmanship" {
+			if b.Key == "beast_mastery" || b.Key == "marksmanship" || b.Key == "marksmanship_ranged" {
 				score += 14 * dps
 			}
 		}
