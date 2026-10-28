@@ -17,6 +17,9 @@ const routeFor = profile => {
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined });
 try {
 	const page = await browser.newPage();
+	// Shared CI runners can be several times slower than a desktop, and the parallel checks
+	// load many pages at once, so waiting for network idle can outlast the 30 s default.
+	page.setDefaultNavigationTimeout(120000);
 	// Display metadata and images must work without third-party requests.
 	await page.route(/^https?:\/\/([^/]+\.)?(zamimg|wowhead|googletagmanager)\.com\//, route => route.abort());
 	for (const profile of representatives) {

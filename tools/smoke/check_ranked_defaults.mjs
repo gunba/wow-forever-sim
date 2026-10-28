@@ -73,6 +73,9 @@ try {
 		const profile = bundle.profiles.find(profile => profile.id === id);
 		assert.ok(profile, `missing ${id}`);
 		const context = await browser.newContext();
+		// Shared CI runners can be several times slower than a desktop, and the parallel checks
+		// load many pages at once, so waiting for network idle can outlast the 30 s default.
+		context.setDefaultNavigationTimeout(120000);
 		const page = await context.newPage();
 		await page.route(/^https?:\/\/([^/]+\.)?(zamimg|wowhead|googletagmanager)\.com\//, request => request.abort());
 		await page.goto(`${base}${route}/`, { waitUntil: 'networkidle' });

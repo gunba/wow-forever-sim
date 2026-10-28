@@ -22,6 +22,9 @@ const settings = {
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined });
 try {
 	const context = await browser.newContext();
+	// Shared CI runners can be several times slower than a desktop, and the parallel checks
+	// load many pages at once, so waiting for network idle can outlast the 30 s default.
+	context.setDefaultNavigationTimeout(120000);
 	const page = await context.newPage();
 	await page.route(/^https?:\/\/([^/]+\.)?(zamimg|wowhead|googletagmanager)\.com\//, route => route.abort());
 	await page.goto(`${base}warrior/`, { waitUntil: 'networkidle' });
